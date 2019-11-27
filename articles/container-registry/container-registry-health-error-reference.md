@@ -1,6 +1,6 @@
 ---
-title: Error reference for health checks
-description: Error codes and possible solutions to problems found by running the az acr check-health diagnostic command in Azure Container Registry
+title: Fout referentie voor status controles
+description: Fout codes en mogelijke oplossingen voor problemen die worden gevonden door de opdracht AZ ACR check-Health Diagnostic uit te voeren in Azure Container Registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: a921d17ad7d01b134f5bfa33a1d9a768d3ea94df
@@ -10,99 +10,99 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455027"
 ---
-# <a name="health-check-error-reference"></a>Health check error reference
+# <a name="health-check-error-reference"></a>Naslag informatie voor status controle fout
 
-Following are details about error codes returned by the [az acr check-health][az-acr-check-health] command. For each error, possible solutions are listed.
+Hieronder vindt u informatie over de fout codes die worden geretourneerd door de opdracht [AZ ACR check-Health][az-acr-check-health] . Voor elke fout worden mogelijke oplossingen weer gegeven.
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
-This error means that Docker client for CLI could not be found. As a result, the following additional checks are not run: finding Docker version, evaluating Docker daemon status, and running a Docker pull command.
+Deze fout houdt in dat docker-client voor CLI niet kan worden gevonden. Als gevolg hiervan worden de volgende aanvullende controles niet uitgevoerd: een docker-versie vinden, de status van docker daemon evalueren en een docker-pull-opdracht uitvoeren.
 
-*Potential solutions*: Install Docker client; add Docker path to the system variables.
+*Mogelijke oplossingen*: docker-client installeren; Docker-pad toevoegen aan de systeem variabelen.
 
 ## <a name="docker_daemon_error"></a>DOCKER_DAEMON_ERROR
 
-This error means that the Docker daemon status is unavailable, or that it could not be reached using the CLI. As a result, Docker operations (such as `docker login` and `docker pull`) are unavailable through the CLI.
+Deze fout betekent dat de status van de docker-daemon niet beschikbaar is of niet kan worden bereikt met de CLI. Als gevolg hiervan zijn docker-bewerkingen (zoals `docker login` en `docker pull`) niet beschikbaar via de CLI.
 
-*Potential solutions*: Restart Docker daemon, or validate that it is properly installed.
+*Mogelijke oplossingen*: start docker daemon opnieuw of Controleer of deze juist is geïnstalleerd.
 
 ## <a name="docker_version_error"></a>DOCKER_VERSION_ERROR
 
-This error means that CLI was not able to run the command `docker --version`.
+Deze fout houdt in dat CLI de opdracht `docker --version`niet kan uitvoeren.
 
-*Potential solutions*: Try running the command manually, make sure you have the latest CLI version, and investigate the error message.
+*Mogelijke oplossingen*: Probeer de opdracht hand matig uit te voeren, zorg ervoor dat u over de meest recente CLI-versie beschikt en onderzoek het fout bericht.
 
 ## <a name="docker_pull_error"></a>DOCKER_PULL_ERROR
 
-This error means that the CLI was not able to pull a sample image to your environment.
+Deze fout betekent dat de CLI geen voorbeeld installatie kopie in uw omgeving kan ophalen.
 
-*Potential solutions*: Validate that all components necessary to pull an image are running properly.
+*Mogelijke oplossingen*: Controleer of alle onderdelen die nodig zijn voor het ophalen van een installatie kopie correct worden uitgevoerd.
 
 ## <a name="helm_command_error"></a>HELM_COMMAND_ERROR
 
-This error means that Helm client could not be found by the CLI, which precludes other Helm operations.
+Deze fout betekent dat de helm-client niet kan worden gevonden door de CLI, waardoor andere helm-bewerkingen worden uitgesloten.
 
-*Potential solutions*: Verify that Helm client is installed, and that its path is added to the system environment variables.
+*Mogelijke oplossingen*: Controleer of de helm-client is geïnstalleerd en of het pad wordt toegevoegd aan de omgevings variabelen van het systeem.
 
 ## <a name="helm_version_error"></a>HELM_VERSION_ERROR
 
-This error means that the CLI was unable to determine the Helm version installed. This can happen if the Azure CLI version (or if the Helm version) being used is obsolete.
+Deze fout betekent dat de CLI niet kan bepalen welke helm-versie is geïnstalleerd. Dit kan gebeuren als de Azure CLI-versie (of de versie van de helm) die wordt gebruikt, verouderd is.
 
-*Potential solutions*: Update to the latest Azure CLI version or to the recommended Helm version; run the command manually and investigate the error message.
+*Mogelijke oplossingen*: werk bij naar de nieuwste versie van Azure CLI of naar de aanbevolen helm-versie. Voer de opdracht hand matig uit en onderzoek het fout bericht.
 
 ## <a name="connectivity_dns_error"></a>CONNECTIVITY_DNS_ERROR
 
-This error means that the DNS for the given registry login server was pinged but did not respond, which means it is unavailable. This can indicate some connectivity issues. Alternatively, the registry might not exist, the user might not have the permissions on the registry (to retrieve its login server properly), or the target registry is in a different cloud than the one used in the Azure CLI.
+Deze fout betekent dat de DNS voor de opgegeven register aanmeldings server is gepingd, maar niet reageert, wat betekent dat deze niet beschikbaar is. Dit kan duiden op problemen met de verbinding. Het is ook mogelijk dat het REGI ster niet bestaat. de gebruiker heeft mogelijk niet de juiste machtigingen voor het REGI ster (om de aanmeldings server correct op te halen) of het doel register bevindt zich in een andere Cloud dan het REGI ster dat wordt gebruikt in de Azure CLI.
 
-*Potential solutions*: Validate connectivity; verify spelling of the registry, and that registry exists; verify that the user has the right permissions on it and that the registry's cloud is the same that is used in the Azure CLI.
+*Mogelijke oplossingen*: connectiviteit valideren; Controleer de spelling van het REGI ster en het REGI ster bestaat. Controleer of de gebruiker de juiste machtigingen heeft en of de cloud van het REGI ster hetzelfde is als in de Azure CLI.
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-This error means that the challenge endpoint for the given registry responded with a 403 Forbidden HTTP status. This error means that users don't have access to the registry, most likely because of a virtual network configuration. To see the currently configured firewall rules, run `az acr show --query networkRuleSet --name <registry>`.
+Deze fout houdt in dat het controle-eind punt voor het opgegeven REGI ster heeft gereageerd met een 403 verboden HTTP-status. Deze fout betekent dat gebruikers geen toegang hebben tot het REGI ster, waarschijnlijk vanwege een configuratie van een virtueel netwerk. Als u de momenteel geconfigureerde firewall regels wilt zien, voert u `az acr show --query networkRuleSet --name <registry>`uit.
 
-*Potential solutions*: Remove virtual network rules, or add the current client IP address to the allowed list.
+*Mogelijke oplossingen*: Verwijder de regels voor het virtuele netwerk of Voeg het huidige client-IP-adres toe aan de lijst met toegestane toepassingen.
 
 ## <a name="connectivity_challenge_error"></a>CONNECTIVITY_CHALLENGE_ERROR
 
-This error means that the challenge endpoint of the target registry did not issue a challenge.
+Deze fout houdt in dat het controle-eind punt van het doel register geen uitdaging heeft uitgegeven.
 
-*Potential solutions*: Try again after some time. If the error persists, open an issue at https://aka.ms/acr/issues.
+*Mogelijke oplossingen*: Probeer het na enige tijd opnieuw. Als de fout zich blijft voordoen, opent u een probleem op https://aka.ms/acr/issues.
 
 ## <a name="connectivity_aad_login_error"></a>CONNECTIVITY_AAD_LOGIN_ERROR
 
-This error means that the challenge endpoint of the target registry issued a challenge, but the registry does not support Azure Active Directory authentication.
+Deze fout houdt in dat het controle-eind punt van het doel register een Challenge heeft uitgegeven, maar het REGI ster biedt geen ondersteuning voor Azure Active Directory-verificatie.
 
-*Potential solutions*: Try a different way to authenticate, for example, with admin credentials. If users need  to authenticate using Azure Active Directory, open an issue at https://aka.ms/acr/issues.
+*Mogelijke oplossingen*: probeer op een andere manier te verifiëren, bijvoorbeeld met beheerders referenties. Als gebruikers moeten worden geverifieerd met Azure Active Directory, open dan een probleem op https://aka.ms/acr/issues.
 
 ## <a name="connectivity_refresh_token_error"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
 
-This error means that the registry login server did not respond with a refresh token, so access to the target registry was denied. This error can occur if the user does not have the right permissions on the registry or if the user credentials for the  Azure CLI are stale.
+Deze fout betekent dat de aanmeldings server van het REGI ster niet met een vernieuwings token heeft gereageerd, zodat de toegang tot het doel register is geweigerd. Deze fout kan optreden als de gebruiker niet over de juiste machtigingen beschikt voor het REGI ster of als de gebruikers referenties voor de Azure CLI verouderd zijn.
 
-*Potential solutions*: Verify if the user has the right permissions on the registry; run `az login` to refresh permissions, tokens, and credentials.
+*Mogelijke oplossingen*: Controleer of de gebruiker de juiste machtigingen heeft voor het REGI ster. Voer `az login` uit om machtigingen, tokens en referenties te vernieuwen.
 
 ## <a name="connectivity_access_token_error"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
 
-This error means that the registry login server did not respond with an access token, so that the access to the target registry was denied. This error can occur if the user does not have the right permissions on the registry or if the user credentials for the Azure CLI are stale.
+Deze fout betekent dat de aanmeldings server van het REGI ster niet met een toegangs token heeft gereageerd, zodat de toegang tot het doel register is geweigerd. Deze fout kan optreden als de gebruiker niet over de juiste machtigingen beschikt voor het REGI ster of als de gebruikers referenties voor de Azure CLI verouderd zijn.
 
-*Potential solutions*: Verify if the user has the right permissions on the registry; run `az login` to refresh permissions, tokens, and credentials.
+*Mogelijke oplossingen*: Controleer of de gebruiker de juiste machtigingen heeft voor het REGI ster. Voer `az login` uit om machtigingen, tokens en referenties te vernieuwen.
 
 ## <a name="connectivity_ssl_error"></a>CONNECTIVITY_SSL_ERROR
 
-This error means that the client was unable to establish a secure connection to the container registry. This error generally occurs if you're running or using a proxy server.
+Deze fout betekent dat de client geen beveiligde verbinding kan maken met het container register. Deze fout treedt doorgaans op als u een proxy server uitvoert of gebruikt.
 
-*Potential solutions*: More information on working behind a proxy can be [found here](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy).
+*Mogelijke oplossingen*: [hier](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy)vindt u meer informatie over het werken achter een proxy.
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 
-This error means that the CLI was unable to find the login server of the given registry, and no default suffix was found for the current cloud. This error can occur if the registry does not exist, if the user does not have the right permissions on the registry, if the registry's cloud and the current Azure CLI cloud do not match, or if the Azure CLI version is obsolete.
+Deze fout betekent dat de CLI de aanmeldings server van het opgegeven REGI ster niet kan vinden en dat er geen standaard achtervoegsel is gevonden voor de huidige Cloud. Deze fout kan optreden als het REGI ster niet bestaat, als de gebruiker niet over de juiste machtigingen beschikt voor het REGI ster, als de cloud van het REGI ster en de huidige Azure CLI-Cloud niet overeenkomen of als de Azure CLI-versie verouderd is.
 
-*Potential solutions*: Verify that the spelling is correct and that the registry exists; verify that user has the right permissions on the registry, and that the clouds of the registry and the CLI environment match; update Azure CLI to the latest version.
+*Mogelijke oplossingen*: Controleer of de spelling juist is en of het REGI ster bestaat. Controleer of de gebruiker over de juiste machtigingen beschikt voor het REGI ster en of de Clouds van het REGI ster en de CLI-omgeving overeenkomen. werk Azure CLI bij naar de nieuwste versie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-For options to check the health of a registry, see [Check the health of an Azure container registry](container-registry-check-health.md).
+Zie [de status van een Azure container Registry controleren](container-registry-check-health.md)voor opties voor het controleren van de status van een REGI ster.
 
-See the [FAQ](container-registry-faq.md) for frequently asked questions and other known issues about Azure Container Registry.
+Raadpleeg de [Veelgestelde](container-registry-faq.md) vragen over Azure container Registry en andere bekende problemen met betrekking tot de beveiliging.
 
 
 

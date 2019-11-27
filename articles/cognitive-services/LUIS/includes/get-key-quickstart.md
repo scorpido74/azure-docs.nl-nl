@@ -1,5 +1,5 @@
 ---
-title: Get key for quickstart
+title: Sleutel voor Quick Start ophalen
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -15,11 +15,11 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74414618"
 ---
-Keys and endpoints are provided in the LUIS portal in the **Manage Section** on the **Azure Resources** page. 
+Sleutels en eind punten worden in de LUIS-Portal vermeld in de **sectie beheren** op de pagina **Azure-resources** . 
  
-1. Sign in to the [LUIS portal](https://preview.luis.ai/). 
-1. Create a new app, or select an existing app from the apps list.
-1. Select **Manage** then select **Azure Resources**. 
-1. Copy the values for the key and endpoint for the Starter resource. You'll need these to run the sample below.
+1. Meld u aan bij de [Luis-Portal](https://preview.luis.ai/). 
+1. Maak een nieuwe app of selecteer een bestaande app in de lijst met apps.
+1. Selecteer **beheren** en selecteer vervolgens **Azure-resources**. 
+1. Kopieer de waarden voor de sleutel en het eind punt voor de eerste resource. U hebt deze nodig om het onderstaande voor beeld uit te voeren.
    > [!NOTE]
-   > The **Starter** key allows free requests to the authoring API and up to 1000 queries to the prediction endpoint API per month for all your LUIS apps. 
+   > Met de **Start** sleutel kunt u gratis aanvragen verzenden naar de ontwerp-API en maxi maal 1000 query's naar de Voorspellings EINDPUNT-API per maand voor al uw Luis-apps. 

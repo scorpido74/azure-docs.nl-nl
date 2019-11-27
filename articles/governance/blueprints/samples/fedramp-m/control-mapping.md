@@ -1,14 +1,14 @@
 ---
-title: Voor beeld van een FedRAMP matige blauw druk-toewijzing
+title: Voorbeeld besturings elementen voor FedRAMP matige blauw druk
 description: De toewijzing van het FedRAMP matige blauw druk-voor beeld beheren. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
 ms.date: 10/31/2019
 ms.topic: sample
-ms.openlocfilehash: 1bf87ef1b5116b086797b8521268bd4575970925
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0ecf5430f643ee795f81759f3d07a062e433f5b6
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032345"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544559"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>De toewijzing van het FedRAMP matige blauw druk-voor beeld controleren
 
@@ -87,11 +87,11 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
+- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
+- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
 - Diagnostische instelling voor controleren
 - Controle op SQL Server moet zijn ingeschakeld
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
@@ -262,11 +262,11 @@ Deze blauw druk helpt u bij het controleren van uw systeem door logboek registra
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
+- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
+- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
 - Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde gegevens beveiliging implementeren op SQL-servers

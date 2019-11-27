@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3d6d128677d2e82f4750a7771885474bf284fb1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184216"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547392"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Beheerde identiteiten voor Azure-resources gebruiken op een Azure-VM voor aanmelding 
 
@@ -41,7 +41,7 @@ Als u van plan bent de Azure PowerShell of Azure CLI-voor beelden in dit artikel
 
 ## <a name="overview"></a>Overzicht
 
-Beheerde identiteiten voor Azure-resources bieden een [Service-Principal-object](../develop/developer-glossary.md#service-principal-object) , dat wordt [gemaakt bij het inschakelen van beheerde identiteiten voor Azure-resources](overview.md#how-does-it-work) op de virtuele machine. De service-principal kan toegang krijgen tot Azure-resources en wordt gebruikt als identiteit door script/opdracht regel clients voor aanmelding en toegang tot bronnen. Traditioneel moet een script-client het volgende doen om toegang te krijgen tot beveiligde resources onder een eigen identiteit:  
+Beheerde identiteiten voor Azure-resources bieden een [Service-Principal-object](../develop/developer-glossary.md#service-principal-object) , dat wordt [gemaakt bij het inschakelen van beheerde identiteiten voor Azure-resources](overview.md#how-does-the-managed-identities-for-azure-resources-work) op de virtuele machine. De service-principal kan toegang krijgen tot Azure-resources en wordt gebruikt als identiteit door script/opdracht regel clients voor aanmelding en toegang tot bronnen. Traditioneel moet een script-client het volgende doen om toegang te krijgen tot beveiligde resources onder een eigen identiteit:  
 
    - als vertrouwelijk/webclient-toepassing worden geregistreerd en met Azure AD worden ingestemd
    - Meld u aan onder de bijbehorende service-principal met behulp van de referenties van de app (die waarschijnlijk zijn Inge sloten in het script)

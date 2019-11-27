@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add parameters to template
-description: Add parameters to your Azure Resource Manager template to make it reusable.
+title: Zelf studie-para meters aan sjabloon toevoegen
+description: Voeg para meters toe aan uw Azure Resource Manager sjabloon om deze opnieuw te kunnen bruikbaar maken.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,37 +12,37 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406077"
 ---
-# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Tutorial: Add parameters to your Resource Manager template
+# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Zelf studie: para meters toevoegen aan uw Resource Manager-sjabloon
 
-In the [previous tutorial](template-tutorial-add-resource.md), you learned how to add a storage account to the template and deploy it. In this tutorial, you learn how to improve the template by adding parameters. This tutorial takes about **14 minutes** to complete.
+In de [vorige zelf studie](template-tutorial-add-resource.md)hebt u geleerd hoe u een opslag account toevoegt aan de sjabloon en hoe u deze implementeert. In deze zelf studie leert u hoe u de sjabloon kunt verbeteren door para meters toe te voegen. Deze zelf studie duurt ongeveer **14 minuten** .
 
 ## <a name="prerequisites"></a>Vereisten
 
-We recommend that you complete the [tutorial about resources](template-tutorial-add-resource.md), but it's not required.
+U wordt aangeraden de [zelf studie over resources](template-tutorial-add-resource.md)te volt ooien, maar dit is niet vereist.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Sjabloon controleren
 
-At the end of the previous tutorial, your template had the following JSON:
+Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json)]
 
-You may have noticed that there's a problem with this template. The storage account name is hard-coded. You can only use this template to deploy the same storage account every time. To deploy a storage account with a different name, you would have to create a new template, which obviously isn't a practical way to automate your deployments.
+Mogelijk hebt u gemerkt dat er een probleem is met deze sjabloon. De naam van het opslag account is vastgelegd in een vaste code. U kunt deze sjabloon alleen gebruiken om elk keer hetzelfde opslag account te implementeren. Als u een opslag account met een andere naam wilt implementeren, moet u een nieuwe sjabloon maken. Dit is uiteraard geen praktische manier om uw implementaties te automatiseren.
 
-## <a name="make-template-reusable"></a>Make template reusable
+## <a name="make-template-reusable"></a>Sjabloon herbruikbaar maken
 
-To make your template reusable, let's add a parameter that you can use to pass in a storage account name. The highlighted JSON in the following example shows what changed in your template. The **storageName** parameter is identified as a string. The max length is set to 24 characters to prevent any names that are too long.
+Als u uw sjabloon opnieuw wilt gebruiken, gaan we een para meter toevoegen waarmee u de naam van een opslag account kunt door geven. De gemarkeerde JSON in het volgende voor beeld laat zien wat er in uw sjabloon is gewijzigd. De para meter voor de **opslag** -id wordt geïdentificeerd als een teken reeks. De maximale lengte is ingesteld op 24 tekens om te voor komen dat namen te lang zijn.
 
-Copy the whole file and replace your template with its contents.
+Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-Let's deploy the template. The following example deploys the template with Azure CLI or PowerShell. Notice that you provide the storage account name as one of the values in the deployment command. For the storage account name, provide the same name you used in the previous tutorial.
+We gaan de sjabloon implementeren. In het volgende voor beeld wordt de sjabloon geïmplementeerd met Azure CLI of Power shell. U ziet dat u de naam van het opslag account opgeeft als een van de waarden in de implementatie opdracht. Geef voor de naam van het opslag account dezelfde naam op die u in de vorige zelf studie hebt gebruikt.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -66,27 +66,27 @@ az group deployment create \
 
 ---
 
-## <a name="understand-resource-updates"></a>Understand resource updates
+## <a name="understand-resource-updates"></a>Resource-updates begrijpen
 
-In the previous section, you deployed a storage account with the same name that you had created earlier. You may be wondering how the resource is affected by the redeployment.
+In de vorige sectie hebt u een opslag account geïmplementeerd met dezelfde naam die u eerder hebt gemaakt. U vraagt zich misschien af hoe de resource wordt beïnvloed door de herimplementatie.
 
-If the resource already exists and no change is detected in the properties, no action is taken. If the resource already exists and a property has changed, the resource is updated. If the resource doesn't exist, it's created.
+Als de resource al bestaat en er geen wijziging wordt gedetecteerd in de eigenschappen, wordt er geen actie ondernomen. Als de resource al bestaat en een eigenschap is gewijzigd, wordt de resource bijgewerkt. Als de resource niet bestaat, wordt deze gemaakt.
 
-This way of handling updates means your template can include all of the resources you need for an Azure solution. You can safely redeploy the template and know that resources are changed or created only when needed. For example, if you have added files to your storage account, you can redeploy the storage account without losing those files.
+Deze manier van het afhandelen van updates betekent dat uw sjabloon alle resources kan bevatten die u nodig hebt voor een Azure-oplossing. U kunt de sjabloon veilig opnieuw implementeren en weet dat de resources zijn gewijzigd of alleen worden gemaakt wanneer dat nodig is. Als u bijvoorbeeld bestanden aan uw opslag account hebt toegevoegd, kunt u het opslag account opnieuw implementeren zonder dat deze bestanden verloren gaan.
 
-## <a name="customize-by-environment"></a>Customize by environment
+## <a name="customize-by-environment"></a>Aanpassen per omgeving
 
-Met parameters kunt u de implementatie aanpassen door waarden op te geven die voor een specifieke omgeving zijn aangepast. For example, you can pass different values based on whether you're deploying to an environment for development, test, and production.
+Met parameters kunt u de implementatie aanpassen door waarden op te geven die voor een specifieke omgeving zijn aangepast. U kunt bijvoorbeeld verschillende waarden door geven op basis van het feit of u implementeert in een omgeving voor ontwikkeling, testen en productie.
 
-The previous template always deployed a Standard_LRS storage account. You might want the flexibility to deploy different SKUs depending on the environment. The following example shows the changes to add a parameter for SKU. Copy the whole file and paste over your template.
+In de vorige sjabloon is altijd een Standard_LRS Storage-account geïmplementeerd. Mogelijk wilt u de flexibiliteit om verschillende Sku's te implementeren, afhankelijk van de omgeving. In het volgende voor beeld ziet u de wijzigingen voor het toevoegen van een para meter voor SKU. Kopieer het hele bestand en plak over uw sjabloon.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
 
-The **storageSKU** parameter has a default value. This value is used when a value isn't specified during the deployment. It also has a list of allowed values. These values match the values that are needed to create a storage account. You don't want users of your template to pass in SKUs that don't work.
+De **storageSKU** -para meter heeft een standaard waarde. Deze waarde wordt gebruikt wanneer tijdens de implementatie geen waarde is opgegeven. Het bevat ook een lijst met toegestane waarden. Deze waarden komen overeen met de waarden die nodig zijn voor het maken van een opslag account. U wilt niet dat gebruikers van uw sjabloon door geven in Sku's die niet werken.
 
 ## <a name="redeploy-template"></a>Sjabloon opnieuw implementeren
 
-You're ready to deploy again. Because the default SKU is set to **Standard_LRS**, you don't need to provide a value for that parameter.
+U bent klaar om te implementeren. Omdat de standaard-SKU is ingesteld op **Standard_LRS**, hoeft u geen waarde voor die para meter op te geven.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -110,7 +110,7 @@ az group deployment create \
 
 ---
 
-To see the flexibility of your template, let's deploy again. This time set the SKU parameter to **Standard_GRS**. You can either pass in a new name to create a different storage account, or use the same name to update your existing storage account. Both options work.
+Voor een overzicht van de flexibiliteit van uw sjabloon, gaan we opnieuw implementeren. In deze tijd stelt u de SKU-para meter in op **Standard_GRS**. U kunt een nieuwe naam door geven om een ander opslag account te maken of dezelfde naam gebruiken om uw bestaande opslag account bij te werken. Beide opties werken.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -135,7 +135,7 @@ az group deployment create \
 
 ---
 
-Finally, let's run one more test and see what happens when you pass in a SKU that isn't one of the allowed values. In this case, we test the scenario where a user of your template thinks **basic** is one of the SKUs.
+Ten slotte gaan we nog een test uitvoeren en zien wat er gebeurt wanneer u een SKU doorgeeft die geen van de toegestane waarden is. In dit geval testen we het scenario waarbij een gebruiker van uw sjabloon een van de Sku's als **basis** beschouwt.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -160,13 +160,13 @@ az group deployment create \
 
 ---
 
-The command fails immediately with an error message that states which values are allowed. Resource Manager identifies the error before the deployment starts.
+De opdracht mislukt onmiddellijk met een fout bericht dat aangeeft welke waarden zijn toegestaan. Resource Manager identificeert de fout voordat de implementatie wordt gestart.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Als u nu stopt, wilt u misschien de resources opschonen die u hebt geïmplementeerd door de resource groep te verwijderen.
 
 1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
@@ -175,7 +175,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Volgende stappen
 
-You improved the template created in the [first tutorial](template-tutorial-create-first-template.md) by adding parameters. In the next tutorial, you'll learn about template functions.
+U hebt de sjabloon die in de [eerste zelf studie](template-tutorial-create-first-template.md) is gemaakt, verbeterd door para meters toe te voegen. In de volgende zelf studie leert u over sjabloon functies.
 
 > [!div class="nextstepaction"]
-> [Add template functions](template-tutorial-add-functions.md)
+> [Sjabloon functies toevoegen](template-tutorial-add-functions.md)

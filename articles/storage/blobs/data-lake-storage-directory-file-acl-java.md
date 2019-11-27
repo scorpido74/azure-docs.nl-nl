@@ -1,6 +1,6 @@
 ---
-title: Use Java for files & ACLs in Azure Data Lake Storage Gen2 (preview)
-description: Use Azure Storage libraries for Java to manage directories and file and directory access control lists (ACL) in storage accounts that has hierarchical namespace (HNS) enabled.
+title: Java gebruiken voor bestanden & Acl's in Azure Data Lake Storage Gen2 (preview-versie)
+description: Gebruik Azure Storage bibliotheken voor Java voor het beheren van mappen en toegangs beheer lijsten (ACL'S) voor bestands-en Directory bestanden in opslag accounts met een hiërarchische naam ruimte (HNS) ingeschakeld.
 author: normesta
 ms.service: storage
 ms.date: 11/24/2019
@@ -8,31 +8,31 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 4593c16905c331b0d76c9c5c93faac6accfb0977
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b01370bb8c86da07549775ec1a1399e09c80f9af
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485209"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534253"
 ---
-# <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Use Java for files & ACLs in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Java gebruiken voor bestanden & Acl's in Azure Data Lake Storage Gen2 (preview-versie)
 
-This article shows you how to use Java to create and manage directories, files, and permissions in storage accounts that has hierarchical namespace (HNS) enabled. 
+In dit artikel leest u hoe u Java gebruikt om directory's, bestanden en machtigingen te maken en te beheren in opslag accounts met een hiërarchische naam ruimte (HNS) ingeschakeld. 
 
 > [!IMPORTANT]
-> The Java library that is featured in this article is currently in public preview.
+> De Java-bibliotheek die in dit artikel wordt aanbevolen, is momenteel beschikbaar als open bare preview.
 
-[Package (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar) | [Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API reference](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [Give Feedback](https://github.com/Azure/azure-sdk-for-java/issues)
+[Package (Maven) | -](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar) voor [beelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API-verwijzing](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [gen1 naar Gen2-toewijzing](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [feedback geven](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
 > * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-> * A storage account that has hierarchical namespace (HNS) enabled. Follow [these](data-lake-storage-quickstart-create-account.md) instructions to create one.
+> * Een opslag account met een hiërarchische naam ruimte (HNS) ingeschakeld. Volg [deze](data-lake-storage-quickstart-create-account.md) instructies om er een te maken.
 
 ## <a name="set-up-your-project"></a>Uw project instellen
 
-To get started, open the *pom.xml* file in your text editor. Add the following dependency element to the group of dependencies.
+Om aan de slag te gaan, opent u het bestand *pom. XML* in de tekst editor. Voeg het volgende afhankelijkheids element toe aan de groep met afhankelijkheden.
 
 ```xml
 <dependency>
@@ -42,7 +42,7 @@ To get started, open the *pom.xml* file in your text editor. Add the following d
 </dependency>
 ```
 
-Then, add these imports statements to your code file.
+Voeg vervolgens deze Imports-instructies toe aan het code bestand.
 
 ```java
 import com.azure.storage.common.StorageSharedKeyCredential;
@@ -59,11 +59,11 @@ import com.azure.storage.file.datalake.models.PathPermissions;
 import com.azure.storage.file.datalake.models.RolePermissions;
 ```
 
-## <a name="connect-to-the-account"></a>Connect to the account 
+## <a name="connect-to-the-account"></a>Verbinding maken met het account 
 
-To use the snippets in this article, you'll need to create a **DataLakeServiceClient** instance that represents the storage account. The easiest way to get one is to use an account key. 
+Als u de fragmenten in dit artikel wilt gebruiken, moet u een **DataLakeServiceClient** -exemplaar maken dat het opslag account vertegenwoordigt. De eenvoudigste manier om een account sleutel te gebruiken is. 
 
-This example creates an instance of the **DataLakeServiceClient** by using an account key.
+In dit voor beeld wordt een exemplaar van de **DataLakeServiceClient** gemaakt met behulp van een account sleutel.
 
 ```java
 
@@ -84,9 +84,9 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 ```
 ## <a name="create-a-file-system"></a>Een bestandssysteem maken
 
-A file system acts as a container for your files. You can create one by calling the **DataLakeServiceClient.createFileSystem** method.
+Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken door de methode **DataLakeServiceClient. createFileSystem** aan te roepen.
 
-This example creates a file system named `my-file-system`. 
+In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system`. 
 
 ```java
 static public DataLakeFileSystemClient CreateFileSystem
@@ -98,9 +98,9 @@ static public DataLakeFileSystemClient CreateFileSystem
 
 ## <a name="create-a-directory"></a>Een map maken
 
-Create a directory reference by calling the **DataLakeFileSystemClient.createDirectory** method.
+Maak een verwijzing naar een directory door de methode **DataLakeFileSystemClient. createDirectory** aan te roepen.
 
-This example adds a directory named `my-directory` to a file system, and then adds a sub-directory named `my-subdirectory`. 
+In dit voor beeld wordt een map met de naam `my-directory` toegevoegd aan een bestands systeem en wordt vervolgens een submap met de naam `my-subdirectory`toegevoegd. 
 
 ```java
 static public DataLakeDirectoryClient CreateDirectory
@@ -116,11 +116,11 @@ static public DataLakeDirectoryClient CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>Rename or move a directory
+## <a name="rename-or-move-a-directory"></a>Een map een andere naam geven of verplaatsen
 
-Rename or move a directory by calling the **DataLakeDirectoryClient.rename** method. Pass the path of the desired directory a parameter. 
+Wijzig de naam of verplaats een map door de methode **DataLakeDirectoryClient. rename** aan te roepen. Geef een para meter door aan het pad van de gewenste map. 
 
-This example renames a sub-directory to the name `my-subdirectory-renamed`.
+In dit voor beeld wordt de naam van een submap gewijzigd in `my-subdirectory-renamed`.
 
 ```java
 static public DataLakeDirectoryClient
@@ -133,7 +133,7 @@ static public DataLakeDirectoryClient
 }
 ```
 
-This example moves a directory named `my-subdirectory-renamed` to a sub-directory of a directory named `my-directory-2`. 
+In dit voor beeld wordt een map met de naam `my-subdirectory-renamed` verplaatst naar een submap van de map met de naam `my-directory-2`. 
 
 ```java
 static public DataLakeDirectoryClient MoveDirectory
@@ -148,9 +148,9 @@ static public DataLakeDirectoryClient MoveDirectory
 
 ## <a name="delete-a-directory"></a>Een map verwijderen
 
-Delete a directory by calling the **DataLakeDirectoryClient.deleteWithResponse** method.
+Verwijder een directory door de methode **DataLakeDirectoryClient. deleteWithResponse** aan te roepen.
 
-This example deletes a directory named `my-directory`.   
+In dit voor beeld wordt een map met de naam `my-directory`verwijderd.   
 
 ```java
 static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
@@ -162,9 +162,9 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Manage a directory ACL
+## <a name="manage-a-directory-acl"></a>Een directory-ACL beheren
 
-This example gets and then sets the ACL of a directory named `my-directory`. This example gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read access.
+In dit voor beeld wordt de ACL van een directory met de naam `my-directory`opgehaald en ingesteld. In dit voor beeld worden de machtigingen lezen, schrijven en uitvoeren voor de gebruiker die eigenaar is, de groep die eigenaar is, de machtigingen lezen en uitvoeren, en krijgt alle andere Lees toegang.
 
 ```java
 static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
@@ -195,11 +195,11 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Upload a file to a directory
+## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 
-First, create a file reference in the target directory by creating an instance of the **DataLakeFileClient** class. Upload a file by calling the **DataLakeFileClient.append** method. Make sure to complete the upload by calling the **DataLakeFileClient.FlushAsync** method.
+Maak eerst een bestands verwijzing in de doel directory door een instantie van de klasse **DataLakeFileClient** te maken. Upload een bestand door de methode **DataLakeFileClient. Append aan** te roepen. Zorg ervoor dat u de upload voltooit door de methode **DataLakeFileClient. FlushAsync** aan te roepen.
 
-This example uploads a text file to a directory named `my-directory`.`
+In dit voor beeld wordt een tekst bestand geüpload naar een map met de naam `my-directory`.
 
 ```java
 static public void UploadFile(DataLakeFileSystemClient fileSystemClient) 
@@ -222,9 +222,9 @@ static public void UploadFile(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-file-acl"></a>Manage a file ACL
+## <a name="manage-a-file-acl"></a>Een bestands-ACL beheren
 
-This example gets and then sets the ACL of a file named `upload-file.txt`. This example gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read access.
+In dit voor beeld wordt de ACL van een bestand met de naam `upload-file.txt`opgehaald en ingesteld. In dit voor beeld worden de machtigingen lezen, schrijven en uitvoeren voor de gebruiker die eigenaar is, de groep die eigenaar is, de machtigingen lezen en uitvoeren, en krijgt alle andere Lees toegang.
 
 ```java
 static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
@@ -257,11 +257,11 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 }
 ```
 
-## <a name="download-from-a-directory"></a>Download from a directory
+## <a name="download-from-a-directory"></a>Downloaden uit een directory
 
-First, create a **DataLakeFileClient** instance that represents the file that you want to download. Use the **DataLakeFileClient.read** method to read the file. Use any .NET file processing API to save bytes from the stream to a file. 
+Maak eerst een **DataLakeFileClient** -exemplaar dat het bestand vertegenwoordigt dat u wilt downloaden. Gebruik de methode **DataLakeFileClient. Read** om het bestand te lezen. Gebruik een API voor het verwerken van .NET-bestanden om bytes van de stroom naar een bestand op te slaan. 
 
-Make sure to complete the download by calling the **DataLakeFileClient.flush** method.
+Zorg ervoor dat u de down load voltooit door de methode **DataLakeFileClient. Flush** aan te roepen.
 
 ```java
 static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
@@ -289,7 +289,7 @@ static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 ## <a name="list-directory-contents"></a>Mapinhoud weergeven
 
-This example, prints the names of each file that is located in a directory named `my-directory`.
+In dit voor beeld worden de namen afgedrukt van elk bestand dat zich bevindt in een map met de naam `my-directory`.
 
 ```java
 static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient){
@@ -322,9 +322,9 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 
 ## <a name="see-also"></a>Zie ook
 
-* [API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html)
-* [Package (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar)
+* [API-referentie documentatie](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html)
+* [Pakket (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar)
 * [Voorbeelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
-* [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
-* [Known capability gaps](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Give Feedback](https://github.com/Azure/azure-sdk-for-java/issues)
+* [Toewijzing van gen1 naar Gen2](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
+* [Bekende problemen](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [Feedback geven](https://github.com/Azure/azure-sdk-for-java/issues)

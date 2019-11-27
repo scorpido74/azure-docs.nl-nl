@@ -80,7 +80,7 @@ De volgende functies zijn uitgebracht op de build 2019-conferentie:
 
 ## <a name="blogs"></a>Blogs
 
-[Bot Framework](https://blog.botframework.com/)
+[Bot-Framework](https://blog.botframework.com/)
 
 ## <a name="videos"></a>Video's
 

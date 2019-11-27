@@ -1,6 +1,6 @@
 ---
-title: Choose the right authentication method for your Azure AD hybrid identity solution | Microsoft Docs
-description: This guide helps CEOs, CIOs, CISOs, Chief Identity Architects, Enterprise Architects, and Security and IT decision makers responsible for choosing an authentication method for their Azure AD hybrid identity solution in medium to large organizations.
+title: Kies de juiste verificatie methode voor uw Azure AD hybride identiteits oplossing | Microsoft Docs
+description: Deze hand leiding helpt CEOs, Cio's, CISOs, Chief Identity Architects, Enter prise Architects en Security en IT-besluit vormers die verantwoordelijk zijn voor het kiezen van een verificatie methode voor hun Azure AD hybride identiteits oplossing in gemiddeld tot grote organisaties.
 keywords: ''
 author: martincoetzer
 ms.author: martinco
@@ -16,207 +16,207 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483949"
 ---
-# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Choose the right authentication method for your Azure Active Directory hybrid identity solution
+# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing
 
-Choosing the correct authentication method is the first concern for organizations wanting to move their apps to the cloud. Don't take this decision lightly, for the following reasons:
+Het kiezen van de juiste verificatie methode is de eerste reden voor organisaties die hun apps willen verplaatsen naar de Cloud. Doe deze beslissing niet lichter, om de volgende redenen:
 
-1. It's the first decision for an organization that wants to move to the cloud.
+1. Het is de eerste beslissing voor een organisatie die naar de Cloud wil verplaatsen.
 
-2. The authentication method is a critical component of an organization’s presence in the cloud. It controls access to all cloud data and resources.
+2. De verificatie methode is een essentieel onderdeel van de aanwezigheid van een organisatie in de Cloud. Het beheert de toegang tot alle Cloud gegevens en-resources.
 
-3. It's the foundation of all the other advanced security and user experience features in Azure AD.
+3. Het is de basis van alle andere geavanceerde functies voor beveiliging en gebruikers ervaring in azure AD.
 
-4. The authentication method is difficult to change after it's implemented.
+4. De verificatie methode is moeilijk te wijzigen nadat deze is geïmplementeerd.
 
-Identity is the new control plane of IT security. So authentication is an organization’s access guard to the new cloud world. Organizations need an identity control plane that strengthens their security and keeps their cloud apps safe from intruders.
+Identiteit is het nieuwe beheer vlak van IT-beveiliging. Verificatie is dus de toegangs beveiliging van een organisatie naar de nieuwe Cloud wereld. Organisaties hebben een identiteits beheergebied nodig waarmee de beveiliging wordt versterkt en de Cloud-apps worden beschermd tegen indringers.
 
-### <a name="out-of-scope"></a>Out of scope
-Organizations that don't have an existing on-premises directory footprint aren't the focus of this article. Typically, those businesses create identities only in the cloud, which doesn’t require a hybrid identity solution. Cloud-only identities exist solely in the cloud and aren't associated with corresponding on-premises identities.
+### <a name="out-of-scope"></a>Buiten bereik
+Organisaties die geen bestaande on-premises Directory-footprint hebben, zijn niet de focus van dit artikel. Normaal gesp roken maken deze bedrijven alleen identiteiten in de Cloud, waarvoor geen hybride identiteits oplossing nodig is. Alleen Cloud-identiteiten bestaan uitsluitend in de Cloud en zijn niet gekoppeld aan de bijbehorende on-premises identiteiten.
 
-## <a name="authentication-methods"></a>Authenticatiemethoden
-When the Azure AD hybrid identity solution is your new control plane, authentication is the foundation of cloud access. Choosing the correct authentication method is a crucial first decision in setting up an Azure AD hybrid identity solution. Implement the authentication method that is configured by using Azure AD Connect, which also provisions users in the cloud.
+## <a name="authentication-methods"></a>Verificatiemethoden
+Wanneer de hybride identiteits oplossing van Azure AD uw nieuwe besturings vlak is, is verificatie de basis van Cloud toegang. Het kiezen van de juiste verificatie methode is een cruciaal eerste beslissing bij het instellen van een Azure AD hybride identiteits oplossing. Implementeer de verificatie methode die is geconfigureerd met behulp van Azure AD Connect, waarmee ook gebruikers in de cloud worden ingericht.
 
-To choose an authentication method, you need to consider the time, existing infrastructure, complexity, and cost of implementing your choice. These factors are different for every organization and might change over time.
+Als u een verificatie methode wilt kiezen, moet u rekening houden met de tijd, de bestaande infra structuur, de complexiteit en de kosten van de implementatie van uw keuze. Deze factoren zijn voor elke organisatie verschillend en kunnen in de loop van de tijd veranderen.
 
 >[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
-Azure AD supports the following authentication methods for hybrid identity solutions.
+Azure AD biedt ondersteuning voor de volgende verificatie methoden voor hybride identiteits oplossingen.
 
-### <a name="cloud-authentication"></a>Cloud authentication
-When you choose this authentication method, Azure AD handles users' sign-in process. Coupled with seamless single sign-on (SSO), users can sign in to cloud apps without having to reenter their credentials. With cloud authentication, you can choose from two options:
+### <a name="cloud-authentication"></a>Cloud authenticatie
+Wanneer u deze verificatie methode kiest, wordt het aanmeldings proces van gebruikers door Azure AD afgehandeld. Met naadloze eenmalige aanmelding (SSO) kunnen gebruikers zich aanmelden bij Cloud-apps zonder hun referenties opnieuw in te voeren. Met Cloud authenticatie kunt u kiezen uit twee opties:
 
-**Azure AD password hash synchronization**. The simplest way to enable authentication for on-premises directory objects in Azure AD. Users can use the same username and password that they use on-premises without having to deploy any additional infrastructure. Some premium features of Azure AD, like Identity Protection and [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), require password hash synchronization, no matter which authentication method you choose.
+**Synchronisatie van wacht woord-hash van Azure AD**. De eenvoudigste manier om verificatie in te scha kelen voor on-premises Directory-objecten in azure AD. Gebruikers kunnen dezelfde gebruikers naam en hetzelfde wacht woord gebruiken als ze on-premises gebruiken zonder dat ze een extra infra structuur hoeven te implementeren. Voor sommige Premium-functies van Azure AD, zoals identiteits beveiliging en [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), is wachtwoord hash-synchronisatie vereist, ongeacht welke verificatie methode u kiest.
 
 > [!NOTE]
-> Passwords are never stored in clear text or encrypted with a reversible algorithm in Azure AD. For more information on the actual process of password hash synchronization, see [Implement password hash synchronization with Azure AD Connect sync](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
+> Wacht woorden worden nooit in ongecodeerde tekst opgeslagen of versleuteld met een omkeer bare algoritme in azure AD. Zie [wachtwoord hash synchronisatie implementeren met Azure AD Connect Sync](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)voor meer informatie over het feitelijke proces van wachtwoord hash-synchronisatie.
 
-**Azure AD Pass-through Authentication**. Provides a simple password validation for Azure AD authentication services by using a software agent that runs on one or more on-premises servers. The servers validate the users directly with your on-premises Active Directory, which ensures that the password validation doesn't happen in the cloud.
+**Pass-Through-verificatie van Azure AD**. Biedt een eenvoudige wachtwoord validatie voor Azure AD-verificatie services door gebruik te maken van een software-agent die wordt uitgevoerd op een of meer on-premises servers. De servers valideren de gebruikers rechtstreeks met uw on-premises Active Directory, wat ervoor zorgt dat de wachtwoord validatie niet plaatsvindt in de Cloud.
 
-Companies with a security requirement to immediately enforce on-premises user account states, password policies, and sign-in hours might use this authentication method. For more information on the actual pass-through authentication process, see [User sign-in with Azure AD pass-through authentication](../../active-directory/hybrid/how-to-connect-pta.md).
+Bedrijven met een beveiligings vereiste voor het direct afdwingen van on-premises gebruikers accounts, wachtwoord beleid en aanmeldings tijden kunnen deze verificatie methode gebruiken. Zie [aanmelding van gebruikers met Azure AD Pass-Through-verificatie](../../active-directory/hybrid/how-to-connect-pta.md)voor meer informatie over het feitelijke Pass-Through-verificatie proces.
 
-### <a name="federated-authentication"></a>Federated authentication
-When you choose this authentication method, Azure AD hands off the authentication process to a separate trusted authentication system, such as on-premises Active Directory Federation Services (AD FS), to validate the user’s password.
+### <a name="federated-authentication"></a>Federatieve verificatie
+Wanneer u deze verificatie methode kiest, wordt het verificatie proces door Azure AD naar een afzonderlijk vertrouwd verificatie systeem, zoals on-premises Active Directory Federation Services (AD FS), voor het valideren van het wacht woord van de gebruiker.
 
-The authentication system can provide additional advanced authentication requirements. Examples are smartcard-based authentication or third-party multifactor authentication. For more information, see [Deploying Active Directory Federation Services](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/windows-server-2012-r2-ad-fs-deployment-guide).
+Het verificatie systeem kan extra geavanceerde verificatie vereisten bieden. Voor beelden zijn verificatie op basis van een Smart Card of multi-factor Authentication van derden. Zie [deploying Active Directory Federation Services](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/windows-server-2012-r2-ad-fs-deployment-guide)(Engelstalig) voor meer informatie.
 
-The following section helps you decide which authentication method is right for you by using a decision tree. It helps you determine whether to deploy cloud or federated authentication for your Azure AD hybrid identity solution.
+In het volgende gedeelte kunt u bepalen welke verificatie methode het meest geschikt is voor u met een beslissings structuur. Hiermee kunt u bepalen of u Cloud of Federated Authentication wilt implementeren voor uw Azure AD hybride identiteits oplossing.
 
 ## <a name="decision-tree"></a>Beslissingsstructuur
 
-![Azure AD authentication decision tree](./media/choose-ad-authn/azure-ad-authn-image1.png)
+![Beslissings structuur voor Azure AD-verificatie](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
-Details on decision questions:
+Details over beslissings vragen:
 
-1. Azure AD can handle sign-in for users without relying on on-premises components to verify passwords.
-2. Azure AD can hand off user sign-in to a trusted authentication provider such as Microsoft’s AD FS.
-3. If you need to apply, user-level Active Directory security policies such as account expired, disabled account, password expired, account locked out, and sign-in hours on each user sign-in, Azure AD requires some on-premises components.
-4. Sign-in features not natively supported by Azure AD:
-   * Sign-in using smartcards or certificates.
-   * Sign-in using on-premises MFA Server.
-   * Sign-in using third party authentication solution.
-   * Multi-site on-premises authentication solution.
-5. Azure AD Identity Protection requires Password Hash Sync regardless of which sign-in method you choose, to provide the *Users with leaked credentials* report. Organizations can fail over to Password Hash Sync if their primary sign-in method fails and it was configured before the failure event.
-
-> [!NOTE]
-> Azure AD Identity Protection require [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) licenses.
-
-## <a name="detailed-considerations"></a>Detailed considerations
-
-### <a name="cloud-authentication-password-hash-synchronization"></a>Cloud authentication: Password hash synchronization
-
-* **Effort**. Password hash synchronization requires the least effort regarding deployment, maintenance, and infrastructure.  This level of effort typically applies to organizations that only need their users to sign in to Office 365, SaaS apps, and other Azure AD-based resources. When turned on, password hash synchronization is part of the Azure AD Connect sync process and runs every two minutes.
-
-* **User experience**. To improve users' sign-in experience, deploy seamless SSO with password hash synchronization. Seamless SSO eliminates unnecessary prompts when users are signed in.
-
-* **Advanced scenarios**. If organizations choose to, it's possible to use insights from identities with Azure AD Identity Protection reports with Azure AD Premium P2. An example is the leaked credentials report. Windows Hello for Business has [specific requirements when you use password hash synchronization](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) requires password hash synchronization to provision users with their corporate credentials in the managed domain.
-
-    Organizations that require multifactor authentication with password hash synchronization must use Azure AD multifactor authentication or [Conditional Access custom controls](../../active-directory/conditional-access/controls.md#custom-controls-preview). Those organizations can't use third-party or on-premises multifactor authentication methods that rely on federation.
+1. Azure AD kan aanmelden voor gebruikers afhandelen zonder afhankelijk te zijn van on-premises onderdelen om wacht woorden te controleren.
+2. Azure AD kan gebruikers aanmelding afleveren bij een vertrouwde verificatie provider, zoals de AD FS van micro soft.
+3. Als u wilt Toep assen op gebruikers niveau Active Directory beveiligings beleid, zoals verlopen accounts, uitgeschakelde accounts, wacht woorden verlopen, account vergrendeld en aanmeldings tijden voor elke aanmelding van de gebruiker, vereist Azure AD enkele on-premises onderdelen.
+4. Aanmeld functies die niet systeem eigen worden ondersteund door Azure AD:
+   * Meld u aan met Smart Cards of certificaten.
+   * Meld u aan met on-premises MFA-server.
+   * Meld u aan met verificatie oplossing van derden.
+   * Oplossing voor on-premises verificatie op meerdere locaties.
+5. Azure AD Identity Protection wacht woord-hash-synchronisatie vereist ongeacht de aanmeldings methode die u kiest, om het rapport *gebruikers met gelekte referenties* op te geven. Organisaties kunnen een failover uitvoeren naar een wachtwoord hash-synchronisatie als hun primaire aanmeldings methode mislukt en is geconfigureerd voor de fout gebeurtenis.
 
 > [!NOTE]
-> Azure AD Conditional Access require [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) licenses.
+> [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) -licenties Azure AD Identity Protection vereisen.
 
-* **Business continuity**. Using password hash synchronization with cloud authentication is highly available as a cloud service that scales to all Microsoft datacenters. To make sure password hash synchronization does not go down for extended periods, deploy a second Azure AD Connect server in staging mode in a standby configuration.
+## <a name="detailed-considerations"></a>Gedetailleerde overwegingen
 
-* **Considerations**. Currently, password hash synchronization doesn't immediately enforce changes in on-premises account states. In this situation, a user has access to cloud apps until the user account state is synchronized to Azure AD. Organizations might want to overcome this limitation by running a new synchronization cycle after administrators do bulk updates to on-premises user account states. An example is disabling accounts.
+### <a name="cloud-authentication-password-hash-synchronization"></a>Cloud authenticatie: wacht woord-hash-synchronisatie
 
-> [!NOTE]
-> The password expired and account locked-out states aren't currently synced to Azure AD with Azure AD Connect. When you change a user's password and set the *user must change password at next logon* flag, the password hash will not be synced to Azure AD with Azure AD Connect, until the user change their password.
+* **Moeite**. Voor de synchronisatie van wacht woord-hashes is de minimale inspanning vereist voor de implementatie, het onderhoud en de infra structuur.  Dit inspannings niveau is doorgaans van toepassing op organisaties die alleen hun gebruikers moeten aanmelden bij Office 365, SaaS-apps en andere resources op basis van Azure AD. Wanneer deze functie is ingeschakeld, wordt de synchronisatie van wacht woord-hashes onderdeel van het Azure AD Connect synchronisatie proces en wordt elke twee minuten uitgevoerd.
 
-Refer to [implementing password hash synchronization](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) for deployment steps.
+* **Gebruikers ervaring**. Als u de aanmeld procedure van gebruikers wilt verbeteren, implementeert u naadloze SSO met synchronisatie van wacht woord-hashes. Naadloze SSO elimineert overbodige vragen wanneer gebruikers zijn aangemeld.
 
-### <a name="cloud-authentication-pass-through-authentication"></a>Cloud authentication: Pass-through Authentication  
+* **Geavanceerde scenario's**. Als organisaties hiervoor kiezen, is het mogelijk om inzichten te gebruiken van identiteiten met Azure AD Identity Protection rapporten met Azure AD Premium P2. Een voor beeld is het rapport met gelekte referenties. Windows hello voor bedrijven heeft [specifieke vereisten voor het gebruik van wachtwoord-hash-synchronisatie](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). Voor [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) is wachtwoord hash-synchronisatie vereist om gebruikers in te richten met hun bedrijfs referenties in het beheerde domein.
 
-* **Effort**. For pass-through authentication, you need one or more (we recommend three) lightweight agents installed on existing servers. These agents must have access to your on-premises Active Directory Domain Services, including your on-premises AD domain controllers. They need outbound access to the Internet and access to your domain controllers. For this reason, it's not supported to deploy the agents in a perimeter network.
-
-    Pass-through Authentication requires unconstrained network access to domain controllers. All network traffic is encrypted and limited to authentication requests. For more information on this process, see the [security deep dive](../../active-directory/hybrid/how-to-connect-pta-security-deep-dive.md) on pass-through authentication.
-
-* **User experience**. To improve users' sign-in experience, deploy seamless SSO with Pass-through Authentication. Seamless SSO eliminates unnecessary prompts after users sign in.
-
-* **Advanced scenarios**. Pass-through Authentication enforces the on-premises account policy at the time of sign-in. For example, access is denied when an on-premises user’s account state is disabled, locked out, or [password expired](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) or falls outside the hours when the user is allowed to sign in.
-
-    Organizations that require multifactor authentication with pass-through authentication must use Azure Multi-Factor Authentication (MFA) or [Conditional Access custom controls](../../active-directory/conditional-access/controls.md#custom-controls-preview). Those organizations can't use a third-party or on-premises multifactor authentication method that relies on federation. Advanced features require that password hash synchronization is deployed whether or not you choose pass-through authentication. An example is the leaked credentials report of Identity Protection.
-
-* **Business continuity**. We recommend that you deploy two extra pass-through authentication agents. These extras are in addition to the first agent on the Azure AD Connect server. This additional deployment ensures high availability of authentication requests. When you have three agents deployed, one agent can still fail when another agent is down for maintenance.
-
-    There's another benefit to deploying password hash synchronization in addition to pass-through authentication. It acts as a backup authentication method when the primary authentication method is no longer available.
-
-* **Considerations**. You can use password hash synchronization as a backup authentication method for pass-through authentication, when the agents can't validate a user's credentials due to a significant on-premises failure. Fail over to password hash synchronization doesn't happen automatically and you must use Azure AD Connect to switch the sign-on method manually.
-
-    For other considerations on Pass-through Authentication, including Alternate ID support, see [frequently asked questions](../../active-directory/hybrid/how-to-connect-pta-faq.md).
-
-Refer to [implementing pass-through authentication](../../active-directory/hybrid/how-to-connect-pta.md) for deployment steps.
-
-### <a name="federated-authentication"></a>Federated authentication
-
-* **Effort**. A federated authentication system relies on an external trusted system to authenticate users. Some companies want to reuse their existing federated system investment with their Azure AD hybrid identity solution. The maintenance and management of the federated system falls outside the control of Azure AD. It's up to the organization by using the federated system to make sure it's deployed securely and can handle the authentication load.
-
-* **User experience**. The user experience of federated authentication depends on the implementation of the features, topology, and configuration of the federation farm. Some organizations need this flexibility to adapt and configure the access to the federation farm to suit their security requirements. For example, it's possible to configure internally connected users and devices to sign in users automatically, without prompting them for credentials. This configuration works because they already signed in to their devices. If necessary, some advanced security features make users' sign-in process more difficult.
-
-* **Advanced scenarios**. A federated authentication solution is usually required when customers have an authentication requirement that Azure AD doesn't support natively. See detailed information to help you [choose the right sign-in option](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Consider the following common requirements:
-
-  * Authentication that requires smartcards or certificates.
-  * On-premises MFA servers or third-party multifactor providers requiring a federated identity provider.
-  * Authentication by using third-party authentication solutions. See the [Azure AD federation compatibility list](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
-  * Sign in that requires an sAMAccountName, for example, DOMAIN\username, instead of a User Principal Name (UPN), for example, user@domain.com.
-
-* **Business continuity**. Federated systems typically require a load-balanced array of servers, known as a farm. This farm is configured in an internal network and perimeter network topology to ensure high availability for authentication requests.
-
-    Deploy password hash synchronization along with federated authentication as a backup authentication method when the primary authentication method is no longer available. An example is when the on-premises servers aren't available. Some large enterprise organizations require a federation solution to support multiple Internet ingress points configured with geo-DNS for low-latency authentication requests.
-
-* **Considerations**. Federated systems typically require a more significant investment in on-premises infrastructure. Most organizations choose this option if they already have an on-premises federation investment. And  if it's a strong business requirement to use a single-identity provider. Federation is more complex to operate and troubleshoot compared to cloud authentication solutions.
-
-For a nonroutable domain that can't be verified in Azure AD, you need extra configuration to implement user ID sign in. This requirement is known as Alternate login ID support. See [Configuring Alternate Login ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) for limitations and requirements. If you choose to use a third-party multi-factor authentication provider with federation, ensure the provider supports WS-Trust to allow devices to join Azure AD.
-
-Refer to [Deploying Federation Servers](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) for deployment steps.
+    Organisaties waarvoor multi-factor Authentication met wachtwoord hash-synchronisatie vereist is, moeten gebruikmaken van [aangepaste besturings elementen](../../active-directory/conditional-access/controls.md#custom-controls-preview)voor Azure AD multi-factor Authentication of voorwaardelijke toegang. Deze organisaties kunnen geen derden of on-premises multi-factor Authentication-methoden gebruiken die afhankelijk zijn van Federatie.
 
 > [!NOTE]
-> When you deploy your Azure AD hybrid identity solution, you must implement one of the supported topologies of Azure AD Connect. Learn more about supported and unsupported configurations at [Topologies for Azure AD Connect](../../active-directory/hybrid/plan-connect-topologies.md).
+> Voor voorwaardelijke toegang van Azure AD zijn [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) -licenties vereist.
 
-## <a name="architecture-diagrams"></a>Architecture diagrams
+* **Bedrijfs continuïteit**. Het gebruik van wacht woord-hash synchronisatie met Cloud authenticatie is Maxi maal beschikbaar als een Cloud service die wordt geschaald naar alle micro soft-data centers. Implementeer een tweede Azure AD Connect-server in de faserings modus in een stand-by configuratie om te controleren of de synchronisatie van wacht woord-hashes niet kan worden uitgevoerd voor langere Peri Oden.
 
-The following diagrams outline the high-level architecture components required for each authentication method you can use with your Azure AD hybrid identity solution. They provide an overview to help you compare the differences between the solutions.
+* **Overwegingen**. Op dit moment worden wijzigingen in de status van on-premises accounts niet onmiddellijk door synchronisatie van wacht woord-hashes afgedwongen. In deze situatie heeft een gebruiker toegang tot Cloud-apps totdat de status van het gebruikers account is gesynchroniseerd met Azure AD. Organisaties kunnen dit beperken door een nieuwe synchronisatie cyclus uit te voeren nadat beheerders bulksgewijs updates uitvoeren op de statussen van on-premises gebruikers accounts. Een voor beeld is het uitschakelen van accounts.
 
-* Simplicity of a password hash synchronization solution:
+> [!NOTE]
+> Het wacht woord is verlopen en de status van vergrendelde account vergrendelingen worden momenteel niet gesynchroniseerd met Azure AD met Azure AD Connect. Wanneer u het wacht woord van een gebruiker wijzigt en de *gebruiker moet wacht woord bij volgende aanmeldings vlag wijzigen* , wordt de wacht woord-hash niet gesynchroniseerd met Azure AD met Azure AD Connect totdat de gebruiker het wacht woord heeft gewijzigd.
 
-    ![Azure AD hybrid identity with Password hash synchronization](./media/choose-ad-authn/azure-ad-authn-image2.png)
+Raadpleeg de implementatie van [wacht woord-hash synchronisatie](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) voor implementaties tappen.
 
-* Agent requirements of pass-through authentication, using two agents for redundancy:
+### <a name="cloud-authentication-pass-through-authentication"></a>Cloud authenticatie: Pass Through-verificatie  
 
-    ![Azure AD hybrid identity with Pass-through Authentication](./media/choose-ad-authn/azure-ad-authn-image3.png)
+* **Moeite**. Voor Pass-Through-verificatie hebt u een of meer nodig (drie) lichte agents die zijn geïnstalleerd op bestaande servers. Deze agents moeten toegang hebben tot uw on-premises Active Directory Domain Services, met inbegrip van uw on-premises AD-domein controllers. Ze hebben uitgaande toegang tot internet nodig en toegang tot uw domein controllers. Daarom wordt het niet ondersteund voor het implementeren van de agents in een perimeter netwerk.
 
-* Components required for federation in your perimeter and internal network of your organization:
+    Pass-Through-verificatie vereist onbeperkte netwerk toegang tot domein controllers. Al het netwerk verkeer wordt versleuteld en beperkt tot verificatie aanvragen. Zie voor meer informatie over dit proces de [beveiligings grondige](../../active-directory/hybrid/how-to-connect-pta-security-deep-dive.md) gang bij Pass-Through-verificatie.
 
-    ![Azure AD hybrid identity with federated authentication](./media/choose-ad-authn/azure-ad-authn-image4.png)
+* **Gebruikers ervaring**. Als u de aanmeld procedure van gebruikers wilt verbeteren, implementeert u naadloze SSO met Pass-Through-verificatie. Naadloze SSO elimineert overbodige vragen nadat gebruikers zich hebben aangemeld.
 
-## <a name="comparing-methods"></a>Comparing methods
+* **Geavanceerde scenario's**. Pass-Through-verificatie dwingt het on-premises account beleid af op het moment dat u zich aanmeldt. Bijvoorbeeld: de toegang wordt geweigerd wanneer de account status van een on-premises gebruiker is uitgeschakeld, vergrendeld of het [wacht woord is verlopen](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) of buiten het uur valt waarop de gebruiker zich mag aanmelden.
 
-|Consideration|Password hash synchronization + Seamless SSO|Pass-through Authentication + Seamless SSO|Federatie met AD FS|
+    Organisaties waarvoor multi-factor Authentication met Pass Through-verificatie is vereist, moeten gebruikmaken van Azure Multi-Factor Authentication (MFA) of [aangepaste besturings elementen voor voorwaardelijke toegang](../../active-directory/conditional-access/controls.md#custom-controls-preview). Deze organisaties kunnen een multi-factor-verificatie methode van derden of een lokale meervoudige authenticatie gebruiken die afhankelijk is van Federatie. Geavanceerde functies vereisen dat wachtwoord-hash-synchronisatie wordt geïmplementeerd, ongeacht of u Pass-Through-verificatie kiest. Een voor beeld is het rapport met gelekte referenties van identiteits beveiliging.
+
+* **Bedrijfs continuïteit**. We raden u aan om twee extra Pass-Through-verificatie agenten te implementeren. Deze extra's bevinden zich in aanvulling op de eerste agent op de Azure AD Connect-server. Deze extra implementatie zorgt voor een hoge Beschik baarheid van verificatie aanvragen. Wanneer er drie agents zijn geïmplementeerd, kan een agent nog steeds mislukken wanneer een andere agent niet beschikbaar is voor onderhoud.
+
+    Er is nog een voor deel voor het implementeren van wachtwoord hash-synchronisatie naast Pass-Through-verificatie. Het fungeert als een methode voor het maken van een back-upverificatie wanneer de primaire authenticatie methode niet meer beschikbaar is.
+
+* **Overwegingen**. U kunt wachtwoord hash-synchronisatie gebruiken als een back-upauthenticatie methode voor Pass-Through-verificatie, wanneer de agents de referenties van een gebruiker niet kunnen valideren als gevolg van een belang rijke on-premises fout. Failover naar wachtwoord-hash-synchronisatie vindt niet automatisch plaats en u moet Azure AD Connect gebruiken om de aanmeldings methode hand matig te wijzigen.
+
+    Zie [Veelgestelde vragen](../../active-directory/hybrid/how-to-connect-pta-faq.md)voor andere overwegingen met betrekking tot Pass-Through-verificatie, met inbegrip van alternatieve ID-ondersteuning.
+
+Raadpleeg [implement-through-verificatie implementeren](../../active-directory/hybrid/how-to-connect-pta.md) voor implementaties tappen.
+
+### <a name="federated-authentication"></a>Federatieve verificatie
+
+* **Moeite**. Een Federated Authentication systeem is afhankelijk van een extern vertrouwd systeem om gebruikers te verifiëren. Sommige bedrijven willen hun bestaande federatieve systeem investeringen opnieuw gebruiken met hun Azure AD hybride identiteits oplossing. Het onderhoud en beheer van het federatieve systeem valt buiten het beheer van Azure AD. Het is aan de organisatie door gebruik te maken van het federatieve systeem om ervoor te zorgen dat het veilig wordt geïmplementeerd en de verificatie belasting kan afhandelen.
+
+* **Gebruikers ervaring**. De gebruikers ervaring van Federated Authentication is afhankelijk van de implementatie van de functies, topologie en configuratie van de Federatie farm. Sommige organisaties hebben deze flexibiliteit nodig om de toegang tot de Federatie Farm aan te passen en te configureren op basis van hun beveiligings vereisten. Het is bijvoorbeeld mogelijk om intern verbonden gebruikers en apparaten te configureren voor het automatisch aanmelden van gebruikers, zonder dat ze om referenties wordt gevraagd. Deze configuratie werkt omdat ze al zijn aangemeld op hun apparaten. Als dat nodig is, maken sommige geavanceerde beveiligings functies het aanmeldings proces van gebruikers moeilijker.
+
+* **Geavanceerde scenario's**. Een Federated Authentication oplossing is doorgaans vereist wanneer klanten een verificatie vereiste hebben die Azure AD niet systeem eigen ondersteunt. Bekijk de gedetailleerde informatie die u kan helpen bij [het kiezen van de juiste aanmeldings optie](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Houd rekening met de volgende algemene vereisten:
+
+  * Verificatie waarvoor Smart Cards of certificaten zijn vereist.
+  * On-premises MFA-servers of providers van derden waarvoor een federatieve id-provider is vereist.
+  * Verificatie met behulp van verificatie oplossingen van derden. Zie de [Azure AD Federation-compatibiliteits lijst](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
+  * Meld u aan waarvoor een sAMAccountName vereist is, bijvoorbeeld Domein\gebruikersnaam, in plaats van een UPN (User Principal Name), bijvoorbeeld user@domain.com.
+
+* **Bedrijfs continuïteit**. Federatieve systemen vereisen doorgaans een matrix met gelijke taak verdeling van servers, ook wel een farm genoemd. Deze farm is geconfigureerd in een interne netwerk-en perimeter netwerk topologie om te zorgen voor hoge Beschik baarheid van verificatie aanvragen.
+
+    Implementeer de synchronisatie van wacht woord-hashen samen met Federated Authentication als een methode voor het maken van een back-upverificatie wanneer de primaire verificatie methode niet meer beschikbaar is. Een voor beeld hiervan is wanneer de on-premises servers niet beschikbaar zijn. Voor sommige grote ondernemingen is een Federatie oplossing vereist voor ondersteuning van meerdere Internet toegangs punten die zijn geconfigureerd met geo-DNS voor verificatie aanvragen met een lage latentie.
+
+* **Overwegingen**. Federatieve systemen vereisen doorgaans een aanzienlijke investering in on-premises infra structuur. De meeste organisaties kiezen deze optie als ze al een on-premises Federatie-investering hebben. En als het een sterke zakelijke vereiste is om een provider met één identiteit te gebruiken. De Federatie is complexer om te worden gebruikt en problemen op te lossen in vergelijking met oplossingen voor Cloud authenticatie.
+
+Voor een nonroutable-domein dat niet kan worden geverifieerd in azure AD, hebt u extra configuratie nodig om gebruikers-ID-aanmelding te implementeren. Deze vereiste wordt ook wel alternatieve aanmeldings-ID-ondersteuning genoemd. Zie [alternatieve aanmeldings-id configureren](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) voor beperkingen en vereisten. Als u ervoor kiest een multi-factor Authentication-provider met Federatie van derden te gebruiken, moet u ervoor zorgen dat de provider WS-Trust ondersteunt zodat apparaten kunnen deel nemen aan Azure AD.
+
+Raadpleeg [Federatie servers implementeren](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) voor implementaties tappen.
+
+> [!NOTE]
+> Wanneer u uw Azure AD hybride identiteits oplossing implementeert, moet u een van de ondersteunde topologieën van Azure AD Connect implementeren. Meer informatie over ondersteunde en niet-ondersteunde configuraties in [topologieën voor Azure AD Connect](../../active-directory/hybrid/plan-connect-topologies.md).
+
+## <a name="architecture-diagrams"></a>Architectuurdiagrammen
+
+In de volgende diagrammen vindt u een overzicht van de architectuur onderdelen op hoog niveau die zijn vereist voor elke verificatie methode die u kunt gebruiken met uw Azure AD hybride identiteits oplossing. Ze bieden een overzicht waarmee u de verschillen tussen de oplossingen kunt vergelijken.
+
+* Eenvoud van een wachtwoord hash-synchronisatie oplossing:
+
+    ![Azure AD hybride identiteit met wachtwoord-hash-synchronisatie](./media/choose-ad-authn/azure-ad-authn-image2.png)
+
+* Agent vereisten voor Pass-Through-verificatie met twee agents voor redundantie:
+
+    ![Azure AD hybride identiteit met Pass-Through-verificatie](./media/choose-ad-authn/azure-ad-authn-image3.png)
+
+* Onderdelen die vereist zijn voor de Federatie in uw perimeter netwerk en interne netwerken van uw organisatie:
+
+    ![Azure AD Hybrid Identity met Federated Authentication](./media/choose-ad-authn/azure-ad-authn-image4.png)
+
+## <a name="comparing-methods"></a>Methoden vergelijken
+
+|Beschouwing|Wachtwoord hash synchronisatie + naadloze SSO|Pass-Through-verificatie + naadloze SSO|Federatie met AD FS|
 |:-----|:-----|:-----|:-----|
-|Where does authentication happen?|In de cloud|In the cloud after a secure password verification exchange with the on-premises authentication agent|On-premises|
-|What are the on-premises server requirements beyond the provisioning system: Azure AD Connect?|Geen|One server for each additional authentication agent|Two or more AD FS servers<br><br>Two or more WAP servers in the perimeter/DMZ network|
-|What are the requirements for on-premises Internet and networking beyond the provisioning system?|Geen|[Outbound Internet access](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) from the servers running authentication agents|[Inbound Internet access](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) to WAP servers in the perimeter<br><br>Inbound network access to AD FS servers from WAP servers in the perimeter<br><br>Taakverdeling voor netwerken|
-|Is there an SSL certificate requirement?|Nee|Nee|Ja|
-|Is there a health monitoring solution?|Niet vereist|Agent status provided by [Azure Active Directory admin center](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health (Engelstalig)](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
-|Do users get single sign-on to cloud resources from domain-joined devices within the company network?|Yes with [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Yes with [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Ja|
-|What sign-in types are supported?|UserPrincipalName + password<br><br>Windows-Integrated Authentication by using [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternate login ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + password<br><br>Windows-Integrated Authentication by using [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternate login ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + password<br><br>sAMAccountName + password<br><br>Windows-Integrated Authentication<br><br>[Certificate and smart card authentication](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternate login ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
-|Is Windows Hello for Business supported?|[Key trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Key trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Requires Windows Server 2016 Domain functional level*|[Key trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Certificate trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
-|What are the multifactor authentication options?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Third-party MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|
-|What user account states are supported?|Disabled accounts<br>(up to 30-minute delay)|Disabled accounts<br><br>Account locked out<br><br>Account expired<br><br>Password expired<br><br>Sign-in hours|Disabled accounts<br><br>Account locked out<br><br>Account expired<br><br>Password expired<br><br>Sign-in hours|
-|What are the Conditional Access options?|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)<br><br>[AD FS claim rules](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|Is blocking legacy protocols supported?|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
-|Can you customize the logo, image, and description on the sign-in pages?|[Yes, with Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Yes, with Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja](../../active-directory/hybrid/how-to-connect-fed-management.md)|
-|What advanced scenarios are supported?|[Smart password lockout](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Leaked credentials reports, with Azure AD Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[Smart password lockout](../../active-directory/authentication/howto-password-smart-lockout.md)|Multisite low-latency authentication system<br><br>[AD FS extranet lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integration with third-party identity systems](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
+|Waar gebeurt de verificatie?|In de cloud|In de Cloud nadat een beveiligd wachtwoord verificatie is uitgewisseld met de on-premises verificatie agent|On-premises|
+|Wat zijn de on-premises Server vereisten buiten het inrichtings systeem: Azure AD Connect?|None|Eén server voor elke aanvullende verificatie agent|Twee of meer AD FS servers<br><br>Twee of meer WAP-servers in het perimeter/DMZ-netwerk|
+|Wat zijn de vereisten voor on-premises Internet en netwerken buiten het inrichtings systeem?|None|[Uitgaande internet toegang](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) vanaf de servers met verificatie agenten|[Inkomende Internet toegang](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) tot WAP-servers in het perimeter netwerk<br><br>Inkomende netwerk toegang tot AD FS servers van WAP-servers in de perimeter<br><br>Taakverdeling voor netwerken|
+|Is er een vereiste voor een SSL-certificaat?|Nee|Nee|Ja|
+|Is er een oplossing voor status controle?|Niet vereist|Agent status die is verschaft door [Azure Active Directory-beheer centrum](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health (Engelstalig)](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
+|Krijgen gebruikers eenmalige aanmelding voor cloud resources van apparaten die lid zijn van een domein in het bedrijfs netwerk?|Ja, met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Ja, met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Ja|
+|Welke typen aanmelding worden ondersteund?|UserPrincipalName + wacht woord<br><br>Geïntegreerde Windows-verificatie met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternatieve aanmeldings-ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + wacht woord<br><br>Geïntegreerde Windows-verificatie met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternatieve aanmeldings-ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + wacht woord<br><br>sAMAccountName + wacht woord<br><br>Geïntegreerde Windows-verificatie<br><br>[Verificatie van certificaten en Smart Cards](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternatieve aanmeldings-ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|Wordt Windows hello voor bedrijven ondersteund?|[Sleutel vertrouwens model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Sleutel vertrouwens model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Vereist een Windows Server 2016-domein functionaliteits niveau*|[Sleutel vertrouwens model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Certificaat vertrouwens model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
+|Wat zijn de opties voor multi-factor Authentication?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA-server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[MFA van derden](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|
+|Welke status van gebruikers accounts worden ondersteund?|Uitgeschakelde accounts<br>(Maxi maal 30 minuten)|Uitgeschakelde accounts<br><br>Account vergrendeld<br><br>Het account is verlopen<br><br>Wacht woord is verlopen<br><br>Aanmeldings tijden|Uitgeschakelde accounts<br><br>Account vergrendeld<br><br>Het account is verlopen<br><br>Wacht woord is verlopen<br><br>Aanmeldings tijden|
+|Wat zijn de opties voor voorwaardelijke toegang?|[Voorwaardelijke toegang tot Azure AD, met Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Voorwaardelijke toegang tot Azure AD, met Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Voorwaardelijke toegang tot Azure AD, met Azure AD Premium](../../active-directory/conditional-access/overview.md)<br><br>[AD FS claim regels](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
+|Worden verouderde protocollen geblokkeerd?|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Kunt u het logo, de afbeelding en de beschrijving aanpassen op de aanmeldings pagina's?|[Ja, met Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja, met Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja](../../active-directory/hybrid/how-to-connect-fed-management.md)|
+|Welke geavanceerde scenario's worden ondersteund?|[Slim wacht woord vergren delen](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Rapporten met gelekte referenties, met Azure AD Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[Slim wacht woord vergren delen](../../active-directory/authentication/howto-password-smart-lockout.md)|Verificatie systeem met lage latentie voor meerdere locaties<br><br>[Vergren deling AD FS extranet](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integratie met identiteits systemen van derden](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
 > [!NOTE]
-> Custom controls in Azure AD Conditional Access does not currently support device registration.
+> Aangepaste besturings elementen in azure AD voorwaardelijke toegang biedt momenteel geen ondersteuning voor apparaatregistratie.
 
 ## <a name="recommendations"></a>Aanbevelingen
-Your identity system ensures your users' access to cloud apps and the line-of-business apps that you migrate and make available in the cloud. To keep authorized users productive and bad actors out of your organization’s sensitive data, authentication controls access to apps.
+Uw identiteits systeem zorgt ervoor dat gebruikers toegang hebben tot Cloud-apps en de LOB-apps die u migreert en beschikbaar maakt in de Cloud. Verificatie beheert de toegang tot apps om gemachtigde gebruikers productief en slecht actors van de gevoelige gegevens van uw organisatie te laten beheren.
 
-Use or enable password hash synchronization for whichever authentication method you choose, for the following reasons:
+Het gebruik of inschakelen van hash-synchronisatie van wacht woord voor de verificatie methode die u kiest, om de volgende redenen:
 
-1. **High availability and disaster recovery**. Pass-through Authentication and federation rely on on-premises infrastructure. For pass-through authentication, the on-premises footprint includes the server hardware and networking the Pass-through Authentication agents require. For federation, the on-premises footprint is even larger. It requires servers in your perimeter network to proxy authentication requests and the internal federation servers.
+1. **Hoge Beschik baarheid en herstel na nood gevallen**. Pass-Through-verificatie en Federatie zijn afhankelijk van on-premises infra structuur. Voor Pass-Through-verificatie omvat de on-premises footprint de serverhardware en netwerken die de Pass-Through-verificatie agenten vereisen. De on-premises footprint voor Federatie is zelfs groter. Hiervoor zijn servers in uw perimeter netwerk vereist voor het proxy verificatie aanvragen en de interne Federatie servers.
 
-    To avoid single points of failures, deploy redundant servers. Then authentication requests will always be serviced if any component fails. Both pass-through authentication and federation also rely on domain controllers to respond to authentication requests, which can also fail. Many of these components need maintenance to stay healthy. Outages are more likely when maintenance isn't planned and implemented correctly. Avoid outages by using password hash synchronization because the Microsoft Azure AD cloud authentication service scales globally and is always available.
+    Implementeer redundante servers om afzonderlijke punten van storingen te voor komen. Verificatie aanvragen worden dan altijd verwerkt als een onderdeel mislukt. Zowel Pass-Through-verificatie als Federatie is ook afhankelijk van domein controllers om te reageren op verificatie aanvragen. Dit kan ook mislukken. Veel van deze onderdelen hebben onderhoud nodig om in de juiste staat te blijven. Storingen zijn waarschijnlijker wanneer onderhoud niet wordt gepland en correct wordt geïmplementeerd. Vermijd storingen door wachtwoord hash-synchronisatie te gebruiken, omdat de Microsoft Azure AD Cloud Authentication Service wereld wijd wordt geschaald en altijd beschikbaar is.
 
-2. **On-premises outage survival**.  The consequences of an on-premises outage due to a cyber-attack or disaster can be substantial, ranging from reputational brand damage to a paralyzed organization unable to deal with the attack. Recently, many organizations were victims of malware attacks, including targeted ransomware, that caused their on-premises servers to go down. When Microsoft helps customers deal with these kinds of attacks, it sees two categories of organizations:
+2. **Overleving van on-premises storingen**.  De gevolgen van een on-premises storing als gevolg van een cyber aanval of nood geval kunnen aanzienlijk zijn, variërend van reputatie-brand beschadiging aan een Paralyzed-organisatie die niet kan omgaan met de aanval. Onlangs waren veel organisaties slacht offer van malware-aanvallen, waaronder gericht op Ransomware, waardoor hun on-premises servers uitvallen. Wanneer micro soft klanten helpt bij het oplossen van dergelijke aanvallen, ziet hij twee categorieën organisaties:
 
-   * Organizations that previously turned on password hash synchronization changed their authentication method to use password hash synchronization. They were back online in a matter of hours. By using access to email via Office 365, they worked to resolve issues and access other cloud-based workloads.
+   * Organisaties die eerder de wachtwoord hash-synchronisatie hebben ingeschakeld, hebben de verificatie methode voor het gebruik van wacht woord-hash synchronisatie gewijzigd. Ze zijn binnen een paar uur weer online. Door toegang tot e-mail via Office 365 te gebruiken, hebben ze gewerkt om problemen op te lossen en toegang te krijgen tot andere cloud-gebaseerde workloads.
 
-   * Organizations that didn’t previously enable password hash synchronization had to resort to untrusted external consumer email systems for communications to resolve issues. In those cases, it took them weeks to restore their on-premises identity infrastructure, before users were able to sign in to cloud-based apps again.
+   * Organisaties waarvoor niet eerder wachtwoord hash-synchronisatie is ingeschakeld, moesten een niet-vertrouwde externe e-mail systeem voor consumenten gebruiken voor communicatie om problemen op te lossen. In dergelijke gevallen hebben ze weken nodig om hun on-premises identiteits infrastructuur te herstellen voordat gebruikers zich weer kunnen aanmelden bij apps in de Cloud.
 
-3. **Identity protection**. One of the best ways to protect users in the cloud is Azure AD Identity Protection with Azure AD Premium P2. Microsoft continually scans the Internet for user and password lists that bad actors sell and make available on the dark web. Azure AD can use this information to verify if any of the usernames and passwords in your organization are compromised. So it's critical to enable password hash synchronization no matter what authentication method you use, whether that's federated or pass-through authentication. Leaked credentials are presented as a report. Use this information to block or force users to change their passwords when they try to sign in with leaked passwords.
+3. **Identiteits beveiliging**. Een van de beste manieren om gebruikers in de cloud te beveiligen, is Azure AD Identity Protection met Azure AD Premium P2. Micro soft scant voortdurend het Internet op gebruikers-en wachtwoord lijsten dat onjuiste actoren verkopen en beschikbaar maken op het donkere web. Azure AD kan deze informatie gebruiken om te controleren of een van de gebruikers namen en wacht woorden in uw organisatie is aangetast. Het is dus belang rijk om wachtwoord hash-synchronisatie in te scha kelen, ongeacht de verificatie methode die u gebruikt, of dat nu federatief of Pass-Through-verificatie is. Gelekte referenties worden weer gegeven als een rapport. Gebruik deze informatie om gebruikers te blok keren of te dwingen hun wacht woord te wijzigen wanneer ze zich proberen aan te melden met gelekte wacht woorden.
 
 ## <a name="conclusion"></a>Conclusie
 
-This article outlines various authentication options that organizations can configure and deploy to support access to cloud apps. To meet various business, security, and technical requirements, organizations can choose between password hash synchronization, Pass-through Authentication, and federation.
+In dit artikel vindt u een overzicht van verschillende verificatie opties die organisaties kunnen configureren en implementeren voor de ondersteuning van toegang tot Cloud-apps. Om te voldoen aan verschillende bedrijfs-, beveiligings-en technische vereisten, kunnen organisaties kiezen tussen wacht woord-hash synchronisatie, Pass Through-verificatie en Federatie.
 
-Consider each authentication method. Does the effort to deploy the solution, and the user's experience of the sign-in process, address your business requirements? Evaluate whether your organization needs the advanced scenarios and business continuity features of each authentication method. Finally, evaluate the considerations of each authentication method. Do any of them prevent you from implementing your choice?
+Overweeg elke verificatie methode. Is het de moeite om de oplossing te implementeren en de gebruikers ervaring van het aanmeldings proces op te lossen, uw bedrijfs vereisten aan te pakken? Evalueer of uw organisatie de geavanceerde scenario's en de functies van de bedrijfs continuïteit van elke verificatie methode nodig heeft. Evalueer ten slotte de overwegingen van elke verificatie methode. Kunt u een van deze opties gebruiken om uw keuze te implementeren?
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In today’s world, threats are present 24 hours a day and come from everywhere. Implement the correct authentication method, and it will mitigate your security risks and protect your identities.
+In de huidige wereld zijn bedreigingen 24 uur per dag aanwezig en zijn ze overal verkrijgbaar. Implementeer de juiste verificatie methode en zorgt ervoor dat uw beveiligings Risico's worden verholpen en uw identiteiten worden beschermd.
 
-[Get started](../../active-directory/fundamentals/get-started-azure-ad.md) with Azure AD and deploy the right authentication solution for your organization.
+[Ga](../../active-directory/fundamentals/get-started-azure-ad.md) aan de slag met Azure AD en implementeer de juiste verificatie oplossing voor uw organisatie.
 
-If you're thinking about migrating from federated to cloud authentication, learn more about [changing the sign-in method](../../active-directory/hybrid/plan-connect-user-signin.md). To help you plan and implement the migration, use [these project deployment plans](https://aka.ms/deploymentplans) or consider using the new [Staged Rollout](../../active-directory/hybrid/how-to-connect-staged-rollout.md) feature to migrate federated users to using cloud authentication in a staged approach.
+Als u overweegt om te migreren van federatieve naar Cloud authenticatie, lees dan meer informatie over [het wijzigen van de aanmeldings methode](../../active-directory/hybrid/plan-connect-user-signin.md). Als hulp bij het plannen en implementeren van de migratie, gebruikt u [Deze implementatie plannen](https://aka.ms/deploymentplans) van het project of overweegt u de nieuwe functie voor [gefaseerde](../../active-directory/hybrid/how-to-connect-staged-rollout.md) implementatie te gebruiken voor het migreren van federatieve gebruikers naar het gebruik van Cloud-verificatie in een gefaseerde benadering.

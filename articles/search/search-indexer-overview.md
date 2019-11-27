@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09a1b8e54726accf705515bf077f6a599f0f9b78
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74266907"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534533"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexeer functies in azure Cognitive Search
 
@@ -69,7 +69,7 @@ Een indexeerfunctie automatiseert bepaalde taken met betrekking tot de opname va
 > Hoewel indexeerfuncties een index niet voor u kunnen genereren, kan de wizard **Gegevens importeren** in de portal helpen. In de meeste gevallen kan de wizard een indexschema afleiden uit bestaande metagegevens in de bron, met een voorlopig indexschema dat u kunt bewerken terwijl de wizard actief is. Als de index eenmaal is aangemaakt op de service, blijven verdere bewerkingen in de portal meestal beperkt tot het toevoegen van nieuwe velden. Overweeg de wizard voor het maken, maar niet voor het herzien van een index. Doorloop het [Portaloverzicht](search-get-started-portal.md) om aan de slag te gaan.
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>Stap 3: de indexeerfunctie maken en plannen
-De definitie van de Indexeer functie is een constructie waarmee alle elementen worden gecombineerd die zijn gerelateerd aan gegevens opname. De vereiste elementen bevatten een gegevens bron en index. Optionele elementen bevatten een schema-en veld toewijzingen. Veld toewijzing is alleen optioneel als bron velden en index velden duidelijk overeenkomen. Een indexeerfunctie kan verwijzen naar een gegevensbron van een andere service, zolang die gegevensbron maar uit hetzelfde abonnement komt. Zie [Indexeer functie maken (Azure Cognitive Search rest API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)voor meer informatie over het structureren van een Indexeer functie.
+De definitie van de Indexeer functie is een constructie waarmee alle elementen worden gecombineerd die zijn gerelateerd aan gegevens opname. De vereiste elementen bevatten een gegevens bron en index. Optionele elementen bevatten een schema-en veld toewijzingen. Veld toewijzing is alleen optioneel als bron velden en index velden duidelijk overeenkomen. Zie [Indexeer functie maken (Azure Cognitive Search rest API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)voor meer informatie over het structureren van een Indexeer functie.
 
 <a id="RunIndexer"></a>
 

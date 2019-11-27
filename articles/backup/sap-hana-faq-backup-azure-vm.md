@@ -14,7 +14,7 @@ ms.locfileid: "74287838"
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van SAP HANA-data bases via de Azure Backup-Service
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Back-up
 
 ### <a name="how-many-full-backups-are-supported-per-day"></a>Hoeveel volledige back-ups worden per dag ondersteund?
 

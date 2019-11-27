@@ -76,7 +76,7 @@ auto configuration = cloudSession_->Configuration();
 configuration->AccountKey(R"(MyAccountKey)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -144,7 +144,7 @@ auto configuration = cloudSession_->Configuration();
 configuration->AuthenticationToken(R"(MyAuthenticationToken)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -235,7 +235,7 @@ auto configuration = cloudSession_->Configuration();
 configuration->AccessToken(R"(MyAccessToken)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -244,7 +244,7 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 ---
 
-## <a name="role-based-access-control"></a>Toegangsbeheer op basis van rollen
+## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
 Om het niveau van toegang te beheren dat wordt verleend aan toepassingen, services of Azure AD-gebruikers van uw service, zijn de volgende rollen gemaakt zodat u deze kunt toewijzen aan uw Azure Spatial-ankers-accounts:
 

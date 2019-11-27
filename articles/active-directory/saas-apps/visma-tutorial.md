@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory single sign-on (SSO) integration with Visma | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Visma.
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Visma | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Visma.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,65 +23,65 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485583"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visma"></a>Tutorial: Azure Active Directory single sign-on (SSO) integration with Visma
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visma"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Visma
 
-In this tutorial, you'll learn how to integrate Visma with Azure Active Directory (Azure AD). When you integrate Visma with Azure AD, you can:
+In deze zelf studie leert u hoe u Visma integreert met Azure Active Directory (Azure AD). Wanneer u Visma integreert met Azure AD, kunt u het volgende doen:
 
-* Control in Azure AD who has access to Visma.
-* Enable your users to be automatically signed-in to Visma with their Azure AD accounts.
-* Manage your accounts in one central location - the Azure portal.
+* Controle in azure AD die toegang heeft tot Visma.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Visma met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-To get started, you need the following items:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
-* Visma single sign-on (SSO) enabled subscription.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Visma-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In this tutorial, you configure and test Azure AD SSO in a test environment.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Visma supports **SP and IDP** initiated SSO
-* Visma supports **Just In Time** user provisioning
+* Visma ondersteunt SSO die door **SP en IDP** is geïnitieerd
+* Visma ondersteunt **just-in-time** -gebruikers inrichting
 
-## <a name="adding-visma-from-the-gallery"></a>Adding Visma from the gallery
+## <a name="adding-visma-from-the-gallery"></a>Visma toevoegen uit de galerie
 
-To configure the integration of Visma into Azure AD, you need to add Visma from the gallery to your list of managed SaaS apps.
+Als u de integratie van Visma in azure AD wilt configureren, moet u Visma uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. On the left navigation pane, select the **Azure Active Directory** service.
-1. Navigate to **Enterprise Applications** and then select **All Applications**.
-1. To add new application, select **New application**.
-1. In the **Add from the gallery** section, type **Visma** in the search box.
-1. Select **Visma** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **Visma** in het zoekvak.
+1. Selecteer **Visma** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-visma"></a>Configure and test Azure AD single sign-on for Visma
+## <a name="configure-and-test-azure-ad-single-sign-on-for-visma"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Visma
 
-Configure and test Azure AD SSO with Visma using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Visma.
+Azure AD SSO met Visma configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Visma.
 
-To configure and test Azure AD SSO with Visma, complete the following building blocks:
+Als u Azure AD SSO wilt configureren en testen met Visma, voltooit u de volgende bouw stenen:
 
-1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
-    * **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
-    * **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
-1. **[Configure Visma SSO](#configure-visma-sso)** - to configure the single sign-on settings on application side.
-    * **[Create Visma test user](#create-visma-test-user)** - to have a counterpart of B.Simon in Visma that is linked to the Azure AD representation of user.
-1. **[Test SSO](#test-sso)** - to verify whether the configuration works.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[VISMA SSO configureren](#configure-visma-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * **[Maak een Visma-test gebruiker](#create-visma-test-user)** -om een equivalent van B. Simon in Visma te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-Follow these steps to enable Azure AD SSO in the Azure portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Visma** application integration page, find the **Manage** section and select **single sign-on**.
-1. On the **Select a single sign-on method** page, select **SAML**.
-1. On the **Set up single sign-on with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **Visma** de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. On the **Basic SAML Configuration** section, if you wish to configure the application in **IDP** initiated mode, enter the values for the following fields:
+1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.my.connect.visma.com`
 
@@ -92,57 +92,57 @@ Follow these steps to enable Azure AD SSO in the Azure portal.
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.my.connect.visma.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Contact [Visma Client support team](https://www.visma.com/contact) to get these values. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team van Visma-clients](https://www.visma.com/contact) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. On the **Set up single sign-on with SAML** page, In the **SAML Signing Certificate** section, click copy button to copy **App Federation Metadata Url** and save it on your computer.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In this section, you'll create a test user in the Azure portal called B.Simon.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. In the **User** properties, follow these steps:
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. In the **User name** field, enter the username@companydomain.extension. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Visma.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Visma.
 
-1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
-1. In the applications list, select **Visma**.
-1. In the app's overview page, find the **Manage** section and select **Users and groups**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **Visma**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![The Add User link](common/add-assign-user.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
-1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-visma-sso"></a>Configure Visma SSO
+## <a name="configure-visma-sso"></a>Visma SSO configureren
 
-To configure single sign-on on **Visma** side, you need to send the **App Federation Metadata Url** to [Visma support team](https://www.visma.com/contact). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **Visma** , moet u de URL voor de **federatieve meta gegevens** van de app verzenden naar [Visma ondersteunings team](https://www.visma.com/contact). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-visma-test-user"></a>Create Visma test user
+### <a name="create-visma-test-user"></a>Visma-test gebruiker maken
 
-In this section, a user called B.Simon is created in Visma. Visma supports just-in-time user provisioning, which is enabled by default. Er is geen actie-item voor u in deze sectie. If a user doesn't already exist in Visma, a new one is created after authentication.
+In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in Visma. Visma biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Visma, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>SSO testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-When you click the Visma tile in the Access Panel, you should be automatically signed in to the Visma for which you set up SSO. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Visma in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Visma waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
@@ -150,4 +150,4 @@ When you click the Visma tile in the Access Panel, you should be automatically s
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Try Visma with Azure AD](https://aad.portal.azure.com/)
+- [Probeer Visma met Azure AD](https://aad.portal.azure.com/)

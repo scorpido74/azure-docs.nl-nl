@@ -110,7 +110,7 @@ In deze zelfstudie leert u het volgende:
 
     ![Quickstart over lokaal opstarten functies](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+5. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 6. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutel bij:
 

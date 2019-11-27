@@ -1,7 +1,7 @@
 ---
-title: Migrate to an Azure authoring resource
+title: Migreren naar een Azure-ontwerp bron
 titleSuffix: Azure Cognitive Services
-description: Migrate to an Azure authoring resource.
+description: Migreren naar een Azure-ontwerp bron.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,38 +18,38 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74221632"
 ---
-# <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Steps to migrate to the Azure authoring resource
+# <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Stappen voor het migreren naar de Azure-ontwerp bron
 
-From the Language Understanding (LUIS) portal, migrate all the apps you own to use the Azure authoring resource.
+Migreer vanuit de Language Understanding-Portal (LUIS) alle apps die u hebt aangeschaft voor het gebruik van de Azure-ontwerp bron.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Optionally**, backup the apps from the LUIS portal's apps list by exporting each app or use the export [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40).
-* **Optionally**, save each app's collaborator's list. All collaborators can be sent an email as part of the migration process.
-* **Required**, you need to have an [Azure subscription](https://azure.microsoft.com/free/). A part of the subscription process does require billing information. However, you can use Free (F0) pricing tiers when you use LUIS. You may eventually find you need a paid tier, as your usage increases. 
+* U **kunt ook**een back-up maken van de apps uit de lijst met apps van de Luis-portal door elke app te exporteren of de export- [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)te gebruiken.
+* U **kunt desgewenst**de collaborator's-lijst van elke app opslaan. Alle deel nemers kunnen een e-mail verzenden als onderdeel van het migratie proces.
+* **Vereist**, u moet een Azure- [abonnement](https://azure.microsoft.com/free/)hebben. Voor een deel van het abonnements proces zijn facturerings gegevens vereist. U kunt echter gratis (F0) prijs categorieën gebruiken wanneer u LUIS gebruikt. Mogelijk hebt u uiteindelijk een betaalde laag nodig, omdat uw gebruik toeneemt. 
 
-If you do not have an Azure subscription, [sign up](https://azure.microsoft.com/free/). 
+Als u geen Azure-abonnement hebt, [meldt u zich](https://azure.microsoft.com/free/)aan. 
 
-## <a name="access-the-migration-process"></a>Access the migration process
+## <a name="access-the-migration-process"></a>Toegang tot het migratie proces
 
-On a weekly basis, you are prompted to migrate your apps. You can cancel this window without migrating. If you want to migrate before the next scheduled period, you can begin the migration process from the **Lock** icon on the top tool bar of the LUIS portal. 
+U wordt wekelijks gevraagd uw apps te migreren. U kunt dit venster annuleren zonder te migreren. Als u vóór de volgende geplande periode wilt migreren, kunt u beginnen met het migratie proces vanaf het **vergrendelings** pictogram op de bovenste werk balk van de Luis-Portal. 
 
-## <a name="app-owner-begins-the-migration-process"></a>App owner begins the migration process
+## <a name="app-owner-begins-the-migration-process"></a>App-eigenaar begint met het migratie proces
 
-The migration process is available if you are the owner of any LUIS apps. 
+Het migratie proces is beschikbaar als u de eigenaar bent van een LUIS-app. 
 
-1. Sign in to [LUIS portal](https://www.luis.ai) and agree to the terms of use.
-1. The migration pop-up window allows you to continue the migration or migrate later. Select **Migrate now**. If you choose to migrate later, you have 9 months to migrate to the new authoring key in Azure.
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai) en ga akkoord met de gebruiks voorwaarden.
+1. In het pop-upvenster migratie kunt u de migratie voortzetten of later migreren. Selecteer **nu migreren**. Als u ervoor kiest om later te migreren, hebt u negen maanden om te migreren naar de nieuwe ontwerp sleutel in Azure.
 
-    ![First pop-up window in migration process, select Migrate now.](./media/migrate-authoring-key/migrate-now.png)
+    ![Eerste pop-upvenster in migratie proces selecteert u nu migreren.](./media/migrate-authoring-key/migrate-now.png)
 
-1. Optionally, if any of your apps have collaborators, you are prompted to **send them an email** letting them know about the migration. This is an optional step. 
+1. Als een van uw apps deel nemers heeft, wordt u gevraagd **hen een e-mail te sturen** om hen te laten weten over de migratie. Dit is een optionele stap. 
 
-    Once you have migrated your account to Azure, your apps will no longer be available to collaborators.
+    Wanneer u uw account hebt gemigreerd naar Azure, zijn uw apps niet langer beschikbaar voor deel nemers.
 
-    For each collaborator and app, the default email application opens with a lightly formatted email. You can edit the email before sending it.
+    Voor elke samen werker en app wordt de standaard e-mail toepassing geopend met een e-mail met een lichte opmaak. U kunt de e-mail bewerken voordat u deze verzendt.
 
-    The email template includes the exact app ID and app name. 
+    De e-mail sjabloon bevat de exacte App-ID en app-naam. 
 
     ```html
     Dear Sir/Madam,
@@ -62,58 +62,58 @@ The migration process is available if you are the owner of any LUIS apps.
     Thank you
     ```
 
-1. Choose to create a LUIS authoring resource by selecting **Start by creating an authoring resource to migrate your apps to**. 
+1. Kies voor het maken van een LUIS-ontwerp bron door starten te selecteren door een bewerkings **resource te maken om uw apps naar te migreren**. 
 
-    ![Create authoring resource](./media/migrate-authoring-key/choose-authoring-resource.png)
+    ![Ontwerp bron maken](./media/migrate-authoring-key/choose-authoring-resource.png)
 
-1. In the next window, enter your resource key information. After you enter the information, select **Create resource**. You can have 10 free authoring resources per region, per subscription.
+1. Voer in het volgende venster de gegevens van de resource sleutel in. Nadat u de gegevens hebt ingevoerd, selecteert u **resource maken**. U kunt per regio een gratis beschik bare versie van het ontwerp van resources hebben.
 
-    ![Create authoring resource](./media/migrate-authoring-key/choose-authoring-resource-form.png)
+    ![Ontwerp bron maken](./media/migrate-authoring-key/choose-authoring-resource-form.png)
 
-    When **creating a new authoring resource**, provide the following information: 
+    Wanneer **u een nieuwe ontwerp bron maakt**, geeft u de volgende informatie op: 
 
-    * **Resource name** - a custom name you choose, used as part of the URL for your authoring and prediction endpoint queries.
-    * **Tenant** - the tenant your Azure subscription is associated with. 
-    * **Subscription name** - the subscription that will be billed for the resource.
-    * **Resource group** - a custom resource group name you choose or create. Resource groups allow you to group Azure resources for access and management. 
-    * **Location** - the location choice is based on the **resource group** selection.
-    * **Pricing tier** - the pricing tier determines the maximum transaction per second and month. 
+    * **Resource naam** : een door u gekozen aangepaste naam, die wordt gebruikt als onderdeel van de URL voor uw ontwerp-en Voorspellings eindpunt query's.
+    * **Tenant** : de Tenant waaraan uw Azure-abonnement is gekoppeld. 
+    * **Abonnements naam** : het abonnement dat wordt gefactureerd voor de resource.
+    * **Resource groep** : de naam van een aangepaste resource groep die u kiest of maakt. Met resource groepen kunt u Azure-resources groeperen voor toegang en beheer. 
+    * **Locatie** : de locatie keuze is gebaseerd op de selectie van de **resource groep** .
+    * **Prijs categorie** : de prijs categorie bepaalt de maximale trans actie per seconde en maand. 
 
-1. Validate your authoring resource and **Migrate now**.
+1. Valideer uw ontwerp bron en **Migreer nu**.
 
-    ![Create authoring resource](./media/migrate-authoring-key/choose-authoring-resource-and-migrate.png)
+    ![Ontwerp bron maken](./media/migrate-authoring-key/choose-authoring-resource-and-migrate.png)
 
-1. When the authoring resource is created, the success message is shown. Select **Close** to close the pop-up window.
+1. Wanneer de ontwerp bron is gemaakt, wordt het bericht weer gegeven. Selecteer **sluiten** om het pop-upvenster te sluiten.
 
-    ![Your authoring resource was successfully created.](./media/migrate-authoring-key/migration-success.png)
+    ![De ontwerp resource is gemaakt.](./media/migrate-authoring-key/migration-success.png)
 
-    The **My apps** list shows the apps migrated to the new authoring resource. 
+    In de lijst **mijn apps** worden de apps weer gegeven die zijn gemigreerd naar de nieuwe ontwerp bron. 
 
-    You don't need to know the authoring resource's key to continue editing your apps in the LUIS portal. If you plan to edit your apps programmatically, you need the authoring key values. These values are displayed on the **Manage -> Azure resources** page in the LUIS portal and are also available in the Azure portal on the resource's **Keys** page.  
+    U hoeft niet de sleutel van de ontwerp bron te weten om uw apps in de LUIS-portal te kunnen bewerken. Als u van plan bent om uw apps programmatisch te bewerken, hebt u de sleutel waarden van de ontwerp functie nodig. Deze waarden worden weer gegeven op de pagina **Manage-> Azure-resources** in de Luis-Portal en zijn ook beschikbaar in de Azure Portal op de pagina **sleutels** van de resource.  
 
-1. Before accessing your apps, select the subscription and LUIS authoring resource to see the apps you can author.
+1. Voordat u toegang krijgt tot uw apps, selecteert u het abonnement en de LUIS-ontwerp bron om de apps te zien die u kunt ontwerpen.
 
-    ![Select subscription and LUIS authoring resource to see the apps your can author.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
+    ![Selecteer abonnement en LUIS authoring resource om de apps te zien die u kunt ontwerpen.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
 
 
-## <a name="app-contributor-begins-the-migration-process"></a>App contributor begins the migration process
+## <a name="app-contributor-begins-the-migration-process"></a>De Inzender voor apps start het migratie proces
 
-Follow the same steps as the app owner for migration. The process creates a new authoring resource of kind `LUIS.Authoring`. 
+Volg dezelfde stappen als de eigenaar van de app voor migratie. Het proces maakt een nieuwe ontwerp bron van het type `LUIS.Authoring`. 
 
-You need to migrate your account in order to be added as a contributor to migrated apps owned by others.  
+U moet uw account migreren om als bijdrager toe te voegen aan gemigreerde apps waarvan anderen eigenaar zijn.  
 
-## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>After the migration process, add contributors to your authoring resource
+## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>Voeg na het migratie proces mede werkers toe aan uw ontwerp bron
 
 [!INCLUDE [Manage contributors for the Azure authoring resource for language understanding](./includes/manage-contributors-authoring-resource.md)]
 
-Learn [how to add contributors](luis-how-to-collaborate.md). 
+Meer informatie [over het toevoegen van mede](luis-how-to-collaborate.md)werkers. 
 
-## <a name="troubleshooting-errors-with-the-migration-process"></a>Troubleshooting errors with the migration process
+## <a name="troubleshooting-errors-with-the-migration-process"></a>Problemen met het migratie proces oplossen
 
-If you receive a `MissingSubscriptionRegistration` error in the LUIS portal with a red notification bar during the migration process, create a Cognitive Service resource in the [Azure portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) or [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Learn more about [causes of this error](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause).
+Als er tijdens het migratie proces een `MissingSubscriptionRegistration` fout in de LUIS-portal wordt weer gegeven, maakt u een cognitieve service resource in de [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) of [Azure cli](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Meer informatie over [oorzaken van deze fout](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 
-* Review [concepts](luis-concept-keys.md) about authoring and runtime keys
-* Review [how to assign keys](luis-how-to-azure-subscription.md) and add [contributors](luis-how-to-collaborate.md)
+* [Begrippen](luis-concept-keys.md) over het ontwerpen en runtime-sleutels bekijken
+* Controleren [hoe sleutels worden toegewezen](luis-how-to-azure-subscription.md) en [mede](luis-how-to-collaborate.md) werkers toevoegen

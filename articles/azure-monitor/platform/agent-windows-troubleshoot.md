@@ -20,9 +20,9 @@ In dit artikel vindt u informatie over het oplossen van problemen die u mogelijk
 
 Als geen van deze stappen voor u werkt, zijn ook de volgende ondersteuningskanalen beschikbaar:
 
-* Klanten met Premier-ondersteuning voordelen kunt opent u een ondersteuningsaanvraag met [Premier](https://premier.microsoft.com/).
-* Klanten met Azure support-overeenkomsten kunnen een ondersteuningsaanvraag openen [in Azure portal](https://manage.windowsazure.com/?getsupport=true).
-* Ga naar de pagina Log Analytics Feedback om te controleren ingediende ideeën en bugs [ https://aka.ms/opinsightsfeedback ](https://aka.ms/opinsightsfeedback) of een nieuw bestand. 
+* Klanten met premier-ondersteunings voordelen kunnen een ondersteunings aanvraag openen met [premier](https://premier.microsoft.com/).
+* Klanten met ondersteunings overeenkomsten voor Azure kunnen een ondersteunings aanvraag openen [in de Azure Portal](https://manage.windowsazure.com/?getsupport=true).
+* Ga naar de Log Analytics feedback pagina om de verzonden ideeën en bugs te bekijken [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) of een nieuwe bestand te openen. 
 
 ## <a name="important-troubleshooting-sources"></a>Belang rijke bronnen voor probleem oplossing
 
@@ -36,9 +36,9 @@ Controleer of de firewall of proxy is geconfigureerd voor het toestaan van de vo
 
 |Agentresource|Poorten |Richting |HTTPS-controle overslaan|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Poort 443 |Uitgaande|Ja |  
-|*.oms.opinsights.azure.com |Poort 443 |Uitgaande|Ja |  
-|*.blob.core.windows.net |Poort 443 |Uitgaande|Ja |  
+|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
+|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
+|*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |  
 
 Zie [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)voor informatie over de firewall die vereist is voor Azure Government. Als u van plan bent de Azure Automation Hybrid Runbook Worker te gebruiken om verbinding te maken met de Automation-Service voor het gebruik van runbooks of beheer oplossingen in uw omgeving, moet deze toegang hebben tot het poort nummer en de Url's die worden beschreven in [uw netwerk configureren voor de Hybrid Runbook worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 

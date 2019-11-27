@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 7983e18066578e3f036da84c73b6554ead2c40a1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 16339590c3cfb11235ef4763c2e32c71b521c709
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791576"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539072"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Zelf studie: toegang tot Azure Blob Storage vanuit Azure Databricks met behulp van Azure Key Vault
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
@@ -40,7 +40,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Een opslag account en BLOB-container maken
 
-1. Selecteer in de Azure Portal **een resource maken** > -**opslag**. Selecteer vervolgens **opslag account**.
+1. Selecteer in de Azure Portal **een resource maken** > **opslag**. Selecteer vervolgens **opslag account**.
 
    ![Azure Storage-account resource zoeken](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
 
@@ -117,7 +117,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
    |Abonnement     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
    |Resourcegroep     | Selecteer dezelfde resource groep die de sleutel kluis bevat. |
    |Locatie     | Selecteer dezelfde locatie als uw Azure Key Vault. Zie [Azure-Services beschikbaar per regio](https://azure.microsoft.com/regions/services/)voor alle beschik bare regio's.        |
-   |Prijsniveau     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
+   |Prijscategorie     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
 
    ![Eigenschappen van Databricks-werk ruimte](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
@@ -129,7 +129,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 4. Nadat uw Azure Databricks-werk ruimte in een afzonderlijk venster is geopend, voegt u **#secrets/createscope** toe aan de URL. De URL moet de volgende indeling hebben: 
 
-   **https://< \location >. azuredatabricks. net/? o = < \id > #secrets/createscope**.
+   **https://< \location >. azuredatabricks. net/#secrets/createscope**.
 
 5. Voer een scope naam in en voer de Azure Key Vault DNS-naam en de resource-ID in die u eerder hebt opgeslagen. Sla de naam van het bereik op in een tekst editor, zodat u deze later in deze zelf studie kunt gebruiken. Ten slotte selecteert u **Create**.
 
@@ -166,7 +166,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
    ```
 
    * **mount-name** is een DBFS-pad dat aangeeft waar de BLOB storage container of een map in de container (opgegeven in de bron) wordt gekoppeld.
-   * **conf-de sleutel** kan `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` of `fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net` zijn
+   * **conf-sleutel** kan `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` of `fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
    * **bereik: naam** is de naam van het geheime bereik dat u in de vorige sectie hebt gemaakt. 
    * **sleutel naam** is de naam van het geheim dat u hebt gemaakt voor de sleutel van het opslag account in uw sleutel kluis.
 

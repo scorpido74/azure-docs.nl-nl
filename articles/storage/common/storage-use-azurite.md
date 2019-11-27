@@ -57,11 +57,11 @@ De volgende instellingen worden ondersteund:
 
    * **Azurite: BLOB host** : het BLOB service luisterende eind punt. De standaard instelling is 127.0.0.1.
    * **Azurite: BLOB-poort** -de BLOB service Luister poort. De standaard poort is 10000.
-   * **Azurite: debug** -het logboek voor fout opsporing uitvoeren op het Azurite-kanaal. De standaardwaarde is **false**.
+   * **Azurite: debug** -het logboek voor fout opsporing uitvoeren op het Azurite-kanaal. De standaard waarde is **False**.
    * **Azurite: locatie** -het pad naar de locatie van de werk ruimte. De standaard waarde is de werkmap Visual Studio-code.
    * **Azurite: wachtrij-host** -het Queue-service luisterende eind punt. De standaard instelling is 127.0.0.1.
    * **Azurite: wachtrij poort** : de Queue-service Luister poort. De standaard poort is 10001.
-   * **Azurite:** in de Stille modus wordt het toegangs logboek uitgeschakeld. De standaardwaarde is **false**.
+   * **Azurite:** in de Stille modus wordt het toegangs logboek uitgeschakeld. De standaard waarde is **False**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Azurite installeren en uitvoeren met behulp van NPM
 

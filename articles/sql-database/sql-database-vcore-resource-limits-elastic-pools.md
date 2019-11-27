@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 11/04/2019
-ms.openlocfilehash: f356b9d248ac9c5f0bcfaaeeb37b43d958eaa528
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/25/2019
+ms.openlocfilehash: 74cc13386befa5cd97900b6b36d07d3144d9b727
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822364"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534209"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resource limieten voor elastische Pools met behulp van het vCore-aankoop model
 
@@ -25,13 +25,12 @@ In dit artikel vindt u gedetailleerde resource limieten voor Azure SQL Database 
 Zie [SQL database DTU-resource limieten-elastische Pools](sql-database-dtu-resource-limits-elastic-pools.md)voor meer informatie over de limieten voor DTU-aankoop modellen.
 
 > [!IMPORTANT]
-> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
+> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met behulp van de [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [Power shell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), de [Azure cli](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases)of de [rest API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
 > [!IMPORTANT]
 > Zie [een elastische pool schalen](sql-database-elastic-pool-scale.md) voor schaal baarheid en overwegingen
-
 
 ## <a name="general-purpose---provisioned-compute---gen4"></a>Algemeen beoogde, ingerichte Compute-Gen4
 
@@ -48,8 +47,8 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 |Maximumaantal databases per pool|100|200|500|500|500|500|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
-|Maximale gegevens grootte (GB)|512|756|756|1536|1536|1536|
-|Maximale logboek grootte|154|227|227|461|461|461|
+|Maximale gegevens grootte (GB)|512|756|1536|1536|1536|2048|
+|Maximale logboek grootte|154|227|461|461|461|614|
 |TempDB-grootte (GB)|32|64|96|128|160|192|
 |Opslagtype|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
@@ -60,12 +59,11 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 |Maxi maal toegestane sessies|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/max vCore keuzen voor elastische pool per data base|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Aantal replica's|1|1|1|1|1|1|
-|Meerdere AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
-|Uitschalen lezen|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-single-databases.md)Base voor het maximum aantal gelijktijdige werk rollen (aanvragen) voor elke afzonderlijke data base. \* Als de elastische pool bijvoorbeeld gebruikmaakt van GEN5 en het maximum aantal vCore per data base 2 is, is het maximum aantal gelijktijdige werkers 200.  Als het maximum aantal vCore per data base 0,5 is, is het maximum aantal gelijktijdige werkers 50 sinds er op GEN5 een maximum van 100 gelijktijdige werk nemers per vCore.  Voor andere maximale vCore-instellingen per data base die minder dan 1 vCore of minder zijn, is het aantal gelijktijdige werk nemers op dezelfde manier opnieuw geschaald.
-
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Service tier voor algemeen gebruik: generatie 4 Compute platform (deel 2)
 
@@ -77,8 +75,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maximumaantal databases per pool|500|500|500|500|500|500|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
-|Maximale gegevens grootte (GB)|1536|2048|2048|2048|3584|4096|
-|Maximale logboek grootte (GB)|461|614|614|614|1075|1229|
+|Maximale gegevens grootte (GB)|2048|2048|2048|2048|3584|4096|
+|Maximale logboek grootte (GB)|614|614|614|614|1075|1229|
 |TempDB-grootte (GB)|224|256|288|320|384|384|
 |Opslagtype|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
@@ -89,12 +87,11 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maxi maal toegestane sessies|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/max vCore keuzen voor elastische pool per data base|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
 |Aantal replica's|1|1|1|1|1|1|
-|Meerdere AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
-|Uitschalen lezen|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-single-databases.md)Base voor het maximum aantal gelijktijdige werk rollen (aanvragen) voor elke afzonderlijke data base. \* Als de elastische pool bijvoorbeeld gebruikmaakt van GEN5 en het maximum aantal vCore per data base 2 is, is het maximum aantal gelijktijdige werkers 200.  Als het maximum aantal vCore per data base 0,5 is, is het maximum aantal gelijktijdige werkers 50 sinds er op GEN5 een maximum van 100 gelijktijdige werk nemers per vCore.  Voor andere maximale vCore-instellingen per data base die minder dan 1 vCore of minder zijn, is het aantal gelijktijdige werk nemers op dezelfde manier opnieuw geschaald.
-
 
 ## <a name="general-purpose---provisioned-compute---gen5"></a>Algemeen beoogde, ingerichte Compute-GEN5
 
@@ -108,8 +105,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maximumaantal databases per pool|100|200|500|500|500|500|500|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
-|Maximale gegevens grootte (GB)|512|756|756|1536|1536|1536|
-|Maximale logboek grootte (GB)|154|227|227|461|461|461|461|
+|Maximale gegevens grootte (GB)|512|756|1536|1536|1536|2048|2048|
+|Maximale logboek grootte (GB)|154|227|461|461|461|614|614|
 |TempDB-grootte (GB)|64|128|192|256|320|384|384|
 |Opslagtype|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
@@ -120,8 +117,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maxi maal toegestane sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/max vCore keuzen voor elastische pool per data base|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Aantal replica's|1|1|1|1|1|1|1|
-|Meerdere AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
-|Uitschalen lezen|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-single-databases.md)Base voor het maximum aantal gelijktijdige werk rollen (aanvragen) voor elke afzonderlijke data base. \* Als de elastische pool bijvoorbeeld gebruikmaakt van GEN5 en het maximum aantal vCore per data base 2 is, is het maximum aantal gelijktijdige werkers 200.  Als het maximum aantal vCore per data base 0,5 is, is het maximum aantal gelijktijdige werkers 50 sinds er op GEN5 een maximum van 100 gelijktijdige werk nemers per vCore.  Voor andere maximale vCore-instellingen per data base die minder dan 1 vCore of minder zijn, is het aantal gelijktijdige werk nemers op dezelfde manier opnieuw geschaald.
@@ -136,8 +133,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maximumaantal databases per pool|500|500|500|500|500|500|500|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
-|Maximale gegevens grootte (GB)|2048|2048|3072|3072|4096|4096|4096|
-|Maximale logboek grootte (GB)|614|614|922|922|1229|1229|1229|
+|Maximale gegevens grootte (GB)|2048|3072|3072|3072|4096|4096|4096|
+|Maximale logboek grootte (GB)|614|922|922|922|1229|1229|1229|
 |TempDB-grootte (GB)|384|384|384|384|384|384|384|
 |Opslagtype|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
@@ -147,8 +144,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) *|1680|1890|2100|2520|3360|4200|8400|
 |Min/max vCore keuzen voor elastische pool per data base|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
 |Aantal replica's|1|1|1|1|1|1|1|
-|Meerdere AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
-|Uitschalen lezen|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Algemeen beoogde, ingerichte Compute-Fsv2-serie
@@ -174,15 +171,11 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) *|1680|
 |Min/max vCore keuzen voor elastische pool per data base|0-72|
 |Aantal replica's|1|
-|Meerdere AZ|N.v.t.|
-|Uitschalen lezen|N.v.t.|
+|Multi-AZ|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|
 
-
-
-
 Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-single-databases.md)Base voor het maximum aantal gelijktijdige werk rollen (aanvragen) voor elke afzonderlijke data base. \* Als de elastische pool bijvoorbeeld gebruikmaakt van GEN5 en het maximum aantal vCore per data base 2 is, is het maximum aantal gelijktijdige werkers 200.  Als het maximum aantal vCore per data base 0,5 is, is het maximum aantal gelijktijdige werkers 50 sinds er op GEN5 een maximum van 100 gelijktijdige werk nemers per vCore.  Voor andere maximale vCore-instellingen per data base die minder dan 1 vCore of minder zijn, is het aantal gelijktijdige werk nemers op dezelfde manier opnieuw geschaald.
-
 
 ## <a name="business-critical---provisioned-compute---gen4"></a>Bedrijfs kritieke, ingerichte Compute-Gen4
 
@@ -191,29 +184,29 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Bedrijfskritische servicelaag: generatie 4 Compute platform (deel 1)
 
-|Reken grootte|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|Reken grootte|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
-|Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
-|vCores|1|2|3|4|5|6|
-|Geheugen (GB)|7|14|21|28|35|42|
-|Maximumaantal databases per pool|Alleen enkele Db's worden ondersteund voor deze reken grootte|50|100|100|100|100|
-|Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|1|2|3|4|5|6|
-|Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Maximale gegevens grootte (GB)|650|650|650|650|650|650|
-|Maximale logboek grootte (GB)|195|195|195|195|195|195|
-|TempDB-grootte (GB)|32|64|96|128|160|192|
-|I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
-|Doel-IOPS (64 KB)|5000|10.000|15.000|20000|25000|30.000|
-|Frequentie limieten voor logboeken (MBps)|10|20|30|40|50|60|
-|Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) *|210|420|630|840|1050|1260|
-|Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) *|210|420|630|840|1050|1260|
-|Maxi maal toegestane sessies|30.000|30.000|30.000|30.000|30.000|30.000|
-|Min/max vCore keuzen voor elastische pool per data base|N.v.t.|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
-|Aantal replica's|4|4|4|4|4|4|
-|Meerdere AZ|Ja|Ja|Ja|Ja|Ja|Ja|
-|Uitschalen lezen|Ja|Ja|Ja|Ja|Ja|Ja|
-|Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
+|Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|
+|vCores|2|3|4|5|6|
+|Geheugen (GB)|14|21|28|35|42|
+|Maximumaantal databases per pool|100|100|100|100|100|
+|Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|
+|OLTP-opslag in het geheugen (GB)|2|3|4|5|6|
+|Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
+|Maximale gegevens grootte (GB)|1024|1024|1024|1024|1024|
+|Maximale logboek grootte (GB)|307|307|307|307|307|
+|TempDB-grootte (GB)|64|96|128|160|192|
+|I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
+|Doel-IOPS (64 KB)|10.000|15.000|20000|25000|30.000|
+|Frequentie limieten voor logboeken (MBps)|20|30|40|50|60|
+|Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) *|420|630|840|1050|1260|
+|Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) *|420|630|840|1050|1260|
+|Maxi maal toegestane sessies|30.000|30.000|30.000|30.000|30.000|
+|Min/max vCore keuzen voor elastische pool per data base|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
+|Aantal replica's|4|4|4|4|4|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|
+|Uitschalen voor leesbewerking|Ja|Ja|Ja|Ja|Ja|
+|Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-single-databases.md)Base voor het maximum aantal gelijktijdige werk rollen (aanvragen) voor elke afzonderlijke data base. \* Als de elastische pool bijvoorbeeld gebruikmaakt van GEN5 en het maximum aantal vCore per data base 2 is, is het maximum aantal gelijktijdige werkers 200.  Als het maximum aantal vCore per data base 0,5 is, is het maximum aantal gelijktijdige werkers 50 sinds er op GEN5 een maximum van 100 gelijktijdige werk nemers per vCore.  Voor andere maximale vCore-instellingen per data base die minder dan 1 vCore of minder zijn, is het aantal gelijktijdige werk nemers op dezelfde manier opnieuw geschaald.
 
@@ -228,8 +221,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Column Store-ondersteuning|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |OLTP-opslag in het geheugen (GB)|7|8|9.5|11|20|36|
 |Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Maximale gegevens grootte (GB)|650|650|650|650|1024|1024|
-|Maximale logboek grootte (GB)|195|195|195|195|307|307|
+|Maximale gegevens grootte (GB)|1024|1024|1024|1024|1024|1024|
+|Maximale logboek grootte (GB)|307|307|307|307|307|307|
 |TempDB-grootte (GB)|224|256|288|320|384|384|
 |I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
 |Doel-IOPS (64 KB)|35000|40000|45000|50000|80000|120000|
@@ -239,8 +232,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maxi maal toegestane sessies|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/max vCore keuzen voor elastische pool per data base|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
 |Aantal replica's|4|4|4|4|4|4|
-|Meerdere AZ|Ja|Ja|Ja|Ja|Ja|Ja|
-|Uitschalen lezen|Ja|Ja|Ja|Ja|Ja|Ja|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Uitschalen voor leesbewerking|Ja|Ja|Ja|Ja|Ja|Ja|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-single-databases.md)Base voor het maximum aantal gelijktijdige werk rollen (aanvragen) voor elke afzonderlijke data base. \* Als de elastische pool bijvoorbeeld gebruikmaakt van GEN5 en het maximum aantal vCore per data base 2 is, is het maximum aantal gelijktijdige werkers 200.  Als het maximum aantal vCore per data base 0,5 is, is het maximum aantal gelijktijdige werkers 50 sinds er op GEN5 een maximum van 100 gelijktijdige werk nemers per vCore.  Voor andere maximale vCore-instellingen per data base die minder dan 1 vCore of minder zijn, is het aantal gelijktijdige werk nemers op dezelfde manier opnieuw geschaald.
@@ -249,29 +242,29 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Bedrijfskritische servicelaag: generatie 5 Compute platform (deel 1)
 
-|Reken grootte|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|Reken grootte|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
-|Compute genereren|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
-|vCores|2|4|6|8|10|12|14|
-|Geheugen (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
-|Maximumaantal databases per pool|Alleen enkele Db's worden ondersteund voor deze reken grootte|50|100|100|100|100|100|
-|Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
-|Maximale gegevens grootte (GB)|1024|1024|1536|1536|1536|3072|3072|
-|Maximale logboek grootte (GB)|307|307|307|461|461|922|922|
-|TempDB-grootte (GB)|64|128|192|256|320|384|384|
-|Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
-|Doel-IOPS (64 KB)|5000|10.000|15.000|20000|25000|30.000|35000|
-|Frequentie limieten voor logboeken (MBps)|15|30|45|60|75|90|105|
-|Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) *|210|420|630|840|1050|1260|1470|
-|Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) *|210|420|630|840|1050|1260|1470|
-|Maxi maal toegestane sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
-|Min/max vCore keuzen voor elastische pool per data base|N.v.t.|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
-|Aantal replica's|4|4|4|4|4|4|4|
-|Meerdere AZ|Ja|Ja|Ja|Ja|Ja|Ja|
-|Uitschalen lezen|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
+|Compute genereren|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|vCores|4|6|8|10|12|14|
+|Geheugen (GB)|20,4|30,6|40,8|51|61,2|71,4|
+|Maximumaantal databases per pool|100|100|100|100|100|100|
+|Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
+|OLTP-opslag in het geheugen (GB)|3,142|4,713|6,284|8,655|11,026|13,397|
+|Maximale gegevens grootte (GB)|1024|1536|1536|1536|3072|3072|
+|Maximale logboek grootte (GB)|307|307|461|461|922|922|
+|TempDB-grootte (GB)|128|192|256|320|384|384|
+|Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
+|I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
+|Doel-IOPS (64 KB)|10.000|15.000|20000|25000|30.000|35000|
+|Frequentie limieten voor logboeken (MBps)|30|45|60|75|90|105|
+|Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) *|420|630|840|1050|1260|1470|
+|Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) *|420|630|840|1050|1260|1470|
+|Maxi maal toegestane sessies|30.000|30.000|30.000|30.000|30.000|30.000|
+|Min/max vCore keuzen voor elastische pool per data base|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
+|Aantal replica's|4|4|4|4|4|4|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Uitschalen voor leesbewerking|Ja|Ja|Ja|Ja|Ja|Ja|
+|Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-single-databases.md)Base voor het maximum aantal gelijktijdige werk rollen (aanvragen) voor elke afzonderlijke data base. \* Als de elastische pool bijvoorbeeld gebruikmaakt van GEN5 en het maximum aantal vCore per data base 2 is, is het maximum aantal gelijktijdige werkers 200.  Als het maximum aantal vCore per data base 0,5 is, is het maximum aantal gelijktijdige werkers 50 sinds er op GEN5 een maximum van 100 gelijktijdige werk nemers per vCore.  Voor andere maximale vCore-instellingen per data base die minder dan 1 vCore of minder zijn, is het aantal gelijktijdige werk nemers op dezelfde manier opnieuw geschaald.
 
@@ -295,10 +288,10 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) *|1680|1890|2100|2520|3360|4200|8400|
 |Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) *|1680|1890|2100|2520|3360|4200|8400|
 |Maxi maal toegestane sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
-|Min/max vCore keuzen voor elastische pool per data base|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 20, 24, 32, 40|0, 0,25, 0,5, 1... 20, 24, 32, 40, 80|
+|Min/max vCore keuzen voor elastische pool per data base|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0.25, 0.5, 1...20, 24, 32, 40|0, 0,25, 0,5, 1... 20, 24, 32, 40, 80|
 |Aantal replica's|4|4|4|4|4|4|4|
-|Meerdere AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Uitschalen lezen|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Uitschalen voor leesbewerking|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 ## <a name="business-critical---provisioned-compute---m-series"></a>Bedrijfskritische-ingerichte Compute-M-serie
@@ -325,8 +318,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maxi maal toegestane sessies|30.000|
 |Min/max vCore keuzen voor elastische pool per data base|0-128|
 |Aantal replica's|4|
-|Meerdere AZ|Ja|
-|Uitschalen lezen|Ja|
+|Multi-AZ|Ja|
+|Uitschalen voor leesbewerking|Ja|
 |Opgenomen back-upopslag|1X-DB-grootte|
 
 

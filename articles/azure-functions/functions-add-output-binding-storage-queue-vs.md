@@ -1,6 +1,6 @@
 ---
-title: Connect functions to Azure Storage using Visual Studio
-description: Learn how to add an output binding to connect your C# class library functions to an Azure Storage queue using Visual Studio.
+title: Functies verbinden met Azure Storage met behulp van Visual Studio
+description: Meer informatie over het toevoegen van een uitvoer binding om C# uw Class-bibliotheek functies te koppelen aan een Azure Storage wachtrij met behulp van Visual Studio.
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
@@ -11,49 +11,49 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227428"
 ---
-# <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Connect functions to Azure Storage using Visual Studio
+# <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Functies verbinden met Azure Storage met behulp van Visual Studio
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-This article shows you how to use Visual Studio to connect the function you created in the [previous quickstart article] to Azure Storage. The output binding that you add to this function writes data from the HTTP request to a message in an Azure Queue storage queue. 
+In dit artikel wordt beschreven hoe u Visual Studio gebruikt om de functie die u in het [vorig artikel over Snelstartgids] start-artikel hebt gemaakt, te verbinden met Azure Storage. De uitvoer binding die u aan deze functie toevoegt, schrijft gegevens van de HTTP-aanvraag naar een bericht in een Azure Queue-opslag wachtrij. 
 
-Most bindings require a stored connection string that Functions uses to access the bound service. To make it easier, you use the Storage account that you created with your function app. The connection to this account is already stored in an app setting named `AzureWebJobsStorage`.  
+Voor de meeste bindingen is een opgeslagen connection string vereist die functies gebruiken om toegang te krijgen tot de gebonden service. Om het eenvoudiger te maken, gebruikt u het opslag account dat u hebt gemaakt met uw functie-app. De verbinding met dit account is al opgeslagen in een app-instelling met de naam `AzureWebJobsStorage`.  
 
 ## <a name="prerequisites"></a>Vereisten
 
-Before you start this article, you must: 
+Voordat u dit artikel begint, moet u het volgende doen: 
 
- - Complete [part 1 of the Visual Studio quickstart][./functions-create-first-function-vs-code.md]. 
+ - Volt ooien [deel 1 van de Visual Studio Quick Start] [./functions-Create-First-function-VS-code.MD]. 
 
-- Sign in to your Azure subscription from Visual Studio.
+- Meld u aan bij uw Azure-abonnement vanuit Visual Studio.
 
-## <a name="download-the-function-app-settings"></a>Download the function app settings
+## <a name="download-the-function-app-settings"></a>De instellingen van de functie-app downloaden
 
-In the [previous quickstart article](functions-create-first-function-vs-code.md), you created a function app in Azure along with the required Storage account. The connection string for this account is stored securely in app settings in Azure. In this article, you write messages to a Storage queue in the same account. To connect to your Storage account when running the function locally, you must download app settings to the *local.settings.json* file. 
+In het [vorige Quick](functions-create-first-function-vs-code.md)start-artikel hebt u een functie-app gemaakt in azure, samen met het vereiste opslag account. De connection string voor dit account wordt veilig opgeslagen in de app-instellingen in Azure. In dit artikel schrijft u berichten naar een opslag wachtrij in hetzelfde account. Als u verbinding wilt maken met uw opslag account wanneer u de functie lokaal uitvoert, moet u de app-instellingen downloaden naar het bestand *Local. settings. json* . 
 
 1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Publiceren**. 
 
-1. Under **Actions**, select **Edit Azure App Service Settings**. 
+1. Onder **acties**selecteert u **Azure app service instellingen bewerken**. 
 
-    ![Edit the application settings](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
+    ![De toepassings instellingen bewerken](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 
-1. Under **AzureWebJobsStorage**, copy the **Remote** string value to **Local**, and then select **OK**. 
+1. Kopieer de waarde voor **externe** teken reeks onder **AzureWebJobsStorage**naar **Local**en selecteer **OK**. 
 
-The storage binding, which uses the `AzureWebJobsStorage` setting for the connection, can now connect to your Queue storage when running locally.
+De opslag binding, die gebruikmaakt van de instelling `AzureWebJobsStorage` voor de verbinding, kan nu verbinding maken met uw wachtrij opslag wanneer deze lokaal wordt uitgevoerd.
 
 ## <a name="register-binding-extensions"></a>Binding-extensies registreren
 
-Because you're using a Queue storage output binding, you need the Storage bindings extension installed before you run the project. Except for HTTP and timer triggers, bindings are implemented as extension packages. 
+Omdat u een uitvoer binding voor de wachtrij opslag gebruikt, hebt u de extensie opslag bindingen geïnstalleerd voordat u het project uitvoert. Met uitzonde ring van HTTP-en timer-triggers, worden bindingen geïmplementeerd als uitbreidings pakketten. 
 
-1. From the **Tools** menu, select **NuGet Package Manager** > **Package Manager Console**. 
+1. Selecteer in het menu **extra** de optie **NuGet package manager** > **Package Manager-console**. 
 
-1. In the console, run the following [Install-Package](/nuget/tools/ps-ref-install-package) command to install the Storage extensions:
+1. Voer in de-console de volgende [installatie-pakket](/nuget/tools/ps-ref-install-package) opdracht uit om de opslag extensies te installeren:
 
     ```Command
     Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.6
     ````
 
-Now, you can add the storage output binding to your project.
+Nu kunt u de opslag-uitvoer binding toevoegen aan uw project.
 
 ## <a name="add-an-output-binding"></a>Een uitvoerbinding toevoegen
 
@@ -61,7 +61,7 @@ Now, you can add the storage output binding to your project.
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Code toevoegen die gebruikmaakt van de uitvoerbinding
 
-After the binding is defined, you can use the `name` of the binding to access it as an attribute in the function signature. By using an output binding, you don't have to use the Azure Storage SDK code for authentication, getting a queue reference, or writing data. The Functions runtime and queue output binding do those tasks for you.
+Nadat de binding is gedefinieerd, kunt u de `name` van de binding gebruiken om deze te openen als een kenmerk in de functie handtekening. Als u een uitvoer binding gebruikt, hoeft u niet de Azure Storage SDK-code te gebruiken voor authenticatie, het ophalen van een wachtrij verwijzing of het schrijven van gegevens. De functies runtime en wachtrij-uitvoer binding voeren deze taken voor u uit.
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
@@ -69,31 +69,31 @@ After the binding is defined, you can use the `name` of the binding to access it
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
-A new queue named `outqueue` is created in your storage account by the Functions runtime when the output binding is first used. You'll use Cloud Explorer to verify that the queue was created along with the new message.
+Een nieuwe wachtrij met de naam `outqueue` wordt in uw opslag account gemaakt door de functions-runtime wanneer de uitvoer binding voor het eerst wordt gebruikt. U gebruikt cloud Explorer om te controleren of de wachtrij samen met het nieuwe bericht is gemaakt.
 
 ## <a name="examine-the-output-queue"></a>De uitvoerwachtrij controleren
 
-1. In Visual Studio from the **View** menu, select **Cloud Explorer**.
+1. Selecteer in Visual Studio in het menu **weer gave** de optie **Cloud Explorer**.
 
-1. In **Cloud Explorer**, expand your Azure subscription and **Storage Accounts**, then expand the storage account used by your function. If you can't remember the storage account name, check the `AzureWebJobsStorage` connection string setting in the *local.settings.json* file.  
+1. Vouw in **Cloud Explorer**uw Azure-abonnement en **opslag accounts**uit en vouw vervolgens het opslag account uit dat door uw functie wordt gebruikt. Als u de naam van het opslag account niet meer weet, controleert u de instelling `AzureWebJobsStorage` connection string in het bestand *Local. settings. json* .  
 
-1. Expand the **Queues** node, and then double-click the queue named **outqueue** to view the contents of the queue in Visual Studio. 
+1. Vouw het knoop punt **wacht rijen** uit en dubbel klik vervolgens op de wachtrij met de naam **outqueue** om de inhoud van de wachtrij in Visual Studio weer te geven. 
 
    De wachtrij bevat het bericht dat met de Queue Storage-uitvoerbinding is gemaakt toen u de met HTTP geactiveerde functie hebt uitgevoerd. Als u de functie hebt aangeroepen met de standaardwaarde `name` van *Azure*, is het wachtrijbericht *Naam is doorgegeven aan de functie: Azure*.
 
-    ![Queue message shown in Azure Storage Explorer](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
+    ![Wachtrij bericht weer gegeven in Azure Storage Explorer](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
-1. Run the function again, send another request, and you'll see a new message appear in the queue.  
+1. Voer de functie opnieuw uit, verzend een andere aanvraag en er wordt een nieuw bericht weer gegeven in de wachtrij.  
 
-Now, it's time to republish the updated function app to Azure.
+Nu is het tijd om de bijgewerkte functie-app opnieuw te publiceren naar Azure.
 
-## <a name="redeploy-and-verify-the-updated-app"></a>Redeploy and verify the updated app
+## <a name="redeploy-and-verify-the-updated-app"></a>De bijgewerkte app opnieuw implementeren en verifiëren
 
-1. In **Solution Explorer**, right-click the project and select **Publish**, then choose **Publish** to republish the project to Azure.
+1. Klik in **Solution Explorer**met de rechter muisknop op het project en selecteer **publiceren**. Kies vervolgens **publiceren** om het project opnieuw te publiceren naar Azure.
 
-1. After deployment completes, you can again use the browser to test the redeployed function. As before, append the query string `&name=<yourname>` to the URL.
+1. Nadat de implementatie is voltooid, kunt u de opnieuw geïmplementeerde functie opnieuw gebruiken met behulp van de browser. Voeg de query reeks `&name=<yourname>` toe aan de URL.
 
-1. Again [view the message in the storage queue](#examine-the-output-queue) to verify that the output binding again generates a new message in the queue.
+1. [Bekijk nogmaals het bericht in de opslag wachtrij](#examine-the-output-queue) om te controleren of de uitvoer binding opnieuw een nieuw bericht in de wachtrij genereert.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -101,12 +101,12 @@ Now, it's time to republish the updated function app to Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-You've updated your HTTP triggered function to write data to a Storage queue. To learn more about developing Functions, see [Develop Azure Functions using Visual Studio](functions-develop-vs.md).
+U hebt uw HTTP-geactiveerde functie bijgewerkt om gegevens naar een opslag wachtrij te schrijven. Zie voor meer informatie over het ontwikkelen van functies [Azure functions ontwikkelen met behulp van Visual Studio](functions-develop-vs.md).
 
-Next, you should enable Application Insights monitoring for your function app:
+Schakel vervolgens Application Insights bewaking in voor uw functie-app:
 
 > [!div class="nextstepaction"]
 > [Application Insights-integratie inschakelen](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/
-[previous quickstart article]: functions-create-your-first-function-visual-studio.md
+[vorig artikel over Snelstartgids]: functions-create-your-first-function-visual-studio.md

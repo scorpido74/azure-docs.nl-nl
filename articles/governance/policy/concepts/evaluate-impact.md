@@ -1,6 +1,6 @@
 ---
-title: Evaluate the impact of a new Azure policy
-description: Understand the process to follow when introducing a new policy definition into your Azure environment.
+title: De impact van een nieuw Azure-beleid evalueren
+description: Inzicht in het proces dat moet worden gevolgd wanneer een nieuwe beleids definitie wordt geïntroduceerd in uw Azure-omgeving.
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
@@ -10,67 +10,67 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463521"
 ---
-# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Evaluate the impact of a new Azure policy
+# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>De impact van een nieuw Azure-beleid evalueren
 
-Azure Policy is a powerful tool for managing your Azure resources to business standards and to meet compliance needs. When people, processes, or pipelines create or update resources, Azure Policy reviews the request. When the policy definition effect is [Append](./effects.md#deny) or [DeployIfNotExists](./effects.md#deployifnotexists), Policy alters the request or adds to it. When the policy definition effect is [Audit](./effects.md#audit) or [AuditIfNotExists](./effects.md#auditifnotexists), Policy causes an Activity log entry to be created. And when the policy definition effect is [Deny](./effects.md#deny), Policy stops the creation or alteration of the request.
+Azure Policy is een krachtig hulp programma voor het beheer van uw Azure-resources op bedrijfs standaarden en om te voldoen aan de vereisten voor naleving. Als mensen, processen of pijp lijnen resources maken of bijwerken, Azure Policy de aanvraag beoordeelt. Wanneer het effect van de beleids definitie wordt [toegevoegd](./effects.md#deny) of [DeployIfNotExists](./effects.md#deployifnotexists), wordt de aanvraag door het beleid gewijzigd of wordt er een aan toegevoegd. Wanneer het effect van de beleids definitie wordt [gecontroleerd](./effects.md#audit) of [AuditIfNotExists](./effects.md#auditifnotexists), wordt een vermelding in het activiteiten logboek gemaakt. En wanneer het effect van de beleids definitie is [geweigerd](./effects.md#deny), stopt het beleid het maken of de wijziging van de aanvraag.
 
-These outcomes are exactly as desired when you know the policy is defined correctly. However, it's important to validate a new policy works as intended before allowing it to change or block work. The validation must ensure only the intended resources are determined to be non-compliant and no compliant resources are incorrectly included (known as a _false positive_) in the results.
+Deze resultaten zijn precies zo nodig als u weet dat het beleid correct is gedefinieerd. Het is echter belang rijk om een nieuw beleid te valideren, zoals bedoeld voordat het werk kan worden gewijzigd of geblokkeerd. De validatie moet ervoor zorgen dat alleen de beoogde resources niet-compatibel zijn en dat er geen resources zijn die onjuist zijn opgenomen (ook wel een _valse waarde-positief_) in de resultaten.
 
-The recommended approach to validating a new policy definition is by following these steps:
+De aanbevolen benadering voor het valideren van een nieuwe beleids definitie is door de volgende stappen te volgen:
 
-- Tightly define your policy
-- Audit your existing resources
-- Audit new or updated resource requests
-- Deploy your policy to resources
+- Uw beleid nauw keurig definiëren
+- Uw bestaande resources controleren
+- Nieuwe of bijgewerkte resource aanvragen controleren
+- Uw beleid implementeren voor resources
 - Doorlopende bewaking
 
-## <a name="tightly-define-your-policy"></a>Tightly define your policy
+## <a name="tightly-define-your-policy"></a>Uw beleid nauw keurig definiëren
 
-It's important to understand how the business policy is implemented as a policy definition and the relationship of Azure resources with other Azure services. This step is accomplished by [identifying the requirements](../tutorials/create-custom-policy-definition.md#identify-requirements) and [determining the resource properties](../tutorials/create-custom-policy-definition.md#determine-resource-properties).
-But it's also important to see beyond the narrow definition of your business policy. Does your policy state for example "All Virtual Machines must..."? What about other Azure services that make use of VMs, such as HDInsight or AKS? When defining a policy, we must consider how this policy impacts resources that are used by other services.
+Het is belang rijk om te begrijpen hoe het bedrijfs beleid wordt geïmplementeerd als een beleids definitie en de relatie van Azure-resources met andere Azure-Services. Deze stap wordt uitgevoerd door [de vereisten te identificeren](../tutorials/create-custom-policy-definition.md#identify-requirements) en [de bron eigenschappen te bepalen](../tutorials/create-custom-policy-definition.md#determine-resource-properties).
+Maar het is ook belang rijk dat u verder gaat dan de smalle definitie van uw bedrijfs beleid. Is de beleids status bijvoorbeeld ' alle Virtual Machines moet... '? Wat is de informatie over andere Azure-Services die gebruikmaken van Vm's, zoals HDInsight of AKS? Wanneer u een beleid definieert, moeten we overwegen hoe dit beleid gevolgen heeft voor de resources die door andere services worden gebruikt.
 
-For this reason, your policy definitions should be as tightly defined and focused on the resources and the properties you need to evaluate for compliance as possible.
+Daarom moeten uw beleids definities net zo nauw keurig worden gedefinieerd en zijn gericht op de resources en de eigenschappen die u moet evalueren voor naleving.
 
-## <a name="audit-existing-resources"></a>Audit existing resources
+## <a name="audit-existing-resources"></a>Bestaande resources controleren
 
-Before looking to manage new or updated resources with your new policy definition, it's best to see how it evaluates a limited subset of existing resources, such as a test resource group. Use the [enforcement mode](./assignment-structure.md#enforcement-mode)
-_Disabled_ (DoNotEnforce) on your policy assignment to prevent the [effect](./effects.md) from triggering or activity log entries from being created.
+Voordat u nieuwe of bijgewerkte resources met de nieuwe beleids definitie gaat beheren, is het raadzaam om te zien hoe een beperkte subset van bestaande resources, zoals een test resource groep, wordt geëvalueerd. Gebruik de [afdwingings modus](./assignment-structure.md#enforcement-mode)
+_uitgeschakeld_ (DoNotEnforce) op uw beleids toewijzing om te voor komen dat het [effect](./effects.md) van trigger-of activiteiten logboek vermeldingen wordt gemaakt.
 
-This step gives you a chance to evaluate the compliance results of the new policy on existing resources without impacting work flow. Check that no compliant resources are marked as non-compliant (_false positive_) and that all the resources you expect to be non-compliant are marked correctly.
-After the initial subset of resources validates as expected, slowly expand the evaluation to all existing resources.
+Met deze stap kunt u de nalevings resultaten van het nieuwe beleid evalueren op bestaande resources zonder dat dit van invloed is op de werk stroom. Controleer of er geen compatibele resources zijn gemarkeerd als niet-compatibel (fout_positief_) en dat alle resources die u verwacht niet-compatibel zijn, correct zijn gemarkeerd.
+Nadat de eerste subset van resources op de verwachte manier wordt gevalideerd, wordt de evaluatie van alle bestaande resources langzaam uitgebreid.
 
-Evaluating existing resources in this way also provides an opportunity to remediate non-compliant resources before full implementation of the new policy. This cleanup can be done manually or through a [remediation task](../how-to/remediate-resources.md) if the policy definition effect is _DeployIfNotExists_.
+Door bestaande resources op deze manier te evalueren, kunt u niet-compatibele resources herstellen voordat de volledige implementatie van het nieuwe beleid wordt toegepast. Deze opschoning kan hand matig of via een [herstel taak](../how-to/remediate-resources.md) worden uitgevoerd als het effect van de beleids definitie _DeployIfNotExists_is.
 
-## <a name="audit-new-or-updated-resources"></a>Audit new or updated resources
+## <a name="audit-new-or-updated-resources"></a>Nieuwe of bijgewerkte resources controleren
 
-Once you've validated your new policy definition is reporting correctly on existing resources, it's time to look at the impact of the policy when resources get created or updated. If the policy definition supports effect parameterization, use [Audit](./effects.md#audit). This configuration allows you to monitor the creation and updating of resources to see if the new policy definition triggers an entry in Azure Activity log for a resource that is non-compliant without impacting existing work or requests.
+Zodra u hebt gecontroleerd of de nieuwe beleids definitie correct wordt gerapporteerd voor bestaande resources, is het tijd om te kijken naar de impact van het beleid wanneer resources worden gemaakt of bijgewerkt. Als de beleids definitie effect parameterisering ondersteunt, gebruikt u [controle](./effects.md#audit). Met deze configuratie kunt u het maken en bijwerken van resources bewaken om te controleren of de nieuwe beleids definitie een vermelding in het Azure-activiteiten logboek activeert voor een resource die niet compatibel is, zonder dat dit van invloed is op bestaande werk of aanvragen.
 
-It's recommended to both update and create new resources that match your policy definition to see that the _Audit_ effect is correctly being triggered when expected. Be on the lookout for resource requests that shouldn't be impacted by the new policy definition that trigger the _Audit_ effect.
-These impacted resources are another example of _false positives_ and must be fixed in the policy definition before full implementation.
+Het wordt aanbevolen om nieuwe bronnen bij te werken en te maken die overeenkomen met uw beleids definitie om te zien of het _controle_ -effect correct wordt geactiveerd wanneer dit wordt verwacht. Bevindt zich op de Lookout voor resource aanvragen die niet van invloed moeten zijn op de nieuwe beleids definitie die het _controle_ -effect triggert.
+Deze resources die van invloed zijn op een ander voor beeld van fout- _positieven_ en moeten worden opgelost in de beleids definitie voordat de volledige implementatie kan worden geïmplementeerd.
 
-In the event the policy definition is changed at this stage of testing, it's recommended to begin the validation process over with the auditing of existing resources. A change to the policy definition for a _false positive_ on new or updated resources is likely to also have an impact on existing resources.
+In het geval dat de beleids definitie in deze fase van de test wordt gewijzigd, wordt het aanbevolen het validatie proces te starten met de controle van bestaande resources. Een wijziging in de beleids definitie voor een _onjuiste positieve waarde_ op nieuwe of bijgewerkte resources is waarschijnlijk ook van invloed op bestaande resources.
 
-## <a name="deploy-your-policy-to-resources"></a>Deploy your policy to resources
+## <a name="deploy-your-policy-to-resources"></a>Uw beleid implementeren voor resources
 
-After completing validation of your new policy definition with both existing resources and new or updated resource requests, you begin the process of implementing the policy. It's recommended to create the policy assignment for the new policy definition to a subset of all resources first, such as a resource group. After validating initial deployment, extend the scope of the policy to broader and broader levels, such as subscriptions and management groups. This expansion is achieved by removing the assignment and creating a new one at the target scopes until it's assigned to the full scope of resources intended to be covered by your new policy definition.
+Nadat u de validatie van de nieuwe beleids definitie met zowel bestaande resources als nieuwe of bijgewerkte resource aanvragen hebt voltooid, begint u met het proces van de implementatie van het beleid. Het is raadzaam om de beleids toewijzing voor de nieuwe beleids definitie eerst aan een subset van alle resources toe te voegen, zoals een resource groep. Nadat de eerste implementatie is gevalideerd, breidt u het bereik van het beleid uit naar bredere en bredere niveaus, zoals abonnementen en beheer groepen. Deze uitbrei ding wordt bereikt door de toewijzing te verwijderen en een nieuwe te maken in de doel scopes totdat deze is toegewezen aan het volledige bereik van resources die worden gedekt door uw nieuwe beleids definitie.
 
-During rollout, if resources are located that should be exempt from your new policy definition, address them in one of the following ways:
+Als er tijdens de implementatie resources worden gevonden die van de nieuwe beleids definitie moeten worden uitgesloten, moet u deze op een van de volgende manieren aanpakken:
 
-- Update the policy definition to be more explicit to reduce unintended impact
-- Change the scope of the policy assignment (by removing and creating a new assignment)
-- Add the group of resources to the exclusion list for the policy assignment
+- De beleids definitie bijwerken zodat deze beter is om onbedoelde gevolgen te verminderen
+- Het bereik van de beleids toewijzing wijzigen (door een nieuwe toewijzing te verwijderen en te maken)
+- De groep resources toevoegen aan de uitsluitings lijst voor de beleids toewijzing
 
-Any changes to the scope (level or exclusions) should be fully validated and communicated with your security and compliance organizations to ensure there are no gaps in coverage.
+Wijzigingen in het bereik (niveau of uitsluitingen) moeten volledig worden gevalideerd en worden gecommuniceerd met uw beveiligings-en nalevings organisaties om ervoor te zorgen dat er geen hiaten in de dekking zijn.
 
-## <a name="monitor-your-policy-and-compliance"></a>Monitor your policy and compliance
+## <a name="monitor-your-policy-and-compliance"></a>Uw beleid en naleving controleren
 
-Implementing and assigning your policy definition isn't the final step. Continuously monitor the [compliance](../how-to/get-compliance-data.md) level of resources to your new policy definition and setup appropriate [Azure Monitor alerts and notifications](../../../azure-monitor/platform/alerts-overview.md) for when non-compliant devices are identified. It's also recommended to evaluate the policy definition and related assignments on a scheduled basis to validate the policy definition is meeting business policy and compliance needs. Policies should be removed if no longer needed. Policies also need updating from time to time as the underlying Azure resources evolve and add new properties and capabilities.
+Het implementeren en toewijzen van de beleids definitie is niet de laatste stap. Bewaak voortdurend het [compatibiliteits](../how-to/get-compliance-data.md) niveau van resources naar uw nieuwe beleids definitie en Setup die geschikt is [Azure monitor waarschuwingen en meldingen](../../../azure-monitor/platform/alerts-overview.md) voor wanneer niet-compatibele apparaten worden geïdentificeerd. Het is ook raadzaam om de beleids definitie en gerelateerde toewijzingen te evalueren volgens een geplande basis voor het valideren van de beleids definitie, het bedrijfs beleid en de vereisten voor naleving. U moet beleids regels verwijderen als u deze niet meer nodig hebt. Beleids regels moeten ook van tijd tot tijd worden bijgewerkt, omdat de onderliggende Azure-resources worden ontwikkeld en nieuwe eigenschappen en mogelijkheden kunnen worden toegevoegd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Learn about the [policy definition structure](./definition-structure.md).
-- Learn about the [policy assignment structure](./assignment-structure.md).
-- Understand how to [programmatically create policies](../how-to/programmatically-create.md).
-- Learn how to [get compliance data](../how-to/get-compliance-data.md).
-- Learn how to [remediate non-compliant resources](../how-to/remediate-resources.md).
-- Review what a management group is with [Organize your resources with Azure management groups](../../management-groups/overview.md).
+- Meer informatie over de structuur van de [beleids definitie](./definition-structure.md).
+- Meer informatie over de structuur van de [beleids toewijzing](./assignment-structure.md).
+- Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
+- Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
+- Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

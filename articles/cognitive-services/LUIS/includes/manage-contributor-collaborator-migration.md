@@ -17,10 +17,10 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451627"
 ---
-Management of contributions from collaborators depends on the current status of the app.
+Het beheer van bijdragen van mede werkers is afhankelijk van de huidige status van de app.
 
-**For [authoring resource migrated](../luis-migration-authoring.md) apps**: _contributors_ are managed in the Azure portal for the authoring resource, using the **Access control (IAM)** page. Add a user, using the collaborator's email address and the _contributor_ role. 
+**Voor [gemigreerde](../luis-migration-authoring.md) apps voor**het maken van een resource: _inzenders_ worden beheerd in de Azure portal voor de ontwerp bron, met behulp van de **toegangs beheer pagina (IAM)** . Voeg een gebruiker toe met behulp van het e-mail adres van de samen werker en de rol _Inzender_ . 
 
-**For apps that have not migrated yet**: all _collaborators_ are managed in the LUIS portal from each app's **Manage -> Collaborators** page. On this page, [add a user's email address](../luis-how-to-collaborate.md). This provides authoring access to this app only. 
+**Voor apps die nog niet zijn gemigreerd**: _alle mede_ werkers worden beheerd in de Luis-Portal op de pagina werk **nemers van de beheer >** van elke app. Voeg op deze pagina [het e-mail adres van een gebruiker toe](../luis-how-to-collaborate.md). Hiermee hebt u alleen toegang tot deze app. 
 
 

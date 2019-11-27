@@ -1,6 +1,6 @@
 ---
-title: Monitoring Azure Functions with Azure Monitor Logs
-description: Learn how to use Azure Monitor Logs with Azure Functions to monitor function executions.
+title: Azure Functions controleren met Azure Monitor-logboeken
+description: Meer informatie over het gebruik van Azure Monitor-logboeken met Azure Functions voor het bewaken van functie-uitvoeringen.
 author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
@@ -12,30 +12,30 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226856"
 ---
-# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitoring Azure Functions with Azure Monitor Logs
+# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions controleren met Azure Monitor-logboeken
 
-Azure Functions offers an integration with [Azure Monitor Logs](../azure-monitor/platform/data-platform-logs.md) to monitor functions. This article shows you how to configure Azure Functions to send system-generated and user-generated logs to Azure Monitor Logs.
+Azure Functions biedt een integratie met [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md) om functies te bewaken. Dit artikel laat u zien hoe u Azure Functions kunt configureren voor het verzenden van door het systeem gegenereerde en door de gebruiker gegenereerde logboeken naar Azure Monitor-Logboeken.
 
-Azure Monitor Logs gives you the ability to consolidate logs from different resources in the same workspace, where it can be analyzed with [queries](../azure-monitor/log-query/log-query-overview.md) to quickly retrieve, consolidate, and analyze collected data.  You can create and test queries using [Log Analytics](../azure-monitor/log-query/portals.md) in the Azure portal and then either directly analyze the data using these tools or save queries for use with [visualizations](../azure-monitor/visualizations.md) or [alert rules](../azure-monitor/platform/alerts-overview.md).
+Met Azure Monitor Logboeken kunt u logboeken van verschillende resources in dezelfde werk ruimte consolideren, waar het kan worden geanalyseerd met [query's](../azure-monitor/log-query/log-query-overview.md) om verzamelde gegevens snel op te halen, samen te voegen en te analyseren.  U kunt query's maken en testen met behulp van [log Analytics](../azure-monitor/log-query/portals.md) in de Azure Portal en vervolgens de gegevens rechtstreeks analyseren met behulp van deze hulpprogram ma's of query's opslaan voor gebruik met [Visualisaties](../azure-monitor/visualizations.md) of [waarschuwings regels](../azure-monitor/platform/alerts-overview.md).
 
-Azure Monitor uses a version of the [Kusto query language](/azure/kusto/query/) used by Azure Data Explorer that is suitable for simple log queries but also includes advanced functionality such as aggregations, joins, and smart analytics. You can quickly learn the query language using [multiple lessons](../azure-monitor/log-query/get-started-queries.md).
+Azure Monitor gebruikt een versie van de [Kusto-query taal](/azure/kusto/query/) die wordt gebruikt door Azure Data Explorer die geschikt is voor eenvoudige logboek query's, maar bevat ook geavanceerde functies zoals aggregaties, samen voegingen en slimme analyses. U kunt de query taal snel leren kennen met [meerdere lessen](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
-> Integration with Azure Monitor Logs is currently in public preview for function apps running on Windows Consumption, Premium, and Dedicated hosting plans.
+> Integratie met Azure Monitor Logboeken is momenteel beschikbaar als open bare Preview voor functie-apps die worden uitgevoerd op Windows-verbruiks-, Premium-en speciale hosting abonnementen.
 
-## <a name="setting-up"></a>Setting up
+## <a name="setting-up"></a>Instellen
 
-From the Monitoring section, select **Diagnostic settings** and then click **Add**.
+Selecteer **Diagnostische instellingen** in het gedeelte bewaking en klik vervolgens op **toevoegen**.
 
-![Add a diagnostic setting](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+![Een diagnostische instelling toevoegen](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-In the setting page, choose **Send to Log Analytics**, and under **LOG** choose **FunctionAppLogs**, this table contains the desired logs.
+Kies op de pagina instellingen de optie **verzenden naar log Analytics**en selecteer in **logboek** **FunctionAppLogs**de gewenste Logboeken.
 
-![Add a diagnostic setting](media/functions-monitor-log-analytics/choose-table.png)
+![Een diagnostische instelling toevoegen](media/functions-monitor-log-analytics/choose-table.png)
 
-## <a name="user-generated-logs"></a>User generated logs
+## <a name="user-generated-logs"></a>Door de gebruiker gegenereerde logboeken
 
-To generate custom logs, you can use the specific logging statement depending on your language, here are sample code snippets:
+Als u aangepaste logboeken wilt genereren, kunt u de specifieke registratie-instructie gebruiken, afhankelijk van uw taal. Hier volgen enkele voor beelden van code fragmenten:
 
 **JavaScript**
 
@@ -67,15 +67,15 @@ To generate custom logs, you can use the specific logging statement depending on
     Write-Host "My app logs here."
 ```
 
-## <a name="querying-the-logs"></a>Querying the logs
+## <a name="querying-the-logs"></a>Query's uitvoeren op de logboeken
 
-To query the generated logs, go to the log analytics workspace and click **Logs**.
+Als u de gegenereerde logboeken wilt doorzoeken, gaat u naar de log Analytics-werk ruimte en klikt u op **Logboeken**.
 
-![Query window in LA workspace](media/functions-monitor-log-analytics/querying.png)
+![Query venster in de werk ruimte van LA](media/functions-monitor-log-analytics/querying.png)
 
-Azure Functions writes all logs to **FunctionAppLogs** table, here are some sample queries.
+Azure Functions worden alle logboeken naar de tabel **FunctionAppLogs** geschreven. Dit zijn enkele voor beelden van query's.
 
-### <a name="all-logs"></a>All logs
+### <a name="all-logs"></a>Alle logboeken
 
 ```
 
@@ -84,7 +84,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>A specific function logs
+### <a name="a-specific-function-logs"></a>Een specifieke functie Logboeken
 
 ```
 
@@ -105,6 +105,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Review the [Azure Functions overview](functions-overview.md)
-- Learn more about [Azure Monitor Logs](../azure-monitor/platform/data-platform-logs.md)
-- Learn more about the [query language](../azure-monitor/log-query/get-started-queries.md).
+- Bekijk het [Azure functions overzicht](functions-overview.md)
+- Meer informatie over [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md)
+- Meer informatie over de [query taal](../azure-monitor/log-query/get-started-queries.md).

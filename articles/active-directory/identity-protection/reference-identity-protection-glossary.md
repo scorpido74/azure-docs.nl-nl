@@ -20,143 +20,143 @@ ms.locfileid: "74232347"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection Glossary
 
-### <a name="at-risk-user"></a>At risk (User)
-A user with one or more active risk detections. 
+### <a name="at-risk-user"></a>Risico (gebruiker)
+Een gebruiker met een of meer actieve risico detecties. 
 
-### <a name="atypical-sign-in-location"></a>Atypical sign-in location
-A sign-in from a geographic location that is not typical for the specific user, similar users, or the tenant.
+### <a name="atypical-sign-in-location"></a>Ongewoone aanmeldings locatie
+Een aanmelding vanaf een geografische locatie die niet gebruikelijk is voor de specifieke gebruiker, soort gelijke gebruikers of de Tenant.
 
 ### <a name="azure-ad-identity-protection"></a>Azure AD-identiteitsbeveiliging
-A security module of Azure Active Directory that provides a consolidated view into risk detections and potential vulnerabilities affecting an organization’s identities.
+Een beveiligings module van Azure Active Directory die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van een organisatie.
 
 ### <a name="conditional-access"></a>Voorwaardelijke toegang
-A policy for securing access to resources. Conditional Access rules are stored in the Azure Active Directory and are evaluated by Azure AD before granting access to the resource.  Example rules include restricting access based on user location, device health, or user authentication method.
+Een beleid voor het beveiligen van de toegang tot bronnen. Regels voor voorwaardelijke toegang worden opgeslagen in de Azure Active Directory en worden geëvalueerd door Azure AD voordat ze toegang tot de resource verlenen.  Voor beelden van regels zijn het beperken van toegang op basis van de locatie van de gebruiker, de Apparaatstatus of de verificatie methode van de gebruiker.
 
 ### <a name="credentials"></a>Referenties
-Information that includes identification and proof of identification that is used to gain access to local and network resources. Examples of credentials are user names and passwords, smart cards, and certificates.
+Informatie over identificatie en bewijs van identificatie die wordt gebruikt om toegang te krijgen tot lokale en netwerk bronnen. Voor beelden van referenties zijn gebruikers namen en wacht woorden, Smart Cards en certificaten.
 
 ### <a name="event"></a>Gebeurtenis
-A record of an activity in Azure Active Directory.
+Een record van een activiteit in Azure Active Directory.
 
-### <a name="false-positive-risk-detection"></a>False-positive (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the risk detection was investigated and was incorrectly flagged as a risk detection.
+### <a name="false-positive-risk-detection"></a>ONWAAR-positief (risico detectie)
+Een status van een risico detectie is hand matig ingesteld door een gebruiker met identiteits beveiliging, die aangeeft dat de risico detectie is onderzocht en onjuist is gemarkeerd als risico detectie.
 
-### <a name="identity"></a>Identity
-A person or entity that must be verified by means of authentication, based on criteria such as password or a certificate.
+### <a name="identity"></a>Identiteit
+Een persoon of entiteit die moet worden geverifieerd door middel van verificatie, op basis van criteria zoals een wacht woord of een certificaat.
 
-### <a name="identity-risk-detection"></a>Identity risk detection
-Azure AD event that was flagged as anomalous by Identity Protection, and may indicate that an identity has been compromised.
+### <a name="identity-risk-detection"></a>Identiteits risico detectie
+Azure AD-gebeurtenis die is gemarkeerd als afwijkend door identiteits beveiliging, en kan erop wijzen dat er is geknoeid met een identiteit.
 
-### <a name="ignored-risk-detection"></a>Ignored (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the risk detection is closed without taking a remediation action.
+### <a name="ignored-risk-detection"></a>Genegeerd (risico detectie)
+Een status van een risico detectie kan hand matig worden ingesteld door een gebruiker met identiteits beveiliging, wat aangeeft dat de risico detectie is gesloten zonder een herstel actie te ondernemen.
 
-### <a name="impossible-travel-from-atypical-locations"></a>Impossible travel from atypical locations
-A risk detection triggered when two sign-ins for the same user are detected, where at least one of them is from an atypical sign-in location, and where the time between the sign-ins is shorter than the minimum time it would take to physically travel between these locations.  
+### <a name="impossible-travel-from-atypical-locations"></a>Onmogelijk traject van ongewone locaties
+Een risico detectie wordt geactiveerd wanneer twee aanmeldingen voor dezelfde gebruiker worden gedetecteerd, waarbij ten minste één van de aanmeldingen afkomstig is van een ongewoone aanmeldings locatie en waar de tijd tussen de aanmeldingen korter is dan de minimale tijds duur die nodig is voor het fysiek reizen tussen deze maplocaties.  
 
 ### <a name="investigation"></a>Onderzoek
-The process of reviewing the activities, logs, and other relevant information related to a risk detection to decide whether remediation or mitigation steps are necessary, understand if and how the identity was compromised, and understand how the compromised identity was used.
+Het proces van het controleren van de activiteiten, logboeken en andere relevante informatie met betrekking tot een risico detectie om te bepalen of de stappen voor herstel of beperking nood zakelijk zijn, te begrijpen of en hoe de identiteit is aangetast en hoe het is aangetast de identiteit is gebruikt.
 
-### <a name="leaked-credentials"></a>Leaked credentials
-A risk detection triggered when current user credentials (user name and password) are found posted publicly in the Dark   web by our researchers.
+### <a name="leaked-credentials"></a>Gelekte referenties
+Een risico detectie wordt geactiveerd wanneer de huidige gebruikers referenties (gebruikers naam en wacht woord) door ons onderzoekers openbaar op het donkere web worden gevonden.
 
 ### <a name="mitigation"></a>Oplossing
-An action to limit or eliminate the ability of an attacker to exploit a compromised identity or device without restoring the identity or device to a safe state. A mitigation does not resolve previous risk detections associated with the identity or device.
+Een actie om de mogelijkheid van een aanvaller te beperken of te elimineren om te voor komen dat de identiteit of het apparaat is aangetast zonder dat de identiteit of de status van een computer wordt hersteld. Bij een oplossing worden eerdere risico detecties die zijn gekoppeld aan de identiteit of het apparaat niet opgelost.
 
 ### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
-An authentication method that requires two or more authentication methods, which may include something the user has, such a certificate; something the user knows, such as user names, passwords, or pass phrases; physical attributes, such as a thumbprint; and personal attributes, such as a personal signature.
+Een verificatie methode waarvoor twee of meer authenticatie methoden zijn vereist, die iets kunnen bevatten dat de gebruiker heeft, een dergelijk certificaat; iets wat de gebruiker weet, zoals gebruikers namen, wacht woorden of door gegeven zinsdelen; fysieke kenmerken, zoals een vinger afdruk. en persoonlijke kenmerken, zoals een persoonlijke hand tekening.
 
-### <a name="offline-detection"></a>Offline detection
-The detection of anomalies and evaluation of the risk of an event such as sign-in attempt after the fact, for an event that has already happened.
+### <a name="offline-detection"></a>Offline detectie
+De detectie van afwijkingen en de evaluatie van het risico van een gebeurtenis, zoals een aanmeldings poging na het feit, voor een gebeurtenis die al heeft plaatsgevonden.
 
-### <a name="policy-condition"></a>Policy condition
-A part of a security policy, which defines the entities (groups, users, apps, device platforms, Device states, IP ranges, client types) included in the policy or excluded from it.
+### <a name="policy-condition"></a>Beleids voorwaarde
+Een deel van een beveiligings beleid, waarmee de entiteiten (groepen, gebruikers, apps, apparaat-platformen, Apparaatstatus, IP-bereiken, client typen) worden gedefinieerd die zijn opgenomen in het beleid of die daarvan zijn uitgesloten.
 
 ### <a name="policy-rule"></a>Beleidsregel
-The part of a security policy that describes the circumstances that would trigger the policy, and the actions taken when the policy is triggered.
+Het deel van een beveiligings beleid dat de omstandigheden beschrijft waarmee het beleid wordt geactiveerd en de acties die worden uitgevoerd wanneer het beleid wordt geactiveerd.
 
 ### <a name="prevention"></a>Preventie
-An action to prevent damage to the organization through abuse of an identity or device suspected or know to be compromised. A prevention action does not secure the device or identity, and does not resolve previous risk detections.
+Een actie om schade aan de organisatie te voor komen door misbruik van een identiteit of een apparaat waarvoor wordt vermoed dat ze zijn aangetast of waarvan is geknoeid. Een preventieve actie beveiligt niet het apparaat of de identiteit en biedt geen oplossing voor eerdere risico detecties.
 
-### <a name="privileged-user"></a>Privileged (user)
-A user that at the time of a risk detection, had permanent or temporary admin permissions to one or more resources in Azure Active Directory, such as a Global Administrator, Billing Administrator, Service Administrator, User administrator, and Password Administrator. 
+### <a name="privileged-user"></a>Privileged (gebruiker)
+Een gebruiker die op het moment van een risico detectie permanente of tijdelijke beheerders machtigingen had voor een of meer resources in Azure Active Directory, zoals een globale beheerder, facturerings beheerder, service beheerder, gebruikers beheerder en wacht woord Beheerder. 
 
 ### <a name="real-time"></a>Real-time
-See Real-time detection.
+Zie real-time detectie.
 
-### <a name="real-time-detection"></a>Real-time detection
-The detection of anomalies and evaluation of the risk of an event such as sign-in attempt before the event is allowed to proceed.
+### <a name="real-time-detection"></a>Real-time detectie
+De detectie van afwijkingen en de evaluatie van het risico van een gebeurtenis, zoals een aanmeldings poging voordat de gebeurtenis kan door gaan.
 
-### <a name="remediated-risk-detection"></a>Remediated (risk detection)
-A risk detection status set automatically by Identity Protection, indicating that the risk detection was remediated using the standard remediation action for this type of risk detection. For example, when the user password is reset, many risk detections that indicate that the previous password was compromised are automatically remediated.
+### <a name="remediated-risk-detection"></a>Opgelost (risico detectie)
+De status van een risico detectie wordt automatisch ingesteld op identiteits beveiliging, wat aangeeft dat de risico detectie is hersteld met behulp van de standaard actie voor door voeren van dit type risico detectie. Wanneer het wacht woord van de gebruiker bijvoorbeeld opnieuw wordt ingesteld, worden veel risico detecties die aangeven dat het vorige wacht woord is aangetast automatisch hersteld.
 
-### <a name="remediation"></a>Remediation
-An action to secure an identity or a device that were previously suspected or known to be compromised. A remediation action restores the identity or device to a safe state, and resolves previous risk detections associated with the identity or device.
+### <a name="remediation"></a>Herstel
+Een actie voor het beveiligen van een identiteit of een apparaat dat eerder is vermoed of waarvan bekend is dat deze worden aangetast. Met een herstel actie wordt de identiteit of het apparaat teruggezet naar een veilige status en worden eerdere risico detecties die zijn gekoppeld aan de identiteit of het apparaat opgelost.
 
-### <a name="resolved-risk-detection"></a>Resolved (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the user took an appropriate remediation action outside Identity Protection, and that the risk detection should be considered closed.
+### <a name="resolved-risk-detection"></a>Opgelost (risico detectie)
+Een status van een risico detectie is hand matig ingesteld door een gebruiker voor identiteits beveiliging, waarmee wordt aangegeven dat de gebruiker een geschikte herstel actie heeft ondernomen voor externe identiteits beveiliging en dat de risico detectie als gesloten moet worden beschouwd.
 
-### <a name="risk-detection-status"></a>Risk detection status
-A property of a risk detection, indicating whether the event is active, and if closed, the reason for closing it.
+### <a name="risk-detection-status"></a>Status van de risico detectie
+Een eigenschap van een risico detectie, die aangeeft of de gebeurtenis actief is en wanneer deze is gesloten, de reden voor het sluiten ervan.
 
-### <a name="risk-detection-type"></a>Risk detection type
-A category for the risk detection, indicating the type of anomaly that caused the event to be considered risky.
+### <a name="risk-detection-type"></a>Type risico detectie
+Een categorie voor de risico detectie, waarmee wordt aangegeven welk type afwijkingen de gebeurtenis heeft veroorzaakt als riskant beschouwd.
 
-### <a name="risk-level-risk-detection"></a>Risk level (risk detection)
-An indication (High, Medium, or Low) of the severity of the risk detection to help Identity Protection users prioritize the actions they take to reduce the risk to their organization. 
+### <a name="risk-level-risk-detection"></a>Risico niveau (risico detectie)
+Een indicatie (hoog, gemiddeld of laag) van de ernst van de risico detectie om gebruikers met een identiteits beveiliging de prioriteit te geven van de acties die nodig zijn om het risico voor hun organisatie te verminderen. 
 
-### <a name="risk-level-sign-in"></a>Risk level (sign-in)
-An indication (High, Medium, or Low) of the likelihood that for a specific sign-in, someone else is attempting to use the user’s identity.
+### <a name="risk-level-sign-in"></a>Risico niveau (aanmelden)
+Een indicatie (hoog, gemiddeld of laag) van de kans dat voor een bepaalde aanmelding een andere persoon de identiteit van de gebruiker probeert te gebruiken.
 
-### <a name="risk-level-user-compromise"></a>Risk level (user compromise)
-An indication (High, Medium, or Low) of the likelihood that an identity has been compromised.
+### <a name="risk-level-user-compromise"></a>Risico niveau (inbreuk op gebruiker)
+Een indicatie (hoog, gemiddeld of laag) van de kans dat een identiteit is aangetast.
 
-### <a name="risk-level-vulnerability"></a>Risk level (vulnerability)
-An indication (High, Medium, or Low) of the severity of the vulnerability to help Identity Protection users prioritize the actions they take to reduce the risk to their organization.
+### <a name="risk-level-vulnerability"></a>Risico niveau (beveiligingslek)
+Een indicatie (hoog, gemiddeld of laag) van de ernst van het beveiligings probleem om identiteits bescherming gebruikers te helpen bij het bepalen van de acties die nodig zijn om het risico voor hun organisatie te verminderen.
 
-### <a name="secure-identity"></a>Secure (identity)
-Take remediation action such as a password change or machine reimaging to restore a potentially compromised identity to an uncompromised state.
+### <a name="secure-identity"></a>Beveiligen (identiteit)
+Herstel actie uitvoeren, zoals het wijzigen van een wacht woord of het opnieuw instellen van een machine, om een mogelijk schadelijke identiteit te herstellen naar een onaangetaste status.
 
 ### <a name="security-policy"></a>Beveiligingsbeleid
-A collection of policy rules and condition. A policy can be applied to entities such as users, groups, apps, devices, device platforms, device states, IP ranges, and Auth2.0 client types. When a policy is enabled, it is evaluated whenever an entity included in the policy is issued a token for a resource.
+Een verzameling beleids regels en-voor waarden. Een beleid kan worden toegepast op entiteiten zoals gebruikers, groepen, apps, apparaten, apparaat-platforms, Apparaatstatus, IP-bereiken en auth 2.0-client typen. Wanneer een beleid is ingeschakeld, wordt het geëvalueerd wanneer een entiteit die is opgenomen in het beleid, een token voor een resource heeft uitgegeven.
 
-### <a name="sign-in-v"></a>Sign in (v)
-To authenticate to an identity in Azure Active Directory.
+### <a name="sign-in-v"></a>Aanmelden (v)
+Verifiëren met een identiteit in Azure Active Directory.
 
-### <a name="sign-in-n"></a>Sign-in (n)
-The process or action of authenticating an identity in Azure Active Directory, and the event that captures this operation.
+### <a name="sign-in-n"></a>Aanmelden (n)
+Het proces of de actie voor het verifiëren van een identiteit in Azure Active Directory en de gebeurtenis die deze bewerking vastlegt.
 
-### <a name="sign-in-from-anonymous-ip-address"></a>Sign in from anonymous IP address
-A risk detection triggered after a successful sign-in from IP address that has been identified as an anonymous proxy IP address.
+### <a name="sign-in-from-anonymous-ip-address"></a>Aanmelden vanaf een anoniem IP-adres
+Een risico detectie wordt geactiveerd na een geslaagde aanmelding vanaf een IP-adres dat is geïdentificeerd als een IP-adres van een anonieme proxy.
 
-### <a name="sign-in-from-infected-device"></a>Sign in from infected device
-A risk detection triggered when a sign-in originates from an IP address, which is known to be used by one or more compromised devices, which are actively attempting to communicate with a bot server.
+### <a name="sign-in-from-infected-device"></a>Aanmelden vanaf een geïnfecteerd apparaat
+Een risico detectie wordt geactiveerd wanneer een aanmelding afkomstig is van een IP-adres, die bekend is om te worden gebruikt door een of meer apparaten die zijn aangetast en die actief probeert te communiceren met een bot-server.
 
-### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Sign in from IP address with suspicious activity
-A risk detection triggered after a successful sign-in from an IP address with a high number of failed login attempts across multiple user accounts over a short period of time.
+### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Meld u aan bij een IP-adres met verdachte activiteiten
+Een risico detectie wordt geactiveerd na een geslaagde aanmelding vanaf een IP-adres met een groot aantal mislukte aanmeldings pogingen over meerdere gebruikers accounts gedurende een korte periode.
 
-### <a name="sign-in-from-unfamiliar-location"></a>Sign in from unfamiliar location
-A risk detection triggered when a user successfully signs in from a new location (IP, Latitude/Longitude, and ASN).
+### <a name="sign-in-from-unfamiliar-location"></a>Aanmelden vanaf onbekende locatie
+Een risico detectie wordt geactiveerd wanneer een gebruiker zich heeft aangemeld vanaf een nieuwe locatie (IP, breedte graad/lengte graad en ASN).
 
-### <a name="sign-in-risk"></a>Sign-in risk
-See Risk level (sign-in)
+### <a name="sign-in-risk"></a>Aanmeldings risico
+Zie risico niveau (aanmelden)
 
-### <a name="sign-in-risk-policy"></a>Sign-in risk policy
-A Conditional Access policy that evaluates the risk to a specific sign-in and applies mitigations based on predefined conditions and rules.
+### <a name="sign-in-risk-policy"></a>Beleid voor aanmeldings Risico's
+Een beleid voor voorwaardelijke toegang dat het risico op een specifieke aanmelding evalueert en oplossingen toepast op basis van vooraf gedefinieerde voor waarden en regels.
 
-### <a name="user-compromise-risk"></a>User compromise risk
-See Risk level (user compromise)
+### <a name="user-compromise-risk"></a>Risico op inbreuk van gebruiker
+Zie risico niveau (inbreuk op gebruiker)
 
-### <a name="user-risk"></a>User risk
-See Risk level (user compromise).
+### <a name="user-risk"></a>Gebruikers risico
+Zie risico niveau (inbreuk op de gebruiker).
 
-### <a name="user-risk-policy"></a>User risk policy
-A Conditional Access policy that considers the sign-in and applies mitigations based on predefined conditions and rules.
+### <a name="user-risk-policy"></a>Beleid voor gebruikers Risico's
+Een beleid voor voorwaardelijke toegang dat de aanmelding beschouwt en oplossingen op basis van vooraf gedefinieerde voor waarden en regels toepast.
 
 ### <a name="users-flagged-for-risk"></a>Gebruikers voor wie wordt aangegeven dat ze risico lopen
-Users that have risk detections, which are either active or remediated
+Gebruikers die risico detecties hebben, die actief of hersteld zijn
 
-### <a name="vulnerability"></a>Vulnerability
-A configuration or condition in Azure Active Directory, which makes the directory susceptible to exploits or threats.
+### <a name="vulnerability"></a>Dit
+Een configuratie of voor waarde in Azure Active Directory, waardoor de Directory gevoelig is voor aanvallen of bedreigingen.
 
 ## <a name="see-also"></a>Zie ook
 

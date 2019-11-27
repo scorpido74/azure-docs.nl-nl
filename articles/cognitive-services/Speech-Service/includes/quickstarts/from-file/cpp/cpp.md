@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Recognize speech from an audio file, C++ - Speech Service'
+title: 'Quick Start: spraak herkennen vanuit een audio bestand C++ ,-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: Nader te bepalen
+description: NOG TE BEPALEN
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -17,7 +17,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260706"
 ---
-**Choose your target environment**
+**Kies uw doel omgeving**
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 [!INCLUDE [linux](./linux.md)]
 #### <a name="macostabmacos"></a>[MacOS](#tab/macOS)

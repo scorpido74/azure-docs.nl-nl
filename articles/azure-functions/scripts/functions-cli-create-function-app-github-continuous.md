@@ -1,27 +1,19 @@
 ---
-title: Een functie in Azure maken die wordt geïmplementeerd vanuit GitHub | Microsoft Docs
+title: Een functie-app maken met GitHub-implementatie-Azure CLI
 description: Maak een functie-app en implementeer functiecode vanuit een GitHub-opslagplaats met behulp van Azure Functions.
-services: functions
-ms.service: azure-functions
-keywords: ''
-ms.devlang: azurecli
-author: ggailey777
-ms.author: glenga
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: b973e6538a7639f4119e4407d96e6d9d8f959cbb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 37dc0235b258f6d47f8813546fe953e92799454a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325762"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532805"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>Een functie-app in Azure maken die wordt geïmplementeerd vanuit GitHub
 
 Met dit Azure Functions-voorbeeldscript wordt een functie-app gemaakt met behulp van het [verbruiksabonnement](../functions-scale.md#consumption-plan), samen met de bijbehorende resources. Het script configureert ook de functiecode voor continue implementatie vanuit een GitHub-opslagplaats. 
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 Voor dit voorbeeld hebt u het volgende nodig:
 
@@ -48,12 +40,12 @@ Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Hiermee maakt u het opslagaccount dat vereist is voor de functie-app. |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Hiermee maakt u een functie-app in het serverloze [verbruiksabonnement](../functions-scale.md#consumption-plan) en koppelt u deze aan een Git- of Mercurial-opslagplaats. |
+| [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Hiermee maakt u het opslagaccount dat vereist is voor de functie-app. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Hiermee maakt u een functie-app in het serverloze [verbruiksabonnement](../functions-scale.md#consumption-plan) en koppelt u deze aan een Git- of Mercurial-opslagplaats. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Aanvullende CLI-voorbeeldscripts voor Azure Functions vindt u in de [Azure Functions-documentatie](../functions-cli-samples.md).

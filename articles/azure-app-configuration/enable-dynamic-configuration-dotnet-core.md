@@ -119,7 +119,7 @@ De methode `ConfigureRefresh` wordt gebruikt om de instellingen op te geven die 
 
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/dotnet-core-app-run.png)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 1. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutels bij:
 

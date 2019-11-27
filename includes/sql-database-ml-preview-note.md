@@ -13,7 +13,7 @@ ms.lasthandoff: 11/25/2019
 ms.locfileid: "74462112"
 ---
 > [!IMPORTANT]
-> Azure SQL Database Machine Learning Services is currently in preview. Sign up for the preview is currently closed.
+> Azure SQL Database Machine Learning Services is momenteel beschikbaar als preview-versie. Registreren voor de preview is momenteel gesloten.
 > 
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.

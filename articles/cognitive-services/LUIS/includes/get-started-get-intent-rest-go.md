@@ -1,5 +1,5 @@
 ---
-title: Get intent with REST call in Go
+title: Alles voor deel nemen met de REST-oproep in go
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -19,7 +19,7 @@ ms.locfileid: "74414464"
 
 * [Go](https://golang.org/)-programmeertaal  
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* ID van open bare app: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-sleutel ophalen
 
@@ -27,7 +27,7 @@ ms.locfileid: "74414464"
 
 ## <a name="get-intent-programmatically"></a>De intentie programmatisch ophalen
 
-Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+Gebruik Go om een query uit te geven op het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-prediction) en een Voorspellings resultaat te krijgen.
 
 1. Maak een nieuw bestand met de naam `predict.go`. Voeg de volgende code toe:
     
@@ -83,12 +83,12 @@ Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction
     }
     ```
 
-1. Replace the following values:
+1. Vervang de volgende waarden:
 
-    * `YOUR-KEY` with your starter key.
-    * `YOUR-ENDPOINT` with your endpoint. Bijvoorbeeld `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` met uw start sleutel.
+    * `YOUR-ENDPOINT` met uw eind punt. Bijvoorbeeld `westus2.api.cognitive.microsoft.com`.
 
-1. With a command prompt in the same directory as where you created the file, enter the following command to compile the Go file:
+1. Voer bij een opdracht prompt in de map waarin u het bestand hebt gemaakt de volgende opdracht in om het Go-bestand te compileren:
 
     ```console
     go build predict.go
@@ -111,7 +111,7 @@ Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
     ```
 
-    JSON formatted for readability:
+    JSON-indeling voor lees baarheid:
 
     ```json
     {
@@ -161,9 +161,9 @@ Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-When you are finished with this quickstart, delete the file from the file system. 
+Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Uitingen en Train toevoegen](../get-started-get-model-rest-apis.md)

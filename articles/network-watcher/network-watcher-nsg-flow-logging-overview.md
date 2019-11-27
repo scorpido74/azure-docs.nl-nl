@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 373a3a66044f996edee904c0073dcb0deb58a85b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: 490f2e7bb394d6593e51438c1e484a4677c963a3
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277988"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539354"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen
 
@@ -87,6 +87,12 @@ Voor voortzetting *C* en de laatste *E* stroom status zijn de aantallen voor byt
 De volgende tekst is een voor beeld van een stroom logboek. Zoals u ziet, zijn er meerdere records die voldoen aan de eigenschappen lijst die in de voor gaande sectie wordt beschreven.
 
 ## <a name="nsg-flow-logging-considerations"></a>Aandachtspunten voor NSG flow-logboek registratie
+
+**Overwegingen voor het opslag account**: 
+
+1. Locatie: het gebruikte opslag account moet zich in dezelfde regio bevinden als de NSG.
+2. Geen firewall: NSG-stroom logboeken worden niet voorbereid als [vertrouwde micro soft-service voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services). Zie [Hoe kan ik de firewall op mijn opslag account uitschakelen?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) om de firewall uit te scha kelen. 
+3. Geen service-eind punten: vanwege een huidige beperking kunnen Logboeken alleen rechtstreeks worden verzonden naar opslag accounts en niet via service-eind punten. Zie [Hoe kan ik NSG-stroom Logboeken gebruiken met Service-eind punten?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) voor hulp bij het verwijderen van bestaande service-eind punten.
 
 **Schakel logboek registratie van de NSG-stroom in op alle nsg's die zijn gekoppeld aan een resource**: stroom logboek registratie in Azure is geconfigureerd op de NSG-resource. Een stroom wordt alleen gekoppeld aan één NSG-regel. In scenario's waarin meerdere Nsg's worden gebruikt, raden wij aan dat logboek registratie voor NSG-flow is ingeschakeld op alle Nsg's het subnet of de netwerk interface van een resource heeft toegepast om ervoor te zorgen dat alle verkeer wordt geregistreerd. Bekijk [hoe verkeer wordt geëvalueerd](../virtual-network/security-overview.md#how-traffic-is-evaluated) voor meer informatie over netwerk beveiligings groepen. 
 

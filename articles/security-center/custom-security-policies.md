@@ -1,6 +1,6 @@
 ---
-title: Create custom security policies in Azure Security Center | Microsoft Docs
-description: Azure custom policy definitions monitored by Azure Security Center.
+title: Aangepaste beveiligings beleidsregels maken in Azure Security Center | Microsoft Docs
+description: Aangepaste beleids definities van Azure worden bewaakt door Azure Security Center.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -15,60 +15,60 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483959"
 ---
-# <a name="using-custom-security-policies-preview"></a>Using custom security policies (Preview)
+# <a name="using-custom-security-policies-preview"></a>Aangepaste beveiligings beleidsregels gebruiken (preview-versie)
 
-To help secure your systems and environment, Azure Security Center generates security recommendations. These recommendations are based on industry best practices, which are incorporated into the generic, default security policy supplied to all customers. They can also come from Security Center's knowledge of industry and regulatory standards.
+Azure Security Center beveiligings aanbevelingen worden gegenereerd om uw systemen en omgeving te beveiligen. Deze aanbevelingen zijn gebaseerd op de best practices van de branche, die zijn opgenomen in het algemene standaard beveiligings beleid dat aan alle klanten wordt verstrekt. Ze kunnen ook afkomstig zijn van de kennis van de branche-en regelgevings normen van Security Center.
 
-With this preview feature, you can add your own *custom* initiatives. You'll then receive recommendations if your environment doesn't follow the policies you create.
+Met deze preview-functie kunt u uw eigen *aangepaste* initiatieven toevoegen. U ontvangt dan aanbevelingen als uw omgeving niet voldoet aan het beleid dat u maakt.
 
-As discussed [here](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) in the Azure Policy documentation, when you specify a location for your custom initiative, it must be a management group or a subscription. 
+Zoals beschreven [in](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) de documentatie van Azure Policy, moet u, wanneer u een locatie opgeeft voor uw aangepaste initiatief, een beheer groep of een abonnement zijn. 
 
-## <a name="to-add-a-custom-initiative-to-your-subscription"></a>To add a custom initiative to your subscription 
+## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Een aangepast initiatief toevoegen aan uw abonnement 
 
-1. From Security Center's sidebar, open the **Security policy** page.
+1. Open de pagina **beveiligings beleid** vanuit de zijbalk van Security Center.
 
-1. Select a subscription or Management Group to which you would like to add a custom initiative.
+1. Selecteer een abonnement of beheer groep waaraan u een aangepast initiatief wilt toevoegen.
 
-    [![Selecting a subscription for which you'll create your custom policy](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
+    [![het selecteren van een abonnement waarvoor u uw aangepaste beleid maakt](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > You must add custom standards at the subscription level (or higher) for them to be evaluated and displayed in Security Center. 
+    > U moet aangepaste standaarden toevoegen op het abonnements niveau (of hoger) om ze te evalueren en weer te geven in Security Center. 
     >
-    > When you add a custom standard, it assigns an *initiative* to that scope. We therefore recommend that you select the widest scope required for that assignment.
+    > Wanneer u een aangepaste standaard toevoegt, wijst deze een *initiatief* toe aan dat bereik. Daarom raden we u aan om het breedste bereik te selecteren dat vereist is voor de toewijzing.
 
-1. In the Security policy page, under Your custom initiatives (Preview), click **Add a custom initiative**.
+1. Klik op de pagina beveiligings beleid, onder uw aangepaste initiatieven (preview), op **een aangepast initiatief toevoegen**.
 
-    [![Click **Add a custom initiative**](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![op * * een aangepast initiatief toevoegen * *](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
-    The following page appears:
+    De volgende pagina wordt weer gegeven:
 
-    ![Create or add a policy](media/custom-security-policies/create-or-add-custom-policy.png)
+    ![Een beleid maken of toevoegen](media/custom-security-policies/create-or-add-custom-policy.png)
 
-1. In the Add custom initiatives page, review the list of custom policies already created in your organization. If you see one you want to assign to your subscription, click **Add**. If there isn't an initiative in the list that meets your needs, skip this step.
+1. Bekijk op de pagina aangepaste initiatieven toevoegen de lijst met aangepaste beleids regels die al zijn gemaakt in uw organisatie. Als u een account wilt toewijzen aan uw abonnement, klikt u op **toevoegen**. Als er geen initiatief in de lijst is die aan uw behoeften voldoet, kunt u deze stap overs Laan.
 
-1. To create a new custom initiative:
+1. Een nieuw aangepast initiatief maken:
 
-    1. Click **Create new**.
-    1. Enter the definition's location and name.
-    1. Select the policies to include and click **Add**.
-    1. Enter any desired parameters.
+    1. Klik op **nieuwe maken**.
+    1. Voer de locatie en naam van de definitie in.
+    1. Selecteer het beleid dat u wilt insluiten en klik op **toevoegen**.
+    1. Voer de gewenste para meters in.
     1. Klik op **Opslaan**.
-    1. In the Add custom initiatives page, click refresh and your new initiative will be shown as available.
-    1. Click **Add** and assign it to your subscription.
+    1. Klik op de pagina aangepaste initiatieven toevoegen op vernieuwen en uw nieuwe initiatief wordt weer gegeven als beschikbaar.
+    1. Klik op **toevoegen** en wijs deze toe aan uw abonnement.
 
     > [!NOTE]
-    > Creating new initiatives requires subscription owner credentials. For more information about Azure roles, see [Permissions in Azure Security Center](security-center-permissions.md).
+    > Voor het maken van nieuwe initiatieven zijn referenties van abonnements eigenaren vereist. Zie [machtigingen in azure Security Center](security-center-permissions.md)voor meer informatie over Azure-rollen.
 
-1. To see the resulting recommendations for your policy, click **Recommendations** from the sidebar to open the recommendations page. The recommendations will appear with a “Custom” label and be available within approximately one hour.
+1. Als u de resulterende aanbevelingen voor uw beleid wilt zien, klikt u op de zijbalk op **aanbevelingen** om de pagina aanbevelingen te openen. De aanbevelingen worden weer gegeven met een aangepast label en zijn binnen ongeveer een uur beschikbaar.
 
-    [![Custom recommendations](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+    [Aangepaste aanbevelingen ![](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this article, you learned how to create custom security policies. 
+In dit artikel hebt u geleerd hoe u een aangepast beveiligings beleid maakt. 
 
-For other related material, see the following articles: 
+Raadpleeg de volgende artikelen voor meer gerelateerde materialen: 
 
-- [The overview of security policies](tutorial-security-policy.md)
-- [A list of the built-in security policies](security-center-policy-definitions.md)
+- [Het overzicht van beveiligings beleid](tutorial-security-policy.md)
+- [Een lijst met ingebouwde beveiligings beleidsregels](security-center-policy-definitions.md)

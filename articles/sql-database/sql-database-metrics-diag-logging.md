@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/15/2019
-ms.openlocfilehash: 27810f2ee1bc95c924003cd8a5944860df40db14
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
-ms.translationtype: HT
+ms.openlocfilehash: 95953b4f052531c9804024410e225bb0b5c62aef
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420818"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539187"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrische gegevens en logboek registratie van diagnostische gegevens
 
@@ -41,9 +41,9 @@ Dit artikel bevat richt lijnen voor het inschakelen van diagnostische telemetrie
 
 U kunt metrische gegevens en diagnostische gegevens over telemetrie inschakelen en beheren met een van de volgende methoden:
 
-- Azure Portal
+- Azure-portal
 - PowerShell
-- Azure CLI
+- Azure-CLI
 - Azure Monitor REST API
 - Azure Resource Manager-sjabloon
 
@@ -79,9 +79,9 @@ U kunt Azure SQL-data bases en exemplaar databases instellen om de volgende diag
 > Elastische Pools en beheerde instanties hebben hun eigen afzonderlijke diagnostische gegevens over de telemetrie van de data bases die ze bevatten. Dit is belang rijk om aan te geven dat telemetrie van diagnostische gegevens afzonderlijk is geconfigureerd voor elk van deze resources, zoals hieronder wordt beschreven.
 
 > [!NOTE]
-> Beveiligings controle en SQLSecurityAuditEvents-logboeken kunnen niet worden ingeschakeld vanuit de diagnostische instellingen van de data base (hoewel op het scherm wordt weer gegeven). Als u controle logboek streaming wilt inschakelen, raadpleegt [u controle instellen voor uw data base](sql-database-auditing.md#subheading-2)en controleert u [logboeken in azure monitor logboeken en Azure Event hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
+> Als u controle logboek streaming wilt inschakelen, raadpleegt [u controle instellen voor uw data base](sql-database-auditing.md#subheading-2)en controleert u [logboeken in azure monitor logboeken en Azure Event hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portal
 
 U kunt het menu **Diagnostische instellingen** gebruiken voor elke afzonderlijke, gepoolde of exemplaar database in azure portal voor het configureren van streaming van diagnostische gegevens over de telemetrie. Daarnaast kan diagnostische telemetrie ook afzonderlijk worden geconfigureerd voor database containers: elastische Pools en beheerde exemplaren. U kunt de volgende bestemmingen instellen voor het streamen van de telemetrie diagnostische gegevens: Azure Storage, Azure Event Hubs en Azure Monitor Logboeken.
 
@@ -91,7 +91,7 @@ U kunt het menu **Diagnostische instellingen** gebruiken voor elke afzonderlijke
 
 U kunt een resource voor een elastische pool instellen om de volgende diagnostische gegevens te verzamelen:
 
-| Bron | Telemetrie controleren |
+| Resource | Telemetrie controleren |
 | :------------------- | ------------------- |
 | **Elastische pool** | [Basis metrieken](sql-database-metrics-diag-logging.md#basic-metrics) bevatten EDTU/CPU-percentage, EDTU/CPU-limiet, fysiek gegevens Lees percentage, logboek schrijf percentage, sessie percentage, werk nemer-percentage, opslag, opslag percentage, opslag limiet en XTP opslag percentage. |
 
@@ -145,7 +145,7 @@ Ga als volgt te werk om streaming van diagnostische gegevens over de telemetrie 
 1. Herhaal deze stappen voor elke Data Base die u wilt bewaken.
 
 > [!NOTE]
-> Beveiligings controle en SQLSecurityAuditEvents-logboeken kunnen niet worden ingeschakeld vanuit de diagnostische instellingen van de data base (hoewel op het scherm wordt weer gegeven). Als u controle logboek streaming wilt inschakelen, raadpleegt [u controle instellen voor uw data base](sql-database-auditing.md#subheading-2)en controleert u [logboeken in azure monitor logboeken en Azure Event hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
+> Als u controle logboek streaming wilt inschakelen, raadpleegt [u controle instellen voor uw data base](sql-database-auditing.md#subheading-2)en controleert u [logboeken in azure monitor logboeken en Azure Event hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 
 > [!TIP]
 > Herhaal deze stappen voor elke Azure SQL Database die u wilt bewaken.
@@ -156,7 +156,7 @@ Ga als volgt te werk om streaming van diagnostische gegevens over de telemetrie 
 
 U kunt een beheerde exemplaar bron instellen om de volgende diagnostische telemetrie te verzamelen:
 
-| Bron | Telemetrie controleren |
+| Resource | Telemetrie controleren |
 | :------------------- | ------------------- |
 | **Beheerd exemplaar** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) bevat vCores aantal, gemiddeld CPU-percentage, i/o-aanvragen, lees-en schrijf bewerkingen in bytes, gereserveerde opslag ruimte en gebruikte opslag ruimte. |
 
@@ -270,7 +270,7 @@ Geef de resource-ID van de werk ruimte \<$WSID\> als een para meter bij het uitv
 
    Vervang \<subID\> door de abonnements-ID \<RG_NAME\> met de naam van de resource groep en \<WS_NAME\> met de naam van de werk ruimte.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 U kunt metrische gegevens en diagnostische logboek registratie inschakelen met behulp van de Azure CLI.
 
@@ -440,7 +440,7 @@ Raadpleeg de volgende tabellen voor meer informatie over basis gegevens per reso
 
 |**Resource**|**Metrische gegevens**|
 |---|---|
-|Azure SQL Database|DTU-percentage, gebruikte DTU, DTU-limiet, CPU-percentage, fysiek gegevens Lees percentage, logboek schrijf percentage, geslaagd/mislukt/geblokkeerd door Firewall verbindingen, percentages van werk nemers, opslag, opslag percentage, XTP opslag percentage en deadlocks |
+|Azure SQL-database|DTU-percentage, gebruikte DTU, DTU-limiet, CPU-percentage, fysiek gegevens Lees percentage, logboek schrijf percentage, geslaagd/mislukt/geblokkeerd door Firewall verbindingen, percentages van werk nemers, opslag, opslag percentage, XTP opslag percentage en deadlocks |
 
 ## <a name="advanced-metrics"></a>Geavanceerde metrische gegevens
 
@@ -466,7 +466,7 @@ Details van de telemetrie die beschikbaar zijn voor alle logboeken, worden besch
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
 |Categorie|De naam van de categorie. Altijd: ResourceUsageStats |
-|Bron|Naam van de resource |
+|Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: MANAGEDINSTANCES |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -492,7 +492,7 @@ Details van de telemetrie die beschikbaar zijn voor alle logboeken, worden besch
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
 |Categorie|De naam van de categorie. Altijd: QueryStoreRuntimeStatistics |
 |OperationName|Naam van de bewerking. Altijd: QueryStoreRuntimeStatisticsEvent |
-|Bron|Naam van de resource |
+|Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -543,7 +543,7 @@ Meer informatie over [gegevens van runtime statistieken voor query Store](https:
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
 |Categorie|De naam van de categorie. Altijd: QueryStoreWaitStatistics |
 |OperationName|Naam van de bewerking. Altijd: QueryStoreWaitStatisticsEvent |
-|Bron|Naam van de resource |
+|Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -581,7 +581,7 @@ Meer informatie over [query Store-wacht statistieken](https://docs.microsoft.com
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
 |Categorie|De naam van de categorie. Altijd: fouten |
 |OperationName|Naam van de bewerking. Altijd: ErrorEvent |
-|Bron|Naam van de resource |
+|Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -592,7 +592,7 @@ Meer informatie over [query Store-wacht statistieken](https://docs.microsoft.com
 |Bericht|Fout bericht in tekst zonder opmaak |
 |user_defined_b|Is de door de gebruiker gedefinieerde fout |
 |error_number_d|Foutcode |
-|Ernst|Ernst van de fout |
+|Severity|Ernst van de fout |
 |state_d|Status van de fout |
 |query_hash_s|Query-hash van de mislukte query, indien beschikbaar |
 |query_plan_hash_s|Query plan-hash van de mislukte query, indien beschikbaar |
@@ -610,7 +610,7 @@ Meer informatie over [SQL Server fout berichten](https://docs.microsoft.com/sql/
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
 |Categorie|De naam van de categorie. Altijd: DatabaseWaitStatistics |
 |OperationName|Naam van de bewerking. Altijd: DatabaseWaitStatisticsEvent |
-|Bron|Naam van de resource |
+|Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -639,7 +639,7 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
 |Categorie|De naam van de categorie. Altijd: time-outs |
 |OperationName|Naam van de bewerking. Altijd: TimeoutEvent |
-|Bron|Naam van de resource |
+|Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -662,7 +662,7 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
 |Categorie|De naam van de categorie. Altijd: blokken |
 |OperationName|Naam van de bewerking. Altijd: BlockEvent |
-|Bron|Naam van de resource |
+|Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -686,7 +686,7 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
 |Categorie|De naam van de categorie. Altijd: deadlocks |
 |OperationName|Naam van de bewerking. Altijd: DeadlockEvent |
-|Bron|Naam van de resource |
+|Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -706,7 +706,7 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
 |Categorie|De naam van de categorie. Altijd: AutomaticTuning |
-|Bron|Naam van de resource |
+|Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |

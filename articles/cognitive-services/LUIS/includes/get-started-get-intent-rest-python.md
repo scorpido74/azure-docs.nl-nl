@@ -1,5 +1,5 @@
 ---
-title: Get intent with REST call in Python
+title: Doel intentie met REST-aanroep in python
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -19,17 +19,17 @@ ms.locfileid: "74414584"
 
 * [Python 3.6](https://www.python.org/downloads/) of later.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* ID van open bare app: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-sleutel ophalen
 
 [!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
-## <a name="get-intent-from-the-prediction-endpoint"></a>Get intent from the prediction endpoint
+## <a name="get-intent-from-the-prediction-endpoint"></a>Intentie ophalen uit het Voorspellings eindpunt
 
-Use Python to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+Gebruik python om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-prediction) te doorzoeken en een Voorspellings resultaat te krijgen.
 
-1. Copy this code snippet into a file called `predict.py`:
+1. Kopieer dit code fragment naar een bestand met de naam `predict.py`:
 
     ```python
     ########### Python 3.6 #############
@@ -62,30 +62,30 @@ Use Python to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predic
         print(f'{e}')
     ```
 
-1. Replace the following values:
+1. Vervang de volgende waarden:
 
-    * `YOUR-KEY` with your starter key.
-    * `YOUR-ENDPOINT` with your endpoint. Bijvoorbeeld `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` met uw start sleutel.
+    * `YOUR-ENDPOINT` met uw eind punt. Bijvoorbeeld `westus2.api.cognitive.microsoft.com`.
 
-1. Install the `requests` dependency. This is used to make HTTP requests:
+1. Installeer de `requests` afhankelijkheid. Dit wordt gebruikt om HTTP-aanvragen te maken:
 
     ```console
     pip install requests
     ```
 
-1. Run your script with this console command:
+1. Voer het script uit met deze console opdracht:
 
     ```console
     python predict.py
     ``` 
 
-1. Review the prediction response, which is returned as JSON:
+1. Bekijk het Voorspellings antwoord dat wordt geretourneerd als JSON:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Here's the JSON response formatted for readability: 
+    Dit is het JSON-antwoord dat is opgemaakt voor de Lees baarheid: 
 
     ```JSON
     {
@@ -134,9 +134,9 @@ Use Python to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predic
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-When you are finished with this quickstart, delete the file from the file system. 
+Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Uitingen en Train toevoegen](../get-started-get-model-rest-apis.md)

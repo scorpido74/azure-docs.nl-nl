@@ -21,7 +21,7 @@ ms.locfileid: "74451585"
 
     ![De knop Train](../media/train-button-preview.png)
 
-2. Training is complete when you see the status confirming success.
+2. De training is voltooid wanneer u de status bevestigend ziet.
 
     > [!Tip]
-    > **Notifications** is available in the top-right navigation and includes a history.
+    > **Meldingen** zijn beschikbaar in de rechter bovenhoek en bevatten een geschiedenis.

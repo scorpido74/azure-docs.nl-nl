@@ -1,7 +1,7 @@
 ---
-title: Install Speech containers - Speech Service
+title: Spraak containers installeren-spraak service
 titleSuffix: Azure Cognitive Services
-description: Install and run speech containers. Speech-to-text transcribes audio streams to text in real time that your applications, tools, or devices can consume or display. Text-to-speech converts input text into human-like synthesized speech.
+description: Installeer en voer spraak containers uit. Met spraak naar tekst worden audio stromen naar tekst getranscribeerd in realtime die uw toepassingen, hulpprogram ma's of apparaten kunnen gebruiken of weer geven. Tekst-naar-spraak zet invoer tekst om in humane-achtige, gesynthesizerde spraak.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -17,37 +17,37 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325868"
 ---
-# <a name="install-and-run-speech-service-containers-preview"></a>Install and run Speech Service containers (Preview)
+# <a name="install-and-run-speech-service-containers-preview"></a>Speech Service-containers installeren en uitvoeren (preview-versie)
 
-Containers enable you to run some of the Speech Service APIs in your own environment. Containers are great for specific security and data governance requirements. In this article you'll learn how to download, install, and run a Speech container.
+Met containers kunt u enkele Api's van de speech-service uitvoeren in uw eigen omgeving. Containers zijn geweldig voor specifieke vereisten voor beveiliging en gegevens beheer. In dit artikel leert u hoe u een spraak container downloadt, installeert en uitvoert.
 
-Speech containers enable customers to build a speech application architecture that is optimized for both robust cloud capabilities and edge locality. There are four different containers available. The two standard containers are **Speech-to-text** and **Text-to-speech**. The two custom containers are **Custom Speech-to-text** and **Custom Text-to-speech**.
+Met spraak containers kunnen klanten een spraak toepassings architectuur maken die is geoptimaliseerd voor zowel robuuste Cloud mogelijkheden als Edge-locatie. Er zijn vier verschillende containers beschikbaar. De twee standaard containers zijn **spraak-naar-tekst** en **tekst-naar-spraak**. De twee aangepaste containers zijn **Custom speech-naar-tekst** -en **aangepaste tekst-naar-spraak**.
 
 > [!IMPORTANT]
-> All speech containers are currently offered as part of a [Public "Gated" Preview](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio). An announcement will be made when speech containers progress to General Availability (GA).
+> Alle spraak containers worden momenteel aangeboden als onderdeel van een [open bare preview-versie](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio). Er wordt een aankondiging gedaan wanneer de voortgang van de spraak containers op algemene Beschik baarheid (GA) wordt weer gegeven.
 
-| Functie | Functies | Latest |
+| Functie | Functies | Jongste |
 |--|--|--|
-| Spraak naar tekst | Transcribes continuous real-time speech or batch audio recordings into text with intermediate results. | 2.0.0 |
-| Custom Speech-to-text | Using a custom model from the [Custom Speech portal](https://speech.microsoft.com/customspeech), transcribes continuous real-time speech or batch audio recordings into text with intermediate results. | 2.0.0 |
-| Tekst naar spraak | Converts text to natural-sounding speech with plain text input or Speech Synthesis Markup Language (SSML). | 1.3.0 |
-| Custom Text-to-speech | Using a custom model from the [Custom Voice portal](https://aka.ms/custom-voice-portal), converts text to natural-sounding speech with plain text input or Speech Synthesis Markup Language (SSML). | 1.3.0 |
+| Spraak naar tekst | Transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.0.0 |
+| Custom Speech-naar-tekst | Door gebruik te maken van een aangepast model van de [Custom speech Portal](https://speech.microsoft.com/customspeech), transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.0.0 |
+| Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.3.0 |
+| Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.3.0 |
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-The following prerequisites before using Speech containers:
+De volgende vereisten voordat u spraak containers gebruikt:
 
-| Verplicht | Doel |
+| Vereist | Doel |
 |--|--|
-| Docker Engine | You need the Docker Engine installed on a [host computer](#the-host-computer). Docker provides packages that configure the Docker environment on [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), and [Linux](https://docs.docker.com/engine/installation/#supported-platforms). For a primer on Docker and container basics, see the [Docker overview](https://docs.docker.com/engine/docker-overview/).<br><br> Docker must be configured to allow the containers to connect with and send billing data to Azure. <br><br> **On Windows**, Docker must also be configured to support Linux containers.<br><br> |
-| Familiarity with Docker | You should have a basic understanding of Docker concepts, like registries, repositories, containers, and container images, as well as knowledge of basic `docker` commands. |
-| Speech resource | In order to use these containers, you must have:<br><br>An Azure _Speech_ resource to get the associated API key and endpoint URI. Both values are available on the Azure portal's **Speech** Overview and Keys pages. They are both required to start the container.<br><br>**{API_KEY}** : One of the two available resource keys on the **Keys** page<br><br>**{ENDPOINT_URI}** : The endpoint as provided on the **Overview** page |
+| Docker-engine | De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie het [docker-overzicht](https://docs.docker.com/engine/docker-overview/)voor een primer op basis van docker en container.<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br> |
+| Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker`-opdrachten. |
+| Spraak resource | Als u deze containers wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure- _spraak_ bron om de bijbehorende API-sleutel en eind punt-URI op te halen. Beide waarden zijn beschikbaar op het **spraak** overzicht van de Azure Portal en op de pagina sleutels. Ze zijn beide nodig om de container te starten.<br><br>**{API_KEY}** : een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina **overzicht** |
 
-## <a name="request-access-to-the-container-registry"></a>Request access to the container registry
+## <a name="request-access-to-the-container-registry"></a>Toegang aanvragen tot het container register
 
-Fill out and submit the [Cognitive Services Speech Containers Request form](https://aka.ms/speechcontainerspreview/) to request access to the container. 
+Vul het [aanvraag formulier voor de Cognitive Services spraak containers](https://aka.ms/speechcontainerspreview/) in en verzend het om toegang tot de container aan te vragen. 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -55,194 +55,194 @@ Fill out and submit the [Cognitive Services Speech Containers Request form](http
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-## <a name="the-host-computer"></a>The host computer
+## <a name="the-host-computer"></a>De hostcomputer
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="advanced-vector-extension-support"></a>Advanced Vector Extension support
+### <a name="advanced-vector-extension-support"></a>Ondersteuning voor geavanceerde vector uitbreidingen
 
-The **host** is the computer that runs the docker container. The host *must support* [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). You can check for AVX2 support on Linux hosts with the following command:
+De **host** is de computer waarop de docker-container wordt uitgevoerd. De host *moet ondersteuning bieden* voor [Geavanceerde vector uitbreidingen](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). U kunt de AVX2-ondersteuning op Linux-hosts controleren met de volgende opdracht:
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 > [!WARNING]
-> The host computer is *required* to support AVX2. The container *will not* function correctly without AVX2 support.
+> De hostcomputer is *vereist* voor de ondersteuning van AVX2. De container werkt *niet* correct zonder ondersteuning voor AVX2.
 
-### <a name="container-requirements-and-recommendations"></a>Container requirements and recommendations
+### <a name="container-requirements-and-recommendations"></a>Containervereisten en aanbevelingen
 
-The following table describes the minimum and recommended allocation of resources for each Speech container.
+In de volgende tabel wordt de minimale en aanbevolen toewijzing van resources voor elke spraak container beschreven.
 
 # <a name="speech-to-texttabstt"></a>[Spraak naar tekst](#tab/stt)
 
 | Container | Minimum | Aanbevolen |
 |-----------|---------|-------------|
-| Spraak naar tekst | 2 core, 2-GB memory | 4 core, 4-GB memory |
+| Spraak naar tekst | 2 Core, 2 GB geheugen | 4-core, 4 GB geheugen |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-to-text](#tab/cstt)
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
 | Container | Minimum | Aanbevolen |
 |-----------|---------|-------------|
-| Custom Speech-to-text | 2 core, 2-GB memory | 4 core, 4-GB memory |
+| Custom Speech-naar-tekst | 2 Core, 2 GB geheugen | 4-core, 4 GB geheugen |
 
 # <a name="text-to-speechtabtts"></a>[Tekst naar spraak](#tab/tts)
 
 | Container | Minimum | Aanbevolen |
 |-----------|---------|-------------|
-| Tekst naar spraak | 1 core, 2-GB memory | 2 core, 3-GB memory |
+| Tekst naar spraak | 1 Core, 2 GB geheugen | 2 Core, 3 GB geheugen |
 
-# <a name="custom-text-to-speechtabctts"></a>[Custom Text-to-speech](#tab/ctts)
+# <a name="custom-text-to-speechtabctts"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
 | Container | Minimum | Aanbevolen |
 |-----------|---------|-------------|
-| Custom Text-to-speech | 1 core, 2-GB memory | 2 core, 3-GB memory |
+| Aangepaste tekst-naar-spraak | 1 Core, 2 GB geheugen | 2 Core, 3 GB geheugen |
 
 ***
 
-* Each core must be at least 2.6 gigahertz (GHz) or faster.
+* Elke kern moet ten minste 2,6 gigahertz (GHz) of sneller zijn.
 
-Core and memory correspond to the `--cpus` and `--memory` settings, which are used as part of the `docker run` command.
+Core en geheugen komen overeen met de instellingen `--cpus` en `--memory` die worden gebruikt als onderdeel van de `docker run` opdracht.
 
 > [!NOTE]
-> The minimum and recommended are based off of Docker limits, *not* the host machine resources. For example, speech-to-text containers memory map portions of a large language model, and it is *recommended* that the entire file fits in memory, which is an additional 4-6 GB. Also, the first run of either container may take longer, since models are being paged into memory.
+> De minimale en aanbevolen waarde zijn gebaseerd op de limieten van docker, *niet* op de hostcomputer. Bijvoorbeeld: spraak naar tekst containers delen van een groot taal model en het wordt *Aanbevolen* dat het hele bestand in het geheugen past, wat een extra 4-6 GB is. Het is ook mogelijk dat de eerste uitvoering van een van de containers langer duurt, omdat modellen in het geheugen worden gewisseld.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Get the container image with `docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie met `docker pull` ophalen
 
-Container images for Speech are available in the following Container Registry.
+Container installatie kopieën voor spraak zijn beschikbaar in de volgende Container Registry.
 
 # <a name="speech-to-texttabstt"></a>[Spraak naar tekst](#tab/stt)
 
-| Container | Repository |
+| Container | Opslagplaats |
 |-----------|------------|
 | Spraak naar tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-to-text](#tab/cstt)
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
-| Container | Repository |
+| Container | Opslagplaats |
 |-----------|------------|
-| Custom Speech-to-text | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
+| Custom Speech-naar-tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
 # <a name="text-to-speechtabtts"></a>[Tekst naar spraak](#tab/tts)
 
-| Container | Repository |
+| Container | Opslagplaats |
 |-----------|------------|
 | Tekst naar spraak | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
-# <a name="custom-text-to-speechtabctts"></a>[Custom Text-to-speech](#tab/ctts)
+# <a name="custom-text-to-speechtabctts"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
-| Container | Repository |
+| Container | Opslagplaats |
 |-----------|------------|
-| Custom Text-to-speech | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
+| Aangepaste tekst-naar-spraak | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
 
 ***
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-speech-containers"></a>Docker pull for the Speech containers
+### <a name="docker-pull-for-the-speech-containers"></a>Docker-pull voor de spraak containers
 
 # <a name="speech-to-texttabstt"></a>[Spraak naar tekst](#tab/stt)
 
-#### <a name="docker-pull-for-the-speech-to-text-container"></a>Docker pull for the Speech-to-text container
+#### <a name="docker-pull-for-the-speech-to-text-container"></a>Docker-pull voor de spraak-naar-tekst-container
 
-Use the [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) command to download a container image from Container Preview registry.
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest
 ```
 
 > [!IMPORTANT]
-> The `latest` tag pulls the `en-US` locale. For additional locales see [Speech-to-text locales](#speech-to-text-locales).
+> De `latest` tag trekt de `en-US` land instelling. Zie voor aanvullende land instellingen voor [spraak naar tekst](#speech-to-text-locales).
 
-#### <a name="speech-to-text-locales"></a>Speech-to-text locales
+#### <a name="speech-to-text-locales"></a>Spraak-naar-tekst-land instellingen
 
-All tags, except for `latest` are in the following format and are case-sensitive:
+Alle labels, met uitzonde ring van `latest`, hebben de volgende indeling en zijn hoofdletter gevoelig:
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
 ```
 
-The following tag is an example of the format:
+De volgende code is een voor beeld van de indeling:
 
 ```
 2.0.0-amd64-en-us-preview
 ```
 
-For all of the supported locales of the **speech-to-text** container, please see [Speech-to-text image tags](../containers/container-image-tags.md#speech-to-text).
+Zie voor alle ondersteunde land instellingen van de **spraak-naar-tekst** -container Tags voor [spraak-naar-tekst-afbeelding](../containers/container-image-tags.md#speech-to-text).
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-to-text](#tab/cstt)
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
-#### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>Docker pull for the Custom Speech-to-text container
+#### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>Docker-pull voor de Custom Speech-naar-tekst-container
 
-Use the [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) command to download a container image from Container Preview registry.
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest
 ```
 
 > [!NOTE]
-> The `locale` and `voice` for custom Speech containers is determined by the custom model ingested by the container.
+> De `locale` en `voice` voor aangepaste spraak containers worden bepaald door het aangepaste model dat door de container is opgenomen.
 
 # <a name="text-to-speechtabtts"></a>[Tekst naar spraak](#tab/tts)
 
-#### <a name="docker-pull-for-the-text-to-speech-container"></a>Docker pull for the Text-to-speech container
+#### <a name="docker-pull-for-the-text-to-speech-container"></a>Docker-pull voor de tekst-naar-spraak-container
 
-Use the [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) command to download a container image from Container Preview registry.
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest
 ```
 
 > [!IMPORTANT]
-> The `latest` tag pulls the `en-US` locale and `jessarus` voice. For additional locales see [Text-to-speech locales](#text-to-speech-locales).
+> De `latest` tag haalt de `en-US` land instellingen en `jessarus` stem op. Zie [land instellingen voor tekst naar spraak](#text-to-speech-locales)voor aanvullende land instellingen.
 
-#### <a name="text-to-speech-locales"></a>Text-to-speech locales
+#### <a name="text-to-speech-locales"></a>Land instellingen voor tekst naar spraak
 
-All tags, except for `latest` are in the following format and are case-sensitive:
+Alle labels, met uitzonde ring van `latest`, hebben de volgende indeling en zijn hoofdletter gevoelig:
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
 ```
 
-The following tag is an example of the format:
+De volgende code is een voor beeld van de indeling:
 
 ```
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-For all of the supported locales and corresponding voices of the **text-to-speech** container, please see [Text-to-speech image tags](../containers/container-image-tags.md#text-to-speech).
+Zie [tekst-naar-spraak-afbeeldings Tags](../containers/container-image-tags.md#text-to-speech)voor alle ondersteunde land instellingen en overeenkomstige stemmen van de **tekst-naar-spraak** -container.
 
 > [!IMPORTANT]
-> When constructing a *Standard Text-to-speech* HTTP POST, the [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) message requires a `voice` element with a `name` attribute. The value is the corresponding container locale and voice, also known as the ["short name"](language-support.md#standard-voices). For example, the `latest` tag would have a voice name of `en-US-JessaRUS`.
+> Bij het maken van een *standaard tekst-naar-spraak* -http post moet het [SSML-bericht (Speech synthese Markup Language)](speech-synthesis-markup.md) een `voice`-element met een `name` kenmerk hebben. De waarde is de overeenkomstige land instellingen voor containers en spraak, ook wel bekend als de [' short name '](language-support.md#standard-voices). Het `latest` label zou bijvoorbeeld een spraak naam van `en-US-JessaRUS`hebben.
 
-# <a name="custom-text-to-speechtabctts"></a>[Custom Text-to-speech](#tab/ctts)
+# <a name="custom-text-to-speechtabctts"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
-#### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Docker pull for the Custom Text-to-speech container
+#### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Docker-pull voor de aangepaste tekst-naar-spraak-container
 
-Use the [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) command to download a container image from Container Preview registry.
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest
 ```
 
 > [!NOTE]
-> The `locale` and `voice` for custom Speech containers is determined by the custom model ingested by the container.
+> De `locale` en `voice` voor aangepaste spraak containers worden bepaald door het aangepaste model dat door de container is opgenomen.
 
 ***
 
-## <a name="how-to-use-the-container"></a>How to use the container
+## <a name="how-to-use-the-container"></a>De container gebruiken
 
-Once the container is on the [host computer](#the-host-computer), use the following process to work with the container.
+Wanneer de container zich op de [hostcomputer](#the-host-computer)bevindt, gebruikt u het volgende proces om met de container te werken.
 
-1. [Run the container](#run-the-container-with-docker-run), with the required billing settings. More [examples](speech-container-configuration.md#example-docker-run-commands) of the `docker run` command are available.
-1. [Query the container's prediction endpoint](#query-the-containers-prediction-endpoint).
+1. [Voer de container uit](#run-the-container-with-docker-run)met de vereiste facturerings instellingen. Er zijn meer [voor beelden](speech-container-configuration.md#example-docker-run-commands) van de `docker run`-opdracht beschikbaar.
+1. [Zoek het Voorspellings eindpunt van de container](#query-the-containers-prediction-endpoint)op.
 
-## <a name="run-the-container-with-docker-run"></a>Run the container with `docker run`
+## <a name="run-the-container-with-docker-run"></a>De container met `docker run` uitvoeren
 
-Use the [docker run](https://docs.docker.com/engine/reference/commandline/run/) command to run the container. Refer to [gathering required parameters](#gathering-required-parameters) for details on how to get the `{Endpoint_URI}` and `{API_Key}` values. Additional [examples](speech-container-configuration.md#example-docker-run-commands) of the `docker run` command are also available.
+Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het ophalen van de `{Endpoint_URI}` en `{API_Key}` waarden. Er zijn ook aanvullende [voor beelden](speech-container-configuration.md#example-docker-run-commands) van de opdracht `docker run` beschikbaar.
 
 # <a name="speech-to-texttabstt"></a>[Spraak naar tekst](#tab/stt)
 
-To run the *Speech-to-text* container, execute the following `docker run` command.
+Voer de `docker run` volgende opdracht uit om de *spraak-naar-tekst-* container uit te voeren.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -252,35 +252,35 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-This command:
+Deze opdracht:
 
-* Runs a *Speech-to-text* container from the container image.
-* Allocates 4 CPU cores and 4 gigabytes (GB) of memory.
-* Exposes TCP port 5000 and allocates a pseudo-TTY for the container.
-* Automatically removes the container after it exits. The container image is still available on the host computer.
+* Voert een *spraak-naar-tekst* -container uit vanuit de container installatie kopie.
+* Wijst 4 CPU-kernen en 4 GB aan geheugen toe.
+* Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
+* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-to-text](#tab/cstt)
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
-The *Custom Speech-to-text* container relies on a custom speech model. The custom model has to have been [trained](how-to-custom-speech-train-model.md) using the [custom speech portal](https://speech.microsoft.com/customspeech). The custom speech **Model ID** is required to run the container. It can be found on the **Training** page of the custom speech portal. From the custom speech portal, navigate to the **Training** page and select the model.
+De *Custom speech-naar-tekst* -container is afhankelijk van een aangepast spraak model. Het aangepaste model moet zijn [getraind](how-to-custom-speech-train-model.md) met behulp van de [aangepaste spraak Portal](https://speech.microsoft.com/customspeech). De ID van het aangepaste spraak **model** is vereist voor het uitvoeren van de container. U kunt dit vinden op de pagina **training** van de portal voor aangepaste spraak. Ga in de aangepaste spraak Portal naar de pagina **training** en selecteer het model.
 <br>
 
-![Custom speech training page](media/custom-speech/custom-speech-model-training.png)
+![Pagina aangepaste spraak training](media/custom-speech/custom-speech-model-training.png)
 
-Obtain the **Model ID** to use as the argument to the `ModelId` parameter of the `docker run` command.
+Haal de **model-id** op die moet worden gebruikt als argument voor de para meter `ModelId` van de opdracht `docker run`.
 <br>
 
-![Custom speech model details](media/custom-speech/custom-speech-model-details.png)
+![Details van het aangepaste spraak model](media/custom-speech/custom-speech-model-details.png)
 
-The following table represents the various `docker run` parameters and their corresponding descriptions:
+De volgende tabel bevat de verschillende `docker run` para meters en de bijbehorende beschrijvingen:
 
 | Parameter | Beschrijving |
 |---------|---------|
-| `{VOLUME_MOUNT}` | The host computer [volume mount](https://docs.docker.com/storage/volumes/), which docker uses to persist the custom model. For example, *C:\CustomSpeech* where the *C drive* is located on the host machine. |
-| `{MODEL_ID}` | The Custom Speech **Model ID** from the **Training** page of the custom speech portal. |
-| `{ENDPOINT_URI}` | The endpoint is required for metering and billing. For more information, see [gathering required parameters](#gathering-required-parameters). |
-| `{API_KEY}` | The API key is required. For more information, see [gathering required parameters](#gathering-required-parameters). |
+| `{VOLUME_MOUNT}` | Het [volume](https://docs.docker.com/storage/volumes/)van de hostcomputer, dat door docker wordt gebruikt om het aangepaste model persistent te maken. Bijvoorbeeld *C:\CustomSpeech* waarbij *station C* zich op de hostcomputer bevindt. |
+| `{MODEL_ID}` | De ID van het Custom Speech **model** op de pagina **training** van de portal voor aangepaste spraak. |
+| `{ENDPOINT_URI}` | Het eind punt is vereist voor het meten en factureren. Zie [vereiste para meters verzamelen](#gathering-required-parameters)voor meer informatie. |
+| `{API_KEY}` | De API-sleutel is vereist. Zie [vereiste para meters verzamelen](#gathering-required-parameters)voor meer informatie. |
 
-To run the *Custom Speech-to-text* container, execute the following `docker run` command:
+Als u de *Custom speech-naar-tekst* -container wilt uitvoeren, voert u de volgende `docker run`-opdracht uit:
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -292,19 +292,19 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-This command:
+Deze opdracht:
 
-* Runs a *Custom Speech-to-text* container from the container image.
-* Allocates 4 CPU cores and 4 gigabytes (GB) of memory.
-* Loads the *Custom Speech-to-Text* model from the volume input mount, for example *C:\CustomSpeech*.
-* Exposes TCP port 5000 and allocates a pseudo-TTY for the container.
-* Downloads the model given the `ModelId` (if not found on the volume mount).
-* If the custom model was previously downloaded, the `ModelId` is ignored.
-* Automatically removes the container after it exits. The container image is still available on the host computer.
+* Hiermee wordt een *Custom speech-naar-tekst* -container uitgevoerd vanuit de container installatie kopie.
+* Wijst 4 CPU-kernen en 4 GB aan geheugen toe.
+* Hiermee wordt het *Custom speech-naar-tekst-* model geladen vanuit de volume-invoer koppeling, bijvoorbeeld *C:\CustomSpeech*.
+* Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
+* Hiermee downloadt u het model op basis van de `ModelId` (indien niet gevonden op de volume koppeling).
+* Als het aangepaste model eerder is gedownload, wordt de `ModelId` genegeerd.
+* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
 # <a name="text-to-speechtabtts"></a>[Tekst naar spraak](#tab/tts)
 
-To run the *Text-to-speech* container, execute the following `docker run` command.
+Voer de volgende `docker run` opdracht uit om de *tekst-naar-spraak-* container uit te voeren.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -314,35 +314,35 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-This command:
+Deze opdracht:
 
-* Runs a *Text-to-speech* container from the container image.
-* Allocates 2 CPU cores and one gigabyte (GB) of memory.
-* Exposes TCP port 5000 and allocates a pseudo-TTY for the container.
-* Automatically removes the container after it exits. The container image is still available on the host computer.
+* Voert een *tekst-naar-spraak* -container uit vanuit de container installatie kopie.
+* Wijst twee CPU-kernen en een gigabyte (GB) aan geheugen toe.
+* Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
+* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-# <a name="custom-text-to-speechtabctts"></a>[Custom Text-to-speech](#tab/ctts)
+# <a name="custom-text-to-speechtabctts"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
-The *Custom Text-to-speech* container relies on a custom voice model. The custom model has to have been [trained](how-to-custom-voice-create-voice.md) using the [custom voice portal](https://aka.ms/custom-voice-portal). The custom voice **Model ID** is required to run the container. It can be found on the **Training** page of the custom voice portal. From the custom voice portal, navigate to the **Training** page and select the model.
+De *aangepaste tekst-naar-spraak* -container is afhankelijk van een aangepast spraak model. Het aangepaste model moet zijn [getraind](how-to-custom-voice-create-voice.md) met behulp van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal). De ID van het aangepaste spraak **model** is vereist voor het uitvoeren van de container. U kunt dit vinden op de pagina **training** van de aangepaste Voice Portal. Ga vanuit de aangepaste Voice Portal naar de pagina **training** en selecteer het model.
 <br>
 
-![Custom voice training page](media/custom-voice/custom-voice-model-training.png)
+![Pagina aangepaste spraak training](media/custom-voice/custom-voice-model-training.png)
 
-Obtain the **Model ID** to use as the argument to the `ModelId` parameter of the docker run command.
+Haal de **model-id** op die moet worden gebruikt als argument voor de para meter `ModelId` van de opdracht docker run.
 <br>
 
-![Custom voice model details](media/custom-voice/custom-voice-model-details.png)
+![Aangepaste Details van het spraak model](media/custom-voice/custom-voice-model-details.png)
 
-The following table represents the various `docker run` parameters and their corresponding descriptions:
+De volgende tabel bevat de verschillende `docker run` para meters en de bijbehorende beschrijvingen:
 
 | Parameter | Beschrijving |
 |---------|---------|
-| `{VOLUME_MOUNT}` | The host computer [volume mount](https://docs.docker.com/storage/volumes/), which docker uses to persist the custom model. For example, *C:\CustomSpeech* where the *C drive* is located on the host machine. |
-| `{MODEL_ID}` | The Custom Speech **Model ID** from the **Training** page of the custom voice portal. |
-| `{ENDPOINT_URI}` | The endpoint is required for metering and billing. For more information, see [gathering required parameters](#gathering-required-parameters). |
-| `{API_KEY}` | The API key is required. For more information, see [gathering required parameters](#gathering-required-parameters). |
+| `{VOLUME_MOUNT}` | Het [volume](https://docs.docker.com/storage/volumes/)van de hostcomputer, dat door docker wordt gebruikt om het aangepaste model persistent te maken. Bijvoorbeeld *C:\CustomSpeech* waarbij *station C* zich op de hostcomputer bevindt. |
+| `{MODEL_ID}` | De ID van het Custom Speech **model** op de pagina **training** van de aangepaste Voice Portal. |
+| `{ENDPOINT_URI}` | Het eind punt is vereist voor het meten en factureren. Zie [vereiste para meters verzamelen](#gathering-required-parameters)voor meer informatie. |
+| `{API_KEY}` | De API-sleutel is vereist. Zie [vereiste para meters verzamelen](#gathering-required-parameters)voor meer informatie. |
 
-To run the *Custom Text-to-speech* container, execute the following `docker run` command:
+Als u de *aangepaste tekst-naar-spraak-* container wilt uitvoeren, voert u de volgende `docker run`-opdracht uit:
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -354,63 +354,63 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-This command:
+Deze opdracht:
 
-* Runs a *Custom Text-to-speech* container from the container image.
-* Allocates 2 CPU cores and one gigabyte (GB) of memory.
-* Loads the *Custom Text-to-speech* model from the volume input mount, for example *C:\CustomVoice*.
-* Exposes TCP port 5000 and allocates a pseudo-TTY for the container.
-* Downloads the model given the `ModelId` (if not found on the volume mount).
-* If the custom model was previously downloaded, the `ModelId` is ignored.
-* Automatically removes the container after it exits. The container image is still available on the host computer.
+* Hiermee wordt een *aangepaste tekst-naar-spraak-* container uitgevoerd vanuit de container installatie kopie.
+* Wijst twee CPU-kernen en een gigabyte (GB) aan geheugen toe.
+* Hiermee wordt het *aangepaste tekst-naar-spraak* -model geladen vanuit de volume-invoer koppeling, bijvoorbeeld *C:\CustomVoice*.
+* Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
+* Hiermee downloadt u het model op basis van de `ModelId` (indien niet gevonden op de volume koppeling).
+* Als het aangepaste model eerder is gedownload, wordt de `ModelId` genegeerd.
+* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
 ***
 
 > [!IMPORTANT]
-> The `Eula`, `Billing`, and `ApiKey` options must be specified to run the container; otherwise, the container won't start.  For more information, see [Billing](#billing).
+> De opties `Eula`, `Billing`en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
 
-## <a name="query-the-containers-prediction-endpoint"></a>Query the container's prediction endpoint
+## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
 
 | Container | Eindpunt | Protocol |
 |--|--|--|
 | Spraak naar tekst | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
-| Custom Speech-to-text | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
+| Custom Speech-naar-tekst | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
 | Tekst naar spraak | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
-| Custom Text-to-speech | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
+| Aangepaste tekst-naar-spraak | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
 
-For more information on using WSS and HTTPS protocols, see [container security](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
+Zie [Container Security](../cognitive-services-container-support.md#azure-cognitive-services-container-security)(Engelstalig) voor meer informatie over het gebruik van WSS-en HTTPS-protocollen.
 
 [!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
 
-### <a name="text-to-speech-or-custom-text-to-speech"></a>Text-to-speech or Custom Text-to-speech
+### <a name="text-to-speech-or-custom-text-to-speech"></a>Tekst-naar-spraak of aangepaste tekst-naar-spraak
 
 [!INCLUDE [Query Text-to-speech container endpoint](includes/text-to-speech-container-query-endpoint.md)]
 
-### <a name="run-multiple-containers-on-the-same-host"></a>Run multiple containers on the same host
+### <a name="run-multiple-containers-on-the-same-host"></a>Meerdere containers op dezelfde host uitvoeren
 
-If you intend to run multiple containers with exposed ports, make sure to run each container with a different exposed port. For example, run the first container on port 5000 and the second container on port 5001.
+Als u van plan bent om meerdere containers met blootgestelde poorten uit te voeren, moet u ervoor zorgen dat elke container wordt uitgevoerd met een andere beschik bare poort. Voer bijvoorbeeld de eerste container uit op poort 5000 en de tweede container op poort 5001.
 
-You can have this container and a different Azure Cognitive Services container running on the HOST together. You also can have multiple containers of the same Cognitive Services container running.
+U kunt deze container en een andere Azure Cognitive Services-container die samen op de HOST wordt uitgevoerd. U kunt ook meerdere containers van hetzelfde Cognitive Services-container uitvoeren.
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Stop the container
+## <a name="stop-the-container"></a>De container stoppen
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-When starting or running the container, you may experience issues. Use an output [mount](speech-container-configuration.md#mount-settings) and enable logging. Doing so will allow the container to generate log files that are helpful when troubleshooting issues.
+Wanneer u de container start of uitvoert, kunnen er problemen optreden. Gebruik een uitvoer [koppeling](speech-container-configuration.md#mount-settings) en schakel logboek registratie in. Als u dit doet, kan de container logboek bestanden genereren die handig zijn bij het oplossen van problemen.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Billing
 
-The Speech containers send billing information to Azure, using a *Speech* resource on your Azure account.
+De spraak containers verzenden facturerings gegevens naar Azure met behulp van een *spraak* bron op uw Azure-account.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-For more information about these options, see [Configure containers](speech-container-configuration.md).
+Zie [containers configureren](speech-container-configuration.md)voor meer informatie over deze opties.
 
 <!--blogs/samples/video courses -->
 
@@ -418,23 +418,23 @@ For more information about these options, see [Configure containers](speech-cont
 
 ## <a name="summary"></a>Samenvatting
 
-In this article, you learned concepts and workflow for downloading, installing, and running Speech containers. Samenvatting:
+In dit artikel hebt u concepten en werk stromen geleerd om spraak containers te downloaden, te installeren en uit te voeren. Samenvatting:
 
-* Speech provides four Linux containers for Docker, encapsulating various capabilities:
+* Spraak biedt vier Linux-containers voor docker, die verschillende mogelijkheden inkapselen:
   * *Spraak naar tekst*
-  * *Custom Speech-to-text*
+  * *Custom Speech-naar-tekst*
   * *Tekst naar spraak*
-  * *Custom Text-to-speech*
-* Container images are downloaded from the container registry in Azure.
-* Container images run in Docker.
-* You can use either the REST API or SDK to call operations in Speech containers by specifying the host URI of the container.
-* You're required to provide billing information when instantiating a container.
+  * *Aangepaste tekst-naar-spraak*
+* Container installatie kopieën worden gedownload uit het container register in Azure.
+* Containerinstallatiekopieën uitvoeren in Docker.
+* U kunt de REST API of SDK gebruiken voor het aanroepen van bewerkingen in spraak containers door de URI van de host op te geven van de container.
+* U moet facturerings gegevens opgeven bij het instantiëren van een container.
 
 > [!IMPORTANT]
->  Cognitive Services containers are not licensed to run without being connected to Azure for metering. Customers need to enable the containers to communicate billing information with the metering service at all times. Cognitive Services containers do not send customer data (e.g., the image or text that is being analyzed) to Microsoft.
+>  Cognitive Services-containers zijn geen licentie om uit te voeren zonder verbinding met Azure voor het meten. Klanten moeten de containers om te communiceren factureringsgegevens met de softwarelicentiecontrole-service te allen tijde inschakelen. Cognitive Services-containers verzenden klantgegevens (zoals de afbeelding of tekst die wordt geanalyseerd) niet naar Microsoft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Review [configure containers](speech-container-configuration.md) for configuration settings
-* Learn how to [use Speech Service containers with Kubernetes and Helm](speech-container-howto-on-premises.md)
-* Use more [Cognitive Services containers](../cognitive-services-container-support.md)
+* Containers voor configuratie-instellingen [configureren](speech-container-configuration.md) controleren
+* Meer informatie over het [gebruik van Speech Service-containers met Kubernetes en helm](speech-container-howto-on-premises.md)
+* Meer [Cognitive Services containers](../cognitive-services-container-support.md) gebruiken

@@ -1,6 +1,6 @@
 ---
-title: Time sync for Linux VMs in Azure
-description: Time sync for Linux virtual machines.
+title: Tijd synchronisatie voor virtuele Linux-machines in azure
+description: Tijd synchronisatie voor virtuele Linux-machines.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -13,99 +13,99 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2f8ba53080b10568a3ac74e9ad2a81114e1c7c93
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1e459e96c128e20f44f1a5adcb18c5b1824c3bf5
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206710"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534125"
 ---
-# <a name="time-sync-for-linux-vms-in-azure"></a>Time sync for Linux VMs in Azure
+# <a name="time-sync-for-linux-vms-in-azure"></a>Tijd synchronisatie voor virtuele Linux-machines in azure
 
-Time sync is important for security and event correlation. Sometimes it is used for distributed transactions implementation. Time accuracy between multiple computer systems is achieved through synchronization. Synchronization can be affected by multiple things, including reboots and network traffic between the time source and the computer fetching the time. 
+Tijd synchronisatie is belang rijk voor beveiliging en gebeurtenis correlatie. Soms wordt deze gebruikt voor de implementatie van gedistribueerde trans acties. Nauw keurigheid van de tijd tussen meerdere computer systemen wordt bereikt via synchronisatie. Synchronisatie kan worden beïnvloed door meerdere dingen, zoals opnieuw opstarten en netwerk verkeer tussen de tijd bron en de computer die de tijd ophaalt. 
 
-Azure is backed by infrastructure running Windows Server 2016. Windows Server 2016 has improved algorithms used to correct time and condition the local clock to synchronize with UTC.  The Windows Server 2016 Accurate Time feature greatly improved how the VMICTimeSync service that governs VMs with the host for accurate time. Improvements include more accurate initial time on VM start or VM restore and interrupt latency correction. 
+Azure wordt ondersteund door een infra structuur waarop Windows Server 2016 wordt uitgevoerd. Windows Server 2016 heeft verbeterde algoritmen gebruikt voor het corrigeren van tijd en voor waarde dat de lokale klok moet worden gesynchroniseerd met UTC.  De functie Windows Server 2016 nauw keurige tijd is aanzienlijk verbeterd hoe de VMICTimeSync-service die virtuele machines met de host bestuurt voor nauw keurige tijd. Verbeteringen bevatten meer nauw keurige initiële tijd bij het starten van de VM of het herstellen van VM'S en de onderbreking van de latentie. 
 
 >[!NOTE]
->For a quick overview of Windows Time service, take a look at this [high-level overview video](https://aka.ms/WS2016TimeVideo).
+>Bekijk deze [overzichts video op hoog niveau](https://aka.ms/WS2016TimeVideo)voor een snel overzicht van de Windows Time-service.
 >
-> For more information, see [Accurate time for Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> Zie voor meer informatie [nauw keurige tijd voor Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Overzicht
 
-Accuracy for a computer clock is gauged on how close the computer clock is to the Coordinated Universal Time (UTC) time standard. UTC is defined by a multinational sample of precise atomic clocks that can only be off by one second in 300 years. But, reading UTC directly requires specialized hardware. Instead, time servers are synced to UTC and are accessed from other computers to provide scalability and robustness. Every computer has time synchronization service running that knows what time servers to use and periodically checks if computer clock needs to be corrected and adjusts time if needed. 
+Nauw keurigheid van de klok van een computer wordt aangegeven hoe dicht de computer klok is tot de UTC-tijd (Coordinated Universal Time). UTC wordt gedefinieerd door een multi nationaal voor beeld van nauw keurige atomische klokken die in 300 jaar slechts voor één seconde kunnen worden uitgeschakeld. Maar voor het lezen van UTC is echter gespecialiseerde hardware vereist. Tijd servers worden in plaats daarvan gesynchroniseerd naar UTC en zijn toegankelijk vanaf andere computers om te voorzien in schaal baarheid en robuustheid. Elke computer beschikt over een time-synchronisatie service die weet op welke tijd servers moet worden gebruikt en controleert periodiek of de computer klok moet worden gecorrigeerd en de tijd indien nodig wordt aangepast. 
 
-Azure hosts are synchronized to internal Microsoft time servers that take their time from Microsoft-owned Stratum 1 devices, with GPS antennas. Virtual machines in Azure can either depend on their host to pass the accurate time (*host time*) on to the VM or the VM can directly get time from a time server, or a combination of both. 
+Azure-hosts worden gesynchroniseerd met interne micro soft-tijd servers die hun tijd van micro soft-apparaten met stratum 1 innemen, met GPS-antennes. Virtuele machines in azure kunnen afhankelijk zijn van hun host om de nauw keurige tijd (*hosttijd*) op te geven voor de virtuele machine, of de VM kan rechtstreeks tijd ophalen van een tijd server of een combi natie van beide. 
 
-On stand-alone hardware, the Linux OS only reads the host hardware clock on boot. After that, the clock is maintained using the interrupt timer in the Linux kernel. In this configuration, the clock will drift over time. In newer Linux distributions on Azure, VMs can use the VMICTimeSync provider, included in the Linux integration services (LIS), to query for clock updates from the host more frequently.
+Op zelfstandige hardware leest het Linux-besturings systeem alleen de hardware-klok van de host bij het opstarten. Daarna wordt de klok onderhouden met behulp van de interrupt-timer in de Linux-kernel. In deze configuratie wordt de klok na verloop van tijd overgeschakeld. In nieuwere Linux-distributies in azure kunnen Vm's de VMICTimeSync-provider gebruiken, opgenomen in de LIS (Linux Integration Services), om regel matig een query uit te lopen op klok updates van de host.
 
-Virtual machine interactions with the host can also affect the clock. During [memory preserving maintenance](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot), VMs are paused for up to 30 seconds. For example, before maintenance begins the VM clock shows 10:00:00 AM and lasts 28 seconds. After the VM resumes, the clock on the VM would still show 10:00:00 AM, which would be 28 seconds off. To correct for this, the VMICTimeSync service monitors what is happening on the host and prompts for changes to happen on the VMs to compensate.
+De interactie van virtuele machines met de host kan ook van invloed zijn op de klok. Tijdens het [geheugen behoud](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)van het onderhoud worden vm's gedurende Maxi maal 30 seconden onderbroken. Voordat het onderhoud begint, wordt de VM-klok bijvoorbeeld 10:00:00 uur en de laatste 28 seconden weer gegeven. Nadat de VM is hervat, wordt de klok op de VM nog steeds 10:00:00 uur weer gegeven. Dit is 28 seconden. Als u dit wilt corrigeren, wordt door de VMICTimeSync-service gecontroleerd wat er gebeurt op de host en wordt u gevraagd of er wijzigingen moeten worden aangebracht op de Vm's om te compenseren.
 
-Without time synchronization working, the clock on the VM would accumulate errors. When there is only one VM, the effect might not be significant unless the workload requires highly accurate timekeeping. But in most cases, we have multiple, interconnected VMs that use time to track transactions and the time needs to be consistent throughout the entire deployment. When time between VMs is different, you could see the following effects:
+Zonder tijd synchronisatie werkt de klok op de VM over fouten. Wanneer er slechts één virtuele machine is, is het effect mogelijk niet significant, tenzij de werk belasting zeer nauw keurige keurige vereist. Maar in de meeste gevallen hebben we meerdere, onderling verbonden Vm's die gebruikmaken van tijd voor het bijhouden van trans acties en de tijd moeten consistent zijn gedurende de hele implementatie. Wanneer de tijd tussen Vm's afwijkt, ziet u de volgende effecten:
 
-- Authentication will fail. Security protocols like Kerberos or certificate-dependent technology rely on time being consistent across the systems.
-- It's very hard to figure out what have happened in a system if logs (or other data) don't agree on time. The same event would look like it occurred at different times, making correlation difficult.
-- If clock is off, the billing could be calculated incorrectly.
+- De verificatie mislukt. Beveiligings protocollen zoals Kerberos of een certificaat afhankelijke technologie zijn afhankelijk van de tijd die consistent is op de systemen.
+- Het is heel moeilijk om erachter te komen wat er is gebeurd in een systeem als Logboeken (of andere gegevens) niet op tijd overeenkomen. Dezelfde gebeurtenis zou er op verschillende tijdstippen uit kunnen zien, waardoor de correlatie moeilijk is.
+- Als de klok is uitgeschakeld, kan de factuur onjuist worden berekend.
 
 
 
 ## <a name="configuration-options"></a>Configuratie-opties
 
-There are generally three ways to configure time sync for your Linux VMs hosted in Azure:
+Er zijn in het algemeen drie manieren om tijd synchronisatie te configureren voor uw virtuele Linux-machines die worden gehost in Azure:
 
-- The default configuration for Azure Marketplace images uses both NTP time and VMICTimeSync host-time. 
-- Host-only using VMICTimeSync.
-- Use another, external time server with or without using VMICTimeSync host-time.
+- De standaard configuratie voor installatie kopieën van Azure Marketplace maakt gebruik van de NTP-tijd en de VMICTimeSync-host. 
+- Alleen host met behulp van VMICTimeSync.
+- Gebruik een andere, externe tijd server met of zonder gebruik te maken van VMICTimeSync-hosttijd.
 
 
-### <a name="use-the-default"></a>Use the default
+### <a name="use-the-default"></a>De standaard waarde gebruiken
 
-By default, most Azure Marketplace images for Linux are configured to sync from two sources: 
+De meeste installatie kopieën van Azure Marketplace voor Linux zijn standaard geconfigureerd om te synchroniseren vanaf twee bronnen: 
 
-- NTP as primary, which gets time from an NTP server. For example, Ubuntu 16.04 LTS Marketplace images use **ntp.ubuntu.com**.
-- The VMICTimeSync service as secondary, used to communicate the host time to the VMs and make corrections after the VM is paused for maintenance. Azure hosts use Microsoft-owned Stratum 1 devices to keep accurate time.
+- NTP als primair, waarmee tijd wordt opgehaald van een NTP-server. Ubuntu 16,04 LTS Marketplace-installatie kopieën gebruiken bijvoorbeeld **NTP.Ubuntu.com**.
+- De VMICTimeSync-service als secundair, wordt gebruikt om de hosttijd te communiceren met de Vm's en om correcties aan te brengen nadat de virtuele machine voor onderhoud is onderbroken. Azure-hosts gebruiken micro soft-systemen met stratum 1 om nauw keurige tijd te hand haven.
 
-In newer Linux distributions, the VMICTimeSync service uses the precision time protocol (PTP), but earlier distributions may not support PTP and will fall-back to NTP for getting time from the host.
+In nieuwere Linux-distributies maakt de VMICTimeSync-service gebruik van het Precision-tijd Protocol (PTP), maar eerdere distributies bieden geen ondersteuning voor PTP en vallen terug naar NTP voor het verkrijgen van tijd van de host.
 
-To confirm NTP is synchronizing correctly, run the `ntpq -p` command.
+Voer de `ntpq -p` opdracht uit om te controleren of NTP correct synchroniseert.
 
-### <a name="host-only"></a>Host-only 
+### <a name="host-only"></a>Alleen host 
 
-Because NTP servers like time.windows.com and ntp.ubuntu.com are public, syncing time with them requires sending traffic over the internet. Varying packet delays can negatively affect quality of the time sync. Removing NTP by switching to host-only sync can sometimes improve your time sync results.
+Omdat NTP-servers, zoals time.windows.com en ntp.ubuntu.com, openbaar zijn, is het verzenden van verkeer via internet vereist voor de synchronisatie tijd. Verschillende pakket vertragingen kunnen een negatieve invloed hebben op de kwaliteit van de tijd synchronisatie. Als u NTP verwijdert door te scha kelen naar de alleen-host synchronisatie, kunnen de synchronisatie resultaten soms worden verbeterd.
 
-Switching to host-only time sync makes sense if you experience time sync issues using the default configuration. Try out the host-only sync to see if that would improve the time sync on your VM. 
+Overschakelen naar een alleen-host-tijd synchronisatie is zinvol als u tijd synchronisatie problemen ondervindt met de standaard configuratie. Probeer de alleen-host synchronisatie uit om te zien of dit de tijd synchronisatie op uw virtuele machine zou verbeteren. 
 
-### <a name="external-time-server"></a>External time server
+### <a name="external-time-server"></a>Externe tijd server
 
-If you have specific time sync requirements, there is also an option of using external time servers. External time servers can provide specific time, which can be useful for test scenarios, ensuring time uniformity with machines hosted in non-Microsoft datacenters, or handling leap seconds in a special way.
+Als u specifieke tijd synchronisatie vereisten hebt, is er ook een optie voor het gebruik van externe tijd servers. Externe tijd servers kunnen specifieke tijd opgeven, wat nuttig kan zijn voor test scenario's, waardoor de tijd uniform is met computers die worden gehost in niet-micro soft-data centers, of een schrikkel seconde op een speciale manier kunnen verwerken.
 
-You can combine an external time server with the VMICTimeSync service to provide results similar to the default configuration. Combining an external time server with VMICTimeSync is the best option for dealing with issues that can be cause when VMs are paused for maintenance. 
+U kunt een externe tijd server combi neren met de VMICTimeSync-service om resultaten te leveren die vergelijkbaar zijn met de standaard configuratie. Het combi neren van een externe tijd server met VMICTimeSync is de beste optie voor het oplossen van problemen die kunnen optreden wanneer Vm's voor onderhoud worden onderbroken. 
 
-## <a name="tools-and-resources"></a>Tools and resources
+## <a name="tools-and-resources"></a>Hulp middelen en bronnen
 
-There are some basic commands for checking your time synchronization configuration. Documentation for Linux distribution will have more details on the best way to configure time synchronization for that distribution.
+Er zijn enkele basis opdrachten voor het controleren van de synchronisatie configuratie van uw tijd. Documentatie voor Linux-distributie bevat meer informatie over de beste manier om tijd synchronisatie voor die distributie te configureren.
 
-### <a name="integration-services"></a>Integration services
+### <a name="integration-services"></a>Integratie Services
 
-Check to see if the integration service (hv_utils) is loaded.
+Controleer of de integratie service (hv_utils) is geladen.
 
 ```bash
 lsmod | grep hv_utils
 ```
-You should see something similar to this:
+Er wordt een fout weer gegeven die er ongeveer als volgt uitziet:
 
 ```
 hv_utils               24418  0
 hv_vmbus              397185  7 hv_balloon,hyperv_keyboard,hv_netvsc,hid_hyperv,hv_utils,hyperv_fb,hv_storvsc
 ```
 
-See if the Hyper-V integration services daemon is running.
+Controleer of de Hyper-V Integration Services-daemon wordt uitgevoerd.
 
 ```bash
 ps -ef | grep hv
 ```
 
-You should see something similar to this:
+Er wordt een fout weer gegeven die er ongeveer als volgt uitziet:
 
 ```
 root        229      2  0 17:52 ?        00:00:00 [hv_vmbus_con]
@@ -113,57 +113,57 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>Check for PTP
+### <a name="check-for-ptp"></a>Controleren op PTP
 
-With newer versions of Linux, a Precision Time Protocol (PTP) clock source is available as part of the VMICTimeSync provider. On older versions of Red Hat Enterprise Linux or CentOS 7.x the [Linux Integration Services](https://github.com/LIS/lis-next) can be downloaded and used to install the updated driver. When using PTP, the Linux device will be of the form /dev/ptp*x*. 
+Met nieuwere versies van Linux is een timer-klok bron (Precision Time Protocol) beschikbaar als onderdeel van de VMICTimeSync-provider. In oudere versies van Red Hat Enterprise Linux of CentOS 7. x de [Linux-integratie Services](https://github.com/LIS/lis-next) kunnen worden gedownload en gebruikt om het bijgewerkte stuur programma te installeren. Wanneer u PTP gebruikt, heeft het Linux-apparaat de vorm/dev/PTP*x*. 
 
-See which PTP clock sources are available.
+Bekijk welke PTP-timer bronnen beschikbaar zijn.
 
 ```bash
 ls /sys/class/ptp
 ```
 
-In this example, the value returned is *ptp0*, so we use that to check the clock name. To verify the device, check the clock name.
+In dit voor beeld wordt de geretourneerde waarde *ptp0*, zodat we deze gebruiken om de naam van de klok te controleren. Als u het apparaat wilt controleren, controleert u de naam van de klok.
 
 ```bash
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-This should return **hyperv**.
+Dit moet **hyper-v**retour neren.
 
 ### <a name="chrony"></a>chrony
 
-On Red Hat Enterprise Linux and CentOS 7.x, [chrony](https://chrony.tuxfamily.org/) configured to use a PTP source clock. The Network Time Protocol daemon (ntpd) doesn’t support PTP sources, so using **chronyd** is recommended. To enable PTP, update **chrony.conf**.
+Op Red Hat Enterprise Linux en CentOS 7. x, [chrony](https://chrony.tuxfamily.org/) geconfigureerd voor gebruik van een PTP-bron klok. De Network Time Protocol daemon (ntpd) biedt geen ondersteuning voor PTP-bronnen, dus het gebruik van **chronyd** wordt aanbevolen. Als u PTP wilt inschakelen, werkt u **chrony. conf**bij.
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
-For more information on Red Hat and NTP, see [Configure NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp). 
+Zie [NTP configureren](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)voor meer informatie over Red Hat en ntp. 
 
-For more information on chrony, see [Using chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
+Zie [using chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)(Engelstalig) voor meer informatie over chrony.
 
-If both chrony and TimeSync sources are enabled simultaneously, you can mark one as **prefer** which sets the other source as a backup. Because NTP services do not update the clock for large skews except after a long period, the VMICTimeSync will recover the clock from paused VM events far more quickly than NTP-based tools alone.
+Als zowel de chrony-als de TimeSync-bronnen tegelijkertijd zijn ingeschakeld, kunt u een voor **keur** markeren waarmee de andere bron als back-up wordt ingesteld. Omdat de NTP-Services de klok voor grote scheefheden, behalve na een lange periode, niet bijwerken, zal de VMICTimeSync de klok van onderbroken VM-gebeurtenissen veel sneller worden hersteld dan op NTP gebaseerde hulpprogram ma's.
 
-By default chronyd accelerates or slows the system clock to fix any time drift. If the drift becomes too big, chrony will fail to fix the drift. To overcome this the `makestep` parameter in **/etc/chrony.conf** can be changed to force a timesync if the drift exceeds the threshold specified.
+Chronyd versnelt of vertraagt standaard de systeem klok om tijds drift te herstellen. Als de drift te groot wordt, kan de drift niet worden hersteld met chrony. Om dit op te lossen, kan de `makestep` para meter in **/etc/chrony.conf** worden gewijzigd om een TimeSync af te dwingen als de waarde van de drift de opgegeven drempel overschrijdt.
  ```bash
 makestep 1.0 -1
 ```
-Here, chrony will force a time update if the drift is greater than 1 second. To apply the changes restart the chronyd service.
+Hier dwingt chrony een tijd update af als de drift groter is dan 1 seconde. Als u de wijzigingen wilt Toep assen, moet u de chronyd-service opnieuw starten.
 
 ```bash
 systemctl restart chronyd
 ```
 
 
-### <a name="systemd"></a>systemd 
+### <a name="systemd"></a>gesystemeerd 
 
-On Ubuntu and SUSE time sync is configured using [systemd](https://www.freedesktop.org/wiki/Software/systemd/). For more information on Ubuntu, see [Time Synchronization](https://help.ubuntu.com/lts/serverguide/NTP.html). For more information on SUSE, see Section 4.5.8 in [SUSE Linux Enterprise Server 12 SP3 Release Notes](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
+Op Ubuntu en SUSE-tijd synchronisatie wordt geconfigureerd met behulp van [systemed](https://www.freedesktop.org/wiki/Software/systemd/). Zie [tijd synchronisatie](https://help.ubuntu.com/lts/serverguide/NTP.html)voor meer informatie over Ubuntu. Zie voor meer informatie over SUSE sectie 4.5.8 in [SuSE Linux Enterprise Server 12 SP3-Release opmerkingen](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-For more information, see [Accurate time for Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
+Zie voor meer informatie [nauw keurige tijd voor Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
 
 

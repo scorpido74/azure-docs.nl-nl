@@ -1,6 +1,6 @@
 ---
-title: Define a new IoT device type in Azure IoT Central | Microsoft Docs
-description: This tutorial shows you, as a builder, how to create a new Azure IoT device template in your Azure IoT Central application. You define the telemetry, state, properties, and commands for your type.
+title: Geef een nieuw IoT-apparaattype op in azure IoT Central | Microsoft Docs
+description: In deze zelf studie wordt uitgelegd hoe u als Builder een nieuwe Azure IoT-apparaatprofiel maakt in uw Azure IoT Central-toepassing. U definieert de telemetrie, de status, de eigenschappen en de opdrachten voor uw type.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -16,427 +16,427 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74407011"
 ---
-# <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Define a new IoT device type in your Azure IoT Central application (preview features)
+# <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Zelf studie: een nieuw IoT-apparaattype definiëren in uw Azure IoT Central-toepassing (preview-functies)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-A device template is a blueprint that defines the characteristics and behaviors of a type of device that connects to an Azure IoT Central application.
+Een sjabloon voor een apparaat is een blauw druk die de kenmerken en het gedrag definieert van een type apparaat dat verbinding maakt met een Azure IoT Central-toepassing.
 
-For example, a builder can create a device template for a connected fan that has the following characteristics:
+Een opbouw functie kan bijvoorbeeld een apparaatprofiel maken voor een verbonden ventilator die de volgende kenmerken heeft:
 
-- Sends temperature telemetry
-- Sends location property
-- Sends fan motor error events
-- Sends fan operating state
-- Provides a writeable fan speed property
-- Provides a command to restart the device
-- Gives you an overall view of the device via a dashboard
+- Verzendt een telemetrie van de Tempe ratuur
+- Eigenschap voor verzenden van locatie
+- Hiermee worden fout gebeurtenissen van een ventilator motor verzonden
+- Hiermee wordt de status van de ventilator verzonden
+- Biedt een Beschrijf bare ventilator snelheids eigenschap
+- Biedt een opdracht voor het opnieuw opstarten van het apparaat
+- Geeft een algemeen overzicht van het apparaat via een dash board
 
-From this device template, an operator can create and connect real fan devices. All these fans have measurements, properties, and commands that operators use to monitor and manage them. Operators use the device dashboards and forms to interact with the fan devices.
+Met deze apparaatprofiel kan een operator echte ventilator apparaten maken en verbinden. Al deze ventilatoren hebben metingen, eigenschappen en opdrachten die Opera tors gebruiken om ze te controleren en te beheren. Opera tors van het dash board en de formulieren worden gebruikt om te communiceren met de ventilator apparaten.
 
 > [!NOTE]
-> Only builders and administrators can create, edit, and delete device templates. Any user can create devices on the **Devices** page from existing device templates.
+> Alleen bouwers en beheerders kunnen sjablonen voor apparaten maken, bewerken en verwijderen. Elke gebruiker kan apparaten op de pagina **apparaten** maken op basis van bestaande Apparaatinstellingen.
 
-[IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) enables IoT Central to integrate devices, without you writing any embedded device code. At the core of IoT Plug and Play is a device capability model schema that describes device capabilities. In an IoT Central Preview application, device templates use these IoT Plug and Play device capability models.
+[IoT Plug en Play](../../iot-pnp/overview-iot-plug-and-play.md) maakt het IOT Central mogelijk om apparaten te integreren, zonder dat u een Inge sloten apparaatcode hoeft te schrijven. De kern van IoT Plug en Play is een schema voor het capaciteits model van het apparaat dat de mogelijkheden van apparaten beschrijft. In een IoT Central preview-toepassing gebruiken Device-sjablonen deze IoT Plug en Play-mogelijkheden voor het apparaat.
 
-As a builder, you have several options for creating device templates:
+Als opbouw functie hebt u verschillende opties voor het maken van Apparaatinstellingen:
 
-- Design the device template in IoT Central, and then implement its device capability model in your device code.
-- Import a device capability model from the [Azure Certified for IoT device catalog](https://aka.ms/iotdevcat). Then add any cloud properties, customizations, and dashboards your IoT Central application needs.
-- Create a device capability model by using Visual Studio Code. Implement your device code from the model. Manually import the device capability model into your IoT Central application, and then add any cloud properties, customizations, and dashboards your IoT Central application needs.
-- Create a device capability model by using Visual Studio Code. Implement your device code from the model, and connect your real device to your IoT Central application by using a device-first connection. IoT Central finds and imports the device capability model from the public repository for you. You can then add any cloud properties, customizations, and dashboards your IoT Central application needs to the device template.
+- Ontwerp de sjabloon voor het apparaat in IoT Central en implementeer vervolgens het hulp model van het apparaat in de code van uw apparaat.
+- Importeer een mogelijkheidsprofiel vanuit de [Azure Certified voor IOT-apparaat Catalog](https://aka.ms/iotdevcat). Voeg vervolgens alle Cloud eigenschappen, aanpassingen en dash boards toe die uw IoT Central toepassing nodig heeft.
+- Maak een mogelijkheidsprofiel met Visual Studio code. Implementeer uw apparaatcode vanuit het model. Importeer het mogelijkheidsprofiel hand matig in uw IoT Central-toepassing en voeg vervolgens alle Cloud eigenschappen, aanpassingen en dash boards toe die uw IoT Central toepassing nodig heeft.
+- Maak een mogelijkheidsprofiel met Visual Studio code. Implementeer uw apparaatcode vanuit het model en verbind uw echte apparaat met uw IoT Central-toepassing met behulp van een apparaat-eerste verbinding. IoT Central zoekt en importeert het mogelijkheidsprofiel uit de open bare opslag plaats voor u. U kunt vervolgens alle Cloud eigenschappen, aanpassingen en dash boards toevoegen die uw IoT Central toepassing nodig heeft voor de sjabloon voor het apparaat.
 
 ## <a name="prerequisites"></a>Vereisten
 
-To complete this tutorial, you need to [create an Azure IoT Central application](quick-deploy-iot-central.md).
+Als u deze zelf studie wilt volt ooien, moet u [een Azure IOT Central-toepassing maken](quick-deploy-iot-central.md).
 
-## <a name="create-a-device-template-from-the-device-catalog"></a>Create a device template from the device catalog
+## <a name="create-a-device-template-from-the-device-catalog"></a>Een sjabloon voor een apparaat maken vanuit de catalogus met apparaten
 
-As a builder, you can quickly start building out your solution by using an IoT Plug and Play certified device. See the list in the [Azure IoT Device Catalog](https://catalog.azureiotsolutions.com/alldevices). IoT Central integrates with the device catalog so you can import a device capability model from any of these IoT Plug and Play certified devices. To create a device template from one of these devices in IoT Central:
+Als bouwer kunt u snel beginnen met het bouwen van uw oplossing met behulp van een IoT Plug en Play Certified-apparaat. Zie de lijst in de [Azure IOT-Apparaatbeheer](https://catalog.azureiotsolutions.com/alldevices). IoT Central integreert met de-catalogus, zodat u een mogelijkheidsprofiel kunt importeren uit een van deze IoT Plug en Play gecertificeerde apparaten. Een sjabloon voor een apparaat maken op basis van een van deze apparaten in IoT Central:
 
-1. Go to the **Device Templates** page in your IoT Central application.
-1. Select **+ New**, and then select any of the IoT Plug and Play certified devices from the catalog. IoT Central creates a device template based on this device capability model.
-1. Add any cloud properties, customizations, or views to your device template.
-1. Select **Publish** to make the template available for operators to view and connect devices.
+1. Ga naar de pagina met **Apparaatinstellingen** in uw IOT Central-toepassing.
+1. Selecteer **+ Nieuw**en selecteer vervolgens een van de IOT Plug en Play gecertificeerde apparaten uit de catalogus. IoT Central maakt een sjabloon op basis van dit mogelijkheidsprofiel.
+1. Voeg Cloud eigenschappen, aanpassingen of weer gaven toe aan de sjabloon voor uw apparaat.
+1. Selecteer **publiceren** om de sjabloon beschikbaar te maken voor Opera tors om apparaten weer te geven en te verbinden.
 
-## <a name="create-a-device-template-from-scratch"></a>Create a device template from scratch
+## <a name="create-a-device-template-from-scratch"></a>Een volledig nieuwe sjabloon voor een apparaat maken
 
-A device template contains:
+Een sjabloon voor het apparaat bevat:
 
-- A _device capability model_ that specifies the telemetry, properties, and commands that the device implements. These capabilities are organized into one or more interfaces.
-- _Cloud properties_ that define information that your IoT Central application stores about your devices. For example, a cloud property might record the date a device was last serviced. This information is never shared with the device.
-- _Customizations_ let the builder override some of the definitions in the device capability model. For example, the builder can override the name of a device property. Property names appear in IoT Central dashboards and forms.
-- _Dashboards and forms_ let the builder create a UI that lets operators monitor and manage the devices connected to your application.
+- Een _mogelijkheidsprofiel_ waarmee de telemetrie, eigenschappen en opdrachten worden opgegeven die het apparaat implementeert. Deze mogelijkheden zijn ingedeeld in een of meer interfaces.
+- _Cloud eigenschappen_ waarmee informatie wordt gedefinieerd die uw IOT Central-app over uw apparaten opslaat. Een Cloud eigenschap kan bijvoorbeeld de datum vastleggen waarop een apparaat voor het laatst is verwerkt. Deze informatie wordt nooit gedeeld met het apparaat.
+- Met _aanpassingen_ kunnen de opbouw functie sommige definities in het mogelijkheidsprofiel overschrijven. De opbouw functie kan bijvoorbeeld de naam van een eigenschap apparaat onderdrukken. Eigenschaps namen worden weer gegeven in IoT Central Dash boards en formulieren.
+- Met _Dash boards en formulieren_ kan de opbouw functie een gebruikers interface maken waarmee Opera tors de apparaten kunnen controleren en beheren die zijn verbonden met uw toepassing.
 
-To create a device template in IoT Central:
+Een sjabloon voor een apparaat maken in IoT Central:
 
-1. Go to the **Device Templates** page in your IoT Central application.
-1. Select **+ New** > **Custom**.
-1. Enter a name for your template, such as **Environmental Sensor**.
-1. Druk op **Enter**. IoT Central creates an empty device template.
+1. Ga naar de pagina met **Apparaatinstellingen** in uw IOT Central-toepassing.
+1. Selecteer **+ nieuw** > **aangepast**.
+1. Voer een naam in voor de sjabloon, zoals **omgevings sensor**.
+1. Druk op **Enter**. IoT Central maakt een lege sjabloon voor het apparaat.
 
-## <a name="manage-a-device-template"></a>Manage a device template
+## <a name="manage-a-device-template"></a>Een sjabloon voor een apparaat beheren
 
-You can rename or delete a template from the template's home page.
+U kunt de naam van een sjabloon wijzigen of verwijderen via de start pagina van de sjabloon.
 
-After you've added a device capability model to your template, you can publish it. Until you've published the template, you can't connect a device based on this template for your operators to see in the **Devices** page.
+Nadat u een mogelijkheidsprofiel aan uw sjabloon hebt toegevoegd, kunt u dit model publiceren. Totdat u de sjabloon hebt gepubliceerd, kunt u op de pagina **apparaten** geen verbinding maken met een apparaat dat is gebaseerd op deze sjabloon voor uw Opera tors.
 
-## <a name="create-a-capability-model"></a>Create a capability model
+## <a name="create-a-capability-model"></a>Een mogelijkheidsprofiel maken
 
-To create a device capability model, you can:
+Als u een mogelijkheidsprofiel wilt maken, kunt u het volgende doen:
 
-- Use IoT Central to create a custom model from scratch.
-- Import a model from a JSON file. A device builder might have used Visual Studio Code to author a device capability model for your application.
-- Select one of the devices from the Device Catalog. This option imports the device capability model that the manufacturer has published for this device. A device capability model imported like this is automatically published.
+- Gebruik IoT Central om een volledig aangepast model te maken.
+- Importeer een model uit een JSON-bestand. Een opbouw functie voor apparaten kan Visual Studio code gebruiken om een mogelijkheidsprofiel voor uw toepassing te ontwerpen.
+- Selecteer een van de apparaten in de catalogus met apparaten. Met deze optie wordt het mogelijkheidsprofiel geïmporteerd dat de fabrikant heeft gepubliceerd voor dit apparaat. Een functionaliteits model voor apparaten dat is geïmporteerd zoals dit wordt automatisch gepubliceerd.
 
-## <a name="manage-a-capability-model"></a>Manage a capability model
+## <a name="manage-a-capability-model"></a>Een mogelijkheidsprofiel beheren
 
-After you create a device capability model, you can:
+Nadat u een mogelijkheidsprofiel hebt gemaakt, kunt u het volgende doen:
 
-- Add interfaces to the model. A model must have at least one interface.
-- Edit model metadata, such as its ID, namespace, and name.
-- Delete the model.
+- Interfaces toevoegen aan het model. Een model moet ten minste één interface hebben.
+- Meta gegevens van het model bewerken, zoals de ID, naam ruimte en naam.
+- Verwijder het model.
 
-## <a name="create-an-interface"></a>Create an interface
+## <a name="create-an-interface"></a>Een interface maken
 
-A device capability must have at least one interface. An interface is a reusable collection of capabilities.
+De capaciteit van een apparaat moet ten minste één interface hebben. Een interface is een herbruikbare verzameling mogelijkheden.
 
-To create an interface:
+Een interface maken:
 
-1. Go to your device capability model, and choose **+ Add Interface**.
+1. Ga naar het mogelijkheidsprofiel en kies **+ interface toevoegen**.
 
-1. On the **Select an Interface** page, you can:
+1. Op de pagina **een interface selecteren** kunt u het volgende doen:
 
-    - Create a custom interface from scratch.
-    - Import an existing interface from a file. A device builder might have used Visual Studio Code to author an interface for your device.
-    - Choose one of the standard interfaces, such as the **Device Information** interface. Standard interfaces specify the capabilities common to many devices. These standard interfaces are published by Azure IoT, and can't be versioned or edited.
+    - Een volledig nieuwe aangepaste interface maken.
+    - Importeer een bestaande interface uit een bestand. Een opbouw functie voor apparaten kan Visual Studio code gebruiken om een interface voor uw apparaat te maken.
+    - Kies een van de standaard interfaces, zoals de **apparaatgegevens** interface. Standaard interfaces geven de mogelijkheden die voor veel apparaten worden gebruikt. Deze standaard interfaces worden gepubliceerd door Azure IoT en kunnen niet worden geversied of bewerkt.
 
-1. After you create an interface, choose **Edit Identity** to change the display name of the interface.
+1. Nadat u een interface hebt gemaakt, kiest u **identiteit bewerken** om de weergave naam van de interface te wijzigen.
 
-1. If you choose to create a custom interface from scratch, you can add your device's capabilities. Device capabilities are telemetry, properties, and commands.
+1. Als u een volledig nieuwe aangepaste interface wilt maken, kunt u de mogelijkheden van uw apparaat toevoegen. De mogelijkheden van apparaten zijn telemetrie, eigenschappen en opdrachten.
 
 ### <a name="telemetry"></a>Telemetrie
 
-Telemetry is a stream of values sent from the device, typically from a sensor. For example, a sensor might report the ambient temperature.
+Telemetrie is een stroom van waarden die van het apparaat worden verzonden, meestal van een sensor. Een sensor kan bijvoorbeeld de omgevings temperatuur rapporteren.
 
-The following table shows the configuration settings for a telemetry capability:
+De volgende tabel bevat de configuratie-instellingen voor een telemetrie-mogelijkheid:
 
 | Veld | Beschrijving |
 | ----- | ----------- |
-| Weergavenaam | The display name for the telemetry value used on dashboards and forms. |
-| Naam | The name of the field in the telemetry message. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Capability Type | Telemetry. |
-| Semantic Type | The semantic type of the telemetry, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
-| Schema | The telemetry data type, such as double, string, or vector. The available choices are determined by the semantic type. Schema isn't available for the event and state semantic types. |
-| Ernst | Only available for the event semantic type. The severities are **Error**, **Information**, or **Warning**. |
-| State Values | Only available for the state semantic type. Define the possible state values, each of which has display name, name, enumeration type, and value. |
-| Eenheid | A unit for the telemetry value, such as **mph**, **%** , or **&deg;C**. |
-| Display Unit | A display unit for use on dashboards and forms. |
-| Opmerking | Any comments about the telemetry capability. |
-| Beschrijving | A description of the telemetry capability. |
+| Weergavenaam | De weergave naam voor de telemetrie-waarde die wordt gebruikt voor dash boards en formulieren. |
+| Naam | De naam van het veld in het telemetrie-bericht. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Type capaciteit | Telemetrie. |
+| Semantisch type | Het semantische type van de telemetrie, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn. |
+| Schema | Het gegevens type telemetrie, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. Schema is niet beschikbaar voor de semantische typen gebeurtenis en status. |
+| Severity | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**. |
+| Status waarden | Alleen beschikbaar voor het semantische type status. Definieer de mogelijke status waarden, die elk een weergave naam, naam, opsommings type en waarde hebben. |
+| Eenheid | Een eenheid voor de telemetrische waarde, zoals **mph**, **%** of **&deg;C**. |
+| Eenheid weer geven | Een weergave-eenheid voor gebruik in dash boards en formulieren. |
+| Opmerking | Eventuele opmerkingen over de telemetrie-mogelijkheid. |
+| Beschrijving | Een beschrijving van de telemetrie-mogelijkheid. |
 
 ### <a name="properties"></a>Eigenschappen
 
-Properties represent point-in-time values. For example, a device can use a property to report the target temperature it's trying to reach. You can set writeable properties from IoT Central.
+Eigenschappen vertegenwoordigen waarden van het tijdstip. Een apparaat kan bijvoorbeeld een eigenschap gebruiken om de doel temperatuur te rapporteren die het probeert te bereiken. U kunt schrijf bare eigenschappen instellen van IoT Central.
 
-The following table shows the configuration settings for a property capability:
+De volgende tabel bevat de configuratie-instellingen voor een eigenschaps mogelijkheid:
 
 | Veld | Beschrijving |
 | ----- | ----------- |
-| Weergavenaam | The display name for the property value used on dashboards and forms. |
-| Naam | The name of the property. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Capability Type | Property. |
-| Semantic Type | The semantic type of the property, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
-| Schema | The property data type, such as double, string, or vector. The available choices are determined by the semantic type. Schema isn't available for the event and state semantic types. |
-| Writeable | If the property isn't writeable, the device can report property values to IoT Central. If the property is writeable, the device can report property values to IoT Central and IoT Central can send property updates to the device.
-| Ernst | Only available for the event semantic type. The severities are **Error**, **Information**, or **Warning**. |
-| State Values | Only available for the state semantic type. Define the possible state values, each of which has display name, name, enumeration type, and value. |
-| Eenheid | A unit for the property value, such as **mph**, **%** , or **&deg;C**. |
-| Display Unit | A display unit for use on dashboards and forms. |
-| Opmerking | Any comments about the property capability. |
-| Beschrijving | A description of the property capability. |
+| Weergavenaam | De weergave naam voor de waarde van de eigenschap die wordt gebruikt in dash boards en formulieren. |
+| Naam | De naam van de eigenschap. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Type capaciteit | Eigenschap. |
+| Semantisch type | Het semantische type van de eigenschap, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn. |
+| Schema | Het gegevens type van de eigenschap, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. Schema is niet beschikbaar voor de semantische typen gebeurtenis en status. |
+| Beschrijf bare | Als de eigenschap niet schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan IoT Central. Als de eigenschap schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan IoT Central en IoT Central eigenschaps updates naar het apparaat verzenden.
+| Severity | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**. |
+| Status waarden | Alleen beschikbaar voor het semantische type status. Definieer de mogelijke status waarden, die elk een weergave naam, naam, opsommings type en waarde hebben. |
+| Eenheid | Een eenheid voor de waarde van de eigenschap, zoals **mph**, **%** of **&deg;C**. |
+| Eenheid weer geven | Een weergave-eenheid voor gebruik in dash boards en formulieren. |
+| Opmerking | Eventuele opmerkingen over de eigenschaps mogelijkheid. |
+| Beschrijving | Een beschrijving van de eigenschaps mogelijkheid. |
 
 ### <a name="commands"></a>Opdrachten
 
-You can call device commands from IoT Central. Commands optionally pass parameters to the device and receive a response from the device. For example, you can call a command to reboot a device in 10 seconds.
+U kunt de opdrachten van een apparaat aanroepen vanuit IoT Central. Opdrachten geven optioneel para meters door aan het apparaat en ontvangen een reactie van het apparaat. U kunt bijvoorbeeld een opdracht aanroepen om een apparaat binnen tien seconden opnieuw op te starten.
 
-The following table shows the configuration settings for a command capability:
+De volgende tabel bevat de configuratie-instellingen voor een opdracht mogelijkheid:
 
 | Veld | Beschrijving |
 | ----- | ----------- |
-| Weergavenaam | The display name for the command used on dashboards and forms. |
-| Naam | The name of the command. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Capability Type | Command. |
+| Weergavenaam | De weergave naam voor de opdracht die wordt gebruikt voor dash boards en formulieren. |
+| Naam | De naam van de opdracht. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Type capaciteit | Cmd. |
 | Opdracht | `SynchronousExecutionType`. |
-| Opmerking | Any comments about the command capability. |
-| Beschrijving | A description of the command capability. |
-| Aanvraag | If enabled, a definition of the request parameter, including: name, display name, schema, unit, and display unit. |
-| Antwoord | If enabled, a definition of the command response, including: name, display name, schema, unit, and display unit. |
+| Opmerking | Eventuele opmerkingen over de opdracht mogelijkheid. |
+| Beschrijving | Een beschrijving van de opdracht mogelijkheid. |
+| Aanvraag | Indien ingeschakeld, een definitie van de aanvraag parameter, met inbegrip van: naam, weergave naam, schema, eenheid en weer gave-eenheid. |
+| Antwoord | Als deze optie is ingeschakeld, wordt een definitie van het opdracht antwoord gegeven, waaronder: naam, weergave naam, schema, eenheid en weer gave-eenheid. |
 
-## <a name="manage-an-interface"></a>Manage an interface
+## <a name="manage-an-interface"></a>Een interface beheren
 
-If you haven't published the interface, you can edit the capabilities defined by the interface. After you publish the interface, if you want to make any changes, you'll need to create a new version of the device template and version the interface. You can make changes that don't require versioning, such as display names or units, in the **Customize** section.
+Als u de interface nog niet hebt gepubliceerd, kunt u de mogelijkheden bewerken die door de interface zijn gedefinieerd. Als u de interface hebt gepubliceerd en u wijzigingen wilt aanbrengen, moet u een nieuwe versie van de sjabloon voor het apparaat maken en de interface versie. In het gedeelte **aanpassen** kunt u wijzigingen aanbrengen waarvoor geen versie beheer nodig is, zoals het weer geven van namen of eenheden.
 
-You can also export the interface as a JSON file if you want to reuse it in another capability model.
+U kunt de interface ook exporteren als een JSON-bestand als u het opnieuw wilt gebruiken in een ander model voor functionaliteit.
 
-## <a name="add-cloud-properties"></a>Add cloud properties
+## <a name="add-cloud-properties"></a>Cloud eigenschappen toevoegen
 
-Use cloud properties to store information about devices in IoT Central. Cloud properties are never sent to a device. For example, you can use cloud properties to store the name of the customer who has installed the device, or the device's last service date.
+Gebruik Cloud eigenschappen om informatie over apparaten op te slaan in IoT Central. Cloud eigenschappen worden nooit verzonden naar een apparaat. U kunt bijvoorbeeld Cloud eigenschappen gebruiken om de naam op te slaan van de klant die het apparaat heeft geïnstalleerd of de laatste service datum van het apparaat.
 
-The following table shows the configuration settings for a cloud property:
+De volgende tabel bevat de configuratie-instellingen voor een Cloud eigenschap:
 
 | Veld | Beschrijving |
 | ----- | ----------- |
-| Weergavenaam | The display name for the cloud property value used on dashboards and forms. |
-| Naam | The name of the cloud property. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Semantic Type | The semantic type of the property, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
-| Schema | The cloud property data type, such as double, string, or vector. The available choices are determined by the semantic type. |
+| Weergavenaam | De weergave naam voor de waarde van de Cloud eigenschap die wordt gebruikt in dash boards en formulieren. |
+| Naam | De naam van de Cloud eigenschap. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Semantisch type | Het semantische type van de eigenschap, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn. |
+| Schema | Het gegevens type van de Cloud eigenschap, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. |
 
-## <a name="add-customizations"></a>Add customizations
+## <a name="add-customizations"></a>Aanpassingen toevoegen
 
-Use customizations when you need to modify an imported interface or add IoT Central-specific features to a capability. You can only customize fields that don't break interface compatibility. U kunt bijvoorbeeld:
+Gebruik aanpassingen wanneer u een geïmporteerde interface wilt wijzigen of IoT Central-specifieke functies aan een mogelijkheid wilt toevoegen. U kunt alleen velden aanpassen die de interface compatibiliteit niet verstoren. U kunt bijvoorbeeld:
 
-- Customize the display name and units of a capability.
-- Add a default color to use when the value appears on a chart.
-- Specify initial, minimum, and maximum values for a property.
+- Pas de weergave naam en de eenheden van een mogelijkheid aan.
+- Een standaard kleur toevoegen die moet worden gebruikt wanneer de waarde in een grafiek wordt weer gegeven.
+- Geef de initiële, minimale en maximale waarde voor een eigenschap op.
 
-You can't customize the capability name or capability type. If there are changes you can't make in the **Customize** section, you'll need to version your device template and interface to modify the capability.
+U kunt de naam of het type van de mogelijkheid niet aanpassen. Als er wijzigingen zijn die u niet in de sectie **aanpassen** kunt aanbrengen, moet u de sjabloon voor het apparaat en de interface voor het wijzigen van de functionaliteit.
 
-### <a name="generate-default-views"></a>Generate default views
+### <a name="generate-default-views"></a>Standaard weergaven genereren
 
-Generating default views is a quick way to visualize your important device information. You have up to three default views generated for your device template:
+Het genereren van standaard weergaven is een snelle manier om uw belang rijke apparaatgegevens te visualiseren. U hebt Maxi maal drie standaard weergaven gegenereerd voor uw apparaatprofiel:
 
-- **Commands** provides a view with device commands, and allows your operator to dispatch them to your device.
-- **Overview** provides a view with device telemetry, displaying charts and metrics.
-- **About** provides a view with device information, displaying device properties.
+- **Opdrachten** bieden een weer gave met opdrachten op het apparaat, zodat uw operator ze naar uw apparaat kan verzenden.
+- **Overzicht** biedt een weer gave met telemetrie van apparaten, weer geven van grafieken en metrische gegevens.
+- **Informatie over** het weer geven van informatie over apparaten en de weer gave van apparaateigenschappen.
 
-After you've selected **Generate default views**, you see that they have been automatically added under the **Views** section of your device template.
+Nadat u **Standaard weergaven genereren**hebt geselecteerd, ziet u dat ze automatisch zijn toegevoegd onder het gedeelte **weer gaven** van de sjabloon voor uw apparaat.
 
-## <a name="add-dashboards"></a>Add dashboards
+## <a name="add-dashboards"></a>Dash boards toevoegen
 
-Add dashboards to a device template to enable operators to visualize a device by using charts and metrics. You can have multiple dashboards for a device template.
+Voeg Dash boards toe aan een apparaatprofiel om Opera tors in staat te stellen een apparaat te visualiseren met behulp van grafieken en metrische gegevens. U kunt meerdere Dash boards voor een sjabloon voor het apparaat hebben.
 
-To add a dashboard to a device template:
+Een dash board toevoegen aan een sjabloon voor het apparaat:
 
-1. Go to your device template, and select **Views**.
-1. Choose **Visualizing the Device**.
-1. Enter a name for your dashboard in **Dashboard Name**.
-1. Add tiles to your dashboard from the list of static, property, cloud property, telemetry, and command tiles. Drag and drop the tiles you want to add to your dashboard.
-1. To plot multiple telemetry values on a single chart tile, select the telemetry values, and then select **Combine**.
-1. Configure each tile you add to customize how it displays data. You can do this by selecting the gear icon, or by selecting **Change configuration** on your chart tile.
-1. Arrange and resize the tiles on your dashboard.
+1. Ga naar de sjabloon voor het apparaat en selecteer **weer gaven**.
+1. Kies **het apparaat visualiseren**.
+1. Voer een naam in voor uw dash board in de naam van het **dash board**.
+1. Tegels toevoegen aan uw dash board vanuit de lijst met statische, eigenschap, Cloud eigenschap, telemetrie en opdracht tegels. Sleep de tegels die u wilt toevoegen aan uw dash board en zet deze neer.
+1. Als u meerdere telemetrie-waarden wilt tekenen op één grafiek tegel, selecteert u de telemetriegegevens en selecteert u vervolgens **combi neren**.
+1. Configureer elke tegel die u toevoegt om de manier aan te passen waarop gegevens worden weer gegeven. U kunt dit doen door het tandwiel pictogram te selecteren of door **configuratie wijzigen** te selecteren in de grafiek tegel.
+1. De tegels op uw dash board rangschikken en het formaat ervan wijzigen.
 1. Sla de wijzigingen op.
 
-### <a name="configure-preview-device-to-view-dashboard"></a>Configure preview device to view dashboard
+### <a name="configure-preview-device-to-view-dashboard"></a>Preview-apparaat configureren om het dash board weer te geven
 
-To view and test your dashboard, select **Configure preview device**. This enables you to see the dashboard as your operator sees it after it's published. Use this option to validate that your views show the correct data. You can choose from the following:
+Selecteer **Preview-apparaat configureren**om uw dash board weer te geven en te testen. Op deze manier kunt u het dash board weer geven als uw operator ziet na publicatie. Gebruik deze optie om te controleren of de juiste gegevens in uw weer gaven worden weer gegeven. U kunt kiezen uit de volgende opties:
 
-- No preview device.
-- The real test device you've configured for your device template.
-- An existing device in your application, by using the device ID.
+- Geen preview-apparaat.
+- Het echte test apparaat dat u hebt geconfigureerd voor de sjabloon voor het apparaat.
+- Een bestaand apparaat in uw toepassing met behulp van de apparaat-ID.
 
-## <a name="add-forms"></a>Add forms
+## <a name="add-forms"></a>Formulieren toevoegen
 
-Add forms to a device template to enable operators to manage a device by viewing and setting properties. Operators can only edit cloud properties and writeable device properties. You can have multiple forms for a device template.
+Voeg formulieren toe aan een apparaatprofiel om Opera tors in staat te stellen om een apparaat te beheren door eigenschappen te bekijken en in te stellen. Opera tors kunnen alleen eigenschappen van Cloud eigenschappen en beschrijf bare apparaten bewerken. U kunt meerdere formulieren voor een sjabloon voor het apparaat hebben.
 
-To add a form to a device template:
+Een formulier toevoegen aan een sjabloon voor een apparaat:
 
-1. Go to your device template, and select **Views**.
-1. Choose **Editing Device and Cloud data**.
-1. Enter a name for your form in **Form Name**.
-1. Select the number of columns to use to lay out your form.
-1. Add properties to an existing section on your form, or select properties and choose **Add Section**. Use sections to group properties on your form. You can add a title to a section.
-1. Configure each property on the form to customize its behavior.
-1. Arrange the properties on your form.
+1. Ga naar de sjabloon voor het apparaat en selecteer **weer gaven**.
+1. Kies **apparaat-en Cloud gegevens bewerken**.
+1. Voer een naam in voor het formulier in de vorm van een **formulier naam**.
+1. Selecteer het aantal kolommen dat moet worden gebruikt om het formulier in te delen.
+1. Voeg eigenschappen toe aan een bestaande sectie in het formulier of selecteer Eigenschappen en kies **sectie toevoegen**. Gebruik secties om eigenschappen in uw formulier te groeperen. U kunt een titel toevoegen aan een sectie.
+1. Configureer elke eigenschap op het formulier om het gedrag aan te passen.
+1. De eigenschappen van het formulier rangschikken.
 1. Sla de wijzigingen op.
 
-## <a name="publish-a-device-template"></a>Publish a device template
+## <a name="publish-a-device-template"></a>Een sjabloon voor een apparaat publiceren
 
-Before you can connect a device that implements your device capability model, you must publish your device template.
+Voordat u verbinding kunt maken met een apparaat dat het mogelijkheidsprofiel implementeert, moet u de sjabloon voor het apparaat publiceren.
 
-After you publish a device template, you can only make limited changes to the device capability model. To modify an interface, you need to [create and publish a new version](./howto-version-device-template.md).
+Nadat u een sjabloon voor een apparaat hebt gepubliceerd, kunt u alleen beperkte wijzigingen aanbrengen in het functionaliteits model van het apparaat. Als u een interface wilt wijzigen, moet u [een nieuwe versie maken en publiceren](./howto-version-device-template.md).
 
-To publish a device template, go to you your device template, and select **Publish**.
+Als u een sjabloon voor een apparaat wilt publiceren, gaat u naar uw apparaatprofiel en selecteert u **publiceren**.
 
-After you publish a device template, an operator can go to the **Devices** page, and add either real or simulated devices that use your device template. You can continue to modify and save your device template as you're making changes. When you want to push these changes out to the operator to view under the **Devices** page, you must select **Publish** each time.
+Nadat u een sjabloon voor een apparaat hebt gepubliceerd, kan een operator naar de pagina **apparaten** gaan en een echte of gesimuleerde apparaten toevoegen die gebruikmaken van de sjabloon van het apparaat. U kunt door gaan met het wijzigen en opslaan van de sjabloon voor het apparaat wanneer u wijzigingen aanbrengt. Wanneer u deze wijzigingen wilt pushen naar de operator om weer te geven op de pagina **apparaten** , moet u elke keer **publiceren** selecteren.
 
-## <a name="define-a-new-iot-gateway-device-type-preview-features"></a>Define a new IoT gateway device type (preview features)
+## <a name="define-a-new-iot-gateway-device-type-preview-features"></a>Een nieuw type IoT-gateway-apparaat definiëren (preview-functies)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-This tutorial shows you, as a builder, how to use a gateway device template to define a new type of IoT device in your IoT Central application. 
+In deze zelf studie wordt uitgelegd hoe u, als ontwerper, een sjabloon voor een gateway apparaat gebruikt om een nieuw type IoT-apparaat te definiëren in uw IoT Central-toepassing. 
 
-In this section, you create a **Smart Building** device template. A Smart Building gateway device:
+In deze sectie maakt u een sjabloon voor **Slim bouwen** van apparaten. Een Smart buil ding gateway-apparaat:
 
-* Sends telemetry, such as temperature and occupancy.
-* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
-* Responds to commands, such as resetting temperature.
-* Allows relationships to other device capability models.
+* Verzendt telemetrie, zoals de Tempe ratuur en bezetting.
+* Reageert op schrijf bare eigenschappen wanneer deze in de cloud worden bijgewerkt, zoals het verzend interval voor telemetrie.
+* Reageert op opdrachten, zoals het opnieuw instellen van de Tempe ratuur.
+* Hiermee kunnen relaties met andere hulp modellen voor apparaten worden ondersteund.
 
-### <a name="create-iot-device-templates"></a>Create IoT device templates
+### <a name="create-iot-device-templates"></a>IoT-Device-sjablonen maken
 
-Here's how to create IoT device templates: 
+U kunt als volgt IoT-Device-sjablonen maken: 
 
-1. In the left navigation, select **Device Templates**. Then select **+ New**, and select the **IoT Device** tile and occupancy sensor tile. Select **Next: Customize**.
+1. Selecteer in het linkernavigatievenster de optie **Apparaatbeheer**. Selecteer vervolgens **+ Nieuw**en selecteer de tegel **IOT-apparaten** tegel en bezetting. Selecteer **volgende: aanpassen**.
 
-   ![Screenshot of Device Templates page and options](./media/tutorial-define-iot-device-type/gateway-downstream-new.png)
+   ![Scherm afbeelding van de pagina met Apparaatinstellingen en opties](./media/tutorial-define-iot-device-type/gateway-downstream-new.png)
 
-1. On the **Review** page, select **Create**. 
+1. Op de pagina **controleren** selecteert u **maken**. 
 
-   ![Screenshot of Review page](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
+   ![Scherm afbeelding van de pagina controleren](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
 
-1. A new device template is created. 
+1. Er wordt een nieuwe apparaatprofiel gemaakt. 
 
-   ![Screenshot of new device template](./media/tutorial-define-iot-device-type/occupancy-sensor.png)
+   ![Scherm opname van de sjabloon nieuw apparaat](./media/tutorial-define-iot-device-type/occupancy-sensor.png)
 
-Here's how to create a device template for S1 Sensor:
+U kunt als volgt een Device-sjabloon maken voor S1-sensor:
 
-1. In the left navigation, select **Device Templates**. Then select **+ New**, and select the **IoT Device** tile and select occupancy sensor tile. Select **Next: Customize**.
+1. Selecteer in het linkernavigatievenster de optie **Apparaatbeheer**. Selecteer vervolgens **+ Nieuw**, en selecteer de tegel **IOT-apparaten** en selecteer de tegel bezettings sensor. Selecteer **volgende: aanpassen**.
 
-   ![Screenshot of Device Templates page and options](./media/tutorial-define-iot-device-type/s1-sensor.png)
+   ![Scherm afbeelding van de pagina met Apparaatinstellingen en opties](./media/tutorial-define-iot-device-type/s1-sensor.png)
 
-1. On the **Review** page, select **Create**. 
+1. Op de pagina **controleren** selecteert u **maken**. 
 
-   ![Screenshot of Review page](./media/tutorial-define-iot-device-type/s1-review.png)
+   ![Scherm afbeelding van de pagina controleren](./media/tutorial-define-iot-device-type/s1-review.png)
 
-1. A new device template is created. 
+1. Er wordt een nieuwe apparaatprofiel gemaakt. 
 
-   ![Screenshot of new device template](./media/tutorial-define-iot-device-type/s1-template.png)
+   ![Scherm opname van de sjabloon nieuw apparaat](./media/tutorial-define-iot-device-type/s1-template.png)
 
-## <a name="create-an-iot-gateway-device-template"></a>Create an IoT gateway device template
+## <a name="create-an-iot-gateway-device-template"></a>Een sjabloon voor een IoT-gateway apparaat maken
 
-You can choose to create an IoT gateway device template. The gateway device has relationships with downstream devices that connect into IoT Central through the gateway device. 
+U kunt ervoor kiezen om een sjabloon voor een IoT-gateway apparaat te maken. Het gateway apparaat heeft een relatie met downstream-apparaten die verbinding maken met IoT Central via het gateway apparaat. 
 
-### <a name="downstream-device-relationships-with-gateway-device"></a>Downstream device relationships with gateway device
+### <a name="downstream-device-relationships-with-gateway-device"></a>De relaties van het downstream-apparaat met het gateway apparaat
 
-IoT devices can connect to an IoT gateway device.
+IoT-apparaten kunnen verbinding maken met een IoT-gateway apparaat.
 
-![Diagram of relationship between gateway device and downstream devices](./media/tutorial-define-iot-device-type/gatewaypattern.png)
+![Diagram van relatie tussen gateway apparaat en downstream-apparaten](./media/tutorial-define-iot-device-type/gatewaypattern.png)
 
-As a builder, you can create and edit IoT gateway device templates in your application. After you publish a device template, you can connect real devices that implement the device template.
+Als opbouw functie kunt u sjablonen voor IoT-gateway apparaten maken en bewerken in uw toepassing. Nadat u een apparaataccount hebt gepubliceerd, kunt u echte apparaten die de sjabloon voor het apparaat implementeren, verbinden.
 
-### <a name="select-a-device-template-type"></a>Select a device template type 
+### <a name="select-a-device-template-type"></a>Een type sjabloon voor een apparaat selecteren 
 
-To add a new device template to your application:
+Een nieuwe apparaatprofiel toevoegen aan uw toepassing:
 
-1. From the left pane, select the **Device Templates** tab.
+1. Selecteer in het linkerdeel venster het tabblad **device sjablonen** .
 
-   ![Screenshot of Device templates page](./media/tutorial-define-iot-device-type/devicetemplate.png)
+   ![Scherm afbeelding van de pagina met Apparaatinstellingen](./media/tutorial-define-iot-device-type/devicetemplate.png)
 
-1. Select **+ New** to start creating a new device template.
+1. Selecteer **+ Nieuw** om te beginnen met het maken van een nieuwe sjabloon voor het apparaat.
 
-   ![Screenshot of Device templates page, with New highlighted](./media/tutorial-define-iot-device-type/devicetemplatenew.png)
+   ![Scherm afbeelding van de pagina met Apparaatinstellingen, met nieuwe gemarkeerd](./media/tutorial-define-iot-device-type/devicetemplatenew.png)
 
-   ![Screenshot of Customize device page](./media/tutorial-define-iot-device-type/gateway-review.png)
+   ![Scherm afbeelding van de pagina apparaat aanpassen](./media/tutorial-define-iot-device-type/gateway-review.png)
 
-1. On the **Select template type** page, select **Azure IoT**, and then select **Next: Customize**.
+1. Selecteer op de pagina **sjabloon type selecteren** de optie **Azure IOT**en selecteer vervolgens **volgende: aanpassen**.
 
-   ![Screenshot of Select template type page](./media/tutorial-define-iot-device-type/gateway-customize.png)
+   ![Scherm afbeelding van de pagina sjabloon type selecteren](./media/tutorial-define-iot-device-type/gateway-customize.png)
 
-1. Select the gateway check box, and select **Create**.
+1. Schakel het selectie vakje gateway in en selecteer **maken**.
 
-   ![Screenshot of Customize device page, with gateway highlighted](./media/tutorial-define-iot-device-type/gateway-review.png)
+   ![Scherm afbeelding van de pagina apparaat aanpassen, met gemarkeerde gateway](./media/tutorial-define-iot-device-type/gateway-review.png)
 
-1. On the review page, select **Create**. 
+1. Op de pagina controleren selecteert u **maken**. 
 
-1. Enter the gateway template name, **Smart Building Gateway Template**. Select the **Custom** tile.
+1. Voer de naam van de gateway sjabloon in, de **sjabloon Smart buil ding gateway**. Selecteer de **aangepaste** tegel.
 
-1. Add a standard interface **Device Information**.
+1. Een standaard interface voor **apparaten**toevoegen.
 
-### <a name="add-relationships"></a>Add relationships
+### <a name="add-relationships"></a>Relaties toevoegen
 
-You can add downstream relationships to device capability models for devices you connect to a gateway device.
+U kunt downstream-relaties toevoegen aan apparaatfuncties voor apparaten die u verbindt met een gateway apparaat.
 
-Create relationships to downstream device capability models. Selecteer **Opslaan**.
+Maak relaties met de functionaliteits modellen van het downstream-apparaat. Selecteer **Opslaan**.
 
-![Screenshot of Smart Building Gateway Template, with various options highlighted](./media/tutorial-define-iot-device-type/gateway-occupancy-s1-rel.png)
+![Scherm opname van de sjabloon Smart buil ding gateway, waarbij verschillende opties zijn gemarkeerd](./media/tutorial-define-iot-device-type/gateway-occupancy-s1-rel.png)
 
-### <a name="add-cloud-properties"></a>Add cloud properties
+### <a name="add-cloud-properties"></a>Cloud eigenschappen toevoegen
 
-A device template can include cloud properties. Cloud properties only exist in the IoT Central application, and are never sent to, or received from, a device.
+Een sjabloon voor een apparaat kan Cloud eigenschappen bevatten. Cloud eigenschappen bestaan alleen in de IoT Central-toepassing en worden nooit verzonden naar of ontvangen van een apparaat.
 
-1. Select **Cloud Properties** >  **+ Add Cloud Property**. Use the information in the following table to add a cloud property to your device template.
+1. Selecteer **Cloud eigenschappen** >  **+ Cloud eigenschap toevoegen**. Gebruik de informatie in de volgende tabel om een Cloud eigenschap toe te voegen aan de sjabloon van uw apparaat.
 
-    | Weergavenaam      | Semantic type | Schema |
+    | Weergavenaam      | Semantisch type | Schema |
     | ----------------- | ------------- | ------ |
-    | Laatste servicedatum | Geen          | Datum   |
-    | Customer name     | Geen          | Tekenreeks |
+    | Laatste servicedatum | None          | Date   |
+    | Klant naam     | None          | Tekenreeks |
 
 2. Selecteer **Opslaan**.
 
-### <a name="add-customizations"></a>Add customizations
+### <a name="add-customizations"></a>Aanpassingen toevoegen
 
-Use customizations to modify an interface, or to add IoT Central-specific features to a capability that doesn't require you to version your device capability model. You can customize fields when the capability model is in a draft or published state. You can only customize fields that don't break interface compatibility. U kunt bijvoorbeeld:
+Gebruik aanpassingen om een interface te wijzigen of om IoT Central-specifieke functies toe te voegen aan een mogelijkheid waarvoor u geen versie hoeft te hebben van uw apparaat. U kunt velden aanpassen wanneer het capaciteits model zich in een concept of gepubliceerde status bevindt. U kunt alleen velden aanpassen die de interface compatibiliteit niet verstoren. U kunt bijvoorbeeld:
 
-- Customize the display name and units of a capability.
-- Add a default color to use when the value appears on a chart.
-- Specify initial, minimum, and maximum values for a property.
+- Pas de weergave naam en de eenheden van een mogelijkheid aan.
+- Een standaard kleur toevoegen die moet worden gebruikt wanneer de waarde in een grafiek wordt weer gegeven.
+- Geef de initiële, minimale en maximale waarde voor een eigenschap op.
 
-You can't customize the capability name or capability type.
+U kunt de naam of het type van de mogelijkheid niet aanpassen.
 
-When you're finished customizing, select **Save**.
+Wanneer u klaar bent met aanpassen, selecteert u **Opslaan**.
 
-### <a name="create-views"></a>Create views
+### <a name="create-views"></a>Weer gaven maken
 
-As a builder, you can customize the application to display relevant information about the environmental sensor device to an operator. Your customizations enable the operator to manage the environmental sensor devices connected to the application. You can create two types of views for an operator to use to interact with devices:
+Als opbouw functie kunt u de toepassing aanpassen om relevante informatie over het omgevings sensor apparaat weer te geven voor een operator. Met uw aanpassingen kan de operator de omgevings sensor apparaten beheren die zijn verbonden met de toepassing. U kunt twee soorten weer gaven maken voor een operator die u kunt gebruiken om te communiceren met apparaten:
 
-* Forms to view and edit device and cloud properties.
-* Dashboards to visualize devices.
+* Formulieren voor het weer geven en bewerken van apparaat-en Cloud eigenschappen.
+* Dash boards om apparaten te visualiseren.
 
-### <a name="generate-default-views"></a>Generate default views
+### <a name="generate-default-views"></a>Standaard weergaven genereren
 
-If you select **Generate default views**, you can generate the **Overview** and **About** dashboards. 
+Als u **Standaard weergaven genereren**selecteert, kunt u het **overzicht** genereren en **over** Dash boards. 
 
-## <a name="publish-a-device-template"></a>Publish a device template
+## <a name="publish-a-device-template"></a>Een sjabloon voor een apparaat publiceren
 
-Before you can create a simulated environmental sensor, or connect a real environmental sensor, you need to publish your device template.
+Voordat u een gesimuleerde omgevings sensor kunt maken, of als u een echte omgevings sensor wilt verbinden, moet u de sjabloon voor het apparaat publiceren.
 
-To publish a device template:
+Een sjabloon voor een apparaat publiceren:
 
-1. Go to your device template from the **Device Templates** page.
+1. Ga op de pagina **Apparaatinstellingen** naar uw sjabloon.
 
 2. Selecteer **Publiceren**.
 
-3. In the **Publish a Device Template** dialog box, choose **Publish**.
+3. Kies in het dialoog venster **een sjabloon voor het publiceren van een apparaat** de optie **publiceren**.
 
-After a device template is published, it's visible on the **Devices** page and to the operator. In a published device template, you can't edit a device capability model without creating a new version. However, you can make updates to cloud properties, customizations, and views, in a published device template. These updates don't cause a new version to be created. After making any changes, select **Publish**  to push those changes out to your operator.
+Nadat een apparaat sjabloon is gepubliceerd, wordt deze weer gegeven op de pagina **apparaten** en aan de operator. U kunt in een sjabloon voor een gepubliceerd apparaat geen mogelijkheidsprofiel bewerken zonder een nieuwe versie te maken. U kunt echter updates voor de Cloud eigenschappen, aanpassingen en weer gaven maken in een sjabloon voor een gepubliceerd apparaat. Deze updates zorgen er niet voor dat er een nieuwe versie wordt gemaakt. Nadat u wijzigingen hebt aangebracht, selecteert u **publiceren** om deze wijzigingen naar uw operator te pushen.
 
-## <a name="create-a-gateway-simulated-device"></a>Create a gateway simulated device
+## <a name="create-a-gateway-simulated-device"></a>Een door de gateway gesimuleerd apparaat maken
 
-From the device explorer, create a simulated smart building gateway. 
+Maak in de Verkenner een gesimuleerde Smart-gateway voor slim bouwen. 
 
-![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/smartbuildingdevice.png)
+![Scherm afbeelding van het dialoog venster nieuw apparaat maken](./media/tutorial-define-iot-device-type/smartbuildingdevice.png)
 
-## <a name="create-downstream-simulated-devices"></a>Create downstream simulated devices
+## <a name="create-downstream-simulated-devices"></a>Downstream gesimuleerde apparaten maken
 
-From the device explorer, create a simulated occupancy sensor. 
+Maak in de Verkenner een gesimuleerde bezettings sensor. 
 
-![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/occupancydevice.png)
+![Scherm afbeelding van het dialoog venster nieuw apparaat maken](./media/tutorial-define-iot-device-type/occupancydevice.png)
 
-From the device explorer, create a simulated S1 sensor. 
+Maak in de Verkenner een gesimuleerde S1-sensor. 
 
-![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/s1device.png)
+![Scherm afbeelding van het dialoog venster nieuw apparaat maken](./media/tutorial-define-iot-device-type/s1device.png)
 
-## <a name="add-downstream-devices-relationships-to-a-gateway-device"></a>Add downstream devices relationships to a gateway device
+## <a name="add-downstream-devices-relationships-to-a-gateway-device"></a>Relaties voor downstream-apparaten toevoegen aan een gateway apparaat
 
-Select S1 Sensor and Occupancy Sensor, and select **Connect to gateway**. 
+Selecteer S1-sensor en bezetting sensor en selecteer **verbinding maken met Gateway**. 
 
-![Screenshot of Occupancy Sensor, with Connect to gateway highlighted](./media/tutorial-define-iot-device-type/connecttogateway.png)
+![Scherm afbeelding van de bezettings sensor, met verbinding maken met de gateway gemarkeerd](./media/tutorial-define-iot-device-type/connecttogateway.png)
 
-Select a gateway device template and gateway device instance, and select **Join**.
+Selecteer een sjabloon voor het gateway-apparaat en het exemplaar van het gateway apparaat en selecteer **lid worden**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
-* Create a new IoT gateway as a device template.
-* Create cloud properties.
-* Create customizations.
-* Define a visualization for the device telemetry.
-* Add relationships.
-* Publish your device template.
+* Maak een nieuwe IoT-gateway als een sjabloon voor een apparaat.
+* Cloud eigenschappen maken.
+* Aanpassingen maken.
+* Definieer een visualisatie voor de telemetrie van het apparaat.
+* Relaties toevoegen.
+* De sjabloon van het apparaat publiceren.
 
-Next, you can:
+U kunt nu het volgende doen:
 
 > [!div class="nextstepaction"]
-> [Connect a device](tutorial-connect-pnp-device.md)
+> [Een apparaat verbinden](tutorial-connect-pnp-device.md)

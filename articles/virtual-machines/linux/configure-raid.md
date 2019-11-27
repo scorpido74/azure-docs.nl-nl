@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: bc53ed3e3a7fd988464b9100df654920d5589596
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036665"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534184"
 ---
 # <a name="configure-software-raid-on-linux"></a>Software-RAID configureren onder Linux
 Het is een veelvoorkomend scenario voor het gebruik van software-RAID op virtuele Linux-machines in azure om meerdere gekoppelde gegevens schijven als één RAID-apparaat te presen teren. Dit kan meestal worden gebruikt om de prestaties te verbeteren en een betere door voer te bieden ten opzichte van het gebruik van slechts één schijf.
 
 ## <a name="attaching-data-disks"></a>Gegevens schijven koppelen
 Er zijn twee of meer lege gegevens schijven nodig voor het configureren van een RAID-apparaat.  De belangrijkste reden voor het maken van een RAID-apparaat is het verbeteren van de prestaties van de schijf-i/o.  Op basis van uw IO-behoeften kunt u ervoor kiezen om schijven die zijn opgeslagen in onze standaard opslag te koppelen, met Maxi maal 500 IO/PS per schijf of onze Premium-opslag, met Maxi maal 5000 IO/PS per schijf. In dit artikel vindt u geen gedetailleerde informatie over het inrichten en koppelen van gegevens schijven aan een virtuele Linux-machine.  Raadpleeg het Microsoft Azure artikel [een schijf koppelen](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) voor gedetailleerde instructies over het koppelen van een lege gegevens schijf aan een virtuele Linux-machine in Azure.
+
+> [!IMPORTANT]
+>Combi neer geen schijven van verschillende grootten. Dit leidt ertoe dat de prestaties van de RAID-set beperkt zijn tot die van de langzaamste schijf. 
 
 ## <a name="install-the-mdadm-utility"></a>Het hulp programma mdadm installeren
 * **Ubuntu**

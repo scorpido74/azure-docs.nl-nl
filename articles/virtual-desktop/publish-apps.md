@@ -1,6 +1,6 @@
 ---
-title: Publish built-in apps in Windows Virtual Desktop - Azure
-description: How to publish modern apps in Windows Virtual Desktop.
+title: Ingebouwde apps publiceren in virtueel bureau blad van Windows-Azure
+description: Het publiceren van moderne apps in Windows virtueel bureau blad.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -14,32 +14,32 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483735"
 ---
-# <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Publish built-in apps in Windows Virtual Desktop
+# <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Ingebouwde apps publiceren in virtueel bureau blad van Windows
 
-This article will tell you how to publish apps in your Windows Virtual Desktop environment.
+In dit artikel wordt uitgelegd hoe u apps publiceert in uw virtuele Windows-desktop omgeving.
 
-## <a name="publish-built-in-apps"></a>Publish built-in apps
+## <a name="publish-built-in-apps"></a>Ingebouwde apps publiceren
 
-To publish a built-in app:
+Een ingebouwde app publiceren:
 
-1. Connect to one of the virtual machines in your host pool.
-2. Get the **PackageFamilyName** of the app you want to publish by following the instructions in [this article](https://docs.microsoft.com/powershell/module/appx/get-appxpackage?view=win10-ps).
-3. Finally, run the following cmdlet with `<PackageFamilyName>` replaced by the **PackageFamilyName** you found in the previous step:
+1. Maak verbinding met een van de virtuele machines in uw hostgroep.
+2. Volg de instructies in [dit artikel](https://docs.microsoft.com/powershell/module/appx/get-appxpackage?view=win10-ps)om de **PackageFamilyName** op te halen van de app die u wilt publiceren.
+3. Voer ten slotte de volgende cmdlet uit met `<PackageFamilyName>` vervangen door de **PackageFamilyName** die u in de vorige stap hebt gevonden:
    
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:appsFolder\<PackageFamilyName>!App"
    ```
 
 >[!NOTE]
-> Windows Virtual Desktop only supports publishing apps with install locations that begin with `C:\Program Files\Windows Apps`.
+> Windows virtueel bureau blad biedt alleen ondersteuning voor het publiceren van apps met installatie locaties die beginnen met `C:\Program Files\Windows Apps`.
 
-## <a name="update-app-icons"></a>Update app icons
+## <a name="update-app-icons"></a>App-pictogrammen bijwerken
 
-After you publish an app, it will have the default Windows app icon instead of its regular icon picture. To change the icon to its regular icon, put the image of the icon you want on a network share. Supported image formats are PNG, BMP, GIF, JPG, JPEG, and ICO.
+Nadat u een app hebt gepubliceerd, heeft deze het standaard pictogram van de Windows-app in plaats van de normale pictogram afbeelding. Als u het pictogram wilt wijzigen in het gewone pictogram, plaatst u de afbeelding van het pictogram dat u wilt op een netwerk share. Ondersteunde afbeeldings indelingen zijn PNG, BMP, GIF, JPG, JPEG en ICO.
 
-## <a name="publish-microsoft-edge"></a>Publish Microsoft Edge
+## <a name="publish-microsoft-edge"></a>Micro soft Edge publiceren
 
-The process you use to publish Microsoft Edge is a little different from the publishing process for other apps. To publish Microsoft Edge with the default homepage, run this cmdlet:
+Het proces dat u gebruikt om micro soft Edge te publiceren, is iets anders dan het publicatie proces voor andere apps. Als u micro soft Edge wilt publiceren met de standaard startpagina, voert u deze cmdlet uit:
 
 ```powershell
 New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" 

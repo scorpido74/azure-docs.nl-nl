@@ -1,6 +1,6 @@
 ---
-title: Get started with Azure Cost Management for partners
-description: This article explains how partners use Azure Cost Management features and how they enable Cost Management access for their customers.
+title: Aan de slag met Azure Cost Management voor partners
+description: In dit artikel wordt uitgelegd hoe partners Azure Cost Management-functies gebruiken en hoe ze Cost Management toegang voor hun klanten mogelijk maken.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,271 +17,271 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219210"
 ---
-# <a name="get-started-with-azure-cost-management-for-partners"></a>Get started with Azure Cost Management for partners
+# <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
-Azure Cost Management is natively available for partners who have onboarded their customers to a Microsoft Customer Agreement and have [purchased an Azure Plan](/partner-center/purchase-azure-plan). This article explains how partners use [Azure Cost Management](index.yml) features to view costs for subscriptions in the Azure Plan. It also describes how partners enable Cost Management access for their customers. Customers can use Cost Management features when enabled by their CSP partner.
+Azure Cost Management is standaard beschikbaar voor partners die hun klanten hebben ingewerkt voor een micro soft-klant overeenkomst en [een Azure-abonnement hebben aangeschaft](/partner-center/purchase-azure-plan). In dit artikel wordt uitgelegd hoe partners [Azure Cost Management](index.yml) -functies gebruiken om de kosten voor abonnementen in het Azure-abonnement weer te geven. Ook wordt beschreven hoe partners Cost Management toegang bieden voor hun klanten. Klanten kunnen Cost Management-functies gebruiken wanneer ze zijn ingeschakeld door hun CSP-partner.
 
-CSP partners use Cost Management to:
+CSP-partners gebruiken Cost Management voor het volgende:
 
-- Understand invoiced costs and associate the costs to the customer, subscriptions, resource groups, and services.
-- Get an intuitive view of Azure costs in [cost analysis](quick-acm-cost-analysis.md) with capabilities to analyze costs by customer, subscription, resource group, resource, meter, service, and many other dimensions.
-- View resource costs that have Partner Earned Credit (PEC) applied in Cost Analysis.
-- Set up notifications and automation using programmatic [budgets](tutorial-acm-create-budgets.md) and alerts when costs exceed budgets.
-- Enable the Azure Resource Manager policy that provides customer access to Cost Management data. Customers can then view consumption cost data for their subscriptions using [pay-as-you-go rates](https://azure.microsoft.com/pricing/calculator/).
+- Inzicht krijgen in gefactureerde kosten en de kosten aan de klant, abonnementen, resource groepen en services koppelen.
+- Krijg een intuïtieve weer gave van de kosten [analyse](quick-acm-cost-analysis.md) van Azure met mogelijkheden voor het analyseren van kosten per klant, abonnement, resource groep, resource, meter, service en vele andere dimensies.
+- Bekijk de resource kosten die een partner hebben ontvangen (PEC) die in de kosten analyse worden toegepast.
+- Stel meldingen en automatisering in met behulp van programmeer [budgetten](tutorial-acm-create-budgets.md) en-waarschuwingen wanneer de kosten de budget overschrijden.
+- Schakel het Azure Resource Manager-beleid in dat klanten toegang biedt tot Cost Management gegevens. Klanten kunnen gegevens over verbruiks kosten weer geven voor hun abonnementen met [betalen naar](https://azure.microsoft.com/pricing/calculator/)gebruik-tarieven.
 
-Here's an example showing costs for all customers.
-![Example showing costs for all customers](./media/get-started-partners/customer-costs1.png)
+Hier volgt een voor beeld van de kosten voor alle klanten.
+![voor beeld van de kosten voor alle klanten](./media/get-started-partners/customer-costs1.png)
 
-Here's an example showing costs for a single customer.
-![Example showing costs for a single customer](./media/get-started-partners/customer-costs2.png)
+Hier volgt een voor beeld van de kosten voor één klant.
+![voor beeld van de kosten voor één klant](./media/get-started-partners/customer-costs2.png)
 
-All functionality available in Azure Cost Management is also available with REST APIs. Use the APIs to automate cost management tasks.
+Alle functionaliteit die beschikbaar is in Azure Cost Management is ook beschikbaar met REST Api's. Gebruik de Api's om kosten beheer taken te automatiseren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure Cost Management requires read access to your billing account or subscription. Access can be granted at any level above your resources, from the billing account or a management group down to individual resource groups where you manage your apps. For more information about enabling and assigning access to Azure Cost Management for a billing account, see [Assign users roles and permissions](/partner-center/permissions-overview). The **Global admin** and **Admin agent** roles can manage costs for a billing account.
+Azure Cost Management hebt lees toegang tot uw facturerings account of-abonnement nodig. Toegang kan op elk niveau boven uw resources worden verleend, van het facturerings account of een beheer groep tot afzonderlijke resource groepen waar u uw apps beheert. Zie [gebruikers rollen en machtigingen toewijzen](/partner-center/permissions-overview)voor meer informatie over het inschakelen en toewijzen van toegang tot Azure Cost Management voor een facturerings account. De rol van **globale beheerder** en **beheerder agent** kan de kosten voor een facturerings account beheren.
 
-To view a full list of supported account types, see [Understand Cost Management data](understand-cost-mgt-data.md).
+Zie [inzicht in cost management gegevens](understand-cost-mgt-data.md)voor een volledige lijst met ondersteunde account typen.
 
 
-## <a name="how-cost-management-uses-scopes"></a>How Cost Management uses scopes
+## <a name="how-cost-management-uses-scopes"></a>Hoe Cost Management scopes gebruikt?
 
-Scopes are where you manage billing data, have roles specific to payments, view invoices, and conduct general account management. Billing and account roles are managed separately from scopes used for resource management, which use RBAC. To clearly distinguish the intent of the separate scopes, including the access control differences, they are referred to as billing scopes and RBAC scopes, respectively.
+Met bereiken beheert u facturerings gegevens, beschikt u over functies die specifiek zijn voor betalingen, het weer geven van facturen en het uitvoeren van algemeen account beheer. Facturerings-en account rollen worden afzonderlijk beheerd vanaf scopes die worden gebruikt voor resource beheer, die gebruikmaakt van RBAC. Om het doel van de afzonderlijke bereiken duidelijk te onderscheiden, met inbegrip van de verschillen in toegangs beheer, worden ze respectievelijk facturerings bereiken en RBAC-bereiken genoemd.
 
-To understand billing scopes and RBAC scopes and how cost management works with scopes, see [Understand and work with scopes](understand-work-scopes.md).
+Zie [begrijpen en werken met bereiken](understand-work-scopes.md)voor meer informatie over de facturerings bereiken en RBAC-bereiken en hoe cost management werkt met scopes.
 
-## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>Manage costs with partner tenant billing scopes
+## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>Kosten beheren met het facturerings bereik van een partner-Tenant
 
-After you've onboarded your customers to a Microsoft Customer Agreement, the following _billing scopes_ are available in your tenant. Use the scopes to manage costs in Cost Management.
+Nadat u uw klanten aan een micro soft-klant overeenkomst hebt toegevoegd, zijn de volgende _facturerings bereiken_ beschikbaar in uw Tenant. Gebruik de bereiken voor het beheren van de kosten in Cost Management.
 
-### <a name="billing-account-scope"></a>Billing account scope
+### <a name="billing-account-scope"></a>Bereik van facturerings account
 
-Use the billing account scope to view pre-tax costs across all your customers and billing profiles. Invoice costs are only shown for customer's consumption-based products on the Microsoft Customer Agreement. However, invoice costs are shown for purchased-based products for customers on both the Microsoft Customer Agreement and the CSP offer. Currently, the default currency to view costs in the scope is US dollars. Budgets set for the scope are also in USD.
+Gebruik het bereik van het facturerings account om kosten voor preheffingen voor al uw klanten en facturerings profielen weer te geven. Factuur kosten worden alleen weer gegeven voor producten op basis van verbruik van de klant van micro soft. Factuur kosten worden echter weer gegeven voor op aankopen gebaseerde producten voor klanten op zowel de klant overeenkomst van micro soft als de CSP-aanbieding. Op dit moment is de standaard valuta voor het weer geven van de kosten in het bereik Amerikaanse dollars. Budgetten die zijn ingesteld voor het bereik, zijn ook in USD.
 
-Regardless of different customer-billed currencies, partners use Billing account scope to set budgets and manage costs in USD across their customers, subscriptions, resources, and resource groups.
+In het kader van verschillende klant-gefactureerde valuta's gebruiken partners het bereik van facturerings accounts om budgetten in te stellen en kosten in USD te beheren voor hun klanten, abonnementen, resources en resource groepen.
 
-Partners also filter costs in a specific billing currency across customers in the cost analysis view. Select the **Actual cost** list to view costs in supported customer billing currencies.
+Partners filteren ook kosten in een specifieke factuur valuta voor klanten in de weer gave kosten analyse. Selecteer de lijst met **werkelijke kosten** om de kosten in ondersteunde facturerings valuta's van klanten weer te geven.
 
-![Example showing Actual cost selection for currencies](./media/get-started-partners/actual-cost-selector.png)
+![Voor beeld van de werkelijke kosten selectie voor valuta's](./media/get-started-partners/actual-cost-selector.png)
 
-Use the [amortized cost view](quick-acm-cost-analysis.md#customize-cost-views) in billing scopes to view reserved instance amortized costs across a reservation term.
+Gebruik de [weer gave afgeschreven kosten](quick-acm-cost-analysis.md#customize-cost-views) in facturerings bereik om de afgeschreven kosten van gereserveerde instanties voor een reserverings termijn weer te geven.
 
-### <a name="billing-profile-scope"></a>Billing profile scope
+### <a name="billing-profile-scope"></a>Bereik van facturerings profiel
 
-Use the billing profile scope to view pre-tax costs in the billing currency across all your customers for all products and subscriptions included in an invoice. You can filter costs in a billing profile for a specific invoice using the **InvoiceID** filter. The filter shows the consumption and product purchase costs for a specific invoice. You can also filter the costs for a specific customer on the invoice to see pre-tax costs.
+Gebruik het bereik van het facturerings profiel om de kosten voor preheffing in de facturerings valuta voor al uw klanten te bekijken voor alle producten en abonnementen die in een factuur zijn opgenomen. U kunt de kosten in een facturerings profiel voor een specifieke factuur filteren met behulp van het **InvoiceID** -filter. Het filter toont het verbruik en de aanschaf kosten van het product voor een specifieke factuur. U kunt ook de kosten voor een specifieke klant op de factuur filteren om de kosten voor de belasting vooraf te bekijken.
 
-After you onboard customers to a Microsoft Customer Agreement, you receive an invoice that includes all charges for all products (consumption, purchases, and entitlements) for these customers on the Microsoft Customer Agreement. When billed in the same currency, these invoices also include the charges for entitlement and purchased products such as SaaS, Azure Marketplace, and reservations for customers who are still in the CSP offer.
+Nadat u klanten onboardt naar een micro soft-klant overeenkomst, ontvangt u een factuur met alle kosten voor alle producten (verbruik, aankopen en rechten) voor deze klanten op de micro soft-klant overeenkomst. Wanneer in dezelfde valuta wordt gefactureerd, omvatten deze facturen ook de kosten voor rechte en aangeschafte producten zoals SaaS, Azure Marketplace en reserve ringen voor klanten die zich nog in de CSP-aanbieding bevinden.
 
-To help reconcile charges against the customer invoice, the billing profile scope enables you to see all costs that accrue for an invoice for your customers. Like the invoice, the scope shows costs for every customer in the new Microsoft Customer Agreement. The scope also shows every charge for customer entitlement products still in the current CSP offer.
+Voor het afstemmen van de kosten voor de klant factuur kunt u met het bereik van het facturerings profiel alle kosten bekijken die toenemen voor een factuur voor uw klanten. Net als bij de factuur toont het bereik de kosten voor elke klant in de nieuwe klant overeenkomst van micro soft. In het bereik worden ook de kosten voor klant rechten weer gegeven die nog in de huidige CSP-aanbieding zijn opgenomen.
 
-The billing profile and billing account scopes are the only applicable scopes that show charges for entitlement and purchase-based products like Azure Marketplace and reservation purchases.
+De scopes van het facturerings profiel en het betaal account zijn de enige toepasselijke bereiken die de kosten voor rechten en op aankoop gebaseerde producten zoals Azure Marketplace en reserverings aankopen tonen.
 
-Billing profiles define the subscriptions that are included in an invoice. Billing profiles are the functional equivalent of an enterprise agreement enrollment. A billing profile is the scope where invoices are generated.
+In facturerings profielen worden de abonnementen gedefinieerd die zijn opgenomen in een factuur. Facturerings profielen zijn het functionele equivalent van een Enter prise Agreement-inschrijving. Een facturerings profiel is het bereik waarin facturen worden gegenereerd.
 
-Currently, the customer's billing currency is the default currency when viewing costs in the billing profile scope. Budgets set at the billing profile scope are in the billing currency.
+Op dit moment is de facturerings valuta van de klant de standaard valuta bij het weer geven van de kosten in het bereik van het facturerings profiel. Budgetten die zijn ingesteld op het bereik van het facturerings profiel, worden in de facturerings valuta opgenomen.
 
-Partners can use the scope to reconcile to invoices. And, they use the scope to set budgets in the billing currency for the following items:
+Partners kunnen het bereik gebruiken voor het afstemmen op facturen. En ze gebruiken het bereik om budgetten in te stellen in de facturerings valuta voor de volgende items:
 
-- Specific filtered invoice
+- Specifieke gefilterde factuur
 - Klant
 - Abonnement
 - Resourcegroep
-- Bron
+- Resource
 - Azure-service
-- Naar gebruik
+- Meter
 - ResellerMPNID
 
-### <a name="customer-scope"></a>Customer scope
+### <a name="customer-scope"></a>Bereik van klant
 
-Partners use the scope to manage costs associated to customers that are onboarded to the Microsoft Customer Agreement. The scope allows partners to view pre-tax costs for a specific customer. You can also filter the pre-tax costs for a specific subscription, resource group, or resource.
+Partners gebruiken de scope voor het beheren van de kosten die zijn gekoppeld aan klanten die onboarding voor de micro soft-klant overeenkomst zijn. Met het bereik kunnen partners de kosten van de preheffing voor een specifieke klant weer geven. U kunt ook de kosten vóór belastingen voor een specifiek abonnement, resource groep of resource filteren.
 
-The customer scope doesn't include customers who are on the current CSP offer. The scope only includes customers who have a Microsoft Customer Agreement. Entitlement costs, not Azure usage, for current CSP offer customers are available at the billing account and billing profile scopes when you apply the customer filter.
+Het bereik van de klant bevat geen klanten die zich op de huidige CSP-aanbieding bevinden. De scope bevat alleen klanten die een micro soft-klant overeenkomst hebben. De rechten kosten, niet voor Azure-gebruik, voor huidige CSP-aanbieding klanten zijn beschikbaar op het facturerings account en het bereik van facturerings profielen wanneer u het klant filter toepast.
 
-## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Partner access to billing scopes in Cost Management
+## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Partner toegang tot de facturerings bereiken in Cost Management
 
-Only the users with **Global admin** and **Admin agent** roles can manage and view costs for billing accounts, billing profiles, and customers directly in the partner's Azure tenant. For more information about partner center roles, see [Assign users roles and permissions](/partner-center/permissions-overview).
+Alleen gebruikers met de rol van **globale beheerder** en **beheerder** kunnen kosten voor facturerings accounts, facturerings profielen en klanten rechtstreeks in de Azure-Tenant van de partner beheren en weer geven. Zie [gebruikers rollen en machtigingen toewijzen](/partner-center/permissions-overview)voor meer informatie over de functies van het partner centrum.
 
-## <a name="enable-cost-management-in-the-customer-tenant"></a>Enable cost management in the customer tenant
+## <a name="enable-cost-management-in-the-customer-tenant"></a>Kosten beheer inschakelen in de Tenant van de klant
 
-Partners may enable access to Cost Management after customers are onboarded to a Microsoft Customer Agreement. Then partners can then enable a policy allowing customers to view their costs computed at pay-as-you-go retail rates. Costs are shown in the customer's billing currency for their consumed usage at RBAC subscription and resource groups scopes.
+Partners kunnen toegang tot Cost Management mogelijk maken nadat klanten zijn opvolgd voor een klant overeenkomst van micro soft. Vervolgens kunnen partners een beleid inschakelen waarmee klanten hun kosten bekijken die worden berekend op basis van betalen naar gebruik-tarieven. Kosten worden weer gegeven in de facturerings valuta van de klant voor het verbruikte gebruik van het abonnement en de resource groepen van het RBAC.
 
-When the policy for cost visibility is enabled by the partner, any user with Azure Resource Manager access to the subscription can manage and analyze costs at pay-as-you-go rates. Effectively, resellers and customers that have the appropriate RBAC access to the Azure subscriptions can view cost.
+Wanneer het beleid voor de zicht baarheid van kosten wordt ingeschakeld door de partner, kan elke gebruiker met Azure Resource Manager toegang tot het abonnement kosten op basis van betalen naar gebruik-tarieven beheren en analyseren. Effectief kunnen wederverkopers en klanten die de juiste RBAC-toegang hebben tot de Azure-abonnementen, kosten bekijken.
 
-Regardless of the policy, partners can also view the costs if they have access to the subscription and resource group.
+Ongeacht het beleid kunnen partners ook de kosten weer geven als ze toegang hebben tot het abonnement en de resource groep.
 
-### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Enable the policy to view Azure usage charges
+### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Het beleid inschakelen voor het weer geven van Azure-gebruiks kosten
 
-Partners use the following information to enable to the policy to view Azure usage charges for their customers.
+Partners gebruiken de volgende informatie om het beleid in te scha kelen voor het weer geven van Azure-gebruiks kosten voor hun klanten.
 
-In the Azure portal, sign in to the partner tenant and click **Cost Management + Billing**. Select a billing account and then click **Customers**. The list of customers is associated with the billing account.
+Meld u aan bij de partner-Tenant in het Azure Portal en klik op **Cost Management + facturering**. Selecteer een facturerings account en klik vervolgens op **klanten**. De lijst met klanten is gekoppeld aan het facturerings account.
 
-In the list of customers, select the customer that you want to allow to view costs.
+Selecteer in de lijst met klanten de klant waarvoor u de kosten wilt weer geven.
 
-![Select customers in Cost Management](./media/get-started-partners/customer-list.png)
+![Klanten selecteren in Cost Management](./media/get-started-partners/customer-list.png)
 
-Under **Settings**, click **Policies**.
+Klik onder **instellingen**op **beleid**.
 
-The current cost visibility policy is shown for **Azure Usage** charges associated to the subscriptions for the selected customer.
-![Policy to allow customers to view pay-as-you-go charges](./media/get-started-partners/cost-management-billing-policies.png)
+Het huidige beleid voor de zichtbaarheid van kosten wordt weer gegeven voor **Azure-gebruiks** kosten die zijn gekoppeld aan de abonnementen voor de geselecteerde klant.
+![beleid waarmee klanten kosten voor betalen per gebruik kunnen weer geven](./media/get-started-partners/cost-management-billing-policies.png)
 
-When the policy is set to **No**, Azure Cost Management isn't available for subscription users associated to the customer. Unless enabled by a partner, the cost visibility policy is disabled by default for all subscription users.
+Wanneer het beleid is ingesteld op **Nee**, is Azure Cost Management niet beschikbaar voor abonnements gebruikers die zijn gekoppeld aan de klant. Tenzij deze is ingeschakeld door een partner, wordt het beleid voor kosten zichtbaarheid standaard uitgeschakeld voor alle gebruikers van het abonnement.
 
-When the cost policy is set to **Yes**, subscription users associated to the customer tenant can see usage charges at pay-as-you go rates.
+Wanneer het kosten beleid is ingesteld op **Ja**, kunnen abonnements gebruikers die zijn gekoppeld aan de Tenant van de klant, de gebruiks kosten bekijken bij betalen naar gebruik-tarieven.
 
-When the cost visibility policy is enabled, all services that have subscription usage show costs at pay-as-you-go rates. Reservation usage appears with zero charges for actual and amortized costs. Purchases and entitlements are not associated to a specific subscription. So, purchases aren't displayed at the subscription scope.
+Wanneer het beleid voor het berekenen van de kosten is ingeschakeld, worden voor alle services waarvoor het abonnements abonnement geldt kosten op basis van betalen naar gebruik-tarieven weer gegeven. Het gebruik van de reserve ring wordt weer gegeven met nul kosten voor de werkelijke en afgeschreven kosten. Aankopen en rechten zijn niet gekoppeld aan een specifiek abonnement. Aankopen worden dus niet weer gegeven in het abonnements bereik.
 
-To view costs for the customer tenant, open Cost Management + Billing and then click Billing accounts. In the list of billing accounts, click a billing account.
+Als u de kosten voor de Tenant van de klant wilt weer geven, opent u Cost Management + facturering en klikt u vervolgens op facturerings accounts. Klik in de lijst met facturerings accounts op een facturerings account.
 
-![Select a billing account](./media/get-started-partners/select-billing-account.png)
+![Een facturerings account selecteren](./media/get-started-partners/select-billing-account.png)
 
-Under **Billing**, click **Azure subscriptions**, and then click a customer.
+Klik onder **facturering**op **Azure-abonnementen**en klik vervolgens op een klant.
 
-![Select an Azure subscription customer](./media/get-started-partners/subscriptions-select-customer.png)
+![Een klant van een Azure-abonnement selecteren](./media/get-started-partners/subscriptions-select-customer.png)
 
-Click **Cost analysis** and start reviewing costs.
-Cost analysis, budgets, and alerts are available for the subscription and resource group RBAC scopes at pay-as-you-go rate-based costs.
+Klik op **kosten analyse** en Bekijk de kosten.
+Kosten analyse, budgetten en waarschuwingen zijn beschikbaar voor het abonnement en de RBAC-scopes van de resource groep tegen kosten op basis van betalen per gebruik-tarief.
 
-![View cost analysis as a customer ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+![Kosten analyse als een klant weer geven ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
 
-Amortized views and actual costs for reserved instances in the RBAC scopes show zero charges. Reserved instance costs are only showing in billing scopes where the purchases were made.
+Bij afgeschreven weer gaven en werkelijke kosten voor gereserveerde instanties in de RBAC-bereiken worden nulwaarden weer gegeven. Kosten voor gereserveerde instanties worden alleen weer gegeven in facturerings bereik waar de aankopen zijn gedaan.
 
-## <a name="analyze-costs-in-cost-analysis"></a>Analyze costs in cost analysis
+## <a name="analyze-costs-in-cost-analysis"></a>Kosten analyseren in kosten analyse
 
-Partners can explore and analyze costs in cost analysis across customers for a specific customer or for an invoice. In the [cost analysis](quick-acm-cost-analysis.md) view, you can also [save views](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) and export data to [CSV and PNG files](quick-acm-cost-analysis.md#automation-and-offline-analysis).
+Partners kunnen kosten ontdekken en analyseren voor de kosten analyse van klanten voor een specifieke klant of voor een factuur. In de weer gave [kosten analyse](quick-acm-cost-analysis.md) kunt u ook [weer gaven opslaan](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) en gegevens exporteren naar [CSV-en PNG-bestanden](quick-acm-cost-analysis.md#automation-and-offline-analysis).
 
-You can use filter and group by features in cost analysis to analyze costs by multiple fields. Partner-specific fields are shown in the next section.
+U kunt filteren en groeperen op functies in Cost Analysis gebruiken om kosten te analyseren op basis van meerdere velden. In de volgende sectie worden de partner-specifieke velden weer gegeven.
 
-## <a name="data-fields"></a>Data fields
+## <a name="data-fields"></a>Gegevens velden
 
-The following data fields are found in usage detail files and Cost Management APIs. Where available, Partner Center equivalent information is shown. For the following bold fields, partners can use filter and group by features in cost analysis to analyze costs by multiple fields. Bold fields apply only to Microsoft Customer Agreements supported by partners.
+De volgende gegevens velden zijn te vinden in detail bestanden voor gebruik en Cost Management-Api's. Indien beschikbaar, wordt gelijkwaardige informatie over Partner Center weer gegeven. Voor de volgende vetgedrukte velden kunnen partners filteren en groeperen op functies in Cost Analysis gebruiken om kosten te analyseren op basis van meerdere velden. Vetgedrukte velden zijn alleen van toepassing op micro soft-klant overeenkomsten die door partners worden ondersteund.
 
-| **Field name** | **Beschrijving** | **Partner Center equivalent** |
+| **Veld naam** | **Beschrijving** | **Partner centrum equivalent** |
 | --- | --- | --- |
-| InvoiceId | Invoice ID shown on the invoice for the specific transaction. | Invoice number where the transaction is shown. |
-| previousInvoiceID | Reference to an original invoice there is a refund (negative cost). Populated only when there is a refund. | N/A |
-| billingAccountName | Name of the billing account representing the partner. It accrues all costs across the customers who have onboarded to a Microsoft customer agreement and the CSP customers that have made entitlement purchases like SaaS, Azure Marketplace, and reservations. | N/A |
-| billingAccountID | Identifier for the billing account representing the partner. | MCAPI Partner Commerce Root ID. Used in a request, but not included in a response.|
-| billingProfileID | Identifier for the billing profile that groups costs across invoices in a single billing currency across the customers who have onboarded to a Microsoft customer agreement and the CSP customers that have made entitlement purchases like SaaS, Azure Marketplace, and reservations. | MCAPI Partner Billing Group ID. Used in a request, but not included in a response. |
-| billingProfileName | Name of the billing profile that groups costs across invoices in a single billing currency across the customers who have onboarded to a Microsoft customer agreement and the CSP customers that have made entitlement purchases like SaaS, Azure Marketplace, and reservations. | N/A |
-| invoiceSectionName | Name of the project that is being charged in the invoice. Not applicable for Microsoft Customer Agreements onboarded by partners. | N/A |
-| invoiceSectionID | Identifier of the project that is being charged in the invoice. Not applicable for Microsoft Customer Agreements onboarded by partners. | N/A |
-| **CustomerTenantID** | Identifier of the Azure Active Directory tenant of the customer's subscription. | Customer's organizational ID - the customer's Azure Active Directory TenantID. |
-| **CustomerName** | Name of the Azure Active Directory tenant for the customer's subscription. | Customer's organization name, as shown in the Partner Center. Important for reconciling the invoice with your system information. |
-| **CustomerTenantDomainName** | Domain name for the Azure Active Directory tenant of the customer's subscription. | Customer Azure Active Directory tenant domain. |
-| **PartnerTenantID** | Identifier for the partner's Azure Active Directory tenant. | Partner Azure Active Directory Tenant ID called as Partner ID, in GUID format. |
-| **PartnerName** | Name of the partner Azure Active Directory tenant. | Partner name. |
-| **ResellerMPNID** | MPNID for the reseller associated with the subscription. | MPN ID of the reseller on record for the subscription. Not available for current activity. |
-| costCenter | Cost center associated to the subscription. | N/A |
-| billingPeriodStartDate | Billing period start date, as shown on the invoice. | N/A |
-| billingPeriodEndDate | Billing period end date, as shown on the invoice. | N/A |
-| servicePeriodStartDate | Start date for the rating period when the service usage was rated for charges. The prices for Azure services are determined for the rating period. | ChargeStartDate in Partner Center. Billing cycle start date, except when presenting dates of previously uncharged latent usage data from a previous billing cycle. The time is always the beginning of the day, 0:00. |
-| servicePeriodEndDate | End date for the period when the service usage was rated for charges. The prices for Azure services are determined based on the rating period. | N/A |
-| date | For Azure consumption data, it shows date of usage as rated. For reserved instance, it shows the purchased date. For recurring charges and one-time charges such as Marketplace and support, it shows the purchase date. | N/A |
-| productID | Identifier for the product that has accrued charges by consumption or purchase. It is the concatenated key of productID and SKuID, as shown in the Partner Center. | The ID of the product. |
-| product | Name of the product that has accrued charges by consumption or purchase, as shown on the invoice. | The product name in the catalog. |
-| serviceFamily | Shows the service family for the product purchased or charged. For example, Storage or Compute. | N/A |
-| productOrderID | The identifier of the asset or Azure plan name that the subscription belongs to. For example, Azure Plan. | N/A |
-| productOrderName | The name of the Azure plan that the subscription belongs to. For example, Azure Plan. | N/A|
-| consumedService | Consumed service (legacy taxonomy) as used in legacy EA usage details. | Service shown in the Partner Center. For example, Microsoft.Storage, Microsoft.Compute, and microsoft.operationalinsights. |
-| meterId | Metered identifier for measured consumption. | The ID of the used meter. |
-| meterName | Identifies the name of the meter for measured consumption. | The name of the consumed meter. |
-| meterCategory | Identifies the top-level service for usage. | The top-level service for the usage. |
-| meterSubCategory | Defines the type or subcategory of Azure service that can affect the rate. | The type of Azure service that can affect the rate.|
-| meterRegion | De datacenterlocatie voor bepaalde services waarbij de prijs is gebaseerd op de datacenterlocatie. | The regional location of a data center for services, where applicable and populated. |
-| subscription ID | Unique Microsoft generated identifier for the Azure subscription. | N/A |
-| subscriptionName | De naam van het Azure-abonnement. | N/A |
-| Termijn | Hiermee wordt de geldigheidstermijn van de aanbieding weergegeven. For example, reserved instances show 12 months of a yearly term of the reserved instance. For one-time purchases or recurring purchases, the term displays one month for SaaS, Azure Marketplace, and support. Not applicable for Azure consumption. | N/A |
-| publisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Type of publisher that identifies the publisher as first party, third-party reseller, or third-party agency. | N/A |
-| partNumber | Part number for the unused reserved instance and Azure Marketplace services. | N/A |
-| publisherName | Name of the publisher of the service including Microsoft or third-party publishers. | The name of the product's publisher.|
-| reservationId | Identifier for the reserved instance purchase. | N/A |
-| reservationName | Name of the reserved instance. | N/A |
-| reservationOrderId | OrderID for the reserved instance. | N/A |
-| frequency | Payment frequency for a reserved instance. | N/A |
-| resourceGroup | Name of the Azure resource group used for lifecycle resource management. | Name of the resource group. |
-| instanceID (or) ResourceID | Identifier of the resource instance. | Shown as a ResourceURI that includes complete resource properties. |
-| resourceLocation | Name of the resource location. | The location of the resource. |
-| Locatie | Normalized location of the resource. | N/A |
-| effectivePrice | The effective unit price of the service, in pricing currency. Unique for a product, service family, meter, and offer. Used with pricing in the price sheet for the billing account. When there is tiered pricing or an included quantity, it shows the blended price for consumption. | The unit price after adjustments are made. |
-| Hoeveelheid | Measured quantity purchased or consumed. The amount of the meter used during the billing period. | Number of units. Ensure it matches the information in your billing system during reconciliation. |
-| unitOfMeasure | Identifies the unit that the service is charged in. For example, GB and hours. | Identifies the unit that the service is charged in. For example, GB, hours, and 10,000s. |
-| pricingCurrency | The currency defining the unit price. | The currency in the pricelist.|
-| billingCurrency | The currency defining the billed cost. | The currency of the customer's geographic region. |
-| chargeType | Defines the type of charge that the cost represents in Azure Cost Management like purchase and refund. | The type of charge or adjustment. Not available for current activity. |
-| costinBillingCurrency | ExtendedCost or blended cost before tax in the billed currency. | N/A |
-| costinPricingCurrency | ExtendedCost or blended cost before tax in pricing currency to correlate with prices. | N/A |
-| **costinUSD** | Estimated ExtendedCost or blended cost before tax in USD. | N/A |
-| **paygCostInBillingCurrency** | Shows costs if pricing is in retail prices. Shows pay-as-you-go prices in the billing currency. Available only at RBAC scopes. | N/A |
-| **paygCostInUSD** | Shows costs if pricing is in retail prices. Shows pay-as-you-go prices in USD. Available only at RBAC scopes. | N/A |
-| exchangeRate | Exchange rate used to convert from the pricing currency to the billing currency. | Referred to as PCToBCExchangeRate in the Partner Center. The pricing currency to billing currency exchange rate.|
-| exchangeRateDate | The date for the exchange rate that's used to convert from the pricing currency to the billing currency. | Referred to as PCToBCExchangeRateDat in the Partner Center. The pricing currency to billing currency exchange rate date.|
-| isAzureCreditEligible | Indicates whether the cost is eligible for payment by Azure credits. | N/A |
-| serviceInfo1 | Legacy field that captures optional service-specific metadata. | Internal Azure service metadata. |
-| serviceInfo2 | Legacy field that captures optional service-specific metadata. | Service information. For example, an image type for a virtual machine and ISP name for ExpressRoute.|
-| additionalInfo | Servicespecifieke metagegevens. Bijvoorbeeld een installatiekopie voor een virtuele machine. | Any additional information not covered in other columns. The service-specific metadata. Bijvoorbeeld een installatiekopie voor een virtuele machine.|
-| tags | Tag that you assign to the meter. Use tags to group billing records. For example, you can use tags to distribute costs by the department that uses the meter. | Tags added by the customer.|
-| **partnerEarnedCreditRate** | Rate of discount applied if there is a partner earned credit (PEC) based on partner admin link access. | The rate of partner earned credit (PEC). For example, 0% or 15%. |
-| **partnerEarnedCreditApplied** | Indicates whether the partner earned credit has been applied. | N/A |
+| InvoiceId | Factuur-ID die wordt weer gegeven op de factuur voor de specifieke trans actie. | Factuur nummer waar de trans actie wordt weer gegeven. |
+| previousInvoiceID | Verwijzing naar een oorspronkelijke factuur er is een restitutie (negatieve kosten). Alleen ingevuld als er een restitutie is. | N.v.t. |
+| billingAccountName | De naam van het facturerings account dat de partner voor stelt. Alle kosten worden in rekening gebracht voor alle klanten die hebben gekantt aan een micro soft-klant overeenkomst en de CSP-klanten die recht hebben op aankopen als SaaS, Azure Marketplace en reserve ringen. | N.v.t. |
+| billingAccountID | De id voor het facturerings account dat de partner voor stelt. | MCAPI partner commerce-basis-ID. Wordt gebruikt in een aanvraag, maar is niet opgenomen in een antwoord.|
+| billingProfileID | De id voor het facturerings profiel waarmee de kosten voor facturen worden gegroepeerd in een enkele facturerings valuta voor klanten die hebben gereageerd op een micro soft-klant overeenkomst en de CSP-klanten die recht hebben op aankopen als SaaS, Azure Marketplace en ringen. | Facturerings groep-ID van MCAPI-partner. Wordt gebruikt in een aanvraag, maar is niet opgenomen in een antwoord. |
+| billingProfileName | De naam van het facturerings profiel waarmee de kosten voor facturen worden gegroepeerd in een enkele facturerings valuta voor de klanten die een micro soft-klant overeenkomst hebben opgedaan en de CSP-klanten die recht hebben op aankopen als SaaS, Azure Marketplace en ringen. | N.v.t. |
+| invoiceSectionName | De naam van het project dat in de factuur wordt gefactureerd. Niet van toepassing op micro soft-klant overeenkomsten die worden uitgevoerd door partners. | N.v.t. |
+| invoiceSectionID | De id van het project dat in de factuur wordt gefactureerd. Niet van toepassing op micro soft-klant overeenkomsten die worden uitgevoerd door partners. | N.v.t. |
+| **CustomerTenantID** | De id van de Azure Active Directory Tenant van het abonnement van de klant. | Organisatie-ID van de klant: de Azure Active Directory TenantID van de klant. |
+| **CustomerName** | De naam van de Azure Active Directory Tenant voor het abonnement van de klant. | De organisatie naam van de klant, zoals weer gegeven in het partner centrum. Belang rijk voor het afstemmen van de factuur met uw systeem gegevens. |
+| **CustomerTenantDomainName** | De domein naam voor de Azure Active Directory Tenant van het abonnement van de klant. | Tenant domein van klant Azure Active Directory. |
+| **PartnerTenantID** | Id voor de Azure Active Directory-Tenant van de partner. | Partner Azure Active Directory Tenant-ID, in GUID-indeling, aangeduid als partner-ID. |
+| **PartnerName** | De naam van de partner Azure Active Directory Tenant. | De naam van de partner. |
+| **ResellerMPNID** | MPNID voor de wederverkoper die aan het abonnement is gekoppeld. | MPN-ID van de reseller op record voor het abonnement. Niet beschikbaar voor huidige activiteit. |
+| costCenter | Kosten plaats die aan het abonnement is gekoppeld. | N.v.t. |
+| billingPeriodStartDate | De begin datum van de facturerings periode, zoals op de factuur wordt weer gegeven. | N.v.t. |
+| billingPeriodEndDate | De eind datum van de facturerings periode, zoals op de factuur wordt weer gegeven. | N.v.t. |
+| servicePeriodStartDate | De begin datum voor de beoordelings periode wanneer het service verbruik is beoordeeld op kosten. De prijzen voor Azure-Services worden bepaald voor de beoordelings periode. | ChargeStartDate in partner centrum. De begin datum van de facturerings cyclus, met uitzonde ring van de datum van voorheen niet-gefactureerde ongebruikte gegevens van een eerdere facturerings cyclus. De tijd is altijd het begin van de dag, 0:00. |
+| servicePeriodEndDate | Eind datum voor de periode waarin het service verbruik is beoordeeld op kosten. De prijzen voor Azure-Services worden bepaald op basis van de waarderings periode. | N.v.t. |
+| date | Voor Azure-verbruiks gegevens wordt de datum van gebruik weer gegeven als geclassificeerd. Voor een gereserveerde instantie wordt de aangeschafte datum weer gegeven. Voor terugkerende kosten en eenmalige kosten, zoals Marketplace en ondersteuning, wordt de aankoop datum weer gegeven. | N.v.t. |
+| productID | Id voor het product dat de transitorische kosten per verbruik of aankoop heeft. Het is de aaneengeschakelde sleutel van productID en SKuID, zoals wordt weer gegeven in het partner centrum. | De ID van het product. |
+| product | Naam van het product met transitorische kosten per verbruik of aankoop, zoals op de factuur wordt weer gegeven. | De product naam in de catalogus. |
+| serviceFamily | Toont de service familie voor het product dat is gekocht of in rekening wordt gebracht. Bijvoorbeeld Storage of compute. | N.v.t. |
+| productOrderID | De id van de Asset of Azure-plan naam waarvan het abonnement deel uitmaakt. Bijvoorbeeld Azure-abonnement. | N.v.t. |
+| productOrderName | De naam van het Azure-abonnement waarvan het abonnement deel uitmaakt. Bijvoorbeeld Azure-abonnement. | N.v.t.|
+| consumedService | Verbruikte service (verouderde taxonomie) zoals gebruikt in verouderde EA-gebruiks gegevens. | De service die wordt weer gegeven in het partner centrum. Bijvoorbeeld micro soft. Storage, micro soft. Compute en micro soft. operationalinsights. |
+| meterId | Gecontroleerde id voor het gemeten verbruik. | De ID van de gebruikte meter. |
+| meterName | Hiermee wordt de naam van de meter voor gemeten verbruik geïdentificeerd. | De naam van de verbruikte meter. |
+| meterCategory | Identificeert de service op het hoogste niveau voor gebruik. | De service op het hoogste niveau voor het gebruik. |
+| meterSubCategory | Hiermee wordt het type of de subcategorie van de Azure-service gedefinieerd die van invloed kan zijn op het aantal. | Het type Azure-service dat van invloed kan zijn op het aantal.|
+| meterRegion | De datacenterlocatie voor bepaalde services waarbij de prijs is gebaseerd op de datacenterlocatie. | De regionale locatie van een Data Center voor services, indien van toepassing en gevuld. |
+| subscription ID | De unieke door micro soft gegenereerde id voor het Azure-abonnement. | N.v.t. |
+| subscriptionName | De naam van het Azure-abonnement. | N.v.t. |
+| Termijn | Hiermee wordt de geldigheidstermijn van de aanbieding weergegeven. Gereserveerde instanties tonen bijvoorbeeld 12 maanden van een jaar van de gereserveerde instantie. Voor eenmalige aankopen of terugkerende aankopen wordt voor de periode één maand voor SaaS, Azure Marketplace en ondersteuning weer gegeven. Niet van toepassing op Azure-verbruik. | N.v.t. |
+| publisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Type uitgever die de uitgever identificeert als eerste partij, wederverkoper van derden of Bureau van derden. | N.v.t. |
+| partNumber | Onderdeel nummer voor het niet-gebruikte gereserveerde exemplaar en Azure Marketplace-Services. | N.v.t. |
+| publisherName | De naam van de uitgever van de service, inclusief micro soft-of uitgevers van derden. | De naam van de uitgever van het product.|
+| reservationId | De id voor de gereserveerde instantie aankoop. | N.v.t. |
+| reservationName | De naam van de gereserveerde instantie. | N.v.t. |
+| reservationOrderId | OrderID voor het gereserveerde exemplaar. | N.v.t. |
+| frequency | De betalings frequentie voor een gereserveerde instantie. | N.v.t. |
+| resourceGroup | De naam van de Azure-resource groep die wordt gebruikt voor levenscyclus resource beheer. | De naam van de resource groep. |
+| instanceID (of) ResourceID | De id van het resource-exemplaar. | Wordt weer gegeven als een ResourceURI die volledige resource-eigenschappen bevat. |
+| resourceLocation | De naam van de resource locatie. | De locatie van de resource. |
+| Locatie | De genormaliseerde locatie van de resource. | N.v.t. |
+| effectivePrice | De werkelijke eenheids prijs van de service, in de valuta prijs. Uniek voor een product, een service familie, een meter en een aanbieding. Wordt gebruikt met prijzen in het prijs overzicht voor het facturerings account. Als er gelaagde prijzen of een inbegrepen hoeveelheid zijn, wordt de overvloei prijs voor verbruik weer gegeven. | De eenheids prijs na aanpassingen wordt gemaakt. |
+| Aantal | Gemeten hoeveelheid die is gekocht of verbruikt. De hoeveelheid meter die wordt gebruikt tijdens de facturerings periode. | Aantal eenheden. Zorg ervoor dat deze overeenkomt met de informatie in uw facturerings systeem tijdens het afstemmen. |
+| unitOfMeasure | Hiermee wordt de eenheid geïdentificeerd waarin de service wordt gefactureerd. Bijvoorbeeld GB en uren. | Hiermee wordt de eenheid geïdentificeerd waarin de service wordt gefactureerd. Bijvoorbeeld GB, uren en 10, per 10.000. |
+| pricingCurrency | De valuta waarin de eenheids prijs wordt gedefinieerd. | De valuta in het Pricelist.|
+| billingCurrency | De valuta waarin de gefactureerde kosten worden gedefinieerd. | De valuta van de geografische regio van de klant. |
+| chargeType | Definieert het type kosten dat de kosten vertegenwoordigen in Azure Cost Management zoals aankoop en terugbetaling. | Het type kosten of correctie. Niet beschikbaar voor huidige activiteit. |
+| costinBillingCurrency | ExtendedCost of overvloei kosten vóór belasting in de gefactureerde valuta. | N.v.t. |
+| costinPricingCurrency | ExtendedCost of overvloei kosten voor BTW in de prijs valuta om te correleren met prijzen. | N.v.t. |
+| **costinUSD** | Geschatte ExtendedCost of overvloei kosten vóór belasting in USD. | N.v.t. |
+| **paygCostInBillingCurrency** | Hiermee worden de kosten weer gegeven als de prijzen een verkoop prijs zijn. Hiermee worden de prijzen voor betalen naar gebruik in de facturerings valuta weer gegeven. Alleen beschikbaar voor RBAC-bereiken. | N.v.t. |
+| **paygCostInUSD** | Hiermee worden de kosten weer gegeven als de prijzen een verkoop prijs zijn. Toont de prijzen voor betalen naar gebruik in USD. Alleen beschikbaar voor RBAC-bereiken. | N.v.t. |
+| exchangeRate | De wissel koers die wordt gebruikt om de prijs valuta om te zetten in de facturerings valuta. | Wordt aangeduid als PCToBCExchangeRate in het partner centrum. De prijs valuta voor factuur wisselkoers.|
+| exchangeRateDate | De datum voor de wissel koers die wordt gebruikt om van de prijs valuta te converteren naar de facturerings valuta. | Wordt aangeduid als PCToBCExchangeRateDat in het partner centrum. De prijs valuta voor de factuur wisselkoers datum.|
+| isAzureCreditEligible | Geeft aan of de kosten in aanmerking komen voor betaling door Azure-tegoed. | N.v.t. |
+| serviceInfo1 | Verouderd veld waarin optionele servicespecifieke meta gegevens worden vastgelegd. | Interne meta gegevens van Azure-service. |
+| serviceInfo2 | Verouderd veld waarin optionele servicespecifieke meta gegevens worden vastgelegd. | Service-informatie. Bijvoorbeeld een afbeeldings type voor de naam van een virtuele machine en ISP voor ExpressRoute.|
+| additionalInfo | Servicespecifieke metagegevens. Bijvoorbeeld een installatiekopie voor een virtuele machine. | Aanvullende informatie die niet wordt behandeld in andere kolommen. De servicespecifieke meta gegevens. Bijvoorbeeld een installatiekopie voor een virtuele machine.|
+| tags | Label dat u toewijst aan de meter. Tags gebruiken om facturerings records te groeperen. U kunt bijvoorbeeld Tags gebruiken om kosten te verdelen door de afdeling die gebruikmaakt van de meter. | Tags die door de klant worden toegevoegd.|
+| **partnerEarnedCreditRate** | Het tarief van de korting wordt toegepast als er een door de partner aangehaalde credit (PEC) is op basis van de toegang tot de partner beheerder. | De frequentie van het tegoed van de partner (PEC). Bijvoorbeeld 0% of 15%. |
+| **partnerEarnedCreditApplied** | Geeft aan of het tegoed van de partner is toegepast. | N.v.t. |
 
-## <a name="view-partner-earned-credit-pec-resource-costs"></a>View Partner Earned Credit (PEC) resource costs
+## <a name="view-partner-earned-credit-pec-resource-costs"></a>Resource kosten voor het ontvangen van partners (PEC) weer geven
 
-In Azure Cost Management, partners can use cost analysis to view costs that received the PEC benefits.
+In Azure Cost Management kunnen partners kosten analyse gebruiken om de kosten te bekijken die de PEC-voor delen hebben ontvangen.
 
-In the Azure portal, sign in to the partner tenant and select **Cost Management + Billing**. Under **Cost Management**, click **Cost analysis**.
+Meld u aan bij de partner-Tenant in het Azure Portal en selecteer **Cost Management + facturering**. Klik onder **Cost Management**op **kosten analyse**.
 
-The Cost analysis view shows costs of the billing account for the partner. Select the **Scope** as needed for the partner, a specific customer, or a billing profile to reconcile invoices.
+In de weer gave kosten analyse worden de kosten van het facturerings account voor de partner weer gegeven. Selecteer het **bereik** dat nodig is voor de partner, een specifieke klant of een facturerings profiel om facturen af te stemmen.
 
-In a donut chart, click the drop-down list and select **PartnerEarnedCreditApplied** to drill into PEC costs.
+Klik in een ring diagram op de vervolg keuzelijst en selecteer **PartnerEarnedCreditApplied** om in te zoomen op PEC-kosten.
 
-![Example showing how to view partner-earned credit](./media/get-started-partners/cost-analysis-pec1.png)
+![Voor beeld van het weer geven van het tegoed van een partner](./media/get-started-partners/cost-analysis-pec1.png)
 
-When the **PartnerEarnedCreditApplied** property is _True_, the associated cost has the benefit of the partner earned admin access.
+Wanneer de eigenschap **PartnerEarnedCreditApplied** is ingesteld op _True_, hebben de bijbehorende kosten het voor deel van de gehaalde beheerder van de partner.
 
-When the **PartnerEarnedCreditApplied** property is _False_, the associated cost hasn't met the required eligibility for the credit. Or, the service purchased isn't eligible for partner earned credit.
+Wanneer de eigenschap **PartnerEarnedCreditApplied** _False_is, voldoen de gekoppelde kosten niet aan het vereiste recht voor het tegoed. Of de aangeschafte service komt niet in aanmerking voor het tegoed van de partner.
 
-Service usage data normally takes 8-24 hours to appear in Cost Management. For more information, see [Usage data update frequency varies](understand-cost-mgt-data.md#usage-data-update-frequency-varies). PEC credits appear within 48 hours from time of access in Azure Cost Management.
-
-
-You can also group and filter by the **PartnerEarnedCreditApplied** property using the **Group by** options. Use the options to examine costs that do and don't have PEC.
-
-![Group or filter by partner-earned credit](./media/get-started-partners/cost-analysis-pec2.png)
-
-## <a name="cost-management-rest-apis"></a>Cost Management REST APIs
-
-Partners and customers can use Cost Management APIs described in the following sections for common tasks.
-
-### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure Cost Management APIs - Direct and indirect providers
-
-Partners with access to billing scopes in a partner tenant can use the following APIs to view invoiced costs.
-
-APIs at the subscription scope can be called by a partner regardless of the cost policy if they have access to the subscription. Other users with access to the subscription, like the customer or reseller, can call the APIs only after the partner enables the cost policy for the customer tenant.
+Service gebruiks gegevens hebben doorgaans 8-24 uur om weer te geven in Cost Management. Zie de [Update frequentie van gebruiks gegevens varieert](understand-cost-mgt-data.md#usage-data-update-frequency-varies)voor meer informatie. PEC-tegoeden worden binnen 48 uur na de toegangs tijd weer gegeven in Azure Cost Management.
 
 
-#### <a name="to-get-a-list-of-billing-accounts"></a>To get a list of billing accounts
+U kunt ook groeperen en filteren op de eigenschap **PartnerEarnedCreditApplied** met behulp van de **Group by** -opties. Gebruik de opties om kosten te onderzoeken die geen PEC hebben.
+
+![Groeperen of filteren op het tegoed van de partner](./media/get-started-partners/cost-analysis-pec2.png)
+
+## <a name="cost-management-rest-apis"></a>Cost Management REST-Api's
+
+Partners en klanten kunnen Cost Management Api's gebruiken die worden beschreven in de volgende secties voor algemene taken.
+
+### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure Cost Management-Api's-directe en indirecte providers
+
+Partners met toegang tot de facturerings bereiken in een partner-Tenant kunnen de volgende Api's gebruiken om gefactureerde kosten weer te geven.
+
+Api's in het abonnements bereik kunnen worden aangeroepen door een partner, ongeacht het kosten beleid als ze toegang hebben tot het abonnement. Andere gebruikers met toegang tot het abonnement, zoals de klant of de wederverkoper, kunnen de Api's pas aanroepen nadat de partner het kosten beleid voor de Tenant van de klant heeft ingeschakeld.
+
+
+#### <a name="to-get-a-list-of-billing-accounts"></a>Een lijst met facturerings accounts ophalen
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-a-list-of-customers"></a>To get a list of customers
+#### <a name="to-get-a-list-of-customers"></a>Een lijst met klanten ophalen
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-a-list-of-subscriptions"></a>To get a list of subscriptions
+#### <a name="to-get-a-list-of-subscriptions"></a>Een lijst met abonnementen ophalen
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-a-list-of-invoices-for-a-period-of-time"></a>To get a list of invoices for a period of time
+#### <a name="to-get-a-list-of-invoices-for-a-period-of-time"></a>Een lijst met facturen voor een bepaalde tijd ophalen
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices?api-version=2019-10-01-preview&periodStartDate={periodStartDate}&periodEndDate={periodEndDate}
 ```
 
-The API call returns an array of invoices that has elements similar to the following JSON code.
+De API-aanroep retourneert een matrix van facturen met elementen die vergelijkbaar zijn met de volgende JSON-code.
 
 ```
     {
@@ -296,79 +296,79 @@ The API call returns an array of invoices that has elements similar to the follo
     }
 ```
 
-Use the preceding returned ID field value and replace it in the following example as the scope to query for usage details.
+Gebruik de waarde van het voor gaande geretourneerde ID-veld en vervang deze in het volgende voor beeld als het bereik dat u wilt doorzoeken op gebruiks gegevens.
 
 ```
 GET https://management.azure.com/{id}/providers/Microsoft.Consumption/UsageDetails?api-version=2019-10-01
 ```
 
-The example returns the usage records associated with the specific invoice.
+In het voor beeld worden de gebruiks records geretourneerd die zijn gekoppeld aan de specifieke factuur.
 
 
-#### <a name="to-get-the-policy-for-customers-to-view-costs"></a>To get the policy for customers to view costs
+#### <a name="to-get-the-policy-for-customers-to-view-costs"></a>Om het beleid te verkrijgen voor klanten om de kosten te bekijken
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-set-the-policy-for-customers-to-view-costs"></a>To set the policy for customers to view costs
+#### <a name="to-set-the-policy-for-customers-to-view-costs"></a>Het beleid voor klanten instellen om kosten te bekijken
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-azure-service-usage-for-a-billing-account"></a>To get Azure service usage for a billing account
+#### <a name="to-get-azure-service-usage-for-a-billing-account"></a>Azure-service gebruik voor een facturerings account ophalen
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
 ```
 
-#### <a name="to-download-a-customers-azure-service-usage"></a>To download a customer's Azure service usage
+#### <a name="to-download-a-customers-azure-service-usage"></a>Het Azure-service gebruik van een klant downloaden
 
-The following get call is an asynchronous operation.
+De volgende aanroep Get is een asynchrone bewerking.
 
 ```
 GET https://management.azure.com/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
-Call the `Location` URI returned in the response to check the operation status. When the status is *Completed*, the `downloadUrl` property contains a link that you can use to download the generated report.
+Roep de `Location` URI aan die in het antwoord is geretourneerd om de bewerkings status te controleren. Wanneer de status *voltooid*is, bevat de eigenschap `downloadUrl` een koppeling die u kunt gebruiken om het gegenereerde rapport te downloaden.
 
 
-#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>To get or download the price sheet for consumed Azure services
+#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>Het prijzen overzicht voor verbruikte Azure-Services ophalen of downloaden
 
-First, use the following post.
+Gebruik eerst het volgende bericht.
 
 ```
 POST https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
 ```
 
-Then, call the asynchronous operation property value. Bijvoorbeeld:
+Roep vervolgens de eigenschaps waarde van de asynchrone bewerking aan. Bijvoorbeeld:
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheetDownloadOperations/{operation}?sessiontoken=0:11186&api-version=2019-10-01-preview
 ```
-The preceding get call returns the download link containing the price sheet.
+De voor gaande aanroep Get retourneert de download koppeling met het prijzen overzicht.
 
 
-#### <a name="to-get-aggregated-costs"></a>To get aggregated costs
+#### <a name="to-get-aggregated-costs"></a>Om geaggregeerde kosten te verkrijgen
 
 ```
 POST https://management.azure.com/providers/microsoft.billing/billingAccounts/{billingAccountName}/providers/microsoft.costmanagement/query?api-version=2019-10-01
 ```
 
-#### <a name="create-a-budget-for-a-partner"></a>Create a budget for a partner
+#### <a name="create-a-budget-for-a-partner"></a>Een budget voor een partner maken
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
 ```
 
-#### <a name="create-a-budget-for-a-customer"></a>Create a budget for a customer
+#### <a name="create-a-budget-for-a-customer"></a>Een budget voor een klant maken
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2019-10-01
 ```
 
-#### <a name="delete-a-budget"></a>Delete a budget
+#### <a name="delete-a-budget"></a>Een budget verwijderen
 
 ```
 PUT
@@ -377,5 +377,5 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billin
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Start analyzing costs](quick-acm-cost-analysis.md) in Cost Management
-- [Create and manage budgets](tutorial-acm-create-budgets.md) in Cost Management
+- [Begin](quick-acm-cost-analysis.md) met het analyseren van de kosten in Cost Management
+- [Budgetten in cost management maken en beheren](tutorial-acm-create-budgets.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Create a search index in C# using .NET'
+title: 'Snelstartgids: een zoek index maken met C# behulp van .net'
 titleSuffix: Azure Cognitive Search
-description: In this C# quickstart, learn how to create an index, load data, and run queries using the Azure Cognitive Search .NET SDK.
+description: In deze C# Quick Start vindt u informatie over het maken van een index, het laden van gegevens en het uitvoeren van query's met behulp van de Azure COGNITIVE Search .NET SDK.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -16,7 +16,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406764"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Quickstart: Create an Azure Cognitive Search index in C# using the .NET SDK
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Snelstartgids: een Azure Cognitive Search-index maken C# in met behulp van de .NET SDK
 > [!div class="op_single_selector"]
 > * [C#](search-get-started-dotnet.md)
 > * [Portal](search-get-started-portal.md)
@@ -25,69 +25,69 @@ ms.locfileid: "74406764"
 > * [Postman](search-get-started-postman.md)
 >*
 
-Create a .NET Core C# console application that creates, loads, and queries an Azure Cognitive Search index using Visual Studio and the [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk). This article explains how to create the application step by step. Alternatively, you can [download and run the complete application](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart).
+Maak een .NET core C# -console toepassing die een Azure Cognitive search-index maakt, laadt en opvraagt met Visual Studio en de [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk). In dit artikel wordt uitgelegd hoe u de stap per stap van de toepassing maakt. U kunt ook [de volledige toepassing downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 > [!NOTE]
-> The demo code in this article uses the synchronous methods of the Azure Cognitive Search .NET SDK for simplicity. However, for production scenarios, we recommend using the asynchronous methods in your own applications to keep them scalable and responsive. For example, you could use `CreateAsync` and `DeleteAsync` instead of `Create` and `Delete`.
+> In de demo code in dit artikel wordt gebruikgemaakt van de synchrone methoden van de Azure Cognitive Search .NET SDK voor eenvoud. Voor productie scenario's kunt u echter het beste de asynchrone methoden in uw eigen toepassingen gebruiken om ze schaalbaar en responsief te maken. U kunt bijvoorbeeld `CreateAsync` en `DeleteAsync` gebruiken in plaats van `Create` en `Delete`.
 
 ## <a name="prerequisites"></a>Vereisten
 
-The following services and tools are required for this quickstart.
+De volgende services en hulpprogram ma's zijn vereist voor deze Quick Start.
 
-+ [Visual Studio](https://visualstudio.microsoft.com/downloads/), any edition. Sample code and instructions were tested on the free Community edition.
++ [Visual Studio](https://visualstudio.microsoft.com/downloads/), een wille keurige versie. Voor beelden van code en instructies zijn getest in de gratis Community-editie.
 
-+ [Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart.
++ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken.
 
 <a name="get-service-info"></a>
 
-## <a name="get-a-key-and-url"></a>Get a key and URL
+## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
 
-Calls to the service require a URL endpoint and an access key on every request. A search service is created with both, so if you added Azure Cognitive Search to your subscription, follow these steps to get the necessary information:
+Aanroepen naar de service vereisen een URL-eind punt en een toegangs sleutel voor elke aanvraag. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
 
-1. [Sign in to the Azure portal](https://portal.azure.com/), and in your search service **Overview** page, get the URL. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-2. In **Settings** > **Keys**, get an admin key for full rights on the service. There are two interchangeable admin keys, provided for business continuity in case you need to roll one over. You can use either the primary or secondary key on requests for adding, modifying, and deleting objects.
+2. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
-   Get the query key as well. It's a best practice to issue query requests with read-only access.
+   Haal ook de query sleutel op. Het is een best practice voor het uitgeven van query aanvragen met alleen-lezen toegang.
 
-![Get an HTTP endpoint and access key](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
+![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
 
-All requests require an api-key on every request sent to your service. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
+Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw service wordt verzonden. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
 ## <a name="set-up-your-environment"></a>Uw omgeving instellen
 
-Begin by opening Visual Studio and creating a new Console App project that can run on .NET Core.
+Begin met het openen van Visual Studio en het maken van een nieuw console-app-project dat kan worden uitgevoerd op .NET core.
 
 ### <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
-The [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) consists of a few client libraries that are distributed as NuGet packages.
+De [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) bestaat uit een aantal client bibliotheken die worden gedistribueerd als NuGet-pakketten.
 
-For this project, use version 9 of the `Microsoft.Azure.Search` NuGet package and the latest `Microsoft.Extensions.Configuration.Json` NuGet package.
+Voor dit project gebruikt u versie 9 van het `Microsoft.Azure.Search` NuGet-pakket en het meest recente `Microsoft.Extensions.Configuration.Json` NuGet-pakket.
 
-1. In **Tools** > **NuGet Package Manager**, select **Manage NuGet Packages for Solution...** . 
+1. Selecteer in **Hulpprogram ma's** > **NuGet package manager** **NuGet-pakketten beheren voor oplossing...** . 
 
 1. Klik op **Bladeren**.
 
-1. Search for `Microsoft.Azure.Search` and select version 9.0.1 or later.
+1. Zoek naar `Microsoft.Azure.Search` en selecteer versie 9.0.1 of hoger.
 
-1. Click **Install** on the right to add the assembly to your project and solution.
+1. Klik aan de rechter kant op **installeren** om de assembly toe te voegen aan uw project en de oplossing.
 
-1. Repeat for `Microsoft.Extensions.Configuration.Json`, selecting version 2.2.0 or later.
+1. Herhaal dit voor `Microsoft.Extensions.Configuration.Json`en selecteer versie 2.2.0 of hoger.
 
 
-### <a name="add-azure-cognitive-search-service-information"></a>Add Azure Cognitive Search service information
+### <a name="add-azure-cognitive-search-service-information"></a>Informatie over Azure Cognitive Search-service toevoegen
 
-1. In Solution Explorer, right click on the project and select **Add** > **New Item...** . 
+1. Klik in Solution Explorer met de rechter muisknop op het project en selecteer > **Nieuw item toevoegen...** . 
 
-1. In Add New Item, search for "JSON" to return a JSON-related list of item types.
+1. In nieuw item toevoegen zoekt u naar ' JSON ' om een JSON-gerelateerde lijst met item typen te retour neren.
 
-1. Choose **JSON File**, name the file "appsettings.json", and click **Add**. 
+1. Kies **JSON-bestand**, noem het bestand appSettings. json en klik op **toevoegen**. 
 
-1. Add the file to your output directory. Right-click appsettings.json and select **Properties**. In **Copy to Output Directory**, select **Copy if newer**.
+1. Voeg het bestand toe aan de uitvoermap. Klik met de rechter muisknop op appSettings. json en selecteer **Eigenschappen**. Selecteer in **kopiëren naar uitvoermap**de optie **kopiëren indien nieuwer**.
 
-1. Copy the following JSON into your new JSON file. Replace the search service name (YOUR-SEARCH-SERVICE-NAME) and admin API key (YOUR-ADMIN-API-KEY) with valid values. If your service endpoint is `https://mydemo.search.windows.net`, the service name would be "mydemo".
+1. Kopieer de volgende JSON naar het nieuwe JSON-bestand. Vervang de naam van de zoek service (YOUR-SEARCH-SERVICE-NAME) en de beheer-API-sleutel (uw-beheer-API-sleutel) met geldige waarden. Als uw service-eind punt `https://mydemo.search.windows.net`, zou de service naam ' mydemo ' zijn.
 
 ```json
 {
@@ -97,24 +97,24 @@ For this project, use version 9 of the `Microsoft.Azure.Search` NuGet package an
 }
 ```
 
-### <a name="add-class-method-files-to-your-project"></a>Add class ".Method" files to your project
+### <a name="add-class-method-files-to-your-project"></a>Klasse toevoegen. Methode ' bestanden voor uw project
 
-When printing results to the console window, individual fields from the Hotel object must be returned as strings. You can implement [ToString()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) to perform this task, copying the necessary code to two new files.
+Wanneer de resultaten naar het console venster worden afgedrukt, moeten afzonderlijke velden uit het object Hotel als teken reeksen worden geretourneerd. U kunt [toString ()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) implementeren om deze taak uit te voeren, waarbij u de benodigde code kopieert naar twee nieuwe bestanden.
 
-1. Add two empty class definitions to your project: Address.Methods.cs, Hotel.Methods.cs
+1. Voeg twee lege klassedefinities toe aan uw project: Address.Methods.cs, Hotel.Methods.cs
 
-1. In Address.Methods.cs, overwrite the default contents with the following code, [lines 1-32](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L32).
+1. In Address.Methods.cs overschrijft u de standaard inhoud met de volgende code, [regel 1-32](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L32).
 
-1. In Hotel.Methods.cs, copy [lines 1-66](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L66).
+1. In Hotel.Methods.cs kopieert u [regels 1-66](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L66).
 
 
-## <a name="1---create-index"></a>1 - Create index
+## <a name="1---create-index"></a>1-index maken
 
-The hotels index consists of simple and complex fields, where a simple field is "HotelName" or "Description", and complex fields are an address with subfields, or a collection of rooms. When an index includes complex types, isolate the complex field definitions in separate classes.
+De hotels index bestaat uit eenvoudige en complexe velden, waarbij een eenvoudig veld "naam Hotel" of "Beschrijving" is, en complexe velden een adres met subvelden zijn of een verzameling van kamers. Wanneer een index complexe typen bevat, isoleert u de complexe veld definities in afzonderlijke klassen.
 
-1. Add two empty class definitions to your project: Address.cs, Hotel.cs
+1. Voeg twee lege klassedefinities toe aan uw project: Address.cs, Hotel.cs
 
-1. In Address.cs, overwrite the default contents with the following code:
+1. In Address.cs overschrijft u de standaard inhoud met de volgende code:
 
     ```csharp
     using System;
@@ -144,7 +144,7 @@ The hotels index consists of simple and complex fields, where a simple field is 
     }
     ```
 
-1. In Hotel.cs, the class defines the overall structure of the index, including references to the address class.
+1. In Hotel.cs definieert de klasse de algemene structuur van de index, met inbegrip van verwijzingen naar de adres klasse.
 
     ```csharp
     namespace AzureSearchQuickstart
@@ -192,18 +192,18 @@ The hotels index consists of simple and complex fields, where a simple field is 
     }
     ```
 
-    Attributes on the field determine how it is used in an application. For example, the `IsSearchable` attribute must be assigned to every field that should be included in a full text search. 
+    Kenmerken van het veld bepalen hoe het wordt gebruikt in een toepassing. Het `IsSearchable` kenmerk moet bijvoorbeeld worden toegewezen aan elk veld dat moet worden opgenomen in een zoek opdracht in volledige tekst. 
     
     > [!NOTE]
-    > In the .NET SDK, fields must be explicitly attributed as [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet), [`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet), [`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet), and [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet). This behavior is in contrast with the REST API which implicitly enables attribution based on data type (for example, simple string fields are automatically searchable).
+    > In de .NET SDK moeten velden expliciet worden voorzien van het kenmerk [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet), [`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet), [`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet)en [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet). Dit gedrag is in tegens telling tot de REST API waarmee impliciete toewijzing wordt ingeschakeld op basis van het gegevens type (bijvoorbeeld: eenvoudige teken reeks velden zijn automatisch doorzoekbaar).
 
-    Exactly one field in your index of type `string` must be the *key* field, uniquely identifying each document. In this schema, the key is `HotelId`.
+    Precies één veld in de index van het type `string` moet het *sleutel* veld zijn, waarbij elk document uniek wordt geïdentificeerd. In dit schema wordt de sleutel `HotelId`.
 
-    In this index, the description fields use the optional [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) property, specified when you want to override the default standard Lucene analyzer. The `description_fr` field is using the French Lucene analyzer ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) because it stores French text. The `description` is using the optional Microsoft language analyzer ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)).
+    In deze index gebruiken de beschrijvings velden de optionele eigenschap [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) , opgegeven als u de standaard standaard-lucene Analyzer wilt overschrijven. In het veld `description_fr` wordt gebruikgemaakt van de Franse[FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)(Frans/lucene Analyzer), omdat de Franse tekst wordt opgeslagen. De `description` maakt gebruik van de optionele micro soft language Analyzer ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)).
 
-1. In Program.cs, create an instance of the [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) class to connect to the service, using values that are stored in the application's config file (appsettings.json). 
+1. Maak in Program.cs een instantie van de klasse [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) om verbinding te maken met de service, met behulp van waarden die zijn opgeslagen in het configuratie bestand van de toepassing (appSettings. json). 
 
-   `SearchServiceClient` has an [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) property, providing all the methods you need to create, list, update, or delete Azure Cognitive Search indexes. 
+   `SearchServiceClient` heeft een [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) -eigenschap met alle methoden die u nodig hebt om Azure Cognitive Search-indexen te maken, weer te geven, bij te werken of te verwijderen. 
 
     ```csharp
     using System;
@@ -283,29 +283,29 @@ The hotels index consists of simple and complex fields, where a simple field is 
     }    
     ```
 
-    If possible, share a single instance of `SearchServiceClient` in your application to avoid opening too many connections. Class methods are thread-safe to enable such sharing.
+    Als dat mogelijk is, kunt u één exemplaar van `SearchServiceClient` in uw toepassing delen om te voor komen dat er te veel verbindingen worden geopend. Klassen methoden zijn thread-veilig om dergelijke delen mogelijk te maken.
 
-   The class has several constructors. De gewenste constructor krijgt u de naam van uw zoekservice en een `SearchCredentials`-object als parameters. `SearchCredentials` verpakt uw api-sleutel.
+   De klasse heeft verschillende constructors. De gewenste constructor krijgt u de naam van uw zoekservice en een `SearchCredentials`-object als parameters. `SearchCredentials` verpakt uw api-sleutel.
 
-    In the index definition, the easiest way to create the `Field` objects is by calling the `FieldBuilder.BuildForType` method, passing a model class for the type parameter. Een modelklasse heeft eigenschappen die worden toegewezen aan de velden van uw index. This mapping allows you to bind documents from your search index to instances of your model class.
+    In de index definitie is de eenvoudigste manier om de `Field`-objecten te maken, door het aanroepen van de `FieldBuilder.BuildForType`-methode, waarbij een model klasse wordt door gegeven voor de type parameter. Een modelklasse heeft eigenschappen die worden toegewezen aan de velden van uw index. Met deze toewijzing kunt u documenten uit uw zoek index binden aan exemplaren van uw model klasse.
 
     > [!NOTE]
-    > Als u niet van plan bent om een modelklasse te gebruiken, moet u alsnog de index definiëren door rechtstreeks `Field`-objecten te maken. U kunt de naam van het veld aan de constructor doorgeven, samen met het gegevenstype (of analyse voor tekenreeksvelden). You can also set other properties like `IsSearchable`, `IsFilterable`, to name a few.
+    > Als u niet van plan bent om een modelklasse te gebruiken, moet u alsnog de index definiëren door rechtstreeks `Field`-objecten te maken. U kunt de naam van het veld aan de constructor doorgeven, samen met het gegevenstype (of analyse voor tekenreeksvelden). U kunt ook andere eigenschappen instellen, zoals `IsSearchable`, `IsFilterable`, om een paar te noemen.
     >
 
-1. Press F5 to build the app and create the index. 
+1. Druk op F5 om de app te bouwen en de index te maken. 
 
-    If the project builds successfully, a console window opens, writing status messages to the screen for deleting and creating the index. 
+    Als het project is gebouwd, wordt een console venster geopend, waarbij status berichten worden geschreven naar het scherm voor het verwijderen en maken van de index. 
 
 <a name="load-documents"></a>
 
-## <a name="2---load-documents"></a>2 - Load documents
+## <a name="2---load-documents"></a>2-documenten laden
 
-In Azure Cognitive Search, documents are data structures that are both inputs to indexing and outputs from queries. As obtained from an external data source, document inputs might be rows in a database, blobs in Blob storage, or JSON documents on disk. In this example, we're taking a shortcut and embedding JSON documents for four hotels in the code itself. 
+In azure Cognitive Search zijn documenten gegevens structuren die beide invoer zijn voor het indexeren en uitvoeren van query's. De invoer van documenten kan worden opgehaald uit een externe gegevens bron en kan rijen zijn in een Data Base, blobs in Blob-opslag of JSON-documenten op schijf. In dit voor beeld maken we een snelkoppeling en sluiten we JSON-documenten voor vier hotels in de code zelf. 
 
-When uploading documents, you must use an [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) object. An `IndexBatch` contains a collection of [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) objects, each of which contains a document and a property telling Azure Cognitive Search what action to perform ([upload, merge, delete, and mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
+Bij het uploaden van documenten moet u een [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) -object gebruiken. Een `IndexBatch` bevat een verzameling [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) -objecten, elk met een document en een eigenschap waarmee Azure Cognitive Search welke actie moet worden uitgevoerd ([uploaden, samen voegen, verwijderen en mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
-1. In Program.cs, create an array of documents and index actions, and then pass the array to `IndexBatch`. The documents below conform to the hotel-quickstart index, as defined by the hotel and address classes.
+1. Maak in Program.cs een matrix met documenten en index acties, en geef de matrix door aan `IndexBatch`. De onderstaande documenten voldoen aan de Quick Start-index van het Hotel, zoals gedefinieerd door de hotels en adres klassen.
 
     ```csharp
     // Upload documents as a batch
@@ -425,13 +425,13 @@ When uploading documents, you must use an [`IndexBatch`](https://docs.microsoft.
     }
     ```
 
-    Once you initialize the`IndexBatch` object, you can send it to the index by calling [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) on your [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) object. `Documents` is a property of `SearchIndexClient` that provides methods for adding, modifying, deleting, or querying documents in your index.
+    Zodra u het`IndexBatch`-object initialiseert, kunt u het naar de index verzenden door [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) aan te roepen in uw [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) -object. `Documents` is een eigenschap van `SearchIndexClient` die methoden biedt voor het toevoegen, wijzigen, verwijderen of opvragen van documenten in uw index.
 
-    The `try`/`catch` surrounding the call to the `Index` method catches indexing failures, which might happen if your service is under heavy load. In production code, you could delay and then retry indexing the documents that failed, or log and continue like the sample does, or handle it in some other way that meets your application's data consistency requirements.
+    Het `try`/`catch` rond de aanroep van de methode voor `Index` het indexeren van index fouten, wat kan gebeuren als uw service zwaar wordt belast. In productie code kunt u de documenten die zijn mislukt, uitstellen en vervolgens opnieuw proberen te indexeren, of het logboek op een andere manier afhandelen die voldoet aan de vereisten voor gegevens consistentie van uw toepassing.
 
-    The 2-second delay compensates for indexing, which is asynchronous, so that all documents can be indexed before the queries are executed. Coding in a delay is typically only necessary in demos, tests, and sample applications.
+    De 2-seconden-vertraging compenseert voor indexering, die asynchroon is, zodat alle documenten kunnen worden geïndexeerd voordat de query's worden uitgevoerd. Het coderen van een vertraging is doorgaans alleen nodig in demo's, testen en voorbeeld toepassingen.
 
-1. In Program.cs, in main, uncomment the lines for "2 - Load documents". 
+1. In Program.cs verwijdert u in Main de regels voor "2 documenten laden". 
 
     ```csharp
     // Uncomment next 3 lines in "2 - Load documents"
@@ -439,23 +439,23 @@ When uploading documents, you must use an [`IndexBatch`](https://docs.microsoft.
     Console.WriteLine("{0}", "Uploading documents...\n");
     UploadDocuments(indexClient);
     ```
-1. Press F5 to rebuild the app. 
+1. Druk op F5 om de app opnieuw te bouwen. 
 
-    If the project builds successfully, a console window opens, writing status messages, this time with a message about uploading documents. In the Azure portal, in the search service **Overview** page, the hotels-quickstart index should now have 4 documents.
+    Als het project is gebouwd, wordt er een console venster geopend, waarin status berichten worden geschreven, met een bericht over het uploaden van documenten. In de Azure Portal, op de pagina **overzicht** van zoek services, moeten de Snelstartgids-index nu vier documenten hebben.
 
-For more information about document processing, see ["How the .NET SDK handles documents"](search-howto-dotnet-sdk.md#how-dotnet-handles-documents).
+Ga voor meer informatie over document verwerking naar ["hoe de .NET SDK documenten verwerkt"](search-howto-dotnet-sdk.md#how-dotnet-handles-documents).
 
 ## <a name="3---search-an-index"></a>3 - Een index doorzoeken
 
-You can get query results as soon as the first document is indexed, but actual testing of your index should wait until all documents are indexed. 
+U kunt query resultaten ophalen zodra het eerste document is geïndexeerd, maar de werkelijke tests van uw index moeten wachten tot alle documenten zijn geïndexeerd. 
 
-This section adds two pieces of functionality: query logic, and results. For queries, use the [`Search`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
-) method. This method takes search text as well as other [parameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters?view=azure-dotnet). 
+In deze sectie worden twee soorten functionaliteit toegevoegd: query logica en resultaten. Gebruik voor query's de methode [`Search`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
+) . Met deze methode worden Zoek tekst en andere [para meters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters?view=azure-dotnet)gebruikt. 
 
-The [`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet) class represents the results.
+De klasse [`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet) vertegenwoordigt de resultaten.
 
 
-1. In Program.cs, create a WriteDocuments method that prints search results to the console.
+1. Maak in Program.cs een WriteDocuments-methode waarmee Zoek resultaten in de-console worden afgedrukt.
 
     ```csharp
     private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
@@ -469,7 +469,7 @@ The [`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.az
     }
     ```
 
-1. Create a RunQueries method to execute queries and return results. Results are Hotel objects. You can use the select parameter to surface individual fields. If a field is not included in the select parameter, its corresponding Hotel property will be null.
+1. Maak een RunQueries-methode om query's uit te voeren en resultaten te retour neren. De resultaten zijn hotels-objecten. U kunt de para meter Select gebruiken voor het Opper vlak van afzonderlijke velden. Als een veld niet is opgenomen in de para meter Select, wordt de bijbehorende eigenschap Hotel null.
 
     ```csharp
     private static void RunQueries(ISearchIndexClient indexClient)
@@ -533,34 +533,34 @@ The [`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.az
     }
     ```
 
-    There are two [ways of matching terms in a query](search-query-overview.md#types-of-queries): full-text search, and filters. A full-text search query searches for one or more terms in `IsSearchable` fields in your index. A filter is a boolean expression that is evaluated over `IsFilterable` fields in an index. You can use full-text search and filters together or separately.
+    Er zijn twee [manieren om te voldoen aan de voor waarden in een query](search-query-overview.md#types-of-queries): zoeken in volledige tekst en filters. Een zoek opdracht in volledige tekst zoekt naar een of meer voor waarden in `IsSearchable` velden in uw index. Een filter is een booleaanse expressie die wordt geëvalueerd ten opzichte van `IsFilterable` velden in een index. U kunt zoeken in volledige tekst en filters samen of afzonderlijk gebruiken.
 
     Zoekopdrachten en filters worden allebei uitgevoerd met behulp van de `Documents.Search`-methode. Een zoekopdracht kan worden doorgegeven aan de `searchText`-parameter, terwijl een filterexpressie kan worden doorgegeven in de eigenschap `Filter` van de `SearchParameters`-klasse. Als u wilt filteren zonder te zoeken, geeft u `"*"` door voor de `searchText`-parameter. Om te zoeken zonder te filteren, stelt u de eigenschap `Filter` niet in of geeft u niet door aan een `SearchParameters`-instantie.
 
-1. In Program.cs, in main, uncomment the lines for "3 - Search". 
+1. In Program.cs, in Main, de regels voor ' 3-Search ' oncommentaar. 
 
     ```csharp
     // Uncomment next 2 lines in "3 - Search an index"
     Console.WriteLine("{0}", "Searching documents...\n");
     RunQueries(indexClient);
     ```
-1. The solution is now finished. Press F5 to rebuild the app and run the program in its entirety. 
+1. De oplossing is nu voltooid. Druk op F5 om de app opnieuw samen te stellen en het programma volledig uit te voeren. 
 
-    Output includes the same messages as before, with addition of query information and results.
+    De uitvoer bevat dezelfde berichten als voorheen, met toevoeging van query-informatie en-resultaten.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
+Wanneer u in uw eigen abonnement werkt, is het een goed idee aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
 
-You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
+U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
 
-If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit. 
+Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this C# quickstart, you worked through a series of tasks to create an index, load it with documents, and run queries. At different stages, we took shortcuts to simplify the code for readability and comprehension. If you are comfortable with the basic concepts, we recommend the next article for an exploration of alternative approaches and concepts that will deepen your knowledge. 
+In deze C# Quick Start hebt u een reeks taken uitgevoerd voor het maken van een index, het laden van documenten en het uitvoeren van query's. In verschillende fasen hebben we snelkoppelingen nodig om de code te vereenvoudigen voor lees baarheid en lees vaardigheid. Als u vertrouwd bent met de basis concepten, raden we u aan het volgende artikel te verkennen voor een onderzoek naar alternatieve benaderingen en concepten waarmee uw kennis wordt uitgediept. 
 
-The sample code and index are expanded versions of this one. The next sample adds a Rooms collection, uses different classes and actions, and takes a closer look at how processing works.
+De voorbeeld code en index zijn uitgebreide versies van deze versie. In het volgende voor beeld wordt een verzameling ruimtes toegevoegd, worden verschillende klassen en acties gebruikt en wordt de verwerking van de werk wijze nader bekeken.
 
 > [!div class="nextstepaction"]
-> [How to develop in .NET](search-howto-dotnet-sdk.md)
+> [Ontwikkelen in .NET](search-howto-dotnet-sdk.md)

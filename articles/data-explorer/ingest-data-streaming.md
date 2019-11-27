@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4f9804ed0e7d6c83a4f6fc732f836fcecce1c2e7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090635"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548343"
 ---
 # <a name="streaming-ingestion-preview"></a>Stroom opname (preview-versie)
 
@@ -73,8 +73,7 @@ Er zijn twee ondersteunde typen streaming-opname:
 
 ## <a name="limitations"></a>Beperkingen
 
-* Het streamen van opname prestaties en capaciteits schaal met verhoogde VM-en cluster groottes. Voor één D14-knoop punt is de aanbevolen belasting Maxi maal 150 aanvragen per seconde.
-* Momenteel is ondersteuning alleen voor 8-en 16-core-Sku's (D13, D14, N8 en L16).
+* Het streamen van opname prestaties en capaciteits schaal met verhoogde VM-en cluster groottes. Gelijktijdige opname is beperkt tot 6 opname per kern. Bijvoorbeeld: voor 16 kern Sku's, zoals D14 en L16, is de Maxi maal ondersteunde belasting 96 gelijktijdige opname. Voor twee kern-Sku's, zoals D11, is de Maxi maal ondersteunde belasting 12 gelijktijdige opname.
 * De limiet voor de gegevens grootte per opname aanvraag is 4 MB.
 * Schema-updates, zoals het maken en wijzigen van tabellen en opname toewijzingen, kunnen tot vijf minuten duren voor de service streaming-opname.
 * Het inschakelen van streaming-opname in een cluster, zelfs wanneer er geen gegevens worden opgenomen via streaming, maakt gebruik van de lokale SSD-schijf van de cluster machines voor het streamen van opname gegevens en vermindert de opslag ruimte die beschikbaar is voor warme cache.

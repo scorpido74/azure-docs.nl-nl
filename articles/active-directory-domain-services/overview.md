@@ -1,6 +1,6 @@
 ---
-title: Overview of Azure Active Directory Domain Services | Microsoft Docs
-description: In this overview, learn what Azure Active Directory Domain Services provides and how to use it in your organization to provide identity services to applications and services in the cloud.
+title: Overzicht van Azure Active Directory Domain Services | Microsoft Docs
+description: In dit overzicht leert u wat Azure Active Directory Domain Services biedt en hoe u het in uw organisatie kunt gebruiken om identiteits services te bieden aan toepassingen en services in de Cloud.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,107 +17,107 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481359"
 ---
-# <a name="what-is-azure-active-directory-domain-services"></a>What is Azure Active Directory Domain Services?
+# <a name="what-is-azure-active-directory-domain-services"></a>Wat is Azure Active Directory Domain Services?
 
-Azure Active Directory Domain Services (Azure AD DS) provides managed domain services such as domain join, group policy, lightweight directory access protocol (LDAP), and Kerberos / NTLM authentication that is fully compatible with Windows Server Active Directory. You use these domain services without the need to deploy, manage, and patch domain controllers in the cloud. Azure AD DS integrates with your existing Azure AD tenant, which makes it possible for users to sign in using their existing credentials. You can also use existing groups and user accounts to secure access to resources, which provides a smoother lift-and-shift of on-premises resources to Azure.
+Azure Active Directory Domain Services (Azure AD DS) biedt beheerde domein Services, zoals domein deelname, groeps beleid, LDAP (Lightweight Directory Access Protocol) en Kerberos/NTLM-verificatie die volledig compatibel is met Windows Server Active Uitvoermap. U gebruikt deze domein Services zonder dat u domein controllers hoeft te implementeren, te beheren en te patchen in de Cloud. Azure AD DS is geïntegreerd met uw bestaande Azure AD-Tenant, waardoor gebruikers zich kunnen aanmelden met hun bestaande referenties. U kunt ook bestaande groepen en gebruikers accounts gebruiken om de toegang tot bronnen te beveiligen. Dit biedt een soepelere lift-en Shift-capaciteit van on-premises resources naar Azure.
 
-Azure AD DS replicates identity information from Azure AD, so works with Azure AD tenants that are cloud-only, or synchronized with an on-premises Active Directory Domain Services (AD DS) environment. The same set of Azure AD DS features exist for both environments.
+Azure AD DS repliceert identiteits gegevens van Azure AD, dus werkt met Azure AD-tenants die alleen in de Cloud zijn of die zijn gesynchroniseerd met een on-premises Active Directory Domain Services-omgeving (AD DS). Voor beide omgevingen is dezelfde set met Azure AD DS-functies beschikbaar.
 
-* If you have an existing on-premises AD DS environment, you can synchronize user account information to provide a consistent identity for users.
-* For cloud-only environments, you don't need a traditional on-premises AD DS environment to use the centralized identity services of Azure AD DS.
+* Als u een bestaande on-premises AD DS omgeving hebt, kunt u gegevens van gebruikers accounts synchroniseren om een consistente identiteit voor gebruikers te bieden.
+* Voor Cloud omgevingen hebt u geen traditionele on-premises AD DS omgeving nodig voor het gebruik van de gecentraliseerde identiteits services van Azure AD DS.
 
-The following video provides an overview of how Azure AD DS integrates with your applications and workloads to provide identity services in the cloud:
+De volgende video biedt een overzicht van de manier waarop Azure AD DS integreert met uw toepassingen en workloads voor het leveren van identiteits Services in de Cloud:
 
 <br />
 
 >[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]
 
-## <a name="common-ways-to-provide-identity-solutions-in-the-cloud"></a>Common ways to provide identity solutions in the cloud
+## <a name="common-ways-to-provide-identity-solutions-in-the-cloud"></a>Gebruikelijke manieren om identiteits oplossingen te bieden in de Cloud
 
-When you migrate existing workloads to the cloud, directory-aware applications may use LDAP for read or write access to an on-premises AD DS directory. Applications that run on Windows Server are typically deployed on domain-joined virtual machines (VMs) so they can be managed securely using Group Policy. To authenticate end users, the applications may also rely on Windows-integrated authentication, such as Kerberos or NTLM authentication.
+Wanneer u bestaande workloads migreert naar de Cloud, kunnen Directory-toepassingen gebruikmaken van LDAP voor lees-of schrijf toegang tot een on-premises AD DS Directory. Toepassingen die worden uitgevoerd op Windows Server, worden doorgaans geïmplementeerd op virtuele machines (Vm's) die lid zijn van een domein, zodat ze veilig kunnen worden beheerd met behulp van groepsbeleid. Voor de verificatie van eind gebruikers kunnen de toepassingen ook gebruikmaken van geïntegreerde Windows-verificatie, zoals Kerberos of NTLM-verificatie.
 
-IT administrators often use one of the following solutions to provide an identity service to applications that run in Azure:
+IT-beheerders gebruiken vaak een van de volgende oplossingen om een identiteits service te bieden aan toepassingen die worden uitgevoerd in Azure:
 
-* Configure a site-to-site VPN connection between workloads that run in Azure and the on-premises AD DS environment.
-* Create replica domain controllers using Azure virtual machines (VMs) to extend the AD DS domain / forest.
-* Deploy a standalone AD DS environment in Azure using domain controllers that run on Azure VMs.
+* Configureer een site-naar-site-VPN-verbinding tussen workloads die worden uitgevoerd in Azure en de on-premises AD DS omgeving.
+* Maak replica domein controllers met behulp van Azure virtual machines (Vm's) om de AD DS domein/forest uit te breiden.
+* Implementeer een zelfstandige AD DS omgeving in azure met behulp van domein controllers die worden uitgevoerd op virtuele machines van Azure.
 
-With these approaches, VPN connections to the on-premises directory make applications vulnerable to transient network glitches or outages. If you deploy domain controllers using VMs in Azure, the IT team VMs must manage, secure, patch, monitor, backup, and troubleshoot them.
+Met deze benaderingen kunnen VPN-verbindingen naar de on-premises Directory toepassingen kwetsbaar maken voor tijdelijke netwerk storingen of storingen. Als u domein controllers implementeert met behulp van virtuele machines in azure, moeten de IT-team-Vm's ze beheren, beveiligen, patchen, bewaken en er back-ups van maken en problemen oplossen.
 
-Azure AD DS offers alternatives to the need to create VPN connections back to an on-premises AD DS environment or run and manage VMs in Azure to provide identity services. As a managed service, Azure AD DS reduces the complexity to create an integrated identity solution for both hybrid and cloud-only environments.
+Azure AD DS biedt alternatieven voor het maken van VPN-verbindingen naar een on-premises AD DS omgeving of voor het uitvoeren en beheren van virtuele machines in azure om identiteits services te bieden. Als beheerde service beperkt Azure AD DS de complexiteit van het maken van een geïntegreerde identiteits oplossing voor zowel hybride als Cloud omgevingen.
 
-## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS features and benefits
+## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS-functies en-voor delen
 
-To provide identity services to applications and VMs in the cloud, Azure AD DS is fully compatible with a traditional AD DS environment for operations such as domain-join, secure LDAP (LDAPS), Group Policy and DNS management, and LDAP bind and read support. LDAP write support is available for objects created in the Azure AD DS managed domain, but not resources synchronized from Azure AD. The following features of Azure AD DS simplify deployment and management operations:
+Om identiteits services te bieden aan toepassingen en virtuele machines in de Cloud, is Azure AD DS volledig compatibel met een traditionele AD DS omgeving voor bewerkingen, zoals domein deelname, secure LDAP (LDAPS), groepsbeleid-en DNS-beheer, en ondersteuning voor LDAP-bindingen en lees bewerkingen. Ondersteuning voor LDAP-schrijf bewerkingen is beschikbaar voor objecten die zijn gemaakt in het door Azure AD DS beheerde domein, maar niet voor resources die zijn gesynchroniseerd vanuit Azure AD. Met de volgende functies van Azure AD DS worden de implementatie-en beheer bewerkingen vereenvoudigd:
 
-* **Simplified deployment experience:** Azure AD DS is enabled for your Azure AD tenant using a single wizard in the Azure portal.
-* **Integrated with Azure AD:** User accounts, group memberships, and credentials are automatically available from your Azure AD tenant. New users, groups, or changes to attributes from your Azure AD tenant or your on-premises AD DS environment are automatically synchronized to Azure AD DS.
-    * Accounts in external directories linked to your Azure AD aren't available in Azure AD DS. Credentials aren't available for those external directories, so can't be synchronized into an Azure AD DS managed domain.
-* **Use your corporate credentials/passwords:** Passwords for users in your Azure AD tenant are the same in Azure AD DS. Users can use their corporate credentials to domain-join machines, sign in interactively or over remote desktop, and authenticate against the Azure AD DS managed domain.
-* **NTLM and Kerberos authentication:** With support for NTLM and Kerberos authentication, you can deploy applications that rely on Windows-integrated authentication.
-* **High availability:** Azure AD DS includes multiple domain controllers, which provide high availability for your managed domain. This high availability guarantees service uptime and resilience to failures.
-    * In regions that support [Azure Availability Zones][availability-zones], these domain controllers are also distributed across zones for additional resiliency. 
+* **Vereenvoudigde implementatie-ervaring:** Azure AD DS is ingeschakeld voor uw Azure AD-Tenant met behulp van één wizard in de Azure Portal.
+* **Geïntegreerd met Azure AD:** Gebruikers accounts, groepslid maatschappen en referenties zijn automatisch beschikbaar vanuit uw Azure AD-Tenant. Nieuwe gebruikers, groepen of wijzigingen in kenmerken van uw Azure AD-Tenant of uw on-premises AD DS omgeving worden automatisch gesynchroniseerd naar Azure AD DS.
+    * Accounts in externe mappen die zijn gekoppeld aan uw Azure AD zijn niet beschikbaar in azure AD DS. Referenties zijn niet beschikbaar voor deze externe directory's en kunnen dus niet worden gesynchroniseerd in een door Azure AD DS beheerd domein.
+* **Uw bedrijfs referenties/wacht woorden gebruiken:** Wacht woorden voor gebruikers in uw Azure AD-Tenant zijn hetzelfde in azure AD DS. Gebruikers kunnen hun bedrijfs referenties gebruiken om computers toe te voegen aan een domein, interactief of via extern bureau blad aan te melden en te verifiëren met behulp van het door Azure AD DS beheerde domein.
+* **NTLM-en Kerberos-verificatie:** Met ondersteuning voor NTLM-en Kerberos-verificatie kunt u toepassingen implementeren die afhankelijk zijn van geïntegreerde Windows-authenticatie.
+* **Hoge Beschik baarheid:** Azure AD DS bevat meerdere domein controllers die hoge Beschik baarheid bieden voor uw beheerde domein. Deze hoge Beschik baarheid garandeert de uptime van de service en de flexibiliteit van fouten.
+    * In regio's die [Azure-beschikbaarheidszones][availability-zones]ondersteunen, worden deze domein controllers ook gedistribueerd over zones voor extra tolerantie. 
 
-Some key aspects of an Azure AD DS managed domain include the following:
+Enkele belang rijke aspecten van een door Azure AD DS beheerd domein zijn onder andere:
 
-* The Azure AD DS managed domain is a stand-alone domain. It isn't an extension of an on-premises domain.
-* Your IT team doesn't need to manage, patch, or monitor domain controllers for this Azure AD DS managed domain.
+* Het beheerde domein van Azure AD DS is een zelfstandig domein. Het is geen uitbrei ding van een on-premises domein.
+* Uw IT-team hoeft geen domein controllers te beheren, te patchen of te controleren voor dit door Azure AD DS beheerde domein.
 
-For hybrid environments that run AD DS on-premises, you don't need to manage AD replication to the Azure AD DS managed domain. User accounts, group memberships, and credentials from your on-premises directory are synchronized to Azure AD via [Azure AD Connect][azure-ad-connect]. These user accounts, group memberships, and credentials are automatically available within the Azure AD DS managed domain.
+Voor hybride omgevingen die on-premises worden AD DS uitgevoerd, hoeft u AD-replicatie niet te beheren naar het beheerde domein van Azure AD DS. Gebruikers accounts, groepslid maatschappen en referenties van uw on-premises Directory worden via [Azure AD Connect][azure-ad-connect]naar Azure AD gesynchroniseerd. Deze gebruikers accounts, groepslid maatschappen en referenties zijn automatisch beschikbaar in het door Azure AD DS beheerde domein.
 
-## <a name="how-does-azure-ad-ds-work"></a>How does Azure AD DS work?
+## <a name="how-does-azure-ad-ds-work"></a>Hoe werkt Azure AD DS?
 
-To provide identity services, Azure creates an AD DS instance on a virtual network of your choice. Behind the scenes, and without the need for you to manage, secure, or update, redundancy is provided through a pair of Windows Server domain controllers.
+Voor het leveren van identiteits Services maakt Azure een AD DS-exemplaar in een virtueel netwerk van uw keuze. Achter de schermen en zonder dat u hoeft te beheren, beveiligen of bijwerken, wordt redundantie gegeven via een paar Windows Server-domein controllers.
 
-The Azure AD DS managed domain is configured to perform a one-way synchronization from Azure AD to provide access to a central set of users, groups, and credentials. You can create resources directly in the Azure AD DS managed domain, but they're not synchronized back to Azure AD. Applications, services, and VMs in Azure that connect to this virtual network can then use common AD DS features such as domain join, group policy, LDAP, and Kerberos / NTLM authentication.
+Het beheerde domein van Azure AD DS is geconfigureerd voor het uitvoeren van een eenrichtings synchronisatie vanuit Azure AD om toegang te bieden tot een centrale set gebruikers, groepen en referenties. U kunt resources rechtstreeks maken in het beheerde domein van Azure AD DS, maar ze worden niet naar Azure AD gesynchroniseerd. Toepassingen, services en virtuele machines in azure die verbinding maken met dit virtuele netwerk kunnen vervolgens gebruikmaken van algemene AD DS functies, zoals domein deelname, groeps beleid, LDAP en Kerberos/NTLM-verificatie.
 
-In a hybrid environment with an on-premises AD DS environment, [Azure AD Connect][azure-ad-connect] synchronizes identity information with Azure AD.
+In een hybride omgeving met een on-premises AD DS omgeving [Azure AD Connect][azure-ad-connect] synchroniseert u identiteits gegevens met Azure AD.
 
-![Synchronization in Azure AD Domain Services with Azure AD and on-premises Active Directory Domain Services using AD Connect](./media/active-directory-domain-services-design-guide/sync-topology.png)
+![Synchronisatie in Azure AD Domain Services met Azure AD en on-premises Active Directory Domain Services met AD Connect](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-To see Azure AD DS in action, let's look at a couple of examples:
+Voor een overzicht van de Azure-AD DS in actie, bekijken we een paar voor beelden:
 
-* [Azure AD DS for hybrid organizations](#azure-ad-ds-for-hybrid-organizations)
-* [Azure AD DS for cloud-only organizations](#azure-ad-ds-for-cloud-only-organizations)
+* [Azure-AD DS voor hybride organisaties](#azure-ad-ds-for-hybrid-organizations)
+* [Azure AD DS voor Cloud organisaties](#azure-ad-ds-for-cloud-only-organizations)
 
-### <a name="azure-ad-ds-for-hybrid-organizations"></a>Azure AD DS for hybrid organizations
+### <a name="azure-ad-ds-for-hybrid-organizations"></a>Azure-AD DS voor hybride organisaties
 
-Many organizations run a hybrid infrastructure that includes both cloud and on-premises application workloads. Legacy applications migrated to Azure as part of a lift and shift strategy may use traditional LDAP connections to provide identity information. To support this hybrid infrastructure, identity information from an on-premises AD DS environment can be synchronized to an Azure AD tenant. Azure AD DS then provides these legacy applications in Azure with an identity source, without the need to configure and manage application connectivity back to on-premises directory services.
+Veel organisaties voeren een hybride infra structuur uit met zowel Cloud-als on-premises toepassings workloads. Oudere toepassingen die naar Azure worden gemigreerd als onderdeel van een lift-en Shift-strategie, kunnen gebruikmaken van traditionele LDAP-verbindingen om identiteits gegevens op te geven. Ter ondersteuning van deze hybride infra structuur kunnen identiteits gegevens van een on-premises AD DS omgeving worden gesynchroniseerd met een Azure AD-Tenant. Azure AD DS levert deze verouderde toepassingen vervolgens in azure met een identiteits bron, zonder dat u de connectiviteit van de toepassing opnieuw hoeft te configureren en te beheren voor on-premises Directory Services.
 
-Let's look at an example for Litware Corporation, a hybrid organization that runs both on-premises and Azure resources:
+Laten we eens kijken naar een voor beeld van Litware Corporation, een hybride organisatie die zowel on-premises als Azure-resources uitvoert:
 
-![Azure Active Directory Domain Services for a hybrid organization that includes on-premises synchronization](./media/overview/synced-tenant.png)
+![Azure Active Directory Domain Services voor een hybride organisatie die on-premises synchronisatie bevat](./media/overview/synced-tenant.png)
 
-* Applications and server workloads that require domain services are deployed in a virtual network in Azure.
-    * This may include legacy applications migrated to Azure as part of a lift and shift strategy.
-* To synchronize identity information from their on-premises directory to their Azure AD tenant, Litware Corporation deploys [Azure AD Connect][azure-ad-connect].
-    * Identity information that is synchronized includes user accounts and group memberships.
-* Litware's IT team enables Azure AD DS for their Azure AD tenant in this, or a peered, virtual network.
-* Applications and VMs deployed in the Azure virtual network can then use Azure AD DS features like domain join, LDAP read, LDAP bind, NTLM and Kerberos authentication, and Group Policy.
+* Toepassingen en server werkbelastingen waarvoor domein Services zijn vereist, worden geïmplementeerd in een virtueel netwerk in Azure.
+    * Dit kan bestaan uit verouderde toepassingen die naar Azure zijn gemigreerd als onderdeel van een lift-en Shift-strategie.
+* Om identiteits gegevens van hun on-premises Directory te synchroniseren met hun Azure AD-Tenant, implementeert litware Corporation [Azure AD Connect][azure-ad-connect].
+    * De identiteits gegevens die worden gesynchroniseerd, zijn onder andere gebruikers accounts en groepslid maatschappen.
+* Het IT-team van Litware maakt Azure AD DS voor hun Azure AD-Tenant in dit of een peered virtueel netwerk.
+* Toepassingen en Vm's die zijn geïmplementeerd in het virtuele netwerk van Azure kunnen vervolgens Azure AD DS-functies gebruiken, zoals domein deelname, LDAP-lees-, LDAP-binding, NTLM-en Kerberos-verificatie en groepsbeleid.
 
 > [!IMPORTANT]
-> Azure AD Connect should only be installed and configured for synchronization with on-premises AD DS environments. It's not supported to install Azure AD Connect in an Azure AD DS managed domain to synchronize objects back to Azure AD.
+> Azure AD Connect mag alleen worden geïnstalleerd en geconfigureerd voor synchronisatie met on-premises AD DS omgevingen. Het is niet mogelijk om Azure AD Connect te installeren in een beheerd domein van Azure AD DS om objecten terug te synchroniseren naar Azure AD.
 
-### <a name="azure-ad-ds-for-cloud-only-organizations"></a>Azure AD DS for cloud-only organizations
+### <a name="azure-ad-ds-for-cloud-only-organizations"></a>Azure AD DS voor Cloud organisaties
 
-A cloud-only Azure AD tenant doesn't have an on-premises identity source. User accounts and group memberships, for example, are created and managed directly in in Azure AD.
+Een Azure AD-Tenant in de Cloud heeft geen on-premises identiteits bron. Gebruikers accounts en groepslid maatschappen worden bijvoorbeeld rechtstreeks in azure AD gemaakt en beheerd.
 
-Now let's look at an example for Contoso, a cloud-only organization that only uses Azure AD for identity. All user identities, their credentials, and group memberships are created and managed in Azure AD. There is no additional configuration of Azure AD Connect to synchronize any identity information from an on-premises directory.
+Laten we nu eens kijken naar een voor beeld van contoso, een Cloud organisatie die alleen Azure AD gebruikt voor identiteit. Alle gebruikers-id's, hun referenties en groepslid maatschappen worden gemaakt en beheerd in azure AD. Er is geen aanvullende configuratie van Azure AD Connect voor het synchroniseren van identiteits gegevens uit een on-premises Directory.
 
-![Azure Active Directory Domain Services for a cloud-only organization with no on-premises synchronization](./media/overview/cloud-only-tenant.png)
+![Azure Active Directory Domain Services voor een Cloud organisatie zonder on-premises synchronisatie](./media/overview/cloud-only-tenant.png)
 
-* Applications and server workloads that require domain services are deployed in a virtual network in Azure.
-* Contoso's IT team enables Azure AD DS for their Azure AD tenant in this, or a peered, virtual network.
-* Applications and VMs deployed in the Azure virtual network can then use Azure AD DS features like domain join, LDAP read, LDAP bind, NTLM and Kerberos authentication, and Group Policy.
+* Toepassingen en server werkbelastingen waarvoor domein Services zijn vereist, worden geïmplementeerd in een virtueel netwerk in Azure.
+* Het IT-team van Contoso maakt Azure AD DS voor hun Azure AD-Tenant in dit of een peered virtueel netwerk.
+* Toepassingen en Vm's die zijn geïmplementeerd in het virtuele netwerk van Azure kunnen vervolgens Azure AD DS-functies gebruiken, zoals domein deelname, LDAP-lees-, LDAP-binding, NTLM-en Kerberos-verificatie en groepsbeleid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-To learn more about Azure AD DS compares with other identity solutions and how synchronization works, see the following articles:
+Raadpleeg de volgende artikelen voor meer informatie over Azure AD DS vergelijkt met andere identiteits oplossingen en hoe synchronisatie werkt:
 
-* [Compare Azure AD DS with Azure AD, Active Directory Domain Services on Azure VMs, and Active Directory Domain Services on-premises][compare]
-* [Learn how Azure AD Domain Services synchronizes with your Azure AD directory][synchronization]
+* [Azure-AD DS vergelijken met Azure AD, Active Directory Domain Services op virtuele machines van Azure en on-premises Active Directory Domain Services][compare]
+* [Meer informatie over hoe Azure AD Domain Services synchroniseert met uw Azure AD-adres lijst][synchronization]
 
-To get started, [create an Azure AD DS managed domain using the Azure portal][tutorial-create].
+Als u aan de slag wilt gaan, [maakt u een door Azure AD DS beheerd domein met behulp van de Azure Portal][tutorial-create].
 
 <!-- INTERNAL LINKS -->
 [compare]: compare-identity-solutions.md

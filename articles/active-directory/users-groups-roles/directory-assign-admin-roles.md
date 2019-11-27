@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5eefac10e2ab196affc4c4148348d19959fcfeec
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bdc178661cf4db8505a444d1f5575bb3d0375979
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74266900"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547525"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerdersrol in Azure Active Directory
 
@@ -147,7 +147,7 @@ In | Kan doen
 [Nalevings centrum Microsoft 365](https://protection.office.com) | De gegevens van uw organisatie beveiligen en beheren in Microsoft 365 Services<br>Nalevings waarschuwingen beheren
 [Nalevings beheerder](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | De regelgeving voor naleving van uw organisatie bijhouden, toewijzen en verifiëren
 [Office 365 Beveiligings-en compliancecentrum](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Beheer van gegevens beheren<br>Juridisch en gegevens onderzoek uitvoeren<br>Aanvraag voor gegevens onderwerp beheren<br><br>Deze rol heeft dezelfde machtigingen als de RoleGroup van de [nalevings beheerder](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) in Office 365 beveiligings-en compliancecentrum op rollen gebaseerd toegangs beheer.
-[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Alle intune-controle gegevens weer geven
+[InTune](https://docs.microsoft.com/intune/role-based-access-control) | Alle intune-controle gegevens weer geven
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Heeft alleen-lezen-machtigingen en kan waarschuwingen beheren<br>Kan bestands beleid maken en wijzigen en bestandsbeheer acties toestaan<br>Kan alle ingebouwde rapporten weer geven onder Gegevensbeheer
 
 ### <a name="compliance-data-administratorcompliance-data-administrator-permissions"></a>[Beheerder van nalevings gegevens](#compliance-data-administrator-permissions)
@@ -159,7 +159,7 @@ In | Kan doen
 [Nalevings centrum Microsoft 365](https://protection.office.com) | Nalevings beleid bewaken over Microsoft 365 Services<br>Nalevings waarschuwingen beheren
 [Nalevings beheerder](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | De regelgeving voor naleving van uw organisatie bijhouden, toewijzen en verifiëren
 [Office 365 Beveiligings-en compliancecentrum](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Beheer van gegevens beheren<br>Juridisch en gegevens onderzoek uitvoeren<br>Aanvraag voor gegevens onderwerp beheren<br><br>Deze rol heeft dezelfde machtigingen als de RoleGroup van de [compatibiliteits gegevens](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) in Office 365 beveiligings-en compliancecentrum op rollen gebaseerd toegangs beheer.
-[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Alle intune-controle gegevens weer geven
+[InTune](https://docs.microsoft.com/intune/role-based-access-control) | Alle intune-controle gegevens weer geven
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Heeft alleen-lezen-machtigingen en kan waarschuwingen beheren<br>Kan bestands beleid maken en wijzigen en bestandsbeheer acties toestaan<br>Kan alle ingebouwde rapporten weer geven onder Gegevensbeheer
 
 ### <a name="conditional-access-administratorconditional-access-administrator-permissions"></a>[Beheerder van voorwaardelijke toegang](#conditional-access-administrator-permissions)
@@ -327,6 +327,10 @@ Gebruikers met deze rol hebben algemene machtigingen in micro soft Power BI, wan
 > [!NOTE]
 > In Microsoft Graph-API, Azure AD Graph API en Azure AD Power shell wordt deze rol aangeduid als Power BI service beheerder. Het is ' Power BI Administrator ' in de [Azure Portal](https://portal.azure.com).
 
+### <a name="power-platform-administratorpower-platform-administrator-permissions"></a>[Power platform-beheerder](#power-platform-administrator-permissions)
+
+Gebruikers met deze rol kunnen alle aspecten van omgevingen, PowerApps, stromen en beleids regels voor preventie van gegevens verlies maken en beheren. Daarnaast hebben gebruikers met deze rol de mogelijkheid om ondersteunings tickets te beheren en de service status te controleren.
+
 ### <a name="privileged-authentication-administratorprivileged-authentication-administrator-permissions"></a>[Beheerder voor geprivilegieerde authenticatie](#privileged-authentication-administrator-permissions)
 
 Gebruikers met deze rol kunnen referenties voor niet-wacht woord instellen of opnieuw instellen voor alle gebruikers, met inbegrip van globale beheerders, en kunnen wacht woorden voor alle gebruikers bijwerken. Bevoegde authenticatie beheerders kunnen gebruikers dwingen om zich opnieuw te registreren bij bestaande niet-wachtwoord referenties (bijvoorbeeld MFA, FIDO) en ' MFA onthouden op het apparaat ' in te trekken bij de volgende aanmelding van alle gebruikers.
@@ -362,7 +366,7 @@ Identity Protection Center | Alle machtigingen van de rol beveiligings lezer<br>
 [Office 365 Beveiligings-en compliancecentrum](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Beveiligings beleid beheren<br>Beveiligings Risico's weer geven, onderzoeken en hierop reageren<br>Rapporten weer geven
 Azure Advanced Threat Protection | Verdachte beveiligings activiteit bewaken en erop reageren
 Windows Defender ATP en EDR | Rollen toewijzen<br>Computer groepen beheren<br>Detectie van de Endpoint Threat en automatisch herstel configureren<br>Waarschuwingen weer geven, onderzoeken en erop reageren
-[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Gebruikers-, apparaat-, registratie-, configuratie-en toepassings gegevens weer geven<br>Kan geen wijzigingen aanbrengen in intune
+[InTune](https://docs.microsoft.com/intune/role-based-access-control) | Gebruikers-, apparaat-, registratie-, configuratie-en toepassings gegevens weer geven<br>Kan geen wijzigingen aanbrengen in intune
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Beheerders toevoegen, beleids regels en instellingen toevoegen, logboeken uploaden en beheer acties uitvoeren
 [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Kan beveiligings beleid weer geven, beveiligings statussen bekijken, beveiligings beleid bewerken, waarschuwingen en aanbevelingen weer geven, waarschuwingen en aanbevelingen negeren
 [Office 365-service status](https://docs.microsoft.com/office365/enterprise/view-service-health) | De status van Office 365-services weer geven
@@ -378,7 +382,7 @@ Identity Protection Center | Alle machtigingen van de rol beveiligings lezer<br>
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Alle machtigingen van de rol beveiligings lezer
 [Office 365 Beveiligings-en compliancecentrum](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Alle machtigingen van de rol beveiligings lezer<br>Beveiligings waarschuwingen weer geven, onderzoeken en hierop reageren
 Windows Defender ATP en EDR | Alle machtigingen van de rol beveiligings lezer<br>Beveiligings waarschuwingen weer geven, onderzoeken en hierop reageren
-[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Alle machtigingen van de rol beveiligings lezer
+[InTune](https://docs.microsoft.com/intune/role-based-access-control) | Alle machtigingen van de rol beveiligings lezer
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Alle machtigingen van de rol beveiligings lezer
 [Office 365-service status](https://docs.microsoft.com/office365/enterprise/view-service-health) | De status van Office 365-services weer geven
 
@@ -393,7 +397,7 @@ Identity Protection Center | Alle beveiligings rapporten en instellingen voor be
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Heeft alleen-lezen toegang tot alle informatie die wordt weer gegeven in Azure AD Privileged Identity Management: beleid en rapporten voor Azure AD-Roltoewijzingen en beveiligings Beoordelingen.<br>U **kunt zich niet** aanmelden voor Azure AD privileged Identity Management of wijzigingen aanbrengen. In de Privileged Identity Management Portal of via Power shell kan iemand met deze rol aanvullende rollen activeren (bijvoorbeeld globale beheerder of beheerdersrol), als de gebruiker hiervoor in aanmerking komt.
 [Office 365 Beveiligings-en compliancecentrum](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Beveiligingsbeleid bekijken<br>Beveiligings Risico's weer geven en onderzoeken<br>Rapporten weer geven
 Windows Defender ATP en EDR | Waarschuwingen weer geven en onderzoeken. Wanneer u op rollen gebaseerd toegangs beheer inschakelt in Windows Defender ATP, hebben gebruikers met alleen-lezen machtigingen, zoals de rol Azure AD-beveiligings lezer, geen toegang meer tot ze zijn toegewezen aan een Windows Defender ATP-rol.
-[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Gebruikers-, apparaat-, registratie-, configuratie-en toepassings gegevens weer geven. Kan geen wijzigingen aanbrengen in intune.
+[InTune](https://docs.microsoft.com/intune/role-based-access-control) | Gebruikers-, apparaat-, registratie-, configuratie-en toepassings gegevens weer geven. Kan geen wijzigingen aanbrengen in intune.
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Heeft alleen-lezen-machtigingen en kan waarschuwingen beheren
 [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Kan aanbevelingen en waarschuwingen weer geven, beveiligings beleid weer geven, beveiligings status weer geven, maar kan geen wijzigingen aanbrengen
 [Office 365-service status](https://docs.microsoft.com/office365/enterprise/view-service-health) | De status van Office 365-services weer geven
@@ -1345,12 +1349,31 @@ Kan alle aspecten van het Power BI product beheren.
 > Deze rol heeft aanvullende machtigingen buiten Azure Active Directory. Zie beschrijving van rol hierboven voor meer informatie.
 >
 >
-
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health lezen en configureren. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Beheer alle aspecten van Power BI. |
+| microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Lees en configureer Office 365 Service Health. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365-ondersteunings tickets maken en beheren. |
+
+
+### <a name="power-platform-administrator-permissions"></a>Beheerders machtigingen voor Power platform
+
+Kan alle aspecten van micro soft Dynamics 365, PowerApps en Microsoft Flow maken en beheren. 
+
+> [!NOTE]
+> Deze rol heeft aanvullende machtigingen buiten Azure Active Directory. Zie beschrijving van rol hierboven voor meer informatie.
+>
+>
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health lezen en configureren. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. dynamics365/-beleeningen/allTasks | Beheer alle aspecten van Dynamics 365. |
+| micro soft. flow/allTasks | Beheer alle aspecten van Microsoft Flow. |
+| micro soft. powerApps/allTasks | Beheer alle aspecten van PowerApps. |
 | microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lees en configureer Office 365 Service Health. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -1708,6 +1731,7 @@ Laag1-ondersteuning voor partner | Ondersteuning voor partner Tier1 | 4ba39ca4-5
 Laag2-ondersteuning voor partner | Ondersteuning voor partner tier2 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Wachtwoord beheerder | Wachtwoord beheerder | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI service beheerder | Power BI beheerder | a9ea8996-122f-4c74-9520-8edcd192826c
+Power platform-beheerder | Power-platform beheerder | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 Beheerder voor geprivilegieerde authenticatie | Beheerder voor geprivilegieerde authenticatie | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 Beheerder van geprivilegieerde rol | Beheerder van geprivilegieerde rol | e8611ab8-c189-46e8-94e1-60213ab1f814
 Rapport lezer | Rapport lezer | 4a5d8f65-41da-4de4-8968-e035b65339cf

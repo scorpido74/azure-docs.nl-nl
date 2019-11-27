@@ -7,37 +7,37 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 1c676b2671b73084a2b4ae8908acb83c23a59b7b
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 0cb875122c63be18f7c39cdfea7986d705ed434e
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936933"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539278"
 ---
 # <a name="azure-red-hat-openshift-customer-administrator-role"></a>Azure Red Hat open Shift-klant beheerdersrol
 
 U bent de Cluster beheerder van een Azure Red Hat open Shift-cluster. Uw account heeft verhoogde machtigingen en toegang tot alle door de gebruiker gemaakte projecten.
 
-Als uw account de rol OSA-Customer-admin Authorization heeft, kan een project automatisch worden beheerd.
+Als uw account is gekoppeld aan de autorisatie rol klant-beheerder-cluster, kan hiermee automatisch een project worden beheerd.
 
 > [!Note] 
-> Het OSA-klant-admin-cluster is niet hetzelfde als de cluster rol cluster beheerder.
+> De rol klant-beheerder-cluster cluster is niet hetzelfde als de cluster functie cluster beheerder.
 
 
-U kunt bijvoorbeeld acties uitvoeren die zijn gekoppeld aan een set termen (`create`) om te kunnen worden uitgevoerd op een set resource namen (`templates`). Voer de volgende opdracht uit om de details van deze rollen en hun sets met werk woorden en resources weer te geven:
+U kunt bijvoorbeeld acties uitvoeren die zijn gekoppeld aan een set termen (`create`) om te worden uitgevoerd op een set resource namen (`templates`). Voer de volgende opdracht uit om de details van deze rollen en hun sets met werk woorden en resources weer te geven:
 
-`$ oc describe clusterrole/osa-customer-admin`
+`$ oc get clusterroles customer-admin-cluster -o yaml`
 
-De namen van woorden zijn niet noodzakelijkerwijs alle toewijzingen rechtstreeks aan `oc`-opdrachten. Ze zijn in het algemeen gelijk aan de typen CLI-bewerkingen die u kunt uitvoeren. 
+De namen van woorden zijn niet noodzakelijkerwijs alle toewijzingen rechtstreeks aan `oc` opdrachten. Ze zijn in het algemeen gelijk aan de typen CLI-bewerkingen die u kunt uitvoeren. 
 
-Als u bijvoorbeeld een `list`-werk woord instelt, kunt u een lijst met alle objecten van een resource naam weer geven (`oc get`). De `get` betekent dat u de details van een specifiek object kunt weer geven als u de naam weet (`oc describe`).
+Een voor beeld: met de `list` werk woord betekent dat u een lijst met alle objecten van een resource naam (`oc get`) kunt weer geven. Het `get` werk woord betekent dat u de details van een specifiek object kunt weer geven als u de naam van de groep kent (`oc describe`).
 
 ## <a name="configure-the-customer-administrator-role"></a>De rol klant beheerder configureren
 
-U kunt de beheerdersrol van de klant alleen configureren tijdens het maken van het cluster door de vlag `--customer-admin-group-id` op te geven. Zie [Azure Active Directory-integratie voor Azure Red Hat open Shift voor](howto-aad-app-configuration.md)meer informatie over het configureren van Azure Active Directory en de groep Administrators.
+U kunt de cluster functie klant-beheerder-cluster alleen configureren tijdens het maken van een cluster door de vlag `--customer-admin-group-id`op te geven. Zie [Azure Active Directory-integratie voor Azure Red Hat open Shift voor](howto-aad-app-configuration.md)meer informatie over het configureren van Azure Active Directory en de groep Administrators.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De rol OSA-klant-admin configureren:
+Configureer de rol klant-beheerder-cluster cluster:
 > [!div class="nextstepaction"]
 > [Azure Active Directory integratie voor Azure Red Hat open Shift](howto-aad-app-configuration.md)

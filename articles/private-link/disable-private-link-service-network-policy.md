@@ -1,6 +1,6 @@
 ---
-title: 'Disable network policies for Azure Private Link service source IP address '
-description: Learn how to disable network policies for Azure private Link
+title: 'Netwerk beleid uitschakelen voor het IP-adres van de Azure Private Link service-bron '
+description: Meer informatie over het uitschakelen van netwerk beleid voor persoonlijke Azure-koppelingen
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,16 +14,16 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228106"
 ---
-# <a name="disable-network-policies-for-private-link-service-source-ip"></a>Disable network policies for Private Link service source IP
+# <a name="disable-network-policies-for-private-link-service-source-ip"></a>Netwerk beleid voor de bron-IP van de persoonlijke koppelings service uitschakelen
 
-In order to choose a source IP address for your Private Link service, an explicit disable setting `privateLinkServiceNetworkPolicies` is required on the subnet. This setting is only applicable for the specific private IP address you chose as the source IP of the Private Link service. For other resources in the subnet, access is controlled based on Network Security Groups (NSG) security rules definition. 
+Als u een bron-IP-adres voor uw privé koppelings service wilt kiezen, is een expliciete instelling voor uitschakelen `privateLinkServiceNetworkPolicies` vereist in het subnet. Deze instelling is alleen van toepassing op het specifieke privé-IP-adres dat u hebt gekozen als bron-IP van de privé koppelings service. Voor andere bronnen in het subnet wordt de toegang beheerd op basis van de definitie van beveiligings regels voor netwerk beveiligings groepen (NSG). 
  
-When using any Azure client (PowerShell, CLI or templates), an additional step is required to change this property. You can disable the policy using the cloud shell from the Azure portal, or local installations of Azure PowerShell, Azure CLI, or use Azure Resource Manager templates.  
+Wanneer u een Azure-client (Power shell, CLI of sjablonen) gebruikt, is een extra stap vereist om deze eigenschap te wijzigen. U kunt het beleid uitschakelen met behulp van de Cloud shell van de Azure Portal, of lokale installaties van Azure PowerShell, Azure CLI of Azure Resource Manager-sjablonen gebruiken.  
  
-Follow the steps below to disable private link service network policies for a virtual network named *myVirtualNetwork* with a *default* subnet hosted in a resource group named *myResourceGroup*. 
+Volg de onderstaande stappen om het netwerk beleid van de persoonlijke koppelings service voor een virtueel netwerk met de naam *myVirtualNetwork* uit te scha kelen met een *standaard* subnet dat wordt gehost in een resource groep met de naam *myResourceGroup*. 
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
-This section describes how to disable subnet private endpoint policies using Azure PowerShell.
+In deze sectie wordt beschreven hoe u beleid voor privé-eind punten van subnet kunt uitschakelen met behulp van Azure PowerShell.
 
 ```azurepowershell
 $virtualNetwork= Get-AzVirtualNetwork `
@@ -35,7 +35,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
 ## <a name="using-azure-cli"></a>Azure CLI gebruiken
-This section describes how to disable subnet private endpoint policies using Azure CLI.
+In deze sectie wordt beschreven hoe u beleid voor privé-eind punten van subnet uitschakelen met behulp van Azure CLI.
 ```azurecli
 az network vnet subnet update \ 
   --name default \ 
@@ -43,8 +43,8 @@ az network vnet subnet update \
   --vnet-name myVirtualNetwork \ 
   --disable-private-link-service-network-policies true 
 ```
-## <a name="using-a-template"></a>Using a template
-This section describes how to disable subnet private endpoint policies using Azure Resource Manager Template.
+## <a name="using-a-template"></a>Een sjabloon gebruiken
+In deze sectie wordt beschreven hoe u beleid voor privé-eind punten van subnet kunt uitschakelen met Azure Resource Manager sjabloon.
 ```json
 { 
     "name": "myVirtualNetwork", 
@@ -71,5 +71,5 @@ This section describes how to disable subnet private endpoint policies using Azu
  
 ```
 ## <a name="next-steps"></a>Volgende stappen
-- Learn more about [Azure Private Endpoint](private-endpoint-overview.md)
+- Meer informatie over [persoonlijk Azure-eind punt](private-endpoint-overview.md)
  

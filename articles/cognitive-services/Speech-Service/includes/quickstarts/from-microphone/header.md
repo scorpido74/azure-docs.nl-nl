@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Recognize speech from a microphone - Speech Service'
+title: 'Quick Start: spraak herkennen vanuit een microfoon-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: Nader te bepalen
+description: NOG TE BEPALEN
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/20/2019
 ms.author: erhopf
-ms.openlocfilehash: 561acc798df475b9cb7f451163016b1b6abe83cf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: bee3b64ece3faac6258fe4d017f12833b12e370d
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74451512"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74536359"
 ---
-In this quickstart, you'll use the [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) to interactively recognize speech from a microphone input, and get the text transcription from captured audio. It's easy to integrate this feature into your apps or and devices for common recognition tasks, such as transcribing conversations. It can also be used for more complex integrations, like using the Bot Framework with the Speech SDK to build voice assistants.
+In deze Quick Start gebruikt u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) om spraak op een microfoon invoer interactief te herkennen en de tekst transcriptie van vastgelegde audio op te halen. Het is eenvoudig om deze functie te integreren in uw apps of apparaten voor algemene herkennings taken, zoals het transcriberen van gesp rekken. Het kan ook worden gebruikt voor complexere integraties, zoals het gebruik van het bot-Framework met de Speech SDK om spraak assistenten te bouwen.
 
-After satisfying a few prerequisites, recognizing speech from a microphone only takes four steps:
+Nadat u aan enkele vereisten hebt voldaan, heeft het herkennen van spraak van een microfoon slechts vier stappen:
 
 > [!div class="checklist"]
-> * Create a `SpeechConfig` object from your subscription key and region.
-> * Create a `SpeechRecognizer` object using the `SpeechConfig` object from above.
-> * Using the `SpeechRecognizer` object, start the recognition process for a single utterance.
-> * Inspect the `SpeechRecognitionResult` returned.
+> * Een `SpeechConfig`-object maken op basis van uw abonnements sleutel en-regio.
+> * Maak een `SpeechRecognizer`-object met behulp van het `SpeechConfig`-object.
+> * Gebruik het `SpeechRecognizer`-object om het herkennings proces voor één utterance te starten.
+> * Controleer de geretourneerde `SpeechRecognitionResult`.

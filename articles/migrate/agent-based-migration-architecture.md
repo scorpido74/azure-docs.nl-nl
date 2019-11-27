@@ -97,7 +97,7 @@ De waarden in deze tabel kunnen worden gebruikt om erachter te komen of u een ex
 - Als uw dagelijkse wijzigings frequentie (verloop frequentie) groter is dan 2 TB, implementeert u een extra proces server.
 - Als u meer dan 200 computers repliceert, implementeert u een extra replicatie apparaat.
 
-**CPU** | **Geheugenmetabase** | **Vrije ruimte voor het opslaan van gegevens in de cache** | **Verloop frequentie** | **Replicatie limieten**
+**VERBRUIK** | **Geheugenmetabase** | **Vrije ruimte voor het opslaan van gegevens in de cache** | **Verloop frequentie** | **Replicatie limieten**
 --- | --- | --- | --- | ---
 8 Vcpu's (2 sockets * 4 kern geheugens \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB of minder | < 100-machines 
 12 Vcpu's (2 sockets * 6 kernen \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB tot 1 TB | 100-150 machines.

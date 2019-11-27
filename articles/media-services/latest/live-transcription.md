@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services live transcription | Microsoft Docs
-description: This article explains what the Azure Media Services live transcription is.
+title: Azure Media Services Live transcriptie | Microsoft Docs
+description: In dit artikel wordt uitgelegd wat de Azure Media Services Live transcriptie is.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -20,24 +20,24 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327349"
 ---
-# <a name="live-transcription-preview"></a>Live transcription (preview)
+# <a name="live-transcription-preview"></a>Live transcriptie (preview-versie)
 
-Azure Media Service delivers video, audio, and now text in different protocols. When you publish your live stream using MPEG-DASH or HLS/CMAF, then along with video and audio, our service will deliver the transcribed text in IMSC1.1 compatible TTML, packaged into MPEG-4 Part 30 (ISO/IEC 14496-30) fragments. If using delivery via HLS/TS, then text is delivered as chunked VTT. 
+De Azure media-service levert video, audio en nu tekst in verschillende protocollen. Wanneer u uw Live Stream publiceert met MPEG-DASH of HLS/CMAF en vervolgens video en audio, levert onze service de getranscribeerde tekst in IMSC 1.1 compatibele TTML, verpakt in fragmenten van MPEG-4 Part 30 (ISO/IEC 14496-30). Als u levering via HLS/TS gebruikt, wordt de tekst geleverd als gesegmenteerde VTT. 
 
-This article describes how to enable live transcription when streaming a Live Event with Azure Media Services v3. Before you proceed, make sure you are familiar with the use of Media Services v3 REST APIs (see [this tutorial](stream-files-tutorial-with-rest.md) for details). You should also be familiar with the [live streaming](live-streaming-overview.md) concept. It is recommended to complete the [Stream live with Media Services](stream-live-tutorial-with-api.md) tutorial. 
+In dit artikel wordt beschreven hoe u live transcriptie inschakelt bij het streamen van een live-gebeurtenis met Azure Media Services v3. Voordat u doorgaat, moet u ervoor zorgen dat u bekend bent met het gebruik van Media Services v3 REST-Api's (Zie [deze zelf studie](stream-files-tutorial-with-rest.md) voor meer informatie). U moet ook vertrouwd zijn met het concept van [live streamen](live-streaming-overview.md) . U wordt aangeraden de [stroom Live met Media Services](stream-live-tutorial-with-api.md) zelf studie te volt ooien. 
 
 > [!NOTE]
-> Currently, live transcription is only available as a preview feature in the West US 2 region. It supports transcription of spoken words in English to text. The API reference for this feature is in this document – since it is in preview, the details are not available with our REST documents. 
+> Live transcriptie is momenteel alleen beschikbaar als preview-functie in de regio vs-West 2. Het ondersteunt transcriptie van gesp roken woorden in het Engels naar tekst. De API-verwijzing voor deze functie bevindt zich in dit document: aangezien deze in preview is, zijn de details niet beschikbaar in onze REST-documenten. 
 
-## <a name="creating-the-live-event"></a>Creating the Live Event 
+## <a name="creating-the-live-event"></a>De live-gebeurtenis maken 
 
-To create the Live Event, you would send the PUT operation to the 2019-05-01 version, such as: 
+Als u de live-gebeurtenis wilt maken, verzendt u de PUT-bewerking naar de 2019-05-01-versie, zoals: 
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-The operation has the following body (where a pass-through Live Event is created with RTMP as the ingest protocol). Note the addition of a transcriptions property. The only allowed value for language is en-US. 
+De bewerking heeft de volgende hoofd tekst (waarbij een Pass-through live-gebeurtenis wordt gemaakt met RTMP als het opname Protocol). Let op de toevoeging van een eigenschap transcripties. De enige toegestane waarde voor de taal en-US. 
 
 ```
 { 
@@ -87,24 +87,24 @@ The operation has the following body (where a pass-through Live Event is created
 } 
 ```
 
-You should poll the status of the Live Event until it goes into the “Running” state, which indicates that you can now send a contribution RTMP feed. You can now follow the same steps as in this tutorial, such as checking the preview feed, and creating Live Outputs. 
+U moet de status van de live-gebeurtenis controleren totdat deze in de status ' running ' komt, wat aangeeft dat u nu een contributie-RTMP-feed kunt verzenden. U kunt nu dezelfde stappen volgen als in deze zelf studie, zoals het controleren van de preview-feed en het maken van live uitvoer. 
 
-## <a name="delivery-and-playback"></a>Delivery and playback 
+## <a name="delivery-and-playback"></a>Levering en afspelen 
 
-Review the [Dynamic packaging overview](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery) article of how our service uses dynamic packaging to deliver video, audio, and now text in different protocols. When you publish your live stream using MPEG-DASH or HLS/CMAF, then along with video and audio, our service will deliver the transcribed text in IMSC1.1 compatible TTML, packaged into MPEG-4 Part 30 (ISO/IEC 14496-30) fragments. If using delivery via HLS/TS, then text is delivered as chunked VTT. You can use a web player such as the [Azure Media Player](use-azure-media-player.md) to play the stream.  
+Raadpleeg het [overzicht van dynamische](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery) pakketten voor informatie over hoe de service dynamische pakketten gebruikt voor het leveren van video, audio en nu tekst in verschillende protocollen. Wanneer u uw Live Stream publiceert met MPEG-DASH of HLS/CMAF en vervolgens video en audio, levert onze service de getranscribeerde tekst in IMSC 1.1 compatibele TTML, verpakt in fragmenten van MPEG-4 Part 30 (ISO/IEC 14496-30). Als u levering via HLS/TS gebruikt, wordt de tekst geleverd als gesegmenteerde VTT. U kunt een webspeler gebruiken zoals de [Azure Media Player](use-azure-media-player.md) om de stream af te spelen.  
 
 > [!NOTE]
->  If using Azure Media Player, use version 2.3.3 or later.
+>  Als u Azure Media Player gebruikt, moet u versie 2.3.3 of hoger gebruiken.
 
 ## <a name="known-issues"></a>Bekende problemen 
 
-At preview, following are the known issues with Live Transcription 
+Op de preview-versie volgen de bekende problemen met Live transcriptie 
 
-* The feature is available only in West US 2.
-* Applications need to use the preview APIs, described in the [Media Services v3 OpenAPI Specification](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json) specification.
-* The only supported language is English.
-* With respect to content protection, only AES envelope encryption is supported.
+* De functie is alleen beschikbaar in VS-West 2.
+* Toepassingen moeten de preview-Api's gebruiken, zoals beschreven in de specificatie [Media Services v3 OpenAPI](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json) .
+* De enige ondersteunde taal is Engels.
+* Met betrekking tot Content Protection wordt alleen AES-envelop versleuteling ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Media Services overview](media-services-overview.md)
+[Overzicht van Media Services](media-services-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Use an Azure file share with Azure Storage | Microsoft Docs
+title: Een Azure-bestands share gebruiken met Azure Storage | Microsoft Docs
 description: Informatie over hoe u een Azure-bestandsshare gebruikt met Windows en Windows Server.
 author: todmccoy
 manager: dcscontentpm
@@ -17,29 +17,29 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233790"
 ---
-# <a name="how-to-recover-a-deleted-storage-account"></a>How to recover a deleted storage account
+# <a name="how-to-recover-a-deleted-storage-account"></a>Een verwijderd opslag account herstellen
 
-Azure Storage provides data resiliency through automated replicas, but doesn't prevent users or application code from corrupting data, whether accidentally or maliciously. Maintaining data fidelity during instances of application or user error requires more advanced techniques, such as copying the data to a secondary storage location with an audit log.
+Azure Storage biedt gegevens tolerantie via geautomatiseerde replica's, maar niet voor komen dat gebruikers of toepassings code gegevens beschadigen, ongeacht of ze per ongeluk of opzettelijk zijn beschadigd. Voor het bijhouden van gegevens kwaliteit tijdens exemplaren van de toepassing of de gebruikers fout zijn meer geavanceerde technieken vereist, zoals het kopiëren van de gegevens naar een secundaire opslag locatie met een audit logboek.
 
-The following table provides overview of the scope of Storage Account Recovery depending on the replication strategy.
+De volgende tabel bevat een overzicht van het bereik van herstel van opslag accounts, afhankelijk van de replicatie strategie.
 
-| |LRS|ZRS|GRS|RA - GRS|
+| |LRS|ZRS|GRS|RA-GRS|
 |---|---|---|---|---|
-|Storage Account Azure Resource Manager|Ja|Ja|Ja|Ja|
-|Storage Account Classic|Ja|Ja|Ja|Ja|
+|Azure Resource Manager van opslag account|Ja|Ja|Ja|Ja|
+|Klassiek opslag account|Ja|Ja|Ja|Ja|
 
-Gather the following information and file a support request with Microsoft Support:
+Verzamel de volgende informatie en verwerk een ondersteunings aanvraag met Microsoft Ondersteuning:
 
 * Naam van opslagaccount
-* Date of deletion
-* Storage account region
-* How was the storage account deleted?
-* What method deleted the storage account? (Portal, PowerShell, etc.)
+* Datum van verwijdering
+* Regio van opslag account
+* Hoe is het opslag account verwijderd?
+* Welke methode heeft het opslag account verwijderd? (Portal, Power shell, enz.)
 
-Important Points
+Belang rijke punten
 
-* It can generally take up to 15 days from the time of deletion for the storage service to perform garbage collection, so storage accounts recovery may not be recovered with an SLA.
-* Microsoft Support will try to recover the Container/Account on a best-effort basis and cannot guarantee the recovery.
+* Het kan over het algemeen tot wel vijf tien dagen duren vanaf het moment van verwijderen van de opslag service om garbagecollection uit te voeren, zodat herstel van opslag accounts niet kan worden hersteld met een SLA.
+* Microsoft Ondersteuning probeert de container/het account te herstellen op basis van de beste inspanningen en kan het herstel niet garanderen.
 
 > [!NOTE]
-> The recovery may not be successful if the account has been re-created. If you have already re-created the account, you must delete it first before recovery can be attempted.
+> Het herstel kan niet worden uitgevoerd als het account opnieuw is gemaakt. Als u het account al opnieuw hebt gemaakt, moet u het eerst verwijderen voordat u het herstel kunt uitvoeren.

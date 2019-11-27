@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create a forest trust in Azure AD Domain Services | Microsoft Docs
-description: Learn how to create a one-way outbound forest to an on-premises AD DS domain in the Azure portal for Azure AD Domain Services
+title: Zelf studie-een forest-vertrouwens relatie maken in Azure AD Domain Services | Microsoft Docs
+description: Meer informatie over het maken van een eenrichtings-uitgaand forest naar een on-premises AD DS domein in de Azure Portal voor Azure AD Domain Services
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,195 +17,195 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233595"
 ---
-# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Tutorial: Create an outbound forest trust to an on-premises domain in Azure Active Directory Domain Services (preview)
+# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Zelf studie: een uitgaande forest-vertrouwens relatie maken met een on-premises domein in Azure Active Directory Domain Services (preview-versie)
 
-In environments where you can't synchronize password hashes, or you have users that exclusively sign in using smart cards so they don't know their password, you can use a resource forest in Azure Active Directory Domain Services (AD DS). A resource forest uses a one-way outbound trust from Azure AD DS to one or more on-premises AD DS environments. This trust relationship lets users, applications, and computers authenticate against an on-premises domain from the Azure AD DS managed domain. Azure AD DS resource forests are currently in preview.
+In omgevingen waar u geen wacht woord-hashes kunt synchroniseren, of als u gebruikers hebt die zich alleen aanmelden met Smart Cards, zodat ze hun wacht woord niet kennen, kunt u een resource-forest gebruiken in Azure Active Directory Domain Services (AD DS). Een resource-forest gebruikt een eenrichtings uitgaande vertrouwens relatie van Azure AD DS naar een of meer on-premises AD DS omgevingen. Met deze vertrouwens relatie kunnen gebruikers, toepassingen en computers worden geverifieerd op basis van een on-premises domein van het door Azure AD DS beheerde domein. Azure AD DS resource-forests zijn momenteel beschikbaar als preview-versie.
 
-![Diagram of forest trust from Azure AD DS to on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Diagram van forestvertrouwensrelatie van Azure AD DS op on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Configure DNS in an on-premises AD DS environment to support Azure AD DS connectivity
-> * Create a one-way inbound forest trust in an on-premises AD DS environment
-> * Create a one-way outbound forest trust in Azure AD DS
-> * Test and validate the trust relationship for authentication and resource access
+> * DNS configureren in een on-premises AD DS omgeving ter ondersteuning van Azure AD DS-connectiviteit
+> * Een eenrichtings vertrouwensrelatie voor een inkomend forest in een on-premises AD DS omgeving maken
+> * Een eenrichtings vertrouwensrelatie voor uitgaande forests maken in azure AD DS
+> * De vertrouwens relatie voor verificatie en toegang tot bronnen testen en valideren
 
-If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+Als u nog geen abonnement op Azure hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-To complete this tutorial, you need the following resources and privileges:
+U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt ooien:
 
 * Een actief Azure-abonnement.
-    * If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* An Azure Active Directory tenant associated with your subscription, either synchronized with an on-premises directory or a cloud-only directory.
-    * If needed, [create an Azure Active Directory tenant][create-azure-ad-tenant] or [associate an Azure subscription with your account][associate-azure-ad-tenant].
-* An Azure Active Directory Domain Services managed domain created using a resource forest and configured in your Azure AD tenant.
-    * If needed, [create and configure an Azure Active Directory Domain Services instance][create-azure-ad-ds-instance-advanced].
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een Azure Active Directory Domain Services beheerd domein dat is gemaakt met behulp van een resource-forest en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance-advanced].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-In this tutorial, you create and configure the outbound forest trust from Azure AD DS using the Azure portal. To get started, first sign in to the [Azure portal](https://portal.azure.com).
+In deze zelf studie maakt en configureert u de uitgaande forestvertrouwensrelatie vanuit Azure AD DS met behulp van de Azure Portal. Meld u eerst aan bij de [Azure Portal](https://portal.azure.com)om aan de slag te gaan.
 
 ## <a name="networking-considerations"></a>Aandachtspunten voor netwerken
 
-The virtual network that hosts the Azure AD DS resource forest needs network connectivity to your on-premises Active Directory. Applications and services also need network connectivity to the virtual network hosting the Azure AD DS resource forest. Network connectivity to the Azure AD DS resource forest must be always on and stable otherwise users may fail to authenticate or access resources.
+Het virtuele netwerk dat als host fungeert voor het Azure AD DS resource-forest, moet een netwerk verbinding hebben met uw on-premises Active Directory. Toepassingen en services hebben ook een netwerk verbinding met het virtuele netwerk nodig die als host fungeert voor het forest van de Azure AD DS-resource. De netwerk verbinding met de Azure AD DS-bron-forest moet altijd zijn ingeschakeld en stabiel, anders kunnen gebruikers geen toegang krijgen tot bronnen.
 
-Before you configure a forest trust in Azure AD DS, make sure your networking between Azure and on-premises environment meets the following requirements:
+Voordat u een forestvertrouwensrelatie configureert in azure AD DS, moet u ervoor zorgen dat uw netwerken tussen de Azure-en on-premises omgeving voldoen aan de volgende vereisten:
 
-* Use private IP addresses. Don't rely on DHCP with dynamic IP address assignment.
-* Avoid overlapping IP address spaces to allow virtual network peering and routing to successfully communicate between Azure and on-premises.
-* An Azure virtual network needs a gateway subnet to configure a site-to-site (S2S) VPN or ExpressRoute connection
-* Create subnets with enough IP addresses to support your scenario.
-* Make sure Azure AD DS has its own subnet, don't share this virtual network subnet with application VMs and services.
-* Peered virtual networks are NOT transitive.
-    * Azure virtual network peerings must be created between all virtual networks you want to use the Azure AD DS resource forest trust to the on-premises AD DS environment.
-* Provide continuous network connectivity to your on-premises Active Directory forest. Don't use on-demand connections.
-* Make sure there's continuous name resolution (DNS) between your Azure AD DS resource forest name and your on-premises Active Directory forest name.
+* Gebruik privé IP-adressen. Vertrouw niet op DHCP met dynamische IP-adres toewijzing.
+* Vermijd overlappende IP-adres ruimten zodat peering van virtuele netwerken en route ring kunnen communiceren tussen Azure en on-premises.
+* Een virtueel Azure-netwerk heeft een gateway-subnet nodig om een S2S-VPN-of ExpressRoute-verbinding (site-naar-site) te configureren
+* Maak subnetten met voldoende IP-adressen ter ondersteuning van uw scenario.
+* Zorg ervoor dat Azure AD DS een eigen subnet heeft, deel dit subnet van het virtuele netwerk niet met de Vm's en services van de toepassing.
+* Gekoppelde virtuele netwerken zijn niet transitief.
+    * Virtuele Azure-netwerk-peerings moeten worden gemaakt tussen alle virtuele netwerken die u wilt gebruiken voor de vertrouwens relatie van het Azure AD DS resource-forest naar de on-premises AD DS omgeving.
+* Bied continue netwerk connectiviteit met uw on-premises Active Directory-forest. Gebruik geen verbindingen op aanvraag.
+* Zorg ervoor dat er sprake is van een continue naam omzetting (DNS) tussen de naam van uw Azure AD DS resource-forest en de naam van uw on-premises Active Directory-forest.
 
-## <a name="configure-dns-in-the-on-premises-domain"></a>Configure DNS in the on-premises domain
+## <a name="configure-dns-in-the-on-premises-domain"></a>DNS configureren in het on-premises domein
 
-To correctly resolve the Azure AD DS managed domain from the on-premises environment, you may need to add forwarders to the existing DNS servers. If you haven't configure the on-premises environment to communicate with the Azure AD DS managed domain, complete the following steps from a management workstation for the on-premises AD DS domain:
+Als u de door Azure AD DS beheerde domein correct wilt omzetten vanuit de on-premises omgeving, moet u mogelijk doorstuur servers toevoegen aan de bestaande DNS-server. Als u de on-premises omgeving niet hebt geconfigureerd om te communiceren met het door Azure AD DS beheerde domein, voert u de volgende stappen uit vanaf een beheer werkstation voor het on-premises AD DS domein:
 
-1. Select **Start | Administrative Tools | DNS**
-1. Right-select DNS server, such as *myAD01*, select **Properties**
-1. Choose **Forwarders**, then **Edit** to add additional forwarders.
-1. Add the IP addresses of the Azure AD DS managed domain, such as *10.0.1.4* and *10.0.1.5*.
+1. Selecteer **Start | Systeem beheer | DNS**
+1. Klik met de rechter muisknop op DNS-server, zoals *myAD01*, selecteer **Eigenschappen**
+1. Kies **doorstuur servers**en klik vervolgens op **bewerken** om aanvullende doorstuur servers toe te voegen.
+1. Voeg de IP-adressen van het beheerde domein van Azure AD DS, zoals *10.0.1.4* en *10.0.1.5*, toe.
 
-## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Create inbound forest trust in the on-premises domain
+## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Een binnenkomend forest-vertrouwens relatie maken in het on-premises domein
 
-The on-premises AD DS domain needs an incoming forest trust for the Azure AD DS managed domain. This trust must be manually created in the on-premises AD DS domain, it can't be created from the Azure portal.
+De on-premises AD DS domein vereist een binnenkomende forestvertrouwensrelatie voor het door Azure AD DS beheerde domein. Deze vertrouwens relatie moet hand matig worden gemaakt in het on-premises AD DS domein, maar kan niet worden gemaakt op basis van de Azure Portal.
 
-To configure inbound trust on the on-premises AD DS domain, complete the following steps from a management workstation for the on-premises AD DS domain:
+Als u binnenkomende vertrouwens relatie wilt configureren voor het on-premises AD DS domein, voert u de volgende stappen uit vanaf een beheer werkstation voor het on-premises AD DS domein:
 
-1. Select **Start | Administrative Tools | Active Directory Domains and Trusts**
-1. Right-select domain, such as *onprem.contoso.com*, select **Properties**
-1. Choose **Trusts** tab, then **New Trust**
-1. Enter name on Azure AD DS domain name, such as *aadds.contoso.com*, then select **Next**
-1. Select the option to create a **Forest trust**, then to create a **One way: incoming** trust.
-1. Choose to create the trust for **This domain only**. In the next step, you create the trust in the Azure portal for the Azure AD DS managed domain.
-1. Choose to use **Forest-wide authentication**, then enter and confirm a trust password. This same password is also entered in the Azure portal in the next section.
-1. Step through the next few windows with default options, then choose the option for **No, do not confirm the outgoing trust**.
+1. Selecteer **Start | Systeem beheer | Active Directory domeinen en vertrouwens relaties**
+1. Klik met de rechter muisknop op domein, zoals *onprem.contoso.com*, selecteer **Eigenschappen**
+1. Klik op het tabblad **vertrouwens relaties** en vervolgens op **nieuwe vertrouwens relatie**
+1. Voer een naam in voor Azure AD DS domein naam, bijvoorbeeld *aadds.contoso.com*, en selecteer vervolgens **volgende**
+1. Selecteer de optie voor het maken van een **forestvertrouwensrelatie**en vervolgens het maken van een **eenrichtings vertrouwensrelatie: inkomend** vertrouwen.
+1. Kies ervoor om de vertrouwens relatie **alleen voor dit domein**te maken. In de volgende stap maakt u de vertrouwens relatie in de Azure Portal voor het beheerde domein van Azure AD DS.
+1. Kies voor het gebruik van **forest-dekkende verificatie**en voer vervolgens een vertrouwens wachtwoord in en bevestig dit. Dit wacht woord wordt ook ingevoerd in de Azure Portal in de volgende sectie.
+1. Door loop de volgende vensters met de standaard opties en kies vervolgens de optie **Nee, Controleer de uitgaande vertrouwens relatie niet**.
 1. Selecteer **Voltooien**.
 
-## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Create outbound forest trust in Azure AD DS
+## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Een uitgaand forest vertrouwen maken in azure AD DS
 
-With the on-premises AD DS domain configured to resolve the Azure AD DS managed domain and an inbound forest trust created, now created the outbound forest trust. This outbound forest trust completes the trust relationship between the on-premises AD DS domain and the Azure AD DS managed domain.
+Met het on-premises AD DS domein dat is geconfigureerd voor het oplossen van het beheerde Azure AD DS-domein en een binnenkomende forest-vertrouwens relatie, is nu de uitgaande forestvertrouwensrelatie gemaakt. Deze vertrouwens relatie met een uitgaand forest is de vertrouwensrelatie tussen het on-premises AD DS domein en het beheerde domein van Azure AD DS.
 
-To create the outbound trust for the Azure AD DS managed domain in the Azure portal, complete the following steps:
+Voer de volgende stappen uit om de uitgaande vertrouwens relatie voor het door Azure AD DS beheerde domein te maken in de Azure Portal:
 
-1. In the Azure portal, search for and select **Azure AD Domain Services**, then select your managed domain, such as *aadds.contoso.com*
-1. From the menu on the left-hand side of the Azure AD DS managed domain, select **Trusts**, then choose to **+ Add** a trust.
-1. Enter a display name that identifies your trust, then the on-premises trusted forest DNS name, such as *onprem.contoso.com*
-1. Provide the same trust password that was used when configuring the inbound forest trust for the on-premises AD DS domain in the previous section.
-1. Provide at least two DNS servers for the on-premises AD DS domain, such as *10.0.2.4* and *10.0.2.5*
-1. When ready, **Save** the outbound forest trust
+1. In de Azure Portal zoekt en selecteert u **Azure AD Domain Services**en selecteert u vervolgens uw beheerde domein, zoals *aadds.contoso.com*
+1. Selecteer in het menu aan de linkerkant van het Azure AD DS Managed Domain de optie **vertrouwens relaties**en kies vervolgens om + een vertrouwens relatie **toe te voegen** .
+1. Voer een weergave naam in die de vertrouwens relatie identificeert en vervolgens de naam van het on-premises vertrouwde forest-DNS, zoals *onprem.contoso.com*
+1. Geef het wacht woord op voor de vertrouwens relatie die is gebruikt bij het configureren van de binnenkomende forestvertrouwensrelatie voor het on-premises AD DS domein in de vorige sectie.
+1. Geef ten minste twee DNS-servers op voor het on-premises AD DS domein, zoals *10.0.2.4* en *10.0.2.5*
+1. Als u klaar bent, **slaat** u de uitgaande forestvertrouwensrelatie op
 
-    [Create outbound forest trust in the Azure portal](./media/create-forest-trust/portal-create-outbound-trust.png)
+    [Uitgaande forestvertrouwensrelatie maken in de Azure Portal](./media/create-forest-trust/portal-create-outbound-trust.png)
 
-## <a name="validate-resource-authentication"></a>Validate resource authentication
+## <a name="validate-resource-authentication"></a>Verificatie van resources valideren
 
-The following common scenarios let you validate that forest trust correctly authenticates users and access to resources:
+Met de volgende algemene scenario's kunt u controleren of de vertrouwens relatie van het forest op de juiste wijze gebruikers en toegang tot bronnen heeft.
 
-* [On-premises user authentication from the Azure AD DS resource forest](#on-premises-user-authentication-from-the-azure-ad-ds-resource-forest)
-* [Access resources in the Azure AD DS resource forest using on-premises user](#access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user)
-    * [Enable file and printer sharing](#enable-file-and-printer-sharing)
-    * [Create a security group and add members](#create-a-security-group-and-add-members)
-    * [Create a file share for cross-forest access](#create-a-file-share-for-cross-forest-access)
-    * [Validate cross-forest authentication to a resource](#validate-cross-forest-authentication-to-a-resource)
+* [On-premises gebruikers authenticatie vanuit het Azure AD DS resource-forest](#on-premises-user-authentication-from-the-azure-ad-ds-resource-forest)
+* [Toegang krijgen tot resources in het Azure AD DS resource-forest met on-premises gebruiker](#access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user)
+    * [Bestands-en printer deling inschakelen](#enable-file-and-printer-sharing)
+    * [Een beveiligings groep maken en leden toevoegen](#create-a-security-group-and-add-members)
+    * [Een bestands share maken voor toegang tussen forests](#create-a-file-share-for-cross-forest-access)
+    * [Verificatie tussen forests valideren voor een resource](#validate-cross-forest-authentication-to-a-resource)
 
-### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>On-premises user authentication from the Azure AD DS resource forest
+### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>On-premises gebruikers authenticatie vanuit het Azure AD DS resource-forest
 
-You should have Windows Server virtual machine joined to the Azure AD DS resource domain. Use this virtual machine to test your on-premises user can authenticate on a virtual machine.
+U moet een virtuele Windows Server-machine koppelen aan het Azure AD DS-bron domein. Gebruik deze virtuele machine om uw on-premises gebruiker te laten verifiëren op een virtuele machine.
 
-1. Connect to the Windows Server VM joined to the Azure AD DS resource forest using Remote Desktop and your Azure AD DS administrator credentials. If you get a Network Level Authentication (NLA) error, check the user account you used is not a domain user account.
+1. Maak verbinding met de Windows Server-VM die is toegevoegd aan het Azure AD DS resource-forest met Extern bureaublad en uw referenties voor de Azure AD DS-beheerder. Als er een verificatie op netwerkniveau-fout (NLA) wordt weer geven, controleert u of het gebruikers account dat u hebt gebruikt geen domein gebruikers account is.
 
     > [!NOTE]
-    > To securely connect to your VMs joined to Azure AD Domain Services, you can use the [Azure Bastion Host Service](https://docs.microsoft.com/azure/bastion/bastion-overview) in supported Azure regions.
+    > Als u een beveiligde verbinding wilt maken met uw Vm's die zijn toegevoegd aan Azure AD Domain Services, kunt u de [Azure bastion host-service](https://docs.microsoft.com/azure/bastion/bastion-overview) gebruiken in ondersteunde Azure-regio's.
 
-1. Open a command prompt and use the `whoami` command to show the distinguished name of the currently authenticated user:
+1. Open een opdracht prompt en gebruik de opdracht `whoami` om de DN-naam van de momenteel geverifieerde gebruiker weer te geven:
 
     ```console
     whoami /fqdn
     ```
 
-1. Use the `runas` command to authenticate as a user from the on-premises domain. In the following command, replace `userUpn@trusteddomain.com` with the UPN of a user from the trusted on-premises domain. The command prompts you for the user’s password:
+1. Gebruik de `runas` opdracht om te verifiëren als een gebruiker van het on-premises domein. Vervang in de volgende opdracht `userUpn@trusteddomain.com` door de UPN van een gebruiker uit het vertrouwde on-premises domein. De opdracht vraagt u om het wacht woord van de gebruiker:
 
     ```console
     Runas /u:userUpn@trusteddomain.com cmd.exe
     ```
 
-1. If the authentication is a successful, a new command prompt opens. The title of the new command prompt includes `running as userUpn@trusteddomain.com`.
-1. Use `whoami /fqdn` in the new command prompt to view the distinguished name of the authenticated user from the on-premises Active Directory.
+1. Als de verificatie is geslaagd, wordt een nieuwe opdracht prompt geopend. De titel van de nieuwe opdracht prompt bevat `running as userUpn@trusteddomain.com`.
+1. Gebruik `whoami /fqdn` in de nieuwe opdracht prompt om de DN-naam van de geverifieerde gebruiker uit de on-premises Active Directory weer te geven.
 
-### <a name="access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user"></a>Access resources in the Azure AD DS resource forest using on-premises user
+### <a name="access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user"></a>Toegang krijgen tot resources in het Azure AD DS resource-forest met on-premises gebruiker
 
-Using the Windows Server VM joined to the Azure AD DS resource forest, you can test the scenario where users can access resources hosted in the resource forest when they authenticate from computers in the on-premises domain with users from the on-premises domain. The following examples show you how to create and test various common scenarios.
+Met de virtuele machine van Windows Server die is toegevoegd aan het Azure AD DS resource-forest, kunt u het scenario testen waarbij gebruikers toegang hebben tot resources die worden gehost in de bron-forest wanneer ze worden geverifieerd vanaf computers in het on-premises domein met gebruikers van het on-premises domein. In de volgende voor beelden ziet u hoe u verschillende veelvoorkomende scenario's kunt maken en testen.
 
-#### <a name="enable-file-and-printer-sharing"></a>Enable file and printer sharing
+#### <a name="enable-file-and-printer-sharing"></a>Bestands-en printer deling inschakelen
 
-1. Connect to the Windows Server VM joined to the Azure AD DS resource forest using Remote Desktop and your Azure AD DS administrator credentials. If you get a Network Level Authentication (NLA) error, check the user account you used is not a domain user account.
-
-    > [!NOTE]
-    > To securely connect to your VMs joined to Azure AD Domain Services, you can use the [Azure Bastion Host Service](https://docs.microsoft.com/azure/bastion/bastion-overview) in supported Azure regions.
-
-1. Open **Windows Settings**, then search for and select **Network and Sharing Center**.
-1. Choose the option for **Change advanced sharing** settings.
-1. Under the **Domain Profile**, select **Turn on file and printer sharing** and then **Save changes**.
-1. Close **Network and Sharing Center**.
-
-#### <a name="create-a-security-group-and-add-members"></a>Create a security group and add members
-
-1. Open **Active Directory Users and Computers**.
-1. Right-select the domain name, choose **New**, and then select **Organizational Unit**.
-1. In the name box, type *LocalObjects*, then select **OK**.
-1. Select and right-click **LocalObjects** in the navigation pane. Select **New** and then **Group**.
-1. Type *FileServerAccess* in the **Group name** box. For the **Group Scope**, select **Domain local**, then choose **OK**.
-1. In the content pane, double-click **FileServerAccess**. Select **Members**, choose to **Add**, then select **Locations**.
-1. Select your on-premises Active Directory from the **Location** view, then choose **OK**.
-1. Type *Domain Users* in the **Enter the object names to select** box. Select **Check Names**, provide credentials for the on-premises Active Directory, then select **OK**.
+1. Maak verbinding met de Windows Server-VM die is toegevoegd aan het Azure AD DS resource-forest met Extern bureaublad en uw referenties voor de Azure AD DS-beheerder. Als er een verificatie op netwerkniveau-fout (NLA) wordt weer geven, controleert u of het gebruikers account dat u hebt gebruikt geen domein gebruikers account is.
 
     > [!NOTE]
-    > You must provide credentials because the trust relationship is only one way. This means users from the Azure AD DS can't access resources or search for users or groups in the trusted (on-premises) domain.
+    > Als u een beveiligde verbinding wilt maken met uw Vm's die zijn toegevoegd aan Azure AD Domain Services, kunt u de [Azure bastion host-service](https://docs.microsoft.com/azure/bastion/bastion-overview) gebruiken in ondersteunde Azure-regio's.
 
-1. The **Domain Users** group from your on-premises Active Directory should be a member of the **FileServerAccess** group. Select **OK** to save the group and close the window.
+1. Open **Windows-instellingen**, zoek naar en selecteer **netwerk centrum**.
+1. Kies de optie voor het **wijzigen van geavanceerde** instellingen voor delen.
+1. Selecteer onder het **domein profiel**de optie **Bestands-en printer deling inschakelen** en **Sla de wijzigingen**op.
+1. Sluit **netwerk centrum**.
 
-#### <a name="create-a-file-share-for-cross-forest-access"></a>Create a file share for cross-forest access
+#### <a name="create-a-security-group-and-add-members"></a>Een beveiligings groep maken en leden toevoegen
 
-1. On the Windows Server VM joined to the Azure AD DS resource forest, create a folder and provide name such as *CrossForestShare*.
-1. Right-select the folder and choose **Properties**.
-1. Select the **Security** tab, then choose **Edit**.
-1. In the *Permissions for CrossForestShare* dialog box, select **Add**.
-1. Type *FileServerAccess* in **Enter the object names to select**, then select **OK**.
-1. Select *FileServerAccess* from the **Groups or user names** list. In the **Permissions for FileServerAccess** list, choose *Allow* for the **Modify** and **Write** permissions, then select **OK**.
-1. Select the **Sharing** tab, then choose **Advanced Sharing…**
-1. Choose **Share this folder**, then enter a memorable name for the file share in **Share name** such as *CrossForestShare*.
-1. Select **Permissions**. In the **Permissions for Everyone** list, choose **Allow** for the **Change** permission.
-1. Select **OK** two times and then **Close**.
+1. Open **Active Directory gebruikers en computers**.
+1. Klik met de rechter muisknop op de domein naam, kies **Nieuw**en selecteer **organisatie-eenheid**.
+1. Typ *LocalObjects*in het vak Naam en selecteer **OK**.
+1. Selecteer en klik met de rechter muisknop op **LocalObjects** in het navigatie deel venster. Selecteer **Nieuw** en vervolgens **groep**.
+1. Typ *FileServerAccess* in het vak **groeps naam** . Selecteer **domeingebonden**in het **groeps bereik**en klik vervolgens op **OK**.
+1. Dubbel klik in het inhouds venster op **FileServerAccess**. Selecteer **leden**, kies **toevoegen**en selecteer vervolgens **locaties**.
+1. Selecteer uw on-premises Active Directory in de **locatie** weergave en kies vervolgens **OK**.
+1. Typ *domein gebruikers* in het vak **Geef de object namen op** . Selecteer **Namen controleren**, geef referenties op voor de on-premises Active Directory en selecteer vervolgens **OK**.
 
-#### <a name="validate-cross-forest-authentication-to-a-resource"></a>Validate cross-forest authentication to a resource
+    > [!NOTE]
+    > U moet referenties opgeven, omdat de vertrouwens relatie maar één manier is. Dit betekent dat gebruikers van de Azure-AD DS geen toegang krijgen tot bronnen of kunnen zoeken naar gebruikers of groepen in het vertrouwde (on-premises) domein.
 
-1. Sign in a Windows computer joined to your on-premises Active Directory using a user account from your on-premises Active Directory.
-1. Using **Windows Explorer**, connect to the share you created using the fully qualified host name and the share such as `\\fs1.aadds.contoso.com\CrossforestShare`.
-1. To validate the write permission, right-select in the folder, choose **New**, then select **Text Document**. Use the default name **New Text Document**.
+1. De groep **domein gebruikers** uit uw on-premises Active Directory moet lid zijn van de groep **FileServerAccess** . Selecteer **OK** om de groep op te slaan en het venster te sluiten.
 
-    If the write permissions are set correctly, a new text document is created. The following steps will then open, edit, and delete the file as appropriate.
-1. To validate the read permission, open **New Text Document**.
-1. To validate the modify permission, add text to the file and close **Notepad**. When prompted to save changes, choose **Save**.
-1. To validate the delete permission, right-select **New Text Document** and choose **Delete**. Choose **Yes** to confirm file deletion.
+#### <a name="create-a-file-share-for-cross-forest-access"></a>Een bestands share maken voor toegang tussen forests
+
+1. Maak op de Windows Server-VM lid van de Azure AD DS-bron-forest een map en geef een naam op, bijvoorbeeld *CrossForestShare*.
+1. Klik met de rechter muisknop op de map en kies **Eigenschappen**.
+1. Selecteer het tabblad **beveiliging** en klik vervolgens op **bewerken**.
+1. Selecteer in het dialoog venster *machtigingen voor CrossForestShare* **toevoegen**.
+1. Typ *FileServerAccess* in **Geef de object namen op**en selecteer vervolgens **OK**.
+1. Selecteer *FileServerAccess* in de lijst **groepen of gebruikers namen** . Kies in de lijst **machtigingen voor FileServerAccess** de optie *toestaan* voor de machtigingen **wijzigen** en **schrijven** en selecteer vervolgens **OK**.
+1. Selecteer het tabblad **delen** en kies vervolgens **Geavanceerd delen...**
+1. Kies **deze map delen**en voer een naam in voor het onthouden van de bestands share in **share naam** , zoals *CrossForestShare*.
+1. Selecteer **machtigingen**. Klik in de lijst **machtigingen voor iedereen** op **toestaan** voor de **wijzigings** machtiging.
+1. Selecteer **OK** twee keer en vervolgens **sluiten**.
+
+#### <a name="validate-cross-forest-authentication-to-a-resource"></a>Verificatie tussen forests valideren voor een resource
+
+1. Meld u aan op een Windows-computer die is toegevoegd aan uw on-premises Active Directory met behulp van een gebruikers account uit uw on-premises Active Directory.
+1. Gebruik **Windows Verkenner**om verbinding te maken met de share die u hebt gemaakt met behulp van de volledig gekwalificeerde hostnaam en de share, zoals `\\fs1.aadds.contoso.com\CrossforestShare`.
+1. U kunt de schrijf machtiging controleren door met de rechter muisknop in de map te selecteren, op **Nieuw**te kiezen en vervolgens **tekst document**te selecteren. Gebruik de standaard naam **nieuw tekst document**.
+
+    Als de schrijf machtigingen juist zijn ingesteld, wordt er een nieuw tekst document gemaakt. De volgende stappen worden vervolgens naar wens geopend, bewerkt en verwijderd.
+1. Als u de machtiging lezen wilt valideren, opent u **nieuw tekst document**.
+1. Als u de machtiging wijzigen wilt valideren, voegt u tekst toe aan het bestand en sluit u **Klad blok**. Wanneer u wordt gevraagd om de wijzigingen op te slaan, kiest u **Opslaan**.
+1. Als u de machtiging verwijderen wilt valideren, selecteert u **nieuw tekst document** en kiest u **verwijderen**. Kies **Ja** om het verwijderen van het bestand te bevestigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Configure DNS in an on-premises AD DS environment to support Azure AD DS connectivity
-> * Create a one-way inbound forest trust in an on-premises AD DS environment
-> * Create a one-way outbound forest trust in Azure AD DS
-> * Test and validate the trust relationship for authentication and resource access
+> * DNS configureren in een on-premises AD DS omgeving ter ondersteuning van Azure AD DS-connectiviteit
+> * Een eenrichtings vertrouwensrelatie voor een inkomend forest in een on-premises AD DS omgeving maken
+> * Een eenrichtings vertrouwensrelatie voor uitgaande forests maken in azure AD DS
+> * De vertrouwens relatie voor verificatie en toegang tot bronnen testen en valideren
 
-For more conceptual information about forest types in Azure AD DS, see [What are resource forests?][concepts-forest] and [How do forest trusts work in Azure AD DS?][concepts-trust]
+Zie [Wat zijn resource-forests?][concepts-forest] en [Hoe kunnen forest-vertrouwens relaties werken in azure AD DS?][concepts-trust] voor meer conceptuele informatie over forest-typen in azure AD DS.
 
 <!-- INTERNAL LINKS -->
 [concepts-forest]: concepts-resource-forest.md

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832004"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538188"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over Netwerkprestatiemeter oplossingen
 
@@ -183,6 +183,8 @@ Een hop reageert mogelijk niet op een traceroute in een of meer van de onderstaa
 * De routers zijn zodanig geconfigureerd dat hun identiteit niet wordt onthuld.
 * De netwerk apparaten mogen geen ICMP_TTL_EXCEEDED verkeer toestaan.
 * De ICMP_TTL_EXCEEDED reactie van het netwerk apparaat wordt geblokkeerd door een firewall.
+
+Wanneer een van de eind punten zich in azure bevindt, wordt in traceroute niet-geïdentificeerde hops weer gegeven, omdat Azure ndrastructure de identiteit niet onthult naar traceroute. 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Er worden waarschuwingen weer geven voor slechte testen, maar de hoge waarden in de grafiek met verlies en latentie van NPM zijn niet zichtbaar. Hoe kan ik controleren wat is beschadigd?
 NPM treedt een waarschuwing als de eind-en eind latentie tussen de bron en het doel de drempel waarde voor een wille keurig pad ertussen overschrijdt. Sommige netwerken hebben meerdere paden waarmee dezelfde bron en bestemming worden verbonden. NPM genereert een waarschuwing dat een pad een onjuiste status heeft. Het verlies en de latentie die in de grafieken worden weer gegeven, is de gemiddelde waarde voor alle paden. Daarom kan de waarde van één pad niet exact worden weer gegeven. Zoek naar de kolom subtype in de waarschuwing om te begrijpen waar de drempel is geschonden. Als het probleem wordt veroorzaakt door een pad, wordt de waarde van subtype NetworkPath (voor test tests van prestaties), EndpointPath (voor de tests van de verbindings monitor van de service) en ExpressRoutePath (voor ExpressRotue-monitor tests). 

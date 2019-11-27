@@ -1,6 +1,6 @@
 ---
 title: Veelgestelde vragen
-description: Answers for frequently asked questions related to the Azure Container Instances service
+description: Antwoorden op veelgestelde vragen met betrekking tot de Azure Container Instances-service
 author: dkkapur
 ms.topic: article
 ms.date: 4/25/2019
@@ -11,91 +11,91 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484140"
 ---
-# <a name="frequently-asked-questions-about-azure-container-instances"></a>Frequently asked questions about Azure Container Instances
+# <a name="frequently-asked-questions-about-azure-container-instances"></a>Veelgestelde vragen over Azure Container Instances
 
-This article addresses frequently asked questions about Azure Container Instances.
+In dit artikel vindt u veelgestelde vragen over Azure Container Instances.
 
 ## <a name="deployment"></a>Implementatie
 
-### <a name="how-large-can-my-container-image-be"></a>How large can my container image be?
+### <a name="how-large-can-my-container-image-be"></a>Hoe groot kan mijn container installatie kopie?
 
-The maximum size for a deployable container image on Azure Container Instances is 15 GB. You might be able to deploy larger images depending on the exact availability at the moment you deploy, but this is not guaranteed.
+De maximale grootte voor een Implementeer bare container installatie kopie op Azure Container Instances is 15 GB. U kunt mogelijk grotere installatie kopieën implementeren, afhankelijk van de exacte Beschik baarheid op het moment dat u implementeert, maar dit is niet gegarandeerd.
 
-The size of your container image impacts how long it takes to deploy, so generally you want to keep your container images as small as possible.
+De grootte van uw container installatie kopie heeft invloed op hoe lang het duurt om te implementeren, dus doorgaans wilt u de container installatie kopieën zo klein mogelijk blijven.
 
-### <a name="how-can-i-speed-up-the-deployment-of-my-container"></a>How can I speed up the deployment of my container?
+### <a name="how-can-i-speed-up-the-deployment-of-my-container"></a>Hoe kan ik de implementatie van mijn container versnellen?
 
-Because one of the main determinants of deployment times is the image size, look for ways to reduce the size. Remove layers you don't need, or reduce the size of layers in the image (by picking a lighter base OS image). For example, if you're running Linux containers, consider using Alpine as your base image rather than a full Ubuntu Server. Similarly, for Windows containers, use a Nano Server base image if possible. 
+Omdat een van de belangrijkste determinanten van implementatie tijden de afbeeldings grootte is, zoekt u naar manieren om de grootte te verkleinen. Verwijder lagen die u niet nodig hebt of verklein de grootte van de lagen in de installatie kopie (door een lichtere installatie kopie van het basis besturingssysteem te kiezen). Als u bijvoorbeeld Linux-containers uitvoert, kunt u Alpine gebruiken als basis installatie kopie in plaats van een volledige Ubuntu-Server. Voor Windows-containers gebruikt u, indien mogelijk, een nano Server-basis installatie kopie. 
 
-You should also check the list of pre-cached images in Azure Container Images, available via the [List Cached Images](/rest/api/container-instances/listcachedimages) API. You might be able to switch out an image layer for one of the pre-cached images. 
+U moet ook de lijst met vooraf in cache opgeslagen installatie kopieën in azure container-installatie kopieën controleren, die beschikbaar zijn via de [lijst in de cache opgeslagen installatie kopieën](/rest/api/container-instances/listcachedimages) -API. U kunt mogelijk een afbeelding slaag uitschakelen voor een van de vooraf in cache opgeslagen installatie kopieën. 
 
-See more [detailed guidance](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) on reducing container startup time.
+Bekijk meer [gedetailleerde richt lijnen](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) voor het beperken van de opstart tijd van de container.
 
-### <a name="what-windows-base-os-images-are-supported"></a>What Windows base OS images are supported?
+### <a name="what-windows-base-os-images-are-supported"></a>Welke Windows Base OS-installatie kopieën worden ondersteund?
 
-#### <a name="windows-server-2016-base-images"></a>Windows Server 2016 base images
+#### <a name="windows-server-2016-base-images"></a>Basis installatie kopieën van Windows Server 2016
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`, `sac2016`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`,  `10.0.14393.x`
+* [Nano server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`, `sac2016`
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`, `10.0.14393.x`
 
 > [!NOTE]
-> Windows images based on Semi-Annual Channel release 1709 or 1803 are not supported.
+> Windows-installatie kopieën op basis van een semi-Annual-kanaal release 1709 of 1803 worden niet ondersteund.
 
-#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 and client base images (preview)
+#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 en client basis installatie kopieën (preview-versie)
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`, `10.0.17763.x`
+* [Nano server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`, `10.0.17763.x`
 * [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809`, `10.0.17763.x`
 * [Windows](https://hub.docker.com/_/microsoft-windows): `1809`, `10.0.17763.x` 
 
-### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>What .NET or .NET Core image layer should I use in my container? 
+### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Welke .NET-of .NET Core-installatie kopie laag moet ik gebruiken in mijn container? 
 
-Use the smallest image that satisfies your requirements. For Linux, you could use a *runtime-alpine* .NET Core image, which has been supported since the release of .NET Core 2.1. For Windows, if you are using the full .NET Framework, then you need to use a Windows Server Core image (runtime-only image, such as  *4.7.2-windowsservercore-ltsc2016*). Runtime-only images are smaller but do not support workloads that require the .NET SDK.
+Gebruik de kleinste afbeelding die voldoet aan uw vereisten. Voor Linux kunt u een installatie kopie voor *runtime-Alpine* .net core gebruiken, die wordt ondersteund sinds de release van .net Core 2,1. Als u voor Windows gebruikmaakt van de volledige .NET Framework, moet u een installatie kopie van Windows Server Core gebruiken (alleen runtime-installatie kopie, zoals *4.7.2-windowsservercore-ltsc2016*). Installatie kopieën met alleen runtime zijn kleiner, maar ondersteunen geen workloads waarvoor de .NET SDK is vereist.
 
-## <a name="availability-and-quotas"></a>Availability and quotas
+## <a name="availability-and-quotas"></a>Beschik baarheid en quota's
 
-### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>How many cores and memory should I allocate for my containers or the container group?
+### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>Hoeveel kernen en geheugen moet ik toewijzen voor mijn containers of de container groep?
 
-This really depends on your workload. Start small and test performance to see how your containers do. [Monitor CPU and memory resource usage](container-instances-monitor.md), and then add cores or memory based on the kind of processes that you deploy in the container. 
+Dit is echt afhankelijk van uw werk belasting. Start kleine en test prestaties om te zien hoe uw containers doen. [Bewaak het gebruik van CPU-en geheugen bronnen](container-instances-monitor.md)en voeg vervolgens kernen of geheugen toe op basis van het soort processen dat u in de container implementeert. 
 
-Make sure also to check the [resource availability](container-instances-region-availability.md#availability---general) for the region you are deploying in for the upper bounds on CPU cores and memory available per container group. 
+Zorg ervoor dat u ook de [Beschik baarheid van resources](container-instances-region-availability.md#availability---general) controleert voor de regio die u implementeert in voor de bovengrens op CPU-kernen en geheugen beschikbaar per container groep. 
 
-### <a name="what-underlying-infrastructure-does-aci-run-on"></a>What underlying infrastructure does ACI run on?
+### <a name="what-underlying-infrastructure-does-aci-run-on"></a>Op welke onderliggende infra structuur wordt ACI uitgevoerd?
 
-Azure Container Instances aims to be a serverless containers-on-demand service, so we want you to be focused on developing your containers, and not worry about the infrastructure! For those that are curious or wanting to do comparisons on performance, ACI runs on sets of Azure VMs of various SKUs, primarily from the F and the D series. We expect this to change in the future as we continue to develop and optimize the service. 
+Azure Container Instances streeft naar een serverloze containers-on-demand service, dus we willen u graag richten op het ontwikkelen van uw containers en geen zorgen over de infra structuur. Voor degenen die op het werk zijn of willen werken met de prestaties, wordt ACI uitgevoerd op sets van Azure-Vm's van verschillende Sku's, voornamelijk uit de F en de D-serie. We verwachten dat dit in de toekomst wordt gewijzigd, omdat we de service blijven ontwikkelen en optimaliseren. 
 
-### <a name="i-want-to-deploy-thousand-of-cores-on-aci---can-i-get-my-quota-increased"></a>I want to deploy thousand of cores on ACI - can I get my quota increased?
+### <a name="i-want-to-deploy-thousand-of-cores-on-aci---can-i-get-my-quota-increased"></a>Ik wil duizenden kern geheugens implementeren op ACI: kan ik mijn quota verhogen?
  
-Yes (sometimes). See the [quotas and limits](container-instances-quotas.md) article for current quotas and which limits can be increased by request.
+Ja (soms). Zie het artikel [quota's en beperkingen](container-instances-quotas.md) voor huidige quota's en de limieten kunnen worden verhoogd met behulp van aanvragen.
 
-### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>Can I deploy with more than 4 cores and 16 GB of RAM?
+### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>Kan ik met meer dan 4 kernen en 16 GB aan RAM-geheugen implementeren?
 
-Not yet. Currently, these are the maximums for a container group. Contact Azure Support with specific requirements or requests. 
+Nog niet. Dit zijn momenteel de maximum waarden voor een container groep. Neem contact op met de ondersteuning van Azure met specifieke vereisten of aanvragen. 
 
-### <a name="when-will-aci-be-in-a-specific-region"></a>When will ACI be in a specific region?
+### <a name="when-will-aci-be-in-a-specific-region"></a>Wanneer neemt de berekenings bevinden zich in een specifieke regio?
 
-Current region availability is published [here](container-instances-region-availability.md#availability---general). If you have a requirement for a specific region, contact Azure Support.
+De huidige Beschik baarheid van de regio wordt [hier](container-instances-region-availability.md#availability---general)gepubliceerd. Als u een vereiste hebt voor een bepaalde regio, neemt u contact op met de ondersteuning van Azure.
 
-## <a name="features-and-scenarios"></a>Features and scenarios
+## <a name="features-and-scenarios"></a>Functies en scenario's
 
-### <a name="how-do-i-scale-a-container-group"></a>How do I scale a container group?
+### <a name="how-do-i-scale-a-container-group"></a>Hoe kan ik een container groep schalen?
 
-Currently, scaling is not available for containers or container groups. If you need to run more instances, use our API to automate and create more requests for container group creation to the service. 
+Schalen is momenteel niet beschikbaar voor containers of container groepen. Als u meer exemplaren wilt uitvoeren, gebruikt u onze API om meer aanvragen voor het maken van een container groep te automatiseren en te maken met de service. 
 
-### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>What features are available to instances running in a custom VNet?
+### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Welke functies zijn beschikbaar voor instanties die worden uitgevoerd in een aangepast VNet?
 
-You can deploy container groups in an Azure virtual network of your choice, and delegate private IPs to the container groups to route traffic within the VNet across your Azure resources. Deployment of a container group into a virtual network is currently in preview, and some aspects of this feature may change prior to general availability (GA). See [Preview limitations](container-instances-vnet.md#preview-limitations) for updated information.
+U kunt container groepen implementeren in een virtueel Azure-netwerk van uw keuze, en privé Ip's delegeren aan de container groepen om verkeer tussen uw Azure-resources te routeren binnen het VNet. De implementatie van een container groep in een virtueel netwerk is momenteel beschikbaar als preview-versie en sommige aspecten van deze functie kunnen worden gewijzigd voorafgaand aan de algemene Beschik baarheid (GA). Zie de [Preview-beperkingen](container-instances-vnet.md#preview-limitations) voor bijgewerkte informatie.
 
 ## <a name="pricing"></a>Prijzen
 
-### <a name="when-does-the-meter-start-running"></a>When does the meter start running?
+### <a name="when-does-the-meter-start-running"></a>Wanneer wordt de meter gestart?
 
-Container group duration is calculated from the time that we start to pull your first container's image (for a new deployment) or your container group is restarted (if already deployed), until the container group is stopped. See details at [Container Instances pricing](https://azure.microsoft.com/pricing/details/container-instances/).
+De duur van de container groep wordt berekend op basis van het tijdstip waarop de installatie kopie van de eerste container wordt opgehaald (voor een nieuwe implementatie) of de container groep wordt opnieuw opgestart (indien al geïmplementeerd) totdat de container groep is gestopt. Bekijk de details op [container instances prijzen](https://azure.microsoft.com/pricing/details/container-instances/).
 
-### <a name="do-i-stop-being-charged-when-my-containers-are-stopped"></a>Do I stop being charged when my containers are stopped?
+### <a name="do-i-stop-being-charged-when-my-containers-are-stopped"></a>Worden er geen kosten in rekening gebracht wanneer mijn containers worden gestopt?
 
-Meters stop running once your entire container group is stopped. As long as a container in your container group is running, we hold the resources in case you want to start the containers up again. 
+Meters worden niet meer uitgevoerd wanneer de hele container groep is gestopt. Zolang er een container in uw container groep wordt uitgevoerd, bevatten we de resources voor het geval u de containers opnieuw wilt starten. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Learn more](container-instances-overview.md) about Azure Container Instances.
-* [Troubleshoot common issues](container-instances-troubleshooting.md) in Azure Container Instances.
+* Meer [informatie](container-instances-overview.md) over Azure container instances.
+* [Veelvoorkomende problemen](container-instances-troubleshooting.md) in azure container instances oplossen.

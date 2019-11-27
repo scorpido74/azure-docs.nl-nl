@@ -131,7 +131,7 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer machine
 | **Versleutelde schijven/volumes**    | Niet ondersteund voor migratie. |
 | **RDM/passthrough-schijven**      | Niet ondersteund voor migratie. |
 | **Gedeelde schijf** | Vm's die gebruikmaken van gedeelde schijven, worden niet ondersteund voor migratie.
-| **NFS**                        | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd. |
+| **NBS**                        | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd. |
 | **SCSI**                      | Vm's met iSCSI-doelen worden niet ondersteund voor migratie.
 | **Doel schijf**                | U kunt alleen migreren naar Azure-Vm's met Managed disks. |
 | **Ipconfiguration** | Wordt niet ondersteund.

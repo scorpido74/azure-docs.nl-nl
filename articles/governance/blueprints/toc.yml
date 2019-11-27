@@ -203,7 +203,7 @@
 - name: Problemen oplossen
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
-- name: Verwijzingen
+- name: Naslaginformatie
   items:
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'

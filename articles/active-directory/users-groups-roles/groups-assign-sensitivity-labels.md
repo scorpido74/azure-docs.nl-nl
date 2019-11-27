@@ -1,6 +1,6 @@
 ---
-title: Assign sensitivity labels to groups - Azure AD | Microsoft Docs
-description: How to create membership rules to automatically populate groups, and a rule reference.
+title: Gevoeligheids labels toewijzen aan groepen-Azure AD | Microsoft Docs
+description: Lidmaatschaps regels maken voor het automatisch invullen van groepen en een verwijzing naar een regel.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -21,25 +21,25 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74404812"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Assign sensitivity labels to Office 365 groups in Azure Active Directory (preview)
+# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Gevoeligheids labels toewijzen aan Office 365-groepen in Azure Active Directory (preview)
 
-Azure Active Directory (Azure AD) supports applying sensitivity labels published by the [Microsoft 365 compliance center](https://sip.protection.office.com/homepage) to Office 365 groups. Sensitivity labels apply to group across services like Outlook, Microsoft Teams, and SharePoint. Deze functie is momenteel beschikbaar als openbare preview-versie.
+Azure Active Directory (Azure AD) ondersteunt het Toep assen van gevoelige labels die worden gepubliceerd door het [Microsoft 365 compliance Center](https://sip.protection.office.com/homepage) naar Office 365-groepen. Gevoeligheids labels zijn van toepassing op groepen in verschillende services, zoals Outlook, micro soft teams en share point. Deze functie is momenteel beschikbaar als openbare preview-versie.
 
 > [!IMPORTANT]
-> Using Azure AD sensitivity labels for Office 365 groups requires an Azure Active Directory Premium P1 license.
+> Voor het gebruik van Azure AD sensitivity labels voor Office 365-groepen is een Azure Active Directory Premium P1-licentie vereist.
 
-## <a name="group-settings-controlled-by-labels"></a>Group settings controlled by labels
+## <a name="group-settings-controlled-by-labels"></a>Groeps instellingen die worden beheerd door labels
 
-There are two settings that can be associated with a label:
+Er zijn twee instellingen die kunnen worden gekoppeld aan een label:
 
-- **Privacy**: Admins can associate a privacy setting with the label to control whether a group is public or private.
-- **Guest access**: Admins can enforce the guest policy for all groups that have the label assigned. This policy specifies whether guests can be added as members or not. If the guest policy is configured for a label, any groups that you assign the label to won't allow the AllowToAddGuests setting to be changed.
+- **Privacy**: beheerders kunnen een privacyinstelling koppelen aan het label om te bepalen of een groep openbaar of privé is.
+- **Gast toegang**: beheerders kunnen het gast beleid afdwingen voor alle groepen waaraan het label is toegewezen. Dit beleid bepaalt of gasten kunnen worden toegevoegd als leden. Als het gast beleid is geconfigureerd voor een label, kan de instelling van de AllowToAddGuests niet worden gewijzigd door de groepen waaraan u het label toewijst.
 
-## <a name="enable-sensitivity-label-support-in-powershell"></a>Enable sensitivity label support in PowerShell
+## <a name="enable-sensitivity-label-support-in-powershell"></a>Ondersteuning van gevoeligheids Labels inschakelen in Power shell
 
-To apply published labels to groups, you must first enable the feature. These steps enable the feature in Azure AD.
+Als u gepubliceerde labels op groepen wilt Toep assen, moet u eerst de functie inschakelen. Met deze stappen wordt de functie in azure AD ingeschakeld.
 
-1. Open a Windows PowerShell window on your computer. You can open it without elevated privileges.
+1. Open een Windows Power shell-venster op de computer. U kunt deze openen zonder verhoogde bevoegdheden.
 1. Voer de volgende opdrachten uit als voorbereiding op het uitvoeren van de cmdlets.
 
     ```PowerShell
@@ -47,127 +47,127 @@ To apply published labels to groups, you must first enable the feature. These st
     Connect-AzureAD
     ```
 
-    In the **Sign in to your account** page, enter your admin account and password to connect you to your service, and select **Sign in**.
-1. Fetch the current group settings for the Azure AD organization.
+    Voer op de pagina **Aanmelden bij uw account** uw beheerders account en wacht woord in om verbinding te maken met uw service en selecteer **Aanmelden**.
+1. De huidige groeps instellingen voor de Azure AD-organisatie ophalen.
 
     ```PowerShell
     $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
     ```
 
     > [!NOTE]
-    > If no group settings have been created for this Azure AD organization, you must first create the settings. Follow the steps in [Azure Active Directory cmdlets for configuring group settings](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) to create group settings for this Azure AD organization.
+    > Als er geen groeps instellingen voor deze Azure AD-organisatie zijn gemaakt, moet u eerst de instellingen maken. Volg de stappen in [Azure Active Directory-cmdlets voor het configureren van groeps instellingen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) voor het maken van groeps instellingen voor deze Azure AD-organisatie.
 
-1. Next, display the current group settings.
+1. Vervolgens geeft u de instellingen van de huidige groep weer.
 
     ```PowerShell
     $Setting.Values
     ```
 
-1. Then enable the feature:
+1. Schakel vervolgens de functie in:
 
     ```PowerShell
     $Setting["EnableMIPLabels"] = "True"
     ```
 
-1. Then save the changes and apply the settings:
+1. Sla de wijzigingen op en pas de instellingen toe:
 
     ```PowerShell
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-Dat is alles. You've enabled the feature and you can apply published labels to groups.
+Dat is alles. U hebt de functie ingeschakeld en u kunt gepubliceerde labels Toep assen op groepen.
 
-## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Assign a label to a new group in Azure portal
+## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Een label toewijzen aan een nieuwe groep in Azure Portal
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com).
-1. Select **Groups**, and then select **New group**.
-1. On the **New Group** page, select **Office 365**, and then fill out the required information for the new group and select a sensitivity label from the list.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com).
+1. Selecteer **groepen**en selecteer vervolgens **nieuwe groep**.
+1. Op de pagina **nieuwe groep** selecteert u **Office 365**, voert u de vereiste gegevens voor de nieuwe groep in en selecteert u een gevoeligheids label in de lijst.
 
-   ![Assign a sensitivity label in the New groups page](./media/groups-assign-sensitivity-labels/new-group-page.png)
+   ![Een gevoeligheids label toewijzen op de pagina nieuwe groepen](./media/groups-assign-sensitivity-labels/new-group-page.png)
 
-1. Save your changes and select **Create**.
+1. Sla de wijzigingen op en selecteer **maken**.
 
-Your group is created and the policies associated with the selected label are then automatically enforced.
+De groep wordt gemaakt en het beleid dat is gekoppeld aan het geselecteerde label wordt vervolgens automatisch afgedwongen.
 
-## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Assign a label to an existing group in Azure portal
+## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Een label toewijzen aan een bestaande groep in Azure Portal
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global admin or Groups admin account, or as a group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to label.
-1. On the selected group's page, select **Properties** and select a sensitivity label from the list.
+1. Meld u aan bij het [beheer centrum van Azure AD](https://aad.portal.azure.com) met een Administrator account voor globale beheerders of groepen, of als groeps eigenaar.
+1. Selecteer **groepen**.
+1. Selecteer op de pagina **alle groepen** de groep die u wilt labelen.
+1. Selecteer op de pagina geselecteerde groep de optie **Eigenschappen** en selecteer een gevoeligheids label in de lijst.
 
-   ![Assign a sensitivity label on the overview page for a group](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
+   ![Een gevoeligheids label toewijzen op de overzichts pagina voor een groep](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
 
-1. Select **Save** to save your changes.
+1. Selecteer **Opslaan** om uw wijzigingen op te slaan.
 
-## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Remove a label from an existing group in Azure portal
+## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Een label verwijderen uit een bestaande groep in Azure Portal
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global admin or Groups admin account, or as a group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to remove the label from.
-1. On the **Group** page, select **Properties**.
+1. Meld u aan bij het [beheer centrum van Azure AD](https://aad.portal.azure.com) met een Administrator account voor globale beheerders of groepen, of als groeps eigenaar.
+1. Selecteer **groepen**.
+1. Selecteer op de pagina **alle groepen** de groep waarvan u het label wilt verwijderen.
+1. Selecteer op de pagina **groep** **Eigenschappen**.
 1. Selecteer **Verwijderen**.
-1. Select **Save** to apply your changes.
+1. Selecteer **Opslaan** om uw wijzigingen toe te passen.
 
-## <a name="office-365-app-support-for-sensitivity-labels"></a>Office 365 app support for sensitivity labels
+## <a name="office-365-app-support-for-sensitivity-labels"></a>Office 365-app-ondersteuning voor gevoeligheids labels
 
-The following Office 365 apps and services support the sensitivity labels in this preview:
+De volgende Office 365-apps en-services ondersteunen de gevoeligheids labels in deze preview:
 
-- Azure AD admin center
-- Microsoft 365 compliance center
+- Azure AD-beheer centrum
+- Nalevings centrum Microsoft 365
 - SharePoint
-- Outlook on the web
+- Outlook op het web
 - Teams
-- SharePoint admin center
+- Share point-beheer centrum
 
-For more information about Office 365 apps support, see [Office 365 support for sensitivity labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
+Zie voor meer informatie over de ondersteuning van Office 365-apps [office 365-ondersteuning voor gevoeligheids labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
 
-## <a name="using-classic-azure-ad-classifications"></a>Using classic Azure AD classifications
+## <a name="using-classic-azure-ad-classifications"></a>Klassieke Azure AD-classificaties gebruiken
 
-After you enable this feature, Office 365 no longer supports the “classic” classifications for new groups. Classic classifications are the old classifications you set up by defining values for the `ClassificationList` setting in Azure AD PowerShell. When this feature is enabled, those classifications will not be applied to groups.
+Nadat u deze functie hebt ingeschakeld, ondersteunt Office 365 niet langer de ' klassieke ' classificaties voor nieuwe groepen. Klassieke classificaties zijn de oude classificaties die u instelt door waarden te definiëren voor de `ClassificationList` instelling in azure AD Power shell. Als deze functie is ingeschakeld, worden deze classificaties niet toegepast op groepen.
 
-## <a name="troubleshooting-issues"></a>Troubleshooting issues
+## <a name="troubleshooting-issues"></a>Problemen oplossen
 
-### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>Sensitivity labels are not available for assignment on a group
+### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>Er zijn geen gevoeligheids labels beschikbaar voor toewijzing voor een groep
 
-The sensitivity label option is only displayed for groups when all the following conditions are met:
+De optie gevoeligheids label wordt alleen weer gegeven voor groepen wanneer aan de volgende voor waarden wordt voldaan:
 
-1. Labels are published in the Microsoft 365 Compliance Center for this tenant.
-1. The feature is enabled, EnableMIPLabels is set to True in PowerShell.
-1. The group is an Office 365 group.
-1. The tenant has an active Azure Active Directory Premium P1 license.
-1. The current signed-in user has access to published labels.
-1. The current signed-in user has sufficient privileges to assign labels. The user must be either a Global Administrator, Group Administrator, or the group owner.
-1. The current signed-in user has an Office 365 license assigned. For more information about license requirements, see [Sensitivity labels in Office apps](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
+1. Labels worden gepubliceerd in het Microsoft 365 compliance Center voor deze Tenant.
+1. De functie is ingeschakeld, EnableMIPLabels is ingesteld op True in Power shell.
+1. De groep is een Office 365-groep.
+1. De Tenant heeft een actieve Azure Active Directory Premium P1-licentie.
+1. De huidige aangemelde gebruiker heeft toegang tot gepubliceerde labels.
+1. De huidige aangemelde gebruiker heeft voldoende bevoegdheden om labels toe te wijzen. De gebruiker moet een globale beheerder, groeps beheerder of de groeps eigenaar zijn.
+1. Er is een Office 365-licentie toegewezen aan de huidige aangemelde gebruiker. Zie voor meer informatie over licentie vereisten [gevoeligheid-labels in Office-apps](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
 
-Please make sure all the conditions are met in order to assign labels to a group.
+Controleer of aan alle voor waarden wordt voldaan om labels toe te wijzen aan een groep.
 
-### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>The label I want to assign is not in the list
+### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>Het label dat ik wil toewijzen, staat niet in de lijst
 
-If the label you are looking for is not in the list, this could be the case for one of the following reasons:
+Als het label dat u zoekt, zich niet in de lijst bevindt, kan dit een van de volgende oorzaken hebben:
 
-- The label might not be published in the Microsoft 365 Compliance Center. This could also apply to labels that are no longer published. Please check with your administrator for more information.
-- The label may be published, however, it is not available to the user that is signed-in. Please check with your administrator for more information on how to get access to the label.
+- Het label wordt mogelijk niet gepubliceerd in het Microsoft 365 compliance Center. Dit kan ook worden toegepast op labels die niet meer worden gepubliceerd. Neem contact op met de beheerder voor meer informatie.
+- Het label kan echter wel worden gepubliceerd, maar het is niet beschikbaar voor de gebruiker die is aangemeld. Neem contact op met de beheerder voor meer informatie over het verkrijgen van toegang tot het label.
 
-### <a name="how-can-i-change-the-label-on-a-group"></a>How can I change the label on a group?
+### <a name="how-can-i-change-the-label-on-a-group"></a>Hoe kan ik het label in een groep wijzigen?
 
-Labels can be swapped at any time using the same steps as assigning a label to an existing group, as follows:
+Labels kunnen op elk gewenst moment worden gewisseld met behulp van dezelfde stappen als wanneer u een label aan een bestaande groep toewijst:
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global or Group administrator account or as group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to label.
-1. On the selected group's page, select **Properties** and select a new sensitivity label from the list.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een globaal of groeps beheerders account of als groeps eigenaar.
+1. Selecteer **groepen**.
+1. Selecteer op de pagina **alle groepen** de groep die u wilt labelen.
+1. Op de pagina geselecteerde groep selecteert u **Eigenschappen** en selecteert u een nieuw gevoeligheids label in de lijst.
 1. Selecteer **Opslaan**.
 
-### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Group setting changes to published labels are not updated on the groups
+### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Wijzigingen in de groeps instelling voor gepubliceerde labels worden niet bijgewerkt op de groepen
 
-As a best practice, we don't recommend that you change group settings for a label after the label is applied to groups. When you make changes to group settings associated with published labels in [Microsoft 365 compliance center](https://sip.protection.office.com/homepage), those policy changes aren't automatically applied on the impacted groups.
+Als best practice wordt niet aangeraden om de groeps instellingen voor een label te wijzigen nadat het label is toegepast op groepen. Wanneer u wijzigingen aanbrengt in de groeps instellingen die zijn gekoppeld aan gepubliceerde labels in [Microsoft 365 compliance Center](https://sip.protection.office.com/homepage), worden deze beleids wijzigingen niet automatisch toegepast op de betrokken groepen.
 
-If you must make a change, use an [Azure AD PowerShell script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) to manually apply updates to the impacted groups. This method makes sure that all existing groups enforce the new setting.
+Als u een wijziging wilt aanbrengen, moet u een [Azure AD Power shell-script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) gebruiken om updates hand matig toe te passen op de betrokken groepen. Deze methode zorgt ervoor dat alle bestaande groepen de nieuwe instelling afdwingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Use sensitivity labels with Microsoft Teams, Office 365 groups, and SharePoint sites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
-- [Update groups after label policy change manually with Azure AD PowerShell script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
+- [Gevoeligheids labels gebruiken met micro soft teams, Office 365-groepen en share point-sites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [Groeps beleidsobjecten hand matig bijwerken met Azure AD Power shell-script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
 - [Instellingen van uw groep bewerken](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
 - [Groepen met behulp van PowerShell-opdrachten beheren](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)

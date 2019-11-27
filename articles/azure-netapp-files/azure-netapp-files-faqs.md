@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 11/26/2019
 ms.author: b-juche
-ms.openlocfilehash: 815ac261a29f710914347443f7882b9fe682229f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5e69df816e67ddc346ac8452c9bdc8bbd68fa426
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173594"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546945"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -142,6 +142,10 @@ Als u Azure NetApp Files gebruikt met Azure Active Directory Domain Services, wo
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Welke versies van Windows Server Active Directory worden ondersteund?
 
 Azure NetApp Files ondersteunt Windows Server 2008r2SP1-2019-versies van Active Directory Domain Services.
+
+### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Waarom wordt de ingerichte grootte niet weer gegeven in de beschik bare ruimte op mijn SMB-client?
+
+De grootte van het volume dat door de SMB-client wordt gerapporteerd, is de maximale grootte waarmee het Azure NetApp Files volume kan worden uitgebreid. De grootte van het Azure NetApp Files volume, zoals weer gegeven op de SMB-client, komt niet overeen met het quotum of de grootte van het volume. U kunt de Azure NetApp Files volume grootte of-quota verkrijgen via de Azure Portal of de API.
 
 ## <a name="capacity-management-faqs"></a>Veelgestelde vragen over capaciteits beheer
 

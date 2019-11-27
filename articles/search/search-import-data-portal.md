@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b4ae076ba08af5514caa09a2e8027a1cbc909dc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793682"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534543"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>De wizard gegevens importeren voor Azure Cognitive Search
 
@@ -43,7 +43,7 @@ Bekende beperkingen zijn als volgt:
 
 + De wizard biedt geen ondersteuning voor iteratie of hergebruik. Elke pass through-wizard maakt een nieuwe index, vaardig heden en Indexeer functie. Alleen gegevens bronnen kunnen worden bewaard en opnieuw worden gebruikt in de wizard. Als u andere objecten wilt bewerken of verfijnen, moet u de REST-Api's of .NET SDK gebruiken om de structuren op te halen en te wijzigen.
 
-+ De bron inhoud moet zich in een ondersteunde Azure-gegevens bron bevinden, in een service onder hetzelfde abonnement.
++ De bron inhoud moet zich in een ondersteunde Azure-gegevens bron bevinden.
 
 + Steek proeven zijn meer dan een subset van bron gegevens. Voor grote gegevens bronnen is het mogelijk dat de wizard velden mist. Het kan nodig zijn om het schema uit te breiden of de uitgestelde gegevens typen te corrigeren als er onvoldoende steek proeven zijn.
 
@@ -55,7 +55,7 @@ Bekende beperkingen zijn als volgt:
 
 ## <a name="data-source-input"></a>Invoer van gegevens bron
 
-De wizard **gegevens importeren** maakt verbinding met een externe gegevens bron met behulp van de interne logica van Azure Cognitive Search Indexeer functies, die zijn ingericht om de bron te bemonsteren, meta gegevens te lezen, documenten te kraken om inhoud en structuur te lezen en inhoud te serialiseren als JSON voor volgende import naar Azure Cognitive Search.
+De wizard **gegevens importeren** maakt verbinding met een externe gegevens bron met behulp van de interne logica van Azure Cognitive Search Indexeer functies, die zijn uitgerust met een steek proef van de bron, het lezen van meta gegevens, het kraken van documenten voor het lezen van inhoud en structuur, en het serialiseren van inhoud als JSON voor de volgende import naar Azure Cognitive Search.
 
 U kunt alleen importeren uit één tabel, database weergave of gelijkwaardige gegevens structuur, maar de structuur kan hiërarchische of geneste substructuren bevatten. Zie voor meer informatie [complex typen model leren](search-howto-complex-data-types.md).
 

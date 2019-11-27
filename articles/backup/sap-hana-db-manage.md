@@ -32,7 +32,7 @@ Ga voor meer informatie over bewaking naar [bewaking in het Azure Portal](https:
 
 Waarschuwingen zijn een eenvoudige manier om back-ups van SAP HANA-data bases te bewaken. Waarschuwingen zorgen ervoor dat u zich kunt concentreren op de gebeurtenissen die u het meest vindt, zonder dat u in het grootst aan gebeurtenissen gaat die door een back-up worden gegenereerd. Met Azure Backup kunt u waarschuwingen instellen en ze kunnen als volgt worden bewaakt:
 
-* Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+* Meld u aan bij [Azure Portal](https://portal.azure.com/).
 * Selecteer **back-upwaarschuwingen**op het kluis dashboard.
 
   ![Back-upwaarschuwingen op het kluis dashboard](./media/sap-hana-db-manage/backup-alerts-dashboard.png)

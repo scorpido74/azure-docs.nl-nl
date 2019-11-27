@@ -46,7 +46,7 @@ Ga door met de volgende stappen om KCD voor Reporting Services in te stellen.
 ### <a name="configure-the-service-principal-name-spn"></a>De SPN (Service Principal Name) configureren
 
 De SPN is een unieke id voor een service die gebruikmaakt van Kerberos-verificatie. U moet ervoor zorgen dat er een juiste HTTP-SPN aanwezig is voor uw rapport server. Zie [een SPN (Service Principal Name) voor een rapport server registreren](https://msdn.microsoft.com/library/cc281382.aspx)voor meer informatie over het configureren van de juiste service principal name (SPN) voor uw rapport server.
-U kunt controleren of de SPN is toegevoegd door de opdracht setspn uit te voeren met de optie-L. Zie voor meer informatie over deze opdracht, [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
+U kunt controleren of de SPN is toegevoegd door de opdracht setspn uit te voeren met de optie-L. Zie [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx)voor meer informatie over deze opdracht.
 
 ### <a name="enable-negotiate-authentication"></a>Negotiate-verificatie inschakelen
 
@@ -70,7 +70,7 @@ Als u KCD wilt configureren, herhaalt u de volgende stappen voor elke connector 
 1. Meld u aan bij een domein controller als een domein beheerder en open **Active Directory gebruikers en computers**.
 2. Zoek de computer waarop de connector wordt uitgevoerd.  
 3. Dubbel klik op de computer en selecteer vervolgens het tabblad **delegering** .
-4. Stel de instellingen voor delegering zo in dat **deze computer alleen kan worden overgedragen aan de opgegeven services**. Selecteer **elk verificatieprotocol gebruiken**.
+4. Stel de instellingen voor delegering zo in dat **deze computer alleen kan worden overgedragen aan de opgegeven services**. Selecteer vervolgens **elk verificatie protocol gebruiken**.
 5. Selecteer **toevoegen**en selecteer vervolgens **gebruikers of computers**.
 6. Voer het service account in dat u gebruikt voor Reporting Services. Dit is het account waaraan u de SPN hebt toegevoegd in de Reporting Services-configuratie.
 7. Klik op **OK**. Klik opnieuw op **OK** om de wijzigingen op te slaan.
@@ -91,15 +91,15 @@ U bent nu klaar om Azure AD-toepassingsproxy te configureren.
 
 2. Zodra uw app is gepubliceerd, moet u de instellingen voor eenmalige aanmelding configureren met de volgende stappen uit:
 
-   a. Selecteer op de toepassingspagina in de portal, **eenmalige aanmelding**.
+   a. Selecteer op de pagina toepassing in de portal **eenmalige aanmelding**.
 
    b. Voor de **modus voor eenmalige aanmelding**selecteert u **geïntegreerde Windows-verificatie**.
 
    c. Stel **interne Application SPN** in op de waarde die u eerder hebt ingesteld.  
 
-   d. Kies de **gedelegeerde Aanmeldingsidentiteit** voor de connector te gebruiken namens uw gebruikers. Zie [werken met verschillende on-premises en Cloud-identiteiten](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)voor meer informatie.
+   d. Kies de **gedelegeerde aanmeldings-id** voor de connector om namens uw gebruikers te gebruiken. Zie [werken met verschillende on-premises en Cloud-identiteiten](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)voor meer informatie.
 
-   e. Klik op **opslaan** uw wijzigingen op te slaan.
+   e. Klik op **Opslaan** om uw wijzigingen op te slaan.
 
 Ga naar **de sectie gebruikers en groepen** en wijs gebruikers toe om toegang te krijgen tot deze toepassing om het instellen van uw toepassing te volt ooien.
 

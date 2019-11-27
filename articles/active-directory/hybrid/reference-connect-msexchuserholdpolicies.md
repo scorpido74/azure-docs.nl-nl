@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: msExchUserHoldPolicies and cloudMsExchUserHoldPolicies | Microsoft Docs'
-description: This topic describes attribute behavior of the msExchUserHoldPolicies and cloudMsExchUserHoldPolicies attributes
+title: 'Azure AD Connect: msExchUserHoldPolicies en cloudMsExchUserHoldPolicies | Microsoft Docs'
+description: In dit onderwerp wordt het kenmerk gedrag van de kenmerken msExchUserHoldPolicies en cloudMsExchUserHoldPolicies beschreven
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -21,54 +21,54 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213081"
 ---
-# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies and cloudMsExchUserHoldPolicies
-The following reference document describes these attributes used by Exchange and the proper way to edit the default sync rules.
+# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect-msExchUserHoldPolicies en cloudMsExchUserHoldPolicies
+In het volgende referentie document worden deze kenmerken beschreven die worden gebruikt door Exchange en de juiste manier om de standaard synchronisatie regels te bewerken.
 
-## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>What are msExchUserHoldPolicies and cloudMsExchUserHoldPolicies?
-There are two types of [holds](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) available for an Exchange Server: Litigation Hold and In-Place Hold. When Litigation Hold is enabled, all mailbox all items are placed on hold.  An In-Place Hold is used to preserve only those items that meet the criteria of a search query that you defined by using the In-Place eDiscovery tool.
+## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Wat zijn msExchUserHoldPolicies en cloudMsExchUserHoldPolicies?
+Er zijn twee soorten [bewaringen](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) beschikbaar voor een Exchange-Server: in-place bewaring. Als er een afwachting is ingeschakeld, worden alle items in de wachtrij geplaatst.  Een in-place bewaring wordt gebruikt om alleen die items te bewaren die voldoen aan de criteria van een zoek opdracht die u hebt gedefinieerd met behulp van de in-place eDiscovery-tool.
 
-The MsExchUserHoldPolcies and cloudMsExchUserHoldPolicies attributes allow on-premises AD and Azure AD to determine which users are under a hold depending on whether they are using on-premises Exchange or Exchange on-line.
+Met de MsExchUserHoldPolcies-en cloudMsExchUserHoldPolicies-kenmerken kunnen lokale AD-en Azure AD-locaties bepalen welke gebruikers zich in een wacht ruimte bevinden, afhankelijk van of ze on-premises Exchange of Exchange Online gebruiken.
 
-## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies synchronization flow
-By default MsExchUserHoldPolcies is synchronized by Azure AD Connect directly to the msExchUserHoldPolicies attribute in the metaverse and then to the msExchUserHoldPolices attribute in Azure AD
+## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies-synchronisatie stroom
+Standaard wordt MsExchUserHoldPolcies gesynchroniseerd door Azure AD Connect rechtstreeks naar het kenmerk msExchUserHoldPolicies in de tekst en vervolgens naar het kenmerk msExchUserHoldPolices in azure AD
 
-The following tables describe the flow:
+In de volgende tabellen wordt de stroom beschreven:
 
-Inbound from on-premises Active Directory:
+Inkomend van on-premises Active Directory:
 
-|Active Directory attribute|Attribute name|Flow type|Metaverse attribute|Sync Rule|
+|Active Directory kenmerk|Kenmerk naam|Stroom type|Omgekeerd kenmerk|Synchronisatie regel|
 |-----|-----|-----|-----|-----|
-|On-premises Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolices|In from AD - User Exchange|
+|On-premises Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolices|In van de uitwisseling van AD-gebruikers|
 
-Outbound to Azure AD:
+Uitgaand naar Azure AD:
 
-|Metaverse attribute|Attribute name|Flow type|Azure AD attribute|Sync Rule|
+|Omgekeerd kenmerk|Kenmerk naam|Stroom type|Azure AD-kenmerk|Synchronisatie regel|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|Out to AAD – UserExchangeOnline|
+|Azure Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|Naar AAD – UserExchangeOnline|
 
-## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies synchronization flow
-By default cloudMsExchUserHoldPolicies is synchronized by Azure AD Connect directly to the cloudMsExchUserHoldPolicies attribute in the metaverse. Then, if msExchUserHoldPolices is not null in the metaverse, the attribute in flowed out to Active Directory.
+## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies-synchronisatie stroom
+Standaard wordt cloudMsExchUserHoldPolicies gesynchroniseerd door Azure AD Connect rechtstreeks naar het kenmerk cloudMsExchUserHoldPolicies in de tekst. Als msExchUserHoldPolices niet null is in de tekst, wordt het kenmerk gestroomd naar Active Directory.
 
-The following tables describe the flow:
+In de volgende tabellen wordt de stroom beschreven:
 
-Inbound from Azure AD:
+Binnenkomend vanuit Azure AD:
 
-|Active Directory attribute|Attribute name|Flow type|Metaverse attribute|Sync Rule|
+|Active Directory kenmerk|Kenmerk naam|Stroom type|Omgekeerd kenmerk|Synchronisatie regel|
 |-----|-----|-----|-----|-----|
-|On-premises Active Directory|cloudMsExchUserHoldPolicies|Direct|cloudMsExchUserHoldPolicies|In from AAD - User Exchange|
+|On-premises Active Directory|cloudMsExchUserHoldPolicies|Direct|cloudMsExchUserHoldPolicies|In van AAD-gebruikers uitwisseling|
 
-Outbound to on-premises Active Directory:
+Uitgaand naar on-premises Active Directory:
 
-|Metaverse attribute|Attribute name|Flow type|Azure AD attribute|Sync Rule|
+|Omgekeerd kenmerk|Kenmerk naam|Stroom type|Azure AD-kenmerk|Synchronisatie regel|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|cloudMsExchUserHoldPolicies|IF(NOT NULL)|msExchUserHoldPolicies|Out to AD – UserExchangeOnline|
+|Azure Active Directory|cloudMsExchUserHoldPolicies|IF (NOT NULL)|msExchUserHoldPolicies|Naar AD – UserExchangeOnline|
 
-## <a name="information-on-the-attribute-behavior"></a>Information on the attribute behavior
-The msExchangeUserHoldPolicies is a single authority attribute.  A single authority attribute can be set on an object (in this case, user object) in the on-premises directory or in the cloud directory.  The Start of Authority rules dictate, that if the attribute is synchronized from on-premises, then Azure AD will not be allowed to update this attribute.
+## <a name="information-on-the-attribute-behavior"></a>Informatie over het kenmerk gedrag
+De msExchangeUserHoldPolicies is één instantie kenmerk.  Een kenmerk met één instantie kan worden ingesteld voor een object (in dit geval gebruikers object) in de on-premises map of in de Cloud Directory.  Het begin van de Autoriteits regels bepaalt dat als het kenmerk vanuit on-premises is gesynchroniseerd, dit kenmerk niet door Azure AD kan worden bijgewerkt.
 
-To allow users to set a hold policy on a user object in the cloud, the cloudMSExchangeUserHoldPolicies attribute is used. This attribute is used because Azure AD cannot set msExchangeUserHoldPolicies directly based on the rules explained above.  This attribute will then synchronize back to the on-premises directory if, the msExchangeUserHoldPolicies is not null and replace the current value of msExchangeUserHoldPolicies.
+Het kenmerk cloudMSExchangeUserHoldPolicies wordt gebruikt om gebruikers toe te staan een blokkerings beleid in te stellen voor een gebruikers object in de Cloud. Dit kenmerk wordt gebruikt omdat Azure AD msExchangeUserHoldPolicies niet rechtstreeks kan instellen op basis van de hierboven beschreven regels.  Dit kenmerk wordt vervolgens opnieuw gesynchroniseerd naar de on-premises Directory als de msExchangeUserHoldPolicies niet null is en de huidige waarde van msExchangeUserHoldPolicies vervangen.
 
-Under certain circumstances, for instance, if both were changed on-premises and in Azure at the same time, this could cause some issues.  
+Onder bepaalde omstandigheden, bijvoorbeeld als beide on-premises en in azure op hetzelfde moment zijn gewijzigd, kan dit een aantal problemen veroorzaken.  
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

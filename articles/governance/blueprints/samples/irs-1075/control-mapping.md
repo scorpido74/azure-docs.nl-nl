@@ -1,14 +1,14 @@
 ---
-title: Voor beeld van IRS 1075 blauw druk-controle toewijzing
+title: Voorbeeld besturings elementen IRS 1075 blauw druk
 description: De toewijzing van het voor beeld van IRS 1075-blauw druk controleren. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
 ms.date: 11/20/2019
 ms.topic: sample
-ms.openlocfilehash: 13a9396e515c3c0f5c36f56bf8c1f586844e8f65
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 86570012000e660b53b2c3c7291b9ca98576a004
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267826"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546831"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>De toewijzing van het voor beeld van IRS 1075 blauw druk controleren
 
@@ -89,11 +89,11 @@ Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in e
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
+- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
+- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
 
 ## <a name="9335-au-5-response-to-audit-processing-failures"></a>9.3.3.5 AU-5-reactie op fouten bij de controle verwerking
 
@@ -110,11 +110,11 @@ Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in e
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
+- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
+- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
 
 ## <a name="93311-au-12-audit-generation"></a>9.3.3.11 AU-12-audit genereren
 
@@ -122,11 +122,11 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
+- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
+- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
 - Diagnostische instelling voor controleren
 - Controle-instellingen op SQL server-niveau controleren
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
@@ -297,11 +297,11 @@ Deze blauw druk helpt u bij het controleren van uw systeem door logboek registra
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
+- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
+- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
 - Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde gegevens beveiliging implementeren op SQL-servers

@@ -40,7 +40,7 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor fysieke servers
 
   **Geografie** | **Opslag locatie van meta gegevens**
   --- | ---
-  Azure Government | US Gov - Virginia
+  Azure Government | VS (overheid) - Virginia
   Azië en Stille Oceaan | Azië Azië-oost of Zuidoost
   Australië | Australië-oost of Australië-zuidoost
   Brazilië | Brazilië - zuid

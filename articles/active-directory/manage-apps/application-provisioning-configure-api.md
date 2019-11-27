@@ -529,7 +529,7 @@ Content-type: application/json
 }
 
 ```
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 
 - [Raadpleeg de documentatie voor synchronisatie Microsoft Graph](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Een aangepaste SCIM-app integreren met Azure AD](use-scim-to-provision-users-and-groups.md)

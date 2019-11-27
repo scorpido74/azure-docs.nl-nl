@@ -1,28 +1,23 @@
 ---
-title: 'Zelf studie: Azure Container Instances activeren door een Azure-functie'
+title: Zelf studie-container groep activeren met Azure function
 description: Een door HTTP geactiveerde Power shell-functie zonder server maken voor het automatiseren van het maken van Azure container instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 00bd017b0bcff6386e678802c301087819792744
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179979"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533378"
 ---
-# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Zelfstudie: Een Azure-functie gebruiken om een container groep te maken
+# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Zelf studie: een Azure-functie activeren die door HTTP wordt geactiveerd om een container groep te maken
 
 [Azure functions](../azure-functions/functions-overview.md) is een serverloze compute-service die scripts of code kan uitvoeren als reactie op diverse gebeurtenissen, zoals een HTTP-aanvraag, een timer of een bericht in een Azure Storage wachtrij.
 
 In deze zelf studie maakt u een Azure-functie die een HTTP-aanvraag afneemt en de implementatie van een [container groep](container-instances-container-groups.md)activeert. In dit voor beeld ziet u de basis principes van het gebruik van Azure Functions om automatisch resources te maken in Azure Container Instances. Wijzig of breid het voor beeld uit voor complexere scenario's of andere gebeurtenis triggers. 
 
-In deze zelfstudie leert u procedures om het volgende te doen:
+Procedures voor:
 
 > [!div class="checklist"]
 > * Gebruik Visual Studio code met de [Azure functions extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) om een eenvoudige, door http geactiveerde Power shell-functie te maken.
@@ -66,7 +61,7 @@ az functionapp identity assign \
 
 ## <a name="modify-httptrigger-function"></a>De functie http trigger wijzigen
 
-Wijzig de Power shell-code voor de functie **http trigger** om een container groep te maken. Zoek het `run.ps1` volgende code blok in het bestand voor de functie. Met deze code wordt een naam waarde weer gegeven, als er een is door gegeven als een query reeks in de functie-URL:
+Wijzig de Power shell-code voor de functie **http trigger** om een container groep te maken. Zoek het volgende code blok in bestands `run.ps1` voor de functie. Met deze code wordt een naam waarde weer gegeven, als er een is door gegeven als een query reeks in de functie-URL:
 
 ```powershell
 [...]
@@ -92,11 +87,11 @@ if ($name) {
 [...]
 ```
 
-In dit voor beeld wordt een container groep gemaakt die bestaat uit één container instantie `alpine` waarop de installatie kopie wordt uitgevoerd. De container voert één `echo` opdracht uit en eindigt vervolgens. In een echt wereld voorbeeld kunt u een of meer container groepen maken voor het uitvoeren van een batch-taak.
+In dit voor beeld wordt een container groep gemaakt die bestaat uit één container instantie waarop de `alpine`-installatie kopie wordt uitgevoerd. De container voert één `echo` opdracht uit en eindigt vervolgens. In een echt wereld voorbeeld kunt u een of meer container groepen maken voor het uitvoeren van een batch-taak.
  
 ## <a name="test-function-app-locally"></a>De functie-app lokaal testen
 
-Zorg ervoor dat de functie lokaal wordt uitgevoerd voordat u het functie-app-project opnieuw publiceert naar Azure. Zoals weer gegeven in de [Power shell-Quick](../azure-functions/functions-create-first-function-powershell.md)start, voegt u een lokaal onderbrekings `Wait-Debugger` punt in het Power shell-script en een aanroep hierboven in. Zie [debug Power shell Azure functions Local](../azure-functions/functions-debug-powershell-local.md)voor hulp bij fout opsporing.
+Zorg ervoor dat de functie lokaal wordt uitgevoerd voordat u het functie-app-project opnieuw publiceert naar Azure. Zoals weer gegeven in de [Power shell-Snelstartgids](../azure-functions/functions-create-first-function-powershell.md), voegt u een lokaal onderbrekings punt in het Power shell-script en een `Wait-Debugger`-aanroep hierboven in. Zie [debug Power shell Azure functions Local](../azure-functions/functions-debug-powershell-local.md)voor hulp bij fout opsporing.
 
 
 ## <a name="republish-azure-function-app"></a>Azure-functie-app opnieuw publiceren
@@ -104,9 +99,9 @@ Zorg ervoor dat de functie lokaal wordt uitgevoerd voordat u het functie-app-pro
 Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale computer, is het tijd om het project opnieuw te publiceren naar de bestaande functie-app in Azure.
 
 > [!NOTE]
-> Vergeet niet om alle aanroepen `Wait-Debugger` naar te verwijderen voordat u uw functies naar Azure publiceert.
+> Vergeet niet alle aanroepen naar `Wait-Debugger` te verwijderen voordat u uw functies naar Azure publiceert.
 
-1. Open in Visual Studio code het opdracht palet. Zoeken en selecteren `Azure Functions: Deploy to function app...`.
+1. Open in Visual Studio code het opdracht palet. Zoek en selecteer `Azure Functions: Deploy to function app...`.
 1. Selecteer de huidige werkmap die moet worden gezip en geïmplementeerd.
 1. Selecteer het abonnement en vervolgens de naam van de bestaande functie-app (*myfunctionapp*). Bevestig dat u de vorige implementatie wilt overschrijven.
 
@@ -114,7 +109,7 @@ Nadat de functie-app is gemaakt en het implementatiepakket is toegepast, wordt e
 
 ## <a name="run-the-function-in-azure"></a>De functie uitvoeren in azure
 
-Wanneer de implementatie is voltooid, kunt u de functie-URL ophalen. Gebruik bijvoorbeeld de **Azure: Het** gebied functies in Visual Studio code voor het kopiëren van de URL van de **http trigger** -functie of het ophalen van de functie-URL in de [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
+Wanneer de implementatie is voltooid, kunt u de functie-URL ophalen. Gebruik bijvoorbeeld het gedeelte **functies van Azure:** in Visual Studio code om de URL van de **http trigger** -functie te kopiëren of de functie-URL in de [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function)op te halen.
 
 De functie-URL bevat een unieke code en heeft de volgende vorm:
 
@@ -130,7 +125,7 @@ Als eerste test voert u de `curl` opdracht uit en geeft u de functie-URL door zo
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M=="
 ```
 
-De functie retourneert de status code 400 en de `Please pass a name on the query string or in the request body`volgende tekst:
+De functie retourneert de status code 400 en de tekst `Please pass a name on the query string or in the request body`:
 
 ```
 [...]
@@ -151,7 +146,7 @@ Please pass a name on the query string or in the request body.
 
 ### <a name="run-function-and-pass-the-name-of-a-container-group"></a>De functie run en de naam van een container groep door geven
 
-Voer nu de `curl` opdracht uit door de naam van een container groep (*mycontainergroup*) toe te voegen als `&name=mycontainergroup`een query reeks:
+Voer nu de `curl` opdracht uit door de naam van een container groep (*mycontainergroup*) toe te voegen als een query reeks `&name=mycontainergroup`:
 
 ```bash
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup"

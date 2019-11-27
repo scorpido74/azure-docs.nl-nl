@@ -1,6 +1,6 @@
 ---
-title: Define a new Azure IoT Edge device type in Azure IoT Central | Microsoft Docs
-description: This tutorial shows you, as a builder, how to create a new Azure IoT Edge device in your Azure IoT Central application. You define the telemetry, state, properties, and commands for your type.
+title: Een nieuw type Azure IoT Edge apparaat definiëren in azure IoT Central | Microsoft Docs
+description: In deze zelf studie wordt uitgelegd hoe u, als ontwerper, een nieuw Azure IoT Edge apparaat maakt in uw Azure IoT Central-toepassing. U definieert de telemetrie, de status, de eigenschappen en de opdrachten voor uw type.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -16,98 +16,98 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406465"
 ---
-# <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Define a new Azure IoT Edge device type in your Azure IoT Central application (preview features)
+# <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Zelf studie: een nieuw type Azure IoT Edge apparaat in uw Azure IoT Central-toepassing definiëren (preview-functies)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-This tutorial shows you, as a builder, how to use a device template to define a new type of Azure IoT Edge device in your Azure IoT Central application. 
+In deze zelf studie wordt uitgelegd hoe u, als ontwerper, een apparaatprofiel kunt gebruiken om een nieuw type Azure IoT Edge apparaat te definiëren in uw Azure IoT Central-toepassing. 
 
-For an overview, see [What is Azure IoT Central (preview features)?](overview-iot-central.md). 
+Zie [Wat is Azure IOT Central (preview-functies)?](overview-iot-central.md)voor een overzicht. 
 
-IoT Edge is made up of three components:
-* **IoT Edge modules** are containers that run Azure services, partner services, or your own code. Modules are deployed to IoT Edge devices, and run locally on those devices.
-* The **IoT Edge runtime** runs on each IoT Edge device, and manages the modules deployed to each device.
-* A **cloud-based interface** enables you to remotely monitor and manage IoT Edge devices. IoT Central is the cloud interface.
+IoT Edge bestaat uit drie onderdelen:
+* **IOT Edge modules** zijn containers waarop Azure-Services, partner services of uw eigen code worden uitgevoerd. Modules worden op IoT Edge apparaten geïmplementeerd en lokaal op deze apparaten uitgevoerd.
+* De **IOT Edge runtime** wordt op elk IOT edge apparaat uitgevoerd en beheert de modules die op elk apparaat zijn geïmplementeerd.
+* Met een **Cloud interface** kunt u IOT edge apparaten op afstand bewaken en beheren. IoT Central is de Cloud interface.
 
-An **Azure IoT Edge** device can be a gateway device, with downstream devices connecting into the IoT Edge device. This tutorial shares more information about downstream device connectivity patterns.
+Een **Azure IOT Edge** apparaat kan een gateway apparaat zijn, met downstream-apparaten die verbinding maken met het IOT edge apparaat. In deze zelf studie wordt meer informatie over verbindings patronen voor downstream-apparaten gedeeld.
 
-A **device template** defines the capabilities of your device and IoT Edge modules. Capabilities include telemetry the module sends, module properties, and the commands a module responds to.
+Met een **apparaatprofiel** worden de mogelijkheden van uw apparaat en IOT Edge modules gedefinieerd. Mogelijkheden zijn onder andere telemetrie die de module verzendt, module-eigenschappen en de opdrachten die een module beantwoordt.
 
-In this tutorial, you create an Environment Sensor device template. An environmental sensor device:
+In deze zelf studie maakt u een omgevings sensor-apparaat sjabloon. Een omgevings sensor apparaat:
 
-* Sends telemetry, such as temperature.
-* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
-* Responds to commands, such as resetting temperature.
+* Verzendt telemetrie, zoals de Tempe ratuur.
+* Reageert op schrijf bare eigenschappen wanneer deze in de cloud worden bijgewerkt, zoals het verzend interval voor telemetrie.
+* Reageert op opdrachten, zoals het opnieuw instellen van de Tempe ratuur.
 
-Also in this tutorial, you create an Environment Gateway device template. An environmental gateway device:
+In deze zelf studie maakt u ook een omgevings sjabloon voor het gateway apparaat. Een omgeving met een milieu gateway:
 
-* Sends telemetry, such as temperature.
-* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
-* Responds to commands, such as resetting temperature.
-* Allows relationships to other device capability models.
+* Verzendt telemetrie, zoals de Tempe ratuur.
+* Reageert op schrijf bare eigenschappen wanneer deze in de cloud worden bijgewerkt, zoals het verzend interval voor telemetrie.
+* Reageert op opdrachten, zoals het opnieuw instellen van de Tempe ratuur.
+* Hiermee kunnen relaties met andere hulp modellen voor apparaten worden ondersteund.
 
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Create a new Azure IoT Edge device device template.
-> * Upload a deployment manifest.
-> * Create capabilities including telemetry, properties, and commands for each module.
-> * Define a visualization for the module telemetry.
-> * Add relationships to downstream device templates.
-> * Publish your device template.
+> * Maak een nieuwe Azure IoT Edge Device Device-sjabloon.
+> * Upload een implementatie manifest.
+> * Maak mogelijkheden, waaronder telemetrie, eigenschappen en opdrachten voor elke module.
+> * Definieer een visualisatie voor de module-telemetrie.
+> * Relaties toevoegen aan downstream-Apparaatinstellingen.
+> * De sjabloon van het apparaat publiceren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-To complete this tutorial, you need to [create an Azure IoT Central application](quick-deploy-iot-central.md).
+Als u deze zelf studie wilt volt ooien, moet u [een Azure IOT Central-toepassing maken](quick-deploy-iot-central.md).
 
 
-## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Downstream device relationships with a gateway and modules
+## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>De relaties van downstream-apparaten met een gateway en modules
 
-Downstream devices can connect to an IoT Edge gateway device through the `$edgeHub` module. This IoT Edge device becomes a transparent gateway in this scenario.
+Downstream-apparaten kunnen via de module `$edgeHub` verbinding maken met een IoT Edge gateway-apparaat. Dit IoT Edge apparaat wordt in dit scenario een transparante gateway.
 
-![Diagram of transparent gateway](./media/tutorial-define-edge-device-type/gateway-transparent.png)
+![Diagram van transparante gateway](./media/tutorial-define-edge-device-type/gateway-transparent.png)
 
-Downstream devices can also connect to an IoT Edge gateway device through a custom module. In the following scenario, downstream devices connect through a Modbus custom module.
+Downstream-apparaten kunnen ook via een aangepaste module verbinding maken met een IoT Edge gateway-apparaat. In het volgende scenario maken downstream-apparaten verbinding via een aangepaste Modbus-module.
 
-![Diagram of custom module connection](./media/tutorial-define-edge-device-type/gateway-module.png)
+![Diagram van de verbinding van de aangepaste module](./media/tutorial-define-edge-device-type/gateway-module.png)
 
-The following diagram shows connection to an IoT Edge gateway device through both types of modules (custom and `$edgeHub`).  
+In het volgende diagram ziet u een verbinding met een IoT Edge gateway apparaat via beide typen modules (aangepast en `$edgeHub`).  
 
-![Diagram of connecting via both connection modules](./media/tutorial-define-edge-device-type/gateway-module-transparent.png)
+![Diagram van verbinding maken via beide verbindings modules](./media/tutorial-define-edge-device-type/gateway-module-transparent.png)
 
-Finally, downstream devices can connect to an IoT Edge gateway device through multiple custom modules. The following diagram shows downstream devices connecting through a Modbus custom module, a BLE custom module, and the `$edgeHub` module. 
+Ten slotte kunnen downstream-apparaten via meerdere aangepaste modules verbinding maken met een IoT Edge gateway-apparaat. In het volgende diagram worden downstream-apparaten weer gegeven die verbinding maken via een aangepaste Modbus-module, een afgeleide aangepaste module en de module `$edgeHub`. 
 
-![Diagram of connecting via multiple custom modules](./media/tutorial-define-edge-device-type/gateway-module2-transparent.png)
+![Diagram van verbinding maken via meerdere aangepaste modules](./media/tutorial-define-edge-device-type/gateway-module2-transparent.png)
 
 
 ## <a name="create-a-template"></a>Een sjabloon maken
 
-As a builder, you can create and edit IoT Edge device templates in your application. After you publish a device template, you can connect real devices that implement the device template.
+Als ontwerper kunt u IoT Edge-apparaatklassen maken en bewerken in uw toepassing. Nadat u een apparaataccount hebt gepubliceerd, kunt u echte apparaten die de sjabloon voor het apparaat implementeren, verbinden.
 
-### <a name="select-device-template-type"></a>Select device template type 
+### <a name="select-device-template-type"></a>Type sjabloon voor apparaat selecteren 
 
-To add a new device template to your application, select **Device Templates** on the left pane.
+Als u een nieuwe apparaatprofiel wilt toevoegen aan uw toepassing, selecteert u **Apparaatbeheer** in het linkerdeel venster.
 
-![Screenshot of Preview Application, with Device Templates highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplate.png)
+![Scherm opname van de preview-toepassing, met de geselecteerde Apparaatinstellingen](./media/tutorial-define-edge-device-type/edgedevicetemplate.png)
 
-Select **+ New** to start creating a new device template.
+Selecteer **+ Nieuw** om te beginnen met het maken van een nieuwe sjabloon voor het apparaat.
 
-![Screenshot of Device templates page, with New highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatenew.png)
+![Scherm afbeelding van de pagina met Apparaatinstellingen, met nieuwe gemarkeerd](./media/tutorial-define-edge-device-type/edgedevicetemplatenew.png)
 
-On the **Select template type** page, select **Azure IoT Edge**, and select **Next: Customize**.
+Selecteer op de pagina **sjabloon type selecteren** de optie **Azure IOT Edge**en selecteer **volgende: aanpassen**.
 
-![Screenshot of Select template type page](./media/tutorial-define-edge-device-type/selectiotedge.png)
+![Scherm afbeelding van de pagina sjabloon type selecteren](./media/tutorial-define-edge-device-type/selectiotedge.png)
 
-### <a name="customize-device-template"></a>Customize device template
+### <a name="customize-device-template"></a>Sjabloon voor het apparaat aanpassen
 
-In IoT Edge, you can deploy and manage business logic in the form of modules. IoT Edge modules are the smallest unit of computation managed by IoT Edge, and can contain Azure services (such as Azure Stream Analytics), or your own solution-specific code. To understand how modules are developed, deployed, and maintained, see [IoT Edge modules](../../iot-edge/iot-edge-modules.md).
+In IoT Edge kunt u bedrijfs logica implementeren en beheren in de vorm van modules. IoT Edge modules zijn de kleinste reken eenheid die wordt beheerd door IoT Edge en kunnen Azure-Services (zoals Azure Stream Analytics) of uw eigen oplossings code bevatten. Zie [IOT Edge modules](../../iot-edge/iot-edge-modules.md)voor informatie over hoe modules worden ontwikkeld, geïmplementeerd en onderhouden.
 
-At a high level, a deployment manifest is a list of module twins that are configured with their desired properties. A deployment manifest tells an IoT Edge device (or a group of devices) which modules to install, and how to configure them. Deployment manifests include the desired properties for each module twin. IoT Edge devices report back the reported properties for each module.
+Op hoog niveau is een manifest van de implementatie van een lijst met moduledubbels die zijn geconfigureerd met de gewenste eigenschappen. Een implementatie manifest vertelt een IoT Edge apparaat (of een groep apparaten) welke modules moeten worden geïnstalleerd en hoe ze kunnen worden geconfigureerd. Implementatie manifesten bevatten de gewenste eigenschappen voor elke module dubbele. IoT Edge-apparaten melden de gerapporteerde eigenschappen voor elke module terug.
 
-Use Visual Studio Code to create a deployment manifest. To learn more, see [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
+Visual Studio code gebruiken om een implementatie manifest te maken. Zie [Azure IOT Edge voor Visual Studio code voor](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)meer informatie.
 
-Here's a basic deployment manifest, with one module as an example to be used for this tutorial. Copy the following JSON, and save it as a .json file. 
+Hier volgt een basis implementatie manifest, met een module als voor beeld die moet worden gebruikt voor deze zelf studie. Kopieer de volgende JSON en sla deze op als een JSON-bestand. 
 
    ```JSON
    {
@@ -176,53 +176,53 @@ Here's a basic deployment manifest, with one module as an example to be used for
    }
    ```
 
-#### <a name="upload-an-iot-edge-deployment-manifest"></a>Upload an IoT Edge deployment manifest
+#### <a name="upload-an-iot-edge-deployment-manifest"></a>Een IoT Edge implementatie manifest uploaden
 
-On the **Customize device** page, under **Upload an Azure IoT Edge deployment manifest**, select **Browse**. 
+Selecteer op de pagina **apparaat aanpassen** onder **een Azure IOT Edge implementatie manifest uploaden de**optie **Bladeren**. 
 
-![Screenshot of Customize device page, with Browse highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplateuploadmanifest.png)
+![Scherm afbeelding van de pagina apparaat aanpassen, met gemarkeerde Browse](./media/tutorial-define-edge-device-type/edgedevicetemplateuploadmanifest.png)
 
-If you plan to create an IoT Edge Gateway device template, make sure to select **Gateway device with downstream devices**.
+Als u van plan bent een sjabloon voor een IoT Edge gateway-apparaat te maken, moet u **gateway apparaat selecteren met downstream-apparaten**.
 
-![Screenshot of Customize device page, with Gateway device with downstream devices highlighted](./media/tutorial-define-edge-device-type/gateway-upload.png)
+![Scherm afbeelding van de pagina apparaat aanpassen, met gateway apparaat met downstream-apparaten gemarkeerd](./media/tutorial-define-edge-device-type/gateway-upload.png)
 
-In the file selection dialog box, select the deployment manifest file, and select **Open**.
+Selecteer in het dialoog venster bestands selectie het manifest bestand van de implementatie en selecteer **openen**.
 
-IoT Edge validates the deployment manifest file against a schema. If the validation is successful, select **Review**.
+IoT Edge valideert het manifest bestand van de implementatie op basis van een schema. Als de validatie is geslaagd, selecteert u **controleren**.
 
-![Screenshot of Customize device page, with Deployment Manifest and Review highlighted](./media/tutorial-define-edge-device-type/deploymentmanifestvalidate.png)
+![Scherm afbeelding van de pagina apparaat aanpassen met implementatie manifest en gemarkeerde beoordeling](./media/tutorial-define-edge-device-type/deploymentmanifestvalidate.png)
 
-The following flowchart shows a deployment manifest life cycle in IoT Central.
+In het volgende stroom diagram ziet u de levens cyclus van het implementatie manifest in IoT Central.
 
-![Flowchart of deployment manifest life cycle](./media/tutorial-define-edge-device-type/dmflow.png)
+![De levens cyclus van het stroom diagram van het implementatie manifest](./media/tutorial-define-edge-device-type/dmflow.png)
 
-Next, you'll see a review page, with details of the deployment manifest. This page shows a list of modules from the deployment manifest. In this tutorial, note that the `SimulatedTemperatureSensor` module is listed. Selecteer **Maken**.
+Vervolgens ziet u een controle pagina met details van het implementatie manifest. Op deze pagina wordt een lijst met modules uit het implementatie manifest weer gegeven. In deze zelf studie ziet u dat de module `SimulatedTemperatureSensor` wordt weer gegeven. Selecteer **Maken**.
 
-![Screenshot of Review page, with Module and Create highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatereview.png)
+![Scherm afbeelding van de pagina controleren, met module en gemarkeerd maken](./media/tutorial-define-edge-device-type/edgedevicetemplatereview.png)
 
-If you had selected a gateway device, you see the following review page.
+Als u een gateway apparaat hebt geselecteerd, ziet u de volgende controle pagina.
 
-![Screenshot of Review page, with Azure IoT Edge Gateway highlighted](./media/tutorial-define-edge-device-type/gateway-review.png)
+![Scherm afbeelding van de pagina controleren, met Azure IoT Edge gateway gemarkeerd](./media/tutorial-define-edge-device-type/gateway-review.png)
 
 
-You create a device template with module capability models. In this tutorial, you create a device template with the `SimulatedTemperatureSensor` module capability model. 
+U maakt een sjabloon voor het maken van een apparaat met module Capability-modellen. In deze zelf studie maakt u een sjabloon met het model van de `SimulatedTemperatureSensor`-module. 
 
-Change title of the device template to **Environment Sensor Device Template**.
+Wijzig de titel van de sjabloon apparaat sjabloon in **omgevings sensor**.
 
-![Screenshot of device template, with updated title highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatelanding.png)
+![Scherm afbeelding van een apparaatprofiel, met de bijgewerkte titel gemarkeerd](./media/tutorial-define-edge-device-type/edgedevicetemplatelanding.png)
 
-In IoT Edge device, model IoT Plug and Play as follows:
-* Every IoT Edge device template has a device capability model.
-* For every custom module listed in the deployment manifest, a module capability model is generated.
-* A relationship is established between each module capability model and a device capability model.
-* A module capability model implements module interfaces.
-* Each module interface contains telemetry, properties, and commands.
+Model IoT Plug en Play op IoT Edge apparaat als volgt:
+* Elke IoT Edge-apparaatprofiel heeft een hulp model voor het apparaat.
+* Voor elke aangepaste module die wordt vermeld in het implementatie manifest, wordt een module mogelijkheidsprofiel gegenereerd.
+* Er wordt een relatie tot stand gebracht tussen elk module mogelijkheidsprofiel en een mogelijkheidsprofiel.
+* Een module-functionaliteits model implementeert module interfaces.
+* Elke module interface bevat telemetrie, eigenschappen en opdrachten.
 
-![Diagram of IoT Edge modeling](./media/tutorial-define-edge-device-type/edgemodelling.png)
+![Diagram van IoT Edge modellen](./media/tutorial-define-edge-device-type/edgemodelling.png)
 
-#### <a name="add-capabilities-to-a-module-capability-model"></a>Add capabilities to a module capability model
+#### <a name="add-capabilities-to-a-module-capability-model"></a>Mogelijkheden toevoegen aan een module-functionaliteits model
 
-Here is a sample output from the `SimulatedTemperatureSensor` module:
+Hier volgt een voor beeld van de uitvoer van de module `SimulatedTemperatureSensor`:
 ```json
 {
 
@@ -239,165 +239,165 @@ Here is a sample output from the `SimulatedTemperatureSensor` module:
 }
 ```
 
-You can add capabilities to the `SimulatedTemperatureSensor` module, which will reflect the preceding output. 
+U kunt mogelijkheden toevoegen aan de module `SimulatedTemperatureSensor`, die de voor gaande uitvoer weergeeft. 
 
-1. To manage an interface of the `SimulatedTemperatureSensor` module capability model, select **Manage** > **Add Capability**. 
+1. Als u een interface van het model van de `SimulatedTemperatureSensor` module wilt beheren, selecteert u de **functie > toevoegen** **beheren** . 
 
-    ![Screenshot of Environment Sensor Template, with Add Capability highlighted](./media/tutorial-define-edge-device-type/edgetemplateaddcapability.png)
+    ![Scherm afbeelding van omgevings sensor sjabloon, met de functie toevoegen gemarkeerd](./media/tutorial-define-edge-device-type/edgetemplateaddcapability.png)
   
-1. Add a machine as an object type.
+1. Voeg een machine toe als object type.
   
-    ![Screenshot of Environment Sensor Template Capabilities page, with Schema highlighted](./media/tutorial-define-edge-device-type/edgetemplatemachineobject.png)
+    ![Scherm afbeelding van de pagina sjabloon mogelijkheden van omgevings sensor, met schema gemarkeerd](./media/tutorial-define-edge-device-type/edgetemplatemachineobject.png)
 
-1. Select **Define**. In the dialog box that appears, change the object name to **machine**. Create temperature and pressure properties, and select **Apply**.
+1. Selecteer **definiëren**. In het dialoog venster dat wordt weer gegeven, wijzigt u de object naam in **computer**. Maak de eigenschappen voor de Tempe ratuur en druk en selecteer **Toep assen**.
   
-    ![Screenshot of attributes dialog box, with various options highlighted](./media/tutorial-define-edge-device-type/edgetemplatemachineattributes.png)
+    ![Scherm afbeelding van kenmerken in het dialoog venster, waarbij verschillende opties zijn gemarkeerd](./media/tutorial-define-edge-device-type/edgetemplatemachineattributes.png)
   
-1. Add **ambient** as an object type.
+1. Voeg een **omgeving** toe als object type.
 
-1. Select **Define**. In the dialog box that appears, change the object name to **ambient**. Create temperature and humidity properties, and select **Apply**.
+1. Selecteer **definiëren**. In het dialoog venster dat wordt weer gegeven, wijzigt u de naam van het object in **Ambient**. Maak eigenschappen van de Tempe ratuur en vochtigheid en selecteer **Toep assen**.
   
-    ![Screenshot of attributes dialog box, with various options highlighted](./media/tutorial-define-edge-device-type/edgetemplateambientattributes.png)
+    ![Scherm afbeelding van kenmerken in het dialoog venster, waarbij verschillende opties zijn gemarkeerd](./media/tutorial-define-edge-device-type/edgetemplateambientattributes.png)
 
   
-1. Add `timeCreated` as a `DateTime` type, and select **Save**.
+1. Voeg `timeCreated` toe als een `DateTime` type en selecteer **Opslaan**.
   
-    ![Screenshot of Environment Sensor Template, with Save highlighted](./media/tutorial-define-edge-device-type/edgetemplateallattributes.png)
+    ![Scherm afbeelding van omgevings sensor sjabloon, met gemarkeerd voor opslaan](./media/tutorial-define-edge-device-type/edgetemplateallattributes.png)
 
 
-### <a name="add-relationships"></a>Add relationships
+### <a name="add-relationships"></a>Relaties toevoegen
 
-If you selected an IoT Edge device to be a gateway device, you can add downstream relationships to device capability models for devices you want to connect to the gateway device.
+Als u een IoT Edge apparaat als gateway apparaat hebt geselecteerd, kunt u downstream-relaties toevoegen aan de apparaatfuncties voor apparaten die u wilt verbinden met het gateway apparaat.
   
-  ![Screenshot of Environment Gateway Template, with Add Relationship highlighted](./media/tutorial-define-edge-device-type/gateway-add-relationship.png)
+  ![Scherm afbeelding van de sjabloon voor de omgevings gateway, met de relatie toevoegen gemarkeerd](./media/tutorial-define-edge-device-type/gateway-add-relationship.png)
 
-You can add a relationship at a device or at a module.
+U kunt een relatie toevoegen op een apparaat of in een module.
   
-  ![Screenshot of Environment Gateway Template, with device and module level relationships highlighted](./media/tutorial-define-edge-device-type/gateway-relationship-types.png)
+  ![Scherm afbeelding van de sjabloon voor de omgevings gateway, waarbij relaties op apparaat en module niveau zijn gemarkeerd](./media/tutorial-define-edge-device-type/gateway-relationship-types.png)
 
 
-You can select a downstream device capability model, or you can select the asterisk symbol. 
+U kunt een functionaliteits model voor het downstream-apparaat selecteren, maar u kunt ook het asterisk-symbool selecteren. 
   
-  ![Screenshot of Environment Gateway Template, with Target highlighted](./media/tutorial-define-edge-device-type/gateway-downstream-rel.png)
+  ![Scherm opname van sjabloon voor omgevings gateway, met gemarkeerd doel](./media/tutorial-define-edge-device-type/gateway-downstream-rel.png)
 
-  For this tutorial, select the asterisk. This option allows any downstream relationship. Selecteer vervolgens **Opslaan**.
+  Voor deze zelf studie selecteert u het sterretje. Met deze optie wordt een downstream-relatie toegestaan. Selecteer vervolgens **Opslaan**.
 
-  ![Screenshot of Environment Gateway Template, with Target highlighted](./media/tutorial-define-edge-device-type/gateway-add-relationship-asterix.png)
+  ![Scherm opname van sjabloon voor omgevings gateway, met gemarkeerd doel](./media/tutorial-define-edge-device-type/gateway-add-relationship-asterix.png)
 
 
-### <a name="add-cloud-properties"></a>Add cloud properties
+### <a name="add-cloud-properties"></a>Cloud eigenschappen toevoegen
 
-A device template can include cloud properties. Cloud properties only exist in the IoT Central application, and are never sent to, or received from, a device.
+Een sjabloon voor een apparaat kan Cloud eigenschappen bevatten. Cloud eigenschappen bestaan alleen in de IoT Central-toepassing en worden nooit verzonden naar of ontvangen van een apparaat.
 
-1. Select **Cloud Properties** >  **+ Add Cloud Property**. Use the information in the following table to add a cloud property to your device template.
+1. Selecteer **Cloud eigenschappen** >  **+ Cloud eigenschap toevoegen**. Gebruik de informatie in de volgende tabel om een Cloud eigenschap toe te voegen aan de sjabloon van uw apparaat.
 
-    | Weergavenaam      | Semantic type | Schema |
+    | Weergavenaam      | Semantisch type | Schema |
     | ----------------- | ------------- | ------ |
-    | Laatste servicedatum | Geen          | Datum   |
-    | Customer name     | Geen          | Tekenreeks |
+    | Laatste servicedatum | None          | Date   |
+    | Klant naam     | None          | Tekenreeks |
 
 2. Selecteer **Opslaan**.
 
   
-    ![Screenshot of Environment Sensor Template, with Save highlighted](./media/tutorial-define-edge-device-type/edgetemplatecloudproperties.png)
+    ![Scherm afbeelding van omgevings sensor sjabloon, met gemarkeerd voor opslaan](./media/tutorial-define-edge-device-type/edgetemplatecloudproperties.png)
 
-### <a name="add-customizations"></a>Add customizations
+### <a name="add-customizations"></a>Aanpassingen toevoegen
 
-Use customizations to modify an interface, or to add IoT Central-specific features to a capability that doesn't require you to version your device capability model. You can customize fields when the capability model is in a draft or published state. You can only customize fields that don't break interface compatibility. U kunt bijvoorbeeld:
+Gebruik aanpassingen om een interface te wijzigen of om IoT Central-specifieke functies toe te voegen aan een mogelijkheid waarvoor u geen versie hoeft te hebben van uw apparaat. U kunt velden aanpassen wanneer het capaciteits model zich in een concept of gepubliceerde status bevindt. U kunt alleen velden aanpassen die de interface compatibiliteit niet verstoren. U kunt bijvoorbeeld:
 
-- Customize the display name and units of a capability.
-- Add a default color to use when the value appears on a chart.
-- Specify initial, minimum, and maximum values for a property.
+- Pas de weergave naam en de eenheden van een mogelijkheid aan.
+- Een standaard kleur toevoegen die moet worden gebruikt wanneer de waarde in een grafiek wordt weer gegeven.
+- Geef de initiële, minimale en maximale waarde voor een eigenschap op.
 
-You can't customize the capability name or capability type.
+U kunt de naam of het type van de mogelijkheid niet aanpassen.
 
-When you're finished customizing, select **Save**.
+Wanneer u klaar bent met aanpassen, selecteert u **Opslaan**.
   
-![Screenshot of Environment Sensor Template Customize page](./media/tutorial-define-edge-device-type/edgetemplatecustomize.png)
+![Scherm afbeelding van sjabloon voor omgevings sensor pagina aanpassen](./media/tutorial-define-edge-device-type/edgetemplatecustomize.png)
 
 
-### <a name="create-views"></a>Create views
+### <a name="create-views"></a>Weer gaven maken
 
-As a builder, you can customize the application to display relevant information about the environmental sensor device to an operator. Your customizations enable the operator to manage the environmental sensor devices connected to the application. You can create two types of views for an operator to use to interact with devices:
+Als opbouw functie kunt u de toepassing aanpassen om relevante informatie over het omgevings sensor apparaat weer te geven voor een operator. Met uw aanpassingen kan de operator de omgevings sensor apparaten beheren die zijn verbonden met de toepassing. U kunt twee soorten weer gaven maken voor een operator die u kunt gebruiken om te communiceren met apparaten:
 
-* Forms to view and edit device and cloud properties.
-* Dashboards to visualize devices.
+* Formulieren voor het weer geven en bewerken van apparaat-en Cloud eigenschappen.
+* Dash boards om apparaten te visualiseren.
 
-### <a name="configure-a-view-to-visualize-devices"></a>Configure a view to visualize devices
+### <a name="configure-a-view-to-visualize-devices"></a>Een weer gave configureren om apparaten te visualiseren
 
-A device dashboard lets an operator visualize a device by using charts and metrics. As a builder, you can define what information appears on a device dashboard. You can define multiple dashboards for devices. To create a dashboard to visualize the environmental sensor telemetry, select **Views** > **Visualizing the Device**:
+Met een dash board van een apparaat kan een operator een apparaat visualiseren met behulp van grafieken en metrische gegevens. Als opbouw functie kunt u definiëren welke informatie wordt weer gegeven op een dash board van een apparaat. U kunt meerdere Dash boards voor apparaten definiëren. Als u een dash board wilt maken om de telemetrie van de omgevings sensor te visualiseren, selecteert u **weer gaven** > **het apparaat te visualiseren**:
 
   
-![Screenshot of Environment Sensor Template Views page, with Visualizing the Device highlighted](./media/tutorial-define-edge-device-type/visualizingthedevice.png)
+![Scherm afbeelding van sjabloon weergaven pagina van omgevings sensor, met het visualiseren van het apparaat gemarkeerd](./media/tutorial-define-edge-device-type/visualizingthedevice.png)
 
 
-Ambient Telemetry and Machine Telemetry are complex objects. To create charts:
+De telemetrie van de omgeving en telemetrie van de machine zijn complexe objecten. Grafieken maken:
 
-1. Drag **Ambient Telemetry**, and select **Line chart**. 
+1. Sleep **omgevings-telemetrie**en selecteer **lijn diagram**. 
   
-   ![Screenshot of Environment Sensor Template, with Ambient Telemetry and Line chart highlighted](./media/tutorial-define-edge-device-type/sensorambientchart.png)
+   ![Scherm afbeelding van omgevings sensor sjabloon, met omgevings-telemetrie en lijn diagram gemarkeerd](./media/tutorial-define-edge-device-type/sensorambientchart.png)
 
-1. Select the configure icon. Select **Temperature** and **Humidity** to visualize the data, and select **Update configuration**. 
+1. Selecteer het pictogram configureren. Selecteer **Tempe ratuur** en **vochtigheid** om de gegevens te visualiseren en selecteer **update configuratie**. 
   
-   ![Screenshot of Environment Sensor Template, with various options highlighted](./media/tutorial-define-edge-device-type/sensorambienttelemetrychart.png)
+   ![Scherm afbeelding van omgevings sensor sjabloon, waarbij verschillende opties zijn gemarkeerd](./media/tutorial-define-edge-device-type/sensorambienttelemetrychart.png)
 
 1. Selecteer **Opslaan**.
 
-You can add more tiles that show other properties or telemetry values. You can also add static text, links, and images. To move or resize a tile on the dashboard, move the mouse pointer over the tile, and drag the tile to a new location or resize it.
+U kunt meer tegels toevoegen waarin andere eigenschappen of telemetrie-waarden worden weer gegeven. U kunt ook statische tekst, koppelingen en afbeeldingen toevoegen. Als u een tegel op het dash board wilt verplaatsen of verg Roten of verkleinen, verplaatst u de muis aanwijzer over de tegel en sleept u de tegel naar een nieuwe locatie of wijzigt u het formaat ervan.
   
-![Screenshot of Environment Sensor Template Dashboard view](./media/tutorial-define-edge-device-type/viewsdashboard.png)
+![Scherm afbeelding van Dashboard weergave van omgevings sensor sjablonen](./media/tutorial-define-edge-device-type/viewsdashboard.png)
 
-### <a name="add-a-device-form"></a>Add a device form
+### <a name="add-a-device-form"></a>Een formulier van een apparaat toevoegen
 
-A device form lets an operator edit writeable device properties and cloud properties. As a builder, you can define multiple forms and choose which device and cloud properties to show on each form. You can also display read-only device properties on a form.
+Met een formulier van een apparaat kan een operator Beschrijf bare apparaateigenschappen en eigenschappen van Clouds bewerken. Als opbouw functie kunt u meerdere formulieren definiëren en kiezen welk apparaat en welke Cloud eigenschappen op elk formulier worden weer gegeven. U kunt ook eigenschappen voor alleen-lezen apparaten weer geven in een formulier.
 
-To create a form to view and edit environmental sensor properties:
+Een formulier maken voor het weer geven en bewerken van eigenschappen van de omgevings sensor:
 
-1. In the **Environmental Sensor Template**, go to **Views**. Select the **Editing Device and Cloud data** tile to add a new view.
+1. Ga in de **sjabloon omgevings sensor**naar **weer gaven**. Selecteer de tegel **apparaat en Cloud gegevens bewerken** om een nieuwe weer gave toe te voegen.
   
-   ![Screenshot of Environmental Sensor Template Views page, with Editing Device and Cloud data highlighted](./media/tutorial-define-edge-device-type/editingdeviceandclouddata.png)
+   ![Scherm afbeelding van sjabloon weergaven van omgevings sensors, met het bewerken van het apparaat en de Cloud gegevens gemarkeerd](./media/tutorial-define-edge-device-type/editingdeviceandclouddata.png)
 
-1. Enter the form name **Environmental Sensor properties**.
+1. Voer de naam van de **omgevings sensor**van het formulier in.
 
-1. Drag the **Customer name** and **Last service date** cloud properties onto the existing section on the form.
+1. Sleep de **naam** van de klant en de **laatste service datum** -Cloud naar de bestaande sectie op het formulier.
   
-   ![Screenshot of Environmental Sensor Template Views page, with various options highlighted](./media/tutorial-define-edge-device-type/views-properties.png)
+   ![Scherm afbeelding van de pagina sjabloon weergaven van omgevings sensor, waarbij verschillende opties zijn gemarkeerd](./media/tutorial-define-edge-device-type/views-properties.png)
 
 1. Selecteer **Opslaan**.
 
-## <a name="publish-a-device-template"></a>Publish a device template
+## <a name="publish-a-device-template"></a>Een sjabloon voor een apparaat publiceren
 
-Before you can create a simulated environmental sensor, or connect a real environmental sensor, you need to publish your device template.
+Voordat u een gesimuleerde omgevings sensor kunt maken, of als u een echte omgevings sensor wilt verbinden, moet u de sjabloon voor het apparaat publiceren.
 
-To publish a device template:
+Een sjabloon voor een apparaat publiceren:
 
-1. Go to your device template from the **Device Templates** page.
+1. Ga op de pagina **Apparaatinstellingen** naar uw sjabloon.
 
 2. Selecteer **Publiceren**.
   
-    ![Screenshot of Environmental Sensor Template, with Publish highlighted](./media/tutorial-define-edge-device-type/edgetemplatepublish.png)
+    ![Scherm afbeelding van de sjabloon voor de omgevings sensor, met gemarkeerd voor publiceren](./media/tutorial-define-edge-device-type/edgetemplatepublish.png)
 
-1. In the **Publish a Device Template** dialog box, choose **Publish**.
+1. Kies in het dialoog venster **een sjabloon voor het publiceren van een apparaat** de optie **publiceren**.
   
-    ![Screenshot of Publish a Device Template dialog box, with Publish highlighted](./media/tutorial-define-edge-device-type/edgepublishtemplate.png)
+    ![Scherm afbeelding van het dialoog venster een sjabloon voor een apparaat publiceren, met de markering publiceren gemarkeerd](./media/tutorial-define-edge-device-type/edgepublishtemplate.png)
 
-After a device template is published, it's visible on the **Devices** page and to the operator. In a published device template, you can't edit a device capability model without creating a new version. However, you can make updates to cloud properties, customizations, and views, in a published device template. These updates don't cause a new version to be created. After you make any changes, select **Publish** to push those changes out to your operator.
+Nadat een apparaat sjabloon is gepubliceerd, wordt deze weer gegeven op de pagina **apparaten** en aan de operator. U kunt in een sjabloon voor een gepubliceerd apparaat geen mogelijkheidsprofiel bewerken zonder een nieuwe versie te maken. U kunt echter updates voor de Cloud eigenschappen, aanpassingen en weer gaven maken in een sjabloon voor een gepubliceerd apparaat. Deze updates zorgen er niet voor dat er een nieuwe versie wordt gemaakt. Nadat u wijzigingen hebt aangebracht, selecteert u **publiceren** om deze wijzigingen naar uw operator te pushen.
   
-![Screenshot of Device templates list of published templates](./media/tutorial-define-edge-device-type/publishedtemplate.png)
+![Scherm afbeelding van de lijst met sjablonen van gepubliceerde sjablonen](./media/tutorial-define-edge-device-type/publishedtemplate.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
-* Create a new edge as a leaf device template.
-* Generate modules from an uploaded deployment manifest.
-* Add complex type telemetry and properties.
-* Create cloud properties.
-* Create customizations.
-* Define a visualization for the device telemetry.
-* Publish your edge device template.
+* Een nieuwe rand maken als een sjabloon voor een Leaf-apparaat.
+* Modules genereren op basis van een geüpload implementatie manifest.
+* Voeg complex type telemetrie en eigenschappen toe.
+* Cloud eigenschappen maken.
+* Aanpassingen maken.
+* Definieer een visualisatie voor de telemetrie van het apparaat.
+* De sjabloon voor uw edge-apparaat publiceren.
 
-Now that you've created a device template in your Azure IoT Central application, you can do this next:
+Nu u een sjabloon voor een apparaat in uw Azure IoT Central-toepassing hebt gemaakt, kunt u dit op de volgende manieren doen:
 
 > [!div class="nextstepaction"]
-> [Connect device](./tutorial-connect-pnp-device.md)
+> [Apparaat verbinden](./tutorial-connect-pnp-device.md)

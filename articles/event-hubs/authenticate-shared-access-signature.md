@@ -6,14 +6,14 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: cb5c53f3f473c10a3c9a12bb1aac20b109c06422
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992534"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545592"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Toegang tot Event Hubs resources verifiëren met behulp van Shared Access signatures (SAS)
 Shared Access Signature (SAS) biedt u gedetailleerde controle over het type toegang dat u verleent aan de clients die de Shared Access Signature hebben. Hier volgen enkele van de besturings elementen die u in een SAS kunt instellen: 
@@ -48,10 +48,10 @@ Wanneer u sendRuleNS-verificatie regel gebruikt, kunnen client toepassingen word
 ## <a name="generate-a-shared-access-signature-token"></a>Een Shared Access Signature-token genereren 
 Elke client die toegang heeft tot de naam van een verificatie regel naam en een van de handtekening sleutels kan een SAS-token genereren. Het token wordt gegenereerd door een teken reeks in de volgende indeling te maken:
 
-- `se`-Het verloopt van tokens. Geheel getal dat seconden weergeeft sinds de epoche 00:00:00 UTC op 1 januari 1970 (UNIX-epoche) wanneer het token verloopt
-- `skn`– Naam van de autorisatie regel, de naam van de SAS-sleutel.
-- `sr`: De URI van de bron waartoe toegang wordt verkregen.
-- `sig`Ondertekening.
+- `se`: token verloop datum direct. Geheel getal dat seconden weergeeft sinds de epoche 00:00:00 UTC op 1 januari 1970 (UNIX-epoche) wanneer het token verloopt
+- `skn`: de naam van de autorisatie regel, de naam van de SAS-sleutel.
+- `sr`: de URI van de bron waartoe toegang wordt verkregen.
+- `sig` – hand tekening.
 
 De hand tekening: de SHA-256-hash wordt berekend op basis van de resource-URI (bereik zoals beschreven in de vorige sectie) en de teken reeks representatie van het token verloop, gescheiden door CRLF.
 
@@ -63,13 +63,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 Het token bevat de niet-gehashte waarden, zodat de ontvanger de hash opnieuw kan berekenen met dezelfde para meters, zodat u kunt controleren of de uitgever in het bezit is van een geldige ondertekeningssleutel.
 
-De resource-URI is de volledige URI van de Service Bus resource waarmee de toegang wordt geclaimd. Bijvoorbeeld http://<namespace>. servicebus.Windows.net/<entityPath> of `sb://<namespace>.servicebus.windows.net/<entityPath>;` dat wil `http://contoso.servicebus.windows.net/eventhubs/eh1`.
+De resource-URI is de volledige URI van de Service Bus resource waarmee de toegang wordt geclaimd. Bijvoorbeeld http://<namespace>. servicebus.windows.net/<entityPath> of `sb://<namespace>.servicebus.windows.net/<entityPath>;` dat wil zeggen `http://contoso.servicebus.windows.net/eventhubs/eh1`.
 
 De URI moet een percentage zijn gecodeerd.
 
-De gedeelde toegangs autorisatie regel die wordt gebruikt voor ondertekening moet worden geconfigureerd voor de entiteit die door deze URI wordt opgegeven of door een van de hiërarchische bovenliggende items. Bijvoorbeeld `http://contoso.servicebus.windows.net/eventhubs/eh1` of`http://contoso.servicebus.windows.net` in het vorige voor beeld.
+De gedeelde toegangs autorisatie regel die wordt gebruikt voor ondertekening moet worden geconfigureerd voor de entiteit die door deze URI wordt opgegeven of door een van de hiërarchische bovenliggende items. Bijvoorbeeld `http://contoso.servicebus.windows.net/eventhubs/eh1` of `http://contoso.servicebus.windows.net` in het vorige voor beeld.
 
-Een SAS-token is geldig voor alle resources die worden voorafgegaan <resourceURI> door de gebruikt in de teken reeks voor hand tekening.
+Een SAS-token is geldig voor alle resources die worden voorafgegaan door de <resourceURI> gebruikt in de teken reeks voor hand tekening.
 
 > [!NOTE]
 > U genereert een toegangs token voor Event Hubs met behulp van het beleid voor gedeelde toegang. Zie voor meer informatie [verificatie beleid voor gedeelde toegang](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
@@ -183,22 +183,33 @@ Een gebeurtenisuitgever definieert een virtuele-eindpunt voor een event hub. De 
 
 Normaal gesproken een event hub maakt gebruik van een uitgever per client. Alle berichten die worden verzonden naar een van de uitgevers van een event hub zijn in de wachtrij in die event hub. Uitgevers maken nauw keurig toegangs beheer mogelijk.
 
-Elke client Event Hubs is een unieke token, dat is geüpload naar de client toegewezen. De tokens worden zodanig gegenereerd dat elk uniek token toegang verleent tot een andere unieke Uitgever. Een client die een token bevat, kan slechts naar één uitgever en geen andere uitgever verzenden. Als meerdere clients hetzelfde token delen, deelt ze allemaal een uitgever.
+Elke client Event Hubs is een unieke token, dat is geüpload naar de client toegewezen. De tokens worden zodanig gegenereerd dat elk uniek token toegang verleent tot een andere unieke Uitgever. Een client die een token bevat, kan slechts naar één uitgever en geen andere uitgever verzenden. Als meerdere clients hetzelfde token delen, deelt elk-client de uitgever.
 
-Alle tokens worden toegewezen met SAS-sleutels. Normaal gesproken zijn alle tokens ondertekend met dezelfde sleutel. Clients zijn niet op de hoogte van de sleutel, waardoor andere clients geen productie tokens meer kunnen produceren. Clients werken op dezelfde tokens totdat ze verlopen.
+Alle tokens worden toegewezen met SAS-sleutels. Normaal gesproken zijn alle tokens ondertekend met dezelfde sleutel. Clients zijn niet op de hoogte van de sleutel, waardoor clients geen productie tokens meer kunnen produceren. Clients werken op dezelfde tokens totdat ze verlopen.
 
 U moet bijvoorbeeld een regel voor het verzenden van een autorisatie definiëren om autorisatie regels op te geven die zijn beperkt tot het verzenden/publiceren naar Event Hubs. Dit kan worden gedaan op het niveau van de naam ruimte of een nauw keurigere Scope geven aan een bepaalde entiteit (Event hubs-instantie of een onderwerp). Een client of een toepassing die met een dergelijke gedetailleerde toegang is gericht, wordt Event Hubs Publisher genoemd. Voer hiertoe de volgende stappen uit:
 
 1. Maak een SAS-sleutel voor de entiteit die u wilt publiceren om de **Verzend** Scope hierop toe te wijzen. Zie [Shared Access Authorization Policies](authorize-access-shared-access-signature.md#shared-access-authorization-policies)(Engelstalig) voor meer informatie.
 2. Genereer een SAS-token met een verloop tijd voor een specifieke uitgever met behulp van de sleutel die is gegenereerd in stap 1-4.
-3. Geef het token op voor de Publisher-client, die alleen kan verzenden naar de entiteit waartoe het token toegang verleent.
-4. Zodra het token is verlopen, verliest de client de toegang tot het verzenden/publiceren naar de entiteit. 
+
+    ```csharp
+    var sasToken = SharedAccessSignatureTokenProvider.GetPublisherSharedAccessSignature(
+                new Uri("Service-Bus-URI"),
+                "eventub-name",
+                "publisher-name",
+                "sas-key-name",
+                "sas-key",
+                TimeSpan.FromMinutes(30));
+    ```
+3. Geef het token op voor de Publisher-client, die alleen kan verzenden naar de entiteit en de uitgever die het token toegang verleent.
+
+    Zodra het token is verlopen, verliest de client de toegang tot het verzenden/publiceren naar de entiteit. 
 
 
 > [!NOTE]
-> Hoewel het niet wordt aangeraden, is het mogelijk om apparaten met tokens te voorzien die toegang tot een Event Hub verlenen. Elk apparaat dat dit token bevat, kan berichten rechtstreeks naar die Event Hub verzenden. Daarnaast wordt het apparaat kan niet worden op de blokkeringslijst naar die event hub verzendt.
+> Hoewel het niet wordt aangeraden, is het mogelijk om apparaten met tokens te voorzien die toegang verlenen tot een Event Hub of een naam ruimte. Elk apparaat dat dit token bevat, kan berichten rechtstreeks naar die Event Hub verzenden. Daarnaast wordt het apparaat kan niet worden op de blokkeringslijst naar die event hub verzendt.
 > 
-> Het bovenstaande gedrag kan worden waargenomen wanneer hetzelfde token wordt gedistribueerd naar meerdere apparaten waarmee u toegang krijgt op het niveau van de naam ruimte. In dat geval kan een Rouge-apparaat/uitgever niet worden geïsoleerd en ingetrokken. Het wordt altijd aanbevolen specifieke en nauw keurige bereiken te geven.
+> Het wordt altijd aanbevolen specifieke en nauw keurige bereiken te geven.
 
 > [!IMPORTANT]
 > Zodra de tokens zijn gemaakt, moet elke client is ingericht met een eigen unieke token.
@@ -209,7 +220,7 @@ U moet bijvoorbeeld een regel voor het verzenden van een autorisatie definiëren
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>Event Hubs consumenten verifiëren met SAS 
-Voor het verifiëren van back-end-toepassingen die gebruikmaken van de gegevens die zijn gegenereerd door Event Hubs producenten, moeten voor Event Hubs-token verificatie zijn clients beschikken over de machtigingen **beheren** of de **Luister** bevoegdheid toegewezen aan de Event hubs naam ruimte of Event Hub exemplaar of onderwerp. Gegevens worden uit Event Hubs gebruikt met behulp van consumenten groepen. Hoewel SAS-beleid u een nauw keurig bereik biedt, wordt dit bereik alleen gedefinieerd op het niveau van de entiteit en niet op het niveau van de consument. Dit betekent dat de bevoegdheden die zijn gedefinieerd op het niveau van de naam ruimte of het Event Hub-exemplaar-of onderwerps niveau, worden toegepast op de Consumer groepen van die entiteit.
+Voor het verifiëren van back-end-toepassingen die gebruikmaken van de gegevens die zijn gegenereerd door Event Hubs producenten, moeten Event Hubs-token verificatie zijn clients hebben om de machtigingen **beheren** of de **Luister** bevoegdheid te hebben toegewezen aan de Event hubs naam ruimte of het event hub exemplaar of onderwerp. Gegevens worden uit Event Hubs gebruikt met behulp van consumenten groepen. Hoewel SAS-beleid u een nauw keurig bereik biedt, wordt dit bereik alleen gedefinieerd op het niveau van de entiteit en niet op het niveau van de consument. Dit betekent dat de bevoegdheden die zijn gedefinieerd op het niveau van de naam ruimte of het Event Hub-exemplaar-of onderwerps niveau, worden toegepast op de Consumer groepen van die entiteit.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

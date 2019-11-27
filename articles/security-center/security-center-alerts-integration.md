@@ -21,10 +21,10 @@ ms.locfileid: "74278336"
 
 Azure Security Center biedt u aanvullende micro soft-licenties voor het werken met de volgende beveiligings producten:
 
-* [Azure WAF](#azure-waf)
+* [Azure-WAF](#azure-waf)
 * [Azure DDoS Protection](#azure-ddos)
 
-## Azure WAF <a name="azure-waf"></a>
+## Azure-WAF<a name="azure-waf"></a>
 
 Azure Application Gateway biedt de functie Web Application Firewall (WAF) voor de gecentraliseerde beveiliging van uw webtoepassingen tegen bekende aanvallen en beveiligingsproblemen.
 

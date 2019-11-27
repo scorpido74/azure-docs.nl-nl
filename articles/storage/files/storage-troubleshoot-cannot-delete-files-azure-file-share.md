@@ -40,7 +40,7 @@ Fout 1816 treedt op wanneer de bovengrens van gelijktijdige geopende ingangen di
 
 Verminder het aantal gelijktijdige open ingangen door enkele ingangen te sluiten.
 
-## <a name="prerequisite"></a>Vereisten
+## <a name="prerequisite"></a>Vereiste
 
 ### <a name="install-the-latest-azure-powershell-module"></a>De nieuwste Azure PowerShell-module installeren
 

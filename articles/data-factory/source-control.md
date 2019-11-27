@@ -1,6 +1,6 @@
 ---
-title: Source control in Azure Data Factory
-description: Learn how to configure source control in Azure Data Factory
+title: Broncode beheer in Azure Data Factory
+description: Meer informatie over het configureren van broncode beheer in Azure Data Factory
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -19,174 +19,174 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484461"
 ---
-# <a name="source-control-in-azure-data-factory"></a>Source control in Azure Data Factory
+# <a name="source-control-in-azure-data-factory"></a>Broncode beheer in Azure Data Factory
 
-The Azure Data Factory user interface experience (UX) has two experiences available for visual authoring:
+De Azure Data Factory gebruikers interface-ervaring (UX) heeft twee ervaringen die beschikbaar zijn voor visuele ontwerpen:
 
-- Author directly with the Data Factory service
-- Author with Azure Repos Git or GitHub integration
-
-> [!NOTE]
-> Only authoring directly with the Data Factory service is supported in the Azure Government Cloud.
-
-## <a name="author-directly-with-the-data-factory-service"></a>Author directly with the Data Factory service
-
-While authoring directly with the Data Factory service, the only way to save changes is via the **Publish All** button. Once clicked, all changes that you made are published directly to the Data Factory service. 
-
-![Publish mode](media/author-visually/data-factory-publish.png)
-
-Authoring directly with the Data Factory service has the following limitations:
-
-- The Data Factory service doesn't include a repository for storing the JSON entities for your changes.
-- The Data Factory service isn't optimized for collaboration or version control.
+- Rechtstreeks ontwerpen met de Data Factory-Service
+- Auteur met Azure opslag plaatsen git of GitHub-integratie
 
 > [!NOTE]
-> Authoring directly with the Data Factory service is disabled in the Azure Data Factory UX when a Git repository is configured. Changes can be made directly to the service via PowerShell or an SDK.
+> Het is alleen mogelijk rechtstreeks te ontwerpen met de Data Factory-service in de Azure Government Cloud.
 
-## <a name="author-with-azure-repos-git-integration"></a>Author with Azure Repos Git integration
+## <a name="author-directly-with-the-data-factory-service"></a>Rechtstreeks ontwerpen met de Data Factory-Service
 
-Visual authoring with Azure Repos Git integration supports source control and collaboration for work on your data factory pipelines. You can associate a data factory with an Azure Repos Git organization repository for source control, collaboration, versioning, and so on. A single Azure Repos Git organization can have multiple repositories, but an Azure Repos Git repository can be associated with only one data factory. If you don't have an Azure Repos organization or repository, follow [these instructions](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) to create your resources.
+Bij het rechtstreeks ontwerpen met de Data Factory-Service, is de enige manier om wijzigingen op te slaan via de knop **Alles publiceren** . Wanneer u eenmaal hebt geklikt, worden alle wijzigingen die u hebt aangebracht, rechtstreeks naar de Data Factory-service gepubliceerd. 
+
+![Publicatie modus](media/author-visually/data-factory-publish.png)
+
+Bij het ontwerpen van de Data Factory-Service gelden de volgende beperkingen:
+
+- De Data Factory-service bevat geen opslag plaats voor het opslaan van de JSON-entiteiten voor uw wijzigingen.
+- De Data Factory-service is niet geoptimaliseerd voor samen werking of versie beheer.
 
 > [!NOTE]
-> You can store script and data files in an Azure Repos Git repository. However, you have to upload the files manually to Azure Storage. A Data Factory pipeline does not automatically upload script or data files stored in an Azure Repos Git repository to Azure Storage.
+> Als u een Git-opslag plaats configureert, wordt de Data Factory-service direct in de Azure Data Factory UX gemaakt. Wijzigingen kunnen rechtstreeks aan de service worden aangebracht via Power shell of een SDK.
 
-### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>Configure an Azure Repos Git repository with Azure Data Factory
+## <a name="author-with-azure-repos-git-integration"></a>Auteur met Azure opslag plaatsen Git-integratie
 
-You can configure an Azure Repos Git repository with a data factory through two methods.
+Visual authoring met Azure opslag plaatsen Git-integratie ondersteunt broncode beheer en samen werking voor werk op uw data factory-pijp lijnen. U kunt een data factory koppelen aan een Azure opslag plaatsen Git-opslag plaats voor broncode beheer, samen werking, versies, enzovoort. Eén Azure opslag plaatsen Git-organisatie kan meerdere opslag plaatsen hebben, maar een Azure opslag plaatsen Git-opslag plaats kan slechts worden gekoppeld aan één data factory. Als u geen Azure opslag plaatsen-organisatie of-opslag plaats hebt, volgt u [deze instructies](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) om uw resources te maken.
 
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Configuration method 1: Azure Data Factory home page
+> [!NOTE]
+> U kunt script-en gegevens bestanden opslaan in een Azure opslag plaatsen Git-opslag plaats. U moet de bestanden echter hand matig uploaden naar Azure Storage. Een Data Factory pijp lijn uploadt niet automatisch script-of gegevens bestanden die zijn opgeslagen in een Azure opslag plaatsen Git-opslag plaats naar Azure Storage.
 
-On the Azure Data Factory home page, select **Set up Code Repository**.
+### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>Een Azure opslag plaatsen Git-opslag plaats met Azure Data Factory configureren
 
-![Configure an Azure Repos code repository](media/author-visually/configure-repo.png)
+U kunt een Azure opslag plaatsen Git-opslag plaats met een data factory via twee methoden configureren.
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Configuration method 2: UX authoring canvas
-In the Azure Data Factory UX authoring canvas, select the **Data Factory** drop-down menu, and then select **Set up Code Repository**.
+#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Configuratie methode 1: Azure Data Factory start pagina
 
-![Configure the code repository settings for UX authoring](media/author-visually/configure-repo-2.png)
+Op de start pagina van Azure Data Factory selecteert u **code opslagplaats instellen**.
 
-Both methods open the repository settings configuration pane.
+![Een Azure opslag plaatsen code-opslag plaats configureren](media/author-visually/configure-repo.png)
 
-![Configure the code repository settings](media/author-visually/repo-settings.png)
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>Configuratie methode 2: UX ontwerpen canvas
+Selecteer in het Azure Data Factory UX-bewerkings canvas de vervolg keuzelijst **Data Factory** en selecteer vervolgens **code opslagplaats instellen**.
 
-The configuration pane shows the following Azure Repos code repository settings:
+![De instellingen van de code opslagplaats voor UX ontwerpen configureren](media/author-visually/configure-repo-2.png)
+
+Met beide methoden wordt het configuratie deel venster opslagplaats instellingen geopend.
+
+![De instellingen voor de code opslagplaats configureren](media/author-visually/repo-settings.png)
+
+In het deel venster configuratie worden de volgende instellingen voor Azure opslag plaatsen code opslagplaats weer gegeven:
 
 | Instelling | Beschrijving | Waarde |
 |:--- |:--- |:--- |
-| **Repository Type** | The type of the Azure Repos code repository.<br/> | Azure DevOps Git or GitHub |
-| **Azure Active Directory** | Your Azure AD tenant name. | `<your tenant name>` |
-| **Azure Repos Organization** | Your Azure Repos organization name. You can locate your Azure Repos organization name at `https://{organization name}.visualstudio.com`. You can [sign in to your Azure Repos organization](https://www.visualstudio.com/team-services/git/) to access your Visual Studio profile and see your repositories and projects. | `<your organization name>` |
-| **ProjectName** | Your Azure Repos project name. You can locate your Azure Repos project name at `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
-| **RepositoryName** | Your Azure Repos code repository name. Azure Repos projects contain Git repositories to manage your source code as your project grows. You can create a new repository or use an existing repository that's already in your project. | `<your Azure Repos code repository name>` |
-| **Collaboration branch** | Your Azure Repos collaboration branch that is used for publishing. By default, it’s `master`. Change this setting in case you want to publish resources from another branch. | `<your collaboration branch name>` |
-| **Root folder** | Your root folder in your Azure Repos collaboration branch. | `<your root folder name>` |
-| **Import existing Data Factory resources to repository** | Specifies whether to import existing data factory resources from the UX **Authoring canvas** into an Azure Repos Git repository. Select the box to import your data factory resources into the associated Git repository in JSON format. This action exports each resource individually (that is, the linked services and datasets are exported into separate JSONs). When this box isn't selected, the existing resources aren't imported. | Selected (default) |
-| **Branch to import resource into** | Specifies into which branch the data factory resources (pipelines, datasets, linked services etc.) are imported. You can import resources into one of the following branches: a. Collaboration b. Create new c. Use Existing |  |
+| **Type opslag plaats** | Het type van de Azure opslag plaatsen code-opslag plaats.<br/> | Azure DevOps git of GitHub |
+| **Azure Active Directory** | De naam van uw Azure AD-Tenant. | `<your tenant name>` |
+| **Azure opslag plaatsen-organisatie** | De naam van uw Azure opslag plaatsen-organisatie. U kunt de naam van uw Azure opslag plaatsen-organisatie vinden op `https://{organization name}.visualstudio.com`. U kunt [zich aanmelden bij uw Azure opslag plaatsen-organisatie](https://www.visualstudio.com/team-services/git/) om toegang te krijgen tot uw Visual Studio-profiel en uw opslag plaatsen en projecten te bekijken. | `<your organization name>` |
+| **ProjectName** | De naam van uw Azure opslag plaatsen-project. U kunt de naam van uw Azure opslag plaatsen-project vinden op `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
+| **Opslagplaats** | De naam van de opslag plaats van uw Azure opslag plaatsen-code. Azure opslag plaatsen-projecten bevatten Git-opslag plaatsen om uw bron code te beheren naarmate uw project groeit. U kunt een nieuwe opslag plaats maken of een bestaande opslag plaats gebruiken die al in uw project voor komt. | `<your Azure Repos code repository name>` |
+| **Collaboration Branch** | Uw Azure opslag plaatsen Collaboration-vertakking die wordt gebruikt voor het publiceren. De standaard instelling is `master`. Wijzig deze instelling als u resources wilt publiceren vanuit een andere vertakking. | `<your collaboration branch name>` |
+| **Hoofdmap** | Uw hoofdmap in uw Azure opslag plaatsen Collaboration-vertakking. | `<your root folder name>` |
+| **Bestaande Data Factory-resources importeren in opslag plaats** | Hiermee geeft u op of bestaande data factory resources van het UX- **ontwerp canvas** in een Azure opslag plaatsen Git-opslag plaats moeten worden geïmporteerd. Schakel het selectie vakje in om uw data factory-resources te importeren in de bijbehorende Git-opslag plaats in JSON-indeling. Deze actie exporteert elke resource afzonderlijk (dat wil zeggen, de gekoppelde services en gegevens sets worden geëxporteerd naar afzonderlijke JSONs). Als dit selectie vakje niet is ingeschakeld, worden de bestaande resources niet geïmporteerd. | Geselecteerd (standaard) |
+| **Vertakking waarvoor de resource moet worden geïmporteerd** | Hiermee wordt aangegeven in welke vertakking de data factory resources (pijp lijnen, gegevens sets, gekoppelde services, enzovoort) worden geïmporteerd. U kunt resources importeren in een van de volgende vertakkingen: a. Samen werking b. Nieuwe c maken. Bestaande gebruiken |  |
 
 > [!NOTE]
-> If you are using Microsoft Edge and do not see any values in your Azure DevOps Account dropdown, add https://*.visualstudio.com to the trusted sites list.
+> Als u micro soft Edge gebruikt en er geen waarden in de vervolg keuzelijst van uw Azure DevOps-account worden weer geven, voegt u https://*. Visual Studio. com toe aan de lijst met vertrouwde websites.
 
-### <a name="use-a-different-azure-active-directory-tenant"></a>Use a different Azure Active Directory tenant
+### <a name="use-a-different-azure-active-directory-tenant"></a>Een andere Azure Active Directory Tenant gebruiken
 
-U kunt een Git-opslagplaats maken in een andere Azure Active Directory-tenant. To specify a different Azure AD tenant, you have to have administrator permissions for the Azure subscription that you're using.
+U kunt een Git-opslagplaats maken in een andere Azure Active Directory-tenant. Als u een andere Azure AD-Tenant wilt opgeven, hebt u beheerders machtigingen nodig voor het Azure-abonnement dat u gebruikt.
 
-### <a name="use-your-personal-microsoft-account"></a>Use your personal Microsoft account
+### <a name="use-your-personal-microsoft-account"></a>Uw persoonlijke Microsoft-account gebruiken
 
-To use a personal Microsoft account for Git integration, you can link your personal Azure Repo to your organization's Active Directory.
+Als u een persoonlijk Microsoft-account wilt gebruiken voor git-integratie, kunt u uw persoonlijke Azure-opslag plaats koppelen aan de Active Directory van uw organisatie.
 
-1. Add your personal Microsoft account to your organization's Active Directory as a guest. For more info, see [Add Azure Active Directory B2B collaboration users in the Azure portal](../active-directory/b2b/add-users-administrator.md).
+1. Voeg uw persoonlijke Microsoft-account toe aan de Active Directory van uw organisatie als gast. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](../active-directory/b2b/add-users-administrator.md)voor meer informatie.
 
-2. Log in to the Azure portal with your personal Microsoft account. Then switch to your organization's Active Directory.
+2. Meld u aan bij de Azure Portal met uw persoonlijke Microsoft-account. Schakel vervolgens over naar de Active Directory van uw organisatie.
 
-3. Go to the Azure DevOps section, where you now see your personal repo. Select the repo and connect with Active Directory.
+3. Ga naar de sectie Azure DevOps, waar u nu uw persoonlijke opslag plaats ziet. Selecteer de opslag plaats en maak verbinding met Active Directory.
 
-After these configuration steps, your personal repo is available when you set up Git integration in the Data Factory UI.
+Na deze configuratie stappen is uw persoonlijke opslag plaats beschikbaar wanneer u Git-integratie instelt in de gebruikers interface van Data Factory.
 
-For more info about connecting Azure Repos to your organization's Active Directory, see [Connect your Azure DevOps organization to Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
+Zie [uw Azure DevOps-organisatie verbinden met Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)voor meer informatie over het verbinden van Azure opslag plaatsen met de Active Directory van uw organisatie.
 
-## <a name="author-with-github-integration"></a>Author with GitHub integration
+## <a name="author-with-github-integration"></a>Auteur met GitHub-integratie
 
-Visual authoring with GitHub integration supports source control and collaboration for work on your data factory pipelines. You can associate a data factory with a GitHub account repository for source control, collaboration, versioning. A single GitHub account can have multiple repositories, but a GitHub repository can be associated with only one data factory. If you don't have a GitHub account or repository, follow [these instructions](https://github.com/join) to create your resources.
+Visual authoring met GitHub-integratie ondersteunt broncode beheer en samen werking voor werk op uw data factory-pijp lijnen. U kunt een data factory koppelen aan een GitHub-account opslagplaats voor broncode beheer, samen werking, versies. Eén GitHub-account kan meerdere opslag plaatsen bevatten, maar een GitHub-opslag plaats kan slechts worden gekoppeld aan één data factory. Als u geen GitHub-account of-opslag plaats hebt, volgt u [deze instructies](https://github.com/join) om uw resources te maken.
 
-The GitHub integration with Data Factory supports both public GitHub (that is, [https://github.com](https://github.com)) and GitHub Enterprise. You can use both public and private GitHub repositories with Data Factory as long you have read and write permission to the repository in GitHub.
+De GitHub-integratie met Data Factory ondersteunt zowel open bare GitHub (dat wil zeggen, [https://github.com](https://github.com)) als github Enter prise. U kunt zowel open bare als persoonlijke GitHub-opslag plaatsen gebruiken met Data Factory zolang u lees-en schrijf machtigingen hebt voor de opslag plaats in GitHub.
 
-To configure a GitHub repo, you must have administrator permissions for the Azure subscription that you're using.
+Als u een GitHub opslag plaats wilt configureren, moet u over beheerders rechten beschikken voor het Azure-abonnement dat u gebruikt.
 
-For a nine-minute introduction and demonstration of this feature, watch the following video:
+Bekijk de volgende video voor een inleiding en demonstratie van negen minuten voor deze functie:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
 
-### <a name="configure-a-github-repository-with-azure-data-factory"></a>Configure a GitHub repository with Azure Data Factory
+### <a name="configure-a-github-repository-with-azure-data-factory"></a>Een GitHub-opslag plaats met Azure Data Factory configureren
 
-You can configure a GitHub repository with a data factory through two methods.
+U kunt een GitHub-opslag plaats met een data factory via twee methoden configureren.
 
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Configuration method 1: Azure Data Factory home page
+#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Configuratie methode 1: Azure Data Factory start pagina
 
-On the Azure Data Factory home page, select **Set up Code Repository**.
+Op de start pagina van Azure Data Factory selecteert u **code opslagplaats instellen**.
 
-![Configure an Azure Repos code repository](media/author-visually/configure-repo.png)
+![Een Azure opslag plaatsen code-opslag plaats configureren](media/author-visually/configure-repo.png)
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Configuration method 2: UX authoring canvas
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>Configuratie methode 2: UX ontwerpen canvas
 
-In the Azure Data Factory UX authoring canvas, select the **Data Factory** drop-down menu, and then select **Set up Code Repository**.
+Selecteer in het Azure Data Factory UX-bewerkings canvas de vervolg keuzelijst **Data Factory** en selecteer vervolgens **code opslagplaats instellen**.
 
-![Configure the code repository settings for UX authoring](media/author-visually/configure-repo-2.png)
+![De instellingen van de code opslagplaats voor UX ontwerpen configureren](media/author-visually/configure-repo-2.png)
 
-Both methods open the repository settings configuration pane.
+Met beide methoden wordt het configuratie deel venster opslagplaats instellingen geopend.
 
-![GitHub repository settings](media/author-visually/github-integration-image2.png)
+![Instellingen voor GitHub-opslag plaats](media/author-visually/github-integration-image2.png)
 
-The configuration pane shows the following GitHub repository settings:
+In het deel venster configuratie worden de volgende instellingen voor de GitHub-opslag plaats weer gegeven:
 
 | **Instelling** | **Beschrijving**  | **Waarde**  |
 |:--- |:--- |:--- |
-| **Repository Type** | The type of the Azure Repos code repository. | GitHub |
-| **Use GitHub Enterprise** | Checkbox to select GitHub Enterprise | unselected (default) |
-| **GitHub Enterprise URL** | The GitHub Enterprise root URL. Bijvoorbeeld: https://github.mydomain.com. Required only if **Use GitHub Enterprise** is selected | `<your GitHub enterprise url>` |                                                           
-| **GitHub account** | Your GitHub account name. This name can be found from https:\//github.com/{account name}/{repository name}. Navigating to this page prompts you to enter GitHub OAuth credentials to your GitHub account. | `<your GitHub account name>` |
-| **Repository Name**  | Your GitHub code repository name. GitHub accounts contain Git repositories to manage your source code. You can create a new repository or use an existing repository that's already in your account. | `<your repository name>` |
-| **Collaboration branch** | Your GitHub collaboration branch that is used for publishing. By default, its master. Change this setting in case you want to publish resources from another branch. | `<your collaboration branch>` |
-| **Root folder** | Your root folder in your GitHub collaboration branch. |`<your root folder name>` |
-| **Import existing Data Factory resources to repository** | Specifies whether to import existing data factory resources from the UX authoring canvas into a GitHub repository. Select the box to import your data factory resources into the associated Git repository in JSON format. This action exports each resource individually (that is, the linked services and datasets are exported into separate JSONs). When this box isn't selected, the existing resources aren't imported. | Selected (default) |
-| **Branch to import resource into** | Specifies into which branch the data factory resources (pipelines, datasets, linked services etc.) are imported. You can import resources into one of the following branches: a. Collaboration b. Create new c. Use Existing |  |
+| **Type opslag plaats** | Het type van de Azure opslag plaatsen code-opslag plaats. | GitHub |
+| **GitHub Enter prise gebruiken** | Selectie vakje om GitHub Enter prise te selecteren | selectie opheffen (standaard) |
+| **GitHub Enter prise-URL** | De basis-URL van de GitHub-onderneming. Bijvoorbeeld: https://github.mydomain.com. Alleen vereist als **use github Enter prise** is geselecteerd | `<your GitHub enterprise url>` |                                                           
+| **GitHub-account** | De naam van uw GitHub-account. Deze naam kan worden gevonden vanuit https:\//github.com/{account name}/{repository name}. Als u naar deze pagina navigeert, wordt u gevraagd om GitHub OAuth-referenties in te voeren voor uw GitHub-account. | `<your GitHub account name>` |
+| **Naam van opslag plaats**  | De naam van de opslag plaats van uw GitHub-code. GitHub-accounts bevatten Git-opslag plaatsen voor het beheren van de bron code. U kunt een nieuwe opslag plaats maken of een bestaande opslag plaats gebruiken die al in uw account is. | `<your repository name>` |
+| **Collaboration Branch** | Uw GitHub-samenwerkings vertakking die wordt gebruikt voor het publiceren. Standaard is dit het hoofd. Wijzig deze instelling als u resources wilt publiceren vanuit een andere vertakking. | `<your collaboration branch>` |
+| **Hoofdmap** | Uw hoofdmap in uw GitHub-samenwerkings vertakking. |`<your root folder name>` |
+| **Bestaande Data Factory-resources importeren in opslag plaats** | Hiermee geeft u op of bestaande data factory resources van het UX-ontwerp canvas in een GitHub-opslag plaats moeten worden geïmporteerd. Schakel het selectie vakje in om uw data factory-resources te importeren in de bijbehorende Git-opslag plaats in JSON-indeling. Deze actie exporteert elke resource afzonderlijk (dat wil zeggen, de gekoppelde services en gegevens sets worden geëxporteerd naar afzonderlijke JSONs). Als dit selectie vakje niet is ingeschakeld, worden de bestaande resources niet geïmporteerd. | Geselecteerd (standaard) |
+| **Vertakking waarvoor de resource moet worden geïmporteerd** | Hiermee wordt aangegeven in welke vertakking de data factory resources (pijp lijnen, gegevens sets, gekoppelde services, enzovoort) worden geïmporteerd. U kunt resources importeren in een van de volgende vertakkingen: a. Samen werking b. Nieuwe c maken. Bestaande gebruiken |  |
 
-### <a name="known-github-limitations"></a>Known GitHub limitations
+### <a name="known-github-limitations"></a>Bekende GitHub-beperkingen
 
-- You can store script and data files in a GitHub repository. However, you have to upload the files manually to Azure Storage. A Data Factory pipeline does not automatically upload script or data files stored in a GitHub repository to Azure Storage.
+- U kunt script-en gegevens bestanden opslaan in een GitHub-opslag plaats. U moet de bestanden echter hand matig uploaden naar Azure Storage. Een Data Factory pijp lijn uploadt niet automatisch script-of gegevens bestanden die zijn opgeslagen in een GitHub-opslag plaats naar Azure Storage.
 
-- GitHub Enterprise with a version older than 2.14.0 doesn't work in the Microsoft Edge browser.
+- GitHub Enter prise met een oudere versie dan 2.14.0 werkt niet in de micro soft Edge-browser.
 
-- GitHub integration with the Data Factory visual authoring tools only works in the generally available version of Data Factory.
+- GitHub-integratie met de Data Factory Visual authoring-hulpprogram ma's werkt alleen in de algemeen beschik bare versie van Data Factory.
 
-## <a name="switch-to-a-different-git-repo"></a>Switch to a different Git repo
+## <a name="switch-to-a-different-git-repo"></a>Overschakelen naar een andere Git-opslag plaats
 
-To switch to a different Git repo, click the **Git Repo Settings** icon in the upper right corner of the Data Factory overview page. If you can’t see the icon, clear your local browser cache. Select the icon to remove the association with the current repo.
+Als u wilt overschakelen naar een andere Git-opslag plaats, klikt u op het pictogram **Git opslag plaats-instellingen** in de rechter bovenhoek van de pagina overzicht van Data Factory. Als u het pictogram niet kunt zien, wist u de cache van de lokale browser. Selecteer het pictogram om de koppeling met de huidige opslag plaats te verwijderen.
 
-![Git icon](media/author-visually/remove-repo.png)
+![Git-pictogram](media/author-visually/remove-repo.png)
 
-Once the Repository Settings pane appears, select **Remove Git**. Enter your data factory name and click **confirm** to remove the Git repository associated with your data factory.
+Zodra het deel venster instellingen van de opslag plaats wordt weer gegeven, selecteert u **Git verwijderen**. Voer uw data factory naam in en klik op **bevestigen** om de Git-opslag plaats te verwijderen die is gekoppeld aan uw Data Factory.
 
-![Remove the association with the current Git repo](media/author-visually/remove-repo2.png)
+![De koppeling met de huidige Git-opslag plaats verwijderen](media/author-visually/remove-repo2.png)
 
-After you remove the association with the current repo, you can configure your Git settings to use a different repo and then import existing Data Factory resources to the new repo. 
+Nadat u de koppeling met de huidige opslag plaats hebt verwijderd, kunt u uw Git-instellingen configureren voor het gebruik van een andere opslag plaats en vervolgens bestaande Data Factory resources importeren in de nieuwe opslag plaats. 
 
 ## <a name="version-control"></a>Versiebeheer
 
-Version control systems (also known as _source control_) let developers collaborate on code and track changes that are made to the code base. Source control is an essential tool for multi-developer projects.
+Met versie besturings systemen (ook wel bekend als _broncode beheer_) kunnen ontwikkel aars samen werken aan code en wijzigingen bijhouden die zijn aangebracht in de code basis. Broncode beheer is een essentieel hulp programma voor projecten met meerdere ontwikkel aars.
 
-### <a name="creating-feature-branches"></a>Creating feature branches
+### <a name="creating-feature-branches"></a>Functie vertakkingen maken
 
-Each Azure Repos Git repository that's associated with a data factory has a collaboration branch. (`master` is the default collaboration branch). Users can also create feature branches by clicking **+ New Branch** in the branch dropdown. Once the new branch pane appears, enter the name of your feature branch.
+Elke Azure opslag plaatsen Git-opslag plaats die is gekoppeld aan een data factory heeft een Collaboration Branch. (`master` is de standaard-Collaboration Branch). Gebruikers kunnen ook onderdeel vertakkingen maken door op **+ nieuwe vertakking** in de vervolg keuzelijst vertakking te klikken. Zodra het deel venster nieuwe vertakking wordt weer gegeven, voert u de naam van uw functie vertakking in.
 
-![Create a new branch](media/author-visually/new-branch.png)
+![Een nieuwe vertakking maken](media/author-visually/new-branch.png)
 
-When you are ready to merge the changes from your feature branch to your collaboration branch, click on the branch dropdown and select **Create pull request**. This action takes you to Azure Repos Git where you can raise pull requests, do code reviews, and merge changes to your collaboration branch. (`master` is the default). You are only allowed to publish to the Data Factory service from your collaboration branch. 
+Wanneer u klaar bent om de wijzigingen van uw functie vertakking samen te voegen met uw vertakking voor samen werking, klikt u op de vervolg keuzelijst vertakking en selecteert u **pull-aanvraag maken**. Met deze actie gaat u naar Azure opslag plaatsen Git waar u pull-aanvragen kunt genereren, code beoordelingen moet uitvoeren en wijzigingen kunt samen voegen in uw samenwerkings vertakking. (`master` is de standaard instelling). U mag alleen publiceren naar de Data Factory-service vanuit uw vertakking voor samen werking. 
 
-![Create a new pull request](media/author-visually/create-pull-request.png)
+![Een nieuwe pull-aanvraag maken](media/author-visually/create-pull-request.png)
 
-### <a name="configure-publishing-settings"></a>Configure publishing settings
+### <a name="configure-publishing-settings"></a>Publicatie-instellingen configureren
 
-To configure the publish branch - that is, the branch where Resource Manager templates are saved - add a `publish_config.json` file to the root folder in the collaboration branch. Data Factory reads this file, looks for the field `publishBranch`, and creates a new branch (if it doesn't already exist) with the value provided. Then it saves all Resource Manager templates to the specified location. Bijvoorbeeld:
+Voor het configureren van de publicatie vertakking-dat wil zeggen, de vertakking waar Resource Manager-sjablonen worden opgeslagen: Voeg een `publish_config.json` bestand toe aan de hoofdmap in de collaboration-vertakking. Data Factory dit bestand leest, zoekt naar het veld `publishBranch`en maakt een nieuwe vertakking (als deze nog niet bestaat) met de waarde die u opgeeft. Vervolgens worden alle Resource Manager-sjablonen op de opgegeven locatie opgeslagen. Bijvoorbeeld:
 
 ```json
 {
@@ -194,69 +194,69 @@ To configure the publish branch - that is, the branch where Resource Manager tem
 }
 ```
 
-When you specify a new publish branch, Data Factory doesn't delete the previous publish branch. If you want to remove the previous publish branch, delete it manually.
+Wanneer u een nieuwe publicatie vertakking opgeeft, wordt Data Factory de vorige Publish-vertakking niet verwijderd. Als u de vorige Publish-vertakking wilt verwijderen, moet u deze hand matig verwijderen.
 
 > [!NOTE]
-> Data Factory only reads the `publish_config.json` file when it loads the factory. If you already have the factory loaded in the portal, refresh the browser to make your changes take effect.
+> Data Factory leest alleen het `publish_config.json` bestand wanneer het de fabriek laadt. Als u de fabriek al hebt geladen in de portal, vernieuwt u de browser om uw wijzigingen van kracht te laten worden.
 
-### <a name="publish-code-changes"></a>Publish code changes
+### <a name="publish-code-changes"></a>Code wijzigingen publiceren
 
-After you have merged changes to the collaboration branch (`master` is the default), click **Publish** to manually publish your code changes in the master branch to the Data Factory service.
+Nadat u de wijzigingen hebt samengevoegd in de collaboration Branch (`master` de standaard instelling is), klikt u op **publiceren** om de wijzigingen in de code in de hoofd vertakking hand matig te publiceren naar de Data Factory-service.
 
-![Publish changes to the Data Factory service](media/author-visually/publish-changes.png)
+![Wijzigingen publiceren in de Data Factory-Service](media/author-visually/publish-changes.png)
 
-A side pane will open where you confirm that the publish branch and pending changes are correct. Once you verify your changes, click **OK** to confirm the publish.
+Er wordt een deel venster geopend waarin u bevestigt dat de publicatie vertakking en in behandeling zijnde wijzigingen juist zijn. Nadat u uw wijzigingen hebt gecontroleerd, klikt u op **OK** om de publicatie te bevestigen.
 
-![Confirm the correct publish branch](media/author-visually/configure-publish-branch.png)
+![De juiste publicatie vertakking bevestigen](media/author-visually/configure-publish-branch.png)
 
 > [!IMPORTANT]
-> The master branch is not representative of what's deployed in the Data Factory service. The master branch *must* be published manually to the Data Factory service.
+> De hoofd vertakking is niet representatief voor wat er in de Data Factory-service is geïmplementeerd. De master branch *moet* hand matig worden gepubliceerd naar de Data Factory-service.
 
-## <a name="advantages-of-git-integration"></a>Advantages of Git integration
+## <a name="advantages-of-git-integration"></a>Voor delen van Git-integratie
 
--   **Source Control**. As your data factory workloads become crucial, you would want to integrate your factory with Git to leverage several source control benefits like the following:
-    -   Ability to track/audit changes.
-    -   Ability to revert changes that introduced bugs.
--   **Partial Saves**. As you make a lot of changes in your factory, you will realize that in the regular LIVE mode, you can't save your changes as draft, because you are not ready, or you don’t want to lose your changes in case your computer crashes. With Git integration, you can continue saving your changes incrementally, and publish to the factory only when you are ready. Git acts as a staging place for your work, until you have tested your changes to your satisfaction.
--   **Collaboration and Control**. If you have multiple team members participating to the same factory, you may want to let your teammates collaborate with each other via a code review process. You can also set up your factory such that not every contributor to the factory has permission to deploy to the factory. Team members may just be allowed to make changes via Git, but only certain people in the team are allowed to "Publish" the changes to the factory.
--   **Showing diffs**. In Git mode, you get to see a nice diff of the payload that’s about to get published to the factory. This diff shows you all resources/entities that got modified/added/deleted since the last time you published to your factory. Based on this diff, you can either continue further with publishing, or go back and check your changes, and then come back later.
--   **Better CI/CD**. If you are using Git mode, you can configure your release pipeline to trigger automatically as soon as there are any changes made in the dev factory. You also get to customize the properties in your factory that are available as parameters in the Resource Manager template. It can be useful to keep only the required set of properties as parameters, and have everything else hard coded.
--   **Better Performance**. An average factory loads ten times faster in Git mode than in regular LIVE mode, because the resources are downloaded via Git.
+-   **Broncode beheer**. Als uw data factory-workloads cruciaal worden, wilt u uw fabriek met git integreren om diverse voor delen van broncode beheer te benutten, zoals in het volgende:
+    -   De mogelijkheid om wijzigingen bij te houden/te controleren.
+    -   De mogelijkheid om wijzigingen die fouten hebben geïntroduceerd te herstellen.
+-   **Gedeeltelijk opgeslagen**. Wanneer u een groot aantal wijzigingen in uw fabriek doorvoert, zult u realiseren dat u de wijzigingen niet kunt opslaan als concept, omdat u niet gereed bent, of als u uw wijzigingen niet wilt kwijt raken wanneer uw computer vastloopt. Met git-integratie kunt u de wijzigingen incrementeel blijven opslaan en alleen publiceren naar de fabriek wanneer u klaar bent. Git fungeert als staging-plaats voor uw werk, totdat u uw wijzigingen in uw tevredenheid hebt getest.
+-   **Samen werking en beheer**. Als u meerdere team leden hebt die deel nemen aan dezelfde Factory, kunt u uw team genoten met elkaar laten samen werken via een code controle proces. U kunt ook uw fabriek instellen, zodat niet elke bijdrager aan de Factory toestemming heeft om te implementeren in de fabriek. Team leden mogen alleen wijzigingen aanbrengen via git, maar alleen bepaalde personen in het team mogen de wijzigingen in de fabriek publiceren.
+-   Het **verschil wordt weer gegeven**. In de Git-modus ziet u een goed vergelijkend verschil van de nettolading die u op het punt staat te publiceren naar de fabriek. Dit verschil toont u alle resources/entiteiten die zijn gewijzigd/toegevoegd/verwijderd sinds de laatste keer dat u uw fabriek hebt gepubliceerd. Op basis van dit verschil kunt u door gaan met publiceren, of teruggaan en de wijzigingen controleren en later terugkomen.
+-   **Betere CI/cd**. Als u de Git-modus gebruikt, kunt u uw release pijplijn zo configureren dat deze automatisch wordt geactiveerd zodra er wijzigingen zijn aangebracht in de dev Factory. U kunt ook de eigenschappen in uw fabriek aanpassen die beschikbaar zijn als para meters in de Resource Manager-sjabloon. Het kan handig zijn om alleen de vereiste set eigenschappen als para meters te gebruiken en alle andere gegevens vast te maken.
+-   **Betere prestaties**. Een gemiddelde fabriek wordt tien keer sneller in de Git-modus geladen dan in de normale modus LIVE, omdat de resources worden gedownload via git.
 
-## <a name="best-practices-for-git-integration"></a>Best practices for Git integration
+## <a name="best-practices-for-git-integration"></a>Aanbevolen procedures voor git-integratie
 
 ### <a name="permissions"></a>Machtigingen
 
-Typically you don’t want every team member to have permissions to update the factory. The following permissions settings are recommended:
+Normaal gesp roken wilt u niet dat elk teamlid gemachtigd is om de fabriek bij te werken. De volgende machtigings instellingen worden aanbevolen:
 
-*   All team members should have read permissions to the data factory.
-*   Only a select set of people should be allowed to publish to the factory. To do so, they must have the **Data Factory contributor** role on the factory. For more information on permissions, see [Roles and permissions for Azure Data Factory](concepts-roles-permissions.md).
+*   Alle team leden moeten lees machtigingen hebben voor de data factory.
+*   Alleen een select-set met personen mag publiceren naar de Factory. Hiervoor moeten ze de rol **Data Factory Inzender** hebben op de fabriek. Zie [rollen en machtigingen voor Azure Data Factory](concepts-roles-permissions.md)voor meer informatie over machtigingen.
    
-It's recommended to not allow direct check-ins to the collaboration branch. This restriction can help prevent bugs as every check-in will go through a pull request review process described in [Creating feature branches](source-control.md#creating-feature-branches).
+Het is raadzaam om directe incheckers niet toe te staan voor de vertakking voor samen werking. Deze beperking kan helpen te voor komen dat er fouten optreden bij elke check-in om een pull-aanvraag beoordelings proces te door lopen dat wordt beschreven in [functie vertakkingen maken](source-control.md#creating-feature-branches).
 
-### <a name="using-passwords-from-azure-key-vault"></a>Using passwords from Azure Key Vault
+### <a name="using-passwords-from-azure-key-vault"></a>Wacht woorden van Azure Key Vault gebruiken
 
-its recommended to use Azure Key Vault to store any connection strings or passwords for Data Factory Linked Services. For security reasons, we don’t store any such secret information in Git, so any changes to Linked Services are published immediately to the Azure Data Factory service.
+het wordt aanbevolen Azure Key Vault te gebruiken voor het opslaan van verbindings reeksen of wacht woorden voor Data Factory gekoppelde services. Uit veiligheids overwegingen worden deze geheime gegevens niet opgeslagen in Git, zodat eventuele wijzigingen in gekoppelde services onmiddellijk worden gepubliceerd in de Azure Data Factory-service.
 
-Using Key Vault also makes continuous integration and deployment easier as you will not have to provide these secrets during Resource Manager template deployment.
+Het gebruik van Key Vault zorgt ook voor continue integratie en implementatie, omdat u deze geheimen niet hoeft op te geven tijdens de implementatie van Resource Manager-sjablonen.
 
-## <a name="troubleshooting-git-integration"></a>Troubleshooting Git integration
+## <a name="troubleshooting-git-integration"></a>Problemen met git-integratie oplossen
 
-### <a name="stale-publish-branch"></a>Stale publish branch
+### <a name="stale-publish-branch"></a>Verouderde publicatie vertakking
 
-If the publish branch is out of sync with the master branch and contains out-of-date resources despite a recent publish, try following these steps:
+Als de publicatie vertakking niet is gesynchroniseerd met de Master vertakking en verouderde bronnen bevat ondanks een recente publicatie, voert u de volgende stappen uit:
 
-1. Remove your current Git repository
-1. Reconfigure Git with the same settings, but make sure **Import existing Data Factory resources to repository** is selected and choose **New branch**
-1. Delete all resources from your collaboration branch
-1. Create a pull request to merge the changes to the collaboration branch 
+1. Uw huidige Git-opslag plaats verwijderen
+1. Configureer Git opnieuw met dezelfde instellingen, maar zorg ervoor dat **bestaande Data Factory resources importeren in opslag plaats** is geselecteerd en kies **nieuwe vertakking**
+1. Alle resources uit uw samenwerkings vertakking verwijderen
+1. Een pull-aanvraag maken om de wijzigingen aan de collaboration Branch samen te voegen 
 
 ## <a name="provide-feedback"></a>Feedback geven
-Select **Feedback** to comment about features or to notify Microsoft about issues with the tool:
+Selecteer **feedback** om commentaar te geven over functies of om micro soft op de hoogte te stellen over problemen met het hulp programma:
 
 ![Feedback](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* To learn more about monitoring and managing pipelines, see [Monitor and manage pipelines programmatically](monitor-programmatically.md).
-* To implement continuous integration and deployment, see [Continuous integration and delivery (CI/CD) in Azure Data Factory](continuous-integration-deployment.md).
+* Zie [pijp lijnen bewaken en beheren via een programma](monitor-programmatically.md)voor meer informatie over het controleren en beheren van pijp lijnen.
+* Zie [doorlopende integratie en levering (CI/cd) in azure Data Factory](continuous-integration-deployment.md)voor het implementeren van doorlopende integratie en implementatie.

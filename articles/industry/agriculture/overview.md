@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12882860b8a9beadd4e56cbb151d670fac4da43b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ff28ae7dbff40910ac0431fb47f7f0be3e1569c0
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798695"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538130"
 ---
 # <a name="overview-of-azure-farmbeats"></a>Overzicht van Azure FarmBeats
 
@@ -36,11 +36,11 @@ Azure FarmBeats biedt u een robuuste en gemakkelijke manier om het volgende te d
 - Krijg inzicht in de bewerkings acties door AI/ML-modellen boven op geaggregeerde gegevens sets te bouwen.
 - Bouw of verbeter uw oplossing voor digitale land bouwers door de farm status adviezen te bieden.
 
-Azure FarmBeat-onderdelen worden besproken in de volgende secties van dit artikel.
+Azure FarmBeats-onderdelen worden besproken in de volgende secties van dit artikel.
 
 ## <a name="data-hub"></a>Data hub
 
-Een API-laag, waarmee aggregatie, normalisatie en contextualization van verschillende agrarische gegevens sets tussen providers worden ingeschakeld. Met deze preview-versie kunt u twee Sens oren gebruiken: [Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), één satelliet installatie kopie van de provider [Sentinel-2](https://sentinel.esa.int/web/sentinel/home), en twee drone imagey-providers [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/). Data hub is ontworpen als een API-platform en we werken met veel meer providers om te integreren met Azure FarmBeats, zodat u meer keuze hebt tijdens het bouwen van uw oplossing.
+De Azure FarmBeats data hub is een API-laag, waarmee aggregatie, normalisatie en contextualization van verschillende agrarische gegevens sets tussen providers worden ingeschakeld. Met deze preview-versie kunt u twee Sens oren gebruiken: [Davis-instrumenten](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), één satelliet installatie kopie van de provider [Sentinel-2](https://sentinel.esa.int/web/sentinel/home)en drie drone imagey-providers [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/) , [DJI](https://dji.com/). Data hub is ontworpen als een API-platform en we werken met veel meer providers om te integreren met Azure FarmBeats, zodat u meer keuze hebt tijdens het bouwen van uw oplossing.
 
 ## <a name="accelerator"></a>Snelle
 
@@ -48,8 +48,8 @@ Een voor beeld van een oplossing, gebouwd op basis van de data hub, die uw gebru
 
 ## <a name="resources"></a>Bronnen
 
-Ga naar FarmBeats- [blog](https://aka.ms/AzureFarmBeats) en [forums](https://aka.ms/FarmBeatsMSDN).
+Ga naar Azure FarmBeats [blog](https://aka.ms/AzureFarmBeats) en [forums](https://aka.ms/FarmBeatsMSDN) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Om aan de slag te gaan met Azure FarmBeats, gaat u naar [Azure Marketplace](https://aka.ms/FarmBeatsMarketplace) om te implementeren.
+Ga naar [Azure Marketplace](https://aka.ms/FarmBeatsMarketplace) om aan de slag te gaan met Azure FarmBeats om het implementatie proces te starten.

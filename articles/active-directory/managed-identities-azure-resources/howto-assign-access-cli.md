@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4153e038228d7ec4631fc5fec81303966a12b01b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b241ac223fd1eb9df2b0a914726d8f37df5f4d88
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184089"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547362"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Een beheerde identiteit toegang toewijzen aan een resource met behulp van Azure CLI
 
@@ -30,18 +30,18 @@ Wanneer u een Azure-resource hebt geconfigureerd met een beheerde identiteit, ku
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend met beheerde identiteiten voor Azure-resources bent, lees de [overzichtssectie](overview.md). **Lees de [verschil tussen een beheerde identiteit door het systeem is toegewezen en de gebruiker toegewezen](overview.md#how-does-it-work)** .
+- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 - Als u wilt de CLI-scriptvoorbeelden uitvoeren, hebt u drie opties:
-    - Gebruik [Azure Cloud Shell](../../cloud-shell/overview.md) vanuit Azure portal (Zie volgende sectie).
+    - Gebruik [Azure Cloud shell](../../cloud-shell/overview.md) van de Azure Portal (zie volgende sectie).
     - Gebruik de ingesloten Azure Cloud Shell via het 'Try It' de knop, zich in de rechterbovenhoek van elk codeblok.
-    - [Installeer de nieuwste versie van Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) als u liever een lokale CLI-console. 
+    - [Installeer de nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) als u liever een lokale cli-console gebruikt. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>RBAC gebruiken voor het toewijzen van een beheerde identiteit toegang naar een andere resource
 
-Wanneer u inschakelt de beheerde identiteit op een Azure-resource, zoals een [virtuele Azure-machine](qs-configure-cli-windows-vm.md) of [Azure virtuele-machineschaalset](qs-configure-cli-windows-vmss.md): 
+Nadat u de beheerde identiteit hebt ingeschakeld voor een Azure-resource, zoals een [virtuele machine van Azure](qs-configure-cli-windows-vm.md) of een [schaalset voor virtuele machines van Azure](qs-configure-cli-windows-vmss.md): 
 
 1. Als u de Azure CLI in een lokale console gebruikt, meldt u zich eerst aan bij Azure met [az login](/cli/azure/reference-index#az-login). Gebruik een account dat is gekoppeld aan het Azure-abonnement waarin u wilt implementeren van de virtuele machine of VM-schaalset:
 
@@ -49,7 +49,7 @@ Wanneer u inschakelt de beheerde identiteit op een Azure-resource, zoals een [vi
    az login
    ```
 
-2. In dit voorbeeld zijn we geeft u de toegang van een virtuele machine van Azure naar een opslagaccount. Eerst gebruiken we [az resource list](/cli/azure/resource/#az-resource-list) om op te halen van de service-principal voor de virtuele machine met de naam myVM:
+2. In dit voorbeeld zijn we geeft u de toegang van een virtuele machine van Azure naar een opslagaccount. Eerst gebruiken we [AZ Resource List](/cli/azure/resource/#az-resource-list) om de Service-Principal op te halen voor de virtuele machine met de naam myVM:
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
@@ -60,7 +60,7 @@ Wanneer u inschakelt de beheerde identiteit op een Azure-resource, zoals een [vi
    spID=$(az resource list -n DevTestVMSS --query [*].identity.principalId --out tsv)
    ```
 
-3. Zodra u de service-principal-ID hebt, gebruikt u [az roltoewijzing maken](/cli/azure/role/assignment#az-role-assignment-create) instellen om te geven van de virtuele machine of virtuele-machineschaalset 'Lezer' toegang tot een opslagaccount met de naam 'myStorageAcct':
+3. Wanneer u de Service-Principal-ID hebt, gebruikt u [AZ Role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) om de virtuele machine of de virtuele-machine schaalset ' lezer ' toegang te geven tot een opslag account met de naam ' myStorageAcct ':
 
    ```azurecli-interactive
    az role assignment create --assignee $spID --role 'Reader' --scope /subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/myStorageAcct
@@ -68,6 +68,6 @@ Wanneer u inschakelt de beheerde identiteit op een Azure-resource, zoals een [vi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beheerde identiteiten voor een overzicht van Azure-resources](overview.md)
-- Zie voor het inschakelen van beheerde identiteiten op een Azure-machine [configureren beheerde identiteiten voor een Azure-resources op een Azure-VM met behulp van Azure CLI](qs-configure-cli-windows-vm.md).
-- Zie voor het inschakelen van beheerde identiteiten op een schaalset voor virtuele Azure-machine [configureren beheerde identiteiten voor een Azure-resources op een VM-schaalset met behulp van Azure CLI](qs-configure-cli-windows-vmss.md).
+- [Overzicht van beheerde identiteiten voor Azure-resources](overview.md)
+- Als u beheerde identiteit wilt inschakelen op een virtuele machine van Azure, raadpleegt u [beheerde identiteiten voor Azure-resources configureren op een Azure-VM met behulp van Azure cli](qs-configure-cli-windows-vm.md).
+- Zie [beheerde identiteiten voor Azure-resources configureren op een schaalset voor virtuele machines met behulp van Azure cli](qs-configure-cli-windows-vmss.md)om beheerde identiteit in te scha kelen op een virtuele machine schaalset van Azure.

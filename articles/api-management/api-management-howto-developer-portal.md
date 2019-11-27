@@ -1,6 +1,6 @@
 ---
-title: Overview of Azure API Management developer portal - Azure API Management | Microsoft Docs
-description: Learn about the developer portal in API Management.
+title: Overzicht van Azure API Management-ontwikkelaars Portal-Azure API Management | Microsoft Docs
+description: Meer informatie over de ontwikkelaars Portal in API Management.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -19,123 +19,123 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454389"
 ---
-# <a name="azure-api-management-developer-portal-overview"></a>Azure API Management developer portal overview
+# <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
-Developer portal is an automatically generated, fully customizable website with the documentation of your APIs. It is where API consumers can discover your APIs, learn how to use them, request access, and try them out.
+Ontwikkelaars Portal is een automatisch gegenereerde, volledig aanpas bare website met de documentatie van uw Api's. Het is waar API-consumers uw Api's kunnen detecteren, meer informatie over het gebruik ervan moeten gebruiken, toegang te vragen en uit te proberen.
 
-This article describes the differences between self-hosted and managed versions of the developer portal in API Management. It also explains its architecture and provides answers to frequently asked questions.
+In dit artikel worden de verschillen beschreven tussen zelf-hostende en beheerde versies van de ontwikkelaars Portal in API Management. Ook wordt de architectuur uitgelegd en vindt u antwoorden op veelgestelde vragen.
 
 > [!WARNING]
 >
-> [Learn how to migrate from the preview version to the generally available version](#preview-to-ga) of the developer portal.
+> [Meer informatie over het migreren van de preview-versie naar de algemeen beschik bare versie](#preview-to-ga) van de ontwikkelaars Portal.
 
-![API Management developer portal](media/api-management-howto-developer-portal/cover.png)
+![API Management ontwikkelaars Portal](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="managed-vs-self-hosted"></a> Managed and self-hosted versions
+## <a name="managed-vs-self-hosted"></a>Beheerde en zelf-hostende versies
 
-You can build your developer portal in two ways:
+U kunt uw ontwikkelaars Portal op twee manieren bouwen:
 
-- **Managed version** - by editing and customizing the portal, which is built into your API Management instance and is accessible through the URL `<your-api-management-instance-name>.developer.azure-api.net`. Refer to [this documentation article](api-management-howto-developer-portal-customize.md) to learn how to access and customize the managed portal.
-- **Self-hosted version** - by deploying and self-hosting your portal outside of an API Management instance. This approach allows you to edit the portal's codebase and extend the provided core functionality. You also need to upgrade the portal to the latest version yourself. For details and instructions, refer to the [GitHub repository with the source code of the portal][1]. The [tutorial for the managed version](api-management-howto-developer-portal-customize.md) walks through the portal's administrative panel, which is also featured in the self-hosted version.
+- **Beheerde versie** : door de portal te bewerken en aan te passen, die in uw API Management-exemplaar is ingebouwd en toegankelijk is via de URL `<your-api-management-instance-name>.developer.azure-api.net`. Raadpleeg [Dit documentatie artikel](api-management-howto-developer-portal-customize.md) voor meer informatie over het openen en aanpassen van de beheerde Portal.
+- **Zelf-hostende versie** : door uw portal buiten een API Management-exemplaar te implementeren en zelf te hosten. Met deze aanpak kunt u de code base van de portal bewerken en de meegeleverde kern functionaliteit uitbreiden. U moet ook zelf een upgrade van de portal naar de nieuwste versie uitvoeren. Raadpleeg de [github-opslag plaats met de bron code van de portal][1]voor meer informatie en instructies. In de [zelf studie voor de beheerde versie](api-management-howto-developer-portal-customize.md) wordt het beheer paneel van de portal beschreven. dit wordt ook aanbevolen in de zelf-hostende versie.
 
-## <a name="portal-architectural-concepts"></a>Portal architectural concepts
+## <a name="portal-architectural-concepts"></a>Concepten van de portal architectuur
 
-The portal components can be logically divided into two categories: *code* and *content*.
+De portal onderdelen kunnen logisch worden onderverdeeld in twee categorieën: *code* en *inhoud*.
 
-*Code* is maintained in [the GitHub repository][1] and includes:
+De *code* wordt beheerd in [de GitHub-opslag plaats][1] en omvat:
 
-- Widgets - which represent visual elements and combine HTML, JavaScript, styling ability, settings, and content mapping. Examples are an image, a text paragraph, a form, a list of APIs etc.
-- Styling definitions - which specify how widgets can be styled
-- Engine - which generates static webpages from portal content and is written in JavaScript
-- Visual editor - which allows for in-browser customization and authoring experience
+- Widgets: deze vertegenwoordigen visuele elementen en combi neer HTML, java script, de mogelijkheden, instellingen en inhouds toewijzing. Voor beelden zijn een afbeelding, een tekst alinea, een formulier, een lijst met Api's, enzovoort.
+- Stijl definities: Hiermee geeft u op hoe widgets kunnen worden opgemaakt
+- Engine: Hiermee worden statische webpagina's gegenereerd op basis van de Portal-inhoud en geschreven in Java script
+- Visuele editor, die in de browser aanpassing en ontwerp ervaring toestaat
 
-*Content* is divided into two subcategories: *portal content* and *API Management content*.
+*Inhoud* is onderverdeeld in twee subcategorieën: inhoud van de *Portal* en *API Management inhoud*.
 
-*Portal content* is specific to the portal and includes:
+De *Portal-inhoud* is specifiek voor de portal en omvat:
 
-- Pages - for example, landing page, API tutorials, blog posts
-- Media - images, animations, and other file-based content
-- Layouts - templates, which are matched against a URL and define how pages are displayed
-- Styles - values for styling definitions, e.g. fonts, colors, borders
-- Settings - configuration, e.g. favicon, website metadata
+- Pagina's: bijvoorbeeld landings pagina, API-zelf studies, blog berichten
+- Media-afbeeldingen, animaties en andere op bestanden gebaseerde inhoud
+- Indelingen: sjablonen, die overeenkomen met een URL en bepalen hoe pagina's worden weer gegeven
+- Stijlen-waarden voor stijl definities, zoals letter typen, kleuren, randen
+- Instellingen-configuratie, bijvoorbeeld favicon, meta gegevens van website
 
-*Portal content*, except for media, is expressed as JSON documents.
+*Portal inhoud*, met uitzonde ring van media, wordt uitgedrukt als JSON-documenten.
 
-*API Management content* includes entities such as APIs, Operations, Products, Subscriptions.
+*API Management inhoud* bevat entiteiten zoals Api's, bewerkingen, producten, abonnementen.
 
-The portal is based on an adapted fork of the [Paperbits framework](https://paperbits.io/). The original Paperbits functionality has been extended to provide API Management-specific widgets (for example, a list of APIs, a list of Products) and a connector to API Management service for saving and retrieving content.
+De portal is gebaseerd op een aangepaste Fork van het [Paperbits-Framework](https://paperbits.io/). De oorspronkelijke Paperbits-functionaliteit is uitgebreid om API Management specifieke widgets te bieden (bijvoorbeeld een lijst met Api's, een lijst met producten) en een connector voor API Management-service voor het opslaan en ophalen van inhoud.
 
-## <a name="faq"></a> Frequently asked questions
+## <a name="faq"></a>Veelgestelde vragen
 
-In this section, we answer common questions about the new developer portal, which are of general nature. For questions specific to the self-hosted version, refer to [the wiki section of the GitHub repository](https://github.com/Azure/api-management-developer-portal/wiki).
+In deze sectie beantwoorden we veelgestelde vragen over de nieuwe ontwikkelaars Portal, die algemeen zijn. Raadpleeg [de sectie wiki van de GitHub-opslag plaats](https://github.com/Azure/api-management-developer-portal/wiki)voor vragen die specifiek zijn voor de zelf-hostende versie.
 
-### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> How can I migrate from the preview version of the portal?
+### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> hoe kan ik migreren vanuit de preview-versie van de portal?
 
-By using the preview version of the developer portal, you provisioned the preview content in your API Management service. The default content has been significantly modified in the generally available version for better user experience. It also includes new widgets.
+Door de preview-versie van de ontwikkelaars portal te gebruiken, hebt u de preview-inhoud in uw API Management-service ingericht. De standaard inhoud is aanzienlijk gewijzigd in de algemeen beschik bare versie voor betere gebruikers ervaring. Het omvat ook nieuwe widgets.
 
-If you're using the managed version, reset the content of the portal by clicking **Reset content** in the **Operations** menu section. Confirming this operation will remove all the content of the portal and provision the new default content. The portal's engine has been automatically updated in your API Management service.
+Als u de beheerde versie gebruikt, moet u de inhoud van de portal opnieuw instellen door te klikken op **inhoud opnieuw instellen** in de sectie **bewerkingen** menu. Als u deze bewerking bevestigt, wordt de inhoud van de portal verwijderd en wordt de nieuwe standaard inhoud ingericht. De engine van de portal is automatisch bijgewerkt in uw API Management-service.
 
-![Reset portal content](media/api-management-howto-developer-portal/reset-content.png)
+![Portal-inhoud opnieuw instellen](media/api-management-howto-developer-portal/reset-content.png)
 
-If you're using the self-hosted version, use the `scripts/cleanup.bat` and `scripts/generate.bat` from the GitHub repository to remove existing content and provision new content. Make sure you upgrade your portal's code to the latest release from the GitHub repository beforehand.
+Als u de zelf-hostende versie gebruikt, gebruikt u de `scripts/cleanup.bat` en `scripts/generate.bat` uit de opslag plaats GitHub om bestaande inhoud te verwijderen en nieuwe inhoud in te richten. Zorg ervoor dat u de code van uw portal van tevoren bijwerkt naar de nieuwste versie van de GitHub-opslag plaats.
 
-If you don't want to reset the content of the portal, you may consider using newly available widgets throughout your pages. Existing widgets have been automatically updated to the latest versions.
+Als u de inhoud van de portal niet opnieuw wilt instellen, kunt u eventueel pas beschik bare widgets gebruiken in uw pagina's. Bestaande widgets zijn automatisch bijgewerkt naar de nieuwste versie.
 
-If your portal was provisioned after the general availability announcement, it should already feature the new default content. No action is required from your side.
+Als uw portal is ingericht na de aankondiging van de algemene Beschik baarheid, moet deze al de nieuwe standaard inhoud gebruiken. Aan uw zijde is geen actie vereist.
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-new-developer-portal"></a>How can I migrate from the old developer portal to the new developer portal?
+### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-new-developer-portal"></a>Hoe kan ik migreren van de oude ontwikkelaars Portal naar de nieuwe ontwikkelaars Portal?
 
-Portals are incompatible and you need to migrate the content manually.
+Portals zijn incompatibel en u moet de inhoud hand matig migreren.
 
-### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>Does the new portal have all the features of the old portal?
+### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>Beschikt de nieuwe portal over alle functies van de oude Portal?
 
-The new developer portal doesn't support *Applications* and *Issues*. If you have used *Issues* in the old portal and need them in the new one, post a comment in [a dedicated GitHub issue](https://github.com/Azure/api-management-developer-portal/issues/122).
+De nieuwe ontwikkelaars Portal biedt geen ondersteuning voor *toepassingen* en *problemen*. Als u *problemen* hebt gebruikt in de oude Portal en deze nodig hebt, plaatst u een opmerking in [een specifiek github-probleem](https://github.com/Azure/api-management-developer-portal/issues/122).
 
-Authentication with OAuth in the interactive developer console is not yet supported. You can track the progress through [the GitHub issue](https://github.com/Azure/api-management-developer-portal/issues/208).
+Verificatie met OAuth in de interactieve ontwikkelaars console wordt nog niet ondersteund. U kunt de voortgang volgen via [het github-probleem](https://github.com/Azure/api-management-developer-portal/issues/208).
 
-### <a name="has-the-old-portal-been-deprecated"></a>Has the old portal been deprecated?
+### <a name="has-the-old-portal-been-deprecated"></a>Is de oude Portal afgeschaft?
 
-The old developer and publisher portals are now *legacy* features - they will be receiving security updates only. Nieuwe functies worden alleen in de nieuwe ontwikkelaarsportal geïmplementeerd.
+De oude portals voor ontwikkel aars en uitgevers zijn nu *verouderde* functies. ze ontvangen alleen beveiligings updates. Nieuwe functies worden alleen in de nieuwe ontwikkelaarsportal geïmplementeerd.
 
-Deprecation of the legacy portals will be announced separately. If you have questions, concerns, or comments, raise them [in a dedicated GitHub issue](https://github.com/Azure/api-management-developer-portal/issues/121).
+Afschaffing van de verouderde portals wordt afzonderlijk aangekondigd. Als u vragen of opmerkingen hebt, kunt u deze [in een specifiek github-probleem](https://github.com/Azure/api-management-developer-portal/issues/121)opheffen.
 
-### <a name="how-can-i-automate-portal-deployments"></a>How can I automate portal deployments?
+### <a name="how-can-i-automate-portal-deployments"></a>Hoe kan ik Portal implementaties automatiseren?
 
-You can programmatically access and manage the developer portal's content through the REST API, regardless if you're using a managed or a self-hosted version.
+U kunt via de REST API programmatisch toegang krijgen tot de inhoud van de ontwikkelaars Portal en deze beheren, ongeacht of u een beheerde of zelf-hostende versie gebruikt.
 
-The API is documented in [the GitHub repository's wiki section][2]. It can also be used for automating migrations of portal content between environments - for example from a test environment to the production environment. You can learn more about this process [in this documentation article](https://aka.ms/apimdocs/migrateportal) on GitHub.
+De API wordt beschreven in [de sectie wiki van de GitHub-opslag plaats][2]. Het kan ook worden gebruikt voor het automatiseren van de migratie van Portal-inhoud tussen omgevingen, bijvoorbeeld vanuit een test omgeving naar de productie omgeving. Meer informatie over dit proces vindt u [in dit documentatie artikel](https://aka.ms/apimdocs/migrateportal) op github.
 
-### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Does the portal support Azure Resource Manager templates and/or is it compatible with API Management DevOps Resource Kit?
+### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Ondersteunt de portal Azure Resource Manager sjablonen en/of is deze compatibel met API Management DevOps Resource Kit?
 
 Nee.
 
-### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>Do I need to enable additional VNet connectivity for the new managed portal dependencies?
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>Moet ik extra VNet-connectiviteit inschakelen voor de nieuwe afhankelijkheden van de beheerde Portal?
 
-In most cases - no.
+In de meeste gevallen-Nee.
 
-If your API Management service is in an internal VNet, your developer portal is only accessible from within the network. The management endpoint's host name must resolve to the internal VIP of the service from the machine you use to access the portal's administrative interface. Make sure the management endpoint is registered in the DNS. In case of misconfiguration, you will see an error: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`.
+Als uw API Management-service zich in een intern VNet bevindt, is uw ontwikkelaars Portal alleen toegankelijk vanuit het netwerk. De hostnaam van het beheer eindpunt moet worden omgezet naar het interne VIP van de service van de computer die u gebruikt voor toegang tot de beheer interface van de portal. Controleer of het beheer eindpunt is geregistreerd in de DNS. In het geval van een onjuiste configuratie ziet u een fout: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`.
 
-### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>I have assigned a custom API Management domain and the published portal doesn't work
+### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>Ik heb een aangepast API Management domein toegewezen en de gepubliceerde Portal werkt niet
 
-After you update the domain, you need to [republish the portal](api-management-howto-developer-portal-customize.md#publish) for the changes to take effect.
+Nadat u het domein hebt bijgewerkt, moet u [de portal opnieuw publiceren](api-management-howto-developer-portal-customize.md#publish) om de wijzigingen van kracht te laten worden.
 
-### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>I have added an identity provider and I can't see it in the portal
+### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>Ik heb een id-provider toegevoegd en deze kan niet worden weer geven in de portal
 
-After you configure an identity provider (for example, AAD, AAD B2C), you need to [republish the portal](api-management-howto-developer-portal-customize.md#publish) for the changes to take effect.
+Nadat u een id-provider (bijvoorbeeld AAD, AAD B2C) hebt geconfigureerd, moet u [de portal opnieuw publiceren](api-management-howto-developer-portal-customize.md#publish) om de wijzigingen van kracht te laten worden.
 
-### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>I have set up delegation and the portal doesn't use it
+### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>Ik heb delegering ingesteld en de portal gebruikt deze niet
 
-After you set up delegation, you need to [republish the portal](api-management-howto-developer-portal-customize.md#publish) for the changes to take effect.
+Nadat u de overdracht hebt ingesteld, moet u [de portal opnieuw publiceren](api-management-howto-developer-portal-customize.md#publish) om de wijzigingen van kracht te laten worden.
 
-### <a name="my-other-api-management-configuration-changes-havent-been-propagated-in-the-developer-portal"></a>My other API Management configuration changes haven't been propagated in the developer portal
+### <a name="my-other-api-management-configuration-changes-havent-been-propagated-in-the-developer-portal"></a>De wijzigingen in de configuratie van mijn andere API Management zijn niet door gegeven in de ontwikkelaars Portal
 
-Most configuration changes (for example, VNet, sign-in and product terms) require [republishing the portal](api-management-howto-developer-portal-customize.md#publish).
+Voor de meeste configuratie wijzigingen (bijvoorbeeld VNet, aanmelden en product voorwaarden) moet [de portal opnieuw worden gepubliceerd](api-management-howto-developer-portal-customize.md#publish).
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>I'm getting a CORS error when using the interactive console
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>Ik krijg een CORS-fout bij het gebruik van de interactieve console
 
-The interactive console makes a client-side API request from the browser. You can resolve the CORS problem by adding [a CORS policy](api-management-cross-domain-policies.md#CORS) on your API(s). You can specify all the parameters manually or use wildcard `*` values. Bijvoorbeeld:
+De interactieve console maakt een API aan de client zijde via de browser. U kunt het CORS-probleem oplossen door [een CORS-beleid](api-management-cross-domain-policies.md#CORS) toe te voegen aan uw API (s). U kunt alle para meters hand matig opgeven of Joker `*` waarden gebruiken. Bijvoorbeeld:
 
 ```XML
 <cors>
@@ -163,19 +163,19 @@ The interactive console makes a client-side API request from the browser. You ca
 
 > [!NOTE]
 > 
-> If you apply the CORS policy in the Product scope, instead of the API(s) scope, and your API uses subscription key authentication through a header, your console won't work.
+> Als u het CORS-beleid toepast in het product bereik, in plaats van de API (s)-scope, en uw API gebruikmaakt van abonnements sleutel verificatie via een header, werkt de console niet.
 >
-> The browser automatically issues an OPTIONS HTTP request, which doesn’t contain a header with the subscription key. Because of the missing subscription key, API Management can't associate the OPTIONS call with a Product, so it can’t apply the CORS policy.
+> De browser verleent automatisch een HTTP-aanvraag voor opties, die geen header met de abonnements sleutel bevat. Vanwege de ontbrekende abonnements sleutel kan API Management de aanroep van de opties niet koppelen aan een product, zodat het CORS-beleid niet kan worden toegepast.
 >
-> As a workaround you can pass the subscription key in a query parameter.
+> Als tijdelijke oplossing kunt u de abonnements sleutel in een query parameter door geven.
 
-### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>What permissions do I need to edit the developer portal?
+### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>Welke machtigingen heb ik nodig om de ontwikkelaars portal te bewerken?
 
-If you're seeing the `Oops. Something went wrong. Please try again later.` error when you open the portal in the administrative mode, you may be lacking the required permissions (RBAC).
+Als u de `Oops. Something went wrong. Please try again later.` fout ziet wanneer u de portal in de beheer modus opent, beschikt u mogelijk niet over de vereiste machtigingen (RBAC).
 
-The legacy portals required the permission `Microsoft.ApiManagement/service/getssotoken/action` at the service scope (`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`) to allow the user administrator access to the portals. The new portal requires the permission `Microsoft.ApiManagement/service/users/token/action` at the scope `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1`.
+De verouderde portals hebben de machtiging `Microsoft.ApiManagement/service/getssotoken/action` in het service bereik (`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`) nodig om de beheerder van de gebruiker toegang te geven tot de portals. De nieuwe portal vereist de machtiging `Microsoft.ApiManagement/service/users/token/action` op het bereik `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1`.
 
-You can use the following PowerShell script to create a role with the required permission. Remember to change the `<subscription-id>` parameter. 
+U kunt het volgende Power shell-script gebruiken om een rol te maken met de vereiste machtiging. Vergeet niet om de para meter `<subscription-id>` te wijzigen. 
 
 ```PowerShell
 #New Portals Admin Role 
@@ -193,33 +193,33 @@ $customRole.AssignableScopes.Add('/subscriptions/<subscription-id>')
 New-AzRoleDefinition -Role $customRole 
 ```
  
-Once the role is created, it can be granted to any user from the **Access Control (IAM)** section in the Azure portal. Assigning this role to a user will assign the permission at the service scope. The user will be able to generate SAS tokens on behalf of *any* user in the service. At the minimum, this role needs to be assigned to the administrator of the service. The following PowerShell command demonstrates how to assign the role to a user `user1` at the lowest scope to avoid granting unnecessary permissions to the user: 
+Zodra de rol is gemaakt, kan deze worden verleend aan een gebruiker uit de sectie **Access Control (IAM)** in de Azure Portal. Als u deze rol aan een gebruiker toewijst, wordt de machtiging in het service bereik toegewezen. De gebruiker kan SAS-tokens genereren namens *elke* gebruiker in de service. Aan het minimum moet deze rol worden toegewezen aan de beheerder van de service. De volgende Power shell-opdracht laat zien hoe u de rol toewijst aan een gebruiker `user1` op het laagste bereik om te voor komen dat er overbodige machtigingen aan de gebruiker worden verleend: 
 
 ```PowerShell
 New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 
 ```
 
-After the permissions have been granted to a user, the user must sign out and sign in again to the Azure portal for the new permissions to take effect.
+Nadat de machtigingen zijn verleend aan een gebruiker, moet de gebruiker zich afmelden en opnieuw aanmelden bij de Azure Portal om de nieuwe machtigingen van kracht te laten worden.
 
-### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>I'm seeing the `Unable to start the portal. See if settings are specified correctly (...)` error
+### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>Ik zie de `Unable to start the portal. See if settings are specified correctly (...)` fout
 
-This error is shown when a `GET` call to `https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview` fails. The call is issued from the browser by the administrative interface of the portal.
+Deze fout wordt weer gegeven wanneer een `GET` aanroep van `https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview` mislukt. De aanroep wordt uitgegeven vanuit de browser door de beheer interface van de portal.
 
-If your API Management service is in a VNet - refer to the VNet connectivity question above.
+Als uw API Management-service zich in een VNet bevindt, raadpleegt u de bovenstaande VNet-connectiviteit.
 
-The call failure may also be caused by an SSL certificate, which is assigned to a custom domain and is not trusted by the browser. As a mitigation, you can remove the management endpoint custom domain - API Management will fall back to the default endpoint with a trusted certificate.
+De aanroep fout kan ook worden veroorzaakt door een SSL-certificaat dat is toegewezen aan een aangepast domein en niet wordt vertrouwd door de browser. Als oplossing kunt u het aangepaste domein van het beheer eindpunt verwijderen-API Management het standaard eindpunt met een vertrouwd certificaat terugvallen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Learn more about the new developer portal:
+Meer informatie over de nieuwe ontwikkelaars portal:
 
-- [Access and customize the managed developer portal](api-management-howto-developer-portal-customize.md)
-- [Set up self-hosted version of the portal][2]
+- [De beheerde ontwikkelaars Portal openen en aanpassen](api-management-howto-developer-portal-customize.md)
+- [Zelf-hostende versie van de Portal instellen][2]
 
-Browse other resources:
+Bladeren door andere resources:
 
-- [GitHub repository with the source code][1]
-- [Public roadmap of the project][3]
+- [GitHub-opslag plaats met de bron code][1]
+- [Openbaar schema van het project][3]
 
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki

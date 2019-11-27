@@ -11,31 +11,31 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483022"
 ---
-Start using the Anomaly Detector service by creating one of the Azure resources below.
+Begin met het gebruik van de afwijkende detector-service door een van de onderstaande Azure-resources te maken.
 
-* <a href="https://azure.microsoft.com/try/cognitive-services/#decision" target="_blank" rel="noopener">Create a trial resource (opens in a new tab)</a>
-    * No Azure subscription needed: 
-    * Valid for seven days, for free. After signing up, a trial key and endpoint will be available on the [Azure website](https://azure.microsoft.com/try/cognitive-services/my-apis/). 
-    * This is a great option if you want to try Anomaly Detector, but don’t have an Azure subscription.
+* <a href="https://azure.microsoft.com/try/cognitive-services/#decision" target="_blank" rel="noopener">Een proef resource maken (wordt geopend op een nieuw tabblad)</a>
+    * Er is geen Azure-abonnement nodig: 
+    * Gratis geldig voor zeven dagen. Nadat u zich hebt aangemeld, is een proef sleutel en een eind punt beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/). 
+    * Dit is een uitstekende optie als u anomalie detectie wilt proberen, maar geen Azure-abonnement hebt.
 
-* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector" target="_blank" rel="noopener">Create an Anomaly Detector resource (opens in a new tab)</a>:
-    * Available through the Azure portal until you delete the resource.
-    * Use the free pricing tier to try the service, and upgrade later to a paid tier for production.
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector" target="_blank" rel="noopener">Een afwijkende detector bron maken (wordt geopend op een nieuw tabblad)</a>:
+    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.
+    * Gebruik de gratis prijs categorie om de service te proberen en pas later bij te werken naar een betaalde laag voor productie.
 
 
 
-### <a name="create-an-environment-variable"></a>Create an environment variable
+### <a name="create-an-environment-variable"></a>Een omgevings variabele maken
 
 >[!NOTE]
-> The endpoints for non-trial resources created after July 1, 2019 use the custom subdomain format shown below. For more information and a complete list of regional endpoints, see [Custom subdomain names for Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> De eind punten voor niet-proef resources die zijn gemaakt na 1 juli 2019, gebruiken de aangepaste indeling voor subdomeinen die hieronder wordt weer gegeven. Zie [aangepaste subdomein namen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)voor meer informatie en een volledige lijst met regionale eind punten. 
 
-Using your key and endpoint from the resource you created, create two environment variables for authentication:
+Met uw sleutel en eind punt van de resource die u hebt gemaakt, maakt u twee omgevings variabelen voor verificatie:
 
-* `ANOMALY_DETECTOR_KEY` - The resource key for authenticating your requests.
-* `ANOMALY_DETECTOR_ENDPOINT` - The resource endpoint for sending API requests. It will look like this: 
+* `ANOMALY_DETECTOR_KEY`: de resource sleutel voor het verifiëren van uw aanvragen.
+* `ANOMALY_DETECTOR_ENDPOINT`: het resource-eind punt voor het verzenden van API-aanvragen. Dit ziet er als volgt uit: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
-Use the instructions for your operating system.
+Volg de instructies voor uw besturings systeem.
 
 #### <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -44,7 +44,7 @@ setx ANOMALY_DETECTOR_KEY <replace-with-your-anomaly-detector-key>
 setx ANOMALY_DETECTOR_ENDPOINT <replace-with-your-anomaly-detector-endpoint>
 ```
 
-After you add the environment variable, restart the console window.
+Nadat u de omgevings variabele hebt toegevoegd, start u het console venster opnieuw.
 
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
@@ -57,7 +57,7 @@ Nadat u de omgevingsvariabele toevoegt, voert u `source ~/.bashrc` uit vanuit he
 
 #### <a name="macostabunix"></a>[MacOS](#tab/unix)
 
-Edit your `.bash_profile`, and add the environment variable:
+Bewerk uw `.bash_profile`en voeg de omgevings variabele toe:
 
 ```bash
 export ANOMALY_DETECTOR_KEY=<replace-with-your-anomaly-detector-key>

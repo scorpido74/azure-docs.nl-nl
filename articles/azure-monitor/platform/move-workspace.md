@@ -82,7 +82,7 @@ Gebruik de volgende procedure om het Automation-account te ontkoppelen van de we
 
 ## <a name="move-your-workspace"></a>Uw werk ruimte verplaatsen
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 Gebruik de volgende procedure om uw werk ruimte te verplaatsen met behulp van de Azure Portal:
 
 1. Open het menu **log Analytics werk ruimten** en selecteer vervolgens uw werk ruimte.

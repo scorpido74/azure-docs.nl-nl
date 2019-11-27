@@ -1,6 +1,6 @@
 ---
-title: Set up a lab to teach data science with Python and Jupyter Notebooks | Microsoft Docs
-description: Learn how to set up a lab to teach data science using Python and Jupyter Notebooks.
+title: Stel een lab in om data Science te leren met python-en Jupyter-notebooks | Microsoft Docs
+description: Meer informatie over het instellen van een lab om data Science te leren werken met python-en Jupyter-notebooks.
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -20,60 +20,60 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383975"
 ---
-# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Set up a lab to teach data science with Python and Jupyter Notebooks
+# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Stel een lab in om data Science te leren met python-en Jupyter-notebooks
 
-This article outlines how to set up a template machine in Lab Services with the tools needed to teach students how to use [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io).  Jupyter Notebooks is an open-source project that lets you easily combine rich text and executable [Python](https://www.python.org/) source code on a single canvas called a notebook.  Running a notebook results in a linear record of inputs and outputs.  Those outputs can include text, tables of information, scatter plots, and more.
+In dit artikel wordt beschreven hoe u een sjabloon machine kunt instellen in Lab-Services met de hulpprogram ma's die nodig zijn om studenten te leren hoe u [Jupyter-notebooks](http://jupyter-notebook.readthedocs.io)kunt gebruiken.  Jupyter-notebooks is een open-source project waarmee u eenvoudig uitgebreide tekst en uitvoer bare [python](https://www.python.org/) -bron code kunt combi neren op één canvas dat een notitie blok wordt genoemd.  Het uitvoeren van een notitie blok resulteert in een lineaire record met invoer en uitvoer.  Deze uitvoer kan tekst, tabel met gegevens, spreidings grafieken en meer zijn.
 
-## <a name="lab-configuration"></a>Lab configuration
+## <a name="lab-configuration"></a>Lab-configuratie
 
-To set up this lab, you need an Azure subscription and lab account to get started. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Once you get an Azure subscription, you can create a new lab account in Azure Lab Services. For more information about creating a new lab account, see [tutorial to setup a lab account](tutorial-setup-lab-account.md).  You can also use an existing lab account.
+Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie [zelf studie voor het instellen van een Lab-account](tutorial-setup-lab-account.md)voor meer informatie over het maken van een nieuw Lab-account.  U kunt ook een bestaand Lab-account gebruiken.
 
-### <a name="lab-account-settings"></a>Lab Account Settings
+### <a name="lab-account-settings"></a>Instellingen van Lab-account
 
-Enable the settings described in the table below for the lab account. For more information about how to enable marketplace images, see [specify marketplace images available to lab creators](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators).
+Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators)voor meer informatie over het inschakelen van Marketplace-installatie kopieën.
 
-| Lab account setting | Instructies |
+| Account instelling Lab | Instructies |
 | ------------------- | ------------ |
-| Marketplace image | Enable the [Data Science Virtual Machine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) image for use within your lab account. |
+| Marketplace-installatie kopie | Schakel de [Data Science virtual machine-](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) installatie kopie van Windows 2016 in voor gebruik binnen uw Lab-account. |
 
 >[!TIP]
->This article will focus on configuring a template machine that uses the Windows Server operating system.  It's also possible to set up a data science class with Python and Jupyter Notebooks using [Data Science Virtual Machine for Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) or [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) images from the Azure Marketplace.
+>In dit artikel wordt aandacht besteed aan het configureren van een sjabloon machine die gebruikmaakt van het Windows Server-besturings systeem.  Het is ook mogelijk om een Data Science-klasse met python-en Jupyter-notebooks in te stellen met behulp van [Data Science virtual machine voor Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) of [Data Science virtual machine voor Linux (Ubuntu)-](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) installatie kopieën van de Azure Marketplace.
 
-### <a name="lab-settings"></a>Lab settings
+### <a name="lab-settings"></a>Lab-instellingen
 
-Use the settings in the table below when setting up a classroom lab.  For more information how to create a classroom lab, see [set up a classroom lab tutorial](tutorial-setup-classroom-lab.md).
+Gebruik de instellingen in de onderstaande tabel bij het instellen van een leslokaal Lab.  Voor meer informatie over het maken van een leslokaal Lab raadpleegt u [een klassikale Lab-zelf studie instellen](tutorial-setup-classroom-lab.md).
 
-| Lab settings | Value/instructions |
+| Lab-instellingen | Waarde/instructies |
 | ------------ | ------------------ |
-|Virtual Machine Size| Small GPU (Compute). This size is best suited for compute-intensive and network-intensive applications like Artificial Intelligence and Deep Learning. |
-|Virtual Machine Image| SQL Server 2019 Standard on Windows Server 2019|
+|Grootte van virtuele machine| Kleine GPU (Compute). Deze grootte is het meest geschikt voor computerintensieve en netwerkintensieve toepassingen, zoals kunst matige intelligentie en diep gaande lessen. |
+|Installatie kopie van virtuele machine| SQL Server 2019-standaard op Windows Server 2019|
 
-## <a name="template-machine"></a>Template machine
+## <a name="template-machine"></a>Sjabloon machine
 
-The [Data Science Virtual Machine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) image provides the necessary deep learning frameworks and tools required for this type of class.  The image includes Jupyter Notebooks and Visual Studio Code.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) is a web application that allows data scientists to take raw data, run computations, and see the results all in the same environment.  For our template machine, the web application will be running locally.  [Visual Studio Code](https://code.visualstudio.com/) is an IDE that provides a rich interactive experience when writing and testing a notebook.  For more information, see [Working with Jupyter Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
+De [Data Science virtual machine-](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) installatie kopie van Windows 2016 biedt de nodige diepe leer raamwerken en hulp middelen die vereist zijn voor dit type klasse.  De afbeelding bevat Jupyter-notebooks en Visual Studio code.  [Jupyter-notebooks](http://jupyter-notebook.readthedocs.io) is een webtoepassing waarmee gegevens wetenschappers onbewerkte gegevens kunnen maken, berekeningen kunnen uitvoeren en de resultaten in dezelfde omgeving worden weer gegeven.  Voor onze sjabloon machine wordt de webtoepassing lokaal uitgevoerd.  [Visual Studio code](https://code.visualstudio.com/) is een IDE die een rijke interactieve ervaring biedt bij het schrijven en testen van een notitie blok.  Zie [werken met Jupyter-notebooks in Visual Studio code](https://code.visualstudio.com/docs/python/jupyter-support)voor meer informatie.
 
-The remaining task to set up the class is to provide local notebooks.  For instructions how to use the Azure Machine Learning samples, see [how to configure an environment with Jupyter Notebooks](../../machine-learning/service/how-to-configure-environment.md#jupyter).  You can also provide your own notebooks on the template machine.  The notebooks will be copied to all student machines when the template is published.
+De resterende taak voor het instellen van de klasse is het leveren van lokale notitie blokken.  Zie [How to Configure an environment with Jupyter notebooks](../../machine-learning/service/how-to-configure-environment.md#jupyter)voor instructies over het gebruik van de Azure machine learning-voor beelden.  U kunt ook uw eigen notitie blokken op de sjabloon machine opgeven.  De notitie blokken worden gekopieerd naar alle studenten machines wanneer de sjabloon wordt gepubliceerd.
 
 ## <a name="cost-estimate"></a>Kostenschatting
 
-Let's cover a possible cost estimate for this class.  We'll use a class of 25 students.  There are 20 hours of scheduled class time.  Also, each student gets 10 hours quota for homework or assignments outside scheduled class time.  The virtual machine size we chose was small gpu (compute), which is 139 lab units.
+Laten we een mogelijke schatting van de kosten voor deze klasse beslaan.  We gebruiken een klasse van 25 studenten.  Er zijn 20 uur geplande tijd voor de klasse.  Daarnaast krijgt elke student tien uur quota voor huis werk of toewijzingen buiten een geplande klasse tijd.  De grootte van de virtuele machine die u hebt gekozen, is een kleine GPU (Compute). Dit zijn 139 Lab-eenheden.
 
-Here is an example of a possible cost estimate for this class:
+Hier volgt een voor beeld van een mogelijke schatting van de kosten voor deze klasse:
 
-25 students \* (20 scheduled hours + 10 quota hours) \* 139 lab units \*  0.01 USD per hour  = 1042.5 USD
+25 studenten \* (20 geplande uren + 10 quotum uren) \* 139 Lab-eenheden \* 0,01 USD per uur = 1042,5 USD
 
-Further more details on pricing, see [Azure Lab Services Pricing](https://azure.microsoft.com/pricing/details/lab-services/).
+Zie [Azure Lab Services prijzen](https://azure.microsoft.com/pricing/details/lab-services/)voor meer informatie over prijzen.
 
 ## <a name="conclusion"></a>Conclusie
 
-In this article, we walked through the steps to create a lab for a Jupyter Notebooks class. You can use a similar setup for other machine learning classes.
+In dit artikel werd uitgelegd hoe de stappen voor het maken van een Lab voor een Jupyter-notitie klasse. U kunt een vergelijk bare installatie gebruiken voor andere machine learning klassen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Next steps are common to setting up any lab.
+De volgende stappen zijn gebruikelijk voor het instellen van elk lab.
 
-- [Create and manage a template](how-to-create-manage-template.md)
+- [Een sjabloon maken en beheren](how-to-create-manage-template.md)
 - [Gebruikers toevoegen](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Set quota](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Set a schedule](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Email registration links to students](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Quota instellen](how-to-configure-student-usage.md#set-quotas-for-users)
+- [Een planning instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [E-mail registratie koppelingen naar studenten](how-to-configure-student-usage.md#send-invitations-to-users)

@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Manage Private Endpoints in Azure
-description: Learn how to create a Private Endpoint using the Azure portal in this Quickstart
+title: 'Quick Start: privé-eind punten beheren in azure'
+description: Meer informatie over het maken van een persoonlijk eind punt met behulp van de Azure Portal in deze Snelstartgids
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,47 +14,47 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419761"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Quickstart: Create a Private Endpoint using Azure portal
+# <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Snelstartgids: een persoonlijk eind punt maken met Azure Portal
 
-A Private Endpoint is the fundamental building block for private link in Azure. It enables Azure resources, like Virtual Machines (VMs), to communicate privately with private link resources. In this Quickstart, you will learn how to create a VM on an Azure Virtual Network, a  SQL Database Server with an Azure private endpoint using the Azure Portal. Then, you can securely access the SQL Database Server from the VM.
+Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. In deze Quick Start leert u hoe u een virtuele machine kunt maken op een Azure-Virtual Network, een SQL Database-Server met een Azure-persoonlijk eind punt met behulp van Azure Portal. Daarna kunt u veilig toegang krijgen tot de SQL Database-Server vanaf de VM.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 
 > [!NOTE]
-> Private endpoint(s) are not permitted in conjunction with service endpoints in the same subnet!
+> Een of meer persoonlijke eind punten zijn niet toegestaan in combi natie met Service-eind punten in hetzelfde subnet.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-vm"></a>Een VM maken
-In this section, you will create virtual network and the subnet to host the VM that is used to access your Private Link resource (a SQL server in Azure in this example).
+## <a name="create-a-vm"></a>Een virtuele machine maken
+In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw persoonlijke koppelings bron (een SQL-Server in Azure in dit voor beeld).
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
 
-In this section, you will create a Virtual Network and the subnet to host the VM that is used to access your Private Link resource.
+In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw persoonlijke koppelings bron.
 
 1. Selecteer linksboven in het scherm **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
 1. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam | Enter *MyVirtualNetwork*. |
+    | Naam | Voer *MyVirtualNetwork*in. |
     | Adresruimte | Voer *10.1.0.0/16* in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
-    | Locatie | Select **WestCentralUS**.|
-    | Subnet - naam | Enter *mySubnet*. |
+    | Locatie | Selecteer **WestCentralUS**.|
+    | Subnet - naam | Voer *mySubnet*in. |
     | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
     |||
-1. Leave the rest as default and select **Create**.
+1. Laat de rest als standaard en selecteer **maken**.
 
 
 ### <a name="create-virtual-machine"></a>Virtuele machine maken
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Compute** > **Virtual Machine**.
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **reken** > **virtuele machine**.
 
 1. Typ of selecteer in **Een virtuele machine maken - Basisprincipes** de volgende gegevens:
 
@@ -62,15 +62,15 @@ In this section, you will create a Virtual Network and the subnet to host the VM
     | ------- | ----- |
     | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. You created this in the previous section.  |
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
     | **INSTANTIEDETAILS** |  |
-    | Naam van de virtuele machine | Enter *myVm*. |
-    | Regio | Select **WestCentralUS**. |
+    | Naam van de virtuele machine | Voer *myVm*in. |
+    | Regio | Selecteer **WestCentralUS**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | afbeelding | Select **Windows Server 2019 Datacenter**. |
+    | Installatiekopie | Selecteer **Windows Server 2019 Data Center**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
-    | Gebruikersnaam | Enter a username of your choosing. |
+    | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Wachtwoord bevestigen | Voer het wachtwoord opnieuw in. |
     | **REGELS VOOR BINNENKOMENDE POORT** |  |
@@ -79,117 +79,117 @@ In this section, you will create a Virtual Network and the subnet to host the VM
     | Hebt u al een Windows-licentie? | Laat de standaardwaarde **Nee** staan. |
     |||
 
-1. Select **Next: Disks**.
+1. Selecteer **volgende: schijven**.
 
-1. In **Create a virtual machine - Disks**, leave the defaults and select **Next: Networking**.
+1. In **een virtuele machine maken-schijven**, de standaard instellingen behouden en **volgende selecteren: netwerken**.
 
 1. Selecteer in **Een virtuele machine maken - Netwerken** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Virtueel netwerk | Leave the default **MyVirtualNetwork**.  |
-    | Adresruimte | Leave the default **10.1.0.0/24**.|
-    | Subnet | Leave the default **mySubnet (10.1.0.0/24)** .|
+    | Virtueel netwerk | De standaard **MyVirtualNetwork**behouden.  |
+    | Adresruimte | De standaard **10.1.0.0/24**behouden.|
+    | Subnet | Behoud de standaard **mySubnet (10.1.0.0/24)** .|
     | Openbare IP | Handhaaf de standaardinstelling **(new) myVm-ip**. |
     | Openbare poorten voor inkomend verkeer | Selecteer **Geselecteerde poorten toestaan**. |
     | Binnenkomende poorten selecteren | Selecteer **HTTP** en **RDP**.|
     |||
 
 
-1. Selecteer **Controleren + maken**. You're taken to the **Review + create** page where Azure validates your configuration.
+1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert.
 
-1. When you see the **Validation passed** message, select **Create**.
+1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**.
 
-## <a name="create-a-sql-database-server"></a>Create a SQL database server
-In this section, you will create a SQL database server in Azure. 
+## <a name="create-a-sql-database-server"></a>Een SQL database-server maken
+In deze sectie maakt u een SQL database-server in Azure. 
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Databases** > **SQL database**.
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource** > **data bases** maken > **SQL database**.
 
-1. In **Create SQL database - Basics**, enter or select this information:
+1. Voer in **SQL database basis beginselen maken**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **Database details** | |
+    | **Database Details** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. You created this in the previous section.|
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
     | **INSTANTIEDETAILS** |  |
-    | Databasenaam  | Enter *mydatabase*. If this name is taken, create a unique name. |
+    | Databasenaam  | Voer *mydatabase*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     |||
-5. In **Server**, select **Create new**. 
-6. In **New server**, enter or select this information:
+5. Selecteer in **Server**de optie **nieuwe maken**. 
+6. In **nieuwe server**voert u de volgende gegevens in of selecteert u deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    |Servernaam  | Enter *myserver*. If this name is taken, create a unique name.|
-    | Aanmeldgegevens van serverbeheerder| Enter an administrator name of your choosing. |
-    | Wachtwoord | Voer een wachtwoord naar keuze in. The password must be at least 8 characters long and meet the defined requirements. |
-    | Locatie | Select an Azure region where you want to want your SQL Server to reside. |
+    |Servernaam  | Voer *mijn server*in. Als deze naam wordt gebruikt, maakt u een unieke naam.|
+    | Aanmeldgegevens van serverbeheerder| Voer de naam van de beheerder van uw keuze in. |
+    | Wachtwoord | Voer een wachtwoord naar keuze in. Het wacht woord moet ten minste acht tekens lang zijn en voldoen aan de gedefinieerde vereisten. |
+    | Locatie | Selecteer een Azure-regio waar u wilt dat uw SQL Server zich bevindt. |
     
 7. Selecteer **OK**. 
-8. Selecteer **Controleren + maken**. You're taken to the **Review + create** page where Azure validates your configuration. 
-9. When you see the Validation passed message, select **Create**. 
-10. When you see the Validation passed message, select Create. 
+8. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
+9. Wanneer u het bericht door gegeven validatie ziet, selecteert u **maken**. 
+10. Wanneer u het bericht door gegeven validatie ziet, selecteert u maken. 
 
-## <a name="create-a-private-endpoint"></a>Create a private endpoint
+## <a name="create-a-private-endpoint"></a>Een persoonlijk eind punt maken
 
-In this section, you will create a SQL server and add a private endpoint to it. 
+In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind punt toe. 
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Networking** > **Private Link Center (Preview)** .
-2. In **Private Link Center - Overview**, on the option to **Build a private connection to a service**, select **Start**.
-1. In **Create a private endpoint (Preview) - Basics**, enter or select this information:
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **netwerk** > **privé koppelings centrum (preview)** .
+2. Selecteer **Start**in het **persoonlijke koppelings centrum**op de optie om **een particuliere verbinding met een service te maken**.
+1. Voer in **een persoonlijk eind punt maken (preview)-basis beginselen**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **Project details** | |
+    | **Project Details** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. You created this in the previous section.|
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
     | **INSTANTIEDETAILS** |  |
-    | Naam | Enter * myPrivateEndpoint*. If this name is taken, create a unique name. |
-    |Regio|Select **WestCentralUS**.|
+    | Naam | Voer * myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
+    |Regio|Selecteer **WestCentralUS**.|
     |||
-5. Select **Next: Resource**.
-6. In **Create a private endpoint - Resource**, enter or select this information:
+5. Selecteer **volgende: resource**.
+6. Voer in **een persoonlijk eind punt maken-resource**in of Selecteer deze gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    |Verbindingsmethode  | Select connect to an Azure resource in my directory.|
+    |Verbindingsmethode  | Selecteer verbinding maken met een Azure-resource in mijn Directory.|
     | Abonnement| Selecteer uw abonnement. |
-    | Resourcetype | Select **Microsoft.Sql/servers**. |
-    | Bron |Select *myServer*|
-    |Target sub-resource |Select *sqlServer*|
+    | Resourcetype | Selecteer **micro soft. SQL/servers**. |
+    | Resource |*Mijn server* selecteren|
+    |Doel-subresource |*SqlServer* selecteren|
     |||
-7. Select **Next: Configuration**.
-8. In **Create a private endpoint (Preview) - Configuration**, enter or select this information:
+7. Selecteer **volgende: Configuratie**.
+8. Voer in **een persoonlijk eind punt maken (preview)-configuratie**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    |**NETWORKING**| |
-    | Virtueel netwerk| Select *MyVirtualNetwork*. |
-    | Subnet | Select *mySubnet*. |
-    |**PRIVATE DNS INTEGRATION**||
-    |Integrate with private DNS zone |Selecteer **Ja**. |
-    |Private DNS Zone |Select *(New)privatelink.database.windows.net* |
+    |**INBEL**| |
+    | Virtueel netwerk| Selecteer *MyVirtualNetwork*. |
+    | Subnet | Selecteer *mySubnet*. |
+    |**INTEGRATIE VAN PARTICULIERE DNS**||
+    |Integreren met een privé-DNS-zone |Selecteer **Ja**. |
+    |Privé-DNS zone |Selecteer *(nieuw) privatelink. data base. Windows. net* |
     |||
 
-1. Selecteer **Controleren + maken**. You're taken to the **Review + create** page where Azure validates your configuration. 
-2. When you see the **Validation passed** message, select **Create**. 
+1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
+2. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
  
-## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Connect to a VM using Remote Desktop (RDP)
+## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Verbinding maken met een virtuele machine met behulp van Extern bureaublad (RDP)
 
 
-After you've created **myVm*, connect to it from the internet as follows: 
+Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet: 
 
-1. In the portal's search bar, enter *myVm*.
+1. Voer in de zoek balk van de portal *myVm*in.
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
 1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
-1. Open the downloaded.rdp* file.
+1. Open het bestand gedownloade. rdp *.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
-    1. Enter the username and password you specified when creating the VM.
+    1. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
 
         > [!NOTE]
         > Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de referenties op te geven die u hebt ingevoerd tijdens het maken van de VM.
@@ -200,13 +200,13 @@ After you've created **myVm*, connect to it from the internet as follows:
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
 
-## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Access the SQL database server privately from the VM
+## <a name="access-the-sql-database-server-privately-from-the-vm"></a>De SQL database-server privé openen vanuit de VM
 
-1. In the Remote Desktop of *myVM*, open PowerShell.
+1. Open Power shell in de Extern bureaublad van *myVM*.
 
-2. Enter `nslookup myserver.database.windows.net`. 
+2. Voer `nslookup myserver.database.windows.net`in. 
 
-    You'll receive a message similar to this:
+    U ontvangt een bericht dat er ongeveer als volgt uitziet:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -215,29 +215,29 @@ After you've created **myVm*, connect to it from the internet as follows:
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
-3. Install [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+3. Installeer [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-4. In **Connect to server**, enter or select this information:
+4. Typ of Selecteer in **verbinding maken met server**de volgende informatie:
 
     | Instelling | Waarde |
     | ------- | ----- |
     | Servertype| Selecteer **Database Engine**.|
-    | Servernaam| Select *myserver.database.windows.net* |
-    | Gebruikersnaam | Enter username as username@servername which is provided during the SQL server creation. |
-    |Wachtwoord |Enter a password provided during the SQL server creation. |
-    |Remember password|Selecteer **Ja**.|
+    | Servernaam| *MyServer.database.Windows.net* selecteren |
+    | Gebruikersnaam | Voer de gebruikers naam in als username@servername die wordt opgegeven tijdens het maken van de SQL-Server. |
+    |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de SQL-Server. |
+    |Wacht woord onthouden|Selecteer **Ja**.|
     |||
 1. Selecteer **Verbinden**.
-2. Browse databases from left menu.
-3. (Optionally) Create or query information from mydatabase.
-4. Close the remote desktop connection to *myVm*. 
+2. Bladeren door data bases vanuit het menu links.
+3. Eventueel Gegevens uit mydatabase maken of er een query op uitvoeren.
+4. Sluit de verbinding met extern bureau blad met *myVm*. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
-When you're done using the private endpoint, SQL server, and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
+Wanneer u klaar bent met het persoonlijke eind punt, de SQL-Server en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat: 
+1. Geef *myResourceGroup* op in het **zoekvak** boven aan de portal en selecteer *myResourceGroup* in de zoek resultaten. 
 2. Selecteer **Resourcegroep verwijderen**. 
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+3. Voer myResourceGroup in bij **Typ de naam van de resource groep** en selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this quickstart, you created a VM on a virtual network, a SQL database server, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the SQL database server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint?](private-endpoint-overview.md).
+In deze Quick Start hebt u een VM gemaakt op een virtueel netwerk, een SQL database-server en een persoonlijk eind punt voor persoonlijke toegang. U hebt verbinding gemaakt met één virtuele machine via internet en u kunt veilig worden door gegeven aan de SQL database server met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint?](private-endpoint-overview.md)voor meer informatie over privé-eind punten.

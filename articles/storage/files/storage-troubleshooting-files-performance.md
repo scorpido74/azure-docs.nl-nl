@@ -26,7 +26,7 @@ Het standaard quotum voor een Premium-share is 100 GiB. Dit biedt 100 Baseline I
 
 Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de metrische gegevens van Azure in de portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **alle services** en zoek vervolgens naar **metrische gegevens**.
 

@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Grant a user access to Azure resources using RBAC and Resource Manager template
-description: Learn how to grant a user access to Azure resources using role-based access control (RBAC) by using Azure Resource Manager template in this tutorial.
+title: 'Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van RBAC en Resource Manager-sjabloon'
+description: Meer informatie over hoe u een gebruiker toegang verleent tot Azure-resources met behulp van het op rollen gebaseerde toegangs beheer (RBAC) met behulp van Azure Resource Manager sjabloon in deze zelf studie.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
 author: rolyon
@@ -20,10 +20,10 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74418487"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Tutorial: Grant a user access to Azure resources using RBAC and Resource Manager template
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van RBAC en Resource Manager-sjabloon
 
-[Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In this tutorial, you create a resource group and grant a user access to create and manage virtual machines in the resource group. This tutorial focuses on the process of deploying a Resource Manager template to grant the access. For more information on developing Resource Manager templates, see [Resource Manager documentation](/azure/azure-resource-manager/) and the [template reference](/azure/templates/microsoft.authorization/allversions
-).
+[Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In deze zelf studie maakt u een resource groep en verleent u een gebruiker toegang tot het maken en beheren van virtuele machines in de resource groep. In deze zelf studie wordt gekeken naar het proces van het implementeren van een resource manager-sjabloon om de toegang te verlenen. Zie de [documentatie van Resource Manager](/azure/azure-resource-manager/) en de [sjabloon verwijzing](/azure/templates/microsoft.authorization/allversions
+)voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
 
 In deze zelfstudie leert u het volgende:
 
@@ -36,15 +36,15 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-To add and remove role assignments, you must have:
+Als u roltoewijzingen wilt toevoegen en verwijderen, hebt u het volgende nodig:
 
-* `Microsoft.Authorization/roleAssignments/write` and `Microsoft.Authorization/roleAssignments/delete` permissions, such as [User Access Administrator](built-in-roles.md#user-access-administrator) or [Owner](built-in-roles.md#owner)
+* `Microsoft.Authorization/roleAssignments/write`-en `Microsoft.Authorization/roleAssignments/delete` machtigingen, zoals beheerder of [eigenaar](built-in-roles.md#owner) van [gebruikers toegang](built-in-roles.md#user-access-administrator)
 
 ## <a name="grant-access"></a>Toegang verlenen
 
-The template used in this quickstart is from [Azure quickstart templates](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). More Azure authorization related templates can be found [here](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization).
+De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)start-sjablonen. Meer met Azure-autorisatie gerelateerde sjablonen vindt u [hier](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization).
 
-To deploy the template, select **Try it** to open the Azure Cloud shell, and then paste the following PowerShell script into the shell window. To paste the code, right-click the shell window and then select **Paste**.
+Als u de sjabloon wilt implementeren, selecteert u **proberen** om de Azure Cloud shell te openen en plakt u het volgende Power shell-script in het shell-venster. Als u de code wilt plakken, klikt u met de rechter muisknop op het shell venster en selecteert u vervolgens **Plakken**.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -63,15 +63,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Open the resource group created in the last procedure. The default name is the project name with **rg** appended.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Open de resource groep die u in de laatste procedure hebt gemaakt. De standaard naam is de naam van het project waaraan **RG** is toegevoegd.
 1. Selecteer **Toegangsbeheer (IAM)** in het menu links.
 1. Selecteer **Roltoewijzingen**. 
-1. In **Name**, enter the email address you typed in the last procedure. You shall see the user with the email address has the **Virtual Machine Contributor** role.
+1. Voer bij **naam**het e-mail adres in dat u in de laatste procedure hebt getypt. U ziet dat de gebruiker met het e-mail adres de rol **Inzender voor virtuele machines** heeft.
 
 ## <a name="clean-up"></a>Opruimen
 
-To remove the resource group created in the last procedure, select **Try it** to open the Azure Cloud shell, and then paste the following PowerShell script into the shell window.
+Als u de resource groep die u in de laatste procedure hebt gemaakt, wilt verwijderen, selecteert u **proberen** om de Azure Cloud shell te openen en plakt u het volgende Power shell-script in het shell-venster.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a same project name you used in the last procedure"
@@ -83,4 +83,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Tutorial: Grant a user access to Azure resources using RBAC and Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en Azure PowerShell](tutorial-role-assignments-user-powershell.md)

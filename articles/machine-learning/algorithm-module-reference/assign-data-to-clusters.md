@@ -1,7 +1,7 @@
 ---
-title: 'Assign Data to Cluster: Module Reference'
+title: 'Gegevens toewijzen aan cluster: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the Assign Data to Cluster module in Azure Machine Learning to score clustering model.
+description: Meer informatie over het gebruik van de module gegevens toewijzen aan cluster in Azure Machine Learning voor het cluster model voor scores.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -16,36 +16,36 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214560"
 ---
-# <a name="module-assign-data-to-clusters"></a>Module: Assign Data to Clusters
+# <a name="module-assign-data-to-clusters"></a>Module: gegevens toewijzen aan clusters
 
-This article describes how to use the *Assign Data to Clusters* module in Azure Machine Learning designer (preview). The module generates predictions through a clustering model that was trained with the *K-means clustering* algorithm.
+In dit artikel wordt beschreven hoe u de module *gegevens toewijzen aan clusters* in azure machine learning Designer (preview) gebruikt. De module genereert voor spellingen via een cluster model dat is getraind met het algoritme *k-means clustering* .
 
-The Assign Data to Clusters module returns a dataset that contains the probable assignments for each new data point. 
+De module gegevens toewijzen aan clusters retourneert een gegevensset die de waarschijnlijke toewijzingen voor elk nieuw gegevens punt bevat. 
 
-## <a name="how-to-use-assign-data-to-clusters"></a>How to use Assign Data to Clusters
+## <a name="how-to-use-assign-data-to-clusters"></a>Toewijzing van gegevens aan clusters gebruiken
   
-1. In Azure Machine Learning designer, locate a previously trained clustering model. You can create and train a clustering model by using either of the following methods:  
+1. Zoek in Azure Machine Learning Designer een eerder getraind cluster model. U kunt een cluster model maken en trainen met behulp van een van de volgende methoden:  
   
-    - Configure the K-means clustering algorithm by using the [K-Means Clustering](k-means-clustering.md) module, and train the model by using a dataset and the Train Clustering Model module (this article).  
+    - Configureer de k-means clustering-algoritme met behulp van de [K-betekent cluster](k-means-clustering.md) module en Train het model met behulp van een gegevensset en de module Train clustering model (dit artikel).  
   
-    - You can also add an existing trained clustering model from the **Saved Models** group in your workspace.
+    - U kunt ook een bestaand getraind cluster model toevoegen vanuit de groep **opgeslagen modellen** in uw werk ruimte.
 
-2. Attach the trained model to the left input port of **Assign Data to Clusters**.  
+2. Koppel het getrainde model aan de linker invoer poort van de **toewijzing van gegevens aan clusters**.  
 
-3. Attach a new dataset as input. 
+3. Voeg een nieuwe gegevensset als invoer toe. 
 
-   In this dataset, labels are optional. Generally, clustering is an unsupervised learning method. You are not expected to know the categories in advance. However, the input columns must be the same as the columns that were used in training the clustering model, or an error occurs.
+   In deze gegevensset zijn labels optioneel. Over het algemeen is clustering een niet-gecontroleerde leer methode. U wordt niet verwacht dat u de categorieën van tevoren kent. De invoer kolommen moeten echter hetzelfde zijn als de kolommen die zijn gebruikt bij het trainen van het cluster model, of er treedt een fout op.
 
     > [!TIP]
-    > To reduce the number of columns that are written to the designer from the cluster predictions, use [Select columns in the dataset](select-columns-in-dataset.md), and select a subset of the columns. 
+    > Als u het aantal kolommen wilt beperken dat naar de ontwerp functie wordt geschreven vanuit de cluster voorspellingen, gebruikt u [kolommen selecteren in de gegevensset](select-columns-in-dataset.md)en selecteert u een subset van de kolommen. 
     
-4. Leave the **Check for append or uncheck for result only** check box selected if you want the results to contain the full input dataset, including a column that displays the results (cluster assignments).
+4. Schakel het selectie vakje **controleren op toevoegen of uitschakelen voor alleen resultaat alleen** in als u wilt dat de resultaten de volledige invoer gegevensset bevatten, inclusief een kolom waarin de resultaten worden weer gegeven (cluster toewijzingen).
   
-    If you clear this check box, only the results are returned. This option might be useful when you create predictions as part of a web service.
+    Als u dit selectie vakje uitschakelt, worden alleen de resultaten geretourneerd. Deze optie kan nuttig zijn bij het maken van voor spellingen als onderdeel van een webservice.
   
 5.  Voer de pijplijn uit.  
   
 ### <a name="results"></a>Resultaten
 
-+  To view the values in the dataset, right-click the module, select **Result datasets**, and then select **Visualize**.
++  Als u de waarden in de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module, selecteert u **resultaat gegevens sets**en selecteert u vervolgens **visualiseren**.
 

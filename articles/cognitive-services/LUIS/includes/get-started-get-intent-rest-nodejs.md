@@ -1,5 +1,5 @@
 ---
-title: Get intent with REST call in Node.js
+title: Doel intentie met REST-aanroep in node. js
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -19,7 +19,7 @@ ms.locfileid: "74414549"
 
 * [Node.js](https://nodejs.org/)-programmeertaal 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* ID van open bare app: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-sleutel ophalen
 
@@ -27,9 +27,9 @@ ms.locfileid: "74414549"
 
 ## <a name="get-intent-programmatically"></a>De intentie programmatisch ophalen
 
-Use Node.js to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+Gebruik node. js om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-prediction) te doorzoeken en een Voorspellings resultaat te krijgen.
 
-1. Copy the following code snippet to a file named `predict.js`:
+1. Kopieer het volgende code fragment naar een bestand met de naam `predict.js`:
 
     ```javascript
     var request = require('request');
@@ -76,30 +76,30 @@ Use Node.js to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predi
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. Replace the following values:
+1. Vervang de volgende waarden:
 
-    * `YOUR-KEY` to your starter key.
-    * `YOUR-ENDPOINT` to your endpoint URL. Bijvoorbeeld `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` uw start sleutel.
+    * `YOUR-ENDPOINT` uw eind punt-URL. Bijvoorbeeld `westus2.api.cognitive.microsoft.com`.
 
-1. Install the `request`, `request-promise`, and `querystring` dependencies with this command: 
+1. Installeer de `request`, `request-promise`en `querystring` afhankelijkheden met deze opdracht: 
 
     ```console
     npm install request request-promise querystring
     ```
 
-1. Run your app with this command:
+1. Voer uw app uit met de volgende opdracht:
 
     ```console
     node predict.js
     ```
 
- 1. Review the prediction response, which is returned as JSON:   
+ 1. Bekijk het Voorspellings antwoord dat wordt geretourneerd als JSON:   
     
     ```console
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
     ```
 
-    The JSON response formatted for readability: 
+    Het JSON-antwoord dat is opgemaakt voor de Lees baarheid: 
 
     ```JSON
     {
@@ -148,9 +148,9 @@ Use Node.js to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predi
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-When you are finished with this quickstart, delete the file from the file system. 
+Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Uitingen en Train toevoegen](../get-started-get-model-rest-apis.md)

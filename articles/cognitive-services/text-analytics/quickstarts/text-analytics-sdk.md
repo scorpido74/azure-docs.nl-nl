@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Text Analytics client library | Microsoft Docs'
+title: 'Snelstartgids: Text Analytics-client bibliotheek | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: In this quickstart, detect language by using the Text Analytics API from Azure Cognitive Services.
+description: In deze Snelstartgids kunt u de taal detecteren met behulp van de Text Analytics-API van Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,16 +18,16 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74220786"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library"></a>Quickstart: Use the Text Analytics client library
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Snelstartgids: de Text Analytics-client bibliotheek gebruiken
 
-Get started with the Text Analytics client library. Follow these steps to install the package and try out the example code for basic tasks.
+Aan de slag met de Text Analytics-client bibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
 
-Use the Text Analytics client library to perform:
+De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 
 * Sentimentanalyse
 * Taaldetectie
 * Herkenning van entiteiten
-* Sleuteluitdrukkingen extraheren
+* Sleuteltermextractie
 
 ::: zone pivot="programming-language-csharp"
 
@@ -61,7 +61,7 @@ Use the Text Analytics client library to perform:
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-If you want to clean up and remove a Cognitive Services subscription, you can delete the resource or resource group. Deleting the resource group also deletes any other resources associated with it.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -73,7 +73,7 @@ If you want to clean up and remove a Cognitive Services subscription, you can de
 
 
 * [Overzicht van Text Analytics](../overview.md)
-* [Sentiment analysis](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Entity recognition](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Detect language](../how-tos/text-analytics-how-to-keyword-extraction.md)
-* [Language recognition](../how-tos/text-analytics-how-to-language-detection.md)
+* [Sentiment analyse](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Entiteit herkenning](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Taal detecteren](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Taal herkenning](../how-tos/text-analytics-how-to-language-detection.md)

@@ -1,7 +1,7 @@
 ---
-title: Connect to a knowledge store (preview) with Power BI
+title: Verbinding maken met een kennis archief (preview) met Power BI
 titleSuffix: Azure Cognitive Search
-description: Connect an Azure Cognitive Search knowledge store (preview) with Power BI for analysis and exploration.
+description: Verbind een Azure Cognitive Search Knowledge Store (preview) met Power BI voor analyse en onderzoek.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
@@ -15,73 +15,73 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406595"
 ---
-# <a name="connect-a-knowledge-store-with-power-bi"></a>Connect a knowledge store with Power BI
+# <a name="connect-a-knowledge-store-with-power-bi"></a>Verbinding maken met een kennis archief met Power BI
 
 > [!IMPORTANT] 
-> Knowledge store is currently in public preview. Preview functionality is provided without a service level agreement, and is not recommended for production workloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. The [REST API version 2019-05-06-Preview](search-api-preview.md) provides preview features. There is currently limited portal support, and no .NET SDK support.
+> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
-In this article, learn how to connect to and explore a knowledge store using Power Query in the Power BI Desktop app. You can get started faster with templates, or build a custom dashboard from scratch.
+In dit artikel leert u hoe u verbinding kunt maken met een kennis archief en hoe u deze kunt verkennen met behulp van Power Query in de Power BI Desktop-app. U kunt sneller aan de slag met sjablonen of een aangepast dash board maken.
 
-+ Follow the steps in [Create a knowledge store in the Azure portal](knowledge-store-create-portal.md) or [Create an Azure Cognitive Search knowledge store by using REST](knowledge-store-create-rest.md) to create the sample knowledge store used in this walkthrough. You will also need the name of the Azure storage account that you used to create the knowledge store, along with its access key from the Azure portal.
++ Volg de stappen in [een kennis archief maken in de Azure Portal](knowledge-store-create-portal.md) of [maak een Azure Cognitive Search Knowledge Store door rest te gebruiken](knowledge-store-create-rest.md) om het voor beeld van het kennis archief te maken dat wordt gebruikt in dit overzicht. U hebt ook de naam nodig van het Azure Storage-account dat u hebt gebruikt om het kennis archief te maken, samen met de toegangs sleutel van de Azure Portal.
 
-+ [Install Power BI Desktop](https://powerbi.microsoft.com/downloads/)
++ [Power BI Desktop installeren](https://powerbi.microsoft.com/downloads/)
 
-## <a name="sample-power-bi-template---azure-portal-only"></a>Sample Power BI template - Azure portal only
+## <a name="sample-power-bi-template---azure-portal-only"></a>Voor beeld-Power BI sjabloon-alleen Azure Portal
 
-If you [created your knowledge store using the Azure portal](knowledge-store-create-portal.md), you can use the [Azure Cognitive Search Power BI template sample](https://github.com/Azure-Samples/cognitive-search-templates) to view and experiment with Power BI visualizations. This template is also available for download when you step through the **Import data** wizard.
+Als u [uw kennis archief hebt gemaakt met behulp van de Azure Portal](knowledge-store-create-portal.md), kunt u het voor beeld van de [Azure Cognitive Search Power bi-sjabloon](https://github.com/Azure-Samples/cognitive-search-templates) gebruiken om Power bi visualisaties weer te geven en te experimenteren. Deze sjabloon kan ook worden gedownload wanneer u de wizard **gegevens importeren** stapsgewijs doorloopt.
 
-The sample template will automatically perform the setup steps outlined in the remainder of this article. However, if you used the REST API to create your knowledge store, skip the template and use the remaining sections in this article to connect your knowledge store to Power BI. Start with [Connect with Power BI](#connect-with-power-bi).
+De voorbeeld sjabloon voert automatisch de installatie stappen uit die in de rest van dit artikel worden beschreven. Als u echter de REST API hebt gebruikt om uw kennis archief te maken, kunt u de sjabloon overs Laan en de resterende secties in dit artikel gebruiken om uw kennis archief te koppelen aan Power BI. Begin met [verbinden met Power bi](#connect-with-power-bi).
 
-The sample template includes several visualizations, such as WordCloud and Network Navigator. Some visualizations in the template, such as the Locations map and the Entity-Graph Viewer, will not show data for the sample knowledge store created in [Create a knowledge store in the Azure portal](knowledge-store-create-portal.md). This is because only a subset of the AI enrichments available in the **Import data** wizard were used.
+De voorbeeld sjabloon bevat verschillende visualisaties, zoals WordCloud en Network Navigator. Voor sommige visualisaties in de sjabloon, zoals het kaarten overzicht en de entiteit-Graph-viewer, worden geen gegevens weer gegeven voor het voor beeld van het kennis archief dat is gemaakt in [een kennis archief maken in de Azure Portal](knowledge-store-create-portal.md). Dit komt omdat er in de wizard **gegevens importeren** slechts een subset van de AI-verrijkingen beschikbaar is.
 
-![Sample Azure Cognitive Search Power BI Template](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Sample Power BI template")
+![Voor beeld van Azure Cognitive Search Power BI sjabloon](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Voor beeld Power BI sjabloon")
 
 ## <a name="connect-with-power-bi"></a>Verbinden met Power BI
 
-1. Start Power BI Desktop and click **Get data**.
+1. Start Power BI Desktop en klik op **gegevens ophalen**.
 
-1. In the **Get Data** window, select **Azure**, and then select **Azure Table Storage**.
+1. Selecteer in het venster **gegevens ophalen** de optie **Azure**en selecteer vervolgens **Azure Table Storage**.
 
-1. Klik op **Verbinden**.
+1. Klik op **Verbinding maken**.
 
-1. For **Account Name or URL**, enter in your Azure Storage account name (the full URL will be created for you).
+1. Voer bij **account naam of-URL**de naam in van uw Azure Storage account (de volledige URL wordt voor u gemaakt).
 
-1. If prompted, enter the storage account key.
+1. Als u hierom wordt gevraagd, voert u de sleutel voor het opslag account in.
 
-1. Select the *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*, and *hotelReviewsSsPages* tables. These tables are Azure table projections of the hotel reviews sample data and include the AI enrichments that were selected when the knowledge store was created.
+1. Selecteer de tabellen *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*en *hotelReviewsSsPages* . Deze tabellen zijn Azure Table-projecties van het Hotel bekijkt voorbeeld gegevens en bevatten de AI-verrijkingen die zijn geselecteerd toen het kennis archief werd gemaakt.
 
-1. Click **Load**.
+1. Klik op **laden**.
 
-1. On the top ribbon, click **Edit Queries** to open the **Power Query Editor**.
+1. Klik op het bovenste lint op **Query's bewerken** om de **Power query editor**te openen.
 
-   ![Open Power Query](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Open Power Query")
+   ![Power Query openen](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query openen")
 
-1. Select *hotelReviewsSsDocument*, and then remove the *PartitionKey*, *RowKey*, and *Timestamp* columns. 
+1. Selecteer *hotelReviewsSsDocument*en verwijder vervolgens de kolommen *PartitionKey*, *RowKey*en *Time Stamp* . 
 
-   ![Edit tables](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Edit tables")
+   ![Tabellen bewerken](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Tabellen bewerken")
 
-1. Click the icon with opposing arrows at the upper right side of the table to expand the *Content*. When the list of columns appears, select all columns, and then deselect columns that start with 'metadata'. Click **OK** to show the selected columns.
+1. Klik op het pictogram met tegengestelde pijlen aan de rechter kant van de tabel om de *inhoud*uit te vouwen. Wanneer de lijst met kolommen wordt weer gegeven, selecteert u alle kolommen en vervolgens selecteert u de kolommen die beginnen met ' meta data '. Klik op **OK** om de geselecteerde kolommen weer te geven.
 
-   ![Edit tables](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Expand content")
+   ![Tabellen bewerken](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Inhoud uitvouwen")
 
-1. Change the data type for the following columns by clicking the  ABC-123 icon at the top left of the column.
+1. Wijzig het gegevens type voor de volgende kolommen door te klikken op het pictogram ABC-123 linksboven in de kolom.
 
-   + For *content.latitude* and *Content.longitude*, select **Decimal Number**.
-   + For *Content.reviews_date* and *Content.reviews_dateAdded*,  select **Date/Time**.
+   + Voor *content. Latitude* en *content. lengte graad*, selecteert u **decimaal getal**.
+   + Voor *content. reviews_date* en *content. Reviews_dateAdded*selecteert u **datum en tijd**.
 
-   ![Change data types](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Change data types")
+   ![Gegevens typen wijzigen](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Gegevens typen wijzigen")
 
-1. Select *hotelReviewsSsPages*, and then repeat steps 9 and 10 to delete the columns and expand the *Content*.
-1. Change the data type for *Content.SentimentScore* to **Decimal Number**.
-1. Select *hotelReviewsSsKeyPhrases* and repeat steps 9 and 10 to delete the columns and expand the *Content*. There are no data type modifications for this table.
+1. Selecteer *hotelReviewsSsPages*en herhaal stap 9 en 10 om de kolommen te verwijderen en de *inhoud*uit te vouwen.
+1. Wijzig het gegevens type voor *content. SentimentScore* naar een **decimaal getal**.
+1. Selecteer *hotelReviewsSsKeyPhrases* en herhaal stap 9 en 10 om de kolommen te verwijderen en de *inhoud*uit te vouwen. Er zijn geen wijzigingen in het gegevens type voor deze tabel.
 
-1. On the command bar, click **Close and Apply**.
+1. Klik op de opdracht balk op **sluiten en Toep assen**.
 
-1. Click on the Model tile on the left navigation pane and validate that Power BI shows relationships between all three tables.
+1. Klik op de tegel model in het navigatie deel venster links en controleer of Power BI relaties tussen alle drie de tabellen weergeeft.
 
-   ![Validate relationships](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Validate relationships")
+   ![Relaties valideren](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Relaties valideren")
 
-1. Double-click each relationship and make sure that the **Cross-filter direction** is set to **Both**.  This enables your visuals to refresh when a filter is applied.
+1. Dubbel klik op elke relatie en zorg ervoor dat de **Kruis filter richting** is ingesteld op **beide**.  Hierdoor kunnen uw visuals worden vernieuwd wanneer een filter wordt toegepast.
 
 <!-- ## Try with larger data sets
 
@@ -102,20 +102,20 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 ## <a name="clean-up"></a>Opruimen
 
-When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
+Wanneer u in uw eigen abonnement werkt, is het een goed idee aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
 
-You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
+U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
 
-If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit.
+Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-To learn how to explore this knowledge store using Storage Explorer, see the following article.
+Zie het volgende artikel voor meer informatie over het verkennen van dit kennis archief met behulp van Storage Explorer.
 
 > [!div class="nextstepaction"]
-> [View with Storage Explorer](knowledge-store-view-storage-explorer.md)
+> [Weer geven met Storage Explorer](knowledge-store-view-storage-explorer.md)
 
-To learn how to create a knowledge store using the REST APIs and Postman, see the following article.  
+Zie het volgende artikel voor meer informatie over het maken van een kennis archief met behulp van de REST-Api's en postman.  
 
 > [!div class="nextstepaction"]
-> [Create a knowledge store in REST](knowledge-store-howto.md)
+> [Een kennis archief maken in REST](knowledge-store-howto.md)

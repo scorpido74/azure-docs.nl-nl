@@ -1,6 +1,6 @@
 ---
-title: View and manage customers and delegated resources
-description: As a service provider using Azure delegated resource management, you can view all of your delegated customer resources and subscriptions by going to My customers in the Azure portal.
+title: Klanten en gedelegeerde resources weer geven en beheren
+description: Als service provider met behulp van Azure delegated Resource Management kunt u al uw gedelegeerte klant bronnen en abonnementen weer geven door naar mijn klanten te gaan in de Azure Portal.
 ms.date: 10/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f115ecad09b01869a465f50485e191671970d521
@@ -10,57 +10,57 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463824"
 ---
-# <a name="view-and-manage-customers-and-delegated-resources"></a>View and manage customers and delegated resources
+# <a name="view-and-manage-customers-and-delegated-resources"></a>Klanten en gedelegeerde resources weer geven en beheren
 
-Service providers using [Azure delegated resource management](../concepts/azure-delegated-resource-management.md) can use the **My customers** page in the [Azure portal](https://portal.azure.com) to view delegated customer resources and subscriptions. While we'll refer to service providers and customers here, enterprises managing multiple tenants can use the same process to consolidate their management experience.
+Service providers die gebruikmaken van [Azure delegated resource management](../concepts/azure-delegated-resource-management.md) kunnen de pagina **mijn klanten** in het [Azure Portal](https://portal.azure.com) gebruiken om gedelegeerde klant resources en abonnementen weer te geven. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
 
-To access the **My customers** page in the Azure portal, select **All services**, then search for **My customers** and select it. You can also find it by entering “My customers” in the search box near the top of the Azure portal.
+Als u toegang wilt krijgen tot de pagina **mijn klanten** in de Azure Portal, selecteert u **alle services**, zoekt u naar **mijn klanten** en selecteert u deze. U kunt deze ook vinden door ' mijn klanten ' in te voeren in het zoekvak boven aan de Azure Portal.
 
-Keep in mind that the top section of the **My customers** page only shows info about customers who have delegated subscriptions or resource groups. If you work with other customers (such as through the [Cloud Solution Provider program](https://docs.microsoft.com/partner-center/csp-overview), you won’t see info about those customers here unless you onboard their resources for delegated resource management. Lower on the page, the **Cloud Solution Provider (Preview)** section shows billing info and resources for your CSP customers who have [signed the Microsoft Customer Agreement (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) and are under the Azure plan, whether or not they have been onboarded for Azure delegated resource management. For more info, see [Get started with your Microsoft Partner Agreement billing account](https://docs.microsoft.com/azure/billing/mpa-overview).
+Houd er rekening mee dat in het bovenste gedeelte van de pagina **mijn klanten** alleen gegevens worden weer gegeven over klanten die een gedelegeerde abonnementen of resource groepen hebben. Als u met andere klanten werkt (zoals via het [Cloud Solution Provider-programma](https://docs.microsoft.com/partner-center/csp-overview)), ziet u hier geen informatie over deze klanten, tenzij u de resources uitnodigt voor gedelegeerd resource beheer. Lager op de pagina bevat de sectie **Cloud Solution Provider (preview)** facturerings gegevens en resources voor uw CSP-klanten die [de micro soft-klant overeenkomst (MCA) hebben ondertekend](https://docs.microsoft.com/partner-center/confirm-customer-agreement) en onder het Azure-abonnement vallen, ongeacht of ze niet zijn geïnstalleerd voor Azure gedelegeerd resource beheer. Zie [aan de slag met uw micro soft-partner overeenkomst](https://docs.microsoft.com/azure/billing/mpa-overview)voor meer informatie.
 
 > [!NOTE]
-> Your customers can view info about service providers by navigating to **Service providers** in the Azure portal. For more info, see [View and manage service providers](view-manage-service-providers.md).
+> Uw klanten kunnen informatie over service providers weer geven door te navigeren naar **service providers** in de Azure Portal. Zie [service providers weer geven en beheren](view-manage-service-providers.md)voor meer informatie.
 
-## <a name="view-and-manage-customer-details"></a>View and manage customer details
+## <a name="view-and-manage-customer-details"></a>Klant gegevens weer geven en beheren
 
-To view customer details, select **Customers** on the left side of the **My customers** page.
+Selecteer **klanten** aan de linkerkant van de pagina **mijn klanten** om klant gegevens weer te geven.
 
-For each customer, you'll see the customer's name, customer ID (tenant ID), and the offer associated with the engagement. In the **Delegations** column, you'll see the number of delegated subscriptions and/or the number of delegated resource groups.
+Voor elke klant ziet u de naam van de klant, de klant-ID (Tenant-ID) en de aanbieding die aan de afspraak is gekoppeld. In de kolom **delegaties** ziet u het aantal gedelegeerde abonnementen en/of het aantal gedelegeerde resource groepen.
 
 > [!IMPORTANT]
-> In order to see a delegation, users must have been granted the [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) role (or another built-in role which includes Reader access) in the onboarding process.
+> Als u een overdracht wilt zien, moeten gebruikers beschikken over de rol van [lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (of een andere ingebouwde rol die lezers toegang bevat) in het voorbereidings proces.
 
-Filters at the top of the page let you sort and group your customer info or filter by specific customers, offers, or keywords.
+Met filters boven aan de pagina kunt u uw klant gegevens sorteren en groeperen of filteren op specifieke klanten, aanbiedingen of tref woorden.
 
-You can view the following info from this page:
+U kunt de volgende informatie op deze pagina bekijken:
 
-- To see all of the subscriptions, offers, and delegations associated with a customer, select the customer's name.
-- To see more details about an offer and its delegations, select the offer name.
-- To view more details about role assignments for delegated subscriptions or resource groups, select the entry in the **Delegations** column.
+- Als u alle abonnementen, aanbiedingen en delegaties wilt zien die zijn gekoppeld aan een klant, selecteert u de naam van de klant.
+- Als u meer informatie over een aanbieding en de delegaties wilt zien, selecteert u de naam van het aanbod.
+- Als u meer informatie over roltoewijzingen voor gedelegeerde abonnementen of resource groepen wilt weer geven, selecteert u de vermelding in de kolom **delegaties** .
 
-## <a name="view-delegations"></a>View delegations
+## <a name="view-delegations"></a>Delegaties weer geven
 
-Delegations show the subscription/resource group that has been delegated , along with the users and permissions that have access to it. To view this info, select **Delegations** on the left side of the **My customers** page.
+Delegaties tonen het abonnement/de resource groep die is gedelegeerd, samen met de gebruikers en machtigingen die er toegang toe hebben. Als u deze informatie wilt weer geven, selecteert u **delegaties** aan de linkerkant van de pagina **mijn klanten** .
 
-Filters at the top of the page let you sort and group your access assignment info or filter by specific customers, offers, or keywords.
+Met filters boven aan de pagina kunt u uw toegangs toewijzings gegevens sorteren en groeperen of filteren op specifieke klanten, aanbiedingen of tref woorden.
 
-The users and permissions associated with each delegation appear in the **Role assignments** column. You can select each entry to view the full list of users, groups, and service principals that have been granted access to the subscription or resource group. From there, you can select a particular user, group, or service principal name to get more details.
+De gebruikers en machtigingen die aan elke delegatie zijn gekoppeld, worden weer gegeven in **de kolom roltoewijzingen** . U kunt elk item selecteren om de volledige lijst met gebruikers, groepen en service-principals weer te geven waaraan toegang is verleend tot het abonnement of de resource groep. Hier kunt u een bepaalde gebruiker, groep of Service Principal Name selecteren om meer informatie weer te geven.
 
-## <a name="work-in-the-context-of-a-delegated-subscription"></a>Work in the context of a delegated subscription
+## <a name="work-in-the-context-of-a-delegated-subscription"></a>Werken in de context van een gedelegeerd abonnement
 
-You can work directly in the context of a delegated subscription within the Azure portal, without switching the directory you're working in. Dit doet u als volgt:
+U kunt rechtstreeks in de context van een gedelegeerd abonnement in de Azure Portal werken zonder de directory waarin u werkt te scha kelen. Dit doet u als volgt:
 
-1. Select the **Directory + Subscription** icon near the top of the Azure portal.
-2. In the **Global subscription** filter, ensure that only the box for that delegated subscription is selected. You can use the **Current + delegated directories** drop-down box to show only subscriptions within a specific directory. (Do not use the **Switch directory** option, since that changes the directory to which you're signed in.)
+1. Selecteer het pictogram voor het adres van de **map en het abonnement** boven aan de Azure Portal.
+2. Zorg ervoor dat in het **globale abonnements** filter alleen het vak voor dat gedelegeerd abonnement is geselecteerd. U kunt de vervolg keuzelijst **huidige en gedelegeerde directory's** gebruiken om alleen abonnementen in een specifieke map weer te geven. (Gebruik niet de optie **Directory overschakelen** , want Hiermee wijzigt u de map waarin u bent aangemeld.)
 
-If you then access a service which supports [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md), the service will default to the context of the delegated subscription that you selected. You can change this by following the steps above and checking the **Select all** box (or choosing one or more subscriptions to work in instead).
+Als u vervolgens een service opent die ondersteuning biedt voor [Cross-Tenant beheer](../concepts/cross-tenant-management-experience.md), wordt de service standaard ingesteld op de context van het overgedragen abonnement dat u hebt geselecteerd. U kunt dit wijzigen door de bovenstaande stappen te volgen en de **selectie** vakjes in te scha kelen (of een of meer abonnementen kiezen om in plaats daarvan te werken).
 
 > [!NOTE]
-> If you have been granted access to one or more resource groups, rather than access to an entire subscription, you can select the subscription to which that resource group belongs. You'll then work in the context of that subscription, but will only be able to access the designated resource groups.
+> Als u toegang hebt gekregen tot een of meer resource groepen in plaats van toegang tot een volledig abonnement, kunt u het abonnement selecteren waarvan de resource groep deel uitmaakt. U werkt vervolgens in de context van dat abonnement, maar heeft alleen toegang tot de aangewezen resource groepen.
 
-You can also access functionality related to delegated subscriptions or resource groups from within services that support cross-tenant management experiences by selecting the subscription or resource group from within that service.
+U hebt ook toegang tot functionaliteit die betrekking heeft op gedelegeerde abonnementen of resource groepen vanuit Services die ondersteuning bieden voor cross-Tenant beheer door het abonnement of de resource groep te selecteren in de service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Learn about [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md).
-- Learn how your customers can [view and manage service providers](view-manage-service-providers.md) by going to **Service providers** in the Azure portal.
+- Meer informatie over de [ervaring op het beheer van cross-tenants](../concepts/cross-tenant-management-experience.md).
+- Meer informatie over hoe uw klanten [service providers kunnen weer geven en beheren](view-manage-service-providers.md) door naar **service providers** te gaan in de Azure Portal.

@@ -1,6 +1,6 @@
 ---
-title: Update and manage a dynamic group rule and troubleshoot membership - Azure Active Directory | Microsoft Docs
-description: How to create a group membership rule in the Azure portal, check status.
+title: Een dynamische groeps regel bijwerken en beheren en problemen oplossen met lidmaatschap-Azure Active Directory | Microsoft Docs
+description: Een regel voor groepslid maatschap maken in de Azure Portal, status controleren.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -21,72 +21,72 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422366"
 ---
-# <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>Update a dynamic group to manage membership in Azure Active Directory
+# <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>Een dynamische groep bijwerken voor het beheren van lidmaatschappen in Azure Active Directory
 
-In Azure Active Directory (Azure AD), you can use rules to determine group membership based on user or device properties. This article tells how to set up a rule for a dynamic group in the Azure portal.
-Dynamic membership is supported for security groups or Office 365 groups. When a group membership rule is applied, user and device attributes are evaluated for matches with the membership rule. When an attribute changes for a user or device, all dynamic group rules in the organization are processed for membership changes. Users and devices are added or removed if they meet the conditions for a group.
+In Azure Active Directory (Azure AD) kunt u regels gebruiken om het groepslid maatschap te bepalen op basis van eigenschappen van gebruikers of apparaten. In dit artikel leest u hoe u een regel instelt voor een dynamische groep in de Azure Portal.
+Dynamische lidmaatschappen worden ondersteund voor beveiligings groepen of Office 365-groepen. Wanneer een regel voor groepslid maatschap wordt toegepast, worden de kenmerken van gebruikers en apparaten geëvalueerd voor overeenkomsten met de lidmaatschaps regel. Wanneer een kenmerk wordt gewijzigd voor een gebruiker of apparaat, worden alle regels voor de dynamische groep in de organisatie verwerkt voor wijzigingen in het lidmaatschap. Gebruikers en apparaten worden toegevoegd of verwijderd als ze voldoen aan de voor waarden voor een groep.
 
-## <a name="rule-builder-in-the-azure-portal"></a>Rule builder in the Azure portal
+## <a name="rule-builder-in-the-azure-portal"></a>De opbouw functie voor regels in de Azure Portal
 
-Azure AD provides a rule builder to create and update your important rules more quickly. The rule builder supports the construction up to five expressions. The rule builder makes it easier to form a rule with a few simple expressions, however, it can't be used to reproduce every rule. If the rule builder doesn't support the rule you want to create, you can use the text box.
+Azure AD biedt een regel bouwer om uw belang rijke regels sneller te maken en bij te werken. De opbouw functie voor regels ondersteunt de bouw Maxi maal vijf expressies. Met de opbouw functie voor regels kunt u eenvoudig een regel maken met enkele eenvoudige expressies, maar deze kan niet worden gebruikt om elke regel te reproduceren. Als de regel functie geen ondersteuning biedt voor de regel die u wilt maken, kunt u het tekstvak gebruiken.
 
-Here are some examples of advanced rules or syntax for which we recommend that you construct using the text box:
+Hier volgen enkele voor beelden van geavanceerde regels of syntaxis voor het maken van het gebruik van het tekstvak:
 
-- Rule with more than five expressions
-- The Direct reports rule
-- Setting [operator precedence](groups-dynamic-membership.md#operator-precedence)
-- [Rules with complex expressions](groups-dynamic-membership.md#rules-with-complex-expressions); for example `(user.proxyAddresses -any (_ -contains "contoso"))`
+- Regel met meer dan vijf expressies
+- De regel voor directe rapporten
+- De [prioriteit van Opera tors](groups-dynamic-membership.md#operator-precedence) instellen
+- [Regels met complexe expressies](groups-dynamic-membership.md#rules-with-complex-expressions); bijvoorbeeld `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
-> The rule builder might not be able to display some rules constructed in the text box. You might see a message when the rule builder is not able to display the rule. The rule builder doesn't change the supported syntax, validation, or processing of dynamic group rules in any way.
+> De opbouw functie voor regels kan mogelijk geen regels weer geven die zijn gemaakt in het tekstvak. Mogelijk wordt er een bericht weer gegeven wanneer de regel functie de regel niet kan weer geven. De opbouw functie voor regels wijzigt niet de ondersteunde syntaxis, validatie of verwerking van dynamische groeps regels op enigerlei wijze.
 
-![Add membership rule for a dynamic group](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-For examples of syntax, supported properties, operators, and values for a membership rule, see [Dynamic membership rules for groups in Azure Active Directory](groups-dynamic-membership.md).
+Zie voor voor beelden van de syntaxis, ondersteunde eigenschappen, Opera tors en waarden voor een lidmaatschaps regel, [dynamische lidmaatschaps regels voor groepen in azure Active Directory](groups-dynamic-membership.md).
 
-## <a name="to-update-a-group-membership-rule"></a>To update a group membership rule
+## <a name="to-update-a-group-membership-rule"></a>Een regel voor groepslid maatschap bijwerken
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with an account that is in the Global administrator, Group administrator, Intune administrator, or User administrator role in the tenant.
-1. Select **Groups** > **All groups**.
-1. Select a group to open its profile.
-1. On the profile page for the group, select **Dynamic membership rules**. The rule builder supports up to five expressions. To add more than five expressions, you must use the text box.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account in de rol globale beheerder, groeps beheerder, intune-beheerder of gebruikers beheerder in de Tenant.
+1. Selecteer **groepen** > **alle groepen**.
+1. Selecteer een groep om het profiel ervan te openen.
+1. Selecteer op de profiel pagina voor de groep **dynamische lidmaatschaps regels**. De opbouw functie voor regels ondersteunt Maxi maal vijf expressies. Als u meer dan vijf expressies wilt toevoegen, moet u het tekstvak gebruiken.
 
-   ![Add membership rule for a dynamic group](./media/groups-update-rule/update-dynamic-group-rule.png)
+   ![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-1. To see the custom extension properties available for your membership rule:
-   1. Select **Get custom extension properties**
-   1. Enter the application ID, and then select **Refresh properties**.
-1. After updating the rule, select **Save**.
+1. Voor een overzicht van de aangepaste extensie-eigenschappen die beschikbaar zijn voor uw lidmaatschaps regel:
+   1. **Eigenschappen van aangepaste uitbrei ding ophalen** selecteren
+   1. Voer de toepassings-ID in en selecteer vervolgens **Eigenschappen vernieuwen**.
+1. Nadat u de regel hebt bijgewerkt, selecteert u **Opslaan**.
 
-If the rule you entered isn't valid, an explanation of why the rule couldn't be processed is displayed in an Azure notification in the portal. Read it carefully to understand how to fix the rule.
+Als de regel die u hebt ingevoerd niet geldig is, wordt uitgelegd waarom de regel niet kan worden verwerkt, wordt weer gegeven in een Azure-melding in de portal. Lees het zorgvuldig om te begrijpen hoe u de regel kunt herstellen.
 
-## <a name="check-processing-status-for-a-rule"></a>Check processing status for a rule
+## <a name="check-processing-status-for-a-rule"></a>De verwerkings status controleren voor een regel
 
-You can see the membership processing status and the last updated date on the **Overview** page for the group.
+U kunt de verwerkings status van lidmaatschap en de datum van laatste update **voor de groep** zien.
   
-  ![display of dynamic group status](./media/groups-create-rule/group-status.png)
+  ![weer gave van de status van de dynamische groep](./media/groups-create-rule/group-status.png)
 
-The following status messages can be shown for **Membership processing** status:
+De volgende status berichten kunnen worden weer gegeven voor de **verwerkings status van lidmaatschappen** :
 
-- **Evaluating**:  The group change has been received and the updates are being evaluated.
-- **Processing**: Updates are being processed.
-- **Update complete**: Processing has completed and all applicable updates have been made.
-- **Processing error**:  Processing couldn't be completed because of an error evaluating the membership rule.
-- **Update paused**: Dynamic membership rule updates have been paused by the administrator. MembershipRuleProcessingState is set to “Paused”.
+- **Evalueren**: de groeps wijziging is ontvangen en de updates worden geëvalueerd.
+- **Verwerken**: updates worden verwerkt.
+- **Update voltooid**: verwerking is voltooid en alle toepasselijke updates zijn aangebracht.
+- **Verwerkings fout**: verwerking kan niet worden voltooid vanwege een fout bij het evalueren van de lidmaatschaps regel.
+- **Update onderbroken**: updates van dynamische lidmaatschaps regel zijn onderbroken door de beheerder. MembershipRuleProcessingState is ingesteld op ' paused '.
 
-The following status messages can be shown for **Membership last updated** status:
+De volgende status berichten kunnen worden weer gegeven voor het lidmaatschap van de **laatste bijgewerkte** status:
 
-- **Date and time**: The last time the membership was updated.
-- **In Progress**: Updates are currently in progress.
-- **Unknown**: The last update time can't be retrieved. The group might be new.
+- **Datum en tijd**: de laatste keer dat het lidmaatschap is bijgewerkt.
+- Wordt **uitgevoerd**: updates worden momenteel uitgevoerd.
+- **Onbekend**: de tijd van de laatste update kan niet worden opgehaald. De groep is mogelijk nieuw.
 
-If an error occurs while processing the membership rule for a specific group, an alert is shown on the top of the **Overview page** for the group. If no pending dynamic membership updates can be processed for all the groups within the tenant for more then 24 hours, an alert is shown on the top of **All groups**.
+Als er een fout optreedt tijdens het verwerken van de lidmaatschaps regel voor een specifieke groep, wordt er een waarschuwing weer gegeven boven aan de **pagina overzicht** voor de groep. Als er in behandeling zijnde dynamische lidmaatschaps updates voor alle groepen in de Tenant meer dan 24 uur kunnen worden verwerkt, wordt een waarschuwing weer gegeven aan de bovenkant van **alle groepen**.
 
-![processing error message alerts](./media/groups-create-rule/processing-error.png)
+![fout bericht waarschuwingen verwerken](./media/groups-create-rule/processing-error.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-These articles provide additional information on working with dynamic groups in Azure AD.
+Deze artikelen bevatten aanvullende informatie over het werken met dynamische groepen in azure AD.
 
-- For a complete reference to dynamic rule structure, see [Dynamic membership rule syntax](groups-dynamic-membership.md).
-- [Create a static membership group and add members](../fundamentals/active-directory-groups-create-azure-portal.md).
+- Zie de syntaxis van de [regel voor dynamische lidmaatschap](groups-dynamic-membership.md)voor een volledige verwijzing naar een dynamische regel structuur.
+- [Een statische lidmaatschaps groep maken en leden toevoegen](../fundamentals/active-directory-groups-create-azure-portal.md).

@@ -1,6 +1,6 @@
 ---
-title: Upload a vhd to Azure using Azure PowerShell
-description: Learn how to upload a vhd to an Azure managed disk and copy a managed disk across regions, using Azure PowerShell, via direct upload.
+title: Een VHD uploaden naar Azure met behulp van Azure PowerShell
+description: Meer informatie over het uploaden van een VHD naar een Azure Managed disk en het kopiëren van een beheerde schijf in verschillende regio's, met behulp van Azure PowerShell via direct uploaden.
 author: roygara
 ms.author: rogarana
 ms.date: 05/06/2019
@@ -15,35 +15,35 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456666"
 ---
-# <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Upload a vhd to Azure using Azure PowerShell
+# <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Een VHD uploaden naar Azure met behulp van Azure PowerShell
 
-This article explains how to upload a vhd from your local machine to an Azure managed disk. Previously, you had to follow a more involved process that included staging your data in a storage account, and managing that storage account. Now, you no longer need to manage a storage account, or stage data in it to upload a vhd. Instead, you create an empty managed disk, and upload a vhd directly to it. This simplifies uploading on-premises VMs to Azure and enables you to upload a vhd up to 32 TiB directly into a large managed disk.
+In dit artikel wordt uitgelegd hoe u een VHD van uw lokale machine uploadt naar een door Azure beheerde schijf. Voorheen moest u een recenter proces volgen dat uw gegevens in een opslag account heeft opgenomen en die opslag account beheren. U hoeft nu geen opslag account meer te beheren of gegevens in het werk gebied te laden om een VHD te uploaden. In plaats daarvan maakt u een lege beheerde schijf en uploadt u een VHD direct hiernaar. Dit vereenvoudigt het uploaden van on-premises Vm's naar Azure en biedt u de mogelijkheid om een VHD te uploaden naar 32 TiB rechtstreeks naar een grote beheerde schijf.
 
-If you are providing a backup solution for IaaS VMs in Azure, we recommend you use direct upload to restore customer backups to managed disks. If you are uploading a VHD from a machine external to Azure, speeds with depend on your local bandwidth. If you are using an Azure VM, then your bandwidth will be the same as standard HDDs.
+Als u een back-upoplossing voor IaaS-Vm's in azure levert, raden we u aan om direct uploaden te gebruiken voor het herstellen van back-ups van klanten naar beheerde schijven. Als u een VHD uploadt van een externe computer naar Azure, zijn de snelheden afhankelijk van uw lokale band breedte. Als u een virtuele machine van Azure gebruikt, is uw band breedte hetzelfde als standaard Hdd's.
 
-Currently, direct upload is supported for standard HDD, standard SSD, and premium SSD managed disks. It is not yet supported for ultra SSDs.
+Op dit moment wordt direct uploaden ondersteund voor standaard schijven, standaard SSD en Premium SSD Managed disks. Het wordt nog niet ondersteund voor Ultra Ssd's.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Download the latest [version of AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
-- [Install Azure PowerShell module](/powershell/azure/install-Az-ps).
-- If you intend to upload a vhd from on-pem: A vhd that [has been prepared for Azure](prepare-for-upload-vhd-image.md), stored locally.
-- Or, a managed disk in Azure, if you intend to perform a copy action.
+- Down load de nieuwste [versie van AzCopy V10 toevoegen](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
+- [Installeer de Azure PowerShell-module](/powershell/azure/install-Az-ps).
+- Als u van plan bent om een VHD te uploaden vanaf pem: een VHD die is [voor bereid voor Azure](prepare-for-upload-vhd-image.md), lokaal opgeslagen.
+- Of een beheerde schijf in azure, als u van plan bent om een kopieer actie uit te voeren.
 
-## <a name="create-an-empty-managed-disk"></a>Create an empty managed disk
+## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
 
-To upload your vhd to Azure, you'll need to create an empty managed disk that is configured for this upload process. Before you create one, there's some additional information you should know about these disks.
+Als u uw VHD naar Azure wilt uploaden, moet u een lege beheerde schijf maken die is geconfigureerd voor dit upload proces. Voordat u er een maakt, moet u over deze schijven enige aanvullende informatie weten.
 
-This kind of managed disk has two unique states:
+Dit soort beheerde schijven heeft twee unieke statussen:
 
-- ReadToUpload, which means the disk is ready to receive an upload but, no [secure access signature](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) has been generated.
-- ActiveUpload, which means that the disk is ready to receive an upload and the SAS has been generated.
+- ReadToUpload, wat betekent dat de schijf gereed is om een upload te ontvangen, maar geen [beveiligde toegangs handtekening](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) is gegenereerd.
+- ActiveUpload, wat betekent dat de schijf gereed is om een upload te ontvangen en dat de SAS is gegenereerd.
 
-While in either of these states, the managed disk will be billed at [standard HDD pricing](https://azure.microsoft.com/pricing/details/managed-disks/), regardless of the actual type of disk. For example, a P10 will be billed as an S10. This will be true until `revoke-access` is called on the managed disk, which is required in order to attach the disk to a VM.
+In een van deze statussen wordt de beheerde schijf gefactureerd tegen [standaard prijzen voor harde schijven](https://azure.microsoft.com/pricing/details/managed-disks/), ongeacht het werkelijke type schijf. Een P10 wordt bijvoorbeeld gefactureerd als een S10. Dit geldt totdat `revoke-access` wordt aangeroepen op de beheerde schijf, wat vereist is om de schijf aan een virtuele machine te koppelen.
 
-Before you create an empty standard HDD for uploading, you'll need the file size in bytes of the vhd you want to upload. The example code will get that for you but, to do it yourself you can use: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. This value is used when specifying the **-UploadSizeInBytes** parameter.
+Voordat u een lege standaard HDD maakt voor het uploaden, hebt u de bestands grootte in bytes van de VHD die u wilt uploaden. Met de voorbeeld code krijgt u maar zelf, kunt u het volgende doen: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Deze waarde wordt gebruikt bij het opgeven van de para meter **-UploadSizeInBytes** .
 
-Now, on your local shell, create an empty standard HDD for uploading by specifying the **Upload** setting in the **-CreateOption** parameter as well as the **-UploadSizeInBytes** parameter in the [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) cmdlet. Then call [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) to create the disk:
+Maak nu op uw lokale shell een lege standaard HDD voor het uploaden door de **Upload** -instelling op te geven in de para meter **-CreateOption** en de para meter **-UploadSizeInBytes** in de cmdlet [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) . Roep vervolgens [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) aan om de schijf te maken:
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -53,11 +53,11 @@ $diskconfig = New-AzDiskConfig -SkuName 'Standard_LRS' -OsType 'Windows' -Upload
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName' -Disk $diskconfig
 ```
 
-If you would like to upload either a premium SSD or a standard SSD, replace **Standard_LRS** with either **Premium_LRS** or **StandardSSD_LRS**. Ultra SSD is not yet supported.
+Als u een Premium SSD of een standaard SSD wilt uploaden, moet u **Standard_LRS** vervangen door **Premium_LRS** of **StandardSSD_LRS**. Ultra-SSD wordt nog niet ondersteund.
 
-You have now created an empty managed disk that is configured for the upload process. To upload a vhd to the disk, you'll need a writeable SAS, so that you can reference it as the destination for your upload.
+U hebt nu een lege beheerde schijf gemaakt die voor het upload proces is geconfigureerd. Als u een VHD naar de schijf wilt uploaden, moet u een Beschrijf bare SAS hebben, zodat u deze kunt raadplegen als bestemming voor uw Upload.
 
-To generate a writable SAS of your empty managed disk, use the following command:
+Gebruik de volgende opdracht om een Beschrijf bare SAS van uw lege beheerde schijf te genereren:
 
 ```powershell
 $diskSas = Grant-AzDiskAccess -ResourceGroupName 'myResouceGroup' -DiskName 'myDiskName' -DurationInSecond 86400 -Access 'Write'
@@ -65,21 +65,21 @@ $diskSas = Grant-AzDiskAccess -ResourceGroupName 'myResouceGroup' -DiskName 'myD
 $disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 ```
 
-## <a name="upload-vhd"></a>Upload vhd
+## <a name="upload-vhd"></a>VHD uploaden
 
-Now that you have a SAS for your empty managed disk, you can use it to set your managed disk as the destination for your upload command.
+Nu u een SAS hebt voor uw lege beheerde schijf, kunt u deze gebruiken om de beheerde schijf als bestemming in te stellen voor uw Upload opdracht.
 
-Use AzCopy v10 to upload your local VHD file to a managed disk by specifying the SAS URI you generated.
+Gebruik AzCopy V10 toevoegen om uw lokale VHD-bestand te uploaden naar een beheerde schijf door de SAS-URI op te geven die u hebt gegenereerd.
 
-This upload has the same throughput as the equivalent [standard HDD](disks-types.md#standard-hdd). For example, if you have a size that equates to S4, you will have a throughput of up to 60 MiB/s. But, if you have a size that equates to S70, you will have a throughput of up to 500 MiB/s.
+Deze upload heeft dezelfde door Voer als de equivalente [standaard HDD](disks-types.md#standard-hdd). Als u bijvoorbeeld een grootte hebt die gelijk is aan S4, hebt u een door Voer van Maxi maal 60 MiB/s. Maar als u een grootte hebt die gelijk is aan S70, hebt u een door Voer van Maxi maal 500 MiB/s.
 
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
 
-If your SAS expires during the upload, and you haven't called `revoke-access` yet, you can get a new SAS to continue the upload using `grant-access`, again.
+Als uw SAS verloopt tijdens het uploaden en u `revoke-access` nog niet hebt aangeroepen, kunt u een nieuwe SAS ophalen om het uploaden met `grant-access`voort te zetten.
 
-After the upload is complete, and you no longer need to write any more data to the disk, revoke the SAS. Revoking the SAS will change the state of the managed disk and allow you to attach the disk to a VM.
+Nadat het uploaden is voltooid en u geen gegevens meer naar de schijf hoeft te schrijven, trekt u de SAS in. Als u de SA'S intrekt, wordt de status van de beheerde schijf gewijzigd en kunt u de schijf koppelen aan een virtuele machine.
 
 ```powershell
 Revoke-AzDiskAccess -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
@@ -87,14 +87,14 @@ Revoke-AzDiskAccess -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 
 ## <a name="copy-a-managed-disk"></a>Een beheerde schijf kopiëren
 
-Direct upload also simplifies the process of copying a managed disk. You can either copy within the same region or cross-region (to another region).
+Direct uploaden vereenvoudigt ook het proces van het kopiëren van een beheerde schijf. U kunt kopiëren binnen dezelfde regio of in meerdere regio's (naar een andere regio).
 
-The follow script will do this for you, the process is similar to the steps described earlier, with some differences since you're working with an existing disk.
+Het volgende script zal dit voor u doen, het proces is vergelijkbaar met de stappen die eerder zijn beschreven, met een aantal verschillen sinds u met een bestaande schijf werkt.
 
 > [!IMPORTANT]
-> You need to add an offset of 512 when you're providing the disk size in bytes of a managed disk from Azure. This is because Azure omits the footer when returning the disk size. The copy will fail if you do not do this. The following script already does this for you.
+> U moet een offset van 512 toevoegen wanneer u de schijf grootte in bytes van een beheerde schijf van Azure opgeeft. Dit komt doordat Azure de voet tekst weglaat wanneer de schijf grootte wordt geretourneerd. Als u dit niet doet, mislukt de kopie. Het volgende script doet dit al voor u.
 
-Replace the `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` and `<yourTargetLocationHere>` (an example of a location value would be uswest2) with your values, then run the following script in order to copy a managed disk.
+Vervang de `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde uswest2) met uw waarden en voer het volgende script uit om een beheerde schijf te kopiëren.
 
 ```powershell
 
@@ -126,6 +126,6 @@ Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Now that you've successfully uploaded a vhd to a managed disk, you can attach your disk to a VM and begin using it.
+Nu u een VHD hebt geüpload naar een beheerde schijf, kunt u uw schijf koppelen aan een virtuele machine en het gebruik ervan starten.
 
-To learn how to attach a data disk to a VM, see our article on the subject: [Attach a data disk to a Windows VM with PowerShell](attach-disk-ps.md). To use the disk as the OS disk, see [Create a Windows VM from a specialized disk](create-vm-specialized.md#create-the-new-vm).
+Zie het artikel over het onderwerp: [een gegevens schijf koppelen aan een Windows-VM met Power shell](attach-disk-ps.md)voor meer informatie over het koppelen van een gegevens schijf aan een virtuele machine. Zie [een Windows-VM maken op basis van een gespecialiseerde schijf](create-vm-specialized.md#create-the-new-vm)als u de schijf wilt gebruiken als de besturingssysteem schijf.

@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Create an Azure private DNS zone using the Azure portal
-description: In this quickstart, you create and test a private DNS zone and record in Azure DNS. This is a step-by-step guide to create and manage your first private DNS zone and record using the Azure portal.
+title: 'Quick Start: een persoonlijke DNS-zone van Azure maken met behulp van de Azure Portal'
+description: In deze Quick Start maakt en test u een privé-DNS-zone en-record in Azure DNS. Dit is een stapsgewijze hand leiding voor het maken en beheren van uw eerste privé-DNS-zone en-record met behulp van de Azure Portal.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,43 +14,43 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74210759"
 ---
-# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Quickstart: Create an Azure private DNS zone using the Azure portal
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Quick Start: een privé-DNS-zone met Azure maken met behulp van de Azure Portal
 
-This quickstart walks you through the steps to create your first private DNS zone and record using the Azure portal.
+In deze Snelstartgids wordt u begeleid bij de stappen voor het maken van uw eerste privé-DNS-zone en-record met behulp van de Azure Portal.
 
-Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Als u uw domein wilt hosten in Azure DNS, moet u een DNS-zone maken voor die domeinnaam. Alle DNS-records voor uw domein worden vervolgens gemaakt binnen deze DNS-zone. Als u een privé-DNS-zone wilt publiceren naar uw virtuele netwerk, geeft u de lijst op met virtuele netwerken die zijn toegestaan om records in de zone om te zetten.  These are called *linked* virtual networks. When autoregistration is enabled, Azure DNS also updates the zone records whenever a virtual machine is created, changes its' IP address, or is deleted.
+Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Als u uw domein wilt hosten in Azure DNS, moet u een DNS-zone maken voor die domeinnaam. Alle DNS-records voor uw domein worden vervolgens gemaakt binnen deze DNS-zone. Als u een privé-DNS-zone wilt publiceren naar uw virtuele netwerk, geeft u de lijst op met virtuele netwerken die zijn toegestaan om records in de zone om te zetten.  Deze worden *gekoppelde* virtuele netwerken genoemd. Als automatische registratie is ingeschakeld, werkt Azure DNS ook de zone records bij wanneer een virtuele machine wordt gemaakt, wordt het IP-adres gewijzigd of wordt dit verwijderd.
 
 In deze snelstart leert u de volgende zaken:
 
 > [!div class="checklist"]
-> * Create a private DNS zone
-> * Maak een virtueel netwerk
-> * Link the virtual network
+> * Een privé-DNS-zone maken
+> * Een virtueel netwerk maken
+> * Het virtuele netwerk koppelen
 > * Virtuele testmachines maken
 > * Een extra DNS-record maken
 > * De privézone testen
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-If you prefer, you can complete this quickstart using [Azure PowerShell](private-dns-getstarted-powershell.md) or [Azure CLI](private-dns-getstarted-cli.md).
+Als u wilt, kunt u deze Snelstartgids volt ooien met behulp van [Azure PowerShell](private-dns-getstarted-powershell.md) of [Azure cli](private-dns-getstarted-cli.md).
 
-## <a name="create-a-private-dns-zone"></a>Create a private DNS zone
+## <a name="create-a-private-dns-zone"></a>Een privé-DNS-zone maken
 
-The following example creates a DNS zone called **private.contoso.com** in a resource group called **MyAzureResourceGroup**.
+In het volgende voor beeld wordt een DNS-zone met de naam **Private.contoso.com** gemaakt in een resource groep met de naam **MyAzureResourceGroup**.
 
 Een DNS-zone bevat de DNS-vermeldingen voor een domein. Als u uw domein wilt hosten in Azure DNS, maakt u een DNS-zone voor deze domeinnaam.
 
-![Private DNS zones search](media/private-dns-portal/search-private-dns.png)
+![Privé-DNS zones zoeken](media/private-dns-portal/search-private-dns.png)
 
-1. On the portal search bar, type **private dns zones** in the search text box and press **Enter**.
-1. Select **Private DNS zone**.
-2. Select **Create private dns zone**.
+1. Typ **privé-DNS-zones** in het zoekvak op de portal zoek balk en druk op **Enter**.
+1. Selecteer **privé-DNS zone**.
+2. Selecteer **privé-DNS-zone maken**.
 
-1. On the **Create Private DNS zone** page, type or select the following values:
+1. Typ of Selecteer op de pagina **privé-DNS zone maken** de volgende waarden:
 
-   - **Resource group**: Select **Create new**, enter *MyAzureResourceGroup*, and select **OK**. De naam van de resourcegroep moet uniek zijn binnen het Azure-abonnement. 
-   -  **Name**: Type *private.contoso.com* for this example.
-1. For **Resource group location**, select **West Central US**.
+   - **Resource groep**: Selecteer **nieuwe maken**, Voer *MyAzureResourceGroup*in en selecteer **OK**. De naam van de resourcegroep moet uniek zijn binnen het Azure-abonnement. 
+   -  **Naam**: Typ *Private.contoso.com* voor dit voor beeld.
+1. Selecteer voor de locatie van de **resource groep**de optie **West-Centraal VS**.
 
 1. Selecteer **Controleren + maken**.
 
@@ -58,64 +58,64 @@ Een DNS-zone bevat de DNS-vermeldingen voor een domein. Als u uw domein wilt hos
 
 Het maken van de zone kan een paar minuten duren.
 
-## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-1. On the portal page upper left, select **Create a resource**, then **Networking**, then select **Virtual network**.
-2. For **Name**, type **myAzureVNet**.
-3. For **Resource group**, select **MyAzureResourceGroup**.
-4. For **Location**, select **West Central US**.
-5. Accept the other default values and select **Create**.
+1. Selecteer op de pagina Portal linksboven **een resource maken**en vervolgens **netwerken**, en selecteer vervolgens **virtueel netwerk**.
+2. Typ **myAzureVNet**voor **naam**.
+3. Selecteer voor **resource groep**de optie **MyAzureResourceGroup**.
+4. Selecteer bij **locatie**de optie **West-Centraal VS**.
+5. Accepteer de andere standaard waarden en selecteer **maken**.
 
-## <a name="link-the-virtual-network"></a>Link the virtual network
+## <a name="link-the-virtual-network"></a>Het virtuele netwerk koppelen
 
-To link the private DNS zone to a virtual network, you create a virtual network link.
+Als u de privé-DNS-zone aan een virtueel netwerk wilt koppelen, maakt u een koppeling met een virtueel netwerk.
 
-![Add virtual network link](media/private-dns-portal/dns-add-virtual-network-link.png)
+![Koppeling van virtueel netwerk toevoegen](media/private-dns-portal/dns-add-virtual-network-link.png)
 
-1. Open the **MyAzureResourceGroup** resource group and select the **private.contoso.com** private zone.
-2. On the left pane, select **Virtual network links**.
+1. Open de resource groep **MyAzureResourceGroup** en selecteer de privé zone **Private.contoso.com** .
+2. Selecteer **virtuele netwerk koppelingen**in het linkerdeel venster.
 3. Selecteer **Toevoegen**.
-4. Type **myLink** for the **Link name**.
-5. For **Virtual network**, select **myAzureVNet**.
-6. Select the **Enable auto registration** check box.
+4. Typ **myLink** voor de **naam**van de koppeling.
+5. Selecteer voor **virtueel netwerk** **myAzureVNet**.
+6. Schakel het selectie vakje **automatische registratie inschakelen** in.
 7. Selecteer **OK**.
 
 ## <a name="create-the-test-virtual-machines"></a>De virtuele testmachines maken
 
 Maak nu twee virtuele machines, zodat u uw DNS-privézone kunt testen:
 
-1. On the portal page upper left, select **Create a resource**, and then select **Windows Server 2016 Datacenter**.
-1. Select **MyAzureResourceGroup** for the resource group.
-1. Type **myVM01** - for the name of the virtual machine.
-1. Select **West Central US** for the **Region**.
-1. Type **azureadmin** for the administrator user name.
-2. Type **Azure12345678** for the password and confirm the password.
+1. Selecteer op de pagina Portal linksboven **een resource maken**en selecteer vervolgens **Windows Server 2016 Data Center**.
+1. Selecteer **MyAzureResourceGroup** voor de resource groep.
+1. Typ **myVM01** -voor de naam van de virtuele machine.
+1. Selecteer **West-Centraal VS** voor de **regio**.
+1. Typ **azureadmin** voor de gebruikers naam van de beheerder.
+2. Typ **Azure12345678** voor het wacht woord en bevestig het wacht woord.
 
-5. For **Public inbound ports**, select **Allow selected ports**, and then select **RDP (3389)** for **Select inbound ports**.
-10. Accept the other defaults for the page and then click **Next: Disks >** .
-11. Accept the defaults on the **Disks** page, then click **Next: Networking >** .
-1. Make sure that **myAzureVNet** is selected for the virtual network.
-1. Accept the other defaults for the page, and then click **Next: Management >** .
-2. For **Boot diagnostics**, select **Off**, accept the other defaults, and then select **Review + create**.
-1. Review the settings and then click **Create**.
+5. Voor **open bare binnenkomende poorten**selecteert u **geselecteerde poorten toestaan**en vervolgens **RDP (3389)** selecteren voor **binnenkomende poorten selecteren**.
+10. Accepteer de andere standaard waarden voor de pagina en klik vervolgens op **volgende: schijven >** .
+11. Accepteer de standaard instellingen op de pagina **schijven** en klik vervolgens op **volgende: netwerk >** .
+1. Zorg ervoor dat **myAzureVNet** is geselecteerd voor het virtuele netwerk.
+1. Accepteer de andere standaard waarden voor de pagina en klik vervolgens op **volgende: beheer >** .
+2. Voor **Diagnostische gegevens over opstarten**selecteert u **uit**, accepteert u de andere standaard waarden en selecteert u vervolgens **bekijken + maken**.
+1. Controleer de instellingen en klik vervolgens op **maken**.
 
-Repeat these steps and create another virtual machine named **myVM02**.
+Herhaal deze stappen en maak een andere virtuele machine met de naam **myVM02**.
 
-It will take a few minutes for both virtual machines to complete.
+Het duurt enkele minuten voordat de virtuele machines zijn voltooid.
 
 ## <a name="create-an-additional-dns-record"></a>Een extra DNS-record maken
 
- The following example creates a record with the relative name **db** in the DNS Zone **private.contoso.com**, in resource group **MyAzureResourceGroup**. The fully qualified name of the record set is **db.private.contoso.com**. The record type is "A", with the IP address of **myVM01**.
+ In het volgende voor beeld wordt een record gemaakt met de relatieve naam **db** in de DNS-zone **Private.contoso.com**in de resource groep **MyAzureResourceGroup**. De volledig gekwalificeerde naam van de recordset is **db.private.contoso.com**. Het record type is ' A ', met het IP-adres van **myVM01**.
 
-1. Open the **MyAzureResourceGroup** resource group and select the **private.contoso.com** private zone.
+1. Open de resource groep **MyAzureResourceGroup** en selecteer de privé zone **Private.contoso.com** .
 2. Selecteer **Recordset toevoegen**.
-3. For **Name**, type **db**.
-4. For **IP Address**, type the IP address you see for **myVM01**. This should be auto registered when the virtual machine started.
+3. Typ **db**bij **naam**.
+4. Voor **IP-adres**, typt u het IP-adres dat u voor **myVM01**ziet. Dit moet automatisch worden geregistreerd wanneer de virtuele machine is gestart.
 5. Selecteer **OK**.
 
 ## <a name="test-the-private-zone"></a>De privézone testen
 
-Now you can test the name resolution for your **private.contoso.com** private zone.
+Nu kunt u de naam omzetting voor uw persoonlijke **Private.contoso.com** -zone testen.
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>VM’s configureren voor het toestaan van inkomende ICMP
 
@@ -175,11 +175,11 @@ Herhaal voor myVM02.
 
 ## <a name="delete-all-resources"></a>Alle resources verwijderen
 
-When no longer needed, delete the **MyAzureResourceGroup** resource group to delete the resources created in this quickstart.
+Als u deze niet meer nodig hebt, verwijdert u de resource groep **MyAzureResourceGroup** om de resources te verwijderen die u in deze Quick Start hebt gemaakt.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Azure DNS Private Zones scenarios](private-dns-scenarios.md)
+> [Scenario's voor Azure DNS-privézones](private-dns-scenarios.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Web app that signs in users (overview) - Microsoft identity platform
-description: Learn how to build a web app that signs in users (overview)
+title: Web-app die gebruikers aanmeldt (overzicht)-micro soft Identity-platform
+description: Meer informatie over het bouwen van een web-app die gebruikers aanmeldt (overzicht)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -22,9 +22,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482476"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web app that signs in users
+# <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web-app die gebruikers aantekent
 
-Learn all you need to build a web app that uses the Microsoft identity platform to sign in users.
+Meer informatie over wat u nodig hebt om een web-app te bouwen die gebruikmaakt van het micro soft Identity-platform om gebruikers aan te melden.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,52 +34,52 @@ Learn all you need to build a web app that uses the Microsoft identity platform 
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-If you want to create your first portable (ASP.NET Core) web app that signs in users, follow this quickstart:
+Als u uw eerste Portable (ASP.NET Core) Web-App wilt maken die zich aanmeldt bij gebruikers, volgt u deze Snelstartgids:
 
 > [!div class="nextstepaction"]
-> [Quickstart: ASP.NET Core web app that signs in users](quickstart-v2-aspnet-core-webapp.md)
+> [Quick Start: ASP.NET Core web-app die gebruikers ondertekent](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-If you want to understand how to add sign-in to an existing ASP.NET web application, try the following quickstart:
+Als u wilt weten hoe u aanmelden kunt toevoegen aan een bestaande ASP.NET-webtoepassing, probeert u de volgende Snelstartgids:
 
 > [!div class="nextstepaction"]
-> [Quickstart: ASP.NET web app that signs in users](quickstart-v2-aspnet-webapp.md)
+> [Quick Start: ASP.NET-Web-app die gebruikers aanmeldt](quickstart-v2-aspnet-webapp.md)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-If you're a Java developer, try the following quickstart:
+Als u een Java-ontwikkelaar bent, kunt u de volgende Snelstartgids proberen:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Add sign-in with Microsoft to a Java web app](quickstart-v2-java-webapp.md)
+> [Snelstartgids: aanmelden toevoegen met micro soft aan een Java-Web-app](quickstart-v2-java-webapp.md)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-If you develop with Python, try the following quickstart:
+Als u met python ontwikkelt, voert u de volgende Snelstartgids uit:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Add sign-in with Microsoft to a Python web app](quickstart-v2-python-webapp.md)
+> [Snelstartgids: aanmelden toevoegen met micro soft aan een Python-web-app](quickstart-v2-python-webapp.md)
 
 ---
 
 ## <a name="overview"></a>Overzicht
 
-You add authentication to your web app so that it can sign in users. Adding authentication enables your web app to access limited profile information in order to customize the experience for users. 
+U voegt verificatie toe aan uw web-app zodat gebruikers zich kunnen aanmelden. Door verificatie toe te voegen kan uw web-app toegang krijgen tot beperkte profiel gegevens om de gebruikers ervaring aan te passen. 
 
-Web apps authenticate a user in a web browser. In this scenario, the web app directs the user's browser to sign them in to Azure Active Directory (Azure AD). Azure AD returns a sign-in response through the user's browser, which contains claims about the user in a security token. Signing in users takes advantage of the [Open ID Connect](./v2-protocols-oidc.md) standard protocol, simplified by the use of middleware [libraries](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps).
+Web-apps verifiëren een gebruiker in een webbrowser. In dit scenario wordt de browser van de gebruiker door de web-app doorgestuurd om deze aan te melden bij Azure Active Directory (Azure AD). Azure AD retourneert een aanmeldings reactie via de browser van de gebruiker, die claims bevat over de gebruiker in een beveiligings token. Bij het aanmelden van gebruikers wordt gebruikgemaakt van het [Open-ID Connect-](./v2-protocols-oidc.md) standaard protocol, vereenvoudigd door het gebruik van middleware- [bibliotheken](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps).
 
-![Web app signs in users](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
+![Web-app-ondertekening in gebruikers](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 
-As a second phase, you can enable your application to call web APIs on behalf of the signed-in user. This next phase is a different scenario, which you'll find in [Web app that calls web APIs](scenario-web-app-call-api-overview.md).
+Als tweede fase kunt u ervoor zorgen dat uw toepassing namens de aangemelde gebruiker Web-Api's aanroept. Deze volgende fase is een ander scenario dat u vindt in web- [apps die web-api's aanroepen](scenario-web-app-call-api-overview.md).
 
 > [!NOTE]
-> Adding sign-in to a web app is about protecting the web app and validating a user token, which is what  **middleware** libraries do. In the case of .NET, this scenario does not yet require the Microsoft Authentication Library (MSAL), which is about acquiring a token to call protected APIs. Authentication libraries will be introduced in the follow-up scenario, when the web app needs to call web APIs.
+> Het toevoegen van een aanmelding aan een web-app is het beveiligen van de web-app en het valideren van een gebruikers token. Dit zijn de **middleware** -bibliotheken. In het geval van .NET hebt u voor dit scenario nog geen micro soft Authentication Library (MSAL) nodig. Dit is het verkrijgen van een token voor het aanroepen van beveiligde Api's. Verificatie bibliotheken worden geïntroduceerd in het vervolg scenario, wanneer de web-app Web-Api's moet aanroepen.
 
-## <a name="specifics"></a>Specifics
+## <a name="specifics"></a>Opsporingsgegevens
 
-- During the application registration, you'll need to provide one or several (if you deploy your app to several locations) reply URIs. In some cases (ASP.NET and ASP.NET Core), you'll need to enable the ID token. Finally, you'll want to set up a sign-out URI so that your application reacts to users signing out.
-- In the code for your application, you'll need to provide the authority to which your web app delegates sign-in. You might want to customize token validation (in particular, in partner scenarios).
-- Web applications support any account types. For more information, see [Supported account types](v2-supported-account-types.md).
+- Tijdens de registratie van de toepassing moet u een of meer opgeven (als u uw app op verschillende locaties implementeert) antwoord-Uri's. In sommige gevallen (ASP.NET en ASP.NET Core) moet u het ID-token inschakelen. Ten slotte wilt u een afmeldings-URI instellen, zodat uw toepassing reageert op gebruikers die zich afmelden.
+- In de code voor uw toepassing moet u de instantie opgeven waarnaar uw web-app zich aanmeldt. Mogelijk wilt u de token validatie aanpassen (met name in partner scenario's).
+- Webtoepassingen ondersteunen elk account type. Zie [supported account types](v2-supported-account-types.md)(Engelstalig) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

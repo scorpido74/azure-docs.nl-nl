@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 11/21/2019
 ms.author: radeltch
-ms.openlocfilehash: 7fb7294cc6f7918b4c6a3afa9e3c9dc7f44504e1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49e7fd49e000a3d4475c60a0c58cf6a2c7455fa5
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014942"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531419"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op SUSE Linux Enterprise Server 
 
@@ -99,17 +99,17 @@ Eén methode voor het bereiken van HANA hoge Beschik baarheid is door automatisc
 ![Overzicht van de hoge Beschik baarheid van SAP netweave](./media/high-availability-guide-suse-anf/sap-hana-scale-out-standby-netapp-files-suse.png)
 
 In het voor gaande diagram, dat volgt SAP HANA netwerk aanbevelingen, worden drie subnetten weer gegeven in één virtueel Azure-netwerk: 
+* Voor client communicatie
 * Voor communicatie met het opslag systeem
 * Voor interne HANA-communicatie tussen knoop punten
-* Voor client communicatie
 
 De Azure NetApp-volumes bevinden zich in een afzonderlijk subnet, [gedelegeerd aan Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
 Voor deze voorbeeld configuratie zijn de subnetten:  
 
+  - `client` 10.23.0.0/24  
   - `storage` 10.23.2.0/24  
   - `hana` 10.23.3.0/24  
-  - `client` 10.23.0.0/24  
   - `anf` 10.23.1.0/26  
 
 ## <a name="set-up-the-azure-netapp-files-infrastructure"></a>De Azure NetApp Files-infra structuur instellen 
@@ -140,7 +140,7 @@ Bij de volgende instructies wordt ervan uitgegaan dat u uw [virtuele Azure-netwe
 
    Wanneer u de volumes implementeert, moet u ervoor zorgen dat u de **nfsv 4.1** -versie selecteert. De toegang tot NFSv 4.1 vereist momenteel extra white list. Implementeer de volumes in het aangewezen Azure NetApp Files [subnet](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). 
    
-   Houd er rekening mee dat de Azure NetApp Files resources en de virtuele Azure-machines zich in hetzelfde virtuele Azure-netwerk moeten bevinden of in een Peerd Azure Virtual Network. Bijvoorbeeld, **HN1**-data-Mnt00001, **HN1**-log-mnt00001, enzovoort zijn de volume namen en NFS://10.23.1.5/**HN1**-data-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001, enzovoort, de bestands paden voor de Azure NetApp files volumes.  
+   Houd er rekening mee dat de Azure NetApp Files resources en de virtuele Azure-machines zich in hetzelfde virtuele Azure-netwerk moeten bevinden of in een Peerd Azure Virtual Network. Bijvoorbeeld: **HN1**-data-Mnt00001, **HN1**-log-mnt00001, enzovoort, zijn de volume namen en NFS://10.23.1.5/**HN1**-data-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001, enzovoort, de bestands paden voor de Azure NetApp files volumes.  
 
    * volume **HN1**-data-mnt00001 (NFS://10.23.1.5/**HN1**-data-mnt00001)
    * volume **HN1**-data-mnt00002 (NFS://10.23.1.6/**HN1**-data-mnt00002)
@@ -165,9 +165,6 @@ Houd bij het maken van uw Azure NetApp Files voor SAP NetWeaver op SUSE-architec
 
 > [!IMPORTANT]
 > Voor SAP HANA werk belastingen is lage latentie van cruciaal belang. Werk samen met uw micro soft-vertegenwoordiger om ervoor te zorgen dat de virtuele machines en de Azure NetApp Files-volumes dicht bij elkaar worden geïmplementeerd.  
-
-> [!IMPORTANT]
-> De gebruikers-ID voor **sid**adm en de groeps-ID voor `sapsys` op de vm's moeten overeenkomen met de configuratie in azure NetApp files. Als er een verschil is tussen de VM-Id's en de Azure NetApp-configuratie, worden de machtigingen voor bestanden op Azure NetApp-volumes die op de virtuele machines zijn gekoppeld, weer gegeven als `nobody`. Zorg ervoor dat u de juiste Id's opgeeft wanneer u [een nieuw systeem](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) wilt Azure NetApp files.
 
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Grootte van HANA-Data Base op Azure NetApp Files
 
@@ -209,40 +206,40 @@ De configuratie van de SAP HANA voor de lay-out die in dit artikel wordt weer ge
 
 ## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Virtuele Linux-machines implementeren via de Azure Portal
 
-Eerst moet u de Azure NetApp Files volumes maken. Ga als volgt te werk:
+Eerst moet u de Azure NetApp Files volumes maken. Voer vervolgens de volgende stappen uit:
 1. Maak de [subnetten van het virtuele Azure-netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) in uw [virtuele Azure-netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). 
 1. Implementeer de Vm's. 
 1. Maak de extra netwerk interfaces en koppel de netwerk interfaces aan de bijbehorende Vm's.  
 
-   Elke virtuele machine heeft drie netwerk interfaces, die overeenkomen met de drie subnetten van het virtuele netwerk van Azure (`storage`, `hana`en `client`). 
+   Elke virtuele machine heeft drie netwerk interfaces, die overeenkomen met de drie subnetten van het virtuele netwerk van Azure (`client`, `storage` en `hana`). 
 
    Zie [een virtuele Linux-machine in azure maken met meerdere netwerk interface kaarten](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics)voor meer informatie.  
 
 > [!IMPORTANT]
 > Voor SAP HANA werk belastingen is lage latentie van cruciaal belang. Werk samen met uw micro soft-vertegenwoordiger om ervoor te zorgen dat de virtuele machines en de Azure NetApp Files volumes dicht bij elkaar worden geïmplementeerd. Wanneer u een [nieuw SAP Hana systeem](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) wilt maken dat SAP Hana Azure NetApp files gebruikt, dient u de benodigde gegevens in te dienen. 
  
-In de volgende instructies wordt ervan uitgegaan dat u de resource groep, het virtuele netwerk van Azure en de drie subnetten van het virtuele netwerk van Azure hebt gemaakt: `storage`, `hana`en `client`. Wanneer u de Vm's implementeert, selecteert u het opslag subnet, zodat de netwerk interface van de opslag de primaire interface op de Vm's is. Als dat niet mogelijk is, configureert u een expliciete route naar het Azure NetApp Files overgedragen subnet via de gateway van het opslag subnet. 
+In de volgende instructies wordt ervan uitgegaan dat u de resource groep, het virtuele netwerk van Azure en de drie subnetten van het virtuele netwerk van Azure hebt gemaakt: `client`, `storage` en `hana`. Wanneer u de Vm's implementeert, selecteert u het subnet van de client, zodat de client netwerk interface de primaire interface op de Vm's is. U moet ook een expliciete route naar het Azure NetApp Files gedelegeerde subnet configureren via de gateway van het opslag subnet. 
 
 > [!IMPORTANT]
 > Zorg ervoor dat het besturings systeem dat u selecteert, SAP-gecertificeerd is voor SAP HANA op de specifieke VM-typen die u gebruikt. Ga naar de site [SAP Hana Certified IaaS platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) voor een lijst met SAP Hana gecertificeerde VM-typen en versies van besturings systemen voor deze typen. Klik in de details van het vermelde VM-type om de volledige lijst met door SAP HANA ondersteunde versies van besturings systemen voor dat type op te halen.  
 
 1. Maak een beschikbaarheidsset voor SAP HANA. Zorg ervoor dat u het maximale update domein instelt.  
 
-2. Maak drie virtuele machines (**hanadb1**, **hanadb2**, **hanadb3**) door de volgende handelingen uit te voeren:  
+2. Maak drie virtuele machines (**hanadb1**, **hanadb2**, **hanadb3**) door de volgende stappen uit te voeren:  
 
    a. Gebruik een SLES4SAP-installatie kopie in de Azure-galerie die wordt ondersteund voor SAP HANA. In dit voor beeld hebben we een installatie kopie van SLES4SAP 12 SP4 gebruikt.  
 
    b. Selecteer de beschikbaarheidsset die u eerder hebt gemaakt voor SAP HANA.  
 
-   c. Selecteer het subnet van het virtuele netwerk van Azure Storage. Selecteer [versneld netwerk](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).  
+   c. Selecteer het subnet van het virtuele Azure-netwerk. Selecteer [versneld netwerk](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).  
 
-   Wanneer u de virtuele machines implementeert, wordt de naam van de netwerk interface automatisch gegenereerd. We verwijzen naar de netwerk interfaces die zijn gekoppeld aan het subnet van het virtuele netwerk van Azure, zoals **hanadb1-Storage**, **hanadb2-Storage**en **hanadb3-Storage**. 
+   Wanneer u de virtuele machines implementeert, wordt de naam van de netwerk interface automatisch gegenereerd. In deze instructies voor de eenvoud verwijzen we naar de automatisch gegenereerde netwerk interfaces, die zijn gekoppeld aan het subnet van het virtuele netwerk van Azure, als **hanadb1-client**, **hanadb2-client**en **hanadb3-client**. 
 
-3. Maak drie netwerk interfaces, één voor elke virtuele machine, voor de `hana` subnet van het virtuele netwerk (in dit voor beeld **hanadb1-Hana**, **hanadb2-Hana**en **hanadb3-Hana**).  
+3. Maak drie netwerk interfaces, één voor elke virtuele machine, voor de `storage` subnet van het virtuele netwerk (in dit voor beeld **hanadb1-Storage**, **hanadb2-Storage**en **hanadb3-Storage**).  
 
-4. Maak drie netwerk interfaces, één voor elke virtuele machine, voor de `client` subnet van het virtuele netwerk (in dit voor beeld **hanadb1-client**, **hanadb2-client**en **hanadb3-client**).  
+4. Maak drie netwerk interfaces, één voor elke virtuele machine, voor de `hana` subnet van het virtuele netwerk (in dit voor beeld **hanadb1-Hana**, **hanadb2-Hana**en **hanadb3-Hana**).  
 
-5. Koppel de zojuist gemaakte virtuele netwerk interfaces aan de bijbehorende virtuele machines door de volgende handelingen uit te voeren:  
+5. Koppel de zojuist gemaakte virtuele netwerk interfaces aan de bijbehorende virtuele machines door de volgende stappen uit te voeren:  
 
     a. Ga naar de virtuele machine in de [Azure Portal](https://portal.azure.com/#home).  
 
@@ -250,7 +247,7 @@ In de volgende instructies wordt ervan uitgegaan dat u de resource groep, het vi
 
     c. Selecteer in het deel venster **overzicht** de optie **stoppen** om de toewijzing van de virtuele machine ongedaan te maken.  
 
-    d. Selecteer **netwerken**en koppel vervolgens de netwerk interface. Selecteer in de vervolg keuzelijst **netwerk interface koppelen** de al gemaakte netwerk interfaces voor de `hana` en `client` subnetten.  
+    d. Selecteer **netwerken**en koppel vervolgens de netwerk interface. Selecteer in de vervolg keuzelijst **netwerk interface koppelen** de al gemaakte netwerk interfaces voor de `storage` en `hana` subnetten.  
     
     e. Selecteer **Opslaan**. 
  
@@ -258,23 +255,24 @@ In de volgende instructies wordt ervan uitgegaan dat u de resource groep, het vi
  
     g. Zorg ervoor dat de virtuele machines met de status gestopt nu actief zijn. Vervolgens wordt [versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) ingeschakeld voor alle nieuw gekoppelde netwerk interfaces.  
 
-6. Schakel het volgende in om versnelde netwerken in te scha kelen voor de extra netwerk interfaces voor de `hana` en `client` subnetten:  
+6. Schakel de volgende stappen uit om versnelde netwerken in te scha kelen voor de extra netwerk interfaces voor de `storage` en `hana` subnetten:  
 
     a. Open [Azure Cloud shell](https://azure.microsoft.com/features/cloud-shell/) in het [Azure Portal](https://portal.azure.com/#home).  
 
-    b. Voer de volgende opdrachten uit om versneld netwerken in te scha kelen voor de extra netwerk interfaces die zijn gekoppeld aan de `hana` en `client` subnetten.  
+    b. Voer de volgende opdrachten uit om versneld netwerken in te scha kelen voor de extra netwerk interfaces die zijn gekoppeld aan de `storage` en `hana` subnetten.  
 
     <pre><code>
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-storage</b> --accelerated-networking true
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-storage</b> --accelerated-networking true
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-storage</b> --accelerated-networking true
+    
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-hana</b> --accelerated-networking true
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-hana</b> --accelerated-networking true
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-hana</b> --accelerated-networking true
-    
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-client</b> --accelerated-networking true
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-client</b> --accelerated-networking true
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-client</b> --accelerated-networking true
+
     </code></pre>
 
-7. Start de virtuele machines op de volgende manier:  
+7. Start de virtuele machines door de volgende stappen uit te voeren:  
 
     a. Selecteer **virtual machines**in het linkerdeel venster. Filter op de naam van de virtuele machine (bijvoorbeeld **hanadb1**) en selecteer deze.  
 
@@ -288,36 +286,53 @@ De instructies in de volgende secties worden voorafgegaan door een van de volgen
 * **[2]** : alleen van toepassing op knoop punt 2
 * **[3]** : alleen van toepassing op knoop punt 3
 
-Doe het volgende om het besturings systeem te configureren en voor te bereiden:
+Configureer en bereid uw besturings systeem uit door de volgende stappen uit te voeren:
 
 1. **[A]** de host-bestanden op de virtuele machines onderhouden. Neem vermeldingen op voor alle subnetten. De volgende vermeldingen zijn toegevoegd aan `/etc/hosts` voor dit voor beeld.  
 
     <pre><code>
     # Storage
-    10.23.2.4   hanadb1
-    10.23.2.5   hanadb2
-    10.23.2.6   hanadb3
+    10.23.2.4   hanadb1-storage
+    10.23.2.5   hanadb2-storage
+    10.23.2.6   hanadb3-storage
     # Client
-    10.23.0.5   hanadb1-client
-    10.23.0.6   hanadb2-client
-    10.23.0.7   hanadb3-client
+    10.23.0.5   hanadb1
+    10.23.0.6   hanadb2
+    10.23.0.7   hanadb3
     # Hana
     10.23.3.4   hanadb1-hana
     10.23.3.5   hanadb2-hana
     10.23.3.6   hanadb3-hana
     </code></pre>
 
-2. **[A] Wijzig de** DHCP-en Cloud configuratie-instellingen om te voor komen dat er onbedoelde hostnamen worden gewijzigd.  
+2. **[A]** Wijzig de DHCP-en Cloud configuratie-instellingen voor de netwerk interface voor opslag om te voor komen dat er onbedoelde hostnamen worden gewijzigd.  
+
+    Bij de volgende instructies wordt ervan uitgegaan dat de opslag netwerk interface is `eth1`. 
 
     <pre><code>
     vi /etc/sysconfig/network/dhcp
-    #Change the following DHCP setting to "no"
+    # Change the following DHCP setting to "no"
     DHCLIENT_SET_HOSTNAME="no"
-    vi /etc/sysconfig/network/ifcfg-eth0
-    # Edit ifcfg-eth0 
+    vi /etc/sysconfig/network/ifcfg-<b>eth1</b>
+    # Edit ifcfg-eth1 
     #Change CLOUD_NETCONFIG_MANAGE='yes' to "no"
     CLOUD_NETCONFIG_MANAGE='no'
     </code></pre>
+
+2. **[A]** Voeg een netwerk route toe zodat de communicatie met de Azure NetApp files via de netwerk interface van de opslag.  
+
+    Bij de volgende instructies wordt ervan uitgegaan dat de opslag netwerk interface is `eth1`.  
+
+    <pre><code>
+    vi /etc/sysconfig/network/ifroute-<b>eth1</b>
+    # Add the following routes 
+    # RouterIPforStorageNetwork - - -
+    # ANFNetwork/cidr RouterIPforStorageNetwork - -
+    <b>10.23.2.1</b> - - -
+    <b>10.23.1.0/26</b> <b>10.23.2.1</b> - -
+    </code></pre>
+
+    Start de VM opnieuw op om de wijzigingen te activeren.  
 
 3. **[A]** bereid het besturings systeem voor op het uitvoeren van SAP Hana op NetApp-systemen met NFS, zoals beschreven in [SAP Hana op NetApp aff-systemen met NFS-configuratie handleiding](https://www.netapp.com/us/media/tr-4435.pdf). Maak een */etc/sysctl.d/NetApp-Hana.conf* voor het configuratie bestand voor de configuratie-instellingen van NetApp.  
 
@@ -387,28 +402,33 @@ Doe het volgende om het besturings systeem te configureren en voor te bereiden:
     umount /mnt/tmp
     </code></pre>
 
-3. **[A]** Controleer de NFS-domein instelling. Zorg ervoor dat het domein is geconfigureerd als **`localdomain`** en dat de toewijzing is ingesteld op **niemand**.  
+3. **[A]** Controleer de NFS-domein instelling. Zorg ervoor dat het domein is geconfigureerd als standaard Azure NetApp Files domein, dat wil zeggen **`defaultv4iddomain.com`** en dat de toewijzing is ingesteld op **niemand**.  
+
+    > [!IMPORTANT]
+    > Zorg ervoor dat u het NFS-domein in `/etc/idmapd.conf` op de virtuele machine zo instelt dat deze overeenkomt met de standaard domein configuratie op Azure NetApp Files: **`defaultv4iddomain.com`** . Als er een verschil is tussen de domein configuratie op de NFS-client (de virtuele machine) en de NFS-server, dat wil zeggen de Azure NetApp-configuratie, worden de machtigingen voor bestanden op Azure NetApp-volumes die op de virtuele machines zijn gekoppeld, weer gegeven als `nobody`.  
 
     <pre><code>
-    sudo cat  /etc/idmapd.conf
+    sudo cat /etc/idmapd.conf
     # Example
     [General]
     Verbosity = 0
     Pipefs-Directory = /var/lib/nfs/rpc_pipefs
-    Domain = <b>localdomain</b>
+    Domain = <b>defaultv4iddomain.com</b>
     [Mapping]
     Nobody-User = <b>nobody</b>
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** NFSv4-id-toewijzing uitschakelen. Als u de mapstructuur wilt maken waar `nfs4_disable_idmapping` zich bevindt, voert u de opdracht Mount uit. U kunt de map niet hand matig maken onder/sys/modules, omdat de toegang is gereserveerd voor de kernel/Stuur Programma's.  
+4. **[A] Controleer de** `nfs4_disable_idmapping`. Deze moet worden ingesteld op **Y**. Als u de mapstructuur wilt maken waar `nfs4_disable_idmapping` zich bevindt, voert u de opdracht Mount uit. U kunt de map niet hand matig maken onder/sys/modules, omdat de toegang is gereserveerd voor de kernel/Stuur Programma's.  
 
     <pre><code>
+    # Check nfs4_disable_idmapping 
+    cat /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # If you need to set nfs4_disable_idmapping to Y
     mkdir /mnt/tmp
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
-    # Disable NFSv4 idmapping. 
-    echo "N" > /sys/module/nfs/parameters/nfs4_disable_idmapping
+    echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
     </code></pre>`
 
 5. **[A]** maak de SAP Hana groep en de gebruiker hand matig. De Id's voor de groep sapsys en de gebruiker **HN1**adm moeten worden ingesteld op dezelfde id's die tijdens het voorbereiden worden opgegeven. (In dit voor beeld zijn de Id's ingesteld op **1001**.) Als de Id's niet juist zijn ingesteld, hebt u geen toegang tot de volumes. De Id's voor de groeps-sapsys en gebruikers accounts **HN1**adm en sapadm moeten op alle virtuele machines hetzelfde zijn.  

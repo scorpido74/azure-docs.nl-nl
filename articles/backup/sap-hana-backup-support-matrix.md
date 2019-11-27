@@ -1,5 +1,5 @@
 ---
-title: Matrix voor ondersteuning van SAP HANA-back-up
+title: Ondersteuningsmatrix voor SAP HANA Backup
 description: In dit artikel vindt u informatie over de ondersteunde scenario's en beperkingen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases op Azure-Vm's.
 ms.topic: conceptual
 ms.date: 11/7/2019

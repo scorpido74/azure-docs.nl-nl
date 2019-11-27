@@ -1,119 +1,119 @@
 ---
-title: Canada Federal PBMM blueprint sample - Deploy steps
-description: Deploy steps for the Canada Federal PBMM blueprint sample including blueprint artifact parameter details.
+title: Voor beeld van Canada Federal PBMM blauw drukken
+description: Implementeer stappen voor het voor beeld van de Canada Federal PBMM blauw druk, inclusief blauw druk artefact parameter Details.
 ms.date: 09/05/2019
 ms.topic: sample
-ms.openlocfilehash: 3b140e99e2715e90515759a1720c594817c48147
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 087112df7ab18cd71bde80f22b13c9c7800c05e9
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404698"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544588"
 ---
-# <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Deploy the Canada Federal PBMM blueprint samples
+# <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>De voor beelden van de Canada Federal PBMM-blauw druk implementeren
 
-To deploy the Canada Federal PBMM blueprint samples, the following steps must be taken:
+Als u de voor beelden van Canada Federal PBMM blauw drukken wilt implementeren, moet u de volgende stappen uitvoeren:
 
 > [!div class="checklist"]
-> - Create a new blueprint from the sample
-> - Mark your copy of the sample as **Published**
-> - Assign your copy of the blueprint to an existing subscription
+> - Een nieuwe blauw druk maken op basis van het voor beeld
+> - Uw kopie van het voor beeld markeren als **gepubliceerd**
+> - Uw kopie van de blauw druk toewijzen aan een bestaand abonnement
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
 
-## <a name="create-blueprint-from-sample"></a>Create blueprint from sample
+## <a name="create-blueprint-from-sample"></a>Blauw druk maken op basis van voor beeld
 
-First, implement the blueprint sample by creating a new blueprint in your environment using the sample as a starter.
+Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk in uw omgeving te maken met behulp van het voor beeld als een starter.
 
-1. Select **All services** and search for and select **Policy** in the left pane. On the **Policy** page, select **Blueprints**.
+1. Selecteer **alle services** , zoek naar en selecteer **beleid** in het linkerdeel venster. Selecteer **blauw drukken**op de pagina **beleid** .
 
-1. From the **Getting started** page on the left, select the **Create** button under _Create a blueprint_.
+1. Op de pagina **aan** de slag aan de linkerkant selecteert u de knop **maken** onder _een blauw druk maken_.
 
-1. Find the **Canada Federal PBMM** blueprint sample under _Other Samples_ and select **Use this sample**.
+1. Zoek het voor beeld van **Canada Federal PBMM** blauw druk onder _andere voor beelden_ en selecteer **dit voor beeld gebruiken**.
 
-1. Enter the _Basics_ of the blueprint sample:
+1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
 
-   - **Blueprint name**: Provide a name for your copy of the blueprint sample.
-   - **Definition location**: Use the ellipsis and select the management group to save your copy of the sample to.
+   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk.
+   - **Locatie van definitie**: gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
 
-1. Select the _Artifacts_ tab at the top of the page or **Next: Artifacts** at the bottom of the page.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
 
-1. Review the list of artifacts that make up the blueprint sample. Many of the artifacts have parameters that we'll define later. Select **Save Draft** when you've finished reviewing the blueprint sample.
+1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
 
-## <a name="publish-the-sample-copy"></a>Publish the sample copy
+## <a name="publish-the-sample-copy"></a>De voorbeeld kopie publiceren
 
-Your copy of the blueprint sample has now been created in your environment. It's created in **Draft** mode and must be **Published** before it can be assigned and deployed. The copy of the blueprint sample can be customized to your environment and needs, but that modification may move it away from the standard.
+Uw kopie van het voor beeld van de blauw druk is nu in uw omgeving gemaakt. Deze wordt gemaakt in de **concept** modus en moet worden **gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het voor beeld van de blauw druk kan worden aangepast aan uw omgeving en behoeften, maar deze wijziging kan worden verplaatst van de standaard waarde.
 
-1. Select **All services** and search for and select **Policy** in the left pane. On the **Policy** page, select **Blueprints**.
+1. Selecteer **alle services** , zoek naar en selecteer **beleid** in het linkerdeel venster. Selecteer **blauw drukken**op de pagina **beleid** .
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
 
-1. Select **Publish blueprint** at the top of the page. In the new page on the right, provide a **Version** for your copy of the blueprint sample. This property is useful for if you make a modification later. Provide **Change notes** such as "First version published from the Canada Federal PBMM blueprint sample." Then select **Publish** at the bottom of the page.
+1. Selecteer **blauw druk** aan de bovenkant van de pagina publiceren. Geef op de pagina Nieuw aan de rechter kant een **versie** op voor uw kopie van het voor beeld van de blauw druk. Deze eigenschap is handig als u later een wijziging aanbrengt. Geef **wijzigings notities** op, zoals ' eerste versie gepubliceerd vanuit het voor beeld van Canada Federal PBMM Blue. ' Selecteer vervolgens **publiceren** onder aan de pagina.
 
-## <a name="assign-the-sample-copy"></a>Assign the sample copy
+## <a name="assign-the-sample-copy"></a>De voorbeeld kopie toewijzen
 
-Once the copy of the blueprint sample has been successfully **Published**, it can be assigned to a subscription within the management group it was saved to. This step is where parameters are provided to make each deployment of the copy of the blueprint sample unique.
+Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan deze worden toegewezen aan een abonnement in de beheer groep waarop het is opgeslagen. In deze stap worden para meters opgegeven om elke implementatie van de kopie van het voor beeld van de blauw druk te maken.
 
-1. Select **All services** and search for and select **Policy** in the left pane. On the **Policy** page, select **Blueprints**.
+1. Selecteer **alle services** , zoek naar en selecteer **beleid** in het linkerdeel venster. Selecteer **blauw drukken**op de pagina **beleid** .
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
 
-1. Select **Assign blueprint** at the top of the blueprint definition page.
+1. Selecteer de optie **blauw** drukken boven aan de pagina met de definitie van de blauw druk.
 
-1. Provide the parameter values for the blueprint assignment:
+1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
    - Basisbeginselen
 
-     - **Subscriptions**: Select one or more of the subscriptions that are in the management group you saved your copy of the blueprint sample to. If you select more than one subscription, an assignment will be created for each using the parameters entered.
-     - **Assignment name**: The name is pre-populated for you based on the name of the blueprint.
-       Change as needed or leave as is.
-     - **Location**: Select a region for the managed identity to be created in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
-     - **Blueprint definition version**: Pick a **Published** version of your copy of the blueprint sample.
+     - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
+     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
+       Wijzig indien nodig of sluit af.
+     - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
+     - **Definitie van blauw druk-versie**: Kies een **gepubliceerde** versie van uw kopie van het voor beeld van de blauw druk.
 
-   - Lock Assignment
+   - Toewijzing vergren delen
 
-     Select the blueprint lock setting for your environment. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
+     Selecteer de instelling voor het vergren delen van blauw drukken voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
 
    - Beheerde identiteit
 
-     Leave the default _system assigned_ managed identity option.
+     Zorg ervoor dat de standaard optie voor beheerde identiteit door het _systeem wordt toegewezen_ .
 
-   - Artifact parameters
+   - Artefact parameters
 
-     The parameters defined in this section apply to the artifact under which it's defined. These parameters are [dynamic parameters](../../concepts/parameters.md#dynamic-parameters) since they're defined during the assignment of the blueprint. For a full list or artifact parameters and their descriptions, see [Artifact parameters table](#artifact-parameters-table).
+     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Zie [artefact parameters Table](#artifact-parameters-table)voor een volledige lijst of artefact parameters en de bijbehorende beschrijvingen.
 
-1. Once all parameters have been entered, select **Assign** at the bottom of the page. The blueprint assignment is created and artifact deployment begins. Deployment takes roughly an hour. To check on the status of deployment, open the blueprint assignment.
+1. Zodra alle para meters zijn ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** . De blauw druk toewijzing wordt gemaakt en de implementatie van artefacten begint. De implementatie duurt ongeveer een uur. Als u de status van de implementatie wilt controleren, opent u de blauw druk-toewijzing.
 
 > [!WARNING]
-> The Azure Blueprints service and the built-in blueprint samples are **free of cost**. Azure resources are [priced by product](https://azure.microsoft.com/pricing/). Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the cost of running resources deployed by this blueprint sample.
+> De Azure-blauw drukken-service en de ingebouwde blauw druk-voor beelden zijn **gratis**. Azure-resources zijn [prijs per product](https://azure.microsoft.com/pricing/). Gebruik de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) om een schatting te maken van de kosten van het uitvoeren van resources die worden geïmplementeerd door deze blauw druk-voor beeld.
 
-## <a name="artifact-parameters-table"></a>Artifact parameters table
+## <a name="artifact-parameters-table"></a>Tabel artefact parameters
 
-The following table provides a list of the blueprint artifact parameters:
+De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
-Artifact name|Artifact type|Parameternaam|Beschrijving|
+Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|\[Preview\]: Deploy Log Analytics Agent for Linux VMs |Beleidstoewijzing |Log Analytics workspace for Linux VMs |For more information, see [Create a Log Analytics workspace in the Azure portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview\]: Deploy Log Analytics Agent for Linux VMs |Beleidstoewijzing |Optional: List of VM images that have supported Linux OS to add to scope |An empty array may be used to indicate no optional parameters: `[]` |
-|\[Preview\]: Deploy Log Analytics Agent for Windows VMs |Beleidstoewijzing |Optional: List of VM images that have supported Windows OS to add to scope |An empty array may be used to indicate no optional parameters: `[]` |
-|\[Preview\]: Deploy Log Analytics Agent for Windows VMs |Beleidstoewijzing |Log Analytics workspace for Windows VMs |For more information, see [Create a Log Analytics workspace in the Azure portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |Beleidstoewijzing |Log Analytics workspace ID that VMs should be configured for |This is the ID (GUID) of the Log Analytics workspace that the VMs should be configured for. |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |Beleidstoewijzing |List of resource types that should have diagnostic logs enabled |List of resource types to audit if diagnostic log setting isn't enabled. Acceptable values can be found at [Azure Monitor diagnostic logs schemas](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |Beleidstoewijzing |Administrators group |Group. Voorbeeld: `Administrator; myUser1; myUser2` |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |Beleidstoewijzing |List of users that should be included in Windows VM Administrators group |A semicolon-separated list of members that should be included in the Administrators local group. Voorbeeld: `Administrator; myUser1; myUser2` |
-|Deploy Advanced Threat Protection on Storage Accounts |Beleidstoewijzing |Effect |Information about policy effects can be found at [Understand Azure Policy Effects](../../../policy/concepts/effects.md). |
-|Deploy Auditing on SQL servers |Beleidstoewijzing |The value in days of the retention period (0 indicates unlimited retention) |Retention days (optional, _180_ days if unspecified) |
-|Deploy Auditing on SQL servers |Beleidstoewijzing |Resource group name for storage account for SQL server auditing |Auditing writes database events to an audit log in your Azure Storage account (a storage account is created in each region where a SQL Server is created that is shared by all servers in that region). Important - for proper operation of Auditing don't delete or rename the resource group or the storage accounts. |
-|Deploy diagnostic settings for Network Security Groups |Beleidstoewijzing |Storage account prefix for network security group diagnostics |This prefix is combined with the network security group location to form the created storage account name. |
-|Deploy diagnostic settings for Network Security Groups |Beleidstoewijzing |Resource group name for storage account for network security group diagnostics (must exist) |The resource group that the storage account is created in. This resource group must already exist. |
+|\[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Log Analytics-werk ruimte voor Linux Vm's |Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|\[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik |Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: `[]` |
+|\[preview\]: Log Analytics-agent implementeren voor Windows-Vm's |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik |Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: `[]` |
+|\[preview\]: Log Analytics-agent implementeren voor Windows-Vm's |Beleidstoewijzing |Log Analytics-werk ruimte voor Windows-Vm's |Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Werk ruimte-ID Log Analytics waarvoor Vm's moeten worden geconfigureerd |Dit is de ID (GUID) van de Log Analytics-werk ruimte waarvoor de Vm's moeten worden geconfigureerd. |
+|\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Lijst met resource typen waarvoor Diagnostische logboeken moeten zijn ingeschakeld |Lijst met resource typen om te controleren of de diagnostische logboek instelling niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
+|\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Groep Administrators |Gegroepeerd. Voorbeeld: `Administrator; myUser1; myUser2` |
+|\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Lijst met gebruikers die moeten worden opgenomen in de Windows VM-Beheerders groep |Een door punt komma's gescheiden lijst met leden die moeten worden opgenomen in de lokale groep Administrators. Voorbeeld: `Administrator; myUser1; myUser2` |
+|Geavanceerde beveiliging tegen bedreigingen implementeren voor opslag accounts |Beleidstoewijzing |Effect |Informatie over beleids effecten vindt u in [inzicht Azure Policy effecten](../../../policy/concepts/effects.md). |
+|Controle op SQL-servers implementeren |Beleidstoewijzing |De waarde in dagen van de Bewaar periode (0 geeft een onbeperkte retentie aan) |Bewaar dagen (optioneel, _180_ dagen als niet opgegeven) |
+|Controle op SQL-servers implementeren |Beleidstoewijzing |Naam van de resource groep voor het opslag account voor SQL Server-controle |Met controle worden database gebeurtenissen geschreven naar een audit logboek in uw Azure Storage-account (er wordt een opslag account gemaakt in elke regio waarin een SQL Server wordt gemaakt dat wordt gedeeld door alle servers in die regio). Belang rijk: voor een juiste werking van de controle worden de resource groep of de opslag accounts niet verwijderd of de naam ervan niet gewijzigd. |
+|Diagnostische instellingen voor netwerk beveiligings groepen implementeren |Beleidstoewijzing |Voor voegsel van het opslag account voor diagnostische gegevens van netwerk beveiligings groepen |Dit voor voegsel wordt gecombineerd met de locatie van de netwerk beveiligings groep om de naam van het gemaakte opslag account op te maken. |
+|Diagnostische instellingen voor netwerk beveiligings groepen implementeren |Beleidstoewijzing |Naam van de resource groep voor het opslag account voor diagnostische gegevens van de netwerk beveiligings groep (moet bestaan) |De resource groep waarin het opslag account is gemaakt. Deze resource groep moet al bestaan. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Now that you've reviewed the steps to deploy the Canada Federal PBMM sample, visit the following articles to learn about the overview and control mapping:
+Nu u de stappen voor het implementeren van het voor beeld van Canada Federal PBMM hebt bekeken, gaat u naar de volgende artikelen voor meer informatie over het overzicht en de toewijzing van het besturings element:
 
 > [!div class="nextstepaction"]
-> [Canada Federal PBMM blueprints - Overview](./index.md)
-> [Canada Federal PBMM blueprints - Control mapping](./control-mapping.md)
+> [Canada Federal PBMM blauw drukken-overzicht](./index.md)
+> [Canada Federal PBMM blauw drukken-controle toewijzing](./control-mapping.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

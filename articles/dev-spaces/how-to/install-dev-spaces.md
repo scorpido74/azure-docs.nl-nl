@@ -1,10 +1,10 @@
 ---
-title: Install Azure Dev Spaces on AKS & the client-side tooling
+title: Azure dev Spaces installeren op AKS & het programma aan de client zijde
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: Learn how to install Azure Dev Spaces on an AKS cluster and install the client-side tooling.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+description: Meer informatie over het installeren van Azure dev Spaces in een AKS-cluster en het installeren van het programma aan de client zijde.
+keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 ms.openlocfilehash: 2649b36c96313d4a7d878a1c72c3b175ad0f4d30
 ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
@@ -12,24 +12,24 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325786"
 ---
-# <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Install Azure Dev Spaces on AKS and the client-side tooling
+# <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Azure dev Spaces installeren op AKS en het hulp programma aan de client zijde
 
-This article shows you several ways to install Azure Dev Spaces on an AKS cluster as well as install the client-side tooling.
+In dit artikel wordt beschreven hoe u op verschillende manieren Azure dev-ruimten kunt installeren op een AKS-cluster en hoe u het hulp programma aan de client zijde installeert.
 
-## <a name="install-azure-dev-spaces-using-the-cli"></a>Install Azure Dev Spaces using the CLI
+## <a name="install-azure-dev-spaces-using-the-cli"></a>Azure-ontwikkel ruimten installeren met behulp van de CLI
 
-Before you can install Dev Spaces using the CLI, you need:
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account][az-portal-create-account] maken.
-* [The Azure CLI installed][install-cli].
-* [An AKS cluster][create-aks-cli] in a [supported region][supported-regions].
+Voordat u ontwikkel ruimten kunt installeren met behulp van de CLI, hebt u het volgende nodig:
+* Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account][az-portal-create-account] maken.
+* [De Azure-cli is geïnstalleerd][install-cli].
+* [Een AKS-cluster][create-aks-cli] in een [ondersteunde regio][supported-regions].
 
-Use the `use-dev-spaces` command to enable Dev Spaces on your AKS cluster and follow the prompts.
+Gebruik de `use-dev-spaces` opdracht om ontwikkel ruimten in uw AKS-cluster in te scha kelen en de prompts te volgen.
 
 ```cmd
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
-The above command enables Dev Spaces on the *myAKSCluster* cluster in the *myResourceGroup* group and creates a *default* dev space.
+De bovenstaande opdracht maakt ontwikkel ruimten in het *myAKSCluster* -cluster in de *myResourceGroup* -groep mogelijk en maakt een *standaard* dev-ruimte.
 
 ```cmd
 $ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
@@ -49,39 +49,39 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-The `use-dev-spaces` command also installs the Azure Dev Spaces CLI.
+Met de opdracht `use-dev-spaces` wordt ook de Azure dev Space CLI geïnstalleerd.
 
-## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Install Azure Dev Spaces using the Azure portal
+## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Azure dev Spaces installeren met behulp van de Azure Portal
 
-Before you can install Dev Spaces using the Azure portal, you need:
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account][az-portal-create-account] maken.
-* [An AKS cluster][create-aks-portal] in a [supported region][supported-regions].
+Voordat u ontwikkel ruimten kunt installeren met behulp van de Azure Portal, hebt u het volgende nodig:
+* Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account][az-portal-create-account] maken.
+* [Een AKS-cluster][create-aks-portal] in een [ondersteunde regio][supported-regions].
 
-To install Azure Dev Spaces using the Azure portal:
-1. Meld u aan bij de [Azure-portal][az-portal].
-1. Navigate to your AKS cluster.
-1. Click *Dev Spaces*.
-1. Change *Enable Dev Spaces* to *Yes* and click *Save*.
+Azure dev Spaces installeren met behulp van de Azure Portal:
+1. Meld u aan bij [Azure Portal][az-portal].
+1. Navigeer naar uw AKS-cluster.
+1. Klik op *dev Spaces*.
+1. Wijzig *dev-ruimten* in *Ja* en klik op *Opslaan*.
 
-![Enable Dev Spaces in the Azure portal](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
+![Ontwikkel ruimten in de Azure Portal inschakelen](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-Installing Azure Dev Spaces using the Azure portal **does not** install any client-side tooling for Azure Dev Spaces.
+Wanneer u Azure dev Spaces installeert met behulp van de Azure Portal **, wordt er geen** hulp programma voor het installeren van de client voor Azure-ontwikkel ruimten geïnstalleerd.
 
-## <a name="install-the-client-side-tooling"></a>Install the client-side tooling
+## <a name="install-the-client-side-tooling"></a>Installeer het hulp programma aan de client zijde
 
-You can use the Azure Dev Spaces client-side tooling to interact with dev spaces on an AKS cluster from your local machine. There are several ways to install the client-side tooling:
+U kunt de Azure dev Spaces-client-side tool gebruiken om te communiceren met ontwikkel ruimten in een AKS-cluster vanaf uw lokale computer. Er zijn verschillende manieren om het programma aan de client zijde te installeren:
 
-* In [Visual Studio Code][vscode], install the [Azure Dev Spaces extension][vscode-extension].
-* In [Visual Studio 2019][visual-studio], install the Azure Development workload.
-* In Visual Studio 2017, install the Web Development workload and [Visual Studio Tools for Kubernetes][visual-studio-k8s-tools].
-* Download and install the [Windows][cli-win], [Mac][cli-mac], or [Linux][cli-linux] CLI.
+* Installeer de [Azure dev Space-extensie][vscode-extension]in [Visual Studio code][vscode].
+* Installeer de werk belasting Azure Development in [Visual Studio 2019][visual-studio].
+* Installeer in Visual Studio 2017 de workload Web Development-en [Visual Studio Tools voor Kubernetes][visual-studio-k8s-tools].
+* Down load en installeer de [Windows][cli-win]-, [Mac][cli-mac]-of [Linux][cli-linux] -cli.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Learn how Azure Dev Spaces helps you develop more complex applications across multiple containers, and how you can simplify collaborative development by working with different versions or branches of your code in different spaces.
+Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te ontwikkelen in meerdere containers en hoe u samenwerkings ontwikkeling kunt vereenvoudigen door te werken met verschillende versies of vertakkingen van uw code in verschillende ruimten.
 
 > [!div class="nextstepaction"]
-> [Team development in Azure Dev Spaces][team-development-qs]
+> [Team ontwikkeling in azure dev Spaces][team-development-qs]
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
 [create-aks-portal]: ../../aks/kubernetes-walkthrough-portal.md#create-an-aks-cluster

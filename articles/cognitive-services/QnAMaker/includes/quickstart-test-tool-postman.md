@@ -69,4 +69,4 @@ Voor het genereren van een antwoord met Postman voert u de volgende stappen uit:
 
 ## <a name="use-staging-endpoint"></a>Faseringseindpunt gebruiken
 
-If you want to get an answer from the staging endpoint, append the URL with the `isTest` body property.
+Als u een antwoord wilt ontvangen van het staging-eind punt, voegt u de URL toe met de eigenschap `isTest` body.

@@ -9,20 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 1cfddf14d60b7d73bae283a18732c7c99ae22b4d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898233"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546314"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Een door een groep beheerd service account (gMSA) maken in Azure AD Domain Services
 
-Toepassingen en services hebben vaak een identiteit nodig om zichzelf te verifiëren met andere resources. Een webservice moet bijvoorbeeld mogelijk worden geverifieerd met een database service. Als een toepassing of service meerdere instanties heeft, zoals een webserver Farm, kan het hand matig maken en configureren van de identiteiten voor deze resources tijdrovend zijn. In plaats daarvan kunt u een beheerd service account (gMSA) van een groep maken in het beheerde domein van Azure Active Directory Domain Services (Azure AD DS). Het Windows-besturings systeem beheert automatisch de referenties voor een gMSA, waardoor het beheer van grote groepen resources wordt vereenvoudigd.
+Toepassingen en services hebben vaak een identiteit nodig om zichzelf te verifiëren met andere resources. Een webservice moet bijvoorbeeld mogelijk worden geverifieerd met een database service. Als een toepassing of service meerdere instanties heeft, zoals een webserver Farm, kan het hand matig maken en configureren van de identiteiten voor deze resources tijdrovend zijn.
 
-In dit artikel wordt beschreven hoe u een gMSA maakt in een door Azure AD DS beheerd domein.
+In plaats daarvan kunt u een beheerd service account (gMSA) van een groep maken in het beheerde domein van Azure Active Directory Domain Services (Azure AD DS). Het Windows-besturings systeem beheert automatisch de referenties voor een gMSA, waardoor het beheer van grote groepen resources wordt vereenvoudigd.
+
+In dit artikel wordt beschreven hoe u een gMSA maakt in een door Azure AD DS beheerd domein met behulp van Azure PowerShell.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -59,6 +61,9 @@ Als Azure AD DS beheerde domeinen worden vergrendeld en beheerd door micro soft,
 ## <a name="create-a-gmsa"></a>Een gMSA maken
 
 Maak eerst een aangepaste OE met behulp van de cmdlet [New-ADOrganizationalUnit][New-AdOrganizationalUnit] . Zie [aangepaste organisatie-eenheden in Azure AD DS][create-custom-ou]voor meer informatie over het maken en beheren van aangepaste organisatie-eenheden.
+
+> [!TIP]
+> [Gebruik uw beheer-VM][tutorial-create-management-vm]om deze stappen uit te voeren om een gMSA te maken. Deze beheer-VM moet al de vereiste AD Power shell-cmdlets en de verbinding met het beheerde domein hebben.
 
 In het volgende voor beeld wordt een aangepaste OE gemaakt met de naam *myNewOU* in het door Azure AD DS beheerde domein met de naam *contoso.com*. Gebruik uw eigen OE en beheerde domein naam:
 

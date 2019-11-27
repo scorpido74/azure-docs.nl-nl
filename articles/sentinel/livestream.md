@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ms.author: cabailey
-ms.openlocfilehash: d1d048507946850192c1c6f8ca9024c6f9ddf8ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515120"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546852"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Jacht Livestream in azure Sentinel gebruiken om bedreigingen te detecteren
 
 > [!IMPORTANT]
-> Jacht Livestream in azure Sentinel is momenteel beschikbaar als open bare preview.
+> Jacht Livestream in azure Sentinel is momenteel beschikbaar als open bare preview-versie en wordt geleidelijk geïmplementeerd naar tenants.
 > Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 
@@ -63,7 +63,7 @@ U kunt een livestream-sessie maken op basis van een bestaande zoek opdracht of e
     1. Selecteer het tabblad **Livestream**
     2. Selecteer **Ga naar livestream**.
     
-4. Op de Blade **Livestream** :
+4. In het deel venster **Livestream** :
     
     - Als u Livestream van een query hebt gestart, controleert u de query en brengt u de gewenste wijzigingen aan.
     - Als u Livestream helemaal niet hebt gestart, maakt u de query. 
@@ -96,7 +96,7 @@ Omdat Livestream-meldingen voor nieuwe gebeurtenissen gebruikmaken van Azure Por
 
 ![Azure Portal-melding voor LiveStream](./media/livestream/notification.png)
 
-Selecteer de melding om de Blade **Livestream** te openen.
+Selecteer de melding om het deel venster **Livestream** te openen.
  
 ## <a name="elevate-a-livestream-session-to-an-alert"></a>Een livestream-sessie verhogen naar een waarschuwing
 

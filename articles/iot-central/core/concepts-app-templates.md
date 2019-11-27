@@ -1,6 +1,6 @@
 ---
-title: What are application templates in Azure IoT Central | Microsoft Docs
-description: Azure IoT Central application templates allow you to jump in to IoT solution development.
+title: Wat zijn toepassings sjablonen in azure IoT Central | Microsoft Docs
+description: Met Azure IoT Central-toepassings sjablonen kunt u overgaan naar de ontwikkeling van IoT-oplossingen.
 author: philmea
 ms.author: philmea
 ms.date: 10/25/2019
@@ -16,64 +16,64 @@ ms.locfileid: "74480318"
 ---
 # <a name="what-are-application-templates"></a>Wat zijn toepassingssjablonen?
 
-Application templates in Azure IoT Central are a tool to help solution builders kickstart their IoT solution development. You can use app templates for everything from getting a feel for what is possible, to fully customizing and your application for resale to your customers.
+Toepassings sjablonen in azure IoT Central zijn een hulp programma waarmee oplossingen bouwers kickstart hun IoT-oplossings ontwikkeling kunnen ontwikkelen. U kunt app-sjablonen voor alles gebruiken om een idee te krijgen van wat mogelijk is, om volledig aan te passen en uw toepassing te verkopen voor uw klanten.
 
-Application templates consist of:
+Toepassings sjablonen bestaan uit:
 
-- Sample operator dashboards
-- Sample device templates
-- Simulated devices producing real-time data
-- Pre-configured rules and jobs
-- Rich documentation including tutorials and how-tos
+- Voor beeld-operator dashboards
+- Voorbeeld sjablonen voor apparaten
+- Gesimuleerde apparaten die real-time gegevens produceren
+- Vooraf geconfigureerde regels en taken
+- Uitgebreide documentatie, inclusief zelf studies en uitleg
 
-## <a name="preview-templates"></a>Preview templates
+## <a name="preview-templates"></a>Preview-sjablonen
 
-Your choice of application template determines whether your application uses IoT Central preview features such as Plug and Play for devices.
+Uw keuze van de toepassings sjabloon bepaalt of uw toepassing gebruikmaakt van IoT Central preview-functies, zoals Plug en Play voor apparaten.
 
-Currently, the application templates that use _generally available_ features are:
+Momenteel zijn de toepassings sjablonen die _Algemeen beschik bare_ functies gebruiken:
 
-- Custom app > Custom application
-- Custom app > Sample Contoso
-- Custom app > Sample Devkits
+- Aangepaste toepassing aangepaste app >
+- Voor beeld van aangepaste app > contoso
+- Voor beeld-Devkits aangepaste app >
 
-Currently, the application templates that use _public preview_ features are:
+Momenteel zijn de toepassings sjablonen die gebruikmaken van _open bare preview_ -functies:
 
-- Custom app > Preview application
-- Retail > Connected logistics
-- Retail > Digital distribution center
-- Retail > In-store analytics – condition monitoring
-- Retail > In-store analytics – checkout
-- Retail > Smart inventory management
-- Energy > Smart meter monitoring
-- Energy > Solar panel monitoring
-- Government > Connected waste management
-- Government > Water consumption monitoring
-- Government > Water quality monitoring
-- Healthcare > Continuous patient monitoring
+- Voorbeeld toepassing aangepaste app >
+- Retail > verbonden logistiek
+- Retail > Digital Distribution Center
+- Retail > in-Store-analyses-voor waarden controleren
+- Retail > in-Store-analyses: afhandeling
+- Retail-> slim voorraad beheer
+- Energie > Slimme meter bewaking
+- Bewaking van energie > zonne paneel
+- Overheid > verbonden afval beheer
+- Bewaking van overheids > water verbruik
+- Bewaking van overheids > water kwaliteit
+- Gezondheids zorg > voortdurende patiënt bewaking
 
 > [!NOTE]
-> The **Custom application, Sample Contoso, Sample Devkits** templates are currently  available in the **United States**, **Australia**, **Asia Pacific**, or in the **Europe** locations, while other templates are currently available only in **Europe** and **US** locations.
+> De **aangepaste toepassing, voor beeld contoso, voorbeeld** sjablonen voor Devkits zijn momenteel beschikbaar in de **Verenigde Staten**, **Australië**, **Azië en Stille Oceaan**of op de **Europe** -locaties, terwijl andere sjablonen momenteel alleen beschikbaar zijn in de locaties van **Europa** en de **VS** .
 
-## <a name="industry-focused-templates"></a>Industry focused templates
+## <a name="industry-focused-templates"></a>Sjablonen voor branche gerichte
 
-Azure IoT Central is an industry agnostic application platform. Application templates are industry focused examples available for these industries today, with more to come in the future:
+Azure IoT Central is een branche neutraal-toepassings platform. Toepassings sjablonen zijn toonaangevende voor beelden die tegenwoordig beschikbaar zijn voor deze branches, met meer om in de toekomst te komen:
 
-- [Retail](../retail/overview-iot-central-retail-pnp.md)
+- [Detailhandelcatalogi](../retail/overview-iot-central-retail-pnp.md)
   - Verbonden logistiek
   - Digitaal distributiecentrum
-  - In-store analytics - condition monitoring
-  - In-store analytics - checkout
-  - Smart Inventory Management
-- [Energy](../energy/overview-iot-central-energy.md)
+  - Bewaking in de Store-voor waarden
+  - In-Store-analyses-uitchecken
+  - Intelligent inventaris beheer
+- [Sector](../energy/overview-iot-central-energy.md)
   - Bewaking met slimme meters
   - Bewaking van zonnepanelen
 - [Government](../government/overview-iot-central-government.md)
   - Verbonden afvalverwerking
   - Bewaking van waterverbruik
   - Bewaking van waterkwaliteit
-- [Healthcare](../healthcare/overview-iot-central-healthcare.md).
+- [Gezondheids zorg](../healthcare/overview-iot-central-healthcare.md).
   - Continue patiëntbewaking
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Now that you know what IoT Central application templates are, get started by [creating an IoT Central Application](quick-deploy-iot-central.md).
+Nu u weet wat IoT Central toepassings sjablonen zijn, kunt u aan de slag met het [maken van een IOT Central-toepassing](quick-deploy-iot-central.md).

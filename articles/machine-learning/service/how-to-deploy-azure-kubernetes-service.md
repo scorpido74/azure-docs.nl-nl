@@ -1,7 +1,7 @@
 ---
-title: How to deploy models to Azure Kubernetes Service
+title: Modellen implementeren in azure Kubernetes service
 titleSuffix: Azure Machine Learning
-description: Learn how to deploy your Azure Machine Learning models as a web service using Azure Kubernetes Service.
+description: Meer informatie over het implementeren van uw Azure Machine Learning-modellen als een webservice met behulp van de Azure Kubernetes-service.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,61 +17,61 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482700"
 ---
-# <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Deploy a model to an Azure Kubernetes Service cluster
+# <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes service-cluster
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Learn how to use Azure Machine Learning to deploy a model as a web service on Azure Kubernetes Service (AKS). Azure Kubernetes Service is good for high-scale production deployments. Use Azure Kubernetes service if you need one or more of the following capabilities:
+Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model als een webservice op Azure Kubernetes service (AKS). De Azure Kubernetes-service is geschikt voor grootschalige productie-implementaties. Gebruik de Azure Kubernetes-service als u een of meer van de volgende mogelijkheden nodig hebt:
 
-- __Fast response time__.
-- __Autoscaling__ of the deployed service.
-- __Hardware acceleration__ options such as GPU and field-programmable gate arrays (FPGA).
-
-> [!IMPORTANT]
-> Cluster scaling is not provided through the Azure Machine Learning SDK. For more information on scaling the nodes in an AKS cluster, see [Scale the node count in an AKS cluster](../../aks/scale-cluster.md).
-
-When deploying to Azure Kubernetes Service, you deploy to an AKS cluster that is __connected to your workspace__. There are two ways to connect an AKS cluster to your workspace:
-
-* Create the AKS cluster using the Azure Machine Learning SDK, the Machine Learning CLI, or [Azure Machine Learning studio](https://ml.azure.com). This process automatically connects the cluster to the workspace.
-* Attach an existing AKS cluster to your Azure Machine Learning workspace. A cluster can be attached using the Azure Machine Learning SDK, Machine Learning CLI, or Azure Machine Learning studio.
+- __Snelle reactie tijd__.
+- Automatisch __schalen__ van de geïmplementeerde service.
+- __Opties voor hardwareversnelling,__ zoals GPU en Programmeer bare poort matrices (FPGA).
 
 > [!IMPORTANT]
-> The creation or attachment process is a one time task. Once an AKS cluster is connected to the workspace, you can use it for deployments. You can detach or delete the AKS cluster if you no longer need it. Once detatched or deleted, you will no longer be able to deploy to the cluster.
+> Het schalen van clusters wordt niet ondersteund via de Azure Machine Learning SDK. Zie [het aantal knoop punten schalen in een AKS-cluster](../../aks/scale-cluster.md)voor meer informatie over het schalen van de knooppunten in een AKS-cluster.
+
+Wanneer u implementeert in azure Kubernetes service, implementeert u naar een AKS-cluster dat is __verbonden met uw werk ruimte__. Er zijn twee manieren om een AKS-cluster te verbinden met uw werk ruimte:
+
+* Maak het AKS-cluster met behulp van de Azure Machine Learning SDK, de Machine Learning CLI of [Azure machine learning Studio](https://ml.azure.com). Dit proces verbindt automatisch het cluster met de werk ruimte.
+* Koppel een bestaand AKS-cluster aan uw Azure Machine Learning-werk ruimte. Een cluster kan worden gekoppeld met behulp van de Azure Machine Learning SDK, Machine Learning CLI of Azure Machine Learning Studio.
+
+> [!IMPORTANT]
+> Het maken of verzenden van een bijlage is een eenmalige taak. Zodra een AKS-cluster is verbonden met de werk ruimte, kunt u het gebruiken voor implementaties. U kunt het AKS-cluster loskoppelen of verwijderen als u het niet meer nodig hebt. Als detatched of verwijderd is, kunt u niet meer implementeren naar het cluster.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure Machine Learning-werkruimte. For more information, see [Create an Azure Machine Learning workspace](how-to-manage-workspace.md).
+- Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
-- A machine learning model registered in your workspace. If you don't have a registered model, see [How and where to deploy models](how-to-deploy-and-where.md).
+- Een machine learning model dat in uw werk ruimte is geregistreerd. Als u geen geregistreerd model hebt, raadpleegt u [hoe en hoe u modellen implementeert](how-to-deploy-and-where.md).
 
-- The [Azure CLI extension for Machine Learning service](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), or the [Azure Machine Learning Visual Studio Code extension](how-to-vscode-tools.md).
+- De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](how-to-vscode-tools.md).
 
-- The __Python__ code snippets in this article assume that the following variables are set:
+- In de code fragmenten van __python__ in dit artikel wordt ervan uitgegaan dat de volgende variabelen zijn ingesteld:
 
-    * `ws` - Set to your workspace.
-    * `model` - Set to your registered model.
-    * `inference_config` - Set to the inference configuration for the model.
+    * `ws`-ingesteld op uw werk ruimte.
+    * `model`-ingesteld op uw geregistreerde model.
+    * `inference_config`-ingesteld op de configuratie voor het afstellen van het model.
 
-    For more information on setting these variables, see [How and where to deploy models](how-to-deploy-and-where.md).
+    Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
 
-- The __CLI__ snippets in this article assume that you've created an `inferenceconfig.json` document. For more information on creating this document, see [How and where to deploy models](how-to-deploy-and-where.md).
+- In de __cli__ -fragmenten in dit artikel wordt ervan uitgegaan dat u een `inferenceconfig.json`-document hebt gemaakt. Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van dit document.
 
-## <a name="create-a-new-aks-cluster"></a>Create a new AKS cluster
+## <a name="create-a-new-aks-cluster"></a>Een nieuw AKS-cluster maken
 
-**Time estimate**: Approximately 20 minutes.
+**Geschatte tijd**: circa 20 minuten.
 
-Creating or attaching an AKS cluster is a one time process for your workspace. You can reuse this cluster for multiple deployments. If you delete the cluster or the resource group that contains it, you must create a new cluster the next time you need to deploy. You can have multiple AKS clusters attached to your workspace.
+Het maken of koppelen van een AKS-cluster is een eenmalig proces voor uw werk ruimte. U kunt dit cluster voor meerdere implementaties opnieuw gebruiken. Als u het cluster of de resource groep verwijdert die het bevat, moet u de volgende keer dat u moet implementeren een nieuw cluster maken. Er kunnen meerdere AKS-clusters aan uw werk ruimte zijn gekoppeld.
 
 > [!TIP]
-> If you want to secure your AKS cluster using an Azure Virtual Network, you must create the virtual network first. For more information, see [Secure experimentation and inference with Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
+> Als u uw AKS-cluster met behulp van een Azure Virtual Network wilt beveiligen, moet u eerst het virtuele netwerk maken. Zie voor meer informatie [beveiligd experimenten en demijnen met Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
 
-If you want to create an AKS cluster for __development__, __validation__, and __testing__ instead of production, you can specify the __cluster purpose__ to __dev test__.
+Als u een AKS-cluster wilt maken voor __ontwikkeling__, __validatie__en __testen__ in plaats van productie, kunt u het __cluster doel__ opgeven voor __dev test__.
 
 > [!WARNING]
-> If you set `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, the cluster that is created is not suitable for production level traffic and may increase inference times. Dev/test clusters also do not guarantee fault tolerance. We recommend at least 2 virtual CPUs for dev/test clusters.
+> Als u `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`instelt, is het cluster dat wordt gemaakt, niet geschikt voor verkeer op productie niveau en nemen de tijd in beslag. Dev/test-clusters garanderen ook geen fout tolerantie. We raden ten minste twee virtuele Cpu's aan voor dev/test-clusters.
 
-The following examples demonstrate how to create a new AKS cluster using the SDK and CLI:
+De volgende voor beelden laten zien hoe u een nieuw AKS-cluster maakt met behulp van de SDK en CLI:
 
-**Using the SDK**
+**De SDK gebruiken**
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -92,55 +92,55 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> For [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), if you pick custom values for `agent_count` and `vm_size`, and `cluster_purpose` is not `DEV_TEST`, then you need to make sure `agent_count` multiplied by `vm_size` is greater than or equal to 12 virtual CPUs. For example, if you use a `vm_size` of "Standard_D3_v2", which has 4 virtual CPUs, then you should pick an `agent_count` of 3 or greater.
+> Als u voor [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)aangepaste waarden voor `agent_count` en `vm_size`kiest en `cluster_purpose` niet `DEV_TEST`, moet u ervoor zorgen dat `agent_count` vermenigvuldigd met `vm_size` groter is dan of gelijk is aan 12 virtuele cpu's. Als u bijvoorbeeld een `vm_size` van ' Standard_D3_v2 ' gebruikt, die 4 virtuele Cpu's heeft, moet u een `agent_count` van 3 of hoger kiezen.
 >
-> The Azure Machine Learning SDK does not provide support scaling an AKS cluster. To scale the nodes in the cluster, use the UI for your AKS cluster in the Azure Machine Learning studio. You can only change the node count, not the VM size of the cluster.
+> De Azure Machine Learning SDK biedt geen ondersteuning voor het schalen van een AKS-cluster. Als u de knoop punten in het cluster wilt schalen, gebruikt u de gebruikers interface voor uw AKS-cluster in de Azure Machine Learning Studio. U kunt alleen het aantal knoop punten wijzigen, niet de VM-grootte van het cluster.
 
-For more information on the classes, methods, and parameters used in this example, see the following reference documents:
+Voor meer informatie over de klassen, methoden en para meters die in dit voor beeld worden gebruikt, raadpleegt u de volgende referentie documenten:
 
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none--load-balancer-type-none-)
-* [ComputeTarget.create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
+* [AksCompute. provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none--load-balancer-type-none-)
+* [ComputeTarget. Create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget. wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
 
-**Using the CLI**
+**De CLI gebruiken**
 
 ```azurecli
 az ml computetarget create aks -n myaks
 ```
 
-For more information, see the [az ml computetarget create ask](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
+Zie voor meer informatie de computetarget voor het maken van een ASK-verwijzing [AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) .
 
-## <a name="attach-an-existing-aks-cluster"></a>Attach an existing AKS cluster
+## <a name="attach-an-existing-aks-cluster"></a>Een bestaand AKS-cluster koppelen
 
-**Time estimate:** Approximately 5 minutes.
+**Geschatte tijd:** Ongeveer 5 minuten.
 
-If you already have AKS cluster in your Azure subscription, and it is lower than version 1.14, you can use it to deploy your image.
+Als u al een AKS-cluster in uw Azure-abonnement hebt en dit lager is dan versie 1,14, kunt u deze gebruiken om uw installatie kopie te implementeren.
 
 > [!TIP]
-> The existing AKS cluster can be in a Azure region other than your Azure Machine Learning workspace.
+> Het bestaande AKS-cluster kan zich in een andere Azure-regio bevinden dan uw Azure Machine Learning-werk ruimte.
 >
-> If you want to secure your AKS cluster using an Azure Virtual Network, you must create the virtual network first. For more information, see [Secure experimentation and inference with Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
+> Als u uw AKS-cluster met behulp van een Azure Virtual Network wilt beveiligen, moet u eerst het virtuele netwerk maken. Zie voor meer informatie [beveiligd experimenten en demijnen met Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
 
-When attaching an AKS cluster to a workspace, you can define how you will use the cluster by setting the `cluster_purpose` parameter.
+Wanneer u een AKS-cluster koppelt aan een werk ruimte, kunt u definiëren hoe u het cluster gaat gebruiken door de para meter `cluster_purpose` in te stellen.
 
-If you do not set the `cluster_purpose` parameter, or set `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, then the cluster must have at least 12 virtual CPUs available.
+Als u de para meter `cluster_purpose` niet instelt, of `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`instelt, moet het cluster ten minste 12 virtuele Cpu's hebben.
 
-If you set `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, then the cluster does not need to have 12 virtual CPUs. We recommend at least 2 virtual CPUs for dev/test. However a cluster that is configured for dev/test is not suitable for production level traffic and may increase inference times. Dev/test clusters also do not guarantee fault tolerance.
+Als u `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`instelt, hoeft het cluster geen 12 virtuele Cpu's te hebben. We raden ten minste twee virtuele Cpu's aan voor dev/test. Een cluster dat is geconfigureerd voor dev/test is echter niet geschikt voor verkeer op productie niveau en kan de tijd voor de afnemen verhogen. Dev/test-clusters garanderen ook geen fout tolerantie.
 
 > [!WARNING]
-> Do not create multiple, simultaneous attachments to the same AKS cluster from your workspace. For example, attaching one AKS cluster to a workspace using two different names. Each new attachment will break the previous existing attachment(s).
+> Maak vanuit uw werk ruimte niet meerdere gelijktijdige bijlagen op hetzelfde AKS-cluster. U kunt bijvoorbeeld een AKS-cluster koppelen aan een werk ruimte met behulp van twee verschillende namen. Elke nieuwe bijlage verbreekt de vorige bestaande bijlage (n).
 >
-> If you want to re-attach an AKS cluster, for example to change SSL or other cluster configuration setting, you must first remove the existing attachment by using [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--).
+> Als u een AKS-cluster opnieuw wilt koppelen, bijvoorbeeld om de SSL-of andere configuratie-instelling voor het cluster te wijzigen, moet u eerst de bestaande bijlage verwijderen met behulp van [AksCompute. Detach ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--).
 
-For more information on creating an AKS cluster using the Azure CLI or portal, see the following articles:
+Raadpleeg de volgende artikelen voor meer informatie over het maken van een AKS-cluster met behulp van de Azure CLI of portal:
 
-* [Create an AKS cluster (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [Create an AKS cluster (portal)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
+* [Een AKS-cluster maken (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
+* [Een AKS-cluster maken (Portal)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
-The following examples demonstrate how to attach an existing AKS cluster to your workspace:
+De volgende voor beelden laten zien hoe u een bestaand AKS-cluster kunt koppelen aan uw werk ruimte:
 
-**Using the SDK**
+**De SDK gebruiken**
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -157,37 +157,37 @@ attach_config = AksCompute.attach_configuration(resource_group = resource_group,
 aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
 ```
 
-For more information on the classes, methods, and parameters used in this example, see the following reference documents:
+Voor meer informatie over de klassen, methoden en para meters die in dit voor beeld worden gebruikt, raadpleegt u de volgende referentie documenten:
 
-* [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none--load-balancer-type-none-)
+* [AksCompute. attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none--load-balancer-type-none-)
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute.attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
+* [AksCompute. attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
 
-**Using the CLI**
+**De CLI gebruiken**
 
-To attach an existing cluster using the CLI, you need to get the resource ID of the existing cluster. To get this value, use the following command. Replace `myexistingcluster` with the name of your AKS cluster. Replace `myresourcegroup` with the resource group that contains the cluster:
+Als u een bestaand cluster wilt koppelen met behulp van de CLI, moet u de bron-ID van het bestaande cluster ophalen. Gebruik de volgende opdracht om deze waarde op te halen. Vervang `myexistingcluster` door de naam van uw AKS-cluster. Vervang `myresourcegroup` door de resource groep die het cluster bevat:
 
 ```azurecli
 az aks show -n myexistingcluster -g myresourcegroup --query id
 ```
 
-This command returns a value similar to the following text:
+Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met de volgende tekst:
 
 ```text
 /subscriptions/{GUID}/resourcegroups/{myresourcegroup}/providers/Microsoft.ContainerService/managedClusters/{myexistingcluster}
 ```
 
-To attach the existing cluster to your workspace, use the following command. Replace `aksresourceid` with the value returned by the previous command. Replace `myresourcegroup` with the resource group that contains your workspace. Replace `myworkspace` with your workspace name.
+Gebruik de volgende opdracht om het bestaande cluster aan uw werk ruimte te koppelen. Vervang `aksresourceid` door de waarde die door de vorige opdracht is geretourneerd. Vervang `myresourcegroup` door de resource groep die uw werk ruimte bevat. Vervang `myworkspace` door de naam van uw werk ruimte.
 
 ```azurecli
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-For more information, see the [az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) reference.
+Zie voor meer informatie de referentie [AZ ml computetarget attach AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) .
 
 ## <a name="deploy-to-aks"></a>Implementeren naar AKS
 
-To deploy a model to Azure Kubernetes Service, create a __deployment configuration__ that describes the compute resources needed. For example, number of cores and memory. You also need an __inference configuration__, which describes the environment needed to host the model and web service. For more information on creating the inference configuration, see [How and where to deploy models](how-to-deploy-and-where.md).
+Als u een model wilt implementeren in azure Kubernetes service, maakt u een __implementatie configuratie__ waarin de benodigde reken resources worden beschreven. Bijvoorbeeld het aantal kernen en het geheugen. U hebt ook een Afleidings __configuratie__nodig, waarmee de omgeving wordt beschreven die nodig is voor het hosten van het model en de webservice. Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van de configuratie voor demijnen.
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
 
@@ -206,16 +206,16 @@ print(service.state)
 print(service.get_logs())
 ```
 
-For more information on the classes, methods, and parameters used in this example, see the following reference documents:
+Voor meer informatie over de klassen, methoden en para meters die in dit voor beeld worden gebruikt, raadpleegt u de volgende referentie documenten:
 
 * [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py)
-* [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
-* [Model.deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
-* [Webservice.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
+* [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
+* [Model. implementeren](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [Webservice-wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>Using the CLI
+### <a name="using-the-cli"></a>De CLI gebruiken
 
-To deploy using the CLI, use the following command. Replace `myaks` with the name of the AKS compute target. Replace `mymodel:1` with the name and version of the registered model. Replace `myservice` with the name to give this service:
+Als u wilt implementeren met behulp van de CLI, gebruikt u de volgende opdracht. Vervang `myaks` door de naam van het AKS Compute-doel. Vervang `mymodel:1` door de naam en versie van het geregistreerde model. Vervang `myservice` door de naam om deze service te verlenen:
 
 ```azurecli-interactive
 az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
@@ -223,20 +223,20 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aks-deploy-config.md)]
 
-For more information, see the [az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) reference. 
+Zie voor meer informatie de referentie [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) . 
 
 ### <a name="using-vs-code"></a>VS Code gebruiken
 
-For information on using VS Code, see [deploy to AKS via the VS Code extension](how-to-vscode-tools.md#deploy-and-manage-models).
+Zie voor meer informatie over het gebruik van VS code [implementeren naar AKS via de VS code-extensie](how-to-vscode-tools.md#deploy-and-manage-models).
 
 > [!IMPORTANT] 
-> Deploying through VS Code requires the AKS cluster to be created or attached to your workspace in advance.
+> Voor de implementatie via VS code moet het AKS-cluster vooraf worden gemaakt of aan uw werk ruimte zijn gekoppeld.
 
-## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Deploy models to AKS using controlled rollout (preview)
-Analyze and promote model versions in a controlled fashion using endpoints. Deploy up to 6 versions behind a single endpoint and configure the % of scoring traffic to each deployed version. You can enable app insights to view operational metrics of endpoints and deployed versions.
+## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Modellen implementeren op AKS met behulp van gecontroleerde implementatie (preview-versie)
+Analyseer en promoot model versies op een gecontroleerde manier met behulp van eind punten. Implementeer Maxi maal 6 versies achter één eind punt en configureer het percentage score verkeer naar elke geïmplementeerde versie. U kunt app Insights inschakelen om operationele metrische gegevens van eind punten en geïmplementeerde versies weer te geven.
 
 ### <a name="create-an-endpoint"></a>Een eindpunt maken
-Once you are ready to deploy your models, create a scoring endpoint and deploy your first version. The step below shows you how to deploy and create the endpoint using the SDK. The first deployment will be defined as the default version which means that unspecified traffic percentile across all versions will go to the default version.  
+Wanneer u klaar bent om uw modellen te implementeren, maakt u een score-eind punt en implementeert u uw eerste versie. In de volgende stap ziet u hoe u het eind punt implementeert en maakt met behulp van de SDK. De eerste implementatie wordt gedefinieerd als de standaard versie, wat betekent dat niet-opgegeven verkeer percentiel voor alle versies naar de standaard versie gaat.  
 
 ```python
 import azureml.core,
@@ -260,9 +260,9 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
  endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
  ```
 
-### <a name="update-and-add-versions-to-an-endpoint"></a>Update and add versions to an endpoint
+### <a name="update-and-add-versions-to-an-endpoint"></a>Versies bijwerken en toevoegen aan een eind punt
 
-Add another version to your endpoint and configure the scoring traffic percentile going to the version. There are two types of versions, a control and a treatment version. There can be multiple treatment version to help compare against a single control version. 
+Voeg nog een versie toe aan uw eind punt en configureer het Score verkeer percentiel naar de versie. Er zijn twee soorten versies, een besturings element en een behandelings versie. Er kan meerdere behandelings versies zijn om te vergelijken met één besturings versie. 
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -277,7 +277,7 @@ endpoint.create_version(version_name = version_name_add,
                         traffic_percentile = 10)
 ```
 
-Update existing versions or delete them in an endpoint. You can change the version's default type, control type, and the traffic percentile. 
+Bestaande versies bijwerken of verwijderen in een eind punt. U kunt het standaard type van de versie, het type besturings element en het verkeers percentiel wijzigen. 
  
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -295,21 +295,21 @@ endpoint.delete_version(version_name="versionb")
 ```
 
 
-## <a name="web-service-authentication"></a>Web service authentication
+## <a name="web-service-authentication"></a>Verificatie van webservice
 
-When deploying to Azure Kubernetes Service, __key-based__ authentication is enabled by default. You can also enable __token-based__ authentication. Token-based authentication requires clients to use an Azure Active Directory account to request an authentication token, which is used to make requests to the deployed service.
+Bij het implementeren naar de Azure Kubernetes-service is verificatie op __basis van een sleutel__ standaard ingeschakeld. U kunt ook verificatie __op basis van tokens__ inschakelen. Voor verificatie op basis van tokens moeten clients een Azure Active Directory-account gebruiken om een verificatie token aan te vragen, dat wordt gebruikt om aanvragen te doen voor de geïmplementeerde service.
 
-To __disable__ authentication, set the `auth_enabled=False` parameter when creating the deployment configuration. The following example disables authentication using the SDK:
+Als u de verificatie wilt __uitschakelen__ , stelt u de para meter `auth_enabled=False` in bij het maken van de implementatie configuratie. In het volgende voor beeld wordt de verificatie uitgeschakeld met de SDK:
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)
 ```
 
-For information on authenticating from a client application, see the [Consume an Azure Machine Learning model deployed as a web service](how-to-consume-web-service.md).
+Zie voor meer informatie over het verifiëren van een client toepassing het [model een Azure machine learning gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md).
 
-### <a name="authentication-with-keys"></a>Authentication with keys
+### <a name="authentication-with-keys"></a>Verificatie met sleutels
 
-If key authentication is enabled, you can use the `get_keys` method to retrieve a primary and secondary authentication key:
+Als sleutel verificatie is ingeschakeld, kunt u de methode `get_keys` gebruiken om een primaire en secundaire verificatie sleutel op te halen:
 
 ```python
 primary, secondary = service.get_keys()
@@ -317,17 +317,17 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> If you need to regenerate a key, use [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+> Als u een sleutel opnieuw moet genereren, gebruikt u [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
-### <a name="authentication-with-tokens"></a>Authentication with tokens
+### <a name="authentication-with-tokens"></a>Verificatie met tokens
 
-To enable token authentication, set the `token_auth_enabled=True` parameter when you are creating or updating a deployment. The following example enables token authentication using the SDK:
+Als u token verificatie wilt inschakelen, stelt u de para meter `token_auth_enabled=True` in wanneer u een implementatie maakt of bijwerkt. In het volgende voor beeld wordt token verificatie met behulp van de SDK ingeschakeld:
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)
 ```
 
-If token authentication is enabled, you can use the `get_token` method to retrieve a JWT token and that token's expiration time:
+Als token verificatie is ingeschakeld, kunt u de methode `get_token` gebruiken om een JWT-token op te halen en de verval tijd van dat token:
 
 ```python
 token, refresh_by = service.get_token()
@@ -335,20 +335,20 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> You will need to request a new token after the token's `refresh_by` time.
+> U moet een nieuw token aanvragen na de `refresh_by` tijd van het token.
 >
-> Microsoft strongly recommends that you create your Azure Machine Learning workspace in the same region as your Azure Kubernetes Service cluster. To authenticate with a token, the web service will make a call to the region in which your Azure Machine Learning workspace is created. If your workspace's region is unavailable, then you will not be able to fetch a token for your web service even, if your cluster is in a different region than your workspace. This effectively results in Token-based Authentication being unavailable until your workspace's region is available again. In addition, the greater the distance between your cluster's region and your workspace's region, the longer it will take to fetch a token.
+> Micro soft raadt u ten zeerste aan om uw Azure Machine Learning-werk ruimte te maken in dezelfde regio als uw Azure Kubernetes service-cluster. Als u wilt verifiëren met een token, wordt er door de webservice een aanroep naar de regio waarin uw Azure Machine Learning-werk ruimte is gemaakt. Als de regio van uw werk ruimte niet beschikbaar is, kunt u geen token voor uw webservice ophalen, zelfs als uw cluster zich in een andere regio bevindt dan uw werk ruimte. Dit leidt ertoe dat op tokens gebaseerde verificatie niet beschikbaar is totdat de regio van de werk ruimte weer beschikbaar is. Daarnaast is de afstand tussen de regio van uw cluster en de regio van uw werk ruimte groter, hoe langer het duurt om een token op te halen.
 
-## <a name="update-the-web-service"></a>Update the web service
+## <a name="update-the-web-service"></a>Bijwerken van de webservice
 
 [!INCLUDE [aml-update-web-service](../../../includes/machine-learning-update-web-service.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Secure experimentation and inference in a virtual network](how-to-enable-virtual-network.md)
-* [How to deploy a model using a custom Docker image](how-to-deploy-custom-docker-image.md)
-* [Deployment troubleshooting](how-to-troubleshoot-deployment.md)
-* [Secure Azure Machine Learning web services with SSL](how-to-secure-web-service.md)
-* [Consume a ML Model deployed as a web service](how-to-consume-web-service.md)
-* [Monitor your Azure Machine Learning models with Application Insights](how-to-enable-app-insights.md)
-* [Collect data for models in production](how-to-enable-data-collection.md)
+* [Veilig experimenteren en dezicht in een virtueel netwerk](how-to-enable-virtual-network.md)
+* [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
+* [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
+* [Azure Machine Learning webservices beveiligen met SSL](how-to-secure-web-service.md)
+* [Een ML-model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
+* [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
+* [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)

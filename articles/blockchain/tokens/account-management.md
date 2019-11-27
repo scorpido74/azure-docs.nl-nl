@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Tokens account management
-description: Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
+title: Account beheer voor Azure Block Chain-tokens
+description: Met Azure Block Chain tokens account management kunt u groepen maken en block Chain-accounts koppelen om de toegang tot Block Chain-acties te beheren.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
@@ -11,26 +11,26 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326105"
 ---
-# <a name="azure-blockchain-tokens-account-management"></a>Azure Blockchain Tokens account management
+# <a name="azure-blockchain-tokens-account-management"></a>Account beheer voor Azure Block Chain-tokens
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-For a blockchain solution, users may require different levels of access to the tokens that are created with the Azure Blockchain Tokens service. In most blockchain scenarios, you need to plan and deploy different blockchain accounts that exist on the ledger. You also need to manage access across participants. Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
+Voor een Block Chain-oplossing kunnen gebruikers verschillende toegangs niveaus vereisen voor de tokens die zijn gemaakt met de Azure Block Chain tokens-service. In de meeste Block Chain-scenario's moet u verschillende Block Chain-accounts plannen en implementeren die in het groot boek bestaan. U moet ook de toegang tot de andere deel nemers beheren. Met Azure Block Chain tokens account management kunt u groepen maken en block Chain-accounts koppelen om de toegang tot Block Chain-acties te beheren.
 
-## <a name="blockchain-networks"></a>Blockchain networks
+## <a name="blockchain-networks"></a>Block chain-netwerken
 
-Azure Blockchain Tokens enables deployment and management of tokens across a set of blockchain networks. You can connect a single blockchain ledger or several blockchain ledgers to the service.
+Met Azure Block Chain-tokens kunt u tokens in een set block chain netwerken implementeren en beheren. U kunt één block Chain of verschillende Block Chain-groot boeken verbinden met de service.
 
 ## <a name="accounts"></a>Accounts
 
-For blockchain networks connected to Azure Blockchain Tokens, the service creates and manages the account private-public key pairs and performs transaction signing and submission. Azure Blockchain Tokens also provides identity mapping to match accounts with the public key identity on the ledger.
+Voor Block chain-netwerken die zijn verbonden met Azure Block Chain-tokens, maakt en beheert de service het account persoonlijke-open bare sleutel paren en voert het ondertekenen en verzenden van trans acties uit. Azure Block Chain-tokens bieden ook identiteits toewijzing om accounts met de id van de open bare sleutel in het groot boek te vergelijken.
 
 ## <a name="groups"></a>Groepen
 
-Groups lets you manage a large number of blockchain accounts across connected networks. You can track and audit which applications and users in the directory have the ability to use accounts through Azure Blockchain Tokens APIs. For example, you could group a set of accounts that represent different lines of business or different roles and access to blockchain tokens.
+Met groepen kunt u een groot aantal Block Chain-accounts beheren in verbonden netwerken. U kunt bijhouden en controleren welke toepassingen en gebruikers in de Directory kunnen gebruikmaken van accounts via Azure Block Chain tokens-Api's. U kunt bijvoorbeeld een set accounts groeperen die verschillende bedrijfs regels of verschillende rollen en toegang tot Block Chain-tokens vertegenwoordigen.
 
-You can also associate a group to an Azure Active Directory user or service principal and this principal has permissions to the group and its associated accounts.  
+U kunt een groep ook koppelen aan een Azure Active Directory gebruiker of Service-Principal en deze principal heeft machtigingen voor de groep en de bijbehorende accounts.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Learn more about available [Azure Blockchain Tokens templates](templates.md).
+Meer informatie over de beschik bare [Azure Block Chain-tokens-sjablonen](templates.md).

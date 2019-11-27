@@ -1,6 +1,6 @@
 ---
-title: Add an Azure Storage queue binding to your Python function
-description: Learn how to add an Azure Storage queue output binding to your Python function.
+title: Een Azure Storage wachtrij binding toevoegen aan uw python-functie
+description: Meer informatie over het toevoegen van een Azure Storage wachtrij-uitvoer binding aan uw python-functie.
 ms.date: 10/02/2019
 ms.topic: quickstart
 ms.openlocfilehash: dede135da56e9ed1eaaed2ae0f7b5cd14d08195c
@@ -10,33 +10,33 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231237"
 ---
-# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Add an Azure Storage queue binding to your Python function
+# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Een Azure Storage wachtrij binding toevoegen aan uw python-functie
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-This article shows you how to integrate the function you created in the [previous quickstart article](functions-create-first-function-python.md) with an Azure Storage queue. The output binding that you add to this function writes data from an HTTP request to a message in the queue.
+In dit artikel wordt beschreven hoe u de functie die u hebt gemaakt in het [vorige Quick](functions-create-first-function-python.md) start-artikel integreert met een Azure Storage wachtrij. De uitvoer binding die u aan deze functie toevoegt, schrijft gegevens van een HTTP-aanvraag naar een bericht in de wachtrij.
 
-Most bindings require a stored connection string that Functions uses to access the bound service. To make this connection easier, you use the Storage account that you created with your function app. The connection to this account is already stored in an app setting named `AzureWebJobsStorage`.  
+Voor de meeste bindingen is een opgeslagen connection string vereist die functies gebruiken om toegang te krijgen tot de gebonden service. Als u deze verbinding eenvoudiger wilt maken, gebruikt u het opslag account dat u hebt gemaakt met uw functie-app. De verbinding met dit account is al opgeslagen in een app-instelling met de naam `AzureWebJobsStorage`.  
 
 ## <a name="prerequisites"></a>Vereisten
 
-Before you start this article, complete the steps in [part 1 of the Python quickstart](functions-create-first-function-python.md).
+Voordat u aan dit artikel begint, moet u de stappen in [deel 1 van de python-Snelstartgids](functions-create-first-function-python.md)volt ooien.
 
 [!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
 
-## <a name="download-the-function-app-settings"></a>Download the function app settings
+## <a name="download-the-function-app-settings"></a>De instellingen van de functie-app downloaden
 
 [!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Enable extension bundles
+## <a name="enable-extension-bundles"></a>Uitbreidings bundels inschakelen
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-You can now add the Storage output binding to your project.
+U kunt nu de opslag-uitvoer binding toevoegen aan uw project.
 
 ## <a name="add-an-output-binding"></a>Een uitvoerbinding toevoegen
 
-In Functions, each type of binding requires a `direction`, `type`, and a unique `name` to be defined in the function.json file. The way you define these attributes depends on the language of your function app.
+In functies moet voor elk type binding een `direction`, `type`en een unieke `name` worden gedefinieerd in het bestand function. json. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -44,52 +44,52 @@ In Functions, each type of binding requires a `direction`, `type`, and a unique 
 
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
-When you use an output binding, you don't have to use the Azure Storage SDK code for authentication, getting a queue reference, or writing data. The Functions runtime and queue output binding do those tasks for you.
+Wanneer u een uitvoer binding gebruikt, hoeft u niet de Azure Storage SDK-code te gebruiken voor authenticatie, het ophalen van een wachtrij verwijzing of het schrijven van gegevens. De functies runtime en wachtrij-uitvoer binding voeren deze taken voor u uit.
 
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
-As before, use the following command to start the Functions runtime locally:
+Gebruik, net als voorheen, de volgende opdracht om de functions-runtime lokaal te starten:
 
 ```bash
 func host start
 ```
 
 > [!NOTE]  
-> Because you enabled extension bundles in the host.json, the [Storage binding extension](functions-bindings-storage-blob.md#packages---functions-2x) was downloaded and installed for you during startup, along with the other Microsoft binding extensions.
+> Omdat u uitbreidings bundels in de host. json hebt ingeschakeld, is de [opslag bindings uitbreiding](functions-bindings-storage-blob.md#packages---functions-2x) tijdens het opstarten gedownload en geïnstalleerd, samen met de andere micro soft-bindings extensies.
 
-Kopieer de URL van uw `HttpTrigger`-functie uit de uitvoer van de runtime en plak deze in de adresbalk van uw browser. Append the query string `?name=<yourname>` to this URL and run the request. You should see the same response in the browser as you did in the previous article.
+Kopieer de URL van uw `HttpTrigger`-functie uit de uitvoer van de runtime en plak deze in de adresbalk van uw browser. Voeg de query reeks `?name=<yourname>` toe aan deze URL en voer de aanvraag uit. U ziet hetzelfde antwoord in de browser zoals u dat in het vorige artikel hebt gedaan.
 
-This time, the output binding also creates a queue named `outqueue` in your Storage account and adds a message with this same string.
+De uitvoer binding maakt ook een wachtrij met de naam `outqueue` in uw opslag account en voegt een bericht toe met dezelfde teken reeks.
 
-Next, you use the Azure CLI to view the new queue and verify that a message was added. You can also view your queue by using the [Microsoft Azure Storage Explorer][Azure Storage Explorer] or in the [Azure portal](https://portal.azure.com).
+Vervolgens gebruikt u de Azure CLI om de nieuwe wachtrij te bekijken en te controleren of er een bericht is toegevoegd. U kunt uw wachtrij ook weer geven met behulp van de [Microsoft Azure Storage Explorer][Azure Storage Explorer] of in de [Azure Portal](https://portal.azure.com).
 
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
-### <a name="redeploy-the-project"></a>Redeploy the project 
+### <a name="redeploy-the-project"></a>Het project opnieuw implementeren 
 
-To update your published app, use the [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools command to deploy your project code to Azure. In this example, replace `<APP_NAME>` with the name of your app.
+Als u uw gepubliceerde app wilt bijwerken, gebruikt u de opdracht [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) core-hulpprogram ma's om uw project code te implementeren in Azure. Vervang `<APP_NAME>` in dit voor beeld door de naam van uw app.
 
 ```command
 func azure functionapp publish <APP_NAME> --build remote
 ```
 
-Again, you can use cURL or a browser to test the deployed function. As before, append the query string `&name=<yourname>` to the URL, as in this example:
+U kunt ook krul of een browser gebruiken om de geïmplementeerde functie te testen. Voeg, net als voorheen, de query reeks `&name=<yourname>` toe aan de URL, zoals in dit voor beeld:
 
 ```bash
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-You can [examine the Storage queue message](#query-the-storage-queue) again to verify that the output binding generates a new message in the queue, as expected.
+U kunt [de opslag wachtrij opnieuw bekijken](#query-the-storage-queue) om te controleren of de uitvoer binding een nieuw bericht in de wachtrij genereert, zoals verwacht.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-You've updated your HTTP-triggered function to write data to a Storage queue. To learn more about developing Azure Functions with Python, see the [Azure Functions Python developer guide](functions-reference-python.md) and [Azure Functions triggers and bindings](functions-triggers-bindings.md). For examples of complete Function projects in Python, see the [Python Functions samples](/samples/browse/?products=azure-functions&languages=python). To learn more about pricing, see the [Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) and the [Estimating Consumption plan costs](functions-consumption-costs.md) article.
+U hebt uw door HTTP geactiveerde functie bijgewerkt om gegevens naar een opslag wachtrij te schrijven. Zie voor meer informatie over het ontwikkelen van Azure Functions met python de [Azure functions python-ontwikkelaars handleiding](functions-reference-python.md) en [Azure functions triggers en bindingen](functions-triggers-bindings.md). Zie voor voor beelden van complete functie projecten in python de [python functions](/samples/browse/?products=azure-functions&languages=python)-voor beelden. Zie de [pagina met prijzen voor functies](https://azure.microsoft.com/pricing/details/functions/) en het artikel kosten voor het [schatten van verbruiks plannen](functions-consumption-costs.md) voor meer informatie over prijzen.
 
-Next, you should enable Application Insights monitoring for your function app:
+Schakel vervolgens Application Insights bewaking in voor uw functie-app:
 
 > [!div class="nextstepaction"]
 > [Application Insights-integratie inschakelen](functions-monitoring.md#manually-connect-an-app-insights-resource)

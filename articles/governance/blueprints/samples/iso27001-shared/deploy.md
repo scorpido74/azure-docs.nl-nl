@@ -1,14 +1,14 @@
 ---
-title: Voor beeld van ISO 27001 Shared Services blauw druk-stappen voor implementatie
+title: ISO 27001-voor beeld van gedeelde services gebruiken blauw drukken
 description: Implementeer stappen voor het voor beeld van de ISO 27001 Shared Services-blauw druk, inclusief para meters voor de artefact parameter.
 ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 3f6928666dc098de81e20555cc1164338331fa90
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1ef96a3ccffa705290a90caf436fe1857d9442a7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184396"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546707"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Het voor beeld van de ISO 27001-gedeelde services gebruiken
 
@@ -62,7 +62,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basics
+   - Basisbeginselen
 
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
      - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
@@ -104,9 +104,9 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
 |\[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
-|\[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
+|\[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
 |\[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
-|\[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
+|\[preview\]: Log Analytics-agent implementeren voor Windows-Vm's|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
 |Toegestane brontypen|Beleidstoewijzing|Toegestane brontypen|Lijst met resource typen die mogen worden geïmplementeerd. Deze lijst bestaat uit alle resource typen die zijn geïmplementeerd in gedeelde services.|
 |Toegestane opslagaccount-SKU's|Beleidstoewijzing|Toegestane opslag-Sku's|Lijst met Diagnostische logboeken opslag account-Sku's toegestaan. De standaard waarde is _["Standard_LRS"]_ .|
 |Toegestane Sku's voor virtuele machines|Beleidstoewijzing|Lijst met Sku's voor virtuele machines die mogen worden geïmplementeerd. De standaard waarde is _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|

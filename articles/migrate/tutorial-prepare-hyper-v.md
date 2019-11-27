@@ -148,7 +148,7 @@ Voer het script als volgt uit:
 
 Hash-waarden zijn:
 
-| **Hash** | **Waarde** |
+| **Eigenaar** | **Waarde** |
 | --- | --- |
 | **MD5** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |

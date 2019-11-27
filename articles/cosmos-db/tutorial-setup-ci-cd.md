@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 28c7166c3569505d595c55178cf721ee432bd642
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 514c9655a1d303c444cc8c183ed6b73fd3422cf8
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024164"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533209"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Een CI/CD-pijplijn instellen met de build-taak van Azure Cosmos DB Emulator in Azure DevOps
 
@@ -85,7 +85,7 @@ Hieronder ziet u een voorbeeld van een **.runsettings**-bestand met parameters d
 
 Als u een CI/CD-pijplijn instelt voor een toepassing die gebruikmaakt van de Azure Cosmos DB-API voor MongoDB, omvat de verbindingsreeks standaard poortnummer 10255. Deze poort is momenteel echter niet geopend. Gebruik daarom als alternatief poort 10250 om de verbinding tot stand te brengen. De verbindingsreeks van de Azure Cosmos DB-API voor MongoDB is dezelfde, alleen is het ondersteunde poortnummer 10250 in plaats van 10255.
 
-Via de eigenschap `TestContext` in het testproject van de toepassing wordt er verwezen naar de parameters bij `TestRunParameters`. Hier volgt een voorbeeld van een test die wordt uitgevoerd met Cosmos DB.
+Via de eigenschap `TestRunParameters` in het testproject van de toepassing wordt er verwezen naar de parameters bij `TestContext`. Hier volgt een voorbeeld van een test die wordt uitgevoerd met Cosmos DB.
 
 ```csharp
 namespace todo.Tests
@@ -133,7 +133,7 @@ namespace todo.Tests
 }
 ```
 
-Navigeer naar de uitvoeringsopties in de taak VSTest. Geef bij **Settings file** aan dat de tests worden geconfigureerd via een **.runsettings**-bestand. Voeg `-endpoint $(CosmosDbEmulator.Endpoint)` toe voor de optie **Override test run parameters**. Hiermee stelt u in dat de testtaak moet verwijzen naar het eindpunt van de build-taak van de emulator, en niet naar het eindpunt dat is gedefinieerd in het **.runsettings**-bestand.  
+Navigeer naar de uitvoeringsopties in de taak VSTest. Geef bij **Settings file** aan dat de tests worden geconfigureerd via een **.runsettings**-bestand. Voeg **toe voor de optie**Override test run parameters`-endpoint $(CosmosDbEmulator.Endpoint)`. Hiermee stelt u in dat de testtaak moet verwijzen naar het eindpunt van de build-taak van de emulator, en niet naar het eindpunt dat is gedefinieerd in het **.runsettings**-bestand.  
 
 ![Variabele voor eindpunt vervangen door eindpunt van build-taak van emulator](./media/tutorial-setup-ci-cd/addExtension_5.png)
 
@@ -150,6 +150,24 @@ Als de build is gestart, ziet u dat de taak van Cosmos DB Emulator de Docker-ins
 Als de build is voltooid, kijkt u of de tests zijn gelukt, en of ze allemaal vanuit de build-taak zijn uitgevoerd met de Cosmos DB Emulator.
 
 ![De build opslaan en uitvoeren](./media/tutorial-setup-ci-cd/buildComplete_1.png)
+
+## <a name="set-up-using-yaml"></a>Instellen met behulp van YAML
+
+Als u de CI/CD-pijp lijn instelt met behulp van een YAML-taak, kunt u de YAML-taak definiëren, zoals wordt weer gegeven in de volgende code:
+
+```yml
+- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
+  displayName: 'Run Azure Cosmos DB Emulator'
+
+- script: yarn test
+  displayName: 'Run API tests (Cosmos DB)'
+  env:
+    HOST: $(CosmosDbEmulator.Endpoint)
+    # Hardcoded key for emulator, not a secret
+    AUTH_KEY: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+    # The emulator uses a self-signed cert, disable TLS auth errors
+    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

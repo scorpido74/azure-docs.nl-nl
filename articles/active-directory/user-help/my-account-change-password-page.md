@@ -1,6 +1,6 @@
 ---
-title: Change your work or school account password - Azure AD
-description: Learn to change your work or school account password from the Change Password page of the My Account portal.
+title: Het wacht woord van uw werk-of school account wijzigen-Azure AD
+description: Meer informatie over het wijzigen van het wacht woord voor uw werk-of school account op de pagina wacht woord wijzigen van de portal mijn account.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -19,41 +19,41 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231874"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Change your work or school account password from the My Account portal
+# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Het wacht woord voor uw werk-of school account wijzigen vanuit de portal van mijn account
 
-From the **Change password** page of the **My Account** portal, you can update your work or school account password. This will only work if you know your existing password and if you aren't locked out of your account.
+Op de pagina **wacht woord wijzigen** van de portal van **Mijn account** kunt u het wacht woord van uw werk-of school account bijwerken. Dit werkt alleen als u uw bestaande wacht woord kent en u uw account niet hebt vergrendeld.
 
-If you don't remember your password, if you've been locked out of your account, or if you never got a password from your company support team, you can use your security info and your mobile device to reset your password. For more information, see [Reset your work or school password](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
+Als u uw wacht woord niet meer weet, als u uw account hebt vergrendeld of als u nooit een wacht woord hebt ontvangen van het ondersteunings team van uw bedrijf, kunt u uw beveiligings gegevens en uw mobiele apparaat gebruiken om uw wacht woord opnieuw in te stellen. Zie [uw werk-of school wachtwoord opnieuw instellen](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password)voor meer informatie.
 
 >[!Note]
->If you're trying to get back into a personal account like for Xbox, hotmail.com, or outlook.com, try the suggestions in the [When you can't sign in to your Microsoft account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) article.
+>Als u probeert terug te gaan naar een persoonlijk account zoals Xbox, hotmail.com of outlook.com, kunt u de suggesties in de weer gegeven [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) -artikel.
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>To change your password from the My Account portal
+## <a name="to-change-your-password-from-the-my-account-portal"></a>Uw wacht woord wijzigen vanuit de portal van mijn account
 
-1. Sign in to your work or school account, using your existing password, and then go to your https://myprofile.microsoft.com/ page.
+1. Meld u aan bij uw werk-of school account met uw bestaande wacht woord en ga vervolgens naar de pagina https://myprofile.microsoft.com/.
 
-2. Select **Password** from the left navigation pane or select the **Change password** link from the **Password** block.
+2. Selecteer **wacht woord** in het navigatie deel venster links of selecteer de koppeling **wacht woord wijzigen** in het blok met **wacht woord** .
 
-    ![My Account page, showing highlighted Change password link](media/my-account-portal/my-account-portal-change-password.png)
+    ![Pagina Mijn account, met de gemarkeerde koppeling voor wachtwoord wijziging](media/my-account-portal/my-account-portal-change-password.png)
 
-3. Type your old password, and then create and confirm your new password.
+3. Typ uw oude wacht woord en maak en bevestig uw nieuwe wacht woord.
 
-    ![Change password page, showing password fields](media/my-account-portal/my-account-portal-change-password-page.png)
+    ![Pagina wacht woord wijzigen, waarin wachtwoord velden worden weer gegeven](media/my-account-portal/my-account-portal-change-password-page.png)
 
 4. Selecteer **Indienen**.
 
-    Your password will be changed and you'll be asked to sign in to your work or school account again.
+    Uw wacht woord wordt gewijzigd en u wordt gevraagd om u opnieuw aan te melden bij uw werk-of school account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-After changing your password, you can:
+Nadat u uw wacht woord hebt gewijzigd, kunt u het volgende doen:
 
-- View or manage your [security info](user-help-security-info-overview.md).
+- Je [beveiligings gegevens](user-help-security-info-overview.md)weer geven of beheren.
 
-- View or manage your connected [devices](my-account-portal-devices-page.md).
+- Uw verbonden [apparaten](my-account-portal-devices-page.md)weer geven of beheren.
 
-- View or manage your [organizations](my-account-portal-organizations-page.md).
+- Uw [organisaties](my-account-portal-organizations-page.md)weer geven of beheren.
 
-- View your [sign-in activity](my-account-portal-sign-ins-page.md).
+- Bekijk uw [aanmeldings activiteit](my-account-portal-sign-ins-page.md).
 
-- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).
+- Bekijk hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md).

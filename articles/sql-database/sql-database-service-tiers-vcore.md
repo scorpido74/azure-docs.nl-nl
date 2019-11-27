@@ -1,6 +1,6 @@
 ---
 title: Overzicht van vCore-modellen
-description: The vCore purchasing model lets you independently scale compute and storage resources, match on-premises performance, and optimize price.
+description: Met het vCore-aankoop model kunt u de reken-en opslag resources onafhankelijk van elkaar schalen, de on-premises prestaties afstemmen en de prijs optimaliseren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -8,176 +8,176 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 11/25/2019
-ms.openlocfilehash: 94728f2e4be6a16d048b4ff97bedefd5e32957ed
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 11/27/2019
+ms.openlocfilehash: c5c7883295a30aa217e722abd905f54b982761d3
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481286"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547558"
 ---
 # <a name="vcore-model-overview"></a>Overzicht van vCore-modellen
 
-The virtual core (vCore) model provides several benefits:
+Het virtuele kern model (vCore) biedt diverse voor delen:
 
-- Higher compute, memory, IO, and storage limits.
-- Control over the hardware generation to better match compute and memory requirements of the workload.
-- Pricing discounts for [Azure Hybrid Benefit (AHB)](sql-database-azure-hybrid-benefit.md) and [Reserved Instance (RI)](sql-database-reserved-capacity.md).
-- Greater transparency in the hardware details that power the compute; facilitates planning for migrations from on-premises deployments.
+- Hogere reken-, geheugen-, i/o-en opslag limieten.
+- Controle over de hardware-generatie om beter te voldoen aan de reken-en geheugen vereisten van de werk belasting.
+- Prijs kortingen voor [Azure Hybrid Benefit (AHB)](sql-database-azure-hybrid-benefit.md) en [gereserveerde instanties (RI)](sql-database-reserved-capacity.md).
+- Grotere transparantie in de hardware-details die de reken kracht stroomt; vereenvoudigt het plannen van migraties van on-premises implementaties.
 
 ## <a name="service-tiers"></a>Servicelagen
 
-Service tier options in the vCore model include General Purpose, Business Critical, and Hyperscale. The service tier generally defines the storage architecture, space and IO limits, and business continuity options related to availability and disaster recovery.
+Opties voor de servicelaag in het vCore-model bevatten Algemeen, Bedrijfskritiek en grootschalige. De servicelaag definieert in het algemeen de opslag architectuur, ruimte-en IO-limieten en opties voor bedrijfs continuïteit die betrekking hebben op Beschik baarheid en herstel na nood gevallen.
 
-||**Algemeen doel**|**Business critical**|**Hyperscale**|
+||**Algemeen doel**|**Bedrijfs kritiek**|**Grootschalige**|
 |---|---|---|---|
-|Ideaal voor|Most business workloads. Offers budget-oriented, balanced, and scalable compute and storage options. |Offers business applications the highest resilience to failures by using several isolated replicas, and provides the highest I/O performance per database replica.|Most business workloads with highly scalable storage and read-scale requirements.  Offers higher resilience to failures by allowing configuration of more than one isolated database replica. |
-|Storage|Uses remote storage.<br/>**Single database and elastic pool provisioned compute**:<br/>5 GB – 4 TB<br/>**Serverless compute**:<br/>5 GB - 3 TB<br/>**Managed instance**: 32 GB - 8 TB |Uses local SSD storage.<br/>**Single database and elastic pool provisioned compute**:<br/>5 GB – 4 TB<br/>**Managed instance**:<br/>32 GB - 4 TB |Flexible autogrow of storage as needed. Supports up to 100 TB of storage. Uses local SSD storage for local buffer-pool cache and local data storage. Uses Azure remote storage as final long-term data store. |
-|I/O throughput (approximate)|**Single database and elastic pool**: 500 IOPS per vCore up to 40000 maximum IOPS.<br/>**Managed instance**: Depends on [size of file](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS per vCore up to 320,000 maximum IOPS|Hyperscale is a multi-tiered architecture with caching at multiple levels. Effective IOPs will depend on the workload.|
-|Beschikbaarheid|1 replica, no read-scale replicas|3 replicas, 1 [read-scale replica](sql-database-read-scale-out.md),<br/>zone-redundant high availability (HA)|1 read-write replica, plus 0-4 [read-scale replicas](sql-database-read-scale-out.md)|
-|Back-ups|[Read-access geo-redundant storage (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 days (7 days by default)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 days (7 days by default)|Snapshot-based backups in Azure remote storage. Restores use these snapshots for fast recovery. Backups are instantaneous and don't impact compute I/O performance. Restores are fast and aren't a size-of-data operation (taking minutes rather than hours or days).|
+|Ideaal voor|De meeste zakelijke workloads. Biedt budget gerichte, evenwichtige en schaal bare reken-en opslag opties. |Biedt zakelijke toepassingen de hoogste flexibiliteit voor storingen met behulp van verschillende geïsoleerde replica's en biedt de hoogste I/O-prestaties per database replica.|De meeste zakelijke workloads met zeer schaal bare opslag-en lees vereisten.  Biedt meer flexibiliteit voor storingen door de configuratie van meer dan één geïsoleerde database replica toe te staan. |
+|Storage|Maakt gebruik van externe opslag.<br/>**Reken kracht voor één data base en elastische pool**:<br/>5 GB – 4 TB<br/>**Serverloze Compute**:<br/>5 GB-3 TB<br/>**Beheerd exemplaar**: 32 GB-8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**Reken kracht voor één data base en elastische pool**:<br/>5 GB – 4 TB<br/>**Beheerd exemplaar**:<br/>32 GB - 4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
+|I/O-door Voer (ongeveer)|**Eén data base en elastische pool**: 500 IOPS per vCore tot 40000 maximum aantal IOPS.<br/>**Beheerd exemplaar**: is afhankelijk van de [grootte van het bestand](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS per vCore tot 320.000 maximum aantal IOPS|Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPs is afhankelijk van de werk belasting.|
+|Beschikbaarheid|1 replica, geen replica's met lees schaal|3 replica's, 1 [replica met lees grootte](sql-database-read-scale-out.md),<br/>zone-redundante hoge Beschik baarheid (HA)|1 replica met lees-en schrijf bewerkingen, plus 0-4 [replica's met lees grootte](sql-database-read-scale-out.md)|
+|Back-ups|[Geografisch redundante opslag met lees toegang (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dagen (standaard 7 dagen)|[Ra-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dagen (standaard 7 dagen)|Back-ups op basis van moment opnamen in azure externe opslag. Herstelt het gebruik van deze moment opnamen voor snel herstel. Back-ups zijn onmiddellijk en zijn niet van invloed op de I/O-prestaties van compute. Herstel bewerkingen zijn snel en zijn geen omvang van de gegevens bewerking (minuten in plaats van uren of dagen).|
 |In het geheugen|Niet ondersteund|Ondersteund|Niet ondersteund|
 |||
 
 
 ### <a name="choosing-a-service-tier"></a>Het kiezen van een servicelaag
 
-For information on selecting a service tier for your particular workload, see the following articles:
+Raadpleeg de volgende artikelen voor meer informatie over het selecteren van een servicelaag voor uw specifieke workload:
 
-- [When to choose the General purpose service tier](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
-- [When to choose the Business Critical service tier](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
-- [When to choose the Hyperscale service tier](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
+- [Wanneer u de servicelaag voor algemeen gebruik kiest](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Wanneer u de laag Bedrijfskritiek-service kiest](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
+- [Wanneer u de grootschalige-servicelaag kiest](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
 
-## <a name="compute-tiers"></a>Compute tiers
+## <a name="compute-tiers"></a>Reken lagen
 
-Compute tier options in the vCore model include the provisioned and serverless compute tiers.
+Opties voor Compute-lagen in het vCore-model bevatten de ingerichte en serverloze reken lagen.
 
 
 ### <a name="provisioned-compute"></a>Ingerichte compute
 
-The provisioned compute tier provides a specific amount of compute resources that are continuously provisioned independent of workload activity, and bills for the amount of compute provisioned at a fixed price per hour.
+De ingerichte Compute-laag biedt een specifieke hoeveelheid reken bronnen die continu worden ingericht, onafhankelijk van de werkbelasting activiteit, en facturen voor de hoeveelheid Compute die is ingericht tegen een vaste prijs per uur.
 
 
-### <a name="serverless-compute"></a>Serverloze rekenervaring
+### <a name="serverless-compute"></a>Serverloze compute
 
-The [serverless compute tier](sql-database-serverless.md) auto-scales compute resources based on workload activity, and bills for the amount of compute used per second.
+Met de [serverloze Compute-laag](sql-database-serverless.md) worden reken resources automatisch geschaald op basis van de werkbelasting activiteit en worden er facturen in rekening gebracht voor de hoeveelheid reken kracht per seconde.
 
 
 
-## <a name="hardware-generations"></a>Hardware generations
+## <a name="hardware-generations"></a>Hardware gegenereerd
 
-Hardware generation options in the vCore model include Gen 4/5, M-series (preview), and Fsv2-series (preview). The hardware generation generally defines the compute and memory limits and other characteristics that impact the performance of the workload.
+Opties voor het genereren van hardware in het vCore-model zijn gen 4/5, M-Series (preview) en Fsv2-Series (preview). Het genereren van de hardware definieert doorgaans de reken-en geheugen limieten en andere kenmerken die van invloed zijn op de prestaties van de werk belasting.
 
 ### <a name="gen4gen5"></a>Gen4/Gen5
 
-- Gen4/Gen5 hardware provides balanced compute and memory resources, and is suitable for most database workloads that do not have higher memory, higher vCore, or faster single vCore requirements as provided by Fsv2-series or M-series.
+- Gen4/Gen5-hardware biedt evenwichtige reken-en geheugen bronnen en is geschikt voor de meeste data base-workloads die niet meer geheugen, hogere vCore of snellere enkelvoudige vCore vereisten hebben zoals geleverd door de Fsv2-serie of M-serie.
 
-For regions where Gen4/Gen5 is available, see [Gen4/Gen5 availability](#gen4gen5-1).
+Zie [Gen4/Gen5 Beschik baarheid](#gen4gen5-1)voor regio's waar Gen4/Gen5 beschikbaar is.
 
-### <a name="fsv2-seriespreview"></a>Fsv2-series (preview)
+### <a name="fsv2-seriespreview"></a>Fsv2-serie (preview-versie)
 
-- Fsv2-series is a compute optimized hardware option delivering low CPU latency and high clock speed for the most CPU demanding workloads.
-- Depending on the workload, Fsv2-series can deliver more CPU performance per vCore than Gen5, and the 72 vCore size can provide more CPU performance for less cost than 80 vCores on Gen5. 
-- Fsv2 provides less memory and tempdb per vCore than other hardware so workloads sensitive to those limits may want to consider Gen5 or M-series instead.  
+- Fsv2-serie is een hardwarematige Compute-optie die lage CPU-latentie en hoge klok snelheid levert voor de meeste CPU-werk belastingen.
+- Afhankelijk van de werk belasting, kan de Fsv2-serie meer CPU-prestaties leveren per vCore dan GEN5, en de grootte van 72 vCore kan meer CPU-prestaties bieden voor minder kosten dan 80 vCores op GEN5. 
+- Fsv2 biedt minder geheugen en tempdb per vCore dan andere hardware, zodat werk belastingen die gevoelig zijn voor deze limieten wellicht in plaats daarvan Gen5 of M-serie willen overwegen.  
 
-For regions where Fsv2-series is available, see [Fsv2-series availability](#fsv2-series).
-
-
-### <a name="m-seriespreview"></a>M-series (preview)
-
-- M-series is a memory optimized hardware option for workloads demanding more memory and higher compute limits than provided by Gen5.
-- M-series provides 29 GB per vCore and 128 vCores, which increases the memory limit relative to Gen5 by 8x to nearly 4 TB.
-
-To enable M-series hardware for a subscription and region, a support request must be open. If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
+Zie de [Beschik baarheid van Fsv2-Series](#fsv2-series)voor regio's waar Fsv2-serie beschikbaar is.
 
 
-### <a name="compute-and-memory-specifications"></a>Compute and memory specifications
+### <a name="m-seriespreview"></a>M-serie (preview-versie)
+
+- M-serie is een optie voor geoptimaliseerd voor geheugen voor werk belastingen die meer geheugen en hogere reken limieten hebben dan wordt verzorgd door GEN5.
+- De M-serie biedt 29 GB per vCore en 128 vCores, waardoor de geheugen limiet wordt verhoogd ten opzichte van GEN5 van 8x tot bijna 4 TB.
+
+Als u hardware van de M-serie wilt inschakelen voor een abonnement en een regio, moet er een ondersteunings aanvraag open zijn. Als de ondersteunings aanvraag is goedgekeurd, volgt de selectie-en inrichtings ervaring van de M-serie hetzelfde patroon als voor andere hardware-generaties. Zie de [Beschik baarheid van de m-serie](#m-series)voor regio's waar de m-serie beschikbaar is.
 
 
-|Hardware generation  |Computing  |Geheugen  |
+### <a name="compute-and-memory-specifications"></a>Specificaties van Compute en geheugen
+
+
+|Hardware genereren  |Compute  |Geheugen  |
 |:---------|:---------|:---------|
-|Gen4     |- Intel E5-2673 v3 (Haswell) 2.4 GHz processors<br>- Provision up to 24 vCores (1 vCore = 1 physical core)  |- 7 GB per vCore<br>- Provision up to 168 GB|
-|Gen5     |**Provisioned compute**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz processors<br>- Provision up to 80 vCores (1 vCore = 1 hyper-thread)<br><br>**Serverless compute**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz processors<br>- Auto-scale up to 16 vCores (1 vCore = 1 hyper-thread)|**Provisioned compute**<br>- 5.1 GB per vCore<br>- Provision up to 408 GB<br><br>**Serverless compute**<br>- Auto-scale up to 24 GB per vCore<br>- Auto-scale up to 48 GB max|
-|Fsv2-reeks     |- Intel Xeon Platinum 8168 (SkyLake) processors<br>- Featuring a sustained all core turbo clock speed of 3.4 GHz and a maximum single core turbo clock speed of 3.7 GHz.<br>- Provision 72 vCores (1 vCore = 1 hyper-thread)|- 1.9 GB per vCore<br>- Provision 136 GB|
-|M-serie     |- Intel Xeon E7-8890 v3 2.5 GHz processors<br>- Provision 128 vCores (1 vCore = 1 hyper-thread)|- 29 GB per vCore<br>- Provision 3.7 TB|
+|Gen4     |-Intel E5-2673 v3 (Haswell) 2,4 GHz-processors<br>-Tot 24 vCores (1 vCore = 1 fysieke kern) inrichten  |-7 GB per vCore<br>-Maxi maal 168 GB inrichten|
+|Gen5     |**Ingerichte compute**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160-processors (Skylake)<br>-Maxi maal 80 vCores (1 vCore = 1 Hyper Thread) inrichten<br><br>**Serverloze compute**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160-processors (Skylake)<br>-Schaal automatisch naar 16 vCores (1 vCore = 1 Hyper Thread)|**Ingerichte compute**<br>-5,1 GB per vCore<br>-Maxi maal 408 GB inrichten<br><br>**Serverloze compute**<br>-Automatisch schalen naar 24 GB per vCore<br>-Maxi maal 48 GB automatisch schalen|
+|Fsv2-serie     |-Intel Xeon Platinum 8168-processors (SkyLake)<br>-Met een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale klok snelheid van Maxi maal één kern van 3,7 GHz.<br>-Provision 72 vCores (1 vCore = 1 Hyper Thread)|-1,9 GB per vCore<br>-Inrichting van 136 GB|
+|M-serie     |-Intel Xeon E7-8890 v3 2,5 GHz-processors<br>-Provision 128 vCores (1 vCore = 1 Hyper Thread)|-29 GB per vCore<br>-Inrichting van 3,7 TB|
 
 
-For more information on resource limits, see [Resource limits for single databases (vCore)](sql-database-vcore-resource-limits-single-databases.md), or [Resource limits for elastic pools (vCore)](sql-database-vcore-resource-limits-elastic-pools.md).
+Zie [resource limieten voor afzonderlijke data bases (vCore)](sql-database-vcore-resource-limits-single-databases.md)of resource limieten [voor elastische Pools (vCore)](sql-database-vcore-resource-limits-elastic-pools.md)voor meer informatie over resource limieten.
 
-### <a name="selecting-a-hardware-generation"></a>Selecting a hardware generation
+### <a name="selecting-a-hardware-generation"></a>Een hardware-generatie selecteren
 
-In the Azure portal, you can select the hardware generation for a SQL database or pool at the time of creation, or you can change the hardware generation of an existing SQL database or pool.
+In de Azure Portal kunt u de hardware-generatie voor een SQL database of groep selecteren op het moment dat deze wordt gemaakt, of u kunt de hardware-generatie van een bestaande SQL database of groep wijzigen.
 
-**To select a hardware generation when creating a SQL database or pool**
+**Een hardwarematige generatie selecteren bij het maken van een SQL database of groep**
 
-For detailed information, see [Create a SQL database](sql-database-single-database-get-started.md).
+Zie [een SQL database maken](sql-database-single-database-get-started.md)voor gedetailleerde informatie.
 
-On the **Basics** tab, select the **Configure database** link in the **Compute + storage** section, and then select the **Change configuration** link:
+Selecteer op het tabblad **basis beginselen** de koppeling **Data Base configureren** in de sectie **berekenings** -en opslag en selecteer vervolgens de koppeling **configuratie wijzigen** :
 
   ![database configureren](media/sql-database-service-tiers-vcore/configure-sql-database.png)
 
-Select the desired hardware generation:
+Selecteer de gewenste hardware-generatie:
 
-  ![select hardware](media/sql-database-service-tiers-vcore/select-hardware.png)
+  ![hardware selecteren](media/sql-database-service-tiers-vcore/select-hardware.png)
 
 
-**To change the hardware generation of an existing SQL database or pool**
+**Het genereren van de hardware van een bestaande SQL database of groep wijzigen**
 
-For a database, on the Overview page, select the **Pricing tier** link:
+Voor een Data Base selecteert u op de pagina overzicht de **prijs categorie** koppeling:
 
-  ![change hardware](media/sql-database-service-tiers-vcore/change-hardware.png)
+  ![hardware wijzigen](media/sql-database-service-tiers-vcore/change-hardware.png)
 
-For a pool, on the Overview page, select **Configure**.
+Voor een groep selecteert u op de pagina overzicht de optie **configureren**.
 
-Follow the steps to change configuration, and select the hardware generation as described in the previous steps.
+Volg de stappen voor het wijzigen van de configuratie en selecteer de hardware-generatie zoals beschreven in de vorige stappen.
 
-### <a name="hardware-availability"></a>Hardware availability
+### <a name="hardware-availability"></a>Hardwarematige Beschik baarheid
 
-#### <a name="gen4gen5-1"></a> Gen4/Gen5
+#### <a name="gen4gen5-1"></a>Gen4/Gen5
 
-New Gen4 databases are no longer supported in the Australia East or Brazil South regions. 
+Nieuwe Gen4-data bases worden niet meer ondersteund in de Australië-oost-of Brazilië-zuid regio's. 
 
-Gen5 is available in most regions worldwide.
+GEN5 is wereld wijd beschikbaar in de meeste regio's.
 
-#### <a name="fsv2-series"></a>Fsv2-reeks
+#### <a name="fsv2-series"></a>Fsv2-serie
 
-Fsv2-series is available in the following regions: Australia Central, Australia Central 2, Australia East, Australia Southeast, Brazil South, Canada Central, East Asia, East Us, France Central, India Central, India West, Korea Central, Korea South, North Europe, South Africa North, Southeast Asia, UK South, UK West, West Europe, West Us 2.
+Fsv2-serie is beschikbaar in de volgende regio's: Australië-centraal, Australië-centraal 2, Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Azië-oost, VS-Oost, Frankrijk-centraal, India centraal, India-West, Korea-centraal, Korea-zuid, Noord Europa, Zuid-Afrika-noord, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West 2.
 
 
 #### <a name="m-series"></a>M-serie
 
-M-series is available in the following regions: East US, North Europe, West Europe, West US 2.
-M-series may also have limited availability in additional regions. You can request a different region than listed here, but fulfillment in a different region may not be possible.
+De M-serie is beschikbaar in de volgende regio's: VS-Oost, Europa-noord, Europa-west, VS-West 2.
+De M-serie kan ook een beperkte Beschik baarheid hebben in extra regio's. U kunt een andere regio aanvragen dan hier wordt vermeld, maar de uitvoering van een andere regio is mogelijk niet mogelijk.
 
-To enable M-series availability in a subscription, access must be requested by [filing a new support request](#create-a-support-request-to-enable-m-series).
+Als u de beschik baarheid van de M-serie in een abonnement wilt inschakelen, moet u toegang [aanvragen door een nieuwe ondersteunings aanvraag](#create-a-support-request-to-enable-m-series)in te dienen.
 
 
-##### <a name="create-a-support-request-to-enable-m-series"></a>Create a support request to enable M-series: 
+##### <a name="create-a-support-request-to-enable-m-series"></a>Een ondersteunings aanvraag maken om de M-serie in te scha kelen: 
 
-1. Select **Help + support** in the portal.
+1. Selecteer **Help en ondersteuning** in de portal.
 2. Selecteer **Nieuwe ondersteuningsaanvraag**.
 
-On the **Basics** page, provide the following:
+Geef op de pagina **basis beginselen** het volgende op:
 
-1. For **Issue type**, select **Service and subscription limits (quotas)** .
-2. For **Subscription** = select the subscription to enable M-series.
-3. For **Quota type**, select **SQL database**.
-4. Select **Next** to go to the **Details** page.
+1. Selecteer voor **probleem type** **service-en abonnements limieten (quota's)** .
+2. Voor **abonnement** = Selecteer het abonnement om de M-serie in te scha kelen.
+3. Selecteer **SQL database**bij **quotum type**.
+4. Selecteer **volgende** om naar de pagina **Details** te gaan.
 
-On the **Details** page, provide the following:
+Geef op de pagina **Details** het volgende op:
 
-5. In the **PROBLEM DETAILS** section select the **Provide details** link. 
-6. For **SQL Database quota type** select **M-series**.
-7. For **Region**, select the region to enable M-series.
-    For regions where M-series is available, see [M-series availability](#m-series).
+5. Selecteer in de sectie **probleem Details** de koppeling **Details opgeven** . 
+6. Voor **SQL database quotum type** selecteert u **M-serie**.
+7. Selecteer bij **regio**de regio om de M-serie in te scha kelen.
+    Zie de [Beschik baarheid van de m-serie](#m-series)voor regio's waar de m-serie beschikbaar is.
 
-Approved support requests are typically fulfilled within 5 business days.
+Goedgekeurde ondersteunings aanvragen worden doorgaans binnen 5 werk dagen afgehandeld.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- To create a SQL database, see [Creating a SQL database using the Azure portal](sql-database-single-database-get-started.md).
-- For the specific compute sizes and storage size choices available for single databases, see [SQL Database vCore-based resource limits for single databases](sql-database-vcore-resource-limits-single-databases.md).
-- For the specific compute sizes and storage size choices available for elastic pools, see [SQL Database vCore-based resource limits for elastic pools](sql-database-vcore-resource-limits-elastic-pools.md).
-- For pricing details, see the [Azure SQL Database pricing page](https://azure.microsoft.com/pricing/details/sql-database/single/).
+- Als u een SQL database wilt maken, raadpleegt u [een SQL database maken met behulp van de Azure Portal](sql-database-single-database-get-started.md).
+- Zie [SQL database resource limieten op basis van vCore voor afzonderlijke data](sql-database-vcore-resource-limits-single-databases.md)bases voor de specifieke berekenings grootte en beschik bare opslag grootte voor afzonderlijke data bases.
+- Zie [SQL database op vCore gebaseerde resource limieten voor elastische Pools](sql-database-vcore-resource-limits-elastic-pools.md)voor de specifieke berekenings grootten en opties voor opslag grootte die beschikbaar zijn voor elastische Pools.
+- Zie de pagina met prijzen voor [Azure SQL database](https://azure.microsoft.com/pricing/details/sql-database/single/)voor prijs informatie.

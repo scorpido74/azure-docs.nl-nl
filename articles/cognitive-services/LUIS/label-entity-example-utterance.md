@@ -1,7 +1,7 @@
 ---
-title: Label entity example utterance
+title: Voor beeld van een label entiteit utterance
 titleSuffix: Azure Cognitive Services
-description: Learn how to label a machine-learned entity with subcomponents in an example utterance in an intent detail page of the LUIS portal.
+description: Meer informatie over het labelen van een door een machine geleerde entiteit met subonderdelen in een voor beeld van een utterance op een detail pagina van de LUIS-Portal.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,106 +11,106 @@ ms.topic: quickstart
 ms.date: 11/21/2019
 ms.author: diberry
 ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 11/26/2019
 ms.locfileid: "74383707"
 ---
-# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Label machine-learned entity in an example utterance
+# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Door de machine geleerde entiteit in een voor beeld-utterance
 
-Labeling an entity in an example utterance gives LUIS an example of what the entity is and where the entity can appear in the utterance. 
+Het labelen van een entiteit in een voor beeld utterance geeft LUIS een voor beeld van wat de entiteit is en waar de entiteit kan worden weer gegeven in de utterance. 
 
-## <a name="labeling-machine-learned-entity"></a>Labeling machine-learned entity
+## <a name="labeling-machine-learned-entity"></a>Door de machine geleerde entiteit labelen
 
-Consider the phrase, `hi, please I want a cheese pizza in 20 minutes`. 
+Bekijk de zin `hi, please I want a cheese pizza in 20 minutes`. 
 
-1. Select the left-most text, then select the right-most text of the entity, then pick the entity you want to label with, in this case Complete Order. The _complete order_ is labeled in the following image.
-
-    > [!div class="mx-imgBorder"]
-    > ![Label complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
-
-1. Select the entity from the pop-up window. The labeled complete pizza order entity includes all words (from left to right in English) that are labeled. 
-
-## <a name="review-labeled-text"></a>Review labeled text
-
-After labeling, review the example utterance and ensure the selected span of text has been underlined with the chosen entity. The solid line indicates the text has been labeled. 
-
-> [!div class="mx-imgBorder"]
-> ![Labeled complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
-
-## <a name="confirm-predicted-entity"></a>Confirm predicted entity
-
-If there is a dotted-lined box around the span of text and the entity name is above the utterance, it indicates the text is predicted but _not labeled yet_. To turn the prediction into a label, select the utterance row, then select **Confirm entity predictions**.
-
-> [!div class="mx-imgBorder"]
-> ![Predict complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
-
-Alternatively, you could select the entity name above the text, then select **Confirm Prediction** from the menu that appears.
-
-> [!div class="mx-imgBorder"]
-> ![Predict complete machine-learned entity with menu](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
-
-## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Label entity by painting with entity palette cursor
-
-The entity palette offers an alternative to the previous labeling experience. It allows you to brush over text to instantly label it with an entity.
-
-1. Open the entity palette by selecting on the Highlighter icon at the top right of the utterance table. 
+1. Selecteer de meest linkse tekst en selecteer vervolgens de juiste tekst van de entiteit en kies vervolgens de entiteit waaraan u een label wilt toe. in dit geval is de volg orde voltooid. De _volledige order_ is gelabeld in de volgende afbeelding.
 
     > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
+    > ![label volledige, door de machine geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
 
-2. Select the entity component. This action is visually indicated with a new cursor. The cursor follows the mouse as you move in the portal. 
+1. Selecteer de entiteit in het pop-upvenster. De entiteit volledige pizza order bevat alle woorden (van links naar rechts in het Engels) die een label hebben. 
 
-    > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
+## <a name="review-labeled-text"></a>Gelabelde tekst controleren
 
-3. In the example utterance, _paint_ the entity with the cursor.
-
-    > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
-
-## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Labeling subcomponents of a machine learned entity
-
-Subcomponents in entities are labeled exactly the same way as top level entities. When selecting text, the entities available in the pop-up window are relative to the context in which the text appears. For example, if you have a 5-level machine-learned entity, and you are selecting text that has been labeled with the 1st and 2nd levels (indicated by a labeled entity name under the example utterance), the entities available in the pop-up window are limited to the context of components of the 3rd level. To label the text with other entities, select **Label as another entity** option.
+Bekijk na het labelen het voor beeld utterance en zorg ervoor dat de geselecteerde hoeveelheid tekst is onderstreept met de gekozen entiteit. De ononderbroken lijn geeft aan dat de tekst is gelabeld. 
 
 > [!div class="mx-imgBorder"]
-> ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
+> ![gelabelde volledige, door de machine geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
 
-Subcomponents can be labeled only if the parent is also labeled. 
+## <a name="confirm-predicted-entity"></a>Voorspelde entiteit bevestigen
 
-## <a name="unlabel-entities"></a>Unlabel entities
+Als er een vak met een stippel lijn rond de hoeveelheid tekst en de naam van de entiteit boven aan de utterance staat, geeft deze aan dat de tekst wordt voor speld, maar _nog niet is gelabeld_. Als u de voor spelling in een label wilt omzetten, selecteert u de rij utterance en selecteert u voor **spellingen van entiteiten bevestigen**.
 
-To unlabel an entity, select the entity name underneath the text and select **Unlabel**. If the entity you are trying to unlabel has labeled subcomponents, then the subcomponents must be unlabeled first. 
+> [!div class="mx-imgBorder"]
+> ![voor speling volledige, door de computer geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
 
-## <a name="editing-labels-using-the-entity-palette"></a>Editing labels using the entity palette
+U kunt ook de naam van de entiteit selecteren boven de tekst en vervolgens voor **spelling bevestigen** selecteren in het menu dat wordt weer gegeven.
 
-If you make a mistake while labeling, the entity palette is an easy tool that allows for quick edits. For example, if an entity label spans an extra word by mistake, and it already has labeled subcomponents, then you can use the entity palette to brush over the required shorter span of words.
+> [!div class="mx-imgBorder"]
+> ![voor beeld van een door de machine geleerde entiteit met menu](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
+
+## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Entiteit labelen door tekenen met de cursor voor het entiteits palet
+
+Het entiteits palet biedt een alternatief voor de vorige label ervaring. Hiermee kunt u tekst vervormen om deze direct te labelen met een entiteit.
+
+1. Open het deel venster entiteit door in de rechter bovenhoek van de tabel utterance op het pictogram markeer stift te klikken. 
+
+    > [!div class="mx-imgBorder"]
+    > het kleuren palet ![voor door de computer geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
+
+2. Selecteer het onderdeel entiteit. Deze actie wordt visueel aangeduid met een nieuwe cursor. De cursor volgt de muis tijdens het verplaatsen van de portal. 
+
+    > [!div class="mx-imgBorder"]
+    > het kleuren palet ![voor door de computer geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
+
+3. In het voor beeld utterance _tekent_ u de entiteit met de cursor.
+
+    > [!div class="mx-imgBorder"]
+    > het kleuren palet ![voor door de computer geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
+
+## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Labelen van subonderdelen van een door een machine geleerde entiteit
+
+Subonderdelen in entiteiten hebben hetzelfde label als entiteiten op het hoogste niveau. Wanneer u tekst selecteert, zijn de entiteiten die beschikbaar zijn in het pop-upvenster relatief ten opzichte van de context waarin de tekst wordt weer gegeven. Als u bijvoorbeeld een door de machine geleerde computer op 5 niveau hebt en u tekst selecteert die is gelabeld met het 1e en 2e niveau (aangeduid met een entiteits naam met een label onder het voor beeld utterance), zijn de entiteiten die beschikbaar zijn in het pop-upvenster beperkt tot de context van onderdelen van het derde niveau. Als u de tekst met andere entiteiten wilt labelen, selecteert u **label als andere entiteits** optie.
+
+> [!div class="mx-imgBorder"]
+> het kleuren palet ![voor door de computer geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
+
+Subonderdelen kunnen alleen worden gelabeld als het bovenliggende item ook een label heeft. 
+
+## <a name="unlabel-entities"></a>Entiteiten onlabelen
+
+Als u het label van een entiteit ongewijzigd wilt laten, selecteert u de naam van de entiteit onder de tekst en selecteert u **Label**opheffen. Als de entiteit waarvoor u een label wilt maken een label subonderdelen heeft, moeten de subonderdelen eerst worden ontlabeld. 
+
+## <a name="editing-labels-using-the-entity-palette"></a>Labels bewerken met het entiteits palet
+
+Als u een fout maakt tijdens het labelen, is het entiteits palet een eenvoudig hulp middel waarmee u snel bewerkingen kunt uitvoeren. Als bijvoorbeeld een entiteit label een extra woord per ongeluk omvat en het al gelabelde subcomponenten heeft, kunt u het palet van de entiteit gebruiken om het gewenste kortere aantal woorden te verstrijken.
 
 Bijvoorbeeld:
 
-1. Pizza Type subcomponent spans "cheese pizza with" which includes an extra incorrect word -- "with"
+1. Pizza-type subcomponent omvat "kaas pizza met", inclusief een extra onjuist woord: "met"
 
     > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/edit-label-with-palette-1.png)
+    > het kleuren palet ![voor door de computer geleerde entiteit](media/label-utterances/edit-label-with-palette-1.png)
 
-2. Use the entity palette to pick Pizza Type and brush over "cheese pizza". The outcome is that only cheese pizza is labeled as Pizza Type now.
+2. Gebruik het palet entiteit om pizza type en penseel over "kaas pizza" te kiezen. Het resultaat is dat alleen kaas pizza wordt aangeduid als pizza type nu.
 
     > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/edit-label-with-palette-2.png)
+    > het kleuren palet ![voor door de computer geleerde entiteit](media/label-utterances/edit-label-with-palette-2.png)
 
 
-## <a name="labels-for-matching-text-entities"></a>Labels for matching-text entities
+## <a name="labels-for-matching-text-entities"></a>Labels voor overeenkomende-tekst entiteiten
 
-Matching-text entities include prebuilt entities, regular expression entities, list entities, and pattern.any entities. These are automatically labeled by LUIS so they are not required to be manually labeled by users.
+Overeenkomende-tekst entiteiten bevatten vooraf gemaakte entiteiten, reguliere expressie-entiteiten, lijst entiteiten en patroon. alle entiteiten. Deze worden automatisch gelabeld door LUIS, zodat ze niet hoeven hand matig te worden gelabeld door gebruikers.
 
-## <a name="entity-prediction-errors"></a>Entity prediction errors
+## <a name="entity-prediction-errors"></a>Voorspellings fouten van entiteit
 
-Entity prediction errors indicate the predicted entity doesn't match the labeled entity. This is visualized with a caution indicator next to the utterance.
+Voor de voor spelling van entiteits fouten wordt aangegeven dat de voorspelde entiteit niet overeenkomt met de entiteit met het label. Dit wordt gevisualiseerd met een waarschuwings indicator naast het utterance.
 
 > [!div class="mx-imgBorder"]
-> ![Entity palette for machine-learned entity](media/label-utterances/example-utterance-indicates-prediction-error.png)
+> het kleuren palet ![voor door de computer geleerde entiteit](media/label-utterances/example-utterance-indicates-prediction-error.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Use the [dashboard](luis-how-to-use-dashboard.md) and [review endpoint utterances](luis-how-to-review-endpoint-utterances.md) to improve the prediction quality of your app.
+Gebruik het [dash board](luis-how-to-use-dashboard.md) en [Bekijk het eind punt uitingen](luis-how-to-review-endpoint-utterances.md) om de kwaliteit van de voor spelling van uw app te verbeteren.

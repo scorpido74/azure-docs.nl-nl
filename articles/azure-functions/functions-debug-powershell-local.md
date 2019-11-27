@@ -1,6 +1,6 @@
 ---
-title: Debug PowerShell Azure Functions locally
-description: Understand how to develop functions by using PowerShell.
+title: Power shell-Azure Functions lokaal debuggen
+description: Meer informatie over het ontwikkelen van functies met behulp van Power shell.
 author: tylerleonhardt
 ms.topic: conceptual
 ms.date: 04/22/2019
@@ -13,22 +13,22 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227038"
 ---
-# <a name="debug-powershell-azure-functions-locally"></a>Debug PowerShell Azure Functions locally
+# <a name="debug-powershell-azure-functions-locally"></a>Power shell-Azure Functions lokaal debuggen
 
-Azure Functions lets you develop your functions as PowerShell scripts.
+Met Azure Functions kunt u uw functies ontwikkelen als Power shell-scripts.
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-You can debug your PowerShell functions locally as you would any PowerShell scripts using the following standard development tools:
+U kunt fouten opsporen in uw Power shell-functies, lokaal als u Power shell-scripts gebruikt, met de volgende standaard ontwikkelingsprogram ma's:
 
-* [Visual Studio Code](https://code.visualstudio.com/): Microsoft's free, lightweight, and open-source text editor with the PowerShell extension that offers a full PowerShell development experience.
-* A PowerShell console: Debug using the same commands you would use to debug any other PowerShell process.
+* [Visual Studio code](https://code.visualstudio.com/): de gratis, licht gewichts-en open-source tekst editor van micro soft met de Power shell-extensie die een volledige Power shell-ontwikkelings ervaring biedt.
+* Een Power shell-console: fouten opsporen met dezelfde opdrachten die u zou gebruiken voor het opsporen van fouten in andere Power shell-processen.
 
-[Azure Functions Core Tools](functions-run-local.md) supports local debugging of Azure Functions, including PowerShell functions.
+[Azure functions core tools](functions-run-local.md) ondersteunt lokale fout opsporing van Azure functions, inclusief Power shell-functies.
 
-## <a name="example-function-app"></a>Example function app
+## <a name="example-function-app"></a>Voor beeld van functie-app
 
-The function app used in this article has a single HTTP triggered function and has the following files:
+De functie-app die in dit artikel wordt gebruikt, heeft één door HTTP geactiveerde functie en heeft de volgende bestanden:
 
 ```
 PSFunctionApp
@@ -40,9 +40,9 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-This function app is similar to the one you get when you complete the [PowerShell quickstart](functions-create-first-function-powershell.md).
+Deze functie-app is vergelijkbaar met de toepassing die u krijgt wanneer u de [Power shell-Snelstartgids](functions-create-first-function-powershell.md)voltooit.
 
-The function code in `run.ps1` looks like the following script:
+De functie code in `run.ps1` ziet eruit als in het volgende script:
 
 ```powershell
 param($Request)
@@ -64,11 +64,11 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 })
 ```
 
-## <a name="set-the-attach-point"></a>Set the attach point
+## <a name="set-the-attach-point"></a>Het koppel punt instellen
 
-To debug any PowerShell function, the function needs to stop for the debugger to be attached. The `Wait-Debugger` cmdlet stops execution and waits for the debugger.
+Voor het opsporen van fouten in een Power shell-functie moet de functie worden gestopt om het fout opsporingsprogramma te koppelen. De `Wait-Debugger`-cmdlet stopt de uitvoering en wacht op het fout opsporingsprogramma.
 
-All you need to do is add a call to the `Wait-Debugger` cmdlet just above the `if` statement, as follows:
+U hoeft alleen maar op de volgende manier een aanroep toe te voegen aan de cmdlet `Wait-Debugger` boven de `if`-instructie:
 
 ```powershell
 param($Request)
@@ -85,103 +85,103 @@ if($name) {
 # ...
 ```
 
-Debugging starts at the `if` statement. 
+Fout opsporing begint bij de `if`-instructie. 
 
-With `Wait-Debugger` in place, you can now debug the functions using either Visual Studio Code or a PowerShell console.
+Met `Wait-Debugger` op locatie kunt u nu fouten opsporen in de functies met behulp van Visual Studio code of een Power shell-console.
 
-## <a name="debug-in-visual-studio-code"></a>Debug in Visual Studio Code
+## <a name="debug-in-visual-studio-code"></a>Fout opsporing in Visual Studio code
 
-To debug your PowerShell functions in Visual Studio Code, you must have the following installed:
+Als u fouten wilt opsporen in uw Power shell-functies in Visual Studio code, moet u het volgende hebben geïnstalleerd:
 
-* [PowerShell extension for Visual Studio Code](/powershell/scripting/components/vscode/using-vscode)
+* [Power shell-extensie voor Visual Studio code](/powershell/scripting/components/vscode/using-vscode)
 * [Azure Functions extension for Visual Studio Code](functions-create-first-function-vs-code.md) (Azure Functions-extensie voor Visual Studio Code)
-* [PowerShell Core 6.2 or higher](/powershell/scripting/install/installing-powershell-core-on-windows)
+* [Power shell Core 6,2 of hoger](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-After installing these dependencies, load an existing PowerShell Functions project, or [create your first PowerShell Functions project](functions-create-first-function-powershell.md).
-
->[!NOTE]
-> Should your project not have the needed configuration files, you are prompted to add them.
-
-### <a name="set-the-powershell-version"></a>Set the PowerShell version
-
-PowerShell Core installs side by side with Windows PowerShell. Set PowerShell Core as the PowerShell version to use with the PowerShell extension for Visual Studio Code.
-
-1. Press F1 to display the command pallet, then search for `Session`.
-
-1. Choose **PowerShell: Show Session Menu**.
-
-1. If your **Current session** isn't **PowerShell Core 6**, choose **Switch to: PowerShell Core 6**.
-
-When you have a PowerShell file open, you see the version displayed in green at the bottom right of the window. Selecting this text also displays the session menu. To learn more, see the [Choosing a version of PowerShell to use with the extension](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension).
-
-### <a name="start-the-function-app"></a>Start the function app
-
-Verify that `Wait-Debugger` is set in the function where you want to attach the debugger.  With `Wait-Debugger` added, you can debug your function app using Visual Studio Code.
-
-Choose the **Debug** pane and then **Attach to PowerShell function**.
-
-![debugger](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
-
-You can also press the F5 key to start debugging.
-
-The start debugging operation does the following tasks:
-
-* Runs `func extensions install` in the terminal to install any Azure Functions extensions required by your function app.
-* Runs `func host start` in the terminal to start the function app in the Functions host.
-* Attach the PowerShell debugger to the PowerShell runspace within the Functions runtime.
+Na het installeren van deze afhankelijkheden, laadt u een bestaand Power shell functions-project of [maakt u uw eerste Power shell functions-project](functions-create-first-function-powershell.md).
 
 >[!NOTE]
-> You need to ensure PSWorkerInProcConcurrencyUpperBound is set to 1 to ensure correct debugging experience in Visual Studio Code. This is the default.
+> Als uw project niet de benodigde configuratie bestanden heeft, wordt u gevraagd deze toe te voegen.
 
-With your function app running, you need a separate PowerShell console to call the HTTP triggered function.
+### <a name="set-the-powershell-version"></a>De Power shell-versie instellen
 
-In this case, the PowerShell console is the client. The `Invoke-RestMethod` is used to trigger the function.
+Power shell core wordt naast Windows Power shell geïnstalleerd. Stel Power shell core in als de Power shell-versie die moet worden gebruikt met de Power shell-extensie voor Visual Studio code.
 
-In a PowerShell console, run the following command:
+1. Druk op F1 om de opdracht pallet weer te geven en zoek vervolgens naar `Session`.
+
+1. Kies **Power shell: menu sessie weer geven**.
+
+1. Als uw **huidige sessie** niet **Power shell Core 6**is, kiest **u overschakelen naar: Power shell Core 6**.
+
+Wanneer u een Power shell-bestand hebt geopend, ziet u de versie die in het groen wordt weer gegeven aan de rechter kant van het venster. Als u deze tekst selecteert, wordt ook het menu sessie weer gegeven. Zie [een versie van Power shell kiezen die u wilt gebruiken met de extensie](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)voor meer informatie.
+
+### <a name="start-the-function-app"></a>De functie-app starten
+
+Controleer of `Wait-Debugger` is ingesteld in de functie waaraan u het fout opsporingsprogramma wilt koppelen.  Met `Wait-Debugger` toegevoegd, kunt u fouten opsporen in uw functie-app met Visual Studio code.
+
+Kies het deel venster **fout opsporing** en **Voeg vervolgens toe aan de Power shell-functie**.
+
+![foutopsporingsversie](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
+
+U kunt ook op de toets F5 drukken om de fout opsporing te starten.
+
+Met de bewerking voor het starten van fout opsporing worden de volgende taken uitgevoerd:
+
+* Voert `func extensions install` uit in de terminal om Azure Functions extensies te installeren die vereist zijn voor uw functie-app.
+* Hiermee wordt `func host start` in de Terminal uitgevoerd om de functie-app in de functions-host te starten.
+* Koppel de Power Shell-fout opsporing aan de Power shell-runs Pace in de functions-runtime.
+
+>[!NOTE]
+> U moet ervoor zorgen dat PSWorkerInProcConcurrencyUpperBound is ingesteld op 1 om ervoor te zorgen dat de juiste ervaring voor fout opsporing in Visual Studio code wordt gegarandeerd. Dit is de standaard instelling.
+
+Als uw functie-app wordt uitgevoerd, hebt u een afzonderlijke Power shell-console nodig om de door HTTP geactiveerde functie aan te roepen.
+
+In dit geval is de Power shell-console de client. De `Invoke-RestMethod` wordt gebruikt om de functie te activeren.
+
+Voer de volgende opdracht uit in een Power shell-console:
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-You'll notice that a response isn't immediately returned. That's because `Wait-Debugger` has attached the debugger and PowerShell execution went into break mode as soon as it could. This is because of the [BreakAll concept](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place), which is explained later. After you press the `continue` button, the debugger now breaks on the line right after `Wait-Debugger`.
+U ziet dat een antwoord niet onmiddellijk wordt geretourneerd. Dat komt omdat `Wait-Debugger` de fout opsporing en Power shell-uitvoering heeft bijgevoegd zodra het probleem is opgetreden. Dit komt door het [BreakAll-concept](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place), dat later wordt uitgelegd. Nadat u op de knop `continue` hebt geklikt, wordt het fout opsporingsprogramma nu na `Wait-Debugger`op de regel afgebroken.
 
-At this point, the debugger is attached and you can do all the normal debugger operations. For more information on using the debugger in Visual Studio Code, see [the official documentation](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions).
+Op dit moment is het fout opsporingsprogramma gekoppeld en kunt u alle normale debugging bewerkingen uitvoeren. Zie [de officiële documentatie](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions)voor meer informatie over het gebruik van het fout opsporingsprogramma in Visual Studio code.
 
-After you continue and fully invoke your script, you'll notice that:
+Nadat u het script hebt voortgezet en volledig hebt aangeroepen, ziet u dat:
 
-* The PowerShell console that did the `Invoke-RestMethod` has returned a result
-* The PowerShell Integrated Console in Visual Studio Code is waiting for a script to be executed
+* De Power shell-console die de `Invoke-RestMethod` heeft heeft een resultaat geretourneerd
+* De geïntegreerde Power shell-console in Visual Studio code wacht tot een script wordt uitgevoerd
 
-Later when you invoke the same function, the debugger in PowerShell extension breaks right after the `Wait-Debugger`.
+Later wanneer u dezelfde functie aanroept, wordt het fout opsporingsprogramma in Power shell-uitbrei ding direct na de `Wait-Debugger`.
 
-## <a name="debugging-in-a-powershell-console"></a>Debugging in a PowerShell Console
+## <a name="debugging-in-a-powershell-console"></a>Fout opsporing in een Power shell-console
 
 >[!NOTE]
-> This section assumes you have read the [Azure Functions Core Tools docs](functions-run-local.md) and know how to use the `func host start` command to start your function app.
+> In deze sectie wordt ervan uitgegaan dat u de [Azure functions core tools docs](functions-run-local.md) hebt gelezen en hoe u de `func host start` opdracht kunt gebruiken om de functie-app te starten.
 
-Open up a console, `cd` into the directory of your function app, and run the following command:
+Open een-console, `cd` in de map van uw functie-app en voer de volgende opdracht uit:
 
 ```sh
 func host start
 ```
 
-With the function app running and the `Wait-Debugger` in place, you can attach to the process. You do need two more PowerShell consoles.
+Met de functie-app die wordt uitgevoerd en de `Wait-Debugger` op locatie, kunt u aan het proces koppelen. U hebt nog twee Power shell-consoles nodig.
 
-One of the consoles acts as the client. From this, you call `Invoke-RestMethod` to trigger the function. For example, you can run the following command:
+Een van de-consoles fungeert als de client. Hier roept u `Invoke-RestMethod` aan om de functie te activeren. U kunt bijvoorbeeld de volgende opdracht uitvoeren:
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-You'll notice that it doesn't return a response, which is a result of the `Wait-Debugger`. The PowerShell runspace is now waiting for a debugger to be attached. Let's get that attached.
+U ziet dat er geen antwoord wordt geretourneerd. Dit is een resultaat van de `Wait-Debugger`. De Power shell-runs Pace wacht op het toevoegen van een fout opsporingsprogramma. Laten we dat doen.
 
-In the other PowerShell console, run the following command:
+Voer in de andere Power shell-console de volgende opdracht uit:
 
 ```powershell
 Get-PSHostProcessInfo
 ```
 
-This cmdlet returns a table that looks like the following output:
+Met deze cmdlet wordt een tabel geretourneerd die eruitziet als de volgende uitvoer:
 
 ```output
 ProcessName ProcessId AppDomainName
@@ -196,9 +196,9 @@ pwsh            32071 None
 pwsh            88785 None
 ```
 
-Make note of the `ProcessId` for the item in the table with the `ProcessName` as `dotnet`. This process is your function app.
+Noteer de `ProcessId` voor het item in de tabel met de `ProcessName` als `dotnet`. Dit proces is uw functie-app.
 
-Next, run the following snippet:
+Voer vervolgens het volgende code fragment uit:
 
 ```powershell
 # This enters into the Azure Functions PowerShell process.
@@ -209,7 +209,7 @@ Enter-PSHostProcess -Id $ProcessId
 Debug-Runspace 1
 ```
 
-Once started, the debugger breaks and shows something like the following output:
+Zodra het fout opsporingsprogramma is gestart, wordt het debugger afgebroken en ziet u een item zoals in de volgende uitvoer:
 
 ```
 Debugging Runspace: Runspace1
@@ -222,29 +222,29 @@ At /Path/To/PSFunctionApp/HttpTriggerFunction/run.ps1:13 char:1
 [DBG]: [Process:49988]: [Runspace1]: PS /Path/To/PSFunctionApp>>
 ```
 
-At this point, you're stopped at a breakpoint in the [PowerShell debugger](/powershell/module/microsoft.powershell.core/about/about_debuggers). From here, you can do all of the usual debug operations,  step over, step into, continue, quit, and others. To see the complete set of debug commands available in the console, run the `h` or `?` commands.
+Op dit moment wordt u gestopt op een onderbrekings punt in het [Power Shell-fout opsporingsprogramma](/powershell/module/microsoft.powershell.core/about/about_debuggers). Hier kunt u alle gebruikelijke probleemoplossings bewerkingen uitvoeren, de stap over, Step Into, door gaan, afsluiten en anderen. Als u de volledige set opdrachten voor fout opsporing wilt zien die beschikbaar zijn in de-console, voert u de opdrachten `h` of `?` uit.
 
-You can also set breakpoints at this level with the `Set-PSBreakpoint` cmdlet.
+U kunt onderbrekings punten op dit niveau ook instellen met de cmdlet `Set-PSBreakpoint`.
 
-Once you continue and fully invoke your script, you'll notice that:
+Nadat u het script hebt door lopen en volledig hebt aangeroepen, ziet u het volgende:
 
-* The PowerShell console where you executed `Invoke-RestMethod` has now returned a result.
-* The PowerShell console where you executed `Debug-Runspace` is waiting for a script to be executed.
+* De Power shell-console waar u `Invoke-RestMethod` hebt uitgevoerd, heeft nu een resultaat geretourneerd.
+* De Power shell-console waarin u `Debug-Runspace` hebt uitgevoerd, wacht tot een script is uitgevoerd.
 
-You can invoke the same function again (using `Invoke-RestMethod` for example) and the debugger breaks in right after the `Wait-Debugger` command.
+U kunt dezelfde functie opnieuw aanroepen (met behulp van `Invoke-RestMethod` bijvoorbeeld) en het fout opsporingsprogramma wordt direct na de `Wait-Debugger` opdracht afgebroken.
 
-## <a name="considerations-for-debugging"></a>Considerations for debugging
+## <a name="considerations-for-debugging"></a>Overwegingen voor fout opsporing
 
-Keep in mind the following issues when debugging your Functions code.
+Houd de volgende problemen bij het opsporen van fouten in uw functions-code.
 
-### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll` might cause your debugger to break in an unexpected place
+### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll` kan ertoe leiden dat uw fout opsporingsprogramma op een onverwachte plaats breekt
 
-The PowerShell extension uses `Debug-Runspace`, which in turn relies on PowerShell's `BreakAll` feature. This feature tells PowerShell to stop at the first command that is executed. This behavior gives you the opportunity to set breakpoints within the debugged runspace.
+De Power shell-extensie maakt gebruik van `Debug-Runspace`, die op zijn beurt afhankelijk is van de `BreakAll` functie van Power shell. Deze functie geeft aan dat Power shell stopt bij de eerste opdracht die wordt uitgevoerd. Dit gedrag biedt u de mogelijkheid om onderbrekings punten in te stellen in de runs Pace met fout opsporing.
 
-The Azure Functions runtime runs a few commands before actually invoking your `run.ps1` script, so it's possible that the debugger ends up breaking within the `Microsoft.Azure.Functions.PowerShellWorker.psm1` or `Microsoft.Azure.Functions.PowerShellWorker.psd1`.
+De Azure Functions runtime voert enkele opdrachten uit voordat u uw `run.ps1` script daad werkelijk aanroept. het is dus mogelijk dat het fout opsporingsprogramma eindigt op de `Microsoft.Azure.Functions.PowerShellWorker.psm1` of de `Microsoft.Azure.Functions.PowerShellWorker.psd1`.
 
-Should this break happen,  run the `continue` or `c` command to skip over this breakpoint. You then stop at the expected breakpoint.
+Als deze onderbreking plaatsvindt, voert u de `continue` of `c` opdracht uit om dit onderbrekings punt over te slaan. Vervolgens stopt u bij het verwachte onderbrekings punt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-To learn more about developing Functions using PowerShell, see [Azure Functions PowerShell developer guide](functions-reference-powershell.md).
+Zie [Azure functions Power shell-ontwikkelaars handleiding](functions-reference-powershell.md)voor meer informatie over het ontwikkelen van functies met behulp van Power shell.

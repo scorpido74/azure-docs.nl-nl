@@ -22,7 +22,7 @@ Dit is de veelgestelde vragen voor Azure Internet Analyzer: als u meer vragen he
 
 De preview-versie is beschikbaar voor bepaalde klanten. Ga als volgt te werk als u wilt deel nemen aan de preview-versie:
 
-1. Meld u aan bij de [Azure Portal](https://ms.portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://ms.portal.azure.com).
 2. Navigeer naar de pagina **abonnementen** .
 3. Klik op het Azure-abonnement dat u wilt gebruiken Internet Analyzer met.
 4. Ga naar de instellingen van de **resource providers** voor het abonnement.
@@ -69,16 +69,16 @@ De volgende vooraf geconfigureerde eind punten zijn beschikbaar tijdens de previ
     * India - centraal
     * US - centraal
     * Azië - oost
-    * VS - oost
+    * US - oost
     * Japan - west
     * Europa - noord
     * Zuid-Afrika - noord
     * Azië - zuidoost
     * VAE - noord
     * Verenigd Koninkrijk West  
-    * Europa - west
-    * VS - west
-    * VS - west 2
+    * Europa -west
+    * US - west
+    * US - west 2
 * **Meerdere Azure-regio combinaties**
     * VS-Oost, Brazilië-zuid
     * VS-Oost, Azië-oost

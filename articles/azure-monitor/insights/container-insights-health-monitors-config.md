@@ -63,7 +63,7 @@ Azure Monitor voor containers bevat een aantal scenario's voor sleutel bewaking 
 
 ### <a name="unit-monitors"></a>Unit-monitors
 
-|**Monitor naam** | Monitor type | **Beschrijving** | **Parameter** | **Waarde** |
+|**Monitor naam** | Monitor type | **Beschrijving** | **Bepaalde** | **Waarde** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |Geheugen gebruik van knoop punt |Unit-monitor |Deze monitor evalueert elke minuut het geheugen gebruik van een knoop punt, met behulp van de gerapporteerde gegevens in cadvisor. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |CPU-gebruik van knoop punt |Unit-monitor |Met deze monitor wordt het CPU-gebruik van het knoop punt elke minuut gecontroleerd met behulp van de gerapporteerde gegevens in cadvisor. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||

@@ -21,11 +21,11 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482494"
 ---
-Before reading this article, you should be familiar with the following concepts:
+Voordat u dit artikel leest, moet u vertrouwd zijn met de volgende concepten:
 
-- [Microsoft identity platform overview](../articles/active-directory/develop/v2-overview.md)
+- [Overzicht van micro soft Identity platform](../articles/active-directory/develop/v2-overview.md)
 - [De basisbeginselen van verificatie](../articles/active-directory/develop/authentication-scenarios.md)
-- [Audiences](../articles/active-directory/develop/v2-supported-account-types.md)
-- [Application and service principals](../articles/active-directory/develop/app-objects-and-service-principals.md)
-- [Permissions and consent](../articles/active-directory/develop/v2-permissions-and-consent.md)
-- [ID tokens](../articles/active-directory/develop/id-tokens.md) and [access tokens](../articles/active-directory/develop/access-tokens.md)
+- [Doel groepen](../articles/active-directory/develop/v2-supported-account-types.md)
+- [Toepassings-en service-principals](../articles/active-directory/develop/app-objects-and-service-principals.md)
+- [Machtigingen en toestemming](../articles/active-directory/develop/v2-permissions-and-consent.md)
+- [Id-tokens](../articles/active-directory/develop/id-tokens.md) en [toegangs tokens](../articles/active-directory/develop/access-tokens.md)

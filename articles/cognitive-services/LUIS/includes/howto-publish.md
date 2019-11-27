@@ -27,8 +27,8 @@ Om een voorspelling van LUIS te ontvangen in een chatbot of een andere clienttoe
 
     ![Publiceren naar eindpunt vanuit LUIS](../media/howto-publish/publish-app-popup.png)
 
-3. Publishing is complete when you see the status bar at the top of the page confirming success.
+3. Het publiceren is voltooid wanneer de status balk boven aan de pagina wordt bevestigd.
 
     ![Publiceren naar eindpunt vanuit LUIS](../media/howto-publish/publish-endpoint-success.png)
 
-4. Select the **Access your endpoint URLs** link in the notification to go to the **Azure Resources** page. The endpoint URLs are listed as the **Example Query**.
+4. Selecteer de koppeling **uw eind punt-Url's openen** in de melding om naar de pagina **Azure-resources** te gaan. De eind punt-Url's worden weer gegeven als de **voorbeeld query**.

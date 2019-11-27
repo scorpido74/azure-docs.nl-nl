@@ -10,7 +10,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74281101"
 ---
-# <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Diagnostische instellingen gebruiken voor Recovery Services kluizen
+# <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Diagnostische instellingen gebruik voor Recovery Services-kluizen
 
 Azure Backup verzendt diagnostische gebeurtenissen die kunnen worden verzameld en gebruikt voor analyse, waarschuwingen en rapportage. 
 

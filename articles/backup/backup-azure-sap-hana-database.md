@@ -10,7 +10,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74285845"
 ---
-# <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-data bases in azure Vm's
+# <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines
 
 SAP HANA-data bases zijn kritieke workloads waarvoor een laag herstel punt (RPO) en lange termijn retentie is vereist. U kunt back-ups maken van SAP HANA-data bases die worden uitgevoerd op Azure virtual machines (Vm's) met behulp van [Azure backup](backup-overview.md).
 

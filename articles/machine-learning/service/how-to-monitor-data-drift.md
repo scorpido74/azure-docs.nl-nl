@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: e33f8a8090e7840087add0e16252bd2a3e873524
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: acf1df6bb71f4ea8878d8f50f3f42f4ddd831fb5
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276782"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539242"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,7 +31,7 @@ In de context van machine learning is gegevens drift de wijziging in model invoe
 Met Azure Machine Learning kunt u de invoer bewaken in een model dat is geïmplementeerd op AKS en deze gegevens vergelijken met de trainings gegevensset voor het model. Op regel matige intervallen worden de gegevens in de vorm van een [moment opname gemaakt en](how-to-explore-prepare-data.md)vervolgens berekend op basis van de basislijn gegevensset om een gegevensdrijf analyse te maken die: 
 
 + Meet de omvang van de gegevens drift, de zogenaamde drift.
-+ Meet de gegevens drift-bijdrage per functie, waardoor wordt gemeld welke functies een gegevens drift hebben veroorzaakt.
++ Meet de gegevens drift-bijdrage per onderdeel, waarmee wordt aangegeven welke functies gegevens drift hebben veroorzaakt.
 + Meet afstands metrieken. Momenteel worden de Wasserstein en de energie-afstand berekend.
 + Meet de distributie van functies. Schatting van huidige kernel-densiteit en histogrammen.
 + Waarschuwingen verzenden naar gegevens via e-mail.
@@ -90,7 +90,7 @@ from azureml.datadrift import DataDriftDetector, AlertConfiguration
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
 
-# create a new DatadriftDetector object
+# create a new DataDriftDetector object
 datadrift = DataDriftDetector.create(ws, model.name, model.version, services, frequency="Day", alert_config=alert_config)
     
 print('Details of Datadrift Object:\n{}'.format(datadrift))
@@ -112,7 +112,7 @@ run = datadrift.run(target_date, services, feature_list=feature_list, compute_ta
 
 # show details of the data drift run
 exp = Experiment(ws, datadrift._id)
-dd_run = Run(experiment=exp, run_id=run)
+dd_run = Run(experiment=exp, run_id=run.id)
 RunDetails(dd_run).show()
 ```
 
@@ -142,7 +142,7 @@ In het volgende python-voor beeld ziet u hoe u relevante gegevens waarden kunt t
 # start and end are datetime objects 
 drift_metrics = datadrift.get_output(start_time=start, end_time=end)
 
-# Show all data drift result figures, one per serivice.
+# Show all data drift result figures, one per service.
 # If setting with_details is False (by default), only the data drift magnitude will be shown; if it's True, all details will be shown.
 drift_figures = datadrift.show(with_details=True)
 ```

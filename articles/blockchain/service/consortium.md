@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Service consortium
-description: Overview of how Azure Blockchain service implements consortium blockchain networks.
+title: Azure Block Chain Service consortium
+description: Overzicht van de manier waarop Azure Block Chain Service consortium Block chain-netwerken implementeert.
 ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
@@ -11,72 +11,72 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455723"
 ---
-# <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service consortium
+# <a name="azure-blockchain-service-consortium"></a>Azure Block Chain Service consortium
 
-Using Azure Blockchain Service, you can create private consortium blockchain networks where each blockchain network can be limited to specific participants in the network. Only participants in the private consortium blockchain network can view and interact with the blockchain. Consortium networks in Azure Blockchain Service can contain two types of member participant roles:
+Met de Azure Block Chain-Service kunt u particuliere consortium Block chain-netwerken maken waarbij elk block chain-netwerk kan worden beperkt tot specifieke deel nemers in het netwerk. Alleen deel nemers in het particuliere consortium Block chain-netwerk kunnen de Block Chain bekijken en ermee werken. Consortium netwerken in azure Block Chain service kunnen twee soorten rollen van deel nemers bevatten:
 
-* **Administrator** - Privileged participants who can take consortium management actions and can participate in blockchain transactions.
+* Deel nemers met **beheerders** rechten die acties voor consortium beheer kunnen uitvoeren en kunnen deel nemen aan block Chain-trans acties.
 
-* **User** -  Participants who cannot take any consortium management action but can participate in blockchain transactions.
+* **Gebruikers** : deel nemers die geen consortium beheer actie kunnen ondernemen, maar kunnen deel nemen aan block Chain-trans acties.
 
-Consortium networks can be a mix of participant roles and can have an arbitrary number of each role type. There must be at least one administrator.
+Consortium netwerken kunnen een combi natie zijn van deel nemer rollen en kunnen een wille keurig aantal van elk type rol hebben. Er moet ten minste één beheerder zijn.
 
-The following diagram shows a consortium network with multiple participants:
+In het volgende diagram ziet u een consortium netwerk met meerdere deel nemers:
 
-![Private consortium network diagram](./media/consortium/network-diagram.png)
+![Netwerk diagram van particulier consortium](./media/consortium/network-diagram.png)
 
-With consortium management in Azure Blockchain Service, you can manage participants in the consortium network. Management of the consortium is based on the consensus model of the network. In the current preview release, Azure Blockchain Service provides a centralized consensus model for consortium management. Any privileged participant with an administer role can take consortium management actions, such as adding or removing participants from a network.
+Met consortium Management in azure Block Chain Service kunt u deel nemers in het consortium netwerk beheren. Het beheer van het consortium is gebaseerd op het consensus model van het netwerk. In de huidige preview-versie biedt Azure Block Chain service een gecentraliseerd consensus model voor consortium beheer. Alle bevoegde deel nemers met een beheer functie kunnen consortium beheer acties uitvoeren, zoals het toevoegen of verwijderen van deel nemers uit een netwerk.
 
 ## <a name="roles"></a>Rollen
 
-Participants in a consortium can be individuals or organizations and can be assigned a user role or an administrator role. The following table lists the high-level differences between the two roles:
+Deel nemers aan een consortium kunnen individuen of organisaties zijn en kunnen aan een gebruikersrol of een beheerdersrol worden toegewezen. De volgende tabel geeft een overzicht van de verschillen op hoog niveau tussen de twee rollen:
 
-| Bewerking | User role | Administrator role
+| Actie | Gebruikersrol | Beheerdersrol
 |--------|:----:|:------------:|
-| Create new member | Ja | Ja |
-| Invite new members | Nee | Ja |
-| Set or change member participant role | Nee | Ja |
-| Change member display name | Only for own member | Only for own member |
-| Remove members | Only for own member | Ja |
-| Participate in blockchain transactions | Ja | Ja |
+| Nieuw lid maken | Ja | Ja |
+| Nieuwe leden uitnodigen | Nee | Ja |
+| Rol van leden deel nemer instellen of wijzigen | Nee | Ja |
+| Weergave naam van lid wijzigen | Alleen voor eigen lid | Alleen voor eigen lid |
+| Leden verwijderen | Alleen voor eigen lid | Ja |
+| Deel nemen aan block Chain-trans acties | Ja | Ja |
 
-### <a name="user-role"></a>User role
+### <a name="user-role"></a>Gebruikersrol
 
-Users are consortium participants with no administrator capabilities. They cannot participate in managing members related to the consortium. Users can change their member display name and can remove themselves from a consortium.
+Gebruikers zijn consortium deelnemers zonder beheerders mogelijkheden. Ze kunnen niet deel nemen aan leden die betrekking hebben op het consortium. Gebruikers kunnen hun weergave naam van het lid wijzigen en kunnen zichzelf uit een consortium verwijderen.
 
 ### <a name="administrator"></a>Beheerder
 
-An administrator can manage members within the consortium. An administrator can invite members, remove members, or update members roles within the consortium.
-There must always be at least one administrator within a consortium. The last administrator must specify another participant as an administrator role before leaving a consortium.
+Een beheerder kan leden beheren binnen het consortium. Een beheerder kan leden uitnodigen, leden verwijderen of leden rollen in het consortium bijwerken.
+Er moet altijd ten minste één beheerder binnen een consortium zijn. De laatste beheerder moet een andere deel nemer opgeven als beheerdersrol voordat een consortium wordt verlaten.
 
-## <a name="managing-members"></a>Managing members
+## <a name="managing-members"></a>Leden beheren
 
-Only administrators can invite other participants to the consortium. Administrators invite participants using their Azure subscription ID.
+Alleen beheerders kunnen andere deel nemers uitnodigen voor het consortium. Beheerders nodigen deel nemers uit met hun Azure-abonnements-ID.
 
-Once invited, participants can join the blockchain consortium by deploying a new member in Azure Blockchain Service. To view and join the invited consortium, you must specify the same Azure subscription ID used in the invite by the network administrator.
+Na de uitnodiging kunnen deel nemers deel nemen aan het block Chain consortium door een nieuw lid te implementeren in de Azure Block Chain-service. Als u het uitgenodigde consortium wilt weer geven en lid wilt worden van het invite, moet u dezelfde Azure-abonnements-ID opgeven die wordt gebruikt in de uitnodiging door de netwerk beheerder.
 
-Administrators can remove any participant from the consortium, including other administrators. Members can only remove themselves from a consortium.
+Beheerders kunnen alle deel nemers uit het consortium verwijderen, met inbegrip van andere beheerders. Leden kunnen zich alleen uit een consortium verwijderen.
 
-## <a name="consortium-management-smart-contract"></a>Consortium management smart contract
+## <a name="consortium-management-smart-contract"></a>Smart-contract management consortium
 
-Consortium management in Azure Blockchain Service is done via consortium management smart contracts. The smart contracts are automatically deployed to your nodes when you deploy a new blockchain member.
+Consortium beheer in azure Block Chain service wordt uitgevoerd via slimme contracten voor consortium management. De slimme contracten worden automatisch geïmplementeerd op uw knoop punten wanneer u een nieuw Block Chain-lid implementeert.
 
-The address of the root consortium management smart contract can be viewed in the Azure portal. The **RootContract address** is in blockchain member's overview section.
+Het adres van het hoofd consortium Management Smart contract kan worden weer gegeven in de Azure Portal. Het **RootContract-adres** bevindt zich in de sectie met het overzicht van Block Chain-leden.
 
-![RootContract address](./media/consortium/rootcontract-address.png)
+![RootContract-adres](./media/consortium/rootcontract-address.png)
 
-You can interact with the consortium management smart contract using the consortium management [PowerShell module](manage-consortium-powershell.md), Azure portal, or directly through the smart contract using the Azure Blockchain Service generated Ethereum account.
+U kunt communiceren met het consortium Management Smart contract met behulp van de Management Manager [Power shell-module](manage-consortium-powershell.md), Azure portal of rechtstreeks via het slimme contract met behulp van het Ethereum-account dat door de Azure Block Chain-service is gegenereerd.
 
-## <a name="ethereum-account"></a>Ethereum account
+## <a name="ethereum-account"></a>Ethereum-account
 
-When a member is created, an Ethereum account key is created. Azure Blockchain Service uses the key to create transactions related to consortium management. The Ethereum account key is managed by Azure Blockchain Service automatically.
+Wanneer een lid wordt gemaakt, wordt er een Ethereum-account sleutel gemaakt. De Azure Block Chain-service gebruikt de sleutel om trans acties te maken die betrekking hebben op consortium beheer. De Ethereum-account sleutel wordt automatisch beheerd door de Azure Block Chain-service.
 
-The member account can be viewed in the Azure portal. The member account is in blockchain member's overview section.
+Het leden account kan worden weer gegeven in de Azure Portal. De leden account bevindt zich in de sectie met het overzicht van de Block chain.
 
-![Member account](./media/consortium/member-account.png)
+![Lid-account](./media/consortium/member-account.png)
 
-You can reset your Ethereum account by clicking on your member account and entering a new password. Both the Ethereum account address and the password will be reset.  
+U kunt uw Ethereum-account opnieuw instellen door op uw leden account te klikken en een nieuw wacht woord in te voeren. Het adres van het Ethereum-account en het wacht woord worden opnieuw ingesteld.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Consortium management actions can be accessed through PowerShell. For more information, see [Manage consortium members in Azure Blockchain Service using PowerShell](manage-consortium-powershell.md).
+Acties voor consortium beheer kunnen worden geopend via Power shell. Zie voor meer informatie [Managed consortium members in azure Block Chain service using Power shell](manage-consortium-powershell.md)(Engelstalig).

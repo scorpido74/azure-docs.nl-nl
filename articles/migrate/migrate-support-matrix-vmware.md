@@ -39,7 +39,7 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor virtuele VMware
 
 **Geografie** | **Opslag locatie van meta gegevens**
 --- | ---
-Azure Government | US Gov - Virginia
+Azure Government | VS (overheid) - Virginia
 Azië en Stille Oceaan | Azië Azië-oost of Zuidoost
 Australië | Australië-oost of Australië-zuidoost
 Brazilië | Brazilië - zuid
@@ -182,7 +182,7 @@ Virtuele machine. interactie. uit | Toestaan dat de VM wordt uitgeschakeld tijde
 **Gedeeld schijf cluster** | Wordt niet ondersteund.
 **Onafhankelijke schijven** | Wordt niet ondersteund.
 **RDM/passthrough-schijven** | Als Vm's een RDM-of passthrough-schijf hebben, worden deze schijven niet gerepliceerd naar Azure.
-**NFS** | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.
+**NBS** | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.
 **iSCSI-doelen** | Vm's met iSCSI-doelen worden niet ondersteund voor migratie zonder agent.
 **Multipath IO** | Wordt niet ondersteund.
 **Storage vMotion** | Wordt niet ondersteund. De replicatie wordt niet uitgevoerd als een virtuele machine gebruikmaakt van Storage vMotion.
@@ -294,8 +294,8 @@ https:\//management.azure.com | Gebruikt voor replicatie beheer bewerkingen en c
 *.services.visualstudio.com | Gebruikt voor telemetrische doel einden (deze is optioneel)
 time.nist.gov | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
 time.windows.com | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\/-login.live.com <br/> https:\/-graph.windows.net <br/> https:\//login.windows.net <br/> https:\/-www.live.com <br/> https:\//www.microsoft.com  | OVF Setup heeft toegang tot deze Url's nodig. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | De MySQL-down load volt ooien
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\/-login.live.com <br/> https:\/-graph.windows.net <br/> https:\//login.windows.net <br/> https:\/-www.live.com <br/> https:\/-www.microsoft.com  | OVF Setup heeft toegang tot deze Url's nodig. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory
+https:\/-dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | De MySQL-down load volt ooien
 
 
 #### <a name="mysql-installation-options"></a>Installatie opties voor MySQL
@@ -328,7 +328,7 @@ Downloaden en installeren in Azure Migrate | Wanneer u het apparaat installeert 
 **Gedeeld schijf cluster** | Wordt niet ondersteund.
 **Onafhankelijke schijven** | Ondersteund.
 **Passthrough-schijven** | Ondersteund.
-**NFS** | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.
+**NBS** | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.
 **iSCSI-doelen** | Vm's met iSCSI-doelen worden niet ondersteund voor migratie zonder agent.
 **Multipath IO** | Wordt niet ondersteund.
 **Storage vMotion** | Ondersteund

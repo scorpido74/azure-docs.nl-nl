@@ -1,19 +1,14 @@
 ---
-title: Beschik baarheid van resources Azure Container Instances
+title: Resource beschikbaarheid per regio
 description: Beschik baarheid van reken-en geheugen resources voor de Azure Container Instances-service in verschillende Azure-regio's.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 05/14/2019
-ms.author: danlep
-ms.openlocfilehash: 24edce511c2d07050db1e77edeae4e587fcd79b0
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172399"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533475"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Beschik baarheid van resources voor Azure Container Instances in azure-regio's
 
@@ -30,7 +25,7 @@ Zie [quota's en limieten voor Azure container instances](container-instances-quo
 
 De volgende regio's en resources zijn beschikbaar voor container groepen met Linux en [ondersteunde](container-instances-faq.md#what-windows-base-os-images-are-supported) containers op Windows Server 2016.
 
-| Location | OS | CPU | Geheugen (GB) |
+| Locatie | OS | CPU | Geheugen (GB) |
 | -------- | -- | :---: | :-----------: |
 | Canada-centraal, Centraal-India, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, VS-West | Linux | 4 | 16 |
 | Europa-west, VS-West 2 | Linux | 4 | 14 |
@@ -44,7 +39,7 @@ De volgende regio's en resources zijn beschikbaar voor container groepen met Lin
 
 De volgende regio's en bronnen zijn beschikbaar voor container groepen met Windows Server 2019-containers (preview).
 
-| Location | OS | CPU | Geheugen (GB) |
+| Locatie | OS | CPU | Geheugen (GB) |
 | -------- | -- | :---: | :-----------: |
 | Zuidoost-Azië, Europa-noord, Europa-west, VS-midden, VS-Oost, VS-West, VS-West 2 | Windows | 4 | 16 |
 | US - oost 2 | Windows | 2 | 3,5 |

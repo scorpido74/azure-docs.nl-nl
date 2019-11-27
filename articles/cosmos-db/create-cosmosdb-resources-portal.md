@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Cosmos database from the Azure portal.
-description: Create an Azure Cosmos database, container, and items by using the Azure portal.
+title: Maak een Azure Cosmos-Data Base op basis van de Azure Portal.
+description: Maak een Azure Cosmos-data base,-container en-items met behulp van de Azure Portal.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
@@ -15,10 +15,10 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74220733"
 ---
-# <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Quickstart: Create an Azure Cosmos account, database, container, and items from the Azure portal
+# <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Snelstartgids: een Azure Cosmos-account,-Data Base,-container en-items maken op basis van de Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](create-cosmosdb-resources-portal.md)
+> * [Azure Portal](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -26,13 +26,13 @@ ms.locfileid: "74220733"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. You can use Azure Cosmos DB to quickly create and query key/value databases, document databases, and graph databases, all of which benefit from the global distribution and horizontal scale capabilities at the core of Azure Cosmos DB. 
+Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt Azure Cosmos DB gebruiken om snel key/value-data bases, document databases en Graph-data bases te maken en op te vragen, die allemaal profiteren van de mogelijkheden van globale distributie en horizontale schaal op basis van Azure Cosmos DB. 
 
-This quickstart demonstrates how to use the Azure portal to create an Azure Cosmos DB [SQL API](sql-api-introduction.md) account, create a document database and container, and add data to the container. 
+In deze Quick start ziet u hoe u de Azure Portal kunt gebruiken om een Azure Cosmos DB [SQL-API](sql-api-introduction.md) -account te maken, een document database en-container te maken en gegevens toe te voegen aan de container. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-An Azure subscription or free Azure Cosmos DB trial account
+Een Azure-abonnement of gratis Azure Cosmos DB proef account
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
@@ -43,39 +43,39 @@ An Azure subscription or free Azure Cosmos DB trial account
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <a id="create-container-database"></a>
-## <a name="add-a-database-and-a-container"></a>Add a database and a container 
+## <a name="add-a-database-and-a-container"></a>Een Data Base en een container toevoegen 
 
-You can use the Data Explorer in the Azure portal to create a database and container. 
+U kunt de Data Explorer in de Azure Portal gebruiken om een Data Base en container te maken. 
 
-1.  Select **Data Explorer** from the left navigation on your Azure Cosmos DB account page, and then select **New Container**. 
+1.  Selecteer **Data Explorer** in de linkernavigatiebalk op de pagina Azure Cosmos DB-account en selecteer vervolgens **nieuwe container**. 
     
-    You may need to scroll right to see the **Add Container** window.
+    Mogelijk moet u naar rechts schuiven om het venster **container toevoegen** weer te geven.
     
-    ![The Azure portal Data Explorer, Add Container pane](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![Het deel venster Azure Portal Data Explorer, container toevoegen](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
-1.  In the **Add container** pane, enter the settings for the new container.
+1.  Voer in het deel venster **container toevoegen** de instellingen voor de nieuwe container in.
     
     |Instelling|Voorgestelde waarde|Beschrijving
     |---|---|---|
-    |**Database-id**|Takenlijst|Enter *ToDoList* as the name for the new database. Databasenamen moeten tussen de 1 en 255 tekens zijn en mogen geen `/, \\, #, ?` bevatten en mogen niet eindigen met een spatie. Check the **Provision database throughput** option, it allows you to share the throughput provisioned to the database across all the containers within the database. This option also helps with cost savings. |
-    |**Doorvoer**|400|Leave the throughput at 400 request units per second (RU/s). U kunt de doorvoer later opschalen als u de latentie wilt beperken.| 
-    |**Container ID**|Items|Enter *Items* as the name for your new container. Container IDs have the same character requirements as database names.|
-    |**Partition key**| /category| The sample described in this article uses */category* as the partition key.|
+    |**Database-id**|Takenlijst|Voer *ToDoList* in als de naam voor de nieuwe data base. Databasenamen moeten tussen de 1 en 255 tekens zijn en mogen geen `/, \\, #, ?` bevatten en mogen niet eindigen met een spatie. Schakel de optie **doorvoer database inrichten** in, zodat u de door Voer die is ingericht voor de data base, kunt delen in alle containers in de data base. Deze optie helpt ook bij het besparen van kosten. |
+    |**Doorvoer**|400|De door Voer bij 400 aanvraag eenheden per seconde (RU/s) behouden. U kunt de doorvoer later opschalen als u de latentie wilt beperken.| 
+    |**Container-ID**|Items|Voer *items* in als de naam voor de nieuwe container. Container-Id's hebben dezelfde teken vereisten als database namen.|
+    |**Partitie sleutel**| /category| Het voor beeld dat in dit artikel wordt beschreven, maakt gebruik van *Category* als de partitie sleutel.|
 
     
-    Don't add **Unique keys** for this example. Unique keys let you add a layer of data integrity to the database by ensuring the uniqueness of one or more values per partition key. For more information, see [Unique keys in Azure Cosmos DB](unique-keys.md).
+    Voeg geen **unieke sleutels** toe voor dit voor beeld. Met unieke sleutels kunt u een laag van gegevens integriteit toevoegen aan de data base door de uniekheid van een of meer waarden per partitie sleutel te garanderen. Zie [unieke sleutels in azure Cosmos DB](unique-keys.md)voor meer informatie.
     
-1.  Selecteer **OK**. The Data Explorer displays the new database and the container that you created.
+1.  Selecteer **OK**. In de Data Explorer worden de nieuwe data base en de door u gemaakte container weer gegeven.
 
-## <a name="add-data-to-your-database"></a>Add data to your database
+## <a name="add-data-to-your-database"></a>Gegevens toevoegen aan uw data base
 
-Add data to your new database using Data Explorer.
+Gegevens toevoegen aan uw nieuwe Data Base met behulp van Data Explorer.
 
-1. In **Data Explorer**, expand the **ToDoList** database, and expand the **Items** container. Next, select **Items**, and then select **New Item**. 
+1. In **Data Explorer**vouwt u de **ToDoList** -data base uit en vouwt u de container **items** uit. Selecteer vervolgens **items**en selecteer vervolgens **Nieuw item**. 
    
-   ![Nieuwe documenten maken in Data Explorer in Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
+   ![Nieuwe documenten maken in Data Explorer in de Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
-1. Add the following structure to the document on the right side of the **Documents** pane:
+1. Voeg de volgende structuur toe aan het document aan de rechter kant van het deel venster **documenten** :
 
      ```json
      {
@@ -89,9 +89,9 @@ Add data to your new database using Data Explorer.
 
 1. Selecteer **Opslaan**.
    
-   ![Copy in json data and select Save in Data Explorer in the Azure portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
+   ![Kopieer in JSON-gegevens en selecteer Opslaan in Data Explorer in het Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
    
-1. Select **New Document** again, and create and save another document with a unique `id`, and any other properties and values you want. Your documents can have any structure, because Azure Cosmos DB doesn't impose any schema on your data.
+1. Selecteer **Nieuw document** opnieuw en maak en sla een ander document op met een unieke `id`en alle andere eigenschappen en waarden die u wilt. Uw documenten kunnen een structuur hebben, omdat Azure Cosmos DB geen schema voor uw gegevens oplegt.
 
 ## <a name="query-your-data"></a>Uw gegevens opvragen
 
@@ -103,7 +103,7 @@ Add data to your new database using Data Explorer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this quickstart, you learned how to create an Azure Cosmos DB account, create a database and container using the Data Explorer. Nu kunt u aanvullende gegevens in uw Azure Cosmos DB-account importeren. 
+In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB account maakt, hoe u een Data Base en container maakt met behulp van de Data Explorer. Nu kunt u aanvullende gegevens in uw Azure Cosmos DB-account importeren. 
 
 > [!div class="nextstepaction"]
 > [Gegevens importeren in Azure Cosmos DB](import-data.md)

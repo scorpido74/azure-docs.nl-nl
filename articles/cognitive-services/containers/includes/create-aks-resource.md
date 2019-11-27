@@ -1,7 +1,7 @@
 ---
-title: Create an Azure Kubernetes Service cluster resource
+title: Een Azure Kubernetes service-cluster resource maken
 titleSuffix: Azure Cognitive Services
-description: Learn how to create an Azure Kubernetes Service (AKS) resource.
+description: Meer informatie over het maken van een AKS-resource (Azure Kubernetes service).
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -16,36 +16,36 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383437"
 ---
-## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Create an Azure Kubernetes Service cluster resource
+## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Een Azure Kubernetes service-cluster resource maken
 
-1. Go to [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks), and select **Create**.
+1. Ga naar de [Azure Kubernetes-service](https://ms.portal.azure.com/#create/microsoft.aks)en selecteer **maken**.
 
-1. On the **Basics** tab, enter the following information:
+1. Voer op het tabblad **basis beginselen** de volgende gegevens in:
 
     |Instelling|Waarde|
     |--|--|
     |Abonnement|Selecteer een geschikt abonnement.|
-    |Resourcegroep|Select an available resource group.|
-    |Kubernetes cluster name|Enter a name (lowercase).|
-    |Regio|Select a nearby location.|
-    |Kubernetes version|Whatever value is marked as **(default)** .|
-    |DNS name prefix|Created automatically, but you can override.|
-    |Node size|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
-    |Node count|Leave the slider at the default value.|
+    |Resourcegroep|Selecteer een beschik bare resource groep.|
+    |Kubernetes-cluster naam|Voer een naam in (kleine letters).|
+    |Regio|Selecteer een locatie in de buurt.|
+    |Kubernetes-versie|Wille keurige waarde is gemarkeerd als **(standaard)** .|
+    |DNS-naam voorvoegsel|Automatisch gemaakt, maar u kunt dit overschrijven.|
+    |Knooppunt grootte|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
+    |Aantal knoop punten|Wijzig de schuif regelaar op de standaard waarde.|
 
-1. On the **Scale** tab, leave **Virtual nodes** and **VM scale sets** set to their default values.
-1. On the **Authentication** tab, leave **Service principal** and **Enable RBAC** set to their default values.
-1. On the **Networking** tab, enter the following selections:
+1. Op het tabblad **schaal** kunt u **virtuele knoop punten** en **VM-schaal sets** instellen op de standaard waarden.
+1. Op het tabblad **verificatie** verlaat u **Service-Principal** en **schakelt u RBAC** in op de standaard waarden.
+1. Op het tabblad **netwerken** voert u de volgende selecties in:
 
     |Instelling|Waarde|
     |--|--|
     |Routering van HTTP-toepassing|Nee|
-    |Networking configuration|Basic|
+    |Netwerk configuratie|Basic|
 
-1. On the **Monitoring** tab, make sure that **Enable container monitoring** is set to **Yes**, and leave **Log Analytics workspace** as the default value.
-1. On the **Tags** tab, leave the name/value pairs blank for now.
-1. Select **Review and Create**.
-1. After validation passes, select **Create**.
+1. Controleer op het tabblad **controle** of **container controle inschakelen** is ingesteld op **Ja**en laat **log Analytics werk ruimte** staan als de standaard waarde.
+1. Laat op het tabblad **Tags** de naam/waarde-paren voor nu leeg.
+1. Selecteer **controleren en maken**.
+1. Nadat de validatie is geslaagd, selecteert u **maken**.
 
 > [!NOTE]
-> If validation fails, it might be because of a "Service principal" error. Go back to the **Authentication** tab and then go back to **Review + create**, where validation should run and then pass.
+> Als de validatie mislukt, kan dit worden veroorzaakt door een ' Service Principal-fout. Ga terug naar het tabblad **verificatie** en ga terug naar weer **geven + maken**, waarbij validatie moet worden uitgevoerd en voer vervolgens door.

@@ -1,6 +1,6 @@
 ---
-title: ACR task samples
-description: Sample Azure Container Registry Tasks (ACR Tasks) to build, run, and patch container images
+title: ACR-taak voorbeelden
+description: Voor beelden van Azure Container Registry taken (ACR taken) om container installatie kopieën te bouwen, uit te voeren en te patchen
 ms.topic: article
 ms.date: 11/14/2019
 ms.openlocfilehash: 49df3bf565052a729ac3c587bd2ba11a299d05f1
@@ -10,36 +10,36 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456083"
 ---
-# <a name="acr-tasks-samples"></a>ACR Tasks samples
+# <a name="acr-tasks-samples"></a>Voor beelden van ACR-taken
 
-This article links to example `task.yaml` files and associated Dockerfiles for several [Azure Container Registry Tasks](container-registry-tasks-overview.md) (ACR Tasks) scenarios. 
+Dit artikel is een koppeling naar voor beeld `task.yaml`-bestanden en gekoppelde Dockerfiles voor verschillende scenario's voor [Azure container Registry taken](container-registry-tasks-overview.md) (ACR-taken). 
 
-For additional examples, see the [Azure samples][task-examples] repo.
+Zie de [Azure][task-examples] -voor beelden opslag plaats voor meer voor beelden.
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
-* **Build image** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Installatie kopie maken** - [yaml](https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Run container** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml)
+* **Container** - [yaml](https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml) uitvoeren
 
-* **Build and push image** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Installatie kopie maken en pushen** - [yaml](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Build and run image** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-run-hello-world.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* Een **installatie kopie bouwen en uitvoeren** - [yaml](https://github.com/Azure-Samples/acr-tasks/blob/master/build-run-hello-world.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Build and push multiple images** -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world-multi.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Bouw en push meerdere installatie kopieën** -  [yaml](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world-multi.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Build and test images in parallel** -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Bouw en test installatie kopieën in parallel** -  [yaml](https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Build and push images to multiple registries** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/testtask.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/hello-world.dockerfile)
+* **Bouw en push installatie kopieën naar meerdere registers** - [yaml](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/testtask.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/hello-world.dockerfile)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Learn more about ACR Tasks:
+Meer informatie over ACR-taken:
 
-* [Multi-step tasks](container-registry-tasks-multi-step.md) - ACR Task-based workflows for building, testing, and patching container images in the cloud.
-* [Task reference](container-registry-tasks-reference-yaml.md) - Task step types, their properties, and usage.
-* [Cmd repo](https://github.com/AzureCR/cmd) - A collection of containers as commands for ACR Tasks.
+* [Taken met meerdere stappen](container-registry-tasks-multi-step.md) : ACR werk stromen voor het maken, testen en repareren van container installatie kopieën in de Cloud.
+* [Taak verwijzing](container-registry-tasks-reference-yaml.md) -taak stap typen, eigenschappen en gebruik.
+* [Cmd opslag plaats](https://github.com/AzureCR/cmd) : een verzameling containers als opdrachten voor ACR-taken.
 
 
 <!-- LINKS - External -->

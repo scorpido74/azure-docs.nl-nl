@@ -1,14 +1,14 @@
 ---
-title: Voor beeld van IRS 1075-blauw druk-stappen voor implementeren
+title: Voor beeld van IRS 1075-blauw druk implementeren
 description: Implementeer stappen voor het voor beeld van de IRS 1075 (Rev. 11-2016), inclusief blauw druk artefact parameter Details.
 ms.date: 11/20/2019
 ms.topic: sample
-ms.openlocfilehash: 033d4b38b7ccaf4d187615ec1df48c200fe5e683
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 15fcac5bfd11d889522d078853bd6f916eb54616
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279492"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546803"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>Het voor beeld van IRS 1075-blauw druk implementeren
 
@@ -62,7 +62,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basics
+   - Basisbeginselen
 
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
      - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.

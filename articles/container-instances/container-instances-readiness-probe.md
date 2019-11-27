@@ -1,21 +1,16 @@
 ---
-title: Gereedheids tests in Azure Container Instances configureren
+title: De gereedheids test voor het container exemplaar instellen
 description: Meer informatie over het configureren van een test om ervoor te zorgen dat containers in Azure Container Instances alleen aanvragen ontvangen wanneer ze klaar zijn
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 10/17/2019
-ms.author: danlep
-ms.openlocfilehash: 9cdc8362c377be28a3ed1300b599dc8ebef9e903
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905574"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533567"
 ---
-# <a name="configure-readiness-probes"></a>Gereedheids tests configureren
+# <a name="configure-readiness-probes"></a>Gereedheidstests configureren
 
 Voor container toepassingen die verkeer verwerken, wilt u wellicht controleren of uw container gereed is voor het verwerken van binnenkomende aanvragen. Azure Container Instances ondersteunt gereedheids tests voor het toevoegen van configuraties zodat uw container onder bepaalde omstandigheden niet kan worden geopend. De gereedheids test gedraagt zich als een [Kubernetes Readiness-test](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/). Een container-app moet bijvoorbeeld een grote gegevensset laden tijdens het opstarten, en u wilt niet dat er aanvragen worden ontvangen tijdens deze periode.
 

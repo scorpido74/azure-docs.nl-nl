@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Translate speech to multiple languages, C# - Speech Service'
+title: 'Snelstartgids: spraak vertalen naar meerdere talen, C# -Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: Nader te bepalen
+description: NOG TE BEPALEN
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -17,7 +17,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260702"
 ---
-**Choose your target environment**
+**Kies uw doel omgeving**
 
 #### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](./dotnet.md)]

@@ -1,6 +1,6 @@
 ---
-title: Enable automatic user provisioning for multi-tenant applications - Azure AD
-description: A guide for independent software vendors for enabling automated provisioning
+title: Automatische gebruikers inrichting inschakelen voor multi tenant-toepassingen-Azure AD
+description: Een hand leiding voor onafhankelijke software leveranciers voor het inschakelen van automatische inrichting
 services: active-directory
 documentationcenter: azure
 author: BarbaraSelden
@@ -22,101 +22,101 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232316"
 ---
-# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Enable automatic user provisioning for your multi-tenant application
+# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatische gebruikers inrichting inschakelen voor uw toepassing met meerdere tenants
 
-Automatic user provisioning is the process of automating the creation, maintenance, and removal of user identities in target systems like your software-as-a-service applications.
+Automatische gebruikers inrichting is het proces van het automatiseren van het maken, onderhouden en verwijderen van gebruikers identiteiten in doel systemen zoals uw software-as-a-service toepassingen.
 
-## <a name="why-enable-automatic-user-provisioning"></a>Why enable automatic user provisioning?
+## <a name="why-enable-automatic-user-provisioning"></a>Waarom het automatisch inrichten van gebruikers inschakelen?
 
-Applications that require that a user record is present in the application before a user’s first sign in require user provisioning. There are benefits to you as a service provider, and benefits to your customers.
+Toepassingen waarvoor een gebruikers record vereist is in de toepassing voordat de eerste aanmelding van een gebruiker vereist is. Er zijn voor delen voor u als service provider en voor delen van uw klanten.
 
-### <a name="benefits-to-you-as-the-service-provider"></a>Benefits to you as the service provider
+### <a name="benefits-to-you-as-the-service-provider"></a>Voor delen als service provider
 
-* Increase the security of your application by using the Microsoft identity platform.
+* Verbeter de beveiliging van uw toepassing met behulp van het micro soft Identity-platform.
 
-* Reduce actual and perceived customer effort to adopt your application.
+* Beperk de werkelijke en waargenomen inspanningen van de klant om uw toepassing te nemen.
 
-* Reduce your costs in integrating with multiple identity providers (IdPs) for automatic user provisioning by using System for Cross-Domain Identity Management (SCIM)-based provisioning.
+* Verminder de kosten voor de integratie met meerdere id-providers (id) voor het automatisch inrichten van gebruikers met behulp van systeem voor SCIM-inrichting (Cross-Domain Identity Management).
 
-* Reduce support costs by providing rich logs to help customers troubleshoot user provisioning issues.
+* Verminder de ondersteunings kosten door uitgebreide logboeken te bieden om klanten te helpen bij het oplossen van problemen met de gebruikers inrichting.
 
-* Increase the visibility of your application in the [Azure AD app gallery](https://azuremarketplace.microsoft.com/marketplace/apps).
+* Verg root de zicht baarheid van uw toepassing in de [Azure AD-App-galerie](https://azuremarketplace.microsoft.com/marketplace/apps).
 
-* Get a prioritized listing in the App Tutorials page.
+* Haal een lijst met prioriteiten op op de pagina met zelf studies voor apps.
 
-### <a name="benefits-to-your-customers"></a>Benefits to your customers
+### <a name="benefits-to-your-customers"></a>Voor delen voor uw klanten
 
-* Increase security by automatically removing access to your application for users who change roles or leave the organization to your application.
+* Verbeter de beveiliging door automatisch de toegang tot uw toepassing te verwijderen voor gebruikers die de rollen wijzigen of de organisatie naar uw toepassing te laten gaan.
 
-* Simplify user management for your application by avoiding human error and repetitive work associated with manual provisioning.
+* Vereenvoudig het beheer van gebruikers voor uw toepassing door te voor komen dat Human Error en repeterend werk worden geassocieerd met hand matige inrichting.
 
-* Reduce the costs of hosting and maintaining custom-developed provisioning solutions.
+* Verminder de kosten voor het hosten en onderhouden van aangepast ontwikkelde inrichtings oplossingen.
 
-## <a name="choose-a-provisioning-method"></a>Choose a provisioning method
+## <a name="choose-a-provisioning-method"></a>Een inrichtings methode kiezen
 
-Azure AD provides several integration paths to enable automatic user provisioning for your application.
+Azure AD biedt verschillende integratie paden om het automatisch inrichten van gebruikers voor uw toepassing in te scha kelen.
 
-* The [Azure AD Provisioning Service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) manages the provisioning and deprovisioning of users from Azure AD to your application (outbound provisioning) and from your application to Azure AD (inbound provisioning). The service connects to the System for Cross-Domain Identity Management (SCIM) user management API endpoints provided by your application.
+* De [Azure AD-inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) beheert het inrichten en ongedaan maken van de inrichting van gebruikers van Azure AD voor uw toepassing (uitgaande inrichting) en vanuit uw toepassing naar Azure AD (inkomend inrichten). De service maakt verbinding met het systeem voor SCIM-gebruikers beheer API-eind punten die zijn opgenomen in uw toepassing.
 
-* When using the [Microsoft Graph](https://docs.microsoft.com/graph/), your application manages inbound and outbound provisioning of users and groups from Azure AD to your application by querying the Microsoft Graph API.
+* Wanneer u de [Microsoft Graph](https://docs.microsoft.com/graph/)gebruikt, beheert uw toepassing de inkomende en uitgaande toewijzing van gebruikers en groepen vanuit Azure AD naar uw toepassing door de Microsoft Graph API te doorzoeken.
 
-* The Security Assertion Markup Language Just in Time (SAML JIT) user provisioning can be enabled if your application is using SAML for federation. It uses claims information sent in the SAML token to provision users.
+* De gebruikers inrichting van de just-in-time (SAML JIT)-Security Assertion Markup Language kan worden ingeschakeld als uw toepassing gebruikmaakt van SAML voor Federatie. Er worden claim gegevens gebruikt die in het SAML-token worden verzonden om gebruikers in te richten.
 
-To help determine which integration option to use for your application, refer to the high-level comparison table, and then see the more detailed information on each option.
+Raadpleeg de vergelijkings tabel op hoog niveau en zie de gedetailleerde informatie over elke optie om te bepalen welke integratie optie voor uw toepassing moet worden gebruikt.
 
-| Capabilities enabled or enhanced by Automatic Provisioning| Azure AD Provisioning Service (SCIM 2.0)| Microsoft Graph API (OData v4.0)| SAML JIT |
+| Mogelijkheden die zijn ingeschakeld of worden uitgebreid met automatische inrichting| Azure AD-inrichtings service (SCIM 2,0)| Microsoft Graph-API (OData v 4.0)| SAML JIT |
 |---|---|---|---|
-| User and group management in Azure AD| √| √| User only |
-| Manage users and groups synced from on-premises Active Directory| √*| √*| User only* |
-| Access data beyond users and groups during provisioning Access to O365 data (Teams, SharePoint, Email, Calendar, Documents, etc.)| X+| √| X |
-| Create, read, and update users based on business rules| √| √| √ |
-| Delete users based on business rules| √| √| X |
-| Manage automatic user provisioning for all applications from the Azure portal| √| X| √ |
-| Support multiple identity providers| √| X| √ |
-| Support guest accounts (B2B)| √| √| √ |
-| Support non-enterprise accounts (B2C)| X| √| √ |
+| Gebruikers-en groeps beheer in azure AD| √| √| Alleen gebruiker |
+| Gebruikers en groepen beheren die zijn gesynchroniseerd vanuit on-premises Active Directory| √*| √*| Alleen gebruiker * |
+| Toegang tot gegevens buiten gebruikers en groepen tijdens het inrichten van toegang tot O365-gegevens (teams, share point, E-mail, agenda, documenten, enz.)| X +| √| X |
+| Gebruikers maken, lezen en bijwerken op basis van bedrijfs regels| √| √| √ |
+| Gebruikers verwijderen op basis van bedrijfs regels| √| √| X |
+| Automatische gebruikers inrichting beheren voor alle toepassingen vanuit de Azure Portal| √| X| √ |
+| Ondersteuning voor meerdere id-providers| √| X| √ |
+| Gast accounts (B2B) ondersteunen| √| √| √ |
+| Niet-ondernemings accounts ondersteunen (B2C)| X| √| √ |
 
-<sup>*</sup> – Azure AD Connect setup is required to sync users from AD to Azure AD.  
-<sup>+</sup >– Using SCIM for provisioning does not preclude you from integrating your application with MIcrosoft Graph for other purposes.
+<sup>*</sup> -Azure AD Connect Setup is vereist voor het synchroniseren van gebruikers van AD naar Azure AD.  
+<sup>+</sup >: het gebruik van scim voor het inrichten verhindert niet dat u uw toepassing kunt integreren met micro soft Graph voor andere doel einden.
 
-## <a name="azure-ad-provisioning-service-scim"></a>Azure AD Provisioning Service (SCIM)
+## <a name="azure-ad-provisioning-service-scim"></a>Azure AD-inrichtings service (SCIM)
 
-The Azure AD provisioning services uses [SCIM](https://aka.ms/SCIMOverview), an industry standard for provisioning supported by many identity providers (IdPs) as well as applications (e.g. Slack, G Suite, Dropbox). We recommend you use the Azure AD provisioning service if you want to support IdPs in addition to Azure AD, as any SCIM-compliant IdP can connect to your SCIM endpoint. Building a simple /User endpoint, you can enable provisioning without having to maintain your own sync engine. 
+Azure AD Provisioning Services maakt gebruik van [scim](https://aka.ms/SCIMOverview), een industrie standaard voor het inrichten van een groot aantal id-providers (id) en toepassingen (bijvoorbeeld een toegestane vertraging, g Suite, Dropbox). U wordt aangeraden de Azure AD-inrichtings service te gebruiken als u naast Azure AD id wilt ondersteunen, omdat elke IdP die compatibel is met SCIM, verbinding kan maken met uw SCIM-eind punt. Als u een eenvoudig/User-eind punt bouwt, kunt u inrichting inschakelen zonder dat u uw eigen synchronisatie-engine hoeft te onderhouden. 
 
-For more information on how the Azure AD Provisioning Service users SCIM, see: 
+Zie voor meer informatie over hoe de Azure AD Provisioning Service-gebruikers SCIM: 
 
-* [Learn more about the SCIM standard](https://aka.ms/SCIMOverview)
+* [Meer informatie over de SCIM-standaard](https://aka.ms/SCIMOverview)
 
-* [Using System for Cross-Domain Identity Management (SCIM) to automatically provision users and groups from Azure Active Directory to applications](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Systeem gebruiken voor Identity Management (SCIM) van meerdere domeinen om automatisch gebruikers en groepen in te richten van Azure Active Directory naar toepassingen](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-* [Understand the Azure AD SCIM implementation](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Meer informatie over de Azure AD SCIM-implementatie](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph for Provisioning
+## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph voor inrichting
 
-When you use Microsoft Graph for provisioning, you have access to all the rich user data available in Graph. In addition to the details of users and groups, you can also fetch additional information like the user’s roles, manager and direct reports, owned and registered devices, and hundreds of other data pieces available in the [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0). 
+Wanneer u Microsoft Graph gebruikt voor het inrichten, hebt u toegang tot alle uitgebreide gebruikers gegevens die beschikbaar zijn in Graph. Naast de details van gebruikers en groepen kunt u ook aanvullende informatie ophalen, zoals de rollen van de gebruiker, de Manager en de directe rapporten, het eigendom en de geregistreerde apparaten, en honderden andere gegevens die beschikbaar zijn in de [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0). 
 
-More than 15 million organizations, and 90% of fortune 500 companies use Azure AD while subscribing to Microsoft cloud services like Office 365, Microsoft Azure, Enterprise Mobility Suite, or Microsoft 365. You can use Microsoft Graph to integrate your app with administrative workflows, such as employee onboarding (and termination), profile maintenance, and more. 
+Meer dan 15.000.000 organisaties, en 90% van Fortune 500-bedrijven gebruiken Azure AD bij het abonneren op micro soft-Cloud Services zoals Office 365, Microsoft Azure, Enter prise Mobility Suite of Microsoft 365. U kunt Microsoft Graph gebruiken om uw app te integreren met beheer werk stromen, zoals het onboarden van werk nemers (en beëindiging), profiel onderhoud en meer. 
 
-Learn more about using Microsoft Graph for provisioning:
+Meer informatie over het gebruik van Microsoft Graph voor het inrichten van:
 
-* [Microsoft Graph Home page](https://developer.microsoft.com/graph)
+* [Start pagina van Microsoft Graph](https://developer.microsoft.com/graph)
 
 * [Overzicht van Microsoft Graph](https://docs.microsoft.com/graph/overview)
 
-* [Microsoft Graph Auth Overview](https://docs.microsoft.com/graph/auth/)
+* [Overzicht van Microsoft Graph auth](https://docs.microsoft.com/graph/auth/)
 
-* [Getting started with Microsoft Graph](https://developer.microsoft.com/graph/get-started)
+* [Aan de slag met Microsoft Graph](https://developer.microsoft.com/graph/get-started)
 
-## <a name="using-saml-jit-for-provisioning"></a>Using SAML JIT for provisioning
+## <a name="using-saml-jit-for-provisioning"></a>SAML JIT gebruiken voor het inrichten
 
-If you want to provision users only upon first sign in to your application, and do not need to automatically deprovision users, SAML JIT is an option. Your application must support SAML 2.0 as a federation protocol to use SAML JIT.
+Als u gebruikers alleen wilt inrichten als u zich voor het eerst aanmeldt bij uw toepassing en de inrichting van gebruikers niet automatisch wilt ongedaan maken, is SAML JIT een optie. Uw toepassing moet SAML 2,0 ondersteunen als een Federatie protocol voor het gebruik van SAML JIT.
 
-SAML JIT uses the claims information in the SAML token to create and update user information in the application. Customers can configure these required claims in the Azure AD application as needed. Sometimes the JIT provisioning needs to be enabled from the application side so that customer can use this feature. SAML JIT is useful for creating and updating users, but it can't delete or deactivate the users in the application.
+SAML JIT gebruikt de informatie over claims in het SAML-token om gebruikers gegevens in de toepassing te maken en bij te werken. Klanten kunnen deze vereiste claims zo nodig in de Azure AD-toepassing configureren. Soms moet de JIT-inrichting worden ingeschakeld aan de kant van de toepassing, zodat de klant deze functie kan gebruiken. SAML JIT is handig voor het maken en bijwerken van gebruikers, maar het is niet mogelijk om de gebruikers in de toepassing te verwijderen of deactiveren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Enable Single Sign-on for your application](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [Eenmalige aanmelding inschakelen voor uw toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
 
-* [Submit your application listing](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) and partner with Microsoft to create documentation on Microsoft’s site.
+* [Dien de aanbieding](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) en partner van uw toepassing in bij micro soft om documentatie te maken op de site van micro soft.
 
-* [Join the Microsoft Partner Network (free) and create your go to market plan](https://partner.microsoft.com/en-us/explore/commercial).
+* [Word lid van de Microsoft Partner Network (gratis) en maak uw Go to Market-abonnement](https://partner.microsoft.com/en-us/explore/commercial).

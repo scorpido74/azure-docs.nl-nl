@@ -56,7 +56,7 @@ Ongeacht of u [direct lijn spraak](direct-line-speech.md) of [aangepaste opdrach
 
 We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit te voeren. Deze tabel bevat een lijst met Quick starts voor de Voice Assistant, geordend op taal.
 
-| Snelstart | Platform | API-verwijzing |
+| Snelstartgids | Platform | API-verwijzing |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Door](https://aka.ms/csspeech/javaref) |

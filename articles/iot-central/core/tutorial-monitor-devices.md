@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Monitor your devices in Azure IoT Central'
-description: 'Tutorial: As an operator, use your Azure IoT Central application to monitor your devices.'
+title: 'Zelf studie: uw apparaten bewaken in azure IoT Central'
+description: 'Zelf studie: als operator gebruikt u uw Azure IoT Central-toepassing om uw apparaten te bewaken.'
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/13/2019
@@ -41,7 +41,7 @@ Voordat u begint, moet de bouwer ten minste de eerste drie zelfstudies voor bouw
 
 Azure IoT Central verzendt meldingen over apparaten als e-mailberichten. De bouwer heeft een regel toegevoegd om een ​​melding te verzenden wanneer de temperatuur in een aangesloten airconditioningapparaat een drempel overschrijdt. Controleer de e-mails die zijn verzonden naar het account dat de bouwer heeft gekozen voor het ontvangen van meldingen.
 
-Open het e-mailbericht dat u aan het einde van de zelfstudie [Regels en acties voor uw apparaat configureren](tutorial-configure-rules.md) hebt ontvangen. In the email, select the link to the device next to **Device Name** in the **Details** section:
+Open het e-mailbericht dat u aan het einde van de zelfstudie [Regels en acties voor uw apparaat configureren](tutorial-configure-rules.md) hebt ontvangen. Selecteer in het e-mail bericht de koppeling naar het apparaat naast **apparaatnaam** in het gedeelte **Details** :
 
 ![E-mailwaarschuwing](media/tutorial-monitor-devices/email.png)
 
@@ -57,7 +57,7 @@ Kies de weergave **Dashboard** om informatie over het apparaat te bekijken.
 
 ![Apparaatdashboard](media/tutorial-monitor-devices/initial_screen.png)
 
-De grafiek op het dashboard toont een grafische voorstelling van de temperatuur van het apparaat. You can also see the current target temperature for the device in the **Device properties** tile. U besluit dat de doeltemperatuur te hoog is.
+De grafiek op het dashboard toont een grafische voorstelling van de temperatuur van het apparaat. U kunt ook de huidige doel temperatuur voor het apparaat zien op de tegel eigenschappen van het **apparaat** . U besluit dat de doeltemperatuur te hoog is.
 
 ## <a name="remediate-an-issue"></a>Een probleem oplossen
 
@@ -73,7 +73,7 @@ Gebruik de pagina **Instellingen** om de doeltemperatuur van het apparaat te wij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="nextstepaction"]
 > * Een melding ontvangen

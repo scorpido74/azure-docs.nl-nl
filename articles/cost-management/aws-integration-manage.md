@@ -1,6 +1,6 @@
 ---
-title: Manage AWS costs and usage in Azure Cost Management
-description: This article helps you understand how to use cost analysis and budgets in Cost Management to manage your AWS costs and usage.
+title: Kosten en gebruik van AWS beheren in Azure Cost Management
+description: In dit artikel leert u hoe u kosten analyse en budgetten kunt gebruiken in Cost Management om uw AWS-kosten en-gebruik te beheren.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,170 +17,170 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230171"
 ---
-# <a name="manage-aws-costs-and-usage-in-azure"></a>Manage AWS costs and usage in Azure
+# <a name="manage-aws-costs-and-usage-in-azure"></a>Kosten en gebruik van AWS in azure beheren
 
-After you've set up and configured AWS Cost and Usage report integration for Azure Cost Management, you're ready to start managing your AWS costs and usage. This article helps you understand how to use cost analysis and budgets in Cost Management to manage your AWS costs and usage.
+Nadat u AWS hebt ingesteld en geconfigureerd voor Azure Cost Management, kunt u de kosten en het gebruik van uw AWS gaan beheren. In dit artikel leert u hoe u kosten analyse en budgetten kunt gebruiken in Cost Management om uw AWS-kosten en-gebruik te beheren.
 
-If you haven't already configured the integration, see [Set up and configure AWS Usage report integration](aws-integration-set-up-configure.md).
+Zie [integratie van AWS-gebruiks rapport instellen en configureren](aws-integration-set-up-configure.md)als u de integratie nog niet hebt geconfigureerd.
 
-_Before you begin_: If you're unfamiliar with cost analysis, see the [Explore and analyze costs with Cost analysis](quick-acm-cost-analysis.md) quickstart. And, if you're unfamiliar with budgets in Azure, see the [Create and manage Azure budgets](tutorial-acm-create-budgets.md) tutorial.
+_Voordat u begint_: als u niet bekend bent met de kosten analyse, raadpleegt u de Snelstartgids voor het [verkennen en analyseren van kosten analyse](quick-acm-cost-analysis.md) . En als u niet bekend bent met budgetten in azure, raadpleegt u de zelf studie [Azure-budgetten maken en beheren](tutorial-acm-create-budgets.md) .
 
-## <a name="view-aws-costs-in-cost-analysis"></a>View AWS costs in cost analysis
+## <a name="view-aws-costs-in-cost-analysis"></a>Kosten voor AWS weer geven in kosten analyse
 
-AWS costs are available in Cost Analysis in the following scopes:
+De kosten voor AWS zijn beschikbaar in kosten analyse in de volgende bereiken:
 
-- AWS linked accounts under a management group
-- AWS linked account costs
-- AWS consolidated account costs
+- AWS gekoppelde accounts onder een beheer groep
+- Kosten AWS gekoppeld account
+- Kosten van geconsolideerde AWS-accounts
 
-The next sections describe how to use the scopes so that you see cost and usage data for each one.
+In de volgende secties wordt beschreven hoe u de bereiken gebruikt, zodat u de kosten en gebruiks gegevens voor elke categorie kunt zien.
 
-### <a name="view-aws-linked-accounts-under-a-management-group"></a>View AWS linked accounts under a management group
+### <a name="view-aws-linked-accounts-under-a-management-group"></a>Gekoppelde AWS-accounts weer geven onder een beheer groep
 
-Viewing costs by using the management group scope is the only way to see aggregated costs coming from different subscriptions and linked accounts. Using a management group provides a cross-cloud view.
+Het weer geven van de kosten met behulp van het beheer groeps bereik is de enige manier om geaggregeerde kosten weer te geven die afkomstig zijn van verschillende abonnementen en gekoppelde accounts. Het gebruik van een beheer groep biedt een cross-Cloud weergave.
 
-In cost analysis, open the scope picker and select the management group that holds your AWS linked accounts. Here's an example image in the Azure portal:
+Open in cost analysis de scope Picker en selecteer de beheer groep die uw AWS gekoppelde accounts bevat. Hier volgt een voor beeld van een afbeelding in de Azure Portal:
 
-![Example of the Select scope view](./media/aws-integration-manage/select-scope01.png)
-
-
-
-Here's an example showing the management group cost in cost analysis, grouped by Provider (Azure and AWS).
-
-![Example showing Azure and AWS costs for a quarter in cost analysis](./media/aws-integration-manage/cost-analysis-aws-azure.png)
-
-### <a name="view-aws-linked-account-costs"></a>View AWS linked account costs
-
-To view AWS link account costs, open the scope picker and select the AWS linked account. Note that linked accounts are associated to a management group, as defined in the AWS connector.
-
-Here's an example that shows selecting an AWS linked account scope.
-
-![Example of the Select scope view](./media/aws-integration-manage/select-scope02.png)
+![Voor beeld van de weer gave bereik selecteren](./media/aws-integration-manage/select-scope01.png)
 
 
 
-### <a name="view-aws-consolidated-account-costs"></a>View AWS consolidated account costs
+Hier volgt een voor beeld van de kosten van de beheer groep in kosten analyse, gegroepeerd op provider (Azure en AWS).
 
-To view AWS consolidated account costs, open the scope picker and select the AWS consolidated account. Here's an example that shows selecting an AWS consolidated account scope.
+![Voor beeld van de kosten voor Azure en AWS voor een kwar taal in kosten analyse](./media/aws-integration-manage/cost-analysis-aws-azure.png)
 
-![Example of the Select scope view](./media/aws-integration-manage/select-scope03.png)
+### <a name="view-aws-linked-account-costs"></a>AWS gekoppelde account kosten weer geven
+
+Als u de AWS wilt weer geven, opent u de bereik kiezer en selecteert u het gekoppelde AWS-account. Houd er rekening mee dat gekoppelde accounts zijn gekoppeld aan een beheer groep, zoals gedefinieerd in de AWS-connector.
+
+Hier volgt een voor beeld waarin wordt getoond hoe u een AWS gekoppeld account bereik selecteert.
+
+![Voor beeld van de weer gave bereik selecteren](./media/aws-integration-manage/select-scope02.png)
 
 
 
-This scope provides an aggregated view of all AWS linked accounts associated with the AWS consolidated account. Here's an example showing costs for an AWS consolidated account, grouped by service name.
+### <a name="view-aws-consolidated-account-costs"></a>Kosten voor geconsolideerde AWS-accounts weer geven
 
-![Example showing AWS consolidated costs in cost analysis](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+Als u de kosten voor AWS geconsolideerde accounts wilt bekijken, opent u de bereik kiezer en selecteert u het geconsolideerde AWS-account. Hier volgt een voor beeld waarin wordt getoond hoe u een AWS geconsolideerd account bereik selecteert.
 
-### <a name="dimensions-available-for-filtering-and-grouping"></a>Dimensions available for filtering and grouping
+![Voor beeld van de weer gave bereik selecteren](./media/aws-integration-manage/select-scope03.png)
 
-The following table describes dimensions available to group and filter by in cost analysis.
 
-| Dimensie | Amazon CUR header | Bereiken | Opmerkingen |
+
+Dit bereik biedt een geaggregeerde weer gave van alle gekoppelde AWS-accounts die zijn gekoppeld aan het geconsolideerde AWS-account. Hier volgt een voor beeld van de kosten voor een geconsolideerd AWS-account, gegroepeerd op service naam.
+
+![Voor beeld van het weer geven van AWS geconsolideerde kosten in kosten analyse](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+
+### <a name="dimensions-available-for-filtering-and-grouping"></a>Beschik bare dimensies voor filteren en groeperen
+
+In de volgende tabel worden de dimensies beschreven die beschikbaar zijn voor groeperen en filteren op in kosten analyse.
+
+| Dimensie | Kop van Amazon CUR | Bereiken | Opmerkingen |
 | --- | --- | --- | --- |
-| Beschikbaarheidszone | lineitem/AvailabilityZone | Alles |   |
-| Locatie | product/Region | Alles |   |
-| Naar gebruik |   | Alles |   |
-| Meter category | lineItem/ProductCode | Alles |   |
-| Meter subcategory | lineitem/UsageType | Alles |   |
-| Bewerking | lineItem/Operation | Alles |   |
-| Bron | lineItem/ResourceId | Alles |   |
-| Resourcetype | product/instanceType | Alles | If product/instanceType is null, lineItem/UsageType is used. |
-| ResourceGuid | N/A | Alles | Azure meter GUID. |
-| Servicenaam | product/ProductName | Alles | If product/ProductName is null, lineItem/ProductCode is used. |
-| Serviceniveau |   |   |   |
-| Abonnements-id | lineItem/UsageAccountId | Consolidated account and management group |   |
-| Subscription name | N/A | Consolidated account and management group | Account names are collected using the AWS Organization API. |
-| Tag | resourceTags/\* | Alles | The _user:_ prefix is removed from user-defined tags to allow cross-cloud tags. The _aws:_ prefix is left intact. |
-| Billing account ID | bill/PayerAccountId | Beheergroep |   |
-| Billing account name | N/A | Beheergroep | Account names are collected using the AWS Organization API. |
-| Provider | N/A | Beheergroep | Either AWS or Azure. |
+| Beschikbaarheidszone | lineitem/AvailabilityZone | Alle |   |
+| Locatie | product/regio | Alle |   |
+| Meter |   | Alle |   |
+| Meter categorie | lineItem/product code | Alle |   |
+| Subcategorie van de meter | lineitem/UsageType | Alle |   |
+| Bewerking | lineItem/Operation | Alle |   |
+| Resource | lineItem/ResourceId | Alle |   |
+| Resourcetype | product-instanceType | Alle | Als product-instanceType null is, wordt lineItem/UsageType gebruikt. |
+| GUID | N.v.t. | Alle | GUID van Azure meter. |
+| Servicenaam | product/ProductName | Alle | Als product/ProductName null is, wordt lineItem/product code gebruikt. |
+| Servicelaag |   |   |   |
+| Abonnements-id | lineItem/UsageAccountId | Geconsolideerd account en beheer groep |   |
+| Abonnements naam | N.v.t. | Geconsolideerd account en beheer groep | Account namen worden verzameld met behulp van de AWS-organisatie-API. |
+| Label | Resource Tags/\* | Alle | Het voor voegsel _gebruiker:_ wordt verwijderd uit door de gebruiker gedefinieerde labels om cross-Cloud tags toe te staan. Het voor voegsel _AWS:_ blijft intact. |
+| Facturerings account-ID | bill/PayerAccountId | Beheergroep |   |
+| Naam facturerings account | N.v.t. | Beheergroep | Account namen worden verzameld met behulp van de AWS-organisatie-API. |
+| Provider | N.v.t. | Beheergroep | Ofwel AWS of Azure. |
 
-## <a name="set-budgets-on-aws-scopes"></a>Set budgets on AWS scopes
+## <a name="set-budgets-on-aws-scopes"></a>Budgetten instellen voor AWS-bereiken
 
-Use budgets to proactively manage costs and drive accountability in your organization. Budgets are set on the AWS consolidated account and AWS linked account scopes. Here's an example of budgets for an AWS consolidated account shown in Cost Management:
+Gebruik budgetten om de kosten en de verantwoordelijkheid van uw organisatie proactief te beheren. Budgetten worden ingesteld op het AWS geconsolideerde account en het AWS gekoppelde account bereik. Hier volgt een voor beeld van budgetten voor een geconsolideerd AWS-account dat wordt weer gegeven in Cost Management:
 
-![Example showing budgets for an AWS consolidated account](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
+![Voor beeld van budgetten voor een geconsolideerd AWS-account](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
 
-## <a name="aws-data-collection-process"></a>AWS data collection process
+## <a name="aws-data-collection-process"></a>AWS-gegevens verzamelings proces
 
-After setting up the AWS connector, data collection and discovery processes start. It might take few hours to collect all usage data. The duration depends on:
+Nadat de AWS-connector is ingesteld, starten gegevens verzameling en detectie processen. Het kan enkele uren duren om alle gebruiks gegevens te verzamelen. De duur is afhankelijk van:
 
-- The time needed to process the CUR files that are in the AWS S3 bucket.
-- The time needed to create the AWS Consolidated account and AWS Linked account scopes.
-- The time and frequency of AWS are writing the Cost and Usage Report files in the S3 bucket
+- De tijd die nodig is voor het verwerken van de huidige bestanden in de AWS S3-Bucket.
+- De tijd die nodig is voor het maken van het AWS geconsolideerde account en het AWS gekoppelde account bereik.
+- De tijd en frequentie van AWS zijn de kosten-en gebruiks rapport bestanden in de S3-Bucket.
 
-## <a name="aws-integration-pricing"></a>AWS integration pricing
+## <a name="aws-integration-pricing"></a>Prijzen voor AWS-integratie
 
-Each AWS connector gets 90 free trial days. During Public Preview, there is no charge.
+Elke AWS-connector krijgt 90 gratis proef dagen. Tijdens de open bare preview-periode worden er geen kosten in rekening gebracht.
 
-The list price is 1% of your AWS monthly costs. Each month you are charged based on your invoiced costs from the previous month.
+De lijst prijs is 1% van de maandelijkse kosten van uw AWS. Voor elke maand worden er kosten in rekening gebracht op basis van uw gefactureerd bedrag van de vorige maand.
 
-Accessing AWS APIs may incur additional costs.
+Het openen van AWS-Api's kan extra kosten in beslag nemen.
 
-## <a name="aws-integration-limitations"></a>AWS integration limitations
+## <a name="aws-integration-limitations"></a>Beperkingen voor AWS-integratie
 
-- Cost Management doesn't support cost reports that contain multiple currency types. An error message is shown if you select a scope that has multiple currencies.
-- Cloud connectors don't support AWS GovCloud (US), AWS Gov, or AWS China.
-- Cost Management shows AWS _usage costs_ only. Tax, support, refunds, RI, credits or any other charge types aren't supported yet.
+- Cost Management ondersteunt geen kosten rapporten die meerdere valuta typen bevatten. Er wordt een fout bericht weer gegeven als u een bereik met meerdere valuta's selecteert.
+- Cloud connectors bieden geen ondersteuning voor AWS GovCloud (US), AWS gov of AWS China.
+- Cost Management worden alleen AWS _gebruikt_ . Belasting, ondersteuning, restitutie, RI, tegoed of andere kosten typen worden nog niet ondersteund.
 
-## <a name="troubleshooting-aws-integration"></a>Troubleshooting AWS integration
+## <a name="troubleshooting-aws-integration"></a>Problemen met AWS-integratie oplossen
 
-Use the following troubleshooting information to resolve common problems.
+Gebruik de volgende informatie voor het oplossen van problemen om veelvoorkomende problemen op te lossen.
 
-### <a name="no-permission-to-aws-linked-accounts"></a>No permission to AWS Linked accounts
+### <a name="no-permission-to-aws-linked-accounts"></a>Geen machtiging voor het AWS van gekoppelde accounts
 
-**Error code:** _Unauthorized_
+**Fout code:** niet _geautoriseerd_
 
-There are two ways to get permissions to access AWS linked accounts costs:
+Er zijn twee manieren om machtigingen te krijgen voor de kosten van de AWS gekoppelde accounts:
 
-- Get access to the management group that has the AWS Linked accounts.
-- Have someone give you permission to the AWS linked account.
+- Toegang krijgen tot de beheer groep met de gekoppelde AWS-accounts.
+- Laat iemand u toestemming geven voor het gekoppelde AWS-account.
 
-By default, the AWS connector creator is the owner of all the objects that the connector created. Including, the AWS consolidated account and the AWS linked account.
+De maker van de AWS-connector is standaard de eigenaar van alle objecten die de connector heeft gemaakt. Inclusief, het geconsolideerde AWS-account en het gekoppelde AWS-account.
 
-In order to be able to Verify the connector settings you will need at least a contributor role, reader can not Verify connector settings
+Om te kunnen controleren of de connector instellingen die u nodig hebt, ten minste een rol Inzender, kan de lezer de connector instellingen niet verifiëren
 
-### <a name="collection-failed-with-assumerole"></a>Collection failed with AssumeRole
+### <a name="collection-failed-with-assumerole"></a>Verzameling is mislukt met AssumeRole
 
-**Error code:** _FailedToAssumeRole_
+**Fout code:** _FailedToAssumeRole_
 
-This error means that Cost Management is unable to call the AWS AssumeRole API. This problem can happen because of an issue with the role definition. Verify that the following conditions are true:
+Deze fout betekent dat Cost Management de AssumeRole-API van AWS niet kan aanroepen. Dit probleem kan optreden vanwege een probleem met de roldefinitie. Controleer of aan de volgende voor waarden wordt voldaan:
 
-- The external ID is the same as the one in the role definition and the connector definition.
-- The role type is set to **Another AWS account Belonging to you or 3rd party.**
-- The **Require MFA** choice is cleared.
-- The trusted AWS account in the AWS Role is _432263259397_.
+- De externe ID is hetzelfde als die in de roldefinitie en de definitie van de connector.
+- Het type rol wordt ingesteld op **een ander AWS-account dat deel uitmaakt van u of een derde partij.**
+- De **vereiste MFA** -keuze is gewist.
+- Het vertrouwde AWS-account in de AWS-rol is _432263259397_.
 
-### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>Collection failed with Access Denied - CUR report definitions
+### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>De verzameling is mislukt omdat de toegang is geweigerd-huidige rapport definities
 
-**Error code:** _AccessDeniedReportDefinitions_ 
+**Fout code:** _AccessDeniedReportDefinitions_ 
 
-This error means that Cost Management is unable to see the Cost and Usage report definitions. This permission is used to validate that the CUR is defined as expected by Azure Cost Management. See [Create a Cost and Usage report in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
+Deze fout betekent dat Cost Management de definities van de kosten en het gebruiks rapport niet kan zien. Deze machtiging wordt gebruikt om te controleren of het huidige is gedefinieerd als verwacht door Azure Cost Management. Zie [een kosten-en gebruiks rapport maken in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
 
-### <a name="collection-failed-with-access-denied---list-reports"></a>Collection failed with Access Denied - List reports
+### <a name="collection-failed-with-access-denied---list-reports"></a>Verzameling mislukt met geweigerde toegang-lijst rapporten
 
-**Error code:** _AccessDeniedListReports_ 
+**Fout code:** _AccessDeniedListReports_ 
 
-This error means that Cost Management is unable to list the object in the S3 bucket where the CUR is located. AWS IAM policy requires a permission on the bucket and on the objects in the bucket. See [Create a role and policy in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws).
+Deze fout betekent dat Cost Management het object in de S3-Bucket waar het huidige zich bevindt, niet kan worden weer geven. Voor het AWS IAM-beleid is een machtiging vereist voor de Bucket en voor de objecten in de Bucket. Zie [een rol en beleid maken in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws).
 
-### <a name="collection-failed-with-access-denied---download-report"></a>Collection failed with Access Denied - Download report 
+### <a name="collection-failed-with-access-denied---download-report"></a>De verzameling is mislukt omdat de toegang is geweigerd. Download rapport 
 
-**Error code:** _AccessDeniedDownloadReport_ 
+**Fout code:** _AccessDeniedDownloadReport_ 
 
-This error means that Cost Management is unable to access and download the CUR files stored in the Amazon S3 bucket. Make sure that the AWS JSON policy attached to the role resembles the example shown at the bottom of the [Create a role and policy in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) section.
+Deze fout betekent dat Cost Management geen toegang krijgt tot de CUR-bestanden die zijn opgeslagen in de Amazon S3-Bucket. Zorg ervoor dat het AWS JSON-beleid dat aan de rol is gekoppeld, lijkt op het voor beeld onder aan de sectie [een rol en beleid maken in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) .
 
-### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Collection failed since we did not find the Cost and Usage Report
+### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>De verzameling is mislukt omdat het kosten-en gebruiks rapport niet zijn gevonden
 
-**Error code:** _FailedToFindReport_
+**Fout code:** _FailedToFindReport_
 
-This error means that Cost Management can't find the Cost and Usage report that was defined in the connector. Make sure it isn't deleted and that the AWS JSON policy attached to the role resembles the example shown at the bottom of the [Create a role and policy in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) section.
+Deze fout betekent dat Cost Management geen kosten-en gebruiks rapport kunt vinden dat in de connector is gedefinieerd. Zorg ervoor dat deze niet wordt verwijderd en dat het AWS JSON-beleid dat aan de rol is gekoppeld, lijkt op het voor beeld onder aan de sectie [een rol en beleid maken in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) .
 
-### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Unable to create or verify connector due to Cost and Usage Report definitions mismatch
+### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Kan de connector niet maken of controleren vanwege niet-overeenkomende kosten-en gebruiks rapport definities
 
-**Error code:** _ReportIsNotValid_
+**Fout code:** _ReportIsNotValid_
 
-This error relates to the definition of AWS Cost and Usage Report, we require specific settings for this report, see the requirements in [Create a Cost and Usage report in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)
+Deze fout heeft betrekking op de definitie van het AWS-kosten-en gebruiks rapport, we hebben specifieke instellingen voor dit rapport nodig. Zie de vereisten in het [rapport Create a cost and usage in AWS voor](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws) meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- If you haven't already configured your Azure environment with management groups, see [Initial setup of management groups](../governance/management-groups/overview.md#initial-setup-of-management-groups).
+- Als u uw Azure-omgeving nog niet hebt geconfigureerd met beheer groepen, raadpleegt u de [eerste instellingen van beheer groepen](../governance/management-groups/overview.md#initial-setup-of-management-groups).

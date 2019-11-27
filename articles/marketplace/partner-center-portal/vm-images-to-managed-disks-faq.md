@@ -1,6 +1,6 @@
 ---
-title: We're moving virtual machine (VM) images to managed disk storage in the Azure Marketplace
-description: To provide faster, more reliable storage and support for new marketplace features and capabilities, we’re moving marketplace VM images to managed disk storage.
+title: Er worden installatie kopieën van virtuele machines (VM) verplaatst naar Managed Disk Storage in azure Marketplace
+description: Om sneller, betrouwbaardere opslag en ondersteuning te bieden voor nieuwe Marketplace-functies en-mogelijkheden, verplaatsen we VM-installatie kopieën van Marketplace naar Managed Disk Storage.
 author: qianw211
 manager: evansma
 ms.author: v-qiwe
@@ -15,48 +15,48 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456675"
 ---
-# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>We’re moving virtual machine (VM) images on Azure Marketplace to managed disk storage
+# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Er worden installatie kopieën van virtuele machines (VM) op Azure Marketplace verplaatst naar Managed Disk Storage
 
-To provide faster, more reliable storage and support for new marketplace features and capabilities, we’re moving marketplace VM images to managed disk storage.
+Om sneller, betrouwbaardere opslag en ondersteuning te bieden voor nieuwe Marketplace-functies en-mogelijkheden, verplaatsen we VM-installatie kopieën van Marketplace naar Managed Disk Storage.
 
-Starting on January 2, 2020, we’ll move VM images to managed disk storage in phases. In the first phase, we’ll only move images with no new deployments or running VMs in the previous 90 days. Before we move any of the images, we’ll send an email to let the publisher know which images will move and when they’ll be moved.
+Vanaf 2 januari 2020 worden VM-installatie kopieën verplaatst naar beheerde schijf opslag in fasen. In de eerste fase verplaatsen we alleen installatie kopieën zonder nieuwe implementaties of actieve Vm's in de afgelopen 90 dagen. Voordat we een van de installatie kopieën verplaatsen, sturen we een e-mail om de uitgever te laten weten welke afbeeldingen worden verplaatst en wanneer ze worden verplaatst.
 
-Publishers or consumers don’t need to take any action, and users won’t be affected. The marketplace offers will remain available and customers will still be able to deploy managed VMs from these images, during and after the move.
+Uitgevers of consumenten hoeven geen actie te ondernemen en gebruikers worden niet beïnvloed. De Marketplace-aanbiedingen blijven beschikbaar en klanten kunnen nog steeds beheerde virtuele machines implementeren vanaf deze installatie kopieën, tijdens en na de verplaatsing.
 
-If you have any questions, please [contact us](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff).
+Als u vragen hebt, kunt u [contact met ons](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)opnemen.
 
 ## <a name="faqs"></a>Veelgestelde vragen
 
-### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>Would the users of my VM images experience an outage?
+### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>Werken de gebruikers van mijn VM-installatie kopieën een storing?
 
-Users of the VM images will not experience an outage. 
+Gebruikers van de VM-installatie kopieën hebben geen onderbrekingen. 
 
-In the first phase, we will only move VM images that have no running VMs. As there are no users for these images, there will not be any impact. For the subsequent phases too, there will be no impact on the users.
+In de eerste fase worden alleen VM-installatie kopieën verplaatst die geen actieve Vm's hebben. Omdat er geen gebruikers zijn voor deze installatie kopieën, heeft dit geen invloed. Voor de volgende fasen is er geen invloed op de gebruikers.
 
-### <a name="how-long-does-it-take-for-the-process-to-complete"></a>How long does it take for the process to complete?
+### <a name="how-long-does-it-take-for-the-process-to-complete"></a>Hoe lang duurt het om het proces te volt ooien?
 
-It may take up to 24 hours to complete the migration.
+Het kan tot 24 uur duren voordat de migratie is voltooid.
 
-### <a name="do-i-need-to-take-any-action"></a>Do I need to take any action?
+### <a name="do-i-need-to-take-any-action"></a>Moet ik actie ondernemen?
 
-Nee. Publishers or consumers don’t need to take any action.
+Nee. Uitgevers of consumenten hoeven geen actie te ondernemen.
 
-### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Do I have to update my system to call the Cloud Portal APIs in a different way after they are moved to Managed Disk storage?
+### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Moet ik mijn systeem bijwerken om de Cloud Portal-Api's op een andere manier aan te roepen nadat ze zijn verplaatst naar Managed Disk-opslag?
 
-Nee. Your existing API calls will continue to work.
+Nee. Uw bestaande API-aanroepen blijven werken.
 
-### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Would all my VM images be moved to Managed Disk at the same time?
+### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Moeten al mijn VM-installatie kopieën tegelijk worden verplaatst naar de beheerde schijf?
 
-We will be moving all your VM images on the same day. We will notify you once they have been moved.
+We gaan al uw VM-installatie kopieën op dezelfde dag verplaatsen. U ontvangt een melding zodra deze zijn verplaatst.
 
-### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>Can I request to schedule the move of my VM images to a later time?
+### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>Kan ik aanvragen om het verplaatsen van mijn VM-installatie kopieën naar een later tijdstip te plannen?
 
-We recommend moving the images on the scheduled date. However, if you have concerns, please reach out to us to reschedule the move.
+U wordt aangeraden de installatie kopieën op de geplande datum te verplaatsen. Als u echter problemen hebt, kunt u contact met ons opnemen om de verplaatsing opnieuw te plannen.
 
-### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Can I publish updates to my VM Images during the move?
+### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Kan ik tijdens de verhuizing updates voor mijn VM-installatie kopieën publiceren?
 
-Updates to the VM images cannot be made during the move.
+Updates van de VM-installatie kopieën kunnen niet worden gemaakt tijdens de verplaatsing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Visit the [virtual machine offer publisher guide](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) page.
+Ga naar de pagina met de Publisher-gids voor de [virtuele machine](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) .

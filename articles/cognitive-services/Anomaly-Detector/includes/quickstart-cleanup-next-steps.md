@@ -1,5 +1,5 @@
 ---
-title: Next steps for Anomaly Detector quickstarts
+title: Volgende stappen voor de Snelstartgids voor anomalie detectie
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -17,7 +17,7 @@ ms.locfileid: "74482999"
 ---
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-If you want to clean up and remove a Cognitive Services subscription, you can delete the resource or resource group. Deleting the resource group also deletes any other resources associated with the resource group.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle andere resources die aan de resource groep zijn gekoppeld, verwijderd.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -26,11 +26,11 @@ If you want to clean up and remove a Cognitive Services subscription, you can de
 
 Concepten:
 
-* [What is the Anomaly Detector API?](../overview.md)
-* [Anomaly detection methods](../how-to/identify-anomalies.md)
-* [Best practices when using the Anomaly Detector API.](../concepts/anomaly-detection-best-practices.md) 
+* [Wat is de anomalie detectie-API?](../overview.md)
+* [Afwijkings detectie methoden](../how-to/identify-anomalies.md)
+* [Aanbevolen procedures voor het gebruik van de anomalie detectie-API.](../concepts/anomaly-detection-best-practices.md) 
 
 Zelfstudies:
 
-* [Visualize anomalies as a batch using Power BI](../tutorials/batch-anomaly-detection-powerbi.md)
-* [Anomaly detection on streaming data using Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)
+* [Afwijkingen als batch visualiseren met behulp van Power BI](../tutorials/batch-anomaly-detection-powerbi.md)
+* [Anomalie detectie voor het streamen van gegevens met behulp van Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)

@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Blockchain Service member - Azure CLI
-description: Create an Azure Blockchain Service member for a blockchain consortium using the Azure CLI.
+title: Een lid van de Azure Block Chain-service maken-Azure CLI
+description: Maak een lid van de Azure Block Chain-Service voor een Block Chain consortium met behulp van de Azure CLI.
 ms.date: 11/20/2019
 ms.topic: quickstart
 ms.reviewer: janders
@@ -11,9 +11,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455945"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Snelstartgids: een Block Chain-lid van de Azure Block Chain-service maken met behulp van Azure CLI
 
-In this quickstart, you deploy a new blockchain member and consortium in Azure Blockchain Service using Azure CLI.
+In deze Quick Start implementeert u een nieuw Block Chain-lid en consortium in azure Block Chain service met behulp van Azure CLI.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit a
 
 Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/bash](https://shell.azure.com/bash) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
-If you prefer to install and use the CLI locally, this quickstart requires Azure CLI version 2.0.51 or later. Voer `az --version` uit om de versie te bekijken. If you need to install or upgrade, see [install Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u liever de CLI lokaal wilt installeren en gebruiken, is voor deze Snelstartgids Azure CLI-versie 2.0.51 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -37,7 +37,7 @@ az group create \
 
 ## <a name="create-a-blockchain-member"></a>Een blockchain-lid maken
 
-Create a blockchain member in Azure Blockchain Service that runs the Quorum ledger protocol in a new consortium. There are several parameters and properties you need to pass. Replace the example parameters with your values.
+Maak een Block Chain-lid in de Azure Block Chain-service die het quorum grootboek protocol in een nieuw consortium uitvoert. Er zijn verschillende para meters en eigenschappen die u moet door geven. Vervang de voorbeeld parameters door uw waarden.
 
 ```azurecli-interactive
 az resource create \
@@ -50,21 +50,21 @@ az resource create \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-group** | Resource group name where Azure Blockchain Service resources are created. Use the resource group you created in the previous section.
-| **name** | A unique name that identifies your Azure Blockchain Service blockchain member. The name is used for the public endpoint address. Bijvoorbeeld `myblockchainmember.blockchain.azure.com`.
-| **location** | Azure region where the blockchain member is created. Bijvoorbeeld `westus2`. Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt.
-| **password** | The password for the member's default transaction node. Use the password for basic authentication when connecting to blockchain member's default transaction node public endpoint.
-| **consortium** | Name of the consortium to join or create.
-| **consortiumAccountPassword** | The consortium account password is also known as the member account password. The member account password is used to encrypt the private key for the Ethereum account that is created for your member. You use the member account and member account password for consortium management.
-| **skuName** | Tier type. Use S0 for Standard and B0 for Basic.
+| **resource-groep** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. Gebruik de resource groep die u in de vorige sectie hebt gemaakt.
+| **naam** | Een unieke naam die uw Azure Block Chain Service Block Chain-lid aanduidt. De naam wordt gebruikt voor het adres van het open bare eind punt. Bijvoorbeeld `myblockchainmember.blockchain.azure.com`.
+| **location** | Azure-regio waar het block Chain-lid wordt gemaakt. Bijvoorbeeld `westus2`. Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt.
+| **wacht woord** | Het wacht woord voor het standaard transactie knooppunt van het lid. Gebruik het wacht woord voor basis verificatie bij het maken van verbinding met het open bare eind punt van het standaard transactie knooppunt van het block Chain-lid.
+| **verband** | Naam van het consortium dat u wilt toevoegen of maken.
+| **consortiumAccountPassword** | Het wacht woord van het consortium account wordt ook wel het wacht woord van het lid-account genoemd. Het wacht woord van het lid-account wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat voor uw lid wordt gemaakt. U gebruikt het wacht woord voor het account en het lid van het account voor het beheer van consortiums.
+| **skuName** | Type laag. Gebruik S0 voor Standard en B0 voor Basic.
 
-It takes about 10 minutes to create the blockchain member and supporting resources.
+Het duurt ongeveer 10 minuten om het block Chain-lid en de ondersteunende bronnen te maken.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-You can use the blockchain member you created for the next quickstart or tutorial. When no longer needed, you can delete the resources by deleting the `myResourceGroup` resource group you created for the quickstart.
+U kunt het block Chain-lid gebruiken dat u hebt gemaakt voor de volgende Snelstartgids of zelf studie. Wanneer u deze niet meer nodig hebt, kunt u de resources verwijderen door de `myResourceGroup` resource groep te verwijderen die u hebt gemaakt voor de Snelstartgids.
 
-Run the following command to remove the resource group and all related resources.
+Voer de volgende opdracht uit om de resource groep en alle gerelateerde resources te verwijderen.
 
 ```azurecli-interactive
 az group delete \
@@ -74,7 +74,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this quickstart, you deployed an Azure Blockchain Service member and a new consortium. Try the next quickstart to use  Azure Blockchain Development Kit for Ethereum to attach to a consortium on Azure Blockchain Service.
+In deze Quick Start hebt u een lid van de Azure Block Chain-service en een nieuw consortium geïmplementeerd. Probeer de volgende Snelstartgids om Azure Block Chain Development Kit te gebruiken voor Ethereum om te koppelen aan een consortium op Azure Block Chain-service.
 
 > [!div class="nextstepaction"]
-> [Use Visual Studio Code to connect to Azure Blockchain Service](connect-vscode.md)
+> [Visual Studio code gebruiken om verbinding te maken met de Azure Block Chain-Service](connect-vscode.md)

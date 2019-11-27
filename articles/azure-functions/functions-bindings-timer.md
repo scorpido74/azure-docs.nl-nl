@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 57eec1293867a6596eb93f20ba27d468498e4e61
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: 143a05944799ff04f9c21384f85a4b00cc65b750
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278704"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545734"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Timer trigger voor Azure Functions 
 
@@ -215,9 +215,9 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | n.v.t. | Moet worden ingesteld op ' Timer trigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt.|
-|**direction** | n.v.t. | Moet worden ingesteld op 'in'. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt. |
-|**naam** | n.v.t. | De naam van de variabele die het Timer object in functie code vertegenwoordigt. | 
+|**type** | N.v.t. | Moet worden ingesteld op ' Timer trigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt.|
+|**direction** | N.v.t. | Moet worden ingesteld op 'in'. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt. |
+|**naam** | N.v.t. | De naam van de variabele die het Timer object in functie code vertegenwoordigt. | 
 |**schedule**|**ScheduleExpression**|Een [cron-expressie](#ncrontab-expressions) of een [time span](#timespan) -waarde. Een `TimeSpan` kan alleen worden gebruikt voor een functie-app die wordt uitgevoerd op een App Service plan. U kunt de schema-expressie in een app-instelling plaatsen en deze eigenschap instellen op de naam van de app-instelling die in **%** tekens is verpakt, zoals in dit voor beeld:% ScheduleAppSetting%. |
 |**runOnStartup**|**RunOnStartup**|Als `true`, wordt de functie aangeroepen wanneer de runtime wordt gestart. De runtime wordt bijvoorbeeld gestart wanneer de functie-app wordt geactiveerd nadat de inactiviteit is voltooid. Wanneer de functie-app opnieuw wordt gestart vanwege functie wijzigingen en wanneer de functie-app wordt geschaald. Daarom moet **runOnStartup** zelden worden ingesteld op `true`, met name bij de productie. |
 |**useMonitor**|**UseMonitor**|Ingesteld op `true` of `false` om aan te geven of het schema moet worden bewaakt. Het plannen van de controle houdt in dat het schema wordt gebruikt om ervoor te zorgen dat het schema goed wordt onderhouden, zelfs wanneer de functie-app-exemplaren opnieuw worden gestart. Als niet expliciet is ingesteld, wordt de standaard waarde `true` voor schema's met een terugkeer patroon dat groter is dan of gelijk is aan 1 minuut. Voor schema's die meer dan één keer per minuut activeren, wordt de standaard waarde `false`.
@@ -283,7 +283,10 @@ Hier volgen enkele voor beelden van NCRONTAB-expressies die u kunt gebruiken voo
 
 De getallen in een CRON-expressie verwijzen naar een datum en tijd, niet een tijds Panne. Bijvoorbeeld, een 5 in het veld `hour` verwijst naar 5:00 uur, niet om de vijf uur.
 
-De standaardtijd zone die wordt gebruikt in de CRON-expressies is Coordinated Universal Time (UTC). Als u wilt dat uw CRON-expressie op basis van een andere tijd zone wordt gebruikt, maakt u een app-instelling voor de functie-app met de naam `WEBSITE_TIME_ZONE`. Stel de waarde in op de naam van de gewenste tijd zone, zoals weer gegeven in de [micro soft-tijd zone-index](https://technet.microsoft.com/library/cc749073). 
+De standaardtijd zone die wordt gebruikt in de CRON-expressies is Coordinated Universal Time (UTC). Als u wilt dat uw CRON-expressie op basis van een andere tijd zone wordt gebruikt, maakt u een app-instelling voor de functie-app met de naam `WEBSITE_TIME_ZONE`. Stel de waarde in op de naam van de gewenste tijd zone, zoals weer gegeven in de [micro soft-tijd zone-index](https://technet.microsoft.com/library/cc749073).
+
+  > [!NOTE]
+  > `WEBSITE_TIME_ZONE` wordt momenteel niet ondersteund in het verbruikte Linux-abonnement.
 
 Bijvoorbeeld, *Eastern Standard Time* is UTC-05:00. Als u wilt dat uw timer trigger wordt geactiveerd om 10:00 uur EST elke dag, gebruikt u de volgende NCRONTAB-expressie die accounts voor UTC-tijd zone:
 

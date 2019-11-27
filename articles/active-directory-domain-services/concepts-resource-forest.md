@@ -1,6 +1,6 @@
 ---
-title: Resource forest concepts for Azure AD Domain Services | Microsoft Docs
-description: Learn what a resource forest is in Azure Active Directory Domain Services and how they benefit your organization in hybrid environment with limited user authentication options or security concerns.
+title: Concepten van resource-forests voor Azure AD Domain Services | Microsoft Docs
+description: Meer informatie over wat een resource-forest is in Azure Active Directory Domain Services en hoe ze uw organisatie in hybride omgevingen voor delen met beperkte gebruikers verificatie opties of beveiligings problemen.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,106 +17,106 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233608"
 ---
-# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Resource forest concepts and features for Azure Active Directory Domain Services
+# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Concepten en functies van het resource-forest voor Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (AD DS) provides a sign-in experience for legacy, on-premises, line-of-business applications. Users, groups, and password hashes of on-premises and cloud users are synchronized to the Azure AD DS managed domain. These synchronized password hashes are what gives users a single set of credentials they can use for the on-premises AD DS, Office 365, and Azure Active Directory.
+Azure Active Directory Domain Services (AD DS) biedt een aanmeldings ervaring voor oudere, on-premises en line-of-business-toepassingen. Gebruikers, groepen en wacht woord-hashes van on-premises en Cloud gebruikers worden gesynchroniseerd met het door Azure AD DS beheerde domein. Deze gesynchroniseerde wacht woord-hashes zijn wat gebruikers één set referenties bieden die ze kunnen gebruiken voor de on-premises AD DS, Office 365 en Azure Active Directory.
 
-Although secure and provides additional security benefits, some organizations can't synchronize those user passwords hashes to Azure AD or Azure AD DS. Users in an organization may not know their password because they only use smart card authentication. These limitations prevent some organizations from using Azure AD DS to lift and shift on-premises classic applications to Azure.
+Hoewel beveiligde en extra beveiligings voordelen bieden, kunnen sommige organisaties die gebruikers wachtwoorden hashes niet synchroniseren met Azure AD of Azure AD DS. Gebruikers in een organisatie hebben het wacht woord mogelijk niet kennen, omdat ze alleen smartcard verificatie gebruiken. Deze beperkingen verhinderen dat sommige organisaties Azure AD DS gebruiken om on-premises klassieke toepassingen naar Azure te tilleren en te verplaatsen.
 
-To address these needs and restrictions, you can create an Azure AD DS managed domain that uses a resource forest. This conceptual article explains what forests are, and how they trust other resources to provide a secure authentication method. Azure AD DS resource forests are currently in preview.
+Als u deze behoeften en beperkingen wilt aanpakken, kunt u een door Azure AD DS beheerd domein maken dat gebruikmaakt van een resource-forest. In dit conceptuele artikel wordt uitgelegd wat forests zijn en hoe ze andere bronnen vertrouwen om een veilige verificatie methode te bieden. Azure AD DS resource-forests zijn momenteel beschikbaar als preview-versie.
 
 > [!IMPORTANT]
-> Azure AD DS resource forests don't currently support Azure HDInsight or Azure Files. The default Azure AD DS user forests do support both of these additional services.
+> Azure HDInsight of Azure Files wordt momenteel niet ondersteund voor de resource forests van AD DS De standaard gebruikers forests van Azure AD DS ondersteunen beide extra services.
 
-## <a name="what-are-forests"></a>What are forests?
+## <a name="what-are-forests"></a>Wat zijn forests?
 
-A *forest* is a logical construct used by Active Directory Domain Services (AD DS) to group one or more *domains*. The domains then store objects for user or groups, and provide authentication services.
+Een *forest* is een logische constructie die door Active Directory Domain Services (AD DS) wordt gebruikt om een of meer *domeinen*te groeperen. De domeinen slaan objecten vervolgens op voor gebruikers of groepen en bieden verificatie services.
 
-In Azure AD DS, the forest only contains one domain. On-premises AD DS forests often contain many domains. In large organizations, especially after mergers and acquisitions, you may end up with multiple on-premises forests that each then contain multiple domains.
+In azure AD DS bevat het forest slechts één domein. On-premises AD DS bossen bevatten vaak veel domeinen. In grote organisaties, met name na fusies en acquisities, kunt u meerdere on-premises forests gebruiken die elk meerdere domeinen bevatten.
 
-By default, an Azure AD DS managed domain is created as a *user* forest. This type of forest synchronizes all objects from Azure AD, including any user accounts created in an on-premises AD DS environment. User accounts can directly authenticate against the Azure AD DS managed domain, such as to sign in to a domain-joined VM. A user forest works when the password hashes can be synchronized and users aren't using exclusive sign-in methods like smart card authentication.
+Standaard wordt een door Azure AD DS beheerd domein gemaakt als een *gebruikers* forest. Dit type forest synchroniseert alle objecten van Azure AD, met inbegrip van gebruikers accounts die zijn gemaakt in een on-premises AD DS omgeving. Gebruikers accounts kunnen rechtstreeks worden geverifieerd aan de hand van het beheerde domein van Azure AD DS, bijvoorbeeld om zich aan te melden bij een VM die lid is van een domein. Een gebruikers forest werkt wanneer de wacht woord-hashes kunnen worden gesynchroniseerd en gebruikers gebruiken geen exclusieve aanmeldings methoden zoals smartcard verificatie.
 
-In an Azure AD DS *resource* forest, users authenticate over a one-way forest *trust* from their on-premises AD DS. With this approach, the user objects and password hashes aren't synchronized to Azure AD DS. The user objects and credentials only exist in the on-premises AD DS. This approach lets enterprises host resources and application platforms in Azure that depend on classic authentication such LDAPS, Kerberos, or NTLM, but any authentication issues or concerns are removed. Azure AD DS resource forests are currently in preview.
+In een Azure AD DS- *bron* -forest verifiëren *gebruikers via een eenrichtings forestvertrouwensrelatie van hun* on-premises AD DS. Met deze benadering worden de gebruikers objecten en wacht woord-hashes niet gesynchroniseerd met Azure AD DS. De gebruikers objecten en referenties bestaan alleen in het on-premises AD DS. Met deze aanpak kunnen bedrijven hosten van resources en toepassings platforms in azure die afhankelijk zijn van klassieke verificatie, zoals LDAPS, Kerberos of NTLM, maar eventuele verificatie problemen of problemen worden verwijderd. Azure AD DS resource-forests zijn momenteel beschikbaar als preview-versie.
 
-Resource forests also provide the capability to lift-and-shift your applications one component at a time. Many legacy on-premises applications are multi-tiered, often using a web server or front end and many database-related components. These tiers make it hard to lift-and-shift the entire application to the cloud in one step. With resource forests, you can lift your application to the cloud in phased approach, which makes it easier to move your application to Azure.
+Resource forests bieden ook de mogelijkheid om uw toepassingen één onderdeel tegelijk uit te voeren. Veel oudere on-premises toepassingen zijn meerdere lagen, vaak met een webserver of front-end en veel data base-gerelateerde onderdelen. Deze lagen maken het moeilijk om in één stap de volledige toepassing naar de cloud te tillen en te verplaatsen. Met resource-forests kunt u uw toepassing in gefaseerde benadering optillen, waardoor het eenvoudiger wordt om uw toepassing naar Azure te verplaatsen.
 
-## <a name="what-are-trusts"></a>What are trusts?
+## <a name="what-are-trusts"></a>Wat zijn vertrouwens relaties?
 
-Organizations that have more than one domain often need users to access shared resources in a different domain. Access to these shared resources requires that users in one domain authenticate to another domain. To provide these authentication and authorization capabilities between clients and servers in different domains, there must be a *trust* between the two domains.
+Organisaties met meer dan één domein hebben vaak gebruikers nodig om toegang te krijgen tot gedeelde bronnen in een ander domein. Voor toegang tot deze gedeelde bronnen moeten gebruikers in het ene domein worden geverifieerd bij een ander domein. Als u deze verificatie-en autorisatie mogelijkheden wilt bieden tussen clients en servers in verschillende domeinen, moet er een *vertrouwens relatie* tussen de twee domeinen zijn.
 
-With domain trusts, the authentication mechanisms for each domain trust the authentications coming from the other domain. Trusts help provide controlled access to shared resources in a resource domain (the *trusting* domain) by verifying that incoming authentication requests come from a trusted authority (the *trusted* domain). Trusts act as bridges that only allow validated authentication requests to travel between domains.
+Met vertrouwens relaties tussen domeinen, vertrouwen de verificatie mechanismen voor elk domein de verificaties die afkomstig zijn uit het andere domein. Vertrouwens relaties helpen beheerde toegang tot gedeelde bronnen in een bron domein (het *vertrouwende* domein) te bieden door te controleren of binnenkomende verificatie aanvragen afkomstig zijn van een vertrouwde instantie (het *vertrouwde* domein). Vertrouwens relaties fungeren als bruggen waarmee alleen gevalideerde verificatie aanvragen kunnen worden getransporteerd tussen domeinen.
 
-How a trust passes authentication requests depends on how it's configured. Trusts can be configured in one of the following ways:
+Hoe een vertrouwens relatie verificatie aanvragen doorgeeft, is afhankelijk van de configuratie. Vertrouwens relaties kunnen op een van de volgende manieren worden geconfigureerd:
 
-* **One-way** - provides access from the trusted domain to resources in the trusting domain.
-* **Two-way** - provides access from each domain to resources in the other domain.
+* **Eén richting** : biedt toegang vanuit het vertrouwde domein aan bronnen in het vertrouwende domein.
+* **Twee richtingen** : Hiermee geeft u toegang tot resources in het andere domein.
 
-Trusts are also be configured to handle additional trust relationships in one of the following ways:
+Vertrouwens relaties worden ook zo geconfigureerd dat er op een van de volgende manieren aanvullende vertrouwens relatie wordt verwerkt:
 
-* **Nontransitive** - The trust exists only between the two trust partner domains.
-* **Transitive** - Trust automatically extends to any other domains that either of the partners trusts.
+* Niet- **transitief** : de vertrouwens relatie bestaat alleen tussen de twee vertrouwens partner domeinen.
+* **Transitieve** vertrouwens relaties worden automatisch uitgebreid naar andere domeinen die een van de partners vertrouwt.
 
-In some cases, trust relationships are automatically established when domains are created. Other times, you must choose a type of trust and explicitly establish the appropriate relationships. The specific types of trusts used and the structure of those trust relationships depend on how the Active Directory directory service is organized, and whether different versions of Windows coexist on the network.
+In sommige gevallen worden vertrouwens relaties automatisch ingesteld wanneer er domeinen worden gemaakt. Andere keren, moet u een vertrouwens type kiezen en expliciet de juiste relaties instellen. De specifieke typen vertrouwens relaties en de structuur van deze vertrouwens relatie zijn afhankelijk van de manier waarop de Active Directory Directory service is georganiseerd en of er verschillende versies van Windows naast elkaar worden gebruikt in het netwerk.
 
-## <a name="trusts-between-two-forests"></a>Trusts between two forests
+## <a name="trusts-between-two-forests"></a>Vertrouwens relaties tussen twee forests
 
-You can extend domain trusts within a single forest to another forest by manually creating a one-way or two-way forest trust. A forest trust is a transitive trust that exists only between a forest root domain and a second forest root domain.
+U kunt domein vertrouwen in één forest uitbreiden naar een ander forest door hand matig een eenrichtings-of twee richtings vertrouwensrelatie voor het forest te maken. Een forest-vertrouwens relatie is een transitieve vertrouwens relatie die alleen bestaat tussen een foresthoofddomein en een tweede forest-hoofd domein.
 
-* A one-way forest trust allows all users in one forest to trust all domains in the other forest.
-* A two-way forest trust forms a transitive trust relationship between every domain in both forests.
+* Met een eenrichtings vertrouwensrelatie voor forests kunnen alle gebruikers in het ene forest alle domeinen in het andere forest vertrouwen.
+* Een twee richtings relatie tussen forests vormt een transitieve vertrouwens relatie tussen elk domein in beide forests.
 
-The transitivity of forest trusts is limited to the two forest partners. The forest trust doesn't extend to additional forests trusted by either of the partners.
+De transitiviteit van forestvertrouwensrelaties is beperkt tot de twee forest-partners. De vertrouwens relatie tussen forests en andere forests die door een van de partners worden vertrouwd, wordt niet uitgebreid.
 
-![Diagram of forest trust from Azure AD DS to on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Diagram van forestvertrouwensrelatie van Azure AD DS op on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-You can create different domain and forest trust configurations depending on the Active Directory structure of the organization. Azure AD DS only supports a one-way forest trust. In this configuration, resources in Azure AD DS can trust all domains in an on-premises forest.
+U kunt verschillende configuraties voor domein-en forest-vertrouwens relaties maken, afhankelijk van de Active Directory structuur van de organisatie. Azure AD DS ondersteunt alleen een eenrichtings vertrouwensrelatie voor forests. In deze configuratie kunnen resources in azure AD DS alle domeinen in een on-premises forest vertrouwen.
 
-## <a name="supporting-technology-for-trusts"></a>Supporting technology for trusts
+## <a name="supporting-technology-for-trusts"></a>Ondersteunende technologie voor vertrouwens relaties
 
-Trusts use various services and features, such as DNS to locate domain controllers in partnering forests. Trusts also depend on NTLM and Kerberos authentication protocols and on Windows-based authorization and access control mechanisms to help provide a secured communications infrastructure across Active Directory domains and forests. The following services and features help support successful trust relationships.
+Vertrouwens relaties gebruiken verschillende services en functies, zoals DNS, om domein controllers te vinden in partner forests. Vertrouwens relaties zijn ook afhankelijk van NTLM-en Kerberos-verificatie protocollen en op Windows gebaseerde autorisatie-en toegangs beheer mechanismen om een beveiligde communicatie-infra structuur te bieden tussen Active Directory domeinen en forests. De volgende services en functies helpen u bij het ondersteunen van succes volle vertrouwens relaties.
 
 ### <a name="dns"></a>DNS
 
-AD DS needs DNS for domain controller (DC) location and naming. The following support from DNS is provided for AD DS to work successfully:
+AD DS moet DNS zijn voor de locatie en naam van de domein controller (DC). De volgende ondersteuning van DNS wordt geboden om AD DS te kunnen werken:
 
-* A name resolution service that lets network hosts and services to locate DCs.
-* A naming structure that enables an enterprise to reflect its organizational structure in the names of its directory service domains.
+* Een service voor naam omzetting die netwerk-hosts en-services toestaat om Dc's te vinden.
+* Een naamgevings structuur waarmee een onderneming zijn organisatie structuur kan weer spie gelen in de namen van de domein Directory-service domeinen.
 
-A DNS domain namespace is usually deployed that mirrors the AD DS domain namespace. If there's an existing DNS namespace before the AD DS deployment, the DNS namespace is typically partitioned for Active Directory, and a DNS subdomain and delegation for the Active Directory forest root is created. Additional DNS domain names are then added for each Active Directory child domain.
+Een naam ruimte van een DNS-domein wordt meestal geïmplementeerd die overeenkomt met de naam ruimte AD DS domein. Als er vóór de implementatie van de AD DS een bestaande DNS-naam ruimte is, wordt de DNS-naam ruimte doorgaans gepartitioneerd voor Active Directory en wordt een DNS-subdomein en delegering voor de hoofdmap van Active Directory forest gemaakt. Extra DNS-domein namen worden vervolgens toegevoegd voor elk Active Directory onderliggende domein.
 
-DNS is also used to support the location of Active Directory DCs. The DNS zones are populated with DNS resource records that enable network hosts and services to locate Active Directory DCs.
+DNS wordt ook gebruikt om de locatie van Active Directory Dc's te ondersteunen. De DNS-zones worden gevuld met DNS-bron records waarmee netwerk-hosts en-services Active Directory Dc's kunnen vinden.
 
-### <a name="applications-and-net-logon"></a>Applications and Net Logon
+### <a name="applications-and-net-logon"></a>Toepassingen en Net Logon
 
-Both applications and the Net Logon service are components of the Windows distributed security channel model. Applications integrated with Windows Server and Active Directory use authentication protocols to communicate with the Net Logon service so that a secured path can be established over which authentication can occur.
+Zowel toepassingen als de Net Logon-service zijn onderdelen van het Windows-model voor gedistribueerde beveiliging. Toepassingen die zijn geïntegreerd met Windows Server en Active Directory authenticatie protocollen gebruiken om te communiceren met de Net Logon-service zodat een beveiligd pad kan worden ingesteld waarover verificatie kan optreden.
 
 ### <a name="authentication-protocols"></a>Verificatieprotocollen
 
-Active Directory DCs authenticate users and applications using one of the following protocols:
+Active Directory Dc's gebruikers en toepassingen verifiëren met behulp van een van de volgende protocollen:
 
-* **Kerberos version 5 authentication protocol**
-    * The Kerberos version 5 protocol is the default authentication protocol used by on-premises computers running Windows and supporting third-party operating systems. This protocol is specified in RFC 1510 and is fully integrated with Active Directory, server message block (SMB), HTTP, and remote procedure call (RPC), as well as the client and server applications that use these protocols.
-    * When the Kerberos protocol is used, the server doesn't have to contact the DC. Instead, the client gets a ticket for a server by requesting one from a DC in the server account domain. The server then validates the ticket without consulting any other authority.
-    * If any computer involved in a transaction doesn't support the Kerberos version 5 protocol, the NTLM protocol is used.
+* **Kerberos versie 5-verificatie Protocol**
+    * Het protocol Kerberos versie 5 is het standaard verificatie protocol dat wordt gebruikt door on-premises computers waarop Windows wordt uitgevoerd en die besturings systemen van derden ondersteunen. Dit protocol is opgegeven in RFC 1510 en is volledig geïntegreerd met Active Directory, SMB (Server Message Block), HTTP en Remote Procedure Call (RPC), evenals de client-en server toepassingen die gebruikmaken van deze protocollen.
+    * Wanneer het Kerberos-protocol wordt gebruikt, hoeft de server geen contact te maken met de domein controller. In plaats daarvan krijgt de client een ticket voor een server door een aanvraag te doen van een domein controller in het Server account domein. De server valideert vervolgens het ticket zonder dat hiervoor een andere instantie wordt geraadpleegd.
+    * Als een computer die deel uitmaakt van een trans actie, niet het Kerberos versie 5-protocol ondersteunt, wordt het NTLM-protocol gebruikt.
 
-* **NTLM authentication protocol**
-    * The NTLM protocol is a classic network authentication protocol used by older operating systems. For compatibility reasons, it's used by Active Directory domains to process network authentication requests that come from applications designed for earlier Windows-based clients and servers, and third-party operating systems.
-    * When the NTLM protocol is used between a client and a server, the server must contact a domain authentication service on a DC to verify the client credentials. The server authenticates the client by forwarding the client credentials to a DC in the client account domain.
-    * When two Active Directory domains or forests are connected by a trust, authentication requests made using these protocols can be routed to provide access to resources in both forests.
+* **NTLM-verificatie Protocol**
+    * Het NTLM-protocol is een klassiek netwerk verificatie protocol dat wordt gebruikt door oudere besturings systemen. Om compatibiliteits redenen wordt het door Active Directory domeinen gebruikt voor het verwerken van netwerk verificatie aanvragen die afkomstig zijn van toepassingen die zijn ontworpen voor eerdere Windows-clients en-servers en besturings systemen van derden.
+    * Wanneer het NTLM-protocol tussen een client en een server wordt gebruikt, moet de server contact opnemen met een domein authenticatie service op een DC om de client referenties te controleren. De server verifieert de client door de client referenties door te sturen naar een domein controller in het account domein van de client.
+    * Wanneer twee Active Directory domeinen of forests door een vertrouwens relatie zijn verbonden, kunnen verificatie aanvragen die gebruikmaken van deze protocollen, worden gerouteerd om toegang te bieden tot bronnen in beide forests.
 
-## <a name="authorization-and-access-control"></a>Authorization and access control
+## <a name="authorization-and-access-control"></a>Autorisatie en toegangs beheer
 
-Authorization and trust technologies work together to provide a secured communications infrastructure across Active Directory domains or forests. Authorization determines what level of access a user has to resources in a domain. Trusts facilitate cross-domain authorization of users by providing a path for authenticating users in other domains so their requests to shared resources in those domains can be authorized.
+Verificatie-en vertrouwens technologieën werken samen om een beveiligde communicatie-infra structuur in Active Directory domeinen of forests te bieden. Autorisatie bepaalt welk niveau van toegang een gebruiker heeft tot resources in een domein. Vertrouwens relaties vergemakkelijken interdomein-autorisatie van gebruikers door een pad op te geven voor de verificatie van gebruikers in andere domeinen, zodat hun aanvragen voor gedeelde bronnen in die domeinen kunnen worden geautoriseerd.
 
-When an authentication request made in a trusting domain is validated by the trusted domain, it's passed to the target resource. The target resource then determines whether to authorize the specific request made by the user, service, or computer in the trusted domain based on its access control configuration.
+Wanneer een verificatie aanvraag in een vertrouwende domein is gevalideerd door het vertrouwde domein, wordt deze door gegeven aan de doel bron. De doel resource bepaalt vervolgens of de specifieke aanvraag door de gebruiker, de service of de computer in het vertrouwde domein moet worden geautoriseerd op basis van de toegangs beheer configuratie.
 
-Trusts provide this mechanism to validate authentication requests that are passed to a trusting domain. Access control mechanisms on the resource computer determine the final level of access granted to the requestor in the trusted domain.
+Vertrouwens relaties bieden dit mechanisme voor het valideren van verificatie aanvragen die worden door gegeven aan een vertrouwend domein. Toegangs beheer mechanismen op de bron computer bepalen het uiteindelijke niveau van toegang dat is verleend aan de aanvrager in het vertrouwde domein.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-To learn more about trusts, see [How do forest trusts work in Azure AD DS?][concepts-trust]
+Zie [Hoe kunnen forest-vertrouwens relaties werken in Azure AD DS?][concepts-trust] voor meer informatie over vertrouwens relaties.
 
-To get started with creating an Azure AD DS managed domain with a resource forest, see [Create and configure an Azure AD DS managed domain][tutorial-create-advanced]. You can then [Create an outbound forest trust to an on-premises domain (preview)][create-forest-trust].
+Zie [een door azure AD DS beheerd domein maken en configureren][tutorial-create-advanced]om aan de slag te gaan met het maken van een Azure AD DS beheerd domein met een resource-forest. U kunt vervolgens [een uitgaande forest-vertrouwens relatie maken met een on-premises domein (preview-versie)][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

@@ -1,6 +1,6 @@
 ---
 title: Azure Lighthouse in zakelijke scenario's
-description: The capabilities of Azure Lighthouse can be used to simplify cross-tenant management within an enterprise which uses multiple Azure AD tenants.
+description: De mogelijkheden van Azure Lighthouse kunnen worden gebruikt voor het vereenvoudigen van cross-Tenant beheer binnen een onderneming die gebruikmaakt van meerdere Azure AD-tenants.
 ms.date: 09/25/2019
 ms.topic: conceptual
 ms.openlocfilehash: f610f943ed7faa0d2ad64ff2f1554cdd41d76ee8
@@ -12,51 +12,51 @@ ms.locfileid: "74463915"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse in zakelijke scenario's
 
-The most common scenario for [Azure Lighthouse](../overview.md) is a service provider managing resources in its customers’ Azure  Active Directory (Azure AD) tenants. However, the capabilities of Azure Lighthouse can also be used to simplify cross-tenant management within an enterprise which uses multiple Azure AD tenants.
+Het meest voorkomende scenario voor [Azure Lighthouse](../overview.md) is een service provider die resources beheert in de Azure Active Directory (Azure AD)-tenants van klanten. De mogelijkheden van Azure Lighthouse kunnen echter ook worden gebruikt voor het vereenvoudigen van cross-Tenant beheer binnen een onderneming die gebruikmaakt van meerdere Azure AD-tenants.
 
-## <a name="single-vs-multiple-tenants"></a>Single vs. multiple tenants
+## <a name="single-vs-multiple-tenants"></a>Enkele versus meerdere tenants
 
-For most organizations, management is easier with a single Azure AD tenant. Having all resources within one tenant allows centralization of management tasks by designated users, user groups, or service principals within that tenant. We recommend using one tenant for your organization whenever possible.
+Voor de meeste organisaties is het beheer eenvoudiger met één Azure AD-Tenant. Met alle resources binnen één Tenant kunnen beheer taken worden gecentraliseerd door bepaalde gebruikers, gebruikers groepen of service-principals binnen die Tenant. We raden u aan om waar mogelijk één Tenant voor uw organisatie te gebruiken.
 
-At the same time, there are situations that may require an organization to maintain multiple Azure AD tenants. In some cases, this may be a temporary situation, as when acquisitions have taken place and a long-term tenant consolidation strategy will take some time to define. An organization may also need to maintain multiple tenants on an ongoing basis (due to wholly independent subsidiaries, geographical or legal requirements, and so on). In cases where a multi-tenant architecture is required, Azure delegated resource management can be used to centralize and streamline management operations. Subscriptions from multiple tenants can be onboarded for [Azure delegated resource management](azure-delegated-resource-management.md), allowing designated users in a managing tenant to perform [cross-tenant management functions](cross-tenant-management-experience.md) in a centralized and scalable manner.
+Op hetzelfde moment zijn er situaties waarin een organisatie mogelijk meerdere Azure AD-tenants moet onderhouden. In sommige gevallen kan dit een tijdelijke situatie zijn, alsof er verwervingen hebben plaatsgevonden en een strategie voor een langdurige Tenant consolidatie enige tijd in beslag neemt. Een organisatie moet mogelijk ook op doorlopende wijze meerdere tenants onderhouden (als gevolg van de volledige onafhankelijke dochter ondernemingen, geografische of juridische vereisten, enzovoort). In gevallen waarin een architectuur met meerdere tenants is vereist, kan Azure delegated resource management worden gebruikt om beheer bewerkingen te centraliseren en te stroom lijnen. Abonnementen van meerdere tenants kunnen worden voor bereid op het beheer van de [gedelegeerde resources van Azure](azure-delegated-resource-management.md), waardoor aangewezen gebruikers in een Tenant beheren voor het uitvoeren van [Cross-Tenant beheer functies](cross-tenant-management-experience.md) in een gecentraliseerde en schaal bare manier.
 
-## <a name="tenant-management-architecture"></a>Tenant management architecture
+## <a name="tenant-management-architecture"></a>Architectuur van Tenant beheer
 
-When centralizing management operations across multiple tenants, you’ll need to determine which tenant will include the users performing management operations for the other tenants. In other words, you will need to determine which tenant will be the managing tenant for other tenants.
+Wanneer u beheer bewerkingen verspreidt over meerdere tenants, moet u bepalen welke Tenant de gebruikers zijn die beheer bewerkingen uitvoeren voor de andere tenants. Met andere woorden, u moet bepalen welke Tenant de Tenant voor het beheren van andere tenants wordt.
 
-For example, say your organization has a single tenant that we’ll call *Tenant A*. Your organization then acquires two additional tenants, *Tenant B* and *Tenant C*, and you have business reasons that require you to maintain them as separate tenants.
+Stel bijvoorbeeld dat uw organisatie een enkele Tenant heeft die *Tenant a*oproept. Uw organisatie verwerft vervolgens twee extra tenants, *Tenant B* en *Tenant C*, en u hebt zakelijke redenen die u moeten onderhouden als afzonderlijke tenants.
 
-Your organization wants to use the same policy definitions, backup practices, and security processes across all tenants. Since you already have users (including user groups and service principals) that are responsible for performing these tasks within Tenant A, you can onboard all of the subscriptions within Tenant B and Tenant C so that those same users in Tenant A can perform those tasks.
+Uw organisatie wil dezelfde beleids definities, back-upprocedures en beveiligings processen voor alle tenants gebruiken. Omdat u al gebruikers (met inbegrip van gebruikers groepen en service-principals) hebt die verantwoordelijk zijn voor het uitvoeren van deze taken binnen Tenant A, kunt u alle abonnementen in Tenant B en Tenant C onboarden zodat dezelfde gebruikers in Tenant A deze kunnen uitvoeren. stappen.
 
-![Users in Tenant A managing resources in Tenant B and Tenant C](../media/enterprise-azure-lighthouse.jpg)
+![Gebruikers in tenants die een resources beheren in Tenant B en Tenant C](../media/enterprise-azure-lighthouse.jpg)
 
-## <a name="security-and-access-considerations"></a>Security and access considerations
+## <a name="security-and-access-considerations"></a>Aandachtspunten voor beveiliging en toegang
 
-In most enterprise scenarios, you’ll want to delegate a full subscription for Azure delegated resource management, although you can also delegate only specific resource groups within a subscription.
+In de meeste bedrijfs scenario's wilt u een volledig abonnement voor Azure delegated resource management delegeren, maar u kunt ook alleen specifieke resource groepen binnen een abonnement delegeren.
 
-Either way, be sure to [follow the principle of least privilege when defining which users will have access to resources](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). Doing so helps to ensure that users only have the permissions needed to perform the required tasks and reduces the chance of inadvertent errors.
+In beide gevallen moet u [het principe van minimale bevoegdheid volgen om te definiëren welke gebruikers toegang hebben tot resources](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). Dit zorgt ervoor dat gebruikers alleen over de benodigde machtigingen beschikken om de vereiste taken uit te voeren en de kans op onbedoelde fouten te verminderen.
 
-Azure Lighthouse and Azure delegated resource management only provide logical links between a managing tenant and managed tenants, rather than physically moving data or resources. Furthermore, the access always goes in only one direction, from the managing tenant to the managed tenants.  Users and groups in the managing tenant should continue to use multi-factor authentication when performing management operations on managed tenant resources.
+Azure Lighthouse en Azure delegated resource management bieden alleen logische koppelingen tussen een beheer Tenant en beheerde tenants, in plaats van fysiek gegevens of bronnen te verplaatsen. Bovendien gaat de Access altijd in slechts één richting, van de Tenant beheren naar de beheerde tenants.  Gebruikers en groepen in de Tenant beheren moeten multi-factor Authentication blijven gebruiken bij het uitvoeren van beheer bewerkingen op beheerde Tenant bronnen.
 
-Enterprises with internal or external governance and compliance guardrails can use [Azure Activity logs](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) to meet their transparency requirements. When enterprise tenants have established managing and managed tenant relationships, users in each tenant can monitor and gain visibility to actions taken by the users in the other tenant by viewing logged activity.
+Ondernemingen met interne of externe governance-en nalevings Guardrails kunnen [Azure-activiteiten logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) gebruiken om te voldoen aan hun transparantie vereisten. Wanneer ondernemings tenants beheer-en beheerde Tenant relaties hebben ingesteld, kunnen gebruikers in elke Tenant de acties die door de gebruikers in de andere Tenant worden uitgevoerd, bewaken en inzicht krijgen door de geregistreerde activiteit te bekijken.
 
-## <a name="onboarding-process-considerations"></a>Onboarding process considerations
+## <a name="onboarding-process-considerations"></a>Overwegingen voor het onboarding-proces
 
-Subscriptions (or resource groups within a subscription) can be onboarded to Azure delegated resource management either by deploying Azure Resource Manager templates or through Managed Services offers published to Azure Marketplace, either privately or publicly.
+Abonnementen (of resource groepen binnen een abonnement) kunnen worden gedistribueerd naar Azure delegated resource management door Azure Resource Manager sjablonen of via beheerde services aanbiedingen te implementeren die zijn gepubliceerd naar Azure Marketplace, hetzij privé, hetzij Pas.
 
-Since enterprise users will normally be able to gain direct access to the enterprise’s tenants, and there’s no need to market or promote a management offering, it’s generally faster and more straightforward to deploy directly with Azure Resource Manager templates. While we refer to service providers and customers in the [onboarding guidance](../how-to/onboard-customer.md), enterprises can use the same processes.
+Omdat zakelijke gebruikers normaal gesp roken direct toegang kunnen krijgen tot de tenants van de onderneming en er geen beheer aanbod hoeft te worden gemarket of bevorderd, is het over het algemeen sneller en eenvoudiger om rechtstreeks met Azure Resource Manager-sjablonen te implementeren. Hoewel we naar service providers en klanten verwijzen in de voorbereidings [richtlijnen](../how-to/onboard-customer.md), kunnen ondernemingen dezelfde processen gebruiken.
 
-If you prefer, tenants within an enterprise can be onboarded by [publishing a Managed Services offer to Azure Marketplace](../how-to/publish-managed-services-offers.md). To ensure that the offer is only available to the appropriate tenants, be sure that your plans are marked as private. With a private plan, you can provide the subscription IDs for each tenant that you plan to onboard, and no one else will be able to get your offer.
+Indien gewenst kunnen tenants binnen een onderneming onboarding worden uitgevoerd door [een managed services-aanbod naar Azure Marketplace te publiceren](../how-to/publish-managed-services-offers.md). Om ervoor te zorgen dat de aanbieding alleen beschikbaar is voor de juiste tenants, moet u ervoor zorgen dat uw plannen als privé zijn gemarkeerd. Met een privé-abonnement kunt u de abonnements-Id's opgeven voor elke Tenant die u wilt voorbereiden en hoeft niemand anders uw aanbieding te ontvangen.
 
-## <a name="terminology-notes"></a>Terminology notes
+## <a name="terminology-notes"></a>Terminologie notities
 
-For cross-tenant management within the enterprise, references to service providers in the Azure Lighthouse documentation can be understood to apply to the managing tenant within an enterprise—that is, the tenant that includes the users who will manage resources in other tenants through Azure delegated resource management. Similarly, references to customers can be understood to apply to the tenants that are delegating resources to be managed through users in the managing tenant.
+Voor beheer van meerdere tenants binnen de onderneming kunnen verwijzingen naar service providers in de Azure Lighthouse-documentatie worden geïnterpreteerd voor het beheren van de Tenant binnen een onderneming, dat wil zeggen, de Tenant die de gebruikers bevat die resources gaan beheren in andere tenants met behulp van het beheer van gedelegeerde resources van Azure. Verwijzingen naar klanten kunnen op dezelfde manier worden toegepast op de tenants die resources overdragen die worden beheerd door gebruikers in de Tenant beheren.
 
-For instance, in the example described above, Tenant A can be thought of as the service provider tenant (the managing tenant) and Tenant B and Tenant C can be thought of as the customer tenants.
+In het bovenstaande voor beeld kan Tenant A bijvoorbeeld worden beschouwd als de Tenant van de service provider (de Tenant beheren) en Tenant B en Tenant C kunnen worden beschouwd als de tenants van de klant.
 
-In that example, Tenant A users with the appropriate permissions can [view and manage delegated resources](../how-to/view-manage-customers.md) in the **My customers** page of the Azure portal. Likewise, Tenant B and Tenant C users with the appropriate permissions can [view and manage the resources that have been delegated](../how-to/view-manage-service-providers.md) to Tenant A in the **Service providers** page of the Azure portal.
+In dit voor beeld kunnen tenants van een gebruiker met de juiste machtigingen [gedelegeerde resources weer geven en beheren](../how-to/view-manage-customers.md) op de pagina **mijn klanten** van de Azure Portal. Daarnaast kunnen Tenant B-en Tenant C-gebruikers met de juiste machtigingen [de resources weer geven en beheren die zijn gedelegeerd](../how-to/view-manage-service-providers.md) aan Tenant A op de pagina **service providers** van de Azure Portal.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Learn about [cross-tenant management experiences](cross-tenant-management-experience.md).
+- Meer informatie over de [ervaring op het beheer van cross-tenants](cross-tenant-management-experience.md).
 - Meer informatie over [gedelegeerd Azure-resourcebeheer](azure-delegated-resource-management.md).

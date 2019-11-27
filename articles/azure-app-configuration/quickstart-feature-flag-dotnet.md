@@ -43,7 +43,7 @@ De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebr
 
 1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)** . Klik op **Volgende**.
 
-1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4.7.1** of hoger. Klik op **Maken**.
+1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4.7.1** of hoger. Klik op **Create**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 

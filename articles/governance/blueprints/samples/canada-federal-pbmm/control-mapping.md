@@ -1,14 +1,14 @@
 ---
-title: Voor beeld van Canada Federal PBMM Blues-Control-toewijzing
+title: Voorbeeld besturings elementen voor Canada Federal PBMM Blue Print
 description: De toewijzing van de voor beelden van Canada Federal PBMM blauw drukken. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
 ms.date: 09/04/2019
 ms.topic: sample
-ms.openlocfilehash: 0be73497de36ac3c11637b80a492ab0a8558206d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039712"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545257"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>De toewijzing van het voor beeld van Canada Federal PBMM blauw drukken
 
@@ -98,9 +98,9 @@ Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in e
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
-- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
-- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
+- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
+- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5-antwoord op mislukte controle verwerking
 
@@ -117,9 +117,9 @@ Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in e
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
-- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
-- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
+- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
+- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
 
 ## <a name="au-12-audit-generation"></a>Generatie van AU-12-audit
 
@@ -127,9 +127,9 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
-- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
-- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
+- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
+- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
 - Diagnostische instelling voor controleren
 - Controle-instellingen op SQL server-niveau controleren
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
@@ -291,9 +291,9 @@ Deze blauw druk helpt u bij het controleren van uw systeem door logboek registra
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
-- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
-- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
+- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
+- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
 - Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde gegevens beveiliging implementeren op SQL-servers

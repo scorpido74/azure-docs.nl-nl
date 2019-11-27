@@ -15,187 +15,187 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260700"
 ---
-## <a name="for-users-in-your-directory"></a>For users in your directory
+## <a name="for-users-in-your-directory"></a>Voor gebruikers in uw Directory
 
-Follow these steps if you want to allow users in your directory to be able to request this access package. When defining the request policy, you can specify individual users, or more commonly groups of users. For example, your organization may already have a group such as **All employees**.  If that group is added in the policy for users who can request access, then any member of that group can then request access.
+Volg deze stappen als u wilt toestaan dat gebruikers in uw directory dit toegangs pakket kunnen aanvragen. Wanneer u het aanvraag beleid definieert, kunt u afzonderlijke gebruikers of meer vaak groepen gebruikers opgeven. Uw organisatie kan bijvoorbeeld al een groep hebben, zoals **alle werk nemers**.  Als deze groep wordt toegevoegd aan het beleid voor gebruikers die toegang kunnen aanvragen, kan een lid van die groep vervolgens toegang vragen.
 
-1. In the **Users who can request access** section, click **For users in your directory**.
+1. Klik in de sectie **gebruikers die toegang kunnen aanvragen** , op **voor gebruikers in uw directory**.
 
-    When you select this option, new options appear to further refine who in your directory can request this access package.
+    Wanneer u deze optie selecteert, worden er nieuwe opties weer gegeven om te verfijnen wie in uw directory dit toegangs pakket kan aanvragen.
 
-    ![Access package - Requests - For users in your directory](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
+    ![Toegang tot pakket aanvragen: voor gebruikers in uw Directory](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. Select one of the following options:
+1. Selecteer een van de volgende opties:
 
     |  |  |
     | --- | --- |
-    | **Specific users and groups** | Choose this option if you want only the users and groups in your directory that you specify to be able to request this access package. |
-    | **All members (excluding guests)** | Choose this option if you want all member users in your directory to be able to request this access package. This option doesn't include any guest users you might have invited into your directory. |
-    | **All users (including guests)** | Choose this option if you want all member users and guest users in your directory to be able to request this access package. |
+    | **Specifieke gebruikers en groepen** | Kies deze optie als u wilt dat alleen de gebruikers en groepen in uw directory die u opgeeft, dit toegangs pakket kunnen aanvragen. |
+    | **Alle leden (exclusief gasten)** | Kies deze optie als u wilt dat alle gebruikers in uw directory dit toegangs pakket kunnen aanvragen. Deze optie bevat geen gast gebruikers die u mogelijk hebt uitgenodigd voor uw Directory. |
+    | **Alle gebruikers (inclusief gasten)** | Selecteer deze optie als u wilt dat alle leden van gebruikers en gast gebruikers in uw directory dit toegangs pakket kunnen aanvragen. |
 
-    Guest users refer to external users that have been invited into your directory with [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md). For more information about the differences between member users and guest users, see [What are the default user permissions in Azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md).
+    Gast gebruikers verwijzen naar externe gebruikers die zijn uitgenodigd voor uw directory met [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md). Zie [Wat zijn de standaard gebruikers machtigingen in azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md)voor meer informatie over de verschillen tussen gebruikers van het lid en gast gebruikers.
 
-1. If you selected **Specific users and groups**, click **Add users and groups**.
+1. Als u **specifieke gebruikers en groepen**hebt geselecteerd, klikt u op **gebruikers en groepen toevoegen**.
 
-1. In the Select users and groups pane, select the users and groups you want to add.
+1. Selecteer in het deel venster gebruikers en groepen selecteren de gebruikers en groepen die u wilt toevoegen.
 
-    ![Access package - Requests - Select users and groups](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
+    ![Toegangs pakket-aanvragen-gebruikers en groepen selecteren](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
 
-1. Click **Select** to add the users and groups.
+1. Klik op **selecteren** om de gebruikers en groepen toe te voegen.
 
-1. Skip down to the [Approval](#approval) section.
+1. De sectie [goed keuring](#approval) overs Laan.
 
-## <a name="for-users-not-in-your-directory"></a>For users not in your directory
+## <a name="for-users-not-in-your-directory"></a>Voor gebruikers die niet in uw Directory voor komt
 
- **Users not in your directory** refers to users who are in another Azure AD directory or domain. These users may not have yet been invited into your directory. Azure AD directories must be configured to be allow invitations in **Collaboration restrictions**. For more information, see [Enable B2B external collaboration and manage who can invite guests](../articles/active-directory/b2b/delegate-invitations.md).
+ **Gebruikers die zich niet in uw directory** bevinden, verwijzen naar gebruikers in een andere Azure AD-Directory of een ander domein. Deze gebruikers zijn mogelijk nog niet in uw directory uitgenodigd. Azure AD-mappen moeten zodanig worden geconfigureerd dat uitnodigingen in **samenwerkings beperkingen**worden toegestaan. Zie [externe B2B-samen werking inschakelen en beheren wie gasten kan uitnodigen](../articles/active-directory/b2b/delegate-invitations.md)voor meer informatie.
 
 > [!NOTE]
-> A guest user account will be created for a user not yet in your directory whose request is approved or auto-approved. The guest will be invited, but will not receive an invite email. Instead, they will receive an email when their access package assignment is delivered. By default, later when that guest user no longer has any access package assignments, because their last assignment has expired or been cancelled, that guest user account will be blocked from sign in and subsequently deleted. If you want to have guest users remain in your directory indefinitely, even if they have no access package assignments, you can change the settings for your entitlement management configuration. For more information about the guest user object, see [Properties of an Azure Active Directory B2B collaboration user](../articles/active-directory/b2b/user-properties.md).
+> Er wordt een gast gebruikers account voor een gebruiker gemaakt dat nog niet in uw directory is waarvan de aanvraag is goedgekeurd of automatisch goedgekeurd. De gast wordt uitgenodigd, maar ontvangt geen uitnodigings-e-mail. In plaats daarvan ontvangen ze een e-mail bericht wanneer hun toegangs pakket toewijzing wordt bezorgd. Later, wanneer deze gast gebruiker geen toegangs pakket toewijzingen meer heeft, omdat de laatste toewijzing is verlopen of is geannuleerd, wordt het gast gebruikers account geblokkeerd om zich aan te melden en vervolgens te verwijderen. Als u wilt dat gast gebruikers voor onbepaalde tijd in uw Directory blijven, zelfs als ze geen toegangs pakket toewijzingen hebben, kunt u de instellingen voor uw rechten beheer configuratie wijzigen. Zie [Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker](../articles/active-directory/b2b/user-properties.md)voor meer informatie over het gast gebruikers object.
 
-Follow these steps if you want to allow users not in your directory to request this access package:
+Volg deze stappen als u wilt toestaan dat gebruikers die geen toegang hebben tot uw directory dit toegangs pakket aanvragen:
 
-1. In the **Users who can request access** section, click **For users not in your directory**.
+1. Klik in de sectie **gebruikers die toegang kunnen aanvragen** , op **voor gebruikers die zich niet in uw directory**bevindt.
 
-    When you select this option, new options appear.
+    Wanneer u deze optie selecteert, worden er nieuwe opties weer gegeven.
 
-    ![Access package - Requests - For users not in your directory](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
+    ![Toegang tot pakket aanvragen: voor gebruikers die niet in uw Directory voor komt](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
-1. Select one of the following options:
+1. Selecteer een van de volgende opties:
 
     |  |  |
     | --- | --- |
-    | **Specific connected organizations** | Choose this option if you want to select from a list of organizations that your administrator previously added. All users from the selected organizations can request this access package. |
-    | **All connected organizations** | Choose this option if all users from all your connected organizations can request this access package. |
+    | **Specifieke verbonden organisaties** | Kies deze optie als u een selectie wilt selecteren in een lijst met organisaties die de beheerder eerder heeft toegevoegd. Alle gebruikers van de geselecteerde organisaties kunnen dit toegangs pakket aanvragen. |
+    | **Alle verbonden organisaties** | Kies deze optie als alle gebruikers van alle verbonden organisaties dit toegangs pakket kunnen aanvragen. |
 
-    A connected organization is an external Azure AD directory or domain that you have a relationship with.
+    Een verbonden organisatie is een extern Azure AD-adres lijst of-domein waarmee u een relatie hebt.
 
-1. If you selected **Specific connected organizations**, click **Add directories** to select from a list of connected organizations that your administrator previously added.
+1. Als u **specifieke verbonden organisaties**hebt geselecteerd, klikt u op **mappen toevoegen** om te selecteren in een lijst met verbonden organisaties die de beheerder eerder heeft toegevoegd.
 
-1. Type the name or domain name to search for a previously connected organization.
+1. Typ de naam of de domein naam om te zoeken naar een eerder verbonden organisatie.
 
-    ![Access package - Requests - Select directories](./media/active-directory-entitlement-management-request-policy/select-directories.png)
+    ![Toegangs pakket-aanvragen-mappen selecteren](./media/active-directory-entitlement-management-request-policy/select-directories.png)
 
-    If the organization you want to collaborate with isn't in the list, you can ask your administrator to add it as a connected organization. For more information, see [Add a connected organization](../articles/active-directory/governance/entitlement-management-organization.md).
+    Als de organisatie waarmee u wilt samen werken, zich niet in de lijst bevindt, kunt u uw beheerder vragen om deze toe te voegen als een verbonden organisatie. Zie [add a Connected Organization](../articles/active-directory/governance/entitlement-management-organization.md)(Engelstalig) voor meer informatie.
 
-1. Once you've selected all your connected organizations, click **Select**.
+1. Wanneer u alle verbonden organisaties hebt geselecteerd, klikt u op **selecteren**.
 
     > [!NOTE]
-    > All users from the selected connected organizations will be able to request this access package. This includes users in Azure AD from all subdomains associated with the organization, unless those domains are blocked by the Azure B2B allow or deny list. For more information, see [Allow or block invitations to B2B users from specific organizations](../articles/active-directory/b2b/allow-deny-list.md).
+    > Alle gebruikers van de geselecteerde verbonden organisaties kunnen dit toegangs pakket aanvragen. Dit omvat gebruikers in azure AD van alle subdomeinen die zijn gekoppeld aan de organisatie, tenzij deze domeinen worden geblokkeerd door de Azure B2B-lijst voor toestaan of weigeren. Zie [uitnodigingen voor B2B-gebruikers van specifieke organisaties toestaan of blok keren](../articles/active-directory/b2b/allow-deny-list.md)voor meer informatie.
 
-1. Skip down to the [Approval](#approval) section.
+1. De sectie [goed keuring](#approval) overs Laan.
 
-## <a name="none-administrator-direct-assignments-only"></a>None (administrator direct assignments only)
+## <a name="none-administrator-direct-assignments-only"></a>Geen (alleen directe toewijzingen voor beheerders)
 
-Follow these steps if you want to bypass access requests and allow administrators to directly assign specific users to this access package. Users won't have to request the access package. You can still set lifecycle settings, but there are no request settings.
+Volg deze stappen als u toegangs aanvragen wilt overs Laan en wilt toestaan dat beheerders rechtstreeks specifieke gebruikers aan dit toegangs pakket toewijzen. Gebruikers hoeven het toegangs pakket niet aan te vragen. U kunt nog steeds levenscyclus instellingen instellen, maar er zijn geen aanvraag instellingen.
 
-1. In the **Users who can request access** section, click **None (administrator direct assignments only**.
+1. Klik in de sectie **gebruikers die toegang kunnen vragen** , op **geen (alleen beheerders direct toewijzingen**).
 
-    ![Access package - Requests - None administrator direct assignments only](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
+    ![Toegang tot pakket-requests-geen alleen directe toewijzingen voor beheerders](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    After you create the access package, you can directly assign specific internal and external users to the access package. If you specify an external user, a guest user account will be created in your directory. For information about directly assigning a user, see [View, add, and remove assignments for an access package](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
+    Nadat u het toegangs pakket hebt gemaakt, kunt u rechtstreeks specifieke interne en externe gebruikers aan het toegangs pakket toewijzen. Als u een externe gebruiker opgeeft, wordt er een gast gebruikers account in uw directory gemaakt. Zie [toewijzingen voor een toegangs pakket weer geven, toevoegen en verwijderen](../articles/active-directory/governance/entitlement-management-access-package-assignments.md)voor meer informatie over het rechtstreeks toewijzen van een gebruiker.
 
-1. Skip down to the [Enable requests](#enable-requests) section.
+1. Ga verder naar de sectie [aanvragen inschakelen](#enable-requests) .
 
 ## <a name="approval"></a>Goedkeuring
 
-In the Approval section, you specify whether an approval is required when users request this access package. The approval settings work in the following way:
+In de sectie goed keuring geeft u op of een goed keuring is vereist wanneer gebruikers dit toegangs pakket aanvragen. De goedkeurings instellingen werken op de volgende manier:
 
-- Only one of the selected approvers or fallback approvers needs to approve a request for single-stage approval. 
-- Only one of the selected approvers from each stage needs to approve a request for 2-stage approval.
-- The approver can be a Manager, Internal sponsor, or External sponsor depending on who the policy is governing access.
-- Approval from every selected approver isn't required for single or 2-stage approval.
-- The approval decision is based on whichever approver reviews the request first.
+- Slechts één van de geselecteerde goed keurders of terugval fiatteurs moeten een aanvraag voor goed keuring in één fase goed keuren. 
+- Slechts één van de geselecteerde goed keurders van elke fase moet een aanvraag voor het goed keuren van twee fasen goed keuren.
+- De goed keurder kan een manager, interne sponsor of externe sponsor zijn, afhankelijk van wie het beleid van toepassing is.
+- Goed keuring van elke geselecteerde goed keurder is niet vereist voor het goed keuren van één of twee fasen.
+- De goedkeurings beslissing is gebaseerd op welke fiatteur de aanvraag eerst bekijkt.
 
-Follow these steps to specify the approval settings for requests for the access package:
+Volg deze stappen om de goedkeurings instellingen op te geven voor aanvragen voor het toegangs pakket:
 
-1. To require approval for requests from the selected users, set the **Require approval** toggle to **Yes**. Or, to have requests automatically approved, set the toggle to **No**.
+1. Als u goed keuring wilt vereisen voor aanvragen van de geselecteerde gebruikers, stelt u de schakel optie **goed keuring vereisen** in op **Ja**. Als u wilt dat aanvragen automatisch worden goedgekeurd, stelt u de wissel knop in op **Nee**.
 
-1. To require users to provide a justification to request the access package, set the **Require requestor justification** toggle to **Yes**.
+1. Als u wilt dat gebruikers een reden opgeven om het toegangs pakket aan te vragen, stelt u de optie uitschakeling van **aanvrager vereisen** in op **Ja**.
     
-1. Now determine if requests will require single or 2-stage approval. Set the **How many stages** toggle to **1** for single stage approval or set the toggle to **2** for 2-stage approval.
+1. Bepaal nu of aanvragen met één of twee fasen moeten worden goedgekeurd. Stel in hoeveel **fasen** moeten worden overgeschakeld op **1** voor de goed keuring van één fase of stel de wissel knop in op **2** voor goed keuring in twee fasen.
 
-    ![Access package - Requests - Approval settings](./media/active-directory-entitlement-management-request-policy/approval.png)
+    ![Toegangs aanvragen-goedkeurings instellingen voor het pakket](./media/active-directory-entitlement-management-request-policy/approval.png)
 
 
-Use the following steps to add approvers after selecting how many stages you require: 
+Gebruik de volgende stappen om goed keurders toe te voegen nadat u hebt gekozen hoeveel fases u nodig hebt: 
 
-### <a name="single-stage-approval"></a>Single-stage approval
+### <a name="single-stage-approval"></a>Goed keuring in één fase
 
-1. Add the **First Approver**:
+1. De **eerste goed keurder**toevoegen:
     
-    If the policy is set to govern access for users in your directory, you can select **Manager as approver**. Or, add a specific user by clicking **Add approvers** after selecting Choose specific approvers from the dropdown menu.
+    Als het beleid is ingesteld op het bepalen van de toegang voor gebruikers in uw directory, kunt u **Manager selecteren als fiatteur**. U kunt ook een specifieke gebruiker toevoegen door te klikken op **goed keurders toevoegen** na selectie specifieke goed keurders selecteren in het vervolg keuzemenu.
     
-    ![Access package - Requests - For users in directory - First Approver](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
+    ![Toegang tot pakket aanvragen-voor gebruikers in Directory-First goed keurder](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
 
-    If this policy is set to govern access for users not in your directory, you can select **External sponsor** or **Internal sponsor**. Or, add a specific user by clicking **Add approvers** or groups under Choose specific approvers.
+    Als dit beleid is ingesteld op het bepalen van de toegang voor gebruikers die zich niet in uw directory bevindt, kunt u **externe sponsor** of **interne sponsor**selecteren. U kunt ook een specifieke gebruiker toevoegen door te klikken op **fiatteurs** of groepen toevoegen onder specifieke goed keurders kiezen.
     
-    ![Access package - Requests - For users out of directory - First Approver](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
+    ![Toegang tot pakket aanvragen-voor gebruikers buiten de Directory-eerste goed keurder](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
     
-1. If you selected **Manager** as the first approver, click **Add fallback** to select one or more users or groups in your directory to be a fallback approver. Fallback approvers receive the request if entitlement management can't find the manager for the user requesting access.
+1. Als u **Manager** als eerste fiatteur hebt geselecteerd, klikt u op **terugval toevoegen** om een of meer gebruikers of groepen in uw directory te selecteren als terugval fiatteur. Terugval fiatteurs ontvangen de aanvraag als het beheer van rechten de Manager niet kan vinden voor de gebruiker die toegang vraagt.
 
-    The manager is found by entitlement management using the **Manager** attribute. The attribute is in the user's profile in Azure AD. For more information, see [Add or update a user's profile information using Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
+    De Manager is gevonden door het beheer van rechten met behulp van het kenmerk **Manager** . Het kenmerk bevindt zich in het profiel van de gebruiker in azure AD. Zie [de profiel gegevens van een gebruiker toevoegen of bijwerken met behulp van Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md)voor meer informatie.
 
-1. If you selected **Choose specific approvers**, click **Add approvers** to select one or more users or groups in your directory to be approvers.
+1. Als u **specifieke goed keurders kiezen**hebt geselecteerd, klikt u op goed keurders **toevoegen** om een of meer gebruikers of groepen in uw directory te selecteren voor goed keurders.
 
-1. In the box under **Decision must be made in how many days?** , specify the number of days that an approver has to review a request for this access package.
+1. In het vak onder **besluit moet worden aangegeven hoeveel dagen?** , geeft u het aantal dagen op dat een fiatteur een aanvraag voor dit toegangs pakket moet beoordelen.
 
-    If a request isn't approved within this time period, it will be automatically denied. The user will have to submit another request for the access package.
+    Als een aanvraag niet binnen deze tijds periode is goedgekeurd, wordt deze automatisch geweigerd. De gebruiker moet een andere aanvraag indienen voor het toegangs pakket.
 
-1. To require approvers to provide a justification for their decision, set Require approver justification to **Yes**.
+1. Als u goed keurders wilt verplichten om een motivering te geven voor de beslissing, stelt u de uitvulling van de fiatteur in op **Ja**.
 
-    The justification is visible to other approvers and the requestor.
+    De motivering is zichtbaar voor andere goed keurders en de aanvrager.
 
-### <a name="2-stage-approval-preview"></a>2-stage approval (Preview)
+### <a name="2-stage-approval-preview"></a>2-fase goedkeuring (preview-versie)
 
-If you selected a 2-stage approval, you'll need to add a second approver.
+Als u een 2-fase goedkeuring hebt geselecteerd, moet u een tweede goed keurder toevoegen.
 
-1. Add the **Second Approver**: 
+1. Voeg de **tweede goed keurder**toe: 
     
-    If the users are in your directory, add a specific user as the second approver by clicking **Add approvers** under Choose specific approvers.
+    Als de gebruikers zich in uw directory bevinden, voegt u een specifieke gebruiker als de tweede goed keurder toe door te klikken op **fiatteurs toevoegen** onder specifieke goed keurders kiezen.
 
-    ![Access package - Requests - For users in directory - Second Approver](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
+    ![Toegang tot pakket aanvragen-gebruikers in de Directory-tweede goed keurder](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
 
-    If the users aren't in your directory, select **Internal sponsor** or **External sponsor** as the second approver. After selecting the approver, add the fallback approvers.
+    Als de gebruikers zich niet in uw directory bevinden, selecteert u **interne sponsor** of **externe sponsor** als de tweede goed keurder. Nadat u de goed keurder hebt geselecteerd, voegt u de terugval fiatteurs toe.
 
-    ![Access package - Requests - For users out of directory - Second Approver](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
+    ![Toegang tot pakket aanvragen-voor gebruikers buiten de Directory-tweede goed keurder](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
 
-1. Specify the number of days the second approver has to approve the request in the box under **Decision must be made in how many days?** . 
+1. Geef het aantal dagen op dat de tweede goed keurder de aanvraag moet goed keuren in het vak onder **besluit moeten worden gedaan in het aantal dagen?** . 
 
-1. Set the Require approver justification toggle to **Yes** or **No**.
+1. Stel de uitvulling van de goed keurder vereisen in op **Ja** of **Nee**.
 
-### <a name="alternate-approvers"></a>Alternate approvers
+### <a name="alternate-approvers"></a>Alternatieve goed keurders
 
-You can specify alternate approvers, similar to specifying the first and second approvers who can approve requests. Having alternate approvers will help ensure that the requests are approved or denied before they expire (timeout). You can list alternate approvers the first approver and second approver for 2-stage approval. 
+U kunt alternatieve goed keurders opgeven, vergelijkbaar met het opgeven van de eerste en tweede goed keurders die aanvragen kunnen goed keuren. Met alternatieve goed keurders kunt u ervoor zorgen dat de aanvragen worden goedgekeurd of geweigerd voordat ze verlopen (time-out). U kunt de eerste goed keurder en tweede goed keurder een lijst met alternatieve goed keurders geven voor het goed keuren van twee fasen. 
 
-By specifying alternate approvers, in the event that the first or second approvers were unable to approve or deny the request, the pending request gets forwarded to the alternate approvers, per the forwarding schedule you specified during policy setup. They receive an email to approve or deny the pending request.
+Door alternatieve goed keurders op te geven, in het geval dat de eerste of tweede goed keurders de aanvraag niet goed keuren of afwijzen, wordt de in behandeling zijnde aanvraag doorgestuurd naar de alternatieve goed keurders, volgens het doorstuur schema dat u tijdens het instellen van het beleid hebt opgegeven. Ze ontvangen een e-mail om de in behandeling zijnde aanvraag goed te keuren of te weigeren.
 
-After the request is forwarded to the alternate approvers, the first or second approvers can still approve or deny the request. Alternate approvers use the same My Access site to approve or deny the pending request.
+Nadat de aanvraag is doorgestuurd naar de alternatieve goed keurders, kunnen de eerste of tweede goed keurders de aanvraag toch goed keuren of weigeren. Alternatieve goed keurders gebruiken dezelfde mijn Access-site om de in behandeling zijnde aanvraag goed te keuren of te weigeren.
 
-We can list people or groups of people to be approvers and alternate approvers. Please ensure that you list different sets of people to be the first, second, and alternate approvers.
-For example, if you listed Alice and Bob as the First Approver(s), list Carol and Dave as the alternate approvers. Use the following steps to add alternate approvers to an access package:
+We kunnen personen of groepen mensen een lijst geven als fiatteurs en alternatieve goed keurders. Zorg ervoor dat u de lijst met verschillende groepen van personen de eerste, tweede en alternatieve goed keurders vermeldt.
+Als u bijvoorbeeld Anne en Bob als eerste fiatteur (s) hebt genoteerd, vermeldt u Carola en Dave als alternatieve goed keurders. Gebruik de volgende stappen om alternatieve goed keurders toe te voegen aan een toegangs pakket:
 
-1. Under the First Approver, Second Approver, or both, click **Show advanced request settings**.
+1. Klik onder de eerste goed keurder, tweede goed keurder of beide op **Geavanceerde aanvraag instellingen weer geven**.
 
-    ![Access package - Policy - Show advanced request settings](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+    ![Toegangs pakket-beleid: Geavanceerde aanvraag instellingen weer geven](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
 
-1. Set **If no action taken, forward to alternate approvers?** toggle to **Yes**.
+1. Instellen **als er geen actie wordt ondernomen, door sturen naar alternatieve goed keurders? in-** of **uitschakelen.**
 
-1. Click **Add alternate approvers** and select the alternate approver(s) from the list.
+1. Klik op **alternatieve goed keurders toevoegen** en selecteer de alternatieve fiatteur (s) in de lijst.
 
-    ![Access package - Policy - Add Alternate Approvers](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+    ![Toegangs pakket-beleid-alternatieve goed keurders toevoegen](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
 
-1. In the **Forward to alternate approver(s) after how many days** box, put in the number of days the approvers have to approve or deny a request. If no approvers have approved or denied the request before the request duration, the request expires (timeout), and the user will have to submit another request for the access package. 
+1. Stel in het vak **door sturen naar alternatieve goed keurder (en) na hoeveel dagen** het aantal dagen in dat de goed keurders een aanvraag moeten goed keuren of weigeren. Als geen goed keurders de aanvraag hebben goedgekeurd of geweigerd vóór de duur van de aanvraag, is de aanvraag verloopt (time-out) en moet de gebruiker een andere aanvraag indienen voor het toegangs pakket. 
 
-    Requests can only be forwarded to alternate approvers a day after the request duration reaches half-life. In this example, the duration of the request is 14 days. So, the request duration reaches half-life at day 7. So the request can't be forwarded earlier than day 8. Also, requests can't be forwarded on the last day of the request duration. So in the example, the latest the request can be forwarded is day 13.
+    Aanvragen kunnen alleen worden doorgestuurd naar alternatieve goed keurders op een dag nadat de duur van de aanvraag een halve duur heeft bereikt. In dit voor beeld is de duur van de aanvraag 14 dagen. Daarom bereikt de duur van de aanvraag halfjaarlijks op dag 7. De aanvraag kan dus niet eerder dan dag 8 worden doorgestuurd. Bovendien kunnen aanvragen niet worden doorgestuurd op de laatste dag van de aanvraag duur. In het voor beeld kan de meest recente aanvraag worden doorgestuurd is dag 13.
 
-## <a name="enable-requests"></a>Enable requests
+## <a name="enable-requests"></a>Aanvragen inschakelen
 
-1. If you want the access package to be made immediately available for users in the request policy to request, click **Yes** to enable.
+1. Als u wilt dat het toegangs pakket onmiddellijk beschikbaar wordt gesteld voor gebruikers in het aanvraag beleid om aan te vragen, klikt u op **Ja** om in te scha kelen.
 
-    You can always enable it in the future after you have finished creating the access package.
+    U kunt deze altijd in de toekomst inschakelen nadat u klaar bent met het maken van het toegangs pakket.
 
-    If you selected **None (administrator direct assignments only)** and you set enable to **No**, then administrators can't directly assign this access package.
+    Als u geen hebt geselecteerd **(alleen voor beheerders directe toewijzingen)** en u instellen op **Nee**instelt, kunnen beheerders dit toegangs pakket niet rechtstreeks toewijzen.
 
-    ![Access package - Policy- Enable policy setting](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
+    ![Toegangs pakket-beleids instelling beleid inschakelen](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. Klik op **Volgende**.

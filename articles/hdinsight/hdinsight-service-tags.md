@@ -44,16 +44,16 @@ Lees de volgende secties van het document om erachter te komen welke service tag
 
 Als u liever de service label optie twee en uw cluster bevindt zich in een van de regio's die in deze tabel worden vermeld, hoeft u slechts één regionale servicetag toe te voegen aan uw netwerk beveiligings groep.
 
-| Country | Regio | Servicetag |
+| Land | Regio | Servicetag |
 | ---- | ---- | ---- |
 | Australië | Australië - oost | HDInsight. AustraliaEast |
 | &nbsp; | Australië - zuidoost | HDInsight. AustraliaSoutheast |
 | &nbsp; | Australië - centraal | HDInsight. AustraliaCentral |
 | China | China - oost 2 | HDInsight. ChinaEast2 |
 | &nbsp; | China - noord 2 | HDInsight. ChinaNorth2 |
-| Verenigde Staten | VS - noord-centraal | HDInsight. NorthCentralUS |
-| &nbsp; | VS - west 2 | HDInsight. WestUS2 |
-| &nbsp; | VS - west-centraal | HDInsight. WestCentralUS |
+| Verenigde Staten | US - noord-centraal | HDInsight. NorthCentralUS |
+| &nbsp; | US - west 2 | HDInsight. WestUS2 |
+| &nbsp; | US - west-centraal | HDInsight. WestCentralUS |
 | Canada | Canada - oost | HDInsight. CanadaEast |
 | Brazilië | Brazilië - zuid | HDInsight. BrazilSouth |
 | Korea | Korea - centraal | HDInsight. KoreaCentral |
@@ -83,17 +83,17 @@ Als uw cluster bijvoorbeeld is gemaakt in de regio `East US 2`, moet u de volgen
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Country | Regio | Servicetag |
+| Land | Regio | Servicetag |
 | ---- | ---- | ---- |
-| Verenigde Staten | VS - oost 2 | HDInsight. EastUS2 |
+| Verenigde Staten | US - oost 2 | HDInsight. EastUS2 |
 | &nbsp; | US - centraal | HDInsight. Centraalus |
 | &nbsp; | NorthCentral | HDInsight. NorthCentralUS |
-| &nbsp; | VS - zuid-centraal | HDInsight. SouthCentralUS |
-| &nbsp; | VS - oost | HDInsight. Oostelijkeus |
-| &nbsp; | VS - west | HDInsight. Westelijkeus |
+| &nbsp; | US - zuid-centraal | HDInsight. SouthCentralUS |
+| &nbsp; | US - oost | HDInsight. Oostelijkeus |
+| &nbsp; | US - west | HDInsight. Westelijkeus |
 | Japan | Japan - oost | HDInsight. JapanEast |
 | Europa | Europa - noord | HDInsight. NorthEurope |
-| &nbsp; | Europa - west| HDInsight. Europa West |
+| &nbsp; | Europa -west| HDInsight. Europa West |
 | Azië | Azië - oost | HDInsight. EastAsia |
 | &nbsp; | Azië - zuidoost | HDInsight. SoutheastAsia |
 | Australië | Australië - oost | HDInsight. AustraliaEast |

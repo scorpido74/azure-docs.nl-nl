@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 5b287253e471ced244db3169be9f7d8f14e5862e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: cb812a0432e5fdb2828054751ef35f3de82226e7
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045263"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539034"
 ---
 # <a name="quickstart-content-moderator-client-library-for-net"></a>Snelstartgids: Content Moderator-client bibliotheek voor .NET
 
@@ -27,7 +27,7 @@ Gebruik de Content Moderator-client bibliotheek voor .NET voor het volgende:
 * [Gemiddelde afbeeldingen](#moderate-images)
 * [Een beoordeling maken](#create-a-review)
 
-[Referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet)  | -[bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  | -voor[beelden](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
+[Referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | -voor [beelden](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -128,8 +128,8 @@ De volgende code gebruikt een Content Moderator-client om een tekst hoofdtekst t
 Klik vervolgens in de hoofdmap van het project en voeg een *TextFile. txt* -bestand toe. Voeg uw eigen tekst toe aan dit bestand of gebruik de volgende voorbeeld tekst:
 
 ```
-Is this a grabage email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
-Crap is the profanity here. Is this information PII? phone 3144444444
+Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
+Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
 Voeg de volgende methode aanroep toe aan de `Main` methode:
@@ -282,4 +282,4 @@ In deze Quick Start hebt u geleerd hoe u de Content Moderator .NET-bibliotheek k
 > [Concepten van afbeeldings toezicht](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Wat is Azure Content Moderator?](./overview.md)
-* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ContentModerator/Program.cs).
+* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ContentModerator/Program.cs).

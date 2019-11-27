@@ -1,7 +1,7 @@
 ---
-title: Configuration based on STIG to use in state configuration - Azure Automation
-description: Learn about configurations based on STIG for state configuration in Azure Automation.
-keywords: dsc,powershell,configuration,setup
+title: Configuratie op basis van STIG voor gebruik in status configuratie-Azure Automation
+description: Meer informatie over configuraties op basis van STIG voor status configuratie in Azure Automation.
+keywords: DSC, Power shell, configuratie, installatie
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -19,30 +19,30 @@ ms.locfileid: "74231662"
 ---
 # <a name="configuration-based-on-stig"></a>Configuration op basis van STIG
 
-> Applies To: Windows PowerShell 5.1
+> Van toepassing op: Windows Power shell 5,1
 
-Creating configuration content for the first time can be challenging.
-In many cases, the goal is to automate configuration of servers following a "baseline" that hopefully aligns to an industry recommendation.
+Het maken van configuratie-inhoud voor de eerste keer kan lastig zijn.
+In veel gevallen is het doel om de configuratie van servers te automatiseren volgens een ' basis lijn ' die in het ideale geval wordt afgestemd op een branche aanbeveling.
 
 > [!NOTE]
-> This article refers to a solution that is maintained by the Open Source community.
-> Support is only available in the form of GitHub collaboration, not from Microsoft.
+> In dit artikel wordt verwezen naar een oplossing die wordt onderhouden door de open source-community.
+> Ondersteuning is alleen beschikbaar in de vorm van GitHub-samen werking, niet van micro soft.
 
-## <a name="community-project-powerstig"></a>Community project: PowerSTIG
+## <a name="community-project-powerstig"></a>Community-Project: PowerSTIG
 
-A community project named [PowerSTIG](https://github.com/microsoft/powerstig) aims to resolve this issue by generating DSC content based on [public information](https://public.cyber.mil/stigs/) provided about STIG (Security Technical Implementation Guide),
+Een community-project met de naam [PowerSTIG](https://github.com/microsoft/powerstig) is bedoeld om dit probleem op te lossen door DSC-inhoud te genereren op basis van de [open bare informatie](https://public.cyber.mil/stigs/) over Stig (technische implementatie handleiding voor beveiliging),
 
-Dealing with baselines is more complicated than it sounds.
-Many organizations need to [document exceptions](https://github.com/microsoft/powerstig#powerstigdata) to rules and manage that data at scale.
-PowerSTIG addresses the problem by providing [Composite Resources](https://github.com/microsoft/powerstig#powerstigdsc) to address each area of the configuration rather than trying to address the entire range of settings in one large file.
+Het verwerken van basis lijnen is ingewik kelder dan het klinkt.
+Veel organisaties moeten [uitzonde ringen documenteren](https://github.com/microsoft/powerstig#powerstigdata) voor regels en deze gegevens op schaal beheren.
+PowerSTIG lost het probleem op door [samengestelde resources](https://github.com/microsoft/powerstig#powerstigdsc) op te geven voor elk gebied van de configuratie, in plaats van te proberen het hele bereik met instellingen in één groot bestand op te lossen.
 
-Once the configurations have been generated, you can use the [DSC Configuration scripts](/powershell/scripting/dsc/configurations/configurations) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
+Zodra de configuraties zijn gegenereerd, kunt u de DSC- [configuratie scripts](/powershell/scripting/dsc/configurations/configurations) gebruiken om MOF-bestanden te genereren en [de MOF-bestanden uploaden naar Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Registreer uw servers vervolgens [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) of [in azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) om configuraties te halen.
 
-To try out PowerSTIG, visit the [PowerShell Gallery](http://www.powershellgallery.com) and download the solution or click "Project Site" to view the [documentation](https://github.com/microsoft/powerstig).
+Als u PowerSTIG wilt uitproberen, gaat u naar de [PowerShell Gallery](http://www.powershellgallery.com) en downloadt u de oplossing of klikt u op project site om de [documentatie](https://github.com/microsoft/powerstig)weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
-- [DSC Resources](/powershell/scripting/dsc/resources/resources)
-- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [Overzicht van desired state Configuration voor Windows Power shell](/powershell/scripting/dsc/overview/overview)
+- [DSC-resources](/powershell/scripting/dsc/resources/resources)
+- [De lokale Configuration Manager configureren](/powershell/scripting/dsc/managing-nodes/metaconfig)

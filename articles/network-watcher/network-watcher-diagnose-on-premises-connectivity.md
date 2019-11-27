@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275942"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531832"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnose van on-premises connectiviteit via VPN-gateways
 
@@ -42,7 +42,7 @@ U wilt een site-naar-site-verbinding tussen Azure en on-premises configureren me
 
 Gedetailleerde stapsgewijze richt lijnen voor het configureren van een site-naar-site-configuratie vindt u op: [een VNet met een site-naar-site-verbinding maken met behulp van de Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Een van de kritieke configuratie stappen is het configureren van de IPsec-communicatie parameters, elke onjuiste configuratie leidt tot verlies van connectiviteit tussen het on-premises netwerk en Azure. Momenteel zijn Azure VPN-gateways geconfigureerd ter ondersteuning van de volgende IPsec-para meters voor fase 1. Houd er rekening mee dat eerder genoemde instellingen niet kunnen worden gewijzigd.  Zoals u kunt zien in de volgende tabel, zijn de versleutelings algoritmen die door Azure VPN Gateway worden ondersteund, AES256, AES128 en 3DES.
+Een van de kritieke configuratie stappen is het configureren van de IPsec-communicatie parameters, elke onjuiste configuratie leidt tot verlies van connectiviteit tussen het on-premises netwerk en Azure. Momenteel zijn Azure VPN-gateways geconfigureerd ter ondersteuning van de volgende IPsec-para meters voor fase 1. Zoals u kunt zien in de volgende tabel, zijn de versleutelings algoritmen die door Azure VPN Gateway worden ondersteund, AES256, AES128 en 3DES.
 
 ### <a name="ike-phase-1-setup"></a>Setup van IKE fase 1
 
@@ -53,7 +53,7 @@ Een van de kritieke configuratie stappen is het configureren van de IPsec-commun
 | Verificatiemethode |Vooraf gedeelde sleutel |Vooraf gedeelde sleutel |
 | Versleutelingsalgoritmen |AES256 AES128 3DES |AES256 3DES |
 | Hash-algoritme |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| Levensduur (tijd) van beveiligingskoppeling (SA) fase 1 |28.800 seconden |10.800 seconden |
+| Levensduur (tijd) van beveiligingskoppeling (SA) fase 1 |28.800 seconden |28.800 seconden |
 
 Als gebruiker bent u verplicht uw Forti Gate te configureren. u kunt een voorbeeld configuratie vinden op [github](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). U hebt uw Forti Gate niet bewust geconfigureerd voor het gebruik van SHA-512 als hash-algoritme. Omdat dit algoritme geen ondersteund algoritme is voor verbindingen op basis van beleid, werkt uw VPN-verbinding.
 
@@ -108,7 +108,7 @@ Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u 
 | ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' losgekoppeld '. |Nee|
 | ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
 | ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
-| Verificatie | De vooraf gedeelde sleutel komt niet overeen. | Ja|
+| Authentication | De vooraf gedeelde sleutel komt niet overeen. | Ja|
 | PeerReachability | De peer gateway is niet bereikbaar. | Ja|
 | IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
 | WfpParse Error | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|

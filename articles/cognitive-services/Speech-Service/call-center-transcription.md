@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a2025eb611a394cf4b67c05a4019ccf03bcadf9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2a8bea01d67c1820dc4f5c0a4922872541449a9e
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075866"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538180"
 ---
 # <a name="speech-service-for-telephony-data"></a>Spraak service voor telefoon gegevens
 
@@ -95,7 +95,6 @@ Een typische oplossing maakt gebruik van de volgende services:
 - De speech-service wordt gebruikt om spraak-naar-tekst te transcriberen. Voor de speech-service is een Standard-abonnement (S0) vereist om de batch transcriptie-API te gebruiken. Gratis abonnementen (F0) werken niet.
 - [Azure Storage](https://azure.microsoft.com/services/storage/) wordt gebruikt voor het opslaan van telefoon gegevens en de transcripten die worden geretourneerd door de batch transcriptie API. Voor dit opslag account moeten meldingen worden gebruikt, specifiek voor wanneer nieuwe bestanden worden toegevoegd. Deze meldingen worden gebruikt om het transcriptie-proces te activeren.
 - [Azure functions](https://docs.microsoft.com/azure/azure-functions/) wordt gebruikt om de SAS-URI (Shared Access signatures) voor elke record te maken en de HTTP POST-aanvraag voor het starten van een transcriptie te activeren. Daarnaast wordt Azure Functions gebruikt voor het maken van aanvragen voor het ophalen en verwijderen van transcripties met behulp van de batch transcriptie-API.
-- [Webhooks](webhooks.md) worden gebruikt om meldingen te ontvangen wanneer transcripties zijn voltooid.
 
 Intern gebruiken we de bovenstaande technologieën om micro soft-klant gesprekken in batch-modus te ondersteunen.
 ![batch architectuur](media/scenarios/call-center-batch-pipeline.png)

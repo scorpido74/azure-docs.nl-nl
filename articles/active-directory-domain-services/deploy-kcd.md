@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 89bc690e5a8c8d24d7732dd4e12f70a9f1f368af
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b6941a159c8be9f7d1921dd281f7366b078b30a7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842651"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546271"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Kerberos-beperkte delegering (KCD) configureren in Azure Active Directory Domain Services
 
 Wanneer u toepassingen uitvoert, moeten deze toepassingen mogelijk toegang hebben tot bronnen in de context van een andere gebruiker. Active Directory Domain Services (AD DS) ondersteunt een mechanisme met de naam *Kerberos delegering* , waarmee dit gebruik kan worden ingeschakeld. Kerberos- *beperkte* delegering (KCD) wordt vervolgens gebaseerd op dit mechanisme om specifieke bronnen te definiëren waartoe toegang kan worden verkregen in de context van de gebruiker. De beheerde domeinen van Azure Active Directory Domain Services (Azure AD DS) zijn veiliger vergrendeld op de traditionele on-premises AD DS omgevingen. Gebruik daarom een veiligere op *bronnen gebaseerde* KCD.
 
-In dit artikel wordt beschreven hoe u resource-basd Kerberos-beperkte delegering configureert in een door Azure AD DS beheerd domein.
+In dit artikel wordt beschreven hoe u op resources gebaseerde Kerberos-beperkte overdracht configureert in een door Azure AD DS beheerd domein.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,7 +42,9 @@ U hebt de volgende resources nodig om dit artikel te volt ooien:
 
 Met Kerberos-overdracht kan een account een ander account imiteren voor toegang tot resources. Zo kan een webtoepassing die toegang heeft tot een webonderdeel van de back-end zichzelf imiteren als een ander gebruikers account wanneer dit de back-endverbinding maakt. Kerberos-delegering is onveilig omdat hiermee niet wordt beperkt tot welke bronnen het imitatie account toegang heeft.
 
-Kerberos-beperkte delegering (KCD) beperkt de services of bronnen waarmee een opgegeven server of toepassing verbinding kan maken wanneer er een andere identiteit wordt geïmiteerd. Traditionele KCD vereist domein beheerders rechten voor het configureren van een domein account voor een service. het account wordt beperkt om te worden uitgevoerd op één domein. Traditionele KCD hebben ook een aantal problemen. In eerdere besturings systemen had de service beheerder bijvoorbeeld geen handige manier om te weten welke front-end-services zijn overgedragen aan de resource services waarvan ze eigenaar zijn. Een front-end-service die kan delegeren naar een resource service was een mogelijk aanvals punt. Als een server die een front-end-service heeft die is geconfigureerd voor delegeren aan resource Services, is aangetast, kan de resource Services ook worden aangetast.
+Kerberos-beperkte delegering (KCD) beperkt de services of bronnen waarmee een opgegeven server of toepassing verbinding kan maken wanneer er een andere identiteit wordt geïmiteerd. Traditionele KCD vereist domein beheerders rechten voor het configureren van een domein account voor een service. het account wordt beperkt om te worden uitgevoerd op één domein.
+
+Traditionele KCD hebben ook een aantal problemen. In eerdere besturings systemen had de service beheerder bijvoorbeeld geen handige manier om te weten welke front-end-services zijn overgedragen aan de resource services waarvan ze eigenaar zijn. Een front-end-service die kan delegeren naar een resource service was een mogelijk aanvals punt. Als een server die een front-end-service heeft die is geconfigureerd voor delegeren aan resource Services, is aangetast, kan de resource Services ook worden aangetast.
 
 In een door Azure AD DS beheerd domein hebt u geen domein beheerders rechten. Als gevolg hiervan kunnen traditionele op accounts gebaseerde KCD niet worden geconfigureerd in een Azure-AD DS een beheerd domein. Op resources gebaseerde KCD kunnen in plaats daarvan worden gebruikt. Dit is ook veiliger.
 

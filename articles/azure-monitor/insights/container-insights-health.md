@@ -19,7 +19,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74279640"
 ---
-# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Inzicht in de Kubernetes-cluster status met Azure Monitor voor containers
+# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Informatie over de status van een AKS-cluster met Azure Monitor voor containers
 
 Met Azure Monitor voor containers wordt de status van de beheerde infrastructuur onderdelen gecontroleerd en gerapporteerd en worden alle knoop punten die worden uitgevoerd op een Kubernetes-cluster ondersteund door Azure Monitor voor containers. Deze ervaring overschrijdt de status van de cluster status die wordt berekend en gerapporteerd in de [weer gave met meerdere clusters](container-insights-analyze.md#multi-cluster-view-from-azure-monitor), waar u nu kunt begrijpen of een of meer knoop punten in het cluster resource beperking zijn, of dat een knoop punt of pod niet beschikbaar is die van invloed kan zijn op een actieve toepassing in het cluster op basis van metrische gegevens.
 
@@ -72,13 +72,13 @@ Zie [configuratie handleiding Health Monitor](container-insights-health-monitors
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+Meld u aan bij [Azure Portal](https://portal.azure.com). 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Status van een AKS-of niet-AKS-cluster weer geven
 
-Toegang tot de Azure Monitor voor de functie status van containers (preview) is rechtstreeks beschikbaar vanuit een AKS-cluster door **inzichten** te selecteren in het linkerdeel venster van de Azure Portal. Onder de **Insights** sectie, selecteer **Containers**. 
+Toegang tot de Azure Monitor voor de functie status van containers (preview) is rechtstreeks beschikbaar vanuit een AKS-cluster door **inzichten** te selecteren in het linkerdeel venster van de Azure Portal. Selecteer in de sectie **insightss** de optie **containers**. 
 
-Als u de status wilt weer geven van een niet-AKS-cluster, dat wil zeggen een AKS engine-cluster dat lokaal wordt gehost of op Azure Stack, selecteert u **Azure monitor** in het linkerdeel venster van de Azure Portal. Onder de **Insights** sectie, selecteer **Containers**.  Selecteer op de pagina met meerdere clusters het niet-AKS-cluster in de lijst.
+Als u de status wilt weer geven van een niet-AKS-cluster, dat wil zeggen een AKS engine-cluster dat lokaal wordt gehost of op Azure Stack, selecteert u **Azure monitor** in het linkerdeel venster van de Azure Portal. Selecteer in de sectie **insightss** de optie **containers**.  Selecteer op de pagina met meerdere clusters het niet-AKS-cluster in de lijst.
 
 Selecteer in Azure Monitor voor containers, op de pagina **cluster** , **status**.
 

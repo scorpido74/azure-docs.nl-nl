@@ -1,6 +1,6 @@
 ---
-title: Migrate SQL ServerWindows users and groups to managed instance using T-SQL
-description: Learn about how to migrate SQL Server on-premises Windows users and groups to managed instance
+title: SQL ServerWindows-gebruikers en-groepen migreren naar een beheerd exemplaar met behulp van T-SQL
+description: Meer informatie over het migreren van SQL Server on-premises Windows-gebruikers en-groepen naar een beheerd exemplaar
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -17,41 +17,41 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227926"
 ---
-# <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Tutorial: Migrate SQL Server on-premises Windows users and groups to Azure SQL Database managed instance using T-SQL DDL syntax
+# <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Zelf studie: SQL Server on-premises Windows-gebruikers en-groepen migreren naar Azure SQL Database beheerd exemplaar met behulp van de syntaxis van T-SQL DDL
 
 > [!NOTE]
-> The syntax used to migrate users and groups to managed instance in this article is in **public preview**.
+> De syntaxis die wordt gebruikt voor het migreren van gebruikers en groepen naar een beheerd exemplaar in dit artikel, is in **open bare preview**.
 
-This article takes you through the process of migrating your on-premises Windows users and groups in your SQL Server to an existing Azure SQL Database managed instance using T-SQL syntax.
+In dit artikel vindt u meer over het migratie proces van uw on-premises Windows-gebruikers en-groepen in uw SQL Server naar een bestaand Azure SQL Database beheerd exemplaar met de T-SQL-syntaxis.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> - Create logins for SQL Server
-> - Create a test database for migration
-> - Create logins, users, and roles
-> - Backup and restore your database to managed instance (MI)
-> - Manually migrate users to MI using ALTER USER syntax
-> - Testing authentication with the new mapped users
+> - Aanmeldingen voor SQL Server maken
+> - Een test database maken voor migratie
+> - Aanmeldingen, gebruikers en rollen maken
+> - Back-up maken en herstellen van de Data Base naar een beheerd exemplaar (MI)
+> - Gebruikers hand matig migreren naar MI met ALTER USER syntax
+> - Verificatie testen met de nieuwe toegewezen gebruikers
 
 ## <a name="prerequisites"></a>Vereisten
 
-To complete this tutorial, the following prerequisites apply:
+Voor het volt ooien van deze zelf studie gelden de volgende vereisten:
 
-- The Windows domain is federated with Azure Active Directory (Azure AD).
-- Access to Active Directory to create users/groups.
-- An existing SQL Server in your on-premises environment.
-- An existing managed instance. See [Quickstart: Create an Azure SQL Database managed instance](sql-database-managed-instance-get-started.md).
-  - A `sysadmin` in the managed instance must be used to create Azure AD logins.
-- [Create an Azure AD admin for managed instance](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
-- You can connect to your managed instance within your network. See the following articles for additional information: 
-    - [Connect your application to Azure SQL Database managed instance](sql-database-managed-instance-connect-app.md)
-    - [Quickstart: Configure a point-to-site connection to an Azure SQL Database Managed Instance from on-premises](sql-database-managed-instance-configure-p2s.md)
+- Het Windows-domein is federatief met Azure Active Directory (Azure AD).
+- Toegang tot Active Directory om gebruikers/groepen te maken.
+- Een bestaande SQL Server in uw on-premises omgeving.
+- Een bestaand beheerd exemplaar. Zie [Quick Start: een door Azure SQL database beheerd exemplaar maken](sql-database-managed-instance-get-started.md).
+  - Een `sysadmin` in het beheerde exemplaar moet worden gebruikt voor het maken van Azure AD-aanmeldingen.
+- [Maak een Azure AD-beheerder voor het beheerde exemplaar](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
+- U kunt verbinding maken met uw beheerde instantie binnen uw netwerk. Raadpleeg de volgende artikelen voor aanvullende informatie: 
+    - [Uw toepassing verbinden met Azure SQL Database beheerde instantie](sql-database-managed-instance-connect-app.md)
+    - [Snelstartgids: een punt-naar-site-verbinding naar een door Azure SQL Database beheerd exemplaar van on-premises configureren](sql-database-managed-instance-configure-p2s.md)
     - [Openbaar eindpunt configureren in beheerd exemplaar van Azure SQL Database](sql-database-managed-instance-public-endpoint-configure.md)
 
-## <a name="t-sql-ddl-syntax"></a>T-SQL DDL syntax
+## <a name="t-sql-ddl-syntax"></a>Syntaxis van T-SQL DDL
 
-Below are the T-SQL DDL syntax used to support SQL Server on-premises Windows users and groups migration to managed instance with Azure AD authentication.
+Hieronder vindt u de syntaxis voor T-SQL DDL die wordt gebruikt ter ondersteuning van SQL Server on-premises Windows-gebruikers en-groepen migratie naar een beheerd exemplaar met Azure AD-verificatie.
 
 ```sql
 -- For individual Windows users with logins 
@@ -63,26 +63,26 @@ ALTER USER [domainName\groupName] WITH LOGIN=[groupName]
 
 ## <a name="arguments"></a>Argumenten
 
-_domainName_</br>
-Specifies the domain name of the user.
+_Naam_</br>
+Hiermee geeft u de domein naam van de gebruiker.
 
-_userName_</br>
-Specifies the name of the user identified inside the database.
+_Gebruikers_</br>
+Hiermee geeft u de naam op van de gebruiker die in de data base is geïdentificeerd.
 
-_= loginName\@domainName.com_</br>
-Remaps a user to the Azure AD login
+_= aanmeldings naam\@domainName.com_</br>
+Hiermee wordt een gebruiker opnieuw toegewezen aan de Azure AD-aanmelding
 
 _groupName_</br>
-Specifies the name of the group identified inside the database.
+Hiermee geeft u de naam op van de groep die in de data base is geïdentificeerd.
 
-## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>Part 1: Create logins for SQL Server on-premises users and groups
+## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>Deel 1: aanmeldingen maken voor SQL Server on-premises gebruikers en groepen
 
 > [!IMPORTANT]
-> The following syntax creates a user and a group login in your SQL Server. You'll need to make sure that the user and group exist inside your Active Directory (AD) before executing the below syntax. </br> </br>
-> Users: testUser1, testGroupUser </br>
-> Group: migration - testGroupUser needs to belong to the migration group in AD
+> Met de volgende syntaxis maakt u een gebruiker en een groeps aanmelding in uw SQL Server. U moet ervoor zorgen dat de gebruiker en groep bestaan in uw Active Directory (AD) voordat u de onderstaande syntaxis uitvoert. </br> </br>
+> Gebruikers: testUser1, testGroupUser </br>
+> Groep: migratie-testGroupUser moeten deel uitmaken van de migratie groep in AD
 
-The example below creates a login in SQL Server for an account named _testUser1_ under the domain _aadsqlmi_. 
+In het volgende voor beeld wordt een aanmelding gemaakt in SQL Server voor een account met de naam _testUser1_ onder het domein _aadsqlmi_. 
 
 ```sql
 -- Sign into SQL Server as a sysadmin or a user that can create logins and databases
@@ -106,7 +106,7 @@ select * from sys.server_principals;
 go; 
 ```
 
-Create a database for this test.
+Maak een Data Base voor deze test.
 
 ```sql
 -- Create a database called [migration]
@@ -114,9 +114,9 @@ create database migration
 go
 ```
 
-## <a name="part-2-create-windows-users-and-groups-then-add-roles-and-permissions"></a>Part 2: Create Windows users and groups, then add roles and permissions
+## <a name="part-2-create-windows-users-and-groups-then-add-roles-and-permissions"></a>Deel 2: Windows-gebruikers en-groepen maken en vervolgens rollen en machtigingen toevoegen
 
-Use the following syntax to create the test user.
+Gebruik de volgende syntaxis om de test gebruiker te maken.
 
 ```sql
 use migration;  
@@ -127,7 +127,7 @@ create user [aadsqlmi\testUser1] from login [aadsqlmi\testUser1];
 go 
 ```
 
-Check the user permissions:
+Controleer de gebruikers machtigingen:
 
 ```sql
 -- Check the user in the Metadata 
@@ -139,7 +139,7 @@ select user_name(grantee_principal_id), * from sys.database_permissions;
 go
 ```
 
-Create a role and assign your test user to this role:
+Maak een rol en wijs uw test gebruiker toe aan deze rol:
 
 ```sql 
 -- Create a role with some permissions and assign the user to the role
@@ -153,7 +153,7 @@ alter role UserMigrationRole add member [aadsqlmi\testUser1];
 go 
 ``` 
 
-Use the following query to display user names assigned to a specific role:
+Gebruik de volgende query om gebruikers namen weer te geven die zijn toegewezen aan een specifieke rol:
 
 ```sql
 -- Display user name assigned to a specific role 
@@ -168,7 +168,7 @@ WHERE DP1.type = 'R'
 ORDER BY DP1.name; 
 ```
 
-Use the following syntax to create a group. Then add the group to the role `db_owner`.
+Gebruik de volgende syntaxis om een groep te maken. Voeg vervolgens de groep toe aan de rol `db_owner`.
 
 ```sql
 -- Create Windows group
@@ -185,7 +185,7 @@ go
 -- Output  ( 1 means YES) 
 ```
 
-Create a test table and add some data using the following syntax:
+Maak een test tabel en voeg enkele gegevens toe met behulp van de volgende syntaxis:
 
 ```sql
 -- Create a table and add data 
@@ -200,9 +200,9 @@ select * from test;
 go
 ```
 
-## <a name="part-3-backup-and-restore-the-individual-user-database-to-managed-instance"></a>Part 3: Backup and restore the individual user database to managed instance
+## <a name="part-3-backup-and-restore-the-individual-user-database-to-managed-instance"></a>Deel 3: een back-up maken van de afzonderlijke gebruikers database en deze herstellen naar een beheerd exemplaar
 
-Create a backup of the migration database using the article [Copy Databases with Backup and Restore](/sql/relational-databases/databases/copy-databases-with-backup-and-restore), or use the following syntax:
+Maak een back-up van de migratie database met behulp van het artikel [Copy data bases with Backup and Restore](/sql/relational-databases/databases/copy-databases-with-backup-and-restore), of gebruik de volgende syntaxis:
 
 ```sql
 use master; 
@@ -211,16 +211,16 @@ backup database migration to disk = 'C:\Migration\migration.bak';
 go
 ```
 
-Follow our [Quickstart: Restore a database to a managed instance](sql-database-managed-instance-get-started-restore.md).
+Volg onze [Snelstartgids: een Data Base herstellen naar een beheerd exemplaar](sql-database-managed-instance-get-started-restore.md).
 
-## <a name="part-4-migrate-users-to-managed-instance"></a>Part 4: Migrate users to managed instance
+## <a name="part-4-migrate-users-to-managed-instance"></a>Deel 4: gebruikers migreren naar een beheerd exemplaar
 
 > [!NOTE]
-> The Azure AD admin for managed instance functionality after creation has changed. For more information, see [New Azure AD admin functionality for MI](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
+> De Azure AD-beheerder voor de functionaliteit van het beheerde exemplaar na het maken is gewijzigd. Zie voor meer informatie [nieuwe Azure AD-beheer functionaliteit voor mi](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
 
-Execute the ALTER USER command to complete the migration process on managed instance.
+Voer de opdracht ALTER USER uit om het migratie proces voor een beheerd exemplaar te volt ooien.
 
-1. Sign into your managed instance using the Azure AD admin account for managed instance. Then create your Azure AD login in the managed instance using the following syntax. For more information, see [Tutorial: Managed instance security in Azure SQL Database using Azure AD server principals (logins)](sql-database-managed-instance-aad-security-tutorial.md).
+1. Meld u aan bij uw beheerde exemplaar met behulp van het Azure AD-beheerders account voor een beheerd exemplaar. Maak vervolgens uw Azure AD-aanmelding in het beheerde exemplaar met de volgende syntaxis. Zie voor meer informatie [zelf studie: beheerde exemplaar beveiliging in Azure SQL database met behulp van Azure ad server-principals (aanmeldingen)](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 
@@ -239,7 +239,7 @@ Execute the ALTER USER command to complete the migration process on managed inst
     go
     ```
 
-1. Check your migration for the correct database, table, and principals.
+1. Controleer de migratie voor de juiste data base, tabel en principals.
 
     ```sql
     -- Switch to the database migration that is already restored for MI 
@@ -257,7 +257,7 @@ Execute the ALTER USER command to complete the migration process on managed inst
     -- the old group aadsqlmi\migration should be there
     ```
 
-1. Use the ALTER USER syntax to map the on-premises user to the Azure AD login.
+1. Gebruik de syntaxis ALTER USER om de on-premises gebruiker toe te wijzen aan de Azure AD-aanmelding.
 
     ```sql
     /** Execute the ALTER USER command to alter the Windows user [aadsqlmi\testUser1]
@@ -288,7 +288,7 @@ Execute the ALTER USER command to complete the migration process on managed inst
     ORDER BY DP1.name;
     ```
 
-1. Use the ALTER USER syntax to map the on-premises group to the Azure AD login.
+1. Gebruik de syntaxis ALTER USER om de on-premises groep toe te wijzen aan de Azure AD-aanmelding.
 
     ```sql
     /** Execute ALTER USER command to alter the Windows group [aadsqlmi\migration]
@@ -312,26 +312,26 @@ Execute the ALTER USER command to complete the migration process on managed inst
     -- Output 1 means 'YES'
     ```
 
-## <a name="part-5-testing-azure-ad-user-or-group-authentication"></a>Part 5: Testing Azure AD user or group authentication
+## <a name="part-5-testing-azure-ad-user-or-group-authentication"></a>Deel 5: de verificatie van Azure AD-gebruikers of-groepen testen
 
-Test authenticating to managed instance using the user previously mapped to the Azure AD login using the ALTER USER syntax.
+Test de verificatie voor het beheerde exemplaar met behulp van de gebruiker die eerder is toegewezen aan de Azure AD-aanmelding met de syntaxis ALTER USER.
  
-1. Log into the federated VM using your MI subscription as  `aadsqlmi\testUser1`
-1. Using SQL Server Management Studio (SSMS), sign into your managed instance using **Active Directory Integrated** authentication, connecting to the database `migration`.
-    1. You can also sign in using the testUser1@aadsqlmi.net credentials with the SSMS option **Active Directory – Universal with MFA support**. However, in this case, you can't use the Single Sign On mechanism and you must type a password. You won't need to use a federated VM to log in to your managed instance.
-1. As part of the role member **SELECT**, you can select from the `test` table
+1. Meld u aan bij de federatieve VM met uw MI-abonnement als `aadsqlmi\testUser1`
+1. Meld u met behulp van SQL Server Management Studio (SSMS) aan bij uw beheerde exemplaar met behulp van **Active Directory geïntegreerde** verificatie, waarmee verbinding wordt gemaakt met de data base `migration`.
+    1. U kunt zich ook aanmelden met de testUser1@aadsqlmi.net referenties met de optie SSMS **Active Directory – Universal met MFA-ondersteuning**. In dit geval kunt u echter het mechanisme voor eenmalige aanmelding niet gebruiken en moet u een wacht woord invoeren. U hoeft geen federatieve virtuele machine te gebruiken om u aan te melden bij uw beheerde exemplaar.
+1. Als onderdeel van de functie leden **selecteren**, kunt u uit de tabel `test` selecteren
 
     ```sql
     Select * from test  --  and see one row (1,10)
     ```
 
 
-Test authenticating to a managed instance using a member of a Windows group `migration`. The user `aadsqlmi\testGroupUser` should have been added to the group `migration` before the migration.
+Test de verificatie bij een beheerd exemplaar met behulp van een lid van een Windows-groep `migration`. De gebruiker `aadsqlmi\testGroupUser` moet zijn toegevoegd aan de groep `migration` vóór de migratie.
 
-1. Log into the federated VM using your MI subscription as  `aadsqlmi\testGroupUser` 
-1. Using SSMS with **Active Directory Integrated** authentication, connect to the MI server and the database `migration`
-    1. You can also sign in using the testGroupUser@aadsqlmi.net credentials with the SSMS option **Active Directory – Universal with MFA support**. However, in this case, you can't use the Single Sign On mechanism and you must type a password. You won't need to use a federated VM to log into your managed instance. 
-1. As part of the `db_owner` role, you can create a new table.
+1. Meld u aan bij de federatieve VM met uw MI-abonnement als `aadsqlmi\testGroupUser` 
+1. Gebruik SSMS met **Active Directory geïntegreerde** verificatie om verbinding te maken met de mi-server en de-data base `migration`
+    1. U kunt zich ook aanmelden met de testGroupUser@aadsqlmi.net referenties met de optie SSMS **Active Directory – Universal met MFA-ondersteuning**. In dit geval kunt u echter het mechanisme voor eenmalige aanmelding niet gebruiken en moet u een wacht woord invoeren. U hoeft geen federatieve virtuele machine te gebruiken om u aan te melden bij uw beheerde exemplaar. 
+1. Als onderdeel van de `db_owner` rol kunt u een nieuwe tabel maken.
 
     ```sql
     -- Create table named 'new' with a default schema
@@ -339,11 +339,11 @@ Test authenticating to a managed instance using a member of a Windows group `mig
     ```
                              
 > [!NOTE] 
-> Due to a known design issue for Azure SQL DB, a create a table statement executed as a member of a group will fail with the following error: </br> </br>
+> Als gevolg van een bekend ontwerp probleem voor Azure SQL DB, mislukt het maken van een tabel instructie die wordt uitgevoerd als lid van een groep, met de volgende fout: </br> </br>
 > `Msg 2760, Level 16, State 1, Line 4 
 The specified schema name "testGroupUser@aadsqlmi.net" either does not exist or you do not have permission to use it.` </br> </br>
-> The current workaround is to create a table with an existing schema in the case above <dbo.new>
+> De huidige tijdelijke oplossing is het maken van een tabel met een bestaand schema in bovenstaand geval < dbo. New >
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Tutorial: Migrate SQL Server to an Azure SQL Database managed instance offline using DMS](../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)
+- [Zelf studie: SQL Server naar een beheerde instantie van Azure SQL Database migreren met behulp van DMS](../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)

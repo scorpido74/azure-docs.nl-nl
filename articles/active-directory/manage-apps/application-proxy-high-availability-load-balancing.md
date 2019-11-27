@@ -98,8 +98,8 @@ Raadpleeg de documentatie van uw software leverancier om inzicht te krijgen in d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toepassingsproxy inschakelen](application-proxy-add-on-premises-application.md)
+- [Toepassings proxy inschakelen](application-proxy-add-on-premises-application.md)
 - [Eenmalige aanmelding inschakelen](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Voorwaardelijke toegang inschakelen](application-proxy-integrate-with-sharepoint-server.md)
-- [Oplossen van problemen met Application Proxy](application-proxy-troubleshoot.md)
+- [Problemen met toepassings proxy oplossen](application-proxy-troubleshoot.md)
 - [Meer informatie over hoe Azure AD-architectuur hoge Beschik baarheid ondersteunt](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

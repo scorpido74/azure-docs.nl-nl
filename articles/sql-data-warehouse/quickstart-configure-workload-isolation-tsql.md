@@ -35,7 +35,7 @@ In deze Quick Start wordt ervan uitgegaan dat u al een SQL Data Warehouse hebt e
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-login-for-dataloads"></a>Aanmelding maken voor DataLoads
 

@@ -1,6 +1,6 @@
 ---
 title: Beleid implementeren dat kan worden hersteld
-description: Learn how to onboard a customer to Azure delegated resource management, allowing their resources to be accessed and managed through your own tenant.
+description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer van Azure-resources, zodat deze toegankelijk is en kan worden beheerd via uw eigen Tenant.
 ms.date: 10/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 4522c9ebad741f5ec0cb7e56e68467312ef8f037
@@ -10,19 +10,19 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463879"
 ---
-# <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Deploy a policy that can be remediated within a delegated subscription
+# <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Een beleid implementeren dat kan worden hersteld binnen een gedelegeerd abonnement
 
-[Azure Lighthouse](../overview.md) allows service providers to create and edit policy definitions within a delegated subscription. However, to deploy policies that use a [remediation task](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) (that is, policies with the [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) or [modify](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify) effect), you’ll need to create a [managed identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) in the customer tenant. This managed identity can be used by Azure Policy to deploy the template within the policy. There are steps required to enable this scenario, both when you onboard the customer for Azure delegated resource management, and when you deploy the policy itself.
+Met [Azure Lighthouse](../overview.md) kunnen service providers beleids definities maken en bewerken binnen een gedelegeerd abonnement. Als u echter beleid wilt implementeren dat gebruikmaakt van een [herstel taak](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) (dat wil zeggen beleid met het [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) of [wijzigings](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify) effect), moet u een [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) maken in de Tenant van de klant. Deze beheerde identiteit kan worden gebruikt door Azure Policy om de sjabloon in het beleid te implementeren. Er zijn stappen vereist om dit scenario in te scha kelen, zowel wanneer u de klant voorbereidt voor Azure gedelegeerd resource beheer als u het beleid zelf implementeert.
 
-## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Create a user who can assign roles to a managed identity in the customer tenant
+## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Een gebruiker maken die rollen kan toewijzen aan een beheerde identiteit in de Tenant van de klant
 
-When you onboard a customer for Azure delegated resource management, you use an [Azure Resource Manager template](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer#create-an-azure-resource-manager-template) along with a parameters file that defines the users, user groups, and service principals in your managing tenant that will be able to access the delegated resources in the customer tenant. In your parameters file, each of these users (**principalId**) is assigned a [built-in role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (**roleDefinitionId**) that defines the level of access.
+Wanneer u een klant voor het beheer van de gedelegeerde resources van Azure uitschakelt, gebruikt u een [Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer#create-an-azure-resource-manager-template) samen met een parameter bestand dat de gebruikers, gebruikers groepen en service-principals in de beheer-Tenant definieert die toegang hebben tot de gedelegeerde resources in de Tenant van de klant. Aan elk van deze gebruikers (**principalId**) in het parameter bestand is een [ingebouwde rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (**roledefinitionid hebben**) toegewezen waarmee het toegangs niveau wordt gedefinieerd.
 
-To allow a **principalId** to create a managed identity in the customer tenant, you must set its **roleDefinitionId** to **User Access Administrator**. While this role is not generally supported, it can be used in this specific scenario, allowing the users with this permission to assign one or more specific built-in roles to managed identities. These roles are defined in the **delegatedRoleDefinitionIds** property. You can include any built-in role here except for User Access Administrator or Owner.
+Als u een **principalId** wilt toestaan een beheerde identiteit in de Tenant van de klant te maken, moet u de **roledefinitionid hebben** ervan instellen op de beheerder van de **gebruikers toegang**. Hoewel deze rol niet algemeen wordt ondersteund, kan deze worden gebruikt in dit specifieke scenario, waardoor de gebruikers met deze machtiging een of meer specifieke ingebouwde rollen aan beheerde identiteiten kunnen toewijzen. Deze rollen worden gedefinieerd in de eigenschap **delegatedRoleDefinitionIds** . U kunt hier elke ingebouwde rol toevoegen, behalve voor gebruikers toegang beheerder of eigenaar.
 
-After the customer is onboarded, the **principalId** created in this authorization will be able to assign these built-in roles to managed identities in the customer tenant. However, they will not have any other permissions normally associated with the User Access Administrator role.
+Nadat de klant onboarding is uitgevoerd, kan de **principalId** die in deze autorisatie is gemaakt, deze ingebouwde rollen toewijzen aan beheerde identiteiten in de Tenant van de klant. Ze hebben echter geen andere machtigingen die normaal gesp roken zijn gekoppeld aan de rol beheerder van gebruikers toegang.
 
-The example below shows a **principalId** who will have the User Access Administrator role. This user will be able to assign two built-in roles to managed identities in the customer tenant: Contributor and Log Analytics Contributor.
+In het onderstaande voor beeld ziet u een **principalId** die de rol beheerder voor gebruikers toegang heeft. Deze gebruiker kan twee ingebouwde rollen toewijzen aan beheerde identiteiten in de Tenant van de klant: Inzender en Log Analytics Inzender.
 
 ```json
 {
@@ -36,15 +36,15 @@ The example below shows a **principalId** who will have the User Access Administ
 }
 ```
 
-## <a name="deploy-policies-that-can-be-remediated"></a>Deploy policies that can be remediated
+## <a name="deploy-policies-that-can-be-remediated"></a>Beleid implementeren dat kan worden hersteld
 
-Once you have created the user with the necessary permissions as described above, that user can deploy policies in the customer tenant that use remediation tasks.
+Zodra u de gebruiker met de vereiste machtigingen hebt gemaakt, zoals hierboven is beschreven, kan die gebruiker beleids regels in de Tenant van de klant implementeren die herstel taken gebruiken.
 
-For example, let’s say you wanted to enable diagnostics on Azure Key Vault resources in the customer tenant, as illustrated in this [sample](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring). A user in the managing tenant with the appropriate permissions (as described above) would deploy an [Azure Resource Manager template](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) to enable this scenario.
+Stel bijvoorbeeld dat u Diagnostische gegevens wilt inschakelen op Azure Key Vault resources in de Tenant van de klant, zoals wordt geïllustreerd in dit voor [beeld](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring). Een gebruiker in de Tenant beheren met de juiste machtigingen (zoals hierboven beschreven) implementeert een [Azure Resource Manager sjabloon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) om dit scenario in te scha kelen.
 
-Note that creating the policy assignment to use with a delegated subscription must currently be done through APIs, not in the Azure portal. When doing so, the **apiVersion** must be set to **2019-04-01-preview**, which includes the new **delegatedManagedIdentityResourceId** property. This property allows you to include a managed identity that resides in the customer tenant (in a subscription or resource group which has been onboarded to Azure delegated resource management).
+Houd er rekening mee dat het maken van de beleids toewijzing voor gebruik met een gedelegeerd abonnement op dit moment moet worden uitgevoerd via Api's, niet in de Azure Portal. Wanneer u dit doet, moet de **apiVersion** worden ingesteld op **2019-04-01-preview**, inclusief de nieuwe eigenschap **delegatedManagedIdentityResourceId** . Met deze eigenschap kunt u een beheerde identiteit toevoegen die zich bevindt in de Tenant van de klant (in een abonnement of resource groep waarvoor een onboarding is uitgevoerd voor het Azure delegated Resource Management).
 
-The following example shows a role assignment with a **delegatedManagedIdentityResourceId**.
+In het volgende voor beeld ziet u een roltoewijzing met een **delegatedManagedIdentityResourceId**.
 
 ```json
 "type": "Microsoft.Authorization/roleAssignments",
@@ -62,9 +62,9 @@ The following example shows a role assignment with a **delegatedManagedIdentityR
 ```
 
 > [!TIP]
-> A [similar sample](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-add-or-replace-tag) is available to demonstrate how to deploy a policy that adds or removes a tag (using the modify effect) to a delegated subscription.
+> Een [vergelijkbaar voor beeld](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-add-or-replace-tag) is beschikbaar om te laten zien hoe u een beleid kunt implementeren waarmee een tag (met behulp van het wijzigings effect) wordt toegevoegd aan een gedelegeerd abonnement.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Learn about [Azure Policy](https://docs.microsoft.com/azure/governance/policy/).
-- Learn about [managed identities for Azure resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+- Meer informatie over [Azure Policy](https://docs.microsoft.com/azure/governance/policy/).
+- Meer informatie over [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).

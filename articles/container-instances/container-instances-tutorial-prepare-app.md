@@ -1,22 +1,17 @@
 ---
-title: 'Zelfstudie: een containerinstallatiekopie voorbereiden voor Azure Container Instances'
+title: Zelf studie-container installatie kopie voorbereiden voor implementatie
 description: Zelfstudie 1 van 3 voor Azure Container Instances - Een app voorbereiden in een containerinstallatiekopie voor implementatie in Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 719237f63d387cf56ab7947f8f168e0aa4351376
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325571"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533347"
 ---
-# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Zelfstudie: een containerinstallatiekopie voor implementatie in Azure Container Instances maken
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Zelf studie: een container installatie kopie maken voor implementatie naar Azure Container Instances
 
 Met Azure Container Instances kunt u Docker-containers implementeren in de Azure-infrastructuur zonder virtuele machines in te richten of gebruik te maken van een service op een hoger niveau. In deze zelfstudie verpakt u een kleine Node.js-webtoepassing in een containerinstallatiekopie die kan worden uitgevoerd met behulp van Azure Container Instances.
 
@@ -88,7 +83,7 @@ Successfully built 6edad76d09e9
 Successfully tagged aci-tutorial-app:latest
 ```
 
-Gebruik de opdracht docker- [installatie kopieën][docker-images] om de ingebouwde installatie kopie te bekijken:
+Gebruik de opdracht [docker-installatie kopieën][docker-images] om de ingebouwde installatie kopie te bekijken:
 
 ```bash
 docker images

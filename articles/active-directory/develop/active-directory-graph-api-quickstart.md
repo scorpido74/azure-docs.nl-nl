@@ -19,19 +19,19 @@ ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 662d8ecf3d20716a717a5f04f30e04114c9dce04
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 92a88b1e17812b9dc99fd1d5b391d95ba541f48a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374155"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533064"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Procedure: de Azure AD-Graph API gebruiken
 
 > [!IMPORTANT]
-> Wij raden u ten zeerste aan om [Microsoft Graph](https://developer.microsoft.com/graph) te gebruiken in plaats van Azure AD Graph API om toegang te krijgen tot Azure Active Directory-resources. We richten ons momenteel op ontwikkelingen in Microsoft Graph. Voor Azure AD Graph API zijn geen verdere verbeteringen gepland. Er zijn een zeer beperkt aantal scenario's waarvoor Azure AD Graph API mogelijk nog steeds geschikt is. Zie voor meer informatie de [Microsoft Graph of het](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blog bericht van Azure AD Graph en [Migreer Azure AD Graph-apps naar Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
+> We raden u ten zeerste aan [Microsoft Graph](https://developer.microsoft.com/graph) te gebruiken in plaats van azure AD Graph API om toegang te krijgen tot Azure Active Directory-resources (Azure AD). We richten ons momenteel op ontwikkelingen in Microsoft Graph. Voor Azure AD Graph API zijn geen verdere verbeteringen gepland. Er zijn een zeer beperkt aantal scenario's waarvoor Azure AD Graph API mogelijk nog steeds geschikt is. Zie voor meer informatie de [Microsoft Graph of het](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blog bericht van Azure AD Graph en [Migreer Azure AD Graph-apps naar Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
 
-De Azure Active Directory (Azure AD) Graph API biedt programmatische toegang tot Azure AD via OData REST API-eind punten. Toepassingen kunnen Azure AD Graph API gebruiken om bewerkingen voor maken, lezen, bijwerken en verwijderen uit te voeren op Directory gegevens en-objecten. U kunt bijvoorbeeld Azure AD Graph API gebruiken om een nieuwe gebruiker te maken, de eigenschappen van de gebruiker weer te geven of bij te werken, het wacht woord van de gebruiker te wijzigen, het groepslid maatschap te controleren op op rollen gebaseerde toegang, de gebruiker uit te scha kelen of te verwijderen. Zie [Azure AD-Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) en [azure AD-Graph API vereisten](https://msdn.microsoft.com/library/hh974476.aspx)voor meer informatie over Azure AD Graph API-functies en-toepassings scenario's. Azure AD Graph API werkt alleen met werk-of school/organisatie-accounts.
+De Azure AD-Graph API biedt programmatische toegang tot Azure AD via OData REST API-eind punten. Toepassingen kunnen Azure AD Graph API gebruiken om bewerkingen voor maken, lezen, bijwerken en verwijderen uit te voeren op Directory gegevens en-objecten. U kunt bijvoorbeeld Azure AD Graph API gebruiken om een nieuwe gebruiker te maken, de eigenschappen van de gebruiker weer te geven of bij te werken, het wacht woord van de gebruiker te wijzigen, het groepslid maatschap te controleren op op rollen gebaseerde toegang, de gebruiker uit te scha kelen of te verwijderen. Zie [Azure AD-Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) en [azure AD-Graph API vereisten](https://msdn.microsoft.com/library/hh974476.aspx)voor meer informatie over Azure AD Graph API-functies en-toepassings scenario's. Azure AD Graph API werkt alleen met werk-of school/organisatie-accounts.
 
 Dit artikel is van toepassing op Azure AD-Graph API. Zie [de Microsoft Graph-API gebruiken](https://developer.microsoft.com/graph/docs/concepts/use_the_api)voor vergelijk bare informatie met betrekking tot Microsoft Graph-API.
 

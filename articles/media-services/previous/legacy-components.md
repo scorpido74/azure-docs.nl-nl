@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services legacy components | Microsoft Docs
-description: This topic discusses Azure Media Services legacy components.
+title: Azure Media Services verouderde onderdelen | Microsoft Docs
+description: In dit onderwerp worden Azure Media Services oudere onderdelen beschreven.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -20,24 +20,24 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423927"
 ---
-# <a name="azure-media-services-legacy-components"></a>Azure Media Services legacy components
+# <a name="azure-media-services-legacy-components"></a>Azure Media Services verouderde onderdelen
 
-Over time, there have been steady improvements and enhancements to Media Service components. As a result, some legacy components have been retired. You can find the instructions on how to migrate your application from the legacy component to a current component in the following articles.
+Na verloop van tijd zijn er stabiele verbeteringen en verbeteringen aangebracht in media service onderdelen. Als gevolg hiervan zijn sommige oudere onderdelen buiten gebruik gesteld. In de volgende artikelen vindt u de instructies voor het migreren van uw toepassing vanuit het verouderde onderdeel naar een actueel onderdeel.
  
-## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Retirement plans of legacy components and migration guidance
+## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Pensioen plannen van verouderde onderdelen en migratie richtlijnen
 
-We are announcing deprecation of the *Windows Azure Media Encoder* (WAME) and *Azure Media Encoder* (AME) media processors. These processors are being retired on March 31, 2020.
+Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. Deze processors worden op 31 maart 2020 buiten gebruik gesteld.
 
-* [Migrate from Windows Azure Media Encoder to Media Encoder Standard](migrate-windows-azure-media-encoder.md)
-* [Migrate from Azure Media Encoder to Media Encoder Standard](migrate-azure-media-encoder.md)
+* [Migreren van Windows Azure Media Encoder naar Media Encoder Standard](migrate-windows-azure-media-encoder.md)
+* [Migreren van Azure Media Encoder naar Media Encoder Standard](migrate-azure-media-encoder.md)
 
-We are also announcing retirement of the following Media Analytics media processors: 
+We kondigen ook de volgende Media Analytics-media processors in de buiten gebruiks telling: 
  
-|Naam van mediaprocessor|Retirement date|Aanvullende opmerkingen|
+|Naam van mediaprocessor|Buitengebruikstellings datum|Aanvullende opmerkingen|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| January 1 of 2020|This media processor will be replaced by [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). For more information, see [Migrate from Azure Media Indexer 2 to Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).|
-|[Azure Media Indexer](media-services-index-content.md)|October 1st of 2020|This media processor will be replaced by [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). For more information, see [Migrate from Azure Media Indexer to Azure Media Services Video Indexer](migrate-indexer-v1-v2.md)
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 1 januari van 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zie [Migrate from Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.|
+|[Azure Media Indexer](media-services-index-content.md)|1 oktober van 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zie voor meer informatie [migreren van Azure media indexer naar Azure Media Services video indexer](migrate-indexer-v1-v2.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Migration guidance for moving from Media Services v2 to v3](../latest/migrate-from-v2-to-v3.md)
+[Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3](../latest/migrate-from-v2-to-v3.md)

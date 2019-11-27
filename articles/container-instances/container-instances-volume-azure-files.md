@@ -1,20 +1,15 @@
 ---
-title: Een Azure Files-volume koppelen in Azure Container Instances
+title: Azure Files volume koppelen aan container groep
 description: Meer informatie over het koppelen van een Azure Files-volume om de status te behouden met Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 07/08/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 686c20aeb22c16298967aa6f73ee829472f4ea0c
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: a258a96f5fbc0d54b6a85a780288fb9317cb1a1b
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72175937"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533249"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Een Azure-bestands share koppelen in Azure Container Instances
 
@@ -273,8 +268,8 @@ Voor elke container in de container groep waarin u de volumes wilt koppelen, vul
 
 Meer informatie over het koppelen van andere volume typen in Azure Container Instances:
 
-* [Een volume emptyDir in Azure Containerexemplaren koppelen](container-instances-volume-emptydir.md)
-* [Koppelen van een volume gitRepo in Azure Containerexemplaren](container-instances-volume-gitrepo.md)
+* [Een emptyDir-volume koppelen in Azure Container Instances](container-instances-volume-emptydir.md)
+* [Een gitRepo-volume koppelen in Azure Container Instances](container-instances-volume-gitrepo.md)
 * [Een geheim volume koppelen in Azure Container Instances](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->

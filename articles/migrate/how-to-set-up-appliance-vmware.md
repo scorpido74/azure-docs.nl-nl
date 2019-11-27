@@ -127,7 +127,7 @@ Voor de detectie van toepassingen, functies en onderdelen en het visualiseren va
 2. Selecteer het **besturings systeem**.
 3. Geef een beschrijvende naam op voor de referentie.
 4. Geef in **gebruikers naam** en **wacht woord**een account op met ten minste gast toegang op de vm's.
-5. Klik op **Add**.
+5. Klik op **Toevoegen**.
 
 Nadat u de vCenter Server-en VM-referenties (optioneel) hebt opgegeven, klikt u op **opslaan en detectie starten** om de detectie van de on-premises omgeving te starten.
 

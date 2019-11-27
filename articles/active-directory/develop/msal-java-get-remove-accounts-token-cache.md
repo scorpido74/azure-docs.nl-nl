@@ -1,7 +1,7 @@
 ---
-title: Get and remove accounts from the token cache using MSAL for Java (MSAL4j)
+title: Accounts ophalen en verwijderen uit de token cache met behulp van MSAL voor Java (MSAL4j)
 titleSuffix: Microsoft identity platform
-description: Learn how to view and remove accounts from the token cache using the Microsoft Authentication Library for Java.
+description: Meer informatie over het weer geven en verwijderen van accounts uit de token cache met behulp van de micro soft-verificatie bibliotheek voor Java.
 services: active-directory
 documentationcenter: dev-center-name
 author: sangonzal
@@ -25,13 +25,13 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452478"
 ---
-# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Get and remove accounts from the token cache using MSAL for Java
+# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Accounts uit de token cache ophalen en verwijderen met MSAL voor Java
 
-MSAL for Java provides an in-memory token cache by default. The in-memory token cache lasts the duration of the application instance.
+MSAL voor Java biedt standaard een token cache in het geheugen. De token cache in het geheugen duurt de duur van het toepassings exemplaar.
 
-## <a name="see-which-accounts-are-in-the-cache"></a>See which accounts are in the cache
+## <a name="see-which-accounts-are-in-the-cache"></a>Bekijken welke accounts zich in de cache bevinden
 
-You can check what accounts are in the cache by calling `PublicClientApplication.getAccounts()` as shown in the following example:
+U kunt controleren welke accounts zich in de cache bevinden door `PublicClientApplication.getAccounts()` aan te roepen, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```java
 PublicClientApplication pca = new PublicClientApplication.Builder(
@@ -42,9 +42,9 @@ PublicClientApplication pca = new PublicClientApplication.Builder(
 Set<IAccount> accounts = pca.getAccounts().join();
 ```
 
-## <a name="remove-accounts-from-the-cache"></a>Remove accounts from the cache
+## <a name="remove-accounts-from-the-cache"></a>Accounts uit de cache verwijderen
 
-To remove an account from the cache, find the account that needs to be removed and then call `PublicClientApplicatoin.removeAccount()` as shown in the following example:
+Als u een account uit de cache wilt verwijderen, gaat u naar het account dat moet worden verwijderd en roept u `PublicClientApplicatoin.removeAccount()` aan, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```java
 Set<IAccount> accounts = pca.getAccounts().join();
@@ -58,4 +58,4 @@ pca.removeAccount(accountToBeRemoved).join();
 
 ## <a name="learn-more"></a>Meer informatie
 
-If you are using MSAL for Java, learn about [Custom token cache serialization in MSAL for Java](msal-java-token-cache-serialization.md).
+Als u MSAL voor Java gebruikt, kunt u meer informatie vinden over [aangepaste serialisatie van de token cache in MSAL voor Java](msal-java-token-cache-serialization.md).

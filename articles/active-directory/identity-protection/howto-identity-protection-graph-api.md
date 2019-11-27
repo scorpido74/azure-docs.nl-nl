@@ -23,8 +23,8 @@ ms.locfileid: "74275890"
 Microsoft Graph is het micro soft Unified API-eind punt en de start van [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) -api's. Er zijn vier Api's die informatie over Risk ante gebruikers en aanmeldingen beschikbaar maken. Met de eerste API, **riskDetection**, kunt u een query uitvoeren op Microsoft Graph voor een lijst van zowel de gebruiker als de aanmelding en de bijbehorende informatie over de detectie. De tweede API, **riskyUsers**, stelt u in staat om Microsoft Graph te zoeken naar informatie over gebruikers identiteits beveiliging die als risico is gedetecteerd. De derde API, **signIn**, stelt u in staat om Microsoft Graph te zoeken naar informatie over Azure AD-aanmeldingen met specifieke eigenschappen die betrekking hebben op risico status, Details en niveau. Met de vierde API, **identityRiskEvents**, kunt u een query uitvoeren op Microsoft Graph voor een lijst met [risico detecties](../reports-monitoring/concept-risk-events.md) en gerelateerde informatie. De API identityRiskEvents wordt afgeschaft op 10 januari 2020; u wordt aangeraden om in plaats daarvan de **riskDetections** API te gebruiken. In dit artikel wordt u aan de slag met het maken van verbinding met de Microsoft Graph en het uitvoeren van query's op deze Api's. Zie de [Microsoft Graph-site](https://graph.microsoft.io/) of de specifieke referentie documentatie voor deze api's voor een uitgebreide inleiding, volledige documentatie en toegang tot de Graph Explorer:
 
 * [riskDetection-API](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta)
-* [riskyUsers API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
-* [signIn API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
+* [riskyUsers-API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
+* [Aanmeldings-API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
 * [IDENTITYRISKEVENTS API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta) *wordt afgeschaft op 10 januari 2020*
 
 ## <a name="connect-to-microsoft-graph"></a>Verbinding maken met micro soft Graph
@@ -74,7 +74,7 @@ Voordat u aan de slag gaat, hebt u het volgende nodig:
 
    1. Typ `http://localhost`in het tekstvak **URL voor aanmelden** .
 
-   1. Klik op **Maken**.
+   1. Klik op **Create**.
 1. Als u de pagina **instellingen** wilt openen, klikt u in de lijst toepassingen op uw zojuist gemaakte app-registratie. 
 1. Kopieer de **toepassings-id**.
 

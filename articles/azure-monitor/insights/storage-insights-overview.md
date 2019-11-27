@@ -47,7 +47,7 @@ Vanuit Azure Monitor kunt u de trans actie-, latentie-en capaciteits gegevens va
 
 Voer de volgende stappen uit om het gebruik en de beschik baarheid van uw opslag accounts in al uw abonnementen weer te geven.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie **insightss** de optie **opslag accounts (preview)** .
 

@@ -1,6 +1,6 @@
 ---
-title: Passwordless sign-in with the Microsoft Authenticator app - Azure Active Directory
-description: Enable passwordless sign-in to Azure AD using the Microsoft Authenticator app (preview)
+title: Aanmelding zonder wacht woord met de app-Azure Active Directory Microsoft Authenticator
+description: Aanmelding zonder wacht woord inschakelen voor Azure AD met behulp van de Microsoft Authenticator-app (preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,89 +18,89 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381868"
 ---
-# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Enable passwordless sign-in with the Microsoft Authenticator app (preview)
+# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aanmelding zonder wacht woord inschakelen met de Microsoft Authenticator-app (preview)
 
-The Microsoft Authenticator app can be used to sign in to any Azure AD account without using a password. Similar to the technology of [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification), the Microsoft Authenticator uses key-based authentication to enable a user credential that is tied to a device and uses a biometric or PIN. This authentication method can be used on any device platform, including mobile, and with any app or website that integrates with Microsoft authentication libraries. 
+De Microsoft Authenticator-app kan worden gebruikt om u aan te melden bij een Azure AD-account zonder gebruik te maken van een wacht woord. Net als de technologie van [Windows hello voor bedrijven](/windows/security/identity-protection/hello-for-business/hello-identity-verification)gebruikt de Microsoft Authenticator verificatie op basis van een sleutel om een gebruikers referentie in te scha kelen die is gekoppeld aan een apparaat en gebruikmaakt van biometrisch of pincode. Deze verificatie methode kan worden gebruikt op elk platform, met inbegrip van mobiele apparaten, en voor elke app of website die kan worden geïntegreerd met micro soft-verificatie bibliotheken. 
 
-![Example of a browser sign-in asking for user to approve the sign-in](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
+![Voor beeld van een browser aanmelding waarin de gebruiker wordt gevraagd om de aanmelding goed te keuren](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
-Instead of seeing a prompt for a password after entering a username, a person who has enabled phone sign-in from the Microsoft Authenticator app will see a message telling them to tap a number in their app. In the app, the user must match the number, choose Approve, then provide their PIN or biometric, then the authentication will complete.
+In plaats van een prompt weer te geven voor een wacht woord na Microsoft Authenticator het invoeren van een gebruikers naam, wordt een persoon die zich heeft aangemeld bij de app voor het inschakelen van de telefoon, een bericht te zien waarin wordt aangegeven dat ze een nummer in hun app willen tikken. In de app moet de gebruiker overeenkomen met het nummer. Kies goed keuren en geef vervolgens hun pincode of biometrische op. vervolgens wordt de verificatie voltooid.
 
 > [!NOTE]
-> This capability has been in the Microsoft Authenticator app since March of 2017, so there is a possibility that when the policy is enabled for a directory, users may encounter this flow immediately, and see an error message if they have not been enabled by policy. Be aware and prepare your users for this change.
+> Deze functie bevindt zich sinds 2017 maart in de app Microsoft Authenticator. als het beleid is ingeschakeld voor een directory, kunnen gebruikers deze stroom onmiddellijk tegen komen en een fout bericht zien als ze niet zijn ingeschakeld door het beleid. Stel uw gebruikers op de hoogte en bereid ze voor op deze wijziging.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure Multi-Factor Authentication, with push notifications allowed as a verification method 
-- Latest version of Microsoft Authenticator installed on devices running iOS 8.0 or greater, or Android 6.0 or greater.
+- Azure Multi-Factor Authentication, waarbij push meldingen zijn toegestaan als verificatie methode 
+- Nieuwste versie van Microsoft Authenticator geïnstalleerd op apparaten met iOS 8,0 of hoger, of Android 6,0 of hoger.
 
 > [!NOTE]
-> If you enabled the previous Microsoft Authenticator app passwordless sign-in preview using Azure AD PowerShell, it was enabled for your entire directory. If you enable using this new method, it will supercede the PowerShell policy. We recommend enabling for all users in your tenant via the new Authentication Methods, otherwise users not in the new policy will no longer be able to log in passwordlessly. 
+> Als u de vorige Microsoft Authenticator app-aanmeldings voorbeeld voor apps hebt ingeschakeld met behulp van Azure AD Power shell, is deze ingeschakeld voor uw hele directory. Als u het gebruik van deze nieuwe methode inschakelt, wordt het Power shell-beleid vervangen. We raden u aan alle gebruikers in uw Tenant in te scha kelen via de nieuwe authenticatie methoden, anders kunnen gebruikers die geen deel uitmaken van het nieuwe beleid, zich niet meer aanmelden bij passwordlessly. 
 
-## <a name="enable-passwordless-authentication-methods"></a>Enable passwordless authentication methods
+## <a name="enable-passwordless-authentication-methods"></a>Verificatie methoden met een wacht woord inschakelen
 
-### <a name="enable-the-combined-registration-experience"></a>Enable the combined registration experience
+### <a name="enable-the-combined-registration-experience"></a>De gecombineerde registratie-ervaring inschakelen
 
-Registration features for passwordless authentication methods rely on the combined registration preview. Follow the steps in the article [Enable combined security information registration (preview)](howto-registration-mfa-sspr-combined.md), to enable the combined registration preview.
+Registratie functies voor verificatie methoden met een wacht woord zijn afhankelijk van de gecombineerde registratie preview. Volg de stappen in het artikel [registratie van gecombineerde beveiligings gegevens inschakelen (preview)](howto-registration-mfa-sspr-combined.md)om de gecombineerde registratie voorbeeld in te scha kelen.
 
-### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Enable passwordless phone sign-in authentication methods
+### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Verificatie methoden met wacht woord-aanmeld authenticatie inschakelen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com)
-1. Search for and select *Azure Active Directory*. Select **Security** > **Authentication methods** > **Authentication method policy (Preview)**
-1. Under **Passwordless phone sign-in**, choose the following options
-   1. **Enable** - Yes or No
-   1. **Target** - All users or Select users
-1. **Save** to set the new policy
+1. Zoek en selecteer *Azure Active Directory*. Selecteer **beveiligings** > **verificatie methoden** > **beleid voor verificatie methoden (preview-versie)**
+1. Onder **Aanmelden met een wacht woord voor eenmalige aanmelding**kiest u de volgende opties
+   1. **Inschakelen** -ja of Nee
+   1. **Doel** -alle gebruikers of Selecteer gebruikers
+1. **Opslaan** om het nieuwe beleid in te stellen
 
-## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>User registration and management of Microsoft Authenticator app
+## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Gebruikers registratie en het beheer van Microsoft Authenticator-app
 
-1. Ga naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
-1. Sign in if not already
-1. Add an authenticator app by clicking **Add method**, choosing **Authenticator app**, and clicking **Add**
-1. Follow the instructions to install and configure the Microsoft Authenticator app on your device
-1. Click **Done** to complete Authenticator MFA app setup flow. 
-1. In **Microsoft Authenticator**, choose **Enable phone sign-in** from the account drop-down menu
-1. Follow the instructions in the app to finish registering for passwordless phone sign-in. 
+1. Blader naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
+1. Meld u aan als dat nog niet is gebeurd
+1. Voeg een verificator-app toe door op **methode toevoegen**te klikken, **verificator-app**te kiezen en op **toevoegen** te klikken.
+1. Volg de instructies voor het installeren en configureren van de Microsoft Authenticator-app op uw apparaat
+1. Klik op **gereed** om de installatie stroom van de verificator-app te volt ooien. 
+1. In **Microsoft Authenticator**kiest u **Aanmelden via telefoon inschakelen** in de vervolg keuzelijst account
+1. Volg de instructies in de app om de registratie te volt ooien voor aanmelden met een wacht woord. 
 
-Organizations can point their users to the article [Sign in with your phone, not your password](../user-help/microsoft-authenticator-app-phone-signin-faq.md) for further assistance setting up in the Microsoft Authenticator app and enabling phone sign-in.
+Organisaties kunnen hun gebruikers naar het artikel [Aanmelden met uw telefoon, niet uw wacht woord](../user-help/microsoft-authenticator-app-phone-signin-faq.md) voor meer hulp bij het instellen van de app Microsoft Authenticator en het inschakelen van de aanmelding via de telefoon.
 
-## <a name="sign-in-with-passwordless-credential"></a>Sign in with passwordless credential
+## <a name="sign-in-with-passwordless-credential"></a>Aanmelden met een wacht woord zonder referenties
 
-For public preview, there is no way to enforce users to create or use this new credential. A user will only encounter passwordless sign-in once an admin has enabled their tenant **and** the user has updated their Microsoft Authenticator app to enable phone sign-in.
+Voor een open bare preview is het niet mogelijk om gebruikers af te dwingen om deze nieuwe referentie te maken of te gebruiken. Een gebruiker kan zich alleen aanmelden zonder wacht woord wanneer een beheerder hun Tenant heeft ingeschakeld **en** de gebruiker de Microsoft Authenticator-app heeft bijgewerkt om het aanmelden via de telefoon in te scha kelen.
 
-After typing your username on the web and selecting **Next**, users are presented with a number and are prompted in their Microsoft Authenticator app to select the appropriate number to authenticate instead of using their password. 
+Nadat u uw gebruikers naam op het web hebt getypt en **vervolgens volgende**selecteert, worden gebruikers weer gegeven met een nummer en wordt u gevraagd om het juiste aantal te verifiëren in de Microsoft Authenticator-app, in plaats van het wacht woord te gebruiken. 
 
-![Example of a browser sign-in using the Microsoft Authenticator app](./media/howto-authentication-passwordless-phone/web-sign-in-microsoft-authenticator-app.png)
+![Voor beeld van een browser aanmelding met de app Microsoft Authenticator](./media/howto-authentication-passwordless-phone/web-sign-in-microsoft-authenticator-app.png)
 
 ## <a name="known-issues"></a>Bekende problemen
 
-### <a name="user-is-not-enabled-by-policy-but-still-has-passwordless-phone-sign-in-method-in-microsoft-authenticator"></a>User is not enabled by policy but still has passwordless phone sign-in method in Microsoft Authenticator
+### <a name="user-is-not-enabled-by-policy-but-still-has-passwordless-phone-sign-in-method-in-microsoft-authenticator"></a>De gebruiker is niet ingeschakeld door het beleid, maar heeft nog steeds een wacht woordloze aanmeldings methode in Microsoft Authenticator
 
-It is possible that a user has at some point created a passwordless phone sign-in credential in their current Microsoft Authenticator app, or on an earlier device. Once an admin enables the authentication method policy for passwordless phone sign-in, any user with a credential registered, will start to experience the new sign-in prompt, regardless of whether they have been enabled to use the policy or not. If the user has not been allowed to use the credential by policy, they will see an error after completing the authentication flow. 
+Het is mogelijk dat een gebruiker op een bepaald moment een aanmeld referentie voor een wacht woord heeft gemaakt in de huidige Microsoft Authenticator-app of op een eerder apparaat. Zodra een beheerder het beleid voor de authenticatie methode voor een aanmelding met een wacht woord is ingeschakeld, wordt een gebruiker met een geregistreerde referentie gestart met de nieuwe aanmeldings prompt, ongeacht of deze zijn ingeschakeld voor het gebruik van het beleid of niet. Als de gebruiker niet gemachtigd is om de referentie per beleid te gebruiken, wordt er een fout melding weer gegeven na het volt ooien van de verificatie stroom. 
 
-The admin can choose to enable the user to use passwordless phone sign-in, or the user must remove the method. If the user no longer has the registered device, they can go to [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) and remove it. If they are still using the Authenticator for MFA, they can choose **Disable phone sign-in** from within the Microsoft Authenticator.  
+De beheerder kan ervoor kiezen om de gebruiker in staat te stellen om aanmelding zonder wacht woord te gebruiken, of de gebruiker moet de methode verwijderen. Als de gebruiker het geregistreerde apparaat niet meer heeft, kan hij of zij naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) gaan en het verwijderen. Als ze nog steeds de verificator voor MFA gebruiken, kunnen ze de optie **voor het uitschakelen** van de telefoon selecteren in het Microsoft Authenticator.  
 
-### <a name="ad-fs-integration"></a>AD FS integration
+### <a name="ad-fs-integration"></a>Integratie van AD FS
 
-When a user has enabled the Microsoft Authenticator passwordless credential, authentication for that user will always default to sending a notification for approval. This logic prevents users in a hybrid tenant from being directed to ADFS for sign-in verification without the user taking an additional step to click “Use your password instead.” This process will also bypass any on-premises Conditional Access policies, and Pass-through authentication flows. 
+Wanneer een gebruiker de Microsoft Authenticator wacht woordloze referentie heeft ingeschakeld, zal verificatie voor die gebruiker altijd standaard een melding verzenden voor goed keuring. Deze logica voor komt dat gebruikers in een hybride Tenant worden doorgestuurd naar ADFS voor aanmeldings verificatie zonder dat de gebruiker een extra stap hoeft te doen om op ' uw wacht woord gebruiken ' te klikken. Met dit proces worden ook alle on-premises beleids regels voor voorwaardelijke toegang en Pass Through-verificatie stromen genegeerd. 
 
-If a user has an unanswered passwordless phone sign-in verification pending and attempts to sign in again, the user may be taken to ADFS to enter a password instead.  
+Als een gebruiker een niet-beantwoorde aanmeldings wachtwoord voor aanmelding in behandeling heeft en zich opnieuw probeert aan te melden, kan de gebruiker in plaats daarvan een wacht woord invoeren in AD FS.  
 
-### <a name="azure-mfa-server"></a>Azure MFA server
+### <a name="azure-mfa-server"></a>Azure MFA-server
 
-End users who are enabled for MFA through an organization’s on-premises Azure MFA server can still create and use a single passwordless phone sign in credential. If the user attempts to upgrade multiple installations (5+) of the Microsoft Authenticator with the credential, this change may result in an error.  
+Eind gebruikers die zijn ingeschakeld voor MFA via de on-premises Azure MFA-server van een organisatie, kunnen nog steeds één wacht woord voor eenmalige aanmelding op hetzelfde telefoon nummer maken en gebruiken. Als de gebruiker meerdere installaties (5 +) van de Microsoft Authenticator met de referentie probeert bij te werken, kan deze wijziging een fout veroorzaken.  
 
 ### <a name="device-registration"></a>Apparaatregistratie
 
-One of the prerequisites to create this new strong credential, is that the device, where the Microsoft Authenticator app is installed, must also be registered within the Azure AD tenant to an individual user. Due to current device registration restrictions, a device can only be registered in a single tenant. This limit means that only one work or school account in the Microsoft Authenticator app can be enabled for phone sign-in.
+Een van de vereisten voor het maken van deze nieuwe sterke referentie is dat het apparaat, waar de Microsoft Authenticator-app is geïnstalleerd, ook in de Azure AD-Tenant moet worden geregistreerd voor een afzonderlijke gebruiker. Als gevolg van de huidige beperkingen voor apparaatregistratie, kan een apparaat alleen worden geregistreerd in één Tenant. Deze limiet betekent dat er slechts één werk-of school account in de Microsoft Authenticator-app kan worden ingeschakeld voor aanmelding via de telefoon.
 
 > [!NOTE]
-> Device registration is not the same as device management or "MDM." It only associates a device ID and a user ID together in the Azure AD directory.  
+> Apparaatregistratie is niet hetzelfde als Apparaatbeheer of ' MDM. ' Er worden alleen een apparaat-ID en gebruikers-ID gekoppeld in de Azure AD-Directory.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[What is passwordless?](concept-authentication-passwordless.md)
+[Wat is een wacht woord?](concept-authentication-passwordless.md)
 
-[Learn about device registration](../devices/overview.md#getting-devices-in-azure-ad)
+[Meer informatie over apparaatregistratie](../devices/overview.md#getting-devices-in-azure-ad)
 
-[Learn about Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Meer informatie over Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

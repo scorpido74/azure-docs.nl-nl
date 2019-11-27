@@ -1,7 +1,7 @@
 ---
-title: Create configurations from existing servers - Azure Automation
-description: Learn how to create configurations from existing servers for Azure Automation.
-keywords: dsc,powershell,configuration,setup
+title: Configuraties maken op basis van bestaande servers-Azure Automation
+description: Meer informatie over het maken van configuraties van bestaande servers voor Azure Automation.
+keywords: DSC, Power shell, configuratie, installatie
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -17,34 +17,34 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231690"
 ---
-# <a name="create-configurations-from-existing-servers"></a>Create configurations from existing servers
+# <a name="create-configurations-from-existing-servers"></a>Configuraties maken op basis van bestaande servers
 
-> Applies To: Windows PowerShell 5.1
+> Van toepassing op: Windows Power shell 5,1
 
-Creating configurations from existing servers can be a challenging task.
-You might not want *all* settings, just those that you care about.
-Even then you need to know in what order the settings must be applied in order for the configuration to apply successfully.
+Het maken van configuraties van bestaande servers kan een uitdagende taak zijn.
+Mogelijk wilt u niet *alle* instellingen, alleen die voor u.
+U moet ook weten in welke volg orde de instellingen moeten worden toegepast om de configuratie correct toe te passen.
 
 > [!NOTE]
-> This article refers to a solution that is maintained by the Open Source community.
-> Support is only available in the form of GitHub collaboration, not from Microsoft.
+> In dit artikel wordt verwezen naar een oplossing die wordt onderhouden door de open source-community.
+> Ondersteuning is alleen beschikbaar in de vorm van GitHub-samen werking, niet van micro soft.
 
-## <a name="community-project-reversedsc"></a>Community project: ReverseDSC
+## <a name="community-project-reversedsc"></a>Community-Project: ReverseDSC
 
-A community maintained solution named [ReverseDSC](https://github.com/microsoft/reversedsc) has been created to work in this area starting SharePoint.
+Een door de Community onderhouden oplossing met de naam [ReverseDSC](https://github.com/microsoft/reversedsc) is gemaakt om in dit gebied te werken vanaf share point.
 
-The solution builds on the [SharePointDSC resource](https://github.com/powershell/sharepointdsc) and extends it to orchestrate [gathering information](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use) from existing SharePoint servers.
-The latest version has multiple [extraction modes](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes) to determine what level of information to include.
+De oplossing bouwt voort op de [SharePointDSC-resource](https://github.com/powershell/sharepointdsc) en breidt deze uit om het verzamelen van [gegevens](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use) van bestaande share Point-servers te organiseren.
+De nieuwste versie heeft meerdere [uitpak modi](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes) om te bepalen welk niveau van de informatie moet worden toegevoegd.
 
-The result of using the solution is generating [Configuration Data](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) to be used with SharePointDSC configuration scripts.
+Het resultaat van het gebruik van de oplossing is het genereren van [configuratie gegevens](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) die moeten worden gebruikt met SharePointDSC-configuratie scripts.
 
-Once the data files have been generated, you can use them with [DSC Configuration scripts](/powershell/scripting/dsc/overview/overview) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
+Zodra de gegevens bestanden zijn gegenereerd, kunt u ze gebruiken met [DSC-configuratie scripts](/powershell/scripting/dsc/overview/overview) om MOF-bestanden te genereren en [de MOF-bestanden te uploaden naar Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Registreer uw servers vervolgens [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) of [in azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) om configuraties te halen.
 
-To try out ReverseDSC, visit the [PowerShell Gallery](https://www.powershellgallery.com/packages/ReverseDSC/) and download the solution or click "Project Site" to view the [documentation](https://github.com/Microsoft/sharepointDSC.reverse).
+Als u ReverseDSC wilt uitproberen, gaat u naar de [PowerShell Gallery](https://www.powershellgallery.com/packages/ReverseDSC/) en downloadt u de oplossing of klikt u op project site om de [documentatie](https://github.com/Microsoft/sharepointDSC.reverse)weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
-- [DSC Resources](/powershell/scripting/dsc/resources/resources)
-- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [Overzicht van desired state Configuration voor Windows Power shell](/powershell/scripting/dsc/overview/overview)
+- [DSC-resources](/powershell/scripting/dsc/resources/resources)
+- [De lokale Configuration Manager configureren](/powershell/scripting/dsc/managing-nodes/metaconfig)

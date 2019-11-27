@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d695c7a74945fd68591360864e107aadc826240
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8ebcf7b3a8dfa4103c0b2773ace76797e5b8f899
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683679"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546413"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory
 Deze zelfstudie demonstreert het **kopiëren van een aantal tabellen uit Azure SQL Database naar Azure SQL Data Warehouse**. U kunt hetzelfde patroon toepassen in andere kopieerscenario's. Bijvoorbeeld het kopiëren van tabellen van SQL Server/Oracle naar Azure SQL Database/Data Warehouse/Azure Blob, verschillende paden kopiëren van Blob naar Azure SQL Database-tabellen.
@@ -24,11 +24,11 @@ Deze zelfstudie demonstreert het **kopiëren van een aantal tabellen uit Azure S
 Op hoog niveau bevat deze zelfstudie de volgende stappen:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een data factory maken.
 > * Gekoppelde Azure SQL Database-, Azure SQL Data Warehouse- en Azure Storage-services maken.
 > * Gegevenssets voor Azure SQL Database en Azure SQL Data Warehouse maken.
 > * Een pijplijn maken om de te kopiëren tabellen op te zoeken en een andere pijplijn om de kopieerbewerking daadwerkelijk uit te voeren. 
-> * Start een pijplijnuitvoering.
+> * Een pijplijnuitvoering starten
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
 In deze zelfstudie wordt Azure PowerShell gebruikt. Zie [Quickstarts](quickstart-create-data-factory-dot-net.md) (Snelstartgidsen) voor meer informatie over het gebruik van andere hulpprogramma's/SDK's voor het maken van een gegevensfactory. 
@@ -48,7 +48,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Azure PowerShell**. Volg de instructies in [How to install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Azure PowerShell installeren en configureren).
-* **Een Azure Storage-account**. Het Azure Storage-account wordt gebruikt als faseringsblobopslag in de bulksgewijze kopieerbewerking. 
+* **Azure Storage-account**. Het Azure Storage-account wordt gebruikt als faseringsblobopslag in de bulksgewijze kopieerbewerking. 
 * **Azure SQL-database**. Deze database bevat de brongegevens. 
 * **Azure SQL Data Warehouse**. Dit datawarehouse bevat de uit de SQL Database gekopieerde gegevens. 
 
@@ -62,7 +62,7 @@ Maak een Azure SQL Database met Adventure Works LT-testgegevens door het artikel
 
 1. Als u geen Azure SQL Data Warehouse hebt, raadpleegt u het artikel [Create a SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) (Een Azure SQL-database maken) voor de stappen om er een te maken.
 
-2. Maak bijbehorende tabelschema's in SQL Data Warehouse. U kunt het [hulpprogramma voor migratie](https://www.microsoft.com/download/details.aspx?id=49100) gebruiken om het **schema te migreren** van Azure SQL Database naar Azure SQL Data Warehouse. U gebruikt Azure Data Factory om gegevens in een latere stap te migreren/kopiëren.
+2. Maak bijbehorende tabelschema's in SQL Data Warehouse. U gebruikt Azure Data Factory om gegevens in een latere stap te migreren/kopiëren.
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure-services voor toegang tot SQL-server
 
@@ -72,7 +72,7 @@ Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data 
 2. Selecteer uw server en klik op **Firewall** onder **INSTELLINGEN**.
 3. Klik op de pagina **Firewallinstellingen** op **AAN** bij **Toegang tot Azure-services toestaan**.
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Start **PowerShell**. Houd Azure PowerShell open tot het einde van deze zelfstudie. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren.
 
@@ -513,7 +513,7 @@ Deze pijplijn voert twee stappen uit:
     $result
     ```
 
-    Hier volgt een voorbeeld van de voorbeelduitvoer:
+    Hier volgt een voorbeeld van de voorbeelduitvoering:
 
     ```json
     Pipeline run details:
@@ -566,7 +566,7 @@ Deze pijplijn voert twee stappen uit:
     ($result | Where-Object {$_.ActivityName -eq "TriggerCopy"}).Output.ToString()
     ```
 
-    Hier volgt een voorbeeld van de voorbeelduitvoer:
+    Hier volgt een voorbeeld van de voorbeelduitvoering:
 
     ```json
     {
@@ -585,13 +585,13 @@ Deze pijplijn voert twee stappen uit:
 In deze zelfstudie hebt u de volgende stappen uitgevoerd: 
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een data factory maken.
 > * Gekoppelde Azure SQL Database-, Azure SQL Data Warehouse- en Azure Storage-services maken.
 > * Gegevenssets voor Azure SQL Database en Azure SQL Data Warehouse maken.
 > * Een pijplijn maken om de te kopiëren tabellen op te zoeken en een andere pijplijn om de kopieerbewerking daadwerkelijk uit te voeren. 
-> * Start een pijplijnuitvoering.
+> * Een pijplijnuitvoering starten
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
 Ga door naar de volgende zelfstudie voor informatie over het incrementeel kopiëren van gegevens uit een bron naar een bestemming:
 > [!div class="nextstepaction"]
->[Gegevens stapsgewijs kopiëren](tutorial-incremental-copy-powershell.md)
+>[Gegevens incrementeel kopiëren](tutorial-incremental-copy-powershell.md)

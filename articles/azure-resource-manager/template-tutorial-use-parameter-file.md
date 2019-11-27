@@ -1,6 +1,6 @@
 ---
-title: Tutorial - use parameter file to deploy template
-description: Use parameter files that contain the values to use for deploying your Azure Resource Manager template.
+title: Zelf studie-parameter bestand voor de implementatie van de sjabloon gebruiken
+description: Gebruik parameter bestanden die de waarden bevatten die moeten worden gebruikt voor het implementeren van uw Azure Resource Manager-sjabloon.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,47 +12,47 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405974"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Tutorial: Use parameter files to deploy your Resource Manager template
+# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Zelf studie: parameter bestanden gebruiken voor het implementeren van uw Resource Manager-sjabloon
 
-In this tutorial, you learn how to use [parameter files](resource-manager-parameter-files.md) to store the values you pass in during deployment. In the previous tutorials, you used inline parameters with your deployment command. This approach worked for testing your template, but when automating deployments it can be easier to pass a set of values for your environment. Parameter files make it easier to package parameter values for a specific environment. In this tutorial, you'll create parameter files for development and production environments. It takes about **12 minutes** to complete.
+In deze zelf studie leert u hoe u [parameter bestanden](resource-manager-parameter-files.md) kunt gebruiken voor het opslaan van de waarden die tijdens de implementatie worden door gegeven. In de vorige zelf studies hebt u inline-para meters gebruikt met de implementatie opdracht. Deze aanpak werkt voor het testen van uw sjabloon, maar bij het automatiseren van implementaties kan het gemakkelijker worden om een set waarden voor uw omgeving door te geven. Met parameter bestanden kunt u gemakkelijker parameter waarden voor een specifieke omgeving inpakken. In deze zelf studie maakt u parameter bestanden voor ontwikkel-en productie omgevingen. Het duurt ongeveer **12 minuten** om te volt ooien.
 
 ## <a name="prerequisites"></a>Vereisten
 
-We recommend that you complete the [tutorial about tags](template-tutorial-add-tags.md), but it's not required.
+U wordt aangeraden de [zelf studie over Tags](template-tutorial-add-tags.md)te volt ooien, maar dit is niet vereist.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Sjabloon controleren
 
-Your template has many parameters you can provide during deployment. At the end of the previous tutorial, your template looked like:
+De sjabloon bevat een groot aantal para meters die u tijdens de implementatie kunt opgeven. Aan het einde van de vorige zelf studie is uw sjabloon als volgt bekeken:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
 
-This template works well, but now you want to easily manage the parameters that you pass in for the template.
+Deze sjabloon werkt goed, maar nu wilt u de para meters die u doorgeeft, eenvoudig beheren voor de sjabloon.
 
-## <a name="add-parameter-files"></a>Add parameter files
+## <a name="add-parameter-files"></a>Parameter bestanden toevoegen
 
-Parameter files are JSON files with a structure that is similar to your template. In the file, you provide the parameter values you want to pass in during deployment.
+Parameter bestanden zijn JSON-bestanden met een structuur die vergelijkbaar is met uw sjabloon. In het bestand geeft u de parameter waarden op die u tijdens de implementatie wilt door geven.
 
-In VS Code, create a new file with following content. Save the file with the name **azuredeploy.parameters.dev.json**.
+Maak in VS code een nieuw bestand met de volgende inhoud. Sla het bestand op met de naam **azuredeploy. para meters. dev. json**.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
 
-This file is your parameter file for the development environment. Notice that it uses Standard_LRS for the storage account, names resources with a **dev** prefix, and sets the **Environment** tag to **Dev**.
+Dit bestand is het parameter bestand voor de ontwikkel omgeving. U ziet dat deze Standard_LRS gebruikt voor het opslag account, namen van resources met een **dev** -voor voegsel en het **omgevings** label instelt op **dev**.
 
-Again, create a new file with the following content. Save the file with the name **azuredeploy.parameters.prod.json**.
+Maak opnieuw een nieuw bestand met de volgende inhoud. Sla het bestand op met de naam **azuredeploy. para meters. Prod. json**.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
 
-This file is your parameter file for the production environment. Notice that it uses Standard_GRS for the storage account, names resources with a **contoso** prefix, and sets the **Environment** tag to **Production**. In a real production environment, you would also want to use an app service with a SKU other than free, but we'll continue to use that SKU for this tutorial.
+Dit bestand is het parameter bestand voor de productie omgeving. U ziet dat deze Standard_GRS gebruikt voor het opslag account, resources benoemt met een voor voegsel van **Contoso** en de **omgevings** label instelt op **productie**. In een echte productie omgeving zou u ook een app service willen gebruiken met een andere SKU dan gratis, maar we blijven die SKU gebruiken voor deze zelf studie.
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-Use either Azure CLI or Azure PowerShell to deploy the template.
+Gebruik Azure CLI of Azure PowerShell om de sjabloon te implementeren.
 
-As a final test of your template, let's create two new resource groups. One for the dev environment and one for the production environment.
+Als laatste test van uw sjabloon gaan we twee nieuwe resource groepen maken. Een voor de ontwikkel omgeving en één voor de productie omgeving.
 
-First, we'll deploy to the dev environment.
+Eerst gaan we implementeren in de ontwikkel omgeving.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -85,7 +85,7 @@ az group deployment create \
 
 ---
 
-Now, we'll deploy to the production environment.
+Nu gaan we implementeren naar de productie omgeving.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -118,25 +118,25 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 
-You can verify the deployment by exploring the resource groups from the Azure portal.
+U kunt de implementatie controleren door de resource groepen van de Azure Portal te verkennen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. You see the two new resource groups you deployed in this tutorial.
-1. Select either resource group and view the deployed resources. Notice that they match the values you specified in your parameter file for that environment.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer **resource groepen**in het menu links.
+1. U ziet de twee nieuwe resource groepen die u in deze zelf studie hebt geïmplementeerd.
+1. Selecteer een resource groep en Bekijk de geïmplementeerde resources. U ziet dat ze overeenkomen met de waarden die u hebt opgegeven in het parameter bestand voor die omgeving.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
-2. Voer de naam van de resourcegroep in het veld **Filter by name** in. If you've completed this series, you have three resource groups to delete - myResourceGroup, myResourceGroupDev, and myResourceGroupProd.
+2. Voer de naam van de resourcegroep in het veld **Filter by name** in. Als u deze serie hebt voltooid, hebt u drie resource groepen om myResourceGroup, myResourceGroupDev en myResourceGroupProd te verwijderen.
 3. Selecteer de naam van de resourcegroep.
 4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Congratulations, you've finished this introduction to deploying templates to Azure. Let us know if you have any comments and suggestions in the feedback section. Bedankt!
+Gefeliciteerd, u hebt deze inleiding voltooid voor het implementeren van sjablonen in Azure. Laat het ons weten als u opmerkingen en suggesties hebt in het gedeelte feedback. Bedankt!
 
-You're ready to jump into more advanced concepts about templates. The next tutorial goes into more detail about using template reference documentation to help with defining resources to deploy.
+U kunt nu door gaan met meer geavanceerde concepten over sjablonen. De volgende zelf studie gaat meer details over het gebruik van sjabloon referentie documentatie voor hulp bij het definiëren van resources om te implementeren.
 
 > [!div class="nextstepaction"]
 > [Sjabloonverwijzing gebruiken](resource-manager-tutorial-create-encrypted-storage-accounts.md)

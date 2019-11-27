@@ -102,6 +102,6 @@ Talen:
 | N.v.t.         | `6`, `six`                   |
 | Percentage  | `50%`, `fifty percent`       |
 | Rangtelwoord     | `2nd`, `second`              |
-| Currency    | `$10.99`, `€30.00`           |
+| Valuta    | `$10.99`, `€30.00`           |
 | Dimensie   | `10 miles`, `40 cm`          |
 | Temperatuur | `32 degrees`, `10°C`         |

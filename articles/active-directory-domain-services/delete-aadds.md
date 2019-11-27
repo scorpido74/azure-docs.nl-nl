@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Domain Services uitschakelen | Microsoft Docs '
-description: Meer informatie over het uitschakelen van Azure Active Directory Domain Services met behulp van de Azure Portal
+title: Azure Active Directory Domain Services verwijderen | Microsoft Docs
+description: Meer informatie over het uitschakelen of verwijderen van een Azure Active Directory Domain Services beheerd domein met behulp van de Azure Portal
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 05c4e73c56b79c6e313ea15124bd0f3d17b2fc70
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 9f0b8a438a7c236c5e016673a59bfb691e9c2152
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842611"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546299"
 ---
-# <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Active Directory Domain Services uitschakelen met behulp van de Azure Portal
+# <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Een door Azure Active Directory Domain Services beheerd domein verwijderen met de Azure Portal
 
 Als u een beheerd domein niet meer nodig hebt, kunt u een Azure Active Directory Domain Services-exemplaar (Azure AD DS) verwijderen. Er is geen optie voor het uitschakelen of tijdelijk uitschakelen van een door Azure AD DS beheerd domein. Als u het door Azure AD DS beheerde domein verwijdert, wordt de Azure AD-Tenant niet verwijderd. Dit artikel laat u zien hoe u de Azure Portal kunt gebruiken om een door Azure AD DS beheerd domein te verwijderen.
 

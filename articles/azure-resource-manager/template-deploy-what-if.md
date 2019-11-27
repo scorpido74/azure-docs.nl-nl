@@ -49,7 +49,7 @@ Zie [resource groepen en-resources op abonnements niveau maken](deploy-to-subscr
 
 ## <a name="result-format"></a>Resultaat indeling
 
-U kunt het detail niveau bepalen dat wordt geretourneerd over de voorspelde wijzigingen. Stel de para meter `ResultFormat` in op `FullResourcePayloads` om een lijst met resources te verkrijgen wat er wordt gewijzigd en Details over de eigenschappen die worden gewijzigd. Stel de para meter `ResultFormat` in op `ResourceIdOnly` om een lijst met resources te verkrijgen die zullen worden gewijzigd. De standaardwaarde is `FullResourcePayloads`.  
+U kunt het detail niveau bepalen dat wordt geretourneerd over de voorspelde wijzigingen. Stel de para meter `ResultFormat` in op `FullResourcePayloads` om een lijst met resources te verkrijgen wat er wordt gewijzigd en Details over de eigenschappen die worden gewijzigd. Stel de para meter `ResultFormat` in op `ResourceIdOnly` om een lijst met resources te verkrijgen die zullen worden gewijzigd. De standaard waarde is `FullResourcePayloads`.  
 
 In de volgende scherm afbeeldingen ziet u de twee verschillende uitvoer indelingen:
 

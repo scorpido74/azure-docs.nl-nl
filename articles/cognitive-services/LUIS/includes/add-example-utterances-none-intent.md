@@ -17,20 +17,20 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325912"
 ---
-De clienttoepassing moet weten of een uiting niet zinvol of gepast is voor de toepassing. The **None** intent is added to each application as part of the creation process to determine if an utterance shouldn't be answered by the client application.
+De clienttoepassing moet weten of een uiting niet zinvol of gepast is voor de toepassing. De **enige** intentie wordt toegevoegd aan elke toepassing als onderdeel van het aanmaak proces om te bepalen of een utterance niet moet worden beantwoord door de client toepassing.
 
 Als LUIS de intentie **Geen** retourneert voor een uiting, kan de clienttoepassing vragen of de gebruiker het gesprek wil beëindigen of meer aanwijzingen voor het vervolgen van het gesprek wil geven. 
 
-If you leave the **None** intent empty, an utterance that should be predicted outside the subject domain will be predicted in one of the existing subject domain intents. The result is that the client application, such as a chat bot, will perform incorrect operations based on an incorrect prediction. 
+Als **u niets opgeeft** , wordt een utterance die buiten het onderwerp van het domein moet worden voor speld, in een van de bestaande onderwerp-domein intentie voor speld. Het resultaat is dat de client toepassing, zoals een chat-bot, onjuiste bewerkingen uitvoert op basis van een onjuiste voor spelling. 
 
 1. Selecteer **Intents** in het linkerpaneel.
 
-1. Selecteer de intent **None**. Add three utterances that your user might enter but are not relevant to your Pizza ordering app:
+1. Selecteer de intent **None**. Voeg drie uitingen toe die uw gebruiker kan invoeren, maar die niet relevant zijn voor uw pizza-ordenings-app:
 
-    |`None` example utterances|
+    |`None` voorbeeld uitingen|
     |--|
     |`Barking dogs are annoying`|
     |`Order a pizza for me`|
     |`Penguins in the ocean`|
 
-    These examples shouldn't use words you expect in your subject domain such as `pizza`, `cheese`, `crust`, `pickup` `deliver`.
+    Deze voor beelden mogen geen woorden gebruiken die u verwacht in uw onderwerps domein, zoals `pizza`, `cheese``crust``pickup` `deliver`.

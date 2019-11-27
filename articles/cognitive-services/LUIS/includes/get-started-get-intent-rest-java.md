@@ -1,5 +1,5 @@
 ---
-title: Get intent with REST call in Java
+title: Intentie met REST-aanroep in Java
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -18,8 +18,8 @@ ms.locfileid: "74414468"
 ## <a name="prerequisites"></a>Vereisten
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* [Visual Studio Code](https://code.visualstudio.com/) or your favorite IDE
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* [Visual Studio code](https://code.visualstudio.com/) of uw favoriete IDE
+* ID van open bare app: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-sleutel ophalen
 
@@ -27,13 +27,13 @@ ms.locfileid: "74414468"
 
 ## <a name="get-intent-programmatically"></a>De intentie programmatisch ophalen
 
-Use Java to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+Gebruik Java om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-prediction) te doorzoeken en een Voorspellings resultaat te krijgen.
 
-1. Make a subdirectory named `lib` and copy in the following java libs:
+1. Maak een submap met de naam `lib` en kopieer deze in de volgende Java-bibliotheken:
 
-    * [commons-logging-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
-    * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
-    * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
+    * [Commons-logging-1.2. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
+    * [httpclient-4.5.3. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
+    * [httpcore-4.4.6. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
 1. Kopieer de volgende code om een klasse te maken in een bestand met de naam `Predict.java`:
 
@@ -104,31 +104,31 @@ Use Java to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predicti
     }    
     ```
 
-1. Replace the following values:
+1. Vervang de volgende waarden:
 
-    * `YOUR-KEY` with your starter key
-    * `YOUR-ENDPOINT` with your endpoint. Bijvoorbeeld `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` met uw start sleutel
+    * `YOUR-ENDPOINT` met uw eind punt. Bijvoorbeeld `westus2.api.cognitive.microsoft.com`.
 
 
-1. Compile the java program from the command line: 
+1. Compileer het Java-programma vanaf de opdracht regel: 
 
     ```console
     javac -cp ":lib/*" Predict.java
     ```
 
-1. Run the java program from the command line:
+1. Voer het Java-programma uit vanaf de opdracht regel:
 
     ```console
     java -cp ":lib/*" Predict
     ```
 
-1. Review the prediction response, which is returned as JSON:
+1. Bekijk het Voorspellings antwoord dat wordt geretourneerd als JSON:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    The JSON response formatted for readability: 
+    Het JSON-antwoord dat is opgemaakt voor de Lees baarheid: 
 
     ```JSON
     {
@@ -177,9 +177,9 @@ Use Java to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predicti
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-When you are finished with this quickstart, delete the file from the file system. 
+Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Add utterances and train with Java](../get-started-get-model-rest-apis.md)
+> [Uitingen en Train toevoegen met Java](../get-started-get-model-rest-apis.md)

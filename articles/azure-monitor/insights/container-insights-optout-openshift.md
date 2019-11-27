@@ -1,6 +1,6 @@
 ---
-title: How to stop monitoring your Azure Red Hat OpenShift cluster | Microsoft Docs
-description: This article describes how you can stop monitoring of your Azure Red Hat OpenShift cluster with Azure Monitor for containers.
+title: Stoppen met het bewaken van uw Azure Red Hat open Shift-cluster | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u de bewaking van uw Azure Red Hat open Shift-cluster kunt stoppen met Azure Monitor voor containers.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
@@ -14,19 +14,19 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384329"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>How to stop monitoring your Azure Red Hat OpenShift cluster with Azure Monitor for containers
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>Het bewaken van uw Azure Red Hat open Shift-cluster stoppen met Azure Monitor voor containers
 
-After you enable monitoring of your Azure Red Hat OpenShift cluster, you can stop monitoring the cluster if you decide you no longer want to monitor it. This article shows how to accomplish this using the provided Azure Resource Manager templates.  
+Nadat u de bewaking van uw Azure Red Hat open Shift-cluster hebt ingeschakeld, kunt u stoppen met het bewaken van het cluster als u besluit dat u het niet meer wilt bewaken. In dit artikel wordt beschreven hoe u dit kunt doen met behulp van de meegeleverde Azure Resource Manager sjablonen.  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
-Provided are two Azure Resource Manager template to support removing the solution resources consistently and repeatedly in your resource group. One is a JSON template specifying the configuration to stop monitoring and the other contains parameter values that you configure to specify the OpenShift cluster resource ID and Azure region that the cluster is deployed in. 
+Gegeven worden twee Azure Resource Manager-sjabloon voor de ondersteuning van de resources van de oplossing consistent en herhaaldelijk in de resourcegroep te verwijderen. Een JSON-sjabloon geeft u de configuratie voor het stoppen van de controle en de andere bevat parameter waarden die u configureert om de open Shift-cluster resource-ID en Azure-regio op te geven waarin het cluster is geïmplementeerd. 
 
-If you're unfamiliar with the concept of deploying resources by using a template, see:
+Als u niet bekend met het concept bent van het implementeren van resources met behulp van een sjabloon, Zie:
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Deploy resources with Resource Manager templates and the Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-If you choose to use the Azure CLI, you first need to install and use the CLI locally. You must be running the Azure CLI version 2.0.65 or later. To identify your version, run `az --version`. If you need to install or upgrade the Azure CLI, see [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ### <a name="create-template"></a>Sjabloon maken
 
@@ -69,9 +69,9 @@ If you choose to use the Azure CLI, you first need to install and use the CLI lo
     }
     ```
 
-2. Save this file as **OptOutTemplate.json** to a local folder.
+2. Sla dit bestand op als **OptOutTemplate. json** naar een lokale map.
 
-3. Paste the following JSON syntax into your file:
+3. Plak de volgende JSON-syntaxis in het bestand:
 
     ```json
     {
@@ -88,17 +88,17 @@ If you choose to use the Azure CLI, you first need to install and use the CLI lo
     }
     ```
 
-4. Edit the values for **aroResourceId** and **aroResourceLocation** by using the values of the OpenShift cluster, which you can find on the **Properties** page for the selected cluster.
+4. Bewerk de waarden voor **aroResourceId** en **aroResourceLocation** met behulp van de waarden van het open Shift-cluster, dat u kunt vinden op de pagina **Eigenschappen** voor het geselecteerde cluster.
 
-    ![Container properties page](media/container-insights-optout-openshift/cluster-properties-page.png)
+    ![De eigenschappenpagina van container](media/container-insights-optout-openshift/cluster-properties-page.png)
 
-5. Save this file as **OptOutParam.json** to a local folder.
+5. Sla dit bestand op als **OptOutParam. json** naar een lokale map.
 
 6. U kunt deze sjabloon nu implementeren. 
 
-### <a name="remove-the-solution-using-azure-cli"></a>Remove the solution using Azure CLI
+### <a name="remove-the-solution-using-azure-cli"></a>Verwijderen van de oplossing met behulp van Azure CLI
 
-Execute the following command with Azure CLI on Linux to remove the solution and clean up the configuration on your cluster.
+Voer de volgende opdracht uit met Azure CLI in Linux om de oplossing te verwijderen en de configuratie op uw cluster op te schonen.
 
 ```azurecli
 az login   
@@ -106,17 +106,17 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
-The configuration change can take a few minutes to complete. When it's completed, a message similar to the following that includes the result is returned:
+Wijzigen van de configuratie kan een paar minuten duren. Wanneer deze voltooid, wordt een bericht dat lijkt op de volgende mogelijkheden van het resultaat geretourneerd:
 
 ```azurecli
 ProvisioningState       : Succeeded
 ```
 
-### <a name="remove-the-solution-using-powershell"></a>Remove the solution using PowerShell
+### <a name="remove-the-solution-using-powershell"></a>Verwijderen van de oplossing met behulp van PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Execute the following PowerShell commands in the folder containing the template to remove the solution and clean up the configuration from your cluster.    
+Voer de volgende Power shell-opdrachten uit in de map met de sjabloon om de oplossing te verwijderen en de configuratie op te schonen van uw cluster.    
 
 ```powershell
 Connect-AzAccount
@@ -124,7 +124,7 @@ Select-AzSubscription -SubscriptionName <yourSubscriptionName>
 New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
 ```
 
-The configuration change can take a few minutes to complete. When it's completed, a message similar to the following that includes the result is returned:
+Wijzigen van de configuratie kan een paar minuten duren. Wanneer deze voltooid, wordt een bericht dat lijkt op de volgende mogelijkheden van het resultaat geretourneerd:
 
 ```powershell
 ProvisioningState       : Succeeded
@@ -132,4 +132,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Volgende stappen
 
-If the workspace was created only to support monitoring the cluster and it's no longer needed, you have to manually delete it. If you are not familiar with how to delete a workspace, see [Delete an Azure Log Analytics workspace](../../log-analytics/log-analytics-manage-del-workspace.md). 
+Als de werkruimte alleen ter ondersteuning van de bewaking van het cluster is gemaakt en deze niet meer nodig hebt, hebt u deze handmatig te verwijderen. Zie [een Azure log Analytics-werk ruimte verwijderen](../../log-analytics/log-analytics-manage-del-workspace.md)als u niet bekend bent met het verwijderen van een werk ruimte. 

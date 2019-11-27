@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8261723f145c7b8ba01e27108e7a309f9f483d2c
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cd0e77d1534bf540376fd397ee3e6d45bf8c424a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993138"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546262"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>E-mail meldingen configureren voor problemen in Azure Active Directory Domain Services
 
@@ -33,7 +33,7 @@ In het volgende voor beeld van een e-mail melding wordt aangegeven dat er een kr
 ![Voor beeld van e-mail melding](./media/active-directory-domain-services-alerts/email-alert.png)
 
 > [!WARNING]
-> Zorg er altijd voor dat het e-mail bericht afkomstig is van een geverifieerde afzender van micro soft voordat u op de koppelingen in het bericht klikt. De e-mail meldingen zijn altijd `azure-noreply@microsoft.com` afkomstig van het adres.
+> Zorg er altijd voor dat het e-mail bericht afkomstig is van een geverifieerde afzender van micro soft voordat u op de koppelingen in het bericht klikt. De e-mail meldingen zijn altijd afkomstig van het `azure-noreply@microsoft.com` adres.
 
 ### <a name="why-would-i-receive-email-notifications"></a>Waarom ontvang ik e-mail meldingen?
 
@@ -78,7 +78,7 @@ Als u geen toegang hebt tot de pagina met instellingen voor meldingen in de Azur
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Ik wil geen e-mail meldingen ontvangen, maar ik heb mijn e-mail adres ingevoerd. Hoe komt dat?
 
-Controleer uw e-mail adres of map in uw e-mail op de melding en zorg ervoor dat de afzender `azure-noreply@microsoft.com`van wordt toegestaan.
+Controleer uw e-mail adres of map in uw e-mail op de melding en zorg ervoor dat de afzender van `azure-noreply@microsoft.com`is toegestaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

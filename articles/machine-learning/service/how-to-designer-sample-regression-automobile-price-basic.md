@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Predict car prices (basic) example'
+title: 'Ontwerp: voor beeld van prijzen voors pellen (Basic)'
 titleSuffix: Azure Machine Learning
-description: Build an ML regression model to predict an automobile's price without writing a single line of code with Azure Machine Learning designer.
+description: Bouw een ML regressie model voor het voors pellen van de prijs van een auto, zonder een enkele regel code te schrijven met Azure Machine Learning Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,67 +17,67 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213828"
 ---
-# <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Use regression to predict car prices with Azure Machine Learning designer
+# <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Regressie gebruiken om de prijzen van auto's te voors pellen met Azure Machine Learning Designer
 
-**Designer (preview) sample 1**
+**Voor beeld van Designer (preview) 1**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Learn how to build a machine learning regression model without writing a single line of code using the designer (preview).
+Meer informatie over het bouwen van een machine learning regressie model zonder een enkele regel code te schrijven met behulp van de ontwerp functie (preview).
 
-This pipeline trains a **decision forest regressor** to predict a car's price based on technical features such as make, model, horsepower, and size. Because you're trying to answer the question "How much?" this is called a regression problem. However, you can apply the same fundamental steps in this example to tackle any type of machine learning problem whether it be regression, classification, clustering, and so on.
+Deze pijp lijn traint een **besluit forest regressor hierop** om de prijs van een auto te voors pellen op basis van technische functies zoals merk, model, paarden kracht en grootte. Omdat u probeert de vraag "hoeveel?" te beantwoorden Dit wordt een regressie probleem genoemd. U kunt echter dezelfde basis stappen in dit voor beeld Toep assen om elk type machine learning probleem op te doen, of het nu gaat om een regressie, classificatie, Clustering, enzovoort.
 
-The fundamental steps of a training machine learning model are:
+De belangrijkste stappen van een trainings machine learning model zijn:
 
 1. De gegevens ophalen
-1. Pre-process the data
+1. De gegevens vooraf verwerken
 1. Het model trainen
 1. Het model evalueren
 
-Here's the final, completed graph of the pipeline. This article provides the rationale for all the modules so you can make similar decisions on your own.
+Hier is de uiteindelijke, voltooide grafiek van de pijp lijn. Dit artikel bevat een motivering voor alle modules, zodat u op uw eigen wijze vergelijk bare beslissingen kunt nemen.
 
-![Graph of the pipeline](media/how-to-designer-sample-regression-predict-automobile-price-basic/overall-graph.png)
+![Grafiek van de pijp lijn](media/how-to-designer-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Click the sample 1 to open it。
+4. Klik op het voor beeld 1 om het te openen Marketplace.
 
 
 ## <a name="get-the-data"></a>De gegevens ophalen
 
-This sample uses the **Automobile price data (Raw)** dataset, which is from the UCI Machine Learning Repository. The dataset contains 26 columns that contain information about automobiles, including make, model, price, vehicle features (like the number of cylinders), MPG, and an insurance risk score. The goal of this sample is to predict the price of the car.
+In dit voor beeld wordt de gegevensset **Auto Mobile price data (RAW)** gebruikt, die afkomstig is uit de ICB machine learning-opslag plaats. De gegevensset bevat 26 kolommen die informatie bevatten over auto's, waaronder merk, model, prijs, voertuig functies (zoals het aantal flessen), MPG en een risico score voor verzekeringen. Het doel van dit voor beeld is om de prijs van de auto te voors pellen.
 
-## <a name="pre-process-the-data"></a>Pre-process the data
+## <a name="pre-process-the-data"></a>De gegevens vooraf verwerken
 
-The main data preparation tasks include data cleaning, integration, transformation, reduction, and discretization or quantization. In the designer, you can find modules to perform these operations and other data pre-processing tasks in the **Data Transformation** group in the left panel.
+De belangrijkste taken voor gegevens voorbereiding zijn het opschonen van gegevens, integratie, trans formatie, reductie en onderscheidings of kwantisatiefouten. In de ontwerp functie kunt u modules vinden voor het uitvoeren van deze bewerkingen en andere taken die vooraf worden verwerkt in de **gegevens transformatie** groep in het linkerdeel venster.
 
-Use the **Select Columns in Dataset** module to exclude normalized-losses that have many missing values. Then use **Clean Missing Data** to remove the rows that have missing values. This helps to create a clean set of training data.
+Gebruik de module **select columns in dataset** om normale verliezen met veel ontbrekende waarden uit te sluiten. Vervolgens gebruikt u **clean Missing Data** om de rijen met ontbrekende waarden te verwijderen. Zo kunt u een schone set trainings gegevens maken.
 
-![Data pre-processing](./media/how-to-designer-sample-regression-predict-automobile-price-basic/data-processing.png)
+![Vooraf verwerkte gegevens](./media/how-to-designer-sample-regression-predict-automobile-price-basic/data-processing.png)
 
 ## <a name="train-the-model"></a>Het model trainen
 
-Machine learning problems vary. Common machine learning tasks include classification, clustering, regression, and recommender systems, each of which might require a different algorithm. Your choice of algorithm often depends on the requirements of the use case. After you pick an algorithm, you need to tune its parameters to train a more accurate model. You then need to evaluate all models based on metrics like accuracy, intelligibility, and efficiency.
+Problemen met machine learning kunnen variëren. Veelvoorkomende machine learning taken omvatten classificatie-, cluster-, regressie-en aanbevolen systemen, die elk een ander algoritme kunnen vereisen. Uw keuze van algoritme is vaak afhankelijk van de vereisten van de use-case. Nadat u een algoritme hebt gekozen, moet u de para meters afstemmen om een nauw keuriger model te trainen. Vervolgens moet u alle modellen evalueren op basis van metrische gegevens, zoals nauw keurigheid, Intelligibility en efficiëntie.
 
-Since the goal of this sample is to predict automobile prices, and because the label column (price) contains real numbers, a regression model is a good choice. Considering that the number of features is relatively small (less than 100) and these features aren't sparse, the decision boundary is likely to be nonlinear. So we use **Decision Forest Regression** for this pipeline.
+Omdat het doel van dit voor beeld is om de prijzen van auto's te voors pellen, en omdat de kolom Label (prijs) reële getallen bevat, is een regressie model een goede keuze. Gezien het feit dat het aantal functies relatief klein is (minder dan 100) en deze functies niet verspreid zijn, is de beslissings grens waarschijnlijk niet lineair. Daarom gebruiken we de regressie van het **beslissings forest** voor deze pijp lijn.
 
-Use the **Split Data** module to randomly divide the input data so that the training dataset contains 70% of the original data and the testing dataset contains 30% of the original data.
+Gebruik de module **Splits data** om de invoer gegevens wille keurig te verdelen, zodat de trainings gegevensset 70% van de oorspronkelijke gegevens bevat en de test gegevensset 30% van de oorspronkelijke gegevens bevat.
 
-## <a name="test-evaluate-and-compare"></a>Test, evaluate, and compare
+## <a name="test-evaluate-and-compare"></a>Testen, evalueren en vergelijken
 
-Split the dataset and use different datasets to train and test the model to make the evaluation of the model more objective.
+Splits de gegevensset en gebruik verschillende gegevens sets om het model te trainen en te testen, zodat de evaluatie van het model meer doel gericht is.
 
-After the model is trained, you can use the **Score Model** and **Evaluate Model** modules to generate predicted results and evaluate the models.
+Nadat het model is getraind, kunt u het **score model** gebruiken en **model modules evalueren** om voorspelde resultaten te genereren en de modellen te evalueren.
 
-**Score Model** generates predictions for the test dataset by using the trained model. To check the result, select the output port of **Score Model** and then select **Visualize**.
+Met het **score model** worden voor spellingen gegenereerd voor de test gegevensset met behulp van het getrainde model. Als u het resultaat wilt controleren, selecteert u de uitvoer poort van het **score model** en selecteert u vervolgens **visualiseren**.
 
-![Score result](./media/how-to-designer-sample-regression-predict-automobile-price-basic/score-result.png)
+![Resultaat van Score](./media/how-to-designer-sample-regression-predict-automobile-price-basic/score-result.png)
 
-Pass the scores to the **Evaluate Model** module to generate evaluation metrics. To check the result, select the output port of the **Evaluate Model** and then select **Visualize**.
+Geef de scores door aan de module **Evaluate model** om metrische gegevens over de evaluatie te genereren. Als u het resultaat wilt controleren, selecteert u de uitvoer poort van het **Evalueer model** en selecteert u vervolgens **visualiseren**.
 
-![Evaluate result](./media/how-to-designer-sample-regression-predict-automobile-price-basic/evaluate-result.png)
+![Resultaat evalueren](./media/how-to-designer-sample-regression-predict-automobile-price-basic/evaluate-result.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -85,11 +85,11 @@ Pass the scores to the **Evaluate Model** module to generate evaluation metrics.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Explore the other samples available for the designer:
+Bekijk de andere voor beelden die beschikbaar zijn voor de ontwerp functie:
 
-- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
-- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
-- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
-- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)
+- [Voor beeld 2-regressie: vergelijkings algoritmen voor de voor spelling van prijzen voor auto Mobile](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Voor beeld 3: classificatie met functie selectie: inkomen voor spelling](how-to-designer-sample-classification-predict-income.md)
+- [Voor beeld 4-classificatie: krediet risico voors pellen (kosten gevoelig)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Voor beeld 5-classificatie: voor spel verloop](how-to-designer-sample-classification-churn.md)
+- [Voor beeld 6: classificatie: voor spel vertraging van de vlucht](how-to-designer-sample-classification-flight-delay.md)
+- [Voor beeld 7-tekst classificatie: Wikipedia SP 500-gegevensset](how-to-designer-sample-text-classification.md)

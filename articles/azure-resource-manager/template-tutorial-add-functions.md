@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add template functions
-description: Add template functions to your Azure Resource Manager template to construct values.
+title: Zelf studie-sjabloon functies toevoegen
+description: Voeg sjabloon functies toe aan uw Azure Resource Manager sjabloon om waarden te maken.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,41 +12,41 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405966"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Tutorial: Add template functions to your Resource Manager template
+# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Zelf studie: sjabloon functies toevoegen aan uw Resource Manager-sjabloon
 
-In this tutorial, you learn how to add [template functions](resource-group-template-functions.md) to your template. You use functions to dynamically construct values. In addition to these system-provided template functions, you can also create [user-defined functions](./template-user-defined-functions.md). This tutorial takes **7 minutes** to complete.
+In deze zelf studie leert u hoe u [sjabloon functies](resource-group-template-functions.md) kunt toevoegen aan uw sjabloon. U gebruikt functies om waarden dynamisch samen te stellen. Naast deze door het systeem opgegeven sjabloon functies kunt u ook door de [gebruiker gedefinieerde functies](./template-user-defined-functions.md)maken. Het volt ooien van deze zelf studie duurt **zeven minuten** .
 
 ## <a name="prerequisites"></a>Vereisten
 
-We recommend that you complete the [tutorial about parameters](template-tutorial-add-parameters.md), but it's not required.
+U wordt aangeraden de [zelf studie over para meters](template-tutorial-add-parameters.md)te volt ooien, maar dit is niet vereist.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Sjabloon controleren
 
-At the end of the previous tutorial, your template had the following JSON:
+Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
 
-The location of the storage account is hard-coded to **East US**. However, you may need to deploy the storage account to other regions. You're again facing an issue of your template lacking flexibility. You could add a parameter for location, but it would be great if its default value made more sense than just a hard-coded value.
+De locatie van het opslag account wordt vastgelegd in een VS- **Oost**. Het is echter mogelijk dat u het opslag account moet implementeren in andere regio's. Er wordt een probleem opgetreden bij het oplossen van uw sjabloon. U kunt een para meter voor de locatie toevoegen, maar dit zou geweldig zijn als de standaard waarde meer zinniger is dan alleen een hardcoded waarde.
 
-## <a name="use-function"></a>Use function
+## <a name="use-function"></a>Functie gebruiken
 
-If you've completed the previous tutorial in this series, you've already used a function. When you added **"[parameters('storageName')]"** , you used the [parameters](resource-group-template-functions-deployment.md#parameters) function. The brackets indicate that the syntax inside the brackets is a [template expression](template-expressions.md). Resource Manager resolves the syntax rather than treating it as a literal value.
+Als u de vorige zelf studie in deze serie hebt voltooid, hebt u al een functie gebruikt. Wanneer u **[para meters (' opslag naam ')] '** hebt toegevoegd, hebt u de functie [para meters](resource-group-template-functions-deployment.md#parameters) gebruikt. De vier Kante haken geven aan dat de syntaxis tussen de haken een [sjabloon expressie](template-expressions.md)is. Resource Manager lost de syntaxis op in plaats van deze als een letterlijke waarde te behandelen.
 
-Functions add flexibility to your template by dynamically getting values during deployment. In this tutorial, you use a function to get the location of the resource group you're using for deployment.
+Met functies kunt u flexibiliteit toevoegen aan uw sjabloon door dynamische waarden te verkrijgen tijdens de implementatie. In deze zelf studie gebruikt u een functie om de locatie op te halen van de resource groep die u voor de implementatie gebruikt.
 
-The following example highlights the changes to add a parameter called **location**.  The parameter default value calls the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. This function returns an object with information about the resource group being used for deployment. One of the properties on the object is a location property. When you use the default value, the storage account location has the same location as the resource group. The resources inside a resource group don't have to share the same location. You can also provide a different location when needed.
+In het volgende voor beeld worden de wijzigingen gemarkeerd voor het toevoegen van een para meter met de naam **Location**.  Met de standaard waarde voor de para meter wordt de functie [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) aangeroepen. Deze functie retourneert een-object met informatie over de resource groep die wordt gebruikt voor de implementatie. Een van de eigenschappen van het object is een locatie-eigenschap. Wanneer u de standaard waarde gebruikt, heeft de locatie van het opslag account dezelfde locatie als de resource groep. De resources in een resource groep hoeven niet dezelfde locatie te delen. U kunt ook een andere locatie opgeven wanneer dat nodig is.
 
-Copy the whole file and replace your template with its contents.
+Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-In the previous tutorials, you created a storage account in East US, but your resource group was created in Central US. For this tutorial, your storage account is created in the same region as the resource group. Use the default value for location, so you don't need to provide that parameter value. You must provide a new name for the storage account because you're creating a storage account in a different location. For example, use **store2** as the prefix instead of **store1**.
+In de vorige zelf studies hebt u een opslag account gemaakt in VS-Oost, maar uw resource groep is gemaakt in de centrale vs. Voor deze zelf studie wordt uw opslag account in dezelfde regio gemaakt als de resource groep. Gebruik de standaard waarde voor locatie, zodat u deze parameter waarde niet hoeft op te geven. U moet een nieuwe naam opgeven voor het opslag account, omdat u een opslag account maakt op een andere locatie. Gebruik bijvoorbeeld **store2** als voor voegsel in plaats van **store1**.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -72,18 +72,18 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. You see that a storage account resource has been deployed and has the same location as the resource group.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer **resource groepen**in het menu links.
+1. Selecteer de resource groep die u hebt geïmplementeerd.
+1. U ziet dat een opslag account resource is geïmplementeerd en dezelfde locatie heeft als de resource groep.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Als u nu stopt, wilt u misschien de resources opschonen die u hebt geïmplementeerd door de resource groep te verwijderen.
 
 1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
@@ -92,7 +92,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this tutorial, you used a function when defining the default value for a parameter. In this tutorial series, you'll continue using functions. By the end of the series, you'll add functions to every section of the template.
+In deze zelf studie hebt u een functie gebruikt bij het definiëren van de standaard waarde voor een para meter. In deze zelfstudie reeks gaat u functies blijven gebruiken. Aan het einde van de reeks voegt u functies toe aan elke sectie van de sjabloon.
 
 > [!div class="nextstepaction"]
-> [Add variables](template-tutorial-add-variables.md)
+> [Variabelen toevoegen](template-tutorial-add-variables.md)

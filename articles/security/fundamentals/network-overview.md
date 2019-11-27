@@ -1,6 +1,6 @@
 ---
-title: Network security concepts and requirements in Azure | Microsoft Docs
-description: This article provides basic explanations about core network security concepts and requirements, and information on what Azure offers in each of these areas.
+title: Concepten en vereisten voor netwerk beveiliging in azure | Microsoft Docs
+description: Dit artikel bevat algemene uitleg over de basis beginselen en vereisten voor de beveiliging van het netwerk en informatie over wat Azure biedt op elk van deze gebieden.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -22,145 +22,145 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384199"
 ---
-# <a name="azure-network-security-overview"></a>Azure network security overview
+# <a name="azure-network-security-overview"></a>Overzicht van Azure-netwerk beveiliging
 
-Network security could be defined as the process of protecting resources from unauthorized access or attack by applying controls to network traffic. The goal is to ensure that only legitimate traffic is allowed. Azure includes a robust networking infrastructure to support your application and service connectivity requirements. Network connectivity is possible between resources located in Azure, between on-premises and Azure hosted resources, and to and from the internet and Azure.
+Netwerk beveiliging kan worden gedefinieerd als het proces van het beveiligen van bronnen tegen onbevoegde toegang of aanvallen door besturings elementen toe te passen op netwerk verkeer. Het doel is om ervoor te zorgen dat alleen rechtmatig verkeer wordt toegestaan. Azure bevat een robuuste netwerk infrastructuur ter ondersteuning van uw toepassings-en service connectiviteits vereisten. De netwerk verbinding is mogelijk tussen bronnen in azure, tussen on-premises en Azure gehoste resources, en naar en van Internet en Azure.
 
-This article covers some of the options that Azure offers in the area of network security. You can learn about:
+In dit artikel worden enkele van de opties beschreven die Azure biedt op het gebied van netwerk beveiliging. U vindt meer informatie over:
 
-* Azure networking
-* Network access control
+* Azure-netwerken
+* Netwerk toegangs beheer
 * Azure Firewall
-* Secure remote access and cross-premises connectivity
+* Beveiligde externe toegang en cross-premises connectiviteit
 * Beschikbaarheid
 * Naamomzetting
-* Perimeter network (DMZ) architecture
+* Architectuur van perimeter netwerk (DMZ)
 * Azure DDoS Protection
 * Azure Front Door
 * Traffic Manager
-* Monitoring and threat detection
+* Bewaking en detectie van bedreigingen
 
-## <a name="azure-networking"></a>Azure networking
+## <a name="azure-networking"></a>Azure-netwerken
 
-Azure requires virtual machines to be connected to an Azure Virtual Network. A virtual network is a logical construct built on top of the physical Azure network fabric. Each virtual network is isolated from all other virtual networks. This helps ensure that network traffic in your deployments is not accessible to other Azure customers.
+Azure vereist dat virtuele machines zijn verbonden met een Azure-Virtual Network. Een virtueel netwerk is een logische constructie die boven op de fysieke Azure-netwerk infrastructuur is gebouwd. Elk virtueel netwerk is geïsoleerd van alle andere virtuele netwerken. Dit helpt ervoor te zorgen dat het netwerk verkeer in uw implementaties niet toegankelijk is voor andere Azure-klanten.
 
 Meer informatie:
 
-* [Virtual network overview](../../virtual-network/virtual-networks-overview.md)
+* [Overzicht van virtueel netwerk](../../virtual-network/virtual-networks-overview.md)
 
-## <a name="network-access-control"></a>Network access control
+## <a name="network-access-control"></a>Netwerk toegangs beheer
 
-Network access control is the act of limiting connectivity to and from specific devices or subnets within a virtual network. The goal of network access control is to limit access to your virtual machines and services to approved users and devices. Access controls are based on decisions to allow or deny connections to and from your virtual machine or service.
+Netwerk toegangs beheer is de handeling van het beperken van de connectiviteit met en van specifieke apparaten of subnetten binnen een virtueel netwerk. Het doel van netwerk toegangs beheer is om de toegang tot uw virtuele machines en services te beperken tot goedgekeurde gebruikers en apparaten. Toegangs beheer is gebaseerd op beslissingen over het toestaan of weigeren van verbindingen van uw virtuele machine of service.
 
-Azure supports several types of network access control, such as:
+Azure ondersteunt verschillende typen netwerk toegangs beheer, zoals:
 
-* Network layer control
-* Route control and forced tunneling
-* Virtual network security appliances
+* Besturings element Network Layer
+* Route beheer en geforceerde tunneling
+* Beveiligings apparatuur voor virtuele netwerken
 
-### <a name="network-layer-control"></a>Network layer control
+### <a name="network-layer-control"></a>Besturings element Network Layer
 
-Any secure deployment requires some measure of network access control. The goal of network access control is to restrict virtual machine communication to the necessary systems. Other communication attempts are blocked.
+Voor een veilige implementatie is een zekere mate van toegangs beheer van het netwerk vereist. Het doel van netwerk toegangs beheer is het beperken van de communicatie van de virtuele machine met de benodigde systemen. Andere communicatie pogingen worden geblokkeerd.
 
 > [!NOTE]
-> Storage Firewalls are covered in the [Azure storage security overview](storage-overview.md) article
+> Opslag firewalls worden behandeld in het artikel [overzicht van Azure Storage-beveiliging](storage-overview.md)
 
-#### <a name="network-security-rules-nsgs"></a>Network security rules (NSGs)
+#### <a name="network-security-rules-nsgs"></a>Netwerk beveiligings regels (Nsg's)
 
-If you need basic network level access control (based on IP address and the TCP or UDP protocols), you can use Network Security Groups (NSGs). An NSG is a basic, stateful, packet filtering firewall, and it enables you to control access based on a [5-tuple](https://www.techopedia.com/definition/28190/5-tuple). NSGs include functionality to simplify management and reduce the chances of configuration mistakes:
+Als u toegangs beheer op basis van een netwerk niveau (op basis van IP-adres en TCP-of UDP-protocollen) nodig hebt, kunt u netwerk beveiligings groepen (Nsg's) gebruiken. Een NSG is een elementaire, stateful pakket filtering firewall en biedt u de mogelijkheid om de toegang te beheren op basis van een [5-tuple](https://www.techopedia.com/definition/28190/5-tuple). Nsg's bevatten functionaliteit om het beheer te vereenvoudigen en de kans op Configuratie fouten te verminderen:
 
-* **Augmented security rules** simplify NSG rule definition and allow you to create complex rules rather than having to create multiple simple rules to achieve the same result.
-* **Service tags** are Microsoft created labels that represent a group of IP addresses. They update dynamically to include IP ranges that meet the conditions that define inclusion in the label. For example, if you want to create a rule that applies to all Azure storage on the east region you can use Storage.EastUS
-* **Application security groups** allow you to deploy resources to application groups and control the access to those resources by creating rules that use those application groups. For example, if you have webservers deployed to the 'Webservers' application group you can create a rule that applies a NSG allowing 443 traffic from the Internet to all systems in the 'Webservers' application group.
+* Uitgebreide **beveiligings regels** vereenvoudigen NSG regel definitie en bieden u de mogelijkheid om complexe regels te maken in plaats van meerdere eenvoudige regels te hoeven maken om hetzelfde resultaat te krijgen.
+* **Service Tags** zijn micro soft heeft labels gemaakt die een groep IP-adressen vertegenwoordigen. Ze worden dynamisch bijgewerkt om IP-adresbereiken op te nemen die voldoen aan de voor waarden die in het label worden opgenomen. Als u bijvoorbeeld een regel wilt maken die van toepassing is op alle Azure Storage in de regio Oost, kunt u opslag gebruiken.
+* Met **toepassings beveiligings groepen** kunt u resources implementeren in toepassings groepen en de toegang tot deze resources beheren door regels te maken die gebruikmaken van die toepassings groepen. Als u bijvoorbeeld webservers hebt geïmplementeerd voor de toepassings groep webservers, kunt u een regel maken waarmee NSG verkeer van Internet naar alle systemen in de toepassings groep webservers wordt 443 toegestaan.
 
-NSGs do not provide application layer inspection or authenticated access controls.
+Nsg's bieden geen inspectie van toepassings lagen of geverifieerde toegangs beheer.
 
 Meer informatie:
 
 * [Netwerkbeveiligingsgroepen](../../virtual-network/security-overview.md)
 
-#### <a name="asc-just-in-time-vm-access"></a>ASC just in time VM access
+#### <a name="asc-just-in-time-vm-access"></a>Just-in-time-VM-toegang
 
-[Azure security center](../../security-center/security-center-intro.md) can manage the NSGs on VMs and lock access to the VM until a user with the appropriate role-based access control [RBAC](/azure/role-based-access-control/overview) permissions requests access. When the user is successfully authorized ASC makes modifications to the NSGs to allow access to selected ports for the time specified. When the time expires the NSGs are restored to their previous secured state.
+[Azure Security Center](../../security-center/security-center-intro.md) kan de Nsg's op vm's beheren en de toegang tot de virtuele machine vergren delen totdat een gebruiker met de juiste op rollen gebaseerde toegangs beheer [RBAC](/azure/role-based-access-control/overview) -machtigingen toegang vraagt. Wanneer de gebruiker een autorisatie met succes heeft uitgevoerd, worden de Nsg's zodanig gewijzigd dat de toegang tot de geselecteerde poorten voor de opgegeven tijd is toegestaan. Wanneer de tijd verstrijkt, worden de Nsg's hersteld naar de vorige beveiligde status.
 
 Meer informatie:
 
-* [Azure Security Center Just in Time Access](../../security-center/security-center-just-in-time.md)
+* [Azure Security Center just-in-time-toegang](../../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>Service-eindpunten
 
-Service endpoints are another way to apply control over your traffic. You can limit communication with supported services to just your VNets over a direct connection. Traffic from your VNet to the specified Azure service remains on the Microsoft Azure backbone network.  
+Service-eind punten zijn een andere manier om controle over uw verkeer toe te passen. U kunt de communicatie met ondersteunde services beperken tot alleen uw VNets via een directe verbinding. Verkeer van uw VNet naar de opgegeven Azure-service blijft op het Microsoft Azure backbone-netwerk.  
 
 Meer informatie:
 
 * [Service-eindpunten](../../virtual-network/virtual-network-service-endpoints-overview.md#secure-azure-services-to-virtual-networks)
 
-### <a name="route-control-and-forced-tunneling"></a>Route control and forced tunneling
+### <a name="route-control-and-forced-tunneling"></a>Route beheer en geforceerde tunneling
 
-The ability to control routing behavior on your virtual networks is critical. If routing is configured incorrectly, applications and services hosted on your virtual machine might connect to unauthorized devices, including systems owned and operated by potential attackers.
+De mogelijkheid om het routerings gedrag voor uw virtuele netwerken te beheren is van cruciaal belang. Als route ring onjuist is geconfigureerd, kunnen toepassingen en services die op uw virtuele machine worden gehost, verbinding maken met niet-geautoriseerde apparaten, inclusief systemen die eigendom zijn van en worden beheerd door potentiële aanvallers.
 
-Azure networking supports the ability to customize the routing behavior for network traffic on your virtual networks. This enables you to alter the default routing table entries in your virtual network. Control of routing behavior helps you make sure that all traffic from a certain device or group of devices enters or leaves your virtual network through a specific location.
+Azure-netwerken bieden ondersteuning voor de mogelijkheid om het routerings gedrag voor netwerk verkeer op uw virtuele netwerken aan te passen. Hierdoor kunt u de standaard vermeldingen van de routerings tabel in het virtuele netwerk wijzigen. Met behulp van het gedrag van route ring kunt u ervoor zorgen dat alle verkeer van een bepaald apparaat of een groep apparaten het virtuele netwerk binnenkomt of verlaat via een specifieke locatie.
 
-For example, you might have a virtual network security appliance on your virtual network. You want to make sure that all traffic to and from your virtual network goes through that virtual security appliance. You can do this by configuring [User Defined Routes](../../virtual-network/virtual-networks-udr-overview.md) (UDRs) in Azure.
+U kunt bijvoorbeeld een beveiligings apparaat voor virtuele netwerken op uw virtuele netwerk hebben. U wilt ervoor zorgen dat al het verkeer van en naar het virtuele netwerk via dat virtuele beveiligings apparaat loopt. U kunt dit doen door door de [gebruiker gedefinieerde routes](../../virtual-network/virtual-networks-udr-overview.md) (udr's) te configureren in Azure.
 
-[Forced tunneling](https://www.petri.com/azure-forced-tunneling) is a mechanism you can use to ensure that your services are not allowed to initiate a connection to devices on the internet. Note that this is different from accepting incoming connections and then responding to them. Front-end web servers need to respond to requests from internet hosts, and so internet-sourced traffic is allowed inbound to these web servers and the web servers are allowed to respond.
+[Geforceerde tunneling](https://www.petri.com/azure-forced-tunneling) is een mechanisme dat u kunt gebruiken om ervoor te zorgen dat uw services geen verbinding met apparaten op Internet mogen initiëren. Houd er rekening mee dat dit verschilt van het accepteren van binnenkomende verbindingen en vervolgens reageert. Front-end-webservers moeten reageren op aanvragen van Internet hosts, waardoor het Internet verkeer naar deze webservers kan worden verzonden en de webservers kunnen reageren.
 
-What you don't want to allow is a front-end web server to initiate an outbound request. Such requests might represent a security risk because these connections can be used to download malware. Even if you do want these front-end servers to initiate outbound requests to the internet, you might want to force them to go through your on-premises web proxies. This enables you to take advantage of URL filtering and logging.
+Wat u niet wilt toestaan is een front-end-webserver voor het initiëren van een uitgaande aanvraag. Dergelijke aanvragen kunnen een beveiligings risico vormen, omdat deze verbindingen kunnen worden gebruikt voor het downloaden van malware. Zelfs als u wilt dat deze front-endservers uitgaande aanvragen naar Internet initiëren, kunt u ervoor zorgen dat deze door uw on-premises Web-proxy's worden door lopen. Zo kunt u gebruikmaken van URL-filtering en logboek registratie.
 
-Instead, you would want to use forced tunneling to prevent this. When you enable forced tunneling, all connections to the internet are forced through your on-premises gateway. You can configure forced tunneling by taking advantage of UDRs.
+In plaats daarvan zou u geforceerde tunneling wilt gebruiken om dit te voor komen. Wanneer u geforceerde tunneling inschakelt, worden alle verbindingen met Internet geforceerd via uw on-premises gateway. U kunt geforceerde tunneling configureren door gebruik te maken van Udr's.
 
 Meer informatie:
 
-* [What are User Defined Routes and IP Forwarding](../../virtual-network/virtual-networks-udr-overview.md)
+* [Wat zijn door de gebruiker gedefinieerde routes en door sturen via IP](../../virtual-network/virtual-networks-udr-overview.md)
 
-### <a name="virtual-network-security-appliances"></a>Virtual network security appliances
+### <a name="virtual-network-security-appliances"></a>Beveiligings apparatuur voor virtuele netwerken
 
-While NSGs, UDRs, and forced tunneling provide you a level of security at the network and transport layers of the [OSI model](https://en.wikipedia.org/wiki/OSI_model), you might also want to enable security at levels higher than the network.
+Hoewel Nsg's, Udr's en geforceerde tunneling u een beveiligings niveau biedt op het netwerk en de transport lagen van het [OSI-model](https://en.wikipedia.org/wiki/OSI_model), wilt u mogelijk ook beveiliging inschakelen op hogere niveaus dan het netwerk.
 
-For example, your security requirements might include:
+Uw beveiligings vereisten kunnen bijvoorbeeld het volgende omvatten:
 
-* Authentication and authorization before allowing access to your application
-* Intrusion detection and intrusion response
-* Application layer inspection for high-level protocols
-* URL filtering
-* Network level antivirus and Antimalware
-* Anti-bot protection
-* Application access control
-* Additional DDoS protection (above the DDoS protection provided by the Azure fabric itself)
+* Verificatie en autorisatie voordat u toegang tot uw toepassing toestaat
+* Inbraak detectie en reactie op inbraak
+* Application Layer-inspectie voor protocollen op hoog niveau
+* URL-filtering
+* Anti virus-en antimalware op netwerk niveau
+* Anti-bot-beveiliging
+* Toegangs beheer voor toepassingen
+* Aanvullende DDoS-beveiliging (boven de DDoS-beveiliging die wordt verschaft door de Azure-infra structuur zelf)
 
-You can access these enhanced network security features by using an Azure partner solution. You can find the most current Azure partner network security solutions by visiting the [Azure Marketplace](https://azure.microsoft.com/marketplace/), and searching for "security" and "network security."
+U kunt toegang krijgen tot deze verbeterde beveiligings functies van het netwerk met behulp van een Azure-partner oplossing. Ga naar de [Azure Marketplace](https://azure.microsoft.com/marketplace/)en zoek naar ' Beveiliging ' en ' netwerk beveiliging ' om de meest recente oplossingen voor Azure-partner netwerk beveiliging te vinden.
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
-Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledige stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte cloudschaalbaarheid. Some features include:
+Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledige stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte cloudschaalbaarheid. Enkele functies zijn onder andere:
 
 * Hoge beschikbaarheid
-* Cloud scalability
+* Schaal baarheid van Cloud
 * Regels voor het filteren van de FQDN van toepassingen
 * Regels voor het filteren van netwerkverkeer
 
 Meer informatie:
 
-* [Azure Firewall overview](/azure/firewall/overview)
+* [Overzicht van Azure Firewall](/azure/firewall/overview)
 
-## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Secure remote access and cross-premises connectivity
+## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Beveiligde externe toegang en cross-premises connectiviteit
 
-Setup, configuration, and management of your Azure resources needs to be done remotely. In addition, you might want to deploy [hybrid IT](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) solutions that have components on-premises and in the Azure public cloud. These scenarios require secure remote access.
+De installatie, configuratie en het beheer van uw Azure-resources moeten op afstand worden uitgevoerd. Daarnaast wilt u mogelijk [hybride it](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) -oplossingen implementeren met onderdelen on-premises en in de open bare Azure-Cloud. Deze scenario's vereisen beveiligde externe toegang.
 
-Azure networking supports the following secure remote access scenarios:
+Azure Networking ondersteunt de volgende veilige scenario's voor externe toegang:
 
-* Connect individual workstations to a virtual network
-* Connect your on-premises network to a virtual network with a VPN
-* Connect your on-premises network to a virtual network with a dedicated WAN link
-* Connect virtual networks to each other
+* Afzonderlijke werk stations verbinden met een virtueel netwerk
+* Uw on-premises netwerk verbinden met een virtueel netwerk met een VPN
+* Uw on-premises netwerk verbinden met een virtueel netwerk met een specifieke WAN-koppeling
+* Virtuele netwerken met elkaar verbinden
 
-### <a name="connect-individual-workstations-to-a-virtual-network"></a>Connect individual workstations to a virtual network
+### <a name="connect-individual-workstations-to-a-virtual-network"></a>Afzonderlijke werk stations verbinden met een virtueel netwerk
 
-You might want to enable individual developers or operations personnel to manage virtual machines and services in Azure. For example, let's say you need access to a virtual machine on a virtual network. But your security policy does not allow RDP or SSH remote access to individual virtual machines. In this case, you can use a [point-to-site VPN](../../vpn-gateway/point-to-site-about.md) connection.
+U wilt mogelijk afzonderlijke ontwikkel aars of operationele mede werkers in staat stellen om virtuele machines en services in azure te beheren. Stel dat u toegang nodig hebt tot een virtuele machine in een virtueel netwerk. Maar uw beveiligings beleid staat geen externe RDP-of SSH-toegang toe voor afzonderlijke virtuele machines. In dit geval kunt u een [punt-naar-site-VPN-](../../vpn-gateway/point-to-site-about.md) verbinding gebruiken.
 
-The point-to-site VPN connection enables you to set up a private and secure connection between the user and the virtual network. When the VPN connection is established, the user can RDP or SSH over the VPN link into any virtual machine on the virtual network. (This assumes that the user can authenticate and is authorized.) Point-to-site VPN supports:
+Met de punt-naar-site-VPN-verbinding kunt u een persoonlijke en beveiligde verbinding instellen tussen de gebruiker en het virtuele netwerk. Wanneer de VPN-verbinding tot stand is gebracht, kan de gebruiker RDP of SSH via de VPN-koppeling naar een virtuele machine in het virtuele netwerk. (Hierbij wordt ervan uitgegaan dat de gebruiker kan worden geverifieerd en geautoriseerd.) Punt-naar-site-VPN ondersteunt:
 
-* Secure Socket Tunneling Protocol (SSTP), a proprietary SSL-based VPN protocol. An SSL VPN solution can penetrate firewalls, since most firewalls open TCP port 443, which SSL uses. SSTP is only supported on Windows devices. Azure supports all versions of Windows that have SSTP (Windows 7 and later).
+* SSTP (Secure Socket Tunneling Protocol), een eigen op SSL gebaseerd VPN-protocol. Een SSL-VPN-oplossing kan firewalls door dringen, omdat de meeste firewalls de TCP-poort 443 openen, die SSL gebruikt. SSTP wordt alleen ondersteund op Windows-apparaten. Azure ondersteunt alle versies van Windows die SSTP (Windows 7 en hoger) hebben.
 
 * IKEv2 VPN, een op standaarden gebaseerde IPsec VPN-oplossing. IKEv2 VPN kan worden gebruikt om verbinding te maken vanaf Mac-apparaten (OSX-versie 10.11 en hoger).
 
@@ -168,100 +168,100 @@ The point-to-site VPN connection enables you to set up a private and secure conn
 
 Meer informatie:
 
-* [Configure a point-to-site connection to a virtual network using PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Een punt-naar-site-verbinding met een virtueel netwerk configureren met behulp van Power shell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-vpn"></a>Connect your on-premises network to a virtual network with a VPN
+### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-vpn"></a>Uw on-premises netwerk verbinden met een virtueel netwerk met een VPN
 
-You might want to connect your entire corporate network, or portions of it, to a virtual network. This is common in hybrid IT scenarios, where organizations [extend their on-premises datacenter into Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). In many cases, organizations host parts of a service in Azure, and parts on-premises. For example,they might do so when a solution includes front-end web servers in Azure and back-end databases on-premises. These types of "cross-premises" connections also make management of Azure located resources more secure, and enable scenarios such as extending Active Directory domain controllers into Azure.
+Mogelijk wilt u uw hele bedrijfs netwerk of delen ervan koppelen aan een virtueel netwerk. Dit is gebruikelijk in hybride IT-scenario's, waarbij organisaties [hun on-premises Data Center uitbreiden naar Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). In veel gevallen hosten organisaties onderdelen van een service in Azure en delen ze on-premises. Dit kan bijvoorbeeld gebeuren wanneer een oplossing front-end webservers bevat in Azure en back-end-data bases. Met deze typen cross-premises verbindingen wordt het beheer van Azure-bronnen ook veiliger en kunnen scenario's zoals het uitbreiden van Active Directory domein controllers naar Azure worden ingeschakeld.
 
-One way to accomplish this is to use a [site-to-site VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn). The difference between a site-to-site VPN and a point-to-site VPN is that the latter connects a single device to a virtual network. A site-to-site VPN connects an entire network (such as your on-premises network) to a virtual network. Site-to-site VPNs to a virtual network use the highly secure IPsec tunnel mode VPN protocol.
+Een manier om dit te bereiken is het gebruik van een [site-naar-site-VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn). Het verschil tussen een site-naar-site-VPN en een punt-naar-site-VPN is dat de laatste één apparaat verbindt met een virtueel netwerk. Een site-naar-site-VPN verbindt een volledig netwerk (zoals uw on-premises netwerk) met een virtueel netwerk. Site-naar-site-Vpn's naar een virtueel netwerk gebruiken het uiterst veilige IPsec-tunnel modus VPN-protocol.
 
 Meer informatie:
 
-* [Create a Resource Manager VNet with a site-to-site VPN connection using the Azure portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Maak een resource manager-VNet met een site-naar-site-VPN-verbinding met behulp van de Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [Over VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>Connect your on-premises network to a virtual network with a dedicated WAN link
+### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>Uw on-premises netwerk verbinden met een virtueel netwerk met een specifieke WAN-koppeling
 
-Point-to-site and site-to-site VPN connections are effective for enabling cross-premises connectivity. However, some organizations consider them to have the following drawbacks:
+Punt-naar-site-en site-naar-site-VPN-verbindingen zijn effectief voor het inschakelen van cross-premises connectiviteit. Sommige organisaties denken echter dat ze de volgende nadelen hebben:
 
-* VPN connections move data over the internet. This exposes these connections to potential security issues involved with moving data over a public network. In addition, reliability and availability for internet connections cannot be guaranteed.
-* VPN connections to virtual networks might not have the bandwidth for some applications and purposes, as they max out at around 200 Mbps.
+* VPN-verbindingen verplaatsen gegevens via internet. Dit maakt deze verbindingen mogelijk voor mogelijke beveiligings problemen die betrekking hebben op het verplaatsen van gegevens via een openbaar netwerk. Bovendien kan de betrouw baarheid en beschik baarheid voor Internet verbindingen niet worden gegarandeerd.
+* VPN-verbindingen met virtuele netwerken hebben mogelijk niet de band breedte voor sommige toepassingen en doel einden, omdat deze Maxi maal ongeveer 200 Mbps groot zijn.
 
-Organizations that need the highest level of security and availability for their cross-premises connections typically use dedicated WAN links to connect to remote sites. Azure provides you the ability to use a dedicated WAN link that you can use to connect your on-premises network to a virtual network. Azure ExpressRoute, Express route direct, and Express route global reach enable this.
+Organisaties waarvoor het hoogste beveiligings niveau en de beschik baarheid voor hun cross-premises verbindingen nodig zijn, gebruiken meestal specifieke WAN-koppelingen om verbinding te maken met externe sites. Azure biedt u de mogelijkheid om een specifieke WAN-koppeling te gebruiken die u kunt gebruiken om uw on-premises netwerk te verbinden met een virtueel netwerk. Azure ExpressRoute, Express route direct en Express route Global Reach maken dit mogelijk.
 
 Meer informatie:
 
-* [ExpressRoute technical overview](../../expressroute/expressroute-introduction.md)
+* [Technisch overzicht van ExpressRoute](../../expressroute/expressroute-introduction.md)
 * [ExpressRoute direct](../../expressroute/expressroute-erdirect-about.md)
-* [Express route global reach](../../expressroute/expressroute-global-reach.md)
+* [Wereld wijd bereik snelle route](../../expressroute/expressroute-global-reach.md)
 
-### <a name="connect-virtual-networks-to-each-other"></a>Connect virtual networks to each other
+### <a name="connect-virtual-networks-to-each-other"></a>Virtuele netwerken met elkaar verbinden
 
-It is possible to use many virtual networks for your deployments. There are various reasons why you might do this. You might want to simplify management, or you might want increased security. Regardless of the motivation for putting resources on different virtual networks, there might be times when you want resources on each of the networks to connect with one another.
+Het is mogelijk om veel virtuele netwerken te gebruiken voor uw implementaties. Er zijn verschillende redenen waarom u dit kunt doen. U kunt het beheer vereenvoudigen of u wilt een betere beveiliging. Ongeacht de motivatie voor het plaatsen van resources op verschillende virtuele netwerken, is het mogelijk dat u de resources op elk van de netwerken met elkaar wilt verbinden.
 
-One option is for services on one virtual network to connect to services on another virtual network, by "looping back" through the internet. The connection starts on one virtual network, goes through the internet, and then comes back to the destination virtual network. This option exposes the connection to the security issues inherent in any internet-based communication.
+Een optie is voor services op één virtueel netwerk om verbinding te maken met Services op een ander virtueel netwerk, door een ' loop back ' via internet. De verbinding wordt gestart op één virtueel netwerk, gaat via internet en vervolgens weer terug naar het virtuele netwerk van de bestemming. Met deze optie wordt de verbinding met de beveiligings problemen besproken die inherent zijn aan Internet communicatie.
 
-A better option might be to create a site-to-site VPN that connects between two virtual networks. This method uses the same [IPSec tunnel mode](https://technet.microsoft.com/library/cc786385.aspx) protocol as the cross-premises site-to-site VPN connection mentioned above.
+Een betere optie is het maken van een site-naar-site-VPN dat verbinding maakt tussen twee virtuele netwerken. Deze methode maakt gebruik van hetzelfde [IPSec-tunnel modus](https://technet.microsoft.com/library/cc786385.aspx) protocol als de cross-premises site-naar-site VPN-verbinding die hierboven wordt genoemd.
 
-The advantage of this approach is that the VPN connection is established over the Azure network fabric, instead of connecting over the internet. This provides you an extra layer of security, compared to site-to-site VPNs that connect over the internet.
+Het voor deel van deze benadering is dat de VPN-verbinding tot stand is gebracht via de Azure-netwerk infrastructuur, in plaats van via Internet verbinding te maken. Dit biedt een extra beveiligingslaag, vergeleken met site-naar-site-Vpn's die via Internet verbinding maken.
 
 Meer informatie:
 
-* [Configure a VNet-to-VNet Connection by using Azure Resource Manager and PowerShell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+* [Een VNet-naar-VNet-verbinding configureren met behulp van Azure Resource Manager en Power shell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
-Another way to connect your virtual networks is  [VNET peering](../../virtual-network/virtual-network-peering-overview.md). This feature allows you to connect two Azure networks so that communication between them happens over the Microsoft backbone infrastructure without it ever going over the Internet. VNET peering can connect two VNETs within the same region or two VNETs across Azure regions. NSGs can be used to limit connectivity between different subnets or systems.
+Een andere manier om verbinding te maken met uw virtuele netwerken is [VNET-peering](../../virtual-network/virtual-network-peering-overview.md). Met deze functie kunt u twee Azure-netwerken met elkaar verbinden zodat communicatie tussen de micro soft-backbone-infra structuur plaatsvindt zonder dat deze ooit via internet gaat. VNET-peering kan twee VNETs binnen dezelfde regio of twee VNETs tussen Azure-regio's verbinden. Nsg's kan worden gebruikt om de connectiviteit tussen verschillende subnetten of systemen te beperken.
 
 ## <a name="availability"></a>Beschikbaarheid
 
-Availability is a key component of any security program. If your users and systems can't access what they need to access over the network, the service can be considered compromised. Azure has networking technologies that support the following high-availability mechanisms:
+Beschik baarheid is een belang rijk onderdeel van elk beveiligings programma. Als uw gebruikers en systemen geen toegang hebben tot wat ze nodig hebben om toegang te krijgen tot het netwerk, kan de service als aangetast worden beschouwd. Azure heeft netwerk technologieën die ondersteuning bieden voor de volgende mechanismen voor hoge Beschik baarheid:
 
-* HTTP-based load balancing
-* Network level load balancing
-* Global load balancing
+* Taak verdeling op basis van HTTP
+* Taak verdeling netwerk niveau
+* Globale taak verdeling
 
-Load balancing is a mechanism designed to equally distribute connections among multiple devices. The goals of load balancing are:
+Taak verdeling is een mechanisme dat is ontworpen om verbindingen gelijkmatig te verdelen over meerdere apparaten. De doel stellingen van taak verdeling zijn:
 
-* To increase availability. When you load balance connections across multiple devices, one or more of the devices can become unavailable without compromising the service. The services running on the remaining online devices can continue to serve the content from the service.
-* To increase performance. When you load balance connections across multiple devices, a single device doesn't have to handle all processing. Instead, the processing and memory demands for serving the content is spread across multiple devices.
+* Om de beschik baarheid te verg Roten. Wanneer u verbindingen met meerdere apparaten verdeelt, kunnen een of meer van de apparaten niet meer beschikbaar zijn zonder de service in gevaar te brengen. De services die op de overige online apparaten worden uitgevoerd, kunnen de inhoud van de service blijven gebruiken.
+* Om de prestaties te verbeteren. Wanneer u verbindingen met meerdere apparaten verdeelt, hoeft één apparaat niet alle bewerkingen te verwerken. In plaats daarvan worden de bewerkings-en geheugen vereisten voor het uitvoeren van de inhoud verdeeld over meerdere apparaten.
 
-### <a name="http-based-load-balancing"></a>HTTP-based load balancing
+### <a name="http-based-load-balancing"></a>Taak verdeling op basis van HTTP
 
-Organizations that run web-based services often desire to have an HTTP-based load balancer in front of those web services. This helps ensure adequate levels of performance and high availability. Traditional, network-based load balancers rely on network and transport layer protocols. HTTP-based load balancers, on the other hand, make decisions based on characteristics of the HTTP protocol.
+Organisaties die webgebaseerde services uitvoeren, willen vaak een op HTTP gebaseerde load balancer voor deze webservices. Dit zorgt voor een adequaat prestatie niveau en hoge Beschik baarheid. Traditionele load balancers op basis van het netwerk zijn afhankelijk van netwerk-en trans port Layer-protocollen. Op HTTP gebaseerde load balancers kunt u aan de andere kant besluiten nemen op basis van de kenmerken van het HTTP-protocol.
 
-Azure Application Gateway provides HTTP-based load balancing for your web-based services. Application Gateway supports:
+Azure-toepassing gateway biedt op HTTP gebaseerde taak verdeling voor uw webservices. Application Gateway ondersteunt:
 
-* Cookie-based session affinity. This capability makes sure that connections established to one of the servers behind that load balancer stays intact between the client and server. This ensures stability of transactions.
-* SSL offload. When a client connects with the load balancer, that session is encrypted by using the HTTPS (SSL) protocol. However, in order to increase performance, you can use the HTTP (unencrypted) protocol to connect between the load balancer and the web server behind the load balancer. This is referred to as "SSL offload," because the web servers behind the load balancer don't experience the processor overhead involved with encryption. The web servers can therefore service requests more quickly.
-* URL-based content routing. This feature makes it possible for the load balancer to make decisions about where to forward connections based on the target URL. This provides a lot more flexibility than solutions that make load balancing decisions based on IP addresses.
-
-Meer informatie:
-
-* [Application Gateway overview](/azure/application-gateway/application-gateway-introduction)
-
-### <a name="network-level-load-balancing"></a>Network level load balancing
-
-In contrast to HTTP-based load balancing, network level load balancing makes decisions based on IP address and port (TCP or UDP) numbers.
-You can gain the benefits of network level load balancing in Azure by using Azure Load Balancer. Some key characteristics of Load Balancer include:
-
-* Network level load balancing based on IP address and port numbers.
-* Support for any application layer protocol.
-* Load balances to Azure virtual machines and cloud services role instances.
-* Can be used for both internet-facing (external load balancing) and non-internet facing (internal load balancing) applications and virtual machines.
-* Endpoint monitoring, which is used to determine if any of the services behind the load balancer have become unavailable.
+* Sessie affiniteit op basis van cookies. Op deze manier zorgt u ervoor dat verbindingen die tot stand zijn gebracht op een van de servers achter die load balancer intact blijven tussen de client en de server. Dit garandeert de stabiliteit van trans acties.
+* SSL-offload. Wanneer een client verbinding maakt met de load balancer, wordt die sessie versleuteld met behulp van het HTTPS-protocol (SSL). Om de prestaties te verbeteren, kunt u echter het HTTP (niet-versleutelde) protocol gebruiken om verbinding te maken tussen de load balancer en de webserver achter de load balancer. Dit wordt "SSL-offload" genoemd, omdat de webservers achter de load balancer geen gebruik kunnen maken van de processor overhead die bij versleuteling betrokken is. De webservers kunnen daarom sneller aanvragen.
+* Op URL gebaseerde route ring van inhoud. Met deze functie kunnen de load balancer besluiten nemen over het door sturen van verbindingen op basis van de doel-URL. Dit biedt veel meer flexibiliteit dan oplossingen die taak verdelings beslissingen nemen op basis van IP-adressen.
 
 Meer informatie:
 
-* [Internet-facing load balancer between multiple virtual machines or services](/azure/load-balancer/load-balancer-internet-overview)
-* [Internal load balancer overview](/azure/load-balancer/load-balancer-internal-overview)
+* [Overzicht van Application Gateway](/azure/application-gateway/application-gateway-introduction)
 
-### <a name="global-load-balancing"></a>Global load balancing
+### <a name="network-level-load-balancing"></a>Taak verdeling netwerk niveau
 
-Some organizations want the highest level of availability possible. One way to reach this goal is to host applications in globally distributed datacenters. When an application is hosted in datacenters located throughout the world, it's possible for an entire geopolitical region to become unavailable, and still have the application up and running.
+In tegens telling tot HTTP-gebaseerde taak verdeling, nemen taak verdeling op netwerk niveau beslissingen op basis van IP-adres en poort (TCP-of UDP-) getallen.
+U kunt profiteren van de voor delen van taak verdeling op netwerk niveau in azure met behulp van Azure Load Balancer. Enkele belang rijke kenmerken van Load Balancer zijn:
 
-This load-balancing strategy can also yield performance benefits. You can direct requests for the service to the datacenter that is nearest to the device that is making the request.
+* Taak verdeling op netwerk niveau op basis van IP-adres en poort nummers.
+* Ondersteuning voor een Application Layer-Protocol.
+* Taak verdelingen voor virtuele Azure-machines en Cloud Services-rolinstanties.
+* Kan worden gebruikt voor zowel Internet gerichte (externe taak verdeling) als niet-Internet gerichte (interne taak verdeling) toepassingen en virtuele machines.
+* Eindpunt bewaking, die wordt gebruikt om te bepalen of de services achter de load balancer niet meer beschikbaar zijn.
 
-In Azure, you can gain the benefits of global load balancing by using Azure Traffic Manager.
+Meer informatie:
+
+* [Internet gerichte load balancer tussen meerdere virtuele machines of services](/azure/load-balancer/load-balancer-internet-overview)
+* [Overzicht van interne load balancer](/azure/load-balancer/load-balancer-internal-overview)
+
+### <a name="global-load-balancing"></a>Globale taak verdeling
+
+Sommige organisaties willen het hoogste niveau van Beschik baarheid mogelijk maken. Een manier om dit doel te bereiken, is door toepassingen te hosten in wereld wijd gedistribueerde data centers. Wanneer een toepassing wordt gehost in data centers overal ter wereld, is het mogelijk dat een hele geopolitieke regio niet meer beschikbaar is en dat de toepassing nog steeds actief is.
+
+Deze strategie voor taak verdeling kan ook prestatie voordelen opleveren. U kunt aanvragen voor de service omleiden naar het Data Center dat zich het dichtst bij het apparaat bevindt dat de aanvraag indient.
+
+In azure kunt u profiteren van de voor delen van globale taak verdeling met behulp van Azure Traffic Manager.
 
 Meer informatie:
 
@@ -269,115 +269,115 @@ Meer informatie:
 
 ## <a name="name-resolution"></a>Naamomzetting
 
-Name resolution is a critical function for all services you host in Azure. From a security perspective, compromise of the name resolution function can lead to an attacker redirecting requests from your sites to an attacker's site. Secure name resolution is a requirement for all your cloud hosted services.
+Naam omzetting is een belang rijke functie voor alle services die u in azure host. Vanuit het oogpunt van beveiliging kan de functie voor naam omzetting ertoe leiden dat een aanvaller aanvragen van uw sites omleiden naar de site van een aanvaller. Veilige naam omzetting is een vereiste voor alle gehoste services in de Cloud.
 
-There are two types of name resolution you need to address:
+Er zijn twee typen naam omzetting die u moet aanpakken:
 
-* Internal name resolution. This is used by services on your virtual networks, your on-premises networks, or both. Names used for internal name resolution are not accessible over the internet. For optimal security, it's important that your internal name resolution scheme is not accessible to external users.
-* External name resolution. This is used by people and devices outside of your on-premises networks and virtual networks. These are the names that are visible to the internet, and are used to direct connection to your cloud-based services.
+* Interne naam omzetting. Dit wordt gebruikt door services in uw virtuele netwerken, uw on-premises netwerken of beide. Namen die worden gebruikt voor interne naam omzetting, zijn niet toegankelijk via internet. Voor een optimale beveiliging is het belang rijk dat uw interne naam omzettings schema niet toegankelijk is voor externe gebruikers.
+* Externe naam omzetting. Dit wordt gebruikt door personen en apparaten buiten uw on-premises netwerken en virtuele netwerken. Dit zijn de namen die zichtbaar zijn voor Internet en worden gebruikt om verbinding te maken met uw Cloud Services.
 
-For internal name resolution, you have two options:
+Voor een interne naam omzetting hebt u twee opties:
 
-* A virtual network DNS server. When you create a new virtual network, a DNS server is created for you. This DNS server can resolve the names of the machines located on that virtual network. This DNS server is not configurable, is managed by the Azure fabric manager, and can therefore help you secure your name resolution solution.
-* Bring your own DNS server. You have the option of putting a DNS server of your own choosing on your virtual network. This DNS server can be an Active Directory integrated DNS server, or a dedicated DNS server solution provided by an Azure partner, which you can obtain from the Azure Marketplace.
-
-Meer informatie:
-
-* [Virtual network overview](../../virtual-network/virtual-networks-overview.md)
-* [Manage DNS Servers used by a virtual network](../../virtual-network/manage-virtual-network.md#change-dns-servers)
-
-For external name resolution, you have two options:
-
-* Host your own external DNS server on-premises.
-* Host your own external DNS server with a service provider.
-
-Many large organizations host their own DNS servers on-premises. They can do this because they have the networking expertise and global presence to do so.
-
-In most cases, it's better to host your DNS name resolution services with a service provider. These service providers have the network expertise and global presence to ensure very high availability for your name resolution services. Availability is essential for DNS services, because if your name resolution services fail, no one will be able to reach your internet facing services.
-
-Azure provides you with a highly available and high-performing external DNS solution in the form of Azure DNS. This external name resolution solution takes advantage of the worldwide Azure DNS infrastructure. It allows you to host your domain in Azure, using the same credentials, APIs, tools, and billing as your other Azure services. As part of Azure, it also inherits the strong security controls built into the platform.
+* Een DNS-server voor het virtuele netwerk. Wanneer u een nieuw virtueel netwerk maakt, wordt er een DNS-server voor u gemaakt. Deze DNS-server kan de namen van de computers die zich op dat virtuele netwerk bevinden, omzetten. Deze DNS-server kan niet worden geconfigureerd, wordt beheerd door Azure Fabric Manager en kan daarom helpen bij het beveiligen van uw oplossing voor naam omzetting.
+* Uw eigen DNS-server meenemen. U hebt de mogelijkheid om een DNS-server van uw eigen keuze te plaatsen in uw virtuele netwerk. Deze DNS-server kan een Active Directory geïntegreerde DNS-server zijn, of een speciale DNS-server oplossing die door een Azure-partner wordt verschaft, die u kunt verkrijgen via de Azure Marketplace.
 
 Meer informatie:
 
-* [Azure DNS overview](../../dns/dns-overview.md)
-* [Azure DNS private zones](../../dns/private-dns-overview.md) allows you to configure private DNS names for Azure resources rather than the automatically assigned names without the need to add a custom DNS solution.
+* [Overzicht van virtueel netwerk](../../virtual-network/virtual-networks-overview.md)
+* [DNS-servers beheren die worden gebruikt door een virtueel netwerk](../../virtual-network/manage-virtual-network.md#change-dns-servers)
 
-## <a name="perimeter-network-architecture"></a>Perimeter network architecture
+Voor externe naam omzetting hebt u twee opties:
 
-Many large organizations use perimeter networks to segment their networks, and create a buffer-zone between the internet and their services. The perimeter portion of the network is considered a low-security zone, and no high-value assets are placed in that network segment. You'll typically see network security devices that have a network interface on the perimeter network segment. Another network interface is connected to a network that has virtual machines and services that accept inbound connections from the internet.
+* Host uw eigen externe DNS-server on-premises.
+* Host uw eigen externe DNS-server met een service provider.
 
-You can design perimeter networks in a number of different ways. The decision to deploy a perimeter network, and then what type of perimeter network to use if you decide to use one, depends on your network security requirements.
+Veel grote organisaties hosten hun eigen DNS-servers on-premises. Ze kunnen dit doen omdat ze de netwerk expertise en wereld wijde aanwezigheid hebben.
+
+In de meeste gevallen is het beter om uw DNS-naamomzettingsservices te hosten met een service provider. Deze service providers hebben de netwerk expertise en wereld wijde aanwezigheid om zeer hoge Beschik baarheid te garanderen voor uw services voor naam omzetting. Beschik baarheid is essentieel voor DNS-services, want als uw naam omzettings Services mislukken, kan niemand uw services op internet bereiken.
+
+Azure biedt u een Maxi maal beschik bare, externe DNS-oplossing met hoge prestaties in de vorm van Azure DNS. Deze oplossing voor externe naam omzetting maakt gebruik van de wereld wijde Azure DNS-infra structuur. U kunt uw domein hosten in azure, met dezelfde referenties, Api's, hulpprogram ma's en facturering als uw andere Azure-Services. Als onderdeel van Azure neemt het ook de sterkste beveiligings controles over die zijn ingebouwd in het platform.
 
 Meer informatie:
 
-* [Microsoft Cloud Services and Network Security](network-best-practices.md)
+* [Overzicht van Azure DNS](../../dns/dns-overview.md)
+* Met [Azure DNS persoonlijke zones](../../dns/private-dns-overview.md) kunt u privé-DNS-namen voor Azure-resources configureren in plaats van de automatisch toegewezen namen zonder dat u een aangepaste DNS-oplossing hoeft toe te voegen.
+
+## <a name="perimeter-network-architecture"></a>Perimeter netwerk architectuur
+
+Veel grote organisaties gebruiken perimeter netwerken om hun netwerken te segmenteren en maken een buffer zone tussen internet en hun services. Het perimeter gedeelte van het netwerk wordt beschouwd als een zone met weinig beveiliging, en er worden geen assets met een hoge waarde in dat netwerk segment geplaatst. Normaal gesp roken ziet u netwerk beveiligings apparaten met een netwerk interface op het perimeter netwerk segment. Een andere netwerk interface is verbonden met een netwerk met virtuele machines en services die binnenkomende verbindingen van het Internet accepteren.
+
+U kunt perimeter netwerken op verschillende manieren ontwerpen. De beslissing om een perimeter netwerk te implementeren en vervolgens welk type perimeter netwerk u moet gebruiken als u er een wilt gebruiken, is afhankelijk van de vereisten van uw netwerk beveiliging.
+
+Meer informatie:
+
+* [Microsoft Cloud Services en netwerk beveiliging](network-best-practices.md)
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS Protection
 
-DDoS-aanvallen (Distributed Denial of Service-aanvallen) vormen een van de grootste beschikbaarheids- en beveiligingsproblemen voor klanten die hun toepassingen verplaatsen naar de cloud. A DDoS attack attempts to exhaust an application's resources, making the application unavailable to legitimate users. DDoS-aanvallen kunnen worden gericht op elk eindpunt dat openbaar bereikbaar is via internet.
-Microsoft provides DDoS protection known as **Basic** as part of the Azure Platform. This comes at no charge and includes always on monitoring and real-time mitigation of common network level attacks. In addition to the protections included with DDoS protection **Basic** you can enable the **Standard** option. DDoS Protection Standard features include:
+DDoS-aanvallen (Distributed Denial of Service-aanvallen) vormen een van de grootste beschikbaarheids- en beveiligingsproblemen voor klanten die hun toepassingen verplaatsen naar de cloud. Een DDoS-aanval probeert de bronnen van een toepassing te ontnemen, waardoor de toepassing niet beschikbaar is voor legitieme gebruikers. DDoS-aanvallen kunnen worden gericht op elk eindpunt dat openbaar bereikbaar is via internet.
+Micro soft biedt DDoS-beveiliging **, ook wel bekend als onderdeel** van het Azure-platform. Dit is gratis en omvat altijd bewaking en realtime beperken van veelvoorkomende aanvallen op netwerk niveau. Naast de beveiligingen die zijn opgenomen in DDoS Protection **Basic** kunt u de optie **standaard** inschakelen. DDoS Protection standaard functies zijn:
 
-* **Native platform integration:** Natively integrated into Azure. Includes configuration through the Azure portal. DDoS Protection Standard understands your resources and resource configuration.
-* **Turn-key protection:** Simplified configuration immediately protects all resources on a virtual network as soon as DDoS Protection Standard is enabled. No intervention or user definition is required. DDoS Protection Standard instantly and automatically mitigates the attack, once it is detected.
-* **Always-on traffic monitoring:** Your application traffic patterns are monitored 24 hour a day, 7 days a week, looking for indicators of DDoS attacks. Mitigation is performed when protection policies are exceeded.
-* **Attack Mitigation Reports** Attack Mitigation Reports use aggregated network flow data to provide detailed information about attacks targeted at your resources.
-* **Attack Mitigation Flow Logs** Attack Mitigation Flow Logs allow you to review the dropped traffic, forwarded traffic and other attack data in near real-time during an active DDoS attack.
-* **Adaptive tuning:** Intelligent traffic profiling learns your application's traffic over time, and selects and updates the profile that is the most suitable for your service. The profile adjusts as traffic changes over time. Layer 3 to layer 7 protection: Provides full stack DDoS protection, when used with a web application firewall.
-* **Extensive mitigation scale:** Over 60 different attack types can be mitigated, with global capacity, to protect against the largest known DDoS attacks.
-* **Attack metrics:** Summarized metrics from each attack are accessible through Azure Monitor.
-* **Attack alerting:** Alerts can be configured at the start and stop of an attack, and over the attack's duration, using built-in attack metrics. Alerts integrate into your operational software like Microsoft Azure Monitor logs, Splunk, Azure Storage, Email, and the Azure portal.
-* **Cost guarantee:**  Data-transfer and application scale-out service credits for documented DDoS attacks.
-* **DDoS Rapid responsive** DDoS Protection Standard customers now have access to Rapid Response team during an active attack. DRR can help with attack investigation, custom mitigations during an attack and post-attack analysis.
+* **Systeem eigen platform integratie:** Systeem eigen geïntegreerd in Azure. Bevat configuratie via de Azure Portal. DDoS Protection standaard begrijpt uw resources en resource configuratie.
+* **Beveiliging op basis van een bocht:** Vereenvoudigde configuratie beveiligt onmiddellijk alle resources in een virtueel netwerk zodra DDoS Protection standaard is ingeschakeld. Er is geen interventie-of gebruikers definitie vereist. DDoS Protection Standard onmiddellijk en vermindert de aanval automatisch, zodra deze is gedetecteerd.
+* **Bewaking over altijd verkeer:** De patronen van uw toepassings verkeer worden 24 uur per dag, 7 dagen per week gecontroleerd en er wordt gezocht naar indica toren van DDoS-aanvallen. De beperking wordt toegepast wanneer het beveiligings beleid wordt overschreden.
+* **Rapporten voor risico beperking van aanvallen** Rapporten voor het beperken van aanvallen maken gebruik van geaggregeerde netwerk stroom gegevens om gedetailleerde informatie te geven over aanvallen die gericht zijn op uw resources.
+* **Stroom logboeken voor aanvallen beperken** Met de stroom logboeken voor aanvallen beperken kunt u het verloren verkeer, doorgestuurd verkeer en andere aanvals gegevens in bijna realtime bekijken tijdens een actieve DDoS-aanval.
+* **Adaptieve afstemming:** Intelligent verkeer profile ring leert het verkeer van uw toepassing gedurende een bepaalde periode en selecteert en werkt het profiel dat het meest geschikt is voor uw service. Het profiel wordt aangepast naarmate het verkeer na verloop van tijd verandert. Layer 3 tot Layer 7 Protection: biedt volledige stack DDoS-beveiliging, wanneer deze wordt gebruikt met een Web Application Firewall.
+* **Uitgebreide beperkings schaal:** Meer dan 60 verschillende typen aanvallen kunnen worden gereduceerd, met globale capaciteit om te beschermen tegen de grootste bekende DDoS-aanvallen.
+* **Maat staven voor aanvallen:** Een overzicht van de metrische gegevens van elke aanval is toegankelijk via Azure Monitor.
+* **Waarschuwing voor aanvallen:** Waarschuwingen kunnen worden geconfigureerd bij het starten en stoppen van een aanval en over de duur van de aanval, met behulp van ingebouwde aanvals waarden. Waarschuwingen worden geïntegreerd in uw operationele software, zoals Microsoft Azure controle logboeken, Splunk, Azure Storage, E-mail en de Azure Portal.
+* **Kosten garantie:**  Service-tegoeden voor gegevens overdracht en toepassingen voor gedocumenteerde DDoS-aanvallen.
+* **DDoS snel reageren** DDoS Protection Standard-klanten hebben nu toegang tot het snelle antwoord team tijdens een actieve aanval. DRR kan u helpen bij het onderzoeken van aanvallen, aangepaste problemen tijdens een aanval en een oplossing na een aanval.
 
 
 Meer informatie:
 
-* [DDOS protection overview](../../virtual-network/ddos-protection-overview.md)
+* [Overzicht van DDOS-beveiliging](../../virtual-network/ddos-protection-overview.md)
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-Azure Front Door Service enables you to define, manage, and monitor the global routing of your web traffic. It optimizes your traffic's routing for best performance and high availability. Met Azure Front Door kunt u regels voor toegangsbeheer maken voor aangepaste webtoepassingsfirewalls (WAF) om uw HTTP/HTTPS-workload te beschermen tegen exploitatie op basis van klant-IP-adressen, landcode en http-parameters. Additionally, Front Door also enables you to create rate limiting rules to battle malicious bot traffic, it includes SSL offloading and per-HTTP/HTTPS request, application-layer processing.
+Met de Azure front-deur service kunt u de wereld wijde route ring van uw webverkeer definiëren, beheren en bewaken. Het optimaliseert de route ring van uw verkeer voor de beste prestaties en hoge Beschik baarheid. Met Azure Front Door kunt u regels voor toegangsbeheer maken voor aangepaste webtoepassingsfirewalls (WAF) om uw HTTP/HTTPS-workload te beschermen tegen exploitatie op basis van klant-IP-adressen, landcode en http-parameters. Daarnaast kunt u met de voor deur ook regels voor het beperken van de frequentie voor het botsen van schadelijk bot-verkeer maken, inclusief SSL-offloading en per HTTP/HTTPS-aanvraag, verwerking van de toepassingslaag.
 
-Front Door platform itself is protected by Azure DDoS Protection Basic. Voor verdere bescherming kan Azure DDoS Protection Standard worden ingeschakeld op uw VNETs en bronnen beschermen tegen netwerklaagaanvallen (TCP/UDP) via automatische afstemming en risicobeperking. Front Door is a layer 7 reverse proxy, it only allows web traffic to pass through to back end servers and block other types of traffic by default.
-
-Meer informatie:
-
-* For more information on the whole set of Azure Front door capabilities you can review the [Azure Front Door overview](../../frontdoor/front-door-overview.md)
-
-## <a name="azure-traffic-manager"></a>Azure Traffic manager
-
-Azure Traffic Manager is een op DNS gebaseerde load balancer waarmee u verkeer optimaal over services kunt verdelen in Azure-regio's wereldwijd, terwijl u over hoge beschikbaarheid en een hoge reactiesnelheid beschikt. Traffic Manager maakt gebruik van DNS om aanvragen van clients door te sturen naar de meest geschikte eindpunten op basis van een methode om verkeer te routeren en van de status van de eindpunten. Een eindpunt is een internetgerichte service die binnen of buiten Azure wordt gehost. Traffic manager monitors the end points and does not direct traffic to any endpoints that are unavailable.
+Front-deur platform zelf wordt beschermd door Azure DDoS Protection Basic. Voor verdere bescherming kan Azure DDoS Protection Standard worden ingeschakeld op uw VNETs en bronnen beschermen tegen netwerklaagaanvallen (TCP/UDP) via automatische afstemming en risicobeperking. De voor deur is een omgekeerde proxy van laag 7, het webverkeer kan alleen worden door gegeven aan back-endservers en andere typen verkeer wordt niet standaard geblokkeerd.
 
 Meer informatie:
 
-* [Azure Traffic manager overview](../../traffic-manager/traffic-manager-overview.md)
+* Voor meer informatie over de volledige set mogelijkheden van Azure front-deur kunt u het [overzicht van de Azure front-deur](../../frontdoor/front-door-overview.md) bekijken
 
-## <a name="monitoring-and-threat-detection"></a>Monitoring and threat detection
+## <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-Azure provides capabilities to help you in this key area with early detection, monitoring, and collecting and reviewing network traffic.
+Azure Traffic Manager is een op DNS gebaseerde load balancer waarmee u verkeer optimaal over services kunt verdelen in Azure-regio's wereldwijd, terwijl u over hoge beschikbaarheid en een hoge reactiesnelheid beschikt. Traffic Manager maakt gebruik van DNS om aanvragen van clients door te sturen naar de meest geschikte eindpunten op basis van een methode om verkeer te routeren en van de status van de eindpunten. Een eindpunt is een internetgerichte service die binnen of buiten Azure wordt gehost. Traffic Manager bewaakt de eind punten en stuurt geen verkeer door naar eind punt dat niet beschikbaar is.
+
+Meer informatie:
+
+* [Overzicht van Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)
+
+## <a name="monitoring-and-threat-detection"></a>Bewaking en detectie van bedreigingen
+
+Azure biedt mogelijkheden om u in dit sleutel gebied te helpen met vroegtijdige detectie, bewaking en het verzamelen en controleren van netwerk verkeer.
 
 ### <a name="azure-network-watcher"></a>Azure Network Watcher
 
-Azure Network Watcher can help you troubleshoot, and provides a whole new set of tools to assist with the identification of security issues.
+Azure Network Watcher kan u helpen problemen op te lossen en biedt een hele nieuwe set hulpprogram ma's om u te helpen bij het identificeren van beveiligings problemen.
 
-[Security Group View](../../network-watcher/network-watcher-security-group-view-overview.md) helps with auditing and security compliance of Virtual Machines. Use this feature to perform programmatic audits, comparing the baseline policies defined by your organization to effective rules for each of your VMs. This can help you identify any configuration drift.
+De [weer gave beveiligings groep](../../network-watcher/network-watcher-security-group-view-overview.md) helpt bij het controleren en de beveiliging van virtual machines. Gebruik deze functie om programmatische controles uit te voeren, waarbij u het basislijn beleid dat door uw organisatie is gedefinieerd, vergelijkt met de juiste regels voor elk van uw virtuele machines. Dit kan u helpen bij het identificeren van een configuratie drift.
 
-[Packet capture](../../network-watcher/network-watcher-packet-capture-overview.md) allows you to capture network traffic to and from the virtual machine. You can collect network statistics and troubleshoot application issues, which can be invaluable in the investigation of network intrusions. You can also use this feature together with Azure Functions to start network captures in response to specific Azure alerts.
+Met [pakket opname](../../network-watcher/network-watcher-packet-capture-overview.md) kunt u netwerk verkeer van en naar de virtuele machine vastleggen. U kunt netwerk statistieken verzamelen en toepassings problemen oplossen. Dit kan nuttig zijn bij het onderzoek van indringers in het netwerk. U kunt deze functie ook gebruiken in combi natie met Azure Functions om netwerk opnames te starten als reactie op specifieke Azure-waarschuwingen.
 
-For more information on Network Watcher and how to start testing some of the functionality in your labs, see [Azure network watcher monitoring overview](../../network-watcher/network-watcher-monitoring-overview.md).
+Zie [overzicht van Azure Network Watcher-bewaking](../../network-watcher/network-watcher-monitoring-overview.md)voor meer informatie over Network Watcher en hoe u een deel van de functionaliteit in uw Labs kunt testen.
 
 > [!NOTE]
-> For the most up-to-date notifications on availability and status of this service, check the [Azure updates page](https://azure.microsoft.com/updates/?product=network-watcher).
+> Controleer de [pagina Azure updates](https://azure.microsoft.com/updates/?product=network-watcher)voor de meest recente meldingen over de beschik baarheid en de status van deze service.
 
-### <a name="azure-security-center"></a>Azure Beveiligingscentrum
+### <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center helps you prevent, detect, and respond to threats, and provides you increased visibility into, and control over, the security of your Azure resources. It provides integrated security monitoring and policy management across your Azure subscriptions, helps detect threats that might otherwise go unnoticed, and works with a large set of security solutions.
+Azure Security Center helpt u bedreigingen te voor komen, te detecteren en erop te reageren, en biedt u meer inzicht in en controle over de beveiliging van uw Azure-resources. Het biedt geïntegreerde beveiligings bewaking en beleids beheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders niet kunnen worden opgemerkt en die werkt met een grote reeks beveiligings oplossingen.
 
-Security Center helps you optimize and monitor network security by:
+Security Center helpt u bij het optimaliseren en bewaken van netwerk beveiliging door:
 
-* Providing network security recommendations.
-* Monitoring the state of your network security configuration.
-* Alerting you to network based threats, both at the endpoint and network levels.
+* Aanbevelingen voor netwerk beveiliging opgeven.
+* De status van de netwerk beveiligings configuratie bewaken.
+* U wordt gewaarschuwd voor bedreigingen op basis van het netwerk, zowel op het eind punt als op het netwerk.
 
 Meer informatie:
 
@@ -385,21 +385,21 @@ Meer informatie:
 
 ### <a name="virtual-network-tap"></a>Virtual Network TAP
 
-Azure virtual network TAP (Terminal Access Point) allows you to continuously stream your virtual machine network traffic to a network packet collector or analytics tool. The collector or analytics tool is provided by a network virtual appliance partner. You can use the same virtual network TAP resource to aggregate traffic from multiple network interfaces in the same or different subscriptions.
+Met het virtuele netwerk van Azure (Terminal Access Point) kunt u het netwerk verkeer van de virtuele machine continu streamen naar een netwerk pakket verzamelaar of een analyse programma. Het hulp programma Collector of Analytics wordt verschaft door een virtuele netwerk apparaat-partner. U kunt hetzelfde virtuele netwerk tikken op resource om verkeer van meerdere netwerk interfaces in dezelfde of verschillende abonnementen samen te voegen.
 
 Meer informatie:
 
-* [Virtual network TAP](../../virtual-network/virtual-network-tap-overview.md)
+* [Tik voor virtueel netwerk](../../virtual-network/virtual-network-tap-overview.md)
 
 ### <a name="logging"></a>Logboekregistratie
 
-Logging at a network level is a key function for any network security scenario. In Azure, you can log information obtained for NSGs to get network level logging information. With NSG logging, you get information from:
+Logboek registratie op netwerk niveau is een belang rijke functie voor elk netwerk beveiligings scenario. In azure kunt u logboek gegevens ophalen die zijn verkregen voor Nsg's om logboek registratie gegevens op netwerk niveau op te halen. Met NSG-logboek registratie krijgt u informatie over:
 
-* [Activity logs](../../azure-monitor/platform/activity-logs-overview.md). Use these logs to view all operations submitted to your Azure subscriptions. These logs are enabled by default, and can be used within the Azure portal. They were previously known as audit or operational logs.
-* Event logs. These logs provide information about what NSG rules were applied.
-* Counter logs. These logs let you know how many times each NSG rule was applied to deny or allow traffic.
+* [Activiteiten logboeken](../../azure-monitor/platform/activity-logs-overview.md). Gebruik deze logboeken om alle bewerkingen weer te geven die zijn verzonden naar uw Azure-abonnementen. Deze logboeken zijn standaard ingeschakeld en kunnen worden gebruikt binnen het Azure Portal. Voorheen bekend als audit of operationele Logboeken.
+* Gebeurtenis Logboeken. Deze logboeken bevatten informatie over welke NSG-regels zijn toegepast.
+* Item Logboeken. In deze logboeken kunt u zien hoe vaak elke NSG regel is toegepast om verkeer te weigeren of toe te staan.
 
-You can also use [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), a powerful data visualization tool, to view and analyze these logs.
+U kunt ook [micro soft power bi](https://powerbi.microsoft.com/what-is-power-bi/), een krachtig hulp programma voor gegevens visualisatie, gebruiken om deze logboeken weer te geven en te analyseren.
 Meer informatie:
 
-* [Azure Monitor logs for Network Security Groups (NSGs)](../../virtual-network/virtual-network-nsg-manage-log.md)
+* [Azure Monitor logboeken voor netwerk beveiligings groepen (Nsg's)](../../virtual-network/virtual-network-nsg-manage-log.md)

@@ -50,7 +50,7 @@ New-AzResourceGroup -Name myResourceGroupWAF
 
 ## <a name="create-a-new-waf-policy-with-custom-response"></a>Een nieuw WAF-beleid maken met een aangepast antwoord 
 
-Hieronder ziet u een voor beeld van het maken van een nieuw WAF-beleid met een aangepaste antwoord status code ingesteld op 405 en bericht aan **u geblokkeerd.** using [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+Hieronder ziet u een voor beeld van het maken van een nieuw WAF-beleid met een aangepaste antwoord status code ingesteld op 405 en bericht aan **u geblokkeerd.** met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```azurepowershell
 # WAF policy setting

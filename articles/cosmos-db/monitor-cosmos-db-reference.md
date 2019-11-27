@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB monitoring data reference | Microsoft Docs
-description: Log and metrics reference for monitoring data from Azure Cosmos DB.
+title: Informatie over Azure Cosmos DB bewakings gegevens | Microsoft Docs
+description: Naslag informatie over Logboeken en metrieken voor het bewaken van gegevens van Azure Cosmos DB.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -16,89 +16,89 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456524"
 ---
-# <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB monitoring data reference
-This article provides a reference of log and metric data collected to analyze the performance and availability of Azure Cosmos DB. See [Monitoring Cosmos DB](monitor-cosmos-db.md) for details on collecting and analyzing monitoring data for Azure Cosmos DB.
+# <a name="azure-cosmos-db-monitoring-data-reference"></a>Naslag informatie over Azure Cosmos DB bewakings gegevens
+Dit artikel bevat een verwijzing naar logboek-en metrische gegevens die worden verzameld voor het analyseren van de prestaties en beschik baarheid van Azure Cosmos DB. Zie [bewaking Cosmos DB](monitor-cosmos-db.md) voor meer informatie over het verzamelen en analyseren van bewakings gegevens voor Azure Cosmos db.
 
 
 ## <a name="resource-logs"></a>Resourcelogboeken
-The following table lists the properties for Azure Cosmos DB resource logs when they're collected in Azure Monitor Logs or Azure Storage. In Azure Monitor Logs, they're collected in the **AzureDiagnostics** table with a **ResourceProvider** value of *MICROSOFT.DOCUMENTDB*. 
+De volgende tabel geeft een lijst van de eigenschappen voor Azure Cosmos DB bron Logboeken wanneer ze worden verzameld in Azure Monitor Logboeken of Azure Storage. In Azure Monitor logboeken worden deze verzameld in de tabel **AzureDiagnostics** met de waarde **resource provider** van *micro soft. DOCUMENTDB*. 
 
-| Azure Storage field or property | Azure Monitor Logs property | Beschrijving |
+| Azure Storage-veld of eigenschap | Eigenschap Azure Monitor logboeken | Beschrijving |
 | --- | --- | --- |
-| **time** | **TimeGenerated** | The date and time (UTC) when the operation occurred. |
-| **resourceId** | **Resource** | The Azure Cosmos DB account for which logs are enabled.|
-| **category** | **Categorie** | For Azure Cosmos DB logs, **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption**, **ControlPlaneRequests** are the available log types. |
-| **operationName** | **OperationName** | Name of the operation. This value can be any of the following operations: Create, Update, Read, ReadFeed, Delete, Replace, Execute, SqlQuery, Query, JSQuery, Head, HeadFeed, or Upsert.   |
-| **properties** | n.v.t. | The contents of this field are described in the rows that follow. |
-| **activityId** | **activityId_g** | The unique GUID for the logged operation. |
-| **userAgent** | **userAgent_s** | A string that specifies the client user agent that's performing the request. The format is {user agent name}/{version}.|
-| **requestResourceType** | **requestResourceType_s** | The type of the resource accessed. This value can be any of the following resource types: Database, Container, Document, Attachment, User, Permission, StoredProcedure, Trigger, UserDefinedFunction, or Offer. |
-| **statusCode** | **statusCode_s** | The response status of the operation. |
-| **requestResourceId** | **ResourceId** | The resourceId that pertains to the request. The value may point to databaseRid, collectionRid, or documentRid depending on the operation performed.|
-| **clientIpAddress** | **clientIpAddress_s** | The client's IP address. |
-| **requestCharge** | **requestCharge_s** | The number of RUs that are used by the operation |
-| **collectionRid** | **collectionId_s** | The unique ID for the collection.|
-| **duration** | **duration_s** | The duration of the operation, in milliseconds. |
-| **requestLength** | **requestLength_s** | The length of the request, in bytes. |
-| **responseLength** | **responseLength_s** | The length of the response, in bytes.|
-| **resourceTokenUserRid** | **resourceTokenUserRid_s** | This value is non-empty when [resource tokens](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) are used for authentication. The value points to the resource ID of the user. |
+| **tegelijk** | **TimeGenerated** | De datum en tijd (UTC) wanneer de bewerking opgetreden. |
+| **resourceId** | **Resource** | Het Azure Cosmos DB-account waarvoor de logboeken zijn ingeschakeld.|
+| **rubriek** | **Categorie** | Voor Azure Cosmos DB logs zijn **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption**, **ControlPlaneRequests** de beschik bare logboek typen. |
+| **operationName** | **OperationName** | Naam van de bewerking. Deze waarde kan een van de volgende bewerkingen zijn: maken, bijwerken, lezen, ReadFeed, verwijderen, vervangen, uitvoeren, SqlQuery, Query, JSQuery, Head, HeadFeed of Upsert.   |
+| **eigenschappen** | N.v.t. | De inhoud van dit veld worden beschreven in de rijen die volgen. |
+| **activityId** | **activityId_g** | De unieke GUID voor de geregistreerde bewerking. |
+| **User agent** | **userAgent_s** | Een tekenreeks waarmee de clientagent van de gebruiker die de aanvraag uitvoert. De indeling is {gebruiker agent name} / {version}.|
+| **requestResourceType** | **requestResourceType_s** | Het type van de toegang tot bronnen. Deze waarde kan een van de volgende resourcetypen zijn: Database, Container, Document, bijlage, gebruikers, machtigingen, StoredProcedure, Trigger, UserDefinedFunction of aanbieding. |
+| **Status code** | **statusCode_s** | De reactiestatus van de bewerking. |
+| **requestResourceId** | **ResourceId** | De resourceId die betrekking hebben op de aanvraag. De waarde kan verwijzen naar databaseRid, collectionRid of documentRid, afhankelijk van de bewerking die wordt uitgevoerd.|
+| **clientIpAddress** | **clientIpAddress_s** | IP-adres van de client. |
+| **requestCharge** | **requestCharge_s** | Het aantal ru's die worden gebruikt door de bewerking |
+| **collectionRid** | **collectionId_s** | De unieke ID voor de verzameling.|
+| **hebben** | **duration_s** | De duur van de bewerking, in milliseconden. |
+| **requestLength** | **requestLength_s** | De lengte van de aanvraag, in bytes. |
+| **responseLength** | **responseLength_s** | De lengte van het antwoord, in bytes.|
+| **resourceTokenUserRid** | **resourceTokenUserRid_s** | Deze waarde is niet-leeg wanneer [bron tokens](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) voor authenticatie worden gebruikt. De waarde verwijst naar de resource-ID van de gebruiker. |
 
-For a list of all Azure Monitor log categories and links to associated schemas, see [Azure Monitor Logs categories and schemas](../azure-monitor/platform/diagnostic-logs-schema.md). 
+Zie [Azure monitor-logboeken categorieën en schema's](../azure-monitor/platform/diagnostic-logs-schema.md)voor een lijst met alle Azure monitor logboek categorieën en koppelingen naar gekoppelde schema's. 
 
 ## <a name="metrics"></a>Metrische gegevens
-The following tables list the platform metrics collected for Azure CosmOS DB. All metrics are stored in the namespace **Cosmos DB standard metrics**.
+De volgende tabellen geven een lijst van de platform gegevens die zijn verzameld voor Azure CosmOS DB. Alle metrische gegevens worden opgeslagen in de naam ruimte **Cosmos DB standaard metrische gegevens**.
 
-For a list of all Azure Monitor support metrics (including CosmosDB), see [Azure Monitor supported metrics](../azure-monitor/platform/metrics-supported.md). 
+Zie [Azure monitor ondersteunde metrische gegevens](../azure-monitor/platform/metrics-supported.md)voor een lijst met alle Azure monitor metrische gegevens voor ondersteuning (inclusief CosmosDB). 
 
-#### <a name="request-metrics"></a>Request metrics
+#### <a name="request-metrics"></a>Aanvraag voor metrische gegevens
             
-|Metric (Metric Display Name)|Unit (Aggregation Type) |Beschrijving|Dimensies| Time granularities| Legacy metric mapping | Gebruik |
+|Metrisch (metrische weergave naam)|Eenheid (aggregatie type) |Beschrijving|Dimensies| Tijd granulatie| Toewijzing van verouderde metriek | Gebruik |
 |---|---|---|---| ---| ---| ---|
-| TotalRequests (Total Requests) | Count (Count) | Number of requests made| DatabaseName, CollectionName, Region, StatusCode| Alles | TotalRequests, Http 2xx, Http 3xx, Http 400, Http 401, Internal Server error, Service Unavailable, Throttled Requests, Average Requests per Second | Used to monitor requests per status code, container at a minute granularity. To get average requests per second, use Count aggregation at minute and divide by 60. |
-| MetadataRequests (Metadata Requests) |Count (Count) | Count of metadata requests. Azure Cosmos DB maintains system metadata container for each account, that allows you to enumerate collections, databases, etc., and their configurations, free of charge. | DatabaseName, CollectionName, Region, StatusCode| Alles| |Used to monitor throttles due to metadata requests.|
-| MongoRequests (Mongo Requests) | Count (Count) | Number of Mongo Requests Made | DatabaseName, CollectionName, Region, CommandName, ErrorCode| Alles |Mongo Query Request Rate, Mongo Update Request Rate, Mongo Delete Request Rate, Mongo Insert Request Rate, Mongo Count Request Rate| Used to monitor Mongo request errors, usages per command type. |
+| TotalRequests (totaal aantal aanvragen) | Aantal (aantal) | Aantal aanvragen dat is gedaan| DATABASENAME, verzamel-, regio, status code| Alle | TotalRequests, http 2xx, HTTP 3xx, HTTP 400, HTTP 401, interne server fout, service niet beschikbaar, beperkt aantal aanvragen per seconde | Wordt gebruikt voor het bewaken van aanvragen per status code, container op een minuut granulatie. Als u gemiddeld aantal aanvragen per seconde wilt ophalen, gebruikt u de aggregatie van Count op minuut en deelt u deze door 60. |
+| MetadataRequests (meta gegevens aanvragen) |Aantal (aantal) | Aantal aanvragen voor meta gegevens. Azure Cosmos DB behoudt de container van de meta gegevens van het systeem voor elk account, waarmee u verzamelingen, data bases, enzovoort, en hun configuraties, kosteloos kunt inventariseren. | DATABASENAME, verzamel-, regio, status code| Alle| |Wordt gebruikt voor het bewaken van vertragingen als gevolg van aanvragen voor meta gegevens.|
+| MongoRequests (Mongo-aanvragen) | Aantal (aantal) | Aantal gemaakte Mongo-aanvragen | DATABASENAME, verzamel-, regio, opdrachtnaam, error code| Alle |Mongo query-aanvraag frequentie, frequentie van Mongo-update aanvragen, Mongo aanvraag frequentie voor verwijderen, Mongo aanvraag frequentie invoegen, Mongo aantal aanvraag frequentie| Wordt gebruikt voor het bewaken van Mongo-aanvraag fouten, gebruik per opdracht type. |
 
-#### <a name="request-unit-metrics"></a>Request Unit metrics
+#### <a name="request-unit-metrics"></a>Metrische gegevens van aanvraag eenheid
 
-|Metric (Metric Display Name)|Unit (Aggregation Type)|Beschrijving|Dimensies| Time granularities| Legacy metric mapping | Gebruik |
+|Metrisch (metrische weergave naam)|Eenheid (aggregatie type)|Beschrijving|Dimensies| Tijd granulatie| Toewijzing van verouderde metriek | Gebruik |
 |---|---|---|---| ---| ---| ---|
-| MongoRequestCharge (Mongo Request Charge) | Count (Total) |Mongo Request Units Consumed| DatabaseName, CollectionName, Region, CommandName, ErrorCode| Alles |Mongo Query Request Charge, Mongo Update Request Charge, Mongo Delete Request Charge, Mongo Insert Request Charge, Mongo Count Request Charge| Used to monitor Mongo resource RUs in a minute.|
-| TotalRequestUnits (Total Request Units)| Count (Total) | Request Units consumed| DatabaseName, CollectionName, Region, StatusCode |Alles| TotalRequestUnits| Used to monitor Total RU usage at a minute granularity. To get average RU consumed per second, use Total aggregation at minute and divide by 60.|
-| ProvisionedThroughput (Provisioned Throughput)| Count (Maximum) |Provisioned throughput at container granularity| DatabaseName, ContainerName| 5M| | Used to monitor provisioned throughput per container.|
+| MongoRequestCharge (Mongo-aanvraag kosten) | Aantal (totaal) |Verbruikte Mongo-aanvraag eenheden| DATABASENAME, verzamel-, regio, opdrachtnaam, error code| Alle |Kosten voor query aanvragen voor Mongo, kosten voor Mongo update aanvragen, Mongo aanvraag kosten verwijderen, Mongo aanvraag kosten invoegen, Mongo aantal aanvraag kosten| Wordt gebruikt voor het bewaken van Mongo resource RUs in een minuut.|
+| TotalRequestUnits (totaal aantal aanvraag eenheden)| Aantal (totaal) | Verbruikte aanvraag eenheden| DATABASENAME, verzamel-, regio, status code |Alle| TotalRequestUnits| Wordt gebruikt voor het bewaken van het totale aantal RU-gebruik met een minuut granulatie. Als u gemiddelde RU verbruikt per seconde, gebruikt u de totale aggregatie op minuut en deelt u dit door 60.|
+| ProvisionedThroughput (ingerichte door Voer)| Aantal (maximum) |Ingerichte door Voer in container granulatie| DATABASENAME, containerName| 5 min.| | Wordt gebruikt om de ingerichte door Voer per container te bewaken.|
 
-#### <a name="storage-metrics"></a>Storage metrics
+#### <a name="storage-metrics"></a>Metrische gegevens over opslag
 
-|Metric (Metric Display Name)|Unit (Aggregation Type)|Beschrijving|Dimensies| Time granularities| Legacy metric mapping | Gebruik |
+|Metrisch (metrische weergave naam)|Eenheid (aggregatie type)|Beschrijving|Dimensies| Tijd granulatie| Toewijzing van verouderde metriek | Gebruik |
 |---|---|---|---| ---| ---| ---|
-| AvailableStorage (Available Storage) |Bytes (Total) | Total available storage reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M| Available Storage| Used to monitor available storage capacity (applicable only for fixed storage collections) Minimum granularity should be 5 minutes.| 
-| DataUsage (Data Usage) |Bytes (Total) |Total data usage reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M |Data size | Used to monitor total data usage at container and region, minimum granularity should be 5 minutes.|
-| IndexUsage (Index Usage) | Bytes (Total) |Total Index usage reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M| Index Size| Used to monitor total data usage at container and region, minimum granularity should be 5 minutes. |
-| DocumentQuota (Document Quota) | Bytes (Total) | Total storage quota reported at 5-minutes granularity per region.| DatabaseName, CollectionName, Region| 5M |Storage-capaciteit| Used to monitor total quota at container and region, minimum granularity should be 5 minutes.|
-| DocumentCount (Document Count) | Count (Total) |Total document count reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M |Document Count|Used to monitor document count at container and region, minimum granularity should be 5 minutes.|
+| AvailableStorage (beschik bare opslag) |Bytes (totaal) | Totale beschik bare opslag gerapporteerd bij een granulatie van 5 minuten per regio| Databasenaam, verzamel-, regio| 5 min.| Beschik bare opslag| Wordt gebruikt voor het bewaken van beschik bare opslag capaciteit (alleen van toepassing voor vaste opslag verzamelingen). de minimale granulatie moet 5 minuten zijn.| 
+| DataUsage (gegevens gebruik) |Bytes (totaal) |Totaal gegevens gebruik gerapporteerd bij een granulatie van 5 minuten per regio| Databasenaam, verzamel-, regio| 5 min. |Gegevens grootte | Voor het bewaken van het totale gegevens gebruik in de container en de regio, moet de minimale granulatie 5 minuten zijn.|
+| IndexUsage (index gebruik) | Bytes (totaal) |Totaal gebruik van index gerapporteerd bij een granulatie van 5 minuten per regio| Databasenaam, verzamel-, regio| 5 min.| Index grootte| Voor het bewaken van het totale gegevens gebruik in de container en de regio, moet de minimale granulatie 5 minuten zijn. |
+| DocumentQuota (document quotum) | Bytes (totaal) | Totale opslag quotum gerapporteerd bij een granulatie van 5 minuten per regio.| Databasenaam, verzamel-, regio| 5 min. |Opslagcapaciteit| Voor het bewaken van het totale quotum in container en regio moet de minimale granulatie 5 minuten zijn.|
+| DocumentCount (aantal documenten) | Aantal (totaal) |Totaal aantal documenten gerapporteerd bij een granulatie van 5 minuten per regio| Databasenaam, verzamel-, regio| 5 min. |Aantal documenten|Voor het bewaken van het aantal documenten in de container en de regio moet de minimale granulatie 5 minuten zijn.|
 
-#### <a name="latency-metrics"></a>Latency metrics
+#### <a name="latency-metrics"></a>Metrische latentie gegevens
 
-|Metric (Metric Display Name)|Unit (Aggregation Type)|Beschrijving|Dimensies| Time granularities| Gebruik |
+|Metrisch (metrische weergave naam)|Eenheid (aggregatie type)|Beschrijving|Dimensies| Tijd granulatie| Gebruik |
 |---|---|---|---| ---| ---|
-| ReplicationLatency (Replication Latency)| MilliSeconds (Minimum, Maximum, Average) | P99 Replication Latency across source and target regions for geo-enabled account| SourceRegion, TargetRegion| Alles | Used to monitor P99 replication latency between any two regions for a geo-replicated account. |
+| ReplicationLatency (replicatie latentie)| MilliSeconden (minimum, maximum, gemiddeld) | Replicatie latentie van P99 voor de bron-en doel regio's voor geografisch ingeschakelde account| SourceRegion, TargetRegion| Alle | Wordt gebruikt voor het bewaken van de replicatie latentie van P99 tussen twee regio's voor een geo-gerepliceerd account. |
 
 
-#### <a name="availability-metrics"></a>Availability metrics
+#### <a name="availability-metrics"></a>Metrische beschikbaarheids gegevens
 
-|Metric (Metric Display Name) |Unit (Aggregation Type)|Beschrijving| Time granularities| Legacy metric mapping | Gebruik |
+|Metrisch (metrische weergave naam) |Eenheid (aggregatie type)|Beschrijving| Tijd granulatie| Toewijzing van verouderde metriek | Gebruik |
 |---|---|---|---| ---| ---|
-| ServiceAvailability (Service Availability)| Percent (Minimum, Maximum) | Account requests availability at one hour granularity| 1H | Service Availability | Represents the percent of total passed requests. A request is considered to be failed due to system error if the status code is 410, 500 or 503 Used to monitor availability of the account at hour granularity. |
+| ServiceAvailability (Service beschikbaarheid)| Percentage (minimum, maximum) | Beschik baarheid van account aanvragen op een granulatie van één uur| 1U | Service beschikbaarheid | Vertegenwoordigt het percentage van het totaal aantal geslaagde aanvragen. Een aanvraag wordt als mislukt beschouwd als gevolg van een systeem fout als de status code 410, 500 of 503 wordt gebruikt om de beschik baarheid van het account te controleren op de granulatie van het uur. |
 
 
-#### <a name="cassandra-api-metrics"></a>Cassandra API metrics
+#### <a name="cassandra-api-metrics"></a>Cassandra-API metrische gegevens
 
-|Metric (Metric Display Name)|Unit (Aggregation Type)|Beschrijving|Dimensies| Time granularities| Gebruik |
+|Metrisch (metrische weergave naam)|Eenheid (aggregatie type)|Beschrijving|Dimensies| Tijd granulatie| Gebruik |
 |---|---|---|---| ---| ---|
-| CassandraRequests (Cassandra Requests) | Count (Count) | Number of Cassandra API requests made| DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType| Alles| Used to monitor Cassandra requests at a minute granularity. To get average requests per second, use Count aggregation at minute and divide by 60.|
-| CassandraRequestCharges (Cassandra Request Charges) | Count (Sum, Min, Max, Avg) | Request Units consumed by Cassandra API requests| DatabaseName, CollectionName, Region, OperationType, ResourceType| Alles| Used to monitor RUs used per minute by a Cassandra API account.|
-| CassandraConnectionClosures (Cassandra Connection Closures) |Count (Count) |Number of Cassandra Connections closed| ClosureReason, Region| Alles | Used to monitor the connectivity between clients and the Azure Cosmos DB Cassandra API.|
+| CassandraRequests (Cassandra-aanvragen) | Aantal (aantal) | Aantal gemaakte Cassandra-API aanvragen| DATABASENAME, Verzamelingsset, error code, regio, OperationType, resource type| Alle| Wordt gebruikt om Cassandra-aanvragen te bewaken met een granulatie van minuten. Als u gemiddeld aantal aanvragen per seconde wilt ophalen, gebruikt u de aggregatie van Count op minuut en deelt u deze door 60.|
+| CassandraRequestCharges (Cassandra-aanvraag kosten) | Aantal (som, min, Max, Gem) | Verbruikte aanvraag eenheden door Cassandra-API aanvragen| DATABASENAME, verzamel-, regio, OperationType, resource type| Alle| Wordt gebruikt om te controleren RUs dat per minuut wordt gebruikt door een Cassandra-API-account.|
+| CassandraConnectionClosures (Cassandra-verbinding gesloten) |Aantal (aantal) |Aantal gesloten Cassandra-verbindingen| ClosureReason, regio| Alle | Wordt gebruikt om de connectiviteit tussen clients en de Azure Cosmos DB Cassandra-API te bewaken.|
 
 ## <a name="see-also"></a>Zie ook
 
-- See [Monitoring Azure Cosmos DB](monitor-cosmos-db.md) for a description of monitoring Azure Cosmos DB.
-- See [Monitoring Azure resources with Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md) for details on monitoring Azure resources.
+- Zie [bewaking Azure Cosmos DB](monitor-cosmos-db.md) voor een beschrijving van de bewakings Azure Cosmos db.
+- Zie [Azure-resources bewaken met Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) voor meer informatie over het bewaken van Azure-resources.

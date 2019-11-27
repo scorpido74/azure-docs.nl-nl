@@ -123,7 +123,7 @@ Voordat u de invoeg toepassing in uw AKS-cluster installeert, moet de uitbrei di
 
 Zodra de vereisten zijn voltooid, installeert u de Azure Policy-invoeg toepassing in het AKS-cluster dat u wilt beheren.
 
-- Azure Portal
+- Azure-portal
 
   1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
 
@@ -206,7 +206,7 @@ Als u logboeken van gate keeper-containers wilt weer geven, volgt u de stappen i
 
 Als u de invoeg toepassing Azure Policy wilt verwijderen uit uw AKS-cluster, gebruikt u de Azure Portal of Azure CLI:
 
-- Azure Portal
+- Azure-portal
 
   1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
 

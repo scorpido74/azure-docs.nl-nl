@@ -63,7 +63,7 @@ Met de instelling voor de `WEBSITE_LOAD_CERTIFICATES`-app worden de opgegeven ce
 - **Geïsoleerde** laag-in [lokale Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores). 
 - Alle andere lagen: in [huidige User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
-In C# code opent u het certificaat via de vinger afdruk van het certificaat. De volgende code laadt een certificaat met de vingerafdruk `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
+In C# code opent u het certificaat via de vinger afdruk van het certificaat. Met de volgende code wordt een certificaat geladen met de vinger afdruk `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
 
 ```csharp
 using System;

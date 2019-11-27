@@ -282,7 +282,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
 
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 1. Selecteer **functie beheer**en wijzig de status van de **bèta** sleutel **in op**:
 

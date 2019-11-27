@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Service limits
-description: Overview of the service and functional limits in Azure Blockchain Service
+title: Limieten voor Azure Block Chain-Service
+description: Overzicht van de service-en functionele limieten in azure Block Chain Service
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
@@ -11,51 +11,51 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455660"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Limits in Azure Blockchain Service
+# <a name="limits-in-azure-blockchain-service"></a>Limieten in azure Block Chain Service
 
-Azure Blockchain Service has service and functional limits such as the number of nodes a member can have, consortium restrictions, and storage amounts.
+De Azure Block Chain-service heeft service-en functionele limieten, zoals het aantal knoop punten dat een lid kan hebben, consortium beperkingen en opslag bedragen.
 
 ## <a name="pricing-tier"></a>Prijscategorie
 
-Maximum limits on transactions and validator nodes depend on whether you provision Azure Blockchain Service at Basic or Standard pricing tiers.
+De maximum limieten voor trans acties en validatie knooppunten zijn afhankelijk van of u de Azure Block Chain-Service inricht op basis van de prijs categorie Basic of Standard.
 
-| Prijscategorie | Max transaction nodes | Max validator nodes |
+| Prijscategorie | Maximum aantal transactie knooppunten | Maxi maal aantal validatie knooppunten |
 |:---|:---:|:---:|
 | Basic | 10 | 1 |
 | Standard | 10 | 2 |
 
-Changing the pricing tier between Basic and Standard after member creation is not supported.
+Het wijzigen van de prijs categorie tussen basis en standaard nadat het maken van een lid is niet ondersteund.
 
 ## <a name="storage-capacity"></a>Opslagcapaciteit
 
-The maximum amount of storage that can be used per node for ledger data and logs is 1.8 terabytes.
+De maximale hoeveelheid opslag die per knoop punt voor grootboek gegevens en logboeken kan worden gebruikt, is 1,8 terabyte.
 
-Decreasing ledger and log storage size is not supported.
+Het verminderen van de omvang van het groot boek en de logboek opslag wordt niet ondersteund.
 
-## <a name="consortium-limits"></a>Consortium limits
+## <a name="consortium-limits"></a>Consortium limieten
 
-* **Consortium and member names must be unique** from other consortium and member names in the Azure Blockchain Service.
+* De **namen van consortiums en leden moeten uniek zijn** van andere consortium-en lidnamen in de Azure Block Chain-service.
 
-* **Member and consortium names cannot be changed**
+* **De namen van leden en consortiums kunnen niet worden gewijzigd**
 
-* **All members in a consortium must be in the same pricing tier**
+* **Alle leden in een consortium moeten dezelfde prijs categorie hebben**
 
-* **All members that participate in a consortium must reside in the same region**
+* **Alle leden die deel uitmaken van een consortium, moeten zich in dezelfde regio bevinden**
 
-    The first member created in a consortium dictates the region. Invited members to the consortium must reside in the same region as the first member. Limiting all members to the same region helps ensure network consensus is not negatively impacted.
+    Het eerste lid dat is gemaakt in een consortium, bepaalt de regio. Uitgenodigde leden van het consortium moeten zich in dezelfde regio bevinden als het eerste lid. Als u alle leden beperkt tot dezelfde regio, zorgt u ervoor dat netwerk consensus geen negatieve gevolgen heeft.
 
-* **A consortium must have at least one administrator**
+* **Een consortium moet ten minste één beheerder hebben**
 
-    If there is only one administrator in a consortium, they cannot remove themselves from the consortium or delete their member until another administrator is added or promoted in the consortium.
+    Als er slechts één beheerder in een consortium is, kunnen ze zich niet van het consortium verwijderen of hun lid verwijderen totdat een andere beheerder wordt toegevoegd of bevorderd in het consortium.
 
-* **Members removed from the consortium cannot be added again**
+* **Leden die uit het consortium zijn verwijderd, kunnen niet opnieuw worden toegevoegd**
 
-    Rather, they must be reinvited to join the consortium and create a new member. Their existing member resource are not deleted to preserve historical transactions.
+    Ze moeten daarom opnieuw worden uitgenodigd om lid te worden van het consortium en een nieuw lid te maken. De bestaande leden bron worden niet verwijderd om historische trans acties te behouden.
 
-* **All members in a consortium must be using the same ledger version**
+* **Alle leden van een consortium moeten dezelfde grootboek versie gebruiken**
 
-    For more information on the patching, updates, and ledger versions available in Azure Blockchain Service, see [Patching, updates, and versions](ledger-versions.md).
+    Zie [patches, updates en versies](ledger-versions.md)voor meer informatie over de patches, updates en grootboek versies die beschikbaar zijn in de Azure Block Chain-service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Learn more about policies regarding systems patching and upgrades - [Patching, updates, and versions](ledger-versions.md).
+Meer informatie over beleids regels met betrekking tot patches en upgrades voor systemen- [patches, updates en versies](ledger-versions.md).

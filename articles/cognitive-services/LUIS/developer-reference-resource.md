@@ -37,7 +37,7 @@ De Language Understanding-service wordt geopend vanuit een Azure-resource die u 
 
 Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-### <a name="rest-apis"></a>REST API's
+### <a name="rest-apis"></a>REST API’s
 
 De API'S voor ontwerpen en voor spellingen van eind punten zijn beschikbaar via REST-Api's:
 

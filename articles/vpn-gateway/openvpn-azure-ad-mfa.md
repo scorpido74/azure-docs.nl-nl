@@ -1,6 +1,6 @@
 ---
-title: 'Enable MFA for VPN users: Azure AD authentication'
-description: Enable multi-factor authentication for VPN users
+title: 'MFA inschakelen voor VPN-gebruikers: Azure AD-verificatie'
+description: Multi-factor Authentication inschakelen voor VPN-gebruikers
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -14,46 +14,46 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382220"
 ---
-# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Enable Azure Multi-Factor Authentication (MFA) for VPN users
+# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Azure Multi-Factor Authentication (MFA) inschakelen voor VPN-gebruikers
 
-If you want users to be prompted for a second factor of authentication before granting access, you can configure Azure Multi-Factor Authentication (MFA) for your Azure AD tenant. The steps in this article help you enable a requirement for two-step verification.
+Als u wilt dat gebruikers wordt gevraagd om een tweede authenticatie factor voordat ze toegang verlenen, kunt u Azure Multi-Factor Authentication (MFA) configureren voor uw Azure AD-Tenant. Met de stappen in dit artikel kunt u een vereiste voor verificatie in twee stappen inschakelen.
 
-## <a name="prereq"></a>Prerequisite
+## <a name="prereq"></a>Vereiste
 
-The prerequisite for this configuration is a configured Azure AD tenant using the steps in [Configure a tenant](openvpn-azure-ad-tenant.md).
+De vereiste voor deze configuratie is een geconfigureerde Azure AD-Tenant met behulp van de stappen in [een Tenant configureren](openvpn-azure-ad-tenant.md).
 
-## <a name="mfa"></a>Open the MFA page
+## <a name="mfa"></a>De MFA-pagina openen
 
 1. Meld u aan bij Azure Portal.
-2. Navigate to **Azure Active Directory -> All users**.
-3. Select **Multi-Factor Authentication** to open the multi-factor authentication page.
+2. Ga naar **Azure Active Directory-> alle gebruikers**.
+3. Selecteer **multi-factor Authentication** om de pagina multi-factor Authentication te openen.
 
    ![Aanmelden](./media/openvpn-azure-ad-mfa/mfa1.jpg)
 
-## <a name="users"></a> Select users
+## <a name="users"></a>Gebruikers selecteren
 
-1. On the **multi-factor authentication** page, select the user(s) for which you want to enable MFA.
+1. Selecteer op de pagina **multi-factor Authentication** de gebruiker (s) waarvoor u MFA wilt inschakelen.
 2. Selecteer **Inschakelen**.
 
    ![Selecteer](./media/openvpn-azure-ad-mfa/mfa2.jpg)
 
-## <a name="enableauth"></a>Enable authentication
+## <a name="enableauth"></a>Verificatie inschakelen
 
-1. Navigate to **Azure Active Directory  -> Enterprise applications -> All applications**.
-2. On the **Enterprise applications - All applications** page, select **Azure VPN**.
+1. Ga naar **Azure Active Directory-> bedrijfs toepassingen-> alle toepassingen**.
+2. Selecteer op de pagina **bedrijfs toepassingen-alle toepassingen** de optie **Azure VPN**.
 
-   ![Directory ID](./media/openvpn-azure-ad-mfa/user1.jpg)
+   ![Map-ID](./media/openvpn-azure-ad-mfa/user1.jpg)
 
-## <a name="enablesign"></a> Configure sign-in settings
+## <a name="enablesign"></a>Aanmeldings instellingen configureren
 
-On the **Azure VPN - Properties** page, configure sign-in settings.
+Configureer aanmeldings instellingen op de pagina **Azure VPN-eigenschappen** .
 
-1. Set **Enabled for users to sign-in?** to **Yes**. This allows all users in the AD tenant to connect to the VPN successfully.
-2. Set **User assignment required?** to **Yes** if you want to limit sign-in to only users that have permissions to the Azure VPN.
+1. **Ingeschakeld instellen dat gebruikers zich kunnen aanmelden?** Hierdoor kunnen alle gebruikers in de AD-Tenant verbinding maken met de VPN.
+2. Stel de **gebruikers toewijzing vereist** in op **Ja** als u wilt dat de aanmelding wordt beperkt tot alleen gebruikers met machtigingen voor Azure VPN.
 3. Sla uw wijzigingen op.
 
    ![Machtigingen](./media/openvpn-azure-ad-mfa/user2.jpg)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-To connect to your virtual network, you must create and configure a VPN client profile. See [Configure a VPN client for P2S VPN connections](openvpn-azure-ad-client.md).
+Als u verbinding wilt maken met uw virtuele netwerk, moet u een VPN-client profiel maken en configureren. Zie [Configure a VPN client for P2S VPN connections](openvpn-azure-ad-client.md).

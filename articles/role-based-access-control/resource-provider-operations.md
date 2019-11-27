@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c413c03c000ef9ff1ebf742359551567d488584b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 092c3b4ac6ce163e9fcf8aaad9e74f398559e9e2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185717"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546324"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Bewerkingen voor de resource provider Azure Resource Manager
 
@@ -5569,7 +5569,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Actie | Microsoft.StorSimple/managers/devices/deactivate/action | Hiermee wordt een apparaat deactiveren. |
 > | Actie | Microsoft.StorSimple/managers/devices/delete | Hiermee worden de apparaten verwijderd |
 > | Actie | Micro soft. StorSimple/managers/apparaten/schijven/lezen | De schijven weer geven of ophalen |
-> | Actie | Micro soft. StorSimple/managers/apparaten/downloaden/actie | Down load updates voor een apparaat. |
+> | Actie | Micro soft. StorSimple/managers/apparaten/downloaden/actie | Updates downloaden voor een apparaat. |
 > | Actie | Micro soft. StorSimple/managers/apparaten/failover/actie | Failover van het apparaat. |
 > | Actie | Micro soft. StorSimple/managers/apparaten/failover/operationResults/lezen | De bewerkings resultaten weer geven of ophalen |
 > | Actie | Micro soft. StorSimple/managers/apparaten/failoverTargets/lezen | De failover-doelen van de apparaten weer geven of ophalen |

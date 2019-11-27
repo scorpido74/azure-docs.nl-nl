@@ -1,7 +1,7 @@
 ---
-title: Azure AD FS support in Microsoft Authentication Library for Python
+title: Ondersteuning voor Azure AD FS in micro soft-verificatie bibliotheek voor python
 titleSuffix: Microsoft identity platform
-description: Learn about Active Directory Federation Services (AD FS) support in Microsoft Authentication Library for Python
+description: Meer informatie over de ondersteuning van Active Directory Federation Services (AD FS) in de micro soft-verificatie bibliotheek voor python
 services: active-directory
 documentationcenter: dev-center-name
 author: abhidnya13
@@ -25,45 +25,45 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485027"
 ---
-# <a name="active-directory-federation-services-support-in-msal-for-python"></a>Active Directory Federation Services support in MSAL for Python
+# <a name="active-directory-federation-services-support-in-msal-for-python"></a>Ondersteuning voor Active Directory Federation Services in MSAL voor python
 
-Active Directory Federation Services (AD FS) in Windows Server enables you to add OpenID Connect and OAuth 2.0 based authentication and authorization to your apps by using the Microsoft Authentication Library (MSAL) for Python. Using the MSAL for Python library, your app can authenticate users directly against AD FS. For more information about scenarios, see [AD FS Scenarios for Developers](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
+Met Active Directory Federation Services (AD FS) in Windows Server kunt u OpenID Connect Connect en OAuth 2,0-verificatie en-autorisatie toevoegen aan uw apps met behulp van de micro soft Authentication Library (MSAL) voor python. Met de MSAL voor python-bibliotheek kan uw app gebruikers rechtstreeks verifiëren tegen AD FS. Zie [AD FS scenario's voor ontwikkel aars](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)voor meer informatie over scenario's.
 
-There are usually two ways of authenticating against AD FS:
+Er zijn meestal twee manieren om te verifiëren met AD FS:
 
-- MSAL Python talks to Azure Active Directory, which itself is federated with other identity providers. The federation happens through AD FS. MSAL Python connects to Azure AD, which signs in users that are managed in Azure AD (managed users) or users managed by another identity provider such as AD FS (federated users). MSAL Python doesn't  know that a user is federated. It simply talks to Azure AD. The [authority](msal-client-application-configuration.md#authority) you use in this case is the usual authority (authority host name + tenant, common, or organizations).
-- MSAL Python talks directly to an AD FS authority. This is only supported by AD FS 2019 and later.
+- MSAL python praat met Azure Active Directory, dat zelf is federatief met andere id-providers. De Federatie treedt op via AD FS. MSAL python maakt verbinding met Azure AD, waarmee wordt gemeldd in gebruikers die worden beheerd in azure AD (beheerde gebruikers) of gebruikers die worden beheerd door een andere ID-provider, zoals AD FS (federatieve gebruikers). MSAL python weet niet dat een gebruiker federatief is. Het gaat gewoon naar Azure AD. De [instantie](msal-client-application-configuration.md#authority) die u in dit geval gebruikt, is de gebruikelijke instantie (hostnaam van de autoriteit + Tenant, common of organisaties).
+- MSAL python praat rechtstreeks met een AD FS-instantie. Dit wordt alleen ondersteund door AD FS 2019 en hoger.
 
-## <a name="connect-to-active-directory-federated-with-ad-fs"></a>Connect to Active Directory federated with AD FS
+## <a name="connect-to-active-directory-federated-with-ad-fs"></a>Verbinding maken met Active Directory federatieve met AD FS
 
-### <a name="acquire-a-token-interactively-for-a-federated-user"></a>Acquire a token interactively for a federated user
+### <a name="acquire-a-token-interactively-for-a-federated-user"></a>Een token interactief aanschaffen voor een federatieve gebruiker
 
-The following applies whether you connect directly to Active Directory Federation Services (AD FS) or through Active Directory.
+Het volgende is van toepassing, ongeacht of u rechtstreeks verbinding maakt met Active Directory Federation Services (AD FS) of via Active Directory.
 
-When you call `acquire_token_by_authorization_code` or `acquire_token_by_device_flow`, the user experience is typically as follows:
+Wanneer u `acquire_token_by_authorization_code` of `acquire_token_by_device_flow`aanroept, is de gebruikers ervaring doorgaans als volgt:
 
-1. The user enters their account ID.
-2. Azure AD displays briefly the message "Taking you to your organization's page" and the user is redirected to the sign-in page of the identity provider. The sign-in page is usually customized with the logo of the organization.
+1. De gebruiker voert de account-ID in.
+2. In azure AD wordt het bericht ' u gaat naar de pagina van uw organisatie ' weer gegeven en de gebruiker wordt omgeleid naar de aanmeldings pagina van de ID-provider. De aanmeldings pagina wordt doorgaans aangepast met het logo van de organisatie.
 
-The supported AD FS versions in this federated scenario are:
+De ondersteunde AD FS versies in dit federatieve scenario zijn:
 - Active Directory Federation Services FS v2
 - Active Directory Federation Services v3 (Windows Server 2012 R2)
 - Active Directory Federation Services v4 (AD FS 2016)
 
-### <a name="acquire-a-token-via-username-and-password"></a>Acquire a token via username and password
+### <a name="acquire-a-token-via-username-and-password"></a>Een token verkrijgen via gebruikers naam en wacht woord
 
-The following applies whether you connect directly to Active Directory Federation Services (AD FS) or through Active Directory.
+Het volgende is van toepassing, ongeacht of u rechtstreeks verbinding maakt met Active Directory Federation Services (AD FS) of via Active Directory.
 
-When you acquire a token using `acquire_token_by_username_password`, MSAL Python gets the identity provider to contact based on the username. MSAL Python gets a [SAML 1.1 token](reference-saml-tokens.md) from the identity provider, which it then provides to Azure AD which returns the JSON Web Token (JWT).
+Wanneer u een token aanschaft met behulp van `acquire_token_by_username_password`, haalt MSAL python de ID-provider een contact persoon op basis van de gebruikers naam. MSAL python haalt een [SAML 1,1-token](reference-saml-tokens.md) van de ID-provider, die vervolgens aan Azure AD wordt verstrekt, waarmee de JSON Web token (JWT) wordt geretourneerd.
 
-## <a name="connecting-directly-to-ad-fs"></a>Connecting directly to AD FS
+## <a name="connecting-directly-to-ad-fs"></a>Rechtstreeks verbinding maken met AD FS
 
-When you connect directory to AD FS, the authority you'll want to use to build your application will be something like `https://somesite.contoso.com/adfs/`
+Wanneer u een map verbindt met AD FS, is de instantie die u wilt gebruiken voor het bouwen van uw toepassing, bijvoorbeeld `https://somesite.contoso.com/adfs/`
 
-MSAL Python supports ADFS 2019.
+MSAL python ondersteunt ADFS 2019.
 
-It does not support a direct connection to ADFS 2016 or ADFS v2. If you need to support scenarios requiring a direct connection to ADFS 2016, use the latest version of ADAL Python. Once you have upgraded your on-premises system to ADFS 2019, you can use MSAL Python.
+Er wordt geen rechtstreekse verbinding met ADFS 2016 of ADFS v2 ondersteund. Als u scenario's wilt ondersteunen waarvoor een directe verbinding met ADFS 2016 is vereist, gebruikt u de meest recente versie van ADAL python. Wanneer u uw on-premises systeem hebt bijgewerkt naar ADFS 2019, kunt u MSAL python gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- For the federated case, see [Configure Azure Active Directory sign in behavior for an application by using a Home Realm Discovery policy](../manage-apps/configure-authentication-for-federated-users-portal.md)
+- Zie voor de federatieve situatie [Azure Active Directory aanmeldings gedrag configureren voor een toepassing met behulp van een beleid voor het detecteren van een thuis domein](../manage-apps/configure-authentication-for-federated-users-portal.md)

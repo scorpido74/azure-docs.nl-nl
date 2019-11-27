@@ -57,7 +57,7 @@ In deze zelfstudie leert u het volgende:
 
 1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)** . Klik op **Volgende**.
 
-1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4.7.1** of hoger. Klik op **Maken**.
+1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4.7.1** of hoger. Klik op **Create**.
 
 ## <a name="reload-data-from-app-configuration"></a>Gegevens opnieuw laden vanuit app-configuratie
 1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek en voeg op het tabblad **Bladeren** het NuGet-pakket *micro soft. Extensions. Configuration. AzureAppConfiguration* toe aan uw project. Als u deze niet kunt vinden, schakelt u het selectie vakje **include Prerelease** in.
@@ -134,7 +134,7 @@ In deze zelfstudie leert u het volgende:
 
     ![App-lokaal starten](./media/dotnet-app-run.png)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 1. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutels bij:
 

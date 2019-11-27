@@ -1,14 +1,14 @@
 ---
-title: Voor beeld van CAF-migratie landings zone-blauw drukken-stappen implementeren
+title: Blauw voor beeld van CAF-migratie landings zone implementeren
 description: Implementeer stappen voor het voor beeld van de CAF-migratie van de openings zone, inclusief blauw drukken artefact parameter Details.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: 67dabde6afe2dbc17a5ca2bd32534108b8008a8a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: da17083e8e1b27739288a9d9ac087d071ff4861c
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038448"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545453"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Het Microsoft Cloud-acceptatie raamwerk voor Azure migrate-openings zone implementeren voor beeld van de blauw druk
 
@@ -64,7 +64,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basics
+   - Basisbeginselen
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
      - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
        Wijzig indien nodig of sluit af.

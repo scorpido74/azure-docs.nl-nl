@@ -1,6 +1,6 @@
 ---
-title: Register a new Azure IoT Edge device | Microsoft Docs
-description: Use the IoT extension for Azure CLI to register a new IoT Edge device and retrieve the connection string
+title: Een nieuw Azure IoT Edge apparaat registreren | Microsoft Docs
+description: De IoT-extensie voor Azure CLI gebruiken om te registreren van een nieuwe IoT Edge-apparaat en de verbindingsreeks ophalen
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -16,149 +16,149 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456846"
 ---
-# <a name="register-an-azure-iot-edge-device"></a>Register an Azure IoT Edge device
+# <a name="register-an-azure-iot-edge-device"></a>Een Azure IoT Edge-apparaat registreren
 
-Before you can use your IoT devices with Azure IoT Edge, you must register them with your IoT hub. Once a device is registered, you can retrieve a connection string to set up your device for IoT Edge workloads.
+Voordat u uw IoT-apparaten met Azure IoT Edge kunt gebruiken, moet u ze registreren bij uw IoT-hub. Zodra een apparaat is geregistreerd, kunt u een connection string ophalen om uw apparaat in te stellen voor IoT Edge werk belastingen.
 
-You have the choice of registering by using one of the following tools:
+U kunt kiezen uit een van de volgende hulpprogram ma's:
 
-* [Azure portal](https://portal.azure.com) provides a graphical user interface to create, view, and manage Azure resources.
-* [Visual Studio Code](https://code.visualstudio.com/) is a source-code editor. Azure IoT extensions make it easy to manage IoT resources from the same tool where you're developing IoT solutions.
-* [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is a command-line tool for managing Azure resources. Its reusable commands are helpful for automating tasks.
+* [Azure Portal](https://portal.azure.com) biedt een graphical user interface om Azure-resources te maken, weer te geven en te beheren.
+* [Visual Studio code](https://code.visualstudio.com/) is een bron code-editor. Met Azure IoT-uitbrei dingen kunt u eenvoudig IoT-resources beheren met hetzelfde hulp programma voor het ontwikkelen van IoT-oplossingen.
+* [Azure cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is een opdracht regel programma voor het beheer van Azure-resources. De herbruikbare opdrachten zijn handig voor het automatiseren van taken.
 
-## <a name="register-in-the-azure-portal"></a>Register in the Azure portal
+## <a name="register-in-the-azure-portal"></a>Registreren in de Azure Portal
 
-You can perform all registration tasks in the Azure portal.
+U kunt alle registratie taken uitvoeren in de Azure Portal.
 
-### <a name="prerequisites-for-the-azure-portal"></a>Prerequisites for the Azure portal
+### <a name="prerequisites-for-the-azure-portal"></a>Vereisten voor de Azure Portal
 
-A free or standard [IoT hub](../iot-hub/iot-hub-create-through-portal.md) in your Azure subscription.
+Een gratis of standaard [IOT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement.
 
-### <a name="create-an-iot-edge-device-in-the-azure-portal"></a>Create an IoT Edge device in the Azure portal
+### <a name="create-an-iot-edge-device-in-the-azure-portal"></a>Een IoT Edge apparaat maken in de Azure Portal
 
-In your IoT Hub in the Azure portal, IoT Edge devices are created and managed separately from IOT devices that are not edge enabled.
+In uw IoT Hub in de Azure Portal worden IoT Edge apparaten afzonderlijk gemaakt en beheerd van IOT-apparaten die niet Edge zijn ingeschakeld.
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your IoT hub.
-2. In the left pane, select **IoT Edge** from the menu.
-3. Select **Add an IoT Edge device**.
-4. Provide a descriptive device ID. Use the default settings to auto-generate authentication keys and connect the new device to your hub.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT-hub.
+2. Selecteer in het linkerdeel venster **IOT Edge** in het menu.
+3. Selecteer **een IOT edge apparaat toevoegen**.
+4. Geef een beschrijvende apparaat-ID. Gebruik de standaard instellingen voor het automatisch genereren van verificatie sleutels en het verbinden van het nieuwe apparaat met uw hub.
 5. Selecteer **Opslaan**.
 
-### <a name="view-iot-edge-devices-in-the-azure-portal"></a>View IoT Edge devices in the Azure portal
+### <a name="view-iot-edge-devices-in-the-azure-portal"></a>IoT Edge apparaten weer geven in de Azure Portal
 
-All the edge-enabled devices that connect to your IoT hub are listed on the **IoT Edge** page.
+Alle apparaten met rand mogelijkheden die verbinding maken met uw IoT-hub, worden weer gegeven op de pagina **IOT Edge** .
 
-![View all IoT Edge devices in your IoT hub](./media/how-to-register-device/portal-view-devices.png)
+![Alle IoT Edge-apparaten in uw IoT-hub bekijken](./media/how-to-register-device/portal-view-devices.png)
 
-### <a name="retrieve-the-connection-string-in-the-azure-portal"></a>Retrieve the connection string in the Azure portal
+### <a name="retrieve-the-connection-string-in-the-azure-portal"></a>De connection string in het Azure Portal ophalen
 
-When you're ready to set up your device, you need the connection string that links your physical device with its identity in the IoT hub.
+Wanneer u klaar bent om uw apparaat instellen, moet u de verbindingsreeks die is gekoppeld aan uw fysieke apparaat met de identiteit van de IoT-hub.
 
-1. From the **IoT Edge** page in the portal, click on the device ID from the list of IoT Edge devices.
-2. Copy the value of either **Connection string (primary key)** or **Connection string (secondary key)** .
+1. Klik op de pagina **IOT Edge** in de portal op de apparaat-id in de lijst met IOT edge apparaten.
+2. Kopieer de waarde van de **verbindings reeks (primaire sleutel)** of **verbindings reeks (secundaire sleutel)** .
 
-## <a name="register-with-visual-studio-code"></a>Register with Visual Studio Code
+## <a name="register-with-visual-studio-code"></a>Registreren met Visual Studio code
 
-There are multiple ways to perform most operations in VS Code. This article uses the Explorer, but you can also use the Command Palette to run the steps.
+Er zijn meerdere manieren om uit te voeren van de meeste bewerkingen in VS Code. In dit artikel wordt de Explorer gebruikt, maar u kunt ook het opdracht palet gebruiken om de stappen uit te voeren.
 
-### <a name="prerequisites-for-visual-studio-code"></a>Prerequisites for Visual Studio Code
+### <a name="prerequisites-for-visual-studio-code"></a>Vereisten voor Visual Studio code
 
-* An [IoT hub](../iot-hub/iot-hub-create-through-portal.md) in your Azure subscription
+* Een [IOT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) for Visual Studio Code
+* [Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) voor Visual Studio code
 
-### <a name="sign-in-to-access-your-iot-hub"></a>Sign in to access your IoT hub
+### <a name="sign-in-to-access-your-iot-hub"></a>Meld u aan voor toegang tot uw IoT-hub
 
-You can use the Azure IoT extensions for Visual Studio Code to perform operations with your IoT Hub. For these operations to work, you need to sign in to your Azure account and select your IoT Hub.
+U kunt de Azure IoT-uitbrei dingen voor Visual Studio code gebruiken om bewerkingen met uw IoT Hub uit te voeren. Als u deze bewerkingen wilt gebruiken, moet u zich aanmelden bij uw Azure-account en uw IoT Hub selecteren.
 
-1. In Visual Studio Code, open the **Explorer** view.
-1. At the bottom of the Explorer, expand the **Azure IoT Hub** section.
+1. Open in Visual Studio code de weer gave **Explorer** .
+1. Vouw de sectie **Azure-IOT hub** aan de onderkant van de Explorer uit.
 
-   ![Expand Azure IoT Hub Devices section](./media/how-to-register-device/azure-iot-hub-devices.png)
+   ![Vouw de sectie Azure IoT Hub-apparaten](./media/how-to-register-device/azure-iot-hub-devices.png)
 
-1. Click on the **...** in the **Azure IoT Hub** section header. If you don't see the ellipsis, click on or hover over the header.
-1. Choose **Select IoT Hub**.
-1. If you aren't signed in to your Azure account, follow the prompts to do so.
+1. Klik in de koptekst van de Azure- **IOT hub** op de sectie **..** .. Als u het beletselteken niet ziet, klikt u op of Beweeg de muisaanwijzer over de header.
+1. Kies **IOT hub selecteren**.
+1. Als u niet bent aangemeld bij uw Azure-account, volgt u de aanwijzingen om dit te doen.
 1. Selecteer uw Azure-abonnement.
-1. Select your IoT hub.
+1. Selecteer uw IoT-hub.
 
-### <a name="create-an-iot-edge-device-with-visual-studio-code"></a>Create an IoT Edge device with Visual Studio Code
+### <a name="create-an-iot-edge-device-with-visual-studio-code"></a>Een IoT Edge-apparaat maken met Visual Studio code
 
-1. In the VS Code Explorer, expand the **Azure IoT Hub Devices** section.
-1. Click on the **...** in the **Azure IoT Hub Devices** section header. If you don't see the ellipsis, click on or hover over the header.
-1. Select **Create IoT Edge Device**.
-1. In the text box that opens, give your device an ID.
+1. Vouw in de VS code Explorer het gedeelte **Azure IOT Hub-apparaten** uit.
+1. Klik op de sectie **..** . in de koptekst van de **Azure IOT Hub-apparaten** . Als u het beletselteken niet ziet, klikt u op of Beweeg de muisaanwijzer over de header.
+1. Selecteer **IOT edge apparaat maken**.
+1. Geef in het tekstvak dat wordt geopend, uw apparaat een ID.
 
-In the output screen, you see the result of the command. The device info is printed, which includes the **deviceId** that you provided and the **connectionString** that you can use to connect your physical device to your IoT hub.
+In het uitvoerscherm ziet u het resultaat van de opdracht. De apparaatgegevens worden afgedrukt, inclusief de **deviceId** die u hebt geleverd en de **Connections Tring** die u kunt gebruiken om uw fysieke apparaat te verbinden met uw IOT-hub.
 
-In the output screen, you see the result of the command. The device info is printed, which includes the **deviceId** that you provided and the **connectionString** that you can use to connect your physical device to your IoT hub.
+In het uitvoerscherm ziet u het resultaat van de opdracht. De apparaatgegevens worden afgedrukt, inclusief de **deviceId** die u hebt geleverd en de **Connections Tring** die u kunt gebruiken om uw fysieke apparaat te verbinden met uw IOT-hub.
 
-### <a name="view-iot-edge-devices-with-visual-studio-code"></a>View IoT Edge devices with Visual Studio Code
+### <a name="view-iot-edge-devices-with-visual-studio-code"></a>IoT Edge apparaten weer geven met Visual Studio code
 
-All the devices that connect to your IoT hub are listed in the **Azure IoT Hub** section of the Visual Studio Code Explorer. IoT Edge devices are distinguishable from non-Edge devices with a different icon, and the fact that the **$edgeAgent** and **$edgeHub** modules are deployed to each IoT Edge device.
+Alle apparaten die verbinding maken met uw IoT-hub, worden weer gegeven in de sectie **Azure IOT hub** van Visual Studio code Explorer. IoT Edge apparaten zijn onderscheiden van niet-rand apparaten met een ander pictogram, en het feit dat de **$edgeAgent** en **$edgeHub** modules op elk IOT edge apparaat worden geïmplementeerd.
 
-![View all IoT Edge devices in your IoT hub](./media/how-to-register-device/view-devices.png)
+![Alle IoT Edge-apparaten in uw IoT-hub bekijken](./media/how-to-register-device/view-devices.png)
 
-### <a name="retrieve-the-connection-string-with-visual-studio-code"></a>Retrieve the connection string with Visual Studio Code
+### <a name="retrieve-the-connection-string-with-visual-studio-code"></a>De connection string ophalen met Visual Studio code
 
-When you're ready to set up your device, you need the connection string that links your physical device with its identity in the IoT hub.
+Wanneer u klaar bent om uw apparaat instellen, moet u de verbindingsreeks die is gekoppeld aan uw fysieke apparaat met de identiteit van de IoT-hub.
 
-1. Right-click on the ID of your device in the **Azure IoT Hub** section.
-1. Select **Copy Device Connection String**.
+1. Klik met de rechter muisknop op de ID van uw apparaat in het gedeelte **Azure IOT hub** .
+1. Selecteer **apparaat verbindings reeks kopiëren**.
 
-   The connection string is copied to your clipboard.
+   De verbindingsreeks is naar het Klembord gekopieerd.
 
-You can also select **Get Device Info** from the right-click menu to see all the device info, including the connection string, in the output window.
+U kunt ook **apparaatgegevens ophalen** selecteren in het menu met de rechter muisknop om alle apparaatgegevens, inclusief de Connection String, weer te geven in het uitvoer venster.
 
-## <a name="register-with-the-azure-cli"></a>Register with the Azure CLI
+## <a name="register-with-the-azure-cli"></a>Registreren bij Azure CLI
 
-The [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is an open-source cross platform command-line tool for managing Azure resources such as IoT Edge. It enables you to manage Azure IoT Hub resources, device provisioning service instances, and linked-hubs out of the box. The new IoT extension enriches Azure CLI with features such as device management and full IoT Edge capability.
+[Azure cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is een open source-opdracht regel programma voor meerdere platformen voor het beheer van Azure-resources, zoals IOT Edge. Hiermee kunt u voor het beheren van Azure IoT Hub-resources, device provisioning service-exemplaren en gekoppelde hubs buiten het vak. Azure CLI verrijkt de nieuwe IoT-extensie met functies zoals Apparaatbeheer en de volledige functionaliteit van IoT Edge.
 
-### <a name="prerequisites-for-the-azure-cli"></a>Prerequisites for the Azure CLI
+### <a name="prerequisites-for-the-azure-cli"></a>Vereisten voor de Azure CLI
 
-* An [IoT hub](../iot-hub/iot-hub-create-using-cli.md) in your Azure subscription.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) in your environment. At a minimum, your Azure CLI version must be 2.0.24 or above. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen.
-* The [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
+* Een [IOT-hub](../iot-hub/iot-hub-create-using-cli.md) in uw Azure-abonnement.
+* [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet ten minste 2.0.24 of hoger. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen.
+* De [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension).
 
-### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>Create an IoT Edge device with the Azure CLI
+### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>Een IoT Edge-apparaat maken met de Azure CLI
 
-Use the [az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) command to create a new device identity in your IoT hub. Bijvoorbeeld:
+Gebruik de opdracht [AZ IOT hub apparaat-Identity Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) om een nieuwe apparaat-id te maken in uw IOT-hub. Bijvoorbeeld:
 
    ```cli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
    ```
 
-This command includes three parameters:
+Met deze opdracht worden drie parameters:
 
-* **device-id**: Provide a descriptive name that's unique to your IoT hub.
-* **hub-name**: Provide the name of your IoT hub.
-* **edge-enabled**: This parameter declares that the device is for use with IoT Edge.
+* **apparaat-id**: Geef een beschrijvende naam op die uniek is voor uw IOT-hub.
+* **hub-naam**: Geef de naam op van uw IOT-hub.
+* **rand**: deze para meter geeft aan dat het apparaat moet worden gebruikt met IOT Edge.
 
-   ![az iot hub device-identity create output](./media/how-to-register-device/Create-edge-device.png)
+   ![AZ iot hub device-identity maken uitvoer](./media/how-to-register-device/Create-edge-device.png)
 
-### <a name="view-iot-edge-devices-with-the-azure-cli"></a>View IoT Edge devices with the Azure CLI
+### <a name="view-iot-edge-devices-with-the-azure-cli"></a>IoT Edge apparaten weer geven met de Azure CLI
 
-Use the [az iot hub device-identity list](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-list) command to view all devices in your IoT hub. Bijvoorbeeld:
+Gebruik de opdracht [AZ IOT hub Device-Identity List](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-list) om alle apparaten in uw IOT-hub weer te geven. Bijvoorbeeld:
 
    ```cli
    az iot hub device-identity list --hub-name [hub name]
    ```
 
-Any device that is registered as an IoT Edge device will have the property **capabilities.iotEdge** set to **true**.
+Elk apparaat dat is geregistreerd als IoT Edge apparaat heeft de eigenschaps **mogelijkheden. iotEdge** ingesteld op **True**.
 
-### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>Retrieve the connection string with the Azure CLI
+### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>De connection string ophalen met de Azure CLI
 
-When you're ready to set up your device, you need the connection string that links your physical device with its identity in the IoT hub. Use the [az iot hub device-identity show-connection-string](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) command to return the connection string for a single device:
+Wanneer u klaar bent om uw apparaat instellen, moet u de verbindingsreeks die is gekoppeld aan uw fysieke apparaat met de identiteit van de IoT-hub. Gebruik de opdracht [AZ IOT hub Device-identiteit show-Connection-String](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) om de Connection String voor één apparaat te retour neren:
 
    ```cli
    az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name]
    ```
 
-The value for the `device-id` parameter is case-sensitive. Don't copy the quotation marks around the connection string.
+De waarde voor de para meter `device-id` is hoofdletter gevoelig. Kopieer niet de aanhalingstekens rond de verbindingsreeks.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Now that you have a device identity registered in your IoT hub, you're ready to install the IoT Edge runtime on your devices. Install the runtime according to the device's operating system:
+Nu u een apparaat-id in uw IoT-hub hebt geregistreerd, bent u klaar om de IoT Edge runtime op uw apparaten te installeren. Installeer de runtime op basis van het besturings systeem van het apparaat:
 
-* [Install Azure IoT Edge on Windows](how-to-install-iot-edge-windows.md)
-* [Install the Azure IoT Edge runtime on Linux](how-to-install-iot-edge-linux.md)
+* [Azure IoT Edge installeren in Windows](how-to-install-iot-edge-windows.md)
+* [Installeer de Azure IoT Edge runtime op Linux](how-to-install-iot-edge-linux.md)

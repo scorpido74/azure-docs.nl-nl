@@ -70,7 +70,7 @@ We raden u aan RStudio te gebruiken om deze zelf studie uit te voeren. In RStudi
 > Als u ervaring hebt met RMarkdown, kunt u de code uit dat bestand gebruiken.  Of u kunt de code fragmenten uit deze of van dit artikel kopiëren/plakken in een R-script of de opdracht regel.
 
 
-## <a name="set-up-your-development-environment"></a>Uw ontwikkelomgeving instellen
+## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
 De configuratie voor uw ontwikkel werkzaamheden in deze zelf studie bevat de volgende acties:
 
 * De vereiste pakketten installeren

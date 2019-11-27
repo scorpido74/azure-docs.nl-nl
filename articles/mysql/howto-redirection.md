@@ -1,6 +1,6 @@
 ---
-title: Connect to Azure Database for MySQL with redirection
-description: This article describes how you can configure you application to connect to Azure Database for MySQL with redirection.
+title: Verbinding maken met Azure Database for MySQL met behulp van omleiding
+description: In dit artikel wordt beschreven hoe u een toepassing kunt configureren om verbinding te maken met Azure Database for MySQL met behulp van omleiding.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -13,53 +13,53 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233738"
 ---
-# <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Connect to Azure Database for MySQL with redirection
+# <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Verbinding maken met Azure Database for MySQL met behulp van omleiding
 
-This topic explains how to connect an application your Azure Database for MySQL server with redirection mode. Redirection aims to reduce network latency between client applications and MySQL servers by allowing applications to connect directly to backend server nodes.
+In dit onderwerp wordt uitgelegd hoe u met de omleidings modus verbinding maakt met een toepassing op uw Azure Database for MySQL-server. Omleiding is gericht op het verminderen van de netwerk latentie tussen client toepassingen en MySQL-servers door toepassingen toe te staan rechtstreeks verbinding te maken met back-end-server knooppunten.
 
 > [!IMPORTANT]
-> Support for redirection in the PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) is currently in preview.
+> Ondersteuning voor omleiding in de PHP- [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) is momenteel als preview-versie beschikbaar.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Meld u aan bij de [Azure-portal](https://portal.azure.com). Create an Azure Database for MySQL server with engine version 5.6, 5.7, or 8.0. For details, refer to [How to create Azure Database for MySQL server from Portal](quickstart-create-mysql-server-database-using-azure-portal.md) or [How to create Azure Database for MySQL server using CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+Meld u aan bij [Azure Portal](https://portal.azure.com). Een Azure Database for MySQL-server met Engine versie 5,6, 5,7 of 8,0 maken. Raadpleeg voor meer informatie [hoe u Azure database for mysql server maakt vanuit de portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [hoe u Azure database for mysql server maakt met behulp van CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
 
-Redirection is currently only supported when SSL is enabled. For details on how to configure SSL, see [Using SSL with Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/howto-configure-ssl#step-3-enforcing-ssl-connections-in-azure). 
+Omleiding wordt momenteel alleen ondersteund als SSL is ingeschakeld. Zie [using SSL with Azure database for MySQL](https://docs.microsoft.com/azure/mysql/howto-configure-ssl#step-3-enforcing-ssl-connections-in-azure)voor meer informatie over het configureren van SSL. 
 
 ## <a name="php"></a>PHP
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
 #### <a name="prerequisites"></a>Vereisten 
-- PHP versions 7.2.15+ and 7.3.2+
-- PHP PEAR 
+- PHP-versies 7.2.15 + en 7.3.2 +
+- PHP PEER 
 - php-mysql
-- Azure Database for MySQL server with SSL enabled
+- Azure Database for MySQL server waarop SSL is ingeschakeld
 
-1. Install [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) with [PECL](https://pecl.php.net/package/mysqlnd_azure).
+1. Installeer [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) met [PECL](https://pecl.php.net/package/mysqlnd_azure).
 
     ```bash
     sudo pecl install mysqlnd_azure
     ```
 
-2. Locate the extension directory (`extension_dir`) by running the below:
+2. Ga naar de extensie Directory (`extension_dir`) door de onderstaande stappen uit te voeren:
 
     ```bash
     php -i | grep "extension_dir"
     ```
 
-3. Change directories to the returned folder and ensure `mysqlnd_azure.so` is located in this folder. 
+3. Wijzig de mappen in de map die wordt geretourneerd en zorg ervoor dat `mysqlnd_azure.so` zich in deze map bevindt. 
 
-4. Locate the folder for .ini files by running the below: 
+4. Ga naar de map voor. ini-bestanden door de onderstaande stappen uit te voeren: 
 
     ```bash
     php -i | grep "dir for additional .ini files"
     ```
 
-5. Change directories to this returned folder. 
+5. Wijzig de mappen in deze geretourneerde map. 
 
-6. Create a new .ini file for `mysqlnd_azure`. Make sure the alphabet order of the name is after that of mysqnld, since the modules are loaded according to the name order of the ini files. For example, if `mysqlnd` .ini is named `10-mysqlnd.ini`, name the mysqlnd ini as `20-mysqlnd-azure.ini`.
+6. Maak een nieuw. ini-bestand voor `mysqlnd_azure`. Zorg ervoor dat de alfabetische volg orde van de naam na mysqnld is, omdat de modules zijn geladen op basis van de naam volgorde van de ini-bestanden. Als `mysqlnd`. ini bijvoorbeeld `10-mysqlnd.ini`heet, moet u de naam van het mysqlnd ini als `20-mysqlnd-azure.ini`.
 
-7. Within the new .ini file, add the following lines to enable redirection.
+7. Voeg in het nieuwe ini-bestand de volgende regels toe om omleiding in te scha kelen.
 
     ```bash
     extension=mysqlnd_azure
@@ -69,50 +69,50 @@ Redirection is currently only supported when SSL is enabled. For details on how 
 ### <a name="windows"></a>Windows
 
 #### <a name="prerequisites"></a>Vereisten 
-- PHP versions 7.2.15+ and 7.3.2+
+- PHP-versies 7.2.15 + en 7.3.2 +
 - php-mysql
-- Azure Database for MySQL server with SSL enabled
+- Azure Database for MySQL server waarop SSL is ingeschakeld
 
-1. Determine if you are running a x64 or x86 version of PHP by running the following command:
+1. Bepaal of u een x64-of x86-versie van PHP gebruikt door de volgende opdracht uit te voeren:
 
     ```cmd
     php -i | findstr "Thread"
     ```
 
-2. Download the corresponding x64 or x86 version of the [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) DLL from [PECL](https://pecl.php.net/package/mysqlnd_azure) that matches your version of PHP. 
+2. Down load de bijbehorende x64-of x86-versie van de [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) dll van [PECL](https://pecl.php.net/package/mysqlnd_azure) die overeenkomt met uw versie van PHP. 
 
-3. Extract the zip file and find the DLL named `php_mysqlnd_azure.dll`.
+3. Pak het zip-bestand uit en zoek de DLL met de naam `php_mysqlnd_azure.dll`.
 
-4. Locate the extension directory (`extension_dir`) by running the below command:
+4. Ga naar de extensie Directory (`extension_dir`) door de onderstaande opdracht uit te voeren:
 
     ```cmd
     php -i | find "extension_dir"s
     ```
 
-5. Copy the `php_mysqlnd_azure.dll` file into the directory returned in step 4. 
+5. Kopieer het `php_mysqlnd_azure.dll` bestand naar de map die u in stap 4 hebt geretourneerd. 
 
-6. Locate the PHP folder containing the `php.ini` file using the following command:
+6. Zoek de PHP-map met het `php.ini`-bestand met behulp van de volgende opdracht:
 
     ```cmd
     php -i | find "Loaded Configuration File"
     ```
 
-7. Modify the `php.ini` file and add the following extra lines to enable redirection. 
+7. Wijzig het `php.ini`-bestand en voeg de volgende extra regels toe om omleiding in te scha kelen. 
 
-    Under the Dynamic Extensions section: 
+    Onder de sectie dynamische extensies: 
     ```cmd
     extension=mysqlnd_azure
     ```
     
-    Under the Module Settings section:     
+    Klik onder de sectie module-instellingen op:     
     ```cmd 
     [mysqlnd_azure]
     mysqlnd_azure.enabled=on
     ```
 
-### <a name="confirm-redirection"></a>Confirm redirection
+### <a name="confirm-redirection"></a>Omleiding bevestigen
 
-You can also confirm redirection is configured with the below sample PHP code. Create a PHP file called `mysqlConnect.php` and paste the below code. Update the server name, username, and password with your own. 
+U kunt ook bevestigen dat de omleiding is geconfigureerd met behulp van de onderstaande PHP-voorbeeld code. Maak een PHP-bestand met de naam `mysqlConnect.php` en plak de onderstaande code. Werk de server naam, gebruikers naam en het wacht woord bij met uw eigen account. 
  
  ```php
 <?php
@@ -136,5 +136,5 @@ $db->close();
  ```
 
 ## <a name="next-steps"></a>Volgende stappen
-For more information about connection strings, refer to [Connection Strings](howto-connection-string.md).
+Raadpleeg [verbindings reeksen](howto-connection-string.md)voor meer informatie over verbindings reeksen.
 

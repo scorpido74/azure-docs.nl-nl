@@ -1,6 +1,6 @@
 ---
-title: Investigate risk Azure Active Directory Identity Protection
-description: Learn how to investigate risky users, detections, and sign-ins in Azure Active Directory Identity Protection
+title: Risico Azure Active Directory Identity Protection onderzoeken
+description: Meer informatie over het onderzoeken van Risk ante gebruikers, detecties en aanmeldingen in Azure Active Directory Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,78 +18,78 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382121"
 ---
-# <a name="how-to-investigate-risk"></a>How To: Investigate risk
+# <a name="how-to-investigate-risk"></a>Procedure: risico onderzoeken
 
-Identity Protection provides organizations with three reports they can use to investigate identity risks in their environment. These reports are the **risky users**, **risky sign-ins**, and **risk detections**. Investigation of events is key to better understanding and identifying any weak points in your security strategy.
+Identiteits beveiliging biedt organisaties drie rapporten die ze kunnen gebruiken om identiteits Risico's te onderzoeken in hun omgeving. Deze rapporten zijn de **Risk ante gebruikers**, **Risk ante aanmeldingen**en **risico detecties**. Onderzoek van gebeurtenissen is belang rijk voor een beter inzicht in en het identificeren van zwakke punten in uw beveiligings strategie.
 
-All three reports allow for downloading of events in .CSV format for further analysis outside of the Azure portal. The risky users and risky sign-ins reports allow for downloading the most recent 2500 entries, while the risk detections report allows for downloading the most recent 5000 records.
+In alle drie de rapporten kunnen gebeurtenissen in worden gedownload. CSV-indeling voor verdere analyse buiten het Azure Portal. Met de rapporten Risk ante gebruikers en Risk ante aanmeldingen kunt u de meest recente 2500-vermeldingen downloaden, terwijl u met het rapport risico detecties de meest recente 5000-records kunt downloaden.
 
-Organizations can take advantage of the Microsoft Graph API integrations to aggregate data with other sources they may have access to as an organization.
+Organisaties kunnen profiteren van de Microsoft Graph API-integraties om gegevens samen te voegen met andere bronnen waartoe ze mogelijk toegang hebben als een organisatie.
 
-The three reports are found in the **Azure portal** > **Azure Active Directory** > **Security**.
+De drie rapporten vindt u in de **Azure Portal** > **Azure Active Directory** > - **beveiliging**.
 
-## <a name="navigating-the-reports"></a>Navigating the reports
+## <a name="navigating-the-reports"></a>Navigeren door de rapporten
 
-Each report launches with a list of all detections for the period shown at the top of the report. Each report allows for the addition or removal of columns based on administrator preference. Administrators can choose to download the data in .CSV format. Reports can be filtered using the filters across the top of the report.
+Elk rapport wordt gestart met een lijst met alle detecties voor de periode die boven aan het rapport wordt weer gegeven. Elk rapport maakt het mogelijk om kolommen toe te voegen of te verwijderen op basis van de voor keur van de beheerder. Beheerders kunnen ervoor kiezen om de gegevens in te downloaden. CSV-indeling. Rapporten kunnen worden gefilterd met behulp van de filters aan de bovenkant van het rapport.
 
-Selecting individual entries may enable additional entries at the top of the report such as the ability to confirm a sign-in as compromised or safe, confirm a user as compromised, or dismiss user risk.
+Als u afzonderlijke items selecteert, kunnen boven aan het rapport aanvullende vermeldingen worden ingeschakeld, zoals de mogelijkheid om een aanmelding te bevestigen als aangetast of veilig, een gebruiker te bevestigen als aangetast of een gebruikers risico te sluiten.
 
-Selecting individual entries expands a details window below the detections. The details view allows administrators to investigate and perform actions on each detection. 
+Als u afzonderlijke items selecteert, wordt een detail venster uitgebreid met de detecties. De weer gave Details stelt beheerders in staat om op elke detectie acties te onderzoeken en uit te voeren. 
 
-![Example Identity Protection report showing risky sign-ins and details](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
+![Voor beeld van een identiteits beveiligings rapport met Risk ante aanmeldingen en Details](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
 
-## <a name="risky-users"></a>Risky users
+## <a name="risky-users"></a>Risk ante gebruikers
 
-With the information provided by the risky users report, administrators can find:
+Met de informatie die door het rapport Risk ante gebruikers wordt verstrekt, kunnen beheerders het volgende vinden:
 
-- Which users are at risk, have had risk remediated, or have had risk dismissed?
-- Details about detections
-- History of risky sign-ins
-- Risk history
+- Welke gebruikers lopen risico, hebben het risico gelost of hebben ze een risico gemist?
+- Details over detecties
+- Geschiedenis van Risk ante aanmeldingen
+- Risico geschiedenis
  
-Administrators can then choose to take action on these events. Administrators can choose to:
+Beheerders kunnen er vervolgens voor kiezen om actie te ondernemen op deze gebeurtenissen. Beheerders kunnen kiezen uit:
 
-- Reset the user password
-- Confirm user compromise
-- Dismiss user risk
-- Block user from signing in
-- Investigate further using Azure ATP
+- Het gebruikers wachtwoord opnieuw instellen
+- Inbreuk op gebruikers bevestigen
+- Gebruikers risico negeren
+- Blok keren dat de gebruiker zich aanmeldt
+- Meer onderzoeken met behulp van Azure ATP
 
 ## <a name="risky-sign-ins"></a>Riskante aanmeldingen
 
-The risky sign-ins report contains filterable data for up to the past 30 days (1 month).
+Het rapport Risk ante aanmeldingen bevat filter bare gegevens voor de afgelopen 30 dagen (1 maand).
 
-With the information provided by the risky sign-ins report, administrators can find:
+Met de informatie die door het rapport Risk ante aanmeldingen wordt verstrekt, kunnen beheerders het volgende vinden:
 
-- Which sign-ins are classified as at risk, confirmed compromised, confirmed safe, dismissed, or remediated.
-- Real-time and aggregate risk levels associated with sign-in attempts.
-- Detection types triggered
-- Conditional Access policies applied
-- MFA details
-- Device information
+- Welke aanmeldingen zijn geclassificeerd als risico, bevestigde schade, bevestigd veilig, gesloten of opgelost.
+- Real-time en aggregatie risico niveaus die zijn gekoppeld aan aanmeldings pogingen.
+- Detectie typen geactiveerd
+- Beleid voor voorwaardelijke toegang toegepast
+- MFA-Details
+- Apparaatgegevens
 - Toepassingsgegevens
-- Location information
+- Locatie gegevens
 
-Administrators can then choose to take action on these events. Administrators can choose to:
+Beheerders kunnen er vervolgens voor kiezen om actie te ondernemen op deze gebeurtenissen. Beheerders kunnen kiezen uit:
 
-- Confirm sign-in compromise
-- Confirm sign-in safe
+- Inbreuk op aanmelden bevestigen
+- Aanmelden bevestigen veilig
 
 ## <a name="risk-detections"></a>Risicodetectie
 
-The risk detections report contains filterable data for up to the past 90 days (3 months).
+Het rapport van de risico detectie bevat filter bare gegevens gedurende de afgelopen 90 dagen (3 maanden).
 
-With the information provided by the risk detections report, administrators can find:
+Met de informatie die door het rapport van de risico detectie wordt verstrekt, kunnen beheerders het volgende vinden:
 
-- Information about each risk detection including type.
-- Other risks triggered at the same time
-- Sign-in attempt location
-- Link out to more detail from Microsoft Cloud App Security (MCAS).
+- Informatie over elke risico detectie, inclusief type.
+- Andere Risico's die tegelijkertijd worden geactiveerd
+- Locatie van aanmeldings poging
+- Koppeling naar meer details van Microsoft Cloud App Security (MCAS).
 
-Administrators can then choose to return to the user's risk or sign-ins report to take actions based on information gathered.
+Beheerders kunnen vervolgens teruggaan naar het rapport met het risico of het aanmeldingen van de gebruiker om acties uit te voeren op basis van verzamelde gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Policies available to mitigate risks](concept-identity-protection-policies.md)
+- [Beleids regels beschikbaar om Risico's te beperken](concept-identity-protection-policies.md)
 
-- [Enable sign-in and user risk policies](howto-identity-protection-configure-risk-policies.md)
+- [Aanmeldings-en gebruikers risico beleid inschakelen](howto-identity-protection-configure-risk-policies.md)

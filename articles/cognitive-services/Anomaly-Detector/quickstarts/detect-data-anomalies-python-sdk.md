@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Detect data anomalies using the Anomaly Detector client library for Python'
+title: 'Snelstartgids: gegevens afwijkingen detecteren met behulp van de Anomaliey detector-client bibliotheek voor python'
 titleSuffix: Azure Cognitive Services
-description: Use the Anomaly Detector API to detect abnormalities in your data series either as a batch or on streaming data.
+description: Gebruik de anomalie detectie-API om afwijkingen in uw gegevens reeksen op te sporen als een batch of gegevens stromen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,43 +17,43 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483341"
 ---
-# <a name="quickstart-anomaly-detector-client-library-for-python"></a>Quickstart: Anomaly Detector client library for Python
+# <a name="quickstart-anomaly-detector-client-library-for-python"></a>Snelstartgids: anomalie detectie client bibliotheek voor python
 
-Get started with the Anomaly Detector client library for Python. Follow these steps to install the package and try out the example code for basic tasks. The Anomaly Detector service enables you to find abnormalities in your time series data by automatically using the best-fitting models on it, regardless of industry, scenario, or data volume.
+Ga aan de slag met de anomalie detectie-client bibliotheek voor python. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen. Met de anomalie detectie service kunt u afwijkingen in uw tijdreeks gegevens opsporen door automatisch de beste modellen te gebruiken, ongeacht de branche, het scenario of het gegevens volume.
 
-Use the Anomaly Detector client library for Python to:
+Gebruik de anomalie detectie-client bibliotheek voor python voor het volgende:
 
-* Detect anomalies throughout your time series dataset, as a batch request
-* Detect the anomaly status of the latest data point in your time series
+* Anomalieën in uw time series-gegevensset detecteren, als een batch-aanvraag
+* De afwijkings status van het laatste gegevens punt in uw tijd reeks detecteren
 
-[Library reference documentation](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [Library source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [Package (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [Find the sample code on GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
+[Bibliotheek referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) van de bibliotheek | [pakket (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [de voorbeeld code in github te vinden](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure subscription - [Create one for free](https://azure.microsoft.com/free/)
-* An Anomaly detector key and endpoint
+* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* Een anomalie detectie sleutel en eind punt
 * [Python 3.x](https://www.python.org/)
-* The [Pandas data analysis library](https://pandas.pydata.org/)
+* De [bibliotheek voor gegevens analyse van Pandas](https://pandas.pydata.org/)
  
-## <a name="setting-up"></a>Setting up
+## <a name="setting-up"></a>Instellen
 
-### <a name="create-an-anomaly-detector-resource"></a>Create an Anomaly Detector resource
+### <a name="create-an-anomaly-detector-resource"></a>Een afwijkende detector-resource maken
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
-### <a name="create-a-new-python-application"></a>Create a new python application
+### <a name="create-a-new-python-application"></a>Een nieuwe python-toepassing maken
 
- Create a new Python file and import the following libraries.
+ Maak een nieuw python-bestand en importeer de volgende bibliotheken.
 
 [!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
 
-Create variables for your key as an environment variable, the path to a time series data file, and the azure location of your subscription. Bijvoorbeeld `westus2`. 
+Maak variabelen voor uw sleutel als een omgevings variabele, het pad naar een time series-gegevens bestand en de Azure-locatie van uw abonnement. Bijvoorbeeld `westus2`. 
 
 [!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
 
-### <a name="install-the-client-library"></a>Install the client library
+### <a name="install-the-client-library"></a>De client bibliotheek installeren
 
-After installing Python, you can install the client library with:
+Na de installatie van python kunt u de client bibliotheek installeren met:
 
 ```console
 pip install --upgrade azure-cognitiveservices-anomalydetector
@@ -61,58 +61,58 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 
 ## <a name="object-model"></a>Object model
 
-The Anomaly Detector client is a [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) object that authenticates to Azure using your key. The client provides two methods of anomaly detection: On an entire dataset using [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-), and on the latest data point using [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-). 
+De anomalie detectie-client is een [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) -object dat met uw sleutel wordt geverifieerd bij Azure. De-client biedt twee methoden voor anomalie detectie: op een hele gegevensset met behulp van [entire_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)en op het laatste gegevens punt met behulp van [Last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-). 
 
-Time series data is sent as a series of [Points](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) in a [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) object. The `Request` object contains properties to describe the data ([Granularity](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) for example), and parameters for the anomaly detection. 
+Tijdreeks gegevens worden verzonden als een reeks [punten](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) in een [aanvraag](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) object. Het `Request`-object bevat eigenschappen die de gegevens beschrijven (bijvoorbeeld[granulatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) ) en para meters voor de anomalie detectie. 
 
-The Anomaly Detector response is a [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) or [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) object depending on the method used. 
+De afwijkende detector respons is een [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) -of [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) -object, afhankelijk van de gebruikte methode. 
 
-## <a name="code-examples"></a>Code examples 
+## <a name="code-examples"></a>Code voorbeelden 
 
-These code snippets show you how to do the following with the Anomaly Detector client library for Python:
+Deze code fragmenten laten zien hoe u het volgende kunt doen met de anomalie detectie-client bibliotheek voor python:
 
-* [Authenticate the client](#authenticate-the-client)
-* [Load a time series data set from a file](#load-time-series-data-from-a-file)
-* [Detect anomalies in the entire data set](#detect-anomalies-in-the-entire-data-set) 
-* [Detect the anomaly status of the latest data point](#detect-the-anomaly-status-of-the-latest-data-point)
+* [De client verifiëren](#authenticate-the-client)
+* [Een time series gegevensset laden vanuit een bestand](#load-time-series-data-from-a-file)
+* [Afwijkingen in de volledige gegevensset detecteren](#detect-anomalies-in-the-entire-data-set) 
+* [De afwijkings status van het laatste gegevens punt detecteren](#detect-the-anomaly-status-of-the-latest-data-point)
 
-## <a name="authenticate-the-client"></a>Authenticate the client
+## <a name="authenticate-the-client"></a>De client verifiëren
 
-Add your azure location variable to the endpoint, and authenticate the client with your key.
+Voeg uw Azure-locatie variabele toe aan het eind punt en verificatie van de client met uw sleutel.
 
 [!code-python[Client authentication](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=client)]
 
-## <a name="load-time-series-data-from-a-file"></a>Load time series data from a file
+## <a name="load-time-series-data-from-a-file"></a>Time Series-gegevens uit een bestand laden
 
-Download the example data for this quickstart from [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
-1. In your browser, right-click **Raw**.
-2. Click **Save link as**.
-3. Save the file to your application directory, as a .csv file.
+Down load de voorbeeld gegevens voor deze Quick Start van [github](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
+1. Klik in uw browser met de rechter muisknop op **RAW**.
+2. Klik op **Koppeling opslaan als**.
+3. Sla het bestand op in de map van de toepassing, als een CSV-bestand.
 
-This time series data is formatted as a .csv file, and will be sent to the Anomaly Detector API.
+Deze tijdreeks gegevens worden opgemaakt als een CSV-bestand en worden verzonden naar de anomalie detector-API.
 
-Load your data file with the Pandas library's `read_csv()` method, and make an empty list variable to store your data series. Iterate through the file, and append the data as a [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) object. This object will contain the timestamp and numerical value from the rows of your .csv data file. 
+Laad uw gegevens bestand met de `read_csv()` methode van de Panda-bibliotheek en maak een lege lijst variabele om uw gegevens reeksen op te slaan. Herhaal het bestand en voeg de gegevens toe als een [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) -object. Dit object bevat de tijds tempel en de numerieke waarde van de rijen van uw CSV-gegevens bestand. 
 
 [!code-python[Load the data file](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=loadDataFile)]
 
-Create a [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request%28class%29?view=azure-python) object with your time series, and the [granularity](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (or periodicity) of its data points. Bijvoorbeeld `Granularity.daily`.
+Maak een [aanvraag](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request%28class%29?view=azure-python) object met uw tijd reeks en de [granulariteit](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (of periodiciteit) van de gegevens punten. Bijvoorbeeld `Granularity.daily`.
 
 [!code-python[Create the request object](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=request)]
 
-## <a name="detect-anomalies-in-the-entire-data-set"></a>Detect anomalies in the entire data set 
+## <a name="detect-anomalies-in-the-entire-data-set"></a>Afwijkingen in de volledige gegevensset detecteren 
 
-Call the API to detect anomalies through the entire time series data using the client's [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) method. Store the returned [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) object. Iterate through the response's `is_anomaly` list, and print the index of any `true` values. These values correspond to the index of anomalous data points, if any were found.
+Roep de API aan om afwijkingen te detecteren via de volledige tijdreeks gegevens met behulp van de methode [entire_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) van de client. Sla het geretourneerde [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) -object op. Herhaal de `is_anomaly` lijst van de reactie en druk de index van alle `true` waarden af. Deze waarden komen overeen met de index van afwijkende gegevens punten, als deze zijn gevonden.
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=detectAnomaliesBatch)]
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Detect the anomaly status of the latest data point
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>De afwijkings status van het laatste gegevens punt detecteren
 
-Call the Anomaly Detector API to determine if your latest data point is an anomaly using the client's [last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) method, and store the returned [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) object. The response's `is_anomaly` value is a boolean that specifies that point's anomaly status.  
+Roep de anomalie detectie-API aan om te bepalen of uw laatste gegevens punt afwijkt met behulp van de methode [last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) van de client en sla het geretourneerde [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) -object op. De `is_anomaly` waarde van de reactie is een Boolean die de afwijkings status van het punt opgeeft.  
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=latestPointDetection)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Run the application with the `python` command and your file name.
+Voer de toepassing uit met de opdracht `python` en de naam van het bestand.
  
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

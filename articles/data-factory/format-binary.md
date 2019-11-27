@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 82f7c380c66dc6b42f4ca5c67c13524428c78221
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 815933f1f08b873ae1438d6b2f1e6cd922fe886a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674815"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548243"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Binaire indeling in Azure Data Factory
 
@@ -32,10 +32,10 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 | Eigenschap         | Beschrijving                                                  | Vereist |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | De eigenschap type van de DataSet moet worden ingesteld op **binary**. | Ja      |
-| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
-| compressie | Groep eigenschappen voor het configureren van bestands compressie. Configureer deze sectie als u compressie/decompressie wilt uitvoeren tijdens de uitvoering van de activiteit. | Nee |
-| type | De compressie-codec die wordt gebruikt om binaire bestanden te lezen/schrijven. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**. te gebruiken bij het opslaan van het bestand. | Nee       |
-| Afvlakking | De compressie ratio. Toep assen wanneer gegevensset wordt gebruikt in Sink voor kopieer activiteit.<br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **snelst:** de compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie het onderwerp [compressie niveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | Nee       |
+| locatie         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
+| compression | Groep eigenschappen voor het configureren van bestands compressie. Configureer deze sectie als u compressie/decompressie wilt uitvoeren tijdens de uitvoering van de activiteit. | Nee |
+| type | De compressie-codec die wordt gebruikt om binaire bestanden te lezen/schrijven. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**. te gebruiken bij het opslaan van het bestand.<br>Opmerking Wanneer u Kopieer activiteit gebruikt om ZipDeflate-bestand (en) te decomprimeren en te schrijven naar op bestanden gebaseerde Sink-gegevens opslag, worden bestanden uitgepakt naar de map: `<path specified in dataset>/<folder named as source zip file>/`. | Nee       |
+| niveau | De compressie ratio. Toep assen wanneer gegevensset wordt gebruikt in Sink voor kopieer activiteit.<br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **snelst:** de compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie het onderwerp [compressie niveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | Nee       |
 
 Hieronder ziet u een voor beeld van een binaire gegevensset op Azure Blob Storage:
 

@@ -1,6 +1,6 @@
 ---
-title: Useful resources when working with Azure Sentinel| Microsoft Docs
-description: This document provides you with a list of useful resources when working with Azure Sentinel.
+title: Nuttige bronnen bij het werken met Azure Sentinel | Microsoft Docs
+description: In dit document vindt u een lijst met nuttige resources wanneer u werkt met Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -22,66 +22,66 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484080"
 ---
-# <a name="useful-resources-for-working-with-azure-sentinel"></a>Useful resources for working with Azure Sentinel
+# <a name="useful-resources-for-working-with-azure-sentinel"></a>Nuttige bronnen voor het werken met Azure Sentinel
 
 
 
-This article lists resources that can help you get more information about working with Azure Sentinel.
+Dit artikel bevat een lijst met bronnen die u kunnen helpen om meer informatie te krijgen over het werken met Azure Sentinel.
 
-Azure Logic Apps connectors: <https://docs.microsoft.com/connectors/>
+Azure Logic Apps-connectors: <https://docs.microsoft.com/connectors/>
 
 
-## <a name="auditing-and-reporting"></a>Auditing and reporting
-Audit logs of Azure Sentinel are maintained in [Azure Activity Logs](../azure-monitor/platform/activity-logs-overview.md).
+## <a name="auditing-and-reporting"></a>Controle en rapportage
+Audit logboeken van Azure Sentinel worden onderhouden in [Azure-activiteiten logboeken](../azure-monitor/platform/activity-logs-overview.md).
 
-The following supported operations can be audited.
+De volgende ondersteunde bewerkingen kunnen worden gecontroleerd.
 
-|Operation name|    Resourcetype|
+|Naam van bewerking|    Resourcetype|
 |----|----|
-|Create or update workbook  |Microsoft.Insights/workbooks|
-|Delete Workbook    |Microsoft.Insights/workbooks|
-|Set Workflow   |Microsoft.Logic/workflows|
-|Delete Workflow    |Microsoft.Logic/workflows|
-|Create Saved Search    |Microsoft.OperationalInsights/workspaces/savedSearches|
-|Delete Saved Search    |Microsoft.OperationalInsights/workspaces/savedSearches|
-|Set Dashboard  |Microsoft.Portal/dashboards|
-|Delete Dashboard   |Microsoft.Portal/dashboards|
-|Update Alert Rules |Microsoft.SecurityInsights/alertRules|
-|Delete Alert Rules |Microsoft.SecurityInsights/alertRules|
-|Update Alert Rule Response Actions |Microsoft.SecurityInsights/alertRules|
-|Delete Alert Rule Response Actions |Microsoft.SecurityInsights/alertRules|
-|Update Bookmarks   |Microsoft.SecurityInsights/bookmarks|
-|Delete Bookmarks   |Microsoft.SecurityInsights/bookmarks|
-|Update Cases   |Microsoft.SecurityInsights/Cases|
-|Update Case Investigation  |Microsoft.SecurityInsights/Cases|
-|Create Case Comments   |Microsoft.SecurityInsights/Cases|
-|Update Data Connectors |Microsoft.SecurityInsights/dataConnectors|
-|Delete Data Connectors |Microsoft.SecurityInsights/dataConnectors|
-|Update Settings    |Microsoft.SecurityInsights/settings|
+|Werkmap maken of bijwerken  |Micro soft. Insights/werkmappen|
+|Werkmap verwijderen    |Micro soft. Insights/werkmappen|
+|Werk stroom instellen   |Microsoft.Logic/workflows|
+|Werk stroom verwijderen    |Microsoft.Logic/workflows|
+|Opgeslagen zoek opdracht maken    |Micro soft. OperationalInsights/werk ruimten/savedSearches|
+|Opgeslagen zoek opdracht verwijderen    |Micro soft. OperationalInsights/werk ruimten/savedSearches|
+|Dash board instellen  |Micro soft. Portal/Dash boards|
+|Dash board verwijderen   |Micro soft. Portal/Dash boards|
+|Waarschuwings regels bijwerken |Micro soft. SecurityInsights/alertRules|
+|Waarschuwings regels verwijderen |Micro soft. SecurityInsights/alertRules|
+|Reactie acties van waarschuwings regel bijwerken |Micro soft. SecurityInsights/alertRules|
+|Reactie acties voor waarschuwings regels verwijderen |Micro soft. SecurityInsights/alertRules|
+|Blad wijzers bijwerken   |Micro soft. SecurityInsights/blad wijzers|
+|Blad wijzers verwijderen   |Micro soft. SecurityInsights/blad wijzers|
+|Cases bijwerken   |Micro soft. SecurityInsights/cases|
+|Case-onderzoek bijwerken  |Micro soft. SecurityInsights/cases|
+|Case-opmerkingen maken   |Micro soft. SecurityInsights/cases|
+|Gegevens connectors bijwerken |Micro soft. SecurityInsights/dataConnectors|
+|Gegevens connectors verwijderen |Micro soft. SecurityInsights/dataConnectors|
+|Update-instellingen    |Micro soft. SecurityInsights/Settings|
 
-### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>View audit and reporting data in Azure Sentinel
+### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Audit-en rapportage gegevens weer geven in azure Sentinel
 
-You can view this data by streaming it from the Azure Activity log into Azure Sentinel where you can then perform research and analytics on it.
+U kunt deze gegevens weer geven door deze vanuit het Azure-activiteiten logboek te streamen naar Azure Sentinel, waar u vervolgens onderzoek en analyses kunt uitvoeren.
 
-1. Connect the [Azure Activity](connect-azure-activity.md) data source. After doing this, audit events are streamed into a new table in the **Logs** screen called AzureActivity.
-2. Then, query the data using KQL, like you would any other table.
+1. Verbind de gegevens bron van de [Azure-activiteit](connect-azure-activity.md) . Nadat u dit hebt gedaan, worden controle gebeurtenissen gestreamd naar een nieuwe tabel in het scherm **Logboeken** met de naam AzureActivity.
+2. Vervolgens voert u een query uit op de gegevens met behulp van KQL, zoals u zou doen met een andere tabel.
 
 
 
-## <a name="vendor-documentation"></a>Vendor documentation
+## <a name="vendor-documentation"></a>Documentatie van de leverancier
 
-| **Leverancier**  | **Use incident in Azure Sentinel** | **Koppeling**|
+| **Leverancier**  | **Incident gebruiken in azure-Sentinel** | **Koppeling**|
 |----|----|----|
-| GitHub| Used to access Community page| <https://github.com/Azure/Azure-Sentinel> |
-| PaloAlto| Configure CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
-| PluralSight | Kusto Query Language course| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
+| GitHub| Wordt gebruikt voor toegang tot de community-pagina| <https://github.com/Azure/Azure-Sentinel> |
+| PaloAlto| CEF configureren| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
+| PluralSight | Kusto-query taal cursus| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
-## <a name="blogs-and-forums"></a>Blogs and forums
+## <a name="blogs-and-forums"></a>Blogs en forums
 
-Post your questions on the [TechCommunity space](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) for Azure Sentinel.
+Plaats uw vragen op de [TechCommunity ruimte](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) voor Azure Sentinel.
 
-View Azure Sentinel blog posts from the [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) and [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
+Bekijk Azure Sentinel-blog berichten van de [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) en [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In this document, you got a list of resources that are useful when you're working with Azure Sentinel. You'll find additional information about Azure security and compliance on the [Microsoft Azure Security and Compliance blog](https://blogs.msdn.com/b/azuresecurity/).
+In dit document hebt u een lijst met resources die handig zijn wanneer u met Azure Sentinel werkt. U vindt aanvullende informatie over de beveiliging en naleving van Azure in de [Microsoft Azure beveiligings-en nalevings blog](https://blogs.msdn.com/b/azuresecurity/).

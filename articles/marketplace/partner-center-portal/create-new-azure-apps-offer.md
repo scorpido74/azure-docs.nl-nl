@@ -15,7 +15,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74281270"
 ---
-# <a name="create-an-azure-application-offer"></a>Een Azure-toepassings aanbieding maken
+# <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
 De stappen voor het publiceren van een Azure-toepassings aanbieding in commerciële Marketplace worden hier beschreven.
 
@@ -102,7 +102,7 @@ Het is raadzaam om de volgende hulpprogram ma's toe te voegen aan uw ontwikkel o
 
 U kunt de beschik bare hulpprogram ma's bekijken op de pagina [Azure Ontwikkelhulpprogramma's](https://azure.microsoft.com/tools/) .  Ook als u Visual Studio, de [Visual Studio Marketplace](https://marketplace.visualstudio.com/), gebruikt.
 
-## <a name="create-an-azure-application-offer"></a>Een Azure-toepassings aanbieding maken
+## <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
 Voordat u een Azure-toepassings aanbieding kunt maken, moet u eerst [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) en het [dash board commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)openen, met het tabblad **overzicht** geselecteerd.
 

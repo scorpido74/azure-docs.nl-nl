@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Configure Infor CloudSuite for automatic user provisioning with Azure Active Directory | Microsoft Docs'
-description: Learn how to configure Azure Active Directory to automatically provision and de-provision user accounts to Infor CloudSuite.
+title: 'Zelf studie: infor CloudSuite configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op infor CloudSuite.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -22,163 +22,163 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74408714"
 ---
-# <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Tutorial: Configure Infor CloudSuite for automatic user provisioning
+# <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Zelf studie: infor CloudSuite configureren voor automatische gebruikers inrichting
 
-The objective of this tutorial is to demonstrate the steps to be performed in Infor CloudSuite and Azure Active Directory (Azure AD) to configure Azure AD to automatically provision and de-provision users and/or groups to Infor CloudSuite.
+Het doel van deze zelf studie is om te demonstreren welke stappen moeten worden uitgevoerd in infor CloudSuite en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen op infor CloudSuite.
 
 > [!NOTE]
-> This tutorial describes a connector built on top of the Azure AD User Provisioning Service. For important details on what this service does, how it works, and frequently asked questions, see [Automate user provisioning and deprovisioning to SaaS applications with Azure Active Directory](../manage-apps/user-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 >
-> This connector is currently in Public Preview. For more information on the general Microsoft Azure terms of use for Preview features, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-The scenario outlined in this tutorial assumes that you already have the following prerequisites:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* An Azure AD tenant
-* [A Infor CloudSuite tenant](https://www.infor.com/products/infor-os)
-* A user account in Infor CloudSuite with Admin permissions.
+* Een Azure AD-Tenant
+* [Een infor CloudSuite-Tenant](https://www.infor.com/products/infor-os)
+* Een gebruikers account in infor CloudSuite met beheerders machtigingen.
 
-## <a name="assigning-users-to-infor-cloudsuite"></a>Assigning users to Infor CloudSuite
+## <a name="assigning-users-to-infor-cloudsuite"></a>Gebruikers toewijzen aan infor CloudSuite
 
-Azure Active Directory uses a concept called *assignments* to determine which users should receive access to selected apps. In the context of automatic user provisioning, only the users and/or groups that have been assigned to an application in Azure AD are synchronized.
+Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Before configuring and enabling automatic user provisioning, you should decide which users and/or groups in Azure AD need access to Infor CloudSuite. Once decided, you can assign these users and/or groups to Infor CloudSuite by following the instructions here:
-* [Assign a user or group to an enterprise app](../manage-apps/assign-user-or-group-access-portal.md)
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot infor CloudSuite. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan infor CloudSuite door de volgende instructies te volgen:
+* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-infor-cloudsuite"></a>Important tips for assigning users to Infor CloudSuite
+## <a name="important-tips-for-assigning-users-to-infor-cloudsuite"></a>Belang rijke tips voor het toewijzen van gebruikers aan infor CloudSuite
 
-* It is recommended that a single Azure AD user is assigned to Infor CloudSuite to test the automatic user provisioning configuration. Additional users and/or groups may be assigned later.
+* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan infor CloudSuite om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* When assigning a user to Infor CloudSuite, you must select any valid application-specific role (if available) in the assignment dialog. Users with the **Default Access** role are excluded from provisioning.
+* Wanneer u een gebruiker toewijst aan infor CloudSuite, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
 
-## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Set up Infor CloudSuite for provisioning
+## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Infor CloudSuite instellen voor inrichting
 
-1. Sign in to your [Infor CloudSuite Admin Console](https://www.infor.com/customer-center). Click on the user icon and then navigate to **user management**.
+1. Meld u aan bij uw [infor CloudSuite-beheer console](https://www.infor.com/customer-center). Klik op het gebruikers pictogram en navigeer vervolgens naar **gebruikers beheer**.
 
-    ![Infor CloudSuite Admin Console](media/infor-cloudsuite-provisioning-tutorial/admin.png)
+    ![Infor CloudSuite-beheer console](media/infor-cloudsuite-provisioning-tutorial/admin.png)
 
-2.  Click on the menu icon on the left top corner of the screen. Click on **Manage**.
+2.  Klik op het menu pictogram in de linkerbovenhoek van het scherm. Klik op **beheren**.
 
-    ![Infor CloudSuite Add SCIM](media/infor-cloudsuite-provisioning-tutorial/manage.png)
+    ![Infor CloudSuite SCIM toevoegen](media/infor-cloudsuite-provisioning-tutorial/manage.png)
 
-3.  Navigate to **SCIM Accounts**.
+3.  Navigeer naar **scim-accounts**.
 
-    ![Infor CloudSuite SCIM Account](media/infor-cloudsuite-provisioning-tutorial/scim.png)
+    ![Infor CloudSuite SCIM-account](media/infor-cloudsuite-provisioning-tutorial/scim.png)
 
-4.  Add an admin user by clicking on the plus icon. Provide a **SCIM Password** and type the same password under **Confirm Password**. Click on the folder icon to save the password. You will then see an **User Identifier** generated for the admin user.
+4.  Klik op het plus pictogram om een gebruiker met beheerders rechten toe te voegen. Geef een **scim-wacht woord** op en typ hetzelfde wacht woord onder **wacht woord bevestigen**. Klik op het mappictogram om het wacht woord op te slaan. Vervolgens ziet u een **gebruikers-id** die is gegenereerd voor de gebruiker met beheerders rechten.
 
-    ![Infor CloudSuite Admin user](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
+    ![Infor CloudSuite admin-gebruiker](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
     
-    ![Infor CloudSuite password](media/infor-cloudsuite-provisioning-tutorial/password.png)
+    ![Infor CloudSuite-wacht woord](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![Infor CloudSuite identifier](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    ![Infor CloudSuite-id](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
 
-5. To generate the bearer token, copy the **User Identifier** and **SCIM Password**. Paste them in notepad++ separated by a colon. Encode the string value by navigating to **Plugins > MIME Tools > Basic64 Encode**. 
+5. Als u een Bearer-token wilt genereren, kopieert u het **wacht woord**voor de **gebruikers-id** en het scim. Plak ze in Klad blok en vervolgens gescheiden door een dubbele punt. Codeer de teken reeks waarde door te navigeren naar **Plugins > MIME-Hulpprogram ma's > Basic64-code ring**. 
 
-    ![Infor CloudSuite identifier](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    ![Infor CloudSuite-id](media/infor-cloudsuite-provisioning-tutorial/token.png)
 
-3.  Copy the bearer token. This value will be entered in the Secret Token field in the Provisioning tab of your Infor CloudSuite application in the Azure portal.
+3.  Kopieer het Bearer-token. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw infor CloudSuite-toepassing in de Azure Portal.
 
-## <a name="add-infor-cloudsuite-from-the-gallery"></a>Add Infor CloudSuite from the gallery
+## <a name="add-infor-cloudsuite-from-the-gallery"></a>Infor CloudSuite toevoegen vanuit de galerie
 
-Before configuring Infor CloudSuite for automatic user provisioning with Azure AD, you need to add Infor CloudSuite from the Azure AD application gallery to your list of managed SaaS applications.
+Voordat u infor CloudSuite configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u infor CloudSuite van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**To add Infor CloudSuite from the Azure AD application gallery, perform the following steps:**
+**Voer de volgende stappen uit om infor CloudSuite toe te voegen vanuit de Azure AD-toepassings galerie:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , in the left navigation panel, select **Azure Active Directory**.
+1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Go to **Enterprise applications**, and then select **All applications**.
+2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. To add a new application, select the **New application** button at the top of the pane.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. In the search box, enter **Infor CloudSuite**, select **Infor CloudSuite** in the results panel, and then click the **Add** button to add the application.
+4. Voer in het zoekvak **infor CloudSuite**in, selecteer **infor CloudSuite** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Infor CloudSuite in the results list](common/search-new-app.png)
+    ![Infor CloudSuite in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-infor-cloudsuite"></a>Configuring automatic user provisioning to Infor CloudSuite 
+## <a name="configuring-automatic-user-provisioning-to-infor-cloudsuite"></a>Automatische gebruikers inrichting configureren voor infor CloudSuite 
 
-This section guides you through the steps to configure the Azure AD provisioning service to create, update, and disable users and/or groups in Infor CloudSuite based on user and/or group assignments in Azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in infor CloudSuite te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> You may also choose to enable SAML-based single sign-on for Infor CloudSuite , following the instructions provided in the [Infor CloudSuite Single sign-on tutorial](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial). Single sign-on can be configured independently of automatic user provisioning, though these two features compliment each other.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor infor CloudSuite, gevolgd door de instructies in de [zelf studie infor CloudSuite eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
 
 > [!NOTE]
-> To learn more about Infor CloudSuite's SCIM endpoint, refer [this](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#).
+> Raadpleeg voor meer informatie [over het scim](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#)-eind punt van infor CloudSuite.
 
-### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>To configure automatic user provisioning for Infor CloudSuite in Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor infor CloudSuite in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Select **Enterprise Applications**, then select **All applications**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. In the applications list, select **Infor CloudSuite**.
+2. Selecteer in de lijst toepassingen de optie **infor CloudSuite**.
 
-    ![The Infor CloudSuite link in the Applications list](common/all-applications.png)
+    ![De koppeling infor CloudSuite in de lijst met toepassingen](common/all-applications.png)
 
-3. Select the **Provisioning** tab.
+3. Selecteer het tabblad **inrichten** .
 
-    ![Provisioning tab](common/provisioning.png)
+    ![Tabblad inrichten](common/provisioning.png)
 
-4. Set the **Provisioning Mode** to **Automatic**.
+4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Provisioning tab](common/provisioning-automatic.png)
+    ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Under the **Admin Credentials** section, input `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` in **Tenant URL**. Input the bearer token value retrieved earlier in **Secret Token**. Click **Test Connection** to ensure Azure AD can connect to Infor CloudSuite. If the connection fails, ensure your Infor CloudSuite account has Admin permissions and try again.
+5. Selecteer in de sectie **beheerders referenties** de invoer `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` in de **Tenant-URL**. Invoer van de Bearer-token waarde die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met infor CloudSuite. Als de verbinding mislukt, zorg er dan voor dat uw infor CloudSuite-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. In the **Notification Email** field, enter the email address of a person or group who should receive the provisioning error notifications and check the checkbox - **Send an email notification when a failure occurs**.
+6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
 
-    ![Notification Email](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
-8. Under the **Mappings** section, select **Synchronize Azure Active Directory Users to Infor CloudSuite**.
+8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met infor CloudSuite**.
 
-    ![Infor CloudSuite User Mappings](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
+    ![Infor CloudSuite-gebruikers toewijzingen](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
 
-9. Review the user attributes that are synchronized from Azure AD to Infor CloudSuite in the **Attribute Mapping** section. The attributes selected as **Matching** properties are used to match the user accounts in Infor CloudSuite for update operations. Select the **Save** button to commit any changes.
+9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar infor CloudSuite in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in infor CloudSuite voor update bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Infor CloudSuite User Attributes](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
+    ![Infor CloudSuite-gebruikers kenmerken](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
 
-10. Under the **Mappings** section, select **Synchronize Azure Active Directory Groups to Infor CloudSuite**.
+10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met infor CloudSuite**.
 
-    ![Infor CloudSuite Group Mappings](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
+    ![Infor CloudSuite-groeps toewijzingen](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
 
-11. Review the group attributes that are synchronized from Azure AD to Infor CloudSuite in the **Attribute Mapping** section. The attributes selected as **Matching** properties are used to match the groups in Infor CloudSuite for update operations. Select the **Save** button to commit any changes.
+11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar infor CloudSuite in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de groepen in infor CloudSuite voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Infor CloudSuite Group Attributes](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
+    ![Infor CloudSuite-groeps kenmerken](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
 
-12. To configure scoping filters, refer to the following instructions provided in the [Scoping filter tutorial](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-13. To enable the Azure AD provisioning service for Infor CloudSuite, change the **Provisioning Status** to **On** in the **Settings** section.
+13. Als u de Azure AD-inrichtings service voor infor CloudSuite wilt inschakelen, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Provisioning Status Toggled On](common/provisioning-toggle-on.png)
+    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-14. Define the users and/or groups that you would like to provision to Infor CloudSuite by choosing the desired values in **Scope** in the **Settings** section.
+14. Definieer de gebruikers en/of groepen die u wilt inrichten voor infor CloudSuite door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
-    ![Provisioning Scope](common/provisioning-scope.png)
+    ![Inrichtings bereik](common/provisioning-scope.png)
 
-15. When you are ready to provision, click **Save**.
+15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Saving Provisioning Configuration](common/provisioning-configuration-save.png)
+    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-This operation starts the initial synchronization of all users and/or groups defined in **Scope** in the **Settings** section. The initial sync takes longer to perform than subsequent syncs, which occur approximately every 40 minutes as long as the Azure AD provisioning service is running. You can use the **Synchronization Details** section to monitor progress and follow links to provisioning activity report, which describes all actions performed by the Azure AD provisioning service on Infor CloudSuite.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen. Hiermee worden alle acties beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op infor CloudSuite.
 
-For more information on how to read the Azure AD provisioning logs, see [Reporting on automatic user account provisioning](../manage-apps/check-status-user-account-provisioning.md).
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* [Managing user account provisioning for Enterprise Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Learn how to review logs and get reports on provisioning activity](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)

@@ -1,6 +1,6 @@
 ---
-title: Create & publish single sign-on documentation for your application
-description: Guidance for independent software vendors on integrating with Azure Active Directory
+title: De documentatie voor de eenmalige aanmelding voor uw toepassing maken & publiceren
+description: Richt lijnen voor onafhankelijke software leveranciers op het integreren met Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -19,46 +19,46 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232284"
 ---
-# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Create and publish single sign-on documentation for your application   
+# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Documentatie voor eenmalige aanmelding voor uw toepassing maken en publiceren   
 
-## <a name="documentation-on-your-site"></a>Documentation on your site
+## <a name="documentation-on-your-site"></a>Documentatie op uw site
 
-Ease of adoption is a significant factor in enterprise software decisions. Clear easy-to-follow documentation supports your customers in their adoption journey and reduces support costs. Working with thousands of software vendors, Microsoft has seen what works.
+Gebruiks gemak is een belang rijke factor in beslissingen met betrekking tot bedrijfs software. Duidelijke, gemakkelijk te volgen documentatie ondersteunt uw klanten in hun reis traject en vermindert de ondersteunings kosten. Micro soft heeft gewerkt met duizenden software leveranciers.
 
-We recommend that your documentation on your site at a minimum include the following items.
+Het is raadzaam dat uw documentatie op uw site mini maal de volgende items bevat.
 
-* Introduction to your SSO functionality
+* Inleiding tot uw SSO-functionaliteit
 
-  * Protocols supported
+  * Ondersteunde protocollen
 
-  * Version and SKU
+  * Versie en SKU
 
-  * Supported Identity Providers list with documentation links
+  * Lijst met ondersteunde id-providers met documentatie koppelingen
 
-* Licensing information for your application
+* Licentie gegevens voor uw toepassing
 
-* Role-based access control for configuring SSO
+* Op rollen gebaseerd toegangs beheer voor het configureren van SSO
 
-* SSO Configuration Steps
+* Configuratie stappen voor eenmalige aanmelding
 
-  * UI configuration elements for SAML with expected values from the provider
+  * Configuratie-elementen van de gebruikers interface voor SAML met de verwachte waarden van de provider
 
-  * Service provider information to be passed to identity providers
+  * Informatie over service providers die moeten worden door gegeven aan id-providers
 
-* If OIDC/OAuth
+* Indien OIDC/OAuth
 
-  * List of permissions required for consent with business justifications
+  * Lijst met machtigingen die zijn vereist voor de toestemming met zakelijke redenen
 
-* Testing steps for pilot users
+* Stappen voor test gebruikers testen
 
-* Troubleshooting information, including error codes and messages
+* Probleemoplossings informatie, met inbegrip van fout codes en-berichten
 
-* Support mechanisms for customers
+* Ondersteunings mechanismen voor klanten
 
-## <a name="documentation-on-the-microsoft-site"></a>Documentation on the Microsoft Site
+## <a name="documentation-on-the-microsoft-site"></a>Documentatie op de micro soft-site
 
-When you list your application with the Azure Active Directory Application Gallery, which also publishes your application in the Azure Marketplace, Microsoft will generate documentation for our mutual customers explaining the step-by-step process. You can see an example [here](https://aka.ms/appstutorial). This documentation is created based on your submission to the gallery, and you can easily update it if you make changes to your application using your GitHub account.
+Wanneer u uw toepassing opneemt met de Azure Active Directory toepassings galerie, waarmee uw toepassing ook wordt gepubliceerd in de Azure Marketplace, wordt door micro soft documentatie gegenereerd voor de wederzijdse klanten die het stapsgewijze proces bespreken. [Hier](https://aka.ms/appstutorial)kunt u een voor beeld bekijken. Deze documentatie wordt gemaakt op basis van uw inzending naar de galerie, en u kunt deze eenvoudig bijwerken als u wijzigingen aanbrengt in uw toepassing met behulp van uw GitHub-account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[List your application in the Azure AD Application Gallery](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)
+[Uw toepassing weer geven in de Azure AD-toepassings galerie](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)

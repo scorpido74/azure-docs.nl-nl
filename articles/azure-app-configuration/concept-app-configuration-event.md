@@ -39,7 +39,7 @@ Azure-app configuratie gebeurtenissen bevatten alle informatie die u nodig hebt 
 
 > |Eigenschap|Type|Beschrijving|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |topic|tekenreeks|Volledige Azure Resource Manager-id van de app-configuratie waarmee de gebeurtenis wordt verzonden.|
+> |onderwerp|tekenreeks|Volledige Azure Resource Manager-id van de app-configuratie waarmee de gebeurtenis wordt verzonden.|
 > |subject|tekenreeks|De URI van de sleutel waarde die het onderwerp van de gebeurtenis is.|
 > |eventTime|tekenreeks|De datum/tijd waarop de gebeurtenis is gegenereerd, in ISO 8601-indeling.|
 > |eventType|tekenreeks|"Micro soft. AppConfiguration. KeyValueModified" of "micro soft. AppConfiguration. KeyValueDeleted".|

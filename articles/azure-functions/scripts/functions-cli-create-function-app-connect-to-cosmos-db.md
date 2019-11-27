@@ -1,23 +1,15 @@
 ---
-title: Een Azure-functie maken die verbinding maakt met een Azure Cosmos DB | Microsoft Docs
+title: Een functie-app maken met Azure Cosmos DB-Azure CLI
 description: Azure CLI-scriptvoorbeeld - Een Azure-functie maken die verbinding maakt met een Azure Cosmos DB
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/03/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 15a7cc1940a01486c6b660ec65b47f072dc7996e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d881a5eb6132f95239418f032da51d002af01905
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325643"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532869"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Een Azure-functie maken die verbinding maakt met een Azure Cosmos DB
 
@@ -43,14 +35,17 @@ In dit script worden de volgende opdrachten gebruikt: Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Een resourcegroep maken met locatie |
-| [az storage accounts create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Create a storage account |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Hiermee maakt u een functie-app in het serverloze [verbruiksabonnement](../functions-scale.md#consumption-plan). |
-| [az cosmosdb create](https://docs.microsoft.com/cli/azure/cosmosdb#az-cosmosdb-create) | Hiermee maakt u een Azure Cosmos DB-database. |
+| [az group create](/cli/azure/group#az-group-create) | Een resourcegroep maken met locatie |
+| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Een opslagaccount maken |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Hiermee maakt u een functie-app in het serverloze [verbruiksabonnement](../functions-scale.md#consumption-plan). |
+| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Hiermee maakt u een Azure Cosmos DB-database. |
+| [AZ cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| Hiermee haalt u de verbinding van het database account op. |
+| [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys)| Hiermee worden de sleutels voor de data base opgehaald. |
+| [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | Hiermee stelt u de connection string in als een app-instelling in de functie-app. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Aanvullende CLI-voorbeeldscripts voor Azure Functions vindt u in de [Azure Functions-documentatie](../functions-cli-samples.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Create a new SaaS offer in the Commercial Marketplace
-description: How to create a new Software as a Service (SaaS) offer for listing or selling in the Azure Marketplace, AppSource, or through the Cloud Solution Provider (CSP) program using the Commercial Marketplace portal on Microsoft Partner Center.
+title: Een nieuwe SaaS-aanbieding maken in de commerciële Marketplace
+description: Het maken van een nieuwe SaaS-aanbieding (Software as a Service) voor het aanbieden of verkopen van objecten in azure Marketplace, AppSource of via het programma Cloud Solution Provider (CSP) met behulp van de commerciële Marketplace-Portal in micro soft Partner Center.
 author: ChJenk
 manager: evansma
 ms.author: v-chjen
@@ -15,233 +15,233 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213345"
 ---
-# <a name="create-a-new-saas-offer"></a>Create a new SaaS offer
+# <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
-To begin creating Software as a Service (SaaS) offers, ensure that you first [Create a Partner Center account](./create-account.md) and open the [Commercial Marketplace dashboard](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), with the **Overview** tab selected.
+Als u wilt beginnen met het maken van SaaS-aanbiedingen (Software as a Service), moet u eerst [een partner centrum-account maken](./create-account.md) en het [dash board commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)openen, met het tabblad **overzicht** geselecteerd.
 
-![Commercial Marketplace dashboard on Partner Center](./media/new-offer-overview.png)
+![Dash board voor commerciële Marketplace in het partner centrum](./media/new-offer-overview.png)
 
 >[!Note]
-> Once an offer has been published, edits to the offer made in Partner Center will only be updated in the system and store fronts after re-publishing. Please ensure that you submit the offer for publication after you make changes.
+> Zodra een aanbieding is gepubliceerd, worden wijzigingen die zijn aangebracht in het partner centrum, alleen in het systeem bijgewerkt en opgeslagen vóór het opnieuw publiceren. Zorg ervoor dat u de aanbieding voor publicatie verzendt nadat u wijzigingen hebt aangebracht.
 
-Select the + **New offer…** button, then select the **Software as a Service** menu item. 
+Selecteer de + **nieuwe aanbieding...** en selecteert u vervolgens het menu-item **software als service** . 
 
-If you select another offer type, you may be redirected to the older [Cloud Partner Portal](https://cloudpartner.azure.com/). Only SaaS and Dynamics 365 offers are available in the Commercial Marketplace portal on Partner Center at this time.
+Als u een ander type aanbieding selecteert, wordt u mogelijk omgeleid naar de oudere [Cloud Partner-Portal](https://cloudpartner.azure.com/). Op dit moment zijn alleen SaaS-en Dynamics 365-aanbiedingen beschikbaar in de commerciële Marketplace-Portal op het partner centrum.
 
-![Create offer window on Partner Center](./media/new-offer-click.png)
+![Aanbiedings venster maken in Partner Center](./media/new-offer-click.png)
 
-The **New offer** dialog box is displayed. 
+Het dialoog venster **nieuwe aanbieding** wordt weer gegeven. 
 
-![New offer dialog box](./media/new-offer-popup.png)
+![Dialoog venster nieuwe aanbieding](./media/new-offer-popup.png)
 
-## <a name="offer-id-and-alias"></a>Offer ID and alias
+## <a name="offer-id-and-alias"></a>Aanbiedings-ID en alias
 
-- **Offer ID**: Unique identifier for each offer in your account. This ID will be visible to customers in the URL address for the marketplace offer and Azure Resource Manager templates (if applicable). Offer ID must be lowercase, alphanumeric (including hyphens and underscores, but no whitespace). This is limited to 50 characters and can't be changed after you select *Create*.  
-Example: test-offer-1
-<br>Resulting in the URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
+- **Aanbiedings-id**: unieke id voor elke aanbieding in uw account. Deze ID is zichtbaar voor klanten in het URL-adres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen (indien van toepassing). De aanbiedings-ID moet kleine letters, alfanumerieke tekens (inclusief afbreek streepjes en onderstrepings tekens, maar geen witruimte) zijn. Dit is beperkt tot 50 tekens en kan niet worden gewijzigd nadat u *maken*hebt geselecteerd.  
+Voor beeld: test-aanbieding-1
+<br>Wat resulteert in de URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
-- **Offer alias**: The name used to refer to the offer within the Partner Center portal. This name won't be used in the marketplace and is different than the *Offer Name* and other values that will be shown to customers. This value can't be changed after you select *Create*.
+- **Aanbiedings alias**: de naam die wordt gebruikt om te verwijzen naar de aanbieding in de Partner Center-Portal. Deze naam wordt niet gebruikt op de Marketplace en wijkt af van de *naam* van de aanbieding en andere waarden die aan klanten worden weer gegeven. Deze waarde kan niet worden gewijzigd nadat u *maken*hebt geselecteerd.
 
-<br>Example: Test Offer 1&#8482;
+<br>Voor beeld: test aanbieding 1&#8482;
 
-Selecteer **Maken**.  An **Offer overview** page is created for this offer.  
+Selecteer **Maken**.  Er wordt een **overzichts** pagina voor de aanbieding gemaakt voor deze aanbieding.  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
 -->
 
-## <a name="offer-overview"></a>Offer overview
+## <a name="offer-overview"></a>Overzicht van aanbieding
 
-The **Offer overview** page includes: 
+De pagina overzicht van de **aanbieding** bevat: 
 
-- The **Publishing status** displays a visual representation of the steps required to publish this offer and how long each step will take to complete. Incomplete publishing step icons will be greyed out. 
+- De **publicatie status** geeft een visuele weer gave van de stappen die nodig zijn voor het publiceren van deze aanbieding en hoe lang elke stap zal worden voltooid. Onvolledige publicatie stap pictogrammen worden grijs weer gegeven. 
 
-- The **Offer overview** menu contains a list of links for performing operations on this offer. This list of operations will change based on the selection you make for your offer.  
-    - If the offer is a draft - Delete draft 
-    - If the offer is live - Stop sell offer 
-    - If the offer is in preview - Go-live 
-    - If you haven't completed publisher sign out - Cancel publish
+- Het menu overzicht van de **aanbieding** bevat een lijst met koppelingen voor het uitvoeren van bewerkingen op deze aanbieding. Deze lijst met bewerkingen wordt gewijzigd op basis van de selectie die u voor uw aanbieding maakt.  
+    - Als de aanbieding een concept is-concept verwijderen 
+    - Als het aanbod een live-stop verkoop aanbod is 
+    - Als de aanbieding in Preview-Live staat 
+    - Als u de uitgever niet hebt voltooid, kunt u de publicatie annuleren
 
-## <a name="offer-setup"></a>Offer setup
+## <a name="offer-setup"></a>Installatie van aanbieding
 
-The **Offer setup** tab asks for the following information. Select **Save** after completing these fields.
+Op het tabblad voor het instellen van de **aanbieding** wordt de volgende informatie gevraagd. Selecteer **Opslaan** na het volt ooien van deze velden.
 
-- **Would you like to sell through Microsoft?** (Yes/No)
-    - **Yes**, you would like to sell your offer through Microsoft, with Microsoft hosting marketplace transactions on your behalf; or 
-    - **No**, you would prefer to just list your offer through the marketplaces, processing any monetary transactions independently of Microsoft.    
+- **Wilt u door micro soft verkopen?** (Ja/Nee)
+    - **Ja**, u wilt uw aanbieding via micro soft verkopen met micro soft-hosting van Marketplace-trans acties namens u; of 
+    - **Nee**, u wilt liever uw aanbieding via de Marketplace aanbieden, waardoor monetaire trans acties onafhankelijk van micro soft worden verwerkt.    
 
-### <a name="sell-through-microsoft"></a>Sell through Microsoft
+### <a name="sell-through-microsoft"></a>Verkopen via micro soft
 
-Selling through Microsoft provides better customer discovery and acquisition, allows Microsoft to host marketplace transactions on your behalf, and takes advantage of Microsoft's globally available commerce capabilities.
+Door te verkopen via micro soft biedt betere klant detectie en-overname, kan micro soft Marketplace-trans acties namens u hosten en profiteren van de wereld wijd beschik bare commerce mogelijkheden van micro soft.
 
-#### <a name="saas-offer-requirements"></a>SaaS offer requirements
+#### <a name="saas-offer-requirements"></a>Vereisten voor SaaS-aanbiedingen
 
-In order to list Software as a Service (SaaS) offers with Commercial Marketplace on Partner Center, the following criteria must be met:
+Als u SaaS-aanbiedingen (Software as a Service) met commerciële Marketplace op partner centrum wilt weer geven, moet aan de volgende criteria worden voldaan:
 
-- Your offer must use [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) for identity management and authentication.
-- Your offer must use [SaaS Fulfillment APIs](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) to integrate with the Azure Marketplace.
-- For more extensive requirements, see the [SaaS Offer Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
+- Uw aanbieding moet [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) gebruiken voor identiteits beheer en-verificatie.
+- Uw aanbieding moet [SaaS-fulfillment-api's](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) gebruiken voor integratie met Azure Marketplace.
+- Zie de [inleidende hand leiding voor SaaS-aanbiedingen](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)voor uitgebreidere vereisten.
 
-#### <a name="saas-pricing-and-billing-options"></a>SaaS pricing and billing options
-With SaaS solutions running in the publisher's Azure subscription, license fees paid by customers include the cost of the infrastructure upon which the software is deployed. Azure infrastructure usage is managed and billed to you, the partner, directly. Actual infrastructure usage fees are not seen by the customer. Publishers should bundle Azure infrastructure usage fees into their software license pricing. 
+#### <a name="saas-pricing-and-billing-options"></a>SaaS-prijzen en facturerings opties
+Met SaaS-oplossingen die worden uitgevoerd in het Azure-abonnement van de uitgever, zijn de kosten van de infra structuur waarop de software wordt geïmplementeerd, inbegrepen in de licentie kosten die door klanten worden betaald. Het gebruik van de infra structuur van Azure wordt beheerd en wordt gefactureerd aan u, de partner, direct. De werkelijke gebruiks kosten voor de infra structuur zijn niet zichtbaar voor de klant. Uitgevers moeten gebruiks kosten voor Azure-infra structuur in hun software licentie prijzen bundelen. 
 
-SaaS offers support monthly or annual billing based on a flat fee, per user, or consumption charges using the metered billing service. Microsoft's commercial marketplace operates on an agency model, whereby publishers set prices, Microsoft bills customers, and Microsoft pays revenue to the publisher while withholding an agency fee.
+SaaS biedt ondersteuning voor maandelijkse of jaarlijkse facturering op basis van een vast bedrag, per gebruiker of verbruiks kosten met behulp van de service voor facturering via data limiet. De commerciële Marketplace van micro soft werkt op een agentuur model, waardoor uitgevers prijzen instellen, micro soft billt klanten en micro soft betaalt de inkomsten aan de uitgever terwijl er kosten in rekening worden gebracht.
 
-The following table shows an example break down of costs and payouts to demonstrate the agency model.
+De volgende tabel toont een voor beeld van de kosten en uitbetalingen om het model van de instantie te demonstreren.
 
-|**Your license cost**|**$100 per month**|
+|**De licentie kosten**|**$100 per maand**|
 |:---|:---|
-|Azure usage cost (D1/1-Core)|Billed directly to the publisher, not the customer|
-|Customer is billed by Microsoft|$100.00 per month (Publisher must account for any incurred or pass-through infrastructure costs in the license fee)|
+|Kosten voor Azure-gebruik (D1/1-core)|Rechtstreeks aan de uitgever gefactureerd, niet de klant|
+|Klant wordt gefactureerd door micro soft|$100,00 per maand (uitgever moet rekening worden gehouden met de kosten voor het ontstaan of door geven van infra structuur in de licentie kosten)|
 
-|**Microsoft bills**|**$100 per month**|
+|**Micro soft-facturen**|**$100 per maand**|
 |:---|:---|
-|Microsoft pays you 80% of your license cost <br>**For qualified SaaS apps, Microsoft pays 90% of your license cost*|$80.00 per month <br>*$* 90.00 per month*|
+|Micro soft betaalt u 80% van uw licentie kosten <br>**voor gekwalificeerde SaaS-apps betaalt micro soft 90% van uw licentie kosten*|$80,00 per maand <br>*$* 90,00 per maand *|
 
-- In this example, Microsoft bills $100.00 to the customer for your software license and pays out $80.00 to the publisher.
-- Partners who have qualified for the **Reduced Marketplace Service Fee** will see a reduced transaction fee on the SaaS offers from May 2019 until June 2020. In this scenario, Microsoft bills $100.00 for your software license and pays out $90.00 to the publisher.
+- In dit voor beeld wordt micro soft billt $100,00 aan de klant voor uw software licentie en betaalt $80,00 de uitgever.
+- Partners die in aanmerking komen voor de **lagere kosten voor Marketplace-service** , zien een gereduceerde transactie kosten voor de SaaS-aanbiedingen van mei 2019 tot juni 2020. In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt $90,00 op de Publisher uitgewisseld.
 
 > [!NOTE]
-> **Reduced Marketplace Service Fee**: For certain SaaS offers that you have published on our Commercial Marketplace, Microsoft will reduce its Marketplace Service Fee from 20% (as described in the Microsoft Publisher Agreement) to 10%. In order for your offer to qualify, at least one of your offers must have been designated by Microsoft as being either IP co-sell ready or IP co-sell prioritized.  Eligibility must be met at least five (5) business days before the end of each calendar month in order to receive this reduced Marketplace Service Fee for the month.  The Reduced Marketplace Service Fee does not apply to VMs, Managed Apps or any other products made available through our Commercial Marketplace.  The Reduced Marketplace Service Fee will only be available to qualified offers for license charges collected by Microsoft between May 1, 2019 and June 30, 2020.  After this time, the Marketplace Service Fee will return to its normal amount. 
+> **Lagere kosten voor Marketplace-service**: voor bepaalde SaaS-aanbiedingen die u hebt gepubliceerd op onze commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Om uw aanbieding in aanmerking te komen, moet u ten minste één van uw aanbiedingen hebben aangewezen door micro soft als IP-mede-verkoop gereed of IP co-sell priority.  Voor het einde van elke kalender maand moet aan de geschiktheid ten minste vijf (5) werk dagen worden voldaan om dit gereduceerde service-tarief voor de maand te ontvangen.  De lagere kosten voor Marketplace-service zijn niet van toepassing op Vm's, beheerde apps of andere producten die beschikbaar worden gesteld via onze commerciële Marketplace.  De lagere kosten voor Marketplace-service zijn alleen beschikbaar voor aanbiedingen met een licentie die door micro soft zijn verzameld tussen 1 mei 2019 en 30 juni 2020.  Na deze periode wordt de kosten voor de Marketplace-service weer gegeven in het normale bedrag. 
 
-### <a name="list-through-microsoft"></a>List through Microsoft
+### <a name="list-through-microsoft"></a>Lijst via micro soft
 
-Promote your business with Microsoft by creating a marketplace listing. Selecting to list your offer only and not transact through Microsoft means that Microsoft doesn't participate directly in software license transactions. There is no associated transaction fee and the publisher keeps 100% of any software licensing fees collected from the customer. However, the publisher is responsible for supporting all aspects of the software license transaction, including but not limited to: order fulfillment, metering, billing, invoicing, payment, and collection. 
+Promoot uw bedrijf met micro soft door een Marketplace-vermelding te maken. Als u een lijst wilt maken met alleen uw aanbieding en niet via micro soft, betekent dit dat micro soft niet rechtstreeks deelneemt aan software licentie transacties. Er zijn geen kosten verbonden aan de trans actie en de uitgever houdt 100% van alle software licentie kosten bij die van de klant zijn verzameld. De uitgever is echter verantwoordelijk voor de ondersteuning van alle aspecten van de software licentie transactie, inclusief, maar niet beperkt tot: order verwerking, meting, facturering, facturering, betaling en incasso. 
 
-- **How do you want potential customers to interact with this listing offer?**
+- **Hoe wilt u potentiële klanten interactie laten doen met deze aanbieding?**
 
-##### <a name="get-it-now-free"></a>Get it now (free)
-List your offer to customers for free by providing a valid URL (beginning with *http* or *https*) where they can access your app.  Bijvoorbeeld: `https://contoso.com/saas-app`
+##### <a name="get-it-now-free"></a>Nu downloaden (gratis)
+Bied uw aanbod aan klanten gratis aan door een geldige URL op te geven (te beginnen met *http* of *https*), waar ze toegang hebben tot uw app.  Bijvoorbeeld: `https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>Free trial (listing)
-List your offer to customers with a link to a free trial by providing a valid URL (beginning with *http* or *https*), where they can get a trial through [one-click authentication by using Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials).  Bijvoorbeeld: `https://contoso.com/trial/saas-app`. Offer listing free trials are created, managed, and configured by your service and do not have subscriptions managed by Microsoft.
+##### <a name="free-trial-listing"></a>Gratis proef versie (lijst)
+Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie door een geldige URL op te geven (te beginnen met *http* of *https*), waar u een proef versie kunt verkrijgen met [één klik op verificatie met behulp van Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials).  Bijvoorbeeld: `https://contoso.com/trial/saas-app`. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
 
 > [!NOTE]
-> The tokens your application will receive through your trial link can only be used to obtain user information through Azure AD to automate account creation in your app. Microsoft Accounts (MSA) are not supported for authentication using this token.
+> De tokens die uw toepassing via uw proef koppeling ontvangt, kunnen alleen worden gebruikt voor het verkrijgen van gebruikers gegevens via Azure AD voor het automatiseren van het maken van accounts in uw app. Micro soft-accounts (MSA) worden niet ondersteund voor verificatie met behulp van dit token.
 
 ##### <a name="contact-me"></a>Contact opnemen
-Collect customer contact information by connecting your Customer Relationship Management (CRM) system. The customer will be asked for permission to share their information. These customer details, along with the offer name, ID, and marketplace source where they found your offer, will be sent to the CRM system that you've configured. For more information about configuring your CRM, see [Connect lead management](#connect-lead-management). 
+Contact gegevens van klanten verzamelen door verbinding te maken met uw CRM-systeem (Customer Relationship Management). De klant wordt gevraagd om toestemming te krijgen om hun gegevens te delen. Deze klant gegevens, samen met de naam van de aanbieding, ID en Marketplace-bron waar ze uw aanbieding vinden, worden verzonden naar het CRM-systeem dat u hebt geconfigureerd. Zie [Connect lead management](#connect-lead-management)(Engelstalig) voor meer informatie over het configureren van uw CRM. 
 
-## <a name="example-marketplace-offer-listing"></a>Example marketplace offer listing
+## <a name="example-marketplace-offer-listing"></a>Voor beeld van een lijst met Marketplace-aanbiedingen
 
-![Example marketplace offer listing with notes](./media/marketplace-offer.svg)
+![Voor beeld van een Marketplace-aanbieding met notities](./media/marketplace-offer.svg)
 
-## <a name="enable-a-test-drive"></a>Enable a test drive
+## <a name="enable-a-test-drive"></a>Een test drive inschakelen
 
-A test drive is a great way to showcase your offer to potential customers by giving them the option to 'try before you buy', resulting in increased conversion and the generation of highly qualified leads. [Learn more about test drives.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+Een test drive is een fantastische manier om uw aanbieding aan potentiële klanten te laten presen teren door hen de mogelijkheid te geven voor ' voor u ' te kopen, wat resulteert in een verhoogde conversie en de generatie van uiterst gekwalificeerde leads. [Meer informatie over test stations.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-- **Enable a test drive** (checkbox)
+- **Een test drive inschakelen** (selectie vakje)
 
-By enabling test drive, you will be asked to configure a demonstration environment for customers to try your offer for a fixed period of time. 
+Als u test drive inschakelt, wordt u gevraagd om een demonstratie omgeving te configureren voor klanten om een vaste periode te proberen. 
 
-### <a name="type-of-test-drive"></a>Type of test drive
+### <a name="type-of-test-drive"></a>Type test drive
 
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : A deployment template that contains all the Azure resources that comprise your solution. Products that fit this scenario use only Azure resources.
-- **[Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : Microsoft hosts and maintains the test drive service (including provisioning and deployment) for a Business Central enterprise resource planning system (finance, operations, supply chain, CRM, etc.).  
-- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : Microsoft hosts and maintains the test drive service (including provisioning and deployment) for a Customer Engagement system (sales, service, project service, field service, etc.).  
-- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : Microsoft hosts and maintains the test drive service (including provisioning and deployment) for a Finance and Operations enterprise resource planning system (finance, operations, manufacturing, supply chain, etc.). 
-- **[Logic app](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : A deployment template encompassing all complex solution architectures. Any custom products should use this type of Test Drive.
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : An embedded link to a custom-built dashboard. Products that want to demonstrate an interactive Power BI visual should use this type of Test Drive. All you need to upload here is your embedded Power BI URL.
+- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : een implementatie sjabloon die alle Azure-resources bevat waaruit uw oplossing bestaat. Voor producten die in dit scenario passen, worden alleen Azure-resources gebruikt.
+- **[Dynamics 365 voor bedrijven Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : micro soft host en onderhoudt de Test Drive-service (met inbegrip van inrichting en implementatie) voor een bedrijf voor bedrijfs centrale bedrijfs resources (Financiën, bewerkingen, toeleverings keten, CRM, enzovoort).  
+- **[Dynamics 365 voor klant betrokkenheid](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : micro soft host en onderhoudt de Test Drive service (inclusief inrichting en implementatie) voor een klant engagementsysteem (verkoop, service, project service, veld Service, enzovoort).  
+- **[Dynamics 365 voor bewerkingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : micro soft host en onderhoudt de Test Drive-service (inclusief inrichting en implementatie) voor een financieel en operationeel systeem voor de planning van bedrijfs middelen (Financiën, bedrijfs activiteiten, productie, toeleverings keten, enzovoort). 
+- **[Logische app](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : een implementatie sjabloon met alle complexe oplossings architecturen. Aangepaste producten moeten dit type test station gebruiken.
+- **[Power bi](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : een Inge sloten koppeling naar een aangepast dash board. Producten die een interactief Power BI visueel element willen demonstreren, moeten dit type test station gebruiken. Alles wat u moet uploaden, is uw Inge sloten Power BI URL.
 
-#### <a name="additional-test-drive-resources"></a>Additional test drive resources
-- [Test Drive Technical Best Practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Test Drive Marketing Best Practices](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [Test Drive Overview One Pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+#### <a name="additional-test-drive-resources"></a>Aanvullende test drive resources
+- [Best practices voor test stations](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Best practices voor het testen van de marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Overzicht van testen van één pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
-## <a name="connect-lead-management"></a>Connect lead management
+## <a name="connect-lead-management"></a>Lead beheer verbinden
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
-#### <a name="additional-lead-management-resources"></a>Additional lead management resources
+#### <a name="additional-lead-management-resources"></a>Aanvullende resources voor lead beheer
 - [Veelgestelde vragen over leadmanagement](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
 - [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Lead Management Overview One Pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+- [Overzicht Lead beheer één pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
-Remember to **Save** before moving on to the next section!
+Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
 
 ## <a name="properties"></a>Eigenschappen
-The **Properties** tab asks you to define the categories and industries used to group your offer on the marketplaces, the legal contracts supporting your offer, and your app version. 
+Op het tabblad **Eigenschappen** wordt u gevraagd om de categorieën en industrieën te definiëren die worden gebruikt voor het groeperen van uw aanbieding op Marketplace, de juridische contracten die uw aanbieding ondersteunen en uw app-versie. 
 
-Select **Save** after completing these fields. 
+Selecteer **Opslaan** na het volt ooien van deze velden. 
 
-### <a name="category"></a>Category
-Select a minimum of one (1) and a maximum of three (3) categories used for grouping your offer into the appropriate marketplace search areas. Please call out how your offer supports these categories in the offer description. 
+### <a name="category"></a>Categorie
+Selecteer mini maal één (1) en een maximum van drie (3) categorieën die worden gebruikt voor het groeperen van uw aanbieding in de juiste Zoek gebieden voor Marketplace. Neem contact op met de manier waarop uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. 
 
 ### <a name="industry"></a>Industrie
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>App-versie
-This is an optional field used in the AppSource marketplace to identify the version number of your offer. 
+Dit is een optioneel veld dat in de AppSource Marketplace wordt gebruikt om het versie nummer van uw aanbieding te identificeren. 
 
 ### <a name="standard-contract"></a>Standaardcontract
 
-- **Use Standard Contract?**
+- **Standaard contract gebruiken?**
 
-To simplify the procurement process for customers and reduce legal complexity for software vendors, Microsoft offers a Standard Contract template in order to help facilitate a transaction in the marketplace. 
+Om het aankoop proces voor klanten te vereenvoudigen en de juridische complexiteit voor software leveranciers te verminderen, biedt micro soft een standaard contract sjabloon om een trans actie in de Marketplace te vergemakkelijken. 
 
-Rather than crafting custom terms and conditions, Azure Marketplace publishers can choose to offer their software under the Standard Contract, which customers only need to vet and accept once. 
+In plaats van aangepaste voor waarden te gebruiken, kunnen uitgevers van Azure Marketplace ervoor kiezen hun software aan te bieden onder het Standard-contract, wat klanten alleen hoeven te bevestigen en één keer te accepteren. 
 
-The Standard Contract can be found here: https://go.microsoft.com/fwlink/?linkid=2041178.
+Het standaard contract vindt u hier: https://go.microsoft.com/fwlink/?linkid=2041178.
 
 #### <a name="terms-of-use"></a>Gebruiksvoorwaarden
 
-If your license terms are different from the Standard Contract, you can elect to enter your own legal terms of use here. These can be entered as plain text or as a single URL linking to your license terms.
+Als uw licentie voorwaarden verschillen van het standaard contract, kunt u hier uw eigen juridische voor waarden opgeven. Deze kunnen worden ingevoerd als tekst zonder opmaak of als één URL-koppeling naar uw licentie voorwaarden.
 
-Customers are required to accept these terms before they can try your app. 
+Klanten moeten deze voor waarden accepteren voordat ze uw app kunnen proberen. 
 
-Remember to **Save** before moving on to the next section!
+Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
 
-## <a name="offer-listing"></a>Offer listing
+## <a name="offer-listing"></a>Aanbieding weer geven
 
-The Offer listing tab displays the languages (and markets) where your offer is available, currently English (United States) is the only location available. Additionally, this page displays the status of the language-specific listing and the date/time that it was added. You will need to define the marketplace details (offer name, description, search terms, etc.) for each language / market.
+Op het tabblad aanbiedings vermelding worden de talen (en markten) weer gegeven waar uw aanbieding beschikbaar is. momenteel is Engels (Verenigde Staten) de enige locatie beschikbaar. Daarnaast wordt op deze pagina de status weer gegeven van de taalspecifieke vermelding en de datum/tijd waarop deze is toegevoegd. U moet de Marketplace-Details (naam, beschrijving, zoek termen, enz.) definiëren voor elke taal/markt.
 
 > [!NOTE]
-> Offer listing content (such as offer description, documents, screenshots, terms of use and privacy policy) is not required to be in English as long as the offer description begins with the phrase, "This application is available only in [non-English language]." It is also acceptable to provide a *Useful Link URL* to offer content in a language other than the one used in the Offer listing content.
+> De inhoud van het aanbiedings aanbod (zoals beschrijving van aanbieding, documenten, scherm afbeeldingen, gebruiks voorwaarden en privacybeleid) is niet in het Engels vereist, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook acceptabel om een *nuttige koppelings-URL* te bieden om inhoud te bieden in een andere taal dan de versie die wordt gebruikt in de inhoud van de aanbieding.
 
-### <a name="offer-listings"></a>Offer listings
+### <a name="offer-listings"></a>Aanbiedings vermeldingen
 
-Provide details to be displayed in the marketplace, including descriptions of your offer and marketing assets.
+Geef de details op die in Marketplace moeten worden weer gegeven, inclusief beschrijvingen van uw aanbieding en marketing-assets.
 
-- **Name** (required): The name defined here will appear as the title of your offer listing on the marketplace(s) you have chosen. The name is prepopulated based on your previous **New offer** entry.  This may be trademarked.  This must not contain emojis (unless they are the trademark and copyright symbols) and must be limited to 50 characters.
-- **Summary** (required): Provide a short description of your offer to be used in marketplace listing(s) search results. Up to 100 characters of text can be entered in this field.
-- **Description** (required): Provide a description of your offer to be displayed in the marketplace listing(s) overview. Consider including a value proposition, key benefits, any category or industry associations, in-app purchase opportunities, any required disclosures, and a link to learn more.
-Up to 3,000 characters of text can be entered in this field. For additional tips, see the article [Write a great app description](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
-- **Search keywords**: Enter up to three search keywords that customers can use to find your offer in the marketplace(s).
-- **Getting started instructions** (required): Explain how to configure and start using your app for potential customers.  This quickstart can contain links to more detailed online documentation. Up to 3,000 characters of text can be entered in this field. 
+- **Naam** (vereist): de naam die hier is opgegeven, wordt weer gegeven als de titel van uw aanbieding op de Marketplace (s) die u hebt gekozen. De naam wordt vooraf ingevuld op basis van uw vorige **nieuwe aanbieding** .  Dit kan een handels merk zijn.  Dit mag geen emojis bevatten (tenzij ze de symbolen van het handels merk en copyright zijn) en moet beperkt zijn tot 50 tekens.
+- **Samen vatting** (vereist): Geef een korte beschrijving van uw aanbieding die moet worden gebruikt in de zoek resultaten voor Marketplace-aanbiedingen. In dit veld kunnen Maxi maal 100 tekens tekst worden ingevoerd.
+- **Beschrijving** (vereist): Geef een beschrijving op van uw aanbieding die moet worden weer gegeven in het overzicht van Marketplace-lijst (en). Overweeg het opnemen van een toegevoegde waarde, belang rijke voor delen, categorie-of branche koppelingen, in-app aankoop kansen, eventueel vereiste informatie en een koppeling voor meer informatie.
+In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd. Zie het artikel [een fantastische app-beschrijving schrijven](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)voor aanvullende tips.
+- **Tref woorden zoeken**: Voer Maxi maal drie Zoek trefwoorden in die klanten kunnen gebruiken om uw aanbieding te vinden in Marketplace (s).
+- **Aan** de slag-instructies (vereist): in dit gedeelte wordt uitgelegd hoe u uw app kunt configureren en gebruiken voor potentiële klanten.  Deze Snelstartgids kan koppelingen bevatten naar gedetailleerde online documentatie. In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd. 
 
 #### <a name="description"></a>**Beschrijving**
 
-This is a required field. Items to include in the description: 
+Dit is een verplicht veld. Items die moeten worden meegenomen in de beschrijving: 
 
-* Clearly describe your offer's value proposition in the first few sentences of your description.  
-* Keep in mind that the first few sentences might be displayed in search engine results.  
-* Do not rely on features and functionality to sell your product. Instead, focus on the value you deliver.  
-* Use industry-specific vocabulary or benefit-based wording as much as possible. 
+* Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving.  
+* Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine.  
+* Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die u levert.  
+* Gebruik zo veel mogelijk branchespecifieke woorden lijst of op basis van voor delen. 
 
-Core components of your value proposition should include the following information: 
+De belangrijkste onderdelen van de toegevoegde waarde moeten de volgende informatie bevatten: 
 
-* Description of the product. 
-* Type of user that benefits from the product. 
-* Customer needs or pain that the product addresses. 
+* Beschrijving van het product. 
+* Het type gebruiker dat voor deel is van het product. 
+* Klanten wensen of pijn dat de product adressen. 
 
-To make your offer description more engaging you can use HTML tags to format the description. 
+Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, kunt u HTML-tags gebruiken om de beschrijving op te maken. 
 
-1. If you want to create paragraphs, add `<p>` at the begging of the text and add `</p>` at the end.
+1. Als u alinea's wilt maken, moet u `<p>` toevoegen aan de Begging van de tekst en `</p>` aan het einde toevoegen.
 
-    **Example**: 
+    **Voorbeeld**: 
 
-    `<p>` This is my first paragraph. `</p>` <br>
-    `<p>` This is my second paragraph. `</p>` <br>
+    `<p>` dit is mijn eerste alinea. `</p>` <br>
+    `<p>` dit is mijn tweede alinea. `</p>` <br>
 
-    The above would look like this:
+    Het bovenstaande ziet er als volgt uit:
 
-    <p> This is my first paragraph. </p>
-    <p> This is my second paragraph. </p>
+    <p> Dit is mijn eerste alinea. </p>
+    <p> Dit is mijn tweede alinea. </p>
 
-1. If you want to add a **bulleted list of items**, place your text within the `<li>` tags below. You can copy and paste more bulleted items (items between the `<li>` and `</li>` tags) within the `<ul>` and `</ul>` tags. Make sure you add the `<ul></ul>`. 
+1. Als u een **lijst met opsommings tekens**wilt toevoegen aan items, plaatst u de tekst in de `<li>` tags hieronder. U kunt meer items met opsommings tekens (items tussen de `<li>` en `</li>` Tags) binnen de labels `<ul>` en `</ul>` kopiëren en plakken. Zorg ervoor dat u de `<ul></ul>`toevoegt. 
 
-    **Example**:
+    **Voorbeeld**:
 
     ```
     <ul> 
@@ -251,235 +251,235 @@ To make your offer description more engaging you can use HTML tags to format the
     </ul> 
     ```
 
-    The above would look like this:
+    Het bovenstaande ziet er als volgt uit:
     <ul> 
-        <li>add text here</li> 
-        <li> add text here </li> 
-        <li> add text here </li> 
+        <li>Voeg hier tekst toe</li> 
+        <li> Voeg hier tekst toe </li> 
+        <li> Voeg hier tekst toe </li> 
     </ul> 
 
-1. To **bold** content, add `<b>` at the beginning of the text you want to bold and add `</b>` at the end of the text you want to bold. 
+1. Voeg `<b>` **toe aan het** begin van de tekst die u wilt vet en voeg `</b>` toe aan het einde van de tekst die u wilt vet weer gegeven. 
 
-    **Example**: `<b>` FREE TRIAL `</b>`
+    **Voor beeld**: `<b>` gratis proef versie `</b>`
     
-    The above would cause the words FREE TRIAL to be bolded in the description of the offer in the storefront. 
+    De bovenstaande term zou ertoe leiden dat de woorden gratis proef versie vet worden weer gegeven in de beschrijving van de aanbieding op de winkel. 
 
-    **FREE TRIAL**
+    **GRATIS PROEF VERSIE**
 
-1. To add **line breaks** between your content, add `<br>` before the content that you want to start on a new line. If you want to leave a space and make sure content starts on a new line, add `<br><br>` before the content. 
+1. Als u **regel einden** wilt toevoegen tussen uw inhoud, voegt u `<br>` toe vóór de inhoud die u op een nieuwe regel wilt starten. Als u een ruimte wilt houden en wilt controleren of inhoud op een nieuwe regel begint, voegt u `<br><br>` toe vóór de inhoud. 
 
-    **Example**:
+    **Voorbeeld**:
 
-    This is a text line. `<br>` This is a text line that will start in a new line. `<br><br>` This is a line that will start two lines below. 
+    Dit is een tekst regel. `<br>` dit is een tekst regel die wordt gestart op een nieuwe regel. `<br><br>` dit is een regel waarmee twee regels worden gestart. 
 
-    The above would look like this:
+    Het bovenstaande ziet er als volgt uit:
 
-    This is a text line. <br> This is a text line that will start in a new line. <br><br> This is a line that will start two lines below. 
+    Dit is een tekst regel. <br> Dit is een tekst regel die wordt gestart op een nieuwe regel. <br><br> Dit is een regel waarmee twee regels worden gestart. 
 
-1. If you want to **increase the size of the text**, first choose how big you want the text to be. Use the below examples. After you have selected the size of the text, add the corresponding `<H*></H*>` tags to the beginning and ending of the text. 
+1. Als u de **tekst**groter wilt maken, kiest u eerst hoe groot de tekst moet zijn. Gebruik de onderstaande voor beelden. Nadat u de grootte van de tekst hebt geselecteerd, voegt u de bijbehorende `<H*></H*>`-tags toe aan het begin en het einde van de tekst. 
 
-    **Example**:
+    **Voorbeeld**:
 
-    `<h1>`This is heading 1`</h1>` <br>
-    `<h2>`This is heading 2`</h2>` <br>
-    `<h3>`This is heading 3`</h3>` <br>
-    `<h4>`This is heading 4`</h4>` <br>
-    `<h5>`This is heading 5`</h5>` <br>
-    `<h6>`This is heading 6`</h6>` 
+    `<h1>`dit is Kop 1`</h1>` <br>
+    `<h2>`dit is Kop 2`</h2>` <br>
+    `<h3>`dit is kop 3`</h3>` <br>
+    `<h4>`dit is kop 4`</h4>` <br>
+    `<h5>`dit is koptekst 5`</h5>` <br>
+    `<h6>`dit is kop 6`</h6>` 
 
-    The above would look like this:
+    Het bovenstaande ziet er als volgt uit:
 
-    ![Sample headings](./media/heading.png)
+    ![Voorbeeld koppen](./media/heading.png)
 
 #### <a name="links"></a>Koppelingen
 
-- **Privacy Policy** (required): Link to your organization's privacy policy. You are responsible for ensuring your app complies with privacy laws and regulations, and for providing a valid privacy policy
-- **CSP Program Marketing Materials** (optional): You must provide a link to marketing materials if you choose to extend your offer to the [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) program. CSP extends your offer to a broader range of qualified customers by enabling CSP partners to bundle, market, and resell your offer. These resellers will need access to materials for marketing your offer. For more information, see [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
-- **Useful Links** (optional): Optional supplemental online documents about your app or related services listed by providing a **Title**  and  **URL**. Add additional useful links by clicking  **+ Add a URL**.
+- **Privacybeleid** (vereist): koppeling naar het privacybeleid van uw organisatie. U bent verantwoordelijk om ervoor te zorgen dat uw app voldoet aan de wetten en voor schriften van de privacy en voor het bieden van een geldig privacybeleid
+- **Software** voor het CSP-programma (optioneel): u moet een koppeling naar marketing materialen opgeven als u ervoor kiest om uw aanbieding uit te breiden naar het [CSP-programma (Cloud Solution Provider)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) . CSP breidt uw aanbieding uit naar een breder scala aan gekwalificeerde klanten door CSP-partners in staat te stellen om uw aanbieding te bundelen, te verhandelen en te verkopen. Deze wederverkopers moeten toegang hebben tot materialen om uw aanbieding in de handel te brengen. Zie [Go-to-Market Services](https://partner.microsoft.com/reach-customers/gtm)(Engelstalig) voor meer informatie.
+- **Nuttige koppelingen** (optioneel): optionele aanvullende online documenten over uw app of gerelateerde services die worden vermeld door een **titel** en **URL**op te geven. Voeg extra nuttige koppelingen toe door op **+ een URL toevoegen**te klikken.
 
 #### <a name="contact-information"></a>Contactgegevens
 
-- **Contacts**: For each customer contact, provide an employee  **Name** ,  **Phone number**, and  **Email**  address.  (These *will not* be displayed publicly). A **Support URL**  is also required for the  **Support Contact**  group.  (This information *will* be displayed publicly).
+- **Contacts**: voor elke klant contactpersoon geeft u de **naam** , het **telefoon nummer**en het **e-mail** adres van de werk nemer op.  (Deze worden *niet* openbaar weer gegeven). Er is ook een **ondersteunings-URL** vereist voor de contact groep van de **ondersteuning** .  ( *Deze gegevens worden* openbaar weer gegeven).
 
-**Support contact** (required): For general support questions.
+**Ondersteunings contact** (vereist): voor algemene ondersteunings vragen.
 
-**Engineering contact** (required): For technical questions.
+**Technisch contact** (vereist): voor technische vragen.
 
-**Channel Manager contact** (required): For reseller questions related to the CSP program.
+**Channel Manager-contact persoon** (vereist): voor wederverkoper-vragen met betrekking tot het CSP-programma.
 
-#### <a name="files-and-images"></a>Files and Images
+#### <a name="files-and-images"></a>Bestanden en installatie kopieën
 
-- **Documents** (required): Add related marketing documents for your offer, in PDF format, providing a minimum of one (1) and maximum of three (3) documents per offer.
-- **Images** (optional): There are multiple places where your offer's logo images may appear throughout the marketplace(s), requiring the following sizes -- Small: 48 x 48 pixels _(required),_ Medium: 90 x 90 pixels, Large: 216 x 216 pixels _(required),_ Wide: 255 x 115 pixels, and Hero: 815 x 290 pixels. All images must be in .PNG format.
-- **Screenshots** (required): Add screenshots demonstrating your offer. A maximum of five (5) screenshots may be added and should be sized at 1280 x 720 pixels. All images must be in .PNG format.
-- **Videos** (optional): Add links to videos demonstrating your offer. You can use links to YouTube and/or Vimeo videos, which are shown along with your offer to customers. You will also need to enter a thumbnail image of the video, sized to 1280 x 720 pixels in PNG format. You can display a maximum of four videos per offer.
+- **Documenten** (vereist): Voeg gerelateerde marketing documenten toe voor uw aanbieding, in PDF-indeling, die mini maal één (1) en Maxi maal drie (3) documenten per aanbieding biedt.
+- **Installatie kopieën** (optioneel): er zijn meerdere locaties waar de logo afbeeldingen van uw aanbieding kunnen worden weer gegeven op de Marketplace (s), zodat de volgende grootten worden vereist: kleine letter 48 x 48 pixels _(vereist),_ Medium: 90 x 90 pixels, groot: 216 x 216 pixels _( vereist),_ breed: 255 x 115 pixels en held: 815 x 290 pixels. Alle installatie kopieën moeten zich in hebben. PNG-indeling.
+- **Scherm afbeeldingen** (vereist): Voeg scherm afbeeldingen toe die uw aanbieding aantonen. U kunt Maxi maal vijf (5) scherm opnamen toevoegen en de grootte van 1280 x 720 pixels aanpassen. Alle installatie kopieën moeten zich in hebben. PNG-indeling.
+- **Video's** (optioneel): voeg links toe aan Video's die uw aanbieding aantonen. U kunt links gebruiken naar YouTube-en/of Vimeo-Video's, die samen met uw aanbieding aan klanten worden weer gegeven. U moet ook een miniatuur afbeelding van de video invoeren, met een grootte van 1280 x 720 pixels in PNG-indeling. U kunt Maxi maal vier Video's per aanbieding weer geven.
 
-Remember to **Save** before moving on to the next section!
+Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
 
-#### <a name="additional-marketplace-listing-resources"></a>Additional marketplace listing resources
+#### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 
-- [Best practices for marketplace offer listings](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Best practices voor Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 ## <a name="preview"></a>Preview
 
-The **Preview** tab enables you to define a limited **Preview Audience** for releasing your offer prior to publishing your offer live to the broader marketplace audience.
+Op het tabblad **voor beeld** kunt u een beperkte **Preview-doel groep** definiëren voor het vrijgeven van uw aanbieding voordat u uw aanbieding Live publiceert naar het bredere publiek van de Marketplace.
 
 > [!IMPORTANT]
-> You must select **Go live** before your offer will be published live to the marketplace public audience after checking your offer in Preview.
+> U moet **Live go** selecteren voordat uw aanbieding naar de open bare doel groep van Marketplace wordt gepubliceerd nadat u uw aanbieding in Preview hebt gecontroleerd.
 
-- **Define a Preview Audience: Add a single AAD/MSA account email per line, along with an optional description.**
+- **Een preview-doel groep definiëren: Voeg per regel één AAD/MSA-account toe, samen met een optionele beschrijving.**
 
-Add up to ten (10) email addresses manually, or twenty (20) if uploading a CSV file, for existing Microsoft Account (MSA) or Azure Active Directory accounts to help with validating your offer before publishing live. By adding these accounts, you are defining an audience that will be allowed preview access to your offer before it is published to the marketplace(s). If your offer is already live, you may still define a preview audience for testing any changes or updates to your offer.
+Voeg Maxi maal tien (10) e-mail adressen hand matig toe, of eenentwintig (20) als u een CSV-bestand uploadt voor bestaande micro soft-account (MSA) of Azure Active Directory accounts die u helpen bij het valideren van uw aanbieding voordat u live publiceert. Door deze accounts toe te voegen, definieert u een doel groep waarvoor preview-toegang tot uw aanbieding is toegestaan voordat deze wordt gepubliceerd op Marketplace ('s). Als uw aanbieding al Live is, kunt u nog steeds een preview-doel definiëren voor het testen van eventuele wijzigingen of updates voor uw aanbieding.
 
 > [!NOTE]
-> The preview audience differs from a private audience. A preview audience is allowed access to your offer _prior_ to being published live in the marketplaces. You may also choose to create a plan and make it available only to a private audience. In the **plan listing** tab, you can define a private audience with the **This is a private plan** checkbox. You can then define a private audience of up to 20,000 customers using Azure Tenant IDs.
+> De preview-doel groep wijkt af van een persoonlijke doel groep. Een preview-doel groep is toegang tot uw aanbieding toegestaan _voordat_ Live in de Marketplace wordt gepubliceerd. U kunt er ook voor kiezen om een plan te maken en dit alleen beschikbaar te maken voor een privé doel groep. Op het tabblad **plan vermelding** kunt u een privé-doel groep definiëren met het selectie vakje **Dit is een privé plan** . U kunt vervolgens een persoonlijke doel groep van Maxi maal 20.000 klanten definiëren met behulp van Azure-Tenant-Id's.
 
-## <a name="technical-configuration"></a>Technical configuration
+## <a name="technical-configuration"></a>Technische configuratie
 
-The **Technical configuration** tab defines the technical details (URL path, webhook, tenant ID, and app ID) used to connect to your offer. This connection enables us to provision your offer for the end customer if they choose to acquire it. Diagrams describing the usage of the collected fields are available in documentation for [SaaS fulfillment APIs](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
+Het tabblad **technische configuratie** definieert de technische details (URL-pad, webhook, Tenant-id en app-id) die wordt gebruikt om verbinding te maken met uw aanbieding. Met deze verbinding kan ons uw aanbieding voor de eind klant inrichten als deze ervoor kiezen deze te verkrijgen. Diagrammen die het gebruik van de verzamelde velden beschrijven, zijn beschikbaar in de documentatie voor [SaaS-fulfillment-api's](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
 
-- **Landing page URL** (required): Define the site URL that customers will land on after acquiring your offer from the marketplace. This URL will be the endpoint that receives a token when a customer is routed to the page. That token can be exchanged for provisioning details using resolve in the fulfillment APIs. Those details and any others you collect can be used as part of a customer-interactive web page built in your experience to complete registration and activate their purchase.
+- **URL van de landings pagina** (vereist): Definieer de site-URL waar klanten op worden gegrond na het verkrijgen van uw aanbieding van de Marketplace. Deze URL is het eind punt dat een token ontvangt wanneer een klant wordt doorgestuurd naar de pagina. Dit token kan worden uitgewisseld voor inrichtings gegevens met behulp van de oplossing in de fulfillment-Api's. Deze gegevens en andere personen die u verzamelt, kunnen worden gebruikt als onderdeel van een klant-interactieve webpagina die in uw ervaring is gemaakt om de registratie te volt ooien en hun aankoop te activeren.
 
-- **Connection webhook** (required): For all asynchronous events that Microsoft needs to send to you on behalf of the customer (example: SaaS Subscription has gone invalid), we require you to provide a connection webhook. If you don't already have a webhook system in place, the simplest configuration is to have an HTTP Endpoint Logic App that will listen for any events being posted to it and then handle them appropriately (e.g. https:\//prod-1westus.logic.azure.com:443/work). For more information, see [Call, trigger, or nest workflows with HTTP endpoints in logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Verbindings-webhook** (vereist): voor alle asynchrone gebeurtenissen die micro soft namens de klant moet verzenden (bijvoorbeeld: Saas-abonnement is ongeldig), moet u een verbindings-webhook opgeven. Als u nog geen webhooksysteem hebt, is de eenvoudigste configuratie een HTTP-eindpunt logische app waarmee wordt geluisterd naar gebeurtenissen die erop worden geplaatst en deze vervolgens op de juiste wijze afhandelen (bijvoorbeeld https:\//prod-1westus.logic.azure.com:443/work). Zie [werk stromen aanroepen, activeren of nesten met HTTP-eind punten in Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)voor meer informatie.
 
-- **Azure AD tenant ID** (required): Inside Azure portal, we require that you [create an Azure Active Directory (AD) app](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) so that we can validate the connection between our two services is behind an authenticated communication. To find the [tenant ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in), go to your Azure Active Directory and select **Properties**, then look for the **Directory ID** number listed (e.g. 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD-Tenant-id** (vereist): in azure Portal moet u [een Azure Active Directory (AD)-app maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) zodat we kunnen valideren dat de verbinding tussen de twee services zich achter een geverifieerde communicatie bevindt. Als u de [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)wilt vinden, gaat u naar uw Azure Active Directory en selecteert u **Eigenschappen**. vervolgens zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD app ID** (required): You also need your [application ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) and an authentication key. To get those values, go to your Azure Active Directory and select **App registrations**, then look for the **Application ID** number listed (e.g. 50c464d3-4930-494c-963c-1e951d15360e). To find the authentication key, go to **Settings** and select **Keys**. You will need to provide a description and duration and will then be provided a number value.
+- **Azure AD-App-ID** (vereist): u hebt ook uw [toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) en een verificatie sleutel nodig. Als u deze waarden wilt ophalen, gaat u naar uw Azure Active Directory en selecteert u **app-registraties**en vervolgens zoekt u naar het **toepassings-id-** nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). Ga naar **instellingen** en selecteer **sleutels**om de verificatie sleutel te vinden. U moet een beschrijving en een duur opgeven, en vervolgens een numerieke waarde.
 
- Note that the Azure application ID is associated to your publisher ID, so make sure that the same application ID is used in all your offers.
+ Houd er rekening mee dat de Azure-toepassings-ID is gekoppeld aan uw uitgevers-ID. Zorg er dus voor dat dezelfde toepassings-ID wordt gebruikt in al uw aanbiedingen.
 
-## <a name="plan-overview"></a>Plan overview
+## <a name="plan-overview"></a>Overzicht van plan
 
-The **Plan overview** tab enables you to provide a variety of plan options within the same offer. These plans (sometimes referred to as SKUs) could differ in terms of version, monetization, or tiers of service. You must set up at least one plan in order to sell your offer in the marketplace.
+Op het tabblad Overzicht van het **abonnement** kunt u een verscheidenheid aan plan opties bieden binnen dezelfde aanbieding. Deze plannen (ook wel Sku's genoemd) kunnen verschillen qua versie, verdiensten maximaliseren of service lagen. U moet ten minste één abonnement instellen om uw aanbieding in Marketplace te verkopen.
 
-Once created, you will see your plan names, IDs, pricing models, availability (Public or Private), current publishing status, and any available actions.
+Zodra u een abonnement hebt gemaakt, ziet u de namen, Id's, prijs modellen, Beschik baarheid (openbaar of privé), de huidige publicatie status en eventuele beschik bare acties.
 
-**Actions** available in the **Plan overview** vary depending on the current status of your plan and may include:
+**Acties** die beschikbaar zijn in het **plan overzicht** variëren afhankelijk van de huidige status van uw abonnement en kunnen het volgende omvatten:
 
-- If the plan status is **Draft** - Delete draft
-- If the plan status is **Live** - Stop sell plan or Sync private audience
+- Als de plan status **concept** is-concept verwijderen
+- Als de plan status **Live** -stop verkoop plan is of persoonlijke doel groep synchroniseren
 
-**Create new plan** (minimum of one plan for those who select to sell through Microsoft)
+**Nieuw plan maken** (mini maal één abonnement voor degenen die via micro soft willen verkopen)
 
-- **Plan ID:** Create a unique plan ID for each plan in this offer. This ID will be visible to customers in the product URL and Azure Resource Manager templates (if applicable). Use only lowercase, alphanumeric characters, dashes or underscores. A maximum of 50 characters are allowed for this plan ID. Note that the ID cannot be modified after selecting create.
-- **Plan name:** Customers will see this name when deciding which plan to select within your offer. Create a unique offer name for each plan in this offer. The plan name is used to differentiate software plans that may be a part of the same offer (E.g. Offer name: Windows Server; plans: Windows Server 2016, Windows Server 2019).
+- **Plan-id:** Maak een unieke plan-ID voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in de product-URL en Azure Resource Manager sjablonen (indien van toepassing). Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. Voor deze abonnement-ID zijn Maxi maal 50 tekens toegestaan. Houd er rekening mee dat de ID niet kan worden gewijzigd nadat het maken is geselecteerd.
+- **Naam van abonnement:** Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke aanbiedings naam voor elk abonnement. De naam van het abonnement wordt gebruikt om software-abonnementen te onderscheiden die deel kunnen uitmaken van dezelfde aanbieding (bijvoorbeeld Naam van aanbieding: Windows Server; plannen: Windows Server 2016, Windows Server 2019).
 
-### <a name="plan-listing"></a>Plan listing
+### <a name="plan-listing"></a>Aanbieding plannen
 
-The **plan listing** tab displays the languages (and markets) where your plan is available, currently English (United States) is the only location available. Additionally, this page displays the status of the language-specific listing and the date/time that it was added. You will need to define the marketplace details (offer name, description, search terms, etc.) for each language / market.
+Op het tabblad **plan vermelding** worden de talen (en de markten) weer gegeven waar uw abonnement beschikbaar is. momenteel is engels (Verenigde Staten) de enige locatie beschikbaar. Daarnaast wordt op deze pagina de status weer gegeven van de taalspecifieke vermelding en de datum/tijd waarop deze is toegevoegd. U moet de Marketplace-Details (naam, beschrijving, zoek termen, enz.) definiëren voor elke taal/markt.
 
-#### <a name="plan-listing-details"></a>Plan listing details
+#### <a name="plan-listing-details"></a>Details van plan vermelding
 
-Selecting one of the plan languages will display the **plan listing** information, including **Name** and **Description.**
+Als u een van de plan talen selecteert, worden de gegevens van het **plan vermelding** weer gegeven, inclusief **naam** en **Beschrijving.**
 
-- **Name**: Pre-populated based on your preview **New plan** entry and will appear as the title of your offer's "Software plan" displayed in the marketplace.
-- **Description:** This description is an opportunity to explain what makes this software plan unique and any differences from other software plans within your offer. May contain up to 500 characters.
+- **Naam**: vooraf ingevuld op basis van uw preview **nieuwe plan** vermelding en wordt weer gegeven als de titel van het software-abonnement van uw aanbieding dat wordt weer gegeven in de Marketplace.
+- **Beschrijving:** Deze beschrijving is een kans om uit te leggen wat dit software plan uniek is en eventuele verschillen tussen andere software plannen binnen uw aanbieding. Mag Maxi maal 500 tekens bevatten.
 
-Select **Save** after completing these fields.
+Selecteer **Opslaan** na het volt ooien van deze velden.
 
-#### <a name="plan-pricing-and-availability"></a>Plan pricing and availability
+#### <a name="plan-pricing-and-availability"></a>Prijzen en beschik baarheid plannen
 
-The **Pricing and availability** tab enables you to configure the markets that this plan will be available in, the desired monetization model, price, and billing term. In addition, you can indicate whether to make the plan visible to everyone or only to specific customers (a private audience).
+Op het tabblad **prijzen en beschik baarheid** kunt u de markten configureren waarop dit plan beschikbaar is, het gewenste verdiensten maximaliseren model, de prijs en de facturerings termijn. Daarnaast kunt u aangeven of het plan zichtbaar moet worden voor iedereen of alleen voor specifieke klanten (een privé-publiek).
 
-##### <a name="enabling-free-trials"></a>Enabling Free Trials
+##### <a name="enabling-free-trials"></a>Gratis proef versies inschakelen
 
-SaaS offers through the commercial marketplace enable you to provide a one-month free trial when selling through Microsoft. For all billing models and terms except metered plans, free trials are supported. This option allows customers to have a low-barrier to entry through one month of free access.  If you choose to enable a free trial for plans within your offer, the customer will not be able to convert to a paid subscription before the end of the initial one month period.  During this time, customers purchasing your offer can try out any of the supported plans that have the free trial enabled and convert between them.  The conversion to a paid subscription is done automatically at the end of the term.
-
->[!Note]
->If the customer chooses to convert to a plan without free trials, the conversion will happen, but the free trial will be lost immediately.  Also, once a customer starts paying for a plan, they can no longer get free trial on the same subscription again, even if they convert to a SKU that does support free trials.
-
-The ability to configure a free trial is available for each plan in your offer. Simply navigate to the Pricing and Availability for each offer and check the box to allow a one-month trial.
-
-![One month free trial checkbox](./media/free-trial-enable.png)
+Met SaaS-aanbiedingen via de commerciële Marketplace kunt u een gratis proef versie van één maand bieden bij de verkoop via micro soft. Voor alle facturerings modellen en voor waarden behalve plannen met een Data limiet worden gratis proef versies ondersteund. Met deze optie kunnen klanten een lage barrière hebben om een maand gratis toegang te geven.  Als u ervoor kiest een gratis proef versie in te scha kelen voor abonnementen binnen uw aanbieding, kan de klant niet converteren naar een betaald abonnement vóór het einde van de eerste periode van één maand.  Gedurende deze periode kunnen klanten die uw aanbieding kopen, een van de ondersteunde abonnementen proberen waarvoor de gratis proef versie is ingeschakeld en ertussen worden geconverteerd.  De conversie naar een betaald abonnement wordt automatisch uitgevoerd aan het einde van de termijn.
 
 >[!Note]
->Once your transactable offer has been published with a free trial it cannot be disabled for that plan. Make sure this setting is correct for the first publish to avoid having to re-create the plan.
+>Als de klant kiest om te converteren naar een plan zonder gratis proef versies, wordt de conversie uitgevoerd, maar de gratis proef versie gaat onmiddellijk verloren.  Zodra een klant begint met de betaling voor een abonnement, kunnen ze niet opnieuw een gratis proef versie ontvangen voor dezelfde licentie, zelfs niet als ze zijn geconverteerd naar een SKU die ondersteuning biedt voor gratis proef versies.
 
-To obtain information on customer subscriptions currently participating in a free trial, use the new API property `isFreeTrial`, which will be marked as true or false. See the [SaaS Get Subscription API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) for more information.
+De mogelijkheid om een gratis proef versie te configureren, is beschikbaar voor elk abonnement in uw aanbieding. Ga naar de prijs en beschik baarheid voor elke aanbieding en schakel het selectie vakje in om een proef versie van één maand toe te staan.
+
+![Selectie vakje voor een gratis proef versie van één maand](./media/free-trial-enable.png)
 
 >[!Note]
->Free trials are not supported for plans that leverage the marketplace metering service.
+>Zodra uw aanbieding is gepubliceerd met een gratis proef versie, kan deze niet worden uitgeschakeld voor dat abonnement. Zorg ervoor dat deze instelling juist is voor de eerste publicatie om te voor komen dat u het abonnement opnieuw moet maken.
 
-#### <a name="markets"></a>Markets
+Als u informatie wilt verkrijgen over klant abonnementen die momenteel deel nemen aan een gratis proef versie, gebruikt u de nieuwe API-eigenschap `isFreeTrial`, die wordt gemarkeerd als waar of onwaar. Zie de [API voor SaaS Get-abonnementen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) voor meer informatie.
 
-- **Edit markets** (optional)
+>[!Note]
+>Gratis proef versies worden niet ondersteund voor abonnementen die gebruikmaken van de Marketplace-meter service.
 
-Every plan must be available in at least one market. Select the checkbox for any market location where you would like to make this plan available. A search box and button for selecting "Tax Remitted" countries, in which Microsoft remits sales and use tax on your behalf, are included to help.
+#### <a name="markets"></a>Landen
 
-If you have already set prices for your plan in United States Dollars (USD) and add another market location, the price for the new market will be calculated according to the current exchange rates. You should always review the price for each market before publishing. Pricing can be reviewed by using the "Export prices (xlsx)" link after saving your changes.
+- **Markten bewerken** (optioneel)
+
+Elk plan moet beschikbaar zijn op ten minste één markt. Schakel het selectie vakje in voor elke markt locatie waar u dit plan beschikbaar wilt maken. Een zoekvak en een knop voor het selecteren van de landen ' BTW geremitteerd ', waarin micro soft namens u de omzet en het gebruik van BTW verdeelt, zijn opgenomen om u te helpen.
+
+Als u al prijzen voor uw abonnement hebt ingesteld in Verenigde Staten dollars (USD) en een andere markt locatie toevoegt, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wissel koersen. U moet de prijs voor elke markt altijd controleren voordat u deze publiceert. U kunt de prijzen controleren met behulp van de koppeling export prijzen (XLSX) nadat u uw wijzigingen hebt opgeslagen.
 
 #### <a name="pricing"></a>Prijzen
 
-- **Pricing model**: Flat rate or Seat based
+- **Prijs model**: vast tarief of Seat gebaseerd
 
-**Flat rate:** Enable access to your offer with a single monthly or annual price flat rate price. This is sometimes referred to as site-based pricing. With this pricing model, you can optionally define metered plans that use the marketplace metering service API to charge customers according to non-standard units.  For more information on metered billing, see [metered billing using the marketplace metering service](./saas-metered-billing.md).
+**Vast aantal:** Schakel toegang tot uw aanbieding in met een enkelvoudige prijs per maand of per jaar. Dit wordt soms ook wel site-gebaseerde prijzen genoemd. Met dit prijs model kunt u optioneel plannen met gecontroleerde licenties definiëren die gebruikmaken van de API voor de Marketplace-meter service om klanten in rekening te brengen op basis van niet-standaard eenheden.  Zie voor meer informatie over het gebruik van facturen [met data limieten met behulp van de Marketplace-meter service](./saas-metered-billing.md).
 
-**Per user:** Enable access to your offer with the price based on the number of users accessing the offer or occupying seats. This user-based model enables you to set the minimum and maximum number of users allowed based on the price. This way, different price points can be configured based on the number of users by configuring multiple plans.  These fields are optional. If left unselected, the number of users will be interpreted as not having a limit (min of 1 and max of as many as the system can support). These fields may be edited as part of an update to your plan.
+**Per gebruiker:** U kunt toegang tot uw aanbieding bieden met de prijs op basis van het aantal gebruikers dat toegang heeft tot de aanbieding of voor het innemen van seats. Met dit op gebruikers gebaseerd model kunt u het minimum en maximum aantal gebruikers instellen dat is toegestaan op basis van de prijs. Op deze manier kunnen verschillende prijs punten worden geconfigureerd op basis van het aantal gebruikers door het configureren van meerdere plannen.  Deze velden zijn optioneel. Als deze optie niet is geselecteerd, wordt het aantal gebruikers geïnterpreteerd als een limiet van Mini maal 1 en Maxi maal zo lang het systeem kan ondersteunen. Deze velden kunnen worden bewerkt als onderdeel van een update voor uw abonnement.
 
-Once published, the billing pricing model choice cannot be changed. In addition, all plans for the same offer must share the same pricing model.
+Na publicatie kan de prijs model keuze van facturering niet worden gewijzigd. Daarnaast moeten alle abonnementen voor hetzelfde aanbod hetzelfde prijs model delen.
 
-- **Billing term**: Monthly or Annual
+- **Facturerings termijn**: maandelijks of jaarlijks
 
-Select the frequency that customers must pay the price listed. At least one Monthly or Annual price must be provided, or both options can be made available to customers.
+Selecteer de frequentie waarmee klanten de vermelde prijs moeten betalen. Er moet mini maal één maand of jaar worden opgegeven, of beide opties kunnen aan klanten beschikbaar worden gesteld.
 
-- **Price**: USD per month or USD per year
+- **Prijs**: USD per maand of USD per jaar
 
-Prices set in local currency (USD = United States Dollar) are converted into the local currency of all selected markets using the current exchange rates available during setup. Validate these prices before publishing by exporting the pricing spreadsheet and reviewing the price in each market. If you would like to set custom prices in an individual market, modify and import the pricing spreadsheet. You are responsible for validating this pricing and own these settings.
-*\*You must first save your pricing changes to enable export of pricing data.*
+Prijzen die in de lokale valuta zijn ingesteld (USD = Verenigde Staten dollar), worden omgezet in de lokale valuta van alle geselecteerde markten met de huidige wissel koersen die beschikbaar zijn tijdens de installatie. Valideer deze prijzen vóór de publicatie door het prijs werk blad te exporteren en de prijs op elke markt te bekijken. Als u aangepaste prijzen wilt instellen op een afzonderlijke markt, wijzigt en importeert u de prijs informatie in het werk blad. U bent verantwoordelijk voor het valideren van deze prijzen en de eigenaar van deze instellingen.
+*\*u uw prijs wijzigingen eerst moet opslaan om de export van prijs gegevens in te scha kelen.*
 
-Review your prices carefully before publishing, as there are some restrictions on what can change after a plan is published:
+Controleer uw prijzen zorgvuldig voordat u deze publiceert. er zijn enkele beperkingen voor wat er kan worden gewijzigd nadat een plan is gepubliceerd:
 
-- Once a plan is published, the pricing model can't be changed.
-- Once a billing term is published for a plan, it can't be removed later.
-- Once a price for a market in your plan is published, it can't be changed later.
+- Zodra een plan is gepubliceerd, kan het prijs model niet worden gewijzigd.
+- Zodra een facturerings termijn voor een abonnement is gepubliceerd, kan deze later niet meer worden verwijderd.
+- Zodra een prijs voor een markt in uw abonnement wordt gepubliceerd, kunt u deze later niet meer wijzigen.
 
-### <a name="plan-audience"></a>Plan Audience
+### <a name="plan-audience"></a>Doel groep plannen
 
-You have the option to configure each plan to be visible to everyone or to only a specific audience of your choosing. You can assign membership in this restricted audience using Azure AD tenant IDs.
+U kunt elk plan zodanig configureren dat het zichtbaar is voor iedereen of alleen voor een specifieke doel groep van uw keuze. U kunt lidmaatschap van deze beperkte doel groep toewijzen met behulp van Azure AD-Tenant-Id's.
 
 #### <a name="privacy"></a>Privacy
 
-- **This is a private plan** (Optional checkbox)
+- **Dit is een privé-abonnement** (optioneel selectie vakje)
 
-Check this box to make your plan private and visible only to the restricted audience of your choosing. Once published as a private plan, you can update the audience or choose to make the plan available to everyone. Once a plan is published as visible to everyone, it must remain visible to everyone. (The plan cannot be configured as a private plan again).
+Schakel dit selectie vakje in om uw abonnement privé en zichtbaar te maken voor de beperkte doel groep van uw keuze. Zodra het is gepubliceerd als een persoonlijk abonnement, kunt u de doel groep bijwerken of ervoor kiezen om het plan voor iedereen beschikbaar te stellen. Zodra een plan wordt gepubliceerd als zichtbaar voor iedereen, moet het zijn zichtbaar voor iedereen. (Het plan kan niet opnieuw worden geconfigureerd als een privé-abonnement).
 
-- **Restricted Audience (Tenant IDs)**
+- **Beperkte doel groep (Tenant-Id's)**
 
-Assign the audience that will have access to this private plan. Access is assigned using tenant IDs with the option to include a description of each tenant ID assigned. A maximum of 10 tenant IDs can be added, or 20,000 customers tenant IDs if importing a .csv spreadsheet file.
+Wijs de doel groep toe die toegang heeft tot dit privé-abonnement. Toegang wordt toegewezen met behulp van Tenant-Id's met de optie om een beschrijving op te geven van elke Tenant-ID die is toegewezen. U kunt Maxi maal 10 Tenant-Id's toevoegen, of de Tenant-Id's van 20.000-klanten als u een CSV-werk blad bestand importeert.
 
-A tenant is a representation of an organization, with an ID represented as a GUID (Globally Unique Identifier, a 128-bit integer number used to identify resources). Een tenant is een toegewezen exemplaar van Azure AD dat een organisatie of app-ontwikkelaar ontvangt wanneer deze een relatie start met Microsoft, door zich bijvoorbeeld aan te melden voor Azure, Microsoft Intune of Microsoft 365. Elke Azure AD-tenant is uniek en werkt afzonderlijk van andere Azure AD-tenants. To check the tenant, sign in to the Azure portal with the account you want to use to manage your application. Als u een tenant hebt, wordt u automatisch aangemeld en ziet u de naam van de tenant direct onder de accountnaam. Houd de muisaanwijzer op uw accountnaam rechtsboven in Azure Portal om uw naam, e-mailadres, directory en tenant-id (een GUID), en uw domein te zien. Als uw account is gekoppeld aan meerdere tenants, kunt u de accountnaam selecteren om een menu te openen waarmee u kunt schakelen tussen de tenants. Elke tenant heeft zijn eigen tenant-id. You can also look up your organization's tenant ID using a domain name URL at:  [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+Een Tenant is een representatie van een organisatie met een ID die wordt weer gegeven als een GUID (Globally Unique Identifier, een 128-bits geheel getal dat wordt gebruikt voor het identificeren van resources). Een tenant is een toegewezen exemplaar van Azure AD dat een organisatie of app-ontwikkelaar ontvangt wanneer deze een relatie start met Microsoft, door zich bijvoorbeeld aan te melden voor Azure, Microsoft Intune of Microsoft 365. Elke Azure AD-tenant is uniek en werkt afzonderlijk van andere Azure AD-tenants. Als u de Tenant wilt controleren, meldt u zich aan bij de Azure Portal met het account dat u wilt gebruiken voor het beheren van uw toepassing. Als u een tenant hebt, wordt u automatisch aangemeld en ziet u de naam van de tenant direct onder de accountnaam. Houd de muisaanwijzer op uw accountnaam rechtsboven in Azure Portal om uw naam, e-mailadres, directory en tenant-id (een GUID), en uw domein te zien. Als uw account is gekoppeld aan meerdere tenants, kunt u de accountnaam selecteren om een menu te openen waarmee u kunt schakelen tussen de tenants. Elke tenant heeft zijn eigen tenant-id. U kunt ook de Tenant-ID van uw organisatie opzoeken met behulp van een domein naam-URL op: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
-While SaaS offers use tenant IDs to define a private audience, other offer types may use Azure Subscription IDs (which are also represented as GUIDs).
+Hoewel SaaS voorziet in Tenant-Id's voor het definiëren van een persoonlijke doel groep, kunnen andere aanbiedings typen gebruikmaken van Azure-abonnement-Id's (die ook worden weer gegeven als GUID'S).
 
 > [!NOTE]
-> The private audience (or restricted audience) differs from a preview audience. In the **[Preview](#preview)** tab, you can define a preview audience. A preview audience is allowed access to your offer *prior* to the offer being published live in the marketplace. While the private audience designation only applies to a specific plan, the preview audience can view all plans (private or not), but only during the limited preview period while the plan is tested and validated.
+> De persoonlijke doel groep (of een beperkt publiek) wijkt af van een preview-doel groep. Op het tabblad **[Preview](#preview)** kunt u een voor beeld van een doel groep definiëren. Een preview-doel groep is toegang tot uw aanbieding toegestaan *voordat* de aanbieding Live op Marketplace wordt gepubliceerd. Hoewel de aanduiding van een privé-doel groep alleen van toepassing is op een specifiek abonnement, kan de preview-doel groep alle plannen (privé of niet) weer geven, maar alleen tijdens de beperkte preview-periode terwijl het plan wordt getest en gevalideerd.
 
-## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Example list of plans within a marketplace offer
+## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Voor beeld van een lijst met abonnementen in een Marketplace-aanbieding
 
-![Example marketplace plan listing with notes](./media/marketplace-plan.svg)
+![Voor beeld Marketplace-plan lijst met notities](./media/marketplace-plan.svg)
 
 ## <a name="test-drive"></a>Test drive
 
 [!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 
-## <a name="cloud-solution-provider-csp-reseller-audience"></a>Cloud Solution Provider (CSP) Reseller Audience
+## <a name="cloud-solution-provider-csp-reseller-audience"></a>Dealer-doel groep van Cloud Solution Provider (CSP)
 
-Electing to make your offer available in the CSP program enables Cloud Solution Providers to sell your product as part of a bundled solution to their customers. For more information, see [Cloud Solution Providers](https://go.microsoft.com/fwlink/?linkid=2111109).
+Als u ervoor kiest om uw aanbieding beschikbaar te maken in het CSP-programma, kunnen Cloud solution providers uw product verkopen als onderdeel van een gebundelde oplossing voor hun klanten. Zie [Cloud Solution Providers](https://go.microsoft.com/fwlink/?linkid=2111109)(Engelstalig) voor meer informatie.
 
 ## <a name="publish"></a>Publiceren
 
-Once you have completed all the required sections of the offer, select **publish** in the top-right corner of the portal. You will be re-directed to the **Review and publish** page.
+Zodra u alle vereiste delen van de aanbieding hebt voltooid, selecteert u **publiceren** in de rechter bovenhoek van de portal. U wordt opnieuw omgeleid naar de pagina **controleren en publiceren** .
 
-#### <a name="submit-offer-to-preview"></a>Submit offer to preview
+#### <a name="submit-offer-to-preview"></a>Aanbieding verzenden naar Preview
 
-If this is your first time publishing this offer, you can:
+Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het volgende doen:
 
-- See the completion status for each section of the offer.
-    - *Not started* - means the section has not been touched and needs to be completed.
-    - *Incomplete* - means the section has errors that need to be fixed or requires more information to be provided. Please go back to the section(s) and update it.
-    - *Complete* - means the section is complete, all required data has been provided and there are no errors. All sections of the offer must be in a complete state before you can submit the offer.
-- Provide testing instructions to the certification team to ensure that your app is tested correctly, in addition to any supplementary notes helpful for understanding your app.
-- Submit the offer for publishing by selecting **Submit**. We will send you an email to let you know when a preview version of the offer is available for you to review and approve. You must return to Partner Center and select **Go-live** for the offer to publish your offer to the public (or if a private offer, to the private audience).
+- Bekijk de voltooiings status voor elke sectie van de aanbieding.
+    - *Niet gestart* : de sectie is niet gerakend en moet worden voltooid.
+    - *Onvolledig* : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. Ga terug naar de sectie (s) en werk deze bij.
+    - *Voltooid* : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
+- Geef test instructies op het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
+- Verzend de aanbieding voor publicatie door **verzenden**te selecteren. We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding te publiceren naar het open bare (of als u een privé-aanbieding naar de persoonlijke doel groep hebt).
 
 ## <a name="next-steps"></a>Volgende stappen
 

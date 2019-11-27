@@ -1,27 +1,20 @@
 ---
-title: Azure CLI-voorbeeldscript - Een functie-app maken in een App Service-abonnement | Microsoft Docs
+title: Een functie-app in een App Service-abonnement maken-Azure CLI
 description: Azure CLI-voorbeeldscript - Een functie-app maken in een App Service-abonnement
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/03/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 85fe8e567cd00decbefe79c77c11f777820080ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77e026e12d14745c308e1d02fade13f318d9e532
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325677"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532847"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Een functie-app maken in een App Service-abonnement
 
-Met dit voorbeeldscript voor Azure Functions maakt u een functie-app die een container vormt voor uw functies. De functie-app die wordt gemaakt, maakt gebruik van een specifiek App Service-abonnement, wat betekent dat uw serverbronnen altijd zijn ingeschakeld.
+Met dit voorbeeldscript voor Azure Functions wordt een functie-app gemaakt, wat een container voor uw functies is. De functie-app die wordt gemaakt, maakt gebruik van een specifiek App Service-abonnement, wat betekent dat uw serverbronnen altijd zijn ingeschakeld.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,13 +36,13 @@ Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Hiermee maakt u een Azure-opslagaccount. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) | Hiermee maakt u een App Service-abonnement. |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Hiermee maakt u een functie-app in het App Service-abonnement. |
+| [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Hiermee wordt een Azure Storage-account gemaakt. |
+| [AZ functionapp plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Hiermee maakt u een Premium-abonnement. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Hiermee maakt u een functie-app in het App Service-abonnement. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Aanvullende CLI-voorbeeldscripts voor Azure Functions vindt u in de [Azure Functions-documentatie](../functions-cli-samples.md).

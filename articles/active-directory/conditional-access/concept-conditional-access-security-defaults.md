@@ -77,7 +77,7 @@ Nadat de standaard instellingen voor beveiliging zijn ingeschakeld in uw Tenant,
 
 Organisaties gebruiken verschillende Azure-Services die worden beheerd via de Azure Resource Manager-API, waaronder:
 
-- Azure Portal 
+- Azure-portal 
 - Azure PowerShell 
 - Azure-CLI
 

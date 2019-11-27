@@ -18,7 +18,7 @@ ms.locfileid: "74267958"
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Azure Firewall Manager preview is een beveiligings beheer service die voorziet in een centraal beveiligings beleid en route beheer voor beveiligings verbindingen in de Cloud. Het werkt met [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources), een door micro soft beheerde resource waarmee u eenvoudig hub-en spoke-architecturen kunt maken. Wanneer beveiligings-en routerings beleidsregels aan een dergelijke hub zijn gekoppeld, wordt deze een *[beveiligde virtuele hub](secured-virtual-hub.md)* genoemd. 
+Azure Firewall Manager Preview is een service voor beveiligingsbeheer die centraal beveiligingsbeleid en routebeheer biedt voor cloudbeveiligingsperimeters. Het werkt met [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources), een door micro soft beheerde resource waarmee u eenvoudig hub-en spoke-architecturen kunt maken. Wanneer beveiligings-en routerings beleidsregels aan een dergelijke hub zijn gekoppeld, wordt deze een *[beveiligde virtuele hub](secured-virtual-hub.md)* genoemd. 
 
 ![Firewall-Manager](media/overview/firewallmanagerv3.png)
 

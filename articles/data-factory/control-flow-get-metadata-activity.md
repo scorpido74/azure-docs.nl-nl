@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 039176f2c546aa933d3a87ded8b6ded94e485d74
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c62a7de1f16a3d7d286f48500117c256804c0f24
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280651"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546931"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Activiteit van meta gegevens in Azure Data Factory ophalen
 
@@ -53,10 +53,11 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [Bestandssysteem](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
 - Voor Amazon S3 en Google Cloud Storage `lastModified` van toepassing op de Bucket en de sleutel, maar niet naar de virtuele map, en `exists` van toepassing op de Bucket en de sleutel, maar niet op het voor voegsel of de virtuele map.
 - Voor Azure Blob-opslag `lastModified` van toepassing op de container en de blob, maar niet op de virtuele map.
+- `lastModified` filter is momenteel van toepassing op het filteren van onderliggende items, maar niet voor de opgegeven map/bestand zelf.
 - Het Joker teken filter voor mappen/bestanden wordt niet ondersteund voor de activiteit meta gegevens ophalen.
 
 **Relationele data base**
@@ -109,7 +110,7 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 }
 ```
 
-**Dataset**
+**Sets**
 
 ```json
 {

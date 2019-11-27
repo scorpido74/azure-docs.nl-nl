@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add tags to resources in template
-description: Add tags to resources that you deploy in your Azure Resource Manager template. Tags let you logically organize resources.
+title: Zelf studie-Tags toevoegen aan resources in een sjabloon
+description: Tags toevoegen aan resources die u in uw Azure Resource Manager-sjabloon implementeert. Met tags kunt u resources logisch indelen.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,37 +12,37 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406069"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Tutorial: Add tags in your Resource Manager template
+# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Zelf studie: Tags toevoegen in uw Resource Manager-sjabloon
 
-In this tutorial, you learn how to add tags to resources in your template. [Tags](resource-group-using-tags.md) help you logically organize your resources. The tag values show up in cost reports. This tutorial takes **8 minutes** to complete.
+In deze zelf studie leert u hoe u labels kunt toevoegen aan resources in uw sjabloon. Met [Tags](resource-group-using-tags.md) kunt u uw resources logisch indelen. De label waarden worden weer gegeven in kosten rapporten. Het volt ooien van deze zelf studie duurt **acht minuten** .
 
 ## <a name="prerequisites"></a>Vereisten
 
-We recommend that you complete the [tutorial about Quickstart templates](template-tutorial-quickstart-template.md), but it's not required.
+U wordt aangeraden de [zelf studie over Quick](template-tutorial-quickstart-template.md)start-sjablonen te volt ooien, maar dit is niet vereist.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Sjabloon controleren
 
-Your previous template deployed a storage account, App Service plan, and web app.
+Met de vorige sjabloon is een opslag account, App Service plan en web-app geïmplementeerd.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json)]
 
-After deploying these resources, you might need to track costs and find resources that belong to a category. You can add tags to help solve these issues.
+Na de implementatie van deze resources moet u mogelijk de kosten bijhouden en resources zoeken die tot een categorie behoren. U kunt labels toevoegen om deze problemen op te lossen.
 
 ## <a name="add-tags"></a>Tags toevoegen
 
-You tag resources to add values that help you identify their use. For example, you can add tags that list the environment and the project. You could add tags that identify a cost center or the team that owns the resource. Add any values that make sense for your organization.
+U labelt resources om waarden toe te voegen waarmee u het gebruik ervan kunt identificeren. U kunt bijvoorbeeld labels toevoegen die de omgeving en het project vermelden. U kunt Tags toevoegen die een kosten plaats identificeren of het team dat eigenaar is van de resource. Voeg waarden toe die zinvol zijn voor uw organisatie.
 
-The following example highlights the changes to the template. Copy the whole file and replace your template with its contents.
+In het volgende voor beeld worden de wijzigingen in de sjabloon gemarkeerd. Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,78,100)]
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-It's time to deploy the template and look at the results.
+Het is tijd om de sjabloon te implementeren en de resultaten te bekijken.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -70,20 +70,20 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. Select one of the resources, such as the storage account resource. You see that it now has tags.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer **resource groepen**in het menu links.
+1. Selecteer de resource groep die u hebt geïmplementeerd.
+1. Selecteer een van de resources, zoals de resource van het opslag account. U ziet dat deze nu labels bevat.
 
-   ![Show tags](./media/template-tutorial-add-tags/show-tags.png)
+   ![Labels weer geven](./media/template-tutorial-add-tags/show-tags.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Als u nu stopt, wilt u misschien de resources opschonen die u hebt geïmplementeerd door de resource groep te verwijderen.
 
 1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
@@ -92,7 +92,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this tutorial, you added tags to the resources. In the next tutorial, you'll learn how to use parameter files to simplify passing in values to the template.
+In deze zelf studie hebt u tags toegevoegd aan de resources. In de volgende zelf studie leert u hoe u parameter bestanden kunt gebruiken om het door geven van waarden aan de sjabloon te vereenvoudigen.
 
 > [!div class="nextstepaction"]
-> [Use parameter file](template-tutorial-use-parameter-file.md)
+> [Parameter bestand gebruiken](template-tutorial-use-parameter-file.md)

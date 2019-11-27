@@ -1,5 +1,5 @@
 ---
-title: Decomposable entity tutorial links
+title: Zelf studie koppelingen van uitstel bare entiteit
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -14,9 +14,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383663"
 ---
-To take advantage of [decomposable concepts](../luis-concept-model.md#v3-authoring-model-decomposition), start with the machine-learned entity. Follow the [machine-learned entity tutorial](../tutorial-machine-learned-entity.md) for steps on how to create this type of entity including examples of:
+Begin met de door de machine geleerde entiteit om te profiteren van de concepten die worden [samengesteld](../luis-concept-model.md#v3-authoring-model-decomposition). Volg de zelf studie over de door de [machine geleerde entiteit](../tutorial-machine-learned-entity.md) voor stappen voor het maken van dit type entiteit, inclusief voor beelden van:
 
-* [Create and label machine-learned entity](../tutorial-machine-learned-entity.md#label-text-as-entities-in-example-utterances) with structure and a descriptor (phrase list) from example utterance on **Intent detail page**
-* [Add prebuilt number entity](../tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data) from the **Entities list page**.
-* [Add subcomponent entity with constraint](../tutorial-machine-learned-entity.md#create-subcomponent-entity-with-constraint-to-help-extract-data) from the **Entity detail page**.
-* [Label example utterance with subcomponent](../tutorial-machine-learned-entity.md#label-example-utterance-to-teach-luis-about-the-entity) on **Intent detail page**
+* Een door de [machine geleerde entiteit](../tutorial-machine-learned-entity.md#label-text-as-entities-in-example-utterances) met structuur en een descriptor (woordgroepen lijst) maken en op de **detail pagina** van de intentie utterance
+* [Voeg een vooraf samengestelde nummer entiteit toe](../tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data) vanuit de **lijst pagina met entiteiten**.
+* [Voeg een subonderdeel entiteit toe met de beperking](../tutorial-machine-learned-entity.md#create-subcomponent-entity-with-constraint-to-help-extract-data) van de **pagina Details van entiteit**.
+* [Label voorbeeld utterance met subonderdeel](../tutorial-machine-learned-entity.md#label-example-utterance-to-teach-luis-about-the-entity) op de **detail pagina** van de intentie

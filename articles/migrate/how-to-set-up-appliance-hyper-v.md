@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 1676ad3dde5a97d2afdb64595d51f5502f9dcc3d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185920"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534488"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Een apparaat instellen voor virtuele Hyper-V-machines
 
@@ -50,7 +50,7 @@ Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementee
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
 2. Voer de volgende opdracht uit om de hash voor de VHD te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
 3.  Voor de toestel versie 2.19.11.12 moet de gegenereerde hash overeenkomen met deze instellingen.
 
   **Algoritme** | **Hash-waarde**
