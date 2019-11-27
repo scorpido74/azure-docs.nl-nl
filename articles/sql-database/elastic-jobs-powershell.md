@@ -22,7 +22,7 @@ ms.locfileid: "74420369"
 
 [Elastisc Jobs](sql-database-job-automation-overview.md#elastic-database-jobs-preview) maken het mogelijk om één of meerdere T-SQL-scripts (Transact-SQL) parallel in veel databases uit te voeren.
 
-In this tutorial, you learn the steps required to run a query across multiple databases:
+In deze zelf studie leert u de stappen die nodig zijn om een query uit te voeren voor meerdere data bases:
 
 > [!div class="checklist"]
 > * Een Elastic Jobs-agent maken
@@ -36,13 +36,13 @@ In this tutorial, you learn the steps required to run a query across multiple da
 
 ## <a name="prerequisites"></a>Vereisten
 
-The upgraded version of Elastic Database jobs has a new set of PowerShell cmdlets for use during migration. These new cmdlets transfer all of your existing job credentials, targets (including databases, servers, custom collections), job triggers, job schedules, job contents, and jobs over to a new Elastic Job agent.
+De bijgewerkte versie van taak voor Elastic Database heeft een nieuwe set Power shell-cmdlets voor gebruik tijdens de migratie. Met deze nieuwe cmdlets kunt u al uw bestaande taak referenties, doelen (inclusief data bases, servers, aangepaste verzamelingen), taak triggers, taak planningen, taak inhoud en taken naar een nieuwe elastische taak agent overdragen.
 
-### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Install the latest Elastic Jobs cmdlets
+### <a name="install-the-latest-elastic-jobs-cmdlets"></a>De meest recente cmdlets voor elastische taken installeren
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-Install the **Az.Sql** module to get the latest Elastic Job cmdlets. Voer de volgende opdrachten met beheerderstoegang uit in PowerShell.
+Installeer de **AZ. SQL** -module om de meest recente elastische taak-cmdlets te verkrijgen. Voer de volgende opdrachten met beheerderstoegang uit in PowerShell.
 
 ```powershell
 # installs the latest PackageManagement and PowerShellGet packages
@@ -58,13 +58,13 @@ Import-Module Az.Sql
 Get-Module Az.Sql
 ```
 
-In addition to the **Az.Sql** module, this tutorial also requires the *SqlServer* PowerShell module. Zie [SQL Server PowerShell-module installeren](/sql/powershell/download-sql-server-ps-module) voor meer informatie.
+Naast de module **AZ. SQL** is in deze zelf studie ook de *sqlserver* Power shell-module vereist. Zie [SQL Server PowerShell-module installeren](/sql/powershell/download-sql-server-ps-module) voor meer informatie.
 
 ## <a name="create-required-resources"></a>Vereiste resources maken
 
 Voor het maken van een Elastic Jobs-agent is een database (S0 of hoger) vereist om te gebruiken als [taakdatabase](sql-database-job-automation-overview.md#job-database).
 
-The script below creates a new resource group, server, and database for use as the Job database. The second script creates a second server with two blank databases to execute jobs against.
+In het onderstaande script maakt u een nieuwe resource groep, server en Data Base voor gebruik als de taak database. Met het tweede script maakt u een tweede server met twee lege data bases om taken uit te voeren.
 
 Elastic Jobs heeft geen specifieke naamgevingsvereisten, zodat u elke naamgevingsconventie kunt gebruiken die u wilt, zolang deze maar voldoet aan de [Azure-vereisten](/azure/architecture/best-practices/resource-naming).
 
@@ -122,9 +122,9 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>Use Elastic Jobs
+## <a name="use-elastic-jobs"></a>Elastische taken gebruiken
 
-To use Elastic Jobs, register the feature in your Azure subscription by running the following command. Run this command once for the subscription in which you intend to provision the Elastic Job agent. Subscriptions that only contain databases that are job targets don't need to be registered.
+Als u elastische taken wilt gebruiken, moet u de functie in uw Azure-abonnement registreren door de volgende opdracht uit te voeren. Voer deze opdracht eenmaal uit voor het abonnement waarin u de elastische taak agent wilt inrichten. Abonnementen die alleen bestaan uit data bases die taak doelen bevatten, hoeven niet te worden geregistreerd.
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
@@ -134,7 +134,7 @@ Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Mic
 
 Een Elastic Jobs-agent is een Azure-resource voor het maken, uitvoeren en beheren van taken. De agent voert taken uit op basis van een planning of als eenmalige taak.
 
-The **New-AzSqlElasticJobAgent** cmdlet requires an Azure SQL database to already exist, so the *resourceGroupName*, *serverName*, and *databaseName* parameters must all point to existing resources.
+De cmdlet **New-AzSqlElasticJobAgent** vereist dat er al een Azure-SQL database bestaat. de para meters *resourceGroupName*, *servername*en *DATABASENAME* moeten allemaal verwijzen naar bestaande resources.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -143,15 +143,15 @@ $jobAgent = $jobDatabase | New-AzSqlElasticJobAgent -Name $agentName
 $jobAgent
 ```
 
-### <a name="create-the-job-credentials"></a>Create the job credentials
+### <a name="create-the-job-credentials"></a>De taak referenties maken
 
-Jobs use database scoped credentials to connect to the target databases specified by the target group upon execution and execute scripts. Deze databasereferenties worden ook gebruikt verbinding te maken met de hoofddatabase om alle databases in een server of elastische pool te inventariseren wanneer een van deze wordt gebruikt als doelgroeplidsoort.
+-Taken maken gebruik van data base-scoped referenties voor verbinding met de doel databases die zijn opgegeven door de doel groep bij het uitvoeren en uitvoeren van scripts. Deze databasereferenties worden ook gebruikt verbinding te maken met de hoofddatabase om alle databases in een server of elastische pool te inventariseren wanneer een van deze wordt gebruikt als doelgroeplidsoort.
 
 De databasereferenties moeten worden gemaakt in de taakdatabase. Alle doeldatabases moeten een aanmelding met voldoende machtigingen hebben om de taak te kunnen voltooien.
 
-![Referenties voor Elastic Jobs](media/elastic-jobs-overview/job-credentials.png)
+![Referenties voor elastische taken](media/elastic-jobs-overview/job-credentials.png)
 
-Let behalve op de inloggegevens in de afbeelding op de toevoeging van de **GRANT**-opdrachten in het volgende script. Deze machtigingen zijn vereist voor het script dat we hebben gekozen voor deze voorbeeldtaak. Because the example creates a new table in the targeted databases, each target db needs the proper permissions to successfully run.
+Let behalve op de inloggegevens in de afbeelding op de toevoeging van de **GRANT**-opdrachten in het volgende script. Deze machtigingen zijn vereist voor het script dat we hebben gekozen voor deze voorbeeldtaak. Omdat in het voor beeld een nieuwe tabel wordt gemaakt in de doel databases, moeten voor elke doel database de juiste machtigingen worden uitgevoerd.
 
 Voer het volgende script uit om de vereiste taakreferenties (in de taakdatabase) te maken:
 
@@ -200,11 +200,11 @@ $jobCred = New-Object -TypeName "System.Management.Automation.PSCredential" -Arg
 $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential $jobCred
 ```
 
-### <a name="define-the-target-databases-to-run-the-job-against"></a>Define the target databases to run the job against
+### <a name="define-the-target-databases-to-run-the-job-against"></a>Definieer de doel databases om de taak uit te voeren
 
 Een [doelgroep](sql-database-job-automation-overview.md#target-group) definieert een verzameling van een of meer databases waarop een taakstap wordt uitgevoerd.
 
-The following snippet creates two target groups: *serverGroup*, and *serverGroupExcludingDb2*. *serverGroup* targets all databases that exist on the server at the time of execution, and *serverGroupExcludingDb2* targets all databases on the server, except *targetDb2*:
+Met het volgende code fragment worden twee doel groepen gemaakt: *serverGroup*en *serverGroupExcludingDb2*. *serverGroup* streeft naar alle data bases die op de server aanwezig zijn op het moment dat ze worden uitgevoerd en *serverGroupExcludingDb2* streeft naar alle data bases op de server, met uitzonde ring van *targetDb2*:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -218,9 +218,9 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerName -Database $db2.DatabaseName -Exclude
 ```
 
-### <a name="create-a-job-and-steps"></a>Create a job and steps
+### <a name="create-a-job-and-steps"></a>Een taak en stappen maken
 
-This example defines a job and two job steps for the job to run. Met de eerste taakstap (*stap 1*) wordt een nieuwe tabel (*Step1Table*) gemaakt in elke database in de doelgroep *ServerGroup*. The second job step (*step2*) creates a new table (*Step2Table*) in every database except for *TargetDb2*, because the target group defined previously specified to exclude it.
+In dit voor beeld worden een taak en twee taak stappen gedefinieerd om de taak uit te voeren. Met de eerste taakstap (*stap 1*) wordt een nieuwe tabel (*Step1Table*) gemaakt in elke database in de doelgroep *ServerGroup*. Met de tweede taak stap (*step2*) wordt in elke Data Base een nieuwe tabel (*Step2Table*) gemaakt, met uitzonde ring van *TargetDb2*, omdat de eerder gedefinieerde doel groep is opgegeven om deze uit te sluiten.
 
 ```powershell
 Write-Output "Creating a new job..."
@@ -250,7 +250,7 @@ Na succesvolle voltooiing ziet u twee nieuwe tabellen in TargetDb1 en slechts é
 
    ![verificatie van nieuwe tabellen in SSMS](media/elastic-jobs-overview/job-execution-verification.png)
 
-You can also schedule the job to run later. Voer de volgende opdracht uit om een ​​taak te plannen die op een specifiek tijdstip moet worden uitgevoerd:
+U kunt ook plannen dat de taak later wordt uitgevoerd. Voer de volgende opdracht uit om een ​​taak te plannen die op een specifiek tijdstip moet worden uitgevoerd:
 
 ```powershell
 # run every hour starting from now
@@ -272,27 +272,27 @@ $jobExecution | Get-AzSqlElasticJobStepExecution
 $jobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
 
-The following table lists the possible job execution states:
+De volgende tabel bevat de mogelijke statussen voor taak uitvoering:
 
-|Staat|Beschrijving|
+|Status|Beschrijving|
 |:---|:---|
-|**Created** | The job execution was just created and is not yet in progress.|
-|**InProgress** | The job execution is currently in progress.|
-|**WaitingForRetry** | The job execution wasn’t able to complete its action and is waiting to retry.|
-|**Geslaagd** | The job execution has completed successfully.|
-|**SucceededWithSkipped** | The job execution has completed successfully, but some of its children were skipped.|
-|**Mislukt** | The job execution has failed and exhausted its retries.|
-|**TimedOut** | The job execution has timed out.|
-|**Geannuleerd** | The job execution was canceled.|
-|**Overgeslagen** | The job execution was skipped because another execution of the same job step was already running on the same target.|
-|**WaitingForChildJobExecutions** | The job execution is waiting for its child executions to complete.|
+|**Toegevoegd** | De taak uitvoering is zojuist gemaakt en wordt nog niet uitgevoerd.|
+|**InProgress** | De taak wordt momenteel uitgevoerd.|
+|**WaitingForRetry** | De uitvoering van de taak is niet voltooid en er wordt gewacht op het opnieuw proberen.|
+|**Geslaagd** | De taak uitvoering is voltooid.|
+|**SucceededWithSkipped** | De taak uitvoering is voltooid, maar sommige onderliggende items zijn overgeslagen.|
+|**Mislukt** | De taak uitvoering is mislukt en de pogingen zijn uitgeput.|
+|**Out** | Er is een time-out opgetreden voor de taak uitvoering.|
+|**Geannuleerd** | De taak uitvoering is geannuleerd.|
+|**Overgeslagen** | De taak uitvoering is overgeslagen omdat een andere uitvoering van dezelfde taak stap al werd uitgevoerd op hetzelfde doel.|
+|**WaitingForChildJobExecutions** | De uitvoering van de taak wacht op het volt ooien van de onderliggende uitvoeringen.|
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Verwijder de Azure-bronnen die in deze zelfstudie zijn gemaakt door de resourcegroep te verwijderen.
 
 > [!TIP]
-> If you plan to continue to work with these jobs, you do not clean up the resources created in this article.
+> Als u van plan bent om verder te gaan met deze taken, kunt u de resources die in dit artikel zijn gemaakt, niet opschonen.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName

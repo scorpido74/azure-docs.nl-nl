@@ -1,6 +1,6 @@
 ---
-title: Create automatic deployments from command line - Azure IoT Edge | Microsoft Docs
-description: Use the IoT extension for Azure CLI to create automatic deployments for groups of IoT Edge devices
+title: Automatische implementaties maken uit vanaf de opdrachtregel - Azure IoT Edge | Microsoft Docs
+description: De IoT-extensie voor Azure CLI gebruiken voor automatische implementaties voor groepen van IoT Edge-apparaten maken
 keywords: ''
 author: kgremban
 manager: philmea
@@ -16,28 +16,28 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457391"
 ---
-# <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Deploy and monitor IoT Edge modules at scale using the Azure CLI
+# <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Implementeren en bewaken van IoT Edge-modules op schaal met behulp van de Azure CLI
 
-Create an **IoT Edge automatic deployment** using the Azure command-line interface to manage ongoing deployments for many devices at once. Automatic deployments for IoT Edge are part of the [automatic device management](/azure/iot-hub/iot-hub-automatic-device-management) feature of IoT Hub. Deployments are dynamic processes that enable you to deploy multiple modules to multiple devices, track the status and health of the modules, and make changes when necessary. 
+Maak een **IOT Edge automatische implementatie** met behulp van de Azure-opdracht regel interface voor het beheren van doorlopende implementaties voor veel apparaten tegelijk. Automatische implementaties voor IoT Edge maken deel uit van de functie voor het [automatisch beheren van apparaten](/azure/iot-hub/iot-hub-automatic-device-management) van IOT hub. Implementaties zijn dynamische processen waarmee u meerdere modules op meerdere apparaten kunt implementeren, de status en status van de modules kunt volgen en waar nodig wijzigingen kunt aanbrengen. 
 
-For more information, see [Understand IoT Edge automatic deployments for single devices or at scale](module-deployment-monitoring.md).
+Zie [informatie over IOT Edge automatische implementaties voor één apparaat of op schaal](module-deployment-monitoring.md)voor meer informatie.
 
-In this article, you set up Azure CLI and the IoT extension. You then learn how to deploy modules to a set of IoT Edge devices and monitor the progress using the available CLI commands.
+In dit artikel hebt instellen u Azure CLI en de IoT-extensie. U leert hoe u modules implementeert op een set IoT Edge-apparaten en de voortgang kunt controleren met behulp van de beschik bare CLI-opdrachten.
 
-## <a name="cli-prerequisites"></a>CLI Prerequisites
+## <a name="cli-prerequisites"></a>CLI-vereisten
 
-* An [IoT hub](../iot-hub/iot-hub-create-using-cli.md) in your Azure subscription. 
-* [IoT Edge devices](how-to-register-device.md#prerequisites-for-the-azure-cli) with the IoT Edge runtime installed.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) in your environment. At a minimum, your Azure CLI version must be 2.0.24 or above. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen. 
-* The [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
+* Een [IOT-hub](../iot-hub/iot-hub-create-using-cli.md) in uw Azure-abonnement. 
+* [IOT edge apparaten](how-to-register-device.md#prerequisites-for-the-azure-cli) waarop de IOT Edge-runtime is geïnstalleerd.
+* [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet ten minste 2.0.24 of hoger. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen. 
+* De [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension).
 
-## <a name="configure-a-deployment-manifest"></a>Configure a deployment manifest
+## <a name="configure-a-deployment-manifest"></a>Een manifest van de implementatie configureren
 
-A deployment manifest is a JSON document that describes which modules to deploy, how data flows between the modules, and desired properties of the module twins. For more information, see [Learn how to deploy modules and establish routes in IoT Edge](module-composition.md).
+Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. Zie [informatie over het implementeren van modules en het tot stand brengen van routes in IOT Edge](module-composition.md)voor meer informatie.
 
-To deploy modules using Azure CLI, save the deployment manifest locally as a .txt file. You use the file path in the next section when you run the command to apply the configuration to your device. 
+Sla het manifest van implementatie lokaal als een txt-bestand voor het implementeren van modules met behulp van Azure CLI. U gebruikt het bestandspad in de volgende sectie wanneer u de opdracht uitvoert om de configuratie toe te passen op uw apparaat. 
 
-Here's a basic deployment manifest with one module as an example:
+Hier volgt een manifest eenvoudige implementatie met één module als een voorbeeld:
 
 ```json
 {
@@ -111,9 +111,9 @@ Here's a basic deployment manifest with one module as an example:
 }
 ```
 
-## <a name="identify-devices-using-tags"></a>Identify devices using tags
+## <a name="identify-devices-using-tags"></a>Identificatie van apparaten met behulp van tags
 
-Before you can create a deployment, you have to be able to specify which devices you want to affect. Azure IoT Edge identifies devices using **tags** in the device twin. Each device can have multiple tags that you define in any way that makes sense for your solution. For example, if you manage a campus of smart buildings, you might add the following tags to a device:
+Voordat u een implementatie maken kunt, moet u opgeven welke apparaten die u wilt toepassen. Azure IoT Edge identificeert apparaten met behulp van **Tags** op het apparaat. Elk apparaat kan meerdere labels hebben die u op een wille keurige manier definieert voor uw oplossing. Als u een campus van slimme gebouwen beheert, kunt u bijvoorbeeld de volgende codes toevoegen aan een apparaat:
 
 ```json
 "tags":{
@@ -126,96 +126,96 @@ Before you can create a deployment, you have to be able to specify which devices
 }
 ```
 
-For more information about device twins and tags, see [Understand and use device twins in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+Zie voor meer informatie over apparaatdubbels en tags voor apparaten [inzicht in de apparaatdubbels in IOT hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
-## <a name="create-a-deployment"></a>Create a deployment
+## <a name="create-a-deployment"></a>Een implementatie maken
 
-You deploy modules to your target devices by creating a deployment that consists of the deployment manifest as well as other parameters. 
+U implementeren modules naar uw apparaten door het maken van een implementatie die uit een manifest voor de implementatie, evenals andere parameters bestaat. 
 
-Use the [az iot edge deployment create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-create) command to create a deployment:
+Gebruik de opdracht [AZ IOT Edge Deployment Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-create) om een implementatie te maken:
 
 ```cli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
-The deployment create command takes the following parameters: 
+De opdracht voor het maken van de implementatie heeft de volgende para meters: 
 
-* **--deployment-id** - The name of the deployment that will be created in the IoT hub. Give your deployment a unique name that is up to 128 lowercase letters. Avoid spaces and the following invalid characters: `& ^ [ ] { } \ | " < > /`.
-* **--hub-name** - Name of the IoT hub in which the deployment will be created. The hub must be in the current subscription. Change your current subscription with the `az account set -s [subscription name]` command.
-* **--content** - Filepath to the deployment manifest JSON. 
-* **--labels** - Add labels to help track your deployments. Labels are Name, Value pairs that describe your deployment. Labels take JSON formatting for the names and values. Bijvoorbeeld: `{"HostPlatform":"Linux", "Version:"3.0.1"}`
-* **--target-condition** - Enter a target condition to determine which devices will be targeted with this deployment. The condition is based on device twin tags or device twin reported properties and should match the expression format. For example, `tags.environment='test' and properties.reported.devicemodel='4000x'`. 
-* **--priority** - A positive integer. In the event that two or more deployments are targeted at the same device, the deployment with the highest numerical value for Priority will apply.
+* **--implementatie-id** : de naam van de implementatie die wordt gemaakt in de IOT-hub. Geef uw implementatie een unieke naam die maximaal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /`.
+* **--hub-naam** -naam van de IOT-hub waarin de implementatie wordt gemaakt. De hub moet zich in het huidige abonnement. Wijzig uw huidige abonnement met de opdracht `az account set -s [subscription name]`.
+* **--Content** -filepath naar de JSON van het implementatie manifest. 
+* **--labels** : Voeg labels toe om uw implementaties bij te houden. Labels zijn naam, waarde-paren die uw implementatie te beschrijven. Labels maken de JSON-indeling voor de namen en waarden. Bijvoorbeeld: `{"HostPlatform":"Linux", "Version:"3.0.1"}`
+* **--doel-condition** : Voer een doel voorwaarde in om te bepalen welke apparaten worden bedoeld voor deze implementatie. De voor waarde is gebaseerd op apparaatspecifieke Tags of dubbele gerapporteerde eigenschappen van het apparaat en moet overeenkomen met de indeling van de expressie. Bijvoorbeeld `tags.environment='test' and properties.reported.devicemodel='4000x'`. 
+* **--Priority** : een positief geheel getal. In het geval dat twee of meer implementaties zijn gericht op hetzelfde apparaat, wordt de implementatie met de hoogste numerieke waarde voor prioriteit wordt toegepast.
 
-## <a name="monitor-a-deployment"></a>Monitor a deployment
+## <a name="monitor-a-deployment"></a>Controleer de implementatie van een
 
-Use the [az iot edge deployment show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show) command to display the details of a single deployment:
+Gebruik de opdracht [AZ IOT Edge Deployment show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show) om de details van één implementatie weer te geven:
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
 ```
 
-The deployment show command takes the following parameters:
-* **--deployment-id** - The name of the deployment that exists in the IoT hub.
-* **--hub-name** - Name of the IoT hub in which the deployment exists. The hub must be in the current subscription. Switch to the desired subscription with the command `az account set -s [subscription name]`
+De opdracht show voor de implementatie heeft de volgende para meters:
+* **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat.
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 
-Inspect the deployment in the command window. The **metrics** property lists a count for each metric that is evaluated by each hub:
+Controleer de implementatie in het opdrachtvenster. De eigenschap **Metrics** bevat een aantal voor elke metrische waarde die door elke hub wordt geëvalueerd:
 
-* **targetedCount** - A system metric that specifies the number of device twins in IoT Hub that match the targeting condition.
-* **appliedCount** - A system metric specifies the number of devices that have had the deployment content applied to their module twins in IoT Hub.
-* **reportedSuccessfulCount** - A device metric that specifies the number of IoT Edge devices in the deployment reporting success from the IoT Edge client runtime.
-* **reportedFailedCount** - A device metric that specifies the number of IoT Edge devices in the deployment reporting failure from the IoT Edge client runtime.
+* **targetedCount** : een systeem metriek waarmee het aantal apparaatdubbels van het apparaat in IOT hub wordt opgegeven dat overeenkomt met de doel voorwaarde.
+* **appliedCount** : met een systeem metriek geeft u het aantal apparaten op waarop de implementatie-inhoud is toegepast op de bijbehorende module apparaatdubbels in IOT hub.
+* **reportedSuccessfulCount** : een metrische waarde van het apparaat waarmee het aantal IOT edge-apparaten wordt opgegeven in het geslaagde implementatie rapport van de IOT Edge-client runtime.
+* **reportedFailedCount** : een metrische waarde van het apparaat waarmee het aantal IOT edge-apparaten wordt opgegeven in de implementatie rapportage fout van de IOT Edge-client runtime.
 
-You can show a list of device IDs or objects for each of the metrics by using the [az iot edge deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric) command:
+U kunt een lijst met apparaat-Id's of objecten voor elk van de metrische gegevens weer geven met behulp van de opdracht [AZ IOT Edge Deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric) :
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name] 
 ```
 
-The deployment show-metric command takes the following parameters: 
-* **--deployment-id** - The name of the deployment that exists in the IoT hub.
-* **--metric-id** - The name of the metric for which you want to see the list of device IDs, for example `reportedFailedCount`
-* **--hub-name** - Name of the IoT hub in which the deployment exists. The hub must be in the current subscription. Switch to the desired subscription with the command `az account set -s [subscription name]`
+De opdracht show-meet waarde accepteert de volgende para meters: 
+* **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat.
+* **--metric-id** : de naam van de metriek waarvoor u de lijst met apparaat-id's wilt zien, bijvoorbeeld `reportedFailedCount`
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 
-## <a name="modify-a-deployment"></a>Modify a deployment
+## <a name="modify-a-deployment"></a>Een implementatie wijzigen
 
-When you modify a deployment, the changes immediately replicate to all targeted devices. 
+Wanneer u een implementatie wijzigt, worden de wijzigingen onmiddellijk gerepliceerd naar alle apparaten uit de doelgroep. 
 
-If you update the target condition, the following updates occur:
+Als u de doelvoorwaarde bijwerkt, gebeuren de volgende updates:
 
-* If a device didn't meet the old target condition, but meets the new target condition and this deployment is the highest priority for that device, then this deployment is applied to the device. 
-* If a device currently running this deployment no longer meets the target condition, it uninstalls this deployment and takes on the next highest priority deployment. 
-* If a device currently running this deployment no longer meets the target condition and doesn't meet the target condition of any other deployments, then no change occurs on the device. The device continues running its current modules in their current state, but is not managed as part of this deployment anymore. Once it meets the target condition of any other deployment, it uninstalls this deployment and takes on the new one. 
+* Als een apparaat niet voldoet aan de oude doelvoorwaarde, maar voldoet aan de nieuwe doelvoorwaarde en deze implementatie de hoogste prioriteit voor het apparaat is, wordt klikt u vervolgens deze implementatie toegepast op het apparaat. 
+* Als een apparaat op dit moment met deze implementatie niet meer voldoet aan de doelvoorwaarde, verwijdert deze implementatie en neemt de volgende implementatie met hoogste prioriteit. 
+* Als een apparaat op dit moment met deze implementatie niet meer voldoet aan de doelvoorwaarde en niet voldoet aan de doelvoorwaarde van alle andere implementaties, treedt er geen wijziging op op het apparaat. Het apparaat wordt uitgevoerd de huidige modules in hun huidige status, maar niet als onderdeel van deze implementatie niet meer wordt beheerd. Als deze voldoet aan de doelvoorwaarde van elke andere implementatie, deze implementatie wordt verwijderd en wordt op de nieuwe computer. 
 
-Use the [az iot edge deployment update](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update) command to update a deployment:
+Gebruik de opdracht [AZ IOT Edge Deployment update](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update) om een implementatie bij te werken:
 
 ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
 ```
 
-The deployment update command takes the following parameters:
-* **--deployment-id** - The name of the deployment that exists in the IoT hub.
-* **--hub-name** - Name of the IoT hub in which the deployment exists. The hub must be in the current subscription. Switch to the desired subscription with the command `az account set -s [subscription name]`
-* **--set** - Update a property in the deployment. You can update the following properties:
-  * targetCondition - for example `targetCondition=tags.location.state='Oregon'`
+De implementatie-update opdracht heeft de volgende para meters:
+* **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat.
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
+* **--set** -een eigenschap in de implementatie bijwerken. U kunt de volgende eigenschappen bijwerken:
+  * targetCondition-bijvoorbeeld `targetCondition=tags.location.state='Oregon'`
   * labels 
   * priority
 
 
-## <a name="delete-a-deployment"></a>Delete a deployment
+## <a name="delete-a-deployment"></a>Een implementatie verwijderen
 
-When you delete a deployment, any devices take on their next highest priority deployment. If your devices don't meet the target condition of any other deployment, then the modules are not removed when the deployment is deleted. 
+Wanneer u een implementatie verwijdert, worden alle apparaten op de volgende implementatie met hoogste prioriteit. Als uw apparaten niet voldoen aan de doelvoorwaarde van elke andere implementatie, klikt u vervolgens de modules niet verwijderd wanneer de implementatie wordt verwijderd. 
 
-Use the [az iot edge deployment delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-delete) command to delete a deployment:
+Gebruik de opdracht [AZ IOT Edge Deployment delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-delete) om een implementatie te verwijderen:
 
 ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name] 
 ```
 
-The deployment delete command takes the following parameters: 
-* **--deployment-id** - The name of the deployment that exists in the IoT hub.
-* **--hub-name** - Name of the IoT hub in which the deployment exists. The hub must be in the current subscription. Switch to the desired subscription with the command `az account set -s [subscription name]`
+De opdracht voor het verwijderen van de implementatie heeft de volgende para meters: 
+* **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat.
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Learn more about [Deploying modules to IoT Edge devices](module-deployment-monitoring.md).
+Meer informatie over [het implementeren van modules voor het IOT Edge van apparaten](module-deployment-monitoring.md).

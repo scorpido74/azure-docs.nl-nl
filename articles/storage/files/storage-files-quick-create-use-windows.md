@@ -22,7 +22,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
 
@@ -31,7 +31,7 @@ In deze quickstart stelt u de volgende items in:
 - Een Azure-opslagaccount
 - Een VM met Windows Server 2016 Datacenter
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 Voordat u kunt gaan werken met een Azure-bestandsshare moet u een Azure-opslagaccount maken. Een v2-opslagaccount voor algemeen gebruik biedt toegang tot alle services van Azure Storage: blobs, bestanden, wachtrijen en tabellen. Met deze quickstart maakt u een v2-opslagaccount voor algemeen gebruik, maar de stappen voor het maken van elk type opslagaccount zijn vergelijkbaar. Een opslagaccount kan een onbeperkt aantal shares bevatten. Een share kan een onbeperkt aantal bestanden opslaan, tot de capaciteitslimiet van het opslagaccount.
 

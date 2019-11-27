@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for entities with the SDK for Java - Bing Entity Search'
+title: 'Snelstartgids: zoeken naar entiteiten met de SDK voor Java-Bing Entity Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entity Search SDK voor Java.
 services: cognitive-services
@@ -17,13 +17,13 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327143"
 ---
-# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Quickstart: Send a search request with the Bing Entity Search SDK for Java
+# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Snelstartgids: een zoek opdracht verzenden met de Bing Entity Search SDK voor Java
 
-Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entity Search SDK voor Java. Hoewel Bing Entity Search een REST-API heeft die compatibel is met de meeste moderne programmeertalen, biedt de SDK een eenvoudige manier om de service te integreren in uw toepassingen. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
+Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entity Search SDK voor Java. Hoewel Bing Entiteiten zoeken een REST-API heeft die compatibel is met de meeste moderne programmeertalen, biedt de SDK een eenvoudige manier om de service te integreren in uw toepassingen. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* De [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 
 * De Bing Entity Search SDK voor Java
 
@@ -67,7 +67,7 @@ Installeer de afhankelijkheden van Bing Entity Search SDK met Maven, Gradle of e
 
 ## <a name="create-a-search-client"></a>Een zoekclient maken
 
-1. Implementeer de client `dominantEntityLookup`, die uw API-eindpunt vereist, en een exemplaar van de klasse `ServiceClientCredentials`.
+1. Implementeer de client `dominantEntityLookup`, die uw API-eindpunt en een exemplaar van de klasse `ServiceClientCredentials` vereist.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {

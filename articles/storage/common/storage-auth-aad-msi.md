@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d77ab142e227cfaa6533395cc256d992e698dd17
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 66d867d33060aa931dbe42c534166e61ee7692fe
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495919"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534516"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Toegang verlenen tot blobs en wacht rijen met Azure Active Directory en beheerde identiteiten voor Azure-resources
 
@@ -34,39 +34,92 @@ Voordat u beheerde identiteiten voor Azure-resources kunt gebruiken om toegang t
 
 Zie [beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten.
 
-## <a name="authenticate-with-the-azure-identity-library-preview"></a>Verifiëren met de Azure-identiteits bibliotheek (preview-versie)
+## <a name="authenticate-with-the-azure-identity-library"></a>Verifiëren met de Azure Identity-bibliotheek
 
-Met de Azure Identity client-bibliotheek voor .NET (preview) wordt een beveiligingsprincipal geverifieerd. Wanneer uw code wordt uitgevoerd in azure, is de beveiligingsprincipal een beheerde identiteit voor Azure-resources.
+Een voor deel van de Azure Identity client-bibliotheek is dat u dezelfde code kunt gebruiken om te verifiëren of uw toepassing wordt uitgevoerd in de ontwikkel omgeving of in Azure. In code die in de Azure-omgeving wordt uitgevoerd, verifieert de client bibliotheek een beheerde identiteit voor Azure-resources. In de ontwikkel omgeving bestaat de beheerde identiteit niet, zodat de client bibliotheek de gebruiker of een Service-Principal verifieert voor test doeleinden.
 
-Wanneer uw code wordt uitgevoerd in de ontwikkel omgeving, wordt de verificatie mogelijk automatisch verwerkt of is er mogelijk een browser aanmelding vereist, afhankelijk van de hulpprogram ma's die u gebruikt. Micro soft Visual Studio ondersteunt eenmalige aanmelding (SSO), zodat het actieve Azure AD-gebruikers account automatisch wordt gebruikt voor verificatie. Zie [eenmalige aanmelding bij toepassingen](../../active-directory/manage-apps/what-is-single-sign-on.md)voor meer informatie over SSO.
-
-Andere ontwikkel hulpprogramma's vragen u mogelijk om u aan te melden via een webbrowser. U kunt ook een Service-Principal gebruiken om te verifiëren vanuit de ontwikkel omgeving. Zie [identiteit voor Azure-app maken in de portal](../../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie.
+De Azure Identity client-bibliotheek voor .NET verifieert een beveiligings-principal. Wanneer uw code wordt uitgevoerd in azure, is de beveiligingsprincipal een beheerde identiteit voor Azure-resources.
 
 Na de verificatie krijgt de Azure Identity client-bibliotheek een token referentie. Deze token referentie wordt vervolgens ingekapseld in het service-client object dat u maakt om bewerkingen uit te voeren op basis van Azure Storage. De bibliotheek verwerkt dit voor u probleemloos door de juiste token referentie op te halen.
 
 Zie de [Azure Identity client-bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)voor meer informatie over de Azure Identity client-bibliotheek.
 
-## <a name="assign-rbac-roles-for-access-to-data"></a>RBAC-rollen toewijzen voor toegang tot gegevens
+### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>RBAC-rollen (Role-based Access Control) toewijzen voor toegang tot gegevens
 
 Wanneer een Azure AD-beveiligingsprincipal probeert toegang te krijgen tot BLOB-of wachtrij gegevens, moet die beveiligingsprincipal machtigingen hebben voor de resource. Of de beveiligingsprincipal een beheerde identiteit in azure of een Azure AD-gebruikers account voor het uitvoeren van code in de ontwikkel omgeving is, moet aan de beveiligingsprincipal een RBAC-rol worden toegewezen die toegang verleent tot BLOB-of wachtrij gegevens in Azure Storage. Voor informatie over het toewijzen van machtigingen via RBAC, zie de sectie **RBAC-rollen toewijzen voor toegangs rechten** in [toegang verlenen tot Azure-blobs en-wacht rijen met behulp van Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
 
-## <a name="install-the-preview-packages"></a>De preview-pakketten installeren
+### <a name="authenticate-the-user-in-the-development-environment"></a>De gebruiker verifiëren in de ontwikkel omgeving
 
-In de voor beelden in dit artikel wordt gebruikgemaakt van de nieuwste preview-versie van de Azure Storage-client bibliotheek voor Blob Storage. Als u het preview-pakket wilt installeren, voert u de volgende opdracht uit vanuit de NuGet Package Manager-console:
+Wanneer uw code wordt uitgevoerd in de ontwikkel omgeving, wordt de verificatie mogelijk automatisch verwerkt of is er mogelijk een browser aanmelding vereist, afhankelijk van de hulpprogram ma's die u gebruikt. Micro soft Visual Studio ondersteunt eenmalige aanmelding (SSO), zodat het actieve Azure AD-gebruikers account automatisch wordt gebruikt voor verificatie. Zie [eenmalige aanmelding bij toepassingen](../../active-directory/manage-apps/what-is-single-sign-on.md)voor meer informatie over SSO.
 
-```powershell
-Install-Package Azure.Storage.Blobs -IncludePrerelease
+Andere ontwikkel hulpprogramma's vragen u mogelijk om u aan te melden via een webbrowser.
+
+### <a name="authenticate-a-service-principal-in-the-development-environment"></a>Een Service-Principal verifiëren in de ontwikkel omgeving
+
+Als uw ontwikkel omgeving geen ondersteuning biedt voor eenmalige aanmelding of aanmelding via een webbrowser, kunt u een Service-Principal gebruiken om te verifiëren vanuit de ontwikkel omgeving.
+
+#### <a name="create-the-service-principal"></a>De service-principal maken
+
+Roep de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) om een service-principal te maken met Azure CLI en een RBAC-rol toe te wijzen. Geef een Azure Storage rol voor gegevens toegang op om toe te wijzen aan de nieuwe service-principal. Daarnaast kunt u het bereik voor de roltoewijzing opgeven. Zie [ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md)voor meer informatie over de ingebouwde rollen voor Azure Storage.
+
+Als u onvoldoende machtigingen hebt om een rol toe te wijzen aan de Service-Principal, moet u mogelijk de eigenaar van het account of de beheerder vragen de roltoewijzing uit te voeren.
+
+In het volgende voor beeld wordt de Azure CLI gebruikt om een nieuwe service-principal te maken en de rol van **BLOB-gegevens lezer voor opslag** toe te wijzen aan het account bereik
+
+```azurecli-interactive
+az ad sp create-for-rbac \
+    --name <service-principal> \
+    --role "Storage Blob Data Reader" \
+    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-In de voor beelden in dit artikel wordt ook gebruikgemaakt van de nieuwste preview-versie van de [Azure Identity client-bibliotheek voor .net](https://www.nuget.org/packages/Azure.Identity/) om te verifiëren met Azure AD-referenties. Als u het preview-pakket wilt installeren, voert u de volgende opdracht uit vanuit de NuGet Package Manager-console:
+De `az ad sp create-for-rbac` opdracht retourneert een lijst met Service-Principal-eigenschappen in JSON-indeling. Kopieer deze waarden zodat u ze kunt gebruiken om de vereiste omgevings variabelen in de volgende stap te maken.
 
-```powershell
-Install-Package Azure.Identity -IncludePrerelease
+```json
+{
+    "appId": "generated-app-ID",
+    "displayName": "service-principal-name",
+    "name": "http://service-principal-uri",
+    "password": "generated-password",
+    "tenant": "tenant-ID"
+}
 ```
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET-code voorbeeld: een blok-Blob maken
+> [!IMPORTANT]
+> RBAC-roltoewijzingen kunnen enkele minuten duren voordat deze wordt door gegeven.
 
-Voeg de volgende `using`-instructies aan uw code toe om de Preview-versies van de identiteits-en Azure Storage-client bibliotheken van Azure te gebruiken.
+#### <a name="set-environment-variables"></a>Omgevingsvariabelen instellen
+
+De Azure Identity client-bibliotheek leest waarden uit drie omgevings variabelen tijdens runtime om de service-principal te verifiëren. De volgende tabel beschrijft de waarde die moet worden ingesteld voor elke omgevings variabele.
+
+|Omgevingsvariabele|Waarde
+|-|-
+|`AZURE_CLIENT_ID`|De App-ID voor de Service-Principal
+|`AZURE_TENANT_ID`|De Azure AD-Tenant-ID van de Service-Principal
+|`AZURE_CLIENT_SECRET`|Het wacht woord dat voor de Service-Principal is gegenereerd
+
+> [!IMPORTANT]
+> Nadat u de omgevings variabelen hebt ingesteld, sluit u het console venster en opent u het opnieuw. Als u Visual Studio of een andere ontwikkel omgeving gebruikt, moet u de ontwikkel omgeving mogelijk opnieuw opstarten om de nieuwe omgevings variabelen te registreren.
+
+Zie [identiteit voor Azure-app maken in de portal](../../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie.
+
+## <a name="install-client-library-packages"></a>Client bibliotheek pakketten installeren
+
+In de voor beelden in dit artikel wordt gebruikgemaakt van de nieuwste versie van de Azure Storage-client bibliotheek voor Blob Storage. Als u het pakket wilt installeren, voert u de volgende opdracht uit vanuit de NuGet Package Manager-console:
+
+```powershell
+Install-Package Azure.Storage.Blobs
+```
+
+In de voor beelden in dit artikel wordt ook gebruikgemaakt van de nieuwste versie van de [Azure Identity client-bibliotheek voor .net](https://www.nuget.org/packages/Azure.Identity/) om te verifiëren met Azure AD-referenties. Als u het pakket wilt installeren, voert u de volgende opdracht uit vanuit de NuGet Package Manager-console:
+
+```powershell
+Install-Package Azure.Identity
+```
+
+## <a name="net-code-example-create-a-block-blob"></a>.NET-codevoorbeeld: maken van een blok-blob
+
+Voeg de volgende `using`-instructies toe aan uw code voor het gebruik van de identiteits-en Azure Storage-client bibliotheken van Azure.
 
 ```csharp
 using System;

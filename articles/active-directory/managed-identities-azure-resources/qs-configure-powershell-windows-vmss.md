@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a09780ae117beb1a8d601b8fd88d43191321854f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 755aee312fd0492fd57a82cb7a437b04ebf72987
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183986"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547270"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Beheerde identiteiten configureren voor Azure-resources op schaal sets voor virtuele machines met behulp van Power shell
 
@@ -36,7 +36,7 @@ In dit artikel, met behulp van Power shell, leert u hoe u de beheerde identiteit
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend met beheerde identiteiten voor Azure-resources bent, lees de [overzichtssectie](overview.md). **Controleer het [verschil tussen een aan het systeem toegewezen en door de gebruiker beheerde toegewezen identiteit](overview.md#how-does-it-work)** .
+- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een aan het systeem toegewezen en door de gebruiker beheerde toegewezen identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 - Als u de beheer bewerkingen in dit artikel wilt uitvoeren, moet uw account de volgende toegangs beheer toewijzingen op basis van Azure-rollen hebben:
 
@@ -46,7 +46,7 @@ In dit artikel, met behulp van Power shell, leert u hoe u de beheerde identiteit
     - [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) voor het maken van een schaalset voor virtuele machines en het inschakelen en verwijderen van door het systeem toegewezen beheerde en/of door de gebruiker toegewezen beheerde identiteit uit een schaalset met virtuele machines.
     - Rol van [beheerde identiteit Inzender](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) om een door de gebruiker toegewezen beheerde identiteit te maken.
     - De rol [beheerde identiteits operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) voor het toewijzen en verwijderen van een door de gebruiker toegewezen beheerde identiteit van en aan een virtuele-machine schaalset.
-- Installeer [de meest recente versie van Azure PowerShell](/powershell/azure/install-az-ps) als u dat nog niet gedaan hebt. 
+- Installeer [de meest recente versie van Azure PowerShell](/powershell/azure/install-az-ps) als u dat nog niet hebt gedaan. 
 
 ## <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
 
@@ -146,7 +146,7 @@ Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "Sys
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beheerde identiteiten voor een overzicht van Azure-resources](overview.md)
+- [Overzicht van beheerde identiteiten voor Azure-resources](overview.md)
 - Zie voor de volledige Snelstartgids voor het maken van virtuele Azure-machines:
   
   - [Een virtuele Windows-machine maken met Power shell](../../virtual-machines/windows/quick-create-powershell.md) 

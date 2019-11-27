@@ -1,23 +1,18 @@
 ---
-title: Een start opdracht regel gebruiken in Azure Container Instances
-description: Het ingangs punt dat in een container installatie kopie is geconfigureerd negeren bij het implementeren van een Azure container instance
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Entry point in container exemplaar overschrijven
+description: Een opdracht regel instellen om het toegangs punt in een container installatie kopie te overschrijven wanneer u een Azure container-exemplaar implementeert
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 40d946db48a65452d2da529098c07d0d0c60d472
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619658"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533412"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Stel de opdracht regel in een container exemplaar in om de standaard opdracht regel bewerking te overschrijven
 
-Wanneer u een container exemplaar maakt, geeft u optioneel een opdracht op om de standaard opdracht regel instructie geïntegreerde in de container installatie kopie te overschrijven. Dit gedrag is vergelijkbaar met het `--entrypoint` opdracht regel argument voor. `docker run`
+Wanneer u een container exemplaar maakt, geeft u optioneel een opdracht op om de standaard opdracht regel instructie geïntegreerde in de container installatie kopie te overschrijven. Dit gedrag is vergelijkbaar met het `--entrypoint` opdracht regel argument om te `docker run`.
 
 Net als bij het instellen van [omgevings variabelen](container-instances-environment-variables.md) voor container instanties is het opgeven van een start opdracht regel handig voor batch taken waarbij elke container dynamisch moet worden voor bereid met een taak-specifieke configuratie.
 
@@ -37,21 +32,21 @@ Net als bij het instellen van [omgevings variabelen](container-instances-environ
 
 * Afhankelijk van de configuratie van de container, moet u mogelijk een volledig pad naar het uitvoer bare bestand van de opdracht regel of argumenten instellen.
 
-* Stel een geschikt [beleid voor opnieuw opstarten](container-instances-restart-policy.md) in voor het container exemplaar, afhankelijk van het feit of de opdracht regel een langlopende taak of een taak die wordt uitgevoerd. Een voor beeld: een beleid `Never` voor opnieuw opstarten of `OnFailure` wordt aanbevolen voor een Run-Once-taak. 
+* Stel een geschikt [beleid voor opnieuw opstarten](container-instances-restart-policy.md) in voor het container exemplaar, afhankelijk van het feit of de opdracht regel een langlopende taak of een taak die wordt uitgevoerd. Het beleid voor het opnieuw opstarten van `Never` of `OnFailure` wordt bijvoorbeeld aanbevolen voor een Run-Once-taak. 
 
-* Als u meer informatie nodig hebt over de standaardset in een container installatie kopie, gebruikt u de opdracht voor het inspecteren van de docker- [installatie kopie](https://docs.docker.com/engine/reference/commandline/image_inspect/) .
+* Als u meer informatie nodig hebt over de standaardset in een container installatie kopie, gebruikt u de opdracht voor het [inspecteren van de docker-installatie kopie](https://docs.docker.com/engine/reference/commandline/image_inspect/) .
 
 ## <a name="command-line-syntax"></a>Opdracht regel syntaxis
 
 De syntaxis van de opdracht regel is afhankelijk van de API of het hulp programma van Azure dat wordt gebruikt om de instanties te maken. Als u een shell-omgeving opgeeft, moet u ook rekening houden met de opdracht syntaxis conventies van de shell.
 
-* opdracht [AZ container Create][az-container-create] : Geef een teken reeks door `--command-line` met de para meter. Voor beeld `--command-line "python myscript.py arg1 arg2"`:).
+* [AZ container Create][az-container-create] opdracht: Geef een teken reeks door met de para meter `--command-line`. Voor beeld: `--command-line "python myscript.py arg1 arg2"`).
 
-* [New-AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell-cmdlet: Geef een teken reeks door `-Command` met de para meter. Voorbeeld: `-Command "echo hello"`.
+* [New-AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell-cmdlet: Geef een teken reeks door met de para meter `-Command`. Voor beeld: `-Command "echo hello"`.
 
-* Azure Portal: Geef in de **opdracht override** van de container configuratie een door komma's gescheiden lijst met teken reeksen op, zonder aanhalings tekens. Voor beeld `python, myscript.py, arg1, arg2`:). 
+* Azure Portal: Geef in de **opdracht override** van de container configuratie een door komma's gescheiden lijst met teken reeksen op, zonder aanhalings tekens. Voor beeld: `python, myscript.py, arg1, arg2`). 
 
-* Resource Manager-sjabloon of YAML-bestand of een van de Azure-Sdk's: Geef de opdracht regel eigenschap op als een matrix met teken reeksen. Voor beeld: de JSON `["python", "myscript.py", "arg1", "arg2"]` -matrix in een resource manager-sjabloon. 
+* Resource Manager-sjabloon of YAML-bestand of een van de Azure-Sdk's: Geef de opdracht regel eigenschap op als een matrix met teken reeksen. Voor beeld: de JSON-matrix `["python", "myscript.py", "arg1", "arg2"]` in een resource manager-sjabloon. 
 
   Als u bekend bent met de [Dockerfile](https://docs.docker.com/engine/reference/builder/) -syntaxis, is deze indeling vergelijkbaar met het formulier *Raad* van de cmd-instructie.
 
@@ -59,8 +54,8 @@ De syntaxis van de opdracht regel is afhankelijk van de API of het hulp programm
 
 |    |  Azure-CLI   | Portal | Template | 
 | ---- | ---- | --- | --- |
-| Eén opdracht | `--command-line "python myscript.py arg1 arg2"` | **Opdracht negeren**:`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| Meerdere opdrachten | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Opdracht negeren**:`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| Eén opdracht | `--command-line "python myscript.py arg1 arg2"` | **Opdracht negeren**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| Meerdere opdrachten | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Opdracht negeren**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Voor beeld van Azure CLI
 

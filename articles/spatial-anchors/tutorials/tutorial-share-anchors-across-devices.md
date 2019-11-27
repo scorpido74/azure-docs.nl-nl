@@ -77,7 +77,7 @@ Gebruik in het dialoog venster **hosting plan configureren** de volgende instell
 | Instelling | Voorgestelde waarde | Beschrijving |
 |-|-|-|
 |App Service-plan| MySharingServicePlan | De naam van het App Service-plan. |
-| Locatie | VS - west | Het datacenter waar de web-app wordt gehost. |
+| Locatie | US - west | Het datacenter waar de web-app wordt gehost. |
 | Grootte | Gratis | De [prijs categorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) die de hosting functies bepaalt. |
 
 Selecteer **OK**.

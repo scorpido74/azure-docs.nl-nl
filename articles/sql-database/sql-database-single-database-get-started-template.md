@@ -1,6 +1,6 @@
 ---
-title: 'Azure Resource Manager: Create a single database'
-description: Create a single database in Azure SQL Database using the Azure Resource Manager template.
+title: 'Azure Resource Manager: een enkele data base maken'
+description: Maak een enkele data base in Azure SQL Database met behulp van de Azure Resource Manager sjabloon.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -18,9 +18,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422567"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Quickstart: Create a single database in Azure SQL Database using the Azure Resource Manager template
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Snelstartgids: een enkele data base in Azure SQL Database maken met behulp van de Azure Resource Manager sjabloon
 
-Het maken van [één database](sql-database-single-database.md) is de snelste een eenvoudigste implementatieoptie om een database te maken in Azure SQL Database. This quickstart shows you how to create a single database using the Azure Resource Manager template. For more information, see [Azure Resource Manager documentation](/azure/azure-resource-manager/).
+Het maken van [één database](sql-database-single-database.md) is de snelste een eenvoudigste implementatieoptie om een database te maken in Azure SQL Database. In deze Quick start ziet u hoe u een enkele data base maakt met behulp van de sjabloon Azure Resource Manager. Zie [Azure Resource Manager-documentatie](/azure/azure-resource-manager/)voor meer informatie.
 
 Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://azure.microsoft.com/free/).
 
@@ -28,11 +28,11 @@ Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://a
 
 Een individuele database bevat een gedefinieerde set reken-, geheugen-, IO- en opslagresources die gebruikmaakt van één van twee [aankoopmodellen](sql-database-purchase-models.md). Wanneer u een individuele database maakt, definieert u ook een [SQL Database-server](sql-database-servers.md) om die te beheren en in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) in een opgegeven regio te plaatsen.
 
-The following JSON file is the template that is used in this article. The template is stored in [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/SQLServerAndDatabase/azuredeploy.json). More Azure SQL database template samples can be found in [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
+Het volgende JSON-bestand is de sjabloon die wordt gebruikt in dit artikel. De sjabloon wordt opgeslagen in [github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/SQLServerAndDatabase/azuredeploy.json). Meer voor beelden van Azure SQL database-sjablonen vindt u in [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular)start-sjablonen.
 
 [!code-json[create-azure-sql-database-server-and-database](~/resourcemanager-templates/SQLServerAndDatabase/azuredeploy.json)]
 
-Select **Try it** from the following PowerShell code block to open Azure Cloud Shell.
+Selecteer **Probeer het** uit het volgende Power shell-code blok om Azure Cloud shell te openen.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -74,13 +74,13 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## <a name="query-the-database"></a>Een query uitvoeren op de database
 
-To query the database, see [Query the database](./sql-database-single-database-get-started.md#query-the-database).
+Zie [query uitvoeren op de data](./sql-database-single-database-get-started.md#query-the-database)Base om de data base te doorzoeken.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Behoud deze resourcegroep, databaseserver en individuele database als u naar de [Volgende stappen](#next-steps) wilt gaan. De volgende stappen laten zien hoe u verbinding maakt met en een query uitvoert op uw database met behulp van verschillende methoden.
 
-To delete the resource group:
+De resource groep verwijderen:
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -105,5 +105,5 @@ az group delete --name $resourceGroupName
 - Nadat u een serverfirewallregel hebt gemaakt, kunt u met verschillende hulpprogramma's en programmeertalen [verbinding maken met uw database en query's uitvoeren](sql-database-connect-query.md) op uw database.
   - [Verbinding maken en query's uitvoeren met behulp van SQL Server Management Studio](sql-database-connect-query-ssms.md)
   - [Verbinding maken en query's uitvoeren met behulp van Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
-- To create a single database using Azure CLI, see [Azure CLI samples](sql-database-cli-samples.md).
-- To create a single database using Azure PowerShell, see [Azure PowerShell samples](sql-database-powershell-samples.md).
+- Zie [Azure cli](sql-database-cli-samples.md)-voor beelden voor het maken van één data base met behulp van Azure cli.
+- Zie Azure PowerShell-voor [beelden](sql-database-powershell-samples.md)om een enkele data base te maken met behulp van Azure PowerShell.

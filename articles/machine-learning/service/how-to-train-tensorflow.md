@@ -242,7 +242,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 ### <a name="parameter-server"></a>Parameterserver
 
-U kunt ook uitvoeren [native gedistribueerde TensorFlow](https://www.tensorflow.org/deploy/distributed), waarbij het servermodel parameter worden gebruikt. Bij deze methode hoeft trainen u in een cluster van de parameter-servers en werknemers. De werknemers Bereken de verlopen tijdens de training, terwijl de parameter-servers de verlopen aggregeren.
+U kunt ook [systeem eigen gedistribueerde tensor flow](https://www.tensorflow.org/deploy/distributed)uitvoeren. Dit maakt gebruik van het parameter server model. Bij deze methode hoeft trainen u in een cluster van de parameter-servers en werknemers. De werknemers Bereken de verlopen tijdens de training, terwijl de parameter-servers de verlopen aggregeren.
 
 Als u de methode van de parameter server wilt gebruiken, geeft u een [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) -object op voor de `distributed_training`-para meter in de tensor flow-constructor.
 
@@ -270,7 +270,7 @@ run = exp.submit(tf_est)
 
 U hebt ook de netwerk adressen en poorten van het cluster nodig voor de [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec), zodat Azure Machine Learning de `TF_CONFIG` omgevings variabele voor u instelt.
 
-De `TF_CONFIG` omgevingsvariabele is een JSON-tekenreeks. Hier volgt een voorbeeld van de variabele voor de parameterserver:
+De omgevings variabele `TF_CONFIG` is een JSON-teken reeks. Hier volgt een voorbeeld van de variabele voor de parameterserver:
 
 ```JSON
 TF_CONFIG='{
@@ -317,6 +317,6 @@ De volledige [instructies voor](how-to-deploy-and-where.md) het implementeren va
 
 In dit artikel hebt u een tensor flow-model getraind en geregistreerd en hebt u geleerd over opties voor implementatie. Raadpleeg de volgende artikelen voor meer informatie over Azure Machine Learning.
 
-* [Metrische gegevens over uitvoeren tijdens de training bijhouden](how-to-track-experiments.md)
-* [Afstemmen van hyperparameters](how-to-tune-hyperparameters.md)
+* [Metrische uitvoerings gegevens tijdens de training volgen](how-to-track-experiments.md)
+* [Hyper parameters afstemmen](how-to-tune-hyperparameters.md)
 * [Referentie architectuur voor gedistribueerde training van diep gaande lessen in azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

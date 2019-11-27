@@ -19,9 +19,9 @@ Dit artikel bevat stapsgewijze instructies om vanuit Power BI Desktop verbinding
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Download [Power BI Desktop](https://aka.ms/pbidesktopstore).
+* Down load [Power bi Desktop](https://aka.ms/pbidesktopstore).
 
-## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Connecting Power BI to data in Azure Blockchain Workbench
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Power BI verbinding maken met gegevens in azure Block Chain workbench
 
 1.  Open Power BI Desktop.
 2.  Selecteer **Gegevens ophalen**.
@@ -43,7 +43,7 @@ Dit artikel bevat stapsgewijze instructies om vanuit Power BI Desktop verbinding
 
     ![Navigator](./media/data-powerbi/navigator.png)
 
-7.  Selecteer de weergaven die u wilt opnemen in het rapport. For demonstration purposes, we include **vwContractAction**, which provides details on the actions that have taken place on a contract.
+7.  Selecteer de weergaven die u wilt opnemen in het rapport. Voor demonstratie doeleinden bevatten we **vwContractAction**, dat details bevat over de acties die op een contract hebben plaatsgevonden.
 
     ![Weergaven selecteren](./media/data-powerbi/select-views.png)
 

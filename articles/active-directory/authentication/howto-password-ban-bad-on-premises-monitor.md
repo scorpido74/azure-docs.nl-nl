@@ -1,6 +1,6 @@
 ---
-title: Password protection monitor and logging- Azure Active Directory
-description: Understand Azure AD Password Protection monitoring and logging
+title: Wachtwoord beveiligings monitor en logboek registratie-Azure Active Directory
+description: Meer informatie over Azure AD-wachtwoord beveiligings bewaking en logboek registratie
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,15 +18,15 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381681"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD Password Protection monitoring and logging
+# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD-controle en logboek registratie voor wachtwoord beveiliging
 
-After the deployment of Azure AD Password Protection, monitoring and reporting are essential tasks. This article goes into detail to help you understand various monitoring techniques, including where each service logs information and how to report on the use of Azure AD Password Protection.
+Na de implementatie van Azure AD-wachtwoord beveiliging, zijn bewaking en rapportage essentiële taken. In dit artikel vindt u meer informatie over verschillende bewakings technieken, waaronder waar elke service gegevens registreert en hoe u kunt rapporteren over het gebruik van Azure AD-wachtwoord beveiliging.
 
-Monitoring and reporting are done either by event log messages or by running PowerShell cmdlets. The DC agent and proxy services both log event log messages. All PowerShell cmdlets described below are only available on the proxy server (see the AzureADPasswordProtection PowerShell module). The DC agent software does not install a PowerShell module.
+Bewaking en rapportage worden uitgevoerd door berichten in het gebeurtenis logboek of door Power shell-cmdlets uit te voeren. De DC-agent en proxy services registreren logboek berichten van gebeurtenissen. Alle Power shell-cmdlets die hieronder worden beschreven, zijn alleen beschikbaar op de proxy server (Zie de AzureADPasswordProtection Power shell-module). Met de DC-agent software wordt geen Power shell-module geïnstalleerd.
 
-## <a name="dc-agent-event-logging"></a>DC agent event logging
+## <a name="dc-agent-event-logging"></a>Gebeurtenis registratie DC-agent
 
-On each domain controller, the DC agent service software writes the results of each individual password validation operation (and other status) to a local event log:
+Op elke domein controller schrijft de DC-Agent service software de resultaten van elke afzonderlijke wachtwoord validatie bewerking (en andere status) naar een lokaal gebeurtenis logboek:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin`
 
@@ -34,52 +34,52 @@ On each domain controller, the DC agent service software writes the results of e
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
 
-The DC agent Admin log is the primary source of information for how the software is behaving.
+Het logboek van de DC-agent beheerder is de primaire bron van informatie voor de werking van de software.
 
-Note that the Trace log is off by default.
+Houd er rekening mee dat het tracerings logboek standaard uitgeschakeld is.
 
-Events logged by the various DC agent components fall within the following ranges:
+Gebeurtenissen die zijn vastgelegd door de verschillende onderdelen van de DC-agent vallen binnen de volgende bereiken:
 
-|Component |Event ID range|
+|Onderdeel |Bereik gebeurtenis-ID|
 | --- | --- |
-|DC Agent password filter dll| 10000-19999|
-|DC agent service hosting process| 20000-29999|
-|DC agent service policy validation logic| 30000-39999|
+|Dll voor wachtwoord filter van DC-agent| 10000-19999|
+|Hosting proces van DC-Agent service| 20000-29999|
+|Validatie logica van DC-Agent service beleid| 30000-39999|
 
-## <a name="dc-agent-admin-event-log"></a>DC agent Admin event log
+## <a name="dc-agent-admin-event-log"></a>Gebeurtenis logboek van DC-agent beheerder
 
-### <a name="password-validation-outcome-events"></a>Password validation outcome events
+### <a name="password-validation-outcome-events"></a>Resultaat gebeurtenissen voor wachtwoord validatie
 
-On each domain controller, the DC agent service software writes the results of each individual password validation to the DC agent admin event log.
+Op elke domein controller schrijft de DC Agent service-software de resultaten van elke afzonderlijke wachtwoord validatie naar het gebeurtenis logboek van de DC-agent beheerder.
 
-For a successful password validation operation, there is generally one event logged from the DC agent password filter dll. For a failing password validation operation, there are generally two events logged, one from the DC agent service, and one from the DC Agent password filter dll.
+Voor een geslaagde wachtwoord validatie is er meestal één gebeurtenis geregistreerd in het dll-bestand voor wachtwoord filter van de domein controller. Voor een mislukte wachtwoord validatie worden er in het algemeen twee gebeurtenissen geregistreerd, een van de DC-Agent service en een van de dll voor wachtwoord filtering van de DC-agent.
 
-Discrete events to capture these situations are logged, based around the following factors:
+Discrete gebeurtenissen voor het vastleggen van deze situaties worden vastgelegd op basis van de volgende factoren:
 
-* Whether a given password is being set or changed.
-* Whether validation of a given password passed or failed.
-* Whether validation failed due to the Microsoft global policy, the organizational policy, or a combination.
-* Whether audit only mode is currently on or off for the current password policy.
+* Hiermee wordt aangegeven of een bepaald wacht woord wordt ingesteld of gewijzigd.
+* Hiermee wordt aangegeven of de validatie van een bepaald wacht woord is geslaagd of mislukt.
+* Of de validatie is mislukt vanwege het globale beleid van micro soft, het organisatie beleid of een combi natie hiervan.
+* Hiermee wordt aangegeven of de modus alleen controle momenteel is in-of uitgeschakeld voor het huidige wachtwoord beleid.
 
-The key password-validation-related events are as follows:
+U hebt de volgende belang rijke gebeurtenissen met betrekking tot validatie op basis van wacht woorden:
 
-|   |Wachtwoord wijzigen |Password set|
+|   |Wachtwoord wijzigen |Wachtwoordset|
 | --- | :---: | :---: |
-|Pass |10014 |10015|
-|Fail (due to customer password policy)| 10016, 30002| 10017, 30003|
-|Fail (due to Microsoft password policy)| 10016, 30004| 10017, 30005|
-|Fail (due to combined Microsoft and customer password policies)| 10016, 30026| 10017, 30027|
-|Audit-only Pass (would have failed customer password policy)| 10024, 30008| 10025, 30007|
-|Audit-only Pass (would have failed Microsoft password policy)| 10024, 30010| 10025, 30009|
-|Audit-only Pass (would have failed combined Microsoft and customer password policies)| 10024, 30028| 10025, 30029|
+|Door |10014 |10015|
+|Mislukt (vanwege wachtwoord beleid van klant)| 10016, 30002| 10017, 30003|
+|Mislukt (vanwege het wachtwoord beleid van micro soft)| 10016, 30004| 10017, 30005|
+|Mislukt (door gecombineerde beleids regels van micro soft en het wacht woord van de klant)| 10016, 30026| 10017, 30027|
+|Alleen controle door gegeven (zou het beleid voor klant wachtwoord niet hebben kunnen uitvoeren)| 10024, 30008| 10025, 30007|
+|Alleen controle door gegeven (zou het micro soft-wachtwoord beleid zouden hebben mislukt)| 10024, 30010| 10025, 30009|
+|Alleen-controle door gegeven (zou zijn mislukt gecombineerd micro soft en het wachtwoord beleid van de klant)| 10024, 30028| 10025, 30029|
 
-The cases in the table above that refer to "combined policies" are referring to situations where a user's password was found to contain at least one token from both the Microsoft banned password list and the customer banned password list.
+De gevallen in de tabel hierboven die verwijzen naar ' gecombineerd beleid ', verwijzen naar situaties waarbij het wacht woord van een gebruiker ten minste één token heeft gevonden uit de lijst met geblokkeerde wacht woorden van micro soft en de lijst met geblokkeerde wacht woorden van de klant.
 
-When a pair of events is logged together, both events are explicitly associated by having the same CorrelationId.
+Wanneer een paar gebeurtenissen samen worden geregistreerd, worden beide gebeurtenissen expliciet gekoppeld door dezelfde correlatie te hebben.
 
-### <a name="password-validation-summary-reporting-via-powershell"></a>Password validation summary reporting via PowerShell
+### <a name="password-validation-summary-reporting-via-powershell"></a>Overzicht van het rapporteren van wachtwoord validatie via Power shell
 
-The `Get-AzureADPasswordProtectionSummaryReport` cmdlet may be used to produce a summary view of password validation activity. An example output of this cmdlet is as follows:
+De cmdlet `Get-AzureADPasswordProtectionSummaryReport` kan worden gebruikt om een samen vatting van de activiteit voor wachtwoord validatie te maken. Een voor beeld van een uitvoer van deze cmdlet is als volgt:
 
 ```powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
@@ -94,11 +94,11 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-The scope of the cmdlet’s reporting may be influenced using one of the –Forest, -Domain, or –DomainController parameters. Not specifying a parameter implies –Forest.
+Het bereik van de rapportage van de cmdlet kan worden beïnvloed met behulp van een van de para meters – forest,-Domain of – domain controller. Het opgeven van een para meter impliceert: forest.
 
-The `Get-AzureADPasswordProtectionSummaryReport` cmdlet works by querying the DC agent admin event log, and then counting the total number of events that correspond to each displayed outcome category. The following table contains the mappings between each outcome and its corresponding event ID:
+De cmdlet `Get-AzureADPasswordProtectionSummaryReport` werkt met behulp van een query naar het gebeurtenis logboek van de DC-agent beheerder en telt vervolgens het totale aantal gebeurtenissen dat overeenkomt met elke weer gegeven resultaat categorie. De volgende tabel bevat de toewijzingen tussen de resultaten en de bijbehorende gebeurtenis-ID:
 
-|Get-AzureADPasswordProtectionSummaryReport property |Corresponding event ID|
+|Get-AzureADPasswordProtectionSummaryReport-eigenschap |Bijbehorende gebeurtenis-ID|
 | :---: | :---: |
 |PasswordChangesValidated |10014|
 |PasswordSetsValidated |10015|
@@ -109,17 +109,17 @@ The `Get-AzureADPasswordProtectionSummaryReport` cmdlet works by querying the DC
 |PasswordChangeErrors |10012|
 |PasswordSetErrors |10013|
 
-Note that the `Get-AzureADPasswordProtectionSummaryReport` cmdlet is shipped in PowerShell script form and if needed may be referenced directly at the following location:
+Houd er rekening mee dat de cmdlet `Get-AzureADPasswordProtectionSummaryReport` wordt verzonden in Power shell-script vorm en dat indien nodig, rechtstreeks naar de volgende locatie kan worden verwezen:
 
 `%ProgramFiles%\WindowsPowerShell\Modules\AzureADPasswordProtection\Get-AzureADPasswordProtectionSummaryReport.ps1`
 
 > [!NOTE]
-> This cmdlet works by opening a PowerShell session to each domain controller. In order to succeed, PowerShell remote session support must be enabled on each domain controller, and the client must have sufficient privileges. For more information on PowerShell remote session requirements, run 'Get-Help about_Remote_Troubleshooting' in a PowerShell window.
+> Deze cmdlet werkt door een Power shell-sessie te openen voor elke domein controller. De ondersteuning voor externe Power shell-sessies moet zijn ingeschakeld op elke domein controller en de client moet voldoende bevoegdheden hebben om te kunnen slagen. Voor meer informatie over Power shell-vereisten voor externe sessies voert u Get-Help about_Remote_Troubleshooting in een Power shell-venster.
 
 > [!NOTE]
-> This cmdlet works by remotely querying each DC agent service’s Admin event log. If the event logs contain large numbers of events, the cmdlet may take a long time to complete. In addition, bulk network queries of large data sets may impact domain controller performance. Therefore, this cmdlet should be used carefully in production environments.
+> Met deze cmdlet wordt op afstand een query uitgevoerd voor elk beheer gebeurtenis logboek van de DC-Agent service. Als de gebeurtenis logboeken grote aantallen gebeurtenissen bevatten, kan het enige tijd duren voordat de cmdlet is voltooid. Bovendien kunnen bulksgewijze netwerk query's van grote gegevens sets van invloed zijn op de prestaties van de domein controller. Deze cmdlet moet daarom zorgvuldig worden gebruikt in productie omgevingen.
 
-### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Sample event log message for Event ID 10014 (successful password change)
+### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Voorbeeld bericht in gebeurtenis logboek voor gebeurtenis-ID 10014 (geslaagde wachtwoord wijziging)
 
 ```text
 The changed password for the specified user was validated as compliant with the current Azure password policy.
@@ -128,7 +128,7 @@ The changed password for the specified user was validated as compliant with the 
  FullName:
 ```
 
-### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Sample event log message for Event ID 10017 and 30003 (failed password set)
+### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Voorbeeld bericht in gebeurtenis logboek voor gebeurtenis-ID 10017 en 30003 (mislukte wachtwoord instelling)
 
 10017:
 
@@ -148,7 +148,7 @@ The reset password for the specified user was rejected because it matched at lea
  FullName:
 ```
 
-### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Sample event log message for Event ID 30001 (password accepted due to no policy available)
+### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Voorbeeld bericht van gebeurtenis logboek voor gebeurtenis-ID 30001 (wacht woord geaccepteerd omdat er geen beleid beschikbaar is)
 
 ```text
 The password for the specified user was accepted because an Azure password policy is not available yet
@@ -175,7 +175,7 @@ This condition may be caused by one or more of the following reasons:%n
    Resolution steps: ensure network connectivity exists to the domain.
 ```
 
-### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Sample event log message for Event ID 30006 (new policy being enforced)
+### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Voorbeeld bericht in gebeurtenis logboek voor gebeurtenis-ID 30006 (nieuw beleid wordt afgedwongen)
 
 ```text
 The service is now enforcing the following Azure password policy.
@@ -187,7 +187,7 @@ The service is now enforcing the following Azure password policy.
  Enforce tenant policy: 1
 ```
 
-### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>Sample event log message for Event ID 30019 (Azure AD Password Protection is disabled)
+### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>Voorbeeld bericht van gebeurtenis logboek voor gebeurtenis-ID 30019 (Azure AD-wachtwoord beveiliging is uitgeschakeld)
 
 ```text
 The most recently obtained Azure password policy was configured to be disabled. All passwords submitted for validation from this point on will automatically be considered compliant with no processing performed.
@@ -196,63 +196,63 @@ No further events will be logged until the policy is changed.%n
 
 ```
 
-## <a name="dc-agent-operational-log"></a>DC Agent Operational log
+## <a name="dc-agent-operational-log"></a>Operationeel logboek van DC-agent
 
-The DC agent service will also log operational-related events to the following log:
+De DC-Agent service registreert ook operationele gerelateerde gebeurtenissen in het volgende logboek:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational`
 
-## <a name="dc-agent-trace-log"></a>DC Agent Trace log
+## <a name="dc-agent-trace-log"></a>Traceer logboek DC-agent
 
-The DC agent service can also log verbose debug-level trace events to the following log:
+De DC-Agent service kan ook uitgebreide gebeurtenissen voor fout opsporing op debugniveau vastleggen in het volgende logboek:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
 
-Trace logging is disabled by default.
+Traceer logboek registratie is standaard uitgeschakeld.
 
 > [!WARNING]
-> When enabled, the Trace log receives a high volume of events and may impact domain controller performance. Therefore, this enhanced log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
+> Wanneer deze functie is ingeschakeld, ontvangt het tracerings logboek een groot aantal gebeurtenissen en kan dit van invloed zijn op de prestaties van de domein controller. Daarom moet dit uitgebreide logboek alleen worden ingeschakeld als een probleem een grondig onderzoek vereist en vervolgens alleen gedurende een minimale hoeveelheid tijd.
 
-## <a name="dc-agent-text-logging"></a>DC Agent text logging
+## <a name="dc-agent-text-logging"></a>Tekst registratie van DC-agent
 
-The DC agent service can be configured to write to a text log by setting the following registry value:
+De DC-Agent service kan worden geconfigureerd om naar een tekst logboek te schrijven door de volgende register waarde in te stellen:
 
 ```text
 HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters!EnableTextLogging = 1 (REG_DWORD value)
 ```
 
-Text logging is disabled by default. A restart of the DC agent service is required for changes to this value to take effect. When enabled the DC agent service will write to a log file located under:
+Tekst logboek registratie is standaard uitgeschakeld. De DC-Agent service moet opnieuw worden opgestart om wijzigingen in deze waarde van kracht te laten worden. Wanneer de DC-Agent service is ingeschakeld, wordt er naar een logboek bestand geschreven dat zich bevindt in:
 
 `%ProgramFiles%\Azure AD Password Protection DC Agent\Logs`
 
 > [!TIP]
-> The text log receives the same debug-level entries that can be logged to the Trace log, but is generally in an easier format to review and analyze.
+> Het tekst logboek ontvangt dezelfde vermeldingen voor fout opsporing die kunnen worden geregistreerd in het traceer logboek, maar is in het algemeen een eenvoudigere indeling om te controleren en analyseren.
 
 > [!WARNING]
-> When enabled, this log receives a high volume of events and may impact domain controller performance. Therefore, this enhanced log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
+> Als deze functie is ingeschakeld, ontvangt u een groot aantal gebeurtenissen en kan dit van invloed zijn op de prestaties van de domein controller. Daarom moet dit uitgebreide logboek alleen worden ingeschakeld als een probleem een grondig onderzoek vereist en vervolgens alleen gedurende een minimale hoeveelheid tijd.
 
-## <a name="dc-agent-performance-monitoring"></a>DC agent performance monitoring
+## <a name="dc-agent-performance-monitoring"></a>Bewaking van DC-agent prestaties
 
-The DC agent service software installs a performance counter object named **Azure AD Password Protection**. The following perf counters are currently available:
+De DC Agent-service software installeert een prestatie meter object met de naam **Azure AD-wachtwoord beveiliging**. De volgende prestatie meter items zijn momenteel beschikbaar:
 
-|Perf counter name | Beschrijving|
+|Naam prestatie meter item | Beschrijving|
 | --- | --- |
-|Passwords processed |This counter displays the total number of passwords processed (accepted or rejected) since last restart.|
-|Passwords accepted |This counter displays the total number of passwords that were accepted since last restart.|
-|Passwords rejected |This counter displays the total number of passwords that were rejected since last restart.|
-|Password filter requests in progress |This counter displays the number of password filter requests currently in progress.|
-|Peak password filter requests |This counter displays the peak number of concurrent password filter requests since the last restart.|
-|Password filter request errors |This counter displays the total number of password filter requests that failed due to an error since last restart. Errors can occur when the Azure AD Password Protection DC agent service is not running.|
-|Password filter requests/sec |This counter displays the rate at which passwords are being processed.|
-|Password filter request processing time |This counter displays the average time required to process a password filter request.|
-|Peak password filter request processing time |This counter displays the peak password filter request processing time since the last restart.|
-|Passwords accepted due to audit mode |This counter displays the total number of passwords that would normally have been rejected, but were accepted because the password policy was configured to be in audit-mode (since last restart).|
+|Verwerkte wacht woorden |Met deze teller wordt het totale aantal verwerkte wacht woorden weer gegeven (geaccepteerd of afgewezen) sinds de laatste keer opnieuw opstarten.|
+|Wacht woorden geaccepteerd |Met deze teller wordt het totale aantal wacht woorden weer gegeven dat sinds de laatste keer opnieuw is geaccepteerd.|
+|Geweigerde wacht woorden |Met deze teller wordt het totale aantal wacht woorden weer gegeven dat is geweigerd sinds de laatste keer opnieuw is opgestart.|
+|Wachtwoord filter aanvragen worden uitgevoerd |Met deze teller wordt het aantal aanvragen voor wachtwoord filter weer gegeven dat momenteel wordt uitgevoerd.|
+|Piek aanvragen voor wachtwoord filter |Deze teller geeft het maximum aantal aanvragen voor het filteren van gelijktijdige wacht woorden weer sinds de laatste keer opnieuw opstarten.|
+|Fouten in wachtwoord filter aanvragen |Met deze teller wordt het totale aantal aanvragen voor wachtwoord filter weer gegeven dat is mislukt vanwege een fout sinds de laatste keer opnieuw opstarten. Er kunnen fouten optreden wanneer de Azure AD-service voor wachtwoord beveiliging van de DC-agent niet wordt uitgevoerd.|
+|Wachtwoord filter aanvragen per seconde |Deze teller geeft de snelheid weer waarmee wacht woorden worden verwerkt.|
+|Verwerkings tijd wachtwoord filter aanvraag |Deze teller toont de gemiddelde tijd die nodig is voor het verwerken van een aanvraag voor wachtwoord filter.|
+|Verwerkings tijd van aanvragen voor piek wachtwoord filter |Deze teller geeft de maximale verwerkings tijd voor wachtwoord filter aanvragen sinds de laatste keer opnieuw opstarten.|
+|Wacht woorden die zijn geaccepteerd vanwege de controle modus |Met deze teller wordt het totale aantal wacht woorden weer gegeven dat normaal zou zijn afgewezen, maar wel werden geaccepteerd omdat het wachtwoord beleid is geconfigureerd voor de controle modus (sinds de laatste keer opnieuw opstarten).|
 
-## <a name="dc-agent-discovery"></a>DC Agent discovery
+## <a name="dc-agent-discovery"></a>Detectie van DC-agent
 
-The `Get-AzureADPasswordProtectionDCAgent` cmdlet may be used to display basic information about the various DC agents running in a domain or forest. This information is retrieved from the serviceConnectionPoint object(s) registered by the running DC agent service(s).
+De cmdlet `Get-AzureADPasswordProtectionDCAgent` kan worden gebruikt voor het weer geven van basis informatie over de verschillende DC-agents die worden uitgevoerd in een domein of forest. Deze informatie wordt opgehaald uit de serviceConnectionPoint-object (en) die zijn geregistreerd door de actieve DC-Agent service (s).
 
-An example output of this cmdlet is as follows:
+Een voor beeld van een uitvoer van deze cmdlet is als volgt:
 
 ```powershell
 Get-AzureADPasswordProtectionDCAgent
@@ -263,17 +263,17 @@ PasswordPolicyDateUTC : 2/16/2018 8:35:01 AM
 HeartbeatUTC          : 2/16/2018 8:35:02 AM
 ```
 
-The various properties are updated by each DC agent service on an approximate hourly basis. The data is still subject to Active Directory replication latency.
+De verschillende eigenschappen worden op basis van elk uur bijgewerkt door elke DC-Agent service. Voor de gegevens is nog steeds Active Directory replicatie latentie van toepassing.
 
-The scope of the cmdlet’s query may be influenced using either the –Forest or –Domain parameters.
+Het bereik van de query van de cmdlet kan worden beïnvloed door gebruik te maken van de para meters – forest of-domein.
 
-If the HeartbeatUTC value gets stale, this may be a symptom that the Azure AD Password Protection DC Agent on that domain controller is not running, or has been uninstalled, or the machine was demoted and is no longer a domain controller.
+Als de waarde van HeartbeatUTC verouderd is, kan dit een symptoom zijn dat de Azure AD-agent voor wachtwoord beveiliging op die domein controller niet wordt uitgevoerd, of verwijderd is, of dat de computer is gedegradeerd en niet langer een domein controller is.
 
-If the PasswordPolicyDateUTC value gets stale, this may be a symptom that the Azure AD Password Protection DC Agent on that machine is not working properly.
+Als de waarde van PasswordPolicyDateUTC verouderd is, kan dit een symptoom zijn dat de DC-agent voor de Azure AD-wachtwoord beveiliging op die computer niet goed werkt.
 
-## <a name="dc-agent-newer-version-available"></a>DC agent newer version available
+## <a name="dc-agent-newer-version-available"></a>Nieuwe versie van DC-agent beschikbaar
 
-The DC agent service will log a 30034 warning event to the Operational log upon detecting that a newer version of the DC agent software is available, for example:
+De DC-Agent service meldt een 30034-waarschuwings gebeurtenis aan het operationele logboek wanneer wordt gedetecteerd dat er een nieuwere versie van de DC-agent software beschikbaar is, bijvoorbeeld:
 
 ```text
 An update for Azure AD Password Protection DC Agent is available.
@@ -287,14 +287,14 @@ https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
 Current version: 1.2.116.0
 ```
 
-The event above does not specify the version of the newer software. You should go to the link in the event message for that information.
+De bovenstaande gebeurtenis geeft niet de versie van de nieuwere software op. Ga naar de koppeling in het gebeurtenis bericht voor deze informatie.
 
 > [!NOTE]
-> Despite the references to "autoupgrade" in the above event message, the DC agent software does not currently support this feature.
+> Ondanks de verwijzingen naar "autoupgrade" in het bovenstaande gebeurtenis bericht, biedt de DC-agent software momenteel geen ondersteuning voor deze functie.
 
-## <a name="proxy-service-event-logging"></a>Proxy service event logging
+## <a name="proxy-service-event-logging"></a>Logboek registratie van proxy service
 
-The Proxy service emits a minimal set of events to the following event logs:
+De proxy service verzendt een minimale set gebeurtenissen naar de volgende gebeurtenis logboeken:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Admin`
 
@@ -302,50 +302,50 @@ The Proxy service emits a minimal set of events to the following event logs:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace`
 
-Note that the Trace log is off by default.
+Houd er rekening mee dat het tracerings logboek standaard uitgeschakeld is.
 
 > [!WARNING]
-> When enabled, the Trace log receives a high volume of events and this may impact performance of the proxy host. Therefore, this log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
+> Wanneer deze functie is ingeschakeld, ontvangt het tracerings logboek een groot aantal gebeurtenissen. Dit kan van invloed zijn op de prestaties van de proxy-host. Daarom moet dit logboek alleen worden ingeschakeld als een probleem een grondig onderzoek vereist en vervolgens alleen gedurende een minimale hoeveelheid tijd.
 
-Events are logged by the various Proxy components using the following ranges:
+Gebeurtenissen worden door de verschillende proxy onderdelen geregistreerd met behulp van de volgende bereiken:
 
-|Component |Event ID range|
+|Onderdeel |Bereik gebeurtenis-ID|
 | --- | --- |
-|Proxy service hosting process| 10000-19999|
-|Proxy service core business logic| 20000-29999|
+|Hosting proces van proxy service| 10000-19999|
+|Bedrijfs logica voor de kern van proxy service| 20000-29999|
 |PowerShell-cmdlets| 30000-39999|
 
-## <a name="proxy-service-text-logging"></a>Proxy service text logging
+## <a name="proxy-service-text-logging"></a>Logboek registratie van proxy service-tekst
 
-The Proxy service can be configured to write to a text log by setting the following registry value:
+De proxy service kan worden geconfigureerd om naar een tekst logboek te schrijven door de volgende register waarde in te stellen:
 
 HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters!EnableTextLogging = 1 (REG_DWORD value)
 
-Text logging is disabled by default. A restart of the Proxy service is required for changes to this value to take effect. When enabled the Proxy service will write to a log file located under:
+Tekst logboek registratie is standaard uitgeschakeld. De proxy service moet opnieuw worden opgestart om wijzigingen in deze waarde van kracht te laten worden. Wanneer de proxy service is ingeschakeld, wordt er naar een logboek bestand geschreven dat zich bevindt in:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
 > [!TIP]
-> The text log receives the same debug-level entries that can be logged to the Trace log, but is generally in an easier format to review and analyze.
+> Het tekst logboek ontvangt dezelfde vermeldingen voor fout opsporing die kunnen worden geregistreerd in het traceer logboek, maar is in het algemeen een eenvoudigere indeling om te controleren en analyseren.
 
 > [!WARNING]
-> When enabled, this log receives a high volume of events and may impact the machine's performance. Therefore, this enhanced log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
+> Wanneer deze functie is ingeschakeld, ontvangt het logboek een groot aantal gebeurtenissen en kan dit van invloed zijn op de prestaties van de machine. Daarom moet dit uitgebreide logboek alleen worden ingeschakeld als een probleem een grondig onderzoek vereist en vervolgens alleen gedurende een minimale hoeveelheid tijd.
 
-## <a name="powershell-cmdlet-logging"></a>PowerShell cmdlet logging
+## <a name="powershell-cmdlet-logging"></a>Logboek registratie voor Power shell-cmdlets
 
-PowerShell cmdlets that result in a state change (for example, Register-AzureADPasswordProtectionProxy) will normally log an outcome event to the Operational log.
+Power shell-cmdlets die resulteren in een status wijziging (bijvoorbeeld REGI ster-AzureADPasswordProtectionProxy), registreren normaal gesp roken een resultaat gebeurtenis in het operationele logboek.
 
-In addition, most of the Azure AD Password Protection PowerShell cmdlets will write to a text log located under:
+Daarnaast schrijft de meeste van de Azure AD-cmdlets voor wachtwoord beveiliging Power shell naar een tekst logboek dat zich bevindt in:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
-If a cmdlet error occurs and the cause and\or solution is not readily apparent, these text logs may also be consulted.
+Als er een cmdlet-fout optreedt en de oorzaak van de en/of-oplossing niet direct zichtbaar is, kunnen deze tekst logboeken ook worden geraadpleegd.
 
-## <a name="proxy-discovery"></a>Proxy discovery
+## <a name="proxy-discovery"></a>Proxy detectie
 
-The `Get-AzureADPasswordProtectionProxy` cmdlet may be used to display basic information about the various Azure AD Password Protection Proxy services running in a domain or forest. This information is retrieved from the serviceConnectionPoint object(s) registered by the running Proxy service(s).
+De cmdlet `Get-AzureADPasswordProtectionProxy` kan worden gebruikt voor het weer geven van basis informatie over de verschillende Azure AD-Services voor wachtwoord beveiliging die worden uitgevoerd in een domein of forest. Deze informatie wordt opgehaald uit de serviceConnectionPoint-object (en) die zijn geregistreerd door de actieve proxy service (s).
 
-An example output of this cmdlet is as follows:
+Een voor beeld van een uitvoer van deze cmdlet is als volgt:
 
 ```powershell
 Get-AzureADPasswordProtectionProxy
@@ -355,15 +355,15 @@ Forest                : bplRootDomain.com
 HeartbeatUTC          : 12/25/2018 6:35:02 AM
 ```
 
-The various properties are updated by each Proxy service on an approximate hourly basis. The data is still subject to Active Directory replication latency.
+De verschillende eigenschappen worden op basis van elk uur bijgewerkt door elke proxy service. Voor de gegevens is nog steeds Active Directory replicatie latentie van toepassing.
 
-The scope of the cmdlet’s query may be influenced using either the –Forest or –Domain parameters.
+Het bereik van de query van de cmdlet kan worden beïnvloed door gebruik te maken van de para meters – forest of-domein.
 
-If the HeartbeatUTC value gets stale, this may be a symptom that the Azure AD Password Protection Proxy on that machine is not running or has been uninstalled.
+Als de waarde van HeartbeatUTC verouderd is, kan dit een symptoom zijn dat de Azure AD-wachtwoord beveiligings proxy op die computer niet actief is of is verwijderd.
 
-## <a name="proxy-agent-newer-version-available"></a>Proxy agent newer version available
+## <a name="proxy-agent-newer-version-available"></a>Nieuwere versie van Proxy agent beschikbaar
 
-The Proxy service will log a 20002 warning event to the Operational log upon detecting that a newer version of the proxy software is available, for example:
+De proxy service meldt een 20002-waarschuwings gebeurtenis aan het operationele logboek op wanneer wordt gedetecteerd dat er een nieuwere versie van de proxy software beschikbaar is, bijvoorbeeld:
 
 ```text
 An update for Azure AD Password Protection Proxy is available.
@@ -378,12 +378,12 @@ Current version: 1.2.116.0
 .
 ```
 
-The event above does not specify the version of the newer software. You should go to the link in the event message for that information.
+De bovenstaande gebeurtenis geeft niet de versie van de nieuwere software op. Ga naar de koppeling in het gebeurtenis bericht voor deze informatie.
 
-This event will be emitted even if the Proxy agent is configured with autoupgrade enabled.
+Deze gebeurtenis wordt ook verzonden als de proxy-agent is geconfigureerd met automatisch upgraden ingeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Troubleshooting for Azure AD Password Protection](howto-password-ban-bad-on-premises-troubleshoot.md)
+[Probleem oplossing voor Azure AD-wachtwoord beveiliging](howto-password-ban-bad-on-premises-troubleshoot.md)
 
-For more information on the global and custom banned password lists, see the article [Ban bad passwords](concept-password-ban-bad.md)
+Voor meer informatie over de algemene en aangepaste lijst met verboden wacht woorden raadpleegt u het artikel [been](concept-password-ban-bad.md)

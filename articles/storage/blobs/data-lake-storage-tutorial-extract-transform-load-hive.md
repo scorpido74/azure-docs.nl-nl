@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Extract, transform, and load data by using Azure HDInsight'
+title: 'Zelf studie: gegevens uitpakken, transformeren en laden met behulp van Azure HDInsight'
 description: In deze zelfstudie leert u hoe u gegevens uit een set met onbewerkte CSV-gegevens extraheert, de gegevens met Apache Hive in Azure HDInsight transformeert en de getransformeerde gegevens ten slotte laadt in Azure SQL Database met behulp van Sqoop.
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -15,7 +15,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327562"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Tutorial: Extract, transform, and load data by using Azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Zelf studie: gegevens uitpakken, transformeren en laden met behulp van Azure HDInsight
 
 In deze zelfstudie voert u een ETL-bewerking uit: gegevens extraheren, transformeren en laden. U neemt een CSV-bestand met onbewerkte gegevens, importeert deze in een Azure HDInsight-cluster, transformeert deze met Apache Hive en laadt de gegevens in een Azure SQL-database met Apache Sqoop.
 
@@ -36,13 +36,13 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 * **Een Hadoop-cluster op basis van Linux in HDInsight**
 
-    See [Quickstart: Get started with Apache Hadoop and Apache Hive in Azure HDInsight using the Azure portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
+    Zie [Quick Start: aan de slag met Apache Hadoop en Apache Hive in azure HDInsight met behulp van de Azure Portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
 
-* **Azure SQL Database**: You use an Azure SQL database as a destination data store. Als u geen SQL-database hebt, raadpleegt u [Een Azure SQL-database maken in Azure Portal](../../sql-database/sql-database-get-started.md).
+* **Azure SQL database**: u gebruikt een Azure SQL database als doel gegevens opslag. Als u geen SQL-database hebt, raadpleegt u [Een Azure SQL-database maken in Azure Portal](../../sql-database/sql-database-get-started.md).
 
-* **Azure CLI**: If you haven't installed the Azure CLI, see [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* **Azure cli**: als u de Azure cli nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* **A Secure Shell (SSH) client**: For more information, see [Connect to HDInsight (Hadoop) by using SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Een SSH-client (Secure Shell)** : Zie [verbinding maken met HDInsight (HADOOP) via SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie.
 
 ## <a name="download-the-flight-data"></a>De vluchtgegevens downloaden
 
@@ -92,13 +92,13 @@ In deze sectie gaat u gegevens uploaden in uw HDInsight-cluster en vervolgens di
 
    Met deze opdracht wordt een **CSV**-bestand uitgepakt.
 
-4. Use the following command to create the Data Lake Storage Gen2 container.
+4. Gebruik de volgende opdracht om de Data Lake Storage Gen2-container te maken.
 
    ```bash
    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   Replace the `<container-name>` placeholder with the name that you want to give your container.
+   Vervang de tijdelijke aanduiding `<container-name>` door de naam die u wilt toewijzen aan de container.
 
    Vervang de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
@@ -128,7 +128,7 @@ Als onderdeel van de Apache Hive-taak, importeert u de gegevens uit het CSV-best
    nano flightdelays.hql
    ```
 
-2. Modify the following text by replace the `<container-name>` and `<storage-account-name>` placeholders with your container and storage account name. Kopieer en plak de tekst in de nano-console, door de SHIFT-toets ingedrukt te houden en op de rechtermuisknop te klikken.
+2. Wijzig de volgende tekst door de tijdelijke aanduidingen `<container-name>` en `<storage-account-name>` te vervangen door de naam van de container en het opslag account. Kopieer en plak de tekst in de nano-console, door de SHIFT-toets ingedrukt te houden en op de rechtermuisknop te klikken.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -234,7 +234,7 @@ Voor deze bewerking hebt u de servernaam van uw SQL-database nodig. Voer deze st
 
 4. Filter op de naam van de database die u wilt gebruiken. De naam van de server wordt vermeld in de kolom **Server**.
 
-    ![Get Azure SQL server details](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Get Azure SQL server details")
+    ![Details van Azure SQL Server ophalen](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Details van Azure SQL Server ophalen")
 
     Er zijn veel manieren om verbinding te maken met SQL Database en een tabel te maken. In de volgende stappen wordt [FreeTDS](https://www.freetds.org/) gebruikt vanuit het HDInsight-cluster.
 

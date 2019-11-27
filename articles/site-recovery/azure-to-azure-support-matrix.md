@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 267177dcdec25b8561b219ae79e40ce61af994df
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 9146430f512b065553d4c5362af8655eb01c1206
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123845"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74530958"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteunings matrix voor herstel na nood geval voor Azure-VM'S tussen Azure-regio's
 
@@ -25,7 +25,7 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor hers
 --- | ---
 **Azure Portal** | Ondersteund.
 **PowerShell** | Ondersteund. [Meer informatie](azure-to-azure-powershell.md)
-**REST API** | Ondersteund.
+**REST-API** | Ondersteund.
 **CLI** | Momenteel niet ondersteund
 
 
@@ -210,7 +210,7 @@ Opslag ruimten | Ondersteund |
 Versleuteling op rest (SSE) | Ondersteund | SSE is de standaard instelling voor opslag accounts.   
 Versleuteling in rust (CMK) | Niet ondersteund |   
 Azure Disk Encryption (ADE) voor Windows-besturings systeem | Ondersteund voor virtuele machines met beheerde schijven. Vm's die niet-beheerde schijven gebruiken, worden niet ondersteund |
-Azure Disk Encryption (ADE) voor Linux-besturings systeem | Niet ondersteund |
+Azure Disk Encryption (ADE) voor Linux-besturings systeem | Ondersteund |
 Hot add | Ondersteund | Het inschakelen van replicatie voor een gegevens schijf die u toevoegt aan een gerepliceerde Azure-VM wordt ondersteund voor virtuele machines die gebruikmaken van beheerde schijven.
 Hot Remove-schijf | Niet ondersteund | Als u de gegevens schijf op de virtuele machine verwijdert, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen voor de virtuele machine.
 Schijf uitsluiten | Voor. U moet [Power shell](azure-to-azure-exclude-disks.md) gebruiken om te configureren. |  Tijdelijke schijven worden standaard uitgesloten.

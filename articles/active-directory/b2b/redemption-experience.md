@@ -76,7 +76,7 @@ In uw Directory wordt de waarde van de **uitnodiging geaccepteerd** van de gast 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
-- [Gebruikers van Azure Active Directory B2B-samenwerking toevoegen in Azure portal](add-users-administrator.md)
+- [Azure Active Directory B2B-samenwerkings gebruikers toevoegen aan de Azure Portal](add-users-administrator.md)
 - [Hoe voegen mede werkers B2B-samenwerkings gebruikers toe aan Azure Active Directory?](add-users-information-worker.md)
 - [Azure Active Directory B2B-samenwerkings gebruikers toevoegen met behulp van Power shell](customize-invitation-api.md#powershell)
 - [Een organisatie als gast gebruiker laten staan](leave-the-organization.md)

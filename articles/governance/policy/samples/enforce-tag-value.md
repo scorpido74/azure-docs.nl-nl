@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld - Tag en waarde afdwingen
-description: This sample policy definition requires a tag name and value defined in a parameter on each Azure resource.
+description: Voor deze voor beeld van een beleids definitie moet een label naam en waarde zijn gedefinieerd in een para meter voor elke Azure-resource.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: d405b5cbe2bdb7b96c74d665171714d1890ef624
@@ -12,7 +12,7 @@ ms.locfileid: "74463336"
 ---
 # <a name="sample---enforce-tag-and-its-value"></a>Voorbeeld - Tag en waarde afdwingen
 
-Dit beleid vereist een bepaalde tagnaam en -waarde. U geeft de tagnaam en -waarde op die moet worden afgedwongen.
+Dit beleid vereist een bepaalde tagnaam en -waarde. U geeft de naam en waarde op voor de tag die moet worden afgedwongen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,7 +24,7 @@ U kunt deze sjabloon implementeren met behulp van [Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Implementeren met portal
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fenforce-tag-value%2Fazurepolicy.json)
+[![het voor beeld van het beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fenforce-tag-value%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

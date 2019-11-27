@@ -169,7 +169,7 @@ De eigenschappen van resources voor waarschuwings acties worden beschreven in de
 | `type` | Ja | Het type van de actie.  Dit is een **waarschuwing** voor waarschuwings acties. |
 | `name` | Ja | Weergavenaam voor de waarschuwing.  Dit is de naam die wordt weer gegeven in de console voor de waarschuwings regel. |
 | `description` | Nee | Optionele beschrijving van de waarschuwing. |
-| `severity` | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **critical**<br>**waarschuwing**<br>**informatief**
+| `severity` | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **kritieke**<br>**waarschuwing**<br>**informatief**
 
 #### <a name="threshold"></a>Drempelwaarde
 Deze sectie is vereist. Hiermee worden de eigenschappen van de waarschuwings drempel gedefinieerd.

@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld - Niet-toegestane VM-extensies
-description: This sample policy definition prohibits the use of specified extensions  defined in a parameter on virtual machines.
+description: Deze voorbeeld beleids definitie verbiedt het gebruik van opgegeven extensies die zijn gedefinieerd in een para meter op virtuele machines.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 8656cf5111ecdcc793ef8bbe69b8794464e040d2
@@ -24,7 +24,7 @@ U kunt deze sjabloon implementeren met behulp van [Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Implementeren met portal
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fnot-allowed-vmextension%2Fazurepolicy.json)
+[![het voor beeld van het beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fnot-allowed-vmextension%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

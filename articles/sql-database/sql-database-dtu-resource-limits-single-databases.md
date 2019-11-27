@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 75611dd36196c722254d694e9753deb982e2570d
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811290"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539326"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het DTU-aankoop model
 
@@ -43,6 +43,12 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 | Maximaal aantal gelijktijdige sessies | 300 |
 |||
 
+> [!IMPORTANT]
+> De Basic-servicelaag biedt minder dan één vCore (CPU).  Voor CPU-intensieve workloads wordt een servicelaag van S3 of hoger aanbevolen. 
+>
+>Met betrekking tot gegevens opslag wordt de Basic-servicelaag op standaard pagina-blobs geplaatst. Standaard pagina-blobs maken gebruik van schijven op basis van harde schijven (HDD) en zijn het meest geschikt voor ontwikkelings-, test-en andere weinig frequent gebruikte workloads die minder gevoelig zijn voor prestatie variaties.
+>
+
 ### <a name="standard-service-tier"></a>Servicelaag Standard
 
 | **Reken grootte** | **S0** | **S1** | **S2** | **S3** |
@@ -54,6 +60,12 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen)| 60 | 90 | 120 | 200 |
 | Maximaal aantal gelijktijdige sessies |600 | 900 | 1200 | 2400 |
 ||||||
+
+> [!IMPORTANT]
+> De standaard S0-, S1-en S2-lagen bieden minder dan één vCore (CPU).  Voor CPU-intensieve workloads wordt een servicelaag van S3 of hoger aanbevolen. 
+>
+>Met betrekking tot gegevens opslag worden de standaard S0-en S1-service lagen geplaatst op standaard pagina-blobs. Standaard pagina-blobs maken gebruik van schijven op basis van harde schijven (HDD) en zijn het meest geschikt voor ontwikkelings-, test-en andere weinig frequent gebruikte workloads die minder gevoelig zijn voor prestatie variaties.
+>
 
 ### <a name="standard-service-tier-continued"></a>Standard-servicelaag (vervolg)
 
@@ -72,8 +84,8 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 | **Reken grootte** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maximaal aantal DTU's | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Inbegrepen opslag (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
-| Maximum aantal opslag opties (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
+| Inbegrepen opslag (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
+| Maximum aantal opslag opties (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
 | Maximale OLTP-opslag in het geheugen (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Maximaal aantal gelijktijdige sessies | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |

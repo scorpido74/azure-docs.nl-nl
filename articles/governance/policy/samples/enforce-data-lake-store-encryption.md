@@ -1,6 +1,6 @@
 ---
 title: 'Voorbeeld: versleuteling vereisen voor Data Lake Store'
-description: This sample policy definition requires the encryption state on Data Lake Store accounts to be enabled.
+description: Voor deze voorbeeld beleids definitie moet de versleutelings status van Data Lake Store accounts zijn ingeschakeld.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 5b29caa7fa8b9169b8c2164975f9cdb2663c5cef

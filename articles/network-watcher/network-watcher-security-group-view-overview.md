@@ -1,6 +1,6 @@
 ---
-title: Inleiding tot de weergave van de beveiligingsgroep in Azure Network Watcher | Microsoft Docs
-description: Deze pagina biedt een overzicht van de weergave van Network Watcher beveiligingsmogelijkheid
+title: Inleiding tot de weer gave van beveiligings groepen in azure Network Watcher | Microsoft Docs
+description: Op deze pagina vindt u een overzicht van de mogelijkheden van de Network Watcher-beveiligings weergave
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: kumud
-ms.openlocfilehash: ed0ad244a758b92f5ccba5785184190b030c306c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 856135c6cf903b1530f0ae922edddd09e5a1b0d3
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722589"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539219"
 ---
-# <a name="introduction-to-network-security-group-view-in-azure-network-watcher"></a>Inleiding tot netwerkbeveiligingsgroep weergeven in Azure Network Watcher
+# <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Inleiding tot de weer gave effectief beveiligings regels in azure Network Watcher
 
-Netwerkbeveiligingsgroepen worden gekoppeld op het subnetniveau van een of op een NIC-niveau. Als dat is gekoppeld op het subnetniveau van een, geldt dit voor alle VM-exemplaren in het subnet. Netwerkbeveiligingsgroep weergeven retourneert de geconfigureerde Netwerkbeveiligingsgroepen en regels die zijn gekoppeld op het niveau van een NIC en het subnet voor een virtuele machine biedt inzicht in de configuratie. Bovendien worden de effectieve beveiligingsregels voor elk van de NIC's in een virtuele machine geretourneerd. Met behulp van Network Security Group weergeven, kunt u een virtuele machine voor netwerk-beveiligingsproblemen, zoals poorten openen beoordelen. U kunt ook controleren of uw Netwerkbeveiligingsgroep werkt zoals verwacht op basis van een [vergelijking tussen de geconfigureerde en de goedgekeurde beveiligingsregels](network-watcher-nsg-auditing-powershell.md).
+Netwerk beveiligings groepen zijn gekoppeld aan een subnetniveau of op een NIC-niveau. Wanneer deze is gekoppeld aan een subnetniveau, is dit van toepassing op alle VM-exemplaren in het subnet. De weer gave effectief beveiligings regels retourneert alle geconfigureerde Nsg's en regels die zijn gekoppeld aan een NIC-en subnetniveau voor een virtuele machine die inzicht in de configuratie biedt. Daarnaast worden de meest efficiënte beveiligings regels geretourneerd voor elk van de Nic's in een VM. Met de weer gave effectief beveiligings regels kunt u een virtuele machine beoordelen op netwerk problemen, zoals open poorten. U kunt ook controleren of uw netwerk beveiligings groep werkt zoals verwacht op basis van een [vergelijking tussen de geconfigureerde en goedgekeurde beveiligings regels](network-watcher-nsg-auditing-powershell.md).
 
-Er is een meer uitgebreide use-case in beveiliging en controle. U kunt een uitgebreide set beveiligingsregels definiëren als een model voor het beheer van beveiliging in uw organisatie. Een periodieke nalevingscontroles kan worden geïmplementeerd op een programmatische manier door het vergelijken van de prescriptieve regels aan de effectieve regels voor elk van de virtuele machines in uw netwerk.
+Een uitgebreidere use-case is een beveiligings naleving en controle. U kunt een vooraf ingestelde set beveiligings regels definiëren als een model voor beveiligings beheer in uw organisatie. Een periodieke nalevings controle kan worden geïmplementeerd in een programmatische manier door de regels voor voor Schriften te vergelijken met de doel regels voor elk van de virtuele machines in uw netwerk.
 
-In de portal voor regels worden gedeeld door effectief, Subnet, netwerkinterface en standaard. Dit biedt een eenvoudige weergave in de regels toegepast op een virtuele machine. Een downloadknop wordt geboden voor het downloaden van de beveiligingsregels, ongeacht het tabblad eenvoudig in een CSV-bestand.
+In de portal regels worden weer gegeven voor elke netwerk interface en gegroepeerd op binnenkomend versus uitgaand. Dit biedt een eenvoudige weer gave van de regels die worden toegepast op een virtuele machine. Er wordt een knop downloaden gegeven om eenvoudig alle beveiligings regels te downloaden, ongeacht het tabblad in een CSV-bestand.
 
-![weergave van de beveiligingsgroep][1]
+![beveiligings groep weer geven][1]
 
-Regels kunnen worden geselecteerd en een nieuwe blade geopend van de Netwerkbeveiligingsgroep en de bron- en voorvoegsels weer te geven. Vanaf deze blade kunt u rechtstreeks naar de resource Network Security Group navigeren.
+U kunt regels selecteren en er wordt een nieuwe blade geopend om de netwerk beveiligings groep en de voor voegsels van de bron en bestemming weer te geven. Op deze Blade kunt u rechtstreeks naar de resource van de netwerk beveiligings groep navigeren.
 
-![Inzoomen][2]
+![drilldownbewerking][2]
 
 ### <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het controleren van uw instellingen voor Network Security Group recentst [Netwerkbeveiligingsgroep controle-instellingen met PowerShell](network-watcher-nsg-auditing-powershell.md)
+Meer informatie over het controleren van de instellingen van uw netwerk beveiligings groep vindt u in de instellingen voor de netwerk [beveiligings groep controleren met Power shell](network-watcher-nsg-auditing-powershell.md)
 
 [1]: ./media/network-watcher-security-group-view-overview/securitygroupview.png
 [2]: ./media/network-watcher-security-group-view-overview/figure1.png

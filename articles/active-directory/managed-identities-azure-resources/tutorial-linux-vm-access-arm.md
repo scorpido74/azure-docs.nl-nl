@@ -1,5 +1,5 @@
 ---
-title: Quickstart`:` Use a managed identity to access Azure Resource Manager - Azure AD
+title: Quick Start`:` een beheerde identiteit gebruiken om toegang te krijgen tot Azure Resource Manager-Azure AD
 description: Een snelstart waarbij u het proces doorloopt voor het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -26,7 +26,7 @@ ms.locfileid: "74326326"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Deze snelstart laat zien hoe u toegang krijgt tot de Azure Resource Manager-API met een door het systeem toegewezen identiteit voor een virtuele Linux-machine (VM). Beheerde entiteiten voor Azure-resources worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Microsoft Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. In deze zelfstudie leert u procedures om het volgende te doen:
+Deze snelstart laat zien hoe u toegang krijgt tot de Azure Resource Manager-API met een door het systeem toegewezen identiteit voor een virtuele Linux-machine (VM). Beheerde entiteiten voor Azure-resources worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Microsoft Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. Procedures voor:
 
 > [!div class="checklist"]
 > * Uw virtuele machine toegang verlenen tot een resourcegroep in Azure Resource Manager 
@@ -65,7 +65,7 @@ U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruik
     ```
     
     > [!NOTE]
-    > De waarde van de parameter 'resource' moet exact overeenkomen met wat er in Azure AD wordt verwacht.  In the case of the Resource Manager resource ID, you must include the trailing slash on the URI. 
+    > De waarde van de parameter 'resource' moet exact overeenkomen met wat er in Azure AD wordt verwacht.  In het geval van de Resource Manager-Resource-ID moet u de afsluitende slash toevoegen aan de URI. 
     
     Het antwoord bevat het toegangstoken dat u nodig hebt voor toegang tot Azure Resource Manager. 
     
@@ -81,7 +81,7 @@ U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruik
     "token_type":"Bearer"} 
     ```
     
-    U kunt dit toegangstoken gebruiken voor toegang tot Azure Resource Manager, bijvoorbeeld om de details te bekijken van de resourcegroep waaraan u deze virtuele machine eerder toegang hebt verleend. Replace the values of \<SUBSCRIPTION ID\>, \<RESOURCE GROUP\>, and \<ACCESS TOKEN\> with the ones you created earlier. 
+    U kunt dit toegangstoken gebruiken voor toegang tot Azure Resource Manager, bijvoorbeeld om de details te bekijken van de resourcegroep waaraan u deze virtuele machine eerder toegang hebt verleend. Vervang de waarden van \<ABONNEMENTS-ID\>, \<RESOURCE groep\>en \<toegangs TOKEN\> met de instellingen die u eerder hebt gemaakt. 
     
     > [!NOTE]
     > De URL is hoofdlettergevoelig, dus gebruik precies dezelfde naam van de resourcegroep als hiervoor, met inbegrip van de hoofdletter 'G' in 'resourceGroup'.  
@@ -101,4 +101,4 @@ In deze snelstart hebt u geleerd hoe u toegang krijgt tot de Azure Resource Mana
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
->[Create, list or delete a user-assigned managed identity using Azure PowerShell](how-to-manage-ua-identity-powershell.md)
+>[een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met behulp van Azure PowerShell](how-to-manage-ua-identity-powershell.md)

@@ -1,6 +1,6 @@
 ---
-title: Sample - Use listed vNet for VM network interfaces
-description: This sample policy definition requires that network interfaces use an approved virtual network defined in a parameter.
+title: Voor beeld gebruik vermeld vNet voor VM-netwerk interfaces
+description: Voor deze voor beeld van een beleids definitie moeten netwerk interfaces gebruikmaken van een goedgekeurd virtueel netwerk dat is gedefinieerd in een para meter.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 367edbe2f127c363a19e345f7d55ba125006c999
@@ -24,7 +24,7 @@ U kunt deze sjabloon implementeren met behulp van [Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Implementeren met portal
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-vnet%2Fazurepolicy.json)
+[![het voor beeld van het beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-vnet%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

@@ -1,6 +1,6 @@
 ---
-title: 'Tune performance: Hive, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
-description: Azure Data Lake Storage Gen2 Hive Performance Tuning Guidelines.
+title: 'Prestaties afstemmen: Hive, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
+description: Richt lijnen voor het afstemmen van de component Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,63 +15,63 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327588"
 ---
-# <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Tune performance: Hive, HDInsight & Azure Data Lake Storage Gen2
+# <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Prestaties afstemmen: Hive, HDInsight & Azure Data Lake Storage Gen2
 
-The default settings have been set to provide good performance across many different use cases.  For I/O intensive queries, Hive can be tuned to get better performance with Azure Data Lake Storage Gen2.  
+De standaard instellingen zijn ingesteld om goede prestaties te bieden in veel verschillende use cases.  Voor I/O-intensieve query's kan de component worden afgestemd om betere prestaties te krijgen met Azure Data Lake Storage Gen2.  
 
 ## <a name="prerequisites"></a>Vereisten
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* **A Data Lake Storage Gen2 account**. For instructions on how to create one, see [Quickstart: Create an Azure Data Lake Storage Gen2 storage account](data-lake-storage-quickstart-create-account.md)
-* **Azure HDInsight cluster** with access to a Data Lake Storage Gen2 account. See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
-* **Running Hive on HDInsight**.  To learn about running Hive jobs on HDInsight, see [Use Hive on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
-* **Performance tuning guidelines on Data Lake Storage Gen2**.  For general performance concepts, see [Data Lake Storage Gen2 Performance Tuning Guidance](data-lake-storage-performance-tuning-guidance.md)
+* **Een Data Lake Storage Gen2-account**. Zie [Quick Start: een Azure data Lake Storage Gen2 Storage-account maken](data-lake-storage-quickstart-create-account.md) voor instructies over het maken van een
+* **Azure HDInsight-cluster** met toegang tot een Data Lake Storage Gen2-account. Zie [Azure data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
+* **Hive wordt uitgevoerd op HDInsight**.  Zie [Hive in Hdinsight gebruiken](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive) voor meer informatie over het uitvoeren van Hive-taken in hdinsight
+* **Richt lijnen voor het afstemmen van de prestaties van data Lake Storage Gen2**.  Zie [Data Lake Storage Gen2 richt lijnen voor het afstemmen van prestaties](data-lake-storage-performance-tuning-guidance.md) voor algemene concepten.
 
 ## <a name="parameters"></a>Parameters
 
-Here are the most important settings to tune for improved Data Lake Storage Gen2 performance:
+Dit zijn de belangrijkste instellingen die u kunt afstemmen voor betere Data Lake Storage Gen2 prestaties:
 
-* **hive.tez.container.size** – the amount of memory used by each tasks
+* **Hive. TEZ. container. size** : de hoeveelheid geheugen die door elke taak wordt gebruikt
 
-* **tez.grouping.min-size** – minimum size of each mapper
+* **TEZ. grouping. min-grootte** – minimale grootte van elke Mapper
 
-* **tez.grouping.max-size** – maximum size of each mapper
+* **TEZ. grouping. max-size** : maximum grootte van elke Mapper
 
-* **hive.exec.reducer.bytes.per.reducer** – size of each reducer
+* **Hive. exec. reminderr. bytes. per. smallere** -grootte van elke verminderr
 
-**hive.tez.container.size** - The container size determines how much memory is available for each task.  This is the main input for controlling the concurrency in Hive.  
+**component. TEZ. container. size** : de grootte van de container bepaalt hoeveel geheugen beschikbaar is voor elke taak.  Dit is de belangrijkste invoer voor het beheren van de gelijktijdigheid in Hive.  
 
-**tez.grouping.min-size** – This parameter allows you to set the minimum size of each mapper.  If the number of mappers that Tez chooses is smaller than the value of this parameter, then Tez will use the value set here.
+**TEZ. grouping. min-grootte** : met deze para meter kunt u de minimale grootte van elke Mapper instellen.  Als het aantal mappers dat TEZ kiest kleiner is dan de waarde van deze para meter, gebruikt TEZ de hier ingestelde waarde.
 
-**tez.grouping.max-size** – The parameter allows you to set the maximum size of each mapper.  If the number of mappers that Tez chooses is larger than the value of this parameter, then Tez will use the value set here.
+**TEZ. grouping. max-size** – met de para meter kunt u de maximale grootte van elke Mapper instellen.  Als het aantal mappers dat TEZ kiest groter is dan de waarde van deze para meter, gebruikt TEZ de hier ingestelde waarde.
 
-**hive.exec.reducer.bytes.per.reducer** – This parameter sets the size of each reducer.  By default, each reducer is 256MB.  
+**Hive. exec. resmaller. bytes. per. versmaller** : met deze para meter wordt de grootte van elke verminderr ingesteld.  Standaard is elke reducer 256 MB.  
 
-## <a name="guidance"></a>Hulp
+## <a name="guidance"></a>Richtlijnen
 
-**Set hive.exec.reducer.bytes.per.reducer** – The default value works well when the data is uncompressed.  For data that is compressed, you should reduce the size of the reducer.  
+**Hive. exec. reminderr. bytes. per. versmaller instellen** : de standaard waarde werkt goed als de gegevens niet zijn gecomprimeerd.  Voor gegevens die zijn gecomprimeerd, moet u de grootte van de reducer verkleinen.  
 
-**Set hive.tez.container.size** – In each node, memory is specified by yarn.nodemanager.resource.memory-mb and should be correctly set on HDI cluster by default.  For additional information on setting the appropriate memory in YARN, see this [post](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
+**Component. TEZ. container. size instellen** : in elk knoop punt wordt het geheugen opgegeven door garen. nodemanager. resource. Memory-MB en moet standaard correct worden ingesteld op het HDI-cluster.  Zie dit [bericht](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom)voor meer informatie over het instellen van het juiste geheugen in garens.
 
-I/O intensive workloads can benefit from more parallelism by decreasing the Tez container size. This gives the user more containers which increases concurrency.  However, some Hive queries require a significant amount of memory (e.g. MapJoin).  If the task does not have enough memory, you will get an out of memory exception during runtime.  If you receive out of memory exceptions, then you should increase the memory.   
+I/O-intensieve workloads kunnen profiteren van meer parallellisatie door de TEZ-container grootte te verlagen. Dit geeft de gebruiker meer containers waarmee de gelijktijdigheid wordt verhoogd.  Sommige Hive-query's vereisen echter een aanzienlijke hoeveelheid geheugen (bijvoorbeeld MapJoin).  Als de taak onvoldoende geheugen heeft, treedt er een uitzonde ring voor onvoldoende geheugen op tijdens runtime.  Als er uitzonde ringen uit het geheugen worden weer gegeven, moet u het geheugen verg Roten.   
 
-The concurrent number of tasks running or parallelism will be bounded by the total YARN memory.  The number of YARN containers will dictate how many concurrent tasks can run.  To find the YARN memory per node, you can go to Ambari.  Navigate to YARN and view the Configs tab.  The YARN memory is displayed in this window.  
+Het aantal gelijktijdige taken of parallelle uitvoeringen wordt begrensd door het totale garen geheugen.  Het aantal garen-containers bepaalt hoeveel gelijktijdige taken kunnen worden uitgevoerd.  Als u het garen geheugen per knoop punt wilt vinden, gaat u naar Ambari.  Navigeer naar GARENs en Bekijk het tabblad Configuratie.  Het garen geheugen wordt in dit venster weer gegeven.  
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size
-The key to improving performance using Data Lake Storage Gen2 is to increase the concurrency as much as possible.  Tez automatically calculates the number of tasks that should be created so you do not need to set it.   
+De sleutel voor het verbeteren van de prestaties met behulp van Data Lake Storage Gen2 is om de gelijktijdigheid zo veel mogelijk te verhogen.  TEZ berekent automatisch het aantal taken dat moet worden gemaakt, zodat u dit niet hoeft in te stellen.   
 
-## <a name="example-calculation"></a>Example calculation
+## <a name="example-calculation"></a>Voorbeeld berekening
 
-Let's say you have an 8 node D14 cluster.  
+Stel dat u een D14-cluster van 8 knoop punten hebt.  
 
     Total YARN memory = nodes * YARN memory per node
     Total YARN memory = 8 nodes * 96GB = 768GB
     # of YARN containers = 768GB / 3072MB = 256
 
-## <a name="further-information-on-hive-tuning"></a>Further information on Hive tuning
+## <a name="further-information-on-hive-tuning"></a>Meer informatie over Hive-afstemming
 
-Here are a few blogs that will help tune your Hive queries:
-* [Optimize Hive queries for Hadoop in HDInsight](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
-* [Troubleshooting Hive query performance](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
-* [Ignite talk on optimize Hive on HDInsight](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)
+Hier volgen enkele blogs waarmee u uw Hive-query's kunt afstemmen:
+* [Hive-query's voor Hadoop in HDInsight optimaliseren](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
+* [Problemen met hive-query prestaties oplossen](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
+* [Ignite Talk to optimize component in HDInsight](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Create a blueprint with REST API'
-description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts using the REST API.
+title: 'Quick Start: een blauw druk maken met REST API'
+description: In deze Quick Start gebruikt u Azure-blauw drukken om artefacten te maken, te definiëren en te implementeren met behulp van de REST API.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
@@ -10,7 +10,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74322157"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: Define and Assign an Azure Blueprint with REST API
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Snelstartgids: een Azure Blueprint definiëren en toewijzen met REST API
 
 Als u leert hoe u blauwdrukken in Azure maakt en toewijst, kunnen er algemene patronen worden gedefinieerd voor de ontwikkeling van herbruikbare en snel implementeerbare configuraties op basis van Resource Manager-sjablonen, beleid, beveiliging en meer. In deze zelfstudie leert u hoe u Azure Blueprints gebruikt om algemene taken uit te voeren met betrekking tot het maken, publiceren en toewijzen van een blauwdruk binnen uw organisatie, zoals:
 
@@ -62,7 +62,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
 - Vervang `{subscriptionId}` door uw abonnements-ID
 
 > [!NOTE]
-> Blueprints may also be created at the subscription level. To see an example, see [create blueprint at subscription example](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
+> Blauw drukken kan ook worden gemaakt op abonnements niveau. Zie [voor beeld Blue maken bij abonnement](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)voor meer informatie.
 
 1. Maak het eerste _blauwdruk_object. De **Aanvraagbody** bevat eigenschappen van de blauwdruk, te maken resourcegroepen en alle parameters op blauwdrukniveau. De parameters worden tijdens het toewijzen ingesteld en gebruikt door de artefacten die in latere stappen worden toegevoegd.
 
@@ -328,7 +328,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
 - Vervang `{YourMG}` door de ID van uw beheergroep
 - Vervang `{subscriptionId}` door uw abonnements-ID
 
-1. Geef in de Azure Blueprint-service-principal de rol **Eigenaar** op in het doelabonnement. The AppId is static (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), but the service principal ID varies by tenant. U kunt voor uw tenant details aanvragen met de volgende REST API. Deze gebruikt [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), die een andere autorisatie heeft.
+1. Geef in de Azure Blueprint-service-principal de rol **Eigenaar** op in het doelabonnement. De AppId is statisch (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), maar de ID van de Service-Principal is afhankelijk van de Tenant. U kunt voor uw tenant details aanvragen met de volgende REST API. Deze gebruikt [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), die een andere autorisatie heeft.
 
    - REST API-URI
 
@@ -429,7 +429,7 @@ Als u de blauwdruk zelf wilt verwijderen, gebruikt u de volgende REST API-bewerk
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this quickstart, you've created, assigned, and removed a blueprint with REST API. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+In deze Quick Start hebt u een blauw druk gemaakt, toegewezen en verwijderd met REST API. Voor meer informatie over Azure-blauw drukken gaat u verder met het artikel van de blauw druk-levens duur.
 
 > [!div class="nextstepaction"]
-> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)
+> [Meer informatie over de levens duur van de blauw druk](./concepts/lifecycle.md)

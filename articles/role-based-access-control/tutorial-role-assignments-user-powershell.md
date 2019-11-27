@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Grant a user access to Azure resources using RBAC and Azure PowerShell
-description: Learn how to grant a user access to Azure resources using role-based access control (RBAC) and Azure PowerShell in this tutorial.
+title: 'Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en Azure PowerShell'
+description: Meer informatie over hoe u een gebruiker toegang verleent tot Azure-resources met behulp van RBAC (op rollen gebaseerd toegangs beheer) en Azure PowerShell in deze zelf studie.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -20,7 +20,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74418623"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Tutorial: Grant a user access to Azure resources using RBAC and Azure PowerShell
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en Azure PowerShell
 
 [Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In deze zelfstudie geeft u een gebruiker toestemming om alles in een abonnement te bekijken en om alles in een resourcegroep te beheren met Azure PowerShell.
 
@@ -46,7 +46,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 In RBAC verleent u toegang door een roltoewijzing te maken. Een roltoewijzing bestaat uit drie elementen: beveiligings-principal, roldefinitie en bereik (ook wel scope of niveau genoemd). Dit zijn de twee roltoewijzingen die u gaat uitvoeren in deze zelfstudie:
 
-| Beveiligings-principal | Roldefinitie | Scope |
+| Beveiligings-principal | Roldefinitie ophalen | Bereik |
 | --- | --- | --- |
 | Gebruiker<br>(RBAC Tutorial User) | [Lezer](built-in-roles.md#reader) | Abonnement |
 | Gebruiker<br>(RBAC Tutorial User)| [Inzender](built-in-roles.md#contributor) | Resourcegroep<br>(rbac-tutorial-resource-group) |
@@ -268,7 +268,7 @@ Als u de in deze zelfstudie gemaakte resources wilt opschonen, verwijdert u de r
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. When asked to confirm, type **Y**. It will take a few seconds to delete.
+1. Wanneer u wordt gevraagd te bevestigen, typt u **j**. Het duurt een paar seconden om te verwijderen.
 
 1. De gebruiker kunt u verwijderen met de opdracht [Remove-AzureADUser](/powershell/module/azuread/remove-azureaduser).
 

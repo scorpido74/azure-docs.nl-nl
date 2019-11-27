@@ -1,20 +1,15 @@
 ---
-title: Wat is Azure Container Instances?
+title: Serverloze containers in azure
 description: De Azure Container Instances-service is de snelste en eenvoudigste methode voor het uitvoeren van geïsoleerde containers in Azure. Hierbij hoeft u geen virtuele machines te beheren of een orchestrator op een hoger niveau te gebruiken.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: overview
 ms.date: 04/25/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a07eda709c813e68bc3e4f08b6aab3f93dec65a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325747"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533549"
 ---
 # <a name="what-is-azure-container-instances"></a>Wat is Azure Container Instances?
 
@@ -53,8 +48,8 @@ Sommige functies zijn momenteel beperkt tot Linux-containers:
 * Meerdere containers per containergroep
 * Volume koppeling ([Azure files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [geheim](container-instances-volume-secret.md))
 * [Metrische gegevens over resource gebruik](container-instances-monitor.md) met Azure monitor
-* [Implementatie van virtueel netwerk](container-instances-vnet.md) evaluatie
-* [GPU-resources](container-instances-gpu.md) evaluatie
+* [Virtuele netwerk implementatie](container-instances-vnet.md) (preview-versie)
+* [GPU-bronnen](container-instances-gpu.md) (preview-versie)
 
 Gebruik installatie kopieën op basis van algemene [Windows-basis installatie kopieën](container-instances-faq.md#what-windows-base-os-images-are-supported)voor implementaties van Windows-containers.
 

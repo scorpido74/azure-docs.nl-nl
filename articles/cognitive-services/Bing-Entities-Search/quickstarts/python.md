@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Send a search request to the REST API using Python - Bing Entity Search'
+title: 'Snelstartgids: een zoek opdracht verzenden naar de REST API met behulp van python-Bing Entity Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om met Python een aanvraag te verzenden naar de REST-API van Bing Entiteiten zoeken en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -17,9 +17,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327074"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Quickstart: Send a search request to the Bing Entity Search REST API using Python
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Snelstartgids: een zoek opdracht verzenden naar het Bing Entity Search REST API met behulp van python
 
-Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Python-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py).
+Gebruik deze quickstart om voor het eerst de Bing Entiteiten zoeken-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Python-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py).
 
 Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
@@ -52,7 +52,7 @@ Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice
 
 ## <a name="send-a-request-and-get-a-response"></a>Een aanvraag verzenden en een antwoord ontvangen
 
-1. Maak de functie `get_suggestions()`. Voer vervolgens de volgende stappen uit.
+1. Maak een functie met de naam `get_suggestions()`. Voer vervolgens de volgende stappen uit.
    1. Voeg uw abonnementssleutel toe aan een woordenlijst met `Ocp-Apim-Subscription-Key` als een sleutel.
    2. Gebruik `http.client.HTTPSConnection()` om een HTTPS-clientobject te maken. Verstuur een `GET`-aanvraag met `request()`, met daarin het pad en de parameters en de headergegevens.
    3. Sla het antwoord op met `getresponse()` en retourneer `response.read()`.

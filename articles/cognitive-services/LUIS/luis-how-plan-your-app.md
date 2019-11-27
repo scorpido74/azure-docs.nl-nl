@@ -1,7 +1,7 @@
 ---
-title: Plan your app - LUIS
+title: Uw app plannen-LUIS
 titleSuffix: Azure Cognitive Services
-description: Outline relevant app intents and entities, and then create your application plans in Language Understanding Intelligent Services (LUIS).
+description: Overzicht van relevante app intenties en entiteiten en maak vervolgens uw toepassing plannen in Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,47 +18,47 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326782"
 ---
-# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Plan your LUIS app schema with subject domain and data extraction
+# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Uw LUIS-app-schema plannen met onderwerp domein en gegevens extractie
 
-A LUIS app schema contains [intents](luis-glossary.md#intent) and [entities](luis-glossary.md#entity) relevant to your subject [domain](luis-glossary.md#domain). The intents classify user [utterances](luis-glossary.md#utterance), and the entities extract data from the user utterances.
+Een LUIS-app-schema bevat [intents](luis-glossary.md#intent) en [entiteiten](luis-glossary.md#entity) die relevant zijn voor uw onderwerps [domein](luis-glossary.md#domain). De intenties classificeren de gebruiker [uitingen](luis-glossary.md#utterance)en de entiteiten halen gegevens op uit de uitingen van de gebruiker.
 
-## <a name="identify-your-domain"></a>Identify your domain
+## <a name="identify-your-domain"></a>Identificeren van uw domein
 
-A LUIS app is centered around a subject domain. For example, you may have a travel app that handles booking of tickets, flights, hotels, and rental cars. Another app may provide content related to exercising, tracking fitness efforts and setting goals. Identifying the domain helps you find words or phrases that are relevant to your domain.
+Een LUIS-app wordt gecentreerd rond een onderwerps domein. U kunt bijvoorbeeld een reis-app hebben die de boeking van tickets, vluchten, hotels en huur auto's afhandelt. Een andere app bieden mogelijk inhoud met betrekking tot te oefenen, geschiktheid inspanningen bijhouden en doelen instellen. Het identificeren van het domein helpt u bij het vinden van woorden of zinsdelen die relevant zijn voor uw domein.
 
 > [!TIP]
-> LUIS offers [prebuilt domains](luis-how-to-use-prebuilt-domains.md) for many common scenarios. Check to see if you can use a prebuilt domain as a starting point for your app.
+> LUIS biedt [vooraf gemaakte domeinen](luis-how-to-use-prebuilt-domains.md) voor veel algemene scenario's. Controleer als u een vooraf gedefinieerde domein als uitgangspunt voor uw app gebruiken kunt.
 
-## <a name="identify-your-intents"></a>Identify your intents
+## <a name="identify-your-intents"></a>Uw intenties identificeren
 
-Think about the [intents](luis-concept-intent.md) that are important to your application's task.
+Denk na over de [intenties](luis-concept-intent.md) die belang rijk zijn voor de taak van uw toepassing.
 
-Let's take the example of a travel app, with functions to book a flight and check the weather at the user's destination. You can define the `BookFlight` and `GetWeather` intents for these actions.
+We gaan het voorbeeld van een reis-app, met functies voor een vlucht reserveren en controleert u het weer op de bestemming van de gebruiker. U kunt de `BookFlight` en `GetWeather` intentie voor deze acties definiëren.
 
-In a more complex app with more functions, you have more intents, and you should define them carefully so the intents aren't too specific. For example, `BookFlight` and `BookHotel` may need to be separate intents, but `BookInternationalFlight` and `BookDomesticFlight` may be too similar.
+In een complexere app met meer functies hebt u meer intenties en moet u ze zorgvuldig definiëren, zodat de intenties niet te specifiek zijn. `BookFlight` en `BookHotel` moeten bijvoorbeeld mogelijk afzonderlijke intenties zijn, maar `BookInternationalFlight` en `BookDomesticFlight` mogelijk te vergelijken.
 
 > [!NOTE]
-> It is a best practice to use only as many intents as you need to perform the functions of your app. If you define too many intents, it becomes harder for LUIS to classify utterances correctly. If you define too few, they may be so general that they overlap.
+> Het is een best practice u alleen zo veel intents als nodig is voor de functies van uw app uitvoeren. Als u te veel intents definieert, wordt het moeilijker voor LUIS uitingen correct classificeren. Als u te weinig definieert, zijn ze mogelijk zo algemeen dat ze elkaar overlappen.
 
-If you don't need to identify overall user intention, add all the example user utterances to the `None` intent. If your app grows into needing more intents, you can create them later.
+Als u geen algemene gebruikers intentie wilt identificeren, voegt u alle voor beeld-gebruikers uitingen toe aan de `None` intentie. Als uw app groeit tot meer intenties, kunt u deze later maken.
 
-## <a name="create-example-utterances-for-each-intent"></a>Create example utterances for each intent
+## <a name="create-example-utterances-for-each-intent"></a>Voorbeeld-uitingen voor elk doel maken
 
-To begin with, avoid creating too many utterances for each intent. Once you have determined the intents, create 15 to 30 example utterances per intent. Each utterance should be different from the previously provided utterances. A good variety in utterances include overall word count, word choice, verb tense, and punctuation.
+Voorkom dat u begint met het maken van te veel uitingen voor elke intentie. Nadat u de intenties hebt bepaald, maakt u 15 tot 30 voorbeeld uitingen per intentie. Elke utterance moet afwijken van de eerder door gegeven uitingen. Een goed voor deel in uitingen omvat het totale aantal woorden, woorden, werkwoordsvormen en lees tekens.
 
-For more information, see [understanding good utterances for LUIS apps](luis-concept-utterance.md).
+Zie goed te weten [uitingen voor Luis-apps](luis-concept-utterance.md)voor meer informatie.
 
-## <a name="identify-your-entities"></a>Identify your entities
+## <a name="identify-your-entities"></a>Uw entiteiten identificeren
 
-In the example utterances, identify the entities you want extracted. To book a flight, you need information like the destination, date, airline, ticket category, and travel class. Create entities for these data types and then mark the [entities](luis-concept-entity-types.md) in the example utterances. Entities are important for accomplishing an intent.
+In de voorbeeld-uitingen identificeren de entiteiten die u wilt dat opgehaald. Als u een vlucht wilt boeken, hebt u informatie nodig zoals de doel-, datum-, vlieg tickets-, ticket categorie-en reis klasse. Maak entiteiten voor deze gegevens typen en markeer vervolgens de [entiteiten](luis-concept-entity-types.md) in het voor beeld uitingen. Entiteiten zijn belang rijk voor het uitvoeren van een intentie.
 
-When determining which entities to use in your app, keep in mind that there are different types of entities for capturing relationships between object types. [Entities in LUIS](luis-concept-entity-types.md) provides more detail about the different types.
+Wanneer u bepaalt welke entiteiten in uw app moeten worden gebruikt, moet u er ook voor zorgen dat er verschillende typen entiteiten zijn voor het vastleggen van relaties tussen object typen. [Entiteiten in Luis](luis-concept-entity-types.md) bieden meer details over de verschillende typen.
 
 > [!TIP]
-> LUIS offers [prebuilt entities](luis-prebuilt-entities.md) for common, conversational user scenarios. Consider using prebuilt entities as a starting point for your application development.
+> LUIS biedt [vooraf gemaakte entiteiten](luis-prebuilt-entities.md) voor veelvoorkomende, gespreks gebruikers scenario's. Overweeg het gebruik van vooraf gemaakte entiteiten als uitgangs punt voor de ontwikkeling van uw toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Learning the LUIS development lifecylce](luis-concept-app-iteration.md)
+> [Learning the LUIS Development lifecylce](luis-concept-app-iteration.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Ontwikkeling van Microsoft identity-platform - Azure
-description: Meer informatie over Microsoft identity-platform, een evolutie van het Azure Active Directory (Azure AD) identity-service en developer-platform.
+title: Evolutie van micro soft Identity platform-Azure
+description: Meer informatie over micro soft Identity platform, een evolutie van de identiteits service van Azure Active Directory (Azure AD) en het ontwikkelaars platform.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,30 +17,30 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dc4c29d3a12902b3ce01f9505cba5ac02e921eb
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 0c5fdc1c937136eb512eccf1d4df02a4fcdc3911
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625349"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533106"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Evolutie van het Microsoft Identity Platform
 
-Het Microsoft Identity Platform bouwt voort op het ontwikkelaarsplatform van Azure Active Directory (Azure AD). Deze service kunnen ontwikkelaars toepassingen ontwikkelen die aanmelden van gebruikers, het ophalen van tokens voor het aanroepen van API's, zoals Microsoft Graph of API's waarmee ontwikkelaars hebt gemaakt. Het bestaat uit een authentication-service, open source-bibliotheken, registratie van toepassingen en -configuratie (via een portal voor ontwikkelaars en API-toepassing), volledige ontwikkelaarsdocumentatie, Quick Start-voorbeelden, codevoorbeelden, handleidingen, zelfstudies en de inhoud van andere ontwikkelaars. Het Microsoft Identity Platform biedt ondersteuning voor standaardprotocollen als OAuth 2.0 en OpenID Connect.
+Het Microsoft Identity Platform bouwt voort op het ontwikkelaarsplatform van Azure Active Directory (Azure AD). Ontwikkel aars kunnen toepassingen maken die zich aanmelden bij gebruikers, tokens ophalen om Api's aan te roepen, zoals Microsoft Graph, of Api's die ontwikkel aars hebben gebouwd. Het bestaat uit een verificatie service, open source-bibliotheken, toepassings registratie en configuratie (via een ontwikkelaars Portal en toepassings-API), volledige documentatie voor ontwikkel aars, Quick start-voor beelden, code voorbeelden, zelf studies, procedures-naar-gidsen en andere inhoud voor ontwikkel aars. Het Microsoft Identity Platform biedt ondersteuning voor standaardprotocollen als OAuth 2.0 en OpenID Connect.
 
-Tot nu toe hebt de meeste ontwikkelaars gewerkt met de Azure AD v1.0-platform om te verifiëren werk en schoolaccounts (ingericht door Azure AD) door het aanvragen van tokens van het eindpunt van de v1.0 Azure AD met behulp van Azure AD Authentication Library (ADAL) voor Azure-portal registratie van toepassingen en configuratie, en Azure AD Graph-API voor programmatische toepassingsconfiguratie.
+Tot nu toe hebben de meeste ontwikkel aars met het Azure AD v 1.0-platform gewerkt voor het verifiëren van werk-en school accounts (ingericht door Azure AD) door het aanvragen van tokens van het Azure AD v 1.0-eind punt met behulp van Azure AD Authentication Library (ADAL), Azure Portal voor registratie en configuratie van toepassingen en Azure AD-Graph API voor de configuratie van een programmatische toepassing.
 
-Met Microsoft identity-platform (v2.0), moet u uw bereik uitbreiden voor deze soorten gebruikers:
+Met micro soft Identity platform (v 2.0) breidt u uw bereik uit voor dit soort gebruikers:
 
-- Werk- en schoolaccounts accounts (Azure AD ingericht-accounts)
+- Werk-en school accounts (voor Azure AD ingerichte accounts)
 - Persoonlijke accounts (zoals Outlook.com of Hotmail.com)
-- Uw klanten die hun eigen e-mailadres of sociale id (zoals LinkedIn, Facebook, Google) via de Azure AD B2C-aanbieding
+- Uw klanten die hun eigen e-mail adres of sociale identiteit (zoals LinkedIn, Facebook, Google) meenemen via de Azure AD B2C aanbieding
 
-Met de geïntegreerde Microsoft identity-platform, kunt u één keer code schrijven en een Microsoft-identiteit verifiëren in uw toepassing. Er is een volledig ondersteunde open-source-bibliotheek met de naam Microsoft Authentication Library (MSAL) voor verschillende platforms. MSAL is eenvoudig te gebruiken, wordt er goede eenmalige aanmelding (SSO) voor uw gebruikers, kunt u hoge betrouwbaarheid en prestaties, en is ontwikkeld met behulp van Microsoft Secure Development Lifecycle (SDL). Bij het aanroepen van API's, kunt u uw toepassing om te profiteren van incrementele toestemming te geven, zodat u kunt de aanvraag voor goedkeuring van meer Invasief bereiken uitstellen totdat het gebruik van de toepassing dit garandeert tijdens runtime kunt configureren.
+Met het geïntegreerde identiteits platform van micro soft kunt u eenmaal code schrijven en een micro soft-identiteit verifiëren in uw toepassing. Voor verschillende platforms is er een volledig ondersteunde open-source bibliotheek met de naam micro soft Authentication Library (MSAL). MSAL is eenvoudig te gebruiken. biedt uw gebruikers een fantastische SSO-ervaring (eenmalige aanmelding), helpt u bij het bezorgen van hoge betrouw baarheid en prestaties en is ontwikkeld met behulp van micro soft Secure Development Lifecycle (SDL). Wanneer u Api's aanroept, kunt u uw toepassing zo configureren dat deze gebruikmaakt van incrementele toestemming, zodat u de aanvraag voor toestemming voor meer invasieve bereiken kunt vertragen tot het gebruik van de toepassing dit tijdens runtime garandeert.
 
-U kunt de Azure-portal gebruiken om te registreren en uw toepassing configureren en gebruiken van de Microsoft Graph-API voor programmatische toepassingsconfiguratie.
+U kunt de Azure Portal gebruiken om uw toepassing te registreren en te configureren, en de Microsoft Graph API gebruiken voor de programmatische toepassings configuratie.
 
-Uw toepassing in uw eigen tempo bijwerken. Toepassingen die zijn gebouwd met ADAL-bibliotheken worden nog steeds ondersteund. Gemengde toepassing portfolio, die bestaan uit toepassingen die zijn ontwikkeld met ADAL en toepassingen die zijn gebouwd met MSAL-bibliotheken, worden ook ondersteund. Dit betekent dat toepassingen met behulp van de meest recente ADAL en de meest recente MSAL SSO wordt geleverd in de portfolio, geleverd door de gedeelde tokencache tussen deze bibliotheken. Toepassingen die zijn gewijzigd van ADAL in MSAL handhaaft gebruiker aanmelden status na de upgrade.
+Werk uw toepassing in uw eigen tempo bij. Toepassingen die zijn gebouwd met ADAL-Bibliotheken, worden nog steeds ondersteund. Gemengde toepassings portefeuilles, die bestaan uit toepassingen die zijn gebouwd met ADAL en toepassingen die zijn gebouwd met MSAL-Bibliotheken, worden ook ondersteund. Dit betekent dat toepassingen die gebruikmaken van de nieuwste ADAL en de nieuwste MSAL, SSO kunnen leveren over de Port Folio, die wordt aangeboden door de gedeelde token cache tussen deze bibliotheken. Toepassingen die zijn bijgewerkt van ADAL naar MSAL, behouden de aanmeldings status van gebruikers bij een upgrade.
 
 ## <a name="microsoft-identity-platform-experience"></a>Gebruikerservaring met het Microsoft Identity Platform
 
@@ -50,27 +50,27 @@ In het volgende schema wordt de gebruikerservaring met Microsoft Identity weerge
 
 ### <a name="app-registration-experience"></a>App-registratie-ervaring
 
-De Azure-portal **[App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908)** ervaring is de één portal-ervaring voor het beheren van alle toepassingen die u hebt geïntegreerd met Microsoft identity-platform. Als u de Portal voor Appregistratie gebruikt al, start u met behulp van de Azure portal-app-registratie-ervaring in plaats daarvan.
+De Azure Portal- **[app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908)** -ervaring is de portal-ervaring voor het beheren van alle toepassingen die u hebt geïntegreerd met het micro soft Identity-platform. Als u de portal voor toepassings registratie hebt gebruikt, kunt u in plaats daarvan de Azure Portal app registratie-ervaring gebruiken.
 
-Voor integratie met Azure AD B2C (bij het verifiëren van sociale of lokale identiteiten), moet u uw toepassing registreren in een B2C-tenant. Deze ervaring is ook onderdeel van de Azure-portal.
+Voor integratie met Azure AD B2C (bij het verifiëren van sociale of lokale identiteiten) moet u uw toepassing registreren in een Azure AD B2C-Tenant. Deze ervaring maakt ook deel uit van de Azure Portal.
 
-De **application-API in Microsoft Graph** is momenteel in preview. Gebruik deze API via een programma configureren van uw toepassingen die zijn geïntegreerd met Microsoft identity-platform voor het verifiëren van een Microsoft-identiteit. Echter, totdat deze API algemene beschikbaarheid wordt bereikt, moet u de API van Azure AD Graph 1.6 en het toepassingsmanifest.
+De **API van de toepassing in Microsoft Graph** is momenteel beschikbaar als preview-versie. Gebruik deze API om op een programmatische manier uw toepassingen te configureren die zijn geïntegreerd met het micro soft Identity platform voor de verificatie van een micro soft-identiteit. U kunt echter pas de Azure AD Graph 1,6 API en het toepassings manifest gebruiken totdat deze API de algemene Beschik baarheid bereikt.
 
 ### <a name="msal-libraries"></a>MSAL-bibliotheken
 
-De MSAL-bibliotheek kunt u toepassingen bouwen die alle Microsoft-identiteit verifiëren. De MSAL-bibliotheken in .NET en JavaScript zijn algemeen beschikbaar. MSAL-bibliotheken voor iOS en Android zijn in preview en geschikt zijn voor gebruik in een productieomgeving. We bieden de dezelfde productie-ondersteuning voor MSAL-bibliotheken in preview als wij doen voor versies van MSAL en ADAL die algemeen beschikbaar.
+U kunt de MSAL-bibliotheek gebruiken om toepassingen te bouwen die alle micro soft-identiteiten verifiëren. De MSAL-bibliotheken in .NET en Java script zijn algemeen beschikbaar. MSAL-bibliotheken voor iOS en Android zijn beschikbaar als preview-versie en zijn geschikt voor gebruik in een productie omgeving. We bieden dezelfde productie niveau ondersteuning voor MSAL-bibliotheken als in Preview zoals we voor versies van MSAL en ADAL die algemeen beschikbaar zijn.
 
-U kunt ook de MSAL-bibliotheken aan uw toepassing integreren met Azure AD B2C.
+U kunt ook de MSAL-bibliotheken gebruiken om uw toepassing te integreren met Azure AD B2C.
 
-Server-side-bibliotheken voor het bouwen van web-apps en web-API's zijn algemeen beschikbaar: [ASP.NET](https://docs.microsoft.com/aspnet/overview) en [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+Bibliotheken aan de server zijde voor het bouwen van web-apps en Web-Api's zijn algemeen beschikbaar: [ASP.net](https://docs.microsoft.com/aspnet/overview) en [ASP.net core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
 
-### <a name="microsoft-identity-platform-endpoint"></a>Microsoft identity-platform-eindpunt
+### <a name="microsoft-identity-platform-endpoint"></a>Micro soft Identity platform-eind punt
 
-Microsoft identity-platform (v2.0)-eindpunt is nu gecertificeerd OIDC. Het werkt met de Microsoft Authentication Libraries (MSAL) of andere standaarden-compatibele bibliotheek. Mens leesbaar scopes, in overeenstemming met het industriële standaarden geïmplementeerd.
+Het micro soft Identity platform (v 2.0)-eind punt is nu OIDC gecertificeerd. Het werkt met de micro soft-verificatie bibliotheken (MSAL) of een andere, aan normen compatibele bibliotheek. Het implementeert menselijke Lees bare bereiken, conform de industrie normen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over v1.0 en v2.0.
 
-* [Overzicht van Microsoft identity-platform (v2.0)](v2-overview.md)
-* [Azure Active Directory voor ontwikkelaars (v1.0)-overzicht](v1-overview.md)
+* [Overzicht van micro soft Identity platform (v 2.0)](v2-overview.md)
+* [Overzicht van Azure Active Directory voor ontwikkel aars (v 1.0)](v1-overview.md)

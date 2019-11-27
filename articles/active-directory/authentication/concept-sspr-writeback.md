@@ -1,6 +1,6 @@
 ---
-title: On-premises password writeback integration with Azure AD SSPR - Azure Active Directory
-description: Get cloud passwords written back to on-premises AD infrastructure
+title: On-premises integratie van wacht woord terugschrijven met Azure AD SSPR-Azure Active Directory
+description: Bekijk de Cloud wachtwoorden terug naar de on-premises AD-infra structuur
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,154 +18,154 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420657"
 ---
-# <a name="what-is-password-writeback"></a>What is password writeback?
+# <a name="what-is-password-writeback"></a>Wat is wacht woord terugschrijven?
 
-Having a cloud-based password reset utility is great but most companies still have an on-premises directory where their users exist. How does Microsoft support keeping traditional on-premises Active Directory (AD) in sync with password changes in the cloud? Password writeback is a feature enabled with [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) that allows password changes in the cloud to be written back to an existing on-premises directory in real time.
+Een op de cloud gebaseerd hulp programma voor het opnieuw instellen van wacht woorden is geweldig, maar de meeste bedrijven hebben nog steeds een on-premises directory waar hun gebruikers zich bevinden. Hoe wordt micro soft ondersteund om de traditionele on-premises Active Directory (AD) synchroon te houden met wachtwoord wijzigingen in de Cloud? Wacht woord terugschrijven is een functie ingeschakeld met [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) waarmee wachtwoord wijzigingen in de cloud in realtime naar een bestaande on-premises Directory kunnen worden geschreven.
 
-Password writeback is supported in environments that use:
+Wacht woord terugschrijven wordt ondersteund in omgevingen waarin gebruik wordt maakt van:
 
 * [Active Directory Federation Services](../hybrid/how-to-connect-fed-management.md)
 * [Synchronisatie van wachtwoord-hashes](../hybrid/how-to-connect-password-hash-synchronization.md)
 * [Pass-through-verificatie](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> Password writeback will stop working for customers who are using Azure AD Connect versions 1.0.8641.0 and older when the [Azure Access Control service (ACS) is retired on November 7th, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect versions 1.0.8641.0 and older will no longer allow password writeback at that time because they depend on ACS for that functionality.
+> Het terugschrijven van wacht woorden stopt met het gebruik van Azure AD Connect versies 1.0.8641.0 en ouder wanneer de [Azure Access Control service (ACS) wordt ingetrokken op 7 November 2018](../develop/active-directory-acs-migration.md). Azure AD Connect versies 1.0.8641.0 en ouder staan niet meer op dat moment het terugschrijven van wacht woorden meer toe, omdat ze afhankelijk zijn van ACS voor die functionaliteit.
 >
-> To avoid a disruption in service, upgrade from a previous version of Azure AD Connect to a newer version, see the article [Azure AD Connect: Upgrade from a previous version to the latest](../hybrid/how-to-upgrade-previous-version.md)
+> Als u een onderbreking van de service wilt voor komen, moet u een upgrade uitvoeren van een eerdere versie van Azure AD Connect naar een nieuwere versie. Raadpleeg het artikel [Azure AD Connect: upgraden van een eerdere versie naar de nieuwste](../hybrid/how-to-upgrade-previous-version.md)
 >
 
-Password writeback provides:
+Wacht woord terugschrijven biedt:
 
-* **Enforcement of on-premises Active Directory password policies**: When a user resets their password, it is checked to ensure it meets your on-premises Active Directory policy before committing it to that directory. This review includes checking the history, complexity, age, password filters, and any other password restrictions that you have defined in local Active Directory.
-* **Zero-delay feedback**: Password writeback is a synchronous operation. Your users are notified immediately if their password did not meet the policy or could not be reset or changed for any reason.
-* **Supports password changes from the access panel and Office 365**: When federated or password hash synchronized users come to change their expired or non-expired passwords, those passwords are written back to your local Active Directory environment.
-* **Supports password writeback when an admin resets them from the Azure portal**: Whenever an admin resets a user’s password in the [Azure portal](https://portal.azure.com), if that user is federated or password hash synchronized, the password is written back to on-premises. This functionality is currently not supported in the Office admin portal.
-* **Doesn’t require any inbound firewall rules**: Password writeback uses an Azure Service Bus relay as an underlying communication channel. All communication is outbound over port 443.
+* **Afdwinging van on-premises Active Directory wachtwoord beleid**: wanneer een gebruiker het wacht woord opnieuw instelt, wordt gecontroleerd of het voldoet aan uw on-premises Active Directory beleid voordat het wordt doorgevoerd in die map. Deze controle omvat het controleren van de geschiedenis, complexiteit, leeftijd, wachtwoord filters en eventuele andere wachtwoord beperkingen die u hebt gedefinieerd in de lokale Active Directory.
+* **Feedback over nul vertraging**: wacht woord terugschrijven is een synchrone bewerking. Uw gebruikers worden onmiddellijk op de hoogte gesteld als hun wacht woord niet voldoet aan het beleid of om een of andere reden niet kan worden gewijzigd.
+* **Ondersteunt wachtwoord wijzigingen in het toegangs venster en Office 365**: wanneer federatieve of wacht woord-hash gesynchroniseerde gebruikers hun verlopen of niet-verlopen wacht woorden kunnen wijzigen, worden deze wacht woorden teruggeschreven naar uw lokale Active Directory-omgeving.
+* **Biedt ondersteuning voor het terugschrijven van wacht woorden wanneer een beheerder deze opnieuw instelt op de Azure Portal**: wanneer een beheerder het wacht woord van een gebruiker opnieuw instelt in de [Azure Portal](https://portal.azure.com), wordt het wacht woord teruggeschreven naar on-premises als de gebruiker een federatieve of wacht woord-hash synchroniseert. Deze functionaliteit wordt momenteel niet ondersteund in de Office-beheer Portal.
+* Geen **binnenkomende firewall regels vereist**: wacht woord terugschrijven gebruikt een Azure service bus relay als een onderliggend communicatie kanaal. Alle communicatie is uitgaand via poort 443.
 
 > [!NOTE]
-> Administrator accounts that exist within protected groups in on-premises AD can be used with password writeback. Administrators can change their password in the cloud but cannot use password reset to reset a forgotten password. For more information about protected groups, see [Protected accounts and groups in Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+> Beheerders accounts die zich in beveiligde groepen in on-premises AD bevinden, kunnen worden gebruikt bij het terugschrijven van wacht woorden. Beheerders kunnen hun wacht woord wijzigen in de Cloud, maar kunnen geen wacht woord opnieuw instellen gebruiken om een verg eten wacht woord opnieuw in te stellen. Zie voor meer informatie over beveiligde groepen [beveiligde accounts en groepen in Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
 
-## <a name="licensing-requirements-for-password-writeback"></a>Licensing requirements for password writeback
+## <a name="licensing-requirements-for-password-writeback"></a>Licentie vereisten voor wacht woord terugschrijven
 
-**Self-Service Password Reset/Change/Unlock with on-premises writeback is a premium feature of Azure AD**. For more information about licensing, see the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
+**Self-service voor wacht woord opnieuw instellen/wijzigen/ontgrendelen met on-premises terugschrijven is een Premium-functie van Azure AD**. Zie de [Azure Active Directory-prijs site](https://azure.microsoft.com/pricing/details/active-directory/)voor meer informatie over licenties.
 
-To use password writeback, you must have one of the following licenses assigned on your tenant:
+Als u wacht woord terugschrijven wilt gebruiken, moet er een van de volgende licenties zijn toegewezen aan uw Tenant:
 
 * Azure AD Premium P1
 * Azure AD Premium P2
-* Enterprise Mobility + Security E3 or A3
-* Enterprise Mobility + Security E5 or A5
-* Microsoft 365 E3 or A3
-* Microsoft 365 E5 or A5
+* Enterprise Mobility + Security E3 of a3
+* Enterprise Mobility + Security E5 of A5
+* Microsoft 365 E3 of a3
+* Microsoft 365 E5 of A5
 * Microsoft 365 F1
 * Microsoft 365 Business
 
 > [!WARNING]
-> Standalone Office 365 licensing plans *don't support "Self-Service Password Reset/Change/Unlock with on-premises writeback"* and require that you have one of the preceding plans for this functionality to work.
+> Zelfstandige Office 365-licentie plannen *bieden geen ondersteuning voor ' selfservice voor wacht woord opnieuw instellen/wijzigen/ontgrendelen met on-premises terugschrijven '* en vereisen dat u een van de voor gaande plannen hebt om deze functionaliteit te kunnen gebruiken.
 
-## <a name="how-password-writeback-works"></a>How password writeback works
+## <a name="how-password-writeback-works"></a>Hoe wacht woord terugschrijven werkt
 
-When a federated or password hash synchronized user attempts to reset or change their password in the cloud, the following actions occur:
+Wanneer een federatieve of wacht woord-hash gesynchroniseerde gebruiker probeert om hun wacht woord opnieuw in te stellen of te wijzigen in de Cloud, worden de volgende acties uitgevoerd:
 
-1. A check is performed to see what type of password the user has. If the password is managed on-premises:
-   * A check is performed to see if the writeback service is up and running. If it is, the user can proceed.
-   * If the writeback service is down, the user is informed that their password can't be reset right now.
-1. Next, the user passes the appropriate authentication gates and reaches the **Reset password** page.
-1. The user selects a new password and confirms it.
-1. When the user selects **Submit**, the plaintext password is encrypted with a symmetric key created during the writeback setup process.
-1. The encrypted password is included in a payload that gets sent over an HTTPS channel to your tenant-specific service bus relay (that is set up for you during the writeback setup process). This relay is protected by a randomly generated password that only your on-premises installation knows.
-1. After the message reaches the service bus, the password-reset endpoint automatically wakes up and sees that it has a reset request pending.
-1. The service then looks for the user by using the cloud anchor attribute. For this lookup to succeed:
+1. Er wordt een controle uitgevoerd om te zien welk type wacht woord de gebruiker heeft. Als het wacht woord on-premises wordt beheerd:
+   * Er wordt een controle uitgevoerd om te zien of de Write-service actief is. Als dat het geval is, kan de gebruiker door gaan.
+   * Als de Write-service niet beschikbaar is, wordt de gebruiker ervan op de hoogte gesteld dat het wacht woord niet kan worden hersteld.
+1. Vervolgens geeft de gebruiker de juiste verificatie poorten door en bereikt de pagina **wacht woord opnieuw instellen** .
+1. De gebruiker selecteert een nieuw wacht woord en bevestigt dit.
+1. Wanneer de gebruiker **verzenden**selecteert, wordt het Lees bare wacht woord versleuteld met een symmetrische sleutel die is gemaakt tijdens het terugschrijf installatie proces.
+1. Het versleutelde wacht woord is opgenomen in een Payload die via een HTTPS-kanaal wordt verzonden naar de Tenant-specifieke service bus relay (die tijdens het terugschrijf installatie proces is ingesteld). Deze relay wordt beveiligd door een wille keurig gegenereerd wacht woord dat alleen uw on-premises installatie kent.
+1. Nadat het bericht de service bus heeft bereikt, wordt het eind punt voor het opnieuw instellen van het wacht woord automatisch geactiveerd en ziet u dat er een aanvraag voor opnieuw instellen in behandeling is.
+1. De service zoekt vervolgens naar de gebruiker met behulp van het anker kenmerk Cloud. Deze zoek actie slaagt als volgt:
 
-   * The user object must exist in the Active Directory connector space.
-   * The user object must be linked to the corresponding metaverse (MV) object.
-   * The user object must be linked to the corresponding Azure Active Directory connector object.
-   * The link from the Active Directory connector object to the MV must have the synchronization rule `Microsoft.InfromADUserAccountEnabled.xxx` on the link.
+   * Het gebruikers object moet bestaan in de ruimte van de Active Directory-connector.
+   * Het gebruikers object moet worden gekoppeld aan het bijbehorende omgekeerde-object (MV).
+   * Het gebruikers object moet worden gekoppeld aan het bijbehorende Azure Active Directory Connector-object.
+   * De koppeling van het Active Directory Connector-object naar de MV moet de synchronisatie regel `Microsoft.InfromADUserAccountEnabled.xxx` hebben op de koppeling.
    
-   When the call comes in from the cloud, the synchronization engine uses the **cloudAnchor** attribute to look up the Azure Active Directory connector space object. It then follows the link back to the MV object, and then follows the link back to the Active Directory object. Because there can be multiple Active Directory objects (multi-forest) for the same user, the sync engine relies on the `Microsoft.InfromADUserAccountEnabled.xxx` link to pick the correct one.
+   Wanneer de oproep afkomstig is uit de Cloud, gebruikt de synchronisatie-engine het kenmerk **cloudAnchor** om het Azure Active Directory Connector Space-object op te zoeken. Vervolgens volgt u de koppeling terug naar het MV-object en volgt u de koppeling terug naar het Active Directory-object. Omdat er meerdere Active Directory-objecten (meerdere forests) voor dezelfde gebruiker kunnen zijn, is de synchronisatie-engine afhankelijk van de `Microsoft.InfromADUserAccountEnabled.xxx` koppeling om de juiste te kiezen.
 
-1. After the user account is found, an attempt to reset the password directly in the appropriate Active Directory forest is made.
-1. If the password set operation is successful, the user is told their password has been changed.
+1. Nadat het gebruikers account is gevonden, wordt er een poging gedaan om het wacht woord rechtstreeks opnieuw in te stellen in het juiste Active Directory-forest.
+1. Als de wachtwoord set is geslaagd, wordt het wacht woord van de gebruiker gewijzigd.
    > [!NOTE]
-   > If the user's password hash is synchronized to Azure AD by using password hash synchronization, there is a chance that the on-premises password policy is weaker than the cloud password policy. In this case, the on-premises policy is enforced. This policy ensures that your on-premises policy is enforced in the cloud, no matter if you use password hash synchronization or federation to provide single sign-on.
+   > Als de wacht woord-hash van de gebruiker is gesynchroniseerd met Azure AD met behulp van hash-synchronisatie van wacht woord, is er een kans dat het on-premises wachtwoord beleid zwakker is dan het beleid voor Cloud wachtwoord. In dit geval wordt het on-premises beleid afgedwongen. Dit beleid zorgt ervoor dat uw on-premises beleid wordt afgedwongen in de Cloud, ongeacht of u wachtwoord hash synchronisatie of Federatie gebruikt om eenmalige aanmelding te bieden.
 
-1. If the password set operation fails, an error prompts the user to try again. The operation might fail because:
-    * The service was down.
-    * The password they selected did not meet the organization's policies.
-    * Unable to find the user in local Active Directory.
+1. Als de bewerking voor het instellen van een wacht woord mislukt, wordt de gebruiker door een fout gevraagd om het opnieuw te proberen. De bewerking kan mislukken omdat:
+    * De service is niet actief.
+    * Het wacht woord dat u hebt geselecteerd, voldoet niet aan het beleid van de organisatie.
+    * Kan de gebruiker niet vinden in de lokale Active Directory.
 
-      The error messages provide guidance to users so they can attempt to resolve without administrator intervention.
+      De fout berichten bevatten richt lijnen aan gebruikers, zodat ze kunnen proberen om op te lossen zonder tussen komst van de beheerder.
 
-## <a name="password-writeback-security"></a>Password writeback security
+## <a name="password-writeback-security"></a>Wacht woord terugschrijven beveiliging
 
-Password writeback is a highly secure service. To ensure your information is protected, a four-tiered security model is enabled as the following describes:
+Het terugschrijven van wacht woorden is een zeer veilige service. Om ervoor te zorgen dat uw gegevens worden beveiligd, wordt een beveiligings model met vier lagen ingeschakeld, zoals hieronder wordt beschreven:
 
-* **Tenant-specific service-bus relay**
-   * When you set up the service, a tenant-specific service bus relay is set up that's protected by a randomly generated strong password that Microsoft never has access to.
-* **Locked down, cryptographically strong, password encryption key**
-   * After the service bus relay is created, a strong symmetric key is created that is used to encrypt the password as it comes over the wire. This key only lives in your company's secret store in the cloud, which is heavily locked down and audited, just like any other password in the directory.
-* **Industry standard Transport Layer Security (TLS)**
-   1. When a password reset or change operation occurs in the cloud, the plaintext password is encrypted with your public key.
-   1. The encrypted password is placed into an HTTPS message that is sent over an encrypted channel by using Microsoft SSL certs to your service bus relay.
-   1. After the message arrives in the service bus, your on-premises agent wakes up and authenticates to the service bus by using the strong password that was previously generated.
-   1. The on-premises agent picks up the encrypted message and decrypts it by using the private key.
-   1. The on-premises agent attempts to set the password through the AD DS SetPassword API. This step is what allows enforcement of your Active Directory on-premises password policy (such as the complexity, age, history, and filters) in the cloud.
-* **Message expiration policies**
-   * If the message sits in service bus because your on-premises service is down, it times out and is removed after several minutes. The time-out and removal of the message increases security even further.
+* **Tenant-specifieke service-bus relay**
+   * Wanneer u de service instelt, wordt een Tenant-specifieke service bus-relay ingesteld die wordt beveiligd door een wille keurig gegenereerd sterk wacht woord waarmee micro soft nooit toegang heeft.
+* **Vergrendeld, cryptografisch sterk, versleutelings sleutel voor wacht woord**
+   * Nadat de service bus relay is gemaakt, wordt er een sterke symmetrische sleutel gemaakt die wordt gebruikt voor het versleutelen van het wacht woord. Deze sleutel bevindt zich alleen in het geheime archief van uw bedrijf in de Cloud, wat sterk is vergrendeld en gecontroleerd, net als elk ander wacht woord in de Directory.
+* **Industrie norm Transport Layer Security (TLS)**
+   1. Wanneer een wacht woord opnieuw instellen of een wijzigings bewerking wordt uitgevoerd in de Cloud, wordt het Lees bare wacht woord versleuteld met uw open bare sleutel.
+   1. Het versleutelde wacht woord wordt in een HTTPS-bericht geplaatst dat via een versleuteld kanaal wordt verzonden met behulp van micro soft SSL-certificaten naar uw service bus relay.
+   1. Nadat het bericht in de service bus arriveert, wordt de on-premises agent geactiveerd en wordt de service bus geverifieerd met behulp van het sterke wacht woord dat eerder is gegenereerd.
+   1. De on-premises agent haalt het versleutelde bericht op en ontsleutelt het met behulp van de persoonlijke sleutel.
+   1. De on-premises agent probeert het wacht woord in te stellen via de AD DS SetPassword-API. Deze stap is wat het afdwingen van uw Active Directory on-premises wachtwoord beleid (zoals de complexiteit, leeftijd, geschiedenis en filters) in de Cloud mogelijk maakt.
+* **Verloop beleid voor berichten**
+   * Als het bericht zich in service bus bevindt omdat uw on-premises service niet beschikbaar is, wordt er een time-out en na enkele minuten verwijderd. De time-out en het verwijderen van het bericht verhoogt de beveiliging nog verder.
 
-### <a name="password-writeback-encryption-details"></a>Password writeback encryption details
+### <a name="password-writeback-encryption-details"></a>Versleutelings gegevens voor wacht woord terugschrijven
 
-After a user submits a password reset, the reset request goes through several encryption steps before it arrives in your on-premises environment. These encryption steps ensure maximum service reliability and security. They are described as follows:
+Wanneer een gebruiker een wacht woord opnieuw instelt, wordt de aanvraag opnieuw ingesteld via verschillende versleutelings stappen voordat deze in uw on-premises omgeving arriveren. Deze versleutelings stappen garanderen maximale betrouw baarheid en beveiliging van de service. Deze worden als volgt beschreven:
 
-* **Step 1: Password encryption with 2048-bit RSA Key**: After a user submits a password to be written back to on-premises, the submitted password itself is encrypted with a 2048-bit RSA key.
-* **Step 2: Package-level encryption with AES-GCM**: The entire package, the password plus the required metadata, is encrypted by using AES-GCM. This encryption prevents anyone with direct access to the underlying ServiceBus channel from viewing or tampering with the contents.
-* **Step 3: All communication occurs over TLS/SSL**: All the communication with ServiceBus happens in an SSL/TLS channel. This encryption secures the contents from unauthorized third parties.
-* **Automatic key roll over every six months**: All keys roll over every six months, or every time password writeback is disabled and then re-enabled on Azure AD Connect, to ensure maximum service security and safety.
+* **Stap 1: wachtwoord versleuteling met 2048-bits RSA-sleutel**: wanneer een gebruiker een wacht woord verzendt om terug te schrijven naar on-premises, wordt het wacht woord zelf versleuteld met een 2048-bits RSA-sleutel.
+* **Stap 2: versleuteling op pakket niveau met AES-GCM**: het hele pakket, het wacht woord plus de vereiste meta gegevens, wordt versleuteld met AES-GCM. Deze versleuteling voor komt dat iedereen met directe toegang tot het onderliggende ServiceBus-kanaal de inhoud kan weer geven of knoeit.
+* **Stap 3: alle communicatie vindt plaats via TLS/SSL**: alle communicatie met ServiceBus gebeurt in een SSL/TLS-kanaal. Deze versleuteling beveiligt de inhoud van niet-gemachtigde externe partijen.
+* **Automatische sleutel Rolling over elke zes maanden**: alle sleutels worden elke zes maanden gespreid, of telkens wanneer het terugschrijven van wacht woorden is uitgeschakeld en vervolgens weer wordt ingeschakeld op Azure AD Connect, om te zorgen voor maximale service beveiliging en veiligheid.
 
-### <a name="password-writeback-bandwidth-usage"></a>Password writeback bandwidth usage
+### <a name="password-writeback-bandwidth-usage"></a>Gebruik van bandbreedte voor wacht woord terugschrijven
 
-Password writeback is a low-bandwidth service that only sends requests back to the on-premises agent under the following circumstances:
+Wacht woord terugschrijven is een service met lage band breedte die alleen aanvragen naar de on-premises agent verzendt in de volgende omstandigheden:
 
-* Two messages are sent when the feature is enabled or disabled through Azure AD Connect.
-* One message is sent once every five minutes as a service heartbeat for as long as the service is running.
-* Two messages are sent each time a new password is submitted:
-   * The first message is a request to perform the operation.
-   * The second message contains the result of the operation, and is sent in the following circumstances:
-      * Each time a new password is submitted during a user self-service password reset.
-      * Each time a new password is submitted during a user password change operation.
-      * Each time a new password is submitted during an admin-initiated user password reset (only from the Azure admin portals).
+* Er worden twee berichten verzonden wanneer de functie wordt in-of uitgeschakeld via Azure AD Connect.
+* Eén bericht wordt om de vijf minuten als een service-heartbeat verzonden, zolang de service wordt uitgevoerd.
+* Er worden twee berichten verzonden wanneer een nieuw wacht woord wordt verzonden:
+   * Het eerste bericht is een aanvraag om de bewerking uit te voeren.
+   * Het tweede bericht bevat het resultaat van de bewerking en wordt in de volgende gevallen verzonden:
+      * Telkens wanneer een nieuw wacht woord wordt verzonden tijdens het opnieuw instellen van een wacht woord voor de selfservice voor gebruikers.
+      * Telkens wanneer een nieuw wacht woord wordt verzonden tijdens een wijziging van het wacht woord voor gebruikers.
+      * Telkens wanneer er een nieuw wacht woord wordt ingediend tijdens een door de beheerder geïnitieerde wacht woord opnieuw instellen (alleen van de Azure-beheer Portal).
 
-#### <a name="message-size-and-bandwidth-considerations"></a>Message size and bandwidth considerations
+#### <a name="message-size-and-bandwidth-considerations"></a>Overwegingen voor bericht grootte en-band breedte
 
-The size of each of the message described previously is typically under 1 KB. Even under extreme loads, the password writeback service itself is consuming a few kilobits per second of bandwidth. Because each message is sent in real time, only when required by a password update operation, and because the message size is so small, the bandwidth usage of the writeback capability is too small to have a measurable impact.
+De grootte van elk van de eerder beschreven berichten is doorgaans 1 KB. Zelfs onder extreme belastingen wordt de service voor het terugschrijven van wacht woorden zelf een aantal kilobits per seconde van band breedte verbruikt. Omdat elk bericht in realtime wordt verzonden, maar alleen wanneer dit wordt vereist door een wachtwoord update bewerking, en omdat de bericht grootte zo klein is, is het bandbreedte gebruik van de terugschrijf mogelijkheid te klein om een meet bare impact te hebben.
 
-## <a name="supported-writeback-operations"></a>Supported writeback operations
+## <a name="supported-writeback-operations"></a>Ondersteunde back-upbewerkingen
 
-Passwords are written back in all the following situations:
+Wacht woorden worden weer gegeven in de volgende situaties:
 
-* **Supported end-user operations**
-   * Any end-user self-service voluntary change password operation
-   * Any end-user self-service force change password operation, for example, password expiration
-   * Any end-user self-service password reset that originates from the [password reset portal](https://passwordreset.microsoftonline.com)
-* **Supported administrator operations**
-   * Any administrator self-service voluntary change password operation
-   * Any administrator self-service force change password operation, for example, password expiration
-   * Any administrator self-service password reset that originates from the [password reset portal](https://passwordreset.microsoftonline.com)
-   * Any administrator-initiated end-user password reset from the [Azure portal](https://portal.azure.com)
+* **Ondersteunde bewerkingen voor eind gebruikers**
+   * Een selfservice voor het wijzigen van een wacht woord voor een self-service voor eind gebruikers
+   * Wille keurig wacht woord bewerking door de self-service voor eind gebruikers, bijvoorbeeld wacht woord verloopt
+   * Een selfservice voor het opnieuw instellen van een wacht woord voor eind gebruikers die afkomstig is uit de portal voor het [opnieuw instellen van het wacht woord](https://passwordreset.microsoftonline.com)
+* **Ondersteunde beheerders bewerkingen**
+   * Een Administrator selfservice voor het wijzigen van het wacht woord
+   * Een door de beheerder self-service geforceerde wachtwoord bewerking wijzigen, bijvoorbeeld wacht woord verloopt
+   * Een selfservice voor wachtwoord herstel voor beheerders die afkomstig is uit de [Portal voor het opnieuw instellen](https://passwordreset.microsoftonline.com) van het wacht woord
+   * Een door de beheerder geïnitieerde wacht woord opnieuw instellen voor de eind gebruiker van de [Azure Portal](https://portal.azure.com)
 
-## <a name="unsupported-writeback-operations"></a>Unsupported writeback operations
+## <a name="unsupported-writeback-operations"></a>Niet-ondersteunde Write-bewerkingen
 
-Passwords are *not* written back in any of the following situations:
+Wacht woorden worden *niet* weer gegeven in een van de volgende situaties:
 
-* **Unsupported end-user operations**
-   * Any end user resetting their own password by using PowerShell version 1, version 2, or the Azure AD Graph API
-* **Unsupported administrator operations**
-   * Any administrator-initiated end-user password reset from PowerShell version 1, version 2, or the Azure AD Graph API
-   * Any administrator-initiated end-user password reset from the [Microsoft 365 admin center](https://admin.microsoft.com)
+* **Niet-ondersteunde bewerkingen voor eind gebruikers**
+   * Eind gebruikers stellen hun eigen wacht woord opnieuw in met behulp van Power shell versie 1, versie 2 of Azure AD Graph API
+* **Niet-ondersteunde beheerders bewerkingen**
+   * Een door de beheerder geïnitieerde wachtwoord herstel voor eind gebruikers van Power shell versie 1, versie 2 of Azure AD Graph API
+   * Een door de beheerder geïnitieerde wachtwoord herstel voor eind gebruikers vanuit het [Microsoft 365-beheer centrum](https://admin.microsoft.com)
 
 > [!WARNING]
-> Use of the checkbox "User must change password at next logon" in on-premises Active Directory administrative tools like Active Directory Users and Computers or the Active Directory Administrative Center is supported as a preview feature of Azure AD Connect. For more information, see the article, [Implement password hash synchronization with Azure AD Connect sync](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon).
+> Gebruik van het selectie vakje ' gebruiker moet wacht woord bij volgende aanmelding wijzigen ' in on-premises Active Directory beheer Programma's, zoals Active Directory gebruikers en computers, of de Active Directory-beheercentrum wordt ondersteund als een preview-functie van Azure AD Connect. Zie het artikel [wachtwoord hash-synchronisatie implementeren met Azure AD Connect Sync](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Enable password writeback using the Tutorial: [Enabling password writeback](tutorial-enable-writeback.md)
+Wacht woord terugschrijven inschakelen met behulp van de zelf studie: [wacht woord terugschrijven inschakelen](tutorial-enable-writeback.md)

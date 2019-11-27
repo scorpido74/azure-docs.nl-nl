@@ -1,6 +1,6 @@
 ---
-title: Machine Learning Services with R (preview)
-description: This article describes Azure SQL Database Machine Learning Services (with R) and explains how it works.
+title: Machine Learning Services met R (preview-versie)
+description: In dit artikel wordt Azure SQL Database Machine Learning Services (met R) beschreven en wordt uitgelegd hoe het werkt.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -19,46 +19,46 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74462352"
 ---
-# <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services with R (preview)
+# <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services met R (preview-versie)
 
-Machine Learning Services is a feature of Azure SQL Database, used for executing in-database R scripts. The feature includes Microsoft R packages for high-performance predictive analytics and machine learning. The relational data can be used in R scripts through stored procedures, T-SQL script containing R statements, or R code containing T-SQL.
+Machine Learning Services is een functie van Azure SQL Database die wordt gebruikt voor het uitvoeren van een Data Base-R-script. De functie bevat micro soft R-pakketten voor predictive analytics met hoge prestaties en machine learning. De relationele gegevens kunnen worden gebruikt in R-scripts via opgeslagen procedures, T-SQL-script met R-instructies of R-code met T-SQL.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 > [!NOTE]
-> The preview is available for single databases and elastic pools using the vCore-based purchasing model in the **general purpose** and **business critical** service tiers. In this initial preview, the **hyperscale** service tier and the **managed instance** deployment option are not supported. Momenteel is R de enige ondersteunde taal. Er is op dit moment geen ondersteuning voor Python.
+> Het voor beeld is beschikbaar voor afzonderlijke data bases en elastische Pools met behulp van het op vCore gebaseerde aankoop model in de laag **Algemeen** en **bedrijfskritische** service. In deze eerste preview worden de service tier **grootschalige** en de implementatie optie **Managed instance** niet ondersteund. Momenteel is R de enige ondersteunde taal. Er is op dit moment geen ondersteuning voor Python.
 >
-> The preview is currently available in the following regions: West Europe, North Europe, West US 2, East US, South Central US, North Central US, Canada Central, Southeast Asia, India South, and Australia Southeast.
+> De preview is momenteel beschikbaar in de volgende regio's: Europa-west, Europa-noord, VS-West 2, VS-Oost, Zuid-Centraal VS, Noord-Centraal VS, Canada-centraal, Zuidoost-Azië, India-Zuid en Australië-zuidoost.
 
-## <a name="what-you-can-do-with-r"></a>What you can do with R
+## <a name="what-you-can-do-with-r"></a>Wat u kunt doen met R
 
-Gebruik de kracht van de taal R om geavanceerde analyses en in-database machine learning te bieden. Deze mogelijkheid zorgt voor berekeningen en verwerking op de plaats waar de gegevens zich bevinden, u hoeft de gegevens niet op te halen via het netwerk. Also, you can leverage the power of enterprise R packages to deliver advanced analytics at scale.
+Gebruik de kracht van de taal R om geavanceerde analyses en in-database machine learning te bieden. Deze mogelijkheid zorgt voor berekeningen en verwerking op de plaats waar de gegevens zich bevinden, u hoeft de gegevens niet op te halen via het netwerk. Daarnaast kunt u gebruikmaken van de kracht van ENTER prise R-pakketten voor het leveren van geavanceerde analyses op schaal.
 
 Machine Learning-services bevatten een basisdistributie van R, overlapt met zakelijke R-pakketten van Microsoft. R-functies en -algoritmen van Microsoft zijn ontworpen voor zowel schaal als bruikbaarheid en bieden voorspellende analyses, statistische modellen, gegevensvisualisaties en toonaangevende algoritmen voor machine learning.
 
-### <a name="r-packages"></a>R packages
+### <a name="r-packages"></a>R-pakketten
 
-Most common open-source R packages are pre-installed in Machine Learning Services. The following R packages from Microsoft are also included:
+De meest voorkomende open source R-pakketten zijn vooraf geïnstalleerd in Machine Learning Services. De volgende R-pakketten van micro soft zijn ook opgenomen:
 
-| R package | Beschrijving|
+| R-pakket | Beschrijving|
 |-|-|
-| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open is the enhanced distribution of R from Microsoft. It is a complete open-source platform for statistical analysis and data science. It is based on and 100% compatible with R, and includes additional capabilities for improved performance and reproducibility. |
-| [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR is the primary library for scalable R. Functions in this library are among the most widely used. Data transformations and manipulation, statistical summarization, visualization, and many forms of modeling and analyses are found in these libraries. Additionally, functions in these libraries automatically distribute workloads across available cores for parallel processing, with the ability to work on chunks of data that are coordinated and managed by the calculation engine. |
-| [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML adds machine learning algorithms to create custom models for text analysis, image analysis, and sentiment analysis. |
+| [Micro soft R open](https://mran.microsoft.com/rro) | Micro soft R open is de uitgebreide distributie van R van micro soft. Het is een volledig open-source platform voor statistische analyse en gegevens wetenschap. Het is gebaseerd op en 100% compatibel met R, en bevat aanvullende mogelijkheden voor verbeterde prestaties en reproduceer baarheid. |
+| [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR is de primaire bibliotheek voor schaal bare R. functions in deze bibliotheek zijn een van de meest gebruikte functies. Gegevens transformaties en manipulatie, statistische samen vatting, visualisatie en vele vormen van modellen en analyses vindt u in deze bibliotheken. Daarnaast distribueren functies in deze bibliotheken werk belastingen automatisch over beschik bare kernen voor parallelle verwerking, met de mogelijkheid om te werken aan gegevens segmenten die worden gecoördineerd en beheerd door de berekenings engine. |
+| [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML voegt machine learning-algoritmen toe om aangepaste modellen te maken voor tekst analyse, afbeeldings analyse en analyse van sentiment. |
 
-In addition to the pre-installed packages, you can [install additional packages](sql-database-machine-learning-services-add-r-packages.md).
+Naast de vooraf geïnstalleerde pakketten kunt u [aanvullende pakketten installeren](sql-database-machine-learning-services-add-r-packages.md).
 
 <a name="signup"></a>
 
-## <a name="sign-up-for-the-preview"></a>Meld u aan voor de preview-versie
+## <a name="sign-up-for-the-preview"></a>Registreren voor de preview-versie
 
 > [!IMPORTANT]
-> Sign up for Azure SQL Database Machine Learning Services (preview) is currently closed.
+> Registreren voor Azure SQL Database Machine Learning Services (preview) is momenteel gesloten.
 
-Machine Learning Services with R is not recommended for production workload during the preview.
+Machine Learning Services met R wordt niet aanbevolen voor de werk belasting van de productie tijdens de preview-periode.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- See the [key differences from SQL Server Machine Learning Services](sql-database-machine-learning-services-differences.md).
-- To learn how to use R to query Azure SQL Database Machine Learning Services (preview), see the [Quickstart guide](sql-database-connect-query-r.md).
-- To get started with some simple R scripts, see [Create and run simple R scripts in Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-create-script.md).
+- Bekijk de belangrijkste verschillen ten opzichte [van SQL Server machine learning Services](sql-database-machine-learning-services-differences.md).
+- Zie de [Snelstartgids](sql-database-connect-query-r.md)voor meer informatie over het gebruik van R voor het opvragen van Azure SQL database machine learning Services (preview).
+- Zie [eenvoudige r-scripts maken en uitvoeren in Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-create-script.md)om aan de slag te gaan met een aantal eenvoudige r-scripts.

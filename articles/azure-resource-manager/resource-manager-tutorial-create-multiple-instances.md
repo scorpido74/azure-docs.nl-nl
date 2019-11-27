@@ -16,7 +16,7 @@ ms.locfileid: "74326521"
 
 Leer hoe u een Azure Resource Manager-sjabloon herhaaldelijk gebruikt om meerdere instanties van een Azure-resource te maken. In deze zelfstudie wijzigt u een sjabloon om drie instanties van het opslagaccount te maken.
 
-![Azure Resource Manager creates multiple instances diagram](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
+![Azure Resource Manager maakt meerdere exemplaren diagram](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -31,7 +31,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Visual Studio code met de extensie Resource Manager-Hulpprogram Ma's. Zie [Visual Studio code gebruiken om Azure Resource Manager sjablonen te maken](./resource-manager-tools-vs-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 

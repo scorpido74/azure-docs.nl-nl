@@ -1,19 +1,14 @@
 ---
-title: Beleid voor opnieuw opstarten gebruiken met taken in de Azure Container Instances
+title: Beleid voor uitvoerings taken opnieuw starten
 description: Meer informatie over het gebruik van Azure Container Instances voor het uitvoeren van taken die worden uitgevoerd voor voltooiing, zoals het bouwen, testen of het renderen van afbeeldingen.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 4fe5d9a20249a17030e0ccfa34f6a4f183be0d82
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f814b1c99827c07f8dadfb0cfd80c87a93377cdc
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325685"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533461"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Taken met containers uitvoeren met beleids regels voor opnieuw opstarten
 
@@ -27,7 +22,7 @@ In de voor beelden in dit artikel wordt gebruikgemaakt van de Azure CLI. U moet 
 
 Wanneer u een [container groep](container-instances-container-groups.md) maakt in azure container instances, kunt u een van de drie beleids instellingen voor het opnieuw opstarten opgeven.
 
-| Beleid voor opnieuw opstarten   | Description |
+| Beleid voor opnieuw opstarten   | Beschrijving |
 | ---------------- | :---------- |
 | `Always` | Containers in de container groep worden altijd opnieuw opgestart. Dit is de **standaard** instelling die wordt toegepast wanneer er geen beleid voor opnieuw opstarten is opgegeven bij het maken van de container. |
 | `Never` | Containers in de container groep worden nooit opnieuw opgestart. De containers worden Maxi maal één keer uitgevoerd. |
@@ -35,7 +30,7 @@ Wanneer u een [container groep](container-instances-container-groups.md) maakt i
 
 ## <a name="specify-a-restart-policy"></a>Beleid voor opnieuw opstarten opgeven
 
-Hoe u een beleid voor opnieuw opstarten opgeeft, is afhankelijk van hoe u de container instanties maakt, zoals met de Azure CLI, Azure PowerShell-cmdlets of in de Azure Portal. Geef in de Azure cli de `--restart-policy` para meter op wanneer u [AZ container Create][az-container-create]aanroept.
+Hoe u een beleid voor opnieuw opstarten opgeeft, is afhankelijk van hoe u de container instanties maakt, zoals met de Azure CLI, Azure PowerShell-cmdlets of in de Azure Portal. Geef in de Azure CLI de para meter `--restart-policy` op wanneer u [AZ container Create][az-container-create]aanroept.
 
 ```azurecli-interactive
 az container create \
@@ -47,7 +42,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Voor beeld van uitvoeren naar voltooid
 
-Als u het beleid voor opnieuw opstarten in actie wilt zien, maakt u een container exemplaar van de micro soft [ACI-WordCount-][aci-wordcount-image] installatie kopie en geeft u het `OnFailure` beleid voor opnieuw opstarten op. In deze voorbeeld container wordt een python-script uitgevoerd dat standaard de tekst van de [Hamlet](http://shakespeare.mit.edu/hamlet/full.html)van Shakespeare analyseert, de tien meest voorkomende woorden naar stdout schrijft en vervolgens afsluit.
+Als u het beleid voor het opnieuw opstarten in actie wilt zien, maakt u een container exemplaar van de micro soft [ACI-WordCount-][aci-wordcount-image] installatie kopie en geeft u het beleid voor het opnieuw opstarten van `OnFailure` op. In deze voorbeeld container wordt een python-script uitgevoerd dat standaard de tekst van de [Hamlet](http://shakespeare.mit.edu/hamlet/full.html)van Shakespeare analyseert, de tien meest voorkomende woorden naar stdout schrijft en vervolgens afsluit.
 
 Voer de voorbeeld container uit met de volgende opdracht [AZ container Create][az-container-create] :
 
@@ -59,7 +54,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure Container Instances start de container en stopt deze wanneer de toepassing (of het script in dit geval) wordt afgesloten. Wanneer Azure container instances een container stopt waarvoor het beleid voor `Never` opnieuw `OnFailure`opstarten is of, wordt de status van de container ingesteld op **beëindigd**. U kunt de status van een container controleren met de opdracht [AZ container show][az-container-show] :
+Azure Container Instances start de container en stopt deze wanneer de toepassing (of het script in dit geval) wordt afgesloten. Als Azure Container Instances een container stopt waarvan het beleid voor opnieuw opstarten is `Never` of `OnFailure`, wordt de status van de container ingesteld op **beëindigd**. U kunt de status van een container controleren met de opdracht [AZ container show][az-container-show] :
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query containers[0].instanceView.currentState.state

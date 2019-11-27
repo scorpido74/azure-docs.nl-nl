@@ -1,20 +1,17 @@
 ---
-title: Implementeren in Azure Container Instances van Azure Container Registry
+title: Container installatie kopie implementeren vanaf Azure Container Registry
 description: Meer informatie over het implementeren van containers in Azure Container Instances met behulp van container installatie kopieën in een Azure container Registry.
 services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 502f178b66e7ba233552d7db4e095363c8bb8628
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: adc2c95874c1cc20e49506891c9972ebcfe71f94
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325563"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533293"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Implementeren in Azure Container Instances van Azure Container Registry
 
@@ -22,13 +19,13 @@ ms.locfileid: "68325563"
 
 ## <a name="prerequisites"></a>Vereisten
 
-**Azure container Registry**: U hebt een Azure container Registry en ten minste één container installatie kopie in het REGI ster nodig om de stappen in dit artikel te volt ooien. Als u een REGI ster nodig hebt, raadpleegt u [een container register maken met de Azure cli](../container-registry/container-registry-get-started-azure-cli.md).
+**Azure container Registry**: u hebt een Azure container Registry en ten minste één container installatie kopie in het REGI ster nodig om de stappen in dit artikel te volt ooien. Als u een REGI ster nodig hebt, raadpleegt u [een container register maken met de Azure cli](../container-registry/container-registry-get-started-azure-cli.md).
 
-**Azure CLI**: De opdracht regel voorbeelden in dit artikel maken gebruik van de [Azure cli](/cli/azure/) en zijn geformatteerd voor de bash-shell. U kunt [de Azure cli lokaal installeren](/cli/azure/install-azure-cli) of de [Azure Cloud shell][cloud-shell-bash]gebruiken.
+**Azure cli**: de opdracht regel voorbeelden in dit artikel maken gebruik van de [Azure cli](/cli/azure/) en zijn geformatteerd voor de bash-shell. U kunt [de Azure cli lokaal installeren](/cli/azure/install-azure-cli) of de [Azure Cloud shell][cloud-shell-bash]gebruiken.
 
 ## <a name="configure-registry-authentication"></a>Registerverificatie configureren
 
-In elk productie scenario moet de toegang tot een Azure container Registry worden gegeven met [service](../container-registry/container-registry-auth-service-principal.md)-principals. Met Service-principals kunt u [toegangs beheer op basis van rollen](../container-registry/container-registry-roles.md) bieden aan uw container installatie kopieën. U kunt bijvoorbeeld een service-principal configureren met alleen pull-toegang tot een register.
+In elk productie scenario moet de toegang tot een Azure container Registry worden gegeven met [service-principals](../container-registry/container-registry-auth-service-principal.md). Met Service-principals kunt u [toegangs beheer op basis van rollen](../container-registry/container-registry-roles.md) bieden aan uw container installatie kopieën. U kunt bijvoorbeeld een service-principal configureren met alleen pull-toegang tot een register.
 
 In de volgende sectie maakt u een Azure-sleutel kluis en een Service-Principal en slaat u de referenties van de Service-Principal op in de kluis. 
 
@@ -36,7 +33,7 @@ In de volgende sectie maakt u een Azure-sleutel kluis en een Service-Principal e
 
 Als u nog geen kluis hebt in [Azure Key Vault](../key-vault/key-vault-overview.md), kunt u met de volgende opdrachten één maken met de Azure CLI.
 
-Werk de `RES_GROUP` variabele bij met de naam van een bestaande resource groep waarin u de sleutel kluis wilt maken en `ACR_NAME` met de naam van uw container register. Geef een naam op voor de nieuwe sleutel kluis `AKV_NAME`in. De kluis naam moet uniek zijn binnen Azure en moet 3-24 alfanumerieke tekens lang zijn, beginnen met een letter, eindigen met een letter of cijfer en mag geen opeenvolgende afbreek streepjes bevatten.
+Werk de `RES_GROUP` variabele met de naam van een bestaande resource groep waarin u de sleutel kluis wilt maken en `ACR_NAME` met de naam van uw container register. Geef een naam op voor de nieuwe sleutel kluis in `AKV_NAME`. De kluis naam moet uniek zijn binnen Azure en moet 3-24 alfanumerieke tekens lang zijn, beginnen met een letter, eindigen met een letter of cijfer en mag geen opeenvolgende afbreek streepjes bevatten.
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -79,8 +76,8 @@ az keyvault secret set \
 
 U hebt een Azure Key Vault gemaakt en er twee geheimen in opgeslagen:
 
-* `$ACR_NAME-pull-usr`: De service-principal-id, voor gebruik als de **gebruikersnaam** van het containerregister.
-* `$ACR_NAME-pull-pwd`: Het service-principal-wachtwoord, voor gebruik als het **wachtwoord** van het containerregister.
+* `$ACR_NAME-pull-usr`: de service principal-ID, voor gebruik als de **gebruikersnaam** van het containerregister.
+* `$ACR_NAME-pull-pwd`: het service principal-wachtwoord, voor gebruik als het **wachtwoord** van het containerregister.
 
 U kunt nu op naam naar deze geheime gegevens verwijzen wanneer u of uw toepassingen en services installatiekopieën uit het register halen.
 
@@ -88,7 +85,7 @@ U kunt nu op naam naar deze geheime gegevens verwijzen wanneer u of uw toepassin
 
 Nu de referenties van de Service-Principal zijn opgeslagen in Azure Key Vault geheimen, kunnen uw toepassingen en services deze gebruiken om toegang te krijgen tot uw persoonlijke REGI ster.
 
-Haal eerst de naam van de aanmeldings server van het REGI ster op met behulp van de opdracht [AZ ACR show][az-acr-show] . De naam van de aanmeldings server is allemaal kleine letters `myregistry.azurecr.io`en is vergelijkbaar met.
+Haal eerst de naam van de aanmeldings server van het REGI ster op met behulp van de opdracht [AZ ACR show][az-acr-show] . De naam van de aanmeldings server is allemaal kleine letters en is vergelijkbaar met `myregistry.azurecr.io`.
 
 ```azurecli
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $RES_GROUP --query "loginServer" --output tsv)
@@ -119,7 +116,7 @@ Zodra de container is gestart, kunt u naar de FQDN in uw browser navigeren om te
 
 ## <a name="deploy-with-azure-resource-manager-template"></a>Implementeren met Azure Resource Manager sjabloon
 
-U kunt de eigenschappen van uw Azure container Registry opgeven in een Azure Resource Manager sjabloon door de `imageRegistryCredentials` eigenschap op te nemen in de definitie van de container groep:
+U kunt de eigenschappen van uw Azure Container Registry opgeven in een Azure Resource Manager sjabloon door de eigenschap `imageRegistryCredentials` op te nemen in de definitie van de container groep:
 
 ```JSON
 "imageRegistryCredentials": [

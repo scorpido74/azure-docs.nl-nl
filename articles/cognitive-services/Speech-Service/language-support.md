@@ -182,7 +182,7 @@ Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte
 | | | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
 | | | Man | "Microsoft Server spraak tekst en spraak, spraak (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
 
-&dagger; *ar bijvoorbeeld ondersteunt moderne Standard Arabisch (MSA).*
+&dagger; *AR: ondersteunt moderne standaard Arabisch (MSA).*
 
 > [!NOTE]
 > U kunt de volledige service naam toewijzing of de naam van de korte spraak gebruiken in uw verzoeken voor spraak synthese.
@@ -196,7 +196,7 @@ Stem aanpassing is beschikbaar voor `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`,
 
 ## <a name="speech-translation"></a>Spraakomzetting
 
-De **Spraakomzetting** API biedt ondersteuning voor verschillende talen voor spraak-naar-spraak- en spraak naar tekst converteren. De bron taal moet altijd afkomstig zijn uit de tabel met spraak-naar-tekst taal. De beschikbare talen voor doel, is afhankelijk van of het doel van de vertaling spraak of tekst is. U mag vertalen binnenkomende spraak in meer dan [60 talen](https://www.microsoft.com/translator/business/languages/). Er is een subset van talen beschikbaar voor [spraak synthese](language-support.md#text-languages).
+De API voor **spraak omzetting** ondersteunt verschillende talen voor conversie van spraak naar spraak en spraak naar tekst. De bron taal moet altijd afkomstig zijn uit de tabel met spraak-naar-tekst taal. De beschikbare talen voor doel, is afhankelijk van of het doel van de vertaling spraak of tekst is. U kunt binnenkomende spraak omzetten in meer dan [60 talen](https://www.microsoft.com/translator/business/languages/). Er is een subset van talen beschikbaar voor [spraak synthese](language-support.md#text-languages).
 
 ### <a name="text-languages"></a>Tekst-talen
 
@@ -270,4 +270,4 @@ De **Spraakomzetting** API biedt ondersteuning voor verschillende talen voor spr
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Uw proefabonnement voor Speech Services ophalen](https://azure.microsoft.com/try/cognitive-services/)
-* [Zie voor het herkennen van gesproken tekst in C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)
+* [Zie spraak herkennen inC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

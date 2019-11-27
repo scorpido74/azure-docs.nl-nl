@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Monitor network communication using the Azure portal
-description: In this tutorial, learn how to monitor network communication between two virtual machines with Azure Network Watcher's connection monitor capability.
+title: Zelf studie-netwerk communicatie bewaken met behulp van de Azure Portal
+description: In deze zelf studie leert u hoe u netwerk communicatie bewaken tussen twee virtuele machines met de functionaliteit van de verbindings monitor van Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -25,21 +25,21 @@ ms.locfileid: "74419692"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Zelfstudie: Netwerkcommunicatie tussen twee virtuele machines bewaken met behulp van de Azure-portal
 
-Geslaagde communicatie tussen een virtuele machine (VM) en een eindpunt, zoals een andere virtuele machine, kan zijn essentieel voor uw organisatie. Soms leiden configuratiewijzigingen ertoe dat deze communicatie wordt verbroken. In deze zelfstudie leert u het volgende:
+Geslaagde communicatie tussen een virtuele machine (VM) en een eindpunt, zoals een andere virtuele machine, kan zijn essentieel voor uw organisatie. Soms ontstaan configuratiewijzigingen die de communicatie kunnen verbreken. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Twee virtuele machines maken
 > * Communicatie tussen virtuele machines bewaken met de verbindingsmonitor-functie van Network Watcher
 > * Waarschuwingen genereren in metrische gegevens van de verbindingsmonitor
-> * Een communicatieprobleem tussen twee virtuele machines vaststellen en wat u kunt doen om dit op te lossen
+> * Een communicatieprobleem tussen twee virtuele machines vaststellen en meer informatie over hoe u het kunt oplossen
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-## <a name="create-vms"></a>Virtuele machines maken
+## <a name="create-vms"></a>VM's maken
 
 Maak twee virtuele machines.
 
@@ -77,7 +77,7 @@ Voer de stappen in [De eerste virtuele machine maken](#create-the-first-vm) opni
 | 3 | Naam                                  | myVm2                                                                   |
 | 3 | Verificatietype                   | Plak uw openbare SSH-sleutel of selecteer **Wachtwoord** en voer een wachtwoord in. |
 | 3 | Resourcegroep                        | Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.                 |
-| 6 | Extensies                            | **Network Watcher Agent for Linux**                                             |
+| 6 | Extensies                            | **Network Watcher-agent voor Linux**                                             |
 
 Het implementeren van de VM duurt een paar minuten. Wacht tot de VM is geïmplementeerd voordat u doorgaat met de resterende stappen.
 
@@ -96,10 +96,10 @@ Maak een verbindingsmonitor om communicatie via TCP-poort 22 van *myVm1* naar *m
     | Naam                     | myVm1-myVm2(22)     |
     | Bron                   |                     |
     | Virtuele machine          | myVm1               |
-    | Bestemming              |                     |
+    | Doel              |                     |
     | Een virtuele machine selecteren |                     |
     | Virtuele machine          | myVm2               |
-    | Port                     | 22                  |
+    | Poort                     | 22                  |
 
     ![Verbindingsmonitor toevoegen](./media/connection-monitor/add-connection-monitor.png)
 
@@ -150,7 +150,7 @@ Standaard staat Azure communicatie toe over alle poorten tussen virtuele machine
     | Instelling                 | Waarde          |
     | ---                     | ---            |
     | Poortbereiken van doel | 22             |
-    | Bewerking                  | Weigeren           |
+    | Actie                  | Weigeren           |
     | Prioriteit                | 100            |
     | Naam                    | DenySshInbound |
 

@@ -1,6 +1,6 @@
 ---
-title: Access controls in Azure Active Directory Conditional Access
-description: Learn how access controls in Azure Active Directory Conditional Access work.
+title: Toegangs beheer in Azure Active Directory voorwaardelijke toegang
+description: Meer informatie over hoe toegangs beheer in Azure Active Directory voorwaardelijke toegang werkt.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,102 +18,102 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380811"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>What are access controls in Azure Active Directory Conditional Access?
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Wat zijn toegangs beheer in Azure Active Directory voorwaardelijke toegang?
 
-With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users access your cloud apps. In a Conditional Access policy, you define the response ("do this") to the reason for triggering your policy ("when this happens").
+Met [Azure Active Directory (Azure AD) voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md)kunt u bepalen hoe geautoriseerde gebruikers toegang hebben tot uw Cloud-apps. In een beleid voor voorwaardelijke toegang definieert u het antwoord ("doe dit") om de reden voor het activeren van uw beleid ("wanneer dit gebeurt").
 
 ![Beheer](./media/controls/10.png)
 
-In the context of Conditional Access,
+In de context van voorwaardelijke toegang
 
-- "**When this happens**" is called **conditions**
-- "**Then do this**" is called **access controls**
+- "**Wanneer dit gebeurt**" worden **voor waarden** genoemd
+- "**Then dit**" heet **Access controls**
 
-The combination of a condition statement with your controls represents a Conditional Access policy.
+De combi natie van een voorwaarde instructie met uw Besturings elementen vertegenwoordigt een beleid voor voorwaardelijke toegang.
 
 ![Beheer](./media/controls/61.png)
 
-Each control is either a requirement that must be fulfilled by the person or system signing in, or a restriction on what the user can do after signing in.
+Elk besturings element is een vereiste waaraan de persoon of het systeem moet voldoen of een beperking van wat de gebruiker kan doen na het aanmelden.
 
-There are two types of controls:
+Er zijn twee typen besturings elementen:
 
-- **Grant controls** - To gate access
-- **Session controls** - To restrict access within a session
+- **Besturings elementen toewijzen** aan poort toegang
+- **Sessie besturings elementen** -om de toegang binnen een sessie te beperken
 
-This topic explains the various controls that are available in Azure AD Conditional Access. 
+In dit onderwerp worden de verschillende besturings elementen beschreven die beschikbaar zijn in voorwaardelijke toegang voor Azure AD. 
 
-## <a name="grant-controls"></a>Grant controls
+## <a name="grant-controls"></a>Besturings elementen toewijzen
 
-With grant controls, you can either block access altogether or allow access with additional requirements by selecting the desired controls. For multiple controls, you can require:
+Met besturings elementen voor Grant kunt u de toegang geheel blok keren of toegang toestaan met aanvullende vereisten door de gewenste besturings elementen te selecteren. Voor meerdere besturings elementen kunt u het volgende vereisen:
 
-- All selected controls to be fulfilled (*AND*)
-- One selected control to be fulfilled (*OR*)
+- Alle geselecteerde besturings elementen waaraan moet worden voldaan (*en*)
+- Eén geselecteerd besturings element waaraan moet worden voldaan (*of*)
 
 ![Beheer](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-You can use this control to require multi-factor authentication to access the specified cloud app. This control supports the following multi-factor providers:
+U kunt dit besturings element gebruiken om multi-factor Authentication te vereisen voor toegang tot de opgegeven Cloud-app. Dit besturings element ondersteunt de volgende multi-factor-providers:
 
-- Verificatie op basis van meerdere factoren van Azure
-- An on-premises multi-factor authentication provider, combined with Active Directory Federation Services (AD FS).
+- Azure Multi-Factor Authentication
+- Een on-premises multi-factor Authentication-provider, gecombineerd met Active Directory Federation Services (AD FS).
 
-Using multi-factor authentication helps protect resources from being accessed by an unauthorized user who might have gained access to the primary credentials of a valid user.
+Het gebruik van multi-factor Authentication helpt resources te beschermen tegen toegang door een niet-geautoriseerde gebruiker die mogelijk toegang heeft verkregen tot de primaire referenties van een geldige gebruiker.
 
 ### <a name="compliant-device"></a>Compatibel apparaat
 
-You can configure Conditional Access policies that are device-based. The objective of a device-based Conditional Access policy is to only grant access to the selected cloud apps from [managed devices](require-managed-devices.md). Requiring a device to be marked as compliant is one option you have to limit access to managed devices. A device can be marked as compliant by Intune (for any device OS) or by your third-party MDM system for Windows 10 devices. Third-party MDM systems for device OS types other than Windows 10 are not supported. 
+U kunt beleids regels voor voorwaardelijke toegang configureren op basis van apparaten. Het doel van een op apparaten gebaseerd beleid voor voorwaardelijke toegang is om alleen toegang te verlenen aan de geselecteerde Cloud-apps van [beheerde apparaten](require-managed-devices.md). Het vereisen van een apparaat dat moet worden gemarkeerd als compatibel is een optie die u nodig hebt om de toegang tot beheerde apparaten te beperken. Een apparaat kan worden gemarkeerd als compatibel door intune (voor elk besturings systeem van een apparaat) of door het MDM-systeem van derden voor Windows 10-apparaten. MDM-systemen van derden voor apparaten met een ander besturings systeem dan Windows 10 worden niet ondersteund. 
 
-Your device needs to be registered to Azure AD before it can be marked as compliant. To register a device, you have three options: 
+Uw apparaat moet worden geregistreerd bij Azure AD voordat het kan worden gemarkeerd als compatibel. Als u een apparaat wilt registreren, hebt u drie opties: 
 
 - Azure AD-geregistreerde apparaten
 - Azure AD-gekoppelde apparaten  
 - Hybride Azure AD-gekoppelde apparaten
 
-These three options are discussed in the article [What is a device identity?](../devices/overview.md)
+Deze drie opties worden beschreven in het artikel [Wat is een apparaat-id?](../devices/overview.md)
 
-For more information, see [how to require managed devices for cloud app access with Conditional Access](require-managed-devices.md).
+Zie voor meer informatie [beheerde apparaten vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang](require-managed-devices.md).
 
-### <a name="hybrid-azure-ad-joined-device"></a>Hybrid Azure AD joined device
+### <a name="hybrid-azure-ad-joined-device"></a>Hybride Azure AD-apparaat toegevoegd
 
-Requiring a Hybrid Azure AD joined device is another option you have to configure device-based Conditional Access policies. This requirement refers to Windows desktops, laptops, and enterprise tablets that are joined to an on-premises Active Directory. If this option is selected, your Conditional Access policy grants access to access attempts made with devices that are joined to your on-premises Active Directory and your Azure Active Directory.  
+Het vereisen van een hybride Azure AD-apparaat dat is gekoppeld, is een andere optie die u nodig hebt voor het configureren van op apparaten gebaseerd beleid voor voorwaardelijke toegang. Deze vereiste verwijst naar Windows-Desk tops, laptops en zakelijke tablets die deel uitmaken van een on-premises Active Directory. Als deze optie is geselecteerd, verleent het beleid voor voorwaardelijke toegang toegang tot toegangs pogingen die zijn gemaakt met apparaten die zijn gekoppeld aan uw on-premises Active Directory en uw Azure Active Directory.  
 
-For more information, see [set up Azure Active Directory device-based Conditional Access policies](require-managed-devices.md).
+Zie [Azure Active Directory op apparaat gebaseerd beleid voor voorwaardelijke toegang instellen](require-managed-devices.md)voor meer informatie.
 
-### <a name="approved-client-app"></a>Approved client app
+### <a name="approved-client-app"></a>Goedgekeurde client-app
 
-Because your employees use mobile devices for both personal and work tasks, you might want to have the ability to protect company data accessed using devices even in the case where they are not managed by you.
-You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data independent of any mobile-device management (MDM) solution.
+Omdat uw werk nemers mobiele apparaten gebruiken voor zowel privé-als werk taken, kunt u de Bedrijfs gegevens die toegankelijk zijn met apparaten beveiligen, zelfs als ze niet door u worden beheerd.
+U kunt [intune-beveiligings beleid voor apps](https://docs.microsoft.com/intune/app-protection-policy) gebruiken om de gegevens van uw bedrijf onafhankelijk van elke MDM-oplossing (Mobile-Device Management) te beveiligen.
 
-With approved client apps, you can require a client app that attempts to access your cloud apps to support [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy). For example, you can restrict access to Exchange Online to the Outlook app. A Conditional Access policy that requires approved client apps is  also known as [app-based Conditional Access policy](app-based-conditional-access.md). For a list of supported approved client apps, see [approved client app requirement](technical-reference.md#approved-client-app-requirement).
+Met goedgekeurde client-apps kunt u een client-app vereisen die toegang probeert te krijgen tot uw Cloud-apps voor het ondersteunen van [intune-beveiligings beleid voor apps](https://docs.microsoft.com/intune/app-protection-policy). U kunt bijvoorbeeld de toegang tot Exchange Online beperken tot de Outlook-app. Een beleid voor voorwaardelijke toegang dat goedgekeurde client-apps vereist, wordt ook wel [op apps gebaseerd beleid voor voorwaardelijke toegang](app-based-conditional-access.md)genoemd. Zie voor een lijst met ondersteunde goedgekeurde client-apps de [vereiste goedgekeurde client-app](technical-reference.md#approved-client-app-requirement).
 
-### <a name="app-protection-policy-preview"></a>App protection policy (preview)
+### <a name="app-protection-policy-preview"></a>Beveiligings beleid voor apps (preview-versie)
 
-Because your employees use mobile devices for both personal and work tasks, you might want to have the ability to protect company data accessed using devices even in the case where they are not managed by you.
-You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data independent of any mobile-device management (MDM) solution.
+Omdat uw werk nemers mobiele apparaten gebruiken voor zowel privé-als werk taken, kunt u de Bedrijfs gegevens die toegankelijk zijn met apparaten beveiligen, zelfs als ze niet door u worden beheerd.
+U kunt [intune-beveiligings beleid voor apps](https://docs.microsoft.com/intune/app-protection-policy) gebruiken om de gegevens van uw bedrijf onafhankelijk van elke MDM-oplossing (Mobile-Device Management) te beveiligen.
 
-With app protection policy, you can limit access to client applications that have reported to Azure AD has having received [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy). For example, you can restrict access to Exchange Online to the Outlook app that has an Intune app protection policy. A Conditional Access policy that requires app protection policy is also known as [app protection-based Conditional Access policy](app-protection-based-conditional-access.md). 
+Met het app-beveiligings beleid kunt u de toegang beperken tot client toepassingen die zijn gerapporteerd aan Azure AD heeft het [intune-beveiligings beleid voor apps](https://docs.microsoft.com/intune/app-protection-policy)ontvangen. U kunt bijvoorbeeld de toegang tot Exchange Online beperken tot de Outlook-app die een intune-beleid voor app-beveiliging heeft. Een beleid voor voorwaardelijke toegang dat het beveiligings beleid voor apps vereist, wordt ook wel het [beleid voor voorwaardelijke toegang op basis van apps beveiliging](app-protection-based-conditional-access.md)genoemd. 
 
-Your device must be registered to Azure AD before an application can be marked as policy protected.
+Het apparaat moet worden geregistreerd bij Azure AD voordat een toepassing kan worden gemarkeerd als beveiligd beleid.
 
-For a list of supported policy protected client apps, see [app protection policy requirement](technical-reference.md#app-protection-policy-requirement).
+Zie [vereisten voor app-beveiligings beleid](technical-reference.md#app-protection-policy-requirement)voor een lijst met ondersteunde, door beleid beveiligde client-apps.
 
 ### <a name="terms-of-use"></a>Gebruiksvoorwaarden
 
-You can require a user in your tenant to consent to the terms of use before being granted access to a resource. As an administrator, you can configure and customize terms of use by uploading a PDF document. If a user falls in scope of this control access to an application is only granted if the terms of use have been agreed.
+U kunt een gebruiker in uw Tenant verplichten om toestemming te geven voor de gebruiks voorwaarden alvorens toegang te krijgen tot een resource. Als beheerder kunt u gebruiks voorwaarden configureren en aanpassen door een PDF-document te uploaden. Als een gebruiker binnen het bereik van dit besturings element valt, wordt de toegang tot een toepassing alleen verleend als de gebruiks voorwaarden zijn overeengekomen.
 
-## <a name="custom-controls-preview"></a>Custom controls (preview)
+## <a name="custom-controls-preview"></a>Aangepaste besturings elementen (preview-versie)
 
-Custom controls are a capability of the Azure Active Directory Premium P1 edition. When using custom controls, your users are redirected to a compatible service to satisfy further requirements outside of Azure Active Directory. To satisfy this control, a user’s browser is redirected to the external service, performs any required authentication or validation activities, and is then redirected back to Azure Active Directory. Azure Active Directory verifies the response and, if the user was successfully authenticated or validated, the user continues in the Conditional Access flow.
+Aangepaste besturings elementen zijn een functie van de Azure Active Directory Premium P1-editie. Wanneer u aangepaste besturings elementen gebruikt, worden uw gebruikers omgeleid naar een compatibele service om te voldoen aan aanvullende vereisten buiten Azure Active Directory. Om aan dit besturings element te voldoen, wordt de browser van een gebruiker omgeleid naar de externe service, worden eventuele vereiste verificatie-of validatie activiteiten uitgevoerd en wordt vervolgens teruggeleid naar Azure Active Directory. Azure Active Directory controleert het antwoord en, als de gebruiker is geverifieerd of gevalideerd, wordt de gebruiker in de stroom voor voorwaardelijke toegang voortgezet.
 
-These controls allow the use of certain external or custom services as Conditional Access controls, and generally extend the capabilities of Conditional Access.
+Met deze besturings elementen wordt het gebruik van bepaalde externe of aangepaste services als besturings elementen voor voorwaardelijke toegang toegestaan en worden de mogelijkheden van voorwaardelijke toegang in het algemeen uitgebreid.
 
-Providers currently offering a compatible service include:
+Providers die momenteel een compatibele service aanbieden, zijn onder andere:
 
-- [Duo Security](https://duo.com/docs/azure-ca)
+- [Duo-beveiliging](https://duo.com/docs/azure-ca)
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
-- [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
+- [Ping-identiteit](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
@@ -121,52 +121,52 @@ Providers currently offering a compatible service include:
 - [Thales (Gemalto)](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
-For more information on those services, contact the providers directly.
+Neem rechtstreeks contact op met de provider voor meer informatie over deze services.
 
-### <a name="creating-custom-controls"></a>Creating custom controls
+### <a name="creating-custom-controls"></a>Aangepaste besturings elementen maken
 
-To create a custom control, you should first contact the provider that you wish to utilize. Each non-Microsoft provider has its own process and requirements to sign up, subscribe, or otherwise become a part of the service, and to indicate that you wish to integrate with Conditional Access. At that point, the provider will provide you with a block of data in JSON format. This data allows the provider and Conditional Access to work together for your tenant, creates the new control and defines how Conditional Access can tell if your users have successfully performed verification with the provider.
+Als u een aangepast besturings element wilt maken, moet u eerst contact opnemen met de provider die u wilt gebruiken. Elke niet-micro soft-provider heeft een eigen proces en vereisten om zich aan te melden, te abonneren of anderszins deel te nemen aan de service, en om aan te geven dat u wilt integreren met voorwaardelijke toegang. Op dat moment geeft de provider u een blok gegevens in JSON-indeling. Met deze gegevens kan de provider en de voorwaardelijke toegang samen werken voor uw Tenant, wordt het nieuwe besturings element gemaakt en wordt gedefinieerd hoe voorwaardelijke toegang kan zien of uw gebruikers verificatie hebben uitgevoerd met de provider.
 
-Custom controls cannot be used with Identity Protection's automation requiring multi-factor authentication or to elevate roles in Privileged Identity Manager (PIM).
+Aangepaste besturings elementen kunnen niet worden gebruikt met automatisering van identiteits beveiliging waarvoor multi-factor Authentication is vereist of voor het verhogen van rollen in privileged Identity Manager (PIM).
 
-Copy the JSON data and then paste it into the related textbox. Do not make any changes to the JSON unless you explicitly understand the change you’re making. Making any change could break the connection between the provider and Microsoft and potentially lock you and your users out of your accounts.
+Kopieer de JSON-gegevens en plak deze in het bijbehorende tekstvak. Breng geen wijzigingen aan in de JSON, tenzij u de wijziging die u aanbrengt expliciet begrijpt. Als u een wijziging aanbrengt, kan de verbinding tussen de provider en micro soft worden verbroken en kunnen u en uw gebruikers uw accounts vergren delen.
 
-The option to create a custom control is in the **Manage** section of the **Conditional Access** page.
+De optie voor het maken van een aangepast besturings element bevindt zich in de sectie **beheren** van de pagina **voorwaardelijke toegang** .
 
 ![Beheer](./media/controls/82.png)
 
-Clicking **New custom control**, opens a blade with a textbox for the JSON data of your control.  
+Als u op **nieuw aangepast besturings element**klikt, wordt een Blade geopend met een tekstvak voor de JSON-gegevens van uw besturings element.  
 
 ![Beheer](./media/controls/81.png)
 
-### <a name="deleting-custom-controls"></a>Deleting custom controls
+### <a name="deleting-custom-controls"></a>Aangepaste besturings elementen verwijderen
 
-To delete a custom control, you must first ensure that it isn’t being used in any Conditional Access policy. Once complete:
+Als u een aangepast besturings element wilt verwijderen, moet u er eerst voor zorgen dat het niet wordt gebruikt in een beleid voor voorwaardelijke toegang. Eenmaal voltooid:
 
-1. Go to the Custom controls list
-1. Click …  
+1. Ga naar de lijst met aangepaste besturings elementen
+1. Klik op...  
 1. Selecteer **Verwijderen**.
 
-### <a name="editing-custom-controls"></a>Editing custom controls
+### <a name="editing-custom-controls"></a>Aangepaste besturings elementen bewerken
 
-To edit a custom control, you must delete the current control and create a new control with the updated information.
+Als u een aangepast besturings element wilt bewerken, moet u het huidige besturings element verwijderen en een nieuw besturings element maken met de bijgewerkte gegevens.
 
-## <a name="session-controls"></a>Session controls
+## <a name="session-controls"></a>Sessie besturings elementen
 
-Session controls enable limited experience within a cloud app. The session controls are enforced by cloud apps and rely on additional information provided by Azure AD to the app about the session.
+Sessie besturings elementen maken beperkte ervaring in een Cloud-app mogelijk. De sessie besturings elementen worden afgedwongen door Cloud-apps en zijn afhankelijk van aanvullende informatie van Azure AD naar de app over de sessie.
 
 ![Beheer](./media/controls/31.png)
 
-### <a name="use-app-enforced-restrictions"></a>Use app enforced restrictions
+### <a name="use-app-enforced-restrictions"></a>Door apps afgedwongen beperkingen gebruiken
 
-You can use this control to require Azure AD to pass device information to the selected cloud apps. The device information enables the cloud apps to know whether a connection is initiated from a compliant or domain-joined device. This control only supports SharePoint Online and Exchange Online as selected cloud apps. When selected, the cloud app uses the device information to provide users, depending on the device state, with a limited or full experience.
+U kunt dit besturings element gebruiken om te vereisen dat Azure AD apparaatgegevens doorgeeft aan de geselecteerde Cloud-apps. De apparaatgegevens maken het mogelijk om te bepalen of een verbinding tot stand wordt gebracht vanaf een apparaat dat compatibel is met of een domein. Dit besturings element ondersteunt alleen share point online en Exchange Online als geselecteerde Cloud-apps. Als deze functie is ingeschakeld, gebruikt de Cloud-app de apparaatgegevens om gebruikers, afhankelijk van de status van het apparaat, te voorzien van een beperkte of volledige ervaring.
 
-Voor meer informatie zie:
+Raadpleeg voor meer informatie:
 
-- [Enabling limited access with SharePoint Online](https://aka.ms/spolimitedaccessdocs)
-- [Enabling limited access with Exchange Online](https://aka.ms/owalimitedaccess)
+- [Beperkte toegang inschakelen met share point online](https://aka.ms/spolimitedaccessdocs)
+- [Beperkte toegang inschakelen met Exchange Online](https://aka.ms/owalimitedaccess)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+- Als u wilt weten hoe u een beleid voor voorwaardelijke toegang kunt configureren, raadpleegt u [MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory](app-based-mfa.md).
+- Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u de [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md).

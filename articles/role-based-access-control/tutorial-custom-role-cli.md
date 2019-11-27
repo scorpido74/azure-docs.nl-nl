@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create a custom role for Azure resources using Azure CLI
-description: Get started creating a custom role for Azure resources using Azure CLI in this tutorial.
+title: 'Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure CLI'
+description: In deze zelf studie kunt u aan de slag met het maken van een aangepaste rol voor Azure-resources met behulp van Azure CLI.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -20,9 +20,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419596"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Tutorial: Create a custom role for Azure resources using Azure CLI
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure CLI
 
-Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. Voor deze zelfstudie gaat u met behulp van Azure CLI een aangepaste rol maken met de naam Reader Support Tickets. De aangepaste rol stelt de gebruiker in staat om alles in het beheervenster van een abonnement te zien en ook om ondersteuningstickets te openen.
+Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. Voor deze zelfstudie gaat u met behulp van Azure CLI een aangepaste rol maken met de naam Reader Support Tickets. De aangepaste rol stelt de gebruiker in staat om alles in het beheersvenster van een abonnement te zien en ook om ondersteuningstickets te openen.
 
 In deze zelfstudie leert u het volgende:
 

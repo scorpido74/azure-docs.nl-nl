@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Check spelling with the REST API and Python - Bing Spell Check'
+title: 'Snelstartgids: spelling controleren met de REST API en python-Bing Spellingcontrole'
 titleSuffix: Azure Cognitive Services
-description: Aan de slag met de Bing Spellingcontrole-REST API om spelling en grammatica te controleren.
+description: Aan de slag met de Bing Spellingcontrole-REST API om de spelling en grammatica te controleren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,9 +17,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378818"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Quickstart: Check spelling with the Bing Spell Check REST API and Python
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en python
 
-Gebruik deze snelstartgids om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige Python-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige Python-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -52,7 +52,7 @@ Gebruik deze snelstartgids om uw eerste aanroep naar de Bing Spellingcontrole RE
     data = {'text': example_text}
     ```
 
-2. Voeg de parameters voor uw aanvraag toe. Append your market code after `mkt=`. The market code is the country you make the request from. Also, append your spell-check mode after `&mode=`. Mode is either `proof` (catches most spelling/grammar errors) or `spell` (catches most spelling but not as many grammar errors).
+2. Voeg de parameters voor uw aanvraag toe. Voeg uw markt code toe na `mkt=`. De markt code is het land van waaruit u de aanvraag maakt. Voeg ook de modus voor spelling controle toe na `&mode=`. De modus is `proof` (de meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammaticale fouten onderschept).
 
     ```python
     params = {

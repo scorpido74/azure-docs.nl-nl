@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Quick container image build
+title: Zelf studie-build van snelle container installatie kopie
 description: In deze zelfstudie leert u hoe een Docker-containerinstallatiekopie in Azure bouwt met Azure Container Registry Tasks (ACR Tasks) en deze vervolgens implementeert naar Azure Container Instances.
 ms.topic: tutorial
 ms.date: 09/24/2018
@@ -11,7 +11,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456045"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Build and deploy container images in the cloud with Azure Container Registry Tasks
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Zelf studie: container installatie kopieën bouwen en implementeren in de Cloud met Azure Container Registry taken
 
 **ACR Tasks** is een suite met functies in Azure Container Registry die gestroomlijnde en efficiënte builds van Docker-containerinstallatiekopieën mogelijk maakt in Azure. In dit artikel leert u hoe u de functie *quick task* van ACR Tasks gebruikt.
 
@@ -26,11 +26,11 @@ In deze zelfstudie, deel één van een reeks:
 > * Een containerinstallatiekopie maken in Azure
 > * Een container implementeren in Azure Container Instances
 
-In volgende zelfstudies leert u hoe u ACR Tasks gebruikt voor geautomatiseerde builds van containerinstallatiekopieën bij codedoorvoer en updates van basisinstallatiekopieën. ACR Tasks can also run [multi-step tasks](container-registry-tasks-multi-step.md), using a YAML file to define steps to build, push, and optionally test multiple containers.
+In volgende zelfstudies leert u hoe u ACR Tasks gebruikt voor geautomatiseerde builds van containerinstallatiekopieën bij codedoorvoer en updates van basisinstallatiekopieën. ACR-taken kunnen ook [taken met meerdere stappen](container-registry-tasks-multi-step.md)uitvoeren, met behulp van een yaml-bestand om de stappen voor het bouwen, pushen en optioneel testen van meerdere containers te definiëren.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-If you'd like to use the Azure CLI locally, you must have Azure CLI version **2.0.46** or later installed and logged in with [az login][az-login]. Voer `az --version` uit om de versie te bekijken. If you need to install or upgrade the CLI, see [Install Azure CLI][azure-cli].
+Als u de Azure CLI lokaal wilt gebruiken, moet u Azure CLI versie **2.0.46** of hoger hebben geïnstalleerd en zijn aangemeld met [AZ login][az-login]. Voer `az --version` uit om de versie te bekijken. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure cli installeren][azure-cli].
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,7 +38,7 @@ If you'd like to use the Azure CLI locally, you must have Azure CLI version **2.
 
 Maak een account op https://github.com als u er nog geen hebt. In deze zelfstudiereeks wordt een GitHub-opslagplaats gebruikt om geautomatiseerde builds van installatiekopieën in ACR Tasks te demonstreren.
 
-### <a name="fork-sample-repository"></a>Voorbeeldopslagplaats splitsen
+### <a name="fork-sample-repository"></a>Voorbeeldopslagplaats fork
 
 Gebruik vervolgens de GitHub UI om de voorbeeldopslagplaats te splitsen naar uw GitHub-account. In deze zelfstudie maakt u een containerinstallatiekopie van de bron in de opslagplaats. In de volgende zelfstudie pusht u een commit of doorvoer naar uw fork van de opslagplaats om een geautomatiseerde taak te starten.
 
@@ -70,7 +70,7 @@ De opdrachten in deze zelfstudiereeks zijn geformatteerd voor de Bash-shell. Als
 
 Nu u de broncode hebt opgehaald naar uw computer, volgt u deze stappen om een containerregister te maken en de containerinstallatiekopie te bouwen met ACR Tasks.
 
-Om het uitvoeren van de voorbeeldopdrachten eenvoudiger te maken, worden in de zelfstudies in deze serie shell-omgevingsvariabelen gebruikt. Voer de volgende opdracht uit om de variabele `ACR_NAME` in te stellen. Vervang **\<registry-name\>** door een unieke naam voor uw nieuwe containerregister. The registry name must be unique within Azure, contain only lower case letters, and contain 5-50 alphanumeric characters. De andere resources die u in de zelfstudie maakt, zijn gebaseerd op deze naam, dus u hoeft alleen deze eerste variabele te wijzigen.
+Om het uitvoeren van de voorbeeldopdrachten eenvoudiger te maken, worden in de zelfstudies in deze serie shell-omgevingsvariabelen gebruikt. Voer de volgende opdracht uit om de variabele `ACR_NAME` in te stellen. Vervang **\<registry-name\>** door een unieke naam voor uw nieuwe containerregister. De register naam moet uniek zijn in azure, mag alleen kleine letters bevatten en mag 5-50 alfanumerieke tekens bevatten. De andere resources die u in de zelfstudie maakt, zijn gebaseerd op deze naam, dus u hoeft alleen deze eerste variabele te wijzigen.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>
@@ -85,13 +85,13 @@ az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-Nu u een register hebt, gebruikt u ACR Tasks om een containerinstallatiekopie te bouwen van de voorbeeldcode. Execute the [az acr build][az-acr-build] command to perform a *quick task*:
+Nu u een register hebt, gebruikt u ACR Tasks om een containerinstallatiekopie te bouwen van de voorbeeldcode. Voer de opdracht [AZ ACR build][az-acr-build] uit om een *snelle taak*uit te voeren:
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 ```
 
-Output from the [az acr build][az-acr-build] command is similar to the following. U ziet het uploaden van de broncode (de 'context') naar Azure en de details van de `docker build`-bewerking die ACR Tasks uitvoert in de cloud. Omdat ACR Tasks `docker build` gebruikt om uw installatiekopieën samen te stellen, hoeven er geen wijzigingen te worden aangebracht in uw Dockerfiles om ACR Tasks direct te gaan gebruiken.
+De uitvoer van de opdracht [AZ ACR build][az-acr-build] is vergelijkbaar met het volgende. U ziet het uploaden van de broncode (de 'context') naar Azure en de details van de `docker build`-bewerking die ACR Tasks uitvoert in de cloud. Omdat ACR Tasks `docker build` gebruikt om uw installatiekopieën samen te stellen, hoeven er geen wijzigingen te worden aangebracht in uw Dockerfiles om ACR Tasks direct te gaan gebruiken.
 
 ```console
 $ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -171,7 +171,7 @@ In deze sectie maakt u een Azure Key Vault en service-principal. Vervolgens impl
 
 ### <a name="configure-registry-authentication"></a>Registerverificatie configureren
 
-All production scenarios should use [service principals][service-principal-auth] to access an Azure container registry. Met service-principals kunt u voor op rollen gebaseerde toegangsbeheer bieden voor uw containerinstallatiekopieën. U kunt bijvoorbeeld een service-principal configureren met alleen pull-toegang tot een register.
+Alle productie scenario's moeten [service-principals][service-principal-auth] gebruiken om toegang te krijgen tot een Azure container Registry. Met service-principals kunt u voor op rollen gebaseerde toegangsbeheer bieden voor uw containerinstallatiekopieën. U kunt bijvoorbeeld een service-principal configureren met alleen pull-toegang tot een register.
 
 #### <a name="create-a-key-vault"></a>Een sleutelkluis maken
 
@@ -187,7 +187,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 U moet nu een service-principal maken en de referenties ervan opslaan in uw sleutelkluis.
 
-Use the [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] command to create the service principal, and [az keyvault secret set][az-keyvault-secret-set] to store the service principal's **password** in the vault:
+Gebruik de opdracht [AZ AD SP create-for-RBAC][az-ad-sp-create-for-rbac] om de service-principal te maken en [AZ sleutel kluis Secret set][az-keyvault-secret-set] om het **wacht woord** van de Service-Principal op te slaan in de kluis:
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)
@@ -225,7 +225,7 @@ U kunt nu op naam naar deze geheime gegevens verwijzen wanneer u of uw toepassin
 
 Nu de referenties voor de service-principal zijn opgeslagen als Azure Key Vault-geheimen, kunnen uw toepassingen en services deze gebruiken voor toegang tot uw persoonlijke register.
 
-Execute the following [az container create][az-container-create] command to deploy a container instance. De opdracht maakt gebruik van de referenties van de service-principal die zijn opgeslagen in Azure Key Vault om uw containerregister te verifiëren.
+Voer de volgende opdracht [AZ container Create][az-container-create] uit om een container exemplaar te implementeren. De opdracht maakt gebruik van de referenties van de service-principal die zijn opgeslagen in Azure Key Vault om uw containerregister te verifiëren.
 
 ```azurecli-interactive
 az container create \
@@ -262,7 +262,7 @@ Let op de FQDN van de container; u gaat deze gebruiken in de volgende sectie.
 
 ### <a name="verify-the-deployment"></a>De implementatie controleren
 
-To watch the startup process of the container, use the [az container attach][az-container-attach] command:
+Als u het opstart proces van de container wilt bekijken, gebruikt u de opdracht [AZ container attach][az-container-attach] :
 
 ```azurecli-interactive
 az container attach --resource-group $RES_GROUP --name acr-tasks
@@ -290,7 +290,7 @@ Als u de console wilt loskoppelen van de container, klikt u op `Control+C`.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Stop the container instance with the [az container delete][az-container-delete] command:
+Stop de container instantie met de opdracht [AZ container delete][az-container-delete] :
 
 ```azurecli-interactive
 az container delete --resource-group $RES_GROUP --name acr-tasks

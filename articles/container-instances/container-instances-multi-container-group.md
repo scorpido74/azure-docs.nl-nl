@@ -1,22 +1,17 @@
 ---
-title: Zelf studie-een groep met meerdere containers implementeren in Azure Container Instances-sjabloon
+title: Zelf studie-een groeps sjabloon met meerdere containers implementeren
 description: In deze zelf studie leert u hoe u een container groep met meerdere containers in Azure Container Instances kunt implementeren met behulp van een Azure Resource Manager sjabloon met de Azure CLI.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 7438b5a91d3bf0ce8330e33bc1c849a8b0329c6f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325900"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533626"
 ---
-# <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Zelfstudie: Een groep met meerdere containers implementeren met een resource manager-sjabloon
+# <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
@@ -24,7 +19,7 @@ ms.locfileid: "68325900"
 
 Azure Container Instances ondersteunt de implementatie van meerdere containers op één host met behulp van een [container groep](container-instances-container-groups.md). Een container groep is handig bij het bouwen van een sollicitatie stick voor logboek registratie, bewaking of andere configuraties waarbij een service een tweede gekoppelde procedure nodig heeft.
 
-In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige configuratie voor twee containers door een Azure Resource Manager-sjabloon te implementeren met behulp van de Azure CLI. In deze zelfstudie leert u procedures om het volgende te doen:
+In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige configuratie voor twee containers door een Azure Resource Manager-sjabloon te implementeren met behulp van de Azure CLI. Procedures voor:
 
 > [!div class="checklist"]
 > * Een sjabloon voor een groep met meerdere containers configureren
@@ -42,7 +37,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="configure-a-template"></a>Een sjabloon configureren
 
-Begin door de volgende JSON te kopiëren naar een nieuw bestand `azuredeploy.json`met de naam. In Azure Cloud Shell kunt u Visual Studio code gebruiken om het bestand in uw werkmap te maken:
+Begin door de volgende JSON te kopiëren naar een nieuw bestand met de naam `azuredeploy.json`. In Azure Cloud Shell kunt u Visual Studio code gebruiken om het bestand in uw werkmap te maken:
 
 ```
 code azuredeploy.json
@@ -172,7 +167,7 @@ Als u de status van de implementatie wilt weer geven, gebruikt u de volgende opd
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Als u de actieve toepassing wilt bekijken, gaat u naar het IP-adres in uw browser. Het IP-adres is `52.168.26.124` bijvoorbeeld in deze voorbeeld uitvoer:
+Als u de actieve toepassing wilt bekijken, gaat u naar het IP-adres in uw browser. Het IP-adres is bijvoorbeeld `52.168.26.124` in deze voorbeeld uitvoer:
 
 ```bash
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
@@ -182,7 +177,7 @@ myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tut
 
 ## <a name="view-container-logs"></a>Containerlogboeken ophalen
 
-Bekijk de logboek uitvoer van een container met behulp van de opdracht [AZ container logs][az-container-logs] . Het `--container-name` argument geeft de container aan waaruit logboeken moeten worden opgehaald. In dit voor beeld is `aci-tutorial-app` de container opgegeven.
+Bekijk de logboek uitvoer van een container met behulp van de opdracht [AZ container logs][az-container-logs] . Met het argument `--container-name` wordt de container opgegeven waaruit logboeken moeten worden opgehaald. In dit voor beeld wordt de `aci-tutorial-app`-container opgegeven.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -197,7 +192,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Als u de logboeken voor de container voor de zijspan wagen wilt weer geven `aci-tutorial-sidecar` , voert u een vergelijk bare opdracht uit die de container opgeeft.
+Als u de logboeken voor de container met zijspaners wilt weer geven, voert u een vergelijk bare opdracht uit die de `aci-tutorial-sidecar`-container opgeeft.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -223,7 +218,7 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Zoals u ziet, maakt de zijspan wagen regel matig een HTTP-aanvraag voor de hoofd webtoepassing via het lokale netwerk van de groep om ervoor te zorgen dat deze wordt uitgevoerd. Dit voor beeld van een zijspan wagen kan worden uitgebreid om een waarschuwing te activeren als het een andere `200 OK`http-antwoord code dan heeft ontvangen.
+Zoals u ziet, maakt de zijspan wagen regel matig een HTTP-aanvraag voor de hoofd webtoepassing via het lokale netwerk van de groep om ervoor te zorgen dat deze wordt uitgevoerd. Dit voor beeld van een zijspan wagen kan worden uitgebreid om een waarschuwing te activeren als het een andere HTTP-antwoord code dan `200 OK`heeft ontvangen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

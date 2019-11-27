@@ -1,7 +1,7 @@
 ---
-title: PowerShell for DNS alias
-description: PowerShell cmdlets such as New-AzSqlServerDNSAlias enable you to redirect new client connections to a different Azure SQL Database server, without having to touch any client configuration.
-keywords: dns sql database
+title: Power shell voor DNS-alias
+description: Met Power shell-cmdlets zoals New-AzSqlServerDNSAlias kunt u nieuwe client verbindingen omleiden naar een andere Azure SQL Database Server, zonder dat u een client configuratie hoeft aan te gaan.
+keywords: DNS SQL-data base
 ms.custom: seo-lt-2019
 services: sql-database
 ms.service: sql-database
@@ -19,46 +19,46 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420399"
 ---
-# <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell for DNS Alias to Azure SQL Database
+# <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Power shell voor het Azure SQL Database van DNS-alias
 
-This article provides a PowerShell script that demonstrates how you can manage a DNS alias for Azure SQL Database.
+Dit artikel bevat een Power shell-script dat laat zien hoe u een DNS-alias voor Azure SQL Database kunt beheren.
 
 > [!NOTE]
-> This article has been updated to use either the Azure PowerShell Az module or Azure CLI. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020.
+> Dit artikel is bijgewerkt voor het gebruik van de Azure PowerShell AZ-module of Azure CLI. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020.
 >
-> To learn more about the Az module and AzureRM compatibility, see [Introducing the Azure PowerShell Az module](/powershell/azure/new-azureps-module-az). For installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps) or [Install Azure CLI](/cli/azure/install-azure-cli).
+> Zie [Inleiding tot de Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit van AZ-modules en AzureRM. Zie [install Azure PowerShell](/powershell/azure/install-az-ps) of [install Azure cli](/cli/azure/install-azure-cli)(Engelstalig) voor installatie-instructies.
 
-## <a name="dns-alias-in-connection-string"></a>DNS alias in connection string
+## <a name="dns-alias-in-connection-string"></a>DNS-alias in connection string
 
-To connect a particular Azure SQL Database server, a client such as SQL Server Management Studio (SSMS) can provide the DNS alias name instead of the true server name. In the following example server string, the alias *any-unique-alias-name* replaces the first dot-delimited node in the four node server string:
+Een client zoals SQL Server Management Studio (SSMS) kan de DNS-alias naam opgeven in plaats van de werkelijke server naam om verbinding te maken met een bepaalde Azure SQL Database Server. In het volgende voor beeld van een server teken reeks vervangt de alias *elke-unieke alias naam* het knoop punt met de eerste punt als scheidings teken in de reeks van de vier knooppunt server:
 
    `<yourServer>.database.windows.net`
 
 ## <a name="prerequisites"></a>Vereisten
 
-If you want to run the demo PowerShell script given in this article, the following prerequisites apply:
+Als u het Power shell-script wilt uitvoeren dat in dit artikel wordt vermeld, gelden de volgende vereisten:
 
-- An Azure subscription and account, for free trial, see [Azure trials](https://azure.microsoft.com/free/)
-- Two Azure SQL database servers
+- Een Azure-abonnement en-account, voor een gratis proef versie, Zie [Azure-experimenten](https://azure.microsoft.com/free/)
+- Twee Azure SQL database-servers
 
 ## <a name="example"></a>Voorbeeld
 
-The following code example starts by assigning literal values to several variables.
+Het volgende code voorbeeld wordt gestart door letterlijke waarden toe te wijzen aan verschillende variabelen.
 
-To run the code, edit the placeholder values to match real values in your system.
+Als u de code wilt uitvoeren, bewerkt u de waarden voor de tijdelijke aanduiding zodat deze overeenkomen met echte waarden in uw systeem.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-The cmdlets used are the following:
+De volgende cmdlets worden gebruikt:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Creates a DNS alias in the Azure SQL Database service system. The alias refers to database server 1.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Get and list all the aliases assigned to SQL DB server 1.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Modifies the server name that the alias is configured to refer to, from server 1 to server 2.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Remove the alias from database server 2, by using the name of the alias.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): maakt een DNS-alias in het Azure SQL database-service systeem. De alias verwijst naar database server 1.
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): alle aliassen ophalen en weer geven die zijn toegewezen aan SQL DB-server 1.
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): wijzigt de server naam waarmee de alias is geconfigureerd, van Server 1 naar Server 2.
+- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Verwijder de alias uit Data Base Server 2 met behulp van de naam van de alias.
 
 Zie [Azure PowerShell-module installeren](/powershell/azure/install-az-ps) om de module te installeren of te upgraden.
 
-Use `Get-Module -ListAvailable Az` in *powershell\_ise.exe*, to find the version.
+Gebruik `Get-Module -ListAvailable Az` in *Power shell\_ISE. exe*om de versie te vinden.
 
 ```powershell
 $subscriptionName = '<subscriptionName>';
@@ -95,14 +95,14 @@ Remove-AzSqlServerDnsAlias –ResourceGroupName $resourceGroupName2 -ServerName 
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-The commands used are the following:
+De volgende opdrachten worden gebruikt:
 
-- [az sql server dns-alias create](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Creates a DNS alias in the Azure SQL Database service system. The alias refers to database server 1.
-- [az sql server dns-alias show](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Get and list all the aliases assigned to SQL DB server 1.
-- [az sql server dns-alias set](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Modifies the server name that the alias is configured to refer to, from server 1 to server 2.
-- [az sql server dns-alias delete](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Remove the alias from database server 2, by using the name of the alias.
+- [AZ SQL Server DNS-alias Create](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): maakt een DNS-alias in het Azure SQL database-service systeem. De alias verwijst naar database server 1.
+- [AZ SQL Server DNS-alias show](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): alle aliassen ophalen en weer geven die zijn toegewezen aan SQL DB-server 1.
+- [AZ SQL Server DNS-alias set](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): wijzigt de server naam waarmee de alias is geconfigureerd, van Server 1 naar Server 2.
+- [AZ SQL Server DNS-alias delete](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Verwijder de alias uit Data Base Server 2 met behulp van de naam van de alias.
 
-To install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
+Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli).
 
 ```azurecli-interactive
 $subscriptionName = '<subscriptionName>';
@@ -141,4 +141,4 @@ az sql server dns-alias delete –-resource-group $resourceGroupName2 --server $
 
 ## <a name="next-steps"></a>Volgende stappen
 
-For a full explanation of the DNS alias feature for SQL Database, see [DNS alias for Azure SQL database](dns-alias-overview.md).
+Zie [DNS-alias voor Azure SQL database](dns-alias-overview.md)voor een volledige uitleg van de functie voor de DNS-alias voor SQL database.

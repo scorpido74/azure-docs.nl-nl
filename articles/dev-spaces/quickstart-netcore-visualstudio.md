@@ -1,10 +1,10 @@
 ---
-title: 'Debug and iterate on Kubernetes: Visual Studio & .NET Core'
+title: 'Fouten opsporen en herhalen op Kubernetes: Visual Studio & .NET core'
 services: azure-dev-spaces
 ms.date: 11/13/2019
 ms.topic: quickstart
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
@@ -15,68 +15,68 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325611"
 ---
-# <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Quickstart: Debug and iterate on Kubernetes: Visual Studio & .NET Core - Azure Dev Spaces
+# <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen op Kubernetes: Visual Studio & .NET core-Azure dev Spaces
 
 In deze handleiding leert u het volgende:
 
 - Azure Dev Spaces instellen met een beheerd Kubernetes-cluster in Azure.
 - Iteratief code ontwikkelen in containers met Visual Studio.
-- Debug code running in your cluster using Visual Studio.
+- Fout opsporing in code die wordt uitgevoerd in uw cluster met Visual Studio.
 
-Azure Dev Spaces also allows you debug and iterate using:
-- [Java and Visual Studio Code](quickstart-java.md)
-- [Node.js and Visual Studio Code](quickstart-nodejs.md)
-- [.NET Core and Visual Studio Code](quickstart-netcore.md)
+Met Azure dev Spaces kunt u ook fouten opsporen en herhalen met:
+- [Java-en Visual Studio code](quickstart-java.md)
+- [Node. js en Visual Studio code](quickstart-nodejs.md)
+- [.NET core en Visual Studio code](quickstart-netcore.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement. Als u nog geen account hebt, kunt u [een gratis account aanmaken](https://azure.microsoft.com/free).
-- Visual Studio 2019 on Windows with the Azure Development workload installed. You can also use Visual Studio 2017 on Windows with the Web Development workload and [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) installed. If you don't have Visual Studio installed, download it [here](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Visual Studio 2019 op Windows met de werk belasting Azure Development geïnstalleerd. U kunt Visual Studio 2017 ook gebruiken in Windows met de werk belasting voor Web Development en [Visual Studio Tools voor Kubernetes](https://aka.ms/get-vsk8stools) geïnstalleerd. Als Visual Studio niet is geïnstalleerd, kunt u het [hier](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)downloaden.
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Create an Azure Kubernetes Service cluster
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken
 
-You must create an AKS cluster in a [supported region][supported-regions]. To create a cluster:
+U moet een AKS-cluster in een [ondersteunde regio][supported-regions]maken. Een cluster maken:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com)
-1. Select *+ Create a resource > Kubernetes Service*. 
-1. Enter the _Subscription_, _Resource Group_, _Kubernetes cluster name_, _Region_, _Kubernetes version_, and _DNS name prefix_.
+1. Selecteer *+ een resource maken > Kubernetes-service*. 
+1. Voer het _abonnement_, de _resource groep_, de _Kubernetes-cluster naam_, de _regio_, de _Kubernetes-versie_en het voor voegsel van de _DNS-naam_in.
 
-    ![Create AKS in the Azure portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
+    ![AKS maken in de Azure Portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Klik op *Controleren + maken*.
-1. Klik op *Maken*.
+1. Klik op *Create*.
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Enable Azure Dev Spaces on your AKS cluster
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure dev Spaces inschakelen op uw AKS-cluster
 
-Navigate to your AKS cluster in the Azure portal and click *Dev Spaces*. Change *Use Dev Spaces* to *Yes* and click *Save*.
+Navigeer naar uw AKS-cluster in de Azure Portal en klik op *dev Spaces*. Wijzig *dev Spaces* in *Ja* en klik op *Opslaan*.
 
-![Enable Dev Spaces in the Azure portal](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
+![Ontwikkel ruimten in de Azure Portal inschakelen](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
 
-## <a name="create-a-new-aspnet-web-app"></a>Create a new ASP.NET web app
+## <a name="create-a-new-aspnet-web-app"></a>Een nieuwe ASP.NET-Web-app maken
 
 1. Open Visual Studio.
 1. Een nieuw project maken.
-1. Choose *ASP.NET Core Web Application* and click *Next*.
-1. Name your project *webfrontend* and click *Create*.
-1. When prompted, choose *Web Application (Model-View-Controller)* for the template.
-1. Select *.NET Core* and *ASP.NET Core 2.1* at the top.
-1. Klik op *Maken*.
+1. Kies *ASP.net core webtoepassing* en klik op *volgende*.
+1. Geef uw project *webfrontend* een naam en klik op *maken*.
+1. Als u hierom wordt gevraagd, kiest u *Web Application (model-view-controller)* voor de sjabloon.
+1. Selecteer in de bovenste versie van *.net core* en *ASP.net Core 2,1* .
+1. Klik op *Create*.
 
-## <a name="connect-your-project-to-your-dev-space"></a>Connect your project to your dev space
+## <a name="connect-your-project-to-your-dev-space"></a>Verbind uw project met uw ontwikkel ruimte
 
-In your project, select **Azure Dev Spaces** from the launch settings dropdown as shown below.
+Selecteer in uw project **Azure dev Spaces** in de vervolg keuzelijst start instellingen, zoals hieronder wordt weer gegeven.
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-In the Azure Dev Spaces dialog, select your *Subscription* and *Azure Kubernetes Cluster*. Leave *Space* set to *default* and enable the *Publicly Accessible* checkbox. Klik op *OK*.
+Selecteer uw *abonnement* en *Azure Kubernetes-cluster*in het dialoog venster Azure dev Spaces. Houd de *ruimte* ingesteld op *standaard* en schakel het selectie vakje *openbaar toegankelijk* in. Klik op *OK*.
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-This process deploys your service to the *default* dev space with a publicly accessible URL. Als u een cluster kiest dat niet is geconfigureerd om te werken met Azure Dev Spaces, ziet u een bericht waarin wordt gevraagd of u dit wilt configureren. Klik op *OK*.
+Met dit proces wordt uw service geïmplementeerd naar de *standaard* ontwikkelaars ruimte met een openbaar toegankelijke URL. Als u een cluster kiest dat niet is geconfigureerd om te werken met Azure Dev Spaces, ziet u een bericht waarin wordt gevraagd of u dit wilt configureren. Klik op *OK*.
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-The public URL for the service running in the *default* dev space is displayed in the *Output* window:
+De open bare URL voor de service die wordt uitgevoerd in de *standaard* -dev-ruimte wordt weer gegeven in het venster *uitvoer* :
 
 ```cmd
 Starting warmup for project 'webfrontend'.
@@ -94,35 +94,35 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-In the above example, the public URL is http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Navigate to your service's public URL and interact with the service running in your dev space.
+In het bovenstaande voor beeld is de open bare URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Ga naar de open bare URL van uw service en communiceer met de service die wordt uitgevoerd in uw dev-ruimte.
 
-This process may have disabled public access to your service. To enable public access, you can update the [ingress value in the *values.yaml*][ingress-update].
+Dit proces heeft mogelijk open bare toegang tot uw service uitgeschakeld. Als u open bare toegang wilt inschakelen, kunt u de [ingangs waarde bijwerken in de *waarden. yaml*][ingress-update].
 
 ## <a name="update-code"></a>Code bijwerken
 
-If Visual Studio is still connected to your dev space, click the stop button. Change line 20 in `Controllers/HomeController.cs` to:
+Als Visual Studio nog steeds is verbonden met uw dev-ruimte, klikt u op de knop stoppen. Wijzig regel 20 in `Controllers/HomeController.cs` in:
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-Save your changes and start your service using **Azure Dev Spaces** from the launch settings dropdown. Open the public URL of your service in a browser and click *About*. Observe that your updated message appears.
+Sla uw wijzigingen op en start uw service met **Azure dev Spaces** in de vervolg keuzelijst start instellingen. Open de open bare URL van uw service in een browser en klik op *about*. Houd er rekening mee dat het bijgewerkte bericht wordt weer gegeven.
 
-Instead of rebuilding and redeploying a new container image each time code edits are made, Azure Dev Spaces incrementally recompiles code within the existing container to provide a faster edit/debug loop.
+In plaats van een nieuwe container installatie kopie opnieuw te maken en te implementeren elke keer dat er code bewerkingen worden uitgevoerd, compileert Azure dev Spaces incrementeel code binnen de bestaande container om een snellere bewerking/debug-lus te bieden.
 
-## <a name="setting-and-using-breakpoints-for-debugging"></a>Setting and using breakpoints for debugging
+## <a name="setting-and-using-breakpoints-for-debugging"></a>Onderbrekings punten instellen en gebruiken voor fout opsporing
 
-If Visual Studio is still connected to your dev space, click the stop button. Open `Controllers/HomeController.cs` and click somewhere on line 20 to put your cursor there. To set a breakpoint hit *F9* or click *Debug* then *Toggle Breakpoint*. To start your service in debugging mode in your dev space, hit *F5* or click *Debug* then *Start Debugging*.
+Als Visual Studio nog steeds is verbonden met uw dev-ruimte, klikt u op de knop stoppen. Open `Controllers/HomeController.cs` en klik ergens op regel 20 om de cursor daar te plaatsen. Stel een onderbrekings punt in op *F9* of klik op *debug* en vervolgens op *onderbrekings punt*. Als u de service in de modus voor fout opsporing in uw ruimte voor ontwikkel aars wilt starten, drukt u op *F5* of klikt u op *fout* *opsporing starten*.
 
-Open your service in a browser and notice no message is displayed. Return to Visual Studio and observe line 20 is highlighted. The breakpoint you set has paused the service at line 20. To resume the service, hit *F5* or click *Debug* then *Continue*. Return to your browser and notice the message is now displayed.
+Open uw service in een browser en Let op dat er geen bericht wordt weer gegeven. Ga terug naar Visual Studio en houd er rekening mee dat regel 20 is gemarkeerd. Het onderbrekings punt dat u hebt ingesteld, heeft de service op regel 20 onderbroken. Als u de service wilt hervatten, druk op *F5* of klik op *debug* en vervolgens op *door gaan*. Ga terug naar uw browser en u ziet dat het bericht nu wordt weer gegeven.
 
-While running your service in Kubernetes with a debugger attached, you have full access to debug information such as the call stack, local variables, and exception information.
+Tijdens het uitvoeren van uw service in Kubernetes met een fout opsporingsprogramma, hebt u volledige toegang tot fout opsporingsgegevens, zoals de aanroep stack, lokale variabelen en uitzonderings gegevens.
 
-Remove the breakpoint by putting your cursor on line 20 in `Controllers/HomeController.cs` and hitting *F9*.
+Verwijder het onderbrekings punt door de cursor op regel 20 in `Controllers/HomeController.cs` te plaatsen en op *F9 te drukken*.
 
-## <a name="clean-up-your-azure-resources"></a>Clean up your Azure resources
+## <a name="clean-up-your-azure-resources"></a>Uw Azure-resources opschonen
 
-Navigate to your resource group in the Azure portal and click *Delete resource group*. Alternatively, you can use the [az aks delete](/cli/azure/aks#az-aks-delete) command:
+Navigeer naar uw resource groep in de Azure Portal en klik op *resource groep verwijderen*. U kunt ook de opdracht [AZ AKS delete](/cli/azure/aks#az-aks-delete) gebruiken:
 
 ```cmd
 az group delete --name MyResourceGroup --yes --no-wait

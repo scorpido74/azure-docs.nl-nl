@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Use IoT Hub events to trigger Azure Logic Apps
-description: Tutorial - Using the event routing service of Azure Event Grid, create automated processes to perform Azure Logic Apps actions based on IoT Hub events.
+title: Zelf studie-IoT Hub gebeurtenissen gebruiken om Azure Logic Apps te activeren
+description: 'Zelf studie: de service voor gebeurtenis routering van Azure Event Grid gebruiken om geautomatiseerde processen te maken om Azure Logic Apps acties uit te voeren op basis van IoT Hub gebeurtenissen.'
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
@@ -14,11 +14,11 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423740"
 ---
-# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Tutorial: Send email notifications about Azure IoT Hub events using Event Grid and Logic Apps
+# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Zelf studie: e-mail meldingen over Azure IoT Hub-gebeurtenissen verzenden met behulp van Event Grid en Logic Apps
 
 Azure Event Grid maakt het mogelijk om te reageren op gebeurtenissen in IoT Hub door acties in zakelijke toepassingen verderop in de werkstroom te activeren.
 
-This article walks through a sample configuration that uses IoT Hub and Event Grid. At the end, you have an Azure logic app set up to send a notification email every time a device is added to your IoT hub. 
+In dit artikel wordt een voorbeeld configuratie beschreven die gebruikmaakt van IoT Hub en Event Grid. Aan het einde hebt u een Azure Logic app ingesteld voor het verzenden van een e-mail melding wanneer een apparaat wordt toegevoegd aan uw IoT-hub. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,25 +28,25 @@ This article walks through a sample configuration that uses IoT Hub and Event Gr
 
 ## <a name="create-a-logic-app"></a>Een logische app maken
 
-First, create a logic app and add an event grid trigger that monitors the resource group for your virtual machine. 
+Eerst maakt u een logische app en voegt u een event grid-trigger toe waarmee de resource groep voor uw virtuele machine wordt gecontroleerd. 
 
 ### <a name="create-a-logic-app-resource"></a>Een logische app maken
 
-1. In the [Azure portal](https://portal.azure.com), select **Create a resource**, then type "logic app" in the search box and select return. Select **Logic App** from the results.
+1. Selecteer in het [Azure Portal](https://portal.azure.com)de optie **een resource maken**, typ ' logische app ' in het zoekvak en selecteer vervolgens retour. Selecteer **logische app** uit de resultaten.
 
    ![Logische app maken](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
-1. On the next screen, select **Create**. 
+1. Selecteer in het volgende scherm **maken**. 
 
 1. Geef een naam op voor de logische app die uniek is in uw abonnement en selecteer vervolgens het abonnement, de resourcegroep en de locatie van uw IoT-hub. 
 
-   ![Fields for create logic app](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
+   ![Velden voor het maken van logische apps](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
 
 1. Selecteer **Maken**.
 
-1. Als de resource is gemaakt, navigeert u naar uw logische app. To do this, select **Resource groups**, then select the resource group you created for this tutorial. Then find the logic app in the list of resources and select it. 
+1. Als de resource is gemaakt, navigeert u naar uw logische app. Hiervoor selecteert u **resource groepen**en selecteert u vervolgens de resource groep die u hebt gemaakt voor deze zelf studie. Zoek vervolgens de logische app in de lijst met resources en selecteer deze. 
 
-1. In the Logic Apps Designer, page down to see **Templates**. Choose **Blank Logic App** so that you can build your logic app from scratch.
+1. Ga in de Logic Apps Designer naar pagina's om **sjablonen**weer te geven. Kies **lege logische app** , zodat u de logische app helemaal zelf kunt bouwen.
 
 ### <a name="select-a-trigger"></a>Een trigger selecteren
 
@@ -116,7 +116,7 @@ Een trigger is een specifieke gebeurtenis waarmee uw logische app wordt gestart.
 
 Acties zijn stappen die worden uitgevoerd nadat de trigger de werkstroom van de logische app heeft gestart. Voor deze zelfstudie is de actie het verzenden van een e-mailmelding via uw e-mailprovider. 
 
-1. Selecteer **Nieuwe stap**. This opens a window to **Choose an action**.
+1. Selecteer **Nieuwe stap**. Hiermee opent u een venster om **een actie te kiezen**.
 
 1. Zoek naar **e-mail**.
 
@@ -132,9 +132,9 @@ Acties zijn stappen die worden uitgevoerd nadat de trigger de werkstroom van de 
 
    * **Aan**: voer het e-mailadres in waarop u de e-mailmeldingen wilt ontvangen. Gebruik voor deze zelfstudie een e-mailaccount dat toegankelijk is voor testdoeleinden. 
 
-   * **Subject**: Fill in the text for the subject. When you click on the Subject text box, you can select dynamic content to include. For example, this tutorial uses `IoT Hub alert: {event Type}`. If you can't see Dynamic content, select the **Add dynamic content** hyperlink -- this toggles it on and off.
+   * **Onderwerp**: Vul de tekst voor het onderwerp in. Wanneer u op het tekstvak onderwerp klikt, kunt u dynamische inhoud selecteren die u wilt toevoegen. Deze zelf studie maakt bijvoorbeeld gebruik van `IoT Hub alert: {event Type}`. Als u geen dynamische inhoud kunt zien, selecteert u de Hyper link **dynamische inhoud toevoegen** --Hiermee schakelt u deze in en uit.
 
-   * **Body**: Write the text for your email. Selecteer JSON-eigenschappen in het selectiehulpmiddel om dynamische inhoud op te nemen op basis van gegevens van gebeurtenissen. If you can't see the Dynamic content, select the **Add dynamic content** hyperlink under the **Body** text box. If it doesn't show you the fields you want, click *more* in the Dynamic content screen to include the fields from the previous action.
+   * **Tekst: Schrijf**de tekst voor uw e-mail adres. Selecteer JSON-eigenschappen in het selectiehulpmiddel om dynamische inhoud op te nemen op basis van gegevens van gebeurtenissen. Als u de dynamische inhoud niet kunt zien, selecteert u de Hyper link **dynamische inhoud toevoegen** onder het tekstvak **hoofd** tekst. Als niet de gewenste velden worden weer gegeven, klikt u op *meer* in het scherm dynamische inhoud om de velden van de vorige actie op te geven.
 
    Uw e-mailsjabloon ziet er nu misschien uit als in dit voorbeeld:
 
@@ -158,7 +158,7 @@ Voordat u de functie Ontwerper van logische apps verlaat, kopieert u de URL waar
 
 In deze sectie configureert u de IoT-hub voor het publiceren van gebeurtenissen op het moment dat deze optreden. 
 
-1. Ga in Azure Portal naar uw IoT-hub. You can do this by selecting **Resource groups**, then select the resource group for this tutorial, and then select your IoT hub from the list of resources.
+1. Ga in Azure Portal naar uw IoT-hub. U kunt dit doen door **resource groepen**te selecteren en vervolgens de resource groep voor deze zelf studie te selecteren en vervolgens uw IOT-hub te selecteren in de lijst met resources.
 
 2. Selecteer **Gebeurtenissen**.
 
@@ -170,41 +170,41 @@ In deze sectie configureert u de IoT-hub voor het publiceren van gebeurtenissen 
 
 4. Maak het gebeurtenisabonnement met de volgende waarden: 
 
-   * **Event Subscription Details**: Provide a descriptive name and select **Event Grid Schema**.
+   * **Details van gebeurtenis abonnementen**: Geef een beschrijvende naam op en selecteer **Event grid schema**.
 
-   * **Event Types**: In the **Filter to Event Types**, uncheck all of the choices except **Device Created**.
+   * **Gebeurtenis typen**: Schakel in het **filter voor gebeurtenis typen**alle opties uit behalve het apparaat dat is **gemaakt**.
 
-       ![subscription event types](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+       ![abonnements gebeurtenis typen](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
 
-   * **Endpoint Details**: Select Endpoint Type as **Web Hook** and select *select an endpoint* and paste the URL that you copied from your logic app and confirm selection.
+   * **Eindpunt Details**: Selecteer het type eind punt als een **webhook** en selecteer *een eind punt selecteren* en plak de URL die u hebt gekopieerd uit uw logische app en bevestig de selectie.
 
      ![eindpunt-URL selecteren](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
-   When you're done, the pane should look like the following example: 
+   Wanneer u klaar bent, ziet het deel venster eruit als in het volgende voor beeld: 
 
     ![Voorbeeld van formulier voor gebeurtenisabonnement](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
-5. U kunt het gebeurtenisabonnement nu opslaan en dan meldingen ontvangen voor elk apparaat dat wordt gemaakt in uw IoT-hub. Voor deze zelfstudie gaan we echter de optionele velden gebruiken om te filteren op specifieke apparaten. Select **Filters** at the top of the pane.
+5. U kunt het gebeurtenisabonnement nu opslaan en dan meldingen ontvangen voor elk apparaat dat wordt gemaakt in uw IoT-hub. Voor deze zelfstudie gaan we echter de optionele velden gebruiken om te filteren op specifieke apparaten. Selecteer **filters** boven aan het deel venster.
 
-6. Select **Add new filter**. Fill in the fields with these values:
+6. Selecteer **Nieuw filter toevoegen**. Vul de velden in met deze waarden:
 
-   * **Key**: Select `Subject`.
+   * **Sleutel**: Selecteer `Subject`.
 
-   * **Operator**: Select `String begins with`.
+   * **Operator**: Selecteer `String begins with`.
 
-   * **Value**:  Enter `devices/Building1_` to filter for device events in building 1.
+   * **Waarde**: Voer `devices/Building1_` in om te filteren op faxgebeurtenissen in gebouw 1.
   
-   Add another filter with these values:
+   Voeg nog een filter toe met deze waarden:
 
-   * **Key**: Select `Subject`.
+   * **Sleutel**: Selecteer `Subject`.
 
-   * **Operator**: Select `String ends with`.
+   * **Operator**: Selecteer `String ends with`.
 
-   * **Value**: Enter `_Temperature` to filter for device events related to temperature.
+   * **Waarde**: Voer `_Temperature` in om te filteren op gebeurtenissen die betrekking hebben op de Tempe ratuur.
 
-   The **Filters** tab of your event subscription should now look similar to this image:
+   Het tabblad **filters** van uw gebeurtenis abonnement moet er nu ongeveer als volgt uitzien:
 
-   ![Adding filters to event subscription](./media/publish-iot-hub-events-to-logic-apps/event-subscription-filters.png)
+   ![Filters toevoegen aan het gebeurtenis abonnement](./media/publish-iot-hub-events-to-logic-apps/event-subscription-filters.png)
 
 7. Selecteer **Maken** om het gebeurtenisabonnement op te slaan.
 
@@ -216,7 +216,7 @@ Test de logische app door een nieuw apparaat te maken om zo een e-mail voor meld
 
 2. Selecteer **Nieuw**.
 
-3. Geef `Building1_Floor1_Room1_Light` op voor **Apparaat-ID**.
+3. Geef **op voor**Apparaat-ID`Building1_Floor1_Room1_Light`.
 
 4. Selecteer **Opslaan**. 
 
@@ -227,27 +227,27 @@ Test de logische app door een nieuw apparaat te maken om zo een e-mail voor meld
    * Building2_Floor1_Room1_Temperature
    * Building2_Floor1_Room1_Light
 
-   If you added the four examples, your list of IoT devices should look like the following image:
+   Als u de vier voor beelden hebt toegevoegd, moet uw lijst met IoT-apparaten eruitzien als de volgende afbeelding:
 
-   ![IoT Hub device list](./media/publish-iot-hub-events-to-logic-apps/iot-hub-device-list.png)
+   ![IoT Hub apparaten lijst](./media/publish-iot-hub-events-to-logic-apps/iot-hub-device-list.png)
 
 6. Als u een paar apparaten hebt toegevoegd aan uw IoT-hub, controleert u of er e-mail is om te zien welke acties de logische app hebben geactiveerd. 
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
-In plaats van Azure Portal te gebruiken, kunt u de stappen voor IoT Hub ook uitvoeren met de Azure CLI. For details, see the Azure CLI pages for [creating an event subscription](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) and [creating an IoT device](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity).
+In plaats van Azure Portal te gebruiken, kunt u de stappen voor IoT Hub ook uitvoeren met de Azure CLI. Zie de Azure CLI-pagina's voor het [maken van een gebeurtenis abonnement](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) en het [maken van een IOT-apparaat](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity)voor meer informatie.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In deze zelfstudie zijn resources gebruikt die kosten voor uw Azure-abonnement met zich meebrengen. When you're finished trying out the tutorial and testing your results, disable or delete resources that you don't want to keep. 
+In deze zelfstudie zijn resources gebruikt die kosten voor uw Azure-abonnement met zich meebrengen. Wanneer u klaar bent met het uitproberen van de zelf studie en de resultaten test, kunt u resources die u niet wilt hand haven, uitschakelen of verwijderen. 
 
-To delete all of the resources created in this tutorial, delete the resource group. 
+Als u alle resources die in deze zelf studie zijn gemaakt wilt verwijderen, verwijdert u de resource groep. 
 
-1. Select **Resource groups**, then select the resource group you created for this tutorial.
+1. Selecteer **resource groepen**en selecteer vervolgens de resource groep die u hebt gemaakt voor deze zelf studie.
 
-2. On the Resource group pane, select **Delete resource group**. You are prompted to enter the resource group name, and then you can delete it. All of the resources contained therein are also removed.
+2. Selecteer **resource groep verwijderen**in het deel venster Resource groep. U wordt gevraagd de naam van de resource groep op te geven. u kunt deze vervolgens verwijderen. Alle resources in de resource worden ook verwijderd.
 
-If you don't want to remove all of the resources, you can manage them one by one. 
+Als u niet alle resources wilt verwijderen, kunt u ze één voor één beheren. 
 
 Als u het werk aan uw logische app wilt behouden, kunt u de app uitschakelen in plaats van verwijderen. 
 

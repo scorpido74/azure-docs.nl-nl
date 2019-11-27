@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Egnyte | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Egnyte | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Egnyte configureert.
 services: active-directory
 documentationCenter: na
@@ -23,7 +23,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233558"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Tutorial: Azure Active Directory integration with Egnyte
+# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Zelf studie: integratie Azure Active Directory met Egnyte
 
 In deze zelfstudie leert u hoe u Egnyte kunt integreren met Azure AD (Active Directory).
 De integratie van Egnyte met Azure AD heeft de volgende voordelen:
@@ -54,7 +54,7 @@ Om de integratie van Egnyte te configureren in Azure AD moet u Egnyte vanuit de 
 
 **Voer de volgende stappen uit om Egnyte toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -143,7 +143,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 5. Voer in de sectie **Verificatie voor eenmalige aanmelding** de volgende stappen uit:
 
-    ![Single Sign On Authentication](./media/egnyte-tutorial/ic787822.png "Single Sign On Authentication")   
+    ![Verificatie voor eenmalige aanmelding](./media/egnyte-tutorial/ic787822.png "Verificatie voor eenmalige aanmelding")   
     
     a. Selecteer **SAML 2.0** als **Verificatie voor eenmalige aanmelding**.
    
@@ -179,12 +179,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -228,9 +228,9 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Egnyte, moeten ze w
 
 4. Voer in de sectie **Nieuwe hoofdgebruiker** de volgende stappen uit:
     
-    ![New Standard User](./media/egnyte-tutorial/ic787825.png "New Standard User")   
+    ![Nieuwe standaard gebruiker](./media/egnyte-tutorial/ic787825.png "Nieuwe standaard gebruiker")   
 
-    a. In **Email** text box, enter the email of user like **Brittasimon\@contoso.com**.
+    a. Voer in het tekstvak **e-mail** het e-mail adres van de gebruiker in, zoals **Brittasimon\@contoso.com**.
 
     b. Voer in het tekstvak **Gebruikersnaam** de gebruikersnaam van een gebruiker zoals **Brittasimon**.
 
@@ -243,7 +243,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Egnyte, moeten ze w
     >
 
 >[!NOTE]
->You can use any other Egnyte user account creation tools or APIs provided by Egnyte to provision Azure AD user accounts.
+>U kunt alle andere hulpprogram ma's voor het maken van Egnyte-gebruikers accounts of Api's die worden geleverd door Egnyte, gebruiken om Azure AD-gebruikers accounts in te richten.
 >
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
@@ -252,11 +252,11 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u in het toegangsvenster op de tegel Egnyte klikt, wordt u automatisch aangemeld bij de instantie van Egnyte waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

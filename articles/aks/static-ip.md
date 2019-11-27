@@ -1,6 +1,6 @@
 ---
-title: Use a static IP address with the Azure Kubernetes Service (AKS) load balancer
-description: Learn how to create and use a static IP address with the Azure Kubernetes Service (AKS) load balancer.
+title: Gebruik een statisch IP-adres met de Azure Kubernetes-service (AKS) load balancer
+description: Meer informatie over het maken en gebruiken van een statisch IP-adres met de Azure Kubernetes service (AKS) load balancer.
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -14,23 +14,23 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325447"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Use a static public IP address with the Azure Kubernetes Service (AKS) load balancer
+# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Gebruik een statisch openbaar IP-adres met de Azure Kubernetes-service (AKS) load balancer
 
-By default, the public IP address assigned to a load balancer resource created by an AKS cluster is only valid for the lifespan of that resource. If you delete the Kubernetes service, the associated load balancer and IP address are also deleted. If you want to assign a specific IP address or retain an IP address for redeployed Kubernetes services, you can create and use a static public IP address.
+Het open bare IP-adres dat is toegewezen aan een load balancer bron die is gemaakt met een AKS-cluster, is standaard alleen geldig voor de levens duur van die resource. Als u de Kubernetes-service verwijdert, worden ook de gekoppelde load balancer en het IP-adres verwijderd. Als u een specifiek IP-adres wilt toewijzen of een IP-adres voor opnieuw geïmplementeerde Kubernetes-Services wilt behouden, kunt u een statisch openbaar IP-adres maken en gebruiken.
 
-This article shows you how to create a static public IP address and assign it to your Kubernetes service.
+In dit artikel wordt beschreven hoe u een statisch openbaar IP-adres maakt en dit toewijst aan uw Kubernetes-service.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-This article assumes that you have an existing AKS cluster. If you need an AKS cluster, see the AKS quickstart [using the Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
-You also need the Azure CLI version 2.0.59 or later installed and configured. Voer  `az --version` uit om de versie te bekijken. If you need to install or upgrade, see [Install Azure CLI][install-azure-cli].
+Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
-This article covers using a *Standard* SKU IP with a *Standard* SKU load balancer. For more information, see [IP address types and allocation methods in Azure][ip-sku].
+In dit artikel wordt gebruikgemaakt van een *standaard* SKU-IP-adres met een *standaard* SKU-Load Balancer. Zie [IP-adres typen en toewijzings methoden in azure][ip-sku]voor meer informatie.
 
-## <a name="create-a-static-ip-address"></a>Create a static IP address
+## <a name="create-a-static-ip-address"></a>Een statisch IP-adres maken
 
-Create a static public IP address with the [az network public ip create][az-network-public-ip-create] command. The following creates a static IP resource named *myAKSPublicIP* in the *myResourceGroup* resource group:
+Maak een statisch openbaar IP-adres met de opdracht [AZ Network open bare IP Create][az-network-public-ip-create] . Hieronder maakt u een statische IP-bron met de naam *myAKSPublicIP* in de resource groep *myResourceGroup* :
 
 ```azurecli-interactive
 az network public-ip create \
@@ -41,9 +41,9 @@ az network public-ip create \
 ```
 
 > [!NOTE]
-> If you are using a *Basic* SKU load balancer in your AKS cluster, use *Basic* for the *sku* parameter when defining a public IP. Only *Basic* SKU IPs work with the *Basic* SKU load balancer and only *Standard* SKU IPs work with *Standard* SKU load balancers. 
+> Als u een *basis* -SKU gebruikt Load Balancer in uw AKS-cluster, gebruikt u *Basic* voor de *SKU* -para meter bij het definiëren van een openbaar IP-adres. Alleen *Basic* SKU-IP-adressen werken met de *basis* -SKU Load Balancer en alleen *standaard* -SKU-ip's werken met *Standard* SKU load balancers. 
 
-The IP address is displayed, as shown in the following condensed example output:
+Het IP-adres wordt weer gegeven, zoals wordt weer gegeven in de volgende verkorte voorbeeld uitvoer:
 
 ```json
 {
@@ -55,7 +55,7 @@ The IP address is displayed, as shown in the following condensed example output:
 }
 ```
 
-You can later get the public IP address using the [az network public-ip list][az-network-public-ip-list] command. Specify the name of the node resource group and public IP address you created, and query for the *ipAddress* as shown in the following example:
+U kunt later het open bare IP-adres ophalen met de opdracht [AZ Network Public-IP List][az-network-public-ip-list] . Geef de naam op van de knooppunt resource groep en het open bare IP-adres dat u hebt gemaakt, en voer een query uit voor het *IP* -adres, zoals weer gegeven in het volgende voor beeld:
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
@@ -63,9 +63,9 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 40.121.183.52
 ```
 
-## <a name="create-a-service-using-the-static-ip-address"></a>Create a service using the static IP address
+## <a name="create-a-service-using-the-static-ip-address"></a>Een service maken met behulp van het statische IP-adres
 
-Before creating a service, ensure the service principal used by the AKS cluster has delegated permissions to the other resource group. Bijvoorbeeld:
+Voordat u een service maakt, moet u ervoor zorgen dat de service-principal die wordt gebruikt door het AKS-cluster gedelegeerde machtigingen heeft voor de andere resource groep. Bijvoorbeeld:
 
 ```azurecli-interactive
 az role assignment create \
@@ -74,7 +74,7 @@ az role assignment create \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-To create a *LoadBalancer* service with the static public IP address, add the `loadBalancerIP` property and the value of the static public IP address to the YAML manifest. Create a file named `load-balancer-service.yaml` and copy in the following YAML. Provide your own public IP address created in the previous step. The following example also sets the annotation to the resource group named *myResourceGroup*. Provide your own resource group name.
+Als u een *Load Balancer* -service met het statische open bare IP-adres wilt maken, voegt u de eigenschap `loadBalancerIP` en de waarde van het statische open bare IP-adres toe aan het yaml-manifest. Maak een bestand met de naam `load-balancer-service.yaml` en kopieer de volgende YAML. Geef uw eigen open bare IP-adres op dat u in de vorige stap hebt gemaakt. In het volgende voor beeld wordt de aantekening ook ingesteld op de resource groep met de naam *myResourceGroup*. Geef de naam van uw eigen resource groep op.
 
 ```yaml
 apiVersion: v1
@@ -92,7 +92,7 @@ spec:
     app: azure-load-balancer
 ```
 
-Create the service and deployment with the `kubectl apply` command.
+Maak de service en de implementatie met behulp van de `kubectl apply` opdracht.
 
 ```console
 kubectl apply -f load-balancer-service.yaml
@@ -100,13 +100,13 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-If the static IP address defined in the *loadBalancerIP* property of the Kubernetes service manifest does not exist, or has not been created in the node resource group and no additional delegations configured, the load balancer service creation fails. To troubleshoot, review the service creation events with the [kubectl describe][kubectl-describe] command. Provide the name of the service as specified in the YAML manifest, as shown in the following example:
+Als het statische IP-adres dat is gedefinieerd in de eigenschap *loadBalancerIP* van het Kubernetes-service manifest niet bestaat of niet is gemaakt in de resource groep node en er geen aanvullende delegaties zijn geconfigureerd, mislukt het maken van de Load Balancer-service. Als u problemen wilt oplossen, controleert u de gebeurtenissen voor het maken van een service met de opdracht [kubectl beschrijven][kubectl-describe] . Geef de naam van de service op zoals opgegeven in het YAML-manifest, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```console
 kubectl describe service azure-load-balancer
 ```
 
-Information about the Kubernetes service resource is displayed. The *Events* at the end of the following example output indicate that the *user supplied IP Address was not found*. In these scenarios, verify that you have created the static public IP address in the node resource group and that the IP address specified in the Kubernetes service manifest is correct.
+Informatie over de Kubernetes-service resource wordt weer gegeven. De *gebeurtenissen* aan het einde van de volgende voorbeeld uitvoer geven aan dat het door de *gebruiker opgegeven IP-adres niet is gevonden*. Controleer in deze scenario's of u het statische open bare IP-adres in de knooppunt resource groep hebt gemaakt en of het IP-adres dat is opgegeven in het Kubernetes-service manifest juist is.
 
 ```
 Name:                     azure-load-balancer
@@ -132,7 +132,7 @@ Events:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-For additional control over the network traffic to your applications, you may want to instead [create an ingress controller][aks-ingress-basic]. You can also [create an ingress controller with a static public IP address][aks-static-ingress].
+Als u meer controle over het netwerk verkeer voor uw toepassingen wilt, kunt u in plaats daarvan [een ingangs controller maken][aks-ingress-basic]. U kunt ook [een ingangs controller met een statisch openbaar IP-adres maken][aks-static-ingress].
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

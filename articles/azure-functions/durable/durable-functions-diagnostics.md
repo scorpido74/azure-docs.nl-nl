@@ -1,6 +1,6 @@
 ---
-title: Diagnostics in Durable Functions - Azure
-description: Learn how to diagnose problems with the Durable Functions extension for Azure Functions.
+title: Diagnostische gegevens in Durable Functions-Azure
+description: Meer informatie over het vaststellen van problemen met de Durable Functions extensie voor Azure Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
@@ -12,41 +12,41 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231455"
 ---
-# <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostics in Durable Functions in Azure
+# <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostische gegevens in Durable Functions in azure
 
-There are several options for diagnosing issues with [Durable Functions](durable-functions-overview.md). Sommige van deze opties zijn hetzelfde voor gewone functies en sommige zijn uniek voor Durable Functions.
+Er zijn verschillende opties voor het vaststellen van problemen met [Durable functions](durable-functions-overview.md). Sommige van deze opties zijn hetzelfde voor gewone functies en sommige zijn uniek voor Durable Functions.
 
 ## <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) is the recommended way to do diagnostics and monitoring in Azure Functions. The same applies to Durable Functions. For an overview of how to leverage Application Insights in your function app, see [Monitor Azure Functions](../functions-monitoring.md).
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) is de aanbevolen methode voor het uitvoeren van diagnostische gegevens en bewaking in azure functions. Hetzelfde geldt voor Durable Functions. Zie [Azure functions bewaken](../functions-monitoring.md)voor een overzicht van het gebruik van Application Insights in uw functie-app.
 
-The Azure Functions Durable Extension also emits *tracking events* that allow you to trace the end-to-end execution of an orchestration. These tracking events can be found and queried using the [Application Insights Analytics](../../azure-monitor/app/analytics.md) tool in the Azure portal.
+De Azure Functions duurzame extensie levert ook *gebeurtenissen* op waarmee u de end-to-end-uitvoering van een indeling kunt volgen. Deze tracerings gebeurtenissen kunnen worden gevonden en opgevraagd met behulp van het hulp programma [Application Insights Analytics](../../azure-monitor/app/analytics.md) in de Azure Portal.
 
-### <a name="tracking-data"></a>Tracking data
+### <a name="tracking-data"></a>Gegevens bijhouden
 
-Each lifecycle event of an orchestration instance causes a tracking event to be written to the **traces** collection in Application Insights. This event contains a **customDimensions** payload with several fields.  Field names are all prepended with `prop__`.
+Elke levens cyclus gebeurtenis van een indelings instantie zorgt ervoor dat een tracerings gebeurtenis wordt geschreven naar de verzameling **traces** in Application Insights. Deze gebeurtenis bevat een **customDimensions** -nettolading met verschillende velden.  De veld namen zijn allemaal voor `prop__`.
 
-* **hubName**: The name of the task hub in which your orchestrations are running.
-* **appName**: The name of the function app. This field is useful when you have multiple function apps sharing the same Application Insights instance.
-* **slotName**: The [deployment slot](../functions-deployment-slots.md) in which the current function app is running. This field is useful when you leverage deployment slots to version your orchestrations.
-* **functionName**: The name of the orchestrator or activity function.
-* **functionType**: The type of the function, such as **Orchestrator** or **Activity**.
-* **instanceId**: The unique ID of the orchestration instance.
-* **state**: The lifecycle execution state of the instance. Valid values include:
-  * **Scheduled**: The function was scheduled for execution but hasn't started running yet.
-  * **Started**: The function has started running but has not yet awaited or completed.
-  * **Awaited**: The orchestrator has scheduled some work and is waiting for it to complete.
-  * **Listening**: The orchestrator is listening for an external event notification.
-  * **Completed**: The function has completed successfully.
-  * **Failed**: The function failed with an error.
-* **reason**: Additional data associated with the tracking event. For example, if an instance is waiting for an external event notification, this field indicates the name of the event it is waiting for. If a function has failed, this field will contain the error details.
-* **isReplay**: Boolean value indicating whether the tracking event is for replayed execution.
-* **extensionVersion**: The version of the Durable Task extension. The version information is especially important data when reporting possible bugs in the extension. Long-running instances may report multiple versions if an update occurs while it is running.
-* **sequenceNumber**: Execution sequence number for an event. Combined with the timestamp helps to order the events by execution time. *Note that this number will be reset to zero if the host restarts while the instance is running, so it's important to always sort by timestamp first, then sequenceNumber.*
+* **hubName**: de naam van de taak hub waarin uw Orchestrations worden uitgevoerd.
+* **AppName**: de naam van de functie-app. Dit veld is handig wanneer u meerdere functie-apps hebt die hetzelfde Application Insights exemplaar delen.
+* naam **sleuf**: de [implementatie site](../functions-deployment-slots.md) waarin de huidige functie-app wordt uitgevoerd. Dit veld is handig wanneer u implementatie sleuven gebruikt voor het versie gebruik van uw Orchestrations.
+* Rolnaam: de naam van **de functie Orchestrator**of de activiteit.
+* **functionType**: het type functie, zoals **Orchestrator** of **Activity**.
+* **instanceId**: de unieke id van het Orchestration-exemplaar.
+* **status**: de uitvoerings status van de levens cyclus van het exemplaar. Geldige waarden zijn:
+  * **Gepland**: de functie is gepland om te worden uitgevoerd, maar is nog niet gestart.
+  * **Gestart**: de functie is gestart, maar is nog niet gewacht of voltooid.
+  * In **afwachting**van: de Orchestrator heeft een aantal werk gepland en wacht tot deze is voltooid.
+  * **Luis teren**: de Orchestrator luistert naar een externe gebeurtenis melding.
+  * **Voltooid**: de functie is voltooid.
+  * **Mislukt**: de functie is mislukt met een fout.
+* **reden**: aanvullende gegevens die zijn gekoppeld aan de tracerings gebeurtenis. Als een instantie bijvoorbeeld wacht op een externe gebeurtenis melding, wordt in dit veld de naam van de gebeurtenis aangegeven waarin wordt gewacht. Als een functie is mislukt, bevat dit veld de fout Details.
+* **isReplay**: een Booleaanse waarde waarmee wordt aangegeven of de tracerings gebeurtenis is ingesteld op opnieuw gespelde uitvoering.
+* **extensionVersion**: de versie van de duurzame taak uitbreiding. De versie gegevens zijn met name belang rijk bij het rapporteren van mogelijke fouten in de uitbrei ding. Langlopende instanties rapporteren mogelijk meerdere versies als er een update wordt uitgevoerd terwijl deze actief is.
+* **sequenceNumber**: Volg nummer voor uitvoering voor een gebeurtenis. In combi natie met de tijds tempel kunnen de gebeurtenissen worden gesorteerd op uitvoerings tijd. *Houd er rekening mee dat dit aantal wordt ingesteld op nul als de host opnieuw wordt opgestart terwijl het exemplaar wordt uitgevoerd. het is dus belang rijk om altijd eerst op tijds tempel te sorteren en vervolgens op sequenceNumber.*
 
-The verbosity of tracking data emitted to Application Insights can be configured in the `logger` (Functions 1.x) or `logging` (Functions 2.0) section of the `host.json` file.
+De uitgebreide tracerings gegevens die naar Application Insights worden verzonden, kunnen worden geconfigureerd in de sectie `logger` (functions 1. x) of `logging` (functions 2,0) van het `host.json`-bestand.
 
-#### <a name="functions-10"></a>Functions 1.0
+#### <a name="functions-10"></a>Functies 1,0
 
 ```json
 {
@@ -60,7 +60,7 @@ The verbosity of tracking data emitted to Application Insights can be configured
 }
 ```
 
-#### <a name="functions-20"></a>Functions 2.0
+#### <a name="functions-20"></a>Functies 2,0
 
 ```json
 {
@@ -72,11 +72,11 @@ The verbosity of tracking data emitted to Application Insights can be configured
 }
 ```
 
-By default, all non-replay tracking events are emitted. The volume of data can be reduced by setting `Host.Triggers.DurableTask` to `"Warning"` or `"Error"` in which case tracking events will only be emitted for exceptional situations.
+Standaard worden alle gebeurtenissen voor het bijhouden van niet-opnieuw afspelen verzonden. Het gegevens volume kan worden verkleind door het instellen van `Host.Triggers.DurableTask` op `"Warning"` of `"Error"`, waarbij tracerings gebeurtenissen alleen worden verzonden voor uitzonderlijke situaties.
 
-To enable emitting the verbose orchestration replay events, the `LogReplayEvents` can be set to `true` in the `host.json` file under `durableTask` as shown:
+Voor het inschakelen van de uitgebreide Orchestration replay-gebeurtenissen kan de `LogReplayEvents` worden ingesteld op `true` in het `host.json` bestand onder `durableTask` zoals weer gegeven:
 
-#### <a name="functions-10"></a>Functions 1.0
+#### <a name="functions-10"></a>Functies 1,0
 
 ```json
 {
@@ -86,7 +86,7 @@ To enable emitting the verbose orchestration replay events, the `LogReplayEvents
 }
 ```
 
-#### <a name="functions-20"></a>Functions 2.0
+#### <a name="functions-20"></a>Functies 2,0
 
 ```javascript
 {
@@ -99,11 +99,11 @@ To enable emitting the verbose orchestration replay events, the `LogReplayEvents
 ```
 
 > [!NOTE]
-> By default, Application Insights telemetry is sampled by the Azure Functions runtime to avoid emitting data too frequently. This can cause tracking information to be lost when many lifecycle events occur in a short period of time. The [Azure Functions Monitoring article](../functions-monitoring.md#configure-sampling) explains how to configure this behavior.
+> Application Insights telemetrie wordt standaard door de Azure Functions-runtime bemonsterd om te voor komen dat gegevens te vaak worden verzonden. Dit kan ervoor zorgen dat de tracerings informatie verloren gaat wanneer er veel levenscyclus gebeurtenissen in korte tijd optreden. In het [artikel over Azure functions bewaking](../functions-monitoring.md#configure-sampling) wordt uitgelegd hoe u dit gedrag kunt configureren.
 
-### <a name="single-instance-query"></a>Single instance query
+### <a name="single-instance-query"></a>Query met één exemplaar
 
-The following query shows historical tracking data for a single instance of the [Hello Sequence](durable-functions-sequence.md) function orchestration. It's written using the [Application Insights Query Language (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). It filters out replay execution so that only the *logical* execution path is shown. Events can be ordered by sorting by `timestamp` and `sequenceNumber` as shown in the query below:
+Met de volgende query worden historische tracking gegevens weer gegeven voor één exemplaar van de functie Orchestration van de [Hello-reeks](durable-functions-sequence.md) . Het is geschreven met behulp van de [Application Insights query language (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). Hiermee wordt de uitvoering van herhalingen gefilterd, zodat alleen het *logische* uitvoerings traject wordt weer gegeven. Gebeurtenissen kunnen worden besteld door te sorteren op `timestamp` en `sequenceNumber`, zoals wordt weer gegeven in de onderstaande query:
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -122,13 +122,13 @@ traces
 | project timestamp, functionName, state, instanceId, sequenceNumber, appName = cloud_RoleName
 ```
 
-The result is a list of tracking events that shows the execution path of the orchestration, including any activity functions ordered by the execution time in ascending order.
+Het resultaat is een lijst met tracerings gebeurtenissen waarmee het pad van de uitvoering van de indeling wordt weer gegeven, inclusief de activiteit functies die worden besteld door de uitvoerings tijd in oplopende volg orde.
 
 ![Application Insights query](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
 
-### <a name="instance-summary-query"></a>Instance summary query
+### <a name="instance-summary-query"></a>Query voor exemplaar samenvatting
 
-The following query displays the status of all orchestration instances that were run in a specified time range.
+Met de volgende query wordt de status weer gegeven van alle indelings instanties die zijn uitgevoerd in een opgegeven tijds bereik.
 
 ```AIQL
 let start = datetime(2017-09-30T04:30:00);
@@ -146,15 +146,15 @@ traces
 | order by timestamp asc
 ```
 
-The result is a list of instance IDs and their current runtime status.
+Het resultaat is een lijst met exemplaar-Id's en de huidige runtime status.
 
 ![Application Insights query](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
 ## <a name="logging"></a>Logboekregistratie
 
-It's important to keep the orchestrator replay behavior in mind when writing logs directly from an orchestrator function. For example, consider the following orchestrator function:
+Het is belang rijk om ervoor te zorgen dat het Orchestrator-gedrag voor het opnieuw afspelen van een logboeken rechtstreeks vanuit een Orchestrator-functie wordt geschreven. Denk bijvoorbeeld aan de volgende Orchestrator-functie:
 
-### <a name="precompiled-c"></a>Precompiled C#
+### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -189,7 +189,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -205,7 +205,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-The resulting log data is going to look something like the following example output:
+De resulterende logboek gegevens zien er ongeveer uit zoals in de volgende voorbeeld uitvoer:
 
 ```txt
 Calling F1.
@@ -221,11 +221,11 @@ Done!
 ```
 
 > [!NOTE]
-> Remember that while the logs claim to be calling F1, F2, and F3, those functions are only *actually* called the first time they are encountered. Subsequent calls that happen during replay are skipped and the outputs are replayed to the orchestrator logic.
+> Houd er rekening mee dat de logboeken van de claim F1, F2 en F3 worden aangeroepen. deze functies *worden alleen de* eerste keer dat ze worden aangetroffen. Volgende aanroepen die tijdens het herhalen plaatsvinden, worden overgeslagen en de uitvoer wordt opnieuw afgespeeld naar de Orchestrator-logica.
 
-If you want to only log on non-replay execution, you can write a conditional expression to log only if `IsReplaying` is `false`. Consider the example above, but this time with replay checks.
+Als u zich alleen wilt aanmelden voor een niet-replay-uitvoering, kunt u een voorwaardelijke expressie schrijven om alleen te registreren als `IsReplaying` is `false`. Bekijk het bovenstaande voor beeld, maar deze keer met replay controles.
 
-#### <a name="precompiled-c"></a>Precompiled C#
+#### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -260,7 +260,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -276,7 +276,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Starting in Durable Functions 2.0, .NET orchestrator functions also have the option to create an `ILogger` that automatically filters out log statements during replay. This automatic filtering is done using the `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` API.
+Vanaf Durable Functions 2,0 hebben .NET Orchestrator-functies ook de optie om een `ILogger` te maken die logboek instructies automatisch uitfiltert tijdens het opnieuw afspelen. Deze automatische filter bewerking wordt uitgevoerd met behulp van de `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)`-API.
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -295,7 +295,7 @@ public static async Task Run(
 }
 ```
 
-With the previously mentioned changes, the log output is as follows:
+Met de eerder genoemde wijzigingen ziet de logboek uitvoer er als volgt uit:
 
 ```txt
 Calling F1.
@@ -305,13 +305,13 @@ Done!
 ```
 
 > [!NOTE]
-> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> De vorige C# voor beelden zijn voor Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-## <a name="custom-status"></a>Custom Status
+## <a name="custom-status"></a>Aangepaste status
 
-Custom orchestration status lets you set a custom status value for your orchestrator function. This status is provided via the HTTP status query API or the `IDurableOrchestrationClient.GetStatusAsync` API. The custom orchestration status enables richer monitoring for orchestrator functions. For example, the orchestrator function code can include `IDurableOrchestrationContext.SetCustomStatus` calls to update the progress for a long-running operation. A client, such as a web page or other external system, could then periodically query the HTTP status query APIs for richer progress information. A sample using `IDurableOrchestrationContext.SetCustomStatus` is provided below:
+Met de aangepaste indelings status kunt u een aangepaste status waarde instellen voor uw Orchestrator-functie. Deze status wordt weer gegeven via de HTTP-status query-API of de `IDurableOrchestrationClient.GetStatusAsync`-API. De aangepaste indelings status maakt uitgebreide bewaking mogelijk voor Orchestrator-functies. De functie code van Orchestrator kan bijvoorbeeld `IDurableOrchestrationContext.SetCustomStatus`-aanroepen bevatten om de voortgang voor een langlopende bewerking bij te werken. Een-client, zoals een webpagina of een ander extern systeem, kan vervolgens periodiek query's uitvoeren op de HTTP-status query Api's voor informatie over rijkere voortgang. Hieronder vindt u een voor beeld van het gebruik van `IDurableOrchestrationContext.SetCustomStatus`:
 
-### <a name="precompiled-c"></a>Precompiled C#
+### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
 
 ```csharp
 [FunctionName("SetStatusTest")]
@@ -328,9 +328,9 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 ```
 
 > [!NOTE]
-> The previous C# example is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Het vorige C# voor beeld is voor Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -346,14 +346,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-While the orchestration is running, external clients can fetch this custom status:
+Terwijl de Orchestration wordt uitgevoerd, kunnen externe clients deze aangepaste status ophalen:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Clients will get the following response:
+Clients ontvangen het volgende antwoord:
 
 ```http
 {
@@ -367,32 +367,32 @@ Clients will get the following response:
 ```
 
 > [!WARNING]
-> The custom status payload is limited to 16 KB of UTF-16 JSON text because it needs to be able to fit in an Azure Table Storage column. You can use external storage if you need larger payload.
+> De nettolading van de aangepaste status is beperkt tot 16 KB aan UTF-16-JSON-tekst omdat deze moet kunnen passen in een Azure Table Storage-kolom. U kunt externe opslag gebruiken als u een grotere Payload nodig hebt.
 
 ## <a name="debugging"></a>Foutopsporing
 
-Azure Functions supports debugging function code directly, and that same support carries forward to Durable Functions, whether running in Azure or locally. However, there are a few behaviors to be aware of when debugging:
+Azure Functions ondersteunt functie code voor fout opsporing rechtstreeks en dezelfde ondersteuning gaat naar Durable Functions, ongeacht of deze wordt uitgevoerd in azure of lokaal. Er zijn echter enkele gedragingen waarmee u rekening moet houden bij fout opsporing:
 
-* **Replay**: Orchestrator functions regularly [replay](durable-functions-orchestrations.md#reliability) when new inputs are received. This behavior means a single *logical* execution of an orchestrator function can result in hitting the same breakpoint multiple times, especially if it is set early in the function code.
-* **Await**: Whenever an `await` is encountered in an orchestrator function, it yields control back to the Durable Task Framework dispatcher. If it is the first time a particular `await` has been encountered, the associated task is *never* resumed. Because the task never resumes, stepping *over* the await (F10 in Visual Studio) is not possible. Stepping over only works when a task is being replayed.
-* **Messaging timeouts**: Durable Functions internally uses queue messages to drive execution of orchestrator, activity, and entity functions. In a multi-VM environment, breaking into the debugging for extended periods of time could cause another VM to pick up the message, resulting in duplicate execution. This behavior exists for regular queue-trigger functions as well, but is important to point out in this context since the queues are an implementation detail.
-* **Stopping and starting**: Messages in Durable functions persist between debug sessions. If you stop debugging and terminate the local host process while a durable function is executing, that function may re-execute automatically in a future debug session. This behavior can be confusing when not expected. Clearing all messages from the [internal storage queues](durable-functions-perf-and-scale.md#internal-queue-triggers) between debug sessions is one technique to avoid this behavior.
+* **Replay**: Orchestrator functions wordt regel matig [herhaald](durable-functions-orchestrations.md#reliability) wanneer nieuwe invoer wordt ontvangen. Dit gedrag houdt in dat één *logische* uitvoering van een Orchestrator-functie kan leiden tot hetzelfde onderbrekings punt meerdere keren, vooral als het vroegtijdig is ingesteld in de functie code.
+* **Await**: wanneer een `await` wordt aangetroffen in een Orchestrator-functie, wordt het besturings element teruggestuurd naar de verzender van het duurzame taak raamwerk. Als dit de eerste keer is dat een bepaalde `await` is aangetroffen, wordt de bijbehorende taak *nooit* hervat. Omdat de taak nooit wordt hervat, is *het niet* mogelijk om door te lopen (F10 in Visual Studio). Alleen uitvoeren werkt wanneer een taak wordt herhaald.
+* **Time-outs van berichten**: Durable functions intern gebruik van wachtrij berichten om de uitvoering van orchestrator-, activity-en Entity-functies te verzorgen. In een omgeving met meerdere VM'S kan de fout opsporing voor langere Peri Oden ertoe leiden dat een andere virtuele machine het bericht ophaalt, wat resulteert in dubbele uitvoering. Dit gedrag bestaat ook voor normale functies van de wachtrij-trigger, maar is belang rijk om in deze context te wijzen, omdat de wacht rijen een implementatie detail zijn.
+* **Stoppen en starten**: berichten in duurzame functies blijven behouden tussen sessies voor fout opsporing. Als u de fout opsporing stopt en het lokale hostproces beëindigt terwijl een duurzame functie wordt uitgevoerd, wordt deze functie mogelijk automatisch opnieuw uitgevoerd in een toekomstige foutopsporingssessie. Dit gedrag kan verwarrend zijn wanneer niet wordt verwacht. Het wissen van alle berichten uit de [interne opslag wachtrijen](durable-functions-perf-and-scale.md#internal-queue-triggers) tussen sessies voor fout opsporing is een techniek om dit gedrag te voor komen.
 
 > [!TIP]
-> When setting breakpoints in orchestrator functions, if you want to only break on non-replay execution, you can set a conditional breakpoint that breaks only if `IsReplaying` is `false`.
+> Als u onderbrekings punten instelt in Orchestrator-functies en u alleen een niet-replay-uitvoering wilt onderbreken, kunt u een voorwaardelijk onderbrekings punt instellen dat alleen wordt onderbroken als `IsReplaying` is `false`.
 
 ## <a name="storage"></a>Storage
 
-By default, Durable Functions stores state in Azure Storage. This behavior means you can inspect the state of your orchestrations using tools such as [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+Durable Functions-status wordt standaard opgeslagen in Azure Storage. Dit betekent dat u de status van uw Orchestrations kunt inspecteren met behulp van hulpprogram ma's zoals [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
-![Azure Storage Explorer screenshot](./media/durable-functions-diagnostics/storage-explorer.png)
+![Scherm afbeelding Azure Storage Explorer](./media/durable-functions-diagnostics/storage-explorer.png)
 
-This is useful for debugging because you see exactly what state an orchestration may be in. Messages in the queues can also be examined to learn what work is pending (or stuck in some cases).
+Dit is handig voor het opsporen van fouten, omdat u precies ziet in welke staat een indeling kan zijn. Berichten in de wacht rijen kunnen ook worden onderzocht om te ontdekken wat er in behandeling is (of in sommige gevallen vastgelopen).
 
 > [!WARNING]
-> While it's convenient to see execution history in table storage, avoid taking any dependency on this table. It may change as the Durable Functions extension evolves.
+> Hoewel het handig is om uitvoerings geschiedenis te zien in tabel opslag, moet u geen afhankelijkheid van deze tabel maken. Dit kan veranderen als de Durable Functions extensie wordt ontwikkeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Learn more about monitoring in Azure Functions](../functions-monitoring.md)
+> [Meer informatie over bewaking in Azure Functions](../functions-monitoring.md)

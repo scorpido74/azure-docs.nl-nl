@@ -29,7 +29,7 @@ U kunt met behulp van Azure Monitor aangepaste metrische gegevens verzamelen via
 
 Voor deze zelf studie implementeren we een virtuele Linux-machine waarop het Ubuntu 16,04 LTS-besturings systeem wordt uitgevoerd. De telegrafie-agent wordt ondersteund voor de meeste Linux-besturings systemen. Zowel de Debian-als de RPM-pakketten zijn beschikbaar in combi natie met niet-verpakkende Linux-bestanden op de [InfluxData-Download Portal](https://portal.influxdata.com/downloads). Zie deze [telegrafi-installatie handleiding](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) voor aanvullende installatie-instructies en-opties. 
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 Een nieuwe virtuele Linux-machine maken: 
 

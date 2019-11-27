@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18f3ed9cb2ef0f700e33e8b643b5e7d167d656a5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112726"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533974"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-blobs indexeren met behulp van een BLOB-Indexeer functie in azure Cognitive Search
 
@@ -33,7 +33,7 @@ JSON-blobs in Azure Blob-opslag zijn meestal één JSON-document (de parserings 
 
 De eenvoudigste methode voor het indexeren van JSON-documenten is het gebruik van een wizard in de [Azure Portal](https://portal.azure.com/). Door het parseren van meta gegevens in de Azure Blob-container, kunt u met de wizard [**gegevens importeren**](search-import-data-portal.md) een standaard index maken, bron velden toewijzen aan doel index velden en de index in één bewerking laden. Afhankelijk van de grootte en complexiteit van de bron gegevens, kunt u in slechts enkele minuten een werk index voor het doorzoeken van de volledige tekst hebben.
 
-U wordt aangeraden hetzelfde Azure-abonnement te gebruiken voor Azure Cognitive Search en Azure Storage, bij voor keur in dezelfde regio.
+U kunt het beste dezelfde regio of locatie gebruiken voor zowel Azure Cognitive Search als Azure Storage voor lagere latentie en om bandbreedte kosten te voor komen.
 
 ### <a name="1---prepare-source-data"></a>1: Bron gegevens voorbereiden
 
@@ -110,9 +110,9 @@ Aan het einde van deze sectie kunt u de code van de [rest-voorbeeld](#rest-examp
 
 Voor op code gebaseerde JSON-indexering gebruikt u [postman](search-get-started-postman.md) en de rest API om deze objecten te maken:
 
-+ [index](https://docs.microsoft.com/rest/api/searchservice/create-index)
++ [TabIndex](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [gegevens bron](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
-+ [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 Voor de volg orde van bewerkingen moet u objecten in deze volg orde maken en aanroepen. In tegens telling tot de werk stroom van de portal, is voor een code benadering een beschik bare index vereist om de JSON-documenten te accepteren die via de aanvraag voor het maken van een **Indexeer functie**
 
@@ -271,10 +271,10 @@ Het maken van de Indexeer functie op Azure Cognitive Search triggers voor gegeve
 
 De .NET SDK heeft volledige pariteit met de REST API. We raden u aan de sectie voor gaande REST API te bekijken voor meer informatie over concepten, werk stromen en vereisten. U kunt vervolgens de volgende .NET API-referentie documentatie raadplegen voor het implementeren van een JSON-indexer in beheerde code.
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source type](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. Indexeer functie](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="parsing-modes"></a>
 

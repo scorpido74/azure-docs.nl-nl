@@ -1,6 +1,6 @@
 ---
-title: Automate tasks for enterprise integration - Azure Logic Apps
-description: Learn about automating workflows that integrate apps, data, services, and systems with minimal code for enterprise integration by using Azure Logic Apps.
+title: Taken automatiseren voor Enter prise Integration-Azure Logic Apps
+description: Meer informatie over het automatiseren van werk stromen die apps, gegevens, services en systemen integreren met minimale code voor bedrijfs integratie met behulp van Azure Logic Apps.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -13,14 +13,14 @@ ms.custom: mvc
 ms.date: 06/29/2018
 ms.openlocfilehash: 679c648df1daaaaacec0c13922b4dd6ae42cf777
 ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420116"
 ---
-# <a name="overview---what-is-azure-logic-apps"></a>Overview - What is Azure Logic Apps?
+# <a name="overview---what-is-azure-logic-apps"></a>Overzicht: wat is Azure Logic Apps?
 
-[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) is a cloud service that helps you schedule, automate, and orchestrate tasks, business processes, and [workflows](#logic-app-concepts) when you need to integrate apps, data, systems, and services across enterprises or organizations. Logic Apps vereenvoudigt het ontwerpen en maken van schaalbare oplossingen voor [app-integratie](https://azure.microsoft.com/product-categories/integration/), gegevensintegratie, systeemintegratie, Enterprise Application Integration (EAI) en communicatie voor business-to-business (B2B), in de cloud, on-premises of beide.
+[Azure Logic apps](https://azure.microsoft.com/services/logic-apps) is een Cloud service die u helpt bij het plannen, automatiseren en organiseren van taken, bedrijfs processen en [werk stromen](#logic-app-concepts) wanneer u apps, gegevens, systemen en services in ondernemingen of organisaties wilt integreren. Logic Apps vereenvoudigt het ontwerpen en maken van schaalbare oplossingen voor [app-integratie](https://azure.microsoft.com/product-categories/integration/), gegevensintegratie, systeemintegratie, Enterprise Application Integration (EAI) en communicatie voor business-to-business (B2B), in de cloud, on-premises of beide.
 
 Dit zijn enkele voorbeelden van workloads die u met logische apps kunt automatiseren:
 
@@ -32,13 +32,13 @@ Dit zijn enkele voorbeelden van workloads die u met logische apps kunt automatis
 
 * Tweets bewaken voor een bepaald onderwerp, de feel analyseren en waarschuwingen of taken maken voor items die nagekeken moeten worden.
 
-To build enterprise integration solutions with Azure Logic Apps, you can choose from a growing gallery with [hundreds of ready-to-use connectors](../connectors/apis-list.md), which include services such as Azure Service Bus, Azure Functions, Azure Storage, SQL Server, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, file shares, and more. [Connectors](#logic-app-concepts) bieden [triggers](#logic-app-concepts), [acties](#logic-app-concepts) of beide om logische apps te maken voor veilige toegang en verwerking van gegevens in realtime.
+Als u oplossingen voor bedrijfs integratie wilt bouwen met Azure Logic Apps, kunt u kiezen uit een groeiende galerie met [honderden kant-en-klare connectors](../connectors/apis-list.md), waaronder services zoals Azure Service Bus, Azure Functions, Azure Storage, SQL Server, Office 365, Dynamics, Sales Force, BizTalk, SAP, Oracle DB, bestands shares en meer. [Connectors](#logic-app-concepts) bieden [triggers](#logic-app-concepts), [acties](#logic-app-concepts) of beide om logische apps te maken voor veilige toegang en verwerking van gegevens in realtime.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
 ## <a name="how-does-logic-apps-work"></a>Hoe werkt Logic Apps? 
 
-Iedere werkstroom van logische apps begint met een trigger, die wordt geactiveerd wanneer een bepaalde gebeurtenis wordt uitgevoerd of wanneer nieuwe beschikbare gegevens aan bepaalde criteria voldoen. Many triggers provided by the connectors in Logic Apps include basic scheduling capabilities so that you can set up how regularly your workloads run. For more complex scheduling or advanced recurrences, you can use a Recurrence trigger as the first step in any workflow. Learn more about [schedule-based workflows](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Iedere werkstroom van logische apps begint met een trigger, die wordt geactiveerd wanneer een bepaalde gebeurtenis wordt uitgevoerd of wanneer nieuwe beschikbare gegevens aan bepaalde criteria voldoen. Veel triggers die door de connectors in Logic Apps zijn opgegeven, bevatten elementaire plannings mogelijkheden, zodat u kunt instellen hoe vaak uw workloads worden uitgevoerd. Voor complexere planningen of geavanceerde terugkeer patronen kunt u een terugkeer patroon trigger gebruiken als de eerste stap in een werk stroom. Meer informatie over [werk stromen op basis van een planning](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een exemplaar van een logische app waarmee de acties in de werkstroom worden uitgevoerd. Deze acties kunnen ook bestaan uit gegevensconversies en datatransportbesturing, zoals voorwaardelijke instructies, switch-instructies, lussen en vertakking. Deze logische app begint bijvoorbeeld met een Dynamics 365-trigger met 'Wanneer een record wordt bijgewerkt' als ingebouwd criterium. Als de trigger een gebeurtenis detecteert die aan dit criterium voldoet, wordt de trigger geactiveerd, die vervolgens de acties van de werkstroom uitvoert. Hier bestaan de acties uit XML-transformatie, gegevensupdates, vertakking van beslissingen en e-mailmeldingen.
 
@@ -102,13 +102,13 @@ Andersom kan BizTalk Server ook verbinding maken en communiceren met logische ap
 
 ### <a name="write-once-reuse-often"></a>Eenmaal schrijven, vaak opnieuw gebruiken
 
-Create your logic apps as Azure Resource Manager templates so that you can [automate logic app deployment](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) across multiple environments and regions.
+Maak uw logische apps als Azure Resource Manager sjablonen, zodat u de [implementatie van logische](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) apps in meerdere omgevingen en regio's kunt automatiseren.
 
 ### <a name="built-in-extensibility"></a>Ingebouwde uitbreidbaarheid
 
-If you don't find the connector that you want to run custom code, you can extend logic apps by creating and calling your own code snippets on-demand through [Azure Functions](../azure-functions/functions-overview.md). Maak uw eigen [API's](../logic-apps/logic-apps-create-api-app.md) en [aangepaste connectors](../logic-apps/custom-connector-overview.md) die u kunt aanroepen vanuit logic apps.
+Als u de connector die u wilt uitvoeren van aangepaste code niet vindt, kunt u logische apps uitbreiden door uw eigen code fragmenten op aanvraag via [Azure functions](../azure-functions/functions-overview.md)te maken en aan te roepen. Maak uw eigen [API's](../logic-apps/logic-apps-create-api-app.md) en [aangepaste connectors](../logic-apps/custom-connector-overview.md) die u kunt aanroepen vanuit logic apps.
 
-### <a name="pay-only-for-what-you-use"></a>Uitsluitend betalen voor wat u gebruikt
+### <a name="pay-only-for-what-you-use"></a>Alleen betalen voor wat u gebruikt
   
 Logic Apps gebruikt [prijzen en metingen](../logic-apps/logic-apps-pricing.md) op basis van verbruik tenzij u eerder logische apps hebt gemaakt met App Service-plannen.
 
@@ -124,7 +124,7 @@ Meer informatie over Logic Apps vindt u in deze inleidende video's:
 
 * **Werkstroom**: het visualiseren, ontwerpen, compileren, automatiseren en implementeren van bedrijfsprocessen als een reeks stappen.
 
-* **Beheerde connectors**: uw logische apps hebben toegang tot gegevens, services en systemen nodig. U kunt vooraf gedefinieerde, door Microsoft beheerde connectors gebruiken die zijn ontworpen om verbinding te maken met uw gegevens en om deze te openen en ermee te werken. See [Connectors for Azure Logic Apps](../connectors/apis-list.md).
+* **Beheerde connectors**: uw logische apps hebben toegang tot gegevens, services en systemen nodig. U kunt vooraf gedefinieerde, door Microsoft beheerde connectors gebruiken die zijn ontworpen om verbinding te maken met uw gegevens en om deze te openen en ermee te werken. Zie [connectors voor Azure Logic apps](../connectors/apis-list.md).
 
 * **Triggers**: veel door Microsoft beheerde connectors bieden triggers die worden geactiveerd wanneer gebeurtenissen of nieuwe gegevens voldoen aan opgegeven voorwaarden. Een gebeurtenis kan bijvoorbeeld een e-mailbericht ontvangen of wijzigingen detecteren in uw Azure Storage-account. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een nieuw exemplaar van een logische app waarmee de werkstroom wordt gestart.
 

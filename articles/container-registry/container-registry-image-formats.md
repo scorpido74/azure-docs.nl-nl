@@ -1,6 +1,6 @@
 ---
-title: Supported content formats
-description: Learn about content formats supported by Azure Container Registry, including Docker-compatible container images, Helm charts, OCI images, and OCI artifacts.
+title: Ondersteunde inhouds indelingen
+description: Meer informatie over inhouds indelingen die worden ondersteund door Azure Container Registry, waaronder docker-compatibele container installatie kopieën, helm-grafieken, OCI-afbeeldingen en OCI-artefacten.
 ms.topic: article
 ms.date: 08/30/2019
 ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
@@ -10,40 +10,40 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455017"
 ---
-# <a name="content-formats-supported-in-azure-container-registry"></a>Content formats supported in Azure Container Registry
+# <a name="content-formats-supported-in-azure-container-registry"></a>Inhouds indelingen die worden ondersteund in Azure Container Registry
 
-Use a private repository in Azure Container Registry to manage one of the following content formats. 
+Gebruik een privé-opslag plaats in Azure Container Registry om een van de volgende inhouds indelingen te beheren. 
 
-## <a name="docker-compatible-container-images"></a>Docker-compatible container images
+## <a name="docker-compatible-container-images"></a>Docker-compatibele container installatie kopieën
 
-The following Docker container image formats are supported:
+De volgende indelingen van de docker-container installatie kopieën worden ondersteund:
 
-* [Docker Image Manifest V2, Schema 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
+* [Manifest voor docker-installatie kopie v2, schema 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
-* [Docker Image Manifest V2, Schema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) - includes Manifest Lists which allow registries to store multiplatform images under a single "image:tag" reference
+* [Docker-installatie kopie-manifest v2, schema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) : bevat manifest lijsten waarmee registers meerdere platform afbeeldingen kunnen opslaan onder één ' image: tag '-verwijzing
 
-## <a name="oci-images"></a>OCI images
+## <a name="oci-images"></a>OCI-afbeeldingen
 
-Azure Container Registry supports images that meet the [Open Container Initiative (OCI) Image Format Specification](https://github.com/opencontainers/image-spec/blob/master/spec.md). Packaging formats include [Singularity Image Format (SIF)](https://github.com/sylabs/sif).
+Azure Container Registry ondersteunt installatie kopieën die voldoen aan de indeling van het [opening container Initiative (OCI)-afbeelding](https://github.com/opencontainers/image-spec/blob/master/spec.md). Pakket indelingen zijn onder andere de indeling van de [enkelvouds afbeelding](https://github.com/sylabs/sif).
 
-## <a name="oci-artifacts"></a>OCI artifacts
+## <a name="oci-artifacts"></a>OCI-artefacten
 
-Azure Container Registry supports the [OCI Distribution Specification](https://github.com/opencontainers/distribution-spec), a vendor-neutral, cloud-agnostic spec to store, share, secure, and deploy container images and other content types (artifacts). The specification allows a registry to store a wide range of artifacts in addition to container images. You use tooling appropriate to the artifact to push and pull artifacts. For an example, see [Push and pull an OCI artifact using an Azure container registry](container-registry-oci-artifacts.md).
+Azure Container Registry ondersteunt de [OCI-distributie specificatie](https://github.com/opencontainers/distribution-spec), een leverancier-neutraal, Cloud-neutraal specificatie voor het opslaan, delen, beveiligen en implementeren van container installatie kopieën en andere inhouds typen (artefacten). Met de specificatie kan een REGI ster een breed scala aan artefacten opslaan naast container installatie kopieën. U gebruikt hulp middelen die geschikt zijn voor het artefacten om artefacten te pushen en te pullen. Zie [een OCI-artefact pushen en trekken met behulp van een Azure container Registry](container-registry-oci-artifacts.md)voor een voor beeld.
 
-To learn more about OCI artifacts, see the [OCI Registry as Storage (ORAS)](https://github.com/deislabs/oras) repo and the [OCI Artifacts](https://github.com/opencontainers/artifacts) repo on GitHub.
+Zie voor meer informatie over OCI-artefacten het [OCI-REGI ster als Storage (Oras)](https://github.com/deislabs/oras) opslag plaats en de [OCI-artefacten](https://github.com/opencontainers/artifacts) opslag plaats op github.
 
-## <a name="helm-charts"></a>Helm charts
+## <a name="helm-charts"></a>Helm grafieken
 
-Azure Container Registry can host repositories for [Helm charts](https://helm.sh/), a packaging format used to quickly manage and deploy applications for Kubernetes. [Helm client](https://docs.helm.sh/using_helm/#installing-helm) version 2 (2.11.0 or later) is supported.
+Azure Container Registry kunt opslag plaatsen hosten voor [helm-grafieken](https://helm.sh/), een verpakkings indeling die wordt gebruikt voor het snel beheren en implementeren van toepassingen voor Kubernetes. [Helm-client](https://docs.helm.sh/using_helm/#installing-helm) versie 2 (2.11.0 of hoger) wordt ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* See how to [push and pull](container-registry-get-started-docker-cli.md) images with Azure Container Registry.
+* Zie installatie kopieën [pushen en pullen](container-registry-get-started-docker-cli.md) met Azure container Registry.
 
-* Use [ACR tasks](container-registry-tasks-overview.md) to build and test container images. 
+* Gebruik [ACR-taken](container-registry-tasks-overview.md) om container installatie kopieën te bouwen en te testen. 
 
-* Use the [Moby BuildKit](https://github.com/moby/buildkit) to build and package containers in OCI format.
+* Gebruik de [Moby-BuildKit](https://github.com/moby/buildkit) voor het maken en inpakken van containers in OCI-indeling.
 
-* Set up a [Helm repository](container-registry-helm-repos.md) hosted in Azure Container Registry. 
+* Stel een [helm-opslag plaats](container-registry-helm-repos.md) in die wordt gehost in azure container Registry. 
 
 

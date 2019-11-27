@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld - Tag met standaardwaarde toepassen
-description: This sample policy definition appends a specified tag name and value defined in a parameter, if that tag is not provided.
+description: Deze voor beeld van een beleids definitie voegt een opgegeven label naam en waarde toe die is gedefinieerd in een para meter, als dat label niet is opgegeven.
 ms.date: 01/26/2019
 ms.topic: sample
 ms.openlocfilehash: 33d0580d2f6c231c4cd7e73abdaab6cb14c363d9
@@ -12,14 +12,14 @@ ms.locfileid: "74463671"
 ---
 # <a name="sample---apply-tag-and-its-default-value"></a>Voorbeeld - Tag met standaardwaarde toepassen
 
-Dit beleid voegt de opgegeven tagnaam en -waarde toe, als die tag niet is opgegeven. U geeft de tagnaam en -waarde op die moet worden toegepast.
+Dit beleid voegt de opgegeven tagnaam en -waarde toe, als die tag niet is opgegeven. U geeft de naam en waarde op voor de tag die moet worden toegepast.
 
 U kunt dit voorbeeldbeleid implementeren met behulp van:
 
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
 - [Azure CLI](#azure-cli)
-- [REST API](#rest-api)
+- [REST-API](#rest-api)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -67,10 +67,10 @@ In deze voorbeeldparameter zijn een _tagName_ van **costCenter** en _tagValue_ v
 }
 ```
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portal
 
-[![Deploy the Policy sample to Azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
-[![Deploy the Policy sample to Azure Gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
+[![het voor beeld van het beleid implementeren naar azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
+[![het voor beeld van het beleid implementeren naar Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -106,7 +106,7 @@ Remove-AzPolicyDefinition -Id $definition.ResourceId
 
 ### <a name="azure-powershell-explanation"></a>Toelichting van Azure PowerShell
 
-De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. Elke opdracht in de volgende tabel is een koppeling naar opdrachtspecifieke documentatie:
+De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. Elke opdracht in onderstaande tabel is een link naar opdracht-specifieke documentatie:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -116,7 +116,7 @@ De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. E
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Hiermee verwijdert u een bestaande Azure Policy-toewijzing. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Hiermee verwijdert u een bestaande Azure Policy-definitie. |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -160,9 +160,9 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 Er zijn verschillende hulpprogramma's die u kunt gebruiken om te communiceren met de REST-API van Resource Manager, zoals [ARMClient](https://github.com/projectkudu/ARMClient) of PowerShell. Een voorbeeld van het aanroepen van een REST-API vanuit PowerShell vindt u in de sectie **Aliassen** van [Structuur van Azure-beleidsdefinities](../concepts/definition-structure.md#aliases).
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
-### <a name="deploy-with-rest-api"></a>Implementeren met REST API
+### <a name="deploy-with-rest-api"></a>Implementeren met REST-API
 
 - Maak de beleidsdefinitie (abonnementsbereik). Gebruik de [beleidsdefinitie](#policy-definition) geschreven in JSON voor de body van de aanvraag.
 

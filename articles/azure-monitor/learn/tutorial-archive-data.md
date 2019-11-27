@@ -38,9 +38,9 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 U moet eerst een opslagaccount instellen waarin de bewakingsgegevens worden gearchiveerd. Daarvoor [volgt u deze stappen](../../storage/common/storage-quickstart-create-account.md).
 

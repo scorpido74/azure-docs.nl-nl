@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with RightAnswers | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and RightAnswers.
+title: 'Zelf studie: integratie Azure Active Directory met RightAnswers | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en RightAnswers.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,13 +22,13 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233478"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Tutorial: Azure Active Directory integration with RightAnswers
+# <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Zelf studie: integratie Azure Active Directory met RightAnswers
 
-In this tutorial, you learn how to integrate RightAnswers with Azure Active Directory (Azure AD).
-Integrating RightAnswers with Azure AD provides you with the following benefits:
+In deze zelf studie leert u hoe u RightAnswers integreert met Azure Active Directory (Azure AD).
+Het integreren van RightAnswers met Azure AD biedt de volgende voor delen:
 
-* You can control in Azure AD who has access to RightAnswers.
-* You can enable your users to be automatically signed-in to RightAnswers (Single Sign-On) with their Azure AD accounts.
+* U kunt beheren in azure AD die toegang heeft tot RightAnswers.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij RightAnswers (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -36,24 +36,24 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-To configure Azure AD integration with RightAnswers, you need the following items:
+Als u Azure AD-integratie met RightAnswers wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
-* RightAnswers single sign-on enabled subscription
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding RightAnswers ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* RightAnswers supports **SP** initiated SSO
+* RightAnswers ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-rightanswers-from-the-gallery"></a>Adding RightAnswers from the gallery
+## <a name="adding-rightanswers-from-the-gallery"></a>RightAnswers toevoegen uit de galerie
 
-To configure the integration of RightAnswers into Azure AD, you need to add RightAnswers from the gallery to your list of managed SaaS apps.
+Als u de integratie van RightAnswers in azure AD wilt configureren, moet u RightAnswers uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**To add RightAnswers from the gallery, perform the following steps:**
+**Voer de volgende stappen uit om RightAnswers toe te voegen uit de galerie:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ To configure the integration of RightAnswers into Azure AD, you need to add Righ
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. In the search box, type **RightAnswers**, select **RightAnswers** from result panel then click **Add** button to add the application.
+4. Typ **RightAnswers**in het zoekvak, selecteer **RightAnswers** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![RightAnswers in the results list](common/search-new-app.png)
+     ![RightAnswers in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In this section, you configure and test Azure AD single sign-on with RightAnswers based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in RightAnswers needs to be established.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met RightAnswers op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in RightAnswers tot stand worden gebracht.
 
-To configure and test Azure AD single sign-on with RightAnswers, you need to complete the following building blocks:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met RightAnswers, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configure RightAnswers Single Sign-On](#configure-rightanswers-single-sign-on)** - to configure the Single Sign-On settings on application side.
+2. **[RightAnswers eenmalige aanmelding configureren](#configure-rightanswers-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Create RightAnswers test user](#create-rightanswers-test-user)** - to have a counterpart of Britta Simon in RightAnswers that is linked to the Azure AD representation of user.
+5. **[Maak een RightAnswers-test gebruiker](#create-rightanswers-test-user)** -om een equivalent van Julia Simon in RightAnswers te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-To configure Azure AD single sign-on with RightAnswers, perform the following steps:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met RightAnswers:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **RightAnswers** application integration page, select **Single sign-on**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **RightAnswers** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,20 +103,20 @@ To configure Azure AD single sign-on with RightAnswers, perform the following st
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![RightAnswers Domain and URLs single sign-on information](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor RightAnswers domein en Url's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<subdomain>.rightanswers.com/portal/ss/`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<subdomain>.rightanswers.com:<identifier>/portal`
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://<subdomain>.rightanswers.com:<identifier>/portal`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Contact [RightAnswers Client support team](https://support.rightanswers.com) to get these values. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [ondersteunings team van RightAnswers-clients](https://support.rightanswers.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. On the **Set up RightAnswers** section, copy the appropriate URL(s) as per your requirement.
+6. Kopieer op de sectie **RightAnswers instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -126,12 +126,12 @@ To configure Azure AD single sign-on with RightAnswers, perform the following st
 
     c. Afmeldings-URL
 
-### <a name="configure-rightanswers-single-sign-on"></a>Configure RightAnswers Single Sign-On
+### <a name="configure-rightanswers-single-sign-on"></a>Eenmalige aanmelding voor RightAnswers configureren
 
-To configure single sign-on on **RightAnswers** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [RightAnswers support team](https://support.rightanswers.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **RightAnswers** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [RightAnswers ondersteunings team](https://support.rightanswers.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 > [!NOTE]
-> Your RightAnswers support team has to do the actual SSO configuration. U krijgt een melding wanneer eenmalige aanmelding is ingeschakeld voor uw abonnement.
+> Uw RightAnswers-ondersteunings team moet de daad werkelijke SSO-configuratie uitvoeren. U krijgt een melding wanneer eenmalige aanmelding is ingeschakeld voor uw abonnement.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -151,24 +151,24 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`  
+    b. Typ in het veld **gebruikers naam** `brittasimon@yourcompanydomain.extension`  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to RightAnswers.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan RightAnswers.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **RightAnswers**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **RightAnswers**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. In the applications list, select **RightAnswers**.
+2. Selecteer in de lijst toepassingen de optie **RightAnswers**.
 
-    ![The RightAnswers link in the Applications list](common/all-applications.png)
+    ![De koppeling RightAnswers in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
@@ -184,25 +184,25 @@ In this section, you enable Britta Simon to use Azure single sign-on by granting
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-rightanswers-test-user"></a>Create RightAnswers test user
+### <a name="create-rightanswers-test-user"></a>RightAnswers-test gebruiker maken
 
-To enable Azure AD users to sign in to RightAnswers, they must be provisioned into RightAnswers. When RightAnswers, provisioning is an automated task so there is no action item for you.
+Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij RightAnswers, moeten ze worden ingericht in RightAnswers. Wanneer RightAnswers wordt ingericht, is een geautomatiseerde taak, zodat er geen actie-item voor u is.
 
-Users are automatically created if necessary during the first single sign-on attempt.
+Gebruikers worden automatisch gemaakt als dit nodig is tijdens de eerste poging tot eenmalige aanmelding.
 
 > [!NOTE]
-> You can use any other RightAnswers user account creation tools or APIs provided by RightAnswers to provision Azure AD user accounts.
+> U kunt alle andere hulpprogram ma's voor het maken van RightAnswers-gebruikers accounts of Api's die worden geleverd door RightAnswers, gebruiken om Azure AD-gebruikers accounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-When you click the RightAnswers tile in the Access Panel, you should be automatically signed in to the RightAnswers for which you set up SSO. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel RightAnswers in het toegangs venster klikt, moet u automatisch worden aangemeld bij de RightAnswers waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -41,7 +41,7 @@ Dit is het meest typische scenario, waarbij uw organisatie bijna elke organisati
 
 Een weiger lijst toevoegen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **Azure Active Directory** > **gebruikers** > **gebruikers instellingen**.
 3. Onder **externe gebruikers**selecteert u **externe instellingen voor samen werking beheren**.
 4. Onder **samenwerkings beperkingen**selecteert **u uitnodigingen voor de opgegeven domeinen weigeren**.
@@ -49,7 +49,7 @@ Een weiger lijst toevoegen:
 
    ![De optie weigeren met toegevoegde domeinen weer geven](./media/allow-deny-list/DenyListSettings.png)
  
-6. Wanneer u klaar bent, klikt u op **opslaan**.
+6. Wanneer u klaar bent, klikt u op **Opslaan**.
 
 Nadat u het beleid hebt ingesteld, ontvangt u een bericht dat het domein van de gebruiker momenteel is geblokkeerd door uw uitnodigings beleid als u een gebruiker probeert uit te nodigen van een geblokkeerd domein.
  
@@ -62,7 +62,7 @@ Als u een acceptatie lijst wilt gebruiken, moet u ervoor zorgen dat u de tijd he
 
 Een acceptatie lijst toevoegen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **Azure Active Directory** > **gebruikers** > **gebruikers instellingen**.
 3. Onder **externe gebruikers**selecteert u **externe instellingen voor samen werking beheren**.
 4. Selecteer onder **samenwerkings beperkingen** **alleen uitnodigingen toestaan voor de opgegeven domeinen (het meest beperkend)** .
@@ -70,7 +70,7 @@ Een acceptatie lijst toevoegen:
 
    ![Hiermee wordt de optie toestaan met toegevoegde domeinen weer gegeven](./media/allow-deny-list/AllowListSettings.png)
  
-6. Wanneer u klaar bent, klikt u op **opslaan**.
+6. Wanneer u klaar bent, klikt u op **Opslaan**.
 
 Nadat u het beleid hebt ingesteld, ontvangt u een bericht met de melding dat het domein van de gebruiker momenteel is geblokkeerd door uw uitnodigings beleid als u een gebruiker probeert uit te nodigen van een domein dat zich niet in de acceptatie lijst bevindt.
 

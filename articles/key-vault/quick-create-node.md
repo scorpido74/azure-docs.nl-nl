@@ -1,6 +1,6 @@
 ---
-title: Quickstart -  Azure Key Vault client library for Node.js (v4)
-description: Learn how to create, retrieve, and delete secrets from an Azure key vault using the Node.js client library
+title: Quick Start-Azure Key Vault-client bibliotheek voor node. js (v4)
+description: Meer informatie over het maken, ophalen en verwijderen van geheimen van een Azure-sleutel kluis met behulp van de node. js-client bibliotheek
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/20/2019
@@ -8,55 +8,55 @@ ms.service: key-vault
 ms.topic: quickstart
 ms.openlocfilehash: 376a0778e581b17462fb632d7e49f4762f54b83e
 ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456752"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Quickstart: Azure Key Vault client library for Node.js (v4)
+# <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor node. js (v4)
 
-Get started with the Azure Key Vault client library for Node.js. Follow the steps below to install the package and try out example code for basic tasks.
+Ga aan de slag met de Azure Key Vault-client bibliotheek voor node. js. Volg de onderstaande stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen.
 
-Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Use the Key Vault client library for Node.js to:
+Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor node. js voor het volgende:
 
-- Increase security and control over keys and passwords.
-- Create and import encryption keys in minutes.
-- Reduce latency with cloud scale and global redundancy.
-- Simplify and automate tasks for SSL/TLS certificates.
-- Use FIPS 140-2 Level 2 validated HSMs.
+- Verbeter de beveiliging en controle over sleutels en wacht woorden.
+- Versleutelings sleutels maken en importeren in een paar minuten.
+- Verminder de latentie met Cloud schaal en wereld wijde redundantie.
+- Vereenvoudig en Automatiseer taken voor SSL/TLS-certificaten.
+- Gebruik FIPS 140-2 level 2 Validated Hsm's.
 
-[API reference documentation](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [Library source code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [Package (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[API-referentie documentatie](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [pakket (NPM)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
 ## <a name="prerequisites"></a>Vereisten
 
-- An Azure subscription - [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Current [Node.js](https://nodejs.org) for your operating system.
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) or [Azure PowerShell](/powershell/azure/overview)
+- Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Huidig [knoop punt. js](https://nodejs.org) voor uw besturings systeem.
+- [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview)
 
-This quickstart assumes you are running [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) in a Linux terminal window.
+In deze Snelstartgids wordt ervan uitgegaan dat u [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) uitvoert in een Linux-Terminal venster.
 
-## <a name="setting-up"></a>Setting up
+## <a name="setting-up"></a>Instellen
 
-### <a name="install-the-package"></a>Install the package
+### <a name="install-the-package"></a>Het pakket installeren
 
-From the console window, install the Azure Key Vault secrets library for Node.js.
+Installeer in het console venster de Azure Key Vault geheimen-bibliotheek voor node. js.
 
 ```console
 npm install @azure/keyvault-secrets
 ```
 
-For this quickstart, you will need to install the azure.identity package as well:
+Voor deze Quick start moet u ook het Azure. Identity-pakket installeren:
 
 ```console
 npm install @azure/identity
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Create a resource group and key vault
+### <a name="create-a-resource-group-and-key-vault"></a>Een resource groep en sleutel kluis maken
 
-This quickstart uses a pre-created Azure key vault. You can create a key vault by following the steps in the [Azure CLI quickstart](quick-create-cli.md), [Azure PowerShell quickstart](quick-create-powershell.md), or [Azure portal quickstart](quick-create-portal.md). Alternatively, you can simply run the Azure CLI commands below.
+In deze Snelstartgids wordt gebruikgemaakt van een vooraf gemaakte Azure-sleutel kluis. U kunt een sleutel kluis maken met behulp van de stappen in de [Snelstartgids van Azure cli](quick-create-cli.md), [Azure PowerShell Snelstartgids](quick-create-powershell.md)of [Azure Portal Quick](quick-create-portal.md)start. U kunt ook eenvoudigweg de volgende Azure CLI-opdrachten uitvoeren.
 
 > [!Important]
-> Each key vault must have a unique name. Replace <your-unique-keyvault-name> with the name of your key vault in the following examples.
+> Elke sleutel kluis moet een unieke naam hebben. Vervang < uw-unieke kluis naam > door de naam van uw sleutel kluis in de volgende voor beelden.
 
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"
@@ -66,15 +66,15 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Een service-principal maken
 
-The simplest way to authenticate an cloud-based application is with a managed identity; see [Use an App Service managed identity to access Azure Key Vault](managed-identity.md) for details. For the sake of simplicity however, this quickstarts creates a console application. Authenticating a desktop application with Azure requires the use of a service principal and an access control policy.
+De eenvoudigste manier om een toepassing in de cloud te verifiëren, is met een beheerde identiteit. Zie [een beheerde app Service-id gebruiken voor toegang tot Azure Key Vault](managed-identity.md) voor meer informatie. Deze Quick starts maken echter een console toepassing. Als u een bureaublad toepassing met Azure wilt verifiëren, moet u een Service-Principal en toegangs beheer beleid gebruiken.
 
-Create a service principle using the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command:
+Maak een service-principal met behulp van de opdracht Azure CLI [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
 ```azurecli
 az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-This operation will return a series of key / value pairs. 
+Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd. 
 
 ```azurecli
 {
@@ -91,21 +91,21 @@ This operation will return a series of key / value pairs.
 }
 ```
 
-Take note of the clientId and clientSecret, as we will use them in the [Set environmental variable](#set-environmental-variables) step below.
+Noteer de clientId-en clientSecret, aangezien we deze gebruiken in de stap [omgevings variabele instellen](#set-environmental-variables) hieronder.
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Give the service principal access to your key vault
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>De Service-Principal toegang verlenen tot uw sleutel kluis
 
-Create an access policy for your key vault that grants permission to your service principal by passing the clientId to the [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) command. Give the service principal get, list, and set permissions for both keys and secrets.
+Maak een toegangs beleid voor de sleutel kluis die machtigingen verleent aan uw Service-Principal door de clientId door te geven aan de opdracht [AZ-set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) . Geef de Service-Principal Get, List en stel machtigingen voor zowel sleutels als geheimen.
 
 ```azurecli
 az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-#### <a name="set-environmental-variables"></a>Set environmental variables
+#### <a name="set-environmental-variables"></a>Omgevings variabelen instellen
 
-The DefaultAzureCredential method in our application relies on three environmental variables: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, and `AZURE_TENANT_ID`. Set these variables to the clientId, clientSecret, and tenantId values you noted in the [Create a service principal](#create-a-service-principal) step using the `export VARNAME=VALUE` format. (This only sets the variables for your current shell and processes created from the shell; to permanently add these variables to your environment, edit your `/etc/environment ` file.) 
+De methode DefaultAzureCredential in onze toepassing is afhankelijk van drie omgevings variabelen: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`en `AZURE_TENANT_ID`. Stel deze variabelen in op de clientId-, clientSecret-en tenantId-waarden die u hebt genoteerd in de stap [een service-principal maken](#create-a-service-principal) met behulp van de `export VARNAME=VALUE` indeling. (Hiermee worden alleen de variabelen ingesteld voor uw huidige shell en processen die zijn gemaakt op basis van de shell; als u deze variabelen permanent wilt toevoegen aan uw omgeving, bewerkt u het `/etc/environment ` bestand.) 
 
-You will also need to save your key vault name as an environment variable called `KEY_VAULT_NAME`.
+U moet de naam van de sleutel kluis ook opslaan als een omgevings variabele met de naam `KEY_VAULT_NAME`.
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -119,26 +119,26 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Object model
 
-The Azure Key Vault client library for Node.js allows you to manage keys and related assets such as certificates and secrets. The code samples below will show you how to create a client, set a secret, retrieve a secret, and delete a secret.
+Met de Azure Key Vault-client bibliotheek voor node. js kunt u sleutels en gerelateerde assets beheren, zoals certificaten en geheimen. In de onderstaande code voorbeelden ziet u hoe u een-client maakt, een geheim instelt, een geheim ophaalt en een geheim verwijdert.
 
-The entire console app is available at https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
+De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
-## <a name="code-examples"></a>Code examples
+## <a name="code-examples"></a>Code voorbeelden
 
-### <a name="add-directives"></a>Add directives
+### <a name="add-directives"></a>Instructies toevoegen
 
-Add the following directives to the top of your code:
+Voeg de volgende instructies toe aan het begin van de code:
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
 const { SecretClient } = require("@azure/keyvault-secrets");
 ```
 
-### <a name="authenticate-and-create-a-client"></a>Authenticate and create a client
+### <a name="authenticate-and-create-a-client"></a>Een client verifiëren en maken
 
-Authenticating to your key vault and creating a key vault client depends on the environmental variables from the [Set environmental variables](#set-environmental-variables) step above, and the [SecretClient constructor](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#secretclient-string--tokencredential--pipelineoptions-). 
+Verificatie bij uw sleutel kluis en het maken van een sleutel kluis-client is afhankelijk van de omgevings variabelen van de bovenstaande stap [omgevings variabelen instellen](#set-environmental-variables) en de [SecretClient-constructor](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#secretclient-string--tokencredential--pipelineoptions-). 
 
-The name of your key vault is expanded to the key vault URI, in the format `https://<your-key-vault-name>.vault.azure.net`. 
+De naam van de sleutel kluis wordt uitgebreid naar de sleutel kluis-URI in de notatie `https://<your-key-vault-name>.vault.azure.net`. 
 
 ```javascript
 const keyVaultName = process.env["KEY_VAULT_NAME"];
@@ -148,39 +148,39 @@ const credential = new DefaultAzureCredential();
 const client = new SecretClient(KVUri, credential);
 ```
 
-### <a name="save-a-secret"></a>Save a secret
+### <a name="save-a-secret"></a>Een geheim opslaan
 
-Now that your application is authenticated, you can put a secret into your keyvault using the [client.setSecret method](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setsecret-string--string--setsecretoptions-) This requires a name for the secret -- we're using "mySecret" in this sample.  
+Nu uw toepassing is geverifieerd, kunt u een geheim in uw sleutel kluis plaatsen met behulp van de [client. setSecret-methode](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setsecret-string--string--setsecretoptions-) hiervoor is een naam vereist voor het geheim. in dit voor beeld wordt ' mySecret ' gebruikt.  
 
 ```javascript
 await client.setSecret(secretName, secretValue);
 ```
 
-You can verify that the secret has been set with the [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) command:
+U kunt controleren of het geheim is ingesteld met de opdracht [AZ sleutel kluis Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-### <a name="retrieve-a-secret"></a>Retrieve a secret
+### <a name="retrieve-a-secret"></a>Een geheim ophalen
 
-You can now retrieve the previously set value with the [client.getSecret method](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getsecret-string--getsecretoptions-).
+U kunt nu de eerder ingestelde waarde ophalen met de [methode client. getSecret](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getsecret-string--getsecretoptions-).
 
 ```javascript
 const retrievedSecret = await client.getSecret(secretName);
  ```
 
-Your secret is now saved as `retrievedSecret.value`.
+Uw geheim wordt nu opgeslagen als `retrievedSecret.value`.
 
 ### <a name="delete-a-secret"></a>Een geheim verwijderen
 
-Finally, let's delete the secret from your key vault with the [client.beginDeleteSecret method](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#begindeletesecret-string--begindeletesecretoptions-).
+Ten slotte gaan we het geheim uit uw sleutel kluis verwijderen met de [methode client. beginDeleteSecret](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#begindeletesecret-string--begindeletesecretoptions-).
 
 ```javascript
 await client.beginDeleteSecret(secretName)
 ```
 
-You can verify that the secret is gone with the [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) command:
+U kunt controleren of het geheim is verdwenen met de opdracht [AZ sleutel kluis Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -188,7 +188,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-When no longer needed, you can use the Azure CLI or Azure PowerShell to remove your key vault and the corresponding  resource group.
+Wanneer u deze niet meer nodig hebt, kunt u de Azure CLI of Azure PowerShell gebruiken om uw sleutel kluis en de bijbehorende resource groep te verwijderen.
 
 ```azurecli
 az group delete -g "myResourceGroup" -l "EastUS" 
@@ -257,11 +257,11 @@ main()
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this quickstart you created a key vault, stored a secret, and retrieved that secret. 
+In deze Snelstartgids hebt u een sleutel kluis gemaakt, een geheim opgeslagen en dat geheim opgehaald. 
 
-To learn more about Key Vault and how to integrate it with your applications, continue on to the articles below.
+Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
 
-- Read an [Overview of Azure Key Vault](key-vault-overview.md)
-- See the [Azure Key Vault developer's guide](key-vault-developers-guide.md)
-- Learn about [keys, secrets, and certificates](about-keys-secrets-and-certificates.md)
-- Review [Azure Key Vault best practices](key-vault-best-practices.md)
+- Een [overzicht van Azure Key Vault](key-vault-overview.md) lezen
+- Raadpleeg de [Azure Key Vault hand leiding voor ontwikkel aars](key-vault-developers-guide.md)
+- Meer informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault aanbevolen procedures](key-vault-best-practices.md) controleren

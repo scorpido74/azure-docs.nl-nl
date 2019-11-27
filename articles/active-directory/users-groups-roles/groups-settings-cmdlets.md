@@ -1,6 +1,6 @@
 ---
-title: Configure group settings using PowerShell - Azure AD | Microsoft Docs
-description: How manage the settings for groups using Azure Active Directory cmdlets
+title: Groeps instellingen configureren met behulp van Power shell-Azure AD | Microsoft Docs
+description: De instellingen voor groepen beheren met Azure Active Directory-cmdlets
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -23,16 +23,16 @@ ms.locfileid: "74382979"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory cmdlets voor het configureren van groepsinstellingen
 
-This article contains instructions for using Azure Active Directory (Azure AD) PowerShell cmdlets to create and update groups. This content applies only to Office 365 groups (sometimes called unified groups).
+Dit artikel bevat instructies voor het gebruik van Azure Active Directory (Azure AD) Power shell-cmdlets om groepen te maken en bij te werken. Deze inhoud is alleen van toepassing op Office 365-groepen (ook wel Unified groups genoemd).
 
 > [!IMPORTANT]
-> Some settings require an Azure Active Directory Premium P1 license. For more information, see the [Template settings](#template-settings) table.
+> Voor sommige instellingen is een Azure Active Directory Premium P1-licentie vereist. Zie de tabel met [sjabloon instellingen](#template-settings) voor meer informatie.
 
-For more information on how to prevent non-administrator users from creating security groups, set `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` as described in [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
+Stel `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` in, zoals beschreven in [set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)voor meer informatie over het voor komen van gebruikers die geen beheerder zijn om beveiligings groepen te maken.
 
-Office 365 Groups settings are configured using a Settings object and a SettingsTemplate object. Initially, you don't see any Settings objects in your directory, because your directory is configured with the default settings. To change the default settings, you must create a new settings object using a settings template. Settings templates are defined by Microsoft. There are several different settings templates. To configure Office 365 group settings for your directory, you use the template named "Group.Unified". To configure Office 365 group settings on a single group, use the template named "Group.Unified.Guest". This template is used to manage guest access to an Office 365 group. 
+Instellingen voor Office 365-groepen worden geconfigureerd met behulp van een instellingen object en een SettingsTemplate-object. In eerste instantie ziet u geen instellingen objecten in uw directory, omdat uw directory is geconfigureerd met de standaard instellingen. Als u de standaard instellingen wilt wijzigen, moet u een nieuw instellingen object maken met behulp van een instellingen sjabloon. Instellingen sjablonen worden gedefinieerd door micro soft. Er zijn verschillende instellingen sjablonen. Als u de instellingen voor de Office 365-groep voor uw Directory wilt configureren, gebruikt u de sjabloon groep. Unified. Als u de instellingen voor de Office 365-groep wilt configureren voor één groep, gebruikt u de sjabloon met de naam groep. Unified. Guest. Deze sjabloon wordt gebruikt voor het beheren van gast toegang tot een Office 365-groep. 
 
-The cmdlets are part of the Azure Active Directory PowerShell V2 module. For instructions how to download and install the module on your computer, see the article [Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/). You can install the version 2 release of the module from [the PowerShell gallery](https://www.powershellgallery.com/packages/AzureAD/).
+De cmdlets maken deel uit van de Azure Active Directory Power shell V2-module. Zie het artikel [Azure Active Directory Power shell versie 2](https://docs.microsoft.com/powershell/azuread/)voor instructies voor het downloaden en installeren van de module op uw computer. U kunt de versie 2-versie van de module installeren vanuit [de Power shell-galerie](https://www.powershellgallery.com/packages/AzureAD/).
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell-cmdlets installeren
 
@@ -52,16 +52,16 @@ Verwijder een oudere versie van Azure Active Directory PowerShell voor Graph Mod
    Install-Module AzureADPreview
    ```
    
-## <a name="create-settings-at-the-directory-level"></a>Create settings at the directory level
-These steps create settings at directory level, which apply to all Office 365 groups in the directory. The Get-AzureADDirectorySettingTemplate cmdlet is available only in the [Azure AD PowerShell Preview module for Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+## <a name="create-settings-at-the-directory-level"></a>Instellingen maken op mapniveau
+Met deze stappen maakt u instellingen op mapniveau, die van toepassing zijn op alle Office 365-groepen in de map. De cmdlet Get-AzureADDirectorySettingTemplate is alleen beschikbaar in de [module Azure AD Power shell Preview voor Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
-1. In the DirectorySettings cmdlets, you must specify the ID of the SettingsTemplate you want to use. If you do not know this ID, this cmdlet returns the list of all settings templates:
+1. In de DirectorySettings-cmdlets moet u de ID opgeven van de SettingsTemplate die u wilt gebruiken. Als u deze ID niet weet, retourneert deze cmdlet de lijst met alle instellingen sjablonen:
   
    ```powershell
    Get-AzureADDirectorySettingTemplate
 
    ```
-   This cmdlet call returns all templates that are available:
+   Met deze cmdlet-aanroep worden alle beschik bare sjablonen geretourneerd:
   
    ```powershell
    Id                                   DisplayName         Description
@@ -73,120 +73,120 @@ These steps create settings at directory level, which apply to all Office 365 gr
    898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy       Settings ...
    5cf42378-d67d-4f36-ba46-e8b86229381d Password Rule       Settings ...
    ```
-2. To add a usage guideline URL, first you need to get the SettingsTemplate object that defines the usage guideline URL value; that is, the Group.Unified template:
+2. Als u een URL voor gebruiks richtlijn wilt toevoegen, moet u eerst het SettingsTemplate-object ophalen dat de URL-waarde voor de gebruiks richtlijn definieert. dat wil zeggen, de sjabloon Group. Unified:
   
    ```powershell
    $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
    ```
-3. Next, create a new settings object based on that template:
+3. Maak vervolgens een nieuw instellingen object op basis van deze sjabloon:
   
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. Then update the usage guideline value:
+4. Werk vervolgens de waarde voor het gebruik van de richt lijn bij:
   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = "https://guideline.example.com"
    ```  
-5. Then apply the setting:
+5. Pas vervolgens de instelling toe:
   
    ```powershell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
-6. You can read the values using:
+6. U kunt de waarden lezen met behulp van:
 
    ```powershell
    $Setting.Values
    ```  
-## <a name="update-settings-at-the-directory-level"></a>Update settings at the directory level
-To update the value for UsageGuideLinesUrl in the setting template, simply edit the URL with Step 4 above, then perform Step 5 to set the new value.
+## <a name="update-settings-at-the-directory-level"></a>Instellingen bijwerken op mapniveau
+Als u de waarde voor UsageGuideLinesUrl in de instellings sjabloon wilt bijwerken, bewerkt u de URL gewoon met stap 4 hierboven en voert u vervolgens stap 5 uit om de nieuwe waarde in te stellen.
 
-To remove the value of UsageGuideLinesUrl, edit the URL to be an empty string using Step 4 above:
+Als u de waarde van UsageGuideLinesUrl wilt verwijderen, bewerkt u de URL in een lege teken reeks met behulp van stap 4 hierboven:
 
    ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
-Then perform Step 5 to set the new value.
+Voer vervolgens stap 5 uit om de nieuwe waarde in te stellen.
 
-## <a name="template-settings"></a>Template settings
-Here are the settings defined in the Group.Unified SettingsTemplate. Unless otherwise indicated, these features require an Azure Active Directory Premium P1 license. 
+## <a name="template-settings"></a>Sjabloon instellingen
+Dit zijn de instellingen die zijn gedefinieerd in de groep. Unified SettingsTemplate. Tenzij anders aangegeven, is voor deze functies een Azure Active Directory Premium P1-licentie vereist. 
 
 | **Instelling** | **Beschrijving** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>Type: Boolean<li>Default: True |The flag indicating whether Office 365 group creation is allowed in the directory by non-admin users. This setting does not require an Azure Active Directory Premium P1 license.|
-|  <ul><li>GroupCreationAllowedGroupId<li>Type: String<li>Default: “” |GUID of the security group for which the members are allowed to create Office 365 groups even when EnableGroupCreation == false. |
-|  <ul><li>UsageGuidelinesUrl<li>Type: String<li>Default: “” |A link to the Group Usage Guidelines. |
-|  <ul><li>ClassificationDescriptions<li>Type: String<li>Default: “” | A comma-delimited list of classification descriptions. The value of ClassificationDescriptions is only valid in this format:<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>where Classification matches the strings in the ClassificationList.<br>This setting does not apply when EnableMIPLabels == True.|
-|  <ul><li>DefaultClassification<li>Type: String<li>Default: “” | The classification that is to be used as the default classification for a group if none was specified.<br>This setting does not apply when EnableMIPLabels == True.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Type: String<li>Default: “” | String of a maximum length of 64 characters that defines the naming convention configured for Office 365 groups. For more information, see [Enforce a naming policy for Office 365 groups](groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Type: String<li>Default: “” | Comma-separated string of phrases that users will not be permitted to use in group names or aliases. For more information, see [Enforce a naming policy for Office 365 groups](groups-naming-policy.md). |
-| <ul><li>EnableMSStandardBlockedWords<li>Type: Boolean<li>Default: “False” | Do not use
-|  <ul><li>AllowGuestsToBeGroupOwner<li>Type: Boolean<li>Default: False | Boolean indicating whether or not a guest user can be an owner of groups. |
-|  <ul><li>AllowGuestsToAccessGroups<li>Type: Boolean<li>Default: True | Boolean indicating whether or not a guest user can have access to Office 365 groups content.  This setting does not require an Azure Active Directory Premium P1 license.|
-|  <ul><li>GuestUsageGuidelinesUrl<li>Type: String<li>Default: “” | The url of a link to the guest usage guidelines. |
-|  <ul><li>AllowToAddGuests<li>Type: Boolean<li>Default: True | A boolean indicating whether or not is allowed to add guests to this directory. <br>This setting may be overridden and become read-only if *EnableMIPLabels* is set to *True* and a guest policy is associated with the sensitivity label assigned to the group. |
-|  <ul><li>ClassificationList<li>Type: String<li>Default: “” |A comma-delimited list of valid classification values that can be applied to Office 365 Groups. <br>This setting does not apply when EnableMIPLabels == True.|
-|  <ul><li>EnableMIPLabels<li>Type: Boolean<li>Default: “False” |The flag indicating whether sensitivity labels published in Microsoft 365 Compliance Center can be applied to Office 365 Groups. For more information, see [Assign Sensitivity Labels for Office 365 groups](groups-assign-sensitivity-labels.md). |
+|  <ul><li>EnableGroupCreation<li>Type: Booleaans<li>Standaard: True |De vlag die aangeeft of het maken van een Office 365-groep is toegestaan in de map door niet-beheerders gebruikers. Voor deze instelling is geen Azure Active Directory Premium P1-licentie vereist.|
+|  <ul><li>GroupCreationAllowedGroupId<li>Type: String<li>Standaard: |GUID van de beveiligings groep waarvoor de leden Office 365-groepen mogen maken, zelfs wanneer EnableGroupCreation = = false. |
+|  <ul><li>UsageGuidelinesUrl<li>Type: String<li>Standaard: |Een koppeling naar de richt lijnen voor groeps gebruik. |
+|  <ul><li>ClassificationDescriptions<li>Type: String<li>Standaard: | Een door komma's gescheiden lijst met classificatie beschrijvingen. De waarde van ClassificationDescriptions is alleen geldig in deze indeling:<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>waarbij classificatie overeenkomt met de teken reeksen in de ClassificationList.<br>Deze instelling is niet van toepassing wanneer EnableMIPLabels = = True.|
+|  <ul><li>DefaultClassification<li>Type: String<li>Standaard: | De classificatie die moet worden gebruikt als de standaard classificatie voor een groep als er geen is opgegeven.<br>Deze instelling is niet van toepassing wanneer EnableMIPLabels = = True.|
+|  <ul><li>PrefixSuffixNamingRequirement<li>Type: String<li>Standaard: | Een teken reeks met een maximale lengte van 64 tekens die de naamgevings Conventie definieert die voor Office 365-groepen is geconfigureerd. Zie [een naamgevings beleid afdwingen voor Office 365-groepen](groups-naming-policy.md)voor meer informatie. |
+| <ul><li>CustomBlockedWordsList<li>Type: String<li>Standaard: | Een door komma's gescheiden teken reeks van zinsdelen die gebruikers niet mogen gebruiken in groeps namen of aliassen. Zie [een naamgevings beleid afdwingen voor Office 365-groepen](groups-naming-policy.md)voor meer informatie. |
+| <ul><li>EnableMSStandardBlockedWords<li>Type: Booleaans<li>Standaard: ' false ' | Niet gebruiken
+|  <ul><li>AllowGuestsToBeGroupOwner<li>Type: Booleaans<li>Standaard: onwaar | Een Booleaanse waarde die aangeeft of een gast gebruiker een eigenaar van groepen kan zijn. |
+|  <ul><li>AllowGuestsToAccessGroups<li>Type: Booleaans<li>Standaard: True | Een Booleaanse waarde die aangeeft of een gast gebruiker toegang kan hebben tot de inhoud van de Office 365-groep.  Voor deze instelling is geen Azure Active Directory Premium P1-licentie vereist.|
+|  <ul><li>GuestUsageGuidelinesUrl<li>Type: String<li>Standaard: | De URL van een koppeling naar de richt lijnen voor gast gebruik. |
+|  <ul><li>AllowToAddGuests<li>Type: Booleaans<li>Standaard: True | Een Booleaanse waarde die aangeeft of gasten aan deze map mogen worden toegevoegd. <br>Deze instelling kan worden overschreven en wordt alleen-lezen als *EnableMIPLabels* is ingesteld op *True* en er een gast beleid is gekoppeld aan het gevoeligheids label dat aan de groep is toegewezen. |
+|  <ul><li>ClassificationList<li>Type: String<li>Standaard: |Een door komma's gescheiden lijst met geldige classificatie waarden die kunnen worden toegepast op Office 365-groepen. <br>Deze instelling is niet van toepassing wanneer EnableMIPLabels = = True.|
+|  <ul><li>EnableMIPLabels<li>Type: Booleaans<li>Standaard: ' false ' |De vlag die aangeeft of de in Microsoft 365 nalevings centrum gepubliceerde gevoelige labels kunnen worden toegepast op Office 365-groepen. Zie voor meer informatie [toewijzen van gevoeligheid labels voor Office 365-groepen](groups-assign-sensitivity-labels.md). |
 
-## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Example: Configure Guest policy for groups at the directory level
-1. Get all the setting templates:
+## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Voor beeld: gast beleid voor groepen op het niveau van de Directory configureren
+1. Alle instellings sjablonen ophalen:
    ```powershell
    Get-AzureADDirectorySettingTemplate
    ```
-2. To set guest policy for groups at the directory level, you need Group.Unified template
+2. Als u gast beleid wilt instellen voor groepen op het mapniveau, hebt u Group. Unified Temp late nodig
    ```powershell
    $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
    ```
-3. Next, create a new settings object based on that template:
+3. Maak vervolgens een nieuw instellingen object op basis van deze sjabloon:
   
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. Then update AllowAddGuests setting
+4. Werk de instelling AllowAddGuests vervolgens bij
    ```powershell
    $Setting["AllowAddGuests"] = $False
    ```  
-5. Then apply the setting:
+5. Pas vervolgens de instelling toe:
   
    ```powershell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
-6. You can read the values using:
+6. U kunt de waarden lezen met behulp van:
 
    ```powershell
    $Setting.Values
    ```   
 
-## <a name="read-settings-at-the-directory-level"></a>Read settings at the directory level
+## <a name="read-settings-at-the-directory-level"></a>Instellingen lezen op mapniveau
 
-If you know the name of the setting you want to retrieve, you can use the below cmdlet to retrieve the current settings value. In this example, we're retrieving the value for a setting named "UsageGuidelinesUrl." 
+Als u de naam weet van de instelling die u wilt ophalen, kunt u de onderstaande cmdlet gebruiken om de huidige instellingen waarde op te halen. In dit voor beeld wordt de waarde opgehaald voor een instelling met de naam ' UsageGuidelinesUrl '. 
 
    ```powershell
    (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
    ```
-These steps read settings at directory level, which apply to all Office groups in the directory.
+Met deze stappen leest u de instellingen op mapniveau, die van toepassing zijn op alle Office-groepen in de Directory.
 
-1. Read all existing directory settings:
+1. Alle bestaande Directory-instellingen lezen:
    ```powershell
    Get-AzureADDirectorySetting -All $True
    ```
-   This cmdlet returns a list of all directory settings:
+   Met deze cmdlet wordt een lijst met alle Directory-instellingen geretourneerd:
    ```powershell
    Id                                   DisplayName   TemplateId                           Values
    --                                   -----------   ----------                           ------
    c391b57d-5783-4c53-9236-cefb5c6ef323 Group.Unified 62375ab9-6b52-47ed-826b-58e47e0e304b {class SettingValue {...
    ```
 
-2. Read all settings for a specific group:
+2. Alle instellingen voor een specifieke groep lezen:
    ```powershell
    Get-AzureADObjectSetting -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -TargetType Groups
    ```
 
-3. Read all directory settings values of a specific directory settings object, using Settings ID GUID:
+3. De waarden van alle Directory-instellingen van een specifiek Directory-instellingen object lezen met behulp van de instellingen-ID GUID:
    ```powershell
    (Get-AzureADDirectorySetting -Id c391b57d-5783-4c53-9236-cefb5c6ef323).values
    ```
-   This cmdlet returns the names and values in this settings object for this specific group:
+   Deze cmdlet retourneert de namen en waarden in dit instellingen object voor deze specifieke groep:
    ```powershell
    Name                          Value
    ----                          -----
@@ -204,15 +204,15 @@ These steps read settings at directory level, which apply to all Office groups i
    EnableGroupCreation           True
    ```
 
-## <a name="remove-settings-at-the-directory-level"></a>Remove settings at the directory level
-This step removes settings at directory level, which apply to all Office groups in the directory.
+## <a name="remove-settings-at-the-directory-level"></a>Instellingen op mapniveau verwijderen
+Met deze stap worden de instellingen op mapniveau verwijderd, die van toepassing zijn op alle Office-groepen in de Directory.
    ```powershell
    Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
    ```
 
-## <a name="create-settings-for-a-specific-group"></a>Create settings for a specific group
+## <a name="create-settings-for-a-specific-group"></a>Instellingen voor een specifieke groep maken
 
-1. Search for the settings template named "Groups.Unified.Guest"
+1. Zoek naar de sjabloon instellingen met de naam ' groups. Unified. Guest '
    ```powershell
    Get-AzureADDirectorySettingTemplate
   
@@ -224,68 +224,68 @@ This step removes settings at directory level, which apply to all Office groups 
    898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy Settings ...
    5cf42378-d67d-4f36-ba46-e8b86229381d Password Rule Settings ...
    ```
-2. Retrieve the template object for the Groups.Unified.Guest template:
+2. Ophalen van het sjabloon object voor de groepen. Unified. Guest-sjabloon:
    ```powershell
    $Template1 = Get-AzureADDirectorySettingTemplate -Id 08d542b9-071f-4e16-94b0-74abb372e3d9
    ```
-3. Create a new settings object from the template:
+3. Maak een nieuw instellingen object op basis van de sjabloon:
    ```powershell
    $SettingCopy = $Template1.CreateDirectorySetting()
    ```
 
-4. Set the setting to the required value:
+4. Stel de instelling in op de vereiste waarde:
    ```powershell
    $SettingCopy["AllowAddGuests"]=$False
    ```
-5. Get the ID of the group you want to apply this setting to:
+5. Haal de ID op van de groep waarop u deze instelling wilt Toep assen:
    ```powershell
    $groupID= (Get-AzureADGroup -SearchString "YourGroupName").ObjectId
    ```
-6. Create the new setting for the required group in the directory:
+6. Maak de nieuwe instelling voor de vereiste groep in de map:
    ```powershell
    New-AzureADObjectSetting -TargetType Groups -TargetObjectId $groupID -DirectorySetting $SettingCopy
    ```
-7. To verify the settings, run this command:
+7. Voer de volgende opdracht uit om de instellingen te controleren:
    ```powershell
    Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups | fl Values
    ```
 
-## <a name="update-settings-for-a-specific-group"></a>Update settings for a specific group
-1. Get the ID of the group whose setting you want to update:
+## <a name="update-settings-for-a-specific-group"></a>Instellingen voor een specifieke groep bijwerken
+1. De ID ophalen van de groep waarvan u de instellingen wilt bijwerken:
    ```powershell
    $groupID= (Get-AzureADGroup -SearchString "YourGroupName").ObjectId
    ```
-2. Retrieve the setting of the group:
+2. De instelling van de groep ophalen:
    ```powershell
    $Setting = Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups
    ```
-3. Update the setting of the group as you need, e.g.
+3. Werk de instelling van de groep zo nodig bij, bijvoorbeeld
    ```powershell
    $Setting["AllowAddGuests"] = $True
    ```
-4. Then get the ID of the setting for this specific group:
+4. Vervolgens krijgt u de ID van de instelling voor deze specifieke groep:
    ```powershell
    Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups
    ```
-   You will get a response similar to this:
+   U ontvangt een antwoord dat er ongeveer als volgt uitziet:
    ```powershell
    Id                                   DisplayName            TemplateId                             Values
    --                                   -----------            -----------                            ----------
    2dbee4ca-c3b6-4f0d-9610-d15569639e1a Group.Unified.Guest    08d542b9-071f-4e16-94b0-74abb372e3d9   {class SettingValue {...
    ```
-5. Then you can set the new value for this setting:
+5. Vervolgens kunt u de nieuwe waarde voor deze instelling instellen:
    ```powershell
    Set-AzureADObjectSetting -TargetType Groups -TargetObjectId $groupID -Id 2dbee4ca-c3b6-4f0d-9610-d15569639e1a -DirectorySetting $Setting
    ```
-6. You can read the value of the setting to make sure it has been updated correctly:
+6. U kunt de waarde van de instelling lezen om er zeker van te zijn dat deze correct is bijgewerkt:
    ```powershell
    Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups | fl Values
    ```
 
-## <a name="cmdlet-syntax-reference"></a>Cmdlet syntax reference
-You can find more Azure Active Directory PowerShell documentation at [Azure Active Directory Cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0).
+## <a name="cmdlet-syntax-reference"></a>Naslag informatie over de cmdlet-syntaxis
+U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Active Directory-cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-## <a name="additional-reading"></a>Additional reading
+## <a name="additional-reading"></a>Meer lezen
 
 * [Managing access to resources with Azure Active Directory groups](../fundamentals/active-directory-manage-groups.md) (Toegang tot resources beheren met Azure Active Directory-groepen)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Perform a news search using the SDK for Java - Bing News Search'
+title: 'Quick Start: een zoek opdracht voor nieuws uitvoeren met de SDK voor Java-Bing News Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om nieuws te zoeken met de Bing News Search-SDK voor Java en om het antwoord te verwerken.
 services: cognitive-services
@@ -18,9 +18,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383919"
 ---
-# <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Quickstart: Search for news with the Bing News Search SDK for Java
+# <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Snelstartgids: zoeken naar nieuws met de Bing News Search SDK voor Java
 
-Gebruik deze quickstart om aan de slag te gaan met de Bing News Search-SDK voor Java om nieuws te zoeken. Hoewel Bing Nieuws zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
+Gebruik deze quickstart om aan de slag te gaan met de Bing News Search-SDK voor Java om nieuws te zoeken. Hoewel Bing Nieuws zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -67,7 +67,7 @@ import java.io.IOException;
     }
     ```
 
-2. Overschrijf de `applyCredentialsFilter()`-functie om het `ServiceClientCredentials`-object te maken. Geef een `OkHttpClient.Builder` door aan de methode en gebruik de `addNetworkInterceptor()`-methode van de opbouwfunctie voor het maken van uw referenties voor de SDK-aanroep.
+2. Overschrijf de `ServiceClientCredentials`-functie om het `applyCredentialsFilter()`-object te maken. Geef een `OkHttpClient.Builder` door aan de methode en gebruik de `addNetworkInterceptor()`-methode van de opbouwfunctie voor het maken van uw referenties voor de SDK-aanroep.
 
     ```java
     new ServiceClientCredentials() {

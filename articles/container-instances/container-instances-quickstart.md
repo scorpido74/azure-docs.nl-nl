@@ -1,23 +1,18 @@
 ---
-title: 'Snelstartgids: docker-container implementeren naar Azure Container Instances-Azure CLI'
+title: Snelstartgids-docker-container implementeren naar container exemplaar-Azure CLI
 description: In deze Quick Start gebruikt u de Azure CLI om snel een container web-app te implementeren die wordt uitgevoerd in een geïsoleerd Azure-container exemplaar
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
-ms.author: danlep
 ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-ms.openlocfilehash: 65c067792499017a7e00fdbb6199e591981683f8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ab079c7ad5d741d5a569e042ae8939cbeeff203b
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429195"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533580"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Snelstartgids: een container exemplaar implementeren in azure met behulp van Azure CLI
 
@@ -45,11 +40,11 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Een container maken
 
-Nu u een resourcegroep hebt, kunt u een container in Azure uitvoeren. Als u een container exemplaar met de Azure CLI wilt maken, geeft u de naam van de resource groep, de naam van het container exemplaar en de docker-container installatie kopie op in de opdracht [AZ container Create][az-container-create] . In deze Quick Start gebruikt u de open bare `mcr.microsoft.com/azuredocs/aci-helloworld`-afbeelding. Deze installatiekopie bevat een kleine web-app geschreven in Node.js die een statische HTML-pagina levert.
+Nu u een resourcegroep hebt, kunt u een container in Azure uitvoeren. Als u een container exemplaar met de Azure CLI wilt maken, geeft u de naam van de resource groep, de naam van het container exemplaar en de docker-container installatie kopie op in de opdracht [AZ container Create][az-container-create] . In deze Quick Start gebruikt u de open bare installatie kopie van `mcr.microsoft.com/azuredocs/aci-helloworld`. Deze installatiekopie bevat een kleine web-app geschreven in Node.js die een statische HTML-pagina levert.
 
 Als u uw containers beschikbaar wilt maken op internet, moet u een of meer poorten om te openen of een DNS-naamlabel opgeven, of beide. In deze quickstart implementeert u een container met een DNS-naamlabel zodat de web-app openbaar bereikbaar is.
 
-Voer een opdracht uit die vergelijkbaar is met de volgende om een container exemplaar te starten. Stel een `--dns-name-label`-waarde in die uniek is binnen de Azure-regio waar u het exemplaar maakt. Als u een foutbericht 'DNS-naamlabel niet beschikbaar' ontvangt, probeert u een ander DNS-naamlabel.
+Voer een opdracht uit die vergelijkbaar is met de volgende om een container exemplaar te starten. Stel een `--dns-name-label` waarde in die uniek is binnen de Azure-regio waar u het exemplaar maakt. Als u een foutbericht 'DNS-naamlabel niet beschikbaar' ontvangt, probeert u een ander DNS-naamlabel.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
@@ -70,7 +65,7 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Als de `ProvisioningState` van de container is **geslaagd**, gaat u naar de FQDN in uw browser. U moet nu een webpagina zien die lijkt op de volgende. U hebt een toepassing geïmplementeerd die wordt uitgevoerd in een Docker-container voor Azure.
+Als de `ProvisioningState` van de container is **voltooid**, gaat u naar de FQDN in uw browser. U moet nu een webpagina zien die lijkt op de volgende. U hebt een toepassing geïmplementeerd die wordt uitgevoerd in een Docker-container voor Azure.
 
 ![Een app weer geven die is geïmplementeerd in Azure Container Instances in browser][aci-app-browser]
 

@@ -40,7 +40,7 @@ Als u System Center Operations Manager 2012 R2 of hoger gebruikt:
 * Linux-computers die rapporteren aan een beheer groep moeten worden geconfigureerd om rechtstreeks te rapporteren aan een Log Analytics-werk ruimte. Als uw Linux-computers al rechtstreeks aan een werk ruimte rapporteren en u deze wilt controleren met Operations Manager, voert u de volgende stappen uit om [aan een Operations Manager beheer groep te rapporteren](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group).
 * U kunt de Log Analytics Windows-agent op de Windows-computer installeren en deze rapporteren aan zowel Operations Manager geïntegreerd met een werk ruimte als een andere werk ruimte.
 
-De agent voor Linux en Windows is niet alleen om verbinding te maken met Azure Monitor, maar ondersteunt ook Azure Automation voor het hosten van de Hybrid Runbook worker-rol en andere services, zoals [Wijzigingen bijhouden](../../automation/change-tracking.md), [updatebeheer](../../automation/automation-update-management.md)en [Azure Security Center](../../security-center/security-center-intro.md). Zie voor meer informatie over de Hybrid Runbook Worker-rol, [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+De agent voor Linux en Windows is niet alleen om verbinding te maken met Azure Monitor, maar ondersteunt ook Azure Automation voor het hosten van de Hybrid Runbook worker-rol en andere services, zoals [Wijzigingen bijhouden](../../automation/change-tracking.md), [updatebeheer](../../automation/automation-update-management.md)en [Azure Security Center](../../security-center/security-center-intro.md). Zie [Azure Automation Hybrid Runbook worker](../../automation/automation-hybrid-runbook-worker.md)voor meer informatie over de functie Hybrid Runbook Worker.  
 
 ## <a name="supported-windows-operating-systems"></a>Ondersteunde Windows-besturingssystemen
 
@@ -60,7 +60,7 @@ In deze sectie bevat informatie over de ondersteunde Linux-distributies.
 Beginnen met versies die na augustus 2018 wordt uitgebracht, maken we de volgende wijzigingen aan ons ondersteuningsmodel:  
 
 * Alleen de server-versies worden ondersteund, een niet-client.  
-* Nieuwe versies van [goedgekeurd voor Azure Linux-distributies](../../virtual-machines/linux/endorsed-distros.md) altijd worden ondersteund.  
+* Nieuwe versies van door [Azure Linux geviseerde distributies](../../virtual-machines/linux/endorsed-distros.md) worden altijd ondersteund.  
 * Alle secundaire versies worden ondersteund voor elke primaire versie weergegeven.
 * De versies die zijn geslaagd voor de datum van de fabrikant einde van ondersteuning worden niet ondersteund.  
 * Nieuwe versies van AMI worden niet ondersteund.  
@@ -98,7 +98,7 @@ De volgende tabel geeft een overzicht van de pakketten die vereist zijn voor de 
 
 ## <a name="tls-12-protocol"></a>TLS 1.2-protocol
 
-We raden u ten zeerste aan de agent te configureren voor het gebruik van ten minste Transport Layer Security (TLS) 1,2 om de beveiliging van gegevens die onderweg zijn naar Azure Monitor logboeken te garanderen. Oudere versies van TLS/Secure Sockets Layer (SSL) kwetsbaar zijn gevonden en hoewel ze op dit moment nog steeds werken om toe te staan achterwaartse compatibiliteit, zijn ze onderling **niet aanbevolen**.  Raadpleeg voor meer informatie, [verzenden van gegevens veilig gebruik TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+We raden u ten zeerste aan de agent te configureren voor het gebruik van ten minste Transport Layer Security (TLS) 1,2 om de beveiliging van gegevens die onderweg zijn naar Azure Monitor logboeken te garanderen. Er zijn oudere versies van TLS/Secure Sockets Layer (SSL) gevonden die kwetsbaar zijn en terwijl ze nog steeds werken om achterwaartse compatibiliteit mogelijk te maken, worden ze **niet aanbevolen**.  Raadpleeg voor meer informatie [veilig verzenden van gegevens met behulp van TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="network-firewall-requirements"></a>Netwerkvereisten voor de firewall
 
@@ -106,17 +106,17 @@ Hieronder vindt u de informatie over de proxy-en firewall configuratie die is ve
 
 |Agentresource|Poorten |Richting |HTTPS-controle overslaan|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Poort 443 |Uitgaande|Ja |  
-|*.oms.opinsights.azure.com |Poort 443 |Uitgaande|Ja |  
-|*.blob.core.windows.net |Poort 443 |Uitgaande|Ja |  
+|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
+|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
+|*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |  
 
 Zie [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)voor informatie over de firewall die vereist is voor Azure Government. 
 
 Als u van plan bent de Azure Automation Hybrid Runbook Worker te gebruiken om verbinding te maken met de Automation-Service voor het gebruik van runbooks of beheer oplossingen in uw omgeving, moet deze toegang hebben tot het poort nummer en de Url's die worden beschreven in [uw netwerk configureren voor de Hybrid Runbook worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
-De Windows-en Linux-agent ondersteunt communicatie via een proxy server of Log Analytics gateway naar Azure Monitor met behulp van het HTTPS-protocol.  Zowel eenvoudige als anonieme verificatie (gebruikersnaam en wachtwoord) worden ondersteund.  Voor de Windows-agent rechtstreeks verbonden met de service, de configuratie van de proxy is opgegeven tijdens de installatie of [na de implementatie](agent-manage.md#update-proxy-settings) via het Configuratiescherm of met PowerShell.  
+De Windows-en Linux-agent ondersteunt communicatie via een proxy server of Log Analytics gateway naar Azure Monitor met behulp van het HTTPS-protocol.  Zowel eenvoudige als anonieme verificatie (gebruikersnaam en wachtwoord) worden ondersteund.  Voor de Windows-agent die rechtstreeks is verbonden met de service, wordt de proxy configuratie opgegeven tijdens de installatie of [na de implementatie](agent-manage.md#update-proxy-settings) vanuit het configuratie scherm of met Power shell.  
 
-Voor de Linux-agent de proxyserver wordt opgegeven tijdens de installatie of [na de installatie](agent-manage.md#update-proxy-settings) door het wijzigen van het configuratiebestand proxy.conf.  Waarde voor de Linux-agent proxyconfiguratie heeft de volgende syntaxis:
+Voor de Linux-agent wordt de proxy server tijdens de installatie of [na de installatie](agent-manage.md#update-proxy-settings) opgegeven door het configuratie bestand proxy. conf te wijzigen.  Waarde voor de Linux-agent proxyconfiguratie heeft de volgende syntaxis:
 
 `[protocol://][user:password@]proxyhost[:port]`
 
@@ -134,7 +134,7 @@ Voor de Linux-agent de proxyserver wordt opgegeven tijdens de installatie of [na
 Bijvoorbeeld: `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> Als u speciale tekens zoals "\@" in uw wachtwoord, ontvangt u een proxy-verbindingsfout omdat de waarde is niet juist geparseerd.  U kunt dit probleem omzeilen, codeert u het wachtwoord in de URL met behulp van een hulpprogramma zoals [URLDecode](https://www.urldecoder.org/).  
+> Als u speciale tekens zoals '\@' in uw wacht woord gebruikt, ontvangt u een proxy verbindings fout omdat de waarde onjuist is geparseerd.  U kunt dit probleem omzeilen door het wacht woord in de URL te coderen met een hulp programma zoals [UrlDecode](https://www.urldecoder.org/).  
 
 ## <a name="install-and-configure-agent"></a>Agent installeren en configureren
 
@@ -142,15 +142,15 @@ U kunt de computers in uw Azure-abonnement of hybride omgeving rechtstreeks met 
 
 |Bron | Methode | Beschrijving|
 |-------|-------------|-------------|
-|Azure VM| -Log Analytics VM-extensie voor [Windows](../../virtual-machines/extensions/oms-windows.md) of [Linux](../../virtual-machines/extensions/oms-linux.md) met behulp van Azure CLI of met een Azure Resource Manager-sjabloon<br>- [hand matig van de Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>- [Azure Security Center automatische inrichting](../../security-center/security-center-enable-data-collection.md)| -De uitbrei ding installeert de Log Analytics agent op virtuele machines van Azure en registreert deze in een bestaande Azure Monitor-werk ruimte.<br>-Azure Security Center kunt de Log Analytics agent inrichten op alle ondersteunde Azure-Vm's en eventuele nieuwe virtuele machines die worden gemaakt als u deze inschakelt om te controleren op beveiligings problemen en bedreigingen. Als deze functie is ingeschakeld, wordt er een nieuwe of bestaande virtuele machine zonder geïnstalleerde agent ingericht.|
-| Hybride Windows-computer|- [Handmatige installatie](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Resource Manager-sjabloon met Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |De Microsoft Monitoring agent installeren vanaf de opdrachtregel of met behulp van een geautomatiseerde methode, zoals Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications), of met een Azure Resource Manager-sjabloon als u Microsoft hebt geïmplementeerd Azure Stack in uw datacenter.| 
-| Hybride Linux-computer| [Handmatige installatie](../../azure-monitor/learn/quick-collect-linux-computer.md)|Installeer de agent voor Linux aanroepen van een wrapper-scripts die worden gehost op GitHub. | 
-| System Center Operations Manager|[Operations Manager integreert met Log Analytics](../../azure-monitor/platform/om-agents.md) | Configureer de integratie tussen Operations Manager en Azure Monitor logboeken voor het door sturen van verzamelde gegevens van Windows-computers die rapporteren aan een beheer groep.|  
+|Azure VM| -Log Analytics VM-extensie voor [Windows](../../virtual-machines/extensions/oms-windows.md) of [Linux](../../virtual-machines/extensions/oms-linux.md) met behulp van Azure CLI of met een Azure Resource Manager sjabloon<br>- [hand matig van de Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>- [Azure Security Center automatische inrichting](../../security-center/security-center-enable-data-collection.md)| -De uitbrei ding installeert de Log Analytics agent op virtuele machines van Azure en registreert deze in een bestaande Azure Monitor-werk ruimte.<br>-Azure Security Center kunt de Log Analytics agent inrichten op alle ondersteunde Azure-Vm's en eventuele nieuwe virtuele machines die worden gemaakt als u deze inschakelt om te controleren op beveiligings problemen en bedreigingen. Als deze functie is ingeschakeld, wordt er een nieuwe of bestaande virtuele machine zonder geïnstalleerde agent ingericht.|
+| Hybride Windows-computer|- [hand matige installatie](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Resource Manager-sjabloon met Azure stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Installeer de micro soft Monitoring Agent vanaf de opdracht regel of met behulp van een geautomatiseerde methode, zoals Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications)of met een Azure Resource Manager-sjabloon als u Microsoft Azure stack in uw Data Center hebt geïmplementeerd.| 
+| Hybride Linux-computer| [Hand matige installatie](../../azure-monitor/learn/quick-collect-linux-computer.md)|Installeer de agent voor Linux aanroepen van een wrapper-scripts die worden gehost op GitHub. | 
+| System Center Operations Manager|[Operations Manager integreren met Log Analytics](../../azure-monitor/platform/om-agents.md) | Configureer de integratie tussen Operations Manager en Azure Monitor logboeken voor het door sturen van verzamelde gegevens van Windows-computers die rapporteren aan een beheer groep.|  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Beoordeling [gegevensbronnen](../../azure-monitor/platform/agent-data-sources.md) om te begrijpen van de gegevensbronnen die beschikbaar zijn voor het verzamelen van gegevens van uw Windows- of Linux-systeem. 
+* Bekijk [gegevens bronnen](../../azure-monitor/platform/agent-data-sources.md) om inzicht te krijgen in de gegevens bronnen die beschikbaar zijn voor het verzamelen van gegevens uit uw Windows-of Linux-systeem. 
 
-* Meer informatie over [query's bijgehouden](../../azure-monitor/log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren. 
+* Meer informatie over [logboek query's](../../azure-monitor/log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen. 
 
-* Meer informatie over [bewakingsoplossingen](../../azure-monitor/insights/solutions.md) die functionaliteit toevoegen aan Azure Monitor en ook gegevens verzamelen in Log Analytics-werkruimte.
+* Meer informatie over het [controleren van oplossingen](../../azure-monitor/insights/solutions.md) voor het toevoegen van functionaliteit aan Azure monitor en het verzamelen van gegevens in de log Analytics-werk ruimte.

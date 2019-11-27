@@ -1,6 +1,6 @@
 ---
-title: Multi-step task to build, test & patch image
-description: Introduction to multi-step tasks, a feature of ACR Tasks in Azure Container Registry that provides task-based workflows for building, testing, and patching container images in the cloud.
+title: Taak met meerdere stappen voor het maken, testen van & patch-installatie kopie
+description: Inleiding tot taken met meerdere stappen, een functie van ACR-taken in Azure Container Registry die werk stromen op basis van taken bieden voor het bouwen, testen en repareren van container installatie kopieën in de Cloud.
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 3ed071fa2027e91ee5bc6c07738dc66763454847
@@ -10,44 +10,44 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456167"
 ---
-# <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Run multi-step build, test, and patch tasks in ACR Tasks
+# <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Meerdere stappen uitvoeren voor het bouwen, testen en patchen van taken in ACR-taken
 
-Multi-step tasks extend the single image build-and-push capability of ACR Tasks with multi-step, multi-container-based workflows. Use multi-step tasks to build and push several images, in series or in parallel. Then run those images as commands within a single task run. Each step defines a container image build or push operation, and can also define the execution of a container. Each step in a multi-step task uses a container as its execution environment.
+Met taken uit meerdere stappen worden de build-en push functionaliteit voor één installatie kopie uitgebreid van ACR-taken met meerdere stappen, op meerdere containers gebaseerde werk stromen. Gebruik taken met meerdere stappen voor het bouwen en pushen van verschillende installatie kopieën, in serie of parallel. Voer vervolgens deze installatie kopieën uit als opdrachten binnen één taak. Elke stap definieert een build-of push bewerking voor een container installatie kopie en kan ook de uitvoering van een container definiëren. Bij elke stap in een taak met meerdere stappen wordt een container als uitvoerings omgeving gebruikt.
 
 > [!IMPORTANT]
-> If you previously created tasks during the preview with the `az acr build-task` command, those tasks need to be re-created using the [az acr task][az-acr-task] command.
+> Als u eerder taken hebt gemaakt tijdens het voor beeld met de `az acr build-task` opdracht, moeten deze taken opnieuw worden gemaakt met de opdracht [AZ ACR Task][az-acr-task] .
 
-For example, you can run a task with steps that automate the following logic:
+U kunt bijvoorbeeld een taak uitvoeren met stappen waarmee de volgende logica wordt geautomatiseerd:
 
-1. Build a web application image
-1. Run the web application container
-1. Build a web application test image
-1. Run the web application test container which performs tests against the running application container
-1. If the tests pass, build a Helm chart archive package
-1. Perform a `helm upgrade` using the new Helm chart archive package
+1. Een installatie kopie voor een webtoepassing bouwen
+1. De Web Application-container uitvoeren
+1. Een test installatie kopie voor een webtoepassing bouwen
+1. Voer de test container voor webtoepassingen uit die tests uitvoert op de actieve toepassings container
+1. Als de tests zijn geslaagd, bouwt u een helm-archief pakket voor grafieken op
+1. Een `helm upgrade` uitvoeren met het nieuwe helm-archief pakket voor grafieken
 
-All steps are performed within Azure, offloading the work to Azure's compute resources and freeing you from infrastructure management. Besides your Azure container registry, you pay only for the resources you use. For information on pricing, see the **Container Build** section in [Azure Container Registry pricing][pricing].
+Alle stappen worden uitgevoerd in azure, waardoor het werk wordt overgeleid naar de reken resources van Azure en u vrijmaakt van infrastructuur beheer. Naast uw Azure container Registry betaalt u alleen voor de resources die u gebruikt. Zie voor meer informatie over prijzen het gedeelte **container bouwen** in [Azure container Registry prijzen][pricing].
 
 
-## <a name="common-task-scenarios"></a>Common task scenarios
+## <a name="common-task-scenarios"></a>Veelvoorkomende taak scenario's
 
-Multi-step tasks enable scenarios like the following logic:
+Met taken met meerdere stappen kunt u scenario's zoals de volgende logica inschakelen:
 
-* Build, tag, and push one or more container images, in series or in parallel.
-* Run and capture unit test and code coverage results.
-* Run and capture functional tests. ACR Tasks supports running more than one container, executing a series of requests between them.
-* Perform task-based execution, including pre/post steps of a container image build.
-* Deploy one or more containers with your favorite deployment engine to your target environment.
+* Een of meer container installatie kopieën bouwen, labelen en pushen, in serie of parallel.
+* Resultaten van de test-en code dekking van de eenheid uitvoeren en vastleggen.
+* Functionele tests uit te voeren en vast te leggen. ACR-taken bieden ondersteuning voor het uitvoeren van meer dan één container, waarbij een reeks aanvragen tussen de containers wordt uitgevoerd.
+* Voer uitvoeringen op basis van een taak uit, met inbegrip van de stappen voor het bouwen van een container installatie kopie.
+* Implementeer een of meer containers met uw favoriete implementatie-engine naar uw doel omgeving.
 
-## <a name="multi-step-task-definition"></a>Multi-step task definition
+## <a name="multi-step-task-definition"></a>Definitie van meerdere stappen taken
 
-A multi-step task in ACR Tasks is defined as a series of steps within a YAML file. Each step can specify dependencies on the successful completion of one or more previous steps. The following task step types are available:
+Een taak met meerdere stappen in ACR-taken wordt gedefinieerd als een reeks stappen in een YAML-bestand. Elke stap kan afhankelijkheden opgeven op het slagen van een of meer van de vorige stappen. De volgende taak stap typen zijn beschikbaar:
 
-* [`build`](container-registry-tasks-reference-yaml.md#build): Build one or more container images using familiar `docker build` syntax, in series or in parallel.
-* [`push`](container-registry-tasks-reference-yaml.md#push): Push built images to a container registry. Private registries like Azure Container Registry are supported, as is the public Docker Hub.
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Run a container, such that it can operate as a function within the context of the running task. You can pass parameters to the container's `[ENTRYPOINT]`, and specify properties like env, detach, and other familiar `docker run` parameters. The `cmd` step type enables unit and functional testing, with concurrent container execution.
+* [`build`](container-registry-tasks-reference-yaml.md#build): bouw een of meer container installatie kopieën met vertrouwde `docker build` syntaxis, in serie of parallel.
+* [`push`](container-registry-tasks-reference-yaml.md#push): push installatie kopieën naar een container register. Persoonlijke registers zoals Azure Container Registry worden ondersteund, evenals de open bare docker-hub.
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): een container uitvoeren, zodat deze als functie kan worden gebruikt in de context van de actieve taak. U kunt para meters door geven aan de `[ENTRYPOINT]`van de container en eigenschappen zoals env, Detach en andere vertrouwde `docker run`-para meters opgeven. Met het `cmd` stap type kunnen eenheids-en functionele tests worden uitgevoerd, met gelijktijdige container uitvoering.
 
-The following snippets show how to combine these task step types. Multi-step tasks can be as simple as building a single image from a Dockerfile and pushing to your registry, with a YAML file similar to:
+De volgende code fragmenten laten zien hoe u deze taak stap typen kunt combi neren. Taken met meerdere stappen kunnen zo eenvoudig zijn als het bouwen van één installatie kopie van een Dockerfile en naar uw REGI ster pushen, met een YAML-bestand dat vergelijkbaar is met:
 
 ```yml
 version: v1.0.0
@@ -56,7 +56,7 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-Or more complex, such as this fictitious multi-step definition which includes steps for build, test, helm package, and helm deploy (container registry and Helm repository configuration not shown):
+Of complexere, zoals deze fictieve definitie van meerdere stappen, die stappen bevat voor Build, test, helm package en helm Deploy (container Registry en helm opslagplaats configuratie niet weer gegeven):
 
 ```yml
 version: v1.0.0
@@ -79,21 +79,21 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
 
-See [task examples](container-registry-tasks-samples.md) for multi-step task YAML files and Dockerfiles for several scenarios.
+Zie [taak voorbeelden](container-registry-tasks-samples.md) voor YAML-bestanden en Dockerfiles voor taken in meerdere stappen voor verschillende scenario's.
 
-## <a name="run-a-sample-task"></a>Run a sample task
+## <a name="run-a-sample-task"></a>Een voorbeeld taak uitvoeren
 
-Tasks support both manual execution, called a "quick run," and automated execution on Git commit or base image update.
+Taken ondersteunen beide hand matige uitvoering, een zogeheten ' Quick run ', en de automatische uitvoering van een update voor git-door Voer of basis installatie kopie.
 
-To run a task, you first define the task's steps in a YAML file, then execute the Azure CLI command [az acr run][az-acr-run].
+Als u een taak wilt uitvoeren, definieert u eerst de stappen van de taak in een YAML-bestand en voert u vervolgens de Azure CLI-opdracht [AZ ACR run][az-acr-run]uit.
 
-Here's an example Azure CLI command that runs a task using a sample task YAML file. Its steps build and then push an image. Update `\<acrName\>` with the name of your own Azure container registry before running the command.
+Hier volgt een voor beeld van een Azure CLI-opdracht waarmee een taak wordt uitgevoerd met een voor beeld van een YAML-bestand van de taak. Met de stappen wordt een installatie kopie gemaakt en gepusht. Werk `\<acrName\>` met de naam van uw eigen Azure container Registry voordat u de opdracht uitvoert.
 
 ```azurecli
 az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-When you run the task, the output should show the progress of each step defined in the YAML file. In the following output, the steps appear as `acb_step_0` and `acb_step_1`.
+Wanneer u de taak uitvoert, moet de uitvoer de voortgang van elke stap weer geven die is gedefinieerd in het YAML-bestand. In de volgende uitvoer worden de stappen als `acb_step_0` en `acb_step_1`weer gegeven.
 
 ```console
 $ az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -143,15 +143,15 @@ The following dependencies were found:
 Run ID: yd14 was successful after 19s
 ```
 
-For more information about automated builds on Git commit or base image update, see the [Automate image builds](container-registry-tutorial-build-task.md) and [Base image update builds](container-registry-tutorial-base-image-update.md) tutorial articles.
+Zie voor meer informatie over geautomatiseerd builds van Git of basis installatie kopie-update de artikelen voor het [automatiseren van installatie kopieën](container-registry-tutorial-build-task.md) en [basis installatie kopieën update builds](container-registry-tutorial-base-image-update.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-You can find multi-step task reference and examples here:
+U vindt hier een Naslag informatie en voor beelden voor taken in meerdere stappen:
 
-* [Task reference](container-registry-tasks-reference-yaml.md) - Task step types, their properties, and usage.
-* [Task examples](container-registry-tasks-samples.md) - Example `task.yaml` and Docker files for several scenarios, simple to complex.
-* [Cmd repo](https://github.com/AzureCR/cmd) - A collection of containers as commands for ACR tasks.
+* [Taak verwijzing](container-registry-tasks-reference-yaml.md) -taak stap typen, eigenschappen en gebruik.
+* [Taak voorbeelden](container-registry-tasks-samples.md) : voor beeld `task.yaml` en docker-bestanden voor verschillende scenario's, eenvoudig naar complex.
+* [Cmd opslag plaats](https://github.com/AzureCR/cmd) : een verzameling containers als opdrachten voor ACR-taken.
 
 <!-- IMAGES -->
 

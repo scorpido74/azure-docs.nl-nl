@@ -1,6 +1,6 @@
 ---
-title: Migrate Conditional Access policies - Azure Active Directory
-description: This article shows how to migrate a classic policy that requires multi-factor authentication in the Azure portal.
+title: Beleid voor voorwaardelijke toegang migreren-Azure Active Directory
+description: In dit artikel wordt beschreven hoe u een klassiek beleid migreert waarvoor multi-factor Authentication is vereist in de Azure Portal.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,102 +18,102 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380327"
 ---
-# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrate a classic policy that requires multi-factor authentication in the Azure portal
+# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migreer een klassiek beleid waarvoor multi-factor Authentication is vereist in de Azure Portal
 
-This tutorial shows how to migrate a classic policy that requires **multi-factor authentication** for a cloud app. Although it is not a prerequisite, we recommend that you read [Migrate classic policies in the Azure portal](policy-migration.md) before you start migrating your classic policies.
+In deze zelf studie ziet u hoe u een klassiek beleid migreert waarvoor **multi-factor Authentication** voor een Cloud-app is vereist. Hoewel het geen vereiste is, raden we u aan [het klassieke beleid te migreren in de Azure Portal](policy-migration.md) voordat u begint met het migreren van uw klassieke beleids regels.
 
 ## <a name="overview"></a>Overzicht
 
-The scenario in this article shows how to migrate a classic policy that requires **multi-factor authentication** for a cloud app.
+In het scenario in dit artikel ziet u hoe u een klassiek beleid migreert waarvoor **multi-factor Authentication** is vereist voor een Cloud-app.
 
 ![Azure Active Directory](./media/policy-migration/33.png)
 
-The migration process consists of the following steps:
+Het migratie proces bestaat uit de volgende stappen:
 
-1. [Open the classic policy](#open-a-classic-policy) to get the configuration settings.
-1. Create a new Azure AD Conditional Access policy to replace your classic policy. 
-1. Disable the classic policy.
+1. [Open het klassieke beleid](#open-a-classic-policy) om de configuratie-instellingen op te halen.
+1. Maak een nieuw beleid voor voorwaardelijke toegang voor Azure AD om uw klassieke beleid te vervangen. 
+1. Schakel het klassieke beleid uit.
 
-## <a name="open-a-classic-policy"></a>Open a classic policy
+## <a name="open-a-classic-policy"></a>Een klassiek beleid openen
 
-1. In the [Azure portal](https://portal.azure.com), on the left navbar, click **Azure Active Directory**.
+1. Klik in het [Azure Portal](https://portal.azure.com)op de linkernavigatiebalk op **Azure Active Directory**.
 
    ![Azure Active Directory](./media/policy-migration-mfa/01.png)
 
-1. On the **Azure Active Directory** page, in the **Manage** section, click **Conditional Access**.
+1. Klik op de pagina **Azure Active Directory** in de sectie **beheren** op **voorwaardelijke toegang**.
 
    ![Voorwaardelijke toegang](./media/policy-migration-mfa/02.png)
 
-1. In the **Manage** section, click **Classic policies (preview)** .
+1. Klik in de sectie **beheren** op **klassiek beleid (preview-versie)** .
 
-   ![Classic policies](./media/policy-migration-mfa/12.png)
+   ![Klassiek beleid](./media/policy-migration-mfa/12.png)
 
-1. In the list of classic policies, click the policy that requires **multi-factor authentication** for a cloud app.
+1. Klik in de lijst met klassiek beleid op het beleid waarvoor **multi-factor Authentication** is vereist voor een Cloud-app.
 
-   ![Classic policies](./media/policy-migration-mfa/13.png)
+   ![Klassiek beleid](./media/policy-migration-mfa/13.png)
 
-## <a name="create-a-new-conditional-access-policy"></a>Create a new Conditional Access policy
+## <a name="create-a-new-conditional-access-policy"></a>Een nieuw beleid voor voorwaardelijke toegang maken
 
-1. In the [Azure portal](https://portal.azure.com), on the left navbar, click **Azure Active Directory**.
+1. Klik in het [Azure Portal](https://portal.azure.com)op de linkernavigatiebalk op **Azure Active Directory**.
 
    ![Azure Active Directory](./media/policy-migration/01.png)
 
-1. On the **Azure Active Directory** page, in the **Manage** section, click **Conditional Access**.
+1. Klik op de pagina **Azure Active Directory** in de sectie **beheren** op **voorwaardelijke toegang**.
 
    ![Voorwaardelijke toegang](./media/policy-migration/02.png)
 
-1. On the **Conditional Access** page, to open the **New** page, in the toolbar on the top, click **Add**.
+1. Klik op de pagina **voorwaardelijke toegang** op **toevoegen**in de werk balk aan de bovenkant om de pagina **Nieuw** weer te geven.
 
    ![Voorwaardelijke toegang](./media/policy-migration/03.png)
 
-1. On the **New** page, in the **Name** textbox, type a name for your policy.
+1. Typ op de pagina **Nieuw** in het tekstvak **naam** een naam voor uw beleid.
 
    ![Voorwaardelijke toegang](./media/policy-migration/29.png)
 
-1. In the **Assignments** section, click **Users and groups**.
+1. Klik in de sectie **toewijzingen** op **gebruikers en groepen**.
 
    ![Voorwaardelijke toegang](./media/policy-migration/05.png)
 
-   1. If you have all users selected in your classic policy, click **All users**. 
+   1. Als u alle gebruikers hebt geselecteerd in het klassieke beleid, klikt u op **alle gebruikers**. 
 
       ![Voorwaardelijke toegang](./media/policy-migration/35.png)
 
-   1. If you have groups selected in your classic policy, click **Select users and groups**, and then select the required users and groups.
+   1. Als u groepen hebt geselecteerd in het klassieke beleid, klikt u op **gebruikers en groepen selecteren**en selecteert u vervolgens de vereiste gebruikers en groepen.
 
       ![Voorwaardelijke toegang](./media/policy-migration/36.png)
 
-   1. If you have the excluded groups, click the **Exclude** tab, and then select the required users and groups. 
+   1. Als u de uitgesloten groepen hebt, klikt u op het tabblad **uitsluiten** en selecteert u vervolgens de vereiste gebruikers en groepen. 
 
       ![Voorwaardelijke toegang](./media/policy-migration/37.png)
 
-1. On the **New** page, to open the **Cloud apps** page, in the **Assignment** section, click **Cloud apps**.
-1. On the **Cloud apps** page, perform the following steps:
-   1. Click **Select apps**.
+1. Klik op de pagina **Nieuw** op **Cloud-apps**in het gedeelte **toewijzing** om de pagina **Cloud-apps** te openen.
+1. Voer de volgende stappen uit op de pagina **Cloud-apps** :
+   1. Klik op **apps selecteren**.
    1. Klik op **Selecteren**.
-   1. On the **Select** page, select your cloud app, and then click **Select**.
-   1. On the **Cloud apps** page, click **Done**.
-1. If you have **Require multi-factor authentication** selected:
+   1. Selecteer uw Cloud-app op de pagina **selecteren** en klik vervolgens op **selecteren**.
+   1. Klik op de pagina **Cloud-apps** op **gereed**.
+1. Als u **multi-factor Authentication vereisen** hebt ingeschakeld:
 
    ![Voorwaardelijke toegang](./media/policy-migration/26.png)
 
-   1. In the **Access controls** section, click **Grant**.
+   1. Klik in de sectie **toegangs beheer** op **verlenen**.
 
       ![Voorwaardelijke toegang](./media/policy-migration/27.png)
 
-   1. On the **Grant** page, click **Grant access**, and then click **Require multi-factor authentication**.
+   1. Klik op de pagina **Grant** op **toegang verlenen**en klik vervolgens op **multi-factor Authentication vereisen**.
    1. Klik op **Selecteren**.
-1. Click **On** to enable your policy.
+1. Klik op om uw **beleid in te** scha kelen.
 
    ![Voorwaardelijke toegang](./media/policy-migration/30.png)
 
-## <a name="disable-the-classic-policy"></a>Disable the classic policy
+## <a name="disable-the-classic-policy"></a>Het klassieke beleid uitschakelen
 
-To disable your classic policy, click **Disable** in the **Details** view.
+Als u het klassieke beleid wilt uitschakelen, klikt u op **uitschakelen** in de weer gave **Details** .
 
-![Classic policies](./media/policy-migration-mfa/14.png)
+![Klassiek beleid](./media/policy-migration-mfa/14.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- For more information about the classic policy migration, see [Migrate classic policies in the Azure portal](policy-migration.md).
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+- Zie [klassiek beleid migreren in de Azure Portal](policy-migration.md)voor meer informatie over de klassieke beleids migratie.
+- Als u wilt weten hoe u een beleid voor voorwaardelijke toegang kunt configureren, raadpleegt u [MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory](app-based-mfa.md).
+- Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u de [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md).
