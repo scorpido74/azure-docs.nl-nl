@@ -1,6 +1,6 @@
 ---
-title: Use condition in templates
-description: Leer hoe u Azure-resources implementeert die zijn gebaseerd op voorwaarden. Shows how to either deploy a new resource or use an existing resource.
+title: Voor waarde gebruiken in sjablonen
+description: Leer hoe u Azure-resources implementeert die zijn gebaseerd op voorwaarden. Laat zien hoe u een nieuwe resource implementeert of een bestaande resource gebruikt.
 author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
@@ -16,9 +16,9 @@ ms.locfileid: "74325334"
 
 Leer hoe u Azure-resources implementeert die zijn gebaseerd op voorwaarden.
 
-In de zelfstudie [Resource-implementatievolgorde instellen](./resource-manager-tutorial-create-templates-with-dependent-resources.md) maakt u een virtuele machine, een virtueel netwerk en enkele andere afhankelijke resources, waaronder een opslagaccount. In plaats van elke keer een nieuw opslagaccount te maken, laat u gebruikers kiezen of ze een nieuw opslagaccount willen maken of een bestaand opslagaccount willen gebruiken. Om dit doel te bereiken, definieert u een extra parameter. Als de waarde van de parameter 'new' is, wordt er een nieuw opslagaccount gemaakt. Otherwise, an existing storage account with the name provided is used.
+In de zelfstudie [Resource-implementatievolgorde instellen](./resource-manager-tutorial-create-templates-with-dependent-resources.md) maakt u een virtuele machine, een virtueel netwerk en enkele andere afhankelijke resources, waaronder een opslagaccount. In plaats van elke keer een nieuw opslagaccount te maken, laat u gebruikers kiezen of ze een nieuw opslagaccount willen maken of een bestaand opslagaccount willen gebruiken. Om dit doel te bereiken, definieert u een extra parameter. Als de waarde van de parameter 'new' is, wordt er een nieuw opslagaccount gemaakt. Anders wordt een bestaand opslag account met de gegeven naam gebruikt.
 
-![Resource Manager template use condition diagram](./media/resource-manager-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
+![Diagram voor condition-gebruik van Resource Manager-sjabloon](./media/resource-manager-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -28,12 +28,12 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * De sjabloon implementeren
 > * Resources opschonen
 
-This tutorial only covers a basic scenario of using conditions. Zie voor meer informatie:
+Deze zelf studie geldt alleen voor een basis scenario voor het gebruik van voor waarden. Ga voor meer informatie naar:
 
-* [Template file structure: Condition](conditional-resource-deployment.md).
-* [Conditionally deploy a resource in an Azure Resource Manager template](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
-* [Template function: If](./resource-group-template-functions-logical.md#if).
-* [Comparison functions for Azure Resource Manager templates](./resource-group-template-functions-comparison.md)
+* [Structuur van sjabloon bestand: voor waarde](conditional-resource-deployment.md).
+* [Een resource voorwaardelijk implementeren in een Azure Resource Manager sjabloon](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
+* [Sjabloon functie: if](./resource-group-template-functions-logical.md#if).
+* [Vergelijkings functies voor Azure Resource Manager sjablonen](./resource-group-template-functions-comparison.md)
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -41,7 +41,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Visual Studio code met de extensie Resource Manager-Hulpprogram Ma's. Zie [Visual Studio code gebruiken om Azure Resource Manager sjablonen te maken](./resource-manager-tools-vs-code.md).
 * Gebruik een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine om de beveiliging te verhogen. Hier volgt een voorbeeld voor het genereren van een wachtwoord:
 
     ```azurecli-interactive
@@ -62,7 +62,7 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
     ```
 
 3. Selecteer **Openen** om het bestand te openen.
-4. Er worden vijf resources gedefinieerd met de sjabloon:
+4. Er worden vijf resources gedefinieerd door de sjabloon:
 
    * `Microsoft.Storage/storageAccounts`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
    * `Microsoft.Network/publicIPAddresses`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
@@ -78,15 +78,15 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
 Breng de volgende twee wijzigingen aan in de bestaande sjabloon:
 
 * Voeg een parameter voor de opslagaccountnaam toe. Gebruikers kunnen een nieuwe opslagaccountnaam of een bestaande opslagaccountnaam opgeven.
-* Voeg een nieuwe parameter toe met de naam **newOrExisting**. The deployment uses this parameter to determine whether to create a new storage account or use an existing storage account.
+* Voeg een nieuwe parameter toe met de naam **newOrExisting**. Deze para meter wordt gebruikt om te bepalen of u een nieuw opslag account wilt maken of een bestaand opslag account wilt gebruiken.
 
 Hier volgt de procedure waarmee de wijzigingen kunnen worden aangebracht:
 
 1. Open **azuredeploy.json** in Visual Studio Code.
-2. Replace the three **variables('storageAccountName')** with **parameters('storageAccountName')** in the whole template.
+2. Vervang de drie **variabelen (' storageAccountName ')** door **para meters (' storageAccountName ')** in de hele sjabloon.
 3. Verwijder de volgende variabeledefinitie:
 
-    ![Resource Manager template use condition diagram](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![Diagram voor condition-gebruik van Resource Manager-sjabloon](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 4. Voeg de volgende twee parameters toe aan de sjabloon:
 
@@ -118,7 +118,7 @@ Hier volgt de procedure waarmee de wijzigingen kunnen worden aangebracht:
     De bijgewerkte definitie van het opslagaccount ziet er als volgt uit:
 
     ![Voorwaarde gebruiken in Resource Manager](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. Update the **storageUri** property of the virtual machine resource definition with the following value:
+6. Werk de eigenschap **storageUri** van de bron definitie van de virtuele machine bij met de volgende waarde:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -130,7 +130,7 @@ Hier volgt de procedure waarmee de wijzigingen kunnen worden aangebracht:
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Follow the instructions in [Deploy the template](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) to open the Cloud shell and upload the revised template, and then run the following PowerShell script to deploy the template.
+Volg de instructies in [de sjabloon implementeren](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) om de Cloud shell te openen en de gereviseerde sjabloon te uploaden, en voer vervolgens het volgende Power shell-script uit om de sjabloon te implementeren.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -155,11 +155,11 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > De implementatie mislukt als **newOrExisting** de waarde **new** heeft, maar het opslagaccount met de opgegeven naam al bestaat.
 
-Try making another deployment with **newOrExisting** set to "existing" and specify an existing storage account. Zie [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) voor informatie over het vooraf maken van een opslagaccount.
+Probeer een andere implementatie uit te voeren met **newOrExisting** ingesteld op ' bestaand ' en geef een bestaand opslag account op. Zie [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) voor informatie over het vooraf maken van een opslagaccount.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen. To delete the resource group, select **Try it** to open the Cloud shell. To paste the PowerShell script, right-click the shell pane, and then select **Paste**.
+Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen. Als u de resource groep wilt verwijderen, selecteert u **proberen** om de Cloud shell te openen. Als u het Power shell-script wilt plakken, klikt u met de rechter muisknop op het deel venster shell en selecteert u vervolgens **Plakken**.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"

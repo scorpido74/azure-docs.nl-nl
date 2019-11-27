@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 11/27/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6cfad04d9b0dd3537d60f2651ed341d96bd0210
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027117"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538796"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -32,7 +32,7 @@ Wanneer een van de kenmerken van een gebruiker of apparaat wordt gewijzigd, eval
 
 > [!NOTE]
 > Voor deze functie is een Azure AD Premium P1-licentie vereist voor elke unieke gebruiker die lid is van een of meer dynamische groepen. U hoeft geen licenties toe te wijzen aan gebruikers, zodat ze lid zijn van dynamische groepen, maar u moet het minimum aantal licenties in de Tenant hebben om al deze gebruikers te kunnen behandelen. Als u bijvoorbeeld in totaal 1.000 unieke gebruikers in alle dynamische groepen in uw Tenant hebt, moet u ten minste 1.000 licenties voor Azure AD Premium P1 hebben om te voldoen aan de licentie vereisten.
->
+> Er is geen licentie vereist voor apparaten die lid zijn van een dynamische apparaatgroep.
 
 ## <a name="rule-builder-in-the-azure-portal"></a>De opbouw functie voor regels in de Azure Portal
 
@@ -119,7 +119,7 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | surname |Een wille keurige teken reeks waarde of *Null* |(User. achternaam-EQ "waarde") |
 | telephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.telephoneNumber -eq "value") |
 | usageLocation |Land code van twee letters |(user.usageLocation -eq "US") |
-| userPrincipalName |Wille keurige teken reeks waarde |(user.userPrincipalName -eq "alias@domain") |
+| userPrincipalName |Wille keurige teken reeks waarde |(User. userPrincipalName-EQ "alias@domain") |
 | userType |*Null* voor leden gast |(User. User type-EQ "lid") |
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschappen van het type teken reeks verzameling

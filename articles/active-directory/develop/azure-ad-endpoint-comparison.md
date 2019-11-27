@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 975c7f18da9797305b0af3f81b00acca1ba14a1a
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e5a000d08afb3afba06d82aae4414e87b61e502f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200316"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533045"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Waarom bijwerken naar micro soft Identity platform (v 2.0)?
 
@@ -62,9 +62,9 @@ Toestemming van de beheerder die namens een organisatie wordt uitgevoerd, vereis
 
 ## <a name="scopes-not-resources"></a>Bereiken, geen resources
 
-Voor apps die gebruikmaken van het v 1.0-eind punt kan een app zich gedragen als een **resource**of een ontvanger van tokens. Een resource kan een aantal **bereiken** of **oAuth2Permissions** definiëren die het begrijpt, zodat client-apps tokens van die bron kunnen aanvragen voor een bepaalde reeks bereiken. Houd rekening met de Azure AD-Graph API als voor beeld van een resource:
+Voor apps die gebruikmaken van het v 1.0-eind punt kan een app zich gedragen als een **resource**of een ontvanger van tokens. Een resource kan een aantal **bereiken** of **oAuth2Permissions** definiëren die het begrijpt, zodat client-apps tokens van die bron kunnen aanvragen voor een bepaalde reeks bereiken. Denk eens aan de Microsoft Graph-API als voor beeld van een resource:
 
-* Resource-id of `AppID URI`: `https://graph.windows.net/`
+* Resource-id of `AppID URI`: `https://graph.microsoft.com/`
 * Bereiken of `oAuth2Permissions`: `Directory.Read`, `Directory.Write`, enzovoort.
 
 Dit geldt voor het micro soft Identity platform-eind punt. Een app kan zich nog steeds gedragen als een resource, scopes definiëren en worden geïdentificeerd met een URI. Client-apps kunnen nog steeds toegang tot deze bereiken aanvragen. De manier waarop een client die machtigingen aanvraagt, is echter gewijzigd.
@@ -103,11 +103,11 @@ Voor meer informatie over OAuth 2,0, `refresh_tokens`en `access_tokens`raadpleeg
 
 ### <a name="openid-profile-and-email"></a>OpenID Connect, profile en e-mail
 
-De meest eenvoudige OpenID Connect voor het verbinden van verbindingen met het micro soft Identity-platform bieden een grote hoeveelheid informatie over de gebruiker in de resulterende *id_token*. De claims in een id_token kunnen bestaan uit de naam van de gebruiker, de voorkeurs gebruikersnaam, het e-mail adres, de object-ID en meer.
+De meest eenvoudige OpenID Connect voor verbinding maken met micro soft Identity platform bieden in de resulterende *id_token*veel informatie over de gebruiker. De claims in een id_token kunnen de naam van de gebruiker, de voorkeurs gebruikersnaam, het e-mail adres, de object-ID en meer bevatten.
 
 Met de informatie die door het `openid` bereik wordt geboden, is de toegang tot uw app nu beperkt. Met het `openid` bereik kan uw app de gebruiker niet aanmelden en een app-specifieke id voor de gebruiker ontvangen. Als u persoonlijke gegevens over de gebruiker in uw app wilt ophalen, moet uw app aanvullende machtigingen voor de gebruiker aanvragen. Met twee nieuwe bereiken, `email` en `profile`, kunt u aanvullende machtigingen aanvragen.
 
-* Met het `email` bereik kan uw app toegang krijgen tot het primaire e-mail adres van de gebruiker via de `email` claim in het id_token, ervan uitgaande dat de gebruiker een adresseerbaar e-mail adres heeft.
+* Met het `email` bereik kan uw app toegang krijgen tot het primaire e-mail adres van de gebruiker via de `email` claim in de id_token, ervan uitgaande dat de gebruiker een adresseerbaar e-mail adres heeft.
 * Het `profile` bereik biedt uw app toegang tot alle andere basis informatie over de gebruiker, zoals de naam, de voorkeurs gebruikersnaam, de object-ID, enzovoort, in de id_token.
 
 Deze bereiken bieden u de mogelijkheid om uw app in een minimale verschaffings modus in te stellen, zodat u alleen de gebruiker kunt vragen voor de set informatie die uw app nodig heeft om de taak uit te voeren. Zie voor meer informatie over deze bereiken [de referentie voor het micro soft Identity platform-bereik](v2-permissions-and-consent.md).
@@ -151,7 +151,7 @@ De aanvraag voor het toevoegen van de DNS-naam mislukt als aan een van de volgen
 * De volledige DNS-naam van de nieuwe omleidings-URL komt niet overeen met de DNS-naam van de bestaande omleidings-URL.
 * De volledige DNS-naam van de nieuwe omleidings-URL is geen subdomein van de bestaande omleidings-URL.
 
-#### <a name="example-1"></a>Voor beeld 1
+#### <a name="example-1"></a>Voorbeeld 1
 
 Als de app een omleidings-URL van `https://login.contoso.com`heeft, kunt u een omleidings-URL toevoegen waarbij de DNS-naam precies overeenkomt, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -161,7 +161,7 @@ U kunt ook verwijzen naar een DNS-subdomein van login.contoso.com, zoals wordt w
 
 `https://new.login.contoso.com`
 
-#### <a name="example-2"></a>Voor beeld 2
+#### <a name="example-2"></a>Voorbeeld 2
 
 Als u een app wilt hebben die `login-east.contoso.com` en `login-west.contoso.com` als omleidings-Url's, moet u deze omleidings-Url's in de volgende volg orde toevoegen:
 

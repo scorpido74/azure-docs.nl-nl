@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Create a blueprint in the portal'
-description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts through the Azure portal.
+title: 'Quick Start: een blauw druk maken in de portal'
+description: In deze Quick Start gebruikt u Azure-blauw drukken om artefacten te maken, te definiëren en te implementeren via de Azure Portal.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
@@ -10,9 +10,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74321943"
 ---
-# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Quickstart: Define and assign a blueprint in the portal
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Snelstartgids: een blauw druk definiëren en toewijzen in de portal
 
-When you learn how to create and assign blueprints, you can define common patterns to develop reusable and rapidly deployable configurations based on Azure Resource Manager templates, policy, security, and more. In this tutorial, you learn to use Azure Blueprints to do some of the common tasks related to creating, publishing, and assigning a blueprint within your organization. These tasks include:
+Als u informatie wilt over het maken en toewijzen van blauw drukken, kunt u algemene patronen definiëren voor het ontwikkelen van herbruikbare en snel te implementeren configuraties op basis van Azure Resource Manager sjablonen, beleid, beveiliging en meer. In deze zelf studie leert u hoe u Azure-blauw drukken kunt gebruiken om een aantal algemene taken uit te voeren die betrekking hebben op het maken, publiceren en toewijzen van een blauw druk binnen uw organisatie. Deze taken omvatten:
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -20,74 +20,74 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="create-a-blueprint"></a>Een blauwdruk maken
 
-De eerste stap bij het definiëren van een standaardpatroon voor naleving is om een blauwdruk samen te stellen uit de beschikbare resources. In this example, create a new blueprint named **MyBlueprint** to configure role and policy assignments for the subscription. Then add a new resource group, and create a Resource Manager template and role assignment on the new resource group.
+De eerste stap bij het definiëren van een standaardpatroon voor naleving is om een blauwdruk samen te stellen uit de beschikbare resources. In dit voor beeld maakt u een nieuwe blauw druk met de naam **MyBlueprint** om rollen en beleids toewijzingen voor het abonnement te configureren. Vervolgens voegt u een nieuwe resource groep toe en maakt u een resource manager-sjabloon en roltoewijzing voor de nieuwe resource groep.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Select **Blueprint definitions** from the page on the left and select the **+ Create blueprint** button at the top of the page.
+1. Selecteer op de pagina links **blauw** drukken en selecteer de knop **+ blauw drukken maken** boven aan de pagina.
 
-   Or, select **Create** from the **Getting started** page to go straight to creating a blueprint.
+   Of selecteer **maken** op **de pagina aan de slag om** direct een blauw druk te maken.
 
-   ![Create a blueprint from the Blueprint definitions page](./media/create-blueprint-portal/create-blueprint-button.png)
+   ![Een blauw druk maken op de pagina met definities van blauw drukken](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Provide a **Blueprint name** such as **MyBlueprint**. (Use up to 48 letters and numbers, but no spaces or special characters). Leave **Blueprint description** blank for now.
+1. Geef een **blauw druk naam** op, bijvoorbeeld **MyBlueprint**. (Gebruik Maxi maal 48 letters en cijfers, maar geen spaties of speciale tekens). Geef de **Beschrijving van blauw druk** voor nu leeg.
 
-1. In the **Definition location** box, select the ellipsis on the right, select the [management group](../management-groups/overview.md) or subscription where you want to save the blueprint, and choose **Select**.
+1. Selecteer in het vak **definitie locatie** het beletsel teken aan de rechter kant, selecteer de [beheer groep](../management-groups/overview.md) of het abonnement waar u de blauw druk wilt opslaan en kies **selecteren**.
 
-1. Verify that the information is correct. The **Blueprint name** and **Definition location** fields can't be changed later. Then select **Next : Artifacts** at the bottom of the page or the **Artifacts** tab at the top of the page.
+1. Controleer of de gegevens correct zijn. De velden **blauw druk** en **definitie locatie** kunnen niet later worden gewijzigd. Selecteer vervolgens **volgende: artefacten** onder aan de pagina of het tabblad **artefacten** boven aan de pagina.
 
-1. Add a role assignment at the subscription level:
+1. Een roltoewijzing toevoegen op het abonnements niveau:
 
-   1. Select the **+ Add artifact** row under **Subscription**. The **Add artifact** window opens on the right side of the browser.
+   1. Selecteer de rij voor **artefacten toevoegen** onder **abonnement**. Het venster **artefact toevoegen** wordt weer gegeven aan de rechter kant van de browser.
 
-   1. Select **Role assignment** for **Artifact type**.
+   1. Selecteer de **roltoewijzing** voor het **Type artefact**.
 
-   1. Under **Role**, select **Contributor**. Leave the **Add user, app or group** box with the check box that indicates a dynamic parameter.
+   1. Selecteer onder **rol** **Inzender**. Sluit het vak **gebruiker, app of groep toevoegen** aan met het selectie vakje dat een dynamische para meter aangeeft.
 
-   1. Select **Add** to add this artifact to the blueprint.
+   1. Selecteer **toevoegen** om dit artefact toe te voegen aan de blauw druk.
 
-   ![Role assignment for a blueprint artifact](./media/create-blueprint-portal/add-role-assignment.png)
+   ![Roltoewijzing voor een blauw druk-artefact](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
-   > Most artifacts support parameters. A parameter that's assigned a value during blueprint creation is a *static parameter*. If the parameter is assigned during blueprint assignment, it's a *dynamic parameter*. Zie [Blauwdrukparameters](./concepts/parameters.md) voor meer informatie.
+   > De meeste artefacten bieden ondersteuning voor para meters. Een para meter die een waarde krijgt toegewezen tijdens het maken van blauw drukken is een *statische para meter*. Als de para meter wordt toegewezen tijdens het toewijzen van blauw druk, is het een *dynamische para meter*. Zie [Blauwdrukparameters](./concepts/parameters.md) voor meer informatie.
 
-1. Add a policy assignment at the subscription level:
+1. Een beleids toewijzing toevoegen op het abonnements niveau:
 
-   1. Select the **+ Add artifact** row under the role assignment artifact.
+   1. Selecteer de rij voor **artefacten toevoegen** onder het onderdeel voor roltoewijzing.
 
-   1. Select **Policy assignment** for **Artifact type**.
+   1. Selecteer **beleids toewijzing** voor **Type artefact**.
 
-   1. Change **Type** to **Built-in**. In **Search**, enter **tag**.
+   1. Wijzig het type **in ingebouwd**. Voer in **zoeken** **tag**in.
 
-   1. Klik buiten het veld **Zoeken** om de filtering weer te geven. Select **Append tag and its default value to resource groups**.
+   1. Klik buiten het veld **Zoeken** om de filtering weer te geven. Selecteer **tag en de standaard waarde toevoegen aan resource groepen**.
 
-   1. Select **Add** to add this artifact to the blueprint.
+   1. Selecteer **toevoegen** om dit artefact toe te voegen aan de blauw druk.
 
-1. Select the row of the policy assignment **Append tag and its default value to resource groups**.
+1. Selecteer de rij van de code voor het toevoegen van beleids toewijzingen **en de standaard waarde voor resource groepen**.
 
-1. The window to provide parameters to the artifact as part of the blueprint definition opens and allows setting the parameters for all assignments (static parameters) based on this blueprint instead of during assignment (dynamic parameters). This example uses dynamic parameters during blueprint assignment, so leave the defaults and select **Cancel**.
+1. Het venster om para meters voor het artefact op te geven als onderdeel van de definitie van de blauw druk wordt geopend. Hiermee kunt u de para meters voor alle toewijzingen (statische para meters) instellen op basis van deze blauw druk in plaats van de toewijzing (dynamische para meter). In dit voor beeld wordt gebruikgemaakt van dynamische para meters tijdens het toewijzen van blauw drukken, behoud de standaard waarden en selecteer **Annuleren**.
 
-1. Add a resource group at the subscription level:
+1. Een resource groep toevoegen op het abonnements niveau:
 
-   1. Select the **+ Add artifact** row under **Subscription**.
+   1. Selecteer de rij voor **artefacten toevoegen** onder **abonnement**.
 
-   1. Select **Resource group** for **Artifact type**.
+   1. Selecteer een **resource groep** voor het **Type artefact**.
 
-   1. Leave the **Artifact display name**, **Resource Group Name**, and **Location** boxes blank, but make sure that the check box is checked for each parameter property to make them dynamic parameters.
+   1. Laat de vakken **weergave naam van artefact**, **naam van resource groep**en **locatie** leeg, maar zorg ervoor dat het selectie vakje is ingeschakeld voor elke parameter eigenschap om deze dynamische para meters te maken.
 
-   1. Select **Add** to add this artifact to the blueprint.
+   1. Selecteer **toevoegen** om dit artefact toe te voegen aan de blauw druk.
 
-1. Add a template under the resource group:
+1. Voeg een sjabloon toe onder de resource groep:
 
-   1. Select the **+ Add artifact** row under the **ResourceGroup** entry.
+   1. Selecteer de rij voor het **toevoegen van artefacten** onder de vermelding **ResourceGroup** .
 
-   1. Select **Azure Resource Manager template** for **Artifact type**, set **Artifact display name** to **StorageAccount**, and leave **Description** blank.
+   1. Selecteer **Azure Resource Manager sjabloon** voor **artefact type**, stel **weergave naam voor artefact** in op **Storage account**en laat de **Beschrijving** leeg.
 
    1. Op het tabblad **Sjabloon** van het editorvak plakt u de volgende Resource Manager-sjabloon.
-      After you paste the template, select the **Parameters** tab and note that the template parameters **storageAccountType** and **location** were detected. Each parameter was automatically detected and populated, but configured as a dynamic parameter.
+      Nadat u de sjabloon hebt geplakt, selecteert u het tabblad **para meters** en ziet u dat de **storageAccountType** en **locatie** van de sjabloon parameters zijn gedetecteerd. Elke para meter is automatisch gedetecteerd en gevuld, maar geconfigureerd als een dynamische para meter.
 
       > [!IMPORTANT]
-      > If you're importing the template, ensure that the file is only JSON and doesn't include HTML. When you're pointing to a URL on GitHub, ensure that you have selected **RAW** to get the pure JSON file and not the one wrapped with HTML for display on GitHub. Er treedt een fout op als de geïmporteerde sjabloon geen zuivere JSON is.
+      > Als u de sjabloon wilt importeren, moet u ervoor zorgen dat het bestand alleen JSON is en geen HTML-code bevat. Wanneer u verwijst naar een URL op GitHub, moet u ervoor zorgen dat u **RAW** hebt geselecteerd om het zuivere JSON-bestand op te halen en niet de tekst die wordt verpakt met HTML voor weer gave op github. Er treedt een fout op als de geïmporteerde sjabloon geen zuivere JSON is.
 
       ```json
       {
@@ -138,72 +138,72 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving is om 
       }
       ```
 
-   1. Clear the **storageAccountType** check box and note that the drop-down list contains only values included in the Resource Manager template under **allowedValues**. Select the box to set it back to a dynamic parameter.
+   1. Schakel het selectie vakje **storageAccountType** uit en houd er rekening mee dat de vervolg keuzelijst alleen waarden bevat die zijn opgenomen in de Resource Manager-sjabloon onder **allowedValues**. Schakel het selectie vakje in om het weer in te stellen op een dynamische para meter.
 
-   1. Select **Add** to add this artifact to the blueprint.
+   1. Selecteer **toevoegen** om dit artefact toe te voegen aan de blauw druk.
 
-   ![Resource Manager template for the blueprint artifact](./media/create-blueprint-portal/add-resource-manager-template.png)
+   ![Resource Manager-sjabloon voor het blauw druk-artefact](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. De voltooide blauwdruk moet er nu ongeveer als volgt uitzien. Notice that each artifact has **_x_ out of _y_ parameters populated** in the **Parameters** column. The dynamic parameters are set during each assignment of the blueprint.
+1. De voltooide blauwdruk moet er nu ongeveer als volgt uitzien. U ziet dat voor elk artefact  **_x_ uit _y_ -para meters is ingevuld** in de kolom **para meters** . De dynamische para meters worden ingesteld tijdens elke toewijzing van de blauw druk.
 
-   ![Completed blueprint definition](./media/create-blueprint-portal/completed-blueprint.png)
+   ![Definitie van voltooide blauw druk](./media/create-blueprint-portal/completed-blueprint.png)
 
-1. Now that all planned artifacts have been added, select **Save Draft** at the bottom of the page.
+1. Nu alle geplande artefacten zijn toegevoegd, selecteert u **concept opslaan** onder aan de pagina.
 
 ## <a name="edit-a-blueprint"></a>Een blauwdruk bewerken
 
-In [Create a blueprint](#create-a-blueprint), you didn't provide a description or add the role assignment to the new resource group. You can fix both by following these steps:
+Als u [een blauw druk maakt](#create-a-blueprint), hebt u geen beschrijving verstrekt of voegt u de roltoewijzing toe aan de nieuwe resource groep. U kunt dit probleem oplossen door de volgende stappen uit te voeren:
 
 1. Selecteer **Blauwdrukdefinities** op de pagina aan de linkerkant.
 
-1. In the list of blueprints, right-click the one that you previously created and select **Edit blueprint**.
+1. Klik in de lijst met blauw drukken met de rechter muisknop op het item dat u eerder hebt gemaakt en selecteer **blauw druk bewerken**.
 
-1. Geef in **Beschrijving van blauwdruk** informatie op over de blauwdruk en de artefacten waaruit deze bestaat. In this case, enter something like: **This blueprint sets tag policy and role assignment on the subscription, creates a ResourceGroup, and deploys a resource template and role assignment to that ResourceGroup.**
+1. Geef in **Beschrijving van blauwdruk** informatie op over de blauwdruk en de artefacten waaruit deze bestaat. In dit geval voert u een van de volgende handelingen uit: met **deze blauw druk stelt u het code beleid en de roltoewijzing in voor het abonnement, maakt u een ResourceGroup en implementeert u een resource sjabloon en roltoewijzing voor die ResourceGroup.**
 
-1. Select **Next : Artifacts** at the bottom of the page or the **Artifacts** tab at the top of the page.
+1. Selecteer **volgende: artefacten** aan de onderkant van de pagina of het tabblad **artefacten** boven aan de pagina.
 
-1. Add a role assignment under the resource group:
+1. Een roltoewijzing toevoegen onder de resource groep:
 
-   1. Select the **+ Add artifact** row directly under the **ResourceGroup** entry.
+   1. Selecteer de rij **+ artefact toevoegen** direct onder de vermelding **ResourceGroup** .
 
-   1. Select **Role assignment** for **Artifact type**.
+   1. Selecteer de **roltoewijzing** voor het **Type artefact**.
 
-   1. Under **Role**, select **Owner**, and clear the check box under the **Add user, app or group** box.
+   1. Selecteer onder **rol**de optie **eigenaar**en schakel het selectie vakje in het vak **gebruiker, app of groep toevoegen** uit.
 
-   1. Search for and select a user, app, or group to add. This artifact uses a static parameter set the same in every assignment of this blueprint.
+   1. Zoek en selecteer een gebruiker, app of groep om toe te voegen. Dit artefact maakt gebruik van een statische para meter set hetzelfde in elke toewijzing van deze blauw druk.
 
-   e. Select **Add** to add this artifact to the blueprint.
+   e. Selecteer **toevoegen** om dit artefact toe te voegen aan de blauw druk.
 
-   ![Second role assignment for the blueprint artifact](./media/create-blueprint-portal/add-role-assignment-2.png)
+   ![Tweede roltoewijzing voor het artefacten van blauw drukken](./media/create-blueprint-portal/add-role-assignment-2.png)
 
-1. De voltooide blauwdruk moet er nu ongeveer als volgt uitzien. Notice that the newly added role assignment shows **1 out of 1 parameters populated**. That means it's a static parameter.
+1. De voltooide blauwdruk moet er nu ongeveer als volgt uitzien. U ziet dat in de zojuist toegevoegde roltoewijzing **1 van de 1 para meters zijn ingevuld**. Dit betekent dat het een statische para meter is.
 
-   ![Second definition for the completed blueprint](./media/create-blueprint-portal/completed-blueprint-2.png)
+   ![Tweede definitie voor de voltooide blauw druk](./media/create-blueprint-portal/completed-blueprint-2.png)
 
-1. Select **Save Draft** now that it has been updated.
+1. Selecteer **concept opslaan** nu dat is bijgewerkt.
 
 ## <a name="publish-a-blueprint"></a>Een blauwdruk publiceren
 
 Nu alle geplande artefacten aan de blauwdruk zijn toegevoegd, kunt u deze gaan publiceren.
-Publishing makes the blueprint available to be assigned to a subscription.
+Bij het publiceren wordt de blauw druk beschikbaar om te worden toegewezen aan een abonnement.
 
 1. Selecteer **Blauwdrukdefinities** op de pagina aan de linkerkant.
 
-1. In the list of blueprints, right-click the one you previously created and select **Publish blueprint**.
+1. Klik in de lijst met blauw drukken met de rechter muisknop op het item dat u eerder hebt gemaakt en selecteer **blauw druk publiceren**.
 
-1. In the pane that opens, provide a **Version** (letters, numbers, and hyphens with a maximum length of 20 characters), such as **v1**. Optionally, enter text in **Change notes**, such as **First publish**.
+1. In het deel venster dat wordt geopend, geeft u een **versie** (letters, cijfers en afbreek streepjes met een maximale lengte van 20 tekens), zoals **v1**. Voer eventueel tekst in bij **wijzigings notities**, zoals **eerst publiceren**.
 
-1. Select **Publish** at the bottom of the page.
+1. Selecteer onder aan de pagina **publiceren** .
 
 ## <a name="assign-a-blueprint"></a>Een blauwdruk toewijzen
 
-After a blueprint has been published, it can be assigned to a subscription. Assign the blueprint that you created to one of the subscriptions under your management group hierarchy. Als de blauwdruk is opgeslagen in een abonnement, kan deze alleen aan dat abonnement worden toegewezen.
+Nadat een blauw druk is gepubliceerd, kan deze worden toegewezen aan een abonnement. Wijs de blauw druk toe die u hebt gemaakt voor een van de abonnementen in de hiërarchie van uw beheer groep. Als de blauwdruk is opgeslagen in een abonnement, kan deze alleen aan dat abonnement worden toegewezen.
 
 1. Selecteer **Blauwdrukdefinities** op de pagina aan de linkerkant.
 
-1. In the list of blueprints, right-click the one that you previously created (or select the ellipsis) and select **Assign blueprint**.
+1. Klik in de lijst met blauw drukken met de rechter muisknop op het item dat u eerder hebt gemaakt (of selecteer het beletsel teken) en selecteer **blauw druk toewijzen**.
 
-1. On the **Assign blueprint** page, in the **Subscription** drop-down list, select the subscriptions that you want to deploy this blueprint to.
+1. Selecteer op de pagina **blauw** drukken de abonnementen waarvoor u deze blauw druk wilt implementeren in de vervolg keuzelijst **abonnement** .
 
    Als er ondersteunde Enterprise-aanbiedingen beschikbaar zijn via [Azure Billing](../../billing/index.md), wordt de koppeling **Nieuw** onder het vak **Abonnement** geactiveerd. Volg deze stappen:
 
@@ -211,86 +211,86 @@ After a blueprint has been published, it can be assigned to a subscription. Assi
 
    1. Geef een **weergavenaam** voor het nieuwe abonnement op.
 
-   1. Select the available **Offer** from the drop-down list.
+   1. Selecteer de beschik bare **aanbieding** in de vervolg keuzelijst.
 
-   1. Use the ellipsis to select the [management group](../management-groups/overview.md) that the subscription will be a child of.
+   1. Gebruik het beletsel teken om de [beheer groep](../management-groups/overview.md) te selecteren waarvan het abonnement een onderliggend element is.
 
    1. Selecteer **Maken** onderaan de pagina.
 
-   ![Create a subscription for a blueprint assignment subscription](./media/create-blueprint-portal/assignment-create-subscription.png)
+   ![Een abonnement maken voor een blauw druk toewijzings abonnement](./media/create-blueprint-portal/assignment-create-subscription.png)
 
    > [!IMPORTANT]
-   > The new subscription is created immediately after you select **Create**.
+   > Het nieuwe abonnement wordt direct na het selecteren van **maken**gemaakt.
 
    > [!NOTE]
-   > An assignment is created for each subscription that you select. You can make changes to a single subscription assignment at a later time without forcing changes on the remainder of the selected subscriptions.
+   > Er wordt een toewijzing gemaakt voor elk abonnement dat u selecteert. U kunt wijzigingen aanbrengen in één abonnements toewijzing op een later tijdstip zonder dat er wijzigingen in de rest van de geselecteerde abonnementen worden afgedwongen.
 
-1. For **Assignment name**, provide a unique name for this assignment.
+1. Geef voor de **toewijzings naam**een unieke naam op voor deze toewijzing.
 
-1. In **Location**, select a region for the managed identity and subscription deployment object to be created in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
+1. Selecteer bij **locatie**een regio voor het implementatie object voor beheerde identiteiten en abonnementen dat u wilt maken in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
 
-1. Leave the **Blueprint definition version** drop-down selection of **Published** versions on the **v1** entry. (The default is the most recently published version.)
+1. Laat de selectie van **gepubliceerde** versies op de **v1** -vermelding in de vervolg keuzelijst de **definitie versie** van de blauw druk staan. (De standaard waarde is de meest recent gepubliceerde versie.)
 
-1. Laat **Toewijzing vergrendelen** staan op de standaardwaarde **Niet vergrendelen**. For more information, see [Blueprints resource locking](./concepts/resource-locking.md).
+1. Laat **Toewijzing vergrendelen** staan op de standaardwaarde **Niet vergrendelen**. Zie [blauw drukken voor resource vergrendeling](./concepts/resource-locking.md)voor meer informatie.
 
-   ![Locking and managed identities for the assignment](./media/create-blueprint-portal/assignment-locking-mi.png)
+   ![Het vergren delen en beheren van identiteiten voor de toewijzing](./media/create-blueprint-portal/assignment-locking-mi.png)
 
-1. Under **Managed Identity**, leave the default of **System assigned**.
+1. Accepteer onder **beheerde identiteit**de standaard waarde van het **systeem toegewezen**.
 
 1. Voor de roltoewijzing op abonnementsniveau **[gebruikersgroep of toepassingsnaam]: Inzender** selecteert u een gebruiker, app of groep.
 
-1. For the subscription level policy assignment, set **Tag Name** to **CostCenter** and the **Tag Value** to **ContosoIT**.
+1. Stel voor de toewijzing van het beleid op abonnements niveau de **label naam** in op **CostCenter** en de **waarde van tag** naar **ContosoIT**.
 
-1. For **ResourceGroup**, provide a **Name** of **StorageAccount** and a **Location** of **East US 2** from the drop-down list.
+1. Geef voor **ResourceGroup**de **naam** **Storage account** en een **locatie** van VS- **Oost 2** op in de vervolg keuzelijst.
 
    > [!NOTE]
-   > For each artifact that you added under the resource group during blueprint definition, that artifact is indented to align with the resource group or object that you'll deploy it with.
-   > Artifacts that either don't take parameters or have no parameters to be defined at assignment are listed only for contextual information.
+   > Voor elk artefact dat u hebt toegevoegd onder de resource groep tijdens de blauw druk-definitie, wordt dat artefact Inge sprongen voor uitlijning met de resource groep of het object dat u wilt implementeren met.
+   > Artefacten waarvoor geen para meters worden opgegeven of waarvoor geen para meters moeten worden gedefinieerd tijdens de toewijzing, worden alleen weer gegeven voor contextuele informatie.
 
-1. On the Azure Resource Manager template **StorageAccount**, select **Standard_GRS** for the **storageAccountType** parameter.
+1. Selecteer op de Azure Resource Manager sjabloon **storage account** **Standard_GRS** voor de para meter **storageAccountType** .
 
-1. Read the information box at the bottom of the page, and then select **Assign**.
+1. Lees het vak informatie aan de onderkant van de pagina en selecteer vervolgens **toewijzen**.
 
 ## <a name="track-deployment-of-a-blueprint"></a>Implementatie van een blauwdruk bijhouden
 
 Wanneer een blauwdruk is toegewezen aan een of meer abonnementen, gebeuren er twee dingen:
 
-- The blueprint is added to the **Assigned blueprints** page for each subscription.
-- The process of deploying all the artifacts defined by the blueprint begins.
+- De blauw druk wordt toegevoegd aan de pagina **toegewezen blauw drukken** voor elk abonnement.
+- Het proces voor het implementeren van alle artefacten die zijn gedefinieerd door de blauw druk wordt gestart.
 
-Now that the blueprint has been assigned to a subscription, verify the progress of the deployment:
+Nu de blauw druk is toegewezen aan een abonnement, controleert u de voortgang van de implementatie:
 
 1. Selecteer **Toegewezen blauwdrukken** op de pagina aan de linkerkant.
 
-1. In the list of blueprints, right-click the one that you previously assigned and select **View assignment details**.
+1. Klik in de lijst met blauw drukken met de rechter muisknop op het item dat u eerder hebt toegewezen en selecteer **toewijzings details weer geven**.
 
-   ![View assignment details from the Assigned blueprints page](./media/create-blueprint-portal/view-assignment-details.png)
+   ![Toewijzings details weer geven op de pagina toegewezen blauw drukken](./media/create-blueprint-portal/view-assignment-details.png)
 
-1. On the **Blueprint assignment** page, validate that all artifacts were successfully deployed and that there were no errors during the deployment. If errors occurred, see [Troubleshooting blueprints](./troubleshoot/general.md) for steps to determine what went wrong.
+1. Controleer op de pagina **blauw druk** of alle artefacten zijn geïmplementeerd en of er geen fouten zijn opgetreden tijdens de implementatie. Als er fouten zijn opgetreden, raadpleegt u [probleemoplossings schema's](./troubleshoot/general.md) voor stappen om te bepalen wat er mis ging.
 
 ## <a name="unassign-a-blueprint"></a>De toewijzing van een blauwdruk ongedaan maken
 
-If you no longer need a blueprint assignment, remove it from a subscription. The blueprint might have been replaced by a newer blueprint with updated patterns, policies, and designs. Wanneer een blauwdruk wordt verwijderd, worden de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achtergelaten. Voer de volgende stappen uit als u een blauwdruktoewijzing wilt verwijderen:
+Als u een blauw druk-toewijzing niet meer nodig hebt, verwijdert u deze uit een abonnement. De blauw druk is mogelijk vervangen door een nieuwe blauw druk met bijgewerkte patronen, beleids regels en ontwerpen. Wanneer een blauwdruk wordt verwijderd, worden de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achtergelaten. Voer de volgende stappen uit als u een blauwdruktoewijzing wilt verwijderen:
 
 1. Selecteer **Toegewezen blauwdrukken** op de pagina aan de linkerkant.
 
-1. In the list of blueprints, select the blueprint that you want to unassign. Then select the **Unassign blueprint** button at the top of the page.
+1. Selecteer in de lijst met blauw drukken de blauw druk die u wilt verwijderen. Selecteer vervolgens de knop voor het **opheffen van de blauw druk** boven aan de pagina.
 
-1. Read the confirmation message and then select **OK**.
+1. Lees het bevestigings bericht en selecteer **OK**.
 
 ## <a name="delete-a-blueprint"></a>Een blauwdruk verwijderen
 
 1. Selecteer **Blauwdrukdefinities** op de pagina aan de linkerkant.
 
-1. Right-click the blueprint that you want to delete, and select **Delete blueprint**. Then select **Yes** in the confirmation dialog box.
+1. Klik met de rechter muisknop op de blauw druk die u wilt verwijderen en selecteer **blauw druk verwijderen**. Selecteer vervolgens **Ja** in het bevestigings venster.
 
 > [!NOTE]
-> Deleting a blueprint in this method also deletes all published versions of the selected blueprint.
-> To delete a single version, open the blueprint, select the **Published versions** tab, select the version that you want to delete, and then select **Delete This Version**. Also, you can't delete a blueprint until you've deleted all blueprint assignment of that blueprint definition.
+> Als u een blauw druk in deze methode verwijdert, worden ook alle gepubliceerde versies van de geselecteerde blauw druk verwijderd.
+> Als u één versie wilt verwijderen, opent u de blauw druk, selecteert u het tabblad **gepubliceerde versies** , selecteert u de versie die u wilt verwijderen en selecteert u vervolgens **deze versie verwijderen**. U kunt een blauw druk ook pas verwijderen als u alle blauw drukken-toewijzing van die definitie van de blauw druk hebt verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this quickstart, you've created, assigned, and removed a blueprint with Azure portal. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+In deze Quick Start hebt u een blauw druk gemaakt, toegewezen en verwijderd met Azure Portal. Voor meer informatie over Azure-blauw drukken gaat u verder met het artikel van de blauw druk-levens duur.
 
 > [!div class="nextstepaction"]
-> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)
+> [Meer informatie over de levens duur van de blauw druk](./concepts/lifecycle.md)

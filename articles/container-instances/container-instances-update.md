@@ -1,19 +1,14 @@
 ---
-title: Containers in Azure Container Instances bijwerken
+title: Container groep bijwerken
 description: Meer informatie over het bijwerken van actieve containers in uw Azure Container Instances-container groepen.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 09/03/2019
-ms.author: danlep
-ms.openlocfilehash: 3103fe7fbf7dcd587f43b673ef53f32893908ecb
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f57ebcf050b5563b45f10af57c1721338df88ff9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307714"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533305"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Containers in Azure Container Instances bijwerken
 
@@ -68,7 +63,7 @@ Zoals eerder vermeld, kunnen niet alle eigenschappen van de container groep word
 
 Voor deze eigenschappen moet de container groep worden verwijderd voordat deze opnieuw kan worden geïmplementeerd:
 
-* Type besturingssysteem
+* Type besturings systeem
 * CPU
 * Geheugen
 * Beleid voor opnieuw opstarten

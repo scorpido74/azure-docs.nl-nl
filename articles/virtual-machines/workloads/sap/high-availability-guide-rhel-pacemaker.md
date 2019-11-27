@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 954ff23997e56249859dd8d35f124324432f2b22
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: ee67c811835d99bf2f4c00dc59b43e29f63c81d6
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673005"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533818"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Pacemaker instellen voor Red Hat Enterprise Linux in azure
 
@@ -36,7 +36,7 @@ ms.locfileid: "71673005"
 [2243692]: https://launchpad.support.sap.com/#/notes/2243692
 [1999351]: https://launchpad.support.sap.com/#/notes/1999351
 
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
+[virtual-machines-linux-maintenance]:../../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
 
 Lees eerst de volgende SAP-opmerkingen en-documenten:
@@ -76,7 +76,7 @@ Lees eerst de volgende SAP-opmerkingen en-documenten:
 > Red Hat biedt geen ondersteuning voor door software geëmuleerde watchdog. Red Hat biedt geen ondersteuning voor SBD op Cloud platforms. Zie [het ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid-SBD en fence_sbd](https://access.redhat.com/articles/2800691)voor meer informatie.
 > Het enige ondersteunde afomheinings mechanisme voor pacemaker Red Hat Enterprise Linux clusters op Azure is Azure Fence agent.  
 
-De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
+De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
 
 1. **[A]** registreren
 
@@ -122,7 +122,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    > [!IMPORTANT]
    > Als u de Azure Fence-agent wilt bijwerken, en als u aangepaste rol gebruikt, moet u ervoor zorgen dat u de aangepaste rol bijwerkt om actie **uitgeschakeld**op te nemen. Zie [een aangepaste rol maken voor de Fence-agent](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent)voor meer informatie.  
 
-1. **[A]**  Omzetten van de hostnaam instellen
+1. **[A]** omzetting van hostnaam van installatie
 
    U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten. Het voordeel van het gebruik van/etc/hosts is dat het cluster wordt onafhankelijk van DNS, wat erop kan een single point of fouten te.
@@ -138,7 +138,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    <b>10.0.0.7 prod-cl1-1</b>
    </code></pre>
 
-1. **[A]**  Hacluster wachtwoord wijzigen naar hetzelfde wachtwoord
+1. **[A]** hacluster wacht woord wijzigen in hetzelfde wacht woord
 
    <pre><code>sudo passwd hacluster
    </code></pre>
@@ -202,7 +202,7 @@ Het stonith instellen-apparaat maakt gebruik van een Service-Principal te autori
 
 1. Ga naar <https://portal.azure.com>
 1. Open de Azure Active Directory-blade  
-   Ga naar eigenschappen en noteer de map-ID. Dit is de **tenant-ID**.
+   Ga naar eigenschappen en noteer de map-ID. Dit is de **Tenant-id**.
 1. Klik op App-registraties
 1. Klik op nieuwe registratie
 1. Voer een naam in, selecteer alleen accounts in deze organisatie Directory 
@@ -210,12 +210,12 @@ Het stonith instellen-apparaat maakt gebruik van een Service-Principal te autori
    De aanmeldings-URL wordt niet gebruikt en kan geldige URL zijn
 1. Selecteer certificaten en geheimen en klik vervolgens op nieuw client geheim
 1. Voer een beschrijving in voor een nieuwe sleutel, selecteer nooit verloopt en klik op toevoegen
-1. Noteer de waarde in. Deze wordt gebruikt als de **wachtwoord** voor de Service-Principal
-1. Selecteer overzicht. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikersnaam (**aanmeldings-ID** in de onderstaande stappen) van de Service-Principal
+1. Noteer de waarde in. Dit wordt gebruikt als het **wacht woord** voor de Service-Principal
+1. Selecteer overzicht. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikers naam (**aanmeldings-id** in de onderstaande stappen) van de Service-Principal
 
-### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Een aangepaste rol maken voor de agent omheining
+### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** een aangepaste rol maken voor de Fence-agent
 
-De Service-Principal heeft geen machtigingen voor toegang tot uw Azure-resources standaard. U moet de Service-Principal machtigingen geven om alle virtuele machines van het cluster te starten en te stoppen. Als u de aangepaste rol die niet al hebt gemaakt, kunt u maken met behulp van [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) of [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+De Service-Principal heeft geen machtigingen voor toegang tot uw Azure-resources standaard. U moet de Service-Principal machtigingen geven om alle virtuele machines van het cluster te starten en te stoppen. Als u de aangepaste rol nog niet hebt gemaakt, kunt u deze maken met behulp van [Power shell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) of [Azure cli](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 
 Gebruik de volgende inhoud voor het invoerbestand. U moet de inhoud voor uw abonnementen die is aangepast, c276fc76-9cd4-44c9-99a7-4fd71546436e en e91d47c4-76f3-4271-a796-21b4ecfe3624 vervangen door de id's van uw abonnement. Als u slechts één abonnement hebt, verwijdert u de tweede vermelding in AssignableScopes.
 
@@ -254,7 +254,7 @@ De aangepaste rol 'Linux omheining Agent rol' die is gemaakt in het vorige hoofd
 
 Herhaal de bovenstaande stappen voor het tweede clusterknooppunt.
 
-### <a name="1-create-the-stonith-devices"></a>**[1]**  Maken de apparaten stonith instellen
+### <a name="1-create-the-stonith-devices"></a>**[1]** de STONITH-apparaten maken
 
 Nadat u de machtigingen voor de virtuele machines hebt bewerkt, kunt u de apparaten stonith instellen in het cluster configureren.
 
