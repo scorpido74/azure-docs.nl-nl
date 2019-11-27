@@ -39,7 +39,7 @@ De interactie van elke toepassing volgt in grote lijnen hetzelfde patroon:
 
 Deze stappen kunnen enigszins verschillen op basis van het type toepassing dat u wilt maken.
 
-## <a name="web-applications"></a>Webtoepassingen
+## <a name="web-applications"></a>Web-apps
 
 Voor webtoepassingen (inclusief .NET, PHP, Java, Ruby, python en node. js) die worden gehost op een server en toegankelijk zijn via een browser, Azure AD B2C ondersteunt [OpenID Connect Connect](active-directory-b2c-reference-protocols.md) voor alle gebruikers ervaringen. In de Azure AD B2C implementatie van OpenID Connect Connect initieert uw webtoepassing gebruikers ervaringen door verificatie aanvragen uit te geven aan Azure AD. Het resultaat van de aanvraag is een `id_token`. Dit beveiligingstoken vertegenwoordigt de identiteit van de gebruiker. Het bevat ook informatie over de gebruiker in de vorm van claims:
 

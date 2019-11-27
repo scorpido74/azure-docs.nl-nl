@@ -151,7 +151,7 @@ De aanvraag voor het toevoegen van de DNS-naam mislukt als aan een van de volgen
 * De volledige DNS-naam van de nieuwe omleidings-URL komt niet overeen met de DNS-naam van de bestaande omleidings-URL.
 * De volledige DNS-naam van de nieuwe omleidings-URL is geen subdomein van de bestaande omleidings-URL.
 
-#### <a name="example-1"></a>Voorbeeld 1
+#### <a name="example-1"></a>Voor beeld 1
 
 Als de app een omleidings-URL van `https://login.contoso.com`heeft, kunt u een omleidings-URL toevoegen waarbij de DNS-naam precies overeenkomt, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -161,7 +161,7 @@ U kunt ook verwijzen naar een DNS-subdomein van login.contoso.com, zoals wordt w
 
 `https://new.login.contoso.com`
 
-#### <a name="example-2"></a>Voorbeeld 2
+#### <a name="example-2"></a>Voor beeld 2
 
 Als u een app wilt hebben die `login-east.contoso.com` en `login-west.contoso.com` als omleidings-Url's, moet u deze omleidings-Url's in de volgende volg orde toevoegen:
 

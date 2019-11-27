@@ -408,7 +408,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 Probeer deze bronnen voor meer informatie over probleem oplossing:
 
-*  [Data Factory-blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

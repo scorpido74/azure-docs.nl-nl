@@ -29,7 +29,7 @@ Met Azure Logic Apps en de FTP-connector kunt u geautomatiseerde taken en werk s
 
 U kunt triggers gebruiken die reacties ontvangen van uw FTP-server en de uitvoer beschikbaar maken voor andere acties. U kunt acties uitvoeren in uw Logic apps gebruiken voor het beheren van bestanden op uw FTP-server. U kunt ook andere acties uitvoeren met de uitvoer van FTP-acties. Als u bijvoorbeeld regel matig bestanden van uw FTP-server ontvangt, kunt u e-mail over deze bestanden en hun inhoud verzenden met behulp van de Office 365 Outlook-Connector of de Outlook.com-connector. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="limits"></a>Limieten
+## <a name="limits"></a>Beperkingen
 
 * De FTP-connector ondersteunt alleen expliciete FTP via SSL (FTPS) en is niet compatibel met impliciete FTPS.
 
@@ -45,7 +45,7 @@ U kunt triggers gebruiken die reacties ontvangen van uw FTP-server en de uitvoer
 
 FTP-triggers worden uitgevoerd door het FTP-bestands systeem te pollen en te zoeken naar een bestand dat sinds de laatste poll is gewijzigd. Met sommige hulpprogram ma's kunt u de tijds tempel behouden wanneer de bestanden worden gewijzigd. In deze gevallen moet u deze functie uitschakelen zodat de trigger kan werken. Hier volgen enkele algemene instellingen:
 
-| SFTP-client | Actie |
+| SFTP-client | Bewerking |
 |-------------|--------|
 | WinSCP | Ga naar **opties** > **voor keuren** > **overdracht** > **bewerken** > **tijds tempel behouden** > **uitschakelen** |
 | FileZilla | Ga naar **overdracht** > de **tijds tempels van overgebrachte bestanden te behouden** > **uitschakelen** |

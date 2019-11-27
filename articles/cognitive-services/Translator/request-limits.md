@@ -34,7 +34,7 @@ De volgende tabel bevat een overzicht van matrix elementen en teken limieten voo
 | Detecteren | 10.000 | 100 |   50,000 |
 | BreakSentence | 10.000    | 100 | 50,000 |
 | Opzoeken in woordenlijst| 100 |  10  | 1000 |
-| Voorbeelden in woordenlijst | 100 voor tekst en 100 voor vertaling (200 in totaal)| 10|   2,000 |
+| Voorbeelden in woordenlijst | 100 voor tekst en 100 voor vertaling (200 in totaal)| 10|   2\.000 |
 
 ## <a name="character-limits-per-hour"></a>Maximum aantal tekens per uur
 
@@ -64,13 +64,13 @@ Het Translator Text-API heeft een maximale latentie van 15 seconden met standaar
 
 Wanneer u de functie [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) gebruikt, is de lengte van de zin beperkt tot 275 tekens. Er zijn uitzonde ringen voor deze talen:
 
-| Taal | Code | Teken limiet |
+| Taal | Coderen | Teken limiet |
 |----------|------|-----------------|
 | Chinees | zh | 132 |
 | Duits | de | 290 |
 | Italiaans | it | 280 |
 | Japans | ja | 150 |
-| Portugees | pt | 290 |
+| Portugees | PT | 290 |
 | Spaans | es | 280 |
 | Italiaans | it | 280 |
 | Thais | e | 258 |

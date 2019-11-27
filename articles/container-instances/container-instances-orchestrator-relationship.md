@@ -36,7 +36,7 @@ Azure Container Instances maakt een gelaagde benadering van de indeling mogelijk
 
 Omdat de onderliggende infra structuur voor container instanties wordt beheerd door Azure, hoeft een Orchestrator-platform zich niet te houden aan het vinden van een geschikte hostmachine waarop één container kan worden uitgevoerd. De elasticiteit van de cloud zorgt ervoor dat er altijd een beschikbaar is. In plaats daarvan kan de Orchestrator zich richten op de taken die de ontwikkeling van architecturen met meerdere containers vereenvoudigen, met inbegrip van schalen en gecoördineerde upgrades.
 
-## <a name="scenarios"></a>Scenario 's
+## <a name="scenarios"></a>Scenario's
 
 Hoewel Orchestrator-integratie met Azure Container Instances nog steeds nascent is, anticiperen we dat een aantal verschillende omgevingen zich voordoen:
 

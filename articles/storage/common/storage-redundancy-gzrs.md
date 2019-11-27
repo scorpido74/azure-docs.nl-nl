@@ -29,10 +29,10 @@ Alleen voor algemeen gebruik v2-opslag accounts bieden ondersteuning voor GZRS e
 
 GZRS en RA-GZRS zijn momenteel beschikbaar als preview-versie in de volgende regio's:
 
-- Azië - zuidoost
-- Europa - noord
-- Europa - west
-- Verenigd Koninkrijk Zuid
+- Azië (zuidoost)
+- Europa (noord)
+- Europa (west)
+- VK - zuid
 - US - oost
 - US - oost 2
 - US - centraal
@@ -142,14 +142,14 @@ Als u een Live migratie wilt aanvragen, gebruikt u de [Azure Portal](https://ms.
 
 1. Selecteer een **nieuwe ondersteunings aanvraag**.
 2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service** **opslag account beheer** en geef het account op dat moet worden gemigreerd.
-3. Selecteer **Volgende**.
+3. Selecteer **Next**.
 4. Geef de volgende waarden op voor het **probleem** gedeelte:
     - **Ernst**: behoud de standaard waarde in.
     - **Probleem type**: **gegevens migratie**selecteren.
     - **Categorie**: Selecteer **migreren naar (RA) GZRS binnen een regio**.
     - **Titel**: Typ een beschrijvende titel, bijvoorbeeld **(RA-) GZRS-account migratie**.
     - **Details**: Typ aanvullende details in het vak **Details** , bijvoorbeeld "Ik wil migreren naar GZRS van [LRS, GRS] in de regio \_\_." of "Ik wil graag migreren naar RA-GZRS van [LRS, RA-GRS] in de regio \_\_."
-5. Selecteer **Volgende**.
+5. Selecteer **Next**.
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
 7. Selecteer **Maken**.
 

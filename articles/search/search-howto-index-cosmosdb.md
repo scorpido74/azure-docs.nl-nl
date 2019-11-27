@@ -58,7 +58,7 @@ Zorg ervoor dat uw Cosmos DB-data base gegevens bevat. Met de [wizard gegevens i
 
 ### <a name="2---start-import-data-wizard"></a>2-wizard gegevens importeren starten
 
-U kunt [de wizard starten](search-import-data-portal.md) vanaf de opdracht balk op de pagina Azure Cognitive Search service, of als u verbinding maakt met Cosmos DB SQL API, kunt u klikken op **Azure toevoegen Cognitive Search** in het gedeelte **instellingen** van de links van uw Cosmos DB account navigatie deel venster.
+U kunt [de wizard starten](search-import-data-portal.md) vanaf de opdracht balk op de pagina Azure Cognitive Search service, of als u verbinding maakt met Cosmos DB SQL-API, kunt u klikken op **Azure toevoegen Cognitive Search** in het gedeelte **instellingen** van het navigatie deel venster van uw Cosmos DB account.
 
    ![De opdracht gegevens importeren in de portal](./media/search-import-data-portal/import-data-cmd2.png "De wizard Gegevens importeren starten")
 
@@ -251,14 +251,14 @@ Zorg ervoor dat het schema van uw doel index compatibel is met het schema van de
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>Toewijzing tussen JSON-gegevens typen en Azure Cognitive Search-gegevens typen
 | JSON-gegevens type | Compatibele doel veld typen voor index |
 | --- | --- |
-| Bool |EDM. Boolean, EDM. String |
-| Getallen die eruit zien als gehele getallen |Edm.Int32, Edm.Int64, Edm.String |
+| BOOL |EDM. Boolean, EDM. String |
+| Getallen die eruit zien als gehele getallen |EDM. Int32, EDM. Int64, EDM. String |
 | Getallen die eruitzien als zwevende punten |Edm.Double, Edm.String |
 | Tekenreeks |Edm.String |
-| Matrices van primitieve typen, bijvoorbeeld ["a", "b", "c"] |Verzameling (Edm.String) |
+| Matrices van primitieve typen, bijvoorbeeld ["a", "b", "c"] |Collection(EDM.String) |
 | Teken reeksen die eruitzien als datums |Edm.DateTimeOffset, Edm.String |
 | Geojson-objecten, bijvoorbeeld {"type": "punt", "coördinaten": [Long, lat]} |Edm.GeographyPoint |
-| Andere JSON-objecten |N.v.t. |
+| Andere JSON-objecten |N/A |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4: de Indexeer functie configureren en uitvoeren
 
@@ -361,7 +361,7 @@ In het volgende voor beeld wordt een gegevens bron gemaakt met een voorlopig ver
 
 ## <a name="NextSteps"></a>Volgende stappen
 
-Gefeliciteerd. U hebt geleerd hoe u Azure Cosmos DB met Azure Cognitive Search integreert met behulp van een Indexeer functie.
+Gefeliciteerd! U hebt geleerd hoe u Azure Cosmos DB met Azure Cognitive Search integreert met behulp van een Indexeer functie.
 
 * Zie de [pagina Azure Cosmos DB Service](https://azure.microsoft.com/services/cosmos-db/)voor meer informatie over Azure Cosmos db.
 * Zie de [pagina zoek service](https://azure.microsoft.com/services/search/)voor meer informatie over Azure Cognitive Search.

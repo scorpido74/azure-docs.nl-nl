@@ -56,7 +56,7 @@ Voor deze taak kunt u de Azure Portal gebruiken door de stappen in deze sectie, 
 
    ![Details van het integratie account opgeven](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | Eigenschap | Vereist | Waarde | Beschrijving |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | **Naam** | Ja | <*Integration-account-name*> | De naam van uw integratie account, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt ' fabrikam-Integration ' gebruikt. |
    | **Abonnement** | Ja | <*Azure-subscription-name*> | De naam van uw Azure-abonnement |
@@ -113,7 +113,7 @@ Als u de [limieten](../logic-apps/logic-apps-limits-and-config.md#integration-ac
 
 Als u deze wijziging wilt aanbrengen, kunt u de Azure Portal gebruiken door de stappen in deze sectie of de [Azure cli](#upgrade-tier-azure-cli)te volgen.
 
-#### <a name="azure-portal"></a>Azure-portal
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Portal](https://portal.azure.com).
 
@@ -131,7 +131,7 @@ Als u deze wijziging wilt aanbrengen, kunt u de Azure Portal gebruiken door de s
 
 <a name="upgrade-tier-azure-cli"></a>
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 1. Als u dit nog niet hebt gedaan, [installeert u de vereisten voor Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 

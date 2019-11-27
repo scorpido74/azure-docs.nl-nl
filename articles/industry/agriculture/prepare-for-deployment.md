@@ -33,20 +33,20 @@ Een snelle implementatie van Azure FarmBeats moet minder dan een uur duren. De k
 
 De Azure FarmBeats-implementatie maakt de hieronder vermelde resources binnen uw abonnement:
 
-|S.Nee  |Resourcenaam  |Azure FarmBeats-onderdeel  |
+|S.Nee  |Naam resource  |Azure FarmBeats-onderdeel  |
 |---------|---------|---------|
 |1  |       Azure Cosmos DB   |  Data hub       |
 |2  |    Application Insights      |     Data hub/Accelerator     |
 |3  |Azure Cache voor Redis   |Data hub   |
-|4  |       Azure KeyVault    |  Data hub/Accelerator        |
+|4  |       Azure-sleutel kluis    |  Data hub/Accelerator        |
 |5  |    Time Series Insights       |     Data hub      |
 |6 |      EventHub-naam ruimte    |  Data hub       |
 |7  |    Azure Data Factory V2       |     Data hub/Accelerator      |
 |8  |Batch-account    |Data hub   |
-|9  |       Storage-account     |  Data hub/Accelerator        |
+|9  |       Opslagaccount     |  Data hub/Accelerator        |
 |10  |    Logische apps        |     Data hub      |
 |11  |    API-verbinding        |     Data hub      |
-|12|      App Service      |  Data hub/Accelerator       |
+|12|      App service      |  Data hub/Accelerator       |
 |13 |    app service-plan        |     Data hub/Accelerator      |
 |14 |Azure Maps-account     |Snelle    |
 |15 |       Time Series Insights      |  Data hub     |
@@ -159,7 +159,7 @@ Controleer de para meters voordat u het bestand voorbereidt.
 |sku  | Biedt een keuze om een of beide onderdelen van Azure FarmBeats te downloaden. Hiermee geeft u op welke onderdelen moeten worden gedownload. Als u alleen data hub wilt installeren, gebruikt u ' onlydatabhub '. Als u data hub en Accelerator wilt installeren, gebruikt u ' beide '|
 |subscriptionId | Hiermee geeft u het abonnement op voor het installeren van Azure FarmBeats|
 |datahubResourceGroup| Naam van de resource groep voor data hub-resources|
-|locatie |De locatie waar u de resources wilt maken|
+|location |De locatie waar u de resources wilt maken|
 |acceleratorWebsiteName |Unieke URL-voor voegsel om uw gegevenshub een naam te gegeven|
 |acceleratorResourceGroup  | Unieke URL-voor voegsel voor de naam van uw website voor Accelerators.|
 |datahubWebsiteName  | UUnique URL-voor voegsel voor de naam van uw data hub-website. |

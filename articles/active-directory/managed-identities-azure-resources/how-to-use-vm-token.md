@@ -75,7 +75,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | De beheerde identiteiten voor het Azure-bronnen eindpunt voor de Instance Metadata Service. |
 | `api-version`  | Een query teken reeks parameter, waarmee de API-versie voor het IMDS-eind punt wordt aangegeven. Gebruik de API-versie `2018-02-01` of hoger. |
-| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Het wordt ook weer gegeven in de claim van de `aud` (doel groep) van het uitgegeven token. In dit voor beeld wordt een token aangevraagd voor toegang tot Azure Resource Manager, dat een app-ID-URI van https://management.azure.com/heeft. |
+| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Het wordt ook weer gegeven in de claim van de `aud` (doel groep) van het uitgegeven token. In dit voor beeld wordt een token aangevraagd voor toegang tot Azure Resource Manager, dat een app-ID-URI van https://management.azure.com/ heeft. |
 | `Metadata` | Een veld met een HTTP-aanvraag header, dat door beheerde identiteiten voor Azure-resources wordt vereist als risico op aanvallen op server zijde vervalsing (SSRF). Deze waarde moet in alle kleine letters worden ingesteld op ' True '. |
 | `object_id` | Beschrijving Een query reeks parameter, waarmee de object_id van de beheerde identiteit wordt aangegeven waarvoor u het token wilt voor. Vereist als uw virtuele machine meerdere door de gebruiker toegewezen beheerde identiteiten heeft.|
 | `client_id` | Beschrijving Een query reeks parameter, waarmee de client_id van de beheerde identiteit wordt aangegeven waarvoor u het token wilt voor. Vereist als uw virtuele machine meerdere door de gebruiker toegewezen beheerde identiteiten heeft.|
@@ -92,7 +92,7 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
 | `http://localhost:50342/oauth2/token` | Het eind punt Managed Identities voor Azure resources, waarbij 50342 de standaard poort is en kan worden geconfigureerd. |
-| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Het wordt ook weer gegeven in de claim van de `aud` (doel groep) van het uitgegeven token. In dit voor beeld wordt een token aangevraagd voor toegang tot Azure Resource Manager, dat een app-ID-URI van https://management.azure.com/heeft. |
+| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Het wordt ook weer gegeven in de claim van de `aud` (doel groep) van het uitgegeven token. In dit voor beeld wordt een token aangevraagd voor toegang tot Azure Resource Manager, dat een app-ID-URI van https://management.azure.com/ heeft. |
 | `Metadata` | Een veld met een HTTP-aanvraag header, dat door beheerde identiteiten voor Azure-resources wordt vereist als risico op aanvallen op server zijde vervalsing (SSRF). Deze waarde moet in alle kleine letters worden ingesteld op ' True '.|
 | `object_id` | Beschrijving Een query reeks parameter, waarmee de object_id van de beheerde identiteit wordt aangegeven waarvoor u het token wilt voor. Vereist als uw virtuele machine meerdere door de gebruiker toegewezen beheerde identiteiten heeft.|
 | `client_id` | Beschrijving Een query reeks parameter, waarmee de client_id van de beheerde identiteit wordt aangegeven waarvoor u het token wilt voor. Vereist als uw virtuele machine meerdere door de gebruiker toegewezen beheerde identiteiten heeft.|
@@ -371,7 +371,7 @@ Als er een fout optreedt, bevat de bijbehorende HTTP-antwoord tekst JSON met de 
 
 In deze sectie worden de mogelijke fout reacties gedocumenteerd. De status ' 200 OK ' is een geslaagd antwoord en het toegangs token bevindt zich in de JSON van de antwoord tekst in het element access_token.
 
-| Statuscode | Fout | Foutbeschrijving | Oplossing |
+| Statuscode | Fout | Fout beschrijving | Oplossing |
 | ----------- | ----- | ----------------- | -------- |
 | 400 ongeldige aanvraag | invalid_resource | AADSTS50001: de toepassing met de naam *\<URI-\>* is niet gevonden in de Tenant met de naam *\<tenant-id\>* . Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de Tenant of is gezonden door een gebruiker in de Tenant. U hebt uw verificatie aanvraag mogelijk naar de verkeerde Tenant verzonden. \ | (Alleen Linux) |
 | 400 ongeldige aanvraag | bad_request_102 | De vereiste meta gegevens header is niet opgegeven | Het veld voor de `Metadata` aanvraag header ontbreekt in uw aanvraag of heeft een onjuiste indeling. De waarde moet worden opgegeven als `true`, in kleine letters. Zie ' voorbeeld aanvraag ' in de voor gaande REST sectie voor een voor beeld.|
@@ -393,7 +393,7 @@ Voor opnieuw proberen wordt de volgende strategie aanbevolen:
 
 | **Strategie voor opnieuw proberen** | **Instellingen** | **Waarden** | **Hoe werkt het?** |
 | --- | --- | --- | --- |
-|ExponentialBackoff |Aantal pogingen<br />Min. uitstel<br />Max. uitstel<br />Delta-uitstel<br />Eerste snelle poging |5<br />0 sec.<br />60 sec.<br />2 sec.<br />false |Poging 1, vertraging 0 sec.<br />Poging 2, vertraging ~2 sec.<br />Poging 3, vertraging ~6 sec.<br />Poging 4, vertraging ~14 sec.<br />Poging 5, vertraging ~30 sec. |
+|ExponentialBackoff |Aantal pogingen<br />Min. uitstel<br />Max. uitstel<br />Delta-uitstel<br />Eerste snelle poging |5<br />0 sec.<br />60 sec.<br />2 sec.<br />onwaar |Poging 1, vertraging 0 sec.<br />Poging 2, vertraging ~2 sec.<br />Poging 3, vertraging ~6 sec.<br />Poging 4, vertraging ~14 sec.<br />Poging 5, vertraging ~30 sec. |
 
 ## <a name="resource-ids-for-azure-services"></a>Resource-Id's voor Azure-Services
 

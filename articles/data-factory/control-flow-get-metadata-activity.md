@@ -32,7 +32,7 @@ De volgende functionaliteit is beschikbaar in de controle stroom:
 - U kunt de uitvoer van de activiteit meta gegevens ophalen in voorwaardelijke expressies gebruiken om validatie uit te voeren.
 - U kunt een pijp lijn activeren wanneer aan een voor waarde wordt voldaan via do until-lus.
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Mogelijkheden
 
 De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourneert meta gegevens als uitvoer. Op dit moment worden de volgende connectors en de bijbehorende opgehaalde meta gegevens ondersteund. De maximale grootte van de geretourneerde meta gegevens is 1 MB.
 
@@ -43,11 +43,11 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 
 **Bestands opslag**
 
-| Connector/meta gegevens | itemName<br>(bestand/map) | itemType<br>(bestand/map) | size<br>Profiler | toegevoegd<br>(bestand/map) | lastModified<br>(bestand/map) |childItems<br>map |contentMD5<br>Profiler | structure<br/>Profiler | Aantal<br>Profiler | reeds<br>(bestand/map) |
+| Connector/meta gegevens | itemName<br>(bestand/map) | Item type<br>(bestand/map) | size<br>Profiler | toegevoegd<br>(bestand/map) | lastModified<br>(bestand/map) |childItems<br>map |contentMD5<br>Profiler | structuur<br/>Profiler | Aantal<br>Profiler | reeds<br>(bestand/map) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Google-Cloud opslag](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Google-Cloud opslag](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -62,7 +62,7 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 
 **Relationele data base**
 
-| Connector/meta gegevens | structure | Aantal | reeds |
+| Connector/meta gegevens | structuur | Aantal | reeds |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Beheerd exemplaar van Azure SQL-Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -76,13 +76,13 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 | Meta gegevens type | Beschrijving |
 |:--- |:--- |
 | itemName | De naam van het bestand of de map. |
-| itemType | Het type van het bestand of de map. Geretourneerde waarde is `File` of `Folder`. |
+| Item type | Het type van het bestand of de map. Geretourneerde waarde is `File` of `Folder`. |
 | size | Grootte van het bestand in bytes. Alleen van toepassing op bestanden. |
 | toegevoegd | Er is een datum/tijd gemaakt van het bestand of de map. |
 | lastModified | Datum/tijd waarop het bestand of de map voor het laatst is gewijzigd. |
 | childItems | Lijst met submappen en bestanden in de opgegeven map. Alleen van toepassing op mappen. Geretourneerde waarde is een lijst met de naam en het type van elk onderliggend item. |
 | contentMD5 | MD5 van het bestand. Alleen van toepassing op bestanden. |
-| structure | De gegevens structuur van het bestand of de relationele database tabel. Geretourneerde waarde is een lijst met kolom namen en kolom typen. |
+| structuur | De gegevens structuur van het bestand of de relationele database tabel. Geretourneerde waarde is een lijst met kolom namen en kolom typen. |
 | Aantal | Het aantal kolommen in het bestand of de tabel relationeel. |
 | reeds| Hiermee wordt aangegeven of een bestand, map of tabel bestaat. Houd er rekening mee dat als `exists` is opgegeven in de lijst met velden voor meta gegevens ophalen, de activiteit niet kan worden uitgevoerd, zelfs niet als het bestand, de map of de tabel niet bestaat. In plaats daarvan wordt `exists: false` geretourneerd in de uitvoer. |
 
@@ -136,9 +136,9 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 
 Op dit moment kunnen met de activiteit meta gegevens ophalen de volgende typen meta gegevens worden geretourneerd:
 
-Eigenschap | Beschrijving | Vereist
+Eigenschap | Beschrijving | Verplicht
 -------- | ----------- | --------
-fieldList | De typen meta gegevens die zijn vereist. Zie de sectie [meta gegevens opties](#metadata-options) in dit artikel voor meer informatie over ondersteunde meta gegevens. | Ja 
+Velden | De typen meta gegevens die zijn vereist. Zie de sectie [meta gegevens opties](#metadata-options) in dit artikel voor meer informatie over ondersteunde meta gegevens. | Ja 
 sets | De referentie gegevensset waarvan de meta gegevens moeten worden opgehaald door de activiteit meta gegevens ophalen. Zie de sectie [mogelijkheden](#capabilities) voor informatie over ondersteunde connectors. Raadpleeg de onderwerpen over de specifieke connector voor de syntaxis van de gegevensset. | Ja
 formatSettings | Toep assen bij gebruik van gegevensset voor indelings type. | Nee
 storeSettings | Toep assen bij gebruik van gegevensset voor indelings type. | Nee

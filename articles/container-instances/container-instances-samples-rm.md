@@ -42,9 +42,9 @@ U hebt verschillende mogelijkheden voor het implementeren van resources met Reso
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure Portal][deploy-portal]
+[Azure-portal][deploy-portal]
 
-[REST-API][deploy-rest]
+[REST API][deploy-rest]
 
 <!-- LINKS - External -->
 [app-nav]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-dynamicsnav

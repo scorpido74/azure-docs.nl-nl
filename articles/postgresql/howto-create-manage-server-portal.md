@@ -17,7 +17,7 @@ ms.locfileid: "74535689"
 Dit artikel laat u zien hoe u uw Azure Database for PostgreSQL-servers kunt beheren. Beheer taken zijn onder andere berekening en opslag schalen, beheerders wachtwoord opnieuw instellen en server details weer geven.
 
 ## <a name="sign-in"></a>Aanmelden
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-a-server"></a>Een server maken
 Ga naar de [Quick](quickstart-create-server-database-portal.md) start voor informatie over het maken en aan de slag met een Azure database for postgresql-server.

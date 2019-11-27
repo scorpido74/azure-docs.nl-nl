@@ -229,7 +229,7 @@ In dit artikel wordt ervan uitgegaan dat u al een CentOS-Linux-besturings systee
 
 
 
-## <a name="centos-70"></a>CentOS 7.0+
+## <a name="centos-70"></a>CentOS 7.0 +
 
 **Wijzigingen in CentOS 7 (en vergelijk bare derivaten)**
 

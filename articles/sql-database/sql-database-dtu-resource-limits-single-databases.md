@@ -31,14 +31,14 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 > [!IMPORTANT]
 > Zie [Eén data base schalen](sql-database-single-database-scale.md) voor meer informatie over schaling en overwegingen
 
-### <a name="basic-service-tier"></a>Servicelaag Basic
+### <a name="basic-service-tier"></a>Basic-serviceniveau
 
 | **Reken grootte** | **Basic** |
 | :--- | --: |
 | Maximaal aantal DTU's | 5 |
 | Inbegrepen opslag (GB) | 2 |
 | Maximum aantal opslag opties (GB) | 2 |
-| Maximale OLTP-opslag in het geheugen (GB) |N.v.t. |
+| Maximale OLTP-opslag in het geheugen (GB) |N/A |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen) | 30 |
 | Maximaal aantal gelijktijdige sessies | 300 |
 |||
@@ -49,14 +49,14 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 >Met betrekking tot gegevens opslag wordt de Basic-servicelaag op standaard pagina-blobs geplaatst. Standaard pagina-blobs maken gebruik van schijven op basis van harde schijven (HDD) en zijn het meest geschikt voor ontwikkelings-, test-en andere weinig frequent gebruikte workloads die minder gevoelig zijn voor prestatie variaties.
 >
 
-### <a name="standard-service-tier"></a>Servicelaag Standard
+### <a name="standard-service-tier"></a>Standard-serviceniveau
 
 | **Reken grootte** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | Maximaal aantal DTU's | 10 | 20 | 50 | 100 |
 | Inbegrepen opslag (GB) | 250 | 250 | 250 | 250 |
 | Maximum aantal opslag opties (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Maximale OLTP-opslag in het geheugen (GB) | N.v.t. | N.v.t. | N.v.t. | N.v.t. |
+| Maximale OLTP-opslag in het geheugen (GB) | N/A | N/A | N/A | N/A |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen)| 60 | 90 | 120 | 200 |
 | Maximaal aantal gelijktijdige sessies |600 | 900 | 1200 | 2400 |
 ||||||
@@ -74,18 +74,18 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 | Maximaal aantal DTU's | 200 | 400 | 800 | 1600 | 3000 |
 | Inbegrepen opslag (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximum aantal opslag opties (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Maximale OLTP-opslag in het geheugen (GB) | N.v.t. | N.v.t. | N.v.t. | N.v.t. |N.v.t. |
+| Maximale OLTP-opslag in het geheugen (GB) | N/A | N/A | N/A | N/A |N/A |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen)| 400 | 800 | 1600 | 3200 |6000 |
 | Maximaal aantal gelijktijdige sessies |4800 | 9600 | 19200 | 30.000 |30.000 |
 |||||||
 
-### <a name="premium-service-tier"></a>Premium servicelaag
+### <a name="premium-service-tier"></a>Premium-serviceniveau
 
 | **Reken grootte** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maximaal aantal DTU's | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Inbegrepen opslag (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
-| Maximum aantal opslag opties (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
+| Inbegrepen opslag (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
+| Maximum aantal opslag opties (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
 | Maximale OLTP-opslag in het geheugen (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Maximaal aantal gelijktijdige sessies | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |

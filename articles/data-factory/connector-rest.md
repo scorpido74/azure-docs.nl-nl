@@ -53,11 +53,11 @@ Deze algemene REST-connector ondersteunt met name:
 
 De volgende secties bevatten informatie over eigenschappen die u kunt gebruiken voor het definiëren van Data Factory entiteiten die specifiek zijn voor de REST-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
 De volgende eigenschappen worden ondersteund voor de REST-gekoppelde service:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** moet worden ingesteld op **RestService**. | Ja |
 | url | De basis-URL van de REST-service. | Ja |
@@ -69,9 +69,9 @@ De volgende eigenschappen worden ondersteund voor de REST-gekoppelde service:
 
 Stel de eigenschap **authenticationType** in op **Basic**. Naast de algemene eigenschappen die in de voor gaande sectie worden beschreven, geeft u de volgende eigenschappen op:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| userName | De gebruikers naam die moet worden gebruikt voor toegang tot het REST-eind punt. | Ja |
+| Gebruikers | De gebruikers naam die moet worden gebruikt voor toegang tot het REST-eind punt. | Ja |
 | wachtwoord | Het wacht woord voor de gebruiker (de waarde van de **gebruikers naam** ). Markeer dit veld als **SecureString** -type om het veilig op te slaan in Data Factory. U kunt ook [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 
 **Voorbeeld**
@@ -102,11 +102,11 @@ Stel de eigenschap **authenticationType** in op **Basic**. Naast de algemene eig
 
 Stel de eigenschap **authenticationType** in op **AadServicePrincipal**. Naast de algemene eigenschappen die in de voor gaande sectie worden beschreven, geeft u de volgende eigenschappen op:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | servicePrincipalId | Geef de client-ID van de Azure Active Directory toepassing op. | Ja |
 | servicePrincipalKey | Geef de sleutel van de Azure Active Directory toepassing op. Markeer dit veld als **SecureString** om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| tenant | De tenantgegevens (domain name of tenant-ID) opgeven in uw toepassing zich bevindt. Deze ophalen door de muis in de rechterbovenhoek van de Azure-portal. | Ja |
+| bouw | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
 | aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie, bijvoorbeeld `https://management.core.windows.net`.| Ja |
 
 **Voorbeeld**
@@ -139,7 +139,7 @@ Stel de eigenschap **authenticationType** in op **AadServicePrincipal**. Naast d
 
 Stel de eigenschap **authenticationType** in op **ManagedServiceIdentity**. Naast de algemene eigenschappen die in de voor gaande sectie worden beschreven, geeft u de volgende eigenschappen op:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie, bijvoorbeeld `https://management.core.windows.net`.| Ja |
 
@@ -171,7 +171,7 @@ Zie [gegevens sets en gekoppelde services](concepts-datasets-linked-services.md)
 
 Als u gegevens wilt kopiëren uit REST, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de DataSet moet worden ingesteld op **RestResource**. | Ja |
 | relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. De HTTP-connector kopieert gegevens van de gecombineerde URL: `[URL specified in linked service]/[relative URL specified in dataset]`. | Nee |
@@ -197,7 +197,7 @@ Als u `requestMethod`, `additionalHeaders`, `requestBody` en `paginationRules` i
 }
 ```
 
-## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
+## <a name="copy-activity-properties"></a>Eigenschappen van Kopieer activiteit
 
 In deze sectie vindt u een lijst met eigenschappen die door de REST-bron worden ondersteund.
 
@@ -207,7 +207,7 @@ Zie [pijp lijnen](concepts-pipelines-activities.md)voor een volledige lijst met 
 
 De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **RestSource**. | Ja |
 | requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | Nee |

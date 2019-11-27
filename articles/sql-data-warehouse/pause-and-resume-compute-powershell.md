@@ -56,7 +56,7 @@ Zoek de databasenaam, de servernaam en de resourcegroep op voor het datawarehous
 
 Volg deze stappen om de locatiegegevens voor uw datawarehouse op te zoeken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Klik op de linkerpagina in Azure Portal op **SQL-databases**.
 3. Selecteer **mySampleDataWarehouse** op de pagina **SQL-databases**. De datawarehouse wordt geopend.
 

@@ -37,15 +37,15 @@ Meer informatie over de verschillende mogelijkheden die door [Netwerkprestatieme
  
 ## <a name="supported-regions"></a>Ondersteunde regio's
 NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de volgende regio's:
-* Europa -west
-* US - west-centraal
-* US - noord-centraal
-* US - oost
+* Europa - west
+* VS - west-centraal
+* VS - noord-centraal
+* VS - oost
 * Japan-Oost
 * Azië - zuidoost
 * Zuid-Oost-Australië
 * Australië - centraal
-* Australië - oost
+* Australië Oost
 * Zuid-Brittannië
 * India - centraal
 * Virginia van de Amerikaanse overheid
@@ -157,7 +157,7 @@ Configureer de gewenste mogelijkheden:
 
  
 
-## <a name="data-collection-details"></a>Details van de verzameling gegevens
+## <a name="data-collection-details"></a>Details van gegevens verzameling
 Voor het verzamelen van gegevens over verlies en latentie, Netwerkprestatiemeter gebruikt TCP SYN-SYNACK-ACK-Handshake-pakketten wanneer u TCP kiest als protocol. Netwerkprestatiemeter gebruikt ICMP ECHO ICMP-ECHO antwoord wanneer u ICMP als protocol kiest. Trace route wordt ook gebruikt om topologie gegevens op te halen.
 
 De volgende tabel toont methoden voor gegevens verzameling en andere informatie over hoe gegevens worden verzameld voor Netwerkprestatiemeter.

@@ -1,5 +1,5 @@
 ---
-title: Algemene problemen
+title: Algemene problemen oplossen
 description: Meer informatie over het oplossen van veelvoorkomende problemen wanneer u Azure Container Instances implementeert, uitvoert of beheert
 ms.topic: article
 ms.date: 09/25/2019
@@ -22,7 +22,7 @@ Als u aanvullende ondersteuning nodig hebt, raadpleegt u de beschik bare **Help 
 
 Bij het definiëren van de container specificatie, moeten bepaalde para meters worden uitgebreid tot naamgevings beperkingen. Hieronder ziet u een tabel met specifieke vereisten voor container groep eigenschappen. Zie [naamgevings conventies][azure-name-restrictions] in de Azure Architecture Center voor meer informatie over Azure-naamgevings conventies.
 
-| Bereik | Lengte | Hoofdlettergebruik | Geldige tekens | Voorgesteld patroon | Voorbeeld |
+| Scope | Lengte | Hoofdlettergebruik | Geldige tekens | Voorgesteld patroon | Voorbeeld |
 | --- | --- | --- | --- | --- | --- |
 | Naam van container groep | 1-64 |Niet hoofdlettergevoelig |Alfanumerieke tekens en afbreek streepjes, behalve het eerste of laatste teken |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Containernaam | 1-64 |Niet hoofdlettergevoelig |Alfanumerieke tekens en afbreek streepjes, behalve het eerste of laatste teken |`<name>-<role>-CG<number>` |`web-batch-CG1` |

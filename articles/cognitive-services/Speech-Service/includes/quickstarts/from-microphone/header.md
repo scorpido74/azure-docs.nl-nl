@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: spraak herkennen vanuit een microfoon-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme

@@ -39,7 +39,7 @@ Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.
 
 ### <a name="declare-app-roles-using-azure-portal"></a>App-rollen declareren met Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer uw account in de bovenste balk en **Schakel vervolgens over naar de map**.
 1. Zodra het deel venster voor het **adres lijst** en-abonnement wordt geopend, kiest u de Active Directory Tenant waar u uw toepassing wilt registreren in de lijst **Favorieten** of **alle directory's** .
 1. Selecteer **alle services** in het Linkernavigatie-navigatie venster en kies **Azure Active Directory**.

@@ -75,7 +75,7 @@ Met behulp van Azure Machine Learning wordt de gegevens drift bewaakt via data s
 
 Voor de doel-DataSet moet de `timeseries` Trait worden ingesteld door de time stamp-kolom op te geven van een kolom in de gegevens of een virtuele kolom die is afgeleid van het pad patroon van de bestanden. Dit kan worden gedaan met behulp van de python-SDK of Azure Machine Learning Studio. Een kolom met een ' fijne korrel ' tijds tempel moet worden opgegeven om `timeseries` eigenschappen toe te voegen aan de gegevensset. Als uw gegevens zijn gepartitioneerd in mapstructuur met tijd gegevens, zoals {JJJJ/MM/DD}, kunt u een virtuele kolom maken met de patroon instelling pad en instellen als de tijds tempel "grof korrels" om het belang van de tijd reeks functionaliteit te verbeteren. 
 
-#### <a name="python-sdk"></a>Python SDK
+#### <a name="python-sdk"></a>Python-SDK
 
 De methode [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) van de klasse [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) definieert de time stamp-kolom voor de gegevensset. 
 
@@ -146,8 +146,8 @@ Deze instellingen zijn voor de bewaakte pijp lijn van de geplande gegevensset, d
 | ------- | ----------- | ---- | ------- |
 | Inschakelen | Het schema in-of uitschakelen voor de monitor pijplijn van de gegevensset | Schakel het schema uit om historische gegevens te analyseren met de instelling backfill. De functie kan worden ingeschakeld nadat de monitor voor de gegevensset is gemaakt. | Ja | 
 | Latentie | Tijd, in uren, duurt het om gegevens in de gegevensset te ontvangen. Als het bijvoorbeeld drie dagen duurt voordat de gegevens in de SQL-Data Base worden inge kapseld, stelt u de gegevensset in op 72. | Kan niet worden gewijzigd nadat de monitor voor de gegevensset is gemaakt | Nee | 
-| E-mailadressen | E-mail adressen voor waarschuwingen op basis van schending van de drempel waarde voor het percentage gegevens drift. | E-mail berichten worden verzonden via Azure Monitor. | Ja | 
-| Drempelwaarde | Drempel waarde voor het percentage gegevens drift voor e-mail waarschuwingen. | Verdere waarschuwingen en gebeurtenissen kunnen worden ingesteld op veel andere metrische gegevens in de gekoppelde Application Insights resource van de werk ruimte. | Ja | 
+| E-mail adressen | E-mail adressen voor waarschuwingen op basis van schending van de drempel waarde voor het percentage gegevens drift. | E-mail berichten worden verzonden via Azure Monitor. | Ja | 
+| Spreek | Drempel waarde voor het percentage gegevens drift voor e-mail waarschuwingen. | Verdere waarschuwingen en gebeurtenissen kunnen worden ingesteld op veel andere metrische gegevens in de gekoppelde Application Insights resource van de werk ruimte. | Ja | 
 
 ### <a name="backfill-settings"></a>Backfill-instellingen
 
@@ -321,7 +321,7 @@ Kolommen, of functies, worden in de gegevensset geclassificeerd als categorische
 | Onderdeel type | Gegevenstype | Voorwaarde | Beperkingen | 
 | ------------ | --------- | --------- | ----------- |
 | Categorische gegevens | teken reeks, BOOL, int, float | Het aantal unieke waarden in de functie is kleiner dan 100 en minder dan 5% van het aantal rijen. | NULL wordt beschouwd als een eigen categorie. | 
-| Numerieke | int, float | De waarden in de functie zijn van een numeriek gegevens type en voldoen niet aan de voor waarde voor een categorische-functie. | De functie is verwijderd als > 15% van de waarden null zijn. | 
+| Cijfer | int, float | De waarden in de functie zijn van een numeriek gegevens type en voldoen niet aan de voor waarde voor een categorische-functie. | De functie is verwijderd als > 15% van de waarden null zijn. | 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -43,7 +43,7 @@ Quota voor gratis of gedeelde apps zijn:
 | **CPU (kort)** | De hoeveelheid CPU die is toegestaan voor deze app in een interval van 5 minuten. Dit quotum wordt om de vijf minuten opnieuw ingesteld. |
 | **CPU (dag)** | De totale hoeveelheid CPU die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
 | **Geheugenmetabase** | De totale hoeveelheid geheugen die is toegestaan voor deze app. |
-| **Bandbreedte** | De totale hoeveelheid uitgaande band breedte die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
+| **BAP** | De totale hoeveelheid uitgaande band breedte die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
 | **System** | De totale hoeveelheid toegestane opslag ruimte. |
 
 Het enige quotum dat van toepassing is op apps die worden gehost in *Basic*, *Standard*en *Premium* , is bestands systeem.

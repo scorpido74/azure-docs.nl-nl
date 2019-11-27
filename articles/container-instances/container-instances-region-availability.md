@@ -25,13 +25,13 @@ Zie [quota's en limieten voor Azure container instances](container-instances-quo
 
 De volgende regio's en resources zijn beschikbaar voor container groepen met Linux en [ondersteunde](container-instances-faq.md#what-windows-base-os-images-are-supported) containers op Windows Server 2016.
 
-| Locatie | OS | CPU | Geheugen (GB) |
+| Locatie | Besturingssysteem | CPU | Geheugen (GB) |
 | -------- | -- | :---: | :-----------: |
 | Canada-centraal, Centraal-India, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, VS-West | Linux | 4 | 16 |
 | Europa-west, VS-West 2 | Linux | 4 | 14 |
 | Australië-oost, Japan-Oost | Linux | 2 | 8 |
 | VS Noord-Centraal, India-zuid | Linux | 2 | 3,5 |
-| Europa -west | Windows | 4 | 16 |
+| Europa - west | Windows | 4 | 16 |
 | US - oost, US - west | Windows | 4 | 14 |
 | Australië-oost, Canada-centraal, Centraal-India, VS-midden, Azië-oost, VS-Oost 2, Japan-Oost, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, VS-West 2 | Windows | 2 | 3,5 |
 
@@ -39,10 +39,10 @@ De volgende regio's en resources zijn beschikbaar voor container groepen met Lin
 
 De volgende regio's en bronnen zijn beschikbaar voor container groepen met Windows Server 2019-containers (preview).
 
-| Locatie | OS | CPU | Geheugen (GB) |
+| Locatie | Besturingssysteem | CPU | Geheugen (GB) |
 | -------- | -- | :---: | :-----------: |
 | Zuidoost-Azië, Europa-noord, Europa-west, VS-midden, VS-Oost, VS-West, VS-West 2 | Windows | 4 | 16 |
-| US - oost 2 | Windows | 2 | 3,5 |
+| VS - oost 2 | Windows | 2 | 3,5 |
 
 
 ## <a name="availability---virtual-network-deployment-preview"></a>Beschik baarheid-implementatie van virtueel netwerk (preview-versie)

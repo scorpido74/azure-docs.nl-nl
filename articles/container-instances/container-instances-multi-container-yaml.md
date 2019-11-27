@@ -19,7 +19,7 @@ ms.locfileid: "74533594"
 
 Azure Container Instances ondersteunt de implementatie van meerdere containers op één host met behulp van een [container groep](container-instances-container-groups.md). Een container groep is handig bij het bouwen van een sollicitatie stick voor logboek registratie, bewaking of andere configuraties waarbij een service een tweede gekoppelde procedure nodig heeft.
 
-In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige configuratie voor twee containers door een [yaml-bestand](container-instances-reference-yaml.md) te implementeren met behulp van de Azure cli. Een YAML-bestand biedt een beknopt formaat voor het opgeven van de instantie-instellingen. Procedures voor:
+In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige configuratie voor twee containers door een [yaml-bestand](container-instances-reference-yaml.md) te implementeren met behulp van de Azure cli. Een YAML-bestand biedt een beknopt formaat voor het opgeven van de instantie-instellingen. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een YAML-bestand configureren

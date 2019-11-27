@@ -66,7 +66,7 @@ Wanneer de **Status** eenmaal *Uitvoeren* is, gaat u naar de FQDN van de contain
 
 ![App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser][aci-portal-07]
 
-Gefeliciteerd. Als u slechts enkele instellingen configureert, hebt u een openbaar toegankelijke toepassing in Azure Container Instances geïmplementeerd.
+Gefeliciteerd! Als u slechts enkele instellingen configureert, hebt u een openbaar toegankelijke toepassing in Azure Container Instances geïmplementeerd.
 
 ## <a name="view-container-logs"></a>Containerlogboeken ophalen
 

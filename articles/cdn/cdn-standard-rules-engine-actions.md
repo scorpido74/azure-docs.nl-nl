@@ -38,9 +38,9 @@ Instellen als ontbreekt | Als deze optie is geselecteerd en de regel overeenkomt
 
 #### <a name="additional-fields"></a>Aanvullende velden
 
-Dagen | Uren | Minuten | Seconden
+Dagen | Uur | Minuten | Seconden
 -----|-------|---------|--------
-Int | Int | Int | Int 
+Integer | Integer | Integer | Integer 
 
 ### <a name="cache-key-query-string"></a>Query reeks voor de cache sleutel
 
@@ -61,10 +61,10 @@ Gebruik deze actie om kopteksten te wijzigen die aanwezig zijn in aanvragen die 
 
 #### <a name="required-fields"></a>Vereiste velden
 
-Actie | Naam van HTTP-header | Waarde
+Bewerking | Naam van HTTP-header | Waarde
 -------|------------------|------
 Toevoegen | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in de naam van de **header** toegevoegd aan de aanvraag met de opgegeven waarde. Als de header al aanwezig is, wordt de waarde toegevoegd aan de bestaande waarde. | Tekenreeks
-Overschrijven | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in de naam van de **header** toegevoegd aan de aanvraag met de opgegeven waarde. Als de header al aanwezig is, overschrijft de opgegeven waarde de bestaande waarde. | Tekenreeks
+Schrijft | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in de naam van de **header** toegevoegd aan de aanvraag met de opgegeven waarde. Als de header al aanwezig is, overschrijft de opgegeven waarde de bestaande waarde. | Tekenreeks
 Verwijderen | Als deze optie is geselecteerd, de regel komt overeen met de opgegeven koptekst in de regel, wordt de header uit de aanvraag verwijderd. | Tekenreeks
 
 ### <a name="modify-response-header"></a>Antwoord header wijzigen
@@ -73,10 +73,10 @@ Gebruik deze actie om kopteksten te wijzigen die aanwezig zijn in antwoorden die
 
 #### <a name="required-fields"></a>Vereiste velden
 
-Actie | Naam van HTTP-header | Waarde
+Bewerking | Naam van HTTP-header | Waarde
 -------|------------------|------
 Toevoegen | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in de **header naam** , aan het antwoord toegevoegd met behulp van de opgegeven **waarde**. Als de header al aanwezig is, wordt de **waarde** aan de bestaande waarde toegevoegd. | Tekenreeks
-Overschrijven | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in de **header naam** , aan het antwoord toegevoegd met behulp van de opgegeven **waarde**. Als de header al aanwezig is, overschrijft de **waarde** de bestaande waarde. | Tekenreeks
+Schrijft | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in de **header naam** , aan het antwoord toegevoegd met behulp van de opgegeven **waarde**. Als de header al aanwezig is, overschrijft de **waarde** de bestaande waarde. | Tekenreeks
 Verwijderen | Als deze optie is geselecteerd, de regel komt overeen met de opgegeven koptekst in de regel, wordt de header uit het antwoord verwijderd. | Tekenreeks
 
 ### <a name="url-redirect"></a>URL-omleiding
@@ -105,7 +105,7 @@ Gebruik deze actie om het pad van een aanvraag die naar uw oorsprong is doorgest
 Veld | Beschrijving 
 ------|------------
 Bron patroon | Definieer het bron patroon in het URL-pad dat moet worden vervangen. Op dit moment gebruikt het bron patroon een overeenkomst op basis van voor voegsels. Als u wilt dat alle URL-paden overeenkomen, gebruikt u een slash ( **/** ) als bron patroon waarde.
-Doel | Definieer het doelpad dat moet worden gebruikt in de herschrijf bewerking. Het doelpad overschrijft het bron patroon.
+Bestemming | Definieer het doelpad dat moet worden gebruikt in de herschrijf bewerking. Het doelpad overschrijft het bron patroon.
 Niet-overeenkomend pad behouden | Als deze instelling is ingesteld op **Ja**, wordt het resterende pad na het bron patroon toegevoegd aan het nieuwe doelpad. 
 
 ## <a name="next-steps"></a>Volgende stappen

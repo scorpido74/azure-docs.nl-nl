@@ -111,7 +111,7 @@ U ziet een aantal resultaten die door de query worden weer gegeven. Als u eerst 
 
 ![Resultaten van zoekopdrachten in logboeken in Azure Portal][log-search-01]
 
-## <a name="view-events"></a>Gebeurtenissen weergeven
+## <a name="view-events"></a>Evenementen bekijken
 
 U kunt ook gebeurtenissen weer geven voor container instanties in de Azure Portal. Gebeurtenissen bevatten het tijdstip waarop het exemplaar is gemaakt en wanneer het wordt gestart. De gebeurtenis gegevens in de tabel `ContainerEvent_CL` bekijken:
 

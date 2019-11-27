@@ -24,7 +24,7 @@ Wrangling-gegevens stroom vertaalt M die is gegenereerd door Power Query online 
 
 Wrangling-gegevens stromen zijn vooral nuttig voor gegevens technici of ' burger data Integrators '.
 
-## <a name="use-cases"></a>Gebruiksvoorbeelden
+## <a name="use-cases"></a>Use cases
 
 ### <a name="fast-interactive-data-exploration-and-preparation"></a>Snel interactieve gegevens verkennen en voorbereiden
 
@@ -42,9 +42,9 @@ Scan uw gegevens visueel op een code-Free manier om uitschieters en afwijkingen 
 
 | Connector | Gegevensindeling | Verificatietype |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | Accountsleutel |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Service-principal |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | Account sleutel, Service-Principal |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | BESTAND | Account sleutel |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | BESTAND | Service-principal |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | BESTAND | Account sleutel, Service-Principal |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | SQL-verificatie |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL-verificatie |
 

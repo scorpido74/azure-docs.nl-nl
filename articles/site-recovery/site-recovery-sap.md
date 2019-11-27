@@ -59,22 +59,22 @@ In deze referentie architectuur wordt SAP NetWeaver uitgevoerd in een Windows-om
 
 ## <a name="disaster-recovery-considerations"></a>Aandachtspunten voor herstel na nood gevallen
 
-Voor herstel na noodgevallen (DR), moet u een failover uitvoeren naar een secundaire regio kunnen zijn. Voor elke laag wordt een andere strategie gebruikt om DR (Disaster Recovery, herstel na noodgeval) te bieden.
+Voor nood herstel (DR) moet u een failover naar een secundaire regio kunnen uitvoeren. Voor elke laag wordt een andere strategie gebruikt om DR (Disaster Recovery, herstel na noodgeval) te bieden.
 
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>Vm's met een SAP Web dispatcher-pool 
-Het onderdeel Web Dispatcher wordt gebruikt als een load balancer voor SAP-verkeer tussen de SAP-toepassingsservers. Voor een hoge Beschik baarheid van het onderdeel webdispatcher, Azure Load Balancer wordt gebruikt voor het implementeren van de installatie van de parallelle webdispatcher in een Round-Robin configuratie voor HTTP (S)-verkeer distributie over de beschik bare webdispatchers in de Balancer-pool. Dit wordt gerepliceerd met behulp van Azure Site Recovery (ASR) en automatiserings scripts worden gebruikt voor het configureren van load balancer op het gebied voor herstel na nood gevallen. 
+Het onderdeel Web dispatcher wordt gebruikt als load balancer voor SAP-verkeer tussen de SAP-toepassings servers. Voor een hoge Beschik baarheid van het onderdeel webdispatcher, Azure Load Balancer wordt gebruikt voor het implementeren van de installatie van de parallelle webdispatcher in een Round-Robin configuratie voor HTTP (S)-verkeer distributie over de beschik bare webdispatchers in de Balancer-pool. Dit wordt gerepliceerd met behulp van Azure Site Recovery (ASR) en automatiserings scripts worden gebruikt voor het configureren van load balancer op het gebied voor herstel na nood gevallen. 
 
 #### <a name="vms-running-application-servers-pool"></a>Virtuele machines met een groep toepassings servers
-Voor het beheren van aanmeldingsgroepen voor ABAP-toepassingsservers, wordt de transactie SMLG gebruikt. De load balancer-functie binnen de berichtenserver van de centrale Services wordt gebruikt voor het distribueren van werkbelasting tussen SAP-toepassingen voor servers voor SAPGUIs en RFC verkeer. Dit wordt gerepliceerd met Azure Site Recovery 
+Als u aanmeldings groepen wilt beheren voor ABAP toepassings servers, wordt de SMLG-trans actie gebruikt. Er wordt gebruikgemaakt van de functie taak verdeling in de berichten server van de centrale Services om de werk belasting over de groep SAP-toepassings servers te verdelen voor SAPGUIs en RFC-verkeer. Dit wordt gerepliceerd met Azure Site Recovery 
 
 #### <a name="vms-running-sap-central-services-cluster"></a>Vm's met een SAP Central Services-cluster
-Deze referentiearchitectuur centrale Services worden uitgevoerd op virtuele machines in de toepassingslaag. De centrale Services is een potentieel single point of failure (SPOF) bij de implementatie op een enkele virtuele machine, normale implementatie als hoge beschikbaarheid geen vereiste is.<br>
+Deze referentie architectuur voert centrale services uit op virtuele machines in de toepassingslaag. De centrale Services zijn een potentieel Single Point of Failure (SPOF) wanneer het wordt geïmplementeerd op één virtuele machine, typische implementatie wanneer hoge Beschik baarheid geen vereiste is.<br>
 
 Als u een oplossing met hoge Beschik baarheid wilt implementeren, kunt u een gedeeld schijf cluster of een bestands share-cluster gebruiken. Als u Vm's wilt configureren voor een gedeeld schijf cluster, gebruikt u Windows Server-failovercluster. Cloud-witness wordt aanbevolen als een quorumwitness. 
  > [!NOTE]
  > Azure Site Recovery repliceert de Cloud-Witness daarom het is raadzaam om de cloudwitness in het gebied voor nood herstel te implementeren.
 
-Ter ondersteuning van de failovercluster-omgeving voert [SIOS data keeper cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) de functie cluster Shared volume uit door onafhankelijke schijven te repliceren die eigendom zijn van de cluster knooppunten. Azure biedt geen systeemeigen ondersteuning voor gedeelde schijven en daarom vereist SIOS-oplossingen. 
+Ter ondersteuning van de failovercluster-omgeving voert [SIOS data keeper cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) de functie cluster Shared volume uit door onafhankelijke schijven te repliceren die eigendom zijn van de cluster knooppunten. Azure biedt geen systeem eigen ondersteuning voor gedeelde schijven en vereist daarom oplossingen die door SIOS worden geboden. 
 
 Een andere manier om clustering af te handelen is het implementeren van een bestands share cluster. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) heeft het implementatie patroon van de centrale Services recent gewijzigd om toegang te krijgen tot de/sapmnt Global-directory's via een UNC-pad. Het is echter nog steeds raadzaam om ervoor te zorgen dat de/sapmnt UNC-share Maxi maal beschikbaar is. Dit kan worden gedaan in het centrale Services-exemplaar met behulp van Windows Server-failovercluster met scale out file server (SOFS) en de functie Opslagruimten Direct (S2D) in Windows Server 2016. 
  > [!NOTE]

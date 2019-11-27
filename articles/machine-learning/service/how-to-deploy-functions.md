@@ -42,7 +42,7 @@ Met Azure Machine Learning kunt u docker-installatie kopieën maken op basis van
     >
     > Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
 
-## <a name="prepare-for-deployment"></a>Implementatie voorbereiden
+## <a name="prepare-for-deployment"></a>Voorbereiden op implementatie
 
 Voordat u implementeert, moet u definiëren wat er nodig is om het model als een webservice uit te voeren. In de volgende lijst worden de basis items beschreven die nodig zijn voor een implementatie:
 

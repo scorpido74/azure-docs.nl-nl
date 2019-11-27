@@ -69,7 +69,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 |Naam  |Beschrijving  |
 |---------|---------|
-|locatie     | Vereist. Resourcelocatie.        |
+|location     | Vereist. Resource locatie.        |
 
 ## <a name="list-user-assigned-managed-identities"></a>Door de gebruiker toegewezen beheerde identiteiten weer geven
 

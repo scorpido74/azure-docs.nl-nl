@@ -23,7 +23,7 @@ Het *gitRepo* -volume koppelt een directory en kloont de opgegeven Git-opslag pl
 
 Wanneer u een *gitRepo* -volume koppelt, kunt u drie eigenschappen instellen voor het configureren van het volume:
 
-| Eigenschap | Vereist | Beschrijving |
+| Eigenschap | Verplicht | Beschrijving |
 | -------- | -------- | ----------- |
 | `repository` | Ja | De volledige URL, inclusief `http://` of `https://`, van de Git-opslag plaats die moet worden gekloond.|
 | `directory` | Nee | De map waarin de opslag plaats moet worden gekloond. Het pad mag niet bevatten of beginnen met "`..`".  Als u`.`opgeeft, wordt de opslag plaats gekloond in de map van het volume. Anders wordt de Git-opslag plaats gekloond in een submap van de opgegeven naam binnen de map volume. |

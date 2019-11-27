@@ -48,7 +48,7 @@ Beheerde identiteiten voor Azure-resources bieden een [Service-Principal-object]
 
 Met beheerde identiteiten voor Azure-resources hoeft de script-client niet meer te worden uitgevoerd, omdat deze zich kan aanmelden onder de beheerde identiteiten voor de service-principal voor Azure-resources. 
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 Het volgende script laat zien hoe u:
 

@@ -59,7 +59,7 @@ Azure AD Graph API biedt de volgende functies:
     
     Zowel gedelegeerde als toepassings machtigingen vertegenwoordigen een bevoegdheid die wordt weer gegeven door de Azure AD-Graph API en kan worden aangevraagd door client toepassingen via de functies voor toepassings registratie van machtigingen in de [Azure Portal](https://portal.azure.com). [Azure AD Graph API-machtigings bereik](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) biedt informatie over wat er beschikbaar is voor gebruik door uw client toepassing.
 
-## <a name="scenarios"></a>Scenario 's
+## <a name="scenarios"></a>Scenario's
 
 Azure AD Graph API maakt veel toepassings scenario's mogelijk. De volgende scenario's zijn het meest gangbaar:
 

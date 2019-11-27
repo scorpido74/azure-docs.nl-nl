@@ -50,7 +50,7 @@ Of het domein na het aanroepen of realtime is, Azure biedt een reeks rijpe en op
 
 [Spraak naar tekst](speech-to-text.md) is de meest gewenste-na-functie in een aanroep Center-oplossing. Omdat veel van de downstream Analytics-processen zijn gebaseerd op getranscribeerde tekst, is de fout verhouding van Word (_wer_) van het hoogste belang. Een van de belangrijkste uitdagingen in Call Center transcriptie is het geluid dat zich voordoet in het Call Center (bijvoorbeeld andere agents die op de achtergrond praten), de vele taal instellingen en-dialecten, evenals de lage kwaliteit van het daad werkelijke telefoon signaal. WER is zeer gecorreleerd met de manier waarop de akoestische en taal modellen zijn getraind voor een bepaalde land instelling, waardoor de mogelijkheid om het model aan uw land instelling aan te passen, belang rijk is. Onze meest recente gecombineerde versie 4. x modellen zijn de oplossing voor zowel transcriptie nauwkeurigheid als latentie. Getraind met tien duizenden uren aan akoestische gegevens en miljarden aan lexicale informatie, zijn uniforme modellen de meest nauw keurige modellen in de markt om Call Center-gegevens te transcriberen.
 
-### <a name="sentiment"></a>Sentiment
+### <a name="sentiment"></a>Stemming
 
 Gauging of de klant een goede ervaring heeft met een van de belangrijkste aspecten van spraak analyse, wanneer deze wordt toegepast op de oproep centrum ruimte. Onze [batch transcriptie-API](batch-transcription.md) biedt sentiment-analyse per utterance. U kunt de set waarden die zijn verkregen als onderdeel van een transcript van een oproep samen voegen om de sentiment van de oproep voor zowel uw agents als de klant te bepalen.
 
@@ -70,7 +70,7 @@ Onze end-to-end-latentie is aanzienlijk laag voor de verschillende technologieë
 
 Onze nieuwe stemmen worden ook niet onderscheiden van mensen stemmen. U kunt onze stemmen gebruiken om uw bot unieke persoonlijkheid te geven.
 
-### <a name="search"></a>Zoeken
+### <a name="search"></a>Search
 
 Een andere nietmachine van analyses is het identificeren van interacties waar een bepaalde gebeurtenis of ervaring heeft plaatsgevonden. Dit gebeurt meestal met een van de twee benaderingen; een ad-hoc-zoek opdracht waarbij de gebruiker simpelweg een woord groep en het systeem reageert, of een meer gestructureerde query waarbij een analist een set logische instructies kan maken die een scenario in een aanroep identificeert en vervolgens elke aanroep kan worden geïndexeerd op basis van die set query's. Een goed Zoek voorbeeld is de alomtegenwoordige-nalevings verklaring "deze oproep moet worden geregistreerd voor kwaliteits doeleinden... ". Veel bedrijven willen er zeker van zijn dat hun agents deze disclaimer aan klanten leveren voordat de aanroep daad werkelijk wordt geregistreerd. De meeste analyse systemen hebben de mogelijkheid om de gedragingen te trenden die worden gevonden door query-en zoek algoritmen, en deze rapportage van trends is uiteindelijk een van de belangrijkste functies van een Analytics-systeem. Met de functie [cognitieve Services](https://azure.microsoft.com/services/cognitive-services/directory/search/) kunt u uw end-to-end-oplossing aanzienlijk verbeteren met indexerings-en zoek mogelijkheden.
 
@@ -125,7 +125,7 @@ Een ander scenario is directe integratie met behulp van SIP (Session Initiation 
 | -------------- | ----- | ----------- |
 | Spraak naar tekst | [Akoestisch model](how-to-customize-acoustic-models.md) | Maak een aangepast akoestische model voor toepassingen, hulpprogram ma's of apparaten die in bepaalde omgevingen worden gebruikt, zoals in een auto of op een fabriek, elk met specifieke registratie voorwaarden. Voor beelden zijn onder andere geaccentde spraak, specifieke achtergrond geluiden of het gebruik van een specifieke microfoon voor de opname. |
 |                | [Taalmodel](how-to-customize-language-model.md) | Maak een aangepast taal model om transcriptie te verbeteren van de branchespecifieke woorden lijst en grammatica, zoals medische terminologie of het jargon. |
-|                | [Uitspraakmodel](how-to-customize-pronunciation.md) | Met een aangepast uitspraak model kunt u het fonetische formulier definiëren en weer geven voor een woord of term. Dit is handig voor het verwerken van aangepaste voorwaarden, zoals productnamen of afkortingen. Alles wat u nodig hebt om aan de slag te gaan is een bestand met een uitspraak, een eenvoudig `.txt` bestand. |
+|                | [Uitspraakmodel](how-to-customize-pronunciation.md) | Met een aangepast uitspraak model kunt u het fonetische formulier definiëren en weer geven voor een woord of term. Het is handig voor het afhandelen van aangepaste voor waarden, zoals product namen of acroniemen. Alles wat u nodig hebt om aan de slag te gaan is een bestand met een uitspraak, een eenvoudig `.txt` bestand. |
 | Tekst naar spraak | [Spraakstijl](how-to-customize-voice-font.md) | Met aangepaste spraak lettertypen kunt u een herken bare, een-op-een-spraak voor uw merk maken. Er is slechts een kleine hoeveelheid gegevens nodig om aan de slag te gaan. Hoe meer gegevens u verstrekt, des te meer natuurlijke en Human-like uw gesp roken letter type klinkt. |
 
 ## <a name="sample-code"></a>Voorbeeldcode

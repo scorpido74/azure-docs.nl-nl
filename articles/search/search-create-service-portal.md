@@ -33,7 +33,7 @@ U kunt ook [voordelen voor MSDN-abonnees activeren](https://azure.microsoft.com/
 
 ## <a name="find-azure-cognitive-search"></a>Azure Cognitive Search zoeken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Klik op het plusteken (+ Resource maken) in de linkerbovenhoek.
 3. Gebruik de zoek balk om ' Azure Cognitive Search ' te vinden of navigeer naar de resource via **Web** > **Azure Cognitive Search**.
 

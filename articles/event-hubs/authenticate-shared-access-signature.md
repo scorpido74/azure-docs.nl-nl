@@ -20,7 +20,7 @@ Shared Access Signature (SAS) biedt u gedetailleerde controle over het type toeg
 
 - Het interval waarover de SA'S geldig zijn, met inbegrip van de begin tijd en verloop tijd.
 - De machtigingen die door de SAS worden verleend. Een SAS voor een Event Hubs naam ruimte kan bijvoorbeeld de machtiging Luis teren verlenen, maar niet de machtiging verzenden.
-- Alleen clients die geldige referenties kunnen gegevens verzenden naar een event hub.
+- Alleen clients die geldige referenties weer geven, kunnen gegevens verzenden naar een Event Hub.
 - Een client kan geen andere client imiteren.
 - Een Rouge-client kan worden geblokkeerd voor het verzenden van gegevens naar een Event Hub.
 
@@ -77,7 +77,7 @@ Een SAS-token is geldig voor alle resources die worden voorafgegaan door de <res
 ### <a name="generating-a-signaturetoken-from-a-policy"></a>Een hand tekening (token) genereren op basis van een beleid 
 In de volgende sectie ziet u hoe u een SAS-token genereert met behulp van een handtekening beleid voor gedeelde toegang
 
-#### <a name="nodejs"></a>Node.js
+#### <a name="nodejs"></a>NodeJS
 
 ```javascript
 function createSharedAccessToken(uri, saName, saKey) { 
@@ -95,7 +95,7 @@ function createSharedAccessToken(uri, saName, saKey) {
         encodeURIComponent(hash) + '&se=' + ttl + '&skn=' + saName; 
 ```
 
-#### <a name="java"></a>JAVA
+#### <a name="java"></a>DIAGNOSTISCH
 
 ```java
 private static String GetSASToken(String resourceUri, String keyName, String key)
@@ -179,13 +179,13 @@ private static string createToken(string resourceUri, string keyName, string key
 ```
 
 ## <a name="authenticating-event-hubs-publishers-with-sas"></a>Event Hubs uitgevers verifiëren met SAS 
-Een gebeurtenisuitgever definieert een virtuele-eindpunt voor een event hub. De uitgever kan alleen worden gebruikt om berichten te verzenden naar een Event Hub en geen berichten te ontvangen.
+Een uitgever van een gebeurtenis definieert een virtueel eind punt voor een Event Hub. De uitgever kan alleen worden gebruikt om berichten te verzenden naar een Event Hub en geen berichten te ontvangen.
 
-Normaal gesproken een event hub maakt gebruik van een uitgever per client. Alle berichten die worden verzonden naar een van de uitgevers van een event hub zijn in de wachtrij in die event hub. Uitgevers maken nauw keurig toegangs beheer mogelijk.
+Normaal gesp roken maakt een Event Hub gebruik van één uitgever per client. Alle berichten die worden verzonden naar een van de uitgevers van een Event Hub, worden in de wachtrij geplaatst binnen die Event Hub. Uitgevers maken nauw keurig toegangs beheer mogelijk.
 
-Elke client Event Hubs is een unieke token, dat is geüpload naar de client toegewezen. De tokens worden zodanig gegenereerd dat elk uniek token toegang verleent tot een andere unieke Uitgever. Een client die een token bevat, kan slechts naar één uitgever en geen andere uitgever verzenden. Als meerdere clients hetzelfde token delen, deelt elk-client de uitgever.
+Aan elke Event Hubs-client wordt een uniek token toegewezen, dat wordt geüpload naar de client. De tokens worden zodanig gegenereerd dat elk uniek token toegang verleent tot een andere unieke Uitgever. Een client die een token bevat, kan slechts naar één uitgever en geen andere uitgever verzenden. Als meerdere clients hetzelfde token delen, deelt elk-client de uitgever.
 
-Alle tokens worden toegewezen met SAS-sleutels. Normaal gesproken zijn alle tokens ondertekend met dezelfde sleutel. Clients zijn niet op de hoogte van de sleutel, waardoor clients geen productie tokens meer kunnen produceren. Clients werken op dezelfde tokens totdat ze verlopen.
+Alle tokens worden toegewezen met SAS-sleutels. Normaal gesp roken zijn alle tokens met dezelfde sleutel ondertekend. Clients zijn niet op de hoogte van de sleutel, waardoor clients geen productie tokens meer kunnen produceren. Clients werken op dezelfde tokens totdat ze verlopen.
 
 U moet bijvoorbeeld een regel voor het verzenden van een autorisatie definiëren om autorisatie regels op te geven die zijn beperkt tot het verzenden/publiceren naar Event Hubs. Dit kan worden gedaan op het niveau van de naam ruimte of een nauw keurigere Scope geven aan een bepaalde entiteit (Event hubs-instantie of een onderwerp). Een client of een toepassing die met een dergelijke gedetailleerde toegang is gericht, wordt Event Hubs Publisher genoemd. Voer hiertoe de volgende stappen uit:
 
@@ -207,16 +207,16 @@ U moet bijvoorbeeld een regel voor het verzenden van een autorisatie definiëren
 
 
 > [!NOTE]
-> Hoewel het niet wordt aangeraden, is het mogelijk om apparaten met tokens te voorzien die toegang verlenen tot een Event Hub of een naam ruimte. Elk apparaat dat dit token bevat, kan berichten rechtstreeks naar die Event Hub verzenden. Daarnaast wordt het apparaat kan niet worden op de blokkeringslijst naar die event hub verzendt.
+> Hoewel het niet wordt aangeraden, is het mogelijk om apparaten met tokens te voorzien die toegang verlenen tot een Event Hub of een naam ruimte. Elk apparaat dat dit token bevat, kan berichten rechtstreeks naar die Event Hub verzenden. Bovendien kan het apparaat niet worden geblack van verzen ding naar die Event Hub.
 > 
 > Het wordt altijd aanbevolen specifieke en nauw keurige bereiken te geven.
 
 > [!IMPORTANT]
-> Zodra de tokens zijn gemaakt, moet elke client is ingericht met een eigen unieke token.
+> Zodra de tokens zijn gemaakt, wordt elke client ingericht met een eigen uniek token.
 >
-> Wanneer de client gegevens naar een Event Hub verzendt, wordt de aanvraag met het token gecodeerd. Om te voorkomen dat een aanvaller niet kan worden afgeluisterd en stelen van het token, moet de communicatie tussen de client en de event hub vindt plaats via een versleuteld kanaal.
+> Wanneer de client gegevens naar een Event Hub verzendt, wordt de aanvraag met het token gecodeerd. De communicatie tussen de client en het Event Hub moet plaatsvinden via een versleuteld kanaal om te voor komen dat een aanvaller het token tegenluistert en stelen.
 > 
-> Als een token wordt gestolen door een aanvaller, kan de aanvaller de wie een token is gestolen client imiteren. Als u een Publisher op de zwarte lijst maakt, wordt die client onbruikbaar weer gegeven totdat er een nieuw token wordt ontvangen dat gebruikmaakt van een andere uitgever.
+> Als een token door een aanvaller wordt gestolen, kan de aanvaller de client imiteren waarvan het token is gestolen. Als u een Publisher op de zwarte lijst maakt, wordt die client onbruikbaar weer gegeven totdat er een nieuw token wordt ontvangen dat gebruikmaakt van een andere uitgever.
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>Event Hubs consumenten verifiëren met SAS 

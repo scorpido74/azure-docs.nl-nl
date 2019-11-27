@@ -28,12 +28,12 @@ ZRS is beschikbaar voor blok-blobs, niet-schijf pagina-blobs, standaard bestands
 
 Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende regio's:
 
-- Azië - zuidoost
-- Europa - noord
-- Europa - west
+- Azië (zuidoost)
+- Europa (noord)
+- Europa (west)
 - Frankrijk - centraal
-- Japan - oost
-- Verenigd Koninkrijk Zuid
+- Japan - Oost
+- VK - zuid
 - US - centraal
 - US - oost
 - US - oost 2
@@ -41,7 +41,7 @@ Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende reg
 
 Voor FileStorage-accounts (Premium-bestands shares) en BlockBlobStorage-accounts (Premium-blok-blobs) is ZRS algemeen beschikbaar in de volgende regio's:
 
-- Europa - west
+- Europa (west)
 - US - oost
 
 Micro soft blijft ZRS inschakelen in extra Azure-regio's. Controleer regel matig de pagina met [updates voor Azure-Services](https://azure.microsoft.com/updates/) voor informatie over nieuwe regio's.
@@ -98,14 +98,14 @@ Houd u aan de volgende beperkingen voor Livemigratie:
 U kunt Live migratie aanvragen via de [ondersteunings portal van Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Selecteer in de portal het opslag account dat u wilt converteren naar ZRS.
 1. **Nieuwe ondersteunings aanvraag** selecteren
 2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service** **opslag account beheer** en de resource die u wilt converteren naar ZRS. 
-3. Selecteer **Volgende**. 
+3. Selecteer **Next**. 
 4. Geef de volgende waarden op voor het **probleem** gedeelte: 
     - **Ernst**: behoud de standaard waarde in.
     - **Probleem type**: **gegevens migratie**selecteren.
     - **Categorie**: Selecteer **migreren naar ZRS**.
     - **Titel**: Typ een beschrijvende titel, bijvoorbeeld ZRS- **account migratie**.
     - **Details**: Typ meer details in het vak **Details** , bijvoorbeeld ik wil migreren naar ZRS vanuit [LRS, GRS] in de regio \_\_. 
-5. Selecteer **Volgende**.
+5. Selecteer **Next**.
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
 7. Selecteer **Maken**.
 

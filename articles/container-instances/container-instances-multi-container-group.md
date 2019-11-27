@@ -19,7 +19,7 @@ ms.locfileid: "74533626"
 
 Azure Container Instances ondersteunt de implementatie van meerdere containers op één host met behulp van een [container groep](container-instances-container-groups.md). Een container groep is handig bij het bouwen van een sollicitatie stick voor logboek registratie, bewaking of andere configuraties waarbij een service een tweede gekoppelde procedure nodig heeft.
 
-In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige configuratie voor twee containers door een Azure Resource Manager-sjabloon te implementeren met behulp van de Azure CLI. Procedures voor:
+In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige configuratie voor twee containers door een Azure Resource Manager-sjabloon te implementeren met behulp van de Azure CLI. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een sjabloon voor een groep met meerdere containers configureren

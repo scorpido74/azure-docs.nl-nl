@@ -97,7 +97,7 @@ Als uw organisatie geen nood herstel-en failover-strategie heeft voor synchronis
 
 ![Een scherm opname van Azure AD Connect configuratie van de faserings modus](./media/active-directory-ops-guide/active-directory-ops-img1.png)
 
-#### <a name="stay-current"></a>Blijf op de hoogte
+#### <a name="stay-current"></a>Op de hoogte blijven
 
 Micro soft updates Azure AD Connect regel matig. Blijf op de hoogte om te profiteren van de prestatie verbeteringen, fout oplossingen en nieuwe mogelijkheden die elke nieuwe versie biedt.
 

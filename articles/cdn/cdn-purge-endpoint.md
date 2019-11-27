@@ -34,7 +34,7 @@ De best practice om ervoor te zorgen dat uw gebruikers altijd de nieuwste kopie 
 
 In deze zelf studie wordt u begeleid bij het opschonen van assets van alle Edge-knoop punten van een eind punt.
 
-## <a name="walkthrough"></a>Kennismaking
+## <a name="walkthrough"></a>Walkthrough
 1. Blader in [Azure Portal](https://portal.azure.com)naar het CDN-profiel met het eind punt dat u wilt leegmaken.
 2. Klik op de Blade CDN-profiel op de knop opschonen.
    

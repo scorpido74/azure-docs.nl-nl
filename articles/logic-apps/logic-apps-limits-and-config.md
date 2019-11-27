@@ -100,10 +100,10 @@ Dit zijn de limieten voor een definitie van een enkele logische app:
 | Naam | Limiet | Opmerkingen |
 | ---- | ----- | ----- |
 | Actie: uitvoeringen per 5 minuten | 100.000 is de standaard limiet, maar 300.000 is de maximum limiet. | Als u de standaard limiet wilt wijzigen, raadpleegt u [uw logische app uitvoeren in de modus voor hoge door Voer](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), die in preview is. Of u kunt de werk belasting indien nodig verdelen over meerdere logische apps. |
-| Actie: gelijktijdige uitgaande oproepen | ~2,500 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
-| Runtime-eind punt: gelijktijdige binnenkomende oproepen | ~1,000 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
-| Runtime-eind punt: Lees oproepen per vijf minuten  | 60,000 | U kunt de werk belasting naar meerdere apps distribueren als dat nodig is. |
-| Runtime-eind punt: aanroepen aanroepen per 5 minuten | 45,000 | U kunt de werk belasting naar meerdere apps distribueren als dat nodig is. |
+| Actie: gelijktijdige uitgaande oproepen | ~ 2.500 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
+| Runtime-eind punt: gelijktijdige binnenkomende oproepen | ~ 1.000 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
+| Runtime-eind punt: Lees oproepen per vijf minuten  | 60.000 | U kunt de werk belasting naar meerdere apps distribueren als dat nodig is. |
+| Runtime-eind punt: aanroepen aanroepen per 5 minuten | 45.000 | U kunt de werk belasting naar meerdere apps distribueren als dat nodig is. |
 | Inhouds doorvoer per 5 minuten | 600 MB | U kunt de werk belasting naar meerdere apps distribueren als dat nodig is. |
 ||||
 
@@ -135,7 +135,7 @@ Azure Logic Apps ondersteunt schrijf bewerkingen, met inbegrip van invoeg acties
 
 Dit zijn de limieten voor één uitgaande of inkomende HTTP-oproep:
 
-#### <a name="timeout"></a>Time-out
+#### <a name="timeout"></a>Out
 
 Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webhook-aanvragen, zodat de time-out voor deze bewerkingen mogelijk langer is dan deze limieten. Zie de technische Details voor de specifieke connector en ook [werk stroom triggers en acties](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)voor meer informatie.
 
@@ -218,7 +218,7 @@ Dit zijn de limieten voor het aantal artefacten voor elke laag van de integratie
 | EDI-handels overeenkomsten | 10 | 1 | 1000 |
 | EDI-handels partners | 25 | 2 | 1000 |
 | Kaarten | 25 | 500 | 1000 |
-| Schema's | 25 | 500 | 1000 |
+| Schema 's | 25 | 500 | 1000 |
 | Assembly's | 10 | 25 | 1000 |
 | Certificaten | 25 | 2 | 1000 |
 | Batch configuraties | 5 | 1 | 50 |
@@ -237,10 +237,10 @@ Dit zijn de limieten voor het aantal artefacten voor elke laag van de integratie
 
 | Runtime-eind punt | Limiet | Opmerkingen |
 |------------------|-------|-------|
-| Lees aanroepen per 5 minuten | 60,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
-| Aanroepen starten per 5 minuten | 45,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
-| Tracerings aanroepen per 5 minuten | 45,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
-| Gelijktijdige aanroepen blok keren | ~1,000 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
+| Lees aanroepen per 5 minuten | 60.000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
+| Aanroepen starten per 5 minuten | 45.000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
+| Tracerings aanroepen per 5 minuten | 45.000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
+| Gelijktijdige aanroepen blok keren | ~ 1.000 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
 ||||
 
 <a name="b2b-protocol-limits"></a>
@@ -251,7 +251,7 @@ Dit zijn de limieten voor de bericht grootte die van toepassing zijn op B2B-prot
 
 | Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
-| AS2 | v2-100 MB<br>v1 - 50 MB | v2-200 MB <br>v1 - 50 MB | Van toepassing op decoderen en coderen |
+| AS2 | v2-100 MB<br>v1-50 MB | v2-200 MB <br>v1-50 MB | Van toepassing op decoderen en coderen |
 | X12 | 50 MB | 50 MB | Van toepassing op decoderen en coderen |
 | EDIFACT | 50 MB | 50 MB | Van toepassing op decoderen en coderen |
 ||||
@@ -273,7 +273,7 @@ De IP-adressen die Azure Logic Apps gebruikt voor binnenkomende en uitgaande aan
 > [!NOTE]
 > Sommige energiebeheer aanroepen, zoals **http-** en **http + OpenAPI** -aanvragen, gaan rechtstreeks via de Azure Logic apps-service en komen van de IP-adressen die hier worden vermeld. Zie [limieten en configuratie in energie automatisering](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)voor meer informatie over IP-adressen die worden gebruikt door automatische energie automatisering.
 
-* Ter ondersteuning van de aanroepen die uw Logic apps rechtstreeks aanbrengt met [http](../connectors/connectors-native-http.md), [http + SWAGGER](../connectors/connectors-native-http-swagger.md)en andere HTTP-aanvragen, stelt u uw firewall in met *alle* [inkomende](#inbound) *en* [uitgaande](#outbound) IP-adressen die worden gebruikt door de Logic apps service, op basis van de regio's waar uw Logic apps bestaan. Deze adressen worden weer gegeven onder de kopteksten **binnenkomend** en **uitgaand** in deze sectie en worden per regio gesorteerd.
+* Ter ondersteuning van de aanroepen die uw Logic apps rechtstreeks aanbrengt met [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)en andere HTTP-aanvragen, stelt u uw firewall in met *alle* [inkomende](#inbound) *en* [uitgaande](#outbound) IP-adressen die worden gebruikt door de Logic apps-service, op basis van de regio's waar uw Logic apps bestaan. Deze adressen worden weer gegeven onder de kopteksten **binnenkomend** en **uitgaand** in deze sectie en worden per regio gesorteerd.
 
 * Om de aanroepen te ondersteunen die door [micro soft beheerde connectors](../connectors/apis-list.md) worden gemaakt, stelt u uw firewall in met *alle* [uitgaande](#outbound) IP-adressen die door deze connectors worden gebruikt, op basis van de regio's waar uw Logic apps bestaan. Deze adressen worden weer gegeven onder de kop **uitgaand** in deze sectie en worden per regio gesorteerd. 
 
@@ -294,36 +294,36 @@ De IP-adressen die Azure Logic Apps gebruikt voor binnenkomende en uitgaande aan
 
 | Regio | IP |
 |--------|----|
-| Australië - oost | 13.75.153.66, 104.210.89.222, 104.210.89.244, 52.187.231.161 |
-| Australië - zuidoost | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
-| Brazilië - zuid | 191.235.86.199, 191.235.95.229, 191.235.94.220, 191.234.166.198 |
-| Canada - midden | 13.88.249.209, 52.233.30.218, 52.233.29.79, 40.85.241.105 |
-| Canada - oost | 52.232.129.143, 52.229.125.57, 52.232.133.109, 40.86.202.42 |
+| Australië Oost | 13.75.153.66, 104.210.89.222, 104.210.89.244, 52.187.231.161 |
+| Australië Zuidoost | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
+| Brazilië - Zuid | 191.235.86.199, 191.235.95.229, 191.235.94.220, 191.234.166.198 |
+| Canada-Midden | 13.88.249.209, 52.233.30.218, 52.233.29.79, 40.85.241.105 |
+| Canada-Oost | 52.232.129.143, 52.229.125.57, 52.232.133.109, 40.86.202.42 |
 | India - centraal | 52.172.157.194, 52.172.184.192, 52.172.191.194, 104.211.73.195 |
-| US - centraal | 13.67.236.76, 40.77.111.254, 40.77.31.87, 104.43.243.39 |
+| VS - centraal | 13.67.236.76, 40.77.111.254, 40.77.31.87, 104.43.243.39 |
 | Azië - oost | 168.63.200.173, 13.75.89.159, 23.97.68.172, 40.83.98.194 |
-| US - oost | 137.135.106.54, 40.117.99.79, 40.117.100.228, 137.116.126.165 |
-| US - oost 2 | 40.84.25.234, 40.79.44.7, 40.84.59.136, 40.70.27.253 |
+| VS - oost | 137.135.106.54, 40.117.99.79, 40.117.100.228, 137.116.126.165 |
+| VS - oost 2 | 40.84.25.234, 40.79.44.7, 40.84.59.136, 40.70.27.253 |
 | Frankrijk - centraal | 52.143.162.83, 20.188.33.169, 52.143.156.55, 52.143.158.203 |
 | Frankrijk - zuid | 52.136.131.145, 52.136.129.121, 52.136.130.89, 52.136.131.4 |
-| Japan - oost | 13.71.146.140, 13.78.84.187, 13.78.62.130, 13.78.43.164 |
-| Japan - west | 40.74.140.173, 40.74.81.13, 40.74.85.215, 40.74.68.85 |
+| Japan - Oost | 13.71.146.140, 13.78.84.187, 13.78.62.130, 13.78.43.164 |
+| Japan - West | 40.74.140.173, 40.74.81.13, 40.74.85.215, 40.74.68.85 |
 | Korea - centraal | 52.231.14.182, 52.231.103.142, 52.231.39.29, 52.231.14.42 |
-| Korea - zuid | 52.231.166.168, 52.231.163.55, 52.231.163.150, 52.231.192.64 |
-| US - noord-centraal | 168.62.249.81, 157.56.12.202, 65.52.211.164, 65.52.9.64 |
+| Korea (Zuid) | 52.231.166.168, 52.231.163.55, 52.231.163.150, 52.231.192.64 |
+| VS - noord-centraal | 168.62.249.81, 157.56.12.202, 65.52.211.164, 65.52.9.64 |
 | Europa - noord | 13.79.173.49, 52.169.218.253, 52.169.220.174, 40.112.90.39 |
 | Zuid-Afrika - noord | 102.133.228.4, 102.133.224.125, 102.133.226.199, 102.133.228.9 |
 | Zuid-Afrika - west | 102.133.72.190, 102.133.72.145, 102.133.72.184, 102.133.72.173 |
-| US - zuid-centraal | 13.65.98.39, 13.84.41.46, 13.84.43.45, 40.84.138.132 |
+| VS - zuid-centraal | 13.65.98.39, 13.84.41.46, 13.84.43.45, 40.84.138.132 |
 | India - zuid | 52.172.9.47, 52.172.49.43, 52.172.51.140, 104.211.225.152 |
 | Azië - zuidoost | 52.163.93.214, 52.187.65.81, 52.187.65.155, 104.215.181.6 |
-| Verenigd Koninkrijk Zuid | 51.140.79.109, 51.140.78.71, 51.140.84.39, 51.140.155.81 |
-| Verenigd Koninkrijk West | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
-| US - west-centraal | 52.161.26.172, 52.161.8.128, 52.161.19.82, 13.78.137.247 |
-| Europa -west | 13.95.155.53, 52.174.54.218, 52.174.49.6, 52.174.49.6 |
+| VK - zuid | 51.140.79.109, 51.140.78.71, 51.140.84.39, 51.140.155.81 |
+| VK - west | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
+| VS - west-centraal | 52.161.26.172, 52.161.8.128, 52.161.19.82, 13.78.137.247 |
+| Europa - west | 13.95.155.53, 52.174.54.218, 52.174.49.6, 52.174.49.6 |
 | India - west | 104.211.164.112, 104.211.165.81, 104.211.164.25, 104.211.157.237 |
-| US - west | 52.160.90.237, 138.91.188.137, 13.91.252.184, 157.56.160.212 |
-| US - west 2 | 13.66.224.169, 52.183.30.10, 52.183.39.67, 13.66.128.68 |
+| VS - west | 52.160.90.237, 138.91.188.137, 13.91.252.184, 157.56.160.212 |
+| VS - west 2 | 13.66.224.169, 52.183.30.10, 52.183.39.67, 13.66.128.68 |
 |||
 
 <a name="outbound"></a>
@@ -332,36 +332,36 @@ De IP-adressen die Azure Logic Apps gebruikt voor binnenkomende en uitgaande aan
 
 | Regio | Logic Apps IP-adres | IP van beheerde connectors |
 |--------|---------------|-----------------------|
-| Australië - oost | 13.75.149.4, 104.210.91.55, 104.210.90.241, 52.187.227.245, 52.187.226.96, 52.187.231.184, 52.187.229.130, 52.187.226.139 | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213 |
-| Australië - zuidoost | 13.73.114.207, 13.77.3.139, 13.70.159.205, 52.189.222.77, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75 | 13.70.136.174, 13.77.50.240 - 13.77.50.255, 40.127.80.34 |
-| Brazilië - zuid | 191.235.82.221, 191.235.91.7, 191.234.182.26, 191.237.255.116, 191.234.161.168, 191.234.162.178, 191.234.161.28, 191.234.162.131 | 104.41.59.51, 191.232.38.129, 191.233.203.192 - 191.233.203.207 |
-| Canada - midden | 52.233.29.92, 52.228.39.241, 52.228.39.244, 40.85.250.135, 40.85.250.212, 13.71.186.1, 40.85.252.47, 13.71.184.150 | 13.71.170.208 - 13.71.170.223, 13.71.170.224 - 13.71.170.239, 52.228.33.76, 52.228.34.13, 52.228.42.205, 52.233.26.83, 52.233.31.197, 52.237.24.126 |
-| Canada - oost | 52.232.128.155, 52.229.120.45, 52.229.126.25, 40.86.203.228, 40.86.228.93, 40.86.216.241, 40.86.226.149, 40.86.217.241 | 40.69.106.240 - 40.69.106.255, 52.229.120.52, 52.229.120.131, 52.229.120.178, 52.229.123.98, 52.229.126.202, 52.242.35.152 |
+| Australië Oost | 13.75.149.4, 104.210.91.55, 104.210.90.241, 52.187.227.245, 52.187.226.96, 52.187.231.184, 52.187.229.130, 52.187.226.139 | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213 |
+| Australië Zuidoost | 13.73.114.207, 13.77.3.139, 13.70.159.205, 52.189.222.77, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75 | 13.70.136.174, 13.77.50.240 - 13.77.50.255, 40.127.80.34 |
+| Brazilië - Zuid | 191.235.82.221, 191.235.91.7, 191.234.182.26, 191.237.255.116, 191.234.161.168, 191.234.162.178, 191.234.161.28, 191.234.162.131 | 104.41.59.51, 191.232.38.129, 191.233.203.192 - 191.233.203.207 |
+| Canada-Midden | 52.233.29.92, 52.228.39.241, 52.228.39.244, 40.85.250.135, 40.85.250.212, 13.71.186.1, 40.85.252.47, 13.71.184.150 | 13.71.170.208 - 13.71.170.223, 13.71.170.224 - 13.71.170.239, 52.228.33.76, 52.228.34.13, 52.228.42.205, 52.233.26.83, 52.233.31.197, 52.237.24.126 |
+| Canada-Oost | 52.232.128.155, 52.229.120.45, 52.229.126.25, 40.86.203.228, 40.86.228.93, 40.86.216.241, 40.86.226.149, 40.86.217.241 | 40.69.106.240 - 40.69.106.255, 52.229.120.52, 52.229.120.131, 52.229.120.178, 52.229.123.98, 52.229.126.202, 52.242.35.152 |
 | India - centraal | 52.172.154.168, 52.172.186.159, 52.172.185.79, 104.211.101.108, 104.211.102.62, 104.211.90.169, 104.211.90.162, 104.211.74.145 | 52.172.211.12, 104.211.81.192 - 104.211.81.207, 104.211.98.164 |
-| US - centraal | 13.67.236.125, 104.208.25.27, 40.122.170.198, 40.113.218.230, 23.100.86.139, 23.100.87.24, 23.100.87.56, 23.100.82.16 | 13.89.171.80 - 13.89.171.95, 40.122.49.51, 52.173.245.164 |
+| VS - centraal | 13.67.236.125, 104.208.25.27, 40.122.170.198, 40.113.218.230, 23.100.86.139, 23.100.87.24, 23.100.87.56, 23.100.82.16 | 13.89.171.80 - 13.89.171.95, 40.122.49.51, 52.173.245.164 |
 | Azië - oost | 13.75.94.173, 40.83.127.19, 52.175.33.254, 40.83.73.39, 65.52.175.34, 40.83.77.208, 40.83.100.69, 40.83.75.165 | 13.75.36.64 - 13.75.36.79, 23.99.116.181, 52.175.23.169 |
-| US - oost | 13.92.98.111, 40.121.91.41, 40.114.82.191, 23.101.139.153, 23.100.29.190, 23.101.136.201, 104.45.153.81, 23.101.132.208 | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 191.237.41.52 |
-| US - oost 2 | 40.84.30.147, 104.208.155.200, 104.208.158.174, 104.208.140.40, 40.70.131.151, 40.70.29.214, 40.70.26.154, 40.70.27.236 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100 |
+| VS - oost | 13.92.98.111, 40.121.91.41, 40.114.82.191, 23.101.139.153, 23.100.29.190, 23.101.136.201, 104.45.153.81, 23.101.132.208 | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 191.237.41.52 |
+| VS - oost 2 | 40.84.30.147, 104.208.155.200, 104.208.158.174, 104.208.140.40, 40.70.131.151, 40.70.29.214, 40.70.26.154, 40.70.27.236 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100 |
 | Frankrijk - centraal | 52.143.164.80, 52.143.164.15, 40.89.186.30, 20.188.39.105, 40.89.191.161, 40.89.188.169, 40.89.186.28, 40.89.190.104 | 40.79.130.208 - 40.79.130.223, 40.89.135.2 |
 | Frankrijk - zuid | 52.136.132.40, 52.136.129.89, 52.136.131.155, 52.136.133.62, 52.136.139.225, 52.136.130.144, 52.136.140.226, 52.136.129.51 | 40.79.178.240 - 40.79.178.255, 52.136.133.184 |
-| Japan - oost | 13.71.158.3, 13.73.4.207, 13.71.158.120, 13.78.18.168, 13.78.35.229, 13.78.42.223, 13.78.21.155, 13.78.20.232 | 13.71.153.19, 13.78.108.0 - 13.78.108.15, 40.115.186.96 |
-| Japan - west | 40.74.140.4, 104.214.137.243, 138.91.26.45, 40.74.64.207, 40.74.76.213, 40.74.77.205, 40.74.74.21, 40.74.68.85 | 40.74.100.224 - 40.74.100.239, 40.74.130.77, 104.215.61.248 |
+| Japan - Oost | 13.71.158.3, 13.73.4.207, 13.71.158.120, 13.78.18.168, 13.78.35.229, 13.78.42.223, 13.78.21.155, 13.78.20.232 | 13.71.153.19, 13.78.108.0 - 13.78.108.15, 40.115.186.96 |
+| Japan - West | 40.74.140.4, 104.214.137.243, 138.91.26.45, 40.74.64.207, 40.74.76.213, 40.74.77.205, 40.74.74.21, 40.74.68.85 | 40.74.100.224 - 40.74.100.239, 40.74.130.77, 104.215.61.248 |
 | Korea - centraal | 52.231.14.11, 52.231.14.219, 52.231.15.6, 52.231.10.111, 52.231.14.223, 52.231.77.107, 52.231.8.175, 52.231.9.39 | 52.231.18.208 - 52.231.18.223, 52.141.36.214 |
-| Korea - zuid | 52.231.204.74, 52.231.188.115, 52.231.189.221, 52.231.203.118, 52.231.166.28, 52.231.153.89, 52.231.155.206, 52.231.164.23 | 52.231.147.0 - 52.231.147.15, 52.231.163.10 |
-| US - noord-centraal | 168.62.248.37, 157.55.210.61, 157.55.212.238, 52.162.208.216, 52.162.213.231, 65.52.10.183, 65.52.9.96, 65.52.8.225 | 52.162.107.160 - 52.162.107.175, 52.162.242.161, 65.52.218.230 |
+| Korea (Zuid) | 52.231.204.74, 52.231.188.115, 52.231.189.221, 52.231.203.118, 52.231.166.28, 52.231.153.89, 52.231.155.206, 52.231.164.23 | 52.231.147.0 - 52.231.147.15, 52.231.163.10 |
+| VS - noord-centraal | 168.62.248.37, 157.55.210.61, 157.55.212.238, 52.162.208.216, 52.162.213.231, 65.52.10.183, 65.52.9.96, 65.52.8.225 | 52.162.107.160 - 52.162.107.175, 52.162.242.161, 65.52.218.230 |
 | Europa - noord | 40.113.12.95, 52.178.165.215, 52.178.166.21, 40.112.92.104, 40.112.95.216, 40.113.4.18, 40.113.3.202, 40.113.1.181 | 13.69.227.208 - 13.69.227.223, 52.178.150.68, 104.45.93.9 |
 | Zuid-Afrika - noord | 102.133.231.188, 102.133.231.117, 102.133.230.4, 102.133.227.103, 102.133.228.6, 102.133.230.82, 102.133.231.9, 102.133.231.51 | 13.65.86.57, 104.214.19.48 - 104.214.19.63, 104.214.70.191 |
 | Zuid-Afrika - west | 102.133.72.98, 102.133.72.113, 102.133.75.169, 102.133.72.179, 102.133.72.37, 102.133.72.183, 102.133.72.132, 102.133.75.191 | 13.65.86.57, 104.214.19.48 - 104.214.19.63, 104.214.70.191 |
-| US - zuid-centraal | 104.210.144.48, 13.65.82.17, 13.66.52.232, 23.100.124.84, 70.37.54.122, 70.37.50.6, 23.100.127.172, 23.101.183.225 | 13.65.86.57, 104.214.19.48 - 104.214.19.63, 104.214.70.191 |
+| VS - zuid-centraal | 104.210.144.48, 13.65.82.17, 13.66.52.232, 23.100.124.84, 70.37.54.122, 70.37.50.6, 23.100.127.172, 23.101.183.225 | 13.65.86.57, 104.214.19.48 - 104.214.19.63, 104.214.70.191 |
 | India - zuid | 52.172.50.24, 52.172.55.231, 52.172.52.0, 104.211.229.115, 104.211.230.129, 104.211.230.126, 104.211.231.39, 104.211.227.229 | 13.71.125.22, 40.78.194.240 - 40.78.194.255, 104.211.227.225 |
 | Azië - zuidoost | 13.76.133.155, 52.163.228.93, 52.163.230.166, 13.76.4.194, 13.67.110.109, 13.67.91.135, 13.76.5.96, 13.67.107.128 | 13.67.8.240 - 13.67.8.255, 13.76.231.68, 52.187.68.19 |
-| Verenigd Koninkrijk Zuid | 51.140.74.14, 51.140.73.85, 51.140.78.44, 51.140.137.190, 51.140.153.135, 51.140.28.225, 51.140.142.28, 51.140.158.24 | 51.140.80.51, 51.140.148.0 - 51.140.148.15 |
-| Verenigd Koninkrijk West | 51.141.54.185, 51.141.45.238, 51.141.47.136, 51.141.114.77, 51.141.112.112, 51.141.113.36, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105 |
-| US - west-centraal | 52.161.27.190, 52.161.18.218, 52.161.9.108, 13.78.151.161, 13.78.137.179, 13.78.148.140, 13.78.129.20, 13.78.141.75 | 13.71.195.32 - 13.71.195.47, 52.161.24.128, 52.161.26.212, 52.161.27.108, 52.161.29.35, 52.161.30.5, 52.161.102.22 |
-| Europa -west | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126 | 13.69.64.208 - 13.69.64.223, 40.115.50.13, 52.174.88.118 |
+| VK - zuid | 51.140.74.14, 51.140.73.85, 51.140.78.44, 51.140.137.190, 51.140.153.135, 51.140.28.225, 51.140.142.28, 51.140.158.24 | 51.140.80.51, 51.140.148.0 - 51.140.148.15 |
+| VK - west | 51.141.54.185, 51.141.45.238, 51.141.47.136, 51.141.114.77, 51.141.112.112, 51.141.113.36, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105 |
+| VS - west-centraal | 52.161.27.190, 52.161.18.218, 52.161.9.108, 13.78.151.161, 13.78.137.179, 13.78.148.140, 13.78.129.20, 13.78.141.75 | 13.71.195.32 - 13.71.195.47, 52.161.24.128, 52.161.26.212, 52.161.27.108, 52.161.29.35, 52.161.30.5, 52.161.102.22 |
+| Europa - west | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126 | 13.69.64.208 - 13.69.64.223, 40.115.50.13, 52.174.88.118 |
 | India - west | 104.211.164.80, 104.211.162.205, 104.211.164.136, 104.211.158.127, 104.211.156.153, 104.211.158.123, 104.211.154.59, 104.211.154.7 | 104.211.146.224 - 104.211.146.239, 104.211.161.203, 104.211.189.218 |
-| US - west | 52.160.92.112, 40.118.244.241, 40.118.241.243, 157.56.162.53, 157.56.167.147, 104.42.49.145, 40.83.164.80, 104.42.38.32 | 40.112.243.160 - 40.112.243.175, 104.40.51.248, 104.42.122.49 |
-| US - west 2 | 13.66.210.167, 52.183.30.169, 52.183.29.132, 13.66.210.167, 13.66.201.169, 13.77.149.159, 52.175.198.132, 13.66.246.219 | 13.66.140.128 - 13.66.140.143, 13.66.218.78, 13.66.219.14, 13.66.220.135, 13.66.221.19, 13.66.225.219, 52.183.78.157 |
+| VS - west | 52.160.92.112, 40.118.244.241, 40.118.241.243, 157.56.162.53, 157.56.167.147, 104.42.49.145, 40.83.164.80, 104.42.38.32 | 40.112.243.160 - 40.112.243.175, 104.40.51.248, 104.42.122.49 |
+| VS - west 2 | 13.66.210.167, 52.183.30.169, 52.183.29.132, 13.66.210.167, 13.66.201.169, 13.77.149.159, 52.175.198.132, 13.66.246.219 | 13.66.140.128 - 13.66.140.143, 13.66.218.78, 13.66.219.14, 13.66.220.135, 13.66.221.19, 13.66.225.219, 52.183.78.157 |
 ||||
 
 ## <a name="next-steps"></a>Volgende stappen

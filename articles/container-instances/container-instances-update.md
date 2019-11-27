@@ -66,7 +66,7 @@ Voor deze eigenschappen moet de container groep worden verwijderd voordat deze o
 * Type besturings systeem
 * CPU
 * Geheugen
-* Beleid voor opnieuw opstarten
+* Beleid opnieuw opstarten
 * Poorten
 
 Wanneer u een container groep verwijdert en opnieuw maakt, wordt deze niet opnieuw geïmplementeerd, maar is er nieuwe gemaakt. Alle afbeeldings lagen worden vernieuwd uit het REGI ster, niet uit de caches van een vorige implementatie. Het IP-adres van de container kan ook worden gewijzigd omdat deze is geïmplementeerd op een andere onderliggende host.

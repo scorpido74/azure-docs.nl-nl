@@ -70,7 +70,7 @@ Er zijn wijzigingen die speciale overwegingen vereisen tijdens het testen, van e
 |AD FS regels wijzigen zoals autorisatie, uitgifte, MFA|Groeps claim gebruiken om de subset van gebruikers te bereiken.|
 |AD FS-verificatie-ervaring of soort gelijke wijzigingen in de hele farm wijzigen|Maak een parallelle farm met dezelfde hostnaam, implementeer configuratie wijzigingen, test van clients met een HOSTS-bestand, NLB-routerings regels of een vergelijk bare route ring.<br>Als het doel platform geen HOSTS-bestanden (bijvoorbeeld mobiele apparaten) ondersteunt, wijzigt u de wijziging van het besturings element.|
 
-## <a name="access-reviews"></a>Toegangsbeoordelingen
+## <a name="access-reviews"></a>Toegangscontroles
 
 ### <a name="access-reviews-to-applications"></a>Toegangs Beoordelingen voor toepassingen
 

@@ -21,7 +21,7 @@ ms.locfileid: "74539287"
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Azure Data Explorer biedt opname (laden van gegevens) vanuit Event Hubs, een big data-streamingplatform en service voor gebeurtenisopname. [Event Hubs](/azure/event-hubs/event-hubs-about) kunnen miljoenen gebeurtenissen per seconde in bijna realtime verwerken. In dit artikel maakt u een Event Hub, maakt u er verbinding mee vanuit Azure Data Explorer en ziet u de gegevens stroom via het systeem.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt opname (laden van gegevens) vanuit Event Hubs, een big data-streamingplatform en service voor gebeurtenisopname. [Event Hubs](/azure/event-hubs/event-hubs-about) kunnen miljoenen gebeurtenissen per seconde in bijna realtime verwerken. In dit artikel maakt u een Event Hub, maakt u er verbinding mee vanuit Azure Data Explorer en ziet u de gegevens stroom via het systeem.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,7 +35,7 @@ Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logb
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Een Event Hub maken
 
@@ -47,13 +47,13 @@ In dit artikel genereert u voorbeeld gegevens en stuurt u deze naar een Event Hu
 
     Als u op de knop **Implementeren in Azure** klikt, wordt u naar de Azure-portal geleid om een implementatieformulier in te vullen.
 
-    ![Implementeren in Azure](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Implementatie in Azure](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Selecteer het abonnement waarvoor u de Event Hub wilt maken, en maak een resourcegroep met de naam *test-hub-rg*.
 
     ![Een resourcegroep maken](media/ingest-data-event-hub/create-resource-group.png)
 
-1. Vul in het formulier de volgende gegevens in.
+1. Vul het formulier in met de volgende gegevens.
 
     ![Implementatieformulier](media/ingest-data-event-hub/deployment-form.png)
 
@@ -206,7 +206,7 @@ Als u niet van plan bent de Event Hub opnieuw te gebruiken, wist u de **test-hub
 
 1. Selecteer in Azure Portal **Resourcegroepen** aan de linkerkant en selecteer vervolgens de resourcegroep die u hebt gemaakt.  
 
-    Wanneer het menu links is samengevouwen, klikt u op ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
+    Als het menu links is samengevouwen, selecteert u ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
 
    ![Resourcegroep selecteren die moet worden verwijderd](media/ingest-data-event-hub/delete-resources-select.png)
 

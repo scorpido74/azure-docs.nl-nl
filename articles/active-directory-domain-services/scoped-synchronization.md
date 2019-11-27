@@ -40,11 +40,11 @@ De volgende tabel bevat een overzicht van het gebruik van scoped Synchronization
 
 Met de Azure Portal of Power shell kunt u de scoped synchronisatie-instellingen configureren:
 
-| Actie | | |
+| Bewerking | | |
 |--|--|--|
-| Een door Azure AD DS beheerd domein maken en een synchronisatie met een scope configureren | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
-| Scoped synchronisatie wijzigen | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
-| Scoped synchronisatie uitschakelen | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
+| Een door Azure AD DS beheerd domein maken en een synchronisatie met een scope configureren | [Azure-portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Scoped synchronisatie wijzigen | [Azure-portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Scoped synchronisatie uitschakelen | [Azure-portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
 > Als u het synchronisatie bereik wijzigt, wordt het door Azure AD DS beheerde domein om alle gegevens opnieuw te synchroniseren.

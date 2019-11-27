@@ -76,7 +76,7 @@ Als een waarschuwing is opgelost, wordt de waarschuwing uit het Azure Portal ver
 
 Als u geen toegang hebt tot de pagina met instellingen voor meldingen in de Azure Portal, hebt u geen machtigingen om het door Azure AD DS beheerde domein te bewerken. U moet contact opnemen met een globale beheerder om machtigingen te krijgen voor het bewerken van Azure AD DS resource of uit de lijst met ontvangers verwijderd.
 
-### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Ik wil geen e-mail meldingen ontvangen, maar ik heb mijn e-mail adres ingevoerd. Hoe komt dat?
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Ik wil geen e-mail meldingen ontvangen, maar ik heb mijn e-mail adres ingevoerd. Waarom?
 
 Controleer uw e-mail adres of map in uw e-mail op de melding en zorg ervoor dat de afzender van `azure-noreply@microsoft.com`is toegestaan.
 

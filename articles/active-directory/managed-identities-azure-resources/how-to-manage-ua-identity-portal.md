@@ -46,7 +46,7 @@ Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, moet uw a
    - **Abonnement**: Kies het abonnement voor het maken van de door de gebruiker toegewezen beheerde identiteit onder
    - **Resource groep**: Maak een nieuwe resource groep die uw door de gebruiker toegewezen beheerde identiteit bevat of kies **bestaande gebruiken** om de door de gebruiker toegewezen beheerde identiteit in een bestaande resource groep te maken.
    - **Locatie**: Kies een locatie om de door de gebruiker toegewezen beheerde identiteit te implementeren, bijvoorbeeld **VS-West**.
-4. Klik op **Create**.
+4. Klik op **Maken**.
 
 ![Een door de gebruiker toegewezen beheerde identiteit maken](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 

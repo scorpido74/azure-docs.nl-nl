@@ -20,16 +20,16 @@ ms.locfileid: "74548289"
 
 Volg dit artikel als u **de gescheiden tekst bestanden wilt parseren of de gegevens naar tekst indeling met scheidings tekens wilt schrijven**. 
 
-Tekst indeling met scheidings tekens wordt ondersteund voor de volgende connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Bestands systeem](connector-file-system.md), [FTP](connector-ftp.md), [ Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)en [SFTP](connector-sftp.md).
+Tekst met scheidings tekens wordt ondersteund voor de volgende connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Bestands systeem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)en [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
 Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de gegevensset met scheidings tekens.
 
-| Eigenschap         | Beschrijving                                                  | Vereist |
+| Eigenschap         | Beschrijving                                                  | Verplicht |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | De eigenschap type van de DataSet moet worden ingesteld op **DelimitedText**. | Ja      |
-| locatie         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`.  | Ja      |
+| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`.  | Ja      |
 | columnDelimiter  | De teken (s) die worden gebruikt voor het scheiden van kolommen in een bestand. Op dit moment wordt het scheidings teken voor meerdere tekens alleen ondersteund voor de toewijzing van gegevens stroom, maar niet voor het kopiëren van de activiteit. <br>De standaard waarde is een **komma `,`** , wanneer het kolom scheidings teken is gedefinieerd als lege reeks, wat geen scheidings teken is, wordt de hele regel als één kolom beschouwd. | Nee       |
 | rowDelimiter     | Het afzonderlijke teken of ' \r\n ' die wordt gebruikt om rijen in een bestand te scheiden.<br>De standaard waarde is een van de volgende waarden **voor lezen: ["\r\n", "\r", "\n"]** en **"\n" of "\r\n" bij** het toewijzen van gegevens stroom en de Kopieer activiteit respectievelijk. <br>Als `rowDelimiter` is ingesteld op geen (een lege teken reeks), moet de `columnDelimiter` worden ingesteld als geen scheidings teken (lege string). Dit betekent dat u de gehele inhoud als één waarde kunt behandelen. | Nee       |
 | quoteChar        | De kolom waarden voor één teken om te citeren als deze kolom scheidings tekens bevat. <br>De standaard waarde is **dubbele aanhalings tekens** `"`. <br>`quoteChar` kan geen lege teken reeks zijn voor het toewijzen van gegevens stroom. <br>Als `quoteChar` als lege teken reeks is gedefinieerd, betekent dit dat er geen aanhalings tekens en kolom waarden worden vermeld, en `escapeChar` wordt gebruikt om het kolom scheidings teken en zelf te escapeel. | Nee       |
@@ -75,7 +75,7 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*bron\**** .
 
-| Eigenschap       | Beschrijving                                                  | Vereist |
+| Eigenschap       | Beschrijving                                                  | Verplicht |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **DelimitedTextSource**. | Ja      |
 | formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor **Lees instellingen voor tekst met scheidings tekens** . | Nee       |
@@ -83,7 +83,7 @@ De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***
 
 Ondersteunde **instellingen voor het lezen van tekst met scheidings tekens** onder `formatSettings`:
 
-| Eigenschap      | Beschrijving                                                  | Vereist |
+| Eigenschap      | Beschrijving                                                  | Verplicht |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextReadSetting**. | Ja      |
 | skipLineCount | Hiermee wordt het aantal **niet-lege** rijen aangegeven dat moet worden overgeslagen bij het lezen van gegevens van invoer bestanden. <br>Als zowel skipLineCount als firstRowAsHeader is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand. | Nee       |
@@ -92,7 +92,7 @@ Ondersteunde **instellingen voor het lezen van tekst met scheidings tekens** ond
 
 De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*sink\**** .
 
-| Eigenschap       | Beschrijving                                                  | Vereist |
+| Eigenschap       | Beschrijving                                                  | Verplicht |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **DelimitedTextSink**. | Ja      |
 | formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor het **schrijven van instellingen voor tekst met scheidings tekens** hieronder. |          |
@@ -100,7 +100,7 @@ De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***
 
 Ondersteunde **instellingen voor het schrijven van tekst met scheidings tekens** onder `formatSettings`:
 
-| Eigenschap      | Beschrijving                                                  | Vereist                                              |
+| Eigenschap      | Beschrijving                                                  | Verplicht                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextWriteSetting**. | Ja                                                   |
 | File Extension | De bestands extensie die wordt gebruikt voor het benoemen van de uitvoer bestanden, bijvoorbeeld `.csv`, `.txt`. De waarde moet worden opgegeven als de `fileName` niet is opgegeven in de DelimitedText-gegevensset. | Ja als er geen bestands naam is opgegeven in de uitvoer gegevensset |

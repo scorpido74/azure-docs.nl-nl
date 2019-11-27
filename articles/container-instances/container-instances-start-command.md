@@ -52,7 +52,7 @@ De syntaxis van de opdracht regel is afhankelijk van de API of het hulp programm
 
 ### <a name="examples"></a>Voorbeelden
 
-|    |  Azure-CLI   | Portal | Template | 
+|    |  Azure CLI   | Portal | Sjabloon | 
 | ---- | ---- | --- | --- |
 | Eén opdracht | `--command-line "python myscript.py arg1 arg2"` | **Opdracht negeren**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
 | Meerdere opdrachten | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Opdracht negeren**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |

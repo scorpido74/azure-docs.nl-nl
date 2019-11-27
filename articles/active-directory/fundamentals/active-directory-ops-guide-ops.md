@@ -134,7 +134,7 @@ Er zijn twee ' from '-adressen die worden gebruikt door Azure AD: <o365mc@email2
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [Certificaat meldingen voor de Enter prise-app verlopen](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
-- Servicemeldingen voor inrichting van Enterprise-App
+- Service meldingen voor de Enter prise-app inrichten
 
 Raadpleeg de volgende tabel voor meer informatie over het type meldingen dat wordt verzonden en waar u deze kunt controleren:
 
@@ -143,7 +143,7 @@ Raadpleeg de volgende tabel voor meer informatie over het type meldingen dat wor
 | Technische contact persoon | Synchronisatie fouten | Azure Portal-Blade-eigenschappen |
 | Office 365-berichten centrum | Meldingen over incidenten en degradatie van identiteits Services en O365 back-upservices | Office-Portal |
 | Overzicht van identiteits beveiliging wekelijks | Samen vatting van identiteits beveiliging | Azure AD Identity Protection Blade |
-| Azure AD Connect Health | Waarschuwings meldingen | Azure Portal-Azure AD Connect Health Blade |
+| Azure AD Connect Health (Engelstalig) | Waarschuwings meldingen | Azure Portal-Azure AD Connect Health Blade |
 | Meldingen voor zakelijke toepassingen | Meldingen wanneer certificaten bijna verlopen en inrichtings fouten bevatten | Azure Portal-Blade bedrijfs toepassing (elke app heeft een eigen instelling voor het e-mail adres) |
 
 #### <a name="notifications-recommended-reading"></a>Meldingen aanbevolen lezen

@@ -23,9 +23,9 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor hers
 
 **Implementatie** |  **Ondersteuning**
 --- | ---
-**Azure Portal** | Ondersteund.
+**Azure-portal** | Ondersteund.
 **PowerShell** | Ondersteund. [Meer informatie](azure-to-azure-powershell.md)
-**REST-API** | Ondersteund.
+**REST API** | Ondersteund.
 **CLI** | Momenteel niet ondersteund
 
 
@@ -72,7 +72,7 @@ Deze tabel geeft een overzicht van de ondersteuning van het cache-opslag account
 **Instelling** | **Ondersteuning** | **Details**
 --- | --- | ---
 V2-opslag accounts voor algemeen gebruik (warme en koele laag) | Ondersteund | Het gebruik van GPv2 wordt niet aanbevolen omdat de transactie kosten voor v2 beduidend hoger zijn dan v1 opslag accounts.
-Premium Storage | Niet ondersteund | Standaard opslag accounts worden gebruikt voor cache opslag, om de kosten te optimaliseren.
+Premium-opslag | Niet ondersteund | Standaard opslag accounts worden gebruikt voor cache opslag, om de kosten te optimaliseren.
 Firewalls voor virtuele netwerken Azure Storage  | Ondersteund | Als u gebruikmaakt van het cache-opslag account of het doel opslag account van de firewall, moet u [vertrouwde micro soft-Services toestaan](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).<br></br>Zorg er ook voor dat u toegang tot ten minste één subnet van het bron-Vnet toestaat.
 
 
@@ -89,12 +89,12 @@ Windows Server 2019 | Ondersteund voor Server Core, server met bureaublad ervari
 Windows Server 2016  | Ondersteunde Server Core, server met bureaublad ervaring.
 Windows Server 2012 R2 | Ondersteund.
 Windows Server 2012 | Ondersteund.
-Windows Server 2008 R2 met SP1/SP2 | Ondersteund.<br/><br/> Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele machines van Azure, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 R2 SP1/SP2.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over de [SHA-2-upgrade en de vereisten](https://aka.ms/SHA-2KB).
-Windows Server 2008 met SP2 | Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele Azure-machines, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4493730) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 met SP2.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over de [SHA-2-upgrade en de vereisten](https://aka.ms/SHA-2KB).
+Windows Server 2008 R2 met SP1/SP2 | Ondersteund.<br/><br/> Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele machines van Azure, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 R2 SP1/SP2.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
+Windows Server 2008 met SP2 | Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele Azure-machines, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4493730) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 met SP2.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
 Windows 10 (x64) | Ondersteund.
 Windows 8,1 (x64) | Ondersteund.
 Windows 8 (x64) | Ondersteund.
-Windows 7 (x64) met SP1 en hoger | Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele Azure-machines, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows 7 met SP1.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/geüpgraded. Meer informatie over de [SHA-2-upgrade en de vereisten](https://aka.ms/SHA-2KB).
+Windows 7 (x64) met SP1 en hoger | Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele Azure-machines, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows 7 met SP1.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/geüpgraded. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
 
 
 
@@ -110,7 +110,7 @@ Ubuntu 18,04 LTS-server | [Ondersteunde kernel-versie](#supported-ubuntu-kernel-
 Debian 7 | [Ondersteunde kernel-versies](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Ondersteunde kernel-versies](#supported-debian-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Ondersteunde kernel-versies)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 11 | SP3<br/><br/> De upgrade van replicerende machines van SP3 naar SP4 wordt niet ondersteund. Als een gerepliceerde machine is bijgewerkt, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen na de upgrade.
+SUSE Linux Enterprise Server 11 | Pack<br/><br/> De upgrade van replicerende machines van SP3 naar SP4 wordt niet ondersteund. Als een gerepliceerde machine is bijgewerkt, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen na de upgrade.
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) <br/><br/> Met de Red Hat compatibele kernel of een onherstelbare versie van de Enter prise kernel van 3, 4 & 5 (UEK3, UEK4, UEK5) 
 

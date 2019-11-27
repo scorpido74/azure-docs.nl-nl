@@ -29,24 +29,24 @@ De versies van de onderdelen die zijn gekoppeld aan HDInsight-cluster versies wo
 > [!NOTE]  
 > De standaard versie voor de HDInsight-service kan zonder kennisgeving worden gewijzigd. Als u een versie afhankelijkheid hebt, geeft u de HDInsight-versie op wanneer u uw clusters maakt met behulp van de .NET SDK met Azure PowerShell en klassieke CLI van Azure.
 
-| Onderdeel              | HDInsight 4.0 | HDInsight 3,6 (standaard)     |
+| Component              | HDInsight 4.0 | HDInsight 3,6 (standaard)     |
 |------------------------|---------------|-----------------------------|
-| Apache Hadoop en garen | 3.1.1         | 2.7.3                       |
+| Apache Hadoop en garen | punt         | 2.7.3                       |
 | Apache TEZ             | 0.9.1         | 0.7.0                       |
 | Apache Pig             | 0.16.0        | 0.16.0                      |
 | Apache Hive            | 3.1.0         | 2.1.0, 1.2.1                |
 | Apache TEZ Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
-| Apache HBase           | 2.0.1         | 1.1.2                       |
+| Apache HBase           | wel         | 1.1.2                       |
 | Apache Sqoop           | 1.4.7         | 1.4.6                       |
 | Apache Oozie           | 4.3.1         | 4.2.0                       |
 | Apache Zookeeper       | 3.4.6         | 3.4.6                       |
 | Apache Storm           | -             | 1.1.0                       |
-| Apache mahout          | -             | 0.9.0+                      |
+| Apache mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2.3.1, 2.4    | 2.3.0, 2.2.0, 2.1.0         |
-| Apache livy            | 0.5           | 0,4, 0,4, 0,3               |
-| Apache Kafka           | 1.1.1, 2.1    | 1,1, 1,0 * (zie opmerking hieronder) |
+| Apache Spark           | 2.3.1, 2,4    | 2.3.0, 2.2.0, 2.1.0         |
+| Apache livy            | 0,5           | 0,4, 0,4, 0,3               |
+| Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (zie opmerking hieronder) |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.0                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
@@ -70,10 +70,10 @@ De volgende tabellen geven een lijst van de versies van HDInsight. De ondersteun
 
 De volgende tabel geeft een lijst van de versies van HDInsight die beschikbaar zijn in de Azure Portal, evenals andere implementatie methoden, zoals Power shell en .NET SDK.
 
-| HDInsight-versie | VM OS | Releasedatum | Verval datum ondersteuning | Buitengebruikstellings datum | Hoge beschikbaarheid |  Beschik baarheid in de Azure Portal |
+| HDInsight-versie | VM-BESTURINGS SYSTEEM | Releasedatum | Verval datum ondersteuning | Buitengebruikstellings datum | Hoge beschikbaarheid |  Beschik baarheid in de Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |24 september 2018 | | |Ja |Ja |
-| HDInsight 3.6 |Ubuntu 16.0.4 LTS |4 april 2017 | 31 december 2020 |31 december 2020 |Ja |Ja |
+| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 april 2017 | 31 december 2020 |31 december 2020 |Ja |Ja |
 
 Spark 2,1, 2,2 & Kafka 1,0-ondersteuning verloopt op 30 juni 2020.
 
@@ -84,17 +84,17 @@ Spark 2,1, 2,2 & Kafka 1,0-ondersteuning verloopt op 30 juni 2020.
 
 De volgende tabel geeft een lijst van de versies van HDInsight die **niet** beschikbaar zijn in de Azure Portal.
 
-| HDInsight-versie | HDP-versie | VM OS | Releasedatum | Verval datum ondersteuning | Buitengebruikstellings datum | Hoge beschikbaarheid |  Beschik baarheid op het Azure Portal |
+| HDInsight-versie | HDP-versie | VM-BESTURINGS SYSTEEM | Releasedatum | Verval datum ondersteuning | Buitengebruikstellings datum | Hoge beschikbaarheid |  Beschik baarheid op het Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30 september 2016 |5 september 2017 |28 juni 2018 |Ja |Nee |
-| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 maart 2016 |29 december 2016 |9 januari 2018 |Ja |Nee |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2 december 2015 |27 juni 2016 |31 juli 2018 |Ja |Nee |
-| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 december 2015 |27 juni 2016 |31 juli 2017 |Ja |Nee |
-| HDInsight 3.2 |HDP 2.2 |Ubuntu 12,04 LTS of Windows Server 2012 R2 |18 februari 2015 |1 maart 2016 |1 april 2017 |Ja |Nee |
-| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 juni 2014 |18 mei 2015 |Tot 30 juni 2016 |Ja |Nee |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 februari 2014 |17 september 2014 |30 juni 2015 |Ja |Nee |
-| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28 oktober 2013 |12 mei 2014 |31 mei 2015 |Ja |Nee |
-| HDInsight 1,6 |HDP 1.1 | |28 oktober 2013 |26 april 2014 |31 mei 2015 |Nee |Nee |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 september 2016 |5 september 2017 |28 juni 2018 |Ja |Nee |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29 maart 2016 |29 december 2016 |9 januari 2018 |Ja |Nee |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2 december 2015 |27 juni 2016 |31 juli 2018 |Ja |Nee |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2 december 2015 |27 juni 2016 |31 juli 2017 |Ja |Nee |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS of Windows Server 2012 R2 |18 februari 2015 |1 maart 2016 |1 april 2017 |Ja |Nee |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24 juni 2014 |18 mei 2015 |30 juni 2016 |Ja |Nee |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11 februari 2014 |17 september 2014 |30 juni 2015 |Ja |Nee |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28 oktober 2013 |12 mei 2014 |31 mei 2015 |Ja |Nee |
+| HDInsight 1,6 |HDP 1,1 | |28 oktober 2013 |26 april 2014 |31 mei 2015 |Nee |Nee |
 
 > [!NOTE]  
 > Maxi maal beschik bare clusters met twee hoofd knooppunten worden standaard geïmplementeerd voor HDInsight-versie 2,1 en hoger. Ze zijn niet beschikbaar voor HDInsight-versie 1,6-clusters.
@@ -107,7 +107,7 @@ Enter prise Security is een optioneel pakket dat u kunt toevoegen aan uw HDInsig
 
     In het verleden kunt u alleen HDInsight-clusters maken met een lokale beheerders gebruiker en een lokale SSH-gebruiker. De lokale beheerder gebruiker heeft toegang tot alle bestanden, mappen, tabellen en kolommen.  Met de Enterprise Security Package kunt u toegangs beheer op basis van rollen inschakelen door HDInsight-clusters te integreren met uw eigen Active Directory, waaronder on-premises Active Directory, Azure Active Directory Domain Services of Active Directory op IaaS virtuele machine. Domein beheerder op het cluster kan gebruikers toestaan hun eigen bedrijfs naam en wacht woord (domein) te gebruiken voor toegang tot het cluster.
 
-    Ga voor meer informatie naar:
+    Zie voor meer informatie:
 
     - [Een inleiding tot Apache Hadoop beveiliging met HDInsight-clusters die zijn toegevoegd aan een domein](./domain-joined/hdinsight-security-overview.md)
     - [Apache Hadoop clusters die zijn toegevoegd aan het Azure-domein plannen in HDInsight](./domain-joined/apache-domain-joined-architecture.md)
@@ -119,7 +119,7 @@ Enter prise Security is een optioneel pakket dat u kunt toevoegen aan uw HDInsig
   - Integratie met Apache zwerver voor autorisatie voor Hive-, Spark SQL-en garen-wacht rijen.
   - U kunt toegangs beheer instellen voor bestanden en mappen.
 
-    Ga voor meer informatie naar:
+    Zie voor meer informatie:
 
   - [Apache Hive-beleid configureren in HDInsight die lid is van een domein](./domain-joined/apache-domain-joined-run-hive.md)
 
@@ -131,7 +131,7 @@ Momenteel ondersteunen alleen de volgende cluster typen de Enterprise Security P
 
 - Hadoop (alleen HDInsight 3,6)
 - Spark
-- Interactive Query
+- Interactieve query
 
 ### <a name="support-for-azure-data-lake-storage"></a>Ondersteuning voor Azure Data Lake Storage
 

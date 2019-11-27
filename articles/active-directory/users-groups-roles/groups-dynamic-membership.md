@@ -97,30 +97,30 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | --- | --- | --- |
 | city |Een wille keurige teken reeks waarde of *Null* |(User. City-EQ "waarde") |
 | regio |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
-| companyName | Een wille keurige teken reeks waarde of *Null* | (user.companyName -eq "value") |
+| companyName | Een wille keurige teken reeks waarde of *Null* | (User. companyName-EQ "waarde") |
 | department |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
 | displayName |Wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
 | employeeId |Wille keurige teken reeks waarde |(User. employeeId-EQ "waarde")<br>(User. employeeId-ne *Null*) |
-| facsimileTelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.facsimileTelephoneNumber -eq "value") |
+| facsimileTelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(User. facsimileTelephoneNumber-EQ "waarde") |
 | givenName |Een wille keurige teken reeks waarde of *Null* |(gebruiker. OpgegevenNaam-EQ "waarde") |
-| Functie |Een wille keurige teken reeks waarde of *Null* |(User. jobTitle-EQ "waarde") |
+| jobTitle |Een wille keurige teken reeks waarde of *Null* |(User. jobTitle-EQ "waarde") |
 | mail |Een wille keurige teken reeks waarde of *Null* (SMTP-adres van de gebruiker) |(gebruiker. mail-EQ "waarde") |
-| mailNickName |Een wille keurige teken reeks waarde (e-mail alias van de gebruiker) |(user.mailNickName -eq "value") |
-| mobiele |Een wille keurige teken reeks waarde of *Null* |(gebruiker. Mobile-EQ "waarde") |
-| object-id |GUID van het gebruikers object |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
-| onPremisesSecurityIdentifier | Een on-premises beveiligings-id (SID) voor gebruikers die zijn gesynchroniseerd van on-premises naar de Cloud. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
+| mailNickName |Een wille keurige teken reeks waarde (e-mail alias van de gebruiker) |(gebruiker. mailnickname-EQ "waarde") |
+| provider |Een wille keurige teken reeks waarde of *Null* |(gebruiker. Mobile-EQ "waarde") |
+| Id |GUID van het gebruikers object |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
+| onPremisesSecurityIdentifier | Een on-premises beveiligings-id (SID) voor gebruikers die zijn gesynchroniseerd van on-premises naar de Cloud. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Geen DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Een wille keurige teken reeks waarde of *Null* |(User. physicalDeliveryOfficeName-EQ "waarde") |
-| Postcode |Een wille keurige teken reeks waarde of *Null* |(gebruiker. post code-EQ "waarde") |
-| preferredLanguage |ISO 639-1-code |(user.preferredLanguage -eq "en-US") |
+| Code |Een wille keurige teken reeks waarde of *Null* |(gebruiker. post code-EQ "waarde") |
+| preferredLanguage |ISO 639-1-code |(User. preferredLanguage-EQ "en-US") |
 | sipProxyAddress |Een wille keurige teken reeks waarde of *Null* |(User. sipProxyAddress-EQ "waarde") |
 | state |Een wille keurige teken reeks waarde of *Null* |(User. State-EQ "waarde") |
 | streetAddress |Een wille keurige teken reeks waarde of *Null* |(User. streetAddress-EQ "waarde") |
 | surname |Een wille keurige teken reeks waarde of *Null* |(User. achternaam-EQ "waarde") |
-| telephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.telephoneNumber -eq "value") |
-| usageLocation |Land code van twee letters |(user.usageLocation -eq "US") |
+| telephoneNumber |Een wille keurige teken reeks waarde of *Null* |(User. telephoneNumber-EQ "waarde") |
+| usageLocation |Land code van twee letters |(User. usageLocation-EQ "US") |
 | userPrincipalName |Wille keurige teken reeks waarde |(User. userPrincipalName-EQ "alias@domain") |
-| userType |*Null* voor leden gast |(User. User type-EQ "lid") |
+| User type |*Null* voor leden gast |(User. User type-EQ "lid") |
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschappen van het type teken reeks verzameling
 
@@ -138,14 +138,14 @@ De volgende tabel geeft een lijst van alle ondersteunde Opera tors en hun syntax
 | Operator | Syntaxis |
 | --- | --- |
 | Niet gelijk aan |-ne |
-| Is gelijk aan |-eq |
+| Is gelijk aan |-EQ |
 | Begint niet met |-notStartsWith |
 | Begint met |-startsWith |
 | Bevat niet |-notContains |
 | Contains |-bevat |
 | Niet overeen |-notMatch |
 | Overeen met |-overeenkomst |
-| In | -in |
+| Naast | -in |
 | Niet in | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>De Opera tors-in en notIn gebruiken
@@ -261,7 +261,7 @@ U kunt-alle Opera tors en gebruiken om een voor waarde toe te passen op een of a
 * -any (voldaan wanneer ten minste één item in de verzameling overeenkomt met de voor waarde)
 * -alle (voldaan wanneer alle items in de verzameling overeenkomen met de voor waarde)
 
-#### <a name="example-1"></a>Voorbeeld 1
+#### <a name="example-1"></a>Voor beeld 1
 
 assignedPlans is een eigenschap met meerdere waarden waarmee alle service plannen worden weer gegeven die aan de gebruiker zijn toegewezen. Met de volgende expressie selecteert u gebruikers die het service plan Exchange Online (abonnement 2) hebben (als GUID-waarde) die ook de status ingeschakeld heeft:
 
@@ -271,7 +271,7 @@ user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df
 
 Een regel zoals deze kan worden gebruikt voor het groeperen van alle gebruikers voor wie een Office 365 (of een andere micro soft online service)-mogelijkheid is ingeschakeld. Vervolgens kunt u een set beleids regels Toep assen op de groep.
 
-#### <a name="example-2"></a>Voorbeeld 2
+#### <a name="example-2"></a>Voor beeld 2
 
 Met de volgende expressie worden alle gebruikers geselecteerd die een service plan hebben dat is gekoppeld aan de intune-service (geïdentificeerd door de service naam ' SCO '):
 
@@ -353,7 +353,7 @@ Een voor beeld van een regel die gebruikmaakt van een aangepaste extensie-eigens
 user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-De naam van de aangepaste eigenschap kan worden gevonden in de map door de eigenschap Graph Explorer te gebruiken om een query uit te zoeken naar de eigenschaps naam. U kunt nu ook de koppeling **aangepaste extensie eigenschappen ophalen** selecteren in de opbouw functie voor de groep voor dynamische gebruikers om een unieke app-id in te voeren en de volledige lijst met aangepaste extensie-eigenschappen te ontvangen die moeten worden gebruikt bij het maken van een dynamische lidmaatschaps regel. Deze lijst kan ook worden vernieuwd om op te halen van alle nieuwe aangepaste extensie-eigenschappen voor die app.
+De naam van de aangepaste eigenschap kan worden gevonden in de map door de eigenschap Graph Explorer te gebruiken om een query uit te zoeken naar de eigenschaps naam. U kunt nu ook de koppeling **aangepaste extensie eigenschappen ophalen** selecteren in de opbouw functie voor de groep voor dynamische gebruikers om een unieke app-id in te voeren en de volledige lijst met aangepaste extensie-eigenschappen te ontvangen die moeten worden gebruikt bij het maken van een dynamische lidmaatschaps regel. Deze lijst kan ook worden vernieuwd om nieuwe aangepaste extensie-eigenschappen voor die app te krijgen.
 
 ## <a name="rules-for-devices"></a>Regels voor apparaten
 
@@ -373,17 +373,17 @@ De volgende kenmerken van apparaten kunnen worden gebruikt.
  ----- | ----- | ----------------
  accountEnabled | waar onwaar | (Device. accountEnabled-EQ True)
  displayName | Wille keurige teken reeks waarde |(apparaat. displayName-EQ "Rob iPhone")
- deviceOSType | Wille keurige teken reeks waarde | (Device. deviceOSType-EQ "iPad")-of (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-bevat "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
+ deviceOSType | Wille keurige teken reeks waarde | (Device. deviceOSType-EQ "iPad")-of (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-bevat "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
  deviceOSVersion | Wille keurige teken reeks waarde | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | een geldige naam voor een apparaatcategorie | (Device. deviceCategory-EQ "BYOD")
- deviceManufacturer | Wille keurige teken reeks waarde | (device.deviceManufacturer -eq "Samsung")
- deviceModel | Wille keurige teken reeks waarde | (Device. deviceModel-EQ "iPad-Air")
+ deviceManufacturer | Wille keurige teken reeks waarde | (Device. deviceManufacturer-EQ "Samsung")
+ DeviceModel | Wille keurige teken reeks waarde | (Device. deviceModel-EQ "iPad-Air")
  deviceOwnership | Persoonlijk, bedrijf, onbekend | (apparaat. deviceOwnership-EQ "bedrijf")
  enrollmentProfileName | Apple-inschrijvings profiel voor apparaten, registratie van apparaten-bedrijfs apparaat-id's (Android-kiosk) of Windows auto pilot-profiel naam | (apparaat. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | waar onwaar | (Device. isRooted-EQ True)
  managementType | MDM (voor mobiele apparaten)<br>PC (voor computers die worden beheerd door de intune-PC-agent) | (Device. managementType-EQ "MDM")
  deviceId | een geldige Azure AD-apparaat-ID | (apparaat. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- object-id | een geldige Azure AD-object-ID |  (apparaat. objectId-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ Id | een geldige Azure AD-object-ID |  (apparaat. objectId-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  devicePhysicalIds | een teken reeks waarde die wordt gebruikt door auto pilot, zoals alle auto pilot-apparaten, OrderID of PurchaseOrderID  | (Device. devicePhysicalIDs-wille keurige _-bevat "[ZTDId]") (Device. devicePhysicalIds-wille keurige _-EQ "[OrderID]: 179887111881") (Device. devicePhysicalIds-wille keurige _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | een teken reeks die overeenkomt met de eigenschap van het intune-apparaat voor het labelen van moderne werkplek apparaten | (Device. systemLabels-bevat "M365Managed")
 

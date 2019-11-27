@@ -22,7 +22,7 @@ In de voor beelden in dit artikel wordt gebruikgemaakt van de Azure CLI. U moet 
 
 Wanneer u een [container groep](container-instances-container-groups.md) maakt in azure container instances, kunt u een van de drie beleids instellingen voor het opnieuw opstarten opgeven.
 
-| Beleid voor opnieuw opstarten   | Beschrijving |
+| Beleid opnieuw opstarten   | Beschrijving |
 | ---------------- | :---------- |
 | `Always` | Containers in de container groep worden altijd opnieuw opgestart. Dit is de **standaard** instelling die wordt toegepast wanneer er geen beleid voor opnieuw opstarten is opgegeven bij het maken van de container. |
 | `Never` | Containers in de container groep worden nooit opnieuw opgestart. De containers worden Maxi maal één keer uitgevoerd. |

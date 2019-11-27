@@ -106,10 +106,10 @@ Zodra het controle punt is voltooid, kan de Orchestrator-functie uit het geheuge
 
 Na voltooiing ziet de geschiedenis van de eerder weer gegeven functie er ongeveer uit zoals in de volgende tabel in azure Table Storage (afgekort voor afbeeldings doeleinden):
 
-| PartitionKey (InstanceId)                     | EventType             | Tijdstempel               | Invoer | Naam             | Resultaat                                                    | Status |
+| PartitionKey (InstanceId)                     | Type             | Tijdstempel               | Invoer | Naam             | Resultaat                                                    | Status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | Null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670 Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670 Z |       |                  |                                                           |                     |
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201 Z |       |                  | "" "Hallo Tokyo!" "                                        |                     |

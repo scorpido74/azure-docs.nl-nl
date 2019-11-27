@@ -63,7 +63,7 @@ Een virtueel netwerk definieert de adres ruimte waarin u een of meer subnetten m
 
 ### <a name="subnet-delegated"></a>Subnet (gedelegeerd)
 
-Subnetten voor het segmenteren van het virtuele netwerk in afzonderlijke adresruimten die worden gebruikt door de Azure-resources die u erin plaatst. U maakt een of meer subnetten binnen een virtueel netwerk.
+Met subnetten wordt het virtuele netwerk gesegmenteerd tot afzonderlijke adres ruimten die kunnen worden gebruikt door de Azure-resources die u in deze ruimte plaatst. U maakt een of meer subnetten binnen een virtueel netwerk.
 
 Het subnet dat u voor container groepen gebruikt, mag alleen container groepen bevatten. Wanneer u een container groep voor het eerst naar een subnet implementeert, wordt dat subnet door Azure gedelegeerd aan Azure Container Instances. Wanneer het subnet is gedelegeerd, kan het alleen worden gebruikt voor container groepen. Als u probeert andere resources dan container groepen te implementeren op een overgedragen subnet, mislukt de bewerking.
 
@@ -77,7 +77,7 @@ In het volgende diagram zijn verschillende container groepen geïmplementeerd na
 
 ![Container groepen binnen een virtueel netwerk][aci-vnet-01]
 
-## <a name="deployment-scenarios"></a>Implementatiescenario's
+## <a name="deployment-scenarios"></a>Implementatiescenario’s
 
 U kunt [AZ container Create][az-container-create] gebruiken om container groepen te implementeren in een nieuw virtueel netwerk en Azure toe te staan de vereiste netwerk resources te maken, of te implementeren in een bestaand virtueel netwerk. 
 

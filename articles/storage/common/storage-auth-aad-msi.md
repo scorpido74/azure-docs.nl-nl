@@ -26,7 +26,7 @@ In dit artikel wordt beschreven hoe u toegang kunt verlenen tot BLOB-of wachtrij
 
 Voordat u beheerde identiteiten voor Azure-resources kunt gebruiken om toegang te verlenen tot blobs en wacht rijen van uw VM, moet u eerst beheerde identiteiten voor Azure-resources inschakelen op de VM. Zie een van de volgende artikelen voor meer informatie over het inschakelen van beheerde identiteiten voor Azure-resources:
 
-- [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure-portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sjabloon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -117,7 +117,7 @@ In de voor beelden in dit artikel wordt ook gebruikgemaakt van de nieuwste versi
 Install-Package Azure.Identity
 ```
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET-codevoorbeeld: maken van een blok-blob
+## <a name="net-code-example-create-a-block-blob"></a>.NET-code voorbeeld: een blok-Blob maken
 
 Voeg de volgende `using`-instructies toe aan uw code voor het gebruik van de identiteits-en Azure Storage-client bibliotheken van Azure.
 

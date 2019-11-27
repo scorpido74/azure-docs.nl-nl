@@ -36,7 +36,7 @@ Gaat u gewoon door met het verkennen van de functionaliteit van Azure Cognitive 
 
 Bekijk het bereik van de [ondersteunings opties voor Azure en kies het abonnement dat het](https://azure.microsoft.com/support/plans) beste past, of u nu een ontwikkelaar bent die uw Cloud traject of een grote organisatie die bedrijfs kritieke, strategische toepassingen implementeert. Azure-klanten kunnen ondersteunings aanvragen maken en beheren in de Azure Portal.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure-portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure Portal voor de Verenigde Staten overheid](https://portal.azure.us)
 
 ## <a name="post-a-question-on-stack-overflow"></a>Een vraag op Stack Overflow plaatsen
@@ -75,7 +75,7 @@ Als u nieuwe functies wilt aanvragen, plaatst u deze op UserVoice. Deel uw idee√
 | Face                          | https://cognitive.uservoice.com/forums/430315-face |
 | Formulieren                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | Boeiende                     | https://feedback.azure.com/forums/34192--general-feedback |
-| Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
+| Taalbegrip (Language Understanding Intelligent Service) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizer                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
 | Spraakservices               | https://cognitive.uservoice.com/forums/912208-speech-service |
@@ -106,7 +106,7 @@ De release opmerkingen worden bijgewerkt wanneer er nieuwe releases beschikbaar 
 
 Nieuws over Cognitive Services wordt gedeeld in de [Azure-blog](https://azure.microsoft.com/blog/topics/cognitive-services/).
 
-## <a name="search"></a>Zoeken
+## <a name="search"></a>Search
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
