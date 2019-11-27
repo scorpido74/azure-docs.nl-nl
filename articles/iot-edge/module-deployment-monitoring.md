@@ -1,6 +1,6 @@
 ---
-title: Automatic deployment for device groups - Azure IoT Edge | Microsoft Docs
-description: Use automatic deployments in Azure IoT Edge to manage groups of devices based on shared tags
+title: Automatische implementatie voor apparaatgroepen - Azure IoT Edge | Microsoft Docs
+description: Gebruik van automatische implementaties in Azure IoT Edge voor groepen van apparaten op basis van gedeelde tags beheren
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -15,119 +15,119 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456725"
 ---
-# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Understand IoT Edge automatic deployments for single devices or at scale
+# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Informatie over IoT Edge-automatische implementaties voor individuele apparaten of op schaal
 
-Azure IoT Edge devices follow a [device lifecycle](../iot-hub/iot-hub-device-management-overview.md) that is similar to other types of IoT devices:
+Azure IoT Edge apparaten volgen een [levens cyclus](../iot-hub/iot-hub-device-management-overview.md) van een apparaat die vergelijkbaar is met andere typen IOT-apparaten:
 
-1. Provision new IoT Edge devices by imaging a device with an OS and installing the [IoT Edge runtime](iot-edge-runtime.md).
-2. Configure the devices to run [IoT Edge modules](iot-edge-modules.md), and then monitor their health. 
-3. Finally, retire devices when they are replaced or become obsolete.  
+1. Richt nieuwe IoT Edge-apparaten in door een apparaat te Imaging met een besturings systeem en de [IOT Edge-runtime](iot-edge-runtime.md)te installeren.
+2. Configureer de apparaten om [IOT Edge modules](iot-edge-modules.md)uit te voeren en controleer hun status. 
+3. Ten slotte apparaten buiten gebruik stellen wanneer ze worden vervangen of verouderd raken.  
 
-Azure IoT Edge provides two ways to configure the modules to run on IoT Edge devices: one for development and fast iterations on a single device (you used this method in the Azure IoT Edge [tutorials](tutorial-deploy-function.md)), and one for managing large fleets of IoT Edge devices. Both of these approaches are available in the Azure portal and programmatically. For targeting groups or a large number of devices, you can specify which devices you'd like to deploy your modules to using [tags](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) in the device twin. The following steps talk about a deployment to a Washington State device group identified through the tags property. 
+Azure IoT Edge biedt twee manieren om de modules te configureren voor uitvoering op IoT Edge apparaten: een voor ontwikkeling en snelle herhalingen op één apparaat (u hebt deze methode gebruikt in de Azure IoT Edge [zelf studies](tutorial-deploy-function.md)) en één voor het beheren van grote vloots van IOT edge apparaten. Beide van deze methoden zijn beschikbaar in Azure portal en programmatisch. Voor doel groepen of een groot aantal apparaten kunt u opgeven welke apparaten u wilt implementeren met behulp van [labels](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) in het apparaat. De volgende stappen uit praten over een implementatie op een apparaatgroep de staat Washington is geïdentificeerd door de eigenschap tags. 
 
-This article focuses on the configuration and monitoring stages for fleets of devices, collectively referred to as IoT Edge automatic deployments. The overall deployment steps are as follows: 
+In dit artikel is gericht op de configuratie en bewaking van de fasen voor vloten van apparaten, gezamenlijk aangeduid als automatische IoT Edge-implementaties. De algemene implementaties tappen zijn als volgt: 
 
-1. An operator defines a deployment that describes a set of modules as well as the target devices. Each deployment has a deployment manifest that reflects this information. 
-2. The IoT Hub service communicates with all targeted devices to configure them with the desired modules. 
-3. The IoT Hub service retrieves status from the IoT Edge devices and makes them available to the operator.  For example, an operator can see when an Edge device is not configured successfully or if a module fails during runtime. 
-4. At any time, new IoT Edge devices that meet the targeting conditions are configured for the deployment. For example, a deployment that targets all IoT Edge devices in Washington State automatically configures a new IoT Edge device once it is provisioned and added to the Washington State device group. 
+1. Een operator definieert een implementatie die een reeks modules, evenals de doelapparaten beschrijft. Elke implementatie heeft een implementatie manifest dat deze informatie weergeeft. 
+2. De IoT Hub-service communiceert met alle apparaten uit de doelgroep om deze te configureren met de gewenste modules. 
+3. De IoT Hub-service wordt de status opgehaald van de IoT Edge-apparaten en maakt ze beschikbaar voor de operator.  Een operator kan bijvoorbeeld zien wanneer een edge-apparaat niet is geconfigureerd of als een module tijdens runtime mislukt. 
+4. Op elk gewenst moment zijn nieuwe IoT Edge-apparaten die voldoen aan de doelitems voorwaarden geconfigureerd voor de implementatie. Zo configureert een implementatie die gericht is op alle IoT Edge apparaten in de status Washington automatisch een nieuw IoT Edge-apparaat nadat het is ingericht en toegevoegd aan de apparaatgroep status van Washington. 
  
-This article describes each component involved in configuring and monitoring a deployment. For a walkthrough of creating and updating a deployment, see [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md).
+Dit artikel wordt beschreven voor elk onderdeel is betrokken bij het configureren en controleren van een implementatie. Zie [IOT Edge modules op schaal implementeren en bewaken](how-to-deploy-monitor.md)voor een overzicht van het maken en bijwerken van een implementatie.
 
 ## <a name="deployment"></a>Implementatie
 
-An IoT Edge automatic deployment assigns IoT Edge module images to run as instances on a targeted set of IoT Edge devices. It works by configuring an IoT Edge deployment manifest to include a list of modules with the corresponding initialization parameters. A deployment can be assigned to a single device (based on Device ID) or to a group of devices (based on tags). Once an IoT Edge device receives a deployment manifest, it downloads and installs the container images from the respective container repositories, and configures them accordingly. Once a deployment is created, an operator can monitor the deployment status to see whether targeted devices are correctly configured.
+De automatische implementatie van een IoT Edge toegewezen IoT Edge module installatiekopieën uit te voeren als de exemplaren in een bepaalde set van IoT Edge-apparaten. Dit gebeurt door het configureren van een manifest van de IoT Edge-implementatie om op te nemen van een lijst met modules met de bijbehorende initialisatieparameters. Een implementatie kan worden toegewezen aan één apparaat (op basis van apparaat-ID) of aan een groep apparaten (op basis van labels). Nadat een IoT Edge-apparaat een implementatie manifest heeft ontvangen, worden de container installatie kopieën uit de respectieve container opslagplaatsen gedownload en geïnstalleerd en worden ze dienovereenkomstig geconfigureerd. Zodra een implementatie is gemaakt, kan een operator de implementatie status controleren om te zien of de doel apparaten correct zijn geconfigureerd.
 
-Only IoT Edge devices can be configured with a deployment. The following prerequisites must be on the device before it can receive the deployment:
+IoT Edge-apparaten kunnen worden geconfigureerd met een implementatie. De volgende vereisten moeten zijn op het apparaat voordat de implementatie kan ontvangen:
 
-* The base operating system
-* A container management system, like Moby or Docker
-* Provisioning of the IoT Edge runtime 
+* Het basisbesturingssysteem
+* Een container management-systeem, zoals Moby of Docker
+* Het inrichten van IoT Edge-runtime 
 
 ### <a name="deployment-manifest"></a>Distributiemanifest
 
-A deployment manifest is a JSON document that describes the modules to be configured on the targeted IoT Edge devices. It contains the configuration metadata for all the modules, including the required system modules (specifically the IoT Edge agent and IoT Edge hub).  
+Het manifest voor een implementatie is een JSON-document met een beschrijving van de modules worden geconfigureerd op de betreffende IoT Edge-apparaten. Het bevat de metagegevens van de configuratie voor alle modules, met inbegrip van de modules voor het systeem verplicht (specifiek de IoT Edge-agent en IoT Edge hub).  
 
-The configuration metadata for each module includes: 
+De metagegevens van de configuratie voor elke module bevat: 
 
-* Version 
+* Versie 
 * Type 
-* Status (for example, running or stopped) 
-* Restart policy 
-* Image and container registry
-* Routes for data input and output 
+* Status (bijvoorbeeld wordt uitgevoerd of gestopt) 
+* Beleid voor opnieuw opstarten 
+* Afbeeldings- en container registry
+* Routes voor invoer en uitvoer 
 
-If the module image is stored in a private container registry, the IoT Edge agent holds the registry credentials. 
+Als de module-installatiekopie is opgeslagen in een privécontainerregister, bevat de IoT Edge-agent de registerreferenties. 
 
-### <a name="target-condition"></a>Target condition
+### <a name="target-condition"></a>Doelvoorwaarde
 
-The target condition is continuously evaluated throughout the lifetime of the deployment. Any new devices that meet the requirements are included, and any existing devices that no longer do are removed. The deployment is reactivated if the service detects any target condition change. 
+De doel voorwaarde wordt continu geëvalueerd gedurende de levens duur van de implementatie. Nieuwe apparaten die voldoen aan de vereisten zijn opgenomen en alle bestaande apparaten die niet langer worden verwijderd. De implementatie opnieuw wordt geactiveerd als de service wordt gedetecteerd door elke wijziging van de voorwaarde doel. 
 
-For instance, you have a deployment A with a target condition tags.environment = 'prod'. When you kick off the deployment, there are 10 production devices. The modules are successfully installed in these 10 devices. The IoT Edge Agent Status is shown as 10 total devices, 10 successful responses, 0 failure responses, and 0 pending responses. Now you add five more devices with tags.environment = 'prod'. The service detects the change and the IoT Edge Agent Status becomes 15 total devices, 10 successful responses, 0 failure responses, and 5 pending responses when it tries to deploy to the five new devices.
+Bijvoorbeeld, hebt u een A-implementatie met een doel voorwaarde tags.environment = 'prod'. Wanneer u een vliegende start de implementatie, zijn er 10 productieapparaten. De modules zijn geïnstalleerd in deze 10-apparaten. De Status van de IoT Edge-Agent wordt weergegeven als het totaal aantal apparaten 10, 10 gelukt-antwoorden, 0 mislukte reacties en 0 in behandeling-antwoorden. Nu u bij het toevoegen van vijf meer apparaten met tags.environment = 'prod'. De service detecteert de wijziging en de Status van de IoT Edge-Agent wordt 15 totaal aantal apparaten, 10 gelukt-antwoorden, 0 mislukte reacties en 5 in behandeling-antwoorden als er wordt geprobeerd om in de vijf nieuwe apparaten te implementeren.
 
-Use any Boolean condition on device twins tags or deviceId to select the target devices. If you want to use condition with tags, you need to add "tags":{} section in the device twin under the same level as properties. [Learn more about tags in device twin](../iot-hub/iot-hub-devguide-device-twins.md)
+Gebruik een Boole-voorwaarde op device twins tags of deviceId de doelapparaten selecteren. Als u voor waarde met tags wilt gebruiken, moet u ' Tags ' toevoegen:{} sectie in het apparaat dubbele onder hetzelfde niveau als eigenschappen. [Meer informatie over tags op het apparaat, dubbele](../iot-hub/iot-hub-devguide-device-twins.md)
 
-Target condition examples:
+Voorbeelden van de doel-voorwaarden:
 
-* deviceId ='linuxprod1'
-* tags.environment ='prod'
-* tags.environment = 'prod' AND tags.location = 'westus'
-* tags.environment = 'prod' OR tags.location = 'westus'
-* tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+* apparaat-id = 'linuxprod1'
+* tags.Environment = 'prod'
+* tags.Environment = 'prod' AND tags.location = 'westus'
+* tags.Environment = 'prod' of tags.location = 'westus'
+* tags.operator = 'John' en tags.environment = 'prod' geen apparaat-id = 'linuxprod1'
 
-Here are some constrains when you construct a target condition:
+Hier volgen enkele beperkingen wanneer u een doelvoorwaarde maken:
 
-* In device twin, you can only build a target condition using tags or deviceId.
-* Double quotes aren't allowed in any portion of the target condition. Use single quotes.
-* Single quotes represent the values of the target condition. Therefore, you must escape the single quote with another single quote if it's part of the device name. For example, to target a device called `operator'sDevice`, write `deviceId='operator''sDevice'`.
-* Numbers, letters, and the following characters are allowed in target condition values: `-:.+%_#*?!(),=@;$`.
+* In de apparaatdubbel, kunt u alleen een doelvoorwaarde met behulp van labels of deviceId bouwen.
+* Dubbele aanhalingstekens zijn niet toegestaan in een gedeelte van de doelvoorwaarde. Gebruikt u enkele aanhalingstekens.
+* Enkele aanhalingstekens vertegenwoordigen de waarden van de doelvoorwaarde. Daarom moet u de enkel aanhalingsteken met een andere enkel aanhalingsteken escape-als het deel van de naam van het apparaat uitmaakt. Als u bijvoorbeeld een apparaat met de naam `operator'sDevice`wilt richten, schrijft u `deviceId='operator''sDevice'`.
+* Cijfers, letters en de volgende tekens zijn toegestaan in doel voorwaarde waarden: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Prioriteit
 
-A priority defines whether a deployment should be applied to a targeted device relative to other deployments. A deployment priority is a positive integer, with larger numbers denoting higher priority. If an IoT Edge device is targeted by more than one deployment, the deployment with the highest priority applies.  Deployments with lower priorities are not applied, nor are they merged.  If a device is targeted with two or more deployments with equal priority, the most recently created deployment (determined by the creation timestamp) applies.
+Een prioriteit bepaalt of een implementatie moet worden toegepast op een doelapparaat ten opzichte van andere implementaties. De prioriteit van een implementatie is een positief geheel getal, met grotere aantallen die aangeeft hogere prioriteit. Als een IoT Edge-apparaat door meer dan één implementatie is gericht, wordt de implementatie met de hoogste prioriteit is van toepassing.  Implementaties met lagere prioriteiten worden niet toegepast en worden niet samengevoegd.  Als een apparaat is gericht op twee of meer implementaties met een gelijke prioriteit, is de meest recent gemaakte implementatie (bepaald door de tijds tempel voor maken) van toepassing.
 
 ### <a name="labels"></a>Labels 
 
-Labels are string key/value pairs that you can use to filter and group of deployments. A deployment may have multiple labels. Labels are optional and do no impact the actual configuration of IoT Edge devices. 
+Labels zijn een reeks sleutel/waarde-paren die u om te filteren en groeperen van implementaties gebruiken kunt. Een implementatie kan meerdere labels hebben. Labels zijn optioneel en niet van invloed op de werkelijke configuratie van IoT Edge-apparaten uitvoeren. 
 
 ### <a name="deployment-status"></a>Implementatiestatus
 
-A deployment can be monitored to determine whether it applied successfully for any targeted IoT Edge device.  A targeted Edge device will appear in one or more of the following status categories: 
+Een implementatie kan worden gecontroleerd om te bepalen of deze is toegepast voor alle betreffende IoT Edge-apparaat.  Een doel apparaat wordt weer gegeven in een of meer van de volgende status Categorieën: 
 
-* **Target** shows the IoT Edge devices that match the Deployment targeting condition.
-* **Actual** shows the targeted IoT Edge devices that are not targeted by another deployment of higher priority.
-* **Healthy** shows the IoT Edge devices that have reported back to the service that the modules have been deployed successfully. 
-* **Unhealthy** shows the IoT Edge devices have reported back to the service that one or modules have not been deployed successfully. To further investigate the error, connect remotely to those devices and view the log files.
-* **Unknown** shows the IoT Edge devices that did not report any status pertaining this deployment. To further investigate, view service info and log files.
+* **Doel** toont de IOT edge-apparaten die overeenkomen met de voor waarde voor de implementatie van doelen.
+* Met **werkelijk** worden de beoogde IOT edge-apparaten weer gegeven die niet zijn gericht op een andere implementatie van een hogere prioriteit.
+* **In orde** worden de IOT edge-apparaten weer gegeven die zijn gerapporteerd aan de service dat de modules zijn geïmplementeerd. 
+* Een **slechte status** geeft aan dat de IOT edge apparaten zijn gerapporteerd aan de service dat er niet met succes een of meerdere modules zijn geïmplementeerd. Voor verder onderzoek van de fout, extern verbinding maken met deze apparaten en de logboekbestanden.
+* **Onbekend** toont de IOT edge apparaten die geen status hebben gerapporteerd voor deze implementatie. Verder te onderzoeken, service-gegevens en logboekbestanden bestanden weergeven
 
-## <a name="phased-rollout"></a>Phased rollout 
+## <a name="phased-rollout"></a>Gefaseerde implementatie 
 
-A phased rollout is an overall process whereby an operator deploys changes to a broadening set of IoT Edge devices. The goal is to make changes gradually to reduce the risk of making wide scale breaking changes.  
+Een gefaseerde implementatie is een algemene proces waarbij wijzigingen in een operator worden geïmplementeerd op een leven set IoT Edge-apparaten. Het doel is om wijzigingen aanbrengen geleidelijk in vermindert het risico van het maken van grote schaal belangrijke wijzigingen.  
 
-A phased rollout is executed in the following phases and steps: 
+Een gefaseerde implementatie wordt uitgevoerd in de volgende fasen en stappen: 
 
-1. Establish a test environment of IoT Edge devices by provisioning them and setting a device twin tag like `tag.environment='test'`. The test environment should mirror the production environment that the deployment will eventually target. 
-2. Create a deployment including the desired modules and configurations. The targeting condition should target the test IoT Edge device environment.   
-3. Validate the new module configuration in the test environment.
-4. Update the deployment to include a subset of production IoT Edge devices by adding a new tag to the targeting condition. Also, ensure that the priority for the deployment is higher than other deployments currently targeted to those devices 
-5. Verify that the deployment succeeded on the targeted IoT Devices by viewing the deployment status.
-6. Update the deployment to target all remaining production IoT Edge devices.
+1. Stel een test omgeving van IoT Edge apparaten in door deze in te richten en een apparaat-dubbele tag in te stellen, zoals `tag.environment='test'`. In de test omgeving moet de productie omgeving worden gespiegeld die de implementatie uiteindelijk gaat richten. 
+2. Maak een implementatie met inbegrip van de gewenste modules en configuraties. De doelitems voorwaarde moet het doel de test-omgeving van IoT Edge-apparaten.   
+3. Valideer de moduleconfiguratie van de nieuwe in de testomgeving.
+4. De implementatie zodat een subset van de productie IoT Edge-apparaten die door een nieuwe tag toe te voegen aan de voorwaarde doelitems bijwerken. Zorg er ook voor dat de prioriteit voor de implementatie hoger dan andere implementaties op dit moment is gericht op deze apparaten is 
+5. Controleer of dat de implementatie is voltooid op de betreffende IoT-apparaten door de implementatiestatus te bekijken.
+6. Bijwerken van de implementatie wilt richten op alle resterende productie IoT Edge-apparaten.
 
 ## <a name="rollback"></a>Terugdraaien
 
-Deployments can be rolled back if you receive errors or misconfigurations.  Because a deployment defines the absolute module configuration for an IoT Edge device, an additional deployment must also be targeted to the same device at a lower priority even if the goal is to remove all modules.  
+Implementaties kunnen worden teruggedraaid terug als er fouten of onjuiste configuraties.  Omdat een implementatie de absolute module configuratie voor een IoT Edge apparaat definieert, moet een extra implementatie ook met een lagere prioriteit op hetzelfde apparaat worden gericht, zelfs als het doel is om alle modules te verwijderen.  
 
-Perform rollbacks in the following sequence: 
+Terugdraaiacties in de volgende handelingen uitvoeren: 
 
-1. Confirm that a second deployment is also targeted at the same device set. If the goal of the rollback is to remove all modules, the second deployment should not include any modules. 
-2. Modify or remove the target condition expression of the deployment you wish to roll back so that the devices no longer meet the targeting condition.
-3. Verify that the rollback succeeded by viewing the deployment status.
-   * The rolled-back deployment should no longer show status for the devices that were rolled back.
-   * The second deployment should now include deployment status for the devices that were rolled back.
+1. Bevestig dat een tweede implementatie ook is gericht op dezelfde apparaatset. Als het doel van het terugdraaien is het verwijderen van alle modules, moet alle modules die niet in de tweede implementatie bevatten. 
+2. Wijzigen of verwijderen van de doel-voorwaarde-expressie van de implementatie die u wilt opnieuw zodat de apparaten niet langer voldoet aan de doelitems voorwaarde samenvouwen.
+3. Controleren of het terugdraaien is geslaagd door de implementatiestatus te bekijken.
+   * De service-Update-back-implementatie moet status voor de apparaten die worden teruggedraaid niet meer weergeven.
+   * De tweede implementatie bevatten moet nu de implementatiestatus voor de apparaten die worden teruggedraaid.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Walk through the steps to create, update, or delete a deployment in [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md).
-* Learn more about other IoT Edge concepts like the [IoT Edge runtime](iot-edge-runtime.md) and [IoT Edge modules](iot-edge-modules.md).
+* Door loop de stappen om een implementatie te maken, bij te werken of te verwijderen in [IOT Edge modules implementeren en bewaken op schaal](how-to-deploy-monitor.md).
+* Meer informatie over andere IoT Edge concepten, zoals de modules [IOT Edge runtime](iot-edge-runtime.md) en [IOT Edge](iot-edge-modules.md).
 
