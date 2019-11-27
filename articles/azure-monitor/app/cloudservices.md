@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: d77bbe355b3f6a2666f46246d1d12cfb2e43e559
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 860694a750ae313f04aceab924429dcf08ecbb66
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677567"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887542"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights voor Azure Cloud Services
 [Application Insights][start] kunt [Azure Cloud service-apps](https://azure.microsoft.com/services/cloud-services/) bewaken voor Beschik baarheid, prestaties, fouten en gebruik door gegevens van Application Insights sdk's te combi neren met [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) gegevens uit uw Cloud Services. Op basis van de feedback die u krijgt over de prestaties en de effectiviteit van uw app tijdens het gebruik, kunt u weldoordachte beslissingen nemen over de richting van het ontwerp in elke fase van de ontwikkelingslevenscyclus.
@@ -26,7 +26,7 @@ Voordat u begint, hebt u het volgende nodig:
 * Microsoft Azure-hulpprogram ma's 2,9 of hoger.
 * Developer Analytics Tools 7,10 of hoger.
 
-## <a name="get-started-quickly"></a>Snel aan de slag
+## <a name="get-started-quickly"></a>Ga snel aan de slag
 Als u uw cloudservice wilt controleren met Application Insights, kunt u dat het snelst en gemakkelijkst doen door die optie te kiezen wanneer u uw service naar Azure publiceert.
 
 ![Voor beeld van instellingen pagina voor diagnostische gegevens](./media/cloudservices/azure-cloud-application-insights.png)
@@ -57,7 +57,7 @@ Elke resource behoort tot een resourcegroep. Resource groepen worden gebruikt vo
 ### <a name="resources-for-components"></a>Resources voor onderdelen
 U kunt het beste een afzonderlijke resource maken voor elk onderdeel van uw app. Dat wil zeggen dat u een resource maakt voor elke webrol en werk rollen. U kunt elk onderdeel afzonderlijk analyseren, maar u maakt een [dash board](../../azure-monitor/app/overview-dashboard.md) waarin de belangrijkste grafieken van alle onderdelen worden gecombineerd, zodat u ze in één weer gave kunt vergelijken en controleren. 
 
-Een alternatieve methode is het verzenden van de telemetrie van meer dan één rol naar dezelfde resource, maar [u kunt een dimensie-eigenschap toevoegen aan elk telemetrie-item](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) dat de bijbehorende bron functie identificeert. In deze benadering wordt in metrische grafieken, zoals uitzonde ringen, normaal gesp roken een aggregatie van de aantallen van de verschillende rollen weer gegeven, maar u kunt de grafiek zo nodig met de rol-id segmenteren. U kunt Zoek opdrachten ook filteren op dezelfde dimensie. Dit alternatief maakt het een beetje eenvoudiger om alles tegelijk te bekijken, maar kan ook leiden tot Verwar ring tussen de rollen.
+Een alternatieve methode is het verzenden van de telemetrie van meer dan één rol naar dezelfde resource, maar [u kunt een dimensie-eigenschap toevoegen aan elk telemetrie-item](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) dat de bijbehorende bron functie identificeert. In deze benadering wordt in metrische grafieken, zoals uitzonde ringen, normaal gesp roken een aggregatie van de aantallen van de verschillende rollen weer gegeven, maar u kunt de grafiek zo nodig met de rol-id segmenteren. U kunt Zoek opdrachten ook filteren op dezelfde dimensie. Dit alternatief maakt het een beetje eenvoudiger om alles tegelijk te bekijken, maar kan ook leiden tot Verwar ring tussen de rollen.
 
 Telemetrie van de browser wordt gewoonlijk opgenomen in dezelfde resource als de gegevens van de webrol op de server.
 
@@ -74,7 +74,7 @@ Als u de telemetrie naar de juiste resources wilt verzenden, kunt u de Applicati
 
 Als u hebt besloten om een afzonderlijke resource te maken voor elke rol, en wellicht een afzonderlijke set voor elke build-configuratie, is het het gemakkelijkst om ze allemaal in de Application Insights portal te maken. Als u een groot aantal resources maakt, kunt u [het proces automatiseren](../../azure-monitor/app/powershell.md).
 
-1. Selecteer in de [Azure Portal][portal] **nieuwe**  > **ontwikkelaars Services**  > **Application Insights**.  
+1. Selecteer in de [Azure Portal][portal] **nieuwe** > **ontwikkelaars Services** > **Application Insights**.  
 
     ![Application Insights deel venster](./media/cloudservices/01-new.png)
 
@@ -86,7 +86,7 @@ Elke resource wordt geïdentificeerd door een instrumentatie sleutel. U hebt dez
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Azure Diagnostics instellen voor elke rol
 Stel deze optie in om uw app te controleren met Application Insights. Voor webrollen biedt deze optie prestatie bewaking, waarschuwingen, diagnostische gegevens en gebruiks analyse. Voor andere rollen kunt u Azure Diagnostics, zoals opnieuw opstarten, prestatie meter items en aanroepen naar System. Diagnostics. trace, zoeken en controleren. 
 
-1. Open in Visual Studio Solution Explorer de eigenschappen van elke rol onder **\<YourCloudService >**  > **rollen**.
+1. Open in Visual Studio Solution Explorer de eigenschappen van elke rol onder **\<uwcloudservice >**  > **rollen**.
 
 1. Schakel in **configuratie**het selectie vakje **Diagnostische gegevens verzenden naar Application Insights** in en selecteer vervolgens de Application Insights resource die u eerder hebt gemaakt.
 
@@ -94,7 +94,7 @@ Als u hebt besloten om een afzonderlijke Application Insights-resource voor elke
 
 ![Application Insights configureren](./media/cloudservices/configure-azure-diagnostics.png)
 
-Dit heeft gevolgen voor het invoegen van uw Application Insights instrumentatie sleutels in de bestanden met de naam *ServiceConfiguration. \*. cscfg*. Hier volgt de [voorbeeld code](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+Dit heeft gevolgen voor het invoegen van uw Application Insights instrumentatie sleutels in de bestanden met de naam *ServiceConfiguration.\*. cscfg*. Hier volgt de [voorbeeld code](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Als u het niveau van diagnostische gegevens wilt variëren dat naar Application Insights wordt verzonden, kunt u dit doen [door de *cscfg* -bestanden rechtstreeks te bewerken](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
@@ -224,7 +224,7 @@ Voor werk rollen kunt u uitzonde ringen op twee manieren bijhouden:
 ## <a name="performance-counters"></a>Prestatiemeteritems
 Voor de volgende prestatiemeteritems worden gegevens verzameld:
 
-* \Process(?? APP_WIN32_PROC??) Processor tijd van \%
+* \Process(?? APP_WIN32_PROC?) Processor tijd van\%
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes
