@@ -1,5 +1,5 @@
 ---
-title: Create a public Load Balancer - Azure template
+title: Een openbare Load Balancer maken - Azure-sjabloon
 titleSuffix: Azure Load Balancer
 description: Meer informatie over het maken van een openbare load balancer in Resource Manager met behulp van een sjabloon
 services: load-balancer
@@ -42,8 +42,8 @@ De voorbeeldsjabloon in de openbare opslagplaats maakt gebruik van een parameter
 
 Volg onderstaande stappen als u de sjabloon die u hebt gedownload, wilt implementeren met PowerShell.
 
-1. Als u Azure PowerShell nog niet eerder hebt gebruikt, kunt u [Azure PowerShell installeren en configureren](/powershell/azure/overview) raadplegen en de instructies helemaal tot aan het einde volgen om u aan te melden bij Azure en uw abonnement te selecteren.
-2. Run the **New-AzResourceGroupDeployment** cmdlet to create a resource group using the template.
+1. Als u Azure PowerShell nog niet eerder hebt gebruikt, raadpleegt u [Azure PowerShell installeren en configureren](/powershell/azure/overview) en volgt u de instructies helemaal tot aan het einde om u aan te melden bij Azure en uw abonnement te selecteren.
+2. Voer de cmdlet **New-AzResourceGroupDeployment** uit om een resource groep te maken met behulp van de sjabloon.
 
     ```powershell
     New-AzResourceGroupDeployment -Name TestRG -Location uswest `
@@ -81,4 +81,4 @@ Volg onderstaande stappen als u de sjabloon wilt implementeren met de Azure CLI.
 
 [TCP-time-outinstellingen voor inactiviteit voor de load balancer configureren](load-balancer-tcp-idle-timeout.md)
 
-For the JSON syntax and properties of a load balancer in a template, see [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+Zie [micro soft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)voor de JSON-syntaxis en-eigenschappen van een Load Balancer in een sjabloon.

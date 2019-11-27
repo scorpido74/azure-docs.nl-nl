@@ -42,7 +42,7 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 ## <a name="dedicated-resource-group"></a>Toegewezen resourcegroep
 
-Because container registries are resources that are used across multiple container hosts, a registry should reside in its own resource group.
+Omdat container registers resources zijn die worden gebruikt in meerdere container-hosts, moet een REGI ster zich in een eigen resource groep bevinden.
 
 Hoewel u mogelijk aan het experimenteren bent met een specifiek type host, zoals Azure Container Instances, wilt u de containerinstantie waarschijnlijk verwijderen wanneer u klaar bent. Maar misschien wilt u de verzameling installatiekopieën die u naar Azure Container Registry hebt gepusht, wel houden. Door uw register in een eigen resourcegroep te plaatsen, verkleint u het risico dat u de verzameling installatiekopieën in het register per ongeluk verwijdert als u de resourcegroep van de containerinstantie verwijdert.
 
@@ -59,9 +59,9 @@ Zie [Verifiëren met een Azure containerregister](container-registry-authenticat
 
 ## <a name="manage-registry-size"></a>Registergrootte beheren
 
-The storage constraints of each [container registry SKU][container-registry-skus] are intended to align with a typical scenario: **Basic** for getting started, **Standard** for the majority of production applications, and **Premium** for hyper-scale performance and [geo-replication][container-registry-geo-replication]. Tijdens de levensduur van het register moet u de grootte ervan beheren door regelmatig ongebruikte inhoud te verwijderen.
+De opslag beperkingen van elke [container register-SKU][container-registry-skus] zijn bedoeld om te worden uitgelijnd met een typisch scenario: **Basic** om aan de slag te gaan, **standaard** voor het meren deel van de productie toepassingen en **Premium** voor de prestaties van de Hyper-Scale [-en geo-replicatie][container-registry-geo-replication]. Tijdens de levensduur van het register moet u de grootte ervan beheren door regelmatig ongebruikte inhoud te verwijderen.
 
-Use the Azure CLI command [az acr show-usage][az-acr-show-usage] to display the current size of your registry:
+Gebruik de Azure CLI [-opdracht AZ ACR show-Usage][az-acr-show-usage] om de huidige grootte van het REGI ster weer te geven:
 
 ```console
 $ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
@@ -71,15 +71,15 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-You can also find the current storage used in the **Overview** of your registry in the Azure portal:
+U kunt ook de huidige opslag locatie vinden die wordt gebruikt in het **overzicht** van het REGI ster in de Azure portal:
 
 ![Informatie over het registergebruik in Azure Portal][registry-overview-quotas]
 
-### <a name="delete-image-data"></a>Delete image data
+### <a name="delete-image-data"></a>Afbeeldings gegevens verwijderen
 
-Azure Container Registry supports several methods for deleting image data from your container registry. You can delete images by tag or manifest digest, or delete a whole repository.
+Azure Container Registry ondersteunt verschillende methoden voor het verwijderen van afbeeldings gegevens uit het container register. U kunt installatie kopieën verwijderen via tag of manifest Digest of een hele opslag plaats verwijderen.
 
-For details on deleting image data from your registry, including untagged (sometimes called "dangling" or "orphaned") images, see [Delete container images in Azure Container Registry](container-registry-delete.md).
+Zie [container installatie kopieën in azure container Registry verwijderen](container-registry-delete.md)voor meer informatie over het verwijderen van afbeeldings gegevens uit het REGI ster, inclusief niet-gelabeld (ook wel ' Dangling ' of ' zwevende ') installatie kopieën genoemd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

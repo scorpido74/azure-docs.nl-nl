@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Create geo-replicated registry
+title: Zelf studie-het geo-gerepliceerde REGI ster maken
 description: Een Azure-containerregister maken, geo-replicatie configureren, een Docker-installatiekopie voorbereiden en implementeren in het register. Deel één van een serie van drie.
 ms.topic: tutorial
 ms.date: 04/30/2017
@@ -37,7 +37,7 @@ Azure Cloud Shell bevat niet de vereiste Docker-onderdelen die nodig zijn om elk
 
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 Selecteer **Een resource maken** > **Containers** > **Azure Container Registry**.
 
@@ -106,13 +106,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-If you don't have `git` installed, you can [download the ZIP archive][acr-helloworld-zip] directly from GitHub.
+Als `git` niet is geïnstalleerd, kunt u [het zip-archief rechtstreeks downloaden][acr-helloworld-zip] vanuit github.
 
 ## <a name="update-dockerfile"></a>Dockerfile bijwerken
 
 Het Dockerfile dat deel uitmaakt van de voorbeeldopslagplaats laat zien hoe de container wordt gebouwd. Het begint met een officiële [aspnetcore][dockerhub-aspnetcore]-installatiekopie, kopieert de toepassingsbestanden naar de container, installeert afhankelijkheden, compileert de uitvoer met behulp van de officiële [aspnetcore-build][dockerhub-aspnetcore-build]-installatiekopie en maakt tot slot een geoptimaliseerde aspnetcore-installatiekopie.
 
-The [Dockerfile][dockerfile] is located at `./AcrHelloworld/Dockerfile` in the cloned source.
+De [Dockerfile][dockerfile] bevindt zich op `./AcrHelloworld/Dockerfile` in de gekloonde bron.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base

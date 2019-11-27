@@ -1,6 +1,6 @@
 ---
-title: PHP (Laravel) with MySQL - Azure App Service | Microsoft Docs
-description: Informatie over het werkend krijgen van een PHP-app in Azure, met verbinding naar een MySQL-database in Azure. Laravel is used in the tutorial.
+title: PHP (Laravel) met MySQL-Azure App Service | Microsoft Docs
+description: Informatie over het werkend krijgen van een PHP-app in Azure, met verbinding naar een MySQL-database in Azure. Laravel wordt in de zelf studie gebruikt.
 services: app-service\web
 documentationcenter: php
 author: cephalin
@@ -22,10 +22,10 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74480943"
 ---
-# <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Tutorial: Build a PHP and MySQL app in Azure
+# <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Zelf studie: een PHP-en MySQL-app bouwen in azure
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een PHP- en MySQL-app bouwen in Azure App Service op Linux ](./containers/tutorial-php-mysql-app.md) om een app te implementeren in App Service op _Linux_.
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie _Een PHP- en MySQL-app bouwen in Azure App Service op Linux_  om een app te implementeren in App Service op [Linux](./containers/tutorial-php-mysql-app.md).
 >
 
 [Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. In deze zelfstudie wordt getoond hoe u een PHP-app in Azure maakt en hoe u deze verbinding laat maken met een MySQL-database. Wanneer u klaar bent, hebt u een [Laravel](https://laravel.com/)-app die in Azure App Service wordt uitgevoerd.
@@ -123,7 +123,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-Zie [Laravel-omgeving configureren](https://laravel.com/docs/5.4/configuration#environment-configuration) voor informatie over hoe Laravel het _.env_-bestand gebruikt.
+Zie _Laravel-omgeving configureren_ voor informatie over hoe Laravel het [.env](https://laravel.com/docs/5.4/configuration#environment-configuration)-bestand gebruikt.
 
 ### <a name="run-the-sample-locally"></a>Het voorbeeld lokaal uitvoeren
 
@@ -587,7 +587,7 @@ Als u taken hebt toegevoegd, worden deze in de database bewaard. Updates van het
 
 Terwijl uw PHP-toepassing in Azure App Service wordt uitgevoerd, kunt u de consolelogboeken doorgesluisd krijgen naar uw terminal. Op die manier krijgt u de dezelfde diagnostische berichten om toepassingsfouten op te sporen.
 
-Gebruik voor het starten van logboekstreaming de opdracht [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) in de Cloud Shell.
+Gebruik voor het starten van logboekstreaming de opdracht [ `az webapp log tail` ](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) in de Cloud Shell.
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup
@@ -624,7 +624,7 @@ Het linkermenu bevat een aantal pagina's voor het configureren van uw app.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een MySQL-database in Azure maken

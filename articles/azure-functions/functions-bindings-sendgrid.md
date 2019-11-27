@@ -1,6 +1,6 @@
 ---
-title: Azure Functions SendGrid bindings
-description: Azure Functions SendGrid bindings reference.
+title: Azure Functions SendGrid-bindingen
+description: Azure Functions SendGrid-bindings verwijzing.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
@@ -12,41 +12,41 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231085"
 ---
-# <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid bindings
+# <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid-bindingen
 
-This article explains how to send email by using [SendGrid](https://sendgrid.com/docs/User_Guide/index.html) bindings in Azure Functions. Azure Functions supports an output binding for SendGrid.
+In dit artikel wordt uitgelegd hoe u e-mail verzendt met behulp van [SendGrid](https://sendgrid.com/docs/User_Guide/index.html) -bindingen in azure functions. Azure Functions ondersteunt een uitvoer binding voor SendGrid.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Pakketten - functies 1.x
 
-The SendGrid bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet package, version 2.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) GitHub repository.
+De SendGrid-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet-pakket, versie 2. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) .
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Pakketten - functies 2.x
 
-The SendGrid bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet package, version 3.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub repository.
+De SendGrid-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet-pakket, versie 3. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) .
 
 > [!NOTE]
-> Version 2.x does not create the topic or subscription configured in the `ServiceBusTrigger` instance. Version 2.x is based on [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) and does not handle queue management.
+> Versie 2. x maakt geen onderwerp of abonnement dat is geconfigureerd in het `ServiceBusTrigger`-exemplaar. Versie 2. x is gebaseerd op [micro soft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) en verwerkt geen wachtrij beheer.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="example"></a>Voorbeeld
 
-See the language-specific example:
+Zie het voorbeeld taalspecifieke:
 
 * [C#](#c-example)
-* [C# script (.csx)](#c-script-example)
+* [C#script (. CSX)](#c-script-example)
 * [JavaScript](#javascript-example)
 * [Java](#java-example)
 
-### <a name="c-example"></a>C# example
+### <a name="c-example"></a>C#Hierbij
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that uses a Service Bus queue trigger and a SendGrid output binding.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die gebruikmaakt van een service bus wachtrij trigger en een SendGrid-uitvoer binding.
 
-#### <a name="synchronous-c-example"></a>Synchronous C# example:
+#### <a name="synchronous-c-example"></a>Synchroon C# voor beeld:
 
 ```cs
 [FunctionName("SendEmail")]
@@ -71,7 +71,7 @@ public class OutgoingEmail
     public string Body { get; set; }
 }
 ```
-#### <a name="asynchronous-c-example"></a>Asynchronous C# example:
+#### <a name="asynchronous-c-example"></a>Asynchroon C# voor beeld:
 
 ```cs
 [FunctionName("SendEmail")]
@@ -99,13 +99,13 @@ public class OutgoingEmail
 }
 ```
 
-You can omit setting the attribute's `ApiKey` property if you have your API key in an app setting named "AzureWebJobsSendGridApiKey".
+U kunt de instelling van de eigenschap `ApiKey` van het kenmerk weglaten als u uw API-sleutel in een app-instelling met de naam ' AzureWebJobsSendGridApiKey ' hebt.
 
-### <a name="c-script-example"></a>C# script example
+### <a name="c-script-example"></a>C#script voorbeeld
 
-The following example shows a SendGrid output binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding.
+In het volgende voor beeld ziet u een SendGrid-uitvoer binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding.
 
-Here's the binding data in the *function.json* file:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json 
 {
@@ -129,9 +129,9 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-The [configuration](#configuration) section explains these properties.
+In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Here's the C# script code:
+Dit is de C#-scriptcode:
 
 ```csharp
 #r "SendGrid"
@@ -160,9 +160,9 @@ public class Message
 }
 ```
 
-### <a name="java-example"></a>Java example
+### <a name="java-example"></a>Java-voor beeld
 
-The following example uses the `@SendGridOutput` annotation from the [Java functions runtime library](/java/api/overview/azure/functions/runtime) to send an email using the SendGrid output binding.
+In het volgende voor beeld wordt de `@SendGridOutput` annotatie van de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime) gebruikt voor het verzenden van een e-mail bericht met de SendGrid-uitvoer binding.
 
 ```java
 @FunctionName("SendEmail")
@@ -187,11 +187,11 @@ The following example uses the `@SendGridOutput` annotation from the [Java funct
     }
 ```
 
-### <a name="javascript-example"></a>JavaScript example
+### <a name="javascript-example"></a>Java script-voor beeld
 
-The following example shows a SendGrid output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding.
+In het volgende voor beeld ziet u een SendGrid-uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding.
 
-Here's the binding data in the *function.json* file:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json 
 {
@@ -209,9 +209,9 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-The [configuration](#configuration) section explains these properties.
+In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Here's the JavaScript code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = function (context, input) {    
@@ -231,9 +231,9 @@ module.exports = function (context, input) {
 
 ## <a name="attributes"></a>Kenmerken
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) attribute.
+Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) .
 
-For information about attribute properties that you can configure, see [Configuration](#configuration). Here's a `SendGrid` attribute example in a method signature:
+Zie [configuratie](#configuration)voor informatie over kenmerk eigenschappen die u kunt configureren. Hier volgt een voor beeld van een `SendGrid` kenmerk in een methode handtekening:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -245,33 +245,33 @@ public static void Run(
 }
 ```
 
-For a complete example, see [C# example](#c-example).
+Zie voor een volledig [ C# voor beeld.](#c-example)
 
 ## <a name="configuration"></a>Configuratie
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `SendGrid` attribute.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `SendGrid`.
 
-|function.json property | Attribute property |Beschrijving|
+|de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**|| Required - must be set to `sendGrid`.|
-|**direction**|| Required - must be set to `out`.|
-|**name**|| Required - the variable name used in function code for the request or request body. This value is ```$return``` when there is only one return value. |
-|**apiKey**|**ApiKey**| The name of an app setting that contains your API key. If not set, the default app setting name is "AzureWebJobsSendGridApiKey".|
-|**to**|**Aan**| the recipient's email address. |
-|**from**|**From**| the sender's email address. |
-|**subject**|**Onderwerp**| the subject of the email. |
-|**text**|**Tekst**| the email content. |
+|**type**|| Vereist: moet worden ingesteld op `sendGrid`.|
+|**direction**|| Vereist: moet worden ingesteld op `out`.|
+|**naam**|| Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is ```$return``` als er slechts één retour waarde is. |
+|**apiKey**|**ApiKey**| De naam van een app-instelling die uw API-sleutel bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling ' AzureWebJobsSendGridApiKey '.|
+|**Aan**|**Aan**| het e-mail adres van de ontvanger. |
+|**Van**|**Van**| het e-mail adres van de afzender. |
+|**Onderwerp**|**Onderwerp**| het onderwerp van het e-mail bericht. |
+|**SMS**|**Tekst**| de inhoud van het e-mail bericht. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>host.json settings
+## <a name="hostjson-settings"></a>instellingen voor host.JSON
 
-This section describes the global configuration settings available for this binding in version 2.x. The example host.json file below contains only the version 2.x settings for this binding. For more information about global configuration settings in version 2.x, see [host.json reference for Azure Functions version 2.x](functions-host-json.md).
+In deze sectie beschrijft de globale configuratie-instellingen beschikbaar voor deze binding in versie 2.x. Het onderstaande voorbeeld host.json bestand bevat alleen de versie 2.x-instellingen voor deze binding. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x [host. json Reference voor Azure functions versie 2. x](functions-host-json.md).
 
 > [!NOTE]
-> For a reference of host.json in Functions 1.x, see [host.json reference for Azure Functions 1.x](functions-host-json-v1.md).
+> Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
 
 ```json
 {
@@ -286,10 +286,10 @@ This section describes the global configuration settings available for this bind
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|from|n.v.t.|The sender's email address across all functions.| 
+|from|n.v.t.|Het e-mail adres van de afzender over alle functies.| 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)

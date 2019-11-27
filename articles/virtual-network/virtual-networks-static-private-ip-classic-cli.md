@@ -28,15 +28,15 @@ ms.locfileid: "74196586"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Dit artikel is van toepassing op het klassieke implementatiemodel. U kunt ook [beheren van een statisch privé IP-adres in het Resource Manager-implementatiemodel](virtual-networks-static-private-ip-arm-cli.md).
+Dit artikel is van toepassing op het klassieke implementatiemodel. U kunt ook [een statisch privé-IP-adres beheren in het Resource Manager-implementatie model](virtual-networks-static-private-ip-arm-cli.md).
 
-Het voorbeeld van dat Azure klassieke CLI-opdrachten die volgen verwacht een eenvoudige omgeving al gemaakt. Als u wilt dat de opdrachten uitvoeren zoals ze worden weergegeven in dit document, eerst samenstellen van de testomgeving die wordt beschreven [een vnet maken](virtual-networks-create-vnet-classic-cli.md).
+Het voorbeeld van dat Azure klassieke CLI-opdrachten die volgen verwacht een eenvoudige omgeving al gemaakt. Als u de opdrachten wilt uitvoeren zoals ze worden weer gegeven in dit document, bouwt u eerst de test omgeving op die wordt beschreven in [een vnet maken](virtual-networks-create-vnet-classic-cli.md).
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Een statisch privé IP-adres opgeven bij het maken van een virtuele machine
-Het maken van een nieuwe virtuele machine met de naam *DNS01* in een nieuwe cloudservice met de naam *TestService* op basis van bovenstaand scenario, als volgt te werk:
+Voer de volgende stappen uit om een nieuwe virtuele machine met de naam *DNS01* in een nieuwe Cloud service met de naam *TestService* te maken op basis van het bovenstaande scenario:
 
 1. Als u Azure CLI nog nooit hebt gebruikt, raadpleegt u [De Azure CLI installeren en configureren](/cli/azure/install-cli-version-1.0) en volgt u de instructies tot het punt waar u uw Azure-account en -abonnement moet selecteren.
-2. Voer de **azure-service maken** opdracht om de cloudservice te maken.
+2. Voer de opdracht **Azure service Create** uit om de Cloud service te maken.
    
         azure service create TestService --location uscentral
    
@@ -46,7 +46,7 @@ Het maken van een nieuwe virtuele machine met de naam *DNS01* in een nieuwe clou
         info:    Creating cloud service
         data:    Cloud service name TestService
         info:    service create command OK
-3. Voer de **azure virtuele machine maken** opdracht voor het maken van de virtuele machine. U ziet de waarde voor een statisch privé IP-adres. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters.
+3. Voer de **Azure** -opdracht voor het maken van een VM uit om de virtuele machine te maken. U ziet de waarde voor een statisch privé IP-adres. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters.
    
         azure vm create -l centralus -n DNS01 -w TestVNet -S "192.168.1.101" TestService bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2 adminuser AdminP@ssw0rd
    
@@ -65,17 +65,17 @@ Het maken van een nieuwe virtuele machine met de naam *DNS01* in een nieuwe clou
         info:    OK
         info:    vm create command OK
    
-   * **-l (of --locatie)** . Azure-regio waar de virtuele machine wordt gemaakt. In ons scenario *centralus*.
-   * **-n (of--vm-naam)** . De naam van de virtuele machine wordt gemaakt.
-   * **-w (of---naam-virtueel netwerk)** . Naam van de VNet waar de virtuele machine wordt gemaakt. 
-   * **-S (of--statische-ip)** . Statische privé IP-adres voor de virtuele machine.
+   * **-l (of --location)** . Azure-regio waar de virtuele machine wordt gemaakt. In ons scenario *centralus*.
+   * **-n (of--VM-naam)** . De naam van de virtuele machine wordt gemaakt.
+   * **-w (of--virtueel-netwerk-naam)** . Naam van de VNet waar de virtuele machine wordt gemaakt. 
+   * **-S (of--static-IP)** . Statische privé IP-adres voor de virtuele machine.
    * **TestService**. De naam van de cloudservice waar de virtuele machine wordt gemaakt.
-   * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2**. De installatiekopie die wordt gebruikt om de VM te maken.
+   * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v-14.2**. De installatiekopie die wordt gebruikt om de VM te maken.
    * **adminuser**. Lokale beheerder voor de Windows-VM.
    * <strong>AdminP@ssw0rd</strong>. Lokale administrator-wachtwoord voor de Windows-VM.
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Het statische privé IP-adresgegevens voor een virtuele machine ophalen
-Voer de volgende Azure CLI-opdracht om de weergave met het statische privé IP-adresgegevens voor de virtuele machine met het bovenstaande script gemaakt, en houd rekening met de waarde voor *netwerk StaticIP*:
+Als u de gegevens van het statische privé-IP-adres voor de virtuele machine die is gemaakt met het bovenstaande script, wilt weer geven, voert u de volgende Azure CLI-opdracht uit en bekijkt u de waarde voor *netwerk StaticIP*:
 
     azure vm static-ip show DNS01
 
@@ -118,6 +118,6 @@ Verwachte uitvoer:
 Het verdient aanbeveling dat u geen statisch het privé IP-adres toegewezen aan de virtuele machine van Azure binnen het besturingssysteem van een virtuele machine, toewijst tenzij die nodig zijn. Als u het particuliere IP-adres binnen het besturingssysteem handmatig instelt, zorg ervoor dat deze hetzelfde adres als de privé IP-adres toegewezen aan de Azure-VM of verliest u connectiviteit met de virtuele machine. Wijs het open bare IP-adres dat is toegewezen aan een virtuele machine van Azure niet hand matig toe binnen het besturings systeem van de virtuele machine.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [gereserveerde openbare IP-adres](virtual-networks-reserved-public-ip.md) adressen.
-* Meer informatie over [instantieniveau openbare IP (ILPIP)](virtual-networks-instance-level-public-ip.md) adressen.
-* Raadpleeg de [gereserveerd IP-REST-API's](https://msdn.microsoft.com/library/azure/dn722420.aspx).
+* Meer informatie over [gereserveerde open bare IP-](virtual-networks-reserved-public-ip.md) adressen.
+* Meer informatie over [open bare IP-adressen op exemplaar niveau (ILPIP)](virtual-networks-instance-level-public-ip.md) .
+* Raadpleeg de [gereserveerd IP rest-api's](https://msdn.microsoft.com/library/azure/dn722420.aspx).

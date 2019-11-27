@@ -24,30 +24,30 @@ ms.locfileid: "74479378"
 Dit document helpt u bij het beheren van beveiligingsoplossingen die al zijn gekoppeld aan Azure Security Center en bij het toevoegen van nieuwe oplossingen.
 
 > [!NOTE]
-> A subset of security solutions has been retired on July 31st, 2019. For more information and alternative services, see [Retirement of Security Center features (July 2019)](security-center-features-retirement-july2019.md#menu_solutions).
+> Er is een subset van beveiligings oplossingen ingetrokken op 31 juli 2019. Zie voor meer informatie en alternatieve Services de [buiten gebruiks telling van Security Center-functies (2019 juli)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Geïntegreerde Azure-beveiligingsoplossingen
 Met Security Center kunt u gemakkelijk geïntegreerde beveiligingsoplossingen in Azure inschakelen. De voordelen zijn:
 
-- **Vereenvoudigde implementatie**: Security Center biedt gestroomlijnde inrichting van geïntegreerde partneroplossingen. For solutions like antimalware and vulnerability assessment, Security Center can provision the agent on your virtual machines. For firewall appliances, Security Center can take care of much of the network configuration required.
+- **Vereenvoudigde implementatie**: Security Center biedt gestroomlijnde inrichting van geïntegreerde partneroplossingen. Security Center kan de agent op uw virtuele machines inrichten voor oplossingen zoals antimalware en evaluatie van beveiligings problemen. Voor firewall apparaten kan Security Center een groot deel van de vereiste netwerk configuratie zijn.
 - **Geïntegreerde detectie**: beveiligingsgebeurtenissen van partneroplossingen worden automatisch verzameld, samengevoegd en weergegeven als waarschuwingen en incidenten in Security Center. Deze gebeurtenissen worden ook gekoppeld aan detecties van andere bronnen voor geavanceerde detectie van bedreigingen.
 - **Geïntegreerde statuscontrole en beheer**: klanten kunnen geïntegreerde statusgebeurtenissen gebruiken om alle partneroplossingen in één oogopslag te controleren. Er zijn basisbeheermogelijkheden beschikbaar, met eenvoudige toegang tot geavanceerde installatie met behulp van de partneroplossing.
 
-Currently, integrated security solutions include vulnerability assessment by [Qualys](https://www.qualys.com/public-cloud/#azure) and [Rapid7](https://www.rapid7.com/products/insightvm/) and Microsoft Application Gateway Web application firewall.
+Geïntegreerde beveiligings oplossingen omvatten momenteel de evaluatie van beveiligings problemen met [Qualys](https://www.qualys.com/public-cloud/#azure) en [Rapid7](https://www.rapid7.com/products/insightvm/) en micro soft Application Gateway Web Application firewall.
 
 > [!NOTE]
-> Security Center does not install the Microsoft Monitoring Agent on partner virtual appliances because most security vendors prohibit external agents running on their appliances.
+> Security Center installeert micro soft Monitoring Agent niet op virtuele partners van de partner, omdat de meeste beveiligings leveranciers externe agents die op hun apparaten worden uitgevoerd, verbieden.
 >
 >
 
 ## <a name="how-security-solutions-are-integrated"></a>Beveiligingsoplossingen integreren
-Azure-beveiligingsoplossingen die zijn geïmplementeerd vanuit Security Center, zijn automatisch verbonden. You can also connect other security data sources, including computers running on-premises or in other clouds.
+Azure-beveiligingsoplossingen die zijn geïmplementeerd vanuit Security Center, zijn automatisch verbonden. U kunt ook verbinding maken met andere beveiligings gegevens bronnen, waaronder computers die on-premises of in andere Clouds worden uitgevoerd.
 
 ![Integratie van partneroplossingen](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Geïntegreerde Azure-beveiligingsoplossingen en andere gegevensbronnen beheren
 
-1. Meld u aan bij de [Azure-portal](https://azure.microsoft.com/features/azure-portal/).
+1. Meld u aan bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 
 2. Ga naar het menu van **Microsoft Azure** en selecteer **Security Center**. **Security Center - Overzicht** wordt geopend.
 
@@ -55,45 +55,45 @@ Azure-beveiligingsoplossingen die zijn geïmplementeerd vanuit Security Center, 
 
    ![Overzicht van Security Center](./media/security-center-partner-integration/overview.png)
 
-In **Security solutions**, you can see the health of integrated Azure security solutions and run basic management tasks.
+In **beveiligings oplossingen**ziet u de status van geïntegreerde Azure-beveiligings oplossingen en voert u basis beheer taken uit.
 
 ### <a name="connected-solutions"></a>Verbonden oplossingen
 
-The **Connected solutions** section includes security solutions that are currently connected to Security Center. It also shows the health status of each solution.  
+De sectie **Connected Solutions** bevat beveiligings oplossingen die momenteel zijn verbonden met Security Center. Ook wordt de status van elke oplossing weer gegeven.  
 
 ![Verbonden oplossingen](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
 
-The status of a partner solution can be:
+De status van een partner oplossing kan zijn:
 
-* Healthy (green) - no health issues.
-* Unhealthy (red) - there's a health issue that requires immediate attention.
-* Health issues (orange) - the solution has stopped reporting its health.
-* Not reported (gray) - the solution hasn't reported anything yet and no health data is available. A solution's status may be unreported if it was connected recently and is still deploying.
+* In orde (groen): er zijn geen problemen met de status.
+* Slecht (rood): er is een probleem met de status dat onmiddellijke aandacht vereist.
+* Status problemen (oranje): de oplossing is gestopt met het rapporteren van de status.
+* Niet gerapporteerd (grijs): de oplossing heeft nog niets gerapporteerd en er zijn geen status gegevens beschikbaar. De status van een oplossing kan niet worden gerapporteerd als deze onlangs is verbonden en nog steeds wordt geïmplementeerd.
 
 > [!NOTE]
-> If health status data is not available, Security Center shows the date and time of the last event received to indicate whether the solution is reporting or not. If no health data is available and no alerts were received within the last 14 days, Security Center indicates that the solution is unhealthy or not reporting.
+> Als de status gegevens niet beschikbaar zijn, worden Security Center de datum en tijd weer gegeven van de laatste ontvangen gebeurtenis om aan te geven of de oplossing al dan niet rapporteert. Als er geen status gegevens beschikbaar zijn en er in de afgelopen 14 dagen geen waarschuwingen zijn ontvangen, geeft Security Center aan dat de oplossing slecht is of niet wordt gerapporteerd.
 >
 >
 
-1. Select **VIEW** for additional information and options such as:
+1. Selecteer **weer geven** voor meer informatie en opties, zoals:
 
-   - **Solution console**. Opens the management experience for this solution.
-   - **Link VM**. Opens the Link Applications page. Hier kunt u resources verbinden met de partneroplossing.
-   - **Delete solution**.
-   - **Configure**.
+   - **Oplossings console**. Hiermee opent u de beheer ervaring voor deze oplossing.
+   - **Virtuele machine koppelen**. Hiermee opent u de pagina koppelings toepassingen. Hier kunt u resources verbinden met de partneroplossing.
+   - **Verwijder de oplossing**.
+   - **Configureren**.
 
    ![Details van partneroplossingen](./media/security-center-partner-solutions/partner-solutions-detail.png)
 
 ### <a name="discovered-solutions"></a>Gedetecteerde oplossingen
 
-Security Center automatically discovers security solutions running in Azure but not connected to Security Center and displays the solutions in the **Discovered solutions** section. These  solutions include Azure solutions, like [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection), and partner solutions.
+Security Center detecteert automatisch beveiligings oplossingen die worden uitgevoerd in azure, maar zijn niet verbonden met Security Center en de oplossingen worden weer gegeven in de sectie **gedetecteerde oplossingen** . Deze oplossingen omvatten Azure-oplossingen, zoals [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)en partner oplossingen.
 
 > [!NOTE]
-> De Standard-laag van Security Center is op abonnementsniveau vereist voor de functie Gedetecteerde oplossingen. See [Pricing](security-center-pricing.md) to learn more about the pricing tiers.
+> De Standard-laag van Security Center is op abonnementsniveau vereist voor de functie Gedetecteerde oplossingen. Bekijk de [prijzen](security-center-pricing.md) voor meer informatie over de prijs categorieën.
 >
 >
 
-Select **CONNECT** under a solution to integrate with Security Center and be notified of security alerts.
+Selecteer **verbinding maken** onder een oplossing om te integreren met Security Center en op de hoogte te worden gesteld van beveiligings waarschuwingen.
 
 ### <a name="add-data-sources"></a>Gegevensbronnen toevoegen
 
@@ -101,51 +101,51 @@ Het gedeelte **Gegevensbronnen toevoegen** bevat andere beschikbare gegevensbron
 
 ![Gegevensbronnen](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
-## <a name="exporting-data-to-a-siem"></a>Exporting data to a SIEM
+## <a name="exporting-data-to-a-siem"></a>Gegevens exporteren naar een SIEM
 
 > [!NOTE]
-> For details of a simpler method (currently in preview) for exporting data to a SIEM, see [Export security alerts and recommendations (Preview)](continuous-export.md). The new method does not use Activity Log as an intermediator and allows direct export from Security Center to Event Hubs (and then on to your SIEM), it also supports the export of Security Recommendations.
+> Zie [beveiligings waarschuwingen en aanbevelingen exporteren (preview)](continuous-export.md)voor meer informatie over een eenvoudigere methode (momenteel in Preview) voor het exporteren van gegevens naar een Siem. De nieuwe methode maakt geen gebruik van een activiteiten logboek als een interactie en maakt het mogelijk om direct te exporteren van Security Center naar Event Hubs (en vervolgens naar uw SIEM), maar biedt ook ondersteuning voor het exporteren van beveiligings aanbevelingen.
 
 
-You can configure your SIEMs or other monitoring tools to receive Azure Security Center events.
+U kunt uw Siem's of andere controle hulpprogramma's configureren om Azure Security Center-gebeurtenissen te ontvangen.
 
-All events from Azure Security Center are published to Azure Monitor's Azure [Activity log](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Azure Monitor uses [a consolidated pipeline](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) to  stream the data to an Event Hub where it can then be pulled into your monitoring tool.
+Alle gebeurtenissen van Azure Security Center worden gepubliceerd in het Azure- [activiteiten logboek](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)van Azure monitor. Azure Monitor gebruikt [een geconsolideerde pijp lijn](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) voor het streamen van gegevens naar een event hub, waar deze vervolgens in uw bewakings programma kan worden opgenomen.
 
-The next sections describe how you can configure data to be streamed to an event hub. The steps assume that you already have Azure Security Center configured in your Azure subscription.
+In de volgende secties wordt beschreven hoe u gegevens kunt configureren om te streamen naar een Event Hub. Bij de stappen wordt ervan uitgegaan dat u al Azure Security Center hebt geconfigureerd in uw Azure-abonnement.
 
 ### <a name="high-level-overview"></a>Overzicht
 
-![High-Level overview](media/security-center-export-data-to-siem/overview.png)
+![Overzicht op hoog niveau](media/security-center-export-data-to-siem/overview.png)
 
-### <a name="what-is-the-azure-security-data-exposed-to-siem"></a>What is the Azure security data exposed to SIEM?
+### <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Wat zijn de Azure-beveiligings gegevens die beschikbaar zijn voor SIEM?
 
-In this version, we expose the [security alerts.](../security-center/security-center-managing-and-responding-alerts.md) In upcoming releases, we will enrich the data set with security recommendations.
+In deze versie worden de [beveiligings waarschuwingen](../security-center/security-center-managing-and-responding-alerts.md) weer gegeven. In aanstaande releases verrijken we de gegevensset met beveiligings aanbevelingen.
 
-### <a name="how-to-set-up-the-pipeline"></a>How to set up the pipeline
+### <a name="how-to-set-up-the-pipeline"></a>De pijp lijn instellen
 
 #### <a name="create-an-event-hub"></a>Een Event Hub maken
 
-Before you begin, [create an Event Hubs namespace](../event-hubs/event-hubs-create.md) - the destination for all your monitoring data.
+Voordat u begint, [maakt u een event hubs naam ruimte](../event-hubs/event-hubs-create.md) : de bestemming voor al uw bewakings gegevens.
 
-#### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream the Azure Activity Log to Event Hubs
+#### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Het Azure-activiteiten logboek streamen naar Event Hubs
 
-See the following article [stream activity log to Event Hubs](../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+Raadpleeg het volgende artikel [Stream-activiteiten logboek om te Event hubs](../azure-monitor/platform/activity-logs-stream-event-hubs.md)
 
-#### <a name="install-a-partner-siem-connector"></a>Install a partner SIEM connector 
+#### <a name="install-a-partner-siem-connector"></a>Een partner SIEM-connector installeren 
 
-Routing your monitoring data to an Event Hub with Azure Monitor enables you to easily integrate with partner SIEM and monitoring tools.
+Door uw bewakings gegevens te routeren naar een event hub met Azure Monitor kunt u eenvoudig integreren met SIEM-en controle hulpprogramma's van de partner.
 
-See the following article for the list of [supported SIEMs](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub)
+Zie het volgende artikel voor de lijst met [ondersteunde siem's](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub)
 
-### <a name="example-for-querying-data"></a>Example for Querying data 
+### <a name="example-for-querying-data"></a>Voor beeld voor het opvragen van gegevens 
 
-Here are some Splunk queries you can use to pull alert data:
+Hier volgen enkele Splunk-query's die u kunt gebruiken om waarschuwings gegevens op te halen:
 
-| **Description of Query** | **Query** |
+| **Beschrijving van de query** | **Query** |
 |----|----|
-| All Alerts| index=main Microsoft.Security/locations/alerts|
-| Summarize count of operations by their name| index=main sourcetype="amal:security" \| table operationName \| stats count by operationName|
-| Get Alerts info: Time, Name, State, ID, and Subscription | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
+| Alle waarschuwingen| index=main Microsoft.Security/locations/alerts|
+| Aantal bewerkingen samenvatten op naam| index = hoofd source type = "Amal: Security" \| tabel bewerkings naam \| aantal statistieken per operationname|
+| Waarschuwings gegevens ophalen: tijd, naam, status, ID en abonnement | index = hoofd versie van micro soft. Security/locations/Alerts \| tabel \_tijd, eigenschappen. eventname, status, Properties. operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>Volgende stappen

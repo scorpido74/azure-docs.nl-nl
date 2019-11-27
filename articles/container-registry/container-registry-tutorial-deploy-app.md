@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Deploy from geo-replicated registry
+title: Zelf studie-implementeren vanuit geo-gerepliceerd REGI ster
 description: Een op Linux gebaseerde web-app implementeren in twee verschillende Azure-regio's met behulp van een containerinstallatiekopie van een Azure-containerregister met geo-replicatie. Deel twee van een serie van drie.
 ms.topic: tutorial
 ms.date: 08/20/2018
@@ -11,7 +11,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456099"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Deploy a web app from a geo-replicated Azure container registry
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Zelf studie: een web-app implementeren vanuit een geografisch gerepliceerd Azure container Registry
 
 Dit is deel twee van een serie met drie zelfstudies. In [deel één](container-registry-tutorial-prepare-registry.md) is er een geo-gerepliceerd privécontainerregister gemaakt en is er een containerinstallatiekopie gemaakt op basis van de bron en naar het register gepusht. In dit artikel implementeert u de container naar twee web-app-instanties in twee verschillende Azure-regio's om ervan te profiteren dat het geo-gerepliceerde register dicht bij het netwerk is. Met de containerinstallatiekopie wordt vervolgens elke instantie opgehaald uit het dichtstbijzijnde register.
 
@@ -54,7 +54,7 @@ Onder **Web App for Containers**, dat wordt weergegeven na selectie van Deploy t
 | **Besturingssysteem** | Linux |
 
 > [!NOTE]
-> When you create a new app service plan to deploy your containerized app, a default plan is automatically selected to host your application. The default plan depends on the operating system setting.
+> Wanneer u een nieuw app service-plan maakt om uw container-app te implementeren, wordt automatisch een standaard abonnement geselecteerd om uw toepassing te hosten. Het standaard plan is afhankelijk van de instelling van het besturings systeem.
 
 Selecteer **Maken** om de web-app voor de regio *US - west* in te richten.
 

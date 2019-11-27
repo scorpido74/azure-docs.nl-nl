@@ -20,7 +20,7 @@ ms.locfileid: "74306764"
 > [!div class="op_single_selector"]
 >
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-Wijzigingenfeed](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
@@ -37,7 +37,7 @@ ms.locfileid: "74306764"
 |**SDK downloaden**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API-documentatie**|[Documentatie voor de feed processor library API-verwijzing](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
 |**Aan de slag**|[Aan de slag met de wijziging van de .NET SDK voor de feed-processor](change-feed.md)|
-|**Huidige ondersteunde framework**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+|**Huidig ondersteund Framework**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET kern](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
 > Als u Change feed processor gebruikt, raadpleegt u de meest recente versie 3. x van de [.NET SDK](change-feed-processor.md), die in de SDK is ingebouwd. 
@@ -172,7 +172,7 @@ ms.locfileid: "74306764"
 
 ## <a name="release--retirement-dates"></a>Uittredings datums &
 
-Microsoft biedt melding ten minste **12 maanden** voorafgaand aan buiten gebruik stellen van een SDK soepel te verwerken de overgang naar een nieuwere/ondersteunde versie.
+Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen van een SDK een melding ontvangen om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
 
 Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de huidige SDK. het wordt daarom aangeraden dat u zo snel mogelijk een upgrade naar de nieuwste SDK-versie uitvoert. 
 
@@ -189,7 +189,7 @@ Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK w
 | [2.2.4](#2.2.4) |29 november 2018 |--- |
 | [2.2.3](#2.2.3) |19 november 2018 |--- |
 | [2.2.2](#2.2.2) |31 oktober 2018 |--- |
-| [2.2.1](#2.2.1) |24 oktober 2018 |--- |
+| [punten](#2.2.1) |24 oktober 2018 |--- |
 | [1.3.3](#1.3.3) |08 mei 2018 |--- |
 | [1.3.2](#1.3.2) |18 april 2018 |--- |
 | [1.3.1](#1.3.1) |13 maart 2018 |--- |
@@ -204,4 +204,4 @@ Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK w
 
 ## <a name="see-also"></a>Zie ook
 
-Zie voor meer informatie over Cosmos DB, [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) servicepagina.
+Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.

@@ -144,7 +144,7 @@ Geef onder **Nieuwe update-implementatie** de volgende informatie op:
 
   De classificatietypen zijn:
 
-   |OS  |Type  |
+   |Besturingssysteem  |Type  |
    |---------|---------|
    |Windows     | Essentiële updates</br>Beveiligingsupdates</br>Updatepakketten</br>Functiepakketten</br>Servicepacks</br>Definitie-updates</br>Hulpprogramma's</br>Updates        |
    |Linux     | Essentiële en beveiligingsupdates</br>Andere Updates       |

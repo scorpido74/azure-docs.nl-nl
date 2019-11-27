@@ -1,6 +1,6 @@
 ---
-title: Manage DNS record sets and records with Azure DNS
-description: Azure DNS provides the capability to manage DNS record sets and records when hosting your domain.
+title: DNS-record sets en-records beheren met Azure DNS
+description: Azure DNS biedt de mogelijkheid om DNS-record sets en-records te beheren bij het hosten van uw domein.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,102 +14,102 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211781"
 ---
-# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Manage DNS records and record sets by using the Azure portal
+# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-records en-record sets beheren met behulp van de Azure Portal
 
-This article shows you how to manage record sets and records for your DNS zone by using the Azure portal.
+In dit artikel wordt beschreven hoe u record sets en records voor uw DNS-zone beheert met behulp van de Azure Portal.
 
-It's important to understand the difference between DNS record sets and individual DNS records. A record set is a collection of records in a zone that have the same name and are the same type. For more information, see [Create DNS record sets and records by using the Azure portal](dns-getstarted-create-recordset-portal.md).
+Het is belang rijk dat u begrijpt wat het verschil is tussen DNS-record sets en afzonderlijke DNS-records. Een recordset is een verzameling records in een zone die dezelfde naam hebben en van hetzelfde type zijn. Zie voor meer informatie [DNS-record sets en-records maken met behulp van de Azure Portal](dns-getstarted-create-recordset-portal.md).
 
-## <a name="create-a-new-record-set-and-record"></a>Create a new record set and record
+## <a name="create-a-new-record-set-and-record"></a>Een nieuwe recordset en record maken
 
-To create a record set in the Azure portal, see [Create DNS records by using the Azure portal](dns-getstarted-create-recordset-portal.md).
+Zie [DNS-records maken met behulp van de Azure Portal](dns-getstarted-create-recordset-portal.md)voor het maken van een recordset in de Azure Portal.
 
-## <a name="view-a-record-set"></a>View a record set
+## <a name="view-a-record-set"></a>Een recordset weer geven
 
-1. In the Azure portal, go to the **DNS zone** blade.
-2. Search for the record set and select it. This opens the record set properties.
+1. Ga in het Azure Portal naar de Blade **DNS-zone** .
+2. Zoek de recordset en selecteer deze. Hiermee opent u de eigenschappen van de recordset.
 
-    ![Search for a record set](./media/dns-operations-recordsets-portal/searchset500.png)
+    ![Zoeken naar een recordset](./media/dns-operations-recordsets-portal/searchset500.png)
 
-## <a name="add-a-new-record-to-a-record-set"></a>Add a new record to a record set
+## <a name="add-a-new-record-to-a-record-set"></a>Een nieuwe record toevoegen aan een recordset
 
-You can add up to 20 records to any record set. A record set cannot contain two identical records. Empty record sets (with zero records) can be created, but do not appear on the Azure DNS name servers. Record sets of type CNAME can contain one record at most.
+U kunt Maxi maal twintig records toevoegen aan een recordset. Een recordset kan niet twee identieke records bevatten. Lege record sets (met nul records) kunnen worden gemaakt, maar worden niet weer gegeven op de Azure DNS naam servers. Record sets van het type CNAME kunnen Maxi maal één record bevatten.
 
-1. On the **Record set properties** blade for your DNS zone, click the record set that you want to add a record to.
+1. Klik op de Blade **Eigenschappen van recordset** voor uw DNS-zone op de record sets waaraan u een record wilt toevoegen.
 
-    ![Select a record set](./media/dns-operations-recordsets-portal/selectset500.png)
+    ![Een recordset selecteren](./media/dns-operations-recordsets-portal/selectset500.png)
 
-2. Specify the record set properties by filling in the fields.
+2. Geef de eigenschappen van de recordset op door de velden in te vullen.
 
-    ![Add a record](./media/dns-operations-recordsets-portal/addrecord500.png)
+    ![Een record toevoegen](./media/dns-operations-recordsets-portal/addrecord500.png)
 
-3. Click **Save** at the top of the blade to save your settings. Then close the blade.
-4. In the corner, you will see that the record is saving.
+3. Klik boven aan de Blade op **Opslaan** om uw instellingen op te slaan. Sluit de Blade.
+4. In de hoek ziet u dat de record wordt opgeslagen.
 
-    ![Saving record set](./media/dns-operations-recordsets-portal/saving150.png)
+    ![Recordset opslaan](./media/dns-operations-recordsets-portal/saving150.png)
 
-After the record has been saved, the values on the **DNS zone** blade will reflect the new record.
+Nadat de record is opgeslagen, worden de waarden op de Blade van de **DNS-zone** weer gegeven met de nieuwe record.
 
-## <a name="update-a-record"></a>Update a record
+## <a name="update-a-record"></a>Een record bijwerken
 
-When you update a record in an existing record set, the fields you can update depend on the type of record you're working with.
+Wanneer u een record in een bestaande recordset bijwerkt, zijn de velden die u kunt bijwerken, afhankelijk van het type record waarmee u werkt.
 
-1. On the **Record set properties** blade for your record set, search for the record.
-2. Modify the record. When you modify a record, you can change the available settings for the record. In the following example, the **IP address** field is selected, and the IP address is in the process of being modified.
+1. Zoek op de Blade **Eigenschappen van recordset** voor de recordset de record op.
+2. Wijzig de record. Wanneer u een record wijzigt, kunt u de beschik bare instellingen voor de record wijzigen. In het volgende voor beeld is het veld **IP-adres** geselecteerd en wordt het IP-adres in het proces gewijzigd.
 
-    ![Modify a record](./media/dns-operations-recordsets-portal/modifyrecord500.png)
+    ![Een record wijzigen](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
-3. Click **Save** at the top of the blade to save your settings. In the upper right corner, you'll see the notification that the record has been saved.
+3. Klik boven aan de Blade op **Opslaan** om uw instellingen op te slaan. In de rechter bovenhoek ziet u de melding dat de record is opgeslagen.
 
-    ![Saved record set](./media/dns-operations-recordsets-portal/saved150.png)
+    ![Opgeslagen Recordset](./media/dns-operations-recordsets-portal/saved150.png)
 
-After the record has been saved, the values for the record set on the **DNS zone** blade will reflect the updated record.
+Nadat de record is opgeslagen, worden de bijgewerkte records weer gegeven voor de record die is ingesteld op de Blade van de **DNS-zone** .
 
-## <a name="remove-a-record-from-a-record-set"></a>Remove a record from a record set
+## <a name="remove-a-record-from-a-record-set"></a>Een record uit een recordset verwijderen
 
-You can use the Azure portal to remove records from a record set. Note that removing the last record from a record set does not delete the record set.
+U kunt de Azure Portal gebruiken om records uit een recordset te verwijderen. Houd er rekening mee dat het verwijderen van de laatste record uit een recordset de recordset niet verwijdert.
 
-1. On the **Record set properties** blade for your record set, search for the record.
-2. Click the record that you want to remove. Then select **Remove**.
+1. Zoek op de Blade **Eigenschappen van recordset** voor de recordset de record op.
+2. Klik op de record die u wilt verwijderen. Selecteer vervolgens **verwijderen**.
 
-    ![Remove a record](./media/dns-operations-recordsets-portal/removerecord500.png)
+    ![Een record verwijderen](./media/dns-operations-recordsets-portal/removerecord500.png)
 
-3. Click **Save** at the top of the blade to save your settings.
-4. After the record has been removed, the values for the record on the **DNS zone** blade will reflect the removal.
+3. Klik boven aan de Blade op **Opslaan** om uw instellingen op te slaan.
+4. Nadat de record is verwijderd, worden de waarden voor de record op de Blade van de **DNS-zone** weer gegeven.
 
-## <a name="delete"></a>Delete a record set
+## <a name="delete"></a>Een recordset verwijderen
 
-1. On the **Record set properties** blade for your record set, click **Delete**.
+1. Klik op de Blade **Eigenschappen van recordset** voor de recordset op **verwijderen**.
 
-    ![Delete a record set](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
+    ![Een recordset verwijderen](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
 
-2. A message appears asking if you want to delete the record set.
-3. Verify that the name matches the record set that you want to delete, and then click **Yes**.
-4. On the **DNS zone** blade, verify that the record set is no longer visible.
+2. Er wordt een bericht weer gegeven waarin u wordt gevraagd of u de recordset wilt verwijderen.
+3. Controleer of de naam overeenkomt met de recordset die u wilt verwijderen en klik vervolgens op **Ja**.
+4. Controleer op de Blade **DNS-zone** of de recordset niet meer zichtbaar is.
 
-## <a name="work-with-ns-and-soa-records"></a>Work with NS and SOA records
+## <a name="work-with-ns-and-soa-records"></a>Werken met NS-en SOA-records
 
-NS and SOA records that are automatically created are managed differently from other record types.
+NS-en SOA-records die automatisch worden gemaakt, worden anders beheerd dan andere record typen.
 
-### <a name="modify-soa-records"></a>Modify SOA records
+### <a name="modify-soa-records"></a>SOA-records wijzigen
 
-You cannot add or remove records from the automatically created SOA record set at the zone apex (name = "\@"). However, you can modify any of the parameters within the SOA record (except "Host") and the record set TTL.
+U kunt geen records toevoegen aan of verwijderen uit de automatisch gemaakte SOA-record die is ingesteld op de zone Apex (name = "\@"). U kunt echter elk van de para meters in de SOA-record (met uitzonde ring van ' host ') en de set-TTL van de record wijzigen.
 
-### <a name="modify-ns-records-at-the-zone-apex"></a>Modify NS records at the zone apex
+### <a name="modify-ns-records-at-the-zone-apex"></a>NS-records in de zone wijzigen Apex
 
-The NS record set at the zone apex is automatically created with each DNS zone. It contains the names of the Azure DNS name servers assigned to the zone.
+De NS-record die is ingesteld op de zone Apex wordt automatisch gemaakt met elke DNS-zone. Het bevat de namen van de Azure DNS naam servers die zijn toegewezen aan de zone.
 
-You can add additional name servers to this NS record set, to support co-hosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, you cannot remove or modify the pre-populated Azure DNS name servers.
+U kunt aanvullende naam servers toevoegen aan deze NS-Recordset, ter ondersteuning van co-hosting domeinen met meer dan één DNS-provider. U kunt ook de TTL en meta gegevens voor deze recordset wijzigen. U kunt de vooraf ingevulde Azure DNS naam servers echter niet verwijderen of wijzigen.
 
-Note that this applies only to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be modified without constraint.
+Houd er rekening mee dat dit alleen geldt voor de NS-recordset die is ingesteld op de zone Apex. Andere NS-record sets in uw zone (zoals gebruikt voor het delegeren van onderliggende zones) kunnen zonder beperking worden gewijzigd.
 
-### <a name="delete-soa-or-ns-record-sets"></a>Delete SOA or NS record sets
+### <a name="delete-soa-or-ns-record-sets"></a>SOA-of NS-record sets verwijderen
 
-You cannot delete the SOA and NS record sets at the zone apex (name = "\@") that are created automatically when the zone is created. They are deleted automatically when you delete the zone.
+U kunt de SOA-en NS-record sets niet verwijderen op de zone Apex (name = "\@") die automatisch worden gemaakt wanneer de zone wordt gemaakt. Ze worden automatisch verwijderd wanneer u de zone verwijdert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* For more information about Azure DNS, see the [Azure DNS overview](dns-overview.md).
-* For more information about automating DNS, see [Creating DNS zones and record sets using the .NET SDK](dns-sdk.md).
-* For more information about reverse DNS records, see [Overview of reverse DNS and support in Azure](dns-reverse-dns-overview.md).
-* For more information about Azure DNS alias records, see [Azure DNS alias records overview](dns-alias.md).
+* Zie [Azure DNS-overzicht](dns-overview.md)voor meer informatie over Azure DNS.
+* Zie [DNS-zones en-record sets maken met behulp van de .NET SDK](dns-sdk.md)voor meer informatie over het AUTOMATISEREN van DNS.
+* Zie [overzicht van omgekeerde DNS en ondersteuning in azure](dns-reverse-dns-overview.md)voor meer informatie over reverse DNS-records.
+* Zie [Azure DNS alias records Overview](dns-alias.md)(Engelstalig) voor meer informatie over Azure DNS alias records.

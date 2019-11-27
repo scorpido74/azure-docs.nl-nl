@@ -45,7 +45,7 @@ Kafka rest API proxy biedt één klik voor de implementatie van de Maxi maal bes
 
 Automatisch schalen voor Azure HDInsight is nu algemeen beschikbaar in alle regio's voor de typen Apache Spark en Hadoop-cluster. Deze functie maakt het mogelijk om big data Analytics-workloads op een kostenbesparende en productieve manier te beheren. Nu kunt u het gebruik van uw HDInsight-clusters optimaliseren en betaalt u alleen voor wat u nodig hebt.
 
-Afhankelijk van uw vereisten kunt u kiezen tussen automatisch schalen op basis van de belasting en planning. Met automatisch schalen op basis van een werk belasting kunt u de cluster grootte omhoog en omlaag schalen op basis van de huidige behoeften van de resource, terwijl automatisch schalen op basis van een planning de cluster grootte kan wijzigen op basis van een vooraf gedefinieerd schema. 
+Afhankelijk van uw vereisten kunt u kiezen tussen automatische schaalaanpassing op basis van belasting of op basis van planning. Met automatisch schalen op basis van een werk belasting kunt u de cluster grootte omhoog en omlaag schalen op basis van de huidige behoeften van de resource, terwijl automatisch schalen op basis van een planning de cluster grootte kan wijzigen op basis van een vooraf gedefinieerd schema. 
 
 Ondersteuning voor automatisch schalen voor HBase en LLAP-werk belasting is ook een open bare preview. Zie [automatisch schalen van Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters)voor meer informatie.
 

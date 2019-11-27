@@ -12,49 +12,49 @@ ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224466"
 ---
 >[!NOTE]
->For resources that aren't fixed, open a support ticket to ask for an increase in the quotas. Don't create additional Azure Media Services accounts in an attempt to obtain higher limits.
+>Voor bronnen die niet zijn opgelost, opent u een ondersteunings ticket om te vragen om een toename van de quota's. Maak geen aanvullende Azure Media Services accounts in een poging om hogere limieten te verkrijgen.
 
 | Bron | Standaardlimiet | 
 | --- | --- | 
-| Azure Media Services accounts in a single subscription | 25 (vast) |
-| Media reserved units per Media Services account |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
-| Jobs per Media Services account | 50.000<sup>2</sup> |
+| Azure Media Services accounts in één abonnement | 25 (vast) |
+| Gereserveerde media-eenheden per Media Services account |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
+| Taken per Media Services-account | 50.000<sup>2</sup> |
 | Gekoppelde taken per taak | 30 (vast) |
-| Assets per Media Services account | 1\.000.000|
+| Activa per Media Services account | 1\.000.000|
 | Activa per taak | 50 |
 | Activa per taak | 100 |
 | Unieke locators die aan één activum tegelijk zijn gekoppeld | 5<sup>4</sup> |
-| Live channels per Media Services account |5|
+| Live channels per Media Services-account |5|
 | Programma's met de status Gestopt per kanaal |50|
 | Programma's met de status Wordt uitgevoerd per kanaal |3|
-| Streaming endpoints that are stopped or running per Media Services account|2|
+| Streaming-eind punten die worden gestopt of uitgevoerd per Media Services-account|2|
 | Streaming-eenheden per streaming-eindpunt |10 |
 | Opslagaccounts | 1\.000<sup>5</sup> (vast) |
 | Beleid | 1,000,000<sup>6</sup> |
-| Bestandsgrootte| In some scenarios, there's a limit on the maximum file size supported for processing in Media Services.<sup>7</sup> |
+| Bestandsgrootte| In sommige scenario's geldt een limiet voor de maximale bestands grootte die wordt ondersteund voor verwerking in Media Services. <sup>7</sup> |
 
-<sup>1</sup>If you change the type, for example, from S2 to S1, the maximum reserved unit limits are reset.
+<sup>1</sup> Als u het type wijzigt, bijvoorbeeld van S2 naar S1, worden de maximum limieten voor gereserveerde eenheden opnieuw ingesteld.
 
-<sup>2</sup>This number includes queued, finished, active, and canceled jobs. It doesn't include deleted jobs. You can delete old jobs by using **IJob.Delete** or the **DELETE** HTTP request.
+<sup>2</sup> Dit aantal omvat taken in de wachtrij, voltooid, actief en geannuleerd. Het bevat geen verwijderde taken. U kunt oude taken verwijderen met behulp van **IJob. Delete** of het **verwijderen** van een HTTP-aanvraag.
 
-As of April 1, 2017, any job record in your account older than 90 days is automatically deleted, along with its associated task records. Automatic deletion occurs even if the total number of records is below the maximum quota. To archive the job and task information, use the code described in [Manage assets with the Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
+Met ingang van 1 april 2017 worden alle taak records in uw account die ouder zijn dan 90 dagen automatisch verwijderd, samen met de bijbehorende taak registraties. Automatisch verwijderen vindt plaats, zelfs als het totale aantal records lager is dan het maximum quotum. Als u de taak-en taak gegevens wilt archiveren, gebruikt u de code die wordt beschreven in [assets beheren met de Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
 
-<sup>3</sup>When you make a request to list job entities, a maximum of 1,000 jobs is returned per request. To keep track of all submitted jobs, use the top or skip queries as described in [OData system query options](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
+<sup>3</sup> Wanneer u een aanvraag voor het maken van een lijst met taak entiteiten maakt, worden er Maxi maal 1.000 taken per aanvraag geretourneerd. Als u alle ingediende taken wilt bijhouden, gebruikt u de boven-of sla query's zoals beschreven in [query opties](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7))van het OData-systeem.
 
-<sup>4</sup>Locators aren't designed for managing per-user access control. To give different access rights to individual users, use digital rights management (DRM) solutions. For more information, see [Protect your content with Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
+<sup>4</sup> Locators zijn niet ontworpen voor het beheren van toegangs beheer per gebruiker. Gebruik Digital Rights Management (DRM)-oplossingen om verschillende toegangs rechten voor afzonderlijke gebruikers te bieden. Zie [uw inhoud beveiligen met Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md)voor meer informatie.
 
-<sup>5</sup>The storage accounts must be from the same Azure subscription.
+<sup>5</sup> De opslag accounts moeten afkomstig zijn uit hetzelfde Azure-abonnement.
 
-<sup>6</sup>There's a limit of 1,000,000 policies for different Media Services policies. An example is for the Locator policy or ContentKeyAuthorizationPolicy. 
+<sup>6</sup> Er is een limiet van 1.000.000 beleids regels voor verschillende Media Services-beleids regels. Een voor beeld is voor het beleid van de Locator of het ContentKeyAuthorizationPolicy. 
 
 >[!NOTE]
-> If you always use the same days and access permissions, use the same policy ID. For information and an example, see [Manage assets with the Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
+> Gebruik dezelfde beleids-ID als u altijd dezelfde dagen en toegangs machtigingen gebruikt. Zie [assets beheren met de Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies)voor meer informatie en een voor beeld.
 
-<sup>7</sup>The maximum size supported for a single blob is currently up to 5 TB in Azure Blob Storage. Additional limits apply in Media Services based on the VM sizes that are used by the service. The size limit applies to the files that you upload and also the files that get generated as a result of Media Services processing (encoding or analyzing). If your source file is larger than 260-GB, your Job will likely fail. 
+<sup>7</sup> De maximale grootte die wordt ondersteund voor één blob is momenteel Maxi maal 5 TB in Azure Blob Storage. Er zijn extra limieten van toepassing op Media Services op basis van de VM-grootten die worden gebruikt door de service. De limiet voor de grootte is van toepassing op de bestanden die u uploadt en ook de bestanden die worden gegenereerd als gevolg van de verwerking van Media Services (code ring of analyse). Als uw bron bestand groter is dan 260-GB, zal uw taak waarschijnlijk mislukken. 
 
-The following table shows the limits on the media reserved units S1, S2, and S3. If your source file is larger than the limits defined in the table, your encoding job fails. If you encode 4K resolution sources of long duration, you're required to use S3 media reserved units to achieve the performance needed. If you have 4K content that's larger than the 260-GB limit on the S3 media reserved units, open a support ticket.
+De volgende tabel bevat de limieten voor de gereserveerde media-eenheden S1, S2 en S3. Als het bron bestand groter is dan de limieten die in de tabel zijn gedefinieerd, mislukt de coderings taak. Als u resources van 4 KB met een lange duur wilt coderen, moet u gereserveerde S3-media-eenheden gebruiken om de benodigde prestaties te verzorgen. Als u onbewerkte inhoud hebt die groter is dan de limiet van 260 GB op de gereserveerde S3-media-eenheden, opent u een ondersteunings ticket.
 
-|Media reserved unit type   |Maximum input size (GB)|
+|Type gereserveerde media-eenheid   |Maximale invoer grootte (GB)|
 |---|---|
 |S1 |   26|
 |S2 | 60|

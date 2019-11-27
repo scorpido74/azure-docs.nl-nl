@@ -16,7 +16,7 @@ ms.locfileid: "74211205"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Zelfstudie: DNS-records voor een web-app in een aangepast domein maken 
 
-U kunt Azure DNS configureren voor het hosten van een aangepast domein voor uw web-apps. For example, you can create an Azure web app and have your users access it using either www\.contoso.com or contoso.com as a fully qualified domain name (FQDN).
+U kunt Azure DNS configureren voor het hosten van een aangepast domein voor uw web-apps. U kunt bijvoorbeeld een Azure-web-app maken en uw gebruikers toegang geven met www\.contoso.com of contoso.com als een Fully Qualified Domain Name (FQDN).
 
 > [!NOTE]
 > Contoso.com wordt in de hele zelfstudie als voorbeeld gebruikt. Vervang uw eigen domeinnaam door contoso.com.
@@ -47,7 +47,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* You must have a domain name available to test with that you can host in Azure DNS . U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
+* U moet een domein naam hebben om te kunnen testen met die u in Azure DNS kunt hosten. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
 * [Maak een App Service-app](../app-service/app-service-web-get-started-html.md), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
 
 * Maak een DNS-zone in Azure DNS en delegeer de zone in uw registrar naar Azure DNS.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 App Services gebruikt dit record alleen tijdens de configuratie, om te controleren of u de eigenaar bent van het aangepaste domein. Nadat uw aangepaste domein is gevalideerd en geconfigureerd in App Service, kunt u dit TXT-record verwijderen.
 
 > [!NOTE]
-> If you want to verify the domain name, but not route production traffic to the web app, you only need to specify the TXT record for the verification step.  Verification does not require an A or CNAME record in addition to the TXT record.
+> Als u de domein naam wilt controleren, maar geen productie verkeer naar de Web-App wilt door sturen, hoeft u alleen de TXT-record voor de verificatie stap op te geven.  Voor verificatie is naast de TXT-record geen CNAME-record vereist.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -92,7 +92,7 @@ New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
  -DnsRecords (New-AzDnsRecordConfig -Value  "contoso.azurewebsites.net")
 ```
 
-## <a name="create-the-cname-record"></a>De CNAME-record maken
+## <a name="create-the-cname-record"></a>Het CNAME-record maken
 
 Als uw domein al wordt beheerd door Azure DNS (zie [DNS domain delegation](dns-domain-delegation.md) (Delegering van DNS-domeinen)) kunt u het volgende voorbeeld gebruiken om een CNAME-record voor contoso.azurewebsites.net te maken.
 
@@ -121,7 +121,7 @@ Het volgende voorbeeld is het antwoord:
 
 ## <a name="test-the-new-records"></a>De nieuwe records testen
 
-U kunt controleren of de records correct zijn gemaakt door een query uit te voeren op www.contoso.com en contoso.com met behulp van nslookup, zoals hieronder wordt weergegeven:
+U kunt controleren of de records correct zijn gemaakt door een query uit te voeren op „www.contoso.com“ en contoso.com met behulp van nslookup, zoals hieronder wordt weergegeven:
 
 ```
 PS C:\> nslookup
@@ -173,7 +173,7 @@ set-AzWebApp `
 Open een browser en browse naar `http://www.<your domainname>` en `http://<you domain name>`.
 
 > [!NOTE]
-> Make sure you include the `http://` prefix, otherwise your browser may attempt to predict a URL for you!
+> Zorg ervoor dat u het voor voegsel van `http://` opneemt, anders kan uw browser proberen een URL voor te voors pellen.
 
 U zou voor beide URL's dezelfde pagina moeten zien. Bijvoorbeeld:
 

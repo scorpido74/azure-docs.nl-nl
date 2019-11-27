@@ -76,7 +76,7 @@ In de volgende tabellen ziet u de verschillende fout typen (id onder resultaten 
 | ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' verbinding verbroken ' |Nee|
 | ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
 | ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
-| Authentication | Vooraf gedeelde sleutel komt niet overeen | Ja|
+| Verificatie | Vooraf gedeelde sleutel komt niet overeen | Ja|
 | PeerReachability | De peer gateway is niet bereikbaar. | Ja|
 | IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
 | WfpParse Error | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|

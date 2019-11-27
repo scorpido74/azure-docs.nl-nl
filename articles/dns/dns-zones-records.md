@@ -1,6 +1,6 @@
 ---
-title: DNS Zones and Records overview - Azure DNS | Microsoft Docs
-description: Overview of support for hosting DNS zones and records in Microsoft Azure DNS.
+title: Overzicht van DNS-zones en records-Azure DNS | Microsoft Docs
+description: Overzicht van ondersteuning voor het hosten van DNS-zones en-records in Microsoft Azure DNS.
 services: dns
 documentationcenter: na
 author: asudbring
@@ -22,132 +22,132 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211002"
 ---
-# <a name="overview-of-dns-zones-and-records"></a>Overview of DNS zones and records
+# <a name="overview-of-dns-zones-and-records"></a>Overzicht van DNS-zones en records
 
-This page explains the key concepts of domains, DNS zones, and DNS records and record sets, and how they are supported in Azure DNS.
+Op deze pagina worden de belangrijkste concepten van domeinen, DNS-zones, DNS-records en-record sets uitgelegd en hoe deze worden ondersteund in Azure DNS.
 
-## <a name="domain-names"></a>Domain names
+## <a name="domain-names"></a>Domein namen
 
-Het Domain Name System is een hiërarchie van domeinen. De hiërarchie start vanaf het hoofddomein. De naam van dit domein is eenvoudigweg ' **.** '.  Hieronder komen de topleveldomeinen, zoals com, net, org, uk of nl.  Onder de topleveldomeinen komen de secondleveldomeinen, zoals org.uk of co.jp. The domains in the DNS hierarchy are globally distributed, hosted by DNS name servers around the world.
+Het Domain Name System is een hiërarchie van domeinen. De hiërarchie start vanaf het hoofddomein. De naam van dit domein is eenvoudigweg ' **.** '.  Hieronder komen de topleveldomeinen, zoals com, net, org, uk of nl.  Onder de topleveldomeinen komen de secondleveldomeinen, zoals org.uk of co.jp. De domeinen in de DNS-hiërarchie zijn wereld wijd gedistribueerd, gehost door DNS-naam servers over de hele wereld.
 
-A domain name registrar is an organization that allows you to purchase a domain name, such as `contoso.com`.  Purchasing a domain name gives you the right to control the DNS hierarchy under that name, for example allowing you to direct the name `www.contoso.com` to your company web site. The registrar may host the domain in its own name servers on your behalf, or allow you to specify alternative name servers.
+Een domein naam registratie is een organisatie waarmee u een domein naam kunt kopen, zoals `contoso.com`.  Als u een domein naam aanschaft, kunt u de DNS-hiërarchie onder die naam beheren, bijvoorbeeld zodat u de naam `www.contoso.com` naar de website van uw bedrijf kunt sturen. De registratie van het domein kan in eigen naam servers worden gehost of u kunt alternatieve naam servers opgeven.
 
-Azure DNS provides a globally distributed, high-availability name server infrastructure, which you can use to host your domain. By hosting your domains in Azure DNS, you can manage your DNS records with the same credentials, APIs, tools, billing, and support as your other Azure services.
+Azure DNS biedt een wereld wijd gedistribueerde naam server infrastructuur met hoge Beschik baarheid, die u kunt gebruiken om uw domein te hosten. Door uw domeinen in Azure DNS te hosten, kunt u uw DNS-records met dezelfde referenties, Api's, hulpprogram ma's, facturering en ondersteuning als uw andere Azure-Services beheren.
 
-Azure DNS does not currently support purchasing of domain names. If you want to purchase a domain name, you need to use a third-party domain name registrar. The registrar typically charges a small annual fee. The domains can then be hosted in Azure DNS for management of DNS records. Zie [Een domein aan Azure DNS overdragen](dns-domain-delegation.md) voor meer informatie.
+Azure DNS biedt momenteel geen ondersteuning voor de aanschaf van domein namen. Als u een domein naam wilt kopen, moet u een domein naam van derden gebruiken. De registratie service berekent doorgaans een klein jaarlijks bedrag. De domeinen kunnen vervolgens worden gehost in Azure DNS voor het beheer van DNS-records. Zie [Een domein aan Azure DNS overdragen](dns-domain-delegation.md) voor meer informatie.
 
-## <a name="dns-zones"></a>DNS zones
+## <a name="dns-zones"></a>DNS-zones
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="dns-records"></a>DNS records
+## <a name="dns-records"></a>DNS-records
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-### <a name="time-to-live"></a>Time-to-live
+### <a name="time-to-live"></a>Time-to-Live
 
-The time to live, or TTL, specifies how long each record is cached by clients before being requeried. In the above example, the TTL is 3600 seconds or 1 hour.
+De TTL (time to Live), geeft aan hoe lang elke record door clients in de cache wordt opgeslagen voordat opnieuw een query wordt uitgevoerd. In het bovenstaande voor beeld is de TTL 3600 seconden of 1 uur.
 
-In Azure DNS, the TTL is specified for the record set, not for each record, so the same value is used for all records within that record set.  You can specify any TTL value between 1 and 2,147,483,647 seconds.
+In Azure DNS wordt de TTL voor de recordset opgegeven, niet voor elke record, zodat dezelfde waarde wordt gebruikt voor alle records in die recordset.  U kunt een wille keurige TTL-waarde tussen 1 en 2.147.483.647 seconden opgeven.
 
-### <a name="wildcard-records"></a>Wildcard records
+### <a name="wildcard-records"></a>Joker records
 
-Azure DNS ondersteunt [recordsets met jokertekens](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Wildcard records are returned in response to any query with a matching name (unless there is a closer match from a non-wildcard record set). Azure DNS supports wildcard record sets for all record types except NS and SOA.
+Azure DNS ondersteunt [recordsets met jokertekens](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Joker records worden geretourneerd als antwoord op een wille keurige query met een overeenkomende naam (tenzij er een nauwere overeenkomst is met een niet-Joker record). Azure DNS ondersteunt Joker record sets voor alle record typen behalve NS en SOA.
 
-To create a wildcard record set, use the record set name '\*'. Alternatively, you can also use a name with '\*' as its left-most label, for example, '\*.foo'.
+Als u een set met Joker tekens wilt maken, gebruikt u de naam van de recordset\*. U kunt ook een naam met '\*' gebruiken als het meest linkse label, bijvoorbeeld '\*. foo '.
 
 ### <a name="caa-records"></a>CAA records
 
-CAA records allow domain owners to specify which Certificate Authorities (CAs) are authorized to issue certificates for their domain. This allows CAs to avoid mis-issuing certificates in some circumstances. CAA records have three properties:
-* **Flags**: This is an integer between 0 and 255, used to represent the critical flag that has special meaning per the [RFC](https://tools.ietf.org/html/rfc6844#section-3)
-* **Tag**: an ASCII string that can be one of the following:
-    * **issue**: use this if you want to specify CAs that are permitted to issue certs (all types)
-    * **issuewild**: use this if you want to specify CAs that are permitted to issue certs (wildcard certs only)
-    * **iodef**: specify an email address or hostname to which CAs can notify for unauthorized cert issue requests
-* **Value**: the value for the specific Tag chosen
+Met CAA-records kunnen domein eigen aars opgeven welke certificerings instanties (Ca's) geautoriseerd zijn om certificaten voor hun domein te verlenen. Op die manier kunnen certificerings instanties in sommige gevallen niet-verleende certificaten vermijden. CAA records hebben drie eigenschappen:
+* **Flags**: dit is een geheel getal tussen 0 en 255, dat wordt gebruikt om de kritieke vlag weer te geven die een speciale betekenis heeft per [RFC](https://tools.ietf.org/html/rfc6844#section-3)
+* **Tag**: een ASCII-teken reeks die een van de volgende kan zijn:
+    * **probleem**: gebruik deze als u ca's wilt opgeven die certificaten mogen uitgeven (alle typen)
+    * **issuewild**: gebruik deze als u ca's wilt opgeven die certificaten mogen verlenen (alleen voor joker tekens)
+    * **iodef**: Geef een e-mail adres of hostnaam op waarnaar ca's kunnen worden gewaarschuwd voor niet-geautoriseerde certificaat uitgifte aanvragen
+* **Waarde**: de waarde voor de specifieke tag gekozen
 
-### <a name="cname-records"></a>CNAME records
+### <a name="cname-records"></a>CNAME-records
 
-CNAME-recordsets kunnen niet worden gecombineerd met andere recordsets met dezelfde naam. For example, you cannot create a CNAME record set with the relative name 'www' and an A record with the relative name 'www' at the same time.
+CNAME-recordsets kunnen niet worden gecombineerd met andere recordsets met dezelfde naam. U kunt bijvoorbeeld geen CNAME-recordset maken met de relatieve naam ' www ' en een record met de relatieve naam ' www ' op hetzelfde moment.
 
-Because the zone apex (name = '\@') always contains the NS and SOA record sets that were created when the zone was created, you can't create a CNAME record set at the zone apex.
+Omdat de zone Apex (name = '\@') altijd de NS-en SOA-record sets bevat die zijn gemaakt toen de zone werd gemaakt, kunt u geen CNAME-recordset maken op de zone Apex.
 
-These constraints arise from the DNS standards and are not limitations of Azure DNS.
+Deze beperkingen komen voort uit de DNS-standaarden en zijn geen beperkingen van Azure DNS.
 
-### <a name="ns-records"></a>NS records
+### <a name="ns-records"></a>NS-records
 
-The NS record set at the zone apex (name '\@') is created automatically with each DNS zone, and is deleted automatically when the zone is deleted (it cannot be deleted separately).
+De NS-record die is ingesteld op de zone Apex (naam\@) wordt automatisch gemaakt bij elke DNS-zone en wordt automatisch verwijderd wanneer de zone wordt verwijderd (deze kan niet afzonderlijk worden verwijderd).
 
-This record set contains the names of the Azure DNS name servers assigned to the zone. You can add additional name servers to this NS record set, to support co-hosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, you cannot remove or modify the pre-populated Azure DNS name servers. 
+Deze recordset bevat de namen van de Azure DNS naam servers die zijn toegewezen aan de zone. U kunt aanvullende naam servers toevoegen aan deze NS-Recordset, ter ondersteuning van co-hosting domeinen met meer dan één DNS-provider. U kunt ook de TTL en meta gegevens voor deze recordset wijzigen. U kunt de vooraf ingevulde Azure DNS naam servers echter niet verwijderen of wijzigen. 
 
-This applies only to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be created, modified, and deleted without constraint.
+Dit geldt alleen voor de NS-recordset die is ingesteld op de zone Apex. Andere NS-record sets in uw zone (zoals gebruikt voor het delegeren van onderliggende zones) kunnen zonder beperking worden gemaakt, gewijzigd en verwijderd.
 
-### <a name="soa-records"></a>SOA records
+### <a name="soa-records"></a>SOA-records
 
-A SOA record set is created automatically at the apex of each zone (name = '\@'), and is deleted automatically when the zone is deleted.  SOA records cannot be created or deleted separately.
+Er wordt automatisch een SOA-recordset gemaakt aan de Apex van elke zone (naam = '\@') en wordt automatisch verwijderd wanneer de zone wordt verwijderd.  SOA-records kunnen niet afzonderlijk worden gemaakt of verwijderd.
 
-You can modify all properties of the SOA record except for the 'host' property, which is pre-configured to refer to the primary name server name provided by Azure DNS.
+U kunt alle eigenschappen van de SOA-record wijzigen, met uitzonde ring van de eigenschap host, die vooraf is geconfigureerd om te verwijzen naar de naam van de primaire naam server die wordt opgegeven door Azure DNS.
 
-The zone serial number in the SOA record is not updated automatically when changes are made to the records in the zone. It can be updated manually by editing the SOA record, if necessary.
+Het serie nummer van de zone in de SOA-record wordt niet automatisch bijgewerkt wanneer er wijzigingen worden aangebracht in de records in de zone. Het kan hand matig worden bijgewerkt door de SOA-record te bewerken, indien nodig.
 
-### <a name="spf-records"></a>SPF records
+### <a name="spf-records"></a>SPF-records
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
-### <a name="srv-records"></a>SRV records
+### <a name="srv-records"></a>SRV-records
 
-[SRV records](https://en.wikipedia.org/wiki/SRV_record) are used by various services to specify server locations. When specifying an SRV record in Azure DNS:
+[SRV-records](https://en.wikipedia.org/wiki/SRV_record) worden door verschillende services gebruikt om server locaties op te geven. Bij het opgeven van een SRV-record in Azure DNS:
 
-* The *service* and *protocol* must be specified as part of the record set name, prefixed with underscores.  For example, '\_sip.\_tcp.name'.  For a record at the zone apex, there is no need to specify '\@' in the record name, simply use the service and protocol, for example '\_sip.\_tcp'.
-* The *priority*, *weight*, *port*, and *target* are specified as parameters of each record in the record set.
+* De *service* en het *protocol* moeten worden opgegeven als onderdeel van de naam van de recordset, voorafgegaan door onderstrepings tekens.  Bijvoorbeeld '\_SIP.\_tcp.name '.  Voor een record op de zone Apex is het niet nodig om '\@' op te geven in de record naam. gebruik gewoon de service en het Protocol, bijvoorbeeld '\_SIP.\_TCP.
+* De *prioriteit*, het *gewicht*, de *poort*en het *doel* worden opgegeven als para meters van elke record in de recordset.
 
-### <a name="txt-records"></a>TXT records
+### <a name="txt-records"></a>TXT-records
 
-TXT records are used to map domain names to arbitrary text strings. They are used in multiple applications, in particular related to email configuration, such as the [Sender Policy Framework (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
+TXT-records worden gebruikt voor het toewijzen van domein namen aan wille keurige teken reeksen. Ze worden gebruikt in meerdere toepassingen, in het bijzonder met betrekking tot e-mail configuratie, zoals de [SPF (Sender Policy Framework)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) en [DomainKeys (dkim) geïdentificeerde e-mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
 
-The DNS standards permit a single TXT record to contain multiple strings, each of which may be up to 254 characters in length. Where multiple strings are used, they are concatenated by clients and treated as a single string.
+De DNS-standaarden staan toe dat één TXT-record meerdere teken reeksen bevat, die elk Maxi maal 254 tekens lang kunnen zijn. Wanneer er meerdere teken reeksen worden gebruikt, worden deze samengevoegd door clients en behandeld als één teken reeks.
 
-When calling the Azure DNS REST API, you need to specify each TXT string separately.  When using the Azure portal, PowerShell or CLI interfaces you should specify a single string per record, which is automatically divided into 254-character segments if necessary.
+Wanneer u de Azure DNS REST API aanroept, moet u elke teken reeks afzonderlijk opgeven.  Wanneer u de Azure Portal-, Power shell-of CLI-interface gebruikt, moet u één teken reeks per record opgeven. dit wordt zo nodig automatisch onderverdeeld in 254-teken segmenten.
 
-The multiple strings in a DNS record should not be confused with the multiple TXT records in a TXT record set.  A TXT record set can contain multiple records, *each of which* can contain multiple strings.  Azure DNS supports a total string length of up to 1024 characters in each TXT record set (across all records combined).
+De meerdere teken reeksen in een DNS-record mogen niet worden verward met de meerdere TXT-records in een TXT-Recordset.  Een TXT-recordset kan meerdere records bevatten, *die elk* meerdere teken reeksen kunnen bevatten.  Azure DNS ondersteunt een totale teken reeks lengte van Maxi maal 1024 tekens in elke TXT-recordset (in alle records gecombineerd).
 
-## <a name="tags-and-metadata"></a>Tags and metadata
+## <a name="tags-and-metadata"></a>Tags en meta gegevens
 
 ### <a name="tags"></a>Tags
 
-Tags are a list of name-value pairs and are used by Azure Resource Manager to label resources.  Azure Resource Manager uses tags to enable filtered views of your Azure bill, and also enables you to set a policy on which tags are required. Zie [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/resource-group-using-tags.md) voor meer informatie over tags.
+Tags zijn een lijst met naam/waarde-paren en worden gebruikt door Azure Resource Manager om resources te labelen.  Azure Resource Manager maakt gebruik van tags om gefilterde weer gaven van uw Azure-factuur in te scha kelen. Daarnaast kunt u een beleid instellen waarvoor Tags zijn vereist. Zie voor meer informatie over tags [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/resource-group-using-tags.md).
 
-Azure DNS supports using Azure Resource Manager tags on DNS zone resources.  It does not support tags on DNS record sets, although as an alternative 'metadata' is supported on DNS record sets as explained below.
+Azure DNS ondersteunt het gebruik van Azure Resource Manager-Tags op DNS-zone bronnen.  Tags in DNS-record sets worden niet ondersteund, hoewel als alternatieve meta gegevens wordt ondersteund voor DNS-record sets, zoals hieronder wordt uitgelegd.
 
 ### <a name="metadata"></a>Metagegevens
 
-As an alternative to record set tags, Azure DNS supports annotating record sets using 'metadata'.  Similar to tags, metadata enables you to associate name-value pairs with each record set.  This can be useful, for example to record the purpose of each record set.  Unlike tags, metadata cannot be used to provide a filtered view of your Azure bill and cannot be specified in an Azure Resource Manager policy.
+Als alternatief voor labels voor record sets Azure DNS ondersteunt het aantekeningen maken van record sets met behulp van meta gegevens.  Net als bij Tags kunt u met meta gegevens naam/waarde-paren koppelen aan elke recordset.  Dit kan handig zijn, bijvoorbeeld om het doel van elke recordset te registreren.  In tegens telling tot Tags kunnen meta gegevens niet worden gebruikt om een gefilterde weer gave van uw Azure-factuur te bieden en kan niet worden opgegeven in een Azure Resource Manager beleid.
 
-## <a name="etags"></a>Etags
+## <a name="etags"></a>ETags
 
-Suppose two people or two processes try to modify a DNS record at the same time. Which one wins? And does the winner know that they've overwritten changes created by someone else?
+Stel dat twee personen of twee processen proberen om een DNS-record tegelijkertijd te wijzigen. Welke één WINS? En weet de winnaar dat er wijzigingen zijn aangebracht die zijn gemaakt door iemand anders?
 
-Azure DNS uses Etags to handle concurrent changes to the same resource safely. Etags are separate from [Azure Resource Manager 'Tags'](#tags). Each DNS resource (zone or record set) has an Etag associated with it. Whenever a resource is retrieved, its Etag is also retrieved. When updating a resource, you can choose to pass back the Etag so Azure DNS can verify that the Etag on the server matches. Since each update to a resource results in the Etag being regenerated, an Etag mismatch indicates a concurrent change has occurred. Etags can also be used when creating a new resource to ensure that the resource does not already exist.
+Azure DNS gebruikt eTags om gelijktijdige wijzigingen in dezelfde resource veilig te verwerken. ETags zijn gescheiden van [Azure Resource Manager Tags](#tags). Aan elke DNS-resource (zone of Recordset) is een ETag gekoppeld. Wanneer een resource wordt opgehaald, wordt ook de ETAG opgehaald. Wanneer u een resource bijwerkt, kunt u ervoor kiezen om de ETAG terug te geven, zodat Azure DNS kunt controleren of de ETAG op de server overeenkomt. Omdat elke update van een resource resulteert in de ETAG die opnieuw wordt gegenereerd, geeft een ETag niet-overeenkomen aan dat er een gelijktijdige wijziging heeft plaatsgevonden. ETags kan ook worden gebruikt bij het maken van een nieuwe resource om ervoor te zorgen dat de resource nog niet bestaat.
 
-By default, Azure DNS PowerShell uses Etags to block concurrent changes to zones and record sets. The optional *-Overwrite* switch can be used to suppress Etag checks, in which case any concurrent changes that have occurred are overwritten.
+Azure DNS Power shell gebruikt standaard eTags om gelijktijdige wijzigingen in zones en record sets te blok keren. De schakel optie *-overwrite* kan worden gebruikt om ETAG-controles te onderdrukken, in welk geval alle gelijktijdige wijzigingen die zijn opgetreden, worden overschreven.
 
-At the level of the Azure DNS REST API, Etags are specified using HTTP headers.  Their behavior is given in the following table:
+Op het niveau van de Azure DNS REST API worden eTags opgegeven met behulp van HTTP-headers.  Hun gedrag wordt vermeld in de volgende tabel:
 
 | Header | Gedrag |
 | --- | --- |
-| Geen |PUT always succeeds (no Etag checks) |
-| If-match \<etag> |PUT only succeeds if resource exists and Etag matches |
-| If-match * |PUT only succeeds if resource exists |
-| If-none-match * |PUT only succeeds if resource does not exist |
+| Geen |PUT altijd geslaagd (geen ETag-controles) |
+| If-match \<ETAG-> |Alleen geslaagd als resource bestaat en ETAG overeenkomt |
+| If-match * |Alleen geslaagd als de resource bestaat |
+| If-None-Match * |Alleen geslaagd als de resource niet bestaat |
 
 
 ## <a name="limits"></a>Beperkingen
 
-The following default limits apply when using Azure DNS:
+De volgende standaard limieten zijn van toepassing wanneer u Azure DNS gebruikt:
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* To start using Azure DNS, learn how to [create a DNS zone](dns-getstarted-create-dnszone-portal.md) and [create DNS records](dns-getstarted-create-recordset-portal.md).
-* To migrate an existing DNS zone, learn how to [import and export a DNS zone file](dns-import-export.md).
+* Als u Azure DNS wilt gaan gebruiken, leest u hoe u [een DNS-zone maakt](dns-getstarted-create-dnszone-portal.md) en hoe u [DNS-records maakt](dns-getstarted-create-recordset-portal.md).
+* Als u een bestaande DNS-zone wilt migreren, leert u hoe u [een DNS-zone bestand importeert en exporteert](dns-import-export.md).

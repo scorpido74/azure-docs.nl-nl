@@ -1,6 +1,6 @@
 ---
-title: Manage device enrollments for Azure IoT Hub Device Provisioning Service in the Azure portal
-description: How to manage device enrollments for your Device Provisioning Service in the Azure Portal
+title: Registraties van apparaten voor Azure IoT Hub Device Provisioning Service beheren in de Azure Portal
+description: Device-inschrijvingen beheren voor uw Device Provisioning Service in azure Portal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/05/2018
@@ -15,62 +15,62 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229720"
 ---
-# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>How to manage device enrollments with Azure Portal
+# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Registratie van apparaten beheren met Azure Portal
 
-A *device enrollment* creates a record of a single device or a group of devices that may at some point register with the Azure IoT Hub Device Provisioning Service. The enrollment record contains the initial desired configuration for the device(s) as part of that enrollment, including the desired IoT hub. This article shows you how to manage device enrollments for your provisioning service.
+Een *apparaatregistratie* maakt een record van één apparaat of een groep apparaten die op een bepaald moment bij de Azure-IOT hub Device Provisioning Service kunnen worden geregistreerd. De registratie record bevat de eerste gewenste configuratie voor de apparaten die deel uitmaken van deze inschrijving, inclusief de gewenste IoT-hub. In dit artikel leest u hoe u de registratie van apparaten voor uw inrichtings service kunt beheren.
 
 
-## <a name="create-a-device-enrollment"></a>Create a device enrollment
+## <a name="create-a-device-enrollment"></a>Een apparaatregistratie maken
 
-There are two ways you can enroll your devices with the provisioning service:
+Er zijn twee manieren waarop u uw apparaten kunt inschrijven bij de inrichtings service:
 
-* An **Enrollment group** is an entry for a group of devices that share a common attestation mechanism of X.509 certificates, signed by the same signing certificate, which can be the [root certificate](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) or the [intermediate certificate](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate), used to produce device certificate on physical device. We recommend using an enrollment group for a large number of devices which share a desired initial configuration, or for devices all going to the same tenant. Note that you can only enroll devices that use the X.509 attestation mechanism as *enrollment groups*. 
+* Een **registratie groep** is een vermelding voor een groep apparaten die een gemeen schappelijk Attestation-mechanisme van X. 509-certificaten delen, ondertekend door hetzelfde handtekening certificaat, dat het [basis certificaat](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) of het [tussenliggende certificaat](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)kan zijn, dat wordt gebruikt voor het produceren van een apparaat certificaat op een fysiek apparaat. U kunt het beste een registratie groep gebruiken voor een groot aantal apparaten die een gewenste initiële configuratie delen, of voor apparaten die allemaal naar dezelfde Tenant gaan. Houd er rekening mee dat u alleen apparaten kunt inschrijven die gebruikmaken van het 509 Attestation-mechanisme van *X.* 
 
-    You can create an enrollment group in the portal for a group of devices using the following steps:
+    U kunt met behulp van de volgende stappen een inschrijvings groep maken in de portal voor een groep apparaten:
 
-  1. Log in to the Azure portal and click **All resources** from the left-hand menu.  
-  1. Click the Device Provisioning service you want to enroll your device to from the list of resources.  
-  1. In your provisioning service:  
-     a. Click **Manage enrollments**, then select the **Enrollment Groups** tab.  
+  1. Meld u aan bij de Azure Portal en klik op **alle resources** in het menu aan de linkerkant.  
+  1. Klik in de lijst met resources op de Device Provisioning Service waarop u uw apparaat wilt registreren.  
+  1. In uw inrichtings service:  
+     a. Klik op **inschrijvingen beheren**en selecteer vervolgens het tabblad **registratie groepen** .  
      b. Klik bovenaan op de knop **Toevoegen**.  
-     c. When the "Add Enrollment Group" panel appears, enter the information for the enrollment list entry.  **Group name** is required. Also select "CA or Intermediate" for **Certificate type**, and upload the root **Primary certificate** for the group of devices.  
-     d. Klik op **Opslaan**. On successful creation of your enrollment group, you should see the group name appear under the **Enrollment Groups** tab.  
+     c. Wanneer het paneel registratie groep toevoegen wordt weer gegeven, voert u de gegevens voor de vermelding van de registratie lijst in.  **Groeps naam** is vereist. Selecteer ook "CA of tussenliggend" voor het **certificaat type**en upload het **primaire hoofd certificaat** voor de groep apparaten.  
+     d. Klik op **Opslaan**. Wanneer u de registratie groep hebt gemaakt, ziet u dat de groeps naam wordt weer gegeven op het tabblad **registratie groepen** .  
 
-     [![Enrollment group in the portal](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+     [![registratie groep in de portal](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
 
-* An **Individual enrollment** is an entry for a single device that may register. Individual enrollments may use either x509 certificates or SAS tokens (from a physical or virtual TPM) as attestation mechanisms. We recommend using individual enrollments for devices which require unique initial configurations, or for devices which can only use SAS tokens via TPM or virtual TPM as the attestation mechanism. Afzonderlijke inschrijvingen hebben mogelijk de gewenste apparaat-id voor IoT Hub die is opgegeven.
+* Een **afzonderlijke inschrijving** is een vermelding voor één apparaat dat kan worden geregistreerd. Individuele inschrijvingen kunnen ofwel x509-certificaten of SAS-tokens (van een fysieke of virtuele TPM) als Attestation-mechanismen gebruiken. We raden u aan om afzonderlijke inschrijvingen te gebruiken voor apparaten die unieke initiële configuraties vereisen, of voor apparaten die alleen SAS-tokens via TPM of virtuele TPM kunnen gebruiken als Attestation-mechanisme. Afzonderlijke inschrijvingen hebben mogelijk de gewenste apparaat-id voor IoT Hub die is opgegeven.
 
-    You can create an individual enrollment in the portal using the following steps:
+    U kunt met behulp van de volgende stappen een afzonderlijke inschrijving maken in de portal:
 
-    1. Log in to the Azure portal and click **All resources** from the left-hand menu.
-    1. Click the Device Provisioning service you want to enroll your device to from the list of resources.
-    1. In your provisioning service:  
-       a. Click **Manage enrollments**, then select the **Individual Enrollments** tab.  
+    1. Meld u aan bij de Azure Portal en klik op **alle resources** in het menu aan de linkerkant.
+    1. Klik in de lijst met resources op de Device Provisioning Service waarop u uw apparaat wilt registreren.
+    1. In uw inrichtings service:  
+       a. Klik op **inschrijvingen beheren**en selecteer vervolgens het tabblad **afzonderlijke registraties** .  
        b. Klik bovenaan op de knop **Toevoegen**.   
-       c. When the "Add Enrollment" panel appears, enter the information for the enrollment list entry. First select the attestation **Mechanism** for the device (X.509 or TPM). X.509 attestation requires you to upload the leaf **Primary certificate** for the device. TPM requires you to enter the **Attestation Key** and **Registration ID** for the device.  
-       d. Klik op **Opslaan**. On successful creation of your enrollment group, you should see your device appear under the **Individual Enrollments** tab.  
+       c. Wanneer het deel venster inschrijving toevoegen wordt weer gegeven, voert u de gegevens voor de vermelding van de registratie lijst in. Selecteer eerst het Attestation- **mechanisme** voor het apparaat (X. 509 of TPM). X. 509-Attestation vereist dat u het primaire Leaf- **certificaat** voor het apparaat uploadt. Voor TPM moet u de **Attestation-sleutel** en **registratie-id** voor het apparaat invoeren.  
+       d. Klik op **Opslaan**. Wanneer u de registratie groep hebt gemaakt, ziet u dat uw apparaat wordt weer gegeven op het tabblad **afzonderlijke registraties** .  
 
-       [![Individual enrollment in the portal](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
+       [Afzonderlijke inschrijving in de portal ![](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 
-## <a name="update-an-enrollment-entry"></a>Update an enrollment entry
-You can update an existing enrollment entry in the portal using the following steps:
+## <a name="update-an-enrollment-entry"></a>Een inschrijvings vermelding bijwerken
+U kunt een bestaande inschrijvings vermelding in de portal bijwerken met behulp van de volgende stappen:
 
-1. Open your Device Provisioning service in the Azure portal and click **Manage Enrollments**. 
-1. Navigate to the enrollment entry you want to modify. Click the entry, which opens a summary information about your device enrollment. 
-1. On this page, you can modify items other than the security type and credentials, such as the IoT hub the device should be linked to, as well as the device ID. You may also modify the initial device twin state. 
-1. Once completed, click **Save** to update your device enrollment. 
+1. Open uw Device Provisioning Service in de Azure Portal en klik op **inschrijvingen beheren**. 
+1. Navigeer naar de inschrijvings vermelding die u wilt wijzigen. Klik op het item om een samen vatting te openen van de registratie van uw apparaat. 
+1. Op deze pagina kunt u andere items dan het beveiligings type en de referenties wijzigen, zoals de IoT-hub waaraan het apparaat moet worden gekoppeld, evenals de apparaat-ID. U kunt ook de eerste dubbele status van het apparaat wijzigen. 
+1. Zodra u klaar bent, klikt u op **Opslaan** om de registratie van uw apparaat bij te werken. 
 
-    ![Update enrollment in the portal](./media/how-to-manage-enrollments/update-enrollment.png)
+    ![Inschrijving in de portal bijwerken](./media/how-to-manage-enrollments/update-enrollment.png)
 
-## <a name="remove-a-device-enrollment"></a>Remove a device enrollment
-In cases where your device(s) do not need to be provisioned to any IoT hub, you can remove the related enrollment entry in the portal using the following steps:
+## <a name="remove-a-device-enrollment"></a>Registratie van een apparaat verwijderen
+Als uw apparaat (en) niet moeten worden ingericht voor een IoT-hub, kunt u de bijbehorende inschrijvings vermelding in de Portal verwijderen door de volgende stappen uit te voeren:
 
-1. Open your Device Provisioning service in the Azure portal and click **Manage Enrollments**. 
-1. Navigate to and select the enrollment entry you want to remove. 
-1. Click the **Delete** button at the top and then select **Yes** when prompted to confirm. 
-1. Once the action is completed, you will see your entry removed from the list of device enrollments. 
+1. Open uw Device Provisioning Service in de Azure Portal en klik op **inschrijvingen beheren**. 
+1. Navigeer naar en selecteer de inschrijvings vermelding die u wilt verwijderen. 
+1. Klik bovenaan op de knop **verwijderen** en selecteer vervolgens **Ja** wanneer u wordt gevraagd om te bevestigen. 
+1. Zodra de actie is voltooid, ziet u dat uw vermelding is verwijderd uit de lijst met geregistreerde apparaten. 
  
-    ![Remove enrollment in the portal](./media/how-to-manage-enrollments/remove-enrollment.png)
+    ![Inschrijving in de Portal verwijderen](./media/how-to-manage-enrollments/remove-enrollment.png)
 
 

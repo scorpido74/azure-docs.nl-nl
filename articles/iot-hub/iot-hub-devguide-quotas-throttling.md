@@ -1,6 +1,6 @@
 ---
-title: Understand Azure IoT Hub quotas and throttling | Microsoft Docs
-description: Developer guide - description of the quotas that apply to IoT Hub and the expected throttling behavior.
+title: Meer informatie over Azure IoT Hub quota's en beperking | Microsoft Docs
+description: "Ontwikkelaars handleiding: beschrijving van de quota's die van toepassing zijn op IoT Hub en het verwachte beperkings gedrag."
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
@@ -14,122 +14,122 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228267"
 ---
-# <a name="reference---iot-hub-quotas-and-throttling"></a>Reference - IoT Hub quotas and throttling
+# <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
-This article explains the quotas for an IoT Hub, and provides information to help you understand how throttling works.
+In dit artikel worden de quota's voor een IoT Hub beschreven en vindt u informatie over het beperken van de werking van de functie.
 
 ## <a name="quotas-and-throttling"></a>Quota en beperkingen
 
-Each Azure subscription can have at most 50 IoT hubs, and at most 1 Free hub.
+Elk Azure-abonnement kan Maxi maal 50 IoT hubs hebben en Maxi maal één gratis hub.
 
-Elke IoT-hub is ingericht met een bepaald aantal eenheden in een bepaalde laag. The tier and number of units determine the maximum daily quota of messages that you can send. The message size used to calculate the daily quota is 0.5 KB for a free tier hub and 4KB for all other tiers. For more information, see [Azure IoT Hub Pricing](https://azure.microsoft.com/pricing/details/iot-hub/).
+Elke IoT-hub is ingericht met een bepaald aantal eenheden in een bepaalde laag. De laag en het aantal eenheden bepalen het maximale dagelijkse quotum van berichten dat u kunt verzenden. De grootte van het bericht dat wordt gebruikt voor het berekenen van het dagelijkse quotum is 0,5 KB voor een gratis hub en 4KB voor alle andere lagen. Zie [prijzen van Azure IOT hub](https://azure.microsoft.com/pricing/details/iot-hub/)voor meer informatie.
 
-The tier also determines the throttling limits that IoT Hub enforces on all operations.
+De laag bepaalt ook de beperkings limieten die IoT Hub afgedwongen voor alle bewerkingen.
 
 ### <a name="iot-plug-and-play"></a>IoT Plug and Play
 
-During public preview, IoT Plug and Play devices will send separate messages per interface, which may increase the number of messages counted towards your message quota.
+Tijdens de open bare preview verzenden IoT Plug en Play-apparaten afzonderlijke berichten per interface, waardoor het aantal berichten dat kan worden meegeteld voor uw bericht quotum, kan toenemen.
 
-## <a name="operation-throttles"></a>Operation throttles
+## <a name="operation-throttles"></a>Bewerking beperken
 
-Operation throttles are rate limitations that are applied in minute ranges and are intended to prevent abuse. They're also subject to [traffic shaping](#traffic-shaping).
+Bewerkings vertraging zijn frequentie beperkingen die worden toegepast in minutes en zijn bedoeld om misbruik te voor komen. Ze zijn ook onderhevig aan [verkeers vorming](#traffic-shaping).
 
-The following table shows the enforced throttles. Values refer to an individual hub.
+De volgende tabel geeft de afgedwongen vertragingen weer. Waarden verwijzen naar een afzonderlijke hub.
 
-| Vertragen | Free, B1, and S1 | B2 and S2 | B3 and S3 | 
+| Vertragen | Gratis, B1 en S1 | B2 en S2 | B3 en S3 | 
 | -------- | ------- | ------- | ------- |
-| [Identity registry operations](#identity-registry-operations-throttle) (create, retrieve, list, update, delete) | 1.67/sec/unit (100/min/unit) | 1.67/sec/unit (100/min/unit) | 83.33/sec/unit (5,000/min/unit) |
-| [New device connections](#device-connections-throttle) (this limit applies to the rate of _new connections_, not the total number of connections) | Higher of 100/sec or 12/sec/unit <br/> For example, two S1 units are 2\*12 = 24 new connections/sec, but you have at least 100 new connections/sec across your units. With nine S1 units, you have 108 new connections/sec (9\*12) across your units. | 120 new connections/sec/unit | 6,000 new connections/sec/unit |
-| Apparaat-naar-cloud verzendt | Higher of 100 send operations/sec or 12 send operations/sec/unit <br/> For example, two S1 units are 2\*12 = 24/sec, but you have at least 100 send operations/sec across your units. With nine S1 units, you have 108 send operations/sec (9\*12) across your units. | 120 send operations/sec/unit | 6,000 send operations/sec/unit |
-| Cloud-to-device sends<sup>1</sup> | 1.67 send operations/sec/unit (100 messages/min/unit) | 1.67 send operations/sec/unit (100 send operations/min/unit) | 83.33 send operations/sec/unit (5,000 send operations/min/unit) |
-| Cloud-to-device receives<sup>1</sup> <br/> (only when device uses HTTPS)| 16.67 receive operations/sec/unit (1,000 receive operations/min/unit) | 16.67 receive operations/sec/unit (1,000 receive operations/min/unit) | 833.33 receive operations/sec/unit (50,000 receive operations/min/unit) |
-| File upload | 1.67 file upload initiations/sec/unit (100/min/unit) | 1.67 file upload initiations/sec/unit (100/min/unit) | 83.33 file upload initiations/sec/unit (5,000/min/unit) |
-| Direct methods<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/sec/unit<sup>2</sup> | 
-| Query's | 20/min/unit | 20/min/unit | 1,000/min/unit |
-| Twin (device and module) reads<sup>1</sup> | 100/sec | Higher of 100/sec or 10/sec/unit | 500/sec/unit |
-| Twin updates (device and module)<sup>1</sup> | 50/sec | Higher of 50/sec or 5/sec/unit | 250/sec/unit |
-| Jobs operations<sup>1</sup> <br/> (maken, bijwerken, weergeven, verwijderen) | 1.67/sec/unit (100/min/unit) | 1.67/sec/unit (100/min/unit) | 83.33/sec/unit (5,000/min/unit) |
-| Jobs device operations<sup>1</sup> <br/> (update twin, invoke direct method) | 10/sec | Higher of 10/sec or 1/sec/unit | 50/sec/unit |
-| Configurations and edge deployments<sup>1</sup> <br/> (maken, bijwerken, weergeven, verwijderen) | 0.33/sec/unit (20/min/unit) | 0.33/sec/unit (20/min/unit) | 0.33/sec/unit (20/min/unit) |
-| Device stream initiation rate<sup>1</sup> | 5 new streams/sec | 5 new streams/sec | 5 new streams/sec |
-| Maximum number of concurrently connected device streams<sup>1</sup> | 50 | 50 | 50 |
-| Maximum device stream data transfer<sup>1</sup> (aggregate volume per day) | 300 MB | 300 MB | 300 MB |
+| [Identiteits register bewerkingen](#identity-registry-operations-throttle) (maken, ophalen, weer geven, bijwerken, verwijderen) | 1.67 per seconde per eenheid (100 per minuut/eenheid) | 1.67 per seconde per eenheid (100 per minuut/eenheid) | 83.33 per seconde per eenheid (5000/min per eenheid) |
+| [Nieuwe verbindingen voor apparaten](#device-connections-throttle) (deze limiet geldt voor de frequentie van _nieuwe verbindingen_, niet het totale aantal verbindingen) | Hoger van 100 per seconde of 12 per seconde per eenheid <br/> Twee S1-eenheden zijn bijvoorbeeld 2\*12 = 24 nieuwe verbindingen per seconde, maar u hebt ten minste 100 nieuwe verbindingen per seconde over uw eenheden. Met negen S1-eenheden hebt u 108 nieuwe verbindingen per seconde (9\*12) in uw eenheden. | 120 nieuwe verbindingen per seconde per eenheid | 6\.000 nieuwe verbindingen per seconde per eenheid |
+| Apparaat-naar-cloud verzendt | Meer dan 100 verzend bewerkingen per seconde of 12 verzend bewerkingen per seconde/eenheid <br/> Twee S1-eenheden zijn bijvoorbeeld 2\*12 = 24 per seconde, maar u hebt ten minste 100 verzend bewerkingen per seconde over uw eenheden. Met negen S1-eenheden hebt u 108 verzend bewerkingen per seconde (9\*12) in uw eenheden. | 120 verzend bewerkingen per seconde per eenheid | 6\.000 verzend bewerkingen per seconde per eenheid |
+| Verzenden van Cloud naar apparaat<sup>1</sup> | 1,67 verzend bewerkingen per seconde/eenheid (100 berichten/minuut/eenheid) | 1,67 verzend bewerkingen per seconde/eenheid (100 verzend bewerkingen per minuut/eenheid) | 83,33 verzend bewerkingen per seconde/eenheid (5.000 verzend bewerkingen per minuut/eenheid) |
+| Cloud-naar-apparaat ontvangt<sup>1</sup> <br/> (alleen wanneer het apparaat HTTPS gebruikt)| 16,67 receive-bewerkingen per seconde/eenheid (1.000-ontvangst bewerkingen/min/eenheid) | 16,67 receive-bewerkingen per seconde/eenheid (1.000-ontvangst bewerkingen/min/eenheid) | 833,33 receive-bewerkingen per seconde/eenheid (50.000-ontvangst bewerkingen/min/eenheid) |
+| Bestand uploaden | 1,67 initiëringen van het uploaden van bestanden per seconde per eenheid (100/min/eenheid) | 1,67 initiëringen van het uploaden van bestanden per seconde per eenheid (100/min/eenheid) | 83,33 initiëringen van het uploaden van bestanden per seconde per eenheid (5000/min per eenheid) |
+| Directe methoden<sup>1</sup> | 160KB per seconde/eenheid<sup>2</sup> | 480KB per seconde/eenheid<sup>2</sup> | 24MB per seconde/eenheid<sup>2</sup> | 
+| Query's | 20 per minuut/eenheid | 20 per minuut/eenheid | 1000/min per eenheid |
+| Dubbele Lees bewerkingen (apparaat en module)<sup>1</sup> | 100 per seconde | Hoger van 100 per seconde of 10 per seconde per eenheid | 500 per seconde per eenheid |
+| Dubbele updates (apparaat en module)<sup>1</sup> | 50 per seconde | Meer dan 50 per seconde of 5 per seconde per eenheid | 250/sec/unit |
+| Taak bewerkingen<sup>1</sup> <br/> (maken, bijwerken, weergeven, verwijderen) | 1.67 per seconde per eenheid (100 per minuut/eenheid) | 1.67 per seconde per eenheid (100 per minuut/eenheid) | 83.33 per seconde per eenheid (5000/min per eenheid) |
+| Bewerkingen voor taken apparaat<sup>1</sup> <br/> (update dubbele, direct-methode aanroepen) | 10 per seconde | Hoger van 10 per seconde of 1 per seconde per eenheid | 50 per seconde per eenheid |
+| Configuraties en Edge-implementaties<sup>1</sup> <br/> (maken, bijwerken, weergeven, verwijderen) | 0.33 per seconde per eenheid (20 per minuut/eenheid) | 0.33 per seconde per eenheid (20 per minuut/eenheid) | 0.33 per seconde per eenheid (20 per minuut/eenheid) |
+| Start frequentie van Device stream<sup>1</sup> | 5 nieuwe streams per seconde | 5 nieuwe streams per seconde | 5 nieuwe streams per seconde |
+| Maxi maal aantal gelijktijdig verbonden apparaat stromen<sup>1</sup> | 50 | 50 | 50 |
+| Maximale stroom voor gegevens overdracht van apparaatgegevens<sup>1</sup> (samengevoegd volume per dag) | 300 MB | 300 MB | 300 MB |
 
-<sup>1</sup>This feature is not available in the basic tier of IoT Hub. For more information, see [How to choose the right IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>Throttling meter size is 4 KB.
+<sup>1</sup> Deze functie is niet beschikbaar in de laag basis van IoT Hub. Zie [de juiste IOT hub kiezen](iot-hub-scaling.md)voor meer informatie. <br/><sup>2</sup> De grootte van de beperkings meter is 4 KB.
 
-### <a name="throttling-details"></a>Throttling Details
+### <a name="throttling-details"></a>Beperkings Details
 
-* The meter size determines at what increments your throttling limit is consumed. If your direct call's payload is between 0 and 4 KB, it is counted as 4 KB. You can make up to 40 calls per second per unit before hitting the limit of 160 KB/sec/unit.
+* De meter grootte bepaalt op welke stappen uw beperkings limiet wordt verbruikt. Als de nettolading van uw directe oproep tussen 0 en 4 KB ligt, wordt deze geteld als 4 KB. U kunt Maxi maal 40 aanroepen per seconde per eenheid maken voordat u de limiet van 160 KB per seconde per eenheid aankomt.
 
-   Similarly, if your payload is between 4 KB and 8 KB, each call accounts for 8 KB and you can make up to 20 calls per second per unit before hitting the max limit.
+   Op dezelfde manier geldt dat als uw nettolading tussen 4 KB en 8 KB ligt, elke oproep account voor 8 KB en u Maxi maal 20 aanroepen per seconde per eenheid mag maken voordat de maximum limiet wordt bereikt.
 
-   Finally, if your payload size is between 156KB and 160 KB, you'll be able to make only 1 call per second per unit in your hub before hitting the limit of 160 KB/sec/unit.
+   Ten slotte, als de grootte van de nettolading tussen 156KB en 160 KB ligt, kunt u slechts één oproep per seconde per eenheid in uw hub maken voordat u de limiet van 160 KB per seconde/eenheid aanroept.
 
-*  For *Jobs device operations (update twin, invoke direct method)* for tier S2, 50/sec/unit only applies to when you invoke methods using jobs. If you invoke direct methods directly, the original throttling limit of 24 MB/sec/unit (for S2) applies.
+*  Voor *bewerkingen voor taken apparaten (update dubbele, directe methode aanroepen)* voor tier S2 geldt dat 50 per seconde per eenheid alleen van toepassing is wanneer u methoden aanroept met behulp van taken. Als u rechtstreeks directe methoden aanroept, geldt de oorspronkelijke beperkings limiet van 24 MB per seconde per eenheid (voor S2).
 
-*  **Quota** is the aggregate number of messages you can send in your hub *per day*. You can find your hub's quota limit under the column **Total number of messages /day** on the [IoT Hub pricing page](https://azure.microsoft.com/pricing/details/iot-hub/).
+*  **Quota** is het totale aantal berichten dat *per dag*in uw hub kan worden verzonden. U kunt de quotum limiet van uw hub vinden onder het kolom **Totaal aantal berichten/dag** op de [pagina met IOT hub prijzen](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-*  Your cloud-to-device and device-to-cloud throttles determine the maximum *rate* at which you can send messages -- number of messages irrespective of 4 KB chunks. Each message can be up to 256 KB which is the [maximum message size](iot-hub-devguide-quotas-throttling.md#other-limits).
+*  De beperkings limieten voor Cloud-naar-apparaat-en apparaat-naar-Cloud bepalen *het maximum aantal* berichten dat kan worden verzonden, ongeacht de 4 KB-segmenten. Elk bericht kan Maxi maal 256 KB groot zijn. Dit is de [maximale bericht grootte](iot-hub-devguide-quotas-throttling.md#other-limits).
 
-*  It's a good practice to throttle your calls so that you don't hit/exceed the throttling limits. If you do hit the limit, IoT Hub responds with error code 429 and the client should back-off and retry. These limits are per hub (or in some cases per hub/unit). For more information, refer to [Manage connectivity and reliable messaging/Retry patterns](iot-hub-reliability-features-in-sdks.md#retry-patterns).
+*  Het is een goed idee om uw oproepen te beperken, zodat u de beperkings limieten niet bereikt of overschrijdt. Als u de limiet bereikt, reageert IoT Hub met fout code 429. de client moet er een back-up van maken en het opnieuw proberen. Deze limieten zijn per hub (of in sommige gevallen per hub/eenheid). Raadpleeg [connectiviteit en betrouw bare patronen voor berichten/nieuwe pogingen beheren](iot-hub-reliability-features-in-sdks.md#retry-patterns)voor meer informatie.
 
-### <a name="traffic-shaping"></a>Traffic shaping
+### <a name="traffic-shaping"></a>Verkeers vorming
 
-To accommodate burst traffic, IoT Hub accepts requests above the throttle for a limited time. The first few of these requests are processed immediately. However, if the number of requests continues violate the throttle, IoT Hub starts placing the requests in a queue and processed at the limit rate. This effect is called *traffic shaping*. Furthermore, the size of this queue is limited. If the throttle violation continues, eventually the queue fills up, and IoT Hub starts rejecting requests with `429 ThrottlingException`.
+Om burst-verkeer te kunnen verwerken, worden de aanvragen voor een beperkte tijd boven de gashendel geaccepteerd IoT Hub. De eerste enkele van deze aanvragen worden direct verwerkt. Als het aantal aanvragen echter de vertraging overloopt, IoT Hub begint met het plaatsen van de aanvragen in een wachtrij en verwerkt tegen de limiet snelheid. Dit effect wordt *Traffic Shaping*genoemd. Bovendien is de grootte van deze wachtrij beperkt. Als de fout met de vertraging wordt vervolgd, wordt de wachtrij uiteindelijk opgevuld en IoT Hub wordt het weigeren van aanvragen met `429 ThrottlingException`gestart.
 
-For example, you use a simulated device to send 200 device-to-cloud messages per second to your S1 IoT Hub (which has a limit of 100/sec D2C sends). For the first minute or two, the messages are processed immediately. However, since the device continues to send more messages than the throttle limit, IoT Hub begins to only process 100 messages per second and puts the rest in a queue. You start noticing increased latency. Eventually, you start getting `429 ThrottlingException` as the queue fills up, and the "number of throttle errors" in [IoT Hub's metrics](iot-hub-metrics.md) starts increasing.
+U gebruikt bijvoorbeeld een gesimuleerd apparaat voor het verzenden van 200 apparaat-naar-Cloud-berichten per seconde naar uw S1-IoT Hub (dat een limiet van 100/sec. D2C-verzen ding heeft). Voor de eerste minuut of twee worden de berichten onmiddellijk verwerkt. Omdat het apparaat echter nog steeds meer berichten verzendt dan de beperkings limiet, worden met IoT Hub slechts 100 berichten per seconde verwerkt en wordt de rest in een wachtrij geplaatst. U begint merkt meer latentie. Uiteindelijk gaat u `429 ThrottlingException` ophalen wanneer de wachtrij opvult en het aantal vertragings fouten in de [metrische gegevens](iot-hub-metrics.md) van de IOT hub begint te groeien.
 
-### <a name="identity-registry-operations-throttle"></a>Identity registry operations throttle
+### <a name="identity-registry-operations-throttle"></a>Beperking van de identiteits register bewerkingen
 
-Device identity registry operations are intended for run-time use in device management and provisioning scenarios. Reading or updating a large number of device identities is supported through [import and export jobs](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
+Register bewerkingen voor de apparaat-id zijn bedoeld voor gebruik in runtime in scenario's voor het beheren en inrichten van apparaten. Het lezen of bijwerken van een groot aantal apparaat-id's wordt ondersteund via [import-en export taken](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
 
-### <a name="device-connections-throttle"></a>Device connections throttle
+### <a name="device-connections-throttle"></a>Beperking van Apparaatinstellingen
 
-The *device connections* throttle governs the rate at which new device connections can be established with an IoT hub. The *device connections* throttle does not govern the maximum number of simultaneously connected devices. The *device connections* rate throttle depends on the number of units that are provisioned for the IoT hub.
+De beperking voor het aantal *verbindingen* bepaalt de snelheid waarmee nieuwe verbindingen met een IOT-hub tot stand kunnen worden gebracht. De beperking van het aantal *apparaten* houdt geen rekening met het maximum van de apparaten die tegelijkertijd zijn verbonden. De snelheids beperking van de *apparaat* is afhankelijk van het aantal eenheden dat is ingericht voor de IOT-hub.
 
-For example, if you buy a single S1 unit, you get a throttle of 100 connections per second. Therefore, to connect 100,000 devices, it takes at least 1,000 seconds (approximately 16 minutes). However, you can have as many simultaneously connected devices as you have devices registered in your identity registry.
+Als u bijvoorbeeld één S1-eenheid koopt, krijgt u een beperking van 100 verbindingen per seconde. Om 100.000-apparaten te verbinden, duurt het daarom ten minste 1.000 seconden (ongeveer 16 minuten). U kunt echter net zoveel gelijktijdig verbonden apparaten hebben als apparaten die zijn geregistreerd in uw identiteits register.
 
-## <a name="other-limits"></a>Other limits
+## <a name="other-limits"></a>Andere limieten
 
-IoT Hub enforces other operational limits:
+IoT Hub dwingt andere operationele limieten af:
 
 | Bewerking | Limiet |
 | --------- | ----- |
-| Apparaten | The total number of devices plus modules that can be registered to a single IoT hub is capped at 1,000,000. The only way to increase this limit is to contact [Microsoft Support](https://azure.microsoft.com/support/options/).|
-| File uploads | 10 concurrent file uploads per device. |
-| Jobs<sup>1</sup> | Maximum concurrent jobs is 1 (for Free and S1), 5 (for S2), and 10 (for S3). However, the max concurrent [device import/export jobs](iot-hub-bulk-identity-mgmt.md) is 1 for all tiers. <br/>Job history is retained up to 30 days. |
-| Additional endpoints | Paid SKU hubs may have 10 additional endpoints. Free SKU hubs may have one additional endpoint. |
-| Message routing queries | Paid SKU hubs may have 100 routing queries. Free SKU hubs may have five routing queries. |
-| Berichtverrijkingen | Paid SKU hubs can have up to 10 message enrichments. Free SKU hubs can have up to 2 message enrichments.|
-| Device-to-cloud messaging | Maximum message size 256 KB |
-| Cloud-to-device messaging<sup>1</sup> | Maximum message size 64 KB. Maximum pending messages for delivery is 50 per device. |
-| Direct method<sup>1</sup> | Maximum direct method payload size is 128 KB. |
-| Automatic device configurations<sup>1</sup> | 100 configurations per paid SKU hub. 20 configurations per free SKU hub. |
-| IoT Edge automatic deployments<sup>1</sup> | 20 modules per deployment. 100 deployments per paid SKU hub. 10 deployments per free SKU hub. |
-| Twins<sup>1</sup> | Maximum size of desired properties and reported properties sections are 32 KB each. Maximum size of tags section is 8 KB. |
+| Apparaten | Het totale aantal apparaten plus modules dat kan worden geregistreerd voor één IoT-hub, is beperkt tot 1.000.000. De enige manier om deze limiet te verhogen, is om contact op te nemen met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).|
+| Uploaden van bestanden | 10 gelijktijdige uploads van bestanden per apparaat. |
+| Taken<sup>1</sup> | Maximum aantal gelijktijdige taken is 1 (gratis en S1), 5 (voor S2) en 10 (voor S3). Het maximum aantal gelijktijdige [import/export-taken voor apparaten](iot-hub-bulk-identity-mgmt.md) is echter 1 voor alle lagen. <br/>De taak geschiedenis wordt Maxi maal 30 dagen bewaard. |
+| Extra eind punten | Betaalde SKU hubs kunnen 10 extra eind punten hebben. Gratis SKU-hubs kunnen één extra eind punt hebben. |
+| Bericht routering query's | Betaalde SKU-hubs hebben mogelijk 100 routerings query's. Gratis SKU-hubs kunnen vijf routerings query's hebben. |
+| Berichtverrijkingen | Betaalde SKU hubs kunnen Maxi maal 10 bericht verrijkingen hebben. Gratis SKU-hubs kunnen Maxi maal 2 bericht verrijkingen hebben.|
+| Apparaat-naar-Cloud-berichten | Maximale bericht grootte 256 KB |
+| Cloud-naar-apparaat-berichten<sup>1</sup> | Maximale bericht grootte van 64 KB. Maximum aantal in behandeling zijnde berichten voor levering is 50 per apparaat. |
+| Directe methode<sup>1</sup> | De maximale grootte van de directe methode lading is 128 KB. |
+| Automatische configuratie van apparaten<sup>1</sup> | 100 configuraties per betaalde SKU-hub. 20 configuraties per gratis SKU-hub. |
+| Automatische implementaties IoT Edge<sup>1</sup> | 20 modules per implementatie. 100 implementaties per betaalde SKU-hub. 10 implementaties per gratis SKU-hub. |
+| Apparaatdubbels<sup>1</sup> | De sectie maximale grootte van gewenste eigenschappen en gerapporteerde eigenschappen is 32 KB. De sectie maximum grootte van tags is 8 KB. |
 
-<sup>1</sup>This feature is not available in the basic tier of IoT Hub. For more information, see [How to choose the right IoT Hub](iot-hub-scaling.md).
+<sup>1</sup> Deze functie is niet beschikbaar in de laag basis van IoT Hub. Zie [de juiste IOT hub kiezen](iot-hub-scaling.md)voor meer informatie.
 
-## <a name="increasing-the-quota-or-throttle-limit"></a>Increasing the quota or throttle limit
+## <a name="increasing-the-quota-or-throttle-limit"></a>De limiet voor quotum of vertraging verhogen
 
-At any given time, you can increase quotas or throttle limits by [increasing the number of provisioned units in an IoT hub](iot-hub-upgrade.md).
+U kunt op elk gewenst moment quota's of bandbreedte beperkingen verhogen door [het aantal ingerichte eenheden in een IOT-hub te verhogen](iot-hub-upgrade.md).
 
 ## <a name="latency"></a>Latentie
 
-IoT Hub strives to provide low latency for all operations. However, due to network conditions and other unpredictable factors it cannot guarantee a certain latency. When designing your solution, you should:
+IoT Hub streeft ernaar lage latentie te bieden voor alle bewerkingen. Vanwege netwerk omstandigheden en andere onvoorspelbare factoren kan er echter geen enkele latentie worden gegarandeerd. Bij het ontwerpen van uw oplossing moet u het volgende doen:
 
-* Avoid making any assumptions about the maximum latency of any IoT Hub operation.
-* Provision your IoT hub in the Azure region closest to your devices.
-* Consider using Azure IoT Edge to perform latency-sensitive operations on the device or on a gateway close to the device.
+* Vermijd het nemen van veronderstellingen over de maximale latentie van een IoT Hub bewerking.
+* Richt uw IoT-hub in de Azure-regio die het dichtst bij uw apparaten ligt.
+* Overweeg het gebruik van Azure IoT Edge om latentie gevoelige bewerkingen uit te voeren op het apparaat of op een gateway dicht bij het apparaat.
 
-Multiple IoT Hub units affect throttling as described previously, but do not provide any additional latency benefits or guarantees.
+Meerdere IoT Hub eenheden beïnvloeden de beperking zoals eerder beschreven, maar bieden geen extra latentie voordelen of-garanties.
 
-If you see unexpected increases in operation latency, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
+Als er onverwachte toename van de bewerkings latentie wordt weer geven, neemt u contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-For an in-depth discussion of IoT Hub throttling behavior, see the blog post [IoT Hub throttling and you](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
+Zie het blog bericht [IOT hub beperking en u](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)voor een diep gaande bespreking van IOT hub beperkings gedrag.
 
-Other reference topics in this IoT Hub developer guide include:
+Andere naslag onderwerpen in deze IoT Hub ontwikkelaars handleiding zijn:
 
 * [IoT Hub-eindpunten](iot-hub-devguide-endpoints.md)

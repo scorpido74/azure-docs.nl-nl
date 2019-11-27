@@ -205,7 +205,7 @@ U kunt [de waarschuwingen maken](https://docs.microsoft.com/azure/log-analytics/
 | Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Aantal resultaten > 0   | Wanneer de spuit stuk een trage consumenten waarschuwing van loggregator ontvangt, wordt de **slowConsumerAlert** -ValueMetric naar Azure monitor-logboeken verzonden. |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Aantal resultaten > 0   | Als het Delta aantal verloren gebeurtenissen een drempel waarde bereikt, betekent dit dat de spuit stuk mogelijk een probleem heeft dat wordt uitgevoerd. |
 
-## <a name="scale"></a>Schalen
+## <a name="scale"></a>Schaal
 
 U kunt de spuit stuk en de loggregator schalen.
 
@@ -220,7 +220,7 @@ Als u de spuit stuk wilt uitbreiden, gebruikt u apps beheren of de CF CLI om de 
 Loggregator verzendt een **LGR** -logboek bericht om problemen met het logboek registratie proces aan te geven. U kunt de waarschuwing bewaken om te bepalen of de loggregator omhoog moet worden geschaald.
 U kunt de loggregator omhoog schalen door de buffer grootte van Doppler te verhogen of extra Doppler server-instanties toe te voegen in het CF-manifest. Zie [de richt lijnen voor het schalen van de loggregator](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling)voor meer informatie.
 
-## <a name="update"></a>Update
+## <a name="update"></a>Bijwerken
 
 Als u de spuit stuk wilt bijwerken met een nieuwere versie, downloadt u de nieuwe spuit versie, volgt u de stappen in de sectie ' spuit stuk implementeren ' en pusht u de toepassing opnieuw.
 

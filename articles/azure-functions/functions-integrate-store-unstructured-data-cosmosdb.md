@@ -1,5 +1,5 @@
 ---
-title: Store unstructured data using Azure Cosmos DB and Functions
+title: Ongestructureerde gegevens opslaan met behulp van Azure Cosmos DB en functies
 description: Ongestructureerde gegevens opslaan met behulp van Azure Functions en Cosmos DB
 ms.topic: quickstart
 ms.date: 10/01/2018

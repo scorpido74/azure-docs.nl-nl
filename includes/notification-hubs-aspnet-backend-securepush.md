@@ -11,10 +11,10 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260711"
 ---
-## <a name="webapi-project"></a>WebAPI Project
+## <a name="webapi-project"></a>WebAPI-project
 
-1. In Visual Studio, open the **AppBackend** project that you created in the **Notify Users** tutorial.
-2. In Notifications.cs, replace the whole **Notifications** class with the following code. Be sure to replace the placeholders with your connection string (with full access) for your notification hub, and the hub name. You can obtain these values from the [Azure portal](https://portal.azure.com). This module now represents the different secure notifications that will be sent. In a complete implementation, the notifications will be stored in a database; for simplicity, in this case we store them in memory.
+1. Open in Visual Studio het **project appbackend** -project dat u hebt gemaakt in de zelf studie **gebruikers melden** .
+2. Vervang in Notifications.cs de volledige **meldingen** klasse door de volgende code. Zorg ervoor dat u de tijdelijke aanduidingen vervangt door de connection string (met volledige toegang) voor uw notification hub en de naam van de hub. U kunt deze waarden verkrijgen via de [Azure Portal](https://portal.azure.com). Deze module bevat nu de verschillende beveiligde meldingen die worden verzonden. In een volledige implementatie worden de meldingen opgeslagen in een Data Base. ter vereenvoudiging: in dit geval slaan we ze op in het geheugen.
    
    ```csharp
     public class Notification
@@ -56,7 +56,7 @@ ms.locfileid: "74260711"
     }
     ```
 
-1. In NotificationsController.cs, replace the code inside the **NotificationsController** class definition with the following code. This component implements a way for the device to retrieve the notification securely, and also provides a way (for the purposes of this tutorial) to trigger a secure push to your devices. Note that when sending the notification to the notification hub, we only send a raw notification with the ID of the notification (and no actual message):
+1. Vervang in NotificationsController.cs de code in de **Notifications controller** -klassedefinitie door de volgende code. Dit onderdeel implementeert een manier waarop het apparaat de melding veilig kan ophalen en biedt ook een manier (in het kader van deze zelf studie) om een beveiligde push naar uw apparaten te activeren. Houd er rekening mee dat bij het verzenden van de melding naar de notification hub alleen een onbewerkte melding met de ID van de melding (en geen echt bericht) wordt verzonden:
    
    ```csharp
     public NotificationsController()
@@ -92,7 +92,7 @@ ms.locfileid: "74260711"
     }
     ```
 
-Note that the `Post` method now does not send a toast notification. It sends a raw notification that contains only the notification ID, and not any sensitive content. Also, make sure to comment the send operation for the platforms for which you do not have credentials configured on your notification hub, as they will result in errors.
+Houd er rekening mee dat de methode `Post` nu geen pop-upmelding verzendt. Er wordt een onbewerkte melding verzonden die alleen de meldings-ID en geen gevoelige inhoud bevat. Zorg er ook voor dat u de verzend bewerking bijwerkt voor de platforms waarvoor u geen referenties hebt geconfigureerd op uw notification hub, omdat deze fouten zullen veroorzaken.
 
-1. Now we will re-deploy this app to an Azure Website in order to make it accessible from all devices. Klik met de rechtermuisknop op het project **AppBackend** en selecteer **Publiceren**.
-2. Select Azure Website as your publish target. Sign in with your Azure account and select an existing or new Website, and make a note of the **destination URL** property in the **Connection** tab. We will refer to this URL as your *backend endpoint* later in this tutorial. Klik op **Publish**.
+1. Nu gaan we deze app opnieuw implementeren op een Azure-website om deze toegankelijk te maken vanaf alle apparaten. Klik met de rechtermuisknop op het project **AppBackend** en selecteer **Publiceren**.
+2. Selecteer de Azure-website als uw publicatie doel. Meld u aan met uw Azure-account en selecteer een bestaande of nieuwe website en noteer de eigenschap **doel-URL** op het tabblad **verbinding** . Verderop in deze zelf studie wordt naar deze URL verwezen als *back-end-eind punt* . Klik op **Publish**.

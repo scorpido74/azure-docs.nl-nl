@@ -33,10 +33,10 @@ Microsoft Flow stelt kantoormedewerkers in staat om eenvoudige integraties tot s
 
 Raadpleeg de volgende tabel om te bepalen of Microsoft Flow of Logic Apps het meest geschikt is voor een bepaalde integratie:
 
-|  | Microsoft Flow | Logic Apps |
+|  | Microsoft Flow | Logische apps |
 | --- | --- | --- |
 | Gebruikers |Kantoorpersoneel, zakelijke gebruikers, SharePoint-beheerders |Professionele integrators en ontwikkelaars, IT-professionals |
-| Scenario's |Selfservice |Geavanceerde integraties |
+| Scenario's |Self service |Geavanceerde integraties |
 | Ontwerpomgeving |In browser en mobiele app, alleen UI |In browser en [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [codeweergave](../logic-apps/logic-apps-author-definitions.md) beschikbaar |
 | Application lifecycle management (ALM) |Ontwerpen en testen in niet-productieomgevingen, niveau verhogen naar productie wanneer u klaar bent |Azure DevOps: broncodebeheer, testen, ondersteuning, automatisering en beheersbaarheid in [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
 | Beheerervaring |Microsoft Flow omgevingen en beleid voor preventie van gegevens verlies (DLP) beheren, licenties volgen: [Microsoft flow beheer centrum](https://admin.flow.microsoft.com) |Resource groepen, verbindingen, Toegangs beheer en logboek registratie beheren: [Azure Portal](https://portal.azure.com) |
@@ -50,7 +50,7 @@ Met Azure Functions ontwikkelt u indelingen door code te schrijven en de [extens
 
 U kunt services combineren en matchen als u een indeling bouwt, waarbij u functies aanroept vanuit logische apps en logische apps aanroept vanuit functies. U kunt kiezen hoe u elke indeling bouwt op basis van de mogelijkheden van de services of van uw persoonlijke voorkeur. De volgende tabel geeft een overzicht van enkele van de belangrijkste verschillen:
 
-|  | Durable Functions | Logic Apps |
+|  | Durable Functions | Logische apps |
 | --- | --- | --- |
 | Ontwikkeling | Code-first (imperatief) | Designer-first (declaratief) |
 | Connectiviteit | [Circa 15 bindingstypen](functions-triggers-bindings.md#supported-bindings); code schrijven voor aangepaste bindingen | [Grote verzameling connectors](../connectors/apis-list.md), [Enterprise Library Integration Pack voor B2B-scenario's](../logic-apps/logic-apps-enterprise-integration-overview.md); [aangepaste bindingen ontwikkelen](../logic-apps/custom-connector-overview.md) |

@@ -1,6 +1,6 @@
 ---
-title: Azure Functions Runtime Overview
-description: Overview of the Azure Functions Runtime Preview
+title: Overzicht van Azure Functions-runtime
+description: Overzicht van de Azure Functions-runtime preview
 author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
@@ -12,40 +12,40 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226635"
 ---
-# <a name="azure-functions-runtime-overview-preview"></a>Azure Functions Runtime Overview (preview)
+# <a name="azure-functions-runtime-overview-preview"></a>Overzicht van Azure Functions-runtime (preview-versie)
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-The Azure Functions Runtime (preview) provides a new way for you to take advantage of the simplicity and flexibility of the Azure Functions programming model on-premises. Built on the same open source roots as Azure Functions, Azure Functions Runtime is deployed on-premises to provide a nearly identical development experience as the cloud service.
+De Azure Functions-runtime (preview) biedt een nieuwe manier om u te laten profiteren van de eenvoud en flexibiliteit van het Azure Functions programmeer model on-premises. Azure Functions-runtime is gebouwd op dezelfde open source-basis als Azure Functions, en is on-premises geïmplementeerd om een vrijwel identieke ontwikkel ervaring te bieden als de Cloud service.
 
-![Azure Functions Runtime Preview Portal][1]
+![Preview-Portal Azure Functions-runtime][1]
 
-The Azure Functions Runtime provides a way for you to experience Azure Functions before committing to the cloud. In this way, the code assets you build can then be taken with you to the cloud when you migrate.  The runtime also opens up new options for you, such as using the spare compute power of your on-premises computers to run batch processes overnight. You can also use devices within your organization to conditionally send data to other systems, both on-premises and in the cloud.
+De Azure Functions-runtime biedt u een manier om Azure Functions te ervaren voordat u de Cloud doorvoert. Op deze manier kunnen de code assets die u bouwt samen met u bij de cloud worden uitgevoerd wanneer u migreert.  De runtime opent ook nieuwe opties voor u, zoals het gebruik van de reserve computer capaciteit van uw on-premises computers voor het uitvoeren van batch processen voor elke dag. U kunt ook apparaten binnen uw organisatie gebruiken om voorwaardelijk gegevens naar andere systemen, zowel on-premises als in de Cloud, te verzenden.
 
-The Azure Functions Runtime consists of two pieces:
+De Azure Functions-runtime bestaat uit twee delen:
 
-* Azure Functions Runtime Management Role
-* Azure Functions Runtime Worker Role
+* Azure Functions-runtime-beheer functie
+* Rol van Azure Functions-runtime-werk nemer
 
-## <a name="azure-functions-management-role"></a>Azure Functions Management Role
+## <a name="azure-functions-management-role"></a>Azure Functions-beheer functie
 
-The Azure Functions Management Role provides a host for the management of your Functions on-premises. This role performs the following tasks:
+De Azure Functions-beheer functie biedt een host voor het beheer van uw functies on-premises. Deze rol voert de volgende taken uit:
 
-* Hosting of the Azure Functions Management Portal, which is the same one you see in the [Azure portal](https://portal.azure.com). The portal provides a consistent experience that lets you develop your functions in the same way as you would in the Azure portal.
-* Distributing functions across multiple Functions workers.
-* Providing a publishing endpoint so that you can publish your functions direct from Microsoft Visual Studio by downloading and importing the publishing profile.
+* Het hosten van de Azure Functions Beheerportal is hetzelfde als die in de [Azure Portal](https://portal.azure.com). De portal biedt een consistente ervaring waarmee u uw functies op dezelfde manier kunt ontwikkelen als in de Azure Portal.
+* Functies worden gedistribueerd over meerdere functions-werk rollen.
+* Een publicatie-eind punt bieden zodat u uw functies direct vanuit micro soft Visual Studio kunt publiceren door het publicatie profiel te downloaden en te importeren.
 
-## <a name="azure-functions-worker-role"></a>Azure Functions Worker Role
+## <a name="azure-functions-worker-role"></a>Rol van Azure Functions-werk nemer
 
-The Azure Functions Worker Roles are deployed in Windows Containers and are where your function code executes.  You can deploy multiple Worker Roles throughout your organization and this option is a key way in which customers can make use of spare compute power.  One example of where spare compute exists in many organizations is machines powered on constantly but not being used for large periods of time.
+De Azure Functions werk rollen worden geïmplementeerd in Windows-containers en zijn waar uw functie code wordt uitgevoerd.  U kunt meerdere werk rollen in uw organisatie implementeren en deze optie is een belang rijke manier waarop klanten gebruik kunnen maken van de reserve computer capaciteit.  Een voor beeld van het bestaan van een reserve Compute in veel organisaties is machines die voortdurend worden ingeschakeld, maar niet voor grote Peri Oden worden gebruikt.
 
-## <a name="minimum-requirements"></a>Minimum Requirements
+## <a name="minimum-requirements"></a>Minimale vereisten
 
-To get started with the Azure Functions Runtime, you must have a machine with Windows Server 2016 or Windows 10 Creators Update with access to a SQL Server instance.
+Als u aan de slag wilt gaan met de Azure Functions-runtime, moet u beschikken over een computer met Windows Server 2016 of Windows 10 Crea tors update met toegang tot een SQL Server-exemplaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Install the [Azure Functions Runtime preview](https://aka.ms/azafrdoc)
+De [Azure functions-runtime preview](https://aka.ms/azafrdoc) installeren
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

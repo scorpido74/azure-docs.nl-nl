@@ -93,7 +93,7 @@ De eerste stap is het maken van een Azure-functie voor het verwerken van de waar
     |---|---|---|
     |**Scenario**|Experimenteel|Type scenario|
     |**Een naam voor de functie opgeven**|AlertPacketCapturePowerShell|De naam van de functie|
-    |**Verificatieniveau**|Functie|Autorisatie niveau voor de functie|
+    |**Verificatieniveau**|Function|Autorisatie niveau voor de functie|
 
 ![Functions-voor beeld][functions1]
 
@@ -150,7 +150,7 @@ Als u Network Watcher Power shell-cmdlets wilt gebruiken, moet u de meest recent
 
     ![Power Shell-bestanden][functions7]
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Als u de Power shell-cmdlets wilt gebruiken, moet u zich verifiëren. U kunt verificatie configureren in de functie-app. Als u verificatie wilt configureren, moet u omgevings variabelen configureren en een versleuteld sleutel bestand uploaden naar de functie-app.
 

@@ -1,6 +1,6 @@
 ---
-title: Use Cloudyn reports in Azure | Microsoft Docs
-description: This article describes the purpose of the Cloudyn reports that are included in the Cloudyn portal to help you effectively use them.
+title: Cloudyn-rapporten gebruiken in Azure | Microsoft Docs
+description: Dit artikel wordt beschreven voor het doel van de Cloudyn-rapporten die zijn opgenomen in de Cloudyn-portal kunt u ze effectief te gebruiken.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,504 +17,504 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74218861"
 ---
-# <a name="reports-available-in-the-cloudyn-portal"></a>Reports available in the Cloudyn portal
+# <a name="reports-available-in-the-cloudyn-portal"></a>Rapporten die beschikbaar zijn in de Cloudyn-portal
 
-This article describes the purpose of the Cloudyn reports that are included in the Cloudyn portal. It also describes how you can effectively use the reports. Most reports are intuitive and have a uniform look and feel. Most of the actions that you can do in one report, you can also do in other reports. For an overview about how to use Cloudyn reports, including how to customize and save or to schedule reports, see [Understanding cost reports](understanding-cost-reports.md).
+Dit artikel wordt beschreven voor het doel van de Cloudyn-rapporten die zijn opgenomen in de Cloudyn-portal. Ook wordt beschreven hoe u de rapporten effectief kunt gebruiken. De meeste rapporten zijn intuïtief en een uniform uiterlijk hebben. De meeste van de acties die u in één rapport doen kunt, kunt u ook doen in andere rapporten. Zie [informatie over kosten rapporten](understanding-cost-reports.md)voor een overzicht van het gebruik van Cloudyn-rapporten, zoals het aanpassen en opslaan of het plannen van rapporten.
 
 Azure Cost Management biedt vergelijkbare functionaliteit als Cloudyn. Azure Cost Management is een systeemeigen Azure-oplossing voor kostenbeheer. Het helpt u kosten te analyseren, budgetten te maken en beheren, gegevens te exporteren en aanbevelingen voor optimalisatie te bekijken en er actie op te ondernemen om geld te besparen. Zie [Azure Cost Management](overview-cost-mgt.md) voor meer informatie.
 
-## <a name="report-types"></a>Report types
+## <a name="report-types"></a>Rapporttypen
 
-There are three types of Cloudyn reports:
+Er zijn drie typen van Cloudyn-rapporten:
 
-- Over-time reports. For example, the Cost Over Time report. Over-time reports show a time series of data over a selected interval with a predefined resolution and show a weekly resolution for last two months. You can use grouping and filtering to zoom in to various data points.
-  - Over-time reports can help you view trends and detect spikes or anomalies.
-- Analysis reports. For example, the Cost Analysis report. These reports show aggregated data over a period that you define and allow grouping and filtering on the data.
-  - Analysis reports can help you view spikes and determine anomaly root-causes and to show you a granular break-down of your data.
-- Tabular reports. You can view any report as a table, but some reports are viewed only as a table. These reports provide you detailed lists of items.
-  - Recommendations are tabular reports—there are no visualizations for recommendations. However, you can visualize recommendation results. For example, savings over time.
-  - Tabular reports are useful as lists of actions or for data export for further processing. For example, a chargeback report.
+- Te veel tijd rapporten. Bijvoorbeeld, het rapport Cost Over Time. Te veel tijd rapporten weergeven van een tijdreeks van gegevens tijdens een interval van de geselecteerde met een resolutie van vooraf gedefinieerde en een wekelijkse resolutie weergeven voor de laatste twee maanden. U kunt groeperen en filteren om in te zoomen op verschillende gegevenspunten.
+  - Te veel tijd rapporten kunt u trends weergeven en pieken en afwijkingen te detecteren.
+- Van analyserapporten. Bijvoorbeeld het rapport kosten analyse. Deze rapporten weergeven cumulatieve gegevens gedurende een periode van dat u definieert en groeperen en filteren op de gegevens toestaan.
+  - Analyse van rapporten kunt u weergeven van pieken en anomaliedetectie-oorzaken te bepalen en om u een gedetailleerde uitsplitsing van uw gegevens weer te geven.
+- Rapporten in tabelvorm. U kunt een rapport als een tabel weergeven, maar sommige rapporten worden weergegeven alleen als een tabel. Deze rapporten bieden gedetailleerde van lijsten met items.
+  - Aanbevelingen zijn in tabelvorm rapporten: Er zijn geen visualisaties voor aanbevelingen. U kunt echter aanbeveling resultaten te visualiseren. Bijvoorbeeld, besparingen na verloop van tijd.
+  - In tabelvorm rapporten zijn nuttig als u een lijst met acties of voor gegevens exporteren voor verdere verwerking. Bijvoorbeeld: een rapport terugstorting.
 
-Cost reports show either _actual_ or _amortized_ costs.
+In kosten rapporten worden de _werkelijke_ of _afgeschreven_ kosten weer gegeven.
 
-Actual cost reports display the payments made during the selected time frame. For example, all one-time fees such as reserved instance (RI) purchases are shown in actual cost reports as spikes in cost.
+Rapport met werkelijke kosten worden de betalingen gedurende de geselecteerde periode weergegeven. Bijvoorbeeld, worden alle eenmalige kosten zoals aankopen van gereserveerde instanties (RI) weergegeven in het rapport met werkelijke kosten als pieken in de kosten.
 
-Amortized cost reports spread one-time fees over a period to which they apply. For example, one-time fees for RI purchases are spread over the reservation term and are not shown as a spike. The amortized view is the only way to see true trends and make cost projections.
+Afgeschreven Kostenrapporten verspreiden eenmalige kosten gedurende een periode van waarop ze van toepassing. Bijvoorbeeld eenmalige kosten voor de aankoop van gereserveerde instanties worden verdeeld over de reserveringstermijn en worden niet weergegeven als een piek. De afgeschreven weergave is de enige manier om te zien waar trends en verwachte kosten.
 
-In some cases, the amortization is presented as a separate report. Examples include the Cost Analysis and Amortized Cost Analysis reports. In other cases, amortization is a report policy such as the Cost Allocation and Cost Analysis reports.
+In sommige gevallen wordt de afschrijving weergegeven als een afzonderlijke rapport. Voorbeelden hiervan zijn de kosten voor analyse en Amortized Cost Analysis rapporten. In andere gevallen is afschrijving een rapport-beleid, zoals de kostentoewijzing en Cost Analysis rapporten.
 
-You can schedule any report for periodic delivery. Cost reports allow setting a threshold, so they're useful for alerts.
+U kunt een rapport voor de levering van periodieke plannen. Kosten rapporten kunnen een drempel instellen, zodat ze handig voor waarschuwingen.
 
-## <a name="cost-analysis-vs-cost-allocation"></a>Cost analysis vs. cost allocation
+## <a name="cost-analysis-vs-cost-allocation"></a>Kostenanalyse versus kostentoewijzing
 
-_Cost analysis_ reports display billing data from your cloud providers. Using the reports, you can group and drill into various data segments itemized from the billing file. The reports enable granular cost navigation across your cloud vendor's raw billing data.
+In rapporten met _kosten analyse_ worden facturerings gegevens van uw cloud providers weer gegeven. Met behulp van de rapporten, kunt u groeperen en inzoomen op verschillende gegevenssegmenten gespecificeerde uit het bestand facturering. De rapporten bieden gedetailleerde kosten navigatie voor onbewerkte factureringsgegevens van de cloudleverancier van uw.
 
-Some _cost analysis_ reports don't group costs by resource tags. And, tag-based billing information only appears in reports after you allocate costs by creating a cost model using [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+Sommige _kosten analyse_ rapporten groeperen geen kosten op resource Tags. Daarnaast worden op labels gebaseerde facturerings gegevens alleen weer gegeven in rapporten nadat u kosten hebt toegewezen door een kosten model te maken met [kosten toewijzing 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-_Cost allocation_ reports are available after you create a cost model using [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). Cloudyn processes cost and billing data and _matches_ the data to the usage and tag data of your cloud accounts. To match the data, Cloudyn requires access to your usage data. If you have accounts that are missing credentials, they are labeled as _uncategorized resources_.
+_Kosten toewijzings_ rapporten zijn beschikbaar nadat u een kosten model hebt gemaakt met behulp van [kosten toewijzing 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). Cloudyn verwerkt kosten-en facturerings gegevens en _komt overeen_ met de gegevens voor het gebruik en de label gegevens van uw Cloud accounts. Cloudyn vereist zodat deze overeenkomt met de gegevens, toegang tot uw gegevens over het gebruik. Als u accounts hebt die geen referenties bevatten, worden deze aangeduid als niet- _gecategoriseerde resources_.
 
 ## <a name="dashboards"></a>Dashboards
 
-Dashboards in Cloudy provide a high-level view of reports. Dashboards are made up of widgets and each widget is essentially a report thumbnail. When you [customize reports](understanding-cost-reports.md#save-and-schedule-reports), you save them to My Reports and they're added to the dashboard. For more information about dashboards, see [View key cost metrics with dashboards](dashboards.md).
+Dashboards in Cloudy bieden een weergave op hoog niveau van rapporten. Dashboards bestaan uit widgets en elke widget is in feite de miniatuur van een rapport. Wanneer u [rapporten aanpast](understanding-cost-reports.md#save-and-schedule-reports), slaat u ze op in mijn rapporten en worden ze toegevoegd aan het dash board. Zie [belang rijke metrische gegevens weer geven met Dash boards](dashboards.md)voor meer informatie over Dash boards.
 
-## <a name="budget-information-in-reports"></a>Budget information in reports
+## <a name="budget-information-in-reports"></a>Budgetgegevens in rapporten
 
-Many Cloudyn reports show budget information after you've manually created one. So reports won't show budget information until you create a budget. For more information, see [Budget Management settings](#budget-management-settings).
+Veel Cloudyn-rapporten weergeven budgetgegevens nadat u deze handmatig hebt gemaakt. Rapporten weergegeven niet zodanig budgetgegevens wanneer u een budget gemaakt. Zie [budget beheer instellingen](#budget-management-settings)voor meer informatie.
 
-## <a name="reports-and-reporting-features"></a>Reports and reporting features
+## <a name="reports-and-reporting-features"></a>Rapporten en reporting-functies
 
-Cloudyn includes the following reports and reporting features.
+Cloudyn bevat de volgende rapporten en rapportage functies.
 
-### <a name="cost-navigator-report"></a>Cost Navigator report
+### <a name="cost-navigator-report"></a>Rapport van kosten Navigator
 
-The Cost Navigator report is a quick way to view your billing consumption using a dashboard view. It has a subset of filters and basic views to immediately show a summarized view of organization's costs. Costs are shown by date. Because the report is intended as an initial view of your costs, it's not as flexible or as comprehensive as many other reports or custom dashboards that you create yourself.
+Het rapport Cost Navigator is een snelle manier om uw facturering gebruik aan de hand van de weergave van een dashboard weer te geven. Er is een subset van filters en basic weergaven om direct een overzichtsweergave van de organisatie kosten weer te geven. Kosten worden weergegeven op datum. Omdat het rapport is bedoeld als een eerste weergave van uw kosten, het is niet zo flexibel of als uitgebreide als veel andere rapporten of aangepaste dashboards die u zelf maakt.
 
-By default, major views in the report show:
+Standaard primaire weergaven in het rapport weergeven:
 
-- Cost over time showing a work week bar chart view. You can change the **Date Range** to change date range bar chart.
-- Expenditures by service, using a pie chart.
-- Resource categorization by tags, using a pie chart.
-- Expenditures by cost entities, using a pie chart.
-- Cost total, per date in a list view.
-
-### <a name="cost-analysis-report"></a>Kostenanalyserapport
-
-The Cost Analysis report is a calculation of showback and chargeback, based on your policy. It aggregates your cloud consumption during a selected time frame, after having applied all allocation rules to your cost. For example, it calculates the costs by tags, reassigns the costs of untagged resources and optionally allocates the utilization of reserved instances.
-
-The policies set in [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in the Cost Analysis report and results are then combined with information from your cloud vendor's raw data.
-
-How is this report calculated? The Cloudyn service ensures allocation retains the integrity of each linked account by applying _account affinity_. Affinity ensures an account that doesn't use a specific service doesn't have any costs of this service allocated to it. The costs accrued in that account remain in that account and are not calculated by the allocation policies. For example, you might have five linked accounts. If only three of them use storage services, then the cost of storage services is only allocated across tags in the three accounts.
-
-Use the Cost Analysis report to:
-
-- Calculate your organization chargeback/showback
-- Categorize all your costs
-- Display an aggregated view of your entire deployment for a specific time frame.
-- View costs by tag categories based on policies created in the cost model.
-
-To use the Cost Analysis report:
-
-1. Select a date range.
-2. Add tags, as needed.
-3. Add groups.
-4. Choose a cost model that you created previously.
-
-### <a name="cost-over-time-report"></a>Rapport met overuren
-
-The Cost over Time report displays the results of cost allocation as time series. It allows you to observe trends and detect irregularities in your deployment. It essentially shows costs distributed over a defined period. The report includes your main cost contributors including ongoing costs and one-time reserved instance fees that are being spent during a selected time frame. Policies set in [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in this report.
-
-Use the Cost Over Time report to:
-
-- See changes over time and which influences change from one day (or date range) to the next.
-- Analyze costs over time for a specific instance.
-- Understand why there was a cost increase for a specific instance.
-
-To use the Cost Over Time report:
-
-1. Select a date range.
-2. Add tags, as needed.
-3. Add groups.
-4. Choose a cost model that you created previously.
-5. Select actual costs or amortized costs.
-6. Choose whether to apply allocation rules to view raw billing data view or to recalculated cost view.
-
-### <a name="actual-cost-analysis-report"></a>Actual Cost Analysis report
-
-The Actual Cost Analysis report shows provider costs with no modifications. It shows your main cost contributors, including ongoing costs and one-time fees.
-
-You can use the report to view cost information for your subscriptions. In the report, Azure subscriptions are shown as **account name** and **account number**. **Linked accounts** show AWS subscriptions. To view per subscription costs, a breakdown for each account, under **Groups**, select the type of subscription that you have.
-
-Use the Actual Cost Analysis report to:
-
-- Analyze and monitor raw provider costs spent during a specified time frame.
-- Schedule a threshold alert.
-- Analyze unmodified costs incurred by your accounts and entities.
-
-### <a name="actual-cost-over-time-report"></a>Actual Cost Over Time report
-
-The Actual Cost Over Time report is a standard cost analysis report distributing cost over a defined time resolution. The report displays spending over time to allow you to observe trends and detect spending irregularities. This report shows your main cost contributors including ongoing costs and one-time reserved instance fees that are being spent during a selected time frame.
-
-Use the Actual Cost Over Time report to:
-
-- See cost trends over time.
-- Find irregularities in cost.
-- Find all cost-related questions related to cloud providers.
-
-### <a name="amortized-cost-reports"></a>Amortized cost reports
-
-This set of amortized cost reports shows linearized non-usage based service fees, or one-time payable costs and spread their cost over time evenly during their lifespan. For example, one-time fees might include:
-
-- Annual support fees
-- Annual security component fees
-- Reserved Instances purchase fees
-- Some Azure Marketplace items
-
-In the billing file, one-time fees are characterized when the service consumption start and end dates (timestamp) have equal values. The Cloudyn service then recognizes them as one-time fees that are amortized. Other consumption-based services with on-demand usage costs are not amortized.
-
-Amortized cost reports include:
-
-- Amortized cost analysis
-- Amortized cost over time
+- Kosten gedurende een periode van een week balk grafiek weergeven. U kunt het **datum bereik** wijzigen om het staaf diagram voor het datum bereik te wijzigen.
+- De uitgaven van de service met behulp van een cirkeldiagram.
+- De categorisatie van de resource op label, met behulp van een cirkeldiagram.
+- De uitgaven van kostentiteiten, met behulp van een cirkeldiagram.
+- Kosten totaal, per datum in een lijst weergeven.
 
 ### <a name="cost-analysis-report"></a>Kostenanalyserapport
 
-The Cost Analysis report provides insight into your cloud consumption and spending during a selected time frame. The policies set in the [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in the Cost Analysis report.
+Het rapport Cost Analysis is een berekening van de showback en chargeback, op basis van uw beleid. Uw cloud-verbruik gedurende een geselecteerde periode na alle toewijzingsregels die worden toegepast op de kosten worden. Bijvoorbeeld, het op label, worden de kosten berekend klikt, gebeurt toewijzing van de kosten van de niet-gecodeerde resources en (optioneel) het gebruik van gereserveerde instanties worden toegewezen.
 
-How does Cloudyn calculate this report?
+De beleids regels die zijn ingesteld in [cost allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) worden gebruikt in het rapport kostprijs analyse en de resultaten worden vervolgens gecombineerd met informatie uit de onbewerkte gegevens van de leverancier van uw Cloud.
 
-Cloudyn ensures that allocation retains the integrity of each linked account by applying _account affinity_. Affinity ensures an account that doesn't use a specific service also doesn't have any costs of this service allocated to it. The costs accrued in that account remain in that account and aren't calculated by the allocation policies. For example, you might have five linked accounts. If only three of them use storage services, then the cost of storage services is only allocated across tags in the three accounts.
+Hoe wordt dit rapport berekend? De Cloudyn-service zorgt ervoor dat toewijzing de integriteit van elk gekoppeld account behoudt door _account affiniteit_toe te passen. Affiniteit zorgt ervoor dat een account die geen gebruik maakt van een specifieke service beschikt niet over de kosten van deze service is toegewezen. De kosten voor dat account in dat account blijven en niet worden berekend door de beleidsregels voor brontoewijzing. Bijvoorbeeld, wellicht u vijf gekoppelde accounts. Als er slechts drie hiervan storage-services gebruiken, klikt u vervolgens de kosten voor storage-services alleen toegewezen voor de labels in de drie accounts.
 
-Use the Cost Analysis report to:
+Het rapport Cost Analysis te gebruiken:
 
-- Display an aggregated view of your entire deployment for a specific time frame.
-- View costs by tag categories based on policies created in the cost model.
+- Uw organisatie terugstorting/showback berekenen
+- Alle uw kosten categoriseren
+- Een samengevoegde weergave van uw volledige implementatie voor een specifiek tijdsbestek.
+- Kosten weergeven door de tag categorieën op basis van beleid dat is gemaakt in het kostenmodel.
+
+Het rapport Cost Analysis gebruiken:
+
+1. Selecteer een datumbereik.
+2. Tags toevoegen, indien nodig.
+3. Groepen toevoegen.
+4. Kies een kostenmodel dat u eerder hebt gemaakt.
 
 ### <a name="cost-over-time-report"></a>Rapport met overuren
 
-The Cost Over Time report displays spending over time so you can spot trends and notice irregularities in your deployment. It essentially shows costs distributed over a defined period. The report includes your main cost contributors including ongoing costs and one-time reserved instance fees that are being spent during a selected time frame. Policies set in [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in this report.
+De kosten op tijd rapport geeft de resultaten van de kostentoewijzing als tijdreeksen. Hiermee kunt u te zien van trends en onregelmatigheden detecteren in uw implementatie. Hier ziet u in feite kosten verdeeld zijn over een opgegeven periode. Het rapport bevat de belangrijkste kostenposten, met inbegrip van doorlopende kosten en de gereserveerde instantie eenmalige kosten die gedurende een geselecteerde periode worden besteed. Beleids regels die zijn ingesteld in [cost allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) worden gebruikt in dit rapport.
 
-Use the Cost Over Time report to:
+Het rapport Cost Over Time te gebruiken:
 
-- See changes over time and which influences change from one day (or date range) to the next.
-- Analyze costs over time for a specific instance.
-- Understand why there was a cost increase for a specific instance.
+- Wijzigingen voor tijd en welke invloed wijzigen van één dag (of datumbereik) in het volgende te zien.
+- Analyseer de kosten na verloop van tijd voor een specifiek exemplaar.
+- Begrijpen waarom er een stijging van de kosten voor een specifiek exemplaar.
 
-### <a name="custom-charges-report"></a>Custom Charges report
+Het rapport Cost Over Time gebruiken:
 
-Enterprise and CSP users often find themselves providing added services to their external or internal customers, in addition to their own cloud resource consumption. You define custom charges for added services or discounts that are added to customer's billing or chargeback reports as custom line items.
+1. Selecteer een datumbereik.
+2. Tags toevoegen, indien nodig.
+3. Groepen toevoegen.
+4. Kies een kostenmodel dat u eerder hebt gemaakt.
+5. Selecteer de werkelijke kosten of afgeschreven kosten.
+6. Kies of u wilt de van toewijzingsregels toepassen op onbewerkte facturering gegevensweergave weergeven of berekend aan kosten weergeven.
 
-Custom service charges reflect services that aren't normally shown in a bill. The custom charges that you create are then shown in Cost reports.
+### <a name="actual-cost-analysis-report"></a>Rapport met werkelijke kostenanalyse
 
-*Custom charges aren't custom pricing*. The list of custom charges doesn't show the different rates that you may be charging. For example, AWS billing charges are displayed just as they are charged.
+Het rapport Actual Cost Analysis toont provider kosten zonder wijzigingen. Hier ziet u de belangrijkste kostenposten, met inbegrip van doorlopende kosten en eenmalige kosten.
 
-To create a custom charge:
+U kunt het rapport gebruiken om gegevens over de kosten voor uw abonnementen weer te geven. In het rapport worden Azure-abonnementen weer gegeven als **account naam** en **account nummer**. Aan **gekoppelde accounts** worden AWS-abonnementen weer gegeven. Als u kosten per abonnement wilt weer geven, moet u voor elk account een uitsplitsing selecteren onder **groepen**, het type abonnement dat u hebt.
 
-1. In **Custom Charges**, click  **Add New**. The _Add New Custom Charge_ dialog box is displayed.
-2. In **Provider Name**, enter the name of the provider.
-3. In **Service Name**, enter the type of service.
-4. In **Description**, add a description for the custom charge.
-5. In **Type**, enter the select  **Percentage** and then in Services dropdown, select the services to include as custom charges in the cost reports.
-6. In **Payment**, select if the charge is a One-Time Fee or Recurring Fee. If the charge is a Recurring Fee, select Amortized if you want the charge to be amortized and select the number of months.
-7. In **Dates**, if a one-time fee is selected, in **Effective Date**, enter the date the charge is paid. If Recurring Fee is selected, enter the date range including start date and the end date for the charge.
-8. In the **Entities tree**, select the entities that you want to apply the charge to and then select **On**.
+Het rapport Actual Cost Analysis te gebruiken:
 
-_When charges are assigned to an entity, users can't change them. Charges that are added by an administrator to a parent entity are read-only._
+- Analyseren en controleren van onbewerkte provider kosten besteed aan het gedurende een opgegeven periode.
+- Plannen van een drempelwaarde voor waarschuwing.
+- Analyseer ongewijzigd kosten in rekening gebracht door uw accounts en entiteiten.
 
-To view custom charges:
+### <a name="actual-cost-over-time-report"></a>Rapport met werkelijke kosten gedurende een periode
 
-Custom charges are shown in Cost reports. For example, open the Actual Cost Analysis report, then under **Extended Filters**, select **Standalone**. Then filter to show **Custom Charges**.
+Het rapport Actual Cost Over Time is een standaardkosten analyserapport kosten distribueren over een vastgesteld tijdvenster resolutie. Het rapport bevat uitgaven gedurende een bepaalde periode kunt u trends observeren en de bestedingslimiet onregelmatigheden detecteren. Dit rapport geeft de belangrijkste kostenposten, met inbegrip van doorlopende kosten en de gereserveerde instantie eenmalige kosten die gedurende een geselecteerde periode worden besteed.
+
+Het rapport Actual Cost Over Time te gebruiken:
+
+- Zie kostentrends na verloop van tijd.
+- Onregelmatigheden niet vinden in de kosten.
+- Alle kosten met betrekking tot vragen met betrekking tot cloudproviders gevonden.
+
+### <a name="amortized-cost-reports"></a>Afgeschreven Kostenrapporten
+
+Deze reeks afgeschreven kosten rapporten linearisatie bevat niet-gebruik op basis van servicekosten of eenmalige kosten van leveranciers en hun kosten verdeeld na verloop van tijd gelijkmatig gedurende hun levensduur. Bijvoorbeeld zijn eenmalige kosten:
+
+- Jaarlijkse kosten van ondersteuning
+- Jaarlijkse kosten van beveiliging onderdeel
+- Kopen van gereserveerde instanties kosten
+- Sommige items voor de Azure Marketplace
+
+In het bestand facturering eenmalige kosten worden gekenmerkt wanneer het verbruik beginnen en eindigen datums (tijdstempel) gelijk zijn aan waarden hebben. De Cloudyn-service herkent deze vervolgens zoals eenmalige kosten die worden afgeschreven. Andere services op basis van gebruik met on-demand-gebruikskosten worden niet afgeschreven.
+
+Afgeschreven Kostenrapporten zijn onder andere:
+
+- Afgeschreven kostenanalyse
+- Afgeschreven kosten na verloop van tijd
+
+### <a name="cost-analysis-report"></a>Kostenanalyserapport
+
+Het rapport Cost Analysis biedt inzicht in uw cloud-gebruik en uitgaven gedurende een geselecteerde periode. De beleids regels die zijn ingesteld in de [cost allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) worden gebruikt in het rapport cost analysis.
+
+Hoe wordt dit rapport in Cloudyn berekend?
+
+Cloudyn zorgt ervoor dat toewijzing de integriteit van elk gekoppeld account behoudt door _account affiniteit_toe te passen. Affiniteit zorgt ervoor dat een account die geen gebruik maakt van een specifieke service ook de kosten van deze service is toegewezen aan deze beschikt niet over. De kosten voor dat account in dat account blijven en niet worden berekend door de beleidsregels voor brontoewijzing. Bijvoorbeeld, wellicht u vijf gekoppelde accounts. Als er slechts drie hiervan storage-services gebruiken, klikt u vervolgens de kosten voor storage-services alleen toegewezen voor de labels in de drie accounts.
+
+Het rapport Cost Analysis te gebruiken:
+
+- Een samengevoegde weergave van uw volledige implementatie voor een specifiek tijdsbestek.
+- Kosten weergeven door de tag categorieën op basis van beleid dat is gemaakt in het kostenmodel.
+
+### <a name="cost-over-time-report"></a>Rapport met overuren
+
+Het rapport Cost Over Time weergegeven uitgaven gedurende een periode, zodat u trends en u ziet dat onregelmatigheden in uw implementatie kunt herkennen. Hier ziet u in feite kosten verdeeld zijn over een opgegeven periode. Het rapport bevat de belangrijkste kostenposten, met inbegrip van doorlopende kosten en de gereserveerde instantie eenmalige kosten die gedurende een geselecteerde periode worden besteed. Beleids regels die zijn ingesteld in [cost allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) worden gebruikt in dit rapport.
+
+Het rapport Cost Over Time te gebruiken:
+
+- Wijzigingen voor tijd en welke invloed wijzigen van één dag (of datumbereik) in het volgende te zien.
+- Analyseer de kosten na verloop van tijd voor een specifiek exemplaar.
+- Begrijpen waarom er een stijging van de kosten voor een specifiek exemplaar.
+
+### <a name="custom-charges-report"></a>Aangepaste kosten-rapport
+
+Enterprise- en CSP-gebruikers vinden vaak zelf die extra services levert aan hun klanten externe of interne naast hun eigen resourceverbruik cloud. U definiëren aangepaste kosten voor extra services of kortingen die zijn toegevoegd aan de facturering van de klant of de doorberekeningsrapporten als aangepaste regels.
+
+Aangepaste service kosten zijn de services die normaal gesproken worden niet in een factuur weergegeven. De aangepaste kosten die u maakt, worden vervolgens in Kostenrapporten weergegeven.
+
+*Aangepaste kosten zijn geen aangepaste prijzen*. De lijst met aangepaste kosten wordt niet weergegeven in de verschillende tarieven die u mogelijk worden kosten in rekening gebracht. AWS facturering kosten worden bijvoorbeeld weergegeven net zoals ze worden in rekening gebracht.
+
+Maken van een aangepaste kosten in rekening gebracht:
+
+1. Klik in **aangepaste kosten**op **nieuwe toevoegen**. Het dialoog venster _nieuwe aangepaste kosten toevoegen_ wordt weer gegeven.
+2. Voer de naam van de provider in bij **provider naam**.
+3. Voer in **service naam**het type service in.
+4. Voeg in **Beschrijving**een beschrijving voor de aangepaste kosten toe.
+5. In **type**voert u het **percentage** selecteren in en selecteert u in de vervolg keuzelijst Services de services die moeten worden toegevoegd als aangepaste kosten in de kosten rapporten.
+6. Selecteer bij **betaling**de optie als de kosten een eenmalige vergoeding of terugkerend bedrag zijn. Als de kosten voor een terugkerende kosten, selecteert u Amortized als u wilt dat de kosten om te worden afgeschreven en selecteer het aantal maanden.
+7. Als er een eenmalige betaling is geselecteerd, voert u in **datums**de **datum in waarop**de kosten worden betaald. Als terugkerende kosten is geselecteerd, voert u het datumbereik met inbegrip van de begindatum en de einddatum van de kosten in rekening gebracht.
+8. Selecteer in de **structuur entiteiten**de entiteiten waarop u de kosten wilt Toep assen en selecteer vervolgens **aan**.
+
+_Wanneer er kosten worden toegewezen aan een entiteit, kunnen gebruikers deze niet wijzigen. Kosten die door een beheerder aan een bovenliggende entiteit worden toegevoegd, zijn alleen-lezen._
+
+Aangepaste kosten weergeven:
+
+Aangepaste kosten worden in Kostenrapporten weergegeven. Open bijvoorbeeld het rapport werkelijke kosten analyse en selecteer vervolgens onder **uitgebreide filters**de optie **zelfstandig**. Filter vervolgens om **aangepaste kosten**weer te geven.
 
 ### <a name="cost-allocation-360"></a>Cost Allocation 360
 
-You use Cost Allocation 360 to create custom cost allocation models to assign costs to consumed cloud resources. Many reports show information from custom cost models that you've created with custom cost models. And, some reports only show information after you've created a custom cost model with cost allocation.
+U Cost Allocation 360 gebruiken om aangepaste cost allocation modellen als u wilt kosten toewijzen aan verbruikte cloudresources te maken. Veel rapporten weergegeven gegevens uit aangepaste kostenmodellen die u hebt gemaakt met aangepaste kostenmodellen. En sommige rapporten worden alleen informatie weergegeven nadat u een aangepaste kostenmodel met kostentoewijzing hebt gemaakt.
 
-For more information about creating custom cost models, see [Tutorial: Manage costs by using Cloudyn](tutorial-manage-costs.md).
+Zie [zelf studie: kosten beheren met Cloudyn](tutorial-manage-costs.md)voor meer informatie over het maken van aangepaste kosten modellen.
 
-### <a name="cost-vs-budget-over-time-report"></a>Cost vs. Budget Over Time report
+### <a name="cost-vs-budget-over-time-report"></a>Rapport over kosten versus budget gedurende een periode
 
-The Cost vs. Budget Over Time report allows you to compare the main cost contributors against your budget. The assigned budget appears in the report so that you can view your (over/under/par) budget consumption over time. Using Show/Hide Fields at the top of the report, you can select to view cost, budget, accumulated cost, and total budget.
+Met het rapport kosten versus budget over tijd kunt u de inzenders van de belangrijkste kosten vergelijken met uw budget. Het toegewezen budget weergegeven in het rapport, zodat u uw budget (boven/onder/par) gebruik na verloop van tijd kunt bekijken. Velden weergeven/verbergen met aan de bovenkant van het rapport, kunt u selecteren voor weergave kosten, budget, totale kosten en totaal budget.
 
-### <a name="current-month-projected-cost-report"></a>Current Month Projected Cost report
+### <a name="current-month-projected-cost-report"></a>Huidige Month Projected Cost-rapport
 
-The Current Month Projected Cost report provides insight into your current month-to-date cost summary. This report displays your costs from the beginning of month, from the previous month, and the total projected cost for the current month. The current month projected cost is calculated as sum of the up-to-date monthly cost and a projection based on the cost monitored in the last 30 days.
+Het rapport Current Month Projected Cost biedt inzicht in uw huidige maand tot heden kosten samenvatting. Dit rapport geeft de kosten vanaf het begin van maand van de vorige maand en de totale geschatte kosten voor de huidige maand. De huidige maand geschatte kosten worden berekend als de som van de maandelijkse kosten die up-to-date en een projectie op basis van de kosten bewaakt in de afgelopen 30 dagen.
 
-Use the Current Month Projected Cost report to:
+Het rapport Current Month Projected Cost te gebruiken:
 
-- Project monthly costs by service
-- Project monthly costs by account
+- Project maandelijkse kosten per service
+- Project maandelijkse kosten per account
 
-### <a name="annual-projected-cost-report"></a>Annual Projected Cost report
+### <a name="annual-projected-cost-report"></a>Rapport met jaarlijkse geschatte kosten
 
-The Annual Projected Costs report allows you to view annual projected costs based on previous spending trends. It shows the next 12 months of overall projected costs. The projections are made using a trend function extrapolated over the next 12 months, based on the costs associated with the last 30 days of usage.
+Het rapport met jaarlijkse geschatte kosten kunt u om jaarlijkse geschatte kosten op basis van trends in de vorige uitgaven weer te geven. Hier ziet u de volgende 12 maanden van de totale geschatte kosten. De prognoses worden gemaakt met behulp van een functie trend geëxtrapoleerd in de volgende 12 maanden, op basis van de kosten die zijn gekoppeld aan de afgelopen 30 dagen van het gebruik van.
 
-### <a name="budget-management-settings"></a>Budget Management settings
+### <a name="budget-management-settings"></a>Instellingen voor het beheer van budget
 
-Budget Management allows you to set a budget for your fiscal year.
+Budget Management kunt u een budget instellen voor het fiscale jaar.
 
-To add a budget to an entity:
+Een budget toevoegen aan een entiteit:
 
-1. On the Budget Management page, under **Entities**, select the entity where you want to create the budget.
-2. In the budget year, select the year where you want to create the budget.
-3. In each month, set your budget and then and click **Save**.
+1. Selecteer op de pagina budget beheer onder **entiteiten**de entiteit waarvoor u het budget wilt maken.
+2. Selecteer in het budgetjaar, het jaar waarin u wilt maken van het budget.
+3. Stel in elke maand uw budget in en klik vervolgens op **Opslaan**.
 
-To import a file for the annual budget:
+Voor het importeren van een bestand voor de jaarlijkse budget:
 
-1. Under **Actions**, select **Export** to download an empty CSV template to use as your basis for the budget.
-2. Fill in the CSV file with your budget entries and save it locally.
-3. Under **Actions**, select **Import**.
-4. Select your saved file and then click  **OK**.
+1. Onder **acties**selecteert u **exporteren** om een lege CSV-sjabloon te downloaden om te gebruiken als basis voor het budget.
+2. Vul in het CSV-bestand met uw budget-fragmenten en lokaal opslaan.
+3. Selecteer **importeren**onder **acties**.
+4. Selecteer uw opgeslagen bestand en klik vervolgens op **OK**.
 
-To export your completed budget as a CSV file, under **Actions**, select **Export** to download the file.
+Als u uw voltooide budget wilt exporteren als een CSV-bestand, selecteert u onder **acties** **exporteren** om het bestand te downloaden.
 
-When completed, your budget is shown in Cost Analysis reports and in the Cost vs. Budget Over Time report. You can also schedule reports based on budget thresholds.
+Wanneer u klaar bent, wordt uw budget weer gegeven in de rapporten over de kosten analyse en in het rapport kosten versus budget gedurende een periode. U kunt ook rapporten op basis van budgetdrempels plannen.
 
-### <a name="azure-resource-explorer-report"></a>Azure Resource Explorer report
+### <a name="azure-resource-explorer-report"></a>Azure Resource Explorer-rapport
 
-The Azure Resource Explorer report shows a bulk list of all the Azure resources available in Cloudyn. To effectively use the report, your Azure accounts should have extended metrics enabled. Extended metrics provide Cloudyn access to your Azure VMs. For more information, see [Add extended metrics for Azure virtual machines](azure-vm-extended-metrics.md).
+De Azure Resource Explorer-rapport bevat een bulk-lijst van alle Azure-resources beschikbaar zijn in Cloudyn. Als u wilt effectief gebruikt u het rapport, moeten metrische gegevens die zijn ingeschakeld op uw Azure-accounts hebt uitgebreid. Uitgebreide metrische gegevens geven Cloudyn toegang tot uw Azure VM's. Zie voor meer informatie [uitgebreide metrische gegevens voor virtuele Azure-machines toevoegen](azure-vm-extended-metrics.md).
 
-### <a name="azure-resources-over-time-report"></a>Azure Resources Over Time report
+### <a name="azure-resources-over-time-report"></a>Rapport van Azure-Resources gedurende een periode
 
-The Azure Resources Over Time report shows a breakdown of all resources running over a specific period. To effectively use the report, your Azure accounts should have extended metrics enabled. Extended metrics provide Cloudyn access to your Azure VMs. For more information, see [Add extended metrics for Azure virtual machines](azure-vm-extended-metrics.md).
+Azure-Resources gedurende een periode dit rapport bevat een overzicht van alle resources die worden uitgevoerd gedurende een bepaalde periode. Als u wilt effectief gebruikt u het rapport, moeten metrische gegevens die zijn ingeschakeld op uw Azure-accounts hebt uitgebreid. Uitgebreide metrische gegevens geven Cloudyn toegang tot uw Azure VM's. Zie voor meer informatie [uitgebreide metrische gegevens voor virtuele Azure-machines toevoegen](azure-vm-extended-metrics.md).
 
-### <a name="instance-explorer-report"></a>Instance Explorer report
+### <a name="instance-explorer-report"></a>Verkenner-instantierapport
 
-The Instance Explorer report is used to view various metrics for assets of your virtual machines. You can drill-into specific instances to view information such as:
-- Instance running intervals
-- Life cycle in the selected period
-- CPU utilization
-- Network input
-- Output traffic
-- Active disks
+Het exemplaar Explorer-rapport wordt gebruikt om verschillende metrische gegevens voor de activa van uw virtuele machines weer te geven. U kunt inzoomen in specifieke exemplaren om informatie te bekijken, zoals:
+- Exemplaar met intervallen
+- Levenscyclus van in de geselecteerde periode
+- CPU-gebruik
+- Netwerk-invoer
+- Uitvoer-verkeer
+- Actieve schijven
 
-The Instance Explorer report collects all running intervals within the defined date range and aggregates data accordingly. To view each of the running intervals during the date range, expand the instance. The cost of each instance is calculated for the date range selected based on AWS and Azure list prices. No discounts are applied. You can add additional fields to the report using Show/Hide Fields.
+Het rapport exemplaar Explorer verzamelt alle actieve intervallen binnen het bereik van de opgegeven datum en verzamelt gegevens dienovereenkomstig. Als u wilt weergeven van de actieve intervallen in het datumbereik dat, vouw het exemplaar. De kosten van elke instantie worden berekend voor de datum bereik is geselecteerd op basis van AWS en Azure prijzen. Er is geen kortingen zijn toegepast. U kunt extra velden toevoegen aan de lijst met velden weergeven/verbergen.
 
-Use Instance Explorer report to:
+Exemplaar Explorer-rapport te gebruiken:
 
-- Calculate the estimated cost per machine.
-- Create a full list, including aggregated running hours, of all machines that were active during a time range.
-- Create a list by cloud service provider or account.
-- View machines created or terminated during a time range.
-- View all currently stopped machines.
-- View the tags of each machine.
+- De geschatte kosten per machine berekenen.
+- Maak een volledige lijst, met inbegrip van geaggregeerde actieve uur, van alle machines die in een periode actief waren.
+- Een lijst door cloud serviceprovider of een account maken.
+- Machines weergeven die zijn gemaakt of beëindigd in een periode.
+- Alle momenteel gestopt machines weergeven.
+- De labels van elke machine weergeven.
 
-### <a name="instances-over-time-report"></a>Instances Over Time report
+### <a name="instances-over-time-report"></a>Instanties gedurende een periode rapport
 
-Using the Instances Over Time report, you can see the maximum number of machines that were active each during the selected time range. If the defined resolution is by week or month, results are the maximum number of machines active on any given day during that month. Select a date range to select the filters that you want displayed in the report.
+Met behulp van het rapport instanties gedurende een periode, ziet u het maximum aantal machines dat actief waren elk tijdens het geselecteerde tijdsbereik. Als de resolutie van de gedefinieerde per week of maand is, worden de resultaten het maximum aantal machines actief zijn op elke dag gedurende die maand. Selecteer een datumbereik om de filters die u wilt weergeven in het rapport te selecteren.
 
-### <a name="instance-utilization-over-time-report"></a>Instance Utilization Over Time report
+### <a name="instance-utilization-over-time-report"></a>Gebruik gedurende een periode-instantierapport
 
-This report shows a breakdown of CPU or memory use over time for all your instances.
+Dit rapport bevat een overzicht van de CPU of geheugen gebruik na verloop van tijd voor al uw instanties.
 
-### <a name="compute-power-cost-over-time-report"></a>Compute Power Cost Over Time report
+### <a name="compute-power-cost-over-time-report"></a>COMPUTE-kracht Cost Over Time-rapport
 
-The Compute Power Over Time report provides a breakdown of compute power over a specified date range. Although other reports show the number of running machines or the runtime hours, this report shows Core hours, Compute unit hours, or GB RAM hours.
+De Compute-kracht Over Time-rapport bevat een verdeling van compute-kracht gedurende een opgegeven datumbereik. Hoewel andere rapporten weergeven voor het aantal actieve machines of de runtime-uur, wordt dit rapport bevat Core-uren, Compute unit-uren of GB RAM-uren.
 
-Use the report to:
+Het rapport te gebruiken:
 
-- Check compute power within a specified date range.
-- View compute times based on cost allocation models.
+- Controleer de compute-kracht binnen een opgegeven datumbereik.
+- Tijden weergeven berekenen op basis van cost allocation modellen.
 
-This report is linked to your [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) policies so results are shown based on the defined tagging and policies your selected cost policy. When you don't have a policy created, then results aren't shown.
+Dit rapport is gekoppeld aan uw [kosten toewijzing 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) -beleid zodat de resultaten worden weer gegeven op basis van de gedefinieerde code ring en het beleid dat het geselecteerde kosten beleid bevat. Wanneer u hebt geen een beleid hebt gemaakt, en vervolgens de resultaten worden niet weergegeven.
 
-### <a name="compute-power-average-cost-over-time-report"></a>Compute Power Average Cost Over Time report
+### <a name="compute-power-average-cost-over-time-report"></a>COMPUTE-kracht gemiddelde Cost Over Time-rapport
 
-You use the Compute Power Average Cost Over Time report to view more than just the cost of each running machine. The report shows your average cost per instance hour, core hour, compute unit hour, and GB RAM hour. The report provides insight into the efficiency of your deployment.
+U de Compute-kracht gemiddelde Cost Over Time-rapport gebruiken om meer dan alleen de kosten van elke actieve machine weer te geven. Dit rapport bevat de gemiddelde kosten per instantie-uur, core-uur, compute-eenheidsuur en GB RAM-uur. Het rapport biedt inzicht in de efficiëntie van uw implementatie.
 
-This report is linked to your [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) policies so results are displayed based on the defined tagging and policies your selected cost policy. When you don't have a policy created, then results aren't shown.
+Dit rapport is gekoppeld aan uw [kosten toewijzing 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) -beleid zodat de resultaten worden weer gegeven op basis van de gedefinieerde code ring en het beleid dat het geselecteerde kosten beleid bevat. Wanneer u hebt geen een beleid hebt gemaakt, en vervolgens de resultaten worden niet weergegeven.
 
-### <a name="s3-cost-over-time-report"></a>S3 Cost Over Time report
+### <a name="s3-cost-over-time-report"></a>S3 Cost Over Time-rapport
 
-The S3 Cost Over Time report provides a breakdown of Amazon Simple Storage Service (S3) costs per bucket over time for a specified time frame. The report helps you find the buckets that are your main cost drivers and it shows you trends in your S3 usage and spending.
+Het rapport Cost Over Time S3 bevat een verdeling van de Amazon Simple Storage-Service (S3) kosten per bucket na verloop van tijd voor een opgegeven periode. Het rapport kunt u zoeken naar de buckets die de stuurprogramma's van uw belangrijkste kosten en laat trends zien in de S3-gebruik en uitgaven.
 
-### <a name="s3-distribution-of-cost-report"></a>S3 Distribution of Cost report
+### <a name="s3-distribution-of-cost-report"></a>Rapport met S3 verdeling van kosten
 
-Use the report to analyze your S3 cost for the last month by bucket and storage class. You can use the pie chart view to set the visibility threshold. Or, you can use the table view to see subtotals.
+Het rapport gebruiken voor het analyseren van de S3-kosten voor de afgelopen maand door bucket en opslag-klasse. U kunt de weergave cirkeldiagram gebruiken om in te stellen de zichtbaarheidsdrempel voor. Of u kunt de tabelweergave gebruiken om te zien van subtotalen.
 
-### <a name="s3-bucket-properties-report"></a>S3 Bucket Properties report
+### <a name="s3-bucket-properties-report"></a>Eigenschappen van de S3-Bucket-rapport
 
-Use the report to view S3 bucket properties. You can use the pie chart view to set the visibility threshold. Or, you can use the table view to see subtotals.
+Het rapport gebruiken om eigenschappen van de S3-bucket weer te geven. U kunt de weergave cirkeldiagram gebruiken om in te stellen de zichtbaarheidsdrempel voor. Of u kunt de tabelweergave gebruiken om te zien van subtotalen.
 
-### <a name="rds-instances-over-time-report"></a>RDS Instances Over Time report
+### <a name="rds-instances-over-time-report"></a>Rapport van de extern bureaublad-services-instanties gedurende een periode
 
-Use the report to view a breakdown of all Amazon Relational Database Service (RDS) instances running during the specified period.
+Het rapport gebruiken om een overzicht van alle Amazon Relational Database Service (RDS)-exemplaren die worden uitgevoerd tijdens de opgegeven periode weer te geven.
 
-### <a name="rds-active-instances-report"></a>RDS Active Instances report
+### <a name="rds-active-instances-report"></a>Rapport over actieve exemplaren van extern bureaublad-services
 
-Use the report to analyze RDS active instances. In the report, expand the line item to view additional information.
+Het rapport gebruiken voor het analyseren van actieve exemplaren van extern bureaublad-services. Vouw in het rapport uit het regelitem om aanvullende informatie weer te geven.
 
-### <a name="azure-reserved-instances-report"></a>Azure Reserved Instances report
+### <a name="azure-reserved-instances-report"></a>Rapport voor Azure gereserveerde instanties
 
-The Azure Reserved Instances report provides you with a single view of all your Azure reserved instances. This report displays each purchase as is its own line item. The report also shows details about that purchase such as the account that purchased it, the type of purchase and instance type, days remaining and so on. You can show or hide report data using Show/Hide Fields.
+Het rapport gereserveerde instanties voor Azure biedt u een weergave van alle gereserveerde instanties van uw Azure. Dit rapport geeft elke aankoop weer als een eigen regelitem is. Dit rapport bevat ook informatie over die aankoop, zoals het account dat u die hebt aangeschaft, het type van de aankoop en Instantietype, enzovoort resterende dagen. U kunt weergeven of verbergen van gegevens met behulp van de velden weergeven/verbergen.
 
-Use the Azure Reserved Instances report to view:
+Het rapport voor Azure gereserveerde instanties gebruiken om weer te geven:
 
-- A list of all reservations by purchase date.
-- Time remaining until the RI expires.
-- One-time fees.
-- The account that purchased RIs, and when.
+- Een lijst met alle reserveringen kopen op datum.
+- Totdat de gereserveerde instantie verloopt resterende tijd.
+- Eenmalige kosten.
+- Het account dat de aangeschafte gereserveerde instanties, en wanneer.
 
-### <a name="aws-reserved-instances-report"></a>AWS Reserved Instances report
+### <a name="aws-reserved-instances-report"></a>Rapport van gereserveerde AWS-instanties
 
-The AWS Reserved Instances report provides you with a single view of all AWS reserved instances. This report displays each purchase is its own line item and details about that purchase such as the account that purchased it, the type of purchase and instance type, days remaining and so on. You can show or hide report data using Show/Hide Fields.
+Het rapport gereserveerde AWS-instanties biedt dat u met een weergave van alle AWS gereserveerde instanties. Dit rapport dat geeft elke aankoop is een eigen regelitem en meer informatie over die aankoop, zoals het account dat u die hebt aangeschaft, het type van de aankoop en Instantietype, enzovoort resterende dagen. U kunt weergeven of verbergen van gegevens met behulp van de velden weergeven/verbergen.
 
-Use the AWS Reserved Instances report to view:
+Gebruik het rapport gereserveerde AWS-instanties om weer te geven:
 
-- A list of all reservations by purchase date.
-- Time remaining until the RI expires.
-- One-time fees.
-- Original purchase ID (reservation ID).
-- The account that purchased RIs and when.
+- Een lijst met alle reserveringen kopen op datum.
+- Totdat de gereserveerde instantie verloopt resterende tijd.
+- Eenmalige kosten.
+- Oorspronkelijke aankoop-ID (Reserverings-ID).
+- Het account dat gereserveerde instanties aangeschaft en wanneer.
 
-### <a name="ec2-ri-buying-recommendations-report"></a>EC2 RI Buying Recommendations report
+### <a name="ec2-ri-buying-recommendations-report"></a>Rapport EC2 RI Buying Recommendations
 
-The foundation of cloud resource consumption is the on-demand model, where resources incur cost only when used. There are no up-front commitments — you pay only for what you use, when you use it.
+De basis van resourceverbruik cloud is het model op aanvraag, waar resources kosten wanneer gebruikt. Er zijn geen verplichtingen vooraf te betalen, u betaalt alleen voor wat u gebruikt, wanneer u deze gebruikt.
 
-AWS offers an alternative pricing model for its Elastic Compute Cloud (EC2) services — the reserved instance (RI). This pricing model guarantees users the capacity whenever they need it for the duration of the RI. The RI offers significant price discounts over on-demand pricing. In return, users make an upfront commitment for the use of a virtual instance. The commitment is bound to a specific family, size, availability zone (AZ), and operating system, over the period of commitment (one or three years). The RI allows AWS to efficiently plan future capacity, as well as to gain customer commitment to using its services.
+AWS biedt een alternatief prijsmodel voor de elastische Cloud Compute (EC2)-services: de gereserveerde instanties (RI). Gebruikers van dit prijsmodel garandeert de capaciteit wanneer ze deze nodig voor de duur van de gereserveerde instantie hebt. De gereserveerde instantie biedt aanzienlijke prijskortingen op on-demand-tarieven. Hierna vooraf gebruikers een toezegging voor het gebruik van een virtuele-exemplaar. De toezegging is gebonden aan een specifieke familie, grootte, binnen een beschikbaarheidszone (AZ) en besturingssysteem, gedurende de periode van toezegging (één of drie jaar). De gereserveerde instantie kunt AWS efficiënt plannen toekomstige capaciteit, evenals garantie voor klant toezegging voor het gebruik van de services krijgen.
 
-Three payment options for RIs, which are all-upfront:
+Drie betalingsopties voor gereserveerde instanties, die alle vooraf zijn:
 
-- Bulk sum at day 0, offering the highest discount
-- No upfront - in which the cost of RI is paid in monthly installments over the duration of the RI, offering the lowest discount
-- Partial upfront, in which ¼ - ½ of the price is paid up front, and the rest in monthly installments, with a discount rate that is lower, but close, to the all-upfront rate
+- Som bulksgewijs op dag 0, biedt de meeste korting
+- Geen kosten vooraf - bieden in waarmee de kosten van gereserveerde instantie wordt betaald in termijnen van maandelijkse in de loop van de gereserveerde instantie, de laagste korting
+- Gedeeltelijk kosten vooraf, in welke ¼ - ½ van de prijs, vooraf betaalde en de rest in maandelijkse supplementen, met een korting van lager, sluit maar, aan het tarief voor alle vooraf
 
-Cloudyn evaluates the uptime of each machine for the last 30 days. Cloudyn recommends buying RIs when it is more cost-effective to run the machine with an RI at the current uptime level.
+Cloudyn evalueert de uptime van elke computer voor de afgelopen 30 dagen. Cloudyn raadt het kopen van gereserveerde instanties wanneer deze kosteneffectiever om uit te voeren van de machine met een gereserveerde instantie op het niveau van de huidige actieve tijdsduur.
 
-The report shows the justification for its recommendations to save the most money over the year. The recommendations suggest replacing on-demand instances with RIs. You can purchase RIs directly from the report.
+Dit rapport bevat de reden voor de aanbevelingen voor de meeste besparen ten opzichte van het jaar. De aanbevelingen voorgesteld vervangen van on-demand instanties met gereserveerde instanties. U kunt gereserveerde instanties kopen rechtstreeks vanuit het rapport.
 
-Each tab opens as a full report. Notable sections in tabs include:
+Elk tabblad wordt geopend als een volledig rapport. Belangrijkste secties in tabbladen zijn onder andere:
 
-- **EC2 RI Purchase Impact** - This section provides a simulation of the difference between on-demand vs reserved instances. Click  **Zoom in**, to see the full EC2 RI Purchase Impact report with the filters already defined to your recommendation. This report shows the purchase impact of all potential RI purchases. You can adjust the expected average uptime to see the potential saving when you purchase EC2 Reserved Instances.
+- **Impact op EC2 RI-aankoop** : deze sectie biedt een simulatie van het verschil tussen gereserveerde exemplaren op aanvraag. Klik op **Inzoomen**om het volledige EC2 RI-aankoop impact rapport te bekijken met de filters die al zijn gedefinieerd voor uw aanbeveling. Dit rapport bevat de impact van aanschaf van alle potentiële RI-aankopen. U kunt de verwachte gemiddelde uptime om te zien van de mogelijke opslaan bij de aankoop van gereserveerde EC2-instanties kunt aanpassen.
 
-- **Saving Analysis** - This section provides the potential savings achieved and the month the savings are actualized when following Cloudyn recommendations. The actual savings and the percent saved are highlighted in red.
+- De **analyse wordt opgeslagen** : in deze sectie vindt u mogelijke besparingen en de maand waarin de besparingen worden gerealiseerd wanneer de volgende Cloudyn-aanbevelingen worden uitgevoerd. De daadwerkelijke besparingen en het percentage opgeslagen zijn in rood gemarkeerd.
 
-- **EC2 RI Type Comparison** - This section emphasizes the ROI highlights of Cloudyn's recommended deployment, including all relevant options. The results in this report assume that the machine is running at 100% uptime. Click **Zoom In**  to open the detailed report.
+- **Vergelijking van EC2-RI-type** : in deze sectie wordt de nadruk gelegd op de rendements kenmerken van de aanbevolen implementatie van Cloudyn, met inbegrip van alle relevante opties. De resultaten in dit rapport wordt ervan uitgegaan dat de machine wordt uitgevoerd op 100% uptime. Klik op **Inzoomen** om het gedetailleerde rapport te openen.
 
-- **Instances Over Time** - This section displays a breakdown of all instances associated with the recommendation, OnDemand, Reserved Instances, and Spot. Click  **Zoom In**  to open the detailed report.
-- **Breakeven Points** - This section displays a table of all the possible recommended deployments and the ROI and the month when the ROI occurs. Click  **Zoom In** to open the detailed report.
+- **Exemplaren na verloop van tijd** : in deze sectie wordt een uitsplitsing weer gegeven van alle exemplaren die zijn gekoppeld aan de aanbeveling, de OnDemand, de gereserveerde instanties en de plaats. Klik op **Inzoomen** om het gedetailleerde rapport te openen.
+- **Breakeven punten** : in deze sectie wordt een tabel weer gegeven met alle mogelijke aanbevolen implementaties en het ROI en de maand waarop het ROI plaatsvindt. Klik op **Inzoomen** om het gedetailleerde rapport te openen.
 
-### <a name="ec2-reservations-over-time-report"></a>EC2 Reservations Over Time report
+### <a name="ec2-reservations-over-time-report"></a>Rapport EC2 reserveringen gedurende een periode
 
-The EC2 Reservations Over Time report tracks the status of your usage of your purchased EC2 RIs. You can set the resolution of the report to hour, day, or week.
+Het rapport EC2 reserveringen gedurende een periode houdt de status van uw gebruik van uw gekochte EC2 RI's. U kunt de resolutie van het rapport instellen op uur, dag of week.
 
-Use the report to:
+Het rapport te gebruiken:
 
-- Display reservations purchased that are used and not used.
-- Drill in to the resolution by hour to see RI usage per hour.
+- Reserveringen die zijn aangeschaft en die worden gebruikt en niet gebruikt worden weergegeven.
+- Zoom op de oplossing per uur voor gebruik van gereserveerde instanties per uur.
 
-### <a name="savings-over-time-report"></a>Savings Over Time report
+### <a name="savings-over-time-report"></a>Rapport van de besparingen gedurende een periode
 
-Use the Savings Over Time report to view the savings achieved using reserved instances as well as spot instances. The report shows the ROI achieved over time resulting from RI purchases.
+Het rapport besparingen gedurende een periode gebruiken om de besparingen bereikt met behulp van gereserveerde instanties, evenals spot-exemplaren weer te geven. Dit rapport bevat het rendement op investering opleveren bereikt gedurende een periode die voortvloeien uit RI-aankopen.
 
-To view savings from RIs, group the results by **Price Model** and select **Reservation**. To view RI savings achieved by a specific account or instance type, add the relevant grouping and filter to the account or instance type.
+Als u de besparingen van RIs wilt bekijken, groepeert u de resultaten op **prijs model** en selecteert u **reserve ring**. Als u wilt weergeven van gereserveerde instanties besparingen als gevolg van een specifiek account of een Instantietype, moet u de relevante groepering en filter toevoegen aan het type account of het exemplaar.
 
-To see savings from Spot instance use, filter the **Price Model** to **Spot**. The default filter for this report is RI and Spot Instances.
+Als u de besparingen wilt zien van het gebruik van de spot instantie, filtert u het **prijs model** op **Spot**. Het standaardfilter voor dit rapport is gereserveerde instanties en Spot Instances.
 
-### <a name="rds-ri-buying-recommendations-report"></a>RDS RI Buying Recommendations report
+### <a name="rds-ri-buying-recommendations-report"></a>Extern bureaublad-services RI Buying Recommendations-rapport
 
-RDS RI Buying Recommendations report recommends when to use RDS RIs instead of on-demand instances.
+Extern bureaublad-services RI Buying Recommendations rapport raadt u aan bij het gebruik van gereserveerde instanties voor extern bureaublad-services in plaats van on-demand instanties.
 
-Each tab opens as a full report. Notable sections in tabs include:
+Elk tabblad wordt geopend als een volledig rapport. Belangrijkste secties in tabbladen zijn onder andere:
 
-- **RDS RI Purchase Impact** - This section provides a simulation of the difference between on demand vs reserved instances. Click  **Zoom in** to see the full RDS RI Purchase Impact report with the filters already defined to your recommendation. This report allows you to see the purchase impact of all potential RI purchases.  You can adjust the expected average uptime and see the potential saving by purchasing RIs.
-- **Saving Analysis** – This section provides the potential savings achieved and the month the savings are actualized when following Cloudyn recommendations. The actual savings and the percent saved are highlighted in red.
+- **Impact op de aanschaf van RDS RI** -deze sectie biedt een simulatie van het verschil tussen on-demand versus gereserveerde instanties. Klik op **Inzoomen** om het volledige onderdeel RDS RI-inkoop impact te bekijken met de filters die al zijn gedefinieerd voor uw aanbeveling. Dit rapport kunt u het effect van aanschaf van alle potentiële RI-aankopen.  U kunt aanpassen van de verwachte gemiddelde uptime en het potentieel opslaan door het kopen van gereserveerde instanties bekijkt.
+- De **analyse wordt opgeslagen** : in deze sectie vindt u mogelijke besparingen en de maand waarin de besparingen worden gerealiseerd wanneer de volgende Cloudyn-aanbevelingen worden uitgevoerd. De daadwerkelijke besparingen en het percentage opgeslagen zijn in rood gemarkeerd.
 
-- **RDS RI Type Comparison** - This section emphasizes the ROI highlights of the recommended deployment, including all relevant options. The results in this report assume that the machine is running at 100% uptime. Click **Zoom In** to open the detailed report for the selected machine.
-- **Instances Over Time** – This section displays a breakdown of all instances associated with the recommendation, OnDemand, Reserved Instances, and Spot. Click **Zoom In** to open the detailed report.
+- **Vergelijking van type RDS-RI** -in deze sectie worden de ROI-kenmerken van de aanbevolen implementatie benadrukt, inclusief alle relevante opties. De resultaten in dit rapport wordt ervan uitgegaan dat de machine wordt uitgevoerd op 100% uptime. Klik op **Inzoomen** om het gedetailleerde rapport voor de geselecteerde computer te openen.
+- **Exemplaren na verloop van tijd** – in deze sectie wordt een uitsplitsing weer gegeven van alle exemplaren die zijn gekoppeld aan de aanbeveling, de OnDemand, de gereserveerde instanties en de plaats. Klik op **Inzoomen** om het gedetailleerde rapport te openen.
 
-- **Breakeven Points** – This section displays a table of all the possible recommended deployments and the ROI and the month when the ROI occurs. Click **Zoom In** to open the detailed report.
+- **Breakeven punten** : in deze sectie wordt een tabel weer gegeven met alle mogelijke aanbevolen implementaties en het ROI en de maand waarop het ROI plaatsvindt. Klik op **Inzoomen** om het gedetailleerde rapport te openen.
 
-### <a name="rds-reservations-over-time-report"></a>RDS Reservations Over Time report
+### <a name="rds-reservations-over-time-report"></a>Rapport van de extern bureaublad-services reserveringen gedurende een periode
 
-Use the RDS Reservation Over Time report to view a breakdown of both your used and unused reservations during the specified period.
+Het rapport extern bureaublad-services-reservering gedurende een periode gebruiken om een uitsplitsing van uw gebruikt en niet-gebruikte reserveringen in de opgegeven periode weer te geven.
 
-### <a name="reserved-instance-purchase-impact-report"></a>Reserved Instance Purchase Impact report
+### <a name="reserved-instance-purchase-impact-report"></a>Reserved Instance Purchase Impact rapport
 
-The EC2 RI Purchase Impact report allows you to simulate reserved instance cost versus on-demand cost over time. It can help you make better purchasing decisions. Adjust the filters such as average runtime, term, platform, and others to make informed decisions when you consider RI purchases.
+Het rapport EC2 RI Purchase Impact kunt u de kosten van gereserveerde instanties en op aanvraag kosten simuleren na verloop van tijd. U kunt beter aankopen beslissingen te nemen. De filters, zoals gemiddelde uitvoeringstijd, term, platform en anderen, zodat weloverwogen beslissingen te nemen wanneer u rekening houden met gereserveerde instanties aankopen aanpassen.
 
-### <a name="cost-effective-sizing-recommendations-report"></a>Cost-Effective Sizing Recommendations report
+### <a name="cost-effective-sizing-recommendations-report"></a>Rendabele Sizing Recommendations-rapport
 
-The Cost-Effective Sizing Recommendations report provides results for AWS and Azure. For AWS users, your RI purchases are taken into consideration and the results don't include machines running as RI's. This report provides a list of underutilized instances that are candidates to downsize. Recommendations are based on your usage and performance data from the last 30 days. In each recommendation is a list of candidates to downsize, the justification to downsize, and a link to view complete details and performance metrics of the instance. And when relevant recommendations advise changing to newer generation instance types.
+Het rapport voordelige Sizing Recommendations bevat de resultaten voor AWS en Azure. Uw aankopen in de gereserveerde instanties in aanmerking worden genomen voor AWS-gebruikers, en de resultaten bevatten geen machines die worden uitgevoerd als gereserveerde instanties. Dit rapport bevat een lijst met weinig gebruikte instanties die kandidaten om te krimpen. Aanbevelingen zijn gebaseerd op de gegevens van uw gebruik en de prestaties van de afgelopen 30 dagen. In elke aanbeveling is een lijst met kandidaten om te krimpen, de rechtvaardiging te krimpen en een koppeling om meer informatie weer te geven en maatstaven voor prestaties van het exemplaar. En wanneer relevante aanbevelingen advies om nieuwere generatie exemplaartypen te wijzigen.
 
-You can't download the list of instance IDs that are recommended to downsize from this report. To download Instance IDs, use the All Sizing Recommendations report.
+U kunt de lijst met de exemplaar-id's die worden aanbevolen voor krimpen vanuit dit rapport niet downloaden. Als u wilt downloaden exemplaar-id's, gebruikt u het rapport alle Sizing Recommendations.
 
-Consider the following downsizing example:
+Houd rekening met het volgende downsizing-voorbeeld:
 
-You have six m3.xlarge running instances. Cloudyn analysis shows that five of them have low CPU utilization. Consider downsizing them.
+U hebt zes exemplaren van m3.xlarge die worden uitgevoerd. Analyse van Cloudyn laat zien dat vijf hiervan minder CPU-gebruik hebben. U kunt verkleinen alvorens ze te.
 
-In Cost Impact, the cost impact is calculated. In this example, by expanding the line item, you can see the current price for one m3.xlarge instance (Linux/Unix) costs $0.266 per hour and one m3.large instance (Linux/Unix) costs $0.133 per hour. So, the annual cost is $11,651 for five m3.xlarge instances running at 100% utilization. The annual cost is $5,825 for five m3.large instances running at 100% utilization. The potential savings are $5,825.
+In de Impact kosten, wordt de impact van de kosten berekend. In dit voorbeeld wordt ziet door het uitbreiden van het regelitem, u dat de huidige prijs voor één m3.xlarge exemplaar (Linux/Unix) kosten $0.266 per uur en één m3.large exemplaar (Linux/Unix) kosten $0.133 per uur. Dus, is de jaarlijkse kosten $11,651 voor vijf m3.xlarge-exemplaren die worden uitgevoerd op 100% gebruik. De jaarlijkse kosten is $5,825 voor vijf m3.large-exemplaren die worden uitgevoerd op 100% gebruik. De potentiële besparingen zijn $5,825.
 
-To view cost-effective sizing justifications, click + to expand the line item. In **Details**:
+Klik om te bekijken van de redenen voor goedkope schaaloplossingen + om uit te breiden het regelitem. In **Details**:
 
-- The **Recommendation Justification** section displays the current deployment and the number of instances recommended to downsize.
-- The **Cost Impact** section displays the calculation used to determine potential savings.
-- The **Potential Annual Savings** section displays the potential annual savings when downsizing per Cloudyn's recommendation.
+- In het gedeelte **aanbeveling uitvullen** worden de huidige implementatie en het aantal exemplaren weer gegeven dat wordt aanbevolen voor krimpen.
+- De sectie **kosten impact** geeft de berekening weer die wordt gebruikt om mogelijke besparingen te bepalen.
+- In het gedeelte **mogelijke jaarlijkse besparingen** wordt de mogelijke jaarlijkse besparing weer gegeven wanneer Overweeg per aanbeveling van Cloudyn.
 
-### <a name="all-sizing-recommendations-report"></a>All Sizing Recommendations report
+### <a name="all-sizing-recommendations-report"></a>Alle Sizing Recommendations-rapport
 
-This report provides a list of underutilized instances that are candidates to downsize. The recommendations are based on your usage and performance data from the last 30 days. In each recommendation, you can view complete details and performance metrics of the instance.
+Dit rapport bevat een lijst met weinig gebruikte instanties die kandidaten om te krimpen. De aanbevelingen zijn gebaseerd op de gegevens van uw gebruik en de prestaties van de afgelopen 30 dagen. In elke aanbeveling vindt u meer informatie en maatstaven voor prestaties van het exemplaar.
 
-If you've purchased AWS reserved instances, this report contains results for all running instances, including instances running as RIs.
+Als u gereserveerde AWS-exemplaren hebt aangeschaft, bevat dit rapport resultaten voor alle actieve exemplaren, met inbegrip van exemplaren die worden uitgevoerd als gereserveerde instanties.
 
-Use the All Sizing Recommendations report to:
+Het rapport alle Sizing Recommendations te gebruiken:
 
-- See a list of all your instances that are candidates to downsize.
-- Export a report list containing Instance Names and IDs.
+- Een overzicht van alle exemplaren die kandidaten om te krimpen.
+- Een rapportenlijst met namen van exemplaren en -id's exporteren.
 
-To view recommendation details for a specific Instance, click **+** to expand the details. The Recommendation Details section provides an overview of the recommendation.
+Klik op **+** om de details van de aanbevelingen voor een specifiek exemplaar weer te geven. De Details van de aanbeveling-sectie biedt een overzicht van de aanbeveling.
 
-The **Tags** section provides the list of the tag keys and values for the selected instance. Use Tags in the left pane to filter the section.
+De sectie **labels** bevat een lijst met de code sleutels en waarden voor het geselecteerde exemplaar. Tags gebruiken in het linkerdeelvenster naar de sectie filteren.
 
-The **CPU Utilization** section provides the CPU utilization for the instance over the last month, by day.
+In het gedeelte **CPU-gebruik** wordt het CPU-gebruik voor het exemplaar in de afgelopen maand per dag geboden.
 
-Click the graph to drill down and open the Instance CPU Over Time Report to see a breakdown of the instances.
+Klik op de grafiek als u wilt inzoomen en het exemplaar CPU via tijd rapport openen om te zien van een uitsplitsing van de exemplaren.
 
-- Use **Show/Hide Fields** to add or remove fields: Timestamp, Avg CPU, Min CPU, Max CPU.
-- Use **Date Range** to enter a date or date range and drill into a specific InstanceID.
-- Use **Extended Filters** to show all or a specific Instance ID
-- Click **Zoom in** to open the CPU Utilization Report
+- Gebruik **velden weer geven/verbergen** om velden toe te voegen of te verwijderen: Time Stamp, Gem. CPU, min CPU, maximum CPU.
+- Gebruik een **datum bereik** om een datum of datum bereik in te voeren en in te zoomen op een specifieke InstanceId.
+- **Uitgebreide filters** gebruiken om alle of een specifieke exemplaar-id weer te geven
+- Klik op **Inzoomen** om het rapport CPU-gebruik te openen
 
-If the instance hasn't been monitored for 30 days, incomplete data is shown.
+Als het exemplaar nog niet zijn bewaakt gedurende 30 dagen, wordt onvolledige gegevens weergegeven.
 
-The **Memory Utilization (GB)** section provides information about the memory utilized. For AWS users, memory metrics are not automatically available and need to be added per instance through AWS. AWS charges you to enable memory metrics for EC2 instances.
+De sectie **geheugen gebruik (GB)** bevat informatie over het gebruikte geheugen. Voor AWS-gebruikers, geheugen-metrische gegevens zijn niet automatisch beschikbaar en moet per exemplaar via AWS worden toegevoegd. AWS brengt u metrische gegevens voor de EC2-instanties die geheugen inschakelen.
 
-The **Memory Utilization (%)** section displays the percent of memory used.
+In het gedeelte **geheugen gebruik (%)** wordt het percentage gebruikt geheugen weer gegeven.
 
-The **Network Input Traffic** section displays a snapshot over time of the network traffic, average, and maximum, for the selected instance. Hover over the lines to see the date and maximum traffic for that time. Click **Zoom In** to open the Network Input Traffic Report.
+In het gedeelte **netwerk invoer verkeer** wordt een moment opname weer gegeven gedurende de loop tijd van het netwerk verkeer, het gemiddelde en het maximum voor het geselecteerde exemplaar. Beweeg de muisaanwijzer over de regels om te zien van de datum en de maximale verkeer voor die tijd. Klik op **Inzoomen** om het rapport netwerk invoer verkeer te openen.
 
-The **Network Output Traffic** section displays a snapshot of the network output traffic for the selected instance. Hover over the lines to see the date and maximum traffic for that time. Click **Zoom In** to open the Network Output Traffic report.
+De sectie **netwerk uitvoer verkeer** geeft een moment opname van het netwerk uitvoer verkeer voor het geselecteerde exemplaar. Beweeg de muisaanwijzer over de regels om te zien van de datum en de maximale verkeer voor die tijd. Klik op **Inzoomen** om het rapport netwerk uitvoer verkeer te openen.
 
-### <a name="instance-metrics-explorer-report"></a>Instance Metrics Explorer report
+### <a name="instance-metrics-explorer-report"></a>Metrics Explorer-instantierapport
 
-The Instance Metrics Explorer report shows cross-cloud performance metrics per instance. Use the report to view instances that are over or under-utilized based on CPU, memory, and network metric thresholds.
+Het exemplaar Metrics Explorer-rapport bevat cross-cloud metrische prestatiegegevens per exemplaar. Gebruik het rapport om weer te geven van exemplaren die worden boven of onder gebruikt, is afhankelijk van CPU, geheugen en metrische drempels netwerk.
 
-To view cross-cloud performance per instance:
+Cross-cloud-prestaties per exemplaar weergeven:
 
-1. In **Date Range**, select a date range for which you want to view performance.
-2. In **Tags**, select any tags that you want to view.
-3. In **Filters**, select the filters you want to display in the report.
-4. In **Extended Filters**, adjust the report thresholds for:
-    - Avg CPU
-    - Max CPU
-    - Avg Memory
-    - Max Memory
-5. In **Extended Filters**, click **Show** and then select the type of instances to display.
+1. Selecteer in **datum bereik**een datum bereik waarvoor u de prestaties wilt bekijken.
+2. Selecteer in **Tags**labels die u wilt weer geven.
+3. Selecteer in **filters**de filters die u in het rapport wilt weer geven.
+4. Pas in **uitgebreide filters**de drempel waarden voor het rapport aan voor:
+    - Gemiddelde CPU
+    - Maximaal CPU
+    - Gem. geheugen
+    - Maximaal geheugen
+5. Klik in **uitgebreide filters**op **weer geven** en selecteer vervolgens het type exemplaren dat moet worden weer gegeven.
 
-To view a specific instance's metrics over time:
+Metrische gegevens voor een specifiek exemplaar na verloop van tijd weergeven:
 
-- Go to the Instance Metrics Explorer report and click **+** to view details.
+- Ga naar het Metrics Explorer rapport van het exemplaar en klik op **+** om de details weer te geven.
 
-### <a name="rds-sizing-recommendations-report"></a>RDS Sizing Recommendations report
+### <a name="rds-sizing-recommendations-report"></a>Extern bureaublad-services Sizing Recommendations-rapport
 
-The RDS Sizing Recommendations report provides RDS sizing recommendations to optimize your cloud usage. It provides a list of underutilized instances that are candidates to downsize. Cloudyn recommendations are based on the usage and performance data of the last 30 days. You can filter recommendations by Account Name, Region, Instance Type, and Status.
+Het rapport extern bureaublad-services Sizing Recommendations biedt extern bureaublad-services formaat aanbevelingen voor het optimaliseren van uw cloudgebruik. Het biedt een lijst met weinig gebruikte instanties die kandidaten om te krimpen. Cloudyn aanbevelingen zijn gebaseerd op de gegevens van het gebruik en de prestaties van de afgelopen 30 dagen. Aanbevelingen per accountnaam, regio, Type exemplaar en de Status, kunt u filteren.
 
-### <a name="sizing-threshold-manager-report"></a>Sizing Threshold Manager report
+### <a name="sizing-threshold-manager-report"></a>Grootte drempelwaarde Manager-rapport
 
-Cloudyn's built-in sizing recommendations are calculated using a complex algorithm to provide accurate sizing suggestions. You can adjust the thresholds for downsizing recommendations.
+Cloudyn van ingebouwde formaat aanbevelingen worden berekend met behulp van een complexe algoritme voor nauwkeurige schaling suggesties. U kunt de drempelwaarden voor downsizing aanbevelingen aanpassen.
 
-To manually adjust threshold sizing recommendations:
+Handmatig aanpassen drempelwaarde formaat aanbevelingen:
 
-1. In Sizing Threshold Manager, adjust the following thresholds as you like:
-    - Average CPU %
-    - Maximum CPU %
-    - Average Memory %
-    - Maximum Memory %
-3. Click **Apply** to save changes.
-4. Changes apply immediately to all your recommendations.
+1. In Sizing drempelwaarde Manager pas de volgende drempelwaarden als u wilt:
+    - Gemiddelde CPU-percentage
+    - Maximale CPU-percentage
+    - Gemiddeld geheugen %
+    - % Van de maximale hoeveelheid geheugen
+3. Klik op **Toep assen** om de wijzigingen op te slaan.
+4. Wijzigingen worden direct toegepast op al uw aanbevelingen.
 
-To restore default thresholds:
+Standaarddrempelwaarden herstellen:
 
-- In Sizing Threshold Manager, click **Restore Defaults**.
+- Klik in drempel waarde beheer op **standaard waarden herstellen**.
 
-### <a name="compute-instance-types-report"></a>Compute Instance Types report
+### <a name="compute-instance-types-report"></a>COMPUTE Exemplaartypen rapport
 
-Use the Instance Types report to:
+Het rapport Exemplaartypen te gebruiken:
 
-- View instance types by Service, Family, API Name, and Name.
-- View details such as CPU, ECU, RAM, and Network.
+- Exemplaartypen weergeven door de Service, familie, API-naam en de naam.
+- Bekijk details, zoals CPU, ECU, RAM en netwerk.
 
-You can use **Search** to find specific line items.
+U kunt **zoeken** gebruiken om specifieke regel items te zoeken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Learn about how to use reports, including how to customize or save and schedule reports, see [Understanding cost reports](understanding-cost-reports.md).
-- Learn about the dashboards included in Cloudyn and about how to create your own custom dashboards, see [View key cost metrics with dashboards](dashboards.md).
+- Meer informatie over het gebruik van rapporten, zoals hoe u rapporten kunt aanpassen of opslaan, kunt u vinden in [informatie over kosten rapporten](understanding-cost-reports.md).
+- Meer informatie over de Dash boards die zijn opgenomen in Cloudyn en over het maken van uw eigen aangepaste Dash boards vindt u [in belang rijke metrische gegevens weer geven met Dash boards](dashboards.md).

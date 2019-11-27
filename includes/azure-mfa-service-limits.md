@@ -13,12 +13,12 @@ ms.locfileid: "74224420"
 ---
 | Bron | Standaardlimiet | Maximumaantal |
 | --- | --- | --- |
-| Maximum number of trusted IP addresses or ranges</a> per subscription |0 |50 |
-| Remember my devices, number of days |14 |60 |
-| Maximum number of app passwords |0 |Geen limiet |
+| Het maximum aantal vertrouwde IP-adressen of bereiken</a> per abonnement |0 |50 |
+| Mijn apparaten onthouden, aantal dagen |14 |60 |
+| Maximum aantal app-wacht woorden |0 |Geen limiet |
 | **X** pogingen toestaan tijdens MFA-aanroep |1 |99 |
-| Two-way text message timeout seconds |60 |600 |
-| Standaardaantal bypass-seconden |300 |1,800 |
-| Gebruikersaccount vergrendelen na **X** opeenvolgende MFA-weigeringen |Not set |99 |
-| Accountvergrendelingsteller opnieuw instellen na **X** minuten |Not set |9,999 |
-| Account ontgrendelen na **X** minuten |Not set |9,999 |
+| Seconden time-out voor tekst bericht in twee richtingen |60 |600 |
+| Standaardaantal bypass-seconden |300 |1\.800 |
+| Gebruikersaccount vergrendelen na **X** opeenvolgende MFA-weigeringen |Niet ingesteld |99 |
+| Accountvergrendelingsteller opnieuw instellen na **X** minuten |Niet ingesteld |9\.999 |
+| Account ontgrendelen na **X** minuten |Niet ingesteld |9\.999 |

@@ -1,5 +1,5 @@
 ---
-title: PowerShell example-Sync between multiple Azure SQL databases
+title: 'Power shell-voor beeld: synchroniseren tussen meerdere Azure SQL-data bases'
 description: Voorbeeldscript van Azure PowerShell om gegevens te synchroniseren tussen meerdere Azure SQL-databases
 services: sql-database
 ms.service: sql-database
@@ -26,19 +26,19 @@ In dit voorbeeld van PowerShell wordt Data Sync geconfigureerd voor het synchron
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-If you choose to install and use the PowerShell locally, this tutorial requires AZ PowerShell 1.4.0 or later. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u ervoor kiest om Power shell lokaal te installeren en te gebruiken, hebt u voor deze zelf studie AZ Power shell 1.4.0 of hoger nodig. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 Zie [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync](../sql-database-sync-data.md) voor een overzicht van SQL Data Sync.
 
 > [!IMPORTANT]
-> Azure SQL Data Sync does not support Azure SQL database managed instance at this time.
+> Azure SQL Data Sync biedt op dit moment geen ondersteuning voor het beheerde exemplaar van Azure SQL database.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Create an Azure SQL database from AdventureWorksLT sample database as hub database
-- Create an Azure SQL database in the same region as sync database
-- Create an on premises SQL Server database as member database
-- Update the parameter placeholders before running the example
+- Een Azure-SQL database maken van een voorbeeld database van AdventureWorksLT als een hub-data base
+- Een Azure-SQL database maken in dezelfde regio als de synchronisatie database
+- Een on-premises SQL Server Data Base als leden database maken
+- Werk de tijdelijke aanduidingen van de para meter bij voordat u het voor beeld uitvoert
 
 ## <a name="example"></a>Voorbeeld
 
@@ -301,7 +301,7 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
         - [PowerShell gebruiken om te synchroniseren tussen een Azure SQL-database en een on-premises database](sql-database-sync-data-between-azure-onprem.md)
 - Data Sync-agent: [Data Sync-agent voor Azure SQL Data Sync](../sql-database-data-sync-agent.md)
 - Best practices: [Best practices voor Azure SQL Data Sync](../sql-database-best-practices-data-sync.md)
-- Monitor - [Monitor SQL Data Sync with Azure Monitor logs](../sql-database-sync-monitor-oms.md)
+- SQL Data Sync controleren [met Azure monitor-logboeken](../sql-database-sync-monitor-oms.md)
 - Problemen oplossen: [Problemen met Azure SQL Data Sync oplossen](../sql-database-troubleshoot-data-sync.md)
 - Het synchronisatieschema bijwerken
     - Met Transact-SQL: [De replicatie van schemawijzigingen in Azure SQL Data Sync automatiseren](../sql-database-update-sync-schema.md)

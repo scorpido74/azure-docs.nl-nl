@@ -15,156 +15,156 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74407127"
 ---
-## <a name="generate-the-certificate-signing-request-file"></a>Generate the certificate-signing request file
+## <a name="generate-the-certificate-signing-request-file"></a>Het bestand met de aanvraag voor certificaat ondertekening genereren
 
-The Apple Push Notification Service (APNs) uses certificates to authenticate your push notifications. Volg deze instructies om het pushcertificaat te maken dat vereist is om meldingen te verzenden en te ontvangen. Zie de officiële documentatie van de [Apple Push Notification Service](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) voor meer informatie over deze concepten.
+De Apple Push Notification Service (APNs) gebruikt certificaten voor het verifiëren van uw push meldingen. Volg deze instructies om het pushcertificaat te maken dat vereist is om meldingen te verzenden en te ontvangen. Zie de officiële documentatie van de [Apple Push Notification Service](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) voor meer informatie over deze concepten.
 
-Generate the Certificate Signing Request (CSR) file, which Apple uses to generate a signed push certificate.
+Genereer het CSR-bestand (Certificate Signing Request) dat door Apple wordt gebruikt voor het genereren van een ondertekend push certificaat.
 
-1. Voer op uw Mac het hulpprogramma Sleutelhangertoegang uit. It can be opened from the **Utilities** folder or the **Other** folder on the Launchpad.
+1. Voer op uw Mac het hulpprogramma Sleutelhangertoegang uit. Het kan worden geopend vanuit de map **Utilities** of de **andere** map op het launchpad.
 
-1. Select **Keychain Access**, expand **Certificate Assistant**, and then select **Request a Certificate from a Certificate Authority**.
+1. Selecteer **toegang tot sleutel hanger**, vouw de **certificaat assistent**uit en selecteer vervolgens **een certificaat aanvragen bij een certificerings instantie**.
 
     ![Toegang tot sleutelhanger gebruiken om een nieuw certificaat aan te vragen](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
 
-1. Select your **User Email Address**, enter your **Common Name** value, make sure that you specify **Saved to disk**, and then select **Continue**. Leave **CA Email Address** blank as it isn't required.
+1. Selecteer het **e-mail adres**van uw gebruiker, voer uw **algemene naam** waarde in, zorg ervoor dat u **op schijf opgeslagen**opgeeft en selecteer **door gaan**. Geef het **e-mail adres** van de CA leeg, omdat dit niet vereist is.
 
     ![Vereiste certificaatgegevens](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-csr-info.png)
 
-1. Enter a name for the CSR file in **Save As**, select the location in **Where**, and then select **Save**.
+1. Voer een naam in voor het CSR-bestand in **Opslaan als**, selecteer de locatie in **waar**en selecteer vervolgens **Opslaan**.
 
-    ![Choose a file name for the certificate](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
+    ![Een bestands naam voor het certificaat kiezen](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
 
-    This action saves the CSR file in the selected location. The default location is **Desktop**. Onthoud de locatie die u voor het bestand hebt gekozen.
+    Met deze actie wordt het CSR-bestand opgeslagen op de geselecteerde locatie. De standaard locatie is **bureau blad**. Onthoud de locatie die u voor het bestand hebt gekozen.
 
-Next, register your app with Apple, enable push notifications, and upload the exported CSR to create a push certificate.
+Registreer vervolgens uw app met Apple, schakel push meldingen in en upload de geëxporteerde CSR om een push certificaat te maken.
 
 ## <a name="register-your-app-for-push-notifications"></a>Uw app voor pushmeldingen registreren
 
-To send push notifications to an iOS app, register your application with Apple, and also register for push notifications.  
+Als u push meldingen naar een iOS-app wilt verzenden, registreert u uw toepassing met Apple en registreert u ook voor push meldingen.  
 
-1. If you haven't already registered your app, browse to the [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) at the Apple Developer Center. Sign in to the portal with your Apple ID, and select **Identifiers**. Then select **+** to register a new app.
+1. Als u uw app nog niet hebt geregistreerd, bladert u naar de [IOS-inrichtings Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) in het Apple Developer Center. Meld u aan bij de portal met uw Apple-ID en selecteer **id's**. Selecteer vervolgens **+** om een nieuwe app te registreren.
 
     ![App-id-pagina van iOS-inrichtingsportal](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
-2. On the **Register a New Identifier** screen, select the **App IDs** radio button. Selecteer vervolgens **Doorgaan**.
+2. Selecteer op het scherm **een nieuwe id registreren** het keuze rondje **app-id's** . Selecteer vervolgens **Doorgaan**.
 
-    ![iOS Provisioning Portal register new ID page](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids-new.png)
+    ![nieuwe ID-pagina registreren voor iOS-inrichtings Portal](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids-new.png)
 
-3. Update the following three values for your new app, and then select **Continue**:
+3. Werk de volgende drie waarden bij voor uw nieuwe app en selecteer vervolgens **door gaan**:
 
-   * **Description**: Type a descriptive name for your app.
+   * **Beschrijving**: Typ een beschrijvende naam voor uw app.
 
-   * **Bundle ID**: Enter a Bundle ID of the form **Organization Identifier.Product Name** as mentioned in the [App Distribution Guide](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). The *Organization Identifier* and *Product Name* values must match the organization identifier and product name you use when you create your Xcode project. In the following screenshot, the **NotificationHubs** value is used as an organization identifier and the **GetStarted** value is used as the product name. Make sure the **Bundle Identifier** value matches the value in your Xcode project, so that Xcode uses the correct publishing profile.
+   * **Bundel-id**: Voer een bundel-id in van de formulier organisatie-ID **. product naam** zoals vermeld in de [hand leiding voor app-distributie](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). De waarden voor de *organisatie-id* en *product naam* moeten overeenkomen met de organisatie-ID en product naam die u gebruikt wanneer u uw Xcode-project maakt. In de volgende scherm afbeelding wordt de waarde **Notification hubs** gebruikt als organisatie-ID en wordt de waarde **GetStarted** gebruikt als de product naam. Zorg ervoor dat de waarde van de **bundel-id** overeenkomt met de waarde in uw Xcode-project, zodat Xcode het juiste publicatie profiel gebruikt.
 
-      ![iOS Provisioning Portal register app ID page](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-bundle.png)
+      ![iOS-inrichtings Portal-App-ID pagina registreren](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-bundle.png)
 
-   * **Push Notifications**: Check the **Push Notifications** option in the **Capabilities** section.
+   * **Push meldingen**: Controleer de optie **Push meldingen** in het gedeelte **mogelijkheden** .
 
       ![Formulier voor het registreren van een nieuwe app-id](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-push.png)
 
-      This action generates your App ID and requests that you confirm the information. Select **Continue**, then select **Register** to confirm the new App ID.
+      Met deze actie wordt uw app-ID gegenereerd en wordt u gevraagd de gegevens te bevestigen. Selecteer **door gaan**en selecteer vervolgens **registreren** om de nieuwe app-id te bevestigen.
 
-      ![Confirm new App ID](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-register.png)
+      ![Nieuwe app-ID bevestigen](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-register.png)
 
-      After you select **Register**, you see the new App ID as a line item in the **Certificates, Identifiers & Profiles** page.
+      Nadat u **registreren**hebt geselecteerd, ziet u de nieuwe app-id als een regel item op de pagina **certificaten, Id's &-profielen** .
 
-4. In the **Certificates, Identifiers & Profiles** page, under **Identifiers**, locate the App ID line item that you just created, and select its row to display the **Edit your App ID Configuration** screen.
+4. Zoek op de pagina **certificaten, id's & profielen** , onder **id's**, het regel item app-id dat u zojuist hebt gemaakt en selecteer de rij om het scherm **uw app-id bewerken** weer te geven.
 
-5. Scroll down to the checked **Push Notifications** option, and then select **Configure** to create the certificate.
+5. Schuif omlaag naar de optie gecontroleerde **Push meldingen** en selecteer **configureren** om het certificaat te maken.
 
     ![Pagina app-id bewerken](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-6. The **Apple Push Notification service SSL Certificates** window appears. Select the **Create Certificate** button under the **Development SSL Certificate** section.
+6. Het venster SSL-certificaten voor de **Apple Push Notification-Service** wordt weer gegeven. Selecteer de knop **certificaat maken** in het gedeelte **SSL-certificaat voor ontwikkeling** .
 
     ![Certificaat voor app-id-knop maken](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
-    The **Create a new Certificate** screen is displayed.
+    Het scherm **een nieuw certificaat maken** wordt weer gegeven.
 
     > [!NOTE]
     > In deze zelfstudie wordt een ontwikkelingscertificaat gebruikt. Hetzelfde proces wordt gebruikt bij het registreren van een productiecertificaat. Zorg er wel voor dat u hetzelfde certificaattype gebruikt als u meldingen verzendt.
 
-1. Select **Choose File**, browse to the location where you saved the CSR file from the first task, and then double-click the certificate name to load it. Selecteer vervolgens **Doorgaan**.
+1. Selecteer **bestand kiezen**, blader naar de locatie waar u het CSR-bestand van de eerste taak hebt opgeslagen en dubbel klik vervolgens op de naam van het certificaat om het te laden. Selecteer vervolgens **Doorgaan**.
 
-1. After the portal creates the certificate, select the **Download** button. Save the certificate, and remember the location to which it's saved.
+1. Nadat het certificaat is gemaakt door de portal, selecteert u de knop **downloaden** . Sla het certificaat op en onthoud de locatie waar het wordt opgeslagen.
 
     ![Download-pagina voor gemaakte certificaat](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
-    The certificate is downloaded and saved to your computer in your **Downloads** folder.
+    Het certificaat wordt gedownload en opgeslagen op uw computer in de map **down loads** .
 
     ![Certificaatbestand zoeken in de map Downloads](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
     > [!NOTE]
-    > By default, the downloaded development certificate is named **aps_development.cer**.
+    > Het gedownloade ontwikkel certificaat heet standaard **aps_development. CER**.
 
 1. Dubbelklik op het gedownloade pushcertificaat **aps_development.cer**. Nu wordt het nieuwe certificaat in de sleutelhanger geïnstalleerd, zoals op de volgende afbeelding wordt weergegeven:
 
     ![Certificatenlijst in Sleutelhangertoegang geeft nieuw certificaat weer](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
-    > Although the name in your certificate might be different, the name will be prefixed with **Apple Development iOS Push Services**.
+    > Hoewel de naam in uw certificaat mogelijk anders is, wordt de naam voorafgegaan door **Apple Development IOS Push Services**.
 
-1. In Sleutelhangertoegang klikt u met de rechtermuisknop op het nieuwe pushcertificaat dat u hebt gemaakt in de categorie **Certificaten**. Select **Export**, name the file, select the **.p12** format, and then select **Save**.
+1. In Sleutelhangertoegang klikt u met de rechtermuisknop op het nieuwe pushcertificaat dat u hebt gemaakt in de categorie **Certificaten**. Selecteer **exporteren**, geef het bestand een naam, selecteer de **. p12** -indeling en selecteer vervolgens **Opslaan**.
 
     ![Certificaat exporteren in p12-indeling](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
-    You can choose to protect the certificate with a password, but this is optional. Click **OK** if you want to bypass password creation. Noteer de bestandsnaam en locatie van het geëxporteerde .p12-certificaat. They are used to enable authentication with APNs.
+    U kunt ervoor kiezen om het certificaat met een wacht woord te beveiligen, maar dit is optioneel. Klik op **OK** als u het maken van wacht woorden wilt overs Laan. Noteer de bestandsnaam en locatie van het geëxporteerde .p12-certificaat. Ze worden gebruikt om verificatie met APNs in te scha kelen.
 
     > [!NOTE]
-    > Your .p12 file name and location might be different than what is pictured in this tutorial.
+    > De naam en locatie van uw. P12-bestand kunnen afwijken van wat er in deze zelf studie wordt afgebeeld.
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Een inrichtingsprofiel voor de app maken
 
-1. Return to the [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456), select **Certificates, Identifiers & Profiles**, select **Profiles** from the left menu, and then select **+** to create a new profile. The **Register a New Provisioning Profile** screen appears.
+1. Ga terug naar de [IOS-inrichtings Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456), selecteer **certificaten, id's & profielen**, selecteer **profielen** in het linkermenu en selecteer vervolgens **+** om een nieuw profiel te maken. Het scherm **een nieuw inrichtings profiel registreren** wordt weer gegeven.
 
-1. Select **iOS App Development** under **Development** as the provisioning profile type, and then select **Continue**.
+1. Selecteer **ontwikkeling van Ios-apps** onder **ontwikkeling** als het type van het inrichtings profiel en selecteer vervolgens **door gaan**.
 
     ![Lijst met inrichtingsprofielen](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 
-1. Next, select the app ID you created from the **App ID** drop-down list, and select **Continue**.
+1. Selecteer vervolgens de App-ID die u hebt gemaakt in de vervolg keuzelijst **App-ID** en selecteer **door gaan**.
 
     ![Selecteer de app-id](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-select-appid-for-provisioning.png)
 
-1. In the **Select certificates** window, select the development certificate that you use for code signing, and select **Continue**. This certificate isn't the push certificate you created. If one does not exist, you must create it. If a certificate does exist, skip to the next step. To create a development certificate if one does not exist:
+1. Selecteer in het venster **certificaten selecteren** het ontwikkelings certificaat dat u gebruikt voor het ondertekenen van programma code en selecteer **door gaan**. Dit certificaat is niet het push certificaat dat u hebt gemaakt. Als er nog geen bestaat, moet u deze maken. Als er een certificaat bestaat, gaat u verder met de volgende stap. Een ontwikkelings certificaat maken als er geen bestaat:
 
-    1. If you see **No Certificates are available**, select **Create Certificate**.
-    2. In the **Software** section, select **Apple Development**. Selecteer vervolgens **Doorgaan**.
-    3. In the **Create a New Certificate** screen, select **Choose File**.
-    4. Browse to the **Certificate Signing Request** certificate you created earlier, select it, and then select **Open**.
+    1. Als **er geen certificaten beschikbaar zijn**, selecteert u **certificaat maken**.
+    2. Selecteer in de sectie **Software** de optie **Apple Development**. Selecteer vervolgens **Doorgaan**.
+    3. Selecteer in het scherm **een nieuw certificaat maken** de optie **bestand kiezen**.
+    4. Blader naar het certificaat voor **certificaat handtekening aanvragen** dat u eerder hebt gemaakt, selecteer dit en selecteer vervolgens **openen**.
     5. Selecteer **Doorgaan**.
-    6. Download the development certificate, and remember the location to which it's saved.
+    6. Down load het ontwikkel certificaat en onthoud de locatie waar het wordt opgeslagen.
 
-1. Return to the **Certificates, Identifiers & Profiles** page, select **Profiles** from the left menu, and then select **+** to create a new profile. The **Register a New Provisioning Profile** screen appears.
+1. Ga terug naar de pagina **certificaten, id's & profielen** , selecteer **profielen** in het menu links en selecteer vervolgens **+** om een nieuw profiel te maken. Het scherm **een nieuw inrichtings profiel registreren** wordt weer gegeven.
 
-1. In the **Select certificates** window, select the development certificate that you just created. Selecteer vervolgens **Doorgaan**.
+1. Selecteer in het venster **certificaten selecteren** het ontwikkelings certificaat dat u zojuist hebt gemaakt. Selecteer vervolgens **Doorgaan**.
 
-1. Next, select the devices to use for testing, and select **Continue**.
+1. Selecteer vervolgens de apparaten die u voor het testen wilt gebruiken en selecteer **door gaan**.
 
-1. Finally, choose a name for the profile in **Provisioning Profile Name**, and select **Generate**.
+1. Kies ten slotte een naam voor het profiel in **inrichtings profiel naam**en selecteer **genereren**.
 
     ![Een naam kiezen voor het inrichtingsprofiel](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
 
-1. When the new provisioning profile is created, select **Download**. Remember the location to which it's saved.
+1. Wanneer het nieuwe inrichtings profiel is gemaakt, selecteert u **downloaden**. Onthoud de locatie waar het bestand is opgeslagen.
 
-1. Browse to the location of the provisioning profile, and then double-click it to install it on your Xcode development machine.
+1. Blader naar de locatie van het inrichtings profiel en dubbel klik erop om het te installeren op uw Xcode-ontwikkel machine.
 
 ## <a name="create-a-notification-hub"></a>Een Notification Hub maken
 
-In this section, you create a notification hub and configure authentication with APNs by using the .p12 push certificate that you previously created. If you want to use a notification hub that you've already created, you can skip to step 5.
+In deze sectie maakt u een notification hub en configureert u verificatie met APNs met behulp van het. p12-push certificaat dat u eerder hebt gemaakt. Als u een notification hub wilt gebruiken die u al hebt gemaakt, kunt u door gaan naar stap 5.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
-## <a name="configure-your-notification-hub-with-apns-information"></a>Configure your notification hub with APNs information
+## <a name="configure-your-notification-hub-with-apns-information"></a>Uw notification hub configureren met APNs-gegevens
 
 1. Selecteer **Apple (APNS)** onder **Notification Services**.
 
 1. Selecteer **Certificaat**.
 
-1. Select the file icon.
+1. Selecteer het pictogram bestand.
 
-1. Select the .p12 file that you exported earlier, and then select **Open**.
+1. Selecteer het. P12-bestand dat u eerder hebt geëxporteerd en selecteer vervolgens **openen**.
 
-1. If required, specify the correct password.
+1. Geef, indien nodig, het juiste wacht woord op.
 
 1. Selecteer de modus **Sandbox**. Gebruik de modus **Productie** alleen als u pushmeldingen wilt verzenden naar gebruikers die uw app in de Store hebben gekocht.
 
@@ -172,4 +172,4 @@ In this section, you create a notification hub and configure authentication with
 
 1. Selecteer **Opslaan**.
 
-You've now configured your notification hub with APNs. You also have the connection strings to register your app and send push notifications.
+U hebt nu uw notification hub geconfigureerd met APNs. U hebt ook de verbindings reeksen om uw app te registreren en push meldingen te verzenden.

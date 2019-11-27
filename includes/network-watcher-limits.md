@@ -13,5 +13,5 @@ ms.locfileid: "74224512"
 ---
 | Bron | Standaardlimiet | Maximumaantal | Opmerking |
 | --- | --- | --- | --- |
-| Azure Network Watcher | 1 per region | 1 per region | Network Watcher is created to enable access to the service. Only one instance of Network Watcher is required per subscription per region. |
-| Packet capture sessions |10,000 per region | 10.000 |Number of sessions only, not saved captures. |
+| Azure Network Watcher | 1 per regio | 1 per regio | Network Watcher wordt gemaakt om toegang tot de service mogelijk te maken. Er is slechts één exemplaar van Network Watcher vereist per abonnement per regio. |
+| Pakket opname sessies |10.000 per regio | 10.000 |Alleen het aantal sessies, niet opgeslagen opnamen. |

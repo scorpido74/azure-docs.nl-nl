@@ -17,7 +17,7 @@ ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
 ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74275942"
@@ -108,7 +108,7 @@ Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u 
 | ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' losgekoppeld '. |Nee|
 | ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
 | ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
-| Authentication | De vooraf gedeelde sleutel komt niet overeen. | Ja|
+| Verificatie | De vooraf gedeelde sleutel komt niet overeen. | Ja|
 | PeerReachability | De peer gateway is niet bereikbaar. | Ja|
 | IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
 | WfpParse Error | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|

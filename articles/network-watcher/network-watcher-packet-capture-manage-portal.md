@@ -55,7 +55,7 @@ Als er een netwerk beveiligings groep is gekoppeld aan de netwerk interface of h
 
    - **Maximum aantal bytes per pakket**: het aantal bytes van elk pakket dat is vastgelegd. Als dit veld leeg blijft, worden alle bytes vastgelegd.
    - **Maximum aantal bytes per sessie**: het aantal bytes dat is vastgelegd. Zodra de waarde is bereikt, stopt het vastleggen van pakketten.
-   - **Tijds limiet (seconden)**: de tijds limiet voordat het vastleggen van pakketten wordt gestopt. De standaard waarde is 18.000 seconden.
+   - **Tijds limiet (seconden)** : de tijds limiet voordat het vastleggen van pakketten wordt gestopt. De standaard waarde is 18.000 seconden.
    - Filteren (optioneel). Selecteer **+ filter toevoegen**
      - **Protocol**: het protocol dat moet worden gefilterd voor de pakket opname. De beschik bare waarden zijn TCP, UDP en any.
      - **Lokaal IP-adres**: Hiermee wordt de pakket opname gefilterd op pakketten waarbij het lokale IP-adres overeenkomt met deze waarde.

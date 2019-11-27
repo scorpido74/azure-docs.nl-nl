@@ -11,29 +11,29 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224361"
 ---
-The following table lists the limits that apply to Azure IoT Hub Device Provisioning Service resources.
+De volgende tabel bevat de limieten die van toepassing zijn op Azure IoT Hub Device Provisioning Service-resources.
 
 | Bron | Limiet |
 | --- | --- |
-| Maximum device provisioning services per Azure subscription | 10 |
-| Maximum number of enrollments | 1\.000.000 |
-| Maximum number of registrations | 1\.000.000 |
-| Maximum number of enrollment groups | 100 |
-| Maximum number of CAs | 25 |
-| Maximum number of linked IoT hubs | 50 |
-| Maximum size of message | 96 KB|
+| Maximum aantal services voor het inrichten van apparaten per Azure-abonnement | 10 |
+| Maximum aantal inschrijvingen | 1\.000.000 |
+| Maximum aantal registraties | 1\.000.000 |
+| Maximum aantal registratie groepen | 100 |
+| Maximum aantal Ca's | 25 |
+| Maximum aantal gekoppelde IoT-hubs | 50 |
+| Maximale bericht grootte | 96 KB|
 
 
 > [!NOTE]
-> To increase the number of instances in your subscription, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
+> Als u het aantal exemplaren in uw abonnement wilt verhogen, neemt u contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).
 
 > [!NOTE]
-> To increase the number of enrollments and registrations on your provisioning service, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
+> Neem contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/)als u het aantal inschrijvingen en registraties voor uw inrichtings service wilt verhogen.
 
-The Device Provisioning Service throttles requests when the following quotas are exceeded.
+De Device Provisioning Service beperkt aanvragen wanneer de volgende quota worden overschreden.
 
-| Vertragen | Per-unit value |
+| Vertragen | Waarde per eenheid |
 | --- | --- |
-| Operations | 200/min/service |
+| Bewerkingen | 200/min/service |
 | Apparaatregistraties | 200/min/service |
-| Device polling operation | 5/10 sec/device |
+| Polling bewerking voor apparaten | 5/10 sec/apparaat |

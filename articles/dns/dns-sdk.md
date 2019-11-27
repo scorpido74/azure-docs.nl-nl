@@ -1,7 +1,7 @@
 ---
-title: Create DNS zones and record sets using the .NET SDK
+title: DNS-zones en-record sets maken met behulp van de .NET SDK
 titleSuffix: Azure DNS
-description: In this learning path, get started creating DNS zones and record sets in Azure DNS by using the .NET SDK.
+description: In dit leer traject gaat u aan de slag met het maken van DNS-zones en-record sets in Azure DNS met behulp van de .NET SDK.
 services: dns
 documentationcenter: na
 author: asudbring
@@ -21,36 +21,36 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74210960"
 ---
-# <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Create DNS zones and record sets using the .NET SDK
+# <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>DNS-zones en-record sets maken met behulp van de .NET SDK
 
-You can automate operations to create, delete, or update DNS zones, record sets, and records by using the DNS SDK with the .NET DNS Management library. A full Visual Studio project is available [here.](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)
+U kunt bewerkingen automatiseren om DNS-zones, record sets en records te maken, verwijderen of bijwerken met behulp van de DNS-SDK met de .NET DNS-beheer bibliotheek. Hier vindt u een volledig Visual Studio-project [.](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)
 
-## <a name="create-a-service-principal-account"></a>Create a service principal account
+## <a name="create-a-service-principal-account"></a>Een Service-Principal-account maken
 
-Typically, programmatic access to Azure resources is granted via a dedicated account rather than your own user credentials. These dedicated accounts are called 'service principal' accounts. To use the Azure DNS SDK sample project, you first need to create a service principal account and assign it the correct permissions.
+Normaal gesp roken wordt programmatische toegang tot Azure-resources verleend via een toegewezen account in plaats van uw eigen gebruikers referenties. Deze toegewezen accounts worden ' Service Principal-accounts ' genoemd. Als u het voorbeeld project van de Azure DNS SDK wilt gebruiken, moet u eerst een Service-Principal-account maken en de juiste machtigingen toewijzen.
 
-1. Follow [these instructions](../active-directory/develop/howto-authenticate-service-principal-powershell.md) to create a service principal account (the Azure DNS SDK sample project assumes password-based authentication.)
-2. Create a resource group ([here's how](../azure-resource-manager/resource-group-template-deploy-portal.md)).
-3. Use Azure RBAC to grant the service principal account 'DNS Zone Contributor' permissions to the resource group ([here's how](../role-based-access-control/role-assignments-portal.md).)
-4. If using the Azure DNS SDK sample project, edit the 'program.cs' file as follows:
+1. Volg [deze instructies](../active-directory/develop/howto-authenticate-service-principal-powershell.md) voor het maken van een Service-Principal-account (in het Azure DNS SDK-voorbeeld project wordt uitgegaan van verificatie op basis van wacht woorden.)
+2. Een resource groep maken ([hoe](../azure-resource-manager/resource-group-template-deploy-portal.md)).
+3. Gebruik Azure RBAC om de machtigingen voor de DNS-zone bijdrager van het service-account te verlenen aan de resource groep ([hoe](../role-based-access-control/role-assignments-portal.md).)
+4. Als u het voorbeeld project van de Azure DNS SDK gebruikt, bewerkt u het bestand Program. CS als volgt:
 
-   * Insert the correct values for the `tenantId`, `clientId` (also known as account ID), `secret` (service principal account password) and `subscriptionId` as used in step 1.
-   * Enter the resource group name chosen in step 2.
-   * Enter a DNS zone name of your choice.
+   * Voer de juiste waarden in voor de `tenantId`, `clientId` (ook wel account-ID genoemd), `secret` (Service Principal account password) en `subscriptionId` zoals gebruikt in stap 1.
+   * Voer de naam in van de resource groep die u in stap 2 hebt gekozen.
+   * Voer de naam van de DNS-zone van uw keuze in.
 
-## <a name="nuget-packages-and-namespace-declarations"></a>NuGet packages and namespace declarations
+## <a name="nuget-packages-and-namespace-declarations"></a>NuGet-pakketten en naam ruimte declaraties
 
-To use the Azure DNS .NET SDK, you need to install the **Azure DNS Management Library** NuGet package and other required Azure packages.
+Als u de Azure DNS .NET SDK wilt gebruiken, moet u het **Azure DNS Management Library** NuGet-pakket en andere vereiste Azure-pakketten installeren.
 
-1. In **Visual Studio**, open a project or new project.
-2. Go to **Tools** **>** **NuGet Package Manager** **>** **Manage NuGet Packages for Solution...** .
-3. Click **Browse**, enable the **Include prerelease** checkbox, and type **Microsoft.Azure.Management.Dns** into the search box.
-4. Select the package and click **Install** to add it to your Visual Studio project.
-5. Repeat the process above to also install the following packages: **Microsoft.Rest.ClientRuntime.Azure.Authentication** and **Microsoft.Azure.Management.ResourceManager**.
+1. Open in **Visual Studio**een project of nieuw project.
+2. Ga naar **Hulpprogram ma's** **>** **NuGet package manager** **>** **NuGet-pakketten beheren voor oplossing...** .
+3. Klik op **Bladeren**, schakel het selectie vakje **include Prerelease** in en typ **micro soft. Azure. Management. DNS** in het zoekvak.
+4. Selecteer het pakket en klik op **installeren** om dit toe te voegen aan uw Visual Studio-project.
+5. Herhaal het bovenstaande proces om ook de volgende pakketten te installeren: **micro soft. rest. ClientRuntime. Azure. Authentication** en **micro soft. Azure. Management. Resource Manager**.
 
 ## <a name="add-namespace-declarations"></a>Naamruimtedeclaraties toevoegen
 
-Add the following namespace declarations
+De volgende naam ruimte declaraties toevoegen
 
 ```cs
 using Microsoft.Rest.Azure.Authentication;
@@ -58,9 +58,9 @@ using Microsoft.Azure.Management.Dns;
 using Microsoft.Azure.Management.Dns.Models;
 ```
 
-## <a name="initialize-the-dns-management-client"></a>Initialize the DNS management client
+## <a name="initialize-the-dns-management-client"></a>De DNS-beheer client initialiseren
 
-The `DnsManagementClient` contains the methods and properties necessary for managing DNS zones and record sets.  The following code logs into the service principal account and creates a `DnsManagementClient` object.
+De `DnsManagementClient` bevat de methoden en eigenschappen die nodig zijn voor het beheren van DNS-zones en-record sets.  De volgende code meldt zich aan bij het account van de Service-Principal en maakt een `DnsManagementClient`-object.
 
 ```cs
 // Build the service credentials and DNS management client
@@ -69,16 +69,16 @@ var dnsClient = new DnsManagementClient(serviceCreds);
 dnsClient.SubscriptionId = subscriptionId;
 ```
 
-## <a name="create-or-update-a-dns-zone"></a>Create or update a DNS zone
+## <a name="create-or-update-a-dns-zone"></a>Een DNS-zone maken of bijwerken
 
-To create a DNS zone, first a "Zone" object is created to contain the DNS zone parameters. Because DNS zones are not linked to a specific region, the location is set to 'global'. In this example, an [Azure Resource Manager 'tag'](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) is also added to the zone.
+Als u een DNS-zone wilt maken, maakt u eerst een ' zone '-object dat de para meters van de DNS-zone bevat. Omdat DNS-zones niet zijn gekoppeld aan een specifieke regio, wordt de locatie ingesteld op Global. In dit voor beeld wordt een [Azure Resource Manager ' tag '](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) ook toegevoegd aan de zone.
 
-To actually create or update the zone in Azure DNS, the zone object containing the zone parameters is passed to the `DnsManagementClient.Zones.CreateOrUpdateAsyc` method.
+Als u de zone in Azure DNS daad werkelijk wilt maken of bijwerken, wordt het zone-object dat de zone parameters bevat door gegeven aan de methode `DnsManagementClient.Zones.CreateOrUpdateAsyc`.
 
 > [!NOTE]
-> DnsManagementClient supports three modes of operation: synchronous ('CreateOrUpdate'), asynchronous ('CreateOrUpdateAsync'), or asynchronous with access to the HTTP response ('CreateOrUpdateWithHttpMessagesAsync').  You can choose any of these modes, depending on your application needs.
+> DnsManagementClient ondersteunt drie werk modi: synchroon (' CreateOrUpdate '), asynchroon (' CreateOrUpdateAsync ') of asynchroon met toegang tot het HTTP-antwoord (' CreateOrUpdateWithHttpMessagesAsync ').  U kunt een van deze modi kiezen, afhankelijk van de behoeften van uw toepassing.
 
-Azure DNS supports optimistic concurrency, called [Etags](dns-getstarted-create-dnszone.md). In this example, specifying "*" for the 'If-None-Match' header tells Azure DNS to create a DNS zone if one does not already exist.  The call fails if a zone with the given name already exists in the given resource group.
+Azure DNS ondersteunt optimistische gelijktijdigheid, met de naam [eTags](dns-getstarted-create-dnszone.md). In dit voor beeld geeft u ' * ' op voor de header If-None-Match om Azure DNS om een DNS-zone te maken als deze nog niet bestaat.  De aanroep mislukt als er al een zone met de opgegeven naam bestaat in de opgegeven resource groep.
 
 ```cs
 // Create zone parameters
@@ -95,13 +95,13 @@ dnsZoneParams.Tags.Add("dept", "finance");
 var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneName, dnsZoneParams, null, "*");
 ```
 
-## <a name="create-dns-record-sets-and-records"></a>Create DNS record sets and records
+## <a name="create-dns-record-sets-and-records"></a>DNS-record sets en-records maken
 
-DNS records are managed as a record set. A record set is a set of records with the same name and record type within a zone.  The record set name is relative to the zone name, not the fully qualified DNS name.
+DNS-records worden beheerd als een recordset. Een recordset is een set records met dezelfde naam en hetzelfde record type in een zone.  De naam van de recordset is relatief ten opzichte van de zone naam en niet de volledig gekwalificeerde DNS-naam.
 
-To create or update a record set, a "RecordSet" parameters object is created and passed to `DnsManagementClient.RecordSets.CreateOrUpdateAsync`. As with DNS zones, there are three modes of operation: synchronous ('CreateOrUpdate'), asynchronous ('CreateOrUpdateAsync'), or asynchronous with access to the HTTP response ('CreateOrUpdateWithHttpMessagesAsync').
+Om een RecordSet te maken of bij te werken, wordt het object verzamelings parameters gemaakt en door gegeven aan `DnsManagementClient.RecordSets.CreateOrUpdateAsync`. Net als bij DNS-zones zijn er drie werk modi: synchroon (' CreateOrUpdate '), asynchroon (' CreateOrUpdateAsync ') of asynchroon met toegang tot het HTTP-antwoord (' CreateOrUpdateWithHttpMessagesAsync ').
 
-As with DNS zones, operations on record sets include support for optimistic concurrency.  In this example, since neither 'If-Match' nor 'If-None-Match' are specified, the record set is always created.  This call overwrites any existing record set with the same name and record type in this DNS zone.
+Net als bij DNS-zones bevatten bewerkingen op record sets ondersteuning voor optimistische gelijktijdigheid.  In dit voor beeld, omdat geen if-Match of If-None-Match is opgegeven, wordt de recordset altijd gemaakt.  Deze aanroep overschrijft een bestaande recordset met dezelfde naam en hetzelfde record type in deze DNS-zone.
 
 ```cs
 // Create record set parameters
@@ -121,17 +121,17 @@ recordSetParams.Metadata.Add("user", "Mary");
 var recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zoneName, recordSetName, RecordType.A, recordSetParams);
 ```
 
-## <a name="get-zones-and-record-sets"></a>Get zones and record sets
+## <a name="get-zones-and-record-sets"></a>Zones en record sets ophalen
 
-The `DnsManagementClient.Zones.Get` and `DnsManagementClient.RecordSets.Get` methods retrieve individual zones and record sets, respectively. RecordSets are identified by their type, name, and the zone and resource group they exist in. Zones are identified by their name and the resource group they exist in.
+Met de methoden `DnsManagementClient.Zones.Get` en `DnsManagementClient.RecordSets.Get` worden respectievelijk afzonderlijke zones en record sets opgehaald. Record sets worden geïdentificeerd aan de hand van het type, de naam en de zone en de resource groep waarin ze zich bevinden. Zones worden geïdentificeerd aan de hand van hun naam en de resource groep waarin ze zich bevinden.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
 ```
 
-## <a name="update-an-existing-record-set"></a>Update an existing record set
+## <a name="update-an-existing-record-set"></a>Een bestaande recordset bijwerken
 
-To update an existing DNS record set, first retrieve the record set, then update the record set contents, then submit the change.  In this example, we specify the 'Etag' from the retrieved record set in the 'If-Match' parameter. The call fails if a concurrent operation has modified the record set in the meantime.
+Als u een bestaande DNS-recordset wilt bijwerken, moet u eerst de recordset ophalen, vervolgens de inhoud van de recordset bijwerken en vervolgens de wijziging verzenden.  In dit voor beeld geven we de ' ETAG ' op uit de opgehaalde recordset in de if-match-para meter. De aanroep mislukt als een gelijktijdige bewerking de recordset in de tussen tijd heeft gewijzigd.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
@@ -144,11 +144,11 @@ recordSet.ARecords.Add(new ARecord("5.6.7.8"));
 recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zoneName, recordSetName, RecordType.A, recordSet, recordSet.Etag);
 ```
 
-## <a name="list-zones-and-record-sets"></a>List zones and record sets
+## <a name="list-zones-and-record-sets"></a>Zones en record sets weer geven
 
-To list zones, use the *DnsManagementClient.Zones.List...* methods, which support listing either all zones in a given resource group or all zones in a given Azure subscription (across resource groups.) To list record sets, use *DnsManagementClient.RecordSets.List...* methods, which support either listing all record sets in a given zone or only those record sets of a specific type.
+Als u zones wilt weer geven, gebruikt u de methoden *DnsManagementClient. zones. list...* , die ondersteuning bieden voor alle zones in een bepaalde resource groep of voor alle zones in een bepaald Azure-abonnement (in resource groepen). Als u record sets wilt weer geven, gebruikt u *DnsManagementClient. recordsets. list...* -methoden, die ondersteuning bieden voor alle record sets in een bepaalde zone of alleen de record sets van een bepaald type.
 
-Note  when listing zones and record sets that results may be paginated.  The following example shows how to iterate through the pages of results. (An artificially small page size of '2' is used to force paging; in practice this parameter should be omitted and the default page size used.)
+Opmerking wanneer zones en record sets worden vermeld die de resultaten kunnen pagineren.  In het volgende voor beeld ziet u hoe u de pagina's met resultaten doorloopt. (Een kunst matige kleine pagina grootte van ' 2 ' wordt gebruikt om paginering af te dwingen. in de praktijk moet u deze para meter weglaten en de standaard pagina grootte gebruiken.)
 
 ```cs
 // Note: in this demo, we'll use a very small page size (2 record sets) to demonstrate paging
@@ -166,4 +166,4 @@ while (page.NextPageLink != null)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Download the [Azure DNS .NET SDK sample project](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True), which includes further examples on how to use the Azure DNS .NET SDK, including examples for other DNS record types.
+Down load het [Azure DNS .NET SDK-voorbeeld project](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True), dat aanvullende voor beelden bevat over het gebruik van de Azure DNS .NET SDK, met inbegrip van voor beelden voor andere DNS-record typen.

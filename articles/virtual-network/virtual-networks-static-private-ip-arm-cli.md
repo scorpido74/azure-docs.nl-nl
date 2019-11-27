@@ -1,6 +1,6 @@
 ---
-title: Configure private IP addresses for VMs - Azure CLI
-description: Learn how to configure private IP addresses for virtual machines using the Azure command-line interface (CLI).
+title: Privé-IP-adressen voor Vm's configureren-Azure CLI
+description: Meer informatie over het configureren van privé-IP-adressen voor virtuele machines met behulp van de Azure-opdracht regel interface (CLI).
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -22,7 +22,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74404467"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Configure private IP addresses for a virtual machine using the Azure CLI
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Privé IP-adressen configureren voor een virtuele machine met behulp van de Azure CLI
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
@@ -30,23 +30,23 @@ ms.locfileid: "74404467"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Dit artikel is van toepassing op het Resource Manager-implementatiemodel. You can also [manage static private IP address in the classic deployment model](virtual-networks-static-private-ip-classic-cli.md).
+Dit artikel is van toepassing op het Resource Manager-implementatiemodel. U kunt ook [een statisch privé-IP-adres beheren in het klassieke implementatie model](virtual-networks-static-private-ip-classic-cli.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> The following sample Azure CLI commands expect an existing simple environment. If you want to run the commands as they are displayed in this document, first build the test environment described in [create a vnet](quick-create-cli.md).
+> In het volgende voor beeld van Azure CLI-opdrachten wordt een bestaande eenvoudige omgeving verwacht. Als u de opdrachten wilt uitvoeren zoals ze worden weer gegeven in dit document, bouwt u eerst de test omgeving op die wordt beschreven in [een vnet maken](quick-create-cli.md).
 
-## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Specify a static private IP address when creating a VM
+## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Een statisch privé-IP-adres opgeven tijdens het maken van een VM
 
-To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet* with a static private IP of *192.168.1.101*, complete the following steps:
+Als u een virtuele machine met de naam *DNS01* in het *frontend* -subnet van een VNet met de naam *TestVNet* met een statisch privé-IP van *192.168.1.101*wilt maken, voert u de volgende stappen uit:
 
-1. If you haven't yet, install and configure the latest [Azure CLI](/cli/azure/install-azure-cli) and log in to an Azure account using [az login](/cli/azure/reference-index).
+1. Als u dit nog niet hebt gedaan, installeert en configureert u de nieuwste [Azure cli](/cli/azure/install-azure-cli) en meldt u zich aan bij een Azure-account met behulp van [AZ login](/cli/azure/reference-index).
 
-2. Create a public IP for the VM with the [az network public-ip create](/cli/azure/network/public-ip) command. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters.
+2. Maak een openbaar IP-adres voor de virtuele machine met de opdracht [AZ Network Public-IP Create](/cli/azure/network/public-ip) . De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters.
 
     > [!NOTE]
-    > You may want or need to use different values for your arguments in this and subsequent steps, depending upon your environment.
+    > U kunt in deze en de volgende stappen verschillende waarden voor uw argumenten gebruiken, afhankelijk van uw omgeving.
 
     ```azurecli
     az network public-ip create \
@@ -70,11 +70,11 @@ To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet*
     }
     ```
 
-   * `--resource-group`: Name of the resource group in which to create the public IP.
-   * `--name`: Name of the public IP.
-   * `--location`: Azure region in which to create the public IP.
+   * `--resource-group`: de naam van de resource groep waarin het open bare IP-adres moet worden gemaakt.
+   * `--name`: de naam van het open bare IP-adres.
+   * `--location`: Azure-regio waarin het open bare IP-adres moet worden gemaakt.
 
-3. Run the [az network nic create](/cli/azure/network/nic) command to create a NIC with a static private IP. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters. 
+3. Voer de opdracht [AZ Network NIC Create](/cli/azure/network/nic) uit om een NIC met een statisch privé-IP-adres te maken. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters. 
    
     ```azurecli
     az network nic create \
@@ -122,11 +122,11 @@ To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet*
     
     Parameters:
 
-    * `--private-ip-address`: Static private IP address for the NIC.
-    * `--vnet-name`: Name of the VNet in which to create the NIC.
-    * `--subnet`: Name of the subnet in which to create the NIC.
+    * `--private-ip-address`: statisch persoonlijk IP-adres voor de NIC.
+    * `--vnet-name`: de naam van het VNet waarin de NIC moet worden gemaakt.
+    * `--subnet`: de naam van het subnet waarin de NIC moet worden gemaakt.
 
-4. Run the [azure vm create](/cli/azure/vm/nic) command to create the VM using the public IP and NIC created previously. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters.
+4. Voer de opdracht [Azure VM Create](/cli/azure/vm/nic) uit om de virtuele machine te maken met behulp van de open bare IP en NIC die eerder zijn gemaakt. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters.
    
     ```azurecli
     az vm create \
@@ -154,15 +154,15 @@ To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet*
     }
     ```
    
-   Parameters other than the basic [az vm create](/cli/azure/vm) parameters.
+   Andere para meters dan de Basic [AZ VM Create](/cli/azure/vm) para meters.
 
-   * `--nics`: Name of the NIC to which the VM is attached.
+   * `--nics`: de naam van de NIC waaraan de virtuele machine is gekoppeld.
    
-It’s recommended that you do not statically assign the private IP assigned to the Azure virtual machine within the operating system of a VM, unless necessary, such as when [assigning multiple IP addresses to a Windows VM](virtual-network-multiple-ip-addresses-cli.md). If you do manually set the private IP address within the operating system, ensure that it is the same address as the private IP address assigned to the Azure [network interface](virtual-network-network-interface-addresses.md#change-ip-address-settings), or you can lose connectivity to the virtual machine. Learn more about [private IP address](virtual-network-network-interface-addresses.md#private) settings.
+Het is raadzaam dat u het privé-IP-adres dat is toegewezen aan de virtuele machine van Azure niet statisch toewijst in het besturings systeem van een VM, tenzij dit nodig is, bijvoorbeeld wanneer [u meerdere IP-adressen toewijst aan een Windows-VM](virtual-network-multiple-ip-addresses-cli.md). Als u het privé-IP-adres hand matig instelt in het besturings systeem, moet u ervoor zorgen dat het hetzelfde adres is als het privé-IP-adres dat is toegewezen aan de Azure- [netwerk interface](virtual-network-network-interface-addresses.md#change-ip-address-settings), of u kunt de verbinding met de virtuele machine verliezen. Meer informatie over instellingen voor [privé-IP-adressen](virtual-network-network-interface-addresses.md#private) .
 
-## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Retrieve static private IP address information for a VM
+## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Informatie over statisch privé-IP-adres ophalen voor een virtuele machine
 
-Run the following Azure CLI command to observe the values for *Private IP alloc-method* and *Private IP address*:
+Voer de volgende Azure CLI-opdracht uit om de waarden voor de *persoonlijke IP-toewijzings methode* en het *privé-IP-adres*te bekijken:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -174,7 +174,7 @@ Verwachte uitvoer:
 "192.168.1.101"
 ```
 
-To display the specific IP information of the NIC for that VM, query the NIC specifically:
+Als u de specifieke IP-gegevens van de NIC voor die VM wilt weer geven, kunt u het volgende in een query uitvoeren op de NIC:
 
 ```azurecli
 az network nic show \
@@ -195,15 +195,15 @@ De uitvoer ziet er ongeveer zo uit:
 }
 ```
 
-## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Remove a static private IP address from a VM
+## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Een statisch privé-IP-adres uit een virtuele machine verwijderen
 
-You cannot remove a static private IP address from a NIC in Azure CLI for Azure Resource Manager deployments. You must:
-- Create a new NIC that uses a dynamic IP
-- Set the NIC on the VM do the newly created NIC. 
+U kunt een statisch privé-IP-adres niet verwijderen uit een NIC in azure CLI voor Azure Resource Manager-implementaties. U moet het volgende doen:
+- Een nieuwe NIC maken die gebruikmaakt van een dynamisch IP-adres
+- Stel de NIC op de virtuele machine in op de zojuist gemaakte NIC. 
 
-To change the NIC for the VM used in the previous commands, complete the following steps:
+Voer de volgende stappen uit om de NIC voor de virtuele machine te wijzigen die wordt gebruikt in de vorige opdrachten:
 
-1. Run the **azure network nic create** command to create a new NIC using dynamic IP allocation with a new IP address. Because no IP address is specified, the allocation method is **Dynamic**.
+1. Voer de opdracht **Azure Network NIC Create** uit om een nieuwe NIC te maken met behulp van dynamische IP-toewijzing met een nieuw IP-adres. Omdat er geen IP-adres is opgegeven, is de toewijzings methode **dynamisch**.
 
     ```azurecli
     az network nic create     \
@@ -248,7 +248,7 @@ To change the NIC for the VM used in the previous commands, complete the followi
     }
     ```
 
-2. Run the **azure vm set** command to change the NIC used by the VM.
+2. Voer de **Azure VM set** -opdracht uit om de NIC te wijzigen die door de virtuele machine wordt gebruikt.
    
     ```azurecli
    az vm nic set --resource-group TestRG --vm-name DNS01 --nics TestNIC2
@@ -267,8 +267,8 @@ To change the NIC for the VM used in the previous commands, complete the followi
     ```
 
     > [!NOTE]
-    > If the VM is large enough to have more than one NIC, run the **azure network nic delete** command to delete the old NIC.
+    > Als de virtuele machine groot genoeg is om meer dan één NIC te hebben, voert u de opdracht **Azure Network NIC verwijderen** uit om de oude NIC te verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Learn about managing [IP address settings](virtual-network-network-interface-addresses.md).
+Meer informatie over het beheren van [IP-adres instellingen](virtual-network-network-interface-addresses.md).

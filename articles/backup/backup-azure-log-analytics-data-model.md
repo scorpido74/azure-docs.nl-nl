@@ -33,7 +33,7 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 | AlertUniqueId_s |Tekst |De unieke id van de gegenereerde waarschuwing |
 | AlertType_s |Tekst |Type waarschuwing, bijvoorbeeld back-up |
 | AlertStatus_s |Tekst |De status van de waarschuwing, bijvoorbeeld actief |
-| AlertOccurrenceDateTime_s |Datum/tijd |Datum en tijd waarop de waarschuwing is gemaakt |
+| AlertOccurrenceDateTime_s |Date/Time |Datum en tijd waarop de waarschuwing is gemaakt |
 | AlertSeverity_s |Tekst |Ernst van de waarschuwing, bijvoorbeeld kritiek |
 |AlertTimeToResolveInMinutes_s    | Aantal        |De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.         |
 |AlertConsolidationStatus_s   |Tekst         |Vaststellen of de waarschuwing een geconsolideerde waarschuwing is         |
@@ -48,7 +48,7 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 | BackupManagementType_s |Tekst |Provider type voor het uitvoeren van back-ups, bijvoorbeeld IaaSVM, FileFolder waartoe deze waarschuwing behoort |
 | OperationName |Tekst |De naam van de huidige bewerking, bijvoorbeeld waarschuwing |
 | Categorie |Tekst |Categorie diagnostische gegevens die naar Azure Monitor logboeken worden gepusht. Always AzureBackupReport |
-| Resource |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
+| Bron |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | ProtectedContainerUniqueId_s |Tekst |De unieke id van de beveiligde server die is gekoppeld aan de waarschuwing (was ProtectedServerUniqueId_s in v1)|
 | VaultUniqueId_s |Tekst |De unieke id van de beveiligde kluis die is gekoppeld aan de waarschuwing |
 | SourceSystem |Tekst |Bron systeem van de huidige gegevens-Azure |
@@ -80,7 +80,7 @@ Deze tabel bevat details over velden die betrekking hebben op Back-upitems.
 | BackupManagementType_s |Tekst |Provider type voor het uitvoeren van back-ups, bijvoorbeeld IaaSVM, FileFolder waaraan dit back-upitem behoort |
 | OperationName |Tekst |De naam van de bewerking, bijvoorbeeld BackupItem |
 | Categorie |Tekst |Categorie diagnostische gegevens die naar Azure Monitor logboeken worden gepusht. Always AzureBackupReport |
-| Resource |Tekst |Resource waarvoor gegevens worden verzameld, bijvoorbeeld Recovery Services kluis naam |
+| Bron |Tekst |Resource waarvoor gegevens worden verzameld, bijvoorbeeld Recovery Services kluis naam |
 | SourceSystem |Tekst |Bron systeem van de huidige gegevens-Azure |
 | ResourceId |Tekst |De resource-ID voor de gegevens die worden verzameld, bijvoorbeeld Recovery Services kluis Resource-ID |
 | SubscriptionId |Tekst |De abonnements-id van de resource (voor ex. Recovery Services kluis) voor gegevens die worden verzameld |
@@ -103,7 +103,7 @@ Deze tabel bevat details over koppelingen van back-upitems met verschillende ent
 | BackupManagementServerUniqueId_s |Tekst | Veld voor het identificeren van de back-upbeheerserver waarop het back-upitem is beveiligd, indien van toepassing |
 | Categorie |Tekst |Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Log Analytics zijn gepusht, en is AzureBackupReport |
 | OperationName |Tekst |Dit veld vertegenwoordigt de naam van de huidige bewerking-BackupItemAssociation |
-| Resource |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
+| Bron |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | ProtectedContainerUniqueId_s |Tekst |De unieke id van de beveiligde server die is gekoppeld aan het back-upitem (was ProtectedServerUniqueId_s in v1) |
 | VaultUniqueId_s |Tekst |De unieke id van de kluis die het back-upitem bevat |
 | SourceSystem |Tekst |Bron systeem van de huidige gegevens-Azure |
@@ -145,21 +145,21 @@ Deze tabel bevat details over projectgerelateerde velden.
 | BackupManagementType_s |Tekst |Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
 | OperationName |Tekst |Dit veld bevat de naam van de huidige bewerking-taak |
 | Categorie |Tekst |Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Azure Monitor logboeken zijn gepusht, en is AzureBackupReport |
-| Resource |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
+| Bron |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | ProtectedServerUniqueId_s |Tekst |De unieke id van de beveiligde server die aan de taak is gekoppeld |
 | ProtectedContainerUniqueId_s |Tekst | Unieke ID voor het identificeren van de beveiligde container waarop de taak wordt uitgevoerd |
 | VaultUniqueId_s |Tekst |De unieke id van de beveiligde kluis |
 | JobOperation_s |Tekst |Bewerking waarvoor de taak wordt uitgevoerd bijvoorbeeld back-ups maken, herstellen, back-up configureren |
 | JobStatus_s |Tekst |De status van de voltooide taak, bijvoorbeeld voltooid, is mislukt |
 | JobFailureCode_s |Tekst |De teken reeks voor de fout code omdat de taak fout is opgetreden |
-| JobStartDateTime_s |Datum/tijd |Datum en tijd waarop de taak is gestart |
+| JobStartDateTime_s |Date/Time |Datum en tijd waarop de taak is gestart |
 | BackupStorageDestination_s |Tekst |Doel van back-upopslag, bijvoorbeeld Cloud, schijf  |
 | AdHocOrScheduledJob_s |Tekst | Veld om op te geven of de taak ad-hoc of gepland is |
 | JobDurationInSecs_s | Aantal |Totale taak duur in seconden |
 | DataTransferredInMB_s | Aantal |Gegevens die worden overgebracht in MB voor deze taak|
 | JobUniqueId_g |Tekst |Unieke ID voor het identificeren van de taak |
 | RecoveryJobDestination_s |Tekst | Doel van een herstel taak, waarbij de gegevens worden hersteld |
-| RecoveryJobRPDateTime_s |DateTime | De datum, het tijdstip waarop het herstel punt dat wordt hersteld, is gemaakt |
+| RecoveryJobRPDateTime_s |Datum/tijd | De datum, het tijdstip waarop het herstel punt dat wordt hersteld, is gemaakt |
 | RecoveryJobRPLocation_s |Tekst | De locatie waar het herstel punt dat wordt hersteld is opgeslagen|
 | SourceSystem |Tekst |Bron systeem van de huidige gegevens-Azure |
 | ResourceId |Tekst |De resource-id voor de gegevens die worden verzameld. Bijvoorbeeld Recovery Services kluis Resource-ID|
@@ -180,7 +180,7 @@ Deze tabel bevat details over velden die betrekking hebben op het beleid.
 | BackupManagementType_s |Tekst ||Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
 | OperationName |Tekst ||Dit veld bevat de naam van de huidige bewerking-beleid |
 | Categorie |Tekst ||Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Azure Monitor logboeken zijn gepusht, en is AzureBackupReport |
-| Resource |Tekst ||Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
+| Bron |Tekst ||Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | PolicyUniqueId_g |Tekst ||Unieke ID voor het identificeren van het beleid |
 | PolicyName_s |Tekst ||De naam van het beleid dat is gedefinieerd |
 | BackupFrequency_s |Tekst ||De frequentie waarmee back-ups worden uitgevoerd, bijvoorbeeld dagelijks, wekelijks |
@@ -204,7 +204,7 @@ Deze tabel bevat details over velden die betrekking hebben op het beleid.
 | YearlyRetentionDaysOfTheMonth_s |Tekst ||De datums van de maand die zijn geselecteerd voor een jaarlijkse Bewaar periode |
 | SynchronisationFrequencyPerDay_s |Geheel getal |v2|Aantal keren per dag dat een back-up van een bestand wordt gesynchroniseerd voor SC DPM en MABS |
 | DiffBackupFormat_s |Tekst |v2|Indeling voor differentiële back-ups voor SQL in azure VM-back-up |
-| DiffBackupTime_s |Time |v2|Tijd voor differentiële back-ups voor SQL in azure VM-back-up|
+| DiffBackupTime_s |Tijd |v2|Tijd voor differentiële back-ups voor SQL in azure VM-back-up|
 | DiffBackupRetentionDuration_s |Decimaal getal |v2|Bewaar periode voor differentiële back-ups voor SQL in azure VM-back-up|
 | LogBackupFrequency_s |Decimaal getal |v2|Frequentie voor logboek back-ups voor SQL|
 | LogBackupRetentionDuration_s |Decimaal getal |v2|Bewaar periode voor back-ups van Logboeken voor SQL in azure VM-back-up|
@@ -228,7 +228,7 @@ Deze tabel bevat details over beleids koppelingen met verschillende entiteiten.
 | BackupManagementType_s |Tekst ||Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
 | OperationName |Tekst ||Dit veld vertegenwoordigt de naam van de huidige bewerking-PolicyAssociation |
 | Categorie |Tekst ||Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Azure Monitor logboeken zijn gepusht, en is AzureBackupReport |
-| Resource |Tekst ||Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
+| Bron |Tekst ||Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | PolicyUniqueId_g |Tekst ||Unieke ID voor het identificeren van het beleid |
 | VaultUniqueId_s |Tekst ||De unieke ID van de kluis waartoe dit beleid behoort |
 | BackupManagementServerUniqueId_s |Tekst |v2 |Veld voor het identificeren van de back-upbeheerserver waarop het back-upitem is beveiligd, indien van toepassing        |
@@ -272,7 +272,7 @@ Deze tabel bevat details over velden die betrekking hebben op opslag.
 | BackupManagementType_s |Tekst |Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
 | OperationName |Tekst |Dit veld bevat de naam van de huidige bewerking-opslag |
 | Categorie |Tekst |Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Azure Monitor logboeken zijn gepusht, en is AzureBackupReport |
-| Resource |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
+| Bron |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | ProtectedServerUniqueId_s |Tekst |De unieke ID van de beveiligde server waarvoor opslag wordt berekend |
 | VaultUniqueId_s |Tekst |De unieke ID van de kluis voor opslag wordt berekend |
 | SourceSystem |Tekst |Bron systeem van de huidige gegevens-Azure |
@@ -311,7 +311,7 @@ Deze tabel bevat details over aan de kluis gerelateerde velden.
 | State_s |Tekst |Huidige status van het kluis object, bijvoorbeeld actief, verwijderd |
 | OperationName |Tekst |Dit veld bevat de naam van de huidige bewerking-kluis |
 | Categorie |Tekst |Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Azure Monitor logboeken zijn gepusht, en is AzureBackupReport |
-| Resource |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
+| Bron |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | VaultUniqueId_s |Tekst |De unieke ID van de kluis |
 | VaultName_s |Tekst |Naam van de kluis |
 | AzureDataCenter_s |Tekst |Data Center waar de kluis zich bevindt |

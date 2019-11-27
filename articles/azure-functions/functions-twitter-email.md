@@ -43,7 +43,7 @@ Doorloop nu deze stappen om de functie-app te maken, als u dit nog niet hebt ged
 
 De Cognitive Services-API's zijn als afzonderlijke resources beschikbaar in Azure. Gebruik de Text Analytics API om het gevoel van de tweets te detecteren die worden bijgehouden.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Klik in de linkerbovenhoek van Azure Portal op **Een resource maken**.
 
@@ -121,7 +121,7 @@ Functies bieden een handige manier voor de offload van verwerkingstaken in een w
     ```
     Deze functiecode retourneert een kleurcategorie op basis van de gevoelsscore die in de aanvraag is ontvangen. 
 
-4. To test the function, click **Test** at the far right to expand the Test tab. Type a value of `0.2` for the **Request body**, and then click **Run**. De waarde **RED** wordt geretourneerd in de hoofdtekst van het antwoord. 
+4. Als u de functie wilt testen, klikt u helemaal rechts op **testen** om het tabblad testen uit te vouwen. Typ een waarde van `0.2` voor de **hoofd tekst**van de aanvraag en klik vervolgens op **uitvoeren**. Er wordt een **RODE** waarde geretourneerd in de hoofdtekst van het antwoord. 
 
     ![Test de functie in de Azure Portal](./media/functions-twitter-email/07-function-test.png)
 
@@ -283,7 +283,7 @@ Klik op **Overzicht** en vervolgens op **Uitschakelen** bovenaan het scherm om d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een API-resource voor Cognitive Services maken.

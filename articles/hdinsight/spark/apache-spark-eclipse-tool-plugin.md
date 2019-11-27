@@ -229,7 +229,7 @@ Het hulp programma HDInsight in Azure-toolkit voor Eclipse bevat standaard de Sp
 
 U kunt HDInsight-Hulpprogram Ma's in Azure-toolkit voor Eclipse gebruiken om Spark scala-toepassingen lokaal op uw werk station uit te voeren. Normaal gesp roken hebben deze toepassingen geen toegang nodig tot cluster bronnen, zoals een opslag container, en kunt u deze lokaal uitvoeren en testen.
 
-### <a name="prerequisite"></a>Vereiste
+### <a name="prerequisite"></a>Vereisten
 
 Terwijl u de lokale Spark scala-toepassing uitvoert op een Windows-computer, krijgt u mogelijk een uitzonde ring zoals uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). Deze uitzonde ring treedt op omdat **WinUtils. exe** ontbreekt in Windows.
 

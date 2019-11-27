@@ -1,6 +1,6 @@
 ---
-title: Disenroll device from Azure IoT Hub Device Provisioning Service
-description: How to disenroll a device to prevent provisioning through Azure IoT Hub Device Provisioning Service
+title: Het apparaat uitschrijven vanuit Azure IoT Hub Device Provisioning Service
+description: Het registreren van een apparaat om het inrichten via Azure IoT Hub Device Provisioning Service te voor komen
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/05/2018
@@ -15,100 +15,100 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228763"
 ---
-# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>How to disenroll a device from Azure IoT Hub Device Provisioning Service
+# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Het registreren van een apparaat bij Azure IoT Hub Device Provisioning Service
 
-Proper management of device credentials is crucial for high-profile systems like IoT solutions. A best practice for such systems is to have a clear plan of how to revoke access for devices when their credentials, whether a shared access signatures (SAS) token or an X.509 certificate, might be compromised. 
+Het juiste beheer van systeemreferenties is essentieel voor systemen met een hoog profiel, zoals IoT-oplossingen. Een best practice voor dergelijke systemen is een duidelijk plan te hebben voor het intrekken van de toegang voor apparaten wanneer hun referenties, of een SAS-token (Shared Access signatures) of een X. 509-certificaat, kan worden aangetast. 
 
-Enrollment in the Device Provisioning Service enables a device to be [auto-provisioned](concepts-auto-provisioning.md). A provisioned device is one that has been registered with IoT Hub, allowing it to receive its initial [device twin](~/articles/iot-hub/iot-hub-devguide-device-twins.md) state and begin reporting telemetry data. This article describes how to disenroll a device from your provisioning service instance, preventing it from being provisioned again in the future.
+Door registratie in de Device Provisioning Service kan een apparaat [automatisch worden ingericht](concepts-auto-provisioning.md). Een ingericht apparaat is geregistreerd bij IoT Hub, waardoor het de eerste dubbele toestand van het [apparaat](~/articles/iot-hub/iot-hub-devguide-device-twins.md) kan ontvangen en telemetrie-gegevens kan rapporteren. In dit artikel wordt beschreven hoe u een apparaat uit het inrichtings service-exemplaar uitschrijft, waardoor het niet meer in de toekomst kan worden ingericht.
 
 > [!NOTE] 
-> Be aware of the retry policy of devices that you revoke access for. For example, a device that has an infinite retry policy might continuously try to register with the provisioning service. That situation consumes service resources and possibly affects performance.
+> Houd rekening met het beleid voor opnieuw proberen van apparaten waarvoor u de toegang intrekt. Een apparaat met een oneindig beleid voor opnieuw proberen kan zich bijvoorbeeld voortdurend registreren bij de inrichtings service. Deze situatie verbruikt service bronnen en is mogelijk van invloed op de prestaties.
 
-## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>Blacklist devices by using an individual enrollment entry
+## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>Black-apparaten met behulp van een afzonderlijke inschrijvings vermelding
 
-Individual enrollments apply to a single device and can use either X.509 certificates or SAS tokens (in a real or virtual TPM) as the attestation mechanism. (Devices that use SAS tokens as their attestation mechanism can be provisioned only through an individual enrollment.) To blacklist a device that has an individual enrollment, you can either disable or delete its enrollment entry. 
+Afzonderlijke registraties zijn van toepassing op één apparaat en kunnen X. 509-certificaten of SAS-tokens (in een echte of virtuele TPM) gebruiken als Attestation-mechanisme. (Apparaten die SAS-tokens gebruiken als Attestation-mechanisme kunnen alleen worden ingericht via een individuele inschrijving.) Als u een apparaat wilt blacken dat een afzonderlijke inschrijving heeft, kunt u de inschrijvings vermelding uitschakelen of verwijderen. 
 
-To temporarily blacklist the device by disabling its enrollment entry: 
+Het apparaat tijdelijk op de zwarte lijst door de inschrijvings vermelding uit te scha kelen: 
 
-1. Sign in to the Azure portal and select **All resources** from the left menu.
-2. In the list of resources, select the provisioning service that you want to blacklist your device from.
-3. In your provisioning service, select **Manage enrollments**, and then select the **Individual Enrollments** tab.
-4. Select the enrollment entry for the device that you want to blacklist. 
+1. Meld u aan bij de Azure Portal en selecteer **alle resources** in het menu links.
+2. Selecteer in de lijst met resources de inrichtings service waarop u het apparaat wilt inzien.
+3. Selecteer in uw inrichtings service **inschrijvingen beheren**en selecteer vervolgens het tabblad **afzonderlijke registraties** .
+4. Selecteer de inschrijvings vermelding voor het apparaat dat u op de zwarte lijst wilt laten staan. 
 
-    ![Select your individual enrollment](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
+    ![Selecteer uw individuele inschrijving](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
 
-5. On your enrollment page, scroll to the bottom, and select **Disable** for the **Enable entry** switch, and then select **Save**.  
+5. Schuif op de pagina inschrijving naar beneden en selecteer **uitschakelen** voor de switch **invoer inschakelen** en selecteer vervolgens **Opslaan**.  
 
-   ![Disable individual enrollment entry in the portal](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
+   ![Individuele inschrijvings vermelding uitschakelen in de portal](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
 
-To permanently blacklist the device by deleting its enrollment entry:
+Als u het apparaat permanent wilt opblacken door de inschrijvings vermelding te verwijderen:
 
-1. Sign in to the Azure portal and select **All resources** from the left menu.
-2. In the list of resources, select the provisioning service that you want to blacklist your device from.
-3. In your provisioning service, select **Manage enrollments**, and then select the **Individual Enrollments** tab.
-4. Select the check box next to the enrollment entry for the device that you want to blacklist. 
-5. Select **Delete** at the top of the window, and then select **Yes** to confirm that you want to remove the enrollment. 
+1. Meld u aan bij de Azure Portal en selecteer **alle resources** in het menu links.
+2. Selecteer in de lijst met resources de inrichtings service waarop u het apparaat wilt inzien.
+3. Selecteer in uw inrichtings service **inschrijvingen beheren**en selecteer vervolgens het tabblad **afzonderlijke registraties** .
+4. Schakel het selectie vakje in naast de inschrijvings vermelding voor het apparaat dat u op de zwarte lijst wilt bekijken. 
+5. Selecteer boven aan het venster **verwijderen** en selecteer vervolgens **Ja** om te bevestigen dat u de registratie wilt verwijderen. 
 
-   ![Delete individual enrollment entry in the portal](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
+   ![Afzonderlijke inschrijvings vermelding verwijderen in de portal](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
 
 
-After you finish the procedure, you should see your entry removed from the list of individual enrollments.  
+Nadat u de procedure hebt voltooid, ziet u dat uw vermelding is verwijderd uit de lijst met afzonderlijke registraties.  
 
-## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Blacklist an X.509 intermediate or root CA certificate by using an enrollment group
+## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Een X. 509-tussenliggend of basis-CA-certificaat op de zwarte lijst met behulp van een registratie groep
 
-X.509 certificates are typically arranged in a certificate chain of trust. If a certificate at any stage in a chain becomes compromised, trust is broken. The certificate must be blacklisted to prevent Device Provisioning Service from provisioning devices downstream in any chain that contains that certificate. To learn more about X.509 certificates and how they are used with the provisioning service, see [X.509 certificates](./concepts-security.md#x509-certificates). 
+X. 509-certificaten worden meestal gerangschikt in een vertrouwens keten van certificaten. Als een certificaat in een wille keurig stadium in een keten wordt aangetast, wordt de vertrouwens relatie verbroken. Het certificaat moet in de zwarte lijst worden geplaatst om te voor komen dat Device Provisioning Service in een keten met dat certificaat wordt ingericht. Zie [x. 509-certificaten](./concepts-security.md#x509-certificates)voor meer informatie over x. 509-certificaten en hoe deze worden gebruikt in combi natie met de inrichtings service. 
 
-An enrollment group is an entry for devices that share a common attestation mechanism of X.509 certificates signed by the same intermediate or root CA. The enrollment group entry is configured with the X.509 certificate associated with the intermediate or root CA. The entry is also configured with any configuration values, such as twin state and IoT hub connection, that are shared by devices with that certificate in their certificate chain. To blacklist the certificate, you can either disable or delete its enrollment group.
+Een registratie groep is een vermelding voor apparaten die een gemeen schappelijk Attestation-mechanisme van X. 509-certificaten delen die zijn ondertekend door dezelfde tussenliggende of basis-CA. De vermelding van de registratie groep is geconfigureerd met het X. 509-certificaat dat is gekoppeld aan de tussenliggende of basis-CA. De vermelding wordt ook geconfigureerd met configuratie waarden, zoals een dubbele status-en IoT hub-verbinding, die worden gedeeld door apparaten met dat certificaat in de certificaat keten. Als u het certificaat wilt blackiseren, kunt u de bijbehorende registratie groep uitschakelen of verwijderen.
 
-To temporarily blacklist the certificate by disabling its enrollment group: 
+Als u het certificaat tijdelijk wilt opblacken door de registratie groep uit te scha kelen: 
 
-1. Sign in to the Azure portal and select **All resources** from the left menu.
-2. In the list of resources, select the provisioning service that you want to blacklist the signing certificate from.
-3. In your provisioning service, select **Manage enrollments**, and then select the **Enrollment Groups** tab.
-4. Select the enrollment group using the certificate that you want to blacklist.
-5. Select **Disable** on the **Enable entry** switch, and then select **Save**.  
+1. Meld u aan bij de Azure Portal en selecteer **alle resources** in het menu links.
+2. Selecteer in de lijst met resources de inrichtings service waarvan u het handtekening certificaat wilt weer geven.
+3. Selecteer in uw inrichtings service **inschrijvingen beheren**en selecteer vervolgens het tabblad **inschrijvings groepen** .
+4. Selecteer de registratie groep met het certificaat dat u op de zwarte lijst wilt gebruiken.
+5. Selecteer **uitschakelen** op de schakel optie **invoer inschakelen** en selecteer vervolgens **Opslaan**.  
 
-   ![Disable enrollment group entry in the portal](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
+   ![Invoer voor registratie groep uitschakelen in de portal](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
     
-To permanently blacklist the certificate by deleting its enrollment group:
+Als u het certificaat permanent wilt opblacken door de registratie groep te verwijderen:
 
-1. Sign in to the Azure portal and select **All resources** from the left menu.
-2. In the list of resources, select the provisioning service that you want to blacklist your device from.
-3. In your provisioning service, select **Manage enrollments**, and then select the **Enrollment Groups** tab.
-4. Select the check box next to the enrollment group for the certificate that you want to blacklist. 
-5. Select **Delete** at the top of the window, and then select **Yes** to confirm that you want to remove the enrollment group. 
+1. Meld u aan bij de Azure Portal en selecteer **alle resources** in het menu links.
+2. Selecteer in de lijst met resources de inrichtings service waarop u het apparaat wilt inzien.
+3. Selecteer in uw inrichtings service **inschrijvingen beheren**en selecteer vervolgens het tabblad **inschrijvings groepen** .
+4. Schakel het selectie vakje in naast de registratie groep voor het certificaat dat u op de zwarte lijst wilt bekijken. 
+5. Selecteer boven aan het venster **verwijderen** en selecteer vervolgens **Ja** om te bevestigen dat u de registratie groep wilt verwijderen. 
 
-   ![Delete enrollment group entry in the portal](./media/how-to-revoke-device-access-portal/delete-enrollment-group.png)
+   ![Vermelding voor registratie groep verwijderen in de portal](./media/how-to-revoke-device-access-portal/delete-enrollment-group.png)
 
-After you finish the procedure, you should see your entry removed from the list of enrollment groups.  
+Nadat u de procedure hebt voltooid, ziet u dat uw vermelding is verwijderd uit de lijst met registratie groepen.  
 
 > [!NOTE]
-> If you delete an enrollment group for a certificate, devices that have the certificate in their certificate chain might still be able to enroll if an enabled enrollment group for the root certificate or another intermediate certificate higher up in their certificate chain exists.
+> Als u een registratie groep voor een certificaat verwijdert, kunnen apparaten met het certificaat in de certificaat keten nog steeds worden inge schreven als een ingeschakelde inschrijvings groep voor het basis certificaat of een ander tussenliggend certificaat hoger is dan het certificaat keten bestaat.
 
-## <a name="blacklist-specific-devices-in-an-enrollment-group"></a>Blacklist specific devices in an enrollment group
+## <a name="blacklist-specific-devices-in-an-enrollment-group"></a>Specifieke apparaten op de zwarte lijst in een registratie groep
 
-Devices that implement the X.509 attestation mechanism use the device's certificate chain and private key to authenticate. When a device connects and authenticates with Device Provisioning Service, the service first looks for an individual enrollment that matches the device's credentials. The service then searches enrollment groups to determine whether the device can be provisioned. If the service finds a disabled individual enrollment for the device, it prevents the device from connecting. The service prevents the connection even if an enabled enrollment group for an intermediate or root CA in the device's certificate chain exists. 
+Voor apparaten die het X. 509 Attestation-mechanisme implementeren, worden de certificaat keten en de persoonlijke sleutel van het apparaat gebruikt voor verificatie. Wanneer een apparaat verbinding maakt en zich verifieert met Device Provisioning Service, zoekt de service eerst naar een afzonderlijke inschrijving die overeenkomt met de referenties van het apparaat. De service zoekt vervolgens de registratie groepen om te bepalen of het apparaat kan worden ingericht. Als de service een uitgeschakelde individuele inschrijving voor het apparaat vindt, wordt voor komen dat het apparaat verbinding maakt. De service voor komt de verbinding zelfs als een ingeschakelde registratie groep voor een tussenliggende of basis-CA in de certificaat keten van het apparaat bestaat. 
 
-To blacklist an individual device in an enrollment group, follow these steps:
+Ga als volgt te werk om een afzonderlijk apparaat in een registratie groep op te blacken:
 
-1. Sign in to the Azure portal and select **All resources** from the left menu.
-2. From the list of resources, select the provisioning service that contains the enrollment group for the device that you want to blacklist.
-3. In your provisioning service, select **Manage enrollments**, and then select the **Individual Enrollments** tab.
-4. Select the **Add individual enrollment** button at the top. 
-5. On the **Add Enrollment** page, select **X.509** as the attestation **Mechanism** for the device.
+1. Meld u aan bij de Azure Portal en selecteer **alle resources** in het menu links.
+2. Selecteer in de lijst met resources de inrichtings service die de registratie groep bevat voor het apparaat dat u op de Black List wilt maken.
+3. Selecteer in uw inrichtings service **inschrijvingen beheren**en selecteer vervolgens het tabblad **afzonderlijke registraties** .
+4. Selecteer bovenaan de knop **afzonderlijke registratie toevoegen** . 
+5. Selecteer op de pagina **inschrijving toevoegen** de optie **X. 509** als het Attestation- **mechanisme** voor het apparaat.
 
-    Upload the device certificate, and enter the device ID of the device to be blacklisted. For the certificate, use the signed end-entity certificate installed on the device. The device uses the signed end-entity certificate for authentication.
+    Upload het certificaat van het apparaat en voer de apparaat-ID van het apparaat in dat moet worden genoteerd. Gebruik voor het certificaat het ondertekende eind entiteit certificaat dat op het apparaat is geïnstalleerd. Het apparaat gebruikt het ondertekende eind entiteit certificaat voor authenticatie.
 
-    ![Set device properties for the blacklisted device](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
+    ![Apparaateigenschappen instellen voor het apparaat op de zwarte lijst](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
 
-6. Scroll to the bottom of the **Add Enrollment** page and select **Disable** on the **Enable entry** switch, and then select **Save**. 
+6. Ga naar de onderkant van de pagina **registratie toevoegen** en selecteer **uitschakelen** op de schakel optie **invoer inschakelen** en selecteer vervolgens **Opslaan**. 
 
-    [![Use disabled individual enrollment entry to disable device from group enrollment, in the portal](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
+    [![uitgeschakelde individuele inschrijvings vermelding voor apparaat uitschakelen vanuit groeps inschrijving in de portal](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
-When you successfully create your enrollment, you should see your disabled device enrollment listed on the **Individual Enrollments** tab. 
+Wanneer u uw inschrijving hebt gemaakt, moet u de registratie van uitgeschakelde apparaten weer geven op het tabblad **afzonderlijke registraties** . 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Disenrollment is also part of the larger deprovisioning process. Deprovisioning a device includes both disenrollment from the provisioning service, and deregistering from IoT hub. To learn about the full process, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
+Registratie maakt ook deel uit van het grotere proces voor het ongedaan maken van de inrichting. Het ongedaan maken van de inrichting van een apparaat omvat zowel de inschrijving van de inrichtings service als de registratie van IoT hub. Zie voor meer informatie over het volledige proces de [inrichting van apparaten die eerder automatisch zijn ingericht](how-to-unprovision-devices.md) 
 

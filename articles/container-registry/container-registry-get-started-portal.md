@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Create registry in portal
-description: Quickly learn to create a private Docker registry in Azure Container Registry with the Azure portal.
+title: 'Quick Start: REGI ster maken in de portal'
+description: Leer snel hoe u een persoonlijk docker-REGI ster maakt in Azure Container Registry met de Azure Portal.
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
@@ -11,7 +11,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455218"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Quickstart: Create a private container registry using the Azure portal
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Snelstartgids: een persoonlijk container register maken met behulp van de Azure Portal
 
 Een Azure-containerregister is een persoonlijk Docker-register in Azure waar u uw persoonlijke installatiekopieën van de Docker-container kunt opslaan en beheren. In deze quickstart maakt u een containerregister in Azure Portal. Gebruik vervolgens Docker-opdrachten om een containerinstallatiekopie naar het register pushen, waarna u de installatiekopie ophaalt en uitvoert vanuit het register.
 
@@ -29,11 +29,11 @@ Selecteer **Een resource maken** > **Containers** > **Container Registry**.
 
 ![Een containerregister maken met Azure Portal][qs-portal-01]
 
-Voer waarden in voor **Registernaam** en **Resourcegroep**. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. Maak voor deze snelstart een nieuwe resourcegroep met de naam `myResourceGroup` in locatie `West US`. Kies voor **SKU** de optie Basic. Selecteer **Maken** om de ACR-instantie te implementeren.
+Voer waarden in voor **Registernaam** en **Resourcegroep**. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. Maak voor deze snelstart een nieuwe resourcegroep met de naam `West US` in locatie `myResourceGroup`. Kies voor **SKU** de optie Basic. Selecteer **Maken** om de ACR-instantie te implementeren.
 
 ![Een containerregister maken in de Azure-portal][qs-portal-03]
 
-In deze quickstart maakt u een *Basic*-register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. For details on available service tiers, see [Container registry SKUs][container-registry-skus].
+In deze quickstart maakt u een *Basic*-register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. Zie [sku's voor container registers][container-registry-skus]voor meer informatie over de beschik bare service lagen.
 
 Als het bericht **Implementatie voltooid** wordt weergegeven, selecteert u het containerregister in de portal. 
 
@@ -43,7 +43,7 @@ Noteer de waarde van de **aanmeldingsserver**. U gebruikt deze waarden in de vol
 
 ## <a name="log-in-to-registry"></a>Aanmelden bij register
 
-Voordat u installatiekopieën van containers gaat pushen en pullen, moet u zich aanmelden bij het ACR-exemplaar. Open a command shell in your operating system, and use the [az acr login][az-acr-login] command in the Azure CLI.
+Voordat u installatiekopieën van containers gaat pushen en pullen, moet u zich aanmelden bij het ACR-exemplaar. Open een opdracht shell in het besturings systeem en gebruik de opdracht [AZ ACR login][az-acr-login] in de Azure cli.
 
 ```azurecli
 az acr login --name <acrName>
@@ -57,7 +57,7 @@ De opdracht retourneert `Login Succeeded` nadat deze is voltooid.
 
 Als u de installatiekopieën in uw register wilt weergeven, gaat u naar het register in de portal en selecteert u **Opslagplaatsen**. Selecteer vervolgens de opslagplaats die u met `docker push` hebt gemaakt.
 
-In this example, we select the **hello-world** repository, and we can see the `v1`-tagged image under **TAGS**.
+In dit voor beeld selecteren we de opslag plaats **Hallo wereld** en zien we de afbeelding met `v1`Tags onder **labels**.
 
 ![Containerinstallatiekopieën weergeven in de Azure-portal][qs-portal-09]
 
@@ -74,7 +74,7 @@ Als u uw resources wilt opschonen, navigeert u naar de resourcegroep **myResourc
 In deze quickstart hebt u een Azure Container Registry gemaakt met de Azure-portal. U hebt een containerinstallatiekopie gepusht en de installatiekopie uit het register opgehaald en uitgevoerd. Ga verder met de zelfstudies voor Azure Container Registry om meer te leren over ACR.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry tutorials][container-registry-tutorial-quick-task]
+> [Azure Container Registry zelf studies][container-registry-tutorial-quick-task]
 
 <!-- IMAGES -->
 [qs-portal-01]: ./media/container-registry-get-started-portal/qs-portal-01.png

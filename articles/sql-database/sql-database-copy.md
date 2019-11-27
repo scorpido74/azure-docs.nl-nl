@@ -1,6 +1,6 @@
 ---
 title: Een database kopiëren
-description: Create a transactionally consistent copy of an existing Azure SQL database on either the same server or a different server.
+description: Een transactioneel consistente kopie maken van een bestaande Azure-SQL database op dezelfde server of op een andere server.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -18,50 +18,50 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421344"
 ---
-# <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Copy a transactionally consistent copy of an Azure SQL database
+# <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Een transactioneel consistente kopie van een Azure-SQL database kopiëren
 
-Azure SQL Database provides several methods for creating a transactionally consistent copy of an existing Azure SQL database ([single database](sql-database-single-database.md)) on either the same server or a different server. You can copy a SQL database by using the Azure portal, PowerShell, or T-SQL.
+Azure SQL Database biedt verschillende methoden voor het maken van een transactioneel consistente kopie van een bestaande Azure SQL database ([één data base](sql-database-single-database.md)) op dezelfde server of een andere server. U kunt een SQL database kopiëren met behulp van de Azure Portal, Power shell of T-SQL.
 
 ## <a name="overview"></a>Overzicht
 
-A database copy is a snapshot of the source database as of the time of the copy request. You can select the same server or a different server. Also you can choose to keep its service tier and compute size, or use a different compute size within the same service tier (edition). After the copy is complete, it becomes a fully functional, independent database. At this point, you can upgrade or downgrade it to any edition. The logins, users, and permissions can be managed independently. The copy is created using the geo-replication technology and once seeding is completed the geo-replication link is automatically terminated. All the requirements for using geo-replication apply to the database copy operation. See [Active geo-replication overview](sql-database-active-geo-replication.md) for details.
+Een database kopie is een moment opname van de bron database vanaf het moment dat de Kopieer aanvraag wordt gekopieerd. U kunt dezelfde server of een andere server selecteren. U kunt er ook voor kiezen om de servicelaag en de berekenings grootte te hand haven of een andere reken grootte te gebruiken binnen dezelfde servicelaag (Edition). Nadat de kopie is voltooid, wordt deze een volledig functionele, onafhankelijke data base. Op dit moment kunt u de upgrade uitvoeren naar een wille keurige versie of deze Down graden. De aanmeldingen, gebruikers en machtigingen kunnen onafhankelijk worden beheerd. De kopie wordt gemaakt met de geo-replicatie technologie en zodra de seeding is voltooid, wordt de koppeling naar geo-replicatie automatisch beëindigd. Alle vereisten voor het gebruik van geo-replicatie zijn van toepassing op de Kopieer bewerking van de data base. Zie [overzicht van actieve geo-replicatie](sql-database-active-geo-replication.md) voor meer informatie.
 
 > [!NOTE]
-> [Automated database backups](sql-database-automated-backups.md) are used when you create a database copy.
+> [Automatische database back-ups](sql-database-automated-backups.md) worden gebruikt wanneer u een kopie van een Data Base maakt.
 
-## <a name="logins-in-the-database-copy"></a>Logins in the database copy
+## <a name="logins-in-the-database-copy"></a>Aanmeldingen in de database kopie
 
-When you copy a database to the same SQL Database server, the same logins can be used on both databases. The security principal you use to copy the database becomes the database owner on the new database. All database users, their permissions, and their security identifiers (SIDs) are copied to the database copy.  
+Wanneer u een Data Base naar dezelfde SQL Database Server kopieert, kunnen dezelfde aanmeldingen voor beide data bases worden gebruikt. De beveiligings-principal die u gebruikt om de data base te kopiëren, wordt de data base-eigenaar van de nieuwe data base. Alle database gebruikers, hun machtigingen en hun beveiligings-id's (Sid's) worden gekopieerd naar de kopie van de data base.  
 
-When you copy a database to a different SQL Database server, the security principal on the new server becomes the database owner on the new database. If you use [contained database users](sql-database-manage-logins.md) for data access, ensure that both the primary and secondary databases always have the same user credentials, so that after the copy is complete you can immediately access it with the same credentials.
+Wanneer u een Data Base naar een andere SQL Database Server kopieert, wordt de beveiligingsprincipal op de nieuwe server de data base-eigenaar van de nieuwe data base. Als u [Inge sloten database gebruikers](sql-database-manage-logins.md) gebruikt voor gegevens toegang, moet u ervoor zorgen dat zowel de primaire als de secundaire data base altijd dezelfde gebruikers referenties hebben, zodat u deze meteen kunt openen met dezelfde referenties als de kopie is voltooid.
 
-If you use [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), you can completely eliminate the need for managing credentials in the copy. However, when you copy the database to a new server, the login-based access might not work, because the logins do not exist on the new server. To learn about managing logins when you copy a database to a different SQL Database server, see [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
+Als u [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)gebruikt, kunt u de nood zaak voor het beheren van referenties in de kopie volledig elimineren. Wanneer u de data base echter naar een nieuwe server kopieert, werkt de op aanmelding gebaseerde toegang mogelijk niet, omdat de aanmeldingen niet op de nieuwe server aanwezig zijn. Voor meer informatie over het beheren van aanmeldingen wanneer u een Data Base naar een andere SQL Database Server kopieert, raadpleegt u [Azure SQL database Security beheren na nood herstel](sql-database-geo-replication-security-config.md).
 
-After the copying succeeds and before other users are remapped, only the login that initiated the copying, the database owner, can log in to the new database. To resolve logins after the copying operation is complete, see [Resolve logins](#resolve-logins).
+Nadat het kopiëren is voltooid en voordat andere gebruikers opnieuw zijn toegewezen, kan alleen de aanmeldings gegevens die de Kopieer bewerking hebben gestart, de eigenaar van de data base aanmelden bij de nieuwe data base. Als u aanmeldingen wilt oplossen nadat de Kopieer bewerking is voltooid, raadpleegt u [Aanmelden oplossen](#resolve-logins).
 
-## <a name="copy-a-database-by-using-the-azure-portal"></a>Copy a database by using the Azure portal
+## <a name="copy-a-database-by-using-the-azure-portal"></a>Een Data Base kopiëren met behulp van de Azure Portal
 
-To copy a database by using the Azure portal, open the page for your database, and then click **Copy**.
+Als u een Data Base wilt kopiëren met behulp van de Azure Portal, opent u de pagina voor uw data base en klikt u vervolgens op **kopiëren**.
 
-   ![Database copy](./media/sql-database-copy/database-copy.png)
+   ![Data base kopiëren](./media/sql-database-copy/database-copy.png)
 
-## <a name="copy-a-database-by-using-powershell"></a>Copy a database by using PowerShell
+## <a name="copy-a-database-by-using-powershell"></a>Een Data Base kopiëren met behulp van Power shell
 
-To copy a database, use the following examples.
+Gebruik de volgende voor beelden om een Data Base te kopiëren.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-For PowerShell, use the [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) cmdlet.
+Voor Power shell gebruikt u de cmdlet [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) .
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
 
 ```powershell
 New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourceserver -DatabaseName "<databaseName>" `
     -CopyResourceGroupName "myResourceGroup" -CopyServerName $targetserver -CopyDatabaseName "CopyOfMySampleDatabase"
 ```
 
-The database copy is a asynchronous operation but the target database is created immediately after the request is accepted. If you need to cancel the copy operation while still in progress, drop the the target database using the [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) cmdlet.
+Het kopiëren van de data base is een asynchrone bewerking, maar de doel database wordt gemaakt onmiddellijk nadat de aanvraag is geaccepteerd. Als u de Kopieer bewerking wilt annuleren terwijl deze nog wordt uitgevoerd, verwijdert u de doel database met behulp van de cmdlet [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) .
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -70,60 +70,60 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
     --name "<databaseName>" --resource-group "<resourceGroup>" --server $sourceserver
 ```
 
-The database copy is a asynchronous operation but the target database is created immediately after the request is accepted. If you need to cancel the copy operation while still in progress, drop the the target database using the [az sql db delete](/cli/azure/sql/db#az-sql-db-delete) command.
+Het kopiëren van de data base is een asynchrone bewerking, maar de doel database wordt gemaakt onmiddellijk nadat de aanvraag is geaccepteerd. Als u de Kopieer bewerking wilt annuleren terwijl deze nog wordt uitgevoerd, verwijdert u de doel database met behulp van de opdracht [AZ SQL DB delete](/cli/azure/sql/db#az-sql-db-delete) .
 
 * * *
 
-For a complete sample script, see [Copy a database to a new server](scripts/sql-database-copy-database-to-new-server-powershell.md).
+Zie [een Data Base naar een nieuwe server kopiëren](scripts/sql-database-copy-database-to-new-server-powershell.md)voor een volledig voorbeeld script.
 
-## <a name="rbac-roles-to-manage-database-copy"></a>RBAC roles to manage database copy
+## <a name="rbac-roles-to-manage-database-copy"></a>RBAC-rollen voor het beheren van de database kopie
 
-To create a database copy, you will need to be in the following roles
+Als u een database kopie wilt maken, moet u de volgende rollen hebben
 
-- Subscription Owner or
-- SQL Server Contributor role or
-- Custom role on the source and target databases with following permission:
+- Abonnements eigenaar of
+- SQL Server rol Inzender of
+- Aangepaste rol op de bron-en doel database met de volgende machtiging:
 
-   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
+   Micro soft. SQL/servers/data bases/Lees micro soft. SQL/servers/data bases/write
 
-To cancel a database copy, you will need to be in the following roles
+Als u een kopie van een Data Base wilt annuleren, moet u de volgende rollen hebben
 
-- Subscription Owner or
-- SQL Server Contributor role or
-- Custom role on the source and target databases with following permission:
+- Abonnements eigenaar of
+- SQL Server rol Inzender of
+- Aangepaste rol op de bron-en doel database met de volgende machtiging:
 
-   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
+   Micro soft. SQL/servers/data bases/Lees micro soft. SQL/servers/data bases/write
 
-To manage database copy using Azure portal, you will also need the following permissions:
+Als u het kopiëren van de data base met Azure Portal wilt beheren, hebt u ook de volgende machtigingen nodig:
 
-   Microsoft.Resources/subscriptions/resources/read Microsoft.Resources/subscriptions/resources/write Microsoft.Resources/deployments/read Microsoft.Resources/deployments/write Microsoft.Resources/deployments/operationstatuses/read
+   Micro soft. resources/abonnementen/resources/Lees micro soft. resources/abonnementen/resources/schrijf micro soft. resources/implementaties/Lees micro soft. resources/implementaties/schrijf micro soft. resources/implementaties/operationstatuses/lezen
 
-If you want to see the operations under deployments in the resource group on the portal, operations across multiple resource providers including SQL operations, you will need these additional RBAC roles:
+Als u de bewerkingen wilt zien onder implementaties in de resource groep op de portal, bewerkingen in meerdere resource providers, waaronder SQL-bewerkingen, hebt u de volgende extra RBAC-rollen nodig:
 
-   Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
+   Micro soft. resources/abonnementen/ResourceGroups/implementaties/bewerkingen/Lees micro soft. resources/abonnementen/ResourceGroups/implementaties/operationstatuses/lezen
 
-## <a name="copy-a-database-by-using-transact-sql"></a>Copy a database by using Transact-SQL
+## <a name="copy-a-database-by-using-transact-sql"></a>Een Data Base kopiëren met behulp van Transact-SQL
 
-Log in to the master database with the server-level principal login or the login that created the database you want to copy. For database copying to succeed, logins that are not the server-level principal must be members of the dbmanager role. For more information about logins and connecting to the server, see [Manage logins](sql-database-manage-logins.md).
+Meld u aan bij de hoofd database met de principal-aanmelding op server niveau of de aanmelding waarmee de data base is gemaakt die u wilt kopiëren. Om het kopiëren van de data base te volt ooien, moeten aanmeldingen die niet de principal op server niveau zijn, lid zijn van de DBManager-rol. Zie [aanmeldingen beheren](sql-database-manage-logins.md)voor meer informatie over aanmeldingen en het maken van een verbinding met de server.
 
-Start copying the source database with the [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) statement. Executing this statement initiates the database copying process. Because copying a database is an asynchronous process, the CREATE DATABASE statement returns before the database copying is complete.
+Begin met het kopiëren van de bron database met de instructie [Create Data](https://msdn.microsoft.com/library/ms176061.aspx) base. Als u deze instructie uitvoert, wordt het kopiëren van de data base gestart. Omdat het kopiëren van een Data Base een asynchroon proces is, wordt de instructie CREATE data base geretourneerd voordat het kopiëren van de data base is voltooid.
 
-### <a name="copy-a-sql-database-to-the-same-server"></a>Copy a SQL database to the same server
+### <a name="copy-a-sql-database-to-the-same-server"></a>Een SQL database naar dezelfde server kopiëren
 
-Log in to the master database with the server-level principal login or the login that created the database you want to copy. For database copying to succeed, logins that are not the server-level principal must be members of the dbmanager role.
+Meld u aan bij de hoofd database met de principal-aanmelding op server niveau of de aanmelding waarmee de data base is gemaakt die u wilt kopiëren. Om het kopiëren van de data base te volt ooien, moeten aanmeldingen die niet de principal op server niveau zijn, lid zijn van de DBManager-rol.
 
-This command copies Database1 to a new database named Database2 on the same server. Depending on the size of your database, the copying operation might take some time to complete.
+Met deze opdracht kopieert u Database1 naar een nieuwe Data Base met de naam Database2 op dezelfde server. Afhankelijk van de grootte van uw data base kan het enige tijd duren voordat de Kopieer bewerking is voltooid.
 
    ```sql
    -- execute on the master database to start copying
    CREATE DATABASE Database2 AS COPY OF Database1;
    ```
 
-### <a name="copy-a-sql-database-to-a-different-server"></a>Copy a SQL database to a different server
+### <a name="copy-a-sql-database-to-a-different-server"></a>Een SQL database naar een andere server kopiëren
 
-Log in to the master database of the destination server, the SQL Database server where the new database is to be created. Use a login that has the same name and password as the database owner of the source database on the source SQL Database server. The login on the destination server must also be a member of the dbmanager role or be the server-level principal login.
+Meld u aan bij de hoofd database van de doel server, de SQL Database-Server waarop de nieuwe Data Base moet worden gemaakt. Gebruik een aanmelding met dezelfde naam en hetzelfde wacht woord als de data base-eigenaar van de bron database op de bron SQL Database Server. De aanmelding op de doel server moet ook lid zijn van de DBManager-rol of de principal-aanmelding op server niveau.
 
-This command copies Database1 on server1 to a new database named Database2 on server2. Depending on the size of your database, the copying operation might take some time to complete.
+Met deze opdracht kopieert u Database1 op server1 naar een nieuwe Data Base met de naam Database2 op server2. Afhankelijk van de grootte van uw data base kan het enige tijd duren voordat de Kopieer bewerking is voltooid.
 
 ```sql
 -- Execute on the master database of the target server (server2) to start copying from Server1 to Server2
@@ -131,57 +131,57 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 ```
 
 > [!IMPORTANT]
-> Both servers' firewalls must be configured to allow inbound connection from the IP of the client issuing the T-SQL COPY command.
+> De firewalls van beide servers moeten zodanig worden geconfigureerd dat binnenkomende verbindingen vanaf het IP-adres van de client die de T-SQL COPY-opdracht uitgeven, worden toegestaan.
 
-### <a name="copy-a-sql-database-to-a-different-subscription"></a>Copy a SQL database to a different subscription
+### <a name="copy-a-sql-database-to-a-different-subscription"></a>Een SQL database naar een ander abonnement kopiëren
 
-You can use the steps described in the previous section to copy your database to a SQL Database server in a different subscription. Make sure you use a login that has the same name and password as the database owner of the source database and it is a member of the dbmanager role or is the server-level principal login. 
-
-> [!NOTE]
-> The [Azure portal](https://portal.azure.com) does not support copy to a different subscription because Portal calls the ARM API and it uses the subscription certificates to access both servers involved in geo-replication.  
-
-### <a name="monitor-the-progress-of-the-copying-operation"></a>Monitor the progress of the copying operation
-
-Monitor the copying process by querying the sys.databases and sys.dm_database_copies views. While the copying is in progress, the **state_desc** column of the sys.databases view for the new database is set to **COPYING**.
-
-* If the copying fails, the **state_desc** column of the sys.databases view for the new database is set to **SUSPECT**. Execute the DROP statement on the new database, and try again later.
-* If the copying succeeds, the **state_desc** column of the sys.databases view for the new database is set to **ONLINE**. The copying is complete, and the new database is a regular database that can be changed independent of the source database.
+U kunt de stappen in de vorige sectie gebruiken om uw Data Base naar een SQL Database-Server in een ander abonnement te kopiëren. Zorg ervoor dat u een aanmelding met dezelfde naam en hetzelfde wacht woord gebruikt als de data base-eigenaar van de bron database en dat deze lid is van de DBManager-rol of de principal-aanmelding op server niveau is. 
 
 > [!NOTE]
-> If you decide to cancel the copying while it is in progress, execute the [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) statement on the new database. Alternatively, executing the DROP DATABASE statement on the source database also cancels the copying process.
+> De [Azure Portal](https://portal.azure.com) biedt geen ondersteuning voor het kopiëren naar een ander abonnement omdat de Portal de arm API aanroept en de abonnements certificaten gebruikt om toegang te krijgen tot beide servers die betrokken zijn bij geo-replicatie.  
+
+### <a name="monitor-the-progress-of-the-copying-operation"></a>De voortgang van de Kopieer bewerking bewaken
+
+Bewaak het kopieer proces door een query uit te geven op de weer gaven sys. data bases en sys. dm_database_copies. Terwijl het kopiëren wordt uitgevoerd, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **kopiëren**.
+
+* Als het kopiëren mislukt, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **verdacht**. Voer de instructie DROP uit op de nieuwe data base en probeer het later opnieuw.
+* Als het kopiëren is voltooid, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **online**. Het kopiëren is voltooid en de nieuwe Data Base is een reguliere data base die onafhankelijk van de bron database kan worden gewijzigd.
+
+> [!NOTE]
+> Als u besluit het kopiëren te annuleren terwijl deze wordt uitgevoerd, voert u de instructie [Drop data base](https://msdn.microsoft.com/library/ms178613.aspx) uit op de nieuwe data base. U kunt ook het kopieer proces annuleren door de instructie DROP data base uit te voeren op de bron database.
 
 > [!IMPORTANT]
-> If you need to create a copy with a substantially smaller SLO than the source, the target database may not have sufficient resources to complete the seeding process and it can cause the copy operaion to fail. In this scenario use a geo-restore request to create a copy in a different server and/or a different region. See [Recover an Azure SQL database using database backups](sql-database-recovery-using-backups.md#geo-restore) for more informaion.
+> Als u een kopie met een aanzienlijk kleinere SLO moet maken dan de bron, heeft de doel database mogelijk niet voldoende bronnen om het seeding proces te volt ooien en kan dit ertoe leiden dat het kopiëren mislukt. In dit scenario gebruikt u een geo-Restore-aanvraag om een kopie te maken op een andere server en/of een andere regio. Zie [een Azure SQL database herstellen met behulp van database back-ups](sql-database-recovery-using-backups.md#geo-restore) voor meer informaing.
 
-## <a name="resolve-logins"></a>Resolve logins
+## <a name="resolve-logins"></a>Aanmeldingen oplossen
 
-After the new database is online on the destination server, use the [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx) statement to remap the users from the new database to logins on the destination server. To resolve orphaned users, see [Troubleshoot Orphaned Users](https://msdn.microsoft.com/library/ms175475.aspx). See also [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
+Nadat de nieuwe Data Base online is op de doel server, gebruikt u de instructie [Alter User](https://msdn.microsoft.com/library/ms176060.aspx) om de gebruikers van de nieuwe data base toe te wijzen aan aanmeldingen op de doel server. Zie [problemen met zwevende gebruikers oplossen](https://msdn.microsoft.com/library/ms175475.aspx)voor informatie over het oplossen van zwevende gebruikers. Zie ook [hoe u Azure SQL database-beveiliging beheert na nood herstel](sql-database-geo-replication-security-config.md).
 
-All users in the new database retain the permissions that they had in the source database. The user who initiated the database copy becomes the database owner of the new database and is assigned a new security identifier (SID). After the copying succeeds and before other users are remapped, only the login that initiated the copying, the database owner, can log in to the new database.
+Alle gebruikers in de nieuwe data base behouden de machtigingen die ze in de bron database hadden. De gebruiker die de kopie van de data base heeft gestart, wordt de data base-eigenaar van de nieuwe data base en krijgt een nieuwe beveiligings-id (SID) toegewezen. Nadat het kopiëren is voltooid en voordat andere gebruikers opnieuw zijn toegewezen, kan alleen de aanmeldings gegevens die de Kopieer bewerking hebben gestart, de eigenaar van de data base aanmelden bij de nieuwe data base.
 
-To learn about managing users and logins when you copy a database to a different SQL Database server, see [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
+Zie [Azure SQL database-beveiliging beheren na nood herstel](sql-database-geo-replication-security-config.md)voor meer informatie over het beheren van gebruikers en aanmeldingen wanneer u een Data Base naar een andere SQL database server kopieert.
 
-## <a name="database-copy-errors"></a>Database copy errors
+## <a name="database-copy-errors"></a>Database kopie fouten
 
-The following errors can be encountered while copying a database in Azure SQL Database. Zie [Een Azure SQL Database kopiëren](sql-database-copy.md) voor meer informatie.
+De volgende fouten zijn opgetreden tijdens het kopiëren van een data base in Azure SQL Database. Zie [Een Azure SQL Database kopiëren](sql-database-copy.md) voor meer informatie.
 
 | Foutcode | Ernst | Beschrijving |
 | ---:| ---:|:--- |
-| 40635 |16 |Client with IP address '%.&#x2a;ls' is temporarily disabled. |
-| 40637 |16 |Create database copy is currently disabled. |
-| 40561 |16 |Database copy failed. Either the source or target database does not exist. |
-| 40562 |16 |Database copy failed. The source database has been dropped. |
-| 40563 |16 |Database copy failed. The target database has been dropped. |
-| 40564 |16 |Database copy failed due to an internal error. Please drop target database and try again. |
-| 40565 |16 |Database copy failed. No more than 1 concurrent database copy from the same source is allowed. Please drop target database and try again later. |
-| 40566 |16 |Database copy failed due to an internal error. Please drop target database and try again. |
-| 40567 |16 |Database copy failed due to an internal error. Please drop target database and try again. |
-| 40568 |16 |Database copy failed. Source database has become unavailable. Please drop target database and try again. |
-| 40569 |16 |Database copy failed. Target database has become unavailable. Please drop target database and try again. |
-| 40570 |16 |Database copy failed due to an internal error. Please drop target database and try again later. |
-| 40571 |16 |Database copy failed due to an internal error. Please drop target database and try again later. |
+| 40635 |16 |Client met IP-adres "%.&#x2a;ls" is tijdelijk uitgeschakeld. |
+| 40637 |16 |Het maken van de data base is momenteel uitgeschakeld. |
+| 40561 |16 |Het kopiëren van de data base is mislukt. De bron-of doel database bestaat niet. |
+| 40562 |16 |Het kopiëren van de data base is mislukt. De bron database is verwijderd. |
+| 40563 |16 |Het kopiëren van de data base is mislukt. De doel database is verwijderd. |
+| 40564 |16 |Het kopiëren van de data base is mislukt vanwege een interne fout. Verwijder de doel database en probeer het opnieuw. |
+| 40565 |16 |Het kopiëren van de data base is mislukt. Er is niet meer dan één gelijktijdige database kopie van dezelfde bron toegestaan. Verwijder de doel database en probeer het later opnieuw. |
+| 40566 |16 |Het kopiëren van de data base is mislukt vanwege een interne fout. Verwijder de doel database en probeer het opnieuw. |
+| 40567 |16 |Het kopiëren van de data base is mislukt vanwege een interne fout. Verwijder de doel database en probeer het opnieuw. |
+| 40568 |16 |Het kopiëren van de data base is mislukt. De bron database is niet meer beschikbaar. Verwijder de doel database en probeer het opnieuw. |
+| 40569 |16 |Het kopiëren van de data base is mislukt. De doel database is niet meer beschikbaar. Verwijder de doel database en probeer het opnieuw. |
+| 40570 |16 |Het kopiëren van de data base is mislukt vanwege een interne fout. Verwijder de doel database en probeer het later opnieuw. |
+| 40571 |16 |Het kopiëren van de data base is mislukt vanwege een interne fout. Verwijder de doel database en probeer het later opnieuw. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- For information about logins, see [Manage logins](sql-database-manage-logins.md) and [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
-- To export a database, see [Export the database to a BACPAC](sql-database-export.md).
+- Zie [aanmeldingen beheren](sql-database-manage-logins.md) en [Azure SQL database-beveiliging beheren na nood herstel](sql-database-geo-replication-security-config.md)voor meer informatie over aanmeldingen.
+- Zie [de data base exporteren naar een BACPAC](sql-database-export.md)om een Data Base te exporteren.

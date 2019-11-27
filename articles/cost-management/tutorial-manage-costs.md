@@ -23,7 +23,7 @@ In Cloudyn kunt u kosten beheren en showback-rapporten maken door kosten toe te 
 
 Stel dat u engineering-kosten vergoed wilt hebben. U moet aan het engineering-team laten zien dat u een bepaald bedrag nodig hebt, op basis van resourcekosten. U kunt ze een rapport laten zien voor alle verbruikte resources met de tag *engineering*.
 
-In dit artikel worden de termen 'tags' en 'categorieën' soms door elkaar gebruikt. Categorieën zijn grote verzamelingen en kunnen veel zaken bevatten. Ze kunnen bedrijfsonderdelen, kostenplaatsen, webservices en andere zaken bevatten die worden getagd. Tags are name/value pairs that enable you to categorize resources and to view and manage consolidated billing information by applying the same tag to multiple resources and resource groups. In eerdere versies van de Azure-portal werd naar een *tagnaam* verwezen als *sleutel*. Tags worden gemaakt en opgeslagen door één Azure-abonnement. Tags in AWS bestaan uit sleutel/waarde-paren. Omdat voor zowel Azure als AWS gebruik wordt gemaakt van de term *sleutel*, wordt in Cloudyn die term ook gebruikt. In Category Manager worden sleutels (tagnamen) gebruikt om tags samen te voegen.
+In dit artikel worden de termen 'tags' en 'categorieën' soms door elkaar gebruikt. Categorieën zijn grote verzamelingen en kunnen veel zaken bevatten. Ze kunnen bedrijfsonderdelen, kostenplaatsen, webservices en andere zaken bevatten die worden getagd. Tags zijn naam/waarde-paren waarmee u resources kunt categoriseren en geconsolideerde facturerings gegevens kunt weer geven en beheren door dezelfde tag op meerdere resources en resource groepen toe te passen. In eerdere versies van de Azure-portal werd naar een *tagnaam* verwezen als *sleutel*. Tags worden gemaakt en opgeslagen door één Azure-abonnement. Tags in AWS bestaan uit sleutel/waarde-paren. Omdat voor zowel Azure als AWS gebruik wordt gemaakt van de term *sleutel*, wordt in Cloudyn die term ook gebruikt. In Category Manager worden sleutels (tagnamen) gebruikt om tags samen te voegen.
 
 In deze zelfstudie leert u het volgende:
 
@@ -31,7 +31,7 @@ In deze zelfstudie leert u het volgende:
 > * Aangepaste tags gebruiken voor het toewijzen van kosten.
 > * Showback- en chargeback-rapporten maken.
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -131,7 +131,7 @@ Als u momentopname van de gegevens beschikbaar wilt stellen aan andere teams, ku
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Aangepaste tags gebruiken voor het toewijzen van kosten.

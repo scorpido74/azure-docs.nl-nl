@@ -27,7 +27,7 @@ Alle data factory-uitvoeringen worden weer gegeven in de lokale tijd zone van de
 
 De standaard weergave voor bewaking is de lijst met pijplijn uitvoeringen in de geselecteerde tijds periode. De volgende kolommen worden weer gegeven:
 
-| **De naam van kolom** | **Beschrijving** |
+| **Kolom naam** | **Beschrijving** |
 | --- | --- |
 | Naam van pijp lijn | Naam van de pijp lijn |
 | Acties | Pictogrammen waarmee u de details van de activiteit kunt bekijken, annuleren of de pijp lijn opnieuw moet uitvoeren |
@@ -50,7 +50,7 @@ U moet hand matig de knop **vernieuwen** selecteren om de lijst met pijp lijn-en
 
 Als u de uitvoering van de activiteit voor elke pijplijn uitvoering wilt weer geven, selecteert u het pictogram **activiteit uitvoeringen weer geven** in de kolom **acties** . In de lijst weergave worden de uitvoeringen van activiteiten weer gegeven die overeenkomen met elke pijplijn uitvoering.
 
-| **De naam van kolom** | **Beschrijving** |
+| **Kolom naam** | **Beschrijving** |
 | --- | --- |
 | Naam van activiteit | De naam van de activiteit in de pijp lijn |
 | Type activiteit | Type activiteit, zoals **copy**, **ExecuteDataFlow**of **AzureMLExecutePipeline** |
@@ -88,7 +88,7 @@ Nadat u de gebruikers eigenschappen hebt gemaakt, kunt u deze bewaken in de cont
 
 Scha kelen tussen de uitvoering van de pijp lijn in aflopende of oplopende volg orde op basis van de start tijd. Filter pijplijn wordt uitgevoerd met behulp van de volgende kolommen:
 
-| **De naam van kolom** | **Beschrijving** |
+| **Kolom naam** | **Beschrijving** |
 | --- | --- |
 | Naam van pijp lijn | Filter op de naam van de pijp lijn. |
 | Start uitvoeren |  Bepaal het tijds bereik van de pijplijn uitvoeringen wordt weer gegeven. Opties bevatten snelle filters voor de **afgelopen 24 uur**, de **afgelopen week**, de **afgelopen 30 dagen** of het selecteren van een aangepaste datum en tijd. |

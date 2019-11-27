@@ -1,6 +1,6 @@
 ---
-title: Provision devices across load balanced hubs using Azure IoT Hub Device Provisioning Service
-description: Tutorial - Device Provisioning Service automatic device provisioning across load balanced IoT hubs in Azure Portal
+title: Apparaten inrichten voor hubs met gelijke taak verdeling met behulp van Azure IoT Hub Device Provisioning Service
+description: Zelf studie-Device Provisioning Service automatisch inrichten van het apparaat voor IoT-hubs met gelijke taak verdeling in azure Portal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -15,7 +15,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229452"
 ---
-# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Tutorial: Provision devices across load-balanced IoT hubs
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Zelf studie: apparaten inrichten voor IoT-hubs met gelijke taak verdeling
 
 In deze zelfstudie kunt u zien hoe u apparaten kunt inrichten voor meerdere IoT-hubs met gelijke taakverdeling met behulp van de Device Provisioning Service. In deze zelfstudie leert u het volgende:
 
@@ -63,13 +63,13 @@ Koppel de Device Provisioning Service en IoT Hub zodat de Device Provisioning Se
 
 1. Klik op de pagina **Alle resources** op de Device Provisioning Service die u eerder hebt gemaakt.
 2. Klik op de pagina Device Provisioning Service op **Gekoppelde IoT-hubs**.
-3. Klik op **Add**.
+3. Klik op **Toevoegen**.
 4. Geef op de pagina **Koppeling toevoegen aan IoT-hub** met behulp van de keuzerondjes aan of de gekoppelde IoT-hub zich in het huidige abonnement of in een ander abonnement bevindt. Kies vervolgens de naam van de IoT-hub in het vak **IoT-hub**.
 5. Klik op **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Azure Portal gebruiken om een tweede apparaat in te richten op een tweede IoT-hub 

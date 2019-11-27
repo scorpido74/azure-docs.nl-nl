@@ -1,6 +1,6 @@
 ---
-title: Configure security to grant data access - Azure Time Series Insights Preview | Microsoft Docs
-description: Learn how to configure security, permissions, and manage data access policies in your Azure Time Series Insights Preview environment.
+title: Beveiliging configureren om toegang tot gegevens te verlenen-Azure Time Series Insights preview | Microsoft Docs
+description: Meer informatie over het configureren van beveiliging, machtigingen en het beheren van beleid voor gegevens toegang in uw Azure Time Series Insights preview-omgeving.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -18,116 +18,116 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74328023"
 ---
-# <a name="grant-data-access-to-an-environment"></a>Grant data access to an environment
+# <a name="grant-data-access-to-an-environment"></a>Gegevens toegang verlenen tot een omgeving
 
-This article discusses the two types of Azure Time Series Insights Preview access policies.
+In dit artikel worden de twee typen Azure Time Series Insights preview-toegangs beleid beschreven.
 
 > [!TIP]
-> Read [Authentication and Authorization](time-series-insights-authentication-and-authorization.md) for Azure Active Directory app registration steps.
+> Lees [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md) voor de stappen voor het registreren van Azure Active Directory-apps.
 
-## <a name="sign-in-to-time-series-insights"></a>Sign in to Time Series Insights
+## <a name="sign-in-to-time-series-insights"></a>Aanmelden bij Time Series Insights
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-1. Locate your Time Series Insights environment. Enter `Time Series` in the **Search** box. Select **Time Series Environment** in the search results.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Zoek uw Time Series Insights omgeving. Voer `Time Series` in het **zoekvak** in. Selecteer de **Time Series-omgeving** in de zoek resultaten.
 1. Selecteer uw Time Series Insights-omgeving in de lijst.
 
 ## <a name="grant-data-access"></a>Gegevenstoegang verlenen
 
-Follow these steps to grant data access for a user principal.
+Volg deze stappen om toegang tot gegevens toe te kennen voor een gebruikers-principal.
 
-1. Select **Data Access Policies**, and then select **+ Add**.
+1. Selecteer **beleid voor gegevens toegang**en selecteer **+ toevoegen**.
 
-    [![Select and add a Data Access Policy](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
+    [een beleid voor gegevens toegang ![selecteren en toevoegen](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
 
-1. Choose **Select user**. Search for the user name or email address to locate the user you want to add. Select **Select** to confirm the selection.
+1. Kies **gebruiker selecteren**. Zoek naar de gebruikers naam of het e-mail adres om de gebruiker te zoeken die u wilt toevoegen. Selecteer **selecteren** om de selectie te bevestigen.
 
-    [![Select a user to add](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
+    [![selecteren welke gebruiker moet worden toegevoegd](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
 
-1. Choose **Select role**. Choose the appropriate access role for the user:
+1. Kies **rol selecteren**. Kies de juiste Access-rol voor de gebruiker:
 
-    * Select **Contributor** if you want to allow the user to change reference data and share saved queries and perspectives with other users of the environment.
+    * Selecteer **Inzender** als u wilt toestaan dat de gebruiker referentie gegevens kan wijzigen en opgeslagen query's en perspectieven kan delen met andere gebruikers van de omgeving.
 
-    * Otherwise, select **Reader** to allow the user to query data in the environment and save personal, not shared, queries in the environment.
+    * Als dat niet het geval is, selecteert u **lezer** om de gebruiker in staat te stellen gegevens in de omgeving op te vragen en persoonlijke, niet-gedeelde query's in de omgeving op te slaan.
 
-   Select **OK** to confirm the role choice.
+   Selecteer **OK** om de gewenste rol te bevestigen.
 
-    [![Confirm the selected role](media/data-access/data-access-select-a-role.png)](media/data-access/data-access-select-a-role.png#lightbox)
+    [![de geselecteerde rol bevestigen](media/data-access/data-access-select-a-role.png)](media/data-access/data-access-select-a-role.png#lightbox)
 
-1. Select **OK** on the **Select User Role** page.
+1. Selecteer **OK** op de pagina **gebruikersrol selecteren** .
 
-    [![Select OK on the Select User Role page](media/data-access/data-access-confirm-user-and-role.png)](media/data-access/data-access-confirm-user-and-role.png#lightbox)
+    [![Selecteer OK op de pagina gebruikersrol selecteren](media/data-access/data-access-confirm-user-and-role.png)](media/data-access/data-access-confirm-user-and-role.png#lightbox)
 
-1. Confirm that the **Data Access Policies** page lists the users and the roles for each user.
+1. Controleer of de pagina **Data Access policies** de gebruikers en de rollen voor elke gebruiker bevat.
 
-    [![Verify the correct users and roles](media/data-access/data-access-verify-and-confirm-assignments.png)](media/data-access/data-access-verify-and-confirm-assignments.png#lightbox)
+    [de juiste gebruikers en rollen ![controleren](media/data-access/data-access-verify-and-confirm-assignments.png)](media/data-access/data-access-verify-and-confirm-assignments.png#lightbox)
 
-## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Provide guest access from another Azure AD tenant
+## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Gast toegang bieden vanuit een andere Azure AD-Tenant
 
-The `Guest` role isn’t a management role. It’s a term used for an account that’s invited from one tenant to another. After the guest account is invited into the tenant’s directory, it can have the same access control applied to it like any other account. You can grant management access to a Time Series Insights Environment by using the Access Control (IAM) blade. Or you can grant access to the data in the environment through the Data Access Policies blade. For more information on Azure Active Directory (Azure AD) tenant guest access, read [Add Azure Active Directory B2B collaboration users in the Azure portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
+De rol `Guest` is geen beheer functie. Het is een term die wordt gebruikt voor een account dat van de ene Tenant naar de andere wordt uitgenodigd. Nadat het gast account is uitgenodigd voor de directory van de Tenant, kan dit hetzelfde toegangs beheer hebben als een ander account. U kunt beheer toegang tot een Time Series Insights omgeving verlenen met behulp van de Blade Access Control (IAM). U kunt ook toegang tot de gegevens in de omgeving verlenen via de Blade Data Access-beleids regels. Lees [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)voor meer informatie over Azure Active Directory (Azure AD).
 
-Follow these steps to grant guest access to a Time Series Insights environment to an Azure AD user from another tenant.
+Volg deze stappen om gast toegang tot een Time Series Insights omgeving toe te kennen aan een Azure AD-gebruiker vanuit een andere Tenant.
 
-1. Select **Data Access Policies**, and then select **+ Invite**.
+1. Selecteer **beleid voor gegevens toegang**en selecteer **+ uitnodigen**.
 
-    [![Select Data Access Polices, then + Invite](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
+    [![Selecteer gegevens toegangs beleid en klik vervolgens op uitnodigen](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
-1. Enter the email address for the user you want to invite. This email address must be associated with Azure AD. You can optionally include a personal message with the invitation.
+1. Voer het e-mail adres in voor de gebruiker die u wilt uitnodigen. Dit e-mail adres moet worden gekoppeld aan Azure AD. U kunt desgewenst een persoonlijk bericht toevoegen aan de uitnodiging.
 
-    [![Enter the email address to find the selected user](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
+    [![Voer het e-mail adres in om de geselecteerde gebruiker te vinden](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
 
-1. Look for the confirmation bubble that appears on the screen.
+1. Zoek naar de bevestigings ballon die op het scherm wordt weer gegeven.
 
-    [![Look for the confirmation bubble to appear](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
+    [![zoeken naar de bevestigings ballon die moet worden weer gegeven](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
 
-1. Choose **Select user**. Search for the email address of the guest user you invited to locate the user you want to add. Then, **Select** to confirm the selection.
+1. Kies **gebruiker selecteren**. Zoek het e-mail adres van de gast gebruiker die u hebt uitgenodigd voor het zoeken van de gebruiker die u wilt toevoegen. **Selecteer** vervolgens de optie om de selectie te bevestigen.
 
-    [![Select the user and confirm the selection](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
+    [de gebruiker ![selecteren en de selectie bevestigen](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
 
-1. Choose **Select role**. Choose the appropriate access role for the guest user:
+1. Kies **rol selecteren**. Kies de juiste Access-rol voor de gast gebruiker:
 
-    * Select **Contributor** if you want to allow the user to change reference data and share saved queries and perspectives with other users of the environment.
+    * Selecteer **Inzender** als u wilt toestaan dat de gebruiker referentie gegevens kan wijzigen en opgeslagen query's en perspectieven kan delen met andere gebruikers van de omgeving.
 
-    * Otherwise, select **Reader** to allow the user to query data in the environment and save personal, not shared, queries in the environment.
+    * Als dat niet het geval is, selecteert u **lezer** om de gebruiker in staat te stellen gegevens in de omgeving op te vragen en persoonlijke, niet-gedeelde query's in de omgeving op te slaan.
 
-   Select **OK** to confirm the role choice.
+   Selecteer **OK** om de gewenste rol te bevestigen.
 
-    [![Confirm the role choice](media/data-access/data-access-select-ok-and-confirm.png)](media/data-access/data-access-select-ok-and-confirm.png#lightbox)
+    [![de gewenste rol te bevestigen](media/data-access/data-access-select-ok-and-confirm.png)](media/data-access/data-access-select-ok-and-confirm.png#lightbox)
 
-1. Select **OK** on the **Select User Role** page.
+1. Selecteer **OK** op de pagina **gebruikersrol selecteren** .
 
-1. Confirm that the **Data Access Policies** page lists the guest user and the roles for each guest user.
+1. Controleer of de pagina **Data Access policies** de gast gebruiker en de rollen voor elke gast gebruiker bevat.
 
-    [![Verify that users and roles are correctly assigned](media/data-access/data-access-confirm-invited-users-and-roles.png)](media/data-access/data-access-confirm-invited-users-and-roles.png#lightbox)
+    [![controleren of gebruikers en rollen correct zijn toegewezen](media/data-access/data-access-confirm-invited-users-and-roles.png)](media/data-access/data-access-confirm-invited-users-and-roles.png#lightbox)
 
-1. Now, the guest user will receive an invitation email at the email address specified above. The guest user will select **Get Started** to confirm their acceptance and connect to Azure Cloud.
+1. De gast gebruiker ontvangt nu een uitnodigings-e-mail op het e-mail adres dat hierboven is opgegeven. De gast gebruiker selecteert aan de **slag** om de acceptatie te bevestigen en verbinding te maken met de Azure-Cloud.
 
-    [![Guest selects Get Started to accept](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
+    [met ![gast selecteert u aan de slag om te accepteren](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
 
-1. After selecting **Get Started** the guest user will be presented with a permissions box associated with the administrator's organization. Upon granting permission by selecting **Accept**, they will be signed in.
+1. Nadat u **aan de slag** hebt geselecteerd, wordt de gast gebruiker weer gegeven met een machtigings venster dat is gekoppeld aan de organisatie van de beheerder. Wanneer u toestemming verleent door **accepteren**te selecteren, wordt de gebruiker aangemeld.
 
-    [![Guest reviews permissions and accepts](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
+    [machtigingen voor ![gast beoordelingen en accepteren](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
 
-1. The administrator [shares the environment URL](time-series-insights-parameterized-urls.md) with their guest.
+1. De beheerder [deelt de omgevings-URL](time-series-insights-parameterized-urls.md) met hun gast.
 
-1. After the guest user is signed in to the email address you used to invite them, and they accept the invitation, they will be directed to Azure portal. 
+1. Nadat de gast gebruiker is aangemeld bij het e-mail adres dat u hebt gebruikt om ze te nodigen, worden ze omgeleid naar Azure Portal. 
 
-1. The guest can now access the shared environment using the environment URL provided by the administrator. They can enter that URL into their web browser for immediate access.
+1. De gast heeft nu toegang tot de gedeelde omgeving met behulp van de omgevings-URL die door de beheerder is ingesteld. Ze kunnen deze URL in hun webbrowser invoeren voor directe toegang.
 
-1. The guest user will see the administrator's tenant by selecting their profile icon in the upper-right corner of the Time Series explorer.
+1. De gast gebruiker ziet de Tenant van de beheerder door hun profiel pictogram te selecteren in de rechter bovenhoek van de time series Explorer.
 
-    [![Avatar selection on insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
+    [![avatar selecteren op insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
 
-    After the guest user selects the administrator's tenant, they will have the ability to select the shared Time Series Insights environment. 
+    Nadat de gast gebruiker de Tenant van de beheerder heeft geselecteerd, kunnen ze de gedeelde Time Series Insights omgeving selecteren. 
     
-    They now have all the capabilities associated with the role that you provided them with in **step 5**.
+    Ze hebben nu alle mogelijkheden die zijn gekoppeld aan de rol die u hebt gegeven in **stap 5**.
 
-    [![Guest user selects your Azure tenant from drop-down](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
+    [![gast gebruiker selecteert uw Azure-Tenant in de vervolg keuzelijst](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Learn [how to add an Azure Event Hubs event source](./time-series-insights-how-to-add-an-event-source-eventhub.md) to your Time Series Insights environment.
+* Meer informatie [over het toevoegen van een Azure Event hubs gebeurtenis bron](./time-series-insights-how-to-add-an-event-source-eventhub.md) aan uw time series Insights omgeving.
 
-* Send [events to the event source](./time-series-insights-send-events.md).
+* [Gebeurtenissen verzenden naar de bron van de gebeurtenis](./time-series-insights-send-events.md).
 
-* View [your environment in the Time Series Insights Preview explorer](./time-series-insights-update-explorer.md).
+* Bekijk [uw omgeving in de time series Insights preview Explorer](./time-series-insights-update-explorer.md).

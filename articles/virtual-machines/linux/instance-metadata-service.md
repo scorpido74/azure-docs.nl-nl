@@ -1,6 +1,6 @@
 ---
 title: Azure Instance Metadata Service
-description: RESTful interface to get information about Linux VM's compute, network, and upcoming maintenance events.
+description: De REST-interface voor het ophalen van informatie over de compute-, netwerk-en aanstaande onderhouds gebeurtenissen van de Linux-VM.
 services: virtual-machines-linux
 documentationcenter: ''
 author: KumariSupriya
@@ -21,46 +21,46 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232416"
 ---
-# <a name="azure-instance-metadata-service"></a>Azure Instance Metadata service
+# <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
-The Azure Instance Metadata Service provides information about running virtual machine instances that can be used to manage and configure your virtual machines.
-This includes information such as SKU, network configuration, and upcoming maintenance events. For more information on what type of information is available, see [metadata APIs](#metadata-apis).
+De Azure Instance Metadata Service bevat informatie over het uitvoeren van exemplaren van virtuele machines die kunnen worden gebruikt voor het beheren en configureren van uw virtuele machines.
+Dit omvat informatie zoals SKU, netwerk configuratie en aanstaande onderhouds gebeurtenissen. Zie [meta data api's](#metadata-apis)(Engelstalig) voor meer informatie over welk type informatie er beschikbaar is.
 
-Azure's Instance Metadata Service is a REST Endpoint accessible to all IaaS VMs created via the [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/).
-The endpoint is available at a well-known non-routable IP address (`169.254.169.254`) that can be accessed only from within the VM.
+De Instance Metadata Service van Azure is een REST-eind punt dat toegankelijk is voor alle virtuele IaaS-machines die via de [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/)zijn gemaakt.
+Het eind punt is beschikbaar via een bekend, niet-routeerbaar IP-adres (`169.254.169.254`) dat alleen vanuit de virtuele machine kan worden geopend.
 
 > [!IMPORTANT]
-> This service is  **generally available** in all Azure Regions.  It regularly receives updates to expose new information about virtual machine instances. This page reflects the up-to-date [metadata APIs](#metadata-apis) available.
+> Deze service is **over het algemeen beschikbaar** in alle Azure-regio's.  Er worden regel matig updates ontvangen om nieuwe informatie over virtuele-machine-instanties beschikbaar te maken. Op deze pagina worden de bijgewerkte [api's voor meta gegevens](#metadata-apis) weer gegeven die beschikbaar zijn.
 
 ## <a name="service-availability"></a>Beschikbaarheid van services
 
-The service is available in generally available Azure regions. Not all API version may be available in all Azure Regions.
+De service is beschikbaar in de algemeen beschik bare Azure-regio's. Niet alle API-versies zijn mogelijk beschikbaar in alle Azure-regio's.
 
 Regio's                                        | Availability?                                 | Ondersteunde versies
 -----------------------------------------------|-----------------------------------------------|-----------------
-[All Generally Available Global Azure Regions](https://azure.microsoft.com/regions/)     | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04
+[Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
 [Azure China](https://www.azure.cn/)                                                     | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
 
-This table is updated when there are service updates and or new supported versions are available.
+Deze tabel wordt bijgewerkt wanneer er service-updates zijn en of er nieuwe ondersteunde versies beschikbaar zijn.
 
-To try out the Instance Metadata Service, create a VM from [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) or the [Azure portal](https://portal.azure.com) in the above regions and follow the examples below.
+Als u de Instance Metadata Service wilt uitproberen, maakt u een VM op basis van [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) of de [Azure Portal](https://portal.azure.com) in de bovenstaande regio's en volgt u de voor beelden hieronder.
 
 ## <a name="usage"></a>Gebruik
 
 ### <a name="versioning"></a>Versiebeheer
 
-The Instance Metadata Service is versioned and specifying the API version in the HTTP request is mandatory.
+De Instance Metadata Service is versie nummer en het opgeven van de API-versie in de HTTP-aanvraag is verplicht.
 
-You can see the newest versions listed in this [availability table](#service-availability).
+U kunt de nieuwste versies zien die worden vermeld in deze [beschikbaarheids tabel](#service-availability).
 
-As newer versions are added, older versions can still be accessed for compatibility if your scripts have dependencies on specific data formats.
+Als nieuwere versies worden toegevoegd, kunnen oudere versies nog steeds worden gebruikt voor compatibiliteit als uw scripts afhankelijk zijn van specifieke gegevens indelingen.
 
-When no version is specified, an error is returned with a list of the newest supported versions.
+Als er geen versie is opgegeven, wordt er een fout geretourneerd met een lijst met de nieuwste ondersteunde versies.
 
 > [!NOTE]
-> The response is a JSON string. The following example response is pretty-printed for readability.
+> Het antwoord is een JSON-teken reeks. Het volgende voor beeld is een mooie afdruk van de Lees baarheid.
 
 **Aanvraag**
 
@@ -81,65 +81,65 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance"
 }
 ```
 
-### <a name="using-headers"></a>Using headers
+### <a name="using-headers"></a>Headers gebruiken
 
-When you query the Instance Metadata Service, you must provide the header `Metadata: true` to ensure the request was not unintentionally redirected.
+Wanneer u een query uitvoert op de Instance Metadata Service, moet u de header-`Metadata: true` opgeven om ervoor te zorgen dat de aanvraag niet per ongeluk is omgeleid.
 
-### <a name="retrieving-metadata"></a>Retrieving metadata
+### <a name="retrieving-metadata"></a>Meta gegevens ophalen
 
-Instance metadata is available for running VMs created/managed using [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Access all data categories for a virtual machine instance using the following request:
+Meta gegevens van exemplaren zijn beschikbaar voor het uitvoeren van Vm's die zijn gemaakt/beheerd met behulp van [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Toegang tot alle gegevens categorieën voor een exemplaar van een virtuele machine met behulp van de volgende aanvraag:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
 ```
 
 > [!NOTE]
-> All instance metadata queries are case-sensitive.
+> Alle meta gegevens query's zijn hoofdletter gevoelig.
 
-### <a name="data-output"></a>Data output
+### <a name="data-output"></a>Gegevens uitvoer
 
-By default, the Instance Metadata Service returns data in JSON format (`Content-Type: application/json`). However, different APIs return data in different formats if requested.
-The following table is a reference of other data formats APIs may support.
+Standaard worden in de Instance Metadata Service gegevens in JSON-indeling (`Content-Type: application/json`) geretourneerd. Verschillende Api's retour neren gegevens echter in verschillende indelingen als dat wordt gevraagd.
+De volgende tabel bevat een verwijzing naar andere Data Format-Api's die mogelijk worden ondersteund.
 
-API | Default Data Format | Other Formats
+API | Standaard gegevens indeling | Andere indelingen
 --------|---------------------|--------------
-/instance | json | tekst
+/instance | json | text
 /scheduledevents | json | geen
 /attested | json | geen
 
-To access a non-default response format, specify the requested format as a query string parameter in the request. Bijvoorbeeld:
+Om toegang te krijgen tot een niet-standaard antwoord indeling, geeft u de aangevraagde indeling op als een query reeks parameter in de aanvraag. Bijvoorbeeld:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 > [!NOTE]
-> For leaf nodes the `format=json` doesn't work. For these queries `format=text` needs to be explicitly specified if the default format is json.
+> Voor blad knooppunten werkt de `format=json` niet. Voor deze query's moet `format=text` expliciet worden opgegeven als de standaard indeling JSON is.
 
 ### <a name="security"></a>Beveiliging
 
-The Instance Metadata Service endpoint is accessible only from within the running virtual machine instance on a non-routable IP address. In addition, any request with a `X-Forwarded-For` header is rejected by the service.
-Requests must also contain a `Metadata: true` header to ensure that the actual request was directly intended and not a part of unintentional redirection.
+Het Instance Metadata Service-eind punt is alleen toegankelijk vanuit het actieve exemplaar van de virtuele machine op een niet-routeerbaar IP-adres. Daarnaast wordt elke aanvraag met een `X-Forwarded-For`-header afgewezen door de service.
+Aanvragen moeten ook een `Metadata: true`-header bevatten om ervoor te zorgen dat de daad werkelijke aanvraag rechtstreeks is bedoeld en geen onderdeel van onbedoelde omleiding.
 
 ### <a name="error"></a>Fout
 
-If there is a data element not found or a malformed request, the Instance Metadata Service returns standard HTTP errors. Bijvoorbeeld:
+Als er geen gegevens element is gevonden of een ongeldige aanvraag is, retourneert de Instance Metadata Service standaard HTTP-fouten. Bijvoorbeeld:
 
-HTTP Status Code | Reden
+HTTP-status code | Reden
 ----------------|-------
 200 OK |
-400 Bad Request | Missing `Metadata: true` header or missing the format when querying a leaf node
-404 – Niet gevonden | The requested element doesn't exist
-405 Method Not Allowed | Only `GET` and `POST` requests are supported
-429 Too Many Requests | The API currently supports a maximum of 5 queries per second
-500 Service Error     | Retry after some time
+400 ongeldige aanvraag | `Metadata: true` header ontbreekt of de indeling ontbreekt tijdens het uitvoeren van een query op een Leaf-knoop punt
+404 – Niet gevonden | Het aangevraagde element bestaat niet
+methode 405 niet toegestaan | Alleen `GET`-en `POST`-aanvragen worden ondersteund
+429 te veel aanvragen | De API ondersteunt momenteel Maxi maal vijf query's per seconde
+500-service fout     | Na enige tijd opnieuw proberen
 
 ### <a name="examples"></a>Voorbeelden
 
 > [!NOTE]
-> All API responses are JSON strings. All following example responses are pretty-printed for readability.
+> Alle API-antwoorden zijn JSON-teken reeksen. Alle volgende voor beelden van antwoorden worden afgedrukt voor de Lees baarheid.
 
-#### <a name="retrieving-network-information"></a>Retrieving network information
+#### <a name="retrieving-network-information"></a>Netwerk gegevens ophalen
 
 **Aanvraag**
 
@@ -150,7 +150,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 **Antwoord**
 
 > [!NOTE]
-> The response is a JSON string. The following example response is pretty-printed for readability.
+> Het antwoord is een JSON-teken reeks. Het volgende voor beeld is een mooie afdruk van de Lees baarheid.
 
 ```json
 {
@@ -180,13 +180,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 
 ```
 
-#### <a name="retrieving-public-ip-address"></a>Retrieving public IP address
+#### <a name="retrieving-public-ip-address"></a>Openbaar IP-adres ophalen
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
-#### <a name="retrieving-all-metadata-for-an-instance"></a>Retrieving all metadata for an instance
+#### <a name="retrieving-all-metadata-for-an-instance"></a>Alle meta gegevens voor een exemplaar ophalen
 
 **Aanvraag**
 
@@ -197,7 +197,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 **Antwoord**
 
 > [!NOTE]
-> The response is a JSON string. The following example response is pretty-printed for readability.
+> Het antwoord is een JSON-teken reeks. Het volgende voor beeld is een mooie afdruk van de Lees baarheid.
 
 ```json
 {
@@ -257,17 +257,17 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 }
 ```
 
-#### <a name="retrieving-metadata-in-windows-virtual-machine"></a>Retrieving metadata in Windows Virtual Machine
+#### <a name="retrieving-metadata-in-windows-virtual-machine"></a>Meta gegevens ophalen in virtuele Windows-machine
 
 **Aanvraag**
 
-Instance metadata can be retrieved in Windows via the PowerShell utility `curl`: 
+Meta gegevens van exemplaren kunnen worden opgehaald in Windows via het hulp programma Power shell `curl`: 
 
 ```bash
 curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-03-11 | select -ExpandProperty Content
 ```
 
-Or through the `Invoke-RestMethod` cmdlet:
+Of via de `Invoke-RestMethod`-cmdlet:
 
 ```powershell
 
@@ -277,7 +277,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 **Antwoord**
 
 > [!NOTE]
-> The response is a JSON string. The following example response is pretty-printed for readability.
+> Het antwoord is een JSON-teken reeks. Het volgende voor beeld is een mooie afdruk van de Lees baarheid.
 
 ```json
 {
@@ -337,72 +337,72 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 }
 ```
 
-## <a name="metadata-apis"></a>Metadata APIs
+## <a name="metadata-apis"></a>Api's voor meta gegevens
 
-#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>The following APIs are available through the metadata endpoint:
+#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>De volgende Api's zijn beschikbaar via het eind punt voor meta gegevens:
 
-Gegevens | Beschrijving | Version Introduced
+Gegevens | Beschrijving | Geïntroduceerde versie
 -----|-------------|-----------------------
-attested | See [Attested Data](#attested-data) | 2018-10-01
-identiteit | Managed identities for Azure resources. See [acquire an access token](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-instance | See [Instance API](#instance-api) | 2017-04-02
-scheduledevents | See [Scheduled Events](scheduled-events.md) | 2017-08-01
+Attestation | Zie [attested data](#attested-data) | 10-01-2018
+identiteit | Beheerde identiteiten voor Azure-resources. Zie [een toegangs Token ophalen](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+instance | Zie [instance API](#instance-api) | 2017-04-02
+scheduledevents | Zie [Scheduled Events](scheduled-events.md) | 2017-08-01
 
-#### <a name="instance-api"></a>Instance API
-##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>The following Compute categories are available through the Instance API:
+#### <a name="instance-api"></a>Exemplaar-API
+##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>De volgende Compute-categorieën zijn beschikbaar via de instance API:
 
 > [!NOTE]
-> Through the metadata endpoint, the following categories are accessed through instance/compute
+> Via het eind punt van de meta gegevens zijn de volgende categorieën toegankelijk via instance/compute
 
-Gegevens | Beschrijving | Version Introduced
+Gegevens | Beschrijving | Geïntroduceerde versie
 -----|-------------|-----------------------
-azEnvironment | Azure Environment where the VM is running in | 2018-10-01
-customData | See [Custom Data](#custom-data) | 2019-02-01
-location | Azure Region the VM is running in | 2017-04-02
-name | Name of the VM | 2017-04-02
-offer | Offer information for the VM image and is only present for images deployed from Azure image gallery | 2017-04-02
-osType | Linux or Windows | 2017-04-02
-placementGroupId | [Placement Group](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) of your virtual machine scale set | 2017-08-01
-plan | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) containing name, product, and publisher for a VM if its an Azure Marketplace Image | 2018-04-02
-platformUpdateDomain |  [Update domain](manage-availability.md) the VM is running in | 2017-04-02
-platformFaultDomain | [Fault domain](manage-availability.md) the VM is running in | 2017-04-02
-provider | Provider of the VM | 2018-10-01
-publicKeys | [Collection of Public Keys](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) assigned to the VM and paths | 2018-04-02
-publisher | Publisher of the VM image | 2017-04-02
-resourceGroupName | [Resource group](../../azure-resource-manager/resource-group-overview.md) for your Virtual Machine | 2017-08-01
-resourceId | The [fully qualified](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID of the resource | 2019-03-11
-sku | Specific SKU for the VM image | 2017-04-02
-subscriptionId | Azure subscription for the Virtual Machine | 2017-08-01
-tags | [Tags](../../azure-resource-manager/resource-group-using-tags.md) for your Virtual Machine  | 2017-08-01
-tagsList | Tags formatted as a JSON array for easier programmatic parsing  | 2019-06-04
-versie | Version of the VM image | 2017-04-02
-vmId | [Unique identifier](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) for the VM | 2017-04-02
-vmScaleSetName | [Virtual Machine ScaleSet Name](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) of your virtual machine scale set | 2017-12-01
+azEnvironment | Azure-omgeving waarin de virtuele machine wordt uitgevoerd | 10-01-2018
+customData | [Aangepaste gegevens](#custom-data) weer geven | 2019-02-01
+location | Azure-regio waarin de virtuele machine wordt uitgevoerd | 2017-04-02
+naam | Naam van de virtuele machine | 2017-04-02
+offer | Informatie over de installatie kopie van de virtuele machine weer geven en die alleen aanwezig is voor installatie kopieën die vanuit de Azure-installatie kopie galerie | 2017-04-02
+besturingssysteemtype | Linux of Windows | 2017-04-02
+placementGroupId | [Plaatsings groep](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) van de schaalset voor virtuele machines | 2017-08-01
+Fonds | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als de Azure Marketplace-installatie kopie | 2018-04-02
+platformUpdateDomain |  [Domein bijwerken](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
+platformFaultDomain | [Fout domein](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
+providers | Provider van de virtuele machine | 10-01-2018
+publicKeys | [Verzameling van open bare sleutels](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) die zijn toegewezen aan de virtuele machine en de paden | 2018-04-02
+publisher | Uitgever van de VM-installatie kopie | 2017-04-02
+resourceGroupName | [Resource groep](../../azure-resource-manager/resource-group-overview.md) voor uw virtuele machine | 2017-08-01
+resourceId | De [volledig gekwalificeerde](https://docs.microsoft.com/rest/api/resources/resources/getbyid) id van de resource | 2019-03-11
+sku | Specifieke SKU voor de VM-installatie kopie | 2017-04-02
+subscriptionId | Azure-abonnement voor de virtuele machine | 2017-08-01
+tags | [Labels](../../azure-resource-manager/resource-group-using-tags.md) voor uw virtuele machine  | 2017-08-01
+tagsList | Tags die zijn opgemaakt als een JSON-matrix voor eenvoudiger programmatisch parseren  | 2019-06-04
+versie | Versie van de VM-installatie kopie | 2017-04-02
+vmId | De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine | 2017-04-02
+vmScaleSetName | [Naam van de virtuele-machine schaalset](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) van de schaalset voor virtuele machines | 2017-12-01
 vmSize | [VM-grootte](sizes.md) | 2017-04-02
-zone | [Availability Zone](../../availability-zones/az-overview.md) of your virtual machine | 2017-12-01
+zone | [Beschikbaarheids zone](../../availability-zones/az-overview.md) van uw virtuele machine | 2017-12-01
 
-##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>The following Network categories are available through the Instance API:
+##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>De volgende netwerk categorieën zijn beschikbaar via de exemplaar-API:
 
 > [!NOTE]
-> Through the metadata endpoint, the following categories are accessed through instance/network/interface
+> Via het eind punt van de meta gegevens zijn de volgende categorieën toegankelijk via instance/Network/Interface
 
-Gegevens | Beschrijving | Version Introduced
+Gegevens | Beschrijving | Geïntroduceerde versie
 -----|-------------|-----------------------
-ipv4/privateIpAddress | Local IPv4 address of the VM | 2017-04-02
-ipv4/publicIpAddress | Public IPv4 address of the VM | 2017-04-02
-subnet/address | Subnet address of the VM | 2017-04-02
-subnet/prefix | Subnet prefix, example 24 | 2017-04-02
-ipv6/ipAddress | Local IPv6 address of the VM | 2017-04-02
-macAddress | VM mac address | 2017-04-02
+ipv4/privateIpAddress | Lokaal IPv4-adres van de virtuele machine | 2017-04-02
+ipv4/publicIpAddress | Openbaar IPv4-adres van de virtuele machine | 2017-04-02
+subnet/adres | Subnetadres van de virtuele machine | 2017-04-02
+subnet/voor voegsel | Subnetvoorvoegsel, voor beeld 24 | 2017-04-02
+ipv6/ipAddress | Lokaal IPv6-adres van de virtuele machine | 2017-04-02
+macAddress | Mac-adres van VM | 2017-04-02
 
-## <a name="attested-data"></a>Attested Data
+## <a name="attested-data"></a>Attestende gegevens
 
-Instance Metadata responds at http endpoint on 169.254.169.254. Part of the scenario served by Instance Metadata Service is to provide guarantees that the data responded is coming from Azure. We sign part of this information so that marketplace images can be sure that it's their image running on Azure.
+Meta gegevens van exemplaren reageren op http-eind punt op 169.254.169.254. Een deel van het scenario dat wordt verzorgd door Instance Metadata Service is het garanderen van garanties dat de geantwoorde gegevens afkomstig zijn van Azure. We ondertekenen een deel van deze informatie zodat installatie kopieën van Marketplace er zeker van kunnen zijn dat de installatie kopie wordt uitgevoerd op Azure.
 
-### <a name="example-attested-data"></a>Example Attested Data
+### <a name="example-attested-data"></a>Voor beeld van Attestation-gegevens
 
 > [!NOTE]
-> All API responses are JSON strings. The following example responses are pretty-printed for readability.
+> Alle API-antwoorden zijn JSON-teken reeksen. De volgende voorbeeld antwoorden zijn tamelijk afgedrukt voor de Lees baarheid.
 
  **Aanvraag**
 
@@ -411,13 +411,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-ver
 
 ```
 
-Api-version is a mandatory field. Refer to the [service availability section](#service-availability) for supported API versions.
-Nonce is an optional 10-digit string provided. Nonce can be used to track the request and if not provided, in response encoded string the current UTC timestamp is returned.
+API-Version is een verplicht veld. Raadpleeg de [sectie Service beschikbaarheid](#service-availability) voor ondersteunde API-versies.
+Nonce is een optionele teken reeks van tien cijfers. Nonce kan worden gebruikt om de aanvraag bij te houden en als er geen waarde is opgegeven, wordt de huidige UTC-tijds tempel geretourneerd in de gecodeerde antwoord reeks.
 
  **Antwoord**
 
 > [!NOTE]
-> The response is a JSON string. The following example response is pretty-printed for readability.
+> Het antwoord is een JSON-teken reeks. Het volgende voor beeld is een mooie afdruk van de Lees baarheid.
 
  ```json
 {
@@ -425,31 +425,31 @@ Nonce is an optional 10-digit string provided. Nonce can be used to track the re
 }
 ```
 
-> The signature blob is a [pkcs7](https://aka.ms/pkcs7) signed version of document. It contains the certificate used for signing along with the VM details like vmId, nonce, subscriptionId, timeStamp for creation and expiry of the document and the plan information about the image. The plan information is only populated for Azure Market place images. The certificate can be extracted from the response and used to validate that the response is valid and is coming from Azure.
+> De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met de VM-Details, zoals vmId, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure-markt plaatsen. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
 
-#### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Retrieving attested metadata in Windows Virtual Machine
+#### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>De verwerkte meta gegevens worden opgehaald in de virtuele Windows-machine
 
  **Aanvraag**
 
-Instance metadata can be retrieved in Windows via the PowerShell utility `curl`:
+Meta gegevens van exemplaren kunnen worden opgehaald in Windows via het hulp programma Power shell `curl`:
 
  ```bash
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 
- Or through the `Invoke-RestMethod` cmdlet:
+ Of via de `Invoke-RestMethod`-cmdlet:
 
  ```powershell
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" -Method get
 ```
 
-Api-version is a mandatory field. Refer to the service availability section for supported API versions.
-Nonce is an optional 10-digit string provided. Nonce can be used to track the request and if not provided, in response encoded string the current UTC timestamp is returned.
+API-Version is een verplicht veld. Raadpleeg de sectie Service beschikbaarheid voor ondersteunde API-versies.
+Nonce is een optionele teken reeks van tien cijfers. Nonce kan worden gebruikt om de aanvraag bij te houden en als er geen waarde is opgegeven, wordt de huidige UTC-tijds tempel geretourneerd in de gecodeerde antwoord reeks.
 
  **Antwoord**
 
 > [!NOTE]
-> The response is a JSON string. The following example response  is pretty-printed for readability.
+> Het antwoord is een JSON-teken reeks. Het volgende voor beeld is een mooie afdruk van de Lees baarheid.
 
  ```json
 {
@@ -457,14 +457,14 @@ Nonce is an optional 10-digit string provided. Nonce can be used to track the re
 }
 ```
 
-> The signature blob is a [pkcs7](https://aka.ms/pkcs7) signed version of document. It contains the certificate used for signing along with the VM details like vmId, nonce, subscriptionId, timeStamp for creation and expiry of the document and the plan information about the image. The plan information is only populated for Azure Market place images. The certificate can be extracted from the response and used to validate that the response is valid and is coming from Azure.
+> De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met de VM-Details, zoals vmId, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure-markt plaatsen. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
 
 
-## <a name="example-scenarios-for-usage"></a>Example scenarios for usage  
+## <a name="example-scenarios-for-usage"></a>Voorbeeld scenario's voor gebruik  
 
 ### <a name="tracking-vm-running-on-azure"></a>VM bijhouden waarop Azure wordt uitgevoerd
 
-As a service provider, you may require to track the number of VMs running your software or have agents that need to track uniqueness of the VM. To be able to get a unique ID for a VM, use the `vmId` field from Instance Metadata Service.
+Als service provider kan het nodig zijn om het aantal Vm's waarop de software wordt uitgevoerd bij te houden of om agents te hebben die de uniekheid van de virtuele machine moeten bijhouden. Als u een unieke ID voor een virtuele machine wilt ophalen, gebruikt u het veld `vmId` van Instance Metadata Service.
 
 **Aanvraag**
 
@@ -480,9 +480,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 
 ### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Plaatsen van containers, fout-/updatedomein op basis van gegevenspartities
 
-For certain scenarios, placement of different data replicas is of prime importance. For example, [HDFS replica placement](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) or container placement via an [orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) may you require to know the `platformFaultDomain` and `platformUpdateDomain` the VM is running on.
-You can also use [Availability Zones](../../availability-zones/az-overview.md) for the instances to make these decisions.
-You can query this data directly via the Instance Metadata Service.
+Voor bepaalde scenario's is het plaatsen van verschillende gegevens replica's van groot belang. Het is bijvoorbeeld mogelijk dat u de `platformFaultDomain` van [HDFS replica](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) of container plaatsing via een [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) wilt weten en dat `platformUpdateDomain` de virtuele machine wordt uitgevoerd.
+U kunt [Beschikbaarheidszones](../../availability-zones/az-overview.md) ook gebruiken voor de instanties om deze beslissingen te nemen.
+U kunt deze gegevens rechtstreeks opvragen via de Instance Metadata Service.
 
 **Aanvraag**
 
@@ -498,7 +498,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 
 ### <a name="getting-more-information-about-the-vm-during-support-case"></a>Meer informatie krijgen over de VM tijdens de ondersteuningsaanvraag
 
-As a service provider, you may get a support call where you would like to know more information about the VM. Asking the customer to share the compute metadata can provide basic information for the support professional to know about the kind of VM on Azure.
+Als service provider kunt u een ondersteunings oproep krijgen waarin u meer informatie over de virtuele machine wilt weten. Als u de klant vraagt om de berekenings-meta gegevens te delen, kan de ondersteunings medewerker basis informatie geven over het type virtuele machine op Azure.
 
 **Aanvraag**
 
@@ -509,7 +509,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 **Antwoord**
 
 > [!NOTE]
-> The response is a JSON string. The following example response is pretty-printed for readability.
+> Het antwoord is een JSON-teken reeks. Het volgende voor beeld is een mooie afdruk van de Lees baarheid.
 
 ```json
 {
@@ -531,7 +531,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 ### <a name="getting-azure-environment-where-the-vm-is-running"></a>Azure-omgeving ophalen waarin de VM wordt uitgevoerd
 
-Azure has various sovereign clouds like [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Sometimes you need the Azure Environment to make some runtime decisions. The following sample shows you how you can achieve this behavior.
+Azure heeft verschillende soevereine Clouds, zoals [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Soms hebt u de Azure-omgeving nodig om enkele runtime beslissingen te nemen. In het volgende voor beeld ziet u hoe u dit gedrag kunt behaalt.
 
 **Aanvraag**
 ```bash
@@ -542,18 +542,18 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 ```bash
 AzurePublicCloud
 ```
-The cloud and the values of the Azure Environment are listed below.
+De Cloud en de waarden van de Azure-omgeving worden hieronder weer gegeven.
 
- Cloud   | Azure Environment
+ Cloud   | Azure-omgeving
 ---------|-----------------
-[All Generally Available Global Azure Regions](https://azure.microsoft.com/regions/)     | AzurePublicCloud
+[Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
 [Azure China](https://azure.microsoft.com/global-infrastructure/china/)                  | AzureChinaCloud
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
+[Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
-### <a name="getting-the-tags-for-the-vm"></a>Getting the tags for the VM
+### <a name="getting-the-tags-for-the-vm"></a>De labels voor de virtuele machine ophalen
 
-Tags may have been applied to your Azure VM to logically organize them into a taxonomy. The tags assigned to a VM can be retrieved by using the request below.
+Labels zijn mogelijk toegepast op uw virtuele Azure-machine om ze logisch in een taxonomie te organiseren. De labels die aan een virtuele machine zijn toegewezen, kunnen worden opgehaald met behulp van de onderstaande aanvraag.
 
 **Aanvraag**
 
@@ -567,7 +567,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-The `tags` field is a string with the tags delimited by semicolons. This can be a problem if semicolons are used in the tags themselves. If a parser is written to programmatically extract the tags, you should rely on the `tagsList` field which is a JSON array with no delimiters, and consequently, easier to parse.
+Het `tags` veld is een teken reeks waarbij de labels worden gescheiden door punt komma's. Dit kan een probleem zijn als punt komma's worden gebruikt in de labels zelf. Als een parser is geschreven om de Tags programmatisch uit te pakken, moet u vertrouwen op het `tagsList` veld dat een JSON-matrix met geen scheidings tekens is, en dus gemakkelijker te parseren is.
 
 **Aanvraag**
 
@@ -596,10 +596,10 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>Valideren dat Azure wordt uitgevoerd op de VM
 
-Marketplace vendors want to ensure that their software is licensed to run only in Azure. If someone copies the VHD out to on-premises, then they should have the ability to detect that. By calling into Instance Metadata Service, Marketplace vendors can get signed data that guarantees response only from Azure.
+Marketplace-leveranciers willen ervoor zorgen dat hun software alleen in azure wordt uitgevoerd. Als iemand de VHD naar een on-premises kopie kopieert, moeten ze die kunnen detecteren. Bij het aanroepen van Instance Metadata Service kunnen Marketplace-leveranciers ondertekende gegevens ophalen die alleen reageren vanuit Azure.
 
 > [!NOTE]
-> Requires jq to be installed.
+> Vereist dat JQ wordt geïnstalleerd.
 
 **Aanvraag**
 
@@ -642,26 +642,26 @@ Verification successful
 
 Gegevens | Beschrijving
 -----|------------
-nonce | User supplied optional string with the request. If no nonce was supplied in the request, the current UTC timestamp is returned
-plan | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) for a VM in it's an Azure Marketplace Image, contains name, product, and publisher
-timestamp/createdOn | The timestamp at which the first signed document was created
-timestamp/expiresOn | The timestamp at which the signed document expires
-vmId |  [Unique identifier](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) for the VM
-subscriptionId | Azure subscription for the Virtual Machine, introduced in `2019-04-30`
+nonce | Door de gebruiker opgegeven optionele teken reeks met de aanvraag. Als er geen nonce in de aanvraag is opgegeven, wordt de huidige UTC-tijds tempel geretourneerd
+Fonds | Een virtuele machine in een Azure Marketplace-installatie kopie [plannen](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , met naam, product en uitgever
+timestamp/createdOn | Het tijds tempel waarop het eerste ondertekende document is gemaakt
+timestamp/expiresOn | Het tijds tempel waarop het ondertekende document verloopt
+vmId |  De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine
+subscriptionId | Azure-abonnement voor de virtuele machine, geïntroduceerd in `2019-04-30`
 
-#### <a name="verifying-the-signature"></a>Verifying the signature
+#### <a name="verifying-the-signature"></a>De hand tekening verifiëren
 
-Once you get the signature above, you can verify that the signature is from Microsoft. Also you can verify the intermediate certificate and the certificate chain. Lastly, you can verify the subscription ID is correct.
+Nadat u de hand tekening hierboven hebt opgehaald, kunt u controleren of de hand tekening afkomstig is van micro soft. U kunt ook het tussenliggende certificaat en de certificaat keten controleren. Ten slotte kunt u controleren of de abonnements-ID juist is.
 
 > [!NOTE]
-> The certificate for Public cloud and sovereign cloud will be different.
+> Het certificaat voor open bare Cloud en soevereine Cloud wijkt af.
 
  Cloud | Certificaat
 ---------|-----------------
-[All Generally Available Global Azure Regions](https://azure.microsoft.com/regions/)     | metadata.azure.com
+[Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
 [Azure China](https://azure.microsoft.com/global-infrastructure/china/)                  | metadata.azure.cn
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
+[Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
 
 ```bash
 
@@ -677,22 +677,22 @@ openssl x509 -noout -issuer -in intermediate.pem
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
-In cases where the intermediate certificate cannot be downloaded due to network constraints during validation, the intermediate certificate can be pinned. However, Azure will roll over the certificates as per standard PKI practice. The pinned certificates would need to be updated when roll over happens. Whenever a change to update the intermediate certificate is planned, the Azure blog will be updated and Azure customers will be notified. The intermediate certificates can be found [here](https://www.microsoft.com/pki/mscorp/cps/default.htm). The intermediate certificates for each of the regions can be different.
+In gevallen waarin het tussenliggende certificaat niet kan worden gedownload vanwege netwerk beperkingen tijdens de validatie, kan het tussenliggende certificaat worden vastgemaakt. Azure zal de certificaten echter ook volgens de standaard-PKI-praktijk inrollen. De vastgemaakte certificaten moeten worden bijgewerkt wanneer er wordt gekanteld. Wanneer een wijziging voor het bijwerken van het tussenliggende certificaat is gepland, wordt het Azure-blog bijgewerkt en ontvangen Azure-klanten een melding. De tussenliggende certificaten kunt u [hier](https://www.microsoft.com/pki/mscorp/cps/default.htm)vinden. De tussenliggende certificaten voor elk van de regio's kunnen verschillen.
 
 ### <a name="failover-clustering-in-windows-server"></a>Failover Clustering in Windows Server
 
-For certain scenarios, when querying Instance Metadata Service with Failover Clustering, it is necessary to add a route to the routing table.
+Bij het uitvoeren van een query op Instance Metadata Service met Failoverclustering, moet u voor bepaalde scenario's een route toevoegen aan de routerings tabel.
 
-1. Open command prompt with administrator privileges.
+1. Open de opdracht prompt met beheerders bevoegdheden.
 
-2. Run the following command and note the address of the Interface for Network Destination (`0.0.0.0`) in the IPv4 Route Table.
+2. Voer de volgende opdracht uit en noteer het adres van de interface voor de netwerk bestemming (`0.0.0.0`) in de IPv4-route tabel.
 
 ```bat
 route print
 ```
 
 > [!NOTE] 
-> The following example output from a Windows Server VM with Failover Cluster enabled contains only the IPv4 Route Table for simplicity.
+> De volgende voorbeeld uitvoer van een Windows Server-VM met failovercluster ingeschakeld bevat alleen de IPv4-route tabel voor eenvoud.
 
 ```bat
 IPv4 Route Table
@@ -718,30 +718,30 @@ Network Destination        Netmask          Gateway       Interface  Metric
   255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
 ```
 
-1. Run the following command and use the address of the Interface for Network Destination (`0.0.0.0`) which is (`10.0.1.10`) in this example.
+1. Voer de volgende opdracht uit en gebruik het adres van de interface voor de netwerk bestemming (`0.0.0.0`) (`10.0.1.10`) in dit voor beeld.
 
 ```bat
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
-### <a name="custom-data"></a>Custom Data
-Instance Metadata Service provides the ability for the VM to have access to its custom data. The binary data must be less than 64 KB and is provided to the VM in base64 encoded form.
+### <a name="custom-data"></a>Aangepaste gegevens
+Instance Metadata Service biedt de mogelijkheid om de virtuele machine toegang tot de aangepaste gegevens te geven. De binaire gegevens moeten kleiner zijn dan 64 KB en worden door gegeven aan de virtuele machine in base64-gecodeerde vorm.
 
-Azure custom data can be inserted to the VM through REST APIs, PowerShell Cmdlets, Azure Command Line Interface (CLI), or an ARM template.
+Aangepaste Azure-gegevens kunnen worden ingevoegd op de VM via REST Api's, Power shell-cmdlets, een Azure Command Line Interface (CLI) of een ARM-sjabloon.
 
-For an Azure Command Line Interface example, see [Custom Data and Cloud-Init on Microsoft Azure](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/).
+Zie [aangepaste gegevens en Cloud-init op Microsoft Azure](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/)voor een Azure-opdracht regel interface voor beeld.
 
-For an ARM template example, see [Deploy a Virtual Machine with CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+Zie [een virtuele machine implementeren met CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)voor een voor beeld van een arm-sjabloon.
 
-Custom data is available to all processes running in the VM. It is suggested that customers do not insert secret information into custom data.
+Aangepaste gegevens zijn beschikbaar voor alle processen die worden uitgevoerd in de virtuele machine. Klanten wordt aangeraden geen geheime gegevens in te voegen in aangepaste gegevens.
 
-Currently, custom data is guaranteed to be available during bootstrap of a VM. If updates are made to the VM such as adding disks or resizing the VM, Instance Metadata Service will not provide custom data. Providing custom data persistently through Instance Metadata Service is currently in progress.
+Momenteel zijn aangepaste gegevens gegarandeerd beschikbaar tijdens Boots trap van een virtuele machine. Als er updates worden uitgevoerd op de VM, zoals het toevoegen van schijven of het wijzigen van de grootte van de virtuele machine, worden Instance Metadata Service geen aangepaste gegevens verstrekt. Er wordt momenteel aangepaste gegevens verstrekt via Instance Metadata Service.
 
-#### <a name="retrieving-custom-data-in-virtual-machine"></a>Retrieving custom data in Virtual Machine
-Instance Metadata Service provides custom data to the VM in base64 encoded form. The following example decodes the base64 encoded string.
+#### <a name="retrieving-custom-data-in-virtual-machine"></a>De aangepaste gegevens worden opgehaald in de virtuele machine
+Instance Metadata Service biedt aangepaste gegevens aan de virtuele machine in base64-gecodeerde vorm. In het volgende voor beeld wordt de base64-gecodeerde teken reeks gedecodeerd.
 
 > [!NOTE]
-> The custom data in this example is interpreted as an ASCII string that reads, "My custom data.".
+> De aangepaste gegevens in dit voor beeld worden geïnterpreteerd als een ASCII-teken reeks die ' mijn aangepaste gegevens ' leest.
 
 **Aanvraag**
 
@@ -755,7 +755,7 @@ curl -H "Metadata:true" "http://169.254.169.254/metadata/instance/compute/custom
 My custom data.
 ```
 
-### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Examples of calling metadata service using different languages inside the VM
+### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Voor beelden van het aanroepen van meta gegevens service met verschillende talen in de VM
 
 Taal | Voorbeeld
 ---------|----------------
@@ -764,7 +764,7 @@ Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
-Javascript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
+JavaScript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
 PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
@@ -774,29 +774,29 @@ Puppet | https://github.com/keirans/azuremetadata
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-1. I am getting the error `400 Bad Request, Required metadata header not specified`. Wat betekent dit?
-   * The Instance Metadata Service requires the header `Metadata: true` to be passed in the request. Passing this header in the REST call allows access to the Instance Metadata Service.
-2. Why am I not getting compute information for my VM?
-   * Currently the Instance Metadata Service only supports instances created with Azure Resource Manager. In the future, support for  Cloud Service VMs might be added.
-3. I created my Virtual Machine through Azure Resource Manager a while back. Why am I not see compute metadata information?
-   * For any VMs created after Sep 2016, add a [Tag](../../azure-resource-manager/resource-group-using-tags.md) to start seeing compute metadata. For older VMs (created before Sep 2016), add/remove extensions or data disks to the VM to refresh metadata.
-4. I am not seeing all data populated for new version
-   * For any VMs created after Sep 2016, add a [Tag](../../azure-resource-manager/resource-group-using-tags.md) to start seeing compute metadata. For older VMs (created before Sep 2016), add/remove extensions or data disks to the VM to refresh metadata.
-5. Why am I getting the error `500 Internal Server Error`?
-   * Retry your request based on exponential back off system. If the issue persists contact  Azure support.
-6. Where do I share additional questions/comments?
-   * Send your comments on https://feedback.azure.com.
-7. Would this work for Virtual Machine Scale Set Instance?
-   * Yes Metadata service is available for Scale Set Instances.
-8. How do I get support for the service?
-   * To get support for the service, create a support issue in Azure portal for the VM where you are not able to get metadata response after long retries.
-9. I get request timed out for my call to the service?
-   * Metadata calls must be made from the primary IP address assigned to the network card of the VM, in addition in case you have changed your routes there must be a route for 169.254.0.0/16 address out of your network card.
-10. I updated my tags in virtual machine scale set but they don't appear in the instances unlike VMs?
-    * Currently for ScaleSets tags only show to the VM on a reboot/reimage/or a disk change to the instance.
+1. Ik krijg de fout `400 Bad Request, Required metadata header not specified`. Wat betekent dit?
+   * Het Instance Metadata Service vereist dat de header `Metadata: true` worden door gegeven in de aanvraag. Als deze header wordt door gegeven in de REST-aanroep, is toegang tot de Instance Metadata Service toegestaan.
+2. Waarom krijg ik geen reken gegevens voor mijn virtuele machine?
+   * Momenteel ondersteunt de Instance Metadata Service alleen instanties die zijn gemaakt met Azure Resource Manager. In de toekomst kan ondersteuning voor Cloud service-Vm's worden toegevoegd.
+3. Ik heb mijn virtuele machine door Azure Resource Manager een tijdje gemaakt. Waarom zie ik geen gegevens voor reken gegevens berekenen?
+   * Voor virtuele machines die na sep 2016 zijn gemaakt, voegt u een [tag](../../azure-resource-manager/resource-group-using-tags.md) toe om te beginnen met het bekijken van meta gegevens. Voor oudere Vm's (gemaakt vóór sep 2016) kunt u uitbrei dingen of gegevens schijven aan de virtuele machine toevoegen/verwijderen om meta gegevens te vernieuwen.
+4. Ik zie niet alle gegevens die zijn ingevuld voor een nieuwe versie
+   * Voor virtuele machines die na sep 2016 zijn gemaakt, voegt u een [tag](../../azure-resource-manager/resource-group-using-tags.md) toe om te beginnen met het bekijken van meta gegevens. Voor oudere Vm's (gemaakt vóór sep 2016) kunt u uitbrei dingen of gegevens schijven aan de virtuele machine toevoegen/verwijderen om meta gegevens te vernieuwen.
+5. Waarom krijg ik de fout `500 Internal Server Error`?
+   * Voer de aanvraag opnieuw uit op basis van een exponentieel back-systeem. Neem contact op met de ondersteuning van Azure als het probleem zich blijft voordoen.
+6. Waar kan ik extra vragen/opmerkingen delen?
+   * Stuur uw opmerkingen over https://feedback.azure.com.
+7. Zou dit werken voor de virtuele-machine Scale set-instantie?
+   * Ja meta gegevens service is beschikbaar voor instanties van schaal sets.
+8. Hoe kan ik ondersteuning voor de service krijgen?
+   * Als u ondersteuning voor de service wilt, maakt u een ondersteunings probleem in Azure Portal voor de virtuele machine waar u geen meta gegevens reacties meer kunt krijgen na lange pogingen.
+9. Er is een time-out opgetreden voor de aanvraag voor mijn oproep naar de service?
+   * Meta gegevens moeten worden gemaakt op basis van het primaire IP-adres dat is toegewezen aan de netwerk kaart van de virtuele machine. Als u uw routes hebt gewijzigd, moet u een route voor 169.254.0.0/16-adres uit uw netwerk kaart maken.
+10. Ik heb mijn tags in de virtuele-machine schaalset bijgewerkt, maar ze worden niet weer gegeven in de instanties in tegens telling tot virtuele machines?
+    * Momenteel worden alleen ScaleSets-Tags weer gegeven voor de VM op het opnieuw opstarten/terugzetten van de installatie kopie/of een schijf wijziging in het exemplaar.
 
-    ![Instance Metadata Support](./media/instance-metadata-service/InstanceMetadata-support.png)
+    ![Ondersteuning van meta gegevens van exemplaren](./media/instance-metadata-service/InstanceMetadata-support.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Learn more about [Scheduled Events](scheduled-events.md)
+- Meer informatie over [Scheduled Events](scheduled-events.md)

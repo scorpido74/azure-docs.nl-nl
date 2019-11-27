@@ -49,17 +49,17 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 1. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
 
-    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/functions-create-cosmos-db-triggered-function/add-first-function.png)
+    ![De Quick Start-pagina 'Meer sjablonen kiezen' van Functions](./media/functions-create-cosmos-db-triggered-function/add-first-function.png)
 
 1. Typ `cosmos` in het zoekveld en kies vervolgens de sjabloon **Azure Cosmos DB-trigger**.
 
-1. If prompted, select **Install** to install the Azure Cosmos DB extension in the function app. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
+1. Als hierom wordt gevraagd, selecteert u **installeren** om de Azure Cosmos DB-extensie in de functie-app te installeren. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
 
     ![Binding-extensies installeren](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
 1. Configureer de nieuwe trigger met de instellingen zoals opgegeven in de tabel onder de afbeelding.
 
-    ![De door Azure Cosmos DB geactiveerde functie maken](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png)
+    ![Maak de door Azure Cosmos DB geactiveerde functie](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png)
 
     | Instelling      | Voorgestelde waarde  | Beschrijving                                |
     | ------------ | ---------------- | ------------------------------------------ |

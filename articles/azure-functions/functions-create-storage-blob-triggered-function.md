@@ -1,5 +1,5 @@
 ---
-title: Create a function in Azure triggered by Blob storage
+title: Een functie in azure maken die wordt geactiveerd door Blob Storage
 description: Gebruik Azure Functions voor het maken van een functie zonder server die wordt aangeroepen door items die aan Azure Blob Storage zijn toegevoegd.
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.topic: quickstart
@@ -41,7 +41,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 1. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
 
-    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
+    ![De Quick Start-pagina 'Meer sjablonen kiezen' van Functions](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
 
 1. Typ `blob` in het zoekveld en kies vervolgens de sjabloon **Wachtrijtrigger**.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Host your domain and subdomain - Azure DNS'
-description: In this article, learn how to configure Azure DNS to host your DNS zones.
+title: 'Zelf studie: uw domein en subdomein hosten-Azure DNS'
+description: In dit artikel vindt u informatie over het configureren van Azure DNS voor het hosten van uw DNS-zones.
 services: dns
 author: asudbring
 ms.service: dns
@@ -34,17 +34,17 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="prerequisites"></a>Vereisten
 
-You must have a domain name available to test with that you can host in Azure DNS . U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
+U moet een domein naam hebben om te kunnen testen met die u in Azure DNS kunt hosten. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
 
-The example domain used for this tutorial is contoso.net, but use your own domain name.
+Het voorbeeld domein dat voor deze zelf studie wordt gebruikt, is contoso.net, maar u kunt uw eigen domein naam gebruiken.
 
 ## <a name="create-a-dns-zone"></a>Een DNS-zone maken
 
-1. Go to the [Azure portal](https://portal.azure.com/) to create a DNS zone. Search for and select **DNS zones**.
+1. Ga naar de [Azure Portal](https://portal.azure.com/) om een DNS-zone te maken. Zoek en selecteer **DNS-zones**.
 
    ![DNS-zone](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
-1. Select **Create DNS zone**.
+1. Selecteer **DNS-zone maken**.
 1. Voer op de pagina **DNS-zone maken** de volgende waarden in en selecteer **Maken**:
 
    | **Instelling** | **Waarde** | **Details** |

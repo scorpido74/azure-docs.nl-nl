@@ -1,6 +1,6 @@
 ---
-title: Protecting DNS Zones and Records - Azure DNS
-description: In this learning path, get started protecting DNS zones and record sets in Microsoft Azure DNS.
+title: DNS-zones en records beveiligen-Azure DNS
+description: In dit leer traject kunt u aan de slag met het beveiligen van DNS-zones en-record sets in Microsoft Azure DNS.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,82 +14,82 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211445"
 ---
-# <a name="how-to-protect-dns-zones-and-records"></a>How to protect DNS zones and records
+# <a name="how-to-protect-dns-zones-and-records"></a>DNS-zones en-records beveiligen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-DNS zones and records are critical resources. Deleting a DNS zone or even just a single DNS record can result in a total service outage.  It is therefore important that critical DNS zones and records are protected against unauthorized or accidental changes.
+DNS-zones en-records zijn essentiële bronnen. Het verwijderen van een DNS-zone of zelfs één DNS-record kan leiden tot een totale service storing.  Daarom is het belang rijk dat kritieke DNS-zones en-records worden beschermd tegen onbevoegde of onopzettelijke wijzigingen.
 
-This article explains how Azure DNS enables you to protect your DNS zones and records against such changes.  We apply two powerful security features provided by Azure Resource Manager: [role-based access control](../role-based-access-control/overview.md) and [resource locks](../azure-resource-manager/resource-group-lock-resources.md).
+In dit artikel wordt uitgelegd hoe u met Azure DNS uw DNS-zones en-records kunt beveiligen tegen dergelijke wijzigingen.  We hebben twee krachtige beveiligings functies van Azure Resource Manager toegepast: [toegangs beheer op basis van rollen](../role-based-access-control/overview.md) en [resource vergrendelingen](../azure-resource-manager/resource-group-lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Toegangsbeheer op basis van rollen
 
-Azure Role-Based Access Control (RBAC) enables fine-grained access management for Azure users, groups, and resources. Using RBAC, you can grant precisely the amount of access that users need to perform their jobs. For more information about how RBAC helps you manage access, see [What is Role-Based Access Control](../role-based-access-control/overview.md).
+Met Access Control op basis van rollen (RBAC) van Azure kunt u verfijnd toegangs beheer voor Azure-gebruikers,-groepen en-resources. Met RBAC kunt u nauw keurig de hoeveelheid toegang verlenen die gebruikers nodig hebben om hun taken uit te voeren. Zie [Wat is op rollen gebaseerd Access Control](../role-based-access-control/overview.md)voor meer informatie over hoe RBAC u kunt gebruiken om de toegang te beheren.
 
-### <a name="the-dns-zone-contributor-role"></a>The DNS Zone Contributor role
+### <a name="the-dns-zone-contributor-role"></a>De rol van de DNS-zone bijdrager
 
-The DNS Zone Contributor role is a built-in role provided by Azure for managing DNS resources.  Assigning DNS Zone Contributor permissions to a user or group enables that group to manage DNS resources, but not resources of any other type.
+De rol van de DNS-zone Inzender is een ingebouwde rol die door Azure wordt verschaft voor het beheren van DNS-resources.  Als u machtigingen voor de DNS-zone Inzender toewijst aan een gebruiker of groep, kan die groep DNS-bronnen beheren, maar niet de resources van een ander type.
 
-For example, suppose the resource group *myzones* contains five zones for Contoso Corporation. Granting the DNS administrator DNS Zone Contributor permissions to that resource group, enables full control over those DNS zones. It also avoids granting unnecessary permissions, for example the DNS administrator cannot create or stop Virtual Machines.
+Stel bijvoorbeeld dat de resource groep *myzones* vijf zones voor Contoso Corporation bevat. Door de DNS-beheerder DNS-zone Inzender machtigingen te verlenen voor die resource groep, kunt u volledige controle over deze DNS-zones. Er wordt ook voor komen dat overbodige machtigingen worden verleend, bijvoorbeeld de DNS-beheerder kan Virtual Machines niet maken of stoppen.
 
-The simplest way to assign RBAC permissions is [via the Azure portal](../role-based-access-control/role-assignments-portal.md).  Open **Access control (IAM)** for the resource group, then select **Add**, then select the **DNS Zone Contributor** role and select the required users or groups to grant permissions.
+De eenvoudigste manier om RBAC-machtigingen toe te wijzen, is [via de Azure Portal](../role-based-access-control/role-assignments-portal.md).  Open **toegangs beheer (IAM)** voor de resource groep, selecteer **toevoegen**en selecteer vervolgens de rol **Inzender voor DNS-zone** en selecteer de vereiste gebruikers of groepen om machtigingen te verlenen.
 
-![Resource group level RBAC via the Azure portal](./media/dns-protect-zones-recordsets/rbac1.png)
+![RBAC op resource groeps niveau via de Azure Portal](./media/dns-protect-zones-recordsets/rbac1.png)
 
-Permissions can also be [granted using Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
+Machtigingen kunnen ook worden [verleend met behulp van Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
-The equivalent command is also [available via the Azure CLI](../role-based-access-control/role-assignments-cli.md):
+De overeenkomstige opdracht is ook [beschikbaar via de Azure cli](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --resourceGroup "<resource group name>"
 ```
 
-### <a name="zone-level-rbac"></a>Zone level RBAC
+### <a name="zone-level-rbac"></a>RBAC zone niveau
 
-Azure RBAC rules can be applied to a subscription, a resource group or to an individual resource. In the case of Azure DNS, that resource can be an individual DNS zone, or even an individual record set.
+Azure RBAC-regels kunnen worden toegepast op een abonnement, een resource groep of een afzonderlijke resource. In het geval van Azure DNS kan die bron een afzonderlijke DNS-zone of zelfs een afzonderlijke recordset zijn.
 
-For example, suppose the resource group *myzones* contains the zone *contoso.com* and a subzone *customers.contoso.com* in which CNAME records are created for each customer account.  The account used to manage these CNAME records should be assigned permissions to create records in the *customers.contoso.com* zone only, it should not have access to the other zones.
+Stel bijvoorbeeld dat de resource groep *myzones* de zone *contoso.com* bevat en een *Customers.contoso.com* subzone waarin CNAME-records voor elk klant account worden gemaakt.  Het account dat wordt gebruikt voor het beheren van deze CNAME-records moet machtigingen krijgen om alleen records in de zone *Customers.contoso.com* te maken, maar mag geen toegang hebben tot de andere zones.
 
-Zone-level RBAC permissions can be granted via the Azure portal.  Open **Access control (IAM)** for the zone, then select **Add**, then select the **DNS Zone Contributor** role and select the required users or groups to grant permissions.
+RBAC-machtigingen op zone niveau kunnen worden verleend via de Azure Portal.  Open **toegangs beheer (IAM)** voor de zone, selecteer **toevoegen**, selecteer de rol **Inzender voor DNS-zone** en selecteer de vereiste gebruikers of groepen om machtigingen te verlenen.
 
-![DNS Zone level RBAC via the Azure portal](./media/dns-protect-zones-recordsets/rbac2.png)
+![DNS-zone niveau RBAC via de Azure Portal](./media/dns-protect-zones-recordsets/rbac2.png)
 
-Permissions can also be [granted using Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
+Machtigingen kunnen ook worden [verleend met behulp van Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
-The equivalent command is also [available via the Azure CLI](../role-based-access-control/role-assignments-cli.md):
+De overeenkomstige opdracht is ook [beschikbaar via de Azure cli](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 azure role assignment create --signInName <user email address> --roleName "DNS Zone Contributor" --resource-name <zone name> --resource-type Microsoft.Network/DNSZones --resource-group <resource group name>
 ```
 
-### <a name="record-set-level-rbac"></a>Record set level RBAC
+### <a name="record-set-level-rbac"></a>Record sets niveau RBAC
 
-We can go one step further. Consider the mail administrator for Contoso Corporation, who needs access to the MX and TXT records at the apex of the contoso.com zone.  She doesn't need access to any other MX or TXT records, or to any records of any other type.  Azure DNS allows you to assign permissions at the record set level, to precisely the records that the mail administrator needs access to.  The mail administrator is granted precisely the control she needs, and is unable to make any other changes.
+We kunnen nog een stap verder gaan. Overweeg de e-mail beheerder voor Contoso Corporation, die toegang moet hebben tot de MX-en TXT-records aan de Apex van de zone contoso.com.  Ze heeft geen toegang tot andere MX-of TXT-records of andere records van andere typen.  Met Azure DNS kunt u machtigingen op het niveau van de recordset toewijzen om precies te bepalen met welke records de e-mail beheerder toegang moet hebben.  De e-mail beheerder krijgt precies het besturings element dat ze nodig heeft en kan geen andere wijzigingen aanbrengen.
 
-Record-set level RBAC permissions can be configured via the Azure portal, using the **Users** button in the record set page:
+RBAC-machtigingen op basis van het record niveau kunnen worden geconfigureerd via de Azure Portal, met behulp van de knop **gebruikers** op de pagina Recordset:
 
-![Record set level RBAC via the Azure portal](./media/dns-protect-zones-recordsets/rbac3.png)
+![Het niveau van de record sets RBAC via de Azure Portal](./media/dns-protect-zones-recordsets/rbac3.png)
 
-Record-set level RBAC permissions can also be [granted using Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
+Er kunnen ook RBAC-machtigingen op het niveau van record sets worden [verleend met behulp van Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell
 # Grant permissions to a specific record set
 New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
-The equivalent command is also [available via the Azure CLI](../role-based-access-control/role-assignments-cli.md):
+De overeenkomstige opdracht is ook [beschikbaar via de Azure cli](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant permissions to a specific record set
@@ -98,11 +98,11 @@ azure role assignment create --signInName "<user email address>" --roleName "DNS
 
 ### <a name="custom-roles"></a>Aangepaste rollen
 
-The built-in DNS Zone Contributor role enables full control over a DNS resource. It is also possible to build your own customer Azure roles, to provide even finer-grained control.
+Met de ingebouwde rol Inzender voor DNS-zones kunt u volledige controle over een DNS-bron. Het is ook mogelijk om uw eigen Azure-rollen voor klanten te bouwen, om nog nauw keurigere controle te leveren.
 
-Consider again the example in which a CNAME record in the zone *customers.contoso.com* is created for each Contoso Corporation customer account.  The account used to manage these CNAMEs should be granted permission to manage CNAME records only.  It is then unable to modify records of other types (such as changing MX records) or perform zone-level operations such as zone delete.
+Bekijk het voor beeld waarin een CNAME-record in de zone *Customers.contoso.com* wordt gemaakt voor elk Contoso Corporation-klant account.  Het account dat wordt gebruikt om deze CNAMEs te beheren, moet machtigingen krijgen om alleen CNAME-records te beheren.  Er kunnen vervolgens geen records worden gewijzigd van andere typen (zoals het wijzigen van MX-records) of het uitvoeren van bewerkingen op zone niveau, zoals zone verwijderen.
 
-The following example shows a custom role definition for managing CNAME records only:
+In het volgende voor beeld ziet u een aangepaste roldefinitie voor het beheer van CNAME-records:
 
 ```json
 {
@@ -128,93 +128,93 @@ The following example shows a custom role definition for managing CNAME records 
 }
 ```
 
-The Actions property defines the following DNS-specific permissions:
+De eigenschap actions definieert de volgende DNS-specifieke machtigingen:
 
-* `Microsoft.Network/dnsZones/CNAME/*` grants full control over CNAME records
-* `Microsoft.Network/dnsZones/read` grants permission to read DNS zones, but not to modify them, enabling you to see the zone in which the CNAME is being created.
+* `Microsoft.Network/dnsZones/CNAME/*` volledige controle over CNAME-records
+* `Microsoft.Network/dnsZones/read` verleent toestemming om DNS-zones te lezen, maar niet om ze te wijzigen, zodat u de zone kunt zien waarin de CNAME wordt gemaakt.
 
-The remaining Actions are copied from the [DNS Zone Contributor built-in role](../role-based-access-control/built-in-roles.md#dns-zone-contributor).
+De overige acties worden gekopieerd uit de [ingebouwde rol Inzender voor DNS-zone](../role-based-access-control/built-in-roles.md#dns-zone-contributor).
 
 > [!NOTE]
-> Using a custom RBAC role to prevent deleting record sets while still allowing them to be updated is not an effective control. It prevents record sets from being deleted, but it does not prevent them from being modified.  Permitted modifications include adding and removing records from the record set, including removing all records to leave an empty record set. This has the same effect as deleting the record set from a DNS resolution viewpoint.
+> Het gebruik van een aangepaste RBAC-rol om te voor komen dat record sets worden verwijderd terwijl ze nog steeds kunnen worden bijgewerkt, is geen effectief besturings element. Zo voor komt u dat record sets worden verwijderd, maar niet om te voor komen dat ze worden gewijzigd.  Toegestane wijzigingen zijn het toevoegen en verwijderen van records uit de recordset, inclusief het verwijderen van alle records om een lege recordset te verlaten. Dit heeft hetzelfde effect als het verwijderen van de recordset uit het oogpunt van een DNS-oplossing.
 
-Custom role definitions cannot currently be defined via the Azure portal. A custom role based on this role definition can be created using Azure PowerShell:
+Aangepaste roldefinities kunnen momenteel niet worden gedefinieerd via de Azure Portal. Een aangepaste rol op basis van deze roldefinitie kan worden gemaakt met behulp van Azure PowerShell:
 
 ```azurepowershell
 # Create new role definition based on input file
 New-AzRoleDefinition -InputFile <file path>
 ```
 
-It can also be created via the Azure CLI:
+Het kan ook worden gemaakt via de Azure CLI:
 
 ```azurecli
 # Create new role definition based on input file
 azure role create -inputfile <file path>
 ```
 
-The role can then be assigned in the same way as built-in roles, as described earlier in this article.
+De rol kan vervolgens op dezelfde manier worden toegewezen als ingebouwde rollen, zoals eerder in dit artikel is beschreven.
 
-For more information on how to create, manage, and assign custom roles, see [Custom Roles in Azure RBAC](../role-based-access-control/custom-roles.md).
+Zie [aangepaste rollen in azure RBAC](../role-based-access-control/custom-roles.md)voor meer informatie over het maken, beheren en toewijzen van aangepaste rollen.
 
-## <a name="resource-locks"></a>Resource locks
+## <a name="resource-locks"></a>Resource vergrendelingen
 
-In addition to RBAC, Azure Resource Manager supports another type of security control, namely the ability to lock resources. Where RBAC rules allow you to control the actions of specific users and groups, resource locks are applied to the resource, and are effective across all users and roles. Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
+Naast RBAC ondersteunt Azure Resource Manager ook een ander type beveiligings beheer, namelijk de mogelijkheid om resources te vergren delen. Met de RBAC-regels kunt u de acties van specifieke gebruikers en groepen beheren, worden resource vergrendelingen toegepast op de resource en zijn ze effectief voor alle gebruikers en rollen. Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
 
-There are two types of resource lock: **CanNotDelete** and **ReadOnly**. These can be applied either to a DNS zone, or to an individual record set.  The following sections describe several common scenarios, and how to support them using resource locks.
+Er zijn twee typen bron vergrendeling: **CanNotDelete** en **alleen-lezen**. Deze kunnen worden toegepast op een DNS-zone of op een afzonderlijke Recordset.  In de volgende secties worden verschillende algemene scenario's beschreven en wordt uitgelegd hoe u deze kunt ondersteunen met resource vergrendelingen.
 
-### <a name="protecting-against-all-changes"></a>Protecting against all changes
+### <a name="protecting-against-all-changes"></a>Beveiligen tegen alle wijzigingen
 
-To prevent any changes being made, apply a ReadOnly lock to the zone.  This prevents new record sets from being created, and existing record sets from being modified or deleted.
+Als u wilt voor komen dat er wijzigingen worden aangebracht, past u een alleen-lezen vergrendeling toe op de zone.  Zo voor komt u dat nieuwe record sets worden gemaakt en dat bestaande record sets worden gewijzigd of verwijderd.
 
-Zone level resource locks can be created via the Azure portal.  From the DNS zone page, select **Locks**, then select **+Add**:
+Resource vergrendelingen op zone niveau kunnen worden gemaakt via de Azure Portal.  Selecteer op de pagina DNS-zone de optie **vergren**delen en selecteer **+ toevoegen**:
 
-![Zone level resource locks via the Azure portal](./media/dns-protect-zones-recordsets/locks1.png)
+![Resource vergrendeling op zone niveau via de Azure Portal](./media/dns-protect-zones-recordsets/locks1.png)
 
-Zone-level resource locks can also be created via Azure PowerShell:
+Resource vergrendelingen op zone niveau kunnen ook worden gemaakt via Azure PowerShell:
 
 ```azurepowershell
 # Lock a DNS zone
 New-AzResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
 ```
 
-Configuring Azure resource locks is not currently supported via the Azure CLI.
+Het configureren van Azure resource Locks wordt momenteel niet ondersteund via de Azure CLI.
 
-### <a name="protecting-individual-records"></a>Protecting individual records
+### <a name="protecting-individual-records"></a>Afzonderlijke records beveiligen
 
-To prevent an existing DNS record set against modification, apply a ReadOnly lock to the record set.
+Als u wilt voor komen dat een bestaande DNS-record wordt ingesteld tegen wijziging, moet u een alleen-lezen vergrendeling Toep assen op de recordset.
 
 > [!NOTE]
-> Applying a CanNotDelete lock to a record set is not an effective control. It prevents the record set from being deleted, but it does not prevent it from being modified.  Permitted modifications include adding and removing records from the record set, including removing all records to leave an empty record set. This has the same effect as deleting the record set from a DNS resolution viewpoint.
+> Het Toep assen van een CanNotDelete-vergren deling op een recordset is geen effectief besturings element. Hiermee wordt voor komen dat de recordset wordt verwijderd, maar wordt niet voor komen dat deze wordt gewijzigd.  Toegestane wijzigingen zijn het toevoegen en verwijderen van records uit de recordset, inclusief het verwijderen van alle records om een lege recordset te verlaten. Dit heeft hetzelfde effect als het verwijderen van de recordset uit het oogpunt van een DNS-oplossing.
 
-Record set level resource locks can currently only be configured using Azure PowerShell.  They are not supported in the Azure portal or Azure CLI.
+Resource vergrendelingen op record sets kunnen momenteel alleen worden geconfigureerd met behulp van Azure PowerShell.  Ze worden niet ondersteund in de Azure Portal of Azure CLI.
 
 ```azurepowershell
 # Lock a DNS record set
 New-AzResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
 ```
 
-### <a name="protecting-against-zone-deletion"></a>Protecting against zone deletion
+### <a name="protecting-against-zone-deletion"></a>Beveiligen tegen zone verwijdering
 
-When a zone is deleted in Azure DNS, all record sets in the zone are also deleted.  Deze bewerking kan niet ongedaan worden gemaakt.  Accidentally deleting a critical zone has the potential to have a significant business impact.  It is therefore very important to protect against accidental zone deletion.
+Wanneer een zone in Azure DNS wordt verwijderd, worden ook alle record sets in de zone verwijderd.  Deze bewerking kan niet ongedaan worden gemaakt.  Het per ongeluk verwijderen van een kritieke zone heeft mogelijk een aanzienlijke invloed op het bedrijf.  Het is daarom belang rijk om te beschermen tegen het verwijderen van onbedoelde zones.
 
-Applying a CanNotDelete lock to a zone prevents the zone from being deleted.  However, since locks are inherited by child resources, it also prevents any record sets in the zone from being deleted, which may be undesirable.  Furthermore, as described in the note above, it is also ineffective since records can still be removed from the existing record sets.
+Wanneer u een CanNotDelete-vergren deling toepast op een zone, voor komt u dat de zone wordt verwijderd.  Omdat de vergren delingen echter worden overgenomen door onderliggende resources, worden er ook geen record sets in de zone verwijderd. Dit is mogelijk niet gewenst.  Bovendien is het niet effectief, zoals beschreven in de bovenstaande opmerking, omdat er nog steeds records uit de bestaande record sets kunnen worden verwijderd.
 
-As an alternative, consider applying a CanNotDelete lock to a record set in the zone, such as the SOA record set.  Since the zone cannot be deleted without also deleting the record sets, this protects against zone deletion, while still allowing record sets within the zone to be modified freely. If an attempt is made to delete the zone, Azure Resource Manager detects this would also delete the SOA record set, and blocks the call because the SOA is locked.  No record sets are deleted.
+U kunt ook een CanNotDelete-vergren deling Toep assen op een recordset in de zone, zoals de SOA-Recordset.  Omdat de zone niet kan worden verwijderd zonder ook de record sets te verwijderen, wordt hiermee beschermd tegen zone verwijdering, terwijl wel toestaat dat record sets in de zone vrij kunnen worden gewijzigd. Als er wordt geprobeerd om de zone te verwijderen, wordt door Azure Resource Manager gedetecteerd dat de SOA-recordset ook wordt verwijderd en wordt de oproep geblokkeerd, omdat de SOA is vergrendeld.  Geen record sets worden verwijderd.
 
-The following PowerShell command creates a CanNotDelete lock against the SOA record of the given zone:
+Met de volgende Power shell-opdracht wordt een CanNotDelete-vergren deling voor de SOA-record van de opgegeven zone gemaakt:
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
 New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
-Another way to prevent accidental zone deletion is by using a custom role to ensure the operator and service accounts used to manage your zones do not have zone delete permissions. When you do need to delete a zone, you can enforce a two-step delete, first granting zone delete permissions (at the zone scope, to prevent deleting the wrong zone) and second to delete the zone.
+Een andere manier om te voor komen dat onbedoeld zone wordt verwijderd, is door een aangepaste rol te gebruiken om ervoor te zorgen dat de operator en service accounts die worden gebruikt voor het beheren van uw zones geen zone-verwijderings machtigingen hebben. Wanneer u een zone wilt verwijderen, kunt u een verwijderen uit twee stappen afdwingen, eerst machtigingen voor het verwijderen van een zone verlenen (in het bereik van de zone, om te voor komen dat de verkeerde zone wordt verwijderd) en de tweede om de zone te verwijderen.
 
-This second approach has the advantage that it works for all zones accessed by those accounts, without having to remember to create any locks. It has the disadvantage that any accounts with zone delete permissions, such as the subscription owner, can still accidentally delete a critical zone.
+Deze tweede benadering heeft als voor deel dat het werkt voor alle zones die door deze accounts worden gebruikt, zonder dat u een vergren deling hoeft te onthouden. Het nadeel is dat alle accounts met machtigingen voor zone verwijdering, zoals de eigenaar van het abonnement, nog steeds per ongeluk een kritieke zone kunnen verwijderen.
 
-It is possible to use both approaches - resource locks and custom roles - at the same time, as a defense-in-depth approach to DNS zone protection.
+Het is mogelijk om beide benaderingen-resource vergrendelingen en aangepaste rollen te gebruiken, als een ingrijpende benadering voor DNS-zone beveiliging.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* For more information about working with RBAC, see [Get started with access management in the Azure portal](../role-based-access-control/overview.md).
-* For more information about working with resource locks, see [Lock resources with Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
+* Zie [aan de slag met toegangs beheer in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over het werken met RBAC.
+* Zie [resources vergren delen met Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md)voor meer informatie over het werken met resource vergrendelingen.

@@ -1,7 +1,7 @@
 ---
-title: Tutorial - Log network traffic flow to and from a VM using the Azure portal
+title: 'Zelf studie: netwerk verkeer van en naar een virtuele machine vastleggen met behulp van de Azure Portal'
 titleSuffix: Azure Network Watcher
-description: In this tutorial, learn how to log network traffic flow to and from a VM using Network Watcher's NSG flow logs capability.
+description: In deze zelf studie leert u hoe u netwerk verkeer van en naar een virtuele machine kunt vastleggen met behulp van de NSG-stroom logboeken van Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -49,7 +49,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
     |Naam|myVm|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Abonnement| Selecteer uw abonnement.|
+    |Subscription| Selecteer uw abonnement.|
     |Resourcegroep| Selecteer **Nieuwe maken** en voer **myResourceGroup** in.|
     |Locatie| Selecteer **US - oost**|
 
@@ -63,7 +63,7 @@ Het maken van de virtuele machine duurt een paar minuten. Ga pas verder met de r
 
 Als u al een netwerk-watcher hebt ingeschakeld in de regio US - oost, ga dan verder met [Insights-provider registreren](#register-insights-provider).
 
-1. Selecteer in de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de resultaten.
+1. Selecteer in de portal de optie **Alle services**. Typ **Network Watcher** in het vak *Filteren*. Selecteer **Network Watcher** in de resultaten.
 2. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **US - oost**, zoals wordt weergegeven in de volgende afbeelding:
 
     ![Network Watcher inschakelen](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
@@ -93,31 +93,31 @@ Voor NSG-stroomlogboekregistratie is de **Microsoft.Insights**-provider vereist.
     | Locatie       | Selecteer **US - oost**                                           |
     | Resourcegroep | Selecteer **Bestaande gebruiken** en vervolgens **myResourceGroup** |
 
-    Het maken van het opslagaccount kan ongeveer een minuut duren. Ga pas verder met de resterende stappen wanneer het opslagaccount is gemaakt. Als u een bestaand opslagaccount wilt gebruiken in plaats van er een te maken, zorg er dan voor dat u een opslagaccount selecteert waarvoor **Alle netwerken** (standaard) is geselecteerd voor **Firewalls en virtuele netwerken**, onder de **Instellingen** voor het opslagaccount. In all cases, the storage account must be in the same region as the NSG. 
+    Het maken van het opslagaccount kan ongeveer een minuut duren. Ga pas verder met de resterende stappen wanneer het opslagaccount is gemaakt. Als u een bestaand opslagaccount wilt gebruiken in plaats van er een te maken, zorg er dan voor dat u een opslagaccount selecteert waarvoor **Alle netwerken** (standaard) is geselecteerd voor **Firewalls en virtuele netwerken**, onder de **Instellingen** voor het opslagaccount. In alle gevallen moet het opslag account zich in dezelfde regio bevinden als de NSG. 
     
     > [!NOTE]
-    > While Microsoft.Insight and Microsoft.Network providers are currently supported as [trusted Microsoft Services for Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services), NSG Flow logs is still not fully onboarded. To enable NSG Flow logging, **All Networks** must be selected as mentioned above.
+    > Hoewel micro soft. Insight en micro soft. Network providers momenteel worden ondersteund als [vertrouwde micro soft-Services voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services), zijn NSG-stroom logboeken nog steeds niet volledig onboarded. Als u logboek registratie voor NSG-stroom wilt inschakelen, moeten **alle netwerken** worden geselecteerd zoals hierboven wordt vermeld.
     
-4. Selecteer in de linkerbovenhoek van de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de zoekresultaten.
+4. Selecteer in de linkerbovenhoek van de portal de optie **Alle services**. Typ **Network Watcher** in het vak *Filteren*. Selecteer **Network Watcher** in de zoekresultaten.
 5. Selecteer onder **LOGBOEKEN** de optie **NSG-stroomlogboeken**, zoals wordt weergegeven in de volgende afbeelding:
 
     ![NSG's](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
 6. Selecteer de NSG met de naam **myVm-nsg**.
 7. Selecteer onder **Instellingen voor stroomlogboeken** de optie **Aan**.
-8. Selecteer de versie voor stroomlogboekregistratie. Version 2 contains flow-session statistics (Bytes and Packets)
+8. Selecteer de versie voor stroomlogboekregistratie. Versie 2 bevat statistieken over flow sessies (bytes en pakketten)
 
-   ![Select flow Logs version](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+   ![De versie van stroom logboeken selecteren](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
 
 9. Selecteer het opslagaccount dat u in stap 3 hebt gemaakt.
    > [!NOTE]
-   > NSG Flow Logs do not work with storage accounts if:
-   > * The storage accounts have a firewall enabled.
-   > * The storage accounts have [hierarchical namespace](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) enabled.
-1. Selecteer in de linkerbovenhoek van de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de zoekresultaten.
+   > NSG-stroom logboeken werken niet met opslag accounts als:
+   > * Voor de opslag accounts is een firewall ingeschakeld.
+   > * Voor de opslag accounts is een [hiërarchische naam ruimte](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) ingeschakeld.
+1. Selecteer in de linkerbovenhoek van de portal de optie **Alle services**. Typ **Network Watcher** in het vak *Filteren*. Selecteer **Network Watcher** in de zoekresultaten.
 10. Stel **Bewaartermijn (dagen)** in op 5 en selecteer **Opslaan**.
     > [!IMPORTANT]
-    > Currently, there’s an issue where [network security group (NSG) flow logs](network-watcher-nsg-flow-logging-overview.md) for Network Watcher are not automatically deleted from Blob storage based on retention policy settings. If you have an existing non-zero retention policy, we recommend that you periodically delete the storage blobs that are past their retention period to avoid any incurring charges. For more information about how to delete the NSG flow log storage blog, see [Delete NSG flow log storage blobs](network-watcher-delete-nsg-flow-log-blobs.md).
+    > Er is momenteel een probleem waarbij de [NSG-stroom Logboeken (netwerk beveiligings groep)](network-watcher-nsg-flow-logging-overview.md) voor Network Watcher niet automatisch worden verwijderd uit Blob Storage op basis van de instellingen voor het Bewaar beleid. Als u een bestaand Bewaar beleid voor niet-nul hebt, raden we u aan om regel matig de opslag-blobs te verwijderen die de Bewaar periode hebben verstreken om te voor komen dat er kosten in rekening worden gebracht. Zie voor meer informatie over het verwijderen van de opslag blog van het NSG-stroom logboek de [opslag-blobs voor NSG stroom logboeken verwijderen](network-watcher-delete-nsg-flow-log-blobs.md).
 
 ## <a name="download-flow-log"></a>Stroomlogboek downloaden
 
@@ -127,10 +127,10 @@ Voor NSG-stroomlogboekregistratie is de **Microsoft.Insights**-provider vereist.
    ![Stroomlogboeken downloaden](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Selecteer het opslagaccount dat u hebt geconfigureerd in stap 2 van [NSG-stroomlogboek inschakelen](#enable-nsg-flow-log).
-4. Under **Blob service**, select **Blobs**, and then select the **insights-logs-networksecuritygroupflowevent** container.
-5. In the container, navigate the folder hierarchy until you get to a PT1H.json file, as shown in the picture that follows. Log files are written to a folder hierarchy that follows the following naming convention: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+4. Onder **BLOB service**selecteert u **blobs**en selecteert u vervolgens de container **Insights-logs-networksecuritygroupflowevent** .
+5. Navigeer in de container naar de maphiërarchie totdat u een bestand PT1H. json krijgt, zoals in de volgende afbeelding wordt weer gegeven. Logboek bestanden worden geschreven naar een mappen hiërarchie die volgt op de volgende naam Conventie: https://{storageAccountName}. blob. core. Windows. net/Insights-logs-networksecuritygroupflowevent/resourceId =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {maand}/d = {day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.json
 
-   ![Flow log](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
+   ![Stroom logboek](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
 6. Selecteer **...**  rechts van het bestand PT1H.json en selecteer **Downloaden**.
 
@@ -213,12 +213,12 @@ De waarde voor **mac** in de vorige uitvoer is het MAC-adres van de netwerkinter
 | ---          | ---                    | ---                                                                                      |
 | 1542110377   | Tijdstempel             | Het tijdstempel van wanneer de stroom heeft plaatsgevonden, in de indeling UNIX-EPOCHE. In het vorige voorbeeld is de datum omgezet in 1 mei 2018 op 2:59:05 PM GMT.                                                                                    |
 | 10.0.0.4  | IP-adres van bron      | Het IP-adres van de bron waaruit de stroom afkomstig is. 10.0.0.4 is het privé-IP-adres van de VM die u hebt gemaakt in [Een virtuele machine maken](#create-a-vm).
-| 13.67.143.118     | IP-adres van doel | Het IP-adres van het doel waarvoor de stroom is bestemd.                                                                                  |
+| 13.67.143.118     | Doel-IP-adres | Het IP-adres van het doel waarvoor de stroom is bestemd.                                                                                  |
 | 44931        | Bronpoort            | De bronpoort waaruit de stroom afkomstig is.                                           |
 | 443         | Doelpoort       | De doelpoort waarvoor de stroom is bestemd. Aangezien het verkeer was bestemd voor poort 443, is de stroom verwerkt op basis van de regel met de naam **UserRule_default-allow-rdp** in het logboekbestand.                                                |
 | T            | Protocol               | Hiermee wordt aangegeven of het protocol van de stroom TCP (T) of UDP (U).                                  |
 | O            | Richting              | Hiermee wordt aangegeven of het verkeer inkomend (I) of uitgaand (O) was.                                     |
-| A            | Bewerking                 | Hiermee wordt aangegeven of het verkeer was toegelaten (A) of geweigerd (D).  
+| A            | Actie                 | Hiermee wordt aangegeven of het verkeer was toegelaten (A) of geweigerd (D).  
 | C            | Stroomstatus **Alleen Versie 2** | Legt de status van de stroom vast. Mogelijke statussen zijn **B**: Begin, wanneer een stroom wordt gemaakt. Er worden geen statistische gegevens geleverd. **C**: Continu, voor een actieve stroom. Statistische gegevens worden geleverd met intervallen van 5 minuten. **E**: Eind, wanneer een stroom is beëindigd. Er worden statistische gegevens geleverd. |
 | 30 | Verzonden pakketten: bron naar doel, **alleen voor Versie 2** | Het totale aantal TCP- of UDP- pakketten dat sinds de laatste update is verzonden van de bron naar het doel. |
 | 16978 | Verzonden bytes: bron naar doel, **alleen voor Versie 2** | Het totale aantal TCP- of UDP- pakketbytes dat sinds de laatste update is verzonden van de bron naar het doel. Pakketbytes omvatten de pakket-header en -nettolading. |

@@ -1,6 +1,6 @@
 ---
-title: Provision device using Azure IoT Hub Device Provisioning Service
-description: Tutorial - Provision your device to a single IoT hub using the Azure IoT Hub Device Provisioning Service
+title: Apparaat inrichten met behulp van Azure IoT Hub Device Provisioning Service
+description: 'Zelf studie: uw apparaat inrichten in een enkele IoT-hub met behulp van Azure IoT Hub Device Provisioning Service'
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -15,9 +15,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228298"
 ---
-# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Tutorial: Provision the device to an IoT hub using the Azure IoT Hub Device Provisioning Service
+# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Zelf studie: het apparaat inrichten voor een IoT-hub met behulp van de Azure-IoT Hub Device Provisioning Service
 
-In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor automatische inrichting **_inschrijvingslijsten_** . In deze zelfstudie ontdekt u hoe u:
+In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor automatische inrichting **_inschrijvingslijsten_** . In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Het apparaat inschrijven
@@ -42,7 +42,7 @@ In deze stap worden de unieke beveiligingsartefacten van het apparaat toegevoegd
       [![Inschrijvingsgegevens voor TPM in de portal](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - Voor X.509-apparaten hebt u het volgende nodig:
-    - Het [certificaat dat is verleend aan de X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)-chip of -simulatie, in de vorm van een *.pem*- of *.cer*-bestand. For individual enrollment, you need to use the per-device  *signed certificate* for your X.509 system, while for enrollment groups, you need to use the *root certificate*. 
+    - Het [certificaat dat is verleend aan de X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)-chip of -simulatie, in de vorm van een *.pem*- of *.cer*-bestand. Voor afzonderlijke inschrijving moet u het *certificaat* per apparaat gebruiken voor uw X. 509-systeem, terwijl u voor inschrijvings groepen het *basis certificaat*moet gebruiken. 
 
       [![Afzonderlijke inschrijving voor X.509-attestation toevoegen in de portal](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
@@ -91,7 +91,7 @@ Nadat het apparaat is opgestart, worden de volgende acties uitgevoerd:
 Zie het voorbeeld voor het inrichten van de apparaatclient, [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c), voor meer informatie. Het voorbeeld demonstreert het inrichten van een gesimuleerd apparaat met TPM, X.509-certificaten en symmetrische sleutels. Raadpleeg de quickstarts voor attestation van [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), [X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) en [Symmetrische sleutels](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key) voor stapsgewijze aanwijzingen voor het gebruik van het voorbeeld.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Het apparaat inschrijven

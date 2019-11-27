@@ -1,5 +1,5 @@
 ---
-title: Create a function in Azure triggered by queue messages
+title: Een functie in azure maken die wordt geactiveerd door wachtrij berichten
 description: Gebruik Azure Functions voor het maken van een functie zonder server die wordt aangeroepen door berichten die zijn verzonden naar een Azure Storage-wachtrij.
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: quickstart
@@ -42,7 +42,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 1. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
 
-    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
+    ![De Quick Start-pagina 'Meer sjablonen kiezen' van Functions](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
 
 1. Typ `queue` in het zoekveld en kies vervolgens de sjabloon **Wachtrijtrigger**.
 

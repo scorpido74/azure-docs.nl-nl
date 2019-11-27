@@ -13,9 +13,9 @@ ms.locfileid: "74451569"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Sjabloon implementeren vanuit Cloud Shell
 
-U kunt [Cloud Shell](../articles/cloud-shell/overview.md) gebruiken om uw sjabloon te implementeren. To deploy an external template, provide the URI of the template exactly as you would for any external deployment. To deploy a local template, you must first load your template into the storage account for your Cloud Shell. This section describes how to load the template to your cloud shell account, and deploy it as a local file. If you haven't used Cloud Shell, see [Overview of Azure Cloud Shell](../articles/cloud-shell/overview.md) for information about setting it up.
+U kunt [Cloud Shell](../articles/cloud-shell/overview.md) gebruiken om uw sjabloon te implementeren. Als u een externe sjabloon wilt implementeren, geeft u de URI van de sjabloon op exact dezelfde manier als bij elke externe implementatie. Als u een lokale sjabloon wilt implementeren, moet u uw sjabloon eerst laden in het opslag account voor uw Cloud Shell. In deze sectie wordt beschreven hoe u de sjabloon in uw Cloud shell-account laadt en implementeert als een lokaal bestand. Als u Cloud Shell niet hebt gebruikt, raadpleegt u [overzicht van Azure Cloud shell](../articles/cloud-shell/overview.md) voor informatie over het instellen hiervan.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer de Cloud Shell-resourcegroep. Het naampatroon is `cloud-shell-storage-<region>`.
 
@@ -33,29 +33,29 @@ U kunt [Cloud Shell](../articles/cloud-shell/overview.md) gebruiken om uw sjablo
 
    ![Container toevoegen](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. Give your container a name and an access level. The sample template in this article contains no sensitive information, so allow anonymous read access. Selecteer **OK**.
+1. Geef de container een naam en een toegangs niveau. De voorbeeld sjabloon in dit artikel bevat geen gevoelige informatie, dus sta anonieme lees toegang toe. Selecteer **OK**.
 
-   ![Provide container values](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
+   ![Container waarden opgeven](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
-1. Select the container you created.
+1. Selecteer de container die u hebt gemaakt.
 
-   ![Select new container](./media/resource-manager-cloud-shell-deploy/select-container.png)
+   ![Nieuwe container selecteren](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
 1. Selecteer **Uploaden**.
 
-   ![Upload blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
+   ![BLOB uploaden](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 
 1. Zoek de sjabloon en upload deze.
 
    ![Bestand uploaden](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
 
-1. After it has uploaded, select the template.
+1. Nadat de app is geüpload, selecteert u de sjabloon.
 
-   ![Select new template](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
+   ![Nieuwe sjabloon selecteren](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
 
-1. Copy the URL.
+1. Kopieer de URL.
 
-   ![Copy URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
+   ![URL kopiëren](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Open de prompt.
 

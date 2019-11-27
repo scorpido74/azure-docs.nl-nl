@@ -63,7 +63,7 @@ Gekoppelde Azure Storage-accounts moeten zich in dezelfde regio bevinden als de 
 
 Cloud Shell machines bestaan in de volgende regio's:
 
-|Onderwerp|Regio|
+|Gebied|Regio|
 |---|---|
 |Noord- en Zuid-Amerika|VS-Oost, Zuid-Centraal VS, VS-West|
 |Europa|Europa - noord, Europa - west|

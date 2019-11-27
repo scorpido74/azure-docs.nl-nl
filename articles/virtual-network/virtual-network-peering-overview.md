@@ -21,102 +21,102 @@ ms.locfileid: "74328350"
 ---
 # <a name="virtual-network-peering"></a>Virtual Network-peering
 
-Virtual network peering enables you to seamlessly connect networks in [Azure Virtual Network](virtual-networks-overview.md). The virtual networks appear as one for connectivity purposes. The traffic between virtual machines uses the Microsoft backbone infrastructure. Like traffic between virtual machines in the same network, traffic is routed through Microsoft's *private* network only.
+Met Virtual Network-peering kunt u naadloos verbinding maken tussen netwerken in [Azure Virtual Network](virtual-networks-overview.md). De virtuele netwerken worden als een voor connectiviteits doeleinden weer gegeven. Het verkeer tussen virtuele machines maakt gebruik van de micro soft backbone-infra structuur. Net als verkeer tussen virtuele machines in hetzelfde netwerk, wordt verkeer alleen gerouteerd via het *particuliere* netwerk van micro soft.
 
-Azure supports the following types of peering:
+Azure ondersteunt de volgende typen peering:
 
-* Virtual network peering: Connect virtual networks within the same Azure region.
-* Global virtual network peering: Connecting virtual networks across Azure regions.
+* Peering op virtueel netwerk: virtuele netwerken in dezelfde Azure-regio verbinden.
+* Globale virtuele netwerk peering: virtuele netwerken verbinden tussen Azure-regio's.
 
 Enkele voordelen van het gebruik van peering van virtuele netwerken - lokaal of globaal - zijn:
 
 * Een verbinding met lage latentie en hoge bandbreedte tussen resources in verschillende virtuele netwerken.
-* The ability for resources in one virtual network to communicate with resources in a different virtual network.
-* The ability to transfer data between virtual networks across Azure subscriptions, Azure Active Directory tenants, deployment models, and Azure regions.
-* The ability to peer virtual networks created through the Azure Resource Manager.
-* The ability to peer a virtual network created through Resource Manager to one created through the classic deployment model. Zie [Over Azure-implementatiemodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over Azure-implementatiemodellen.
+* De mogelijkheid voor bronnen in één virtueel netwerk om te communiceren met resources in een ander virtueel netwerk.
+* De mogelijkheid om gegevens over te dragen tussen virtuele netwerken over Azure-abonnementen, Azure Active Directory-tenants, implementatie modellen en Azure-regio's.
+* De mogelijkheid om virtuele netwerken die zijn gemaakt via de Azure Resource Manager te koppelen.
+* De mogelijkheid om een virtueel netwerk dat is gemaakt via Resource Manager te koppelen aan één dat is gemaakt via het klassieke implementatie model. Zie [Over Azure-implementatiemodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over Azure-implementatiemodellen.
 * Geen downtime tot bronnen in een virtueel netwerk bij het maken van de peering of nadat de peering is gemaakt.
 
 Netwerkverkeer tussen gekoppelde virtuele netwerken is privé. Verkeer tussen de virtuele netwerken wordt opgeslagen in het Microsoft-backbone-netwerk. Er zijn geen openbare internetverbinding, gateways of versleuteling vereist in de communicatie tussen de virtuele netwerken.
 
 ## <a name="connectivity"></a>Connectiviteit
 
-For peered virtual networks, resources in either virtual network can directly connect with resources in the peered virtual network.
+Voor gekoppelde virtuele netwerken kunnen resources in een virtueel netwerk rechtstreeks verbinding maken met resources in het peered virtuele netwerk.
 
 De netwerklatentie tussen virtuele machines in gekoppelde virtuele netwerken in dezelfde regio is gelijk aan de latentie binnen één virtueel netwerk. De netwerkdoorvoer is gebaseerd op de bandbreedte die is toegestaan voor de virtuele machine, evenredig aan de grootte. Er gelden verder geen extra beperkingen voor bandbreedte binnen de peering.
 
 Het verkeer tussen virtuele machines in gekoppelde virtuele netwerken wordt rechtstreeks doorgestuurd via de Microsoft-backbone-infrastructuur, niet via een gateway of via het openbare internet.
 
-You can apply network security groups in either virtual network to block access to other virtual networks or subnets.
-When configuring virtual network peering, either open or close the network security group rules between the virtual networks. If you open full connectivity between peered virtual networks, you can apply network security groups to block or deny specific access. Full connectivity is the default option. To learn more about network security groups, see [Security groups](security-overview.md).
+U kunt netwerk beveiligings groepen in beide virtuele netwerken Toep assen om de toegang tot andere virtuele netwerken of subnetten te blok keren.
+Wanneer u peering voor het virtuele netwerk configureert, opent of sluit u de regels voor de netwerk beveiligings groep tussen de virtuele netwerken. Als u de volledige connectiviteit tussen gekoppelde virtuele netwerken opent, kunt u netwerk beveiligings groepen Toep assen voor het blok keren of weigeren van specifieke toegang. Volledige connectiviteit is de standaard optie. Zie [beveiligings groepen](security-overview.md)voor meer informatie over netwerk beveiligings groepen.
 
 ## <a name="service-chaining"></a>Servicechaining
 
-Service chaining enables you to direct traffic from one virtual network to a virtual appliance or gateway in a peered network through user-defined routes.
+Met Service ketens kunt u verkeer van het ene virtuele netwerk naar een virtueel apparaat of gateway in een gekoppeld netwerk omleiden via door de gebruiker gedefinieerde routes.
 
-To enable service chaining, configure user-defined routes that point to virtual machines in peered virtual networks as the *next hop* IP address. User-defined routes could also point to virtual network gateways to enable service chaining.
+Als u service ketening wilt inschakelen, configureert u door de gebruiker gedefinieerde routes die naar virtuele machines in gekoppelde virtuele netwerken verwijzen als het *volgende hop* -IP-adres. Door de gebruiker gedefinieerde routes kunnen ook verwijzen naar virtuele netwerk gateways om service ketens in te scha kelen.
 
-You can deploy hub-and-spoke networks, where the hub virtual network hosts infrastructure components such as a network virtual appliance or VPN gateway. Alle virtuele spoke-netwerken kunnen vervolgens worden gekoppeld aan het virtuele hub-netwerk. Traffic flows through network virtual appliances or VPN gateways in the hub virtual network.
+U kunt hub-en-spoke netwerken implementeren, waarbij het virtuele netwerk van de hub fungeert als host voor infrastructuur onderdelen, zoals een virtueel netwerk apparaat of een VPN-gateway. Alle virtuele spoke-netwerken kunnen vervolgens worden gekoppeld aan het virtuele hub-netwerk. Verkeer loopt via virtuele netwerk apparaten of VPN-gateways in het virtuele hub-netwerk.
 
-Met peering van virtuele netwerken kan de volgende hop op de door de gebruiker gedefinieerde route het IP-adres zijn van een virtuele machine in het gekoppelde virtuele netwerk of VPN-gateway. You can't route between virtual networks with a user-defined route that specifies an Azure ExpressRoute gateway as the next hop type. Zie [Door de gebruiker gedefinieerde routes](virtual-networks-udr-overview.md#user-defined) voor meer informatie over door de gebruiker gedefinieerde routes. To learn how to create a hub and spoke network topology, see [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Met peering van virtuele netwerken kan de volgende hop op de door de gebruiker gedefinieerde route het IP-adres zijn van een virtuele machine in het gekoppelde virtuele netwerk of VPN-gateway. U kunt geen routeren tussen virtuele netwerken met een door de gebruiker gedefinieerde route waarmee een Azure ExpressRoute-gateway wordt opgegeven als het type van de volgende hop. Zie [Door de gebruiker gedefinieerde routes](virtual-networks-udr-overview.md#user-defined) voor meer informatie over door de gebruiker gedefinieerde routes. Zie [hub-spoke-netwerk topologie in azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over het maken van een hub-en-spoke-netwerk topologie.
 
 ## <a name="gateways-and-on-premises-connectivity"></a>Gateways en on-premises connectiviteit
 
-Each virtual network, including a peered virtual network, can have its own gateway. A virtual network can use its gateway to connect to an on-premises network. You can also configure [virtual network-to-virtual network connections](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) by using gateways, even for peered virtual networks.
+Elk virtueel netwerk, met inbegrip van een gekoppeld virtueel netwerk, kan een eigen gateway hebben. Een virtueel netwerk kan de gateway gebruiken om verbinding te maken met een on-premises netwerk. U kunt ook [virtuele netwerk-naar-virtuele netwerk verbindingen](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) configureren door gateways te gebruiken, zelfs voor gekoppelde virtuele netwerken.
 
-When you configure both options for virtual network interconnectivity, the traffic between the virtual networks flows through the peering configuration. The traffic uses the Azure backbone.
+Wanneer u beide opties configureert voor virtuele netwerk interconnectiviteit, loopt het verkeer tussen de virtuele netwerken via de peering-configuratie. Het verkeer maakt gebruik van de Azure-backbone.
 
-You can also configure the gateway in the peered virtual network as a transit point to an on-premises network. In this case, the virtual network that is using a remote gateway can't have its own gateway. A virtual network has only one gateway. The gateway is either a local or remote gateway in the peered virtual network, as shown in the following diagram:
+U kunt de gateway in het gekoppelde virtuele netwerk ook configureren als een doorvoer punt naar een on-premises netwerk. In dit geval kan het virtuele netwerk dat gebruikmaakt van een externe gateway, geen eigen gateway hebben. Een virtueel netwerk heeft maar één gateway. De gateway is een lokale of externe gateway in het gekoppelde virtuele netwerk, zoals wordt weer gegeven in het volgende diagram:
 
 ![doorvoer bij peering van virtuele netwerken](./media/virtual-networks-peering-overview/local-or-remote-gateway-in-peered-virual-network.png)
 
-Both virtual network peering and global virtual network peering support gateway transit.
+Zowel virtuele netwerk peering als globale peering van virtuele netwerken ondersteunen gateway doorvoer.
 
-Gateway transit between virtual networks created through different deployment models is supported. The gateway must be in the virtual network in the Resource Manager model. Zie voor meer informatie over het gebruik van een gateway voor de doorvoer, [Een VPN-gateway configureren voor de doorvoer in een virtueel netwerkpeering](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Gateway overdracht tussen virtuele netwerken die via verschillende implementatie modellen zijn gemaakt, wordt ondersteund. De gateway moet zich in het virtuele netwerk in het Resource Manager-model bevindt. Zie voor meer informatie over het gebruik van een gateway voor de doorvoer, [Een VPN-gateway configureren voor de doorvoer in een virtueel netwerkpeering](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-When you peer virtual networks that share a single Azure ExpressRoute connection, the traffic between them goes through the peering relationship. That traffic uses the Azure backbone network. U kunt nog steeds in elk virtueel netwerk lokale gateways gebruiken om verbinding te maken met het on-premises circuit. Otherwise, you can use a shared gateway and configure transit for on-premises connectivity.
+Wanneer u virtuele netwerken peert die één Azure ExpressRoute-verbinding delen, loopt het verkeer tussen de computers via de peering-relatie. Dat verkeer gebruikmaakt van het Azure-backbone-netwerk. U kunt nog steeds in elk virtueel netwerk lokale gateways gebruiken om verbinding te maken met het on-premises circuit. Anders kunt u een gedeelde gateway gebruiken en transit configureren voor on-premises connectiviteit.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-To confirm that virtual networks are peered, you can check effective routes. Check routes for a network interface in any subnet in a virtual network. Als een peering op een virtueel netwerk bestaat, hebben alle subnets binnen het virtuele netwerk routes met het volgende hoptype *VNet-peering* voor elke adresruimte in elk gekoppeld virtueel netwerk. For more information, see [Diagnose a virtual machine routing problem](diagnose-network-routing-problem.md).
+Als u wilt controleren of de virtuele netwerken zijn gekoppeld, kunt u de juiste routes controleren. Controleer de routes voor een netwerk interface in elk subnet van een virtueel netwerk. Als een peering op een virtueel netwerk bestaat, hebben alle subnets binnen het virtuele netwerk routes met het volgende hoptype *VNet-peering* voor elke adresruimte in elk gekoppeld virtueel netwerk. Zie voor meer informatie [een probleem met de route ring van een virtuele machine vaststellen](diagnose-network-routing-problem.md).
 
-You can also troubleshoot connectivity to a virtual machine in a peered virtual network using Azure Network Watcher. A connectivity check lets you see how traffic is routed from a source virtual machine's network interface to a destination virtual machine's network interface. For more information, see [Troubleshoot connections with Azure Network Watcher using the Azure portal](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
+U kunt de verbinding met een virtuele machine in een gekoppeld virtueel netwerk ook oplossen met behulp van Azure Network Watcher. Met een connectiviteits controle kunt u zien hoe verkeer wordt gerouteerd van de netwerk interface van een virtuele bron machine naar de netwerk interface van een virtuele doel machine. Zie voor meer informatie [verbindingen met Azure Network Watcher met behulp van de Azure Portal oplossen](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
 
-You can also try the [Troubleshoot virtual network peering issues](virtual-network-troubleshoot-peering-issues.md).
+U kunt ook proberen om problemen [met peering van het virtuele netwerk op te lossen](virtual-network-troubleshoot-peering-issues.md).
 
-## Constraints for peered virtual networks<a name="requirements-and-constraints"></a>
+## Beperkingen voor gekoppelde virtuele netwerken<a name="requirements-and-constraints"></a>
 
 De volgende beperkingen zijn alleen van toepassing wanneer virtuele netwerken wereldwijd zijn gekoppeld:
 
-* Resources in one virtual network can't communicate with the front-end IP address of a Basic Internal Load Balancer (ILB)  in a globally peered virtual network.
-* Some services that use a Basic load balancer don't work over global virtual network peering. For more information, see [What are the constraints related to Global VNet Peering and Load Balancers?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+* Resources in één virtueel netwerk kunnen niet communiceren met het front-end-IP-adres van een Basic Internal Load Balancer (ILB) in een globaal gekoppeld virtueel netwerk.
+* Sommige services die gebruikmaken van een basis load balancer, werken niet via globale virtuele netwerk peering. Zie [Wat zijn de beperkingen met betrekking tot globaal VNet-peering en load balancers?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)voor meer informatie.
 
-For more information, see [Requirements and constraints](virtual-network-manage-peering.md#requirements-and-constraints). To learn more about the supported number of peerings, see [Networking limits](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Zie [vereisten en beperkingen](virtual-network-manage-peering.md#requirements-and-constraints)voor meer informatie. Zie [netwerk limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie over het ondersteunde aantal peerings.
 
 ## <a name="permissions"></a>Machtigingen
 
-To learn about permissions required to create a virtual network peering, see [Permissions](virtual-network-manage-peering.md#permissions).
+Zie [machtigingen](virtual-network-manage-peering.md#permissions)voor meer informatie over de vereiste machtigingen voor het maken van peering op een virtueel netwerk.
 
 ## <a name="pricing"></a>Prijzen
 
-There's a nominal charge for ingress and egress traffic that uses a virtual network peering connection. For more information, see [Virtual Network pricing](https://azure.microsoft.com/pricing/details/virtual-network).
+Er zijn een nominale kosten verbonden aan binnenkomend en uitgaand verkeer dat gebruikmaakt van een virtuele netwerk peering-verbinding. Zie [Virtual Network prijzen](https://azure.microsoft.com/pricing/details/virtual-network)voor meer informatie.
 
-Gateway Transit is a peering property that enables a virtual network to utilize a VPN/ExpressRoute gateway in a peered virtual network. Gateway transit works for both cross premises and network-to-network connectivity. Traffic to the gateway (ingress or egress) in the peered virtual network incurs virtual network peering charges. For more information, see [VPN Gateway pricing](https://azure.microsoft.com/pricing/details/vpn-gateway/) for VPN gateway charges and ExpressRoute Gateway pricing for ExpressRoute gateway charges.
+Gateway-door Voer is een peering-eigenschap waarmee een virtueel netwerk een VPN-ExpressRoute gateway kan gebruiken in een gekoppeld virtueel netwerk. Gateway-door Voer werkt voor zowel cross-premises als netwerk-naar-netwerk-connectiviteit. Verkeer naar de gateway (binnenkomend of uitgaand) in het gekoppelde virtuele netwerk maakt kosten voor peering van het virtuele netwerk onverminderd. Zie voor meer informatie [VPN gateway prijzen](https://azure.microsoft.com/pricing/details/vpn-gateway/) voor de kosten van VPN-gateways en ExpressRoute gateway prijzen voor ExpressRoute gateway kosten.
 
 >[!NOTE]
-> A previous version of this document stated that virtual network peering charges would not apply with Gateway Transit. It now reflects accurate pricing per the pricing page.
+> In een vorige versie van dit document is aangegeven dat de kosten voor peering van virtuele netwerken niet van toepassing zijn op de gateway-door voer. Het weerspiegelt nu nauw keurige prijzen per de pagina met prijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* You can create a peering between two virtual networks. The networks can belong to the same subscription, different deployment models in the same subscription, or different subscriptions. Volg een zelfstudie voor een van de volgende scenario's:
+* U kunt een peering tussen twee virtuele netwerken maken. De netwerken kunnen deel uitmaken van hetzelfde abonnement, verschillende implementatie modellen in hetzelfde abonnement of andere abonnementen. Volg een zelfstudie voor een van de volgende scenario's:
 
-    |Azure-implementatiemodel             | Abonnement  |
+    |Azure-implementatiemodel             | Subscription  |
     |---------                          |---------|
     |Beide in Resource Manager              |[Hetzelfde](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Verschillend](create-peering-different-subscriptions.md)|
     |Eén in Resource Manager, één klassiek  |[Hetzelfde](create-peering-different-deployment-models.md)|
     |                                   |[Verschillend](create-peering-different-deployment-models-subscriptions.md)|
 
-* To learn how to create a hub and spoke network topology, see [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* To learn about all virtual network peering settings, see [Create, change, or delete a virtual network peering](virtual-network-manage-peering.md).
-* For answers to common virtual network peering and global virtual network peering questions, see [VNet Peering](virtual-networks-faq.md#vnet-peering).
+* Zie [hub-spoke-netwerk topologie in azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over het maken van een hub-en-spoke-netwerk topologie.
+* Zie [een virtuele netwerk peering maken, wijzigen of verwijderen](virtual-network-manage-peering.md)voor meer informatie over alle instellingen voor de peering van virtuele netwerken.
+* Zie [VNet-peering](virtual-networks-faq.md#vnet-peering)voor antwoorden op veelvoorkomende virtuele netwerk peering en algemene vragen over peering voor het virtuele netwerk.

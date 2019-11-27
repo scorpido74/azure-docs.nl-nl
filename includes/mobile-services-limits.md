@@ -15,7 +15,7 @@ ms.locfileid: "74224430"
 | --- | --- | --- | --- |
 | API-aanroepen |500,000 |1.500.000 per eenheid |15.000.000 per eenheid |
 | Actieve apparaten |500 |Onbeperkt |Onbeperkt |
-| Schalen |N.v.t. |Maxi maal 6 eenheden |Onbeperkte eenheden |
+| Schaal |N/A |Maxi maal 6 eenheden |Onbeperkte eenheden |
 | Pushmeldingen |Azure Notification Hubs gratis laag inbegrepen, Maxi maal 1.000.000 pushes |Notification Hubs Basic-laag inbegrepen, Maxi maal 10.000.000 pushes |Notification Hubs Standard-laag inbegrepen, Maxi maal 10.000.000 pushes |
 | Real-time berichten/<br/>Websockets |Beperkt |350 per mobiele service |Onbeperkt |
 | Offline synchronisatiebewerkingen |Beperkt |Inbegrepen |Inbegrepen |

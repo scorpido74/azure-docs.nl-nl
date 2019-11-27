@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Push update to geo-replicated registry
-description: Push an updated Docker image to your geo-replicated Azure container registry, then see the changes automatically deployed to web apps running in multiple regions. Deel drie van een serie van drie.
+title: Zelf studie-push-update naar geo-gerepliceerd REGI ster
+description: Push een bijgewerkte docker-installatie kopie naar uw Geo-gerepliceerd Azure container Registry en bekijk vervolgens de wijzigingen die automatisch zijn geïmplementeerd op Web-apps die in meerdere regio's worden uitgevoerd. Deel drie van een serie van drie.
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.custom: seodec18, mvc
@@ -11,7 +11,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454687"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Tutorial: Push an updated container image to a geo-replicated container registry for regional web app deployments
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Zelf studie: een bijgewerkte container installatie kopie pushen naar een geo-gerepliceerd container register voor regionale web-app-implementaties
 
 Dit is deel drie van een serie met drie zelfstudies. In de [vorige zelfstudie](container-registry-tutorial-deploy-app.md) is geo-replicatie geconfigureerd voor twee verschillende regionale web-app-implementaties. In deze zelfstudie past u eerst de app aan, maakt u daarna een nieuwe containerinstallatiekopie en pusht u deze vervolgens naar het geo-gerepliceerde register. Ten slotte kunt u deze wijziging, die automatisch wordt geïmplementeerd door Azure Container Registry-webhooks, in beide web-app-instanties weergeven.
 

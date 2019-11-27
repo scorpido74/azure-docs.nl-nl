@@ -1029,7 +1029,7 @@ Tijdens de download tijd kan de Vhd's of de Managed Disks niet actief zijn. Zelf
 
   Zie hier <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd>voor meer informatie over de cmdlet Save-AzVhd.
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 * Een beheerde schijf downloaden  
   U moet eerst toegang krijgen tot de onderliggende blob van de beheerde schijf. Vervolgens kunt u de onderliggende BLOB kopiëren naar een nieuw opslag account en de BLOB downloaden van dit opslag account.
   ```
@@ -1070,7 +1070,7 @@ $config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscr
 New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
 ```
 
-##### <a name="azure-cli"></a>Azure-CLI
+##### <a name="azure-cli"></a>Azure CLI
 
 U kunt Azure CLI gebruiken om een VHD te kopiëren, zoals wordt weer gegeven in [dit artikel][storage-azure-cli-copy-blobs]. Gebruik *AZ Disk Create* zoals wordt weer gegeven in het volgende voor beeld om een nieuwe beheerde schijf te maken.
 
@@ -1114,7 +1114,7 @@ $disk = New-AzDisk -DiskName <disk name> -Disk $diskConfig -ResourceGroupName <r
 $vm = Add-AzVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for example 0> -CreateOption attach -ManagedDiskId $disk.Id
 $vm | Update-AzVM
 ```
-##### <a name="azure-cli"></a>Azure-CLI
+##### <a name="azure-cli"></a>Azure CLI
 
 ```
 
@@ -1158,7 +1158,7 @@ Get-AzStorageBlobCopyState -Blob <target blob name> -Container <target container
 
 Zie [dit artikel][storage-powershell-guide-full-copy-vhd]voor voor beelden.
 
-##### <a name="azure-cli"></a>Azure-CLI
+##### <a name="azure-cli"></a>Azure CLI
 * De kopie starten met
 
 ```
@@ -1574,7 +1574,7 @@ az vm unmanaged-disk attach --resource-group $rgName --vm-name SAPERPDemo --size
 az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 --disk datadisk --new
 ```
 
-##### <a name="template"></a>Template
+##### <a name="template"></a>Sjabloon
 
 U kunt de voorbeeld sjablonen gebruiken in de opslag plaats Azure-Quick Start-sjablonen op GitHub.
 

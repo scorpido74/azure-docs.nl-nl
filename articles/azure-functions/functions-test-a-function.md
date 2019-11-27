@@ -1,6 +1,6 @@
 ---
 title: Azure Functions testen
-description: Create automated tests for a C# Function in Visual Studio and JavaScript Function in VS Code
+description: Maak geautomatiseerde tests voor een C# functie in Visual Studio en JavaScript-functie in VS Code
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
@@ -12,44 +12,44 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226575"
 ---
-# <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategies for testing your code in Azure Functions
+# <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategieën voor het testen van uw code in Azure Functions
 
-This article demonstrates how to create automated tests for Azure Functions. 
+In dit artikel ziet u hoe u geautomatiseerde tests uit te maken voor Azure Functions. 
 
-Testing all code is recommended, however you may get the best results by wrapping up a Function's logic and creating tests outside the Function. Abstracting logic away limits a Function's lines of code and allows the Function to be solely responsible for calling other classes or modules. This article, however, demonstrates how to create automated tests against an HTTP and timer-triggered function.
+Testen van alle code wordt aanbevolen, maar krijgt u mogelijk de beste resultaten door de logica van een functie afsluit en tests buiten de functie te maken. Om logica direct te abstraheren van een functie coderegels beperkt en kunt de functie alleen verantwoordelijk voor het aanroepen van andere klassen of modules. In dit artikel zijn echter van ziet u hoe u geautomatiseerde tests uit op basis van een HTTP- en een timer geactiveerde functie maken.
 
-The content that follows is split into two different sections meant to target different languages and environments. You can learn to build tests in:
+De inhoud die volgt is opgesplitst in twee verschillende secties die zijn bedoeld om u te richten op verschillende talen en omgevingen. U kunt meer tests inbouwen in:
 
-- [C# in Visual Studio with xUnit](#c-in-visual-studio)
-- [JavaScript in VS Code with Jest](#javascript-in-vs-code)
+- [C#in Visual Studio met xUnit](#c-in-visual-studio)
+- [Java script in VS code met jest](#javascript-in-vs-code)
 
-The sample repository is available on [GitHub](https://github.com/Azure-Samples/azure-functions-tests).
+De voor beeld-opslag plaats is beschikbaar op [github](https://github.com/Azure-Samples/azure-functions-tests).
 
-## <a name="c-in-visual-studio"></a>C# in Visual Studio
-The following example describes how to create a C# Function app in Visual Studio and run and tests with [xUnit](https://xunit.github.io).
+## <a name="c-in-visual-studio"></a>C#in Visual Studio
+In het volgende voor beeld wordt beschreven hoe C# u een functie-app maakt in Visual Studio en voert en test met [xUnit](https://xunit.github.io).
 
-![Testing Azure Functions with C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
+![Azure Functions met testen C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="setup"></a>Instellen
 
-To set up your environment, create a Function and test app. The following steps help you create the apps and functions required to support the tests:
+Als u uw omgeving instelt, een functie maken en testen van de app. De volgende stappen helpen u bij het maken van de apps en functies die vereist zijn ter ondersteuning van de tests:
 
-1. [Create a new Functions app](./functions-create-first-azure-function.md) and name it *Functions*
-2. [Create an HTTP function from the template](./functions-create-first-azure-function.md) and name it *HttpTrigger*.
-3. [Create a timer function from the template](./functions-create-scheduled-function.md) and name it *TimerTrigger*.
-4. [Create an xUnit Test app](https://xunit.github.io/docs/getting-started-dotnet-core) in Visual Studio by clicking **File > New > Project > Visual C# > .NET Core > xUnit Test Project** and  name it *Functions.Test*. 
-5. Use Nuget to add a references from the test app [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [Reference the *Functions* app](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) from *Functions.Test* app.
+1. [Een nieuwe functions-app maken](./functions-create-first-azure-function.md) en *hieraan* een naam toe te voegen
+2. [Maak een HTTP-functie op basis van de sjabloon](./functions-create-first-azure-function.md) en geef deze de naam *http trigger*.
+3. [Maak een timer functie op basis van de sjabloon](./functions-create-scheduled-function.md) en noem deze *Timer trigger*.
+4. [Maak een xUnit-test-app](https://xunit.github.io/docs/getting-started-dotnet-core) in Visual Studio door te klikken op **File > New C# > Project > Visual > .net core > xUnit test project** en geef het de naam *functions. test*. 
+5. Gebruik Nuget om een verwijzing toe te voegen vanuit de test-app [micro soft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+6. [Raadpleeg de *functions* -app](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) vanuit *functions. app testen* .
 
-### <a name="create-test-classes"></a>Create test classes
+### <a name="create-test-classes"></a>Test klassen maken
 
-Now that the applications are created, you can create the classes used to run the automated tests.
+Nu dat de toepassingen die zijn gemaakt, kunt u de klassen gebruikt voor het uitvoeren van de geautomatiseerde tests uit.
 
-Each function takes an instance of [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) to handle message logging. Some tests either don't log messages or have no concern for how logging is implemented. Other tests need to evaluate messages logged to determine whether a test is passing.
+Voor elke functie wordt een instantie van [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) gebruikt voor het afhandelen van bericht logboek registratie. Enkele tests uit een geen berichten aanmelden of hebben geen gevolgen voor hoe logboekregistratie wordt geïmplementeerd. Andere tests moeten het evalueren van berichten in het logboek geregistreerd om te bepalen of een test wordt doorgegeven.
 
-The `ListLogger` class is meant to implement the `ILogger` interface and hold in internal list of messages for evaluation during a test.
+De `ListLogger` klasse is bedoeld om de `ILogger`-interface te implementeren en in interne lijst met berichten te houden die tijdens een test worden geëvalueerd.
 
-**Right-click** on the *Functions.Test* application and select **Add > Class**, name it **NullScope.cs** and enter the following code:
+**Klik** met de rechter muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **NullScope.cs** en voer de volgende code in:
 
 ```csharp
 using System;
@@ -67,7 +67,7 @@ namespace Functions.Tests
 }
 ```
 
-Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **ListLogger.cs** and enter the following code:
+Klik vervolgens met de **rechter** muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **ListLogger.cs** en voer de volgende code in:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -103,17 +103,17 @@ namespace Functions.Tests
 }
 ```
 
-The `ListLogger` class implements the following members as contracted by the `ILogger` interface:
+De klasse `ListLogger` implementeert de volgende leden als een contract door de `ILogger`-Interface:
 
-- **BeginScope**: Scopes add context to your logging. In this case, the test just points to the static instance on the `NullScope` class to allow the test to function.
+- **BeginScope**: bereiken voegen context toe aan uw logboek registratie. In dit geval wijst de test alleen naar het statische exemplaar op de klasse `NullScope` om de test te laten functioneren.
 
-- **IsEnabled**: A default value of `false` is provided.
+- **IsEnabled**: er is een standaard waarde van `false`.
 
-- **Log**: This method uses the provided `formatter` function to format the message and then adds the resulting text to the `Logs` collection.
+- **Log**: deze methode maakt gebruik van de geleverde `formatter` functie om het bericht op te maken en voegt vervolgens de resulterende tekst toe aan de `Logs` verzameling.
 
-The `Logs` collection is an instance of `List<string>` and is initialized in the constructor.
+De verzameling `Logs` is een instantie van `List<string>` en wordt geïnitialiseerd in de constructor.
 
-Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **LoggerTypes.cs** and enter the following code:
+Klik vervolgens met de **rechter** muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **LoggerTypes.cs** en voer de volgende code in:
 
 ```csharp
 namespace Functions.Tests
@@ -125,9 +125,9 @@ namespace Functions.Tests
     }
 }
 ```
-This enumeration specifies the type of logger used by the tests. 
+Deze opsomming geeft het type logger die worden gebruikt door de tests. 
 
-Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **TestFactory.cs** and enter the following code:
+Klik vervolgens met de **rechter** muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **TestFactory.cs** en voer de volgende code in:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -188,17 +188,17 @@ namespace Functions.Tests
     }
 }
 ```
-The `TestFactory` class implements the following members:
+De klasse `TestFactory` implementeert de volgende leden:
 
-- **Data**: This property returns an [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) collection of sample data. The key value pairs represent values that are passed into a query string.
+- **Gegevens**: deze eigenschap retourneert een [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) -verzameling van voorbeeld gegevens. De sleutel-waardeparen vertegenwoordigen de waarden die in een queryreeks worden doorgegeven.
 
-- **CreateDictionary**: This method accepts a key/value pair as arguments and returns a new `Dictionary` used to create `QueryCollection` to represent query string values.
+- **CreateDictionary**: deze methode accepteert een sleutel/waarde-paar als argumenten en retourneert een nieuwe `Dictionary` die wordt gebruikt om `QueryCollection` te maken om query teken reeks waarden weer te geven.
 
-- **CreateHttpRequest**: This method creates an HTTP request initialized with the given query string parameters.
+- **CreateHttpRequest**: met deze methode maakt u een HTTP-aanvraag die is geïnitialiseerd met de opgegeven query reeks parameters.
 
-- **CreateLogger**: Based on the logger type, this method returns a logger class used for testing. The `ListLogger` keeps track of logged messages available for evaluation in tests.
+- **CreateLogger**: op basis van het logboek type retourneert deze methode een logger klasse die wordt gebruikt voor het testen. Met de `ListLogger` worden vastgelegde berichten bijgehouden die beschikbaar zijn voor evaluatie in tests.
 
-Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **FunctionsTests.cs** and enter the following code:
+Klik vervolgens met de **rechter** muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **FunctionsTests.cs** en voer de volgende code in:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -239,45 +239,45 @@ namespace Functions.Tests
     }
 }
 ```
-The members implemented in this class are:
+De leden die zijn geïmplementeerd in deze klasse zijn:
 
-- **Http_trigger_should_return_known_string**: This test creates a request with the query string values of `name=Bill` to an HTTP function and checks that the expected response is returned.
+- **Http_trigger_should_return_known_string**: met deze test wordt een aanvraag gemaakt met de query teken reeks waarden van `name=Bill` naar een http-functie en wordt gecontroleerd of de verwachte reactie wordt geretourneerd.
 
-- **Http_trigger_should_return_string_from_member_data**: This test uses xUnit attributes to provide sample data to the HTTP function.
+- **Http_trigger_should_return_string_from_member_data**: deze test maakt gebruik van xUnit-kenmerken om voorbeeld gegevens aan de http-functie toe te voegen.
 
-- **Timer_should_log_message**: This test creates an instance of `ListLogger` and passes it to a timer functions. Once the function is run, then the log is checked to ensure the expected message is present.
+- **Timer_should_log_message**: met deze test wordt een exemplaar van `ListLogger` gemaakt en door gegeven aan een timer-functie. Nadat de functie wordt uitgevoerd, wordt het logboek gecontroleerd om te controleren of dat de verwachte bericht aanwezig is.
 
-If you want to access application settings in your tests, you can use [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+Als u toegang wilt krijgen tot toepassings instellingen in uw tests, kunt u [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)gebruiken.
 
-### <a name="run-tests"></a>Run tests
+### <a name="run-tests"></a>Tests uitvoeren
 
-To run the tests, navigate to the **Test Explorer** and click **Run all**.
+Als u de tests wilt uitvoeren, gaat u naar de **test Verkenner** en klikt u op **alles uitvoeren**.
 
-![Testing Azure Functions with C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
+![Azure Functions met testen C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="debug-tests"></a>Debug tests
+### <a name="debug-tests"></a>Fouten opsporen in tests
 
-To debug the tests, set a breakpoint on a test, navigate to the **Test Explorer** and click **Run > Debug Last Run**.
+Als u fouten wilt opsporen in de tests, stelt u een onderbrekings punt in op een test, gaat u naar de **test Verkenner** en klikt u op **uitvoeren > fout opsporing laatst uitgevoerd**.
 
 ## <a name="javascript-in-vs-code"></a>JavaScript in VS Code
 
-The following example describes how to create a JavaScript Function app in VS Code and run and tests with [Jest](https://jestjs.io). This procedure uses the [VS Code Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) to create Azure Functions.
+In het volgende voor beeld wordt beschreven hoe u een Java script-functie-app maakt in VS code en voert en test met [jest](https://jestjs.io). Deze procedure maakt gebruik van de [extensie VS code functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) om Azure functions te maken.
 
-![Testing Azure Functions with JavaScript in VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+![Azure Functions met JavaScript testen in VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
 ### <a name="setup"></a>Instellen
 
-To set up your environment, initialize a new Node.js app in an empty folder by running `npm init`.
+Als u uw omgeving wilt instellen, initialiseert u een nieuwe node. js-app in een lege map door `npm init`uit te voeren.
 
 ```bash
 npm init -y
 ```
-Next, install Jest by running the following command:
+Vervolgens installeert u Jest door het uitvoeren van de volgende opdracht uit:
 
 ```bash
 npm i jest
 ```
-Now update _package.json_ to replace the existing test command with the following command:
+Werk nu _package. json_ bij om de bestaande test opdracht te vervangen door de volgende opdracht:
 
 ```bash
 "scripts": {
@@ -285,19 +285,19 @@ Now update _package.json_ to replace the existing test command with the followin
 }
 ```
 
-### <a name="create-test-modules"></a>Create test modules
-With the project initialized, you can create the modules used to run the automated tests. Begin by creating a new folder named *testing* to hold the support modules.
+### <a name="create-test-modules"></a>Test-modules maken
+Met het project is geïnitialiseerd, kunt u de modules gebruikt voor het uitvoeren van de geautomatiseerde tests uit. Maak eerst een nieuwe map met de naam *tests* om de ondersteunings modules op te slaan.
 
-In the *testing* folder add a new file, name it **defaultContext.js**, and add the following code:
+Voeg in de map *testen* een nieuw bestand toe, geef het de naam **defaultContext. js**en voeg de volgende code toe:
 
 ```javascript
 module.exports = {
     log: jest.fn()
 };
 ```
-This module mocks the *log* function to represent the default execution context.
+In deze module wordt de *logboek* functie voor de standaard uitvoerings context weer gegeven.
 
-Next, add a new file, name it **defaultTimer.js**, and add the following code:
+Voeg vervolgens een nieuw bestand toe, geef het de naam **defaultTimer. js**en voeg de volgende code toe:
 
 ```javascript
 module.exports = {
@@ -305,9 +305,9 @@ module.exports = {
 };
 ```
 
-This module implements the `IsPastDue` property to stand is as a fake timer instance. Timer configurations like NCRONTAB expressions are not required here as the test harness is simply calling the function directly to test the outcome.
+Deze module implementeert de eigenschap `IsPastDue` op standaard als een valse Timer-instantie. Timer configuraties zoals NCRONTAB-expressies zijn hier niet vereist omdat de test harnas de functie rechtstreeks aanroept om het resultaat te testen.
 
-Next, use the VS Code Functions extension to [create a new JavaScript HTTP Function](/azure/javascript/tutorial-vscode-serverless-node-01) and name it *HttpTrigger*. Once the function is created, add a new file in the same folder named **index.test.js**, and add the following code:
+Gebruik vervolgens de extensie VS code functions om [een nieuwe Java script HTTP-functie te maken](/azure/javascript/tutorial-vscode-serverless-node-01) en deze *http trigger*te noemen. Nadat de functie is gemaakt, voegt u een nieuw bestand toe aan dezelfde map met de naam **index. test. js**en voegt u de volgende code toe:
 
 ```javascript
 const httpFunction = require('./index');
@@ -325,9 +325,9 @@ test('Http trigger should return known text', async () => {
     expect(context.res.body).toEqual('Hello Bill');
 });
 ```
-The HTTP function from the template returns a string of "Hello" concatenated with the name provided in the query string. This test creates a fake instance of a request and passes it to the HTTP function. The test checks that the *log* method is called once and the returned text equals "Hello Bill".
+De HTTP-functie van de sjabloon retourneert een tekenreeks "Hallo" samengevoegd met de naam die is opgegeven in de querytekenreeks. Deze test wordt een valse exemplaar van een aanvraag gemaakt en wordt doorgegeven aan de HTTP-functie. De test controleert of de *logboek* methode eenmaal wordt aangeroepen en de geretourneerde tekst is gelijk aan "Hello Bill".
 
-Next, use the VS Code Functions extension to create a new JavaScript Timer Function and name it *TimerTrigger*. Once the function is created, add a new file in the same folder named **index.test.js**, and add the following code:
+Gebruik vervolgens de extensie VS code functions om een nieuwe Java Script-timer functie te maken en geef deze de naam *Timer trigger*. Nadat de functie is gemaakt, voegt u een nieuw bestand toe aan dezelfde map met de naam **index. test. js**en voegt u de volgende code toe:
 
 ```javascript
 const timerFunction = require('./index');
@@ -339,20 +339,20 @@ test('Timer trigger should log message', () => {
     expect(context.log.mock.calls.length).toBe(1);
 });
 ```
-The timer function from the template logs a message at the end of the body of the function. This test ensures the *log* function is called once.
+De functie van de timer van de sjabloon wordt een bericht aan het einde van de hoofdtekst van de functie vastlegt. Deze test zorgt ervoor dat de *logboek* functie eenmaal wordt genoemd.
 
-### <a name="run-tests"></a>Run tests
-To run the tests, press **CTRL + ~** to open the command window, and run `npm test`:
+### <a name="run-tests"></a>Tests uitvoeren
+Als u de tests wilt uitvoeren, drukt u op **CTRL + ~** om het opdracht venster te openen en voert u `npm test`uit:
 
 ```bash
 npm test
 ```
 
-![Testing Azure Functions with JavaScript in VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+![Azure Functions met JavaScript testen in VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="debug-tests"></a>Debug tests
+### <a name="debug-tests"></a>Fouten opsporen in tests
 
-To debug your tests, add the following configuration to your *launch.json* file:
+Als u fouten wilt opsporen in uw tests, voegt u de volgende configuratie toe aan het bestand *Launch. json* :
 
 ```json
 {
@@ -368,11 +368,11 @@ To debug your tests, add the following configuration to your *launch.json* file:
 }
 ```
 
-Next, set a breakpoint in your test and press **F5**.
+Stel vervolgens een onderbrekings punt in uw test in en druk op **F5**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Now that you've learned how to write automated tests for your functions, continue with these resources:
-- [Manually run a non HTTP-triggered function](./functions-manually-run-non-http.md)
-- [Azure Functions error handling](./functions-bindings-error-pages.md)
+Nu dat u hebt geleerd hoe u geautomatiseerde tests uit voor uw functies schrijft, kunt u doorgaan met deze resources:
+- [Een niet met HTTP geactiveerde functie hand matig uitvoeren](./functions-manually-run-non-http.md)
+- [Fout afhandeling Azure Functions](./functions-bindings-error-pages.md)
 - [Lokaal opsporen van fouten in Azure-functies voor Event Grid Trigger](./functions-debug-event-grid-trigger-local.md)

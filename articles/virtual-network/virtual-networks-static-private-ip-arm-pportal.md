@@ -27,7 +27,7 @@ ms.locfileid: "74196635"
 > [!div class="op_single_selector"]
 > * [Azure Portal](virtual-networks-static-private-ip-arm-pportal.md)
 > * [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
-> * [Azure-CLI](virtual-networks-static-private-ip-arm-cli.md)
+> * [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
 > * [Azure Portal (klassiek)](virtual-networks-static-private-ip-classic-pportal.md)
 > * [PowerShell (klassiek)](virtual-networks-static-private-ip-classic-ps.md)
 > * [Azure CLI (klassiek)](virtual-networks-static-private-ip-classic-cli.md)

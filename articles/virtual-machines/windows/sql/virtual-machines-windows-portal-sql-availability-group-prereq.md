@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Prerequisites for availability group'
-description: This tutorial shows how to configure the prerequisites for creating a SQL Server Always On availability group on Azure VMs.
+title: 'Zelf studie: vereisten voor de beschikbaarheids groep'
+description: In deze zelf studie ziet u hoe u de vereisten configureert voor het maken van een SQL Server AlwaysOn-beschikbaarheids groep op virtuele machines van Azure.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
@@ -22,486 +22,486 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224755"
 ---
-# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Prerequisites for creating Always On availability groups on SQL Server on Azure virtual machines
+# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Vereisten voor het maken van AlwaysOn-beschikbaarheids groepen op SQL Server op virtuele machines van Azure
 
-This tutorial shows how to complete the prerequisites for creating a [SQL Server Always On availability group on Azure virtual machines (VMs)](virtual-machines-windows-portal-sql-availability-group-tutorial.md). When you've finished the prerequisites, you have a domain controller, two SQL Server VMs, and a witness server in a single resource group.
+In deze zelf studie ziet u hoe u de vereisten voltooit voor het maken van een SQL Server AlwaysOn [-beschikbaarheids groep op Azure virtual machines (vm's)](virtual-machines-windows-portal-sql-availability-group-tutorial.md). Wanneer u klaar bent met de vereisten, hebt u een domein controller, twee SQL Server Vm's en een Witness-server in één resource groep.
 
-**Time estimate**: It might take a couple of hours to complete the prerequisites. Much of this time is spent creating virtual machines.
+**Geschatte tijd**: het kan enkele uren duren om de vereisten te volt ooien. Veel van deze tijd wordt besteed aan het maken van virtuele machines.
 
-The following diagram illustrates what you build in the tutorial.
+In het volgende diagram ziet u wat u in de zelf studie maakt.
 
 ![Beschikbaarheidsgroep](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-## <a name="review-availability-group-documentation"></a>Review availability group documentation
+## <a name="review-availability-group-documentation"></a>Documentatie voor de beschikbaarheids groep bekijken
 
-This tutorial assumes that you have a basic understanding of SQL Server Always On availability groups. If you're not familiar with this technology, see [Overview of Always On Availability Groups (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
+In deze zelf studie wordt ervan uitgegaan dat u een basis memorandum hebt van SQL Server AlwaysOn-beschikbaarheids groepen. Zie overzicht van AlwaysOn [Availability groups (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)als u niet bekend bent met deze technologie.
 
 
 ## <a name="create-an-azure-account"></a>Maak een Azure-account
-U hebt een Azure-account nodig. You can [open a free Azure account](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) or [activate Visual Studio subscriber benefits](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
+U hebt een Azure-account nodig. U kunt [een gratis Azure-account openen of de](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) [voor delen van Visual Studio-abonnee activeren](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Click **+** to create a new object in the portal.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+2. Klik op **+** om een nieuw object te maken in de portal.
 
-   ![New object](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
+   ![Nieuw object](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
 
-3. Type **resource group** in the **Marketplace** search window.
+3. Geef de **resource groep** op in het zoek venster voor **Marketplace** .
 
    ![Resourcegroep](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
-4. Click **Resource group**.
+4. Klik op **resource groep**.
 5. Klik op **Maken**.
-6. Under **Resource group name**, type a name for the resource group. For example, type **sql-ha-rg**.
-7. If you have multiple Azure subscriptions, verify that the subscription is the Azure subscription that you want to create the availability group in.
-8. Selecteer een locatie. The location is the Azure region where you want to create the availability group. This article builds all resources in one Azure location.
-9. Verify that **Pin to dashboard** is checked. This optional setting places a shortcut for the resource group on the Azure portal dashboard.
+6. Typ onder **naam van resource groep**een naam voor de resource groep. Typ bijvoorbeeld **SQL-ha-RG**.
+7. Als u meerdere Azure-abonnementen hebt, controleert u of het abonnement het Azure-abonnement is waarin u de beschikbaarheids groep wilt maken.
+8. Selecteer een locatie. De locatie is de Azure-regio waar u de beschikbaarheids groep wilt maken. In dit artikel worden alle resources op één Azure-locatie gebouwd.
+9. Controleer of het selectie vakje **vastmaken aan dash board** is ingeschakeld. Deze optionele instelling plaatst een snelkoppeling voor de resource groep op het Azure Portal dash board.
 
    ![Resourcegroep](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
 
 10. Klik op **Maken** om de resourcegroep te maken.
 
-Azure creates the resource group and pins a shortcut to the resource group in the portal.
+De resource groep wordt door Azure gemaakt en er wordt een snelkoppeling naar de resource groep in de portal gespeld.
 
-## <a name="create-the-network-and-subnets"></a>Create the network and subnets
-The next step is to create the networks and subnets in the Azure resource group.
+## <a name="create-the-network-and-subnets"></a>Het netwerk en de subnetten maken
+De volgende stap is het maken van de netwerken en subnetten in de Azure-resource groep.
 
-The solution uses one virtual network with two subnets. The [Virtual network overview](../../../virtual-network/virtual-networks-overview.md) provides more information about networks in Azure.
+De oplossing maakt gebruik van één virtueel netwerk met twee subnetten. Het [overzicht van virtuele](../../../virtual-network/virtual-networks-overview.md) netwerken biedt meer informatie over netwerken in Azure.
 
-To create the virtual network:
+Het virtuele netwerk maken:
 
-1. In the Azure portal, in your resource group, click **+ Add**. 
+1. Klik in de Azure Portal in uw resource groep op **+ toevoegen**. 
 
-   ![New item](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/02-newiteminrg.png)
-2. Search for **virtual network**.
+   ![Nieuw item](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/02-newiteminrg.png)
+2. Zoek naar het **virtuele netwerk**.
 
-     ![Search virtual network](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/04-findvirtualnetwork.png)
-3. Click **Virtual network**.
-4. On the **Virtual network**, click the **Resource Manager** deployment model, and then click **Create**.
+     ![Virtueel netwerk zoeken](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/04-findvirtualnetwork.png)
+3. Klik op **virtueel netwerk**.
+4. Klik in het **virtuele netwerk**op het **Resource Manager** -implementatie model en klik vervolgens op **maken**.
 
-    The following table shows the settings for the virtual network:
+    De volgende tabel bevat de instellingen voor het virtuele netwerk:
 
    | **Veld** | Waarde |
    | --- | --- |
    | **Naam** |autoHAVNET |
    | **Adresruimte** |10.33.0.0/24 |
-   | **Subnetnaam** |Admin |
+   | **Subnetnaam** |beheerder |
    | **Subnetadresbereik** |10.33.0.0/29 |
-   | **Abonnement** |Specify the subscription that you intend to use. **Subscription** is blank if you only have one subscription. |
-   | **Resourcegroep** |Choose **Use existing** and pick the name of the resource group. |
-   | **Locatie** |Specify the Azure location. |
+   | **Abonnement** |Geef het abonnement op dat u wilt gebruiken. Het **abonnement** is leeg als u slechts één abonnement hebt. |
+   | **Resourcegroep** |Kies **bestaande gebruiken** en kies de naam van de resource groep. |
+   | **Locatie** |De Azure-locatie opgeven. |
 
-   Your address space and subnet address range might be different from the table. Depending on your subscription, the portal suggests an available address space and corresponding subnet address range. If no sufficient address space is available, use a different subscription.
+   De adres ruimte en het adres bereik van het subnet kunnen afwijken van de tabel. Afhankelijk van uw abonnement stelt de portal een beschik bare adres ruimte en een bijbehorend adres bereik voor het subnet voor. Als er onvoldoende adres ruimte beschikbaar is, gebruikt u een ander abonnement.
 
-   The example uses the subnet name **Admin**. This subnet is for the domain controllers.
+   In het voor beeld wordt de naam **beheerder**van het subnet gebruikt. Dit subnet is voor de domein controllers.
 
 5. Klik op **Maken**.
 
-   ![Configure the virtual network](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
+   ![Het virtuele netwerk configureren](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
 
-Azure returns you to the portal dashboard and notifies you when the new network is created.
+Azure keert u terug naar het portal-dash board en waarschuwt u wanneer het nieuwe netwerk is gemaakt.
 
-### <a name="create-a-second-subnet"></a>Create a second subnet
-The new virtual network has one subnet, named **Admin**. The domain controllers use this subnet. The SQL Server VMs use a second subnet named **SQL**. To configure this subnet:
+### <a name="create-a-second-subnet"></a>Een tweede subnet maken
+Het nieuwe virtuele netwerk heeft één subnet met de naam **admin**. De domein controllers gebruiken dit subnet. De SQL Server-Vm's gebruiken een tweede subnet met de naam **SQL**. Dit subnet configureren:
 
-1. On your dashboard, click the resource group that you created, **SQL-HA-RG**. Locate the network in the resource group under **Resources**.
+1. Klik op het dash board op de resource groep die u hebt gemaakt, **SQL-ha-RG**. Zoek het netwerk in de resource groep onder **resources**.
 
-    If **SQL-HA-RG** isn't visible, find it by clicking **Resource Groups** and filtering by the resource group name.
-2. Click **autoHAVNET** on the list of resources. 
-3. On the **autoHAVNET** virtual network, under **Settings** select **Subnets**.
+    Als **SQL-ha-RG** niet zichtbaar is, zoekt u deze door te klikken op **resource groepen** en te filteren op de naam van de resource groep.
+2. Klik op **autoHAVNET** in de lijst met resources. 
+3. Selecteer **subnetten**onder **instellingen** in het virtuele netwerk van **autoHAVNET** .
 
-    Note the subnet that you already created.
+    Noteer het subnet dat u al hebt gemaakt.
 
-   ![Configure the virtual network](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/07-addsubnet.png)
-5. Create a second subnet. Click **+ Subnet**.
-6. On **Add subnet**, configure the subnet by typing **sqlsubnet** under **Name**. Azure automatically specifies a valid **Address range**. Verify that this address range has at least 10 addresses in it. In a production environment, you might require more addresses.
+   ![Het virtuele netwerk configureren](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/07-addsubnet.png)
+5. Maak een tweede subnet. Klik op **+ subnet**.
+6. Configureer het subnet in **subnet toevoegen**door **sqlsubnet** onder **naam**te typen. Azure geeft automatisch een geldig **adres bereik**op. Controleer of dit adres bereik ten minste 10 adressen bevat. In een productie omgeving hebt u mogelijk meer adressen nodig.
 7. Klik op **OK**.
 
-    ![Configure the virtual network](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/08-configuresubnet.png)
+    ![Het virtuele netwerk configureren](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/08-configuresubnet.png)
 
-The following table summarizes the network configuration settings:
+De volgende tabel geeft een overzicht van de netwerk configuratie-instellingen:
 
 | **Veld** | Waarde |
 | --- | --- |
 | **Naam** |**autoHAVNET** |
-| **Adresruimte** |This value depends on the available address spaces in your subscription. A typical value is 10.0.0.0/16. |
-| **Subnetnaam** |**admin** |
-| **Subnetadresbereik** |This value depends on the available address ranges in your subscription. A typical value is 10.0.0.0/24. |
+| **Adresruimte** |Deze waarde is afhankelijk van de beschik bare adres ruimten in uw abonnement. Een typische waarde is 10.0.0.0/16. |
+| **Subnetnaam** |**beheerder** |
+| **Subnetadresbereik** |Deze waarde is afhankelijk van de beschik bare adresbereiken in uw abonnement. Een typische waarde is 10.0.0.0/24. |
 | **Subnetnaam** |**sqlsubnet** |
-| **Subnetadresbereik** |This value depends on the available address ranges in your subscription. A typical value is 10.0.1.0/24. |
-| **Abonnement** |Specify the subscription that you intend to use. |
+| **Subnetadresbereik** |Deze waarde is afhankelijk van de beschik bare adresbereiken in uw abonnement. Een typische waarde is 10.0.1.0/24. |
+| **Abonnement** |Geef het abonnement op dat u wilt gebruiken. |
 | **Resourcegroep** |**SQL-HA-RG** |
-| **Locatie** |Specify the same location that you chose for the resource group. |
+| **Locatie** |Geef dezelfde locatie op die u hebt gekozen voor de resource groep. |
 
 ## <a name="create-availability-sets"></a>Beschikbaarheidssets maken
 
-Before you create virtual machines, you need to create availability sets. Availability sets reduce the downtime for planned or unplanned maintenance events. An Azure availability set is a logical group of resources that Azure places on physical fault domains and update domains. A fault domain ensures that the members of the availability set have separate power and network resources. An update domain ensures that members of the availability set aren't brought down for maintenance at the same time. For more information, see [Manage the availability of virtual machines](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Voordat u virtuele machines maakt, moet u beschikbaarheids sets maken. Beschikbaarheids sets verminderen de uitval tijd voor geplande of niet-geplande onderhouds gebeurtenissen. Een beschikbaarheidsset van Azure is een logische groep resources die Azure plaatst op fysieke fout domeinen en update domeinen. Een fout domein zorgt ervoor dat de leden van de beschikbaarheidsset afzonderlijke stroom-en netwerk bronnen hebben. Een update domein zorgt ervoor dat de leden van de beschikbaarheidsset niet tegelijkertijd voor onderhoud worden ingesteld. Zie [de beschik baarheid van virtuele machines beheren](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie.
 
-You need two availability sets. One is for the domain controllers. The second is for the SQL Server VMs.
+U hebt twee beschikbaarheids sets nodig. Een voor de domein controllers. De tweede is voor de SQL Server Vm's.
 
-To create an availability set, go to the resource group and click **Add**. Filter the results by typing **availability set**. Click **Availability Set** in the results, and then click **Create**.
+Als u een beschikbaarheidsset wilt maken, gaat u naar de resource groep en klikt u op **toevoegen**. Filter de resultaten door de **beschikbaarheidsset**in te voeren. Klik op **beschikbaarheidsset** in de resultaten en klik vervolgens op **maken**.
 
-Configure two availability sets according to the parameters in the following table:
+Configureer twee beschikbaarheids sets volgens de para meters in de volgende tabel:
 
-| **Veld** | Domain controller availability set | SQL Server availability set |
+| **Veld** | Beschikbaarheidsset van domein controller | Beschikbaarheidsset SQL Server |
 | --- | --- | --- |
 | **Naam** |adavailabilityset |sqlavailabilityset |
 | **Resourcegroep** |SQL-HA-RG |SQL-HA-RG |
-| **Fault domains** |3 |3 |
-| **Update domains** |5 |3 |
+| **Fout domeinen** |3 |3 |
+| **Domeinen bijwerken** |5 |3 |
 
-After you create the availability sets, return to the resource group in the Azure portal.
+Nadat u de beschikbaarheids sets hebt gemaakt, keert u terug naar de resource groep in de Azure Portal.
 
-## <a name="create-domain-controllers"></a>Create domain controllers
-After you've created the network, subnets, and availability sets, you're ready to create the virtual machines for the domain controllers.
+## <a name="create-domain-controllers"></a>Domein controllers maken
+Nadat u de netwerk-, subnetten-en beschikbaarheids sets hebt gemaakt, kunt u de virtuele machines voor de domein controllers maken.
 
-### <a name="create-virtual-machines-for-the-domain-controllers"></a>Create virtual machines for the domain controllers
-To create and configure the domain controllers, return to the **SQL-HA-RG** resource group.
+### <a name="create-virtual-machines-for-the-domain-controllers"></a>Virtuele machines maken voor de domein controllers
+Als u de domein controllers wilt maken en configureren, gaat u terug naar de resource groep **SQL-ha-RG** .
 
-1. Klik op **Add**. 
-2. Type **Windows Server 2016 Datacenter**.
-3. Click **Windows Server 2016 Datacenter**. In **Windows Server 2016 Datacenter**, verify that the deployment model is **Resource Manager**, and then click **Create**. 
+1. Klik op **Toevoegen**. 
+2. Typ **Windows Server 2016 Data Center**.
+3. Klik op **Windows Server 2016 Data Center**. Controleer in **Windows Server 2016 Data Center**of het implementatie model **Resource Manager**is en klik vervolgens op **maken**. 
 
-Repeat the preceding steps to create two virtual machines. Name the two virtual machines:
+Herhaal de voor gaande stappen om twee virtuele machines te maken. Noem de twee virtuele machines:
 
 * ad-primary-dc
-* ad-secondary-dc
+* AD-secundair-DC
 
   > [!NOTE]
-  > The **ad-secondary-dc** virtual machine is optional, to provide high availability for Active Directory Domain Services.
+  > De virtuele machine **met AD-secondaire domein controller** is optioneel en biedt een hoge Beschik baarheid voor Active Directory Domain Services.
   >
   >
 
-The following table shows the settings for these two machines:
+De volgende tabel bevat de instellingen voor deze twee computers:
 
 | **Veld** | Waarde |
 | --- | --- |
-| **Naam** |First domain controller: *ad-primary-dc*.</br>Second domain controller *ad-secondary-dc*. |
+| **Naam** |Eerste domein controller: *ad-Primary-DC*.</br>Tweede domein controller *ad-secundair-DC*. |
 | **Type VM-schijf** |SSD |
-| **Gebruikersnaam** |DomainAdmin |
+| **Gebruikersnaam** |Domein Administrator |
 | **Wachtwoord** |Contoso!0000 |
 | **Abonnement** |*Uw abonnement* |
 | **Resourcegroep** |SQL-HA-RG |
-| **Locatie** |*Your location* |
+| **Locatie** |*Uw locatie* |
 | **Grootte** |DS1_V2 |
-| **Storage** | **Use managed disks** - **Yes** |
+| **Storage** | **Managed disks gebruiken** - **Ja** |
 | **Virtueel netwerk** |autoHAVNET |
-| **Subnet** |admin |
-| **Openbaar IP-adres** |*Same name as the VM* |
-| **Netwerkbeveiligingsgroep** |*Same name as the VM* |
-| **Availability set** |adavailabilityset </br>**Fault domains**:2 </br>**Update domains**:2|
+| **Subnet** |beheerder |
+| **Openbaar IP-adres** |*Dezelfde naam als de virtuele machine* |
+| **Netwerkbeveiligingsgroep** |*Dezelfde naam als de virtuele machine* |
+| **Beschikbaarheidsset** |adavailabilityset </br>**Fout domeinen**: 2 </br>**Update domeinen**: 2|
 | **Diagnostics** |Ingeschakeld |
-| **Diagnostics storage account** |*Automatically created* |
+| **Opslag account voor diagnostische gegevens** |*Automatisch gemaakt* |
 
    >[!IMPORTANT]
-   >You can only place a VM in an availability set when you create it. You can't change the availability set after a VM is created. See [Manage the availability of virtual machines](../manage-availability.md).
+   >U kunt een virtuele machine alleen in een beschikbaarheidsset plaatsen wanneer u deze maakt. U kunt de beschikbaarheidsset niet wijzigen nadat een virtuele machine is gemaakt. Zie [de beschik baarheid van virtuele machines beheren](../manage-availability.md).
 
-Azure creates the virtual machines.
+De virtuele machines worden gemaakt door Azure.
 
-After the virtual machines are created, configure the domain controller.
+Nadat de virtuele machines zijn gemaakt, configureert u de domein controller.
 
-### <a name="configure-the-domain-controller"></a>Configure the domain controller
-In the following steps, configure the **ad-primary-dc** machine as a domain controller for corp.contoso.com.
+### <a name="configure-the-domain-controller"></a>De domein controller configureren
+In de volgende stappen configureert u de **ad-Primary-DC-** computer als een domein controller voor Corp.contoso.com.
 
-1. In the portal, open the **SQL-HA-RG** resource group and select the **ad-primary-dc** machine. On **ad-primary-dc**, click **Connect** to open an RDP file for remote desktop access.
+1. Open in de Portal de resource groep **SQL-ha-RG** en selecteer de **ad-Primary-DC-** computer. Op **ad-Primary-DC**klikt u op **verbinding maken** om een RDP-bestand te openen voor toegang tot extern bureau blad.
 
     ![Verbinding maken met een virtuele machine](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/20-connectrdp.png)
-2. Sign in with your configured administrator account ( **\DomainAdmin**) and password (**Contoso!0000**).
-3. By default, the **Server Manager** dashboard should be displayed.
-4. Click the **Add roles and features** link on the dashboard.
+2. Meld u aan met uw geconfigureerde beheerders account ( **\DomainAdmin**) en wacht woord (**Contoso! 0000**).
+3. Het **Serverbeheer** dash board moet standaard worden weer gegeven.
+4. Klik op de koppeling **functies en onderdelen toevoegen** op het dash board.
 
-    ![Server Manager - Add roles](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/22-addfeatures.png)
-5. Select **Next** until you get to the **Server Roles** section.
-6. Select the **Active Directory Domain Services** and **DNS Server** roles. When you're prompted, add any additional features that are required by these roles.
+    ![Serverbeheer-functies toevoegen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/22-addfeatures.png)
+5. Selecteer **volgende** totdat u toegang hebt tot de sectie **Server functies** .
+6. Selecteer de **Active Directory Domain Services** **-en DNS-server** functies. Wanneer u hierom wordt gevraagd, voegt u extra functies toe die vereist zijn voor deze rollen.
 
    > [!NOTE]
-   > Windows warns you that there is no static IP address. If you're testing the configuration, click **Continue**. For production scenarios, set the IP address to static in the Azure portal, or [use PowerShell to set the static IP address of the domain controller machine](../../../virtual-network/virtual-networks-reserved-private-ip.md).
+   > Windows waarschuwt u dat er geen statisch IP-adres is. Als u de configuratie wilt testen, klikt u op **door gaan**. Stel voor productie scenario's het IP-adres in op statisch in het Azure Portal, of [gebruik Power shell om het statische IP-adres van de computer van de domein controller](../../../virtual-network/virtual-networks-reserved-private-ip.md)in te stellen.
    >
    >
 
-    ![Add Roles dialog](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/23-addroles.png)
-7. Click **Next** until you reach the **Confirmation** section. Select the **Restart the destination server automatically if required** check box.
-8. Klik op **Install**.
-9. After the features finish installing, return to the **Server Manager** dashboard.
-10. Select the new **AD DS** option on the left-hand pane.
-11. Click the **More** link on the yellow warning bar.
+    ![Dialoog venster Rollen toevoegen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/23-addroles.png)
+7. Klik op **volgende** totdat u het **bevestigings** gedeelte hebt bereikt. Schakel het selectie vakje **de doel server automatisch opnieuw opstarten als dit vereist** is in.
+8. Klik op **Installeren**.
+9. Nadat de installatie van de onderdelen is voltooid, gaat u terug naar het dash board van **Serverbeheer** .
+10. Selecteer de optie nieuw **AD DS** in het linkerdeel venster.
+11. Klik op de koppeling **meer** op de gele waarschuwings balk.
 
-    ![AD DS dialog on the DNS Server VM](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/24-addsmore.png)
-12. In the **Action** column of the **All Server Task Details** dialog, click **Promote this server to a domain controller**.
-13. In the **Active Directory Domain Services Configuration Wizard**, use the following values:
+    ![AD DS dialoog venster op de DNS-Server-VM](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/24-addsmore.png)
+12. Klik in de kolom **actie** van het dialoog venster **alle Server taak Details** op **deze server promo veren naar een domein controller**.
+13. Gebruik de volgende waarden in de **Wizard Active Directory Domain Services configuratie**:
 
-    | **Page** | Instelling |
+    | **Faxvoorblad** | Instelling |
     | --- | --- |
-    | **Deployment Configuration** |**Add a new forest**<br/> **Root domain name** = corp.contoso.com |
-    | **Domain Controller Options** |**DSRM Password** = Contoso!0000<br/>**Confirm Password** = Contoso!0000 |
-14. Click **Next** to go through the other pages in the wizard. On the **Prerequisites Check** page, verify that you see the following message: **All prerequisite checks passed successfully**. You can review any applicable warning messages, but it's possible to continue with the installation.
-15. Klik op **Install**. The **ad-primary-dc** virtual machine automatically reboots.
+    | **Implementatie configuratie** |**Een nieuw forest toevoegen**<br/> **Naam van hoofd domein** = Corp.contoso.com |
+    | **Opties voor domein controller** |**Wacht woord voor DSRM** = contoso! 0000<br/>**Bevestig het wacht woord** = contoso! 0000 |
+14. Klik op **volgende** om door de andere pagina's in de wizard te gaan. Controleer op de pagina **controle van vereisten** of het volgende bericht wordt weer **gegeven: alle controles van vereisten zijn geslaagd**. U kunt alle toepasselijke waarschuwings berichten bekijken, maar het is mogelijk om door te gaan met de installatie.
+15. Klik op **Installeren**. De virtuele machine van **ad-Primary-DC** wordt automatisch opnieuw opgestart.
 
-### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Note the IP address of the primary domain controller
+### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Noteer het IP-adres van de primaire domein controller
 
-Use the primary domain controller for DNS. Note the primary domain controller IP address.
+Gebruik de primaire domein controller voor DNS. Noteer het IP-adres van de primaire domein controller.
 
-One way to get the primary domain controller IP address is through the Azure portal.
+Een manier om het IP-adres van de primaire domein controller op te halen, is via de Azure Portal.
 
-1. On the Azure portal, open the resource group.
+1. Open de resource groep op het Azure Portal.
 
-2. Click the primary domain controller.
+2. Klik op de primaire domein controller.
 
-3. On the primary domain controller, click **Network interfaces**.
+3. Klik op **netwerk interfaces**op de primaire domein controller.
 
 ![Netwerkinterfaces](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/25-primarydcip.png)
 
-Note the private IP address for this server.
+Noteer het privé-IP-adres voor deze server.
 
-### <a name="configure-the-virtual-network-dns"></a>Configure the virtual network DNS
-After you create the first domain controller and enable DNS on the first server, configure the virtual network to use this server for DNS.
+### <a name="configure-the-virtual-network-dns"></a>De DNS van het virtuele netwerk configureren
+Nadat u de eerste domein controller hebt gemaakt en DNS op de eerste server inschakelt, configureert u het virtuele netwerk voor het gebruik van deze server voor DNS.
 
-1. In the Azure portal, click on the virtual network.
+1. Klik in het Azure Portal op het virtuele netwerk.
 
-2. Under **Settings**, click **DNS Server**.
+2. Klik onder **instellingen**op **DNS-server**.
 
-3. Click **Custom**, and type the private IP address of the primary domain controller.
+3. Klik op **aangepast**en typ het privé-IP-adres van de primaire domein controller.
 
 4. Klik op **Opslaan**.
 
-### <a name="configure-the-second-domain-controller"></a>Configure the second domain controller
-After the primary domain controller reboots, you can configure the second domain controller. This optional step is for high availability. Follow these steps to configure the second domain controller:
+### <a name="configure-the-second-domain-controller"></a>De tweede domein controller configureren
+Nadat de primaire domein controller opnieuw is opgestart, kunt u de tweede domein controller configureren. Deze optionele stap is voor hoge Beschik baarheid. Volg deze stappen om de tweede domein controller te configureren:
 
-1. In the portal, open the **SQL-HA-RG** resource group and select the **ad-secondary-dc** machine. On **ad-secondary-dc**, click **Connect** to open an RDP file for remote desktop access.
-2. Sign in to the VM by using your configured administrator account (**BUILTIN\DomainAdmin**) and password (**Contoso!0000**).
-3. Change the preferred DNS server address to the address of the domain controller.
-4. In **Network and Sharing Center**, click the network interface.
+1. Open in de Portal de resource groep **SQL-ha-RG** en selecteer de **ad-Secondary-DC-** computer. Klik in **ad-Secondary-DC**op **verbinding maken** om een RDP-bestand te openen voor toegang tot extern bureau blad.
+2. Meld u aan bij de virtuele machine met behulp van uw geconfigureerde beheerders account (**BUILTIN\DomainAdmin**) en wacht woord (**Contoso! 0000**).
+3. Wijzig het adres van de voor Keurs-DNS-server in het adres van de domein controller.
+4. Klik in **netwerk centrum**op de netwerk interface.
    ![Netwerkinterface](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/26-networkinterface.png)
 
 5. Klik op **Eigenschappen**.
-6. Select **Internet Protocol Version 4 (TCP/IPv4)** and click **Properties**.
-7. Select **Use the following DNS server addresses** and specify the address of the primary domain controller in **Preferred DNS server**.
-8. Click **OK**, and then **Close** to commit the changes. You are now able to join the VM to **corp.contoso.com**.
+6. Selecteer **Internet Protocol versie 4 (TCP/IPv4)** en klik op **Eigenschappen**.
+7. Selecteer **de volgende DNS-server adressen gebruiken** en geef het adres van de primaire domein controller op in de **voor Keurs-DNS-server**.
+8. Klik op **OK**en vervolgens op **sluiten** om de wijzigingen door te voeren. U kunt nu lid worden van de virtuele machine aan **Corp.contoso.com**.
 
    >[!IMPORTANT]
-   >If you lose the connection to your remote desktop after changing the DNS setting, go to the Azure portal and restart the virtual machine.
+   >Als u de verbinding met uw externe bureau blad hebt verbroken nadat u de DNS-instelling hebt gewijzigd, gaat u naar de Azure Portal en start u de virtuele machine opnieuw op.
 
-9. From the remote desktop to the secondary domain controller, open **Server Manager Dashboard**.
-10. Click the **Add roles and features** link on the dashboard.
+9. Open **Serverbeheer dash board**van het externe bureau blad naar de secundaire domein controller.
+10. Klik op de koppeling **functies en onderdelen toevoegen** op het dash board.
 
-    ![Server Manager - Add roles](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/22-addfeatures.png)
-11. Select **Next** until you get to the **Server Roles** section.
-12. Select the **Active Directory Domain Services** and **DNS Server** roles. When you're prompted, add any additional features that are required by these roles.
-13. After the features finish installing, return to the **Server Manager** dashboard.
-14. Select the new **AD DS** option on the left-hand pane.
-15. Click the **More** link on the yellow warning bar.
-16. In the **Action** column of the **All Server Task Details** dialog, click **Promote this server to a domain controller**.
-17. Under **Deployment Configuration**, select **Add a domain controller to an existing domain**.
-    ![Deployment configuration](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
+    ![Serverbeheer-functies toevoegen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/22-addfeatures.png)
+11. Selecteer **volgende** totdat u toegang hebt tot de sectie **Server functies** .
+12. Selecteer de **Active Directory Domain Services** **-en DNS-server** functies. Wanneer u hierom wordt gevraagd, voegt u extra functies toe die vereist zijn voor deze rollen.
+13. Nadat de installatie van de onderdelen is voltooid, gaat u terug naar het dash board van **Serverbeheer** .
+14. Selecteer de optie nieuw **AD DS** in het linkerdeel venster.
+15. Klik op de koppeling **meer** op de gele waarschuwings balk.
+16. Klik in de kolom **actie** van het dialoog venster **alle Server taak Details** op **deze server promo veren naar een domein controller**.
+17. Onder **implementatie configuratie**selecteert **u een domein controller toevoegen aan een bestaand domein**.
+    ![implementatie configuratie](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
 18. Klik op **Selecteren**.
-19. Connect by using the administrator account (**CORP.CONTOSO.COM\domainadmin**) and password (**Contoso!0000**).
-20. In **Select a domain from the forest**, click your domain, and then click **OK**.
-21. In **Domain Controller Options**, use the default values and set a DSRM password.
+19. Verbinding maken met behulp van het beheerders account (**Corp. CONTOSO. COM\domainadmin**) en het wacht woord (**Contoso! 0000**).
+20. Klik in **een domein in het forest selecteren**op uw domein en klik vervolgens op **OK**.
+21. Gebruik in de **Opties voor domein controller**de standaard waarden en stel een DSRM-wacht woord in.
 
     >[!NOTE]
-    >The **DNS Options** page might warn you that a delegation for this DNS server can't be created. You can ignore this warning in non-production environments.
-22. Click **Next** until the dialog reaches the **Prerequisites** check. Klik vervolgens op **Installeren**.
+    >Op de pagina **DNS-opties** wordt mogelijk gewaarschuwd dat er geen delegering voor deze DNS-server kan worden gemaakt. U kunt deze waarschuwing negeren in niet-productie omgevingen.
+22. Klik op **volgende** totdat het dialoog venster de controle van de **vereisten** bereikt. Klik vervolgens op **Installeren**.
 
-After the server finishes the configuration changes, restart the server.
+Nadat de configuratie wijzigingen door de server zijn voltooid, start u de server opnieuw op.
 
-### <a name="add-the-private-ip-address-to-the-second-domain-controller-to-the-vpn-dns-server"></a>Add the Private IP Address to the second domain controller to the VPN DNS Server
+### <a name="add-the-private-ip-address-to-the-second-domain-controller-to-the-vpn-dns-server"></a>Voeg het privé-IP-adres toe aan de tweede domein controller aan de VPN DNS-server
 
-In the Azure portal, under virtual network, change the DNS Server to include the IP address of the secondary domain controller. This setting allows the DNS service redundancy.
+Wijzig in de Azure Portal onder virtueel netwerk de DNS-server zodanig dat het IP-adres van de secundaire domein controller bevat. Met deze instelling wordt de DNS-service redundantie toegestaan.
 
-### <a name="DomainAccounts"></a> Configure the domain accounts
+### <a name="DomainAccounts"></a>Domein accounts configureren
 
-In the next steps, you configure the Active Directory accounts. The following table shows the accounts:
+In de volgende stappen configureert u de Active Directory accounts. De volgende tabel bevat de accounts:
 
-| |Installation account<br/> |sqlserver-0 <br/>SQL Server and SQL Agent Service account |sqlserver-1<br/>SQL Server and SQL Agent Service account
+| |Installatie account<br/> |sqlserver-0 <br/>SQL Server-en SQL Agent-service account |sqlserver-1<br/>SQL Server-en SQL Agent-service account
 | --- | --- | --- | ---
-|**First Name** |Installatie |SQLSvc1 | SQLSvc2
-|**User SamAccountName** |Installatie |SQLSvc1 | SQLSvc2
+|**Voor naam** |Installatie |SQLSvc1 | SQLSvc2
+|**SamAccountName van gebruiker** |Installatie |SQLSvc1 | SQLSvc2
 
-Use the following steps to create each account.
+Gebruik de volgende stappen om elk account te maken.
 
-1. Sign in to the **ad-primary-dc** machine.
-2. In **Server Manager**, select **Tools**, and then click **Active Directory Administrative Center**.   
-3. Select **corp (local)** from the left pane.
-4. On the right **Tasks** pane, select **New**, and then click **User**.
-   ![Active Directory Administrative Center](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/29-addcnewuser.png)
+1. Meld u aan bij de **ad-Primary-DC-** computer.
+2. Selecteer in **Serverbeheer** **extra**en klik vervolgens op **Active Directory-beheercentrum**.   
+3. Selecteer **Corp (lokaal)** in het linkerdeel venster.
+4. Selecteer in het deel venster rechter **taken** de optie **Nieuw**en klik vervolgens op **gebruiker**.
+   ![Active Directory-beheercentrum](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/29-addcnewuser.png)
 
    >[!TIP]
-   >Set a complex password for each account.<br/> For non-production environments, set the user account to never expire.
+   >Stel een complex wacht woord in voor elk account.<br/> Voor niet-productie omgevingen stelt u het gebruikers account in op nooit verlopen.
 
-5. Click **OK** to create the user.
-6. Repeat the preceding steps for each of the three accounts.
+5. Klik op **OK** om de gebruiker te maken.
+6. Herhaal de voor gaande stappen voor elk van de drie accounts.
 
-### <a name="grant-the-required-permissions-to-the-installation-account"></a>Grant the required permissions to the installation account
-1. In the **Active Directory Administrative Center**, select **corp (local)** in the left pane. Then in the right-hand **Tasks** pane, click **Properties**.
+### <a name="grant-the-required-permissions-to-the-installation-account"></a>De vereiste machtigingen verlenen aan het installatie account
+1. Selecteer in de **Active Directory-beheercentrum** **Corp (lokaal)** in het linkerdeel venster. Klik vervolgens in **het deel venster** aan de rechter kant op **Eigenschappen**.
 
-    ![CORP user properties](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/31-addcproperties.png)
-2. Select **Extensions**, and then click the **Advanced** button on the **Security** tab.
-3. In the **Advanced Security Settings for corp** dialog, click **Add**.
-4. Click **Select a principal**, search for **CORP\Install**, and then click **OK**.
-5. Select the **Read all properties** check box.
+    ![Eigenschappen van CORP-gebruikers](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/31-addcproperties.png)
+2. Selecteer **uitbrei dingen**en klik vervolgens op de knop **Geavanceerd** op het tabblad **beveiliging** .
+3. Klik in het dialoog venster **Geavanceerde beveiligings instellingen voor Corp** op **toevoegen**.
+4. Klik op **een principal selecteren**, zoek naar **CORP\Install**en klik vervolgens op **OK**.
+5. Schakel het selectie vakje **alle eigenschappen lezen** in.
 
-6. Select the **Create Computer objects** check box.
+6. Schakel het selectie vakje **computer objecten maken** in.
 
-     ![Corp user permissions](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/33-addpermissions.png)
-7. Click **OK**, and then click **OK** again. Close the **corp** properties window.
+     ![Corp-gebruikers machtigingen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/33-addpermissions.png)
+7. Klik op **OK**en vervolgens nogmaals op **OK** . Sluit het venster Eigenschappen van **Corp** .
 
-Now that you've finished configuring Active Directory and the user objects, create two SQL Server VMs and a witness server VM. Then join all three to the domain.
+Nu u klaar bent met het configureren van Active Directory en de gebruikers objecten, maakt u twee SQL Server Vm's en een Witness-Server-VM. Voeg vervolgens alle drie toe aan het domein.
 
-## <a name="create-sql-server-vms"></a>Create SQL Server VMs
+## <a name="create-sql-server-vms"></a>SQL Server Vm's maken
 
-Create three additional virtual machines. The solution requires two virtual machines with SQL Server instances. A third virtual machine will function as a witness. Windows Server 2016 can use a [cloud witness](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), however for consistency with previous operating systems this document uses a virtual machine for a witness.  
+Maak drie extra virtuele machines. De oplossing vereist twee virtuele machines met SQL Server exemplaren. Een derde virtuele machine werkt als Witness. Windows Server 2016 kan gebruikmaken van een [Cloud-Witness](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), maar voor consistentie met eerdere besturings systemen in dit document wordt een virtuele machine gebruikt voor een Witness.  
 
-Before you proceed consider the following design decisions.
+Voordat u verdergaat, moet u rekening houden met de volgende ontwerp beslissingen.
 
-* **Storage - Azure Managed Disks**
+* **Opslag-Azure-Managed Disks**
 
-   For the virtual machine storage, use Azure Managed Disks. Microsoft recommends Managed Disks for SQL Server virtual machines. Managed Disks verwerken de opslag achter de schermen. Bovendien distribueert Azure de opslagresources zodat voldoende redundantie wordt geboden wanneer virtuele machines met Managed Disks zich in dezelfde beschikbaarheidsset bevinden. Zie [Azure Managed Disks overview](../managed-disks-overview.md) (Overzicht van Azure Managed Disks) voor meer informatie. For specifics about managed disks in an availability set, see [Use Managed Disks for VMs in an availability set](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+   Gebruik Azure Managed Disks voor de opslag van de virtuele machine. Micro soft adviseert Managed Disks voor SQL Server virtuele machines. Managed Disks verwerken de opslag achter de schermen. Bovendien distribueert Azure de opslagresources zodat voldoende redundantie wordt geboden wanneer virtuele machines met Managed Disks zich in dezelfde beschikbaarheidsset bevinden. Zie [Azure Managed Disks overview](../managed-disks-overview.md) (Overzicht van Azure Managed Disks) voor meer informatie. Zie [Managed disks voor virtuele machines in een beschikbaarheidsset gebruiken](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)voor meer informatie over beheerde schijven in een beschikbaarheidsset.
 
-* **Network - Private IP addresses in production**
+* **Netwerk-privé-IP-adressen in productie**
 
-   For the virtual machines, this tutorial uses public IP addresses. A public IP address enables remote connection directly to the virtual machine over the internet - it makes configuration steps easier. In production environments, Microsoft recommends only private IP addresses in order to reduce the vulnerability footprint of the SQL Server instance VM resource.
+   Voor de virtuele machines gebruikt deze zelf studie open bare IP-adressen. Met een openbaar IP-adres kan externe verbinding rechtstreeks met de virtuele machine via internet worden gemaakt. de configuratie stappen worden eenvoudiger. In productie omgevingen raadt micro soft alleen privé-IP-adressen aan om de kwets baarheid van de VM-resource van het SQL Server exemplaar te verminderen.
 
-### <a name="create-and-configure-the-sql-server-vms"></a>Create and configure the SQL Server VMs
-Next, create three VMs--two SQL Server VMs and a VM for an additional cluster node. To create each of the VMs, go back to the **SQL-HA-RG** resource group, click **Add**, search for the appropriate gallery item, click **Virtual Machine**, and then click **From Gallery**. Use the information in the following table to help you create the VMs:
+### <a name="create-and-configure-the-sql-server-vms"></a>De SQL Server Vm's maken en configureren
+Maak vervolgens drie Vm's: twee SQL Server Vm's en een virtuele machine voor een extra cluster knooppunt. Als u elk van de virtuele machines wilt maken, gaat u terug naar de resource groep **SQL-ha-RG** , klikt u op **toevoegen**, zoekt u naar het juiste galerie-item, klikt u op **virtuele machine**en klikt u vervolgens op **uit galerie**. Gebruik de informatie in de volgende tabel om u te helpen bij het maken van de virtuele machines:
 
 
 | Pagina | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
-| Select the appropriate gallery item |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |
-| Virtual machine configuration **Basics** |**Name** = cluster-fsw<br/>**User Name** = DomainAdmin<br/>**Password** = Contoso!0000<br/>**Subscription** = Your subscription<br/>**Resource group** = SQL-HA-RG<br/>**Location** = Your azure location |**Name** = sqlserver-0<br/>**User Name** = DomainAdmin<br/>**Password** = Contoso!0000<br/>**Subscription** = Your subscription<br/>**Resource group** = SQL-HA-RG<br/>**Location** = Your azure location |**Name** = sqlserver-1<br/>**User Name** = DomainAdmin<br/>**Password** = Contoso!0000<br/>**Subscription** = Your subscription<br/>**Resource group** = SQL-HA-RG<br/>**Location** = Your azure location |
-| Virtual machine configuration **Size** |**SIZE** = DS1\_V2 (1 vCPU, 3.5 GB) |**SIZE** = DS2\_V2 (2 vCPUs, 7 GB)</br>The size must support SSD storage (Premium disk support. )) |**SIZE** = DS2\_V2 (2 vCPUs, 7 GB) |
-| Virtual machine configuration **Settings** |**Storage**: Use managed disks.<br/>**Virtual network** = autoHAVNET<br/>**Subnet** = sqlsubnet(10.1.1.0/24)<br/>**Public IP address** automatically generated.<br/>**Network security group** = None<br/>**Monitoring Diagnostics** = Enabled<br/>**Diagnostics storage account** = Use an automatically generated storage account<br/>**Availability set** = sqlAvailabilitySet<br/> |**Storage**: Use managed disks.<br/>**Virtual network** = autoHAVNET<br/>**Subnet** = sqlsubnet(10.1.1.0/24)<br/>**Public IP address** automatically generated.<br/>**Network security group** = None<br/>**Monitoring Diagnostics** = Enabled<br/>**Diagnostics storage account** = Use an automatically generated storage account<br/>**Availability set** = sqlAvailabilitySet<br/> |**Storage**: Use managed disks.<br/>**Virtual network** = autoHAVNET<br/>**Subnet** = sqlsubnet(10.1.1.0/24)<br/>**Public IP address** automatically generated.<br/>**Network security group** = None<br/>**Monitoring Diagnostics** = Enabled<br/>**Diagnostics storage account** = Use an automatically generated storage account<br/>**Availability set** = sqlAvailabilitySet<br/> |
-| Virtual machine configuration **SQL Server settings** |Niet van toepassing |**SQL connectivity** = Private (within Virtual Network)<br/>**Port** = 1433<br/>**SQL Authentication** = Disable<br/>**Storage configuration** = General<br/>**Automated patching** = Sunday at 2:00<br/>**Automated backup** = Disabled</br>**Azure Key Vault integration** = Disabled |**SQL connectivity** = Private (within Virtual Network)<br/>**Port** = 1433<br/>**SQL Authentication** = Disable<br/>**Storage configuration** = General<br/>**Automated patching** = Sunday at 2:00<br/>**Automated backup** = Disabled</br>**Azure Key Vault integration** = Disabled |
+| Het juiste galerie-item selecteren |**Windows Server 2016 Data Center** |**SQL Server 2016 SP1 Enter prise op Windows Server 2016** |**SQL Server 2016 SP1 Enter prise op Windows Server 2016** |
+| **Basis beginselen** van de configuratie van virtuele machines |**Name** = cluster-FSW<br/>**Gebruikers naam** = domein Administrator<br/>**Wacht woord** = contoso! 0000<br/>**Abonnement** = uw abonnement<br/>**Resource groep** = SQL-ha-RG<br/>**Locatie** = uw Azure-locatie |**Name** = sqlserver-0<br/>**Gebruikers naam** = domein Administrator<br/>**Wacht woord** = contoso! 0000<br/>**Abonnement** = uw abonnement<br/>**Resource groep** = SQL-ha-RG<br/>**Locatie** = uw Azure-locatie |**Name** = sqlserver-1<br/>**Gebruikers naam** = domein Administrator<br/>**Wacht woord** = contoso! 0000<br/>**Abonnement** = uw abonnement<br/>**Resource groep** = SQL-ha-RG<br/>**Locatie** = uw Azure-locatie |
+| Virtuele-machine configuratie **grootte** |**Grootte** = ds1\_v2 (1 vCPU, 3,5 GB) |**Grootte** = DS2\_v2 (2 vcpu's, 7 GB)</br>De omvang moet ondersteuning bieden voor SSD Storage (Premium-schijf ondersteuning). )) |**Grootte** = DS2\_v2 (2 vcpu's, 7 GB) |
+| Configuratie- **instellingen** voor virtuele machines |**Opslag**: gebruik beheerde schijven.<br/>**Virtueel netwerk** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>Het **open bare IP-adres** wordt automatisch gegenereerd.<br/>**Netwerk beveiligings groep** = geen<br/>**Diagnostische gegevens over bewaking** = ingeschakeld<br/>**Opslag account voor diagnostische gegevens** = een automatisch gegenereerd opslag account gebruiken<br/>**Beschikbaarheidsset** = sqlAvailabilitySet<br/> |**Opslag**: gebruik beheerde schijven.<br/>**Virtueel netwerk** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>Het **open bare IP-adres** wordt automatisch gegenereerd.<br/>**Netwerk beveiligings groep** = geen<br/>**Diagnostische gegevens over bewaking** = ingeschakeld<br/>**Opslag account voor diagnostische gegevens** = een automatisch gegenereerd opslag account gebruiken<br/>**Beschikbaarheidsset** = sqlAvailabilitySet<br/> |**Opslag**: gebruik beheerde schijven.<br/>**Virtueel netwerk** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>Het **open bare IP-adres** wordt automatisch gegenereerd.<br/>**Netwerk beveiligings groep** = geen<br/>**Diagnostische gegevens over bewaking** = ingeschakeld<br/>**Opslag account voor diagnostische gegevens** = een automatisch gegenereerd opslag account gebruiken<br/>**Beschikbaarheidsset** = sqlAvailabilitySet<br/> |
+| Instellingen voor configuratie van virtuele machine **SQL Server** |Niet van toepassing |**SQL-connectiviteit** = privé (binnen Virtual Network)<br/>**Poort** = 1433<br/>**SQL-verificatie** = uitschakelen<br/>**Opslag configuratie** = algemeen<br/>**Automatische patching** = zondag om 2:00<br/>**Automatische back-up** = uitgeschakeld</br>**Azure Key Vault-integratie** = uitgeschakeld |**SQL-connectiviteit** = privé (binnen Virtual Network)<br/>**Poort** = 1433<br/>**SQL-verificatie** = uitschakelen<br/>**Opslag configuratie** = algemeen<br/>**Automatische patching** = zondag om 2:00<br/>**Automatische back-up** = uitgeschakeld</br>**Azure Key Vault-integratie** = uitgeschakeld |
 
 <br/>
 
 > [!NOTE]
-> The machine sizes suggested here are meant for testing availability groups in Azure VMs. For the best performance on production workloads, see the recommendations for SQL Server machine sizes and configuration in [Performance best practices for SQL Server in Azure virtual machines](virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> De computer grootten die hier worden voorgesteld, zijn bedoeld voor het testen van beschikbaarheids groepen in azure-Vm's. Voor de beste prestaties van werk belastingen in de productie raadpleegt u de aanbevelingen voor SQL Server computer grootten en configuratie in [Best practices voor SQL Server in azure virtual machines](virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 >
 >
 
-After the three VMs are fully provisioned, you need to join them to the **corp.contoso.com** domain and grant CORP\Install administrative rights to the machines.
+Nadat de drie Vm's volledig zijn ingericht, moet u deze toevoegen aan het **Corp.contoso.com** -domein en CORP\Install beheerders rechten verlenen aan de machines.
 
-### <a name="joinDomain"></a>Join the servers to the domain
+### <a name="joinDomain"></a>De servers toevoegen aan het domein
 
-You're now able to join the VMs to **corp.contoso.com**. Do the following steps for both the SQL Server VMs and the file share witness server:
+U kunt nu lid worden van de virtuele machines aan **Corp.contoso.com**. Voer de volgende stappen uit voor de SQL Server Vm's en de bestands share Witness-server:
 
-1. Remotely connect to the virtual machine with **BUILTIN\DomainAdmin**.
-2. In **Server Manager**, click **Local Server**.
-3. Click the **WORKGROUP** link.
-4. In the **Computer Name** section, click **Change**.
-5. Select the **Domain** check box and type **corp.contoso.com** in the text box. Klik op **OK**.
-6. In the **Windows Security** popup dialog, specify the credentials for the default domain administrator account (**CORP\DomainAdmin**) and the password (**Contoso!0000**).
-7. When you see the "Welcome to the corp.contoso.com domain" message, click **OK**.
-8. Click **Close**, and then click **Restart Now** in the popup dialog.
+1. Maak extern verbinding met de virtuele machine met **BUILTIN\DomainAdmin**.
+2. Klik in **Serverbeheer**op **lokale server**.
+3. Klik op de koppeling van de **werk groep** .
+4. Klik in de sectie **computer naam** op **wijzigen**.
+5. Schakel het selectie vakje **domein** in en typ **Corp.contoso.com** in het tekstvak. Klik op **OK**.
+6. Geef in het pop-upvenster **Windows-beveiliging** de referenties op voor het standaard domein beheerders account (**CORP\DomainAdmin**) en het wacht woord (**Contoso! 0000**).
+7. Wanneer het bericht ' Welkom bij het domein corp.contoso.com ' wordt weer gegeven, klikt u op **OK**.
+8. Klik op **sluiten**en klik vervolgens in het pop-updialoogvenster op **nu opnieuw opstarten** .
 
-### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>Add the Corp\Install user as an administrator on each cluster VM
+### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>De Corp\Install-gebruiker toevoegen als beheerder op elke VM van het cluster
 
-After each virtual machine restarts as a member of the domain, add **CORP\Install** as a member of the local administrators group.
+Nadat elke virtuele machine opnieuw is opgestart als lid van het domein, voegt u **CORP\Install** toe als lid van de lokale groep Administrators.
 
-1. Wait until the VM is restarted, then launch the RDP file again from the primary domain controller to sign in to **sqlserver-0** by using the **CORP\DomainAdmin** account.
+1. Wacht totdat de virtuele machine opnieuw is opgestart en start het RDP-bestand opnieuw vanaf de primaire domein controller om u aan te melden bij **sqlserver-0** met behulp van het **CORP\DomainAdmin** -account.
    >[!TIP]
-   >Make sure that you sign in with the domain administrator account. In the previous steps, you were using the BUILT IN administrator account. Now that the server is in the domain, use the domain account. In your RDP session, specify *DOMAIN*\\*username*.
+   >Zorg ervoor dat u zich aanmeldt met het domein beheerders account. In de vorige stappen gebruikt u het ingebouwde Administrator-account. Nu de server zich in het domein bevindt, gebruikt u het domein account. Geef in uw RDP-sessie *domein*\\*gebruikers naam*op.
 
-2. In **Server Manager**, select **Tools**, and then click **Computer Management**.
-3. In the **Computer Management** window, expand **Local Users and Groups**, and then select **Groups**.
-4. Double-click the **Administrators** group.
-5. In the **Administrators Properties** dialog, click the **Add** button.
-6. Enter the user **CORP\Install**, and then click **OK**.
-7. Click **OK** to close the **Administrator Properties** dialog.
-8. Repeat the previous steps on **sqlserver-1** and **cluster-fsw**.
+2. Selecteer in **Serverbeheer** **extra**en klik vervolgens op **computer beheer**.
+3. Vouw in het venster **computer beheer** **lokale gebruikers en groepen**uit en selecteer vervolgens **groepen**.
+4. Dubbel klik op de groep **Administrators** .
+5. Klik in het dialoog venster **Eigenschappen van beheerder** op de knop **toevoegen** .
+6. Voer de gebruikers **CORP\Install**in en klik vervolgens op **OK**.
+7. Klik op **OK** om het dialoog venster met **beheerders eigenschappen** te sluiten.
+8. Herhaal de vorige stappen in **sqlserver-1** en **cluster-FSW**.
 
-### <a name="setServiceAccount"></a>Set the SQL Server service accounts
+### <a name="setServiceAccount"></a>De SQL Server-service accounts instellen
 
-On each SQL Server VM, set the SQL Server service account. Use the accounts that you created when you configured the domain accounts.
+Stel op elke SQL Server-VM de SQL Server-service account in. Gebruik de accounts die u hebt gemaakt tijdens het configureren van de domein accounts.
 
 1. Open **SQL Server Configuration Manager**.
-2. Right-click the SQL Server service, and then click **Properties**.
-3. Set the account and password.
-4. Repeat these steps on the other SQL Server VM.  
+2. Klik met de rechter muisknop op de SQL Server-service en klik vervolgens op **Eigenschappen**.
+3. Stel het account en het wacht woord in.
+4. Herhaal deze stappen op de andere SQL Server VM.  
 
-For SQL Server availability groups, each SQL Server VM needs to run as a domain account.
+Voor SQL Server-beschikbaarheids groepen moet elke SQL Server VM als een domein account worden uitgevoerd.
 
-### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>Create a sign-in on each SQL Server VM for the installation account
+### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>Maak een aanmelding op elke SQL Server virtuele machine voor het installatie account
 
-Use the installation account (CORP\install) to configure the availability group. This account needs to be a member of the **sysadmin** fixed server role on each SQL Server VM. The following steps create a sign-in for the installation account:
+Gebruik het installatie account (CORP\install) om de beschikbaarheids groep te configureren. Dit account moet lid zijn van de vaste serverrol **sysadmin** op elke SQL Server VM. Met de volgende stappen maakt u een aanmelding voor het installatie account:
 
-1. Connect to the server through the Remote Desktop Protocol (RDP) by using the *\<MachineName\>\DomainAdmin* account.
+1. Maak via de Remote Desktop Protocol (RDP) verbinding met de server met behulp van het *\<machinename\>\DomainAdmin* -account.
 
-1. Open SQL Server Management Studio and connect to the local instance of SQL Server.
+1. Open SQL Server Management Studio en maak verbinding met het lokale exemplaar van SQL Server.
 
-1. In **Object Explorer**, click **Security**.
+1. Klik in **objectverkenner**op **beveiliging**.
 
-1. Right-click **Logins**. Click **New Login**.
+1. Klik met de rechter muisknop op **aanmeldingen**. Klik op **nieuwe aanmelding**.
 
-1. In **Login - New**, click **Search**.
+1. Klik bij **Aanmelden-nieuw**op **zoeken**.
 
-1. Click **Locations**.
+1. Klik op **locaties**.
 
-1. Enter the domain administrator network credentials.
+1. Voer de netwerk referenties voor de domein beheerder in.
 
-1. Use the installation account.
+1. Gebruik het installatie account.
 
-1. Set the sign-in to be a member of the **sysadmin** fixed server role.
+1. Stel de aanmelding in op een lid van de vaste serverrol **sysadmin** .
 
 1. Klik op **OK**.
 
-Repeat the preceding steps on the other SQL Server VM.
+Herhaal de voor gaande stappen op de andere SQL Server VM.
 
-## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>Add Failover Clustering features to both SQL Server VMs
+## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>Functies voor failover clustering toevoegen aan virtuele SQL Server Vm's
 
-To add Failover Clustering features, do the following steps on both SQL Server VMs:
+Als u functies voor Failover Clustering wilt toevoegen, voert u de volgende stappen uit op beide SQL Server Vm's:
 
-1. Connect to the SQL Server virtual machine through the Remote Desktop Protocol (RDP) by using the *CORP\install* account. Open **Server Manager Dashboard**.
-2. Click the **Add roles and features** link on the dashboard.
+1. Maak verbinding met de virtuele machine van SQL Server via de Remote Desktop Protocol (RDP) met behulp van het *CORP\install* -account. Open **Serverbeheer dash board**.
+2. Klik op de koppeling **functies en onderdelen toevoegen** op het dash board.
 
-    ![Server Manager - Add roles](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/22-addfeatures.png)
-3. Select **Next** until you get to the **Server Features** section.
-4. In **Features**, select **Failover Clustering**.
-5. Add any additional required features.
-6. Click **Install** to add the features.
+    ![Serverbeheer-functies toevoegen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/22-addfeatures.png)
+3. Selecteer **volgende** totdat u toegang hebt tot het gedeelte **Server functies** .
+4. Selecteer in **functies** **failover clustering**.
+5. Voeg aanvullende vereiste onderdelen toe.
+6. Klik op **installeren** om de functies toe te voegen.
 
-Repeat the steps on the other SQL Server VM.
+Herhaal de stappen op de andere SQL Server VM.
 
   >[!NOTE]
-  > This step, along with actually joining the SQL Server VMs to the failover cluster, can now be automated with [Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) and [Azure Quickstart Templates](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+  > Deze stap, samen met de daad werkelijke deelname van de SQL Server Vm's aan het failovercluster, kan nu worden geautomatiseerd met [Azure SQL VM cli](virtual-machines-windows-sql-availability-group-cli.md) en [Azure Quick](virtual-machines-windows-sql-availability-group-quickstart-template.md)start-sjablonen.
 
 
-## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"> Configure the firewall on each SQL Server VM
+## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"> de firewall op elke SQL Server VM configureren
 
-The solution requires the following TCP ports to be open in the firewall:
+Voor de oplossing moeten de volgende TCP-poorten in de firewall zijn geopend:
 
 - **SQL Server VM**:<br/>
-   Port 1433 for a default instance of SQL Server.
-- **Azure load balancer probe:**<br/>
-   Any available port. Examples frequently use 59999.
-- **Database mirroring endpoint:** <br/>
-   Any available port. Examples frequently use 5022.
+   Poort 1433 voor een standaard exemplaar van SQL Server.
+- **Azure load balancer-test:**<br/>
+   Elke beschik bare poort. Voor beelden regel matig gebruik van 59999.
+- **Eind punt voor database spiegeling:** <br/>
+   Elke beschik bare poort. Voor beelden regel matig gebruik van 5022.
 
-The firewall ports need to be open on both SQL Server VMs.
+De firewall poorten moeten op beide SQL Server Vm's zijn geopend.
 
-The method of opening the ports depends on the firewall solution that you use. The next section explains how to open the ports in Windows Firewall. Open the required ports on each of your SQL Server VMs.
+De methode voor het openen van de poorten is afhankelijk van de firewall-oplossing die u gebruikt. In de volgende sectie wordt uitgelegd hoe u de poorten in Windows Firewall kunt openen. Open de vereiste poorten op elk van uw SQL Server Vm's.
 
-### <a name="open-a-tcp-port-in-the-firewall"></a>Open a TCP port in the firewall
+### <a name="open-a-tcp-port-in-the-firewall"></a>Een TCP-poort openen in de firewall
 
-1. On the first SQL Server **Start** screen, launch **Windows Firewall with Advanced Security**.
-2. On the left pane, select **Inbound Rules**. On the right pane, click **New Rule**.
-3. For **Rule Type**, choose **Port**.
-4. For the port, specify **TCP** and type the appropriate port numbers. Zie het volgende voorbeeld:
+1. Op de eerste SQL Server **Start** scherm, start u **Windows Firewall met geavanceerde beveiliging**.
+2. Selecteer in het linkerdeel venster **regels voor binnenkomende verbindingen**. Klik in het rechterdeel venster op **nieuwe regel**.
+3. Kies **poort**bij **regel type**.
+4. Geef voor de poort **TCP** op en typ de juiste poort nummers. Zie het volgende voorbeeld:
 
-   ![SQL firewall](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/35-tcpports.png)
+   ![SQL-firewall](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/35-tcpports.png)
 
 5. Klik op **Volgende**.
-6. On the **Action** page, keep **Allow the connection** selected, and then click **Next**.
-7. On the **Profile** page, accept the default settings, and then click **Next**.
-8. On the **Name** page, specify a rule name (such as **Azure LB Probe**) in the **Name** text box, and then click **Finish**.
+6. Behoud op de pagina **actie** **de verbinding toestaan** geselecteerd en klik op **volgende**.
+7. Accepteer de standaard instellingen op de **profiel** pagina en klik vervolgens op **volgende**.
+8. Geef op de pagina **naam** een regel naam op (zoals **Azure lb probe**) in het tekstvak **naam** en klik vervolgens op **volt ooien**.
 
-Repeat these steps on the second SQL Server VM.
+Herhaal deze stappen op de tweede SQL Server VM.
 
-## <a name="configure-system-account-permissions"></a>Configure system account permissions
+## <a name="configure-system-account-permissions"></a>Machtigingen voor systeem accounts configureren
 
-To create an account for the system account and grant appropriate permissions, complete the following steps on each SQL Server instance:
+Als u een account voor het systeem account wilt maken en de juiste machtigingen wilt verlenen, voert u de volgende stappen uit op elk SQL Server-exemplaar:
 
-1. Create an account for `[NT AUTHORITY\SYSTEM]` on each SQL Server instance. The following script creates this account:
+1. Maak een account voor `[NT AUTHORITY\SYSTEM]` op elk SQL Server exemplaar. Met het volgende script maakt u dit account:
 
    ```sql
    USE [master]
@@ -510,13 +510,13 @@ To create an account for the system account and grant appropriate permissions, c
    GO 
    ```
 
-1. Grant the following permissions to `[NT AUTHORITY\SYSTEM]` on each SQL Server instance:
+1. Verleen de volgende machtigingen voor `[NT AUTHORITY\SYSTEM]` op elke SQL Server instantie:
 
    - `ALTER ANY AVAILABILITY GROUP`
    - `CONNECT SQL`
    - `VIEW SERVER STATE`
 
-   The following script grants these permissions:
+   Met het volgende script worden deze machtigingen verleend:
 
    ```sql
    GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
@@ -529,4 +529,4 @@ To create an account for the system account and grant appropriate permissions, c
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Create a SQL Server Always On availability group on Azure virtual machines](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+* [Een SQL Server AlwaysOn-beschikbaarheids groep maken op virtuele machines van Azure](virtual-machines-windows-portal-sql-availability-group-tutorial.md)

@@ -15,59 +15,59 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451599"
 ---
-1. To view the tags for a resource or a resource group, looks for existing tags in the overview. Als u nog niet eerder tags hebt toegepast, is de lijst leeg.
+1. Als u de tags voor een resource of resource groep wilt weer geven, zoekt u naar bestaande tags in het overzicht. Als u nog niet eerder tags hebt toegepast, is de lijst leeg.
    
-     ![View tags for resource or resource group](./media/resource-manager-tag-resources/view-tags.png)
-1. To add a tag, select **Click here to add tags**.
+     ![Tags voor de resource of resource groep weer geven](./media/resource-manager-tag-resources/view-tags.png)
+1. Als u een tag wilt toevoegen, selecteert u **hier klikken om tags toe te voegen**.
 
-1. Provide a name and value. Select **+** to add the tag.
+1. Geef een naam en waarde op. Selecteer **+** om de tag toe te voegen.
    
-     ![Add tag](./media/resource-manager-tag-resources/add-tag.png)
-1. Continue adding tags as needed. Selecteer **Opslaan** wanneer u klaar bent.
+     ![Tag toevoegen](./media/resource-manager-tag-resources/add-tag.png)
+1. Ga verder met het toevoegen van tags als dat nodig is. Selecteer **Opslaan** wanneer u klaar bent.
    
-     ![Save tags](./media/resource-manager-tag-resources/save-tags.png)
-1. The tags are now displayed in the overview.
+     ![Tags opslaan](./media/resource-manager-tag-resources/save-tags.png)
+1. De tags worden nu weer gegeven in het overzicht.
    
-     ![Show tags](./media/resource-manager-tag-resources/view-new-tags.png)
-1. To add or delete a tag, select **change**.
+     ![Labels weer geven](./media/resource-manager-tag-resources/view-new-tags.png)
+1. Selecteer **wijzigen**om een tag toe te voegen of te verwijderen.
    
-1. To delete a tag, select the trash icon. Selecteer vervolgens **Opslaan**.
+1. Als u een tag wilt verwijderen, selecteert u het prullenbak pictogram. Selecteer vervolgens **Opslaan**.
 
-     ![Delete tag](./media/resource-manager-tag-resources/delete-tag.png)
+     ![Tag verwijderen](./media/resource-manager-tag-resources/delete-tag.png)
 
 
-To bulk assign tags to multiple resources:
+Voor het bulksgewijs toewijzen van labels aan meerdere resources:
 
-1. From any list of resources, select the checkbox for the resources you want to assign the tag.
+1. Schakel in een lijst met resources het selectie vakje in voor de resources die u wilt toewijzen aan de tag.
 
-     ![Select multiple resources](./media/resource-manager-tag-resources/select-multiple-resources.png)
+     ![Meerdere resources selecteren](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. Select **Assign tags**
+1. **Labels toewijzen** selecteren
 
-     ![Assign tags](./media/resource-manager-tag-resources/assign-tags.png)
+     ![Labels toewijzen](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. After each name and value, select **+** . When done, select **Assign**.
+1. Selecteer na elke naam en waarde **+** . Wanneer u klaar bent, selecteert u **toewijzen**.
 
-     ![Select assign](./media/resource-manager-tag-resources/select-assign.png)
+     ![Toewijzing selecteren](./media/resource-manager-tag-resources/select-assign.png)
 
-To view all resources with a tag:
+Om alle resources met een tag weer te geven:
 
-1. On the Azure portal menu, select **All services**. Select **General**, then **Tags**.
+1. Selecteer in het menu Azure Portal **alle services**. Selecteer **Algemeen**en vervolgens **Tags**.
 
-     ![Find by tag](./media/resource-manager-tag-resources/find-tags-general.png)
+     ![Zoeken op label](./media/resource-manager-tag-resources/find-tags-general.png)
 
-1. Select the tag for viewing resources.
+1. Selecteer de tag voor het weer geven van resources.
 
-     ![Select tag](./media/resource-manager-tag-resources/select-tag.png)
+     ![Tag selecteren](./media/resource-manager-tag-resources/select-tag.png)
 
-1. All resources with that tag are displayed.
+1. Alle resources met die tag worden weer gegeven.
 
-     ![View resources by tag](./media/resource-manager-tag-resources/view-resources-by-tag.png)
+     ![Resources weer geven op label](./media/resource-manager-tag-resources/view-resources-by-tag.png)
 
-1. For quick access, pin the view to the dashboard.
+1. Voor snelle toegang kunt u de weer gave vastmaken aan het dash board.
 
      ![Vastmaken aan dashboard](./media/resource-manager-tag-resources/pin-to-dashboard.png)
 
-1. The view is available from the dashboard.
+1. De weer gave is beschikbaar via het dash board.
 
      ![Dashboard](./media/resource-manager-tag-resources/dashboard-with-view.png)

@@ -33,7 +33,7 @@ Op het moment dat u uw Azure overeenkomst of -account registreert, wordt er een 
 > * Entiteiten maken en beheren
 
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -120,7 +120,7 @@ Als u een gebruiker bent van een Enterprise Agreement voor Azure, kunt u een vid
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een gebruiker met beheerderstoegang maken

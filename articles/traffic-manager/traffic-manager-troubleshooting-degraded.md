@@ -43,7 +43,7 @@ Als in de status van uw Traffic Manager een **inactieve** status wordt weer gege
 Als u een test fout wilt oplossen, hebt u een hulp programma nodig dat de HTTP-status code retourneert van de test-URL. Er zijn veel hulpprogram ma's beschikbaar die het onbewerkte HTTP-antwoord tonen.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [curl](https://curl.haxx.se/)
+* [Ezelsoor](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 U kunt ook het tabblad netwerk van de F12-Hulpprogram Ma's voor fout opsporing in Internet Explorer gebruiken om de HTTP-antwoorden te bekijken.
@@ -85,7 +85,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Wat is Traffic Manager](traffic-manager-overview.md)
 
-[Cloudservices](https://go.microsoft.com/fwlink/?LinkId=314074)
+[Cloud Services](https://go.microsoft.com/fwlink/?LinkId=314074)
 
 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 

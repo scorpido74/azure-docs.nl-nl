@@ -1,5 +1,5 @@
 ---
-title: Create an OpenAPI definition for a serverless API using Azure API Management
+title: Een OpenAPI-definitie maken voor een serverloze API met behulp van Azure API Management
 description: Maak een definitie van een OpenAPI waarmee andere apps en services uw functie in Azure aanroepen.
 ms.topic: tutorial
 ms.date: 05/08/2019
@@ -12,44 +12,44 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226823"
 ---
-# <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Create an OpenAPI definition for a serverless API using Azure API Management
+# <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Een OpenAPI-definitie maken voor een serverloze API met behulp van Azure API Management
 
-REST APIs are often described using an OpenAPI definition. Deze definitie bevat informatie over welke bewerkingen beschikbaar zijn in een API en hoe de gegevens van de aanvraag en respons voor de API moeten worden opgebouwd.
+REST-Api's worden vaak beschreven met behulp van een OpenAPI-definitie. Deze definitie bevat informatie over welke bewerkingen beschikbaar zijn in een API en hoe de gegevens van de aanvraag en respons voor de API moeten worden opgebouwd.
 
-In deze zelfstudie maakt u een functie waarmee wordt bepaald of een noodherstelproces op een windturbine rendabel is. You then create an OpenAPI definition for the function app using [Azure API Management](../api-management/api-management-key-concepts.md) so that the function can be called from other apps and services.
+In deze zelfstudie maakt u een functie waarmee wordt bepaald of een noodherstelproces op een windturbine rendabel is. Vervolgens maakt u een OpenAPI-definitie voor de functie-app met behulp van [Azure API Management](../api-management/api-management-key-concepts.md) , zodat de functie kan worden aangeroepen vanuit andere apps en services.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een maken functie in Azure
-> * Generate an OpenAPI definition using Azure API Management
+> * Een OpenAPI-definitie genereren met behulp van Azure API Management
 > * De definitie testen door het aanroepen van de functie
-> * Download the OpenAPI definition
+> * De OpenAPI-definitie downloaden
 
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
-U moet een functie-app hebben die als host fungeert voor de uitvoering van uw functies. A function app lets you group functions as a logical unit for easier management, deployment, scaling, and sharing of resources.
+U moet een functie-app hebben die als host fungeert voor de uitvoering van uw functies. Met een functie-app kunt u functies groeperen als een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren, schalen en delen.
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
 ## <a name="create-the-function"></a>De functie maken
 
-This tutorial uses an HTTP triggered function that takes two parameters:
+In deze zelf studie wordt een door HTTP geactiveerde functie gebruikt die twee para meters nodig heeft:
 
-* The estimated time to make a turbine repair, in hours.
-* The capacity of the turbine, in kilowatts. 
+* De geschatte tijd voor het maken van een turbine reparatie, in uren.
+* De capaciteit van de turbine, in kilo watt. 
 
-De functie berekend vervolgens hoeveel een reparatie kost en hoeveel omzet de turbine in een periode van 24 uur zou kunnen maken. TO create the HTTP triggered function in the [Azure portal](https://portal.azure.com).
+De functie berekend vervolgens hoeveel een reparatie kost en hoeveel omzet de turbine in een periode van 24 uur zou kunnen maken. De door HTTP geactiveerde functie maken in de [Azure Portal](https://portal.azure.com).
 
-1. Vouw de functie-app uit en klik op de knop **+** naast **Functies**. Select **In-portal** > **Continue**.
+1. Vouw de functie-app uit en klik op de knop **+** naast **Functies**. Selecteer **in-portal** > **door gaan**.
 
-1. Select **More templates...** , then select **Finish and view templates**
+1. Selecteer **meer sjablonen...** en selecteer vervolgens **volt ooien en sjablonen weer geven**
 
-1. Select HTTP trigger, type `TurbineRepair` for the function **Name**, choose `Function` for **[Authentication level](functions-bindings-http-webhook.md#http-auth)** , and then select **Create**.  
+1. Selecteer HTTP-trigger, typ `TurbineRepair` voor de functie **naam**, kies `Function` voor **[verificatie niveau](functions-bindings-http-webhook.md#http-auth)** en selecteer vervolgens **maken**.  
 
-    ![Create HTTP function for OpenAPI](media/functions-openapi-definition/select-http-trigger-openapi.png)
+    ![De HTTP-functie voor OpenAPI maken](media/functions-openapi-definition/select-http-trigger-openapi.png)
 
-1. Replace the contents of the run.csx C# script file with the following code, then choose **Save**:
+1. Vervang de inhoud van het script bestand run C# . CSX door de volgende code en kies vervolgens **Opslaan**:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -104,7 +104,7 @@ De functie berekend vervolgens hoeveel een reparatie kost en hoeveel omzet de tu
 
     Deze functiecode retourneert een bericht van `Yes` of `No` om aan te geven of een noodherstelproces rendabel is, evenals de kans op omzet die de turbine vertegenwoordigt en de kosten om de turbine te repareren.
 
-1. To test the function, click **Test** at the far right to expand the test tab. Enter the following value for the **Request body**, and then click **Run**.
+1. Als u de functie wilt testen, klikt u helemaal rechts op **testen** om het tabblad testen uit te vouwen. Voer de volgende waarde in voor de **hoofd tekst**van de aanvraag en klik vervolgens op **uitvoeren**.
 
     ```json
     {
@@ -121,51 +121,51 @@ De functie berekend vervolgens hoeveel een reparatie kost en hoeveel omzet de tu
     {"message":"Yes","revenueOpportunity":"$7200","costToFix":"$1600"}
     ```
 
-U hebt nu een functie die de kosteneffectiviteit van noodreparaties bepaalt. Next, you generate an OpenAPI definition for the function app.
+U hebt nu een functie die de kosteneffectiviteit van noodreparaties bepaalt. Vervolgens genereert u een OpenAPI-definitie voor de functie-app.
 
 ## <a name="generate-the-openapi-definition"></a>De OpenAPI-definitie genereren
 
 U nu kunt de OpenAPI-definitie genereren.
 
-1. Select the function app, then in **Platform features**, choose **API Management** and select **Create new** under **API Management**.
+1. Selecteer de functie-app en klik vervolgens in **platform functies**op **API Management** en selecteer **nieuwe maken** onder **API Management**.
 
-    ![Choose API Management in Platform Features](media/functions-openapi-definition/select-all-settings-openapi.png)
+    ![API Management selecteren in platform functies](media/functions-openapi-definition/select-all-settings-openapi.png)
 
-1. Use the API Management settings as specified in the table below the image.
+1. Gebruik de API Management instellingen zoals opgegeven in de tabel onder de afbeelding.
 
-    ![Create new API Management service](media/functions-openapi-definition/new-apim-service-openapi.png)
+    ![Nieuwe API Management-service maken](media/functions-openapi-definition/new-apim-service-openapi.png)
 
     | Instelling      | Voorgestelde waarde  | Beschrijving                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Naam** | Wereldwijd unieke naam | A name is generated based on the name of your function app. |
-    | **Abonnement** | Uw abonnement | The subscription under which this new resource is created. |  
-    | **[Resourcegroep](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | The same resource as your function app, which should get set for you. |
-    | **Locatie** | VS - west | Choose the West US location. |
-    | **Naam van de organisatie** | Contoso | The name of the organization used in the developer portal and for email notifications. |
-    | **E-mailadres van de beheerder** | your email | Email that received system notifications from API Management. |
-    | **Prijscategorie** | Consumption (preview) | Consumption tier is in preview and isn't available in all regions. For complete pricing details, see the [API Management pricing page](https://azure.microsoft.com/pricing/details/api-management/) |
+    | **Naam** | Wereldwijd unieke naam | Er wordt een naam gegenereerd op basis van de naam van uw functie-app. |
+    | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe resource wordt gemaakt. |  
+    | **[Resourcegroep](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Dezelfde resource als uw functie-app, die voor u moet worden ingesteld. |
+    | **Locatie** | VS - west | Kies de locatie vs-West. |
+    | **Naam van de organisatie** | Contoso | De naam van de organisatie die wordt gebruikt in de ontwikkelaars Portal en voor e-mail meldingen. |
+    | **E-mailadres van de beheerder** | uw e-mail adres | E-mail die systeem meldingen van API Management heeft ontvangen. |
+    | **Prijscategorie** | Verbruik (preview-versie) | Verbruiks laag is in Preview en is niet beschikbaar in alle regio's. Zie de [pagina met prijzen voor API Management](https://azure.microsoft.com/pricing/details/api-management/) voor de volledige prijs informatie |
 
-1. Choose **Create** to create the API Management instance, which may take several minutes.
+1. Kies **maken** om het API Management-exemplaar te maken. Dit kan enkele minuten duren.
 
-1. Select **Enable Application Insights** to send logs to the same place as the function application, then accept the remaining defaults and select **Link API**.
+1. Selecteer **Application Insights inschakelen** om logboeken naar dezelfde locatie te verzenden als de functie toepassing, accepteer de resterende standaard waarden en selecteer **koppelings-API**.
 
-1. The **Import Azure Functions** opens with the **TurbineRepair** function highlighted. Choose **Select** to continue.
+1. De **Import Azure functions** wordt geopend met de functie **TurbineRepair** gemarkeerd. Kies **selecteren** om door te gaan.
 
-    ![Import Azure Functions into API Management](media/functions-openapi-definition/import-function-openapi.png)
+    ![Azure Functions importeren in API Management](media/functions-openapi-definition/import-function-openapi.png)
 
-1. In the **Create from Function App** page, accept the defaults and select **Create**
+1. Accepteer de standaard instellingen op de pagina **maken op basis van functie-app** en selecteer **maken** .
 
-    ![Create from Function App](media/functions-openapi-definition/create-function-openapi.png)
+    ![Maken op basis van functie-app](media/functions-openapi-definition/create-function-openapi.png)
 
-The API is now created for the function.
+De API is nu gemaakt voor de functie.
 
-## <a name="test-the-api"></a>Test the API
+## <a name="test-the-api"></a>De API testen
 
-Before you use the OpenAPI definition, you should verify that the API works.
+Voordat u de OpenAPI-definitie gebruikt, moet u controleren of de API werkt.
 
-1. On the **Test** tab of your function, select **POST** operation.
+1. Selecteer op het tabblad **testen** van de functie **post** -bewerking.
 
-1. Enter values for **hours** and **capacity**
+1. Voer waarden in voor **uren** en **capaciteit**
 
     ```json
     {
@@ -174,25 +174,25 @@ Before you use the OpenAPI definition, you should verify that the API works.
     }
     ```
 
-1. Click **Send**, then view the HTTP response.
+1. Klik op **verzenden**en Bekijk het HTTP-antwoord.
 
-    ![Test function API](media/functions-openapi-definition/test-function-api-openapi.png)
+    ![Functie-API testen](media/functions-openapi-definition/test-function-api-openapi.png)
 
-## <a name="download-the-openapi-definition"></a>Download the OpenAPI definition
+## <a name="download-the-openapi-definition"></a>De OpenAPI-definitie downloaden
 
-If your API works as expected, you can download the OpenAPI definition.
+Als uw API werkt zoals verwacht, kunt u de OpenAPI-definitie downloaden.
 
-1. Select **Download OpenAPI definition** at the top of the page.
+1. Selecteer **OpenAPI definitie downloaden** boven aan de pagina.
    
    ![OpenAPI-definitie downloaden](media/functions-openapi-definition/download-definition.png)
 
-2. Open the downloaded JSON file and review the definition.
+2. Open het gedownloade JSON-bestand en controleer de definitie.
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-You have used API Management integration to generate an OpenAPI definition of your functions. You can now edit the definition in API Management in the portal. You can also [learn more about API Management](../api-management/api-management-key-concepts.md).
+U hebt API Management-integratie gebruikt voor het genereren van een OpenAPI definitie van uw functies. U kunt de definitie in API Management nu bewerken in de portal. U kunt ook [meer te weten komen over API Management](../api-management/api-management-key-concepts.md).
 
 > [!div class="nextstepaction"]
-> [Edit the OpenAPI definition in API Management](../api-management/edit-api.md)
+> [De OpenAPI-definitie in API Management bewerken](../api-management/edit-api.md)

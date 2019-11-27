@@ -17,7 +17,7 @@ ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 373a3a66044f996edee904c0073dcb0deb58a85b
 ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74277988"
@@ -50,7 +50,7 @@ Stroom logboeken bevatten de volgende eigenschappen:
 * **systemId** -resource-id van de netwerk beveiligings groep.
 * **categorie** : de categorie van de gebeurtenis. De categorie is altijd **NetworkSecurityGroupFlowEvent**
 * **ResourceID** -de resource-id van de NSG
-* **operationName** - Always NetworkSecurityGroupFlowEvents
+* **operationname** -altijd NetworkSecurityGroupFlowEvents
 * **Eigenschappen** : een verzameling eigenschappen van de stroom
     * **Versie** -versie nummer van het gebeurtenis schema voor het stroom logboek
     * **stromen** : een verzameling stromen. Deze eigenschap heeft meerdere vermeldingen voor verschillende regels

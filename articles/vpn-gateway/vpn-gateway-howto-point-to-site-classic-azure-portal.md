@@ -29,7 +29,7 @@ ms.locfileid: "74424152"
 In dit artikel wordt beschreven hoe u een VNet maakt met een punt-naar-site-verbinding. U maakt het VNet volgens het klassieke implementatiemodel via de Azure-portal. Deze configuratie maakt gebruik van certificaten, zelfondertekende door een certificeringsinstantie uitgegeven, om de client te verifiëren waarmee verbinding wordt gemaakt. U kunt deze configuratie ook maken met een ander implementatieprogramma of -model, met behulp van de opties die worden beschreven in de volgende artikelen:
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >
@@ -61,25 +61,25 @@ Voor meer informatie over point-to-site-verbindingen leest u [Point-to-Site FAQ]
 Gebruik de volgende waarden om een testomgeving te maken of verwijs ernaar om meer inzicht te krijgen in de voorbeelden in dit artikel:
 
 - **Instellingen voor (klassiek) virtueel netwerk maken**
-   - **Name**: Enter *VNet1*.
-   - **Address space**: Enter *192.168.0.0/16*. In dit voorbeeld gebruiken we slechts één adresruimte. Zoals u in het diagram ziet, kunt u meer dan één adresruimte voor uw VNet hebben.
-   - **Subnet name**: Enter *FrontEnd*.
-   - **Subnet address range**: Enter *192.168.1.0/24*.
-   - **Subscription**: Select a subscription from the list of available subscriptions.
-   - **Resource group**: Enter *TestRG*. Selecteer **Nieuwe maken** als de resourcegroep niet bestaat.
-   - **Location**: Select **East US** from the list.
+   - **Naam**: Voer *VNet1*in.
+   - **Adres ruimte**: Voer *192.168.0.0/16*in. In dit voorbeeld gebruiken we slechts één adresruimte. Zoals u in het diagram ziet, kunt u meer dan één adresruimte voor uw VNet hebben.
+   - **Subnetnaam**: Voer een *frontend*in.
+   - **Adres bereik van subnet**: Voer *192.168.1.0/24*in.
+   - **Abonnement**: Selecteer een abonnement in de lijst met beschik bare abonnementen.
+   - **Resource groep**: Voer *TestRG*in. Selecteer **Nieuwe maken** als de resourcegroep niet bestaat.
+   - **Locatie**: Selecteer **VS-Oost** in de lijst.
 
   - **Instellingen voor VPN-verbinding**
-    - **Connection type**: Select **Point-to-site**.
-    - **Client Address Space**: Enter *172.16.201.0/24*. VPN-clients die verbinding maken met het VNet via deze punt-naar-site-verbinding, ontvangen een IP-adres van de opgegeven pool.
+    - **Verbindings type**: Selecteer **punt-naar-site**.
+    - **Adres ruimte van client**: Voer *172.16.201.0/24*in. VPN-clients die verbinding maken met het VNet via deze punt-naar-site-verbinding, ontvangen een IP-adres van de opgegeven pool.
 
 - **Configuratie-instellingen voor gatewaysubnet**
-   - **Name**: Autofilled with *GatewaySubnet*.
-   - **Address range**: Enter *192.168.200.0/24*. 
+   - **Naam**: aangevuld met *GatewaySubnet*.
+   - **Adres bereik**: Voer *192.168.200.0/24*in. 
 
 - **Configuratie-instellingen voor gateway**:
-   - **Size**: Select the gateway SKU that you want to use.
-   - **Routing Type**: Select **Dynamic**.
+   - **Grootte**: Selecteer de gateway-SKU die u wilt gebruiken.
+   - **Routerings type**: Selecteer **dynamisch**.
 
 ## <a name="create-a-virtual-network-and-a-vpn-gateway"></a>Een virtueel netwerk en een VPN-gateway maken
 
@@ -89,7 +89,7 @@ Controleer eerst of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement
 
 Als u nog geen virtueel netwerk (VNet) hebt, maakt u er een. De schermafbeeldingen dienen alleen als voorbeeld. Zorg dat u de waarden vervangt door die van uzelf. Volg de volgende stappen om een VNet te maken met behulp van Azure Portal:
 
-1. On the [Azure portal](https://portal.azure.com) menu or from the **Home** page, select **Create a resource**. De pagina **Nieuw** wordt geopend.
+1. Selecteer in het menu [Azure Portal](https://portal.azure.com) of op de **Start** pagina de optie **een resource maken**. De pagina **Nieuw** wordt geopend.
 
 2. Voer in het veld **Search the marketplace** *virtueel netwerk* in en selecteer **Virtueel netwerk** in de geretourneerde lijst. De pagina **Virtueel netwerk** wordt geopend.
 
@@ -113,11 +113,11 @@ Als u nog geen virtueel netwerk (VNet) hebt, maakt u er een. De schermafbeelding
 
     Als u een DNS-server wilt toevoegen, selecteert u **DNS-servers** op de VNet-pagina. Voer vervolgens het IP-adres in van de DNS-server die u wilt gebruiken en selecteer **Opslaan**.
 
-### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>Part 2: Create a gateway subnet and a dynamic routing gateway
+### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>Deel 2: een gateway-subnet en een gateway voor dynamische route ring maken
 
 In deze stap maakt u een gatewaysubnet en een gateway voor dynamische routering. In de Azure-portal voor het klassieke implementatiemodel maakt u het gatewaysubnet en de gateway via dezelfde configuratiepagina's. Gebruik het gatewaysubnet alleen voor de gatewayservices. Daarom moet u nooit zaken rechtstreeks implementeren in het gatewaysubnet, zoals virtuele machines of andere services.
 
-1. In the Azure portal, go to the virtual network for which you want to create a gateway.
+1. Ga in het Azure Portal naar het virtuele netwerk waarvoor u een gateway wilt maken.
 
 2. Selecteer op de pagina voor uw virtuele netwerk de optie **Overzicht** en selecteer in de sectie **VPN-verbindingen** de optie **Gateway**.
 
@@ -210,7 +210,7 @@ Als u een P2S-verbinding wilt maken vanaf een andere clientcomputer dan de compu
 >
 >
 
-1. To connect to your VNet, on the client computer, go to **VPN connections** in the Azure portal and locate the VPN connection that you created. De VPN-verbinding heeft dezelfde naam als het virtuele netwerk. Selecteer **Verbinden**. Als er een pop-upbericht verschijnt over het certificaat, selecteert u **Doorgaan** om verhoogde bevoegdheden te kunnen gebruiken.
+1. Als u verbinding wilt maken met uw VNet, gaat u op de client computer naar **VPN-verbindingen** in de Azure Portal en zoekt u de VPN-verbinding die u hebt gemaakt. De VPN-verbinding heeft dezelfde naam als het virtuele netwerk. Selecteer **Verbinden**. Als er een pop-upbericht verschijnt over het certificaat, selecteert u **Doorgaan** om verhoogde bevoegdheden te kunnen gebruiken.
 
 2. Selecteer op de pagina **Verbindingsstatus** de optie **Verbinden** om de verbinding te starten. Als het scherm **Certificaat selecteren** verschijnt, controleert u of het weergegeven clientcertificaat het juiste is. Als dat niet zo is, selecteert u het juiste certificaat in de vervolgkeuzelijst en selecteert u **OK**.
 
@@ -277,7 +277,7 @@ U kunt een clientcertificaat intrekken door de vingerafdruk toe te voegen aan de
 
 1. Haal de vingerafdruk voor het clientcertificaat op. Zie voor meer informatie [De vingerafdruk van een certificaat ophalen](https://msdn.microsoft.com/library/ms734695.aspx).
 2. Kopieer de gegevens naar een teksteditor en verwijder de spaties, zodat u een doorlopende tekenreeks overhoudt.
-3. Go to the classic virtual network. Selecteer **Punt-naar-site-verbinding** en vervolgens **Certificaat beheren** om de pagina **Certificaten** te openen.
+3. Ga naar het klassieke virtuele netwerk. Selecteer **Punt-naar-site-verbinding** en vervolgens **Certificaat beheren** om de pagina **Certificaten** te openen.
 4. Selecteer **Intrekkingslijst** om de pagina **Intrekkingslijst** te openen. 
 5. Selecteer **Certificaat toevoegen** om de pagina **Certificaat toevoegen aan intrekkingslijst** te openen.
 6. Plak in **Vingerafdruk** de vingerafdruk van het certificaat als een doorlopende regel tekst, zonder spaties. Selecteer ten slotte **OK**.

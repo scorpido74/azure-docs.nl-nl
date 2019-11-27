@@ -1,5 +1,5 @@
 ---
-title: Create an Azure internal Load Balancer by using PowerShell
+title: Een Azure interne Load Balancer maken met behulp van PowerShell
 titleSuffix: Azure Load Balancer
 description: Informatie over hoe u met de Azure PowerShell-module een interne load balancer maakt in Azure Resource Manager
 services: load-balancer
@@ -23,7 +23,7 @@ ms.locfileid: "74225393"
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Een interne load balancer maken met behulp van de Azure PowerShell-module
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Sjabloon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
@@ -251,7 +251,7 @@ Nadat de virtuele machine is gemaakt, voegt u de netwerkinterface toe.
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>Stap 1: De load balancer-resource opslaan
 
-Sla de load balancer-resource op in een variabele (als u dat nog niet hebt gedaan). We're using the variable name **$lb**. For the attribute values in the script, use the names for the load balancer resources that were created in the previous steps.
+Sla de load balancer-resource op in een variabele (als u dat nog niet hebt gedaan). We gebruiken de naam van de variabele **$lb**. Voor de kenmerk waarden in het script gebruikt u de namen voor de load balancer resources die zijn gemaakt in de vorige stappen.
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG

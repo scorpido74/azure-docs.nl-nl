@@ -1,5 +1,5 @@
 ---
-title: Create your first serverless function from the Azure portal
+title: Maak uw eerste serverloze functie van de Azure Portal
 description: Leer hoe u uw eerste serverloze Azure-functie kunt maken met behulp van Azure Portal.
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: quickstart
@@ -14,14 +14,14 @@ ms.locfileid: "74230832"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Maak uw eerste functie in Azure Portal
 
-Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing publiceren. In this article, learn how to use Functions to create a "hello world" function in the Azure portal.
+Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing moet publiceren. In dit artikel vindt u informatie over het gebruik van functies voor het maken van een "Hallo wereld"-functie in de Azure Portal.
 
 ![Functie-app maken in Azure Portal](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> C# developers should consider [creating your first function in Visual Studio 2019](functions-create-your-first-function-visual-studio.md) instead of in the portal. 
+> C#Ontwikkel aars kunnen overwegen [uw eerste functie in Visual Studio 2019 te maken](functions-create-your-first-function-visual-studio.md) in plaats van in de portal. 
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
@@ -39,7 +39,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 1. Vouw uw nieuwe functie-app uit en selecteer vervolgens de **+** -knop naast **Functies**, kies **In de portal** en selecteer **Doorgaan**.
 
-    ![Functions quickstart for choosing a platform.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![Functies Quick start voor het kiezen van een platform.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
 1. Kies **WebHook + API** en selecteer vervolgens **Maken**.
 
@@ -73,7 +73,7 @@ U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-You've created a function app with a simple HTTP triggered function.  
+U hebt een functie-app gemaakt met een eenvoudige HTTP-geactiveerde functie.  
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

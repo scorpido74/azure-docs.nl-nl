@@ -42,7 +42,7 @@ In dit artikel worden de beschik bare grootten en opties voor de virtuele machin
 - Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
 
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
 Zie het volgende voor informatie over het gebruik van de REST API om te zoeken naar VM-grootten:
 

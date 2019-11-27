@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Use Node.js to query from Azure Cosmos DB SQL API account'
-description: How to use Node.js to create an app that connects to Azure Cosmos DB SQL API account and queries data.
+title: 'Snelstartgids: node. js gebruiken om een query uit te Azure Cosmos DB SQL-API-account'
+description: Node. js gebruiken om een app te maken die verbinding maakt met Azure Cosmos DB SQL-API-account en query gegevens.
 author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -15,7 +15,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74220520"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Quickstart: Use Node.js to connect and query data from Azure Cosmos DB SQL API account
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Snelstartgids: node. js gebruiken om verbinding te maken en gegevens op te vragen uit Azure Cosmos DB SQL-API-account
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "74220520"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-This quickstart demonstrates how to use a Node.js app to connect to the [SQL API](sql-api-introduction.md) account in Azure Cosmos DB. You can then use Azure Cosmos DB SQL queries to query and manage data. The Node.js app you build in this article uses the [SQL JavaScript SDK](sql-api-sdk-node.md). Deze snelstart maakt gebruik van versie 2.0 van de [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos).
+In deze Quick start ziet u hoe u een node. js-app gebruikt om verbinding te maken met het [SQL-API](sql-api-introduction.md) -account in azure Cosmos db. U kunt vervolgens Azure Cosmos DB SQL-query's gebruiken om gegevens op te vragen en te beheren. De node. js-app die u in dit artikel bouwt, maakt gebruik van de [SQL java script SDK](sql-api-sdk-node.md). Deze snelstart maakt gebruik van versie 2.0 van de [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ This quickstart demonstrates how to use a Node.js app to connect to the [SQL API
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-container"></a>Add a container
+## <a name="add-a-container"></a>Een container toevoegen
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -54,7 +54,7 @@ This quickstart demonstrates how to use a Node.js app to connect to the [SQL API
 
 ## <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-Now let's clone a Node.js app from GitHub, set the connection string, and run it.
+We gaan nu een node. js-app klonen vanaf GitHub, de connection string instellen en uitvoeren.
 
 1. Open een opdrachtprompt, maak een nieuwe map met de naam git-samples en sluit vervolgens de opdrachtprompt.
 
@@ -76,25 +76,25 @@ Now let's clone a Node.js app from GitHub, set the connection string, and run it
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Deze stap is optioneel. If you're interested in learning how the Azure Cosmos database resources are created in the code, you can review the following snippets. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-string). 
+Deze stap is optioneel. Als u wilt weten hoe de Azure Cosmos-database resources in de code worden gemaakt, kunt u de volgende fragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-string). 
 
 Als u bekend bent met de vorige versie van de JavaScript SDK, komen de termen 'verzameling' en 'document' u vertrouwd voor. Azure Cosmos DB ondersteunt [meerdere API-modellen](https://docs.microsoft.com/azure/cosmos-db/introduction). Daarom maakt versie 2.0+ van de JavaScript SDK gebruik van de generieke termen 'verzameling', wat een collectie, een grafiek of tabel kan zijn, en 'item', om de inhoud van de container te beschrijven.
 
 De volgende codefragmenten zijn allemaal afkomstig uit het bestand **app.js**.
 
-* The `CosmosClient` object is initialized.
+* Het `CosmosClient`-object is geïnitialiseerd.
 
     ```javascript
     const client = new CosmosClient({ endpoint, key });
     ```
 
-* Create a new Azure Cosmos database.
+* Maak een nieuwe Azure Cosmos-data base.
 
     ```javascript
     const { database } = await client.databases.createIfNotExists({ id: databaseId });
     ```
 
-* A new container (collection) is created within the database.
+* Er wordt in de Data Base een nieuwe container (verzameling) gemaakt.
 
     ```javascript
     const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId });
@@ -106,7 +106,7 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand **app.js**.
     const { item } = await client.database(databaseId).container(containerId).items.create(itemBody);
     ```
 
-* A SQL query over JSON is performed on the family database. The query returns all the children of the "Anderson" family. 
+* Een SQL-query via JSON wordt uitgevoerd op de Family-data base. De query retourneert alle onderliggende items van de "Anderson"-familie. 
 
     ```javascript
       const querySpec = {
@@ -132,9 +132,9 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand **app.js**.
 
 ## <a name="update-your-connection-string"></a>Uw verbindingsreeks bijwerken
 
-Now go back to the Azure portal to get the connection string details of your Azure Cosmos account. Copy the connection string into the app so that it can connect to your database.
+Ga nu terug naar de Azure Portal om de connection string Details van uw Azure Cosmos-account op te halen. Kopieer de connection string in de app zodat deze verbinding kan maken met uw data base.
 
-1. In the [Azure portal](https://portal.azure.com/), in your Azure Cosmos account, in the left navigation click **Keys**, and then click **Read-write Keys**. In de volgende stap gebruikt u de kopieerknoppen aan de rechterkant van het scherm om de URI en primaire sleutel in het bestand `config.js` te kopiëren.
+1. Klik in het [Azure Portal](https://portal.azure.com/)in uw Azure Cosmos-account in de linkernavigatiebalk op **sleutels**en klik vervolgens op **sleutels voor lezen/schrijven**. In de volgende stap gebruikt u de kopieerknoppen aan de rechterkant van het scherm om de URI en primaire sleutel in het bestand `config.js` te kopiëren.
 
     ![Een toegangssleutel bekijken en kopiëren in Azure Portal, blade Sleutels](./media/create-sql-api-dotnet/keys.png)
 
@@ -148,13 +148,13 @@ Now go back to the Azure portal to get the connection string details of your Azu
 
     `config.key = "FILLME"`
     
-## <a name="run-the-app"></a>De app kunt uitvoeren
+## <a name="run-the-app"></a>De app uitvoeren
 
 1. Voer `npm install` uit op een terminal zodat de vereiste npm-modules worden geïnstalleerd.
 
 2. Voer `node app.js` uit op een terminal om uw knooppunttoepassing te starten.
 
-You can now go back to Data Explorer, modify, and work with this new data.
+U kunt nu teruggaan naar Data Explorer, wijzigen en werken met deze nieuwe gegevens.
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 
@@ -166,7 +166,7 @@ You can now go back to Data Explorer, modify, and work with this new data.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this quickstart, you've learned how to create an Azure Cosmos account, create a container using the data explorer, and run an app. You can now import additional data to your Azure Cosmos database. 
+In deze Quick Start hebt u geleerd hoe u een Azure Cosmos-account maakt, een container maakt met behulp van Data Explorer en een app uitvoert. U kunt nu aanvullende gegevens importeren in uw Azure Cosmos-data base. 
 
 > [!div class="nextstepaction"]
 > [Gegevens importeren in Azure Cosmos DB](import-data.md)

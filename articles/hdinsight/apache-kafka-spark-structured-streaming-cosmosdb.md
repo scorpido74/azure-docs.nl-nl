@@ -1,6 +1,6 @@
 ---
-title: Apache Spark & Apache Kafka with Cosmos DB - Azure HDInsight
-description: Learn how to use Apache Spark Structured Streaming to read data from Apache Kafka and then store it into Azure Cosmos DB. In dit voorbeeld gaat u met behulp van een Jupyter Notebook gegevens streamen van Spark naar HDInsight.
+title: Apache Spark & Apache Kafka met Cosmos DB-Azure HDInsight
+description: Leer hoe u Apache Spark Structured streaming kunt gebruiken om gegevens uit Apache Kafka te lezen en vervolgens op te slaan in Azure Cosmos DB. In dit voorbeeld gaat u met behulp van een Jupyter Notebook gegevens streamen van Spark naar HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -15,16 +15,16 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406162"
 ---
-# <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Use Apache Spark Structured Streaming with Apache Kafka and Azure Cosmos DB
+# <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark Structured streaming gebruiken met Apache Kafka en Azure Cosmos DB
 
-Learn how to use [Apache Spark](https://spark.apache.org/) [Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) to read data from [Apache Kafka](https://kafka.apache.org/) on Azure HDInsight, and then store the data into Azure Cosmos DB.
+Meer informatie over het gebruik van [Apache Spark](https://spark.apache.org/) [Structured streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) om gegevens te lezen van [Apache Kafka](https://kafka.apache.org/) in azure HDInsight en de gegevens vervolgens op te slaan in azure Cosmos db.
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) is a globally distributed, multi-model database. This example uses a SQL API database model. For more information, see the [Welcome to Azure Cosmos DB](../cosmos-db/introduction.md) document.
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) is een wereld wijd gedistribueerde data base met meerdere modellen. In dit voor beeld wordt een SQL API-database model gebruikt. Zie de [Welkom bij Azure Cosmos DB](../cosmos-db/introduction.md) -document voor meer informatie.
 
-Spark Structured Streaming is een streamverwerkingsengine gebaseerd op Spark SQL. Hiermee kunt u streamingberekeningen op dezelfde manier weergeven als batchberekeningen van statische gegevens. For more information on Structured Streaming, see the [Structured Streaming Programming Guide](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) at Apache.org.
+Spark Structured Streaming is een streamverwerkingsengine gebaseerd op Spark SQL. Hiermee kunt u streamingberekeningen op dezelfde manier weergeven als batchberekeningen van statische gegevens. Meer informatie over Structured streaming vindt u in de [hand leiding Structured streaming Programming](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) op Apache.org.
 
 > [!IMPORTANT]  
-> This example used Spark 2.2 on HDInsight 3.6.
+> In dit voor beeld wordt Spark 2,2 op HDInsight 3,6 gebruikt.
 >
 > Met de stappen in dit document wordt een Azure-resourcegroep gemaakt die zowel een Spark in HDInsight- als een Kafka in HDInsight-cluster bevat. Deze clusters bevinden zich beide binnen een Azure Virtual Network, waardoor het Spark-cluster rechtstreeks kan communiceren met het Kafka-cluster.
 >
@@ -32,14 +32,14 @@ Spark Structured Streaming is een streamverwerkingsengine gebaseerd op Spark SQL
 
 ## <a name="create-the-clusters"></a>De clusters maken
 
-Apache Kafka on HDInsight doesn't provide access to the Kafka brokers over the public internet. Anything that talks to Kafka must be in the same Azure virtual network as the nodes in the Kafka cluster. For this example, both the Kafka and Spark clusters are located in an Azure virtual network. The following diagram shows how communication flows between the clusters:
+Apache Kafka op HDInsight biedt geen toegang tot de Kafka-Brokers via het open bare Internet. Alles wat er naar Kafka praat, moet zich in hetzelfde virtuele Azure-netwerk bevindt als de knoop punten in het Kafka-cluster. In dit voor beeld bevinden zowel de Kafka-als Spark-clusters zich in een virtueel Azure-netwerk. In het volgende diagram ziet u hoe communicatie stromen tussen de clusters:
 
 ![Diagram van Spark- en Kafka-clusters in een Azure Virtual Network](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
 
 > [!NOTE]  
 > De Kafka-service blijft beperkt tot communicatie binnen het virtuele netwerk. Andere services in het cluster, zoals SSH en Ambari, zijn toegankelijk via internet. Zie [Poorten en URI's die worden gebruikt door HDInsight](hdinsight-hadoop-port-settings-for-services.md) voor meer informatie over de openbare poorten die beschikbaar zijn voor HDInsight.
 
-While you can create an Azure virtual network, Kafka, and Spark clusters manually, it's easier to use an Azure Resource Manager template. Use the following steps to deploy an Azure virtual network, Kafka, and Spark clusters to your Azure subscription.
+Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt maken, is het eenvoudiger om een Azure Resource Manager sjabloon te gebruiken. Gebruik de volgende stappen om een Azure Virtual Network-, Kafka-en Spark-cluster te implementeren in uw Azure-abonnement.
 
 1. Gebruik de volgende knop om u aan te melden bij Azure en de sjabloon in de Azure Portal te openen.
 
@@ -47,46 +47,46 @@ While you can create an Azure virtual network, Kafka, and Spark clusters manuall
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
-    The Azure Resource Manager template is located in the GitHub repository for this project ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)).
+    De Azure Resource Manager sjabloon bevindt zich in de GitHub-opslag plaats voor dit project ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)).
 
     Met deze sjabloon maakt u de volgende bronnen:
 
    * Een Kafka in HDInsight 3.6-cluster.
 
-   * A Spark on HDInsight 3.6 cluster.
+   * Een Spark in HDInsight 3,6-cluster.
 
-   * Een Azure Virtual Network dat de HDInsight-clusters bevat. The virtual network created by the template uses the 10.0.0.0/16 address space.
+   * Een Azure Virtual Network dat de HDInsight-clusters bevat. Het virtuele netwerk dat door de sjabloon wordt gemaakt, maakt gebruik van de adres ruimte 10.0.0.0/16.
 
-   * An Azure Cosmos DB SQL API database.
+   * Een Azure Cosmos DB SQL API-data base.
 
     > [!IMPORTANT]  
     > Voor de Structured Streaming-notebook die in dit voorbeeld wordt gebruikt, is Spark in HDInsight 3.6 vereist. Als u een eerdere versie van Spark in HDInsight gebruikt, worden er fouten gegenereerd bij gebruik van de notebook.
 
-1. Use the following information to populate the entries on the **Custom deployment** section:
+1. Gebruik de volgende informatie om de vermeldingen in de sectie **aangepaste implementatie** in te vullen:
 
     |Eigenschap |Waarde |
     |---|---|
-    |Abonnement|Selecteer uw Azure-abonnement.|
-    |Resourcegroep|Create a group or select an existing one. This group contains the HDInsight cluster.|
-    |Cosmos DB Account Name|This value is used as the name for the Cosmos DB account. The name can only contain lowercase letters, numbers, and the hyphen (-) character. It must be between 3-31 characters in length.|
-    |Base Cluster Name|This value is used as the base name for the Spark and Kafka clusters. For example, entering **myhdi** creates a Spark cluster named __spark-myhdi__ and a Kafka cluster named **kafka-myhdi**.|
-    |Cluster Version|The HDInsight cluster version. This example is tested with HDInsight 3.6, and may not work with other cluster types.|
-    |Gebruikersnaam voor clusteraanmelding|The admin user name for the Spark and Kafka clusters.|
-    |Wachtwoord voor clusteraanmelding|The admin user password for the Spark and Kafka clusters.|
-    |Ssh User Name|The SSH user to create for the Spark and Kafka clusters.|
-    |Ssh Password|The password for the SSH user for the Spark and Kafka clusters.|
+    |Subscription|Selecteer uw Azure-abonnement.|
+    |Resourcegroep|Een groep maken of een bestaande selecteren. Deze groep bevat het HDInsight-cluster.|
+    |Cosmos DB-account naam|Deze waarde wordt gebruikt als de naam voor het Cosmos DB-account. De naam mag alleen kleine letters, cijfers en het koppel teken (-) bevatten. De waarde moet tussen de 3-31 tekens lang zijn.|
+    |Basis cluster naam|Deze waarde wordt gebruikt als de basis naam voor de Spark-en Kafka-clusters. Als u bijvoorbeeld **myhdi** invoert, wordt een Spark-cluster met de naam __Spark-Myhdi__ en een Kafka-cluster met de naam **Kafka-myhdi**gemaakt.|
+    |Cluster versie|De versie van het HDInsight-cluster. Dit voor beeld is getest met HDInsight 3,6 en werkt mogelijk niet met andere cluster typen.|
+    |Gebruikersnaam voor clusteraanmelding|De gebruikers naam van de beheerder voor de Spark-en Kafka-clusters.|
+    |Wachtwoord voor clusteraanmelding|Het gebruikers wachtwoord van de beheerder voor de Spark-en Kafka-clusters.|
+    |SSH-gebruikers naam|De SSH-gebruiker die moet worden gemaakt voor de Spark-en Kafka-clusters.|
+    |SSH-wacht woord|Het wacht woord voor de SSH-gebruiker voor de Spark-en Kafka-clusters.|
 
-    ![HDInsight custom deployment values](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
+    ![Aangepaste waarden voor HDInsight-implementatie](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
 1. Lees de **voorwaarden** en schakel vervolgens het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in.
 
-1. Finally, select **Purchase**. It may take up to 45 minutes to create the clusters, virtual network, and Cosmos DB account.
+1. Selecteer ten slotte **Inkoop**. Het kan 45 minuten duren om de clusters, het virtuele netwerk en het Cosmos DB-account te maken.
 
-## <a name="create-the-cosmos-db-database-and-collection"></a>Create the Cosmos DB database and collection
+## <a name="create-the-cosmos-db-database-and-collection"></a>De Cosmos DB-Data Base en-verzameling maken
 
-The project used in this document stores data in Cosmos DB. Before running the code, you must first create a _database_ and _collection_ in your Cosmos DB instance. You must also retrieve the document endpoint and the _key_ used to authenticate requests to Cosmos DB.
+Het project dat in dit document wordt gebruikt, slaat gegevens op in Cosmos DB. Voordat u de code uitvoert, moet u eerst een _Data Base_ en _verzameling_ maken in uw Cosmos DB-exemplaar. U moet ook het document eindpunt en de _sleutel_ ophalen die wordt gebruikt voor het verifiëren van aanvragen voor Cosmos db.
 
-One way to do this is to use the [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). The following script will create a database named `kafkadata` and a collection named `kafkacollection`. It then returns the primary key.
+Een manier om dit te doen is met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). Met het volgende script wordt een Data Base met de naam `kafkadata` en een verzameling met de naam `kafkacollection`gemaakt. Vervolgens wordt de primaire sleutel geretourneerd.
 
 ```azurecli
 #!/bin/bash
@@ -114,7 +114,7 @@ az cosmosdb show --name $name --resource-group $resourceGroupName --query docume
 az cosmosdb keys list --name $name --resource-group $resourceGroupName --type keys
 ```
 
-The document endpoint and primary key information is similar to the following text:
+De gegevens van het document eindpunt en de primaire sleutel zijn vergelijkbaar met de volgende tekst:
 
 ```text
 # endpoint
@@ -124,15 +124,15 @@ The document endpoint and primary key information is similar to the following te
 ```
 
 > [!IMPORTANT]  
-> Save the endpoint and key values, as they are needed in the Jupyter Notebooks.
+> Sla het eind punt en de sleutel waarden op, zoals ze nodig zijn in de Jupyter-notebooks.
 
-## <a name="get-the-notebooks"></a>Get the notebooks
+## <a name="get-the-notebooks"></a>De notitie blokken ophalen
 
 De code voor het voorbeeld in dit document is beschikbaar op [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb).
 
 ## <a name="upload-the-notebooks"></a>De notebooks uploaden
 
-Use the following steps to upload the notebooks from the project to your Spark on HDInsight cluster:
+Gebruik de volgende stappen om de notitie blokken van het project te uploaden naar uw Spark in HDInsight-cluster:
 
 1. Maak vanuit uw webbrowser verbinding met de Jupyter-notebook in uw Spark-cluster. In de volgende URL vervangt u `CLUSTERNAME` door de naam van uw __Spark__-cluster:
 
@@ -140,24 +140,24 @@ Use the following steps to upload the notebooks from the project to your Spark o
 
     Typ desgevraagd de cluster-aanmelding (beheerder) en het cluster-wachtwoord die u hebt gebruikt bij het maken van het cluster.
 
-2. From the upper right side of the page, use the __Upload__ button to upload the __Stream-taxi-data-to-kafka.ipynb__ file to the cluster. Selecteer __Openen__ om te beginnen met uploaden.
+2. Klik in de rechter bovenhoek van de pagina op de knop __uploaden__ om het bestand __-taxi-data-to-Kafka. ipynb__ te uploaden naar het cluster. Selecteer __Openen__ om te beginnen met uploaden.
 
-3. Find the __Stream-taxi-data-to-kafka.ipynb__ entry in the list of notebooks, and select __Upload__ button beside it.
+3. Zoek de vermelding __Stream-taxi-data-to-Kafka. ipynb__ in de lijst met notitie blokken en Selecteer naast de knop __uploaden__ .
 
-4. Repeat steps 1-3 to load the __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ notebook.
+4. Herhaal stap 1-3 voor het laden __van de stream-data-from-Kafka-to-Cosmos-db. ipynb__ -notebook.
 
-## <a name="load-taxi-data-into-kafka"></a>Load taxi data into Kafka
+## <a name="load-taxi-data-into-kafka"></a>Taxi gegevens in Kafka laden
 
-Once the files have been uploaded, select the __Stream-taxi-data-to-kafka.ipynb__ entry to open the notebook. Follow the steps in the notebook to load data into Kafka.
+Zodra de bestanden zijn geüpload, selecteert u de vermelding __Stream-taxi-naar-Kafka. ipynb__ om het notitie blok te openen. Volg de stappen in het notitie blok om gegevens te laden in Kafka.
 
-## <a name="process-taxi-data-using-spark-structured-streaming"></a>Process taxi data using Spark Structured Streaming
+## <a name="process-taxi-data-using-spark-structured-streaming"></a>De taxi-gegevens verwerken met behulp van Spark Structured streaming
 
-From the [Jupyter Notebook](https://jupyter.org/) home page, select the __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ entry. Follow the steps in the notebook to stream data from Kafka and into Azure Cosmos DB using Spark Structured Streaming.
+Selecteer op de start pagina van [Jupyter notebook](https://jupyter.org/) de vermelding __Stream-data-from-Kafka-to-Cosmos-data base. ipynb__ . Volg de stappen in de notebook voor het streamen van gegevens van Kafka en in Azure Cosmos DB met behulp van Spark Structured streaming.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Now that you've learned how to use Apache Spark Structured Streaming, see the following documents to learn more about working with Apache Spark, Apache Kafka, and Azure Cosmos DB:
+Nu u hebt geleerd hoe u Apache Spark Structured streaming kunt gebruiken, raadpleegt u de volgende documenten voor meer informatie over het werken met Apache Spark, Apache Kafka en Azure Cosmos DB:
 
-* [How to use Apache Spark streaming (DStream) with Apache Kafka](hdinsight-apache-spark-with-kafka.md).
-* [Start with Jupyter Notebook and Apache Spark on HDInsight](spark/apache-spark-jupyter-spark-sql.md)
-* [Welcome to Azure Cosmos DB](../cosmos-db/introduction.md)
+* [Apache Spark streaming (DStream) gebruiken met Apache Kafka](hdinsight-apache-spark-with-kafka.md).
+* [Beginnen met Jupyter Notebook en Apache Spark op HDInsight](spark/apache-spark-jupyter-spark-sql.md)
+* [Welkom bij Azure Cosmos DB](../cosmos-db/introduction.md)

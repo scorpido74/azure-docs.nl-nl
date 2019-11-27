@@ -143,7 +143,7 @@ Pooldatabases ondersteunen in het algemeen dezelfde [bedrijfscontinuïteitsfunct
 
   Herstel naar een bepaald tijdstip maakt gebruik van automatische database back-ups om een data base in een groep te herstellen naar een specifiek tijdstip. Zie [Herstel naar een bepaald tijdstip](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **Geo-restore**
+- **Geo-herstel**
 
   Geo-Restore biedt de standaard herstel optie wanneer een Data Base niet beschikbaar is vanwege een incident in de regio waarin de data base wordt gehost. Zie [Restore an Azure SQL Database or failover to a secondary](sql-database-disaster-recovery.md) (Een Azure SQL Database of herstellen of een failover uitvoeren naar een secundaire server)
 
@@ -159,7 +159,7 @@ Er zijn twee manieren waarop u een elastische pool kunt maken in de Azure Portal
 2. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over elastische Pools weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
 3. Selecteer in de tegel **data bases** de optie **elastische groep** in de vervolg keuzelijst **resource type** en selecteer vervolgens **maken**:
 
-   ![Een pool voor Elastic Database maken](./media/sql-database-elastic-pool/create-elastic-pool.png)
+   ![Elastische pool maken](./media/sql-database-elastic-pool/create-elastic-pool.png)
 
 
 1. U kunt ook een elastische pool maken door te navigeren naar een bestaande Azure SQL-Server en op **+ nieuwe pool** te klikken om een groep rechtstreeks op die server te maken.

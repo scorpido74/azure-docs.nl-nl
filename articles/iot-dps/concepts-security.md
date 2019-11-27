@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Device Provisioning Service - Security concepts
-description: Describes security provisioning concepts specific to devices with Device Provisioning Service and IoT Hub
+title: Azure-IoT Hub Device Provisioning Service-beveiligings concepten
+description: Beschrijft de concepten voor het inrichten van beveiliging die specifiek zijn voor apparaten met Device Provisioning Service en IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -14,93 +14,93 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228826"
 ---
-# <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service security concepts 
+# <a name="iot-hub-device-provisioning-service-security-concepts"></a>Beveiligings concepten IoT Hub Device Provisioning Service 
 
-IoT Hub Device Provisioning Service is a helper service for IoT Hub that you use to configure zero-touch device provisioning to a specified IoT hub. With the Device Provisioning Service, you can [auto-provision](concepts-auto-provisioning.md) millions of devices in a secure and scalable manner. This article gives an overview of the *security* concepts involved in device provisioning. This article is relevant to all personas involved in getting a device ready for deployment.
+IoT Hub Device Provisioning Service is een Helper-service voor IoT Hub die u gebruikt om het inrichten van Zero-Touch-apparaten te configureren voor een opgegeven IoT-hub. Met de Device Provisioning Service kunt u miljoenen apparaten op een veilige en schaal bare manier [automatisch inrichten](concepts-auto-provisioning.md) . Dit artikel geeft een overzicht van de *beveiligings* concepten die bij het inrichten van apparaten betrokken zijn. Dit artikel is relevant voor alle personen bij het ophalen van een apparaat dat klaar is voor implementatie.
 
-## <a name="attestation-mechanism"></a>Attestation mechanism
+## <a name="attestation-mechanism"></a>Attestation-mechanisme
 
-The attestation mechanism is the method used for confirming a device's identity. The attestation mechanism is also relevant to the enrollment list, which tells the provisioning service which method of attestation to use with a given device.
+Het Attestation-mechanisme is de methode die wordt gebruikt om de identiteit van een apparaat te bevestigen. Het Attestation-mechanisme is ook relevant voor de registratie lijst, waarmee wordt aangegeven dat de inrichtings service wordt gebruikt voor het gebruik van een bepaald apparaat.
 
 > [!NOTE]
-> IoT Hub uses "authentication scheme" for a similar concept in that service.
+> IoT Hub gebruikt verificatie schema voor een vergelijkbaar concept in die service.
 
-Device Provisioning Service supports the following forms of attestation:
-* **X.509 certificates** based on the standard X.509 certificate authentication flow.
-* **Trusted Platform Module (TPM)** based on a nonce challenge, using the TPM standard for keys to present a signed Shared Access Signature (SAS) token. This form of attestation does not require a physical TPM on the device, but the service expects to attest using the endorsement key per the [TPM spec](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
-* **Symmetric Key**  based on shared access signature (SAS) [Security tokens](../iot-hub/iot-hub-devguide-security.md#security-tokens), which include a hashed signature and an embedded expiration. For more information, see [Symmetric key attestation](concepts-symmetric-key-attestation.md).
+Device Provisioning Service ondersteunt de volgende vormen van Attestation:
+* **X. 509-certificaten** op basis van de standaard x. 509 certificaat verificatie stroom.
+* **Trusted Platform Module (TPM)** op basis van een nonce-Challenge, met behulp van de TPM-standaard voor sleutels om een ondertekend Shared Access Signature-token (SAS) aan te bieden. Voor deze vorm van Attestation is geen fysieke TPM vereist op het apparaat, maar de service verwacht te voldoen aan de hand van de goedkeurings sleutel per [TPM-specificatie](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Symmetrische sleutel** op basis van [beveiligings tokens](../iot-hub/iot-hub-devguide-security.md#security-tokens)voor Shared Access Signature (SAS), die een gehashte hand tekening en een Inge sloten verloop bevatten. Zie [symmetrische sleutel Attestation](concepts-symmetric-key-attestation.md)(Engelstalig) voor meer informatie.
 
 
-## <a name="hardware-security-module"></a>Hardware security module
+## <a name="hardware-security-module"></a>Hardware Security module
 
-The hardware security module, or HSM, is used for secure, hardware-based storage of device secrets, and is the most secure form of secret storage. Both X.509 certificates and SAS tokens can be stored in the HSM. HSMs can be used with both attestation mechanisms the provisioning supports.
+De Hardware Security module, of HSM, wordt gebruikt voor veilige, op hardware gebaseerde opslag van geheimen van apparaten en is de veiligste vorm van geheime opslag. Zowel X. 509-certificaten als SAS-tokens kunnen worden opgeslagen in de HSM. Hsm's kan worden gebruikt met beide Attestation-mechanismen die door het inrichten worden ondersteund.
 
 > [!TIP]
-> We strongly recommend using an HSM with devices to securely store secrets on your devices.
+> We raden u ten zeerste aan een HSM te gebruiken met apparaten om veilig geheimen op uw apparaten op te slaan.
 
-Device secrets may also be stored in software (memory), but it is a less secure form of storage than an HSM.
+Er kunnen ook geheimen voor apparaten worden opgeslagen in software (geheugen), maar dit is een minder veilige opslag ruimte dan een HSM.
 
 ## <a name="trusted-platform-module"></a>Trusted Platform Module
 
-TPM can refer to a standard for securely storing keys used to authenticate the platform, or it can refer to the I/O interface used to interact with the modules implementing the standard. TPMs can exist as discrete hardware, integrated hardware, firmware-based, or software-based. Learn more about [TPMs and TPM attestation](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Device Provisioning Service only supports TPM 2.0.
+TPM kan verwijzen naar een standaard voor het veilig opslaan van sleutels die worden gebruikt om het platform te verifiëren, of kan verwijzen naar de I/O-interface die wordt gebruikt om te communiceren met de modules die de standaard implementeren. Tpm's kan bestaan als afzonderlijke hardware, geïntegreerde hardware, op firmware gebaseerd of op software gebaseerd. Meer informatie over [tpm's en TPM-Attestation](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Device Provisioning Service ondersteunt alleen TPM 2,0.
 
-TPM attestation is based on a nonce challenge, which uses the endorsement and storage root keys to present a signed Shared Access Signature (SAS) token.
+TPM-Attestation is gebaseerd op een nonce-Challenge, die gebruikmaakt van de goedkeurings-en opslag basis sleutels om een ondertekend Shared Access Signature-token (SAS) aan te bieden.
 
-### <a name="endorsement-key"></a>Endorsement key
+### <a name="endorsement-key"></a>Goedkeurings sleutel
 
-The endorsement key is an asymmetric key contained inside the TPM, which was internally generated or injected at manufacturing time and is unique for every TPM. The endorsement key cannot be changed or removed. The private portion of the endorsement key is never released outside of the TPM, while the public portion of the endorsement key is used to recognize a genuine TPM. Learn more about the [endorsement key](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
+De goedkeurings sleutel is een asymmetrische sleutel in de TPM die intern is gegenereerd of geïnjecteerd tijdens de productie tijd en uniek is voor elke TPM. De goedkeurings sleutel kan niet worden gewijzigd of verwijderd. Het persoonlijke gedeelte van de goedkeurings sleutel wordt nooit buiten de TPM vrijgegeven, terwijl het open bare gedeelte van de goedkeurings sleutel wordt gebruikt om een legitieme TPM te herkennen. Meer informatie over de [goedkeurings sleutel](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
 
-### <a name="storage-root-key"></a>Storage root key
+### <a name="storage-root-key"></a>Opslag hoofd sleutel
 
-The storage root key is stored in the TPM and is used to protect TPM keys created by applications, so that these keys cannot be used without the TPM. The storage root key is generated when you take ownership of the TPM; when you clear the TPM so a new user can take ownership, a new storage root key is generated. Learn more about the [storage root key](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
+De opslag hoofd sleutel wordt opgeslagen in de TPM en wordt gebruikt voor het beveiligen van TPM-sleutels die zijn gemaakt door toepassingen, zodat deze sleutels niet kunnen worden gebruikt zonder de TPM. De opslag hoofd sleutel wordt gegenereerd wanneer u eigenaar van de TPM bent; Wanneer u de TPM wist zodat een nieuwe gebruiker eigenaar kan worden, wordt een nieuwe opslag hoofd sleutel gegenereerd. Meer informatie over de [opslag hoofd sleutel](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
 
-## <a name="x509-certificates"></a>X.509 certificates
+## <a name="x509-certificates"></a>X. 509-certificaten
 
-Using X.509 certificates as an attestation mechanism is an excellent way to scale production and simplify device provisioning. X.509 certificates are typically arranged in a certificate chain of trust in which each certificate in the chain is signed by the private key of the next higher certificate, and so on, terminating in a self-signed root certificate. This arrangement establishes a delegated chain of trust from the root certificate generated by a trusted root certificate authority (CA) down through each intermediate CA to the end-entity "leaf" certificate installed on a device. To learn more, see [Device Authentication using X.509 CA Certificates](/azure/iot-hub/iot-hub-x509ca-overview). 
+Het gebruik van X. 509-certificaten als Attestation-mechanisme is een uitstekende manier om productie te schalen en het inrichten van apparaten te vereenvoudigen. X. 509-certificaten worden meestal gerangschikt in een vertrouwens keten waarbij elk certificaat in de keten wordt ondertekend door de persoonlijke sleutel van het volgende hogere certificaat, enzovoort, wordt beëindigd in een zelfondertekend basis certificaat. Deze regeling brengt een overgedragen vertrouwens keten tot stand van het basis certificaat dat door een vertrouwde basis certificerings instantie (CA) wordt gegenereerd via elke tussenliggende CA naar het eind entiteit blad-certificaat dat op een apparaat is geïnstalleerd. Zie voor meer informatie [apparaat-verificatie met behulp van X. 509 CA-certificaten](/azure/iot-hub/iot-hub-x509ca-overview). 
 
-Often the certificate chain represents some logical or physical hierarchy associated with devices. For example, a manufacturer may:
-- issue a self-signed root CA certificate
-- use the root certificate to generate a unique intermediate CA certificate for each factory
-- use each factory's certificate to generate a unique intermediate CA certificate for each production line in the plant
-- and finally use the production line certificate, to generate a unique device (end-entity) certificate for each device manufactured on the line. 
+Vaak vertegenwoordigt de certificaat keten een logische of fysieke hiërarchie die is gekoppeld aan apparaten. Een fabrikant kan bijvoorbeeld:
+- een zelfondertekend basis-CA-certificaat uitgeven
+- het basis certificaat gebruiken voor het genereren van een uniek tussenliggend CA-certificaat voor elke fabriek
+- elk fabrieks certificaat gebruiken voor het genereren van een uniek tussenliggend CA-certificaat voor elke productie lijn in het bedrijf
+- en ten slotte het certificaat van de productie lijn gebruiken om een uniek apparaat (eind entiteit) te genereren voor elk apparaat dat op de regel wordt geproduceerd. 
 
-To learn more, see [Conceptual understanding of X.509 CA certificates in the IoT industry](/azure/iot-hub/iot-hub-x509ca-concept). 
+Zie voor meer informatie [conceptuele kennis van X. 509 CA-certificaten in de IOT-industrie](/azure/iot-hub/iot-hub-x509ca-concept). 
 
-### <a name="root-certificate"></a>Root certificate
+### <a name="root-certificate"></a>Basis certificaat
 
-A root certificate is a self-signed X.509 certificate representing a certificate authority (CA). It is the terminus, or trust anchor, of the certificate chain. Root certificates can be self-issued by an organization or purchased from a root certificate authority. To learn more, see [Get X.509 CA certificates](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). The root certificate can also be referred to as a root CA certificate.
+Een basis certificaat is een zelfondertekend X. 509-certificaat dat een certificerings instantie (CA) vertegenwoordigt. Het is het ondersteuningabonnementen of vertrouwens anker van de certificaat keten. Basis certificaten kunnen zelf worden uitgegeven door een organisatie of worden aangeschaft bij een basis certificerings instantie. Zie [Get X. 509 ca certificates](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates)(Engelstalig) voor meer informatie. Het basis certificaat kan ook worden aangeduid als een basis-CA-certificaat.
 
-### <a name="intermediate-certificate"></a>Intermediate certificate
+### <a name="intermediate-certificate"></a>Tussenliggend certificaat
 
-An intermediate certificate is an X.509 certificate, which has been signed by the root certificate (or by another intermediate certificate with the root certificate in its chain). The last intermediate certificate in a chain is used to sign the leaf certificate. An intermediate certificate can also be referred to as an intermediate CA certificate.
+Een tussenliggend certificaat is een X. 509-certificaat dat is ondertekend door het basis certificaat (of door een ander tussenliggend certificaat met het basis certificaat in de keten). Het laatste tussenliggende certificaat in een keten wordt gebruikt voor het ondertekenen van het blad certificaat. Een tussenliggend certificaat kan ook worden aangeduid als een tussenliggend CA-certificaat.
 
-### <a name="end-entity-leaf-certificate"></a>End-entity "leaf" certificate
+### <a name="end-entity-leaf-certificate"></a>Leaf-certificaat van eind entiteit
 
-The leaf certificate, or end-entity certificate, identifies the certificate holder. It has the root certificate in its certificate chain as well as zero or more intermediate certificates. The leaf certificate is not used to sign any other certificates. It uniquely identifies the device to the provisioning service and is sometimes referred to as the device certificate. During authentication, the device uses the private key associated with this certificate to respond to a proof of possession challenge from the service.
+Het blad certificaat of het certificaat van de eind entiteit identificeert de certificaat houder. Het bevat het basis certificaat in de certificaat keten en nul of meer tussenliggende certificaten. Het blad certificaat wordt niet gebruikt om andere certificaten te ondertekenen. Het apparaat wordt uniek geïdentificeerd voor de inrichtings service en wordt ook wel het certificaat van het apparaat genoemd. Tijdens de verificatie gebruikt het apparaat de persoonlijke sleutel die is gekoppeld aan dit certificaat om te reageren op de vraag naar een bewijs van de eigendom van de service.
 
-Leaf certificates used with an [Individual enrollment](./concepts-service.md#individual-enrollment) entry have a requirement that the **Subject Name** must be set to the registration ID of the Individual Enrollment entry. Leaf certificates used with an [Enrollment group](./concepts-service.md#enrollment-group) entry should have the **Subject Name** set to the desired device ID which will be shown in the **Registration Records** for the authenticated device in the enrollment group.
+Bij blad certificaten die worden gebruikt met een [afzonderlijke inschrijvings](./concepts-service.md#individual-enrollment) vermelding moet de **onderwerpnaam** worden ingesteld op de registratie-id van de afzonderlijke inschrijvings vermelding. Bij blad certificaten die worden gebruikt voor een [inschrijvings groep](./concepts-service.md#enrollment-group) moet de **onderwerpnaam** worden ingesteld op de gewenste apparaat-id die wordt weer gegeven in de **registratie records** voor het geverifieerde apparaat in de registratie groep.
 
-To learn more, see [Authenticating devices signed with X.509 CA certificates](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+Zie [apparaten verifiëren die zijn ondertekend met X. 509 CA-certificaten](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)voor meer informatie.
 
-## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Controlling device access to the provisioning service with X.509 certificates
+## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Toegang van apparaten tot de inrichtings service beheren met X. 509-certificaten
 
-The provisioning service exposes two types of enrollment entry that you can use to control access for devices that use the X.509 attestation mechanism:  
+De inrichtings service laat twee typen inschrijvings vermeldingen zien die u kunt gebruiken voor het beheren van de toegang voor apparaten die gebruikmaken van het verificatie mechanisme X. 509:  
 
-- [Individual enrollment](./concepts-service.md#individual-enrollment) entries are configured with the device certificate associated with a specific device. These entries control enrollments for specific devices.
-- [Enrollment group](./concepts-service.md#enrollment-group) entries are associated with a specific intermediate or root CA certificate. These entries control enrollments for all devices that have that intermediate or root certificate in their certificate chain. 
+- [Afzonderlijke registratie](./concepts-service.md#individual-enrollment) vermeldingen worden geconfigureerd met het certificaat van het apparaat dat is gekoppeld aan een specifiek apparaat. Met deze vermeldingen worden inschrijvingen voor specifieke apparaten beheerd.
+- Vermeldingen in de [registratie groep](./concepts-service.md#enrollment-group) zijn gekoppeld aan een specifiek tussenliggend of basis-CA-certificaat. Deze vermeldingen bepalen registraties voor alle apparaten die dat tussenliggende of basis certificaat in hun certificaat keten hebben. 
 
-When a device connects to the provisioning service, the service prioritizes more specific enrollment entries over less specific enrollment entries. That is, if an individual enrollment for the device exists, the provisioning service applies that entry. If there is no individual enrollment for the device and an enrollment group for the first intermediate certificate in the device's certificate chain exists, the service applies that entry, and so on, up the chain to the root. The service applies the first applicable entry that it finds, such that:
+Wanneer een apparaat verbinding maakt met de inrichtings service, wordt met de service prioriteit gegeven aan meer specifieke inschrijvings vermeldingen voor minder specifieke inschrijvings vermeldingen. Dat wil zeggen, als er een afzonderlijke inschrijving voor het apparaat bestaat, de inrichtings service die vermelding toepast. Als er geen individuele inschrijving voor het apparaat is en een registratie groep voor het eerste tussenliggende certificaat in de certificaat keten van het apparaat bestaat, wordt die vermelding door de service toegepast, enzovoort, tot aan het hoofd niveau. De service past de eerste toepasselijke vermelding toe die wordt gevonden, bijvoorbeeld:
 
-- If the first enrollment entry found is enabled, the service provisions the device.
-- If the first enrollment entry found is disabled, the service does not provision the device.  
-- If no enrollment entry is found for any of the certificates in the device's certificate chain, the service does not provision the device. 
+- Als de eerste inschrijvings vermelding is ingeschakeld, wordt het apparaat door de service ingericht.
+- Als de eerste inschrijvings vermelding is uitgeschakeld, wordt het apparaat niet door de service ingericht.  
+- Als er geen inschrijvings vermelding is gevonden voor de certificaten in de certificaat keten van het apparaat, wordt het apparaat niet door de service ingericht. 
 
-This mechanism and the hierarchical structure of certificate chains provides powerful flexibility in how you can control access for individual devices as well as for groups of devices. For example, imagine five devices with the following certificate chains: 
+Dit mechanisme en de hiërarchische structuur van certificaat ketens biedt krachtige flexibiliteit bij het beheren van de toegang voor afzonderlijke apparaten en voor groepen apparaten. Stel bijvoorbeeld vijf apparaten met de volgende certificaat ketens: 
 
-- *Device 1*: root certificate -> certificate A -> device 1 certificate
-- *Device 2*: root certificate -> certificate A -> device 2 certificate
-- *Device 3*: root certificate -> certificate A -> device 3 certificate
-- *Device 4*: root certificate -> certificate B -> device 4 certificate
-- *Device 5*: root certificate -> certificate B -> device 5 certificate
+- *Apparaat 1*: basis certificaat-> certificaat A-> apparaat 1 certificaat
+- *Apparaat 2*: basis certificaat-> certificaat A-> apparaat 2 certificaat
+- *Apparaat 3*: basis certificaat-> certificaat A-> apparaat 3
+- *Apparaat 4*: basis certificaat-> certificaat B-> apparaat 4-certificaat
+- *Apparaat 5*: basis certificaat-> certificaat B-> apparaat 5 certificaat
 
-Initially, you can create a single enabled group enrollment entry for the root certificate to enable access for all five devices. If certificate B later becomes compromised, you can create a disabled enrollment group entry for certificate B to prevent *Device 4* and *Device 5* from enrolling. If still later *Device 3* becomes compromised, you can create a disabled individual enrollment entry for its certificate. This revokes access for *Device 3*, but still allows *Device 1* and *Device 2* to enroll.
+In eerste instantie kunt u een eenmalige registratie vermelding voor het basis certificaat maken om toegang voor alle vijf apparaten in te scha kelen. Als certificaat B later wordt aangetast, kunt u een uitgeschakelde registratie groep voor certificaat B maken om te voor komen dat *apparaat 4* en *apparaat 5* worden inge schreven. Als er nog steeds een nieuwer *apparaat 3* wordt aangetast, kunt u een uitgeschakelde individuele inschrijvings vermelding voor het certificaat maken. Hiermee wordt de toegang voor *apparaat 3*ingetrokken, maar kan *apparaat 1* en *apparaat 2* worden inge schreven.

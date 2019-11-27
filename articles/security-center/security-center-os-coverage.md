@@ -41,7 +41,7 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 
 ### Windows Server-besturings systemen<a name="os-windows"></a>
 
-|OS|Ondersteund door Azure Security Center|Ondersteuning voor integratie met micro soft Defender ATP|
+|Besturingssysteem|Ondersteund door Azure Security Center|Ondersteuning voor integratie met micro soft Defender ATP|
 |:---|:-:|:-:|
 |Windows Server 2019|✔|X|
 |Windows Server 2016|✔|✔|
@@ -90,9 +90,9 @@ De volgende Azure PaaS-resources worden ondersteund door Azure Security Center:
 * PostGreSQL
 * MySQL
 * CosmosDB
-* Storage-account
+* Opslagaccount
 * App Service
-* Functie
+* Function
 * Cloudservice
 * VNet
 * Subnet
@@ -102,7 +102,7 @@ De volgende Azure PaaS-resources worden ondersteund door Azure Security Center:
 * Service Fabric-account
 * Automation-account
 * Load Balancer
-* Zoeken
+* Search
 * Service Bus-naamruimte
 * Stream Analytics
 * Event hub-naamruimte

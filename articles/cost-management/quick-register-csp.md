@@ -1,5 +1,5 @@
 ---
-title: Register using CSP Partner information with Cloudyn in Azure
+title: Registreren met behulp van CSP-partner gegevens met Cloudyn in azure
 description: In deze quickstart vindt u de details van de registratieprocedure voor het maken van een Cloudyn-proefabonnement en het aanmelden bij de Cloudyn-portal.
 services: cost-management
 keywords: ''
@@ -31,7 +31,7 @@ Als CSP-partner kunt u zich registreren bij Cloudyn. Uw registratie biedt toegan
 >
 > Indirecte CSP-resellers kan toegang worden gegeven tot Cloudyn nadat hun indirecte CSP-provider zich bij Cloudyn heeft geregistreerd. Indirecte CSP-resellers kunnen vervolgens zorgen dat Azure-klanten en abonnementen toegang hebben tot Cloudyn.
 >
->Cloudy is complaint with the Microsoft Secure Application model. For more information, see [Enabling the Secure Application Model framework](/partner-center/develop/enable-secure-app-model).
+>Cloudy is een klacht met het micro soft Secure Application model. Zie [het Framework van het veilige toepassings model inschakelen](/partner-center/develop/enable-secure-app-model)voor meer informatie.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -53,7 +53,7 @@ Als CSP-partner kunt u zich registreren bij Cloudyn. Uw registratie biedt toegan
     ![Partnerdashboard waar u de referentiegegevens kopieert](./media/quick-register-csp/csp-partner-center.png)
    6. Ga terug naar de Cloudyn-registratiepagina en plak de gegevens erin.  
       ![De referentiegegevens in de Cloudyn-registratiepagina plakken](./media/quick-register-csp/csp-reg.png)
-6. Accepteer de Gebruiksvoorwaarden en controleer uw gegevens. Klik op **Volgende** om Cloudyn te autoriseren Azure-resourcegegevens te verzamelen. De gegevens die worden verzameld zijn onder meer gegevens over gebruik, prestaties, facturering en tags van uw abonnementen.  
+6. Accepteer de Gebruiksvoorwaarden en controleer uw gegevens. Klik op **Volgende** om Cloudyn te autoriseren Azure-brongegevens te verzamelen. De gegevens die worden verzameld zijn onder meer gegevens over gebruik, prestaties, facturering en tags van uw abonnementen.  
 7. Onder **Invite other stakeholders** kunt u gebruikers toevoegen door hun e-mailadressen in te voeren. Klik op **Volgende** als u klaar bent. Het duurt ongeveer twee uur voordat uw factureringsgegevens aan Cloudyn zijn toegevoegd.
 8. Klik op **Go to Cloudyn** om de Cloudyn-portal te openen. Op de pagina **Cloud Accounts Management** zou u de geregistreerde CSP-accountgegevens moeten kunnen zien.
 
@@ -61,7 +61,7 @@ Als CSP-partner kunt u zich registreren bij Cloudyn. Uw registratie biedt toegan
 
 De Partner Center API is standaard alleen toegankelijk voor directe CSP's. Een directe CSP-provider kan echter toegang configureren voor hun indirecte CSP-klanten of -partners met behulp van entiteitsgroepen in Cloudyn.
 
-To enable access for indirect CSP customers or partners, follow the steps in [Register with Cloudyn](#register-with-cloudyn) to set up a trial registration. Voer vervolgens de volgende stappen uit voor het segmenteren van indirecte CSP-gegevens met behulp van Cloudyn-entiteitsgroepen. Wijs daarna de juiste gebruikersmachtigingen toe aan de entiteitsgroepen.
+Als u toegang wilt verlenen voor indirecte CSP-klanten of-partners, volgt u de stappen in [registreren bij Cloudyn](#register-with-cloudyn) om een proef registratie in te stellen. Voer vervolgens de volgende stappen uit voor het segmenteren van indirecte CSP-gegevens met behulp van Cloudyn-entiteitsgroepen. Wijs daarna de juiste gebruikersmachtigingen toe aan de entiteitsgroepen.
 
 1. Maak met deze gegevens een entiteitsgroep via [Entiteiten maken](tutorial-user-access.md#create-and-manage-entities).
 2. Volg de stappen in [Abonnementen toewijzen aan kostentiteiten](https://www.youtube.com/watch?v=d9uTWSdoQYo). Koppel de indirecte CSP-klant en de bijbehorende Azure-abonnementen aan de entiteit die u eerder hebt gemaakt.

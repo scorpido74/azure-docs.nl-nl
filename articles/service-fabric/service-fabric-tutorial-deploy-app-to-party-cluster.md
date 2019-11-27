@@ -44,11 +44,11 @@ In deze zelfstudie leert u het volgende:
 Voor u met deze zelfstudie begint:
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
-* [Install Visual Studio 2019](https://www.visualstudio.com/), and install the **Azure development** and **ASP.NET and web development** workloads.
+* [Installeer Visual Studio 2019](https://www.visualstudio.com/)en installeer de werk belasting van **Azure Development** en **ASP.net en Web Development** .
 * [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
 
 > [!NOTE]
-> A free account may not meet the requirements to create a virtual machine. This will prevent the completion of the tutorial. In addition, a non-work or non-school account may encounter permission issues while creating the certificate on the keyvault associated with the cluster. If you experience an error related to certificate creation use the Portal to create the cluster instead. 
+> Een gratis account voldoet mogelijk niet aan de vereisten voor het maken van een virtuele machine. Hiermee voor komt u dat de zelf studie is voltooid. Daarnaast kan een niet-werk-of niet-school account machtigings problemen ondervinden tijdens het maken van het certificaat op de sleutel kluis die is gekoppeld aan het cluster. Als er een fout optreedt die betrekking heeft op het maken van een certificaat, gebruikt u de portal om in plaats daarvan het cluster te maken. 
 
 ## <a name="download-the-voting-sample-application"></a>De voorbeeldtoepassing om te stemmen downloaden
 
@@ -78,18 +78,18 @@ De front-end webservice van de stemtoepassing luistert op een specifieke poort (
 <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
 ```
 
-Noteer het service-eindpunt. Dit is nodig in een latere stap.  If you're deploying to an existing cluster, open this port by creating a load-balancing rule and probe in the Azure load balancer using a [PowerShell script](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) or via the load balancer for this cluster in the [Azure portal](https://portal.azure.com).
+Noteer het service-eindpunt. Dit is nodig in een latere stap.  Als u implementeert in een bestaand cluster, opent u deze poort door een taakverdelings regel te maken en te testen in de Azure-load balancer met behulp van een [Power shell-script](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) of via de Load Balancer voor dit cluster in de [Azure Portal](https://portal.azure.com).
 
 ### <a name="create-a-test-cluster-in-azure"></a>Een testcluster maken in Azure
 Klik in Solution Explorer met de rechtermuisknop op **Stemmen** en selecteer **Publiceren**.
 
-Selecteer in **Verbindingseindpunt** de optie **Nieuw cluster maken**.  If you're deploying to an existing cluster, select the cluster endpoint from the list.  Het dialoogvenster Service Fabric-cluster maken wordt geopend.
+Selecteer in **Verbindingseindpunt** de optie **Nieuw cluster maken**.  Als u implementeert in een bestaand cluster, selecteert u het eind punt van het cluster in de lijst.  Het dialoogvenster Service Fabric-cluster maken wordt geopend.
 
 Voer op het tabblad **Cluster** de **Clusternaam** (bijvoorbeeld 'mytestcluster') in, selecteer uw abonnement, selecteer een regio voor het cluster (zoals US - zuid-centraal), voer het aantal clusterknooppunten in (we raden drie knooppunten voor een testcluster aan) en voer een resourcegroep (zoals 'mytestclustergroup') in. Klik op **Volgende**.
 
 ![Een cluster maken](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-Voer op het tabblad **Certificaat** het wachtwoord en het uitvoerpad voor het clustercertificaat in. Er wordt een zelfondertekend certificaat als een PFX-bestand gemaakt en opgeslagen in het opgegeven uitvoerpad.  Het certificaat wordt gebruikt voor de beveiliging van zowel knooppunt-naar-knooppunt als client-naar-knooppunt.  Don't use a self-signed certificate for production clusters.  Dit certificaat wordt gebruikt door Visual Studio voor verificatie bij het cluster en de implementatie van toepassingen. Selecteer **Certificaat importeren** om de PFX in het certificaatarchief CurrentUser\My van uw computer te installeren.  Klik op **Volgende**.
+Voer op het tabblad **Certificaat** het wachtwoord en het uitvoerpad voor het clustercertificaat in. Er wordt een zelfondertekend certificaat als een PFX-bestand gemaakt en opgeslagen in het opgegeven uitvoerpad.  Het certificaat wordt gebruikt voor de beveiliging van zowel knooppunt-naar-knooppunt als client-naar-knooppunt.  Gebruik geen zelfondertekend certificaat voor productie clusters.  Dit certificaat wordt gebruikt door Visual Studio voor verificatie bij het cluster en de implementatie van toepassingen. Selecteer **Certificaat importeren** om de PFX in het certificaatarchief CurrentUser\My van uw computer te installeren.  Klik op **Volgende**.
 
 ![Een cluster maken](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 

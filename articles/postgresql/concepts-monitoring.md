@@ -1,6 +1,6 @@
 ---
-title: Monitor and Tune in Azure Database for PostgreSQL - Single Server
-description: This article describes monitoring and tuning features in Azure Database for PostgreSQL - Single Server.
+title: Azure Database for PostgreSQL-één server bewaken en afstemmen
+description: In dit artikel worden de functies voor het controleren en afstemmen in Azure Database for PostgreSQL-één server beschreven.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -13,55 +13,55 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384023"
 ---
-# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Monitor and tune Azure Database for PostgreSQL - Single Server
-Monitoring data about your servers helps you troubleshoot and optimize for your workload. Azure Database for PostgreSQL provides various monitoring options to provide insight into the behavior of your server.
+# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-één server bewaken en afstemmen
+Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for PostgreSQL biedt verschillende bewakings opties om inzicht te krijgen in het gedrag van uw server.
 
 ## <a name="metrics"></a>Metrische gegevens
-Azure Database for PostgreSQL provides various metrics that give insight into the behavior of the resources supporting the PostgreSQL server. Each metric is emitted at a one-minute frequency, and has up to 30 days of history. You can configure alerts on the metrics. For step by step guidance, see [How to set up alerts](howto-alert-on-metric.md). Other tasks include setting up automated actions, performing advanced analytics, and archiving history. For more information, see the [Azure Metrics Overview](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Azure Database for PostgreSQL biedt diverse metrische gegevens die inzicht geven in het gedrag van de bronnen die de PostgreSQL-Server ondersteunen. Elke metriek wordt verzonden met een frequentie van één minuut en heeft tot wel 30 dagen aan geschiedenis. U kunt waarschuwingen configureren voor de metrische gegevens. Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](howto-alert-on-metric.md). Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van de geschiedenis. Zie het overzicht van Azure- [metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
 
-### <a name="list-of-metrics"></a>List of metrics
-These metrics are available for Azure Database for PostgreSQL:
+### <a name="list-of-metrics"></a>Lijst met metrische gegevens
+Deze metrische gegevens zijn beschikbaar voor Azure Database for PostgreSQL:
 
-|Gegevens|Metric Display Name|Eenheid|Beschrijving|
+|Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Beschrijving|
 |---|---|---|---|
-|cpu_percent|CPU percent|Procent|The percentage of CPU in use.|
-|memory_percent|Memory percent|Procent|The percentage of memory in use.|
-|io_consumption_percent|IO percent|Procent|The percentage of IO in use.|
-|storage_percent|Storage percentage|Procent|The percentage of storage used out of the server's maximum.|
-|storage_used|Gebruikte opslag|Bytes|The amount of storage in use. The storage used by the service may include the database files, transaction logs, and the server logs.|
-|storage_limit|Storage limit|Bytes|The maximum storage for this server.|
-|serverlog_storage_percent|Server Log storage percent|Procent|The percentage of server log storage used out of the server's maximum server log storage.|
-|serverlog_storage_usage|Server Log storage used|Bytes|The amount of server log storage in use.|
-|serverlog_storage_limit|Server Log storage limit|Bytes|The maximum server log storage for this server.|
-|active_connections|Active Connections|Aantal|The number of active connections to the server.|
-|connections_failed|Mislukte verbindingen|Aantal|The number of failed connections to the server.|
-|network_bytes_egress|Netwerk uit|Bytes|Network Out across active connections.|
-|network_bytes_ingress|Netwerk in|Bytes|Network In across active connections.|
-|backup_storage_used|Backup Storage Used|Bytes|The amount of backup storage used.|
-|pg_replica_log_delay_in_bytes|Max Lag Across Replicas|Bytes|The lag in bytes between the master and the most-lagging replica. This metric is available on the master server only.|
-|pg_replica_log_delay_in_seconds|Replica Lag|Seconden|The time since the last replayed transaction. This metric is available for replica servers only.|
+|cpu_percent|CPU-percentage|Procent|Het percentage CPU-gebruik.|
+|memory_percent|Geheugen percentage|Procent|Het percentage geheugen dat in gebruik is.|
+|io_consumption_percent|IO-percentage|Procent|Het percentage i/o dat in gebruik is.|
+|storage_percent|Opslag percentage|Procent|Het percentage van de opslag ruimte dat uit het maximum van de server wordt gebruikt.|
+|storage_used|Gebruikte opslag|Bytes|De hoeveelheid opslag ruimte die wordt gebruikt. De opslag die door de service wordt gebruikt, kan de database bestanden, transactie logboeken en de server logboeken bevatten.|
+|storage_limit|Opslag limiet|Bytes|De maximale opslag voor deze server.|
+|serverlog_storage_percent|Percentage server logboek opslag|Procent|Het percentage server logboek opslag dat is gebruikt voor de maximale server logboek opslag van de server.|
+|serverlog_storage_usage|Gebruikte server logboek opslag|Bytes|De hoeveelheid server logboek opslag die in gebruik is.|
+|serverlog_storage_limit|Opslag limiet voor server logboek|Bytes|De maximale server logboek opslag voor deze server.|
+|active_connections|Actieve verbindingen|Aantal|Het aantal actieve verbindingen met de server.|
+|connections_failed|Mislukte verbindingen|Aantal|Het aantal mislukte verbindingen met de server.|
+|network_bytes_egress|Netwerk uit|Bytes|Netwerk uit over actieve verbindingen.|
+|network_bytes_ingress|Netwerk in|Bytes|Netwerk in meerdere actieve verbindingen.|
+|backup_storage_used|Gebruikte back-upopslag|Bytes|De hoeveelheid back-upopslag die wordt gebruikt.|
+|pg_replica_log_delay_in_bytes|Maximale vertraging in Replica's|Bytes|De vertraging in bytes tussen het hoofd en de meest bewaarde replica. Deze metriek is alleen beschikbaar op de hoofd server.|
+|pg_replica_log_delay_in_seconds|Replica vertraging|Seconden|De tijd sinds de laatste geplayte trans actie. Deze metriek is alleen beschikbaar voor replica servers.|
 
 ## <a name="server-logs"></a>Serverlogboeken
-You can enable logging on your server. These logs are also available through Azure Diagnostic Logs in [Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md), Event Hubs, and Storage Account. To learn more about logging, visit the [server logs](concepts-server-logs.md) page.
+U kunt logboek registratie inschakelen op uw server. Deze logboeken zijn ook beschikbaar via Diagnostische logboeken van Azure in [Azure monitor-logboeken](../azure-monitor/log-query/log-query-overview.md), Event hubs en opslag account. Ga naar de pagina [Server logboeken](concepts-server-logs.md) voor meer informatie over logboek registratie.
 
 ## <a name="query-store"></a>Query Store
-[Query Store](concepts-query-store.md) keeps track of query performance over time including query runtime statistics and wait events. The feature persists query runtime performance information in a system database named **azure_sys** under the query_store schema. You can control the collection and storage of data via various configuration knobs.
+In het [query archief](concepts-query-store.md) worden de query prestaties in de loop van de tijd bijgehouden, inclusief de statistieken voor query runtime en wacht gebeurtenissen. Met de functie wordt de prestatie gegevens van query runtime persistent gemaakt in een systeem database met de naam **azure_sys** onder het query_store-schema. U kunt het verzamelen en opslaan van gegevens beheren via verschillende configuratie knoppen.
 
 ## <a name="query-performance-insight"></a>Inzicht in queryprestaties
-[Query Performance Insight](concepts-query-performance-insight.md) works in conjunction with Query Store to provide visualizations accessible from the Azure portal. These charts enable you to identify key queries that impact performance. Query Performance Insightis accessible from the **Support + troubleshooting** section of your Azure Database for PostgreSQL server's portal page.
+[Query Performance Insight](concepts-query-performance-insight.md) werkt in combi natie met query Store om visualisaties toegankelijk te maken vanuit de Azure Portal. Met deze grafieken kunt u belang rijke query's identificeren die van invloed zijn op de prestaties. Query prestaties die toegankelijk zijn via de sectie **ondersteuning en probleem oplossing** van de portal pagina van uw Azure database for postgresql-server.
 
 ## <a name="performance-recommendations"></a>Aanbevelingen voor prestaties
-The [Performance Recommendations](concepts-performance-recommendations.md) feature identifies opportunities to improve workload performance. Performance Recommendations provides you with recommendations for creating new indexes that have the potential to improve the performance of your workloads. To produce index recommendations, the feature takes into consideration various database characteristics, including its schema and the workload as reported by Query Store. After implementing any performance recommendation, customers should test performance to evaluate the impact of those changes. 
+De functie voor [prestatie aanbevelingen](concepts-performance-recommendations.md) identificeert mogelijkheden voor het verbeteren van de prestaties van de werk belasting. Prestatie aanbevelingen bieden u aanbevelingen voor het maken van nieuwe indexen die de prestaties van uw workloads kunnen verbeteren. Voor het produceren van index aanbevelingen, neemt de functie rekening met diverse database kenmerken, waaronder het schema en de werk belasting zoals gerapporteerd door de query Store. Na de implementatie van de aanbevolen prestaties, moeten klanten de prestaties testen om de impact van deze wijzigingen te evalueren. 
 
 ## <a name="service-health"></a>Servicestatus
-[Azure Service health](../service-health/overview.md) provides a view of all service health notifications in your subscription. You can set up Service Health alerts to notify you via your preferred communication channels when there are issues or changes that may affect the Azure services and regions you use.
+[Azure service Health](../service-health/overview.md) biedt een overzicht van alle service status meldingen in uw abonnement. U kunt Service Health waarschuwingen instellen om u te waarschuwen via de communicatie kanalen van uw voor keur wanneer er problemen zijn of wijzigingen die van invloed kunnen zijn op de Azure-Services en-regio's die u gebruikt.
 
-You can view scheduled maintenance events for Azure Database for PostgreSQL - Single Server by using the **planned maintenance** event type. To learn how to create **service health alerts**, visit the [Create activity log alerts on service notifications](../service-health/alerts-activity-log-service-notifications.md) article.
+U kunt geplande onderhouds gebeurtenissen voor Azure Database for PostgreSQL-één server weer geven met behulp van het gebeurtenis type **gepland onderhoud** . Ga voor meer informatie over het maken van **service Health-waarschuwingen**naar het artikel [activiteiten logboeken maken op service meldingen](../service-health/alerts-activity-log-service-notifications.md) .
 
 > [!IMPORTANT]
-> The planned maintenance notifications is available in preview for EAST US and UK South only.
+> De geplande onderhouds meldingen zijn alleen beschikbaar als preview-versie voor VS-Oost en alleen UK-zuid.
 
 ## <a name="next-steps"></a>Volgende stappen
-- See [how to set up alerts](howto-alert-on-metric.md) for guidance on creating an alert on a metric.
-- For more information on how to access and export metrics using the Azure portal, REST API, or CLI, see the [Azure Metrics Overview](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
-- Read our blog on [best practices for monitoring your server](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/).
+- Zie [waarschuwingen instellen](howto-alert-on-metric.md) voor hulp bij het maken van een waarschuwing op metrische gegevens.
+- Zie het [overzicht van Azure-metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie over het openen en exporteren van metrische gegevens met behulp van de Azure Portal, rest API of cli.
+- Lees onze blog [voor de aanbevolen procedures voor het bewaken van uw server](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/).

@@ -1,6 +1,6 @@
 ---
 title: Gegevens synchroniseren
-description: This overview introduces Azure SQL Data Sync
+description: In dit overzicht introduceert Azure SQL Data Sync
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -18,227 +18,227 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422524"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Sync data across multiple cloud and on-premises databases with SQL Data Sync
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Gegevens synchroniseren tussen meerdere cloud en on-premises databases met SQL Data Sync
 
-SQL Data Sync is a service built on Azure SQL Database that lets you synchronize the data you select bi-directionally across multiple SQL databases and SQL Server instances.
+SQL Data Sync is een service die is gebouwd op Azure SQL Database waarmee u de gegevens die u bidirectioneel op meerdere SQL-databases en SQL Server-exemplaren selecteert worden gesynchroniseerd.
 
 > [!IMPORTANT]
-> Azure SQL Data Sync does not support Azure SQL Database Managed Instance at this time.
+> Het Azure SQL Database beheerde exemplaar wordt op dit moment niet door Azure SQL Data Sync ondersteund.
 
-## <a name="when-to-use-data-sync"></a>When to use Data Sync
+## <a name="when-to-use-data-sync"></a>Wanneer u Data Sync
 
-Data Sync is useful in cases where data needs to be kept updated across several Azure SQL databases or SQL Server databases. Here are the main use cases for Data Sync:
+Gegevens synchronisatie is handig in gevallen waarin gegevens moeten worden bijgewerkt in meerdere Azure SQL-data bases of SQL Server data bases. Hier volgen de belangrijkste gebruiksvoorbeelden voor Data Sync:
 
-- **Hybrid Data Synchronization:** With Data Sync, you can keep data synchronized between your on-premises databases and Azure SQL databases to enable hybrid applications. This capability may appeal to customers who are considering moving to the cloud and would like to put some of their application in Azure.
-- **Distributed Applications:** In many cases, it's beneficial to separate different workloads across different databases. For example, if you have a large production database, but you also need to run a reporting or analytics workload on this data, it's helpful to have a second database for this additional workload. This approach minimizes the performance impact on your production workload. You can use Data Sync to keep these two databases synchronized.
-- **Globally Distributed Applications:** Many businesses span several regions and even several countries/regions. To minimize network latency, it's best to have your data in a region close to you. With Data Sync, you can easily keep databases in regions around the world synchronized.
+- **Gegevens synchronisatie hybride:** Met gegevens synchronisatie kunt u gegevens gesynchroniseerd blijven tussen uw on-premises data bases en Azure SQL-data bases om hybride toepassingen in te scha kelen. Deze mogelijkheid kan beroep instellen op klanten die van plan bent te verplaatsen naar de cloud en wil graag enkele van de toepassing in Azure te plaatsen.
+- **Gedistribueerde toepassingen:** In veel gevallen is het nuttig om verschillende werk belastingen te scheiden in verschillende data bases. Bijvoorbeeld, als u een grote productiedatabase hebt, maar u moet ook een rapport of de analytics-workload wordt uitgevoerd op deze gegevens, is het handig om een tweede database voor deze extra belasting. Deze aanpak minimaliseert de prestatie-invloed op uw productie-werkbelasting. Data Sync kunt u deze twee databases gesynchroniseerd houden.
+- **Wereld wijd gedistribueerde toepassingen:** Veel bedrijven omvatten verschillende regio's en zelfs verschillende landen/regio's. Als u wilt de netwerklatentie beperken, is het raadzaam om uw gegevens in een regio dicht bij u. U kunt databases eenvoudig in regio's over de hele wereld gesynchroniseerd houden met het synchroniseren van gegevens.
 
-Data Sync isn't the preferred solution for the following scenarios:
+Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenario's:
 
-| Scenario | Some recommended solutions |
+| Scenario | Sommige aanbevolen oplossingen |
 |----------|----------------------------|
-| Noodherstel | [Azure geo-redundant backups](sql-database-automated-backups.md) |
-| Read Scale | [Use read-only replicas to load balance read-only query workloads (preview)](sql-database-read-scale-out.md) |
-| ETL (OLTP to OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) or [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| Migration from on-premises SQL Server to Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| Noodherstel | [Azure geo-redundante back-ups](sql-database-automated-backups.md) |
+| Schaal lezen | [Alleen-lezen replica's gebruiken om taken te verdelen over alleen-lezen query's (preview-versie)](sql-database-read-scale-out.md) |
+| ETL (OLTP met OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) of [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
+| Migratie van on-premises SQL Server naar Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
-## <a name="overview-of-sql-data-sync"></a>Overview of SQL Data Sync
+## <a name="overview-of-sql-data-sync"></a>Overzicht van SQL Data Sync
 
-Data Sync is based around the concept of a Sync Group. A Sync Group is a group of databases that you want to synchronize.
+Gegevenssynchronisatie is gebaseerd op het concept van een Synchronisatiegroep. Een groep voor synchronisatie is een groep databases die u wilt synchroniseren.
 
-Data Sync uses a hub and spoke topology to synchronize data. You define one of the databases in the sync group as the Hub Database. The rest of the databases are member databases. Sync occurs only between the Hub and individual members.
+Data Sync maakt gebruik van een hub en spoke-topologie om gegevens te synchroniseren. U definieert een van de databases in de groep voor synchronisatie als de Hubdatabase. De rest van de databases zijn lid databases. Synchronisatie plaatsvindt tussen de Hub en de afzonderlijke leden.
 
-- The **Hub Database** must be an Azure SQL Database.
-- The **member databases** can be either SQL Databases, on-premises SQL Server databases, or SQL Server instances on Azure virtual machines.
-- The **Sync Database** contains the metadata and log for Data Sync. The Sync Database has to be an Azure SQL Database located in the same region as the Hub Database. The Sync Database is customer created and customer owned.
+- De **hub-data base** moet een Azure SQL database zijn.
+- De **leden databases** kunnen bestaan uit SQL-data bases, on-premises SQL server data bases of SQL Server exemplaren op virtuele machines van Azure.
+- De **synchronisatie database** bevat de meta gegevens en het logboek voor de gegevens synchronisatie. De synchronisatie database moet een Azure SQL Database zijn die zich in dezelfde regio bevindt als de hub-data base. De synchronisatiedatabase is gemaakt van de klant en van klanten.
 
 > [!NOTE]
-> If you're using an on premises database as a member database, you have to [install and configure a local sync agent](sql-database-get-started-sql-data-sync.md#add-on-prem).
+> Als u een on-premises Data Base als een lid-data base gebruikt, moet u [een lokale synchronisatie agent installeren en configureren](sql-database-get-started-sql-data-sync.md#add-on-prem).
 
-![Sync data between databases](media/sql-database-sync-data/sync-data-overview.png)
+![Gegevens tussen databases synchroniseren](media/sql-database-sync-data/sync-data-overview.png)
 
-A Sync Group has the following properties:
+Een groep voor synchronisatie heeft de volgende eigenschappen:
 
-- The **Sync Schema** describes which data is being synchronized.
-- The **Sync Direction** can be bi-directional or can flow in only one direction. That is, the Sync Direction can be *Hub to Member*, or *Member to Hub*, or both.
-- The **Sync Interval** describes how often synchronization occurs.
-- The **Conflict Resolution Policy** is a group level policy, which can be *Hub wins* or *Member wins*.
+- In het **synchronisatie schema** wordt beschreven welke gegevens worden gesynchroniseerd.
+- De **synchronisatie richting** kan bidirectionele zijn of kan in slechts één richting stromen. Dat wil zeggen dat de synchronisatie richting van de *hub naar het lid*, of van het lid is van een *hub*of van beide kan zijn.
+- Het **synchronisatie-interval** beschrijft hoe vaak synchronisatie plaatsvindt.
+- Het **beleid** voor het oplossen van conflicten is een beleid op groeps niveau, dat *hub wint* of lid van een *WINS-server*kan zijn.
 
-## <a name="how-does-data-sync-work"></a>How does Data Sync work
+## <a name="how-does-data-sync-work"></a>Hoe werkt gegevens synchronisatie?
 
-- **Tracking data changes:** Data Sync tracks changes using insert, update, and delete triggers. The changes are recorded in a side table in the user database. Note that BULK INSERT doesn't fire triggers by default. If FIRE_TRIGGERS isn't specified, no insert triggers execute. Add the FIRE_TRIGGERS option so Data Sync can track those inserts. 
-- **Synchronizing data:** Data Sync is designed in a Hub and Spoke model. The Hub syncs with each member individually. Changes from the Hub are downloaded to the member and then changes from the member are uploaded to the Hub.
-- **Resolving conflicts:** Data Sync provides two options for conflict resolution, *Hub wins* or *Member wins*.
-  - If you select *Hub wins*, the changes in the hub always overwrite changes in the member.
-  - If you select *Member wins*, the changes in the member overwrite changes in the hub. If there's more than one member, the final value depends on which member syncs first.
+- **Wijzigingen in de gegevens bijhouden:** Gegevens synchronisatie houdt wijzigingen bij met behulp van INSERT-, update-en delete-triggers. De wijzigingen worden vastgelegd in een tabel aan de in de database. Houd er rekening mee dat BULK INSERT triggers niet standaard wordt geactiveerd. Als FIRE_TRIGGERS niet is opgegeven, worden er geen invoeg triggers uitgevoerd. De optie bulkhints toevoegen zodat gegevenssynchronisatie die ingevoegd bijhouden kunt. 
+- **Gegevens synchroniseren:** Gegevens synchronisatie is ontworpen in een hub-en spoke-model. De Hub synchroniseert afzonderlijk met elk lid. Wijzigingen van de Hub worden gedownload naar het lid en vervolgens de wijzigingen van het lid worden geüpload naar de Hub.
+- **Conflicten oplossen:** Gegevens synchronisatie biedt twee opties voor het oplossen van conflicten, *hub WINS* of *lid van WINS*.
+  - Als u *hub WINS*selecteert, worden wijzigingen in het lid altijd overschreven door de wijzigingen in de hub.
+  - Als u *lid bent van WINS*, worden wijzigingen in het lid overschreven in de hub. Als er meer dan één lid, afhankelijk van de uiteindelijke waarde waarvoor de eerst synchroniseert.
 
-## <a name="compare-data-sync-with-transactional-replication"></a>Compare Data Sync with Transactional Replication
+## <a name="compare-data-sync-with-transactional-replication"></a>Gegevens synchronisatie met transactionele replicatie vergelijken
 
 | | Gegevens synchroniseren | Transactionele replicatie |
 |---|---|---|
-| Voordelen | - Active-active support<br/>- Bi-directional between on-premises and Azure SQL Database | - Lower latency<br/>- Transactional consistency<br/>- Reuse existing topology after migration |
-| Nadelen | - 5 min or more latency<br/>- No transactional consistency<br/>- Higher performance impact | - Can’t publish from Azure SQL Database single database or pooled database<br/>- High maintenance cost |
+| Voordelen | -Actief-actief ondersteuning<br/>-Bi-richting tussen on-premises en Azure SQL Database | -Laagste latentie<br/>-Transactionele consistentie<br/>-Bestaande topologie na migratie opnieuw gebruiken |
+| Nadelen | -5 minuten of meer latentie<br/>-Geen transactionele consistentie<br/>-Hogere gevolgen voor de prestaties | -Kan niet publiceren vanuit Azure SQL Database afzonderlijke data base of gegroepeerde Data Base<br/>-Hoge onderhouds kosten |
 
 ## <a name="get-started-with-sql-data-sync"></a>Aan de slag met SQL Data Sync
 
-### <a name="set-up-data-sync-in-the-azure-portal"></a>Set up Data Sync in the Azure portal
+### <a name="set-up-data-sync-in-the-azure-portal"></a>Data Sync instellen in Azure portal
 
 - [Azure SQL Data Sync instellen](sql-database-get-started-sql-data-sync.md)
 - Data Sync-agent: [Data Sync-agent voor Azure SQL Data Sync](sql-database-data-sync-agent.md)
 
-### <a name="set-up-data-sync-with-powershell"></a>Set up Data Sync with PowerShell
+### <a name="set-up-data-sync-with-powershell"></a>Data Sync met PowerShell instellen
 
 - [PowerShell gebruiken om meerdere Azure SQL-databases te synchroniseren](scripts/sql-database-sync-data-between-sql-databases.md)
 - [PowerShell gebruiken om te synchroniseren tussen een Azure SQL-database en een on-premises database](scripts/sql-database-sync-data-between-azure-onprem.md)
 
-### <a name="review-the-best-practices-for-data-sync"></a>Review the best practices for Data Sync
+### <a name="review-the-best-practices-for-data-sync"></a>Bekijk de aanbevolen procedures voor gegevenssynchronisatie
 
 - [Aanbevolen procedures voor Azure SQL Data Sync](sql-database-best-practices-data-sync.md)
 
-### <a name="did-something-go-wrong"></a>Did something go wrong
+### <a name="did-something-go-wrong"></a>Er is iets fout gegaan
 
 - [Problemen oplossen met Azure SQL Data Sync](sql-database-troubleshoot-data-sync.md)
 
-## <a name="consistency-and-performance"></a>Consistency and performance
+## <a name="consistency-and-performance"></a>Consistentie en prestaties
 
 ### <a name="eventual-consistency"></a>Uiteindelijke consistentie
 
-Since Data Sync is trigger-based, transactional consistency isn't guaranteed. Microsoft guarantees that all changes are made eventually and that Data Sync doesn't cause data loss.
+Omdat de gegevens synchronisatie op basis van een trigger is gebaseerd, is de transactionele consistentie niet gegarandeerd. Micro soft garandeert dat alle wijzigingen uiteindelijk worden doorgevoerd en dat gegevens synchronisatie geen gegevens verlies veroorzaakt.
 
-### <a name="performance-impact"></a>Performance impact
+### <a name="performance-impact"></a>Prestatie-impact
 
-Data Sync uses insert, update, and delete triggers to track changes. It creates side tables in the user database for change tracking. These change tracking activities have an impact on your database workload. Assess your service tier and upgrade if needed.
+Sync maakt gebruik van gegevens invoegen, bijwerken en verwijderen van triggers voor het bijhouden van wijzigingen. Side tabellen wordt gemaakt in de database voor het bijhouden. Deze wijziging bijhouden activiteiten hebben een invloed op de werkbelasting van uw database. Beoordeel uw servicelaag en indien nodig een upgrade uitvoert.
 
-Provisioning and deprovisioning during sync group creation, update, and deletion may also impact the database performance.
+Inrichting en ongedaan maken van inrichting tijdens de synchronisatiegroep wordt gemaakt, bijwerken en verwijderen kunnen ook invloed op de prestaties van de database.
 
-## <a name="sync-req-lim"></a> Requirements and limitations
+## <a name="sync-req-lim"></a>Vereisten en beperkingen
 
 ### <a name="general-requirements"></a>Algemene vereisten
 
-- Each table must have a primary key. Don't change the value of the primary key in any row. If you have to change a primary key value, delete the row and recreate it with the new primary key value.
+- Elke tabel moet een primaire sleutel hebben. De waarde van de primaire sleutel in elke rij niet te wijzigen. Als u de waarde van een primaire sleutel te wijzigen moet, verwijdert u de rij en maak deze opnieuw met de nieuwe waarde voor de primaire sleutel.
 
 > [!IMPORTANT]
-> Changing the value of an existing primary key will result in the following faulty behavior:
-> - Data between hub and member can be lost even though sync does not report any issue.
-> - Sync can fail because the tracking table has a non-existing row from source due to the primary key change.
+> Als u de waarde van een bestaande primaire sleutel wijzigt, resulteert dit in het volgende probleem:
+> - De gegevens tussen de hub en het lid kunnen verloren gaan, zelfs al wordt er door synchronisatie geen problemen gerapporteerd.
+> - De synchronisatie kan mislukken omdat de tracerings tabel een niet-bestaande rij van de bron bevat, omdat de primaire sleutel is gewijzigd.
 
-- De snapshot-isolatie moet ingeschakeld zijn. Voor meer informatie zie [Snapshot-isolatie in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Snapshot-isolatie moet zijn ingeschakeld. Voor meer informatie zie [Snapshot-isolatie in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Algemene beperkingen
 
-- A table can't have an identity column that isn't the primary key.
-- A primary key can't have the following data types: sql_variant, binary, varbinary, image, xml.
-- Be cautious when you use the following data types as a primary key, because the supported precision is only to the second: time, datetime, datetime2, datetimeoffset.
-- The names of objects (databases, tables, and columns) can't contain the printable characters period (.), left square bracket ([), or right square bracket (]).
-- Azure Active Directory authentication isn't supported.
-- Tables with same name but different schema (for example, dbo.customers and sales.customers) aren't supported.
-- Columns with User Defined Data Types aren't supported
+- Een tabel kan geen identiteits kolom hebben die niet de primaire sleutel is.
+- Een primaire sleutel kan niet de volgende gegevens typen bevatten: sql_variant, binary, varbinary, image en XML.
+- Wees voorzichtig wanneer u de volgende gegevenstypen als een primaire sleutel gebruiken, omdat de ondersteunde precisie alleen voor de tweede is: tijd, datum/tijd, datetime2, datetimeoffset.
+- De namen van objecten (data bases, tabellen en kolommen) mogen niet de periode van het afdruk bare teken (.), het linker vier Kante haakje ([) of de rechter rechte haak (]) bevatten.
+- Azure Active Directory-verificatie wordt niet ondersteund.
+- Tabellen met dezelfde naam maar een ander schema (bijvoorbeeld dbo. klanten en Sales. klanten) worden niet ondersteund.
+- Kolommen met door de gebruiker gedefinieerde gegevens typen worden niet ondersteund
 
-#### <a name="unsupported-data-types"></a>Unsupported data types
+#### <a name="unsupported-data-types"></a>Niet-ondersteunde gegevenstypen
 
 - FileStream
 - SQL/CLR UDT
-- XMLSchemaCollection (XML supported)
+- XMLSchemaCollection (XML ondersteund)
 - Cursor, RowVersion, Timestamp, Hierarchyid
 
-#### <a name="unsupported-column-types"></a>Unsupported column types
+#### <a name="unsupported-column-types"></a>Niet-ondersteunde kolommen van het type
 
-Data Sync can't sync read-only or system-generated columns. Bijvoorbeeld:
+Data Sync kan niet alleen-lezen of het systeem gegenereerde kolommen worden gesynchroniseerd. Bijvoorbeeld:
 
-- Computed columns.
-- System-generated columns for temporal tables.
+- Berekende kolommen.
+- Het systeem gegenereerde kolommen voor tijdelijke tabellen.
 
-#### <a name="limitations-on-service-and-database-dimensions"></a>Limitations on service and database dimensions
+#### <a name="limitations-on-service-and-database-dimensions"></a>Beperkingen met betrekking tot de service en de database
 
-| **Dimensions**                                                  | **Limiet**              | **Tijdelijke oplossing**              |
+| **Hoogte**                                                  | **Limiet**              | **Tijdelijke oplossing**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
-| Maximum number of sync groups any database can belong to.       | 5                      |                             |
-| Maximum number of endpoints in a single sync group              | 30                     |                             |
-| Maximum number of on-premises endpoints in a single sync group. | 5                      | Create multiple sync groups |
-| Database, table, schema, and column names                       | 50 characters per name |                             |
-| Tables in a sync group                                          | 500                    | Create multiple sync groups |
-| Columns in a table in a sync group                              | 1000                   |                             |
-| Data row size on a table                                        | 24 Mb                  |                             |
-| Minimum sync interval                                           | 5 minuten              |                             |
+| Maximum aantal synchronisatiegroepen elke database kan deel uitmaken.       | 5                      |                             |
+| Maximum aantal eindpunten in een enkele synchronisatiegroep              | 30                     |                             |
+| Maximum aantal on-premises eindpunten in een enkele synchronisatiegroep. | 5                      | Maken van meerdere synchronisatiegroepen |
+| Database-, tabel-, schema-en kolomnamen                       | 50 tekens per naam |                             |
+| Tabellen in een groep voor synchronisatie                                          | 500                    | Maken van meerdere synchronisatiegroepen |
+| Kolommen in een tabel in een groep voor synchronisatie                              | 1000                   |                             |
+| Grootte van de rij gegevens in een tabel                                        | 24 mb                  |                             |
+| Minimale synchronisatie-interval                                           | 5 minuten              |                             |
 
 > [!NOTE]
-> There may be up to 30 endpoints in a single sync group if there is only one sync group. If there is more than one sync group, the total number of endpoints across all sync groups cannot exceed 30. If a database belongs to multiple sync groups, it is counted as multiple endpoints, not one.
+> Mogelijk zijn er maximaal 30-eindpunten in een enkele synchronisatiegroep als er slechts één synchronisatiegroep. Als er meer dan één groep voor synchronisatie, kan het totale aantal eindpunten voor alle synchronisatiegroepen niet langer zijn dan 30. Als een database tot meerdere synchronisatiegroepen behoort, telt deze ook mee als meerdere eindpunten, niet een.
 
-## <a name="faq-about-sql-data-sync"></a>FAQ about SQL Data Sync
+## <a name="faq-about-sql-data-sync"></a>Veelgestelde vragen over SQL Data Sync
 
-### <a name="how-much-does-the-sql-data-sync-service-cost"></a>How much does the SQL Data Sync service cost
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Hoeveel kost het SQL Data Sync service kosten
 
-There's no charge for the SQL Data Sync service itself. However, you still collect data transfer charges for data movement in and out of your SQL Database instance. For more info, see [SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/).
+Er worden geen kosten in rekening gebracht voor de SQL Data Sync-service zelf. U kunt echter nog steeds kosten voor gegevens overdracht verzamelen voor het verplaatsen van gegevens in en uit uw SQL Database-exemplaar. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie.
 
-### <a name="what-regions-support-data-sync"></a>What regions support Data Sync
+### <a name="what-regions-support-data-sync"></a>Welke regio's ondersteunen gegevens synchronisatie
 
-SQL Data Sync is available in all regions.
+SQL Data Sync is beschikbaar in alle regio's.
 
-### <a name="is-a-sql-database-account-required"></a>Is a SQL Database account required
+### <a name="is-a-sql-database-account-required"></a>Is een SQL Database account vereist
 
-Ja. You must have a SQL Database account to host the Hub Database.
+Ja. U moet een SQL-Database-account voor het hosten van de Hubdatabase hebben.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Can I use Data Sync to sync between SQL Server on-premises databases only
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Kan ik Data Sync gebruiken om te synchroniseren tussen SQL Server on-premises data bases
 
-Not directly. You can sync between SQL Server on-premises databases indirectly, however, by creating a Hub database in Azure, and then adding the on-premises databases to the sync group.
+Niet rechtstreeks. U kunt synchroniseren tussen SQL Server on-premises database indirect echter door het maken van een hubdatabase in Azure en vervolgens de on-premises databases toe te voegen aan de groep voor synchronisatie.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Can I use Data Sync to sync between SQL Databases that belong to different subscriptions
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Kan ik gegevens synchronisatie gebruiken om te synchroniseren tussen SQL-data bases die deel uitmaken van verschillende abonnementen
 
-Ja. You can sync between SQL Databases that belong to resource groups owned by different subscriptions.
+Ja. U kunt synchroniseren tussen SQL-Databases die deel uitmaken van resourcegroepen die eigendom zijn van verschillende abonnementen.
 
-- If the subscriptions belong to the same tenant, and you have permission to all subscriptions, you can configure the sync group in the Azure portal.
-- Otherwise, you have to use PowerShell to add the sync members that belong to different subscriptions.
+- Als de abonnementen tot dezelfde tenant behoren en u bent gemachtigd voor alle abonnementen, kunt u de groep voor synchronisatie configureren in Azure portal.
+- Anders moet u PowerShell gebruiken voor het toevoegen van de synchronisatieleden die tot verschillende abonnementen behoren.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Can I use Data Sync to sync between SQL Databases that belong to different clouds (like Azure Public Cloud and Azure China 21Vianet)
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Kan ik gegevens synchronisatie gebruiken om te synchroniseren tussen SQL-data bases die deel uitmaken van verschillende Clouds (zoals Azure open bare Cloud en Azure China 21Vianet)
 
-Ja. You can sync between SQL Databases that belong to different clouds, you have to use PowerShell to add the sync members that belong to the different subscriptions.
+Ja. U kunt synchroniseren tussen SQL-Databases die deel uitmaken van verschillende clouds, u moet PowerShell gebruiken om toe te voegen de synchronisatieleden die deel uitmaken van de verschillende abonnementen.
 
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Can I use Data Sync to seed data from my production database to an empty database, and then sync them
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Kan ik gegevens synchronisatie gebruiken voor het seeden van gegevens van mijn productie database naar een lege data base en deze vervolgens synchroniseren
 
-Ja. Create the schema manually in the new database by scripting it from the original. After you create the schema, add the tables to a sync group to copy the data and keep it synced.
+Ja. Het schema handmatig maken in de nieuwe database door het uitvoeren van scripts van het origineel. Nadat u het schema hebt gemaakt, moet u de tabellen toevoegen aan een synchronisatiegroep om te kopiëren van de gegevens en deze gesynchroniseerd.
 
-### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Should I use SQL Data Sync to back up and restore my databases
+### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Moet ik SQL Data Sync gebruiken om een back-up te maken van mijn data bases en deze te herstellen
 
-It isn't recommended to use SQL Data Sync to create a backup of your data. You can't back up and restore to a specific point in time because SQL Data Sync synchronizations are not versioned. Furthermore, SQL Data Sync does not back up other SQL objects, such as stored procedures, and doesn't do the equivalent of a restore operation quickly.
+Het is niet raadzaam om SQL Data Sync te gebruiken om een back-up van uw gegevens te maken. U kunt geen back-up-en herstel bewerking naar een bepaald punt in de tijd, omdat SQL Data Sync synchronisaties geen versie hebben. Bovendien maakt SQL Data Sync geen back-up van andere SQL-objecten, zoals opgeslagen procedures, en wordt het equivalent van een herstel bewerking niet snel uitgevoerd.
 
-For one recommended backup technique, see [Copy an Azure SQL database](sql-database-copy.md).
+Zie [een Azure-SQL database kopiëren](sql-database-copy.md)voor een aanbevolen back-uptechniek.
 
-### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Can Data Sync sync encrypted tables and columns
+### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Kan gegevens synchronisatie versleutelde tabellen en kolommen synchroniseren
 
-- If a database uses Always Encrypted, you can sync only the tables and columns that are *not* encrypted. You can't sync the encrypted columns, because Data Sync can't decrypt the data.
-- If a column uses Column-Level Encryption (CLE), you can sync the column, as long as the row size is less than the maximum size of 24 Mb. Data Sync treats the column encrypted by key (CLE) as normal binary data. To decrypt the data on other sync members, you need to have the same certificate.
+- Als een Data Base gebruikmaakt van Always Encrypted, kunt u alleen de tabellen en kolommen synchroniseren die *niet* zijn versleuteld. U kunt de versleutelde kolommen, kan niet synchroniseren omdat Data Sync kan de gegevens niet ontsleutelen.
+- Als een kolom wordt gebruikt op kolomniveau versleuteling (CLE), kunt u de kolom kunt synchroniseren, zolang de rijgrootte van de kleiner dan de maximale grootte van 24 Mb is. Gegevenssynchronisatie behandelt de kolom die is versleuteld met sleutel (wissen) als normale binaire gegevens. Voor het ontsleutelen van de gegevens op andere synchronisatieleden van de, moet u hetzelfde certificaat hebben.
 
-### <a name="is-collation-supported-in-sql-data-sync"></a>Is collation supported in SQL Data Sync
+### <a name="is-collation-supported-in-sql-data-sync"></a>Wordt gesorteerd ondersteund in SQL Data Sync
 
-Ja. SQL Data Sync supports collation in the following scenarios:
+Ja. SQL Data Sync ondersteunt sortering in de volgende scenario's:
 
-- If the selected sync schema tables aren't already in your hub or member databases, then when you deploy the sync group, the service automatically creates the corresponding tables and columns with the collation settings selected in the empty destination databases.
-- If the tables to be synced already exist in both your hub and member databases, SQL Data Sync requires that the primary key columns have the same collation between hub and member databases to successfully deploy the sync group. There are no collation restrictions on columns other than the primary key columns.
+- Als de geselecteerde synchronisatie schema tabellen zich nog niet in uw hub of lid databases bevinden, worden de bijbehorende tabellen en kolommen automatisch door de service gemaakt met de sorterings instellingen die zijn geselecteerd in de lege doel databases, wanneer u de synchronisatie groep implementeert.
+- Als de tabellen om te worden gesynchroniseerd al in uw hub en de lid-databases bestaat, SQL Data Sync is vereist dat de primaire-sleutelkolommen dezelfde sortering tussen hub en lid databases hebben voor een succesvolle implementatie van de groep voor synchronisatie. Er zijn geen beperkingen sortering op kolommen dan de primaire-sleutelkolommen.
 
-### <a name="is-federation-supported-in-sql-data-sync"></a>Is federation supported in SQL Data Sync
+### <a name="is-federation-supported-in-sql-data-sync"></a>Wordt Federatie ondersteund in SQL Data Sync
 
-Federation Root Database can be used in the SQL Data Sync Service without any limitation. You can't add the Federated Database endpoint to the current version of SQL Data Sync.
+Hoofddatabase voor Federatie kan worden gebruikt in SQL Data Sync Service zonder een beperking. U kunt het federatieve data base-eind punt niet toevoegen aan de huidige versie van SQL Data Sync.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-### <a name="update-the-schema-of-a-synced-database"></a>Update the schema of a synced database
+### <a name="update-the-schema-of-a-synced-database"></a>Het schema van een gesynchroniseerde database bijwerken
 
-Do you have to update the schema of a database in a sync group? Schema changes aren't automatically replicated. For some solutions, see the following articles:
+Hebt u het schema van een database in een groep voor synchronisatie bijwerken? Wijzigingen in het schema worden niet automatisch gerepliceerd. Zie de volgende artikelen voor een aantal oplossingen:
 
-- [Automate the replication of schema changes in Azure SQL Data Sync](sql-database-update-sync-schema.md)
-- [Use PowerShell to update the sync schema in an existing sync group](scripts/sql-database-sync-update-schema.md)
+- [De replicatie van schema wijzigingen in Azure SQL Data Sync automatiseren](sql-database-update-sync-schema.md)
+- [Power shell gebruiken voor het bijwerken van het synchronisatie schema in een bestaande synchronisatie groep](scripts/sql-database-sync-update-schema.md)
 
 ### <a name="monitor-and-troubleshoot"></a>Controleren en problemen oplossen
 
-Is SQL Data Sync doing as expected? To monitor activity and troubleshoot issues, see the following articles:
+Wordt SQL Data Sync als verwachting uitgevoerd? Als u wilt bewaken van activiteit en het oplossen van problemen, Zie de volgende artikelen:
 
-- [Monitor Azure SQL Data Sync with Azure Monitor logs](sql-database-sync-monitor-oms.md)
+- [Azure-SQL Data Sync controleren met Azure Monitor-logboeken](sql-database-sync-monitor-oms.md)
 - [Problemen oplossen met Azure SQL Data Sync](sql-database-troubleshoot-data-sync.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Meer informatie over Azure SQL Database
 
-For more info about SQL Database, see the following articles:
+Zie de volgende artikelen voor meer informatie over SQL Database:
 
 - [Wat is de Azure SQL Database-service?](sql-database-technical-overview.md)
 - [Database Lifecycle Management (DLM)](https://msdn.microsoft.com/library/jj907294.aspx)

@@ -26,7 +26,7 @@ ms.locfileid: "74186345"
 
 > [!div class="op_single_selector"]
 > * [PowerShell](tutorial-create-route-table-powershell.md)
-> * [Azure-CLI](tutorial-create-route-table-cli.md)
+> * [Azure CLI](tutorial-create-route-table-cli.md)
 > * [PowerShell (klassiek)](virtual-network-create-udr-classic-ps.md)
 > * [CLI (klassiek)](virtual-network-create-udr-classic-cli.md)
 

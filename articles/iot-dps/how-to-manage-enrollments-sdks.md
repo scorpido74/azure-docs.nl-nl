@@ -1,6 +1,6 @@
 ---
-title: Manage device enrollments using Azure DPS SDKs
-description: How to manage device enrollments in the IoT Hub Device Provisioning Service using the Service SDKs
+title: Apparaat-inschrijvingen beheren met Azure DPS Sdk's
+description: Registratie van apparaten beheren in de IoT Hub Device Provisioning Service met behulp van de service-Sdk's
 author: robinsh
 ms.author: robinsh
 ms.date: 04/04/2018
@@ -14,76 +14,76 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228808"
 ---
-# <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>How to manage device enrollments with Azure Device Provisioning Service SDKs
-A *device enrollment* creates a record of a single device or a group of devices that may at some point register with the Device Provisioning Service. The enrollment record contains the initial desired configuration for the device(s) as part of that enrollment, including the desired IoT hub. This article shows you how to manage device enrollments for your provisioning service programmatically using the Azure IoT Provisioning Service SDKs.  The SDKs are available on GitHub in the same repository as Azure IoT SDKs.
+# <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Registratie van apparaten beheren met de Sdk's van Azure Device Provisioning Service
+Een *apparaatregistratie* maakt een record van één apparaat of een groep apparaten die op een bepaald moment bij de Device Provisioning-Service kunnen worden geregistreerd. De registratie record bevat de eerste gewenste configuratie voor de apparaten die deel uitmaken van deze inschrijving, inclusief de gewenste IoT-hub. In dit artikel leest u hoe u de registratie van apparaten voor uw inrichtings service programmatisch beheert met de Azure IoT Provisioning Service Sdk's.  De Sdk's zijn beschikbaar op GitHub in dezelfde opslag plaats als Azure IoT-Sdk's.
 
 ## <a name="prerequisites"></a>Vereisten
-* Obtain the connection string from your Device Provisioning Service instance.
-* Obtain the device security artifacts for the [attestation mechanism](concepts-security.md#attestation-mechanism) used:
+* Verkrijg de connection string van uw Device Provisioning service-exemplaar.
+* De beveiligings artefacten van het apparaat verkrijgen voor het [Attestation-mechanisme](concepts-security.md#attestation-mechanism) dat wordt gebruikt:
     * [**Trusted Platform Module (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
-        * Individual enrollment: Registration ID and TPM Endorsement Key from a physical device or from TPM Simulator.
-        * Enrollment group does not apply to TPM attestation.
-    * [**X.509**](/azure/iot-dps/concepts-security):
-        * Individual enrollment: The [Leaf certificate](/azure/iot-dps/concepts-security) from physical device or from the SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) Emulator.
-        * Enrollment group: The [CA/root certificate](/azure/iot-dps/concepts-security#root-certificate) or the [intermediate certificate](/azure/iot-dps/concepts-security#intermediate-certificate), used to produce device certificate on a physical device.  It can also be generated from the SDK DICE emulator.
-* Exact API calls may be different due to language differences. Please review the samples provided on GitHub for details:
-   * [Java Provisioning Service Client samples](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
-   * [Node.js Provisioning Service Client samples](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
-   * [.NET Provisioning Service Client samples](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
+        * Afzonderlijke inschrijving: registratie-ID en TPM-goedkeurings sleutel van een fysiek apparaat of van TPM-Simulator.
+        * De registratie groep is niet van toepassing op TPM-Attestation.
+    * [**X. 509**](/azure/iot-dps/concepts-security):
+        * Individuele inschrijving: het [Leaf-certificaat](/azure/iot-dps/concepts-security) van een fysiek apparaat of van de SDK- [codec](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) -emulator.
+        * Registratie groep: het [CA/basis certificaat](/azure/iot-dps/concepts-security#root-certificate) of het [tussenliggende certificaat](/azure/iot-dps/concepts-security#intermediate-certificate), dat wordt gebruikt om een apparaat certificaat te maken op een fysiek apparaat.  Het kan ook worden gegenereerd met de SDK-codec-emulator.
+* Exacte API-aanroepen kunnen verschillen vanwege taal verschillen. Bekijk de voor beelden die worden weer gegeven op GitHub voor meer informatie:
+   * [Voor beelden van Java Provisioning Service-client](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
+   * [Voor beelden van het inrichten van de service-client voor node. js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
+   * [Voor beelden van .NET Provisioning Service-client](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
 
-## <a name="create-a-device-enrollment"></a>Create a device enrollment
-There are two ways you can enroll your devices with the provisioning service:
+## <a name="create-a-device-enrollment"></a>Een apparaatregistratie maken
+Er zijn twee manieren waarop u uw apparaten kunt inschrijven bij de inrichtings service:
 
-* An **Enrollment group** is an entry for a group of devices that share a common attestation mechanism of X.509 certificates, signed by the [root certificate](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) or the [intermediate certificate](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate). We recommend using an enrollment group for a large number of devices that share a desired initial configuration, or for devices all going to the same tenant. Note that you can only enroll devices that use the X.509 attestation mechanism as *enrollment groups*. 
+* Een **registratie groep** is een vermelding voor een groep apparaten die een gemeen schappelijk Attestation-mechanisme van X. 509-certificaten delen, ondertekend door het [basis certificaat](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) of het [tussenliggende certificaat](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate). U kunt het beste een registratie groep gebruiken voor een groot aantal apparaten die een gewenste initiële configuratie delen, of voor apparaten die allemaal naar dezelfde Tenant gaan. Houd er rekening mee dat u alleen apparaten kunt inschrijven die gebruikmaken van het 509 Attestation-mechanisme van *X.* 
 
-    You can create an enrollment group with the SDKs following this workflow:
+    U kunt een registratie groep maken met de Sdk's die volgen op deze werk stroom:
 
-    1. For enrollment group, the attestation mechanism uses X.509 root certificate.  Call Service SDK API ```X509Attestation.createFromRootCertificate``` with root certificate to create attestation for enrollment.  X.509 root certificate is provided in either a PEM file or as a string.
-    1. Create a new ```EnrollmentGroup``` variable using the ```attestation``` created and a unique ```enrollmentGroupId```.  Optionally, you can set parameters like ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
-    2. Call Service SDK API ```createOrUpdateEnrollmentGroup``` in your backend application with ```EnrollmentGroup``` to create an enrollment group.
+    1. Voor de registratie groep gebruikt het Attestation-mechanisme X. 509-basis certificaat.  De API van de Call service SDK ```X509Attestation.createFromRootCertificate``` met het basis certificaat om Attestation voor registratie te maken.  X. 509-basis certificaat is opgenomen in een PEM-bestand of als een teken reeks.
+    1. Maak een nieuwe ```EnrollmentGroup``` variabele met behulp van de ```attestation``` gemaakt en een unieke ```enrollmentGroupId```.  U kunt desgewenst para meters zoals ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```instellen.
+    2. Roep Service SDK API ```createOrUpdateEnrollmentGroup``` in uw back-end-toepassing met ```EnrollmentGroup``` om een registratie groep te maken.
 
-* An **Individual enrollment** is an entry for a single device that may register. Individual enrollments may use either X.509 certificates or SAS tokens (from a physical or virtual TPM) as attestation mechanisms. We recommend using individual enrollments for devices that require unique initial configurations, or for devices which can only use SAS tokens via TPM or virtual TPM as the attestation mechanism. Afzonderlijke inschrijvingen hebben mogelijk de gewenste apparaat-id voor IoT Hub die is opgegeven.
+* Een **afzonderlijke inschrijving** is een vermelding voor één apparaat dat kan worden geregistreerd. Individuele inschrijvingen kunnen X. 509-certificaten of SAS-tokens (van een fysieke of virtuele TPM) gebruiken als Attestation-mechanismen. We raden u aan om afzonderlijke inschrijvingen te gebruiken voor apparaten die unieke initiële configuraties vereisen, of voor apparaten die alleen SAS-tokens via TPM of virtuele TPM kunnen gebruiken als Attestation-mechanisme. Afzonderlijke inschrijvingen hebben mogelijk de gewenste apparaat-id voor IoT Hub die is opgegeven.
 
-    You can create an individual enrollment with the SDKs following this workflow:
+    U kunt een afzonderlijke inschrijving maken met de Sdk's die volgen op deze werk stroom:
     
-    1. Choose your ```attestation``` mechanism, which can be TPM or X.509.
-        1. **TPM**: Using the Endorsement Key from a physical device or from TPM Simulator as the input, you can call Service SDK API ```TpmAttestation``` to create attestation for enrollment. 
-        2. **X.509**: Using the client certificate as the input, you can call Service SDK API ```X509Attestation.createFromClientCertificate``` to create attestation for enrollment.
-    2. Create a new ```IndividualEnrollment``` variable with using the ```attestation``` created and a unique ```registrationId``` as input, which is on your device or generated from the TPM Simulator.  Optionally, you can set parameters like ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
-    3. Call Service SDK API ```createOrUpdateIndividualEnrollment``` in your backend application with ```IndividualEnrollment``` to create an individual enrollment.
+    1. Kies uw ```attestation```-mechanisme. Dit kan TPM of X. 509 zijn.
+        1. **TPM**: met behulp van de goedkeurings sleutel van een fysiek apparaat of van TPM Simulator als invoer kunt u de Service SDK API ```TpmAttestation``` aanroepen om Attestation voor registratie te maken. 
+        2. **X. 509**: als u het client certificaat gebruikt als invoer, kunt u de Service SDK API ```X509Attestation.createFromClientCertificate``` aanroepen om Attestation voor registratie te maken.
+    2. Maak een nieuwe ```IndividualEnrollment```-variabele met behulp van de ```attestation``` gemaakt en een unieke ```registrationId``` als invoer, die zich op uw apparaat bevindt of dat is gegenereerd op basis van de TPM-Simulator.  U kunt desgewenst para meters zoals ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```instellen.
+    3. Roep Service SDK API ```createOrUpdateIndividualEnrollment``` in uw back-end-toepassing met ```IndividualEnrollment``` om een afzonderlijke registratie te maken.
 
-After you have successfully created an enrollment, the Device Provisioning Service returns an enrollment result. This workflow is demonstrated in the samples [mentioned previously](#prerequisites).
+Nadat u een inschrijving hebt gemaakt, retourneert de Device Provisioning-Service een registratie resultaat. Deze werk stroom wordt gedemonstreerd in de [eerder genoemde](#prerequisites)voor beelden.
 
-## <a name="update-an-enrollment-entry"></a>Update an enrollment entry
+## <a name="update-an-enrollment-entry"></a>Een inschrijvings vermelding bijwerken
 
-After you have created an enrollment entry, you may want to update the enrollment.  Potential scenarios include updating the desired property, updating the attestation method, or revoking device access.  There are different APIs for individual enrollment and group enrollment, but no distinction for attestation mechanism.
+Nadat u een inschrijvings vermelding hebt gemaakt, wilt u de registratie wellicht bijwerken.  Mogelijke scenario's zijn onder andere het bijwerken van de gewenste eigenschap, het bijwerken van de Attestation-methode of het intrekken van de toegang tot het apparaat.  Er zijn verschillende Api's voor afzonderlijke inschrijving en groeps registratie, maar geen onderscheid voor Attestation-mechanisme.
 
-You can update an enrollment entry following this workflow:
+U kunt een inschrijvings vermelding die volgt op deze werk stroom bijwerken:
 * **Afzonderlijke inschrijving**:
-    1. Get the latest enrollment from the provisioning service first with Service SDK API ```getIndividualEnrollment```.
-    2. Modify the parameter of the latest enrollment as necessary. 
-    3. Using the latest enrollment, call Service SDK API ```createOrUpdateIndividualEnrollment``` to update your enrollment entry.
-* **Group enrollment**:
-    1. Get the latest enrollment from the provisioning service first with Service SDK API ```getEnrollmentGroup```.
-    2. Modify the parameter of the latest enrollment as necessary.
-    3. Using the latest enrollment, call Service SDK API ```createOrUpdateEnrollmentGroup``` to update your enrollment entry.
+    1. Ontvang eerst de meest recente inschrijving van de inrichtings service met de Service SDK API ```getIndividualEnrollment```.
+    2. Wijzig indien nodig de para meter van de meest recente registratie. 
+    3. Gebruik de laatste inschrijvings Service SDK API ```createOrUpdateIndividualEnrollment``` om uw inschrijvings vermelding bij te werken.
+* **Groeps registratie**:
+    1. Ontvang eerst de meest recente inschrijving van de inrichtings service met de Service SDK API ```getEnrollmentGroup```.
+    2. Wijzig indien nodig de para meter van de meest recente registratie.
+    3. Gebruik de laatste inschrijvings Service SDK API ```createOrUpdateEnrollmentGroup``` om uw inschrijvings vermelding bij te werken.
 
-This workflow is demonstrated in the samples [mentioned previously](#prerequisites).
+Deze werk stroom wordt gedemonstreerd in de [eerder genoemde](#prerequisites)voor beelden.
 
-## <a name="remove-an-enrollment-entry"></a>Remove an enrollment entry
+## <a name="remove-an-enrollment-entry"></a>Een inschrijvings vermelding verwijderen
 
-* **Individual enrollment** can be deleted by calling Service SDK API ```deleteIndividualEnrollment``` using ```registrationId```.
-* **Group enrollment** can be deleted by calling Service SDK API ```deleteEnrollmentGroup``` using ```enrollmentGroupId```.
+* **Individuele inschrijving** kan worden verwijderd door de API van de Service SDK te roepen ```deleteIndividualEnrollment``` met behulp van ```registrationId```.
+* **Groeps registratie** kan worden verwijderd door de API van de Service SDK te roepen ```deleteEnrollmentGroup``` met behulp van ```enrollmentGroupId```.
 
-This workflow is demonstrated in the samples [mentioned previously](#prerequisites).
+Deze werk stroom wordt gedemonstreerd in de [eerder genoemde](#prerequisites)voor beelden.
 
-## <a name="bulk-operation-on-individual-enrollments"></a>Bulk operation on individual enrollments
+## <a name="bulk-operation-on-individual-enrollments"></a>Bulk bewerking voor afzonderlijke inschrijvingen
 
-You can perform bulk operation to create, update, or remove multiple individual enrollments following this workflow:
+U kunt een bulk bewerking uitvoeren om meerdere afzonderlijke inschrijvingen te maken, bij te werken of te verwijderen volgens deze werk stroom:
 
-1. Create a variable that contains multiple ```IndividualEnrollment```.  Implementation of this variable is different for every language.  Review the bulk operation sample on GitHub for details.
-2. Call Service SDK API ```runBulkOperation``` with a ```BulkOperationMode``` for desired operation and your variable for individual enrollments. Four modes are supported: create, update, updateIfMatchEtag, and delete.
+1. Maak een variabele die meerdere ```IndividualEnrollment```bevat.  De implementatie van deze variabele verschilt voor elke taal.  Bekijk het voor beeld van bulk bewerking op GitHub voor meer informatie.
+2. De API van de Call-service SDK ```runBulkOperation``` met een ```BulkOperationMode``` voor de gewenste bewerking en uw variabele voor afzonderlijke inschrijvingen. Vier modi worden ondersteund: Create, update, updateIfMatchEtag en DELETE.
 
-After you have successfully performed an operation, the Device Provisioning Service would return a bulk operation result.
+Nadat u een bewerking hebt uitgevoerd, retourneert de Device Provisioning-Service een resultaat van een bulk bewerking.
 
-This workflow is demonstrated in the samples [mentioned previously](#prerequisites).
+Deze werk stroom wordt gedemonstreerd in de [eerder genoemde](#prerequisites)voor beelden.

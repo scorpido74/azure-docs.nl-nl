@@ -24,7 +24,7 @@ Cloudyn helpt u bij het voorspellen van toekomstige uitgaven aan de hand van his
 > [!div class="checklist"]
 > * Toekomstige uitgaven voorspellen
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -59,7 +59,7 @@ In de afbeelding hierboven worden de jaarlijkse kosten van virtuele machines van
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Toekomstige uitgaven voorspellen
