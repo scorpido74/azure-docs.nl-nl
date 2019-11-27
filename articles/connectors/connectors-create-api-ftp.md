@@ -11,12 +11,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: conceptual
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: a73fad3097be73e01a7a2a6652129cd7c9db9555
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: ac6ae1a3b00a4e7568bd7967105f202fbf2e4f9b
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050963"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547495"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-bestanden maken, controleren en beheren met behulp van Azure Logic Apps
 
@@ -45,10 +45,10 @@ U kunt triggers gebruiken die reacties ontvangen van uw FTP-server en de uitvoer
 
 FTP-triggers worden uitgevoerd door het FTP-bestands systeem te pollen en te zoeken naar een bestand dat sinds de laatste poll is gewijzigd. Met sommige hulpprogram ma's kunt u de tijds tempel behouden wanneer de bestanden worden gewijzigd. In deze gevallen moet u deze functie uitschakelen zodat de trigger kan werken. Hier volgen enkele algemene instellingen:
 
-| SFTP-client | Action |
+| SFTP-client | Actie |
 |-------------|--------|
-| WinSCP | Ga naar **Opties** > **voor keuren** > **overdracht** **bewerken behouden tijds tempel** uitschakelen >  >  >  |
-| FileZilla | Ga naar > de overdrachts**tijds tempels van overgebrachte bestanden** > **uitschakelen** |
+| WinSCP | Ga naar **opties** > **voor keuren** > **overdracht** > **bewerken** > **tijds tempel behouden** > **uitschakelen** |
+| FileZilla | Ga naar **overdracht** > de **tijds tempels van overgebrachte bestanden te behouden** > **uitschakelen** |
 |||
 
 Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuwe bestand is voltooid en niet gedeeltelijk is geschreven. Een bestand kan bijvoorbeeld wijzigingen in voortgang hebben wanneer de trigger de bestands server controleert. Om te voor komen dat een gedeeltelijk geschreven bestand wordt geretourneerd, wordt door de trigger de tijds tempel voor het bestand met recente wijzigingen weer gegeven, maar wordt dat bestand niet direct geretourneerd. De trigger retourneert het bestand alleen wanneer de server opnieuw wordt gecontroleerd. Dit gedrag kan soms een vertraging veroorzaken die twee maal het polling interval van de trigger is.
@@ -59,7 +59,7 @@ Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuw
 
 * Het adres en de account referenties van de FTP-hostserver
 
-  De FTP-connector vereist dat de FTP-server toegankelijk is vanaf internet en in de passieve modus kan worden uitgevoerd. Met uw referenties kunt u een verbinding maken met uw logische app en toegang krijgen tot uw FTP-account.
+  De FTP-connector vereist dat de FTP-server toegankelijk is vanaf internet en in de *passieve* modus kan worden uitgevoerd. Met uw referenties kunt u een verbinding maken met uw logische app en toegang krijgen tot uw FTP-account.
 
 * Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -87,17 +87,17 @@ Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuw
 
 <a name="file-added-modified"></a>
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-trigger: Wanneer een bestand wordt toegevoegd of gewijzigd
+### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-trigger: wanneer een bestand wordt toegevoegd of gewijzigd
 
 Deze trigger start een werk stroom voor logische apps wanneer de trigger detecteert wanneer een bestand wordt toegevoegd of gewijzigd op een FTP-server. U kunt bijvoorbeeld een voor waarde toevoegen waarmee de inhoud van het bestand wordt gecontroleerd en beslist of deze inhoud wordt opgehaald, op basis van de vraag of die inhoud voldoet aan een opgegeven voor waarde. Ten slotte kunt u een actie toevoegen waarmee de inhoud van het bestand wordt opgehaald en die inhoud in een map op de SFTP-server plaatsen.
 
-**Bedrijfs voorbeeld**: U kunt deze trigger gebruiken om een FTP-map te bewaken voor nieuwe bestanden die klant orders beschrijven. U kunt vervolgens een FTP-actie gebruiken, zoals het **ophalen van bestands inhoud**, zodat u de inhoud van de bestelling kunt ophalen voor verdere verwerking en die order opslaan in een Data Base voor orders.
+**Enter prise-voor beeld**: u kunt deze trigger gebruiken om een FTP-map te bewaken voor nieuwe bestanden die klant orders beschrijven. U kunt vervolgens een FTP-actie gebruiken, zoals het **ophalen van bestands inhoud**, zodat u de inhoud van de bestelling kunt ophalen voor verdere verwerking en die order opslaan in een Data Base voor orders.
 
 Hier volgt een voor beeld waarin deze trigger wordt weer gegeven: **Wanneer een bestand wordt toegevoegd of gewijzigd**
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Voor lege logische apps voert u in het zoekvak ' FTP ' in als uw filter. Selecteer deze trigger onder de lijst triggers: **Wanneer een ingediend wordt toegevoegd of gewijzigd-FTP**
+1. Voor lege logische apps voert u in het zoekvak ' FTP ' in als uw filter. Selecteer in de lijst met triggers deze trigger: **Wanneer een ingediend wordt toegevoegd of gewijzigd-FTP**
 
    ![FTP-trigger zoeken en selecteren](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
 
@@ -107,7 +107,7 @@ Hier volgt een voor beeld waarin deze trigger wordt weer gegeven: **Wanneer een 
 
    ![FTP-server verbinding maken](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
-1. Klik naast het vak **map** op het mappictogram zodat er een lijst wordt weer gegeven. Als u de map wilt vinden die u wilt controleren op nieuwe of bewerkte bestanden, selecteert u **>** de pijl-rechts (), bladert u naar de map en selecteert u de map.
+1. Klik naast het vak **map** op het mappictogram zodat er een lijst wordt weer gegeven. Als u de map wilt vinden die u wilt bewaken voor nieuwe of bewerkte bestanden, selecteert u de pijl-rechts ( **>** ), bladert u naar de map en selecteert u de map.
 
    ![Zoeken en selecteren welke map u wilt bewaken](./media/connectors-create-api-ftp/select-folder.png)  
 
@@ -119,11 +119,11 @@ Nu de logische app een trigger heeft, voegt u de acties toe die u wilt uitvoeren
 
 <a name="get-content"></a>
 
-### <a name="ftp-action-get-content"></a>FTP-actie: Inhoud ophalen
+### <a name="ftp-action-get-content"></a>FTP-actie: inhoud ophalen
 
 Met deze actie wordt de inhoud van een bestand op een FTP-server opgehaald wanneer dat bestand wordt toegevoegd of bijgewerkt. U kunt bijvoorbeeld de trigger uit het vorige voor beeld toevoegen en een actie waarmee de inhoud van het bestand wordt opgehaald nadat het bestand is toegevoegd of bewerkt.
 
-Hier volgt een voor beeld waarin deze actie wordt weer gegeven: **Inhoud ophalen**
+Hier volgt een voor beeld waarin deze actie wordt weer gegeven: **inhoud ophalen**
 
 1. Kies **nieuwe stap**onder de trigger of een andere actie.
 
@@ -151,4 +151,4 @@ Raadpleeg de [referentie pagina van de connector](/connectors/ftpconnector/)voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

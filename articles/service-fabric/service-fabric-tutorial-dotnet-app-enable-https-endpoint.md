@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 69aa140fcecae13aae0d7a165c9f7bea0ab87ca1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e38822e1d774cc32590a13239edb34d7a15e2d02
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71301023"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545768"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Zelfstudie: Een HTTPS-eindpunt toevoegen aan een front-end-service van ASP.NET Core Web-API met behulp van Kestrel
 
@@ -53,7 +53,7 @@ Voor u met deze zelfstudie begint:
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Installeer Visual Studio 2019](https://www.visualstudio.com/) versie 15,5 of hoger met de werk belasting **Azure Development** en **ASP.net en Web Development** .
-* [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
+* [Installeer de Service Fabric-SDK](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Haal een certificaat op of maak een zelfondertekend ontwikkelingscertificaat.
 
@@ -164,7 +164,7 @@ serviceContext =>
 Voeg ook de volgende methode toe zodat Kestrel het certificaat kan vinden in het `Cert:\LocalMachine\My`-archief met behulp van het onderwerp.  
 
 Vervang '&lt;your_CN_value&gt;' door 'mytestcert' als u een zelfondertekend certificaat hebt gemaakt met de vorige PowerShell-opdracht, of gebruik de algemene naam van uw certificaat.
-Houd er rekening mee dat het in het geval van `localhost` een lokale implementatie de voor keur verdient om ' CN = localhost ' te gebruiken om verificatie-uitzonde ringen te voor komen.
+Houd er rekening mee dat in het geval van een lokale implementatie de `localhost` voor keur geeft aan het gebruik van ' CN = localhost ' om verificatie-uitzonde ringen te voor komen.
 
 ```csharp
 private X509Certificate2 GetHttpsCertificateFromStore()
@@ -346,7 +346,7 @@ Vervolgens configureert u in de sectie VotingWebPkg **ServiceManifestImport** ee
 
 ## <a name="run-the-application-locally"></a>De toepassing lokaal uitvoeren
 
-Selecteer in Solution Explorer de toepassing **stem** en stel de eigenschap **Application URL** in op ' https:\//localhost: 443 '.
+Selecteer in Solution Explorer de **stem** toepassing en stel de eigenschap van de **toepassings-URL** in op https:\//localhost: 443.
 
 Sla alle bestanden op en druk op F5 om de toepassing lokaal uit te voeren.  Nadat de toepassing is geïmplementeerd, wordt een webbrowser geopend met https:\//localhost: 443. Als u een zelfondertekend certificaat gebruikt, ziet u een waarschuwing dat uw pc de beveiliging van deze website niet vertrouwt.  Ga door naar de webpagina.
 
@@ -362,47 +362,10 @@ Exporteer als eerste het certificaat naar een PFX-bestand. Open de toepassing ce
 
 Kies in de wizard Exporteren **Ja, de persoonlijke sleutel exporteren** en kies de indeling Personal Information Exchange (PFX).  Exporteer het bestand naar *C:\Users\sfuser\votingappcert.pfx*.
 
-Installeer vervolgens het certificaat op het externe cluster met behulp van de cmdlet [add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) .
+Installeer vervolgens het certificaat op het externe cluster met behulp [van de volgende Power shell-scripts](./scripts/service-fabric-powershell-add-application-certificate.md).
 
 > [!Warning]
 > Een zelfondertekend certificaat volstaat voor ontwikkel- en testtoepassingen. Gebruik voor productietoepassingen in plaats van een zelfondertekend certificaat een certificaat van een [certificeringsinstantie (CA)](https://wikipedia.org/wiki/Certificate_authority).
-
-```powershell
-Connect-AzAccount
-
-$vaultname="sftestvault"
-$certname="VotingAppPFX"
-$certpw="!Password321#"
-$groupname="voting_RG"
-$clustername = "votinghttps"
-$ExistingPfxFilePath="C:\Users\sfuser\votingappcert.pfx"
-
-$appcertpwd = ConvertTo-SecureString -String $certpw -AsPlainText -Force
-
-Write-Host "Reading pfx file from $ExistingPfxFilePath"
-$cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2 $ExistingPfxFilePath, $certpw
-
-$bytes = [System.IO.File]::ReadAllBytes($ExistingPfxFilePath)
-$base64 = [System.Convert]::ToBase64String($bytes)
-
-$jsonBlob = @{
-   data = $base64
-   dataType = 'pfx'
-   password = $certpw
-   } | ConvertTo-Json
-
-$contentbytes = [System.Text.Encoding]::UTF8.GetBytes($jsonBlob)
-$content = [System.Convert]::ToBase64String($contentbytes)
-
-$secretValue = ConvertTo-SecureString -String $content -AsPlainText -Force
-
-# Upload the certificate to the key vault as a secret
-Write-Host "Writing secret to $certname in vault $vaultname"
-$secret = Set-AzureKeyVaultSecret -VaultName $vaultname -Name $certname -SecretValue $secretValue
-
-# Add a certificate to all the VMs in the cluster.
-Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $secret.Id -Verbose
-```
 
 ## <a name="open-port-443-in-the-azure-load-balancer"></a>Poort 443 openen in de Azure-load balancer
 

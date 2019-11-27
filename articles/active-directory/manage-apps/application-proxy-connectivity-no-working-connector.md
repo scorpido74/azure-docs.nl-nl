@@ -69,6 +69,6 @@ Als de enige connectors in de groep inactief zijn, zijn ze waarschijnlijk op een
 Zie het document over het oplossen van problemen met poorten voor meer informatie over het onderzoeken van dit probleem.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over Azure AD Application Proxy connectors](application-proxy-connectors.md)
+[Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: How to disable functions in Azure Functions
-description: Learn how to disable and enable functions in Azure Functions 1.x and 2.x.
+title: Functies in Azure Functions uitschakelen
+description: Meer informatie over het uitschakelen en inschakelen van functies in Azure Functions 1. x en 2. x.
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: 7968580fcaa40575571a41f067fa74fbdc0a3a34
@@ -10,24 +10,24 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233048"
 ---
-# <a name="how-to-disable-functions-in-azure-functions"></a>How to disable functions in Azure Functions
+# <a name="how-to-disable-functions-in-azure-functions"></a>Functies in Azure Functions uitschakelen
 
-This article explains how to disable a function in Azure Functions. To *disable* a function means to make the runtime ignore the automatic trigger that is defined for the function. The way you do that depends on the runtime version and the programming language:
+In dit artikel wordt uitgelegd hoe u een functie in Azure Functions kunt uitschakelen. Als u een functie wilt *uitschakelen* , moet u ervoor zorgen dat de runtime de automatische trigger die voor de functie is gedefinieerd, negeert. Hoe u dat doet, is afhankelijk van de runtime versie en de programmeer taal:
 
-* Functions 2.x:
-  * One way for all languages
-  * Optional way for C# class libraries
-* Functions 1.x:
-  * Scripting languages
-  * C# class libraries
+* Functies 2. x:
+  * Eén manier voor alle talen
+  * Optionele manier voor C# class-bibliotheken
+* Functions 1. x:
+  * Script talen
+  * C#Class-bibliotheken
 
-## <a name="functions-2x---all-languages"></a>Functions 2.x - all languages
+## <a name="functions-2x---all-languages"></a>Functies 2. x-alle talen
 
-In Functions 2.x, you disable a function by using an app setting in the format `AzureWebJobs.<FUNCTION_NAME>.Disabled`. You can create and modify this application setting in a number of ways, including by using the [Azure CLI](/cli/azure/) and from your function's **Manage** tab in the [Azure portal](https://portal.azure.com). 
+In functions 2. x, schakelt u een functie uit met behulp van een app-instelling in de notatie `AzureWebJobs.<FUNCTION_NAME>.Disabled`. U kunt deze toepassings instelling op verschillende manieren maken en wijzigen, zoals met behulp van [Azure cli](/cli/azure/) en op het tabblad **beheren** van uw functie in de [Azure Portal](https://portal.azure.com). 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
-In the Azure CLI, you use the [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) command to create and modify the app setting. The following command disables a function named `QueueTrigger` by creating an app setting named `AzureWebJobs.QueueTrigger.Disabled` set it to `true`. 
+In azure CLI gebruikt u de opdracht [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) om de app-instelling te maken en te wijzigen. Met de volgende opdracht wordt een functie met de naam `QueueTrigger` uitgeschakeld door het maken van een app-instelling met de naam `AzureWebJobs.QueueTrigger.Disabled` deze instellen op `true`. 
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <myFunctionApp> \
@@ -35,7 +35,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=true
 ```
 
-To re-enable the function, rerun the same command with a value of `false`.
+Als u de functie opnieuw wilt inschakelen, voert u dezelfde opdracht opnieuw uit met de waarde `false`.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <myFunctionApp> \
@@ -45,17 +45,17 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ### <a name="portal"></a>Portal
 
-You can also use the **Function State** switch on the function's **Manage** tab. The switch works by creating and deleting the `AzureWebJobs.<FUNCTION_NAME>.Disabled` app setting.
+U kunt ook de **functie status** switch op het tabblad **beheren** van de functie gebruiken. De switch werkt door het maken en verwijderen van de `AzureWebJobs.<FUNCTION_NAME>.Disabled` app-instelling.
 
-![Function state switch](media/disable-function/function-state-switch.png)
+![Functie status schakelaar](media/disable-function/function-state-switch.png)
 
-## <a name="functions-2x---c-class-libraries"></a>Functions 2.x - C# class libraries
+## <a name="functions-2x---c-class-libraries"></a>Functies 2. x- C# class-bibliotheken
 
-In a Functions 2.x class library, we recommend that you use the method that works for all languages. But if you prefer, you can [use the Disable attribute as in Functions 1.x](#functions-1x---c-class-libraries).
+In een functions 2. x-klassebibliotheek wordt u aangeraden de methode te gebruiken die geschikt is voor alle talen. Maar als u wilt, kunt u [het kenmerk uitschakelen gebruiken als in de functies 1. x](#functions-1x---c-class-libraries).
 
-## <a name="functions-1x---scripting-languages"></a>Functions 1.x - scripting languages
+## <a name="functions-1x---scripting-languages"></a>Functions 1. x-script talen
 
-For scripting languages such as C# script and JavaScript, you use the `disabled` property of the *function.json* file to tell the runtime not to trigger a function. This property can be set to `true` or to the name of an app setting:
+Voor script talen als C# script en Java script gebruikt u de eigenschap `disabled` van het bestand *Function. json* om de runtime te laten weten dat er geen functie moet worden geactiveerd. Deze eigenschap kan worden ingesteld op `true` of op de naam van een app-instelling:
 
 ```json
 {
@@ -80,15 +80,15 @@ of
     "disabled": "IS_DISABLED"
 ```
 
-In the second example, the function is disabled when there is an app setting that is named IS_DISABLED and is set to `true` or 1.
+In het tweede voor beeld is de functie uitgeschakeld wanneer er een app-instelling met de naam IS_DISABLED is ingesteld op `true` of 1.
 
-You can edit the file in the Azure portal or use the **Function State** switch on the function's **Manage** tab. The portal switch works by changing the *function.json* file.
+U kunt het bestand bewerken in de Azure Portal of de schakel optie **status** op het tabblad **beheren** van de functie gebruiken. De portal-switch werkt door het bestand *Function. json* te wijzigen.
 
-![Function state switch](media/disable-function/function-state-switch.png)
+![Functie status schakelaar](media/disable-function/function-state-switch.png)
 
-## <a name="functions-1x---c-class-libraries"></a>Functions 1.x - C# class libraries
+## <a name="functions-1x---c-class-libraries"></a>Functions 1. x C# -class-bibliotheken
 
-In a Functions 1.x class library, you use a `Disable` attribute to prevent a function from being triggered. You can use the attribute without a constructor parameter, as shown in the following example:
+In een functions 1. x-klassebibliotheek gebruikt u een `Disable` kenmerk om te voor komen dat een functie wordt geactiveerd. U kunt het kenmerk zonder een constructor-para meter gebruiken, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 public static class QueueFunctions
@@ -104,7 +104,7 @@ public static class QueueFunctions
 }
 ```
 
-The attribute without a constructor parameter requires that you recompile and redeploy the project to change the function's disabled state. A more flexible way to use the attribute is to include a constructor parameter that refers to a Boolean app setting, as shown in the following example:
+Het kenmerk zonder een constructor-para meter vereist dat u het project opnieuw compileert en implementeert om de uitgeschakelde status van de functie te wijzigen. Een flexibele manier om het kenmerk te gebruiken is door een constructor-para meter op te geven die verwijst naar een Booleaanse app-instelling, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 public static class QueueFunctions
@@ -120,15 +120,15 @@ public static class QueueFunctions
 }
 ```
 
-This method lets you enable and disable the function by changing the app setting, without recompiling or redeploying. Changing an app setting causes the function app to restart, so the disabled state change is recognized immediately.
+Met deze methode kunt u de functie in-en uitschakelen door de app-instelling te wijzigen zonder opnieuw te compileren of opnieuw te implementeren. Als u een app-instelling wijzigt, wordt de functie-app opnieuw gestart, zodat de status wijziging in de modus onmiddellijk wordt herkend.
 
 > [!IMPORTANT]
-> The `Disabled` attribute is the only way to disable a class library function. The generated *function.json* file for a class library function is not meant to be edited directly. If you edit that file, whatever you do to the `disabled` property will have no effect.
+> Het kenmerk `Disabled` is de enige manier om een klassen bibliotheek functie uit te scha kelen. Het gegenereerde *Function. json* -bestand voor een klassen bibliotheek functie is niet bedoeld om rechtstreeks te worden bewerkt. Als u het bestand bewerkt, wordt de eigenschap `disabled` niet toegepast.
 >
-> The same goes for the **Function state** switch on the **Manage** tab, since it works by changing the *function.json* file.
+> Hetzelfde geldt voor de **functie status** switch op het tabblad **beheren** , omdat deze werkt door het bestand *Function. json* te wijzigen.
 >
-> Also, note that the portal may indicate the function is disabled when it isn't.
+> Houd er ook rekening mee dat de portal kan aangeven dat de functie is uitgeschakeld wanneer dat niet het geval is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-This article is about disabling automatic triggers. For more information about triggers, see [Triggers and bindings](functions-triggers-bindings.md).
+Dit artikel is informatie over het uitschakelen van automatische triggers. Zie [Triggers en bindingen](functions-triggers-bindings.md)voor meer informatie over triggers.

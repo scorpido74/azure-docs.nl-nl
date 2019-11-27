@@ -1,5 +1,5 @@
 ---
-title: RADIUS and Azure MFA Server - Azure Active Directory
+title: RADIUS-en Azure MFA-server-Azure Active Directory
 description: Leer hoe u RADIUS-verificatie en Azure Multi-Factor Authentication-server implementeert.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -23,14 +23,14 @@ ms.locfileid: "74404260"
 RADIUS is een standaardprotocol om verificatieaanvragen te accepteren en te verwerken. De Azure Multi-Factor Authentication-server kan optreden als een RADIUS-server. Plaats de server hiervoor tussen uw RADIUS-client (VPN-apparaat) en het verificatiedoel om verificatie in twee stappen toe te voegen. Het verificatiedoel kan Active Directory, een LDAP-adreslijst of een andere RADIUS-server zijn. Azure Multi-Factor Authentication (MFA) werkt alleen als u de Azure MFA-server zo configureert dat deze kan communiceren met zowel de clientservers als het verificatiedoel. De Azure MFA-server accepteert aanvragen van een RADIUS-client, controleert referenties met behulp van het verificatiedoel, voegt Azure Multi-Factor Authentication toe en stuurt een antwoord terug naar de RADIUS-client. De verificatieaanvraag slaagt alleen als zowel de primaire verificatie als de Azure Multi-Factor Authentication slaagt.
 
 > [!IMPORTANT]
-> As of July 1, 2019, Microsoft will no longer offer MFA Server for new deployments. New customers who would like to require multi-factor authentication from their users should use cloud-based Azure Multi-Factor Authentication. Existing customers who have activated MFA Server prior to July 1 will be able to download the latest version, future updates and generate activation credentials as usual.
+> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
 
 > [!NOTE]
 > De MFA-server ondersteunt alleen PAP (Password Authentication Protocol) en MSCHAPv2 (Microsoft Challenge-Handshake Authentication Protocol) RADIUS-protocollen wanneer deze als RADIUS-server fungeert.  Andere protocollen zoals EAP (Extensible Authentication Protocol) kunnen worden gebruikt wanneer de MFA-server fungeert als een RADIUS-proxy naar een andere RADIUS-server die ondersteuning biedt voor dat protocol.
 >
 > In deze configuratie werken eenzijdige SMS- en OATH-tokens niet omdat de MFA-server geen geslaagd RADIUS Challenge-antwoord met alternatieve protocollen kan starten.
 
-![Radius Authentication in MFA Server](./media/howto-mfaserver-dir-radius/radius.png)
+![RADIUS-verificatie in MFA-server](./media/howto-mfaserver-dir-radius/radius.png)
 
 ## <a name="add-a-radius-client"></a>Een RADIUS-client toevoegen
 
@@ -39,7 +39,7 @@ Installeer de Azure Multi-Factor Authentication-server op een Windows-server als
 1. Klik in de Azure Multi-Factor Authentication-server in het menu links op het pictogram RADIUS-authenticatie.
 2. Schakel het selectievakje **RADIUS-verificatie inschakelen** in.
 3. Wijzig de verificatie- en accountingpoorten op het tabblad Clients als de Azure MFA RADIUS-service naar RADIUS-aanvragen op niet-standaardpoorten moet luisteren.
-4. Klik op **Add**.
+4. Klik op **Toevoegen**.
 5. Voer het IP-adres in van het apparaat dat of de server die moet worden geverifieerd bij de Azure Multi-Factor Authentication-server, en voeg (optioneel) een toepassingsnaam en een gedeeld geheim toe.
 
    De naam van de toepassing wordt opgenomen in rapporten en kan worden weergegeven in verificatieberichten via sms of in mobiele apps.
@@ -55,10 +55,10 @@ Herhaal stap 4 tot en met 8 om het gewenste aantal extra RADIUS-clients toe te v
 ## <a name="configure-your-radius-client"></a>De RADIUS-client configureren
 
 1. Klik op het tabblad **Doel**.
-   * If the Azure MFA Server is installed on a domain-joined server in an Active Directory environment, select **Windows domain**.
+   * Als de Azure MFA-server is geïnstalleerd op een server die lid is van een domein in een Active Directory omgeving, selecteert u **Windows-domein**.
    * Selecteer **LDAP-binding** als gebruikers moeten worden geverifieerd aan de hand van een LDAP-adreslijst.
       Selecteer het pictogram Adreslijstintegratie en bewerk de LDAP-configuratie op het tabblad Instellingen om ervoor te zorgen dat de server verbinding kan maken met uw adreslijst. In de [handleiding voor LDAP-proxyconfiguratie](howto-mfaserver-dir-ldap.md) vindt u instructies voor de configuratie van LDAP.
-   * If users should be authenticated against another RADIUS server, select **RADIUS server(s)** .
+   * Als gebruikers moeten worden geverifieerd aan de hand van een andere RADIUS-server, selecteert u **RADIUS-server (s)** .
 1. Klik op **toevoegen** als u de server waarop de Azure MFA-server de RADIUS-aanvragen een volmacht geeft, wilt configureren.
 1. Voer in het dialoogvenster RADIUS-server toevoegen het IP-adres van de RADIUS-server en een gedeeld geheim in.
 

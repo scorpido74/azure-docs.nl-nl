@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for videos using the REST API and Java - Bing Video Search'
+title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en Java-Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's naar de Bing Video's zoeken-REST API te verzenden via Java.
 services: cognitive-services
@@ -17,13 +17,13 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378649"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Quickstart: Search for videos using the Bing Video Search REST API and Java
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en Java
 
 Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roepen en een zoekresultaat van het JSON-antwoord te bekijken. Deze eenvoudige Java-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het antwoord weer. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) met extra foutafhandeling, functies en codeaantekeningen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+* De [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
 * De [Gson-bibliotheek](https://github.com/google/gson)
 

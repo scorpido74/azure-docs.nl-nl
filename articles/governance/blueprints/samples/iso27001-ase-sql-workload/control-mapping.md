@@ -1,14 +1,14 @@
 ---
-title: Voor beeld van ISO 27001 ASE/SQL workload blauw drukken-controle toewijzing
+title: Voor beeld van ISO 27001 ASE/SQL workload blauw drukken besturings elementen
 description: Bepaal de toewijzing van de blauw druk App Service Environment/SQL Database workload van de werk belasting van ISO 27001 in Azure Policy en RBAC.
 ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: ab650e35537213b0ce1e1d2b2f4692a09b0995ae
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5c5b83669a477255f0cdce45993a5871b5a9c6f8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184552"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546783"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Toewijzing van de ASE van de ISO 27001-workload/SQL-werk belasting blauw druk-voor beeld
 

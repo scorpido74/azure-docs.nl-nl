@@ -26,9 +26,9 @@ Als u een niet door HTTP geactiveerde functie wilt uitvoeren, moet u een manier 
 
 ![De aanvraaglocatie definiëren: hostnaam + mappad + functienaam](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
-- **Host name:** The function app's public location that is made up from the function app's name plus *azurewebsites.net* or your custom domain.
-- **Folder path:** To access non HTTP-triggered functions via an HTTP request, you have to send the request through the folders *admin/functions*.
-- **Function name:** The name of the function you want to run.
+- **Hostnaam:** De open bare locatie van de functie-app die is gemaakt op basis van de naam van de functie-app plus *azurewebsites.net* of uw aangepaste domein.
+- Mappad **:** Als u via een HTTP-aanvraag toegang wilt krijgen tot niet-HTTP-geactiveerde functies, moet u de aanvraag verzenden via de mappen *admin/functions*.
+- **Functie naam:** De naam van de functie die u wilt uitvoeren.
 
 Gebruik de aanvraaglocatie in Postman in combinatie met de hoofdsleutel van de functie in de aanvraag voor Azure om de functie uit te voeren.
 
@@ -37,11 +37,11 @@ Gebruik de aanvraaglocatie in Postman in combinatie met de hoofdsleutel van de f
 
 ## <a name="get-the-functions-master-key"></a>De hoofdsleutel van de functie ophalen
 
-Ga naar de functie in de Azure-portal en klik op **Beheren** en zoek de sectie **Hostsleutels**. Klik in de rij *_master* op de knop **Kopiëren** om de hoofdsleutel naar het klembord te kopiëren.
+Ga naar de functie in de Azure-portal en klik op **Beheren** en zoek de sectie **Hostsleutels**. Klik in de rij **_master** op de knop *Kopiëren* om de hoofdsleutel naar het klembord te kopiëren.
 
 ![Hoofdsleutel vanaf scherm Functiebeheer kopiëren](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
-Nadat u de hoofdsleutel hebt gekopieerd, klikt u op de functienaam om terug te gaan naar het venster met het codebestand. Next, click on the **Logs** tab. You'll see messages from the function logged here when you manually run the function from Postman.
+Nadat u de hoofdsleutel hebt gekopieerd, klikt u op de functienaam om terug te gaan naar het venster met het codebestand. Klik vervolgens op het tabblad **Logboeken** . U ziet berichten uit de functie die hier worden vastgelegd wanneer u de functie hand matig uitvoert vanuit postman.
 
 > [!CAUTION]  
 > Vanwege verhoogde machtigingen in de functie-app die door de hoofdsleutel zijn verleend, dient u deze sleutel niet te delen met derden of in een toepassing te distribueren.

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for videos using the REST API and C# - Bing Video Search'
+title: "Snelstartgids: zoeken naar Video's met behulp van C# de rest API en-Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om met C# zoekaanvragen voor video's te verzenden naar de REST-API van Bing Video's zoeken.
 services: cognitive-services
@@ -17,14 +17,14 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383825"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Quickstart: Search for videos using the Bing Video Search REST API and C#
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API enC#
 
 Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roepen en een zoekresultaat van het JSON-antwoord te bekijken. Deze eenvoudige C#-toepassing stuurt een HTTP-query naar de API om nieuws te zoeken en geeft vervolgens het antwoord weer. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) met extra foutafhandeling, functies en codeaantekeningen.
 
 ## <a name="prerequisites"></a>Vereisten
-* Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
+* Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
 * Het [Json.NET](https://www.newtonsoft.com/json)-framework, beschikbaar als NuGet-pakket.
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
 

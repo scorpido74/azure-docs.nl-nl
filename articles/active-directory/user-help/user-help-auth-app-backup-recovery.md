@@ -125,7 +125,7 @@ Er zijn een aantal redenen waarom uw back-up mogelijk niet beschikbaar is:
 
 Nu u een back-up hebt gemaakt en uw account referenties hebt hersteld naar uw nieuwe apparaat, kunt u de app Microsoft Authenticator blijven gebruiken om uw identiteit te verifiëren. Zie [Aanmelden bij uw accounts met behulp van de app Microsoft Authenticator](user-help-sign-in.md)voor meer informatie.
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 
 - [Wat is de Microsoft Authenticator-app?](user-help-auth-app-overview.md)
 

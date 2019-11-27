@@ -1,6 +1,6 @@
 ---
-title: Source transformation in mapping data flow
-description: Learn how to set up a source transformation in mapping data flow.
+title: Bron transformatie in gegevens stroom toewijzen
+description: Meer informatie over het instellen van een bron transformatie in het toewijzen van gegevens stroom.
 author: kromerm
 ms.author: makromer
 manager: anandsub
@@ -15,176 +15,176 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74217735"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>Source transformation for mapping data flow 
+# <a name="source-transformation-for-mapping-data-flow"></a>Bron transformatie voor het toewijzen van gegevens stroom 
 
-A source transformation configures your data source for the data flow. When designing data flows, your first step will always be configuring a source transformation. To add a source, click on the **Add Source** box in the data flow canvas.
+Met een bron transformatie configureert u de gegevens bron voor de gegevens stroom. Bij het ontwerpen van gegevens stromen wordt de eerste stap altijd een bron transformatie configureren. Als u een bron wilt toevoegen, klikt u op het vak **bron toevoegen** in het canvas voor gegevens stromen.
 
-Every data flow requires at least one source transformation, but you can add as many sources as necessary to complete your data transformations. You can join those sources together with a join, lookup, or a union transformation.
+Elke gegevens stroom vereist ten minste één bron transformatie, maar u kunt zoveel bronnen toevoegen als u nodig hebt om uw gegevens transformaties te volt ooien. U kunt deze bronnen samen voegen met een koppelings-, zoek-of een Union-trans formatie.
 
-Each source transformation is associated with exactly one Data Factory dataset. The dataset defines the shape and location of the data you want to write to or read from. If using a file-based dataset, you can use wildcards and file lists in your source to work with more than one file at a time.
+Elke bron transformatie is gekoppeld aan precies één Data Factory-gegevensset. De gegevensset definieert de vorm en locatie van de gegevens waarnaar u wilt schrijven of waaruit u wilt lezen. Als u een gegevensset op basis van een bestand gebruikt, kunt u Joker tekens en bestands lijsten in uw bron gebruiken om met meer dan één bestand tegelijk te werken.
 
-## <a name="supported-connectors-in-mapping-data-flow"></a>Supported connectors in mapping data flow
+## <a name="supported-connectors-in-mapping-data-flow"></a>Ondersteunde connectors in gegevens stroom toewijzen
 
-Mapping Data Flow follows an extract, load, transform (ELT) approach and works with *staging* datasets that are all in Azure. Currently the following datasets can be used in a source transformation:
+Toewijzing van gegevens stroom volgt een extractie benadering, Load, Transform (ELT) en werkt met *faserings* gegevens sets die allemaal in azure zijn. Momenteel kunnen de volgende gegevens sets worden gebruikt in een bron transformatie:
     
-* Azure Blob Storage (JSON, Avro, Text, Parquet)
-* Azure Data Lake Storage Gen1 (JSON, Avro, Text, Parquet)
-* Azure Data Lake Storage Gen2 (JSON, Avro, Text, Parquet)
+* Azure Blob Storage (JSON, AVRO, Text, Parquet)
+* Azure Data Lake Storage Gen1 (JSON, AVRO, Text, Parquet)
+* Azure Data Lake Storage Gen2 (JSON, AVRO, Text, Parquet)
 * Azure SQL Data Warehouse
 * Azure SQL Database
 * Azure CosmosDB
 
-Azure Data Factory has access to over 80 native connectors. To include data from those other sources in your data flow, use the Copy Activity to load that data into one of the supported staging areas.
+Azure Data Factory heeft toegang tot meer dan 80 systeem eigen connectors. Als u gegevens uit deze andere bronnen in uw gegevens stroom wilt toevoegen, gebruikt u de Kopieer activiteit om die gegevens te laden in een van de ondersteunde staging-gebieden.
 
 ## <a name="source-settings"></a>Broninstellingen
 
-Once you have added a source, configure via the **Source Settings** tab. Here you can pick or create the dataset your source points at. You can also select schema and sampling options for your data.
+Nadat u een bron hebt toegevoegd, configureert u via het tabblad **bron instellingen** . Hier kunt u de gegevensset voor uw bron punten kiezen of maken. U kunt ook schema-en bemonsterings opties voor uw gegevens selecteren.
 
-![Source settings tab](media/data-flow/source1.png "Source settings tab")
+![Tabblad Bron instellingen](media/data-flow/source1.png "Tabblad Bron instellingen")
 
-**Schema drift:** [Schema Drift](concepts-data-flow-schema-drift.md) is data factory's ability to natively handle flexible schemas in your data flows without needing to explicitly define column changes.
+**Schema-drift:** [schema-drift](concepts-data-flow-schema-drift.md) Data Factory is de mogelijkheid van een systeem eigen flexibele schema's in uw gegevens stromen zonder dat er expliciet kolom wijzigingen hoeven te worden gedefinieerd.
 
-* Check the **Allow schema drift** box if the source columns will change often. This setting allows all incoming source fields to flow through the transformations to the sink.
+* Schakel het selectie vakje **schema-drift toestaan** in als de bron kolommen vaak worden gewijzigd. Met deze instelling kunnen alle binnenkomende bron velden door de trans formaties worden getransporteerd naar de sink.
 
-* Choosing **Infer drifted column types** will instruct data factory to detect and define data types for each new column discovered. With this feature turned off, all drifted columns will be of type string.
+* Bij het kiezen van een **afleidende kolom Type** wordt de instructie Data Factory om gegevens typen te detecteren en te definiëren voor elke nieuwe kolom die wordt gedetecteerd. Als deze functie is uitgeschakeld, zijn alle gedrijfde kolommen van het type teken reeks.
 
-**Validate schema:** If validate schema is selected, the data flow will fail to run if the incoming source data doesn't match the defined schema of the dataset.
+**Schema valideren:** Als validatie schema is geselecteerd, kan de gegevens stroom niet worden uitgevoerd als de binnenkomende bron gegevens niet overeenkomen met het gedefinieerde schema van de gegevensset.
 
-**Skip line count:** The skip line count field specifies how many lines to ignore at the beginning of the dataset.
+**Aantal regels overs Laan:** In het veld aantal regel items overs Laan wordt aangegeven hoeveel regels aan het begin van de gegevensset moeten worden genegeerd.
 
-**Sampling:** Enable sampling to limit the number of rows from your source. Use this setting when you test or sample data from your source for debugging purposes.
+**Steek proeven:** Schakel steek proeven in om het aantal rijen van de bron te beperken. Gebruik deze instelling wanneer u gegevens uit uw bron test of van uw source gebruikt voor fout opsporing.
 
-**Multiline rows:** Select multiline rows if your source text file contains string values that span multiple rows, i.e. newlines inside a value.
+**Meerregelige rijen:** Selecteer meerregelige rijen als uw bron tekst bestand teken reeks waarden bevat die meerdere rijen bevatten, dat wil zeggen een nieuwe regel in een waarde.
 
-To validate your source is configured correctly, turn on debug mode and fetch a data preview. For more information, see [Debug mode](concepts-data-flow-debug-mode.md).
+Als u wilt valideren of uw bron juist is geconfigureerd, schakelt u de foutopsporingsmodus in en haalt u een voor beeld van de gegevens op. Zie [debug mode (foutopsporingsmodus](concepts-data-flow-debug-mode.md)) voor meer informatie.
 
 > [!NOTE]
-> When debug mode is turned on, the row limit configuration in debug settings will overwrite the sampling setting in the source during data preview.
+> Wanneer de foutopsporingsmodus is ingeschakeld, wordt de sampling-instelling in de bron tijdens de preview-versie overschreven door de configuratie van het aantal rijen in de instellingen voor fout opsporing.
 
-## <a name="file-based-source-options"></a>File-based source options
+## <a name="file-based-source-options"></a>Bron opties op basis van een bestand
 
-If you're using a file-based dataset such as Azure Blob Storage or Azure Data Lake Storage, the **Source options** tab lets you manage how your source reads files.
+Als u een gegevensset op basis van een bestand gebruikt, zoals Azure Blob Storage of Azure Data Lake Storage, kunt u op het tabblad **bron opties** beheren hoe bestanden worden gelezen met uw bron.
 
-![Source options](media/data-flow/sourceOPtions1.png "Source options")
+![Bron opties](media/data-flow/sourceOPtions1.png "Bron opties")
 
-**Wildcard path:** Using a wildcard pattern will instruct ADF to loop through each matching folder and file in a single Source transformation. This is an effective way to process multiple files within a single flow. Add multiple wildcard matching patterns with the + sign that appears when hovering over your existing wildcard pattern.
+**Pad met Joker tekens:** Als u een Joker teken gebruikt, wordt ADF geadviseerd om elke overeenkomende map en elk bestand in één bron transformatie te verwerken. Dit is een efficiënte manier om meerdere bestanden binnen één stroom te verwerken. Voeg meerdere Joker teken patronen toe met het plus teken dat wordt weer gegeven bij het aanwijzen van het bestaande Joker teken patroon.
 
-From your source container, choose a series of files that match a pattern. Only container can be specified in the dataset. Your wildcard path must therefore also include your folder path from the root folder.
+Kies in uw bron container een reeks bestanden die overeenkomen met een patroon. Alleen container kan worden opgegeven in de gegevensset. Het pad naar uw Joker teken moet daarom ook uw mappad van de hoofdmap bevatten.
 
-Wildcard examples:
+Voor beelden van joker tekens:
 
-* ```*``` Represents any set of characters
-* ```**``` Represents recursive directory nesting
-* ```?``` Replaces one character
-* ```[]``` Matches one of more characters in the brackets
+* ```*``` vertegenwoordigt een wille keurige set tekens
+* ```**``` staat voor recursieve nesten van mappen
+* ```?``` vervangt één teken
+* ```[]``` komt overeen met een van de tekens in de vier Kante haken
 
-* ```/data/sales/**/*.csv``` Gets all csv files under /data/sales
-* ```/data/sales/20??/**``` Gets all files in the 20th century
-* ```/data/sales/2004/*/12/[XY]1?.csv``` Gets all csv files in 2004 in December starting with X or Y prefixed by a two-digit number
+* ```/data/sales/**/*.csv``` haalt alle CSV-bestanden op/Data/Sales
+* ```/data/sales/20??/**``` alle bestanden in de twintigste eeuw ophalen
+* ```/data/sales/2004/*/12/[XY]1?.csv``` haalt alle CSV-bestanden in 2004 december op, beginnend met X of Y, voorafgegaan door een getal van twee cijfers
 
-**Partition Root Path:** If you have partitioned folders in your file source with  a ```key=value``` format (for example, year=2019), then you can assign the top level of that partition folder tree to a column name in your data flow data stream.
+Basispad **:** Als u gepartitioneerde mappen in de bestands bron hebt met een ```key=value```-indeling (bijvoorbeeld Year = 2019), kunt u het hoogste niveau van die partitie mappen structuur toewijzen aan een kolom naam in de gegevens stroom van de gegevensstroom.
 
-First, set a wildcard to include all paths that are the partitioned folders plus the leaf files that you wish to read.
+Stel eerst een Joker teken in om alle paden op te nemen van de gepartitioneerde mappen plus de blad bestanden die u wilt lezen.
 
-![Partition source file settings](media/data-flow/partfile2.png "Partition file setting")
+![Bron Bestands instellingen voor partitioneren](media/data-flow/partfile2.png "Instelling voor partitie bestand")
 
-Use the Partition Root Path setting to define what the top level of the folder structure is. When you view the contents of your data via a data preview, you'll see that ADF will add the resolved partitions found in each of your folder levels.
+Gebruik de instelling basis pad partitie om te definiëren wat het hoogste niveau van de mappen structuur is. Wanneer u de inhoud van uw gegevens bekijkt via een voor beeld van de gegevens, ziet u dat de opgeloste partities in elk van uw mapniveau worden toegevoegd.
 
-![Partition root path](media/data-flow/partfile1.png "Partition root path preview")
+![Basispad voor partitie](media/data-flow/partfile1.png "Voor beeld van basispad")
 
-**List of files:** This is a file set. Create a text file that includes a list of relative path files to process. Point to this text file.
+**Lijst met bestanden:** Dit is een bestandenset. Maak een tekst bestand met een lijst met relatieve padgegevens die moeten worden verwerkt. Wijs dit tekst bestand aan.
 
-**Column to store file name:** Store the name of the source file in a column in your data. Enter a new column name here to store the file name string.
+**Kolom voor het opslaan van de bestands naam:** Sla de naam van het bron bestand op in een kolom in uw gegevens. Voer hier een nieuwe kolom naam in om de teken reeks voor de bestands naam op te slaan.
 
-**After completion:** Choose to do nothing with the source file after the data flow runs, delete the source file, or move the source file. The paths for the move are relative.
+**Na voltooiing:** U kunt niets doen met het bron bestand nadat de gegevens stroom is uitgevoerd, het bron bestand te verwijderen of het bron bestand te verplaatsen. De paden voor de verplaatsing zijn relatief.
 
-To move source files to another location post-processing, first select "Move" for file operation. Then, set the "from" directory. If you're not using any wildcards for your path, then the "from" setting will be the same folder as your source folder.
+Als u bron bestanden naar een andere locatie wilt verplaatsen, selecteert u eerst verplaatsen voor bestands bewerking. Stel vervolgens de map uit. Als u geen joker tekens gebruikt voor uw pad, is de instelling van ' van ' dezelfde map als de bronmap.
 
-If you have a source path with wildcard, your syntax will look like this below:
+Als u een bronpad met Joker teken hebt, ziet uw syntaxis er als volgt uit:
 
 ```/data/sales/20??/**/*.csv```
 
-You can specify "from" as
+U kunt "van" opgeven als
 
 ```/data/sales```
 
-And "to" as
+En "aan" als
 
 ```/backup/priorSales```
 
-In this case, all files that were sourced under /data/sales are moved to /backup/priorSales.
+In dit geval worden alle bestanden die zijn gebrond onder/Data/Sales verplaatst naar/backup/priorSales.
 
 > [!NOTE]
-> File operations run only when you start the data flow from a pipeline run (a pipeline debug or execution run) that uses the Execute Data Flow activity in a pipeline. File operations *do not* run in Data Flow debug mode.
+> Bestands bewerkingen worden alleen uitgevoerd wanneer u de gegevens stroom start vanuit een pijplijn uitvoering (een uitvoering van een pijp lijn of uitvoering) die gebruikmaakt van de activiteit gegevens stroom uitvoeren in een pijp lijn. Bestands bewerkingen *worden niet* uitgevoerd in de modus voor fout opsporing van gegevens stromen.
 
-**Filter by last modified:** You can filter which files you process by specifying a date range of when they were last modified. All date-times are in UTC. 
+**Filteren op laatst gewijzigd:** U kunt filteren op de bestanden die u verwerkt door een datum bereik op te geven wanneer ze voor het laatst zijn gewijzigd. Alle datum-tijden zijn in UTC. 
 
-### <a name="add-dynamic-content"></a>Add dynamic content
+### <a name="add-dynamic-content"></a>Dynamische inhoud toevoegen
 
-All source settings can be specified as expressions using the [Mapping Data flow's transformation expression language](data-flow-expression-functions.md). To add dynamic content, click or hover inside of the fields in the settings panel. Click the hyperlink for **Add dynamic content**. This will launch the expression builder where you can set values dynamically using expressions, static literal values, or parameters.
+Alle bron instellingen kunnen worden opgegeven als expressies met de [taal van de transformatie expressie van de toewijzings gegevens stroom](data-flow-expression-functions.md). Als u dynamische inhoud wilt toevoegen, klikt of plaatst u de muis aanwijzer in de velden in het deel venster instellingen. Klik op de Hyper link voor **dynamische inhoud toevoegen**. Hiermee wordt de opbouw functie voor expressies gestart, waar u waarden dynamisch kunt instellen met behulp van expressies, statische letterlijke waarden of para meters.
 
 ![Parameters](media/data-flow/params6.png "Parameters")
 
-## <a name="sql-source-options"></a>SQL source options
+## <a name="sql-source-options"></a>Opties voor SQL-bron
 
-If your source is in SQL Database or SQL Data Warehouse, additional SQL-specific settings are available in the **Source Options** tab. 
+Als uw bron zich in SQL Database of SQL Data Warehouse bevindt, zijn aanvullende SQL-specifieke instellingen beschikbaar op het tabblad **bron opties** . 
 
-**Input:** Select whether you point your source at a table (equivalent of ```Select * from <table-name>```) or enter a custom SQL query.
+**Invoer:** Selecteer of u uw bron op een tabel (equivalent van ```Select * from <table-name>```) wilt aanwijzen of voer een aangepaste SQL-query in.
 
-**Query**: If you select Query in the input field, enter a SQL query for your source. This setting overrides any table that you've chosen in the dataset. **Order By** clauses aren't supported here, but you can set a full SELECT FROM statement. You can also use user-defined table functions. **select * from udfGetData()** is a UDF in SQL that returns a table. This query will produce a source table that you can use in your data flow. Using queries is also a great way to reduce rows for testing or for lookups. Voorbeeld: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
+**Query**: als u in het invoer veld query selecteert, voert u een SQL-query in voor uw bron. Deze instelling overschrijft elke tabel die u in de gegevensset hebt gekozen. **Order by** -componenten worden hier niet ondersteund, maar u kunt een volledige Select from-instructie instellen. U kunt ook door de gebruiker gedefinieerde tabel functies gebruiken. **Select * from udfGetData ()** is een UDF in SQL die een tabel retourneert. Met deze query wordt een bron tabel geproduceerd die u in uw gegevens stroom kunt gebruiken. Het gebruik van query's is ook een uitstekende manier om rijen te verminderen voor het testen of voor Zoek opdrachten. Voorbeeld: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Batch size**: Enter a batch size to chunk large data into reads.
+**Batch grootte**: Voer een batch grootte in om grote hoeveel heden gegevens in Lees bewerkingen te segmenteren.
 
-**Isolation Level**: The default for SQL sources in mapping data flow is read uncommitted. You can change the isolation level here to one of these values:
-* Read Committed
-* Read Uncommitted
-* Repeatable Read
+**Isolatie niveau**: de standaard waarde voor SQL-bronnen in de toewijzings gegevens stroom is niet-vastgelegd. U kunt het isolatie niveau hier wijzigen in een van deze waarden:
+* Doorgevoerde lezen
+* Lezen niet-doorgevoerd
+* Herhaal bare Lees bewerking
 * Serializable
-* None (ignore isolation level)
+* Geen (isolatie niveau negeren)
 
-![Isolation Level](media/data-flow/isolationlevel.png "Isolation Level")
+![Isolatie niveau](media/data-flow/isolationlevel.png "Isolatie niveau")
 
 ## <a name="projection"></a>Projectie
 
-Like schemas in datasets, the projection in a source defines the data columns, types, and formats from the source data. For most dataset types such as SQL and Parquet, the projection in a source is fixed to reflect the schema defined in a dataset. When your source files aren't strongly typed (for example, flat csv files rather than Parquet files), you can define the data types for each field in the source transformation.
+Net als schema's in gegevens sets definieert de projectie in een bron de gegevens kolommen, typen en indelingen van de bron gegevens. Voor de meeste typen gegevensset, zoals SQL en Parquet, wordt de projectie van een bron vastgesteld op basis van het schema dat is gedefinieerd in een gegevensset. Als uw bron bestanden niet sterk worden getypt (bijvoorbeeld platte CSV-bestanden in plaats van Parquet-bestanden), kunt u de gegevens typen voor elk veld in de bron transformatie definiëren.
 
-![Settings on the Projection tab](media/data-flow/source3.png "Projectie")
+![Instellingen op het tabblad projectie](media/data-flow/source3.png "Projectie")
 
-If your text file has no defined schema, select **Detect data type** so that Data Factory will sample and infer the data types. Select **Define default format** to autodetect the default data formats. 
+Als uw tekst bestand geen gedefinieerd schema heeft, selecteert u **gegevens type detecteren** zodat Data Factory de gegevens typen worden gesampled en afgeleid. Selecteer **standaard indeling instellen** op automatische detectie van de standaard gegevens indelingen. 
 
-You can modify the column data types in a down-stream derived-column transformation. Use a select transformation to modify the column names.
+U kunt de kolom gegevens typen wijzigen in een trans formatie die is afgeleid van een dalende stroom kolom. Gebruik een SELECT trans formatie om de kolom namen te wijzigen.
 
-### <a name="import-schema"></a>Import schema
+### <a name="import-schema"></a>Schema importeren
 
-Datasets like Avro and CosmosDB that support complex data structures do not require schema definitions to exist in the dataset. Therefore, you will be able to click the "Import Schema" button the Projection tab for these types of sources.
+Gegevens sets zoals Avro en CosmosDB die ondersteuning bieden voor complexe gegevens structuren, vereisen niet dat schema definities aanwezig zijn in de gegevensset. Daarom kunt u op de knop schema importeren klikken op het tabblad projectie voor deze typen bronnen.
 
-## <a name="cosmosdb-specific-settings"></a>CosmosDB specific settings
+## <a name="cosmosdb-specific-settings"></a>Specifieke instellingen voor CosmosDB
 
-When using CosmosDB as a source type, there are a few options to consider:
+Wanneer u CosmosDB als bron type gebruikt, moet u rekening houden met enkele van de volgende opties:
 
-* Include system columns: If you check this, ```id```, ```_ts```, and other system columns will be included in your data flow metadata from CosmosDB. When updating collections, it is important to include this so that you can grab the existing row id.
-* Page size: The number of documents per page of the query result. Default is "-1" which uses the service dynamic page up to 1000.
-* Throughput: Set an optional value for the number of RUs you'd like to apply to your CosmosDB collection for each execution of this data flow during the read operation. Minimum is 400.
-* Preferred regions: You can choose the preferred read regions for this process.
+* Inclusief systeem kolommen: als u deze optie inschakelt, worden ```id```, ```_ts```en andere systeem kolommen opgenomen in de meta gegevens van de gegevensstroom vanuit CosmosDB. Wanneer u verzamelingen bijwerkt, is het belang rijk om dit op te halen, zodat u de bestaande rij-id kunt ophalen.
+* Pagina formaat: het aantal documenten per pagina van het query resultaat. De standaard waarde is '-1 ' die gebruikmaakt van de dynamische pagina van de service tot 1000.
+* Door Voer: Stel een optionele waarde in voor het aantal RUs dat u wilt Toep assen op uw CosmosDB-verzameling voor elke uitvoering van deze gegevens stroom tijdens de Lees bewerking. Minimum is 400.
+* Voorkeurs regio's: u kunt de voorkeurs gebieden voor het lezen van dit proces kiezen.
 
-## <a name="optimize-the-source-transformation"></a>Optimize the source transformation
+## <a name="optimize-the-source-transformation"></a>De bron transformatie optimaliseren
 
-On the **Optimize** tab for the source transformation, you might see a **Source** partition type. This option is available only when your source is Azure SQL Database. This is because Data Factory tries to make connections parallel to run large queries against your SQL Database source.
+Op het tabblad **optimaliseren** voor de bron transformatie ziet u mogelijk een type **bron** partitie. Deze optie is alleen beschikbaar als uw bron Azure SQL Database is. Dit komt omdat Data Factory verbinding probeert te maken met het parallel uitvoeren van grote query's op uw SQL Database bron.
 
-![Source partition settings](media/data-flow/sourcepart3.png "partitioning")
+![Instellingen van de bron partitie](media/data-flow/sourcepart3.png "partitioneren")
 
-You don't have to partition data on your SQL Database source, but partitions are useful for large queries. You can base your partition on a column or a query.
+U hoeft geen gegevens op uw SQL Database bron te partitioneren, maar partities zijn handig voor grote query's. U kunt de partitie baseren op een kolom of een query.
 
-### <a name="use-a-column-to-partition-data"></a>Use a column to partition data
+### <a name="use-a-column-to-partition-data"></a>Een kolom gebruiken om gegevens te partitioneren
 
-From your source table, select a column to partition on. Also set the number of partitions.
+Selecteer in de bron tabel een kolom waarop moet worden gepartitioneerd. Stel ook het aantal partities in.
 
-### <a name="use-a-query-to-partition-data"></a>Use a query to partition data
+### <a name="use-a-query-to-partition-data"></a>Een query gebruiken om gegevens te partitioneren
 
-You can choose to partition the connections based on a query. Enter the contents of a WHERE predicate. For example, enter year > 1980.
+U kunt ervoor kiezen om de verbindingen te partitioneren op basis van een query. Voer de inhoud van een WHERE-predikaat in. Voer bijvoorbeeld jaar > 1980 in.
 
-For more information on optimization within mapping data flow, see the [Optimize tab](concepts-data-flow-overview.md#optimize).
+Zie het [tabblad optimaliseren](concepts-data-flow-overview.md#optimize)voor meer informatie over optimalisatie binnen de toewijzing van gegevens stromen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Begin building a [derived-column transformation](data-flow-derived-column.md) and a [select transformation](data-flow-select.md).
+Beginnen met het bouwen van een [afgeleide kolom transformatie](data-flow-derived-column.md) en een [geselecteerde trans formatie](data-flow-select.md).

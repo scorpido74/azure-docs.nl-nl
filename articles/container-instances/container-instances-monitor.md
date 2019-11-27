@@ -1,19 +1,14 @@
 ---
-title: Containers in Azure Container Instances bewaken
+title: Container instanties bewaken
 description: Het gebruik van reken resources zoals CPU en geheugen door uw containers in Azure Container Instances bewaken.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/24/2019
-ms.author: danlep
-ms.openlocfilehash: a26789bb41fb3fb1e7dec376b7e187f45745ea65
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: bd86161bc7840be599eb5ee9a20f6dbf143f5f22
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172259"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533651"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Containerresources in Azure Container Instances bewaken
 
@@ -81,7 +76,7 @@ Timestamp            Name       Average
 2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-Wijzig de waarde van de `--metric` para meter in de opdracht om andere [ondersteunde metrische gegevens][supported-metrics]op te halen. Gebruik bijvoorbeeld de volgende opdracht om metrische gegevens over het **geheugen** gebruik op te halen. 
+Wijzig de waarde van de para meter `--metric` in de opdracht om andere [ondersteunde metrische gegevens][supported-metrics]op te halen. Gebruik bijvoorbeeld de volgende opdracht om metrische gegevens over het **geheugen** gebruik op te halen. 
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
@@ -102,7 +97,7 @@ Timestamp            Name          Average
 2019-04-23 23:10:00  Memory Usage  8093696.0
 ```
 
-Voor een groep met meerdere containers kan de `containerName` dimensie worden toegevoegd om metrische gegevens per container te retour neren.
+Voor een groep met meerdere containers kan de dimensie `containerName` worden toegevoegd om metrische gegevens per container te retour neren.
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table

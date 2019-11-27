@@ -38,13 +38,13 @@ De volgende lijst bevat aanbevolen procedures voor LUIS apps:
 
 |Wel doen|Niet doen|
 |--|--|
-|[Verschillende intents definiëren](#do-define-distinct-intents)<br>[Descriptors aan intenties toevoegen](#do-add-descriptors-to-intents) |[Veel voorbeeld uitingen aan intents toevoegen](#dont-add-many-example-utterances-to-intents)<br>[Gebruik enkele of eenvoudige entiteiten](#dont-use-few-or-simple-entities) |
-|[Een plek sweet tussen te algemeen en te specifiek voor elke doel vinden](#do-find-sweet-spot-for-intents)|[LUIS gebruiken als platform voor training](#dont-use-luis-as-a-training-platform)|
-|[Uw app iteratief bouwen met versies](#do-build-your-app-iteratively-with-versions)<br>[Entiteiten bouwen voor model ontleding](#do-build-for-model-decomposition)|[Toevoegen van veel voorbeeld uitingen van dezelfde indeling, andere indelingen worden genegeerd](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
-|[Patronen in latere iteraties toevoegen](#do-add-patterns-in-later-iterations)|[Combineer de definitie van de intenties en entiteiten](#dont-mix-the-definition-of-intents-and-entities)|
-|[U hoeft uw uitingen te verdelen over alle intenties](#balance-your-utterances-across-all-intents) , met uitzonde ring van de geen intentie.<br>[Voorbeeld utterances toevoegen op None intentie](#do-add-example-utterances-to-none-intent)|[Descriptors maken met alle mogelijke waarden](#dont-create-descriptors-with-all-the-possible-values)|
-|[Maak gebruik van de functie voor suggesties voor actief leren](#do-leverage-the-suggest-feature-for-active-learning)|[Te veel patronen toevoegen](#dont-add-many-patterns)|
-|[De prestaties van uw app bewaken met batch tests](#do-monitor-the-performance-of-your-app)|[Trainen en publiceren met elk één voorbeeld utterance toegevoegd](#dont-train-and-publish-with-every-single-example-utterance)|
+|[Afzonderlijke intenties definiëren](#do-define-distinct-intents)<br>[Descriptors aan intenties toevoegen](#do-add-descriptors-to-intents) |[Een groot aantal voor beelden uitingen toevoegen aan intenties](#dont-add-many-example-utterances-to-intents)<br>[Gebruik enkele of eenvoudige entiteiten](#dont-use-few-or-simple-entities) |
+|[Vind een zoete vlek tussen te algemeen en te specifiek voor elke intentie](#do-find-sweet-spot-for-intents)|[LUIS als trainings platform gebruiken](#dont-use-luis-as-a-training-platform)|
+|[Uw app iteratief bouwen met versies](#do-build-your-app-iteratively-with-versions)<br>[Entiteiten bouwen voor model ontleding](#do-build-for-model-decomposition)|[Een groot aantal voor beeld-uitingen met dezelfde indeling toevoegen en andere indelingen negeren](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[Patronen in latere iteraties toevoegen](#do-add-patterns-in-later-iterations)|[De definitie van intenties en entiteiten combi neren](#dont-mix-the-definition-of-intents-and-entities)|
+|[U hoeft uw uitingen te verdelen over alle intenties](#balance-your-utterances-across-all-intents) , met uitzonde ring van de geen intentie.<br>[Voor beeld uitingen toevoegen aan geen intentie](#do-add-example-utterances-to-none-intent)|[Descriptors maken met alle mogelijke waarden](#dont-create-descriptors-with-all-the-possible-values)|
+|[Gebruik de functie Voorst Ellen voor actief leren](#do-leverage-the-suggest-feature-for-active-learning)|[Te veel patronen toevoegen](#dont-add-many-patterns)|
+|[De prestaties van uw app bewaken met batch tests](#do-monitor-the-performance-of-your-app)|[Train en publiceer met elk enkel voor beeld utterance toegevoegd](#dont-train-and-publish-with-every-single-example-utterance)|
 
 ## <a name="do-define-distinct-intents"></a>Verschillende intents definiëren
 Zorg ervoor dat de woordenlijst voor elk doel alleen voor dit doel en niet met een ander doel overlappende. Als u bijvoorbeeld een app wilt hebben die reis regelingen afhandelt, zoals vlieg vluchten en hotels, kunt u ervoor kiezen om deze onderwerpgebieden als afzonderlijke intenties of hetzelfde doel te hebben met entiteiten voor specifieke gegevens binnen de utterance.
@@ -141,7 +141,7 @@ Dit is de terugval intentie, wat inhoudt dat u buiten uw toepassing kunt vinden.
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Gebruikmaken van de functie voor suggesties voor actief leren
 
-Gebruik [actief leren](luis-how-to-review-endpoint-utterances.md)van **bekijken eindpunt uitingen** regelmatig, in plaats van meer voorbeeld uitingen aan intents toe te voegen. Omdat de app voortdurend eindpunt uitingen ontvangt, wordt deze lijst groeit en wijzigen.
+Gebruik het **controle punt uitingen** van het [actieve leer proces](luis-how-to-review-endpoint-utterances.md)regel matig, in plaats van meer voor beeld-uitingen aan intenties toe te voegen. Omdat de app voortdurend eindpunt uitingen ontvangt, wordt deze lijst groeit en wijzigen.
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>De prestaties van uw app controleren
 
@@ -175,7 +175,7 @@ De tweede kolom maakt gebruik van verschillende bewerkingen (kopen, reserveren, 
 
 Maak een doel voor alle acties die uw bot duurt. Entiteiten gebruiken als parameters die deze actie mogelijk maken. 
 
-Voor een bot die vlieg vluchten gaat boeken, maakt u een **BookFlight** intentie. Maak geen een doel voor elke luchtvaartmaatschappij of elke bestemming. Gebruik van deze onderdelen van de gegevens als [entiteiten](luis-concept-entity-types.md) en deze te markeren in de voorbeeld-uitingen. 
+Voor een bot die vlieg vluchten gaat boeken, maakt u een **BookFlight** intentie. Maak geen een doel voor elke luchtvaartmaatschappij of elke bestemming. Gebruik deze gegevens als [entiteiten](luis-concept-entity-types.md) en markeer deze in het voor beeld uitingen. 
 
 ## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Geen descriptors met alle mogelijke waarden maken
 
@@ -183,7 +183,7 @@ Geef een aantal voor beelden in de [woordgroepen lijst](luis-concept-feature.md)
 
 ## <a name="dont-add-many-patterns"></a>Veel patronen niet toevoegen
 
-Voeg niet te veel [patronen](luis-concept-patterns.md). LUIS is bedoeld voor meer informatie over snel met minder voorbeelden. Het systeem niet onnodig worden overbelast.
+Voeg niet te veel [patronen](luis-concept-patterns.md)toe. LUIS is bedoeld voor meer informatie over snel met minder voorbeelden. Het systeem niet onnodig worden overbelast.
 
 ## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Geen trainen en publiceren met elk één voorbeeld utterance
 
@@ -191,4 +191,4 @@ Voeg niet te veel [patronen](luis-concept-patterns.md). LUIS is bedoeld voor mee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [uw app plannen](luis-how-plan-your-app.md) in uw LUIS-app.
+* Meer informatie over het [plannen van uw app](luis-how-plan-your-app.md) in uw Luis-app.

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with MCM | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met MCM | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en MCM.
 services: active-directory
 documentationCenter: na
@@ -22,7 +22,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227501"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mcm"></a>Tutorial: Azure Active Directory integration with MCM
+# <a name="tutorial-azure-active-directory-integration-with-mcm"></a>Zelf studie: integratie Azure Active Directory met MCM
 
 In deze zelfstudie leert u hoe u MCM kunt integreren met Microsoft Azure Active Directory (Azure AD).
 De integratie van MCM met Microsoft Azure Active Directory biedt de volgende voordelen:
@@ -53,7 +53,7 @@ Voor het configureren van de integratie van MCM met Microsoft Azure Active Direc
 
 **Als u MCM vanuit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -107,12 +107,12 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Microsoft Azure Acti
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://myaba.co.uk/client-access/<companyname>/saml.php`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://myaba.co.uk/<companyname>`
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://myaba.co.uk/<companyname>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [MCM-ondersteuningsteam](https://mcmtechnology.com/support/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [MCM-ondersteuningsteam](https://mcmtechnology.com/support/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-4. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
+4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -148,12 +148,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -186,7 +186,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 In deze sectie gaat u in MCM een gebruiker maken met de naam Britta Simon. Werk samen met het  [MCM-ondersteuningsteam](https://mcmtechnology.com/support/) om de gebruikers aan het MCM-platform toe te voegen. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 >[!NOTE]
->You can use any other MCM user account creation tools or APIs provided by MCM to provision Azure AD user accounts.
+>U kunt alle andere hulpprogram ma's voor het maken van MCM-gebruikers accounts of Api's die worden geleverd door MCM, gebruiken om Azure AD-gebruikers accounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
@@ -194,11 +194,11 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u in het toegangsvenster op de tegel MCM klikt, wordt u automatisch aangemeld bij de instantie van MCM waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

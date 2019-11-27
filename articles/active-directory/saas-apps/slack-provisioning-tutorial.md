@@ -106,7 +106,7 @@ U kunt eventueel het inrichten van groeps objecten van Azure AD inschakelen voor
 
 Dit heeft tot gevolg dat groeps objecten die zijn toegewezen aan toegestane vertraging in de sectie **gebruikers en groepen** , volledig worden gesynchroniseerd van Azure AD naar een toegestane vertraging. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in de app voor de toegestane vertraging.
 
-Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 ## <a name="connector-limitations"></a>Connector beperkingen
 
@@ -124,7 +124,7 @@ Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [ra
 
 * De toegestane vertraging kan alleen overeenkomen met de kenmerken **username** en **e-mail**.  
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

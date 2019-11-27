@@ -14,26 +14,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/04/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: elisol, lenalepa
+ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6d2efdcf03b829b43f797ddb7ca32bb6d120609e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803449"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533005"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Hoe en waarom toepassingen worden toegevoegd aan Azure AD
 
-Er zijn twee representaties van toepassingen in azure AD: 
+Er zijn twee representaties van toepassingen in azure AD:
+
 * [Toepassings objecten](app-objects-and-service-principals.md#application-object) -hoewel er [uitzonde ringen](#notes-and-exceptions)zijn, kunnen toepassings objecten worden beschouwd als de definitie van een toepassing.
 * [Service-principals](app-objects-and-service-principals.md#service-principal-object) : kan worden beschouwd als een exemplaar van een toepassing. Service-principals verwijzen doorgaans naar een toepassings object en er kan naar één toepassings object worden verwezen door meerdere service-principals in directory's.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Wat zijn toepassings objecten en waar komen ze vandaan?
+
 U kunt [toepassings objecten](app-objects-and-service-principals.md#application-object) in de Azure portal beheren via de [app registraties](https://aka.ms/appregistrations) . Toepassings objecten beschrijven de toepassing naar Azure AD en kunnen worden beschouwd als de definitie van de toepassing, zodat de service kan weten hoe tokens moeten worden uitgegeven aan de toepassing op basis van de instellingen ervan. Het toepassings object bevinden zich alleen in de basismap, zelfs als dit een multi tenant-toepassing is die service-principals in andere mappen ondersteunt. Het toepassings object kan bestaan uit een van de volgende (evenals aanvullende informatie die hier niet wordt vermeld):
+
 * Naam, logo en uitgever
 * Omleidings-Uri's
 * Geheimen (symmetrische en/of asymmetrische sleutels die worden gebruikt voor het verifiëren van de toepassing)
@@ -45,13 +48,15 @@ U kunt [toepassings objecten](app-objects-and-service-principals.md#application-
 * Meta gegevens en configuratie van proxy
 
 Toepassings objecten kunnen worden gemaakt via meerdere paden, waaronder:
+
 * Toepassings registraties in de Azure Portal
 * Een nieuwe toepassing maken met Visual Studio en deze configureren voor gebruik van Azure AD-verificatie
 * Wanneer een beheerder een toepassing toevoegt uit de app-galerie (waardoor ook een service-principal wordt gemaakt)
-* De Microsoft Graph-API, Azure AD Graph API of Power shell gebruiken om een nieuwe toepassing te maken
+* De Microsoft Graph-API of Power shell gebruiken om een nieuwe toepassing te maken
 * Veel andere onderdelen, inclusief verschillende ontwikkel ervaringen in Azure en in API Explorer-ervaringen op ontwikkel centrums
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Wat zijn service-principals en waar komen ze vandaan?
+
 U kunt de [service-principals](app-objects-and-service-principals.md#service-principal-object) in de Azure portal beheren via de ervaring van [bedrijfs toepassingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) . Service-principals zijn datgene wat een toepassing is die verbinding maakt met Azure AD en kan worden beschouwd als het exemplaar van de toepassing in uw Directory. Voor een bepaalde toepassing kan het Maxi maal één toepassings object hebben (dat is geregistreerd in een ' Home ' Directory) en een of meer Service Principal-objecten die exemplaren van de toepassing vertegenwoordigen in elke map waarin deze wordt uitgevoerd. 
 
 De service-principal kan het volgende omvatten:

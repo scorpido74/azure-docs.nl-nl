@@ -1,6 +1,6 @@
 ---
-title: Function chaining in Durable Functions - Azure
-description: Learn how to run a Durable Functions sample that executes a sequence of functions.
+title: Functie koppeling in Durable Functions-Azure
+description: Meer informatie over het uitvoeren van een Durable Functions-voor beeld dat een reeks functies uitvoert.
 author: cgillum
 ms.topic: conceptual
 ms.date: 12/07/2018
@@ -12,102 +12,102 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231328"
 ---
-# <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Function chaining in Durable Functions - Hello sequence sample
+# <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Functie koppeling in Durable Functions-Hello-reeks voorbeeld
 
-Function chaining refers to the pattern of executing a sequence of functions in a particular order. Often the output of one function needs to be applied to the input of another function. This article describes the chaining sequence that you create when you complete the Durable Functions quickstart ([C#](durable-functions-create-first-csharp.md) or [JavaScript](quickstart-js-vscode.md)). For more information about Durable Functions, see [Durable Functions overview](durable-functions-overview.md).
+Functie koppeling heeft betrekking op het patroon van het uitvoeren van een reeks functies in een bepaalde volg orde. Vaak moet de uitvoer van de ene functie worden toegepast op de invoer van een andere functie. In dit artikel wordt de keten volgorde beschreven die u maakt wanneer u de Durable Functions Quick Start[C#](durable-functions-create-first-csharp.md) (of [Java script](quickstart-js-vscode.md)) voltooit. Zie [Durable functions Overview](durable-functions-overview.md)voor meer informatie over Durable functions.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
-## <a name="the-functions"></a>The functions
+## <a name="the-functions"></a>De functies
 
-This article explains the following functions in the sample app:
+In dit artikel worden de volgende functies in de voor beeld-app uitgelegd:
 
-* `E1_HelloSequence`: An orchestrator function that calls `E1_SayHello` multiple times in a sequence. It stores the outputs from the `E1_SayHello` calls and records the results.
-* `E1_SayHello`: An activity function that prepends a string with "Hello".
+* `E1_HelloSequence`: een Orchestrator-functie die `E1_SayHello` meerdere keren in een reeks aanroept. De uitvoer van de `E1_SayHello`-aanroepen wordt opgeslagen en de resultaten worden geregistreerd.
+* `E1_SayHello`: een activiteit functie die een teken reeks samenvoegt met ' Hello '.
 
-The following sections explain the configuration and code that is used for C# scripting and JavaScript. The code for Visual Studio development is shown at the end of the article.
+In de volgende secties worden de configuratie en code uitgelegd die worden C# gebruikt voor het uitvoeren van scripts en Java script. De code voor Visual Studio-ontwikkeling wordt aan het einde van het artikel weer gegeven.
 
 > [!NOTE]
-> JavaScript Durable Functions are available for the Functions 2.0 runtime only.
+> Java script-Durable Functions zijn alleen beschikbaar voor de functies 2,0 runtime.
 
 ## <a name="e1_hellosequence"></a>E1_HelloSequence
 
-### <a name="functionjson-file"></a>function.json file
+### <a name="functionjson-file"></a>bestand function. json
 
-If you use Visual Studio Code or the Azure portal for development, here's the content of the *function.json* file for the orchestrator function. Most orchestrator *function.json* files look almost exactly like this.
+Als u Visual Studio code of de Azure Portal voor ontwikkeling gebruikt, is dit de inhoud van het bestand *Function. json* voor de functie Orchestrator. De meeste Orchestrator *Function. json* -bestanden zien er bijna precies zo uit.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/function.json)]
 
-The important thing is the `orchestrationTrigger` binding type. All orchestrator functions must use this trigger type.
+Het belangrijkste is het `orchestrationTrigger` bindings type. Alle Orchestrator-functies moeten dit trigger type gebruiken.
 
 > [!WARNING]
-> To abide by the "no I/O" rule of orchestrator functions, don't use any input or output bindings when using the `orchestrationTrigger` trigger binding.  If other input or output bindings are needed, they should instead be used in the context of `activityTrigger` functions, which are called by the orchestrator. For more information, see the [orchestrator function code constraints](durable-functions-code-constraints.md) article.
+> Als u de regel ' geen I/O ' van Orchestrator-functies wilt gebruiken, gebruik dan geen invoer-of uitvoer bindingen wanneer u de binding van de `orchestrationTrigger` trigger gebruikt.  Als er andere invoer-of uitvoer bindingen nodig zijn, moeten ze in plaats daarvan worden gebruikt in de context van `activityTrigger`-functies, die worden aangeroepen door de Orchestrator. Zie het artikel [Orchestrator functie code constraints](durable-functions-code-constraints.md) voor meer informatie.
 
-### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C# script (Visual Studio Code and Azure portal sample code)
+### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C#script (voorbeeld code Visual Studio code en Azure Portal)
 
-Here is the source code:
+Dit is de bron code:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/run.csx)]
 
-All C# orchestration functions must have a parameter of type `DurableOrchestrationContext`, which exists in the `Microsoft.Azure.WebJobs.Extensions.DurableTask` assembly. If you're using C# script, the assembly can be referenced using the `#r` notation. This context object lets you call other *activity* functions and pass input parameters using its `CallActivityAsync` method.
+Alle C# Orchestration-functies moeten een para meter van het type `DurableOrchestrationContext`hebben, die voor komt in de `Microsoft.Azure.WebJobs.Extensions.DurableTask`-assembly. Als u script gebruikt C# , kan naar de assembly worden verwezen met behulp van de `#r` notatie. Met dit context object kunt u andere *activiteiten* functies aanroepen en invoer parameters door geven met behulp van de `CallActivityAsync` methode.
 
-The code calls `E1_SayHello` three times in sequence with different parameter values. The return value of each call is added to the `outputs` list, which is returned at the end of the function.
+De code roept `E1_SayHello` drie keer op met verschillende parameter waarden. De retour waarde van elke aanroep wordt toegevoegd aan de lijst `outputs`, die aan het einde van de functie wordt geretourneerd.
 
 ### <a name="javascript"></a>Javascript
 
-Here is the source code:
+Dit is de bron code:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-All JavaScript orchestration functions must include the [`durable-functions` module](https://www.npmjs.com/package/durable-functions). It's a library that enables you to write Durable Functions in JavaScript. There are three significant differences between an orchestration function and other JavaScript functions:
+Alle Java script-Orchestration-functies moeten de [module`durable-functions`](https://www.npmjs.com/package/durable-functions)bevatten. Het is een bibliotheek waarmee u Durable Functions kunt schrijven in Java script. Er zijn drie belang rijke verschillen tussen een Orchestration-functie en andere Java script-functies:
 
-1. The function is a [generator function.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
-2. The function is wrapped in a call to the `durable-functions` module's `orchestrator` method (here `df`).
-3. The function must be synchronous. Because the 'orchestrator' method handles calling 'context.done', the function should simply 'return'.
+1. De functie is een [functie generator.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
+2. De functie wordt ingepakt in een aanroep van de `orchestrator` methode van de `durable-functions`-module (hier `df`).
+3. De functie moet synchroon zijn. Omdat de ' Orchestrator '-methode de aanroep van ' context. done ' verwerkt, moet de functie gewoon ' return ' zijn.
 
-The `context` object contains a `df` object lets you call other *activity* functions and pass input parameters using its `callActivity` method. The code calls `E1_SayHello` three times in sequence with different parameter values, using `yield` to indicate the execution should wait on the async activity function calls to be returned. The return value of each call is added to the `outputs` list, which is returned at the end of the function.
+Het `context`-object bevat een `df`-object waarmee u andere *activiteiten* functies aanroept en invoer parameters kunt door geven met behulp van de bijbehorende `callActivity` methode. De code roept `E1_SayHello` drie keer op met verschillende parameter waarden, met behulp van `yield` om aan te geven dat de uitvoering moet wachten op de functie aanroepen van de async-activiteit die moeten worden geretourneerd. De retour waarde van elke aanroep wordt toegevoegd aan de lijst `outputs`, die aan het einde van de functie wordt geretourneerd.
 
 ## <a name="e1_sayhello"></a>E1_SayHello
 
-### <a name="functionjson-file"></a>function.json file
+### <a name="functionjson-file"></a>bestand function. json
 
-The *function.json* file for the activity function `E1_SayHello` is similar to that of `E1_HelloSequence` except that it uses an `activityTrigger` binding type instead of an `orchestrationTrigger` binding type.
+Het bestand *Function. json* voor de functie activity `E1_SayHello` is vergelijkbaar met dat van `E1_HelloSequence`, behalve dat er een `activityTrigger` bindings type wordt gebruikt in plaats van een `orchestrationTrigger` bindings type.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
 
 > [!NOTE]
-> Any function called by an orchestration function must use the `activityTrigger` binding.
+> Een functie die wordt aangeroepen door een Orchestration-functie moet de binding `activityTrigger` gebruiken.
 
-The implementation of `E1_SayHello` is a relatively trivial string formatting operation.
+De implementatie van `E1_SayHello` is een relatief tamelijk opmaak bewerking voor teken reeksen.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_SayHello/run.csx)]
 
-This function has a parameter of type `DurableActivityContext`, which it uses to get the input that was passed to it by the orchestrator function's call to `CallActivityAsync<T>`.
+Deze functie heeft een para meter van het type `DurableActivityContext`, die wordt gebruikt om de invoer op te halen die werd door gegeven door de Orchestrator-functie aanroep van `CallActivityAsync<T>`.
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-Unlike a JavaScript orchestration function, an activity function needs no special setup. The input passed to it by the orchestrator function is located on the `context.bindings` object under the name of the `activityTrigger` binding - in this case, `context.bindings.name`. The binding name can be set as a parameter of the exported function and accessed directly, which is what the sample code does.
+In tegens telling tot een Java script-Orchestration-functie heeft een activiteit functie geen speciale configuratie nodig. De invoer die wordt door gegeven door de Orchestrator-functie bevindt zich op het `context.bindings`-object onder de naam van de `activityTrigger` binding-in dit geval `context.bindings.name`. De naam van de binding kan worden ingesteld als een para meter van de geëxporteerde functie en direct worden geopend. Dit is de voorbeeld code.
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
 
-To execute the `E1_HelloSequence` orchestration, send the following HTTP POST request.
+Als u de `E1_HelloSequence` indeling wilt uitvoeren, moet u de volgende HTTP POST-aanvraag verzenden.
 
 ```
 POST http://{host}/orchestrators/E1_HelloSequence
 ```
 
 > [!NOTE]
-> The previous HTTP snippet assumes there is an entry in the `host.json` file which removes the default `api/` prefix from all HTTP trigger functions URLs. You can find the markup for this configuration in the `host.json` file in the samples.
+> In het vorige HTTP-fragment wordt ervan uitgegaan dat er een vermelding in het `host.json` bestand is waarmee het standaard `api/` voorvoegsel wordt verwijderd uit alle Url's van de HTTP-trigger functies. U kunt de opmaak voor deze configuratie vinden in het `host.json`-bestand in de voor beelden.
 
-For example, if you're running the sample in a function app named "myfunctionapp", replace "{host}" with "myfunctionapp.azurewebsites.net".
+Als u bijvoorbeeld het voor beeld uitvoert in een functie-app met de naam ' myfunctionapp ', vervangt u ' {host} ' door ' myfunctionapp.azurewebsites.net '.
 
-The result is an HTTP 202 response, like this (trimmed for brevity):
+Het resultaat is een HTTP 202-antwoord, zoals dit (afgekapt voor de boog):
 
 ```
 HTTP/1.1 202 Accepted
@@ -118,13 +118,13 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/96924899c16d43b08
 (...trimmed...)
 ```
 
-At this point, the orchestration is queued up and begins to run immediately. The URL in the `Location` header can be used to check the status of the execution.
+Op dit moment wordt de indeling in de wachtrij geplaatst en begint deze onmiddellijk te worden uitgevoerd. De URL in de `Location` header kan worden gebruikt om de status van de uitvoering te controleren.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/96924899c16d43b08a536de376ac786b?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
-The result is the status of the orchestration. It runs and completes quickly, so you see it in the *Completed* state with a response that looks like this (trimmed for brevity):
+Het resultaat is de status van de indeling. De service wordt uitgevoerd en snel voltooid, zodat deze in de status *voltooid* wordt weer gegeven met een antwoord dat er als volgt uitziet (afgekapt voor de boog):
 
 ```
 HTTP/1.1 200 OK
@@ -134,22 +134,22 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":null,"output":["Hello Tokyo!","Hello Seattle!","Hello London!"],"createdTime":"2017-06-29T05:24:57Z","lastUpdatedTime":"2017-06-29T05:24:59Z"}
 ```
 
-As you can see, the `runtimeStatus` of the instance is *Completed* and the `output` contains the JSON-serialized result of the orchestrator function execution.
+Zoals u ziet, is de `runtimeStatus` van het exemplaar *voltooid* en bevat het `output` het JSON-serialisatie resultaat van de uitvoering van Orchestrator-functies.
 
 > [!NOTE]
-> The HTTP POST endpoint that started the orchestrator function is implemented in the sample app as an HTTP trigger function named "HttpStart". You can implement similar starter logic for other trigger types, like `queueTrigger`, `eventHubTrigger`, or `timerTrigger`.
+> Het HTTP POST-eind punt dat de Orchestrator-functie heeft gestart, wordt in de voor beeld-app geïmplementeerd als een HTTP-trigger functie met de naam ' HttpStart '. U kunt soort gelijke starter Logic implementeren voor andere trigger typen, zoals `queueTrigger`, `eventHubTrigger`of `timerTrigger`.
 
-Look at the function execution logs. The `E1_HelloSequence` function started and completed multiple times due to the replay behavior described in the [orchestration reliability](durable-functions-orchestrations.md#reliability) topic. On the other hand, there were only three executions of `E1_SayHello` since those function executions do not get replayed.
+Bekijk de uitvoer logboeken van de functie. De functie `E1_HelloSequence` is meerdere keren gestart en voltooid als gevolg van het gedrag voor opnieuw afspelen dat wordt beschreven in het onderwerp over de [Orchestration-betrouw baarheid](durable-functions-orchestrations.md#reliability) . Aan de andere kant waren er maar drie uitvoeringen van `E1_SayHello`, omdat de uitvoeringen van deze functies niet opnieuw worden afgespeeld.
 
-## <a name="visual-studio-sample-code"></a>Visual Studio sample code
+## <a name="visual-studio-sample-code"></a>Visual Studio-voorbeeld code
 
-Here is the orchestration as a single C# file in a Visual Studio project:
+Dit is de indeling als één C# bestand in een Visual Studio-project:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-This sample has demonstrated a simple function-chaining orchestration. The next sample shows how to implement the fan-out/fan-in pattern.
+In dit voor beeld is een eenvoudige functie koppelings architectuur gedemonstreerd. In het volgende voor beeld ziet u hoe u het patroon uitwaaieren/ventilatoren implementeert.
 
 > [!div class="nextstepaction"]
-> [Run the Fan-out/fan-in sample](durable-functions-cloud-backup.md)
+> [Voer het voor beeld uit voor uitwaaieren/ventilatoren](durable-functions-cloud-backup.md)

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 10/02/2019
-ms.openlocfilehash: 08e378c4b5f6d8e17ac67a80401edf69611c0a13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/27/2019
+ms.openlocfilehash: 816cf7cc78d3dfcb783b09f039f468ef3b23a06b
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823342"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548371"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -31,7 +31,7 @@ Het beheerde exemplaar heeft kenmerken en resource limieten die afhankelijk zijn
 
 |   | **Gen4** | **GEN5** |
 | --- | --- | --- |
-| Hardware | Intel E5-2673 v3 (Haswell) 2,4-GHz-processors, Attached SSD vCore = 1 PP (fysieke kern) | Intel E5-2673 v4 (Broadwell) 2,3-GHz processors, Fast NVMe SSD, vCore = 1 LP (Hyper-Thread) |
+| Hardware | Intel E5-2673 v3 (Haswell) 2,4-GHz-processors, Attached SSD vCore = 1 PP (fysieke kern) | Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160 (Skylake)-processors, Fast NVMe SSD, vCore = 1 LP (Hyper-Thread) |
 | Aantal vCores | 8, 16, 24 vCores | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
 | Maxi maal geheugen (geheugen/kern percentage) | 7 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | 5,1 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
 | Maxi maal in-Memory OLTP-geheugen | Limiet voor instanties: 1-1,5 GB per vCore| Limiet voor instanties: 0,8-1,65 GB per vCore |
@@ -75,10 +75,10 @@ Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service
 | Maximale grootte van het gegevens bestand | Beperkt tot de momenteel beschik bare opslag grootte van het exemplaar (Maxi maal 2 TB-8 TB) en de [opslag ruimte voor Azure Premium-schijven](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Beperkt tot de momenteel beschik bare opslag grootte van het exemplaar (Maxi maal 1 TB-4 TB). |
 | Maximale grootte van logboek bestand | Beperkt tot 2 TB en momenteel beschik bare exemplaar opslag grootte. | Beperkt tot 2 TB en momenteel beschik bare exemplaar opslag grootte. |
 | Gegevens/logboek IOPS (benadering) | Maxi maal 30-40 K IOPS per exemplaar *, 500-7500 per bestand<br/>\*[Bestands grootte verg Roten om meer IOPS te verkrijgen](#file-io-characteristics-in-general-purpose-tier)| 5,5 k-110 K (1375 IOPS/vCore)<br/>Voeg meer vCores toe om betere IO-prestaties te krijgen. |
-| Doorvoer limiet voor schrijf bewerkingen in logboek (per instantie) | 3 MB/s per vCore<br/>Maxi maal 22 MB/s | 4 MB/s per vCore<br/>Maxi maal 48 MB/s |
+| Doorvoer limiet voor schrijf bewerkingen in logboek (per instantie) | 3 MB/s per vCore<br/>Maxi maal 22 MB/s | 4 MB/s per vCore<br/>Max 48 MB/s |
 | Gegevens doorvoer (bij benadering) | 100-250 MB/s per bestand<br/>\*[de bestands grootte verg Roten om betere IO-prestaties te krijgen](#file-io-characteristics-in-general-purpose-tier) | Niet beperkt. |
 | I/o-latentie van opslag (ongeveer) | 5-10 MS | 1-2 MS |
-| OLTP in het geheugen | Niet ondersteund | Beschikbaar, [grootte is afhankelijk van het aantal vCore](#in-memory-oltp-available-space) |
+| In-memory OLTP | Niet ondersteund | Beschikbaar, [grootte is afhankelijk van het aantal vCore](#in-memory-oltp-available-space) |
 | Maximum aantal sessies | 30.000 | 30.000 |
 | [Alleen-lezen replica's](sql-database-read-scale-out.md) | 0 | 1 (inclusief prijs) |
 
@@ -99,7 +99,7 @@ In Algemeen servicelaag krijgt elk database bestand toegewezen IOPS en door Voer
 | Bestandsgrootte           | 0-128 GiB | 128-256 GiB | 256-512 GiB | 0,5-1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | IOPS per bestand       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12.500   |
-| Door Voer per bestand | 100-MiB/s | 125-MiB/s | 150-MiB/s | 200-MiB/s | 250-MiB/s | 250-MiB/s | 480-MiB/s | 
+| Door Voer per bestand | 100-MiB/s | 125 MiB/s | 150 MiB/s | 200-MiB/s | 250 MiB/s | 250 MiB/s | 480-MiB/s | 
 
 Als u een hoge IO-latentie krijgt bij een bepaald database bestand of als u ziet dat IOPS/door Voer de limiet bereikt, kunt u de prestaties verbeteren door [de bestands grootte te verg Roten](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337).
 
@@ -136,9 +136,9 @@ De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde ab
 | :---| :--- | :--- |
 |Betalen naar gebruik|3|320|
 |CSP |8 (15 inch in sommige regio's * *)|960 (1440 in sommige regio's * *)|
-|Dev/test met betalen per gebruik|3|320|
+|Pay-as-you-go Dev/Test|3|320|
 |Enterprise Dev/Test|3|320|
-|ENTER|8 (15 inch in sommige regio's * *)|960 (1440 in sommige regio's * *)|
+|EA|8 (15 inch in sommige regio's * *)|960 (1440 in sommige regio's * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional en MSDN Platforms|2|32|
 

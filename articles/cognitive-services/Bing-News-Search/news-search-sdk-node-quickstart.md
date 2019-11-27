@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Perform a news search using the SDK for Node.js - Bing News Search'
+title: 'Quick Start: een zoek opdracht voor nieuws uitvoeren met de SDK voor node. js-Bing News Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om nieuws te zoeken met de Bing News Search-SDK voor Node.js en om het antwoord te verwerken.
 services: cognitive-services
@@ -18,9 +18,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383886"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Quickstart: Perform a news search with the Bing News Search SDK for Node.js
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Quick Start: een zoek opdracht voor nieuws uitvoeren met de Bing News Search SDK voor node. js
 
-Gebruik deze quickstart om aan de slag te gaan met de Bing Nieuws zoeken-SDK voor Node.js om nieuws te zoeken. Hoewel Bing Nieuws zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js).
+Gebruik deze quickstart om aan de slag te gaan met de Bing Nieuws zoeken-SDK voor Node.js om nieuws te zoeken. Hoewel Bing Nieuws zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,7 +35,7 @@ Stel een consoletoepassing in met de Bing News Search SDK:
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een instantie van de `CognitiveServicesCredentials`. Create variables for your subscription key, and a search term.
+1. Maak een instantie van de `CognitiveServicesCredentials`. Maak variabelen voor uw abonnements sleutel en een zoek term.
 
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;

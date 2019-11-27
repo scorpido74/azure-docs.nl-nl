@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for videos using the SDK for Python - Bing Video Search'
+title: "Snelstartgids: zoeken naar Video's met behulp van de SDK voor python-Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's te verzenden naar de Bing Video Search-SDK voor Python.
 services: cognitive-services
@@ -17,9 +17,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378756"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Python
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Snelstartgids: een video zoekopdracht uitvoeren met de Bing Video Search SDK voor python
 
-Gebruik deze quickstart om nieuws te gaan zoeken met de Bing Video Search-SDK voor Python. Hoewel Bing Video's zoeken een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) with additional annotations, and features.
+Gebruik deze quickstart om nieuws te gaan zoeken met de Bing Video Search-SDK voor Python. Hoewel Bing Video's zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) met aanvullende aantekeningen en functies.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 

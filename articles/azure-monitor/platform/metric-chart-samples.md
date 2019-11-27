@@ -1,6 +1,6 @@
 ---
-title: Voorbeelden van Azure Monitor-grafiek met metrische gegevens
-description: Meer informatie over het visualiseren van uw gegevens met Azure Monitor.
+title: Voor beeld van een grafiek met Azure Monitor metrische gegevens
+description: Meer informatie over het visualiseren van uw Azure Monitor gegevens.
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,50 +8,50 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: bbfeb428d38c23955df4497242184499349aecf9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8cc653b8e5d2c239243bf6a09955b10011c7408b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256739"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538968"
 ---
-# <a name="metric-chart-samples"></a>Voorbeelden van de grafiek met metrische gegevens
+# <a name="metric-chart-examples"></a>Voor beelden van metrische grafieken 
 
-De Azure-platform biedt [duizend meeteenheden](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)veel van dat dimensies hebben. Met behulp van [dimensie filters](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), toepassen [splitsen](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), grafiektype beheren en aanpassen van de grafiekinstellingen kunt u krachtige diagnostische weergaven en dashboards die inzicht geven in de status van maken uw infrastructuur en toepassingen. In dit artikel ziet u enkele voorbeelden van de grafieken die u kunt bouwen met behulp van [Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) en worden de vereiste stappen beschreven voor het configureren van elk van deze grafieken.
+Het Azure-platform biedt [meer dan duizend metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported), waarvan vele dimensies zijn. Met behulp van [dimensie filters](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), het Toep assen van [splitsen](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), het beheren van grafiek typen en het aanpassen van de grafiek instellingen kunt u krachtige diagnostische weer gaven en dash boards maken die inzicht bieden in de status van uw infra structuur en toepassingen. Dit artikel bevat enkele voor beelden van de grafieken die u kunt bouwen met [Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) en legt de benodigde stappen voor het configureren van elk van deze grafieken uit.
 
-Wilt u uw voorbeelden grote diagrammen met de wereld delen? Bijdragen aan deze pagina op GitHub en deel uw eigen voorbeelden van grafiek hier!
+Wilt u de voor beelden van uw fantastische grafieken delen met de wereld? U kunt hier een bijdrage leveren aan deze pagina op GitHub en uw eigen grafiek voorbeelden delen.
 
-## <a name="website-cpu-utilization-by-server-instances"></a>Website CPU-gebruik per server-exemplaren
+## <a name="website-cpu-utilization-by-server-instances"></a>CPU-gebruik van website per Server exemplaar
 
-In deze grafiek worden als CPU voor een App Service binnen het toegestane bereik is en ze splitst op per exemplaar om te bepalen of de belasting correct is gedistribueerd. U kunt zien in de grafiek die de app werd uitgevoerd op een exemplaar van één server vóór 06: 00 en klikt u vervolgens omhoog geschaald door een ander exemplaar toe te voegen.
+In dit diagram wordt weer gegeven of de CPU voor een App Service binnen het aanvaard bare bereik valt en opsplitst in instantie om te bepalen of de belasting goed is gedistribueerd. U kunt in het diagram zien dat de app vóór 6 uur op één Server exemplaar werd uitgevoerd en vervolgens omhoog schalen door een andere instantie toe te voegen.
 
-![Lijndiagram van gemiddelde cpu-percentage van de server-exemplaar](./media/metric-chart-samples/cpu-by-instance.png)
+![Lijn diagram van gemiddeld CPU-percentage per Server exemplaar](./media/metric-chart-samples/cpu-by-instance.png)
 
-### <a name="how-to-configure-this-chart"></a>Het configureren van deze grafiek?
+### <a name="how-to-configure-this-chart"></a>Hoe kan ik deze grafiek configureren?
 
-Selecteer uw App Service-resource en zoek de **CPU-Percentage** metrische gegevens. Klik vervolgens op **toepassen splitsen** en selecteer de **exemplaar** dimensie.
+Selecteer uw App Service Resource en zoek het **CPU-percentage** metriek. Klik vervolgens op **splitsing Toep assen** en selecteer de dimensie **exemplaar** .
 
-## <a name="application-availability-by-region"></a>Beschikbaarheid per regio
+## <a name="application-availability-by-region"></a>Beschik baarheid van toepassingen per regio
 
-Weergeven van uw toepassing beschikbaarheid per regio om te identificeren welke geografische locaties problemen ondervindt. In deze grafiek toont de beschikbaarheid van Application Insights-metriek. U kunt zien dat de bewaakte toepassing geen probleem met de beschikbaarheid van het datacenter VS-Oost heeft, maar het is een probleem gedeeltelijke beschikbaarheid van VS-West en Oost-Azië.
+Bekijk de beschik baarheid per regio van uw toepassing om te bepalen welke geografische locaties problemen ondervinden. Dit diagram toont de Application Insights beschikbaarheids metriek. U kunt zien dat de bewaakte toepassing geen problemen ondervindt met Beschik baarheid van het VS-Oost-Data Center, maar er is wel een deel van de beschik baarheid van West-VS en Azië-oost.
 
-![Grafiek van gemiddelde beschikbaarheid per locaties](./media/metric-chart-samples/availability-run-location.png)
+![Grafiek van gemiddelde Beschik baarheid per locatie](./media/metric-chart-samples/availability-run-location.png)
 
-### <a name="how-to-configure-this-chart"></a>Het configureren van deze grafiek?
+### <a name="how-to-configure-this-chart"></a>Hoe kan ik deze grafiek configureren?
 
-U moet eerst in te schakelen [Application Insights-beschikbaarheid](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability) bewaking voor uw website. Hierna uw Application Insights-resource kiezen en selecteert u de beschikbaarheid van metrische gegevens. Van toepassing op te splitsen de **uitvoeringslocatie** dimensie.
+U moet eerst [Application Insights beschikbaarheids](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability) controle inschakelen voor uw website. Vervolgens kiest u uw Application Insights resource en selecteert u de beschikbaarheids metriek. Splitsing Toep assen op de dimensie **uitvoerings locatie** .
 
-## <a name="volume-of-storage-account-transactions-by-api-name"></a>Volume van de account opslagtransacties door API-naam
+## <a name="volume-of-storage-account-transactions-by-api-name"></a>Volume van opslag account transacties op API-naam
 
-De resource van uw opslagaccount is een met een extra volume van transacties. U kunt de metrische gegevens van transacties om te identificeren die verantwoordelijk is voor de overmatige belasting API gebruiken. U ziet dat het volgende diagram wordt geconfigureerd met dezelfde dimensie (API-naam) in filteren en te splitsen als u alleen de API-aanroepen van het belang van de weergave wilt beperken:
+Er is een overmatig volume trans acties voor uw opslag account resource. U kunt de metrische gegevens van de trans actie gebruiken om te bepalen welke API verantwoordelijk is voor de overmaat belasting. U ziet dat de volgende grafiek is geconfigureerd met dezelfde dimensie (API-naam) in filteren en splitsen om de weer gave te beperken tot alleen de API-aanroepen van de interesse:
 
-![Staafdiagram van API-transacties](./media/metric-chart-samples/transactions-by-api.png)
+![Staaf diagram van API-trans acties](./media/metric-chart-samples/transactions-by-api.png)
 
-### <a name="how-to-configure-this-chart"></a>Het configureren van deze grafiek?
+### <a name="how-to-configure-this-chart"></a>Hoe kan ik deze grafiek configureren?
 
-Selecteer in de kiezer voor metrische gegevens, uw opslagaccount en de **transacties** metrische gegevens. Grafiektype overschakelen **staafdiagram**. Klik op **toepassen splitsen** en selecteer dimensie **API-naam**. Klik vervolgens op de **filter toevoegen** en kies de **API-naam** dimensie opnieuw. Selecteer de API's die u wilt tekenen op de grafiek in het filterdialoogvenster.
+Selecteer uw opslag account en de metrische gegevens voor de **trans acties** in de metrische kiezer. Scha kelen tussen grafiek type en **staaf diagram**. Klik op **splitsing Toep assen** en selecteer dimensie- **API-naam**. Klik vervolgens op het **filter toevoegen** en kies de **API-naam** dimensie opnieuw. Selecteer in het dialoog venster filteren de Api's die u in de grafiek wilt uitzetten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over Azure Monitor [werkmappen](../../azure-monitor/app/usage-workbooks.md)
-* Meer informatie over [Metric Explorer](metrics-charts.md)
+* Meer informatie over [metrische Explorer](metrics-charts.md)

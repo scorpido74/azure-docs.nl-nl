@@ -1,19 +1,14 @@
 ---
-title: Een gitRepo-volume koppelen Azure Container Instances
+title: GitRepo volume koppelen aan container groep
 description: Meer informatie over het koppelen van een gitRepo-volume om een Git-opslag plaats in uw container instanties te klonen
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
-ms.author: danlep
-ms.openlocfilehash: e8afa9e14941920cdcfb984e6660bdc666240716
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325446"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533222"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Een gitRepo-volume koppelen in Azure Container Instances
 
@@ -28,17 +23,17 @@ Het *gitRepo* -volume koppelt een directory en kloont de opgegeven Git-opslag pl
 
 Wanneer u een *gitRepo* -volume koppelt, kunt u drie eigenschappen instellen voor het configureren van het volume:
 
-| Eigenschap | Verplicht | Description |
+| Eigenschap | Vereist | Beschrijving |
 | -------- | -------- | ----------- |
 | `repository` | Ja | De volledige URL, inclusief `http://` of `https://`, van de Git-opslag plaats die moet worden gekloond.|
-| `directory` | Nee | De map waarin de opslag plaats moet worden gekloond. Het pad mag niet bevatten of beginnen met`..`.  Als u "`.`" opgeeft, wordt de opslag plaats gekloond in de map van het volume. Anders wordt de Git-opslag plaats gekloond in een submap van de opgegeven naam binnen de map volume. |
-| `revision` | Nee | De doorvoer-hash van de revisie die moet worden gekloond. Als u deze niet opgeeft `HEAD` , wordt de revisie gekloond. |
+| `directory` | Nee | De map waarin de opslag plaats moet worden gekloond. Het pad mag niet bevatten of beginnen met "`..`".  Als u`.`opgeeft, wordt de opslag plaats gekloond in de map van het volume. Anders wordt de Git-opslag plaats gekloond in een submap van de opgegeven naam binnen de map volume. |
+| `revision` | Nee | De doorvoer-hash van de revisie die moet worden gekloond. Als u deze niet opgeeft, wordt de `HEAD` revisie gekloond. |
 
-## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo volume koppelen: Azure-CLI
+## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo volume koppelen: Azure CLI
 
-Als u een gitRepo-volume wilt koppelen wanneer u container instanties implementeert met de [Azure cli](/cli/azure), moet u de `--gitrepo-url` para meters en `--gitrepo-mount-path` opgeven bij de opdracht [AZ container Create][az-container-create] . U kunt desgewenst de map opgeven in het volume waarnaar u wilt klonen`--gitrepo-dir`() en de hash voor door voeren van de revisie die moet`--gitrepo-revision`worden gekloond ().
+Als u een gitRepo-volume wilt koppelen wanneer u container instanties implementeert met de [Azure cli](/cli/azure), geeft u de para meters `--gitrepo-url` en `--gitrepo-mount-path` op bij de opdracht [AZ container Create][az-container-create] . U kunt desgewenst de map opgeven in het volume waarnaar u wilt klonen (`--gitrepo-dir`) en de hash van de door Voer van de revisie die moet worden gekloond (`--gitrepo-revision`).
 
-`/mnt/aci-helloworld` Met deze voorbeeld opdracht wordt de voorbeeld toepassing micro soft [ACI-HelloWorld][aci-helloworld] gekloond in het container exemplaar:
+Met deze voorbeeld opdracht wordt de voorbeeld toepassing micro soft [ACI-HelloWorld][aci-helloworld] gekloond in `/mnt/aci-helloworld` in het container exemplaar:
 
 ```azurecli-interactive
 az container create \
@@ -65,7 +60,7 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 ## <a name="mount-gitrepo-volume-resource-manager"></a>GitRepo volume koppelen: Resource Manager
 
-Als u een gitRepo-volume wilt koppelen wanneer u container instanties met een [Azure Resource Manager-sjabloon](/azure/templates/microsoft.containerinstance/containergroups)implementeert, vult u eerst `properties` de `volumes` matrix in het gedeelte container Group van de sjabloon. Voor elke container in de container groep waarin u het *gitRepo* -volume wilt koppelen, vult u de `volumeMounts` matrix in het `properties` gedeelte van de container definitie.
+Als u een gitRepo-volume wilt koppelen wanneer u container instanties met een [Azure Resource Manager-sjabloon](/azure/templates/microsoft.containerinstance/containergroups)implementeert, vult u eerst de `volumes`-matrix in het gedeelte `properties` van de container groep van de sjabloon. Voor elke container in de container groep waarin u het *gitRepo* -volume wilt koppelen, vult u de `volumeMounts`-matrix in het gedeelte `properties` van de container definitie.
 
 De volgende Resource Manager-sjabloon maakt bijvoorbeeld een container groep die bestaat uit één container. De container klont twee GitHub-opslag plaatsen die zijn opgegeven door de *gitRepo* -volume blokken. Het tweede volume bevat aanvullende eigenschappen voor een directory waarnaar moet worden gekloond en de doorvoer-hash van een specifieke revisie die moet worden gekloond.
 
@@ -85,7 +80,7 @@ Zie [groepen met meerdere containers implementeren in azure container instances]
 
 Als u een gitRepo-volume wilt koppelen voor een privé Git-opslag plaats, geeft u de referenties op in de URL van de opslag plaats. Referenties hebben doorgaans de vorm van een gebruikers naam en een persoonlijk toegangs token (PAT) waarmee toegang tot de opslag plaats met een bereik wordt verleend.
 
-De Azure cli `--gitrepo-url` -para meter voor een persoonlijke github-opslag plaats zou er als volgt uitzien (waarbij ' gituser ' de GitHub-gebruikers naam is en ' abcdef1234fdsa4321abcdef ' het persoonlijke toegangs token van de gebruiker is):
+De para meter Azure CLI `--gitrepo-url` voor een persoonlijke GitHub-opslag plaats zou er als volgt uitzien (waarbij ' gituser ' de GitHub-gebruikers naam is en ' abcdef1234fdsa4321abcdef ' het persoonlijke toegangs token van de gebruiker is):
 
 ```azurecli
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
@@ -99,16 +94,16 @@ Geef voor een Azure opslag plaatsen Git-opslag plaats een wille keurige gebruike
 
 Voor meer informatie over persoonlijke toegangs tokens voor GitHub en Azure opslag plaatsen raadpleegt u het volgende:
 
-GitHub: [Een persoonlijk toegangs token maken voor de opdracht regel][pat-github]
+GitHub: het [maken van een persoonlijk toegangs token voor de opdracht regel][pat-github]
 
-Azure-opslagplaatsen: [Persoonlijke toegangs tokens maken om toegang te verifiëren][pat-repos]
+Azure-opslag plaatsen: [persoonlijke toegangs tokens maken om toegang te verifiëren][pat-repos]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het koppelen van andere volume typen in Azure Container Instances:
 
-* [Een Azure-bestandsshare in Azure Containerexemplaren koppelen](container-instances-volume-azure-files.md)
-* [Een volume emptyDir in Azure Containerexemplaren koppelen](container-instances-volume-emptydir.md)
+* [Een Azure-bestandsshare koppelen in Azure Container Instances](container-instances-volume-azure-files.md)
+* [Een emptyDir-volume koppelen in Azure Container Instances](container-instances-volume-emptydir.md)
 * [Een geheim volume koppelen in Azure Container Instances](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->

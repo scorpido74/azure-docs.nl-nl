@@ -32,7 +32,7 @@ In dit artikel leert u hoe u een model bouwt met behulp van geautomatiseerde MIL
 
 In de zelf studie "[een classificatie model trainen met geautomatiseerde machine learning](tutorial-auto-train-models.md)" leert u hoe u een lokale computer kunt gebruiken om een model met automatische ml te trainen. De werkstroom bij het trainen van lokaal ook van toepassing is ook externe doelen. Echter met externe compute geautomatiseerde ML-iteraties uitgevoerd asynchroon. Deze functie kunt u een bepaalde iteratie annuleren, bekijk de status van de uitvoering of blijven werken van andere cellen in de Jupyter-notebook. Als u op afstand wilt trainen, maakt u eerst een extern Compute-doel zoals AmlCompute. Vervolgens de externe bron te configureren en verzenden van uw code er.
 
-In dit artikel worden de extra stappen beschreven die nodig zijn voor het uitvoeren van een geautomatiseerd experiment op een extern AmlCompute-doel. Een object in de werkruimte `ws`, uit de zelfstudie wordt gebruikt in de code hier.
+In dit artikel worden de extra stappen beschreven die nodig zijn voor het uitvoeren van een geautomatiseerd experiment op een extern AmlCompute-doel. Het werkruimte object, `ws`, uit de zelf studie wordt in de hele code gebruikt.
 
 ```python
 ws = Workspace.from_config()
@@ -62,11 +62,11 @@ compute_target.wait_for_completion(
     show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-U kunt nu de `compute_target` object als de externe compute-doel.
+U kunt nu het `compute_target`-object gebruiken als het externe Compute-doel.
 
 De beperkingen voor de cluster naam zijn onder andere:
 + Moet korter zijn dan 64 tekens lang zijn.
-+ De volgende tekens niet bevatten: `\` ~! @ # $ % ^ & * () = + [] {} van _ \\ \\ |;: \' \\', in combinatie /?. `
++ Kan geen van de volgende tekens bevatten: `\` ~! @ # $% ^ & * () = + _ [] {} \\\\ |; : \' \\", < >/?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>Toegang tot gegevens met de functie TabularDataset
 
@@ -126,7 +126,7 @@ run_config.environment.python.conda_dependencies = dependencies
 Bekijk dit [voorbeeld notitieblok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) voor een extra voor beeld van dit ontwerp patroon.
 
 ## <a name="configure-experiment"></a>Configureren van experiment
-Geef de instellingen voor `AutoMLConfig`.  (Zie een [volledige lijst met parameters](how-to-configure-auto-train.md#configure-experiment) en hun mogelijke waarden.)
+Geef de instellingen voor `AutoMLConfig`op.  (Zie een [volledige lijst met para meters](how-to-configure-auto-train.md#configure-experiment) en de bijbehorende mogelijke waarden.)
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -229,5 +229,5 @@ In het volgende [notitie blok](https://github.com/Azure/MachineLearningNotebooks
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Informatie over [over het configureren van instellingen voor automatische training](how-to-configure-auto-train.md).
+* Meer informatie [over het configureren van instellingen voor automatische training](how-to-configure-auto-train.md).
 * Bekijk de [functie voor het inschakelen](how-to-machine-learning-interpretability-automl.md) van model interpret functies in geautomatiseerde ml experimenten.

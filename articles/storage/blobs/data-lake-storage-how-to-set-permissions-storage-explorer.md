@@ -1,5 +1,5 @@
 ---
-title: 'Azure Storage Explorer: Manage access in Azure Data Lake Storage Gen2'
+title: 'Azure Storage Explorer: toegang beheren in Azure Data Lake Storage Gen2'
 description: In deze instructie leert u hoe u machtigingen instelt met Azure Storage Explorer voor bestanden en mappen in uw voor Azure Data Lake Storage Gen2 geschikte opslagaccount.
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -15,7 +15,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327970"
 ---
-# <a name="use-azure-storage-explorer-to-manage-access-in-azure-data-lake-storage-gen2"></a>Use Azure Storage Explorer to manage access in Azure Data Lake Storage Gen2
+# <a name="use-azure-storage-explorer-to-manage-access-in-azure-data-lake-storage-gen2"></a>Azure Storage Explorer gebruiken om toegang te beheren in Azure Data Lake Storage Gen2
 
 Bestanden die zijn opgeslagen in Azure Data Lake Storage Gen2 bieden ondersteuning voor gedetailleerde machtigingen en ACL-beheer (ACL: Access Control List, toegangsbeheerlijst). Dankzij de combinatie van gedetailleerde machtigingen en ACL-beheer kunt u de toegang tot uw gegevens op een zeer gedetailleerd niveau beheren.
 
@@ -28,11 +28,11 @@ In dit artikel leert u hoe u Azure Storage Explorer kunt gebruiken om:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor de beste weergave van het proces vragen wij u om onze [snelstart voor Azure Storage Explorer](data-lake-storage-Explorer.md) te voltooien. This ensures your storage account will be in the most appropriate state (container created and data uploaded to it).
+Voor de beste weergave van het proces vragen wij u om onze [snelstart voor Azure Storage Explorer](data-lake-storage-Explorer.md) te voltooien. Dit zorgt ervoor dat uw opslag account de meest geschikte status heeft (container gemaakt en verzonden gegevens).
 
 ## <a name="managing-access"></a>Toegang beheren
 
-You can set permissions at the root of your container. To do so, you must be logged into Azure Storage Explorer with your individual account with rights to do so (as opposed to with a connection string). Right-click your container and select **Manage Permissions**, bringing up the **Manage Permission** dialog box.
+U kunt machtigingen instellen in de hoofdmap van de container. Hiervoor moet u zijn aangemeld bij Azure Storage Explorer met uw eigen account met rechten om dit te doen (in plaats van een connection string). Klik met de rechter muisknop op uw container en selecteer **machtigingen beheren**, het dialoog venster **machtiging beheren** .
 
 ![Microsoft Azure Storage Explorer - Toegang tot mappen beheren](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 
@@ -49,11 +49,11 @@ De gebruiker of groep wordt nu weergegeven in het veld **Gebruikers en groepen:*
 
 Er zijn twee machtigingscategorieën die u kunt toewijzen: Toegangs-ACL’s en Standaard-ACL’s.
 
-* **Access**: Access ACLs control access to an object. Bestanden en mappen hebben beide Toegangs-ACL's.
+* **Toegang**: toegangs-acl's bepalen de toegang tot een object. Bestanden en mappen hebben beide Toegangs-ACL's.
 
-* **Default**: A template of ACLs associated with a directory that determines the access ACLs for any child items that are created under that directory. Bestanden hebben geen Standaard-ACL's.
+* **Standaard**: een sjabloon met acl's die zijn gekoppeld aan een map die de toegangs-acl's bepaalt voor alle onderliggende items die zijn gemaakt in die map. Bestanden hebben geen Standaard-ACL's.
 
-Within both of these categories, there are three permissions you can then assign on files or directories: **Read**, **Write**, and **Execute**.
+In beide categorieën zijn er drie machtigingen die u vervolgens kunt toewijzen aan bestanden of mappen: **lezen**, **schrijven**en **uitvoeren**.
 
 >[!NOTE]
 > Wanneer u hier selecties maakt, worden machtigingen voor een reeds bestaand item in de map niet ingesteld. U moet naar elk afzonderlijk item gaan en de machtigingen handmatig instellen als het bestand al bestaat.

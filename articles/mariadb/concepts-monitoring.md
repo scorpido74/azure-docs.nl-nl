@@ -1,6 +1,6 @@
 ---
-title: Monitoring in Azure Database for MariaDB
-description: This article describes the metrics for monitoring and alerting for Azure Database for MariaDB, including CPU, storage, and connection statistics.
+title: Bewaking in Azure Database for MariaDB
+description: In dit artikel worden de metrische gegevens beschreven voor bewaking en waarschuwingen voor Azure Database for MariaDB, inclusief CPU-, opslag-en verbindings statistieken.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -13,58 +13,58 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382047"
 ---
-# <a name="monitoring-in-azure-database-for-mariadb"></a>Monitoring in Azure Database for MariaDB
-Monitoring data about your servers helps you troubleshoot and optimize for your workload. Azure Database for MariaDB provides various metrics that give insight into the behavior of your server.
+# <a name="monitoring-in-azure-database-for-mariadb"></a>Bewaking in Azure Database for MariaDB
+Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for MariaDB biedt diverse metrische gegevens die inzicht geven in het gedrag van uw server.
 
 ## <a name="metrics"></a>Metrische gegevens
-All Azure metrics have a one-minute frequency, and each metric provides 30 days of history. You can configure alerts on the metrics. Other tasks include setting up automated actions, performing advanced analytics, and archiving history. For more information, see the [Azure Metrics Overview](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Alle metrische gegevens van Azure hebben een frequentie van één minuut, en elke metriek biedt een geschiedenis van 30 dagen. U kunt waarschuwingen configureren voor de metrische gegevens. Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van de geschiedenis. Zie het overzicht van Azure- [metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
 
-For step by step guidance, see [How to set up alerts](howto-alert-metric.md).
+Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](howto-alert-metric.md).
 
-### <a name="list-of-metrics"></a>List of metrics
-These metrics are available for Azure Database for MariaDB:
+### <a name="list-of-metrics"></a>Lijst met metrische gegevens
+Deze metrische gegevens zijn beschikbaar voor Azure Database for MariaDB:
 
-|Gegevens|Metric Display Name|Eenheid|Beschrijving|
+|Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Beschrijving|
 |---|---|---|---|
-|cpu_percent|CPU percent|Procent|The percentage of CPU in use.|
-|memory_percent|Memory percent|Procent|The percentage of memory in use.|
-|io_consumption_percent|IO percent|Procent|The percentage of IO in use.|
-|storage_percent|Storage percentage|Procent|The percentage of storage used out of the server's maximum.|
-|storage_used|Gebruikte opslag|Bytes|The amount of storage in use. The storage used by the service may include the database files, transaction logs, and the server logs.|
-|serverlog_storage_percent|Server Log storage percent|Procent|The percentage of server log storage used out of the server's maximum server log storage.|
-|serverlog_storage_usage|Server Log storage used|Bytes|The amount of server log storage in use.|
-|serverlog_storage_limit|Server Log storage limit|Bytes|The maximum server log storage for this server.|
-|storage_limit|Storage limit|Bytes|The maximum storage for this server.|
-|active_connections|Active Connections|Aantal|The number of active connections to the server.|
-|connections_failed|Mislukte verbindingen|Aantal|The number of failed connections to the server.|
-|network_bytes_egress|Netwerk uit|Bytes|Network Out across active connections.|
-|network_bytes_ingress|Netwerk in|Bytes|Network In across active connections.|
+|cpu_percent|CPU-percentage|Procent|Het percentage CPU-gebruik.|
+|memory_percent|Geheugen percentage|Procent|Het percentage geheugen dat in gebruik is.|
+|io_consumption_percent|IO-percentage|Procent|Het percentage i/o dat in gebruik is.|
+|storage_percent|Opslag percentage|Procent|Het percentage van de opslag ruimte dat uit het maximum van de server wordt gebruikt.|
+|storage_used|Gebruikte opslag|Bytes|De hoeveelheid opslag ruimte die wordt gebruikt. De opslag die door de service wordt gebruikt, kan de database bestanden, transactie logboeken en de server logboeken bevatten.|
+|serverlog_storage_percent|Percentage server logboek opslag|Procent|Het percentage server logboek opslag dat is gebruikt voor de maximale server logboek opslag van de server.|
+|serverlog_storage_usage|Gebruikte server logboek opslag|Bytes|De hoeveelheid server logboek opslag die in gebruik is.|
+|serverlog_storage_limit|Opslag limiet voor server logboek|Bytes|De maximale server logboek opslag voor deze server.|
+|storage_limit|Opslag limiet|Bytes|De maximale opslag voor deze server.|
+|active_connections|Actieve verbindingen|Count|Het aantal actieve verbindingen met de server.|
+|connections_failed|Mislukte verbindingen|Count|Het aantal mislukte verbindingen met de server.|
+|network_bytes_egress|Netwerk uit|Bytes|Netwerk uit over actieve verbindingen.|
+|network_bytes_ingress|Netwerk in|Bytes|Netwerk in meerdere actieve verbindingen.|
 
 ## <a name="server-logs"></a>Serverlogboeken
 
-You can enable slow query logging on your server. These logs are also available through Azure Diagnostic Logs in Azure Monitor logs, Event Hubs, and Storage Account. To learn more about logging, visit the [server logs](concepts-server-logs.md) page.
+U kunt logboek registratie van langzame query's inschakelen op uw server. Deze logboeken zijn ook beschikbaar via Diagnostische logboeken van Azure in Azure Monitor-logboeken, Event Hubs en opslag account. Ga naar de pagina [Server logboeken](concepts-server-logs.md) voor meer informatie over logboek registratie.
 
 ## <a name="query-store"></a>Query Store
 
-[Query Store](concepts-query-store.md) keeps track of query performance over time including query runtime statistics and wait events. The feature persists query runtime performance information in the **mysql** schema. You can control the collection and storage of data via various configuration knobs.
+In het [query archief](concepts-query-store.md) worden de query prestaties in de loop van de tijd bijgehouden, inclusief de statistieken voor query runtime en wacht gebeurtenissen. De functie bewaart query runtime-prestatie gegevens in het **MySQL** -schema. U kunt het verzamelen en opslaan van gegevens beheren via verschillende configuratie knoppen.
 
 ## <a name="query-performance-insight"></a>Inzicht in queryprestaties
 
-[Query Performance Insight](concepts-query-performance-insight.md) works in conjunction with Query Store to provide visualizations accessible from the Azure portal. These charts enable you to identify key queries that impact performance. Query Performance Insight is accessible in the **Intelligent Performance** section of your Azure Database for MariaDB server's portal page.
+[Query Performance Insight](concepts-query-performance-insight.md) werkt in combi natie met query Store om visualisaties toegankelijk te maken vanuit de Azure Portal. Met deze grafieken kunt u belang rijke query's identificeren die van invloed zijn op de prestaties. Query Performance Insight is toegankelijk in het gedeelte **intelligente prestaties** van de portal pagina van de Azure database for MariaDB-server.
 
 ## <a name="performance-recommendations"></a>Aanbevelingen voor prestaties
 
-The [Performance Recommendations](concepts-performance-recommendations.md) feature identifies opportunities to improve workload performance. Performance Recommendations provides you with recommendations for creating new indexes that have the potential to improve the performance of your workloads. To produce index recommendations, the feature takes into consideration various database characteristics, including its schema and the workload as reported by Query Store. After implementing any performance recommendation, customers should test performance to evaluate the impact of those changes.
+De functie voor [prestatie aanbevelingen](concepts-performance-recommendations.md) identificeert mogelijkheden voor het verbeteren van de prestaties van de werk belasting. Prestatie aanbevelingen bieden u aanbevelingen voor het maken van nieuwe indexen die de prestaties van uw workloads kunnen verbeteren. Voor het produceren van index aanbevelingen, neemt de functie rekening met diverse database kenmerken, waaronder het schema en de werk belasting zoals gerapporteerd door de query Store. Na de implementatie van de aanbevolen prestaties, moeten klanten de prestaties testen om de impact van deze wijzigingen te evalueren.
 
-## <a name="service-health"></a>Servicestatus
-[Azure Service health](../service-health/overview.md) provides a view of all service health notifications in your subscription. You can set up Service Health alerts to notify you via your preferred communication channels when there are issues or changes that may affect the Azure services and regions you use.
+## <a name="service-health"></a>Status van service
+[Azure service Health](../service-health/overview.md) biedt een overzicht van alle service status meldingen in uw abonnement. U kunt Service Health waarschuwingen instellen om u te waarschuwen via de communicatie kanalen van uw voor keur wanneer er problemen zijn of wijzigingen die van invloed kunnen zijn op de Azure-Services en-regio's die u gebruikt.
 
-You can view scheduled maintenance events for Azure Database for MariaDB by using the **planned maintenance** event type. To learn how to create **service health alerts**, visit the [Create activity log alerts on service notifications](../service-health/alerts-activity-log-service-notifications.md) article.
+U kunt geplande onderhouds gebeurtenissen voor Azure Database for MariaDB weer geven met behulp van het gebeurtenis type **gepland onderhoud** . Ga voor meer informatie over het maken van **service Health-waarschuwingen**naar het artikel [activiteiten logboeken maken op service meldingen](../service-health/alerts-activity-log-service-notifications.md) .
 
 > [!IMPORTANT]
-> The planned maintenance notifications is available in preview for EAST US and UK South only.
+> De geplande onderhouds meldingen zijn alleen beschikbaar als preview-versie voor VS-Oost en alleen UK-zuid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- For more information on how to access and export metrics using the Azure portal, REST API, or CLI, see the [Azure Metrics Overview](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
-  - See [How to set up alerts](howto-alert-metric.md) for guidance on creating an alert on a metric.
+- Zie het [overzicht van Azure-metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie over het openen en exporteren van metrische gegevens met behulp van de Azure Portal, rest API of cli.
+  - Zie [waarschuwingen instellen](howto-alert-metric.md) voor hulp bij het maken van een waarschuwing op metrische gegevens.

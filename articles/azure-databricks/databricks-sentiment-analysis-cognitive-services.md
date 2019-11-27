@@ -57,7 +57,7 @@ U kunt aan deze vereisten voldoen via de stappen in het artikel [Een Azure Event
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+Meld u aan bij [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Een Azure Databricks-werkruimte maken
 
@@ -160,7 +160,7 @@ In deze zelfstudie gebruikt u de Twitter-API's om tweets te verzenden naar Event
 
 In deze zelf studie gebruikt u de [Azure Cognitive Services Text Analytics api's](../cognitive-services/text-analytics/overview.md) om sentiment analyse uit te voeren op een stroom van tweets in bijna real time. Voordat u de Api's gebruikt, moet u een Azure Cognitive Services-account maken in Azure en een toegangs sleutel voor het gebruik van de Text Analytics-Api's ophalen.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 2. Selecteer **+ Een resource maken**.
 

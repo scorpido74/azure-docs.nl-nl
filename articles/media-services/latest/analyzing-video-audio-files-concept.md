@@ -32,7 +32,7 @@ Als u uw inhoud wilt analyseren met Media Services v3-voor instellingen, maakt u
 
 Media Services ondersteunt momenteel de volgende ingebouwde Analyzer-voor waarden:  
 
-|**Vooraf ingestelde naam**|**Scenario**|**Details**|
+|**Naam van voor instelling**|**Scenario**|**Details**|
 |---|---|---|
 |[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio analyseren|De voor instelling past een vooraf gedefinieerde set op AI-gebaseerde analyse bewerkingen toe, waaronder spraak transcriptie. Op dit moment ondersteunt de vooraf ingestelde verwerking van inhoud met één audio track die spraak in één taal bevat. U kunt de taal voor de audio lading in de invoer opgeven met de BCP-47-indeling van de taal code-regio. Ondersteunde talen zijn Engels (' en-US ' en ' nl-GB '), Spaans (' es-ES ' en ' es-MX '), Frans (' fr-FR '), Italiaans (' it-IT '), Japans (' ja-JP '), Portugees (' pt-BR '), Chinees (' zh-CN '), Duits (' de-DE '), Arabisch (' ar-voors ' en ' ar-SY '), Russisch (' ru-RU ') Hindi (' Hi-IN ') en Koreaans (' ko-KR ').<br/><br/> Als de taal niet is opgegeven of is ingesteld op NULL, kiest automatische taal detectie de eerst gedetecteerde taal en wordt de geselecteerde taal voor de duur van het bestand voortgezet. De functie voor automatische taal detectie ondersteunt momenteel Engels, Chinees, Frans, Duits, Italiaans, Japans, Spaans, Russisch en Portugees. Het is niet mogelijk om dynamische switches te scha kelen tussen talen nadat de eerste taal is gedetecteerd. De functie voor automatische taal detectie werkt het beste met geluids opnamen met duidelijk waarneembaar spraak. Als de taal niet kan worden gevonden met de automatische taal detectie, valt de transcriptie terug naar Engels.|
 |[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Audio en video analyseren|Extraheert inzichten (Rich meta data) van audio en video en voert een JSON-indelings bestand uit. U kunt opgeven of u alleen geluids inzichten wilt extra heren tijdens het verwerken van een video bestand. Zie [video analyseren](analyze-videos-tutorial-with-api.md)voor meer informatie.|
@@ -66,7 +66,7 @@ De uitvoer bevat een JSON-bestand (Insights. json) met alle inzichten die in de 
 |Naam|Beschrijving|
 |---|---|
 |id|De regel-ID.|
-|text|De transcriptie zelf.|
+|tekst|De transcriptie zelf.|
 |language|De transcript taal. Bedoeld ter ondersteuning van transcripten waarbij elke regel een andere taal kan hebben.|
 |instanties|Een lijst met peri Oden waarin deze regel wordt weer gegeven. Als de instantie een transcript heeft, heeft deze slechts één exemplaar.|
 
@@ -104,7 +104,7 @@ Voorbeeld:
 |Naam|Beschrijving|
 |---|---|
 |id|De OCR-regel-ID.|
-|text|De OCR-tekst.|
+|tekst|De OCR-tekst.|
 |vallen|Het vertrouwens niveau van de herkenning.|
 |language|De OCR-taal.|
 |instanties|Een lijst met peri Oden waarin deze OCR is verschenen (dezelfde OCR kan meerdere keren voor komen).|
@@ -355,7 +355,7 @@ Gevoel worden geaggregeerd met het veld sentimentType (positief/neutraal/negatie
 |Naam|Beschrijving|
 |---|---|
 |id|De ID van het sleutel woord.|
-|text|De tekst van het sleutel woord.|
+|tekst|De tekst van het sleutel woord.|
 |vallen|Het vertrouwens niveau van het tref woord.|
 |language|De taal van het tref woord (tijdens het vertalen).|
 |instanties|Een lijst met tijds bereiken waar dit tref woord is opgetreden (een tref woord kan meerdere keren voor komen).|

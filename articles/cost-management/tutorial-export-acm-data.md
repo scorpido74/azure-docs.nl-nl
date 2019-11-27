@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create and manage exported data from Azure Cost Management
-description: This article shows you how you can create and manage exported Azure Cost Management data so that you can use it in external systems.
+title: 'Zelf studie: geëxporteerde gegevens maken en beheren vanuit Azure Cost Management'
+description: Dit artikel laat u zien hoe u geëxporteerde Azure Cost Management gegevens kunt maken en beheren, zodat u deze kunt gebruiken in externe systemen.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -21,7 +21,7 @@ ms.locfileid: "74229832"
 
 Als u de zelfstudie over kostenanalyse hebt doorgenomen, bent u al bekend met het handmatig downloaden van gegevens uit Cost Management. U kunt echter ook een terugkerende taak instellen om uw Cost Management-gegevens automatisch dagelijks, wekelijks of maandelijks naar uw Azure-opslag te exporteren. De gegevens worden in CSV-indeling geëxporteerd en bevatten alle informatie die door Cost Management is verzameld. U kunt de geëxporteerde gegevens in uw Azure-opslag vervolgens in externe systemen laden en combineren met uw eigen gegevens. Externe systemen waarin de geëxporteerde gegevens kunnen worden gebruikt, zijn bijvoorbeeld dashboards of andere financiële systemen.
 
-Watch the [How to schedule exports to storage with Azure Cost Management](https://www.youtube.com/watch?v=rWa_xI1aRzo) video about creating a scheduled export of your Azure cost data to Azure Storage.
+Bekijk [hoe u exporteert naar opslag met Azure Cost Management](https://www.youtube.com/watch?v=rWa_xI1aRzo) video over het maken van een geplande export van uw Azure-kosten gegevens naar Azure Storage.
 
 De voorbeelden in deze zelfstudie laten u stapsgewijs zien hoe u uw Cost Management-gegevens exporteert en vervolgens controleert of de export is gelukt.
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 > * Controleren of de gegevens zijn geëxporteerd
 
 ## <a name="prerequisites"></a>Vereisten
-Exporteren van gegevens is beschikbaar voor verschillende typen Azure-accounts, met inbegrip van [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)-klanten. Zie [Gegevens van kostenbeheer begrijpen](understand-cost-mgt-data.md) voor de volledige lijst met ondersteunde accounttypen. The following Azure permissions, or scopes, are supported per subscription for data export by user and group. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
+Exporteren van gegevens is beschikbaar voor verschillende typen Azure-accounts, met inbegrip van [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)-klanten. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](understand-cost-mgt-data.md). De volgende Azure-machtigingen of-bereiken worden ondersteund per abonnement voor het exporteren van gegevens per gebruiker en groep. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
 
 - Eigenaar: eigenaren kunnen geplande exports voor een abonnement instellen, wijzigen en verwijderen.
 - Inzender: inzenders kunnen hun eigen geplande exports instellen, wijzigen en verwijderen. Zij kunnen bovendien de naam wijzigen van geplande exports die door anderen zijn ingesteld.
@@ -47,15 +47,15 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="create-a-daily-export"></a>Een dagelijkse export uitvoeren
 
-To create or view a data export or to schedule an export, open the desired scope in the Azure portal and select **Cost analysis** in the menu. For example, navigate to **Subscriptions**, select a subscription from the list, and then select **Cost analysis** in the menu. At the top of the Cost analysis page, click **Export** and then choose an export option. For example, click **Schedule export**.  
+Als u een gegevens export wilt maken of weer geven of een export wilt plannen, opent u het gewenste bereik in de Azure Portal en selecteert u **kosten analyse** in het menu. Ga bijvoorbeeld naar **abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **kosten analyse** in het menu. Klik boven aan de pagina kosten analyse op **exporteren** en kies vervolgens een export optie. Klik bijvoorbeeld op **planning exporteren**.  
 
 > [!NOTE]
-> - Besides subscriptions, you can create exports on resource groups, accounts, departments, and enrollments. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
->- When you’re signed in as a partner at the billing account scope or on a customer’s tenant, you can export data to an Azure Storage account that’s linked to your partner storage account. However, you must have an active subscription in your CSP tenant.
+> - Naast abonnementen kunt u exports maken voor resource groepen, accounts, afdelingen en registraties. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
+>- Wanneer u bent aangemeld als een partner op het bereik van de facturerings account of op de Tenant van een klant, kunt u gegevens exporteren naar een Azure Storage-account dat is gekoppeld aan uw partner-opslag account. U moet echter een actief abonnement hebben in uw CSP-Tenant.
 >
 
 
-Click **Add**, type a name for the export, and then select the **Daily export of month-to-date costs** option. Klik op **Volgende**.
+Klik op **toevoegen**, typ een naam voor de export en selecteer vervolgens de optie **dagelijks exporteren van de kosten voor de maand tot heden** . Klik op **Volgende**.
 
 ![Voorbeeld van een nieuwe export, waarbij het type export wordt weergegeven](./media/tutorial-export-acm-data/basics_exports.png)
 
@@ -83,7 +83,7 @@ Er zijn drie soorten exportopties:
 
 **Aangepast**: hiermee kunt u wekelijkse en maandelijkse exports plannen met week-tot-datum- en maand-tot-heden-opties. *De eerste uitvoer wordt onmiddellijk uitgevoerd.*
 
-If you have a Pay-As-You-Go, MSDN, or Visual Studio subscription, your invoice billing period might not align to the calendar month. For those types of subscriptions and resource groups, you can create an export that's aligned to your invoice period or to calendar months. To create an export aligned to your invoice month, navigate to **Custom**, then select **Billing-period-to-date**.  To create an export aligned to the calendar month, select **Month-to-date**.
+Als u een abonnement op basis van betalen per gebruik, MSDN of Visual Studio hebt, kan de facturerings periode van uw factuur niet worden uitgelijnd op de kalender maand. Voor deze typen abonnementen en resource groepen kunt u een export maken die is afgestemd op uw factuur periode of voor kalender maanden. Als u een export wilt maken die is afgestemd op uw factuur maand, gaat u naar **aangepast**en selecteert u **facturering-periode-tot-datum**.  Als u een export wilt maken die is afgestemd op de kalender maand, selecteert u **maand tot heden**.
 >
 >
 
@@ -112,7 +112,7 @@ Het exporteren van Cost Management-gegevens heeft vaak als doel om deze gegevens
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een dagelijkse export uitvoeren

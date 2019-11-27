@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 53441f5fedb4fa5e68cd1d8230ffe3ee6122e55b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 46975cf7762e2d92e5112911bd491f372cb22a31
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186680"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544633"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundante opslag (ZRS) voor het bouwen van Maxi maal beschik bare Azure Storage toepassingen
 
@@ -28,9 +28,9 @@ ZRS is beschikbaar voor blok-blobs, niet-schijf pagina-blobs, standaard bestands
 
 Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende regio's:
 
-- Azië (zuidoost)
-- Europa - Noord
-- Europa - West
+- Azië - zuidoost
+- Europa - noord
+- Europa - west
 - Frankrijk - centraal
 - Japan - oost
 - Verenigd Koninkrijk Zuid
@@ -39,9 +39,9 @@ Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende reg
 - US - oost 2
 - US - west 2
 
-Voor FileStorage-accounts (Premium-bestands shares) is ZRS algemeen beschikbaar in de volgende regio's:
+Voor FileStorage-accounts (Premium-bestands shares) en BlockBlobStorage-accounts (Premium-blok-blobs) is ZRS algemeen beschikbaar in de volgende regio's:
 
-- Europa - West
+- Europa - west
 - US - oost
 
 Micro soft blijft ZRS inschakelen in extra Azure-regio's. Controleer regel matig de pagina met [updates voor Azure-Services](https://azure.microsoft.com/updates/) voor informatie over nieuwe regio's.

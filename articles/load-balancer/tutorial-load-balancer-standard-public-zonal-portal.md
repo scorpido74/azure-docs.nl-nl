@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Load Balancer VMs within a zone--Azure portal'
+title: "Zelf studie: Load Balancer Vm's binnen een zone--Azure Portal"
 titleSuffix: Azure Load Balancer
 description: Deze zelfstudie laat zien hoe u met behulp van Azure Portal een standaard load balancer kunt maken met een zonegebonden front-end voor de taakverdeling van VM's binnen een beschikbaarheidszone.
 services: load-balancer
@@ -48,7 +48,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar IP-adres. Wanneer u een nieuw openbaar IP-adres maakt tijdens het maken van de load balancer, wordt het automatisch geconfigureerd als een standaard SKU-versie. Het is ook automatisch zoneredundant.
 
 1. Selecteer **Een resource maken** > **Netwerken** > **Load Balancer** linksboven in het scherm.
-2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Controleren + maken**:
+2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer vervolgens **Controleren + maken**:
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
@@ -57,7 +57,7 @@ Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar I
     | Naam                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
     | Type          | Selecteer **Openbaar**.                                        |
-    | SKU           | Select **Standard**.                          |
+    | SKU           | selecteer **Standaard**.                          |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. |
     | Naam openbare IP-adres              | Typ *myPublicIP* in het tekstvak.   |
     |Beschikbaarheidszone| Selecteer **1**.    |
@@ -67,14 +67,14 @@ Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar I
 
 In deze sectie gaat u een virtueel netwerk maken. U gaat ook twee virtuele machines maken in dezelfde zone (namelijk in zone 1) voor de regio die aan de back-endpool van de load balancer wordt toegevoegd. Vervolgens installeert u IIS op de virtuele machines om de zone-redundante Load Balancer te testen. Als u dit op één virtuele machine mislukt, mislukt de statustest voor de virtuele machine in dezelfde regio. Verkeer blijft worden aangeleverd door andere virtuele machines binnen dezelfde regio.
 
-### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 1. Selecteer **Een resource maken** > **Netwerken** > **Virtueel netwerk** linksboven in het scherm.  Voer deze waarden in voor het virtuele netwerk:
     - **myVnet** als de naam van het virtuele netwerk.
     - **myResourceGroupZLB** als naam van de bestaande resourcegroep.
     - **myBackendSubnet** als naam van het subnet.
 2. Selecteer **Maken** om het virtuele netwerk te maken.
 
-    ![Maak een virtueel netwerk](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+    ![Een virtueel netwerk maken](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
 
 ## <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 

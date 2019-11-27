@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld - Auditinstellingen SQL Server controleren
-description: This sample policy definition audits the SQL server audit settings defined in a parameter with auditIfNotExists.
+description: In deze voorbeeld beleids definitie worden de SQL Server-controle-instellingen gecontroleerd die zijn gedefinieerd in een para meter met auditIfNotExists.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 7eba24c0916297dba0649024874aed7ba0fac2f6

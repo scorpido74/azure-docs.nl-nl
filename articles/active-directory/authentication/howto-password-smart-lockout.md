@@ -1,6 +1,6 @@
 ---
-title: Preventing attacks using smart lockout - Azure Active Directory
-description: Azure Active Directory smart lockout helps protect your organization from brute-force attacks trying to guess passwords
+title: Aanvallen met slimme vergren deling voor komen-Azure Active Directory
+description: Azure Active Directory slim vergren delen helpt uw organisatie te beschermen tegen aanvallen waarbij wordt geprobeerd om wacht woorden te raden
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,72 +18,72 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381536"
 ---
-# <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory smart lockout
+# <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory slim vergren delen
 
-Smart lockout assists in locking out bad actors who are trying to guess your users’ passwords or use brute-force methods to get in. It can recognize sign-ins coming from valid users and treat them differently than ones of attackers and other unknown sources. Smart lockout locks out the attackers, while letting your users continue to access their accounts and be productive.
+Slimme vergren deling helpt bij het vergren delen van ongeldige Actors die de wacht woorden van uw gebruikers proberen te raden of methoden voor het afwijzen van brute kracht gebruiken om aan de slag te gaan. Het kan aanmeldingen herkennen die afkomstig zijn van geldige gebruikers en ze anders behandelen dan gebruikers van aanvallers en andere onbekende bronnen. Slimme vergren delingen blokkeert de aanvallers, terwijl uw gebruikers toegang krijgen tot hun accounts en productief kunnen zijn.
 
-By default, smart lockout locks the account from sign-in attempts for one minute after 10 failed attempts. The account locks again after each subsequent failed sign-in attempt, for one minute at first and longer in subsequent attempts.
+Standaard vergrendelt Smart Lock het account van aanmeldings pogingen voor één minuut na 10 mislukte pogingen. Het account vergrendelt na elke volgende mislukte aanmeldings poging, gedurende één minuut om de eerste keer en langer bij de volgende pogingen.
 
-Smart lockout tracks the last three bad password hashes to avoid incrementing the lockout counter for the same password. If someone enters the same bad password multiple times, this behavior will not cause the account to lockout.
+Slimme vergren deling houdt de laatste drie ongeldige hashes met een onjuist wacht woord bij om te voor komen dat de vergrendelings teller voor hetzelfde wacht woord wordt verhoogd. Als iemand hetzelfde onjuiste wacht woord meermaals opgeeft, wordt het account niet vergrendeld.
 
  > [!NOTE]
- > Hash tracking functionality is not available for customers with pass-through authentication enabled as authentication happens on-premises not in the cloud.
+ > De functie voor het bijhouden van hashes is niet beschikbaar voor klanten waarbij Pass-Through-verificatie is ingeschakeld omdat verificatie on-premises plaatsvindt, niet in de Cloud.
 
-Federated deployments using AD FS 2016 and AF FS 2019 can enable similar benefits using [AD FS Extranet Lockout and Extranet Smart Lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection).
+Federatieve implementaties met AD FS 2016 en AF FS 2019 kunnen vergelijk bare voor delen bieden met behulp van [AD FS extranet en extranet Smart-vergren deling](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection).
 
-Smart lockout is always on for all Azure AD customers with these default settings that offer the right mix of security and usability. Customization of the smart lockout settings, with values specific to your organization, requires paid Azure AD licenses for your users.
+Slimme vergren deling is altijd ingeschakeld voor alle klanten van Azure AD met deze standaard instellingen die de juiste combi natie van beveiliging en bruikbaarheid bieden. Aanpassing van de instellingen voor slim vergren delen, met waarden die specifiek zijn voor uw organisatie, vereist betaalde Azure AD-licenties voor uw gebruikers.
 
-Using smart lockout does not guarantee that a genuine user will never be locked out. When smart lockout locks a user account, we try our best to not lockout the genuine user. The lockout service attempts to ensure that bad actors can’t gain access to a genuine user account.  
+Het gebruik van slimme vergren deling garandeert niet dat een authentiekte gebruiker nooit wordt vergrendeld. Wanneer Slim vergren delen een gebruikers account vergrendelt, proberen we ons het beste om de legitieme gebruiker te vergren delen. De vergrendelings service probeert ervoor te zorgen dat ongeldige actors geen toegang krijgen tot een authentiek gebruikers account.  
 
-* Each Azure Active Directory data center tracks lockout independently. A user will have (threshold_limit * datacenter_count) number of attempts, if the user hits each data center.
-* Smart Lockout uses familiar location vs unfamiliar location to differentiate between a bad actor and the genuine user. Unfamiliar and familiar locations will both have separate lockout counters.
+* Elk Azure Active Directory Data Center volgt de vergren deling onafhankelijk. Een gebruiker heeft (threshold_limit * datacenter_count) aantal pogingen als de gebruiker aan elk Data Center komt.
+* Slimme vergren deling maakt gebruik van de bekende locatie versus onbekende locatie om onderscheid te maken tussen een ongeldige actor en de legitieme gebruiker. Onbekende en bekende locaties hebben beide afzonderlijke vergrendelings tellers.
 
-Smart lockout can be integrated with hybrid deployments, using password hash sync or pass-through authentication to protect on-premises Active Directory accounts from being locked out by attackers. By setting smart lockout policies in Azure AD appropriately, attacks can be filtered out before they reach on-premises Active Directory.
+Slimme vergren deling kan worden geïntegreerd met hybride implementaties, met behulp van hash-synchronisatie met wacht woord of Pass Through-verificatie om on-premises Active Directory accounts te beveiligen tegen uitsluiting door aanvallers. Door slim vergrendelings beleid in azure AD op de juiste wijze in te stellen, kunnen aanvallen worden gefilterd voordat ze on-premises Active Directory bereiken.
 
-When using [pass-through authentication](../hybrid/how-to-connect-pta.md), you need to make sure that:
+Wanneer [Pass-Through-verificatie](../hybrid/how-to-connect-pta.md)wordt gebruikt, moet u het volgende controleren:
 
-* The Azure AD lockout threshold is **less** than the Active Directory account lockout threshold. Set the values so that the Active Directory account lockout threshold is at least two or three times longer than the Azure AD lockout threshold. 
-* The Azure AD lockout duration must be set longer than the Active Directory reset account lockout counter after duration. Be aware that the Azure AD duration is set in seconds, while the AD duration is set in minutes. 
+* De drempel waarde voor vergren delingen van Azure AD is **lager** dan de drempel waarde voor het vergren delen van Active Directory Stel de waarden zo in dat de drempel waarde voor het vergren delen van Active Directory-account ten minste twee of drie keer langer duurt dan de drempel waarde voor vergren deling van Azure AD. 
+* De Azure AD-vergrendelings duur moet langer worden ingesteld dan de Active Directory account vergrendelings teller opnieuw instellen na de duur. Houd er rekening mee dat de duur van Azure AD wordt ingesteld in seconden, terwijl de duur van de advertentie binnen enkele minuten is ingesteld. 
 
-For example, if you want your Azure AD counter to be higher than AD, then Azure AD would be 120 seconds (2 minutes) while your on-premises AD is set to 1 minute (60 seconds).
+Als u bijvoorbeeld wilt dat uw Azure AD-teller hoger is dan AD, zou Azure AD 120 seconden (2 minuten) zijn, terwijl uw on-premises AD is ingesteld op 1 minuut (60 seconden).
 
 > [!IMPORTANT]
-> Currently, an administrator can't unlock the users' cloud accounts if they have been locked out by the Smart Lockout capability. The administrator must wait for the lockout duration to expire. However, the user can unlock by using self-service password reset (SSPR) from a trusted device or location.
+> Op dit moment kan een beheerder de Cloud accounts van gebruikers niet ontgrendelen als ze zijn vergrendeld door de mogelijkheid van slim vergren delen. De beheerder moet wachten tot de vergrendelings duur is verlopen. De gebruiker kan echter worden ontgrendeld met behulp van selfservice voor wachtwoord herstel (SSPR) van een vertrouwd apparaat of locatie.
 
-## <a name="verify-on-premises-account-lockout-policy"></a>Verify on-premises account lockout policy
+## <a name="verify-on-premises-account-lockout-policy"></a>On-premises account vergrendelings beleid controleren
 
-Use the following instructions to verify your on-premises Active Directory account lockout policy:
+Gebruik de volgende instructies om uw on-premises Active Directory account vergrendelings beleid te controleren:
 
-1. Open the Group Policy Management tool.
-2. Edit the group policy that includes your organization's account lockout policy, for example, the **Default Domain Policy**.
-3. Browse to **Computer Configuration** > **Policies** > **Windows Settings** > **Security Settings** > **Account Policies** > **Account Lockout Policy**.
-4. Verify your **Account lockout threshold** and **Reset account lockout counter after** values.
+1. Open het groepsbeleid-beheer programma.
+2. Bewerk het groeps beleid dat het account vergrendelings beleid van uw organisatie bevat, bijvoorbeeld het **standaard domein beleid**.
+3. Blader naar **computer configuratie** > **beleid** > **Windows-instellingen** > **beveiligings instellingen** > **account beleid** > **account vergrendelings beleid**.
+4. Controleer de **drempel waarde voor account vergrendeling** en **Stel de teller voor account vergrendeling na waarden opnieuw** in.
 
-![Modify the on-premises Active Directory account lockout policy](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![Het vergrendelings beleid voor on-premises Active Directory-account wijzigen](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
-## <a name="manage-azure-ad-smart-lockout-values"></a>Manage Azure AD smart lockout values
+## <a name="manage-azure-ad-smart-lockout-values"></a>Slimme vergrendelings waarden voor Azure AD beheren
 
-Based on your organizational requirements, smart lockout values may need to be customized. Customization of the smart lockout settings, with values specific to your organization, requires paid Azure AD licenses for your users.
+Op basis van de vereisten van uw organisatie moeten slimme vergrendelings waarden mogelijk worden aangepast. Aanpassing van de instellingen voor slim vergren delen, met waarden die specifiek zijn voor uw organisatie, vereist betaalde Azure AD-licenties voor uw gebruikers.
 
-To check or modify the smart lockout values for your organization, use the following steps:
+Voer de volgende stappen uit om de slimme vergrendelings waarden voor uw organisatie te controleren of te wijzigen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Search for and select *Azure Active Directory*. Select **Authentication methods** > **Password protection**.
-1. Set the **Lockout threshold**, based on how many failed sign-ins are allowed on an account before its first lockout. The default is 10.
-1. Set the **Lockout duration in seconds**, to the length in seconds of each lockout. The default is 60 seconds (one minute).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Zoek en selecteer *Azure Active Directory*. Selecteer **verificatie methoden** > **wachtwoord beveiliging**.
+1. Stel de **drempel waarde voor vergren deling**in op basis van het aantal mislukte aanmeldingen dat is toegestaan voor een account voordat het voor het eerst wordt vergrendeld. De standaard waarde is 10.
+1. Stel de **vergrendelings duur in seconden in**, tot de lengte in seconden van elke vergren deling. De standaard waarde is 60 seconden (een minuut).
 
 > [!NOTE]
-> If the first sign-in after a lockout also fails, the account locks out again. If an account locks repeatedly, the lockout duration increases.
+> Als de eerste aanmelding na een vergren deling ook mislukt, wordt het account opnieuw vergrendeld. Als een account herhaaldelijk wordt vergrendeld, neemt de vergrendelings duur toe.
 
-![Customize the Azure AD smart lockout policy in the Azure portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+![Pas het beleid voor slimme vergren deling van Azure AD aan in het Azure Portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>How to determine if the Smart lockout feature is working or not
+## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>Bepalen of de functie voor slim vergren delen werkt
 
-When the smart lockout threshold is triggered, you will get the following message while the account is locked:
+Wanneer de drempel waarde voor slim vergren delen wordt geactiveerd, wordt het volgende bericht weer gegeven wanneer het account is vergrendeld:
 
-**Your account is temporarily locked to prevent unauthorized use. Try again later, and if you still have trouble, contact your admin.**
+**Uw account is tijdelijk vergrendeld om onbevoegd gebruik te voor komen. Probeer het later opnieuw. Neem contact op met de beheerder als u nog steeds problemen ondervindt.**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Find out how to ban bad passwords in your organization using Azure AD.](howto-password-ban-bad.md)
-* [Configure self-service password reset to allow users to unlock their own accounts.](quickstart-sspr.md)
+* [Ontdek hoe u in uw organisatie een onjuist wacht woord kunt gebruiken met Azure AD.](howto-password-ban-bad.md)
+* [Configureer selfservice voor wachtwoord herstel zodat gebruikers hun eigen accounts kunnen ontgrendelen.](quickstart-sspr.md)

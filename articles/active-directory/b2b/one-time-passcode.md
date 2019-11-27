@@ -73,7 +73,7 @@ Het kan enkele minuten duren voordat de opt-in-actie van kracht wordt. Daarna ge
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/) als een globale Azure AD-beheerder.
 2.  Selecteer **Azure Active Directory**in het navigatie deel venster.
 3.  Selecteer onder **beheren**de optie **organisatie relaties**.
-4.  Selecteer **instellingen**.
+4.  **Instellingen**selecteren.
 5.  Selecteer onder **E-mail eenmalige wachtwoord code voor gasten inschakelen (preview)** de optie **Ja**.
  
 ### <a name="to-opt-in-using-powershell"></a>Aanmelden met Power shell
@@ -140,7 +140,7 @@ Het kan enkele minuten duren voordat de opt-out-actie van kracht wordt. Als u de
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/) als een globale Azure AD-beheerder.
 2.  Selecteer **Azure Active Directory**in het navigatie deel venster.
 3.  Selecteer onder **beheren**de optie **organisatie relaties**.
-4.  Selecteer **instellingen**.
+4.  **Instellingen**selecteren.
 5.  Selecteer onder **E-mail eenmalige wachtwoord code voor gasten inschakelen (preview)** de optie **Nee**.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>De preview-versie uitschakelen met Power shell

@@ -1,7 +1,7 @@
 ---
-title: How to use authoring and runtime keys - LUIS
+title: Ontwerpen en runtime-sleutels gebruiken-LUIS
 titleSuffix: Azure Cognitive Services
-description: When you first use Language Understanding (LUIS), you do not need to create an authoring key. When you intend to publish the app, then use your runtime endpoint, you need to create and assign the runtime key to the app.
+description: Wanneer u Language Understanding (LUIS) voor het eerst gebruikt, hoeft u geen ontwerp sleutel te maken. Wanneer u van plan bent om de app te publiceren, moet u het runtime-eind punt gebruiken om de runtime sleutel te maken en toe te wijzen aan de app.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,203 +18,203 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225564"
 ---
-# <a name="using-authoring-and-runtime-resource-keys"></a>Using authoring and runtime resource keys
+# <a name="using-authoring-and-runtime-resource-keys"></a>Resource sleutels voor ontwerpen en runtime gebruiken
 
-Authoring and runtime resources provide authentication to your LUIS app and prediction endpoint.
+Het ontwerpen en uitvoeren van runtime-resources bieden verificatie voor uw LUIS-app en Voorspellings eindpunt.
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
 
-When you sign in to the LUIS portal, you can choose to continue with:
+Wanneer u zich aanmeldt bij de LUIS-Portal, kunt u het volgende doen:
 
-* a free [trial key](#trial-key) - providing authoring and a few prediction endpoint queries.
-* an Azure [LUIS authoring](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) resource. 
+* een gratis [proef versie](#trial-key) : het maken van ontwerpen en enkele Voorspellings eindpunt query's.
+* een Azure [Luis-ontwerp](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) bron. 
 
 
 <a name="starter-key"></a>
 
-## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Sign in to LUIS portal and begin authoring
+## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Meld u aan bij de LUIS-Portal en begin met ontwerpen
 
-1. Sign in to [LUIS portal](https://www.luis.ai) and agree to the terms of use.
-1. Begin your LUIS app by choosing which type of LUIS authoring key you would like to use: free trial key, or new Azure LUIS authoring key. 
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai) en ga akkoord met de gebruiks voorwaarden.
+1. Start uw LUIS-app door het type van de LUIS-ontwerp sleutel te kiezen die u wilt gebruiken: gratis proef versie of nieuwe Azure LUIS-ontwerp sleutel. 
 
-    ![Choose a type of Language Understanding authoring resource](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+    ![Een type Language Understanding-ontwerp bron kiezen](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
-1. When you are done with your resource selection process, [create a new app](luis-how-to-start-new-app.md#create-new-app-in-luis). 
+1. Wanneer u klaar bent met het resource selectie proces, [maakt u een nieuwe app](luis-how-to-start-new-app.md#create-new-app-in-luis). 
 
-## <a name="trial-key"></a>Trial key
+## <a name="trial-key"></a>Proef sleutel
 
-The trial (starter) key is provided for you. It is used as your authentication key to query the prediction endpoint runtime, up to 1000 queries a month. 
+De proef versie (start) wordt voor u gegeven. Dit wordt gebruikt als uw verificatie sleutel voor het uitvoeren van een query op de prediction endpoint runtime, tot 1000 query's per maand. 
 
-It is visible on both the **User Settings** page and the **Manage -> Azure resources** pages in the LUIS portal. 
+Deze wordt weer gegeven op de pagina **gebruikers instellingen** en op de pagina's **Manage-> Azure-resources** in de Luis-Portal. 
 
-When you are ready to publish your prediction endpoint, create and assign authoring and prediction runtime keys, to replace the starter key functionality. 
+Wanneer u klaar bent om uw Voorspellings eindpunt te publiceren, maakt en wijst u ontwerp-en Voorspellings runtime sleutels toe om de functionaliteit van de start sleutel te vervangen. 
 
-## <a name="create-resources-in-the-azure-portal"></a>Create resources in the Azure portal
+## <a name="create-resources-in-the-azure-portal"></a>Resources maken in de Azure Portal
 
-1. Use [this link](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) to open the Azure portal at for resource creation.
-1. Select **Both** to create an authoring and a prediction endpoint runtime key. 
-1. Enter the information required to create the resource then select **Create** to finish the process.
+1. Gebruik [deze koppeling](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) om de Azure portal te openen bij het maken van resources.
+1. Selecteer **beide** voor het maken van een ontwerp-en een Voorspellings eindpunt runtime sleutel. 
+1. Voer de vereiste gegevens in om de resource te maken en selecteer vervolgens **maken** om het proces te volt ooien.
 
-    ![Create the language understanding resource](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
+    ![De Language Standing resource maken](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
     |Naam|Doel|
     |--|--|
-    |Resourcenaam| A custom name you choose, used as part of the URL for your authoring and prediction endpoint queries.|
-    |Subscription name| the subscription that will be billed for the resource.|
-    |Resourcegroep| A custom resource group name you choose or create. Resource groups allow you to group Azure resources for access and management in the same region.|
-    |Authoring location|The region associated with your model.|
-    |Authoring pricing tier|The pricing tier determines the maximum transaction per second and month.|
-    |Runtime location|The region associated with your published prediction endpoint runtime.|
-    |Runtime pricing tier|The pricing tier determines the maximum transaction per second and month.|
+    |Resourcenaam| Een aangepaste naam die u kiest, die wordt gebruikt als onderdeel van de URL voor uw ontwerp-en Voorspellings eindpunt query's.|
+    |Abonnements naam| het abonnement dat wordt gefactureerd voor de resource.|
+    |Resourcegroep| Een aangepaste naam voor de resource groep die u kiest of maakt. Met resource groepen kunt u Azure-resources groeperen voor toegang en beheer in dezelfde regio.|
+    |Locatie van ontwerpen|De regio die aan uw model is gekoppeld.|
+    |Prijs categorie ontwerpen|De prijs categorie bepaalt de maximale trans actie per seconde en maand.|
+    |Runtime-locatie|De regio die is gekoppeld aan de gepubliceerde Voorspellings eindpunt runtime.|
+    |Prijs categorie voor runtime|De prijs categorie bepaalt de maximale trans actie per seconde en maand.|
 
-    Once both resources are created, assign the resources in the LUIS portal.
+    Zodra beide resources zijn gemaakt, wijst u de resources toe aan de LUIS-Portal.
 
-## <a name="create-resources-in-azure-cli"></a>Create resources in Azure CLI
+## <a name="create-resources-in-azure-cli"></a>Resources maken in azure CLI
 
-Use the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) to create each resource individually. 
+Gebruik de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) om elke resource afzonderlijk te maken. 
 
 Resource `kind`:
 
-* Authoring: `LUIS.Authoring`
-* Prediction: `LUIS` 
+* Ontwerpen: `LUIS.Authoring`
+* Voor spelling: `LUIS` 
 
-1. Sign in to the Azure CLI:
+1. Meld u aan bij de Azure CLI:
 
     ```console
     az login
     ```
 
-    This opens a browser to allow you to select the correct account and provide authentication.
+    Hiermee opent u een browser waarmee u het juiste account en verificatie kunt selecteren.
 
-1. Create a **LUIS authoring resource**, of kind `LUIS.Authoring`, named `my-luis-authoring-resource` in the _existing_ resource group named `my-resource-group` for the `westus` region. 
+1. Maak een **Luis-ontwerp bron**, van de soort `LUIS.Authoring`, met de naam `my-luis-authoring-resource` in de _bestaande_ resource groep met de naam `my-resource-group` voor de `westus`-regio. 
 
     ```console
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. Create a **LUIS prediction endpoint resource**, of kind `LUIS`, named `my-luis-prediction-resource` in the _existing_ resource group named `my-resource-group` for the `westus` region. If you want a higher throughput than the free tier, change `F0` to `S0`. Learn more about [pricing tiers and throughput](luis-boundaries.md#key-limits).
+1. Maak een **Luis-Voorspellings eindpunt bron**, van het type `LUIS`, met de naam `my-luis-prediction-resource` in de _bestaande_ resource groep met de naam `my-resource-group` voor de `westus`-regio. Als u een hogere door voer wilt dan de gratis laag, wijzigt u `F0` in `S0`. Meer informatie over [prijs categorieën en door Voer](luis-boundaries.md#key-limits).
 
     ```console
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
     > [!Note] 
-    > This keys are **not** used by the LUIS portal until they are assigned in the LUIS portal on the **Manage -> Azure resources**.
+    > Deze sleutels worden **niet** gebruikt door de Luis-Portal totdat ze zijn toegewezen in de Luis-Portal op de **Azure-resources voor beheer >** .
 
-## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Assign an authoring resource in the LUIS portal for all apps
+## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Een ontwerp bron toewijzen in de LUIS-portal voor alle apps
 
-You can assign an authoring resource for a single app or for all apps in LUIS. The following procedure assigns all apps to a single authoring resource.
+U kunt een ontwerp bron toewijzen voor één app of voor alle apps in LUIS. Met de volgende procedure worden alle apps aan één ontwerp bron toegewezen.
 
-1. Sign in to the [LUIS portal](https://www.luis.ai).
-1. At the top navigation bar, to the far right, select your user account, then select **Settings**.
-1. On the **User Settings** page, select **Add authoring resource** then select an existing authoring resource. Selecteer **Opslaan**. 
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai).
+1. Selecteer in de bovenste navigatie balk helemaal rechts uw gebruikers account en selecteer vervolgens **instellingen**.
+1. Selecteer op de pagina **gebruikers instellingen** de optie **ontwerp resource toevoegen** en selecteer vervolgens een bestaande ontwerp bron. Selecteer **Opslaan**. 
 
-## <a name="assign-a-resource-to-an-app"></a>Assign a resource to an app
+## <a name="assign-a-resource-to-an-app"></a>Een resource toewijzen aan een app
 
-You can assign a single resource, authoring or prediction endpoint runtime, to an app with the following procedure.
+Met de volgende procedure kunt u een afzonderlijke resource, een ontwerp of Voorspellings eindpunt runtime toewijzen aan een app.
 
-1. Sign in to the [LUIS portal](https://www.luis.ai), then select an app from the **My apps** list.
-1. Navigate to the **Manage -> Azure resources** page.
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer vervolgens een app uit de lijst **mijn apps** .
+1. Ga naar de pagina **Manage-> Azure-resources** .
 
-    ![Select the Manage -> Azure resources in the LUIS portal to assign a resource to the app.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
+    ![Selecteer de Azure-resources Manage-> in de LUIS-Portal om een resource aan de app toe te wijzen.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
-1. Select the Prediction or Authoring resource tab then select the **Add prediction resource** or **Add authoring resource** button. 
-1. Select the fields in the form to find the correct resource, then select **Save**.  
+1. Selecteer het tabblad voor spelling of ontwerp bron en selecteer vervolgens de knop **Voorspellings resource toevoegen** of maken van de resource **toevoegen** . 
+1. Selecteer de velden in het formulier om de juiste resource te zoeken en selecteer vervolgens **Opslaan**.  
 
-### <a name="assign-runtime-resource-without-using-luis-portal"></a>Assign runtime resource without using LUIS portal
+### <a name="assign-runtime-resource-without-using-luis-portal"></a>Een runtime resource toewijzen zonder de LUIS-portal te gebruiken
 
-For automation purposes such as a CI/CD pipeline, you may want to automate the assignment of a LUIS runtime resource to a LUIS app. In order to do that, you need to perform the following steps:
+Voor Automation-doel einden, zoals een CI/CD-pijp lijn, wilt u mogelijk de toewijzing van een LUIS-runtime resource automatiseren in een LUIS-app. Om dat te doen, moet u de volgende stappen uitvoeren:
 
-1. Get an Azure Resource Manager token from this [website](https://resources.azure.com/api/token?plaintext=true). This token does expire so use it immediately. The request returns an Azure Resource Manager token.
+1. Een Azure Resource Manager-Token ophalen van deze [website](https://resources.azure.com/api/token?plaintext=true). Dit token verloopt dus direct gebruiken. De aanvraag retourneert een Azure Resource Manager-token.
 
-    ![Request Azure Resource Manager token and receive Azure Resource Manager token](./media/luis-manage-keys/get-arm-token.png)
+    ![Azure Resource Manager token aanvragen en Azure Resource Manager token ontvangen](./media/luis-manage-keys/get-arm-token.png)
 
-1. Use the token to request the LUIS runtime resources across subscriptions, from the [Get LUIS azure accounts API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), which your user account has access to. 
+1. Gebruik het token om de LUIS-runtime resources voor meerdere abonnementen aan te vragen, van de [API Get Luis Azure accounts](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), waartoe uw gebruikers account toegang heeft. 
 
-    This POST API requires the following settings:
+    Deze POST-API moet de volgende instellingen:
 
     |Header|Waarde|
     |--|--|
-    |`Authorization`|The value of `Authorization` is `Bearer {token}`. Notice that the token value must be preceded by the word `Bearer` and a space.| 
-    |`Ocp-Apim-Subscription-Key`|Your authoring key.|
+    |`Authorization`|De waarde van `Authorization` is `Bearer {token}`. U ziet dat de token waarde moet worden voorafgegaan door het woord `Bearer` en een spatie.| 
+    |`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
 
-    This API returns an array of JSON objects of your LUIS subscriptions including subscription ID, resource group, and resource name, returned as account name. Find the one item in the array that is the LUIS resource to assign to the LUIS app. 
+    Deze API retourneert een matrix met JSON-objecten van uw abonnements-ID, resourcegroep en resourcenaam, geretourneerd als de accountnaam waaronder LUIS-abonnementen. Het ene item niet vinden in de matrix die is de resource LUIS om toe te wijzen aan de LUIS-app. 
 
-1. Assign the token to the LUIS resource with the [Assign a LUIS azure accounts to an application](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) API. 
+1. Wijs het token toe aan de LUIS-resource met de [Luis Azure-accounts toewijzen aan een toepassings](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) -API. 
 
-    This POST API requires the following settings:
+    Deze POST-API moet de volgende instellingen:
 
     |Type|Instelling|Waarde|
     |--|--|--|
-    |Header|`Authorization`|The value of `Authorization` is `Bearer {token}`. Notice that the token value must be preceded by the word `Bearer` and a space.|
-    |Header|`Ocp-Apim-Subscription-Key`|Your authoring key.|
+    |Header|`Authorization`|De waarde van `Authorization` is `Bearer {token}`. U ziet dat de token waarde moet worden voorafgegaan door het woord `Bearer` en een spatie.|
+    |Header|`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
     |Header|`Content-type`|`application/json`|
-    |Querystring|`appid`|De id van de LUIS-app. 
-    |Hoofdtekst||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
+    |QueryString|`appid`|De id van de LUIS-app. 
+    |Hoofdtekst||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e"<br>'ResourceGroup': 'resourcegroup-2'<br>"AccountName": "luis-uswest-S0-2"}|
 
-    When this API is successful, it returns a 201 - created status. 
+    Als deze API geslaagd is, wordt de status van een 201 - gemaakt. 
 
-## <a name="unassign-resource"></a>Unassign resource
+## <a name="unassign-resource"></a>Resource verwijderen
 
-1. Sign in to the [LUIS portal](https://www.luis.ai), then select an app from the **My apps** list.
-1. Navigate to the **Manage -> Azure resources** page.
-1. Select the Prediction or Authoring resource tab then select the **Unassign resource** button for the resource. 
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer vervolgens een app uit de lijst **mijn apps** .
+1. Ga naar de pagina **Manage-> Azure-resources** .
+1. Selecteer het tabblad voor spelling of ontwerp bron en selecteer vervolgens de knop **resource niet toewijzen** voor de resource. 
 
-When you unassign a resource, it is not deleted from Azure. It is only unlinked from LUIS. 
+Wanneer u de toewijzing van een resource ongedaan maakt, wordt deze niet verwijderd uit Azure. Dit is alleen van LUIS ontkoppeld. 
 
-## <a name="reset-authoring-key"></a>Reset authoring key
+## <a name="reset-authoring-key"></a>Het ontwerpen van de sleutel opnieuw instellen
 
-**For [authoring resource migrated](luis-migration-authoring.md) apps**: if your authoring key is compromised, reset the key in the Azure portal on the **Keys** page for that authoring resource. 
+**Voor [gemigreerde](luis-migration-authoring.md) apps voor**het maken van een resource: als uw ontwerp sleutel is aangetast, moet u de sleutel opnieuw instellen in de Azure Portal op de pagina **sleutels** voor die ontwerp bron. 
 
-**For apps that have not migrated yet**: the key is reset on all your apps in the LUIS portal. If you author your apps via the authoring APIs, you need to change the value of Ocp-Apim-Subscription-Key to the new key.
+**Voor apps die nog niet zijn gemigreerd**: de sleutel wordt opnieuw ingesteld voor al uw apps in de Luis-Portal. Als u uw apps via de ontwerp-Api's maakt, moet u de waarde van OCP-APIM-Subscription-Key wijzigen in de nieuwe sleutel.
 
-## <a name="regenerate-azure-key"></a>Regenerate Azure key
+## <a name="regenerate-azure-key"></a>Azure-sleutel opnieuw genereren
 
-Regenerate the Azure keys from the Azure portal, on the **Keys** page.
+Genereer de Azure-sleutels opnieuw vanuit de Azure Portal op de pagina **sleutels** .
 
-## <a name="delete-account"></a>Delete account
+## <a name="delete-account"></a>Account verwijderen
 
-See [Data storage and removal](luis-concept-data-storage.md#accounts) for information about what data is deleted when you delete your account.
+Zie [gegevens opslag en verwijderen](luis-concept-data-storage.md#accounts) voor meer informatie over welke gegevens worden verwijderd wanneer u uw account verwijdert.
 
 ## <a name="change-pricing-tier"></a>Prijscategorie wijzigen
 
-1.  In [Azure](https://portal.azure.com), find your LUIS subscription. Select the LUIS subscription.
-    ![Find your LUIS subscription](./media/luis-usage-tiers/find.png)
-1.  Select **Pricing tier** in order to see the available pricing tiers. 
-    ![View pricing tiers](./media/luis-usage-tiers/subscription.png)
-1.  Select the pricing tier and select **Select** to save your change. 
-    ![Change your LUIS payment tier](./media/luis-usage-tiers/plans.png)
-1.  When the pricing change is complete, a pop-up window verifies the new pricing tier. 
-    ![Verify your LUIS payment tier](./media/luis-usage-tiers/updated.png)
-1. Remember to [assign this endpoint key](#assign-a-resource-to-an-app) on the **Publish** page and use it in all endpoint queries. 
+1.  Zoek uw LUIS-abonnement in [Azure](https://portal.azure.com). Selecteer het LUIS-abonnement.
+    ![uw LUIS-abonnement vinden](./media/luis-usage-tiers/find.png)
+1.  Selecteer **prijs categorie** om de beschik bare prijs categorieën te bekijken. 
+    prijs categorieën ![weer geven](./media/luis-usage-tiers/subscription.png)
+1.  Selecteer de prijs categorie en selecteer **selecteren** om uw wijziging op te slaan. 
+    ![uw LUIS wijzigen](./media/luis-usage-tiers/plans.png)
+1.  Wanneer met de prijswijziging voltooid is, controleert de nieuwe prijscategorie of in een pop-upvenster. 
+    ![de](./media/luis-usage-tiers/updated.png) van uw LUIS-betalings niveau controleren
+1. [Wijs deze eindpunt sleutel toe](#assign-a-resource-to-an-app) op de pagina **publiceren** en gebruik deze in alle eindpunt query's. 
 
-## <a name="viewing-azure-resource-metrics"></a>Viewing Azure resource metrics
+## <a name="viewing-azure-resource-metrics"></a>Metrische gegevens van Azure-resource weer geven
 
-### <a name="viewing-azure-resource-summary-usage"></a>Viewing Azure resource summary usage
-You can view LUIS usage information in Azure. The **Overview** page shows recent summary information including calls and errors. If you make a LUIS endpoint request, then immediately watch the **Overview page**, allow up to five minutes for the usage to show up.
+### <a name="viewing-azure-resource-summary-usage"></a>Gebruik van Azure Resource Summary weer geven
+U kunt informatie over het gebruik van LUIS weergeven in Azure. Op de **overzichts** pagina ziet u recente samenvattings informatie, inclusief oproepen en fouten. Als u een LUIS-eindpunt aanvraag maakt en de **overzichts pagina**onmiddellijk bekijkt, moet u Maxi maal vijf minuten toestaan voordat het gebruik wordt weer gegeven.
 
-![Viewing summary usage](./media/luis-usage-tiers/overview.png)
+![Overzicht gebruik weergeven](./media/luis-usage-tiers/overview.png)
 
-### <a name="customizing-azure-resource-usage-charts"></a>Customizing Azure resource usage charts
-Metrics provides a more detailed view into the data.
+### <a name="customizing-azure-resource-usage-charts"></a>Grafieken voor Azure resource usage aanpassen
+Metrische gegevens biedt meer inzicht in de gegevens.
 
-![Default metrics](./media/luis-usage-tiers/metrics-default.png)
+![Standaard metrische gegevens](./media/luis-usage-tiers/metrics-default.png)
 
-You can configure your metrics charts for time period and metric type. 
+U kunt uw grafieken met metrische gegevens voor een bepaalde periode en type van metrische gegevens configureren. 
 
 ![Aangepaste metrische gegevens](./media/luis-usage-tiers/metrics-custom.png)
 
-### <a name="total-transactions-threshold-alert"></a>Total transactions threshold alert
-If you would like to know when you have reached a certain transaction threshold, for example 10,000 transactions, you can create an alert. 
+### <a name="total-transactions-threshold-alert"></a>Totaal aantal transacties drempelwaarde voor waarschuwing
+Als u wilt weten wanneer u een bepaalde drempelwaarde in de transactie, bijvoorbeeld 10.000 transacties hebt bereikt, kunt u een waarschuwing maken. 
 
-![Default alerts](./media/luis-usage-tiers/alert-default.png)
+![Standaard-waarschuwingen](./media/luis-usage-tiers/alert-default.png)
 
-Add a metric alert for the **total calls** metric for a certain time period. Add email addresses of all people that should receive the alert. Add webhooks for all systems that should receive the alert. You can also run a logic app when the alert is triggered. 
+Voeg een metrische waarschuwing toe voor de totale waarde van **aanroepen** voor een bepaalde tijds periode. Scheid e-mailadressen van alle personen die de waarschuwing moet ontvangen. Voeg webhooks voor alle systemen die de waarschuwing moeten ontvangen. U kunt ook een logische app uitvoeren wanneer de waarschuwing wordt geactiveerd. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Learn [how to use versions](luis-how-to-manage-versions.md) to control your app life cycle.
-* Understand the concepts including the [authoring resource](luis-concept-keys.md#authoring-key) and [contributors](luis-concept-keys.md#contributions-from-other-authors) on that resource.
-* Learn [how to create](luis-how-to-azure-subscription.md) authoring and runtime resources
-* Migrate to the new [authoring resource](luis-migration-authoring.md) 
+* Meer informatie [over het gebruik van versies](luis-how-to-manage-versions.md) om de levens cyclus van uw app te beheren.
+* Inzicht in de concepten, waaronder de [ontwerp resource](luis-concept-keys.md#authoring-key) en [inzenders](luis-concept-keys.md#contributions-from-other-authors) voor die bron.
+* Meer informatie [over het maken](luis-how-to-azure-subscription.md) van ontwerp-en runtime-resources
+* Migreren naar de nieuwe [ontwerp bron](luis-migration-authoring.md) 

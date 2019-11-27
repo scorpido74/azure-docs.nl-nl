@@ -111,8 +111,8 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Autorisatie voor cluster verificatie &|Active Directory, Ambari, Cloudera Manager, geen verificatie|
 |HDFS Access Control|  Hand matig, SSH-gebruikers|
 |Autorisatie van Hive-verificatie &|Sentry, LDAP, AD met Kerberos, zwerver|
-|Controle|Ambari, Cloudera Navigator, Ranger|
-|Controleren|Grafiet, verzamelde, statistieken, telegrafie, InfluxDB|
+|Controleren|Ambari, Cloudera Navigator, Ranger|
+|Bewaking|Grafiet, verzamelde, statistieken, telegrafie, InfluxDB|
 |Waarschuwingen|Kapacitor, Prometheus, Datadog|
 |Duur van gegevens retentie| 3 jaar, 5 jaar|
 |Cluster beheerders|Eén beheerder, meerdere beheerders|

@@ -46,7 +46,7 @@ Maak een nieuwe map in uw Data Lake Storage, en verleen de door het systeem toeg
 2. Klik op de Data Lake Storage die u wilt gebruiken voor deze zelfstudie.
 3. Klik op **Data Explorer** in de opdrachtbalk.
 4. De hoofdmap van de Data Lake Storage is geselecteerd.  Klik op **Toegang** in de opdrachtbalk.
-5. Klik op **Add**.  Voer in het veld **Selecteren** de naam van uw virtuele machine in, bijvoorbeeld **DevTestVM**.  Klik op uw virtuele machine in de zoekresultaten om deze te selecteren, en klik vervolgens op **Selecteren**.
+5. Klik op **Toevoegen**.  Voer in het veld **Selecteren** de naam van uw virtuele machine in, bijvoorbeeld **DevTestVM**.  Klik op uw virtuele machine in de zoekresultaten om deze te selecteren, en klik vervolgens op **Selecteren**.
 6. Klik op **Machtigingen selecteren**.  Selecteer **Lezen** en **Uitvoeren**, voeg deze toe aan **Deze map** als **Alleen een toegangsmachtiging**.  Klik op **OK**.  De machtiging wordt toegevoegd.
 7. Sluit de blade **Toegang**.
 8. Voor deze zelfstudie maakt u een nieuwe map.  Klik op **Nieuwe map** in de opdrachtbalk en geef een naam voor de nieuwe map op, bijvoorbeeld **TestFolder**.  Klik op **OK**.

@@ -37,7 +37,7 @@ Hier volgt een scenario waarin wordt uitgelegd waarom uw bedrijf een aangepaste 
 - U wilt in plaats daarvan `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` instellen als de URL van de start pagina, zodat een externe gebruiker de aanmeldings pagina eerst ziet.
 
 > [!NOTE]
-> Wanneer u gebruikers toegang tot gepubliceerde apps verleent, de apps worden weergegeven in de [Azure AD-Toegangsvenster](../user-help/my-apps-portal-end-user-access.md) en de [startprogramma voor Office 365](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
+> Wanneer u gebruikers toegang geeft tot gepubliceerde apps, worden de apps weer gegeven in het [Azure AD-toegangs venster](../user-help/my-apps-portal-end-user-access.md) en het [Start programma voor de Office 365-app](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -85,7 +85,7 @@ Volg deze stappen voor het installeren van het pakket:
    Install-Module -Name AzureAD
    ```
 
-    Als u de opdracht als een niet-beheerder uitvoert, gebruikt u de `-scope currentuser` optie.
+    Als u de opdracht als niet-beheerder uitvoert, gebruikt u de optie `-scope currentuser`.
 
 1. Selecteer bij de installatie de optie **Y** om twee pakketten van Nuget.org te installeren. Beide pakketten zijn vereist.
 
@@ -147,7 +147,7 @@ Maak de URL van de start pagina en werk uw app bij met die waarde. Ga verder met
    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
    ```
 
-1. De URL van startpagina ingesteld op de waarde die u wilt. De waarde moet een pad van het subdomein van de gepubliceerde app. Bijvoorbeeld, als u de URL van de startpagina van `https://sharepoint-iddemo.msappproxy.net/` naar `https://sharepoint-iddemo.msappproxy.net/hybrid/`, gaat u rechtstreeks naar de startpagina van aangepaste app-gebruikers.
+1. De URL van startpagina ingesteld op de waarde die u wilt. De waarde moet een pad van het subdomein van de gepubliceerde app. Als u bijvoorbeeld de URL van de start pagina wijzigt van `https://sharepoint-iddemo.msappproxy.net/` naar `https://sharepoint-iddemo.msappproxy.net/hybrid/`, gaan app-gebruikers rechtstreeks naar de aangepaste start pagina.
 
    ```powershell
    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
@@ -180,5 +180,5 @@ Maak de URL van de start pagina en werk uw app bij met die waarde. Ga verder met
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Externe toegang tot SharePoint met Azure AD-toepassingsproxy inschakelen](application-proxy-integrate-with-sharepoint-server.md)
+- [Externe toegang tot share point inschakelen met Azure AD-toepassingsproxy](application-proxy-integrate-with-sharepoint-server.md)
 - [Zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in Azure Active Directory](application-proxy-add-on-premises-application.md)

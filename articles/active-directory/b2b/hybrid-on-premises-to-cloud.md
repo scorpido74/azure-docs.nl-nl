@@ -45,6 +45,6 @@ Zie [synchronisatie van User type inschakelen](../hybrid/how-to-connect-sync-cha
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Active Directory B2B-samen werking voor hybride organisaties](hybrid-organizations.md)
-- [GRANT B2B-gebruikers in Azure AD-toegang tot uw on-premises toepassingen](hybrid-cloud-to-on-premises.md)
+- [B2B-gebruikers in azure AD toegang verlenen tot uw on-premises toepassingen](hybrid-cloud-to-on-premises.md)
 - Zie [uw on-premises Directory's integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md)voor een overzicht van Azure AD Connect.
 

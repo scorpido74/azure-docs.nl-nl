@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Get image insights using the REST API and Go - Bing Visual Search'
+title: 'Snelstartgids: Image Insights ophalen met behulp van de REST API en go-Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: Leer hoe u een afbeelding uploadt naar de Bing Visual Search-API en inzichten in de afbeelding verkrijgt.
 services: cognitive-services
@@ -17,20 +17,20 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383215"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Go
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Snelstartgids: Image Insights ophalen met behulp van de Bing Visual Search REST API en go
 
-This quickstart uses the Go programming language to call the Bing Visual Search API and display results. A POST request uploads an image to the API endpoint. The results include URLs and descriptive information about images similar to the uploaded image.
+In deze Quick Start wordt gebruikgemaakt van de programmeer taal Go om de Bing Visual Search-API aan te roepen en de resultaten weer te geven. Een POST-aanvraag uploadt een installatie kopie naar het API-eind punt. De resultaten omvatten Url's en beschrijvende informatie over afbeeldingen die vergelijkbaar zijn met de geüploade afbeelding.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Install the [Go binaries](https://golang.org/dl/).
-* The go-spew deep pretty printer is used to display results. You can install go-spew with the `$ go get -u https://github.com/davecgh/go-spew` command.
+* Installeer de [binaire bestanden voor Go](https://golang.org/dl/).
+* De go-spew diepe pretty-printer wordt gebruikt om de resultaten weer te geven. U kunt go-spew installeren met behulp van de `$ go get -u https://github.com/davecgh/go-spew` opdracht.
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="project-and-libraries"></a>Project and libraries
+## <a name="project-and-libraries"></a>Project en bibliotheken
 
-Create a Go project in your IDE or editor. Then import `net/http` for requests, `ioutil` to read the response, and `encoding/json` to handle the JSON text of results. The `go-spew` library is used to parse JSON results.
+Maak een go-project in uw IDE of editor. Importeer vervolgens `net/http` voor aanvragen `ioutil` om de reactie te lezen en `encoding/json` om de JSON-tekst van de resultaten te verwerken. De `go-spew`-bibliotheek wordt gebruikt voor het parseren van JSON-resultaten.
 
 ```
 package main
@@ -50,9 +50,9 @@ import (
 
 ```
 
-## <a name="struct-to-format-results"></a>Struct to format results
+## <a name="struct-to-format-results"></a>Struct voor het opmaken van resultaten
 
-The `BingAnswer` structure formats data returned in the JSON response, which is multilevel and complex. The following implementation covers some of the essentials:
+In de `BingAnswer` structuur worden gegevens opgemaakt die in het JSON-antwoord worden geretourneerd. Dit is meerdere niveaus en complex. De volgende implementatie heeft betrekking op enkele van de essentiële onderdelen:
 
 ```
 type BingAnswer struct {
@@ -107,9 +107,9 @@ type BingAnswer struct {
 
 ```
 
-## <a name="main-function-and-variables"></a>Main function and variables  
+## <a name="main-function-and-variables"></a>Hoofd functie en variabelen  
 
-The following code declares the main function and assigns required variables. Controleer of het eindpunt juist is en vervang de waarde `token` door een geldige abonnementssleutel uit uw Azure-account. The `batchNumber` is a GUID required for leading and trailing boundaries of the POST data. The `fileName` variable identifies the image file for the POST. The following sections explain the details of the code:
+Met de volgende code wordt de functie main gedeclareerd en worden de vereiste variabelen toegewezen. Controleer of het eindpunt juist is en vervang de waarde `token` door een geldige abonnementssleutel uit uw Azure-account. De `batchNumber` is een GUID die is vereist voor voor loop-en volg grenzen van de POST gegevens. De variabele `fileName` identificeert het afbeeldings bestand voor het bericht. In de volgende secties worden de details van de code uitgelegd:
 
 ```
 func main() {
@@ -157,9 +157,9 @@ func main() {
 
 ```
 
-## <a name="boundaries-of-post-body"></a>Boundaries of POST body
+## <a name="boundaries-of-post-body"></a>Grenzen van POST hoofdtekst
 
-A POST request to the Visual Search endpoint requires leading and trailing boundaries enclosing the POST data. The leading boundary includes a batch number, the content type identifier `Content-Disposition: form-data; name="image"; filename=`, plus the filename of the image to POST. The trailing boundary is simply the batch number. These functions are not included in the `main` block:
+Een POST-aanvraag naar het Visual Search-eind punt vereist voor loop-en volg grenzen die de POST gegevens omsluiten. De voorloop grens bevat een batch nummer, de inhouds type-id `Content-Disposition: form-data; name="image"; filename=`, plus de bestands naam van de afbeelding die moet worden geplaatst. De afsluitende grens is gewoon het batch nummer. Deze functies zijn niet opgenomen in het `main` blok:
 
 ```
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -176,9 +176,9 @@ func BuildFormDataEnd(batNum string) string{
 }
 
 ```
-## <a name="add-image-bytes-to-post-body"></a>Add image bytes to POST body
+## <a name="add-image-bytes-to-post-body"></a>Afbeeldings bytes toevoegen aan bericht tekst
 
-This code segment creates the POST request that contains image data:
+Dit code segment maakt de POST-aanvraag die afbeeldings gegevens bevat:
 
 ```
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
@@ -207,7 +207,7 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 ## <a name="send-the-request"></a>De aanvraag verzenden
 
-The following code sends the request and reads the results:
+Met de volgende code wordt de aanvraag verzonden en worden de resultaten gelezen:
 
 ```
 resp, err := client.Do(req)
@@ -226,7 +226,7 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>Het antwoord verwerken
 
-The `Unmarshall` function extracts information from the JSON text returned by the Visual Search API. The `go-spew` pretty printer displays the results:
+Met de functie `Unmarshall` wordt informatie opgehaald uit de JSON-tekst die wordt geretourneerd door de Visual Search-API. De resultaten van de `go-spew` mooie printer worden weer gegeven:
 
 ```
     // Create a new answer.  
@@ -245,11 +245,11 @@ The `Unmarshall` function extracts information from the JSON text returned by th
 
 ```
 > [!NOTE]
-> Francesco Giordano contributed code to this example.
+> Francesco Giordano heeft code aan dit voor beeld bijgedragen.
 
 ## <a name="results"></a>Resultaten
 
-The results identify images similar to the image contained in the POST body. The useful fields are `WebSearchUrl` and `Name`:
+De resultaten identificeren installatie kopieën die vergelijkbaar zijn met de afbeelding in de hoofd tekst van het bericht. De handigste velden zijn `WebSearchUrl` en `Name`:
 
 ```
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
@@ -287,5 +287,5 @@ The results identify images similar to the image contained in the POST body. The
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [What is the Bing Visual Search API?](../overview.md)
-> [Bing Web Search quickstart in Go](../../Bing-Web-Search/quickstarts/go.md)
+> [Wat is de Bing Visual Search-API?](../overview.md)
+> [Bing Web Search quick start](../../Bing-Web-Search/quickstarts/go.md)

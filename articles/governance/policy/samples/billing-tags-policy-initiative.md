@@ -1,6 +1,6 @@
 ---
 title: 'Voorbeeld: beleidsinitiatief voor factureringstags'
-description: This sample policy initiative (policy set) requires specified tag values defined in parameters for cost center and product name.
+description: Voor dit voor beeld beleid-initiatief (beleids instelling) zijn opgegeven label waarden vereist in para meters voor kosten plaats en product naam.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 449909b160c2b811c62cd8c6592e74dd0f714e41
@@ -20,7 +20,7 @@ Voor deze beleidsset zijn gespecificeerde tagwaarden voor kostenplaats en produc
 
 [!code-json[main](../../../../policy-templates/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.json "Billing Tags Policy Initiative")]
 
-You can deploy this template with [PowerShell](#deploy-with-powershell).
+U kunt deze sjabloon implementeren met [Power shell](#deploy-with-powershell).
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

@@ -1,6 +1,6 @@
 ---
-title: The Conditional Access What If tool - Azure Active Directory
-description: Learn how you can understand the impact of your Conditional Access policies on your environment.
+title: 'Het hulp programma voor voorwaardelijke toegang What If: Azure Active Directory'
+description: Meer informatie over de impact van uw beleid voor voorwaardelijke toegang in uw omgeving.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,92 +18,92 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379981"
 ---
-# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Troubleshoot using the What If tool in Conditional Access
+# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Problemen oplossen met behulp van het hulp programma What If in voorwaardelijke toegang
 
-[Conditional Access](../active-directory-conditional-access-azure-portal.md) is a capability of Azure Active Directory (Azure AD) that enables you to control how authorized users access your cloud apps. How do you know what to expect from the Conditional Access policies in your environment? To answer this question, you can use the **Conditional Access What If tool**.
+[Voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) is een functie van Azure Active Directory (Azure AD) waarmee u kunt bepalen hoe geautoriseerde gebruikers toegang hebben tot uw Cloud-apps. Hoe weet u wat u kunt verwachten van het beleid voor voorwaardelijke toegang in uw omgeving? Als u deze vraag wilt beantwoorden, kunt u het **hulp programma voor voorwaardelijke toegang What if**gebruiken.
 
-This article explains how you can use this tool to test your Conditional Access policies.
+In dit artikel wordt uitgelegd hoe u dit hulp programma kunt gebruiken om uw beleid voor voorwaardelijke toegang te testen.
 
-## <a name="what-it-is"></a>Wat het is
+## <a name="what-it-is"></a>Wat is het?
 
-The **Conditional Access What If policy tool** allows you to understand the impact of your Conditional Access policies on your environment. In plaats van uw beleid te testen door handmatig meerdere aanmeldingen uit te voeren, kunt u met dit hulpprogramma een gesimuleerde gebruikersaanmelding evalueren. Met de simulatie wordt de impact van deze aanmelding op uw beleid geschat en wordt een simulatierapport gegenereerd. The report does not only list the applied Conditional Access policies but also [classic policies](policy-migration.md#classic-policies) if they exist.    
+Met het **What if beleid voor voorwaardelijke toegang** kunt u inzicht krijgen in de impact van uw beleid voor voorwaardelijke toegang in uw omgeving. In plaats van uw beleid te testen door handmatig meerdere aanmeldingen uit te voeren, kunt u met dit hulpprogramma een gesimuleerde gebruikersaanmelding evalueren. De simulatie schat de impact van deze aanmelding op uw beleid in en genereert een simulatierapport. In het rapport worden niet alleen de toegepaste beleids regels voor voorwaardelijke toegang, maar ook het [klassieke beleid](policy-migration.md#classic-policies) weer geven als ze bestaan.    
 
-The **What If** tool provides a way to quickly determine the policies that apply to a specific user. You can use the information, for example, if you need to troubleshoot an issue.    
+Het hulp programma **What if** biedt een manier om snel te bepalen welke beleids regels van toepassing zijn op een specifieke gebruiker. U kunt de informatie gebruiken, bijvoorbeeld als u een probleem moet oplossen.    
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
-In the **Conditional Access What If tool**, you first need to configure the settings of the sign-in scenario you want to simulate. These settings include:
+In het **What if hulp programma voor voorwaardelijke toegang**moet u eerst de instellingen configureren van het aanmeldings scenario dat u wilt simuleren. Deze instellingen omvatten:
 
-- The user you want to test 
-- The cloud apps the user would attempt to access
-- The conditions under which access to the configures cloud apps is performed
+- De gebruiker die u wilt testen 
+- De Cloud-apps waartoe de gebruiker toegang probeert te krijgen
+- De omstandigheden waaronder toegang tot de Configuring Cloud-apps wordt uitgevoerd
      
-As a next step, you can initiate a simulation run that evaluates your settings. Only policies that are enabled are part of an evaluation run.
+Als volgende stap kunt u een simulatie uitvoering initiëren waarmee uw instellingen worden geëvalueerd. Alleen beleids regels die zijn ingeschakeld, maken deel uit van een evaluatie-uitvoering.
 
-When the evaluation has finished, the tool generates a report of the affected policies.
+Wanneer de evaluatie is voltooid, genereert het hulp programma een rapport van het betreffende beleid.
 
-## <a name="running-the-tool"></a>Running the tool
+## <a name="running-the-tool"></a>Het hulp programma uitvoeren
 
-You can find the **What If** tool on the **[Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** page in the Azure portal.
+U kunt het hulp programma **What if** vinden op de pagina **[voorwaardelijke toegang-beleids regels](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** in de Azure Portal.
 
-To start the tool, in the toolbar on top of the list of policies, click **What If**.
+Als u het hulp programma wilt starten, klikt u in de werk balk boven aan de lijst met beleids regels op **What if**.
 
 ![What If](./media/what-if-tool/01.png)
 
-Before you can run an evaluation, you must configure the settings.
+Voordat u een evaluatie kunt uitvoeren, moet u de instellingen configureren.
 
 ## <a name="settings"></a>Instellingen
 
-This section provides you with information about the settings of simulation run.
+In deze sectie vindt u informatie over de instellingen van simulatie uitvoering.
 
 ![What If](./media/what-if-tool/02.png)
 
 ### <a name="user"></a>Gebruiker
 
-You can only select one user. This is the only required field.
+U kunt slechts één gebruiker selecteren. Dit is het enige vereiste veld.
 
-### <a name="cloud-apps"></a>Cloud apps
+### <a name="cloud-apps"></a>Cloud-apps
 
-The default for this setting is **All cloud apps**. The default setting performs an evaluation of all available policies in your environment. You can narrow down the scope to policies affecting specific cloud apps.
+De standaard waarde voor deze instelling is **alle Cloud-apps**. De standaard instelling voert een evaluatie uit van alle beschik bare beleids regels in uw omgeving. U kunt het bereik beperken tot beleids regels die van invloed zijn op specifieke Cloud-apps.
 
 ### <a name="ip-address"></a>IP-adres
 
-The IP address is a single IPv4 address to mimic the [location condition](location-condition.md). The address represents Internet facing address of the device used by your user to sign in. You can verify the IP address of a device by, for example, navigating to [What is my IP address](https://whatismyipaddress.com).    
+Het IP-adres is een enkel IPv4-adres voor het nabootsen van de [locatie voorwaarde](location-condition.md). Het adres vertegenwoordigt het Internet adres van het apparaat dat door uw gebruiker wordt gebruikt om u aan te melden. U kunt het IP-adres van een apparaat controleren door bijvoorbeeld te navigeren naar [Wat is mijn IP-adres](https://whatismyipaddress.com).    
 
-### <a name="device-platforms"></a>Device platforms
+### <a name="device-platforms"></a>Apparaat platforms
 
-This setting mimics the [device platforms condition](conditions.md#device-platforms) and represents the equivalent of **All platforms (including unsupported)** . 
+Deze instelling imiteert de [voor waarde apparaat platforms](conditions.md#device-platforms) en vertegenwoordigt het equivalent van **alle platformen (met inbegrip van niet-ondersteunde)** . 
 
-### <a name="client-apps"></a>Client apps
+### <a name="client-apps"></a>Client-apps
 
-This setting mimics the [client apps condition](conditions.md#client-apps).
-By default, this setting causes an evaluation of all policies having **Browser** or **Mobile apps and desktop clients** either individually or both selected. It also detects policies that enforce **Exchange ActiveSync (EAS)** . You can narrow this setting down by selecting:
+Deze instelling imiteert de [voor waarde voor client-apps](conditions.md#client-apps).
+Deze instelling zorgt er standaard voor dat een evaluatie van alle beleids regels met **browser** -of **mobiele apps en desktop-clients** afzonderlijk of beide is geselecteerd. Er wordt ook een beleid gedetecteerd waarmee **Exchange ActiveSync (EAS)** wordt afgedwongen. U kunt deze instelling beperken door het volgende te selecteren:
 
-- **Browser** to evaluate all policies having at least **Browser** selected. 
-- **Mobile apps and desktop clients** to evaluate all policies having at least **Mobile apps and desktop clients** selected. 
+- **Browser** voor het evalueren van alle beleids regels waarvoor ten minste een **browser** is geselecteerd. 
+- **Mobiele apps en desktop-clients** om alle beleids regels te evalueren waarvoor ten minste **Mobile apps en desktop-clients** zijn geselecteerd. 
 
-### <a name="sign-in-risk"></a>Sign-in risk
+### <a name="sign-in-risk"></a>Aanmeldings risico
 
-This setting mimics the [sign-in risk condition](conditions.md#sign-in-risk).   
+Deze instelling imiteert de [aanmeldings risico voorwaarde](conditions.md#sign-in-risk).   
 
-## <a name="evaluation"></a>Evaluation 
+## <a name="evaluation"></a>Raming 
 
-You start an evaluation by clicking **What If**. The evaluation result provides you with a report that consists of: 
+U start een evaluatie door te klikken op **What if**. Het evaluatie resultaat geeft u een rapport dat bestaat uit: 
 
 ![What If](./media/what-if-tool/03.png)
 
-- An indicator whether classic policies exist in your environment
-- Policies that apply to your user
-- Policies that don't apply to your user
+- Een indicator die in uw omgeving een klassiek beleid bevat
+- Beleids regels die van toepassing zijn op uw gebruiker
+- Beleids regels die niet van toepassing zijn op uw gebruiker
 
-If [classic policies](policy-migration.md#classic-policies) exist for the selected cloud apps, an indicator is presented to you. By clicking the indicator, you are redirected to the classic policies page. On the classic policies page, you can migrate a classic policy or just disable it. You can return to your evaluation result by closing this page.
+Als er een [klassiek beleid](policy-migration.md#classic-policies) bestaat voor de geselecteerde Cloud-apps, wordt er een indicator aan u gepresenteerd. Als u op de indicator klikt, wordt u omgeleid naar de klassieke beleids pagina. Op de pagina klassiek beleid kunt u een klassiek beleid migreren of alleen uitschakelen. U kunt teruggaan naar het evaluatie resultaat door deze pagina te sluiten.
 
-On the list of policies that apply to your selected user, you can also find a list of [grant controls](controls.md#grant-controls) and [session](controls.md#session-controls) controls your user must satisfy.
+In de lijst met beleids regels die van toepassing zijn op de geselecteerde gebruiker, kunt u ook een lijst met [besturings elementen voor granting](controls.md#grant-controls) en [sessie](controls.md#session-controls) besturings elementen zoeken die aan uw gebruiker moeten voldoen.
 
-On the list of policies that don't apply to your user, you can and also find the reasons why these policies don't apply. For each listed policy, the reason represents the first condition that was not satisfied. A possible reason for a policy that is not applied is a disabled policy because they are not further evaluated.   
+In de lijst met beleids regels die niet van toepassing zijn op uw gebruiker, kunt u ook zoeken naar de redenen waarom dit beleid niet van toepassing is. Voor elke vermelde beleids regel vertegenwoordigt de reden de eerste voor waarde waaraan niet is voldaan. Een mogelijke reden voor een beleid dat niet wordt toegepast, is een uitgeschakeld beleid omdat deze niet verder worden geëvalueerd.   
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md). 
-- if you want to migrate classic policies, see [Migrate classic policies in the Azure portal](policy-migration.md)  
+- Als u wilt weten hoe u een beleid voor voorwaardelijke toegang kunt configureren, raadpleegt u [MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory](app-based-mfa.md).
+- Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u de [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md). 
+- Als u klassiek beleid wilt migreren, raadpleegt u [klassiek beleid migreren in de Azure Portal](policy-migration.md)  

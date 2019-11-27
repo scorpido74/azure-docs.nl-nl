@@ -1,19 +1,14 @@
 ---
-title: Een geheim volume koppelen in Azure Container Instances
+title: Geheim volume aan container groep koppelen
 description: Meer informatie over het koppelen van een geheim volume voor het opslaan van gevoelige informatie voor toegang door uw container instanties
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 07/19/2018
-ms.author: danlep
-ms.openlocfilehash: 2e96ef73c3ff89fd7941fa14a8a1e53e6d4d8593
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 7f212a5090923a7d7bf00fc8ac78299f2edcc9c1
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68325432"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533193"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Een geheim volume koppelen in Azure Container Instances
 
@@ -26,7 +21,7 @@ Alle *geheime* volumes worden ondersteund door [tmpfs][tmpfs], een bestands syst
 
 ## <a name="mount-secret-volume---azure-cli"></a>Geheim volume koppelen-Azure CLI
 
-Als u een container met een of meer geheimen wilt implementeren met behulp van de Azure `--secrets` cli `--secrets-mount-path` , neemt u de para meters en op in de opdracht [AZ container Create][az-container-create] . In dit voor beeld wordt een *geheim* volume dat bestaat uit twee geheimen, ' mysecret1 ' en ' mysecret2 ', `/mnt/secrets`gekoppeld aan:
+Als u een container met een of meer geheimen wilt implementeren met behulp van de Azure CLI, neemt u de para meters `--secrets` en `--secrets-mount-path` op in de opdracht [AZ container Create][az-container-create] . In dit voor beeld wordt een *geheim* volume dat bestaat uit twee geheimen, ' mysecret1 ' en ' mysecret2 ', gekoppeld aan `/mnt/secrets`:
 
 ```azurecli-interactive
 az container create \
@@ -58,7 +53,7 @@ U kunt ook container groepen implementeren met de Azure CLI en een [yaml-sjabloo
 
 Wanneer u implementeert met een YAML-sjabloon, moeten de geheime waarden in de sjabloon **Base64-gecodeerd** zijn. De geheime waarden worden echter weer gegeven als tekst zonder opmaak in de bestanden in de container.
 
-De volgende YAML-sjabloon definieert een container groep met één container die een *geheim* volume koppelt `/mnt/secrets`op. Het geheime volume heeft twee geheimen: ' mysecret1 ' en ' mysecret2 '.
+De volgende YAML-sjabloon definieert een container groep met één container die een *geheim* volume koppelt aan `/mnt/secrets`. Het geheime volume heeft twee geheimen: ' mysecret1 ' en ' mysecret2 '.
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -89,7 +84,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Als u wilt implementeren met de yaml-sjabloon, slaat u de voor gaande `deploy-aci.yaml`yaml op in een bestand met de naam en voert `--file` u de opdracht [AZ container Create][az-container-create] uit met de para meter:
+Als u wilt implementeren met de YAML-sjabloon, slaat u de voor gaande YAML op in een bestand met de naam `deploy-aci.yaml`en voert u de opdracht [AZ container Create][az-container-create] uit met de para meter `--file`:
 
 ```azurecli-interactive
 # Deploy with YAML template
@@ -100,16 +95,16 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
 Naast de implementatie van CLI en YAML kunt u een container groep implementeren met behulp van een Azure [Resource Manager-sjabloon](/azure/templates/microsoft.containerinstance/containergroups).
 
-Vul eerst de `volumes` matrix in het gedeelte container Group `properties` van de sjabloon. Wanneer u implementeert met een resource manager-sjabloon, moeten de geheime waarden in de sjabloon **Base64-gecodeerd** zijn. De geheime waarden worden echter weer gegeven als tekst zonder opmaak in de bestanden in de container.
+Vul eerst de `volumes`-matrix in het gedeelte `properties` van de container groep van de sjabloon. Wanneer u implementeert met een resource manager-sjabloon, moeten de geheime waarden in de sjabloon **Base64-gecodeerd** zijn. De geheime waarden worden echter weer gegeven als tekst zonder opmaak in de bestanden in de container.
 
-Vervolgens vult u voor elke container in de container groep waarin u het *geheime* volume wilt koppelen, de `volumeMounts` matrix in de `properties` sectie van de container definitie.
+Voor elke container in de container groep waarin u het *geheime* volume wilt koppelen, vult u de `volumeMounts`-matrix in het gedeelte `properties` van de container definitie.
 
-De volgende Resource Manager-sjabloon definieert een container groep met één container die een *geheim* volume koppelt `/mnt/secrets`op. Het geheime volume heeft twee geheimen: ' mysecret1 ' en ' mysecret2 '.
+De volgende Resource Manager-sjabloon definieert een container groep met één container die een *geheim* volume koppelt aan `/mnt/secrets`. Het geheime volume heeft twee geheimen: ' mysecret1 ' en ' mysecret2 '.
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-Als u wilt implementeren met de Resource Manager-sjabloon, slaat u de voor gaande `deploy-aci.json`JSON op in een bestand met de naam en voert u `--template-file` de opdracht [AZ Group Deployment Create][az-group-deployment-create] uit met de para meter:
+Als u wilt implementeren met de Resource Manager-sjabloon, slaat u de voor gaande JSON op in een bestand met de naam `deploy-aci.json`en voert u de opdracht [AZ Group Deployment Create][az-group-deployment-create] uit met de para meter `--template-file`:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template
@@ -122,9 +117,9 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 Meer informatie over het koppelen van andere volume typen in Azure Container Instances:
 
-* [Een Azure-bestandsshare in Azure Containerexemplaren koppelen](container-instances-volume-azure-files.md)
-* [Een volume emptyDir in Azure Containerexemplaren koppelen](container-instances-volume-emptydir.md)
-* [Koppelen van een volume gitRepo in Azure Containerexemplaren](container-instances-volume-gitrepo.md)
+* [Een Azure-bestandsshare koppelen in Azure Container Instances](container-instances-volume-azure-files.md)
+* [Een emptyDir-volume koppelen in Azure Container Instances](container-instances-volume-emptydir.md)
+* [Een gitRepo-volume koppelen in Azure Container Instances](container-instances-volume-gitrepo.md)
 
 ### <a name="secure-environment-variables"></a>Beveiligde omgevings variabelen
 

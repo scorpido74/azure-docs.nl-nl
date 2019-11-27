@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: New policy assignment with PowerShell'
-description: In this quickstart, you use Azure PowerShell to create an Azure Policy assignment to identify non-compliant resources.
+title: 'Snelstartgids: nieuwe beleids toewijzing met Power shell'
+description: In deze Quick Start gebruikt u Azure PowerShell om een Azure Policy toewijzing te maken om niet-compatibele resources te identificeren.
 ms.date: 11/25/2019
 ms.topic: quickstart
 ms.openlocfilehash: 3ce823a7abfe16e4433128dcdfe073dfcfaeba50
@@ -10,12 +10,12 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482396"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Quickstart: Create a policy assignment to identify non-compliant resources using Azure PowerShell
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van Azure PowerShell
 
-De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources. In deze snelstart maakt u een beleidstoewijzing om te identificeren welke virtuele machines geen beheerde schijven gebruiken. When complete, you'll identify virtual machines that are _non-compliant_.
+De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources. In deze snelstart maakt u een beleidstoewijzing om te identificeren welke virtuele machines geen beheerde schijven gebruiken. Wanneer u klaar bent, identificeert u virtuele machines die _niet voldoen_aan het beleid.
 
-The Azure PowerShell module is used to manage Azure resources from the command line or in scripts.
-This guide explains how to use Az module to create a policy assignment.
+De module Azure PowerShell wordt gebruikt om Azure-resources te beheren vanaf de opdracht regel of in scripts.
+In deze hand leiding wordt uitgelegd hoe u AZ module gebruikt om een beleids toewijzing te maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -23,7 +23,7 @@ This guide explains how to use Az module to create a policy assignment.
 
 - Voordat u begint, moet u ervoor zorgen dat de nieuwste versie van Azure PowerShell is geïnstalleerd. Zie [Azure PowerShell-module installeren](/powershell/azure/install-az-ps) voor gedetailleerde informatie.
 
-- Register the Azure Policy Insights resource provider using Azure PowerShell. Als u de resourceprovider registreert, controleer dan of uw abonnement ermee werkt. Als u een resourceprovider wilt registreren, moet u toestemming hebben om de bewerking van de resourceprovider te registeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Voer de volgende opdracht uit om de resourceprovider te registreren:
+- Registreer de Azure Policy Insights-resource provider met behulp van Azure PowerShell. Als u de resourceprovider registreert, controleer dan of uw abonnement ermee werkt. Als u een resourceprovider wilt registreren, moet u toestemming hebben om de bewerking van de resourceprovider te registeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Voer de volgende opdracht uit om de resourceprovider te registreren:
 
   ```azurepowershell-interactive
   # Register the resource provider if it's not already registered
@@ -36,7 +36,7 @@ This guide explains how to use Az module to create a policy assignment.
 
 ## <a name="create-a-policy-assignment"></a>Een beleidstoewijzing maken
 
-In this quickstart, you create a policy assignment for the _Audit VMs without managed disks_ definition. This policy definition identifies virtual machines not using managed disks.
+In deze Quick Start maakt u een beleids toewijzing voor de definitie _virtuele machines controleren zonder Managed disks_ . Met deze beleids definitie worden virtuele machines geïdentificeerd die geen beheerde schijven gebruiken.
 
 Voer de volgende opdrachten uit om een nieuwe beleidstoewijzing te maken:
 
@@ -58,7 +58,7 @@ In de voorgaande opdrachten wordt de volgende informatie gebruikt:
 - **Definitie**: de beleidsdefinitie, op basis waarvan u de toewijzing maakt. In dit geval is het de id van de beleidsdefinitie _Virtuele machines zonder beheerde schijven controleren_.
 - **Bereik**: een bereik bepaalt voor welke resources of groep resources de beleidstoewijzing wordt afgedwongen. Dit kan variëren van een abonnement tot resourcegroepen. Vergeet niet om &lt;scope&gt; te vervangen door de naam van uw resourcegroep.
 
-You're now ready to identify non-compliant resources to understand the compliance state of your environment.
+U bent nu klaar om niet-compatibele resources te identificeren om inzicht te krijgen in de nalevings status van uw omgeving.
 
 ## <a name="identify-non-compliant-resources"></a>Niet-compatibele resources identificeren
 
@@ -69,7 +69,7 @@ Gebruik de volgende informatie om te identificeren welke resources niet compatib
 Get-AzPolicyState -ResourceGroupName $rg.ResourceGroupName -PolicyAssignmentName 'audit-vm-manageddisks' -Filter 'IsCompliant eq false'
 ```
 
-For more information about getting policy state, see [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
+Zie [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState)voor meer informatie over het ophalen van de beleids status.
 
 De resultaten zien er ongeveer als volgt uit:
 
@@ -91,7 +91,7 @@ PolicyDefinitionCategory    : Compute
 ManagementGroupIds          : {managementGroupId}
 ```
 
-The results match what you see in the **Resource compliance** tab of a policy assignment in the Azure portal view.
+De resultaten komen overeen met wat u ziet in het tabblad **resource naleving** van een beleids toewijzing in de weer gave Azure Portal.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

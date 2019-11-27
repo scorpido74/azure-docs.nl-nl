@@ -35,7 +35,7 @@ Een service-SAS biedt de mogelijkheid om beperkte toegang tot objecten in een op
 
 
 > [!div class="checklist"]
-> * Maak een opslagaccount
+> * Een opslagaccount maken
 > * Een blobcontainer in het opslagaccount maken
 > * Uw virtuele machine toegang verlenen tot een SAS voor een opslagaccount in Resource Manager 
 > * Een toegangstoken ophalen met de identiteit van de virtuele machine, en daarmee de SAS ophalen uit Resource Manager 
@@ -44,7 +44,7 @@ Een service-SAS biedt de mogelijkheid om beperkte toegang tot objecten in een op
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>Maak een opslagaccount 
+## <a name="create-a-storage-account"></a>Een opslagaccount maken 
 
 Als u nog geen opslagaccount hebt, maakt u er nu een.  U kunt deze stap ook overslaan en de door het systeem toegewezen beheerde identiteit voor uw VM toegang verlenen tot de sleutels van een bestaand opslagaccount. 
 
@@ -53,7 +53,7 @@ Als u nog geen opslagaccount hebt, maakt u er nu een.  U kunt deze stap ook over
 3. Voer in **Naam** een naam voor het opslagaccount in. U gaat deze gegevens later gebruiken.  
 4. **Implementatiemodel** en **Soort account** moeten respectievelijk worden ingesteld op Resource Manager en Algemeen gebruik. 
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.
-6. Klik op **Maken**.
+6. Klik op **Create**.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

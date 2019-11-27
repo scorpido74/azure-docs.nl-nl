@@ -1,19 +1,14 @@
 ---
-title: Container instanties implementeren in een virtueel Azure-netwerk
+title: Container groep implementeren in een virtueel Azure-netwerk
 description: Meer informatie over het implementeren van container groepen in een nieuw of bestaand virtueel Azure-netwerk.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 07/11/2019
-ms.author: danlep
-ms.openlocfilehash: 05f1bcd5e80d7c06fbaca1abe89c84f6743a5979
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f211924eb74035f4bb30db2d2b848e0a2591de09
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034984"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533270"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Container instanties implementeren in een virtueel Azure-netwerk
 

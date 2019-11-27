@@ -1,6 +1,6 @@
 ---
-title: How to troubleshoot Azure Functions Runtime is unreachable.
-description: Learn how to troubleshoot an invalid storage account.
+title: Het oplossen van problemen met Azure Functions-runtime is onbereikbaar.
+description: Meer informatie over het oplossen van problemen met een ongeldig opslag account.
 author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
@@ -12,78 +12,78 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226765"
 ---
-# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>How to troubleshoot "functions runtime is unreachable"
+# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Problemen oplossen met functions runtime is onbereikbaar
 
 
-## <a name="error-text"></a>Error text
-This doc is intended to troubleshoot the following error when displayed in the Functions portal.
+## <a name="error-text"></a>Fout tekst
+Dit document is bedoeld om de volgende fout op te lossen wanneer het wordt weer gegeven in de functions-Portal.
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
 ### <a name="summary"></a>Samenvatting
-This issue occurs when the Azure Functions Runtime cannot start. The most common reason for this error to occur is the function app losing access to its storage account. [Read more about the storage account requirements here](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+Dit probleem treedt op wanneer de Azure Functions-runtime niet kan worden gestart. De meest voorkomende reden voor deze fout is dat de functie-app de toegang tot het opslag account kwijtraakt. [Lees hier meer over de vereisten voor het opslag account](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>Problemen oplossen
-We'll walk through the four most common error cases, how to identify, and how to resolve each case.
+We behandelen de vier meest voorkomende fout gevallen, het identificeren en het oplossen van elke case.
 
-1. Storage Account deleted
-1. Storage Account application settings deleted
-1. Storage Account credentials invalid
-1. Storage Account Inaccessible
-1. Daily Execution Quota Full
+1. Opslag account verwijderd
+1. De toepassings instellingen voor het opslag account zijn verwijderd
+1. De referenties van het opslag account zijn ongeldig
+1. Het opslag account is niet toegankelijk
+1. Het dagelijkse uitvoerings quotum is vol
 
-## <a name="storage-account-deleted"></a>Storage account deleted
+## <a name="storage-account-deleted"></a>Opslag account verwijderd
 
-Every function app requires a storage account to operate. If that account is deleted your Function will not work.
+Voor elke functie-app moet een opslag account worden gebruikt. Als dat account wordt verwijderd, werkt de functie niet.
 
-### <a name="how-to-find-your-storage-account"></a>How to find your storage account
+### <a name="how-to-find-your-storage-account"></a>Uw opslag account zoeken
 
-Start by looking up your storage account name in your Application Settings. Either `AzureWebJobsStorage` or `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` will contain the name of your storage account wrapped up in a connection string. Read more specifics at the [application setting reference here](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+Zoek eerst de naam van uw opslag account op in de instellingen van uw toepassing. `AzureWebJobsStorage` of `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` bevat de naam van uw opslag account in een connection string. Lees hier meer details over het [instellen van de toepassings instelling](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 
-Search for your storage account in the Azure portal to see if it still exists. If it has been deleted, you will need to recreate a storage account and replace your storage connection strings. Your function code is lost and you will need to redeploy it again.
+Zoek uw opslag account in de Azure Portal om te zien of het nog bestaat. Als deze is verwijderd, moet u een opslag account opnieuw maken en de verbindings reeksen voor de opslag vervangen. De functie code gaat verloren en moet opnieuw worden geïmplementeerd.
 
-## <a name="storage-account-application-settings-deleted"></a>Storage account application settings deleted
+## <a name="storage-account-application-settings-deleted"></a>De toepassings instellingen voor het opslag account zijn verwijderd
 
-In the previous step, if you did not have a storage account connection string they were likely deleted or overwritten. Deleting app settings is most commonly done when using deployment slots or Azure Resource Manager scripts to set application settings.
+Als u in de vorige stap geen opslag account hebt connection string, zijn deze waarschijnlijk verwijderd of overschreven. Het verwijderen van app-instellingen wordt meestal uitgevoerd wanneer u implementatie sleuven of Azure Resource Manager scripts gebruikt om toepassings instellingen in te stellen.
 
-### <a name="required-application-settings"></a>Required application settings
+### <a name="required-application-settings"></a>Vereiste toepassings instellingen
 
-* Verplicht
+* Vereist
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
-* Required for Consumption Plan Functions
+* Vereist voor de functies van het verbruiks abonnement
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-[Read about these application settings here](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+[Lees hier meer over deze toepassings instellingen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-### <a name="guidance"></a>Hulp
+### <a name="guidance"></a>Richtlijnen
 
-* Do not check "slot setting" for any of these settings. When you swap deployment slots the Function will break.
-* Do not modify these settings as part of automated deployments.
-* These settings must be provided and valid at creation time. An automated deployment that does not contain these settings will result in a non-functional App, even if the settings are added after the fact.
+* Schakel ' sleuf instelling ' niet in voor een van deze instellingen. Wanneer u implementatie sleuven verwisselt, wordt de functie onderbroken.
+* Wijzig deze instellingen niet als onderdeel van automatische implementaties.
+* Deze instellingen moeten worden ingevoerd en geldig zijn tijdens het maken. Een geautomatiseerde implementatie die deze instellingen niet bevat, resulteert in een niet-functionele app, zelfs als de instellingen worden toegevoegd na het feit.
 
-## <a name="storage-account-credentials-invalid"></a>Storage account credentials invalid
+## <a name="storage-account-credentials-invalid"></a>De referenties van het opslag account zijn ongeldig
 
-The above Storage Account connection strings must be updated if you regenerate storage keys. [Read more about storage key management here](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
+De bovenstaande verbindings reeksen voor het opslag account moeten worden bijgewerkt als u opslag sleutels opnieuw genereert. [Lees hier meer over opslag sleutel beheer](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
 
-## <a name="storage-account-inaccessible"></a>Storage account inaccessible
+## <a name="storage-account-inaccessible"></a>Het opslag account is niet toegankelijk
 
-Your Function App must be able to access the storage account. Common issues that block a Functions access to a storage account are:
+Uw functie-app moet toegang hebben tot het opslag account. Veelvoorkomende problemen met het blok keren van een functie toegang tot een opslag account zijn:
 
-* Function Apps deployed to App Service Environments without the correct network rules to allow traffic to and from the storage account
-* The storage account firewall is enabled and not configured to allow traffic to and from Functions. [Read more about storage account firewall configuration here](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* Functie-apps die zijn geïmplementeerd in App Service omgevingen zonder de juiste netwerk regels voor het toestaan van verkeer naar en van het opslag account
+* De firewall voor het opslag account is ingeschakeld en is niet geconfigureerd om verkeer van en naar functies toe te staan. [Lees hier meer over Firewall configuratie voor opslag accounts](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
-## <a name="daily-execution-quota-full"></a>Daily Execution Quota Full
+## <a name="daily-execution-quota-full"></a>Het dagelijkse uitvoerings quotum is vol
 
-If you have a Daily Execution Quota configured, your Function App will be temporarily disabled and many of the portal controls will become unavailable. 
+Als u een dagelijks uitvoerings quotum hebt geconfigureerd, wordt uw functie-app tijdelijk uitgeschakeld en zijn veel van de besturings elementen van de portal niet meer beschikbaar. 
 
-* To verify, check open Platform Features > Function App Settings in the portal. You will see the following message if you are over quota
+* Als u dit wilt controleren, controleert u de open platform functies > functie-app instellingen in de portal. Het volgende bericht wordt weer gegeven als u het quotum overschrijdt
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
-* Remove the quota and restart your app to resolve the issue.
+* Verwijder het quotum en start de app opnieuw om het probleem op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Now that your Function App is back and operational take a look at our quickstarts and developer references to get up and running again!
+Nu uw functie-app terug en operationeel is, Bekijk onze Quick starts en naslag informatie voor ontwikkel aars om weer aan de slag te gaan.
 
 * [Uw eerste Azure-functie maken](functions-create-first-azure-function.md)  
   Ga meteen aan de slag en maak uw eerste functie met de Azure Functions-snelstartgids. 

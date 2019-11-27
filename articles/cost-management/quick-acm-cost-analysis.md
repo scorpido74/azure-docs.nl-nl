@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Explore Azure costs with cost analysis | Microsoft Docs
+title: 'Quick Start: Azure-kosten verkennen met kosten analyse | Microsoft Docs'
 description: Deze snelstart helpt u kostenanalyse te gebruiken om de kosten van Azure voor uw bedrijf te verkennen en te analyseren.
 services: cost-management
 keywords: ''
@@ -17,9 +17,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230001"
 ---
-# <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Quickstart: Explore and analyze costs with cost analysis
+# <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Quick Start: kosten verkennen en analyseren met kosten analyse
 
-Voordat u de kosten van Azure goed kunt beheren en optimaliseren, moet u de oorsprong van de kosten in uw bedrijf weten. It's also useful to know how much money your services cost, and in support of which environments and systems. Inzicht in de volle breedte van alle kosten is noodzakelijk om nauwkeurig de uitgavenpatronen van uw bedrijf te leren kennen. You can use spending patterns to enforce cost control mechanisms, like budgets.
+Voordat u de kosten van Azure goed kunt beheren en optimaliseren, moet u de oorsprong van de kosten in uw bedrijf weten. Het is ook handig om te weten hoeveel geld van uw services kosten en in de ondersteuning van de omgevingen en systemen. Inzicht in de volle breedte van alle kosten is noodzakelijk om nauwkeurig de uitgavenpatronen van uw bedrijf te leren kennen. U kunt bestedings patronen gebruiken om kosten beheer mechanismen, zoals budgetten, af te dwingen.
 
 In deze snelstart gebruikt u kostenanalyse om de kosten van Azure voor uw bedrijf te verkennen en te analyseren. U kunt de totale kosten per bedrijf weergeven, zodat u begrijpt waar de kosten worden opgebouwd en uitgavenpatronen kunt identificeren. U kunt de totale kosten bekijken om geschatte kostentrends per maand, per kwartaal en zelfs per jaar naast een budget te leggen. Een budget helpt bij het in acht nemen van financiële beperkingen. En een budget wordt gebruikt om dagelijkse en maandelijkse kosten te bekijken om onregelmatigheden in de uitgaven te isoleren. Plus, u kunt de gegevens van het huidige rapport downloaden voor verdere analyse of om in een extern systeem te gebruiken.
 
@@ -32,9 +32,9 @@ In deze snelstart leert u de volgende zaken:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Cost analysis supports different kinds of Azure account types. Zie [Gegevens van kostenbeheer begrijpen](understand-cost-mgt-data.md) voor de volledige lijst met ondersteunde accounttypen. Als u kostengegevens wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig.
+Kosten analyse ondersteunt verschillende soorten Azure-account typen. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](understand-cost-mgt-data.md). Als u kostengegevens wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig.
 
-For information about assigning access to Azure Cost Management data, see [Assign access to data](assign-access-acm-data.md).
+Zie [toegang tot gegevens toewijzen](assign-access-acm-data.md)voor meer informatie over het toewijzen van toegang tot Azure Cost Management gegevens.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -42,141 +42,141 @@ For information about assigning access to Azure Cost Management data, see [Assig
 
 ## <a name="review-costs-in-cost-analysis"></a>Kosten in kostenanalyse beoordelen
 
-To review your costs in cost analysis, open the scope in the Azure portal and select **Cost analysis** in the menu. For example, go to **Subscriptions**, select a subscription from the list, and then select **Cost analysis** in the menu. Gebruik **Bereik** om over te schakelen naar een ander bereik in kostenanalyse. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
+Als u de kosten voor de kosten analyse wilt controleren, opent u het bereik in de Azure Portal en selecteert u **kosten analyse** in het menu. Ga bijvoorbeeld naar **abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **kosten analyse** in het menu. Gebruik **Bereik** om over te schakelen naar een ander bereik in kostenanalyse. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
 
-The scope you select is used throughout Cost Management to provide data consolidation and control access to cost information. Wanneer u gebruikmaakt van bereiken, moet u geen meervoudige selectie maken. Instead, you select a larger scope, which others roll up to, and then filter down to the nested scopes you need. This approach is important to understand because some people may not have access to a single parent scope, which covers multiple nested scopes.
+Het bereik dat u selecteert, wordt overal in Cost Management gebruikt voor het samen voegen van gegevens en het beheren van de toegang tot kosten gegevens. Wanneer u gebruikmaakt van bereiken, moet u geen meervoudige selectie maken. In plaats daarvan selecteert u een groter bereik, waar anderen mee rollen, en filtert u vervolgens op de geneste bereiken die u nodig hebt. Deze aanpak is belang rijk om te begrijpen omdat sommige personen mogelijk geen toegang hebben tot één bovenliggend bereik, die betrekking hebben op meerdere geneste bereiken.
 
-The initial cost analysis view includes the following areas.
+De analyse weergave voor initiële kosten omvat de volgende gebieden.
 
-**Accumulated cost view**: Represents the predefined cost analysis view configuration. Each view includes date range, granularity, group by, and filter settings. The default view shows accumulated costs for the current billing period, but you can change to other built-in views. For more information, see [Customize cost views](#customize-cost-views).
+**Weer gave van geaccumuleerde kosten**: vertegenwoordigt de vooraf gedefinieerde configuratie van de analyse weergave kosten. Elke weer gave bevat de instellingen datum bereik, granulatie, groeperen op en filter. In de standaard weergave worden geaccumuleerde kosten weer gegeven voor de huidige facturerings periode, maar u kunt wijzigen in andere ingebouwde weer gaven. Zie [kosten weergaven aanpassen](#customize-cost-views)voor meer informatie.
 
-**Actual cost**: Shows the total usage and purchase costs for the current month, as they're accrued and will show on your bill.
+**Werkelijke kosten**: hier worden de totale verbruiks-en aankoop kosten voor de huidige maand weer gegeven, omdat deze zijn samengevoegd en op uw factuur worden weer gegeven.
 
-**Forecast**: Shows the total forecasted costs for time period you choose. (Forecast is in preview.)
+**Prognose**: toont de totale geraamde kosten voor de periode die u kiest. (Forecast is een preview-versie.)
 
-**Budget**: Shows the planned spending limit for the selected scope, if available.
+**Budget**: hier wordt de geplande bestedings limiet voor het geselecteerde bereik weer gegeven, indien beschikbaar.
 
-**Accumulated granularity**: Shows the total aggregate daily costs, from the beginning of the billing period. Nadat u een [budget hebt gemaakt](tutorial-acm-create-budgets.md) voor uw factureringsrekening of abonnement, kunt u snel uw uitgaventrend ten opzichte van het budget bekijken. Beweeg de muisaanwijzer over een datum om de opgebouwde kosten voor die dag te zien.
+**Gecumuleerde granulariteit**: toont de totale cumulatieve dagelijkse kosten, vanaf het begin van de facturerings periode. Nadat u een [budget hebt gemaakt](tutorial-acm-create-budgets.md) voor uw factureringsrekening of abonnement, kunt u snel uw uitgaventrend ten opzichte van het budget bekijken. Beweeg de muisaanwijzer over een datum om de opgebouwde kosten voor die dag te zien.
 
-**Pivot (donut) charts**: Provide dynamic pivots, breaking down the total cost by a common set of standard properties. They show the largest to smallest costs for the current month. U kunt draaigrafieken op elk moment wijzigen door een andere pivot te selecteren. Costs are categorized by service (meter category), location (region), and child scope by default. For example, enrollment accounts are under billing accounts, resource groups are under subscriptions, and resources are under resource groups.
+**Draai grafieken (ring)** : bieden dynamische draai tabellen, waarbij de totale kosten worden opgesplitst op basis van een gemeen schappelijke set standaard eigenschappen. Ze tonen de grootste tot kleinste kosten voor de huidige maand. U kunt draaigrafieken op elk moment wijzigen door een andere pivot te selecteren. De kosten worden standaard gecategoriseerd per service (meter categorie), locatie (regio) en onderliggend bereik. Inschrijvings accounts bevinden zich bijvoorbeeld onder facturerings accounts, resource groepen bevinden zich onder abonnementen en resources bevinden zich onder resource groepen.
 
 ![Oorspronkelijke weergave van Kostenanalyse in Azure Portal](./media/quick-acm-cost-analysis/cost-analysis-01.png)
 
 ## <a name="customize-cost-views"></a>Kostenweergaven aanpassen
 
-Cost analysis has four built-in views, optimized for the most common goals:
+Kosten analyse heeft vier ingebouwde weer gaven die zijn geoptimaliseerd voor de meest voorkomende doel stellingen:
 
-Weergeven | Answer questions like
+Weergave | Antwoorden op vragen zoals
 --- | ---
-Accumulated cost | How much have I spent so far this month? Blijf ik binnen mijn budget?
-Daily cost | Have there been any increases in the costs per day for the last 30 days?
-Cost by service | How has my monthly usage vary over the past three invoices?
-Kosten per resource | Which resources cost the most so far this month?
+Geaccumuleerde kosten | Hoeveel heb ik tot nu toe deze maand gewerkt? Blijf ik binnen mijn budget?
+Dagelijkse kosten | Zijn de kosten per dag voor de afgelopen 30 dagen verhoogd?
+Kosten per service | Hoe verschilt mijn maandelijkse gebruik in de afgelopen drie facturen?
+Kosten per resource | Welke resources zijn het meest in de buurt van deze maand?
 
-![View selector showing an example selection for this month](./media/quick-acm-cost-analysis/view-selector.png)
+![Weer gave selecteren met een voorbeeld selectie voor deze maand](./media/quick-acm-cost-analysis/view-selector.png)
 
 Er zijn echter veel gevallen waar u een meer gedetailleerde analyse nodig hebt. Het aanpassen begint bovenaan de pagina, met de selectie van de datum.
 
-Kostenanalyse toont standaard de gegevens voor de huidige maand. Use the date selector to switch to common date ranges quickly. Examples include the last seven days, the last month, the current year, or a custom date range. Pay-as-you-go subscriptions also include date ranges based on your billing period, which isn't bound to the calendar month, like the current billing period or last invoice. Use the **<PREVIOUS** and **NEXT>** links at the top of the menu to jump to the previous or next period, respectively. For example, **<PREVIOUS** will switch from the **Last 7 days** to **8-14 days ago** or **15-21 days ago**.
+Kostenanalyse toont standaard de gegevens voor de huidige maand. Gebruik de datum kiezer om snel naar algemene datumbereiken over te scha kelen. Voor beelden zijn de laatste zeven dagen, de afgelopen maand, het huidige jaar of een aangepast datum bereik. Betalen per gebruik-abonnementen omvatten ook datumbereiken op basis van uw facturerings periode, die niet is gekoppeld aan de kalender maand, zoals de huidige facturerings periode of de laatste factuur. Gebruik de koppelingen **< vorige** en **volgende >** aan de bovenkant van het menu om naar respectievelijk de vorige of volgende periode te gaan. **< Voor gaande** gaat bijvoorbeeld van de **afgelopen 7 dagen** naar **8-14 dagen geleden** of **15-21 dagen geleden**.
 
 ![Datumselector met een voorbeeldselectie voor deze maand](./media/quick-acm-cost-analysis/date-selector.png)
 
-Kostenanalyse toont standaard **opgebouwde** kosten. Accumulated costs include all costs for each day plus the previous days, for a constantly growing view of your daily aggregate costs. Deze weergave is geoptimaliseerd om u te laten zien hoe u het doet in verhouding met het budget voor het geselecteerde tijdsbereik.
+Kostenanalyse toont standaard **opgebouwde** kosten. Geaccumuleerde kosten omvatten alle kosten voor elke dag plus de vorige dagen, voor een voortdurend groeiende weer gave van uw dagelijkse cumulatieve kosten. Deze weergave is geoptimaliseerd om u te laten zien hoe u het doet in verhouding met het budget voor het geselecteerde tijdsbereik.
 
-Use the forecast chart view to identify potential budget breaches. When there's a potential budget breach, projected overspending is shown in red. An indicator symbol is also shown in the chart. Hovering over the symbol shows the estimated date of the budget breach.
+Gebruik de weer gave prognose diagram om mogelijke budget inbreuken te identificeren. Wanneer er sprake is van een mogelijke budget overtreding, wordt geprojecteerde overuitgave rood weer gegeven. Er wordt ook een indicator symbool weer gegeven in de grafiek. Als u de muis aanwijzer boven het symbool houdt, wordt de geschatte datum van de overtreding van het budget weer gegeven.
 
-![Example showing potential budget breach](./media/quick-acm-cost-analysis/budget-breach.png)
+![Voor beeld van potentiële budget schendingen](./media/quick-acm-cost-analysis/budget-breach.png)
 
-Er is ook de **dagelijkse** weergave die de kosten voor elke dag toont. De dagelijkse weergave toont geen groeitrend. De weergave is ontworpen om u onregelmatigheden als pieken of dalen in de kosten per dag te laten zien. If you've selected a budget, the daily view also shows an estimate of your daily budget.
+Er is ook de **dagelijkse** weergave die de kosten voor elke dag toont. De dagelijkse weergave toont geen groeitrend. De weergave is ontworpen om u onregelmatigheden als pieken of dalen in de kosten per dag te laten zien. Als u een budget hebt geselecteerd, wordt in de weer gave dagelijks ook een schatting van uw dagelijkse budget weer gegeven.
 
-When your daily costs are consistently above the estimated daily budget, you can expect you'll surpass your monthly budget. The estimated daily budget is a means to help you visualize your budget at a lower level. Wanneer u schommelingen hebt in uw dagelijkse kosten dan is de vergelijking tussen het geschatte dagelijkse budget en uw maandelijkse budget minder nauwkeurig.
+Wanneer uw dagelijkse kosten consistent zijn boven het geschatte dagelijkse budget, kunt u verwachten dat u uw maandelijkse budget overschrijdt. Het geschatte dagelijkse budget is een manier om u te helpen bij het visualiseren van uw budget op een lager niveau. Wanneer u schommelingen hebt in uw dagelijkse kosten dan is de vergelijking tussen het geschatte dagelijkse budget en uw maandelijkse budget minder nauwkeurig.
 
-Here's a daily view of recent spending with spending forecast turned on.
-![Daily view showing example daily costs for the current month](./media/quick-acm-cost-analysis/daily-view.png)
+Hier volgt een dagelijkse weer gave van recente uitgaven waarvoor de bestedings prognose is ingeschakeld.
+![dagweergave weer geven met voor beeld van dagelijkse kosten voor de huidige maand](./media/quick-acm-cost-analysis/daily-view.png)
 
-When turn off the spending forecast, you don't see projected spending for future dates. Also, when you look at costs for past time periods, cost forecast doesn't show costs.
+Wanneer u de bestedings prognose uitschakelt, ziet u verwachte uitgaven niet voor toekomstige datums. Wanneer u de kosten voor de vorige Peri Oden bekijkt, worden er ook geen kosten weer gegeven.
 
-Generally, you can expect to see data or notifications for consumed resources within 8 to 12 hours.
+Over het algemeen kunt u verwachten dat gegevens of meldingen binnen 8 tot 12 uur worden verbruikt.
 
 
-**Group by** common properties to break down costs and identify top contributors. To group by resource tags, for example, select the tag key you want to group by. Costs are broken down by each tag value, with an extra segment for resources that don't have that tag applied.
+**Groeperen op** algemene eigenschappen om de kosten te verlagen en de belangrijkste inzenders te identificeren. Als u wilt groeperen op resource Tags, selecteert u bijvoorbeeld de code sleutel waarop u wilt groeperen. De kosten worden opgesplitst op basis van elke code waarde, met een extra segment voor bronnen waarvoor deze tag niet is toegepast.
 
-Most [Azure resources support tagging](../azure-resource-manager/tag-support.md). However, some tags aren't available in Cost Management and billing. Bovendien worden resourcegroeptags niet ondersteund. Cost Management ondersteunt resourcetags alleen vanaf de datum waarop de tags rechtstreeks worden toegepast op de resource. Watch the [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) video to learn about using Azure tag policy to improve cost data visibility.
+De meeste [ondersteuning voor Azure-bronnen](../azure-resource-manager/tag-support.md). Sommige Tags zijn echter niet beschikbaar in Cost Management en facturering. Bovendien worden resourcegroeptags niet ondersteund. Cost Management ondersteunt resourcetags alleen vanaf de datum waarop de tags rechtstreeks worden toegepast op de resource. Bekijk de [code beleidsregels met Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) video voor meer informatie over het gebruik van Azure tag Policy om de zicht baarheid van de kosten gegevens te verbeteren.
 
-Here's a view of Azure service costs for the current month.
+Hier volgt een overzicht van de Azure-service kosten voor de huidige maand.
 
 ![Gegroepeerde, dagelijks samengevoegde weergave met een voorbeeld van Azure-servicekosten van de afgelopen maand](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-By default, cost analysis shows all usage and purchase costs as they are accrued and will show on your invoice, also known as **Actual cost**. Viewing actual cost is ideal for reconciling your invoice. However, purchase spikes in cost can be alarming when you're keeping an eye out for spending anomalies and other changes in cost. To flatten out spikes caused by reservation purchase costs, switch to **Amortized cost**.
+Standaard worden in kosten analyse alle verbruiks-en aankoop kosten weer gegeven wanneer ze worden samengevoegd en worden ze weer gegeven in uw factuur, ook wel **werkelijke kosten**genoemd. Het weer geven van de werkelijke kosten is ideaal voor het afstemmen van uw factuur. Het kopen van pieken in kosten kan echter worden gealarmd wanneer u een ogende aanhoudt voor het uitgeven van afwijkingen en andere wijzigingen in de kosten. Om pieken uit te platen die worden veroorzaakt door de kosten voor de reserve ring, schakelt u over naar **afgeschreven kosten**.
 
-![Change between actual and amortized cost to see reservation purchases spread across the term and allocated to the resources that used the reservation](./media/quick-acm-cost-analysis/metric-picker.png)
+![Verander tussen de werkelijke en de afgeschreven kosten om de reserve ringen te bekijken over de hele periode en te worden toegewezen aan de resources die de reserve ring hebben gebruikt.](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Amortized cost breaks down reservation purchases into daily chunks and spreads them over the duration of the reservation term. For example, instead of seeing a $365 purchase on January 1, you'll see a $1 purchase every day from January 1 to December 31. In addition to basic amortization, these costs are also reallocated and associated by using the specific resources that used the reservation. For example, if that $1 daily charge was split between two virtual machines, you'd see two $0.50 charges for the day. If part of the reservation isn't utilized for the day, you'd see one $0.50 charge associated with the applicable virtual machine and another $0.50 charge with a charge type of `UnusedReservation`. Note that unused reservation costs can be seen only when viewing amortized cost.
+Afgeschreven kosten worden berekend op basis van de reserverings aankopen in de dagelijkse segmenten en gespreid over de duur van de reserverings periode. In plaats van een $365-aankoop te bekijken op 1 januari, wordt elke dag van 1 januari tot en met 31 een $1-aankoop weer gegeven. Naast de eenvoudige aflossing, worden deze kosten ook opnieuw toegewezen en gekoppeld met behulp van de specifieke resources die de reserve ring hebben gebruikt. Als bijvoorbeeld de dagelijkse kosten van $1 zijn verdeeld over twee virtuele machines, ziet u de kosten van $2 0,50 voor de dag. Als een deel van de reserve ring voor de dag niet wordt gebruikt, ziet u de kosten voor $1 0,50 die zijn gekoppeld aan de betreffende virtuele machine en een extra bedrag van $0,50 kosten met een kosten type van `UnusedReservation`. Houd er rekening mee dat ongebruikte reserverings kosten alleen kunnen worden weer gegeven bij het bekijken van afgeschreven kosten.
 
-Due to the change in how costs are represented, it's important to note that actual cost and amortized cost views will show different total numbers. In general, the total cost of months with a reservation purchase will decrease when viewing amortized costs, and months following a reservation purchase will increase. Amortization is available only for reservation purchases and doesn't apply to Azure Marketplace purchases at this time.
+Als gevolg van de wijziging in de weer gave van de kosten, is het belang rijk te weten dat de werkelijke kosten en de afgeschreven kosten worden weer gegeven in verschillende totale aantallen. Over het algemeen nemen de totale kosten van maanden met een reserverings aankoop af bij het weer geven van afgeschreven kosten en worden maanden na een reserverings aankoop verhoogd. Afschrijving is alleen beschikbaar voor reserverings aankopen en is op dit moment niet van toepassing op Azure Marketplace-aankopen.
 
-The following image shows resource group names. You can group by tag to view total costs per tag or use the **Cost by resource** view to see all tags for a particular resource.
+In de volgende afbeelding ziet u de namen van resource groepen. U kunt groeperen op label om de totale kosten per tag weer te geven of door de weer gave **kosten per resource** te gebruiken om alle labels voor een bepaalde resource te bekijken.
 
 ![Volledige gegevens van de huidige weergave, waarbij de resourcegroepnamen worden weergegeven](./media/quick-acm-cost-analysis/full-data-set.png)
 
-When you're grouping costs by a specific attribute, the top 10 cost contributors are shown from highest to lowest. If there are more than 10, the top nine cost contributors are shown with an **Others** group that represents all remaining groups combined. When you're grouping by tags, an **Untagged** group appears for costs that don't have the tag key applied. **Untagged** is always last, even if untagged costs are higher than tagged costs. Untagged costs will be part of **Others**, if 10 or more tag values exist. Switch to the table view and change granularity to **None** to see all values ranked from highest to lowest cost.
+Wanneer u kosten groepeert op basis van een specifiek kenmerk, worden de 10 kosten voor inzenders van het hoogste naar het laagste niveau weer gegeven. Als er meer dan 10 zijn, worden de meeste negen kosten voor mede werkers weer gegeven met een **andere** groep die alle resterende groepen vertegenwoordigt die zijn gecombineerd. Wanneer u op **Tags groepeert, wordt er een** niet-versleutelde groepen weer gegeven voor de kosten waarvoor de code sleutel niet is toegepast. **Untags** is altijd de laatste, zelfs als ongecodeerde kosten hoger zijn dan de kosten van het label. Ongecodeerde kosten maken deel uit van **anderen**, als er 10 of meer label waarden bestaan. Schakel over naar de tabel weergave en wijzig granulatie in **geen** om alle waarden weer te geven die zijn gerangschikt van hoogste naar laagste kosten.
 
-Classic virtual machines, networking, and storage resources don't share detailed billing data. Ze worden samengevoegd als **Klassieke services** wanneer kosten worden gegroepeerd.
+Klassieke virtuele machines, netwerken en opslag resources delen geen gedetailleerde facturerings gegevens. Ze worden samengevoegd als **Klassieke services** wanneer kosten worden gegroepeerd.
 
-Pivot charts under the main chart show different groupings, which give you a broader picture of your overall costs for the selected time period and filters. Selecteer een eigenschap of tag om geaggregeerde kosten voor een dimensie weer te geven.
+In draai grafieken onder het hoofd diagram ziet u verschillende groeperingen, waarmee u de totale kosten voor de geselecteerde tijds periode en filters breder kunt weer geven. Selecteer een eigenschap of tag om geaggregeerde kosten voor een dimensie weer te geven.
 
-![Example showing pivot charts](./media/quick-acm-cost-analysis/pivot-charts.png)
+![Voor beeld van draai grafieken](./media/quick-acm-cost-analysis/pivot-charts.png)
 
-You can view the full dataset for any view. Whichever selections or filters that you apply affect the data presented. To see the full dataset, select the **chart type** list and then select **Table** view.
+U kunt de volledige gegevensset weer geven voor elke weer gave. Welke selecties of filters worden toegepast, geldt voor de gegevens die worden weer gegeven. Als u de volledige gegevensset wilt zien, selecteert u de lijst **grafiek type** en selecteert u **tabel** weergave.
 
 ![Gegevens voor de huidige weergave in tabelvorm](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
 
-## <a name="understanding-grouping-and-filtering-options"></a>Understanding grouping and filtering options
+## <a name="understanding-grouping-and-filtering-options"></a>Over groeperings-en filter opties
 
-The following table lists some of the most common grouping and filtering options and when you should use them.
+De volgende tabel bevat een aantal van de meest voorkomende groeperings-en filter opties en wanneer u deze moet gebruiken.
 
 | Eigenschap | Wanneer gebruikt u dit? |
 | --- | --- |
-| **Billing period** | Break down costs by invoice month. This option is important for pay-as-you-go and development/test subscriptions, which aren't bound to calendar months. EA/MCA accounts can use calendar months in the date picker or monthly granularity to accomplish the same goal. |
-| **Charge type** | Break down usage, purchase, refund, and unused reservation costs. Reservation purchases and refunds are available only when using action costs and not when using amortized costs. Unused reservation costs are available only when looking at amortized costs. |
-| **Cloud** | Break down costs by AWS and Azure. AWS costs are available only from management groups, external billing accounts, and external subscriptions. |
-| **Department** / **Invoice section** | Break down costs by EA department or MCA invoice section. This option is available only for EA/MCA billing accounts and MCA billing profiles. |
-| **Enrollment account** | Break down costs by EA account owner. This option is available only for EA billing accounts and departments. |
-| **Frequentie** | Break down usage-based, one-time, and recurring costs. |
-| **Meter** | Break down costs by Azure usage meter. This option is available only for Azure usage. All purchases and Marketplace usage will show as **Not specified** or **unassigned**. |
-| **Publisher type** | Break down AWS, Azure, and Marketplace costs. |
-| **Reservation** | Break down costs by reservation. Any usage that doesn't include a reservation will show as **Not specified**. |
-| **Resource** | Break down costs by resource. All purchases will show as **Not specified**, because they're applied at an EA/PAYG billing account or MCA billing profile level.  |
-| **Resourcegroep** | Break down costs by resource group. This option is available only for non-classic usage. Classic resource usage will show as **other**, and purchases will show as **Not specified**. |
-| **Resourcetype** | Break down costs by resource type. This option is available only for non-classic usage. Classic resource usage will show as **other**, and purchases will show as **Not specified**. |
-| **Service name** or **Meter category** | Break down cost by Azure service. This option is available only for Azure usage. All purchases and Marketplace usage will show as **Not specified** or **unassigned**. |
-| **Service tier** or **Meter subcategory** | Break down cost by Azure usage meter subclassification. This option is available only for Azure usage. All purchases and Marketplace usage will show as **Not specified** or **unassigned**. |
-| **Abonnement** | Break down costs by subscription. All purchases show as **Not specified**. |
-| **Tag** | Break down costs by tag values for a specific tag key. |
+| **Facturerings periode** | Kosten opsplitsen per factuur maand. Deze optie is belang rijk voor betalen per gebruik en voor ontwikkelings-en test abonnementen, die niet zijn gekoppeld aan kalender maanden. EA/MCA-accounts kunnen kalender maanden in de datum kiezer of maandelijkse granulatie gebruiken om hetzelfde doel te bereiken. |
+| **Kosten type** | Onderbreek de kosten voor gebruik, aankoop, terugbetaling en ongebruikte reserve ringen. Reserverings aankopen en terugstortingen zijn alleen beschikbaar wanneer u actie kosten gebruikt en niet wanneer u afgeschreven kosten gebruikt. Ongebruikte reserverings kosten zijn alleen beschikbaar wanneer u de afgeschreven kosten bekijkt. |
+| **Cloud** | Verdeel de kosten met AWS en Azure. AWS-kosten zijn alleen beschikbaar voor beheer groepen, externe facturerings accounts en externe abonnementen. |
+| **Afdeling** / **factuur sectie** | Onderbreek de kosten per EA-afdeling of MCA-factuur gedeelte. Deze optie is alleen beschikbaar voor EA/MCA-facturerings accounts en MCA-facturerings profielen. |
+| **Inschrijvings account** | Kosten opsplitsen van EA-account eigenaar. Deze optie is alleen beschikbaar voor EA-facturerings accounts en-afdelingen. |
+| **Frequentie** | Op gebruik gebaseerde, eenmalige en terugkerende kosten opsplitsen. |
+| **Verbinding** | Kosten onderverdelen op basis van de gebruiks meter van Azure. Deze optie is alleen beschikbaar voor Azure-gebruik. Alle aankopen en Marketplace-gebruik worden weer gegeven als **niet opgegeven of niet** - **toegewezen**. |
+| **Type Uitgever** | Onderbreek de kosten voor AWS, Azure en Marketplace. |
+| **Boeking** | Verdeel de kosten per reserve ring. Een gebruik dat geen reserve ring bevat, wordt weer gegeven als **niet opgegeven**. |
+| **Resource** | Kosten per resource opsplitsen. Alle aankopen worden weer gegeven als **niet opgegeven**, omdat ze worden toegepast op een EA/payg-facturerings account of een MCA-facturerings profiel niveau.  |
+| **Resourcegroep** | Kosten opsplitsen per resource groep. Deze optie is alleen beschikbaar voor niet-klassiek gebruik. Klassiek resource gebruik wordt weer gegeven als **andere**en aankopen worden weer gegeven als **niet opgegeven**. |
+| **Resourcetype** | Kosten opsplitsen op resource type. Deze optie is alleen beschikbaar voor niet-klassiek gebruik. Klassiek resource gebruik wordt weer gegeven als **andere**en aankopen worden weer gegeven als **niet opgegeven**. |
+| **Service naam** of **meter categorie** | Onderbreek de kosten voor de Azure-service. Deze optie is alleen beschikbaar voor Azure-gebruik. Alle aankopen en Marketplace-gebruik worden weer gegeven als **niet opgegeven of niet** - **toegewezen**. |
+| **Service tier** of **meter subcategorie** | Kosten voor de subclassificatie van de Azure-gebruiks meter onderverdelen. Deze optie is alleen beschikbaar voor Azure-gebruik. Alle aankopen en Marketplace-gebruik worden weer gegeven als **niet opgegeven of niet** - **toegewezen**. |
+| **Abonnement** | Kosten opsplitsen per abonnement. Alle aankopen worden weer gegeven als **niet opgegeven**. |
+| **Tag** | Kosten opsplitsen op label waarden voor een specifieke tag-sleutel. |
 
-For more information about terms, see [Understand the terms used in the Azure usage and charges file](../billing/billing-understand-your-usage.md).
+Zie [inzicht in de termen die worden gebruikt in het Azure-gebruiks-en-kosten bestand](../billing/billing-understand-your-usage.md)voor meer informatie over de voor waarden.
 
 
-## <a name="saving-and-sharing-customized-views"></a>Saving and sharing customized views
+## <a name="saving-and-sharing-customized-views"></a>Aangepaste weer gaven opslaan en delen
 
-Save and share customized views with others by pinning cost analysis to the Azure portal dashboard or by copying a link to cost analysis.
+Sla aangepaste weer gaven op en deel ze met anderen door kosten analyse vast te maken aan het dash board van Azure Portal of door een koppeling naar de kosten analyse te kopiëren.
 
-To pin cost analysis, select the pin icon in the upper-right corner. Pinning cost analysis will save only the main chart or table view. Share the dashboard to give others access to the tile. Note that this shares only the dashboard configuration and doesn't grant others access to the underlying data. If you don't have access to costs but do have access to a shared dashboard, you'll see an "access denied" message.
+Als u de kosten analyse wilt vastmaken, selecteert u het speld pictogram in de rechter bovenhoek. Als u de kosten analyse vastmaakt, wordt alleen het hoofd diagram of de tabel weergave opgeslagen. Deel het dash board om anderen toegang tot de tegel te geven. Houd er rekening mee dat hiermee alleen de dashboard configuratie wordt gedeeld en andere gebruikers geen toegang tot de onderliggende gegevens verlenen. Als u geen toegang hebt tot kosten maar wel toegang hebt tot een gedeeld dash board, wordt het bericht ' toegang geweigerd ' weer gegeven.
 
-To share a link to cost analysis, select **Share** at the top of the blade. A custom URL will show, which opens this specific view for this specific scope. If you don't have cost access and get this URL, you'll see an "access denied" message.
+Als u een koppeling naar de kosten analyse wilt delen, selecteert u **delen** boven aan de Blade. Er wordt een aangepaste URL weer gegeven, waarmee deze specifieke weer gave voor dit specifieke bereik wordt geopend. Als u geen kosten toegang hebt en deze URL ontvangt, wordt het bericht ' toegang geweigerd ' weer gegeven.
 
-To learn more about granting access to costs for each supported scope, review [Understand and work with scopes](understand-work-scopes.md).
+Raadpleeg voor meer informatie over het verlenen van toegang tot kosten voor elk ondersteund bereik [begrijpen en werken met scopes](understand-work-scopes.md).
 
-## <a name="automation-and-offline-analysis"></a>Automation and offline analysis
+## <a name="automation-and-offline-analysis"></a>Automatisering en offline analyse
 
-There are times when you need to download the data for further analysis, merge it with your own data, or integrate it into your own systems. Cost Management offers a few different options. As a starting point, if you need an ad hoc high-level summary, like what you get within cost analysis, build the view you need. Then download it by selecting **Export** and selecting **Download data to CSV** or **Download data to Excel**. The Excel download provides additional context on the view you used to generate the download, like scope, query configuration, total, and date generated.
+Er zijn momenten waarop u de gegevens moet downloaden voor verdere analyse, deze samen voegen met uw eigen gegevens of deze integreert in uw eigen systemen. Cost Management biedt een aantal verschillende opties. Als uitgangs punt, als u een overzicht op hoog niveau van ad hoc nodig hebt, zoals wat u in cost analysis krijgt, bouwt u de weer gave die u nodig hebt. Down load het vervolgens door **exporteren** te selecteren en **gegevens downloaden naar CSV** te selecteren of **gegevens te downloaden naar Excel**. De down load voor Excel biedt aanvullende context voor de weer gave die u hebt gebruikt voor het genereren van de down load, zoals Scope, query configuratie, totaal en gegenereerde datum.
 
-If you need the full, unaggregated dataset, download it from the billing account. Then, from the list of services in the portal's left navigation pane, go to **Cost Management + Billing**. Select your billing account, if applicable. Go to **Usage + charges**, and then select the **Download** icon for the desired billing period.
+Als u de volledige, niet-geaggregeerde gegevensset nodig hebt, kunt u deze downloaden van het facturerings account. Ga vervolgens naar **Cost Management en facturering**in de lijst met Services in het linkernavigatievenster van de portal. Selecteer uw facturerings account, indien van toepassing. Ga naar **gebruik en kosten**en selecteer vervolgens het **Download** pictogram voor de gewenste facturerings periode.
 
-Take a similar approach to automate receiving cost data. Use the [Query API](/rest/api/cost-management/query) for richer analysis with dynamic filtering, grouping, and aggregation, or use the [UsageDetails API](/rest/api/consumption/usageDetails) for the full, unaggregated dataset. The general availability (GA) version of these APIs is 2019-01-01. Use **2019-04-01-preview** to get access to the preview of reservation and Marketplace purchases within these APIs.
+Maak een soort gelijke aanpak om de ontvangst van kosten gegevens te automatiseren. Gebruik de [query-API](/rest/api/cost-management/query) voor uitgebreidere analyses met dynamische filtering, groepering en aggregatie, of gebruik de [UsageDetails-API](/rest/api/consumption/usageDetails) voor de volledige, niet-geaggregeerde gegevensset. De versie van deze Api's voor algemene Beschik baarheid (GA) is 2019-01-01. Gebruik **2019-04-01-preview** om toegang te krijgen tot de preview van reserve ring en Marketplace-aankopen binnen deze api's.
 
-For example, following is an aggregated view of amortized costs broken down by charge type (usage, purchase, or refund), publisher type (Azure or Marketplace), resource group (empty for purchases), and reservation (empty if not applicable).
+Een voor beeld hiervan is een geaggregeerde weer gave van afgeschreven kosten die zijn uitgesplitst per toeslag type (verbruik, aankoop of terugbetaling), Publisher-type (Azure of Marketplace), resource groep (leeg voor inkoop) en reserve ring (leeg indien niet van toepassing).
 
 ```
 POST https://management.azure.com/{scope}/providers/Microsoft.CostManagement/query?api-version=2019-04-01-preview
@@ -205,15 +205,15 @@ Content-Type: application/json
 }
 ```
 
-And if you don't need the aggregation and prefer the full, raw dataset:
+En als u de aggregatie niet nodig hebt en de voor keur geeft aan de volledige, onbewerkte gegevensset:
 
 ```
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
 ```
 
-If you need actual costs to show purchases as they are accrued, change **type**/**metric** to **ActualCost**. For more information about these APIs, see the [Query](/rest/api/cost-management/query) and [UsageDetails](/rest/api/consumption/usageDetails) API documentation. Note that the published docs are for the GA version. However, they both work the same for the *2019-04-01-preview* API version outside of the new type/metric attribute and changed property names. (Read more about the property names below.)
+Als u werkelijke kosten nodig hebt om de aankopen weer te geven wanneer ze zijn samengevoegd **, wijzigt u**/**metrieke waarde** in **ActualCost**. Zie de documentatie van de API voor [query's](/rest/api/cost-management/query) en [UsageDetails](/rest/api/consumption/usageDetails) voor meer informatie over deze api's. Houd er rekening mee dat de gepubliceerde documenten voor de GA-versie zijn. Ze werken echter hetzelfde voor de API-versie *2019-04-01-preview* , buiten het nieuwe type/metrisch-kenmerk en gewijzigde eigenschaps namen. (Lees meer over de onderstaande eigenschaps namen.)
 
-Cost Management APIs work across all scopes above resources: resource group, subscription, and management group via Azure RBAC access, EA billing accounts (enrollments), departments, and enrollment accounts via EA portal access. Learn more about scopes, including how to determine your scope ID or manage access, in [Understand and work with scopes](understand-work-scopes.md).
+Cost Management-Api's werken in alle bereiken boven resources: resource groep, abonnement en beheer groep via Azure RBAC-toegang, EA-facturerings accounts (inschrijvingen), afdelingen en inschrijvings accounts via toegang tot de EA-Portal. Meer informatie over bereiken, waaronder het bepalen van uw bereik-ID of het beheren van de toegang, in [begrijpen en werken met scopes](understand-work-scopes.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

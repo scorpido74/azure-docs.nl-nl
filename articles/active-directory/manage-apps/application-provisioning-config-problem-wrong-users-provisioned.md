@@ -33,17 +33,17 @@ Gebruik de volgende bronnen om te leren hoe u kunt controleren welke gebruikers 
 
 Voer de volgende stappen uit om een of meer gebruikers rechtstreeks toe te wijzen aan een toepassing:
 
-1. Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
 2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
 4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
 5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de toepassing die u wilt weergeven die hier niet ziet, gebruikt u de **Filter** besturingselement aan de bovenkant van de **lijst met alle toepassingen** en stel de **weergeven** optie naar **alle Toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
 6. Selecteer de toepassing die u wilt toewijzen van een gebruiker in de lijst.
 
@@ -51,19 +51,19 @@ Voer de volgende stappen uit om een of meer gebruikers rechtstreeks toe te wijze
 
 8. Als u het deel venster **toewijzing toevoegen** wilt openen, klikt u op de knop **toevoegen** boven aan de lijst **gebruikers en groepen** .
 
-9. Klik op de **gebruikers en groepen** selector vanaf de **toevoegen toewijzing** deelvenster.
+9. Klik op de selector **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
 
-10. Typ in het **volledige naam** of **e-mailadres** van de gebruiker die u geïnteresseerd bent in toewijzen in de **zoeken op naam of e-mailadres** zoekvak.
+10. Typ de **volledige naam** of het **e-mail adres** van de gebruiker die u wilt toewijzen in het zoekvak **zoeken op naam of e-mail adres** .
 
-11. Beweeg de muisaanwijzer over de **gebruiker** in de lijst om weer te geven een **selectievakje**. Klik op het selectievakje naast de profielfoto van de gebruiker of het logo om toe te voegen van de gebruiker naar de **geselecteerde** lijst.
+11. Beweeg de muis aanwijzer over de **gebruiker** in de lijst om een **selectie vakje**weer te geven. Klik op het selectie vakje naast de foto of het logo van het profiel van de gebruiker om uw gebruiker toe te voegen aan de **geselecteerde** lijst.
 
-12. **Optioneel:** als u wilt **toevoegen van meer dan één gebruiker**, type in een andere **volledige naam** of **e-mailadres** in de **zoeken op naam of e-mailadres** zoekvak en klik op het selectievakje voor deze gebruiker toevoegen aan de **geselecteerde** lijst.
+12. **Optioneel:** Als u **meer dan één gebruiker wilt toevoegen**, typt u een andere **volledige naam** of een ander **e-mail adres** in het zoekvak **zoeken op naam of e-mail adres** en klikt u op het selectie vakje om deze gebruiker aan de **geselecteerde** lijst toe te voegen.
 
-13. Wanneer u klaar bent met gebruikers te selecteren, klikt u op de **Selecteer** knop aan de lijst met gebruikers en groepen die moeten worden toegewezen aan de toepassing wilt toevoegen.
+13. Wanneer u klaar bent met het selecteren van gebruikers, klikt u op de knop **selecteren** om ze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
 
-14. **Optioneel:** klikt u op de **rol selecteren** selector in de **toevoegen toewijzing** deelvenster te selecteren van een rol toewijzen aan de gebruikers die u hebt geselecteerd.
+14. **Optioneel:** Klik op het selectie vakje **rol** selecteren in het deel venster **toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de gebruikers die u hebt geselecteerd.
 
-15. Klik op de **toewijzen** knop om de toepassing aan de geselecteerde gebruikers te wijzen.
+15. Klik op de knop **toewijzen** om de toepassing aan de geselecteerde gebruikers toe te wijzen.
 
 Als inrichten is geconfigureerd en al wordt uitgevoerd voor een app, moeten nieuwe gebruikers in ongeveer 10 minuten worden ingericht voor een toepassing. Raadpleeg de **controle logboeken** voor meer informatie.
 
@@ -71,17 +71,17 @@ Als inrichten is geconfigureerd en al wordt uitgevoerd voor een app, moeten nieu
 
 Voer de volgende stappen uit om een of meer groepen rechtstreeks toe te wijzen aan een toepassing:
 
-1. Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
 2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
 4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
 5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de toepassing die u wilt weergeven die hier niet ziet, gebruikt u de **Filter** besturingselement aan de bovenkant van de **lijst met alle toepassingen** en stel de **weergeven** optie naar **alle Toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
 6. Selecteer de toepassing die u wilt toewijzen van een gebruiker in de lijst.
 
@@ -89,19 +89,19 @@ Voer de volgende stappen uit om een of meer groepen rechtstreeks toe te wijzen a
 
 8. Als u het deel venster **toewijzing toevoegen** wilt openen, klikt u op de knop **toevoegen** boven aan de lijst **gebruikers en groepen** .
 
-9. Klik op de **gebruikers en groepen** selector vanaf de **toevoegen toewijzing** deelvenster.
+9. Klik op de selector **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
 
-10. Typ in het **volledige groepsnaam** van de groep die u geïnteresseerd bent in toewijzen in de **zoeken op naam of e-mailadres** zoekvak.
+10. Typ de **volledige groeps naam** van de groep die u wilt toewijzen in het zoekvak **zoeken op naam of e-mail adres** .
 
-11. Beweeg de muisaanwijzer over de **groep** in de lijst om weer te geven een **selectievakje**. Klik op het selectievakje naast de profielfoto van de groep of het logo om toe te voegen van de gebruiker naar de **geselecteerde** lijst.
+11. Beweeg de muis aanwijzer over de **groep** in de lijst om een **selectie vakje**weer te geven. Klik op het selectie vakje naast het profiel foto of logo van de groep om uw gebruiker toe te voegen aan de **geselecteerde** lijst.
 
-12. **Optioneel:** als u wilt **toevoegen van meer dan één groep**, type in een andere **volledige groepsnaam** in de **zoeken op naam of e-mailadres** zoekvak typt, en Klik op het selectievakje in als u wilt toevoegen van deze groep de **geselecteerde** lijst.
+12. **Optioneel:** Als u **meer dan één groep wilt toevoegen**, typt u een andere **volledige groeps naam** in het zoekvak **zoeken op naam of e-mail adres** en klikt u op het selectie vakje om deze groep aan de **geselecteerde** lijst toe te voegen.
 
-13. Wanneer u klaar bent met groepen te selecteren, klikt u op de **Selecteer** knop aan de lijst met gebruikers en groepen die moeten worden toegewezen aan de toepassing wilt toevoegen.
+13. Wanneer u klaar bent met het selecteren van groepen, klikt u op de knop **selecteren** om ze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
 
-14. **Optioneel:** klikt u op de **rol selecteren** selector in de **toevoegen toewijzing** deelvenster te selecteren van een rol toewijzen aan de groepen die u hebt geselecteerd.
+14. **Optioneel:** Klik op het selectie vakje **rol** selecteren in het deel venster **toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de groepen die u hebt geselecteerd.
 
-15. Klik op de **toewijzen** om toe te wijzen van de toepassing aan de geselecteerde groepen.
+15. Klik op de knop **toewijzen** om de toepassing toe te wijzen aan de geselecteerde groepen.
 
 Als inrichten is geconfigureerd en al wordt uitgevoerd voor een app, moeten nieuwe gebruikers in de groep ongeveer 10 minuten worden ingericht voor een toepassing. Raadpleeg de **controle logboeken** voor meer informatie.
 

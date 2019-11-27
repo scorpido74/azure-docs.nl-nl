@@ -15,15 +15,15 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485536"
 ---
-| Bron | Standaardlimiet |
+| Resource | Standaardlimiet |
 | --- | :--- |
-| Maximum clusters per subscription | 100 |
-| Maximum nodes per cluster with Virtual Machine Availability Sets and Basic Load Balancer SKU  | 100 |
-| Maximum nodes per cluster with Virtual Machine Scale Sets and [Standard Load Balancer SKU][standard-load-balancer] | 800 (100 nodes per [node pool][node-pool]) |
-| Maximum pods per node: [Basic networking][basic-networking] with Kubenet | 110 |
-| Maximum pods per node: [Advanced networking][advanced-networking] with Azure Container Networking Interface | Implementatie van Azure CLI: 30<sup>1</sup><br />Azure Resource Manager template: 30<sup>1</sup><br />Portal-implementatie: 30 |
+| Maximum aantal clusters per abonnement | 100 |
+| Maximum aantal knoop punten per cluster met beschikbaarheids sets voor virtuele machines en Basic Load Balancer SKU  | 100 |
+| Maximum aantal knoop punten per cluster met Virtual Machine Scale Sets en [Standard load BALANCER SKU][standard-load-balancer] | 800 (100 knoop punten per [knooppunt groep][node-pool]) |
+| Maximum aantal peulen per knoop punt: [basis netwerken][basic-networking] met Kubenet | 110 |
+| Maximum aantal per knoop punt: [Geavanceerd netwerken][advanced-networking] met Azure container Network-Interface | Implementatie van Azure CLI: 30<sup>1</sup><br />Azure Resource Manager sjabloon: 30<sup>1</sup><br />Portal-implementatie: 30 |
 
-<sup>1</sup>When you deploy an Azure Kubernetes Service (AKS) cluster with the Azure CLI or a Resource Manager template, this value is configurable up to 250 pods per node. You can't configure maximum pods per node after you've already deployed an AKS cluster, or if you deploy a cluster by using the Azure portal.<br />
+<sup>1</sup> Wanneer u een Azure Kubernetes service-cluster (AKS) implementeert met de Azure CLI of een resource manager-sjabloon, kan deze waarde worden geconfigureerd tot 250 per knoop punt. U kunt het maximum aantal per knoop punt niet configureren nadat u al een AKS-cluster hebt geïmplementeerd of als u een cluster implementeert met behulp van de Azure Portal.<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

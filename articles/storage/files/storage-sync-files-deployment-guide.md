@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: de0eb685e212b59705d8d659cbe9627338697e9d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 593c9ea9c37cc5684e85604340f8aae3d84d9afb
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854528"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546354"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Files SYNC implementeren
-Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Azure File Sync transformeert Windows Server in een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
+Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
 
 We raden u ten zeerste [aan de planning voor een Azure files-implementatie](storage-files-planning.md) te lezen en te [plannen voor een Azure file sync-implementatie](storage-sync-files-planning.md) voordat u de stappen in dit artikel uitvoert.
 
@@ -24,13 +24,13 @@ We raden u ten zeerste [aan de planning voor een Azure files-implementatie](stor
     - [Beschik baarheid](storage-sync-files-planning.md#region-availability) van de regio voor Azure file sync.
     - [Maak een bestands share](storage-how-to-create-file-share.md) voor een stapsgewijze beschrijving van het maken van een bestands share.
 * Ten minste één ondersteund exemplaar van Windows Server of Windows Server-cluster om te synchroniseren met Azure File Sync. Zie [interoperabiliteit met Windows Server](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)voor meer informatie over ondersteunde versies van Windows Server.
-* U kunt de AZ Power shell-module gebruiken met Power shell 5,1 of Power shell 6 +. U kunt de AZ Power shell-module voor Azure File Sync gebruiken op elk ondersteund systeem, met inbegrip van niet-Windows-systemen, maar de cmdlet Server registratie moet altijd worden uitgevoerd op het Windows Server-exemplaar dat u registreert (dit kan rechtstreeks of via Power shell worden uitgevoerd). externe toegang). In Windows Server 2012 R2 kunt u controleren of u ten minste Power shell 5,1 uitvoert. door te kijken naar de waarde van de eigenschap **PSVersion** van het object **$PSVersionTable:** \*
+* U kunt de AZ Power shell-module gebruiken met Power shell 5,1 of Power shell 6 +. U kunt de AZ Power shell-module voor Azure File Sync gebruiken op elk ondersteund systeem, met inbegrip van niet-Windows-systemen, maar de cmdlet Server registratie moet altijd worden uitgevoerd op het Windows Server-exemplaar dat u registreert (dit kan rechtstreeks of via Power shell worden uitgevoerd). externe toegang). In Windows Server 2012 R2 kunt u controleren of u ten minste Power shell 5,1 uitvoert.\* door te kijken naar de waarde van de eigenschap **PSVersion** van het object **$PSVersionTable** :
 
     ```powershell
     $PSVersionTable.PSVersion
     ```
 
-    Als uw PSVersion-waarde lager is dan 5,1. , zoals het geval is bij de meeste nieuwe installaties van Windows Server 2012 R2, kunt u eenvoudig bijwerken door [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)te downloaden en te installeren. \* Het juiste pakket om te downloaden en te installeren voor Windows Server 2012 R2 is **win 8.1 andw2k12r2\*-KB\*\*\*\*\*\*-x64. MSU**. 
+    Als uw PSVersion-waarde lager is dan 5,1.\*, zoals het geval is bij de meeste nieuwe installaties van Windows Server 2012 R2, kunt u eenvoudig bijwerken door [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)te downloaden en te installeren. Het juiste pakket om te downloaden en te installeren voor Windows Server 2012 R2 is **win 8.1 andw2k12r2-KB\*\*\*\*\*\*\*-x64. MSU**. 
 
     Power shell 6 + kan worden gebruikt met elk ondersteund systeem en kan worden gedownload via de [github-pagina](https://github.com/PowerShell/PowerShell#get-powershell). 
 
@@ -40,7 +40,7 @@ We raden u ten zeerste [aan de planning voor een Azure files-implementatie](stor
 * Als u hebt aangegeven dat u Power shell 5,1 wilt gebruiken, moet u ervoor zorgen dat er ten minste .NET 4.7.2 is geïnstalleerd. Meer informatie over [.NET Framework versies en afhankelijkheden](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) op uw systeem.
 
     > [!Important]  
-    > Als u .net 4.7.2 + installeert op Windows Server Core, moet u installeren met de `quiet` vlaggen en `norestart` , anders mislukt de installatie. Als u bijvoorbeeld .NET 4,8 installeert, ziet de opdracht er als volgt uit:
+    > Als u .NET 4.7.2 + installeert op Windows Server Core, moet u installeren met de `quiet`-en `norestart`-vlaggen of kan de installatie mislukken. Als u bijvoorbeeld .NET 4,8 installeert, ziet de opdracht er als volgt uit:
     > ```PowerShell
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
@@ -59,11 +59,11 @@ Schakel de **Verbeterde beveiliging van Internet Explorer**uit voor elke server 
 
 1. Open Serverbeheer.
 2. Klik op **lokale server**:  
-    ![Lokale server aan de linkerkant van de Serverbeheer gebruikers interface](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
+    ![' lokale server ' aan de linkerkant van de Serverbeheer gebruikers interface](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. Selecteer in het deelvenster **Eigenschappen** de koppeling naar **Verbeterde beveiliging van Internet Explorer**.  
-    ![Het deel venster verbeterde beveiliging van Internet Explorer in de Serverbeheer gebruikers interface](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
+    ![het deel venster verbeterde beveiliging van Internet Explorer in de Serverbeheer gebruikers interface](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
 4. Selecteer in het dialoog venster **Verbeterde beveiliging van Internet Explorer** de optie **uitschakelen** voor **beheerders** en **gebruikers**:  
-    ![Het pop-upvenster verbeterde beveiliging van Internet Explorer met ' uit ' geselecteerd](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
+    ![het pop-venster verbeterde beveiliging van Internet Explorer met ' uit ' geselecteerd](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Als u de verbeterde beveiliging van Internet Explorer wilt uitschakelen, voert u het volgende uit vanuit een Power shell-sessie met verhoogde bevoegdheid:
@@ -101,15 +101,15 @@ Als u een opslag synchronisatie service wilt implementeren, gaat u naar de [Azur
 
 Voer de volgende gegevens in in het deelvenster dat verschijnt:
 
-- **Naam**: Een unieke naam (per abonnement) voor opslagsynchronisatieservice.
-- **Abonnement**: Het abonnement waarin u de opslag synchronisatie service wilt maken. Afhankelijk van de configuratie strategie van uw organisatie hebt u mogelijk toegang tot een of meer abonnementen. Een Azure-abonnement is de meest eenvoudige container voor facturering voor elke Cloud service (zoals Azure Files).
-- **Resourcegroep**: Een resource groep is een logische groep Azure-resources, zoals een opslag account of een opslag synchronisatie service. U kunt een nieuwe resource groep maken of een bestaande resource groep gebruiken voor Azure File Sync. (We raden u aan om resource groepen als containers te gebruiken om resources logisch te isoleren voor uw organisatie, zoals het groeperen van resources of resources voor een specifiek project.)
-- **Locatie**: De regio waarin u Azure File Sync wilt implementeren. In deze lijst worden alleen ondersteunde regio's beschikbaar.
+- **Naam**: een unieke naam (per abonnement) voor de opslag synchronisatie service.
+- **Abonnement**: het abonnement waarin u de opslag synchronisatie service wilt maken. Afhankelijk van de configuratie strategie van uw organisatie hebt u mogelijk toegang tot een of meer abonnementen. Een Azure-abonnement is de meest eenvoudige container voor facturering voor elke Cloud service (zoals Azure Files).
+- **Resource groep**: een resource groep is een logische groep Azure-resources, zoals een opslag account of een opslag synchronisatie service. U kunt een nieuwe resource groep maken of een bestaande resource groep gebruiken voor Azure File Sync. (We raden u aan om resource groepen als containers te gebruiken om resources logisch te isoleren voor uw organisatie, zoals het groeperen van resources of resources voor een specifiek project.)
+- **Locatie**: de regio waarin u Azure File Sync wilt implementeren. In deze lijst worden alleen ondersteunde regio's beschikbaar.
 
 Wanneer u klaar bent, selecteert u **maken** om de opslag synchronisatie service te implementeren.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-Vervang **< Az_Region >** , **< RG_Name >** en **< my_storage_sync_service >** met uw eigen waarden, en gebruik vervolgens de volgende cmds om een opslag synchronisatie service te maken en te implementeren:
+Vervang **< Az_Region >** , **< RG_Name**> **en < my_storage_sync_service > met uw** eigen waarden, en gebruik vervolgens de volgende cmds om een opslag synchronisatie service te maken en te implementeren:
 
 ```powershell
 $hostType = (Get-Host).Name
@@ -217,15 +217,15 @@ Als u Windows Server registreert voor een opslagsynchronisatieservice, wordt er 
 > De registratie van de server maakt gebruik van uw Azure-referenties voor het maken van een vertrouwens relatie tussen de opslag synchronisatie service en uw Windows-Server, maar vervolgens maakt en gebruikt de server een eigen identiteit die geldig is zolang de server geregistreerd blijft en de het huidige Shared Access Signature-token (opslag-SAS) is geldig. Er kan geen nieuw SAS-token aan de server worden verleend zodra de registratie van de server ongedaan is gemaakt, waardoor de server de mogelijkheid heeft om toegang te krijgen tot uw Azure-bestands shares en de synchronisatie te stoppen.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-De gebruikers interface voor Server registratie moet automatisch worden geopend na de installatie van de Azure File Sync-agent. Als dat niet zo is, kunt u de interface handmatig openen vanaf de bestandslocatie: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Wanneer de gebruikers interface voor Server registratie wordt geopend, selecteert u **Aanmelden** om te beginnen.
+De gebruikers interface voor Server registratie moet automatisch worden geopend na de installatie van de Azure File Sync-agent. Als dat niet gebeurt, kunt u deze handmatig openen vanuit de bestandslocatie: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Wanneer de gebruikers interface voor Server registratie wordt geopend, selecteert u **Aanmelden** om te beginnen.
 
 Nadat u zich hebt aangemeld, wordt u gevraagd de volgende gegevens op te vragen:
 
 ![Schermafbeelding van de gebruikersinterface van de serverregistratie](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
 
-- **Azure-abonnement**: Het abonnement dat de opslag synchronisatie service bevat (Zie [de opslag synchronisatie service implementeren](#deploy-the-storage-sync-service)). 
-- **Resourcegroep**: De resourcegroep die de opslagsynchronisatieservice bevat.
-- **Opslag synchronisatie service**: De naam van de opslag synchronisatie service waarmee u zich wilt registreren.
+- **Azure-abonnement**: het abonnement dat de opslag synchronisatie service bevat (Zie [de opslag synchronisatie service implementeren](#deploy-the-storage-sync-service)). 
+- **Resource groep**: de resource groep die de opslag synchronisatie service bevat.
+- **Opslag synchronisatie service**: de naam van de opslag synchronisatie service waarmee u zich wilt registreren.
 
 Nadat u de benodigde gegevens hebt geselecteerd, selecteert u **registreren** om de server registratie te volt ooien. Als deel van het registratieproces wordt u gevraagd u nogmaals aan te melden.
 
@@ -239,7 +239,7 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ## <a name="create-a-sync-group-and-a-cloud-endpoint"></a>Synchronisatiegroep en cloudeindpunt maken
 Een synchronisatiegroep definieert de synchronisatietopologie voor een verzameling bestanden. Eindpunten binnen een synchronisatiegroep worden onderling synchroon gehouden. Een synchronisatiegroep moet één cloudeindpunt bevatten, dat een Azure-bestandsshare en een of meer servereindpunten representeert. Een server-eind punt vertegenwoordigt een pad op een geregistreerde server. Een server kan server eindpunten in meerdere synchronisatie groepen hebben. U kunt zoveel synchronisatie groepen maken als u nodig hebt om de gewenste synchronisatie topologie op de juiste wijze te beschrijven.
 
-Een Cloud-eind punt is een verwijzing naar een Azure-bestands share. Alle server eindpunten worden gesynchroniseerd met een Cloud eindpunt, waardoor het Cloud eindpunt de hub wordt. Het opslag account voor de Azure-bestands share moet zich in dezelfde regio bevinden als de opslag synchronisatie service. De volledige versie van de Azure-bestands share wordt gesynchroniseerd, met één uitzonde ring: Een speciale map, vergelijkbaar met de verborgen map systeem Volume Information op een NTFS-volume, wordt ingericht. Deze map heet. SystemShareInformation". Het bevat belang rijke synchronisatie-meta gegevens die niet worden gesynchroniseerd met andere eind punten. Niet gebruiken of verwijderen.
+Een Cloud-eind punt is een verwijzing naar een Azure-bestands share. Alle server eindpunten worden gesynchroniseerd met een Cloud eindpunt, waardoor het Cloud eindpunt de hub wordt. Het opslag account voor de Azure-bestands share moet zich in dezelfde regio bevinden als de opslag synchronisatie service. Het volledige gedeelte van de Azure-bestands share wordt gesynchroniseerd, met één uitzonde ring: een speciale map, vergelijkbaar met de verborgen map systeem volume gegevens op een NTFS-volume, wordt ingericht. Deze map heet. SystemShareInformation". Het bevat belang rijke synchronisatie-meta gegevens die niet worden gesynchroniseerd met andere eind punten. Niet gebruiken of verwijderen.
 
 > [!Important]  
 > U kunt wijzigingen aanbrengen in een eind punt van een Cloud of server-eind punt in de synchronisatie groep en uw bestanden synchroniseren met de andere eind punten in de synchronisatie groep. Als u een wijziging aanbrengt in het Cloud eindpunt (Azure-bestands share), moeten de wijzigingen eerst worden gedetecteerd door een Azure File Sync wijzigings detectie taak. Een wijzigings detectie taak wordt slechts eenmaal per 24 uur geïnitieerd voor een Cloud eindpunt. Zie [Azure files Veelgestelde vragen](storage-files-faq.md#afs-change-detection)voor meer informatie.
@@ -251,20 +251,20 @@ Als u een synchronisatie groep wilt maken, gaat u in het [Azure Portal](https://
 
 Voer in het deelvenster dat verschijnt de volgende gegevens in om een synchronisatiegroep met een cloudeindpunt te maken:
 
-- **Naam van synchronisatie groep**: De naam van de synchronisatie groep die moet worden gemaakt. Deze naam moet uniek zijn binnen de opslagsynchronisatieservice, maar het mag een willekeurige naam zijn die u makkelijk kunt onthouden.
-- **Abonnement**: Het abonnement waar u de opslag synchronisatie service hebt geïmplementeerd in [de opslag synchronisatie service implementeren](#deploy-the-storage-sync-service).
-- **Opslagaccount**: Als u **opslag account selecteren**selecteert, wordt er een ander deel venster weer gegeven waarin u het opslag account kunt selecteren dat de Azure-bestands share heeft waarmee u wilt synchroniseren.
-- **Azure-bestands share**: De naam van de Azure-bestands share waarmee u wilt synchroniseren.
+- **Naam van de synchronisatie groep**: de naam van de synchronisatie groep die moet worden gemaakt. Deze naam moet uniek zijn binnen de opslagsynchronisatieservice, maar het mag een willekeurige naam zijn die u makkelijk kunt onthouden.
+- **Abonnement**: het abonnement waarin u de opslag synchronisatie service hebt geïmplementeerd in [de opslag synchronisatie service implementeren](#deploy-the-storage-sync-service).
+- **Opslag account**: als u **opslag account selecteren**selecteert, wordt er een ander deel venster weer gegeven waarin u het opslag account kunt selecteren dat de Azure-bestands share heeft waarmee u wilt synchroniseren.
+- **Azure-bestands share**: de naam van de Azure-bestands share waarmee u wilt synchroniseren.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-Als u de synchronisatie groep wilt maken, voert u de volgende Power shell uit. Vergeet niet door `<my-sync-group>` de gewenste naam van de synchronisatie groep te vervangen.
+Als u de synchronisatie groep wilt maken, voert u de volgende Power shell uit. Vergeet niet om `<my-sync-group>` te vervangen door de gewenste naam van de synchronisatie groep.
 
 ```powershell
 $syncGroupName = "<my-sync-group>"
 $syncGroup = New-AzStorageSyncGroup -ParentObject $storageSync -Name $syncGroupName
 ```
 
-Zodra de synchronisatie groep is gemaakt, kunt u uw Cloud-eind punt maken. Vervang `<my-storage-account>` en`<my-file-share>` door de verwachte waarden.
+Zodra de synchronisatie groep is gemaakt, kunt u uw Cloud-eind punt maken. Zorg ervoor dat u `<my-storage-account>` vervangt en `<my-file-share>` door de verwachte waarden.
 
 ```powershell
 # Get or create a storage account with desired name
@@ -313,15 +313,15 @@ Als u een server eindpunt wilt toevoegen, gaat u naar de zojuist gemaakte synchr
 
 Voer in het deelvenster **Servereindpunt toevoegen** de volgende gegevens in om een servereindpunt te maken:
 
-- **Geregistreerde server**: De naam van de server of het cluster waar u het server eindpunt wilt maken.
-- **Pad**: Het Windows Server-pad dat moet worden gesynchroniseerd als onderdeel van de synchronisatie groep.
-- **Cloud lagen**: Een switch om Cloud lagen in of uit te scha kelen. Met Cloud lagen kunnen zelden gebruikte of geopende bestanden worden getierd naar Azure Files.
-- **Beschik bare volume ruimte**: De hoeveelheid beschik bare ruimte die moet worden gereserveerd op het volume waarop het server eindpunt zich bevindt. Als volume beschik bare ruimte bijvoorbeeld is ingesteld op 50% op een volume met één server eindpunt, wordt er ongeveer de helft van de hoeveelheid gegevens gelaagd tot Azure Files. Ongeacht of Cloud lagen zijn ingeschakeld, heeft uw Azure-bestands share altijd een volledige kopie van de gegevens in de synchronisatie groep.
+- **Geregistreerde server**: de naam van de server of het cluster waar u het server eindpunt wilt maken.
+- **Pad**: het pad naar de Windows-Server dat moet worden gesynchroniseerd als onderdeel van de synchronisatie groep.
+- **Cloud lagen**: een schakel optie om Cloud lagen in of uit te scha kelen. Met Cloud lagen kunnen zelden gebruikte of geopende bestanden worden getierd naar Azure Files.
+- **Beschik bare volume ruimte**: de hoeveelheid beschik bare ruimte die moet worden gereserveerd op het volume waarop het server eindpunt zich bevindt. Als volume beschik bare ruimte bijvoorbeeld is ingesteld op 50% op een volume met één server eindpunt, wordt er ongeveer de helft van de hoeveelheid gegevens gelaagd tot Azure Files. Ongeacht of Cloud lagen zijn ingeschakeld, heeft uw Azure-bestands share altijd een volledige kopie van de gegevens in de synchronisatie groep.
 
 Selecteer **maken**om het server eindpunt toe te voegen. Uw bestanden worden nu gesynchroniseerd op de Azure-bestands share en Windows-Server. 
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-Voer de volgende Power shell-opdrachten uit om het server eindpunt te maken en vervang `<your-server-endpoint-path>` en `<your-volume-free-space>` door de gewenste waarden.
+Voer de volgende Power shell-opdrachten uit om het server eindpunt te maken en zorg ervoor dat u `<your-server-endpoint-path>` vervangt en `<your-volume-free-space>` met de gewenste waarden.
 
 ```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"
@@ -398,6 +398,45 @@ Op dit moment heeft de pre-seeding-benadering een aantal beperkingen:
 - Volledige betrouw baarheid van bestanden blijft niet behouden. Zo kunnen bestanden Acl's en tijds tempels verloren gaan.
 - Gegevens wijzigingen op de server voordat de synchronisatie topologie volledig actief is en wordt uitgevoerd, kunnen conflicten veroorzaken op de server eindpunten.  
 - Nadat het Cloud-eind punt is gemaakt, wordt door Azure File Sync een proces uitgevoerd om de bestanden in de cloud te detecteren voordat de initiële synchronisatie wordt gestart. De tijd die nodig is om dit proces te volt ooien, is afhankelijk van de verschillende factoren, zoals de netwerk snelheid, de beschik bare band breedte en het aantal bestanden en mappen. Voor de ruwe schatting van de preview-versie voert het detectie proces ongeveer 10 bestanden per seconde uit.  Zelfs als vooraf seeding snel wordt uitgevoerd, kan de totale tijd voor het verkrijgen van een volledig uitgevoerd systeem aanzienlijk langer zijn wanneer gegevens in de Cloud vooraf worden geseed.
+
+## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Self-service herstellen via eerdere versies en VSS (Volume Shadow Copy Service)
+Eerdere versies is een Windows-functie waarmee u VSS-moment opnamen aan de server zijde van een volume kunt gebruiken voor het weer geven van herstelbare versies van een bestand naar een SMB-client.
+Dit maakt een krachtig scenario mogelijk, ook wel selfservice herstel genoemd, rechtstreeks voor informatie medewerkers, in plaats van afhankelijk van het herstel van een IT-beheerder.
+
+VSS-moment opnamen en eerdere versies werken onafhankelijk van Azure File Sync. Cloud lagen moeten echter worden ingesteld op een compatibele modus. Er kunnen veel Azure File Sync server-eind punten bestaan op hetzelfde volume. U moet de volgende Power shell-oproep per volume maken met zelfs één server eindpunt waar u Cloud lagen wilt plannen of gebruiken.
+
+```powershell
+Import-Module ‘<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll’
+Enable-StorageSyncSelfServiceRestore [-DriveLetter] <string> [[-Force]] 
+```
+
+VSS-moment opnamen worden gemaakt van een volledig volume. Standaard kunnen Maxi maal 64 moment opnamen bestaan voor een bepaald volume, omdat er voldoende ruimte is om de moment opnamen op te slaan. VSS verwerkt dit automatisch. Het standaard schema voor moment opnamen neemt twee moment opnamen per dag, maandag tot en met vrijdag. Dat schema kan worden geconfigureerd via een geplande Windows-taak. De bovenstaande Power shell-cmdlet heeft twee dingen:
+1. Azure-bestands synchronisaties worden geconfigureerd op het opgegeven volume zodat het compatibel is met eerdere versies en garandeert dat een bestand kan worden hersteld uit een eerdere versie, zelfs als het is gelaagd naar de Cloud op de server. 
+2. Hiermee wordt het standaard VSS-schema ingeschakeld. Daarna kunt u besluiten om deze later te wijzigen. 
+
+> [!Note]  
+> Er zijn twee belang rijke dingen die u moet weten:
+>- Als u de para meter-Force gebruikt en VSS momenteel is ingeschakeld, wordt het huidige VSS-momentopname schema overschreven en vervangen door de standaard planning. Zorg ervoor dat u uw aangepaste configuratie opslaat voordat u de cmdlet uitvoert.
+> - Als u deze cmdlet op een cluster knooppunt gebruikt, moet u deze ook uitvoeren op alle andere knoop punten in het cluster. 
+
+U kunt de volgende cmdlet uitvoeren om te controleren of de compatibiliteit van selfservice herstel is ingeschakeld.
+
+```powershell
+    Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
+```
+
+Alle volumes op de server worden weer geven, evenals het aantal voor de Cloud lagen compatibele dagen voor elk volume. Dit aantal wordt automatisch berekend op basis van de Maxi maal mogelijke moment opnamen per volume en het standaard schema voor moment opnamen. Standaard kunnen alle vorige versies die aan een informatie medewerker worden gepresenteerd, worden gebruikt voor het herstellen van. Hetzelfde geldt als u het standaard schema wijzigt om meer moment opnamen te maken.
+Als u de planning echter zodanig wijzigt dat er een beschik bare moment opname is op het volume dat ouder is dan de waarde voor de compatibele dagen, dan kunnen gebruikers deze oudere moment opname (vorige versie) niet gebruiken om te herstellen van.
+
+> [!Note]
+> Het inschakelen van selfservice herstel kan gevolgen hebben voor het verbruik en de factuur van uw Azure-opslag. Deze impact is beperkt tot bestanden die momenteel op de server zijn gelaagd. Als u deze functie inschakelt, zorgt u ervoor dat er een bestands versie beschikbaar is in de Cloud waarnaar kan worden verwezen via een eerdere versie (VSS-moment opname).
+>
+> Als u de functie uitschakelt, wordt het gebruik van de Azure-opslag langzaam afwijzen totdat het venster compatibele dagen is verstreken. Er is geen manier om dit te versnellen. 
+
+Het standaard maximum aantal VSS-moment opnamen per volume (64) en het standaard schema dat u wilt nemen, resulteert in een maximum van 45 dagen van vorige versies waarvan een informatie medewerker kan herstellen, afhankelijk van het aantal VSS-moment opnamen dat u op uw volume kunt opslaan.
+
+Als Max. 64 VSS-moment opnamen per volume niet de juiste instelling voor u zijn. u kunt [deze waarde wijzigen via een register sleutel](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
+Om de nieuwe limiet van kracht te laten worden, moet u de cmdlet opnieuw uitvoeren om de compatibiliteit van eerdere versies in te scha kelen op elk volume waarop deze eerder was ingeschakeld, met de vlag-Force om het nieuwe maximum aantal VSS-moment opnamen per volume in rekening te brengen. Dit leidt tot een nieuw berekend aantal compatibele dagen. Houd er rekening mee dat deze wijziging alleen van kracht wordt op nieuwe gelaagde bestanden en eventuele aanpassingen van de VSS-planning die u hebt aangebracht, worden overschreven.
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Een DSF-replicatie-implementatie (DFS-R) migreren naar Azure File Sync
 Een DFS-R-implementatie migreren naar Azure File Sync:

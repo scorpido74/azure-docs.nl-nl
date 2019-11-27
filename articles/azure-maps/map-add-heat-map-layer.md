@@ -1,6 +1,6 @@
 ---
-title: Add a heat map layer to Azure Maps | Microsoft Docs
-description: How to add a heat map layer to the Azure Maps Web SDK.
+title: Een heatmap toevoegen aan Azure Maps | Microsoft Docs
+description: Een heatmap toevoegen aan de Azure Maps Web-SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -18,14 +18,14 @@ ms.locfileid: "74484302"
 ---
 # <a name="add-a-heat-map-layer"></a>Een heatmap-laag toevoegen
 
-Heat maps, also known as point density maps, are a type of data visualization used to represent the density of data using a range of colors. They're often used to show the data "hot spots" on a map and are a great way to render large point data sets.  For example, rendering tens of thousands of points within the map view as symbols, covers most of the map area and would result in many symbols overlapping each other, making it difficult to gain much insight into the data. However, visualizing this same data set as a heat map makes it easy to see where the point data is the densest and the relative density to other areas. There are many scenarios in which heat maps, are used. Here are few examples;
+Heatmap, ook wel bekend als punt-dichtheids kaarten, is een type gegevens visualisatie dat wordt gebruikt voor de densiteit van gegevens met behulp van een reeks kleuren. Ze worden vaak gebruikt om de gegevens ' hot spots ' op een kaart weer te geven en zijn een uitstekende manier om grote punt gegevenssets te renderen.  U kunt bijvoorbeeld tien duizenden punten in de kaart weergave weer geven als symbolen, waarbij het grootste deel van het kaart gebied wordt bedekt, waardoor veel symbolen elkaar overlappen, waardoor het moeilijk is om veel inzicht te krijgen in de gegevens. Als u echter dezelfde gegevensset visualiseren als een heatmap, is het eenvoudig om te zien waar de punt gegevens de dichtste en de relatieve dichtheid van andere gebieden zijn. Er zijn veel scenario's waarin Heatmaps worden gebruikt. Hier volgen enkele voor beelden.
 
-- Temperature data is commonly rendered as heat map as it provides approximations for what the temperature between two data points.
-- Rendering data for noise sensors as a heat map not only shows the intensity of the noise where the sensor is but can also provide insights into the dissipation over a distance. The noise level at any one site may not be high, however if the noise coverage area from multiple sensors overlaps, it's possible that this overlapping area may experience higher noise levels, and thus would be visible in the heat map.
-- Visualizing a GPS trace that includes the speed as a weighted height map where the intensity of each data point is based on the speed is a great way to see where the vehicle was speeding.
+- Temperatuur gegevens worden doorgaans weer gegeven als heatmap, omdat hiermee kan worden geprofiteerd van de Tempe ratuur tussen twee gegevens punten.
+- Het renderen van gegevens voor ruis Sens oren als een heatmap heeft niet alleen betrekking op de intensiteit van de ruis waarbij de sensor zich bevindt, maar kan ook inzicht krijgen in de dissipatie over een afstand. Het geluids niveau van een wille keurige site mag niet hoog zijn, maar als het gebied van de ruis dekking van meerdere Sens oren elkaar overlapt, is het mogelijk dat dit overlappende gebied hogere geluids niveaus ondervindt en dus zichtbaar is in de heatmap.
+- Het visualiseren van een GPS-tracering die de snelheid bevat als toewijzing met een gewogen hoogte waarbij de intensiteit van elk gegevens punt is gebaseerd op de snelheid, is een uitstekende manier om te zien waar het Voer tuig sneller is.
 
 > [!TIP]
-> Heat map layers by default will render the coordinates of all geometries in a data source. To limit the layer so that it only renders point geometry features, set the `filter` property of the layer to `['==', ['geometry-type'], 'Point']` or `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` if you want to include MultiPoint features as well.
+> Met heatmap worden standaard de coördinaten van alle geometrieën in een gegevens bron weer gegeven. Als u de laag wilt beperken zodat deze alleen functies van punt geometrie weergeeft, stelt u de eigenschap `filter` van de laag in op `['==', ['geometry-type'], 'Point']` of `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` als u ook multi point-functies wilt toevoegen.
 
 <br/>
 
@@ -33,9 +33,9 @@ Heat maps, also known as point density maps, are a type of data visualization us
 
 ## <a name="add-a-heat-map-layer"></a>Een heatmap-laag toevoegen
 
-To render a data source of points as a heat map, pass your data source into an instance of the `HeatMapLayer` class and add it to the map as shown here.
+Als u een gegevens bron van punten wilt weer geven als een heatmap, geeft u uw gegevens bron door aan een instantie van de `HeatMapLayer` klasse en voegt u deze toe aan de kaart zoals hier wordt weer gegeven.
 
-In the following code, each heat point has a radius of 10 pixels at all zoom levels. When adding the heat map layer to the map, this sample inserts it below the label layer to create a better user experience as the labels are clearly visible above the heat map. The data in this sample is sourced from the [USGS Earthquake Hazards Program](https://earthquake.usgs.gov/) and represents significant earthquakes that have occurred in the last 30 days.
+In de volgende code heeft elk verwarmings punt een straal van 10 pixels op alle zoom niveaus. Wanneer u de laag van de heatmap toevoegt aan de kaart, wordt deze onder de label laag ingevoegd om een betere gebruikers ervaring te maken, omdat de labels duidelijk zichtbaar zijn boven de heatmap. De gegevens in dit voor beeld zijn afkomstig van het [USGS aardings risico programma](https://earthquake.usgs.gov/) en duiden op aanzienlijke aard bevingen die in de afgelopen 30 dagen zijn opgetreden.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -52,58 +52,58 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 }), 'labels');
 ```
 
-Below is the complete running code sample of the above functionality.
+Hieronder ziet u het volledige programma voor het uitvoeren van code van de bovenstaande functionaliteit.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Simple Heat Map Layer' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>Simple Heat Map Layer</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Eenvoudige kaart laag voor hitte' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen- <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>eenvoudige heatmap laag</a> per Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="customizing-the-heat-map-layer"></a>Customizing the heat map layer
+## <a name="customizing-the-heat-map-layer"></a>De laag van de heatmap aanpassen
 
-The previous example customized the heat map by setting the radius and opacity options. The heat map layer provides several options for customization;
+In het vorige voor beeld is de heatmap aangepast door de opties voor RADIUS en dekking in te stellen. De laag van de heatmap biedt verschillende opties voor aanpassing.
 
-* `radius`: Defines a pixel radius in which to render each data point. The radius can be set as a fixed number or as an expression. Using an expression, it's possible to scale the radius based on the zoom level, that appears to represent a consistent spatial area on the map (for example, 5-mile radius).
-* `color`: Specifies how the heat map is colorized. A color gradient is often used for heat maps and can be achieved with an `interpolate` expression. Using a `step` expression for colorizing the heat map breaks up the density visually into ranges that more so resembles a contour or radar style map. These color palettes define the colors from the minimum to the maximum density value. Color values for heat maps are specified as an expression on the `heatmap-density` value. The color at index 0 in an interpolation expression or the default color of a step expression, defines the color of the area where there's no data and can be used to define a background color. Many prefer to set this value to transparent or a semi-transparent black. Here are examples of color expressions;
+* `radius`: definieert een pixel RADIUS waarin elk gegevens punt moet worden weer gegeven. De RADIUS kan worden ingesteld als een vast getal of als een expressie. Met behulp van een expressie kunt u de RADIUS schalen op basis van het zoom niveau, dat lijkt op een consistent ruimtelijk gebied op de kaart (bijvoorbeeld een RADIUS van 5 mijl).
+* `color`: Hiermee geeft u op hoe de heatmap wordt gekleurd. Een kleur overgang wordt vaak gebruikt voor hitte kaarten en kan worden bereikt met een `interpolate`-expressie. Het gebruik van een `step`-expressie voor het inkleuren van de heatmap onthoudt de densiteit visueel in bereiken die meer lijkt op een contour-of radar stijl kaart. Met deze kleuren paletten worden de kleuren van het minimum naar de maximale dichtheids waarde gedefinieerd. Kleur waarden voor heatmap zijn opgegeven als een expressie op de `heatmap-density` waarde. De kleur bij index 0 in een interpolatie-expressie of de standaard kleur van een stap expressie definieert de kleur van het gebied waar er geen gegevens zijn en kunnen worden gebruikt voor het definiëren van een achtergrond kleur. Veel gewenst om deze waarde in te stellen op transparant of semi-transparant zwart. Hier volgen enkele voor beelden van kleur expressies.
 
-| Interpolation Color Expression | Stepped Color Expression | 
+| Expressie voor interpolatie kleur | Expressie met stap kleur | 
 |--------------------------------|--------------------------|
-| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'interpolate',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['linear'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'purple',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5, '#fb00fb',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'step',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'navy',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25, 'green',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50, 'yellow',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75, 'red'<br/>\] | 
+| \[<br/>&nbsp;&nbsp;&nbsp;interpoleing &nbsp;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' lineaire '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmap-dichtheid '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, ' transparant ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' paars ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, ' #fb00fb ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, ' #00c3ff '<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;stap,<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmap-dichtheid '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;transparent,<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' Navy ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, ' groen ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, ' Yellow ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, ' Red '<br/>\] | 
 
-- `opacity`: Specifies how opaque or transparent the heat map layer is.
-- `intensity`: Applies a multiplier to the weight of each data point to increase the overall intensity of the heatmap and helps to make the small differences in the weight of data points become easier to visualize.
-- `weight`: By default, all data points have a weight of 1, thus all data points are weighted equally. The weight option acts as a multiplier and can be set as a number or an expression. If a number is set as the weight, say 2, it would be the equivalent of placing each data point on the map twice, thus doubling the density. Setting the weight option to a number renders the heat map in a similar way to using the intensity option. However, if an expression is used, the weight of each data point can be based on the properties of each data point. Take earthquake data as an example, each data point represents an earthquake. An important metric each earthquake data point has, is a magnitude value. Earthquakes happen all the time, but most have a low magnitude and aren't even felt. Using the magnitude value in an expression to assign the weight to each data point will allow more significant earthquakes to be better represented within the heat map.
-- Besides the base layer options; min/max zoom, visible and filter, there's also a `source` option if you want to update the data source and `source-layer` option if your data source is a vector tile source.
+- `opacity`: Hiermee geeft u op hoe ondoorzichtige of transparante de laag van de heatmap.
+- `intensity`: past een vermenigvuldigings factor toe op het gewicht van elk gegevens punt om de algehele intensiteit van de heatmap te verhogen en helpt de kleine verschillen in het gewicht van gegevens punten gemakkelijker te maken.
+- `weight`: standaard hebben alle gegevens punten een gewicht van 1, waardoor alle gegevens punten gelijk worden gewogen. De optie gewicht fungeert als vermenigvuldiger en kan worden ingesteld als een getal of een expressie. Als een getal wordt ingesteld als het gewicht, zegt 2, zou het gelijk zijn aan het twee maal plaatsen van elk gegevens punt op de kaart, waardoor de dichtheid wordt verdubbeld. Als u de optie gewicht instelt op een getal, wordt de heatmap op een vergelijk bare manier weer gegeven als met de optie intensiteit. Als er echter een expressie wordt gebruikt, kan het gewicht van elk gegevens punt worden gebaseerd op de eigenschappen van elk gegevens punt. Maak aard bevings gegevens als voor beeld. elk gegevens punt vertegenwoordigt een aard beving. Een belang rijke metriek van elk bevings gegevens punt is, is een waarde. Aard bevingen gebeuren altijd, maar de meeste hebben een lage grootte en zijn nog niet even vilt. Door gebruik te maken van de magnitude waarde in een expressie om het gewicht aan elk gegevens punt toe te wijzen, kunnen grotere aarders beter worden weer gegeven in de heatmap.
+- Naast de basislaag opties; min/max. zoom, zichtbaar en filter, er is ook een `source` optie als u de gegevens bron en `source-layer` optie wilt bijwerken als uw gegevens bron een vector tegel bron is.
 
-Here is a tool to test out the different heat map layer options.
+Hier vindt u een hulp programma voor het testen van de verschillende opties voor de heatmap voor de hitte kaart.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Heat Map Layer Options' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Heat Map Layer Options</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Opties voor de laag van de heatmap' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) van de pen-laag voor het <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>heatmap</a> op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="consistent-zoomable-heat-map"></a>Consistent zoomable heat map
+## <a name="consistent-zoomable-heat-map"></a>Consistente, zoom bare heatmap
 
-By default, the radii of data points rendered in the heat map layer have a fixed pixel radius for all zoom levels. As the map is zoomed, the data aggregates together and the heat map layer looks different. A `zoom` expression can be used to scale the radius for each zoom level such that each data point covers the same physical area of the map. This will make the heat map layer look more static and consistent. Each zoom level of the map has twice as many pixels vertically and horizontally as the previous zoom level. Scaling the radius such that it doubles with each zoom level will create a heat map that looks consistent on all zoom levels. This can be accomplished by using the `zoom` with a base 2 `exponential interpolation` expression as shown in the sample below. Zoom the map to see how the heat map scales with the zoom level.
+De RADIUS van gegevens punten die worden weer gegeven in de laag van de heatmap hebben standaard een straal van vaste pixels voor alle zoom niveaus. Naarmate de kaart wordt ingezoomd, worden de gegevens samen en de heatmap van de kaart op verschillende manieren weer gegeven. Een `zoom` expressie kan worden gebruikt om de RADIUS voor elk zoom niveau zodanig te schalen dat elk gegevens punt overeenkomt met hetzelfde fysieke gebied van de kaart. Hierdoor is de heatmap van de hitte statisch en consistent. Elk zoom niveau van de kaart heeft twee keer zoveel pixels verticaal en horizon taal als het vorige zoom niveau. Door de RADIUS zodanig te schalen dat deze met elk zoom niveau verdubbelt, wordt een heatmap gemaakt die consistent is op alle zoom niveaus. U kunt dit doen met behulp van de `zoom` met een basis 2 `exponential interpolation`-expressie, zoals wordt weer gegeven in het voor beeld hieronder. Zoom in op de kaart om te zien hoe de heatmap met het zoom niveau wordt geschaald.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Consistent zoomable heat map" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-See the Pen <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>Consistent zoomable heat map</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Consistente, zoom bare heatmap" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zie de pen <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>consistente, zoom bare heatmap</a> met Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> By enabling clustering on the data source, points that are close to one another are grouped together as a clustered point. The point count of each cluster can be used as the weight expression for the heat map and significantly reduce the number of points that have to be render. The point count of a cluster is stored in a `point_count` property of the point feature as shown below. 
+> Door Clustering op de gegevens bron in te scha kelen, worden punten die zich dicht bij elkaar bevinden, gegroepeerd als een geclusterd punt. De punt telling van elk cluster kan worden gebruikt als de gewichts expressie voor de heatmap en het aantal punten dat moet worden weer gegeven, aanzienlijk verminderen. De punt telling van een cluster wordt opgeslagen in een eigenschap `point_count` van de functie punt, zoals hieronder wordt weer gegeven. 
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
-> If the clustering radius is only a few pixels there will be little visual difference the rendering. A larger radius will group more points into each cluster and improve the performance of the heatmap, but have the a more noticeable the differences will be.
+> Als de cluster RADIUS slechts een paar pixels is, is er weinig visueel verschil met de rendering. Een grotere straal groepeert meer punten in elk cluster en verbetert de prestaties van de heatmap, maar het is duidelijker dat de verschillen worden weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Learn more about the classes and methods used in this article:
+Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
 > [HeatMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)
@@ -111,10 +111,10 @@ Learn more about the classes and methods used in this article:
 > [!div class="nextstepaction"]
 > [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
 
-For more code examples to add to your maps, see the following articles:
+Raadpleeg de volgende artikelen voor meer code voorbeelden om toe te voegen aan uw Maps:
 
 > [!div class="nextstepaction"]
-> [Create a data source](create-data-source-web-sdk.md)
+> [Een gegevens bron maken](create-data-source-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Use data-driven style expressions](data-driven-style-expressions-web-sdk.md)
+> [Op gegevens gebaseerde stijl expressies gebruiken](data-driven-style-expressions-web-sdk.md)

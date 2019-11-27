@@ -1,6 +1,6 @@
 ---
 title: Een Azure Data Lake Storage Gen2-opslagaccount maken | Microsoft Docs
-description: Quickly learn to create a new storage account with access to Data Lake Storage Gen2 using the Azure portal, Azure PowerShell, or the Azure CLI.
+description: Leer snel hoe u een nieuw opslag account maakt met toegang tot Data Lake Storage Gen2 met behulp van de Azure Portal, Azure PowerShell of de Azure CLI.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -17,19 +17,19 @@ ms.locfileid: "74227955"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Een Azure Data Lake Storage Gen2-opslagaccount maken
 
-Azure Data Lake Storage Gen2 [supports a hierarchical namespace](data-lake-storage-introduction.md) which provides a native directory-based container tailored to work with the Hadoop Distributed File System (HDFS). Toegang tot Data Lake Storage Gen2-gegevens uit HDFS is beschikbaar via het [ABFS-stuurprogramma](data-lake-storage-abfs-driver.md).
+Azure Data Lake Storage Gen2 [ondersteunt een hiërarchische naam ruimte](data-lake-storage-introduction.md) die een op een native Directory gebaseerde container bevat die is afgestemd op het gebruik van de HADOOP DISTRIBUTED File System (HDFS). Toegang tot Data Lake Storage Gen2-gegevens uit HDFS is beschikbaar via het [ABFS-stuurprogramma](data-lake-storage-abfs-driver.md).
 
-This article demonstrates how to create an account using the Azure portal, Azure PowerShell, or via the Azure CLI.
+In dit artikel wordt beschreven hoe u een account maakt met behulp van de Azure Portal, Azure PowerShell of via de Azure CLI.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
 
-|           | Vereisten |
+|           | Vereiste |
 |-----------|--------------|
-|Portal     | Geen         |
-|PowerShell | This article requires the PowerShell module Az.Storage version **0.7** or later. Voer de opdracht `Get-Module -ListAvailable Az.Storage` uit om uw huidige versie te vinden. If after you run this command, no results appear, or if a version lower than **0.7** appears, then you'll have to upgrade your powershell module. Zie de sectie [Upgrade uitvoeren van uw powershell-module](#upgrade-your-powershell-module) van deze handleiding.
-|CLI        | You can sign in to Azure and run Azure CLI commands in one of two ways: <ul><li>U kunt CLI-opdrachten uitvoeren vanuit Azure Portal, in Azure Cloud Shell </li><li>U kunt de CLI installeren en CLI-opdrachten lokaal uitvoeren</li></ul>|
+|Portal     | None         |
+|PowerShell | Voor dit artikel is de Power shell-module AZ. Storage versie **0,7** of hoger vereist. Voer de opdracht `Get-Module -ListAvailable Az.Storage` uit om uw huidige versie te vinden. Als u na het uitvoeren van deze opdracht geen resultaten ziet of als er een versie lager dan **0,7** wordt weer gegeven, moet u de Power shell-module bijwerken. Zie de sectie [Upgrade uitvoeren van uw powershell-module](#upgrade-your-powershell-module) van deze handleiding.
+|CLI        | U kunt zich aanmelden bij Azure en Azure CLI-opdrachten uitvoeren op een van de volgende twee manieren: <ul><li>U kunt CLI-opdrachten uitvoeren vanuit Azure Portal, in Azure Cloud Shell </li><li>U kunt de CLI installeren en CLI-opdrachten lokaal uitvoeren</li></ul>|
 
 Wanneer u werkt met de opdrachtregel, hebt u de mogelijkheid om de Azure Cloud-shell of de CLI lokaal te installeren.
 
@@ -39,17 +39,17 @@ Azure Cloud Shell is een gratis Bash-shell die u rechtstreeks in Azure Portal ku
 
 [![Cloud Shell](./media/data-lake-storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
-The button launches an interactive shell that you can use to run the steps in this article:
+Met de knop start u een interactieve shell die u kunt gebruiken om de stappen in dit artikel uit te voeren:
 
 [![Schermopname van het Cloud Shell-venster in de portal](./media/data-lake-storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>De CLI lokaal installeren
 
-U kunt Azure CLI ook lokaal installeren en gebruiken. This article requires that you are running the Azure CLI version 2.0.38 or later. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
+U kunt Azure CLI ook lokaal installeren en gebruiken. Voor dit artikel moet u de Azure CLI-versie 2.0.38 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>Een opslagaccount maken waarvoor Azure Data Lake Storage Gen2 is ingeschakeld
 
-An Azure storage account contains all of your Azure Storage data objects: blobs, files, queues, tables, and disks. The storage account provides a unique namespace for your Azure Storage data that is accessible from anywhere in the world over HTTP or HTTPS. Data in your Azure storage account is durable and highly available, secure, and massively scalable.
+Een Azure-opslag account bevat al uw Azure Storage gegevens objecten: blobs, bestanden, wacht rijen, tabellen en schijven. Het opslag account biedt een unieke naam ruimte voor uw Azure Storage gegevens die overal ter wereld toegankelijk zijn via HTTP of HTTPS. Gegevens in uw Azure Storage-account zijn duurzaam en Maxi maal beschikbaar, veilig en zeer schaalbaar.
 
 > [!NOTE]
 > U moet nieuwe opslagaccounts maken van het type **StorageV2 (algemeen gebruik v2)** om te profiteren van de functies van Data Lake Storage Gen2.  
@@ -58,11 +58,11 @@ Zie [Overzicht van Azure-opslagaccount](../common/storage-account-overview.md) v
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Een account maken in Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-### <a name="create-a-storage-account"></a>Maak een opslagaccount
+### <a name="create-a-storage-account"></a>Een opslagaccount maken
 
-Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken. This article shows how to create a new resource group.
+Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken. In dit artikel wordt beschreven hoe u een nieuwe resource groep maakt.
 
 Als u een v2-opslagaccount voor algemeen gebruik wilt maken in de Azure Portal, volgt u deze stappen:
 
@@ -70,16 +70,16 @@ Als u een v2-opslagaccount voor algemeen gebruik wilt maken in de Azure Portal, 
 > De hiërarchische naamruimte is momenteel beschikbaar in alle openbare regio's.
 
 1. Kies het abonnement waarin u het opslagaccount wilt maken.
-2. In the Azure portal, choose the **Create a resource** button, then choose **Storage account**.
-3. Selecteer **Nieuwe maken** onder het veld **Resourcegroep**. Enter a name for your new resource group.
+2. Klik in de Azure Portal op de knop **een resource maken** en kies vervolgens **opslag account**.
+3. Selecteer **Nieuwe maken** onder het veld **Resourcegroep**. Voer een naam in voor de nieuwe resource groep.
    
    Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken.
 
 4. Voer vervolgens een naam in voor het opslagaccount. De naam die u kiest, moet uniek zijn binnen Azure. Verder moet de naam 3 tot 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
 5. Kies een locatie.
-6. Make sure that **StorageV2 (general purpose v2)** appears as selected in the **Account kind** drop-down list.
-7. Optionally change the values in each of these fields: **Performance**, **Replication**, **Access tier**. To learn more about these options, see [Introduction to Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services).
-8. Choose the **Advanced** tab.
+6. Zorg ervoor dat **StorageV2 (algemeen gebruik v2)** als geselecteerd wordt weer gegeven in de vervolg keuzelijst **account type** .
+7. Wijzig desgewenst de waarden in elk van deze velden: **prestaties**, **replicatie**, **toegangs niveau**. Zie [Inleiding tot Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services)voor meer informatie over deze opties.
+8. Kies het tabblad **Geavanceerd** .
 10. In de sectie **Data Lake Storage Gen2** stelt u **Hiërarchische naamruimte** in op **Ingeschakeld**.
 11. Klik op **Beoordelen en maken** om het opslagaccount te maken.
 
@@ -97,7 +97,7 @@ Ga als volgt te werk om een resourcegroep te verwijderen in Azure Portal:
 
 Installeer eerst de meest recente versie van de [ PowerShellGet](/powershell/scripting/gallery/installing-psget)-module.
 
-Then, upgrade your powershell module, sign in to your Azure subscription, create a resource group, and then create a storage account.
+Vervolgens voert u een upgrade uit van uw Power shell-module, meldt u zich aan bij uw Azure-abonnement, maakt u een resource groep en maakt u vervolgens een opslag account.
 
 ### <a name="upgrade-your-powershell-module"></a>De PowerShell-module upgraden
 
@@ -113,7 +113,7 @@ De module Az.Storage installeren
 Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 ```
 
-### <a name="sign-in-to-your-azure-subscription"></a>Sign in to your Azure Subscription
+### <a name="sign-in-to-your-azure-subscription"></a>Meld u aan bij uw Azure-abonnement
 
 Gebruik de opdracht `Login-AzAccount` en volg de instructies op het scherm om te verifiëren.
 
@@ -161,9 +161,9 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="create-an-account-using-azure-cli"></a>Een account maken met Azure CLI
 
-To start Azure Cloud Shell, sign in to the [Azure portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com)om Azure Cloud shell te starten.
 
-If you want to sign in to your local installation of the CLI, run the login command:
+Als u zich wilt aanmelden bij de lokale installatie van de CLI, voert u de aanmeldings opdracht uit:
 
 ```cli
 az login
@@ -212,6 +212,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this article, you've created a storage account with Data Lake Storage Gen2 capabilities. Zie het volgende onderwerp voor informatie over het uploaden en downloaden van blobs naar en uit uw opslagaccount.
+In dit artikel hebt u een opslag account gemaakt met Data Lake Storage Gen2 mogelijkheden. Zie het volgende onderwerp voor informatie over het uploaden en downloaden van blobs naar en uit uw opslagaccount.
 
 * [AzCopy V10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

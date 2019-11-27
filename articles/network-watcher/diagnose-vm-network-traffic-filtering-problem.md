@@ -83,7 +83,7 @@ Als u een VM maakt, wordt netwerkverkeer van en naar de VM standaard toegestaan 
     | Virtuele machine   | Selecteer myVm                                                                                       |
     | Netwerkinterface | myvm - De naam van de netwerkinterface die is gemaakt in de portal toen u de VM maakte, wijkt af. |
     | Protocol          | TCP                                                                                               |
-    | Richting         | Uitgaande                                                                                          |
+    | Richting         | Uitgaand                                                                                          |
     | Lokaal IP-adres  | 10.0.0.4                                                                                          |
     | Lokale poort      | 60000                                                                                                |
     | Extern IP-adres | 13.107.21.200: een van de adressen voor < www. Bing. com->.                                             |

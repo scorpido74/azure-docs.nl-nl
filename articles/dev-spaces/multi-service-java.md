@@ -1,10 +1,10 @@
 ---
-title: 'Running multiple dependent services: Java & Visual Studio Code'
+title: 'Meerdere afhankelijke services uitvoeren: Java & Visual Studio code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 ms.openlocfilehash: 3fe19997ab54f02b6a5f029abbdb69d5ea6532f7
 ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
@@ -12,9 +12,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325715"
 ---
-# <a name="running-multiple-dependent-services-java-and-visual-studio-code-with-azure-dev-spaces"></a>Running multiple dependent services: Java and Visual Studio Code with Azure Dev Spaces
+# <a name="running-multiple-dependent-services-java-and-visual-studio-code-with-azure-dev-spaces"></a>Meerdere afhankelijke services uitvoeren: Java en Visual Studio code met Azure dev Spaces
 
-In deze zelfstudie leert u hoe u toepassingen met meerdere services ontwikkelt met Azure Dev Spaces, samen met enkele van de aanvullende voordelen van Azure Dev Spaces.
+In deze zelfstudie leert u hoe u toepassingen met meerdere services ontwikkelt met Azure Dev Spaces, samen met enkele aanvullende voordelen van Azure Dev Spaces.
 
 ## <a name="call-a-service-running-in-a-separate-container"></a>Een service aanroepen die wordt uitgevoerd in een afzonderlijke container
 
@@ -28,13 +28,13 @@ Omwille van de tijd downloaden we voorbeeldcode uit een GitHub-opslagplaats. Ga 
 ### <a name="run-mywebapi"></a>*mywebapi* uitvoeren
 1. Open de map `mywebapi` in een *afzonderlijk VS Code-venster*.
 1. Open het **Opdrachtenpalet** (via het menu **Beeld | Opdrachtenpalet**), en gebruik automatisch aanvullen om te typen en deze opdracht te selecteren: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
-1. Druk op F5 en wacht tot de service is gebouwd en geïmplementeerd. You'll know it's ready when a message similar to the below appears in the debug console:
+1. Druk op F5 en wacht tot de service is gebouwd en geïmplementeerd. U weet dat deze klaar is wanneer een bericht zoals hieronder wordt weer gegeven in de console fout opsporing:
 
     ```cmd
     2019-03-11 17:02:35.935  INFO 216 --- [           main] com.ms.sample.mywebapi.Application       : Started Application in 8.164 seconds (JVM running for 9.272)
     ```
 
-1. De eindpunt-URL ziet er ongeveer uit als `http://localhost:<portnumber>`. **Tip: The VS Code status bar will turn orange and display a clickable URL.** Het lijkt misschien alsof de container lokaal wordt uitgevoerd, maar dat is niet zo. De container wordt uitgevoerd in onze ontwikkelomgeving in Azure. Het localhost-adres is te zien omdat er nog geen openbare eindpunten zijn gedefinieerd in `mywebapi` en toegang daarom alleen mogelijk is binnen het Kubernetes-exemplaar. Voor uw gemak en om interactie met de privésessie mogelijk te maken vanaf de lokale computer wordt in Azure Dev Spaces een tijdelijke SSH-tunnel gemaakt naar de container die wordt uitgevoerd in Azure.
+1. De eindpunt-URL ziet er ongeveer uit als `http://localhost:<portnumber>`. **Tip: de status balk VS-code wordt oranje en een klikbare URL weer gegeven.** Het lijkt misschien alsof de container lokaal wordt uitgevoerd, maar dat is niet zo. De container wordt uitgevoerd in onze ontwikkelomgeving in Azure. Het localhost-adres is te zien omdat er nog geen openbare eindpunten zijn gedefinieerd in `mywebapi` en toegang daarom alleen mogelijk is binnen het Kubernetes-exemplaar. Voor uw gemak en om interactie met de privésessie mogelijk te maken vanaf de lokale computer wordt in Azure Dev Spaces een tijdelijke SSH-tunnel gemaakt naar de container die wordt uitgevoerd in Azure.
 1. Wanneer `mywebapi` klaar is, opent u de browser naar het localhost-adres.
 1. Als alle stappen zijn voltooid, moet er een reactie van de `mywebapi`-service te zien zijn.
 
@@ -65,7 +65,7 @@ In het vorige codevoorbeeld wordt de `azds-route-as`-header van de binnenkomende
 
 ### <a name="debug-across-multiple-services"></a>Foutopsporing in meerdere services
 1. Op dit punt moet `mywebapi` nog steeds worden uitgevoerd met het bijgevoegde foutopsporingsprogramma. Als dit niet het geval is, drukt u op F5 in het `mywebapi`-project.
-1. Set a breakpoint in the `index()` method of the `mywebapi` project, on [line 19 of `Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19)
+1. Stel een onderbrekings punt in de `index()` methode van het `mywebapi` project in op [regel 19 van `Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19)
 1. Stel in het `webfrontend`-project een onderbrekingspunt in vlak voordat deze een GET-aanvraag verzendt naar `mywebapi`, en wel op de regel die begint met `try`.
 1. Druk op F5 in het `webfrontend`-project (of start het foutopsporingsprogramma opnieuw als het op dat moment wordt uitgevoerd).
 1. Roep de web-app aan en analyseer de code in beide services.

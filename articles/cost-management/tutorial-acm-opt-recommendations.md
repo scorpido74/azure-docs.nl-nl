@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Reduce Azure costs with optimization recommendations | Microsoft Docs
-description: This tutorial helps you reduce Azure costs when you act on optimization recommendations.
+title: 'Zelfstudie: Azure verlagen met aanbevelingen voor optimalisatie | Microsoft Docs'
+description: Deze zelfstudie helpt u om Azure-kosten verlagen wanneer u actie op optimalisatie aanbevelingen ondernemen.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,95 +17,95 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229837"
 ---
-# <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimize costs from recommendations
+# <a name="tutorial-optimize-costs-from-recommendations"></a>Zelfstudie: Kosten van aanbevelingen optimaliseren
 
-Azure Cost Management werkt met Azure Advisor voor aanbevelingen om kosten te optimaliseren. Azure Advisor helpt u om de efficiëntie te optimaliseren en te verbeteren door inactieve en onderbenutte resources te identificeren. This tutorial walks you through an example where you identify underutilized Azure resources and then you take action to reduce costs.
+Azure Cost Management werkt met Azure Advisor voor aanbevelingen om kosten te optimaliseren. Azure Advisor helpt u om de efficiëntie te optimaliseren en te verbeteren door inactieve en onderbenutte resources te identificeren. Deze zelfstudie leert u een voorbeeld waarin u weinig gebruikte Azure-resources identificeren en vervolgens het ondernemen van actie om kosten te verlagen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * View cost optimization recommendations to view potential usage inefficiencies
-> * Act on a recommendation to resize a virtual machine to a more cost-effective option
-> * Verify the action to ensure that the virtual machine was successfully resized
+> * Optimalisatie van aanbevelingen om weer te geven inefficiënt mogelijke gebruik weergeven
+> * Reageren op een aanbeveling klikken om het formaat van een virtuele machine naar een meer voordelige optie zijn
+> * Controleer of de actie om ervoor te zorgen dat de virtuele machine met succes is gewijzigd
 
 ## <a name="prerequisites"></a>Vereisten
-Recommendations are available for a variety of scopes and Azure account types. Zie [Gegevens van kostenbeheer begrijpen](understand-cost-mgt-data.md) voor de volledige lijst met ondersteunde accounttypen. U moet minimaal leestoegang hebben tot een of meer van de volgende bereiken om kostengegevens te kunnen bekijken. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
+Er zijn aanbevelingen beschikbaar voor diverse bereiken en Azure-account typen. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](understand-cost-mgt-data.md). U moet minimaal leestoegang hebben tot een of meer van de volgende bereiken om kostengegevens te kunnen bekijken. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
 
 - Abonnement
 - Resourcegroep
 
-You must have active virtual machines with at least 14 days of activity.
+U moet actieve virtuele machines met ten minste 14 dagen van de activiteit hebben.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com/).
 
-## <a name="view-cost-optimization-recommendations"></a>View cost optimization recommendations
+## <a name="view-cost-optimization-recommendations"></a>Optimalisatie aanbevelingen weergeven
 
-To view cost optimization recommendations for a subscription, open the desired scope in the Azure portal and select **Advisor recommendations**.
+Als u aanbevelingen voor kosten optimalisatie voor een abonnement wilt weer geven, opent u het gewenste bereik in de Azure Portal en selecteert u **Advisor-aanbevelingen**.
 
-To view recommendations for a management group, open the desired scope in the Azure portal and select **Cost analysis** in the menu. Use the **Scope** pill to switch to a different scope, such as a management group. Select **Advisor recommendations** in the menu. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
+Als u aanbevelingen voor een beheer groep wilt weer geven, opent u het gewenste bereik in de Azure Portal en selecteert u **kosten analyse** in het menu. Gebruik het **bereik** Pill om over te scha kelen naar een ander bereik, zoals een beheer groep. Selecteer **aanbevelingen voor Advisor** in het menu. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
 
-![Cost Management Advisor recommendations shown in the Azure portal](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
+![Aanbevelingen voor kosten Management Advisor wordt weergegeven in de Azure-portal](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
-The list of recommendations identifies usage inefficiencies or shows purchase recommendations that can help you save additional money. The totaled **Potential yearly savings** shows the total amount that you can save if you shut down or deallocate all of your VMs that meet recommendation rules. If you don't want to shut them down, you should consider resizing them to a less expensive VM SKU.
+De lijst met aanbevelingen inefficiënt gebruik Hiermee wordt aangegeven of aanschafaanbevelingen die u kunnen helpen extra geld besparen. De totale mogelijke kosten per **jaar** worden weer gegeven in het totale aantal dat u kunt opslaan als u alle vm's die voldoen aan de aanbevelings regels, sluit of de toewijzing ervan ongedaan hebt. Als u niet dat ze uitschakelen wilt, kunt u overwegen ze naar een minder dure VM-SKU vergroten of verkleinen.
 
-The **Impact** category, along with the **Potential yearly savings**, are designed to help identify recommendations that have the potential to save as much as possible.
+De categorie **impact** , samen met de **mogelijke jaarlijkse besparing**, is ontworpen om aanbevelingen te helpen identificeren die zoveel mogelijk kunnen besparen.
 
-High impact recommendations include:
-- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
-- [Optimize virtual machine spend by resizing or shutting down underutilized instances](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Use Standard Storage to store Managed Disks snapshots](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+Aanbevelingen voor hoge impact zijn:
+- [Gereserveerde instanties van virtuele machines kopen om geld te besparen op kosten voor betalen per gebruik](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
+- [Optimaliseer de uitgaven van de virtuele machine door het formaat ervan te wijzigen of door ondergebruikte instanties te afsluiten](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
+- [Standaard opslag gebruiken om Managed Disks moment opnamen op te slaan](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
 
-Medium impact recommendations include:
-- [Delete Azure Data Factory pipelines that are failing](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
-- [Reduce costs by eliminating un-provisioned ExpressRoute circuits](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
-- [Reduce costs by deleting or reconfiguring idle virtual network gateways](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
+Aanbevelingen voor normale impact zijn:
+- [Azure Data Factory pijp lijnen verwijderen die niet werken](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
+- [Kosten verlagen door oningerichte ExpressRoute-circuits te elimineren](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
+- [Kosten verlagen door niet-actieve virtuele netwerk gateways te verwijderen of opnieuw te configureren](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
 
-## <a name="act-on-a-recommendation"></a>Act on a recommendation
+## <a name="act-on-a-recommendation"></a>Reageren op een aanbeveling
 
-Azure Advisor monitors your virtual machine usage for seven days and then identifies underutilized virtual machines. Virtual machines whose CPU utilization is five percent or less and network usage is seven MB or less for four or more days are considered low-utilization virtual machines.
+Azure Advisor bewaakt het gebruik van de virtuele machine gedurende zeven dagen en identificeert vervolgens gevirtualiseerde virtuele machines. Virtuele machines waarvan CPU-gebruik is vijf procent of minder en netwerkgebruik is 7 MB of minder voor vier of meer dagen worden beschouwd als laag gebruik virtuele machines.
 
-The 5% or less CPU utilization setting is the default, but you can adjust the settings. For more information about adjusting the setting, see the [Configure the average CPU utilization rule or the low usage virtual machine recommendation](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
+De 5% of minder CPU-gebruik instelling is de standaardinstelling, maar u kunt de instellingen aanpassen. Zie voor meer informatie over het aanpassen van de instelling de [aanbeveling de gemiddelde CPU-gebruiks regel configureren of de aanbevelingen voor de virtuele machine met weinig gebruik](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
 
-Although some scenarios can result in low utilization by design, you can often save money by changing the size of your virtual machines to less expensive sizes. Your actual savings might vary if you choose a resize action. Let's walk through an example of resizing a virtual machine.
+Hoewel sommige scenario's in laag gebruik standaard resulteren kunnen, kunt u vaak geld besparen door de grootte van uw virtuele machines te wijzigen naar minder dure grootten. De daadwerkelijke besparingen kunnen variëren als u ervoor een actie formaat wijzigen kiest. We nemen een voorbeeld van het formaat van een virtuele machine.
 
-In the list of recommendations, click the **Right-size or shutdown underutilized virtual machines** recommendation. In the list of virtual machine candidates, choose a virtual machine to resize and then click the virtual machine. The virtual machine's details are shown so that you can verify the utilization metrics. The **potential yearly savings** value is what you can save if you shut down or remove the VM. Resizing a VM will probably save you money, but you won't save the full amount of the potential yearly savings.
+Klik in de lijst met aanbevelingen op de aanbeveling over het **juiste formaat of het afsluiten van ondergebruikte virtuele machines** . Kies in de lijst met kandidaten voor virtuele machine, een virtuele machine vergroten of verkleinen en klik vervolgens op de virtuele machine. Details van de virtuele machine worden weergegeven zodat u kunt controleren of de metrische gegevens over het Resourcegebruik. De **mogelijke jaarlijkse besparings** waarde is wat u kunt besparen als u de virtuele machine afsluit of verwijdert. Formaat van een virtuele machine waarschijnlijk bespaart u geld, maar u het volledige bedrag van de mogelijke jaarlijkse besparingen worden niet opgeslagen.
 
-![Example of Recommendation details](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
+![Voorbeeld van details van de aanbeveling](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
-In the VM details, check the utilization of the virtual machine to confirm that it's a suitable resize candidate.
+Controleer in de virtuele machine, het gebruik van de virtuele machine om te bevestigen dat het een kandidaat een geschikte grootte.
 
-![Example VM details showing historical utilization](./media/tutorial-acm-opt-recommendations/vm-details.png)
+![Voorbeeld van de virtuele machine details historische gebruik weergeven](./media/tutorial-acm-opt-recommendations/vm-details.png)
 
-Note the current virtual machine's size. After you've verified that the virtual machine should be resized, close the VM details so that you see the list of virtual machines.
+Houd er rekening mee grootte van de huidige virtuele machine. Nadat u hebt gecontroleerd dat de virtuele machine moet worden gewijzigd, sluit u de details van de virtuele machine, zodat u de lijst met virtuele machines.
 
-In the list of candidates to shut down or resize, select **Resize *&lt;FromVirtualMachineSKU&gt;* to *&lt;ToVirtualMachineSKU&gt;***.
-![Example recommendation with the option to resize the virtual machine](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+Selecteer in de lijst met kandidaten die moeten worden afgesloten, de optie * * formaat *&lt;FromVirtualMachineSKU&gt;* aan *&lt;ToVirtualMachineSKU&gt;* * *.
+![voor beeld van aanbeveling met de optie om de grootte van de virtuele machine te wijzigen](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
-Next, you're presented with a list of available resize options. Choose the one that will give the best performance and cost-effectiveness for your scenario. In the following example, the option chosen resizes from **Standard_D8s_v3** to **Standard_D2s_v3**.
+Vervolgens krijgt u een lijst met beschikbare formaat opties. Kies de methode die de beste prestaties en kosteneffectiviteit voor uw scenario krijgt. In het volgende voor beeld wordt de gekozen optie grootte gewijzigd van **Standard_D8s_v3** in **Standard_D2s_v3**.
 
-![Example list of available VM sizes where you can choose a size](./media/tutorial-acm-opt-recommendations/choose-size.png)
+![Voorbeeld van de lijst met beschikbare VM-grootten, waar u kunt een grootte kiezen](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
-After you choose a suitable size, click **Resize** to start the resize action.
+Nadat u een geschikte grootte hebt gekozen, klikt u op **formaat wijzigen** om de actie formaat wijzigen te starten.
 
-Resizing requires an actively running virtual machine to restart. If the virtual machine is in a production environment, we recommend that you run the resize operation after business hours. Scheduling the restart can reduce disruptions caused by momentarily unavailability.
+Formaat wijzigen, moet een actief actieve virtuele machine opnieuw op te starten. Als de virtuele machine zich in een productieomgeving, wordt u aangeraden de bewerking formaat wijzigen na kantooruren uit te voeren. Het opstarten van de planning inkorten onderbrekingen veroorzaakt door tijdelijk niet beschikbaar zijn.
 
-## <a name="verify-the-action"></a>Verify the action
+## <a name="verify-the-action"></a>Controleer of de actie
 
-When the VM resizing completes successfully, an Azure notification is shown.
+Wanneer de VM-grootte voltooid is, ziet u een melding van Azure.
 
-![Successful resized virtual machine notification](./media/tutorial-acm-opt-recommendations/resized-notification.png)
+![Melding van de virtuele machine van de geslaagde gewijzigd](./media/tutorial-acm-opt-recommendations/resized-notification.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * View cost optimization recommendations to view potential usage inefficiencies
-> * Act on a recommendation to resize a virtual machine to a more cost-effective option
-> * Verify the action to ensure that the virtual machine was successfully resized
+> * Optimalisatie van aanbevelingen om weer te geven inefficiënt mogelijke gebruik weergeven
+> * Reageren op een aanbeveling klikken om het formaat van een virtuele machine naar een meer voordelige optie zijn
+> * Controleer of de actie om ervoor te zorgen dat de virtuele machine met succes is gewijzigd
 
-If you haven't already read the Cost Management best practices article, it provides high-level guidance and principles to consider to help manage costs.
+Als u de aanbevolen procedures voor kostenbeheer al nog niet hebt gelezen en biedt uitgebreide hulp en principes rekening houden met het beheer van kosten.
 
 > [!div class="nextstepaction"]
-> [Cost Management best practices](cost-mgt-best-practices.md)
+> [Aanbevolen procedures Cost Management](cost-mgt-best-practices.md)

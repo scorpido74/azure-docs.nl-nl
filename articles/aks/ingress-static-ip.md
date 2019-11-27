@@ -392,7 +392,7 @@ In dit artikel zijn enkele externe onderdelen opgenomen in AKS. Zie de volgende 
 
 - [Helm CLI][helm-cli]
 - [NGINX ingress-controller][nginx-ingress]
-- [cert-manager][cert-manager]
+- [CERT-beheerder][cert-manager]
 
 U kunt ook het volgende doen:
 

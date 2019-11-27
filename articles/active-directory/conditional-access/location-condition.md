@@ -1,6 +1,6 @@
 ---
-title: Location condition in Azure Active Directory Conditional Access
-description: Learn how to use the location condition to control access to your cloud apps based on a user's network location.
+title: Voor waarde voor de locatie in Azure Active Directory voorwaardelijke toegang
+description: Meer informatie over hoe u de locatie voorwaarde kunt gebruiken om de toegang tot uw Cloud-apps te beheren op basis van de netwerk locatie van een gebruiker.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -19,134 +19,134 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380302"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>What is the location condition in Azure Active Directory Conditional Access? 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Wat is de voor waarde van de locatie in Azure Active Directory voorwaardelijke toegang? 
 
-With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users can access your cloud apps. The location condition of a Conditional Access policy enables you to tie access controls settings to the network locations of your users.
+Met [Azure Active Directory (Azure AD) voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md)kunt u bepalen hoe geautoriseerde gebruikers toegang hebben tot uw Cloud-apps. De locatie voorwaarde van een beleid voor voorwaardelijke toegang stelt u in staat om instellingen voor toegangs beheer te koppelen aan de netwerk locaties van uw gebruikers.
 
-This article provides you with the information you need to configure the location condition.
+In dit artikel vindt u de informatie die u nodig hebt om de locatie voorwaarde te configureren.
 
 ## <a name="locations"></a>Locaties
 
-Azure AD enables single sign-on to devices, apps, and services from anywhere on the public internet. With the location condition, you can control access to your cloud apps based on the network location of a user. Common use cases for the location condition are:
+Met Azure AD kunt u eenmalige aanmelding op apparaten, apps en services vanaf een wille keurige locatie op het open bare Internet. Met de locatie voorwaarde kunt u de toegang tot uw Cloud-apps beheren op basis van de netwerk locatie van een gebruiker. Veelvoorkomende use cases voor de locatie voorwaarde zijn:
 
-- Requiring multi-factor authentication for users accessing a service when they are off the corporate network.
-- Blocking access for users accessing a service from specific countries or regions.
+- Vereisen multi-factor Authentication voor gebruikers die toegang hebben tot een service wanneer ze zijn uitgeschakeld in het bedrijfs netwerk.
+- Toegang blok keren voor gebruikers die toegang hebben tot een service van specifieke landen of regio's.
 
-A location is a label for a network location that either represents a named location or multi-factor authentication Trusted IPs.
+Een locatie is een label voor een netwerk locatie die een benoemde locatie of multi-factor Authentication-betrouw bare Ip's vertegenwoordigt.
 
-## <a name="named-locations"></a>Named locations
+## <a name="named-locations"></a>Benoemde locaties
 
-With named locations, you can create logical groupings of IP address ranges or countries and regions.
+Met benoemde locaties kunt u logische groeperingen van IP-adresbereiken of landen en regio's maken.
 
-You can access your named locations in the **Manage** section of the Conditional Access page.
+U kunt toegang krijgen tot uw benoemde locaties in het gedeelte **beheren** van de pagina voorwaardelijke toegang.
 
-![Named locations in Conditional Access](./media/location-condition/02.png)
+![Benoemde locaties in voorwaardelijke toegang](./media/location-condition/02.png)
 
-A named location has the following components:
+Een benoemde locatie heeft de volgende onderdelen:
 
-![Create a new named location](./media/location-condition/42.png)
+![Een nieuwe benoemde locatie maken](./media/location-condition/42.png)
 
-- **Name** - The display name of a named location.
-- **IP ranges** - One or more IPv4 address ranges in CIDR format. Specifying an IPv6 address range is not supported.
+- **Naam** : de weergave naam van een benoemde locatie.
+- **IP-adresbereiken** : een of meer IPv4-adresbereiken in CIDR-indeling. Het opgeven van een IPv6-adres bereik wordt niet ondersteund.
 
    > [!NOTE]
-   > IPv6 address ranges cannot currently be included in a named location. This means IPv6 ranges cannot be excluded from a Conditional Access policy.
+   > IPv6-adresbereiken kunnen momenteel niet worden opgenomen in een benoemde locatie. Dit betekent dat IPv6-bereiken niet kunnen worden uitgesloten van een beleid voor voorwaardelijke toegang.
 
-- **Mark as trusted location** - A flag you can set for a named location to indicate a trusted location. Typically, trusted locations are network areas that are controlled by your IT department. In addition to Conditional Access, trusted named locations are also used by Azure Identity Protection and Azure AD security reports to reduce [false positives](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
-- **Countries/Regions** - This option enables you to select one or more country or region to define a named location.
-- **Include unknown areas** - Some IP addresses are not mapped to a specific country or region. This option allows you to choose if these IP addresses should be included in the named location. Use this setting when the policy using the named location should apply to unknown locations.
+- **Markeren als vertrouwde locatie** : een vlag die u kunt instellen voor een benoemde locatie om een vertrouwde locatie aan te duiden. Normaal gesp roken zijn vertrouwde locaties netwerk gebieden die worden beheerd door uw IT-afdeling. Naast voorwaardelijke toegang worden vertrouwde benoemde locaties ook gebruikt door Azure Identity Protection en Azure AD-beveiligings rapporten om fout- [positieven](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)te reduceren.
+- **Landen/regio's** : met deze optie kunt u een of meer land of regio selecteren om een benoemde locatie te definiëren.
+- **Onbekende gebieden bevatten** -sommige IP-adressen zijn niet toegewezen aan een bepaald land of bepaalde regio. Met deze optie kunt u kiezen of deze IP-adressen op de genoemde locatie moeten worden opgenomen. Gebruik deze instelling wanneer het beleid dat gebruikmaakt van de benoemde locatie, moet worden toegepast op onbekende locaties.
 
-The number of named locations you can configure is constrained by the size of the related object in Azure AD. You can configure locations based on of the following limitations:
+Het aantal benoemde locaties dat u kunt configureren, is beperkt door de grootte van het gerelateerde object in azure AD. U kunt locaties configureren op basis van de volgende beperkingen:
 
-- One named location with up to 1200 IP ranges.
-- A maximum of 90 named locations with one IP range assigned to each of them.
+- Eén benoemde locatie met Maxi maal 1200 IP-bereiken.
+- Maxi maal 90 benoemde locaties waaraan één IP-bereik is toegewezen.
 
-Conditional Access policy applies to IPv4 and IPv6 traffic. Currently named locations do not allow IPv6 ranges to be configured. This limitation causes the following situations:
+Beleid voor voorwaardelijke toegang is van toepassing op IPv4-en IPv6-verkeer. Op momenteel benoemde locaties mogen geen IPv6-bereiken worden geconfigureerd. Deze beperking veroorzaakt de volgende situaties:
 
-- Conditional Access policy cannot be targeted to specific IPv6 ranges
-- Conditional Access policy cannot exclude specific IPV6 ranges
+- Beleid voor voorwaardelijke toegang kan niet worden gericht op specifieke IPv6-bereiken
+- Beleid voor voorwaardelijke toegang kan specifieke IPV6-bereiken niet uitsluiten
 
-If a policy is configured to apply to “Any location”, it will apply to IPv4 and IPv6 traffic. Named locations configured for specified countries and regions only support IPv4 addresses. IPv6 traffic is only included if the option to “include unknown areas” selected.
+Als een beleid is geconfigureerd om te worden toegepast op een wille keurige locatie, is dit van toepassing op IPv4-en IPv6-verkeer. Benoemde locaties die zijn geconfigureerd voor opgegeven landen en regio's ondersteunen alleen IPv4-adressen. IPv6-verkeer wordt alleen opgenomen als de optie voor het opnemen van onbekende gebieden is geselecteerd.
 
 ## <a name="trusted-ips"></a>Goedgekeurde IP-adressen
 
-You can also configure IP address ranges representing your organization's local intranet in the [multi-factor authentication service settings](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). This feature enables you to configure up to 50 IP address ranges. The IP address ranges are in CIDR format. For more information, see [Trusted IPs](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
+U kunt ook IP-adresbereiken configureren die het lokale intranet van uw organisatie vertegenwoordigen in de instellingen van de [multi-factor Authentication-Service](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Met deze functie kunt u Maxi maal 50 IP-adresbereiken configureren. De IP-adresbereiken bevinden zich in CIDR-indeling. Zie [Trusted ip's](../authentication/howto-mfa-mfasettings.md#trusted-ips)(Engelstalig) voor meer informatie.  
 
-If you have Trusted IPs configured, they show up as **MFA Trusted IPS** in the list of locations for the location condition.
+Als u vertrouwde IP-adressen hebt geconfigureerd, worden ze als door **MFA vertrouwde ip's** weer gegeven in de lijst met locaties voor de voor waarde van de locatie.
 
-### <a name="skipping-multi-factor-authentication"></a>Skipping multi-factor authentication
+### <a name="skipping-multi-factor-authentication"></a>Multi-factor Authentication overs Laan
 
-On the multi-factor authentication service settings page, you can identify corporate intranet users by selecting  **Skip multi-factor authentication for requests from federated users on my intranet**. This setting indicates that the inside corporate network claim, which is issued by AD FS, should be trusted and used to identify the user as being on the corporate network. For more information, see [Enable the Trusted IPs feature by using Conditional Access](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+Op de pagina instellingen voor multi-factor Authentication-Service kunt u zakelijke intranet gebruikers identificeren door **multi-factor Authentication overs laan voor aanvragen van federatieve gebruikers op mijn intranet**te selecteren. Deze instelling geeft aan dat de binnen bedrijfs netwerk claim, die wordt uitgegeven door AD FS, moet worden vertrouwd en gebruikt om de gebruiker te identificeren als in het bedrijfs netwerk. Zie [de functie voor vertrouwde IP-adressen inschakelen met behulp van voorwaardelijke toegang](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)voor meer informatie.
 
-After checking this option, including the named location **MFA Trusted IPS** will apply to any policies with this option selected.
+Nadat u deze optie hebt ingeschakeld, worden door de benoemde locatie die door **MFA wordt vertrouwd ip's** toegepast op alle beleids regels waarvoor deze optie is geselecteerd.
 
-For mobile and desktop applications, which have long lived session lifetimes, Conditional Access is periodically reevaluated. The default is once an hour. When the inside corporate network claim is only issued at the time of the initial authentication, Azure AD may not have a list of trusted IP ranges. In this case, it is more difficult to determine if the user is still on the corporate network:
+Voor mobiele en desktop toepassingen, met een lange levens duur van sessies, wordt voorwaardelijke toegang regel matig opnieuw geëvalueerd. De standaard waarde is eenmaal per uur. Wanneer de binnen bedrijfs netwerk claim alleen wordt uitgegeven op het moment van de eerste authenticatie, heeft Azure AD mogelijk geen lijst met vertrouwde IP-adresbereiken. In dit geval is het moeilijker om te bepalen of de gebruiker zich nog in het bedrijfs netwerk bevindt:
 
-1. Check if the user’s IP address is in one of the trusted IP ranges.
-2. Check whether the first three octets of the user’s IP address match the first three octets of the IP address of the initial authentication. The IP address is compared with the initial authentication when the inside corporate network claim was originally issued and the user location was validated.
+1. Controleer of het IP-adres van de gebruiker zich in een van de vertrouwde IP-adresbereiken bevindt.
+2. Controleer of de eerste drie octetten van het IP-adres van de gebruiker overeenkomen met de eerste drie octetten van het IP-adres van de eerste verificatie. Het IP-adres wordt vergeleken met de eerste verificatie wanneer de interne claim van het bedrijfs netwerk oorspronkelijk werd uitgegeven en de locatie van de gebruiker is gevalideerd.
 
-If both steps fail, a user is considered to be no longer on a trusted IP.
+Als beide stappen mislukken, wordt een gebruiker beschouwd als niet meer op een vertrouwd IP-adres.
 
-## <a name="location-condition-configuration"></a>Location condition configuration
+## <a name="location-condition-configuration"></a>Configuratie van locatie voorwaarde
 
-When you configure the location condition, you have the option to distinguish between:
+Wanneer u de locatie voorwaarde configureert, hebt u de mogelijkheid om onderscheid te maken tussen:
 
-- Any location
-- All trusted locations
-- Selected locations
+- Elke locatie
+- Alle vertrouwde locaties
+- Geselecteerde locaties
 
-![Location condition configuration](./media/location-condition/01.png)
+![Configuratie van locatie voorwaarde](./media/location-condition/01.png)
 
-### <a name="any-location"></a>Any location
+### <a name="any-location"></a>Elke locatie
 
-By default, selecting **Any location** causes a policy to be applied to all IP addresses, which means any address on the Internet. This setting is not limited to IP addresses you have configured as named location. When you select **Any location**, you can still exclude specific locations from a policy. For example, you can apply a policy to all locations except trusted locations to set the scope to all locations, except the corporate network.
+Als u een **wille keurige locatie** selecteert, wordt er standaard een beleid toegepast op alle IP-adressen. Dit betekent elk adres op internet. Deze instelling is niet beperkt tot IP-adressen die u hebt geconfigureerd als benoemde locatie. Wanneer u **een wille keurige locatie**selecteert, kunt u nog steeds specifieke locaties uitsluiten van een beleid. U kunt bijvoorbeeld een beleid Toep assen op alle locaties behalve vertrouwde locaties om het bereik in te stellen op alle locaties, met uitzonde ring van het bedrijfs netwerk.
 
-### <a name="all-trusted-locations"></a>All trusted locations
+### <a name="all-trusted-locations"></a>Alle vertrouwde locaties
 
-This option applies to:
+Deze optie is van toepassing op:
 
-- All locations that have been marked as trusted location
-- **MFA Trusted IPS** (if configured)
+- Alle locaties die zijn gemarkeerd als vertrouwde locatie
+- **Vertrouwde IP-adressen voor MFA** (indien geconfigureerd)
 
-### <a name="selected-locations"></a>Selected locations
+### <a name="selected-locations"></a>Geselecteerde locaties
 
-With this option, you can select one or more named locations. For a policy with this setting to apply, a user needs to connect from any of the selected locations. When you click **Select** the named network selection control that shows the list of named networks opens. The list also shows if the network location has been marked as trusted. The named location called **MFA Trusted IPs** is used to include the IP settings that can be configured in the multi-factor authentication service setting page.
+Met deze optie kunt u een of meer benoemde locaties selecteren. Een gebruiker moet verbinding maken vanaf een van de geselecteerde locaties om een beleid met deze instelling toe te passen. Wanneer u op het besturings element benoemde netwerk selectie **selecteren** klikt, wordt de lijst met benoemde netwerken weer gegeven. In de lijst wordt ook weer gegeven als de netwerk locatie is gemarkeerd als vertrouwd. De benoemde locatie met de naam **MFA Trusted ip's** wordt gebruikt voor het toevoegen van de IP-instellingen die kunnen worden geconfigureerd op de instellings pagina van de multi-factor Authentication-service.
 
 ## <a name="what-you-should-know"></a>Wat u moet weten
 
-### <a name="when-is-a-location-evaluated"></a>When is a location evaluated?
+### <a name="when-is-a-location-evaluated"></a>Wanneer is een locatie geëvalueerd?
 
-Conditional Access policies are evaluated when:
+Beleid voor voorwaardelijke toegang wordt geëvalueerd wanneer:
 
-- A user initially signs in to a web app, mobile or desktop application.
-- A mobile or desktop application that uses modern authentication, uses a refresh token to acquire a new access token. By default this check is once an hour.
+- Een gebruiker meldt zich eerst aan bij een web-app, mobiele of bureaublad toepassing.
+- Een mobiele of bureaublad toepassing die gebruikmaakt van moderne verificatie, gebruikt een vernieuwings token om een nieuw toegangs token te verkrijgen. Deze controle is standaard eenmaal per uur.
 
-This check means for mobile and desktop applications using modern authentication, a change in location would be detected within an hour of changing the network location. For mobile and desktop applications that don’t use modern authentication, the policy is applied on each token request. The frequency of the request can vary based on the application. Similarly, for web applications, the policy is applied at initial sign-in and is good for the lifetime of the session at the web application. Due to differences in session lifetimes across applications, the time between policy evaluation will also vary. Each time the application requests a new sign-in token, the  policy is applied.
+Dit betekent dat voor mobiele en bureaublad toepassingen met moderne verificatie een wijziging in de locatie wordt gedetecteerd binnen een uur nadat de netwerk locatie is gewijzigd. Voor mobiele en desktop toepassingen die geen moderne verificatie gebruiken, wordt het beleid toegepast op elke token aanvraag. De frequentie van de aanvraag kan variëren op basis van de toepassing. Op dezelfde manier wordt voor webtoepassingen het beleid toegepast bij de eerste aanmelding en is het goed voor de levens duur van de sessie in de webtoepassing. Als gevolg van verschillen in de levens duur van sessies tussen toepassingen, kan de tijd tussen de beleids evaluatie ook verschillen. Telkens wanneer de toepassing een nieuw aanmeldings token aanvraagt, wordt het beleid toegepast.
 
-By default, Azure AD issues a token on an hourly basis. After moving off the corporate network, within an hour the policy is enforced for applications using modern authentication.
+Standaard geeft Azure AD per uur een token uit. Nadat het bedrijfs netwerk is verplaatst, wordt het beleid binnen een uur afgedwongen voor toepassingen die gebruikmaken van moderne verificatie.
 
-### <a name="user-ip-address"></a>User IP address
+### <a name="user-ip-address"></a>IP-adres van gebruiker
 
-The IP address that is used in policy evaluation is the public IP address of the user. For devices on a private network, this IP address is not the client IP of the user’s device on the intranet, it is the address used by the network to connect to the public internet.
+Het IP-adres dat wordt gebruikt in de beleids evaluatie is het open bare IP-adres van de gebruiker. Voor apparaten in een particulier netwerk is dit IP-adres niet het client-IP-adres van het apparaat van de gebruiker op het intranet. het is het door het netwerk gebruikte adressen om verbinding te maken met het open bare Internet.
 
 > [!WARNING]
-> If your device has only an IPv6 address, configuring the location condition is not supported.
+> Als uw apparaat alleen een IPv6-adres heeft, wordt het configureren van de locatie voorwaarde niet ondersteund.
 
-### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Bulk uploading and downloading of named locations
+### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Bulksgewijs uploaden en downloaden van benoemde locaties
 
-When you create or update named locations, for bulk updates, you can upload or download a CSV file with the IP ranges. An upload replaces the IP ranges in the list with those from the file. Each row of the file contains one IP Address range in CIDR format.
+Wanneer u benoemde locaties maakt of bijwerkt voor bulk updates, kunt u een CSV-bestand uploaden of downloaden met de IP-bereiken. Bij een upload worden de IP-bereiken in de lijst vervangen door die van het bestand. Elke rij van het bestand bevat één IP-adres bereik in CIDR-notatie.
 
-### <a name="cloud-proxies-and-vpns"></a>Cloud proxies and VPNs
+### <a name="cloud-proxies-and-vpns"></a>Cloud-proxy's en Vpn's
 
-When you use a cloud hosted proxy or VPN solution, the IP address Azure AD uses while evaluating a policy is the IP address of the proxy. The X-Forwarded-For (XFF) header that contains the user’s public IP address is not used because there is no validation that it comes from a trusted source, so would present a method for faking an IP address.
+Wanneer u een door de Cloud gehoste proxy of VPN-oplossing gebruikt, is het IP-adres dat door Azure AD wordt gebruikt bij het evalueren van een beleid, het IP-adres van de proxy. De header X-Forwarding for (XFF) die het open bare IP-adres van de gebruiker bevat, wordt niet gebruikt omdat er geen validatie is van een vertrouwde bron. Daarom zou een methode voor het Faking van een IP-adres worden weer gegeven.
 
-When a cloud proxy is in place, a policy that is used to require a domain joined device can be used, or the inside corpnet claim from AD FS.
+Als er een Cloud proxy is ingesteld, kan een beleid dat wordt gebruikt om een aan een domein gekoppeld apparaat te vereisen, worden gebruikt, of de in-Corpnet claim van AD FS.
 
-### <a name="api-support-and-powershell"></a>API support and PowerShell
+### <a name="api-support-and-powershell"></a>API-ondersteuning en Power shell
 
-API and PowerShell is not yet supported for named locations, or for Conditional Access policies.
+API en Power shell worden nog niet ondersteund voor benoemde locaties of voor beleids regels voor voorwaardelijke toegang.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+- Als u wilt weten hoe u een beleid voor voorwaardelijke toegang kunt configureren, raadpleegt u [MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory](app-based-mfa.md).
+- Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u de [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md).

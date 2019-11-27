@@ -78,7 +78,7 @@ Sla het toegangs token op uit het antwoord.
     ``` 
 
 1. In het opdracht prompt venster plaatst u de metrische gegevens: 
-   - **azureRegion**. Moet overeenkomen met de implementatie regio van de resource waarvoor u de metrische gegevens wilt verzenden. 
+   - **azureregio**. Moet overeenkomen met de implementatie regio van de resource waarvoor u de metrische gegevens wilt verzenden. 
    - **resourceID**.  De resource-ID van de Azure-resource waarmee u de metrische gegevens wilt bijhouden.  
    - **AccessToken**. Plak het token dat u eerder hebt verkregen.
 

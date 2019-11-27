@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ffe002e4dced5b5020eb1436ca6d7d577402b077
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606261"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533168"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies schrijven in Azure Cosmos DB
 
@@ -316,6 +316,17 @@ function tax(income) {
 ```
 
 Zie het artikel [Door de gebruiker gedefinieerde functies gebruiken in Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs) voor voorbeelden van het registreren en gebruiken van een door de gebruiker gedefinieerde functie.
+
+## <a name="logging"></a>Logboekregistratie 
+
+Wanneer u opgeslagen procedure, triggers of door de gebruiker gedefinieerde functies gebruikt, kunt u de stappen vastleggen met behulp van de `console.log()` opdracht. Met deze opdracht wordt een teken reeks voor fout opsporing geconcentreerd wanneer `EnableScriptLogging` is ingesteld op True, zoals in het volgende voor beeld wordt weer gegeven:
+
+```javascript
+var response = await client.ExecuteStoredProcedureAsync(
+document.SelfLink,
+new RequestOptions { EnableScriptLogging = true } );
+Console.WriteLine(response.ScriptLog);
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

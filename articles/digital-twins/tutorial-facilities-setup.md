@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Deploy a preview environment and spatial graph - Azure Digital Twins| Microsoft Docs'
+title: 'Zelf studie: een voorbeeld omgeving en ruimtelijke grafiek implementeren-Azure Digital Apparaatdubbels | Microsoft Docs'
 description: In deze zelfstudie leert u stapsgewijs hoe u uw exemplaar van Azure Digital Twins implementeert en uw ruimtelijke resources configureert.
 services: digital-twins
 ms.author: alinast
@@ -16,9 +16,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383024"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Tutorial: Deploy Azure Digital Twins Preview and configure a spatial graph
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelf studie: Azure Digital Apparaatdubbels preview implementeren en een ruimtelijke grafiek configureren
 
-You can use the Azure Digital Twins Preview service to bring together people, places, and devices in a coherent spatial system. Deze reeks zelfstudies laat zien hoe u Azure Digital Twins gebruikt voor het detecteren van ruimtebezetting met optimale omstandigheden qua temperatuur- en luchtkwaliteit. 
+U kunt de Azure Digital Apparaatdubbels preview-service gebruiken om mensen, plaatsen en apparaten samen te brengen in een samenhangend ruimtelijk systeem. Deze reeks zelfstudies laat zien hoe u Azure Digital Twins gebruikt voor het detecteren van ruimtebezetting met optimale omstandigheden qua temperatuur- en luchtkwaliteit. 
 
 In deze zelfstudies leert u een .NET-consoletoepassing te maken om een scenario op te bouwen voor een kantoorgebouw. Het gebouw heeft meerdere verdiepingen en verschillende ruimten per verdieping. De ruimten bevatten apparaten waaraan bewegings-, temperatuur- en luchtkwaliteitssensoren zijn gekoppeld. 
 
@@ -150,7 +150,7 @@ Het bestand **provisionSample.yaml** bevat de volgende knooppunten:
 
 - **devices**: ruimten kunnen `devices` bevatten. Dat zijn fysieke of virtuele entiteiten waarmee een aantal sensoren wordt beheerd. Een apparaat kan bijvoorbeeld het telefoonnummer van een gebruiker zijn of een Raspberry Pi-sensorpod, een gateway, enzovoort. In het denkbeeldige gebouw uit het voorbeeld bevat de ruimte **Focus Room** bijvoorbeeld het apparaat **Raspberry Pi 3 A1**. Elk apparaatknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die is vastgelegd in het voorbeeld. Als u dit voorbeeld wilt configureren in een productieomgeving, moet u deze waarden vervangen door de waarden van uw installatie.  
 
-- **sensoren**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Each sensor node is uniquely identified by a `hardwareId`, hardcoded here. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Merk op dat deze regels in provisionSample.yaml zijn opgegeven als commentaarregels. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
+- **sensoren**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Elk sensorknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die hier is vastgelegd. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Merk op dat deze regels in provisionSample.yaml zijn opgegeven als commentaarregels. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
 
     ```yaml
             - dataType: Temperature

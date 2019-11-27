@@ -73,7 +73,7 @@ Voor SQL DB zijn unieke AAD-weergavenamen vereist. Hiermee moeten de AAD-account
 4. Voer in het veld **Gebruikersnaam** de naam in van het Azure AD-account dat u hebt ingesteld als de beheerder van de server, bijvoorbeeld helen@woodgroveonline.com
 5. Klik op **Opties**.
 6. Voer in het veld **Verbinding maken met database** de naam in van de niet-systeemdatabase die u wilt configureren.
-7. Klik op**Verbinden**. Voltooi het aanmeldingsproces.
+7. Klik op **Verbinding maken**. Voltooi het aanmeldingsproces.
 8. Vouw in **Objectverkenner** de map **Databases** uit.
 9. Klik met de rechtermuisknop op een gebruikersdatabase en klik op **Nieuwe query**.
 10. Voer in het queryvenster de volgende regel in en klik op **Uitvoeren** in de werkbalk:

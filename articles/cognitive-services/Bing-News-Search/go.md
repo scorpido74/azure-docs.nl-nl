@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Get news using Bing News Search REST API and Go'
+title: 'Snelstartgids: nieuws ontvangen met Bing News Search REST API en go'
 titleSuffix: Azure Cognitive Services
-description: This quickstart uses the Go language to call the Bing News Search API. The results include names and URLs of news sources identified by the query string.
+description: In deze Snelstartgids wordt gebruikgemaakt van de go-taal om de Bing Nieuws zoeken-API aan te roepen. De resultaten zijn onder andere namen en Url's van nieuws bronnen die worden geïdentificeerd door de query teken reeks.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,20 +17,20 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74222126"
 ---
-# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Quickstart: Get news results using the Bing News Search REST API and Go
+# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Snelstartgids: Nieuws resultaten ophalen met behulp van de Bing News Search REST API en go
 
-This quickstart uses the Go language to call the Bing News Search API. The results include names and URLs of news sources identified by the query string.
+In deze Snelstartgids wordt gebruikgemaakt van de go-taal om de Bing Nieuws zoeken-API aan te roepen. De resultaten zijn onder andere namen en Url's van nieuws bronnen die worden geïdentificeerd door de query teken reeks.
 
 ## <a name="prerequisites"></a>Vereisten
-* Install the [Go binaries](https://golang.org/dl/)
-* Install the go-spew library for it pretty printer to display results
-    * Install this library: `$ go get -u https://github.com/davecgh/go-spew`
+* De [Go binaire bestanden](https://golang.org/dl/) installeren
+* Installeer de go-spew-bibliotheek voor it-pretty printer om resultaten weer te geven
+    * Deze bibliotheek installeren: `$ go get -u https://github.com/davecgh/go-spew`
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="create-a-project-and-import-libraries"></a>Create a project and import libraries
+## <a name="create-a-project-and-import-libraries"></a>Een project maken en bibliotheken importeren
 
-Create a new Go project in your IDE or editor. Then import `net/http` for requests, `ioutil` to read the response, and `encoding/json` to handle the JSON text of results. The go-spew library is needed to parse JSON. 
+Maak een nieuw go-project in uw IDE of editor. Importeer vervolgens `net/http` voor aanvragen `ioutil` om de reactie te lezen en `encoding/json` om de JSON-tekst van de resultaten te verwerken. De go-spew-bibliotheek is nodig voor het parseren van JSON. 
 
 ```
 package main
@@ -45,9 +45,9 @@ import (
 
 ```
 
-## <a name="create-a-struct-to-format-the-news-search-results"></a>Create a struct to format the News search results
+## <a name="create-a-struct-to-format-the-news-search-results"></a>Een struct maken om de zoek resultaten van de nieuws te Format teren
 
-Met de struct `NewsAnswer` worden de gegevens opgemaakt die zijn opgegeven in het antwoord. The response JSON is multilevel and quite complex.  The following implementation covers the essentials.
+Met de struct `NewsAnswer` worden de gegevens opgemaakt die zijn opgegeven in het antwoord. De JSON van de reactie is meerdere niveaus en zeer complex.  De volgende implementatie heeft betrekking op de essentiële elementen.
 
 ```
 // This struct formats the answer provided by the Bing News Search API.
@@ -87,7 +87,7 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>De hoofdfunctie declareren en variabelen definiëren  
 
-The following code declares the main function and assigns required variables. Controleer of het eindpunt juist is en vervang de waarde `token` door een geldige abonnementssleutel uit uw Azure-account.
+Met de volgende code wordt de functie main gedeclareerd en worden de vereiste variabelen toegewezen. Controleer of het eindpunt juist is en vervang de waarde `token` door een geldige abonnementssleutel uit uw Azure-account.
 
 ```
 func main() {
@@ -106,9 +106,9 @@ func main() {
 }
 ```
 
-## <a name="query-and-header"></a>Query and header
+## <a name="query-and-header"></a>Query en koptekst
 
-Add the query string and access key header
+De query teken reeks en de toegangs sleutel header toevoegen
 
 ```
 // Add the query to the request.  
@@ -121,9 +121,9 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>Get request
+## <a name="get-request"></a>Aanvraag ophalen
 
-Create the client and send the Get request. 
+Maak de client en verzend de GET-aanvraag. 
 
 ```
 // Instantiate a client.  
@@ -139,7 +139,7 @@ if err != nil {
 
 ## <a name="send-the-request"></a>De aanvraag verzenden
 
-Send the request and read results using `ioutil`.
+Verzend de aanvraag en lees de resultaten met behulp van `ioutil`.
 
 ```
 resp, err := client.Do(req)
@@ -160,7 +160,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Het antwoord verwerken
 
-The `Unmarshall` function extracts information from the JSON text returned by the News Search API.  Then you can display nodes from the results using the `go-spew` pretty printer.
+Met de functie `Unmarshall` wordt informatie opgehaald uit de JSON-tekst die wordt geretourneerd door de Nieuws zoeken-API.  Vervolgens kunt u de knoop punten van de resultaten weer geven met behulp van de `go-spew` mooie printer.
 
 ```
 // Create a new answer object 
@@ -181,7 +181,7 @@ spew.Dump(result.Name, result.URL)
 
 ## <a name="results"></a>Resultaten
 
-The results contain name and URL of each result.
+De resultaten bevatten de naam en URL van elk resultaat.
 
 ```
 (string) (len=91) "Cognitive Services Market: Global Industry Analysis and Opportunity Assessment, 2019 - 2025"
@@ -206,4 +206,4 @@ The results contain name and URL of each result.
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [What is Bing News Search](search-the-web.md)
+> [Wat is Bing News Search](search-the-web.md)

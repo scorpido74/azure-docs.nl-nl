@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 11/25/2019
 ms.author: swmachan
-ms.openlocfilehash: 79cf87cef4e58cf4e5a2039f30289d55038c8b92
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3694c8cb34b2a050c9e18265c8cc0a0198456076
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671954"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533707"
 ---
 # <a name="request-limits-for-translator-text"></a>Aanvraag limieten voor Translator Text
 
@@ -29,9 +29,9 @@ De volgende tabel bevat een overzicht van matrix elementen en teken limieten voo
 
 | Bewerking | Maximale grootte van matrix element |   Maximum aantal matrix elementen |  Maximale aanvraag grootte (tekens) |
 |:----|:----|:----|:----|
-| Translate | 5,000 | 100   | 5,000 |
-| Transliterate | 5,000 | 10    | 5,000 |
-| Detect | 10.000 | 100 |   50,000 |
+| Vertalen | 5\.000 | 100   | 5\.000 |
+| Transcriberen | 5\.000 | 10    | 5\.000 |
+| Detecteren | 10.000 | 100 |   50,000 |
 | BreakSentence | 10.000    | 100 | 50,000 |
 | Opzoeken in woordenlijst| 100 |  10  | 1000 |
 | Voorbeelden in woordenlijst | 100 voor tekst en 100 voor vertaling (200 in totaal)| 10|   2,000 |
@@ -58,7 +58,7 @@ Deze limieten zijn beperkt tot de standaard Vertaal modellen van micro soft. Aan
 
 ## <a name="latency"></a>Latentie
 
-Het Translator Text-API heeft een maximale latentie van 15 seconden met behulp van standaard modellen. Vertaling met aangepaste modellen heeft een maximale latentie van 25 seconden. Op dit moment hebt u een resultaat of een time-outantwoord ontvangen. Normaal gesp roken worden antwoorden in 150 milliseconden geretourneerd tot 300 milliseconden. Reactie tijden variëren op basis van de grootte van de aanvraag en het taal paar. Als u geen vertaling of een [fout](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) bericht binnen dat tijds bestek ontvangt, controleert u uw netwerk verbinding en probeert u het opnieuw.
+Het Translator Text-API heeft een maximale latentie van 15 seconden met standaard modellen en 120 seconden wanneer aangepaste modellen worden gebruikt. Normaal gesp roken worden antwoorden op *tekst binnen 100 tekens* geretourneerd in 150 milliseconden tot 300 milliseconden. De aangepaste Translator-modellen hebben vergelijk bare latentie kenmerken voor een continue aanvraag frequentie en kunnen een hogere latentie hebben wanneer uw aanvraag frequentie loopt. Reactie tijden variëren op basis van de grootte van de aanvraag en het taal paar. Als u binnen deze tijds Panne geen vertaling of een [fout](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) bericht ontvangt, controleert u uw code, uw netwerk verbinding en probeer het opnieuw. 
 
 ## <a name="sentence-length-limits"></a>Maximale lengte van zin
 

@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld - Meerdere naampatronen
-description: This sample policy definition requires that a resource matches one of the provided digit or number name patterns.
+description: Voor deze voor beeld van een beleids definitie moet een resource overeenkomen met een van de gegeven cijfer-of numerieke naam patronen.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 227b03d0719fcf1a8851213d96b057c9b439a99d
@@ -12,7 +12,7 @@ ms.locfileid: "74463479"
 ---
 # <a name="sample---allow-multiple-name-patterns"></a>Voorbeeld: meerdere naampatronen toestaan
 
-Toestaan dat verschillende naamgevingspatronen mogen worden gebruikt voor resources. Geef de toegestane naampatronen op in de beleidsregel.
+Toestaan dat verschillende naampatronen mogen worden gebruikt voor resources. Geef de toegestane naampatronen op in de beleidsregel.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,7 +24,7 @@ U kunt deze sjabloon implementeren met behulp van [Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Implementeren met portal
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fallow-multiple-name-patterns%2Fazurepolicy.json)
+[![het voor beeld van het beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fallow-multiple-name-patterns%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3c70d2086fc5866b07c31966343397f8ccc809be
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846736"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546353"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -145,7 +145,7 @@ De resultaten weer geven in CSV:
 | ethumbs. db $ | Tijdelijk bestand voor miniatuur weergaven |
 | ~$\*.\* | Tijdelijk Office-bestand |
 | \*. tmp | Tijdelijk bestand |
-| \*.laccdb | Access DB-bestand vergren delen|
+| \*. LACCDB | Access DB-bestand vergren delen|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Intern synchronisatie bestand|
 | Informatie over \\systeem volume | Map die specifiek is voor het volume |
 | $RECYCLE. DOCKOPSLAGLOCATIE| Map |
@@ -227,7 +227,7 @@ Als u een on-premises back-upoplossing gebruikt, moeten back-ups worden uitgevoe
 > Herstellen met Bare-Metal (BMR) kan leiden tot onverwachte resultaten en wordt op dit moment niet ondersteund.
 
 > [!Note]  
-> VSS-moment opnamen (inclusief het tabblad vorige versies) worden momenteel niet ondersteund op volumes waarvoor Cloud lagen zijn ingeschakeld. Als Cloud lagen zijn ingeschakeld, gebruikt u de moment opnamen van Azure-bestands shares om een bestand te herstellen vanuit een back-up.
+> Met versie 9 van de Azure file SYnc-agent worden VSS-moment opnamen (met inbegrip van eerdere versies tabblad) nu ondersteund op volumes waarvoor Cloud lagen zijn ingeschakeld. U moet echter compatibiliteit met eerdere versies inschakelen via Power shell. [Meer informatie](storage-files-deployment-guide.md).
 
 ### <a name="encryption-solutions"></a>Oplossingen voor versleuteling
 Ondersteuning voor versleutelings oplossingen is afhankelijk van hoe ze worden geïmplementeerd. Het is bekend dat Azure File Sync werkt met:
@@ -257,7 +257,7 @@ Azure File Sync is alleen beschikbaar in de volgende regio's:
 | India - centraal | Pune |
 | US - centraal | Iowa |
 | Azië - oost | Hong Kong SAR |
-| VS - oost | Virginia |
+| US - oost | Virginia |
 | VS - oost2 | Virginia |
 | Frankrijk - centraal | Parijs |
 | Frankrijk-zuid * | Marseille |
@@ -265,24 +265,24 @@ Azure File Sync is alleen beschikbaar in de volgende regio's:
 | Korea - zuid | Busan |
 | Japan - oost | Tokyo, Saitama |
 | Japan - west | Osaka |
-| VS - noord-centraal | Illinois |
+| US - noord-centraal | Illinois |
 | Europa - noord | Ierland |
 | Zuid-Afrika - noord | Johannesburg |
 | Zuid-Afrika-west * | Kaapstad |
-| VS - zuid-centraal | Texas |
+| US - zuid-centraal | Texas |
 | India - zuid | Chennai |
 | Azië - zuidoost | Singapore |
 | Verenigd Koninkrijk Zuid | Londen |
 | Verenigd Koninkrijk West | Cardiff |
 | VS (overheid) - Arizona | Arizona |
 | VS (overheid) - Texas | Texas |
-| US Gov - Virginia | Virginia |
+| VS (overheid) - Virginia | Virginia |
 | VAE - noord | Dubai |
 | UAE-centraal * | Abu Dhabi |
 | Europa -west | Nederland |
-| VS - west-centraal | Wyoming |
-| VS - west | Californië |
-| VS - west 2 | Washington |
+| US - west-centraal | Wyoming |
+| US - west | Californië |
+| US - west 2 | Washington |
 
 Azure File Sync ondersteunt alleen synchronisatie met een Azure-bestands share die zich in dezelfde regio bevinden als de opslag synchronisatie service.
 
@@ -300,14 +300,14 @@ Ter ondersteuning van de failover-integratie tussen geo-redundante opslag en Azu
 |---------------------|--------------------|
 | Australië - oost      | Australië - zuidoost|
 | Australië - zuidoost | Australië - oost     |
-| Brazilië - zuid        | VS - zuid-centraal   |
+| Brazilië - zuid        | US - zuid-centraal   |
 | Canada - midden      | Canada - oost        |
 | Canada - oost         | Canada - midden     |
 | India - centraal       | India - zuid        |
-| US - centraal          | VS - oost 2          |
+| US - centraal          | US - oost 2          |
 | Azië - oost           | Azië - zuidoost     |
-| VS - oost             | VS - west            |
-| VS - oost 2           | US - centraal         |
+| US - oost             | US - west            |
+| US - oost 2           | US - centraal         |
 | Frankrijk - centraal      | Frankrijk - zuid       |
 | Frankrijk - zuid        | Frankrijk - centraal     |
 | Japan - oost          | Japan - west         |
@@ -315,21 +315,21 @@ Ter ondersteuning van de failover-integratie tussen geo-redundante opslag en Azu
 | Korea - centraal       | Korea - zuid        |
 | Korea - zuid         | Korea - centraal      |
 | Europa - noord        | Europa -west        |
-| VS - noord-centraal    | VS - zuid-centraal   |
+| US - noord-centraal    | US - zuid-centraal   |
 | Zuid-Afrika - noord  | Zuid-Afrika - west  |
 | Zuid-Afrika - west   | Zuid-Afrika - noord |
-| VS - zuid-centraal    | VS - noord-centraal   |
+| US - zuid-centraal    | US - noord-centraal   |
 | India - zuid         | India - centraal      |
 | Azië - zuidoost      | Azië - oost          |
 | Verenigd Koninkrijk Zuid            | Verenigd Koninkrijk West            |
 | Verenigd Koninkrijk West             | Verenigd Koninkrijk Zuid           |
 | VS (overheid) - Arizona      | VS (overheid) - Texas       |
-| US Gov - Iowa         | US Gov - Virginia    |
-| US Gov - Virginia      | VS (overheid) - Texas       |
+| US Gov - Iowa         | VS (overheid) - Virginia    |
+| VS (overheid) - Virginia      | VS (overheid) - Texas       |
 | Europa -west         | Europa - noord       |
-| VS - west-centraal     | VS - west 2          |
-| VS - west             | VS - oost            |
-| VS - west 2           | VS - west-centraal    |
+| US - west-centraal     | US - west 2          |
+| US - west             | US - oost            |
+| US - west 2           | US - west-centraal    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Updatebeleid Azure File Sync-agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

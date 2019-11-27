@@ -60,7 +60,7 @@ Wanneer u een account updatet een abonnement toevoegt, verleent u Cloudyn toegan
 1. Als u een _niet-geactiveerd_ abonnement wilt bijwerken dat al voorkomt in Cloudyn in Account-beheer, klikt u op het potloodsymbool bewerken rechts van de bovenliggende _tenant-GUID_. Abonnementen zijn gegroepeerd onder een bovenliggende tenant, dus vermijd het afzonderlijk activeren van abonnementen.
     ![uw tenant-id selecteren in het vak Abonnementen opnieuw detecteren](./media/activate-subs-accounts/existing-sub.png)
 2. Voer, indien nodig, de Tenant-ID in. Als u uw Tenant-ID niet weet, gebruikt u de volgende stappen om die te vinden:
-    1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+    1. Meld u aan bij [Azure Portal](https://portal.azure.com).
     2. Selecteer in de Azure-portal **Azure Active Directory**.
     3. Haal de tenant-id op door **Eigenschappen** voor uw Azure AD-tenant te selecteren.
     4. Kopieer de map-id-GUID. Deze waarde is uw tenant-id.
@@ -87,7 +87,7 @@ Wanneer u de beheerportal van Cloudyn voor het eerst gebruikt, ziet u mogelijk d
 
 - *De opgegeven API-sleutel is geen inschrijvingssleutel van het hoogste niveau* weergegeven in de wizard **Instellen van Cloudyn**.
 - *Directe inschrijving – Nee* weergegeven in de Enterprise Agreement-portal.
-- *No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account* displayed in the Cloudyn portal.
+- *Er zijn voor de afgelopen 30 dagen geen gebruiks gegevens gevonden. Neem contact op met uw Distributor om ervoor te zorgen dat uw Azure-account* wordt weer gegeven in de Cloudyn-Portal.
 
 De voorgaande berichten geven aan dat u een Azure Enterprise Agreement via een wederverkoper of CSP hebt aangeschaft. Uw wederverkoper of CSP moet _markeren_ inschakelen voor uw Azure-account zodat u uw gegevens kunt weergeven in Cloudyn.
 

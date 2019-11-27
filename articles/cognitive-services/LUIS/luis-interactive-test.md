@@ -1,7 +1,7 @@
 ---
-title: Test app in LUIS portal
+title: Test-app in de portal van LUIS
 titleSuffix: Azure Cognitive Services
-description: Use Language Understanding (LUIS) to continuously work on your application to refine it and improve its language understanding.
+description: Met Language Understanding (LUIS) kunt werken continu op uw toepassing het verfijnen en verbeteren van de taal begrijpen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,9 +18,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74221740"
 ---
-# <a name="test-your-luis-app-in-the-luis-portal"></a>Test your LUIS app in the LUIS portal
+# <a name="test-your-luis-app-in-the-luis-portal"></a>Uw LUIS-app testen in de LUIS-Portal
 
-[Testing](luis-concept-test.md) an app is an iterative process. After training your LUIS app, test it with sample utterances to see if the intents and entities are recognized correctly. If they're not, make updates to the LUIS app, train, and test again. 
+Het [testen](luis-concept-test.md) van een app is een iteratief proces. Na het trainen van uw LUIS-app, door deze te testen met voorbeeldgegevens uitingen om te controleren of de intenties en entiteiten correct worden herkend. Als ze niet zijn, moet u opnieuw updates voor de LUIS-app, trainen en testen. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -30,77 +30,77 @@ ms.locfileid: "74221740"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
-## <a name="train-before-testing"></a>Train before testing
+## <a name="train-before-testing"></a>Trainen voor testen
 
-In order to test against the most recent version of the active app, select **Train** from the top menu, before testing. 
+Als u wilt testen op de meest recente versie van de actieve app, selecteert u **trainen** in het bovenste menu voordat u gaat testen. 
 
-## <a name="test-an-utterance"></a>Test an utterance
+## <a name="test-an-utterance"></a>Een utterance testen
 
-The test utterance should not be exactly the same as any example utterances in the app. The test utterance should include word choice, phrase length, and entity usage you expect for a user. 
+De test utterance mag niet exact hetzelfde zijn als een voor beeld van een uitingen in de app. De test utterance moet de woord keuze, de woord lengte en het entiteits gebruik bevatten die u verwacht voor een gebruiker. 
 
-1. Access your app by selecting its name on the **My Apps** page. 
+1. U hebt toegang tot uw app door de naam ervan te selecteren op de pagina **mijn apps** . 
 
-1. To access the **Test** slide-out panel, select **Test** in your application's top panel.
+1. Als u toegang wilt krijgen tot het **toetsen paneel testen** , selecteert u **testen** in het bovenste paneel van de toepassing.
 
     > [!div class="mx-imgBorder"]
-    > ![Train & Test App page](./media/luis-how-to-interactive-test/test.png)
+    > ![Train & app-pagina testen](./media/luis-how-to-interactive-test/test.png)
 
-1. Enter an utterance in the text box and select Enter. You can type as many test utterances as you want in the **Test**, but only one utterance at a time.
+1. Voer een utterance in het tekstvak in en selecteer Enter. U kunt net zoveel test uitingen als u wilt in de **test**typen, maar slechts één utterance tegelijk.
 
-1. The utterance, its top intent, and score are added to the list of utterances under the text box.
+1. De utterance, de belangrijkste doel en de score zijn toegevoegd aan de lijst met uitingen onder het tekstvak.
 
-    ![Interactive testing identifies the wrong intent](./media/luis-how-to-interactive-test/test-weather-1.png)
+    ![Interactieve testen identificeert de verkeerde bedoelingen](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>Inspect score
+## <a name="inspect-score"></a>Controleren van score
 
-You inspect details of the test result in the **Inspect** panel. 
+U kunt de details van het test resultaat bekijken in het deel venster **inspecteren** . 
  
-1. With the **Test** slide-out panel open, select **Inspect** for an utterance you want to compare. 
+1. **Selecteer in** het deel venster voor het **testen** van de schuif regelaar naar een utterance die u wilt vergelijken. 
 
-    ![Select Inspect button to see more details about the test results](./media/luis-how-to-interactive-test/inspect.png)
+    ![Selecteer de knop controleren om meer informatie over de test resultaten weer te geven](./media/luis-how-to-interactive-test/inspect.png)
 
-1. The **Inspection** panel appears. The panel includes the top scoring intent as well as any identified entities. The panel shows the result of the selected utterance.
+1. Het deel venster **inspectie** wordt weer gegeven. Het deelvenster bevat de scoring-doel, evenals de geïdentificeerde entiteiten boven. Het deelvenster toont het resultaat van de geselecteerde utterance.
 
-    ![The panel includes the top scoring intent as well as any identified entities. The panel shows the result of the selected utterance.](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![Het deelvenster bevat de scoring-doel, evenals de geïdentificeerde entiteiten boven. Het deelvenster toont het resultaat van de geselecteerde utterance.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
-## <a name="correct-top-scoring-intent"></a>Correct top scoring intent
+## <a name="correct-top-scoring-intent"></a>Juiste boven scoring-doel
 
-1. If the top scoring intent is incorrect, select the **Edit** button.
+1. Als het beste score doel onjuist is, selecteert u de knop **bewerken** .
 
-1.  In the drop-down list, select the correct intent for the utterance.
+1.  Selecteer in de vervolgkeuzelijst het juiste type voor de utterance.
 
-    ![Select correct intent](./media/luis-how-to-interactive-test/intent-select.png)
+    ![Juiste doel selecteren](./media/luis-how-to-interactive-test/intent-select.png)
 
-## <a name="view-sentiment-results"></a>View sentiment results
+## <a name="view-sentiment-results"></a>Sentiment-resultaten weergeven
 
-If **Sentiment analysis** is configured on the **[Publish](luis-how-to-publish-app.md#enable-sentiment-analysis)** page, the test results include the sentiment found in the utterance. 
+Als **sentiment analyse** is geconfigureerd op de pagina **[publiceren](luis-how-to-publish-app.md#enable-sentiment-analysis)** , bevatten de test resultaten de sentiment die zijn gevonden in de utterance. 
 
-![Image of Test pane with sentiment analysis](./media/luis-how-to-interactive-test/sentiment.png)
+![Afbeelding van het testvenster met sentimentanalyse](./media/luis-how-to-interactive-test/sentiment.png)
 
-## <a name="correct-matched-patterns-intent"></a>Correct matched pattern's intent
+## <a name="correct-matched-patterns-intent"></a>Corrigeer de bedoeling komt overeen met patroon
 
-If you are using [Patterns](luis-concept-patterns.md) and the utterance matched a pattern, but the wrong intent was predicted, select the **Edit** link by the pattern, then select the correct intent.
+Als u [patronen](luis-concept-patterns.md) gebruikt en de utterance overeenkomt met een patroon, maar de verkeerde intentie is voor speld, selecteert u de koppeling **bewerken** op basis van het patroon en selecteert u vervolgens de juiste intentie.
 
-## <a name="compare-with-published-version"></a>Compare with published version
+## <a name="compare-with-published-version"></a>Vergelijken met de gepubliceerde versie
 
-You can test the active version of your app with the published [endpoint](luis-glossary.md#endpoint) version. In the **Inspect** panel, select **Compare with published**. Any testing against the published model is deducted from your Azure subscription quota balance. 
+U kunt de actieve versie van uw app testen met de gepubliceerde versie van het [eind punt](luis-glossary.md#endpoint) . Selecteer in het deel venster **inspecteren** de optie **compare with published**. Alle testen op basis van het gepubliceerde model wordt afgetrokken van saldo van uw Azure-abonnement quotum. 
 
-![Compare with published](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+![Vergelijken met gepubliceerd](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
-## <a name="view-endpoint-json-in-test-panel"></a>View endpoint JSON in test panel
-You can view the endpoint JSON returned for the comparison by selecting the **Show JSON view**.
+## <a name="view-endpoint-json-in-test-panel"></a>Eindpunt JSON in test-deelvenster weergeven
+U kunt de eindpunt-JSON weer geven die is geretourneerd voor de vergelijking door de **weer gave JSON**weer geven te selecteren.
 
-![Published JSON response](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+![Gepubliceerde JSON-antwoord](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 <!--Service name is 'Bing Spell Check v7 API' in the portal-->
-## <a name="additional-settings-in-test-panel"></a>Additional settings in test panel
+## <a name="additional-settings-in-test-panel"></a>Aanvullende instellingen in het Configuratiescherm van de test
 
-### <a name="luis-endpoint"></a>LUIS endpoint
+### <a name="luis-endpoint"></a>LUIS-eindpunt
 
-If you have several LUIS endpoints, use the **Additional Settings** link on the Test's Published pane to change the endpoint used for testing. If you are not sure which endpoint to use, select the default **Starter_Key**. 
+Als u meerdere LUIS-eind punten hebt, gebruikt u de koppeling **extra instellingen** in het gepubliceerde deel venster van de test om het eind punt te wijzigen dat wordt gebruikt voor het testen. Als u niet zeker weet welk eind punt u moet gebruiken, selecteert u de standaard **Starter_Key**. 
 
 > [!div class="mx-imgBorder"]
-> ![Test panel with Additional Settings link highlighted](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
+> ![test paneel met de koppeling extra instellingen gemarkeerd](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
 <!--
 ###  View Bing Spell Check corrections in test panel
@@ -136,11 +136,11 @@ Use the following procedure to include the [Bing Spell Check v7](https://azure.m
 -->
 
 ## <a name="batch-testing"></a>Batchgewijs testen
-See batch testing [concepts](luis-concept-batch-test.md) and learn [how to](luis-how-to-batch-test.md) test a batch of utterances.
+Zie [concepten](luis-concept-batch-test.md) voor batch tests en leer [hoe u](luis-how-to-batch-test.md) een batch-uitingen kunt testen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-If testing indicates that your LUIS app doesn't recognize the correct intents and entities, you can work to improve your LUIS app's accuracy by labeling more utterances or adding features. 
+Als testen geeft aan dat uw LUIS-app niet wordt herkend door de juiste intenties en entiteiten, kunt u uw LUIS-app om nauwkeurigheid te verbeteren door meer uitingen labels of het toevoegen van functies werken. 
 
-* [Label suggested utterances with LUIS](luis-how-to-review-endpoint-utterances.md) 
-* [Use features to improve your LUIS app's performance](luis-how-to-add-features.md) 
+* [Aanbevolen uitingen label met LUIS](luis-how-to-review-endpoint-utterances.md) 
+* [Functies gebruiken om de prestaties van uw LUIS-app te verbeteren](luis-how-to-add-features.md) 

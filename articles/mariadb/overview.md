@@ -1,6 +1,6 @@
 ---
 title: Overzicht van de relationele databaseservice Azure Database for MariaDB
-description: Learn about the Azure Database for MariaDB service, a relational database service in the Microsoft cloud based on the MySQL community edition.
+description: Meer informatie over de Azure Database for MariaDB-service, een relationele database service in de micro soft Cloud op basis van de MySQL Community Edition.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -16,7 +16,7 @@ ms.locfileid: "74484143"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Wat is Azure Database for MariaDB?
 
-Azure Database for MariaDB is een relationele databaseservice in de Microsoft-cloud. Azure Database for MariaDB is based on the [MariaDB community edition](https://mariadb.org/download/) (available under the GPLv2 license) database engine, version 10.2 and 10.3.
+Azure Database for MariaDB is een relationele databaseservice in de Microsoft-cloud. Azure Database for MariaDB is gebaseerd op de [MariaDB Community-editie](https://mariadb.org/download/) (beschikbaar onder de GPLv2-licentie) data base-engine versie 10,2 en 10,3.
 
 Azure Database for MariaDB levert:
 
@@ -53,7 +53,7 @@ De toonaangevende serviceovereenkomst (SLA) van Azure met 99,99% beschikbaarheid
 
 ## <a name="secure-your-data"></a>Uw gegevens beveiligen
 
-Azure-databaseservices hebben traditiegetrouw een uitstekende gegevensbeveiliging die Azure Database for MariaDB voortzet. Azure Database for MariaDB biedt functies voor toegangsbeperking, beveiliging van data-at-rest en in-motion en activiteitsbewaking. Bezoek het [Vertrouwenscentrum van Azure](https://www.microsoft.com/trustcenter/security) voor informatie over de beveiliging van het Azure-platform. For more information about Azure Database for MySQL security features, see the [security overview](concepts-security.md).
+Azure-databaseservices hebben traditiegetrouw een uitstekende gegevensbeveiliging die Azure Database for MariaDB voortzet. Azure Database for MariaDB biedt functies voor toegangsbeperking, beveiliging van data-at-rest en in-motion en activiteitsbewaking. Bezoek het [Vertrouwenscentrum van Azure](https://www.microsoft.com/trustcenter/security) voor informatie over de beveiliging van het Azure-platform. Zie het [overzicht van beveiliging](concepts-security.md)voor meer informatie over Azure database for MySQL beveiligings functies.
 
 ## <a name="contacts"></a>Contactpersonen
 

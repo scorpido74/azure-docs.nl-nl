@@ -1,6 +1,6 @@
 ---
 title: Details van Azure Blockchain Workbench-database opvragen
-description: Learn how to get Azure Blockchain Workbench Preview database and database server information.
+description: Meer informatie over het ophalen van de voorbeeld database en database server gegevens voor Azure Block Chain Workbench.
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
@@ -13,11 +13,11 @@ ms.locfileid: "74324697"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Informatie opvragen over uw Azure Blockchain Workbench-database
 
-This article shows how to get detailed information about your Azure Blockchain Workbench Preview database.
+In dit artikel wordt uitgelegd hoe u gedetailleerde informatie krijgt over de preview-versie van uw Azure Block Chain Workbench-data base.
 
 ## <a name="overview"></a>Overzicht
 
-Informatie over toepassingen, werkstromen de uitvoering van slimme contracten kunt u opvragen met behulp van weergaven van de SQL-database van Blockchain Workbench. Developers can use this information when using tools such as Microsoft Excel, Power BI, Visual Studio, and SQL Server Management Studio.
+Informatie over toepassingen, werkstromen de uitvoering van slimme contracten kunt u opvragen met behulp van weergaven van de SQL-database van Blockchain Workbench. Ontwikkel aars kunnen deze informatie gebruiken bij het gebruik van hulpprogram ma's zoals micro soft Excel, Power BI, Visual Studio en SQL Server Management Studio.
 
 Ontwikkelaars hebben het volgende nodig om verbinding te kunnen maken met de database:
 
@@ -28,7 +28,7 @@ Ontwikkelaars hebben het volgende nodig om verbinding te kunnen maken met de dat
 
 Verbinding maken met de database:
 
-1. Sign in to the Azure portal with an account that has **Owner** permissions for the Azure Blockchain Workbench resources.
+1. Meld u aan bij de Azure Portal met een account met **eigenaars** machtigingen voor de Azure Block Chain Workbench-Resources.
 2. Kies **Resourcegroepen** in het linkernavigatievenster.
 3. Kies de naam van de resourcegroep voor uw implementatie van Blockchain Workbench.
 4. Selecteer **Type** om de lijst met resources te sorteren en kies vervolgens uw **SQL-server**. De gesorteerde lijst in de volgende schermafbeelding bevat twee SQL-databases, 'master' en een database die 'lhgn' gebruikt als de waarde voor **Voorvoegsel resource**.

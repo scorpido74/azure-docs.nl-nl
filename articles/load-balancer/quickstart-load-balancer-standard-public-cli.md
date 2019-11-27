@@ -24,7 +24,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214798"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Create a Standard Load Balancer to load balance VMs using Azure CLI
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Snelstartgids: een Standard Load Balancer maken om taken te verdelen over Vm's met behulp van Azure CLI
 
 In deze snelstart wordt getoond hoe u Standard Load Balancer maakt. U test de load balancer door twee virtuele machines (VM's) te implementeren waarop een Ubuntu-server wordt uitgevoerd en waarbij de taken van een web-app gelijkelijk over twee VM's worden verdeeld.
 
@@ -89,7 +89,7 @@ Een statuscontrole controleert alle exemplaren van de virtuele machines om ervoo
 
 ### <a name="create-the-load-balancer-rule"></a>Load balancer-regel maken
 
-Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) de regel *myLoadBalancerRuleWeb* voor het luisteren naar poort 80 in de front-endpool *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
+Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met *az network lb rule create* de regel [myLoadBalancerRuleWeb](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) voor het luisteren naar poort 80 in de front-endpool *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -106,11 +106,11 @@ Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenk
 
 ## <a name="configure-virtual-network"></a>Virtueel netwerk configureren
 
-Voordat u enkele VM's implementeert en uw load balancer test, maakt u de ondersteunende virtuele-netwerkbronnen.
+Voordat u enkele VM's implementeert om uw load balancer te testen, maakt u de ondersteunende virtuele-netwerkbronnen.
 
-### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) in *myResourceGroup* een virtueel netwerk met de naam *myVnet* met een subnet met de naam *mySubnet*.
+Maak met *az network vnet create* een virtueel netwerk met de naam *myVnet* met een subnet met de naam *mySubnet* in [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \
@@ -121,7 +121,7 @@ Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/v
 ```
 ###  <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
-Voor Standard Load Balancer moeten de VM's in het back-endadres NIC's bevatten die tot een netwerkbeveiligingsgroep behoren. Maak een netwerkbeveiligingsgroep om binnenkomende verbindingen met uw virtuele netwerk te definiëren.
+Voor Standard Load Balancer moeten de VM's in het back-endadres NIC's bevatten die tot een netwerkbeveiligingsgroep behoren. Maak een netwerkbeveiligingsgroep om de binnenkomende verbindingen met uw virtuele netwerk te definiëren.
 
 ```azurecli-interactive
   az network nsg create \
@@ -197,7 +197,7 @@ Een beschikbaarheidsset maken met [az vm availabilityset create](/cli/azure/netw
     --name myAvailabilitySet
 ```
 
-### <a name="create-three-virtual-machines"></a>Create three virtual machines
+### <a name="create-three-virtual-machines"></a>Drie virtuele machines maken
 
 U kunt een cloud-init-configuratiebestand maken om NGINX te installeren en een 'Hallo wereld' Node.js-app uit te voeren op een virtuele Linux-machine. Maak in uw huidige shell een bestand met de naam cloud-init.txt en plak de volgende configuratie in de shell. Zorg ervoor dat u het hele cloud-init-bestand correct kopieert, met name de eerste regel:
 

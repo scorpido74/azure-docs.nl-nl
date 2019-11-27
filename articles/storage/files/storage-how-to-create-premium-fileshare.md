@@ -1,6 +1,6 @@
 ---
-title: Create a premium Azure file share
-description: In this article, you learn how to create a premium Azure file share.
+title: Een Premium Azure-bestands share maken
+description: In dit artikel leert u hoe u een Premium Azure-bestands share maakt.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -14,30 +14,30 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74209539"
 ---
-# <a name="how-to-create-an-premium-azure-file-share"></a>How to create an premium Azure file share
-Premium file shares are offered on solid-state disk (SSD) storage media and are useful for IO-intensive workloads, including hosting databases and high-performance computing (HPC). Premium file shares are hosted in a special purpose storage account kind, called a FileStorage account. Premium file shares are designed for high performance and enterprise scale applications, providing consistent low latency, high IOPS, and high throughput shares.
+# <a name="how-to-create-an-premium-azure-file-share"></a>Een Premium Azure-bestands share maken
+Premium-bestands shares worden aangeboden op media SSD (Solid-State Disk) en zijn handig voor i/o-intensieve workloads, waaronder hosting data bases en HPC (High-Performance Computing). Premium-bestands shares worden gehost in een speciaal type opslag account, een FileStorage-account genoemd. Premium-bestands shares zijn ontworpen voor hoge prestaties en schaal bare toepassingen op bedrijfs niveau en bieden consistente shares met lage latentie, hoge IOPS en hoge door voer.
 
-This article shows you how to create this new account type using [Azure portal](https://portal.azure.com/), Azure PowerShell, and Azure CLI.
+In dit artikel leest u hoe u dit nieuwe account type maakt met behulp van [Azure Portal](https://portal.azure.com/), Azure PowerShell en Azure cli.
 
 ## <a name="prerequisites"></a>Vereisten
 
-To access Azure resources including premium Azure file shares, you'll need an Azure subscription. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Voor toegang tot Azure-resources, inclusief Premium Azure-bestands shares, hebt u een Azure-abonnement nodig. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Create a premium file share using the Azure portal
+## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Een Premium-bestands share maken met behulp van de Azure Portal
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-### <a name="create-a-filestorage-storage-account"></a>Create a filestorage storage account
+### <a name="create-a-filestorage-storage-account"></a>Een filestorage-opslag account maken
 
-Now you're ready to create your storage account.
+U bent nu klaar om uw opslag account te maken.
 
-Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken. This article shows how to create a new resource group.
+Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken. In dit artikel wordt beschreven hoe u een nieuwe resource groep maakt.
 
-1. In the Azure portal, select **Storage Accounts** on the left menu.
+1. Selecteer in het Azure Portal **opslag accounts** in het menu links.
 
-    ![Azure portal main page select storage account](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+    ![Azure Portal hoofd pagina Selecteer een opslag account](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
 1. Kies in het venster **Opslagaccounts** dat wordt weergegeven de optie **Toevoegen**.
 1. Selecteer het abonnement waarin u het opslagaccount wilt maken.
@@ -45,53 +45,53 @@ Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is
 
 1. Voer vervolgens een naam in voor het opslagaccount. De naam die u kiest, moet uniek zijn binnen Azure. Verder moet de naam 3 tot 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
 1. Selecteer een locatie voor uw opslagaccount of gebruik de standaardlocatie.
-1. For **Performance** select **Premium**.
-1. Select **Account kind** and choose **FileStorage**.
-1. Leave **Replication** set to its default value of **Locally-redundant storage (LRS)** .
+1. Selecteer **Premium**voor **prestaties** .
+1. Selecteer **account type** en kies **FileStorage**.
+1. Zorg ervoor dat **replicatie** is ingesteld op de standaard waarde van **lokaal redundante opslag (LRS)** .
 
-    ![How to create a storage account for a premium file share](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
+    ![Een opslag account maken voor een Premium-bestands share](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. Selecteer **Beoordelen en maken** om uw opslagaccountinstellingen te bekijken en het account te maken.
 1. Selecteer **Maken**.
 
-Once your storage account resource has been created, navigate to it.
+Als uw opslag account is gemaakt, gaat u naar de resource.
 
 ### <a name="create-a-premium-file-share"></a>Een Premium-bestandsshare maken
 
-1. In the left menu for the storage account, scroll to the **File service** section, then select **Files**.
-1. Select **File share** to create a premium file share.
-1. Enter a name and a desired quota for your file share, then select **Create**.
+1. Ga in het menu links voor het opslag account naar de sectie **Bestands service** en selecteer vervolgens **bestanden**.
+1. Selecteer **Bestands share** om een Premium-bestands share te maken.
+1. Voer een naam en een gewenste quotum in voor de bestands share en selecteer vervolgens **maken**.
 
 > [!NOTE]
-> Provisioned share sizes is specified by the share quota, file shares are billed on the provisioned size, refer to the [pricing page](https://azure.microsoft.com/pricing/details/storage/files/) for more details.
+> De inrichtings grootte van de shares worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte omvang. Raadpleeg de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
 
    ![Een Premium-bestandsshare maken](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
 
 ### <a name="clean-up-resources"></a>Resources opschonen
 
-If you would like to clean up the resources created in this article, you can simply delete the resource group. Deleting the resource group also deletes the associated storage account as well as any other resources associated with the resource group.
+Als u de resources die in dit artikel zijn gemaakt, wilt opschonen, kunt u gewoon de resource groep verwijderen. Als u de resource groep verwijdert, worden ook het bijbehorende opslag account en alle andere resources die aan de resource groep zijn gekoppeld, verwijderd.
 
-## <a name="create-a-premium-file-share-using-powershell"></a>Create a premium file share using PowerShell
+## <a name="create-a-premium-file-share-using-powershell"></a>Een Premium-bestands share maken met behulp van Power shell
 
 ### <a name="create-an-account-using-powershell"></a>Een account maken met PowerShell
 
 Installeer eerst de meest recente versie van de [ PowerShellGet](/powershell/scripting/gallery/installing-psget)-module.
 
-Then, upgrade your powershell module, sign in to your Azure subscription, create a resource group, and then create a storage account.
+Vervolgens voert u een upgrade uit van uw Power shell-module, meldt u zich aan bij uw Azure-abonnement, maakt u een resource groep en maakt u vervolgens een opslag account.
 
-### <a name="upgrade-your-powershell-module"></a>Upgrade your PowerShell module
+### <a name="upgrade-your-powershell-module"></a>Een Power shell-module bijwerken
 
-To interact with a premium file share from with PowerShell, you'll need to install an Az.Storage module version 1.4.0, or the latest Az.Storage module.
+Als u wilt communiceren met een Premium-bestands share van met Power shell, moet u een AZ. Storage-module versie 1.4.0 of de nieuwste AZ. Storage-module installeren.
 
 Begin door een PowerShell-sessie met verhoogde bevoegdheden te openen.
 
-Install the Az.Storage module:
+Installeer de AZ. Storage-module:
 
 ```powershell
 Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 ```
 
-### <a name="sign-in-to-your-azure-subscription"></a>Sign in to your Azure Subscription
+### <a name="sign-in-to-your-azure-subscription"></a>Meld u aan bij uw Azure-abonnement
 
 Gebruik de opdracht `Connect-AzAccount` en volg de instructies op het scherm om te verifiëren.
 
@@ -111,9 +111,9 @@ $location = "westus2"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-### <a name="create-a-filestorage-storage-account"></a>Create a FileStorage storage account
+### <a name="create-a-filestorage-storage-account"></a>Een FileStorage-opslag account maken
 
-To create a filestorage storage account from PowerShell, use the [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) command:
+Als u een filestorage-opslag account wilt maken vanuit Power shell, gebruikt u de opdracht [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) :
 
 ```powershell
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
@@ -121,10 +121,10 @@ $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fil
 
 ### <a name="create-a-premium-file-share"></a>Een Premium-bestandsshare maken
 
-Now that you have a FileStorage account, you can create a premium file share. Use the [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) cmdlet to create one.
+Nu u een FileStorage-account hebt, kunt u een Premium-bestands share maken. Gebruik de cmdlet [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) om er een te maken.
 
 > [!NOTE]
-> Provisioned share sizes is specified by the share quota, file shares are billed on the provisioned size, refer to the [pricing page](https://azure.microsoft.com/pricing/details/storage/files/) for more details.
+> De inrichtings grootte van de shares worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte omvang. Raadpleeg de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
 
 ```powershell
 New-AzStorageShare `
@@ -140,11 +140,11 @@ Gebruik de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/rem
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="create-a-premium-file-share-using-azure-cli"></a>Create a premium file share using Azure CLI
+## <a name="create-a-premium-file-share-using-azure-cli"></a>Een Premium-bestands share maken met behulp van Azure CLI
 
-To start Azure Cloud Shell, sign in to the [Azure portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com)om Azure Cloud shell te starten.
 
-If you want to log into your local installation of the CLI, first make sure you have the latest version, then run the login command:
+Als u zich wilt aanmelden bij de lokale installatie van de CLI, controleert u eerst of u de meest recente versie hebt en voert u vervolgens de opdracht voor aanmelden uit:
 
 ```cli
 az login
@@ -160,9 +160,9 @@ az group create `
     --location westus2
 ```
 
-### <a name="create-a-filestorage-storage-account"></a>Create a FileStorage storage account
+### <a name="create-a-filestorage-storage-account"></a>Een FileStorage-opslag account maken
 
-To create a FileStorage storage account from the Azure CLI, use the [az storage account create](/cli/azure/storage/account) command.
+Als u een FileStorage-opslag account wilt maken vanuit Azure CLI, gebruikt u de opdracht [AZ Storage account create](/cli/azure/storage/account) .
 
 ```azurecli-interactive
 az storage account create `
@@ -175,7 +175,7 @@ az storage account create `
 
 ### <a name="get-the-storage-account-key"></a>Opslagaccountsleutel opvragen
 
-Storage account keys control access to resources in a storage account, in this article, we use the key in order to create a premium file share. Wanneer u een opslagaccount maakt, worden de sleutels automatisch gemaakt. U kunt de opslagaccountsleutels voor uw opslagaccount opvragen met de opdracht [az storage account keys list](/cli/azure/storage/account/keys):
+Sleutels voor opslag accounts beheren de toegang tot resources in een opslag account. in dit artikel gebruiken we de sleutel om een Premium-bestands share te maken. Wanneer u een opslagaccount maakt, worden de sleutels automatisch gemaakt. U kunt de opslagaccountsleutels voor uw opslagaccount opvragen met de opdracht [az storage account keys list](/cli/azure/storage/account/keys):
 
 ```azurecli-interactive 
 STORAGEKEY=$(az storage account keys list \
@@ -186,10 +186,10 @@ STORAGEKEY=$(az storage account keys list \
 
 ### <a name="create-a-premium-file-share"></a>Een Premium-bestandsshare maken
 
-Now that you have a filestorage account, you can create a premium file share. Use the [az storage share create](/cli/azure/storage/share) command to create one.
+Nu u een filestorage-account hebt, kunt u een Premium-bestands share maken. Gebruik de opdracht [AZ Storage share Create](/cli/azure/storage/share) om er een te maken.
 
 > [!NOTE]
-> Provisioned share sizes is specified by the share quota, file shares are billed on the provisioned size, refer to the [pricing page](https://azure.microsoft.com/pricing/details/storage/files/) for more details.
+> De inrichtings grootte van de shares worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte omvang. Raadpleeg de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
 
 ```azurecli-interactive
 az storage share create \
@@ -208,7 +208,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this article, you've created a premium file share. To learn about the performance this account offers, continue to the performance tier section of the planning guide.
+In dit artikel hebt u een Premium-bestands share gemaakt. Voor meer informatie over de prestaties van dit account, gaat u naar de sectie prestatie tier van de plannings handleiding.
 
 > [!div class="nextstepaction"]
-> [File share performance tiers](storage-files-planning.md#file-share-performance-tiers)
+> [Prestatie lagen voor bestands shares](storage-files-planning.md#file-share-performance-tiers)

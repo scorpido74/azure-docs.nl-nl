@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: ca3126c983d62cb28c543215b86ab9709a4736d8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 29b3e4af33702c75e92b5e36c5521d9af12b1013
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083791"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533855"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Herstel na nood geval instellen voor een implementatie van SAP NetWeaver met meerdere lagen
 
@@ -74,9 +74,9 @@ Als u een oplossing met hoge Beschik baarheid wilt implementeren, kunt u een ged
  > [!NOTE]
  > Azure Site Recovery repliceert de Cloud-Witness daarom het is raadzaam om de cloudwitness in het gebied voor nood herstel te implementeren.
 
-Ter ondersteuning van de failover-clusteromgeving [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) het cluster shared volume-functie wordt uitgevoerd door onafhankelijke schijven die eigendom zijn van de clusterknooppunten te repliceren. Azure biedt geen systeemeigen ondersteuning voor gedeelde schijven en daarom vereist SIOS-oplossingen. 
+Ter ondersteuning van de failovercluster-omgeving voert [SIOS data keeper cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) de functie cluster Shared volume uit door onafhankelijke schijven te repliceren die eigendom zijn van de cluster knooppunten. Azure biedt geen systeemeigen ondersteuning voor gedeelde schijven en daarom vereist SIOS-oplossingen. 
 
-Een andere manier om clustering af te handelen is het implementeren van een bestands share cluster. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) het patroon van de implementatie Central Services voor toegang tot de algemene mappen /sapmnt via een UNC-pad die onlangs zijn gewijzigd. Het is echter nog steeds raadzaam om ervoor te zorgen dat de/sapmnt UNC-share Maxi maal beschikbaar is. Dit kan worden gedaan in het centrale Services-exemplaar met behulp van Windows Server-failovercluster met scale out file server (SOFS) en de functie Opslagruimten Direct (S2D) in Windows Server 2016. 
+Een andere manier om clustering af te handelen is het implementeren van een bestands share cluster. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) heeft het implementatie patroon van de centrale Services recent gewijzigd om toegang te krijgen tot de/sapmnt Global-directory's via een UNC-pad. Het is echter nog steeds raadzaam om ervoor te zorgen dat de/sapmnt UNC-share Maxi maal beschikbaar is. Dit kan worden gedaan in het centrale Services-exemplaar met behulp van Windows Server-failovercluster met scale out file server (SOFS) en de functie Opslagruimten Direct (S2D) in Windows Server 2016. 
  > [!NOTE]
  > Momenteel Azure Site Recovery ondersteunen alleen crash consistente punt replicatie van virtuele machines met behulp van opslag ruimten direct en passief knoop punt SIOS data keeper
 
@@ -95,7 +95,7 @@ Hieronder vindt u de stappen voor het instellen van herstel na nood gevallen
 
 Hieronder ziet u de aanbeveling voor herstel na nood gevallen van elke laag die in dit voor beeld wordt gebruikt. 
 
- **SAP-lagen** | **Aanbeveling**
+ **SAP-lagen** | **Advies**
  --- | ---
 **SAP Web dispatcher-pool** |  Repliceren met site Recovery 
 **SAP-toepassings server groep** |  Repliceren met site Recovery 
@@ -110,7 +110,7 @@ Als u de virtuele machines van de SAP-toepassing wilt repliceren naar het Azure 
 
 * Raadpleeg voor meer informatie over het beveiligen van Active Directory en DNS het document [Active Directory en DNS beveiligen](site-recovery-active-directory.md) .
 
-* Raadpleeg SQL Server-document [beveiligen](site-recovery-active-directory.md) voor meer informatie over het beveiligen van de database tier die op SQL Server wordt uitgevoerd.
+* Raadpleeg SQL Server-document [beveiligen](site-recovery-sql.md) voor meer informatie over het beveiligen van de database tier die op SQL Server wordt uitgevoerd.
 
 ## <a name="networking-configuration"></a>Netwerk configuratie
 

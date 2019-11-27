@@ -1,5 +1,5 @@
 ---
-title: 'Azure Virtual WAN: Create Site-to-Site connections'
+title: 'Virtueel WAN van Azure: Maak site-naar-site-verbindingen'
 description: In deze zelfstudie leert u hoe u Azure Virtual WAN kunt gebruiken om een site-naar-site-VPN-verbinding te maken met Azure.
 services: virtual-wan
 author: cherylmc
@@ -25,10 +25,10 @@ In deze zelfstudie leert u het volgende:
 > * Een virtueel WAN maken
 > * Een hub maken
 > * Een site maken
-> * Connect a site to a hub
-> * Connect a VPN site to a hub
+> * Een site verbinden met een hub
+> * Een VPN-site verbinden met een hub
 > * Een VNet verbinden met een hub
-> * Download a configuration file
+> * Een configuratie bestand downloaden
 > * Uw virtuele WAN weergeven
 
 > [!NOTE]
@@ -41,53 +41,53 @@ In deze zelfstudie leert u het volgende:
 
 Controleer voordat u met de configuratie begint of u aan de volgende criteria hebt voldaan:
 
-* You have a virtual network that you want to connect to. Verify that none of the subnets of your on-premises networks overlap with the virtual networks that you want to connect to. To create a virtual network in the Azure portal, see the [Quickstart](../virtual-network/quick-create-portal.md).
+* U hebt een virtueel netwerk waarmee u verbinding wilt maken. Controleer of geen van de subnetten van uw on-premises netwerken overlapt met de virtuele netwerken waarmee u verbinding wilt maken. Als u een virtueel netwerk in de Azure Portal wilt maken, raadpleegt u [Quick](../virtual-network/quick-create-portal.md)start.
 
-* Your virtual network does not have any virtual network gateways. If your virtual network has a gateway (either VPN or ExpressRoute), you must remove all gateways. This configuration requires that virtual networks are connected instead, to the Virtual WAN hub gateway.
+* Het virtuele netwerk heeft geen virtuele netwerk gateways. Als uw virtuele netwerk een gateway heeft (VPN of ExpressRoute), moet u alle gateways verwijderen. Voor deze configuratie moeten virtuele netwerken in plaats daarvan zijn verbonden met de virtuele WAN hub-gateway.
 
-* Zorg dat u een IP-adresbereik krijgt voor uw hubregio. The hub is a virtual network that is created and used by Virtual WAN. The address range that you specify for the hub cannot overlap with any of your existing virtual networks that you connect to. Dit bereik mag ook niet overlappen met de adresbereiken waarmee u on-premises verbinding wilt maken. If you are unfamiliar with the IP address ranges located in your on-premises network configuration, coordinate with someone who can provide those details for you.
+* Zorg dat u een IP-adresbereik krijgt voor uw hubregio. De hub is een virtueel netwerk dat wordt gemaakt en gebruikt door Virtual WAN. Het adres bereik dat u voor de hub opgeeft, mag niet overlappen met een van de bestaande virtuele netwerken waarmee u verbinding maakt. Dit bereik mag ook niet overlappen met de adresbereiken waarmee u on-premises verbinding wilt maken. Als u niet bekend bent met de IP-adresbereiken die zich in uw on-premises netwerk configuratie bevinden, coördineert u met iemand die deze gegevens voor u kan opgeven.
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 
-## <a name="openvwan"></a>Create a virtual WAN
+## <a name="openvwan"></a>Een virtueel WAN maken
 
-From a browser, navigate to the Azure portal and sign in with your Azure account.
+Ga in een browser naar het Azure Portal en meld u aan met uw Azure-account.
 
-1. Navigate to the Virtual WAN page. Klik in de portal op **+Een resource maken**. Type **Virtual WAN** into the search box and select Enter.
-2. Select **Virtual WAN** from the results. On the Virtual WAN page, click **Create** to open the Create WAN page.
-3. On the **Create WAN** page, on the **Basics** tab, fill in the following fields:
+1. Ga naar de virtuele WAN-pagina. Klik in de portal op **+Een resource maken**. Typ **Virtual WAN** in het zoekvak en selecteer ENTER.
+2. Selecteer **virtueel WAN** in de resultaten. Klik op de pagina virtueel WAN op **maken** om de pagina WAN maken te openen.
+3. Vul op de pagina **WAN maken** op het tabblad **basis beginselen** de volgende velden in:
 
-   ![Virtual WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
+   ![Virtuele WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
    * **Abonnement** - selecteer het abonnement dat u wilt gebruiken.
-   * **Resource group** - Create new or use existing.
-   * **Resource group location** - Choose a resource location from the dropdown. Een WAN een globale resource en bevindt zich niet in een bepaalde regio. U moet echter een regio selecteren om de WAN-resource die u maakt eenvoudiger te kunnen beheren en vinden.
-   * **Name** - Type the Name that you want to call your WAN.
-   * **Type:** Basic or Standard. If you create a Basic WAN, you can create only a Basic hub. Basic hubs are capable of VPN site-to-site connectivity only.
-4. After you finish filling out the fields, select **Review +Create**.
-5. Once validation passes, select **Create** to create the virtual WAN.
+   * **Resource groep** : nieuwe maken of bestaande gebruiken.
+   * **Locatie van resource groep** : Kies een resource locatie in de vervolg keuzelijst. Een WAN een globale resource en bevindt zich niet in een bepaalde regio. U moet echter een regio selecteren om de WAN-resource die u maakt eenvoudiger te kunnen beheren en vinden.
+   * **Naam** : Typ de naam die u voor uw WAN wilt aanroepen.
+   * **Type:** Basic of Standard. Als u een WAN Basic maakt, kunt u alleen een Basic-hub maken. Basis hubs zijn alleen geschikt voor VPN-verbindingen tussen sites.
+4. Wanneer u klaar bent met het invullen van de velden, selecteert u **controleren + maken**.
+5. Wanneer de validatie is geslaagd, selecteert u **maken** om het virtuele WAN te maken.
 
-## <a name="hub"></a>Create a hub
+## <a name="hub"></a>Een hub maken
 
-A hub is a virtual network that can contain gateways for site-to-site, ExpressRoute, or point-to-site functionality. Zodra de hub is gemaakt, worden u kosten in rekening gebracht voor de hub, zelfs als u geen sites hebt toegevoegd. It takes 30 minutes to create the site-to-site VPN gateway in the virtual hub.
+Een hub is een virtueel netwerk dat gateways kan bevatten voor site-naar-site-, ExpressRoute-of punt-naar-site-functionaliteit. Zodra de hub is gemaakt, worden u kosten in rekening gebracht voor de hub, zelfs als u geen sites hebt toegevoegd. Het duurt 30 minuten om de site-naar-site-VPN-gateway in de virtuele hub te maken.
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-## <a name="site"></a>Create a site
+## <a name="site"></a>Een site maken
 
-You are now ready to create the sites corresponding to your physical locations. Maak het aantal sites dat u nodig hebt voor uw fysieke locaties. Als u bijvoorbeeld een filiaal in NY, een filiaal in Londen en een filiaal in LA hebt, maakt u drie afzonderlijke sites. Deze sites bevatten de eindpunten voor uw on-premises VPN-apparaat. You can create up to 1000 sites per Virtual Hub in a Virtual WAN. If you had multiple hubs, you can create 1000 per each of those hubs. If you have Virtual WAN partner (link insert) CPE device, check with them to learn about their automation to Azure. Typically automation implies simple click experience to export large-scale branch information into azure and setting up connectivity from the CPE to Azure Virtual WAN VPN gateway (Here is a link to automation guidance from Azure to CPE partners).
+U bent nu klaar om de sites te maken die overeenkomen met uw fysieke locaties. Maak het aantal sites dat u nodig hebt voor uw fysieke locaties. Als u bijvoorbeeld een filiaal in NY, een filiaal in Londen en een filiaal in LA hebt, maakt u drie afzonderlijke sites. Deze sites bevatten de eindpunten voor uw on-premises VPN-apparaat. U kunt Maxi maal 1000 sites per virtuele hub maken in een virtueel WAN. Als u meerdere hubs had, kunt u 1000 maken per hub. Als u een virtuele WAN-partner (link insert) CPE-apparaat hebt, raadpleegt u deze voor meer informatie over automatisering naar Azure. Doorgaans impliceert Automation een eenvoudige klik ervaring voor het exporteren van grootschalige vertakkings gegevens naar Azure en het instellen van connectiviteit vanaf de CPE-naar-Azure Virtual WAN VPN-gateway (hier volgt een koppeling naar Automation-richt lijnen van Azure naar CPE-partners).
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="connectsites"></a>Connect the VPN site to the hub
+## <a name="connectsites"></a>De VPN-site verbinden met de hub
 
-In this step, you connect your VPN site to the hub.
+In deze stap verbindt u uw VPN-site met de hub.
 
 [!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-## <a name="vnet"></a>Connect the VNet to the hub
+## <a name="vnet"></a>De VNet verbinden met de hub
 
-In this step, you create the connection between your hub and a VNet. Herhaal deze stappen voor elk VNet dat u wilt verbinden.
+In deze stap maakt u de verbinding tussen uw hub en een VNet. Herhaal deze stappen voor elk VNet dat u wilt verbinden.
 
 1. Klik op de pagina voor uw virtuele WAN op **Virtuele netwerkverbinding**.
 2. Klik op de pagina Virtuele netwerkverbinding op **+Verbinding toevoegen**.
@@ -97,23 +97,23 @@ In this step, you create the connection between your hub and a VNet. Herhaal dez
     * **Hubs** - selecteer de hub die u wilt koppelen aan deze verbinding.
     * **Abonnement** - controleer of het abonnement klopt.
     * **Virtueel netwerk** - selecteer het virtuele netwerk dat met deze hub wilt verbinden. Het virtuele netwerk mag geen bestaande virtuele netwerkgateway hebben.
-4. Click **OK** to create the virtual network connection.
+4. Klik op **OK** om de virtuele netwerk verbinding te maken.
 
-## <a name="device"></a>Download VPN configuration
+## <a name="device"></a>VPN-configuratie downloaden
 
 Gebruik de VPN-apparaatconfiguratie om uw on-premises VPN-apparaat te configureren.
 
 1. Klik op de pagina voor uw virtuele WAN op **Overzicht**.
-2. At the top of the **Hub ->VPNSite** page, click **Download VPN config**. Azure creates a storage account in the resource group 'microsoft-network-[location]', where location is the location of the WAN. Nadat u de configuratie hebt toegepast op uw VPN-apparaten, kunt u dit storage-account verwijderen.
+2. Klik boven aan de VPNSite-pagina van de **hub->** op **VPN-configuratie downloaden**. In azure wordt een opslag account gemaakt in de resource groep ' micro soft-Network-[locatie] ', waarbij locatie de locatie van het WAN is. Nadat u de configuratie hebt toegepast op uw VPN-apparaten, kunt u dit storage-account verwijderen.
 3. Wanneer het bestand gereed is, klikt u op de koppeling om het te downloaden.
-4. Apply the configuration to your on-premises VPN device.
+4. Pas de configuratie toe op uw on-premises VPN-apparaat.
 
 ### <a name="understanding-the-vpn-device-configuration-file"></a>Meer informatie over het configuratiebestand voor uw VPN-apparaat
 
 Het apparaatconfiguratiebestand bevat de instellingen die u dient te gebruiken om uw on-premises VPN-apparaat te configureren. Wanneer u dit bestand bekijkt, ziet u de volgende informatie:
 
 * **vpnSiteConfiguration -** in deze sectie vindt u de apparaatgegevens, ingesteld als een site die verbinding maakt met het virtuele WAN. Hier vindt u ook de naam en het openbare ip-adres van het branch-apparaat.
-* **vpnSiteConnections -** This section provides information about the following settings:
+* **vpnSiteConnections-** Deze sectie bevat informatie over de volgende instellingen:
 
     * **Adresruimte** van het VNet van de virtuele hub(s)<br>Voorbeeld:
  
@@ -125,13 +125,13 @@ Het apparaatconfiguratiebestand bevat de instellingen die u dient te gebruiken o
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * **IP-adressen** van de VPN-gateway van de virtuele hub. Because each connection of the  vpngateway is composed of two tunnels in active-active configuration, you'll see both IP addresses listed in this file. In dit voorbeeld ziet u voor elke site 'Instance0' en 'Instance1'.<br>Voorbeeld:
+    * **IP-adressen** van de VPN-gateway van de virtuele hub. Omdat elke verbinding van de vpngateway bestaat uit twee tunnels in actief/actief-configuratie, ziet u beide IP-adressen die in dit bestand staan vermeld. In dit voorbeeld ziet u voor elke site 'Instance0' en 'Instance1'.<br>Voorbeeld:
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Vpngateway connection configuration details** such as BGP, pre-shared key etc. The PSK is the pre-shared key that is automatically generated for you. U kunt altijd de verbinding bewerken op de pagina Overzicht om een aangepaste PSK in te stellen.
+    * **Details van de Vpngateway-verbindings configuratie** , zoals BGP, vooraf gedeelde sleutel, enzovoort. De PSK is de vooraf gedeelde sleutel die automatisch voor u wordt gegenereerd. U kunt altijd de verbinding bewerken op de pagina Overzicht om een aangepaste PSK in te stellen.
   
 ### <a name="example-device-configuration-file"></a>Voorbeeld van een apparaatconfiguratiebestand
 
@@ -248,14 +248,14 @@ Als u instructies nodig hebt voor het configureren van uw apparaat, kunt u de in
 
 * De instructies op de pagina voor VPN-apparaten zijn niet geschreven voor Virtual WAN, maar u kunt de waarden voor Virtual WAN in het configuratiebestand gebruiken om uw VPN-apparaat handmatig te configureren. 
 * De downloadbare apparaatconfiguratiescripts voor VPN Gateway werken niet voor Virtual WAN, omdat de configuratie anders is.
-* A new Virtual WAN can support both IKEv1 and IKEv2.
-* Virtual WAN can use both policy based and route-based VPN devices and device instructions.
+* Een nieuw virtueel WAN kan zowel IKEv1 als IKEv2 ondersteunen.
+* Virtuele WAN kan gebruikmaken van op beleid gebaseerde VPN-apparaten en-instructies op basis van route ring.
 
-## <a name="viewwan"></a>View your virtual WAN
+## <a name="viewwan"></a>Uw virtuele WAN weer geven
 
 1. Navigeer naar uw virtuele WAN.
-2. On the **Overview** page, each point on the map represents a hub. Hover over any point to view the hub health summary, connection status, and bytes in and out.
-3. In the Hubs and connections section, you can view hub status, VPN sites, etc. You can click on a specific hub name and navigate to the VPN Site for additional details.
+2. Op de **overzichts** pagina vertegenwoordigt elk punt op de kaart een hub. Beweeg de muis aanwijzer over een wille keurig punt om het status overzicht van de hub, de verbindings status en de binnenkomende en uitgaande bytes weer te geven.
+3. In de sectie hubs en verbindingen kunt u de status van de hub, VPN-sites, enzovoort weer geven. U kunt klikken op een specifieke spil naam en naar de VPN-site navigeren voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

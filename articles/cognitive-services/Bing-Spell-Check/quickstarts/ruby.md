@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Check spelling with the REST API and Ruby - Bing Spell Check'
+title: 'Snelstartgids: spelling controleren met de REST API en Ruby-Bing Spellingcontrole'
 titleSuffix: Azure Cognitive Services
-description: Aan de slag met de Bing Spellingcontrole-REST API om spelling en grammatica te controleren.
+description: Aan de slag met de Bing Spellingcontrole-REST API om de spelling en grammatica te controleren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,7 +17,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383845"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Quickstart: Check spelling with the Bing Spell Check REST API and Ruby
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en ruby
 
 Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole-REST API te maken met behulp van Ruby. Deze eenvoudige toepassing verzendt een aanvraag naar de API en retourneert een lijst met woorden die niet werden herkend, gevolgd door voorgestelde correcties. Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb)
 
@@ -49,7 +49,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole-REST 
 
 ## <a name="send-a-spell-check-request"></a>Een spellingcontroleaanvraag verzenden
 
-1. Maak een URI op basis van uw host-URI, pad en parametertekenreeks. Set its query to contain the text you want to spell check.
+1. Maak een URI op basis van uw host-URI, pad en parametertekenreeks. Stel de query in op de tekst waarvoor u de spelling controle wilt uitvoeren.
 
    ```ruby
    uri = URI(uri + path + params)

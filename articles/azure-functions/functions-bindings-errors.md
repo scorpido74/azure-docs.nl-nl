@@ -1,6 +1,6 @@
 ---
-title: Handle Azure Functions bindings errors
-description: Learn to handle Azure Functions binding errors
+title: Fout bij het verwerken van Azure Functions bindingen
+description: Meer informatie over het afhandelen van Azure Functions bindings fouten
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/12/2019
@@ -12,8 +12,8 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227298"
 ---
-# <a name="handle-azure-functions-binding-errors"></a>Handle Azure Functions binding errors
+# <a name="handle-azure-functions-binding-errors"></a>Azure Functions bindings fouten verwerken
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-For information on errors returned by services supported by Functions, see the [Binding error codes](functions-bindings-error-pages.md#binding-error-codes) section of the [Azure Functions error handling](functions-bindings-error-pages.md) overview article.  
+Voor informatie over fouten die worden geretourneerd door services die worden ondersteund door-functies, zie de sectie [bindings fout codes](functions-bindings-error-pages.md#binding-error-codes) van het artikel Azure functions overzicht van [fout afhandeling](functions-bindings-error-pages.md) .  

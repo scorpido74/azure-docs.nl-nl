@@ -1,7 +1,7 @@
 ---
-title: Glossary - LUIS
+title: Woorden lijst-LUIS
 titleSuffix: Azure Cognitive Services
-description: The glossary explains terms that you might encounter as you work with the LUIS API Service.
+description: De verklarende woordenlijst verklaart de termen die u kunt tegenkomen wanneer u met de LUIS-API-Service werkt.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -17,174 +17,174 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325950"
 ---
-# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language understanding glossary of common vocabulary and concepts
-The Language Understanding (LUIS) glossary explains terms that you might encounter as you work with the LUIS API Service.
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Taal informatie over woorden lijst met veelgestelde woorden en concepten
+De Language Understanding (LUIS) verklarende woordenlijst wordt uitgelegd dat de voorwaarden die u kunt tegenkomen wanneer u met de LUIS-API-Service werkt.
 
-## <a name="active-version"></a>Active version
+## <a name="active-version"></a>Actieve versie
 
-The active LUIS version is the version that receives any changes to the model. In the [LUIS](luis-reference-regions.md) portal, if you want to make changes to a version that is not the active version, you need to first set that version as active.
+De actieve LUIS-versie is de versie die wijzigingen in het model ontvangt. Als u in de [Luis](luis-reference-regions.md) -Portal wijzigingen wilt aanbrengen in een versie die niet de actieve versie is, moet u deze versie eerst instellen als actief.
 
-## <a name="authoring"></a>Authoring
+## <a name="authoring"></a>Ontwerp
 
-Authoring is the ability to create, manage and deploy a [LUIS app](#luis-app), either using the [LUIS](luis-reference-regions.md) portal or the [authoring APIs](https://go.microsoft.com/fwlink/?linkid=2092087).
+Ontwerpen is de mogelijkheid om een [Luis-app](#luis-app)te maken, te beheren en te implementeren met behulp van de [Luis](luis-reference-regions.md) -portal of de [ontwerp-api's](https://go.microsoft.com/fwlink/?linkid=2092087).
 
-## <a name="authoring-key"></a>Authoring Key
+## <a name="authoring-key"></a>Sleutel ontwerpen
 
-Previously named "Programmatic" key. Used to author the app. Not used for production-level endpoint queries. For more information, see [Key limits](luis-boundaries.md#key-limits).
+Eerder met de naam "Programmatic" sleutel. Gebruikt voor het maken van de app. Niet gebruikt voor productie-niveau eindpunt query's. Zie [sleutel limieten](luis-boundaries.md#key-limits)voor meer informatie.
 
-## <a name="batch-test-json-file"></a>Batch test JSON file
+## <a name="batch-test-json-file"></a>JSON-bestand voor batch-test
 
-Batch testing is the ability to validate a current LUIS app's model with a consistent and known test set of user utterances. The batch test is defined in a [JSON formatted file](luis-concept-batch-test.md#batch-file-format).
+Batch tests is de mogelijkheid om een huidige model van de LUIS-app te valideren met een consistente en bekende testset van gebruikers uitingen. De batch test is gedefinieerd in een [JSON-bestand](luis-concept-batch-test.md#batch-file-format).
 
 Zie ook:
 * [Concepten](luis-concept-batch-test.md)
-* [How-to](luis-how-to-batch-test.md)
+* [Instructies](luis-how-to-batch-test.md)
 * [Zelfstudie](luis-tutorial-batch-testing.md)
 
-## <a name="collaborator"></a>Collaborator
+## <a name="collaborator"></a>Samen werker
 
-A collaborator/contributor, is not the [owner](#owner) of the app, but has the same permissions to add, edit, and delete the intents, entities, utterances.
+Een samen werker/bijdrager is niet de [eigenaar](#owner) van de app, maar heeft dezelfde machtigingen om de intenties, entiteiten en uitingen toe te voegen, te bewerken en te verwijderen.
 
-## <a name="contributor"></a>Contributor
+## <a name="contributor"></a>Groep
 
-A contributor is the same thing as a [collaborator](#collaborator).
+Een mede werker is hetzelfde als een [samen werker](#collaborator).
 
 ## <a name="descriptor"></a>Descriptor
 
-A descriptor is a [feature](#features) applied to a model at training time, including [phrase lists](#phrase-list) and [entities](#entity). 
+Een descriptor is een [functie](#features) die wordt toegepast op een model tijdens de trainings tijd, inclusief [woordgroepen lijsten](#phrase-list) en [entiteiten](#entity). 
 
-## <a name="domain"></a>Domain
+## <a name="domain"></a>Domeinen
 
-In the LUIS context, a **domain** is an area of knowledge. Your domain is specific to your app area of knowledge. This can be a general area such as the travel agent app. A travel agent app can also be specific to just the areas of information for your company such as specific geographical locations, languages, and services.
+In de context van LUIS is een **domein** een kennis gebied. Uw domein is specifiek voor uw app-gebied van kennis. Dit is een algemeen gebied, zoals de agent van de reis-app. Een agent van de reis-app kan ook zijn specifiek voor alleen de delen van gegevens voor uw bedrijf, zoals specifieke geografische locaties, talen en services.
 
-## <a name="endpoint"></a>Endpoint
+## <a name="endpoint"></a>Endpoints
 
-The [LUIS endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) URL is where you submit LUIS queries after the [LUIS app](#luis-app) is authored and published. The endpoint URL contains the region of the published app as well as the app ID. You can find the endpoint on the **[Keys and endpoints](luis-how-to-azure-subscription.md)** page of your app, or you can get the endpoint URL from the [Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
+Met de [Luis-eind punt](https://go.microsoft.com/fwlink/?linkid=2092356) -URL kunt u Luis-query's verzenden nadat de [Luis-app](#luis-app) is gemaakt en gepubliceerd. De eindpunt-URL bevat de regio van de gepubliceerde app, evenals de app-ID. U kunt het eind punt vinden op de pagina **[sleutels en eind punten](luis-how-to-azure-subscription.md)** van uw app, of u kunt de eind punt-URL ophalen uit de informatie-API voor het [ophalen van apps](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) .
 
-## <a name="entity"></a>Entity
+## <a name="entity"></a>Vennootschap
 
-[Entities](luis-concept-entity-types.md) are important words in [utterances](luis-concept-utterance.md) that describe information relevant to the [intent](luis-concept-intent.md), and sometimes they are essential to it. An entity is essentially a datatype in LUIS.
+[Entiteiten](luis-concept-entity-types.md) zijn belang rijke woorden in [uitingen](luis-concept-utterance.md) die informatie beschrijven die relevant is voor de [intentie](luis-concept-intent.md), en soms van belang zijn. Een entiteit is in feite een gegevenstype in LUIS.
 
-## <a name="f-measure"></a>F-measure
+## <a name="f-measure"></a>F-meting
 
-In [batch testing](luis-interactive-test.md#batch-testing), a measure of the test's accuracy.
+Bij het [testen van batches](luis-interactive-test.md#batch-testing)wordt de nauw keurigheid van de test gemeten.
 
-## <a name="false-negative"></a>False negative (FN)
+## <a name="false-negative"></a>ONWAAR negatief (FN)
 
-In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app incorrectly predicted the absence of the target intent/entity.
+In [batch tests](luis-interactive-test.md#batch-testing)vertegenwoordigen de gegevens punten uitingen waarin de afwezigheid van het doel intentie/entiteit onjuist is voor speld door uw app.
 
-## <a name="false-positive"></a>False positive (FP)
+## <a name="false-positive"></a>Onjuist positief (FP)
 
-In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app incorrectly predicted the existence of the target intent/entity.
+In [batch tests](luis-interactive-test.md#batch-testing)vertegenwoordigen de gegevens punten uitingen waarin de app het bestaan van de doel intentie/entiteit onjuist heeft voor speld.
 
-## <a name="features"></a>Features
+## <a name="features"></a>Functies
 
-In machine learning, a [feature](luis-concept-feature.md) is a distinguishing trait or attribute of data that your system observes.
+In machine learning is een [functie](luis-concept-feature.md) een onderscheiding van eigenschappen of kenmerken van gegevens die uw systeem observeert.
 
-## <a name="intent"></a>Intent
+## <a name="intent"></a>Bedoeling
 
-An [intent](luis-concept-intent.md) represents a task or action the user wants to perform. It is a purpose or goal expressed in a user's input, such as booking a flight, paying a bill, or finding a news article. In LUIS, the intent prediction is based on the entire utterance. Entities, by comparison, are pieces of an utterance.
+Een [intentie](luis-concept-intent.md) vertegenwoordigt een taak of actie die de gebruiker wil uitvoeren. Het is een doel of het doel, uitgedrukt in de invoer van een gebruiker, zoals een vlucht reserveren, een factuur betaalt of zoeken naar een nieuwsartikel. De intentie voorspelling is in LUIS gebaseerd op de hele utterance. Entiteiten zijn ter vergelijking: onderdelen van een utterance.
 
-## <a name="labeling"></a>Labeling
+## <a name="labeling"></a>Labels
 
-Labeling, or marking, is the process of associating a word or phrase in an intent's [utterance](#utterance) with an [entity](#entity) (datatype).
+Labelen of markeren is het proces van het koppelen van een woord of woord groep in een [utterance](#utterance) met een [entiteit](#entity) (data type).
 
-## <a name="luis-app"></a>LUIS app
+## <a name="luis-app"></a>LUIS-app
 
-A LUIS app is a collection of language models for natural language processing including [intents](#intent), [entities](#entity), and labeled [utterances](#utterance).
+Een LUIS-app is een verzameling taal modellen voor de verwerking van natuurlijke taal, waaronder [intenties](#intent), [entiteiten](#entity)en gelabelde [uitingen](#utterance).
 
-## <a name="owner"></a>Owner
+## <a name="owner"></a>Bent
 
-Each app has one owner who is the person that created the app. The owner can add [collaborators](#collaborator).
+Elke app heeft een eigenaar op die de persoon die de app hebt gemaakt. De eigenaar kan deel [nemers](#collaborator)toevoegen.
 
-## <a name="pattern"></a>Patterns
-The previous Pattern feature is replaced with [Patterns](luis-concept-patterns.md). Use patterns to improve prediction accuracy by providing fewer training examples.
+## <a name="pattern"></a>Daarin
+De vorige patroon functie wordt vervangen door [patronen](luis-concept-patterns.md). Patronen voor het verbeteren van nauwkeurigheid door minder training voorbeelden gebruiken.
 
-## <a name="phrase-list"></a>Phrase list
+## <a name="phrase-list"></a>Woordgroepen lijst
 
-A [phrase list](luis-concept-feature.md) includes a group of values (words or phrases) that belong to the same class and must be treated similarly (for example, names of cities or products). An interchangeable list is treated as synonyms.
+Een [woordgroepen lijst](luis-concept-feature.md) bevat een groep waarden (woorden of zinsdelen) die deel uitmaken van dezelfde klasse en moeten op dezelfde manier worden behandeld (bijvoorbeeld namen van steden of producten). Een lijst met uitwisselbaar wordt beschouwd als synoniemen.
 
-## <a name="prebuilt-domains"></a>Prebuilt domain
+## <a name="prebuilt-domains"></a>Vooraf gebouwd domein
 
-A [prebuilt domain](luis-how-to-use-prebuilt-domains.md) is a LUIS app configured for a specific domain such as home automation (HomeAutomation) or restaurant reservations (RestaurantReservation). The intents, utterances, and entities are configured for this domain.
+Een [vooraf gebouwd domein](luis-how-to-use-prebuilt-domains.md) is een Luis-app die is geconfigureerd voor een specifiek domein, zoals Home Automation (HomeAutomation) of restaurant reserveringen (RestaurantReservation). De intenties, uitingen en entiteiten zijn geconfigureerd voor dit domein.
 
-## <a name="prebuilt-entity"></a>Prebuilt entity
+## <a name="prebuilt-entity"></a>Vooraf gebouwde entiteit
 
-A [prebuilt entity](luis-prebuilt-entities.md) is an entity LUIS provides for common types of information such as number, URL, and email. You choose to add a prebuilt entity to your application.
+Een [vooraf samengestelde entiteit](luis-prebuilt-entities.md) is een entiteit Luis biedt algemene typen informatie, zoals Number, URL en e-mail. U wilt een vooraf gedefinieerde entiteit toevoegen aan uw toepassing.
 
-## <a name="precision"></a>Precision
-In [batch testing](luis-interactive-test.md#batch-testing), precision (also called positive predictive value) is the fraction of relevant utterances among the retrieved utterances.
+## <a name="precision"></a>Nauwkeurigheid
+In [batch testen](luis-interactive-test.md#batch-testing)is precisie (ook wel positieve Voorspellings waarde genoemd) de Fractie van relevante uitingen van de opgehaalde uitingen.
 
-## <a name="programmatic-key"></a>Programmatic key
+## <a name="programmatic-key"></a>Programmatische sleutel
 
-Renamed to [authoring key](#authoring-key).
+De naam van de [ontwerp sleutel](#authoring-key)is gewijzigd.
 
-## <a name="publish"></a>Publish
+## <a name="publish"></a>Gepubliceerd
 
-Publishing means making a LUIS active version available on either the staging or production [endpoint](#endpoint).  
+Publiceren houdt in dat er een LUIS actieve versie beschikbaar is op het staging-of productie- [eind punt](#endpoint).  
 
-## <a name="quota"></a>Quota
+## <a name="quota"></a>Overschreden
 
-LUIS quota is the limitation of the [Azure subscription tier](https://aka.ms/luis-price-tier). The LUIS quota can be limited by both requests per second (HTTP Status 429) and total requests in a month (HTTP Status 403).
+LUIS quota is de beperking van de [Azure-abonnementweergave](https://aka.ms/luis-price-tier). Het quotum LUIS kan worden beperkt door beide aanvragen per seconde (http-Status 429) en het totale aantal aanvragen in een maand (http-Status 403).
 
-## <a name="recall"></a>Recall
-In [batch testing](luis-interactive-test.md#batch-testing), recall (also known as sensitivity), is the ability for LUIS to generalize.
+## <a name="recall"></a>Halen
+In [batch testen](luis-interactive-test.md#batch-testing), intrekken (ook wel gevoeligheid genoemd), is de mogelijkheid om Luis te generaliseren.
 
-## <a name="semantic-dictionary"></a>Semantic dictionary
-A semantic dictionary is provided on the List entity page as well as the Phrase list page. The semantic dictionary provides suggestions of words based on the current scope.
+## <a name="semantic-dictionary"></a>Semantische woorden lijst
+Een semantische woordenlijst is beschikbaar op de pagina van de entiteit lijst, evenals de pagina van de lijst met woorden. De functionaliteit voor semantische woordenlijst bevat suggesties van woorden op basis van het huidige bereik.
 
-## <a name="sentiment-analysis"></a>Sentiment Analysis
-Sentiment analysis provides positive or negative values of the utterances provided by [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
+## <a name="sentiment-analysis"></a>Sentimentanalyse
+Sentiment analyse biedt positieve of negatieve waarden van de uitingen die worden geleverd door [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
 
-## <a name="speech-priming"></a>Speech priming
+## <a name="speech-priming"></a>Spraak gebeuren
 
-Speech priming allows your speech service to be primed with your LUIS model.
+Spraak voorbereiden kan uw spraakherkenning service gereed worden gemaakt met uw LUIS-model.
 
-## <a name="spelling-correction"></a>Spelling correction
+## <a name="spelling-correction"></a>Spelling correctie
 
-Enable Bing spell checker to correct misspelled words in the utterances before prediction.
+Schakel de spellingcontrole van Bing om te corrigeren van verkeerd gespelde woorden in de uitingen voordat voorspelling.
 
-## <a name="starter-key"></a>Starter key
+## <a name="starter-key"></a>Start sleutel
 
-A free key to use when first starting out using LUIS.
+Een gratis sleutel die moet worden gebruikt voor het eerst op basis van LUIS.
 
-## <a name="structure"></a>Structure
+## <a name="structure"></a>Structuur
 
-Add structure to a machine-learned entity to provide subcomponents with descriptors (features) and constraints (regular expression or list entities).
+Voeg structuur toe aan een door de machine geleerde entiteit om subonderdelen met descriptoren (onderdelen) en beperkingen (reguliere expressies of lijst entiteiten) te bieden.
 
-## <a name="subscription-key"></a>Subscription key
+## <a name="subscription-key"></a>Abonnements sleutel
 
-The subscription key is the **prediction endpoint** key associated with the LUIS service [you created in Azure](luis-how-to-azure-subscription.md). This key is not the [authoring key](#programmatic-key). If you have an endpoint key, it should be used for any endpoint requests instead of the authoring key. You can see your current endpoint key inside the endpoint URL at the bottom of [**Keys and endpoints** page](luis-how-to-azure-subscription.md) in [LUIS](luis-reference-regions.md) website. It is the value of **subscription-key** name/value pair.
+De abonnements sleutel is de **Voorspellings eindpunt** sleutel die is gekoppeld aan de Luis-service die [u in azure hebt gemaakt](luis-how-to-azure-subscription.md). Deze sleutel is niet de [ontwerp sleutel](#programmatic-key). Als u een eindpuntsleutel hebt, moet het worden gebruikt voor een eindpunt-aanvragen in plaats van de sleutel van de ontwerphandleiding. U kunt de huidige eindpunt sleutel weer geven in de eind punt-URL onder aan de [pagina **sleutels en eind punten** ](luis-how-to-azure-subscription.md) op de website van [Luis](luis-reference-regions.md) . Het is de waarde van de **abonnements sleutel** naam/waarde-paar.
 
-## <a name="test"></a>Test
+## <a name="test"></a>Proeven
 
-[Testing](luis-interactive-test.md#test-your-app) a LUIS app means passing an utterance to LUIS and viewing the JSON results.
+Als u een LUIS-app [test](luis-interactive-test.md#test-your-app) , wordt een utterance door gegeven aan Luis en worden de JSON-resultaten weer gegeven.
 
-## <a name="timezoneoffset"></a>Timezone offset
+## <a name="timezoneoffset"></a>Verschuiving van tijd zone
 
-The endpoint includes timezoneOffset. This is the number in minutes you want to add or remove from the datetimeV2 prebuilt entity. For example, if the utterance is "what time is it now?", the datetimeV2 returned is the current time for the client request. If your client request is coming from a bot or other application that is not the same as your bot's user, you should pass in the offset between the bot and the user.
+Het eindpunt bevat timezoneOffset. Dit is het aantal minuten dat u wilt toevoegen of verwijderen uit de datetimeV2 vooraf gedefinieerde entiteit. Bijvoorbeeld, als de utterance is 'welk moment is het nu?', de datetimeV2 geretourneerd de huidige tijd voor de clientaanvraag. Als uw clientaanvraag afkomstig is van een bot of andere toepassingen die niet is hetzelfde als de gebruiker van uw bot, moet u tussen de bot en de gebruiker in de verschuiving doorgeven.
 
-See [Change time zone of prebuilt datetimeV2 entity](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
+Zie de [tijd zone van de vooraf gemaakte datetimeV2-entiteit wijzigen](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
 
 ## <a name="token"></a>Token
-A token is the smallest unit that can be labeled in an entity. Tokenization is based on the application's [culture](luis-language-support.md#tokenization).
+Een token is de kleinste eenheid die kan worden voorzien in een entiteit. Tokeniseren is gebaseerd op de [cultuur](luis-language-support.md#tokenization)van de toepassing.
 
-## <a name="train"></a>Train
+## <a name="train"></a>Leerling
 
-Training is the process of teaching LUIS about any changes to the active version since the last training.
+Training is het proces van het onderwijs van LUIS over eventuele wijzigingen in de actieve versie sinds de laatste training.
 
-## <a name="true-negative"></a>True negative (TN)
+## <a name="true-negative"></a>Waar negatief (TN)
 
-In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app correctly predicted the absence of the target intent/entity.
+In [batch tests](luis-interactive-test.md#batch-testing)vertegenwoordigen de gegevens punten uitingen waarin uw app de afwezigheid van het doel intentie/entiteit op de juiste wijze heeft voor speld.
 
-## <a name="true-positive"></a>True positive (TP)
+## <a name="true-positive"></a>True positief (TP)
 
-In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app correctly predicted the existence of the target intent/entity.
+In [batch tests](luis-interactive-test.md#batch-testing)vertegenwoordigen de gegevens punten uitingen waarin uw app het bestaan van de doel intentie/entiteit op de juiste wijze heeft voor speld.
 
 ## <a name="utterance"></a>Utterance
 
-An utterance is a natural language phrase such as "book 2 tickets to Seattle next Tuesday". Example utterances are added to the intent.
+Een utterance is een woordgroep natuurlijke taal, zoals 'book 2 tickets naar de volgende dinsdag Seattle'. Voorbeeld-uitingen worden toegevoegd aan het doel.
 
-## <a name="version"></a>Version
+## <a name="version"></a>Versie
 
-A LUIS [version](luis-how-to-manage-versions.md) is a specific data model associated with a LUIS app ID and the published endpoint. Every LUIS app has at least one version.
+Een LUIS- [versie](luis-how-to-manage-versions.md) is een specifiek gegevens model dat is gekoppeld aan een Luis-app-id en het gepubliceerde eind punt. Elke LUIS-app bestaat uit ten minste één versie.

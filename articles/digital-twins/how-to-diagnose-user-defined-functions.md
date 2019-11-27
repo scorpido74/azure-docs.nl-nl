@@ -1,6 +1,6 @@
 ---
-title: How to debug UDFs - Azure Digital Twins | Microsoft Docs
-description: Learn about recommended approaches to debug user-defined functions in Azure Digital Twins.
+title: Fout opsporing voor UDFs-Azure Digital Apparaatdubbels | Microsoft Docs
+description: Meer informatie over aanbevolen benaderingen voor het debuggen van door de gebruiker gedefinieerde functies in azure Digital Apparaatdubbels.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -16,73 +16,73 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457016"
 ---
-# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>How to debug user-defined functions in Azure Digital Twins
+# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Fout opsporing door door de gebruiker gedefinieerde functies in azure Digital Apparaatdubbels
 
-This article summarizes how to diagnose and debug user-defined functions in Azure Digital Twins. Then, it identifies some of the most common scenarios found when debugging them.
+In dit artikel wordt een overzicht gegeven van de manier waarop door de gebruiker gedefinieerde functies in azure Digital Apparaatdubbels worden vastgesteld en opgespoord. Vervolgens worden enkele van de meest voorkomende scenario's geïdentificeerd die zijn gevonden bij het opsporen van fouten.
 
 >[!TIP]
-> Read [How to configure monitoring and logging](./how-to-configure-monitoring.md) to learn more about setting up debugging tools in Azure Digital Twins using Activity Logs, Diagnostic Logs, and Azure Monitor.
+> Lees [hoe u bewaking en logboek registratie kunt configureren](./how-to-configure-monitoring.md) voor meer informatie over het instellen van hulpprogram ma's voor fout opsporing in azure Digital apparaatdubbels met behulp van activiteiten logboeken, Diagnostische logboeken en Azure monitor.
 
-## <a name="debug-issues"></a>Debug issues
+## <a name="debug-issues"></a>Problemen met fout opsporing
 
-Knowing how to diagnose issues within Azure Digital Twins allows you to effectively analyze issues, identify the causes of problems, and provide appropriate solutions for them.
+Als u weet hoe u problemen kunt vaststellen in azure Digital Apparaatdubbels, hebt u de mogelijkheid om problemen effectief te analyseren, de oorzaken van problemen te identificeren en de juiste oplossingen te bieden.
 
-A variety of logging, analytics, and diagnostic tools are provided to that end.
+Er zijn verschillende hulpprogram ma's voor logboek registratie, analyse en diagnose.
 
-### <a name="enable-logging-for-your-instance"></a>Enable logging for your instance
+### <a name="enable-logging-for-your-instance"></a>Logboek registratie inschakelen voor uw exemplaar
 
-Azure Digital Twins supports robust logging, monitoring, and analytics. Solutions developers can use Azure Monitor logs, diagnostic logs, activity logs, and other services to support the complex monitoring needs of an IoT app. Logging options can be combined to query or display records across several services and to provide granular logging coverage for many services.
+Azure Digital Apparaatdubbels ondersteunt robuuste logboek registratie, bewaking en analyses. Ontwikkel aars van oplossingen kunnen Azure Monitor-logboeken, Diagnostische logboeken, activiteiten logboeken en andere services gebruiken om de complexe bewakings behoeften van een IoT-app te ondersteunen. Opties voor logboek registratie kunnen worden gecombineerd om records op te vragen of weer te geven in verschillende services en om een gedetailleerde logboek registratie te bieden voor veel services.
 
-* For logging configuration specific to Azure Digital Twins, read [How to configure monitoring and logging](./how-to-configure-monitoring.md).
-* Consult the [Azure Monitor](../azure-monitor/overview.md) overview to learn about powerful log settings enabled through Azure Monitor.
-* Review the article [Collect and consume log data from your Azure resources](../azure-monitor/platform/resource-logs-overview.md) for configuring diagnostic log settings in Azure Digital Twins through the Azure portal, Azure CLI, or PowerShell.
+* Lees [hoe u bewaking en logboek registratie configureert](./how-to-configure-monitoring.md)voor logboek registratie configuratie die specifiek is voor Azure Digital apparaatdubbels.
+* Raadpleeg het [Azure monitor](../azure-monitor/overview.md) -overzicht voor meer informatie over de krachtige logboek instellingen die via Azure monitor kunnen worden ingeschakeld.
+* Raadpleeg het artikel [gegevens verzamelen en gebruiken van uw Azure-resources](../azure-monitor/platform/resource-logs-overview.md) voor het configureren van instellingen voor Diagnostische logboeken in azure Digital apparaatdubbels via de Azure Portal, Azure CLI of Power shell.
 
-Once configured, you'll be able to select all log categories, metrics, and use powerful Azure Monitor log analytics workspaces to support your debugging efforts.
+Na de configuratie kunt u alle logboek categorieën, metrische gegevens en krachtige Azure Monitor Log Analytics-werk ruimten gebruiken ter ondersteuning van uw fout opsporing.
 
-### <a name="trace-sensor-telemetry"></a>Trace sensor telemetry
+### <a name="trace-sensor-telemetry"></a>Telemetrie tracerings sensor
 
-To trace sensor telemetry, verify that diagnostic settings are enabled for your Azure Digital Twins instance. Then, ensure that all desired log categories are selected. Lastly, confirm that the desired logs are being sent to Azure Monitor logs.
+Als u de telemetrie van de sensor wilt traceren, controleert u of de diagnostische instellingen zijn ingeschakeld voor uw Azure Digital Apparaatdubbels-exemplaar. Zorg er vervolgens voor dat alle gewenste logboek categorieën zijn geselecteerd. Controleer ten slotte of de gewenste logboeken naar Azure Monitor logboeken worden verzonden.
 
-To match a sensor telemetry message to its respective logs, you can specify a Correlation ID on the event data being sent. To do so, set the `x-ms-client-request-id` property to a GUID.
+Als u een telemetrie-bericht sensor wilt vergelijken met de respectieve logboeken, kunt u een correlatie-ID opgeven voor de gebeurtenis gegevens die worden verzonden. Als u dit wilt doen, stelt u de eigenschap `x-ms-client-request-id` in op een GUID.
 
-After sending telemetry, open Azure Monitor log analytics to query for logs using the set Correlation ID:
+Open Azure Monitor Log Analytics na het verzenden van telemetrie om logboeken te zoeken met de set correlatie-ID:
 
 ```Kusto
 AzureDiagnostics
 | where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Query value | Vervangen door |
+| Query waarde | Vervangen door |
 | --- | --- |
-| YOUR_CORRELATION_IDENTIFIER | The Correlation ID that was specified on the event data |
+| YOUR_CORRELATION_IDENTIFIER | De correlatie-ID die is opgegeven voor de gebeurtenis gegevens |
 
-To see all recent telemetry logs query:
+Voor een overzicht van de recente telemetrie-logboeken query's:
 
 ```Kusto
 AzureDiagnostics
 | order by CorrelationId desc
 ```
 
-If you enable logging for your user-defined function, those logs appear in your log analytics instance with the category `UserDefinedFunction`. To retrieve them, enter the following query condition in log analytics:
+Als u logboek registratie inschakelt voor uw door de gebruiker gedefinieerde functie, worden deze logboeken weer gegeven in uw log Analytics-exemplaar met de categorie `UserDefinedFunction`. Als u deze wilt ophalen, voert u de volgende query voorwaarde in log Analytics in:
 
 ```Kusto
 AzureDiagnostics
 | where Category == 'UserDefinedFunction'
 ```
 
-For more information about powerful query operations, read [Getting started with queries](../azure-monitor/log-query/get-started-queries.md).
+Lees [aan de slag met query's](../azure-monitor/log-query/get-started-queries.md)voor meer informatie over krachtige query bewerkingen.
 
-## <a name="identify-common-issues"></a>Identify common issues
+## <a name="identify-common-issues"></a>Veelvoorkomende problemen identificeren
 
-Both diagnosing and identifying common issues are important when troubleshooting your solution. Several issues that are commonly encountered when developing user-defined functions are summarized in the following subsections.
+Het is belang rijk om problemen op te lossen en veelvoorkomende problemen op te sporen. Verschillende problemen die vaak optreden bij het ontwikkelen van door de gebruiker gedefinieerde functies, worden in de volgende subsecties samenvatten.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-### <a name="check-if-a-role-assignment-was-created"></a>Check if a role assignment was created
+### <a name="check-if-a-role-assignment-was-created"></a>Controleren of een roltoewijzing is gemaakt
 
-Without a role assignment created within the Management API, the user-defined function doesn't have access to perform any actions such as sending notifications, retrieving metadata, and setting computed values within the topology.
+Zonder dat er een roltoewijzing in de beheer-API is gemaakt, heeft de door de gebruiker gedefinieerde functie geen toegang om acties uit te voeren, zoals het verzenden van meldingen, het ophalen van meta gegevens en het instellen van berekende waarden in de topologie.
 
-Check if a role assignment exists for your user-defined function through your Management API:
+Controleer of er een roltoewijzing bestaat voor uw door de gebruiker gedefinieerde functie via uw beheer-API:
 
 ```URL
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
@@ -90,13 +90,13 @@ GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_U
 
 | Parameterwaarde | Vervangen door |
 | --- | --- |
-| YOUR_USER_DEFINED_FUNCTION_ID | The ID of the user-defined function to retrieve role assignments for|
+| YOUR_USER_DEFINED_FUNCTION_ID | De ID van de door de gebruiker gedefinieerde functie om roltoewijzingen op te halen voor|
 
-Learn [How to create a role assignment for your user-defined function](./how-to-user-defined-functions.md), if no role assignments exist.
+Meer informatie [over het maken van een roltoewijzing voor uw door de gebruiker gedefinieerde functie](./how-to-user-defined-functions.md)als er geen roltoewijzingen zijn.
 
-### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>Check if the matcher works for a sensor's telemetry
+### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>Controleer of de overeenkomst werkt voor de telemetrie van een sensor
 
-With the following call against your Azure Digital Twins instances' Management API, you're able to determine if a given matcher applies for the given sensor.
+Met de volgende aanroep van uw Azure Digital Apparaatdubbels instances-beheer-API kunt u bepalen of een bepaalde overeenkomst van toepassing is voor de gegeven sensor.
 
 ```URL
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
@@ -104,8 +104,8 @@ GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSO
 
 | Parameter | Vervangen door |
 | --- | --- |
-| *YOUR_MATCHER_IDENTIFIER* | The ID of the matcher you wish to evaluate |
-| *YOUR_SENSOR_IDENTIFIER* | The ID of the sensor you wish to evaluate |
+| *YOUR_MATCHER_IDENTIFIER* | De ID van de overeenkomst die u wilt evalueren |
+| *YOUR_SENSOR_IDENTIFIER* | De ID van de sensor die u wilt evalueren |
 
 Reactie:
 
@@ -118,9 +118,9 @@ Reactie:
 }
 ```
 
-### <a name="check-what-a-sensor-triggers"></a>Check what a sensor triggers
+### <a name="check-what-a-sensor-triggers"></a>Controleren welke sensor wordt geactiveerd
 
-With the following call against the Azure Digital Twins Management APIs, you're able to determine the identifiers of your user-defined functions triggered by the given sensor's incoming telemetry:
+Met de volgende aanroep van de Azure Digital Apparaatdubbels Management-Api's kunt u de id's bepalen van uw door de gebruiker gedefinieerde functies die zijn geactiveerd door de binnenkomende telemetrie van de opgegeven sensor:
 
 ```URL
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
@@ -128,7 +128,7 @@ GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=Use
 
 | Parameter | Vervangen door |
 | --- | --- |
-| *YOUR_SENSOR_IDENTIFIER* | The ID of the sensor to send telemetry |
+| *YOUR_SENSOR_IDENTIFIER* | De ID van de sensor voor het verzenden van telemetrie |
 
 Reactie:
 
@@ -159,11 +159,11 @@ Reactie:
 ]
 ```
 
-### <a name="issue-with-receiving-notifications"></a>Issue with receiving notifications
+### <a name="issue-with-receiving-notifications"></a>Probleem met het ontvangen van meldingen
 
-When you're not receiving notifications from the triggered user-defined function, confirm that your topology object type parameter matches the type of identifier that's being used.
+Als u geen meldingen van de geactiveerde door de gebruiker gedefinieerde functie ontvangt, controleert u of de object type parameter van de topologie overeenkomt met het type id dat wordt gebruikt.
 
-**Incorrect** Example:
+**Onjuist** Hierbij
 
 ```JavaScript
 var customNotification = {
@@ -173,9 +173,9 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-This scenario arises because the used identifier refers to a sensor while the topology object type specified is `Space`.
+Dit scenario doet zich voor omdat de gebruikte id naar een sensor verwijst terwijl het opgegeven topologie object type `Space`is.
 
-**Correct** Example:
+**Juiste** Hierbij
 
 ```JavaScript
 var customNotification = {
@@ -185,7 +185,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-The easiest way to not run into this issue is to use the `Notify` method on the metadata object.
+De eenvoudigste manier om dit probleem niet op te lossen, is door de `Notify` methode voor het object meta gegevens te gebruiken.
 
 Voorbeeld:
 
@@ -202,18 +202,18 @@ function process(telemetry, executionContext) {
 }
 ```
 
-## <a name="common-diagnostic-exceptions"></a>Common diagnostic exceptions
+## <a name="common-diagnostic-exceptions"></a>Veelvoorkomende diagnostische uitzonde ringen
 
-If you enable diagnostic settings, you might encounter these common exceptions:
+Als u Diagnostische instellingen inschakelt, kunnen deze algemene uitzonde ringen optreden:
 
-1. **Throttling**: if your user-defined function exceeds the execution rate limits outlined in the [Service Limits](./concepts-service-limits.md) article, it will be throttled. No further operations are successfully executed until the throttling limits expire.
+1. **Beperking**: als uw door de gebruiker gedefinieerde functie de limieten voor de uitvoerings snelheid overschrijdt die worden beschreven in het artikel [service limieten](./concepts-service-limits.md) , wordt dit beperkt. Er worden geen verdere bewerkingen uitgevoerd totdat de beperkings limieten verlopen.
 
-1. **Data Not Found**: if your user-defined function attempts to access metadata that does not exist, the operation fails.
+1. **Geen gegevens gevonden**: als uw door de gebruiker gedefinieerde functie probeert toegang te krijgen tot meta gegevens die niet bestaan, mislukt de bewerking.
 
-1. **Not Authorized**: if your user-defined function doesn't have a role assignment set or lacks enough permission to access certain metadata from the topology, the operation fails.
+1. **Niet gemachtigd**: als uw door de gebruiker gedefinieerde functie geen roltoewijzing heeft ingesteld of onvoldoende machtigingen heeft om toegang te krijgen tot bepaalde meta gegevens uit de topologie, mislukt de bewerking.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Learn how to enable [monitoring and logs](./how-to-configure-monitoring.md) in Azure Digital Twins.
+- Meer informatie over het inschakelen van [controle en logboeken](./how-to-configure-monitoring.md) in azure Digital apparaatdubbels.
 
-- Read the [Overview of Azure Activity log](../azure-monitor/platform/activity-logs-overview.md) article for more Azure logging options.
+- Lees het artikel [overzicht van Azure-activiteiten logboek](../azure-monitor/platform/activity-logs-overview.md) voor meer opties voor Azure-logboek registratie.

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for videos using the REST API and Node.js - Bing Video Search'
+title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en node. js-Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's naar de Bing Video's zoeken-REST API te verzenden met behulp van JavaScript.
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383801"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Quickstart: Search for videos using the Bing Video Search REST API and Node.js
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en node. js
 
 Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roepen en een zoekresultaat van het JSON-antwoord te bekijken. Deze eenvoudige JavaScript-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het antwoord weer. Hoewel deze toepassing in JavaScript is geschreven en maakt gebruik van Node.js, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js) met extra foutafhandeling en codeaantekeningen.
 
@@ -50,7 +50,7 @@ Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roep
 
 ## <a name="create-a-response-handler"></a>Een antwoordhandler maken
 
-1. Maak een functie met de naam `response_handler` om een JSON-antwoord van de API weer te geven. Maak een variabele voor de hoofdtekst van het antwoord. Voeg met behulp van `response.on()` het antwoord toe als er een `data`-vlag wordt ontvangen.
+1. Maak een functie met de naam `response_handler` om een JSON-antwoord van de API weer te geven. Maak een variabele voor de hoofdtekst van het antwoord. Voeg met behulp van `data` het antwoord toe als er een `response.on()`-vlag wordt ontvangen.
 
     ```javascript
     let response_handler = function (response) {
@@ -77,7 +77,7 @@ Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roep
 
 ## <a name="create-and-send-the-search-request"></a>De zoekaanvraag samenstellen en verzenden
 
-1. Maak de functie `bing_video_search()`. Voeg de parameters voor uw aanvraag toe, inclusief uw hostnaam en de headers. Codeer uw zoekterm en voeg deze met de parameter `?q=` toe achter uw padparameter. Verzend vervolgens de aanvraag met `req.end()`.
+1. Maak een functie met de naam `bing_video_search()`. Voeg de parameters voor uw aanvraag toe, inclusief uw hostnaam en de headers. Codeer uw zoekterm en voeg deze met de parameter `?q=` toe achter uw padparameter. Verzend vervolgens de aanvraag met `req.end()`.
 
     ```javascript
     let bing_video_search = function (search_term) {

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Protect new resources with locks'
-description: In this tutorial, you use the Azure Blueprints resource locks options Read Only and Do Not Delete to protect newly deployed resources.
+title: 'Zelf studie: nieuwe resources beveiligen met vergren delingen'
+description: In deze zelf studie gebruikt u de opties voor het vergren delen van Azure-blauw drukken alleen-lezen en niet verwijderen om nieuwe geïmplementeerde resources te beveiligen.
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
@@ -10,53 +10,53 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327449"
 ---
-# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Protect new resources with Azure Blueprints resource locks
+# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Zelf studie: nieuwe resources beveiligen met Azure-blauw drukken resource vergrendelingen
 
-With Azure Blueprints [resource locks](../concepts/resource-locking.md), you can protect newly deployed resources from being tampered with, even by an account with the _Owner_ role. You can add this protection in the blueprint definitions of resources created by a Resource Manager template artifact.
+Met Azure-blauw drukken [resource vergrendeling](../concepts/resource-locking.md)kunt u nieuwe geïmplementeerde resources beveiligen tegen onrecht matig gemanipuleerd, zelfs door een account met de rol van _eigenaar_ . U kunt deze beveiliging toevoegen in de blauw drukken definities van resources die zijn gemaakt met een resource manager-sjabloon artefact.
 
-In this tutorial, you'll complete these steps:
+In deze zelf studie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> - Create a blueprint definition
-> - Mark your blueprint definition as **Published**
-> - Assign your blueprint definition to an existing subscription
-> - Inspect the new resource group
-> - Unassign the blueprint to remove the locks
+> - Een definitie van een blauw druk maken
+> - De definitie van uw blauw druk markeren als **gepubliceerd**
+> - De definitie van de blauw druk toewijzen aan een bestaand abonnement
+> - De nieuwe resource groep controleren
+> - De blauw druk voor het verwijderen van de vergren delingen opheffen
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
 
-## <a name="create-a-blueprint-definition"></a>Create a blueprint definition
+## <a name="create-a-blueprint-definition"></a>Een definitie van een blauw druk maken
 
-First, create the blueprint definition.
+Maak eerst de definitie van de blauw druk.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. On the **Getting started** page on the left, select **Create** under **Create a blueprint**.
+1. Selecteer op de pagina **aan** de slag aan de linkerkant **maken** onder **een blauw druk maken**.
 
-1. Find the **Blank Blueprint** blueprint sample at the top of the page. Select **Start with blank blueprint**.
+1. Zoek het voor beeld van de **lege blauw** druk boven aan de pagina. Selecteer **beginnen met een lege blauw druk**.
 
-1. Enter this information on the **Basics** tab:
+1. Voer deze informatie in op het tabblad **basis beginselen** :
 
-   - **Blueprint name**: Provide a name for your copy of the blueprint sample. For this tutorial, we'll use the name **locked-storageaccount**.
-   - **Blueprint description**: Add a description for the blueprint definition. Use **For testing blueprint resource locking on deployed resources**.
-   - **Definition location**: Select the ellipsis button (...) and then select the management group or subscription to save your blueprint definition to.
+   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk. Voor deze zelf studie gebruiken we de naam **Locked-Storage account**.
+   - **Beschrijving blauw druk**: een beschrijving voor de definitie van de blauw druk toevoegen. Gebruiken **voor het testen van de resource vergrendeling op een blauw druk op geïmplementeerde resources**.
+   - **Definitie locatie**: Selecteer de knop met het weglatings teken (...) en selecteer vervolgens de beheer groep of het abonnement waarvoor u de definitie van de blauw druk wilt opslaan.
 
-1. Select the **Artifacts** tab at the top of the page, or select **Next: Artifacts** at the bottom of the page.
+1. Selecteer het tabblad **artefacten** boven aan de pagina of selecteer **volgende: artefacten** aan de onderkant van de pagina.
 
-1. Add a resource group at the subscription level:
-   1. Select the **Add artifact** row under **Subscription**.
-   1. Select **Resource Group** under **Artifact type**.
-   1. Set the **Artifact display name** to **RGtoLock**.
-   1. Leave the **Resource Group Name** and **Location** boxes blank, but make sure the check box is selected on each property to make them **dynamic parameters**.
-   1. Select **Add** to add the artifact to the blueprint.
+1. Een resource groep toevoegen op het abonnements niveau:
+   1. Selecteer de rij **artefact toevoegen** onder **abonnement**.
+   1. Selecteer **resource groep** onder **Type artefact**.
+   1. Stel de **weergave naam artefact** in op **RGtoLock**.
+   1. Laat de vakken naam en **locatie** van **resource groep** leeg, maar zorg ervoor dat het selectie vakje is ingeschakeld op elke eigenschap om deze **dynamische para meters**te maken.
+   1. Selecteer **toevoegen** om het artefact toe te voegen aan de blauw druk.
 
-1. Add a template under the resource group:
-   1. Select the **Add artifact** row under the **RGtoLock** entry.
-   1. Select **Azure Resource Manager template** under **Artifact type**, set **Artifact display name** to **StorageAccount**, and leave **Description** blank.
-   1. On the **Template** tab, paste the following Resource Manager template into the editor box.
-      After you paste in the template, select **Add** to add the artifact to the blueprint.
+1. Voeg een sjabloon toe onder de resource groep:
+   1. Selecteer de rij **artefact toevoegen** onder de vermelding **RGtoLock** .
+   1. Selecteer **Azure Resource Manager sjabloon** onder **Type artefact**, stel **weergave naam voor artefact** in op **Storage account**en laat de **Beschrijving** leeg.
+   1. Plak op het tabblad **sjabloon** de volgende Resource Manager-sjabloon in het vak editor.
+      Nadat u de sjabloon hebt geplakt, selecteert u **toevoegen** om het artefact toe te voegen aan de blauw druk.
 
    ```json
    {
@@ -100,132 +100,132 @@ First, create the blueprint definition.
    }
    ```
 
-1. Select **Save Draft** at the bottom of the page.
+1. Selecteer **concept opslaan** onder aan de pagina.
 
-This step creates the blueprint definition in the selected management group or subscription.
+Met deze stap maakt u de blauw druk-definitie in de geselecteerde beheer groep of dit abonnement.
 
-After the **Saving blueprint definition succeeded** portal notification appears, go to the next step.
+Nadat de waarschuwing voor het opslaan van de **blauw druk is geslaagd** , gaat u naar de volgende stap.
 
-## <a name="publish-the-blueprint-definition"></a>Publish the blueprint definition
+## <a name="publish-the-blueprint-definition"></a>De definitie van de blauw druk publiceren
 
-Your blueprint definition has now been created in your environment. It's created in **Draft** mode and must be published before it can be assigned and deployed.
-
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
-
-1. Select the **Blueprint definitions** page on the left. Use the filters to find the **locked-storageaccount** blueprint definition, and then select it.
-
-1. Select **Publish blueprint** at the top of the page. In the new pane on the right, enter **1.0** as the **Version**. This property is useful if you make a change later. Enter **Change notes**, such as **First version published for locking blueprint deployed resources**. Then select **Publish** at the bottom of the page.
-
-This step makes it possible to assign the blueprint to a subscription. After the blueprint definition is published, you can still make changes. If you make changes, you need to publish the definition with a new version value to track differences between versions of the same blueprint definition.
-
-After the **Publishing blueprint definition succeeded** portal notification appears, go to the next step.
-
-## <a name="assign-the-blueprint-definition"></a>Assign the blueprint definition
-
-After the blueprint definition is published, you can assign it to a subscription within the management group where you saved it. In this step, you provide parameters to make each deployment of the blueprint definition unique.
+De definitie van uw blauw druk is nu gemaakt in uw omgeving. Deze wordt gemaakt in de **concept** modus en moet worden gepubliceerd voordat deze kan worden toegewezen en geïmplementeerd.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find the **locked-storageaccount** blueprint definition, and then select it.
+1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om de definitie van de **afgesloten Storage account** blauw druk te vinden en selecteer deze.
 
-1. Select **Assign blueprint** at the top of the blueprint definition page.
+1. Selecteer **blauw druk** aan de bovenkant van de pagina publiceren. Voer in het deel venster Nieuw rechts **1,0** in als de **versie**. Deze eigenschap is handig als u later een wijziging aanbrengt. Voer **wijzigings notities**in, zoals de **eerste versie die is gepubliceerd voor het vergren delen van op blauw drukken geïmplementeerde resources**. Selecteer vervolgens **publiceren** onder aan de pagina.
 
-1. Provide the parameter values for the blueprint assignment:
+Met deze stap kunt u de blauw druk toewijzen aan een abonnement. Wanneer de definitie van de blauw druk is gepubliceerd, kunt u nog steeds wijzigingen aanbrengen. Als u wijzigingen aanbrengt, moet u de definitie publiceren met een nieuwe versie waarde om de verschillen tussen versies van dezelfde blauw druk-definitie bij te houden.
+
+Ga naar de volgende stap nadat de portal-melding voor het publiceren van de **blauw druk is voltooid** weer gegeven.
+
+## <a name="assign-the-blueprint-definition"></a>De definitie van de blauw druk toewijzen
+
+Wanneer de definitie van de blauw druk is gepubliceerd, kunt u deze toewijzen aan een abonnement binnen de beheer groep waar u het hebt opgeslagen. In deze stap geeft u para meters op om elke implementatie van de definitie van de blauw druk uniek te maken.
+
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
+
+1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om de definitie van de **afgesloten Storage account** blauw druk te vinden en selecteer deze.
+
+1. Selecteer de optie **blauw** drukken boven aan de pagina met de definitie van de blauw druk.
+
+1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
    - **Basisinstellingen**
 
-     - **Subscriptions**: Select one or more of the subscriptions that are in the management group where you saved your blueprint definition. If you select more than one subscription, an assignment will be created for each subscription, using the parameters you enter.
-     - **Assignment name**: The name is pre-populated based on the name of the blueprint definition. We want this assignment to represent locking the new resource group, so change the assignment name to **assignment-locked-storageaccount-TestingBPLocks**.
-     - **Location**: Select a region in which to create the managed identity. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
-       For this tutorial, select **East US 2**.
-     - **Blueprint definition version**: Select the published version **1.0** of the blueprint definition.
+     - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waar u de definitie van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er voor elk abonnement een toewijzing gemaakt met behulp van de para meters die u invoert.
+     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de definitie van de blauw druk. We willen dat deze toewijzing de vergren deling van de nieuwe resource groep aangeeft. Wijzig daarom de naam van de toewijzing in **Assignment-Locked-Storage account-TestingBPLocks**.
+     - **Locatie**: Selecteer een regio waarin u de beheerde identiteit wilt maken. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
+       Voor deze zelf studie selecteert u **VS Oost 2**.
+     - **Definitie van blauw druk-definition**: Selecteer de gepubliceerde versie **1,0** van de blauw druk-definitie.
 
-   - **Lock Assignment**
+   - **Toewijzing vergren delen**
 
-     Select the **Read Only** blueprint lock mode. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
+     Selecteer de vergrendelings modus voor **alleen-lezen** blauw drukken. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
 
-   - **Managed Identity**
+   - **Beheerde identiteit**
 
-     Use the default option: **System assigned**. For more information, see [managed identities](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Gebruik de standaard optie: **toegewezen systeem**. Zie [Managed Identities](../../../active-directory/managed-identities-azure-resources/overview.md)(Engelstalig) voor meer informatie.
 
-   - **Artifact parameters**
+   - **Artefact parameters**
 
-     The parameters defined in this section apply to the artifact under which they're defined. These parameters are [dynamic parameters](../concepts/parameters.md#dynamic-parameters) because they're defined during the assignment of the blueprint. For each artifact, set the parameter value to what you see in the **Value** column.
+     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder ze zijn gedefinieerd. Deze para meters zijn [dynamische para meters](../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Stel voor elk artefact de parameter waarde in op wat u ziet in de kolom **waarde** .
 
-     |Artifact name|Artifact type|Parameternaam|Waarde|Beschrijving|
+     |Artefact naam|Type artefact|Parameternaam|Waarde|Beschrijving|
      |-|-|-|-|-|
-     |RGtoLock resource group|Resourcegroep|Naam|TestingBPLocks|Defines the name of the new resource group to apply blueprint locks to.|
-     |RGtoLock resource group|Resourcegroep|Locatie|VS - west 2|Defines the location of the new resource group to apply blueprint locks to.|
-     |StorageAccount|Resource Manager-sjabloon|storageAccountType (StorageAccount)|Standard_GRS|The storage SKU. The default value is _Standard_LRS_.|
+     |Resource groep RGtoLock|Resourcegroep|Naam|TestingBPLocks|Hiermee definieert u de naam van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
+     |Resource groep RGtoLock|Resourcegroep|Locatie|US - west 2|Hiermee definieert u de locatie van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
+     |StorageAccount|Resource Manager-sjabloon|storageAccountType (StorageAccount)|Standard_GRS|De opslag-SKU. De standaard waarde is _Standard_LRS_.|
 
-1. After you've entered all parameters, select **Assign** at the bottom of the page.
+1. Nadat u alle para meters hebt ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** .
 
-This step deploys the defined resources and configures the selected **Lock Assignment**. It can take up to 30 minutes to apply blueprint locks.
+Met deze stap implementeert u de gedefinieerde resources en configureert u de geselecteerde **vergrendelings toewijzing**. Het kan tot 30 minuten duren om blauw druk vergrendelingen toe te passen.
 
-After the **Assigning blueprint definition succeeded** portal notification appears, go to the next step.
+Nadat de portal-definitie voor het toewijzen van de **blauw druk is geslaagd** , gaat u naar de volgende stap.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>Inspect resources deployed by the assignment
+## <a name="inspect-resources-deployed-by-the-assignment"></a>Resources controleren die door de toewijzing zijn geïmplementeerd
 
-The assignment creates the resource group _TestingBPLocks_ and the storage account deployed by the Resource Manager template artifact. The new resource group and the selected lock state are shown on the assignment details page.
-
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
-
-1. Select the **Assigned blueprints** page on the left. Use the filters to find the **assignment-locked-storageaccount-TestingBPLocks** blueprint assignment, and then select it.
-
-   From this page, we can see that the assignment succeeded and that the resources were deployed with the new blueprint lock state. If the assignment is updated, the **Assignment operation** drop-down shows details about the deployment of each definition version. You can select the resource group to open the property page.
-
-1. Select the **TestingBPLocks** resource group.
-
-1. Select the **Access control (IAM)** page on the left. Then select the **Role assignments** tab.
-
-   Here we see that the _assignment-locked-storageaccount-TestingBPLocks_ blueprint assignment has the _Owner_ role. It has this role because this role was used to deploy and lock the resource group.
-
-1. Select the **Deny assignments** tab.
-
-   The blueprint assignment created a [deny assignment](../../../role-based-access-control/deny-assignments.md) on the deployed resource group to enforce the **Read Only** blueprint lock mode. The deny assignment prevents someone with appropriate rights on the **Role assignments** tab from taking specific actions. The deny assignment affects _All principals_.
-
-   For information about excluding a principal from a deny assignment, see [blueprints resource locking](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
-
-1. Select the deny assignment, and then select the **Denied Permissions** page on the left.
-
-   The deny assignment is preventing all operations with the **\*** and **Action** configuration, but it allows read access by excluding **\*/read** via **NotActions**.
-
-1. In the Azure portal breadcrumb, select **TestingBPLocks - Access control (IAM)** . Then select the **Overview** page on the left and then the **Delete resource group** button. Enter the name **TestingBPLocks** to confirm the delete and then select **Delete** at the bottom of the pane.
-
-   The portal notification **Delete resource group TestingBPLocks failed** appears. The error states that although your account has permission to delete the resource group, access is denied by the blueprint assignment. Remember that we selected the **Read Only** blueprint lock mode during blueprint assignment. The blueprint lock prevents an account with permission, even _Owner_, from deleting the resource. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
-
-These steps show that our deployed resources are now protected with blueprint locks that prevent unwanted deletion, even from an account that has permission to delete the resources.
-
-## <a name="unassign-the-blueprint"></a>Unassign the blueprint
-
-The last step is to remove the assignment of the blueprint definition. Removing the assignment doesn't remove the associated artifacts.
+De toewijzing maakt de resource groep _TestingBPLocks_ en het opslag account dat door het Resource Manager-sjabloon artefact wordt geïmplementeerd. De nieuwe resource groep en de geselecteerde vergrendelings status worden weer gegeven op de pagina toewijzings Details.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Select the **Assigned blueprints** page on the left. Use the filters to find the **assignment-locked-storageaccount-TestingBPLocks** blueprint assignment, and then select it.
+1. Selecteer de pagina **toegewezen blauw drukken** aan de linkerkant. Gebruik de filters om de Storage account-blauw druk toewijzing met **toewijzings vergrendeling-TestingBPLocks** te vinden en selecteer deze.
 
-1. Select **Unassign blueprint** at the top of the page. Read the warning in the confirmation dialog box, and then select **OK**.
+   Op deze pagina kunt u zien dat de toewijzing is geslaagd en dat de resources zijn geïmplementeerd met de nieuwe status blauw drukken. Als de toewijzing is bijgewerkt, bevat de vervolg keuzelijst **toewijzings bewerking** Details over de implementatie van elke definitie versie. U kunt de resource groep selecteren om de eigenschappen pagina te openen.
 
-   When the blueprint assignment is removed, the blueprint locks are also removed. The resources can once again be deleted by an account with appropriate permissions.
+1. Selecteer de resource groep **TestingBPLocks** .
 
-1. Select **Resource groups** from the Azure menu, and then select **TestingBPLocks**.
+1. Selecteer de pagina **toegangs beheer (IAM)** aan de linkerkant. Selecteer vervolgens het tabblad **roltoewijzingen** .
 
-1. Select the **Access control (IAM)** page on the left and then select the **Role assignments** tab.
+   Hier zien we dat de toewijzing van de _Storage account-TestingBPLocks_ blauw drukken de rol _eigenaar_ heeft. Deze functie heeft deze rol omdat deze rol is gebruikt om de resource groep te implementeren en te vergren delen.
 
-The security for the resource group shows that the blueprint assignment no longer has _Owner_ access.
+1. Selecteer het tabblad **toewijzingen weigeren** .
 
-After the **Removing blueprint assignment succeeded** portal notification appears, go to the next step.
+   De toewijzing van de blauw druk heeft een [deny-toewijzing](../../../role-based-access-control/deny-assignments.md) gemaakt voor de geïmplementeerde resource groep om de **alleen-lezen** vergrendelings modus voor blauw drukken af te dwingen. Met de weiger toewijzing kan iemand met de juiste rechten op het tabblad **roltoewijzingen** geen specifieke acties uitvoeren. De weiger toewijzing heeft gevolgen voor _alle principals_.
+
+   Zie [blauw drukken voor resource vergrendeling](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment)voor meer informatie over het uitsluiten van een principal van een weigerings toewijzing.
+
+1. Selecteer de toewijzing weigeren en selecteer vervolgens de pagina **geweigerde machtigingen** aan de linkerkant.
+
+   De toewijzing weigeren voor komt dat alle bewerkingen met de configuratie van de **\*** en de **actie** worden uitgevoerd, maar biedt wel lees toegang door **\*/Read** uit te **sluiten.**
+
+1. Selecteer **TestingBPLocks-Access Control (IAM)** in de breadcrumb Azure Portal. Selecteer vervolgens de pagina **overzicht** aan de linkerkant en klik vervolgens op de knop **resource groep verwijderen** . Voer de naam **TestingBPLocks** in om het verwijderen te bevestigen en selecteer vervolgens **verwijderen** onder aan het deel venster.
+
+   De portal melding voor het verwijderen van de **resource groep TestingBPLocks is mislukt** . De fout geeft aan dat hoewel uw account gemachtigd is om de resource groep te verwijderen, de toegang wordt geweigerd door de toewijzing van de blauw druk. Houd er rekening mee dat de **alleen-lezen** modus blauw drukken tijdens het toewijzen van blauw drukken is geselecteerd. Met de vergren deling blauw druk voor komt u dat een account met toestemming, zelfs _eigenaar_, de resource verwijdert. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
+
+Deze stappen laten zien dat onze geïmplementeerde resources nu worden beveiligd met blauw drukken die ongewenste verwijdering voor komen, zelfs van een account dat is gemachtigd om de resources te verwijderen.
+
+## <a name="unassign-the-blueprint"></a>De blauw druk intrekken
+
+De laatste stap bestaat uit het verwijderen van de toewijzing van de definitie van de blauw druk. Als u de toewijzing verwijdert, worden de gekoppelde artefacten niet verwijderd.
+
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
+
+1. Selecteer de pagina **toegewezen blauw drukken** aan de linkerkant. Gebruik de filters om de Storage account-blauw druk toewijzing met **toewijzings vergrendeling-TestingBPLocks** te vinden en selecteer deze.
+
+1. Selecteer aan de bovenkant van de pagina de optie **blauw** pagina opheffen. Lees de waarschuwing in het bevestigings venster en selecteer **OK**.
+
+   Wanneer de blauw druk-toewijzing wordt verwijderd, worden de blauw druk vergrendelingen ook verwijderd. De resources kunnen opnieuw worden verwijderd door een account met de juiste machtigingen.
+
+1. Selecteer **resource groepen** in het menu van Azure en selecteer vervolgens **TestingBPLocks**.
+
+1. Selecteer de pagina **toegangs beheer (IAM)** aan de linkerkant en selecteer vervolgens het tabblad **roltoewijzingen** .
+
+De beveiliging voor de resource groep toont aan dat de toewijzing van de blauw druk geen _eigenaars_ toegang meer heeft.
+
+Ga naar de volgende stap nadat u de portal melding voor het verwijderen van de **blauw druk-toewijzing hebt verwijderd** weer gegeven.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-When you're finished with this tutorial, delete these resources:
+Wanneer u klaar bent met deze zelf studie, verwijdert u deze resources:
 
-- Resource group _TestingBPLocks_
-- Blueprint definition _locked-storageaccount_
+- _TestingBPLocks_ van resource groep
+- Definitie van blauw druk _vergrendeld-Storage account_
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this tutorial, you've learned how to protect new resources deployed with Azure Blueprints. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+In deze zelf studie hebt u geleerd hoe u nieuwe resources die zijn geïmplementeerd met Azure-blauw drukken kunt beveiligen. Voor meer informatie over Azure-blauw drukken gaat u verder met het artikel van de blauw druk-levens duur.
 
 > [!div class="nextstepaction"]
-> [Learn about the blueprint lifecycle](../concepts/lifecycle.md)
+> [Meer informatie over de levens duur van de blauw druk](../concepts/lifecycle.md)

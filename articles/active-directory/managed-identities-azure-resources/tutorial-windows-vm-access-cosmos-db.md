@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Cosmos DB - Windows - Azure AD
+title: Zelf studie`:` een beheerde identiteit gebruiken om toegang te krijgen tot Azure Cosmos DB-Windows-Azure AD
 description: Een zelfstudie die u helpt bij het gebruiken van een door het systeem toegewezen beheerde identiteit op een Windows-VM voor toegang tot Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
@@ -26,7 +26,7 @@ ms.locfileid: "74224251"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Deze zelfstudie laat zien hoe u toegang krijgt tot Cosmos DB met een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM). In deze zelfstudie leert u procedures om het volgende te doen:
+Deze zelfstudie laat zien hoe u toegang krijgt tot Cosmos DB met een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM). Procedures voor:
 
 > [!div class="checklist"]
 > * Cosmos DB-account maken
@@ -49,7 +49,7 @@ Maak een Cosmos DB-account als u er nog geen hebt. U kunt deze stap overslaan en
 3. Voer een **Id** in voor het Cosmos DB-account, die u later zult gebruiken.  
 4. **API** moet worden ingesteld op 'SQL'. De aanpak die in deze zelfstudie wordt beschreven, kan worden gebruikt met de andere beschikbare API-typen, maar de stappen in deze zelfstudie zijn voor de SQL-API.
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.  Selecteer een **Locatie** waar Cosmos DB beschikbaar is.
-6. Klik op **Maken**.
+6. Klik op **Create**.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Een verzameling maken in het Cosmos DB-account
 

@@ -1,7 +1,7 @@
 ---
-title: Create a Load Balancer with a zonal frontend - Azure portal
+title: Een Load Balancer met een zonegebonden-frontend maken-Azure Portal
 titleSuffix: Azure Load Balancer
-description: Learn how to create a Standard Load Balancer with zonal frontend with the Azure portal
+description: Meer informatie over het maken van een Standard Load Balancer met zonegebonden frontend met de Azure Portal
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -21,39 +21,39 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225343"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>Create a Standard Load Balancer with zonal frontend using Azure portal
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>Een Standard Load Balancer met zonegebonden-frontend maken met behulp van Azure Portal
 
-This article steps through creating a public [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) with a zonal frontend IP configuration. To understand how availability zones work with Standard Load Balancer, see [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md). 
+In dit artikel wordt beschreven hoe u een open bare [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) maakt met een zonegebonden front-end-IP-configuratie. Zie [Standard Load Balancer-en beschikbaarheids](load-balancer-standard-availability-zones.md)zones voor meer informatie over de werking van beschikbaarheids zones met Standard Load Balancer. 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 > [!NOTE]
-> Support for Availability Zones is available for select Azure resources and regions, and VM size families. For more information on how to get started, and which Azure resources, regions, and VM size families you can try availability zones with, see [Overview of Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview). Voor ondersteuning kunt u vragen stellen op [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) of [een Azure-ondersteuningsticket openen](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
+> Ondersteuning voor Beschikbaarheidszones is beschikbaar voor geselecteerde Azure-resources en regio's en groottefamilies van de virtuele machine. Zie [overzicht van Beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview)voor meer informatie over hoe u aan de slag kunt gaan en welke Azure-resources,-regio's en-Series met VM-grootten u de beschikbaarheids zones wilt proberen. Voor ondersteuning kunt u vragen stellen op [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) of [een Azure-ondersteuningsticket openen](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure. 
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-load-balancer-with-zonal-frontend-ip-address"></a>Create a load balancer with zonal frontend IP address
+## <a name="create-a-load-balancer-with-zonal-frontend-ip-address"></a>Een load balancer maken met zonegebonden frontend-IP-adres
 
-1. From a browser navigate to the Azure portal: [https://portal.azure.com](https://portal.azure.com) and login with your Azure account.
-2. On the top left-hand side of the screen, select **Create a resource** > **Networking** > **Load Balancer.**
-3. In the **Create load balancer** page, under **Name** type **myLoadBalancer**.
+1. Ga in een browser naar de Azure Portal: [https://portal.azure.com](https://portal.azure.com) en meld u aan met uw Azure-account.
+2. Selecteer in de linkerbovenhoek van het scherm de optie **een resource maken** > **netwerk** > **Load Balancer.**
+3. Klik op de pagina **Load Balancer maken** onder **naam** type **myLoadBalancer**.
 4. Selecteer onder **Type** de optie **Openbaar**.
-5. Under SKU, select **Standard**.
-6. Click **Choose a Public IP address**, click **Create new**, and in **Create public IP address** page, under name, type **myPublicIPZonal**, for SKU, select **Standard**, for Availability zone, select **1**.
+5. Selecteer onder SKU de optie **standaard**.
+6. Klik op **Kies een openbaar IP-adres**, klik op **Nieuw**en op de pagina **openbaar IP-adres maken** onder naam typt u **myPublicIPZonal**, voor SKU, selecteer **standaard**, voor beschikbaarheids zone, selecteer **1**.
     
 >[!NOTE] 
-> The public IP created in this step is of Standard SKU by default.
+> De openbare IP die zijn gemaakt in deze stap is van de standaard-SKU standaard.
 
-1. For **Resource group**, click **Create new**, and then type **myResourceGroupZLB** as the name of the resource group.
-1. For **Location**, select **West Europe**, and then click **OK**. De load balancer begint vervolgens met de implementatie. Het duurt een aantal minuten voordat de implementatie is voltooid.
+1. Klik voor **resource groep**op **nieuwe maken**en typ **myResourceGroupZLB** als de naam van de resource groep.
+1. Selecteer bij **locatie**de optie **Europa-West**en klik vervolgens op **OK**. De load balancer begint vervolgens met de implementatie. Het duurt een aantal minuten voordat de implementatie is voltooid.
 
-    ![create zone-redundant Standard Load Balancer with the Azure portal](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
+    ![Maak zone-redundante Standard Load Balancer met de Azure Portal](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Learn more about [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md).
+- Meer informatie over [Standard Load Balancer-en beschikbaarheids zones](load-balancer-standard-availability-zones.md).
 
 
 

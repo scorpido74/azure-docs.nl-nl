@@ -196,7 +196,7 @@ Deze categorie bevat de record van alle service status incidenten die zich in az
 ```
 Raadpleeg het artikel over [service status meldingen](./../../azure-monitor/platform/service-notifications.md) voor documentatie over de waarden in de eigenschappen.
 
-## <a name="resource-health"></a>Bronnenstatus
+## <a name="resource-health"></a>Status van resources
 Deze categorie bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van het type gebeurtenis dat in deze categorie wordt weer geven, is de status van de virtuele machine is gewijzigd in niet beschikbaar. Resource Health-gebeurtenissen kunnen een van de vier statussen vertegenwoordigen: beschikbaar, niet beschikbaar, gedegradeerd en onbekend. Daarnaast kunnen resource status gebeurtenissen worden gecategoriseerd als platform gestart of door de gebruiker gestart.
 
 ### <a name="sample-event"></a>Voorbeeld gebeurtenis
@@ -789,7 +789,7 @@ Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Even
 | correlationId | correlationId |  |
 | identity | Eigenschappen voor claims en autorisatie |  |
 | Niveau | Niveau |  |
-| location | N.v.t. | Locatie van waar de gebeurtenis is verwerkt. *Dit is niet de locatie van de resource, maar in plaats van de gebeurtenis. Deze eigenschap wordt verwijderd in een toekomstige update.* |
+| locatie | N.v.t. | Locatie van waar de gebeurtenis is verwerkt. *Dit is niet de locatie van de resource, maar in plaats van de gebeurtenis. Deze eigenschap wordt verwijderd in een toekomstige update.* |
 | Eigenschappen | Eigenschappen. eventProperties |  |
 | properties.eventCategory | category | Als Properties. eventCategory niet aanwezig is, is de categorie ' beheer ' |
 | properties.eventName | eventName |  |

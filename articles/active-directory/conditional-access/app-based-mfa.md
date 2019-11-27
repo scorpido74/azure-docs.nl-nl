@@ -1,6 +1,6 @@
 ---
-title: Require Azure MFA with Conditional Access -Azure Active Directory
-description: In this quickstart, you learn how you can tie your authentication requirements to the type of accessed cloud app using Azure Active Directory (Azure AD) Conditional Access.
+title: Azure MFA vereisen met voorwaardelijke toegang-Azure Active Directory
+description: In deze Quick Start leert u hoe u uw verificatie vereisten kunt koppelen aan het type van de toegang tot de Cloud-app met behulp van Azure Active Directory (Azure AD) voorwaardelijke toegang.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,171 +18,171 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381079"
 ---
-# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Quickstart: Require MFA for specific apps with Azure Active Directory Conditional Access
+# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Quick Start: MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory
 
-To simplify the sign in experience of your users, you might want to allow them to sign in to your cloud apps using a user name and a password. However, many environments have at least a few apps for which it is advisable to require a stronger form of account verification, such as multi-factor authentication (MFA). This policy might be true for access to your organization's email system or your HR apps. In Azure Active Directory (Azure AD), you can accomplish this goal with a Conditional Access policy.
+Als u de aanmeld ervaring van uw gebruikers wilt vereenvoudigen, kunt u hen toestaan zich aan te melden bij uw Cloud-apps met behulp van een gebruikers naam en wacht woord. Veel omgevingen hebben echter ten minste enkele apps waarvoor wordt aanbevolen een sterkere vorm van account verificatie te vereisen, zoals MFA (multi-factor Authentication). Dit beleid kan waar zijn om toegang te krijgen tot het e-mail systeem van uw organisatie of uw HR-apps. In Azure Active Directory (Azure AD) kunt u dit doel bereiken met een beleid voor voorwaardelijke toegang.
 
-This quickstart shows how to configure an [Azure AD Conditional Access policy](../active-directory-conditional-access-azure-portal.md) that requires multi-factor authentication for a selected cloud app in your environment.
+In deze Quick start ziet u hoe u een [beleid voor voorwaardelijke toegang voor Azure AD](../active-directory-conditional-access-azure-portal.md) configureert waarvoor multi-factor Authentication is vereist voor een geselecteerde Cloud-app in uw omgeving.
 
-![Example Conditional Access policy in the Azure portal](./media/app-based-mfa/32.png)
+![Voor beeld van beleid voor voorwaardelijke toegang in de Azure Portal](./media/app-based-mfa/32.png)
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-To complete the scenario in this quickstart, you need:
+Voor het volt ooien van het scenario in deze Quick Start hebt u het volgende nodig:
 
-- **Access to an Azure AD Premium edition** - Azure AD Conditional Access is an Azure AD Premium capability.
-- **A test account called Isabella Simonsen** - If you don't know how to create a test account, see [Add cloud-based users](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Toegang tot een Azure AD Premium Edition** : voorwaardelijke toegang voor Azure AD is een Azure AD Premium mogelijkheid.
+- **Een test account met de naam Isabella Simonsen** : als u niet weet hoe u een test account moet maken, raadpleegt u [Cloud gebruikers toevoegen](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
-The scenario in this quickstart requires that per user MFA is not enabled for your test account. For more information, see [How to require two-step verification for a user](../authentication/howto-mfa-userstates.md).
+Voor het scenario in deze Snelstartgids moet per gebruiker MFA niet zijn ingeschakeld voor uw test account. Zie [verificatie in twee stappen vereisen voor een gebruiker](../authentication/howto-mfa-userstates.md)voor meer informatie.
 
-## <a name="test-your-experience"></a>Test your experience
+## <a name="test-your-experience"></a>Uw ervaring testen
 
-The goal of this step is to get an impression of the experience without a Conditional Access policy.
+Het doel van deze stap is om een indruk te krijgen van de ervaring zonder beleid voor voorwaardelijke toegang.
 
-**To initialize your environment:**
+**Uw omgeving initialiseren:**
 
-1. Sign in to your Azure portal as Isabella Simonsen.
+1. Meld u aan bij uw Azure Portal als Isabella Simonsen.
 1. Meld u af.
 
-## <a name="create-your-conditional-access-policy"></a>Create your Conditional Access policy
+## <a name="create-your-conditional-access-policy"></a>Het beleid voor voorwaardelijke toegang maken
 
-This section shows how to create the required Conditional Access policy. The scenario in this quickstart uses:
+In deze sectie wordt beschreven hoe u het vereiste beleid voor voorwaardelijke toegang maakt. In het scenario in deze Snelstartgids wordt het volgende gebruikt:
 
-- The Azure portal as placeholder for a cloud app that requires MFA. 
-- Your sample user to test the Conditional Access policy.  
+- De Azure Portal als tijdelijke aanduiding voor een Cloud-app die MFA vereist. 
+- Uw voorbeeld gebruiker om het beleid voor voorwaardelijke toegang te testen.  
 
-In your policy, set:
+Stel in uw beleid het volgende in:
 
 | Instelling | Waarde |
 | --- | --- |
 | Gebruikers en groepen | Isabella Simonsen |
-| Cloud apps | Microsoft Azure Management |
-| Toegang verlenen | Require multi-factor authentication |
+| Cloud-apps | Microsoft Azure beheer |
+| Toegang verlenen | Multi-factor Authentication vereisen |
 
-![Expanded Conditional Access policy](./media/app-based-mfa/31.png)
+![Uitgebreid beleid voor voorwaardelijke toegang](./media/app-based-mfa/31.png)
 
-**To configure your Conditional Access policy:**
+**Het beleid voor voorwaardelijke toegang configureren:**
 
-1. Sign in to your [Azure portal](https://portal.azure.com) as global administrator, security administrator, or a Conditional Access administrator.
-1. In the Azure portal, search for and select **Azure Active Directory**.
+1. Meld u aan bij uw [Azure Portal](https://portal.azure.com) als globale beheerder, beveiligings beheerder of een beheerder voor voorwaardelijke toegang.
+1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
 
    ![Azure Active Directory](./media/app-based-mfa/02.png)
 
-1. On the **Azure Active Directory** page, in the **Security** section, click **Conditional Access**.
+1. Klik op de pagina **Azure Active Directory** in de sectie **beveiliging** op **voorwaardelijke toegang**.
 
    ![Voorwaardelijke toegang](./media/app-based-mfa/03.png)
 
-1. On the **Conditional Access** page, in the toolbar on the top, click **New policy**.
+1. Klik op de pagina **voorwaardelijke toegang** in de werk balk aan de bovenkant op **Nieuw beleid**.
 
    ![Toevoegen](./media/app-based-mfa/04.png)
 
-1. On the **New** page, in the **Name** textbox, type **Require MFA for Azure portal access**.
+1. Typ op de pagina **Nieuw** in het TEKSTVAK **naam** **MFA vereisen voor toegang tot Azure Portal**.
 
    ![Naam](./media/app-based-mfa/05.png)
 
-1. In the **Assignment** section, click **Users and groups**.
+1. Klik in de sectie **toewijzing** op **gebruikers en groepen**.
 
    ![Gebruikers en groepen](./media/app-based-mfa/06.png)
 
-1. On the **Users and groups** page, perform the following steps:
+1. Voer de volgende stappen uit op de pagina **gebruikers en groepen** :
 
    ![Gebruikers en groepen](./media/app-based-mfa/24.png)
 
-   1. Click **Select users and groups**, and then select **Users and groups**.
+   1. Klik op **gebruikers en groepen selecteren**en selecteer vervolgens **gebruikers en groepen**.
    1. Klik op **Selecteren**.
-   1. On the **Select** page, select **Isabella Simonsen**, and then click **Select**.
-   1. On the **Users and groups** page, click **Done**.
+   1. Selecteer op de pagina **selecteren** de optie **Isabella Simonsen**en klik vervolgens op **selecteren**.
+   1. Klik op de pagina **gebruikers en groepen** op **gereed**.
 
-1. Click **Cloud apps**.
+1. Klik op **Cloud-apps**.
 
-   ![Cloud apps](./media/app-based-mfa/08.png)
+   ![Cloud-apps](./media/app-based-mfa/08.png)
 
-1. On the **Cloud apps** page, perform the following steps:
+1. Voer de volgende stappen uit op de pagina **Cloud-apps** :
 
-   ![Select cloud apps](./media/app-based-mfa/26.png)
+   ![Cloud-apps selecteren](./media/app-based-mfa/26.png)
 
-   1. Click **Select apps**.
+   1. Klik op **apps selecteren**.
    1. Klik op **Selecteren**.
-   1. On the **Select** page, select **Microsoft Azure Management**, and then click **Select**.
-   1. On the **Cloud apps** page, click **Done**.
+   1. Selecteer op de pagina **selecteren** de optie **Microsoft Azure beheer**en klik vervolgens op **selecteren**.
+   1. Klik op de pagina **Cloud-apps** op **gereed**.
 
-1. In the **Access controls** section, click **Grant**.
+1. Klik in de sectie **toegangs beheer** op **verlenen**.
 
-   ![Access controls](./media/app-based-mfa/10.png)
+   ![Toegangs beheer](./media/app-based-mfa/10.png)
 
-1. On the **Grant** page, perform the following steps:
+1. Voer de volgende stappen uit op de pagina **Grant** :
 
-   ![Grant](./media/app-based-mfa/11.png)
+   ![Geef](./media/app-based-mfa/11.png)
 
-   1. Select **Grant access**.
-   1. Select **Require multi-factor authentication**.
+   1. Selecteer **toegang verlenen**.
+   1. Selecteer **multi-factor Authentication vereisen**.
    1. Klik op **Selecteren**.
 
-1. In the **Enable policy** section, click **On**.
+1. Klik in de sectie **beleid inschakelen** op **aan**.
 
-   ![Enable policy](./media/app-based-mfa/18.png)
+   ![Beleid inschakelen](./media/app-based-mfa/18.png)
 
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
-## <a name="evaluate-a-simulated-sign-in"></a>Evaluate a simulated sign in
+## <a name="evaluate-a-simulated-sign-in"></a>Een gesimuleerd aanmelden evalueren
 
-Now that you have configured your Conditional Access policy, you probably want to know whether it works as expected. As a first step, use the Conditional Access what if policy tool to simulate a sign in of your test user. The simulation estimates the impact this sign in has on your policies and generates a simulation report.  
+Nu u het beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u waarschijnlijk weten of het werkt zoals verwacht. Als eerste stap gebruikt u de voorwaardelijke toegang What if Policy tool om een aanmelding van uw test gebruiker te simuleren. De simulatie schat de invloed die dit aanmelden heeft op uw beleid en genereert een simulatie rapport.  
 
-To initialize the **What If** policy evaluation tool, set:
+Stel het hulp programma voor het evalueren van **What if** -beleid in door het volgende in te stellen:
 
-- **Isabella Simonsen** as user
-- **Microsoft Azure Management** as cloud app
+- **Isabella Simonsen** als gebruiker
+- **Microsoft Azure beheer** als Cloud-app
 
-Clicking **What If** creates a simulation report that shows:
+Als u op **What if** klikt, wordt er een simulatie rapport gemaakt waarin wordt getoond:
 
-- **Require MFA for Azure portal access** under **Policies that will apply**
-- **Require multi-factor authentication** as **Grant Controls**.
+- **MFA vereisen voor toegang tot Azure Portal** onder **beleids regels die van toepassing zijn**
+- **Multi-factor Authentication vereisen** als **Grant-besturings elementen**.
 
-![What if policy tool](./media/app-based-mfa/23.png)
+![Wat als beleids programma](./media/app-based-mfa/23.png)
 
-**To evaluate your Conditional Access policy:**
+**Het beleid voor voorwaardelijke toegang evalueren:**
 
-1. On the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page, in the menu on the top, click **What If**.  
+1. Klik op de pagina [voorwaardelijke toegang-beleids regels](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) in het menu aan de bovenkant op **What if**.  
 
    ![What If](./media/app-based-mfa/14.png)
 
-1. Click **Users**, select **Isabella Simonsen**, and then click **Select**.
+1. Klik op **gebruikers**, selecteer **Isabella Simonsen**en klik vervolgens op **selecteren**.
 
    ![Gebruiker](./media/app-based-mfa/15.png)
 
-1. To select a cloud app, perform the following steps:
+1. Als u een Cloud-app wilt selecteren, voert u de volgende stappen uit:
 
-   ![Cloud apps](./media/app-based-mfa/16.png)
+   ![Cloud-apps](./media/app-based-mfa/16.png)
 
-   1. Click **Cloud apps**.
-   1. On the **Cloud apps page**, click **Select apps**.
+   1. Klik op **Cloud-apps**.
+   1. Klik op de **pagina Cloud-apps**op **apps selecteren**.
    1. Klik op **Selecteren**.
-   1. On the **Select** page, select **Microsoft Azure Management**, and then click **Select**.
-   1. On the cloud apps page, click **Done**.
+   1. Selecteer op de pagina **selecteren** de optie **Microsoft Azure beheer**en klik vervolgens op **selecteren**.
+   1. Klik op de pagina Cloud-apps op **gereed**.
 
-1. Click **What If**.
+1. Klik op **What if**.
 
-## <a name="test-your-conditional-access-policy"></a>Test your Conditional Access policy
+## <a name="test-your-conditional-access-policy"></a>Het beleid voor voorwaardelijke toegang testen
 
-In the previous section, you have learned how to evaluate a simulated sign in. In addition to a simulation, you should also test your Conditional Access policy to ensure that it works as expected.
+In de vorige sectie hebt u geleerd hoe u een gesimuleerd aanmelden kunt evalueren. Naast een simulatie moet u ook het beleid voor voorwaardelijke toegang testen om er zeker van te zijn dat het werkt zoals verwacht.
 
-To test your policy, try to sign in to your [Azure portal](https://portal.azure.com) using your **Isabella Simonsen** test account. You should see a dialog that requires you to set up your account for additional security verification.
+Als u uw beleid wilt testen, probeert u zich aan te melden bij uw [Azure Portal](https://portal.azure.com) met behulp van uw **Isabella Simonsen** -test account. Er wordt een dialoog venster weer geven waarin u uw account moet instellen voor aanvullende beveiligings verificatie.
 
 ![Multi-Factor Authentication](./media/app-based-mfa/22.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-When no longer needed, delete the test user and the Conditional Access policy:
+Wanneer u deze niet meer nodig hebt, verwijdert u de test gebruiker en het beleid voor voorwaardelijke toegang:
 
-- If you don't know how to delete an Azure AD user, see [Delete users from Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-- To delete your policy, select your policy, and then click **Delete** in the quick access toolbar.
+- Zie [gebruikers uit Azure ad verwijderen](../fundamentals/add-users-azure-active-directory.md#delete-a-user)als u niet weet hoe u een Azure AD-gebruiker verwijdert.
+- Als u uw beleid wilt verwijderen, selecteert u uw beleid en klikt u vervolgens op **verwijderen** op de werk balk snelle toegang.
 
     ![Multi-Factor Authentication](./media/app-based-mfa/33.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Require terms of use to be accepted](require-tou.md)
-> [Block access when a session risk is detected](app-sign-in-risk.md)
+> [Vereisen dat gebruiks voorwaarden worden geaccepteerd](require-tou.md)
+> [toegang blok keren als er een sessie risico wordt gedetecteerd](app-sign-in-risk.md)

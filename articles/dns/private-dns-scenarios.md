@@ -1,6 +1,6 @@
 ---
-title: Scenarios for Private Zones - Azure DNS
-description: In this article, learn about common scenarios for using Azure DNS Private Zones.
+title: Scenario's voor privé zones-Azure DNS
+description: In dit artikel vindt u informatie over algemene scenario's voor het gebruik van Azure DNS Private Zones.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,45 +14,45 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74210462"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Private zones scenarios
+# <a name="azure-dns-private-zones-scenarios"></a>Scenario's met persoonlijke zones Azure DNS
 
-Azure DNS Private Zones provide name resolution within a virtual network as well as between virtual networks. In this article, we look at some common scenarios that can be realized using this feature.
+Azure DNS Private Zones naam omzetting bieden binnen een virtueel netwerk en tussen virtuele netwerken. In dit artikel kijken we naar enkele veelvoorkomende scenario's die kunnen worden gerealiseerd met behulp van deze functie.
 
-## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>Scenario: Name Resolution scoped to a single virtual network
-In this scenario, you have a virtual network in Azure that has a number of Azure resources in it, including virtual machines (VMs). You want to resolve the resources from within the virtual network via a specific domain name (DNS zone), and you need the name resolution to be private and not accessible from the internet. Furthermore, for the VMs within the VNET, you need Azure to automatically register them into the DNS zone. 
+## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>Scenario: naam omzetting binnen het bereik van één virtueel netwerk
+In dit scenario hebt u een virtueel netwerk in azure met een aantal Azure-resources, inclusief virtual machines (Vm's). U de resources wilt omzetten vanuit het virtuele netwerk via een specifieke domein naam (DNS-zone) en u wilt dat de naam omzetting privé is en niet toegankelijk is via internet. Voor de virtuele machines binnen het VNET hebt u bovendien Azure nodig om deze automatisch te registreren bij de DNS-zone. 
 
-This scenario is depicted below. Virtual Network named "A" contains two VMs (VNETA-VM1 and VNETA-VM2). Each of these have Private IPs associated. Once you create a Private Zone named contoso.com and link this virtual network as a Registration virtual network, Azure DNS will automatically create two A records in the zone as depicted. Now, DNS queries from VNETA-VM1 to resolve VNETA-VM2.contoso.com will receive a DNS response that contains the Private IP of VNETA-VM2. Furthermore, a Reverse DNS query (PTR) for the Private IP of VNETA-VM1 (10.0.0.1) issued from VNETA-VM2 will receive a DNS response that contains the name of VNETA-VM1, as expected. 
+Dit scenario wordt hieronder weer gegeven. Virtual Network met de naam ' A ' bevat twee virtuele machines (VNETA-VM1 en VNETA-VM2). Aan elk van deze zijn privé Ip's gekoppeld. Wanneer u een persoonlijke zone met de naam contoso.com maakt en dit virtuele netwerk koppelt als een virtuele registratie, worden er in Azure DNS automatisch twee records gemaakt in de zone. Nu kunnen DNS-query's van VNETA-VM1 om VNETA-VM2.contoso.com op te lossen, een DNS-antwoord ontvangen dat de privé-IP van VNETA-VM2 bevat. Daarnaast ontvangt een reverse DNS-query (PTR) voor het privé IP-adres van VNETA-VM1 (10.0.0.1) dat is uitgegeven door VNETA-VM2 een DNS-antwoord dat de naam VNETA-VM1 bevat, zoals verwacht. 
 
-![Single Virtual network resolution](./media/private-dns-scenarios/single-vnet-resolution.png)
+![Oplossing voor één virtueel netwerk](./media/private-dns-scenarios/single-vnet-resolution.png)
 
-## <a name="scenario-name-resolution-across-virtual-networks"></a>Scenario: Name Resolution across virtual networks
+## <a name="scenario-name-resolution-across-virtual-networks"></a>Scenario: naam omzetting in virtuele netwerken
 
-This scenario is the more common case where you need to associate a Private Zone with multiple virtual networks. This scenario can fit architectures such as the Hub-and-Spoke model where there is a central Hub virtual network to which multiple other Spoke virtual networks are connected. The central Hub virtual network can be linked as the Registration virtual network to a private zone, and the Spoke virtual networks can be linked as Resolution virtual networks. 
+Dit scenario is het meest voorkomende geval wanneer u een persoonlijke zone wilt koppelen aan meerdere virtuele netwerken. Dit scenario kan architecturen hebben, zoals het hub-en-spoke-model, waarbij er sprake is van een centraal hub-netwerk waarmee meerdere andere spoke-virtuele netwerken zijn verbonden. Het virtuele netwerk van de centrale hub kan worden gekoppeld als het virtuele netwerk van de registratie aan een privé zone en de spoke virtuele netwerken kunnen worden gekoppeld als virtuele omzettings netwerken. 
 
-The following diagram shows a simple version of this scenario where there are only two virtual networks - A and B. A is designated as a Registration virtual network and B is designated as a Resolution virtual network. The intent is for both virtual networks to share a common zone contoso.com. When the zone is created and the Resolution and Registration virtual networks are linked to the zone, Azure will automatically register DNS records for the VMs (VNETA-VM1 and VNETA-VM2) from the virtual network A. You can also manually add DNS records into the zone for VMs in the Resolution virtual network B. With this setup, you will observe the following behavior for forward and reverse DNS queries:
-* A DNS query from VNETB-VM1 in the Resolution virtual network B, for VNETA-VM1.contoso.com, will receive a DNS response containing the Private IP of VNETA-VM1.
-* A Reverse DNS (PTR) query from VNETB-VM2 in the Resolution virtual network B, for 10.1.0.1, will receive a DNS response containing the FQDN VNETB-VM1.contoso.com.  
-* A Reverse DNS (PTR) query from VNETB-VM3 in the Resolution virtual network B, for 10.0.0.1, will receive NXDOMAIN. The reason is that Reverse DNS queries are only scoped to the same virtual network. 
+In het volgende diagram ziet u een eenvoudige versie van dit scenario met slechts twee virtuele netwerken: A en B. A wordt aangewezen als een virtuele registratie-netwerk en B wordt aangeduid als een virtueel omzettings netwerk. De bedoeling is voor beide virtuele netwerken om een gemeen schappelijke zone contoso.com te delen. Wanneer de zone wordt gemaakt en de virtuele netwerken voor omzetting en registratie zijn gekoppeld aan de zone, registreert Azure automatisch DNS-records voor de Vm's (VNETA-VM1 en VNETA-VM2) van het virtuele netwerk A. U kunt ook hand matig DNS-records toevoegen aan de zone voor Vm's in het virtuele netwerk oplossing B. Met deze instelling ziet u het volgende gedrag voor het door sturen en omkeren van DNS-query's:
+* Een DNS-query van VNETB-VM1 in het virtuele netwerk van de resolutie voor VNETA-VM1.contoso.com, ontvangt een DNS-antwoord met het privé-IP-adres VNETA-VM1.
+* Een reverse DNS-query (PTR) van VNETB-VM2 in het virtuele netwerk met de resolutie B voor 10.1.0.1, ontvangt een DNS-antwoord met de FQDN-VNETB-VM1.contoso.com.  
+* Een reverse DNS-query (PTR) van VNETB-VM3 in het virtuele netwerk van de resolutie voor 10.0.0.1 wordt NXDOMAIN ontvangen. De reden hiervoor is dat omgekeerde DNS-query's alleen binnen het bereik van hetzelfde virtuele netwerk vallen. 
 
 
-![Multiple Virtual network resolutions](./media/private-dns-scenarios/multi-vnet-resolution.png)
+![Meerdere virtuele netwerk resoluties](./media/private-dns-scenarios/multi-vnet-resolution.png)
 
-## <a name="scenario-split-horizon-functionality"></a>Scenario: Split-Horizon functionality
+## <a name="scenario-split-horizon-functionality"></a>Scenario: Split-horizon-functionaliteit
 
-In this scenario, you have a use case where you want to realize different DNS resolution behavior depending on where the client sits (inside of Azure or out on the internet), for the same DNS zone. For example, you may have a private and public version of your application that has different functionality or behavior, but you want to use the same domain name for both versions. This scenario can be realized with Azure DNS by creating a Public DNS zone as well as a Private Zone, with the same name.
+In dit scenario hebt u een use-case waarbij u verschillende DNS-omzettings gedrag wilt realiseren, afhankelijk van waar de client zich bevindt (binnen Azure of op Internet), voor dezelfde DNS-zone. U hebt bijvoorbeeld een persoonlijke en open bare versie van uw toepassing met verschillende functionaliteit of gedrag, maar u wilt dezelfde domein naam gebruiken voor beide versies. Dit scenario kan worden gerealiseerd met Azure DNS door een open bare DNS-zone en een persoonlijke zone te maken, met dezelfde naam.
 
-The following diagram depicts this scenario. You have a virtual network A that has two VMs (VNETA-VM1 and VNETA-VM2) which have both Private IPs and Public IPs allocated. You create a Public DNS zone called contoso.com and register the Public IPs for these VMs as DNS records within the zone. You also create a Private DNS zone also called contoso.com specifying A as the Registration virtual network. Azure automatically registers the VMs as A records into the Private Zone, pointing to their Private IPs.
+In het volgende diagram ziet u dit scenario. U hebt een virtueel netwerk A met twee virtuele machines (VNETA-VM1 en VNETA-VM2) waarvoor zowel privé Ip's als open bare IP-adressen zijn toegewezen. U maakt een open bare DNS-zone met de naam contoso.com en registreert de open bare Ip's voor deze virtuele machines als DNS-records binnen de zone. U maakt ook een Privé-DNS zone met de naam contoso.com die een als het virtuele netwerk voor registratie opgeeft. Azure registreert de Vm's automatisch als een record in de privé zone en wijst naar hun persoonlijke Ip's.
 
-Now when an internet client issues a DNS query to look up VNETA-VM1.contoso.com, Azure will return the Public IP record from the public zone. If the same DNS query is issued from another VM (for example: VNETA-VM2) in the same virtual network A, Azure will return the Private IP record from the private zone. 
+Wanneer een Internet-client nu een DNS-query voor het opzoeken van VNETA-VM1.contoso.com uitgeeft, retourneert Azure de open bare IP-record uit de open bare zone. Als dezelfde DNS-query wordt uitgegeven van een andere VM (bijvoorbeeld: VNETA-VM2) in hetzelfde virtuele netwerk A, wordt de privé-IP-record vanuit de privé zone door Azure geretourneerd. 
 
-![Split Brian resolution](./media/private-dns-scenarios/split-brain-resolution.png)
+![Brian-resolutie splitsen](./media/private-dns-scenarios/split-brain-resolution.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 Voor meer informatie over privé-DNS-zones raadpleegt u [Using Azure DNS for private domains](private-dns-overview.md) (Azure DNS gebruiken voor privédomeinen).
 
-Learn how to [create a private DNS zone](./private-dns-getstarted-powershell.md) in Azure DNS.
+Meer informatie over het [maken van een privé-DNS-zone](./private-dns-getstarted-powershell.md) in azure DNS.
 
-Learn about DNS zones and records by visiting: [DNS zones and records overview](dns-zones-records.md).
+Ga voor meer informatie over DNS-zones en-records naar: [DNS-zones en records-overzicht](dns-zones-records.md).
 
 Informatie over enkele van de andere belangrijke [netwerkmogelijkheden](../networking/networking-overview.md) van Azure.
 

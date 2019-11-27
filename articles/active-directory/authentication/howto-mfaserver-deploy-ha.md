@@ -1,6 +1,6 @@
 ---
-title: High availability for Azure MFA Server - Azure Active Directory
-description: Deploy multiple instances of Azure Multi-Factor Authentication Server in configurations that provide high availability.
+title: Hoge Beschik baarheid voor Azure MFA-server-Azure Active Directory
+description: Implementeer meerdere exemplaren van Azure Multi-Factor Authentication-server in configuraties die hoge Beschik baarheid bieden.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,60 +18,60 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74404305"
 ---
-# <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Configure Azure Multi-Factor Authentication Server for high availability
+# <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Azure Multi-Factor Authentication-server configureren voor maximale Beschik baarheid
 
-To achieve high-availability with your Azure Server MFA deployment, you need to deploy multiple MFA servers. This section provides information on a load-balanced design to achieve your high availability targets in you Azure MFS Server deployment.
+Voor een hoge Beschik baarheid van uw Azure server MFA-implementatie moet u meerdere MFA-servers implementeren. Deze sectie bevat informatie over een ontwerp met gelijke taak verdeling om uw doelen voor hoge Beschik baarheid te behalen in azure MFS Server-implementatie.
 
 > [!IMPORTANT]
-> As of July 1, 2019, Microsoft will no longer offer MFA Server for new deployments. New customers who would like to require multi-factor authentication from their users should use cloud-based Azure Multi-Factor Authentication. Existing customers who have activated MFA Server prior to July 1 will be able to download the latest version, future updates and generate activation credentials as usual.
+> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
 
-## <a name="mfa-server-overview"></a>MFA Server overview
+## <a name="mfa-server-overview"></a>Overzicht van MFA-server
 
-The Azure MFA Server service architecture comprises several components as shown in the following diagram:
+De service architectuur van de Azure MFA-server omvat verschillende onderdelen, zoals wordt weer gegeven in het volgende diagram:
 
- ![MFA Server Architecture components](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
+ ![Onderdelen van de MFA-server architectuur](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
 
-An MFA Server is a Windows Server that has the Azure Multi-Factor Authentication software installed. The MFA Server instance must be activated by the MFA Service in Azure to function. More than one MFA Server can be installed on-premises.
+Een MFA-server is een Windows-Server waarop de Azure Multi-Factor Authentication-software is geïnstalleerd. De MFA-Server instantie moet worden geactiveerd door de MFA-service in azure om te kunnen functioneren. Meer dan één MFA-server kan on-premises worden geïnstalleerd.
 
-The first MFA Server that is installed is the master MFA Server upon activation by the Azure MFA Service by default. The master MFA server has a writeable copy of the PhoneFactor.pfdata database. Subsequent installations of instances of MFA Server are known as subordinates. The MFA subordinates have a replicated read-only copy of the PhoneFactor.pfdata database. MFA servers replicate information using Remote Procedure Call (RPC). All MFA Severs must collectively either be domain joined or standalone to replicate information.
+De eerste MFA-server die wordt geïnstalleerd, is standaard de Master MFA-server bij activering door de Azure MFA-service. De Master MFA-server heeft een schrijf bare kopie van de Phone factor. pfdata-data base. Volgende installaties van exemplaren van MFA-server worden ook wel onderliggende niveaus genoemd. De MFA-onderliggende niveaus hebben een gerepliceerde alleen-lezen kopie van de Phone factor. pfdata-data base. MFA-servers repliceren gegevens met behulp van Remote Procedure Call (RPC). Alle MFA-servers moeten gezamenlijk lid zijn van een domein of zelfstandig zijn om gegevens te repliceren.
 
-Both MFA master and subordinate MFA Servers communicate with the MFA Service when two-factor authentication is required. For example, when a user attempts to gain access to an application that requires two-factor authentication, the user will first be authenticated by an identity provider, such as Active Directory (AD).
+Zowel de MFA-Master als de onderliggende MFA-server communiceren met de MFA-service wanneer twee ledige verificatie is vereist. Wanneer een gebruiker bijvoorbeeld probeert toegang te krijgen tot een toepassing waarvoor twee ledige verificatie is vereist, wordt de gebruiker eerst geverifieerd door een id-provider, zoals Active Directory (AD).
 
-After successful authentication with AD, the MFA Server will communicate with the MFA Service. The MFA Server waits for notification from the MFA Service to allow or deny the user access to the application.
+Nadat de verificatie met AD is geslaagd, communiceert de MFA-server met de MFA-service. De MFA-server wacht op meldingen van de MFA-service om de gebruiker toegang tot de toepassing toe te staan of te weigeren.
 
-If the MFA master server goes offline, authentications can still be processed, but operations that require changes to the MFA database cannot be processed. (Examples include: the addition of users, self-service PIN changes, changing user information, or access to the user portal)
+Als de MFA-master server offline gaat, kunnen verificaties nog steeds worden verwerkt, maar bewerkingen waarvoor wijzigingen in de MFA-data base nodig zijn, kunnen niet worden verwerkt. (Voor beelden hiervan zijn: het toevoegen van gebruikers, pincode wijzigingen van de selfservice, het wijzigen van gebruikers gegevens of toegang tot de gebruikers Portal)
 
 ## <a name="deployment"></a>Implementatie
 
-Consider the following important points for load balancing Azure MFA Server and its related components.
+Houd rekening met de volgende belang rijke punten voor de taak verdeling van de Azure MFA-server en de bijbehorende onderdelen.
 
-* **Using RADIUS standard to achieve high availability**. If you are using Azure MFA Servers as RADIUS servers, you can potentially configure one MFA Server as a primary RADIUS authentication target and other Azure MFA Servers as secondary authentication targets. However, this method to achieve high availability may not be practical because you must wait for a time-out period to occur when authentication fails on the primary authentication target before you can be authenticated against the secondary authentication target. It is more efficient to load balance the RADIUS traffic between the RADIUS client and the RADIUS Servers (in this case, the Azure MFA Servers acting as RADIUS servers) so that you can configure the RADIUS clients with a single URL that they can point to.
-* **Need to manually promote MFA subordinates**. If the master Azure MFA server goes offline, the secondary Azure MFA Servers continue to process MFA requests. However, until a master MFA server is available, admins can not add users or modify MFA settings, and users can not make changes using the user portal. Promoting an MFA subordinate to the master role is always a manual process.
-* **Separability of components**. The Azure MFA Server comprises several components that can be installed on the same Windows Server instance or on different instances. These components include the User Portal, Mobile App Web Service, and the ADFS adapter (agent). This separability makes it possible to use the Web Application Proxy to publish the User Portal and Mobile App Web Server from the perimeter network. Such a configuration adds to the overall security of your design, as shown in the following diagram. The MFA User Portal and Mobile App Web Server may also be deployed in HA load-balanced configurations.
+* **RADIUS-standaard gebruiken om hoge Beschik baarheid te garanderen**. Als u Azure MFA-servers als RADIUS-servers gebruikt, kunt u één MFA-server als primaire RADIUS-authenticatie doel en andere Azure MFA-servers als secundaire verificatie doelen configureren. Deze methode om maximale Beschik baarheid te bereiken, is echter mogelijk niet praktisch omdat u moet wachten totdat er een time-outperiode optreedt wanneer authenticatie mislukt voor het primaire authenticatie doel voordat u kunt worden geverifieerd op basis van het secundaire authenticatie doel. Het is efficiënter om het RADIUS-verkeer tussen de RADIUS-client en de RADIUS-servers te verdelen (in dit geval de Azure MFA-servers die fungeren als RADIUS-servers), zodat u de RADIUS-clients kunt configureren met één URL waarnaar ze kunnen verwijzen.
+* **U moet de MFA-ondergeschikten hand matig promo veren**. Als de Azure MFA-master server offline gaat, blijven de secundaire Azure MFA-servers MFA-aanvragen verwerken. Voordat een Master MFA-server beschikbaar is, kunnen beheerders echter geen gebruikers toevoegen of MFA-instellingen wijzigen, en kunnen gebruikers geen wijzigingen aanbrengen via de gebruikers Portal. Het promo veren van een MFA die ondergeschikt is aan de Master Role is altijd een hand matig proces.
+* **Separability van onderdelen**. De Azure MFA-server omvat verschillende onderdelen die kunnen worden geïnstalleerd op hetzelfde exemplaar van Windows Server of op verschillende exemplaren. Deze onderdelen zijn onder andere de gebruikers Portal, de webservice voor de mobiele app en de ADFS-adapter (agent). Met deze separability kunt u de Web Application proxy gebruiken om de webserver van de gebruikers Portal en de mobiele app te publiceren vanuit het perimeter netwerk. Een dergelijke configuratie wordt toegevoegd aan de algehele beveiliging van uw ontwerp, zoals wordt weer gegeven in het volgende diagram. De gebruikers portal van MFA en de webserver voor mobiele apps kunnen ook worden geïmplementeerd in HA-configuraties met gelijke taak verdeling.
 
-   ![MFA Server with a Perimeter Network](./media/howto-mfaserver-deploy-ha/mfasecurity.png)
+   ![MFA-server met een perimeter netwerk](./media/howto-mfaserver-deploy-ha/mfasecurity.png)
 
-* **One-time password (OTP) over SMS (aka one-way SMS) requires the use of sticky sessions if traffic is load-balanced**. One-way SMS is an authentication option that causes the MFA Server to send the users a text message containing an OTP. The user enters the OTP in a prompt window to complete the MFA challenge. If you load balance Azure MFA Servers, the same server that served the initial authentication request must be the server that receives the OTP message from the user; if another MFA Server receives the OTP reply, the authentication challenge fails. For more information, see [One Time Password over SMS Added to Azure MFA Server](https://blogs.technet.microsoft.com/enterprisemobility/2015/03/02/one-time-password-over-sms-added-to-azure-mfa-server).
-* **Load-Balanced deployments of the User Portal and Mobile App Web Service require sticky sessions**. If you are load-balancing the MFA User Portal and the Mobile App Web Service, each session needs to stay on the same server.
+* **Met een eenmalig wacht woord (OTP) via SMS (ook wel SMS) is het gebruik van plak sessies vereist als het verkeer gelijkmatig wordt verdeeld**. Eenrichtings-SMS is een verificatie optie die ervoor zorgt dat de MFA-server de gebruikers een SMS-bericht met een OTP verzendt. De gebruiker voert de OTP in een prompt venster in om de MFA-Challenge te volt ooien. Als u een taak verdeling voor Azure MFA-servers hebt, moet dezelfde server die de eerste verificatie aanvraag heeft bediend de server zijn die het OTP-bericht van de gebruiker ontvangt. Als een andere MFA-server het OTP-antwoord ontvangt, mislukt de verificatie vraag. Zie [eenmalig wacht woord via SMS dat is toegevoegd aan de Azure MFA-server](https://blogs.technet.microsoft.com/enterprisemobility/2015/03/02/one-time-password-over-sms-added-to-azure-mfa-server)voor meer informatie.
+* **Voor implementaties met een gelijke taak verdeling van de gebruikers Portal en de webservice voor mobiele apps zijn plak sessies vereist**. Als u taak verdeling de MFA-gebruikers Portal en de webservice voor mobiele apps hebt, moet elke sessie op dezelfde server blijven.
 
-## <a name="high-availability-deployment"></a>High-availability deployment
+## <a name="high-availability-deployment"></a>Implementatie met hoge Beschik baarheid
 
-The following diagram shows a complete HA load-balanced implementation of Azure MFA and its components, along with ADFS for reference.
+Het volgende diagram toont de volledige HA-implementatie van Azure MFA en de bijbehorende onderdelen, samen met ADFS voor referentie.
 
- ![Azure MFA Server HA implementation](./media/howto-mfaserver-deploy-ha/mfa-ha-deployment.png)
+ ![Implementatie van Azure MFA server HA](./media/howto-mfaserver-deploy-ha/mfa-ha-deployment.png)
 
-Note the following items for the correspondingly numbered area of the preceding diagram.
+Houd rekening met de volgende items voor het bijbehorende gedeelte van het voor gaande diagram.
 
-1. The two Azure MFA Servers (MFA1 and MFA2) are load balanced (mfaapp.contoso.com) and are configured to use a static port (4443) to replicate the PhoneFactor.pfdata database. The Web Service SDK is installed on each of the MFA Server to enable communication over TCP port 443 with the ADFS servers. The MFA servers are deployed in a stateless load-balanced configuration. However, if you wanted to use OTP over SMS, you must use stateful load balancing.
-   ![Azure MFA Server - App server HA](./media/howto-mfaserver-deploy-ha/mfaapp.png)
+1. De twee Azure MFA-servers (MFA1 en MFA2) zijn taak verdeling (mfaapp.contoso.com) en zijn geconfigureerd voor het gebruik van een statische poort (4443) voor het repliceren van de Phone factor. pfdata-data base. De Web Service SDK is geïnstalleerd op elke MFA-server om communicatie via TCP-poort 443 met de ADFS-servers in te scha kelen. De MFA-servers worden geïmplementeerd in een stateless configuratie met gelijke taak verdeling. Als u echter OTP wilt gebruiken via SMS, moet u de statusloze taak verdeling gebruiken.
+   ![Azure MFA-server-app server HA](./media/howto-mfaserver-deploy-ha/mfaapp.png)
 
    > [!NOTE]
-   > Because RPC uses dynamic ports, it is not recommended to open firewalls up to the range of dynamic ports that RPC can potentially use. If you have a firewall **between** your MFA application servers, you should configure the MFA Server to communicate on a static port for the replication traffic between subordinate and master servers and open that port on your firewall. You can force the static port by creating a DWORD registry value at ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` called ```Pfsvc_ncan_ip_tcp_port``` and setting the value to an available static port. Connections are always initiated by the subordinate MFA Servers to the master, the static port is only required on the master, but since you can promote a subordinate to be the master at any time, you should set the static port on all MFA Servers.
+   > Omdat RPC dynamische poorten gebruikt, is het niet raadzaam om firewalls te openen tot het bereik van dynamische poorten die door RPC mogelijk kunnen worden gebruikt. Als u een firewall **tussen** uw MFA-toepassings servers hebt, moet u de MFA-server zo configureren dat deze communiceert op een statische poort voor het replicatie verkeer tussen de onderliggende en hoofd servers en de poort op de firewall opent. U kunt de statische poort afdwingen door een DWORD-register waarde te maken op ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` met de naam ```Pfsvc_ncan_ip_tcp_port``` en de waarde in te stellen op een beschik bare statische poort. Verbindingen worden altijd geïnitieerd door de onderliggende MFA-servers naar de Master, de statische poort is alleen vereist voor de Master, maar omdat u op elk gewenst moment een onderliggend niveau als master kunt instellen, moet u de statische poort op alle MFA-servers.
 
-2. The two User Portal/MFA Mobile App servers (MFA-UP-MAS1 and MFA-UP-MAS2) are load balanced in a **stateful** configuration (mfa.contoso.com). Recall that sticky sessions are a requirement for load balancing the MFA User Portal and Mobile App Service.
-   ![Azure MFA Server - User Portal and Mobile App Service HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)
-3. The ADFS Server farm is load balanced and published to the Internet through load-balanced ADFS proxies in the perimeter network. Each ADFS Server uses the ADFS agent to communicate with the Azure MFA Servers using a single load-balanced URL (mfaapp.contoso.com) over TCP port 443.
+2. De twee gebruikers Portal/MFA Mobile App servers (MFA-UP-MAS1 en MFA-UP-MAS2) worden gelijkmatig verdeeld in een **stateful** configuratie (MFA.contoso.com). U herinnert dat Sticky Sessions een vereiste zijn voor de taak verdeling van de MFA-gebruikers Portal en de mobiele App Service.
+   ![Azure MFA-server: gebruikers Portal en mobiele App Service HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)
+3. De AD FS-server farm wordt gelijkmatig verdeeld en gepubliceerd op Internet via ADFS-proxy's met taak verdeling in het perimeter netwerk. Elke ADFS-server gebruikt de ADFS-agent om te communiceren met de Azure MFA-servers met een single load-balanced URL (mfaapp.contoso.com) via TCP-poort 443.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Install and configure Azure MFA Server](howto-mfaserver-deploy.md)
+* [Azure MFA-server installeren en configureren](howto-mfaserver-deploy.md)

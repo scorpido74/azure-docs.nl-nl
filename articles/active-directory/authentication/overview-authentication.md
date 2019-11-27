@@ -1,5 +1,5 @@
 ---
-title: Authenticating and securing users - Azure Active Directory
+title: Gebruikers verifiëren en beveiligen-Azure Active Directory
 description: Hoe kan ik als Azure AD-beheerder gebruikersverificatie beschermen en tegelijkertijd ervoor zorgen dat dit minder gevolgen heeft voor eindgebruikers?
 services: active-directory
 ms.service: active-directory
@@ -47,7 +47,7 @@ De selfservice voor het opnieuw instellen van wachtwoorden omvat onder andere:
 * **Wachtwoord opnieuw instellen:** ik kan me niet aanmelden en wil mijn wachtwoord met behulp van een of meer goedgekeurde verificatiemethoden opnieuw instellen.
 * **Account ontgrendelen:** ik kan me niet aanmelden omdat mijn account is vergrendeld en ik wil dit ontgrendelen met behulp van een of meer goedgekeurde verificatiemethoden.
 
-## <a name="multi-factor-authentication"></a>Meervoudige verificatie
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Azure Multi-Factor Authentication (MFA) is een Microsoft-oplossing voor verificatie in twee stappen. Met behulp van door een beheerder goedgekeurde verificatiemethode, helpt Azure MFA met het beveiligen van gegevens en toepassingen, terwijl tegelijkertijd aan de behoefte aan een eenvoudige aanmeldingsprocedure wordt voldaan.
 

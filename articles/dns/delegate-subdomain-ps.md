@@ -1,6 +1,6 @@
 ---
-title: Delegate a subdomain - Azure PowerShell - Azure DNS
-description: With this learning path, get started delegating an Azure DNS subdomain using Azure PowerShell.
+title: Een subdomein-Azure PowerShell-Azure DNS delegeren
+description: Met dit leer traject kunt u aan de slag met het overdragen van een Azure DNS subdomein met behulp van Azure PowerShell.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,14 +14,14 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74212508"
 ---
-# <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Delegate an Azure DNS subdomain using Azure PowerShell
+# <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Een Azure DNS subdomein delegeren met behulp van Azure PowerShell
 
-You can use Azure PowerShell to delegate a DNS subdomain. For example, if you own the contoso.com domain, you can delegate a subdomain called *engineering* to another, separate zone that you can administer separately from the contoso.com zone.
+U kunt Azure PowerShell gebruiken om een DNS-subdomein te delegeren. Als u bijvoorbeeld eigenaar bent van het domein contoso.com, kunt u een subdomein met de naam *engineering* delegeren naar een andere, afzonderlijke zone die u afzonderlijk kunt beheren vanuit de zone contoso.com.
 
-If you prefer, you can delegate a subdomain using the [Azure Portal](delegate-subdomain.md).
+Als u wilt, kunt u een subdomein delegeren met behulp van [Azure Portal](delegate-subdomain.md).
 
 > [!NOTE]
-> Contoso.com is used as an example throughout this article. Vervang uw eigen domeinnaam door contoso.com.
+> Contoso.com wordt in dit artikel als voor beeld gebruikt. Vervang uw eigen domeinnaam door contoso.com.
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -29,29 +29,29 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="prerequisites"></a>Vereisten
 
-To delegate an Azure DNS subdomain, you must first delegate your public domain to Azure DNS. See [Delegate a domain to Azure DNS](./dns-delegate-domain-azure-dns.md) for instructions on how to configure your name servers for delegation. Once your domain is delegated to your Azure DNS zone, you can delegate your subdomain.
+Als u een Azure DNS subdomein wilt delegeren, moet u uw open bare domein eerst delegeren naar Azure DNS. Zie [een domein delegeren voor Azure DNS](./dns-delegate-domain-azure-dns.md) voor instructies over het configureren van uw naam servers voor delegering. Zodra uw domein is overgedragen aan uw Azure DNS zone, kunt u uw subdomein delegeren.
 
-## <a name="create-a-zone-for-your-subdomain"></a>Create a zone for your subdomain
+## <a name="create-a-zone-for-your-subdomain"></a>Een zone maken voor uw subdomein
 
-First, create the zone for the **engineering** subdomain.
+Maak eerst de zone voor het **technische** subdomein.
 
 `New-AzDnsZone -ResourceGroupName <resource group name> -Name engineering.contoso.com`
 
-## <a name="note-the-name-servers"></a>Note the name servers
+## <a name="note-the-name-servers"></a>Noteer de naam servers
 
-Next, note the four name servers for the engineering subdomain.
+Noteer vervolgens de vier naam servers voor het subdomein van de technische afdeling.
 
 `Get-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -RecordType NS`
 
-## <a name="create-a-test-record"></a>Create a test record
+## <a name="create-a-test-record"></a>Een test record maken
 
-Create an **A** record in the engineering zone to use for testing.
+Maak een **A** -record in de technische zone die moet worden gebruikt voor het testen.
 
    `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`.
 
-## <a name="create-an-ns-record"></a>Create an NS record
+## <a name="create-an-ns-record"></a>Een NS-record maken
 
-Next, create a name server (NS) record  for the **engineering** zone in the contoso.com zone.
+Maak vervolgens een NS-record (naam server) voor de **technische** zone in de zone contoso.com.
 
 ```azurepowershell
 $Records = @()
@@ -62,14 +62,14 @@ $Records += New-AzDnsRecordConfig -Nsdname <name server 4 noted previously>
 $RecordSet = New-AzDnsRecordSet -Name engineering -RecordType NS -ResourceGroupName <resource group name> -TTL 3600 -ZoneName contoso.com -DnsRecords $Records
 ```
 
-## <a name="test-the-delegation"></a>Test the delegation
+## <a name="test-the-delegation"></a>De delegering testen
 
-Use nslookup to test the delegation.
+Gebruik Nslookup om de overdracht te testen.
 
-1. Open a PowerShell window.
-2. At command prompt, type `nslookup www.engineering.contoso.com.`
-3. You should receive a non-authoritative answer showing the address **10.10.10.10**.
+1. Open een Power shell-venster.
+2. Typ `nslookup www.engineering.contoso.com.` op de opdracht prompt
+3. U ontvangt een niet-bindend antwoord met het adres **10.10.10.10**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Learn how to [configure reverse DNS for services hosted in Azure](dns-reverse-dns-for-azure-services.md).
+Meer informatie over het [configureren van omgekeerde DNS voor services die worden gehost in azure](dns-reverse-dns-for-azure-services.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure white papers about mainframe topics using Azure Virtual Machines and Azure Storage
-description: Get resources about mainframe migration, rehosting, and moving IBM Z-based systems to Microsoft Azure.
+title: Azure-witboeken over mainframe-onderwerpen met behulp van Azure Virtual Machines en Azure Storage
+description: Ontvang resources over mainframe migratie, het opnieuw hosten en verplaatsen van IBM Z-systemen naar Microsoft Azure.
 services: multiple
 documentationcenter: ''
 author: njray
@@ -15,38 +15,38 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224746"
 ---
-# <a name="azure-white-papers-about-mainframe-topics"></a>Azure white papers about mainframe topics
+# <a name="azure-white-papers-about-mainframe-topics"></a>Azure-witboeken over mainframe-onderwerpen
 
-Get resources about mainframe migration, rehosting, and moving IBM Z-based systems to Microsoft Azure.
+Ontvang resources over mainframe migratie, het opnieuw hosten en verplaatsen van IBM Z-systemen naar Microsoft Azure.
 
-### <a name="demystifying-mainframe-to-azure-migrationhttpsazuremicrosoftcomresourcesdemystifying-mainframe-to-azure-migration"></a>[Demystifying mainframe to Azure migration](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
+### <a name="demystifying-mainframe-to-azure-migrationhttpsazuremicrosoftcomresourcesdemystifying-mainframe-to-azure-migration"></a>[Ontrafelen mainframe naar Azure-migratie](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
-Azure provides a mainframe alternative capable of delivering equivalent functionality and features. This paper, by Larry Mead of the AzureCAT team, covers the major IBM z/OS mainframe components and the Azure equivalents. It also provides a road map for starting the conversation with IT decision-makers who subscribe to outdated mainframe philosophies.
+Azure biedt een alternatief voor mainframe dat gelijkwaardige functionaliteit en functies kan leveren. Dit document, door Larry Mead van het AzureCAT-team, heeft betrekking op de belangrijkste mainframe-onderdelen van IBM z/OS en de Azure-equivalenten. Het bevat ook een weg voor het starten van het gesprek met IT-besluitvormings degenen die zich abonneren op verouderde mainframe-aanpakken.
 
-### <a name="move-mainframe-compute-and-storage-to-azurehttpsazuremicrosoftcomresourcesmove-mainframe-compute-and-storage-to-azure"></a>[Move mainframe compute and storage to Azure](https://azure.microsoft.com/resources/move-mainframe-compute-and-storage-to-azure/)
+### <a name="move-mainframe-compute-and-storage-to-azurehttpsazuremicrosoftcomresourcesmove-mainframe-compute-and-storage-to-azure"></a>[Mainframe Compute en Storage verplaatsen naar Azure](https://azure.microsoft.com/resources/move-mainframe-compute-and-storage-to-azure/)
 
-To run mainframe workloads on Microsoft Azure, you need to know how your mainframe’s capabilities compare to Azure. Based on an IBM z14 mainframe, this guide by Larry Mead of AzureCAT explores how to get comparable results on Azure. The massively scalable compute and storage resources on Azure provide immediate benefits to organizations running mainframe workloads.
+Als u mainframe-workloads op Microsoft Azure wilt uitvoeren, moet u weten hoe de functies van uw mainframe met Azure worden vergeleken. Op basis van een IBM z14-mainframe wordt deze hand leiding door Larry Mead van AzureCAT verkend om Vergelijk bare resultaten op Azure te krijgen. De enorm schaal bare reken-en opslag resources op Azure bieden onmiddellijke voor delen voor organisaties die mainframe-workloads uitvoeren.
 
-### <a name="microsoft-azure-government-cloud-for-mainframe-applicationshttpsazuremicrosoftcomresourcesmicrosoft-azure-government-cloud-for-mainframe-applications"></a>[Microsoft Azure Government cloud for mainframe applications](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+### <a name="microsoft-azure-government-cloud-for-mainframe-applicationshttpsazuremicrosoftcomresourcesmicrosoft-azure-government-cloud-for-mainframe-applications"></a>[Microsoft Azure Government Cloud voor mainframe-toepassingen](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
 
-Planning an application migration is the ideal time to add value and agility to even well-established mainframe workloads. In this quick guide, Larry Mead of AzureCAT shows how United States government agencies and their partners can use Azure Government for mainframe applications—and migration may not be as difficult as you think. Azure Government delivers the advantages of a mainframe in a more cost-efficient and agile environment. In addition, Azure Government earned a Provisional Authority to Operate (P-ATO) for FedRAMP High Impact.
+Het plannen van een toepassings migratie is de ideale tijd om waarde en flexibiliteit toe te voegen aan zelfs vastgelegde mainframe workloads. In deze snelle hand leiding laat Larry Mead van AzureCAT zien hoe Verenigde Staten overheids instanties en hun partners Azure Government kunnen gebruiken voor mainframe-toepassingen, en migratie mogelijk niet zo lastig is als u denkt. Azure Government biedt de voor delen van een mainframe in een kostenbesparende en flexibele omgeving. Daarnaast heeft Azure Government een voorlopige instantie (P-ATO) binnengehaald voor FedRAMP hoge impact.
 
-### <a name="deploy-ibm-db2-purescale-on-azurehttpsazuremicrosoftcomresourcesdeploy-ibm-db2-purescale-on-azure"></a>[Deploy IBM DB2 pureScale on Azure](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
+### <a name="deploy-ibm-db2-purescale-on-azurehttpsazuremicrosoftcomresourcesdeploy-ibm-db2-purescale-on-azure"></a>[IBM DB2 pureScale implementeren op Azure](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
 
-Learn from our experience with an enterprise that recently rehosted its IBM DB2 environment on Azure. This guide was written by the AzureCAT and DMJ team members who were there: Larry Mead, Benjamin Guinebertière, Alessandro Vozza, and Jonathon Frost. They describe the steps they took during this migration. Their findings were reviewed by members of the IBM Db2 pureScale team. Installation scripts, available on GitHub, are based on the architecture that the team used for a typical medium-sized OLTP workload.
+Leer van onze ervaring met een onderneming die onlangs de IBM DB2-omgeving op Azure heeft gehost. Deze hand leiding is geschreven door de AzureCAT-en DMJ-team leden die er zijn: Larry Mead, Benjamin Guinebertière, Alessandro Vozza en Jonathon Frost. Hierin worden de stappen beschreven die ze tijdens deze migratie hebben ondernomen. Hun bevindingen werden gecontroleerd door leden van het IBM Db2 pureScale-team. Installatie scripts die beschikbaar zijn op GitHub, zijn gebaseerd op de architectuur die het team heeft gebruikt voor een typische OLTP-workload met een gemiddelde grootte.
 
-### <a name="install-tmaxsoft-openframe-on-azurehttpsazuremicrosoftcomresourcesinstall-tmaxsoft-openframe-on-azure"></a>[Install TmaxSoft OpenFrame on Azure](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
+### <a name="install-tmaxsoft-openframe-on-azurehttpsazuremicrosoftcomresourcesinstall-tmaxsoft-openframe-on-azure"></a>[TmaxSoft open frame installeren op Azure](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
-Modernize your infrastructure at cloud scale. TmaxSoft OpenFrame makes it easy to lift your existing mainframe assets and shift them to Azure. In this paper, Steve Read (AzureCAT) and Manoj Aerroju (TmaxSoft) explain how to set up an OpenFrame environment suitable for development, demos, testing, and production workloads.
+Modern uw infra structuur op Cloud schaal. Met TmaxSoft open frame kunt u eenvoudig uw bestaande mainframe-assets optillen en deze naar Azure verplaatsen. In dit artikel wordt uitgelegd hoe u een OpenFrame-omgeving kunt instellen die geschikt is voor ontwikkelings-, demonstratie-, test-en productie werk belastingen.
 
-### <a name="ibm-mainframe-to-microsoft-azure-reference-architecturehttpswwwastadiacomwhitepaperibm-mainframe-to-microsoft-azure"></a>[IBM mainframe to Microsoft Azure reference architecture](https://www.astadia.com/whitepaper/ibm-mainframe-to-microsoft-azure)
+### <a name="ibm-mainframe-to-microsoft-azure-reference-architecturehttpswwwastadiacomwhitepaperibm-mainframe-to-microsoft-azure"></a>[IBM mainframe to Microsoft Azure-referentie architectuur](https://www.astadia.com/whitepaper/ibm-mainframe-to-microsoft-azure)
 
-This white paper reflects Astadia’s more than 25 years of mainframe platform modernization expertise. They explain the benefits and challenges of modernization efforts. This guide gives an overview of the IBM mainframe and an IBM mainframe-to-Azure reference architecture. It also provides a look at the Astadia success methodology.
+Dit technisch document weerspiegelt Astadia meer dan 25 jaar ervaring op het vlak van de modernisering van het mainframe platform. Hierin worden de voor delen en uitdagingen uitgelegd van de moderniserings inspanningen. Deze hand leiding bevat een overzicht van het IBM-mainframe en een IBM mainframe-naar-Azure-referentie architectuur. Het biedt ook een overzicht van de Astadia slagen.
 
-### <a name="deploying-mainframe-applications-to-microsoft-azurehttpswwwmicrofocuscommediawhite-paperdeploying_mainframe_applications_to_microsoft_azure_wppdf"></a>[Deploying mainframe applications to Microsoft Azure](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
+### <a name="deploying-mainframe-applications-to-microsoft-azurehttpswwwmicrofocuscommediawhite-paperdeploying_mainframe_applications_to_microsoft_azure_wppdf"></a>[Mainframe-toepassingen implementeren op Microsoft Azure](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
 
-Solutions from Micro Focus free you from the constraints of proprietary mainframe hardware and software. In this guide, Micro Focus explains how to deploy your COBOL and PL/I applications running in IBM mainframes to the cloud instead.
+Oplossingen van micro focus beschikt u van de beperkingen van eigen Mainframe-hardware en-software. In deze hand leiding wordt uitgelegd hoe u uw COBOL-en PL/I-toepassingen die worden uitgevoerd in IBM-mainframes kunt implementeren in de Cloud.
 
-### <a name="breathe-new-life-into-mainframeshttpswwwinfosyscomservicesmodernizationbreathe-new-life-mainframeshtml"></a>[Breathe new life into mainframes](https://www.infosys.com/services/modernization/breathe-new-life-mainframes.html)
+### <a name="breathe-new-life-into-mainframeshttpswwwinfosyscomservicesmodernizationbreathe-new-life-mainframeshtml"></a>[Nieuwe levens duur ademen in mainframes](https://www.infosys.com/services/modernization/breathe-new-life-mainframes.html)
 
- Mainframes are increasingly challenging for business to maintain. This white paper by Infosys and Microsoft highlights the winning strategy for successful mainframe migration. Use cases and examples illustrate the options.
+ Mainframes zijn steeds moeilijker voor het onderhoud van bedrijven. Dit technisch document van Infosys en micro soft markeert de winnende strategie voor geslaagde mainframe migratie. Gebruiks voorbeelden en voor beelden illustreren de opties.

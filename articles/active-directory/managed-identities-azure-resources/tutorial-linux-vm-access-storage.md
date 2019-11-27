@@ -29,7 +29,7 @@ ms.locfileid: "74183413"
 Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Storage met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). Procedures voor:
 
 > [!div class="checklist"]
-> * Maak een opslagaccount
+> * Een opslagaccount maken
 > * Een blobcontainer in een opslagaccount maken
 > * De beheerde identiteit van de Linux-VM toegang geven tot een Azure Storage-container
 > * Een toegangstoken ophalen en daarmee Azure Storage aanroepen
@@ -46,7 +46,7 @@ Als u de CLI-scriptvoorbeelden in deze zelfstudie wilt uitvoeren, hebt u twee op
 - Gebruik [Azure Cloud Shell](~/articles/cloud-shell/overview.md) vanuit Azure Portal of via de knop **Uitproberen** in de rechterbovenhoek van elk codeblok.
 - [Installeer de nieuwste versie van CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 of later) als u liever een lokale CLI-console gebruikt.
 
-## <a name="create-a-storage-account"></a>Maak een opslagaccount 
+## <a name="create-a-storage-account"></a>Een opslagaccount maken 
 
 In deze sectie maakt u een opslagaccount. 
 
@@ -55,7 +55,7 @@ In deze sectie maakt u een opslagaccount.
 3. Geef onder **Naam** een naam voor het opslagaccount op.  
 4. **Implementatiemodel** en **Soort account** moeten respectievelijk worden ingesteld op **Resource Manager** en **Storage (algemeen gebruik v1)** . 
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.
-6. Klik op **Maken**.
+6. Klik op **Create**.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

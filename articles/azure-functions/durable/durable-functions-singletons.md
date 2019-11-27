@@ -1,6 +1,6 @@
 ---
-title: Singletons for Durable Functions - Azure
-description: How to use singletons in the Durable Functions extension for Azure Functions.
+title: Singleton voor Durable Functions-Azure
+description: Het gebruik van Singleton in de Durable Functions extensie voor Azure Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
@@ -12,13 +12,13 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232808"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton orchestrators in Durable Functions (Azure Functions)
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton-Orchestrator in Durable Functions (Azure Functions)
 
-For background jobs, you often need to ensure that only one instance of a particular orchestrator runs at a time. You can ensure this kind of singleton behavior in [Durable Functions](durable-functions-overview.md) by assigning a specific instance ID to an orchestrator when creating it.
+Voor achtergrond taken moet u er vaak voor zorgen dat slechts één exemplaar van een bepaalde Orchestrator tegelijk wordt uitgevoerd. U kunt dit soort Singleton gedrag in [Durable functions](durable-functions-overview.md) controleren door een specifieke exemplaar-id toe te wijzen aan een Orchestrator tijdens het maken.
 
-## <a name="singleton-example"></a>Singleton example
+## <a name="singleton-example"></a>Voor beeld van Singleton
 
-The following example shows an HTTP-trigger function that creates a singleton background job orchestration. The code ensures that only one instance exists for a specified instance ID.
+In het volgende voor beeld ziet u een HTTP-trigger-functie waarmee een singleton achtergrond taak indeling wordt gemaakt. De code zorgt ervoor dat er slechts één exemplaar bestaat voor een opgegeven exemplaar-ID.
 
 ### <a name="c"></a>C#
 
@@ -52,11 +52,11 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 > [!NOTE]
-> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> De vorige C# code is voor Durable functions 2. x. Voor Durable Functions 1. x moet u `OrchestrationClient` kenmerk gebruiken in plaats van het kenmerk `DurableClient`, en moet u het `DurableOrchestrationClient` parameter type gebruiken in plaats van `IDurableOrchestrationClient`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
-Here's the function.json file:
+Dit is het bestand function.json:
 ```json
 {
   "bindings": [
@@ -82,7 +82,7 @@ Here's the function.json file:
 }
 ```
 
-Here's the JavaScript code:
+Dit is de JavaScript-code:
 ```javascript
 const df = require("durable-functions");
 
@@ -110,14 +110,14 @@ module.exports = async function(context, req) {
 };
 ```
 
-By default, instance IDs are randomly generated GUIDs. In the previous example, however, the instance ID is passed in route data from the URL. The code calls `GetStatusAsync`(C#) or `getStatus` (JavaScript) to check if an instance having the specified ID is already running. If no such instance is running, a new instance is created with that ID.
+Exemplaar-Id's zijn standaard wille keurig gegenereerde GUID'S. In het vorige voor beeld wordt de exemplaar-ID echter door gegeven in route gegevens van de URL. De code roept `GetStatusAsync`(C#) of `getStatus` (Java script) aan om te controleren of een exemplaar met de opgegeven id al wordt uitgevoerd. Als een dergelijk exemplaar niet wordt uitgevoerd, wordt er een nieuw exemplaar gemaakt met die ID.
 
 > [!NOTE]
-> There is a potential race condition in this sample. If two instances of **HttpStartSingle** execute concurrently, both function calls will report success, but only one orchestration instance will actually start. Depending on your requirements, this may have undesirable side effects. For this reason, it is important to ensure that no two requests can execute this trigger function concurrently.
+> Dit voor beeld bevat een mogelijke race voorwaarde. Als twee instanties van **HttpStartSingle** gelijktijdig worden uitgevoerd, wordt door beide functie aanroepen geslaagd, maar er wordt slechts één Orchestration-exemplaar gestart. Afhankelijk van uw vereisten kan dit ongewenste neven effecten hebben. Daarom is het belang rijk om ervoor te zorgen dat twee aanvragen deze trigger gelijktijdig kunnen uitvoeren.
 
-The implementation details of the orchestrator function don't actually matter. It could be a regular orchestrator function that starts and completes, or it could be one that runs forever (that is, an [Eternal Orchestration](durable-functions-eternal-orchestrations.md)). The important point is that there is only ever one instance running at a time.
+De implementatie details van de Orchestrator-functie zijn niet werkelijk van belang. Dit kan een normale Orchestrator-functie zijn die wordt gestart en voltooid, of kan een van de functies zijn die permanent worden uitgevoerd (dat wil zeggen, een [eeuwige](durable-functions-eternal-orchestrations.md)-indeling). Het belang rijk punt is dat er maar één instantie tegelijk wordt uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Learn about the native HTTP features of orchestrations](durable-functions-http-features.md)
+> [Meer informatie over de systeem eigen HTTP-functies van Orchestrations](durable-functions-http-features.md)

@@ -1,6 +1,6 @@
 ---
-title: Create a blockchain application - Azure Blockchain Workbench
-description: Tutorial on how to create a blockchain application for Azure Blockchain Workbench Preview.
+title: Een Block Chain-toepassing maken-Azure Block Chain workbench
+description: Zelf studie over het maken van een Block Chain-toepassing voor Azure Block Chain Workbench preview.
 ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
@@ -11,7 +11,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74324813"
 ---
-# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Tutorial: Create a blockchain application for Azure Blockchain Workbench
+# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Zelf studie: een Block Chain-toepassing maken voor Azure Block Chain workbench
 
 U kunt Azure Blockchain Workbench gebruiken om een blockchain-toepassing te maken waarmee werkstromen voor meerdere partijen worden gerepresenteerd die door configuratie en slimme-contractcode worden gedefinieerd.
 
@@ -281,7 +281,7 @@ Voeg de constructorfunctie toe aan uw contract in bestand `HelloBlockchain.sol` 
     }
 ```
 
-### <a name="functions"></a>Functies
+### <a name="functions"></a>Functions
 
 Functies zijn de uitvoerbare eenheden van de bedrijfslogica in een contract. Vereiste parameters voor de functie worden in het configuratiebestand gedefinieerd als functieparameters. Het aantal parameters, de volgorde van de parameters en het type parameter moeten in beide bestanden met elkaar overeenkomen. Functies zijn in het configuratiebestand gekoppeld aan overgangen in een Blockchain Workbench-werkstroom. Een overgang is een actie die wordt uitgevoerd om naar de volgende fase van de werkstroom van een toepassing over te gaan, zoals bepaald door het contract.
 

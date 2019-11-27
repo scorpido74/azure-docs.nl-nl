@@ -69,7 +69,7 @@ De POST-bewerking bevat de volgende JSON-nettolading en het schema voor alle waa
 ```
 
 
-| Veld | Mandatory | Vaste set waarden | Opmerkingen |
+| Veld | Verplicht | Vaste set waarden | Opmerkingen |
 |:--- |:--- |:--- |:--- |
 | status |J |Geactiveerd, opgelost |De status van de waarschuwing op basis van de voor waarden die u hebt ingesteld. |
 | context |J | |De context van de waarschuwing. |

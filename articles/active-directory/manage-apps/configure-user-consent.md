@@ -78,4 +78,4 @@ De URL ziet er als volgt uit: `https://login.microsoftonline.com/<tenant-id>/oau
 
 [Toestemming en machtiging voor AzureAD v 2.0 geconvergeerde apps](../develop/active-directory-v2-scopes.md)
 
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

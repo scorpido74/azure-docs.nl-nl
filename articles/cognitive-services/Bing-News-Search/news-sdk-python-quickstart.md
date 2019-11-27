@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Perform a news search using the SDK for Python - Bing News Search'
+title: 'Quick Start: een zoek opdracht voor nieuws uitvoeren met de SDK voor python-Bing News Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om nieuws te zoeken met de Bing News Search-SDK voor Python en om het antwoord te verwerken.
 services: cognitive-services
@@ -18,9 +18,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379062"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Quickstart: Perform a news search with the Bing News Search SDK for Python
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Quick Start: een zoek opdracht voor nieuws uitvoeren met de Bing News Search SDK voor python
 
-Gebruik deze quickstart om aan de slag te gaan met de Bing Nieuws zoeken-API voor Python om nieuws te zoeken. Hoewel Bing Nieuws zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py).
+Gebruik deze quickstart om aan de slag te gaan met de Bing Nieuws zoeken-API voor Python om nieuws te zoeken. Hoewel Bing Nieuws zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py).
 
 ## <a name="prerequisites"></a>Vereisten
 

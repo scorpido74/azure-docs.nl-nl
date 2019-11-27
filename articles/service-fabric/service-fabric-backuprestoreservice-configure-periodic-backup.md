@@ -1,6 +1,6 @@
 ---
-title: Understanding periodic backup configuration in Azure Service Fabric | Microsoft Docs
-description: Use Service Fabric's periodic backup and restore feature for enabling periodic data backup of your application data.
+title: Meer informatie over de configuratie van periodieke back-ups in azure Service Fabric | Microsoft Docs
+description: Gebruik de periodieke back-up-en herstel functie van Service Fabric voor het inschakelen van periodieke gegevens back-ups van uw toepassings gegevens.
 services: service-fabric
 documentationcenter: .net
 author: hrushib
@@ -21,31 +21,31 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232497"
 ---
-# <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Understanding periodic backup configuration in Azure Service Fabric
+# <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Informatie over periodieke back-upconfiguratie in azure Service Fabric
 
-Configuring periodic backup of your Reliable stateful services or Reliable Actors consists of the following steps:
+Het configureren van periodieke back-ups van uw betrouw bare stateful Services of Reliable Actors bestaat uit de volgende stappen:
 
-1. **Creation of backup policies**: In this step, one or more backup policies are created depending on requirements.
+1. **Back-upbeleid maken**: in deze stap worden een of meer back-beleidsregels gemaakt, afhankelijk van de vereisten.
 
-2. **Enabling backup**: In this step, you associate backup policies created in **Step 1** to the required entities, _Application_, _Service_, or a _Partition_.
+2. **Back-up inschakelen**: in deze stap koppelt u het back-upbeleid dat u in **stap 1** hebt gemaakt aan de vereiste entiteiten, _toepassing_, _service_of _partitie_.
 
-## <a name="create-backup-policy"></a>Create Backup Policy
+## <a name="create-backup-policy"></a>Back-upbeleid maken
 
-A backup policy consists of the following configurations:
+Een back-upbeleid bestaat uit de volgende configuraties:
 
-* **Auto restore on data loss**: Specifies whether to trigger restore automatically using the latest available backup in case the partition experiences a data loss event.
+* **Gegevens verlies automatisch herstellen**: Hiermee geeft u op of herstellen automatisch moet worden geactiveerd met de meest recente beschik bare back-up voor het geval de partitie een gegevens verlies gebeurtenis ondervindt.
 
-* **Max incremental backups**: Defines the maximum number of incremental backups to be taken between two full backups. Max incremental backups specify the upper limit. A full backup may be taken before specified number of incremental backups are completed in one of the following conditions
+* **Maximale incrementele back-ups**: Hiermee definieert u het maximum aantal incrementele back-ups dat moet worden gemaakt tussen twee volledige back-ups. Maximale incrementele back-ups geven de bovengrens aan. Er kan een volledige back-up worden gemaakt voordat het opgegeven aantal incrementele back-ups in een van de volgende voor waarden is voltooid
 
-    1. The replica has never taken a full backup since it has become primary.
+    1. De replica heeft nooit een volledige back-up gemaakt, omdat deze primair is geworden.
 
-    2. Some of the log records since the last backup has been truncated.
+    2. Enkele logboek records sinds de laatste back-up zijn afgekapt.
 
-    3. Replica passed the MaxAccumulatedBackupLogSizeInMB limit.
+    3. De MaxAccumulatedBackupLogSizeInMB-limiet door de replica is door gegeven.
 
-* **Backup schedule**: The time or frequency at which to take periodic backups. One can schedule backups to be recurring at specified interval or at a fixed time daily/ weekly.
+* **Back-upschema**: de tijd of frequentie waarmee periodieke back-ups worden gemaakt. Eén kan back-ups plannen die periodiek worden gepland op het opgegeven interval of op een vaste tijd dagelijks/wekelijks.
 
-    1. **Frequency-based backup schedule**: This schedule type should be used if the need is to take data backup at fixed intervals. Desired time interval between two consecutive backups is defined using ISO8601 format. Frequency-based backup schedule supports interval resolution to the minute.
+    1. **Back-upschema op basis van frequentie**: dit schema type moet worden gebruikt als de gegevens back-up op vaste intervallen moet worden uitgevoerd. Het gewenste tijds interval tussen twee opeenvolgende back-ups wordt gedefinieerd met behulp van de ISO8601-indeling. Back-upschema op basis van frequentie ondersteunt interval omzetting tot de minuut.
         ```json
         {
             "ScheduleKind": "FrequencyBased",
@@ -53,8 +53,8 @@ A backup policy consists of the following configurations:
         }
         ```
 
-    2. **Time-based backup schedule**: This schedule type should be used if the need is to take data backup at specific times of the day or week. Schedule frequency type can either be daily or weekly.
-        1. **_Daily_ Time-based backup schedule**: This schedule type should be used if the need id to take data backup at specific times of the day. To specify this, set `ScheduleFrequencyType` to _Daily_; and set `RunTimes` to list of desired time during the day in ISO8601 format, date specified along with time will be ignored. For example, `0001-01-01T18:00:00` represents _6:00 PM_ everyday, ignoring date part _0001-01-01_. Below example illustrates the configuration to trigger daily backup at _9:00 AM_ and _6:00 PM_ everyday.
+    2. **Back-upschema op basis van tijd**: dit schema type moet worden gebruikt als de nood zaak is om gegevens back-up te maken op specifieke tijdstippen van de dag of week. Het frequentie type van de planning kan dagelijks of wekelijks zijn.
+        1. **_Dagelijks_ back-upschema op basis van tijd**: dit schema type moet worden gebruikt als de nood zaak om gegevens back-ups te maken op specifieke tijdstippen van de dag. Als u dit wilt opgeven, stelt u `ScheduleFrequencyType` in op _dagelijks_. en `RunTimes` in te stellen op een lijst met gewenste tijdstippen gedurende de dag in ISO8601-notatie, de datum die is opgegeven in combi natie met tijd, wordt genegeerd. `0001-01-01T18:00:00` bijvoorbeeld elke dag _6:00 pm_ vertegenwoordigt, waarbij datum deel _0001-01-01_wordt genegeerd. Hieronder ziet u een voor beeld van de configuratie om dagelijks een back-up te activeren om _9:00 uur_ en _6:00 uur_ per dag.
 
             ```json
             {
@@ -67,7 +67,7 @@ A backup policy consists of the following configurations:
             }
             ```
 
-        2. **_Weekly_ Time-based backup schedule**: This schedule type should be used if the need id to take data backup at specific times of the day. To specify this, set `ScheduleFrequencyType` to _Weekly_; set `RunDays` to list of days in a week when backup needs to be triggered and set `RunTimes` to list of desired time during the day in ISO8601 format, date specified along with time will be ignored. List of days of a week when to trigger the periodic backup. Below example illustrates the configuration to trigger daily backup at _9:00 AM_ and _6:00 PM_ during Monday to Friday.
+        2. **_Wekelijks_ back-upschema op basis van tijd**: dit plannings type moet worden gebruikt als de nood zaak om gegevens back-ups te maken op specifieke tijdstippen van de dag. Als u dit wilt opgeven, stelt u `ScheduleFrequencyType` in op _wekelijks_. Stel `RunDays` in op de lijst met dagen in een week wanneer de back-up moet worden geactiveerd en stel `RunTimes` in op een lijst met gewenste tijdstippen gedurende de dag in ISO8601-notatie, de datum die wordt opgegeven samen met de tijd, wordt genegeerd. Lijst van dagen van een week waarop de periodieke back-up moet worden geactiveerd. Hieronder ziet u een voor beeld van de configuratie om dagelijks een back-up te activeren op _9:00 uur_ en _6:00 uur_ tijdens maandag tot en met vrijdag.
 
             ```json
             {
@@ -87,8 +87,8 @@ A backup policy consists of the following configurations:
             }
             ```
 
-* **Backup storage**: Specifies the location to upload backups. Storage can be either Azure blob store or file share.
-    1. **Azure blob store**: This storage type should be selected when the need is to store generated backups in Azure. Both _standalone_ and _Azure-based_ clusters can use this storage type. Description for this storage type requires connection string and name of the container where backups need to be uploaded. If the container with the specified name is not available, then it gets created during upload of a backup.
+* **Back-upopslag**: Hiermee geeft u de locatie op voor het uploaden van back-ups. Opslag kan een Azure Blob Store of een bestands share zijn.
+    1. **Azure Blob Store**: dit opslag type moet worden geselecteerd wanneer het nodig is om gegenereerde back-ups op te slaan in Azure. Zowel _zelfstandige_ als _op Azure gebaseerde_ clusters kunnen gebruikmaken van dit opslag type. De beschrijving voor dit opslag type vereist connection string en de naam van de container waarnaar de back-ups moeten worden geüpload. Als de container met de opgegeven naam niet beschikbaar is, wordt deze gemaakt tijdens het uploaden van een back-up.
         ```json
         {
             "StorageKind": "AzureBlobStore",
@@ -98,8 +98,8 @@ A backup policy consists of the following configurations:
         }
         ```
 
-    2. **File share**: This storage type should be selected for _standalone_ clusters when the need is to store data backup on-premises. Description for this storage type requires file share path where backups need to be uploaded. Access to the file share can be configured using one of the following options
-        1. _Integrated Windows Authentication_, where the access to file share is provided to all computers belonging to the Service Fabric cluster. In this case, set following fields to configure _file-share_ based backup storage.
+    2. **Bestands share**: dit opslag type moet worden geselecteerd voor _zelfstandige_ clusters wanneer het nodig is om gegevens back-up on-premises op te slaan. Voor de beschrijving voor dit opslag type is het pad van de bestands share vereist waar de back-ups moeten worden geüpload. Toegang tot de bestands share kan worden geconfigureerd met een van de volgende opties:
+        1. _Geïntegreerde Windows-verificatie_, waarbij de toegang tot de bestands share wordt gegeven aan alle computers die deel uitmaken van het service Fabric cluster. In dit geval stelt u de volgende velden in voor het configureren van een back-upopslag op basis van een _Bestands share_ .
 
             ```json
             {
@@ -109,7 +109,7 @@ A backup policy consists of the following configurations:
             }
             ```
 
-        2. _Protecting file share using user name and password_, where the access to file share is provided to specific users. File share storage specification also provides capability to specify secondary user name and secondary password to provide fall-back credentials in case authentication fails with primary user name and primary password. In this case, set following fields to configure _file-share_ based backup storage.
+        2. De _Bestands share beveiligen met behulp van de gebruikers naam en het wacht woord_, waarbij de toegang tot de bestands share wordt gegeven aan specifieke gebruikers. Bestands share Storage-specificatie biedt ook de mogelijkheid om een secundaire gebruikers naam en een secundair wacht woord op te geven om back-ups te kunnen maken bij een mislukte verificatie met de primaire gebruikers naam en het primaire wacht woord. In dit geval stelt u de volgende velden in voor het configureren van een back-upopslag op basis van een _Bestands share_ .
 
             ```json
             {
@@ -124,11 +124,11 @@ A backup policy consists of the following configurations:
             ```
 
 > [!NOTE]
-> Ensure that the storage reliability meets or exceeds reliability requirements of backup data.
+> Zorg ervoor dat de betrouw baarheid van de opslag voldoet aan de betrouwbaarheids vereisten van back-upgegevens.
 >
 
-* **Retention Policy**: Specifies the policy to retain backups in the configured storage. Only Basic Retention Policy is supported.
-    1. **Basic Retention Policy**: This retention policy allows to ensure optimal storage utilization by removing backup files which are no more required. `RetentionDuration` can be specified to set the time span for which backups are required to be retained in the storage. `MinimumNumberOfBackups` is an optional parameter that can be specified to make sure that the specified number of backups are always retained irrespective of the `RetentionDuration`. Below example illustrates the configuration to retain backups for _10_ days and does not allow number of backups to go below _20_.
+* **Bewaar beleid**: Hiermee geeft u het beleid voor het bewaren van back-ups in de geconfigureerde opslag. Alleen Basic-Bewaar beleid wordt ondersteund.
+    1. **Basis beleid voor bewaren**: met dit Bewaar beleid kunt u optimaal gebruikmaken van de opslag capaciteit door back-upbestanden te verwijderen die niet meer nodig zijn. `RetentionDuration` kan worden opgegeven voor het instellen van de tijds Panne waarvoor back-ups moeten worden bewaard in de opslag. `MinimumNumberOfBackups` is een optionele para meter die kan worden opgegeven om ervoor te zorgen dat het opgegeven aantal back-ups altijd worden bewaard, ongeacht de `RetentionDuration`. Hieronder ziet u een voor beeld van de configuratie voor het bewaren van back-ups gedurende _10_ dagen en het aantal back-ups dat niet meer dan _20_mag worden gebruikt.
 
         ```json
         {
@@ -138,117 +138,117 @@ A backup policy consists of the following configurations:
         }
         ```
 
-## <a name="enable-periodic-backup"></a>Enable periodic backup
-After defining backup policy to fulfill data backup requirements, the backup policy should be appropriately associated either with an _application_, or _service_, or a _partition_.
+## <a name="enable-periodic-backup"></a>Periodieke back-up inschakelen
+Nadat u het back-upbeleid hebt gedefinieerd om te voldoen aan de vereisten voor gegevens back-ups, moet het back-upbeleid op de juiste manier zijn gekoppeld aan een _toepassing_, of _service_of een _partitie_.
 
-### <a name="hierarchical-propagation-of-backup-policy"></a>Hierarchical propagation of backup policy
-In Service Fabric, relation between application, service, and partitions is hierarchical as explained in [Application model](./service-fabric-application-model.md). Backup policy can be associated either with an _application_, _service_, or a _partition_ in the hierarchy. Backup policy propagates hierarchically to next level. Assuming there is only one backup policy created and associated with an _application_, all stateful partitions belonging to all _Reliable stateful services_ and _Reliable Actors_ of the _application_ will be backed-up using the backup policy. Or if the backup policy is associated with a _Reliable stateful service_, all its partitions will be backed-up using the backup policy.
+### <a name="hierarchical-propagation-of-backup-policy"></a>Hiërarchische doorgifte van het back-upbeleid
+In Service Fabric is de relatie tussen de toepassing, de service en de partities hiërarchisch zoals uitgelegd in het [toepassings model](./service-fabric-application-model.md). Het back-upbeleid kan worden gekoppeld aan een _toepassing_, _service_of een _partitie_ in de hiërarchie. Het back-upbeleid wordt hiërarchisch door gegeven aan het volgende niveau. Ervan uitgaande dat er slechts één back-upbeleid is gemaakt en gekoppeld aan een _toepassing_, worden alle stateful partities die deel uitmaken van alle _betrouw bare stateful Services_ en _reliable actors_ van de _toepassing_ worden opgeslagen met de back-upbeleid. Of als het back-upbeleid is gekoppeld aan een _betrouw bare stateful service_, wordt er een back-up van alle partities gemaakt met behulp van het back-upbeleid.
 
-### <a name="overriding-backup-policy"></a>Overriding backup policy
-There may be a scenario where data backup with same backup schedule is required for all services of the application except for specific services where the need is to have data backup using higher frequency schedule or taking backup to a different storage account or fileshare. To address such scenarios, backup restore service provides facility to override propagated policy at service and partition scope. When the backup policy is associated at _service_ or _partition_, it overrides propagated backup policy, if any.
+### <a name="overriding-backup-policy"></a>Back-upbeleid overschrijven
+Er is mogelijk een scenario waarbij gegevens back-up met hetzelfde back-upschema is vereist voor alle services van de toepassing, met uitzonde ring van specifieke services waarbij gegevens back-ups moeten worden gemaakt met een hogere frequentie planning of als back-up naar een ander opslag account of bestands share. Om dergelijke scenario's te verhelpen, biedt back Restore service de mogelijkheid om het door gegeven beleid te overschrijven op service-en partitie bereik. Wanneer het back-upbeleid is gekoppeld aan _service_ of _partitie_, overschrijft het het door gegeven back-upbeleid, indien aanwezig.
 
 ### <a name="example"></a>Voorbeeld
 
-This example uses setup with two applications, _MyApp_A_ and _MyApp_B_. Application _MyApp_A_ contains two Reliable Stateful services, _SvcA1_ & _SvcA3_, and one Reliable Actor service, _ActorA2_. _SvcA1_ contains three partitions while _ActorA2_ and _SvcA3_ contain two partitions each.  Application _MyApp_B_ contains three Reliable Stateful services, _SvcB1_, _SvcB2_, and _SvcB3_. _SvcB1_ and _SvcB2_ contains two partitions each while _SvcB3_ contains three partitions.
+In dit voor beeld wordt het installatie programma gebruikt met twee toepassingen, _MyApp_A_ en _MyApp_B_. Toepassings _MyApp_A_ bevat twee betrouw bare stateful Services, _SvcA1_ & _SvcA3_en één reliable actor service, _ActorA2_. _SvcA1_ bevat drie partities terwijl _ActorA2_ en _SvcA3_ twee partities bevatten.  Toepassings _MyApp_B_ bevat drie betrouw bare stateful Services, _SvcB1_, _SvcB2_en _SvcB3_. _SvcB1_ en _SvcB2_ bevatten twee partities, terwijl _SvcB3_ drie partities bevat.
 
-Assume that these applications' data backup requirements are as follows
+Stel dat deze toepassingen gegevens back-ups als volgt zijn
 
 1. MyApp_A
-    1. Create daily backup of data for all partitions of all _Reliable Stateful services_ and _Reliable Actors_ belonging to the application. Upload backup data to location _BackupStore1_.
+    1. Maak dagelijks een back-up van de gegevens voor alle partities van alle _betrouw bare stateful Services_ en _reliable actors_ die bij de toepassing horen. Upload back-upgegevens naar locatie _BackupStore1_.
 
-    2. One of the services, _SvcA3_, requires data backup every hour.
+    2. Voor een van de services, _SvcA3_, is elk uur een back-up van gegevens vereist.
 
-    3. Data size in partition _SvcA1_P2_ is more than expected and its backup data should be stored to different storage location _BackupStore2_.
+    3. De gegevens grootte in de partitie _SvcA1_P2_ is meer dan verwacht en de back-upgegevens moeten worden opgeslagen op een andere opslag locatie _BackupStore2_.
 
 2. MyApp_B
-    1. Create backup of data every Sunday at 8:00 AM for all partitions of _SvcB1_ service. Upload backup data to location _BackupStore1_.
+    1. Maak elke zondag om 8:00 uur een back-up van de gegevens voor alle partities van de _SvcB1_ -service. Upload back-upgegevens naar locatie _BackupStore1_.
 
-    2. Create backup of data every day at 8:00 AM for partition _SvcB2_P1_. Upload backup data to location _BackupStore1_.
+    2. Maak een back-up van gegevens elke dag om 8:00 uur voor partitie _SvcB2_P1_. Upload back-upgegevens naar locatie _BackupStore1_.
 
-To address these data backup requirements, backup policies BP_1 to BP_5 are created and backup is enabled as follows.
+Om deze vereisten voor gegevens back-ups op te lossen, worden er back-upbeleid BP_1 naar BP_5 gemaakt en wordt de back-up als volgt ingeschakeld.
 1. MyApp_A
-    1. Create backup policy, _BP_1_, with frequency-based backup schedule where frequency is set to 24 Hrs. and backup storage configured to use storage location _BackupStore1_. Enable this policy for Application _MyApp_A_ using [Enable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API. This action enables data backup using backup policy _BP_1_ for all partitions of _Reliable Stateful services_ and _Reliable Actors_ belonging to application _MyApp_A_.
+    1. Maak een back-upbeleid _BP_1_, met een frequentie-gebaseerd back-upschema waarbij de frequentie is ingesteld op 24 uur. back-upopslag is geconfigureerd voor het gebruik van opslag locatie _BackupStore1_. Schakel dit beleid in voor toepassings _MyApp_A_ met de API voor het [inschakelen van back-ups van toepassingen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) . Met deze actie wordt de back-up van gegevens met behulp van back-upbeleid _BP_1_ voor alle partities van _betrouw bare stateful Services_ en _reliable actors_ die tot toepassings _MyApp_A_behoren.
 
-    2. Create backup policy, _BP_2_, with frequency-based backup schedule where frequency is set to 1 Hrs. and backup storage configured to use storage location _BackupStore1_. Enable this policy for service _SvcA3_ using [Enable Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API. This action overrides propagated policy _BP_1_ by explicitly enabled backup policy _BP_2_ for all partitions of service _SvcA3_ leading to data backup using backup policy _BP_2_ for these partitions.
+    2. Maak een back-upbeleid _BP_2_, met een frequentie-gebaseerd back-upschema waarbij de frequentie is ingesteld op 1 uur. back-upopslag is geconfigureerd voor het gebruik van opslag locatie _BackupStore1_. Schakel dit beleid in voor service _SvcA3_ met behulp van de API voor het [inschakelen van back-ups](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) . Met deze actie wordt het door gegeven beleid overschreven _BP_1_ door expliciet ingeschakelde back-upbeleid _BP_2_ voor alle _SvcA3_ van gegevens back-ups met behulp van back-upbeleid _BP_2_ voor deze partities.
 
-    3. Create backup policy, _BP_3_, with frequency-based backup schedule where frequency is set to 24 Hrs. and backup storage configured to use storage location _BackupStore2_. Enable this policy for partition _SvcA1_P2_ using [Enable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API. This action overrides propagated policy _BP_1_ by explicitly enabled backup policy _BP_3_ for partition _SvcA1_P2_.
+    3. Maak een back-upbeleid _BP_3_, met een frequentie-gebaseerd back-upschema waarbij de frequentie is ingesteld op 24 uur. back-upopslag is geconfigureerd voor het gebruik van opslag locatie _BackupStore2_. Schakel dit beleid in voor partitie _SvcA1_P2_ met behulp van de API voor het [maken van partities](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) . Deze actie overschrijft de door gegeven beleids _BP_1_ door expliciet ingeschakelde back-upbeleid _BP_3_ voor partitie _SvcA1_P2_.
 
 2. MyApp_B
-    1. Create backup policy, _BP_4_, with time-based backup schedule where schedule frequency type is set to weekly, run days is set to Sunday, and run times is set to 8:00 AM. Backup storage configured to use storage location _BackupStore1_. Enable this policy for service _SvcB1_ using [Enable Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API. This action enables data backup using backup policy _BP_4_ for all partitions of service _SvcB1_.
+    1. Maak een back-upbeleid, _BP_4_, met een op tijd gebaseerd back-upschema waarbij het type plannings frequentie is ingesteld op wekelijks, uitvoerings dagen is ingesteld op zondag en uitvoerings tijden is ingesteld op 8:00 uur. Back-upopslag is geconfigureerd om opslag locatie _BackupStore1_te gebruiken. Schakel dit beleid in voor service _SvcB1_ met behulp van de API voor het [inschakelen van back-ups](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) . Met deze actie wordt back-up van gegevens met behulp van back-upbeleid _BP_4_ voor alle partities van de service _SvcB1_.
 
-    2. Create backup policy, _BP_5_, with time-based backup schedule where schedule frequency type is set to daily and run times is set to 8:00 AM. Backup storage configured to use storage location _BackupStore1_. Enable this policy for partition _SvcB2_P1_ using [Enable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API. This action enables data backup using backup policy _BP_5_ for partition _SvcB2_P1_.
+    2. Maak een back-upbeleid _BP_5_, met een op tijd gebaseerd back-upschema waarbij het type plannings frequentie is ingesteld op dagelijks en uitvoerings tijden is ingesteld op 8:00 uur. Back-upopslag is geconfigureerd om opslag locatie _BackupStore1_te gebruiken. Schakel dit beleid in voor partitie _SvcB2_P1_ met behulp van de API voor het [maken van partities](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) . Met deze actie wordt de back-up van gegevens met behulp van back-upbeleid _BP_5_ voor partitie _SvcB2_P1_.
 
-Following diagram depicts explicitly enabled backup policies and propagated backup policies.
+In het volgende diagram ziet u expliciet ingeschakeld back-upbeleid en door gegeven back-upbeleid.
 
-![Service Fabric Application Hierarchy][0]
+![Toepassings hiërarchie Service Fabric][0]
 
-## <a name="disable-backup"></a>Disable backup
-Backup policies can be disabled when there is no need to backup data. Backup policy enabled at an _application_ can only be disabled at the same _application_ using [Disable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) API, Backup policy enabled at a _service_ can be disabled at the same _service_ using [Disable Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) API, and Backup policy enabled at a _partition_ can be disabled at the same _partition_ using [Disable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API.
+## <a name="disable-backup"></a>Back-up uitschakelen
+Back-upbeleid kan worden uitgeschakeld wanneer er geen back-up van gegevens nodig is. Back-upbeleid dat op een _toepassing_ is ingeschakeld kan alleen worden uitgeschakeld op dezelfde _toepassing_ met behulp van de API voor het uitschakelen van de [back-up](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) van de toepassing. het back-upbeleid voor een _service_ kan worden uitgeschakeld op dezelfde _service_ met [uitschakelen Back-](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) upapi voor service en back-upbeleid ingeschakeld op een _partitie_ kunnen worden uitgeschakeld op dezelfde _partitie_ met behulp van de back-upapi voor [partitioneren](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) .
 
-* Disabling backup policy for an _application_ stops all periodic data backups happening as a result of propagation of the backup policy to Reliable Stateful service partitions or Reliable Actor partitions.
+* Het uitschakelen van het back-upbeleid voor een _toepassing_ stopt alle periodieke gegevens back-ups als gevolg van het door geven van het back-upbeleid tot betrouw bare stateful service partities of betrouw bare actor-partities.
 
-* Disabling backup policy for a _service_ stops all periodic data backups happening as a result of propagation of this backup policy to the partitions of the _service_.
+* Het uitschakelen van het back-upbeleid voor een _service_ stopt alle periodieke gegevens back-ups wanneer dit back-upbeleid wordt door gegeven aan de partities van de _service_.
 
-* Disabling backup policy for a _partition_ stops all periodic data backup happening due to the backup policy at the partition.
+* Als u het back-upbeleid voor een _partitie_ uitschakelt, wordt alle periodieke gegevens back-up gestopt vanwege het back-upbeleid op de partitie.
 
-* While disabling backup for an entity(application/service/partition), `CleanBackup` can be set to _true_ to delete all the backups in configured storage.
+* Wanneer u een back-up voor een entiteit (toepassing/service/partitie) uitschakelt, kan `CleanBackup` worden ingesteld op _True_ om alle back-ups in geconfigureerde opslag te verwijderen.
     ```json
     {
         "CleanBackup": true 
     }
     ```
 
-## <a name="suspend--resume-backup"></a>Suspend & resume backup
-Certain situation may demand temporary suspension of periodic backup of data. In such situation, depending on the requirement, suspend backup API may be used at an _Application_, _Service_, or _Partition_. Periodic backup suspension is transitive over subtree of the application's hierarchy from the point it is applied. 
+## <a name="suspend--resume-backup"></a>Back-up onderbreken & hervatten
+Bepaalde situatie kan leiden tot tijdelijke onderbreking van periodieke back-ups van gegevens. Afhankelijk van de vereiste kan het onderbreken van de back-upapi in een dergelijke situatie worden gebruikt bij een _toepassing_, _service_of _partitie_. De regel voor periodieke back-ups is transitief over de substructuur van de hiërarchie van de toepassing vanaf het punt waarop deze wordt toegepast. 
 
-* When suspension is applied at an _Application_ using [Suspend Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API, then all the services and partitions under this application are suspended for periodic backup of data.
+* Wanneer opschorting wordt toegepast op een _toepassing_ met behulp van de back-upapi van de [toepassing onderbreken](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) , worden alle services en partities onder deze toepassing onderbroken voor periodieke back-ups van gegevens.
 
-* When suspension is applied at a _Service_ using [Suspend Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) API, then all the partitions under this service are suspended for periodic backup of data.
+* Wanneer opschorting wordt toegepast op een _service_ met behulp van een [suspend-API voor service back-ups](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) , worden alle partities onder deze service onderbroken voor periodieke back-ups van gegevens.
 
-* When suspension is applied at a _Partition_ using [Suspend Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API, then it suspends partitions under this service are suspended for periodic backup of data.
+* Wanneer de onderbreking wordt toegepast op een _partitie_ met behulp van de [back-up van de partitie Suspend](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) , worden partities onder deze service onderbroken voor periodieke back-ups van gegevens.
 
-Once the need for suspension is over, then the periodic data backup can be restored using respective resume backup API. Periodic backup must be resumed at same _application_, _service_, or _partition_ where it was suspended.
+Zodra de nood zaak voor de onderbreking is voltooid, kan de periodieke gegevens back-up worden hersteld met behulp van de respectieve back-upapi. Periodieke back-ups moeten worden hervat op dezelfde _toepassing_, _service_of _partitie_ waar deze is onderbroken.
 
-* If suspension was applied at an _Application_, then it should be resumed using [Resume Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API. 
+* Als de onderbreking is toegepast op een _toepassing_, moet deze worden hervat met behulp van de [back-](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) upapi voor toepassingen. 
 
-* If suspension was applied at a _Service_, then it should be resumed using [Resume Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API.
+* Als de onderbreking tijdens een _service_werd toegepast, moet deze worden hervat met behulp van de [Resume-](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API voor services.
 
-* If suspension was applied at a _Partition_, then it should be resumed using [Resume Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API.
+* Als de onderbreking is toegepast op een _partitie_, moet deze worden hervat met behulp van de [back-](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) upapi voor partities.
 
-### <a name="difference-between-suspend-and-disable-backups"></a>Difference between Suspend and Disable backups
-Disable backup should be used when backups are no longer required for a particular application, service or partition. One can invoke disable backup request along with clean backups parameter to be true which would mean all existing backups are deleted as well. However, suspend is to be used in scenarios where one wants to turn off backups temporarily like when local disk becomes full or uploading backup is failing due to known network issue etc. 
+### <a name="difference-between-suspend-and-disable-backups"></a>Verschil tussen het blok keren en uitschakelen van back-ups
+Het uitschakelen van de back-up moet worden gebruikt wanneer back-ups niet meer nodig zijn voor een bepaalde toepassing, service of partitie. Eén kan het uitschakelen van de back-upaanvraag samen met de para meter schone back-ups worden aangeroepen als waar, wat betekent dat alle bestaande back-ups ook worden verwijderd. Suspend moet echter worden gebruikt in scenario's waarbij een back-up tijdelijk moet worden uitgeschakeld, bijvoorbeeld wanneer de lokale schijf vol is of als het uploaden van de back-up mislukt als gevolg van een bekend netwerk probleem, enzovoort. 
 
-While disable can be invoked only at a level which was earlier enabled for backup explicitly however suspension can be applied at any level which is currently enabled for backup either directly or via inheritance/ hierarchy. For example, if backup is enabled at an application level, one can invoke disable only at the application level however suspend can be invoked at application, any service or partition under that application. 
+Hoewel uitschakelen kan alleen worden aangeroepen op een niveau dat eerder was ingeschakeld voor back-up, maar schorsing kan echter worden toegepast op elk niveau dat momenteel is ingeschakeld voor back-up, hetzij rechtstreeks hetzij via overname/hiërarchie. Als back-up bijvoorbeeld is ingeschakeld op het niveau van de toepassing, kan één aanroepen alleen uitschakelen op toepassings niveau, maar kan worden aangeroepen op toepassing, elke service of partitie onder die toepassing. 
 
-## <a name="auto-restore-on-data-loss"></a>Auto restore on data loss
-The service partition may lose data due to unexpected failures. For example, the disk for two out of three replicas for a partition (including the primary replica) gets corrupted or wiped.
+## <a name="auto-restore-on-data-loss"></a>Gegevens verlies automatisch herstellen
+De service partitie kan gegevens verliezen vanwege onverwachte fouten. Bijvoorbeeld: de schijf voor twee van de drie replica's voor een partitie (met inbegrip van de primaire replica) wordt beschadigd of gewist.
 
-When Service Fabric detects that the partition is in data loss, it invokes `OnDataLossAsync` interface method on the partition and expects partition to take the required action to come out of data loss. In this situation, if the effective backup policy at the partition has `AutoRestoreOnDataLoss` flag set to `true` then the restore gets triggered automatically using latest available backup for this partition.
+Wanneer Service Fabric detecteert dat de partitie zich in gegevens verlies bevindt, wordt `OnDataLossAsync` interface methode op de partitie aangeroepen en verwacht de partitie dat de vereiste actie moet worden ondernomen om verlies van gegevens te voor komen. Als in dit geval het effectief back-upbeleid op de partitie `AutoRestoreOnDataLoss` vlag is ingesteld op `true`, wordt de herstel bewerking automatisch geactiveerd met de meest recente beschik bare back-up voor deze partitie.
 
-## <a name="get-backup-configuration"></a>Get backup configuration
-Separate APIs are made available to get backup configuration information at an _application_, _service_, and _partition_ scope. [Get Application Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [Get Service Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo), and [Get Partition Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) are these APIs respectively. Mainly, these APIs return the applicable backup policy, scope at which the backup policy is applied and backup suspension details. Following is brief description about returned results of these APIs.
+## <a name="get-backup-configuration"></a>Back-upconfiguratie ophalen
+Er worden afzonderlijke Api's beschikbaar gesteld om informatie over de back-upconfiguratie op te halen voor een _toepassings_-, _service_-en _partitie_ bereik. [Back-Upconfiguratiegegevens voor toepassingen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)ophalen, [configuratie gegevens van service back-up ophalen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)en [configuratie gegevens voor partitie back-ups ophalen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) deze api's respectievelijk zijn. Deze Api's retour neren voornamelijk het toepasselijke back-upbeleid, het bereik waarop het back-upbeleid wordt toegepast en Details van de back-upblokkering. Hieronder vindt u een korte beschrijving van de geretourneerde resultaten van deze Api's.
 
-- Application backup configuration info: provides the details of backup policy applied at application and all the over-ridden policies at services and partitions belonging to the application. It also includes the suspension information for the application and it services, and partitions.
+- Configuratie-informatie voor back-up van toepassing: bevat de details van het back-upbeleid dat wordt toegepast op de toepassing en alle overschreven beleids regels op Services en partities die tot de toepassing behoren. Het bevat ook de informatie over de ophanging van de toepassing en de IT-Services en partities.
 
-- Service backup configuration info: provides the details of effective backup policy at service and the scope at which this policy was applied and all the over-ridden policies at its partitions. It also includes the suspension information for the service and its partitions.
+- Configuratie-informatie voor service back-up: geeft de details van het effectief back-upbeleid op de service en het bereik waarop dit beleid is toegepast en alle overschreven beleids regels op de partities. Het bevat ook de informatie over de ophanging van de service en de partities.
 
-- Partition backup configuration info: provides the details of effective backup policy at partition and the scope at which this policy was applied. It also includes the suspension information for the partitions.
+- Back-upconfiguratie-informatie: geeft de details van het effectief back-upbeleid op de partitie en het bereik waarop dit beleid is toegepast. Het bevat ook de informatie over de onderbreking voor de partities.
 
-## <a name="list-available-backups"></a>List available backups
+## <a name="list-available-backups"></a>Beschik bare back-ups weer geven
 
-Available backups can be listed using Get Backup List API. Result of API call includes backup info items related to all the backups available at the backup storage, which is configured in the applicable backup policy. Different variants of this API are provided to list available backups belonging to an application, service, or partition. These APIs support getting the _latest_ available backup of all applicable partitions, or filtering of backups based on _start date_ and _end date_.
+Beschik bare back-ups kunnen worden weer gegeven met de API back-up ophalen. Het resultaat van de API-aanroep omvat back-upitems die betrekking hebben op alle back-ups die beschikbaar zijn op de back-upopslag, die is geconfigureerd in het desbetreffende back-upbeleid. Er zijn verschillende varianten van deze API beschikbaar voor het weer geven van de beschik bare back-ups die horen bij een toepassing, service of partitie. Deze Api's bieden ondersteuning voor de _meest recente_ beschik bare back-up van alle toepasselijke partities of het filteren van back-ups op basis van de _begin datum_ en _eind datum_.
 
-These APIs also support pagination of the results, when _MaxResults_ parameter is set to non-zero positive integer then the API returns maximum _MaxResults_ backup info items. In case, there are more backup info items available than the _MaxResults_ value, then a continuation token is returned. Valid continuation token parameter can be used to get next set of results. When valid continuation token value is passed to next call of the API, the API returns next set of results. No continuation token is included in the response when all available results are returned.
+Deze Api's ondersteunen ook de paginering van de resultaten, wanneer de para meter _MaxResults_ is ingesteld op een positief geheel getal dat niet gelijk is aan nul, dan retourneert de API maximum aantal items voor back-up van _MaxResults_ . Als er meer back-upitems beschikbaar zijn dan de waarde voor _MaxResults_ , wordt er een vervolg token geretourneerd. Een geldige vervolg token parameter kan worden gebruikt om de volgende set resultaten op te halen. Wanneer een geldige voortzettings token-waarde wordt door gegeven aan de volgende aanroep van de API, retourneert de API de volgende set resultaten. Er is geen vervolg token opgenomen in het antwoord wanneer alle beschik bare resultaten worden geretourneerd.
 
-Following is the brief information about supported variants.
+Hieronder vindt u de korte informatie over ondersteunde varianten.
 
-- [Get Application Backup List](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): Returns a list of backups available for every partition belonging to given Service Fabric application.
+- [Back-uplijst van toepassing ophalen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): retourneert een lijst met back-ups die beschikbaar zijn voor elke partitie die hoort bij de opgegeven service Fabric-toepassing.
 
-- [Get Service Backup List](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): Returns a list of backups available for every partition belonging to given Service Fabric service.
+- [Lijst met back-ups van service ophalen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): retourneert een lijst met back-ups die beschikbaar zijn voor elke partitie die hoort bij de gegeven service Fabric service.
  
-- [Get Partition Backup List](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): Returns a list of backups available for the specified partition.
+- [Back-uplijst van partitie ophalen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): retourneert een lijst met back-ups die beschikbaar zijn voor de opgegeven partitie.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Backup restore REST API reference](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Naslag informatie over back-up terugzetten REST API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/backup-policy-association-example.png

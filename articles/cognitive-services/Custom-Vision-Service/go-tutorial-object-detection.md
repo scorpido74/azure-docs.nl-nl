@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Create an object detection project with the SDK for Go - Custom Vision'
+title: 'Snelstartgids: een object detectie project maken met de SDK voor Go-Custom Vision'
 titleSuffix: Azure Cognitive Services
 description: Maak een project, voeg labels toe, upload afbeeldingen, train uw project en detecteer objecten met de Go-SDK.
 services: cognitive-services
@@ -17,9 +17,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378745"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Quickstart: Create an object detection project with the Custom Vision Go SDK
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Snelstartgids: een object detectie project maken met de Custom Vision go-SDK
 
-Dit artikel biedt informatie en voorbeeldcode om u op weg te helpen met de Custom Vision-SDK voor Go om een objectdetectiemodel te maken. After it's created, you can add tagged regions, upload images, train the project, obtain the project's published prediction endpoint URL, and use the endpoint to programmatically test an image. Gebruik dit voorbeeld als een sjabloon om uw eigen Go-toepassing te maken.
+Dit artikel biedt informatie en voorbeeldcode om u op weg te helpen met de Custom Vision-SDK voor Go om een objectdetectiemodel te maken. Nadat u deze hebt gemaakt, kunt u gelabelde regio's toevoegen, afbeeldingen uploaden, het project trainen, de gepubliceerde voor spelling-eind punt-URL van het project ophalen en het eind punt gebruiken om een afbeelding programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Go-toepassing te maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,7 +34,7 @@ Als u de Custom Vision Service-SDK voor Go wilt installeren, voert u de volgende
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-or if you use `dep`, within your repo run:
+of als u `dep`gebruikt, voert u de volgende handelingen uit in uw opslag plaats:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -49,9 +49,9 @@ Maak een nieuw bestand met de naam *sample.go* in uw projectmap.
 
 ### <a name="create-the-custom-vision-service-project"></a>Het Custom Vision Service-project maken
 
-Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnementssleutels in de juiste definities in. Also, get your Endpoint URL from the Settings page of the Custom Vision website.
+Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnementssleutels in de juiste definities in. U kunt ook uw eind punt-URL ophalen via de pagina instellingen van de website van Custom Vision.
 
-See the [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) method to specify other options when you create your project (explained in the [Build a detector](get-started-build-detector.md) web portal guide).
+Raadpleeg de [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) -methode om andere opties op te geven wanneer u uw project maakt (Zie de hand leiding voor het [bouwen van een detector](get-started-build-detector.md) -webportal).
 
 ```go
 import(
@@ -160,7 +160,7 @@ scissorsImageRegions := map[string][4]float64{
     "scissors_20.jpg": [4]float64{ 0.158088237, 0.04047389, 0.6691176, 0.843137264 },
 }
 ```
-Then, use this map of associations to upload each sample image with its region coordinates (you can upload up to 64 images in a single batch). Voeg de volgende code toe.
+Gebruik vervolgens deze koppeling van koppelingen om elke voorbeeld afbeelding te uploaden met de regio coördinaten (u kunt Maxi maal 64 installatie kopieën in één batch uploaden). Voeg de volgende code toe.
 
 > [!NOTE]
 > U moet het pad naar de afbeeldingen wijzigen, gebaseerd op waar u het project Cognitive Services Go-SDK-voorbeelden eerder hebt gedownload.
@@ -223,9 +223,9 @@ if (!*scissor_batch.IsBatchSuccessful) {
 }     
 ```
 
-### <a name="train-the-project-and-publish"></a>Train the project and publish
+### <a name="train-the-project-and-publish"></a>Het project trainen en publiceren
 
-This code creates the first iteration in the project and then publishes that iteration to the prediction endpoint. The name given to the published iteration can be used to send prediction requests. An iteration is not available in the prediction endpoint until it is published.
+Deze code maakt de eerste iteratie in het project en publiceert die iteratie vervolgens naar het Voorspellings eindpunt. De naam die is opgegeven voor de gepubliceerde herhaling kan worden gebruikt voor het verzenden van voorspellings aanvragen. Er is geen iteratie beschikbaar in het Voorspellings eindpunt totdat het is gepubliceerd.
 
 ```go
 iteration, _ := trainer.TrainProject(ctx, *project.ID)
@@ -242,7 +242,7 @@ for {
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Get and use the published iteration on the prediction endpoint
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>De gepubliceerde iteratie op het Voorspellings eindpunt ophalen en gebruiken
 
 Als u een afbeelding naar het voorspellingseindpunt wilt verzenden en de voorspelling wilt ophalen, voegt u de volgende code toe aan het einde van het bestand:
 
@@ -270,7 +270,7 @@ Als u een afbeelding naar het voorspellingseindpunt wilt verzenden en de voorspe
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer *sample.go* uit.
+*sample.go* uitvoeren.
 
 ```shell
 go run sample.go

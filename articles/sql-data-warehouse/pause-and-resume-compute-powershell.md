@@ -11,16 +11,16 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2ad83e51a11e08373f2132e861ec1c8f3ac20458
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 148f3f99aac5ce01bd88f1efaecb5821ae94f50a
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686012"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539170"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Quick Start: de berekening onderbreken en hervatten in Azure SQL Data Warehouse met Azure PowerShell
 
-Gebruik Power shell om de reken kracht in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. [Hervat de compute](sql-data-warehouse-manage-compute-overview.md) wanneer u klaar bent om het Data Warehouse te gebruiken.
+Gebruik Azure PowerShell om Compute in Azure SQL Data Warehouse te onderbreken om kosten te besparen. [Hervat de compute](sql-data-warehouse-manage-compute-overview.md) wanneer u klaar bent om het Data Warehouse te gebruiken.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -56,7 +56,7 @@ Zoek de databasenaam, de servernaam en de resourcegroep op voor het datawarehous
 
 Volg deze stappen om de locatiegegevens voor uw datawarehouse op te zoeken.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Klik op de linkerpagina in Azure Portal op **SQL-databases**.
 3. Selecteer **mySampleDataWarehouse** op de pagina **SQL-databases**. De datawarehouse wordt geopend.
 

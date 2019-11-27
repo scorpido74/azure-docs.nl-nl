@@ -1,5 +1,5 @@
 ---
-title: Snelstartgids-docker-container implementeren op Azure Container Instances-Portal
+title: Snelstartgids-docker-container implementeren naar container exemplaar-Portal
 description: In deze Quick Start gebruikt u de Azure Portal om snel een in een container geplaatste web-app te implementeren die wordt uitgevoerd in een geïsoleerd Azure-container exemplaar
 services: container-instances
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bf3bea07fa2fcb67a467d4087ea9e2ccbfd95206
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325802"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533534"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Quickstart: Een container exemplaar in azure implementeren met behulp van de Azure Portal
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Snelstartgids: een container exemplaar in azure implementeren met behulp van de Azure Portal
 
 Gebruik Azure Container Instances om serverloze docker-containers in azure uit te voeren met eenvoud en snelheid. Implementeer een toepassing op een container exemplaar op aanvraag wanneer u geen volledig container Orchestration-platform zoals Azure Kubernetes service nodig hebt.
 
@@ -44,7 +44,7 @@ Voer op de pagina **basis beginselen** de volgende waarden in de tekst vakken **
 
 ![Basisinstellingen configureren voor een nieuwe containerinstantie in Azure Portal][aci-portal-03]
 
-Voor deze Quick Start gebruikt u de standaard instelling voor het **type installatie kopie** van **openbaar** voor het `aci-helloworld` implementeren van de open bare micro soft-installatie kopie. Deze Linux-installatie kopie verpakt een kleine web-app die is geschreven in node. js, die een statische HTML-pagina vormt.
+Voor deze Quick Start gebruikt u de standaard instelling voor het **type installatie kopie** van **openbaar** voor het implementeren van de open bare micro soft `aci-helloworld`-installatie kopie. Deze Linux-installatie kopie verpakt een kleine web-app die is geschreven in node. js, die een statische HTML-pagina vormt.
 
 Geef op de pagina **netwerk** een **DNS-naam label** voor uw container op. De naam moet uniek zijn binnen de Azure-regio waarin u het container exemplaar maakt. De container zal openbaar bereikbaar zijn op `<dns-name-label>.<region>.azurecontainer.io`. Als u een foutbericht 'DNS-naamlabel niet beschikbaar' ontvangt, probeert u een ander DNS-naamlabel.
 
@@ -66,7 +66,7 @@ Wanneer de **Status** eenmaal *Uitvoeren* is, gaat u naar de FQDN van de contain
 
 ![App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser][aci-portal-07]
 
-Gefeliciteerd! Als u slechts enkele instellingen configureert, hebt u een openbaar toegankelijke toepassing in Azure Container Instances geïmplementeerd.
+Gefeliciteerd. Als u slechts enkele instellingen configureert, hebt u een openbaar toegankelijke toepassing in Azure Container Instances geïmplementeerd.
 
 ## <a name="view-container-logs"></a>Containerlogboeken ophalen
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 943f6cee70367d8a1ff0dc003d06e46b487e3a48
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e194b7070d338e9a5c56e9f0cc913f6e8b20bb52
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898813"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545699"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netwerkprestatiemeter oplossing in azure
 
@@ -37,12 +37,15 @@ Meer informatie over de verschillende mogelijkheden die door [Netwerkprestatieme
  
 ## <a name="supported-regions"></a>Ondersteunde regio's
 NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de volgende regio's:
-* Europa - west
-* VS - west-centraal
-* VS - oost
+* Europa -west
+* US - west-centraal
+* US - noord-centraal
+* US - oost
 * Japan-Oost
 * Azië - zuidoost
 * Zuid-Oost-Australië
+* Australië - centraal
+* Australië - oost
 * Zuid-Brittannië
 * India - centraal
 * Virginia van de Amerikaanse overheid
@@ -154,7 +157,7 @@ Configureer de gewenste mogelijkheden:
 
  
 
-## <a name="data-collection-details"></a>Details van gegevens verzameling
+## <a name="data-collection-details"></a>Details van de verzameling gegevens
 Voor het verzamelen van gegevens over verlies en latentie, Netwerkprestatiemeter gebruikt TCP SYN-SYNACK-ACK-Handshake-pakketten wanneer u TCP kiest als protocol. Netwerkprestatiemeter gebruikt ICMP ECHO ICMP-ECHO antwoord wanneer u ICMP als protocol kiest. Trace route wordt ook gebruikt om topologie gegevens op te halen.
 
 De volgende tabel toont methoden voor gegevens verzameling en andere informatie over hoe gegevens worden verzameld voor Netwerkprestatiemeter.

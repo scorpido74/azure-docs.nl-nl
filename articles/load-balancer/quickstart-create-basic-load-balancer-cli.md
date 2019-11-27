@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Create a Basic Load Balancer - Azure CLI'
+title: 'Quick Start: een basis Load Balancer maken-Azure CLI'
 titleSuffix: Azure Load Balancer
 description: In deze snelstart vindt u meer informatie over het maken van een openbare load balancer met Azure CLI
 services: load-balancer
@@ -23,7 +23,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214845"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Create a load balancer to load balance VMs using Azure CLI
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Snelstartgids: een load balancer maken om taken te verdelen over Vm's met behulp van Azure CLI
 
 Hierin leest u over het maken van een Azure Load Balancer om internetverkeer te verdelen tussen virtuele machines in Azure. U test de load balancer door twee virtuele machines (VM's) te implementeren waarop een Ubuntu-server wordt uitgevoerd en waartussen de taken van een web-app worden verdeeld.
 
@@ -87,7 +87,7 @@ Een statuscontrole controleert alle exemplaren van de virtuele machines om ervoo
 
 ### <a name="create-the-load-balancer-rule"></a>Load balancer-regel maken
 
-Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) de regel *myLoadBalancerRuleWeb* voor het luisteren naar poort 80 in de front-endpool *myFrontEnd* en het verzenden van netwerkverkeer met evenredige taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
+Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met *az network lb rule create* de regel [myLoadBalancerRuleWeb](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) voor het luisteren naar poort 80 in de front-endpool *myFrontEnd* en het verzenden van netwerkverkeer met evenredige taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -104,11 +104,11 @@ Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenk
 
 ## <a name="configure-virtual-network"></a>Virtueel netwerk configureren
 
-Voordat u enkele VM's implementeert en uw load balancer test, maakt u de ondersteunende virtuele-netwerkbronnen.
+Voordat u enkele VM's implementeert om uw load balancer te testen, maakt u de ondersteunende virtuele-netwerkbronnen.
 
-### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) in *myResourceGroup* een virtueel netwerk met de naam *myVnet* met een subnet met de naam *mySubnet*.
+Maak met *az network vnet create* een virtueel netwerk met de naam *myVnet* met een subnet met de naam *mySubnet* in [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \
@@ -118,7 +118,7 @@ Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/v
     --subnet-name mySubnet
 ```
 ###  <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
-Maak een netwerkbeveiligingsgroep om binnenkomende verbindingen met uw virtuele netwerk te definiëren.
+Maak een netwerkbeveiligingsgroep om de binnenkomende verbindingen met uw virtuele netwerk te definiëren.
 
 ```azurecli-interactive
   az network nsg create \
@@ -146,7 +146,7 @@ Maak een regel voor de netwerkbeveiligingsgroep om binnenkomende verbindingen vi
 ```
 ### <a name="create-nics"></a>NIC's maken
 
-Create two network interfaces with [az network nic create](/cli/azure/network/nic#az-network-nic-create) and associate them with the Public IP address and the network security group. 
+Maak twee netwerk interfaces met [AZ Network NIC Create](/cli/azure/network/nic#az-network-nic-create) en koppel deze aan het open bare IP-adres en de netwerk beveiligings groep. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do

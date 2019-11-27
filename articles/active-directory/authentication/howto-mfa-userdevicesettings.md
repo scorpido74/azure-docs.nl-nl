@@ -1,6 +1,6 @@
 ---
-title: Manage users and devices Azure MFA - Azure Active Directory
-description: How can administrators change user settings such as forcing the users to do the proof-up process again.
+title: Gebruikers en apparaten beheren Azure MFA-Azure Active Directory
+description: Hoe kunnen beheerders gebruikers instellingen wijzigen, zoals het forceren van de gebruikers om het controle proces opnieuw uit te voeren.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,44 +18,44 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74404171"
 ---
-# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Manage user settings with Azure Multi-Factor Authentication in the cloud
+# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Gebruikers instellingen beheren met Azure Multi-Factor Authentication in de Cloud
 
-As an administrator, you can manage the following user and device settings:
+Als beheerder kunt u de volgende gebruikers-en apparaatinstellingen beheren:
 
-* Require users to provide contact methods again
-* Delete app passwords
-* Require MFA on all trusted devices
+* Gebruikers moeten opnieuw contact methoden opgeven
+* App-wacht woorden verwijderen
+* MFA vereisen op alle vertrouwde apparaten
 
-## <a name="manage-authentication-methods"></a>Manage authentication methods
+## <a name="manage-authentication-methods"></a>Verificatie methoden beheren
 
-As an administrator assigned the Authentication Administrator role you can require users to reset their password, re-register for MFA, or revoke existing MFA sessions from their user object.
+Als beheerder die de rol authenticatie beheerder toegewezen, kunt u vereisen dat gebruikers hun wacht woord opnieuw instellen, zich opnieuw registreren voor MFA of bestaande MFA-sessies intrekken vanuit hun gebruikers object.
 
-![Manage authentication methods from the Azure portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
+![Verificatie methoden beheren vanuit de Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. On the left, select **Azure Active Directory** > **Users** > **All users**.
-1. Choose the user you wish to perform an action on and select **Authentication methods**.
-   - **Reset Password** will reset the user's password and assign a temporary password that must be changed on the next sign in.
-   - **Require Re-register MFA** will make it so that when the user signs in next time, they will be requested to setup a new MFA authentication method.
-   - **Revoke MFA Sessions** clears the user's remembered MFA sessions and requires them to perform MFA the next time it is required by the policy on the device.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer aan de linkerkant **Azure Active Directory** > **gebruikers** > **alle gebruikers**.
+1. Kies de gebruiker waarvoor u een actie wilt uitvoeren en selecteer **verificatie methoden**.
+   - **Wacht woord opnieuw instellen** stelt het wacht woord van de gebruiker opnieuw in en wijst een tijdelijk wacht woord toe dat moet worden gewijzigd bij de volgende aanmelding.
+   - **Vereisen dat het opnieuw registreren van MFA vereist** is zodat wanneer de gebruiker de volgende keer aanmeldt, wordt gevraagd om een nieuwe MFA-verificatie methode in te stellen.
+   - Met **MFA-sessies intrekken** worden de MFA-sessies van de gebruiker gewist en moeten ze MFA de volgende keer worden uitgevoerd door het beleid op het apparaat.
 
-## <a name="delete-users-existing-app-passwords"></a>Delete users existing app passwords
+## <a name="delete-users-existing-app-passwords"></a>Bestaande app-wacht woorden van gebruikers verwijderen
 
-This setting deletes all of the app passwords that a user has created. Non-browser apps that were associated with these app passwords stop working until a new app password is created. Global administrator permissions are required to perform this action.
+Met deze instelling worden alle app-wacht woorden verwijderd die een gebruiker heeft gemaakt. Niet-browser-apps die zijn gekoppeld aan deze app-wacht woorden, werken niet totdat er een nieuw app-wacht woord is gemaakt. Globale beheerders machtigingen zijn vereist om deze actie uit te voeren.
 
-### <a name="how-to-delete-users-existing-app-passwords"></a>How to delete users existing app passwords
+### <a name="how-to-delete-users-existing-app-passwords"></a>Bestaande app-wacht woorden van gebruikers verwijderen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. On the left, select **Azure Active Directory** > **Users** > **All users**.
-3. On the right, select **Multi-Factor Authentication** on the toolbar. The multi-factor authentication page opens.
-4. Check the box next to the user or users that you wish to manage. A list of quick step options appears on the right.
-5. Select **Manage user settings**.
-6. Check the box for **Delete all existing app passwords generated by the selected users**.
-   ![Delete all existing app passwords](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Selecteer aan de linkerkant **Azure Active Directory** > **gebruikers** > **alle gebruikers**.
+3. Selecteer aan de rechter kant **multi-factor Authentication** op de werk balk. De multi-factor Authentication-pagina wordt geopend.
+4. Schakel het selectie vakje in naast de gebruiker of gebruikers die u wilt beheren. Er wordt aan de rechter kant een lijst met opties voor snelle stappen weer gegeven.
+5. Selecteer **gebruikers instellingen beheren**.
+6. Schakel het selectie vakje in om **alle bestaande app-wacht woorden te verwijderen die door de geselecteerde gebruikers zijn gegenereerd**.
+   ![alle bestaande app-wacht woorden verwijderen](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 7. Klik op **Opslaan**.
-8. Click **close**.
+8. Klik op **sluiten**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Get more information about how to [Configure Azure Multi-Factor Authentication settings](howto-mfa-mfasettings.md)
-- If your users need help, point them towards the [User guide for two-step verification](../user-help/multi-factor-authentication-end-user.md)
+- Meer informatie over het configureren van [Azure multi-factor Authentication-instellingen](howto-mfa-mfasettings.md)
+- Als uw gebruikers hulp nodig hebben, kunt u ze naar de [Gebruikers handleiding voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user.md) laten wijzen

@@ -156,7 +156,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 In de volgende tabel ziet u hoe u de opties voor filteren en ordenen kunt Toep assen op verschillende entiteiten:
 
-|Naam van de entiteit|Naam van eigenschap|Filteren|Bestelling|
+|Naam van de entiteit|Naam van eigenschap|Filteren|Bestellen|
 |---|---|---|---|
 |[Assets](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` en `desc`|
 ||properties.alternateId |`eq`||

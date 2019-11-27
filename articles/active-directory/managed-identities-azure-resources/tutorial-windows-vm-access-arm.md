@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use managed identity to access Azure Resource Manager - Windows - Azure AD
+title: Zelf studie`:` beheerde identiteit gebruiken om toegang te krijgen tot Azure Resource Manager-Windows-Azure AD
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het gebruiken van een door het Windows-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -26,7 +26,7 @@ ms.locfileid: "74224258"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-In deze zelfstudie ziet u hoe u toegang krijgt tot de Azure Resource Manager-API met een virtuele Windows-machine waarop een door het systeem toegewezen beheerde identiteit is ingeschakeld. Beheerde entiteiten voor Azure-resources worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Microsoft Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. In deze zelfstudie leert u procedures om het volgende te doen:
+In deze zelfstudie ziet u hoe u toegang krijgt tot de Azure Resource Manager-API met een virtuele Windows-machine waarop een door het systeem toegewezen beheerde identiteit is ingeschakeld. Beheerde entiteiten voor Azure-resources worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Microsoft Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. Procedures voor:
 
 > [!div class="checklist"] 
 > * Uw virtuele machine toegang verlenen tot een resourcegroep in Azure Resource Manager 

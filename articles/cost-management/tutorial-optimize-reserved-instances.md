@@ -36,7 +36,7 @@ In deze zelfstudie wordt uitgelegd hoe gereserveerde instanties van Azure en AWS
 > * Aanbevolen gereserveerde instanties aanschaffen
 > * Niet-gebruikte gereserveerde instanties aanpassen
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 

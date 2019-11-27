@@ -59,11 +59,11 @@ Azure dev Spaces biedt twee aanbevolen, gestroomlijnde opties voor het opslaan v
       kubectl get secret --namespace default -o yaml 
       ```
 
-7. Zorg ervoor dat u _values.dev.yaml_ toevoegt aan het bestand _.gitignore_ om te voorkomen dat geheimen in broncodebeheer worden vastgelegd.
+7. Zorg ervoor dat u _waarden. dev. yaml_ toevoegt aan het _. gitignore_ -bestand om te voor komen dat geheimen in broncode beheer worden doorgevoerd.
  
  
 ## <a name="method-2-inline-directly-in-azdsyaml"></a>Methode 2: inline direct in azds. yaml
-1.  In _azds.yaml_, stel geheimen in onder de yaml sectie configuraties/ontwikkeling/installatie. U kunt wel geheime waarden direct invoeren, maar het is niet aanbevolen omdat _azds.yaml_ wordt opgenomen in broncodebeheer. In plaats daarvan voegt u met de syntaxis '$PLACEHOLDER' tijdelijke aanduidingen toe.
+1.  Stel in _azds. yaml_geheimen in onder de yaml-sectie configuraties/ontwikkelen/installeren. Hoewel u daar rechtstreeks geheime waarden kunt invoeren, wordt het niet aanbevolen omdat _azds. yaml_ is ingecheckt in broncode beheer. In plaats daarvan voegt u met de syntaxis '$PLACEHOLDER' tijdelijke aanduidingen toe.
 
     ```yaml
     configurations:
@@ -78,7 +78,7 @@ Azure dev Spaces biedt twee aanbevolen, gestroomlijnde opties voor het opslaan v
                 key: "$REDIS_KEY"
     ```
      
-2.  Maak een _. env_ -bestand in dezelfde map als _azds. yaml_. Geef geheimen op met behulp van de standaard sleutel = waarde-notatie. Neem het _.env_ bestand niet op in broncodebeheer. (Als u wilt weglaten van broncode beheer in op Git gebaseerde versie beheersysteem systemen, voegt u het toe aan het _. gitignore_ -bestand.) In het volgende voor beeld ziet u een _. env_ -bestand:
+2.  Maak een _. env_ -bestand in dezelfde map als _azds. yaml_. Geef geheimen op met behulp van de standaard sleutel = waarde-notatie. Sla het _. env_ -bestand niet door aan broncode beheer. (Als u wilt weglaten van broncode beheer in op Git gebaseerde versie beheersysteem systemen, voegt u het toe aan het _. gitignore_ -bestand.) In het volgende voor beeld ziet u een _. env_ -bestand:
 
     ```
     REDIS_PORT=3333

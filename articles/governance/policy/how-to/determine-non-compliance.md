@@ -111,7 +111,7 @@ Voor _auditIfNotExists_ -beleid in de categorie _gast configuratie_ kunnen er me
 
 Het is ook mogelijk dat u niet rechtstreeks toegang hebt tot de virtuele machine, maar u moet rapporteren waarom de virtuele machine _niet compatibel_is.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Volg dezelfde stappen in de bovenstaande sectie voor het weer geven van nalevings Details van het beleid.
 

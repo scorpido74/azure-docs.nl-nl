@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Grant a user access to Azure resources using RBAC and the Azure portal
-description: In this tutorial, learn how to grant a user access to Azure resources using role-based access control (RBAC) in the Azure portal.
+title: 'Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal'
+description: In deze zelf studie leert u hoe u een gebruiker toegang verleent tot Azure-resources met behulp van op rollen gebaseerd toegangs beheer (RBAC) in de Azure Portal.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -20,7 +20,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419665"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Tutorial: Grant a user access to Azure resources using RBAC and the Azure portal
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal
 
 [Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In deze zelfstudie verleent u een gebruiker toegang tot het maken en beheren van virtuele machines in een resourcegroep.
 
@@ -115,4 +115,4 @@ Als u in RBAC de toegang wilt intrekken voor een rol, verwijdert u de roltoewijz
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Tutorial: Grant a user access to Azure resources using RBAC and Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en Azure PowerShell](tutorial-role-assignments-user-powershell.md)

@@ -1,21 +1,16 @@
 ---
-title: Zelf studie-een groep met meerdere containers implementeren in Azure Container Instances-YAML
+title: Zelf studie-een groep met meerdere containers implementeren-YAML
 description: In deze zelf studie leert u hoe u een container groep met meerdere containers in Azure Container Instances kunt implementeren met behulp van een YAML-bestand met de Azure CLI.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: danlep
-ms.openlocfilehash: a38b0cfe7072975e4bcaf61b65ab7733694f714c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: cce98ec56ee1d84c087150ba486b9482515b46f0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178562"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533594"
 ---
-# <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Zelfstudie: Een groep met meerdere containers implementeren met behulp van een YAML-bestand
+# <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Zelf studie: een groep met meerdere containers implementeren met behulp van een YAML-bestand
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
@@ -24,7 +19,7 @@ ms.locfileid: "71178562"
 
 Azure Container Instances ondersteunt de implementatie van meerdere containers op één host met behulp van een [container groep](container-instances-container-groups.md). Een container groep is handig bij het bouwen van een sollicitatie stick voor logboek registratie, bewaking of andere configuraties waarbij een service een tweede gekoppelde procedure nodig heeft.
 
-In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige configuratie voor twee containers door een [yaml-bestand](container-instances-reference-yaml.md) te implementeren met behulp van de Azure cli. Een YAML-bestand biedt een beknopt formaat voor het opgeven van de instantie-instellingen. In deze zelfstudie leert u procedures om het volgende te doen:
+In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige configuratie voor twee containers door een [yaml-bestand](container-instances-reference-yaml.md) te implementeren met behulp van de Azure cli. Een YAML-bestand biedt een beknopt formaat voor het opgeven van de instantie-instellingen. Procedures voor:
 
 > [!div class="checklist"]
 > * Een YAML-bestand configureren
@@ -85,7 +80,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Als u een REGI ster van een persoonlijke container installatie `imageRegistryCredentials` kopie wilt gebruiken, voegt u de eigenschap toe aan de container groep, met de waarden die zijn aangepast voor uw omgeving:
+Als u een REGI ster van een persoonlijke container installatie kopie wilt gebruiken, voegt u de eigenschap `imageRegistryCredentials` aan de container groep toe met de waarden die zijn aangepast voor uw omgeving:
 
 ```YAML
   imageRegistryCredentials:
@@ -118,7 +113,7 @@ Als u de status van de implementatie wilt weer geven, gebruikt u de volgende opd
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Als u de actieve toepassing wilt bekijken, gaat u naar het IP-adres in uw browser. Het IP-adres is `52.168.26.124` bijvoorbeeld in deze voorbeeld uitvoer:
+Als u de actieve toepassing wilt bekijken, gaat u naar het IP-adres in uw browser. Het IP-adres is bijvoorbeeld `52.168.26.124` in deze voorbeeld uitvoer:
 
 ```bash
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
@@ -126,9 +121,9 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-container-logs"></a>Containerlogboeken weergeven
+## <a name="view-container-logs"></a>Containerlogboeken ophalen
 
-Bekijk de logboek uitvoer van een container met behulp van de opdracht [AZ container logs][az-container-logs] . Het `--container-name` argument geeft de container aan waaruit logboeken moeten worden opgehaald. In dit voor beeld is `aci-tutorial-app` de container opgegeven.
+Bekijk de logboek uitvoer van een container met behulp van de opdracht [AZ container logs][az-container-logs] . Met het argument `--container-name` wordt de container opgegeven waaruit logboeken moeten worden opgehaald. In dit voor beeld wordt de `aci-tutorial-app`-container opgegeven.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -143,7 +138,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Als u de logboeken voor de container voor de zijspan wagen wilt weer geven `aci-tutorial-sidecar` , voert u een vergelijk bare opdracht uit die de container opgeeft.
+Als u de logboeken voor de container met zijspaners wilt weer geven, voert u een vergelijk bare opdracht uit die de `aci-tutorial-sidecar`-container opgeeft.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -169,7 +164,7 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Zoals u ziet, maakt de zijspan wagen regel matig een HTTP-aanvraag voor de hoofd webtoepassing via het lokale netwerk van de groep om ervoor te zorgen dat deze wordt uitgevoerd. Dit voor beeld van een zijspan wagen kan worden uitgebreid om een waarschuwing te activeren als het een andere `200 OK`http-antwoord code dan heeft ontvangen.
+Zoals u ziet, maakt de zijspan wagen regel matig een HTTP-aanvraag voor de hoofd webtoepassing via het lokale netwerk van de groep om ervoor te zorgen dat deze wordt uitgevoerd. Dit voor beeld van een zijspan wagen kan worden uitgebreid om een waarschuwing te activeren als het een andere HTTP-antwoord code dan `200 OK`heeft ontvangen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Resource Manager - Windows - Azure AD
+title: Zelf studie`:` een beheerde identiteit gebruiken om toegang te krijgen tot Azure Resource Manager-Windows-Azure AD
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het krijgen van toegang tot Azure Resource Manager met een door de gebruiker toegewezen beheerde identiteit op een Windows-VM.
 services: active-directory
 documentationcenter: ''
@@ -22,13 +22,13 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224220"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Tutorial: Use a user-assigned managed identity on a Windows VM to access Azure Resource Manager
+# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Zelf studie: een door de gebruiker toegewezen beheerde identiteit op een Windows-VM gebruiken om toegang te krijgen tot Azure Resource Manager
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 In deze zelfstudie wordt uitgelegd hoe u een door de gebruiker toegewezen identiteit kunt maken, deze toewijzen aan een virtuele Windows-machine (VM) en die identiteit vervolgens gebruiken om toegang te krijgen tot de Azure Resource Manager-API. Beheerde service-identiteiten worden automatisch beheerd door Azure. Ze maken verificatie mogelijk voor services die Azure AD-verificatie ondersteunen, zonder dat er referenties in uw code hoeven te worden ingesloten. 
 
-In deze zelfstudie leert u procedures om het volgende te doen:
+Procedures voor:
 
 > [!div class="checklist"]
 > * Een door de gebruiker toegewezen beheerde identiteit maken
@@ -149,7 +149,7 @@ Het antwoord bevat de gegevens van de specifieke resourcegroep, vergelijkbaar me
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this tutorial, you learned how to create a user-assigned identity and attach it to an Azure Virtual Machine to access the Azure Resource Manager API.  Zie voor meer informatie over Azure Resource Manager:
+In deze zelf studie hebt u geleerd hoe u een door de gebruiker toegewezen identiteit maakt en deze koppelt aan een virtuele Azure-machine om toegang te krijgen tot de Azure Resource Manager-API.  Zie voor meer informatie over Azure Resource Manager:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

@@ -46,7 +46,7 @@ We raden u aan om de spraak service te proberen met behulp van de instructies in
 > De proef periode wordt onmiddellijk gestart zodra de volgende stappen zijn voltooid.
 
 1. Ga naar de [Probeer cognitieve service](https://azure.microsoft.com/try/cognitive-services/).
-1. Selecteer de **Speech-API's** tabblad.
+1. Selecteer het tabblad **spraak-api's** .
 1. Kies **API-sleutel ophalen**.
 
 U krijgt de facturerings opties te zien. Kies de optie gratis en lees en goed keuring van de gebruikers overeenkomst. U krijgt de toetsen die u kunt gebruiken om de speech-service gedurende een beperkte periode te proberen.
@@ -64,15 +64,15 @@ Zodra u een Microsoft-account hebt, gaat u naar de [pagina aanmelden bij Azure](
 
 Een bron van de spraak-service (gratis of betaalde laag) toevoegen aan uw Azure-account:
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com/) met uw Microsoft-account.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw Microsoft-account.
 
-1. Selecteer **een resource maken** op linksboven in de portal. Als u geen **resource maken**ziet, kunt u deze altijd vinden door het samengevouwen menu linksboven te selecteren:
+1. Selecteer **een resource maken** in de linkerbovenhoek van de portal. Als u geen **resource maken**ziet, kunt u deze altijd vinden door het samengevouwen menu linksboven te selecteren:
 
    ![samengevouwen navigatie knop](media/index/collapsed-nav.png)
 
 1. Typ in het **nieuwe** venster ' Speech ' in het zoekvak en druk op ENTER.
 
-1. Selecteer in de lijst met zoekresultaten **spraak**.
+1. Selecteer in de zoek resultaten **spraak**.
 
    ![Zoek resultaten voor spraak](media/index/speech-search.png)
 
@@ -96,8 +96,8 @@ Als u wilt overschakelen van één abonnement naar een andere, vervangen bijvoor
 
 ## <a name="about-regions"></a>Over regio's
 
-- Als uw toepassing gebruikmaakt van een [spraak SDK](speech-sdk.md), geef u de regiocode zoals `westus`, bij het maken van een spraak-configuratie.
-- Als uw toepassing een van de spraakservice gebruikt [REST-API's](rest-apis.md), de regio is onderdeel van het eindpunt-URI die u gebruikt bij het maken van aanvragen.
+- Als uw toepassing gebruikmaakt van een [Speech SDK](speech-sdk.md), geeft u de regio code, zoals `westus`, op bij het maken van een spraak configuratie.
+- Als uw toepassing gebruikmaakt van een van de rest- [api's](rest-apis.md)van de speech-service, maakt de regio deel uit van de EINDPUNT-URI die u gebruikt bij het maken van aanvragen.
 - Sleutels die zijn gemaakt voor een regio zijn alleen geldig in deze regio. Er wordt geprobeerd om ze te gebruiken met andere regio's leidt tot verificatiefouten.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -105,5 +105,5 @@ Als u wilt overschakelen van één abonnement naar een andere, vervangen bijvoor
 Voer een van onze quickstarts van 10 minuten of Bekijk onze SDK-voorbeelden:
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: Herkennen gesproken tekst in C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [spraak SDK-voorbeelden](speech-sdk.md#get-the-samples)
+> [Snelstartgids: spraak herkennen in C# ](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+> [Speech SDK](speech-sdk.md#get-the-samples) -voor beelden

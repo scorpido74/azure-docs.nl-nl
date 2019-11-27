@@ -19,7 +19,7 @@ ms.locfileid: "74306754"
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-Wijzigingenfeed](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
@@ -36,9 +36,9 @@ ms.locfileid: "74306754"
 | **Beschrijving**| Met de bibliotheek .net bulksgewijze uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren op Azure Cosmos DB accounts. Deze bibliotheek bevat BulkImport-, BulkUpdate-en BulkDelete-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in azure Cosmos-containers bulksgewijs bijwerken als patches. De BulkDelete-module kan documenten bulksgewijs verwijderen op een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor de maximale grootte wordt verbruikt.|
 |**SDK downloaden**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **Bibliotheek voor bulk-uitvoerder in GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
-|**API-documentatie**|[.NET API-referentiedocumentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
+|**API-documentatie**|[Naslag documentatie voor .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**Aan de slag**|[Aan de slag met de bibliotheek voor bulk-uitvoerder .NET SDK](bulk-executor-dot-net.md)|
-| **Huidige ondersteunde framework**| Microsoft .NET Framework 4.5.2, 4.6.1 en .NET Standard 2,0 |
+| **Huidig ondersteund Framework**| Microsoft .NET Framework 4.5.2, 4.6.1 en .NET Standard 2,0 |
 
 > [!NOTE]
 > Als u een bulk-uitvoerder gebruikt, raadpleegt u de meest recente versie 3. x van de [.NET SDK](tutorial-sql-api-dotnet-bulk-import.md), die in de SDK is ingebouwd. 

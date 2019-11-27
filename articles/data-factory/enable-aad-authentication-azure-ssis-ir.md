@@ -42,7 +42,7 @@ Azure SQL Database-Server biedt ondersteuning voor het maken van een Data Base m
 
 U kunt een bestaande Azure AD-groep gebruiken of een nieuwe maken met behulp van Azure AD Power shell.
 
-1.  Installeer de [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) module.
+1.  Installeer de [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) -module.
 
 2.  Meld u aan met `Connect-AzureAD`, voer de volgende cmdlet uit om een groep te maken en op te slaan in een variabele:
 

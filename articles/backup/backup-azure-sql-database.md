@@ -1,6 +1,6 @@
 ---
 title: Een back-up van SQL Server-databases maken in Azure
-description: This article explains how to back up SQL Server to Azure. In het artikel wordt ook uitgelegd hoe u SQL Server kunt herstellen.
+description: In dit artikel wordt uitgelegd hoe u een back-up maakt van SQL Server naar Azure. In het artikel wordt ook uitgelegd hoe u SQL Server kunt herstellen.
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
@@ -12,28 +12,28 @@ ms.locfileid: "74462587"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Over SQL Server-back-ups in virtuele Azure-machines
 
-SQL Server-databases zijn essentiële workloads waarvoor een laag Recovery Point Objective (RPO, beoogd herstelpunt) en langetermijnretentie nodig zijn. You can back up SQL Server databases running on Azure VMs using [Azure Backup](backup-overview.md).
+SQL Server-databases zijn essentiële workloads waarvoor een laag Recovery Point Objective (RPO, beoogd herstelpunt) en langetermijnretentie nodig zijn. U kunt back-ups maken van SQL Server-data bases die worden uitgevoerd op virtuele Azure-machines met [Azure backup](backup-overview.md).
 
-## <a name="backup-process"></a>Backup process
+## <a name="backup-process"></a>Back-upproces
 
-This solution leverages the SQL native APIs to take backups of your SQL databases.
+Deze oplossing maakt gebruik van de SQL Native Api's om back-ups te maken van uw SQL-data bases.
 
-* Once you specify the SQL Server VM that you want to protect and query for the databases in it, Azure Backup service will install a workload backup extension on the VM by the name `AzureBackupWindowsWorkload` extension.
-* This extension consists of a coordinator and a SQL plugin. While the coordinator is responsible for triggering workflows for various operations like configure backup, backup and restore, the plugin is responsible for actual data flow.
-* To be able to discover databases on this VM, Azure Backup creates the account `NT SERVICE\AzureWLBackupPluginSvc`. This account is used for backup and restore and requires SQL sysadmin permissions. The `NT SERVICE\AzureWLBackupPluginSvc` account is a [Virtual Service Account](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), and therefore does not require any password management. Azure Backup leverages the `NT AUTHORITY\SYSTEM` account for database discovery/inquiry, so this account needs to be a public login on SQL. Als u de SQL Server-VM niet hebt gemaakt vanuit de Azure Marketplace, ontvangt u mogelijk het foutbericht **UserErrorSQLNoSysadminMembership**. Volg in dit geval [deze instructies](#set-vm-permissions).
-* Once you trigger configure protection on the selected databases, the backup service sets up the coordinator with the backup schedules and other policy details, which the extension caches locally on the VM.
-* At the scheduled time, the coordinator communicates with the plugin and it starts streaming the backup data from the SQL server using VDI.  
-* The plugin sends the data directly to the recovery services vault, thus eliminating the need for a staging location. The data is encrypted and stored by the Azure Backup service in storage accounts.
-* When the data transfer is complete, coordinator confirms the commit with the backup service.
+* Wanneer u de SQL Server virtuele machine hebt opgegeven die u wilt beveiligen en query's wilt uitvoeren voor de data bases erin, Azure Backup service een back-upextensie voor de werk belasting op de virtuele machine installeert met de extensie naam `AzureBackupWindowsWorkload`.
+* Deze uitbrei ding bestaat uit een coördinator en een SQL-invoeg toepassing. Hoewel de coördinator verantwoordelijk is voor het activeren van werk stromen voor verschillende bewerkingen, zoals het configureren van back-ups, back-ups maken en herstellen, is de invoeg toepassing verantwoordelijk voor de werkelijke gegevens stroom.
+* Om data bases op deze VM te kunnen detecteren, maakt Azure Backup het account `NT SERVICE\AzureWLBackupPluginSvc`. Dit account wordt gebruikt voor back-up en herstel en vereist SQL sysadmin-machtigingen. Het `NT SERVICE\AzureWLBackupPluginSvc`-account is een [virtueel service account](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)en vereist daarom geen wachtwoord beheer. Azure Backup maakt gebruik van het `NT AUTHORITY\SYSTEM`-account voor database detectie/-informatie, zodat dit account een open bare aanmelding voor SQL moet zijn. Als u de SQL Server-VM niet hebt gemaakt vanuit de Azure Marketplace, ontvangt u mogelijk het foutbericht **UserErrorSQLNoSysadminMembership**. Volg in dit geval [deze instructies](#set-vm-permissions).
+* Zodra u de beveiliging configureren voor de geselecteerde data bases hebt geactiveerd, stelt de back-upservice de coördinator in met de back-upschemaën en andere beleids Details, die de uitbrei ding lokaal op de virtuele machine opslaat.
+* Op het geplande tijdstip communiceert de coördinator met de invoeg toepassing en begint deze met het streamen van de back-upgegevens van de SQL Server met VDI.  
+* De invoeg toepassing verzendt de gegevens rechtstreeks naar de Recovery Services-kluis, waardoor er geen staging-locatie nodig is. De gegevens worden versleuteld en opgeslagen door de Azure Backup-service in opslag accounts.
+* Wanneer de gegevens overdracht is voltooid, bevestigt de coördinator de door Voer met de back-upservice.
 
-  ![SQL Backup architecture](./media/backup-azure-sql-database/backup-sql-overview.png)
+  ![SQL-back-uparchitectuur](./media/backup-azure-sql-database/backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Before you start, verify the below:
+Voordat u begint, controleert u het onderstaande:
 
 1. Zorg ervoor dat er een SQL Server-exemplaar wordt uitgevoerd in Azure. U kunt [snel een SQL Server-exemplaar maken](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md) in de marketplace.
-2. Review the [feature consideration](#feature-consideration-and-limitations) and [scenario support](#scenario-support).
+2. Bekijk de ondersteuning voor de [functie](#feature-consideration-and-limitations) en het [scenario](#scenario-support).
 3. [Lees de veelgestelde vragen](faq-backup-sql-server.md) over dit scenario.
 
 ## <a name="scenario-support"></a>Scenario-ondersteuning
@@ -41,88 +41,88 @@ Before you start, verify the below:
 **Ondersteuning** | **Details**
 --- | ---
 **Ondersteunde implementaties** | SQL Marketplace Azure-VM's en niet-Marketplace-VM's (SQL Server handmatig geïnstalleerd) worden ondersteund.
-**Ondersteunde geografische gebieden** | Australia South East (ASE), East Australia (AE), Australia Central (AC), Australia Central 2 (AC) <br> Brazilië - zuid (BRS)<br> Canada Central (CNC), Canada East (CE)<br> South East Asia (SEA), East Asia (EA) <br> East US (EUS), East US 2 (EUS2), West Central US (WCUS), West US (WUS); West US 2 (WUS 2) North Central US (NCUS) Central US (CUS) South Central US (SCUS) <br> India Central (INC), India South (INS), India West <br> Japan East (JPE), Japan West (JPW) <br> Korea Central (KRC), Korea South (KRS) <br> North Europe (NE), West Europe <br> UK South (UKS), UK West (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD Central, US DoD East <br> Germany North, Germany West Central <br> Switzerland North, Switzerland West <br> Frankrijk - centraal <br> China East, China East 2, China North, China North 2
+**Ondersteunde geografische gebieden** | Australië-Zuid-Oost (ASE), Oost-Australië (AE), Australië-centraal (AC), Australië-centraal 2 (AC) <br> Brazilië - zuid (BRS)<br> Canada-centraal (CNC), Canada-oost (CE)<br> Zuid-Azië-oost (zee), Azië-oost (EA) <br> VS-Oost (EUS), VS-Oost 2 (EUS2), VS-West-Centraal (WCUS), VS-West (WUS); VS-West 2 (WUS 2) Noord-Centraal VS (NCUS) centraal VS (CUS) Zuid-Centraal (SCUS) <br> India-centraal (INC), India-Zuid (INS), India-West <br> Japan-Oost (JPE), Japan-West (JPW) <br> Korea-centraal (KRC), Korea-zuid (KRS) <br> Europa-noord (NE), Europa-west <br> UK-zuid (UKS), UK-west (UKW) <br> US Gov-Arizona, US Gov-Virginia, US Gov-Texas, US DoD-centraal, US DoD-oost <br> Duitsland-noord, Duitsland-west-centraal <br> Zwitserland-noord, Zwitserland-west <br> Frankrijk - centraal <br> China-oost, China-oost 2, China-noord, China-noord 2
 **Ondersteunde besturingssystemen** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux wordt momenteel niet ondersteund.
-**Ondersteunde SQL Server-versies** | SQL Server 2019, SQL Server 2017 as detailed on the [Search product lifecycle page](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 and SPs as detailed on the [Search product lifecycle page](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.
-**Supported .NET versions** | .NET Framework 4.5.2 or later installed on the VM
+**Ondersteunde SQL Server-versies** | SQL Server 2019, SQL Server 2017 zoals beschreven op de [pagina product levenscyclus zoeken](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 en SPS zoals beschreven op de [pagina product levenscyclus zoeken](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2 SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.
+**Ondersteunde .NET-versies** | .NET Framework 4.5.2 of later geïnstalleerd op de VM
 
-## <a name="feature-consideration-and-limitations"></a>Feature consideration and limitations
+## <a name="feature-consideration-and-limitations"></a>Overwegingen voor functies en beperkingen
 
-* SQL Server backup can be configured in the Azure portal or **PowerShell**. We do not support CLI.
-* The solution is supported on both kinds of [deployments](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) - Azure Resource Manager VMs and classic VMs.
-* VM running SQL Server requires internet connectivity to access Azure public IP addresses.
-* SQL Server **Failover Cluster Instance (FCI)** is not supported.
-* Back up and restore operations for mirror databases and database snapshots aren't supported.
-* Using more than one backup solutions to back up your standalone SQL Server instance or SQL Always on availability group may lead to backup failure; refrain from doing so.
-* Backing up two nodes of an availability group individually with same or different solutions, may also lead to backup failure.
-* Azure Backup supports only Full and Copy-only Full backup types for **Read-only** databases
-* Databases met zeer veel bestanden kunnen niet worden beveiligd. The maximum number of files that is supported is **~1000**.  
-* You can back up to **~2000** SQL Server databases in a vault. You can create multiple vaults in case you have a greater number of databases.
-* You can configure backup for up to **50** databases in one go; this restriction helps optimize backup loads.
-* We support databases up to **2 TB** in size; for sizes greater than that performance issues may come up.
-* To have a sense of as to how many databases can be protected per server, we need to consider factors such as bandwidth, VM size, backup frequency, database size, etc. [Download](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) the resource planner that gives the approximate number of databases you can have per server based on the VM resources and the backup policy.
-* In case of availability groups, backups are taken from the different nodes based on a few factors. The backup behavior for an availability group is summarized below.
+* SQL Server back-up kan worden geconfigureerd in de Azure Portal of **Power shell**. CLI wordt niet ondersteund.
+* De oplossing wordt ondersteund op beide soorten [implementaties](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) -Azure Resource Manager vm's en klassieke vm's.
+* Voor virtuele machines met SQL Server is Internet verbinding vereist voor toegang tot open bare IP-adressen van Azure.
+* SQL Server **-FCI (failover cluster instance)** wordt niet ondersteund.
+* Back-up-en herstel bewerkingen voor spiegel databases en database momentopnamen worden niet ondersteund.
+* Het gebruik van meerdere back-upoplossingen om een back-up te maken van uw zelfstandige SQL Server exemplaar of de beschikbaarheids groep SQL always kan leiden tot back-upfouten. Dit wordt onthouden.
+* Als u een back-up maakt van twee knoop punten van een beschikbaarheids groep met dezelfde of een andere oplossing, kan dit ook leiden tot back-upfouten.
+* Azure Backup ondersteunt alleen volledige en alleen-kopiëren volledige back-uptypen voor **alleen-lezen** data bases
+* Databases met zeer veel bestanden kunnen niet worden beveiligd. Het maximum aantal ondersteunde bestanden is **~ 1000**.  
+* U kunt back-ups maken naar **~ 2000** SQL server data bases in een kluis. U kunt meerdere kluizen maken voor het geval u een groter aantal data bases hebt.
+* U kunt in één bezoek back-ups configureren voor Maxi maal **50** data bases. Deze beperking helpt bij het optimaliseren van back-upbelasting.
+* Data bases worden ondersteund met een grootte van Maxi maal **2 TB** . voor grootten die groter zijn dan de mogelijke prestatie problemen.
+* Om een idee te hebben van het aantal data bases dat per server kan worden beveiligd, moet u rekening houden met factoren zoals band breedte, VM-grootte, back-upfrequentie, database grootte enzovoort. [down load](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) de resource planner die het geschatte aantal data bases bevat dat u per server kunt uitvoeren op basis van de VM-resources en het back-upbeleid.
+* In het geval van beschikbaarheids groepen worden er back-ups gemaakt van de verschillende knoop punten op basis van een aantal factoren. Hieronder vindt u een overzicht van het back-upgedrag voor een beschikbaarheids groep.
 
-### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Back up behavior in case of Always on availability groups
+### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Back-up van gedrag in het geval van AlwaysOn-beschikbaarheids groepen
 
-It is recommended that the backup is configured on only one node of an AG. Backup should always be configured in the same region as the primary node. In other words, you always need the primary node to be present in the region in which you are configuring backup. If all the nodes of the AG are in the same region in which the backup is configured, there isn’t any concern.
+Het is raadzaam om de back-up op slechts één knoop punt van een AG te configureren. De back-up moet altijd worden geconfigureerd in dezelfde regio als het primaire knoop punt. Met andere woorden, u hebt altijd het primaire knoop punt nodig om aanwezig te zijn in de regio waarin u de back-up configureert. Als alle knoop punten van de AG zich in dezelfde regio bevinden waarin de back-up is geconfigureerd, is er geen probleem.
 
-#### <a name="for-cross-region-ag"></a>For cross-region AG
+#### <a name="for-cross-region-ag"></a>Voor de kruislingse regio AG
 
-* Regardless of the backup preference, backups won’t happen from the nodes that are not in the same region where the backup is configured. This is because the cross-region backups are not supported. If you have only two nodes and the secondary node is in the other region; in this case, the backups will continue to happen from primary node (unless your backup preference is ‘secondary only’).
-* If a fail-over happens to a region different than the one in which the backup is configured, backups would fail on the nodes in the failed-over region.
+* Ongeacht de back-upvoorkeur worden er geen back-ups gemaakt van de knoop punten die zich niet in dezelfde regio bevinden als de back-up is geconfigureerd. Dit komt doordat de back-ups voor meerdere regio's niet worden ondersteund. Als u slechts twee knoop punten hebt en het secundaire knoop punt zich in de andere regio bevindt. in dit geval blijven de back-ups zich voordoen op het primaire knoop punt (tenzij uw voorkeurs instelling voor back-ups alleen ' secundair ' is).
+* Als er een failover optreedt naar een andere regio dan die waarin de back-up is geconfigureerd, mislukken de back-ups van de knoop punten in het gebied met de mislukte failover.
 
-Depending on the backup preference and backups types (full/differential/log/copy-only full), backups are taken from a particular node (primary/secondary).
+Afhankelijk van de voor keuren voor back-ups en back-ups (volledig/differentieel/niet volledig), worden back-ups gemaakt van een bepaald knoop punt (primair/secundair).
 
-* **Backup preference: Primary**
+* **Back-upvoorkeur: primair**
 
-**Backup Type** | **Node**
+**Back-uptype** | **Node**
     --- | ---
     Volledig | Primair
-    Differential | Primair
+    Differentiële | Primair
     Logboek |  Primair
-    Copy-Only Full |  Primair
+    Alleen-kopiëren is volledig |  Primair
 
-* **Backup preference: Secondary Only**
+* **Back-upvoorkeur: alleen secundair**
 
-**Backup Type** | **Node**
+**Back-uptype** | **Node**
 --- | ---
 Volledig | Primair
-Differential | Primair
+Differentiële | Primair
 Logboek |  Secundair
-Copy-Only Full |  Secundair
+Alleen-kopiëren is volledig |  Secundair
 
-* **Backup preference: Secondary**
+* **Back-upvoorkeur: secundair**
 
-**Backup Type** | **Node**
+**Back-uptype** | **Node**
 --- | ---
 Volledig | Primair
-Differential | Primair
+Differentiële | Primair
 Logboek |  Secundair
-Copy-Only Full |  Secundair
+Alleen-kopiëren is volledig |  Secundair
 
-* **No Backup preference**
+* **Geen voorkeurs instelling voor back-up**
 
-**Backup Type** | **Node**
+**Back-uptype** | **Node**
 --- | ---
 Volledig | Primair
-Differential | Primair
+Differentiële | Primair
 Logboek |  Secundair
-Copy-Only Full |  Secundair
+Alleen-kopiëren is volledig |  Secundair
 
 ## <a name="set-vm-permissions"></a>VM-machtigingen instellen
 
-  When you run discovery on a SQL Server, Azure Backup does the following:
+  Wanneer u detectie uitvoert op een SQL Server, Azure Backup de volgende handelingen uit:
 
-* Adds the AzureBackupWindowsWorkload extension.
-* Creates an NT SERVICE\AzureWLBackupPluginSvc account to discover databases on the virtual machine. This account is used for a backup and restore and requires SQL sysadmin permissions.
-* Discovers databases that are running on a VM, Azure Backup uses the NT AUTHORITY\SYSTEM account. This account must be a public sign-in on SQL.
+* Hiermee voegt u de AzureBackupWindowsWorkload-extensie toe.
+* Hiermee maakt u een NT SERVICE\AzureWLBackupPluginSvc-account om data bases op de virtuele machine te detecteren. Dit account wordt gebruikt voor back-up en herstel en vereist SQL sysadmin-machtigingen.
+* Hiermee worden data bases gedetecteerd die worden uitgevoerd op een virtuele machine, Azure Backup gebruikt het NT AUTHORITY\SYSTEM-account. Dit account moet een open bare aanmelding bij SQL zijn.
 
-If you didn't create the SQL Server VM in the Azure Marketplace or if you are on SQL 2008 and 2008 R2, you might receive a **UserErrorSQLNoSysadminMembership** error.
+Als u de SQL Server virtuele machine niet hebt gemaakt in de Azure Marketplace of als u zich in SQL 2008 en 2008 R2 bevindt, kan er een **UserErrorSQLNoSysadminMembership** -fout optreden.
 
-For giving permissions in case of **SQL 2008** and **2008 R2** running on Windows 2008 R2, refer [here](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2).
+Zie [hier](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)voor meer informatie over het verlenen van machtigingen in het geval van **SQL 2008** en **2008 R2** die worden uitgevoerd op Windows 2008 R2.
 
-For all other versions, fix permissions with the following steps:
+Voor alle andere versies herstelt u de machtigingen met de volgende stappen:
 
   1. Meld u bij SQL Server Management Studio (SSMS) aan met een account met systeembeheerdersrechten voor SQL Server. Windows-verificatie zou moeten werken, tenzij u speciale machtigingen nodig hebt.
   2. Open de map **Security/Logins** op de SQL-server.
@@ -150,37 +150,37 @@ For all other versions, fix permissions with the following steps:
       ![Bericht dat de implementatie is geslaagd](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
 > [!NOTE]
-> If your SQL Server has multiple instances of SQL Server installed, then you must add sysadmin permission for **NT Service\AzureWLBackupPluginSvc** account to all SQL instances.
+> Als uw SQL Server meerdere exemplaren van SQL Server heeft geïnstalleerd, moet u de sysadmin-machtiging voor het **NT Service\AzureWLBackupPluginSvc** -account toevoegen aan alle SQL-exemplaren.
 
-### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>Give SQL sysadmin permissions for SQL 2008 and SQL 2008 R2
+### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>SQL sysadmin-machtigingen verlenen voor SQL 2008 en SQL 2008 R2
 
-Add **NT AUTHORITY\SYSTEM** and **NT Service\AzureWLBackupPluginSvc** logins to the SQL Server Instance:
+**NT AUTHORITY\SYSTEM** -en **NT Service\AzureWLBackupPluginSvc** -aanmeldingen toevoegen aan het SQL Server-exemplaar:
 
-1. Go the SQL Server Instance in the Object explorer.
-2. Navigate to Security -> Logins
-3. Right click on the Logins and click *New Login…*
+1. Ga naar het SQL Server-exemplaar in object Verkenner.
+2. Navigeer naar beveiliging-> aanmeldingen
+3. Klik met de rechter muisknop op de aanmeldingen en klik op *nieuwe aanmelding...*
 
-    ![New Login using SSMS](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
+    ![Nieuwe aanmelding met behulp van SSMS](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 
-4. Go to the General tab and enter **NT AUTHORITY\SYSTEM** as the Login Name.
+4. Ga naar het tabblad Algemeen en voer **NT AUTHORITY\SYSTEM** in als aanmeldings naam.
 
-    ![login name for SSMS](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
+    ![aanmeldings naam voor SSMS](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
 
-5. Go to *Server Roles* and choose *public* and *sysadmin* roles.
+5. Ga naar *Server rollen* en kies *open bare* en *sysadmin* -rollen.
 
-    ![choosing roles in SSMS](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
+    ![rollen kiezen in SSMS](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 
-6. Go to *Status*. *Grant* the Permission to connect to database engine and Login as *Enabled*.
+6. Ga naar *status*. *Verleen* de machtiging om verbinding te maken met data base-engine en meld u aan als *ingeschakeld*.
 
-    ![Grant permissions in SSMS](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
+    ![Machtigingen verlenen in SSMS](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 
 7. Klik op OK.
-8. Repeat the same sequence of steps (1-7 above) to add NT Service\AzureWLBackupPluginSvc login to the SQL Server instance. If the login already exists, make sure it has the sysadmin server role and under Status it has Grant the Permission to connect to database engine and Login as Enabled.
-9. After granting permission, **Rediscover DBs** in the portal: Vault **->** Backup Infrastructure **->** Workload in Azure VM:
+8. Herhaal dezelfde reeks stappen (1-7 hierboven) om NT Service\AzureWLBackupPluginSvc-aanmelding toe te voegen aan het SQL Server-exemplaar. Als de aanmelding al bestaat, moet u ervoor zorgen dat deze de serverrol sysadmin heeft en onder status heeft de machtiging verlenen om verbinding te maken met de data base-engine en de aanmelding als ingeschakeld.
+9. Nadat u een machtiging hebt verleend, **detecteert u db's** in de portal: kluis **->** back-upinfrastructuur **->** werk belasting in azure VM:
 
-    ![Rediscover DBs in Azure portal](media/backup-azure-sql-database/sql-rediscover-dbs.png)
+    ![Db's in Azure Portal opnieuw detecteren](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 
-Alternatively, you can automate giving the permissions by running the following PowerShell commands in admin mode. The instance name is set to MSSQLSERVER by default. Change the instance name argument in script if need be:
+U kunt ook automatiseren om de machtigingen te verlenen door de volgende Power shell-opdrachten uit te voeren in de beheer modus. De naam van het exemplaar is standaard ingesteld op MSSQLserver. Wijzig het argument exemplaar naam in het script als dat nodig is:
 
 ```powershell
 param(
@@ -217,6 +217,6 @@ catch
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Learn about](backup-sql-server-database-azure-vms.md) backing up SQL Server databases.
+* [Meer informatie over](backup-sql-server-database-azure-vms.md) het maken van back-ups van SQL server-data bases.
 * [Meer informatie](restore-sql-database-azure-vm.md) over het herstellen van SQL Server-databases vanuit back-up.
 * [Meer informatie](manage-monitor-sql-database-backup.md) over het beheren van SQL Server-databases vanuit back-up.

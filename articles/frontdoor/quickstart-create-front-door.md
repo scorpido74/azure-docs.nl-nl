@@ -42,7 +42,7 @@ Voor deze snelstart moeten twee exemplaren van een webtoepassing worden geïmple
      | Naam           | Voer een unieke naam voor de web-app in  |
      | Resourcegroep          | Selecteer **Nieuw** en typ *myResourceGroupFD1* |
      | App Service-plan/-locatie         | Selecteer **Nieuw**.  Voer in het App Service-plan *myAppServicePlanEastUS* in en selecteer **OK**. 
-     |      Locatie  |   VS - oost        |
+     |      Locatie  |   US - oost        |
     |||
 
 3. Selecteer **Maken**.
@@ -54,7 +54,7 @@ Voor deze snelstart moeten twee exemplaren van een webtoepassing worden geïmple
      | Naam           | Voer een unieke naam voor de web-app in  |
      | Resourcegroep          | Selecteer **Nieuw** en typ *myResourceGroupFD2* |
      | App Service-plan/-locatie         | Selecteer **Nieuw**.  Voer in het App Service-plan *myAppServicePlanWestEurope* in en selecteer **OK**. 
-     |      Locatie  |   Europa - west      |
+     |      Locatie  |   Europa -west      |
     |||
 
 
@@ -75,7 +75,7 @@ Vervolgens moet u uw toepassings-back-end(s) configureren in een back-endpool, z
 3. Stel **Type doelhost** in op 'App Service', selecteer het abonnement waarin u de website hebt gemaakt en kies vervolgens de eerste website bij **Naam doelhost**, dus *myAppServicePlanEastUS.azurewebsites.net*.
 4. Laat de overige velden voorlopig ongewijzigd en klik op **Toevoegen**.
 5. Herhaal stappen 2 - 4 om de andere website toe te voegen, namelijk *myAppServicePlanWestEurope.azurewebsites.net*
-6. U kunt eventueel de instellingen voor tests en load balancing bijwerken voor de back-endpool, maar de standaardwaarden moeten voldoen. Klik op **Add**.
+6. U kunt eventueel de instellingen voor tests en load balancing bijwerken voor de back-endpool, maar de standaardwaarden moeten voldoen. Klik op **Toevoegen**.
 
 
 ### <a name="c-add-a-routing-rule"></a>C. Een routeringsregel toevoegen

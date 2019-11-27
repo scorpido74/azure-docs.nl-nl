@@ -36,7 +36,7 @@ Een technische ondersteunings ticket openen in azure portal voor ruimtelijke bea
 
 ![Ondersteunings ticket velden Azure Portal](./media/spatial-anchor-support3.png)
 
-## <a name="community-support"></a>Ondersteuning door community
+## <a name="community-support"></a>Ondersteuning voor community
 
 Voor ondersteuning van de gebruikers community raadpleegt u de [Azure spatiale ankers op stack overflow](https://stackoverflow.com/questions/tagged/azure-spatial-anchors).
 

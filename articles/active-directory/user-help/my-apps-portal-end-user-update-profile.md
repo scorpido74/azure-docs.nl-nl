@@ -1,6 +1,6 @@
 ---
-title: Update profile & account info from the My Apps portal - Azure AD
-description: Learn how to update your profile and your work or school account information, including changing your password, turning on password reset, updating your security verification methods, viewing your organization's terms of use statement, and signing out of everywhere you've signed in using your work or school account.
+title: Profiel gegevens van &-account bijwerken vanuit de portal mijn apps-Azure AD
+description: Meer informatie over het bijwerken van uw profiel en uw werk-of school accountgegevens, zoals het wijzigen van uw wacht woord, het inschakelen van wacht woord opnieuw instellen, het bijwerken van uw beveiligings verificatie methoden, het weer geven van de gebruiks voorwaarden van uw organisatie en het afmelden van overal waar u bent aangemeld met uw werk-of school account.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -20,124 +20,124 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233169"
 ---
-# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>Update your profile and work or school account information on the My Apps portal
+# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>De gegevens van uw profiel en werk-of school account bijwerken in de portal mijn apps
 
-You can use your work or school account with the web-based **My Apps** portal, to view and start many of your organization’s cloud-based apps, to update some of your profile and account information, to see your **Groups** information, and to perform **access reviews** for your apps and groups. If you don’t have access to the **My Apps** portal, you must contact your Helpdesk for permission.
+U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en uit te voeren  **toegangs beoordelingen** voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Deze inhoud is bedoeld voor gebruikers. If you're an administrator, you can find more information about how to set up and manage your cloud-based apps in the [Application Management Documentation](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Cloud-apps in de documentatie van [toepassings beheer](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
-## <a name="view-your-organization-related-profile-information"></a>View your organization-related profile information
+## <a name="view-your-organization-related-profile-information"></a>De profiel gegevens van uw organisatie weer geven
 
-Depending on what your organization has chosen to include on your **Profile** page of the **My Apps** portal, you might see your specific work-related details, along with your devices and activity, and any additional organizations to which you belong.
+Afhankelijk van wat uw organisatie op de **profiel** pagina van de portal **mijn apps** heeft gekozen, ziet u mogelijk uw specifieke zakelijke gegevens, samen met uw apparaten en activiteiten, en eventuele extra organisaties waarvan u deel uitmaakt.
 
-### <a name="to-view-your-profile-information"></a>To view your profile information
+### <a name="to-view-your-profile-information"></a>Uw profiel gegevens weer geven
 
-1. Sign in to your work or school account, [go to the **My Apps** portal](my-apps-portal-end-user-access.md).
+1. Meld u aan bij uw werk-of school account en [Ga naar de portal **mijn apps** ](my-apps-portal-end-user-access.md).
 
-2. From the **Apps** page, select your profile picture from the upper-right corner, where it says your name and your organization, and then select **Profile**.
+2. Op de pagina **apps** selecteert u uw profiel afbeelding in de rechter bovenhoek, waar u uw naam en uw organisatie opzegt en selecteert u vervolgens **profiel**.
 
-    The **Profile** page appears, showing your profile information.
+    De **profiel** pagina wordt weer gegeven met de profiel gegevens.
 
-    ![Profile page, showing all of the available information](media/my-apps-portal/my-apps-portal-profile-page.png)
+    ![Profiel pagina, waarin alle beschik bare informatie wordt weer gegeven](media/my-apps-portal/my-apps-portal-profile-page.png)
 
-3. From the **Profile** page, you can:
+3. Op de pagina **profiel** kunt u het volgende doen:
 
-    - **Review your organization-related details.** View your photo, name, title, associated email addresses, and office information. This information is managed by your organization and you won't be able to change it. If you see an error, contact your Helpdesk.
+    - **Bekijk de details van uw organisatie.** Bekijk uw foto, naam, titel, bijbehorende e-mail adressen en Office-gegevens. Deze informatie wordt beheerd door uw organisatie en u kunt deze niet wijzigen. Als er een fout wordt weer geven, neemt u contact op met de Help Desk.
 
-    - **Review your Devices & activity**. Make sure each device is familiar and properly connected to your organization. If you don’t recognize a device, select **Disable device** to remove the association with your account. After you disable a device, it’s removed from this page.
+    - **Controleer uw apparaten & activiteit**. Zorg ervoor dat elk apparaat bekend is en goed is verbonden met uw organisatie. Als u een apparaat niet herkent, selecteert u **apparaat uitschakelen** om de koppeling met uw account te verwijderen. Nadat u een apparaat hebt uitgeschakeld, wordt het verwijderd van deze pagina.
 
-    - **Review your Organizations.** Make sure that you still work with each of the specified organizations. If you no longer work with an organization, we highly recommend that you select **Sign in to leave organization**. After you leave the organization, it’s removed from this page.
+    - **Bekijk uw organisaties.** Zorg ervoor dat u nog steeds met elk van de opgegeven organisaties werkt. Als u niet meer met een organisatie werkt, raden we u aan **om aanmelden te selecteren om de organisatie te verlaten**. Nadat u de organisatie verlaat, wordt deze verwijderd van deze pagina.
 
-## <a name="manage-your-work-or-school-account-information"></a>Manage your work or school account information
+## <a name="manage-your-work-or-school-account-information"></a>Gegevens van uw werk-of school account beheren
 
-Update and manage your work or school account information from the **Profile** page of the **My Apps** portal. This page helps you to:
+De gegevens van uw werk-of school account bijwerken en beheren op de **profiel** pagina van de portal **mijn apps** . Op deze pagina kunt u het volgende doen:
 
-- Change your work or school account password.
+- Wijzig het wacht woord voor uw werk-of school account.
 
-- Turn on password reset (if your administrator has turned on this feature).
+- Schakel wacht woord opnieuw instellen in (als uw beheerder deze functie heeft ingeschakeld).
 
-- Provide additional security verification information.
+- Aanvullende informatie over de beveiligings verificatie opgeven.
 
-- Review your organization’s terms of use.
+- Bekijk de gebruiks voorwaarden van uw organisatie.
 
-- Sign out of everywhere.
+- Meld u overal aan.
 
 ## <a name="change-your-password"></a>Uw wachtwoord wijzigen
 
-If you want to change the password for your work or school account, you can select **Change password** from the **Manage account** area of the **Profile** page.
+Als u het wacht woord voor uw werk-of school account wilt wijzigen, kunt u **wacht woord wijzigen** selecteren in het gebied **account beheren** van de **profiel** pagina.
 
-### <a name="to-change-your-password"></a>To change your password
+### <a name="to-change-your-password"></a>Uw wacht woord wijzigen
 
-1. From the **Manage account** area of the **Profile** page, select **Change password**.
+1. Selecteer in het gebied **account beheren** van de **profiel** pagina **wacht woord wijzigen**.
 
-2. On the **Change password** page, make sure your User ID is correct, and then type your old password and your new password into the boxes.
+2. Controleer op de pagina **wacht woord wijzigen** of uw gebruikers-id juist is en typ vervolgens uw oude wacht woord en uw nieuwe wacht woord in de vakken.
 
-    ![Change password page](media/my-apps-portal/my-apps-portal-change-password-page.png)
+    ![Pagina wacht woord wijzigen](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
 3. Selecteer **Indienen**.
 
-    Your password is changed. You’ll be required to sign-in to any apps you’ve previously signed in to using your work or school account.
+    Uw wacht woord is gewijzigd. U moet zich aanmelden bij alle apps die u eerder hebt aangemeld voor het gebruik van uw werk-of school account.
 
-## <a name="set-up-and-use-password-reset"></a>Set up and use password reset
+## <a name="set-up-and-use-password-reset"></a>Wacht woord opnieuw instellen instellen en gebruiken
 
-If you forgot your password, never got one from your company support, or have been locked out of your account, you can reset your own password.
+Als u uw wacht woord bent verg eten, het nog nooit hebt ontvangen van het ondersteunings team van uw bedrijf of uw account hebt vergrendeld, kunt u uw eigen wacht woord opnieuw instellen.
 
 >[!Important]
->Your administrator must turn on this feature and you must register to participate. For details about how to register and how to reset your password, see [Register for self-service password reset](active-directory-passwords-reset-register.md) and [Reset your work or school password](active-directory-passwords-update-your-own-password.md).
+>Uw beheerder moet deze functie inschakelen en u moet zich registreren om deel te nemen. Zie voor meer informatie over het registreren en opnieuw instellen van uw wacht woord [registreren voor selfservice voor het opnieuw instellen van wacht woorden](active-directory-passwords-reset-register.md) en [het opnieuw instellen van het wacht woord voor uw werk of school](active-directory-passwords-update-your-own-password.md).
 
-## <a name="change-your-security-verification-information"></a>Change your security verification information
+## <a name="change-your-security-verification-information"></a>De gegevens van de beveiligings verificatie wijzigen
 
-If your organization requires you to use two-factor verification, you can add, update, and delete your associated security information from the **Additional security verification** page.
+Als uw organisatie vereist dat u twee ledige verificatie gebruikt, kunt u de bijbehorende beveiligings gegevens toevoegen, bijwerken en verwijderen op de pagina **aanvullende beveiligings verificatie** .
 
-Two-factor verification requires you to use two pieces of verification info, like a password and a PIN, before you can get to your account or to your organization’s information. For more information about two-factor verification, see [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md).
+Voor twee ledige verificatie moet u twee soorten verificatie gegevens gebruiken, zoals een wacht woord en pincode, voordat u toegang krijgt tot uw account of aan de gegevens van uw organisatie. Zie [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md)voor meer informatie over verificatie met twee factoren.
 
-### <a name="to-change-your-security-information"></a>To change your security information
+### <a name="to-change-your-security-information"></a>Uw beveiligings gegevens wijzigen
 
-1. From the **Manage account** area of the **Profile** page, select **Additional security verification**.
+1. Selecteer in het gebied **account beheren** van de **profiel** pagina **aanvullende beveiligings verificatie**.
 
-    ![Additional security verification page](media/my-apps-portal/my-apps-portal-additional-verification-page.png)
+    ![Pagina aanvullende beveiligings verificatie](media/my-apps-portal/my-apps-portal-additional-verification-page.png)
 
-2. On the **Additional security verification** page, you can add, change, or delete the following information:
+2. Op de pagina **aanvullende beveiligings verificatie** kunt u de volgende informatie toevoegen, wijzigen of verwijderen:
 
-    - **Default verification option.** Select the default secondary method to use for two-factor verification. This method is automatically used any time two-factor verification is required after you enter your username and password.
+    - **Standaard verificatie optie.** Selecteer de standaard secundaire methode die moet worden gebruikt voor verificatie met twee factoren. Deze methode wordt automatisch gebruikt telkens wanneer u uw gebruikers naam en wacht woord hebt ingevoerd.
 
-    - **Add, update, or remove verification methods.** You can add new, update existing, or delete old information that no longer applies.
+    - **Verificatie methoden toevoegen, bijwerken of verwijderen.** U kunt nieuwe, bestaande of oude gegevens die niet meer van toepassing zijn, toevoegen of verwijderen.
 
-    - **Set up the Microsoft Authenticator app.** You can choose to set up the Microsoft Authenticator app to work as your verification method. For more information about the Microsoft Authenticator app, see [What is the Microsoft Authenticator app?](user-help-auth-app-overview.md)
+    - **Stel de Microsoft Authenticator-app in.** U kunt ervoor kiezen om de Microsoft Authenticator-app zo in te stellen dat deze als verificatie methode wordt gebruikt. Zie [Wat is de Microsoft Authenticator-app?](user-help-auth-app-overview.md) voor meer informatie over de app Microsoft Authenticator.
 
-3. Select **Save** to save your changes.
+3. Selecteer **Opslaan** om uw wijzigingen op te slaan.
 
-## <a name="review-your-organizations-terms-of-use-statement"></a>Review your organization’s terms of use statement
+## <a name="review-your-organizations-terms-of-use-statement"></a>De gebruiks voorwaarden van uw organisatie controleren
 
-You can choose to review your organization’s terms of use statement, if it’s available.
+U kunt ervoor kiezen om de gebruiks voorwaarden van uw organisatie te bekijken als deze beschikbaar is.
 
-1. From the **Manage account** area of the **Profile** page, select **Review terms of use**.
+1. Selecteer in het gebied **account beheren** van de **profiel** pagina **gebruiks voorwaarden controleren**.
 
-2. Review your organization's terms of use and select **Accept** to confirm that you've read and understood the terms of use for your organization.
+2. Controleer de gebruiks voorwaarden van uw organisatie en selecteer **accepteren** om te bevestigen dat u de gebruiks voorwaarden voor uw organisatie hebt gelezen en begrepen.
 
-    ![Terms of use page from the My Apps portal](media/my-apps-portal/my-apps-portal-tou-page.png)
+    ![Gebruiksvoorwaarden pagina in de portal mijn apps](media/my-apps-portal/my-apps-portal-tou-page.png)
 
-    If your organization doesn't have a terms of use, you can select **Done** to return to the **Profile** page.
+    Als uw organisatie geen gebruiksrecht overeenkomst heeft, kunt u de optie **gereed** selecteren om terug te gaan naar de **profiel** pagina.
 
-## <a name="sign-out-of-everywhere"></a>Sign out of everywhere
+## <a name="sign-out-of-everywhere"></a>Meld u overal aan
 
-You can choose to sign out of everywhere you’re currently signed in to using your work or school account. This includes all apps and devices.
+U kunt zich afmelden van waar u momenteel bent aangemeld om uw werk-of school account te gebruiken. Dit omvat alle apps en apparaten.
 
-### <a name="to-sign-out-of-everywhere"></a>To sign out of everywhere
+### <a name="to-sign-out-of-everywhere"></a>Afmelden
 
-1. From the **Manage account** area of the **Profile** page, select **Sign out everywhere**.
+1. Selecteer **overal afmelden**in het gedeelte **account beheren** van de **profiel** pagina.
 
-2. In the **Sign out everywhere** confirmation box, select **Yes** to confirm that you want to sign out of all your sessions and devices. Select **No** if you change your mind.
+2. Selecteer in het vak **afmelden overal** ter bevestiging **Ja** om te bevestigen dat u zich wilt afmelden bij al uw sessies en apparaten. Selecteer **Nee** als u van gedachten verandert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-After you finish your updates on the **Profile** page, you can:
+Nadat u de updates op de **profiel** pagina hebt voltooid, kunt u het volgende doen:
 
-- [Access and use apps on the My Apps portal](my-apps-portal-end-user-access.md).
+- [Apps openen en gebruiken in de portal voor mijn apps](my-apps-portal-end-user-access.md).
 
-- [View and update your groups-related information](my-apps-portal-end-user-groups.md).
+- [Gegevens over groepen weer geven en bijwerken](my-apps-portal-end-user-groups.md).
 
-- [Perform your own access reviews](my-apps-portal-end-user-access-reviews.md).
+- [Voer uw eigen toegangs beoordelingen uit](my-apps-portal-end-user-access-reviews.md).

@@ -1,6 +1,6 @@
 ---
 title: SQL Database-verbinding beveiligen met beheerde identiteit - Azure App Service | Microsoft Docs
-description: Learn how to make database connectivity more secure by using a managed identity, and also how to apply it to other Azure services.
+description: Meer informatie over hoe u de connectiviteit van de data base veiliger maakt met behulp van een beheerde identiteit en hoe u deze kunt Toep assen op andere Azure-Services.
 services: app-service\web
 documentationcenter: dotnet
 author: cephalin
@@ -23,92 +23,92 @@ ms.locfileid: "74227470"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: De Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
-[App Servicex](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie in Azure. De service bevat ook een [beheerde identiteit](overview-managed-identity.md) voor uw app. Dit is een gebruiksklare oplossing voor het beveiligen van toegang tot [Azure SQL Database](/azure/sql-database/) en andere Azure-services. Beheerde identiteiten in App Service maken uw app veiliger doordat geheimen in uw app, zoals referenties in de verbindingsreeksen, worden verwijderd. In this tutorial, you will add managed identity to the sample web app you built in one of the following tutorials: 
+[App Servicex](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie in Azure. De service bevat ook een [beheerde identiteit](overview-managed-identity.md) voor uw app. Dit is een gebruiksklare oplossing voor het beveiligen van toegang tot [Azure SQL Database](/azure/sql-database/) en andere Azure-services. Beheerde identiteiten in App Service maken uw app veiliger doordat geheimen in uw app, zoals referenties in de verbindingsreeksen, worden verwijderd. In deze zelf studie gaat u beheerde identiteit toevoegen aan de voor beeld-web-app die u hebt gemaakt in een van de volgende zelf studies: 
 
-- [Tutorial: Build an ASP.NET app in Azure with SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)
-- [Tutorial: Build an ASP.NET Core and SQL Database app in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
+- [Zelf studie: een ASP.NET-app bouwen in azure met SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)
+- [Zelf studie: een ASP.NET Core-en SQL Database-app bouwen in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
 
 Wanneer u klaar bent, maakt uw voorbeeld-app veilig verbinding met SQL Database zonder dat een gebruikersnaam en wachtwoorden zijn vereist.
 
 > [!NOTE]
-> The steps covered in this tutorial support the following versions:
+> De stappen in deze zelf studie ondersteunen de volgende versies:
 > 
 > - .NET Framework 4.7.2
 > - .NET Core 2.2
 >
 
-What you will learn:
+Wat u leert:
 
 > [!div class="checklist"]
 > * Beheerde identiteiten inschakelen
 > * SQL Database toegang verlenen tot de beheerde identiteit
-> * Configure Entity Framework to use Azure AD authentication with SQL Database
-> * Connect to SQL Database from Visual Studio using Azure AD authentication
+> * Entity Framework configureren voor het gebruik van Azure AD-verificatie met SQL Database
+> * Verbinding maken met SQL Database vanuit Visual Studio met behulp van Azure AD-verificatie
 
 > [!NOTE]
->Azure AD authentication is _different_ from [Integrated Windows authentication](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) in on-premises Active Directory (AD DS). AD DS and Azure AD use completely different authentication protocols. Zie [Documentatie voor Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) voor meer informatie.
+>Azure AD-verificatie _wijkt af_ van [geïntegreerde Windows-authenticatie](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) in on-premises Active Directory (AD DS). AD DS en Azure AD gebruiken volledig verschillende verificatie protocollen. Zie [Documentatie voor Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) voor meer informatie.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-This article continues where you left off in [Tutorial: Build an ASP.NET app in Azure with SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) or [Tutorial: Build an ASP.NET Core and SQL Database app in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md). If you haven't already, follow one of the two tutorials first. Alternatively, you can adapt the steps for your own .NET app with SQL Database.
+In dit artikel gaat u verder met de [volgende zelf studie: een ASP.net-app bouwen in azure met SQL database](app-service-web-tutorial-dotnet-sqldatabase.md) of [zelf studie: een ASP.net core en SQL database app maken in azure app service](app-service-web-tutorial-dotnetcore-sqldb.md). Als u dat nog niet hebt gedaan, volgt u eerst een van de twee zelf studies. U kunt de stappen voor uw eigen .NET-app ook aanpassen met SQL Database.
 
-To debug your app using SQL Database as the back end, make sure that you've allowed client connection from your computer. If not, add the client IP by following the steps at [Manage server-level IP firewall rules using the Azure portal](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
+Als u fouten wilt opsporen in uw app met SQL Database als de back-end, zorgt u ervoor dat de client verbinding van uw computer is toegestaan. Als dat niet het geval is, voegt u het IP-adres van de client toe aan de hand van de stappen in [IP-firewall regels op server niveau beheren met de Azure Portal](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="grant-database-access-to-azure-ad-user"></a>Grant database access to Azure AD user
+## <a name="grant-database-access-to-azure-ad-user"></a>Database toegang verlenen aan Azure AD-gebruiker
 
-First enable Azure AD authentication to SQL Database by assigning an Azure AD user as the Active Directory admin of the SQL Database server. This user is different from the Microsoft account you used to sign up for your Azure subscription. It must be a user that you created, imported, synced, or invited into Azure AD. For more information on allowed Azure AD users, see [Azure AD features and limitations in SQL Database](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations).
+Schakel eerst Azure AD-verificatie in om SQL Database door een Azure AD-gebruiker toe te wijzen als Active Directory beheerder van de SQL Database-Server. Deze gebruiker wijkt af van de Microsoft-account die u hebt gebruikt om u aan te melden voor uw Azure-abonnement. Dit moet een gebruiker zijn die u hebt gemaakt, geïmporteerd, gesynchroniseerd of uitgenodigd voor Azure AD. Zie [Azure AD-functies en-beperkingen in SQL database](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)voor meer informatie over de toegestane Azure AD-gebruikers.
 
-If your Azure AD tenant doesn't have a user yet, create one by following the steps at [Add or delete users using Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md).
+Als uw Azure AD-Tenant nog geen gebruiker heeft, maakt u er een door de stappen te volgen op [gebruikers toevoegen of verwijderen met Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
-Find the object ID of the Azure AD user using the [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) and replace *\<user-principal-name>* . The result is saved to a variable.
+Zoek de object-ID van de Azure AD-gebruiker met behulp van de [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) en vervang *\<gebruiker-principal-naam >* . Het resultaat wordt opgeslagen in een variabele.
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
 ```
 > [!TIP]
-> To see the list of all user principal names in Azure AD, run `az ad user list --query [].userPrincipalName`.
+> Als u de lijst met alle principal-namen van gebruikers in azure AD wilt zien, voert u `az ad user list --query [].userPrincipalName`uit.
 >
 
-Add this Azure AD user as an Active Directory admin using [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) command in the Cloud Shell. In the following command, replace *\<server-name>* with the SQL Database server name (without the `.database.windows.net` suffix).
+Voeg deze Azure AD-gebruiker toe als Active Directory beheerder met behulp van [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) -opdracht in de Cloud shell. Vervang in de volgende opdracht *\<server naam >* door de naam van de SQL database-server (zonder het achtervoegsel `.database.windows.net`).
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
 ```
 
-For more information on adding an Active Directory admin, see [Provision an Azure Active Directory administrator for your Azure SQL Database Server](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)
+Zie [een Azure Active Directory beheerder voor uw Azure SQL database server inrichten](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) voor meer informatie over het toevoegen van een Active Directory-beheerder
 
-## <a name="set-up-visual-studio"></a>Set up Visual Studio
+## <a name="set-up-visual-studio"></a>Visual Studio instellen
 
 ### <a name="windows"></a>Windows
-Visual Studio for Windows is integrated with Azure AD authentication. To enable development and debugging in Visual Studio, add your Azure AD user in Visual Studio by selecting **File** > **Account Settings** from the menu, and click **Add an account**.
+Visual Studio voor Windows is geïntegreerd met Azure AD-verificatie. Als u de ontwikkeling en fout opsporing in Visual Studio wilt inschakelen, voegt u uw Azure AD-gebruiker in Visual Studio toe door **bestand** > **account instellingen** te selecteren in het menu en op **een account toevoegen**te klikken.
 
-To set the Azure AD user for Azure service authentication, select **Tools** > **Options** from the menu, then select **Azure Service Authentication** > **Account Selection**. Select the Azure AD user you added and click **OK**.
+Als u de Azure AD-gebruiker voor Azure-service verificatie wilt instellen, selecteert u **extra** > **Opties** in het menu en selecteert u vervolgens **Azure-service verificatie** > **account selecteren**. Selecteer de Azure AD-gebruiker die u hebt toegevoegd en klik op **OK**.
 
-You're now ready to develop and debug your app with the SQL Database as the back end, using Azure AD authentication.
+U kunt nu uw app ontwikkelen en fouten opsporen met de SQL Database als back-end, met behulp van Azure AD-verificatie.
 
 ### <a name="macos"></a>MacOS
 
-Visual Studio for Mac is not integrated with Azure AD authentication. However, the [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) library that you will use later can use tokens from Azure CLI. To enable development and debugging in Visual Studio, first you need to [install Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) on your local machine.
+Visual Studio voor Mac is niet geïntegreerd met Azure AD-verificatie. De bibliotheek [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) die u later gebruikt, kan echter gebruikmaken van tokens van Azure cli. Als u de ontwikkeling en fout opsporing in Visual Studio wilt inschakelen, moet u eerst [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) op uw lokale computer.
 
-Once Azure CLI is installed on your local machine, sign in to Azure CLI with the following command using your Azure AD user:
+Als Azure CLI is geïnstalleerd op uw lokale computer, meldt u zich met de volgende opdracht aan bij Azure CLI met behulp van uw Azure AD-gebruiker:
 
 ```bash
 az login --allow-no-subscriptions
 ```
-You're now ready to develop and debug your app with the SQL Database as the back end, using Azure AD authentication.
+U kunt nu uw app ontwikkelen en fouten opsporen met de SQL Database als back-end, met behulp van Azure AD-verificatie.
 
-## <a name="modify-your-project"></a>Modify your project
+## <a name="modify-your-project"></a>Uw project wijzigen
 
-The steps you follow for your project depends on whether it's an ASP.NET project or an ASP.NET Core project.
+De stappen die u voor uw project uitvoert, zijn afhankelijk van het feit of het een ASP.NET-project of een ASP.NET Core project is.
 
-- [Modify ASP.NET](#modify-aspnet)
-- [Modify ASP.NET Core](#modify-aspnet-core)
+- [ASP.NET wijzigen](#modify-aspnet)
+- [ASP.NET Core wijzigen](#modify-aspnet-core)
 
-### <a name="modify-aspnet"></a>Modify ASP.NET
+### <a name="modify-aspnet"></a>ASP.NET wijzigen
 
 Open Package Manager Console in Visual Studio en voeg het NuGet-pakket [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) toe:
 
@@ -116,15 +116,15 @@ Open Package Manager Console in Visual Studio en voeg het NuGet-pakket [Microsof
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
 ```
 
-In *Web.config*, working from the top of the file and make the following changes:
+In *Web. config*werkt u vanaf de bovenkant van het bestand en brengt u de volgende wijzigingen aan:
 
-- In `<configSections>`, add the following section declaration in it:
+- Voeg in `<configSections>`de volgende sectie declaratie toe:
 
     ```xml
     <section name="SqlAuthenticationProviders" type="System.Data.SqlClient.SqlAuthenticationProviderConfigurationSection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     ```
 
-- below the closing `</configSections>` tag, add the following XML code for `<SqlAuthenticationProviders>`.
+- Voeg onder de tag voor het sluiten van `</configSections>` de volgende XML-code toe voor `<SqlAuthenticationProviders>`.
 
     ```xml
     <SqlAuthenticationProviders>
@@ -134,13 +134,13 @@ In *Web.config*, working from the top of the file and make the following changes
     </SqlAuthenticationProviders>
     ```    
 
-- Find the connection string called `MyDbConnection` and replace its `connectionString` value with `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`. Replace _\<server-name>_ and _\<db-name>_ with your server name and database name.
+- Zoek de connection string met de naam `MyDbConnection` en vervang de `connectionString` waarde door `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`. Vervang _\<server naam >_ en _\<db-name >_ door de naam van de server en de data base.
 
-That's every thing you need to connect to SQL Database. When debugging in Visual Studio, your code uses the Azure AD user you configured in [Set up Visual Studio](#set-up-visual-studio). You'll set up the SQL Database server later to allow connection from the managed identity of your App Service app.
+Dat is alles wat u nodig hebt om verbinding te maken met SQL Database. Als u fouten opspoort in Visual Studio, gebruikt de code de Azure AD-gebruiker die u hebt geconfigureerd in [Visual Studio instellen](#set-up-visual-studio). U stelt de SQL Database Server later in om verbinding te maken met de beheerde identiteit van uw App Service-app.
 
-Type `Ctrl+F5` to run the app again. The same CRUD app in your browser is now connecting to the Azure SQL Database directly, using Azure AD authentication. This setup lets you run database migrations from Visual Studio.
+Typ `Ctrl+F5` om de app opnieuw uit te voeren. Dezelfde ruwe app in uw browser is nu rechtstreeks verbonden met de Azure SQL Database, met behulp van Azure AD-verificatie. Met deze installatie kunt u database migraties uitvoeren vanuit Visual Studio.
 
-### <a name="modify-aspnet-core"></a>Modify ASP.NET Core
+### <a name="modify-aspnet-core"></a>ASP.NET Core wijzigen
 
 Open Package Manager Console in Visual Studio en voeg het NuGet-pakket [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) toe:
 
@@ -148,13 +148,13 @@ Open Package Manager Console in Visual Studio en voeg het NuGet-pakket [Microsof
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
 ```
 
-In the [ASP.NET Core and SQL Database tutorial](app-service-web-tutorial-dotnetcore-sqldb.md), the `MyDbConnection` connection string isn't used at all because the local development environment uses a Sqlite database file, and the Azure production environment uses a connection string from App Service. With Active Directory authentication, you want both environments to use the same connection string. In *appsettings.json*, replace the value of the `MyDbConnection` connection string with:
+In de [zelf studie ASP.net core en SQL database](app-service-web-tutorial-dotnetcore-sqldb.md)wordt de `MyDbConnection` Connection String helemaal niet gebruikt omdat de lokale ontwikkel omgeving een SQLite-database bestand gebruikt en de Azure-productie omgeving een connection string van app service gebruikt. Met Active Directory-verificatie wilt u dat beide omgevingen dezelfde connection string gebruiken. Vervang in *appSettings. json*de waarde van de `MyDbConnection` connection string door:
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
 ```
 
-In *Startup.cs*, remove the code section that you added before:
+Verwijder in *Startup.cs*de sectie code die u hebt toegevoegd vóór:
 
 ```csharp
 // Use SQL Database if in Azure, otherwise, use SQLite
@@ -169,7 +169,7 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-And replace it with the following code:
+En vervang deze door de volgende code:
 
 ```csharp
 services.AddDbContext<MyDatabaseContext>(options => {
@@ -177,7 +177,7 @@ services.AddDbContext<MyDatabaseContext>(options => {
 });
 ```
 
-Next, you supply the Entity Framework database context with the access token for the SQL Database. In *Data\MyDatabaseContext.cs*, add the following code inside the curly braces of the empty `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` constructor:
+Vervolgens geeft u de Entity Framework database context met het toegangs token voor de SQL Database. Voeg in *Data\MyDatabaseContext.cs*de volgende code toe in de accolades van de lege `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)`-constructor:
 
 ```csharp
 var conn = (System.Data.SqlClient.SqlConnection)Database.GetDbConnection();
@@ -185,28 +185,28 @@ conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceT
 ```
 
 > [!NOTE]
-> This demonstration code is synchronous for clarity and simplicity.
+> Deze demonstratie code is synchroon voor duidelijkheid en eenvoud.
 
-That's every thing you need to connect to SQL Database. When debugging in Visual Studio, your code uses the Azure AD user you configured in [Set up Visual Studio](#set-up-visual-studio). You'll set up the SQL Database server later to allow connection from the managed identity of your App Service app. The `AzureServiceTokenProvider` class caches the token in memory and retrieves it from Azure AD just before expiration. You don't need any custom code to refresh the token.
+Dat is alles wat u nodig hebt om verbinding te maken met SQL Database. Als u fouten opspoort in Visual Studio, gebruikt de code de Azure AD-gebruiker die u hebt geconfigureerd in [Visual Studio instellen](#set-up-visual-studio). U stelt de SQL Database Server later in om verbinding te maken met de beheerde identiteit van uw App Service-app. De `AzureServiceTokenProvider`-klasse slaat het token in de cache op en haalt het op voor het verstrijken van Azure AD. U hebt geen aangepaste code nodig om het token te vernieuwen.
 
 > [!TIP]
-> If the Azure AD user you configured has access to multiple tenants, call `GetAccessTokenAsync("https://database.windows.net/", tenantid)` with the desired tenant ID to retrieve the proper access token.
+> Als de Azure AD-gebruiker die u hebt geconfigureerd toegang heeft tot meerdere tenants, roept u `GetAccessTokenAsync("https://database.windows.net/", tenantid)` aan met de gewenste Tenant-ID om het juiste toegangs token op te halen.
 
-Type `Ctrl+F5` to run the app again. The same CRUD app in your browser is now connecting to the Azure SQL Database directly, using Azure AD authentication. This setup lets you run database migrations from Visual Studio.
+Typ `Ctrl+F5` om de app opnieuw uit te voeren. Dezelfde ruwe app in uw browser is nu rechtstreeks verbonden met de Azure SQL Database, met behulp van Azure AD-verificatie. Met deze installatie kunt u database migraties uitvoeren vanuit Visual Studio.
 
-## <a name="use-managed-identity-connectivity"></a>Use managed identity connectivity
+## <a name="use-managed-identity-connectivity"></a>Beheerde identiteits connectiviteit gebruiken
 
-Next, you configure your App Service app to connect to SQL Database with a system-assigned managed identity.
+Vervolgens configureert u uw App Service-app om verbinding te maken met SQL Database met een door het systeem toegewezen beheerde identiteit.
 
-### <a name="enable-managed-identity-on-app"></a>Enable managed identity on app
+### <a name="enable-managed-identity-on-app"></a>Beheerde identiteit op de app inschakelen
 
-Als u een beheerde identiteit voor uw Azure-app wilt inschakelen, gebruikt u de opdracht [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) in de Cloud Shell. In the following command, replace *\<app-name>* .
+Als u een beheerde identiteit voor uw Azure-app wilt inschakelen, gebruikt u de opdracht [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) in de Cloud Shell. Vervang in de volgende opdracht *\<app-name >* .
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>
 ```
 
-Here's an example of the output:
+Hier volgt een voor beeld van de uitvoer:
 
 ```json
 {
@@ -217,10 +217,10 @@ Here's an example of the output:
 }
 ```
 
-### <a name="grant-permissions-to-managed-identity"></a>Grant permissions to managed identity
+### <a name="grant-permissions-to-managed-identity"></a>Machtigingen verlenen voor beheerde identiteit
 
 > [!NOTE]
-> If you want, you can add the identity to an [Azure AD group](../active-directory/fundamentals/active-directory-manage-groups.md), then grant SQL Database access to the Azure AD group instead of the identity. For example, the following commands add the managed identity from the previous step to a new group called _myAzureSQLDBAccessGroup_:
+> Als u wilt, kunt u de identiteit toevoegen aan een [Azure AD-groep](../active-directory/fundamentals/active-directory-manage-groups.md)en vervolgens SQL database toegang verlenen tot de Azure AD-groep in plaats van de identiteit. Met de volgende opdrachten wordt de beheerde identiteit uit de vorige stap bijvoorbeeld toegevoegd aan een nieuwe groep met de naam _myAzureSQLDBAccessGroup_:
 > 
 > ```azurecli-interactive
 > groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
@@ -230,13 +230,13 @@ Here's an example of the output:
 > ```
 >
 
-Meld u in de Cloud Shell aan bij SQL Database met behulp van de SQLCMD-opdracht. Replace _\<server-name>_ with your SQL Database server name, _\<db-name>_ with the database name your app uses, and _\<aad-user-name>_ and _\<aad-password>_ with your Azure AD user's credentials.
+Meld u in de Cloud Shell aan bij SQL Database met behulp van de SQLCMD-opdracht. Vervang _\<server naam >_ door de naam van uw SQL database-server, _\<db-naam >_ met de database naam die uw app gebruikt en _\<aad-user-name >_ en _\<Aad-Password_ > met de referenties van uw Azure AD-gebruiker.
 
 ```azurecli-interactive
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-In the SQL prompt for the database you want, run the following commands to add the Azure AD group and grant the permissions your app needs. Bijvoorbeeld: 
+Voer in de SQL-prompt voor de gewenste data base de volgende opdrachten uit om de Azure AD-groep toe te voegen en de machtigingen te verlenen die uw app nodig heeft. Bijvoorbeeld: 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
@@ -246,13 +246,13 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* is the name of the managed identity in Azure AD. Since it's system-assigned, it's always the same as the name of your App Service app. To grant permissions for an Azure AD group, use the group's display name instead (for example, *myAzureSQLDBAccessGroup*).
+*\<id-naam >* de naam is van de beheerde identiteit in azure AD. Omdat de computer is toegewezen, is deze altijd hetzelfde als de naam van uw App Service-app. Als u machtigingen wilt verlenen voor een Azure AD-groep, gebruikt u in plaats daarvan de weergave naam van de groep (bijvoorbeeld *myAzureSQLDBAccessGroup*).
 
 Typ `EXIT` om terug te keren naar de Cloud Shell-prompt.
 
 ### <a name="modify-connection-string"></a>De verbindingsreeks wijzigen
 
-Remember that the same changes you made in *Web.config* or *appsettings.json* works with the managed identity, so the only thing to do is to remove the existing connection string in App Service, which Visual Studio created deploying your app the first time. Use the following command, but replace *\<app-name>* with the name of your app.
+Houd er rekening mee dat dezelfde wijzigingen die u hebt aangebracht in *Web. config* of *appSettings. json* werkt met de beheerde identiteit, dus het enige wat u moet doen, is om de bestaande connection string te verwijderen in app service, waarmee Visual Studio de eerste keer uw app implementeert. Gebruik de volgende opdracht, maar vervang *\<app-naam >* door de naam van uw app.
 
 ```azurecli-interactive
 az webapp config connection-string delete --resource-group myResourceGroup --name <app-name> --setting-names MyDbConnection
@@ -262,13 +262,13 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 U hoeft nu alleen nog maar uw wijzigingen naar Azure te publiceren.
 
-**If you came from [Tutorial: Build an ASP.NET app in Azure with SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)** , publish your changes in Visual Studio. Klik in de **Solution Explorer** met de rechtermuisknop op uw project **DotNetAppSqlDb** en selecteer **Publiceren**.
+**Als u [een zelf studie hebt ontvangen: een ASP.net-app bouwen in Azure met SQL database](app-service-web-tutorial-dotnet-sqldatabase.md)** , uw wijzigingen in Visual Studio publiceren. Klik in de **Solution Explorer** met de rechtermuisknop op uw project **DotNetAppSqlDb** en selecteer **Publiceren**.
 
 ![Publiceren vanuit Solution Explorer](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
 Klik op de publicatiepagina op **Publiceren**. 
 
-**If you came from [Tutorial: Build an ASP.NET Core and SQL Database app in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)** , publish your changes using Git, with the following commands:
+**Als u [een zelf studie hebt ontvangen: een ASP.net core-en SQL database-app bouwen in azure app service](app-service-web-tutorial-dotnetcore-sqldb.md)** , uw wijzigingen publiceren met git, met de volgende opdrachten:
 
 ```bash
 git commit -am "configure managed identity"
@@ -290,8 +290,8 @@ Wat u hebt geleerd:
 > [!div class="checklist"]
 > * Beheerde identiteiten inschakelen
 > * SQL Database toegang verlenen tot de beheerde identiteit
-> * Configure Entity Framework to use Azure AD authentication with SQL Database
-> * Connect to SQL Database from Visual Studio using Azure AD authentication
+> * Entity Framework configureren voor het gebruik van Azure AD-verificatie met SQL Database
+> * Verbinding maken met SQL Database vanuit Visual Studio met behulp van Azure AD-verificatie
 
 Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aan uw web-app kunt toewijzen.
 

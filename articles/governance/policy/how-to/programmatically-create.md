@@ -1,6 +1,6 @@
 ---
 title: Programmatisch beleid maken
-description: This article walks you through programmatically creating and managing policies for Azure Policy with Azure CLI, Azure PowerShell, and REST API.
+description: Dit artikel helpt u bij het programmatisch maken en beheren van beleids regels voor Azure Policy met Azure CLI, Azure PowerShell en REST API.
 ms.date: 01/31/2019
 ms.topic: conceptual
 ms.openlocfilehash: 98af714e5aaf8e103b81e77c9960589fa0ee6b77
@@ -12,19 +12,19 @@ ms.locfileid: "74463535"
 ---
 # <a name="programmatically-create-policies"></a>Programmatisch beleid maken
 
-This article walks you through programmatically creating and managing policies. Azure Policy definitions enforce different rules and effects over your resources. Enforcement makes sure that resources stay compliant with your corporate standards and service level agreements.
+Dit artikel helpt u bij het programmatisch beleid maken en beheren. Met Azure Policy definities worden verschillende regels en effecten voor uw resources afgedwongen. Afdwingen zorgt ervoor dat resources voldoen aan uw bedrijfsnormen en serviceovereenkomsten blijven.
 
-For information about compliance, see [getting compliance data](get-compliance-data.md).
+Zie [nalevings gegevens ophalen](get-compliance-data.md)voor meer informatie over naleving.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Before you begin, make sure that the following prerequisites are met:
+Voordat u begint, zorg ervoor dat de volgende vereisten wordt voldaan:
 
 1. Installeer de [ARMClient](https://github.com/projectkudu/ARMClient) als u dit nog niet hebt gedaan. Dit is een hulpprogramma waarmee HTTP-aanvragen worden verzonden naar Azure Resource Manager-API’s.
 
-1. Update your Azure PowerShell module to the latest version. Zie [Azure PowerShell-module installeren](/powershell/azure/install-az-ps) voor gedetailleerde informatie. For more information about the latest version, see [Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
+1. Werk de Azure PowerShell-module bij naar de nieuwste versie. Zie [Azure PowerShell-module installeren](/powershell/azure/install-az-ps) voor gedetailleerde informatie. Zie [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)voor meer informatie over de meest recente versie.
 
-1. Register the Azure Policy Insights resource provider using Azure PowerShell to validate that your subscription works with the resource provider. To register a resource provider, you must have permission to run the register action operation for the resource provider. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Voer de volgende opdracht uit om de resourceprovider te registreren:
+1. Registreer de Azure Policy Insights-resource provider met behulp van Azure PowerShell om te controleren of uw abonnement werkt met de resource provider. Als u wilt een resourceprovider registreren, moet u gemachtigd zijn om uit te voeren van de registreeractie voor de resourceprovider. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Voer de volgende opdracht uit om de resourceprovider te registreren:
 
    ```azurepowershell-interactive
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
@@ -32,15 +32,15 @@ Before you begin, make sure that the following prerequisites are met:
 
    Zie [Resourceproviders en -typen](../../../azure-resource-manager/resource-manager-supported-services.md) voor meer informatie over het registreren en weergeven van resourceproviders.
 
-1. If you haven't already, install Azure CLI. You can get the latest version at [Install Azure CLI on Windows](/cli/azure/install-azure-cli-windows).
+1. Als u niet hebt gedaan, installeert u Azure CLI. U kunt de nieuwste versie downloaden bij de [installatie van Azure cli in Windows](/cli/azure/install-azure-cli-windows).
 
-## <a name="create-and-assign-a-policy-definition"></a>Create and assign a policy definition
+## <a name="create-and-assign-a-policy-definition"></a>Maken en een beleidsdefinitie toewijzen
 
-The first step toward better visibility of your resources is to create and assign policies over your resources. The next step is to learn how to programmatically create and assign a policy. The example policy audits storage accounts that are open to all public networks using PowerShell, Azure CLI, and HTTP requests.
+De eerste stap voor beter inzicht in uw resources is het maken en toewijzen van beleid voor uw resources. De volgende stap is om te leren hoe u programmatisch maken en toewijzen van een beleid. De voorbeeldbeleid controleert storage-accounts die zijn geopend met alle openbare netwerken met behulp van PowerShell, Azure CLI en HTTP-aanvragen.
 
-### <a name="create-and-assign-a-policy-definition-with-powershell"></a>Create and assign a policy definition with PowerShell
+### <a name="create-and-assign-a-policy-definition-with-powershell"></a>Maken en toewijzen van een beleidsdefinitie met PowerShell
 
-1. Use the following JSON snippet to create a JSON file with the name AuditStorageAccounts.json.
+1. Gebruik de volgende JSON-codefragment om te maken van een JSON-bestand met de naam AuditStorageAccounts.json.
 
    ```json
    {
@@ -61,23 +61,23 @@ The first step toward better visibility of your resources is to create and assig
    }
    ```
 
-   For more information about authoring a policy definition, see [Azure Policy Definition Structure](../concepts/definition-structure.md).
+   Zie [Azure Policy Definition structure](../concepts/definition-structure.md)(Engelstalig) voor meer informatie over het ontwerpen van een beleids definitie.
 
-1. Run the following command to create a policy definition using the AuditStorageAccounts.json file.
+1. Voer de volgende opdracht om te maken van een beleidsdefinitie met behulp van het bestand AuditStorageAccounts.json.
 
    ```azurepowershell-interactive
    New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   The command creates a policy definition named _Audit Storage Accounts Open to Public Networks_.
-   For more information about other parameters that you can use, see [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
+   Met de opdracht wordt een beleids definitie gemaakt met de naam _audit Storage accounts open open bare netwerken_.
+   Zie [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition)voor meer informatie over andere para meters die u kunt gebruiken.
 
-   When called without location parameters, `New-AzPolicyDefinition` defaults to saving the policy definition in the selected subscription of the sessions context. To save the definition to a different location, use the following parameters:
+   Als de para meters zonder locatie worden aangeroepen, wordt `New-AzPolicyDefinition` standaard ingesteld op het opslaan van de beleids definitie in het geselecteerde abonnement van de sessie context. Als u wilt de definitie van de opslaan naar een andere locatie, gebruik de volgende parameters:
 
-   - **SubscriptionId** - Save to a different subscription. Requires a _GUID_ value.
-   - **ManagementGroupName** - Save to a management group. Requires a _string_ value.
+   - **SubscriptionId** : opslaan in een ander abonnement. Vereist een _GUID_ -waarde.
+   - **ManagementGroupName** : Sla het bestand op in een beheer groep. Vereist een _teken reeks_ waarde.
 
-1. After you create your policy definition, you can create a policy assignment by running the following commands:
+1. Nadat u de beleidsdefinitie van uw maakt, kunt u een beleidstoewijzing maken door het uitvoeren van de volgende opdrachten:
 
    ```azurepowershell-interactive
    $rg = Get-AzResourceGroup -Name 'ContosoRG'
@@ -85,23 +85,23 @@ The first step toward better visibility of your resources is to create and assig
    New-AzPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId
    ```
 
-   Replace _ContosoRG_ with the name of your intended resource group.
+   Vervang _ContosoRG_ door de naam van de gewenste resource groep.
 
-   The **Scope** parameter on `New-AzPolicyAssignment` works with management group, subscription, resource group, or a single resource. The parameter uses a full resource path, which the **ResourceId** property on `Get-AzResourceGroup` returns. The pattern for **Scope** for each container is as follows. Replace `{rName}`, `{rgName}`, `{subId}`, and `{mgName}` with your resource name, resource group name, subscription ID, and management group name, respectively.
-   `{rType}` would be replaced with the **resource type** of the resource, such as `Microsoft.Compute/virtualMachines` for a VM.
+   De **bereik** parameter op `New-AzPolicyAssignment` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De para meter gebruikt een volledig bronpad, die de eigenschap **ResourceID** op `Get-AzResourceGroup` retourneert. Het patroon voor de **Scope** voor elke container is als volgt. Vervang `{rName}`, `{rgName}`, `{subId}`en `{mgName}` door de resource naam, de naam van de resource groep, de abonnements-ID en de naam van de beheer groep.
+   `{rType}` wordt vervangen door het **resource type** van de resource, zoals `Microsoft.Compute/virtualMachines` voor een virtuele machine.
 
-   - Resource - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Resource group - `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Subscription - `/subscriptions/{subId}/`
-   - Management group - `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Resource-`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Resource groep-`/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Abonnement-`/subscriptions/{subId}/`
+   - Beheer groep-`/providers/Microsoft.Management/managementGroups/{mgName}`
 
-For more information about managing resource policies using the Azure Resource Manager PowerShell module, see [Az.Resources](/powershell/module/az.resources/#policies).
+Zie [AZ. resources](/powershell/module/az.resources/#policies)(Engelstalig) voor meer informatie over het beheren van bron beleid met behulp van de Azure Resource Manager Power shell-module.
 
-### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Create and assign a policy definition using ARMClient
+### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Maken en toewijzen van een beleidsdefinitie ARMClient
 
-Use the following procedure to create a policy definition.
+Gebruik de volgende procedure om de beleidsdefinitie van een te maken.
 
-1. Copy the following JSON snippet to create a JSON file. You'll call the file in the next step.
+1. Kopieer de volgende JSON-fragment voor het maken van een JSON-bestand. Noem het bestand in de volgende stap.
 
    ```json
    "properties": {
@@ -129,7 +129,7 @@ Use the following procedure to create a policy definition.
    }
    ```
 
-1. Create the policy definition using one of the following calls:
+1. Maak de beleidsdefinitie met een van de volgende aanroepen:
 
    ```console
    # For defining a policy in a subscription
@@ -139,13 +139,13 @@ Use the following procedure to create a policy definition.
    armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
    ```
 
-   Replace the preceding {subscriptionId} with the ID of your subscription or {managementGroupId} with the ID of your [management group](../../management-groups/overview.md).
+   Vervang de voor gaande {subscriptionId} met de ID van uw abonnement of {managementGroupId} door de ID van uw [beheer groep](../../management-groups/overview.md).
 
-   For more information about the structure of the query, see [Azure Policy Definitions – Create or Update](/rest/api/resources/policydefinitions/createorupdate) and [Policy Definitions – Create or Update At Management Group](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   Zie voor meer informatie over de structuur van de query [Azure Policy definities – maken of bijwerken](/rest/api/resources/policydefinitions/createorupdate) en [beleids definities: maken of bijwerken in beheer groep](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
 
-Use the following procedure to create a policy assignment and assign the policy definition at the resource group level.
+Gebruik de volgende procedure een beleidstoewijzing maken en toewijzen van de beleidsdefinitie op het niveau van de resource.
 
-1. Copy the following JSON snippet to create a JSON policy assignment file. Replace example information in &lt;&gt; symbols with your own values.
+1. Kopieer de volgende JSON-fragment voor het maken van een JSON-bestand voor het toewijzen van beleid. Vervang voorbeeld informatie in &lt;&gt; symbolen door uw eigen waarden.
 
    ```json
    {
@@ -159,21 +159,21 @@ Use the following procedure to create a policy assignment and assign the policy 
    }
    ```
 
-1. Create the policy assignment using the following call:
+1. Maak de toewijzing van beleid met behulp van de volgende oproep verzenden:
 
    ```console
    armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2017-06-01-preview" @<path to Assignment JSON file>
    ```
 
-   Replace example information in &lt;&gt; symbols with your own values.
+   Vervang voorbeeld informatie in &lt;&gt; symbolen door uw eigen waarden.
 
-   For more information about making HTTP calls to the REST API, see [Azure REST API Resources](/rest/api/resources/).
+   Zie [Azure rest API resources](/rest/api/resources/)(Engelstalig) voor meer informatie over het maken van http-aanroepen naar de rest API.
 
-### <a name="create-and-assign-a-policy-definition-with-azure-cli"></a>Create and assign a policy definition with Azure CLI
+### <a name="create-and-assign-a-policy-definition-with-azure-cli"></a>Maken en toewijzen van een beleidsdefinitie met Azure CLI
 
-To create a policy definition, use the following procedure:
+Gebruik de volgende procedure voor het maken van een beleidsdefinitie:
 
-1. Copy the following JSON snippet to create a JSON policy assignment file.
+1. Kopieer de volgende JSON-fragment voor het maken van een JSON-bestand voor het toewijzen van beleid.
 
    ```json
    {
@@ -194,55 +194,55 @@ To create a policy definition, use the following procedure:
    }
    ```
 
-   For more information about authoring a policy definition, see [Azure Policy Definition Structure](../concepts/definition-structure.md).
+   Zie [Azure Policy Definition structure](../concepts/definition-structure.md)(Engelstalig) voor meer informatie over het ontwerpen van een beleids definitie.
 
-1. Run the following command to create a policy definition:
+1. Voer de volgende opdracht om een beleidsdefinitie maken:
 
    ```azurecli-interactive
    az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
    ```
 
-   The command creates a policy definition named _Audit Storage Accounts Open to Public Networks_.
-   For more information about other parameters that you can use, see [az policy definition create](/cli/azure/policy/definition#az-policy-definition-create).
+   Met de opdracht wordt een beleids definitie gemaakt met de naam _audit Storage accounts open open bare netwerken_.
+   Zie [AZ Policy Definition Create](/cli/azure/policy/definition#az-policy-definition-create)(Engelstalig) voor meer informatie over andere para meters die u kunt gebruiken.
 
-   When called without location parameters, `az policy definition creation` defaults to saving the policy definition in the selected subscription of the sessions context. To save the definition to a different location, use the following parameters:
+   Als de para meters zonder locatie worden aangeroepen, wordt `az policy definition creation` standaard ingesteld op het opslaan van de beleids definitie in het geselecteerde abonnement van de sessie context. Als u wilt de definitie van de opslaan naar een andere locatie, gebruik de volgende parameters:
 
-   - **--subscription** - Save to a different subscription. Requires a _GUID_ value for the subscription ID or a _string_ value for the subscription name.
-   - **--management-group** - Save to a management group. Requires a _string_ value.
+   - **--abonnement** : Sla het bestand op in een ander abonnement. Vereist een _GUID_ -waarde voor de abonnements-id of een _teken reeks_ waarde voor de naam van het abonnement.
+   - **--beheer-groep** -opslaan in een beheer groep. Vereist een _teken reeks_ waarde.
 
-1. Use the following command to create a policy assignment. Replace example information in &lt;&gt; symbols with your own values.
+1. Gebruik de volgende opdracht om een beleidstoewijzing te maken. Vervang voorbeeld informatie in &lt;&gt; symbolen door uw eigen waarden.
 
    ```azurecli-interactive
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   The **--scope** parameter on `az policy assignment create` works with management group, subscription, resource group, or a single resource. The parameter uses a full resource path. The pattern for **--scope** for each container is as follows. Replace `{rName}`, `{rgName}`, `{subId}`, and `{mgName}` with your resource name, resource group name, subscription ID, and management group name, respectively. `{rType}` would be replaced with the **resource type** of the resource, such as `Microsoft.Compute/virtualMachines` for a VM.
+   De para meter **--Scope** op `az policy assignment create` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De para meter gebruikt een volledig bronpad. Het patroon voor de **Scope** voor elke container is als volgt. Vervang `{rName}`, `{rgName}`, `{subId}`en `{mgName}` door de resource naam, de naam van de resource groep, de abonnements-ID en de naam van de beheer groep. `{rType}` wordt vervangen door het **resource type** van de resource, zoals `Microsoft.Compute/virtualMachines` voor een virtuele machine.
 
-   - Resource - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Resource group - `/subscriptions/{subID}/resourceGroups/{rgName}`
-   - Subscription - `/subscriptions/{subID}`
-   - Management group - `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Resource-`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Resource groep-`/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Abonnement-`/subscriptions/{subID}`
+   - Beheer groep-`/providers/Microsoft.Management/managementGroups/{mgName}`
 
-You can get the Azure Policy Definition ID by using PowerShell with the following command:
+U kunt de Azure Policy definitie-ID ophalen met behulp van Power shell met de volgende opdracht:
 
 ```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'
 ```
 
-The policy definition ID for the policy definition that you created should resemble the following example:
+De beleidstoewijzings-ID voor de beleidsdefinitie die u hebt gemaakt, moet lijken op het volgende voorbeeld:
 
 ```output
 "/subscription/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks"
 ```
 
-For more information about how you can manage resource policies with Azure CLI, see [Azure CLI Resource Policies](/cli/azure/policy?view=azure-cli-latest).
+Zie [Azure cli-resource beleid](/cli/azure/policy?view=azure-cli-latest)voor meer informatie over hoe u resource beleid kunt beheren met Azure cli.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Review the following articles for more information about the commands and queries in this article.
+Raadpleeg de volgende artikelen voor meer informatie over de opdrachten en query's in dit artikel.
 
-- [Azure REST API Resources](/rest/api/resources/)
-- [Azure PowerShell Modules](/powershell/module/az.resources/#policies)
-- [Azure CLI Policy Commands](/cli/azure/policy?view=azure-cli-latest)
-- [Azure Policy Insights resource provider REST API reference](/rest/api/policy-insights)
+- [Azure REST API-resources](/rest/api/resources/)
+- [Azure PowerShell modules](/powershell/module/az.resources/#policies)
+- [Azure CLI-beleids opdrachten](/cli/azure/policy?view=azure-cli-latest)
+- [Naslag informatie over REST API van Azure Policy Insights-resource provider](/rest/api/policy-insights)
 - [Uw resources organiseren met Azure-beheergroepen](../../management-groups/overview.md).

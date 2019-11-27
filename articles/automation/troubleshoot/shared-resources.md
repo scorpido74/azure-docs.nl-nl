@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot errors with Azure Automation shared resources
-description: Learn how to troubleshoot issues with Azure Automation shared resources
+title: Fouten met Azure Automation gedeelde resources oplossen
+description: Meer informatie over het oplossen van problemen met Azure Automation gedeelde bronnen
 services: automation
 author: bobbytreed
 ms.author: robreed
@@ -15,35 +15,35 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231537"
 ---
-# <a name="troubleshoot-errors-with-shared-resources"></a>Troubleshoot errors with shared resources
+# <a name="troubleshoot-errors-with-shared-resources"></a>Fouten met gedeelde resources oplossen
 
-This article discusses solutions to resolve issues that you may run across when using the shared resources in Azure Automation.
+In dit artikel worden oplossingen beschreven om problemen op te lossen die u kunt uitvoeren wanneer u de gedeelde resources in Azure Automation gebruikt.
 
 ## <a name="modules"></a>Modules
 
-### <a name="module-stuck-importing"></a>Scenario: A Module is stuck importing
+### <a name="module-stuck-importing"></a>Scenario: een module is blijven importeren
 
 #### <a name="issue"></a>Probleem
 
-A module is stuck in the **Importing** state when you import or update your modules in Azure automation.
+Wanneer u uw modules in azure Automation importeert of bijwerkt, wordt een module vastzitten **in de import** status.
 
 #### <a name="cause"></a>Oorzaak
 
-Importing PowerShell modules is a complex multi-step process. This process introduces the possibility of a module not importing correctly. If this issue occurs, the module you're importing can be stuck in a transient state. To learn more about this process, see [Importing a PowerShell Module](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
+Het importeren van Power shell-modules is een complexe proces voor meerdere stappen. Dit proces introduceert de mogelijkheid van een module die niet correct wordt geïmporteerd. Als dit probleem zich voordoet, kan de module die u wilt importeren vastzitten in een tijdelijke status. Zie [een Power shell-module importeren](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process)voor meer informatie over dit proces.
 
-#### <a name="resolution"></a>Resolutie
+#### <a name="resolution"></a>Oplossing
 
-To resolve this issue, you must remove the module that is stuck in the **Importing** state by using the [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) cmdlet. You can then retry importing the module.
+Om dit probleem op te lossen, moet u de module die in de **import** status zit, verwijderen met de cmdlet [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) . U kunt de module vervolgens opnieuw importeren.
 
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
-### <a name="update-azure-modules-importing"></a>Scenario: AzureRM modules are stuck importing after trying to update them
+### <a name="update-azure-modules-importing"></a>Scenario: AzureRM-modules zijn na het bijwerken blijvend geïmporteerd
 
 #### <a name="issue"></a>Probleem
 
-A banner with the following message stays in your account after trying to update your AzureRM modules:
+Een banner met het volgende bericht blijft in uw account na het bijwerken van uw AzureRM-modules:
 
 ```error
 Azure modules are being updated
@@ -51,53 +51,53 @@ Azure modules are being updated
 
 #### <a name="cause"></a>Oorzaak
 
-There is a known issue with updating the AzureRM modules in an Automation Account that is in a resource group with a numeric name that starts with 0.
+Er is een bekend probleem met het bijwerken van de AzureRM-modules in een Automation-account dat zich in een resource groep bevindt met een numerieke naam die begint met 0.
 
-#### <a name="resolution"></a>Resolutie
+#### <a name="resolution"></a>Oplossing
 
-To update your Azure modules in your Automation Account, it must be in a resource group that has an alphanumeric name. Resource groups with numeric names starting with 0 are unable to update AzureRM modules at this time.
+Als u uw Azure-modules in uw Automation-account wilt bijwerken, moet deze zich in een resource groep betreden die een alfanumerieke naam heeft. Resource groepen met een numerieke naam die begint met 0, kunnen op dit moment geen AzureRM-modules bijwerken.
 
-### <a name="module-fails-to-import"></a>Scenario: Module fails to import or cmdlets can't be executed after importing
-
-#### <a name="issue"></a>Probleem
-
-A module fails to import or imports successfully, but no cmdlets are extracted.
-
-#### <a name="cause"></a>Oorzaak
-
-Some common reasons that a module might not successfully import to Azure Automation are:
-
-* The structure doesn't match the structure that Automation needs it to be in.
-* The module depends on another module that hasn't been deployed to your Automation account.
-* The module is missing its dependencies in the folder.
-* The `New-AzureRmAutomationModule` cmdlet is being used to upload the module, and you haven't given the full storage path or haven't loaded the module by using a publicly accessible URL.
-
-#### <a name="resolution"></a>Resolutie
-
-Any of the following solutions fix the problem:
-
-* Make sure that the module follows the following format: ModuleName.Zip **->** ModuleName or Version Number **->** (ModuleName.psm1, ModuleName.psd1)
-* Open the .psd1 file and see if the module has any dependencies. If it does, upload these modules to the Automation account.
-* Make sure that any referenced .dlls are present in the module folder.
-
-### <a name="all-modules-suspended"></a>Scenario: Update-AzureModule.ps1 suspends when updating modules
+### <a name="module-fails-to-import"></a>Scenario: de module kan niet worden geïmporteerd of cmdlets kunnen niet worden uitgevoerd na het importeren
 
 #### <a name="issue"></a>Probleem
 
-When using the [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook to update your Azure modules the module update the update process gets suspended.
+Een module kan niet worden geïmporteerd of geïmporteerd, maar er worden geen cmdlets geëxtraheerd.
 
 #### <a name="cause"></a>Oorzaak
 
-The default setting to determine how many modules get updated simultaneously is 10 when using the `Update-AzureModule.ps1` script. The update process is prone to errors when too many modules are being updated at the same time.
+Enkele veelvoorkomende redenen waarom een module mogelijk niet met succes kan worden geïmporteerd naar Azure Automation zijn:
 
-#### <a name="resolution"></a>Resolutie
+* De structuur komt niet overeen met de structuur waarin de automatisering zich moet bevinden.
+* De module is afhankelijk van een andere module die niet is geïmplementeerd in uw Automation-account.
+* De afhankelijkheden van de module ontbreken in de map.
+* De cmdlet `New-AzureRmAutomationModule` wordt gebruikt om de module te uploaden en u hebt niet het volledige opslagpad opgegeven of u hebt de module niet geladen met behulp van een openbaar toegankelijke URL.
 
-It's not common that all the AzureRM modules are required in the same Automation account. It's recommended to only import the AzureRM modules that you need.
+#### <a name="resolution"></a>Oplossing
+
+Het probleem wordt opgelost met een van de volgende oplossingen:
+
+* Zorg ervoor dat de module de volgende indeling heeft: module naam. zip **->** module of versie nummer **->** (module naam. psm1, module naam. psd1)
+* Open het. psd1-bestand en controleer of de module afhankelijkheden heeft. Als dit het geval is, uploadt u deze modules naar het Automation-account.
+* Zorg ervoor dat alle verwijzingen. dll-bestanden aanwezig zijn in de map module.
+
+### <a name="all-modules-suspended"></a>Scenario: Update-AzureModule. ps1 wordt onderbroken bij het bijwerken van modules
+
+#### <a name="issue"></a>Probleem
+
+Wanneer u het runbook [Update-AzureModule. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) gebruikt om uw Azure-modules bij te werken, wordt het update proces door de module bijgewerkt.
+
+#### <a name="cause"></a>Oorzaak
+
+De standaard instelling om te bepalen hoeveel modules tegelijk worden bijgewerkt, is 10 wanneer u het `Update-AzureModule.ps1` script gebruikt. Het update proces is gevoelig voor fouten wanneer te veel modules tegelijk worden bijgewerkt.
+
+#### <a name="resolution"></a>Oplossing
+
+Het is niet gebruikelijk dat alle AzureRM-modules in hetzelfde Automation-account zijn vereist. Het is raadzaam om alleen de AzureRM-modules te importeren die u nodig hebt.
 
 > [!NOTE]
-> Avoid importing the **AzureRM** module. Importing the **AzureRM** modules causes all **AzureRM.\*** modules to be imported, this is not recommened.
+> Vermijd het importeren van de **AzureRM** -module. Als u de **AzureRM** -modules importeert, worden alle **AzureRM.\*** -modules geïmporteerd. Dit is niet kunt.
 
-If the update process suspends, you need to add the `SimultaneousModuleImportJobCount` parameter to the `Update-AzureModules.ps1` script and provide a lower value than the default that is 10. It's recommended if you implement this logic, to start with a value of 3 or 5. `SimultaneousModuleImportJobCount` is a parameter of the `Update-AutomationAzureModulesForAccount` system runbook that is used to update Azure modules. This change makes the process run longer, but has a better chance of completing. The following example shows the parameter and where to put it in the runbook:
+Als het update proces wordt onderbroken, moet u de para meter `SimultaneousModuleImportJobCount` toevoegen aan het `Update-AzureModules.ps1` script en een lagere waarde opgeven dan de standaard die 10 is. Het wordt aanbevolen als u deze logica implementeert om te beginnen met een waarde van 3 of 5. `SimultaneousModuleImportJobCount` is een para meter van het `Update-AutomationAzureModulesForAccount` systeem-runbook dat wordt gebruikt om Azure-modules bij te werken. Met deze wijziging wordt het proces langer uitgevoerd, maar heeft het een grotere kans om te volt ooien. In het volgende voor beeld ziet u de para meter en waar u deze in het runbook plaatst:
 
  ```powershell
          $Body = @"
@@ -116,13 +116,13 @@ If the update process suspends, you need to add the `SimultaneousModuleImportJob
 "@
 ```
 
-## <a name="run-as-accounts"></a>Run As accounts
+## <a name="run-as-accounts"></a>Run as-accounts
 
-### <a name="unable-create-update"></a>Scenario: You're unable to create or update a Run As account
+### <a name="unable-create-update"></a>Scenario: u kunt een uitvoeren als-account niet maken of bijwerken
 
 #### <a name="issue"></a>Probleem
 
-When you try to create or update a Run As account, you receive an error similar to the following error message:
+Wanneer u een uitvoeren als-account probeert te maken of bij te werken, wordt een fout bericht van de volgende strekking weer gegeven:
 
 ```error
 You do not have permissions to create…
@@ -130,19 +130,19 @@ You do not have permissions to create…
 
 #### <a name="cause"></a>Oorzaak
 
-You don't have the permissions that you need to create or update the Run As account or the resource is locked at a resource group level.
+U hebt niet de machtigingen die u nodig hebt om het uitvoeren als-account te maken of bij te werken, of de resource is vergrendeld op het niveau van een resource groep.
 
-#### <a name="resolution"></a>Resolutie
+#### <a name="resolution"></a>Oplossing
 
-To create or update a Run As account, you must have appropriate permissions to the various resources used by the Run As account. To learn about the permissions needed to create or update a Run As account, see [Run As account permissions](../manage-runas-account.md#permissions).
+Als u een uitvoeren als-account wilt maken of bijwerken, moet u de juiste machtigingen hebben voor de verschillende resources die worden gebruikt door het run as-account. Zie [Run as-account machtigingen](../manage-runas-account.md#permissions)voor meer informatie over de machtigingen die nodig zijn om een uitvoeren als-account te maken of bij te werken.
 
-If the issue is because of a lock, verify that the lock is ok to remove it. Then navigate to the resource that is locked, right-click the lock and choose **Delete** to remove the lock.
+Als het probleem wordt veroorzaakt door een vergren deling, controleert u of de vergren deling is OK om deze te verwijderen. Ga vervolgens naar de resource die is vergrendeld, klik met de rechter muisknop op de vergren deling en kies **verwijderen** om de vergren deling te verwijderen.
 
-### <a name="iphelper"></a>Scenario: You receive the error "Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'" when executing a runbook.
+### <a name="iphelper"></a>Scenario: u ontvangt de fout ' kan geen ingangs punt vinden met de naam ' GetPerAdapterInfo ' in DLL ' iplpapi. dll ' ' tijdens het uitvoeren van een runbook.
 
 #### <a name="issue"></a>Probleem
 
-When executing a runbook you receive the following exception:
+Wanneer u een runbook uitvoert, wordt de volgende uitzonde ring weer gegeven:
 
 ```error
 Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
@@ -150,11 +150,11 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>Oorzaak
 
-This error is most likely caused by an incorrectly configured [Run As Account](../manage-runas-account.md).
+Deze fout wordt waarschijnlijk veroorzaakt door een onjuist geconfigureerd [uitvoeren als-account](../manage-runas-account.md).
 
-#### <a name="resolution"></a>Resolutie
+#### <a name="resolution"></a>Oplossing
 
-Make sure your [Run As Account](../manage-runas-account.md) is properly configured. Once it is configured correctly, ensure you have the proper code in your runbook to authenticate with Azure. The following example shows a snippet of code to authenticate to Azure in a runbook using a Run As Account.
+Zorg ervoor dat het [uitvoeren als-account](../manage-runas-account.md) correct is geconfigureerd. Zodra de configuratie correct is geconfigureerd, controleert u of u de juiste code in uw runbook hebt om te verifiëren met Azure. In het volgende voor beeld ziet u een code fragment voor het verifiëren van Azure in een runbook met behulp van een run as-account.
 
 ```powershell
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
@@ -164,8 +164,8 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
 
 ## <a name="next-steps"></a>Volgende stappen
 
-If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
 * Krijg antwoorden van Azure-experts op [Azure-Forums](https://azure.microsoft.com/support/forums/)
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport), het officiële Microsoft Azure-account voor het verbeteren van de gebruikerservaring door de Azure-community in contact te brengen met de juiste resources: antwoorden, ondersteuning en experts.
-* If you need more help, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.
+* Als u meer hulp nodig hebt, kunt u een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

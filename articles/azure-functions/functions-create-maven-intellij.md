@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="set-up-your-development-environment"></a>Uw ontwikkelomgeving instellen
+## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
 
 Als u een functie wilt ontwikkelen met Java en IntelliJ, installeert u de volgende software:
 
@@ -44,7 +44,7 @@ Als u een functie wilt ontwikkelen met Java en IntelliJ, installeert u de volgen
 1. Selecteer in het venster **New Project** **maven** in het linkerdeel venster.
 1. Schakel het selectie vakje **maken op basis van archetype** in en selecteer vervolgens **archetype toevoegen** voor de [Azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
 1. In het venster **archetype toevoegen** vult u de velden als volgt in:
-    - _GroupId_: com.microsoft.azure
+    - _GroupId_: com. micro soft. Azure
     - _ArtifactId_: Azure-functions-archetype
     - _Versie_: gebruik de nieuwste versie **1,22** van [de centrale opslag plaats](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![een Maven-project maken van archetype in IntelliJ-idee](media/functions-create-first-java-intellij/functions-create-intellij.png)  

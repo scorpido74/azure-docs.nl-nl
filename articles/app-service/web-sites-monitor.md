@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7edff127bb981db985bebb41740744f325306bc8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470119"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546199"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Apps in Azure App Service bewaken
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) biedt ingebouwde bewakings functionaliteit voor web-apps, mobiele back-ends en API-apps in de [Azure Portal](https://portal.azure.com).
 
-In de Azure Portal kunt u *quota's* en *metrische gegevens* voor een app bekijken, het app service plan controleren en automatisch *waarschuwingen* en *schalen* instellen die zijn gebaseerd op de metrische gegevens.
+In de Azure Portal kunt u *quota's* en *metrische gegevens* voor een app bekijken en app service plannen, en *waarschuwingen* en *Automatische schaling* instellen die zijn gebaseerd op metrische gegevens.
 
 ## <a name="understand-quotas"></a>Meer informatie over quota's
 
@@ -46,7 +46,7 @@ Quota voor gratis of gedeelde apps zijn:
 | **Bandbreedte** | De totale hoeveelheid uitgaande band breedte die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
 | **System** | De totale hoeveelheid toegestane opslag ruimte. |
 
-Het enige quotum dat van toepassing is op apps die worden gehost in *Basic*-, *Standard*-en *Premium* -abonnementen is bestands systeem.
+Het enige quotum dat van toepassing is op apps die worden gehost in *Basic*, *Standard*en *Premium* , is bestands systeem.
 
 Zie [service limieten voor Azure-abonnementen](../azure-subscription-service-limits.md#app-service-limits)voor meer informatie over de specifieke quota's, limieten en functies die beschikbaar zijn voor de verschillende app service sku's.
 
@@ -64,6 +64,10 @@ U kunt quota's verhogen of verwijderen uit uw app door uw App Service-abonnement
 
 ## <a name="understand-metrics"></a>Metrische gegevens begrijpen
 
+> [!NOTE]
+> Het gebruik van het **Bestands systeem** is een nieuwe waarde die wereld wijd wordt getotaliseerd, er worden geen gegevens verwacht, tenzij u White List hebt voor een persoonlijke preview.
+> 
+
 Metrische gegevens geven informatie over de app of het gedrag van het App Service plan.
 
 De beschik bare metrische gegevens voor een app zijn:
@@ -77,6 +81,7 @@ De beschik bare metrische gegevens voor een app zijn:
 | **Huidige Assembly's** | Het huidige aantal Assembly's dat is geladen in alle AppDomains in deze toepassing. |
 | **Gegevens in** | De hoeveelheid inkomende band breedte die door de app wordt gebruikt in MiB. |
 | **Gegevens uit** | De hoeveelheid uitgaande band breedte die door de app wordt gebruikt in MiB. |
+| **Gebruik van bestands systeem** | Percentage van het bestandssysteem quotum dat door de app wordt gebruikt. |
 | **Schone verzamelingen van 0 gen** | Het aantal keren dat de generatie 0-objecten permanent zijn verzameld sinds het begin van het app-proces. Een hogere generatie GCs bevatten alle lagere GCs.|
 | **1 garbagecollection-verzamelingen** | Het aantal keren dat de generatie 1-objecten permanent zijn verzameld sinds het begin van het app-proces. Een hogere generatie GCs bevatten alle lagere GCs.|
 | **Opschoon verzamelingen van generatie 2** | Het aantal keren dat de generatie 2-objecten permanent zijn verzameld sinds het begin van het app-proces.|

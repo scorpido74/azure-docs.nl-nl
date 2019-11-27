@@ -1,6 +1,6 @@
 ---
-title: Data tool to copy new and updated files incrementally
-description: Create an Azure data factory and then use the Copy Data tool to incrementally load new files based on LastModifiedDate.
+title: Hulp programma voor gegevens om nieuwe en bijgewerkte bestanden stapsgewijs te kopiëren
+description: Maak een Azure-data factory en gebruik vervolgens het hulp programma Gegevens kopiëren om nieuwe bestanden op basis van LastModifiedDate stapsgewijs te laden.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -21,38 +21,38 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74217789"
 ---
-# <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Incrementally copy new and changed files based on LastModifiedDate by using the Copy Data tool
+# <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Incrementeel nieuwe en gewijzigde bestanden op basis van LastModifiedDate kopiëren met behulp van het hulp programma Gegevens kopiëren
 
-In this tutorial, you'll use the Azure portal to create a data factory. Then, you'll use the Copy Data tool to create a pipeline that incrementally copies new and changed files only, based on their **LastModifiedDate** from Azure Blob storage to Azure Blob storage.
+In deze zelf studie gebruikt u de Azure Portal om een data factory te maken. Vervolgens gebruikt u het hulp programma Gegevens kopiëren om een pijp lijn te maken die alleen nieuwe en gewijzigde bestanden incrementeel kopieert, op basis van hun **LastModifiedDate** van Azure Blob-opslag naar Azure Blob-opslag.
 
-By doing so, ADF will scan all the files from the source store, apply the file filter by their LastModifiedDate, and copy the new and updated file only since last time to the destination store.  Please note that if you let ADF scan huge amounts of files but only copy a few files to destination, you would still expect the long duration due to file scanning is time consuming as well.   
+Als u dit doet, worden alle bestanden in het bron archief gescand, wordt het bestands filter toegepast op hun LastModifiedDate en wordt het nieuwe en bijgewerkte bestand pas na de laatste keer naar het doel archief gekopieerd.  Houd er rekening mee dat als u ADF een enorme hoeveelheid bestanden wilt laten scannen, maar slechts een paar bestanden naar een bestemming wilt kopiëren, de lange duur die nodig is voor het scannen van bestanden nog steeds tijd in beslag neemt.   
 
 > [!NOTE]
 > Zie [Inleiding tot Azure Data Factory](introduction.md) als u niet bekend bent met Azure Data Factory.
 
-In this tutorial, you will perform the following tasks:
+In deze zelf studie voert u de volgende taken uit:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt.
+> * Een data factory maken.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Azure storage account**: Use Blob storage as the _source_ and _sink_ data store. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
+* **Azure-opslag account**: Blob Storage gebruiken als _bron_ -en _sink_ -gegevens archief. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
 
-### <a name="create-two-containers-in-blob-storage"></a>Create two containers in Blob storage
+### <a name="create-two-containers-in-blob-storage"></a>Twee containers maken in Blob Storage
 
-Prepare your Blob storage for the tutorial by performing these steps.
+Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voeren.
 
-1. Create a container named **source**. You can use various tools to perform this task, such as [Azure Storage Explorer](https://storageexplorer.com/).
+1. Maak een container met de naam **Source**. U kunt verschillende hulpprogram ma's gebruiken om deze taak uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
 
-2. Create a container named **destination**. 
+2. Maak een container met de naam **Destination**. 
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. On the left menu, select **Create a resource** > **Data + Analytics** > **Data Factory**: 
+1. Selecteer in het menu links de optie **een resource maken** > **gegevens en analyses** > **Data Factory**: 
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -63,7 +63,7 @@ Prepare your Blob storage for the tutorial by performing these steps.
    ![Foutbericht nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
 
    Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. Gebruik bijvoorbeeld de naam _**uwnaam**_ **ADFTutorialDataFactory**. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
-3. Select the Azure **subscription** in which you'll create the new data factory. 
+3. Selecteer het Azure- **abonnement** waarin u de nieuwe Data Factory wilt maken. 
 4. Voer een van de volgende stappen uit voor **Resourcegroep**:
      
     * Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
@@ -72,35 +72,35 @@ Prepare your Blob storage for the tutorial by performing these steps.
          
     Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie.
 
-5. Under **version**, select **V2**.
-6. Selecteer bij **Locatie** de locatie voor de data factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. The data stores (for example, Azure Storage and SQL Database) and computes (for example, Azure HDInsight) that your data factory uses can be in other locations and regions.
+5. Selecteer **v2**onder **versie**.
+6. Selecteer bij **Locatie** de locatie voor de data factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevens archieven (bijvoorbeeld Azure Storage en SQL Database) en berekeningen (bijvoorbeeld Azure HDInsight) die door uw data factory worden gebruikt, kunnen zich op andere locaties en regio's bevinden.
 7. Selecteer **Vastmaken aan dashboard**. 
 8. Selecteer **Maken**.
-9. On the dashboard, refer to the **Deploying Data Factory** tile to see the process status.
+9. Raadpleeg op het dash board de tegel **implementatie Data Factory** om de status van het proces te bekijken.
 
-    ![Deploying Data Factory Tile](media/tutorial-copy-data-tool/deploying-data-factory.png)
+    ![Data Factory tegel implementeren](media/tutorial-copy-data-tool/deploying-data-factory.png)
 10. Nadat de data factory is gemaakt, wordt de startpagina **Data Factory** weergegeven.
    
     ![Startpagina van de gegevensfactory](./media/doc-common-process/data-factory-home-page.png)
-11. To open the Azure Data Factory user interface (UI) on a separate tab, select the **Author & Monitor** tile. 
+11. Als u de Azure Data Factory gebruikers interface (UI) wilt openen op een afzonderlijk tabblad, selecteert u de tegel **Author & monitor** . 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Het hulpprogramma Copy Data gebruiken om een pijplijn te maken
 
-1. On the **Let's get started** page, select the **Copy Data** title to open the Copy Data tool. 
+1. Selecteer op de pagina **aan de slag** de **gegevens kopiëren** titel om het gegevens kopiëren-hulp programma te openen. 
 
    ![De tegel Copy Data-hulpprogramma](./media/doc-common-process/get-started-page.png)
    
-2. On the **Properties** page, take the following steps:
+2. Voer de volgende stappen uit op de pagina **Eigenschappen** :
 
-    a. Under **Task name**, enter **DeltaCopyFromBlobPipeline**.
+    a. Voer onder **taak naam** **DeltaCopyFromBlobPipeline**in.
 
-    b. Under **Task cadence** or **Task schedule**, select **Run regularly on schedule**.
+    b. Selecteer onder **taak uitgebracht** of **taak planning** **regel matig uitvoeren volgens schema**.
 
-    c. Under **Trigger Type**, select **Tumbling Window**.
+    c. Onder **trigger type**selecteert u **tumblingvenstertriggers-venster**.
     
-    d. Under **Recurrence**, enter **15 Minute(s)** . 
+    d. Voer onder **terugkeer patroon** **15 minuut/minuten**in. 
     
-    e. Selecteer **Next**. 
+    e. Selecteer **Volgende**. 
     
     De gebruikersinterface van Data Factory maakt een pijplijn met de opgegeven taaknaam. 
 
@@ -108,47 +108,47 @@ Prepare your Blob storage for the tutorial by performing these steps.
     
 3. Voltooi op de pagina **Brongegevensarchief** de volgende stappen:
 
-    a. Select  **+ Create new connection**, to add a connection.
+    a. Selecteer **+ nieuwe verbinding maken**om een verbinding toe te voegen.
     
     ![De pagina Brongegevensarchief](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page.png)
 
-    b. Select **Azure Blob Storage** from the gallery, and then select **Continue**.
+    b. Selecteer **Azure-Blob Storage** in de galerie en selecteer vervolgens **door gaan**.
     
     ![De pagina Brongegevensarchief](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
 
-    c. On the **New Linked Service** page, select your storage account from the **Storage account name** list and then select **Finish**.
+    c. Selecteer op de pagina **nieuwe gekoppelde service** uw opslag account in de lijst **naam van het opslag account** en selecteer vervolgens **volt ooien**.
     
     ![De pagina Brongegevensarchief](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-linkedservice.png)
     
-    d. Select the newly created linked service and then select **Next**. 
+    d. Selecteer de zojuist gemaakte gekoppelde service en selecteer vervolgens **volgende**. 
     
    ![De pagina Brongegevensarchief](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-linkedservice.png)
 
 4. Voltooi op de pagina **Invoerbestand of invoermap kiezen** de volgende stappen:
     
-    a. Browse and select the **source** folder, and then select **Choose**.
+    a. Blader en selecteer de **bronmap** en selecteer vervolgens **kiezen**.
     
     ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
     
-    b. Under **File loading behavior**, select **Incremental load: LastModifiedDate**.
+    b. Selecteer bij **gedrag bij het laden van bestanden**de optie **Incrementeel laden: LastModifiedDate**.
     
     ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-loading-behavior.png)
     
-    c. Check **Binary copy** and select **Next**.
+    c. Controleer de **binaire kopie** en selecteer **volgende**.
     
      ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
      
-5. On the **Destination data store** page, select **AzureBlobStorage**. This is the same storage account as the source data store. Selecteer vervolgens **Volgende**.
+5. Selecteer op de pagina **doel gegevens archief** de optie **AzureBlobStorage**. Dit is hetzelfde opslag account als het gegevens archief van de bron. Selecteer vervolgens **Volgende**.
 
     ![De pagina Doelgegevensarchief](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/destination-data-store-page-select-linkedservice.png)
     
 6. Voltooi op de pagina **Uitvoerbestand of uitvoermap kiezen** de volgende stappen:
     
-    a. Browse and select the **destination** folder, and then select **Choose**.
+    a. Blader en selecteer de **doelmap** en selecteer vervolgens **kiezen**.
     
     ![Het uitvoerbestand of de uitvoermap kiezen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
     
-    b. Selecteer **Next**.
+    b. Selecteer **Volgende**.
     
      ![Het uitvoerbestand of de uitvoermap kiezen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/click-next-after-output-folder.png)
     
@@ -156,7 +156,7 @@ Prepare your Blob storage for the tutorial by performing these steps.
 
     ![De pagina Instellingen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/settings-page.png)
     
-8. On the **Summary** page, review the settings and then select **Next**.
+8. Controleer de instellingen op de pagina **samen vatting** en selecteer **volgende**.
 
     ![Overzichtspagina](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/summary-page.png)
     
@@ -164,47 +164,47 @@ Prepare your Blob storage for the tutorial by performing these steps.
 
     ![De pagina Implementatie](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png)
     
-10. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. De kolom **Acties** bevat onder andere koppelingen om details van de uitvoering van activiteiten te bekijken en de pijplijn opnieuw uit te voeren. Select **Refresh** to refresh the list, and select the **View Activity Runs** link in the **Actions** column. 
+10. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. De kolom **Acties** bevat onder andere koppelingen om details van de uitvoering van activiteiten te bekijken en de pijplijn opnieuw uit te voeren. Selecteer **vernieuwen** om de lijst te vernieuwen en selecteer de koppeling **uitvoeringen van activiteit weer geven** in de kolom **acties** . 
 
-    ![Refresh list and select View Activity Runs](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
+    ![Lijst vernieuwen en uitvoering van activiteit weer geven selecteren](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
 
-11. There's only one activity (the copy activity) in the pipeline, so you see only one entry. Selecteer de link **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. 
+11. Er is slechts één activiteit (de Kopieer activiteit) in de pijp lijn, zodat er slechts één vermelding wordt weer gegeven. Selecteer de koppeling **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. 
 
-    ![Copy activity is in pipeline](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
+    ![De Kopieer activiteit bevindt zich in een pijp lijn](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
     
-    Because there is no file in the **source** container in your Blob storage account, you will not see any file copied to the **destination** container in your Blob storage account.
+    Omdat er zich geen bestand in de **bron** container in uw Blob Storage-account bevindt, ziet u geen bestanden die zijn gekopieerd naar de **doel** container in uw Blob Storage-account.
     
-    ![No file in source container or destination container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
+    ![Geen bestand in bron container of doel container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
     
-12. Create an empty text file and name it **file1.txt**. Upload this text file to the **source** container in your storage account. U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).   
+12. Maak een leeg tekst bestand en geef het de naam **bestand1. txt**. Upload dit tekst bestand naar de **bron** container in uw opslag account. U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).   
 
-    ![Create file1.txt and upload to source container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
+    ![Bestand1. txt maken en uploaden naar de bron container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
     
-13. To go back to the **Pipeline Runs** view, select **All Pipeline Runs**, and wait for the same pipeline to be triggered again automatically.  
+13. Als u wilt terugkeren naar de weer gave **pijplijn uitvoeringen** , selecteert u **alle pijplijn uitvoeringen**en wacht u totdat dezelfde pijp lijn opnieuw wordt geactiveerd.  
 
-    ![Select All Pipeline Runs](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
+    ![Alle pijplijn uitvoeringen selecteren](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
 
-14. Select **View Activity Run** for the second pipeline run when you see it. Then review the details in the same way you did for the first pipeline run.  
+14. Selecteer **uitvoering van activiteit weer geven** voor de tweede pijplijn uitvoering wanneer u deze ziet. Bekijk de details op dezelfde manier als bij de eerste uitvoering van de pijp lijn.  
 
-    ![Select View Activity Run and review details](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs5.png)
+    ![Selecteer uitvoering van activiteit weer geven en Details bekijken](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs5.png)
 
-    You will that see one file (file1.txt) has been copied from the **source** container to the **destination** container of your Blob storage account.
+    U ziet dat er één bestand (bestand1. txt) is gekopieerd van de **bron** container naar de **doel** container van uw Blob Storage-account.
     
-    ![File1.txt has been copied from source container to destination container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
+    ![Bestand1. txt is gekopieerd van de bron container naar de doel container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
     
-15. Create another empty text file and name it **file2.txt**. Upload this text file to the **source** container in your Blob storage account.   
+15. Maak nog een leeg tekst bestand en geef het de naam **bestand2. txt**. Upload dit tekst bestand naar de **bron** container in uw Blob Storage-account.   
     
-16. Repeat steps 13 and 14 for this second text file. You will see that only the new file (file2.txt) has been copied from the **source** container to the **destination** container of your storage account in the next pipeline run.  
+16. Herhaal stap 13 en 14 voor dit tweede tekst bestand. U ziet dat alleen het nieuwe bestand (bestand2. txt) is gekopieerd van de **bron** container naar de **doel** container van uw opslag account in de volgende pijplijn uitvoering.  
     
-    ![File2.txt has been copied from source container to destination container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs7.png)
+    ![Bestand2. txt is gekopieerd van de bron container naar de doel container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs7.png)
 
-    You can also verify this by using [Azure Storage Explorer](https://storageexplorer.com/) to scan the files.
+    U kunt dit ook controleren door [Azure Storage Explorer](https://storageexplorer.com/) te gebruiken voor het scannen van de bestanden.
     
-    ![Scan files using Azure Storage Explorer](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
+    ![Bestanden scannen met Azure Storage Explorer](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
 
     
 ## <a name="next-steps"></a>Volgende stappen
-Advance to the following tutorial to learn about transforming data by using an Apache Spark cluster on Azure:
+Ga naar de volgende zelf studie voor meer informatie over het transformeren van gegevens met behulp van een Apache Spark cluster in Azure:
 
 > [!div class="nextstepaction"]
->[Transform data in the cloud by using an Apache Spark cluster](tutorial-transform-data-spark-portal.md)
+>[Gegevens in de Cloud transformeren met behulp van een Apache Spark cluster](tutorial-transform-data-spark-portal.md)

@@ -55,7 +55,7 @@ Maak een Cosmos DB-account als u er nog geen hebt. U kunt deze stap overslaan en
 3. Voer een **Id** in voor het Cosmos DB-account, die u later zult gebruiken.  
 4. **API** moet worden ingesteld op 'SQL'. De aanpak die in deze zelfstudie wordt beschreven, kan worden gebruikt met de andere beschikbare API-typen, maar de stappen in deze zelfstudie zijn voor de SQL-API.
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.  Selecteer een **Locatie** waar Cosmos DB beschikbaar is.
-6. Klik op **Maken**.
+6. Klik op **Create**.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Een verzameling maken in het Cosmos DB-account
 

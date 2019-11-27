@@ -1,6 +1,6 @@
 ---
-title: Periodic backup/restore in standalone Azure Service Fabric
-description: Use Service Fabric's periodic backup and restore feature for enabling periodic data backup of your application data.
+title: Periodieke back-ups maken/herstellen in zelfstandige Azure-Service Fabric
+description: Gebruik de periodieke back-up-en herstel functie van Service Fabric voor het inschakelen van periodieke gegevens back-ups van uw toepassings gegevens.
 services: service-fabric
 documentationcenter: .net
 author: hrushib
@@ -21,50 +21,50 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232468"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Periodic backup and restore in Azure Service Fabric
+# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Periodieke back-ups maken en herstellen in azure Service Fabric
 > [!div class="op_single_selector"]
-> * [Clusters on Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
-> * [Standalone Clusters](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
+> * [Clusters op Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
+> * [Zelfstandige clusters](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
 > 
 
-Service Fabric is a distributed systems platform that makes it easy to develop and manage reliable, distributed, microservices based cloud applications. It allows running of both stateless and stateful micro services. Stateful services can maintain mutable, authoritative state beyond the request and response or a complete transaction. If a Stateful service goes down for a long time or loses information due to a disaster, it may need to be restored to some recent backup of its state in order to continue providing service after it comes back up.
+Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk betrouw bare, gedistribueerde, op micro Services gebaseerde Cloud toepassingen kunt ontwikkelen en beheren. Hiermee kan zowel stateless als stateful micro services worden uitgevoerd. Stateful Services kunnen de onveranderlijke, gezaghebbende status behouden naast de aanvraag en het antwoord of een volledige trans actie. Als een stateful service lange tijd inactief is of gegevens verliest als gevolg van een nood geval, moet deze mogelijk worden hersteld naar een recente back-up van de status om de service te kunnen voortzetten nadat er een back-up is gemaakt.
 
-Service Fabric replicates the state across multiple nodes to ensure that the service is highly available. Even if one node in the cluster fails, the service continues to be available. In certain cases, however, it is still desirable for the service data to be reliable against broader failures.
+Service Fabric de status op meerdere knoop punten repliceert om ervoor te zorgen dat de service Maxi maal beschikbaar is. Zelfs als één knoop punt in het cluster uitvalt, blijft de service beschikbaar. In bepaalde gevallen is het echter toch wenselijk dat de service gegevens betrouwbaar zijn voor bredere storingen.
  
-For example, a service may want to back up its data in order to protect from the following scenarios:
-- Permanent loss of an entire Service Fabric cluster.
-- Permanent loss of a majority of the replicas of a service partition
-- Administrative errors whereby the state accidentally gets deleted or corrupted. For example, an administrator with sufficient privilege erroneously deletes the service.
-- Bugs in the service that cause data corruption. For example, this may happen when a service code upgrade starts writing faulty data to a Reliable Collection. In such a case, both the code and the data may have to be reverted to an earlier state.
-- Offline data processing. It might be convenient to have offline processing of data for business intelligence that happens separately from the service that generates the data.
+Een service kan bijvoorbeeld een back-up van de gegevens maken om te beschermen tegen de volgende scenario's:
+- Permanent verlies van een volledig Service Fabric cluster.
+- Permanent verlies van een meerderheid van de replica's van een service partitie
+- Administratieve fouten waarbij de status per ongeluk wordt verwijderd of beschadigd. Een beheerder met voldoende bevoegdheden kan bijvoorbeeld de service op een onjuiste wijze verwijderen.
+- Fouten in de service die leiden tot beschadigde gegevens. Dit kan bijvoorbeeld gebeuren wanneer een service code-upgrade begint met het schrijven van fout gegevens naar een betrouw bare verzameling. In dat geval kunnen zowel de code als de gegevens worden teruggedraaid naar een eerdere status.
+- Offline gegevens verwerking. Het kan handig zijn om gegevens offline te verwerken voor business intelligence die los van de service worden uitgevoerd waardoor de gegevens worden gegenereerd.
 
-Service Fabric provides an inbuilt API to do point in time [backup and restore](service-fabric-reliable-services-backup-restore.md). Application developers may use these APIs to back up the state of the service periodically. Additionally, if service administrators want to trigger a backup from outside of the service at a specific time, like before upgrading the application, developers need to expose backup (and restore) as an API from the service. Maintaining the backups is an additional cost above this. For example, you may want to take five incremental backups every half hour, followed by a full backup. After the full backup, you can delete the prior incremental backups. This approach requires additional code leading to additional cost during application development.
+Service Fabric biedt een API die is ontworpen voor het maken van [back-ups en herstellen](service-fabric-reliable-services-backup-restore.md). Toepassings ontwikkelaars kunnen deze Api's gebruiken om regel matig een back-up te maken van de status van de service. Daarnaast moeten ontwikkel aars een back-up maken (en herstellen) als een API van de service om een back-up te kunnen maken van buiten de service op een bepaald moment, zoals voordat de toepassing wordt geüpgraded. Voor het onderhouden van de back-ups zijn hiervoor extra kosten van toepassing. U kunt bijvoorbeeld elk half uur vijf incrementele back-ups maken, gevolgd door een volledige back-up. Na de volledige back-up kunt u de vorige incrementele back-ups verwijderen. Deze aanpak vereist extra code voor extra kosten tijdens de ontwikkeling van toepassingen.
 
-Backup of the application data on a periodic basis is a basic need for managing a distributed application and guarding against loss of data or prolonged loss of service availability. Service Fabric provides an optional backup and restore service, which allows you to configure periodic backup of stateful Reliable Services (including Actor Services) without having to write any additional code. It also facilitates restoring previously taken backups. 
+Het maken van een back-up van de toepassings gegevens op periodieke basis is een basis behoefte voor het beheren van een gedistribueerde toepassing en het beschermen van gegevens verlies of het langdurige verlies van de beschik baarheid van de service. Service Fabric biedt een optionele service voor back-up en herstel, waarmee u periodieke back-ups kunt configureren van stateful Reliable Services (inclusief actor Services) zonder dat u extra code hoeft te schrijven. Het vereenvoudigt ook het herstellen van eerder gemaakte back-ups. 
 
-Service Fabric provides a set of APIs to achieve the following functionality related to periodic backup and restore feature:
+Service Fabric biedt een reeks Api's om de volgende functionaliteit te bieden met betrekking tot periodieke back-up-en herstel functies:
 
-- Schedule periodic backup of Reliable Stateful services and Reliable Actors with support to upload backup to (external) storage locations. Supported storage locations
+- Plan periodieke back-ups van betrouw bare stateful Services en Reliable Actors met ondersteuning voor het uploaden van back-ups naar (externe) opslag locaties. Ondersteunde opslag locaties
     - Azure Storage
-    - File Share (on-premises)
-- Enumerate backups
-- Trigger an ad hoc backup of a partition
-- Restore a partition using previous backup
-- Temporarily suspend backups
-- Retention management of backups (upcoming)
+    - Bestands share (on-premises)
+- Back-ups opsommen
+- Een ad-hoc-back-up van een partitie activeren
+- Een partitie herstellen met de vorige back-up
+- Back-ups tijdelijk onderbreken
+- Retentie beheer van back-ups (gepland)
 
 ## <a name="prerequisites"></a>Vereisten
-* Service Fabric cluster with Fabric version 6.4 or above. Refer to this [article](service-fabric-cluster-creation-for-windows-server.md) for steps to download required package.
-* X.509 Certificate for encryption of secrets needed to connect to storage to store backups. Refer [article](service-fabric-windows-cluster-x509-security.md) to know how to acquire or to Create a self-signed X.509 certificate.
+* Service Fabric cluster met infrastructuur versie 6,4 of hoger. Raadpleeg dit [artikel](service-fabric-cluster-creation-for-windows-server.md) voor de stappen voor het downloaden van het vereiste pakket.
+* X. 509-certificaat voor het versleutelen van geheimen die nodig zijn om verbinding te maken met opslag om back-ups op te slaan. Raadpleeg het [artikel](service-fabric-windows-cluster-x509-security.md) om te weten hoe u een zelfondertekend X. 509-certificaat kunt verkrijgen of maken.
 
-* Service Fabric Reliable Stateful application built using Service Fabric SDK version 3.0 or above. For applications targeting .Net Core 2.0, application should be built using Service Fabric SDK version 3.1 or above.
-* Install Microsoft.ServiceFabric.Powershell.Http Module [In Preview] for making configuration calls.
+* Service Fabric betrouw bare stateful toepassing die is gebouwd met Service Fabric SDK-versie 3,0 of hoger. Voor toepassingen die zijn gericht op .net Core 2,0, moet de toepassing worden gebouwd met Service Fabric SDK-versie 3,1 of hoger.
+* Installeer de micro soft. ServiceFabric. Power shell. http-module [in Preview] om configuratie aanroepen te maken.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* Make sure that Cluster is connected using the `Connect-SFCluster` command before making any configuration request using Microsoft.ServiceFabric.Powershell.Http Module.
+* Zorg ervoor dat het cluster is verbonden met behulp van de opdracht `Connect-SFCluster` voordat u een configuratie aanvraag maakt met behulp van de module micro soft. ServiceFabric. Power shell. http.
 
 ```powershell
 
@@ -72,10 +72,10 @@ Service Fabric provides a set of APIs to achieve the following functionality rel
 
 ```
 
-## <a name="enabling-backup-and-restore-service"></a>Enabling backup and restore service
-First you need to enable the _backup and restore service_ in your cluster. Get the template for the cluster that you want to deploy. You can use the [sample templates](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples). Enable the _backup and restore service_ with the following steps:
+## <a name="enabling-backup-and-restore-service"></a>Service voor back-up en herstel inschakelen
+Eerst moet u de service voor _back-up en herstel_ inschakelen in uw cluster. Haal de sjabloon op voor het cluster dat u wilt implementeren. U kunt de [voorbeeld sjablonen](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)gebruiken. Schakel de _service voor back-up en herstel_ in met de volgende stappen:
 
-1. Check that the `apiversion` is set to `10-2017` in the cluster configuration file, and if not, update it as shown in the following snippet:
+1. Controleer of de `apiversion` is ingesteld op `10-2017` in het cluster configuratie bestand, en als dat niet het geval is, werkt u deze bij, zoals wordt weer gegeven in het volgende code fragment:
 
     ```json
     {
@@ -86,7 +86,7 @@ First you need to enable the _backup and restore service_ in your cluster. Get t
     }
     ```
 
-2. Now enable the _backup and restore service_ by adding the following `addonFeatures` section under `properties` section as shown in the following snippet: 
+2. Schakel nu de _service voor back-up en herstel_ in door de volgende `addonFeatures` sectie toe te voegen onder `properties` sectie, zoals wordt weer gegeven in het volgende code fragment: 
 
     ```json
         "properties": {
@@ -98,7 +98,7 @@ First you need to enable the _backup and restore service_ in your cluster. Get t
 
     ```
 
-3. Configure X.509 certificate for encryption of credentials. This is important to ensure that the credentials provided, if any, to connect to storage are encrypted before persisting. Configure encryption certificate by adding the following `BackupRestoreService` section under `fabricSettings` section as shown in the following snippet: 
+3. Het X. 509-certificaat configureren voor het versleutelen van referenties. Dit is belang rijk om ervoor te zorgen dat de referenties, indien aanwezig, worden versleuteld om verbinding te maken met de opslag. Configureer het versleutelings certificaat door de volgende `BackupRestoreService` toe te voegen aan de sectie `fabricSettings`, zoals wordt weer gegeven in het volgende code fragment: 
 
     ```json
     "properties": {
@@ -115,32 +115,32 @@ First you need to enable the _backup and restore service_ in your cluster. Get t
     }
     ```
 
-4. Once you have updated your cluster configuration file with the preceding changes, apply them and let the deployment/upgrade complete. Once complete, the _backup and restore service_ starts running in your cluster. The Uri of this service is `fabric:/System/BackupRestoreService` and the service can be located under system service section in the Service Fabric explorer. 
+4. Nadat u het configuratie bestand van het cluster met de voor gaande wijzigingen hebt bijgewerkt, past u deze toe en laat u de implementatie/upgrade volt ooien. Zodra het proces is voltooid, wordt de _back-up-en herstel service_ gestart in uw cluster. De URI van deze service is `fabric:/System/BackupRestoreService` en de service bevindt zich in de sectie systeem service van de Service Fabric Explorer. 
 
 
 
-## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Enabling periodic backup for Reliable Stateful service and Reliable Actors
-Let's walk through steps to enable periodic backup for Reliable Stateful service and Reliable Actors. These steps assume
-- That the cluster is set up with _backup and restore service_.
-- A Reliable Stateful service is deployed on the cluster. For the purpose of this quickstart guide, application Uri is `fabric:/SampleApp` and the Uri for Reliable Stateful service belonging to this application is `fabric:/SampleApp/MyStatefulService`. This service is deployed with single partition, and the partition ID is `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7`.  
+## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Periodieke back-ups inschakelen voor betrouw bare stateful service en Reliable Actors
+We gaan stappen uitvoeren om periodieke back-ups in te scha kelen voor betrouw bare stateful service en Reliable Actors. Bij deze stappen wordt ervan uitgegaan
+- Of het cluster is ingesteld met _Backup-en Restore-service_.
+- Een betrouw bare stateful service wordt op het cluster geïmplementeerd. Voor het doel van deze Snelstartgids is de toepassings-URI `fabric:/SampleApp` en de URI voor een betrouw bare stateful service die deel uitmaakt van deze toepassing is `fabric:/SampleApp/MyStatefulService`. Deze service wordt geïmplementeerd met één partitie en de partitie-ID is `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7`.  
 
-### <a name="create-backup-policy"></a>Create backup policy
+### <a name="create-backup-policy"></a>Back-upbeleid maken
 
-First step is to create backup policy describing backup schedule, target storage for backup data, policy name, maximum incremental backups to be allowed before triggering full backup and retention policy for backup storage. 
+De eerste stap is het maken van een back-upbeleid met een beschrijving van back-upschema, doel opslag voor back-upgegevens, beleids naam en maximale incrementele back-ups die moeten worden toegestaan voordat het volledige back-up-en bewaar beleid voor back-upopslag wordt geactiveerd. 
 
-For backup storage, create file share and give ReadWrite access to this file share for all Service Fabric Node machines. This example assumes the share with name `BackupStore` is present on `StorageServer`.
+Voor back-upopslag maakt u de bestands share en geeft u ReadWrite toegang tot deze bestands share voor alle Service Fabric knooppunt machines. In dit voor beeld wordt ervan uitgegaan dat de share met de naam `BackupStore` aanwezig is op `StorageServer`.
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Powershell using Microsoft.ServiceFabric.Powershell.Http Module
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Power shell met behulp van de module micro soft. ServiceFabric. Power shell. http
 
 ```powershell
 
 New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrementalBackups 20 -FrequencyBased -Interval 00:15:00 -FileShare -Path '\\StorageServer\BackupStore' -Basic -RetentionDuration '10.00:00:00'
 
 ```
-#### <a name="rest-call-using-powershell"></a>Rest Call using Powershell
+#### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-Execute following PowerShell script for invoking required REST API to create new policy.
+Voer het volgende Power shell-script uit om de vereiste REST API aan te roepen om een nieuw beleid te maken.
 
 ```powershell
 $ScheduleInfo = @{
@@ -172,28 +172,28 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
-#### <a name="using-service-fabric-explorer"></a>Using Service Fabric Explorer
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer gebruiken
 
-1. In Service Fabric Explorer, navigate to the Backups tab and select Actions > Create Backup Policy.
+1. Ga in Service Fabric Explorer naar het tabblad Back-ups en selecteer acties > back-upbeleid maken.
 
-    ![Create Backup Policy][6]
+    ![Back-upbeleid maken][6]
 
-2. Fill out the information. For standalone clusters, FileShare should be selected.
+2. Vul de informatie in. Voor zelfstandige clusters moet file share zijn geselecteerd.
 
-    ![Create Backup Policy FileShare][7]
+    ![Back-upbeleid maken bestands share][7]
 
-### <a name="enable-periodic-backup"></a>Enable periodic backup
-After defining policy to fulfill data protection requirements of the application, the backup policy should be associated with the application. Depending on requirement, the backup policy can be associated with an application, service, or a partition.
+### <a name="enable-periodic-backup"></a>Periodieke back-up inschakelen
+Nadat het beleid is gedefinieerd om te voldoen aan de vereisten voor gegevens beveiliging van de toepassing, moet het back-upbeleid zijn gekoppeld aan de toepassing. Afhankelijk van de vereiste kan het back-upbeleid worden gekoppeld aan een toepassing, service of partitie.
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Powershell using Microsoft.ServiceFabric.Powershell.Http Module
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Power shell met behulp van de module micro soft. ServiceFabric. Power shell. http
 
 ```powershell
 Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
 ```
 
-#### <a name="rest-call-using-powershell"></a>Rest Call using Powershell
-Execute following PowerShell script for invoking required REST API to associate backup policy with name `BackupPolicy1` created in above step with application `SampleApp`.
+#### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
+Voer het volgende Power shell-script uit om de vereiste REST API aan te roepen om het back-upbeleid te koppelen aan de `BackupPolicy1` naam die in de bovenstaande stap is gemaakt met toepassings `SampleApp`.
 
 ```powershell
 $BackupPolicyReference = @{
@@ -206,35 +206,35 @@ $url = "http://localhost:19080/Applications/SampleApp/$/EnableBackup?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ``` 
 
-#### <a name="using-service-fabric-explorer"></a>Using Service Fabric Explorer
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer gebruiken
 
-1. Select an application and go to action. Click Enable/Update Application Backup.
+1. Selecteer een toepassing en ga naar actie. Klik op back-up van toepassing inschakelen/bijwerken.
 
-    ![Enable Application Backup][3] 
+    ![Back-up van toepassing inschakelen][3] 
 
-2. Finally, select the desired policy and click Enable Backup.
+2. Selecteer ten slotte het gewenste beleid en klik op back-up inschakelen.
 
-    ![Select Policy][4]
+    ![Beleid selecteren][4]
 
-### <a name="verify-that-periodic-backups-are-working"></a>Verify that periodic backups are working
+### <a name="verify-that-periodic-backups-are-working"></a>Controleren of periodieke back-ups werken
 
-After enabling backup for the application, all partitions belonging to Reliable Stateful services and Reliable Actors under the application will start getting backed-up periodically as per the associated backup policy.
+Na het inschakelen van de back-up voor de toepassing, krijgen alle partities die horen bij betrouw bare stateful Services en Reliable Actors onder de toepassing, regel matig een back-up van het bijbehorende back-upbeleid.
 
-![Partition BackedUp Health Event][0]
+![Status gebeurtenis voor partitie waarnaar][0]
 
-### <a name="list-backups"></a>List Backups
+### <a name="list-backups"></a>Back-ups weer geven
 
-Backups associated with all partitions belonging to Reliable Stateful services and Reliable Actors of the application can be enumerated using _GetBackups_ API. Depending on requirement, the backups can be enumerated for application, service, or a partition.
+Back-ups die zijn gekoppeld aan alle partities die deel uitmaken van betrouw bare stateful Services en Reliable Actors van de toepassing kunnen worden geïnventariseerd met behulp van de _GetBackups_ -API. Afhankelijk van de vereiste kunnen de back-ups worden geïnventariseerd voor de toepassing, de service of een partitie.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Powershell using Microsoft.ServiceFabric.Powershell.Http Module
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Power shell met behulp van de module micro soft. ServiceFabric. Power shell. http
 
 ```powershell
     Get-SFApplicationBackupList -ApplicationId WordCount     
 ```
 
-#### <a name="rest-call-using-powershell"></a>Rest Call using Powershell
+#### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-Execute following PowerShell script to invoke the HTTP API to enumerate the backups created for all partitions inside the `SampleApp` application.
+Voer de volgende Power shell-script uit om de HTTP API aan te roepen om de back-ups te inventariseren die zijn gemaakt voor alle partities in de `SampleApp`-toepassing.
 
 ```powershell
 $url = "http://localhost:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"
@@ -245,7 +245,7 @@ $BackupPoints = (ConvertFrom-Json $response.Content)
 $BackupPoints.Items
 ```
 
-Sample output for the above run:
+Voorbeeld uitvoer voor de bovenstaande uitvoering:
 
 ```
 BackupId                : d7e4038e-2c46-47c6-9549-10698766e714
@@ -285,19 +285,19 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
-#### <a name="using-service-fabric-explorer"></a>Using Service Fabric Explorer
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer gebruiken
 
-To view backups in Service Fabric Explorer, navigate to a partition and select the Backups tab.
+Als u back-ups wilt weer geven in Service Fabric Explorer, gaat u naar een partitie en selecteert u het tabblad Back-ups.
 
-![Enumerate Backups][5]
+![Back-ups opsommen][5]
 
-## <a name="limitation-caveats"></a>Limitation/ caveats
-- Service Fabric PowerShell cmdlets are in preview mode.
-- No support for Service Fabric clusters on Linux.
+## <a name="limitation-caveats"></a>Beperking/voor behoud
+- Service Fabric Power shell-cmdlets bevinden zich in de preview-modus.
+- Geen ondersteuning voor Service Fabric clusters op Linux.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Understanding periodic backup configuration](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Backup restore REST API reference](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Informatie over periodieke back-upconfiguratie](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
+- [Naslag informatie over back-up terugzetten REST API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png

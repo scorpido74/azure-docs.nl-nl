@@ -1,5 +1,5 @@
 ---
-title: Query Azure Blockchain Workbench data using SQL Server Management Studio
+title: Query's uitvoeren op Azure Block Chain Workbench-gegevens met behulp van SQL Server Management Studio
 description: Leer hoe u vanuit SQL Server Management Studio verbinding maakt met een SQL-database van Azure Blockchain Workbench.
 ms.date: 11/20/2019
 ms.topic: article
@@ -14,7 +14,7 @@ ms.locfileid: "74326039"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Gegevens van Azure Blockchain Workbench gebruiken met SQL Server Management Studio
 
-Microsoft SQL Server Management Studio provides the ability to rapidly write and test queries against Azure Blockchain Workbench's SQL DB. This section contains a step-by-step walkthrough of how to connect to Azure Blockchain Workbench's SQL Database from within SQL Server Management Studio.
+Microsoft SQL Server Management Studio biedt de mogelijkheid om snel query's op basis van Azure Blockchain Workbench SQL DB te schrijven en te testen. In deze sectie vindt u stapsgewijze instructies voor het maken van verbinding met de SQL Database van Azure Block Chain Workbench vanuit SQL Server Management Studio.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,7 +38,7 @@ Microsoft SQL Server Management Studio provides the ability to rapidly write and
       ![Databaselijst](./media/data-sql-management-studio/db-list.png)
 
 5. Als u de gegevens wilt bekijken die aan een databaseweergave zijn gekoppeld, kunt u met de volgende stappen automatisch een select-instructie genereren.
-6. Right-click any of the database views in the Object Explorer.
+6. Klik met de rechtermuisknop op een van de databaseweergaven in Object Explorer.
 7. Selecteer **Script View as**.
 8. Kies **SELECT to**.
 9. Selecteer **New Query Editor Window**.

@@ -1,6 +1,6 @@
 ---
-title: Handling errors in Durable Functions - Azure
-description: Learn how to handle errors in the Durable Functions extension for Azure Functions.
+title: Fouten afhandelen in Durable Functions-Azure
+description: Meer informatie over het afhandelen van fouten in de Durable Functions extensie voor Azure Functions.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
@@ -11,17 +11,17 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231407"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Handling errors in Durable Functions (Azure Functions)
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Het afhandelen van fouten in Durable Functions (Azure Functions)
 
-Durable Function orchestrations are implemented in code and can use the programming language's built-in error-handling features. There really aren't any new concepts you need to learn to add error handling and compensation into your orchestrations. However, there are a few behaviors that you should be aware of.
+Duurzame functie-indelingen worden in code geïmplementeerd en kunnen de ingebouwde functies voor fout afhandeling van de programmeer taal gebruiken. Er zijn echt geen nieuwe concepten die u nodig hebt om fout afhandeling en compensatie toe te voegen aan uw integraties. Er zijn echter enkele gedragingen waarmee u rekening moet houden.
 
-## <a name="errors-in-activity-functions"></a>Errors in activity functions
+## <a name="errors-in-activity-functions"></a>Fouten in de activiteit functies
 
-Any exception that is thrown in an activity function is marshaled back to the orchestrator function and thrown as a `FunctionFailedException`. You can write error handling and compensation code that suits your needs in the orchestrator function.
+Uitzonde ringen die worden gegenereerd in een activiteit functie, worden teruggestuurd naar de Orchestrator-functie en gegenereerd als een `FunctionFailedException`. U kunt fout afhandeling en compensatie code schrijven die aan uw behoeften voldoen in de Orchestrator-functie.
 
-For example, consider the following orchestrator function that transfers funds from one account to another:
+Denk bijvoorbeeld aan de volgende Orchestrator-functie waarmee u fondsen van het ene naar het andere account overbrengt:
 
-### <a name="precompiled-c"></a>Precompiled C#
+### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -99,9 +99,9 @@ public static async Task Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> De vorige C# voor beelden zijn voor Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -137,13 +137,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-If the first **CreditAccount** function call fails, the orchestrator function compensates by crediting the funds back to the source account.
+Als de eerste aanroep van de functie **CreditAccount** mislukt, compenseert de Orchestrator-functie door de tegoeden terug te sturen naar het bron account.
 
-## <a name="automatic-retry-on-failure"></a>Automatic retry on failure
+## <a name="automatic-retry-on-failure"></a>Automatische nieuwe poging bij fout
 
-When you call activity functions or sub-orchestration functions, you can specify an automatic retry policy. The following example attempts to call a function up to three times and waits 5 seconds between each retry:
+Wanneer u activiteit functies of suborchestration-functies aanroept, kunt u een beleid voor automatische nieuwe pogingen opgeven. In het volgende voor beeld wordt geprobeerd een functie Maxi maal drie keer aan te roepen en wordt vijf seconden gewacht tussen elke nieuwe poging:
 
-### <a name="precompiled-c"></a>Precompiled C#
+### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -175,9 +175,9 @@ public static async Task Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> De vorige C# voor beelden zijn voor Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -191,22 +191,22 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-The `CallActivityWithRetryAsync` (.NET) or `callActivityWithRetry` (JavaScript) API takes a `RetryOptions` parameter. Sub-orchestration calls using the `CallSubOrchestratorWithRetryAsync` (.NET) or `callSubOrchestratorWithRetry` (JavaScript) API can use these same retry policies.
+De `CallActivityWithRetryAsync` (.NET) of `callActivityWithRetry` (Java script)-API neemt een `RetryOptions`-para meter. Bij subindelings aanroepen met behulp van de API van `CallSubOrchestratorWithRetryAsync` (.NET) of `callSubOrchestratorWithRetry` (Java script) kunt u gebruikmaken van dezelfde beleids regels voor opnieuw proberen.
 
-There are several options for customizing the automatic retry policy:
+Er zijn verschillende opties voor het aanpassen van het beleid voor automatische opnieuw proberen:
 
-* **Max number of attempts**: The maximum number of retry attempts.
-* **First retry interval**: The amount of time to wait before the first retry attempt.
-* **Backoff coefficient**: The coefficient used to determine rate of increase of backoff. Defaults to 1.
-* **Max retry interval**: The maximum amount of time to wait in between retry attempts.
-* **Retry timeout**: The maximum amount of time to spend doing retries. The default behavior is to retry indefinitely.
-* **Handle**: A user-defined callback can be specified to determine whether a function should be retried.
+* **Maximum aantal pogingen**: het maximum aantal nieuwe pogingen.
+* **Interval voor eerste poging**: de hoeveelheid tijd die moet worden gewacht voordat de eerste nieuwe poging wordt gedaan.
+* **Uitstel coëfficiënt**: de coëfficiënt die wordt gebruikt voor het bepalen van de mate van toename van uitstel. De standaard waarde is 1.
+* Maximum **interval voor nieuwe pogingen**: de maximale tijds duur tussen nieuwe pogingen.
+* **Time-out voor opnieuw proberen**: de maximale hoeveelheid tijd die nodig is voor het uitvoeren van nieuwe pogingen. Het standaard gedrag is om voor onbepaalde tijd opnieuw te proberen.
+* **Ingang**: een door de gebruiker gedefinieerde retour aanroep kan worden opgegeven om te bepalen of een functie opnieuw moet worden uitgevoerd.
 
-## <a name="function-timeouts"></a>Function timeouts
+## <a name="function-timeouts"></a>Time-outs van functies
 
-You might want to abandon a function call within an orchestrator function if it's taking too long to complete. The proper way to do this today is by creating a [durable timer](durable-functions-timers.md) using `context.CreateTimer` (.NET) or `context.df.createTimer` (JavaScript) in conjunction with `Task.WhenAny` (.NET) or `context.df.Task.any` (JavaScript), as in the following example:
+Het kan zijn dat u een functie aanroep binnen een Orchestrator-functie wilt verlaten als het te lang duurt om te volt ooien. De juiste manier om dit te doen is door een [duurzame timer](durable-functions-timers.md) te maken met behulp van `context.CreateTimer` (.net) of `context.df.createTimer` (Java script) in combi natie met `Task.WhenAny` (.net) of `context.df.Task.any` (Java script), zoals in het volgende voor beeld:
 
-### <a name="precompiled-c"></a>Precompiled C#
+### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -266,9 +266,9 @@ public static async Task<bool> Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> De vorige C# voor beelden zijn voor Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -293,16 +293,16 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> This mechanism does not actually terminate in-progress activity function execution. Rather, it simply allows the orchestrator function to ignore the result and move on. For more information, see the [Timers](durable-functions-timers.md#usage-for-timeout) documentation.
+> Met dit mechanisme wordt de uitvoering van de uitgevoerde activiteiten functie niet daad werkelijk afgesloten. In plaats daarvan kan de Orchestrator-functie het resultaat negeren en verplaatsen. Zie de [time](durable-functions-timers.md#usage-for-timeout) -outdocumentatie voor meer informatie.
 
 ## <a name="unhandled-exceptions"></a>Onverwerkte uitzonderingen
 
-If an orchestrator function fails with an unhandled exception, the details of the exception are logged and the instance completes with a `Failed` status.
+Als een Orchestrator-functie mislukt met een niet-verwerkte uitzonde ring, worden de details van de uitzonde ring vastgelegd en wordt het exemplaar voltooid met een `Failed` status.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Learn about eternal orchestrations](durable-functions-eternal-orchestrations.md)
+> [Meer informatie over eeuwige-Orchestrations](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Learn how to diagnose problems](durable-functions-diagnostics.md)
+> [Meer informatie over het vaststellen van problemen](durable-functions-diagnostics.md)

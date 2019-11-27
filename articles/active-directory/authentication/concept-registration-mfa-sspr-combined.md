@@ -1,6 +1,6 @@
 ---
-title: Combined registration for SSPR and MFA - Azure Active Directory
-description: Azure AD Multi-Factor Authentication and self-service password reset registration (preview)
+title: Gecombineerde registratie voor SSPR en MFA-Azure Active Directory
+description: Azure AD Multi-Factor Authentication en self-service voor wachtwoord herstel (preview-versie)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,134 +18,134 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381945"
 ---
-# <a name="combined-security-information-registration-preview"></a>Combined security information registration (preview)
+# <a name="combined-security-information-registration-preview"></a>Registratie van gecombineerde beveiligings gegevens (preview-versie)
 
-Before combined registration, users registered authentication methods for Azure Multi-Factor Authentication and self-service password reset (SSPR) separately. People were confused that similar methods were used for Multi-Factor Authentication and SSPR but they had to register for both features. Now, with combined registration, users can register once and get the benefits of both Multi-Factor Authentication and SSPR.
+Vóór de gecombineerde registratie hebben gebruikers de verificatie methoden voor Azure Multi-Factor Authentication en self-service voor wachtwoord herstel (SSPR) afzonderlijk geregistreerd. Het is bekend dat er soort gelijke methoden werden gebruikt voor Multi-Factor Authentication en SSPR, maar dat ze voor beide functies moesten registreren. Met gecombineerde registratie kunnen gebruikers zich eenmaal registreren en profiteren van de voor delen van Multi-Factor Authentication en SSPR.
 
-![My Profile showing registered Security info for a user](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![Mijn profiel waarin geregistreerde beveiligings gegevens voor een gebruiker worden weer gegeven](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-Before enabling the new experience, review this administrator-focused documentation and the user-focused documentation to ensure you understand the functionality and effect of this feature. Base your training on the [user documentation](../user-help/user-help-security-info-overview.md) to prepare your users for the new experience and help to ensure a successful rollout.
+Voordat u de nieuwe ervaring inschakelt, raadpleegt u deze documentatie met beheerders rechten en de gebruikers gerichte documentatie om te controleren of u de functionaliteit en het effect van deze functie begrijpt. Baseer uw training op de [gebruikers documentatie](../user-help/user-help-security-info-overview.md) om uw gebruikers voor te bereiden op de nieuwe ervaring en om te zorgen voor een geslaagde implementatie.
 
-Azure AD combined security information registration is not currently available to national clouds like Azure US Government, Azure Germany, or Azure China 21Vianet.
+Registratie van gegevens over gecombineerde beveiliging van Azure AD is momenteel niet beschikbaar voor nationale Clouds, zoals Azure VS government, Azure Duitsland of Azure China 21Vianet.
 
 |     |
 | --- |
-| Combined security information registration for Multi-Factor Authentication and Azure Active Directory (Azure AD) self-service password reset is a public preview feature of Azure AD. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.|
+| Registratie van gecombineerde beveiligings gegevens voor Multi-Factor Authentication en Azure Active Directory (Azure AD) self-service voor het opnieuw instellen van wacht woorden is een open bare preview-functie van Azure AD. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.|
 |     |
 
 > [!IMPORTANT]
-> Users who are enabled for both the original preview and the enhanced combined registration experience will see the new behavior. Users who are enabled for both experiences will see only the new My Profile experience. The new My Profile aligns with the look and feel of combined registration and provides a seamless experience for users. Users can see My Profile by going to [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+> Gebruikers die zijn ingeschakeld voor de oorspronkelijke preview-versie en de verbeterde gecombineerde registratie-ervaring, zien het nieuwe gedrag. Gebruikers die zijn ingeschakeld voor beide ervaringen, zien alleen de nieuwe ervaring mijn profiel. Het nieuwe mijn profiel wordt uitgelijnd met het uiterlijk van de gecombineerde registratie en biedt een naadloze ervaring voor gebruikers. Gebruikers kunnen mijn profiel zien door naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com)te gaan.
 
 > [!NOTE] 
-> You might encounter an error message while trying to access the Security info option. For example, "Sorry, we can't sign you in". In this case, confirm that you don't have any configuration or group policy object that blocks third-party cookies on the web browser. 
+> Er wordt mogelijk een fout bericht weer gegeven wanneer u probeert toegang te krijgen tot de optie beveiligings gegevens. Bijvoorbeeld, we kunnen u niet aanmelden. In dit geval moet u bevestigen dat u geen configuratie-of groeps beleidsobject hebt waarmee cookies van derden in de webbrowser worden geblokkeerd. 
 
-My Profile pages are localized based on the language settings of the computer accessing the page. Microsoft stores the most recent language used in the browser cache, so subsequent attempts to access the pages will continue to render in the last language used. If you clear the cache, the pages will re-render. If you want to force a specific language, you can add `?lng=<language>` to the end of the URL, where `<language>` is the code of the language you want to render.
+Mijn profiel pagina's worden gelokaliseerd op basis van de taal instellingen van de computer die toegang heeft tot de pagina. Micro soft slaat de meest recente taal op die wordt gebruikt in de cache van de browser, zodat de daaropvolgende pogingen om toegang te krijgen tot de pagina's worden weer gegeven in de laatste gebruikte taal. Als u de cache wist, worden de pagina's opnieuw weer gegeven. Als u een specifieke taal wilt forceren, kunt u `?lng=<language>` toevoegen aan het einde van de URL, waarbij `<language>` de code is van de taal die u wilt weer geven.
 
-![Set up SSPR or other security verification methods](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
+![SSPR of andere methoden voor beveiligings verificatie instellen](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
-## <a name="methods-available-in-combined-registration"></a>Methods available in combined registration
+## <a name="methods-available-in-combined-registration"></a>Methoden die beschikbaar zijn in gecombineerde registratie
 
-Combined registration supports the following authentication methods and actions:
+Bij gecombineerde registratie worden de volgende verificatie methoden en-acties ondersteund:
 
 |   | Registreren | Wijzigen | Verwijderen |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Yes (maximum of 5) | Nee | Ja |
-| Other authenticator app | Yes (maximum of 5) | Nee | Ja |
-| Hardware token | Nee | Nee | Ja |
+| Microsoft Authenticator | Ja (Maxi maal 5) | Nee | Ja |
+| Andere verificator-app | Ja (Maxi maal 5) | Nee | Ja |
+| Hardware-token | Nee | Nee | Ja |
 | Telefoon | Ja | Ja | Ja |
-| Alternate phone | Ja | Ja | Ja |
-| Office phone | Nee | Nee | Nee |
-| E-mail | Ja | Ja | Ja |
+| Alternatief telefoon nummer | Ja | Ja | Ja |
+| Office Phone | Nee | Nee | Nee |
+| Email | Ja | Ja | Ja |
 | Beveiligingsvragen | Ja | Nee | Ja |
 | App-wachtwoorden | Ja | Nee | Ja |
 
 > [!NOTE]
-> App passwords are available only to users who have been enforced for Multi-Factor Authentication. App passwords are not available to users who are enabled for Multi-Factor Authentication via a Conditional Access policy.
+> App-wacht woorden zijn alleen beschikbaar voor gebruikers die zijn afgedwongen voor Multi-Factor Authentication. App-wacht woorden zijn niet beschikbaar voor gebruikers die zijn ingeschakeld voor Multi-Factor Authentication via een beleid voor voorwaardelijke toegang.
 
-Users can set one of the following options as the default Multi-Factor Authentication method:
+Gebruikers kunnen een van de volgende opties instellen als de standaard Multi-Factor Authentication methode:
 
-- Microsoft Authenticator – notification.
-- Authenticator app or hardware token – code.
-- Phone call.
-- Text message.
+- Microsoft Authenticator: melding.
+- Verificator-app of-hardware-token-code.
+- Telefoon oproep.
+- SMS-bericht.
 
-As we continue to add more authentication methods to Azure AD, those methods will be available in combined registration.
+Wanneer we meer authenticatie methoden blijven toevoegen aan Azure AD, zullen deze methoden beschikbaar zijn in gecombineerde registratie.
 
-## <a name="combined-registration-modes"></a>Combined registration modes
+## <a name="combined-registration-modes"></a>Gecombineerde registratie modi
 
-There are two modes of combined registration: interrupt and manage.
+Er zijn twee modi voor gecombineerde registratie: onderbreken en beheren.
 
-- **Interrupt mode** is a wizard-like experience, presented to users when they register or refresh their security info at sign-in.
+- De **interrupt-modus** is een wizard-achtige ervaring die wordt weer gegeven aan gebruikers wanneer ze hun beveiligings gegevens registreren of vernieuwen bij het aanmelden.
 
-- **Manage mode** is part of the user profile and allows users to manage their security info.
+- De **beheer modus** maakt deel uit van het gebruikers profiel en stelt gebruikers in staat om hun beveiligings gegevens te beheren.
 
-For both modes, users who have previously registered a method that can be used for Multi-Factor Authentication will need to perform Multi-Factor Authentication before they can access their security info.
+Voor beide modi moeten gebruikers die eerder een methode hebben geregistreerd die kan worden gebruikt voor Multi-Factor Authentication, Multi-Factor Authentication uitvoeren voordat ze toegang kunnen krijgen tot hun beveiligings gegevens.
 
-### <a name="interrupt-mode"></a>Interrupt mode
+### <a name="interrupt-mode"></a>Interrupt-modus
 
-Combined registration respects both Multi-Factor Authentication and SSPR policies, if both are enabled for your tenant. These policies control whether a user is interrupted for registration during sign-in and which methods are available for registration.
+Gecombineerde registratie respecteert zowel Multi-Factor Authentication als SSPR-beleid als beide zijn ingeschakeld voor uw Tenant. Deze beleids regels bepalen of een gebruiker wordt onderbroken voor registratie tijdens het aanmelden en welke methoden beschikbaar zijn voor registratie.
 
-Here are several scenarios in which users might be prompted to register or refresh their security info:
+Hier volgen enkele scenario's waarin gebruikers mogelijk wordt gevraagd om de beveiligings gegevens te registreren of te vernieuwen:
 
-- Multi-Factor Authentication registration enforced through Identity Protection: Users are asked to register during sign-in. They register Multi-Factor Authentication methods and SSPR methods (if the user is enabled for SSPR).
-- Multi-Factor Authentication registration enforced through per-user Multi-Factor Authentication: Users are asked to register during sign-in. They register Multi-Factor Authentication methods and SSPR methods (if the user is enabled for SSPR).
-- Multi-Factor Authentication registration enforced through Conditional Access or other policies: Users are asked to register when they use a resource that requires Multi-Factor Authentication. They register Multi-Factor Authentication methods and SSPR methods (if the user is enabled for SSPR).
-- SSPR registration enforced: Users are asked to register during sign-in. They register only SSPR methods.
-- SSPR refresh enforced: Users are required to review their security info at an interval set by the admin. Users are shown their info and can confirm the current info or make changes if needed.
+- Multi-Factor Authentication registratie afgedwongen via identiteits beveiliging: gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
+- Multi-Factor Authentication registratie wordt afgedwongen via Multi-Factor Authentication per gebruiker: gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
+- Multi-Factor Authentication registratie wordt afgedwongen via voorwaardelijke toegang of ander beleid: gebruikers worden gevraagd zich te registreren wanneer ze een resource gebruiken waarvoor Multi-Factor Authentication is vereist. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
+- SSPR registratie afgedwongen: gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren alleen SSPR-methoden.
+- SSPR vernieuwen afgedwongen: gebruikers moeten hun beveiligings gegevens controleren met een interval dat door de beheerder is ingesteld. Gebruikers worden weer gegeven met hun informatie en kunnen de huidige gegevens bevestigen of zo nodig wijzigingen aanbrengen.
 
-When registration is enforced, users are shown the minimum number of methods needed to be compliant with both Multi-Factor Authentication and SSPR policies, from most to least secure.
+Wanneer registratie wordt afgedwongen, worden gebruikers weer gegeven het minimale aantal methoden dat nodig is om te voldoen aan de Multi-Factor Authentication-en SSPR-beleids regels, van de meeste tot minst veilig.
 
 Bijvoorbeeld:
 
-- A user is enabled for SSPR. The SSPR policy required two methods to reset and has enabled mobile app code, email, and phone.
-   - This user is required to register two methods.
-      - The user is shown authenticator app and phone by default.
-      - The user can choose to register email instead of authenticator app or phone.
+- Een gebruiker is ingeschakeld voor SSPR. Het SSPR-beleid vereist twee methoden om opnieuw te worden ingesteld en heeft mobiele app-code, e-mail en telefoon ingeschakeld.
+   - Deze gebruiker is verplicht om twee methoden te registreren.
+      - De gebruiker wordt standaard de verificator-app en-telefoon weer gegeven.
+      - De gebruiker kan ervoor kiezen om e-mail te registreren in plaats van de verificator-app of-telefoon.
 
-This flowchart describes which methods are shown to a user when interrupted to register during sign-in:
+Dit stroom diagram beschrijft welke methoden worden weer gegeven wanneer een gebruiker wordt gestuit tijdens het aanmelden:
 
-![Combined security info flowchart](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
+![Stroom diagram van gecombineerde beveiligings gegevens](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
-If you have both Multi-Factor Authentication and SSPR enabled, we recommend that you enforce Multi-Factor Authentication registration.
+Als u zowel Multi-Factor Authentication als SSPR hebt ingeschakeld, wordt u aangeraden Multi-Factor Authentication registratie af te dwingen.
 
-If the SSPR policy requires users to review their security info at regular intervals, users are interrupted during sign-in and shown all their registered methods. They can confirm the current info if it's up-to-date, or they can make changes if they need to.
+Als het SSPR-beleid vereist dat gebruikers hun beveiligings gegevens met regel matige tussen pozen controleren, worden gebruikers onderbroken tijdens het aanmelden en worden alle geregistreerde methoden weer gegeven. Ze kunnen de huidige informatie bevestigen als deze up-to-date is, of ze kunnen wijzigingen aanbrengen als dat nodig is.
 
-### <a name="manage-mode"></a>Manage mode
+### <a name="manage-mode"></a>Beheer modus
 
-Users can access manage mode by going to [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) or by selecting **Security info** from My Profile. From there, users can add methods, delete or change existing methods, change the default method, and more.
+Gebruikers hebben toegang tot de modus beheer door naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) te gaan of door **beveiligings gegevens** van mijn profiel te selecteren. Van daaruit kunnen gebruikers methoden toevoegen, bestaande methoden verwijderen of wijzigen, de standaard methode wijzigen en nog veel meer.
 
-## <a name="key-usage-scenarios"></a>Key usage scenarios
+## <a name="key-usage-scenarios"></a>Scenario's voor het gebruik van sleutels
 
-### <a name="set-up-security-info-during-sign-in"></a>Set up security info during sign-in
+### <a name="set-up-security-info-during-sign-in"></a>Beveiligings gegevens instellen tijdens het aanmelden
 
-An admin has enforced registration.
+Een beheerder heeft de registratie afgedwongen.
 
-A user has not set up all required security info and goes to the Azure portal. After entering the user name and password, the user is prompted to set up security info. The user then follows the steps shown in the wizard to set up the required security info. If your settings allow it, the user can choose to set up methods other than those shown by default. After completing the wizard, users review the methods they set up and their default method for Multi-Factor Authentication. To complete the setup process, the user confirms the info and continues to the Azure portal.
+Een gebruiker heeft niet alle vereiste beveiligings gegevens ingesteld en gaat naar het Azure Portal. Nadat de gebruikers naam en het wacht woord zijn ingevoerd, wordt de gebruiker gevraagd om beveiligings gegevens in te stellen. De gebruiker volgt vervolgens de stappen die in de wizard worden weer gegeven om de vereiste beveiligings gegevens in te stellen. Als uw instellingen dit toestaan, kan de gebruiker kiezen om andere methoden dan die standaard worden weer gegeven in te stellen. Nadat de wizard is voltooid, bekijken gebruikers de methoden die ze hebben ingesteld en de standaard methode voor Multi-Factor Authentication. Om het installatie proces te volt ooien, bevestigt de gebruiker de gegevens en gaat het Azure Portal.
 
-### <a name="set-up-security-info-from-my-profile"></a>Set up security info from My Profile
+### <a name="set-up-security-info-from-my-profile"></a>Beveiligings gegevens van mijn profiel instellen
 
-An admin has not enforced registration.
+Een beheerder heeft de registratie niet afgedwongen.
 
-A user who hasn't yet set up all required security info goes to [https://myprofile.microsoft.com](https://myprofile.microsoft.com). The user selects **Security info** in the left pane. From there, the user chooses to add a method, selects any of the methods available, and follows the steps to set up that method. When finished, the user sees the method that was just set up on the Security info page.
+Een gebruiker die de vereiste beveiligings gegevens nog niet heeft ingesteld, gaat naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com). De gebruiker selecteert **beveiligings gegevens** in het linkerdeel venster. Van daaruit kiest de gebruiker om een methode toe te voegen, selecteert een van de beschik bare methoden en volgt de stappen om die methode in te stellen. Wanneer u klaar bent, ziet de gebruiker de methode die zojuist is ingesteld op de pagina met beveiligings gegevens.
 
-### <a name="delete-security-info-from-my-profile"></a>Delete security info from My Profile
+### <a name="delete-security-info-from-my-profile"></a>Beveiligings gegevens uit mijn profiel verwijderen
 
-A user who has previously set up at least one method navigates to [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). The user chooses to delete one of the previously registered methods. When finished, the user no longer sees that method on the Security info page.
+Een gebruiker die eerder ten minste één methode heeft ingesteld, gaat naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). De gebruiker kiest ervoor een van de eerder geregistreerde methoden te verwijderen. Als u klaar bent, ziet de gebruiker deze methode niet meer op de pagina beveiligings gegevens.
 
-### <a name="change-the-default-method-from-my-profile"></a>Change the default method from My Profile
+### <a name="change-the-default-method-from-my-profile"></a>De standaard methode van mijn profiel wijzigen
 
-A user who has previously set up at least one method that can be used for Multi-Factor Authentication navigates to [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). The user changes the current default method to a different default method. When finished, the user sees the new default method on the Security info page.
+Een gebruiker die eerder ten minste één methode heeft ingesteld die kan worden gebruikt voor Multi-Factor Authentication navigeert naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). De gebruiker wijzigt de huidige standaard methode in een andere standaard methode. Wanneer u klaar bent, ziet de gebruiker de nieuwe standaard methode op de pagina beveiligings gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Force users to re-register authentication methods](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[Gebruikers dwingen om verificatie methoden opnieuw te registreren](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 
-[Enable combined registration in your tenant](howto-registration-mfa-sspr-combined.md)
+[Gecombineerde registratie inschakelen in uw Tenant](howto-registration-mfa-sspr-combined.md)
 
-[SSPR and MFA usage and insights reporting](howto-authentication-methods-usage-insights.md)
+[SSPR-en MFA-gebruik en inzichten rapportage](howto-authentication-methods-usage-insights.md)
 
-[Available methods for Multi-Factor Authentication and SSPR](concept-authentication-methods.md)
+[Beschik bare methoden voor Multi-Factor Authentication en SSPR](concept-authentication-methods.md)
 
-[Configure self-service password reset](howto-sspr-deployment.md)
+[Self-service voor wacht woord opnieuw instellen configureren](howto-sspr-deployment.md)
 
-[Configure Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+[Azure Multi-Factor Authentication configureren](howto-mfa-getstarted.md)

@@ -100,4 +100,4 @@ Als u al deze stappen hebt voltooid, moet uw app te starten. De app testen:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Hoe biedt Azure AD-toepassingsproxy eenmalige aanmelding?](application-proxy-single-sign-on.md)
-- [Application Proxy oplossen](application-proxy-troubleshoot.md)
+- [Problemen met toepassings proxy oplossen](application-proxy-troubleshoot.md)

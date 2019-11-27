@@ -1,6 +1,6 @@
 ---
-title: Change your two-factor verification method and settings - Azure AD
-description: Learn how to change the security verification method and settings for your work or school account, from the Additional security verification page.
+title: De twee ledige verificatie methode en-instellingen wijzigen-Azure AD
+description: Meer informatie over het wijzigen van de beveiligings verificatie methode en instellingen voor uw werk-of school account, van de pagina aanvullende beveiligings verificatie.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -20,125 +20,125 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231929"
 ---
-# <a name="change-your-two-factor-verification-method-and-settings"></a>Change your two-factor verification method and settings
+# <a name="change-your-two-factor-verification-method-and-settings"></a>De twee ledige verificatie methode en-instellingen wijzigen
 
-After you set up your security verification methods for your work or school account, you can update any of the related details, including:
+Nadat u de beveiligings verificatie methoden voor uw werk-of school account hebt ingesteld, kunt u de gerelateerde gegevens bijwerken, waaronder:
 
-- Choosing your default security verification method.
+- De standaard methode voor beveiligings verificatie te kiezen.
 
-- Adding or updating your security verification method details, like your phone number.
+- U kunt de gegevens van de beveiligings verificatie methode toevoegen of bijwerken, zoals uw telefoon nummer.
 
-- Setting up a new authenticator app or deleting a device from the authenticator app.
+- Het instellen van een nieuwe verificator-app of het verwijderen van een apparaat uit de verificator-app.
 
-## <a name="using-the-additional-security-verification-page"></a>Using the Additional security verification page
+## <a name="using-the-additional-security-verification-page"></a>De extra beveiligings verificatie pagina gebruiken
 
-If your organization provided you with specific steps about how to turn on and manage your two-factor verification, you should follow those instructions. Otherwise, you can get to your security verification method settings from the [Additional security verification](https://aka.ms/mfasetup) page.
+Als uw organisatie u heeft voorzien van specifieke stappen voor het inschakelen en beheren van uw twee ledige verificatie, moet u deze instructies volgen. Als dat niet het geval is, kunt u de instellingen voor de beveiligings verificatie methode van de [extra beveiligings verificatie](https://aka.ms/mfasetup) pagina.
 
 >[!Note]
->If what you're seeing on your screen doesn't match what's being covered in this article, it means that either your administrator has turned on the Security info (preview) experience or that your organization has their own custom portal. For more information about the security info experience, see [Security info (preview) overview](user-help-security-info-overview.md). For more information about your organization's custom portal, you must contact your Help desk.
+>Als datgene wat u op uw scherm ziet, niet overeenkomt met wat er in dit artikel wordt behandeld, betekent dit dat de beheerder de beveiligings gegevens (preview-versie) heeft ingeschakeld of dat uw organisatie een eigen aangepaste portal heeft. Zie voor meer informatie over de beveiligings informatie, [overzicht van beveiligings gegevens (preview)](user-help-security-info-overview.md). Voor meer informatie over de aangepaste portal van uw organisatie moet u contact opnemen met uw Help Desk.
 
-### <a name="to-get-to-the-additional-security-verification-page"></a>To get to the Additional security verification page
+### <a name="to-get-to-the-additional-security-verification-page"></a>De extra beveiligings verificatie pagina weer geven
 
 - Ga naar https://aka.ms/mfasetup.
 
-    ![Additional security verification screen, with the available security verification method details](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+    ![Aanvullende beveiligings verificatie scherm, met de beschik bare beveiligings verificatie methode Details](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
-    If clicking that link doesn't work for you, you can also get to the **Additional security verification** page by following these steps:
+    Als u op de koppeling klikt, kunt u ook naar de pagina **aanvullende beveiligings verificatie** gaan door de volgende stappen uit te voeren:
 
     1. Meld u aan bij [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
-    2. Select your account name in the top right, then select **profile**.
+    2. Selecteer uw account naam in de rechter bovenhoek en selecteer vervolgens **profiel**.
 
-    3. Select **Additional security verification**.  
+    3. Selecteer **aanvullende beveiligings verificatie**.  
 
-        ![My Apps link to the Additional security verification page](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
+        ![Mijn apps koppeling naar de pagina aanvullende beveiligings verificatie](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
 
 >[!Note]
->For information about using the **App passwords** section of **Additional security verification** page, see [Manage app passwords for two-factor verification](multi-factor-authentication-end-user-app-passwords.md). App passwords should only be used for apps that don't yet support two-factor verification.
+>Zie [app-wacht woorden beheren voor twee ledige verificatie](multi-factor-authentication-end-user-app-passwords.md)voor meer informatie over het gebruik van de sectie **app-wacht woorden** van een **aanvullende beveiligings verificatie** pagina. App-wacht woorden mogen alleen worden gebruikt voor apps die nog geen ondersteuning bieden voor twee ledige verificatie.
 
-## <a name="change-your-default-security-verification-method"></a>Change your default security verification method
+## <a name="change-your-default-security-verification-method"></a>Uw standaard methode voor beveiligings verificatie wijzigen
 
-After you sign in to your work or school account with your user name and password, you'll automatically be presented with your chosen security verification method. Depending on your organization's requirements, this can be a notification or verification code through an authenticator app, a text message, or a phone call.
+Nadat u zich hebt aangemeld bij uw werk-of school account met uw gebruikers naam en wacht woord, wordt u automatisch weer gegeven met de gekozen methode voor beveiligings verificatie. Afhankelijk van de vereisten van uw organisatie, kan dit een melding of een verificatie code via een verificator-app, een tekst bericht of een telefoon gesprek zijn.
 
-If you decide that you want to change the default security verification method you're using, you can do it from here.
+Als u besluit dat u de standaard beveiligings verificatie methode die u gebruikt, wilt wijzigen, kunt u dat hier doen.
 
-### <a name="to-change-your-default-security-verification-method"></a>To change your default security verification method
+### <a name="to-change-your-default-security-verification-method"></a>De standaard methode voor beveiligings verificatie wijzigen
 
-1. From the **Additional security verification** page, select the method to use from the **What's your preferred option** drop-down list. You'll see all of the options, but you'll only be able to choose the ones that are available to you by your organization.
+1. Selecteer op de pagina **aanvullende beveiligings verificatie** de methode die u wilt gebruiken in de vervolg keuzelijst **Wat is uw voorkeurs optie** . U ziet alle opties, maar u kunt alleen de instellingen kiezen die voor u beschikbaar zijn in uw organisatie.
 
-    - **Notify me through app.** You'll be notified through your authenticator app that you have a waiting verification prompt.
+    - **Stuur mij een melding via de app.** U wordt gewaarschuwd via uw verificator-app.
 
-    - **Call my authentication phone.** You'll get a phone call on your mobile device, asking you to verify your information.
+    - **Bel mijn verificatie telefoon.** U ontvangt een telefoon gesprek op uw mobiele apparaat, waarin u wordt gevraagd om uw gegevens te verifiëren.
 
-    - **Text code to my authentication phone.** You'll get a verification code as part of a text message on your mobile device. You must enter this code into the verification prompt for your work or school account.
+    - **Tekst code naar mijn verificatie telefoon.** U ontvangt een verificatie code als onderdeel van een SMS-bericht op uw mobiele apparaat. U moet deze code invoeren in de verificatie prompt voor uw werk-of school account.
 
-    - **Call my office phone.** You'll get a phone call on your office phone, asking you to verify your information.
+    - **Bel mijn zakelijke telefoon.** U krijgt een telefoon gesprek op uw zakelijke telefoon, waarin u wordt gevraagd om uw gegevens te verifiëren.
 
-    - **Use verification code from app.** You'll use your authenticator app to get a verification code you'll type into the prompt from your work or school account.
+    - **Gebruik de verificatie code uit de app.** U gebruikt uw verificator-app om een verificatie code op te halen die u typt in de prompt van uw werk-of school account.
 
 2. Selecteer **Opslaan**.
 
-## <a name="add-or-change-your-phone-number"></a>Add or change your phone number
+## <a name="add-or-change-your-phone-number"></a>Uw telefoon nummer toevoegen of wijzigen
 
-You can add new phone numbers, or update existing numbers, from the **Additional security verification** page.
+U kunt nieuwe telefoon nummers toevoegen of bestaande nummers bijwerken op de pagina **aanvullende beveiligings verificatie** .
 
 >[!Important]
->We strongly recommend that you add a secondary phone number to help prevent being locked out of your account if your primary phone is lost or stolen, or if you get a new phone and no longer have your original, primary phone number.
+>We raden u ten zeerste aan om een tweede telefoon nummer toe te voegen om te voor komen dat uw account wordt vergrendeld als uw primaire telefoon is kwijt geraakt of gestolen, of als u een nieuwe telefoon hebt en u niet langer het oorspronkelijke, primaire telefoon nummer hebt.
 
-### <a name="to-change-your-phone-numbers"></a>To change your phone numbers
+### <a name="to-change-your-phone-numbers"></a>Telefoon nummers wijzigen
 
-1. From the **How would you like to respond?** section of the **Additional security verification** page, update the phone number information for your **Authentication phone** (your primary mobile device) and your **Office phone**.
+1. Werk in de sectie **Hoe wilt u reageren?** van de pagina **aanvullende beveiligings verificatie** de telefoon nummer gegevens voor uw **telefoon voor authenticatie** (uw primaire mobiele apparaat) en uw **zakelijke telefoon**.
 
-2. Select the box next to the **Alternate authentication phone** option, and then type in a secondary phone number where you can receive text messages or phone calls if you can't access your primary device.
-
-3. Selecteer **Opslaan**.
-
-## <a name="add-a-new-account-to-the-microsoft-authenticator-app"></a>Add a new account to the Microsoft authenticator app
-
-You can set up your work or school account on the Microsoft Authenticator app for [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) or [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458).
-
-If you've previously set up your work or school account in the Microsoft Authenticator app, you don't need to do it again.
-
-1. From the **How would you like to respond?** section of the **Additional security verification** page, select the **Set up Authenticator app** button.
-
-    ![Set up your work or school account in the Microsoft Authenticator app](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page-auth-app.png)
-
-2. Follow the on-screen instructions, including using your mobile device to scan the QR code, and then select **Next**.
-
-    You'll be asked to approve a notification through the Microsoft Authenticator app, to verify your information.
+2. Schakel het selectie vakje naast de optie **alternatieve telefoon voor authenticatie** in en typ in een secundair telefoon nummer waar u tekst berichten of telefoon gesprekken kunt ontvangen als u geen toegang hebt tot uw primaire apparaat.
 
 3. Selecteer **Opslaan**.
 
-## <a name="delete-your-account-or-device-from-the-microsoft-authenticator-app"></a>Delete your account or device from the Microsoft Authenticator app
+## <a name="add-a-new-account-to-the-microsoft-authenticator-app"></a>Een nieuw account toevoegen aan de micro soft Authenticator-app
 
-You can delete your account from the Microsoft Authenticator app, and you can delete your device from your work or school account. Typically you delete your device to permanently remove a lost, stolen, or old device from your account, and you delete your account to try to fix some connection issues or to address an account change, such as a new user name.
+U kunt uw werk-of school account instellen op de Microsoft Authenticator-app voor [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) of [IOS](https://apps.apple.com/app/microsoft-authenticator/id983156458).
 
-### <a name="to-delete-your-device-from-your-work-or-school-account"></a>To delete your device from your work or school account
+Als u uw werk-of school account in de app Microsoft Authenticator hebt ingesteld, hoeft u dit niet opnieuw te doen.
 
-1. From the **How would you like to respond?** section of the **Additional security verification** page, select the **Set up Authenticator app** button.
+1. Selecteer de knop **verificator-app instellen** in het gedeelte **Hoe wilt u reageren?** van de pagina **aanvullende beveiligings verificatie** .
+
+    ![Uw werk-of school account instellen in de Microsoft Authenticator-app](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page-auth-app.png)
+
+2. Volg de instructies op het scherm, inclusief het gebruik van uw mobiele apparaat om de QR-code te scannen en selecteer vervolgens **volgende**.
+
+    U wordt gevraagd een melding via de app Microsoft Authenticator goed te keuren om uw gegevens te verifiëren.
+
+3. Selecteer **Opslaan**.
+
+## <a name="delete-your-account-or-device-from-the-microsoft-authenticator-app"></a>Uw account of apparaat uit de Microsoft Authenticator-app verwijderen
+
+U kunt uw account uit de app Microsoft Authenticator verwijderen en u kunt uw apparaat verwijderen uit uw werk-of school account. Normaal gesp roken verwijdert u uw apparaat om een verloren, gestolen of oud apparaat permanent uit uw account te verwijderen en verwijdert u uw account om te proberen enkele verbindings problemen op te lossen of om een account wijziging aan te pakken, zoals een nieuwe gebruikers naam.
+
+### <a name="to-delete-your-device-from-your-work-or-school-account"></a>Uw apparaat verwijderen uit uw werk-of school account
+
+1. Selecteer de knop **verificator-app instellen** in het gedeelte **Hoe wilt u reageren?** van de pagina **aanvullende beveiligings verificatie** .
 
 2. Selecteer **Opslaan**.
 
-### <a name="to-delete-your-account-from-the-microsoft-authenticator-app"></a>To delete your account from the Microsoft Authenticator app
+### <a name="to-delete-your-account-from-the-microsoft-authenticator-app"></a>Uw account verwijderen uit de Microsoft Authenticator-app
 
-- From the Microsoft Authenticator app, select the **Delete** button next to the device you want to delete.
+- Selecteer in de Microsoft Authenticator-app de knop **verwijderen** naast het apparaat dat u wilt verwijderen.
 
-## <a name="turn-on-two-factor-verification-prompts-on-a-trusted-device"></a>Turn on two-factor verification prompts on a trusted device
+## <a name="turn-on-two-factor-verification-prompts-on-a-trusted-device"></a>Twee ledige verificatie prompts inschakelen op een vertrouwd apparaat
 
-Depending on your organization settings, you may see a check box that says **Don't ask again for X days** when you perform two-factor verification on your browser. If you've checked this box to stop two-factor verification prompts, and then you lose your device or your device is potentially compromised, you should turn the two-factor verification prompts back on to help protect your account. Unfortunately, you can't turn the prompts back on for a single device. You must turn the prompts on for all of your devices at the same time.
+Afhankelijk van de instellingen van uw organisatie ziet u mogelijk een selectie vakje waarin wordt aangegeven dat u de **X dagen niet opnieuw moet vragen** wanneer u twee ledige verificatie uitvoert voor uw browser. Als u dit selectie vakje hebt ingeschakeld om twee ledige verificatie vragen te stoppen en u het apparaat kwijtraakt of het apparaat mogelijk is aangetast, moet u de twee ledige verificatie prompts weer inschakelen om uw account te beveiligen. Helaas kunt u de prompts niet weer inschakelen voor één apparaat. U moet de prompts inschakelen voor al uw apparaten tegelijk.
 
-### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>To turn two-factor verification prompts back on for your devices
+### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>Om twee ledige verificatie vragen weer in te scha kelen voor uw apparaten
 
-- From the **Additional security verification** page, select **Restore multi-factor authentication on previously trusted devices**.
+- Selecteer op de pagina **aanvullende beveiligings verificatie** de optie **multi-factor Authentication herstellen op eerder vertrouwde apparaten**.
 
-    The next time you sign in on any device, you'll be prompted to perform two-factor verification.
+    De volgende keer dat u zich aanmeldt op een apparaat, wordt u gevraagd om twee ledige verificatie uit te voeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-After you add or update your two-factor verification settings, you can manage your app passwords, sign-in, or get help with some common two-factor verification-related problems.
+Nadat u uw twee ledige verificatie-instellingen hebt toegevoegd of bijgewerkt, kunt u uw app-wacht woorden beheren, aanmelden of hulp krijgen bij enkele veelvoorkomende problemen met twee ledige verificatie.
 
-- [Manage app passwords for two-factor verification](multi-factor-authentication-end-user-app-passwords.md) for any apps that don't support two-factor verification.
+- [App-wacht woorden beheren voor twee ledige verificatie](multi-factor-authentication-end-user-app-passwords.md) voor alle apps die geen ondersteuning bieden voor twee ledige verificatie.
 
-- [Sign-in using two-factor verification](multi-factor-authentication-end-user-signin.md)
+- [Aanmelden met twee ledige verificatie](multi-factor-authentication-end-user-signin.md)
 
-- [Get help with two-factor verification](multi-factor-authentication-end-user-troubleshoot.md)
+- [Hulp krijgen bij twee ledige verificatie](multi-factor-authentication-end-user-troubleshoot.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for images REST API and Ruby - Bing Image Search'
+title: 'Snelstartgids: zoeken naar afbeeldingen REST API en Ruby-Bing Image Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen voor het zoeken van afbeeldingen naar de REST API voor Bing Image Search te verzenden met Ruby en JSON-antwoorden te ontvangen.
 services: cognitive-services
@@ -19,7 +19,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327020"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>Quickstart: Search for images using the Bing Image Search REST API and Ruby
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en ruby
 
 Gebruik deze snelstart om voor het eerst de Bing Afbeeldingen zoeken-API aan te roepen en een JSON-antwoord te ontvangen. Deze eenvoudige Ruby-toepassing stuurt een zoekquery naar de API en toont de onbewerkte resultaten.
 
@@ -44,7 +44,7 @@ Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.mic
     require 'json'
     ```
 
-2. Maak variabelen voor het API-eindpunt, het zoekpad voor de afbeeldings-API, uw abonnementssleutel en de zoekterm.
+2. Maak variabelen voor het API-eindpunt, het zoekpad voor de afbeeldings-API, uw abonnementssleutel en zoekterm.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"

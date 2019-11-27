@@ -21,7 +21,7 @@ In dit artikel wordt beschreven hoe u een functie project zonder [Server](https:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="set-up-your-development-environment"></a>Uw ontwikkelomgeving instellen
+## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
 
 Als u een functions-app met Java en intereclips wilt ontwikkelen, moet u het volgende hebben geïnstalleerd:
 

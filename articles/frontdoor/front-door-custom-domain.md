@@ -62,7 +62,7 @@ Om een CNAME-record te maken met het afdverify-subdomein:
 
 3. Maak een CNAME-record vermelding voor uw aangepaste domein en vul de velden in, zoals wordt weergegeven in de volgende tabel (veldnamen kunnen verschillen):
 
-    | Bron                    | Type  | Bestemming                     |
+    | Bron                    | Type  | Doel                     |
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
 
@@ -139,7 +139,7 @@ Maken van een CNAME-record voor uw aangepaste domein:
 
 3. Maak een CNAME-record vermelding voor uw aangepaste domein en vul de velden in, zoals wordt weergegeven in de volgende tabel (veldnamen kunnen verschillen):
 
-    | Bron          | Type  | Bestemming           |
+    | Bron          | Type  | Doel           |
     |-----------------|-------|-----------------------|
     | <www.contoso.com> | CNAME | contoso.azurefd.net |
 

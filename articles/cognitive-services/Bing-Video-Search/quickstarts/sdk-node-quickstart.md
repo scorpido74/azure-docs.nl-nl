@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for videos using the SDK for Node.js - Bing Video Search'
+title: "Snelstartgids: zoeken naar Video's met behulp van de SDK voor node. js-Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's te verzenden met de Bing Video's zoeken-SDK voor Node.js.
 services: cognitive-services
@@ -17,9 +17,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383744"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Node.js
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Quick Start: een video zoekopdracht uitvoeren met de Bing Video Search SDK voor node. js
 
-Gebruik deze quickstart om nieuws te zoeken met de Bing Video's zoeken-SDK voor Node.js. Hoewel Bing Video's zoeken een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). Deze bevat meer aantekeningen en functies.
+Gebruik deze quickstart om nieuws te zoeken met de Bing Video's zoeken-SDK voor Node.js. Hoewel Bing Video's zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). Deze bevat meer aantekeningen en functies.
 
 ## <a name="prerequisites"></a>Vereisten
 

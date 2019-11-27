@@ -1,6 +1,6 @@
 ---
-title: Backends and backend pools in Azure Front Door Service | Microsoft Docs
-description: This article describes what backends and backend pools are in Front Door configuration.
+title: Back-end-en back-end-Pools in de Azure front-deur service | Microsoft Docs
+description: In dit artikel wordt beschreven welke back-end-en back-endservers zich in de voor deur bevinden.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -18,78 +18,78 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229022"
 ---
-# <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Backends and backend pools in Azure Front Door Service
-This article describes concepts about how to map your app deployment with Azure Front Door Service. It also explains the different terms in Front Door configuration around app backends.
+# <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Back-end-en back-end-Pools in de Azure front-deur service
+In dit artikel worden de concepten beschreven voor het toewijzen van uw app-implementatie met de Azure front-deur service. Ook worden de verschillende termen in de voor deur configuratie van de back-end van apps uitgelegd.
 
 ## <a name="backends"></a>Back-ends
-A backend is equal to an app's deployment instance in a region. Front Door Service supports both Azure and non-Azure backends, so the region isn't only restricted to Azure regions. Also, it can be your on-premises datacenter or an app instance in another cloud.
+Een back-end is gelijk aan het implementatie-exemplaar van een app in een regio. De front-deur service ondersteunt zowel Azure-als niet-Azure-back-ends, zodat de regio niet alleen beperkt is tot Azure-regio's. Het kan ook uw on-premises Data Center of een app-exemplaar in een andere cloud zijn.
 
-Front Door Service backends refer to the host name or public IP of your app, which can serve client requests. Backends shouldn't be confused with your database tier, storage tier, and so on. Backends should be viewed as the public endpoint of your app backend. When you add a backend in a Front Door backend pool, you must also add the following:
+De back-end van de front-deur service verwijst naar de hostnaam of het open bare IP-adres van uw app, die client aanvragen kan verwerken. Back-ends mogen niet worden verward met uw data base-laag, opslaglaag, enzovoort. Back-ends moeten worden weer gegeven als het open bare eind punt van de back-end van uw app. Wanneer u een back-end in een back-end van een front-deur groep toevoegt, moet u ook het volgende toevoegen:
 
-- **Backend host type**. The type of resource you want to add. Front Door Service supports autodiscovery of your app backends from app service, cloud service, or storage. If you want a different resource in Azure or even a non-Azure backend, select **Custom host**.
+- **Type back-end**. Het type resource dat u wilt toevoegen. De front-deur service ondersteunt automatische detectie van uw app-back-ends vanuit app service, Cloud service of Storage. Als u een andere resource wilt in azure of zelfs een back-end die niet van Azure is, selecteert u **aangepaste host**.
 
     >[!IMPORTANT]
-    >During configuration, APIs don't validate if the backend is inaccessible from Front Door environments. Make sure that Front Door can reach your backend.
+    >Tijdens de configuratie valideert Api's niet als de back-end niet toegankelijk is vanaf de front-deur omgevingen. Zorg ervoor dat de front-deur uw back-end kan bereiken.
 
-- **Subscription and Backend host name**. If you haven't selected **Custom host** for backend host type, select your backend by choosing the appropriate subscription and the corresponding backend host name in the UI.
+- De hostnaam van het **abonnement en de back-end**. Als u geen **aangepaste host** voor het type back-end hebt geselecteerd, selecteert u uw back-end door het juiste abonnement en de bijbehorende back-end-hostnaam in de gebruikers interface te kiezen.
 
-- **Backend host header**. The host header value sent to the backend for each request. For more information, see [Backend host header](#hostheader).
+- **Back-end-host-header**. De waarde van de host-header die wordt verzonden naar de back-end voor elke aanvraag. Zie voor meer informatie [back-end-host-header](#hostheader).
 
-- **Priority**. Assign priorities to your different backends when you want to use a primary service backend for all traffic. Also, provide backups if the primary or the backup backends are unavailable. For more information, see [Priority](front-door-routing-methods.md#priority).
+- **Prioriteit**. Wijs prioriteiten toe aan uw verschillende back-ends wanneer u een primaire service back-end voor al het verkeer wilt gebruiken. Geef ook back-ups op als de primaire of de back-end niet beschikbaar zijn. Zie [Priority](front-door-routing-methods.md#priority)voor meer informatie.
 
-- **Weight**. Assign weights to your different backends to distribute traffic across a set of backends, either evenly or according to weight coefficients. For more information, see [Weights](front-door-routing-methods.md#weighted).
+- **Gewicht**. Wijs gewichten toe aan uw verschillende back-ends voor het distribueren van verkeer over een reeks back-ends, hetzij gelijkmatig, hetzij op basis van gewichts coëfficiënten. Zie [gewichten](front-door-routing-methods.md#weighted)voor meer informatie.
 
-### <a name = "hostheader"></a>Backend host header
+### <a name = "hostheader"></a>Host-header van back-end
 
-Requests forwarded by Front Door to a backend include a host header field that the backend uses to retrieve the targeted resource. The value for this field typically comes from the backend URI and has the host and port.
+Aanvragen die door de voor deur naar een back-end worden doorgestuurd, bevatten een host-header veld dat door de back-end wordt gebruikt om de doel resource op te halen. De waarde voor dit veld is doorgaans afkomstig van de back-end-URI en heeft de host en poort.
 
-For example, a request made for www\.contoso.com will have the host header www\.contoso.com. If you use Azure portal to configure your backend, the default value for this field is the host name of the backend. If your backend is contoso-westus.azurewebsites.net, in the Azure portal, the autopopulated value for the backend host header will be contoso-westus.azurewebsites.net. However, if you use Azure Resource Manager templates or another method without explicitly setting this field, Front Door Service will send the incoming host name as the value for the host header. If the request was made for www\.contoso.com, and your backend is contoso-westus.azurewebsites.net that has an empty header field, Front Door Service will set the host header as www\.contoso.com.
+Een aanvraag voor www\.contoso.com heeft bijvoorbeeld de host-header www\.contoso.com. Als u Azure Portal gebruikt voor het configureren van uw back-end, is de standaard waarde voor dit veld de hostnaam van de back-end. Als uw back-end contoso-westus.azurewebsites.net is, wordt in de Azure Portal de automatisch gevulde waarde voor de host-header van de back-end contoso-westus.azurewebsites.net. Als u echter Azure Resource Manager sjablonen of een andere methode gebruikt zonder dit veld expliciet in te stellen, stuurt de front-deur service de binnenkomende hostnaam als de waarde voor de host-header. Als de aanvraag voor www\.contoso.com is gemaakt en uw back-end contoso-westus.azurewebsites.net met een leeg header-veld heeft, wordt de host-header door de front-deur service ingesteld als www-\.contoso.com.
 
-Most app backends (Azure Web Apps, Blob storage, and Cloud Services) require the host header to match the domain of the backend. However, the frontend host that routes to your backend will use a different hostname such as www\.contoso.azurefd.net.
+Voor de meeste app-back-ends (Azure Web Apps, Blob Storage en Cloud Services) moet de host-header overeenkomen met het domein van de back-end. De frontend-host die naar uw back-end stuurt, gebruikt echter een andere hostnaam, zoals www\.contoso.azurefd.net.
 
-If your backend requires the host header to match the backend host name, make sure that the backend host header includes the host name backend.
+Als voor uw back-end de host-header moet overeenkomen met de naam van de back-end, moet u ervoor zorgen dat de back-endserver de hostnaam van de host bevat.
 
-#### <a name="configuring-the-backend-host-header-for-the-backend"></a>Configuring the backend host header for the backend
+#### <a name="configuring-the-backend-host-header-for-the-backend"></a>De host-header van de back-end voor de back-end configureren
 
-To configure the **backend host header** field for a backend in the backend pool section:
+Het veld voor de **back-end-host-header** configureren voor een back-end in de back-endadresgroep-groep:
 
-1. Open your Front Door resource and select the backend pool with the backend to configure.
+1. Open de resource van de voor deur en selecteer de back-end-pool met de te configureren back-end.
 
-2. Add a backend if you haven't done so, or edit an existing one.
+2. Voeg een back-end toe als u dit nog niet hebt gedaan, of bewerk een bestaande.
 
-3. Set the backend host header field to a custom value or leave it blank. The hostname for the incoming request will be used as the host header value.
+3. Stel het veld voor de back-end-host-header in op een aangepaste waarde of laat dit vak leeg. De hostnaam voor de binnenkomende aanvraag wordt gebruikt als de waarde voor de host-header.
 
-## <a name="backend-pools"></a>Backend pools
-A backend pool in Front Door Service refers to the set of backends that receive similar traffic for their app. In other words, it's a logical grouping of your app instances across the world that receive the same traffic and respond with expected behavior. These backends are deployed across different regions or within the same region. All backends can be in Active/Active deployment mode or what is defined as Active/Passive configuration.
+## <a name="backend-pools"></a>Back-end-Pools
+Een back-end-groep in de voor deur-service verwijst naar de set back-ends die soortgelijk verkeer voor hun app ontvangen. Met andere woorden, het is een logische groepering van uw app-instanties over de hele wereld die hetzelfde verkeer ontvangen en op de verwachte manier reageert. Deze back-ends worden geïmplementeerd in verschillende regio's of binnen dezelfde regio. Alle back-ends kunnen zich in de Active/Active-implementatie modus bevindt of wat is gedefinieerd als actieve/passieve configuratie.
 
-A backend pool defines how the different backends should be evaluated via health probes. It also defines how load balancing occurs between them.
+Een back-end-pool definieert hoe de verschillende back-ends moeten worden geëvalueerd via status controles. Ook wordt gedefinieerd hoe taak verdeling tussen deze items wordt uitgevoerd.
 
 ### <a name="health-probes"></a>Statuscontroles
-Front Door Service sends periodic HTTP/HTTPS probe requests to each of your configured backends. Probe requests determine the proximity and health of each backend to load balance your end-user requests. Health probe settings for a backend pool define how we poll the health status of app backends. The following settings are available for load-balancing configuration:
+De voor deur-service verzendt periodiek HTTP/HTTPS-test aanvragen naar elk van de geconfigureerde back-endservers. Test aanvragen bepalen de nabijheid en status van elke back-end om uw aanvragen van uw eind gebruikers te verdelen. De status test instellingen voor een back-end-pool bepalen hoe we de status van app-back-ends controleren. De volgende instellingen zijn beschikbaar voor de configuratie van de taak verdeling:
 
-- **Path**. The URL used for probe requests for all the backends in the backend pool. For example, if one of your backends is contoso-westus.azurewebsites.net and the path is set to /probe/test.aspx, then Front Door Service environments, assuming the protocol is set to HTTP, will send health probe requests to http\://contoso-westus.azurewebsites.net/probe/test.aspx.
+- **Pad**. De URL die wordt gebruikt voor het testen van aanvragen voor alle back-ends in de back-end-pool. Als een van uw back-ends bijvoorbeeld contoso-westus.azurewebsites.net is en het pad is ingesteld op/probe/test.aspx, wordt de status van de voor deur-en test omgevingen, ervan uitgaande dat het protocol is ingesteld op HTTP, verzonden naar http\://contoso-westus.azurewebsites.net/probe/test.aspx.
 
-- **Protocol**. Defines whether to send the health probe requests from Front Door Service to your backends with HTTP or HTTPS protocol.
+- **Protocol**. Hiermee wordt bepaald of de Health probe-aanvragen van de front-deur service moeten worden verzonden naar uw back-end met het HTTP-of HTTPS-protocol.
 
-- **Interval (seconds)** . Defines the frequency of health probes to your backends, or the intervals in which each of the Front Door environments sends a probe.
+- **Interval (seconden)** . Hiermee wordt de frequentie van status controles voor uw back-ends gedefinieerd, of de intervallen waarin elk van de voor deur omgevingen een sonde verzendt.
 
     >[!NOTE]
-    >For faster failovers, set the interval to a lower value. The lower the value, the higher the health probe volume your backends receive. For example, if the interval is set to 30 seconds with 90 Front Door environments or POPs globally, each backend will receive about 3-5 probe requests per second.
+    >Voor snellere failovers stelt u het interval in op een lagere waarde. Hoe lager de waarde, hoe hoger het volume van de status test uw back-ends worden ontvangen. Als het interval bijvoorbeeld is ingesteld op 30 seconden met een front-deur omgeving van 90 of Pop's wereld wijd, ontvangt elke back-end ongeveer 3-5 test aanvragen per seconde.
 
-For more information, see [Health probes](front-door-health-probes.md).
+Zie [status tests](front-door-health-probes.md)voor meer informatie.
 
-### <a name="load-balancing-settings"></a>Load-balancing settings
-Load-balancing settings for the backend pool define how we evaluate health probes. These settings determine if the backend is healthy or unhealthy. They also check how to load-balance traffic between different backends in the backend pool. The following settings are available for load-balancing configuration:
+### <a name="load-balancing-settings"></a>Instellingen voor taak verdeling
+Instellingen voor taak verdeling voor de back-end-pool bepalen hoe de status tests worden geëvalueerd. Deze instellingen bepalen of de back-end in orde of beschadigd is. Ze controleren ook hoe de taak verdeling van verkeer tussen verschillende back-ends in de back-end-pool wordt gebalanceerd. De volgende instellingen zijn beschikbaar voor de configuratie van de taak verdeling:
 
-- **Sample size**. Identifies how many samples of health probes we need to consider for backend health evaluation.
+- **Voorbeeld grootte**. Hiermee wordt aangegeven hoeveel voor beelden van status tests er nodig zijn om de status van de back-end te evalueren.
 
-- **Successful sample size**. Defines the sample size as previously mentioned, the number of successful samples needed to call the backend healthy. For example, assume a Front Door health probe interval is 30 seconds, sample size is 5, and successful sample size is 3. Each time we evaluate the health probes for your backend, we look at the last five samples over 150 seconds (5 x 30). At least three successful probes are required to declare the backend as healthy.
+- De **voorbeeld grootte is voltooid**. Hiermee definieert u de voorbeeld grootte zoals eerder vermeld, het aantal geslaagde steek proeven dat nodig is voor het aanroepen van de back-end in orde. Stel dat het interval voor de status test voor de voor deur 30 seconden is, de voorbeeld grootte 5 is en een geslaagde voorbeeld grootte is ingesteld op 3. Telkens wanneer we de status controles voor uw back-end evalueren, bekijken we de laatste vijf steek proeven van meer dan 150 seconden (5 x 30). Ten minste drie geslaagde tests zijn vereist voor het declareren van de backend als in orde.
 
-- **Latency sensitivity (additional latency)** . Defines whether you want Front Door to send the request to backends within the latency measurement sensitivity range or forward the request to the closest backend.
+- **Latentie gevoeligheid (extra latentie)** . Hiermee definieert u of u de aanvraag wilt verzenden naar back-ends binnen het gevoeligheids bereik voor latentie meting of door sturen van de aanvraag naar de dichtstbijzijnde back-end.
 
-For more information, see [Least latency based routing method](front-door-routing-methods.md#latency).
+Zie voor meer informatie [op minste latentie gebaseerde routerings methode](front-door-routing-methods.md#latency).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Create a Front Door profile](quickstart-create-front-door.md)
-- [How Front Door works](front-door-routing-architecture.md)
+- [Een voor deur profiel maken](quickstart-create-front-door.md)
+- [De werking van de voor deur](front-door-routing-architecture.md)

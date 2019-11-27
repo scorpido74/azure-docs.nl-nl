@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14debff8baf4bdeb808b32e64b389ad0f9e2f38
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 443f1eb1576f2d6eb28d0de16f37e37912b707b9
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232217"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547353"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Beheerde identiteiten voor Azure-resources gebruiken op een Azure VM om een toegangs token te verkrijgen 
 
@@ -45,7 +45,7 @@ Als u van plan bent de Azure PowerShell-voor beelden in dit artikel te gebruiken
 
 ## <a name="overview"></a>Overzicht
 
-Een client toepassing kan beheerde identiteiten aanvragen voor de Azure [-resources app-only-toegangs token](../develop/developer-glossary.md#access-token) voor toegang tot een bepaalde resource. Het token is [gebaseerd op de Service-Principal beheerde identiteiten voor Azure-resources](overview.md#how-does-it-work). Het is dus niet nodig dat de client zichzelf registreert om een toegangs token te verkrijgen onder een eigen service-principal. Het token is geschikt voor gebruik als een Bearer-token in [service-naar-service-aanroepen die client referenties vereisen](../develop/v1-oauth2-client-creds-grant-flow.md).
+Een client toepassing kan beheerde identiteiten aanvragen voor de Azure [-resources app-only-toegangs token](../develop/developer-glossary.md#access-token) voor toegang tot een bepaalde resource. Het token is [gebaseerd op de Service-Principal beheerde identiteiten voor Azure-resources](overview.md#how-does-the-managed-identities-for-azure-resources-work). Het is dus niet nodig dat de client zichzelf registreert om een toegangs token te verkrijgen onder een eigen service-principal. Het token is geschikt voor gebruik als een Bearer-token in [service-naar-service-aanroepen die client referenties vereisen](../develop/v1-oauth2-client-creds-grant-flow.md).
 
 |  |  |
 | -------------- | -------------------- |

@@ -120,7 +120,7 @@ Windows 7| 1\.700 GB
 --- | ---
 Versleuteld| Ondersteund.
 Gecomprimeerd | Ondersteund.
-Sparse | Ondersteund.
+Verspreide gegevens | Ondersteund.
 Gecomprimeerd en verspreid |Ondersteund.
 Vaste koppelingen| Wordt niet ondersteund. Genegeerd.
 Reparsepunt| Wordt niet ondersteund. Genegeerd.

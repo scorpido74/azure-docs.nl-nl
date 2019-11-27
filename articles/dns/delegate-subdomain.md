@@ -1,6 +1,6 @@
 ---
-title: Delegate a subdomain - Azure DNS
-description: With this learning path, get started delegating an Azure DNS subdomain.
+title: Een subdomein-Azure DNS delegeren
+description: Met dit leer traject kunt u aan de slag gaan met het delegeren van een Azure DNS subdomein.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,60 +14,60 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74212379"
 ---
-# <a name="delegate-an-azure-dns-subdomain"></a>Delegate an Azure DNS subdomain
+# <a name="delegate-an-azure-dns-subdomain"></a>Een Azure DNS subdomein delegeren
 
-You can use the Azure portal to delegate a DNS subdomain. For example, if you own the contoso.com domain, you can delegate a subdomain called *engineering* to another, separate zone that you can administer separately from the contoso.com zone.
+U kunt de Azure Portal gebruiken om een DNS-subdomein te delegeren. Als u bijvoorbeeld eigenaar bent van het domein contoso.com, kunt u een subdomein met de naam *engineering* delegeren naar een andere, afzonderlijke zone die u afzonderlijk kunt beheren vanuit de zone contoso.com.
 
-If you prefer, you can delegate a subdomain using [Azure PowerShell](delegate-subdomain-ps.md).
+Als u wilt, kunt u een subdomein delegeren met behulp van [Azure PowerShell](delegate-subdomain-ps.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-To delegate an Azure DNS subdomain, you must first delegate your public domain to Azure DNS. See [Delegate a domain to Azure DNS](./dns-delegate-domain-azure-dns.md) for instructions on how to configure your name servers for delegation. Once your domain is delegated to your Azure DNS zone, you can delegate your subdomain.
+Als u een Azure DNS subdomein wilt delegeren, moet u uw open bare domein eerst delegeren naar Azure DNS. Zie [een domein delegeren voor Azure DNS](./dns-delegate-domain-azure-dns.md) voor instructies over het configureren van uw naam servers voor delegering. Zodra uw domein is overgedragen aan uw Azure DNS zone, kunt u uw subdomein delegeren.
 
 > [!NOTE]
-> Contoso.com is used as an example throughout this article. Vervang uw eigen domeinnaam door contoso.com.
+> Contoso.com wordt in dit artikel als voor beeld gebruikt. Vervang uw eigen domeinnaam door contoso.com.
 
-## <a name="create-a-zone-for-your-subdomain"></a>Create a zone for your subdomain
+## <a name="create-a-zone-for-your-subdomain"></a>Een zone maken voor uw subdomein
 
-First, create the zone for the **engineering** subdomain.
+Maak eerst de zone voor het **technische** subdomein.
 
-1. From the Azure portal, select **Create a resource**.
-2. In the search box, type **DNS**, and select **DNS zone**.
+1. Selecteer in de Azure Portal **een resource maken**.
+2. Typ **DNS**in het zoekvak en selecteer **DNS-zone**.
 3. Selecteer **Maken**.
-4. In the **Create DNS zone** pane, type **engineering.contoso.com** in the **Name** text box.
-5. Select the resource group for your zone. You might want to use the same resource group as the parent zone to keep similar resources together.
-6. Klik op **Maken**.
-7. After the deployment succeeds, go to the new zone.
+4. Typ **engineering.contoso.com** in het tekstvak **naam** in het deel venster **DNS-zone maken** .
+5. Selecteer de resource groep voor uw zone. Mogelijk wilt u dezelfde resource groep gebruiken als de bovenliggende zone om Vergelijk bare resources samen te brengen.
+6. Klik op **Create**.
+7. Nadat de implementatie is voltooid, gaat u naar de nieuwe zone.
 
-## <a name="note-the-name-servers"></a>Note the name servers
+## <a name="note-the-name-servers"></a>Noteer de naam servers
 
-Next, note the four name servers for the engineering subdomain.
+Noteer vervolgens de vier naam servers voor het subdomein van de technische afdeling.
 
-On the **engineering** zone pane, note the four name servers for the zone. You will use these name servers later.
+Noteer in het deel venster **engineering** zone de vier naam servers voor de zone. U zult deze naam servers later gebruiken.
 
-## <a name="create-a-test-record"></a>Create a test record
+## <a name="create-a-test-record"></a>Een test record maken
 
-Create an **A** record to use for testing. For example, create a **www** A record and configure it with a **10.10.10.10** IP address.
+Maak een **A** -record die moet worden gebruikt voor het testen. U kunt bijvoorbeeld een **www** a-record maken en deze configureren met een **10.10.10.10** IP-adres.
 
-## <a name="create-an-ns-record"></a>Create an NS record
+## <a name="create-an-ns-record"></a>Een NS-record maken
 
-Next, create a name server (NS) record  for the **engineering** zone.
+Maak vervolgens een NS-record (naam server) voor de **technische** zone.
 
-1. Navigate to the zone for the parent domain.
+1. Navigeer naar de zone voor het bovenliggende domein.
 2. Selecteer **Recordset toevoegen**.
-3. On the **Add record set** pane, type **engineering** in the **Name** text box.
-4. For **Type**, select **NS**.
-5. Under **Name server**, enter the four name servers that you recorded previously from the **engineering** zone.
+3. Typ in het deel venster **recordset toevoegen** de tekst **engineering** in het tekstvak **naam** .
+4. Selecteer bij **type**de optie **NS**.
+5. Voer onder **naam server**de vier naam servers in die u eerder hebt vastgelegd in de **technische** zone.
 6. Klik op **OK**.
 
-## <a name="test-the-delegation"></a>Test the delegation
+## <a name="test-the-delegation"></a>De delegering testen
 
-Use nslookup to test the delegation.
+Gebruik Nslookup om de overdracht te testen.
 
-1. Open a PowerShell window.
-2. At command prompt, type `nslookup www.engineering.contoso.com.`
-3. You should receive a non-authoritative answer showing the address **10.10.10.10**.
+1. Open een Power shell-venster.
+2. Typ `nslookup www.engineering.contoso.com.` op de opdracht prompt
+3. U ontvangt een niet-bindend antwoord met het adres **10.10.10.10**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Learn how to [configure reverse DNS for services hosted in Azure](dns-reverse-dns-for-azure-services.md).
+Meer informatie over het [configureren van omgekeerde DNS voor services die worden gehost in azure](dns-reverse-dns-for-azure-services.md).

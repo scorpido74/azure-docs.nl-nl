@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Multi-Factor Authentication - Azure Active Directory
-description: Microsoft Azure Multi-Factor Authentication deployment planning
+title: Azure Multi-Factor Authentication-Azure Active Directory implementeren
+description: Microsoft Azure Multi-Factor Authentication implementatie planning
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,162 +18,162 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381784"
 ---
-# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planning a cloud-based Azure Multi-Factor Authentication deployment
+# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen
 
-People are connecting to organizational resources in increasingly complicated scenarios. People connect from organization-owned, personal, and public devices on and off the corporate network using smart phones, tablets, PCs, and laptops, often on multiple platforms. In this always-connected, multi-device and multi-platform world, the security of user accounts is more important than ever. Passwords, no matter their complexity, used across devices, networks, and platforms are no longer sufficient to ensure the security of the user account, especially when users tend to reuse passwords across accounts. Sophisticated phishing and other social engineering attacks can result in usernames and passwords being posted and sold across the dark web.
+Mensen maken verbinding met de resources van de organisatie in steeds complexe scenario's. Mensen maken verbinding met de bedrijfs eigen, persoonlijke en open bare apparaten in en uit het zakelijke netwerk met behulp van Smart telefoons, tablets, Pc's en laptops, vaak op meerdere platforms. In deze altijd verbonden multi-device-en multi-platform wereld is de beveiliging van gebruikers accounts belang rijker dan ooit. Wacht woorden, ongeacht hun complexiteit, die worden gebruikt voor apparaten, netwerken en platformen, zijn niet langer voldoende om de beveiliging van het gebruikers account te garanderen, met name wanneer gebruikers wacht woorden van accounts vaak opnieuw moeten gebruiken. Geavanceerde phishing en andere aanvallen met sociale techniek kunnen ertoe leiden dat gebruikers namen en wacht woorden worden gepost en verkocht op het donkere web.
 
-[Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) helps safeguard access to data and applications. It provides an additional layer of security using a second form of authentication. Organizations can use [Conditional Access](../conditional-access/overview.md) to make the solution fit their specific needs.
+[Azure multi-factor Authentication (MFA)](concept-mfa-howitworks.md) helpt de toegang tot gegevens en toepassingen te beveiligen. Het biedt een extra beveiligingslaag met behulp van een tweede vorm van verificatie. Organisaties kunnen [voorwaardelijke toegang](../conditional-access/overview.md) gebruiken om de oplossing te laten voldoen aan hun specifieke behoeften.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Before starting a deployment of Azure Multi-Factor Authentication, there are prerequisite items that should be considered.
+Voordat u een implementatie van Azure Multi-Factor Authentication start, zijn er vereiste items die moeten worden overwogen.
 
-| Scenario | Vereisten |
+| Scenario | Vereiste |
 | --- | --- |
-| **Cloud-only** identity environment with modern authentication | **No additional prerequisite tasks** |
-| **Hybrid** identity scenarios | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) is deployed and user identities are synchronized or federated with the on-premises Active Directory Domain Services with Azure Active Directory. |
-| On-premises legacy applications published for cloud access | Azure AD [Application Proxy](../manage-apps/application-proxy.md) is deployed. |
-| Using Azure MFA with RADIUS Authentication | A [Network Policy Server (NPS)](howto-mfa-nps-extension.md) is deployed. |
-| Users have Microsoft Office 2010 or earlier, or Apple Mail for iOS 11 or earlier | Upgrade to [Microsoft Office 2013 or later](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) and Apple mail for iOS 12 or later. Conditional Access is not supported by legacy authentication protocols. |
+| **Cloud-only-** identiteits omgeving met moderne verificatie | **Geen aanvullende vereiste taken** |
+| Scenario's voor **hybride** identiteit | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) wordt geïmplementeerd en gebruikers identiteiten worden gesynchroniseerd of Federated met de on-premises Active Directory Domain Services met Azure Active Directory. |
+| On-premises oudere toepassingen die zijn gepubliceerd voor Cloud toegang | Azure AD- [toepassings proxy](../manage-apps/application-proxy.md) wordt geïmplementeerd. |
+| Azure MFA gebruiken met RADIUS-verificatie | Er wordt een [Network Policy Server (NPS)](howto-mfa-nps-extension.md) geïmplementeerd. |
+| Gebruikers hebben Microsoft Office 2010 of eerder of Apple Mail voor iOS 11 of eerder | Voer een upgrade uit naar [Microsoft Office 2013 of hoger](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) en Apple Mail voor IOS 12 of hoger. Voorwaardelijke toegang wordt niet ondersteund door verouderde verificatie protocollen. |
 
-## <a name="plan-user-rollout"></a>Plan user rollout
+## <a name="plan-user-rollout"></a>Gebruikers implementatie plannen
 
-Your MFA rollout plan should include a pilot deployment followed by deployment waves that are within your support capacity. Begin your rollout by applying your Conditional Access policies to a small group of pilot users. After evaluating the effect on the pilot users, process used, and registration behaviors, you can either add more groups to the policy or add more users to the existing groups.
+Uw abonnement op de MFA-implementatie moet een pilot implementatie bevatten, gevolgd door implementatie golven die binnen uw ondersteunings capaciteit vallen. Begin met uw implementatie door uw beleid voor voorwaardelijke toegang toe te passen op een kleine groep test gebruikers. Nadat u het effect van de test gebruikers, het gebruikte proces en registratie gedrag hebt geëvalueerd, kunt u meer groepen toevoegen aan het beleid of meer gebruikers toevoegen aan de bestaande groepen.
 
-### <a name="user-communications"></a>User communications
+### <a name="user-communications"></a>Gebruikers communicatie
 
-It is critical to inform users, in planned communications, about upcoming changes, Azure MFA registration requirements, and any necessary user actions. We recommend communications are developed in concert with representatives from within your organization, such as a Communications, Change Management, or Human Resources departments.
+Het is essentieel om gebruikers te informeren over geplande communicatie, over aanstaande wijzigingen, vereisten voor Azure MFA-registratie en alle benodigde gebruikers acties. U wordt aangeraden communicaties uit te voeren in overleg met vertegenwoordigers vanuit uw organisatie, zoals een communicatie, wijzigings beheer of Human Resources-afdelingen.
 
-Microsoft provides [communication templates](https://aka.ms/mfatemplates) and [end-user documentation](../user-help/security-info-setup-signin.md) to help draft your communications. You can send users to [https://myprofile.microsoft.com](https://myprofile.microsoft.com) to register directly by selecting the **Security Info** links on that page.
+Micro soft biedt [communicatie sjablonen](https://aka.ms/mfatemplates) en [documentatie voor eind gebruikers](../user-help/security-info-setup-signin.md) om uw communicatie te ontwerpen. U kunt gebruikers naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com) verzenden om rechtstreeks te registreren door de koppelingen voor **beveiligings gegevens** op die pagina te selecteren.
 
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
 
-Azure Multi-factor Authentication is deployed by enforcing policies with Conditional Access. A [Conditional Access policy](../conditional-access/overview.md) can require users to perform multi-factor authentication when certain criteria are met such as:
+Azure multi-factor Authentication wordt geïmplementeerd door beleids regels met voorwaardelijke toegang af te dwingen. Een [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) kan vereisen dat gebruikers multi-factor Authentication uitvoeren wanneer aan bepaalde criteria wordt voldaan, zoals:
 
-* All users, a specific user, member of a group, or assigned role
-* Specific cloud application being accessed
-* Device platform
-* State of device
-* Network location or geo-located IP address
+* Alle gebruikers, een specifieke gebruiker, lid van een groep of toegewezen rol
+* Specifieke Cloud toepassing waartoe toegang wordt verkregen
+* Platform apparaat
+* Status van apparaat
+* Netwerk locatie of geografisch geplaatste IP-adres
 * Clienttoepassingen
-* Sign-in risk (Requires Identity Protection)
+* Aanmeldings risico (vereist identiteits beveiliging)
 * Compatibel apparaat
-* Hybrid Azure AD joined device
-* Approved client application
+* Hybride Azure AD-apparaat toegevoegd
+* Goedgekeurde client toepassing
 
-Use the customizable posters and email templates in [multi-factor authentication rollout materials](https://www.microsoft.com/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all) to roll out multi-factor authentication to your organization.
+Gebruik de aanpas bare posters en e-mail sjablonen in [multi-factor Authentication-implementatie materialen](https://www.microsoft.com/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all) voor het implementeren van multi-factor Authentication voor uw organisatie.
 
-## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Enable Multi-Factor Authentication with Conditional Access
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Multi-Factor Authentication met voorwaardelijke toegang inschakelen
 
-Conditional Access policies enforce registration, requiring unregistered users to complete registration at first sign-in, an important security consideration.
+Met beleid voor voorwaardelijke toegang wordt de registratie afgedwongen, waarbij niet-geregistreerde gebruikers zijn vereist voor het volt ooien van de registratie bij de eerste aanmelding, een belang rijk veiligheids aspect.
 
-[Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) contributes both a registration policy for and automated risk detection and remediation policies to the Azure Multi-Factor Authentication story. Policies can be created to force password changes when there is a threat of compromised identity or require MFA when a sign-in is deemed risky by the following [events](../reports-monitoring/concept-risk-events.md):
+[Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) draagt zowel een registratie beleid voor als het beleid voor automatische risico detectie en herstel op het Azure multi-factor Authentication-artikel. Beleids regels kunnen worden gemaakt om wachtwoord wijzigingen af te dwingen wanneer er sprake is van een bedreiging van de identiteit aangetast of MFA vereist wanneer een aanmelding als riskant wordt beschouwd door de volgende [gebeurtenissen](../reports-monitoring/concept-risk-events.md):
 
-* Leaked credentials
+* Gelekte referenties
 * Aanmeldingen vanaf anonieme IP-adressen
 * Onmogelijke reis naar ongewone locaties
 * Aanmeldingen vanaf onbekende locaties
 * Aanmeldingen vanaf geïnfecteerde apparaten
-* Sign-ins from IP addresses with suspicious activities
+* Aanmeldingen vanaf IP-adressen met verdachte activiteiten
 
-Some of the risk detections detected by Azure Active Directory Identity Protection occur in real time and some require offline processing. Administrators can choose to block users who exhibit risky behaviors and remediate manually, require a password change, or require a multi-factor authentication as part of their Conditional Access policies.
+Enkele van de door Azure Active Directory Identity Protection gedetecteerde risico detecties treden in realtime op en sommige vereisen offline verwerking. Beheerders kunnen kiezen om gebruikers te blok keren die Risk ante gedrag tonen en hand matig herstellen, een wachtwoord wijziging vereisen of een multi-factor Authentication vereisen als onderdeel van het beleid voor voorwaardelijke toegang.
 
-## <a name="define-network-locations"></a>Define network locations
+## <a name="define-network-locations"></a>Netwerk locaties definiëren
 
-We recommended that organizations use Conditional Access to define their network using [named locations](../conditional-access/location-condition.md#named-locations). If your organization is using Identity Protection, consider using risk-based policies instead of named locations.
+Het wordt aanbevolen dat organisaties voorwaardelijke toegang gebruiken om hun netwerk te definiëren met behulp van [benoemde locaties](../conditional-access/location-condition.md#named-locations). Als uw organisatie identiteits beveiliging gebruikt, overweeg dan het gebruik van beleids regels op basis van Risico's in plaats van benoemde locaties.
 
-### <a name="configuring-a-named-location"></a>Configuring a named location
+### <a name="configuring-a-named-location"></a>Een benoemde locatie configureren
 
-1. Open **Azure Active Directory** in the Azure portal
-2. Click **Conditional Access**
-3. Click **Named Locations**
-4. Click **New Location**
-5. In the **Name** field, provide a meaningful name
-6. Select whether you are defining the location using IP ranges or Countries/Regions
-   1. If using IP Ranges
-      1. Decide whether to mark the location as Trusted. Aanmelden van een vertrouwde benoemde locaties verlaagt het aanmeldingsrisico van een gebruiker. Only mark this location as trusted if you know the IP ranges entered are established and credible in your organization.
-      2. Specify the IP Ranges
-   2. If using Countries/Regions
-      1. Expand the drop-down menu and select the countries or regions you wish to define for this named location.
-      2. Decide whether to Include unknown areas. Unknown areas are IP addresses that can't be mapped to a country/region.
+1. Open **Azure Active Directory** in het Azure Portal
+2. Klik op **voorwaardelijke toegang**
+3. Klik op **benoemde locaties**
+4. Klik op **nieuwe locatie**
+5. Geef in het veld **naam** een zinvolle naam op
+6. Selecteren of u de locatie definieert met IP-bereiken of landen/regio's
+   1. Als IP-bereiken worden gebruikt
+      1. Bepaal of de locatie als vertrouwd moet worden gemarkeerd. Aanmelden van een vertrouwde benoemde locaties verlaagt het aanmeldingsrisico van een gebruiker. Markeer deze locatie alleen als vertrouwd als u weet dat de ingevoerde IP-bereiken tot stand zijn gebracht en geloofwaardig is in uw organisatie.
+      2. Geef de IP-bereiken op
+   2. Als u landen/regio's gebruikt
+      1. Vouw de vervolg keuzelijst uit en selecteer de landen of regio's die u voor deze benoemde locatie wilt definiëren.
+      2. Bepaal of u onbekende gebieden wilt toevoegen. Onbekende gebieden zijn IP-adressen die niet kunnen worden toegewezen aan een land/regio.
 7. Klik op **Maken**.
 
-## <a name="plan-authentication-methods"></a>Plan authentication methods
+## <a name="plan-authentication-methods"></a>Verificatie methoden plannen
 
-Administrators can choose the [authentication methods](../authentication/concept-authentication-methods.md) that they want to make available for users. It is important to allow more than a single authentication method so that users have a backup method available in case their primary method is unavailable. The following methods are available for administrators to enable:
+Beheerders kunnen de [verificatie methoden](../authentication/concept-authentication-methods.md) kiezen die ze beschikbaar willen maken voor gebruikers. Het is belang rijk om meer dan één verificatie methode toe te staan, zodat gebruikers een back-upmethode beschikbaar hebben als de primaire methode niet beschikbaar is. De volgende methoden zijn beschikbaar voor beheerders om in te scha kelen:
 
-### <a name="notification-through-mobile-app"></a>Notification through mobile app
+### <a name="notification-through-mobile-app"></a>Melding via mobiele app
 
-A push notification is sent to the Microsoft Authenticator app on your mobile device. The user views the notification and selects **Approve** to complete verification. Push notifications through a mobile app provide the least intrusive option for users. They are also the most reliable and secure option because they use a data connection rather than telephony.
+Er wordt een push melding verzonden naar de Microsoft Authenticator-app op uw mobiele apparaat. De gebruiker bekijkt de melding en selecteert **goed keuren** om de verificatie te volt ooien. Push meldingen via een mobiele app bieden de minst opvallendste optie voor gebruikers. Ze zijn ook de meest betrouw bare en veilige optie omdat ze een gegevens verbinding gebruiken in plaats van telefoon.
 
 > [!NOTE]
-> If your organization has staff working in or traveling to China, the **Notification through mobile app** method on **Android devices** does not work in that country. Alternate methods should be made available for those users.
+> Als uw organisatie mede werkers heeft in of reist naar China, werkt de **melding via de mobiele app** -methode op **Android-apparaten** niet in dat land. Alternatieve methoden moeten beschikbaar worden gemaakt voor deze gebruikers.
 
-### <a name="verification-code-from-mobile-app"></a>Verification code from mobile app
+### <a name="verification-code-from-mobile-app"></a>Verificatie code uit de mobiele app
 
-A mobile app like the Microsoft Authenticator app generates a new OATH verification code every 30 seconds. The user enters the verification code into the sign-in interface. The mobile app option can be used whether or not the phone has a data or cellular signal.
+Een mobiele app, zoals de app Microsoft Authenticator, genereert elke 30 seconden een nieuwe OATH-verificatie code. De gebruiker voert de verificatie code in de aanmeldings interface in. De optie voor de mobiele app kan worden gebruikt, ongeacht of de telefoon een gegevens-of mobiel signaal heeft.
 
-### <a name="call-to-phone"></a>Call to phone
+### <a name="call-to-phone"></a>Bellen naar telefoon
 
-An automated voice call is placed to the user. The user answers the call and presses **#** on the phone keypad to approve their authentication. Call to phone is a great backup method for notification or verification code from a mobile app.
+Er wordt een automatische spraak oproep naar de gebruiker geplaatst. De gebruiker beantwoordt het gesprek en drukt **#** op het toetsen blok van de telefoon om hun verificatie goed te keuren. Bellen naar telefoon is een fantastische back-upmethode voor meldings-of verificatie code van een mobiele app.
 
-### <a name="text-message-to-phone"></a>Text message to phone
+### <a name="text-message-to-phone"></a>SMS-bericht naar telefoon
 
-A text message that contains a verification code is sent to the user, the user is prompted to enter the verification code into the sign-in interface.
+Er wordt een tekst bericht met een verificatie code naar de gebruiker verzonden. de gebruiker wordt gevraagd de verificatie code in te voeren in de aanmeldings interface.
 
-### <a name="choose-verification-options"></a>Choose verification options
+### <a name="choose-verification-options"></a>Verificatie opties kiezen
 
-1. Browse to **Azure Active Directory**, **Users**, **Multi-Factor Authentication**.
+1. Blader naar **Azure Active Directory**, **gebruikers** **multi-factor Authentication**.
 
-   ![Accessing the Multi-Factor Authentication portal from Azure AD Users blade in Azure portal](media/howto-mfa-getstarted/users-mfa.png)
+   ![Toegang tot de Blade Multi-Factor Authentication portal van Azure AD-gebruikers in Azure Portal](media/howto-mfa-getstarted/users-mfa.png)
 
-1. In the new tab that opens browse to **service settings**.
-1. Under **verification options**, check all of the boxes for methods available to users.
+1. Op het tabblad Nieuw kunt u bladeren naar **Service-instellingen**openen.
+1. Schakel onder **verificatie opties**alle vakjes in voor de beschik bare methoden voor gebruikers.
 
-   ![Configuring verification methods in the Multi-Factor Authentication service settings tab](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
+   ![Verificatie methoden configureren op het tabblad Multi-Factor Authentication-Service-instellingen](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
 1. Klik op **Opslaan**.
-1. Close the **service settings** tab.
+1. Sluit het tabblad **Service-instellingen** .
 
-## <a name="plan-registration-policy"></a>Plan registration policy
+## <a name="plan-registration-policy"></a>Registratie beleid plannen
 
-Administrators must determine how users will register their methods. Organizations should [enable the new combined registration experience](howto-registration-mfa-sspr-combined.md) for Azure MFA and self-service password reset (SSPR). SSPR allows users to reset their password in a secure way using the same methods they use for multi-factor authentication. We recommend this combined registration, currently in public preview, because it’s a great experience for users, with the ability to register once for both services. Enabling the same methods for SSPR and Azure MFA will allow your users to be registered to use both features.
+Beheerders moeten bepalen hoe gebruikers hun methoden registreren. Organisaties moeten [de nieuwe gecombineerde registratie-ervaring](howto-registration-mfa-sspr-combined.md) voor Azure MFA en self-service voor wachtwoord herstel (SSPR) inschakelen. Met SSPR kunnen gebruikers hun wacht woord op een veilige manier opnieuw instellen met behulp van dezelfde methoden die ze gebruiken voor multi-factor Authentication. We raden u aan deze gecombineerde registratie uit te voeren, momenteel in open bare preview, omdat het een goede ervaring voor gebruikers is, met de mogelijkheid om één keer voor beide services te registreren. Als u dezelfde methoden voor SSPR en Azure MFA inschakelt, kunnen uw gebruikers worden geregistreerd om beide functies te gebruiken.
 
-### <a name="registration-with-identity-protection"></a>Registration with Identity Protection
+### <a name="registration-with-identity-protection"></a>Registratie met identiteits beveiliging
 
-If your organization is using Azure Active Directory Identity Protection, [configure the MFA registration policy](../identity-protection/howto-mfa-policy.md) to prompt your users to register the next time they sign in interactively.
+Als uw organisatie Azure Active Directory Identity Protection gebruikt, [configureert u het MFA-registratie beleid](../identity-protection/howto-mfa-policy.md) zodat uw gebruikers wordt gevraagd de volgende keer dat ze zich interactief aanmelden in te schrijven.
 
-### <a name="registration-without-identity-protection"></a>Registration without Identity Protection
+### <a name="registration-without-identity-protection"></a>Registratie zonder identiteits beveiliging
 
-If your organization does not have licenses that enable Identity Protection, users are prompted to register the next time that MFA is required at sign-in. Users may not be registered for MFA if they don't use applications protected with MFA. It's important to get all users registered so that bad actors cannot guess the password of a user and register for MFA on their behalf, effectively taking control of the account.
+Als uw organisatie geen licenties heeft die identiteits beveiliging inschakelen, wordt gebruikers gevraagd de volgende keer dat MFA is vereist bij het aanmelden te registreren. Gebruikers zijn mogelijk niet geregistreerd voor MFA als ze geen toepassingen gebruiken die zijn beveiligd met MFA. Het is belang rijk om alle gebruikers te laten registreren, zodat de beschadigde actors het wacht woord van een gebruiker niet kunnen raden en zich namens hen voor MFA registreren, waardoor het account effectief wordt beheerd.
 
-#### <a name="enforcing-registration"></a>Enforcing registration
+#### <a name="enforcing-registration"></a>Registratie afdwingen
 
-Using the following steps a Conditional Access policy can force users to register for Multi-Factor Authentication
+Met behulp van de volgende stappen kan een beleid voor voorwaardelijke toegang ertoe afdwingen dat gebruikers zich registreren voor Multi-Factor Authentication
 
-1. Create a group, add all users not currently registered.
-2. Using Conditional Access, enforce multi-factor authentication for this group for access to all resources.
-3. Periodically, reevaluate the group membership, and remove users who have registered from the group.
+1. Een groep maken, alle gebruikers toevoegen die momenteel niet zijn geregistreerd.
+2. Gebruik voorwaardelijke toegang voor het afdwingen van multi-factor Authentication voor deze groep voor toegang tot alle resources.
+3. Evalueer het groepslid maatschap regel matig en verwijder gebruikers die zijn geregistreerd bij de groep.
 
-You may identify registered and non-registered Azure MFA users with PowerShell commands that rely on the [MSOnline PowerShell module](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
+U kunt geregistreerde en niet-geregistreerde Azure MFA-gebruikers identificeren met Power shell-opdrachten die afhankelijk zijn van de [MSOnline Power shell-module](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
 
-#### <a name="identify-registered-users"></a>Identify registered users
+#### <a name="identify-registered-users"></a>Geregistreerde gebruikers identificeren
 
 ```PowerShell
 Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
 ```
 
-#### <a name="identify-non-registered-users"></a>Identify non-registered users
+#### <a name="identify-non-registered-users"></a>Niet-geregistreerde gebruikers identificeren
 
 ```PowerShell
 Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
 ```
 
-### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Convert users from per-user MFA to Conditional Access based MFA
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Gebruikers converteren van MFA per gebruiker naar MFA op basis van voorwaardelijke toegang
 
-If your users were enabled using per-user enabled and enforced Azure Multi-Factor Authentication the following PowerShell can assist you in making the conversion to Conditional Access based Azure Multi-Factor Authentication.
+Als uw gebruikers zijn ingeschakeld met behulp van gebruikers die per gebruiker zijn ingeschakeld en Azure Multi-Factor Authentication afgedwongen, kan de volgende Power shell u helpen bij het converteren van de conversie naar voorwaardelijke toegang op basis van Azure Multi-Factor Authentication.
 
-Run this PowerShell in an ISE window or save as a .PS1 file to run locally.
+Voer deze Power shell uit in een ISE-venster of sla het bestand op als een. Het PS1-bestand dat lokaal moet worden uitgevoerd.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -210,153 +210,153 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> We recently changed the behavior and PowerShell script above accordingly. Previously, the script saved off the MFA methods, disabled MFA, and restored the methods. This is no longer necessary now that the default behavior for disable doesn't clear the methods.
+> Het gedrag en het Power shell-script hierboven zijn onlangs gewijzigd. Voorheen werd het script bespaard op de MFA-methoden, uitgeschakeld MFA en de methoden hersteld. Dit is nu niet langer nodig om de methoden niet te wissen met het standaard gedrag voor uitschakelen.
 
-## <a name="plan-conditional-access-policies"></a>Plan Conditional Access policies
+## <a name="plan-conditional-access-policies"></a>Beleid voor voorwaardelijke toegang plannen
 
-To plan your Conditional Access policy strategy, which will determine when MFA and other controls are required, refer to [What is Conditional Access in Azure Active Directory?](../conditional-access/overview.md).
+Als u de strategie van het beleid voor voorwaardelijke toegang wilt plannen, wat bepaalt wanneer MFA en andere besturings elementen vereist zijn, raadpleegt u [Wat is voorwaardelijke toegang in azure Active Directory?](../conditional-access/overview.md).
 
-It is important that you prevent being inadvertently locked out of your Azure AD tenant. You can mitigate the impact of this inadvertent lack of administrative access by [creating two or more emergency access accounts in your tenant](../users-groups-roles/directory-emergency-access.md) and excluding them from your Conditional Access policy.
+Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen. U kunt de impact van dit onbedoelde gebrek aan administratieve toegang verminderen door [twee of meer accounts voor toegang tot een nood geval in uw Tenant te maken](../users-groups-roles/directory-emergency-access.md) en ze uit te sluiten van uw beleid voor voorwaardelijke toegang.
 
-### <a name="create-conditional-access-policy"></a>Create Conditional Access policy
+### <a name="create-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
-1. Sign in to the [Azure portal](https://portal.azure.com) using a global administrator account.
-1. Browse to **Azure Active Directory**, **Conditional Access**.
-1. Select **New policy**.
-   ![Create a Conditional Access policy to enable MFA for Azure portal users in pilot group](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
-1. Provide a meaningful name for your policy.
-1. Under **users and groups**:
-   * On the **Include** tab, select the **All users** radio button
-   * On the **Exclude** tab, check the box for **Users and groups** and choose your emergency access accounts.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een account voor globale beheerders.
+1. Blader naar **Azure Active Directory**, **voorwaardelijke toegang**.
+1. Selecteer **Nieuw beleid**.
+   ![een beleid voor voorwaardelijke toegang maken om MFA in te scha kelen voor Azure Portal gebruikers in de groep prototype](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
+1. Geef een beschrijvende naam op voor uw beleid.
+1. Onder **gebruikers en groepen**:
+   * Schakel op het tabblad **include** het keuze rondje **alle gebruikers** in
+   * Schakel op het tabblad **exclude** het selectie vakje voor **gebruikers en groepen** in en kies uw accounts voor toegang voor nood gevallen.
    * Klik op **Gereed**.
-1. Under **Cloud apps**, select the **All cloud apps** radio button.
-   * OPTIONALLY: On the **Exclude** tab, choose cloud apps that your organization does not require MFA for.
+1. Onder **Cloud-apps**selecteert u het keuze rondje **alle Cloud-apps** .
+   * Optioneel: Kies op het tabblad **uitsluiten** de optie Cloud-apps waarvoor uw organisatie geen MFA vereist.
    * Klik op **Gereed**.
-1. Under **Conditions** section:
-   * OPTIONALLY: If you have enabled Azure Identity Protection, you can choose to evaluate sign-in risk as part of the policy.
-   * OPTIONALLY: If you have configured trusted locations or named locations, you can specify to include or exclude those locations from the policy.
-1. Under **Grant**, make sure the **Grant access** radio button is selected.
-    * Check the box for **Require multi-factor authentication**.
+1. Onder **voor waarden** :
+   * Optioneel: als Azure Identity Protection is ingeschakeld, kunt u ervoor kiezen om het aanmeldings risico als onderdeel van het beleid te evalueren.
+   * Optioneel: als u vertrouwde locaties of benoemde locaties hebt geconfigureerd, kunt u opgeven dat deze locaties moeten worden opgenomen of uitgesloten van het beleid.
+1. Zorg ervoor dat onder **Grant**het keuze rondje **toegang verlenen** is geselecteerd.
+    * Schakel het selectie vakje voor **multi-factor Authentication vereisen**in.
     * Klik op **Selecteren**.
-1. Skip the **Session** section.
-1. Set the **Enable policy** toggle to **On**.
-1. Klik op **Maken**.
+1. Sla de **sessie** sectie over.
+1. Stel de **Schakel** optie voor het inschakelen van beleid in **op aan**.
+1. Klik op **Create**.
 
-## <a name="plan-integration-with-on-premises-systems"></a>Plan integration with on-premises systems
+## <a name="plan-integration-with-on-premises-systems"></a>Integratie met on-premises systemen plannen
 
-Some legacy and on-premises applications that do not authenticate directly against Azure AD require additional steps to use MFA including:
+Voor sommige verouderde en on-premises toepassingen die niet rechtstreeks voor Azure AD worden geverifieerd, zijn extra stappen vereist voor het gebruik van MFA, waaronder:
 
-* Legacy on-premises applications, which will need to use Application proxy.
-* On-premises RADIUS applications, which will need to use MFA adapter with NPS server.
-* On-premises AD FS applications, which will need to use MFA adapter with AD FS 2016 or newer.
+* Oudere on-premises toepassingen, die toepassings proxy moeten gebruiken.
+* On-premises RADIUS-toepassingen, die MFA-adapter moeten gebruiken met NPS-server.
+* On-premises AD FS toepassingen, die MFA-adapters moeten gebruiken met AD FS 2016 of nieuwer.
 
-Applications that authenticate directly with Azure AD and have modern authentication (WS-Fed, SAML, OAuth, OpenID Connect) can make use of Conditional Access policies directly.
+Toepassingen die rechtstreeks worden geverifieerd met Azure AD en moderne authenticatie hebben (WS-voeder, SAML, OAuth, OpenID Connect Connect) kunnen rechtstreeks gebruikmaken van beleids regels voor voorwaardelijke toegang.
 
-### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>Use Azure MFA with Azure AD Application Proxy
+### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>Azure MFA gebruiken met Azure AD-toepassingsproxy
 
-Applications residing on-premises can be published to your Azure AD tenant via [Azure AD Application Proxy](../manage-apps/application-proxy.md) and can take advantage of Azure Multi-Factor Authentication if they are configured to use Azure AD pre-authentication.
+Toepassingen die on-premises zijn, kunnen worden gepubliceerd naar uw Azure AD-Tenant via [azure AD-toepassingsproxy](../manage-apps/application-proxy.md) en kunnen profiteren van Azure multi-factor Authentication als ze zijn geconfigureerd voor het gebruik van Azure AD vooraf-authenticatie.
 
-These applications are subject to Conditional Access policies that enforce Azure Multi-Factor Authentication, just like any other Azure AD-integrated application.
+Deze toepassingen zijn onderworpen aan beleid voor voorwaardelijke toegang waarmee Azure Multi-Factor Authentication wordt afgedwongen, net zoals elke andere met Azure AD geïntegreerde toepassing.
 
-Likewise, if Azure Multi-Factor Authentication is enforced for all user sign-ins, on-premises applications published with Azure AD Application Proxy will be protected.
+Als Azure Multi-Factor Authentication wordt afgedwongen voor alle gebruikers aanmeldingen, worden on-premises toepassingen die zijn gepubliceerd met Azure AD-toepassingsproxy beschermd.
 
-### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>Integrating Azure Multi-Factor Authentication with Network Policy Server
+### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>Azure Multi-Factor Authentication integreren met Network Policy Server
 
-The Network Policy Server (NPS) extension for Azure MFA adds cloud-based MFA capabilities to your authentication infrastructure using your existing servers. With the NPS extension, you can add phone call, text message, or phone app verification to your existing authentication flow. This integration has the following limitations:
+Met de uitbrei ding van de Network Policy Server (NPS) voor Azure MFA voegt u op de cloud gebaseerde MFA-mogelijkheden toe aan uw verificatie-infra structuur met uw bestaande servers. Met de NPS-extensie kunt u een telefoon gesprek, SMS-bericht of de verificatie van de mobiele app toevoegen aan uw bestaande verificatie stroom. Voor deze integratie gelden de volgende beperkingen:
 
-* With the CHAPv2 protocol, only authenticator app push notifications and voice call are supported.
-* Conditional Access policies cannot be applied.
+* Met het CHAPv2-protocol worden alleen push meldingen en spraak oproepen van de verificator-app ondersteund.
+* Beleid voor voorwaardelijke toegang kan niet worden toegepast.
 
-The NPS extension acts as an adapter between RADIUS and cloud-based Azure MFA to provide a second factor of authentication to protect [VPN](howto-mfa-nps-extension-vpn.md), [Remote Desktop Gateway connections](howto-mfa-nps-extension-rdg.md), or other RADIUS capable applications. Users that register for Azure MFA in this environment will be challenged for all authentication attempts, the lack of Conditional Access policies means MFA is always required.
+De NPS-uitbrei ding fungeert als een adapter tussen RADIUS-en Cloud-Azure MFA om een tweede factor van verificatie te bieden voor het beveiligen van [VPN-](howto-mfa-nps-extension-vpn.md), [extern bureaublad-gateway verbindingen](howto-mfa-nps-extension-rdg.md)of andere toepassingen die geschikt zijn voor RADIUS. Gebruikers die zich registreren voor Azure MFA in deze omgeving worden aangevraagd voor alle verificatie pogingen, het ontbreken van beleid voor voorwaardelijke toegang betekent dat MFA altijd vereist is.
 
-#### <a name="implementing-your-nps-server"></a>Implementing your NPS server
+#### <a name="implementing-your-nps-server"></a>De NPS-server implementeren
 
-If you have an NPS instance deployed and in use already, reference [Integrate your existing NPS Infrastructure with Azure Multi-Factor Authentication](howto-mfa-nps-extension.md). If you are setting up NPS for the first time, refer to [Network Policy Server (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) for instructions. Troubleshooting guidance can be found in the article [Resolve error messages from the NPS extension for Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
+Als er al een NPS-exemplaar is geïmplementeerd en in gebruik is, kunt [u uw bestaande NPS-infra structuur integreren met Azure multi-factor Authentication](howto-mfa-nps-extension.md). Als u NPS voor de eerste keer instelt, raadpleegt u [Network Policy Server (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) voor instructies. Richt lijnen voor probleem oplossing vindt u in het artikel de [fout berichten van de NPS-extensie voor Azure multi-factor Authentication oplossen](howto-mfa-nps-extension-errors.md).
 
-#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>Prepare NPS for users that aren't enrolled for MFA
+#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>NPS voorbereiden voor gebruikers die niet zijn Inge schreven voor MFA
 
-Choose what happens when users that aren’t enrolled with MFA try to authenticate. Use the registry setting `REQUIRE_USER_MATCH` in the registry path `HKLM\Software\Microsoft\AzureMFA` to control the feature behavior. This setting has a single configuration option.
+Kies wat er gebeurt wanneer gebruikers die niet zijn Inge schreven met MFA proberen te verifiëren. Gebruik de register instelling `REQUIRE_USER_MATCH` in het registerpad `HKLM\Software\Microsoft\AzureMFA` om het functie gedrag te bepalen. Deze instelling heeft één configuratie optie.
 
 | Sleutel | Waarde | Standaard |
 | --- | --- | --- |
-| `REQUIRE_USER_MATCH` | TRUE / FALSE | Not set (equivalent to TRUE) |
+| `REQUIRE_USER_MATCH` | WAAR/ONWAAR | Niet ingesteld (gelijk aan TRUE) |
 
-The purpose of this setting is to determine what to do when a user is not enrolled for MFA. The effects of changing this setting are listed in the table below.
+Het doel van deze instelling is om te bepalen wat er moet gebeuren wanneer een gebruiker niet is inge schreven voor MFA. De gevolgen van het wijzigen van deze instelling worden weer gegeven in de volgende tabel.
 
-| Instellingen | User MFA Status | Effects |
+| Instellingen | Gebruikers MFA-status | Bijwerkingen |
 | --- | --- | --- |
-| Key does not exist | Not enrolled | MFA challenge is unsuccessful |
-| Value set to True / not set | Not enrolled | MFA challenge is unsuccessful |
-| Key set to False | Not enrolled | Authentication without MFA |
-| Key set to False or True | Enrolled | Must authenticate with MFA |
+| Sleutel bestaat niet | Niet Inge schreven | De MFA-vraag is mislukt |
+| Waarde ingesteld op waar/niet ingesteld | Niet Inge schreven | De MFA-vraag is mislukt |
+| Sleutel ingesteld op ONWAAR | Niet Inge schreven | Verificatie zonder MFA |
+| Sleutel ingesteld op False of True | Inge schreven | Moet worden geverifieerd met MFA |
 
-### <a name="integrate-with-active-directory-federation-services"></a>Integrate with Active Directory Federation Services
+### <a name="integrate-with-active-directory-federation-services"></a>Integreren met Active Directory Federation Services
 
-If your organization is federated with Azure AD, you can use [Azure Multi-Factor Authentication to secure AD FS resources](multi-factor-authentication-get-started-adfs.md), both on-premises and in the cloud. Azure MFA enables you to reduce passwords and provide a more secure way to authenticate. Starting with Windows Server 2016, you can now configure Azure MFA for primary authentication.
+Als uw organisatie federatief is met Azure AD, kunt u [Azure multi-factor Authentication gebruiken om AD FS resources](multi-factor-authentication-get-started-adfs.md), zowel on-premises als in de Cloud, te beveiligen. Met Azure MFA kunt u wacht woorden verminderen en een veiligere verificatie methode bieden. Vanaf Windows Server 2016 kunt u nu Azure MFA configureren voor primaire authenticatie.
 
-Unlike with AD FS in Windows Server 2012 R2, the AD FS 2016 Azure MFA adapter integrates directly with Azure AD and does not require an on-premises Azure MFA server. The Azure MFA adapter is built into Windows Server 2016, and there is no need for an additional installation.
+In tegens telling tot AD FS in Windows Server 2012 R2, integreert de AD FS 2016 Azure MFA-adapter rechtstreeks met Azure AD en is er geen on-premises Azure MFA-server vereist. De Azure MFA-adapter is ingebouwd in Windows Server 2016 en er is geen aanvullende installatie nodig.
 
-When using Azure MFA with AD FS 2016 and the target application is subject to Conditional Access policy, there are additional considerations:
+Wanneer u Azure MFA gebruikt met AD FS 2016 en de doel toepassing is onderworpen aan beleid voor voorwaardelijke toegang, zijn er aanvullende overwegingen:
 
-* Conditional Access is available when the application is a relying party to Azure AD, federated with AD FS 2016 or newer.
-* Conditional Access is not available when the application is a relying party to AD FS 2016 or AD FS 2019 and is managed or federated with AD FS 2016 or AD FS 2019.
-* Conditional Access is also not available when AD FS 2016 or AD FS 2019 is configured to use Azure MFA as the primary authentication method.
+* Voorwaardelijke toegang is beschikbaar wanneer de toepassing een Relying Party is naar Azure AD, Federated met AD FS 2016 of nieuwer.
+* Voorwaardelijke toegang is niet beschikbaar wanneer de toepassing een Relying Party is AD FS 2016 of AD FS 2019 en wordt beheerd of Federated met AD FS 2016 of AD FS 2019.
+* Voorwaardelijke toegang is ook niet beschikbaar wanneer AD FS 2016 of AD FS 2019 is geconfigureerd voor het gebruik van Azure MFA als de primaire verificatie methode.
 
-#### <a name="ad-fs-logging"></a>AD FS logging
+#### <a name="ad-fs-logging"></a>AD FS logboek registratie
 
-Standard AD FS 2016 and 2019 logging in both the Windows Security Log and the AD FS Admin log, contains information about authentication requests and their success or failure. Event log data within these events will indicate whether Azure MFA was used. For example, an AD FS Auditing Event ID 1200 may contain:
+Standaard AD FS 2016 en 2019 logboek registratie in het Windows-beveiligings logboek en het AD FS-beheer logboek bevat informatie over verificatie aanvragen en hun geslaagde of mislukte pogingen. Met gebeurtenis logboek gegevens in deze gebeurtenissen wordt aangegeven of Azure MFA is gebruikt. Een AD FS controle gebeurtenis-ID 1200 kan bijvoorbeeld het volgende bevatten:
 
 ```
 <MfaPerformed>true</MfaPerformed>
 <MfaMethod>MFA</MfaMethod>
 ```
 
-#### <a name="renew-and-manage-certificates"></a>Renew and manage certificates
+#### <a name="renew-and-manage-certificates"></a>Certificaten vernieuwen en beheren
 
-On each AD FS server, in the local computer My Store, there will be a self-signed Azure MFA certificate titled OU=Microsoft AD FS Azure MFA, which contains the certificate expiration date. Check the validity period of this certificate on each AD FS server to determine the expiration date.
+Op elke AD FS-server, in het archief van de lokale computer, is er een zelfondertekend Azure MFA-certificaat met de titel OE = micro soft AD FS Azure MFA, dat de verval datum van het certificaat bevat. Controleer de geldigheids periode van dit certificaat op elke AD FS-server om de verval datum te bepalen.
 
-If the validity period of your certificates is nearing expiration, [generate and verify a new MFA certificate on each AD FS server](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
+Als de geldigheids periode van uw certificaten bijna is verlopen, [genereert en verifieert u een nieuw MFA-certificaat op elke AD FS-server](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
-The following guidance details how to manage the Azure MFA certificates on your AD FS servers. When you configure AD FS with Azure MFA, the certificates generated via the `New-AdfsAzureMfaTenantCertificate` PowerShell cmdlet are valid for 2 years. Renew and install the renewed certificates prior to expiration to ovoid disruptions in MFA service.
+In de volgende richt lijnen vindt u informatie over het beheren van de Azure MFA-certificaten op uw AD FS-servers. Wanneer u AD FS met Azure MFA configureert, zijn de certificaten die zijn gegenereerd via de `New-AdfsAzureMfaTenantCertificate` Power shell-cmdlet 2 jaar geldig. Vernieuw en installeer de verlengde certificaten vóór de verval datum van Ovoid-onderbrekingen in de MFA-service.
 
-## <a name="implement-your-plan"></a>Implement your plan
+## <a name="implement-your-plan"></a>Uw abonnement implementeren
 
-Now that you have planned your solution, you can implement by following the steps below:
+Nu u uw oplossing hebt gepland, kunt u deze implementeren door de volgende stappen uit te voeren:
 
-1. Meet any necessary prerequisites
-   1. Deploy [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) for any hybrid scenarios
-   1. Deploy [Azure AD Application Proxy](../manage-apps/application-proxy.md) for on any on-premises apps published for cloud access
-   1. Deploy [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) for any RADIUS authentication
-   1. Ensure users have upgraded to supported versions of Microsoft Office with modern authentication enabled
-1. Configure chosen [authentication methods](#choose-verification-options)
-1. Define your [named network locations](../conditional-access/location-condition.md#named-locations)
-1. Select groups to begin rolling out MFA.
-1. Configure your [Conditional Access policies](#create-conditional-access-policy)
-1. Configure your MFA registration policy
-   1. [Combined MFA and SSPR](howto-registration-mfa-sspr-combined.md)
-   1. With [Identity Protection](../identity-protection/howto-mfa-policy.md)
-1. Send user communications and get users to enroll at [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
-1. [Keep track of who’s enrolled](#identify-non-registered-users)
+1. Voldoen aan de vereiste vereisten
+   1. [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) implementeren voor hybride scenario's
+   1. [Azure AD-toepassingsproxy](../manage-apps/application-proxy.md) implementeren voor alle on-premises apps die zijn gepubliceerd voor Cloud toegang
+   1. [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) implementeren voor RADIUS-verificatie
+   1. Zorg ervoor dat gebruikers zijn overgestapt op ondersteunde versies van Microsoft Office waarvoor moderne verificatie is ingeschakeld
+1. Gekozen [verificatie methoden](#choose-verification-options) configureren
+1. Definieer uw [benoemde netwerk locaties](../conditional-access/location-condition.md#named-locations)
+1. Selecteer groepen om te beginnen met het implementeren van MFA.
+1. Uw [beleid voor voorwaardelijke toegang](#create-conditional-access-policy) configureren
+1. Configureer uw MFA-registratie beleid
+   1. [Gecombineerde MFA en SSPR](howto-registration-mfa-sspr-combined.md)
+   1. Met [identiteits beveiliging](../identity-protection/howto-mfa-policy.md)
+1. Gebruikers communicatie verzenden en gebruikers ontvangen om te registreren op [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
+1. [Bijhouden wie is inge schreven](#identify-non-registered-users)
 
 > [!TIP]
-> Government cloud users can enroll at [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
+> Government Cloud-gebruikers kunnen zich inschrijven op [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
-## <a name="manage-your-solution"></a>Manage your solution
+## <a name="manage-your-solution"></a>Uw oplossing beheren
 
-Reports for Azure MFA
+Rapporten voor Azure MFA
 
-Azure Multi-Factor Authentication provides reports through the Azure portal:
+Azure Multi-Factor Authentication biedt rapporten via de Azure Portal:
 
 | Rapport | Locatie | Beschrijving |
 | --- | --- | --- |
-| Usage and fraud alerts | Azure AD > Sign-ins | Provides information on overall usage, user summary, and user details; as well as a history of fraud alerts submitted during the date range specified. |
+| Gebruiks-en fraude waarschuwingen | Aanmeldingen bij Azure AD-> | Bevat informatie over het algehele gebruik, de gebruikers samenvatting en de gebruikers gegevens. en een geschiedenis van fraude waarschuwingen die zijn ingediend tijdens het opgegeven datum bereik. |
 
-## <a name="troubleshoot-mfa-issues"></a>Troubleshoot MFA issues
+## <a name="troubleshoot-mfa-issues"></a>Problemen met MFA oplossen
 
-Find solutions for common issues with Azure MFA at the [Troubleshooting Azure Multi-Factor Authentication article](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) on the Microsoft Support Center.
+Vind oplossingen voor veelvoorkomende problemen met Azure MFA in het [artikel Troubleshooting azure multi-factor Authentication](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) in het Microsoft ondersteuning Center.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat zijn verificatiemethoden?](concept-authentication-methods.md)
-* [Enable converged registration for Azure Multi-Factor Authentication and Azure AD self-service password reset](concept-registration-mfa-sspr-converged.md)
-* Why was a user prompted or not prompted to perform MFA? See the section [Azure AD sign-ins report in the Reports in Azure Multi-Factor Authentication document](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+* [Geconvergeerde registratie voor Azure Multi-Factor Authentication en de self-service voor wachtwoord herstel van Azure AD inschakelen](concept-registration-mfa-sspr-converged.md)
+* Waarom wordt een gebruiker gevraagd of niet gevraagd MFA uit te voeren? Zie de sectie [Azure AD-aanmeld rapport in de rapporten in Azure multi-factor Authentication document](howto-mfa-reporting.md#azure-ad-sign-ins-report).

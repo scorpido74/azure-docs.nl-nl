@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b5f839cc6216eb12bfd0a86009ec49e987279d6e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 922a2eb910a99a899bdb9f2b3e2392559ec9b0f3
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889838"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548407"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie
 
@@ -128,8 +128,9 @@ Een belang rijk aspect van het gegevens beveiligings model is de mogelijkheid om
 
 ![Audit logboek](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>Gegevens classificatie beheren met T-SQL
+### <a name="manage-classifications"></a>Classificaties beheren
 
+# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
 U kunt T-SQL gebruiken om kolom classificaties toe te voegen of te verwijderen, en alle classificaties voor de hele Data Base op te halen.
 
 > [!NOTE]
@@ -139,8 +140,7 @@ U kunt T-SQL gebruiken om kolom classificaties toe te voegen of te verwijderen, 
 - De classificatie verwijderen uit een of meer kolommen: [gevoeligheids classificatie voor neerzetten](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Alle classificaties weer geven in de Data Base: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="manage-classifications-using-rest-apis"></a>Classificaties beheren met rest-Api's
-
+# <a name="rest-apistabazure-rest-api"></a>[Rest-Api's](#tab/azure-rest-api)
 U kunt ook REST-Api's gebruiken om classificaties programmatisch te beheren. De gepubliceerde REST Api's ondersteunen de volgende bewerkingen:
 
 - [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) : Hiermee wordt het gevoeligheids label van een bepaalde kolom gemaakt of bijgewerkt
@@ -152,12 +152,8 @@ U kunt ook REST-Api's gebruiken om classificaties programmatisch te beheren. De 
 
 - [Lijst aanbevolen door data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) : Hiermee wordt de aanbevolen gevoeligheids labels van een bepaalde data base opgehaald
 
-## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Gegevens detectie en-classificatie beheren met Azure PowerShell
-
-U kunt Power shell gebruiken om alle aanbevolen kolommen op te halen in een Azure-SQL database en een beheerd exemplaar.
-
-### <a name="powershell-cmdlets-for-azure-sql-database"></a>Power shell-cmdlets voor Azure SQL database
-
+# <a name="powershell-cmdlet-for-azure-sqltabazure-portal-sqldb"></a>[Power shell-cmdlet voor Azure SQL](#tab/azure-portal-sqldb)
+U kunt Power shell gebruiken om alle aanbevolen kolommen op te halen in een Azure-SQL database.
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
@@ -165,8 +161,8 @@ U kunt Power shell gebruiken om alle aanbevolen kolommen op te halen in een Azur
 - [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
 - [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-### <a name="powershell-cmdlets-for-managed-instance"></a>Power shell-cmdlets voor een beheerd exemplaar
-
+# <a name="powershell-cmdlets-for-managed-instancetabazure-powershell-mi"></a>[Power shell-cmdlets voor een beheerd exemplaar](#tab/azure-powershell-mi)
+U kunt Power shell gebruiken om alle aanbevolen kolommen in een beheerd exemplaar op te halen.
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)

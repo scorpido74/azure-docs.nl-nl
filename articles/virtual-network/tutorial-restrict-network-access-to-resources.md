@@ -56,7 +56,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
    |Abonnement| Selecteer uw abonnement|
    |Resourcegroep | Selecteer **Nieuwe maken** en voer *myResourceGroup* in.|
    |Locatie| Selecteer **US - oost** |
-   |Subnetnaam| Openbaar|
+   |Subnetnaam| Public|
    |Subnetadresbereik| 10.0.0.0/24|
    |DDoS-bescherming| Basic|
    |Service-eindpunten| Uitgeschakeld|
@@ -108,7 +108,7 @@ Standaard kunnen alle VM's in een subnet met alle resources communiceren. U kunt
     |----|----|
     |Bron| Selecteer **VirtualNetwork** |
     |Poortbereiken van bron| * |
-    |Bestemming | Selecteer **Servicetag**|
+    |Doel | Selecteer **Servicetag**|
     |Doelservicetag | Selecteer **Storage**|
     |Poortbereiken van doel| * |
     |Protocol|Alle|
@@ -122,7 +122,7 @@ Standaard kunnen alle VM's in een subnet met alle resources communiceren. U kunt
     |----|----|
     |Bron| Selecteer **VirtualNetwork** |
     |Poortbereiken van bron| * |
-    |Bestemming | Selecteer **Servicetag**|
+    |Doel | Selecteer **Servicetag**|
     |Doelservicetag| Selecteer **Internet**|
     |Poortbereiken van doel| * |
     |Protocol|Alle|
@@ -138,7 +138,7 @@ Standaard kunnen alle VM's in een subnet met alle resources communiceren. U kunt
     |----|----|
     |Bron| Alle |
     |Poortbereiken van bron| * |
-    |Bestemming | Selecteer **VirtualNetwork**|
+    |Doel | Selecteer **VirtualNetwork**|
     |Poortbereiken van doel| 3389 |
     |Protocol|Alle|
     |Actie|Toestaan|
@@ -154,7 +154,7 @@ Standaard kunnen alle VM's in een subnet met alle resources communiceren. U kunt
 
 De stappen die nodig zijn om netwerktoegang te beperken tot resources die zijn gemaakt met Azure-services waarvoor service-eindpunten zijn ingeschakeld, verschillen per service. Zie de documentatie voor afzonderlijke services voor specifieke stappen voor elke service. De rest van deze zelfstudie bevat stappen voor het beperken van netwerktoegang voor een Azure Storage-account, als voorbeeld.
 
-### <a name="create-a-storage-account"></a>Maak een opslagaccount
+### <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
 2. Selecteer **Storage** en selecteer vervolgens **Opslagaccount - blob, bestand, tabel, wachtrij**.
@@ -174,7 +174,7 @@ De stappen die nodig zijn om netwerktoegang te beperken tot resources die zijn g
 1. Nadat het opslagaccount is gemaakt, voert u de naam van het opslagaccount in het vak **Resources, services en documenten zoeken** bovenaan de portal in. Wanneer de naam van uw opslagaccount wordt weergegeven in de zoekresultaten, selecteert u deze.
 2. Selecteer **Bestanden**, zoals weergegeven in de volgende afbeelding:
 
-   ![Opslagaccount](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
+   ![Storage-account](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
 
 3. Selecteer  **+ bestandsshare**.
 4. Voer *mijn-bestandsshare* in onder **Naam** en selecteer **OK**.

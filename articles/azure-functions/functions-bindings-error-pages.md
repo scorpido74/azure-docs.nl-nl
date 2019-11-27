@@ -1,6 +1,6 @@
 ---
-title: Azure Functions error handling guidance
-description: Learn to handle errors in Azure Functions with links to specific binding errors.
+title: Richt lijnen voor het afhandelen van Azure Functions
+description: Meer informatie over het afhandelen van fouten in Azure Functions met koppelingen naar specifieke bindings fouten.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/11/2019
@@ -12,19 +12,19 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227329"
 ---
-# <a name="azure-functions-error-handling"></a>Azure Functions error handling
+# <a name="azure-functions-error-handling"></a>Fout afhandeling Azure Functions
 
-Handling errors in Azure Functions is important to avoid lost data, missed events, and to monitor the health of your application.
+Het afhandelen van fouten in Azure Functions is belang rijk om te voor komen dat gegevens verloren gaan, gemiste gebeurtenissen en de status van uw toepassing te controleren.
 
-This article describes general strategies for error handling along with links to binding-specific errors.
+In dit artikel worden algemene strategieën beschreven voor het afhandelen van fouten, samen met koppelingen naar binding-specifieke fouten.
 
-## <a name="handling-errors"></a>Handling errors
+## <a name="handling-errors"></a>Fouten afhandelen
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-## <a name="binding-error-codes"></a>Binding error codes
+## <a name="binding-error-codes"></a>Bindings fout codes
 
-When integrating with Azure services, errors may originate from the APIs of the underlying services. Information relating to binding-specific errors is available in the **Exceptions and return codes** section of the following articles:
+Wanneer u integreert met Azure-Services, kunnen fouten afkomstig zijn van de Api's van de onderliggende services. Informatie met betrekking tot binding-specifieke fouten is beschikbaar in de sectie **uitzonde ringen en retour codes** van de volgende artikelen:
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 

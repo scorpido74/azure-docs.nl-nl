@@ -33,16 +33,16 @@ In dit artikel biedt een single point of verwijzing die helpt bij het oplossen e
 
 In dit artikel worden de volgende veronderstellingen:
 
-- Implementatie van Azure AD-toepassingsproxy per [aan de slag met Application Proxy](application-proxy-add-on-premises-application.md) en algemene toegang tot niet-KCD toepassingen werken zoals verwacht.
+- De implementatie van Azure AD-toepassingsproxy per aan de [slag met toepassings proxy](application-proxy-add-on-premises-application.md) en algemene toegang tot niet-KCD toepassingen werkt zoals verwacht.
 - De gepubliceerde doeltoepassing is gebaseerd op Internet Information Services (IIS) en de Microsoft-implementatie van Kerberos.
-- De server- en -hosts zich bevinden in één Azure Active Directory-domein. Zie voor gedetailleerde informatie over scenario's voor meerdere domeinen en forest de [KCD whitepaper](https://aka.ms/KCDPaper).
+- De server- en -hosts zich bevinden in één Azure Active Directory-domein. Voor gedetailleerde informatie over scenario's tussen domeinen en forests raadpleegt u het [technisch document KCD](https://aka.ms/KCDPaper).
 - De desbetreffende toepassing wordt gepubliceerd in een Azure-tenant met vooraf-verificatie ingeschakeld. Gebruikers worden verwacht voor verificatie op Azure via verificatie op basis van formulieren. Rich client verificatiescenario's niet zijn gekoppeld aan dit artikel. Ze kunnen worden toegevoegd op een bepaald moment in de toekomst.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Azure AD Application Proxy kan worden geïmplementeerd in tal van infrastructuren of omgevingen. De architecturen variëren in organisaties. De meest voorkomende oorzaken van problemen met KCD zijn de omgevingen niet. Eenvoudige onjuiste configuraties of algemene fouten kunt u de meeste problemen veroorzaken.
 
-Om deze reden, het is raadzaam om ervoor te zorgen dat u hebt voldaan aan de vereisten in [met behulp van KCD eenmalige aanmelding bij de toepassingsproxy](application-proxy-configure-single-sign-on-with-kcd.md) voordat u begint met het oplossen van problemen. Houd er rekening mee de sectie over het configureren van beperkte Kerberos-overdracht op 2012R2. Dit proces maakt gebruik van een andere benadering voor het configureren van KCD in eerdere versies van Windows. Daarnaast moet u zich ervan bewust van deze overwegingen:
+Daarom is het raadzaam om ervoor te zorgen dat u voldoet aan alle vereisten in [het gebruik van KCD SSO met de toepassings proxy](application-proxy-configure-single-sign-on-with-kcd.md) voordat u begint met het oplossen van problemen. Houd er rekening mee de sectie over het configureren van beperkte Kerberos-overdracht op 2012R2. Dit proces maakt gebruik van een andere benadering voor het configureren van KCD in eerdere versies van Windows. Daarnaast moet u zich ervan bewust van deze overwegingen:
 
 - Het is niet ongebruikelijk dat voor een server in het domein voor het openen van een beveiligd kanaal-dialoogvenster met een specifieke domeincontroller (DC). De server kan vervolgens verplaatsen naar een ander dialoogvenster op elk moment. Connector-hosts zijn dus niet beperkt tot communicatie met alleen specifieke lokale site DC's.
 - Interdomein-scenario's, is afhankelijk van verwijzingen die rechtstreeks van een connector-host aan DC's die mogelijk buiten de perimeter van het lokale netwerk. In dergelijke gevallen is het belangrijk ook ten minste verkeer verzenden naar DC's waarbij andere domeinen. Als dat niet het geval is, overdracht is mislukt.
@@ -66,9 +66,9 @@ Beide van deze installatiekopieën de dezelfde symptoom weergeven: fout met eenm
 
 Hoe u problemen oplossen, is afhankelijk van het probleem en de problemen die u ziet. Voordat u een verder gaat, moet u de volgende artikelen verkennen. Ze bieden nuttige probleemoplossingsinformatie:
 
-- [Oplossen van problemen met Application Proxy- en foutberichten](application-proxy-troubleshoot.md)
-- [Kerberos-fouten en problemen](application-proxy-troubleshoot.md#kerberos-errors)
-- [Werken met eenmalige aanmelding bij on-premises en cloud identiteiten zijn niet identiek zijn](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
+- [Problemen met toepassings proxy en fout berichten oplossen](application-proxy-troubleshoot.md)
+- [Kerberos-fouten en-symptomen](application-proxy-troubleshoot.md#kerberos-errors)
+- [Werken met SSO wanneer on-premises en Cloud-identiteiten niet identiek zijn](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 
 Als u hebt gekregen tot op dit moment, is uw belangrijkste probleem. Als u wilt starten, scheidt u de stroom in de volgende drie fasen die u kunt oplossen.
 
@@ -86,18 +86,18 @@ Zoals eerder vermeld, biedt de foutberichten browser sommige aflezen waarom ding
 
 ![Voor beeld: onjuiste KCD-configuratie fout](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-De overeenkomstige vermeldingen weergegeven in het gebeurtenislogboek weergeven als gebeurtenissen 13019 of 12027. Zoek de gebeurtenislogboeken van de connector in **logboeken toepassingen en Services** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt;  **Connector** &gt; **Admin**.
+De overeenkomstige vermeldingen weergegeven in het gebeurtenislogboek weergeven als gebeurtenissen 13019 of 12027. Zoek de gebeurtenis logboeken van de connector in de **Logboeken toepassingen en Services** &gt; **micro soft** &gt; **AadApplicationProxy** &gt; **connector** &gt;- **beheerder**.
 
 ![Gebeurtenis 13019 uit Application Proxy-gebeurtenislogboek](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
 ![Gebeurtenis 12027 uit Application Proxy-gebeurtenislogboek](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic5.png)
 
-1. Gebruik een **A** niet opnemen in uw interne DNS-adres van de toepassing, een **CName**.
-1. Bevestig dat de connector-host het recht om te delegeren aan de aangewezen doelaccount SPN is toegekend. Bevestig dat **elk verificatieprotocol gebruiken** is geselecteerd. Zie voor meer informatie de [SSO-configuratie artikel](application-proxy-configure-single-sign-on-with-kcd.md).
-1. Controleer of er slechts één exemplaar van de SPN-naam bestaat in Azure AD. Probleem `setspn -x` vanaf een opdrachtprompt op de host van een domein lid.
-1. Controleer dat domeinbeleid wordt afgedwongen dat beperkt de [maximale grootte van uitgegeven tokens voor Kerberos](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/). Dit beleid wordt de connector van het ophalen van een token als deze kan worden gevonden op zeer hoog worden gestopt.
+1. Gebruik een **A** -record in uw interne DNS voor het adres van de toepassing, niet een **CNAME**.
+1. Bevestig dat de connector-host het recht om te delegeren aan de aangewezen doelaccount SPN is toegekend. Bevestig dat **een verificatie protocol gebruiken** is geselecteerd. Zie het artikel over SSO- [configuratie](application-proxy-configure-single-sign-on-with-kcd.md)voor meer informatie.
+1. Controleer of er slechts één exemplaar van de SPN-naam bestaat in Azure AD. Voer `setspn -x` uit vanaf een opdracht prompt op een domeinlid die lid is van een domein.
+1. Controleer of er een domein beleid wordt afgedwongen waardoor de [maximale grootte van de uitgegeven Kerberos-tokens](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/)wordt beperkt. Dit beleid wordt de connector van het ophalen van een token als deze kan worden gevonden op zeer hoog worden gestopt.
 
-Een netwerktracering waarmee de uitwisseling tussen de connector-host en een KDC-domein wordt vastgelegd is de volgende aanbevolen stap voor meer op laag niveau informatie krijgen over de problemen. Zie voor meer informatie de [gedetailleerde informatie over problemen met papier](https://aka.ms/proxytshootpaper).
+Een netwerktracering waarmee de uitwisseling tussen de connector-host en een KDC-domein wordt vastgelegd is de volgende aanbevolen stap voor meer op laag niveau informatie krijgen over de problemen. Zie het [artikel grondige problemen oplossen](https://aka.ms/proxytshootpaper)voor meer informatie.
 
 Als ticketing er goed uitziet, ziet u een gebeurtenis in de logboeken met de mededeling dat de verificatie is mislukt, omdat de toepassing een 401 geretourneerd. Deze gebeurtenis geeft aan dat de doeltoepassing uw ticket geweigerd. Ga naar de volgende fase.
 
@@ -105,29 +105,29 @@ Als ticketing er goed uitziet, ziet u een gebeurtenis in de logboeken met de med
 
 De gebruiker van het Kerberos-ticket dat is opgegeven door de connector. In deze fase wordt verwacht dat de connector naar een Kerberos-serviceticket hebt verzonden naar de back-end. Dit ticket is een kop in de aanvraag van de eerste.
 
-1. Valideren dat de toepassing rechtstreeks vanuit de browser op de host van de connector toegankelijk is via de interne URL van de toepassing die is gedefinieerd in de portal. Vervolgens kunt u zich is. Meer informatie vindt u op de connector **oplossen** pagina.
+1. Valideren dat de toepassing rechtstreeks vanuit de browser op de host van de connector toegankelijk is via de interne URL van de toepassing die is gedefinieerd in de portal. Vervolgens kunt u zich is. Meer informatie vindt u op de pagina connector **problemen oplossen** .
 1. Blijf op de host connector bevestigen dat de verificatie tussen de browser en de toepassing maakt gebruik van Kerberos. Voer een van de volgende acties:
-1. DevTools uitvoeren (**F12**) in Internet Explorer of gebruik [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) van de connector host. Ga naar de toepassing met behulp van de interne URL. Inspecteer de aangeboden www-autorisatie-header die worden geretourneerd in het antwoord van de toepassing om ervoor te zorgen dat een onderhandelen over of Kerberos aanwezig is.
+1. Voer DevTools (**F12**) uit in Internet Explorer of gebruik [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) van de host van de connector. Ga naar de toepassing met behulp van de interne URL. Inspecteer de aangeboden www-autorisatie-header die worden geretourneerd in het antwoord van de toepassing om ervoor te zorgen dat een onderhandelen over of Kerberos aanwezig is.
 
-   - De volgende Kerberos-blob die wordt geretourneerd in het antwoord van de browser naar de toepassing wordt gestart met **YII**. Deze letters laat u weten dat Kerberos wordt uitgevoerd. Microsoft NT LAN Manager (NTLM) aan de andere kant wordt altijd gestart met **TlRMTVNTUAAB**, die NTLM Security Support Provider (NTLMSSP) bij het decoderen van Base64 leest. Als u ziet **TlRMTVNTUAAB** aan het begin van de blob, Kerberos is niet beschikbaar. Als er geen **TlRMTVNTUAAB**, Kerberos is het waarschijnlijk beschikbaar.
+   - De volgende Kerberos-blob die in het antwoord van de browser naar de toepassing wordt geretourneerd, begint met **YII**. Deze letters laat u weten dat Kerberos wordt uitgevoerd. Micro soft NT LAN Manager (NTLM), aan de andere kant, begint altijd met **TlRMTVNTUAAB**, die een NTLM-beveiligings provider (NTLMSSP) leest bij het decoderen van base64. Als u **TlRMTVNTUAAB** ziet aan het begin van de blob, is Kerberos niet beschikbaar. Als u **TlRMTVNTUAAB**niet ziet, is Kerberos waarschijnlijk beschikbaar.
 
       > [!NOTE]
       > Als u Fiddler gebruikt, wordt deze methode moet u uitgebreide beveiliging van de configuratie van de toepassing in IIS tijdelijk uitschakelen.
 
       ![Venster van de controle van de browser](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
 
-   - De blob in deze afbeelding begint niet met **TIRMTVNTUAAB**. In dit voorbeeld Kerberos beschikbaar is en de Kerberos-blob begint niet met **YII**.
+   - De BLOB in deze afbeelding begint niet met **TIRMTVNTUAAB**. In dit voor beeld is Kerberos beschikbaar en wordt de Kerberos-BLOB niet gestart met **YII**.
 
 1. Tijdelijk NTLM uit de lijst met providers op de IIS-site verwijderen. Toegang tot de app rechtstreeks vanuit Internet Explorer op de host van de connector. NTLM is niet langer in de lijst met providers. U kunt toegang tot de toepassing met behulp van Kerberos alleen. Als de toegang is mislukt, is het mogelijk dat er een probleem met de configuratie van de toepassing. Kerberos-verificatie wordt niet werkt.
 
-   - Als Kerberos niet beschikbaar is, controleert u de verificatie-instellingen van de toepassing in IIS. Zorg ervoor dat **onderhandelen over** wordt weergegeven aan de bovenkant met NTLM alleen eronder. Als u ziet **niet onderhandelen over**, **Kerberos of onderhandelen over**, of **PKU2U**, alleen doorgaan als Kerberos functioneel is.
+   - Als Kerberos niet beschikbaar is, controleert u de verificatie-instellingen van de toepassing in IIS. Zorg ervoor dat **Negotiate** bovenaan wordt weer gegeven, met NTLM alleen. Als u **niet onderhandelen**, **Kerberos of Negotiate**of **PKU2U**ziet, moet u alleen door gaan als Kerberos functioneel is.
 
      ![Windows authentication-providers](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
 
    - Met Kerberos en NTLM in plaats, kunt u vooraf-verificatie voor de toepassing in de portal tijdelijk uitschakelen. Probeer te openen vanaf het internet met behulp van de externe URL. U wordt gevraagd om te verifiëren. U kunt dit doen met hetzelfde account gebruikt in de vorige stap. Als dat niet het geval is, er is een probleem met de back-endtoepassing, niet KCD.
    - Vooraf-verificatie in de portal opnieuw inschakelen. Er wordt geprobeerd verbinding maken met de toepassing via de externe URL voor het verifiëren via Azure. Als eenmalige aanmelding is mislukt, ziet u een niet-toegestane foutbericht wordt weergegeven in de browser en de gebeurtenis 13022 in het logboek:
 
-     *Microsoft AAD Application Proxy Connector kan de gebruiker kan niet verifiëren omdat de back-endserver op Kerberos-verificatie geprobeerd met een 401 HTTP-fout reageert.*
+     *Micro soft AAD Application proxy connector kan de gebruiker niet verifiëren omdat de back-endserver reageert op Kerberos-verificatie pogingen met een HTTP 401-fout.*
 
       ![Hiermee wordt HTTTP 401 verboden fout weer gegeven](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
 
@@ -143,23 +143,23 @@ De gebruiker van het Kerberos-ticket dat is opgegeven door de connector. In deze
 
       ![SPN-configuratie in Azure portal](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic11.png)
 
-   - Ga in IIS en selecteer de **configuratie-Editor** optie voor de toepassing. Navigeer naar **system.webServer/security/authentication/windowsAuthentication**. Zorg ervoor dat de waarde **UseAppPoolCredentials** is **waar**.
+   - Ga naar IIS en selecteer de optie **Configuratie-editor** voor de toepassing. Navigeer naar **System. webserver/Security/Authentication/windowsAuthentication**. Zorg ervoor dat de waarde **UseAppPoolCredentials** is ingesteld op **True**.
 
       ![Referentie-optie voor app-groepen van IIS-configuratie](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
 
-      Wijzig deze waarde in **waar**. Alle in de cache Kerberos-tickets van de back-end-server verwijderen door de volgende opdracht uit:
+      Wijzig deze waarde in **True**. Alle in de cache Kerberos-tickets van de back-end-server verwijderen door de volgende opdracht uit:
 
       ```powershell
       Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'NTLM'} | ForEach-Object {klist.exe purge -li ([Convert]::ToString($_.LogonId, 16))}
       ```
 
-Zie voor meer informatie, [Kerberos-ticket clientcache leegmaken voor alle sessies](https://gallery.technet.microsoft.com/scriptcenter/Purge-the-Kerberos-client-b56987bf).
+Zie [de Kerberos-client ticket cache voor alle sessies leegmaken](https://gallery.technet.microsoft.com/scriptcenter/Purge-the-Kerberos-client-b56987bf)voor meer informatie.
 
-Als u kernelmodus ingeschakeld laat, verbetert de prestaties van Kerberos-bewerkingen. Maar het ook ervoor zorgt dat het ticket voor de aangevraagde service om te worden ontsleuteld met behulp van het computeraccount. Dit account wordt ook het lokale systeem genoemd. Deze waarde instelt op **waar** KCD verbreken wanneer de toepassing wordt gehost op meer dan één server in een farm.
+Als u kernelmodus ingeschakeld laat, verbetert de prestaties van Kerberos-bewerkingen. Maar het ook ervoor zorgt dat het ticket voor de aangevraagde service om te worden ontsleuteld met behulp van het computeraccount. Dit account wordt ook het lokale systeem genoemd. Stel deze waarde in op **True** om KCD te verbreekt wanneer de toepassing wordt gehost op meer dan één server in een farm.
 
-- Als een aanvullende controle uitschakelen **Extended** beveiliging te. In sommige scenario's **Extended** protection KCD verbroken wanneer deze is ingeschakeld in specifieke configuraties. In deze gevallen is een toepassing worden gepubliceerd als een submap van de standaardwebsite. Deze toepassing is geconfigureerd voor alleen anonieme verificatie. Alle dialogen grijs weergegeven, wat erop duidt wouldn't eventuele actieve instellingen worden overgenomen door onderliggende objecten. We raden aan dat u testen, maar vergeet niet om te herstellen van deze waarde om te **ingeschakeld**, waar mogelijk.
+- Schakel als extra controle ook **uitgebreide** beveiliging uit. In sommige scenario's is **uitgebreide** beveiliging KCD wanneer het is ingeschakeld in specifieke configuraties. In deze gevallen is een toepassing worden gepubliceerd als een submap van de standaardwebsite. Deze toepassing is geconfigureerd voor alleen anonieme verificatie. Alle dialogen grijs weergegeven, wat erop duidt wouldn't eventuele actieve instellingen worden overgenomen door onderliggende objecten. Als dat mogelijk is, wordt u aangeraden deze waarde te testen, maar niet te verg eten om deze in te **scha kelen**.
 
-  Deze aanvullende controle begeeft u zich op een route naar uw gepubliceerde toepassing gebruiken. U kunt aanvullende connectors die zijn geconfigureerd voor het delegeren van instellen. Lees voor meer informatie, de grondigere technische procedure [het oplossen van de Azure AD-toepassingsproxy](https://aka.ms/proxytshootpaper).
+  Deze aanvullende controle begeeft u zich op een route naar uw gepubliceerde toepassing gebruiken. U kunt aanvullende connectors die zijn geconfigureerd voor het delegeren van instellen. Lees voor meer informatie de uitgebreide technische [procedure voor het oplossen van problemen met de Azure-AD-toepassingsproxy](https://aka.ms/proxytshootpaper).
 
 Als u nog steeds kan niet wordt uitgevoerd, moet op Microsoft ondersteuning u kan helpen. Maak een ondersteuningsticket rechtstreeks vanuit de portal. Een technicus neemt contact met u.
 
@@ -170,4 +170,4 @@ Als u nog steeds kan niet wordt uitgevoerd, moet op Microsoft ondersteuning u ka
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[KCD configureren op een beheerd domein](../../active-directory-domain-services/deploy-kcd.md).
+[KCD configureren voor een beheerd domein](../../active-directory-domain-services/deploy-kcd.md).

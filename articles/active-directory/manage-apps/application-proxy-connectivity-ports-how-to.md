@@ -25,7 +25,7 @@ ms.locfileid: "74275556"
 ---
 # <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Het openen van de firewallpoorten die nodig zijn voor een toepassing Application Proxy
 
-Een volledige lijst van de vereiste poorten en de functie van elke poort wilt bekijken, Zie de sectie vereisten van de [Application Proxy documentatie](application-proxy-add-on-premises-application.md). Houd er rekening mee dat Application Proxy alleen uitgaande poorten gebruikt.
+Zie de sectie vereisten van de documentatie van de [toepassings proxy](application-proxy-add-on-premises-application.md)voor een volledige lijst met de vereiste poorten en de functie van elke poort. Houd er rekening mee dat Application Proxy alleen uitgaande poorten gebruikt.
 
 U kunt ook controleren of alle vereiste poorten zijn geopend door het [test hulpprogramma voor connector poorten](https://aadap-portcheck.connectorporttest.msappproxy.net/) te openen vanaf uw on-premises netwerk. Meer een groen vinkje betekent meer flexibiliteit. 
 
@@ -40,4 +40,4 @@ Als u wilt controleren of dat het hulpprogramma biedt u de juiste resultaten, mo
 -   Zorg ervoor dat alle proxy's of firewalls van toepassing zijn op uw Connector ook worden toegepast op deze pagina. U kunt dit doen in Internet Explorer door te gaan naar **instellingen** -&gt; **Internet opties** -&gt; **verbindingen** -&gt; **LAN-instellingen**. Op deze pagina ziet u het veld 'Met een Proxy-Server voor uw LAN'. Schakel dit selectievakje in en plaats het proxyadres in het veld "Adres".
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over Azure AD Application Proxy connectors](application-proxy-connectors.md)
+[Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)

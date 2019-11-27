@@ -1,6 +1,6 @@
 ---
-title: Use Microsoft identity platform to sign in users on browser-less devices | Azure
-description: Build embedded and browser-less authentication flows using the device authorization grant.
+title: Micro soft Identity platform gebruiken voor het aanmelden van gebruikers op browser-minder apparaten | Azure
+description: Maak Inge sloten en browser-minder verificatie stromen met behulp van de autorisatie toekenning van het apparaat.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -24,30 +24,30 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74207604"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft identity platform and the OAuth 2.0 device authorization grant flow
+# <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Micro soft Identity platform en de OAuth 2,0-autorisatie voor het weigeren van apparaten
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-The Microsoft identity platform supports the [device authorization grant](https://tools.ietf.org/html/rfc8628), which allows users to sign in to input-constrained devices such as a smart TV, IoT device, or printer.  To enable this flow, the device has the user visit a webpage in their browser on another device to sign in.  Once the user signs in, the device is able to get access tokens and refresh tokens as needed.  
+Het micro soft-identiteits platform ondersteunt de [machtiging verlenen voor apparaten](https://tools.ietf.org/html/rfc8628), waarmee gebruikers zich kunnen aanmelden bij apparaten met invoer beperkingen, zoals een Smart TV, IOT-apparaat of printer.  Om deze stroom in te scha kelen, heeft de gebruiker van het apparaat een webpagina in de browser op een ander apparaat om u aan te melden.  Zodra de gebruiker zich aanmeldt, kan het apparaat toegangs tokens verkrijgen en tokens vernieuwen als dat nodig is.  
 
-This article describes how to program directly against the protocol in your application.  When possible, we recommend you use the supported Microsoft Authentication Libraries (MSAL) instead to [acquire tokens and call secured web APIs](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Also take a look at the [sample apps that use MSAL](sample-v2-code.md).
+In dit artikel wordt beschreven hoe u direct kunt Program meren met het protocol in uw toepassing.  Als dat mogelijk is, kunt u het beste de ondersteunde micro soft-verificatie bibliotheken (MSAL) gebruiken in plaats van [tokens te verkrijgen en beveiligde web-api's](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)aan te roepen.  Bekijk ook de voor beeld- [apps die gebruikmaken van MSAL](sample-v2-code.md).
 
 > [!NOTE]
-> The Microsoft identity platform endpoint doesn't support all Azure Active Directory scenarios and features. To determine whether you should use the Microsoft identity platform endpoint, read about [Microsoft identity platform limitations](active-directory-v2-limitations.md).
+> Het micro soft Identity platform-eind punt biedt geen ondersteuning voor alle Azure Active Directory-scenario's en-functies. Lees over [micro soft Identity platform-beperkingen](active-directory-v2-limitations.md)om te bepalen of u het micro soft Identity platform-eind punt moet gebruiken.
 
 ## <a name="protocol-diagram"></a>Protocol diagram
 
-The entire device code flow looks similar to the next diagram. We describe each of the steps later in this article.
+De gehele apparaatcode stroom ziet er ongeveer uit als in het volgende diagram. Verderop in dit artikel worden de stappen beschreven.
 
-![Device code flow](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
+![Toestel code stroom](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
-## <a name="device-authorization-request"></a>Device authorization request
+## <a name="device-authorization-request"></a>Autorisatie aanvraag voor apparaat
 
-The client must first check with the authentication server for a device and user code that's used to initiate authentication. The client collects this request from the `/devicecode` endpoint. In this request, the client should also include the permissions it needs to acquire from the user. From the moment this request is sent, the user has only 15 minutes to sign in (the usual value for `expires_in`), so only make this request when the user has indicated they're ready to sign in.
+De client moet eerst controleren met de verificatie server voor een apparaat en gebruikers code die wordt gebruikt om verificatie te initiëren. De client verzamelt deze aanvraag van het `/devicecode`-eind punt. In deze aanvraag moet de client ook de machtigingen bevatten die nodig zijn voor het verkrijgen van de gebruiker. Vanaf het moment dat deze aanvraag wordt verzonden, heeft de gebruiker slechts 15 minuten om zich aan te melden (de normale waarde voor `expires_in`), zodat deze aanvraag alleen als de gebruiker heeft aangegeven dat deze klaar zijn om zich aan te melden.
 
 > [!TIP]
-> Try executing this request in Postman!
-> [![Try running this request in Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Probeer deze aanvraag uit te voeren in postman!
+> [![probeer deze aanvraag uit te voeren in postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -62,33 +62,33 @@ scope=user.read%20openid%20profile
 
 | Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
-| `tenant` | Verplicht | Can be /common, /consumers, or /organizations.  It can also be the directory tenant that you want to request permission from in GUID or friendly name format.  |
-| `client_id` | Verplicht | The **Application (client) ID** that the [Azure portal – App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) experience assigned to your app. |
-| `scope` | Aanbevolen | A space-separated list of [scopes](v2-permissions-and-consent.md) that you want the user to consent to.  |
+| `tenant` | Vereist | Kan/veelvoorkomende,/consumers of/organizations. zijn  Het kan ook de Directory Tenant zijn waarvoor u een machtiging wilt aanvragen in de indeling GUID of beschrijvende naam.  |
+| `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
+| `scope` | Aanbevolen | Een lijst met door spaties gescheiden [bereiken](v2-permissions-and-consent.md) waarvan u wilt dat de gebruiker toestemming geeft.  |
 
-### <a name="device-authorization-response"></a>Device authorization response
+### <a name="device-authorization-response"></a>Reactie van het apparaat autorisatie
 
-A successful response will be a JSON object containing the required information to allow the user to sign in.  
+Een geslaagde reactie is een JSON-object met de vereiste gegevens om de gebruiker in staat te stellen zich aan te melden.  
 
 | Parameter | Indeling | Beschrijving |
 | ---              | --- | --- |
-|`device_code`     | Tekenreeks | A long string used to verify the session between the client and the authorization server. The client uses this parameter to request the access token from the authorization server. |
-|`user_code`       | Tekenreeks | A short string shown to the user that's used to identify the session on a secondary device.|
-|`verification_uri`| URI | The URI the user should go to with the `user_code` in order to sign in. |
-|`expires_in`      | int | The number of seconds before the `device_code` and `user_code` expire. |
-|`interval`        | int | The number of seconds the client should wait between polling requests. |
-| `message`        | Tekenreeks | A human-readable string with instructions for the user. This can be localized by including a **query parameter** in the request of the form `?mkt=xx-XX`, filling in the appropriate language culture code. |
+|`device_code`     | Tekenreeks | Een lange teken reeks die wordt gebruikt om de sessie tussen de client en de autorisatie server te controleren. De client gebruikt deze para meter om het toegangs token van de autorisatie server aan te vragen. |
+|`user_code`       | Tekenreeks | Een korte teken reeks die wordt weer gegeven aan de gebruiker die wordt gebruikt om de sessie op een secundair apparaat te identificeren.|
+|`verification_uri`| URI | De URI waarnaar de gebruiker moet gaan met de `user_code` om zich aan te melden. |
+|`expires_in`      | int | Het aantal seconden voordat de `device_code` en `user_code` verlopen. |
+|`interval`        | int | Het aantal seconden dat de client moet wachten tussen polling aanvragen. |
+| `message`        | Tekenreeks | Een teken reeks met lees bare tekst met instructies voor de gebruiker. Dit kan worden gelokaliseerd door een **query parameter** op te nemen in de aanvraag van de formulier `?mkt=xx-XX`en de juiste taal cultuur code in te vullen. |
 
 > [!NOTE]
-> The `verification_uri_complete` response field is not included or supported at this time.  We mention this because if you read the [standard](https://tools.ietf.org/html/rfc8628) you see that `verification_uri_complete` is listed as an optional part of the device code flow standard.
+> Het veld `verification_uri_complete` antwoord wordt op dit moment niet opgenomen of ondersteund.  Dit wordt vermeld [omdat u ziet](https://tools.ietf.org/html/rfc8628) dat `verification_uri_complete` wordt weer gegeven als een optioneel onderdeel van de standaard voor de apparaatcode stroom.
 
-## <a name="authenticating-the-user"></a>Authenticating the user
+## <a name="authenticating-the-user"></a>Verificatie van de gebruiker
 
-After receiving the `user_code` and `verification_uri`, the client displays these to the user, instructing them to sign in using their mobile phone or PC browser.
+Nadat de `user_code` en `verification_uri`zijn ontvangen, worden deze door de client weer gegeven aan de gebruiker, zodat ze zich kunnen aanmelden met hun mobiele telefoon of PC-browser.
 
-If the user authenticates with a personal account (on /common or /consumers), they will be asked to sign in again in order to transfer authentication state to the device.  They will also be asked to provide consent, to ensure they are aware of the permissions being granted.  This does not apply to work or school accounts used to authenticate. 
+Als de gebruiker zich verifieert met een persoonlijk account (op/veelvoorkomende of/consumers), wordt u gevraagd om u opnieuw aan te melden om de verificatie status naar het apparaat te verzenden.  Ze worden ook gevraagd toestemming te geven om ervoor te zorgen dat ze op de hoogte zijn van de machtigingen die worden verleend.  Dit is niet van toepassing op werk-of school accounts die worden gebruikt voor verificatie. 
 
-While the user is authenticating at the `verification_uri`, the client should be polling the `/token` endpoint for the requested token using the `device_code`.
+Terwijl de gebruiker wordt geverifieerd op de `verification_uri`, moet de client het `/token`-eind punt voor het aangevraagde token pollen met behulp van de `device_code`.
 
 ``` 
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
@@ -99,27 +99,27 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Parameter | Verplicht | Beschrijving|
+| Parameter | Vereist | Beschrijving|
 | -------- | -------- | ---------- |
-| `tenant`  | Verplicht | The same tenant or tenant alias used in the initial request. | 
-| `grant_type` | Verplicht | Must be `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Verplicht | Must match the `client_id` used in the initial request. |
-| `device_code`| Verplicht | The `device_code` returned in the device authorization request.  |
+| `tenant`  | Vereist | Dezelfde Tenant of Tenant alias die in de eerste aanvraag wordt gebruikt. | 
+| `grant_type` | Vereist | Moet `urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Vereist | Moet overeenkomen met de `client_id` die in de eerste aanvraag wordt gebruikt. |
+| `device_code`| Vereist | De `device_code` geretourneerd in de autorisatie aanvraag voor het apparaat.  |
 
-### <a name="expected-errors"></a>Expected errors
+### <a name="expected-errors"></a>Verwachte fouten
 
-The device code flow is a polling protocol so your client must expect to receive errors before the user has finished authenticating.  
+De code stroom van het apparaat is een polling-protocol, zodat uw client fouten kan ontvangen voordat de verificatie van de gebruiker is voltooid.  
 
-| Fout | Beschrijving | Client Action |
+| Fout | Beschrijving | Client actie |
 | ------ | ----------- | -------------|
-| `authorization_pending` | The user hasn't finished authenticating, but hasn't canceled the flow. | Repeat the request after at least `interval` seconds. |
-| `authorization_declined` | The end user denied the authorization request.| Stop polling, and revert to an unauthenticated state.  |
-| `bad_verification_code`| The `device_code` sent to the `/token` endpoint wasn't recognized. | Verify that the client is sending the correct `device_code` in the request. |
-| `expired_token` | At least `expires_in` seconds have passed, and authentication is no longer possible with this `device_code`. | Stop polling and revert to an unauthenticated state. |   
+| `authorization_pending` | De gebruiker heeft de verificatie nog niet voltooid, maar de stroom is niet geannuleerd. | Herhaal de aanvraag na minstens `interval` seconden. |
+| `authorization_declined` | De eind gebruiker heeft de autorisatie aanvraag geweigerd.| Stop polling en herstel naar een niet-geverifieerde status.  |
+| `bad_verification_code`| De `device_code` die naar het `/token`-eind punt wordt verzonden, wordt niet herkend. | Controleer of de client de juiste `device_code` in de aanvraag verzendt. |
+| `expired_token` | Ten minste `expires_in` seconden zijn verstreken en verificatie is niet meer mogelijk met deze `device_code`. | Stop polling en terugkeren naar een niet-geverifieerde status. |   
 
-### <a name="successful-authentication-response"></a>Successful authentication response
+### <a name="successful-authentication-response"></a>Geslaagde verificatie reactie
 
-A successful token response will look like:
+Een geslaagd token antwoord ziet er als volgt uit:
 
 ```json
 {
@@ -134,11 +134,11 @@ A successful token response will look like:
 
 | Parameter | Indeling | Beschrijving |
 | --------- | ------ | ----------- |
-| `token_type` | Tekenreeks| Always "Bearer. |
-| `scope` | Space separated strings | If an access token was returned, this lists the scopes the access token is valid for. |
-| `expires_in`| int | Number of seconds before the included access token is valid for. |
-| `access_token`| Opaque string | Issued for the [scopes](v2-permissions-and-consent.md) that were requested.  |
-| `id_token`   | JWT | Issued if the original `scope` parameter included the `openid` scope.  |
-| `refresh_token` | Opaque string | Issued if the original `scope` parameter included `offline_access`.  |
+| `token_type` | Tekenreeks| Altijd ' Bearer '. |
+| `scope` | Door spaties gescheiden teken reeksen | Als er een toegangs token is geretourneerd, worden hier de scopes weer gegeven waarvoor het toegangs token geldig is. |
+| `expires_in`| int | Aantal seconden voordat het opgenomen toegangs token geldig is. |
+| `access_token`| Dekkende teken reeks | Uitgegeven voor de aangevraagde [bereiken](v2-permissions-and-consent.md) .  |
+| `id_token`   | JWT | Verleend als de para meter voor de oorspronkelijke `scope` het `openid` bereik bevat.  |
+| `refresh_token` | Dekkende teken reeks | Verleend als de oorspronkelijke `scope`-para meter `offline_access`is opgenomen.  |
 
-You can use the refresh token to acquire new access tokens and refresh tokens using the same flow documented in the [OAuth Code flow documentation](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  
+U kunt het vernieuwings token gebruiken om nieuwe toegangs tokens te verkrijgen en tokens te vernieuwen met behulp van dezelfde stroom die wordt beschreven in de [documentatie over de OAuth-code stroom](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  

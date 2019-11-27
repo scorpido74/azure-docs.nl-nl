@@ -47,5 +47,5 @@ Er zijn drie manieren om dit probleem op te lossen. De onderstaande opties worde
 3.  Als geen van deze opties haalbaar zijn, zijn er meerdere opties voor het inschakelen van de vertaling van inline-koppelingen. Deze opties zijn onder andere het Intune Managed Browser, mijn apps-extensie of het gebruik van de instelling voor de koppelings conversie in uw toepassing. Zie voor meer informatie over elk van deze opties en over hoe u deze kunt inschakelen de [omleiding van hardcoded koppelingen voor apps die zijn gepubliceerd met Azure AD-toepassingsproxy](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-[Werken met bestaande on-premises proxy-servers](application-proxy-configure-connectors-with-proxy-servers.md)
+[Werken met bestaande on-premises proxy servers](application-proxy-configure-connectors-with-proxy-servers.md)
 

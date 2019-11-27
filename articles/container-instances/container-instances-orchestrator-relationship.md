@@ -1,24 +1,19 @@
 ---
-title: Indeling van Azure Container Instances en container
+title: Container instanties en container indeling
 description: Begrijp hoe Azure container instances met container Orchestrator werken.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 044b74e1a8683c6beb0220c1cf9fb97403286a95
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972251"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533665"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances en container Orchestrator
 
-Vanwege hun geringe grootte en toepassings stand zijn containers geschikt voor flexibele bezorgings omgevingen en architecturen op basis van micro Services. De taak van het automatiseren en beheren van een groot aantal containers en hoe deze communiceren, wordt bekendals indeling. Populaire container-Orchestrator zijn onder andere Kubernetes, DC/OS en docker Swarm.
+Vanwege hun geringe grootte en toepassings stand zijn containers geschikt voor flexibele bezorgings omgevingen en architecturen op basis van micro Services. De taak van het automatiseren en beheren van een groot aantal containers en hoe deze *communiceren, wordt bekend als indeling*. Populaire container-Orchestrator zijn onder andere Kubernetes, DC/OS en docker Swarm.
 
 Azure Container Instances biedt een aantal basis mogelijkheden voor het plannen van Orchestration-platforms. En hoewel het geen betrekking heeft op de services met hogere waarden die deze platformen bieden, kan Azure Container Instances complementair zijn. In dit artikel wordt het bereik beschreven van wat Azure Container Instances ingangen, en hoe de volledige container Orchestrator ermee kan werken.
 
@@ -26,22 +21,22 @@ Azure Container Instances biedt een aantal basis mogelijkheden voor het plannen 
 
 De standaard definitie van indeling omvat de volgende taken:
 
-- **Planning**: Op basis van een container installatie kopie en een bron aanvraag vindt u een geschikte computer waarop de container moet worden uitgevoerd.
+- **Planning**: voor het uitvoeren van een container installatie kopie en een resource aanvraag vindt u een geschikte computer waarop de container moet worden uitgevoerd.
 - **Affiniteit/anti-affiniteit**: Geef op dat een set containers naast elkaar moet worden uitgevoerd (voor prestaties) of te veel uit elkaar (voor Beschik baarheid).
-- **Status controle**: Bekijk container fouten en automatisch opnieuw plannen.
-- **Failover**: Houd bij wat er op elke machine wordt uitgevoerd en plan de containers van mislukte machines naar goede knoop punten.
-- **Schalen**: Container instanties toevoegen of verwijderen om te voldoen aan de vraag, hetzij hand matig of automatisch.
-- **Netwerken**: Geef een overlay-netwerk voor het coördineren van containers op om te communiceren op meerdere hostcomputers.
+- **Status controle**: controleren op container fouten en deze automatisch opnieuw plannen.
+- **Failover**: Houd bij wat er op elke machine wordt uitgevoerd en plan de containers van mislukte machines opnieuw in goede knoop punten.
+- **Schalen**: container instanties toevoegen of verwijderen om te voldoen aan de vraag, hetzij hand matig of automatisch.
+- **Netwerken**: bieden een overlay-netwerk voor het coördineren van containers om te communiceren op meerdere hostcomputers.
 - **Service detectie**: Hiermee kunnen containers automatisch worden gevonden, zelfs als ze tussen hostcomputers worden verplaatst en IP-adressen worden gewijzigd.
-- **Gecoördineerde toepassings upgrades**: Beheer container upgrades om uitval tijd van toepassingen te voor komen en herstel in te scha kelen als er iets fout gaat.
+- **Gecoördineerde toepassings upgrades**: container upgrades beheren om uitval tijd van toepassingen te voor komen en terugdraai actie in te scha kelen als er iets fout gaat.
 
-## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Indeling met Azure Container Instances: Een gelaagde benadering
+## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Indeling met Azure Container Instances: een gelaagde benadering
 
 Azure Container Instances maakt een gelaagde benadering van de indeling mogelijk, waarbij alle plannings-en beheer mogelijkheden zijn vereist voor het uitvoeren van één container, terwijl Orchestrator-platformen de mogelijkheid hebben om meerdere-container taken te beheren.
 
 Omdat de onderliggende infra structuur voor container instanties wordt beheerd door Azure, hoeft een Orchestrator-platform zich niet te houden aan het vinden van een geschikte hostmachine waarop één container kan worden uitgevoerd. De elasticiteit van de cloud zorgt ervoor dat er altijd een beschikbaar is. In plaats daarvan kan de Orchestrator zich richten op de taken die de ontwikkeling van architecturen met meerdere containers vereenvoudigen, met inbegrip van schalen en gecoördineerde upgrades.
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
 Hoewel Orchestrator-integratie met Azure Container Instances nog steeds nascent is, anticiperen we dat een aantal verschillende omgevingen zich voordoen:
 

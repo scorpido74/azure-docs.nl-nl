@@ -34,15 +34,15 @@ Alle toepassingen zijn toegewezen aan een connectorgroep. Als u geen groepen mak
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt groeperen uw connectors, die u hebt om te controleren of u [geïnstalleerd meerdere connectors](application-proxy-add-on-premises-application.md). Wanneer u een nieuwe connector installeert, wordt automatisch lid wordt van de **standaard** connectorgroep.
+Als u uw connectors wilt groeperen, moet u ervoor zorgen dat u [meerdere connectors hebt geïnstalleerd](application-proxy-add-on-premises-application.md). Wanneer u een nieuwe connector installeert, wordt automatisch lid van de **standaard** connector groep.
 
 ## <a name="create-connector-groups"></a>Connectorgroepen maken
 
 Gebruik deze stappen om zoveel connectorgroepen als u wilt maken.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Selecteer **Azure Active Directory** > **bedrijfstoepassingen** > **toepassingsproxy**.
-1. Selecteer **nieuwe connectorgroep**. De blade nieuwe Connectorgroep wordt weergegeven.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer **Azure Active Directory** **bedrijfs toepassingen** >  > **toepassings proxy**.
+1. Selecteer **nieuwe connector groep**. De blade nieuwe Connectorgroep wordt weergegeven.
 
    ![Hiermee wordt het scherm weer gegeven om een nieuwe connector groep te selecteren](./media/application-proxy-connector-groups/new-group.png)
 
@@ -53,9 +53,9 @@ Gebruik deze stappen om zoveel connectorgroepen als u wilt maken.
 
 Volg deze stappen voor elke toepassing die u hebt gepubliceerd met toepassingsproxy. Wanneer u deze publiceert, of kunt u deze stappen om te wijzigen van de toewijzing wanneer u wilt, kunt u een toepassing aan een connectorgroep toewijzen.
 
-1. Selecteer in het dashboard management voor uw directory **bedrijfstoepassingen** > **alle toepassingen** > de toepassing die u wilt toewijzen aan een connectorgroep > **Toepassingsproxy**.
-1. Gebruik de **Connectorgroep** in het vervolgkeuzemenu om te selecteren van de groep die u wilt dat de toepassing te gebruiken.
-1. Selecteer **opslaan** de wijziging toepassen.
+1. Selecteer in het beheer dashboard voor uw Directory de optie **bedrijfs toepassingen** > **alle toepassingen** > de toepassing die u wilt toewijzen aan een connector groep > **toepassings proxy**.
+1. Gebruik de vervolg keuzelijst **groep connector** om de groep te selecteren die u door de toepassing wilt laten gebruiken.
+1. Selecteer **Opslaan** om de wijziging toe te passen.
 
 ## <a name="use-cases-for-connector-groups"></a>Use cases voor connectorgroepen
 
@@ -128,5 +128,5 @@ In het volgende voorbeeld wordt heeft het bedrijf twee datacentra, A en B, met t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over Azure AD Application Proxy connectors](application-proxy-connectors.md)
+* [Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)
 * [Eenmalige aanmelding inschakelen](what-is-single-sign-on.md)

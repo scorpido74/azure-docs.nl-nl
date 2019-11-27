@@ -20,7 +20,7 @@ Als er een nieuwe versie is en u gebruikt al Azure Dev Spaces, dan moet u mogeli
 
 Als u de nieuwste Azure CLI hebt bijgewerkt, krijgt u ook de meest recente versie van de Dev Spaces CLI-extensie.
 
-U hoeft de vorige versie niet te verwijderen, maar slechts de juiste download te vinden op [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+U hoeft de vorige versie niet te verwijderen, maar u hoeft alleen de juiste down load te vinden in [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 
 ## <a name="update-the-dev-spaces-cli-extension-and-command-line-tools"></a>Bijwerken van de Dev Spaces CLI-extensie en de opdrachtregelprogramma's
@@ -33,7 +33,7 @@ az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group>
 
 ## <a name="update-the-vs-code-extension"></a>De VS code-extensie bijwerken
 
-Eenmaal geïnstalleerd wordt de extensie automatisch bijgewerkt. U moet mogelijk de extensie opnieuw laden voor het gebruik van de nieuwe functies. Open in Visual Studio Code, in het deelvenster **extensies** kies de **Azure Dev Spaces** extensies, en kies **opnieuw laden**.
+Eenmaal geïnstalleerd wordt de extensie automatisch bijgewerkt. U moet mogelijk de extensie opnieuw laden voor het gebruik van de nieuwe functies. Open in VS code het deel venster **uitbrei dingen** , kies de **Azure dev Space** -extensies en kies **opnieuw laden**.
 
 ## <a name="update-the-visual-studio-extension"></a>De Visual Studio-extensie bijwerken
 
@@ -43,4 +43,4 @@ Als u de hulpprogram ma's in Visual Studio wilt bijwerken, kiest u het menu-item
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Test de nieuwe hulpprogramma's door een nieuw cluster te maken. Probeer de snelstartgidsen en zelfstudies op [Azure Dev Spaces](/azure/dev-spaces).
+Test de nieuwe hulpprogramma's door een nieuw cluster te maken. Probeer de Snelstartgids en zelf studies op [Azure dev Spaces](/azure/dev-spaces).

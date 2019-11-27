@@ -82,7 +82,7 @@ In het doel scenario kunnen Foto's worden geholpen. Als u gebruikers een foto va
 
 ![Afbeelding van een anker, waarin een foto van het doel op het mobiele apparaat van een gebruiker wordt weer gegeven](./media/start-here-edit.png)
 
-### <a name="rooms"></a>kleed
+### <a name="rooms"></a>Kleed
 
 In het room-scenario voeren gebruikers een spatie in om hier ergens een anker te weten. Gebruikers scannen de ruimte met hun apparaat en vinden snel het anker.
 

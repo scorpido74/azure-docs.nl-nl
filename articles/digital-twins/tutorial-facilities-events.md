@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Capture device events from an IoT space - Azure Digital Twins| Microsoft Docs'
+title: 'Zelf studie: faxgebeurtenissen vastleggen vanuit een IoT-ruimte-Azure Digital Apparaatdubbels | Microsoft Docs'
 description: Informatie over hoe u meldingen ontvangt uit uw ruimten door Azure Digital Twins te integreren met logische apps met behulp van de stappen in deze zelfstudie.
 services: digital-twins
 ms.author: alinast
@@ -38,10 +38,10 @@ In deze zelfstudie wordt ervan uitgegaan dat u de Azure Digital Twins-installati
 - Een actief exemplaar van Digital Twins.
 - De gedownloade en uitgepakte [Digital Twins C#-voorbeelden](https://github.com/Azure-Samples/digital-twins-samples-csharp) op een werkcomputer.
 - [.NET Core SDK-versie 2.1.403 of hoger](https://www.microsoft.com/net/download) op een ontwikkelcomputer om het voorbeeld uit te voeren. Voer `dotnet --version` uit om te controleren of de juiste versie is geïnstalleerd.
-- An [Office 365](https://products.office.com/home) account to send notification e-mails.
+- Een [Office 365](https://products.office.com/home) -account voor het verzenden van e-mail meldingen.
 
 > [!TIP]
-> Use a unique Digital Twins instance name if you're provisioning a new instance.
+> Gebruik een unieke Digital Apparaatdubbels-exemplaar naam als u een nieuw exemplaar inricht.
 
 ## <a name="integrate-events-with-event-grid"></a>Gebeurtenissen integreren met Event Grid
 
@@ -51,7 +51,7 @@ In deze sectie stelt u een [Event Grid](../event-grid/overview.md) in voor het v
 
 [Event Grid-onderwerpen](../event-grid/concepts.md#topics) bieden een interface voor het routeren van de gebeurtenissen die worden gegenereerd door de functie die door de gebruiker is gedefinieerd. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **Een resource maken** in het linkerdeelvenster. 
 
@@ -59,13 +59,13 @@ In deze sectie stelt u een [Event Grid](../event-grid/overview.md) in voor het v
 
 1. Voer een **Naam** in voor uw Event Grid-onderwerp en kies het **Abonnement**. Selecteer de **Resourcegroep** die u hebt gebruikt of gemaakt voor uw Digital Twins-instantie en selecteer de **Locatie**. Selecteer **Maken**. 
 
-    [![Create an event grid topic](./media/tutorial-facilities-events/create-event-grid-topic.png)](./media/tutorial-facilities-events/create-event-grid-topic.png#lightbox)
+    [een event grid-onderwerp ![maken](./media/tutorial-facilities-events/create-event-grid-topic.png)](./media/tutorial-facilities-events/create-event-grid-topic.png#lightbox)
 
 1. Blader naar het Event Grid-onderwerp in de resourcegroep, selecteer **Overzicht** en kopieer de waarde voor **Eindpunt onderwerp** naar een tijdelijk bestand. U hebt deze URL nodig in de volgende sectie. 
 
 1. Selecteer **Toegangssleutels** en kopieer **Sleutel 1** en **Sleutel 2** naar een tijdelijk bestand. U hebt deze waarden nodig om het eindpunt in de volgende sectie te maken.
 
-    [![Event Grid keys](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
+    [Event Grid sleutels ![](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
 ### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Een eindpunt voor het Event Grid-onderwerp maken
 
@@ -85,11 +85,11 @@ In deze sectie stelt u een [Event Grid](../event-grid/overview.md) in voor het v
       path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. Replace the placeholder `<Primary connection string for your Event Grid>` with the value of **Key 1**.
+1. Vervang de tijdelijke aanduiding `<Primary connection string for your Event Grid>` door de waarde van **sleutel 1**.
 
-1. Replace the placeholder `<Secondary connection string for your Event Grid>` with the value of **Key 2**.
+1. Vervang de tijdelijke aanduiding `<Secondary connection string for your Event Grid>` door de waarde van **sleutel 2**.
 
-1. Replace the placeholder for **path** with the path of the event grid topic. Haal dit pad op door **https://** en de daarop volgende resourcepaden uit de URL van het **Eindpunt onderwerp** te verwijderen. Het moet er uitzien zoals deze indeling: *yourEventGridName.yourLocation.eventgrid.azure.net*.
+1. Vervang de tijdelijke aanduiding voor het **pad** door het pad naar het event grid-onderwerp. Haal dit pad op door **https://** en de daarop volgende resourcepaden uit de URL van het **Eindpunt onderwerp** te verwijderen. Het moet er uitzien zoals deze indeling: *yourEventGridName.yourLocation.eventgrid.azure.net*.
 
     > [!IMPORTANT]
     > Voer alle waarden in zonder aanhalingstekens. Zorg dat de dubbele punten in het YAML-bestand worden gevolgd door minstens één spatie. U kunt de inhoud van het YAML-bestand ook valideren met behulp van een YAML-onlinevalidatie, zoals met [dit hulpprogramma](https://onlineyamltools.com/validate-yaml).
@@ -102,7 +102,7 @@ In deze sectie stelt u een [Event Grid](../event-grid/overview.md) in voor het v
 
    Met deze opdracht maakt u het eindpunt voor de Event Grid. 
 
-   [![Endpoints for Event Grid](./media/tutorial-facilities-events/dotnet-create-endpoints.png)](./media/tutorial-facilities-events/dotnet-create-endpoints.png#lightbox)
+   [![eind punten voor Event Grid](./media/tutorial-facilities-events/dotnet-create-endpoints.png)](./media/tutorial-facilities-events/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="notify-events-with-logic-apps"></a>Gebeurtenissen melden met Logic Apps
 
@@ -114,11 +114,11 @@ Met de [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-service kunt u g
 
 1. Voer een **Naam** in voor uw Logic Apps-resource en selecteer uw **Abonnement**, **Resourcegroep** en **Locatie**. Selecteer **Maken**.
 
-    [![Create a Logic Apps resource](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
+    [![een Logic Apps resource maken](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
 
 1. Open de resource voor Logic Apps wanneer deze is geïmplementeerd en open vervolgens het deelvenster **Ontwerper van logische app**. 
 
-1. Select the **When an Event Grid resource event occurs** trigger. Meld u aan bij uw tenant met uw Azure-account wanneer hierom wordt gevraagd. Select **Allow access** for your Event Grid resource if prompted. Selecteer **Doorgaan**.
+1. Selecteer de trigger **Wanneer een event grid bron gebeurtenis plaatsvindt** . Meld u aan bij uw tenant met uw Azure-account wanneer hierom wordt gevraagd. Selecteer **toegang toestaan** voor uw event grid resource als u hierom wordt gevraagd. Selecteer **Doorgaan**.
 
 1. In het venster **Wanneer een resourcegebeurtenis optreedt (Preview)** : 
    
@@ -128,7 +128,7 @@ Met de [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-service kunt u g
 
    c. Selecteer uw Event Grid-resource in de vervolgkeuzelijst voor de **Resourcenaam**.
 
-   [![Logic App Designer pane](./media/tutorial-facilities-events/logic-app-resource-event.png)](./media/tutorial-facilities-events/logic-app-resource-event.png#lightbox)
+   [deel venster ![Logic app Designer](./media/tutorial-facilities-events/logic-app-resource-event.png)](./media/tutorial-facilities-events/logic-app-resource-event.png#lightbox)
 
 1. Selecteer de knop **Nieuwe stap**.
 
@@ -160,7 +160,7 @@ Met de [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-service kunt u g
 
     Deze nettolading heeft fictieve waarden. Logic Apps maakt gebruik van dit voorbeeld van nettolading voor het genereren van een *Schema*.
 
-    [![Logic Apps Parse JSON window for Event Grid](./media/tutorial-facilities-events/logic-app-parse-json.png)](./media/tutorial-facilities-events/logic-app-parse-json.png#lightbox)
+    [![Logic Apps JSON-venster voor Event Grid parseren](./media/tutorial-facilities-events/logic-app-parse-json.png)](./media/tutorial-facilities-events/logic-app-parse-json.png#lightbox)
 
 1. Selecteer de knop **Nieuwe stap**.
 
@@ -172,19 +172,19 @@ Met de [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-service kunt u g
 
    c. In het tweede tekstvak **Kies een waarde** voert u `UdfCustom` in.
 
-   [![Selected conditions](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
+   [Geselecteerde voor waarden ![](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
 
 1. In het venster **Indien waar**:
 
    a. Selecteer **Een actie toevoegen** en selecteer **Office 365 Outlook**.
 
-   b. From the **Actions** list, select **Send an email (V2)** . Selecteer **Aanmelden** en gebruik de referenties van uw e-mailaccount. Select **Allow access** if prompted.
+   b. Selecteer in de lijst **acties** de optie **een E-mail verzenden (v2)** . Selecteer **Aanmelden** en gebruik de referenties van uw e-mailaccount. Selecteer **toegang toestaan** als u hierom wordt gevraagd.
 
    c. In het vak **Aan** voert u uw e-mail-ID in om meldingen te ontvangen. Voer bij **Onderwerp** de tekst **Digital Twins-melding voor slechte luchtkwaliteit in ruimte**. Selecteer vervolgens **TopologyObjectId** in de lijst **Dynamische inhoud** voor **JSON parseren**.
 
    d. Voer onder **Hoofdtekst** in hetzelfde venster een soortgelijke tekst als deze in: **Slechte luchtkwaliteit gedetecteerd in een ruimte en temperatuur moet worden aangepast**. U kunt dit gerust uitbreiden met behulp van elementen uit de lijst **Dynamische inhoud**.
 
-   [![Logic Apps "Send an email" selections](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
+   [![Logic Apps ' een e-mail verzenden '](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
 
 1. Selecteer de knop **Opslaan** boven aan het deelvenster **Ontwerper van logische app**.
 
@@ -192,7 +192,7 @@ Met de [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-service kunt u g
 
 Binnen een paar minuten moet u e-mailmeldingen gaan ontvangen van deze resource voor Logic Apps. 
 
-   [![Email notification](./media/tutorial-facilities-events/logic-app-notification.png)](./media/tutorial-facilities-events/logic-app-notification.png#lightbox)
+   [e-mail melding ![](./media/tutorial-facilities-events/logic-app-notification.png)](./media/tutorial-facilities-events/logic-app-notification.png#lightbox)
 
 Als u wilt stoppen met het ontvangen van deze e-mailberichten, gaat u naar uw resource voor Logic Apps in de portal en selecteert u het deelvenster **Overzicht**. Selecteer **Uitschakelen**.
 

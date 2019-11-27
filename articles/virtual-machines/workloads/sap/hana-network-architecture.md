@@ -1,6 +1,6 @@
 ---
-title: Network architecture of SAP HANA on Azure (Large Instances) | Microsoft Docs
-description: Network architecture of how to deploy SAP HANA on Azure (Large Instances).
+title: Netwerk architectuur van SAP HANA op Azure (grote exemplaren) | Microsoft Docs
+description: De netwerk architectuur van het implementeren van SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
@@ -20,184 +20,184 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74206628"
 ---
-# <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (Large Instances) network architecture
+# <a name="sap-hana-large-instances-network-architecture"></a>Netwerk architectuur van SAP HANA (grote exemplaren)
 
-The architecture of Azure network services is a key component of the successful deployment of SAP applications on HANA Large Instance. Typically, SAP HANA on Azure (Large Instances) deployments have a larger SAP landscape with several different SAP solutions with varying sizes of databases, CPU resource consumption, and memory utilization. It's likely that not all IT systems are located in Azure already. Your SAP landscape is often hybrid as well from a DBMS point and SAP application point of view using a mixture of NetWeaver, and S/4HANA and SAP HANA and other DBMS. Azure offers different services that allow you to run the different DBMS, NetWeaver, and S/4HANA systems in Azure. Azure also offers you network technology to make Azure look like a virtual data center to your on-premises software deployments
+De architectuur van Azure Network Services is een belang rijk onderdeel van de geslaagde implementatie van SAP-toepassingen op HANA grote instanties. Doorgaans hebben SAP HANA op Azure-implementaties (grote instanties) een grotere SAP-landschap met verschillende SAP-oplossingen, met verschillende grootten van data bases, CPU-resource gebruik en geheugen gebruik. Waarschijnlijk zijn niet alle IT-systemen in azure al aanwezig. Uw SAP-landschap is vaak hybriden van een DBMS-punt en een SAP-toepassings punt met behulp van een combi natie van netweave en S/4HANA en SAP HANA en ander DBMS. Azure biedt verschillende services waarmee u de verschillende DBMS-, netweave-en S/4HANA-systemen in azure kunt uitvoeren. Azure biedt u ook netwerk technologie waarmee Azure eruitziet als een virtueel Data Center naar uw on-premises software-implementaties
 
-Unless your complete IT systems are hosted in Azure. Azure networking functionality is used to connect the on-premises world with your Azure assets to make Azure look like a virtual datacenter of yours. The Azure network functionality used is: 
+Tenzij uw volledige IT-systemen worden gehost in Azure. Azure-netwerk functionaliteit wordt gebruikt om de on-premises wereld met uw Azure-assets te verbinden zodat Azure eruit ziet als een virtueel Data Center van uw bedrijf. De functionaliteit van het Azure-netwerk wordt gebruikt: 
 
-- Azure virtual networks are connected to the [ExpressRoute](https://azure.microsoft.com/services/expressroute/) circuit that connects to your on-premises network assets.
-- An ExpressRoute circuit that connects on-premises to Azure should have a minimum bandwidth of [1 Gbps or higher](https://azure.microsoft.com/pricing/details/expressroute/). This minimal bandwidth allows adequate bandwidth for the transfer of data between on-premises systems and systems that run on VMs. It also allows adequate bandwidth for connection to Azure systems from on-premises users.
-- All SAP systems in Azure are set up in virtual networks to communicate with each other.
-- Active Directory and DNS hosted on-premises are extended into Azure through ExpressRoute from on-premises, or are running complete in Azure.
+- Virtuele Azure-netwerken zijn verbonden met het [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -circuit dat verbinding maakt met uw on-premises netwerk assets.
+- Een ExpressRoute-circuit dat on-premises met Azure verbindt, moet een minimale band breedte van [1 Gbps of hoger](https://azure.microsoft.com/pricing/details/expressroute/)hebben. Deze minimale band breedte biedt voldoende band breedte voor de overdracht van gegevens tussen on-premises systemen en systemen die worden uitgevoerd op Vm's. Het biedt ook voldoende band breedte voor de verbinding met Azure-systemen van on-premises gebruikers.
+- Alle SAP-systemen in Azure worden in virtuele netwerken ingesteld om met elkaar te communiceren.
+- Active Directory en DNS die on-premises worden gehost, worden uitgebreid naar Azure via ExpressRoute van on-premises of worden volledig uitgevoerd in Azure.
 
-For the specific case of integrating HANA Large Instances into the Azure data center network fabric, Azure ExpressRoute technology is used as well
+Voor het specifieke geval van het integreren van HANA grote instanties in de Azure Data Center-netwerk infrastructuur, wordt ook de Azure ExpressRoute-technologie gebruikt
 
 
 > [!NOTE] 
-> Only one Azure subscription can be linked to only one tenant in a HANA Large Instance stamp in a specific Azure region. Conversely, a single HANA Large Instance stamp tenant can be linked to only one Azure subscription. This requirement is consistent with other billable objects in Azure.
+> Slechts één Azure-abonnement kan worden gekoppeld aan slechts één Tenant in een HANA grote instantie stempel in een specifieke Azure-regio. Daarentegen kan één HANA-Tenant met een grote instantie stempel worden gekoppeld aan slechts één Azure-abonnement. Deze vereiste is consistent met andere factureer bare objecten in Azure.
 
-If SAP HANA on Azure (Large Instances) is deployed in multiple different Azure regions, a separate tenant is deployed in the HANA Large Instance stamp. You can run both under the same Azure subscription as long as these instances are part of the same SAP landscape. 
+Als SAP HANA op Azure (grote instanties) wordt geïmplementeerd in meerdere verschillende Azure-regio's, wordt een afzonderlijke Tenant geïmplementeerd in de HANA-stempel van de grote instantie. U kunt beide onder hetzelfde Azure-abonnement uitvoeren, zolang deze instanties deel uitmaken van hetzelfde SAP-landschap. 
 
 > [!IMPORTANT] 
-> Only the Azure Resource Manager deployment method is supported with SAP HANA on Azure (Large Instances).
+> Alleen de implementatie methode Azure Resource Manager wordt ondersteund met SAP HANA op Azure (grote exemplaren).
 
  
 
-## <a name="additional-virtual-network-information"></a>Additional virtual network information
+## <a name="additional-virtual-network-information"></a>Aanvullende informatie over het virtuele netwerk
 
-To connect a virtual network to ExpressRoute, an Azure ExpressRoute gateway must be created. For more information, see [About Expressroute gateways for ExpressRoute](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Als u een virtueel netwerk wilt verbinden met ExpressRoute, moet u een Azure ExpressRoute-gateway maken. Zie [informatie over Expressroute-gateways voor Expressroute](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie. 
 
-An Azure ExpressRoute gateway is used with ExpressRoute to an infrastructure outside of Azure or to an Azure Large Instance stamp. You can connect the Azure ExpressRoute gateway to a maximum of four different ExpressRoute circuits as long as those connections come from different Microsoft enterprise edge routers. For more information, see [SAP HANA (Large Instances) infrastructure and connectivity on Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Een Azure ExpressRoute-gateway wordt gebruikt met ExpressRoute voor een infra structuur buiten Azure of een grote Azure-instantie stempel. U kunt de Azure ExpressRoute-gateway verbinden met Maxi maal vier verschillende ExpressRoute-circuits zolang deze verbindingen afkomstig zijn van verschillende micro soft Enter prise Edge-routers. Zie [SAP Hana (grote instanties) infra structuur en connectiviteit op Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie. 
 
 > [!NOTE] 
-> The maximum throughput you can achieve with a ExpressRoute gateway is 10 Gbps by using an ExpressRoute connection. Copying files between a VM that resides in a virtual network and a system on-premises (as a single copy stream) doesn't achieve the full throughput of the different gateway SKUs. To leverage the complete bandwidth of the ExpressRoute gateway, use multiple streams. Or you must copy different files in parallel streams of a single file.
+> De maximale door Voer die u kunt gebruiken met een ExpressRoute-gateway is 10 Gbps met behulp van een ExpressRoute-verbinding. Het kopiëren van bestanden tussen een virtuele machine die zich in een virtueel netwerk bevindt en een lokaal systeem (als een enkele Kopieer stroom), biedt geen volledige door Voer van de verschillende gateway-Sku's. Gebruik meerdere streams om de volledige band breedte van de ExpressRoute-gateway te benutten. Of u moet verschillende bestanden kopiëren in parallelle streams van één bestand.
 
 
-## <a name="networking-architecture-for-hana-large-instance"></a>Networking architecture for HANA Large Instance
-The networking architecture for HANA Large Instance can be separated into four different parts:
+## <a name="networking-architecture-for-hana-large-instance"></a>Netwerk architectuur voor HANA grote instantie
+De netwerk architectuur voor HANA grote instanties kan worden onderverdeeld in vier verschillende onderdelen:
 
-- On-premises networking and ExpressRoute connection to Azure. This part is the customer's domain and is connected to Azure through ExpressRoute. This Expressroute circuit is fully paid by you as a customer. The bandwidth should be large enough to handle the network traffic between your on-premises assets and the Azure region you are connecting against. See the lower right in the following figure.
-- Azure network services, as previously discussed, with virtual networks, which again need ExpressRoute gateways added. This part is an area where you need to find the appropriate designs for your application requirements, security, and compliance requirements. Whether you use HANA Large Instance is another point to consider in terms of the number of virtual networks and Azure gateway SKUs to choose from. See the upper right in the figure.
-- Connectivity of HANA Large Instance through ExpressRoute technology into Azure. This part is deployed and handled by Microsoft. All you need to do is provide some IP address ranges after the deployment of your assets in HANA Large Instance connect the ExpressRoute circuit to the virtual networks. For more information, see [SAP HANA (Large Instances) infrastructure and connectivity on Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). There is no additional fee for you as a customer for the connectivity between the Azure data center network fabric and HANA Large Instance units.
-- Networking within the HANA Large Instance stamp, which is mostly transparent for you.
+- On-premises netwerken en ExpressRoute-verbinding met Azure. Dit deel is het domein van de klant en is verbonden met Azure via ExpressRoute. Dit Expressroute-circuit wordt volledig betaald door u als klant. De band breedte moet groot genoeg zijn voor het verwerken van het netwerk verkeer tussen uw on-premises assets en de Azure-regio waarmee u verbinding maakt. Zie de rechter benedenhoek in de volgende afbeelding.
+- Azure Network Services, zoals eerder besproken, met virtuele netwerken, waarbij opnieuw ExpressRoute-gateways nodig zijn. Dit deel is een gebied waar u de geschikte ontwerpen moet vinden voor de vereisten van uw toepassing, beveiliging en naleving. Of u een grote instantie van HANA gebruikt, is een ander punt om rekening te houden met het aantal virtuele netwerken en de Azure gateway-Sku's waaruit u kunt kiezen. Zie de rechter bovenhoek van de afbeelding.
+- Connectiviteit van HANA grote instanties via ExpressRoute-technologie in Azure. Dit onderdeel wordt geïmplementeerd en afgehandeld door micro soft. Het enige wat u hoeft te doen, is het opgeven van sommige IP-adresbereiken nadat de implementatie van uw assets in HANA grote instantie het ExpressRoute-circuit verbindt met de virtuele netwerken. Zie [SAP Hana (grote instanties) infra structuur en connectiviteit op Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie. Er zijn geen extra kosten voor u als klant voor de connectiviteit tussen het Azure Data Center netwerk infrastructuur en HANA grote instantie-eenheden.
+- Netwerken binnen de HANA-stempel van grote instanties, wat voor u het meest transparant is.
 
-![Virtual network connected to SAP HANA on Azure (Large Instances) and on-premises](./media/hana-overview-architecture/image1-architecture.png)
+![Virtueel netwerk verbonden met SAP HANA op Azure (grote instanties) en on-premises](./media/hana-overview-architecture/image1-architecture.png)
 
-The requirement that your on-premises assets must connect through ExpressRoute to Azure doesn't change because you use HANA Large Instance. The requirement to have one or multiple virtual networks that run the VMs, which host the application layer that connects to the HANA instances hosted in HANA Large Instance units, also doesn't change. 
+De vereiste dat uw on-premises activa moeten worden verbonden via ExpressRoute naar Azure, wordt niet gewijzigd, omdat u een grote versie van HANA gebruikt. De vereiste om een of meer virtuele netwerken te hebben waarop de virtuele machines worden uitgevoerd, die de toepassingslaag hosten die verbinding maken met de HANA-instanties die worden gehost in HANA grote instantie-eenheden, worden ook niet gewijzigd. 
 
-The differences to SAP deployments in Azure are:
+De verschillen met SAP-implementaties in azure zijn:
 
-- The HANA Large Instance units of your customer tenant are connected through another ExpressRoute circuit into your virtual networks. To separate load conditions, the on-premises to Azure virtual network ExpressRoute circuits and the circuits between Azure virtual networks and HANA Large Instances don't share the same routers.
-- The workload profile between the SAP application layer and the HANA Large Instance is of a different nature, with many small requests and bursts like data transfers (result sets) from SAP HANA into the application layer.
-- The SAP application architecture is more sensitive to network latency than typical scenarios where data is exchanged between on-premises and Azure.
-- The Azure ExpressRoute gateway has at least two ExpressRoute connections. One circuit that is connected from on-premises and one that is connected from HANA Large Instances. This leaves only room for another two additional circuits from different MSEEs to connect to on ExpressRoute Gateway. This restriction is independent of the usage of ExpressRoute Fast Path. All the connected circuits share the maximum bandwidth for incoming data of the ExpressRoute gateway.
+- De HANA-eenheden voor grote instanties van de Tenant van uw klanten zijn verbonden via een ander ExpressRoute-circuit in uw virtuele netwerken. Om de laad voorwaarden te scheiden, delen de on-premises naar Azure Virtual Network ExpressRoute-circuits en de circuits tussen virtuele netwerken van Azure en HANA grote instanties niet dezelfde routers.
+- Het werkbelasting profiel tussen de SAP-toepassingslaag en de HANA grote instantie is van een andere aard, met veel kleine aanvragen en bursts zoals gegevens overdrachten (resultaten sets) van SAP HANA naar de toepassingslaag.
+- De SAP-toepassings architectuur is gevoeliger voor netwerk latentie dan typische scenario's waarbij gegevens worden uitgewisseld tussen on-premises en Azure.
+- De Azure ExpressRoute-gateway heeft ten minste twee ExpressRoute-verbindingen. Een circuit dat is verbonden vanaf on-premises en een-netwerk dat is verbonden vanuit HANA grote instanties. Hiermee blijft alleen ruimte vrij voor andere twee extra circuits van verschillende Msee's om verbinding te maken met op ExpressRoute-gateway. Deze beperking is onafhankelijk van het gebruik van het ExpressRoute snelle pad. Alle verbonden circuits delen de maximale band breedte voor binnenkomende gegevens van de ExpressRoute-gateway.
 
-With Revision 3 of HANA Large Instance stamps, the network latency experienced between VMs and HANA Large Instance units can be higher than a typical VM-to-VM network round-trip latency. Dependent on the Azure region, the values measured can exceed the 0.7-ms round-trip latency classified as below average in [SAP Note #1100926 - FAQ: Network performance](https://launchpad.support.sap.com/#/notes/1100926/E). Dependent on Azure Region and tool to measure network round-trip latency between an Azure VM and HANA Large Instance unit, the measured latency can be up to and around 2 milliseconds. Nevertheless, customers deploy SAP HANA-based production SAP applications successfully on SAP HANA Large Instance. Make sure you test your business processes thoroughly in Azure HANA Large Instance. A new functionality, called ExpressRoute Fast Path, is able to reduce the network latency between HANA Large Instances and application layer VMs in Azure substantially (see below). 
+Met revisie 3 van HANA grote instantie stempels kan de netwerk latentie tussen virtuele machines en HANA grote instantie-eenheden hoger zijn dan een typische latentie van een snelle retour duur van VM-naar-VM-netwerk. Afhankelijk van de Azure-regio, kunnen de gemeten waarden groter zijn dan de latentie van 0,7 MS die is geclassificeerd als onder gemiddeld in [SAP Note #1100926-Veelgestelde vragen: netwerk prestaties](https://launchpad.support.sap.com/#/notes/1100926/E). Afhankelijk van de Azure-regio en het hulp programma voor het meten van de round-trip latentie tussen een Azure-VM en de HANA-eenheid voor grote instanties, kan de gemeten latentie tot en met 2 milliseconden zijn. Klanten implementeren echter op SAP HANA gebaseerde productie-SAP-toepassingen met succes op SAP HANA grote instantie. Zorg ervoor dat u uw bedrijfs processen grondig test in azure HANA grote exemplaren. Met een nieuwe functionaliteit, het ExpressRoute snelle pad, kan de netwerk latentie tussen HANA grote instanties en virtuele machines in azure aanzienlijk verminderen (zie hieronder). 
 
-With Revision 4 of HANA Large Instance stamps, the network latency between Azure VMs that are deployed in proximity to the HANA Large Instance stamp, is experienced to meet the average or better than average classification as documented in [SAP Note #1100926 - FAQ: Network performance](https://launchpad.support.sap.com/#/notes/1100926/E) if Azure ExpressRoute Fast Path is configured (see below). In order to deploy Azure VMs in close proximity to HANA Large Instance units of Revision 4, you need to leverage [Azure Proximity Placement Groups](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). The way how proximity placement groups can be used to locate the SAP application layer in the same Azure datacenter as Revision 4 hosted HANA Large Instance units is described in [Azure Proximity Placement Groups for optimal network latency with SAP applications](sap-proximity-placement-scenarios.md).
+Met revisie 4 van HANA grote instantie tempels, is de netwerk latentie tussen virtuele Azure-machines die zijn geïmplementeerd in nabij de HANA-stempel van de grote instantie, in het gestuit om te voldoen aan het gemiddelde of beter dan de gemiddelde classificatie zoals beschreven in [SAP Note #1100926-Veelgestelde vragen: netwerk prestaties als het](https://launchpad.support.sap.com/#/notes/1100926/E) snelle pad van Azure ExpressRoute is geconfigureerd (zie hieronder). Als u virtuele Azure-machines in een nabijheid wilt implementeren in HANA grote instantie-eenheden van Revision 4, moet u gebruikmaken van [Azure proximity placement groups](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Hoe proximity-plaatsings groepen kunnen worden gebruikt om de SAP-toepassingslaag te vinden in hetzelfde Azure-Data Center als revisie 4 gehoste HANA grote instantie-eenheden, worden beschreven in [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
 
-To provide deterministic network latency between VMs and HANA Large Instance, the choice of the ExpressRoute gateway SKU is essential. Unlike the traffic patterns between on-premises and VMs, the traffic pattern between VMs and HANA Large Instance can develop small but high bursts of requests and data volumes to be transmitted. To handle such bursts well, we highly recommend the use of the UltraPerformance gateway SKU. For the Type II class of HANA Large Instance SKUs, the use of the UltraPerformance gateway SKU as a ExpressRotue gateway is mandatory.
-
-> [!IMPORTANT] 
-> Given the overall network traffic between the SAP application and database layers, only the HighPerformance or UltraPerformance gateway SKUs for virtual networks are supported for connecting to SAP HANA on Azure (Large Instances). For HANA Large Instance Type II SKUs, only the UltraPerformance gateway SKU is supported as a ExpressRoute gateway. Exceptions apply when using ExpressRoute Fast Path (see below)
-
-### <a name="expressroute-fast-path"></a>ExpressRoute Fast Path
-To lower the latency, ExpressRoute Fast Path got introduced and released in May 2019 for the specific connectivity of HANA Large Instances to Azure virtual networks that host the SAP application VMs. The major difference to the solution rolled out so far, is, that the data flows between VMs and HANA Large Instances are not routed through the ExpressRoute gateway anymore. Instead the VMs assigned in the subnet(s) of the Azure virtual network are directly communicating with the dedicated enterprise edge router. 
+Als u een deterministische netwerk latentie tussen Vm's en HANA grote instanties wilt bieden, is de keuze van de SKU van de ExpressRoute-gateway essentieel. In tegens telling tot de verkeers patronen tussen on-premises en virtuele machines, kan het verkeers patroon tussen Vm's en HANA grote instanties kleine, maar hoge bursts van aanvragen en gegevens volumes ontwikkelen. Om dergelijke bursts goed te kunnen afhandelen, wordt het gebruik van de Ultra Performance gateway-SKU sterk aangeraden. Het gebruik van de Ultra Performance gateway-SKU als een ExpressRotue-gateway is verplicht voor de klasse type II van HANA grote instanties.
 
 > [!IMPORTANT] 
-> The ExpressRoute Fast Path functionality requires that the subnets running the SAP application VMs are in the same Azure virtual network that got connected to the HANA Large Instances. VMs located in Azure virtual networks that are peered with the Azure virtual network connected directly to the HANA Large Instance units are not benefiting from ExpressRoute Fast Path. As a result typical hub and spoke virtual network designs, where the ExpressRoute circuits are connecting against a hub virtual network and virtual networks containing the SAP application layer (spokes) are getting peered, the optimization by ExpressRoute Fast Path will not work. In addtion, ExpressRoute Fast Path does not support user defined routing rules (UDR) today. For more information, see [ExpressRoute virtual network gateway and FastPath](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways). 
+> Gezien het algehele netwerk verkeer tussen de SAP-toepassing en de database lagen, worden alleen de high performance-of Ultra Performance gateway-Sku's voor virtuele netwerken ondersteund om verbinding te maken met SAP HANA op Azure (grote exemplaren). Voor de Ultra Performance-SKU van HANA-grote exemplaren van het type II wordt alleen de ExpressRoute-gateway ondersteund als gateway. Uitzonde ringen zijn van toepassing wanneer u ExpressRoute snelle pad gebruikt (zie hieronder)
+
+### <a name="expressroute-fast-path"></a>ExpressRoute snelle pad
+Om de latentie te verlagen, kreeg ExpressRoute Fast Path geïntroduceerd en uitgebracht in mei 2019 voor de specifieke connectiviteit van HANA grote instanties naar virtuele Azure-netwerken die de SAP-toepassings-Vm's hosten. Het belangrijkste verschil met de oplossing tot nu toe, is dat de gegevens stromen tussen Vm's en HANA grote instanties niet meer via de ExpressRoute-gateway worden gerouteerd. In plaats daarvan worden de Vm's die zijn toegewezen in de subnet ('s) van het virtuele Azure-netwerk, rechtstreeks communiceren met de exclusieve Enter prise-edge-router. 
+
+> [!IMPORTANT] 
+> De functie ExpressRoute Fast Path vereist dat de subnetten waarop de SAP-toepassings-Vm's worden uitgevoerd, zich in hetzelfde virtuele Azure-netwerk bevinden dat is verbonden met de HANA grote instanties. Vm's in azure Virtual Networks die zijn gekoppeld aan het virtuele Azure-netwerk dat rechtstreeks is verbonden met de HANA grote instantie-eenheden, profiteren niet van het snelle pad van ExpressRoute. Als gevolg hiervan worden standaard hub-en spoke Virtual Network-ontwerpen, waarbij de ExpressRoute-circuits verbinding maken met een hub virtueel netwerk en virtuele netwerken met de SAP-toepassingslaag (spokes) worden gepeerd, de optimalisatie door ExpressRoute Fast Het pad werkt niet. In naast biedt ExpressRoute snel pad geen ondersteuning meer voor door de gebruiker gedefinieerde routerings regels (UDR). Zie [ExpressRoute Virtual Network gateway en FastPath](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways)voor meer informatie. 
 
 
-For more details on how to configure ExpressRoute Fast Path, read the document [Connect a virtual network to HANA large instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route).    
+Lees het document [een virtueel netwerk verbinden met Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)voor meer informatie over het configureren van ExpressRoute snelle paden.    
 
 > [!NOTE]
-> An UltraPerformance ExpressRoute gateway is required to have ExpressRoute Fast Path working
+> Voor een Ultra Performance ExpressRoute-gateway moet ExpressRoute snel pad werken
 
 
-## <a name="single-sap-system"></a>Single SAP system
+## <a name="single-sap-system"></a>Eén SAP-systeem
 
-The on-premises infrastructure previously shown is connected through ExpressRoute into Azure. The ExpressRoute circuit connects into a Microsoft enterprise edge router (MSEE). For more information, see [ExpressRoute technical overview](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). After the route is established, it connects into the Azure backbone.
+De on-premises infra structuur die eerder werd weer gegeven, is verbonden via ExpressRoute in Azure. Het ExpressRoute-circuit maakt verbinding met een micro soft Enter prise edge-router (MSEE). Zie [ExpressRoute Technical Overview](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)(Engelstalig) voor meer informatie. Nadat de route tot stand is gebracht, maakt deze verbinding met de Azure-backbone.
 
 > [!NOTE] 
-> To run SAP landscapes in Azure, connect to the enterprise edge router closest to the Azure region in the SAP landscape. HANA Large Instance stamps are connected through dedicated enterprise edge router devices to minimize network latency between VMs in Azure IaaS and HANA Large Instance stamps.
+> Als u SAP landschappen wilt uitvoeren in azure, maakt u verbinding met de Enter prise edge-router die het dichtst bij de Azure-regio in het SAP-landschap is. HANA grote instantie tempels worden verbonden via dedicated Enter prise-router apparaten om netwerk latentie tussen Vm's in azure IaaS en HANA grote instantie stempels te minimaliseren.
 
-The ExpressRoute gateway for the VMs that host SAP application instances are connected to one ExpressRoute circuit that connects to on-premises. The same virtual network is connected to a separate enterprise edge router dedicated to connecting to Large Instance stamps. Using ExpressRoute Fast Path, the data flow from HANA Large Instances to the SAP application layer VMs are not routed through the ExpressRoute gateway anymore and with that reduce the network round-trip latency.
+De ExpressRoute-gateway voor de virtuele machines die SAP-toepassings exemplaren hosten, zijn verbonden met een ExpressRoute-circuit dat verbinding maakt met on-premises. Hetzelfde virtuele netwerk is verbonden met een afzonderlijke Enter prise-edge-router die is toegewezen om verbinding te maken met een grote instantie stempel. Met behulp van het snelle pad van ExpressRoute wordt de gegevens stroom van HANA grote instanties naar de apps van de SAP-toepassingslaag niet meer gerouteerd via de ExpressRoute-gateway en met die de latentie van de netwerk retour verminderen.
 
-This system is a straightforward example of a single SAP system. The SAP application layer is hosted in Azure. The SAP HANA database runs on SAP HANA on Azure (Large Instances). The assumption is that the ExpressRoute gateway bandwidth of 2-Gbps or 10-Gbps throughput doesn't represent a bottleneck.
+Dit systeem is een eenvoudig voor beeld van één SAP-systeem. De SAP-toepassingslaag wordt gehost in Azure. De SAP HANA-data base wordt uitgevoerd op SAP HANA op Azure (grote exemplaren). De veronderstelling is dat de ExpressRoute-gateway band breedte van 2 Gbps of een 10 Gbps-door Voer geen knel punt weergeeft.
 
-## <a name="multiple-sap-systems-or-large-sap-systems"></a>Multiple SAP systems or large SAP systems
+## <a name="multiple-sap-systems-or-large-sap-systems"></a>Meerdere SAP-systemen of grote SAP-systemen
 
-If multiple SAP systems or large SAP systems are deployed to connect to SAP HANA on Azure (Large Instances), the throughput of the ExpressRoute gateway might become a bottleneck. Or you want to isolate production and non-production systems in different Azure virtual networks. In such a case, split the application layers into multiple virtual networks. You also might create a special virtual network that connects to HANA Large Instance for cases such as:
+Als er meerdere SAP-systemen of grote SAP-systemen zijn geïmplementeerd om verbinding te maken met SAP HANA op Azure (grote exemplaren), kan de door Voer van de ExpressRoute-gateway een knel punt worden. Of u wilt productie-en niet-productie systemen in verschillende virtuele Azure-netwerken isoleren. In dat geval splitst u de toepassings lagen in meerdere virtuele netwerken. U kunt ook een speciaal virtueel netwerk maken dat verbinding maakt met de HANA grote instantie voor cases zoals:
 
-- Performing backups directly from the HANA instances in HANA Large Instance to a VM in Azure that hosts NFS shares.
-- Copying large backups or other files from HANA Large Instance units to disk space managed in Azure.
+- Het uitvoeren van back-ups rechtstreeks vanuit de HANA-exemplaren in HANA grote instanties naar een virtuele machine in azure die als host fungeert voor NFS-shares.
+- Grote back-ups of andere bestanden kopiëren van HANA grote instantie-eenheden naar schijf ruimte die wordt beheerd in Azure.
 
-Use a separate virtual network to host VMs that manage storage for mass transfer of data between HANA Large Instances and Azure. This arrangement avoids the effects of large file or data transfer from HANA Large Instance to Azure on the ExpressRoute gateway that serves the VMs that run the SAP application layer. 
+Gebruik een afzonderlijk virtueel netwerk om Vm's te hosten die opslag beheren voor het massaal overdragen van gegevens tussen HANA grote instanties en Azure. In deze regeling worden de gevolgen van grote bestands-of gegevens overdracht van HANA grote exemplaren naar Azure op de ExpressRoute-gateway voor de virtuele machines die de SAP-toepassingslaag uitvoeren, voor komen. 
 
-For a more scalable network architecture:
+Voor een meer schaal bare netwerk architectuur:
 
-- Leverage multiple virtual networks for a single, larger SAP application layer.
-- Deploy one separate virtual network for each SAP system deployed, compared to combining these SAP systems in separate subnets under the same virtual network.
+- Gebruik meerdere virtuele netwerken voor een enkele, grotere SAP-toepassingslaag.
+- Implementeer één afzonderlijk virtueel netwerk voor elk geïmplementeerd SAP-systeem, vergeleken met het combi neren van deze SAP-systemen in afzonderlijke subnetten onder hetzelfde virtuele netwerk.
 
-  A more scalable networking architecture for SAP HANA on Azure (Large Instances):
+  Een meer schaal bare netwerk architectuur voor SAP HANA op Azure (grote exemplaren):
 
-![Deploy SAP application layer over multiple virtual networks](./media/hana-overview-architecture/image4-networking-architecture.png)
+![SAP Application Layer implementeren via meerdere virtuele netwerken](./media/hana-overview-architecture/image4-networking-architecture.png)
 
-Dependent on the rules and restrictions, you want to apply between the different virtual networks hosting VMs of different SAP systems, you should peer those virtual networks. For more information about virtual network peering, see [Virtual network peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+Afhankelijk van de regels en beperkingen die u wilt Toep assen tussen de verschillende virtuele netwerken die als host fungeren voor Vm's van verschillende SAP-systemen, moet u deze virtuele netwerken gelijkwaardig maken. Zie [peering op virtueel netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)voor meer informatie over peering voor virtuele netwerken.
 
 
-## <a name="routing-in-azure"></a>Routing in Azure
+## <a name="routing-in-azure"></a>Route ring in azure
 
-By default deployment, three network routing considerations are important for SAP HANA on Azure (Large Instances):
+Standaard zijn drie netwerk Routering overwegingen belang rijk voor SAP HANA op Azure (grote exemplaren):
 
-* SAP HANA on Azure (Large Instances) can be accessed only through Azure VMs and the dedicated ExpressRoute connection, not directly from on-premises. Direct access from on-premises to the HANA Large Instance units, as delivered by Microsoft to you, isn't possible immediately. The transitive routing restrictions are due to the current Azure network architecture used for SAP HANA Large Instance. Some administration clients and any applications that need direct access, such as SAP Solution Manager running on-premises, can't connect to the SAP HANA database. For exceptions check the section 'Direct Routing to HANA Large Instances'.
+* SAP HANA op Azure (grote instanties) kan alleen worden geopend via virtuele machines van Azure en de exclusieve ExpressRoute-verbinding, niet rechtstreeks vanuit on-premises. Rechtstreeks toegang van on-premises naar de HANA-eenheden voor grote instanties, zoals geleverd door micro soft aan u, is niet onmiddellijk mogelijk. De transitieve routerings beperkingen worden veroorzaakt door de huidige Azure-netwerk architectuur die wordt gebruikt voor SAP HANA grote instantie. Sommige beheerclients en toepassingen die directe toegang nodig hebben, zoals SAP Solution Manager die on-premises wordt uitgevoerd, kunnen geen verbinding maken met de SAP HANA-data base. Voor uitzonde ringen controleert u de sectie directe route ring naar HANA grote instanties.
 
-* If you have HANA Large Instance units deployed in two different Azure regions for disaster recovery, the same transient routing restrictions applied in the past. In other words, IP addresses of a HANA Large Instance unit in one region (for example, US West) were not routed to a HANA Large Instance unit deployed in another region (for example, US East). This restriction was independent of the use of Azure network peering across regions or cross-connecting the ExpressRoute circuits that connect HANA Large Instance units to virtual networks. For a graphic representation, see the figure in the section "Use HANA Large Instance units in multiple regions." This restriction, which came with the deployed architecture, prohibited the immediate use of HANA System Replication as disaster recovery functionality. For recent changes, look up the section 'Use HANA Large Instance units in multiple regions'. 
+* Als u HANA grote instantie-eenheden hebt geïmplementeerd in twee verschillende Azure-regio's voor herstel na nood gevallen, worden dezelfde tijdelijke routerings beperkingen in het verleden toegepast. Met andere woorden: IP-adressen van een HANA-eenheid voor grote instanties in één regio (bijvoorbeeld VS West) zijn niet gerouteerd naar een HANA-eenheid voor grote instanties die is geïmplementeerd in een andere regio (bijvoorbeeld VS Oost). Deze beperking is onafhankelijk van het gebruik van Azure-netwerk peering tussen regio's of de verbinding tussen de ExpressRoute-circuits die HANA grote instantie-eenheden verbinden met virtuele netwerken. Zie voor een grafische weer gave de afbeelding in de sectie ' gebruik HANA grote instantie-eenheden in meerdere regio's '. Deze beperking, die wordt geleverd bij de geïmplementeerde architectuur, heeft het onmiddellijk gebruik van HANA-systeem replicatie als nood herstel functionaliteit verboden. Voor recente wijzigingen zoekt u de sectie ' gebruik HANA grote instantie-eenheden in meerdere regio's '. 
 
-* SAP HANA on Azure (Large Instances) units have an assigned IP address from the server IP pool address range that you submitted when requesting the HANA Large Instance deployment. For more information, see [SAP HANA (Large Instances) infrastructure and connectivity on Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). This IP address is accessible through the Azure subscriptions and circuit  that connects Azure virtual networks to HANA Large Instances. The IP address assigned out of that server IP pool address range is directly assigned to the hardware unit. It's *not* assigned through NAT anymore, as was the case in the first deployments of this solution. 
+* SAP HANA op Azure (grote exemplaren) eenheden hebben een toegewezen IP-adres uit het adres bereik van de server-IP-groep die u hebt verzonden bij het aanvragen van de implementatie van de HANA-grote instantie. Zie [SAP Hana (grote instanties) infra structuur en connectiviteit op Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie. Dit IP-adres is toegankelijk via de Azure-abonnementen en het circuit waarmee virtuele Azure-netwerken met HANA grote instanties worden verbonden. Het IP-adres dat is toegewezen aan het IP-adres bereik van de server, wordt rechtstreeks toegewezen aan de hardware-eenheid. Het is *niet* meer toegewezen via NAT, zoals in de eerste implementatie van deze oplossing. 
 
-### <a name="direct-routing-to-hana-large-instances"></a>Direct Routing to HANA Large Instances
+### <a name="direct-routing-to-hana-large-instances"></a>Directe route ring naar HANA grote instanties
 
-By default, the transitive routing does not work in these scenarios:
+De transitieve route ring werkt standaard niet in deze scenario's:
 
-* Between HANA Large Instance units and an on-premises deployment.
+* Tussen HANA grote instantie-eenheden en een on-premises implementatie.
 
-* Between HANA Large Instance routing that are deployed in two different regions.
+* Tussen HANA-route ring van grote instanties die in twee verschillende regio's zijn geïmplementeerd.
 
-There are three ways to enable transitive routing in those scenarios:
+Er zijn drie manieren om transitieve route ring in te scha kelen in deze scenario's:
 
-- A reverse-proxy to route data, to and from. For example, F5 BIG-IP, NGINX with Traffic Manager deployed in the Azure virtual network that connects to HANA Large Instances and to on-premises as a virtual firewall/traffic routing solution.
-- Using [IPTables rules](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) in a Linux VM to enable routing between on-premises locations and HANA Large Instance units, or between HANA Large Instance units in different regions. The VM running IPTables needs to be deployed in the Azure virtual network that connects to HANA Large Instances and to on-premises. The VM needs to be sized accordingly, so, that the network throughput of the VM is sufficient for the expected network traffic. For details on VM network bandwidth, check the article [Sizes of Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) would be another solution to enable direct traffic between on-premises and HANA Large instance units. 
+- Een reverse-proxy om gegevens te routeren naar en van. Bijvoorbeeld: F5 BIG-IP, NGINX met Traffic Manager geïmplementeerd in het virtuele Azure-netwerk dat is verbonden met HANA grote instanties en on-premises als een oplossing voor virtuele firewall/verkeers routering.
+- Het gebruik van [iptables-regels](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) in een Linux-VM om route ring mogelijk te maken tussen on-premises locaties en Hana grote instantie-eenheden, of tussen Hana grote instantie-eenheden in verschillende regio's. De VM met IPTables moet worden geïmplementeerd in het virtuele Azure-netwerk dat is verbonden met HANA grote instanties en on-premises. De VM moet dienovereenkomstig worden aangepast, zodat de netwerk doorvoer van de virtuele machine voldoende is voor het verwachte netwerk verkeer. Voor meer informatie over VM-netwerk bandbreedte raadpleegt u de artikel [grootten van virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- [Azure firewall](https://azure.microsoft.com/services/azure-firewall/) zou een andere oplossing zijn om direct verkeer tussen on-premises en Hana grote instantie-eenheden in te scha kelen. 
 
-All the traffic of these solutions would be routed through an Azure virtual network and as such the traffic could be additionally restricted by the soft appliances used or by Azure Network Security Groups, so, that certain IP addresses or IP address ranges from on-premises could be blocked or explicitly allowed accessing HANA Large Instances. 
+Al het verkeer van deze oplossingen wordt doorgestuurd via een virtueel Azure-netwerk en het verkeer kan ook worden beperkt door de zachte apparaten die worden gebruikt of door Azure-netwerk beveiligings groepen, dus dat bepaalde IP-adressen of IP-adresbereiken van on-premises kan worden geblokkeerd of expliciet worden toegestaan om toegang te krijgen tot een grote hoeveelheid van HANA-exemplaren. 
 
 > [!NOTE]  
-> Be aware that implementation and support for custom solutions involving third-party network appliances or IPTables isn't provided by Microsoft. Support must be provided by the vendor of the component used or the integrator. 
+> Houd er rekening mee dat implementatie en ondersteuning voor aangepaste oplossingen met netwerk apparaten van derden of IPTables niet wordt ondersteund door micro soft. Ondersteuning moet worden geboden door de leverancier van het gebruikte onderdeel of de integrator. 
 
-#### <a name="express-route-global-reach"></a>Express Route Global Reach
-Microsoft introduced a new functionality called [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach). Global Reach can be used for HANA Large Instances in two scenarios:
+#### <a name="express-route-global-reach"></a>Express route Global Reach
+Micro soft introduceert een nieuwe functie met de naam [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach). Global Reach kan in twee scenario's worden gebruikt voor HANA grote instanties:
 
-- Enable direct access from on-premises to your HANA Large Instance units deployed in different regions
-- Enable direct communication between your HANA Large Instance units deployed in different regions
+- Directe toegang vanaf on-premises inschakelen voor uw HANA grote instantie-eenheden die in verschillende regio's zijn geïmplementeerd
+- Directe communicatie tussen uw HANA-eenheden voor grote instanties inschakelen die in verschillende regio's zijn geïmplementeerd
 
 
-##### <a name="direct-access-from-on-premises"></a>Direct Access from on-premises
-In the Azure regions where Global Reach is offered, you can request enabling the Global Reach functionality for your ExpressRoute circuit that connects your on-premises network to the Azure virtual network that connects to your HANA Large Instance units as well. There are some cost implications for the on-premises side of your ExpressRoute circuit. For prices, check the prices for [Global Reach Add-On](https://azure.microsoft.com/pricing/details/expressroute/). There are no additional costs for you related to the circuit that connects the HANA Large Instance unit(s) to Azure. 
-
-> [!IMPORTANT]  
-> In case of using Global Reach for enabling direct access between your HANA Large Instance units and on-premises assets, the network data and control flow is **not routed through Azure virtual networks**, but directly between the Microsoft enterprise exchange routers. As a result any NSG or ASG rules, or any type of firewall, NVA, or proxy you deployed in an Azure virtual network, are not getting touched. **If you use ExpressRoute Global Reach to enable direct access from on-premises to HANA Large instance units restrictions and permissions to access HANA large Instance units need to be defined in firewalls on the on-premises side** 
-
-##### <a name="connecting-hana-large-instances-in-different-azure-regions"></a>Connecting HANA Large Instances in different Azure regions
-In the same way, as ExpressRoute Global Reach can be used for connecting on-premises to HANA Large Instance units, it can be used to connect tow HANA Large Instance tenants that are deployed for you in two different regions. The isolation is the ExpressRoute circuits that your HANA Large Instance tenants are using to connect to Azure in both regions. There are no additional charges for connecting two HANA Large Instance tenants that are deployed in two different regions. 
+##### <a name="direct-access-from-on-premises"></a>Directe toegang vanaf on-premises
+In de Azure-regio's waar Global Reach wordt aangeboden, kunt u het inschakelen van de Global Reach-functionaliteit voor uw ExpressRoute-circuit om uw on-premises netwerk te verbinden met het virtuele Azure-netwerk dat ook verbinding maakt met uw HANA-instanties voor de omvang van uw onderneming. De on-premises kant van uw ExpressRoute-circuit bevat enkele kosten implicaties. Controleer de prijzen voor [Global Reach-invoeg toepassing](https://azure.microsoft.com/pricing/details/expressroute/)voor prijzen. Er zijn geen extra kosten verbonden aan het circuit dat de HANA-grote exemplaar eenheden verbindt met Azure. 
 
 > [!IMPORTANT]  
-> The data flow and control flow of the network traffic between the different HANA Large instance tenants will not be routed through azure networks. As a result you can't use Azure functionality or NVAs to enforce communication restrictions between your two HANA Large Instances tenants. 
+> In het geval van het gebruik van Global Reach voor het inschakelen van rechtstreekse toegang tussen uw HANA grote instantie-eenheden en on-premises assets, worden de netwerk gegevens en de controle stroom **niet gerouteerd via virtuele Azure-netwerken**, maar rechtstreeks tussen de micro soft Enter prise Exchange-routers. Als gevolg hiervan worden elke NSG-of ASG-regel, of een type firewall, NVA of proxy dat u hebt geïmplementeerd in een virtueel Azure-netwerk, niet doorlopend. **Als u gebruikmaakt van ExpressRoute Global Reach om direct toegang van on-premises naar HANA grote instantie-eenheden in te scha kelen en machtigingen voor toegang tot de HANA grote instantie-eenheden, moeten worden gedefinieerd in firewalls op de on-premises kant** 
 
-For more details on how to get ExpressRoute Global Reach enabled, read the document [Connect a virtual network to HANA large instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route).
+##### <a name="connecting-hana-large-instances-in-different-azure-regions"></a>Verbinding maken met HANA grote instanties in verschillende Azure-regio's
+Net zoals ExpressRoute Global Reach kan worden gebruikt om on-premises verbinding te maken met HANA grote instantie-eenheden, kan deze worden gebruikt voor het verbinden van koppels in de vorm van een grote instantie van de eenheid HANA, die voor u in twee verschillende regio's worden geïmplementeerd. De isolatie is de ExpressRoute-circuits die uw HANA grote instantie-tenants gebruiken om in beide regio's verbinding te maken met Azure. Er zijn geen extra kosten verbonden aan het verbinden van twee HANA-tenants met grote instanties die in twee verschillende regio's zijn geïmplementeerd. 
 
+> [!IMPORTANT]  
+> De gegevens stroom en controle stroom van het netwerk verkeer tussen de verschillende HANA-tenants met grote instanties worden niet gerouteerd via Azure-netwerken. Als gevolg hiervan kunt u geen gebruikmaken van Azure-functionaliteit of Nva's om communicatie beperkingen tussen uw twee HANA grote instanties tenants af te dwingen. 
 
-## <a name="internet-connectivity-of-hana-large-instance"></a>Internet connectivity of HANA Large Instance
-HANA Large Instance does *not* have direct internet connectivity. As an example, this limitation might restrict your ability to register the OS image directly with the OS vendor. You might need to work with your local SUSE Linux Enterprise Server Subscription Management Tool server or Red Hat Enterprise Linux Subscription Manager.
-
-## <a name="data-encryption-between-vms-and-hana-large-instance"></a>Data encryption between VMs and HANA Large Instance
-Data transferred between HANA Large Instance and VMs is not encrypted. However, purely for the exchange between the HANA DBMS side and JDBC/ODBC-based applications, you can enable encryption of traffic. For more information, see [this documentation by SAP](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false).
-
-## <a name="use-hana-large-instance-units-in-multiple-regions"></a>Use HANA Large Instance units in multiple regions
-
-To realize disaster recovery set ups, you need to have SHANA Large Instance units in multiple Azure regions. Even with using Azure [Global Vnet Peering], the transitive routing by default is not working between HANA Large Instance tenants in two different regions. However, Global Reach opens up the communication path between the HANA Large Instance units you have provisioned in two different regions. This usage scenario of ExpressRoute Global Reach enables:
-
- - HANA System Replication without any additional proxies or firewalls
- - Copying backups between HANA Large Instance units in two different regions to perform system copies or system refreshes
+Lees het document [een virtueel netwerk verbinden met Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)voor meer informatie over het ophalen van ExpressRoute Global Reach ingeschakeld.
 
 
-![Virtual network connected to Azure Large Instance stamps in different Azure regions](./media/hana-overview-architecture/image8-multiple-regions.png)
+## <a name="internet-connectivity-of-hana-large-instance"></a>Internet verbinding van HANA grote instantie
+HANA grote instanties hebben *geen* rechtstreekse Internet verbinding. Als voor beeld kan deze beperking ertoe leiden dat u de installatie kopie van het besturings systeem rechtstreeks kunt registreren bij de fabrikant van het besturings systeem. Mogelijk moet u werken met uw lokale SUSE Linux Enterprise Server-beheer programma Server voor abonnementen of Red Hat Enterprise Linux Subscription Manager.
 
-The figure shows how the different virtual networks in both regions are connected to two different ExpressRoute circuits that are used to connect to SAP HANA on Azure (Large Instances) in both Azure regions (grey lines). Reason for this two cross connections is to protect from an outage of the MSEEs on either side. The communication flow between the two virtual networks in the two Azure regions is supposed to be handled over the [global peering](https://blogs.msdn.microsoft.com/azureedu/2018/04/24/how-to-setup-global-vnet-peering-in-azure/) of the two virtual networks in the two different regions (blue dotted line). The thick red line describes the ExpressRoute Global Reach connection, which allows the HANA Large Instance units of your tenants in two different regions to communicate with each other. 
+## <a name="data-encryption-between-vms-and-hana-large-instance"></a>Gegevens versleuteling tussen Vm's en HANA grote instanties
+Gegevens die worden overgebracht tussen HANA grote instanties en Vm's, worden niet versleuteld. Maar alleen voor de uitwisseling tussen de HANA-en JDBC-en op ODBC-gebaseerde toepassingen, kunt u de versleuteling van verkeer inschakelen. Raadpleeg [deze documentatie](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)voor meer informatie.
+
+## <a name="use-hana-large-instance-units-in-multiple-regions"></a>Gebruik HANA grote instantie-eenheden in meerdere regio's
+
+Als u nood herstel wilt realiseren, moet u SHANA grote instantie-eenheden hebben in meerdere Azure-regio's. Zelfs bij het gebruik van Azure [Global Vnet-peering], is transitieve route ring standaard niet in staat om te werken met tenants van de HANA-grote instanties in twee verschillende regio's. Global Reach opent echter het communicatie traject tussen de HANA-eenheden voor grote instanties die u in twee verschillende regio's hebt ingericht. Dit gebruiks scenario van ExpressRoute Global Reach maakt het volgende mogelijk:
+
+ - HANA-systeem replicatie zonder extra proxy's of firewalls
+ - Back-ups kopiëren tussen HANA grote instantie-eenheden in twee verschillende regio's om systeem kopieën of systeem vernieuwingen uit te voeren
+
+
+![Een virtueel netwerk dat is verbonden met een Azure-stempel in verschillende Azure-regio's](./media/hana-overview-architecture/image8-multiple-regions.png)
+
+In de afbeelding ziet u hoe de verschillende virtuele netwerken in beide regio's zijn verbonden met twee verschillende ExpressRoute-circuits die worden gebruikt om verbinding te maken met SAP HANA op Azure (grote exemplaren) in beide Azure-regio's (grijze lijnen). De reden hiervoor is dat twee verbindingen worden beveiligd tegen een onderbreking van de Msee's aan beide zijden. De communicatie stroom tussen de twee virtuele netwerken in de twee Azure-regio's moet worden afgehandeld over de [globale peering](https://blogs.msdn.microsoft.com/azureedu/2018/04/24/how-to-setup-global-vnet-peering-in-azure/) van de twee virtuele netwerken in de twee verschillende regio's (blauwe stippel lijn). De dikke rode lijn beschrijft de ExpressRoute-Global Reach verbinding, waarmee de HANA grote instantie-eenheden van uw tenants in twee verschillende regio's met elkaar kunnen communiceren. 
 
 > [!IMPORTANT] 
-> If you used multiple ExpressRoute circuits, AS Path prepending and Local Preference BGP settings should be used to ensure proper routing of traffic.
+> Als u meerdere ExpressRoute-circuits hebt gebruikt, moeten de instellingen voor pad in behandeling en lokale voor keuren worden gebruikt om te zorgen voor de juiste route ring van verkeer.
 
 **Volgende stappen**
-- Refer [SAP HANA (Large Instances) storage architecture](hana-storage-architecture.md)
+- Raadpleeg de [opslag architectuur van SAP Hana (grote exemplaren)](hana-storage-architecture.md)

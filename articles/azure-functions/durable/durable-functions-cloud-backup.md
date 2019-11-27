@@ -1,6 +1,6 @@
 ---
-title: Fan-out/fan-in scenarios in Durable Functions - Azure
-description: Learn how to implement a fan-out-fan-in scenario in the Durable Functions extension for Azure Functions.
+title: Uitwaaier-en ventilator scenario's in Durable Functions-Azure
+description: Meer informatie over het implementeren van een uitgevallen ventilator in de Durable Functions extensie voor Azure Functions.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
@@ -11,9 +11,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232985"
 ---
-# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-out/fan-in scenario in Durable Functions - Cloud backup example
+# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Voor beeld van uitwaaier/ventilator in Durable Functions-Cloud-back-up
 
-*Fan-out/fan-in* refers to the pattern of executing multiple functions concurrently and then performing some aggregation on the results. This article explains a sample that uses [Durable Functions](durable-functions-overview.md) to implement a fan-in/fan-out scenario. The sample is a durable function that backs up all or some of an app's site content into Azure Storage.
+*Uitwaaieren/ventilatoren* verwijst naar het patroon van het gelijktijdig uitvoeren van meerdere functies en het uitvoeren van enige aggregatie op de resultaten. In dit artikel wordt een voor beeld uitgelegd dat gebruikmaakt van [Durable functions](durable-functions-overview.md) voor het implementeren van een in-en uitwaaierings scenario. Het voor beeld is een duurzame functie waarmee back-ups worden gemaakt van alle of een deel van de site-inhoud van een app in Azure Storage.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
@@ -21,100 +21,100 @@ ms.locfileid: "74232985"
 
 ## <a name="scenario-overview"></a>Overzicht van scenario's
 
-In this sample, the functions upload all files under a specified directory recursively into blob storage. They also count the total number of bytes that were uploaded.
+In dit voor beeld worden met de functies alle bestanden onder een opgegeven map recursief naar Blob Storage geüpload. Ze tellen ook het totale aantal bytes dat is geüpload.
 
-It's possible to write a single function that takes care of everything. The main problem you would run into is **scalability**. A single function execution can only run on a single VM, so the throughput will be limited by the throughput of that single VM. Another problem is **reliability**. If there's a failure midway through, or if the entire process takes more than 5 minutes, the backup could fail in a partially completed state. It would then need to be restarted.
+Het is mogelijk om één functie te schrijven die van alles zorgt. Het belangrijkste probleem dat u kunt uitvoeren, is **schaal baarheid**. Het uitvoeren van één functie kan alleen worden uitgevoerd op één virtuele machine, zodat de door Voer wordt beperkt door de door Voer van die ene VM. Een ander probleem is de **betrouw baarheid**. Als er een fout is opgetreden in het midden, of als het hele proces meer dan vijf minuten duurt, kan de back-up mislukken met een gedeeltelijk voltooide status. Deze moet vervolgens opnieuw worden gestart.
 
-A more robust approach would be to write two regular functions: one would enumerate the files and add the file names to a queue, and another would read from the queue and upload the files to blob storage. This approach is better in terms of throughput and reliability, but it requires you to provision and manage a queue. More importantly, significant complexity is introduced in terms of **state management** and **coordination** if you want to do anything more, like report the total number of bytes uploaded.
+Een robuustere benadering is het schrijven van twee reguliere functies: een zou de bestanden opsommen en de bestands namen toevoegen aan een wachtrij, en een andere Lees bewerking uit de wachtrij en de bestanden uploaden naar Blob-opslag. Deze aanpak is beter in het kader van de door Voer en betrouw baarheid, maar u moet wel een wachtrij inrichten en beheren. Belang rijker is dat aanzienlijk complexer wordt gemaakt in termen van **status beheer** en **coördinatie** als u iets meer wilt doen, zoals rapport het totale aantal geüploade bytes.
 
-A Durable Functions approach gives you all of the mentioned benefits with very low overhead.
+Een Durable Functions aanpak biedt u alle genoemde voor delen met zeer lage overhead.
 
-## <a name="the-functions"></a>The functions
+## <a name="the-functions"></a>De functies
 
-This article explains the following functions in the sample app:
+In dit artikel worden de volgende functies in de voor beeld-app uitgelegd:
 
 * `E2_BackupSiteContent`
 * `E2_GetFileList`
 * `E2_CopyFileToBlob`
 
-The following sections explain the configuration and code that is used for C# scripting. The code for Visual Studio development is shown at the end of the article.
+In de volgende secties worden de configuratie en code uitgelegd die worden C# gebruikt voor het uitvoeren van scripts. De code voor Visual Studio-ontwikkeling wordt aan het einde van het artikel weer gegeven.
 
-## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>The cloud backup orchestration (Visual Studio Code and Azure portal sample code)
+## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>De Cloud backup-indeling (Visual Studio code en Azure Portal voorbeeld code)
 
-The `E2_BackupSiteContent` function uses the standard *function.json* for orchestrator functions.
+De functie `E2_BackupSiteContent` maakt gebruik van de standaard *functie. json* voor Orchestrator-functies.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/function.json)]
 
-Here is the code that implements the orchestrator function:
+Dit is de code waarmee de Orchestrator-functie wordt geïmplementeerd:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-This orchestrator function essentially does the following:
+Deze Orchestrator-functie doet hoofd zakelijk het volgende:
 
-1. Takes a `rootDirectory` value as an input parameter.
-2. Calls a function to get a recursive list of files under `rootDirectory`.
-3. Makes multiple parallel function calls to upload each file into Azure Blob Storage.
-4. Waits for all uploads to complete.
-5. Returns the sum total bytes that were uploaded to Azure Blob Storage.
+1. Neemt een `rootDirectory` waarde als invoer parameter.
+2. Roept een functie aan om een recursieve lijst met bestanden te verkrijgen onder `rootDirectory`.
+3. Maakt meerdere parallelle functie aanroepen om elk bestand te uploaden naar Azure Blob Storage.
+4. Er wordt gewacht tot alle uploads zijn voltooid.
+5. Retourneert het totale aantal bytes dat is geüpload naar Azure Blob Storage.
 
-Notice the `await Task.WhenAll(tasks);` (C#) and `yield context.df.Task.all(tasks);` (JavaScript) lines. All the individual calls to the `E2_CopyFileToBlob` function were *not* awaited, which allows them to run in parallel. When we pass this array of tasks to `Task.WhenAll` (C#) or `context.df.Task.all` (JavaScript), we get back a task that won't complete *until all the copy operations have completed*. If you're familiar with the Task Parallel Library (TPL) in .NET or [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) in JavaScript, then this is not new to you. The difference is that these tasks could be running on multiple VMs concurrently, and the Durable Functions extension ensures that the end-to-end execution is resilient to process recycling.
+Let op de regelsC#`await Task.WhenAll(tasks);` () en `yield context.df.Task.all(tasks);` (Java script). Alle afzonderlijke aanroepen naar de functie `E2_CopyFileToBlob` zijn *niet* in afwachting van een parallelle uitvoering. Wanneer we deze reeks taken door geven aan `Task.WhenAll` (C#) of `context.df.Task.all` (Java script), krijgen we een taak terug die pas wordt voltooid als *alle kopieer bewerkingen zijn voltooid*. Als u bekend bent met de parallelle bibliotheek van de taak (TPL) in .NET of [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) in Java script, is dit niet nieuw voor u. Het verschil is dat deze taken gelijktijdig kunnen worden uitgevoerd op meerdere virtuele machines, en de uitbrei ding van de Durable Functions zorgt ervoor dat de end-to-end-uitvoering kan worden uitgebreid tot het proces wordt gerecycled.
 
 > [!NOTE]
-> Although tasks are conceptually similar to JavaScript promises, orchestrator functions should use `context.df.Task.all` and `context.df.Task.any` instead of `Promise.all` and `Promise.race` to manage task parallelization.
+> Hoewel taken conceptueel lijken op Java script-belofte, moeten Orchestrator-functies `context.df.Task.all` en `context.df.Task.any` gebruiken in plaats van `Promise.all` en `Promise.race` om taak parallel Lise ring te beheren.
 
-After awaiting from `Task.WhenAll` (or yielding from `context.df.Task.all`), we know that all function calls have completed and have returned values back to us. Each call to `E2_CopyFileToBlob` returns the number of bytes uploaded, so calculating the sum total byte count is a matter of adding all those return values together.
+Nadat u in de `Task.WhenAll` (of het resultaat van `context.df.Task.all`) hebt gewacht, weet u dat alle functie aanroepen zijn voltooid en waarden hebben geretourneerd naar ons. Elke aanroep van `E2_CopyFileToBlob` retourneert het aantal geüploade bytes, dus het berekenen van het totaal aantal bytes is een kwestie van het toevoegen van alle retour waarden.
 
-## <a name="helper-activity-functions"></a>Helper activity functions
+## <a name="helper-activity-functions"></a>Functies van de Help-activiteit
 
-The helper activity functions, as with other samples, are just regular functions that use the `activityTrigger` trigger binding. For example, the *function.json* file for `E2_GetFileList` looks like the following:
+De functies van de Help-activiteit, net als bij andere voor beelden, zijn alleen normale functies die gebruikmaken van de `activityTrigger` trigger binding. Het bestand *Function. json* voor `E2_GetFileList` ziet er bijvoorbeeld als volgt uit:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
 
-And here is the implementation:
+En dit is de implementatie:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-The JavaScript implementation of `E2_GetFileList` uses the `readdirp` module to recursively read the directory structure.
+De Java script-implementatie van `E2_GetFileList` gebruikt de module `readdirp` om de mapstructuur recursief te lezen.
 
 > [!NOTE]
-> You might be wondering why you couldn't just put this code directly into the orchestrator function. You could, but this would break one of the fundamental rules of orchestrator functions, which is that they should never do I/O, including local file system access.
+> U vraagt zich misschien af waarom u deze code niet rechtstreeks in de Orchestrator-functie wilt plaatsen. Dat kan, maar dit zou een van de fundamentele regels van Orchestrator-functies verstoren, dat wil zeggen dat ze nooit I/O moeten, waaronder lokale bestandssysteem toegang.
 
-The *function.json* file for `E2_CopyFileToBlob` is similarly simple:
+Het bestand *Function. json* voor `E2_CopyFileToBlob` is net zo eenvoudig:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-The C# implementation is also straightforward. It happens to use some advanced features of Azure Functions bindings (that is, the use of the `Binder` parameter), but you don't need to worry about those details for the purpose of this walkthrough.
+De C# implementatie is ook eenvoudig. Er zijn enkele geavanceerde functies van Azure Functions bindingen (dat wil zeggen, het gebruik van de para meter `Binder`), maar u hoeft zich geen zorgen te maken over deze Details voor het doel van deze procedure.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
-The JavaScript implementation does not have access to the `Binder` feature of Azure Functions, so the [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) takes its place.
+De Java script-implementatie heeft geen toegang tot de `Binder`-functie van Azure Functions. de [Azure Storage SDK voor het knoop punt](https://github.com/Azure/azure-storage-node) neemt dus de plaats.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
-The implementation loads the file from disk and asynchronously streams the contents into a blob of the same name in the "backups" container. The return value is the number of bytes copied to storage, that is then used by the orchestrator function to compute the aggregate sum.
+Met de implementatie wordt het bestand van de schijf geladen en wordt de inhoud asynchroon naar een blob met dezelfde naam in de container back-ups gestreamd. De geretourneerde waarde is het aantal bytes dat wordt gekopieerd naar de opslag, dat vervolgens wordt gebruikt door de Orchestrator-functie om de cumulatieve som te berekenen.
 
 > [!NOTE]
-> This is a perfect example of moving I/O operations into an `activityTrigger` function. Not only can the work be distributed across many different VMs, but you also get the benefits of checkpointing the progress. If the host process gets terminated for any reason, you know which uploads have already completed.
+> Dit is een perfecte voor beeld van het verplaatsen van I/O-bewerkingen in een `activityTrigger`-functie. Niet alleen kan het werk worden verdeeld over verschillende Vm's, maar u krijgt ook de voor delen van het controle punt van de voortgang. Als het hostproces om welke reden dan ook wordt beëindigd, weet u dat er al een upload bewerking is voltooid.
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
 
-You can start the orchestration by sending the following HTTP POST request.
+U kunt de indeling starten door de volgende HTTP POST-aanvraag te verzenden.
 
 ```
 POST http://{host}/orchestrators/E2_BackupSiteContent
@@ -125,9 +125,9 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> The `HttpStart` function that you are invoking only works with JSON-formatted content. For this reason, the `Content-Type: application/json` header is required and the directory path is encoded as a JSON string. Moreover, HTTP snippet assumes there is an entry in the `host.json` file which removes the default `api/` prefix from all HTTP trigger functions URLs. You can find the markup for this configuration in the `host.json` file in the samples.
+> De `HttpStart` functie die u aanroept, werkt alleen met inhoud in JSON-indeling. Daarom is de `Content-Type: application/json`-header vereist en wordt het mappad gecodeerd als een JSON-teken reeks. Daarnaast wordt ervan uitgegaan dat er een vermelding in het `host.json` bestand is dat het standaard `api/` voorvoegsel verwijdert uit alle Url's van de HTTP-trigger functies. U kunt de opmaak voor deze configuratie vinden in het `host.json`-bestand in de voor beelden.
 
-This HTTP request triggers the `E2_BackupSiteContent` orchestrator and passes the string `D:\home\LogFiles` as a parameter. The response provides a link to get the status of the backup operation:
+Met deze HTTP-aanvraag wordt de `E2_BackupSiteContent` Orchestrator geactiveerd en wordt de teken reeks `D:\home\LogFiles` als een para meter door gegeven. Het antwoord bevat een koppeling om de status van de back-upbewerking op te halen:
 
 ```
 HTTP/1.1 202 Accepted
@@ -138,7 +138,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8
 (...trimmed...)
 ```
 
-Depending on how many log files you have in your function app, this operation could take several minutes to complete. You can get the latest status by querying the URL in the `Location` header of the previous HTTP 202 response.
+Afhankelijk van het aantal logboek bestanden dat u in uw functie-app hebt, kan het enkele minuten duren voordat deze bewerking is voltooid. U kunt de meest recente status verkrijgen door een query uit te geven op de URL in de `Location`-header van het vorige HTTP 202-antwoord.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -153,7 +153,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8
 {"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:16Z"}
 ```
 
-In this case, the function is still running. You are able to see the input that was saved into the orchestrator state and the last updated time. You can continue to use the `Location` header values to poll for completion. When the status is "Completed", you see an HTTP response value similar to the following:
+In dit geval wordt de functie nog steeds uitgevoerd. U kunt de invoer zien die is opgeslagen in de Orchestrator-status en het tijdstip waarop de gegevens voor het laatst zijn bijgewerkt. U kunt de `Location` header waarden blijven gebruiken om te controleren op voltooiing. Wanneer de status voltooid is, ziet u een HTTP-antwoord waarde die lijkt op het volgende:
 
 ```
 HTTP/1.1 200 OK
@@ -163,20 +163,20 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:26Z"}
 ```
 
-Now you can see that the orchestration is complete and approximately how much time it took to complete. You also see a value for the `output` field, which indicates that around 450 KB of logs were uploaded.
+Nu kunt u zien dat de indeling is voltooid en ongeveer de hoeveelheid tijd die nodig is om te volt ooien. U ziet ook een waarde voor het veld `output`, dat aangeeft dat er ongeveer 450 KB aan logboeken is geüpload.
 
-## <a name="visual-studio-sample-code"></a>Visual Studio sample code
+## <a name="visual-studio-sample-code"></a>Visual Studio-voorbeeld code
 
-Here is the orchestration as a single C# file in a Visual Studio project:
+Dit is de indeling als één C# bestand in een Visual Studio-project:
 
 > [!NOTE]
-> You will need to install the `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet package to run the sample code below.
+> Als u de voorbeeld code hieronder wilt uitvoeren, moet u het `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet-pakket installeren.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-This sample has shown how to implement the fan-out/fan-in pattern. The next sample shows how to implement the monitor pattern using [durable timers](durable-functions-timers.md).
+In dit voor beeld wordt aangegeven hoe u het patroon uitwaaieren/ventilatoren implementeert. In het volgende voor beeld ziet u hoe u het monitor patroon kunt implementeren met behulp van [duurzame timers](durable-functions-timers.md).
 
 > [!div class="nextstepaction"]
-> [Run the monitor sample](durable-functions-monitor.md)
+> [De monitor-voor beeld uitvoeren](durable-functions-monitor.md)

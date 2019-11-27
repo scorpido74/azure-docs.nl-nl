@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with SmarterU | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and SmarterU.
+title: 'Zelf studie: integratie Azure Active Directory met SmarterU | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SmarterU.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,13 +22,13 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232027"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Tutorial: Azure Active Directory integration with SmarterU
+# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Zelf studie: integratie Azure Active Directory met SmarterU
 
-In this tutorial, you learn how to integrate SmarterU with Azure Active Directory (Azure AD).
-Integrating SmarterU with Azure AD provides you with the following benefits:
+In deze zelf studie leert u hoe u SmarterU integreert met Azure Active Directory (Azure AD).
+Het integreren van SmarterU met Azure AD biedt de volgende voor delen:
 
-* You can control in Azure AD who has access to SmarterU.
-* You can enable your users to be automatically signed-in to SmarterU (Single Sign-On) with their Azure AD accounts.
+* U kunt beheren in azure AD die toegang heeft tot SmarterU.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij SmarterU (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -36,24 +36,24 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-To configure Azure AD integration with SmarterU, you need the following items:
+Als u Azure AD-integratie met SmarterU wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* SmarterU single sign-on enabled subscription
+* Abonnement voor eenmalige aanmelding SmarterU ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* SmarterU supports **IDP** initiated SSO
+* SmarterU ondersteunt door **IDP** GEÏNITIEERDe SSO
 
-## <a name="adding-smarteru-from-the-gallery"></a>Adding SmarterU from the gallery
+## <a name="adding-smarteru-from-the-gallery"></a>SmarterU toevoegen uit de galerie
 
-To configure the integration of SmarterU into Azure AD, you need to add SmarterU from the gallery to your list of managed SaaS apps.
+Als u de integratie van SmarterU in azure AD wilt configureren, moet u SmarterU uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**To add SmarterU from the gallery, perform the following steps:**
+**Voer de volgende stappen uit om SmarterU toe te voegen uit de galerie:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ To configure the integration of SmarterU into Azure AD, you need to add SmarterU
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. In the search box, type **SmarterU**, select **SmarterU** from result panel then click **Add** button to add the application.
+4. Typ **SmarterU**in het zoekvak, selecteer **SmarterU** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![SmarterU in the results list](common/search-new-app.png)
+     ![SmarterU in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In this section, you configure and test Azure AD single sign-on with SmarterU based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in SmarterU needs to be established.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met SmarterU op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SmarterU tot stand worden gebracht.
 
-To configure and test Azure AD single sign-on with SmarterU, you need to complete the following building blocks:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met SmarterU, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configure SmarterU Single Sign-On](#configure-smarteru-single-sign-on)** - to configure the Single Sign-On settings on application side.
+2. **[SmarterU eenmalige aanmelding configureren](#configure-smarteru-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Create SmarterU test user](#create-smarteru-test-user)** - to have a counterpart of Britta Simon in SmarterU that is linked to the Azure AD representation of user.
+5. **[Maak een SmarterU-test gebruiker](#create-smarteru-test-user)** -om een equivalent van Julia Simon in SmarterU te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-To configure Azure AD single sign-on with SmarterU, perform the following steps:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met SmarterU:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **SmarterU** application integration page, select **Single sign-on**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **SmarterU** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,15 +103,15 @@ To configure Azure AD single sign-on with SmarterU, perform the following steps:
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![SmarterU Domain and URLs single sign-on information](common/idp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor SmarterU domein en Url's](common/idp-identifier.png)
 
     Typ de volgende URL in het tekstvak **Id**: `https://www.smarteru.com/`
 
-5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. On the **Set up SmarterU** section, copy the appropriate URL(s) as per your requirement.
+6. Kopieer op de sectie **SmarterU instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -121,29 +121,29 @@ To configure Azure AD single sign-on with SmarterU, perform the following steps:
 
     c. Afmeldings-URL
 
-### <a name="configure-smarteru-single-sign-on"></a>Configure SmarterU Single Sign-On
+### <a name="configure-smarteru-single-sign-on"></a>Eenmalige aanmelding voor SmarterU configureren
 
-1. In a different web browser window, sign in to your SmarterU company site as an administrator.
+1. Meld u in een ander webbrowser venster als beheerder aan bij uw SmarterU-bedrijfs site.
 
-1. In the toolbar on the top, click **Account Settings**.
+1. Klik in de werk balk bovenaan op **account instellingen**.
 
-    ![Account Settings](./media/smarteru-tutorial/accountsettings.png)
+    ![Account instellingen](./media/smarteru-tutorial/accountsettings.png)
 
 1. Voer op de configuratiepagina voor accounts de volgende stappen uit:
 
-    ![External Authorization](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
+    ![Externe autorisatie](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
 
-    a. Select **Enable External Authorization**.
+    a. Selecteer **externe autorisatie inschakelen**.
   
-    b. In the **Master Login Control** section, select the **SmarterU** tab.
+    b. Selecteer in de sectie **Master Login Control** het tabblad **SmarterU** .
   
-    c. In the **User Default Login** section, select the **SmarterU** tab.
+    c. Selecteer in de sectie **standaard aanmeld gebruiker** het tabblad **SmarterU** .
   
     d. Selecteer **SAML inschakelen**.
   
-    e. Copy the content of the downloaded metadata file, and then paste it into the **IdP Metadata** textbox.
+    e. Kopieer de inhoud van het gedownloade meta gegevensbestand en plak het in het tekstvak **IDP meta data** .
 
-    f. Select an **Identifier Attribute/Claim**.
+    f. Selecteer een **id-kenmerk/claim**.
   
     g. Klik op **Opslaan**.
 
@@ -170,19 +170,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to SmarterU.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan SmarterU.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **SmarterU**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **SmarterU**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. In the applications list, select **SmarterU**.
+2. Selecteer in de lijst toepassingen de optie **SmarterU**.
 
-    ![The SmarterU link in the Applications list](common/all-applications.png)
+    ![De koppeling SmarterU in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
@@ -198,41 +198,41 @@ In this section, you enable Britta Simon to use Azure single sign-on by granting
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-smarteru-test-user"></a>Create SmarterU test user
+### <a name="create-smarteru-test-user"></a>SmarterU-test gebruiker maken
 
-To enable Azure AD users to sign in to SmarterU, they must be provisioned into SmarterU. In the case of SmarterU, provisioning is a manual task.
+Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij SmarterU, moeten ze worden ingericht in SmarterU. In het geval van SmarterU is inrichting een hand matige taak.
 
 **Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. sign in to your **SmarterU** tenant.
+1. Meld u aan bij uw **SmarterU** -Tenant.
 
-1. Go to **Users**.
+1. Ga naar **gebruikers**.
 
-1. In the user section, perform the following steps:
+1. Voer de volgende stappen uit in de sectie gebruiker:
 
-    ![New User](./media/smarteru-tutorial/adduser.png)  
+    ![Nieuwe gebruiker](./media/smarteru-tutorial/adduser.png)  
 
-    a. Click **+User**.
+    a. Klik op **+ gebruiker**.
 
-    b. Type the related attribute values of the Azure AD user account into the following textboxes: **Primary Email**, **Employee ID**, **Password**, **Verify Password**, **Given Name**, **Surname**.
+    b. Typ de gerelateerde kenmerk waarden van het Azure AD-gebruikers account in de volgende tekst vakken: **primair e-mail adres**, **werk nemer-id**, **wacht woord**, **wacht woord controleren** **, voor** **naam**en achternummer.
 
-    c. Click **Active**.
+    c. Klik op **actief**.
 
     d. Klik op **Opslaan**.
 
 > [!NOTE]
-> You can use any other SmarterU user account creation tools or APIs provided by SmarterU to provision Azure AD user accounts.
+> U kunt alle andere hulpprogram ma's voor het maken van SmarterU-gebruikers accounts of Api's die worden geleverd door SmarterU, gebruiken om Azure AD-gebruikers accounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-When you click the SmarterU tile in the Access Panel, you should be automatically signed in to the SmarterU for which you set up SSO. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel SmarterU in het toegangs venster klikt, moet u automatisch worden aangemeld bij de SmarterU waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

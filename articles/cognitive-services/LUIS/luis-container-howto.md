@@ -24,7 +24,7 @@ De Language Understanding-container (LUIS) laadt uw getrainde of gepubliceerd La
 
 In de volgende video ziet u hoe u deze container gebruikt.
 
-[![Demonstratie van de container voor Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[demonstratie van ![container voor Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -34,7 +34,7 @@ Als u de LUIS-container wilt uitvoeren, moet u rekening houden met de volgende v
 
 |Vereist|Doel|
 |--|--|
-|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie voor een uitleg van de basisprincipes van Docker en containers, de [dockeroverzicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
+|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie het [docker-overzicht](https://docs.docker.com/engine/docker-overview/)voor een primer op basis van docker en container.<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
 |Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker`-opdrachten.| 
 |App-bestand voor Azure `Cognitive Services` resource en LUIS- [pakket](luis-how-to-start-new-app.md) |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>* Een _Cognitive Services_ Azure-resource en de gekoppelde facturerings sleutel de URI van het facturerings eindpunt. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten. <br>* Een getrainde of gepubliceerde app is verpakt als gekoppelde invoer voor de container met de bijbehorende App-ID. U kunt het verpakte bestand ophalen uit de LUIS-portal of de ontwerp-Api's. Als u een LUIS-app-pakket van de [ontwerp-api's](#authoring-apis-for-package-file)krijgt, hebt u ook uw _ontwerp sleutel_nodig.<br><br>Deze vereisten worden gebruikt om opdracht regel argumenten door te geven aan de volgende variabelen:<br><br>**{AUTHORING_KEY}** : deze sleutel wordt gebruikt om de verpakte app uit de Luis-service in de Cloud op te halen en uploadt de query logboeken terug naar de Cloud. De indeling is `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}** : deze id wordt gebruikt om de app te selecteren. De indeling is `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : deze sleutel wordt gebruikt om de container te starten. U kunt de eindpunt sleutel op twee plaatsen vinden. De eerste is de Azure Portal in de lijst sleutels van de _Cognitive Services_ resource. De eindpunt sleutel is ook beschikbaar in de LUIS-Portal op de pagina sleutels en eindpunt instellingen. Gebruik niet de start sleutel.<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina overzicht.<br><br>De [ontwerp sleutel en de eindpunt sleutel](luis-boundaries.md#key-limits) hebben verschillende doel einden. Gebruik deze niet om te zetten. |
 
@@ -228,7 +228,7 @@ Deze opdracht:
 Er zijn meer [voor beelden](luis-container-configuration.md#example-docker-run-commands) van de `docker run`-opdracht beschikbaar. 
 
 > [!IMPORTANT]
-> De `Eula`, `Billing`, en `ApiKey` opties moeten worden opgegeven voor het uitvoeren van de container; anders wordt de container niet start.  Zie voor meer informatie, [facturering](#billing).
+> De opties `Eula`, `Billing`en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
 > De ApiKey-waarde is de **sleutel** van de **Azure-resources** -pagina in de Luis-Portal en is ook beschikbaar op de pagina Azure `Cognitive Services` resource sleutels.  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
@@ -367,7 +367,7 @@ De LUIS-container verzendt facturerings gegevens naar Azure met behulp van een _
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Zie voor meer informatie over deze opties [containers configureren](luis-container-configuration.md).
+Zie [containers configureren](luis-container-configuration.md)voor meer informatie over deze opties.
 
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]

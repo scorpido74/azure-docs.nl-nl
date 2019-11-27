@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Monitor an IoT device space - Azure Digital Twins| Microsoft Docs'
+title: 'Zelf studie: een IoT-apparaatapparaat bewaken-Azure Digital Apparaatdubbels | Microsoft Docs'
 description: Leer hoe u uw ruimtelijke resources kunt inrichten en de werkomstandigheden kunt bewaken met Azure Digital Twins door de stappen in deze zelfstudie te volgen.
 services: digital-twins
 ms.author: alinast
@@ -16,9 +16,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383228"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Tutorial: Provision your building and monitor working conditions with Azure Digital Twins Preview
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Zelf studie: uw bouw-en bewakings voorwaarden inrichten met Azure Digital Apparaatdubbels preview
 
-This tutorial demonstrates how to use Azure Digital Twins Preview to monitor your spaces for desired temperature conditions and comfort level. Nadat u uw [voorbeeldgebouw hebt geconfigureerd](tutorial-facilities-setup.md), kunt u het gebouw inrichten en aangepaste functies uitvoeren voor uw sensorgegevens met behulp van de stappen in deze zelfstudie.
+In deze zelf studie wordt gedemonstreerd hoe u met Azure Digital Apparaatdubbels Preview uw Spaces bewaakt voor gewenste temperatuur omstandigheden en comfort niveau. Nadat u uw [voorbeeldgebouw hebt geconfigureerd](tutorial-facilities-setup.md), kunt u het gebouw inrichten en aangepaste functies uitvoeren voor uw sensorgegevens met behulp van de stappen in deze zelfstudie.
 
 In deze zelfstudie leert u het volgende:
 
@@ -39,7 +39,7 @@ In deze zelfstudie wordt ervan uitgegaan dat u de [Azure Digital Twins-installat
 - [Visual Studio Code](https://code.visualstudio.com/) om de voorbeeldcode mee te verkennen. 
 
 > [!TIP]
-> Use a unique Digital Twins instance name if you're provisioning a new instance.
+> Gebruik een unieke Digital Apparaatdubbels-exemplaar naam als u een nieuw exemplaar inricht.
 
 ## <a name="define-conditions-to-monitor"></a>Werkomstandigheden definiëren die gecontroleerd moeten worden
 
@@ -54,13 +54,13 @@ Voeg de volgende matcher toe onder de bestaande matchers. Zorg ervoor dat de sle
         dataTypeValue: Temperature
 ```
 
-This matcher will track the `SAMPLE_SENSOR_TEMPERATURE` sensor that you added in [the first tutorial](tutorial-facilities-setup.md). 
+Met deze overeenkomst wordt de `SAMPLE_SENSOR_TEMPERATURE` sensor gevolgd die u in [de eerste zelf studie](tutorial-facilities-setup.md)hebt toegevoegd. 
 
 ## <a name="create-a-user-defined-function"></a>Een door de gebruiker gedefinieerde functie maken
 
 Met behulp van door gebruikers gedefinieerde functies kunt u aanpassen hoe uw sensorgegevens worden verwerkt. Ze bestaan uit aangepaste JavaScript-code die in uw Azure Digital Twins-instantie wordt uitgevoerd als er zich omstandigheden voordoen die door de matchers worden beschreven. U kunt matchers en door gebruikers gedefinieerde functies maken voor elke sensor die u wilt controleren. Lees [Gegevensverwerking en door gebruikers gedefinieerde functies](concepts-user-defined-functions.md) voor meer informatie. 
 
-In the sample *provisionSample.yaml* file, look for a section that begins with the type **userdefinedfunctions**. In deze sectie wordt een door de gebruiker gedefinieerde functie met een bepaalde **Naam** ingericht. Deze UDF werkt met de lijst met matchers onder **matcherNames**. Kijk ook hoe u een eigen JavaScript-kunt gebruiken als **script** voor de door de gebruiker gedefinieerde functie.
+Zoek in het voor beeld *provisionSample. yaml* -bestand naar een sectie die begint met het type **userdefinedfunctions**. In deze sectie wordt een door de gebruiker gedefinieerde functie met een bepaalde **Naam** ingericht. Deze UDF werkt met de lijst met matchers onder **matcherNames**. Kijk ook hoe u een eigen JavaScript-kunt gebruiken als **script** voor de door de gebruiker gedefinieerde functie.
 
 Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van Space Administrator toegewezen aan de door de gebruiker gedefinieerde functie. Met deze rol wordt toegang verkregen tot de gebeurtenissen die afkomstig zijn van een van de ingerichte ruimtes. 
 
@@ -70,7 +70,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
             - Matcher Temperature
     ```
 
-1. Open het bestand **src\actions\userDefinedFunctions\availability.js** in uw editor. This is the file referenced in the **script** element of *provisionSample.yaml*. Met de door de gebruiker gedefinieerde functie in dit bestand wordt gezocht naar omstandigheden waarbij geen beweging in de ruimte wordt gedetecteerd en waarbij het koolstofdioxideniveau zich onder 1000 ppm bevindt. 
+1. Open het bestand **src\actions\userDefinedFunctions\availability.js** in uw editor. Dit is het bestand waarnaar wordt verwezen in het element **script** van *provisionSample. yaml*. Met de door de gebruiker gedefinieerde functie in dit bestand wordt gezocht naar omstandigheden waarbij geen beweging in de ruimte wordt gedetecteerd en waarbij het koolstofdioxideniveau zich onder 1000 ppm bevindt. 
 
    Wijzig het JavaScript-bestand zodat op temperatuur en andere omstandigheden kan worden gecontroleerd. Voeg de volgende regels code toe om te zoeken naar omstandigheden waarbij geen beweging wordt gedetecteerd in de kamer, het koolstofdioxideniveau lager is dan 1000 ppm en de temperatuur lager is dan 78 graden Fahrenheit.
 
@@ -84,7 +84,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
         var temperatureThreshold = 78;
     ```
 
-    b. Voeg onder de opmerking `// Add your sensor variable here` de volgende regels toe na de instructie waarmee `var motionSensor` wordt gedefinieerd:
+    b. Voeg onder de opmerking `var motionSensor` de volgende regels toe na de instructie waarmee `// Add your sensor variable here` wordt gedefinieerd:
 
      ```JavaScript
         var temperatureSensor = otherSensors.find(function(element) {
@@ -92,7 +92,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
         });
     ```
 
-    c. Voeg onder de opmerking `// Add your sensor latest value here` de volgende regel toe na de instructie waarmee `var carbonDioxideValue` wordt gedefinieerd:
+    c. Voeg onder de opmerking `var carbonDioxideValue` de volgende regel toe na de instructie waarmee `// Add your sensor latest value here` wordt gedefinieerd:
 
     ```JavaScript
         var temperatureValue = getFloatValue(temperatureSensor.Value().Value);
@@ -181,11 +181,11 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
    > [!IMPORTANT]
    > Om te voorkomen dat onbevoegden toegang hebben tot uw beheer-API van Digital Twins, wordt u door de toepassing **occupancy-quickstart** gedwongen u aan te melden met uw Azure-accountreferenties. Uw referenties blijven een korte periode bewaard, zodat u zich niet steeds hoeft aan te melden als u deze wilt uitvoeren. De eerste keer dat dit programma wordt uitgevoerd, en wanneer uw opgeslagen referenties daarna verlopen, wordt u omgeleid naar een aanmeldingspagina en ontvangt u een sessiespecifieke code die u op die pagina moet invoeren. Volg de aanwijzingen om u aan te melden met uw Azure-account.
 
-1. After your account is authenticated, the application starts creating a sample spatial graph as configured in *provisionSample.yaml*. Wacht tot het inrichtingsproces is voltooid. Dit duurt enkele minuten. Vervolgens bekijkt u de berichten in het opdrachtvenster en u kunt zien hoe uw ruimtelijke grafiek wordt gemaakt. Observeer hoe een IoT-hub wordt gemaakt op het hoofdknooppunt of de `Venue`.
+1. Nadat uw account is geverifieerd, begint de toepassing met het maken van een ruimtelijke voorbeeld grafiek zoals geconfigureerd in *provisionSample. yaml*. Wacht tot het inrichtingsproces is voltooid. Dit duurt enkele minuten. Vervolgens bekijkt u de berichten in het opdrachtvenster en u kunt zien hoe uw ruimtelijke grafiek wordt gemaakt. Observeer hoe een IoT-hub wordt gemaakt op het hoofdknooppunt of de `Venue`.
 
 1. Kopieer de waarde van de `ConnectionString` uit de uitvoer in het opdrachtvenster onder de sectie `Devices` naar het Klembord. U hebt deze waarde nodig om de apparaatverbinding in de volgende sectie te simuleren.
 
-    [![Provision sample](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
+    [voor beeld van ![inrichten](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Als er tijdens het inrichtingsproces een foutbericht wordt weergegeven dat lijkt op 'De I/O-bewerking is afgebroken vanwege een afgesloten thread of een toepassingsaanvraag', moet u de opdracht opnieuw uitvoeren. Dit kan gebeuren als er een time-out van de HTTP-client heeft plaatsgevonden vanwege een netwerkprobleem.
@@ -206,9 +206,9 @@ In deze sectie gebruikt u het project met de naam *device-connectivity* in het v
 
    a. **DeviceConnectionString**: wijs de waarde toe van `ConnectionString` in het uitvoervenster uit de vorige sectie. Kopieer de volledige tekenreeks (tussen de aanhalingstekens), zodat de simulator correct verbinding maakt met de IoT-hub.
 
-   b. **HardwareId** within the **Sensors** array: Because you're simulating events from sensors provisioned to your Azure Digital Twins instance, the hardware ID and the names of the sensors in this file should match the `sensors` node of the *provisionSample.yaml* file.
+   b. **HardwareId** binnen de **Sens oren** -matrix: omdat u gebeurtenissen simuleert van Sens oren die zijn ingericht naar uw Azure Digital apparaatdubbels-exemplaar, moeten de hardware-id en de namen van de Sens oren in dit bestand overeenkomen met het `sensors` knoop punt van het bestand *provisionSample. yaml* .
 
-      Voeg een nieuwe vermelding voor de temperatuursensor toe. The **Sensors** node in *appsettings.json* should look like the following:
+      Voeg een nieuwe vermelding voor de temperatuursensor toe. Het knoop punt **Sens oren** in *appSettings. json* moet er als volgt uitzien:
 
       ```JSON
       "Sensors": [{
@@ -246,7 +246,7 @@ De door de gebruiker gedefinieerde functie wordt telkens uitgevoerd als uw insta
 
 In het uitvoervenster ziet u hoe de door de gebruiker gedefinieerde functie wordt uitgevoerd en gebeurtenissen van de apparaatsimulatie onderschept. 
 
-   [![Output for the UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [![uitvoer voor de UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
 Als er aan de gecontroleerd voorwaarde wordt voldaan, stelt de door de gebruiker gedefinieerde functie de waarde van de ruimte in met het betreffende bericht, zoals we [eerder](#create-a-user-defined-function) hebben gezien. De functie `GetAvailableAndFreshSpaces` drukt het bericht op de console af.
 

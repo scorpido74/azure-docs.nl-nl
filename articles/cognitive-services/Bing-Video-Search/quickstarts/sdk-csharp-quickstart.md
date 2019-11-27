@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for videos using the SDK for C# - Bing Video Search'
+title: "Snelstartgids: zoeken naar Video's met de SDK voor C# -Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's te verzenden naar de Bing Video's zoeken-SDK voor C#.
 services: cognitive-services
@@ -17,16 +17,16 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383763"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>Quickstart: Perform a video search with the Bing Video Search SDK for C#
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>Quick Start: een video zoekopdracht uitvoeren met de Bing Video Search SDK voorC#
 
-Gebruik deze quickstart om aan de slag te gaan met de Bing Video's zoeken-SDK voor C# om nieuws te zoeken. Hoewel Bing Video's zoeken een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) with additional annotations, and features.
+Gebruik deze quickstart om aan de slag te gaan met de Bing Video's zoeken-SDK voor C# om nieuws te zoeken. Hoewel Bing Video's zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) met aanvullende aantekeningen en functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Any edition of [Visual Studio 2017 or later](https://visualstudio.microsoft.com/downloads/).
+* Een versie van [Visual Studio 2017 of hoger](https://visualstudio.microsoft.com/downloads/).
 * Het Json.NET-framework, beschikbaar als [NuGet-pakket](https://www.nuget.org/packages/Newtonsoft.Json/).
 
-To add the Bing Video Search SDK to your project, select **Manage NuGet Packages** from **Solution Explorer** in Visual Studio. Voeg het pakket `Microsoft.Azure.CognitiveServices.Search.VideoSearch` toe.
+Als u de Bing Video Search SDK wilt toevoegen aan uw project, selecteert u **NuGet-pakketten beheren** in **Solution Explorer** in Visual Studio. Voeg het pakket `Microsoft.Azure.CognitiveServices.Search.VideoSearch` toe.
 
 Wanneer u het [[NuGet Video Search SDK-pakket]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) installeert, worden ook de volgende afhankelijkheden geïnstalleerd:
 

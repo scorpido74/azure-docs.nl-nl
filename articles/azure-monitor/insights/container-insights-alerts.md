@@ -284,7 +284,7 @@ Volg deze stappen om een logboek waarschuwing in Azure Monitor te maken met behu
 >Met de volgende procedure voor het maken van een waarschuwings regel voor container resource gebruik moet u overschakelen naar een nieuwe API voor logboek waarschuwingen, zoals beschreven in de voor [keur voor de switch-API voor logboek waarschuwingen](../platform/alerts-log-api-switch.md).
 >
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **monitor** in het deel venster aan de linkerkant. Onder **inzichten**selecteert u **containers**.
 3. Selecteer op het tabblad **bewaakte clusters** een cluster in de lijst.
 4. Selecteer **Logboeken** in het deel venster aan de linkerkant onder **bewaking**om de pagina Azure monitor logboeken te openen. U gebruikt deze pagina om Azure Log Analytics-query's te schrijven en uit te voeren.

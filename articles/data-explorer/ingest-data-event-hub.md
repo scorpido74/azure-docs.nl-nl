@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 102cfa81c6093ff1aeefdd8d1937143a25cf76f5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1750267b5780dcfbb227ffcd6bb98e2f77ff1511
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028493"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539287"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>gegevens uit Event Hub opnemen in Azure Data Explorer
 
@@ -53,7 +53,7 @@ In dit artikel genereert u voorbeeld gegevens en stuurt u deze naar een Event Hu
 
     ![Een resourcegroep maken](media/ingest-data-event-hub/create-resource-group.png)
 
-1. Vul het formulier in met de volgende gegevens.
+1. Vul in het formulier de volgende gegevens in.
 
     ![Implementatieformulier](media/ingest-data-event-hub/deployment-form.png)
 
@@ -61,9 +61,9 @@ In dit artikel genereert u voorbeeld gegevens en stuurt u deze naar een Event Hu
 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
-    | Subscription | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor de Event Hub.|
-    | Resource group | *test-hub-rg* | Maak een nieuwe resourcegroep. |
-    | Location | *US - west* | Selecteer *VS-West* voor dit artikel. Selecteer voor een productiesysteem de regio die het beste voldoet aan uw behoeften. Voor de beste prestaties maakt u de Event Hub-naamruimte op dezelfde locatie als het Kusto-cluster (dit is met name belangrijk voor Event Hub-naamruimten met een hoge doorvoer).
+    | Abonnement | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor de Event Hub.|
+    | Resourcegroep | *test-hub-rg* | Maak een nieuwe resourcegroep. |
+    | Locatie | *US - west* | Selecteer *VS-West* voor dit artikel. Selecteer voor een productiesysteem de regio die het beste voldoet aan uw behoeften. Voor de beste prestaties maakt u de Event Hub-naamruimte op dezelfde locatie als het Kusto-cluster (dit is met name belangrijk voor Event Hub-naamruimten met een hoge doorvoer).
     | Naam van naamruimte | Een unieke naam voor de naamruimte | Kies een unieke naam waarmee de naamruimte kan worden geïdentificeerd. Bijvoorbeeld *mijntestnaamruimte*. De domeinnaam *servicebus.windows.net* wordt toegevoegd aan de naam die u opgeeft. De naam mag alleen letters, cijfers en afbreekstreepjes bevatten. De naam moet beginnen met een letter en moet eindigen met een letter of een cijfer. De waarde moet minimaal 6 en maximaal 50 tekens lang zijn.
     | Naam van Event Hub | *test-hub* | De Event Hub bevindt zich onder de naamruimte, wat een unieke bereikcontainer biedt. De naam van de Event Hub moet uniek zijn binnen de naamruimte. |
     | Naam van consumentengroep | *test-group* | Met consumentengroepen kunnen meerdere gebruikstoepassingen elk een afzonderlijke weergave van de gebeurtenisstroom hebben. |
@@ -137,6 +137,8 @@ Nu kunt u vanuit Azure Data Explorer verbinding maken met de event hub. Wanneer 
     > [!NOTE]
     > * Selecteer **mijn gegevens bevat routerings informatie** voor het gebruik van dynamische route ring, waarbij uw gegevens de benodigde routerings informatie bevatten, zoals wordt weer gegeven in de opmerkingen van de voor [beeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Als zowel statische als dynamische eigenschappen zijn ingesteld, worden de dynamische eigenschappen overschreven. 
     > * Alleen gebeurtenissen in de wachtrij na het maken van de gegevens verbinding worden opgenomen.
+    > * Schakel GZip-compressie in voor statische route ring door een [ondersteunings aanvraag te openen in de Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Schakel GZip-compressie voor dynamische route ring in, zoals wordt weer gegeven in de voor [beeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest). 
+    > * De Avro-indeling en eigenschappen van het gebeurtenis systeem worden niet ondersteund voor compressie payload.
 
 ## <a name="copy-the-connection-string"></a>De verbindingsreeks kopiëren
 
@@ -204,7 +206,7 @@ Als u niet van plan bent de Event Hub opnieuw te gebruiken, wist u de **test-hub
 
 1. Selecteer in Azure Portal **Resourcegroepen** aan de linkerkant en selecteer vervolgens de resourcegroep die u hebt gemaakt.  
 
-    Als het menu links is samengevouwen, selecteert u ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
+    Wanneer het menu links is samengevouwen, klikt u op ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
 
    ![Resourcegroep selecteren die moet worden verwijderd](media/ingest-data-event-hub/delete-resources-select.png)
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8660d5539d9cfc218667bc7bb077f9f6d1191eec
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e24c97909870c4d76b07ec837e5f624a509bd1f2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184143"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547290"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Een beheerde identiteit toegang tot een resource toewijzen met behulp van Azure portal
 
@@ -30,25 +30,25 @@ Nadat u hebt een Azure-resource geconfigureerd met een beheerde identiteit, kunt
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend met beheerde identiteiten voor Azure-resources bent, lees de [overzichtssectie](overview.md). **Lees de [verschil tussen een beheerde identiteit door het systeem is toegewezen en de gebruiker toegewezen](overview.md#how-does-it-work)** .
+- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>RBAC gebruiken voor het toewijzen van een beheerde identiteit toegang naar een andere resource
 
-Wanneer u inschakelt de beheerde identiteit op een Azure-resource, zoals een [virtuele Azure-machine](qs-configure-portal-windows-vm.md) of [Azure VMSS](qs-configure-portal-windows-vmss.md):
+Nadat u de beheerde identiteit hebt ingeschakeld voor een Azure-resource, zoals een [Azure VM](qs-configure-portal-windows-vm.md) of [Azure VMSS](qs-configure-portal-windows-vmss.md):
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) met een account dat is gekoppeld aan het Azure-abonnement waarin u de beheerde identiteit hebt geconfigureerd.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een account dat is gekoppeld aan het Azure-abonnement waaronder u de beheerde identiteit hebt geconfigureerd.
 
 2. Navigeer naar de gewenste resource waarop u wilt wijzigen van toegangsbeheer. In dit voorbeeld wij zijn een virtuele Azure-machine die toegang geeft tot een storage-account, zodat we gaat u naar het opslagaccount.
 
-3. Selecteer de **toegangsbeheer (IAM)** pagina van de resource en selecteer **+ roltoewijzing toevoegen**. Geef vervolgens de **rol**, **toegang toewijzen aan**, en geeft u de bijbehorende **abonnement**. Onder het zoekgebied criteria ziet u de resource. Selecteer de resource en selecteer **opslaan**. 
+3. Selecteer de pagina **toegangs beheer (IAM)** van de resource en selecteer **+ roltoewijzing toevoegen**. Geef vervolgens de **rol**op, **wijs toegang toe aan**en geef het bijbehorende **abonnement**op. Onder het zoekgebied criteria ziet u de resource. Selecteer de resource en selecteer **Opslaan**. 
 
    ![Schermafbeelding van de Access control (IAM)](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beheerde identiteit voor Azure-resources-overzicht](overview.md)
-- Zie voor het inschakelen van beheerde identiteiten op een Azure-machine [configureren beheerde identiteiten voor een Azure-resources op een virtuele machine met behulp van de Azure-portal](qs-configure-portal-windows-vm.md).
-- Zie voor het inschakelen van beheerde identiteiten op een schaalset voor virtuele Azure-machine [configureren beheerde identiteiten voor een Azure-resources op een VM-schaalset met behulp van de Azure-portal](qs-configure-portal-windows-vmss.md).
+- [Overzicht van beheerde identiteiten voor Azure-resources](overview.md)
+- Als u beheerde identiteit wilt inschakelen op een virtuele machine van Azure, raadpleegt u [beheerde identiteiten voor Azure-resources configureren op een VM met behulp van de Azure Portal](qs-configure-portal-windows-vm.md).
+- Als u beheerde identiteit wilt inschakelen voor een virtuele-machine schaalset van Azure, raadpleegt u [beheerde identiteiten voor Azure-resources configureren op een schaalset voor virtuele machines met behulp van de Azure Portal](qs-configure-portal-windows-vmss.md).
 
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: cd0fc90988048f98be46370d2c7836d9506cc44a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6d1c2eff9bc9ffe8a0fb2166d39c16360c0a79cc
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475253"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538925"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Zelf studie: gebruikers verifiëren in een systeem eigen desktop-client met behulp van Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Maak gebruikersstromen](tutorial-create-user-flows.md) om gebruikerservaringen in uw toepassing in te schakelen.
+- [Gebruikersstromen maken](tutorial-create-user-flows.md) om gebruikerservaringen in uw toepassing in te schakelen.
 - Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met **.net desktop Development** en **ASP.net-en Web Development** -workloads.
 
 ## <a name="add-the-native-client-application"></a>De systeemeigen clienttoepassing toevoegen
@@ -41,9 +41,9 @@ In deze zelfstudie leert u het volgende:
 
 Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
 
-## <a name="configure-the-sample"></a>Het voorbeeld configureren
+## <a name="configure-the-sample"></a>Configureren van het voorbeeld
 
-In deze zelfstudie configureert u een voorbeeld dat u kunt downloaden uit GitHub. Het voor beeld van een WPF-bureaublad toepassing demonstreert registratie, aanmelden en kan een beveiligde web-API aanroepen in Azure AD B2C. [Download een ZIP-bestand ](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip), [blader door de opslagplaats](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) of kloon de voorbeeldweb-app vanuit GitHub.
+In deze zelfstudie configureert u een voorbeeld dat u kunt downloaden uit GitHub. Het voor beeld van een WPF-bureaublad toepassing demonstreert registratie, aanmelden en kan een beveiligde web-API aanroepen in Azure AD B2C. [Download een ZIP-bestand ](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip), [blader door de opslagplaats](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) of kloon de voorbeeldweb-app vanuit GitHub.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git

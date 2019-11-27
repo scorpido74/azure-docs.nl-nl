@@ -1,5 +1,5 @@
 ---
-title: Quickstart:Create a profile for HA of applications - Azure portal - Azure Traffic Manager
+title: 'Quick Start: een profiel maken voor de HA van toepassingen-Azure Portal-Azure Traffic Manager'
 description: In dit snelstartartikel wordt beschreven hoe u een Traffic Manager-profiel maakt voor het bouwen van webtoepassingen met hoge beschikbaarheid.
 services: traffic-manager
 author: asudbring
@@ -19,7 +19,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483676"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Quickstart: Create a Traffic Manager profile using the Azure portal
+# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Snelstartgids: een Traffic Manager profiel maken met behulp van de Azure Portal
 
 In deze quickstart wordt beschreven hoe u een Traffic Manager-profiel maakt die hoge beschikbaarheid van uw webtoepassing biedt.
 
@@ -29,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https:
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,24 +37,24 @@ Voor deze quickstart moeten twee exemplaren van een webtoepassing worden geïmpl
 
 1. Selecteer **Een resource maken** > **Web** > **Web-app** linksboven in het scherm.
 
-1. In **Create a Web App**, type or select the following values in the **Basics** tab:
+1. In **een web-app maken**typt of selecteert u de volgende waarden op het tabblad **basis beginselen** :
 
-   - **Subscription** > **Resource Group**: Select **Create new** and then type **myResourceGroupTM1**.
-   - **Instance Details** > **Name**: Type *myWebAppEastUS*.
-   - **Instance Details** > **Publish**: Select **Code**.
-   - **Instance Details** > **Runtime stack**: Select **ASP.NET V4.7**
-   - **Instance Details** > **Operating System**: Select **Windows**.
-   - **Instance Details** > **Region**:  Select **East US**.
-   - **App Service Plan** > **Windows Plan (East US)** : Select **Create new** and then type **myAppServicePlanEastUS**
-   - **App Service Plan** > **Sku and size**: Select **Standard S1**.
+   - **Abonnement** > **resource groep**: Selecteer **nieuwe maken** en typ vervolgens **myResourceGroupTM1**.
+   - **Exemplaar Details** > **naam**: Typ *myWebAppEastUS*.
+   - **Exemplaar Details** > **publiceren**: Selecteer **code**.
+   - **Exemplaar Details** > **runtime stack**: Selecteer **ASP.net v 4.7**
+   - **Exemplaar Details** > **besturings systeem**: Selecteer **Windows**.
+   - **Exemplaar Details** > **regio**: Selecteer **VS-Oost**.
+   - **App service plan** > **Windows-abonnement (VS-Oost)** : Selecteer **nieuwe maken** en typ vervolgens **myAppServicePlanEastUS**
+   - **App Service Plan** > **SKU en grootte**: Selecteer **Standard S1**.
    
-3. Select the **Monitoring** tab, or select **Next:Monitoring**.  Under **Monitoring**, set **Application Insights** > **Enable Application Insights** to **No**.
+3. Selecteer het tabblad **bewaking** of selecteer **volgende: bewaken**.  Stel onder **bewaking** **Application Insights** in > Application Insights op **Nee**in te **scha kelen** .
 
-4. Select **Review and create**
+4. Selecteer **controleren en maken**
 
-5. Review the settings, and then click **Create**.  Als de web-app wordt geïmplementeerd, wordt er een standaardwebsite gemaakt.
+5. Controleer de instellingen en klik vervolgens op **maken**.  Als de web-app wordt geïmplementeerd, wordt er een standaardwebsite gemaakt.
 
-6. Follow the steps to create a second Web App named *myWebAppWestEurope*, with a **Resource Group** name of *myResourceGroupTM2*, a **Region** of *West Europe*, a **App Service Plan** name of **myAppServicePlanWestEurope**, and all the other settings the same as *myWebAppEastUS*.
+6. Volg de stappen om een tweede web-app met de naam *myWebAppWestEurope*te maken, met de naam van de **resource groep** *myResourceGroupTM2*, een **regio** *Europa-West*, een **app service plan** naam **myAppServicePlanWestEurope**en alle andere instellingen hetzelfde als *myWebAppEastUS*.
 
 ## <a name="create-a-traffic-manager-profile"></a>Een Traffic Manager-profiel maken
 

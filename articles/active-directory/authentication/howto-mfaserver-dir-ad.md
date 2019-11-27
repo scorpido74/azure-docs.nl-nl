@@ -1,5 +1,5 @@
 ---
-title: Azure MFA Server and Active Directory - Azure Active Directory
+title: Azure MFA-server en Active Directory-Azure Active Directory
 description: Hier wordt beschreven hoe u de Azure Multi-Factor Authentication-server kunt integreren met Active Directory zodat u de mappen kunt synchroniseren.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -24,16 +24,16 @@ ms.locfileid: "74404235"
 Gebruik de sectie Adreslijstintegratie van de Azure MFA-server voor integratie met Active Directory of een andere LDAP-directory. U kunt kenmerken configureren zodat deze overeenkomen met het Active Directory-schema en automatische gebruikerssynchronisatie instellen.
 
 > [!IMPORTANT]
-> As of July 1, 2019, Microsoft will no longer offer MFA Server for new deployments. New customers who would like to require multi-factor authentication from their users should use cloud-based Azure Multi-Factor Authentication. Existing customers who have activated MFA Server prior to July 1 will be able to download the latest version, future updates and generate activation credentials as usual.
+> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
 
 ## <a name="settings"></a>Instellingen
 
 Standaard is de Azure MFA-server (Multi-Factor Authentication) geconfigureerd om de gebruikers van Active Directory te importeren of te synchroniseren.  Op het tabblad Directory-integratie kunt u het standaardgedrag negeren en een binding maken met een andere LDAP-directory, een ADAM-directory of specifieke Active Directory-domeincontroller.  U kunt hier ook LDAP-verificatie gebruiken om een proxy op LDAP uit te voeren of LDAP-binding gebruiken als een RADIUS-doel, pre-authenticatie voor IIS-authenticatie gebruiken of primaire authenticatie voor de gebruikersportal gebruiken.  De volgende tabel beschrijft de afzonderlijke instellingen.
 
-![Edit LDAP configuration in MFA Server](./media/howto-mfaserver-dir-ad/dirint.png)
+![LDAP-configuratie in MFA-server bewerken](./media/howto-mfaserver-dir-ad/dirint.png)
 
 > [!NOTE]
-> Directory integration is not guaranteed to work with directories other than Active Directory Domain Services.
+> Directory-integratie is niet gegarandeerd om te werken met andere mappen dan Active Directory Domain Services.
 
 | Functie | Beschrijving |
 | --- | --- |
@@ -60,7 +60,7 @@ De volgende tabel beschrijft de LDAP-configuratie-instellingen.
 
 Met behulp van filters kunt u criteria instellen om records te kwalificeren bij het uitvoeren van een directoryzoekopdracht.  Door het filter in te stellen kunt u het bereik bepalen van de objecten die u wilt synchroniseren.  
 
-![Configure directory filtering in MFA Server](./media/howto-mfaserver-dir-ad/dirint2.png)
+![Adreslijst filters configureren in MFA server](./media/howto-mfaserver-dir-ad/dirint2.png)
 
 Azure Multi-Factor Authentication heeft de volgende drie filteropties:
 
@@ -70,17 +70,17 @@ Azure Multi-Factor Authentication heeft de volgende drie filteropties:
 
 ## <a name="attributes"></a>Kenmerken
 
-U kunt kenmerken, indien nodig, aanpassen voor een specifieke directory.  Hierdoor kunt u aangepaste kenmerken toevoegen en de synchronisatie afstemmen op alleen de kenmerken die u nodig hebt. Use the name of the attribute as defined in the directory schema for the value of each attribute field. De volgende tabel bevat aanvullende informatie over elke functie.
+U kunt kenmerken, indien nodig, aanpassen voor een specifieke directory.  Hierdoor kunt u aangepaste kenmerken toevoegen en de synchronisatie afstemmen op alleen de kenmerken die u nodig hebt. Gebruik de naam van het kenmerk zoals gedefinieerd in het Directory-schema voor de waarde van elk kenmerk veld. De volgende tabel bevat aanvullende informatie over elke functie.
 
 Kenmerken kunnen handmatig worden ingevoerd en hoeven niet overeen te komen met een kenmerk in de lijst met kenmerken.
 
-![Customize directory integration attributes in MFA Server](./media/howto-mfaserver-dir-ad/dirint3.png)
+![Adreslijst integratie kenmerken in MFA server aanpassen](./media/howto-mfaserver-dir-ad/dirint3.png)
 
 | Functie | Beschrijving |
 | --- | --- |
 | Unieke id |Voer de kenmerknaam van het kenmerk in die fungeert als de unieke id van de container, beveiligingsgroep en gebruikersrecords.  In Active Directory is dit doorgaans objectGUID. Andere LDAP-implementaties maken mogelijk gebruik van entryUUID of iets soortgelijks.  De standaardwaarde is objectGUID. |
 | Type unieke id |Selecteer het type van het kenmerk Unieke id.  In Active Directory heeft het kenmerk objectGUID het type GUID. Andere LDAP-implementaties maken mogelijk gebruik van het type ASCII-bytematrix of Tekenreeks.  De standaardwaarde is GUID. <br><br>Het is belangrijk dat u dit type juist instelt, omdat naar synchronisatie-items wordt verwezen via de bijbehorende id's. Het unieke id-type wordt gebruikt om het object rechtstreeks te vinden in de directory.  Wanneer dit type wordt ingesteld op Tekenreeks terwijl de directory de waarde eigenlijk als een bytematrix van ASCII-tekens opslaat, verloopt de synchronisatie niet juist. |
-| DN-naam |Voer de kenmerknaam in van het kenmerk dat de DN-naam voor elke record bevat.  In Active Directory is dit doorgaans distinguishedName. Andere LDAP-implementaties maken mogelijk gebruik van entryDN of iets soortgelijks.  De standaardwaarde is distinguishedName. <br><br>If an attribute containing just the distinguished name doesn't exist, the ads path attribute may be used.  Het gedeelte LDAP://\<server\>/ van het pad wordt automatisch verwijderd, waardoor alleen de DN-naam van het object overblijft. |
+| DN-naam |Voer de kenmerknaam in van het kenmerk dat de DN-naam voor elke record bevat.  In Active Directory is dit doorgaans distinguishedName. Andere LDAP-implementaties maken mogelijk gebruik van entryDN of iets soortgelijks.  De standaardwaarde is distinguishedName. <br><br>Als er geen kenmerk met alleen de DN-naam bestaat, kan het Ads-pad kenmerk worden gebruikt.  Het gedeelte LDAP://\<server\>/ van het pad wordt automatisch verwijderd, waardoor alleen de DN-naam van het object overblijft. |
 | Containernaam |Voer de kenmerknaam in van het kenmerk dat de naam in een containerrecord bevat.  De waarde van dit kenmerk wordt weergegeven in de containerhiërarchie bij het importeren vanuit Active Directory of bij het toevoegen van synchronisatie-items.  De standaardwaarde is name. <br><br>Als verschillende containers verschillende kenmerken voor namen gebruiken, gebruikt u puntkomma's om meerdere containernaamkenmerken te scheiden.  Het eerste containernaamkenmerk dat in een containerobject wordt gevonden, wordt gebruikt om de naam ervan weer te geven. |
 | Naam beveiligingsgroep |Voer de kenmerknaam in van het kenmerk dat de naam in een beveiligingsgroepsrecord bevat.  De waarde van dit kenmerk wordt weergegeven in de lijst Beveiligingsgroep bij het importeren vanuit Active Directory of het toevoegen van synchronisatie-items.  De standaardwaarde is name. |
 | Gebruikersnaam |Voer de kenmerknaam in van het kenmerk dat de gebruikersnaam in een gebruikersrecord bevat.  De waarde van dit kenmerk wordt gebruikt als de gebruikersnaam voor de Multi-Factor Authentication-server.  Een tweede kenmerk kan worden opgegeven als een back-up voor het eerste.  Het tweede kenmerk wordt alleen gebruikt als het eerste kenmerk geen waarde voor de gebruiker bevat.  De standaardwaarden zijn userPrincipalName en sAMAccountName. |
@@ -99,13 +99,13 @@ Kenmerken kunnen handmatig worden ingevoerd en hoeven niet overeen te komen met 
 | Mobiele telefoon |Voer de kenmerknaam in van het kenmerk dat het mobiel telefoonnummer in een gebruikersrecord bevat.  De standaardwaarde is mobile. |
 | Fax |Voer de kenmerknaam in van het kenmerk dat het faxnummer in een gebruikersrecord bevat.  De standaardwaarde is facsimileTelephoneNumber. |
 | IP-telefoon |Voer de kenmerknaam in van het kenmerk dat het IP-telefoonnummer in een gebruikersrecord bevat.  De standaardwaarde is ipPhone. |
-| Aangepast |Voer de kenmerknaam in van het kenmerk dat een aangepast telefoonnummer in een gebruikersrecord bevat.  Standaard is dit veld leeg. |
-| Extensie |Voer de kenmerknaam in van het kenmerk dat het toestelnummer in een gebruikersrecord bevat.  De waarde van het veld Toestelnummer wordt alleen gebruikt als het toestelnummer voor het primaire telefoonnummer.  Standaard is dit veld leeg. <br><br>Als het kenmerk Toestelnummer niet wordt opgegeven, kunnen toestelnummers worden opgenomen als onderdeel van het telefoonkenmerk. In dit geval begint u het toestelnummer met een x zodat het juist wordt geparseerd.  Het nummer 020-123-4567 x890 resulteert bijvoorbeeld in 020-123-4567 als het telefoonnummer en 890 als het toestelnummer. |
+| Aangepast telefoonnummer |Voer de kenmerknaam in van het kenmerk dat een aangepast telefoonnummer in een gebruikersrecord bevat.  Standaard is dit veld leeg. |
+| Toestelnummer |Voer de kenmerknaam in van het kenmerk dat het toestelnummer in een gebruikersrecord bevat.  De waarde van het veld Toestelnummer wordt alleen gebruikt als het toestelnummer voor het primaire telefoonnummer.  Standaard is dit veld leeg. <br><br>Als het kenmerk Toestelnummer niet wordt opgegeven, kunnen toestelnummers worden opgenomen als onderdeel van het telefoonkenmerk. In dit geval begint u het toestelnummer met een x zodat het juist wordt geparseerd.  Het nummer 020-123-4567 x890 resulteert bijvoorbeeld in 020-123-4567 als het telefoonnummer en 890 als het toestelnummer. |
 | Knop Standaardwaarden herstellen |Klik op **Standaardwaarden herstellen** om alle kenmerken opnieuw in te stellen op hun standaardwaarde.  De standaardinstellingen werken doorgaans juist met het normale Active Directory- of ADAM-schema. |
 
-To edit attributes, click **Edit** on the Attributes tab.  This brings up a window where you can edit the attributes. Selecteer de **...** naast een willekeurig kenmerk om een venster te openen waarin u kunt kiezen welke kenmerken moeten worden weergegeven.
+Als u kenmerken wilt bewerken, klikt u op het tabblad kenmerken op **bewerken** .  Hiermee wordt een venster geopend waarin u de kenmerken kunt bewerken. Selecteer de **...** naast een willekeurig kenmerk om een venster te openen waarin u kunt kiezen welke kenmerken moeten worden weergegeven.
 
-![Edit directory attribute mapping in MFA Server](./media/howto-mfaserver-dir-ad/dirint4.png)
+![Toewijzing van adreslijst kenmerk in MFA-server bewerken](./media/howto-mfaserver-dir-ad/dirint4.png)
 
 ## <a name="synchronization"></a>Synchronisatie
 
@@ -117,7 +117,7 @@ De Multi-Factor Authentication-service ADSync maakt gebruik van de DirSync LDAP-
 
 Als de LDAP-directory ondersteuning biedt en is geconfigureerd voor DirSync, wordt een poll naar wijzigingen in gebruikers en groepsbeveiligingen op dezelfde manier uitgevoerd als bij Active Directory.  Als de LDAP-directory geen ondersteuning biedt voor het besturingselement DirSync, wordt bij elke cyclus een volledige synchronisatie uitgevoerd.
 
-![Synchronization of directory objects to MFA Server](./media/howto-mfaserver-dir-ad/dirint5.png)
+![Synchronisatie van Directory-objecten naar MFA-server](./media/howto-mfaserver-dir-ad/dirint5.png)
 
 De volgende tabel bevat aanvullende informatie over elk van de instellingen op het tabblad Synchronisatie.
 
@@ -143,8 +143,8 @@ Met de knoppen Omhoog en Omlaag kan de beheerder de volgorde van de synchronisat
 > [!TIP]
 > Na het verwijderen van synchronisatie-items moet een volledige synchronisatie worden uitgevoerd.  Na het rangschikken van synchronisatie-items moet een volledige synchronisatie worden uitgevoerd.  Klik op **Nu synchroniseren** om een volledige synchronisatie uit te voeren.
 
-## <a name="multi-factor-authentication-servers"></a>Multi-Factor Authentication servers
+## <a name="multi-factor-authentication-servers"></a>Multi-Factor Authentication-servers
 
-Additional Multi-Factor Authentication servers may be set up to serve as a backup RADIUS proxy, LDAP proxy, or for IIS Authentication. De configuratie van de synchronisatie wordt gedeeld tussen alle agents. However, only one of these agents may have the Multi-Factor Authentication server service running. This tab allows you to select the Multi-Factor Authentication server that should be enabled for synchronization.
+Aanvullende Multi-Factor Authentication servers kunnen worden ingesteld om te fungeren als een back-upradius-proxy, LDAP-proxy of voor IIS-verificatie. De configuratie van de synchronisatie wordt gedeeld tussen alle agents. Er kan echter slechts één van deze agents de Multi-Factor Authentication Server-service uitvoeren. Op dit tabblad kunt u de Multi-Factor Authentication-Server selecteren die voor synchronisatie moet worden ingeschakeld.
 
-![Related Multi-Factor Authentication Servers](./media/howto-mfaserver-dir-ad/dirint6.png)
+![Gerelateerde Multi-Factor Authentication-servers](./media/howto-mfaserver-dir-ad/dirint6.png)

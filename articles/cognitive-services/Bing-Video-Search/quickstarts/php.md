@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for videos using the REST API and PHP - Bing Video Search'
+title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en PHP-Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's naar de Bing Video's zoeken-REST API te verzenden via PHP.
 services: cognitive-services
@@ -17,12 +17,12 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378614"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Quickstart: Search for videos using the Bing Video Search REST API and PHP
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en PHP
 
 Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roepen en een zoekresultaat van het JSON-antwoord te bekijken. Deze eenvoudige JavaScript-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het antwoord weer. Hoewel deze toepassing in JavaScript is geschreven en maakt gebruik van Node.js, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 De voorbeeldcode is geschreven om te werken met PHP 5.6.
 
-Raadpleeg de [API-referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) voor technische details over de API's.
+Raadpleeg de [API-referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) voor technische informatie over de API's.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,7 +32,7 @@ Raadpleeg de [API-referentie](https://docs.microsoft.com/rest/api/cognitiveservi
 
 ## <a name="running-the-application"></a>De toepassing uitvoeren
 
-Met de [Bing Video Search-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) worden videoresultaten geretourneerd uit de zoekmachine van Bing.
+Met de [Bing Video’s zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) worden videoresultaten geretourneerd uit de zoekmachine van Bing.
 
 1. Zorg ervoor dat beveiligde HTTP-ondersteuning is ingeschakeld in uw `php.ini` zoals beschreven in het commentaar bij de code.
 2. Maak een nieuw PHP-project in uw favoriete IDE of editor.

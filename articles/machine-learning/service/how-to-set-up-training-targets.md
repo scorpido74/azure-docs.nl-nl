@@ -76,7 +76,7 @@ Hoewel ML-pijp lijnen modellen kunnen trainen, kunnen ze ook gegevens voorbereid
 Gebruik de volgende secties om deze reken doelen te configureren:
 
 * [Lokale computer](#local)
-* [Azure Machine Learning-Computing](#amlcompute)
+* [Azure Machine Learning compute](#amlcompute)
 * [Externe virtuele machines](#vm)
 * [Azure HDInsight](#hdinsight)
 
@@ -91,7 +91,7 @@ Gebruik de volgende secties om deze reken doelen te configureren:
 
 Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de volgende stap [het verzenden van de trainings uitvoering](#submit).
 
-### <a id="amlcompute"></a>Azure Machine Learning-Computing
+### <a id="amlcompute"></a>Azure Machine Learning compute
 
 Azure Machine Learning Compute is een infra structuur voor beheerde berekeningen waarmee de gebruiker eenvoudig een reken proces met één of meerdere knoop punten kan maken. De berekening wordt binnen uw werkruimte regio gemaakt als een resource die kan worden gedeeld met andere gebruikers in uw werk ruimte. De berekening wordt automatisch omhoog geschaald wanneer een taak wordt verzonden en kan in een Azure-Virtual Network worden geplaatst. De berekening wordt uitgevoerd in een omgeving met containers en verpakt uw model afhankelijkheden in een [docker-container](https://www.docker.com/why-docker).
 
@@ -346,8 +346,8 @@ Volg de stappen die eerder zijn beschreven om de lijst met Compute-doelen weer t
     > [!NOTE]
     > Micro soft raadt u aan om SSH-sleutels te gebruiken, die veiliger zijn dan wacht woorden. Wacht woorden zijn gevoelig voor beveiligings aanvallen. SSH-sleutels zijn afhankelijk van cryptografische hand tekeningen. Raadpleeg de volgende documenten voor informatie over het maken van SSH-sleutels voor gebruik met Azure Virtual Machines:
     >
-    > * [Maken en gebruiken van SSH-sleutels in Linux of macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Maken en gebruiken van SSH-sleutels op Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [SSH-sleutels maken en gebruiken in Linux of macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [SSH-sleutels maken en gebruiken in Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
 1. Selecteer __koppelen__. 
 1. Bekijk de status van de koppelings bewerking door het berekenings doel te selecteren in de lijst.
@@ -504,8 +504,8 @@ Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokal
 ## <a name="notebook-examples"></a>Voor beelden van notebooks
 
 Bekijk deze notebooks voor voor beelden van training met verschillende Compute-doelen:
-* [procedure-naar-gebruik-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [zelfstudies/img-classificatie-deel 1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [procedures voor het gebruik van azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [zelf studies/img-Classification-part1-training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -276,7 +276,7 @@ batch_env.spark.precache_packages = False
 - `process_count_per_node`: het aantal processen per knoop punt.
 - `environment`: de definitie van de python-omgeving. U kunt deze configureren voor het gebruik van een bestaande python-omgeving of voor het instellen van een tijdelijke omgeving voor het experiment. De definitie is ook verantwoordelijk voor het instellen van de vereiste toepassings afhankelijkheden (optioneel).
 - `logging_level`: uitgebreide logboek registratie. De waarden in een verhoogde uitgebreider zijn: `WARNING`, `INFO`en `DEBUG`. De standaard waarde is `INFO` (optioneel).
-- `run_invocation_timeout`: de time-out voor de aanroep van de `run()`-methode in seconden. De standaardwaarde is `60`.
+- `run_invocation_timeout`: de time-out voor de aanroep van de `run()`-methode in seconden. De standaard waarde is `60`.
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunConfig

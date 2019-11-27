@@ -65,7 +65,7 @@ De eenvoudigste manier om een app-configuratie archief toe te voegen aan uw toep
 | .NET core en ASP.NET Core | App-configuratie provider voor .NET core |
 | .NET Framework en ASP.NET | App Configuration Builder voor .NET |
 | Java Spring | App-configuratie client voor lente-Cloud |
-| Overige | REST API app-configuratie |
+| Andere | REST API app-configuratie |
 
 ## <a name="next-steps"></a>Volgende stappen
 

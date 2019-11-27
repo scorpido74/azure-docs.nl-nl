@@ -1,6 +1,6 @@
 ---
-title: Troubleshooting Azure MFA NPS extension - Azure Active Directory
-description: Get help resolving issues with the NPS extension for Azure Multi-Factor Authentication
+title: Problemen met de Azure MFA NPS-extensie oplossen-Azure Active Directory
+description: Help-informatie over het oplossen van problemen met de NPS-extensie voor Azure Multi-Factor Authentication
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,73 +18,73 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381795"
 ---
-# <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Resolve error messages from the NPS extension for Azure Multi-Factor Authentication
+# <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Fout berichten oplossen vanuit de NPS-extensie voor Azure Multi-Factor Authentication
 
-If you encounter errors with the NPS extension for Azure Multi-Factor Authentication, use this article to reach a resolution faster. NPS extension logs are found in Event Viewer under **Custom Views** > **Server Roles** > **Network Policy and Access Services** on the server where the NPS Extension is installed.
+Als u problemen ondervindt met de NPS-extensie voor Azure Multi-Factor Authentication, kunt u dit artikel gebruiken om sneller een oplossing te bereiken. NPS-extensie Logboeken vindt u in Logboeken onder **aangepaste weer gaven** > **Server functies** > **Services voor netwerk beleid en-toegang** op de server waarop de NPS-extensie is geïnstalleerd.
 
-## <a name="troubleshooting-steps-for-common-errors"></a>Troubleshooting steps for common errors
+## <a name="troubleshooting-steps-for-common-errors"></a>Probleemoplossings stappen voor veelvoorkomende fouten
 
 | Foutcode | Stappen voor probleemoplossing |
 | ---------- | --------------------- |
-| **CONTACT_SUPPORT** | [Contact support](#contact-microsoft-support), and mention the list of steps for collecting logs. Provide as much information as you can about what happened before the error, including tenant id, and user principal name (UPN). |
-| **CLIENT_CERT_INSTALL_ERROR** | There may be an issue with how the client certificate was installed or associated with your tenant. Follow the instructions in [Troubleshooting the MFA NPS extension](howto-mfa-nps-extension.md#troubleshooting) to investigate client cert problems. |
-| **ESTS_TOKEN_ERROR** | Follow the instructions in [Troubleshooting the MFA NPS extension](howto-mfa-nps-extension.md#troubleshooting) to investigate client cert and ADAL token problems. |
-| **HTTPS_COMMUNICATION_ERROR** | The NPS server is unable to receive responses from Azure MFA. Verify that your firewalls are open bidirectionally for traffic to and from https://adnotifications.windowsazure.com |
-| **HTTP_CONNECT_ERROR** | On the server that runs the NPS extension, verify that you can reach  https://adnotifications.windowsazure.com and https://login.microsoftonline.com/. If those sites don't load, troubleshoot connectivity on that server. |
-| **NPS Extension for Azure MFA:** <br> NPS Extension for Azure MFA only performs Secondary Auth for Radius requests in AccessAccept State. Request received for User username with response state AccessReject, ignoring request. | This error usually reflects an authentication failure in AD or that the NPS server is unable to receive responses from Azure AD. Verify that your firewalls are open bidirectionally for traffic to and from https://adnotifications.windowsazure.com and https://login.microsoftonline.com using ports 80 and 443. It is also important to check that on the DIAL-IN tab of Network Access Permissions, the setting is set to "control access through NPS Network Policy". This error can also trigger if the user is not assigned a license. |
-| **REGISTRY_CONFIG_ERROR** | A key is missing in the registry for the application, which may be because the [PowerShell script](howto-mfa-nps-extension.md#install-the-nps-extension) wasn't run after installation. The error message should include the missing key. Make sure you have the key under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa. |
-| **REQUEST_FORMAT_ERROR** <br> Radius Request missing mandatory Radius userName\Identifier attribute.Verify that NPS is receiving RADIUS requests | This error usually reflects an installation issue. The NPS extension must be installed in NPS servers that can receive RADIUS requests. NPS servers that are installed as dependencies for services like RDG and RRAS don't receive radius requests. NPS Extension does not work when installed over such installations and errors out since it cannot read the details from the authentication request. |
-| **REQUEST_MISSING_CODE** | Make sure that the password encryption protocol between the NPS and NAS servers supports the secondary authentication method that you're using. **PAP** supports all the authentication methods of Azure MFA in the cloud: phone call, one-way text message, mobile app notification, and mobile app verification code. **CHAPV2** and **EAP** support phone call and mobile app notification. |
-| **USERNAME_CANONICALIZATION_ERROR** | Verify that the user is present in your on-premises Active Directory instance, and that the NPS Service has permissions to access the directory. If you are using cross-forest trusts, [contact support](#contact-microsoft-support) for further help. |
+| **CONTACT_SUPPORT** | [Neem contact op met de ondersteuning](#contact-microsoft-support)en vermeld de lijst met stappen voor het verzamelen van Logboeken. Geef zoveel informatie op als u wilt weten wat er is gebeurd vóór de fout, waaronder Tenant-id en user principal name (UPN). |
+| **CLIENT_CERT_INSTALL_ERROR** | Er is mogelijk een probleem met de manier waarop het client certificaat is geïnstalleerd of gekoppeld aan uw Tenant. Volg de instructies in [Troubleshooting the MFA-extensie voor het](howto-mfa-nps-extension.md#troubleshooting) uitvoeren van problemen met client certificaten. |
+| **ESTS_TOKEN_ERROR** | Volg de instructies in [Troubleshooting the MFA-extensie voor het](howto-mfa-nps-extension.md#troubleshooting) uitvoeren van problemen met client certificaten en ADAL-tokens. |
+| **HTTPS_COMMUNICATION_ERROR** | De NPS-server kan geen reacties ontvangen van Azure MFA. Controleer of de firewalls zijn geopend in twee richtingen voor verkeer van en naar https://adnotifications.windowsazure.com |
+| **HTTP_CONNECT_ERROR** | Controleer op de server waarop de NPS-extensie wordt uitgevoerd of u https://adnotifications.windowsazure.com en https://login.microsoftonline.com/kunt bereiken. Als deze sites niet worden geladen, kunt u problemen met de connectiviteit op die server oplossen. |
+| **NPS-extensie voor Azure MFA:** <br> De NPS-extensie voor Azure MFA voert alleen secundaire verificatie voor RADIUS-aanvragen uit in de AccessAccept-status. Er is een aanvraag ontvangen voor de gebruikers naam van de gebruiker met de reactie status AccessReject, aanvraag wordt genegeerd. | Deze fout weerspiegelt meestal een verificatie fout in AD of de NPS-server kan geen reacties ontvangen van Azure AD. Controleer of de firewalls zijn geopend voor verkeer naar en van https://adnotifications.windowsazure.com en https://login.microsoftonline.com met behulp van de poorten 80 en 443. Het is ook belang rijk om te controleren of op het tabblad inbel netwerk toegangs machtigingen de instelling is ingesteld op toegang beheren via NPS-netwerk beleid. Deze fout kan ook worden geactiveerd als aan de gebruiker geen licentie is toegewezen. |
+| **REGISTRY_CONFIG_ERROR** | Er ontbreekt een sleutel in het REGI ster voor de toepassing. Dit kan zijn omdat het [Power shell-script](howto-mfa-nps-extension.md#install-the-nps-extension) niet is uitgevoerd na de installatie. Het fout bericht moet de ontbrekende sleutel bevatten. Zorg ervoor dat u de sleutel onder HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
+| **REQUEST_FORMAT_ERROR** <br> Er ontbreekt een verplicht userName\Identifier kenmerk van de RADIUS-aanvraag. Controleren of NPS RADIUS-aanvragen ontvangt | Deze fout weerspiegelt meestal een installatie probleem. De NPS-extensie moet worden geïnstalleerd in NPS-servers die RADIUS-aanvragen kunnen ontvangen. NPS-servers die zijn geïnstalleerd als afhankelijkheden voor services als RDG en RRAS ontvangen geen RADIUS-aanvragen. De NPS-extensie werkt niet wanneer deze wordt geïnstalleerd via dergelijke installaties en er zijn fouten opgetreden omdat de gegevens van de verificatie aanvraag niet kunnen worden gelezen. |
+| **REQUEST_MISSING_CODE** | Zorg ervoor dat het protocol voor wachtwoord versleuteling tussen de NPS-en NAS-servers de secundaire verificatie methode ondersteunt die u gebruikt. **Pap** ondersteunt alle verificatie methoden van Azure MFA in de Cloud: telefoon oproep, tekst bericht in één richting, melding van mobiele app en verificatie code voor mobiele apps. Ondersteuning voor telefonische en **EAP** -telefoon **gesprekken en mobiele** app-meldingen. |
+| **USERNAME_CANONICALIZATION_ERROR** | Controleer of de gebruiker aanwezig is in uw on-premises Active Directory-exemplaar en of de NPS-service machtigingen heeft voor toegang tot de Directory. Als u vertrouwens relaties tussen forests gebruikt, [neemt u contact op met de ondersteuning](#contact-microsoft-support) voor verdere hulp. |
 
-### <a name="alternate-login-id-errors"></a>Alternate login ID errors
-
-| Foutcode | Foutbericht | Stappen voor probleemoplossing |
-| ---------- | ------------- | --------------------- |
-| **ALTERNATE_LOGIN_ID_ERROR** | Error: userObjectSid lookup failed | Verify that the user exists in your on-premises Active Directory instance. If you are using cross-forest trusts, [contact support](#contact-microsoft-support) for further help. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Error: Alternate LoginId lookup failed | Verify that LDAP_ALTERNATE_LOGINID_ATTRIBUTE is set to a [valid active directory attribute](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> If LDAP_FORCE_GLOBAL_CATALOG is set to True, or LDAP_LOOKUP_FORESTS is configured with a non-empty value, verify that you have configured a Global Catalog and that the AlternateLoginId attribute is added to it. <br><br> If LDAP_LOOKUP_FORESTS is configured with a non-empty value, verify that the value is correct. If there is more than one forest name, the names must be separated with semi-colons, not spaces. <br><br> If these steps don't fix the problem, [contact support](#contact-microsoft-support) for more help. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Error: Alternate LoginId value is empty | Verify that the AlternateLoginId attribute is configured for the user. |
-
-## <a name="errors-your-users-may-encounter"></a>Errors your users may encounter
+### <a name="alternate-login-id-errors"></a>Alternatieve aanmeldings-ID-fouten
 
 | Foutcode | Foutbericht | Stappen voor probleemoplossing |
 | ---------- | ------------- | --------------------- |
-| **AccessDenied** | Caller tenant does not have access permissions to do authentication for the user | Check whether the tenant domain and the domain of the user principal name (UPN) are the same. For example, make sure that user@contoso.com is trying to authenticate to the Contoso tenant. The UPN represents a valid user for the tenant in Azure. |
-| **AuthenticationMethodNotConfigured** | The specified authentication method was not configured for the user | Have the user add or verify their verification methods according to the instructions in [Manage your settings for two-step verification](../user-help/multi-factor-authentication-end-user-manage-settings.md). |
-| **AuthenticationMethodNotSupported** | Specified authentication method is not supported. | Collect all your logs that include this error, and [contact support](#contact-microsoft-support). When you contact support, provide the username and the secondary verification method that triggered the error. |
-| **BecAccessDenied** | MSODS Bec call returned access denied, probably the username is not defined in the tenant | The user is present in Active Directory on-premises but is not synced into Azure AD by AD Connect. Or, the user is missing for the tenant. Add the user to Azure AD and have them add their verification methods according to the instructions in [Manage your settings for two-step verification](../user-help/multi-factor-authentication-end-user-manage-settings.md). |
-| **InvalidFormat** or **StrongAuthenticationServiceInvalidParameter** | The phone number is in an unrecognizable format | Have the user correct their verification phone numbers. |
-| **InvalidSession** | The specified session is invalid or may have expired | The session has taken more than three minutes to complete. Verify that the user is entering the verification code, or responding to the app notification, within three minutes of initiating the authentication request. If that doesn't fix the problem, check that there are no network latencies between client, NAS Server, NPS Server, and the Azure MFA endpoint.  |
-| **NoDefaultAuthenticationMethodIsConfigured** | No default authentication method was configured for the user | Have the user add or verify their verification methods according to the instructions in [Manage your settings for two-step verification](../user-help/multi-factor-authentication-end-user-manage-settings.md). Verify that the user has chosen a default authentication method, and configured that method for their account. |
-| **OathCodePinIncorrect** | Wrong code and pin entered. | This error is not expected in the NPS extension. If your user encounters this, [contact support](#contact-microsoft-support) for troubleshooting help. |
-| **ProofDataNotFound** | Proof data was not configured for the specified authentication method. | Have the user try a different verification method, or add a new verification methods according to the instructions in [Manage your settings for two-step verification](../user-help/multi-factor-authentication-end-user-manage-settings.md). If the user continues to see this error after you confirmed that their verification method is set up correctly, [contact support](#contact-microsoft-support). |
-| **SMSAuthFailedWrongCodePinEntered** | Wrong code and pin entered. (OneWaySMS) | This error is not expected in the NPS extension. If your user encounters this, [contact support](#contact-microsoft-support) for troubleshooting help. |
-| **TenantIsBlocked** | Tenant is blocked | [Contact support](#contact-microsoft-support) with Directory ID from the Azure AD properties page in the Azure portal. |
-| **UserNotFound** | The specified user was not found | The tenant is no longer visible as active in Azure AD. Check that your subscription is active and you have the required first party apps. Also make sure the tenant in the certificate subject is as expected and the cert is still valid and registered under the service principal. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Fout: userObjectSid-zoek actie is mislukt | Controleer of de gebruiker aanwezig is in uw on-premises Active Directory-exemplaar. Als u vertrouwens relaties tussen forests gebruikt, [neemt u contact op met de ondersteuning](#contact-microsoft-support) voor verdere hulp. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Fout: kan de alternatieve LoginId niet opzoeken | Controleer of LDAP_ALTERNATE_LOGINID_ATTRIBUTE is ingesteld op een [geldig Active Directory-kenmerk](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> Als LDAP_FORCE_GLOBAL_CATALOG is ingesteld op True, of LDAP_LOOKUP_FORESTS is geconfigureerd met een niet-lege waarde, controleert u of u een globale catalogus hebt geconfigureerd en of het kenmerk AlternateLoginId is toegevoegd. <br><br> Als LDAP_LOOKUP_FORESTS is geconfigureerd met een niet-lege waarde, controleert u of de waarde juist is. Als er meer dan één Forestnaam is, moeten de namen worden gescheiden door punt komma's, geen spaties. <br><br> Als u het probleem niet kunt oplossen met deze stappen, [neemt u contact op met de ondersteuning](#contact-microsoft-support) voor meer hulp. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Fout: de alternatieve LoginId-waarde is leeg | Controleer of het kenmerk AlternateLoginId is geconfigureerd voor de gebruiker. |
 
-## <a name="messages-your-users-may-encounter-that-arent-errors"></a>Messages your users may encounter that aren't errors
+## <a name="errors-your-users-may-encounter"></a>Fouten die uw gebruikers kunnen tegen komen
 
-Sometimes, your users may get messages from Multi-Factor Authentication because their authentication request failed. These aren't errors in the product of configuration, but are intentional warnings explaining why an authentication request was denied.
+| Foutcode | Foutbericht | Stappen voor probleemoplossing |
+| ---------- | ------------- | --------------------- |
+| **AccessDenied** | De aanroeper-Tenant heeft geen toegangs machtigingen om verificatie voor de gebruiker uit te voeren | Controleer of het domein van de Tenant en het domein van de user principal name (UPN) hetzelfde zijn. Zorg er bijvoorbeeld voor dat user@contoso.com probeert te verifiëren bij de contoso-Tenant. De UPN vertegenwoordigt een geldige gebruiker voor de Tenant in Azure. |
+| **AuthenticationMethodNotConfigured** | De opgegeven verificatie methode is niet geconfigureerd voor de gebruiker | Laat de gebruiker hun verificatie methoden toevoegen of controleren aan de hand van de instructies in [uw instellingen beheren voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-manage-settings.md). |
+| **AuthenticationMethodNotSupported** | De opgegeven verificatie methode wordt niet ondersteund. | Verzamel alle logboeken die deze fout bevatten en [Neem contact op met de ondersteuning](#contact-microsoft-support). Wanneer u contact opneemt met ondersteuning, geeft u de gebruikers naam en de secundaire verificatie methode op die de fout heeft veroorzaakt. |
+| **BecAccessDenied** | MSODS BEC-aanroep heeft toegang geweigerd, waarschijnlijk is de gebruikers naam niet gedefinieerd in de Tenant | De gebruiker is aanwezig in Active Directory on-premises, maar wordt niet gesynchroniseerd met Azure AD via AD Connect. Of de gebruiker ontbreekt voor de Tenant. Voeg de gebruiker toe aan Azure AD en laat ze hun verificatie methoden toevoegen volgens de instructies in [uw instellingen beheren voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-manage-settings.md). |
+| **InvalidFormat** of **StrongAuthenticationServiceInvalidParameter** | Het telefoon nummer heeft een niet-herken bare indeling | Laat de gebruiker hun telefoon nummers voor de verificatie corrigeren. |
+| **InvalidSession** | De opgegeven sessie is ongeldig of is mogelijk verlopen | Het volt ooien van de sessie heeft meer dan drie minuten geduurd. Controleer of de gebruiker de verificatie code invoert of reageert op de app-melding binnen drie minuten na het initiëren van de verificatie aanvraag. Als het probleem niet is opgelost, controleert u of er geen netwerk latenties zijn tussen de client, de NAS-server, de NPS-server en het Azure MFA-eind punt.  |
+| **NoDefaultAuthenticationMethodIsConfigured** | Er is geen standaard authenticatie methode voor de gebruiker geconfigureerd | Laat de gebruiker hun verificatie methoden toevoegen of controleren aan de hand van de instructies in [uw instellingen beheren voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-manage-settings.md). Controleer of de gebruiker een standaard verificatie methode heeft gekozen en die methode voor hun account heeft geconfigureerd. |
+| **OathCodePinIncorrect** | Er is een onjuiste code en pincode ingevoerd. | Deze fout wordt niet verwacht in de NPS-extensie. Als uw gebruiker dit ondervindt, [neemt u contact op met de ondersteuning](#contact-microsoft-support) voor hulp bij het oplossen van problemen. |
+| **ProofDataNotFound** | Er zijn geen bewijs gegevens geconfigureerd voor de opgegeven verificatie methode. | Laat de gebruiker een andere verificatie methode proberen of Voeg een of meer nieuwe verificatie methoden toe volgens de instructies in [uw instellingen beheren voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-manage-settings.md). [Neem contact op met de ondersteuning](#contact-microsoft-support)als de gebruiker deze fout blijft zien nadat u hebt bevestigd dat de verificatie methode juist is ingesteld. |
+| **SMSAuthFailedWrongCodePinEntered** | Er is een onjuiste code en pincode ingevoerd. (OneWaySMS) | Deze fout wordt niet verwacht in de NPS-extensie. Als uw gebruiker dit ondervindt, [neemt u contact op met de ondersteuning](#contact-microsoft-support) voor hulp bij het oplossen van problemen. |
+| **TenantIsBlocked** | Tenant is geblokkeerd | [Neem contact op](#contact-microsoft-support) met de ondersteuning met de Directory-id op de pagina Azure AD-eigenschappen in het Azure Portal. |
+| **UserNotFound** | De opgegeven gebruiker is niet gevonden | De Tenant is niet meer zichtbaar als actief in azure AD. Controleer of uw abonnement actief is en of u de vereiste apps voor de eerste partij hebt. Zorg er ook voor dat de Tenant in het certificaat onderwerp juist is, en dat het certificaat nog geldig is en is geregistreerd bij de Service-Principal. |
+
+## <a name="messages-your-users-may-encounter-that-arent-errors"></a>Berichten die uw gebruikers kunnen tegen komen zonder fouten
+
+Soms ontvangen uw gebruikers berichten van Multi-Factor Authentication omdat de verificatie aanvraag is mislukt. Dit zijn geen fouten in het product van de configuratie, maar zijn opzettelijke waarschuwingen waarin wordt uitgelegd waarom een verificatie aanvraag is geweigerd.
 
 | Foutcode | Foutbericht | Aanbevolen stappen | 
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | Wrong code entered\OATH Code Incorrect | The user entered the wrong code. Have them try again by requesting a new code or signing in again. | 
-| **SMSAuthFailedMaxAllowedCodeRetryReached** | Maximum allowed code retry reached | The user failed the verification challenge too many times. Depending on your settings, they may need to be unblocked by an admin now.  |
-| **SMSAuthFailedWrongCodeEntered** | Wrong code entered/Text Message OTP Incorrect | The user entered the wrong code. Have them try again by requesting a new code or signing in again. |
+| **OathCodeIncorrect** | Onjuiste code entered\OATH code onjuist | De gebruiker heeft de verkeerde code ingevoerd. Probeer het opnieuw door een nieuwe code aan te vragen of u opnieuw aan te melden. | 
+| **SMSAuthFailedMaxAllowedCodeRetryReached** | Maximum toegestane code voor nieuwe poging bereikt | De gebruiker heeft de verificatie vraag te vaak mislukt. Afhankelijk van uw instellingen, moeten deze mogelijk nu door een beheerder worden gedeblokkeerd.  |
+| **SMSAuthFailedWrongCodeEntered** | Onjuiste code ingevoerd/OTP van SMS-bericht onjuist | De gebruiker heeft de verkeerde code ingevoerd. Probeer het opnieuw door een nieuwe code aan te vragen of u opnieuw aan te melden. |
 
-## <a name="errors-that-require-support"></a>Errors that require support
+## <a name="errors-that-require-support"></a>Fouten waarvoor ondersteuning nodig is
 
-If you encounter one of these errors, we recommend that you [contact support](#contact-microsoft-support) for diagnostic help. There's no standard set of steps that can address these errors. When you do contact support, be sure to include as much information as possible about the steps that led to an error, and your tenant information.
+Als u een van deze fouten tegen komt, raden wij u aan [contact op](#contact-microsoft-support) te nemen met de ondersteuning voor diagnostische Help. Er zijn geen standaard sets met stappen die deze fouten kunnen oplossen. Als u contact opneemt met de ondersteuning, moet u zoveel mogelijk informatie opnemen over de stappen die naar een fout hebben geleid en uw Tenant gegevens.
 
 | Foutcode | Foutbericht |
 | ---------- | ------------- |
-| **InvalidParameter** | Request must not be null |
-| **InvalidParameter** | ObjectId must not be null or empty for ReplicationScope:{0} |
-| **InvalidParameter** | The length of CompanyName \{0}\ is longer than the maximum allowed length {1} |
-| **InvalidParameter** | UserPrincipalName must not be null or empty |
-| **InvalidParameter** | The provided TenantId is not in correct format |
-| **InvalidParameter** | SessionId must not be null or empty |
-| **InvalidParameter** | Could not resolve any ProofData from request or Msods. The ProofData is unKnown |
+| **InvalidParameter** | Aanvraag mag niet null zijn |
+| **InvalidParameter** | ObjectId mag niet null of leeg zijn voor ReplicationScope:{0} |
+| **InvalidParameter** | De lengte van CompanyName \{0} \ is langer dan de Maxi maal toegestane lengte {1} |
+| **InvalidParameter** | UserPrincipalName mag niet null of leeg zijn |
+| **InvalidParameter** | De gegeven TenantId heeft niet de juiste indeling |
+| **InvalidParameter** | Sessie-id mag niet null of leeg zijn |
+| **InvalidParameter** | Kan ProofData niet oplossen op basis van aanvraag of Msods. De ProofData is onbekend |
 | **InternalError** |  |
 | **OathCodePinIncorrect** |  |
 | **VersionNotSupported** |  |
@@ -92,18 +92,18 @@ If you encounter one of these errors, we recommend that you [contact support](#c
 
 ## <a name="next-steps"></a>Volgende stappen
 
-### <a name="troubleshoot-user-accounts"></a>Troubleshoot user accounts
+### <a name="troubleshoot-user-accounts"></a>Problemen met gebruikers accounts oplossen
 
-If your users are [Having trouble with two-step verification](../user-help/multi-factor-authentication-end-user-troubleshoot.md), help them self-diagnose problems.
+Als uw gebruikers problemen ondervinden [met verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-troubleshoot.md), helpen ze zelf problemen op te lossen.
 
-### <a name="contact-microsoft-support"></a>Contact Microsoft support
+### <a name="contact-microsoft-support"></a>Neem contact op met micro soft ondersteuning
 
-If you need additional help, contact a support professional through [Azure Multi-Factor Authentication Server support](https://support.microsoft.com/oas/default.aspx?prid=14947). When contacting us, it's helpful if you can include as much information about your issue as possible. Information you can supply includes the page where you saw the error, the specific error code, the specific session ID, the ID of the user who saw the error, and debug logs.
+Als u meer hulp nodig hebt, neemt u contact op met een ondersteunings medewerker via [ondersteuning voor Azure multi-factor Authentication-Server](https://support.microsoft.com/oas/default.aspx?prid=14947). Wanneer u contact met ons opneemt, is het handig als u zoveel mogelijk informatie over uw probleem kunt opnemen. Informatie die u kunt opgeven bevat de pagina waar u de fout hebt gezien, de specifieke fout code, de specifieke sessie-ID, de ID van de gebruiker die de fout heeft gezien en logboeken voor fout opsporing.
 
-To collect debug logs for support diagnostics, use the following steps on the NPS server:
+Als u Logboeken voor fout opsporing wilt verzamelen voor ondersteunings diagnostiek, gebruikt u de volgende stappen op de NPS-server:
 
-1. Open Registry Editor and browse to HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa set **VERBOSE_LOG** to **TRUE**
-2. Open an Administrator command prompt and run these commands:
+1. Open de REGI ster-editor en blader naar HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa Stel **VERBOSE_LOG** in op **waar**
+2. Open een beheerders opdracht prompt en voer deze opdrachten uit:
 
    ```
    Mkdir c:\NPS
@@ -115,7 +115,7 @@ To collect debug logs for support diagnostics, use the following steps on the NP
 
 3. Reproduceer het probleem
 
-4. Stop the tracing with these commands:
+4. Stop de tracering met de volgende opdrachten:
 
    ```
    logman stop "NPSExtension" -ets
@@ -126,5 +126,5 @@ To collect debug logs for support diagnostics, use the following steps on the NP
    Start .
    ```
 
-5. Open Registry Editor and browse to HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa set **VERBOSE_LOG** to **FALSE**
-6. Zip the contents of the C:\NPS folder and attach the zipped file to the support case.
+5. Open de REGI ster-editor en blader naar HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa Stel **VERBOSE_LOG** in op **Onwaar**
+6. De inhoud van de map C:\NPS en het gezipte bestand koppelen aan de ondersteunings aanvraag.

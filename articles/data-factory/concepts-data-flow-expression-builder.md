@@ -49,7 +49,7 @@ Klik op de knop Vernieuwen om de resultaten van uw expressie bij te werken met e
 
 Voeg opmerkingen toe aan uw expressies met behulp van de syntaxis voor één regel en een opmerking met meerdere regels:
 
-![opmerkingen](media/data-flow/comments.png "Opmerkingen")
+![Opmerkingen](media/data-flow/comments.png "Opmerkingen")
 
 ## <a name="regular-expressions"></a>Reguliere expressies
 
@@ -98,7 +98,7 @@ Wanneer u kolom namen hebt die speciale tekens of spaties bevatten, plaatst u de
 
 Als u een opmerking boven aan de expressie plaatst, wordt deze weer gegeven in het tekstvak trans formatie om uw transformatie expressies te documenteren:
 
-![opmerkingen](media/data-flow/comments2.png "Opmerkingen")
+![Opmerkingen](media/data-flow/comments2.png "Opmerkingen")
 
 ## <a name="convert-to-dates-or-timestamps"></a>Converteren naar datums of tijds tempels
 

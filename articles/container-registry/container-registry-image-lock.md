@@ -1,6 +1,6 @@
 ---
 title: Installatiekopieën vergrendelen
-description: Set attributes for a container image or repository so it can't be deleted or overwritten in an Azure container registry.
+description: Stel kenmerken in voor een container installatie kopie of opslag plaats, zodat deze niet kan worden verwijderd of overschreven in een Azure container Registry.
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: 9e55a6688be9f51f1c1b237ae86bd57692a86592
@@ -10,33 +10,33 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456324"
 ---
-# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Lock a container image in an Azure container registry
+# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Een container installatie kopie in een Azure container Registry vergren delen
 
-In an Azure container registry, you can lock an image version or a repository so that it can't be deleted or updated. To lock an image or a repository, update its attributes using the Azure CLI command [az acr repository update][az-acr-repository-update]. 
+In een Azure container Registry kunt u een installatie kopie versie of een opslag plaats vergren delen zodat deze niet kan worden verwijderd of bijgewerkt. Als u een afbeelding of opslag plaats wilt vergren delen, werkt u de kenmerken bij met de Azure CLI-opdracht [AZ ACR repository update][az-acr-repository-update]. 
 
-This article requires that you run the Azure CLI in Azure Cloud Shell or locally (version 2.0.55 or later recommended). Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Voor dit artikel moet u de Azure CLI in Azure Cloud Shell of lokaal uitvoeren (versie 2.0.55 of hoger aanbevolen). Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 > [!IMPORTANT]
-> This article doesn't apply to locking an entire registry, for example, using **Settings > Locks** in the Azure portal, or `az lock` commands in the Azure CLI. Locking a registry resource doesn't prevent you from creating, updating, or deleting data in repositories. Locking a registry only affects management operations such as adding or deleting replications, or deleting the registry itself. More information in [Lock resources to prevent unexpected changes](../azure-resource-manager/resource-group-lock-resources.md).
+> Dit artikel is niet van toepassing op het vergren delen van een volledig REGI ster, bijvoorbeeld met behulp van **instellingen > sloten** in de Azure Portal of `az lock` opdrachten in de Azure cli. Het vergren delen van een register bron voor komt niet dat u gegevens in opslag plaatsen kunt maken, bijwerken of verwijderen. Het vergren delen van een REGI ster is alleen van invloed op beheer bewerkingen, zoals het toevoegen of verwijderen van replicaties of het verwijderen van het REGI ster zelf. Meer informatie over [het vergren delen van resources om onverwachte wijzigingen te voor komen](../azure-resource-manager/resource-group-lock-resources.md).
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
-By default, a tagged image in Azure Container Registry is *mutable*, so with appropriate permissions you can repeatedly update and push an image with the same tag to a registry. Container images can also be [deleted](container-registry-delete.md) as needed. This behavior is useful when you develop images and need to maintain a size for your registry.
+Een gecodeerde afbeelding in Azure Container Registry is standaard *onveranderbaar*, dus met de juiste machtigingen kunt u herhaaldelijk een installatie kopie met dezelfde tag naar een REGI ster bijwerken en pushen. Container installatie kopieën kunnen ook naar behoefte worden [verwijderd](container-registry-delete.md) . Dit gedrag is handig wanneer u installatie kopieën ontwikkelt en een grootte voor het REGI ster moet behouden.
 
-However, when you deploy a container image to production, you might need an *immutable* container image. An immutable image is one that you can't accidentally delete or overwrite. Use the [az acr repository update][az-acr-repository-update] command to set repository attributes so you can:
+Wanneer u echter een container installatie kopie implementeert voor productie, hebt u mogelijk een *onveranderlijke* container installatie kopie nodig. Een onveranderlijke installatie kopie is een afbeelding die u niet per ongeluk kunt verwijderen of overschrijven. Gebruik de opdracht [AZ ACR repository update][az-acr-repository-update] om opslagplaats kenmerken in te stellen, zodat u het volgende kunt doen:
 
-* Lock an image version, or an entire repository
+* Een installatie kopie versie of een volledige opslag plaats vergren delen
 
-* Protect an image version or repository from deletion, but allow updates
+* Een installatie kopie versie of opslag plaats beveiligen tegen verwijderen, maar updates toestaan
 
-* Prevent read (pull) operations on an image version, or an entire repository
+* Voor komen dat lees-(pull)-bewerkingen worden uitgevoerd op een installatie kopie versie of een volledige opslag plaats
 
-See the following sections for examples.
+Zie de volgende secties voor voor beelden.
 
-## <a name="lock-an-image-or-repository"></a>Lock an image or repository 
+## <a name="lock-an-image-or-repository"></a>Een afbeelding of opslag plaats vergren delen 
 
-### <a name="show-the-current-repository-attributes"></a>Show the current repository attributes
-To see the current attributes of a repository, run the following [az acr repository show][az-acr-repository-show] command:
+### <a name="show-the-current-repository-attributes"></a>De huidige opslagplaats kenmerken weer geven
+Als u de huidige kenmerken van een opslag plaats wilt weer geven, voert u de volgende opdracht [AZ ACR repository show][az-acr-repository-show] :
 
 ```azurecli
 az acr repository show \
@@ -44,8 +44,8 @@ az acr repository show \
     --output jsonc
 ```
 
-### <a name="show-the-current-image-attributes"></a>Show the current image attributes
-To see the current attributes of a tag, run the following [az acr repository show][az-acr-repository-show] command:
+### <a name="show-the-current-image-attributes"></a>De huidige afbeeldings kenmerken weer geven
+Als u de huidige kenmerken van een tag wilt weer geven, voert u de volgende opdracht [AZ ACR repository show][az-acr-repository-show] uit:
 
 ```azurecli
 az acr repository show \
@@ -53,9 +53,9 @@ az acr repository show \
     --output jsonc
 ```
 
-### <a name="lock-an-image-by-tag"></a>Lock an image by tag
+### <a name="lock-an-image-by-tag"></a>Een afbeelding vergren delen op label
 
-To lock the *myrepo/myimage:tag* image in *myregistry*, run the following [az acr repository update][az-acr-repository-update] command:
+Als u de *myrepo/myimage: tag-* afbeelding in *myregistry*wilt vergren delen, voert u de volgende opdracht [AZ ACR repository update][az-acr-repository-update] uit:
 
 ```azurecli
 az acr repository update \
@@ -63,9 +63,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-an-image-by-manifest-digest"></a>Lock an image by manifest digest
+### <a name="lock-an-image-by-manifest-digest"></a>Een installatie kopie vergren delen op Manifest Digest
 
-To lock a *myrepo/myimage* image identified by manifest digest (SHA-256 hash, represented as `sha256:...`), run the following command. (To find the manifest digest associated with one or more image tags, run the [az acr repository show-manifests][az-acr-repository-show-manifests] command.)
+Voer de volgende opdracht uit om een *myrepo/myimage* -installatie kopie te vergren delen die wordt geïdentificeerd door de manifest Digest (SHA-256-Hash, weer gegeven als `sha256:...`). (Als u de manifest Digest wilt vinden die is gekoppeld aan een of meer afbeeldings codes, voert u de opdracht [AZ ACR repository show-manifests][az-acr-repository-show-manifests] uit.)
 
 ```azurecli
 az acr repository update \
@@ -73,9 +73,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-a-repository"></a>Lock a repository
+### <a name="lock-a-repository"></a>Een opslag plaats vergren delen
 
-To lock the *myrepo/myimage* repository and all images in it, run the following command:
+Voer de volgende opdracht uit om de *myrepo/myimage-* opslag plaats en alle installatie kopieën daarin te vergren delen:
 
 ```azurecli
 az acr repository update \
@@ -83,11 +83,11 @@ az acr repository update \
     --write-enabled false
 ```
 
-## <a name="protect-an-image-or-repository-from-deletion"></a>Protect an image or repository from deletion
+## <a name="protect-an-image-or-repository-from-deletion"></a>Een installatie kopie of opslag plaats beveiligen tegen verwijderen
 
-### <a name="protect-an-image-from-deletion"></a>Protect an image from deletion
+### <a name="protect-an-image-from-deletion"></a>Een installatie kopie beveiligen tegen verwijderen
 
-To allow the *myrepo/myimage:tag* image to be updated but not deleted, run the following command:
+Voer de volgende opdracht uit als u wilt toestaan dat de afbeelding *myrepo/myimage: tag* wordt bijgewerkt, maar niet verwijderd:
 
 ```azurecli
 az acr repository update \
@@ -95,9 +95,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-### <a name="protect-a-repository-from-deletion"></a>Protect a repository from deletion
+### <a name="protect-a-repository-from-deletion"></a>Een opslag plaats beveiligen tegen verwijderen
 
-The following command sets the *myrepo/myimage* repository so it can't be deleted. Individual images can still be updated or deleted.
+Met de volgende opdracht wordt de *myrepo/myimage-* opslag plaats ingesteld zodat deze niet kan worden verwijderd. Afzonderlijke installatie kopieën kunnen nog steeds worden bijgewerkt of verwijderd.
 
 ```azurecli
 az acr repository update \
@@ -105,9 +105,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-## <a name="prevent-read-operations-on-an-image-or-repository"></a>Prevent read operations on an image or repository
+## <a name="prevent-read-operations-on-an-image-or-repository"></a>Voor komen dat lees bewerkingen worden uitgevoerd op een afbeelding of opslag plaats
 
-To prevent read (pull) operations on the *myrepo/myimage:tag* image, run the following command:
+Voer de volgende opdracht uit om te voor komen dat lees-en pull-bewerkingen op de *myrepo/myimage: tag* -afbeelding worden uitgevoerd:
 
 ```azurecli
 az acr repository update \
@@ -115,7 +115,7 @@ az acr repository update \
     --read-enabled false
 ```
 
-To prevent read operations on all images in the *myrepo/myimage* repository, run the following command:
+Voer de volgende opdracht uit om te voor komen dat lees bewerkingen op alle installatie kopieën in de *myrepo/myimage-* opslag plaats:
 
 ```azurecli
 az acr repository update \
@@ -123,9 +123,9 @@ az acr repository update \
     --read-enabled false
 ```
 
-## <a name="unlock-an-image-or-repository"></a>Unlock an image or repository
+## <a name="unlock-an-image-or-repository"></a>Een installatie kopie of opslag plaats ontgrendelen
 
-To restore the default behavior of the *myrepo/myimage:tag* image so that it can be deleted and updated, run the following command:
+Als u het standaard gedrag van de *myrepo/myimage: tag-* afbeelding wilt herstellen, zodat deze kan worden verwijderd en bijgewerkt, voert u de volgende opdracht uit:
 
 ```azurecli
 az acr repository update \
@@ -133,7 +133,7 @@ az acr repository update \
     --delete-enabled true --write-enabled true
 ```
 
-To restore the default behavior of the *myrepo/myimage* repository and all images so that they can be deleted and updated, run the following command:
+Voer de volgende opdracht uit om het standaard gedrag van de *myrepo/myimage-* opslag plaats en alle installatie kopieën zodanig te herstellen dat ze kunnen worden verwijderd en bijgewerkt:
 
 ```azurecli
 az acr repository update \
@@ -143,11 +143,11 @@ az acr repository update \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this article, you learned about using the [az acr repository update][az-acr-repository-update] command to prevent deletion or updating of image versions in a repository. To set additional attributes, see the [az acr repository update][az-acr-repository-update] command reference.
+In dit artikel hebt u geleerd hoe u de opdracht [AZ ACR repository update][az-acr-repository-update] gebruikt om te voor komen dat installatie kopieën worden verwijderd of bijgewerkt in een opslag plaats. Als u aanvullende kenmerken wilt instellen, raadpleegt u de naslag informatie voor de opdracht [AZ ACR repository update][az-acr-repository-update] .
 
-To see the attributes set for an image version or repository, use the [az acr repository show][az-acr-repository-show] command.
+Als u de kenmerken wilt zien die zijn ingesteld voor een installatie kopie versie of opslag plaats, gebruikt u de opdracht [AZ ACR repository show][az-acr-repository-show] .
 
-For details about delete operations, see [Delete container images in Azure Container Registry][container-registry-delete].
+Zie [container installatie kopieën in azure container Registry verwijderen][container-registry-delete]voor meer informatie over Verwijder bewerkingen.
 
 <!-- LINKS - Internal -->
 [az-acr-repository-update]: /cli/azure/acr/repository#az-acr-repository-update

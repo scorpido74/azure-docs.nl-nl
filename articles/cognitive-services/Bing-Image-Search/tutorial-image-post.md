@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Extract image details with the REST API and C# - Bing Image Search'
+title: 'Zelf studie: afbeeldings gegevens extra heren met C# de rest API en-Bing Image Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik dit artikel om een C#-toepassing te maken die afbeeldingsdetails extraheert met behulp van de Bing Afbeeldingen zoeken-API.
 services: cognitive-services
@@ -36,7 +36,7 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azu
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Any edition of [Visual studio 2017 or later](https://visualstudio.microsoft.com/downloads/).
+* Een versie van [Visual studio 2017 of hoger](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -77,7 +77,7 @@ client.Headers["ContentType"] = "multipart/form-data";
 
 ## <a name="upload-the-image-and-display-the-results"></a>De afbeelding uploaden en de resultaten weergeven
 
-De methode `UpLoadFile()` van de klasse `WebClient` maakt gegevens op voor de `POST`-aanvraag, inclusief het opmaken van `RequestStream` en het aanroepen van `HttpWebRequest`.
+De methode `WebClient` van de klasse `UpLoadFile()` maakt gegevens op voor de `POST`-aanvraag, inclusief het opmaken van `RequestStream` en het aanroepen van `HttpWebRequest`.
 
 Roep `WebClient.UpLoadFile()` aan met het eindpunt `/details` en het afbeeldingsbestand dat moet worden geüpload. Gebruik het JSON-antwoord om een instantie van de `SearchResult`-structuur te initialiseren, en sla het antwoord op.
 

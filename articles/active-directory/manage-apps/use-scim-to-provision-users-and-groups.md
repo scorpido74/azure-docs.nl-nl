@@ -53,7 +53,7 @@ Voor elke toepassing zijn verschillende kenmerken vereist om een gebruiker of gr
 
 Gebruikers resources worden geïdentificeerd aan de hand van de schema-ID, `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`, die is opgenomen in deze protocol specificatie: https://tools.ietf.org/html/rfc7643.  De standaard toewijzing van de kenmerken van gebruikers in azure AD aan de kenmerken van gebruikers bronnen is opgenomen in tabel 1.  
 
-Groep resources worden aangeduid met de schema-id en `urn:ietf:params:scim:schemas:core:2.0:Group`. In tabel 2 ziet u de standaard toewijzing van de kenmerken van groepen in azure AD aan de kenmerken van groeps resources.
+Groeps resources worden geïdentificeerd aan de hand van de schema-ID, `urn:ietf:params:scim:schemas:core:2.0:Group`. In tabel 2 ziet u de standaard toewijzing van de kenmerken van groepen in azure AD aan de kenmerken van groeps resources.
 
 Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder weer gegeven kenmerken moet ondersteunen. Ze zijn een verwijzing naar de manier waarop kenmerken in azure AD vaak worden toegewezen aan eigenschappen in het SCIM-protocol.  
 
@@ -68,7 +68,7 @@ Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder w
 | Functie |titel |
 | mail |e-mailberichten [type eq 'werk'] .value |
 | mailNickname |externalId |
-| Manager |Manager |
+| beheerder |beheerder |
 | mobiele |phoneNumbers [type eq 'mobiel'] .value |
 | object-id |Id |
 | Postcode |adressen type eq 'werk'.postalCode |
@@ -77,7 +77,7 @@ Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder w
 | streetAddress |adressen type eq 'werk'.streetAddress |
 | surname |name.familyName |
 | Telefoonnummer |phoneNumbers [type eq 'werk'] .value |
-| user-PrincipalName |Gebruikersnaam |
+| user-PrincipalName |userName |
 
 ### <a name="table-2-default-group-attribute-mapping"></a>Tabel 2: Standaard groep kenmerktoewijzing
 
@@ -280,7 +280,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 
 ##### <a name="request-2"></a>Schot
 
-*GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
+*/Users ophalen? filter = gebruikers naam EQ "Test_User_dfeef4c5-5681 -4387-b016-bdf221e82081"*
 
 ##### <a name="response-2"></a>Beantwoord
 
@@ -341,7 +341,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 
 ##### <a name="request-4"></a>Schot
 
-*PATCH /Users/6764549bef60420686bc HTTP/1.1*
+*PATCH/users/6764549bef60420686bc HTTP/1.1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
@@ -632,7 +632,7 @@ Om dit proces gemakkelijker te maken, worden er [code voorbeelden](https://githu
 * Visual Studio 2013 of hoger
 * [Azure-SDK voor .NET](https://azure.microsoft.com/downloads/)
 * Windows machine die ondersteuning biedt voor het framework ASP.NET 4.5 moet worden gebruikt als het eindpunt SCIM. Deze computer moet toegankelijk zijn vanuit de Cloud.
-* [Een Azure-abonnement met een proef- of gelicentieerde versie van Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
+* [Een Azure-abonnement met een proef-of gelicentieerde versie van Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
 
 ### <a name="getting-started"></a>Aan de slag
 
@@ -640,7 +640,7 @@ De eenvoudigste manier voor het implementeren van een eindpunt SCIM inrichting a
 
 #### <a name="to-create-a-sample-scim-endpoint"></a>Een voor beeld-SCIM-eind punt maken
 
-1. Download het pakket voor het voorbeeld van code op [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
+1. Down load het voorbeeld pakket voor de code op [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
 1. Pak het pakket en plaats deze op uw Windows-machine op een locatie zoals C:\AzureAD-BYOA-Provisioning-Samples\.
 1. In deze map, start u het FileProvisioning\Host\FileProvisioningService.csproj-project in Visual Studio.
 1. Selecteer **Hulpprogram ma's** > **NuGet package manager** > **Package Manager-console**en voer de volgende opdrachten uit voor het FileProvisioningService-project om de oplossings referenties op te lossen:
@@ -650,7 +650,7 @@ De eenvoudigste manier voor het implementeren van een eindpunt SCIM inrichting a
    ```
 
 1. Bouw het project FileProvisioningService.
-1. Start de opdrachtprompt-toepassing in Windows (als een beheerder) en gebruik de **cd** opdracht om de map op uw **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug**map.
+1. Start de opdracht prompt toepassing in Windows (als beheerder) en gebruik de **cd** -opdracht om de map te wijzigen in de map **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug** .
 1. Voer de volgende opdracht uit en vervang `<ip-address>` door het IP-adres of de domein naam van de Windows-computer:
 
    ```
@@ -667,23 +667,23 @@ De eenvoudigste manier voor het implementeren van een eindpunt SCIM inrichting a
 1. Selecteer **+ nieuwe toepassing** > **alle** > **niet-galerie toepassing**.
 1. Voer een naam in voor uw toepassing en selecteer **toevoegen** om een app-object te maken. De toepassingsobject gemaakt is bedoeld om weer te geven van de doel-app u zou worden ingericht voor en uitvoering van eenmalige aanmelding voor en niet alleen het eindpunt SCIM.
 1. Selecteer in het scherm voor het beheren van apps de optie **inrichten** in het linkerdeel venster.
-1. In de **inrichting modus** in het menu **automatische**.    
-1. In de **Tenant-URL** en voer de URL van SCIM-eindpunt van de toepassing. Voorbeeld: https://api.contoso.com/scim/
+1. Selecteer in het menu **inrichtings modus** de optie **automatisch**.    
+1. Voer in het veld **Tenant-URL** de URL in van het scim-eind punt van de toepassing. Voorbeeld: https://api.contoso.com/scim/
 
-1. Als het eindpunt SCIM een OAuth-bearer-token van een uitgever dan Azure AD vereist, kopieert u de vereiste OAuth bearer-token naar de optionele **geheim Token** veld. Als dit veld leeg blijft, bevat Azure AD een OAuth Bearer-token dat is uitgegeven door Azure AD met elke aanvraag. Apps die gebruikmaken van Azure AD als id-provider kunnen dit door Azure AD uitgegeven token valideren.
+1. Als het SCIM-eind punt een OAuth Bearer-token van een andere uitgever dan Azure AD vereist, kopieert u het vereiste OAuth Bearer-token naar het veld optionele **geheime token** . Als dit veld leeg blijft, bevat Azure AD een OAuth Bearer-token dat is uitgegeven door Azure AD met elke aanvraag. Apps die gebruikmaken van Azure AD als id-provider kunnen dit door Azure AD uitgegeven token valideren.
 1. Selecteer **verbinding testen** om te laten proberen Azure Active Directory verbinding te maken met het scim-eind punt. Als de poging mislukt, wordt er informatie over de fout weer gegeven.  
 
     > [!NOTE]
     > **Test verbindings** QUERY'S het scim-eind punt voor een gebruiker die niet bestaat, met behulp van een wille keurige GUID als de overeenkomende eigenschap die is geselecteerd in de Azure AD-configuratie. Het verwachte juiste antwoord is HTTP 200 OK met een leeg SCIM ListResponse-bericht
 
 1. Als de pogingen om verbinding te maken met de toepassing slagen, selecteert u **Opslaan** om de beheerders referenties op te slaan.
-1. In de **toewijzingen** sectie, zijn er twee sets selecteerbare Kenmerktoewijzingen: één voor gebruikersobjecten en één voor de groepsobjecten worden weergegeven. Selecteren om te controleren van de kenmerken die worden gesynchroniseerd vanuit Active Directory van Azure aan uw app. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikers en groepen in uw app voor update-bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
-1. Onder **instellingen**, wordt de **bereik** veld wordt gedefinieerd welke gebruikers en groepen worden gesynchroniseerd. Selecteer **alleen toegewezen gebruikers en groepen synchroniseren** (aanbevolen) om alleen gebruikers en groepen te synchroniseren die zijn toegewezen op het tabblad **gebruikers en groepen** .
+1. In de sectie **toewijzingen** zijn er twee sets met kenmerk toewijzingen: één voor gebruikers objecten en één voor groeps objecten. Selecteren om te controleren van de kenmerken die worden gesynchroniseerd vanuit Active Directory van Azure aan uw app. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers en groepen in uw app voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
+1. Onder **instellingen**definieert het **bereik** veld welke gebruikers en of groepen worden gesynchroniseerd. Selecteer **alleen toegewezen gebruikers en groepen synchroniseren** (aanbevolen) om alleen gebruikers en groepen te synchroniseren die zijn toegewezen op het tabblad **gebruikers en groepen** .
 1. Wanneer de configuratie is voltooid, stelt u de **inrichtings status** **in op aan**.
 1. Selecteer **Opslaan** om de Azure AD-inrichtings service te starten.
 1. Als u alleen toegewezen gebruikers en groepen wilt synchroniseren (aanbevolen), selecteert u het tabblad **gebruikers en groepen** en wijst u de gebruikers of groepen toe die u wilt synchroniseren.
 
-Zodra de eerste cyclus is gestart, kunt u **audit logboeken** selecteren in het linkerdeel venster om de voortgang te controleren. Hiermee worden alle acties weer gegeven die door de inrichtings service in uw app worden uitgevoerd. Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](check-status-user-account-provisioning.md).
+Zodra de eerste cyclus is gestart, kunt u **audit logboeken** selecteren in het linkerdeel venster om de voortgang te controleren. Hiermee worden alle acties weer gegeven die door de inrichtings service in uw app worden uitgevoerd. Zie [rapportage over het automatisch inrichten van gebruikers accounts](check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 De laatste stap bij het controleren van het voorbeeld is de TargetFile.csv-bestand te openen in de map \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug op uw Windows-computer. Nadat het inrichtingsproces is uitgevoerd, wordt dit bestand bevat de details van alle toegewezen en ingericht gebruikers en groepen.
 
@@ -695,11 +695,11 @@ Voor het ontwikkelen van uw eigen webservice die aan de specificatie SCIM voldoe
   
    ![Uitsplitsing: een aanvraag die is vertaald naar de methoden van de provider][3]
   
-* [Express route-handlers](https://expressjs.com/guide/routing.html) zijn beschikbaar voor het parseren van de aanvraag-objecten van een node.js-aanroepen (zoals gedefinieerd door de specificatie SCIM), die aangebracht aan een node.js-web-service.
+* [Express route-handlers](https://expressjs.com/guide/routing.html) zijn beschikbaar voor het parseren van node. js-aanvraag objecten die aanroepen vertegenwoordigen (zoals gedefinieerd door de scim-specificatie), gemaakt in een node. js-webservice.
 
 ### <a name="building-a-custom-scim-endpoint"></a>Een aangepast SCIM-eind punt bouwen
 
-Ontwikkel aars die gebruikmaken van de CLI-bibliotheken kunnen hun services hosten binnen elke uitvoer bare CLI-assembly of binnen Internet Information Services. Hier volgt de voorbeeldcode voor het hosten van een service in een uitvoerbaar bestand assembly, op het adres http://localhost:9000: 
+Ontwikkel aars die gebruikmaken van de CLI-bibliotheken kunnen hun services hosten binnen elke uitvoer bare CLI-assembly of binnen Internet Information Services. Hier volgt een voorbeeld code voor het hosten van een service binnen een uitvoer bare assembly, op het adres http://localhost:9000: 
 
 ```csharp
  private static void Main(string[] arguments)
@@ -1262,7 +1262,7 @@ Neem contact op met de provider van uw toepassing of de documentatie van de toep
 
 Toepassingen die ondersteuning bieden voor het SCIM-profiel dat wordt beschreven in dit artikel kunnen worden verbonden met Azure Active Directory met de functie 'buiten de galerie application' van de Azure AD-toepassingsgalerie. Eenmaal verbinding hebben, voert Azure AD een synchronisatieproces voor elke 40 minuten waar deze query's van de toepassing SCIM eindpunt voor toegewezen gebruikers en groepen, en maakt of wijzigt u ze op basis van de details van de toewijzing.
 
-**Verbinding met het maken van een toepassing die ondersteuning biedt voor SCIM:**
+**Verbinding maken met een toepassing die ondersteuning biedt voor SCIM:**
 
 1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com). Houd er rekening mee dat u toegang krijgt tot een gratis proef versie voor Azure Active Directory met P2-licenties door u aan te melden voor het [ontwikkelaars programma](https://developer.microsoft.com/office/dev-program)
 2. Selecteer **bedrijfs toepassingen** in het linkerdeel venster. Er wordt een lijst met alle geconfigureerde apps weer gegeven, met inbegrip van apps die zijn toegevoegd vanuit de galerie.
@@ -1273,13 +1273,13 @@ Toepassingen die ondersteuning bieden voor het SCIM-profiel dat wordt beschreven
    *Afbeelding 2: Azure AD-toepassings galerie*
 
 5. Selecteer in het scherm voor het beheren van apps de optie **inrichten** in het linkerdeel venster.
-6. In de **inrichting modus** in het menu **automatische**.
+6. Selecteer in het menu **inrichtings modus** de optie **automatisch**.
 
    ![voor beeld: de inrichtings pagina van een app in de Azure Portal][2]<br/>
    *Afbeelding 3: inrichten configureren in de Azure Portal*
 
-7. In de **Tenant-URL** en voer de URL van SCIM-eindpunt van de toepassing. Voorbeeld: https://api.contoso.com/scim/
-8. Als het eindpunt SCIM een OAuth-bearer-token van een uitgever dan Azure AD vereist, kopieert u de vereiste OAuth bearer-token naar de optionele **geheim Token** veld. Als dit veld leeg blijft, bevat Azure AD een OAuth Bearer-token dat is uitgegeven door Azure AD met elke aanvraag. Apps die gebruikmaken van Azure AD als id-provider kunnen dit door Azure AD uitgegeven token valideren. 
+7. Voer in het veld **Tenant-URL** de URL in van het scim-eind punt van de toepassing. Voorbeeld: https://api.contoso.com/scim/
+8. Als het SCIM-eind punt een OAuth Bearer-token van een andere uitgever dan Azure AD vereist, kopieert u het vereiste OAuth Bearer-token naar het veld optionele **geheime token** . Als dit veld leeg blijft, bevat Azure AD een OAuth Bearer-token dat is uitgegeven door Azure AD met elke aanvraag. Apps die gebruikmaken van Azure AD als id-provider kunnen dit door Azure AD uitgegeven token valideren. 
    > [!NOTE]
    > Het is ***niet*** raadzaam dit veld leeg te laten en te vertrouwen op een token dat door Azure AD wordt gegenereerd. Deze optie is voornamelijk beschikbaar voor test doeleinden.
 9. Selecteer **verbinding testen** om te laten proberen Azure Active Directory verbinding te maken met het scim-eind punt. Als de poging mislukt, wordt er informatie over de fout weer gegeven.  
@@ -1288,7 +1288,7 @@ Toepassingen die ondersteuning bieden voor het SCIM-profiel dat wordt beschreven
     > **Test verbindings** QUERY'S het scim-eind punt voor een gebruiker die niet bestaat, met behulp van een wille keurige GUID als de overeenkomende eigenschap die is geselecteerd in de Azure AD-configuratie. Het verwachte juiste antwoord is HTTP 200 OK met een leeg SCIM ListResponse-bericht.
 
 10. Als de pogingen om verbinding te maken met de toepassing slagen, selecteert u **Opslaan** om de beheerders referenties op te slaan.
-11. In de sectie **toewijzingen** zijn er twee sets met [kenmerk toewijzingen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes): één voor gebruikers objecten en één voor groeps objecten. Selecteren om te controleren van de kenmerken die worden gesynchroniseerd vanuit Active Directory van Azure aan uw app. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikers en groepen in uw app voor update-bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
+11. In de sectie **toewijzingen** zijn er twee sets met [kenmerk toewijzingen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes): één voor gebruikers objecten en één voor groeps objecten. Selecteren om te controleren van de kenmerken die worden gesynchroniseerd vanuit Active Directory van Azure aan uw app. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers en groepen in uw app voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
 
     > [!NOTE]
     > U kunt desgewenst uitschakelen door het uitschakelen van de toewijzing van 'groepen'-synchronisatie van de groepsobjecten worden weergegeven.
@@ -1298,7 +1298,7 @@ Toepassingen die ondersteuning bieden voor het SCIM-profiel dat wordt beschreven
 14. Selecteer **Opslaan** om de Azure AD-inrichtings service te starten.
 15. Als u alleen toegewezen gebruikers en groepen wilt synchroniseren (aanbevolen), selecteert u het tabblad **gebruikers en groepen** en wijst u de gebruikers of groepen toe die u wilt synchroniseren.
 
-Zodra de eerste cyclus is gestart, kunt u **inrichtings logboeken** selecteren in het linkerdeel venster om de voortgang te controleren. hier worden alle acties weer gegeven die door de inrichtings service in uw app worden uitgevoerd. Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](check-status-user-account-provisioning.md).
+Zodra de eerste cyclus is gestart, kunt u **inrichtings logboeken** selecteren in het linkerdeel venster om de voortgang te controleren. hier worden alle acties weer gegeven die door de inrichtings service in uw app worden uitgevoerd. Zie [rapportage over het automatisch inrichten van gebruikers accounts](check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 > [!NOTE]
 > De eerste cyclus duurt langer dan de volgende synchronisaties, wat ongeveer elke 40 minuten gebeurt, zolang de service wordt uitgevoerd.
@@ -1329,14 +1329,14 @@ Laat het ons weten op [UserVoice](https://aka.ms/appprovisioningfeaturerequest)v
 
 Bepaalde apps staan inkomend verkeer naar hun app toe. De Azure AD-inrichtings service werkt alleen zoals verwacht als de gebruikte IP-adressen zijn toegestaan. Zie voor een lijst met IP-adressen voor elke servicetag/regio het JSON-bestand- [Azure IP-bereiken en de service Tags – open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519). U kunt deze Ip's naar behoefte downloaden en Program meren in uw firewall. De gereserveerde IP-bereiken voor Azure AD-inrichting vindt u onder ' AzureActiveDirectoryDomainServices '.
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 
-* [Gebruiker inrichting/ongedaan maken van inrichting voor SaaS-toepassingen automatiseren](user-provisioning.md)
-* [Kenmerktoewijzingen voor het inrichten van gebruikers aan te passen](customize-application-attributes.md)
-* [Expressies schrijven voor kenmerktoewijzingen](functions-for-customizing-application-data.md)
-* [Bereikfilters toevoegen voor het inrichten van gebruikers](define-conditional-rules-for-provisioning-user-accounts.md)
-* [Meldingen over accountinrichting](user-provisioning.md)
-* [Lijst met zelfstudies over het integreren van SaaS-Apps](../saas-apps/tutorial-list.md)
+* [Gebruikers inrichting en ongedaan maken van de inrichting van SaaS-apps automatiseren](user-provisioning.md)
+* [Kenmerk toewijzingen aanpassen voor het inrichten van gebruikers](customize-application-attributes.md)
+* [Expressies schrijven voor kenmerk toewijzingen](functions-for-customizing-application-data.md)
+* [Filters voor het inrichten van gebruikers in bereik](define-conditional-rules-for-provisioning-user-accounts.md)
+* [Meldingen voor het inrichten van accounts](user-provisioning.md)
+* [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png
