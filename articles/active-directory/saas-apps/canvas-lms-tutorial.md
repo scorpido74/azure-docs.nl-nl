@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Canvas | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met canvas | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Canvas.
 services: active-directory
 documentationCenter: na
@@ -23,7 +23,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232036"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Tutorial: Azure Active Directory integration with Canvas
+# <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Zelf studie: integratie met canvas Azure Active Directory
 
 In deze zelfstudie leert u hoe u Canvas kunt integreren met Azure Active Directory (Azure AD).
 Integratie van Canvas met Azure AD biedt de volgende voordelen:
@@ -54,7 +54,7 @@ Voor het configureren van de integratie van Canvas in Azure AD moet u Canvas van
 
 **Voer de volgende stappen uit om Canvas toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -108,10 +108,10 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding met Canvas te conf
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<tenant-name>.instructure.com`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<tenant-name>.instructure.com/saml2`
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [klantondersteuningsteam voor Canvas](https://community.canvaslms.com/community/help) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [klantondersteuningsteam voor Canvas](https://community.canvaslms.com/community/help) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Klik in de sectie **SAML-handtekeningcertificaat** op de knop **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen.
 
@@ -137,15 +137,15 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding met Canvas te conf
 
 2. Ga naar **Courses \> Managed Accounts \> Microsoft**.
 
-    ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
+    ![Geval](./media/canvas-lms-tutorial/ic775990.png "Geval")
 
 3. Selecteer in het navigatiedeelvenster aan de linkerkant **Authentication** en klik vervolgens op **Add New SAML Config**.
 
-    ![Verificatie](./media/canvas-lms-tutorial/ic775991.png "Verificatie")
+    ![Verificatie](./media/canvas-lms-tutorial/ic775991.png "Authentication")
 
 4. Voer de volgende stappen uit op de pagina Current Integration:
 
-    ![Current Integration](./media/canvas-lms-tutorial/ic775992.png "Current Integration")
+    ![Huidige integratie](./media/canvas-lms-tutorial/ic775992.png "Huidige integratie")
 
     a. Plak in het tekstvak **IDP Entity ID** de waarde van **Azure AD-id** die u hebt gekopieerd uit de Azure-portal.
 
@@ -181,12 +181,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -224,7 +224,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Canvas, moeten ze w
 
 2. Ga naar **Courses \> Managed Accounts \> Microsoft**.
 
-   ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
+   ![Geval](./media/canvas-lms-tutorial/ic775990.png "Geval")
 
 3. Klik op **Users**.
 
@@ -236,20 +236,20 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Canvas, moeten ze w
 
 5. Voer de volgende stappen uit in het dialoogvenster Een nieuwe gebruiker toevoegen:
 
-   ![Add User](./media/canvas-lms-tutorial/ic775997.png "Gebruiker toevoegen")
+   ![Gebruiker toevoegen](./media/canvas-lms-tutorial/ic775997.png "Gebruiker toevoegen")
 
    a. Voer in het tekstvak **Full Name** de volledige naam van de gebruiker in, bijvoorbeeld **Britta Simon**.
 
-   b. In the **Email** textbox, enter the email of user like **brittasimon\@contoso.com**.
+   b. Voer in het tekstvak **e-mail** het e-mail adres van de gebruiker in, zoals **brittasimon\@contoso.com**.
 
-   c. In the **Login** textbox, enter the user’s Azure AD email address like **brittasimon\@contoso.com**.
+   c. Voer in het tekstvak **aanmelding** het Azure AD-e-mail adres van de gebruiker in, zoals **brittasimon\@contoso.com**.
 
    d. Selecteer **Email the user about this account creation**.
 
    e. Klik op **Add User**.
 
 > [!NOTE]
-> You can use any other Canvas user account creation tools or APIs provided by Canvas to provision Azure AD user accounts.
+> U kunt alle andere hulp middelen voor het maken van een gebruikers account of Api's van het canvas gebruiken om Azure AD-gebruikers accounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
@@ -257,11 +257,11 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Canvas in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Canvas waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

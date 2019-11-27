@@ -140,14 +140,14 @@ Bekijk [Aanbevolen procedures](luis-concept-best-practices.md) en pas deze toe a
 
 Als het woord keuze of word-indeling hetzelfde is, maar geen betekent dit hetzelfde te doen dat, u deze niet labelen met de entiteit. 
 
-De volgende uitingen, het woord `fair` een homograaf is. Deze hetzelfde is gespeld, maar heeft een andere betekenis:
+De volgende uitingen is het woord `fair` een homograph is. Deze hetzelfde is gespeld, maar heeft een andere betekenis:
 
 |Utterance|
 |--|
 |Wat voor soort county beurzen plaatsvinden in het gebied van Seattle zomer van dit jaar?|
 |Is de huidige classificatie voor de beoordeling Seattle geoorloofd?|
 
-Als u een entiteit gebeurtenis te vinden van alle gegevens van de gebeurtenis, een label het woord `fair` in de eerste utterance, maar niet in de tweede.
+Als u wilt dat een gebeurtenis entiteit alle gebeurtenis gegevens vindt, labelt u het woord `fair` in de eerste utterance, maar niet in de tweede.
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -69,7 +69,7 @@ In deze sectie maakt u een interactief query cluster in HDInsight met behulp van
 
 ## <a name="access-the-grafana-dashboard"></a>Het Grafana-dash board openen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **HDInsight-clusters**en selecteer vervolgens de naam van het cluster dat u in de laatste sectie hebt gemaakt.
 

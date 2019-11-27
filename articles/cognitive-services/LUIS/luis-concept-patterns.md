@@ -50,7 +50,7 @@ Een patroon is hoofd zakelijk bedoeld om de voor spelling van intenties en rolle
 Het is niet raadzaam om verbeterde entiteits voorspellingen te zien als u meerdere uitingen samenvouwt tot één patroon. Voor eenvoudige entiteiten die moeten worden gestart, moet u uitingen toevoegen of de lijst entiteiten gebruiken. anders wordt uw patroon niet geactiveerd.
 
 ## <a name="patterns-use-entity-roles"></a>Patronen entiteit rollen gebruiken
-Als twee of meer entiteiten in een patroon contextueel zijn gerelateerd, patronen entiteit gebruiken [rollen](luis-concept-roles.md) contextuele gegevens over entiteiten extraheren.  
+Als twee of meer entiteiten in een patroon contextuele gerelateerde zijn, gebruiken patronen entiteits [rollen](luis-concept-roles.md) om contextuele informatie over entiteiten te extra heren.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Voorspelling scores met en zonder patronen
 Onvoldoende uitingen voorbeeld gezien, zou LUIS kunnen worden vergroot het vertrouwen van voorspelling geen patronen weergegeven. De betrouwbaarheidsscore verhogen patronen zonder deze op te geven zoveel uitingen.  
@@ -62,7 +62,7 @@ Een patroon wordt op basis van de entiteiten in het patroon eerst detecteren en 
 U kunt een app bouwen met intenties die geen voor beeld uitingen hebben, zolang er voor elke intentie een patroon is. Het patroon mag voor een alleen-patroon app geen door machines geleerde entiteiten bevatten, omdat hiervoor bijvoorbeeld uitingen nodig zijn. 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
-Informatie over [aanbevolen procedures](luis-concept-best-practices.md).
+Lees de [Aanbevolen procedures](luis-concept-best-practices.md).
 
 ## <a name="pattern-syntax"></a>Patroonsyntaxis
 
@@ -77,4 +77,4 @@ Meer informatie over patronen:
 * [Syntaxis van patronen](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het implementeren van patronen in deze zelfstudie](luis-tutorial-pattern.md)
+> [Meer informatie over het implementeren van patronen in deze zelf studie](luis-tutorial-pattern.md)

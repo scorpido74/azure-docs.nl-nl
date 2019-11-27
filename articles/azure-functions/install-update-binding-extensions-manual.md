@@ -1,6 +1,6 @@
 ---
-title: Manually install or update Azure Functions binding extensions
-description: Learn how to install or update Azure Functions binding extensions for deployed function apps.
+title: Azure Functions binding-extensies hand matig installeren of bijwerken
+description: Meer informatie over het installeren of bijwerken van Azure Functions bindings extensies voor geïmplementeerde functie-apps.
 ms.topic: reference
 ms.date: 09/26/2018
 ms.openlocfilehash: 49e8e2ce7eb0267d5a4e6fc0f5566dffaed82661
@@ -10,37 +10,37 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226510"
 ---
-# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Manually install or update Azure Functions binding extensions from the portal
+# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Azure Functions bindings uitbreidingen hand matig installeren of bijwerken vanuit de portal
 
-The Azure Functions version 2.x runtime uses binding extensions to implement code for triggers and bindings. Binding extensions are provided in NuGet packages. To register an extension, you essentially install a package. When developing functions, the way that you install binding extensions depends on the development environment. For more information, see [Register binding extensions](./functions-bindings-register.md) in the triggers and bindings article.
+In de runtime van Azure Functions versie 2. x worden bindings uitbreidingen gebruikt voor het implementeren van code voor triggers en bindingen. Er worden bindings uitbreidingen gegeven in NuGet-pakketten. Als u een uitbrei ding wilt registreren, installeert u een pakket. Bij het ontwikkelen van functies is de manier waarop u bindings uitbreidingen installeert afhankelijk van de ontwikkelings omgeving. Zie [bindings uitbreidingen registreren](./functions-bindings-register.md) in het artikel triggers en bindingen voor meer informatie.
 
-Sometimes you need to manually install or update your binding extensions in the Azure portal. For example, you may need to update a registered binding to a newer version. You may also need to register a supported binding that can't be installed in the **Integrate** tab in the portal.
+Soms moet u de bindings extensies hand matig installeren of bijwerken in de Azure Portal. U moet bijvoorbeeld een geregistreerde binding bijwerken naar een nieuwere versie. Mogelijk moet u ook een ondersteunde binding registreren die niet kan worden geïnstalleerd op het tabblad **integreren** in de portal.
 
-## <a name="install-a-binding-extension"></a>Install a binding extension
+## <a name="install-a-binding-extension"></a>Een bindings uitbreiding installeren
 
-Use the following steps to manually install or update extensions from the portal.
+Gebruik de volgende stappen om uitbrei dingen hand matig te installeren of bij te werken vanuit de portal.
 
-1. In the [Azure portal](https://portal.azure.com), locate your function app and select it. Choose the **Overview** tab and select **Stop**.  Stopping the function app unlocks files so that changes can be made.
+1. Zoek in de [Azure Portal](https://portal.azure.com)de functie-app en selecteer deze. Kies het tabblad **overzicht** en selecteer **stoppen**.  Als u de functie-app stopt, worden bestanden ontgrendeld zodat er wijzigingen kunnen worden aangebracht.
 
-1. Choose the **Platform features** tab and under **Development tools** select **Advanced Tools (Kudu)** . THe Kudu endpoint (`https://<APP_NAME>.scm.azurewebsites.net/`) is opened in a new window.
+1. Kies het tabblad **platform functies** en selecteer onder **ontwikkelingsprogram ma's** **geavanceerde hulp middelen (kudu)** . Het kudu-eind punt (`https://<APP_NAME>.scm.azurewebsites.net/`) wordt in een nieuw venster geopend.
 
-1. In the Kudu window, select **Debug console** > **CMD**.  
+1. Selecteer in het venster kudu de optie **debug console** > **cmd**.  
 
-1. In the command window, navigate to `D:\home\site\wwwroot` and choose the delete icon next to `bin` to delete the folder. Select **OK** to confirm the deletion.
+1. Navigeer in het opdracht venster naar `D:\home\site\wwwroot` en kies het pictogram verwijderen naast `bin` om de map te verwijderen. Selecteer **OK** om de verwijdering te bevestigen.
 
-1. Choose the edit icon next to the `extensions.csproj` file, which defines the binding extensions for the function app. The project file is opened in the online editor.
+1. Kies het bewerkings pictogram naast het `extensions.csproj` bestand dat de bindings extensies voor de functie-app definieert. Het project bestand wordt geopend in de online editor.
 
-1. Make the required additions and updates of **PackageReference** items in the **ItemGroup**, then select **Save**. The current list of supported package versions can be found in the [What packages do I need?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) wiki article. All three Azure Storage bindings require the Microsoft.Azure.WebJobs.Extensions.Storage package.
+1. Maak de vereiste toevoegingen en updates van **PackageReference** -items in de **ItemGroup**en selecteer vervolgens **Opslaan**. De huidige lijst met ondersteunde pakket versies vindt u in het artikel over [welke pakketten heb ik nodig?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) Voor alle drie de Azure Storage bindingen is het pakket micro soft. Azure. webjobs. Extensions. Storage vereist.
 
-1. From the `wwwroot` folder, run the following command to rebuild the referenced assemblies in the `bin` folder.
+1. Voer de volgende opdracht uit in de map `wwwroot` om de assembly's in de map `bin` opnieuw te maken.
 
     ```cmd
     dotnet build extensions.csproj -o bin --no-incremental --packages D:\home\.nuget
     ```
 
-1. Back in the **Overview** tab in the portal, choose **Start** to restart the function app.
+1. Klik op het tabblad **overzicht** in de portal op **Start** om de functie-app opnieuw te starten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)

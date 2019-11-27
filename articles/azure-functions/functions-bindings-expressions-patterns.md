@@ -1,6 +1,6 @@
 ---
-title: Azure Functions bindings expressions and patterns
-description: Learn to create different Azure Functions binding expressions based on common patterns.
+title: Azure Functions bindingen expressies en patronen
+description: Meer informatie over het maken van verschillende Azure Functions bindings expressies op basis van algemene patronen.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
@@ -12,34 +12,34 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227228"
 ---
-# <a name="azure-functions-binding-expression-patterns"></a>Azure Functions binding expression patterns
+# <a name="azure-functions-binding-expression-patterns"></a>Expressie patronen voor de binding Azure Functions
 
-One of the most powerful features of [triggers and bindings](./functions-triggers-bindings.md) is *binding expressions*. In the *function.json* file and in function parameters and code, you can use expressions that resolve to values from various sources.
+Een van de krach tigste functies van [Triggers en bindingen](./functions-triggers-bindings.md) is *binding expressies*. In het bestand *Function. json* en in functie parameters en code kunt u expressies gebruiken die worden omgezet in waarden van verschillende bronnen.
 
-Most expressions are identified by wrapping them in curly braces. For example, in a queue trigger function, `{queueTrigger}` resolves to the queue message text. If the `path` property for a blob output binding is `container/{queueTrigger}` and the function is triggered by a queue message `HelloWorld`, a blob named `HelloWorld` is created.
+De meeste expressies worden geïdentificeerd door ze in accolades te laten teruglopen. In een functie voor wachtrij activering `{queueTrigger}` bijvoorbeeld omgezet in de tekst van de wachtrij bericht. Als de eigenschap `path` voor een BLOB-uitvoer binding `container/{queueTrigger}` is en de functie wordt geactiveerd door een wachtrij bericht `HelloWorld`, wordt een blob met de naam `HelloWorld` gemaakt.
 
-Types of binding expressions
+Typen bindings expressies
 
-* [App settings](#binding-expressions---app-settings)
-* [Trigger file name](#trigger-file-name)
-* [Trigger metadata](#trigger-metadata)
-* [JSON payloads](#json-payloads)
-* [New GUID](#create-guids)
-* [Current date and time](#current-time)
+* [App-instellingen](#binding-expressions---app-settings)
+* [Bestands naam van trigger](#trigger-file-name)
+* [Meta gegevens activeren](#trigger-metadata)
+* [JSON-nettoladingen](#json-payloads)
+* [Nieuwe GUID](#create-guids)
+* [Huidige datum en tijd](#current-time)
 
-## <a name="binding-expressions---app-settings"></a>Binding expressions - app settings
+## <a name="binding-expressions---app-settings"></a>Bindings expressies-app-instellingen
 
-As a best practice, secrets and connection strings should be managed using app settings, rather than configuration files. This limits access to these secrets and makes it safe to store files such as *function.json* in public source control repositories.
+Als best practice, moeten geheimen en verbindings reeksen worden beheerd met behulp van app-instellingen in plaats van configuratie bestanden. Dit beperkt de toegang tot deze geheimen en maakt het veilig om bestanden zoals *Function. json* op te slaan in opslag plaatsen voor open bare-broncode beheer.
 
-App settings are also useful whenever you want to change configuration based on the environment. For example, in a test environment, you may want to monitor a different queue or blob storage container.
+App-instellingen zijn ook handig wanneer u de configuratie wilt wijzigen op basis van de omgeving. In een test omgeving kunt u bijvoorbeeld een andere wachtrij of BLOB storage-container bewaken.
 
-App setting binding expressions are identified differently from other binding expressions: they are wrapped in percent signs rather than curly braces. For example if the blob output binding path is `%Environment%/newblob.txt` and the `Environment` app setting value is `Development`, a blob will be created in the `Development` container.
+App-instelling bindings expressies worden anders geïdentificeerd dan andere bindings expressies: ze worden ingepakt in procent tekens in plaats van accolades. Als bijvoorbeeld het pad voor de BLOB-uitvoer binding `%Environment%/newblob.txt` is en de waarde van de `Environment` app-instelling `Development`is, wordt er een BLOB in de `Development` container gemaakt.
 
-When a function is running locally, app setting values come from the *local.settings.json* file.
+Wanneer een functie lokaal wordt uitgevoerd, zijn de waarden van de app-instellingen afkomstig uit het bestand *Local. settings. json* .
 
-Note that the `connection` property of triggers and bindings is a special case and automatically resolves values as app settings, without percent signs. 
+Houd er rekening mee dat de eigenschap `connection` van triggers en bindingen een speciaal geval is en dat waarden automatisch worden omgezet als app-instellingen, zonder procent tekens. 
 
-The following example is an Azure Queue Storage trigger that uses an app setting `%input-queue-name%` to define the queue to trigger on.
+Het volgende voor beeld is een Azure Queue Storage-trigger die gebruikmaakt van een app-instelling `%input-queue-name%` om de wachtrij te definiëren waarop moet worden geactiveerd.
 
 ```json
 {
@@ -55,7 +55,7 @@ The following example is an Azure Queue Storage trigger that uses an app setting
 }
 ```
 
-You can use the same approach in class libraries:
+U kunt dezelfde benadering gebruiken in klassen bibliotheken:
 
 ```csharp
 [FunctionName("QueueTrigger")]
@@ -67,11 +67,11 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-file-name"></a>Trigger file name
+## <a name="trigger-file-name"></a>Bestands naam van trigger
 
-The `path` for a Blob trigger can be a pattern that lets you refer to the name of the triggering blob in other bindings and function code. The pattern can also include filtering criteria that specify which blobs can trigger a function invocation.
+De `path` voor een BLOB-trigger kan een patroon zijn waarmee u naar de naam van de trigger-Blob in andere bindingen en functie code kunt verwijzen. Het patroon kan ook filter criteria bevatten waarmee wordt aangegeven welke Blobs een functie aanroep kunnen activeren.
 
-For example, in the following Blob trigger binding, the `path` pattern is `sample-images/{filename}`, which creates a binding expression named `filename`:
+In het volgende voor beeld van een BLOB-trigger is het `path` patroon `sample-images/{filename}`, waarmee een bindings expressie met de naam `filename`wordt gemaakt:
 
 ```json
 {
@@ -86,7 +86,7 @@ For example, in the following Blob trigger binding, the `path` pattern is `sampl
     ...
 ```
 
-The expression `filename` can then be used in an output binding to specify the name of the blob being created:
+De expressie `filename` kan vervolgens worden gebruikt in een uitvoer binding om de naam op te geven van de blob die wordt gemaakt:
 
 ```json
     ...
@@ -101,7 +101,7 @@ The expression `filename` can then be used in an output binding to specify the n
 }
 ```
 
-Function code has access to this same value by using `filename` as a parameter name:
+Functie code heeft toegang tot deze waarde met behulp van `filename` als parameter naam:
 
 ```csharp
 // C# example of binding to {filename}
@@ -115,7 +115,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-The same ability to use binding expressions and patterns applies to attributes in class libraries. In the following example, the attribute constructor parameters are the same `path` values as the preceding *function.json* examples: 
+Dezelfde mogelijkheid voor het gebruik van bindings expressies en patronen is van toepassing op kenmerken in klassen bibliotheken. In het volgende voor beeld zijn de para meters van de kenmerk-constructor hetzelfde `path` waarden als de voor gaande *functie. json* -voor beelden: 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -131,23 +131,23 @@ public static void Run(
 
 ```
 
-You can also create expressions for parts of the file name such as the extension. For more information on how to use expressions and patterns in the Blob path string, see the [Storage blob binding reference](functions-bindings-storage-blob.md).
+U kunt ook expressies maken voor delen van de bestands naam, zoals de extensie. Zie voor meer informatie over het gebruik van expressies en patronen in de teken reeks BLOB de [verwijzing naar de opslag-BLOB-binding](functions-bindings-storage-blob.md).
 
-## <a name="trigger-metadata"></a>Trigger metadata
+## <a name="trigger-metadata"></a>Meta gegevens activeren
 
-In addition to the data payload provided by a trigger (such as the content of the queue message that triggered a function), many triggers provide additional metadata values. These values can be used as input parameters in C# and F# or properties on the `context.bindings` object in JavaScript. 
+Naast de gegevens lading die wordt verstrekt door een trigger (zoals de inhoud van het wachtrij bericht dat een functie heeft geactiveerd), bieden veel triggers aanvullende waarden voor meta gegevens. Deze waarden kunnen worden gebruikt als invoer parameters in C# en F# of in eigenschappen van het `context.bindings`-object in Java script. 
 
-For example, an Azure Queue storage trigger supports the following properties:
+Een Azure Queue-opslag trigger ondersteunt bijvoorbeeld de volgende eigenschappen:
 
-* QueueTrigger - triggering message content if a valid string
+* Queue trigger: de inhoud van het bericht wordt geactiveerd als een geldige teken reeks
 * DequeueCount
-* ExpirationTime
+* expirationTime
 * Id
 * InsertionTime
 * NextVisibleTime
 * PopReceipt
 
-These metadata values are accessible in *function.json* file properties. For example, suppose you use a queue trigger and the queue message contains the name of a blob you want to read. In the *function.json* file, you can use `queueTrigger` metadata property in the blob `path` property, as shown in the following example:
+Deze meta gegevens waarden zijn toegankelijk in *Function. json* File-eigenschappen. Stel bijvoorbeeld dat u een wachtrij trigger gebruikt en dat het wachtrij bericht de naam bevat van een blob die u wilt lezen. In het bestand *Function. json* kunt u de eigenschap meta data van `queueTrigger` gebruiken in de eigenschap BLOB `path`, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```json
   "bindings": [
@@ -167,13 +167,13 @@ These metadata values are accessible in *function.json* file properties. For exa
   ]
 ```
 
-Details of metadata properties for each trigger are described in the corresponding reference article. For an example, see [queue trigger metadata](functions-bindings-storage-queue.md#trigger---message-metadata). Documentation is also available in the **Integrate** tab of the portal, in the **Documentation** section below the binding configuration area.  
+Details van eigenschappen van meta gegevens voor elke trigger worden beschreven in het bijbehorende referentie artikel. Zie meta gegevens van de [wachtrij activeren](functions-bindings-storage-queue.md#trigger---message-metadata)voor een voor beeld. Documentatie is ook beschikbaar op het tabblad **integreren** van de portal, in de sectie **documentatie** onder het gedeelte bindings configuratie.  
 
-## <a name="json-payloads"></a>JSON payloads
+## <a name="json-payloads"></a>JSON-nettoladingen
 
-When a trigger payload is JSON, you can refer to its properties in configuration for other bindings in the same function and in function code.
+Wanneer een trigger Payload JSON is, kunt u naar de eigenschappen in de configuratie verwijzen voor andere bindingen in dezelfde functie en in functie code.
 
-The following example shows the *function.json* file for a webhook function that receives a blob name in JSON: `{"BlobName":"HelloWorld.txt"}`. A Blob input binding reads the blob, and the HTTP output binding returns the blob contents in the HTTP response. Notice that the Blob input binding gets the blob name by referring directly to the `BlobName` property (`"path": "strings/{BlobName}"`)
+In het volgende voor beeld ziet u het bestand *Function. json* voor een webhook-functie die een blobnaam ontvangt in json: `{"BlobName":"HelloWorld.txt"}`. Een BLOB-invoer binding leest de BLOB en de HTTP-uitvoer binding retourneert de blob-inhoud in het HTTP-antwoord. U ziet dat de BLOB-invoer binding de BLOB-naam krijgt door rechtstreeks naar de eigenschap `BlobName` te verwijzen (`"path": "strings/{BlobName}"`)
 
 ```json
 {
@@ -200,7 +200,7 @@ The following example shows the *function.json* file for a webhook function that
 }
 ```
 
-For this to work in C# and F#, you need a class that defines the fields to be deserialized, as in the following example:
+Hiervoor C# F#hebt u een klasse nodig waarmee de velden worden gedefinieerd die moeten worden gedeserialiseerd, zoals in het volgende voor beeld:
 
 ```csharp
 using System.Net;
@@ -225,7 +225,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, str
 }
 ```
 
-In JavaScript, JSON deserialization is automatically performed.
+In Java script wordt JSON-deserialisatie automatisch uitgevoerd.
 
 ```javascript
 module.exports = function (context, info) {
@@ -243,9 +243,9 @@ module.exports = function (context, info) {
 }
 ```
 
-### <a name="dot-notation"></a>Dot notation
+### <a name="dot-notation"></a>Punt notatie
 
-If some of the properties in your JSON payload are objects with properties, you can refer to those directly by using dot notation. For example, suppose your JSON looks like this:
+Als sommige eigenschappen in uw JSON-Payload objecten met eigenschappen zijn, kunt u deze rechtstreeks naar de volgende elementen verwijzen met behulp van de punt notatie. Stel bijvoorbeeld dat uw JSON er als volgt uitziet:
 
 ```json
 {
@@ -256,13 +256,13 @@ If some of the properties in your JSON payload are objects with properties, you 
 }
 ```
 
-You can refer directly to `FileName` as `BlobName.FileName`. With this JSON format, here's what the `path` property in the preceding example would look like:
+U kunt rechtstreeks verwijzen naar `FileName` als `BlobName.FileName`. De `path` eigenschap in het vorige voor beeld ziet er als volgt uit:
 
 ```json
 "path": "strings/{BlobName.FileName}.{BlobName.Extension}",
 ```
 
-In C#, you would need two classes:
+In C#hebt u twee klassen nodig:
 
 ```csharp
 public class BlobInfo
@@ -276,9 +276,9 @@ public class BlobName
 }
 ```
 
-## <a name="create-guids"></a>Create GUIDs
+## <a name="create-guids"></a>GUID'S maken
 
-The `{rand-guid}` binding expression creates a GUID. The following blob path in a `function.json` file creates a blob with a name like *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*.
+Met de `{rand-guid}` bindings expressie maakt u een GUID. Met het volgende BLOB-pad in een `function.json` bestand maakt u een blob met een naam zoals *50710cb5-84b9-4d87-9d83-a03d6976a682. txt*.
 
 ```json
 {
@@ -289,9 +289,9 @@ The `{rand-guid}` binding expression creates a GUID. The following blob path in 
 }
 ```
 
-## <a name="current-time"></a>Current time
+## <a name="current-time"></a>Huidige tijd
 
-The binding expression `DateTime` resolves to `DateTime.UtcNow`. The following blob path in a `function.json` file creates a blob with a name like *2018-02-16T17-59-55Z.txt*.
+De bindings expressie `DateTime` omgezet in `DateTime.UtcNow`. Met het volgende BLOB-pad in een `function.json` bestand maakt u een blob met een naam zoals *2018-02-16T17-59 -55Z. txt*.
 
 ```json
 {
@@ -301,10 +301,10 @@ The binding expression `DateTime` resolves to `DateTime.UtcNow`. The following b
   "path": "my-output-container/{DateTime}"
 }
 ```
-## <a name="binding-at-runtime"></a>Binding at runtime
+## <a name="binding-at-runtime"></a>Binding tijdens runtime
 
-In C# and other .NET languages, you can use an imperative binding pattern, as opposed to the declarative bindings in *function.json* and attributes. Imperative binding is useful when binding parameters need to be computed at runtime rather than design time. To learn more, see the [C# developer reference](functions-dotnet-class-library.md#binding-at-runtime) or the [C# script developer reference](functions-reference-csharp.md#binding-at-runtime).
+In C# en andere .net-talen kunt u een dwingend bindings patroon gebruiken, in plaats van de declaratieve bindingen in *Function. json* en Attributes. Dwingende binding is handig wanneer bindings parameters tijdens runtime moeten worden berekend in plaats van ontwerp tijd. Zie de [ C# ](functions-dotnet-class-library.md#binding-at-runtime) Naslag informatie voor ontwikkel aars of de [ C# Naslag Gids voor webscripts](functions-reference-csharp.md#binding-at-runtime).
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Using the Azure Function return value](./functions-bindings-return-value.md)
+> [De functie retour waarde van Azure gebruiken](./functions-bindings-return-value.md)

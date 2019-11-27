@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot replication issues for disaster recovery of VMware VMs and physical servers to Azure by using Azure Site Recovery | Microsoft Docs
-description: This article provides troubleshooting information for common replication issues during disaster recovery of VMware VMs and physical servers to Azure by using Azure Site Recovery.
+title: Problemen met replicatie problemen oplossen voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery | Microsoft Docs
+description: In dit artikel vindt u informatie over het oplossen van problemen met veelvoorkomende replicatie problemen tijdens nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -14,111 +14,111 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423963"
 ---
-# <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Troubleshoot replication issues for VMware VMs and physical servers
+# <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Replicatie problemen voor virtuele VMware-machines en fysieke servers oplossen
 
-This article describes some common issues and specific errors you might encounter when you replicate on-premises VMware VMs and physical servers to Azure using [Site Recovery](site-recovery-overview.md).
+In dit artikel worden enkele veelvoorkomende problemen en specifieke fouten beschreven die u kunt tegen komen wanneer u on-premises virtuele VMware-machines en fysieke servers naar Azure repliceert met [site Recovery](site-recovery-overview.md).
 
-## <a name="step-1-monitor-process-server-health"></a>Step 1: Monitor process server health
+## <a name="step-1-monitor-process-server-health"></a>Stap 1: de status van de proces server controleren
 
-Site Recovery uses the [process server](vmware-physical-azure-config-process-server-overview.md#process-server) to receive and optimize replicated data, and send it to Azure.
+Site Recovery gebruikt de [proces server](vmware-physical-azure-config-process-server-overview.md#process-server) om gerepliceerde gegevens te ontvangen en te optimaliseren en deze naar Azure te verzenden.
 
-We recommend that you monitor the health of process servers in  portal, to ensure that they are connected and working properly, and that replication is progressing for the source machines associated with the process server.
+We raden u aan de status van proces servers in de portal te controleren om ervoor te zorgen dat ze zijn verbonden en goed werken, en dat de replicatie wordt uitgevoerd voor de bron machines die aan de proces server zijn gekoppeld.
 
-- [Learn about](vmware-physical-azure-monitor-process-server.md) monitoring process servers.
+- [Meer informatie over](vmware-physical-azure-monitor-process-server.md) het bewaken van proces servers.
 - [Best praktijken beoordelen](vmware-physical-azure-troubleshoot-process-server.md#best-practices-for-process-server-deployment)
-- [Troubleshoot](vmware-physical-azure-troubleshoot-process-server.md#check-process-server-health) process server health.
+- De status van de proces server [oplossen](vmware-physical-azure-troubleshoot-process-server.md#check-process-server-health) .
 
-## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>Step 2: Troubleshoot connectivity and replication issues
+## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>Stap 2: verbindings-en replicatie problemen oplossen
 
-Initial and ongoing replication failures often are caused by connectivity issues between the source server and the process server or between the process server and Azure. 
+Initiële en doorlopende replicatie fouten worden vaak veroorzaakt door verbindings problemen tussen de bron server en de proces server of tussen de proces server en Azure. 
 
-To solve these issues, [troubleshoot connectivity and replication](vmware-physical-azure-troubleshoot-process-server.md#check-connectivity-and-replication).
-
-
+Los deze problemen op door [verbindings-en replicatie problemen op te lossen](vmware-physical-azure-troubleshoot-process-server.md#check-connectivity-and-replication).
 
 
-## <a name="step-3-troubleshoot-source-machines-that-arent-available-for-replication"></a>Step 3: Troubleshoot source machines that aren't available for replication
 
-When you try to select the source machine to enable replication by using Site Recovery, the machine might not be available for one of the following reasons:
 
-* **Two virtual machines with same instance UUID**: If two virtual machines under the vCenter have the same instance UUID, the first virtual machine discovered by the configuration server is shown in the Azure portal. To resolve this issue, ensure that no two virtual machines have the same instance UUID. This scenario is commonly seen in instances where a backup VM becomes active and is logged into our discovery records. Refer to [Azure Site Recovery VMware-to-Azure: How to clean up duplicate or stale entries](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) to resolve.
-* **Incorrect vCenter user credentials**: Ensure that you added the correct vCenter credentials when you set up the configuration server by using the OVF template or unified setup. To verify the credentials that you added during setup, see [Modify credentials for automatic discovery](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
-* **vCenter insufficient privileges**: If the permissions provided to access vCenter don't have the required permissions, failure to discover virtual machines might occur. Ensure that the permissions described in [Prepare an account for automatic discovery](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) are added to the vCenter user account.
-* **Azure Site Recovery management servers**: If the virtual machine is used as management server under one or more of the following roles - Configuration server /scale-out process server / Master target server, then you will not be able to choose the virtual machine from portal. Managements servers cannot be replicated.
-* **Already protected/failed over through Azure Site Recovery services**: If the virtual machine is already protected or failed over through Site Recovery, the virtual machine isn't available to select for protection in the portal. Ensure that the virtual machine you're looking for in the portal isn't already protected by any other user or under a different subscription.
-* **vCenter not connected**: Check if vCenter is in connected state. To verify, go to Recovery Services vault > Site Recovery Infrastructure > Configuration Servers > Click on respective configuration server > a blade opens on your right with details of associated servers. Check if vCenter is connected. If it's in a "Not Connected" state, resolve the issue and then [refresh the configuration server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) on the portal. After this, virtual machine will be listed on the portal.
-* **ESXi powered off**: If ESXi host under which the virtual machine resides is in powered off state, then virtual machine will not be listed or will not be selectable on the Azure portal. Power on the ESXi host, [refresh the configuration server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) on the portal. After this, virtual machine will be listed on the portal.
-* **Pending reboot**: If there is a pending reboot on the virtual machine, then you will not be able to select the machine on Azure portal. Ensure to complete the pending reboot activities, [refresh the configuration server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). After this, virtual machine will be listed on the portal.
-* **IP not found**: If the virtual machine doesn't have a valid IP address associated with it, then you will not be able to select the machine on Azure portal. Ensure to assign a valid IP address to the virtual machine, [refresh the configuration server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). After this, virtual machine will be listed on the portal.
+## <a name="step-3-troubleshoot-source-machines-that-arent-available-for-replication"></a>Stap 3: problemen met bron machines oplossen die niet beschikbaar zijn voor replicatie
 
-### <a name="troubleshoot-protected-virtual-machines-greyed-out-in-the-portal"></a>Troubleshoot protected virtual machines greyed out in the portal
+Wanneer u de bron machine probeert te selecteren om de replicatie in te scha kelen met behulp van Site Recovery, is de computer mogelijk niet beschikbaar om een van de volgende redenen:
 
-Virtual machines that are replicated under Site Recovery aren't available in the Azure portal if there are duplicate entries in the system. To learn how to delete stale entries and resolve the issue, refer to [Azure Site Recovery VMware-to-Azure: How to clean up duplicate or stale entries](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
+* **Twee virtuele machines met dezelfde exemplaar-uuid**: als twee virtuele machines onder de vCenter dezelfde exemplaar-uuid hebben, wordt de eerste virtuele machine die is gedetecteerd door de configuratie server weer gegeven in de Azure Portal. Om dit probleem op te lossen, moet u ervoor zorgen dat er geen twee virtuele machines met dezelfde exemplaar-UUID zijn. Dit scenario wordt doorgaans weer gegeven in gevallen waarin een back-up-VM actief wordt en is aangemeld bij onze detectie records. Raadpleeg [Azure site Recovery VMware-naar-Azure: dubbele of verouderde vermeldingen opschonen](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) om op te lossen.
+* **Onjuiste vCenter-gebruikers referenties**: Zorg ervoor dat u de juiste vCenter-referenties hebt toegevoegd tijdens het instellen van de configuratie server met behulp van de OVF-sjabloon of Unified Setup. Zie [referenties wijzigen voor automatische detectie](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery)om de referenties te controleren die u tijdens de installatie hebt toegevoegd.
+* **vCenter heeft onvoldoende bevoegdheden**: als de machtigingen voor toegang tot de vCenter-functie niet over de vereiste machtigingen beschikken, kunnen de virtuele machines niet worden gedetecteerd. Zorg ervoor dat de machtigingen die zijn beschreven in [een account voorbereiden voor automatische detectie](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) worden toegevoegd aan het vCenter-gebruikers account.
+* **Azure site Recovery-beheerser vers**: als de virtuele machine wordt gebruikt als beheer server onder een of meer van de volgende rollen: Configuratie server/scale-out process server/Master doel server, dan kunt u de virtuele machine niet kiezen uit de portal. Beheer servers kunnen niet worden gerepliceerd.
+* **Al beveiligd/mislukt via Azure site Recovery Services**: als de virtuele machine al wordt beveiligd of via site Recovery is gefailoverd, is de virtuele machine niet beschikbaar om te selecteren voor beveiliging in de portal. Zorg ervoor dat de virtuele machine waarnaar u zoekt in de portal niet al wordt beveiligd door een andere gebruiker of een ander abonnement.
+* **vCenter niet verbonden**: Controleer of de status van de vCenter is verbonden. Als u wilt controleren, gaat u naar Recovery Services kluis > Site Recovery infra structuur > configuratie servers > klikt u op de betreffende configuratie server > een Blade aan de rechter kant wordt geopend met de details van de bijbehorende servers. Controleer of vCenter is verbonden. Als de status niet verbonden is, lost u het probleem op en [vernieuwt u vervolgens de configuratie server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) in de portal. Hierna wordt de virtuele machine in de portal weer gegeven.
+* **ESXi uitgeschakeld**: als ESXi-host waaronder de virtuele machine zich bevindt, de status uitgeschakeld heeft, wordt de virtuele machine niet weer gegeven of kan deze niet worden geselecteerd op de Azure Portal. Schakel de ESXi-host in, [Vernieuw de configuratie server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) in de portal. Hierna wordt de virtuele machine in de portal weer gegeven.
+* **Opnieuw opstarten in behandeling**: als er een herstart in behandeling is op de virtuele machine, kunt u de machine niet selecteren op Azure Portal. Zorg ervoor dat u de in behandeling zijnde activiteiten voor opnieuw opstarten voltooit. [Vernieuw de configuratie server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Hierna wordt de virtuele machine in de portal weer gegeven.
+* **IP niet gevonden**: als aan de virtuele machine geen geldig IP-adres is gekoppeld, kunt u de machine niet selecteren op Azure Portal. Zorg ervoor dat u een geldig IP-adres aan de virtuele machine toewijst en [Vernieuw de configuratie server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Hierna wordt de virtuele machine in de portal weer gegeven.
 
-## <a name="no-crash-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>No crash consistent recovery point available for the VM in the last 'XXX' minutes
+### <a name="troubleshoot-protected-virtual-machines-greyed-out-in-the-portal"></a>Problemen met beveiligde virtuele machines in de portal oplossen
 
-Some of the most common issues are listed below
+Virtuele machines die onder Site Recovery worden gerepliceerd, zijn niet beschikbaar in de Azure Portal als er dubbele vermeldingen in het systeem zijn. Raadpleeg Azure Site Recovery VMware-naar-Azure voor meer informatie over het verwijderen van verouderde vermeldingen en het oplossen van het probleem [: het opschonen van dubbele of verouderde vermeldingen](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
 
-### <a name="initial-replication-issues-error-78169"></a>Initial replication issues [error 78169]
+## <a name="no-crash-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Er is in de afgelopen ' XXX ' minuten geen crash consistent herstel punt beschikbaar voor de virtuele machine
 
-Over an above ensuring that there are no connectivity, bandwidth or time sync related issues, ensure that:
+Hieronder vindt u enkele van de meest voorkomende problemen
 
-- No anti-virus software is blocking Azure Site Recovery. Learn [more](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) on folder exclusions required for Azure Site Recovery.
+### <a name="initial-replication-issues-error-78169"></a>Problemen met de eerste replicatie [fout 78169]
 
-### <a name="source-machines-with-high-churn-error-78188"></a>Source machines with high churn [error 78188]
+Als u ervoor hebt gezorgd dat er geen problemen zijn met de verbinding, band breedte of tijd, moet u ervoor zorgen dat:
 
-Possible Causes:
-- The data change rate (write bytes/sec) on the listed disks of the virtual machine is more than the [Azure Site Recovery supported limits](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) for the replication target storage account type.
-- There is a sudden spike in the churn rate due to which high amount of data is pending for upload.
+- Er wordt geen antivirus software geblokkeerd Azure Site Recovery. [Meer](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) informatie over de uitsluitingen van mappen die zijn vereist voor Azure site Recovery.
 
-To resolve the issue:
-- Ensure that the target storage account type (Standard or Premium) is provisioned as per the churn rate requirement at source.
-- If you are already replicating to a Premium managed disk (asrseeddisk type), ensure that the size of the disk supports the observed churn rate as per Site Recovery limits. You can increase the size of the asrseeddisk if required. Follow the below steps:
-    - Navigate to the Disks blade of the impacted replicated machine and copy the replica disk name
-    - Navigate to this replica managed disk
-    - You may see a banner on the Overview blade saying that a SAS URL has been generated. Click on this banner and cancel the export. Ignore this step if you do not see the banner.
-    - As soon as the SAS URL is revoked, go to Configuration blade of the Managed Disk and increase the size so that ASR supports the observed churn rate on source disk
-- If the observed churn is temporary, wait for a few hours for the pending data upload to catch up and to create recovery points.
-- If the disk contains non-critical data like temporary logs, test data etc., consider moving this data elsewhere or completely exclude this disk from replication
-- If the problem continues to persist, use the Site Recovery [deployment planner](site-recovery-deployment-planner.md#overview) to help plan replication.
+### <a name="source-machines-with-high-churn-error-78188"></a>Bron machines met hoog verloop [fout 78188]
 
-### <a name="source-machines-with-no-heartbeat-error-78174"></a>Source machines with no heartbeat [error 78174]
+Mogelijke oorzaken:
+- De wijzigings frequentie van gegevens (geschreven bytes per seconde) op de vermelde schijven van de virtuele machine is hoger dan de [Azure site Recovery ondersteunde limieten](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) voor het type opslag account voor replicatie doel.
+- Er is een plotselinge piek in het verloop percentage, omdat de hoge hoeveelheid gegevens in behandeling is voor het uploaden.
 
-This happens when Azure Site Recovery Mobility agent on the Source Machine is not communicating with the Configuration Server (CS).
+Om het probleem op te lossen:
+- Zorg ervoor dat het type van het doel opslag account (Standard of Premium) is ingericht conform de vereiste voor de verloop snelheid bij de bron.
+- Als u al repliceert naar een Premium Managed disk (type asrseeddisk), moet u ervoor zorgen dat de grootte van de schijf het waargenomen verloop tarief per Site Recovery limieten ondersteunt. Indien nodig kunt u de grootte van de asrseeddisk verg Roten. Volg de onderstaande stappen:
+    - Navigeer naar de Blade schijven van de betrokken gerepliceerde machine en kopieer de naam van de replica schijf
+    - Ga naar deze door de replica beheerde schijf
+    - Mogelijk ziet u een banner op de Blade overzicht met de melding dat er een SAS-URL is gegenereerd. Klik op deze banner en Annuleer de export. Negeer deze stap als u de banner niet ziet.
+    - Zodra de SAS-URL is ingetrokken, gaat u naar de Blade configuratie van de beheerde schijf en verhoogt u de grootte zodat ASR het waargenomen verloop op de bron schijf ondersteunt
+- Als het waargenomen verloop tijdelijk is, wacht u een paar uur totdat de gegevens in behandeling zijn geüpload en herstel punten maken.
+- Als de schijf niet-kritieke gegevens bevat zoals tijdelijke logboeken, gegevens testen, enzovoort, overweeg dan om deze gegevens elders te verplaatsen of deze schijf volledig uit te sluiten van replicatie
+- Als het probleem blijft bestaan, gebruikt u de Site Recovery [Deployment planner](site-recovery-deployment-planner.md#overview) om de replicatie te plannen.
 
-To resolve the issue, use the following steps to verify the network connectivity from the source VM to the Config Server:
+### <a name="source-machines-with-no-heartbeat-error-78174"></a>Bron machines zonder heartbeat [fout 78174]
 
-1. Verify that the Source Machine is running.
-2. Sign in to the Source Machine using an account that has administrator privileges.
-3. Verify that the following services are running and if not restart the services:
+Dit gebeurt wanneer Azure Site Recovery Mobility-agent op de bron machine niet communiceert met de configuratie server (CS).
+
+Om het probleem op te lossen, voert u de volgende stappen uit om de netwerk verbinding van de bron-VM naar de configuratie server te controleren:
+
+1. Controleer of de bron machine wordt uitgevoerd.
+2. Meld u aan bij de bron machine met een account met beheerders bevoegdheden.
+3. Controleer of de volgende services worden uitgevoerd en of de services niet opnieuw worden gestart:
    - Svagents (InMage Scout VX-agent)
    - InMage Scout-toepassingsservice
-4. On the Source Machine, examine the logs at the location for error details:
+4. Controleer op de bron computer de logboeken op de locatie voor fout Details:
 
        C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
     
-### <a name="process-server-with-no-heartbeat-error-806"></a>Process server with no heartbeat [error 806]
-In case there is no heartbeat from the Process Server (PS), check that:
-1. PS VM is up and running
-2. Check following logs on the PS for error details:
+### <a name="process-server-with-no-heartbeat-error-806"></a>Proces server zonder heartbeat [fout 806]
+Als er geen heartbeat van de proces server (PS) is, controleert u het volgende:
+1. PS-VM is actief
+2. Raadpleeg de volgende logboeken op de PS voor fout Details:
 
        C:\ProgramData\ASR\home\svsystems\eventmanager*.log
        and
        C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
-### <a name="master-target-server-with-no-heartbeat-error-78022"></a>Master target server with no heartbeat [error 78022]
+### <a name="master-target-server-with-no-heartbeat-error-78022"></a>Master doel server zonder heartbeat [fout 78022]
 
-This happens when Azure Site Recovery Mobility agent on the Master Target is not communicating with the Configuration Server.
+Dit gebeurt wanneer Azure Site Recovery Mobility-agent op het hoofd doel niet communiceert met de configuratie server.
 
-To resolve the issue, use the following steps to verify the service status:
+U kunt het probleem oplossen door de volgende stappen uit te voeren om de status van de service te controleren:
 
-1. Verify that the Master Target VM is running.
-2. Sign in to the Master Target VM using an account that has administrator privileges.
-    - Verify that the svagents service is running. If it is running, restart the service
-    - Check the logs at the location for error details:
+1. Controleer of de virtuele Master doel-VM wordt uitgevoerd.
+2. Meld u aan bij de Master doel-VM met een account met beheerders bevoegdheden.
+    - Controleer of de svagents-service wordt uitgevoerd. Als deze wordt uitgevoerd, start u de service opnieuw
+    - Raadpleeg de logboeken op de locatie voor de fout Details:
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
-3. To register master target with configuration server, navigate to folder **%PROGRAMDATA%\ASR\Agent**, and run the following on command prompt:
+3. Als u het hoofd doel met de configuratie server wilt registreren, gaat u naar map **%PROGRAMDATA%\ASR\Agent**en voert u het volgende uit op de opdracht prompt:
    ```
    cmd
    cdpcli.exe --registermt
@@ -130,66 +130,66 @@ To resolve the issue, use the following steps to verify the service status:
    exit
    ```
 
-## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Error ID 78144 - No app-consistent recovery point available for the VM in the last 'XXX' minutes
+## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Fout-ID 78144-geen app-consistent herstel punt beschikbaar voor de virtuele machine in de afgelopen ' XXX ' minuten
 
-Enhancements have been made in mobility agent [9.23](vmware-physical-mobility-service-overview.md#from-923-version-onwards) & [9.27](site-recovery-whats-new.md#update-rollup-39) versions to handle VSS installation failure behaviors. Ensure that you are on the latest versions for best guidance on troubleshooting VSS failures.
+Er zijn verbeteringen aangebracht in de mobiliteits agent [9,23](vmware-physical-mobility-service-overview.md#from-923-version-onwards) & [9,27](site-recovery-whats-new.md#update-rollup-39) versies voor het AFhandelen van VSS-installatie fouten. Zorg ervoor dat u de nieuwste versie hebt voor de beste richt lijnen voor het oplossen van VSS-fouten.
 
-Some of the most common issues are listed below
+Hieronder vindt u enkele van de meest voorkomende problemen
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Cause 1: Known issue in SQL server 2008/2008 R2 
-**How to fix** : There is a known issue with SQL server 2008/2008 R2. Please refer this KB article [Azure Site Recovery Agent or other non-component VSS backup fails for a server hosting SQL Server 2008 R2](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Oorzaak 1: bekend probleem in SQL Server 2008/2008 R2 
+**Oplossen** : er is een bekend probleem met SQL Server 2008/2008 R2. Raadpleeg dit KB-artikel [Azure site Recovery agent of andere VSS-back-ups van niet-onderdeel zijn mislukt voor een server die als host fungeert voor SQL Server 2008 R2](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Cause 2: Azure Site Recovery jobs fail on servers hosting any version of SQL Server instances with AUTO_CLOSE DBs 
-**How to fix** : Refer Kb [article](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
-
-
-#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Cause 3: Known issue in SQL Server 2016 and 2017
-**How to fix** : Refer Kb [article](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Oorzaak 2: Azure Site Recovery taken mislukken op servers die fungeren als host voor elke versie van SQL Server instanties met AUTO_CLOSE Db's 
+**Oplossen** : verwijzen naar KB- [artikel](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
 
-### <a name="more-causes-due-to-vss-related-issues"></a>More causes due to VSS related issues:
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Oorzaak 3: bekend probleem in SQL Server 2016 en 2017
+**Oplossen** : verwijzen naar KB- [artikel](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
 
-To troubleshoot further, Check the files on the source machine to get the exact error code for failure:
+
+### <a name="more-causes-due-to-vss-related-issues"></a>Meer oorzaken vanwege VSS-problemen:
+
+Als u verder wilt oplossen, controleert u de bestanden op de bron computer om de exacte fout code op te halen voor de fout:
     
     C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
 
-How to locate the errors in the file?
-Search for the string "vacpError"  by opening the vacp.log file in an editor
+Hoe kunt u de fouten in het bestand vinden?
+Zoek naar de teken reeks ' vacpError ' door het bestand vacp. log te openen in een editor
         
     Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
 
-In the above example **2147754994** is the error code that tells you about the failure as shown below
+In bovenstaand voor beeld **2147754994** is de fout code die u vertelt over de fout, zoals hieronder wordt weer gegeven
 
-#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS writer is not installed - Error 2147221164 
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS Writer is niet geïnstalleerd-fout 2147221164 
 
-*How to fix*: To generate application consistency tag, Azure Site Recovery uses Microsoft Volume Shadow copy Service (VSS). It installs a VSS Provider for its operation to take app consistency snapshots. This VSS Provider is installed as a service. In case the VSS Provider service is not installed, the application consistency snapshot creation fails with the error id 0x80040154  "Class not registered". </br>
-Refer [article for VSS writer installation troubleshooting](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
+*Oplossen*: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Er wordt een VSS-provider geïnstalleerd voor de werking ervan om app-consistentie momentopnamen te maken. Deze VSS-provider is geïnstalleerd als een service. Als de VSS-Provider service niet is geïnstalleerd, mislukt het maken van de toepassings consistentie van de moment opname met de fout-id 0x80040154 ' klasse is niet geregistreerd '. </br>
+Raadpleeg het [artikel over het oplossen van problemen met de VSS Writer-installatie](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
 
-#### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS writer is disabled - Error 2147943458
+#### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS Writer is uitgeschakeld-fout 2147943458
 
-**How to fix**: To generate application consistency tag, Azure Site Recovery uses Microsoft Volume Shadow copy Service (VSS). It installs a VSS Provider for its operation to take app consistency snapshots. This VSS Provider is installed as a service. In case the VSS Provider service is disabled, the application consistency snapshot creation fails with the error id "The specified service is disabled and cannot be started(0x80070422)". </br>
+**Oplossen**: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Er wordt een VSS-provider geïnstalleerd voor de werking ervan om app-consistentie momentopnamen te maken. Deze VSS-provider is geïnstalleerd als een service. Als de VSS-Provider service is uitgeschakeld, mislukt het maken van de moment opname van de toepassings consistentie met de fout-id. de opgegeven service is uitgeschakeld en kan niet worden gestart (0x80070422). </br>
 
-- If VSS is disabled,
-    - Verify that the startup type of the VSS Provider service is set to **Automatic**.
-    - Restart the following services:
-        - VSS service
-        - Azure Site Recovery VSS Provider
-        - VDS service
+- Als VSS is uitgeschakeld,
+    - Controleer of het opstart type van de VSS-Provider service is ingesteld op **automatisch**.
+    - Start de volgende services opnieuw:
+        - VSS-service
+        - Azure Site Recovery VSS-provider
+        - VDS-service
 
-####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED - Error 2147754756
+####  <a name="vss-provider-not_registered---error-2147754756"></a>NOT_REGISTERED van VSS-PROVIDER-fout 2147754756
 
-**How to fix**: To generate application consistency tag, Azure Site Recovery uses Microsoft Volume Shadow copy Service (VSS). Check if the Azure Site Recovery  VSS Provider service is installed or not. </br>
+**Oplossen**: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Controleer of de Azure Site Recovery VSS-Provider service is geïnstalleerd of niet. </br>
 
-- Retry the Provider installation using the following commands:
-- Uninstall existing provider: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
-- Reinstall: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
+- Voer de installatie van de provider opnieuw uit met de volgende opdrachten:
+- Bestaande provider verwijderen: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\ InMageVSSProvider_Uninstall. cmd
+- Opnieuw installeren: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\ InMageVSSProvider_Install. cmd
  
-Verify that the startup type of the VSS Provider service is set to **Automatic**.
-    - Restart the following services:
-        - VSS service
-        - Azure Site Recovery VSS Provider
-        - VDS service
+Controleer of het opstart type van de VSS-Provider service is ingesteld op **automatisch**.
+    - Start de volgende services opnieuw:
+        - VSS-service
+        - Azure Site Recovery VSS-provider
+        - VDS-service
 
 ## <a name="next-steps"></a>Volgende stappen
 
-If you need more help, post your question in the [Azure Site Recovery forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). We have an active community, and one of our engineers can assist you.
+Als u meer hulp nodig hebt, kunt u uw vraag in het [Azure site Recovery forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)plaatsen. We hebben een actieve community en een van onze technici kan u helpen.

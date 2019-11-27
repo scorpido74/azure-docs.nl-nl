@@ -24,7 +24,7 @@ Een Voorspellings score geeft aan dat de mate van betrouw baarheid die LUIS heef
 
 De score van een voorspelling is tussen de nul (0) en één (1). Een voorbeeld van een zeer vertrouwen LUIS-score is 0,99. Een voorbeeld van een score van lage vertrouwen is 0,01. 
 
-|Score-waarde|Betrouwbaarheid|
+|Score-waarde|Confidence|
 |--|--|
 |1|goede overeenkomst|
 |0,99|hoge betrouwbaarheid|
@@ -68,7 +68,7 @@ U kunt de **niet-deterministische training** uitschakelen door te [trainen op al
 
 ## <a name="e-exponent-notation"></a>De notatie E (exponent)
 
-Voorspelling scores kunt exponent notatie _weergegeven_ boven de 0-1 bereik, zoals `9.910309E-07`. Deze score geeft aan dat er een zeer **kleine** getal.
+Voor Voorspellings scores kunnen de notatie exponent gebruiken die boven het 0-1-bereik wordt _weer gegeven_ , zoals `9.910309E-07`. Deze score geeft een indicatie van een zeer **klein** getal.
 
 |E-notatie score |Werkelijke score|
 |--|--|
@@ -80,4 +80,4 @@ Meer [informatie](luis-concept-utterance.md#punctuation-marks) over het gebruik 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [entiteiten toevoegen](luis-how-to-add-entities.md) voor meer informatie over entiteiten toevoegen aan uw LUIS-app.
+Zie [entiteiten toevoegen](luis-how-to-add-entities.md) voor meer informatie over het toevoegen van entiteiten aan uw Luis-app.

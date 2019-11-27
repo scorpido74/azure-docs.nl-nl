@@ -99,7 +99,7 @@ U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt v
 1. Voor de **standaard versie**kiest u **meest recent in de standaard vertakking build pijplijn met Tags**.
 1. Laat **labels** leeg.
 1. Stel de **bron alias** in op `drop`. De waarde van de **bron alias** wordt gebruikt door de vooraf gedefinieerde release taken zodat deze moet worden ingesteld.
-1. Klik op **Add**.
+1. Klik op **Toevoegen**.
 1. Klik nu op het pictogram bliksem flits op de nieuw gemaakte `drop` artefact bron, zoals hieronder wordt weer gegeven:
 
     ![Setup van continue implementatie van release artefact](../media/common/release-artifact-cd-setup.png)
@@ -119,7 +119,7 @@ U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt v
 1. Klik op **Opslaan** in de rechter bovenhoek en **OK**.
 1. Klik op **+ release** (naast de knop Opslaan) en **Maak een release**.
 1. Controleer onder **artefacten**de meest recente build van uw build-pijp lijn is geselecteerd.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
 Er wordt nu een geautomatiseerd release proces gestart, waarbij de *mywebapi* -en Webfront- *End* grafieken worden geïmplementeerd in uw Kubernetes-cluster in de _ontwikkel_ ruimte op het hoogste niveau. U kunt de voortgang van uw release bewaken in de Azure DevOps-webportal:
 

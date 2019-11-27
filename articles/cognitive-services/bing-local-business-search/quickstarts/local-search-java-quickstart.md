@@ -1,7 +1,7 @@
 ---
-title: Quickstart - Send a query to the API using Java - Bing Local Business Search
+title: 'Quick Start: een query naar de API verzenden met behulp van Java-Bing lokale zakelijke zoek opdracht'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service.
+description: Gebruik deze Quick Start om aanvragen te verzenden naar de Bing lokale Business Search-API, een Azure-cognitieve service.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,23 +17,23 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326747"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Quickstart: Send a query to the Bing Local Business Search API using Java
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Snelstartgids: een query naar de Bing Local Business Search-API verzenden met behulp van Java
 
-Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service. While this simple application is written in Java, the API is a RESTful Web service compatible with any programming language capable of making HTTP requests and parsing JSON.
+Gebruik deze Quick Start om aanvragen te verzenden naar de Bing lokale Business Search-API, een Azure-cognitieve service. Hoewel deze eenvoudige toepassing wordt geschreven in Java, is de API een betrouw bare webservice die compatibel is met elke programmeer taal die kan leiden tot het maken van HTTP-aanvragen en het parseren van JSON.
 
-This example application gets local response data from the API for the search query `hotel in Bellevue`.
+In deze voorbeeld toepassing worden lokale antwoord gegevens opgehaald uit de API voor de zoek query `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* De [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 U moet beschikken over een [account voor de Cognitive Services-API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met Bing Zoeken-API's. De [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) is voldoende voor deze snelstart. U hebt de toegangssleutel nodig die is verstrekt tijdens het activeren van uw gratis proefversie.  Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-This example application gets local response data from the query for a *hotel in Bellevue*.
+In deze voorbeeld toepassing worden lokale antwoord gegevens opgehaald uit de query voor een *Hotel in Bellevue*.
 
-## <a name="create-the-request"></a>Create the request 
+## <a name="create-the-request"></a>De aanvraag maken 
 
-The following code creates a `WebRequest`, sets the access key header, and adds a query string for "hotel in Bellevue".  Vervolgens wordt de aanvraag verzonden en het antwoord toegewezen aan een tekenreeks die de JSON-tekst moet bevatten.
+Met de volgende code maakt u een `WebRequest`, stelt u de kop van de toegangs sleutel in en voegt u een query reeks toe voor ' Hotel in Bellevue '.  Vervolgens wordt de aanvraag verzonden en het antwoord toegewezen aan een tekenreeks die de JSON-tekst moet bevatten.
 
 ```
     // construct URL of search request (endpoint + query string)
@@ -49,9 +49,9 @@ The following code creates a `WebRequest`, sets the access key header, and adds 
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
 ```
 
-## <a name="run-the-complete-application"></a>Run the complete application
+## <a name="run-the-complete-application"></a>De volledige toepassing uitvoeren
 
-The Bing Local Business Search API returns results from the Bing search engine.
+De Bing Local Business Search-API retourneert resultaten van de Bing zoek machine.
 1. Download of installeer de gson-bibliotheek.
 2. Maak een nieuw Java-project in uw favoriete IDE of editor.
 3. Voeg de onderstaande code toe.
@@ -165,6 +165,6 @@ public class LocalSearchCls {
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Local Business Search quickstart](local-quickstart.md)
-- [Local Business Search Node quickstart](local-search-node-quickstart.md)
-- [Local Business Search Python quickstart](local-search-python-quickstart.md)
+- [Snelstartgids voor lokale zakelijke Zoek opdrachten](local-quickstart.md)
+- [Quick start voor lokaal bedrijfs Zoek knooppunt](local-search-node-quickstart.md)
+- [Snelstartgids voor lokale zakelijke Zoek opdrachten python](local-search-python-quickstart.md)

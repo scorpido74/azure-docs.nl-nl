@@ -195,7 +195,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
 
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+4. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 5. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutels bij:
 

@@ -1,5 +1,5 @@
 ---
-title: Import SQL BACPAC files with templates
+title: SQL BACPAC-bestanden met sjablonen importeren
 description: Meer informatie over het gebruik van SQL Database-extensie om SQL BACPAC-bestanden te importeren met Azure Resource Manager-sjablonen.
 author: mumian
 ms.date: 11/21/2019
@@ -14,7 +14,7 @@ ms.locfileid: "74422168"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Zelfstudie: SQL BACPAC-bestanden importeren met Azure Resource Manager-sjablonen
 
-Meer informatie over het gebruik van Azure SQL Database-extensies om een BACPAC-bestand te importeren met Azure Resource Manager-sjablonen. Deployment artifacts are any files, in addition to the main template files that are needed to complete a deployment. Het BACPAC-bestand is een artefact. In deze zelfstudie maakt u een sjabloon voor het implementeren van een Azure SQL-server, een SQL-database, en importeert u een BACPAC-bestand. Zie [# Zelfstudie: Extensies voor virtuele machines implementeren met Azure Resource Manager-sjablonen](./resource-manager-tutorial-deploy-vm-extensions.md) voor informatie over het implementeren van extensies van virtuele Azure-machines met behulp van Azure Resource Manager-sjablonen.
+Meer informatie over het gebruik van Azure SQL Database-extensies om een BACPAC-bestand te importeren met Azure Resource Manager-sjablonen. Implementatie artefacten zijn alle bestanden, naast de hoofd sjabloon bestanden die nodig zijn om een implementatie te volt ooien. Het BACPAC-bestand is een artefact. In deze zelfstudie maakt u een sjabloon voor het implementeren van een Azure SQL-server, een SQL-database, en importeert u een BACPAC-bestand. Zie [# Zelfstudie: Extensies voor virtuele machines implementeren met Azure Resource Manager-sjablonen](./resource-manager-tutorial-deploy-vm-extensions.md) voor informatie over het implementeren van extensies van virtuele Azure-machines met behulp van Azure Resource Manager-sjablonen.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -31,7 +31,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Visual Studio code met de extensie Resource Manager-Hulpprogram Ma's. Zie [Visual Studio code gebruiken om Azure Resource Manager sjablonen te maken](./resource-manager-tools-vs-code.md).
 * Gebruik een gegenereerd wachtwoord voor het beheerdersaccount van SQL Server om de beveiliging te verbeteren. Hier volgt een voorbeeld voor het genereren van een wachtwoord:
 
     ```azurecli-interactive
@@ -42,19 +42,19 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="prepare-a-bacpac-file"></a>Een BACPAC-bestand voorbereiden
 
-A BACPAC file is shared in [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Zie [Een Azure SQL-database exporteren naar een BACPAC-bestand](../sql-database/sql-database-export.md) als u een eigen account wilt maken. Als u ervoor kiest het bestand naar uw eigen locatie te publiceren, moet u de sjabloon later in de zelfstudie bijwerken.
+Een BACPAC-bestand wordt gedeeld in [github](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Zie [Een Azure SQL-database exporteren naar een BACPAC-bestand](../sql-database/sql-database-export.md) als u een eigen account wilt maken. Als u ervoor kiest het bestand naar uw eigen locatie te publiceren, moet u de sjabloon later in de zelfstudie bijwerken.
 
-The BACPAC file must be stored in an Azure Storage account before it can be imported using Resource Manager template.
+Het BACPAC-bestand moet worden opgeslagen in een Azure Storage-account voordat het kan worden geïmporteerd met de Resource Manager-sjabloon.
 
-1. Open the [Cloud shell](https://shell.azure.com).
-1. Select **Upload/Download files**, and then select **Upload**.
-1. Specify the following URL and then select **Open**.
+1. Open de [Cloud shell](https://shell.azure.com).
+1. Selecteer **bestanden uploaden/downloaden**en selecteer vervolgens **uploaden**.
+1. Geef de volgende URL op en selecteer **openen**.
 
     ```url
     https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac
     ```
 
-1. Copy and paste the following PowerShell script into the shell window.
+1. Kopieer en plak het volgende Power shell-script in het shell-venster.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -86,11 +86,11 @@ The BACPAC file must be stored in an Azure Storage account before it can be impo
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. Write down storage account key and the BACPAC file URL. You need these values when you deploy the template.
+1. Noteer de sleutel van het opslag account en de URL van het BACPAC-bestand. U hebt deze waarden nodig wanneer u de sjabloon implementeert.
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
-The template used in this tutorial is stored in [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
+De sjabloon die in deze zelf studie wordt gebruikt, wordt opgeslagen in [github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
 
 1. Selecteer in Visual Studio Code **Bestand**>**Bestand openen**.
 2. Plak de volgende URL in **Bestandsnaam**:
@@ -112,7 +112,7 @@ The template used in this tutorial is stored in [GitHub](https://raw.githubuserc
 
 ## <a name="edit-the-template"></a>De sjabloon bewerken
 
-1. Add two more parameters at the end of the **parameters** section to set the storage account key and the BACPAC URL:
+1. Voeg twee extra para meters toe aan het einde van de sectie **para meters** om de sleutel voor het opslag account en de BACPAC-URL in te stellen:
 
     ```json
     "storageAccountKey": {
@@ -129,13 +129,13 @@ The template used in this tutorial is stored in [GitHub](https://raw.githubuserc
     }
     ```
 
-    Add a comma after **adminPassword**. To format the JSON file from VS Code, press **[SHIFT]+[ALT]+F**.
+    Voeg een komma toe na **adminPassword**. Als u het JSON-bestand van VS-code wilt Format teren, drukt u op **[SHIFT] + [Alt] + F**.
 
-    See [Prepare a BACPAC file](#prepare-a-bacpac-file) about getting these two values.
+    Zie [een BACPAC-bestand voorbereiden over het](#prepare-a-bacpac-file) ophalen van deze twee waarden.
 
 1. Voeg twee extra resources aan de sjabloon toe.
 
-    * To allow the SQL database extension to import BACPAC files, you need to allow traffic from Azure services. Add the following firewall rule definition under the SQL server definition:
+    * Als u de extensie SQL database wilt toestaan om BACPAC-bestanden te importeren, moet u verkeer van Azure-Services toestaan. Voeg de volgende firewall regel definitie toe onder de SQL Server-definitie:
 
         ```json
         {
@@ -187,9 +187,9 @@ The template used in this tutorial is stored in [GitHub](https://raw.githubuserc
         Zie de [verwijzing voor SQL Database-extensies](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions) voor meer informatie over de resourcedefinitie. Hier volgen enkele belangrijke elementen:
 
         * **dependsOn**: de extensieresource moet worden gemaakt nadat de SQL-database is gemaakt.
-        * **storageKeyType**: Specify the type of the storage key to use. De waarde kan `StorageAccessKey` of `SharedAccessKey` zijn. Use `StorageAccessKey` in this tutorial.
-        * **storageKey**: Specify the key for the storage account where the BACPAC file is stored. If storage key type is SharedAccessKey, it must be preceded with a "?"
-        * **storageUri**: Specify the URL of the BACPAC file stored in a storage account.
+        * **storageKeyType**: Geef het type van de opslag sleutel op die moet worden gebruikt. De waarde kan `StorageAccessKey` of `SharedAccessKey` zijn. Gebruik `StorageAccessKey` in deze zelf studie.
+        * **storageKey**: Geef de sleutel op voor het opslag account waarin het BACPAC-bestand wordt opgeslagen. Als het type opslag sleutel SharedAccessKey is, moet het worden voorafgegaan door een '? '
+        * **storageUri**: Geef de URL op van het BACPAC-bestand dat is opgeslagen in een opslag account.
         * **administratorLoginPassword**: het wachtwoord van de SQL-beheerder. Gebruik een gegenereerd wachtwoord. Zie [Vereisten](#prerequisites).
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
@@ -219,13 +219,13 @@ New-AzResourceGroupDeployment `
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-Consider using the same project name as you used when you prepared the bacpac file, so that all the resources are stored within the same resource group.  It is easier for managing resource, such as cleaning up the resources. If you use the same project name, you can either remove the **New-AzResourceGroup** command from the script, or answer y or n when you are asked whether you want to update the existing resource group.
+U kunt dezelfde project naam gebruiken als u hebt gebruikt bij het voorbereiden van het Bacpac-bestand, zodat alle resources worden opgeslagen in dezelfde resource groep.  Het is eenvoudiger om resources te beheren, zoals het opschonen van de resources. Als u dezelfde project naam gebruikt, kunt u de opdracht **New-AzResourceGroup** uit het script verwijderen of antwoord y of n wanneer u wordt gevraagd of u de bestaande resource groep wilt bijwerken.
 
 Gebruik een gegenereerd wachtwoord. Zie [Vereisten](#prerequisites).
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-To access the SQL server from your client computer, you need to add an additional firewall rule. For more information, see [Create and manage IP firewall rules](../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules).
+Als u toegang wilt krijgen tot de SQL-Server vanaf uw client computer, moet u een extra firewall regel toevoegen. Zie [IP-firewall regels maken en beheren](../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules)voor meer informatie.
 
 Selecteer in de portal de SQL-database in de geïmplementeerde resourcegroep. Selecteer **Query-editor (preview)** en voer vervolgens de beheerdersreferenties in. U ziet dat twee tabellen in de database worden geïmporteerd:
 

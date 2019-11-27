@@ -55,9 +55,9 @@ Dit betekent dat de beveiliging van uw gevoelige cloudoplossingen niet alleen to
 
 ## <a name="bind-event-hubs-to-virtual-networks"></a>Eventhubs koppelen aan virtuele netwerken
 
-*Regels voor virtueel netwerk* zijn van de firewall beveiligingsfunctie die bepaalt of de Azure Event Hubs-naamruimte verbindingen van het subnet van een bepaalde virtuele netwerk aanvaardt.
+*Regels voor virtuele netwerken* zijn de firewall beveiligings functie waarmee wordt bepaald of de naam ruimte van uw Azure-Event hubs verbindingen accepteert van een bepaald subnet van een virtueel netwerk.
 
-Een Event Hubs-naamruimte binden aan een virtueel netwerk is een proces in twee stappen. U moet eerst een **Virtual Network Service-eind punt** maken op een Virtual Network subnet en dit inschakelen voor ' micro soft. EventHub ', zoals wordt uitgelegd in het [overzicht van service-eind punten][vnet-sep]. Nadat u het service-eindpunt hebt toegevoegd, verbindt u de Event Hubs-naamruimte toe met een *regel voor virtuele netwerken*.
+Een Event Hubs-naamruimte binden aan een virtueel netwerk is een proces in twee stappen. U moet eerst een **Virtual Network Service-eind punt** maken op een Virtual Network subnet en dit inschakelen voor ' micro soft. EventHub ', zoals wordt uitgelegd in het [overzicht van service-eind punten][vnet-sep]. Wanneer u het service-eind punt hebt toegevoegd, bindt u de naam ruimte van de Event Hubs met een regel voor het *virtuele netwerk*.
 
 De regel van het virtuele netwerk is een koppeling van de Event Hubs naam ruimte met een subnet van een virtueel netwerk. Terwijl de regel bestaat, worden alle werkbelastingen die zijn gekoppeld aan het subnet toegang tot de Event Hubs-naamruimte toegekend. Eventhubs zelf nooit uitgaande verbindingen maakt, heeft niet nodig om toegang te krijgen en is daarom nooit toegang verleend tot uw subnet door in te schakelen met deze regel.
 
@@ -67,9 +67,9 @@ De volgende Resource Manager-sjabloon kunt een regel voor virtuele netwerken toe
 
 Sjabloonparameters:
 
-* **namespaceName**: Event Hubs-naamruimte.
-* **vnetRuleName**: naam voor de regel van het Virtueelnetwerk moet worden gemaakt.
-* **virtualNetworkingSubnetId**: volledig gekwalificeerde pad van de Resource Manager voor het subnet van het virtuele netwerk; bijvoorbeeld `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` voor de standaard-subnet van een virtueel netwerk.
+* **naam ruimte**: Event hubs naam ruimte.
+* **vnetRuleName**: de naam voor de Virtual Network regel die moet worden gemaakt.
+* **virtualNetworkingSubnetId**: volledig gekwalificeerd pad van Resource Manager voor het subnet van het virtuele netwerk; bijvoorbeeld `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` voor het standaard subnet van een virtueel netwerk.
 
 > [!NOTE]
 > Hoewel er geen regels kunnen worden geweigerd, is voor de Azure Resource Manager sjabloon de standaard actie ingesteld op **' toestaan '** , waardoor verbindingen niet worden beperkt.

@@ -16,22 +16,22 @@ Het Internet heeft tal van verzamelingen van interessante en nuttige Jupyter-not
 
 Wanneer u een laptop die u graag zou willen verkennen hebt geïdentificeerd, vindt u hier een paar informatie die moet u om te begrijpen:
 
-- Als een laptop al in de Azure-laptops is, gebruikt u de **kloon** knop op de projectdashboard om een kopie van het project maken in uw eigen account.
-- Sommige laptops vereisen specifieke pakketten om uit te voeren. Hoewel u kunt gebruiken `!pip install` (Python) of `install.packages` (R) om pakketten te installeren vanuit een notitieblok zelf, kunt u ook [configureren van een Azure-notitieblokken-project met de juiste omgeving](configure-manage-azure-notebooks-projects.md).
+- Als er al een notitie blok in Azure Notebooks, gebruikt u de knop **klonen** in het project dashboard om een kopie van het project in uw eigen account te maken.
+- Sommige laptops vereisen specifieke pakketten om uit te voeren. Hoewel u `!pip install` (python) of `install.packages` (R) kunt gebruiken voor het installeren van pakketten van een notebook zelf, kunt u ook [een Azure notebooks project configureren met de juiste omgeving](configure-manage-azure-notebooks-projects.md).
 
 ## <a name="great-sample-notebooks"></a>Geweldige voorbeeldnotitieblokken
 
 - [Azure notebooks starter set](https://notebooks.azure.com/#sample-redirect) bevat Inleiding tot python, R en F#, samen met notebooks die gegevens toegang, Azure machine learning en een paar data Science-oefeningen tonen.
 - [Inleiding tot Jupyter-notebooks](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
-- [Inleiding tot Data Science](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) door Jake Vanderplas.
-- [Galerie van interessante notitieblokken](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter-project op GitHub)
+- [Inleiding tot data wetenschappen](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) door Sjaak Vanderplas.
+- [Galerie met interessante notitie blokken](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter-project op github)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
-- Fysieke van instructie van de [Physics afdeling op het Britse College London](https://notebooks.azure.com/cvanbreu/libraries)
-- [Azure Machine Learning aan de slag met voorbeelden](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
+- Fysieke instructie van de [Afdeling Fysica van de Britse school van Londen](https://notebooks.azure.com/cvanbreu/libraries)
+- [Voor beelden Azure Machine Learning aan de slag](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-- [Hoe: configureren en beheren van projecten](configure-manage-azure-notebooks-projects.md)
-- [Hoe: werken met bestanden](work-with-project-data-files.md)
-- [Hoe: toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)
+- [Procedure: projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
+- [Procedure: werken met gegevens bestanden](work-with-project-data-files.md)
+- [Informatie over toegang tot gegevens bronnen](access-data-resources-jupyter-notebooks.md)
 - [Procedure: Azure Machine Learning gebruiken](use-machine-learning-services-jupyter-notebooks.md)

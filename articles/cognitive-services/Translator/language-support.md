@@ -115,7 +115,7 @@ De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-
 | Taal    | Taalcode | Script | Naar/van | Script|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabisch | `ar` | Arabische `Arab` | <--> | Latijns `Latn` |
-|Bengalees  | `bn` | Bengali `Beng` | <--> | Latijns `Latn` |
+|Bengalees  | `bn` | Bengaals `Beng` | <--> | Latijns `Latn` |
 | Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Latijns `Latn` |
 | Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Traditioneel Chinees `Hant`|
 | Chinees (traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Latijns `Latn` |

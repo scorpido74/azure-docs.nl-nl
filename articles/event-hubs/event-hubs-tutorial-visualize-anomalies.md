@@ -186,7 +186,7 @@ U kunt nu gegevens streamen naar uw Event Hub. Als u die gegevens in een Power B
 
    ![Schermopname waarin wordt weergegeven hoe u een nieuwe Azure Stream Analytics-taak maakt.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Accepteer de standaardwaarden voor de rest van de velden. Klik op **Maken**. 
+    Accepteer de standaardwaarden voor de rest van de velden. Klik op **Create**. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Een invoer aan de Stream Analytics-taak toevoegen
 
@@ -282,7 +282,7 @@ Deze query wordt gebruikt om de gegevens op te halen die uiteindelijk naar de Po
 
 5. Sluit het deelvenster Query.
 
-### <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren
+### <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
 
 Klik in de Stream Analytics-taak op **Start**, vervolgens op **Nu**  en daarna op **Start**. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
 

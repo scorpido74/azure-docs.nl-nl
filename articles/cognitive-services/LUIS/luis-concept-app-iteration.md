@@ -1,7 +1,7 @@
 ---
-title: Iterative app design - LUIS
+title: Herhalend app-ontwerp-LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS learns best in an iterative cycle of model changes, utterance examples, publishing, and gathering data from endpoint queries.
+description: LUIS leert beste in een iteratief cyclus van wijzigingen in het gegevensmodel, utterance voorbeelden, publiceren en verzamelen van gegevens van eindpunt query's.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,136 +18,136 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422604"
 ---
-# <a name="iterative-app-design-for-luis"></a>Iterative app design for LUIS
+# <a name="iterative-app-design-for-luis"></a>Iteratief app-ontwerp voor LUIS
 
-A Language Understanding (LUIS) app learns and performs most efficiently with iteration. Here's a typical iteration cycle:
+Een Language Understanding-app (LUIS) leert en werkt het meest efficiënt met iteratie. Hier volgt een typische iteratie cyclus:
 
-* Create new version
-* Edit the LUIS app schema. Dit omvat:
-    * Intents with example utterances
+* nieuwe versie maken
+* Bewerk het LUIS-app-schema. Dit omvat:
+    * doel stellingen met voor beeld-uitingen
     * Entiteiten
     * Functies
-* Train, test, and publish
-    * Test at the prediction endpoint for active learning
-* Gather data from endpoint queries
+* Trainen, testen en publiceren
+    * Testen op het Voorspellings eindpunt voor actief leren
+* gegevens verzamelen van eindpunt query's
 
 ![Ontwerpcyclus](./media/luis-concept-app-iteration/iteration.png)
 
-## <a name="building-a-luis-schema"></a>Building a LUIS schema
+## <a name="building-a-luis-schema"></a>Een LUIS-schema bouwen
 
-An app's schema defines what the user is asking for (the _intention_ or _intent_ ) and what parts of the intent provide details (called _entities_) that are used to help determine the answer. 
+In het schema van een app wordt gedefinieerd wat de gebruiker vraagt ( de bedoeling _of het doel)_ en welke delen van de intentie details bevatten ( _entiteiten_genoemd) die worden gebruikt om te helpen bij het bepalen van het antwoord. 
 
-The app schema must be specific to the app domains to determine words and phrases that are relevant, as well as to determine typical word ordering. 
+Het app-schema moet specifiek zijn voor de app-domeinen om te bepalen welke woorden en zinsdelen relevant zijn, en om een standaard woord volgorde te bepalen. 
 
-Example utterances represent user inputs, such as recognized speech or text, that the app expects at runtime. 
+Voor beeld-uitingen vertegenwoordigen gebruikers invoer, zoals herkende spraak of tekst, die de app verwacht tijdens runtime. 
 
-The schema requires intents, and _should have_ entities. 
+Het schema vereist intenties en _moet entiteiten hebben_ . 
 
-### <a name="example-schema-of-intents"></a>Example schema of intents
+### <a name="example-schema-of-intents"></a>Voorbeeld schema van intenties
 
-The most common schema is an intent schema organized with intents. This type of schema uses LUIS to determine a user's intention. 
+Het meest voorkomende schema is een intentie schema dat is ingedeeld met intents. Dit type schema gebruikt LUIS om de bedoeling van een gebruiker te bepalen. 
 
-The intent schema type may have entities if it helps LUIS determine the user's intention. For example, a shipping entity (as a descriptor to an intent) helps LUIS determine a shipping intention. 
+Het schema type intentie kan entiteiten hebben als het LUIS kan bepalen wat de bedoeling van de gebruiker is. Een verzend entiteit (als een descriptor voor een intentie) helpt bijvoorbeeld bij het bepalen van een verLUISings doel. 
 
-### <a name="example-schema-of-entities"></a>Example schema of entities
+### <a name="example-schema-of-entities"></a>Voorbeeld schema van entiteiten
 
-An entity schema focuses on entities, which is the data that is extracted from user utterances. For example, if a user was to say, "I'd like to order three pizzas." There are two entities that would be extracted: _three_ and _pizzas_. These are used to help fulfill the intention, which was to make an order. 
+Een entiteits schema is gericht op entiteiten. Dit zijn de gegevens die worden opgehaald uit de uitingen van de gebruiker. Bijvoorbeeld, als een gebruiker heeft te zeggen, "Ik wil graag drie pizzas best Ellen." Er worden twee entiteiten geëxtraheerd: _drie_ en _pizzas_. Deze worden gebruikt om te voldoen aan de voor delen, die een bestelling zou moeten nemen. 
 
-For an entity schema, the intention of the utterance is less important to the client application. 
+Voor een entiteits schema is de bedoeling van de utterance minder belang rijk voor de client toepassing. 
 
-A common method of organizing an entity schema is to add all example utterances to the **None** intent. 
+Een algemene methode voor het ordenen van een entiteits schema is het toevoegen van alle voor beeld-uitingen aan de **geen** intentie. 
 
-### <a name="example-of-a-mixed-schema"></a>Example of a mixed schema
+### <a name="example-of-a-mixed-schema"></a>Voor beeld van een gemengd schema
 
-The most powerful and mature schema is an intent schema with a full range of entities and features. This schema can begin as either an intent or entity schema and grow to include concepts of both, as the client application needs those pieces of information. 
+Het meest krachtige en rijpste schema is een intentie schema met een volledig scala aan entiteiten en functies. Dit schema kan worden gestart als een intentie-of entity-schema en kan worden uitgebreid om concepten van beide toe te voegen, omdat de client toepassing die gegevens nodig heeft. 
 
-## <a name="add-example-utterances-to-intents"></a>Add example utterances to intents
+## <a name="add-example-utterances-to-intents"></a>Voor beeld van uitingen aan intenties toevoegen
 
-LUIS needs a few example utterances in each **intent**. The example utterances need enough variation of word choice and word order to be able to determine which intent the utterance is meant for. 
+LUIS heeft een aantal voor beelden van uitingen in elk **doel**nodig. Het voor beeld uitingen vereist voldoende variatie van woord keuze en woord volgorde om te kunnen bepalen met welke intentie de utterance bedoeld is. 
 
 > [!CAUTION]
-> Do not add example utterances in bulk. Start with 15 to 30 specific and varying examples. 
+> Voeg geen voor beeld-uitingen toe. Begin met 15 tot 30 specifieke en verschillende voor beelden. 
 
-Each example utterance needs to have any **required data to extract** designed and labeled with **entities**. 
+Elk voor beeld-utterance moet **vereiste gegevens bevatten om te kunnen worden geëxtraheerd** en gemaakt met **entiteiten**. 
 
-|Key element|Doel|
+|Sleutel element|Doel|
 |--|--|
-|Intentie|**Classify** user utterances into a single intention, or action. Examples include `BookFlight` and `GetWeather`.|
-|Entiteit|**Extract** data from utterance required to complete intention. Examples include date and time of travel, and location.|
+|Intentie|**Classificeer** gebruikers uitingen in één intentie of actie. Voor beelden zijn `BookFlight` en `GetWeather`.|
+|Entiteit|**Haal** gegevens op uit utterance die nodig zijn om de bedoeling te volt ooien. Voor beelden zijn onder meer datum en tijd van reis en locatie.|
 
-A LUIS app can be designed to ignore utterances that aren't relevant to an app's domain by assigning the utterance to the **None** intent.
+Een LUIS-app kan worden ontworpen voor het negeren van uitingen die niet relevant zijn voor het domein van een app door de utterance toe te wijzen aan de **geen** intentie.
 
-## <a name="test-and-train-your-app"></a>Test and train your app
+## <a name="test-and-train-your-app"></a>Uw app testen en trainen
 
-After you have 15 to 30 different example utterances in each intent, with the required entities labeled, you need to test and [train](luis-how-to-train.md) your LUIS app. 
+Nadat u 15 tot 30 verschillende voor beeld-uitingen in elke intentie hebt, met de vereiste entiteiten waaraan een label is gekoppeld, moet u uw LUIS-app testen en [trainen](luis-how-to-train.md) . 
 
-## <a name="publish-to-a-prediction-endpoint"></a>Publish to a prediction endpoint
+## <a name="publish-to-a-prediction-endpoint"></a>Publiceren naar een Voorspellings eindpunt
 
-The LUIS app must be published so that it's available to you in the list [prediction endpoint regions](luis-reference-regions.md).
+De LUIS-app moet worden gepubliceerd zodat deze beschikbaar is in de lijst [Voorspellings eindpunt regio's](luis-reference-regions.md).
 
 ## <a name="test-your-published-app"></a>Uw gepubliceerde toepassing testen
 
-You can test your published LUIS app from the HTTPS prediction endpoint. Testing from the prediction endpoint allows LUIS to choose any utterances with low-confidence for [review](luis-how-to-review-endpoint-utterances.md).  
+U kunt uw gepubliceerde LUIS-app testen vanuit het HTTPS prediction-eind punt. Door te testen vanaf het Voorspellings eindpunt kan LUIS een wille keurige uitingen met lage betrouw baarheid kiezen voor [controle](luis-how-to-review-endpoint-utterances.md).  
 
-## <a name="create-a-new-version-for-each-cycle"></a>Create a new version for each cycle
+## <a name="create-a-new-version-for-each-cycle"></a>Een nieuwe versie maken voor elke cyclus
 
-Each version is a snapshot in time of the LUIS app. Before you make changes to the app, create a new version. It is easier to go back to an older version than to try to remove intents and utterances to a previous state.
+Elke versie is een moment opname in de tijd van de LUIS-app. Maak een nieuwe versie voordat u wijzigingen aanbrengt in de app. Het is eenvoudiger om terug te gaan naar een oudere versie dan om de intenties en uitingen te verwijderen.
 
-The version ID consists of characters, digits or '.' and cannot be longer than 10 characters.
+De versie-ID bestaat uit tekens, cijfers of '. ' en mag niet langer zijn dan 10 tekens.
 
-The initial version (0.1) is the default active version. 
+De eerste versie (0,1) is de standaard versie die actief is. 
 
-### <a name="begin-by-cloning-an-existing-version"></a>Begin by cloning an existing version
+### <a name="begin-by-cloning-an-existing-version"></a>Begin door een bestaande versie te klonen
 
-Clone an existing version to use as a starting point for each new version. After you clone a version, the new version becomes the **active** version. 
+Een bestaande versie klonen die moet worden gebruikt als uitgangs punt voor elke nieuwe versie. Nadat u een versie hebt gekloond, wordt de nieuwe versie de **actieve** versie. 
 
-### <a name="publishing-slots"></a>Publishing slots
+### <a name="publishing-slots"></a>Publicatie sleuven
 
-You can publish to either the stage and/or production slots. Each slot can have a different version or the same version. This is useful for verifying changes before publishing to production, which is available to bots or other LUIS calling apps. 
+U kunt publiceren naar de stage-en/of productie-sleuven. Elke sleuf kan een andere versie of dezelfde versie hebben. Dit is handig als u wijzigingen wilt controleren voordat u publiceert naar productie, die beschikbaar is voor bots of andere LUIS die apps aanroepen. 
 
-Trained versions aren't automatically available at your LUIS app's [endpoint](luis-glossary.md#endpoint). You must [publish](luis-how-to-publish-app.md) or republish a version in order for it to be available at your LUIS app endpoint. You can publish to **Staging** and **Production**, giving you two versions of the app available at the endpoint. If more versions of the app need to be available at an endpoint, you should export the version and reimport it to a new app. The new app has a different app ID.
+Getrainde versies zijn niet automatisch beschikbaar op het [eind punt](luis-glossary.md#endpoint)van uw Luis-app. U moet een versie [publiceren](luis-how-to-publish-app.md) of opnieuw publiceren zodat deze beschikbaar is in uw Luis-app-eind punt. U kunt publiceren naar **fase ring** en **productie**, zodat u twee versies van de app beschikbaar hebt op het eind punt. Als er meer versies van de app op een eind punt beschikbaar moeten zijn, moet u de versie exporteren en opnieuw importeren in een nieuwe app. De nieuwe app heeft een andere app-ID.
 
-### <a name="import-and-export-a-version"></a>Import and export a version
+### <a name="import-and-export-a-version"></a>Een versie importeren en exporteren
 
-A version can be imported at the app level. That version becomes the active version and uses the version ID in the `versionId` property of the app file. You can also import into an existing app, at the version level. The new version becomes the active version. 
+Een versie kan worden geïmporteerd op app-niveau. Deze versie wordt de actieve versie en gebruikt de versie-ID in de eigenschap `versionId` van het app-bestand. U kunt ook op versie niveau importeren in een bestaande app. De nieuwe versie wordt de actieve versie. 
 
-A version can be exported at the app or version level as well. The only difference is that the app-level exported version is the currently active version while at the version level, you can choose any version to export on the **[Settings](luis-how-to-manage-versions.md)** page. 
+Een versie kan ook worden geëxporteerd op app-of versie niveau. Het enige verschil is dat de geëxporteerde versie op app-niveau de momenteel actieve versie is op versie niveau, u kunt een wille keurige versie kiezen die u wilt exporteren op de pagina **[instellingen](luis-how-to-manage-versions.md)** . 
 
-The exported file **doesn't** contain:
+Het geëxporteerde bestand bevat **niet** :
 
-* Machine-learned information, because the app is retrained after it's imported
-* Contributor information
+* Door de computer geleerde informatie, omdat de app opnieuw wordt getraind nadat deze is geïmporteerd
+* informatie over Inzender
 
-In order to back up your LUIS app schema, export a version from the [LUIS portal](https://www.luis.ai/applications).
+Als u een back-up wilt maken van uw LUIS-app-schema, exporteert u een versie vanuit de [Luis-Portal](https://www.luis.ai/applications).
 
-## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Manage contributor changes with versions and contributors
+## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Wijzigingen in Inzender beheren met versies en inzenders
 
-LUIS uses the concept of contributors to an app, by providing Azure resource-level permissions. Combine this concept with versioning to provide targeted collaboration. 
+LUIS maakt gebruik van het concept van inzenders voor een app door Azure-machtigingen op resource niveau aan te bieden. Combi neer dit concept met versie beheer om gerichte samen werking mogelijk te maken. 
 
-Use the following techniques to manage contributor changes to your app.
+Gebruik de volgende technieken om Inzender wijzigingen te beheren in uw app.
 
-### <a name="manage-multiple-versions-inside-the-same-app"></a>Manage multiple versions inside the same app
+### <a name="manage-multiple-versions-inside-the-same-app"></a>Meerdere versies binnen dezelfde app beheren
 
-Begin by [cloning](luis-how-to-manage-versions.md#clone-a-version) from a base version for each author. 
+Begin met het [klonen](luis-how-to-manage-versions.md#clone-a-version) van een basis versie voor elke auteur. 
 
-Each author makes changes to their own version of the app. When the author is satisfied with the model, export the new versions to JSON files.  
+Elke auteur brengt wijzigingen aan in hun eigen versie van de app. Wanneer de auteur aan het model is voldaan, exporteert u de nieuwe versies naar JSON-bestanden.  
 
-Exported apps, .json or .lu files, can be compared for changes. Combine the files to create a single file of the new version. Change the `versionId` property to signify the new merged version. Import that version into the original app. 
+Geëxporteerde apps, JSON-of Lu-bestanden kunnen worden vergeleken voor wijzigingen. Combi neer de bestanden om één bestand van de nieuwe versie te maken. Wijzig de eigenschap `versionId` om de nieuwe samengevoegde versie aan te duiden. Die versie importeren in de oorspronkelijke app. 
 
-This method allows you to have one active version, one stage version, and one published version. You can compare the results of the active version with a published version (stage or production) in the [interactive testing pane](luis-interactive-test.md).
+Deze methode kunt u een actieve versie, één fase-versie en een gepubliceerde versie hebben. U kunt de resultaten van de actieve versie vergelijken met een gepubliceerde versie (fase of productie) in het [interactieve test venster](luis-interactive-test.md).
 
-### <a name="manage-multiple-versions-as-apps"></a>Manage multiple versions as apps
+### <a name="manage-multiple-versions-as-apps"></a>Beheer van meerdere versies als apps
 
-[Export](luis-how-to-manage-versions.md#export-version) the base version. Each author imports the version. The person that imports the app is the owner of the version. When they are done modifying the app, export the version. 
+De basis versie [exporteren](luis-how-to-manage-versions.md#export-version) . Elke auteur importeert de-versie. De persoon die de invoer van de app is de eigenaar van de versie. Wanneer ze klaar zijn voor het wijzigen van de app, de versie exporteren. 
 
-Exported apps are JSON-formatted files, which can be compared with the base export for changes. Combine the files to create a single JSON file of the new version. Change the **versionId** property in the JSON to signify the new merged version. Import that version into the original app.
+Geëxporteerde apps zijn JSON-indeling bestanden, die kunnen worden vergeleken met de basis exporteren voor wijzigingen. Combineer de bestanden voor het maken van een enkel JSON-bestand van de nieuwe versie. Wijzig de eigenschap **versionId** in de JSON om de nieuwe samengevoegde versie aan te duiden. Die versie importeren in de oorspronkelijke app.
 
-Learn more about authoring contributions from [collaborators](luis-how-to-collaborate.md).
+Meer informatie over het ontwerpen van bijdragen van deel [nemers](luis-how-to-collaborate.md).
 
-## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Review endpoint utterances to begin the new iterative cycle
+## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Eind punt uitingen bekijken om de nieuwe iteratieve cyclus te starten
 
-When you are done with an iteration cycle, you can repeat the process. Start with [reviewing prediction endpoint utterances](luis-how-to-review-endpoint-utterances.md) LUIS marked with low-confidence. Check these utterances for both correct predicted intent and correct and complete entity extracted. After you review and accept changes, the review list should be empty.  
+Wanneer u klaar bent met een iteratie cyclus, kunt u het proces herhalen. Begin met het [controleren van voorspellings eindpunt uitingen](luis-how-to-review-endpoint-utterances.md) Luis gemarkeerd met lage betrouw baarheid. Controleer deze uitingen voor zowel de juiste vooraf gedicteerde intentie als juiste en volledige entiteit geëxtraheerd. Nadat u de wijzigingen hebt gecontroleerd en geaccepteerd, moet de controle lijst leeg zijn.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Learn concepts about [collaboration](luis-concept-keys.md).
+Leer concepten over [samen werking](luis-concept-keys.md).

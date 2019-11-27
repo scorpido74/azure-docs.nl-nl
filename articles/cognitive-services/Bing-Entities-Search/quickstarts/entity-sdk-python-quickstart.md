@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for entities with the SDK for Python - Bing Entity Search'
+title: 'Snelstartgids: zoeken naar entiteiten met de SDK voor python-Bing Entity Search'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for entities with the Bing Entity Search SDK for Python.
+description: Gebruik deze Snelstartgids om entiteiten te zoeken met de Bing Entity Search SDK voor python.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -19,7 +19,7 @@ ms.locfileid: "74327131"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>Snelstart: Bing Entiteiten zoeken-SDK met Python
 
-Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entiteiten zoeken-SDK voor Python. Hoewel Bing Entity Search een REST-API heeft die compatibel is met de meeste moderne programmeertalen, biedt de SDK een eenvoudige manier om de service te integreren in uw toepassingen. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py).
+Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entiteiten zoeken-SDK voor Python. Hoewel Bing Entiteiten zoeken een REST-API heeft die compatibel is met de meeste moderne programmeertalen, biedt de SDK een eenvoudige manier om de service te integreren in uw toepassingen. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -27,7 +27,7 @@ Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entiteiten zoek
 
 * De [Bing Entiteiten zoeken-SDK voor Python](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
 
-U kunt het best een virtuele Python-omgeving gebruiken. U kunt een virtuele omgeving installeren en initialiseren met de venv-module. You can install virtualenv with:
+U kunt het best een virtuele Python-omgeving gebruiken. U kunt een virtuele omgeving installeren en initialiseren met de venv-module. U kunt virtualenv installeren met:
 
 ```Console
 python -m venv mytestenv

@@ -1,7 +1,7 @@
 ---
-title: Prevent content translation - Translator Text API
+title: Vertaling van inhoud voor komen-Translator Text-API
 titleSuffix: Azure Cognitive Services
-description: Prevent translation of content with the Translator Text API. The Translator Text API allows you to tag content so that it isn't translated.
+description: Omzetting van inhoud met de Translator Text-API voor komen. Met de Translator Text-API kunt u inhoud labelen zodat deze niet wordt vertaald.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -17,14 +17,14 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326764"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>How to prevent translation of content with the Translator Text API
+# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Omzetting van inhoud met de Translator Text-API voor komen
 
-The Translator Text API allows you to tag content so that it isn't translated. For example, you may want to tag code, a brand name, or a word/phrase that doesn't make sense when localized.
+Met de Translator Text-API kunt u inhoud labelen zodat deze niet wordt vertaald. Stel dat u code, een merk naam of een woord/zin wilt labelen die niet zinvol is wanneer deze wordt gelokaliseerd.
 
-## <a name="methods-for-preventing-translation"></a>Methods for preventing translation
-1. Escape to a Twitter tag @somethingtopassthrough or #somethingtopassthrough. Un-escape after translation. This is the regular expression for valid twitter tags: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. A tag should start with a "@" sign, followed by a character and then followed by one or many characters, digits or underscore. It is recommended to keep tags short and the opening tag must be preceded by a space.
+## <a name="methods-for-preventing-translation"></a>Methoden voor het voor komen van vertalingen
+1. Escape naar een Twitter-tag @somethingtopassthrough of #somethingtopassthrough. Escape na omzetting ongedaan maken. Dit is de reguliere expressie voor geldige Twitter-Labels: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. Een tag moet beginnen met een @-teken, gevolgd door een teken en vervolgens gevolgd door een of meer tekens, cijfers of een liggend streepje. Het is raadzaam Tags kort te blijven en de openings label moet worden voorafgegaan door een spatie.
 
-2. Tag your content with `notranslate`. It's by design that this works only when the input textType is set as HTML
+2. Label uw inhoud met `notranslate`. Het ontwerp dat dit alleen werkt als de invoer textType is ingesteld als HTML
 
    Voorbeeld:
 
@@ -38,13 +38,13 @@ The Translator Text API allows you to tag content so that it isn't translated. F
    <div>This will be translated. </div>
    ```
 
-3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
+3. Gebruik de [dynamische woorden lijst](dynamic-dictionary.md) om een specifieke vertaling te bepalen.
 
-4. Don't pass the string to the Translator Text API for translation.
+4. Geef de teken reeks niet door aan de Translator Text-API voor vertaling.
 
-5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
+5. Aangepaste vertaler: gebruik een [woorden lijst in het aangepaste conversie programma](custom-translator/what-is-dictionary.md) om de vertaling van een woord groep met een waarschijnlijkheid van 100% te bepalen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Avoid translation in your Translator API call](reference/v3-0-translate.md)
+> [Vertaling in de API-aanroep van Translator vermijden](reference/v3-0-translate.md)

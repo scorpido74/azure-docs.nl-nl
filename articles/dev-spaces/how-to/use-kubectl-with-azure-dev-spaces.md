@@ -14,12 +14,12 @@ ms.locfileid: "74279932"
 ---
 # <a name="use-kubectl-with-an-azure-dev-space"></a>Gebruik kubectl met een Azure Dev Space
 
-U kunt toegang krijgen tot het Kubernetes-cluster in een Azure Dev Space, en gebruik maken van bestaande Kubernetes-hulpprogramma's zoals `kubectl`.
+U hebt toegang tot het Kubernetes-cluster binnen een Azure-ontwikkel ruimte en u kunt bestaande Kubernetes-hulpprogram ma's gebruiken, zoals `kubectl`.
 
-Met de opdracht `az aks use-dev-spaces` wordt automatisch een `kubectl` configuratiecontext voor u toegevoegd, zodat kubectl al zal zijn verbonden met uw Azure Dev Spaces Kubernetes-cluster. Voorbeelden:
-- Controleer de huidige context: `kubectl config current-context`
-- Toon een lijst met alle beschikbare contexten: `kubectl config get-contexts`. 
-- Wijzig de context: `kubectl config use-context <context-name>`
-- Bekijk het Kubernetes dashboard: voer uit `kubectl proxy`, open uw browser naar het adres dat deze opdracht weergeeft (voeg `/ui` toe aan de URL om naar het Kubernetes-dashboard te navigeren).
-- Toon een lijst met de actieve services in de standaard Azure Dev Spaces ruimte met de naam *default*: `kubectl get services --namespace=default`
+Als `az aks use-dev-spaces` opdracht wordt uitgevoerd, wordt automatisch een `kubectl` configuratie context toegevoegd voor u, dus kubectl moet al zijn verbonden met uw Azure dev Spaces Kubernetes-cluster. Voorbeelden:
+- De huidige context bevestigen: `kubectl config current-context`
+- Lijst met alle beschik bare contexten: `kubectl config get-contexts`. 
+- Context wijzigen: `kubectl config use-context <context-name>`
+- Bekijk het Kubernetes-dash board: Voer `kubectl proxy`uit en open de browser op het adres dat met deze opdracht wordt meegegeven (Voeg `/ui` toe aan de URL om naar het Kubernetes-dash board te navigeren).
+- Geef de actieve services weer in de standaard Space van Azure dev Spaces met de naam *standaard*: `kubectl get services --namespace=default`
 

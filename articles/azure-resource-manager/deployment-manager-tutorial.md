@@ -186,7 +186,7 @@ Later in de zelfstudie voert u een implementatie uit. Een door de gebruiker toeg
 
 U moet een door de gebruiker toegewezen beheerde identiteit maken en toegangsbeheer voor uw abonnement configureren.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Maak een [door de gebruiker toegewezen beheerde identiteit](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. Selecteer in de portal **Abonnementen** in het linkermenu en selecteer vervolgens uw abonnement.
 4. Selecteer **Toegangsbeheer (IAM)** en selecteer vervolgens **Roltoewijzing toevoegen**.

@@ -47,7 +47,7 @@ Zie [lokaal beheerde partner accounts toegang verlenen tot cloud resources met A
  
 ## <a name="next-steps"></a>Volgende stappen
 
-- [GRANT B2B-gebruikers in Azure AD-toegang tot uw on-premises toepassingen](hybrid-cloud-to-on-premises.md)
+- [B2B-gebruikers in azure AD toegang verlenen tot uw on-premises toepassingen](hybrid-cloud-to-on-premises.md)
 - [Lokaal beheerde partner accounts toegang verlenen tot cloud resources met behulp van Azure AD B2B-samen werking](hybrid-on-premises-to-cloud.md)
 
 
