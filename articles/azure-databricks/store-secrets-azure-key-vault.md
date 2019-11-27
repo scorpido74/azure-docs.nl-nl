@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
@@ -117,7 +117,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
    |Abonnement     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
    |Resourcegroep     | Selecteer dezelfde resource groep die de sleutel kluis bevat. |
    |Locatie     | Selecteer dezelfde locatie als uw Azure Key Vault. Zie [Azure-Services beschikbaar per regio](https://azure.microsoft.com/regions/services/)voor alle beschik bare regio's.        |
-   |Prijscategorie     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
+   |Prijsniveau     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
 
    ![Eigenschappen van Databricks-werk ruimte](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Implementatiegeschiedenis
+title: Implementatie geschiedenis
 description: Hierin wordt beschreven hoe u Azure Resource Manager implementatie bewerkingen kunt weer geven met de portal, Power shell, Azure CLI en REST API.
 tags: top-support-issue
 ms.topic: conceptual

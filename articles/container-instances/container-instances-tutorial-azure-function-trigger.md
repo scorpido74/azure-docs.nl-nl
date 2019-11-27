@@ -17,7 +17,7 @@ ms.locfileid: "74533378"
 
 In deze zelf studie maakt u een Azure-functie die een HTTP-aanvraag afneemt en de implementatie van een [container groep](container-instances-container-groups.md)activeert. In dit voor beeld ziet u de basis principes van het gebruik van Azure Functions om automatisch resources te maken in Azure Container Instances. Wijzig of breid het voor beeld uit voor complexere scenario's of andere gebeurtenis triggers. 
 
-Procedures voor:
+In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Gebruik Visual Studio code met de [Azure functions extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) om een eenvoudige, door http geactiveerde Power shell-functie te maken.

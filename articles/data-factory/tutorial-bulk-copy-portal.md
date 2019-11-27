@@ -28,11 +28,11 @@ Deze zelfstudie demonstreert het **kopiëren van een aantal tabellen uit Azure S
 Op hoog niveau bevat deze zelfstudie de volgende stappen:
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Een gegevensfactory maakt.
 > * Gekoppelde Azure SQL Database-, Azure SQL Data Warehouse- en Azure Storage-services maken.
 > * Gegevenssets voor Azure SQL Database en Azure SQL Data Warehouse maken.
 > * Een pijplijn maken om de te kopiëren tabellen op te zoeken en een andere pijplijn om de kopieerbewerking daadwerkelijk uit te voeren. 
-> * Een pijplijnuitvoering starten
+> * Een pijplijnuitvoering starten.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
 In deze zelfstudie wordt Azure Portal gebruikt. Zie [Quickstarts](quickstart-create-data-factory-dot-net.md) (Snelstartgidsen) voor meer informatie over het gebruik van andere hulpprogramma's/SDK's voor het maken van een gegevensfactory. 
@@ -48,7 +48,7 @@ In dit scenario gebruikt u een aantal tabellen in Azure SQL Database die u gaat 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
-* **Azure Storage-account**. Het Azure Storage-account wordt gebruikt als faseringsblobopslag in de bulksgewijze kopieerbewerking. 
+* **Een Azure Storage-account**. Het Azure Storage-account wordt gebruikt als faseringsblobopslag in de bulksgewijze kopieerbewerking. 
 * **Azure SQL-database**. Deze database bevat de brongegevens. 
 * **Azure SQL Data Warehouse**. Dit datawarehouse bevat de uit de SQL Database gekopieerde gegevens. 
 
@@ -76,7 +76,7 @@ Om deze instelling te controleren en in te scha kelen, gaat u naar uw Azure SQL 
 
 1. Voer op de pagina **nieuw Data Factory** **ADFTutorialBulkCopyDF** in als **naam**. 
  
-   De naam van de Azure-gegevensfactory moet **wereldwijd uniek** zijn. Als u het volgende foutbericht krijgt, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFTutorialBulkCopyDF) en probeert u het opnieuw. Zie het artikel [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de Azure-gegevensfactory moet **wereldwijd uniek** zijn. Als u het volgende foutbericht krijgt, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFTutorialBulkCopyDF) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
   
        `Data factory name “ADFTutorialBulkCopyDF” is not available`
 1. Selecteer het Azure-**abonnement** waarin u de gegevensfactory wilt maken. 
@@ -88,7 +88,7 @@ Om deze instelling te controleren en in te scha kelen, gaat u naar uw Azure SQL 
      Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie.  
 1. Selecteer **V2** als de **versie**.
 1. Selecteer de **locatie** voor de gegevensfactory. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 1. Wanneer het maken is voltooid, ziet u de pagina **Data Factory**.
    
 1. Klik op **Author & Monitor** om de gebruikersinterface (UI) van Data Factory op een afzonderlijk tabblad te openen.
@@ -152,7 +152,7 @@ In deze zelfstudie gebruikt u Azure Blob-opslag als een tussentijds faseringsgeb
 1. In het venster **New Linked Service** selecteert u **Azure Blob Storage** en klikt u op **Continue**. 
 1. Voer de volgende stappen uit in het venster **nieuwe gekoppelde service (Azure Blob Storage)** : 
 
-    a. Voer **AzureStorageLinkedService** in bij **Name**.                                                     
+    a. Voer **AzureStorageLinkedService** in als **Naam**.                                                     
     
     b. Selecteer uw **Azure Storage-account** bij **Storage account name**.
     
@@ -218,7 +218,7 @@ De **IterateAndCopySQLTables** -pijp lijn gebruikt een lijst met tabellen als ee
     
     c. Selecteer **Matrix** bij **Type**.
 
-1. Vouw in de werkset **Activities** de optie **Iteration & Conditions** uit en sleep de **ForEach**-activiteit naar het ontwerpoppervlak voor pijplijnen. U kunt ook zoeken naar activiteiten in de werkset **Activities**. 
+1. Vouw in de werkset **Activities** de optie **Iteration & Conditions** uit en sleep de **ForEach**-activiteit naar het ontwerpoppervlak voor pijplijnen. U kunt ook zoeken naar activiteiten in de werkset **Activiteiten**. 
 
     a. Voer onderaan het tabblad **Algemeen** **IterateSQLTables** bij **Naam** in. 
 
@@ -258,7 +258,7 @@ De **IterateAndCopySQLTables** -pijp lijn gebruikt een lijst met tabellen als ee
         ```
 
         ![Sink-instellingen kopiëren](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
-1. Open het tabblad **Settings** en voer de volgende stappen uit: 
+1. Ga naar het tabblad **Instellingen** en voer de volgende stappen uit: 
 
     1. Schakel het selectie vakje in om **fase ring in te scha kelen**.
     1. Selecteer **AzureStorageLinkedService** bij **Store Account Linked Service**.
@@ -280,7 +280,7 @@ Deze pijp lijn voert twee acties uit:
     1. Voer **LookupTableList** in als **Name**. 
     1. Voer **De tabellijst ophalen uit de Azure SQL-database** in bij **Description**.
 
-1. Open het tabblad **Settings** en voer de volgende stappen uit:
+1. Ga naar het tabblad **Instellingen** en voer de volgende stappen uit:
 
     1. Selecteer **AzureSqlDatabaseDataset** bij **Source Dataset**. 
     1. Selecteer **Query** bij **Use Query**. 
@@ -294,7 +294,7 @@ Deze pijp lijn voert twee acties uit:
         ![Lookup-activiteit - pagina instellingen](./media/tutorial-bulk-copy-portal/lookup-settings-page.png)
 1. Sleep de activiteit **pijp lijn uitvoeren** vanuit de werkset activiteiten naar het ontwerp oppervlak voor pijp lijnen en stel de naam in op **TriggerCopy**.
 
-1. Open het tabblad **Settings** en voer de volgende stappen uit: 
+1. Ga naar het tabblad **Instellingen** en voer de volgende stappen uit: 
 
     1. Selecteer **IterateAndCopySQLTables** bij **Invoked pipeline**. 
     1. Vouw de sectie **Advanced** uit. 
@@ -383,11 +383,11 @@ Ga naar pijplijn **GetTableListAndTriggerCopyData**, klik op **trigger toevoegen
 In deze zelfstudie hebt u de volgende stappen uitgevoerd: 
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Een gegevensfactory maakt.
 > * Gekoppelde Azure SQL Database-, Azure SQL Data Warehouse- en Azure Storage-services maken.
 > * Gegevenssets voor Azure SQL Database en Azure SQL Data Warehouse maken.
 > * Een pijplijn maken om de te kopiëren tabellen op te zoeken en een andere pijplijn om de kopieerbewerking daadwerkelijk uit te voeren. 
-> * Een pijplijnuitvoering starten
+> * Een pijplijnuitvoering starten.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
 Ga door naar de volgende zelfstudie voor informatie over het incrementeel kopiëren van gegevens uit een bron naar een bestemming:

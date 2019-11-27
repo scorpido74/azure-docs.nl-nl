@@ -84,7 +84,7 @@ Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u 
 
 | Fout type | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout wordt gedetecteerd. |Ja|
+| Fout | Als er geen fout wordt gedetecteerd. |Ja|
 | GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
 | PlannedMaintenance |  Het gateway-exemplaar is onderhouds werkzaamheden.  |Nee|
 | UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn. | Nee |
@@ -99,7 +99,7 @@ Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u 
 
 | Fout type | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout wordt gedetecteerd. |Ja|
+| Fout | Als er geen fout wordt gedetecteerd. |Ja|
 | GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
 | PlannedMaintenance | Het gateway-exemplaar is onderhouds werkzaamheden.  |Nee|
 | UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn.  | Nee |
@@ -108,10 +108,10 @@ Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u 
 | ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' losgekoppeld '. |Nee|
 | ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
 | ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
-| Authentication | De vooraf gedeelde sleutel komt niet overeen. | Ja|
+| Verificatie | De vooraf gedeelde sleutel komt niet overeen. | Ja|
 | PeerReachability | De peer gateway is niet bereikbaar. | Ja|
 | IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
-| WfpParse Error | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|
+| WfpParse-fout | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|
 
 ## <a name="next-steps"></a>Volgende stappen
 

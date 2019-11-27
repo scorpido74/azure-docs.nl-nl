@@ -28,6 +28,6 @@ ms.locfileid: "74549387"
 | [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | Via IoT Edge |  &nbsp; | Ja | Implementeer en bedient ML modellen op IoT-apparaten. |
 
 > [!NOTE]
-> Hoewel Compute-doelen als lokale, Azure Machine Learning Reken instantie en Azure Machine Learning Reken clusters GPU ondersteunen voor training en experimenten, met behulp van GPU voor demijnen __Wanneer een webservice wordt geïmplementeerd__ , wordt deze alleen ondersteund op Azure Kubernetes-service.
+> Hoewel reken doelen als lokale, Azure Machine Learning Reken instantie en Azure Machine Learning Reken clusters GPU ondersteunen voor training en experimenten, wordt GPU gebruikt voor het afleiden van __een host als een webservice__ alleen wordt ondersteund door de Azure Kubernetes-service.
 >
 > Het gebruik van een GPU voor het afstellen van een __Score met een machine learning pijp lijn__ wordt alleen ondersteund voor Azure machine learning compute.

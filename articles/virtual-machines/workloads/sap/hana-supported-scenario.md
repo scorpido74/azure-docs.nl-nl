@@ -48,10 +48,10 @@ Het afgeleide architectuur ontwerp is uitsluitend afkomstig uit het oogpunt van 
 
 In dit document worden de details van de twee onderdelen in elke ondersteunde architectuur beschreven:
 
-- Ethernet
+- -
 - Storage
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 
 Elke server die wordt ingericht, is vooraf geconfigureerd met de sets van Ethernet-interfaces. Hier volgen de details van de Ethernet-interfaces die op elke HLI-eenheid zijn geconfigureerd.
 
@@ -63,14 +63,14 @@ Elke server die wordt ingericht, is vooraf geconfigureerd met de sets van Ethern
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI |
-| B | TYPE I | eth2.tenant | eno3.tenant | Knoop punt naar knoop punt |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | STONITH |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Knoop punt naar knoop punt |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | STONITH |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Knoop punt naar knoop punt |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | STONITH |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Knoop punt naar knoop punt |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | STONITH |
 
 U kunt de interfaces gebruiken op basis van de topologie die is geconfigureerd op de HLI-eenheid. Bijvoorbeeld: de interface "B" is ingesteld voor het knoop punt communicatie van knoop punten. Dit is handig wanneer u een scale-out-topologie hebt geconfigureerd. In het geval van een configuratie met één knoop punt, wordt deze interface niet gebruikt. Bekijk de vereiste scenario's (verderop in dit document) voor meer informatie over het gebruik van de interface. 
 
@@ -132,19 +132,19 @@ Deze topologie ondersteunt één knoop punt in een configuratie met één SID.
 
 ![Single-node-with-one-SID. png](media/hana-supported-scenario/Single-node-with-one-SID.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI |
-| B | TYPE I | eth2.tenant | eno3.tenant | Geconfigureerd maar niet in gebruik |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Geconfigureerd maar niet in gebruik |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Geconfigureerd maar niet in gebruik |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -165,21 +165,21 @@ Deze topologie ondersteunt één knoop punt in een configuratie met meerdere Sid
 
 ### <a name="architecture-diagram"></a>Architectuurdiagram  
 
-![single-node-mcos.png](media/hana-supported-scenario/single-node-mcos.png)
+![Single-Node-mcos. png](media/hana-supported-scenario/single-node-mcos.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI |
-| B | TYPE I | eth2.tenant | eno3.tenant | Geconfigureerd maar niet in gebruik |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Geconfigureerd maar niet in gebruik |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Geconfigureerd maar niet in gebruik |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -207,19 +207,19 @@ Deze topologie ondersteunt één knoop punt in een schaal bare configuratie met 
 
 ![Single-Node-with-Dr. png](media/hana-supported-scenario/Single-node-with-dr.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI |
-| B | TYPE I | eth2.tenant | eno3.tenant | Geconfigureerd maar niet in gebruik |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Geconfigureerd maar niet in gebruik |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Geconfigureerd maar niet in gebruik |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -248,19 +248,19 @@ Deze topologie ondersteunt één knoop punt in een schaal bare configuratie met 
 
 ![Single-Node-with-Dr-Multipurpose. png](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI |
-| B | TYPE I | eth2.tenant | eno3.tenant | Geconfigureerd maar niet in gebruik |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Geconfigureerd maar niet in gebruik |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Geconfigureerd maar niet in gebruik |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -302,19 +302,19 @@ Deze topologie ondersteunt twee knoop punten voor de configuratie van HANA-syste
 
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI |
-| B | TYPE I | eth2.tenant | eno3.tenant | Geconfigureerd maar niet in gebruik |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Gebruikt voor STONITH |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Gebruikt voor STONITH |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Geconfigureerd maar niet in gebruik |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Gebruikt voor STONITH |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Geconfigureerd maar niet in gebruik |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Gebruikt voor STONITH |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -350,19 +350,19 @@ In het diagram wordt het scenario voor meerdere doel einden weer gegeven waar op
 
 ![HSR-with-DR. png](media/hana-supported-scenario/HSR-with-DR.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI |
-| B | TYPE I | eth2.tenant | eno3.tenant | Geconfigureerd maar niet in gebruik |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Gebruikt voor STONITH |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Gebruikt voor STONITH |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Geconfigureerd maar niet in gebruik |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Gebruikt voor STONITH |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Geconfigureerd maar niet in gebruik |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Gebruikt voor STONITH |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -409,19 +409,19 @@ Deze topologie ondersteunt twee knoop punten in een automatische failover-config
 
 ![SCA](media/hana-supported-scenario/scaleup-with-standby.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI |
-| B | TYPE I | eth2.tenant | eno3.tenant | Communicatie tussen knoop punten en knoop punten |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Communicatie tussen knoop punten en knoop punten |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Communicatie tussen knoop punten en knoop punten |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Communicatie tussen knoop punten en knoop punten |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -450,19 +450,19 @@ Deze topologie ondersteunt meerdere knoop punten in een scale-out configuratie. 
 
 ![scaleout-nm-standby. png](media/hana-supported-scenario/scaleout-nm-standby.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI |
-| B | TYPE I | eth2.tenant | eno3.tenant | Communicatie tussen knoop punten en knoop punten |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Communicatie tussen knoop punten en knoop punten |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Communicatie tussen knoop punten en knoop punten |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Communicatie tussen knoop punten en knoop punten |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -483,22 +483,22 @@ Deze topologie ondersteunt meerdere knoop punten in een scale-out configuratie. 
 
 ### <a name="architecture-diagram"></a>Architectuurdiagram  
 
-![scaleout-nm.png](media/hana-supported-scenario/scaleout-nm.png)
+![scaleout-nm. png](media/hana-supported-scenario/scaleout-nm.png)
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI |
-| B | TYPE I | eth2.tenant | eno3.tenant | Communicatie tussen knoop punten en knoop punten |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Communicatie tussen knoop punten en knoop punten |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Communicatie tussen knoop punten en knoop punten |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Communicatie tussen knoop punten en knoop punten |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -525,19 +525,19 @@ Deze topologie ondersteunt meerdere knoop punten in een scale-out met een DR. Zo
 ![scaleout-with-Dr. png](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI |
-| B | TYPE I | eth2.tenant | eno3.tenant | Communicatie tussen knoop punten en knoop punten |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Communicatie tussen knoop punten en knoop punten |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Communicatie tussen knoop punten en knoop punten |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Communicatie tussen knoop punten en knoop punten |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -570,19 +570,19 @@ Deze topologie ondersteunt één knoop punt in een schaal bare configuratie met 
 
 ![Single-Node-HSR-Dr-111. png](media/hana-supported-scenario/single-node-hsr-dr-111.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI/HSR |
-| B | TYPE I | eth2.tenant | eno3.tenant | Geconfigureerd maar niet in gebruik |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI/HSR |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI/HSR |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Geconfigureerd maar niet in gebruik |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Geconfigureerd maar niet in gebruik |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd op de HLI-eenheden (Primary en DR):
@@ -611,19 +611,19 @@ De volgende mountpoints zijn vooraf geconfigureerd op de HLI-eenheden (Primary e
 
 ![Single-Node-HSR-Dr-cost-Optimized-121. png](media/hana-supported-scenario/single-node-hsr-dr-cost-optimized-121.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI/HSR |
-| B | TYPE I | eth2.tenant | eno3.tenant | Geconfigureerd maar niet in gebruik |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI/HSR |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI/HSR |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Geconfigureerd maar niet in gebruik |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Geconfigureerd maar niet in gebruik |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -661,19 +661,19 @@ De volgende mountpoints zijn vooraf geconfigureerd:
 
 ![Hana-System-Replication-Dr-131. png](media/hana-supported-scenario/hana-system-replication-dr-131.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI/HSR |
-| B | TYPE I | eth2.tenant | eno3.tenant | Geconfigureerd maar niet in gebruik |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI/HSR |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI/HSR |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Geconfigureerd maar niet in gebruik |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Geconfigureerd maar niet in gebruik |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -706,19 +706,19 @@ De volgende mountpoints zijn vooraf geconfigureerd:
 
 ![Hana-System-Replication-Dr-cost-Optimized-141. png](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI/HSR |
-| B | TYPE I | eth2.tenant | eno3.tenant | Geconfigureerd maar niet in gebruik |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI/HSR |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI/HSR |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Geconfigureerd maar niet in gebruik |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Geconfigureerd maar niet in gebruik |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:
@@ -757,19 +757,19 @@ Deze topologie ondersteunt meerdere knoop punten in een scale-out met een DR. U 
 [![scale-out-Dr-HSR-151. png](media/hana-supported-scenario/scale-out-dr-hsr-151.png)](media/hana-supported-scenario/scale-out-dr-hsr-151.png#lightbox)
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>-
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
 | LOGISCHE NETWERK INTERFACE | SKU-TYPE | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
 | --- | --- | --- | --- | --- |
-| A | TYPE I | eth0.tenant | eno1. Tenant | Client naar HLI/HSR |
-| B | TYPE I | eth2.tenant | eno3.tenant | Communicatie tussen knoop punten en knoop punten |
-| C | TYPE I | eth1.tenant | eno2. Tenant | Knoop punt naar opslag |
-| D | TYPE I | eth4.tenant | eno4.tenant | Geconfigureerd maar niet in gebruik |
+| A | TYPE I | ETH0. Tenant | eno1. Tenant | Client naar HLI/HSR |
+| B | TYPE I | eth2. Tenant | eno3. Tenant | Communicatie tussen knoop punten en knoop punten |
+| C | TYPE I | eth1. Tenant | eno2. Tenant | Knoop punt naar opslag |
+| D | TYPE I | eth4. Tenant | eno4. Tenant | Geconfigureerd maar niet in gebruik |
 | A | TYPE II | VLAN\<tenantNo > | team0. Tenant | Client naar HLI/HSR |
-| B | TYPE II | VLAN\<tenantNo + 2 > | team0.tenant+2 | Communicatie tussen knoop punten en knoop punten |
-| C | TYPE II | VLAN\<tenantNo + 1 > | team0.tenant+1 | Knoop punt naar opslag |
-| D | TYPE II | VLAN-\<tenantNo + 3 > | team0.tenant+3 | Geconfigureerd maar niet in gebruik |
+| B | TYPE II | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Communicatie tussen knoop punten en knoop punten |
+| C | TYPE II | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Knoop punt naar opslag |
+| D | TYPE II | VLAN-\<tenantNo + 3 > | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
 ### <a name="storage"></a>Storage
 De volgende mountpoints zijn vooraf geconfigureerd:

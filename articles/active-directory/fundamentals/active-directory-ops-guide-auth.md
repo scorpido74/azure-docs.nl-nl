@@ -192,7 +192,7 @@ Als u daarentegen toepassingen vindt die aan afzonderlijke gebruikers zijn toege
 - [Machtigingen voor app-registratie in Azure Active Directory delegeren](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-app-roles)
 - [Dynamische lidmaatschaps regels voor groepen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)
 
-## <a name="access-policies"></a>Toegangsbeleid
+## <a name="access-policies"></a>Toegangs beleid
 
 ### <a name="named-locations"></a>Benoemde locaties
 
@@ -300,7 +300,7 @@ Hieronder vindt u de machtigingen die u mogelijk wilt scrutinize voor micro soft
 - Toepassingen met gedelegeerde machtigingen kunnen e-mail namens de gebruiker lezen, verzenden of beheren
 - Toepassingen waaraan het gebruik van de volgende machtigingen is verleend:
 
-| Resource | Machtiging |
+| Bron | Machtiging |
 | -------------------------- | -------------------- |
 | Office 365 Exchange Online | Uitgebreide. AccessAsUser. all |
 | | EWS. AccessAsUser. all |

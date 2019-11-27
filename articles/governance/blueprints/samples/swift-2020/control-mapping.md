@@ -70,14 +70,14 @@ De mogelijkheden voor gegevens detectie en-classificatie van geavanceerde gegeve
 
 ## <a name="22-27-41-and-61-remote-access--automated-monitoring--control"></a>2,2, 2,7, 4,1 en 6,1 externe toegang | Geautomatiseerde controle/controle
 
-Met deze blauw druk kunt u externe toegang bewaken en beheren door [Azure Policy](../../../policy/overview.md) definities toe te wijzen om te controleren of externe fout opsporing voor Azure app service toepassing is uitgeschakeld en beleids definities voor het controleren van virtuele Linux-machines die extern toestaan verbindingen van accounts zonder wacht woorden. Deze blauw druk wijst ook een Azure Policy definitie toe waarmee u onbeperkte toegang tot opslag accounts kunt controleren. Door deze indica toren te bewaken, kunt u ervoor zorgen dat externe toegangs methoden voldoen aan uw beveiligings beleid.
+Deze blauw druk helpt u bij het bewaken en beheren van externe toegang door [Azure Policy](../../../policy/overview.md) definities toe te wijzen om te controleren of externe fout opsporing voor Azure app service toepassing is uitgeschakeld en beleids definities waarmee virtuele Linux-machines worden gecontroleerd die externe verbindingen van accounts zonder wacht woorden toestaan. Deze blauw druk wijst ook een Azure Policy definitie toe waarmee u onbeperkte toegang tot opslag accounts kunt controleren. Door deze indica toren te bewaken, kunt u ervoor zorgen dat externe toegangs methoden voldoen aan uw beveiligings beleid.
 
 - \[preview\]: controle resultaten weer geven van Linux-Vm's die externe verbindingen toestaan van accounts zonder wacht woorden
 - \[preview\]: vereisten implementeren voor het controleren van virtuele Linux-machines die externe verbindingen van accounts zonder wacht woorden toestaan
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 - Fout opsporing op afstand moet worden uitgeschakeld voor de API-app
 - Fout opsporing op afstand moet worden uitgeschakeld voor functie-app
-- Foutopsporing op afstand moet worden uitgeschakeld voor Web-App
+- Externe fout opsporing moet worden uitgeschakeld voor webtoepassing
 
 ## <a name="13-and-64-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>1,3 en 6,4 inhoud van audit records | Gecentraliseerd beheer van geplande controle record inhoud
 
@@ -226,10 +226,10 @@ Deze blauw druk helpt u om het vertrouwelijke en de integriteit van verzonden in
 - De API-app mag alleen toegankelijk zijn via HTTPS
 - Controle resultaten weer geven van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
 - Vereisten implementeren voor het controleren van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
-- Functie-App moet alleen toegankelijk zijn via HTTPS
+- functie-app mag alleen toegankelijk zijn via HTTPS
 - Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld
 - Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld
-- Web-App moet alleen toegankelijk zijn via HTTPS
+- Webtoepassing mag alleen toegankelijk zijn via HTTPS
 
 ## <a name="22-23-25-41-and-27-protection-of-information-at-rest--cryptographic-protection"></a>2,2, 2,3, 2,5, 4,1 en 2,7 beveiliging van informatie in rust | Cryptografische beveiliging
 
@@ -242,7 +242,7 @@ Deze blauw druk helpt u bij het afdwingen van uw beleid voor het gebruik van cry
 
 ## <a name="13-22-and-27-flaw-remediation"></a>1,3, 2,2 en 2,7 fout herstel
 
-Deze blauw druk helpt u bij het beheren van gegevens systeem fouten door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die ontbrekende systeem updates, problemen met het besturings systeem, SQL-beveiligings problemen en beveiligings problemen met virtuele machines in azure-beveiliging bewaken Projecten. Azure Security Center biedt rapportage mogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligings status van geïmplementeerde Azure-resources. Deze blauw druk wijst ook een beleids definitie toe die ervoor zorgt dat het besturings systeem wordt geïnstalleerd voor schaal sets voor virtuele machines.
+Deze blauw druk helpt u bij het beheren van gegevens systeem fouten door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die ontbrekende systeem updates, problemen met het besturings systeem, SQL-beveiligings problemen en beveiligings problemen met virtuele machines in azure Security Center bewaken. Azure Security Center biedt rapportage mogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligings status van geïmplementeerde Azure-resources. Deze blauw druk wijst ook een beleids definitie toe die ervoor zorgt dat het besturings systeem wordt geïnstalleerd voor schaal sets voor virtuele machines.
 
 - Automatische patching van besturingssysteem installatie kopieën vereisen op Virtual Machine Scale Sets
 - Systeem updates op virtuele-machine schaal sets moeten worden geïnstalleerd
@@ -253,7 +253,7 @@ Deze blauw druk helpt u bij het beheren van gegevens systeem fouten door [Azure 
 
 ## <a name="61-malicious-code-protection"></a>6,1 beveiliging tegen schadelijke code
 
-Deze blauw druk helpt u bij het beheren van Endpoint Protection, met inbegrip van schadelijke code beveiliging, door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die controleren op ontbrekende Endpoint Protection op virtuele machines in azure Security Center en afdwingen van micro soft antimalware-oplossing op virtuele Windows-machines.
+Deze blauw druk helpt u bij het beheren van Endpoint Protection, met inbegrip van schadelijke code beveiliging, door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die controleren op ontbrekende Endpoint Protection op virtuele machines in azure Security Center en de oplossing micro soft antimalware afdwingen op virtuele Windows-machines.
 
 - Standaard micro soft IaaSAntimalware-extensie voor Windows Server implementeren
 - Endpoint Protection-oplossing moet worden geïnstalleerd op virtuele-machine schaal sets

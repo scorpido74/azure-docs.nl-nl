@@ -24,7 +24,7 @@ Zodra een [geplande onderhouds](maintenance-notifications.md) Golf is gepland, k
 
 U kunt de Azure Portal gebruiken en zoeken naar Vm's die zijn gepland voor onderhoud.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Klik in de linkernavigatiebalk op **virtual machines**.
 

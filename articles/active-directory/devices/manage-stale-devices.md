@@ -75,7 +75,7 @@ Als u een apparaat wilt bijwerken in Azure AD, hebt u een account nodig waaraan 
 
 Selecteer in uw opschoningsbeleid accounts die over de vereiste rollen beschikken. 
 
-### <a name="timeframe"></a>Periode
+### <a name="timeframe"></a>Tijdsbestek
 
 Definieer de periode die u als indicator wilt gebruiken voor een verlopen apparaat. Als u uw tijds bestek definieert, factor het venster dat wordt vermeld voor het bijwerken van de tijds tempel van de activiteit in uw waarde. U moet bijvoorbeeld een tijds tempel overwegen die jonger is dan 21 dagen (inclusief variantie) als indicator voor een verouderd apparaat. Er zijn scenario's waarin het lijkt alsof een apparaat verlopen is terwijl dat niet het geval is. Zo is het bijvoorbeeld mogelijk dat de eigenaar van het apparaat op vakantie is of ziek is en  hierdoor de periode voor verlopen apparaten wordt overschreden.
 

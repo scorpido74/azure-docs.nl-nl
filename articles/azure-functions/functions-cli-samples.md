@@ -31,7 +31,7 @@ De volgende tabel bevat links naar bash-scripts voor Azure Functions die gebruik
 | [Een functie-app maken en deze verbinden met een opslagaccount](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Hiermee maakt u een functie-app en verbindt u deze met een opslagaccount. |
 | [Een functie-app maken en deze verbinden met een Azure Cosmos DB](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Hiermee maakt u een functie-app en verbindt u deze met een Azure Cosmos DB. |
 
-| Doorlopende implementatie | Beschrijving|
+| Continue implementatie | Beschrijving|
 |---|---|
 | [Implementeren vanuit GitHub](scripts/functions-cli-create-function-app-github-continuous.md) | Hiermee maakt u een functie-app die wordt geïmplementeerd vanuit een GitHub-opslagplaats.  |
 | [Implementeren vanuit Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Maak een functie-app die wordt geïmplementeerd vanuit een Azure DevOps-opslag plaats.  |

@@ -52,7 +52,7 @@ De Azure Cosmos-emulator heeft de volgende hardware-en software vereisten:
   * 2 GB RAM
   * 10 GB beschikbare schijfruimte
 
-## <a name="installation"></a>Installeren
+## <a name="installation"></a>Installatie
 
 U kunt de Azure Cosmos-emulator downloaden en installeren vanuit het [micro soft Download centrum](https://aka.ms/cosmosdb-emulator) of u kunt de emulator uitvoeren op docker voor Windows. Zie [Uitvoeren op Docker](#running-on-docker) voor instructies over het gebruik van de emulator op Docker voor Windows.
 
@@ -243,9 +243,9 @@ Typ `CosmosDB.Emulator.exe /?` bij de opdrachtprompt om een lijst met opties te 
 | GetStatus |Hiermee wordt de status van de Azure Cosmos-emulator opgehaald. De status wordt aangegeven door de afsluitcode: 1 = starten, 2 = wordt uitgevoerd, 3 = gestopt. Een negatieve afsluitcode geeft aan dat er een fout is opgetreden. Er wordt geen andere uitvoer geproduceerd. | CosmosDB.Emulator.exe /GetStatus| |
 | Afsluiten| De Azure Cosmos-emulator wordt afgesloten.| CosmosDB.Emulator.exe /Shutdown | |
 |DataPath | Specificeert het pad waarin de gegevensbestanden worden opgeslagen. De standaard waarde is%LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<gegevenspad\> | \<gegevenspad\>: een toegankelijk pad |
-|Poort | Specificeert het poortnummer dat moet worden gebruikt voor de emulator. De standaard waarde is 8081. |CosmosDB.Emulator.exe /Port=\<poort\> | \<poort\>: enkel poortnummer |
+|Port | Specificeert het poortnummer dat moet worden gebruikt voor de emulator. De standaard waarde is 8081. |CosmosDB.Emulator.exe /Port=\<poort\> | \<poort\>: enkel poortnummer |
 | ComputePort | Het poort nummer opgegeven dat moet worden gebruikt voor de compute Interop-Gateway Service. De poort voor de HTTP-eindpunt test van de gateway wordt berekend als ComputePort + 79. Daarom moeten ComputePort en ComputePort + 79 open en beschikbaar zijn. De standaard waarden zijn 8900, 8979. | CosmosDB. emulator. exe/ComputePort = \<ComputePort\> | \<computeport\>: één poort nummer |
-| EnableMongoDbEndpoint | Hiermee schakelt u de MongoDB-API in | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
+| EnableMongoDbEndpoint | Hiermee schakelt u de MongoDB-API in | CosmosDB. emulator. exe/EnableMongoDbEndpoint | |
 | MongoPort | Specificeert het poortnummer dat moet worden gebruikt MongoDB compatibiliteit-API. De standaard waarde is 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongopo0rt\>: enkel poortnummer|
 | EnableCassandraEndpoint | Hiermee schakelt u Cassandra-API | CosmosDB. emulator. exe/EnableCassandraEndpoint | |
 | CassandraPort | Hiermee geeft u het poort nummer op dat moet worden gebruikt voor het Cassandra-eind punt. De standaard waarde is 10350. | CosmosDB. emulator. exe/CassandraPort = \<CassandraPort\> | \<cassandraport\>: één poort nummer |
@@ -253,7 +253,7 @@ Typ `CosmosDB.Emulator.exe /?` bij de opdrachtprompt om een lijst met opties te 
 | GremlinPort | Het poort nummer dat moet worden gebruikt voor het Gremlin-eind punt. De standaard waarde is 8901. | CosmosDB. emulator. exe/GremlinPort =\<poort\> | \<poort\>: enkel poortnummer |
 |EnableTableEndpoint | Hiermee schakelt u Azure Table-API | CosmosDB. emulator. exe/EnableTableEndpoint | |
 |TablePort | Het poort nummer dat moet worden gebruikt voor het Azure-tabel eindpunt. De standaard waarde is 8902. | CosmosDB. emulator. exe/TablePort =\<poort\> | \<poort\>: enkel poortnummer|
-| KeyFile | Lees de autorisatie sleutel van het opgegeven bestand. De/GenKeyFile-optie gebruiken om een keyfile te genereren | CosmosDB. emulator. exe/KeyFile =\<file_name\> | \<file_name\>: pad naar het bestand |
+| Sleutel | Lees de autorisatie sleutel van het opgegeven bestand. De/GenKeyFile-optie gebruiken om een keyfile te genereren | CosmosDB. emulator. exe/KeyFile =\<file_name\> | \<file_name\>: pad naar het bestand |
 | ResetDataPath | Verwijdert recursief alle bestanden in het opgegeven pad. Als u geen pad opgeeft, wordt standaard%LOCALAPPDATA%\CosmosDbEmulator | CosmosDB. emulator. exe/ResetDataPath =\<pad > | \<pad\>: bestandspad  |
 | StartTraces  |  Verzamelen van traceer logboeken voor fout opsporing starten. | CosmosDB. emulator. exe/StartTraces | |
 | StopTraces     | Stoppen met het verzamelen van traceer logboeken voor fout opsporing. | CosmosDB. emulator. exe/StopTraces  | |

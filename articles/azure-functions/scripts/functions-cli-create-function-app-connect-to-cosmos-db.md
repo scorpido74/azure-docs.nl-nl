@@ -36,7 +36,7 @@ In dit script worden de volgende opdrachten gebruikt: Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Een resourcegroep maken met locatie |
-| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Een opslagaccount maken |
+| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Maak een opslagaccount |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Hiermee maakt u een functie-app in het serverloze [verbruiksabonnement](../functions-scale.md#consumption-plan). |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Hiermee maakt u een Azure Cosmos DB-database. |
 | [AZ cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| Hiermee haalt u de verbinding van het database account op. |
@@ -45,7 +45,7 @@ In dit script worden de volgende opdrachten gebruikt: Elke opdracht in de tabel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Aanvullende CLI-voorbeeldscripts voor Azure Functions vindt u in de [Azure Functions-documentatie](../functions-cli-samples.md).
 

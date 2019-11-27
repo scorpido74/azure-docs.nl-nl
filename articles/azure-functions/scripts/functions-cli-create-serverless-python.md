@@ -13,7 +13,7 @@ ms.locfileid: "74536258"
 ---
 # <a name="create-a-serverless-python-function-app-using-azure-cli"></a>Een serverloze python-functie-app maken met behulp van Azure CLI
 
-Met dit voorbeeldscript voor Azure Functions wordt een functie-app gemaakt, wat een container voor uw functies is. 
+Met dit voorbeeldscript voor Azure Functions maakt u een functie-app die een container vormt voor uw functies. 
 
 >[!NOTE]
 >De functie-app die wordt gemaakt, wordt uitgevoerd op python versie 3,6. Python-versie 3,7 wordt ook ondersteund door Azure Functions.
@@ -34,16 +34,16 @@ Met dit script wordt een Azure Function-app gemaakt met behulp van het [verbruik
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht. In dit script worden de volgende opdrachten gebruikt:
+Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht. In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Hiermee wordt een Azure Storage-account gemaakt. |
+| [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Hiermee maakt u een Azure-opslagaccount. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Hiermee maakt u een functie-app. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Aanvullende CLI-voorbeeldscripts voor Azure Functions vindt u in de [Azure Functions-documentatie](../functions-cli-samples.md).

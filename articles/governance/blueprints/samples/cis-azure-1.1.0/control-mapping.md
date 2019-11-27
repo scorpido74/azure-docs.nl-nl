@@ -349,7 +349,7 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat webtoepassingen alleen toegankelijk zijn via beveiligde verbindingen.
 
-- Web-App moet alleen toegankelijk zijn via HTTPS
+- Webtoepassing mag alleen toegankelijk zijn via HTTPS
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -30,8 +30,8 @@ Deze blauw druk helpt u bij het beheren en best uren van netwerken door [Azure P
 
 Deze blauw druk helpt u bij het afdwingen van uw beleid met het gebruik van cryptograph-besturings elementen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die specifieke cryptograph-besturings elementen afdwingen en het gebruik van zwakke cryptografische instellingen te controleren. Als u wilt weten waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maat regelen nemen om ervoor te zorgen dat bronnen worden geconfigureerd in overeenstemming met uw informatie beveiligings beleid. Met name de beleids regels die door deze blauw druk worden toegewezen, vereisen transparante gegevens versleuteling voor SQL-data bases. controleren op ontbrekende versleuteling voor opslag accounts en Automation-account variabelen. Er zijn ook beleids regels voor het controleren van onbeveiligde verbindingen met opslag accounts, functie-apps, WebApp, API Apps en Redis Cache en het controleren van niet-versleutelde Service Fabric communicatie.
 
-- Functie-App moet alleen toegankelijk zijn via HTTPS
-- Web-App moet alleen toegankelijk zijn via HTTPS
+- functie-app mag alleen toegankelijk zijn via HTTPS
+- Webtoepassing mag alleen toegankelijk zijn via HTTPS
 - De API-app mag alleen toegankelijk zijn via HTTPS
 - Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld
 - Schijf versleuteling moet worden toegepast op virtuele machines

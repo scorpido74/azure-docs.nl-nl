@@ -51,9 +51,9 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Installeer Visual Studio 2019](https://www.visualstudio.com/) versie 15,5 of hoger met de werk belasting **Azure Development** en **ASP.net en Web Development** .
-* [Installeer de Service Fabric-SDK](service-fabric-get-started.md)
+* [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Haal een certificaat op of maak een zelfondertekend ontwikkelingscertificaat.
 

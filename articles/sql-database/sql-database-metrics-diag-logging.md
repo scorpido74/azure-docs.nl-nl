@@ -41,9 +41,9 @@ Dit artikel bevat richt lijnen voor het inschakelen van diagnostische telemetrie
 
 U kunt metrische gegevens en diagnostische gegevens over telemetrie inschakelen en beheren met een van de volgende methoden:
 
-- Azure-portal
+- Azure Portal
 - PowerShell
-- Azure-CLI
+- Azure CLI
 - Azure Monitor REST API
 - Azure Resource Manager-sjabloon
 
@@ -81,7 +81,7 @@ U kunt Azure SQL-data bases en exemplaar databases instellen om de volgende diag
 > [!NOTE]
 > Als u controle logboek streaming wilt inschakelen, raadpleegt [u controle instellen voor uw data base](sql-database-auditing.md#subheading-2)en controleert u [logboeken in azure monitor logboeken en Azure Event hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 
-## <a name="azure-portal"></a>Azure-portal
+## <a name="azure-portal"></a>Azure Portal
 
 U kunt het menu **Diagnostische instellingen** gebruiken voor elke afzonderlijke, gepoolde of exemplaar database in azure portal voor het configureren van streaming van diagnostische gegevens over de telemetrie. Daarnaast kan diagnostische telemetrie ook afzonderlijk worden geconfigureerd voor database containers: elastische Pools en beheerde exemplaren. U kunt de volgende bestemmingen instellen voor het streamen van de telemetrie diagnostische gegevens: Azure Storage, Azure Event Hubs en Azure Monitor Logboeken.
 
@@ -91,7 +91,7 @@ U kunt het menu **Diagnostische instellingen** gebruiken voor elke afzonderlijke
 
 U kunt een resource voor een elastische pool instellen om de volgende diagnostische gegevens te verzamelen:
 
-| Resource | Telemetrie controleren |
+| Bron | Telemetrie controleren |
 | :------------------- | ------------------- |
 | **Elastische pool** | [Basis metrieken](sql-database-metrics-diag-logging.md#basic-metrics) bevatten EDTU/CPU-percentage, EDTU/CPU-limiet, fysiek gegevens Lees percentage, logboek schrijf percentage, sessie percentage, werk nemer-percentage, opslag, opslag percentage, opslag limiet en XTP opslag percentage. |
 
@@ -138,7 +138,7 @@ Ga als volgt te werk om streaming van diagnostische gegevens over de telemetrie 
 
 1. Voer een instellings naam in voor uw eigen verwijzing.
 1. Selecteer een doel resource voor de streaming diagnostische gegevens: **archiveren naar opslag account**, **streamen naar een event hub**of **verzenden naar log Analytics**.
-1. Schakel voor de standaard bewakings ervaring op basis van gebeurtenissen de volgende selectie vakjes in voor de telemetrie van het logboek voor database diagnostiek: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** , **Fouten**, **DatabaseWaitStatistics**, **time-outs**, **blokken**en **deadlocks**.
+1. Schakel voor de standaard bewakings ervaring op basis van gebeurtenissen de volgende selectie vakjes in voor de telemetrie van het logboek voor database diagnostiek: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **Errors**, **DatabaseWaitStatistics**, **time-outs**, **blokken**en **deadlocks**.
 1. Voor een geavanceerde bewakings ervaring op basis van één minuut selecteert u het selectie vakje voor **basis** metrische gegevens.
    ![diagnostische gegevens configureren voor een Data Base met één, gegroepeerd of exemplaar](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 1. Selecteer **Opslaan**.
@@ -156,7 +156,7 @@ Ga als volgt te werk om streaming van diagnostische gegevens over de telemetrie 
 
 U kunt een beheerde exemplaar bron instellen om de volgende diagnostische telemetrie te verzamelen:
 
-| Resource | Telemetrie controleren |
+| Bron | Telemetrie controleren |
 | :------------------- | ------------------- |
 | **Beheerd exemplaar** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) bevat vCores aantal, gemiddeld CPU-percentage, i/o-aanvragen, lees-en schrijf bewerkingen in bytes, gereserveerde opslag ruimte en gebruikte opslag ruimte. |
 
@@ -221,7 +221,7 @@ Ga als volgt te werk om streaming van diagnostische gegevens van de telemetrie v
 
 U kunt metrische gegevens en diagnostische logboek registratie inschakelen met behulp van Power shell.
 
-- Om in te schakelen opslag van diagnostische logboeken in een opslagaccount, gebruikt u deze opdracht:
+- Gebruik deze opdracht om opslag van Diagnostische logboeken in te scha kelen in een opslag account:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -229,31 +229,31 @@ U kunt metrische gegevens en diagnostische logboek registratie inschakelen met b
 
    De ID van het opslag account is de resource-ID voor het doel-opslag account.
 
-- Als u wilt inschakelen voor streaming van diagnostische logboeken naar een event hub, gebruikt u deze opdracht:
+- Gebruik deze opdracht om streaming van Diagnostische logboeken naar een Event Hub in te scha kelen:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
-   De regel-ID van Azure Service Bus is een tekenreeks zijn met deze indeling:
+   De Azure Service Bus regel-ID is een teken reeks met de volgende indeling:
 
    ```powershell
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- Als u wilt inschakelen verzenden van diagnostische logboeken naar Log Analytics-werkruimte, moet u deze opdracht gebruiken:
+- Als u het verzenden van Diagnostische logboeken naar een Log Analytics-werk ruimte wilt inschakelen, gebruikt u deze opdracht:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
-- U vindt de resource-ID van uw Log Analytics-werkruimte met behulp van de volgende opdracht uit:
+- U kunt de resource-ID van uw Log Analytics-werk ruimte ophalen met behulp van de volgende opdracht:
 
    ```powershell
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-U kunt deze parameters voor het inschakelen van meerdere uitvoeropties combineren.
+U kunt deze para meters combi neren om meerdere uitvoer opties in te scha kelen.
 
 ### <a name="to-configure-multiple-azure-resources"></a>Meerdere Azure-resources configureren
 
@@ -270,7 +270,7 @@ Geef de resource-ID van de werk ruimte \<$WSID\> als een para meter bij het uitv
 
    Vervang \<subID\> door de abonnements-ID \<RG_NAME\> met de naam van de resource groep en \<WS_NAME\> met de naam van de werk ruimte.
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 U kunt metrische gegevens en diagnostische logboek registratie inschakelen met behulp van de Azure CLI.
 
@@ -303,9 +303,9 @@ U kunt metrische gegevens en diagnostische logboek registratie inschakelen met b
    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
    ```
 
-U kunt deze parameters voor het inschakelen van meerdere uitvoeropties combineren.
+U kunt deze para meters combi neren om meerdere uitvoer opties in te scha kelen.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 
 Meer informatie over het [wijzigen van diagnostische instellingen met behulp van de Azure Monitor rest API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
 
@@ -317,7 +317,7 @@ Meer informatie over het [inschakelen van diagnostische instellingen bij het mak
 
 Azure SQL-analyse is een Cloud oplossing die de prestaties van Azure SQL-data bases, elastische Pools en beheerde exemplaren op schaal en op meerdere abonnementen bewaakt. Het helpt u bij het verzamelen en visualiseren van Azure SQL Database prestatie gegevens en heeft ingebouwde intelligentie voor het oplossen van prestaties.
 
-![Overzicht van Azure SQL Analytics](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
+![Overzicht van Azure SQL-analyse](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
 SQL Database metrische gegevens en Diagnostische logboeken kunnen worden gestreamd naar Azure SQL-analyse met behulp van de ingebouwde optie **Send to log Analytics** op het tabblad Diagnostische instellingen in de portal. U kunt log Analytics ook inschakelen met behulp van een diagnostische instelling via Power shell-cmdlets, de Azure CLI of de Azure Monitor REST API.
 
@@ -460,13 +460,13 @@ Details van de telemetrie die beschikbaar zijn voor alle logboeken, worden besch
 
 |Eigenschap|Beschrijving|
 |---|---|
-|TenantId|Uw Tenant-ID |
+|tenantId|Uw Tenant-ID |
 |SourceSystem|Altijd: Azure|
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: ResourceUsageStats |
-|Resource|Naam van de resource |
+|Category|De naam van de categorie. Altijd: ResourceUsageStats |
+|Bron|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: MANAGEDINSTANCES |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -485,14 +485,14 @@ Details van de telemetrie die beschikbaar zijn voor alle logboeken, worden besch
 
 |Eigenschap|Beschrijving|
 |---|---|
-|TenantId|Uw Tenant-ID |
+|tenantId|Uw Tenant-ID |
 |SourceSystem|Altijd: Azure |
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: QueryStoreRuntimeStatistics |
-|OperationName|Naam van de bewerking. Altijd: QueryStoreRuntimeStatisticsEvent |
-|Resource|Naam van de resource |
+|Category|De naam van de categorie. Altijd: QueryStoreRuntimeStatistics |
+|OperationName|De naam van de bewerking. Altijd: QueryStoreRuntimeStatisticsEvent |
+|Bron|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -536,14 +536,14 @@ Meer informatie over [gegevens van runtime statistieken voor query Store](https:
 
 |Eigenschap|Beschrijving|
 |---|---|
-|TenantId|Uw Tenant-ID |
+|tenantId|Uw Tenant-ID |
 |SourceSystem|Altijd: Azure |
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: QueryStoreWaitStatistics |
-|OperationName|Naam van de bewerking. Altijd: QueryStoreWaitStatisticsEvent |
-|Resource|Naam van de resource |
+|Category|De naam van de categorie. Altijd: QueryStoreWaitStatistics |
+|OperationName|De naam van de bewerking. Altijd: QueryStoreWaitStatisticsEvent |
+|Bron|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -574,14 +574,14 @@ Meer informatie over [query Store-wacht statistieken](https://docs.microsoft.com
 
 |Eigenschap|Beschrijving|
 |---|---|
-|TenantId|Uw Tenant-ID |
+|tenantId|Uw Tenant-ID |
 |SourceSystem|Altijd: Azure |
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: fouten |
-|OperationName|Naam van de bewerking. Altijd: ErrorEvent |
-|Resource|Naam van de resource |
+|Category|De naam van de categorie. Altijd: fouten |
+|OperationName|De naam van de bewerking. Altijd: ErrorEvent |
+|Bron|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -592,7 +592,7 @@ Meer informatie over [query Store-wacht statistieken](https://docs.microsoft.com
 |Bericht|Fout bericht in tekst zonder opmaak |
 |user_defined_b|Is de door de gebruiker gedefinieerde fout |
 |error_number_d|Foutcode |
-|Severity|Ernst van de fout |
+|Ernst|Ernst van de fout |
 |state_d|Status van de fout |
 |query_hash_s|Query-hash van de mislukte query, indien beschikbaar |
 |query_plan_hash_s|Query plan-hash van de mislukte query, indien beschikbaar |
@@ -603,14 +603,14 @@ Meer informatie over [SQL Server fout berichten](https://docs.microsoft.com/sql/
 
 |Eigenschap|Beschrijving|
 |---|---|
-|TenantId|Uw Tenant-ID |
+|tenantId|Uw Tenant-ID |
 |SourceSystem|Altijd: Azure |
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: DatabaseWaitStatistics |
-|OperationName|Naam van de bewerking. Altijd: DatabaseWaitStatisticsEvent |
-|Resource|Naam van de resource |
+|Category|De naam van de categorie. Altijd: DatabaseWaitStatistics |
+|OperationName|De naam van de bewerking. Altijd: DatabaseWaitStatisticsEvent |
+|Bron|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -632,14 +632,14 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 
 |Eigenschap|Beschrijving|
 |---|---|
-|TenantId|Uw Tenant-ID |
+|tenantId|Uw Tenant-ID |
 |SourceSystem|Altijd: Azure |
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: time-outs |
-|OperationName|Naam van de bewerking. Altijd: TimeoutEvent |
-|Resource|Naam van de resource |
+|Category|De naam van de categorie. Altijd: time-outs |
+|OperationName|De naam van de bewerking. Altijd: TimeoutEvent |
+|Bron|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -655,14 +655,14 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 
 |Eigenschap|Beschrijving|
 |---|---|
-|TenantId|Uw Tenant-ID |
+|tenantId|Uw Tenant-ID |
 |SourceSystem|Altijd: Azure |
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: blokken |
-|OperationName|Naam van de bewerking. Altijd: BlockEvent |
-|Resource|Naam van de resource |
+|Category|De naam van de categorie. Altijd: blokken |
+|OperationName|De naam van de bewerking. Altijd: BlockEvent |
+|Bron|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -679,14 +679,14 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 
 |Eigenschap|Beschrijving|
 |---|---|
-|TenantId|Uw Tenant-ID |
+|tenantId|Uw Tenant-ID |
 |SourceSystem|Altijd: Azure |
 |TimeGenerated [UTC] |Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: deadlocks |
-|OperationName|Naam van de bewerking. Altijd: DeadlockEvent |
-|Resource|Naam van de resource |
+|Category|De naam van de categorie. Altijd: deadlocks |
+|OperationName|De naam van de bewerking. Altijd: DeadlockEvent |
+|Bron|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |
@@ -700,13 +700,13 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 
 |Eigenschap|Beschrijving|
 |---|---|
-|TenantId|Uw Tenant-ID |
+|tenantId|Uw Tenant-ID |
 |SourceSystem|Altijd: Azure |
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: AutomaticTuning |
-|Resource|Naam van de resource |
+|Category|De naam van de categorie. Altijd: AutomaticTuning |
+|Bron|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |
 |ResourceGroup|De naam van de resource groep voor de data base |

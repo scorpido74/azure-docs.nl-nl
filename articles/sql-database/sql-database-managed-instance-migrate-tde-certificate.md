@@ -1,6 +1,6 @@
 ---
-title: Migrate TDE certificate - managed instance
-description: Migrate certificate protecting Database Encryption Key of a database with transparent Data Encryption to Azure SQL Database Managed Instance
+title: Door TDE certificaat beheerde instantie migreren
+description: De database versleutelings sleutel van de certificaat beveiliging migreren van een Data Base met transparante gegevens versleuteling naar Azure SQL Database beheerde instantie
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -13,14 +13,14 @@ ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
 ms.openlocfilehash: 6ef8d49ba7c9ac2c3c60197c11b9bf5936171f9e
 ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420744"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrate certificate of TDE protected database to Azure SQL Database Managed Instance
+# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Het certificaat van TDE beveiligde data base migreren naar Azure SQL Database beheerde instantie
 
-When migrating a database protected by [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) to Azure SQL Database Managed Instance using native restore option, the corresponding certificate from the on-premises or IaaS SQL Server needs to be migrated before database restore. Dit artikel leidt u door het proces van handmatige migratie van het certificaat naar een met Azure SQL Database beheerd exemplaar:
+Bij het migreren van een Data Base die wordt beveiligd door [transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) naar Azure SQL database beheerd exemplaar met behulp van de systeem eigen terugzet optie, moet het bijbehorende certificaat van de on-premises of IaaS SQL Server worden gemigreerd voordat de data base wordt hersteld. Dit artikel leidt u door het proces van handmatige migratie van het certificaat naar een met Azure SQL Database beheerd exemplaar:
 
 > [!div class="checklist"]
 > * Certificaat exporteren naar een PFX-bestand (Personal Information Exchange)
@@ -30,7 +30,7 @@ When migrating a database protected by [Transparent Data Encryption](https://doc
 Zie [Uw on-premises database migreren naar een beheerd exemplaar met behulp van Azure Database Migration Service ](../dms/tutorial-sql-server-to-managed-instance.md) voor een alternatieve optie met behulp van een volledig beheerde service voor naadloze migratie van zowel een met TDE beveiligde database als het bijbehorende certificaat.
 
 > [!IMPORTANT]
-> Het gemigreerde certificaat wordt alleen gebruikt voor het herstellen van de met TDE beveiligde database. Soon after restore is done, the migrated certificate gets replaced by a different protector, either service-managed certificate or asymmetric key from the key vault, depending on the type of the transparent data encryption you set on the instance.
+> Het gemigreerde certificaat wordt alleen gebruikt voor het herstellen van de met TDE beveiligde database. Zodra het herstellen is voltooid, wordt het gemigreerde certificaat vervangen door een andere Protector, een door service beheerd certificaat of een asymmetrische sleutel van de sleutel kluis, afhankelijk van het type van de transparante gegevens versleuteling die u voor het exemplaar hebt ingesteld.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,15 +43,15 @@ U moet de volgende vereiste zaken hebben om de stappen in dit artikel uit te voe
 
 Zorg ervoor dat u over de volgende zaken beschikt:
 
-- Azure PowerShell module [installed and updated](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- [Az.Sql module](https://www.powershellgallery.com/packages/Az.Sql).
+- De module Azure PowerShell [geïnstalleerd en bijgewerkt](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- [AZ. SQL-module](https://www.powershellgallery.com/packages/Az.Sql).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
 
-Run the following commands in PowerShell to install/update the module:
+Voer de volgende opdrachten in Power shell uit om de module te installeren of bij te werken:
 
 ```azurepowershell
 Install-Module -Name Az.Sql
@@ -127,7 +127,7 @@ Als het certificaat is opgeslagen in het certificaatarchief van de lokale comput
 
 4. Volg de wizard om het certificaat en de persoonlijke sleutel te exporteren naar een PFX-indeling (Personal Information Exchange)
 
-## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Upload certificate to Azure SQL Database Managed Instance using Azure PowerShell cmdlet
+## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Certificaat uploaden naar Azure SQL Database beheerd exemplaar met behulp van Azure PowerShell-cmdlet
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -158,7 +158,7 @@ Als het certificaat is opgeslagen in het certificaatarchief van de lokale comput
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-You need to first [setup an Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) with your *.pfx* file.
+U moet eerst [een Azure Key Vault instellen](/azure/key-vault/key-vault-manage-with-cli2) met uw *PFX* -bestand.
 
 1. Begin met de voorbereidingsstappen in PowerShell:
 
@@ -186,6 +186,6 @@ Het certificaat is nu beschikbaar voor het opgegeven beheerde exemplaar en de ba
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In this article, you learned how to migrate certificate protecting encryption key of database with Transparent Data Encryption, from the on-premises or IaaS SQL Server to Azure SQL Database Managed Instance.
+In dit artikel hebt u geleerd hoe u de versleutelings sleutel van de certificaat beveiliging kunt migreren van de data base met Transparent Data Encryption, van de on-premises of IaaS SQL Server naar Azure SQL Database beheerde instantie.
 
 Zie [Een databaseback-up terugzetten naar een met Azure SQL Database beheerd exemplaar](sql-database-managed-instance-get-started-restore.md) voor informatie over het terugzetten van een databaseback-up naar een met Azure SQL Database beheerd exemplaar.

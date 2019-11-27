@@ -85,7 +85,7 @@ Hieronder ziet u een voorbeeld van een **.runsettings**-bestand met parameters d
 
 Als u een CI/CD-pijplijn instelt voor een toepassing die gebruikmaakt van de Azure Cosmos DB-API voor MongoDB, omvat de verbindingsreeks standaard poortnummer 10255. Deze poort is momenteel echter niet geopend. Gebruik daarom als alternatief poort 10250 om de verbinding tot stand te brengen. De verbindingsreeks van de Azure Cosmos DB-API voor MongoDB is dezelfde, alleen is het ondersteunde poortnummer 10250 in plaats van 10255.
 
-Via de eigenschap `TestRunParameters` in het testproject van de toepassing wordt er verwezen naar de parameters bij `TestContext`. Hier volgt een voorbeeld van een test die wordt uitgevoerd met Cosmos DB.
+Via de eigenschap `TestContext` in het testproject van de toepassing wordt er verwezen naar de parameters bij `TestRunParameters`. Hier volgt een voorbeeld van een test die wordt uitgevoerd met Cosmos DB.
 
 ```csharp
 namespace todo.Tests
@@ -133,7 +133,7 @@ namespace todo.Tests
 }
 ```
 
-Navigeer naar de uitvoeringsopties in de taak VSTest. Geef bij **Settings file** aan dat de tests worden geconfigureerd via een **.runsettings**-bestand. Voeg **toe voor de optie**Override test run parameters`-endpoint $(CosmosDbEmulator.Endpoint)`. Hiermee stelt u in dat de testtaak moet verwijzen naar het eindpunt van de build-taak van de emulator, en niet naar het eindpunt dat is gedefinieerd in het **.runsettings**-bestand.  
+Navigeer naar de uitvoeringsopties in de taak VSTest. Geef bij **Settings file** aan dat de tests worden geconfigureerd via een **.runsettings**-bestand. Voeg `-endpoint $(CosmosDbEmulator.Endpoint)` toe voor de optie **Override test run parameters**. Hiermee stelt u in dat de testtaak moet verwijzen naar het eindpunt van de build-taak van de emulator, en niet naar het eindpunt dat is gedefinieerd in het **.runsettings**-bestand.  
 
 ![Variabele voor eindpunt vervangen door eindpunt van build-taak van emulator](./media/tutorial-setup-ci-cd/addExtension_5.png)
 

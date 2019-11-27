@@ -69,7 +69,7 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
      ![Het dialoog venster IntelliJ-idee nieuw project](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
-5. Selecteer **Volgende**.
+5. Selecteer **Next**.
 
 6. Geef in het venster **New project** de volgende gegevens op:  
 
@@ -78,11 +78,11 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
     |Projectnaam| Voer een naam in.  In deze zelfstudie wordt `myApp` gebruikt.|  
     |Project&nbsp;location| Voer de gewenste locatie in om uw project in op te slaan.|
     |Project SDK| Dit kan leeg zijn bij het eerste gebruik van het idee.  Selecteer **New...** en ga naar uw JDK.|
-    |Spark-versie|De wizard voor het maken van het project integreert de juiste versie voor Spark SDK en Scala SDK. Selecteer **Spark 1.x** als de Spark-clusterversie ouder is dan 2.0. Selecteer anders **Spark 2.x**. In dit voorbeeld wordt **Spark 2.3.0 (Scala 2.11.8)** gebruikt.|
+    |Spark version|De wizard voor het maken van het project integreert de juiste versie voor Spark SDK en Scala SDK. Selecteer **Spark 1.x** als de Spark-clusterversie ouder is dan 2.0. Selecteer anders **Spark 2.x**. In dit voorbeeld wordt **Spark 2.3.0 (Scala 2.11.8)** gebruikt.|
 
     ![De Apache Spark SDK selecteren](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
 
-7. Selecteer **Voltooien**.  Het kan enkele minuten duren voordat het project beschikbaar wordt.
+7. Selecteer **Finish**.  Het kan enkele minuten duren voordat het project beschikbaar wordt.
 
 8. Het Spark-project maakt automatisch een artefact voor u. Ga als volgt te werk om het artefact weer te geven:
 
@@ -239,7 +239,7 @@ Nadat u een scala-toepassing hebt gemaakt, kunt u deze verzenden naar het cluste
     |Opslag type|Selecteer **Azure-Blob gebruiken om te uploaden** uit de vervolg keuzelijst.|
     |Opslagaccount|Voer uw opslag account in.|
     |Opslag sleutel|Voer uw opslag sleutel in.|
-    |Storage-Container|Selecteer uw opslag container in de vervolg keuzelijst zodra het **opslag account** en de **opslag sleutel** zijn ingevoerd.|
+    |Opslag container|Selecteer uw opslag container in de vervolg keuzelijst zodra het **opslag account** en de **opslag sleutel** zijn ingevoerd.|
 
     ![Het dialoog venster voor de verzen ding van Spark](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
 
@@ -455,7 +455,7 @@ U kunt de bestaande Spark scala-toepassingen die u in IntelliJ-idee hebt gemaakt
 
 Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het cluster dat u hebt gemaakt met de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
 
@@ -469,7 +469,7 @@ Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het cluster dat 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u de Azure-toolkit voor IntelliJ-invoeg toepassing gebruikt om Apache Spark toepassingen te ontwikkelen die in [scala](https://www.scala-lang.org/)zijn geschreven, en deze vervolgens rechtstreeks vanuit de Integrated Development Environment IntelliJ te verzenden naar een HDInsight Spark-cluster. IDE). Ga naar het volgende artikel om te zien hoe de gegevens die u hebt geregistreerd in Apache Spark kunnen worden overgebracht naar een BI-hulpprogramma voor analyse zoals Power BI.
+In deze zelf studie hebt u geleerd hoe u de Azure-toolkit voor IntelliJ-invoeg toepassing gebruikt om Apache Spark toepassingen te ontwikkelen die in [scala](https://www.scala-lang.org/)zijn geschreven en deze vervolgens rechtstreeks vanuit de IntelliJ Integrated Development Environment (IDE) te verzenden naar een HDInsight Spark-cluster. Ga naar het volgende artikel om te zien hoe de gegevens die u hebt geregistreerd in Apache Spark kunnen worden overgebracht naar een BI-hulpprogramma voor analyse zoals Power BI.
 
 > [!div class="nextstepaction"]
 > [Gegevens analyseren met BI-tools](apache-spark-use-bi-tools.md)
