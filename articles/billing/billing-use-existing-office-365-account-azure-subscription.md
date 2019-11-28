@@ -8,19 +8,19 @@ manager: adpick
 editor: ''
 tags: billing,top-support-issue
 ms.assetid: 129cdf7a-2165-483d-83e4-8f11f0fa7f8b
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: 44ff08c84b3e95a5b598ebf4279fc2ffc46313e3
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 617f8cd018bb9d2f170d28381e02b4b73376e589
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60369483"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225591"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Registreren voor een Azure-abonnement met uw Office 365-account
 Als u een Office 365-abonnement hebt, kunt u uw Office 365-account gebruiken om een Azure-abonnement te maken. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met uw Office 365-gebruikersnaam en -wachtwoord. Als u virtuele machines wilt instellen of andere Azure-services wilt gebruiken, moet u zich aanmelden voor een Azure-abonnement. U kunt uw Azure-abonnement delen met anderen en [Op rollen gebaseerd toegangsbeheer gebruiken om de toegang tot uw Azure-abonnement en -resources te beheren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
@@ -57,4 +57,4 @@ Zie [Hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory](../acti
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Voor vragen of hulp [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

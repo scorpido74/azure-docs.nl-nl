@@ -1,13 +1,10 @@
 ---
 title: Uitgeschakeld Azure for Students-abonnement opnieuw activeren | Microsoft Docs
 description: In dit artikel wordt uitgelegd waarom uw Azure for Students-abonnement is uitgeschakeld en hoe u het opnieuw kunt activeren.
-services: ''
-documentationcenter: ''
 author: amberbhargava
 manager: amberb
-editor: ''
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +12,12 @@ ms.workload: na
 ms.date: 03/01/2018
 ms.author: banders
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7d41e9b7774bf8840db9e729d3aa9371f5bac04f
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: cfabb3ad7ad150b38b8c90488710731ad29b80a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60615944"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226401"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Waarom is mijn Azure for Students-abonnement uitgeschakeld en hoe kan ik het weer activeren?
 
@@ -34,7 +31,7 @@ U kunt het resterende tegoed controleren in de [Microsoft Azure Sponsorship-port
 
 1. Meld u aan met de referenties van uw Azure for Students-account.
 2. De saldopagina bevat informatie over het gebruikte en resterende tegoed. De vervaldatum van uw tegoed vindt u onder het tegoeddiagram.  
-   
+
     ![Schermopname met tegoedinformatie voor Azure for Students-abonnement](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-balance.png)
 
 3. Als u wilt kijken welke services uw Azure-tegoed verbruiken, selecteert u **Gebruik** in de linkernavigatiebalk en selecteert u uw Azure for Students-abonnement.

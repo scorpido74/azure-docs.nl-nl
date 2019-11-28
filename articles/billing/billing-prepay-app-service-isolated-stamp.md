@@ -4,16 +4,16 @@ description: Lees meer informatie over besparen op zegelkosten voor Azure App Se
 services: billing
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 5161f18499c082b7064eec2be612557ba09eec97
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5aafc2288b9e6b7ef217ec386211af7c3739c08b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806369"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223657"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Bespaar op zegelkosten voor Azure App Service Isolated met gereserveerde capaciteit
 
@@ -53,7 +53,7 @@ U kunt gereserveerde capaciteit voor Isolated-zegels kopen in [Azure Portal](htt
 1. Selecteer een waarde voor **Bereik** om een abonnementsbereik te kiezen.
     - **Bereik van één resourcegroep**: de reserveringskorting wordt alleen toegepast op de overeenkomende resources in de geselecteerde resourcegroep.
     - **Bereik van één abonnement**: de reserveringskorting wordt toegepast op de overeenkomende resources in het geselecteerde abonnement.
-    - **Gedeeld bereik**: de reserveringskorting wordt toegepast op overeenkomende resources binnen in aanmerking komende abonnementen die zich in de factureringscontext bevinden. Voor Enterprise Agreement-klanten is de factureringscontext de inschrijving. Voor afzonderlijke abonnementen met tarieven voor betalen per gebruik is het factureringsbereik alle in aanmerking komende abonnementen die zijn gemaakt door de accountbeheerder.
+    - **Gedeeld bereik**: de reserveringskorting wordt toegepast op overeenkomende resources binnen in aanmerking komende abonnementen die zich in de factureringscontext bevinden. Voor Enterprise Agreement-klanten is de inschrijving de factureringscontext. Voor afzonderlijke abonnementen met tarieven voor betalen per gebruik is het factureringsbereik alle in aanmerking komende abonnementen die zijn gemaakt door de accountbeheerder.
 1. Selecteer een waarde voor **Regio** om een Azure-regio te kiezen die wordt gedekt door de gereserveerde capaciteit en voeg de reservering toe aan de winkelwagen.
 1. Selecteer een Isolated-abonnementstype en klik vervolgens op **Selecteren**.  
     ![Voorbeeld](./media/billing-prepay-app-service-isolated-stamp/app-service-isolated-stamp-select.png)
@@ -64,7 +64,7 @@ Na de aankoop kunt u op elk gewenst moment naar [Reserveringen](https://portal.a
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
 
-Annulering, omwisseling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfservice voor ruiling en terugbetaling van Azure-reserveringen](billing-azure-reservations-self-service-exchange-and-refund.md) voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfservice voor ruiling en terugbetaling van Azure-reserveringen](billing-azure-reservations-self-service-exchange-and-refund.md) voor meer informatie.
 
 ## <a name="discount-application-shown-in-usage-data"></a>Kortingstoepassing weergeven in gebruiksgegevens
 

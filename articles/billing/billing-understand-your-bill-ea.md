@@ -4,19 +4,19 @@ description: Lees hoe u meer inzicht kunt krijgen in uw gebruik en de factuur vo
 author: adpick
 manager: dougeby
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: f89d7935af10ebb477125c598a01278a4ceef0bd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 70d46d0d212f339fae9c99ef2ae13d13d1433709
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326932"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225690"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Meer informatie over uw Azure Enterprise Agreement-factuur
 

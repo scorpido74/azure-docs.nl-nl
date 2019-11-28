@@ -5,19 +5,19 @@ keywords: facturering, factuur, factuur downloaden, Azure-factuur, Azure-gebruik
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 80ec40a7411a370460d663084f9f7034b28e1a2e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7d52a589ee7fcb8891f5ea839b2baeb5e4b30733
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375763"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224026"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Uw Microsoft Azure-factuur weergeven en downloaden
 
@@ -32,7 +32,7 @@ Als u een Microsoft-klantovereenkomst (MCA) hebt, moet u een van de volgende rol
 - Lezer
 - Factuurbeheerder
 
-Als u een Microsoft Partner-overeenkomst (MPA) hebt, kan alleen de rol Globale beheerder en de rol Beheerderagent in de partnerorganisatie Azure-facturen weergeven en downloaden. [Controleer uw type factureringsrekening](#check-your-billing-account-type) om te zien welke machtigingen u nodig hebt. 
+Als u een Microsoft Partner-overeenkomst (MPA) hebt, kan alleen de rol Globale beheerder en de rol Beheerderagent in de partnerorganisatie Azure-facturen weergeven en downloaden. [Controleer uw type factureringsrekening](#check-your-billing-account-type) om te zien welke machtigingen u nodig hebt.
 
 <!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](billing-understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
@@ -46,7 +46,7 @@ Er kunnen verschillende redenen voor zijn dat u geen factuur ziet:
 
 - U bent niet gemachtigd om facturen te bekijken. Als u een MCA of MPA hebt, moet u de eigenaar van het factureringsprofiel, inzender, lezer of factuurbeheerder zijn. Voor andere abonnementen ziet u mogelijk geen oude facturen als u niet de accountbeheerder bent. Zie [Toegang tot factureringsgegevens voor Azure beheren](billing-manage-access.md) voor meer informatie over het verkrijgen van toegang tot factureringsgegevens.
 
-- Als u een gratis proefversie of een maandelijks tegoed voor uw abonnement hebt, ontvangt u alleen een factuur wanneer u het maandelijks tegoed overschrijdt. Als u een Microsoft-klantovereenkomst of Microsoft Partner-overeenkomst hebt, ontvangt u altijd een factuur. 
+- Als u een gratis proefversie of een maandelijks tegoed voor uw abonnement hebt, ontvangt u alleen een factuur wanneer u het maandelijks tegoed overschrijdt. Als u een Microsoft-klantovereenkomst of Microsoft Partner-overeenkomst hebt, ontvangt u altijd een factuur.
 
 ## <a name="download-invoices-in-the-azure-portal"></a>Facturen downloaden in de Azure-portal
 

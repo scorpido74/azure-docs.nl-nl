@@ -8,19 +8,19 @@ manager: adpick
 editor: ''
 tags: billing,top-support-issue
 ms.assetid: ''
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: b67f3c590be290515329af390b4d3d79a9746112
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 998aedc8cb799d0064a2704dc819d483ced9e99e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60369799"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225655"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Registreren voor een Office 365-abonnement met uw Azure-account
 Als u Azure-abonnement hebt, kunt u uw Azure-account gebruiken om u te registreren voor een Office 365-abonnement. Als u deel uitmaakt van een organisatie die een Azure-abonnement heeft, kunt u Office 365-abonnementen maken voor gebruikers in uw bestaande Azure Active Directory (Azure AD). Registreer u voor Office 365 met een account met de machtiging Globale beheerder of Factureringsbeheerder in uw Azure Active Directory-tenant. Zie [Mijn accountmachtigingen in Azure AD controleren](#RoleInAzureAD) en [Beheerdersrollen toewijzen in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) voor meer informatie.
@@ -72,4 +72,4 @@ Nadat u zich hebt aangemeld, wordt het Office 365-abonnement toegevoegd aan hetz
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Voor vragen of hulp [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

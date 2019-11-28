@@ -4,19 +4,19 @@ description: Meer informatie over het vermijden van onverwachte kosten op uw Azu
 author: bandersmsft
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 6f7a29adfbd145be11f9f6c91e8e66dd229fed62
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e5cdd7181e680dbc7406118afeb4aeb837d3aaf2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375681"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223915"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Onverwachte kosten voorkomen met Azure-facturering en -kostenbeheer
 
@@ -68,11 +68,11 @@ U kunt kosten bewaken met de volgende hulpprogramma's:
 
 ### <a name="track-costs-with-budgets-and-cost-alerts"></a>Kosten bijhouden met budget- en kostenmeldingen
 
-Maak [budgetten](../cost-management/tutorial-acm-create-budgets.md) om kosten te beheren maak en [meldingen](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) waarmee belanghebbenden automatisch worden geïnformeerd over afwijkende en te hoge uitgaven. 
+Maak [budgetten](../cost-management/tutorial-acm-create-budgets.md) om kosten te beheren maak en [meldingen](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) waarmee belanghebbenden automatisch worden geïnformeerd over afwijkende en te hoge uitgaven.
 
 ### <a name="costs"></a> Kosten verkennen en analyseren met Kostenanalyse
 
-Nadat u uw Azure-services bent gaan uitvoeren, moet u de kosten regelmatig controleren om uw Azure-uitgaven bij te houden. U kunt Kostenanalyse gebruiken om inzicht te krijgen in de kosten van uw Azure-gebruik. 
+Nadat u uw Azure-services bent gaan uitvoeren, moet u de kosten regelmatig controleren om uw Azure-uitgaven bij te houden. U kunt Kostenanalyse gebruiken om inzicht te krijgen in de kosten van uw Azure-gebruik.
 
 1. Ga naar [Kostenbeheer en facturering in de Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade).
 
@@ -166,7 +166,7 @@ In de SLA (Service Level Agreement) worden de toezeggingen van Microsoft voor be
 
 U kunt als volgt een tegoed aanvragen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Als u meerdere accounts hebt, controleert u of u het account gebruikt die door de uitvaltijd van Azure is beïnvloed. 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Als u meerdere accounts hebt, controleert u of u het account gebruikt die door de uitvaltijd van Azure is beïnvloed.
 2. Maak een nieuwe ondersteuningsaanvraag.
 3. Onder **Probleemtype** selecteert u **Facturering**.
 4. Onder **Probleemtype** selecteert u **Restitutieaanvraag**.
