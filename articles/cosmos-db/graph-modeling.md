@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 94df90db4a715d2540dfc5ec0aa521d76d22f757
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 2bd8c07b384872f3107b5938380cea4c8eb0abae
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624211"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559130"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph data modellering voor Azure Cosmos DB Gremlin-API
 
@@ -37,7 +37,7 @@ Een grafiek database oplossing kan optimaal worden toegepast als de entiteiten e
 
 Als aan de bovenstaande criteria is voldaan, is het waarschijnlijk dat een grafiek database benadering voor delen biedt voor de **complexiteit van query's**, **schaal baarheid van gegevens modellen**en de **prestaties van query's**.
 
-De volgende stap is om te bepalen of de grafiek wordt gebruikt voor analyse-of transactionele doel einden. Als de grafiek moet worden gebruikt voor zware werk belastingen voor reken kracht en gegevens verwerking, is het waard om de [Cosmos DB Spark-connector](https://docs.microsoft.com/azure/cosmos-db/spark-connector) en het gebruik van de graphx- [bibliotheek](https://spark.apache.org/graphx/)te verkennen. 
+De volgende stap is om te bepalen of de grafiek wordt gebruikt voor analyse-of transactionele doel einden. Als de grafiek moet worden gebruikt voor zware werk belastingen voor reken kracht en gegevens verwerking, is het waard om de [Cosmos DB Spark-connector](https://docs.microsoft.com/azure/cosmos-db/spark-connector) en het gebruik van de [graphx-bibliotheek](https://spark.apache.org/graphx/)te verkennen. 
 
 ## <a name="how-to-use-graph-objects"></a>Grafiek objecten gebruiken
 
@@ -45,18 +45,18 @@ De [Apache Tinkerpop-eigenschap Graph Standard](http://tinkerpop.apache.org/docs
 
 Hieronder volgen de aanbevolen procedures voor de eigenschappen in de grafiek objecten:
 
-| Object | Eigenschap | type | Opmerkingen |
+| Object | Eigenschap | Type | Opmerkingen |
 | --- | --- | --- |  --- |
-| Vertex | id | Tekenreeks | Uniek afgedwongen per partitie. Als er geen waarde wordt opgegeven bij het invoegen, en automatisch gegenereerde GUID wordt opgeslagen. |
-| Vertex | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type entiteit te definiëren dat door het hoek punt wordt vertegenwoordigd. Als er geen waarde wordt opgegeven, wordt er een standaard waarde ' vertex ' gebruikt. |
-| Vertex | properties | Teken reeks, Booleaanse waarde, getal | Een lijst met afzonderlijke eigenschappen die zijn opgeslagen als sleutel-waardeparen in elk hoek punt. |
-| Vertex | partitie sleutel | Teken reeks, Booleaanse waarde, getal | Deze eigenschap bepaalt waar het hoek punt en de uitgaande randen ervan worden opgeslagen. Meer informatie over het partitioneren van [grafieken](graph-partitioning.md). |
-| Microsoft Edge | id | Tekenreeks | Uniek afgedwongen per partitie. Standaard automatisch gegenereerd. Randen hebben doorgaans niet de nood zaak om uniek te worden opgehaald met een ID. |
-| Microsoft Edge | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type relatie te definiëren dat twee hoek punten hebben. |
-| Microsoft Edge | properties | Teken reeks, Booleaanse waarde, getal | Een lijst met afzonderlijke eigenschappen die in elke rand worden opgeslagen als sleutel-waardeparen. |
+| Shad | Id | Tekenreeks | Uniek afgedwongen per partitie. Als er bij het invoegen geen waarde wordt opgegeven, wordt een automatisch gegenereerde GUID opgeslagen. |
+| Shad | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type entiteit te definiëren dat door het hoek punt wordt vertegenwoordigd. Als er geen waarde wordt opgegeven, wordt er een standaard waarde ' vertex ' gebruikt. |
+| Shad | properties | Teken reeks, Booleaanse waarde, getal | Een lijst met afzonderlijke eigenschappen die zijn opgeslagen als sleutel-waardeparen in elk hoek punt. |
+| Shad | partitie sleutel | Teken reeks, Booleaanse waarde, getal | Deze eigenschap bepaalt waar het hoek punt en de uitgaande randen ervan worden opgeslagen. Meer informatie over het [partitioneren van grafieken](graph-partitioning.md). |
+| Edge | Id | Tekenreeks | Uniek afgedwongen per partitie. Standaard automatisch gegenereerd. Randen hebben doorgaans niet de nood zaak om uniek te worden opgehaald met een ID. |
+| Edge | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type relatie te definiëren dat twee hoek punten hebben. |
+| Edge | properties | Teken reeks, Booleaanse waarde, getal | Een lijst met afzonderlijke eigenschappen die in elke rand worden opgeslagen als sleutel-waardeparen. |
 
 > [!NOTE]
-> Randen hebben geen partitie sleutel waarde nodig omdat de bijbehorende waarde automatisch wordt toegewezen op basis van het bron hoekpunt. Meer informatie vindt u in het artikel over het partitioneren van [grafieken](graph-partitioning.md) .
+> Randen hebben geen partitie sleutel waarde nodig omdat de bijbehorende waarde automatisch wordt toegewezen op basis van het bron hoekpunt. Meer informatie vindt u in het artikel over het [partitioneren van grafieken](graph-partitioning.md) .
 
 ## <a name="entity-and-relationship-modeling-guidelines"></a>Richt lijnen voor het model leren van entiteiten en relaties
 
@@ -71,11 +71,11 @@ De eerste stap voor een grafiek gegevens model is het toewijzen van elke geïden
 
 Een algemene Pitfall is het toewijzen van eigenschappen van één entiteit als afzonderlijke hoek punten. Bekijk het voor beeld hieronder, waarbij dezelfde entiteit op twee verschillende manieren wordt weer gegeven:
 
-* **Eigenschappen op basis van vertex**: In deze benadering gebruikt de entiteit drie afzonderlijke hoek punten en twee randen om de eigenschappen ervan te beschrijven. Hoewel deze aanpak de redundantie kan verminderen, wordt de model complexiteit verbeterd. Een toename van de model complexiteit kan leiden tot extra latentie, query complexiteit en reken kosten. Dit model kan ook uitdagingen opleveren voor partitioneren.
+* **Eigenschappen op basis van vertex**: in deze benadering gebruikt de entiteit drie afzonderlijke hoek punten en twee randen om de eigenschappen ervan te beschrijven. Hoewel deze aanpak de redundantie kan verminderen, wordt de model complexiteit verbeterd. Een toename van de model complexiteit kan leiden tot extra latentie, query complexiteit en reken kosten. Dit model kan ook uitdagingen opleveren voor partitioneren.
 
 ![Entiteits model met hoek punten voor eigenschappen.](./media/graph-modeling/graph-modeling-1.png)
 
-* **Met eigenschappen Inge sloten hoek punten**: Deze aanpak maakt gebruik van de lijst met sleutel waarden om alle eigenschappen van de entiteit binnen een hoek punt weer te geven. Deze benadering biedt een gereduceerde model complexiteit, die leidt tot eenvoudigere query's en rendabelere trans acties.
+* Met **Eigenschappen Inge sloten hoek punten**: deze benadering maakt gebruik van de lijst met sleutel waarden om alle eigenschappen van de entiteit binnen een hoek punt weer te geven. Deze benadering biedt een gereduceerde model complexiteit, die leidt tot eenvoudigere query's en rendabelere trans acties.
 
 ![Entiteits model met hoek punten voor eigenschappen.](./media/graph-modeling/graph-modeling-2.png)
 
@@ -90,11 +90,11 @@ Er zijn echter scenario's waarin het verwijzen naar een eigenschap mogelijk voor
 
 Nadat de hoek punten zijn gemodelleerd, kunnen de randen worden toegevoegd om de relaties tussen de hoeken aan te duiden. Het eerste aspect dat moet worden geëvalueerd, is de **richting van de relatie**. 
 
-Rand objecten hebben een standaard richting, gevolgd door een passage bij het gebruik van de `out()` or `outE()` -functie. Het gebruik van deze natuurlijke richting resulteert in een efficiënte bewerking, omdat alle hoek punten worden opgeslagen met hun uitgaande randen. 
+Rand objecten hebben een standaard richting, gevolgd door een passage bij het gebruik van de functie `out()` of `outE()`. Het gebruik van deze natuurlijke richting resulteert in een efficiënte bewerking, omdat alle hoek punten worden opgeslagen met hun uitgaande randen. 
 
-Door over te gaan in de tegenovergestelde richting van een rand, met behulp van de functie, resulteert dit `in()` altijd in een query tussen partities. Meer informatie over [Graph](graph-partitioning.md)-partitionering. Als de `in()` functie voortdurend moet worden door lopen, is het raadzaam om in beide richtingen randen toe te voegen.
+Door over te gaan in de tegenovergestelde richting van een rand, met behulp van de functie `in()`, resulteert dit altijd in een query tussen partities. Meer informatie over [Graph-partitionering](graph-partitioning.md). Als er voortdurend moet worden gebladerd met behulp van de functie `in()`, is het raadzaam om in beide richtingen randen toe te voegen.
 
-U kunt de richting van de rand bepalen door `.to()` de `.from()` -of-predikaten `.addE()` te gebruiken voor de Gremlin-stap. Of gebruik de bulk-uitvoerder [bibliotheek voor de Gremlin-API](bulk-executor-graph-dotnet.md).
+U kunt de richting van de rand bepalen door de `.to()` of `.from()` predikaten te gebruiken voor de stap `.addE()` Gremlin. Of gebruik de bulk-uitvoerder [bibliotheek voor de Gremlin-API](bulk-executor-graph-dotnet.md).
 
 > [!NOTE]
 > Rand objecten hebben standaard een richting.
@@ -112,5 +112,5 @@ Hoe meer specifiek het label wordt gebruikt voor het filteren van de randen, hoe
 
 ## <a name="next-steps"></a>Volgende stappen: 
 * Bekijk de lijst met ondersteunde [Gremlin-stappen](gremlin-support.md).
-* Meer informatie over het partitioneren van [Graph-data bases](graph-partitioning.md) om te omgaan met grootschalige grafieken.
+* Meer informatie over het [partitioneren van Graph-data bases](graph-partitioning.md) om te omgaan met grootschalige grafieken.
 * Evalueer uw Gremlin-query's met behulp [van de stap uitvoerings profiel](graph-execution-profile.md).

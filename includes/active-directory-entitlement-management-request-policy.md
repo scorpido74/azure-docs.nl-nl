@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: fb72ed337219f58481c094d68342dbf6f26493c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260700"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566248"
 ---
 ## <a name="for-users-in-your-directory"></a>Voor gebruikers in uw Directory
 
@@ -106,6 +106,14 @@ In de sectie goed keuring geeft u op of een goed keuring is vereist wanneer gebr
 - Goed keuring van elke geselecteerde goed keurder is niet vereist voor het goed keuren van één of twee fasen.
 - De goedkeurings beslissing is gebaseerd op welke fiatteur de aanvraag eerst bekijkt.
 
+Bekijk de volgende video voor een demonstratie van het toevoegen van goed keurders aan een aanvraag beleid:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4cZfg]
+
+Bekijk de volgende video voor een demonstratie van het toevoegen van een multi-fase goed keuring aan een aanvraag beleid:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4d1Jw]
+
 Volg deze stappen om de goedkeurings instellingen op te geven voor aanvragen voor het toegangs pakket:
 
 1. Als u goed keuring wilt vereisen voor aanvragen van de geselecteerde gebruikers, stelt u de schakel optie **goed keuring vereisen** in op **Ja**. Als u wilt dat aanvragen automatisch worden goedgekeurd, stelt u de wissel knop in op **Nee**.
@@ -115,7 +123,6 @@ Volg deze stappen om de goedkeurings instellingen op te geven voor aanvragen voo
 1. Bepaal nu of aanvragen met één of twee fasen moeten worden goedgekeurd. Stel in hoeveel **fasen** moeten worden overgeschakeld op **1** voor de goed keuring van één fase of stel de wissel knop in op **2** voor goed keuring in twee fasen.
 
     ![Toegangs aanvragen-goedkeurings instellingen voor het pakket](./media/active-directory-entitlement-management-request-policy/approval.png)
-
 
 Gebruik de volgende stappen om goed keurders toe te voegen nadat u hebt gekozen hoeveel fases u nodig hebt: 
 

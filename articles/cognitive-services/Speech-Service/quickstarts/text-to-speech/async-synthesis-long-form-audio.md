@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6cf6cfb005155b85278935af6f266dfebcbb44c6
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930582"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554963"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Quick Start: asynchrone synthese voor lange-vorm audio in python (preview-versie)
 
@@ -30,7 +30,7 @@ Voor deze snelstart zijn de volgende zaken vereist:
 
 * Python 2.7. x of 3. x.
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio code](https://code.visualstudio.com/download)of uw favoriete tekst editor.
-* Een Azure-abonnement en een sleutel voor spraak service-abonnement. [Maak een Azure-account](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) en [Maak een spraak bron](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) om de sleutel op te halen. Wanneer u de spraak bron maakt, moet u ervoor zorgen dat uw prijs categorie is ingesteld op **s0**en dat de locatie is ingesteld op een [ondersteunde regio](../../regions.md#standard-and-neural-voices).
+* Een Azure-abonnement en een sleutel voor spraak service-abonnement. [Maak een Azure-account](../../get-started.md#try-the-speech-service-using-a-new-azure-account) en [Maak een spraak bron](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) om de sleutel op te halen. Wanneer u de spraak bron maakt, moet u ervoor zorgen dat uw prijs categorie is ingesteld op **s0**en dat de locatie is ingesteld op een [ondersteunde regio](../../regions.md#standard-and-neural-voices).
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
 

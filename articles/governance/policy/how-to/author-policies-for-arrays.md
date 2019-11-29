@@ -1,14 +1,14 @@
 ---
 title: Beleid voor het schrijven van matrix eigenschappen voor bronnen
 description: Meer informatie over het werken met matrix parameters en matrix-taal expressies, de alias [*] evalueren en elementen toevoegen met Azure Policy definitie regels.
-ms.date: 03/06/2019
+ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 96598918f0dbcc2f56e8ccc316844ee768306b75
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 035f300d01efe80cc44687d3779d7a5fb6be2fc3
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463512"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555172"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Beleid voor het schrijven van matrix eigenschappen op Azure-resources
 
@@ -16,7 +16,9 @@ Azure Resource Manager eigenschappen worden meestal gedefinieerd als teken reeks
 
 - Het type [definitie parameter](../concepts/definition-structure.md#parameters), om meerdere opties te bieden
 - Onderdeel van een [beleids regel](../concepts/definition-structure.md#policy-rule) met de voor waarden **in** of **notIn**
-- Onderdeel van een beleids regel waarmee de [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) wordt geëvalueerd om specifieke scenario's te evalueren, zoals **geen**, **een**of **alle**
+- Onderdeel van een beleids regel waarmee de [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) wordt geëvalueerd om te evalueren:
+  - Scenario's zoals **geen**, **alle**of **alle**
+  - Complexe scenario's met **aantal**
 - In het [effect toevoegen](../concepts/effects.md#append) om te vervangen of toe te voegen aan een bestaande matrix
 
 In dit artikel wordt elk gebruik door Azure Policy beschreven en worden verschillende voorbeeld definities geboden.
@@ -138,10 +140,10 @@ Het verwachte **type** voor waarde `equals` is _teken reeks_. Omdat **allowedLoc
 
 ### <a name="evaluating-the--alias"></a>De alias [*] evalueren
 
-Aliassen waaraan **[\*]** aan hun naam is gekoppeld, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, kunt u met **[\*]** elk element van de matrix evalueren. Er zijn drie scenario's waarin de evaluatie per item kan worden gebruikt in: geen, alle en alle.
+Aliassen waaraan **\[\*\]** zijn gekoppeld aan hun naam, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, is **\[\*\]** het mogelijk om elk element van de matrix te evalueren. Er zijn drie standaard scenario's waarin de evaluatie per item nuttig is: geen, alle en alle. Voor complexe scenario's gebruikt u [Count](../concepts/definition-structure.md#count).
 
 De beleids engine activeert alleen het **effect** in **then** wanneer de **if** -regel als waar evalueert.
-Dit is belang rijk om inzicht te krijgen in de context van de manier waarop **[\*]** elk afzonderlijk element van de matrix evalueert.
+Dit is belang rijk om te begrijpen in context van de manier waarop **\[\*\]** elk afzonderlijk element van de matrix evalueert.
 
 De voorbeeld beleidsregel voor de scenario tabel hieronder:
 
@@ -194,10 +196,10 @@ De volgende resultaten zijn het resultaat van de combi natie van de voor waarde 
 
 ## <a name="the-append-effect-and-arrays"></a>Het toevoeg effect en de arrays
 
-Het [effect toevoegen](../concepts/effects.md#append) werkt anders, afhankelijk van of het **veld Details** een alias van **[\*]** is of niet.
+Het [effect toevoegen](../concepts/effects.md#append) werkt anders, afhankelijk van of het **veld details** een **\[\*\]** alias.
 
-- Wanneer geen **[\*]** -alias is, wordt de volledige matrix vervangen door de eigenschap **Value**
-- Wanneer een alias van het **[\*]** wordt toegevoegd, wordt de eigenschap **Value** aan de bestaande matrix toegevoegd of wordt de nieuwe matrix gemaakt
+- Wanneer geen **\[\*\]** alias, wordt de volledige matrix vervangen door de eigenschap **Value**
+- Wanneer een **\[\*\]** alias, voegt u de eigenschap **Value** toe aan de bestaande matrix of maakt u de nieuwe matrix
 
 Zie voor meer informatie de [Append-voor beelden](../concepts/effects.md#append-examples).
 

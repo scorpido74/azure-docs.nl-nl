@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: f1fbfcaa80a3d1781878fe3d6eb14558a3b298a5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c424c18538a4e428c0e713bb814c2febe28d2d04
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999483"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555580"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Taken plannen en uitzenden (python)
 
@@ -29,7 +29,7 @@ Met een taak wordt een van deze acties gewikkeld en wordt de voortgang van de ui
 
 Meer informatie over elk van deze mogelijkheden vindt u in de volgende artikelen:
 
-* Dubbele en eigenschappen van apparaat: [Aan de slag met apparaatdubbels](iot-hub-python-twin-getstarted.md) en [zelf studie: De dubbele eigenschappen van een apparaat gebruiken](tutorial-device-twins.md)
+* Apparaat-dubbele en eigenschappen: [aan de slag met apparaatdubbels](iot-hub-python-twin-getstarted.md) en [zelf studie: een dubbele eigenschappen van het apparaat gebruiken](tutorial-device-twins.md)
 
 * Directe methoden: [IOT hub ontwikkelaars handleiding-directe methoden](iot-hub-devguide-direct-methods.md) en [zelf studie: directe methoden](quickstart-control-device-python.md)
 
@@ -75,13 +75,9 @@ In deze sectie maakt u een python-console-app die reageert op een directe method
     pip install azure-iot-device
     ```
 
-   > [!NOTE]
-   > De PIP-pakketten voor Azure-iothub-service-client is momenteel alleen beschikbaar voor Windows-besturings systemen. Voor Linux/Mac OS raadpleegt u de sectie met Linux-en Mac OS-specifieke secties in de [ontwikkel omgeving voorbereiden voor python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) post.
-   >
-
 2. Maak een nieuw **simDevice.py** -bestand in uw werkmap met behulp van een tekst editor.
 
-3. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **simDevice.py** -bestand. Vervang `deviceConnectionString` door de Connection String van het apparaat dat u hierboven hebt gemaakt:
+3. Voeg de volgende `import`-instructies en-variabelen toe aan het begin van het **simDevice.py** -bestand. Vervang `deviceConnectionString` door de connection string van het apparaat dat u hierboven hebt gemaakt:
 
     ```python
     import threading
@@ -117,7 +113,7 @@ In deze sectie maakt u een python-console-app die reageert op een directe method
             print (patch)
     ```
 
-6. Voeg de volgende code toe om de handler voor de methode **lockDoor** te registreren. Neem ook de `main` routine op:
+6. Voeg de volgende code toe om de handler voor de methode **lockDoor** te registreren. Neem ook de `main`-routine op:
 
     ```python
     def iothub_jobs_sample_run():
@@ -189,12 +185,12 @@ In deze sectie maakt u een python-console-app die een externe **lockDoor** op ee
     ```
 
    > [!NOTE]
-   > De PIP-pakketten voor Azure-iothub-service-client en Azure-iothub-Device-client zijn momenteel alleen beschikbaar voor Windows-besturings systemen. Voor Linux/Mac OS raadpleegt u de sectie met Linux-en Mac OS-specifieke secties in de [ontwikkel omgeving voorbereiden voor python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) post.
+   > Het PIP-pakket voor Azure-iothub-service-client is momenteel alleen beschikbaar voor Windows-besturings systemen. Voor Linux/Mac OS raadpleegt u de sectie met Linux-en Mac OS-specifieke secties in de [ontwikkel omgeving voorbereiden voor python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) post.
    >
 
 2. Maak een nieuw **scheduleJobService.py** -bestand in uw werkmap met behulp van een tekst editor.
 
-3. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **scheduleJobService.py** -bestand. Vervang de `{IoTHubConnectionString}` tijdelijke aanduiding door de IOT hub-Connection String die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang de `{deviceId}` tijdelijke aanduiding door de apparaat-id die u hebt geregistreerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub):
+3. Voeg de volgende `import`-instructies en-variabelen toe aan het begin van het **scheduleJobService.py** -bestand. Vervang de tijdelijke aanduiding `{IoTHubConnectionString}` door de IoT hub connection string die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang de tijdelijke aanduiding `{deviceId}` door de apparaat-ID die u hebt geregistreerd in [een nieuw apparaat registreren bij de IOT-hub](#register-a-new-device-in-the-iot-hub):
 
     ```python
     import sys
@@ -263,7 +259,7 @@ In deze sectie maakt u een python-console-app die een externe **lockDoor** op ee
             print ( "Device twin updated." )
     ```
 
-6. Voeg de volgende code toe om de taken te plannen en de taak status bij te werken. Neem ook de `main` routine op:
+6. Voeg de volgende code toe om de taken te plannen en de taak status bij te werken. Neem ook de `main`-routine op:
 
     ```python
     def iothub_jobs_sample_run():

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 11/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 502f71365d78bd8fd949d17fe8907817394586b2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961498"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561487"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Herstel na nood geval instellen voor virtuele Azure-machines
 
@@ -143,7 +143,7 @@ Site Recovery maakt standaardinstellingen en replicatiebeleid voor de doelregio.
     **Doellocatie** | De doelregio die wordt gebruikt voor herstel na noodgevallen.<br/><br/> Wij raden aan dezelfde doellocatie te gebruiken als de locatie van de Site Recovery-kluis.
     **Doel resource groep** | De resourcegroep in de doelregio waarin Azure-VM’s zich na een failover bevinden.<br/><br/> Site Recovery maakt standaard een nieuwe resourcegroep in de doelregio met het achtervoegsel 'asr'. De locatie van de doel resource groep kan een wille keurige regio zijn, behalve de regio waarin uw virtuele bron machines worden gehost.
     **Virtueel netwerk van doel** | Het netwerk in de doelregio waar VM’s zich na een failover bevinden.<br/><br/> Site Recovery maakt standaard een nieuw virtueel netwerken (met subnets) in de doelregio met het achtervoegsel 'asr'.
-    **Cache-opslag accounts** | Site Recovery maakt gebruik van een opslagaccount in de bronregio. Wijzigingen in de bron-VM's worden naar dit account verzonden vóór replicatie naar de doellocatie.<br/><br/> Als u een cache-opslag account met firewall functionaliteit gebruikt, zorg er dan voor dat u **vertrouwde micro soft-Services toestaan**inschakelt. [Meer informatie.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+    **Cache-opslag accounts** | Site Recovery maakt gebruik van een opslagaccount in de bronregio. Wijzigingen in de bron-VM's worden naar dit account verzonden vóór replicatie naar de doellocatie.<br/><br/> Als u een cache-opslag account met firewall functionaliteit gebruikt, zorg er dan voor dat u **vertrouwde micro soft-Services toestaan**inschakelt. [Meer informatie.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).. Zorg er ook voor dat u toegang tot ten minste één subnet van het bron-Vnet toestaat.
     **Doel opslag accounts (bron-VM maakt gebruik van niet-beheerde schijven)** | Met Site Recovery wordt standaard een nieuw opslagaccount in de doelregio gemaakt om het bron-VM-opslagaccount te spiegelen.<br/><br/> Schakel **vertrouwde micro soft-Services toestaan** in als u gebruikmaakt van een cache-opslag account met firewall mogelijkheden.
     **Beheerde replica schijven (als de bron-VM gebruikmaakt van beheerde schijven)** | Met Site Recovery worden standaard replicaschijven in de doelregio gemaakt om de beheerde schijven van de bron-VM's met hetzelfde opslagtype (Standard of Premium) te spiegelen als de beheerde schijf van de bron-VM's. U kunt alleen het schijf type aanpassen 
     **Doel beschikbaarheids sets** | In Azure Site Recovery wordt standaard een nieuwe beschikbaarheidsset gemaakt in de doelregio, met een naam die eindigt op 'asr' voor het VM-gedeelte van een beschikbaarheidsset in de bronregio. Als de beschikbaarheidsset die wordt gemaakt met Azure Site Recovery, al bestaat, wordt deze opnieuw gebruikt.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2fa4bcb9db6f836346167b76e609a1437df88b04
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579631"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554998"
 ---
 # <a name="audio-content-creation"></a>Audio-inhoud maken
 
@@ -43,7 +43,7 @@ Dit diagram toont de stappen die nodig zijn voor het afstemmen en exporteren van
 
 Volg deze stappen om een spraak bron te maken en deze te verbinden met Speech Studio.
 
-1. Volg deze instructies om u aan te [melden voor een Azure-account](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) en [een spraak bron te maken](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Zorg ervoor dat de prijs categorie is ingesteld op **s0**. Als u een van de Neural stemmen gebruikt, moet u ervoor zorgen dat u uw resource in een [ondersteunde regio](regions.md#standard-and-neural-voices)maakt.
+1. Volg deze instructies om u aan te [melden voor een Azure-account](get-started.md#try-the-speech-service-using-a-new-azure-account) en [een spraak bron te maken](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Zorg ervoor dat de prijs categorie is ingesteld op **s0**. Als u een van de Neural stemmen gebruikt, moet u ervoor zorgen dat u uw resource in een [ondersteunde regio](regions.md#standard-and-neural-voices)maakt.
 2. Meld u aan voor het [maken van audio-inhoud](https://aka.ms/audiocontentcreation).
 3. Selecteer een bestaand project of klik op **Nieuw maken**.
 4. U kunt uw abonnement op elk gewenst moment wijzigen met de optie **instellingen** , die zich in de bovenste navigatie bevindt.

@@ -103,6 +103,20 @@
               href: logic-apps-custom-api-host-deploy-call.md
         - name: Problemen oplossen
           href: logic-apps-diagnosing-failures.md
+    - name: Toegang tot virtuele Azure-netwerken
+      items:
+        - name: Verbinding maken met virtuele netwerken met integratieserviceomgevingen
+          href: connect-virtual-network-vnet-isolated-environment.md
+        - name: Toegang instellen voor meerdere integratieserviceomgevingen
+          href: connect-virtual-network-vnet-set-up-single-ip-address.md
+        - name: Artefacten toevoegen aan integratieserviceomgevingen
+          href: add-artifacts-integration-service-environment-ise.md
+    - name: Toegang tot on-premises gegevens
+      items:
+        - name: Een gegevensgateway installeren
+          href: logic-apps-gateway-install.md
+        - name: Verbinding maken met on-premises gegevens
+          href: logic-apps-gateway-connection.md
     - name: Ontwikkelen voor B2B-scenario's
       items:
         - name: Integratieaccount maken
@@ -159,16 +173,6 @@
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: Een noodherstelplan bouwen
           href: logic-apps-enterprise-integration-b2b-business-continuity.md
-    - name: Verbinding maken met virtuele netwerken met een geïsoleerde omgeving
-      href: connect-virtual-network-vnet-isolated-environment.md
-    - name: Artefacten toevoegen aan integratieserviceomgevingen
-      href: add-artifacts-integration-service-environment-ise.md
-    - name: Toegang tot on-premises gegevens
-      items:
-        - name: Een gegevensgateway installeren
-          href: logic-apps-gateway-install.md
-        - name: Verbinding maken met on-premises gegevens
-          href: logic-apps-gateway-connection.md
     - name: 'Connectors: gedetailleerde onderwerpen'
       items:
         - name: AS2

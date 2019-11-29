@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: e2460ab760811a3db39058eac74d519ca09046c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12d4bada4f84098f1559ea7b59fbbd35e0801347
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889818"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561604"
 ---
 # <a name="what-is-azure-service-bus"></a>Wat is Azure Service Bus?
 
-Microsoft Azure Service Bus is een volledig beheerde berichtenbroker die binnen ondernemingen kan worden geïntegreerd. Service Bus kunnen toepassingen en services loskoppelen. Service Bus biedt een betrouwbaar en veilig platform voor asynchrone gegevens en overdracht van status.
+Microsoft Azure Service Bus is een volledig beheerde berichtenbroker die binnen ondernemingen kan worden geïntegreerd. Service Bus kunnen toepassingen en services loskoppelen. Service Bus biedt een betrouwbaar en veilig platform voor asynchrone overdracht van gegevens en status.
 
 Gegevens worden uitgewisseld tussen verschillende toepassingen en services met behulp van *berichten*. Een bericht heeft een binaire indeling en kan JSON, XML of alleen tekst bevatten. Zie [Integration Services](https://azure.com/integration)(Engelstalig) voor meer informatie.
 
@@ -35,7 +35,7 @@ Enkele algemene berichtenscenario's:
 
 Een naam ruimte is een container voor alle Messa ging-onderdelen. Meerdere wacht rijen en onderwerpen kunnen zich in één naam ruimte bevinden, en naam ruimten fungeren vaak als toepassings containers.
 
-## <a name="queues"></a>Wachtrijen
+## <a name="queues"></a>Queues
 
 Berichten worden verzonden naar en ontvangen van *wachtrijen*. Wacht rijen slaan berichten totdat de ontvangende toepassing beschikbaar is om ze te ontvangen en verwerken.
 
@@ -43,7 +43,7 @@ Berichten worden verzonden naar en ontvangen van *wachtrijen*. Wacht rijen slaan
 
 Berichten in wacht rijen worden besteld en getimed op aankomst. Als een bericht is geaccepteerd, wordt het veilig ondergebracht in redundante opslag. Berichten worden in de *pull* -modus bezorgd en leveren alleen berichten wanneer daarom wordt gevraagd.
 
-## <a name="topics"></a>Onderwerpen
+## <a name="topics"></a>Topics
 
 U kunt ook *onderwerpen* gebruiken voor het verzenden en ontvangen van berichten. Daar waar een wachtrij vaak wordt gebruikt voor punt-naar-punt communicatie, zijn onderwerpen handig in scenario's met publiceren/abonneren.
 
@@ -119,7 +119,7 @@ Service Bus ondersteunt client bibliotheken voor [.net](https://github.com/Azure
 Service Bus kan volledig worden geïntegreerd met de volgende Azure-services:
 
 * [Event Grid](https://azure.microsoft.com/services/event-grid/)
-* [Logische apps](https://azure.microsoft.com/services/logic-apps/)
+* [Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Dynamics 365](https://dynamics.microsoft.com)
 * [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)

@@ -1,6 +1,6 @@
 ---
-title: Informatie over Azure Lab Services | Microsoft Docs
-description: Lees hoe u met Lab Services gemakkelijk labs kunt maken, beheren en beveiligen met virtuele machines die kunnen worden gebruikt door ontwikkelaars, testers, docenten, studenten en anderen.
+title: Over klassikale Labs in Azure Lab Services | Microsoft Docs
+description: 'Meer informatie over hoe u snel een leslokaal omgeving kunt instellen in de Cloud: een lab configureren met een sjabloon-VM met de software die is vereist voor de-klasse en een kopie van de virtuele machine beschikbaar maken voor elke student in de klasse.'
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/30/2019
+ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 67ebce2130bf5594d3c8c671934f7141a02eb60d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: bbbea0c943758c2682f7b166e461807d2914f790
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694653"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561682"
 ---
 # <a name="introduction-to-classroom-labs"></a>Inleiding tot leslokaallabs
 Met Azure Lab Services kunt u snel een omgeving voor een leslokaallab in de cloud instellen. Een docent maakt een leslokaallab, richt virtuele machines met Windows of Linux in, installeert de benodigde software en labhulpprogramma's in het leslokaal en maakt deze beschikbaar voor studenten. De studenten in het leslokaal maken verbinding met virtuele machines (VM's) in het lab en gebruiken deze voor hun projecten, opdrachten en klassikale oefeningen. 

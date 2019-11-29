@@ -1,5 +1,5 @@
 ---
-title: Realtime IoT-gegevensstromen die Azure Stream Analytics gebruiken | Microsoft Docs
+title: Real-time IoT-gegevens stromen verwerken met Azure Stream Analytics
 description: IoT-sensortags en -gegevensstromen met Stream Analytics en realtime-gegevensverwerking
 services: stream-analytics
 author: mamccrea
@@ -7,28 +7,28 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: f6a1d5e5a15a2af7db5b6256a6a0c5f19f0e7cf5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 11/26/2019
+ms.openlocfilehash: 1cc9c6dbb700664e732a67245563e9a211456767
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620982"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559887"
 ---
-# <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Aan de slag met Azure Stream Analytics om gegevens te verwerken van IoT-apparaten
+# <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Real-time IoT-gegevens stromen verwerken met Azure Stream Analytics
 
-In deze zelfstudie leert u hoe u om verwerking van stromen logica voor het verzamelen van gegevens vanaf Internet of Things (IoT)-apparaten te maken. We gebruiken hier een echte IoT-gebruikstoepassing (Internet of Things) om aan te tonen hoe u snel en economisch een oplossing maakt.
+In dit artikel leert u hoe u gegevensstroom verwerkings logica kunt maken voor het verzamelen van gegevens van Internet of Things IoT-apparaten. U gebruikt een Real-World Internet of Things (IoT) use-case om te laten zien hoe u snel en economisch uw oplossing kunt bouwen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Azure-abonnement](https://azure.microsoft.com/pricing/free-trial/)
-* Voorbeeldquery en gegevensbestanden die u kunt downloaden van [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)
+* Maak een gratis [Azure-abonnement](https://azure.microsoft.com/pricing/free-trial/).
+* Down load voorbeeld query en gegevens bestanden van [github](https://aka.ms/azure-stream-analytics-get-started-iot).
 
 ## <a name="scenario"></a>Scenario
 
-Contoso, een bedrijf op het gebied van industriële automatisering, heeft hun fabricageproces volledig geautomatiseerd. De machines in dit bedrijf hebben sensoren die in realtime gegevensstromen kunnen genereren. In dit scenario wil een werkvloerbeheerder realtime-inzichten op basis van de sensorgegevens om naar patronen te zoeken en hierop te reageren. We passen de SAQL (Stream Analytics Query Language) op de sensorgegevens toe om interessante patronen te vinden in de stroom inkomende gegevens.
+Contoso, een bedrijf op het gebied van industriële automatisering, heeft hun fabricageproces volledig geautomatiseerd. De machines in dit bedrijf hebben sensoren die in realtime gegevensstromen kunnen genereren. In dit scenario wil een werkvloerbeheerder realtime-inzichten op basis van de sensorgegevens om naar patronen te zoeken en hierop te reageren. U kunt Stream Analytics query taal (SAQL) gebruiken voor de sensor gegevens om interessante patronen te vinden in de binnenkomende gegevens stroom.
 
-Hier worden gegevens gegenereerd met een Texas Instrument Sensor Tag-apparaat. De nettolading van de gegevens heeft de JSON-indeling en ziet er ongeveer als volgt uit:
+In dit voor beeld worden de gegevens gegenereerd op basis van een Texas Instruments sensor tag-apparaat. De nettolading van de gegevens heeft de JSON-indeling en ziet er ongeveer als volgt uit:
 
 ```json
 {
@@ -44,73 +44,114 @@ In een werkelijk scenario hebt u honderden van dit soort sensoren die gebeurteni
 Voor het gebruiksgemak biedt deze introductiehandleiding een bestand met voorbeeldgegevens dat is verkregen uit echte Sensor Tag-apparaten. U kunt query's uitvoeren op de voorbeeldgegevens en resultaten weergeven. In volgende zelfstudies leert u hoe u een taak verbindt met in- en uitvoer, en deze implementeert in de Azure-service.
 
 ## <a name="create-a-stream-analytics-job"></a>Een Stream Analytics-taak maken
-1. Klik in [Azure Portal](https://portal.azure.com) op het plusteken en typ vervolgens **STREAM ANALYTICS** in het tekstvenster aan de rechterkant. Selecteer **Stream Analytics-taak** in de lijst met resultaten.
+
+1. Selecteer in de [Azure Portal](https://portal.azure.com) **+ een resource maken** in het navigatie menu aan de linkerkant. Selecteer vervolgens **Stream Analytics taak** uit **Analytics**.
    
     ![Een nieuwe Stream Analytics-taak maken](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
-2. Voer een unieke taaknaam in en controleer of het abonnement het juiste abonnement is voor de taak. Maak vervolgens een nieuwe resourcegroep of selecteer een bestaande in uw abonnement.
-3. Selecteer een locatie voor uw taak. Voor de verwerkingssnelheid en lagere kosten voor gegevensoverdracht wordt het aanbevolen voor de resourcegroep en de gewenste opslagaccount dezelfde locatie te kiezen.
+
+1. Voer een unieke taaknaam in en controleer of het abonnement het juiste abonnement is voor de taak. Maak een nieuwe resource groep of selecteer een bestaande in uw abonnement.
+
+1. Selecteer een locatie voor uw taak. Gebruik dezelfde locatie voor de resource groep en alle resources om de verwerkings snelheid te verhogen en de kosten te verlagen. Nadat u de configuraties hebt gemaakt, selecteert u **maken**.
    
     ![Details van het maken van een nieuwe Stream Analytics-taak](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
-   
-   > [!NOTE]
-   > U maakt dit opslagaccount slechts één keer per regio. Deze opslag wordt gedeeld tussen alle Stream Analytics-taken die zijn gemaakt in deze regio.
-   > 
-   > 
-4. Schakel het selectievakje in om uw taak op het dashboard te maken en klik vervolgens op **MAKEN**.
-   
-    ![Stream analytics-taak wordt gemaakt](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
-5. In de rechterbovenhoek van het browservenster moet een bericht staan dat de implementatie is gestart. Dit wordt snel gewijzigd naar het venster 'Voltooid', zoals hieronder wordt weergegeven.
-   
-    ![Stream analytics-implementatie is voltooid](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
 ## <a name="create-an-azure-stream-analytics-query"></a>Een Azure Stream Analytics-query maken
-Nadat de taak is gemaakt, is het tijd om deze te openen en een query te bouwen. U kunt de taak eenvoudig openen door op de bijbehorende tegel te klikken.
+De volgende stap na het maken van de taak is het schrijven van een query. U kunt query's testen op voorbeeld gegevens zonder een invoer-of uitvoer verbinding te maken met uw taak.
 
-![Stream Analytics-taaktegel in Azure portal](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
+Down load de [hallowereldasa-InputStream. json](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
+) van github. Ga vervolgens naar uw Azure Stream Analytics-taak in de Azure Portal.
 
-Klik in het deelvenster **Taaktopologie** op het vak **QUERY** om naar de Query-editor te gaan. De **QUERY**-editor biedt u de mogelijkheid een T-SQL-query in te voeren die de transformatie van de binnenkomende gebeurtenisgegevens uitvoert.
+Selecteer **query** onder **taak topologie** in het menu links. Selecteer vervolgens **voorbeeld invoer uploaden**. Upload het `HelloWorldASA-InputStream.json`-bestand en selecteer **OK**.
 
-![Stream Analytics query dashboardtegel](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Tegel Stream Analytics dashboard query](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
-### <a name="query-archive-your-raw-data"></a>Query: De onbewerkte gegevens archiveren
-De meest eenvoudige vorm van een query is het doorgeven van gegevens waarmee alle invoergegevens worden gearchiveerd op de aangewezen uitvoer. Download het voorbeeldgegevensbestand van [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) naar een locatie op uw computer. 
+U ziet dat een voor beeld van de gegevens automatisch wordt ingevuld in de **voorbeeld tabel voor invoer** .
 
-1. Plak de query uit het bestand PassThrough.txt. 
-   
-    ![Query in Stream Analytics query-editor plakken](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
-2. Klik op de drie puntjes naast uw invoer en selecteer het vak **Voorbeeldgegevens uit het bestand uploaden**.
-   
-    ![Kies de voorbeeldgegevens uploaden uit bestand](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
-3. Er wordt nu een deelvenster aan de rechterkant geopend. Selecteer hierin het gegevensbestand HelloWorldASA InputStream.json van uw downloadlocatie en klik onder aan het deelvenster op **OK**.
-   
-    ![Json-Voorbeeldgegevensbestand uploaden](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
-4. Klik vervolgens op het tandwiel **Testen** links boven in het venster en voer uw testquery uit op de voorbeeldgegevensset. Als de verwerking is voltooid, wordt onder uw query een resultatenvenster geopend.
-   
-    ![Resultaten van belastingstests voor Stream Analytics-query](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+![Preview-Voorbeeld invoer gegevens](./media/stream-analytics-get-started-with-iot-devices/input-preview.png)
 
-### <a name="query-filter-the-data-based-on-a-condition"></a>Query: Gegevens filteren op basis van een voorwaarde
-We gaan de resultaten filteren op basis van een voorwaarde. We willen graag resultaten weergeven voor de gebeurtenissen die afkomstig zijn van "sensorA." De query bevindt zich in het bestand Filtering.txt.
+### <a name="query-archive-your-raw-data"></a>Query: de onbewerkte gegevens archiveren
+
+De meest eenvoudige vorm van een query is het doorgeven van gegevens waarmee alle invoergegevens worden gearchiveerd op de aangewezen uitvoer. Deze query is de standaard query die wordt ingevuld in een nieuwe Azure Stream Analytics taak.
+
+```sql
+SELECT 
+    *
+INTO
+    Output
+FROM
+    InputStream
+```
+
+Selecteer **test query** en Bekijk de resultaten in de tabel **test resultaten** .
+
+![Test resultaten voor Stream Analytics query](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+
+### <a name="query-filter-the-data-based-on-a-condition"></a>Query: gegevens filteren op basis van een voorwaarde
+
+We proberen de resultaten te filteren op basis van een voor waarde. We willen alleen resultaten weer geven voor de gebeurtenissen die afkomstig zijn van sensora.
+
+```sql
+SELECT 
+    time,
+    dspl AS SensorName,
+    temp AS Temperature,
+    hmdt AS Humidity
+INTO
+   Output
+FROM
+    InputStream
+WHERE dspl='sensorA'
+```
+
+Plak de query in de editor en selecteer **test query** om de resultaten te bekijken.
 
 ![Een gegevensstroom filteren](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
-Houd er rekening mee dat de hoofdlettergevoelige query een stringwaarde vergelijkt. Klik nogmaals op het tandwiel **Testen** om de query uit te voeren. De query zou 389 rijen van de 1860 gebeurtenissen moeten retourneren.
+### <a name="query-alert-to-trigger-a-business-workflow"></a>Query: waarschuwingen om zakelijke werkstromen te activeren
 
-![Tweede uitvoerresultaten van querytest](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
+We gaan onze query gedetailleerder maken. Voor elk type sensor willen we de gemiddelde temperatuur per tijdvenster van 30 seconden controleren en alleen resultaten weergeven als de gemiddelde temperatuur hoger is dan 100 graden.
 
-### <a name="query-alert-to-trigger-a-business-workflow"></a>Query: Waarschuwingen om zakelijke werkstromen te activeren
-We gaan onze query gedetailleerder maken. Voor elk type sensor willen we de gemiddelde temperatuur per tijdvenster van 30 seconden controleren en alleen resultaten weergeven als de gemiddelde temperatuur hoger is dan 100 graden. We schrijven de volgende query en klikken vervolgens op **Testen** om de resultaten te bekijken. U vindt de query in het bestand ThresholdAlerting.txt.
+```sql
+SELECT 
+    System.Timestamp AS OutputTime,
+    dspl AS SensorName,
+    Avg(temp) AS AvgTemperature
+INTO
+   Output
+FROM
+    InputStream TIMESTAMP BY time
+GROUP BY TumblingWindow(second,30),dspl
+HAVING Avg(temp)>100
+```
 
 ![30-secondenfilterquery](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Nu bevatten de resultaten nog maar 245 rijen en namen van sensoren die een gemiddelde temperatuur aangeven die hoger is dan 100 graden. In deze query wordt de stroom gebeurtenissen gegroepeerd op **dspl**, de sensornaam, en voor een **tumblingvenster** van 30 seconden. In tijdelijke query's moet worden vermeld hoe we willen dat de tijd wordt uitgevoerd. Met de **TIMESTAMP BY**-clausule hebben we de kolom **OUTPUTTIME** opgegeven om tijden te associëren met alle tijdelijke berekeningen. Voor gedetailleerde informatie leest u de MSDN-artikelen over [Time Management](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) en [Windowing](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)-functies.
+U ziet resultaten die slechts 245 rijen en namen van Sens oren bevatten waarbij de gemiddelde Tempe ratuur aangeven groter is dan 100. In deze query wordt de stroom gebeurtenissen gegroepeerd op **dspl**, de sensornaam, en voor een **tumblingvenster** van 30 seconden. Tijdelijke query's moeten aangeven hoe de tijd moet worden uitgevoerd. Als u de **time stamp by** -component gebruikt, hebt u de kolom **OUTPUTTIME** opgegeven om tijden te koppelen aan alle tijdelijke berekeningen. Meer informatie over [time management](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) en [windowing functions](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)vindt u in.
 
-### <a name="query-detect-absence-of-events"></a>Query: Detecteren van afwezigheid van gebeurtenissen
-Hoe kunnen we een query schrijven om een gebrek aan invoergebeurtenissen te vinden? We willen weten wanneer een sensor het laatst gegevens heeft verstuurd en daarna vijf seconden lang geen gegevens meer heeft verstuurd. De query is in het bestand AbsenceOfEvent.txt.
+### <a name="query-detect-absence-of-events"></a>Query: detecteren van afwezigheid van gebeurtenissen
+
+Hoe kunnen we een query schrijven om een gebrek aan invoergebeurtenissen te vinden? U vindt de laatste keer dat een sensor gegevens heeft verzonden en vervolgens de volgende vijf seconden geen gebeurtenissen heeft verzonden.
+
+```sql
+SELECT 
+    t1.time,
+    t1.dspl AS SensorName
+INTO
+   Output
+FROM
+    InputStream t1 TIMESTAMP BY time
+LEFT OUTER JOIN InputStream t2 TIMESTAMP BY time
+ON
+    t1.dspl=t2.dspl AND
+    DATEDIFF(second,t1,t2) BETWEEN 1 and 5
+WHERE t2.dspl IS NULL
+```
 
 ![Detecteren van afwezigheid van gebeurtenissen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-We gebruiken hier een **LEFT OUTER**-join voor dezelfde gegevensstroom (self-join). Voor een **INNER**-join wordt alleen een resultaat geretourneerd wanneer een overeenkomst is gevonden.  Als in geval van een **LEFT OUTER**-join geen overeenkomst wordt gevonden met een gebeurtenis vanaf de linkerkant van de join, wordt een rij met NULL voor alle kolommen in de rechterkant geretourneerd. Deze techniek is heel nuttig om de afwezigheid van gebeurtenissen op te sporen. Raadpleeg onze MSDN-documentatie voor meer informatie over [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics).
+We gebruiken hier een **LEFT OUTER**-join voor dezelfde gegevensstroom (self-join). Voor een **INNER**-join wordt alleen een resultaat geretourneerd wanneer een overeenkomst is gevonden.  Als in geval van een **LEFT OUTER**-join geen overeenkomst wordt gevonden met een gebeurtenis vanaf de linkerkant van de join, wordt een rij met NULL voor alle kolommen in de rechterkant geretourneerd. Deze techniek is heel nuttig om de afwezigheid van gebeurtenissen op te sporen. Zie voor meer informatie [samen voegen](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics).
 
 ## <a name="conclusion"></a>Conclusie
-Het doel van deze zelfstudie is aantonen hoe u verschillende Stream Analytics-querytaalquery’s schrijft en de resultaten bekijkt in de browser. Maar dit slechts een begin. Met Stream Analytics hebt u nog veel meer mogelijkheden. Stream Analytics ondersteunt tal van in- en uitvoer en kan zelfs gebruikmaken van functies in Azure Machine Learning, waardoor het een krachtig hulpprogramma wordt om gegevensstromen te analyseren. Met ons [leeroverzicht](https://docs.microsoft.com/azure/stream-analytics/) kunt u nog meer te weten komen over Stream Analytics. Lees voor meer informatie over het schrijven van query's het artikel over [algemene querypatronen](stream-analytics-stream-analytics-query-patterns.md).
+
+Het doel van dit artikel is te demonstreren hoe u verschillende Stream Analytics query taal query's schrijft en resultaten in de browser ziet. Dit is echter alleen om aan de slag te gaan. Stream Analytics ondersteunt tal van in- en uitvoer en kan zelfs gebruikmaken van functies in Azure Machine Learning, waardoor het een krachtig hulpprogramma wordt om gegevensstromen te analyseren. Lees voor meer informatie over het schrijven van query's het artikel over [algemene querypatronen](stream-analytics-stream-analytics-query-patterns.md).
 

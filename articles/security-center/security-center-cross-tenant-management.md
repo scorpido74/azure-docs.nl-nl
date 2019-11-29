@@ -1,6 +1,6 @@
 ---
 title: Beheer van meerdere tenants in Azure Security Center | Microsoft Docs
-description: " Informatie over het verzamelen van gegevens in Azure Security Center inschakelen. "
+description: Meer informatie over het instellen van cross-Tenant beheer voor het beheren van de beveiligings postuur van meerdere tenants in Security Center met behulp van het beheer van gedelegeerde resources van Azure.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: f7aa75601639bc0c5652010fb44b01dec0d2622b
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 5c654610df8c00e1e80382687bd30dca0c02b69f
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996939"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558958"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Beheer van meerdere tenants in Security Center
 
@@ -45,12 +45,12 @@ Klik op het filter pictogram in de bovenste menu balk en selecteer de abonnement
 
 De weer gaven en acties zijn in principe hetzelfde. Hier volgen enkele voorbeelden:
 
-- **Beveiligings beleid beheren**: In één weer gave kunt u de beveiligings postuur van veel resources met [beleids regels](tutorial-security-policy.md)beheren, acties uitvoeren met aanbevelingen voor beveiliging en beveiligings gegevens verzamelen en beheren.
-- **Verbeter de beveiligde Score-en nalevings postuur**: Met de zicht baarheid van meerdere tenants kunt u de algemene beveiligings postuur van al uw tenants bekijken en waar en hoe u het beste de [beveiligde Score](security-center-secure-score.md) en [nalevings postuur](security-center-compliance-dashboard.md) kunt verbeteren.
-- **Aanbevelingen herstellen**: Bewaak en herstel een [aanbeveling](security-center-recommendations.md) voor veel resources van verschillende tenants tegelijk. Vervolgens kunt u de beveiligings problemen die het hoogst mogelijke risico op alle tenants Voorst Ellen, direct aanpakken.
-- **Waarschuwingen beheren**: [Waarschuwingen](security-center-alerts-overview.md) detecteren in de verschillende tenants. Onderneem actie op resources die niet compatibel zijn met herstels [tappen](security-center-managing-and-responding-alerts.md)waarvoor actie kan worden ondernomen.
+- **Beveiligings beleid beheren**: vanuit de ene weer gave kunt u de beveiligings postuur van veel resources met [beleids regels](tutorial-security-policy.md)beheren, acties uitvoeren met aanbevelingen voor beveiliging en beveiligings gegevens verzamelen en beheren.
+- **Verbeter de beveiligde Score-en nalevings postuur**: door de zicht baarheid van meerdere tenants kunt u de algemene beveiligings-postuur van al uw tenants bekijken en waar en hoe u de [beveiligde Score](security-center-secure-score.md) en de [nalevings postuur](security-center-compliance-dashboard.md) voor elk van hen het beste kunt verbeteren.
+- **Aanbevelingen herstellen**: bewaak en herstel een [aanbeveling](security-center-recommendations.md) voor veel resources van verschillende tenants tegelijk. Vervolgens kunt u de beveiligings problemen die het hoogst mogelijke risico op alle tenants Voorst Ellen, direct aanpakken.
+- **Waarschuwingen beheren**: [waarschuwingen](security-center-alerts-overview.md) detecteren in de verschillende tenants. Onderneem actie op resources die niet compatibel zijn met herstels [tappen](security-center-managing-and-responding-alerts.md)waarvoor actie kan worden ondernomen.
 
-- **Geavanceerde functies voor Cloud beveiliging en meer beheren**: Beheer de verschillende services voor detectie en beveiliging van bedreigingen, zoals [just-in-time-VM-toegang](security-center-just-in-time.md), [adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md), [adaptieve toepassings besturings elementen](security-center-adaptive-application.md), en meer.
+- **Geavanceerde functies voor Cloud beveiliging en meer beheren**: beheer de verschillende detectie-en beveiligings services van bedreigingen, zoals [just-in-time-VM-toegang](security-center-just-in-time.md), [adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md), [adaptieve toepassings besturings elementen](security-center-adaptive-application.md)en meer.
  
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel wordt uitgelegd hoe cross-Tenant beheer werkt in Security Center. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:

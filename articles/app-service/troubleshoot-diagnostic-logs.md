@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: bf25967133901aca911c0ad3a69d43c75bb816a0
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958049"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558557"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
@@ -66,7 +66,7 @@ Selecteer het **niveau**of het niveau van de details die moeten worden vastgeleg
 
 | Niveau | Opgenomen categorieën |
 |-|-|
-|**Uitgeschakeld** | None |
+|**Uitgeschakeld** | Geen |
 |**Optreedt** | Fout, kritiek |
 |**Waarschuwing** | Waarschuwing, fout, kritiek|
 |**Gegevens** | Info, waarschuwing, fout, kritiek|
@@ -189,7 +189,7 @@ Met de nieuwe [integratie van Azure monitor](https://aka.ms/appsvcblog-azmon)kun
 
 De volgende tabel bevat de ondersteunde logboek typen en beschrijvingen: 
 
-| Logboek type | Windows-ondersteuning | Linux Support | Beschrijving |
+| Logboek type | Windows-ondersteuning | Linux-ondersteuning (docker) | Beschrijving |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | Ja | Standaard uitvoer en standaard fout |
 | AppServiceHTTPLogs | Ja | Ja | Webserver logboeken |

@@ -5,23 +5,23 @@ author: amberbhargava
 manager: amberb
 editor: banders
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 312808517c80041cb45e2e8ac46566c1f59884e1
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d68d95619b6aa6e8098c282977866c4bc21a357c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376787"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561056"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Eigendom aanvragen van facturering van Azure-abonnementen voor uw MPA-account
 
-Als u één geconsolideerde factuur wilt bieden voor beheerde services en Azure-verbruik, kan de Cloud Solution Provider (CSP) het eigendom van de facturering van Azure-abonnementen overnemen van hun klanten met een Enterprise Agreement (EA).
+Als u één geconsolideerde factuur wilt bieden voor beheerde services en Azure-verbruik, kan de Cloud Solution Provider (CSP) het eigendom van de facturering van Azure-abonnementen overnemen van hun klanten met een Direct Enterprise Agreement (EA).
 
 Deze functie is alleen beschikbaar voor CSP-partners voor directe facturering die zijn gecertificeerd als [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp). Het valt onder governance en beleid van Microsoft en voor bepaalde klanten is mogelijk een beoordeling en goedkeuring vereist.
 

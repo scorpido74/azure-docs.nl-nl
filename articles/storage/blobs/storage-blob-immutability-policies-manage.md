@@ -1,0 +1,171 @@
+---
+title: Onveranderbaarheid-beleid instellen en beheren voor Blob Storage-Azure Storage
+description: Meer informatie over het gebruik van de WORM (Write Once, lees bare lezen) voor Blob-opslag (object) voor het opslaan van gegevens in een status die niet kan worden gewist en die niet kan worden gewijzigd voor een opgegeven interval.
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: conceptual
+ms.date: 11/26/2019
+ms.author: tamram
+ms.subservice: blobs
+ms.openlocfilehash: 79d7454722900eb1d9d6280e35313ef2f4a5cd54
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555676"
+---
+# <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Onveranderbaarheid-beleid instellen en beheren voor Blob Storage
+
+Onveranderbare opslag voor Azure Blob-opslag stelt gebruikers in staat om bedrijfskritische gegevens objecten op te slaan in een WORM (eenmaal schrijven, gelezen). Met deze status worden de gegevens niet-kan worden gewist en niet kunnen worden gewijzigd voor een door de gebruiker opgegeven interval. Voor de duur van het retentie-interval kunnen blobs worden gemaakt en gelezen, maar niet worden gewijzigd of verwijderd. Onveranderbare opslag is beschikbaar voor algemeen gebruik v2-en Blob Storage-accounts in alle Azure-regio's.
+
+In dit artikel wordt beschreven hoe u Onveranderbaarheid-beleid kunt instellen en beheren voor gegevens in Blob Storage met behulp van de Azure Portal, Power shell of Azure CLI. Zie voor meer informatie over onveranderbare opslag [bedrijfs kritieke BLOB-gegevens met onveranderbare opslag](storage-blob-immutable-storage.md).
+
+## <a name="set-retention-policies-and-legal-holds"></a>Bewaar beleid en juridische bewaringen instellen
+
+### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+1. Maak een nieuwe container of selecteer een bestaande container om de blobs op te slaan die u in onveranderbare toestand wilt bewaren. De container moet zich in een v2-of Blob-opslag account voor algemeen gebruik bevinden.
+
+2. Selecteer **toegangs beleid** in de container instellingen. Selecteer vervolgens **beleid toevoegen** onder **onveranderlijke Blob-opslag**.
+
+    ![Container instellingen in de portal](media/storage-blob-immutability-policies-manage/portal-image-1.png)
+
+3. Als u op tijd gebaseerde Bewaar periode wilt inschakelen, selecteert u **op tijd gebaseerd bewaren** in de vervolg keuzelijst.
+
+    !["Op tijd gebaseerde Bewaar periode" geselecteerd onder beleids type](media/storage-blob-immutability-policies-manage/portal-image-2.png)
+
+4. Voer het Bewaar interval in dagen in (acceptabele waarden zijn 1 tot 146000 dagen).
+
+    ![Vak ' Bewaar periode bijwerken naar '](media/storage-blob-immutability-policies-manage/portal-image-5-retention-interval.png)
+
+    De oorspronkelijke status van het beleid wordt ontgrendeld, zodat u de functie kunt testen en wijzigingen kunt aanbrengen in het beleid voordat u het vergrendelt. Het vergren delen van het beleid is essentieel voor de naleving van voor schriften zoals SEC 17a-4.
+
+5. Het beleid vergren delen. Klik met de rechter muisknop op het weglatings teken ( **...** ) en het volgende menu wordt weer gegeven met extra acties:
+
+    ![' Beleid vergren delen ' in het menu](media/storage-blob-immutability-policies-manage/portal-image-4-lock-policy.png)
+
+6. Selecteer **beleid vergren delen** en bevestig de vergren deling. Het beleid is nu vergrendeld en kan niet worden verwijderd. alleen uitbrei dingen van het Bewaar interval zijn toegestaan. Het verwijderen van blobs en onderdrukkingen zijn niet toegestaan. 
+
+    ![Het vergrendelings beleid in het menu bevestigen](media/storage-blob-immutability-policies-manage/portal-image-5-lock-policy.png)
+
+7. Selecteer **beleid toevoegen**om geldige bewaringen in te scha kelen. Selecteer **juridisch vasthouden** in de vervolg keuzelijst.
+
+    ![' Juridisch hold ' in het menu onder beleids type](media/storage-blob-immutability-policies-manage/portal-image-legal-hold-selection-7.png)
+
+8. Maak een juridische bewaring met een of meer tags.
+
+    ![Vak ' label naam ' onder het beleids type](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
+
+9. Als u een juridische blok kering wilt wissen, verwijdert u gewoon de code van de toegepaste juridische id.
+
+### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy` en `az storage container legal-hold`. Voer `-h` hierop uit om de opdrachten weer te geven.
+
+### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+De AZ. Storage-module ondersteunt onveranderbare opslag.  Voer de volgende stappen uit om de functie in te scha kelen:
+
+1. Zorg ervoor dat de meest recente versie van PowerShellGet is geïnstalleerd: `Install-Module PowerShellGet –Repository PSGallery –Force`.
+2. Verwijder alle eerdere installatie van Azure PowerShell.
+3. Installeer Azure PowerShell: `Install-Module Az –Repository PSGallery –AllowClobber`.
+
+Het volgende Power shell-voorbeeld script is ter referentie. Met dit script maakt u een nieuw opslag account en een nieuwe container. Vervolgens wordt uitgelegd hoe u juridische bewaringen instelt en wist, een op tijd gebaseerd Bewaar beleid maakt en vergrendelt (ook wel een Onveranderbaarheid-beleid genoemd) en het Bewaar interval uitbreiden.
+
+Maak eerst een Azure Storage-account:
+
+```powershell
+$resourceGroup = "<Enter your resource group>"
+$storageAccount = "<Enter your storage account name>"
+$container = "<Enter your container name>"
+$location = "<Enter the storage account location>"
+
+# Log in to Azure
+Connect-AzAccount
+Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
+
+# Create your Azure resource group
+New-AzResourceGroup -Name $resourceGroup -Location $location
+
+# Create your Azure storage account
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup -StorageAccountName `
+    $storageAccount -SkuName Standard_ZRS -Location $location -Kind StorageV2
+
+# Create a new container using the context
+$container = New-AzStorageContainer -Name $container -Context $account.Context
+
+# List the containers in the account
+Get-AzStorageContainer -Context $account.Context
+
+# Remove a container
+Remove-AzStorageContainer -Name $container -Context $account.Context
+```
+
+Juridische bewaringen instellen en wissen:
+
+```powershell
+# Set a legal hold
+Add-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
+    -StorageAccountName $storageAccount -Name $container -Tag <tag1>,<tag2>,...
+
+# Clear a legal hold
+Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
+    -StorageAccountName $storageAccount -Name $container -Tag <tag3>
+```
+
+Onveranderbaarheid-beleid maken of bijwerken:
+
+```powershell
+# Create an immutablity policy
+Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
+    -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
+```
+
+Onveranderbaarheid-beleid ophalen:
+
+```powershell
+# Get an immutability policy
+Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
+    -StorageAccountName $storageAccount -ContainerName $container
+```
+
+Onveranderbaarheid-beleid vergren delen (Voeg `-Force` toe om de prompt te sluiten):
+
+```powershell
+# Lock immutability policies
+$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+    $resourceGroup -StorageAccountName $storageAccount -ContainerName $container
+Lock-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+    $resourceGroup -StorageAccountName $storageAccount -ContainerName $container `
+    -Etag $policy.Etag
+```
+
+Onveranderbaarheid-beleid uitbreiden:
+
+```powershell
+# Extend immutability policies
+$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+    $resourceGroup -StorageAccountName $storageAccount -ContainerName $container
+
+Set-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
+    $policy -ImmutabilityPeriod 11 -ExtendPolicy
+```
+
+Een ontgrendeld Onveranderbaarheid-beleid verwijderen (Voeg `-Force` toe om de prompt te sluiten):
+
+```powershell
+# Remove an unlocked immutability policy
+$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+    $resourceGroup -StorageAccountName $storageAccount -ContainerName $container
+
+Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
+```
+
+---
+
+## <a name="next-steps"></a>Volgende stappen
+
+[Bedrijfs kritieke blobgegevens opslaan met onveranderlijke opslag](storage-blob-immutable-storage.md)

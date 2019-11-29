@@ -2,20 +2,20 @@
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 11/28/2019
 ms.author: raynew
-ms.openlocfilehash: 96cba4e077be8b7658c270b09b177a845e16c8b0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: de15e3028cf22cdd03ce29385278fc5e2babaa9b
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176561"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566249"
 ---
 In dit artikel wordt van het volgende uitgegaan:
 
 1. Er is reeds een **site-naar-site VPN**- of een **Express Route**-verbinding tot stand gebracht tussen uw on-premises netwerk en Azure Virtual Network.
 2. Uw gebruikersaccount heeft machtigingen voor het maken van een nieuwe virtuele machine in het Azure-abonnement waar de virtuele machines tijdens een failover zijn geplaatst.
-3. Uw abonnement heeft een minimum van 4 kernen beschikbaar voor de implementatie van een nieuwe virtuele machine voor de processerver.
+3. Uw abonnement heeft mini maal 8 kern geheugens beschikbaar om een nieuwe virtuele machine van de proces server te maken.
 4. U hebt de beschikking over de **wachtwoordzin voor de configuratieserver**.
 
 > [!TIP]

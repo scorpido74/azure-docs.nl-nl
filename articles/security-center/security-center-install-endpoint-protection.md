@@ -1,6 +1,6 @@
 ---
 title: Endpoint Protection-problemen beheren met Azure Security Center | Microsoft Docs
-description: Meer informatie over het beheren van Endpoint Protection-problemen in Azure Security Center.
+description: Meer informatie over het bewaken van de Security Center van uw Endpoint Protection en het oplossen van problemen die zich voordoen.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: memildin
-ms.openlocfilehash: b1bcce1e94a64253986ad9b1fd77874ba0a39839
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 70b7f511c32013a5dbc9369a2dfba2b8cd5f9145
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202069"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558615"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Endpoint Protection-problemen met Azure Security Center beheren
-Azure Security Center bewaakt de status van antimalware Protection en meldt dit onder de Blade met Endpoint Protection-problemen. Security Center markeert problemen, zoals gedetecteerde bedreigingen en onvoldoende beveiliging, waardoor uw virtuele machines (Vm's) en computers kwetsbaar zijn voor aanvallen op malware. Door de informatie onder **problemen met Endpoint Protection**te gebruiken, kunt u een plan identificeren om eventuele gevonden problemen op te lossen.
+Azure Security Center bewaakt de status van antimalware Protection en meldt dit onder de pagina met problemen met Endpoint Protection. Security Center markeert problemen, zoals gedetecteerde bedreigingen en onvoldoende beveiliging, waardoor uw virtuele machines (Vm's) en computers kwetsbaar zijn voor aanvallen op malware. Door de informatie onder **problemen met Endpoint Protection**te gebruiken, kunt u een plan identificeren om eventuele gevonden problemen op te lossen.
 
 Security Center worden de volgende Endpoint Protection-problemen gerapporteerd:
 
@@ -30,7 +30,7 @@ Security Center worden de volgende Endpoint Protection-problemen gerapporteerd:
 - Endpoint Protection-status:
 
   - De hand tekening is verouderd: er is een antimalware-oplossing geïnstalleerd op deze Vm's en computers, maar de oplossing heeft niet de nieuwste antimalware-hand tekeningen.
-  - Geen real-time beveiliging: er is een antimalware-oplossing geïnstalleerd op deze Vm's en computers, maar deze is niet geconfigureerd voor realtime-beveiliging.   De service is mogelijk uitgeschakeld of Security Center kan de status mogelijk niet verkrijgen omdat de oplossing niet wordt ondersteund. Zie [partner integratie](security-center-services.md#endpoint-supported) voor een lijst met ondersteunde oplossingen.
+  - Geen real-time beveiliging: er is een antimalware-oplossing geïnstalleerd op deze Vm's en computers, maar deze is niet geconfigureerd voor realtime-beveiliging. De service is mogelijk uitgeschakeld of Security Center kan de status mogelijk niet verkrijgen omdat de oplossing niet wordt ondersteund. Zie [partner integratie](security-center-services.md#endpoint-supported) voor een lijst met ondersteunde oplossingen.
   - Niet rapporteren: er is een antimalware-oplossing geïnstalleerd, maar geen rapport gegevens.
   - Onbekend: er is een antimalware-oplossing geïnstalleerd, maar de status is onbekend of er wordt een onbekende fout gerapporteerd.
 
@@ -40,7 +40,7 @@ Security Center worden de volgende Endpoint Protection-problemen gerapporteerd:
     >
 
 ## <a name="implement-the-recommendation"></a>De aanbeveling implementeren
-Endpoint Protection-problemen worden als aanbeveling in Security Center gepresenteerd.  Als uw omgeving kwetsbaar is voor aanvallen op malware, wordt deze aanbeveling weer gegeven onder **aanbevelingen** en onder **reken kracht**. Als u het **dash board Endpoint Protection-problemen**wilt zien, moet u de reken werk stroom volgen.
+Endpoint Protection-problemen worden als aanbeveling in Security Center gepresenteerd. Als uw omgeving kwetsbaar is voor aanvallen op malware, wordt deze aanbeveling weer gegeven onder **aanbevelingen** en onder **reken kracht**. Als u het **dash board Endpoint Protection-problemen**wilt zien, moet u de reken werk stroom volgen.
 
 In dit voor beeld gebruiken we **reken kracht**.  We gaan kijken hoe u antimalware installeert op virtuele machines van Azure en op niet-Azure-computers.
 

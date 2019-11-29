@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dd3b79e931464e83264433a923e9078b2f62525
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f75c84aeb1893008832635cf93cd634d96653dd3
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006961"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561540"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Uw Azure Time Series Insights GA-omgeving plannen
 
@@ -46,14 +46,14 @@ Houd rekening met de volgende kenmerken als u uw Time Series Insights omgeving v
 
 Standaard worden gegevens door Time Series Insights bewaard op basis van de hoeveelheid opslag ruimte die u hebt ingericht &#215; (eenheden van de hoeveelheid opslag per eenheid) en binnenkomend.
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
+## <a name="data-retention"></a>Gegevens bewaren
 
 U kunt de instelling voor de **Bewaar tijd van gegevens** in uw Azure time series Insights omgeving wijzigen. U kunt Maxi maal 400 dagen retentie inschakelen. 
 
 Azure Time Series Insights heeft twee modi:
 
 * De ene modus optimaliseert voor de meest actuele gegevens. Er wordt een beleid afgedwongen om **oude gegevens te verwijderen** die recente gegevens verlaten die beschikbaar zijn bij het exemplaar. Deze modus is standaard ingeschakeld. 
-* De overige optimaliseert gegevens zodat deze onder de geconfigureerde Bewaar limieten blijven. Als u inschakelt, voor komt u dat nieuwe gegevens worden ontsleuteld wanneer deze zijn geselecteerd als de **opslag limiet is overschreden**. 
+* De overige optimaliseert gegevens zodat deze onder de geconfigureerde Bewaar limieten blijven. Door **ingangen te onderbreken** voor komt u dat nieuwe gegevens worden uitgeschakeld wanneer de **opslag limiet is overschreden**. 
 
 U kunt de Bewaar periode aanpassen en scha kelen tussen de twee modi op de configuratie pagina van de omgeving in het Azure Portal.
 
@@ -64,11 +64,11 @@ U kunt de Bewaar periode aanpassen en scha kelen tussen de twee modi op de confi
 
 1. Selecteer uw Time Series Insights omgeving in het [Azure Portal](https://portal.azure.com).
 
-1. Selecteer in het deel venster **Time Series Insights omgeving** de optie **configureren**onder **instellingen**.
+1. Selecteer in het deel venster **Time Series Insights omgeving** onder **instellingen**de optie **opslag configuratie**.
 
 1. Voer in het vak **tijdstip van bewaren van gegevens (in dagen)** een waarde in tussen 1 en 400.
 
-   [Bewaar ![configureren](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [Bewaar ![configureren](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
 > Zie de [Bewaar periode configureren](./time-series-insights-how-to-configure-retention.md)voor meer informatie over het implementeren van een geschikt Bewaar beleid voor gegevens.

@@ -1,6 +1,6 @@
 ---
 title: Gebruikers gegevens beheren in Azure Security Center | Microsoft Docs
-description: " Meer informatie over het beheren van gebruikers gegevens in Azure Security Center. "
+description: Meer informatie over het beheren van de gebruikers gegevens in Azure Security Center. Het beheren van gebruikers gegevens omvat de mogelijkheid om gegevens te openen, te verwijderen of te exporteren.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 0d05650ff349cb9e9750b0cefe0de217a986b32a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 20d269c1614c82c8783d0e65149961c118c16a95
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254605"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559221"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Gebruikers gegevens beheren in Azure Security Center
 Dit artikel bevat informatie over hoe u de gebruikers gegevens in Azure Security Center kunt beheren. Het beheren van gebruikers gegevens omvat de mogelijkheid om gegevens te openen, te verwijderen of te exporteren.

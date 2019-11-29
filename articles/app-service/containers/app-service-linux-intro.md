@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 966eb6068ff545dde284463866bfeee3d5074069
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819681"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559030"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Inleiding tot App Service onder Linux
 
@@ -67,7 +67,12 @@ Op basis van een huidige beperking geldt dat voor dezelfde resource groep geen W
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Wanneer uw toepassing niet kan worden gestart of als u de logboeken vanuit de app wilt controleren, controleert u de Docker-logboeken in de map LogFiles. U kunt deze map openen via uw SCM-site of via FTP. Als u de `stdout` en `stderr` vanuit uw container wilt registreren, moet u **logboek registratie voor docker-container** inschakelen onder **app service logboeken**. De instelling wordt onmiddellijk van kracht. De wijziging wordt door App Service gedetecteerd en de container wordt automatisch opnieuw gestart.
+> [!NOTE]
+> Er is een nieuwe geïntegreerde logboek registratie mogelijkheid met [Azure monitoring (preview)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) . 
+>
+>
+
+Wanneer uw toepassing niet kan worden gestart of als u de logboeken vanuit de app wilt controleren, controleert u de Docker-logboeken in de map LogFiles. U kunt deze map openen via uw SCM-site of via FTP. Als u de `stdout` en `stderr` vanuit uw container wilt registreren, moet u **toepassings logboeken** inschakelen onder **app service logboeken**. De instelling wordt onmiddellijk van kracht. De wijziging wordt door App Service gedetecteerd en de container wordt automatisch opnieuw gestart.
 
 U hebt toegang tot de SCM-site via **Geavanceerde hulpmiddelen** in het menu **Ontwikkelprogramma's**.
 

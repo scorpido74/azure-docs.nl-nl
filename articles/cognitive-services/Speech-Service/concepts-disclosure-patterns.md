@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e0cb73f224f53441ad4f23298a035f95d59b9f7c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836985"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559007"
 ---
-# <a name="disclosure-design-patterns"></a>Ontwerp patronen voor openbaar making
+# <a name="disclosure-design-patterns"></a>Ontwerppatronen van openbaarmakingen
 Nu u het&#39;juiste [niveau van openbaar making](concepts-disclosure-guidelines.md#disclosure-assessment) hebt vastgesteld voor uw synthetische spraak ervaring, is&#39;het een goed idee om mogelijke ontwerp patronen te verkennen.
 ## <a name="overview"></a>Overzicht
 Er is een spectrum van ontwerp patronen voor het vrijgeven van informatie die u kunt Toep assen op uw synthetische spraak ervaring. Als het resultaat van de evaluatie van de uitgave ' hoge openbaar making ' is, raden we [**expliciete openbaar making**](#explicit-disclosure)aan, wat betekent dat de oorsprong van de synthetische stem uiterst goed wordt gecommuniceerd. [**Impliciete openbaar making**](#implicit-disclosure) omvat hints en interactie patronen die stem ervaring ondervinden, ongeacht of de vereiste verschaffings niveaus hoog of laag zijn.
@@ -167,7 +167,7 @@ Consistentie is de sleutel om de vrijgave impliciet te bereiken tijdens de gebru
 
 ![Consistentie van impliciete hints](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues-amp-feedback"></a>Impliciete hints &amp; feedback
+### <a name="implicit-cues--feedback"></a>Impliciete hints & feedback
 
 Anthropomorphism kunnen op verschillende manieren worden gemanifesteerd, van de werkelijke visuele weer gave van de agent tot de spraak, geluiden, patronen van licht, stuiterende vormen of zelfs de trillingen van een apparaat. Wanneer u uw persoon definieert, maakt u gebruik van impliciete hints en feedback patronen in plaats van een zeer menselijke achtige avatar. Dit is een manier om de nood zaak voor een meer expliciete openbaar making te minimaliseren.
 

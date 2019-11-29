@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 11/27/2019
 ms.author: spelluru
-ms.openlocfilehash: 6631528c9d1f2dfc6dcd3e9d6da81115a9ece637
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dc61fb8e066c6189b5607a6e1cd479cb812466f7
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832082"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561555"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Een Service Bus naam ruimte maken met een onderwerp, een abonnement en een regel met behulp van een Azure Resource Manager sjabloon
 
@@ -179,8 +179,6 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende onderwerp waarin wordt uitgelegd hoe u een abonnements filter maakt: [een service bus naam ruimte maken met een onderwerp, een abonnement en een regel met behulp van een Azure Resource Manager sjabloon](service-bus-resource-manager-namespace-topic-with-rule.md)
-
 Meer informatie over het beheren van deze resources door de volgende artikelen te bekijken:
 
 * [Azure Service Bus beheren](service-bus-management-libraries.md)

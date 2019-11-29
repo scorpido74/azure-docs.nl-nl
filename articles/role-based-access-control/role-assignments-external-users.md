@@ -16,12 +16,12 @@ ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802690"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555550"
 ---
 # <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Toegang tot Azure-resources beheren voor externe gast gebruikers met RBAC
 
@@ -71,7 +71,7 @@ In RBAC kunt u een rol toewijzen om toegang te verlenen. Als u toegang wilt verl
 
 1. Klik op de specifieke resource.
 
-1. Klik op **toegangsbeheer (IAM)** .
+1. Klik op **Toegangsbeheer (IAM)** .
 
     De volgende scherm afbeelding toont een voor beeld van de Blade toegangs beheer (IAM) voor een resource groep. Als u hier toegangscontrole wijzigingen aanbrengt, zijn deze alleen van toepassing op de resource groep.
 
@@ -107,7 +107,7 @@ Als de gast gebruiker zich nog niet in uw directory bevindt, kunt u de gebruiker
 
 1. Klik op de specifieke resource.
 
-1. Klik op **toegangsbeheer (IAM)** .
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op **het tabblad roltoewijzingen om** alle roltoewijzingen in dit bereik weer te geven.
 
@@ -155,7 +155,7 @@ Voordat u een gast gebruiker uit een Directory verwijdert, moet u eerst eventuel
 
 1. Klik op **Ja** om te bevestigen dat u de roltoewijzing inderdaad wilt verwijderen.
 
-1. Klik in de linker navigatie balk op **Azure Active Directory** > **gebruikers**.
+1. Klik in de linker navigatie balk op **Azure Active Directory** **gebruikers** > .
 
 1. Klik op de gast gebruiker die u wilt verwijderen.
 
@@ -203,7 +203,7 @@ Als een gast gebruiker toegang heeft gekregen tot een directory, maar de resourc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Gebruikers van Azure Active Directory B2B-samenwerking toevoegen in Azure portal](../active-directory/b2b/add-users-administrator.md)
+- [Azure Active Directory B2B-samenwerkings gebruikers toevoegen aan de Azure Portal](../active-directory/b2b/add-users-administrator.md)
 - [Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker](../active-directory/b2b/user-properties.md)
 - [De elementen van het e-mail adres uitnodiging voor B2B-samen werking-Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
-- [Een gast gebruiker toevoegen als co-beheerder](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)
+- [Een gast gebruiker als co-beheerder toevoegen](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

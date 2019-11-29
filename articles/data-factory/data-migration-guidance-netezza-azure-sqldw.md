@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 2844b48b3d832e8d9ec659ba657879d683016aee
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 762e7d4a7356c11171355b5325e77569e9acb1e2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217662"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555089"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory gebruiken om gegevens van een on-premises Netezza-server naar Azure te migreren 
 
@@ -156,7 +156,7 @@ Als deze niet binnen twee uur in azure kan worden geladen en de capaciteit van h
 
 Bewaak het CPU-en geheugen gebruik op de zelf-hostende IR-computer en bereid u voor om de machine te schalen of uit te breiden naar meerdere machines wanneer u ziet dat de CPU en het geheugen volledig worden gebruikt. 
 
-Wanneer u vertragings fouten ondervindt, zoals gerapporteerd door Azure Data Factory Kopieer activiteit, verlaagt u de gelijktijdigheids-of `parallelCopies` instelling in Azure Data Factory of overweegt u de limieten voor de band breedte of I/O-bewerkingen per seconde (IOPS) van het netwerk en de gegevens te verhogen opslaat. 
+Wanneer u vertragings fouten ondervindt, zoals gerapporteerd door Azure Data Factory Kopieer activiteit, verlaagt u de gelijktijdigheids-of `parallelCopies` instelling in Azure Data Factory of overweegt u de limieten voor de band breedte of I/O-bewerkingen per seconde (IOPS) van het netwerk en de gegevens opslag te verhogen. 
 
 
 ### <a name="estimate-your-pricing"></a>Uw prijzen ramen 
@@ -190,7 +190,7 @@ Op basis van de voor gaande hypo theses is dit de geschatte prijs:
 
 Raadpleeg de volgende artikelen en hand leidingen voor meer informatie:
 
-- [Gegevens migreren van een on-premises relationele data warehouse-Data Base naar Azure met behulp van Azure Data Factory](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premises-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
+- [Gegevens migreren van een on-premises relationele data warehouse-Data Base naar Azure met behulp van Azure Data Factory](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
 - [Netezza-connector](https://docs.microsoft.com/azure/data-factory/connector-netezza)
 - [ODBC-Connector](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure Blob-opslag connector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)

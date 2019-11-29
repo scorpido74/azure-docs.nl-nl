@@ -1,6 +1,6 @@
 ---
 title: Aangepaste gegevens weer geven in een raster toewijzing in Azure Maps | Microsoft Docs
-description: Aangepaste gegevens weer geven in een raster toewijzing in Azure Maps.
+description: In dit artikel leert u hoe u aangepaste gegevens op een raster kaart kunt weer geven met behulp van de service statische installatie kopie van Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915761"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559985"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Aangepaste gegevens op een raster kaart weer geven
 
@@ -35,7 +35,7 @@ Als u de procedures in dit artikel wilt uitvoeren, moet u eerst een Azure Maps-a
 > [!Note]
 > Voor de procedure in deze sectie is een Azure Maps-account vereist in de prijs categorie S0 of S1.
 
-De S0-laag van het Azure Maps account ondersteunt slechts één exemplaar `pins` van de para meter. U kunt Maxi maal vijf markerings punten weer geven, opgegeven in de URL-aanvraag, met een aangepaste installatie kopie.
+De S0-laag van het Azure Maps account ondersteunt slechts één exemplaar van de `pins`-para meter. U kunt Maxi maal vijf markerings punten weer geven, opgegeven in de URL-aanvraag, met een aangepaste installatie kopie.
 
 Voer de volgende stappen uit om de markerings punten met labels en een aangepaste installatie kopie te genereren:
 
@@ -48,7 +48,7 @@ Voer de volgende stappen uit om de markerings punten met labels en een aangepast
 3. Selecteer de methode HTTP ophalen op het tabblad opbouw functie en voer de volgende URL in om een GET-aanvraag te maken.
 
     ```HTTP
-    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttp%3A%2F%2Fazuremapscodesamples.azurewebsites.net%2FCommon%2Fimages%2Fpushpins%2Fylw-pushpin.png
+    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttps%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FAzureMapsCodeSamples%2Fmaster%2FAzureMapsCodeSamples%2FCommon%2Fimages%2Ficons%2Fylw-pushpin.png
     ```
     Hier ziet u de resulterende afbeelding:
 
@@ -68,7 +68,7 @@ U kunt ook het pad en de locatie gegevens van de pincode verkrijgen met behulp v
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-2. Voer op het tabblad **params** de volgende sleutel/waarde-paren in, die worden gebruikt voor de URL van de post-aanvraag. Vervang de `subscription-key` waarde door uw Azure Maps-abonnements sleutel.
+2. Voer op het tabblad **params** de volgende sleutel/waarde-paren in, die worden gebruikt voor de URL van de post-aanvraag. Vervang de `subscription-key` waarde door de sleutel van uw Azure Maps-abonnement.
     
     ![Para meters voor sleutel/waarde in postman](./media/how-to-render-custom-data/postman-key-vals.png)
 
@@ -190,7 +190,7 @@ U kunt het uiterlijk van een veelhoek wijzigen met behulp van stijl wijzigingen 
 > Voor de procedure in deze sectie is een Azure Maps-account vereist in de prijs categorie S1.
 
 
-U kunt de markerings punten en de labels groter of kleiner maken `sc` met behulp van de aanpassings functie voor schaal stijlen. Deze modificator heeft een waarde die groter is dan nul. Een waarde van 1 is de standaard schaal. Waarden die groter zijn dan 1 maken de pincodes groter en waarden kleiner dan 1 maken deze kleiner. Zie [para meters voor statisch installatie kopie-pad](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)voor meer informatie over stijl parameters.
+U kunt markerings punten en hun labels groter of kleiner maken met behulp van de `sc` wijzigings stijl voor schalen. Deze modificator heeft een waarde die groter is dan nul. Een waarde van 1 is de standaard schaal. Waarden die groter zijn dan 1 maken de pincodes groter en waarden kleiner dan 1 maken deze kleiner. Zie [para meters voor statisch installatie kopie-pad](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)voor meer informatie over stijl parameters.
 
 
 Volg deze stappen om een cirkel en markerings punten met aangepaste labels weer te geven:

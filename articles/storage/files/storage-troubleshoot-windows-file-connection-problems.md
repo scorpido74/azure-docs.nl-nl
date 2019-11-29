@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 261816e42c8de670cd7888af726a70e1a6e5b228
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269362"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560135"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files oplossen in Windows
 
@@ -271,7 +271,7 @@ Als u een bestand wilt kopiëren via het netwerk, moet u het eerst decoderen. Ge
 
 - Gebruik de opdracht **copy/d** . Hierdoor kunnen de versleutelde bestanden worden opgeslagen als ontsleutelde bestanden op de bestemming.
 - Stel de volgende register sleutel in:
-  - Path = HKLM\Software\Policies\Microsoft\Windows\System
+  - Pad = HKLM\Software\Policies\Microsoft\Windows\System
   - Waardetype = DWORD
   - Name = CopyFileAllowDecryptedRemoteDestination
   - Waarde = 1
@@ -295,11 +295,11 @@ U kunt dit probleem oplossen door de register waarde **DirectoryCacheEntrySizeMa
  
 U kunt dit bijvoorbeeld instellen op 0x100000 en zien of de prestaties beter worden.
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Fout AadDsTenantNotFound bij het inschakelen van Azure Active Directory authenticatie voor Azure Files ' kan geen actieve tenants vinden met de Tenant-id Aad-Tenant-id '
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Fout AadDsTenantNotFound bij het inschakelen van de verificatie van de Azure Active Directory Domain Service (AAD DS) voor Azure Files ' kan geen actieve tenants vinden met de Tenant-id Aad-Tenant-id '
 
 ### <a name="cause"></a>Oorzaak
 
-Fout AadDsTenantNotFound treedt op wanneer u probeert [Azure Active Directory (Aad)-verificatie in te scha kelen voor Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) op een opslag account waarin Aad- [domein service (Aad DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) niet is gemaakt op de Aad-Tenant van het gekoppelde abonnement.  
+Fout AadDsTenantNotFound treedt op wanneer u probeert de [Azure Active Directory Domain Service (Aad DS)-verificatie in te scha kelen voor Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) op een opslag account waarin Aad [-domein service (Aad DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) niet is gemaakt op de Aad-Tenant van het gekoppelde abonnement.  
 
 ### <a name="solution"></a>Oplossing
 
@@ -307,5 +307,17 @@ Schakel AAD DS in op de AAD-Tenant van het abonnement waarop uw opslag account i
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning.
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>Fout: systeem fout 1359 is opgetreden. Er is een interne fout ontvangen over SMB-toegang tot bestands shares waarvoor AAD DS-verificatie (Azure Active Directory Domain Service) is ingeschakeld
+
+### <a name="cause"></a>Oorzaak
+
+Fout: systeem fout 1359 is opgetreden. Er treedt een interne fout op wanneer u verbinding probeert te maken met uw bestands share waarbij AAD DS-verificatie is ingeschakeld voor een AAD DS met domein-DNS-naam, beginnend met een numeriek teken. Als de DNS-naam van uw AAD DS-domein bijvoorbeeld ' 1domain ' is, krijgt u deze fout melding wanneer u probeert de bestands share te koppelen aan de hand van AAD-referenties. 
+
+### <a name="solution"></a>Oplossing
+
+Op dit moment kunt u overwegen om uw AAD DS opnieuw te implementeren met een nieuwe DNS-domein naam die van toepassing is op de volgende regels:
+- Namen mogen niet beginnen met een numeriek teken.
+- Namen moeten tussen de 3 en 63 tekens lang zijn.
+
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 Als u nog steeds hulp nodig hebt, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

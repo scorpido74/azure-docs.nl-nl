@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2d0f92f7bf5b015a30e431354edb0c29f5e103f6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c6951ad129a564193a33a4c21fb97e9000ac8dc2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046436"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555441"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Partners voor gegevens integratie SQL Data Warehouse
 Als u uw data warehouse-oplossing wilt maken, kiest u uit een groot aantal toonaangevende hulpprogram ma's. In dit artikel worden micro soft-partner bedrijven op de hoogte van officiële oplossingen voor gegevens integratie die Azure SQL Data Warehouse ondersteunen.
@@ -32,13 +32,14 @@ Als u uw data warehouse-oplossing wilt maken, kiest u uit een groot aantal toona
 | ![Informatica][4] |**1. Informatica Cloud Services voor Azure**<br> Informatica Cloud biedt een beste oplossing voor selfservice gegevens migratie, integratie en beheer mogelijkheden. Klanten kunnen snel en betrouwbaar gegevens importeren en PETA bytes naar Azure exporteren vanuit verschillende soorten bronnen. Informatica Cloud Services voor Azure biedt een systeem eigen, krachtige connectiviteit met hoge prestaties voor Azure SQL Data Warehouse, SQL Database, Blob Storage, Data Lake Store en Azure Cosmos DB. <br><br> **2. Informatica PowerCenter** PowerCenter is een platform voor gegevens integratie met meta gegevens dat gegevens integratie projecten doorstuurt en versnelt om gegevens sneller te leveren aan het bedrijf dan hand matige code ring. Het fungeert als de basis voor uw investeringen van gegevens integratie |**Informatica Cloud Services voor Azure**<br>[Product pagina][informatica_Cloud_Services_website]<br>[Azure Marketplace][informatica_Cloud_Services_marketplace]<br><br> **Informatica PowerCenter**<br>[Product pagina][informatica_PowerCenter_website]<br> [Azure Marketplace][informatica_PowerCenter_byol]<br>|
 | ![Informatie opbouwers][5] |**Informatie bouwers (universeel-gen Gegevensbeheer)**<br>Het universeel-platform voor gegevens beheer van de opbouw functie biedt gegevens integratie, gegevens kwaliteit en Master gegevens beheer oplossingen. Het maakt het eenvoudig om alle gegevens te openen, te verplaatsen en te combi neren, ongeacht de indeling, locatie, volume of latentie.|[Product pagina][omnifocus_website]<br> [Azure Marketplace][omnigen_marketplace] |
 | ![Qubole][9] |**Qubole**<br>Qubole biedt een Cloud-systeem eigen platform waarmee gebruikers ETL, analyses en AI/ML-workloads kunnen uitvoeren. Het ondersteunt verschillende soorten open source-engines: Apache Spark, tensor flow, Presto, lucht flow, Hadoop, Hive en meer. Het biedt gebruiks vriendelijke hulpprogram ma's voor eind gebruikers voor gegevens verwerking van SQL-query hulpprogramma's, voor notebooks en dash boards die gebruikmaken van krachtige open-source engines.|[Product pagina][qubole_website]<br> [Azure Marketplace][qubole_marketplace] |
-| ![Registreer][10] |**Segment**<br>Segment is een oplossing voor gegevens beheer en analyse waarmee u inzicht kunt krijgen in klant gegevens van verschillende bronnen. Zo kunt u uw gegevens verbinden met meer dan 200 hulpprogram ma's om betere beslissingen, producten en ervaringen te maken. Segment transformeert en laadt meerdere gegevens bronnen in uw magazijn voor u met behulp van de ingebouwde gegevens connectors|[Product pagina][segment_website]<br> |
+| ![Registreer][10] |**Registreer**<br>Segment is een oplossing voor gegevens beheer en analyse waarmee u inzicht kunt krijgen in klant gegevens van verschillende bronnen. Zo kunt u uw gegevens verbinden met meer dan 200 hulpprogram ma's om betere beslissingen, producten en ervaringen te maken. Segment transformeert en laadt meerdere gegevens bronnen in uw magazijn voor u met behulp van de ingebouwde gegevens connectors|[Product pagina][segment_website]<br> |
 | ![Skyvia][11] |**Skyvia (gegevens integratie)**<br>Skyvia Data Integration bevat een wizard waarmee gegevens import wordt geautomatiseerd. Met deze wizard kunt u gegevens migreren tussen verschillende soorten bronnen: CRMs, toepassings database, CSV-bestanden en meer. |[Product pagina][segment_website]<br> |
 | ![SnapLogic][6] |**SnapLogic**<br>Met het SnapLogic-platform kunnen klanten snel gegevens overdragen van en naar Microsoft Azure SQL Data Warehouse. Het biedt de mogelijkheid om honderden toepassingen, services en IoT-scenario's te integreren in één oplossing.|[Product pagina][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
 | ![StreamSets][15] |**StreamSets**<br>StreamSets biedt een platform voor gegevens integratie voor DataOps. Het operationalizes is de volledige ontwerp-implementatie-levens cyclus van het integreren van gegevens in Azure SQL Data Warehouse. Het is niet mogelijk om gegevens van en naar het magazijn snel op te nemen en te integreren, via streaming, batch of gewijzigde bezorgings methoden voor het vastleggen van gegevens, maar ook om continue bewerkingen met Smart Data-pijp lijnen die een end-to-end zicht baarheid van gegevens stromen bieden en tolerantie.|[Product pagina][streamsets_website]|
-| ![Talend][12] |**Talend-Cloud**<br>Talend Cloud is een platform voor gegevens integratie voor ondernemingen waarmee u gegevens in de Cloud of on-premises kunt verbinden, benaderen en transformeren. Het is een iPaaS-aanbieding (platform-as-a-Service) die een brede connectiviteit, ingebouwde gegevens kwaliteit en systeem eigen ondersteuning biedt voor de nieuwste big data-en Cloud technologieën |[Product pagina][talend_website]<br> [Azure Marketplace][talend_marketplace] |
-| ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta helpt individuen en organisaties om diverse gegevens te verkennen en samen te voegen voor analyse. Trifacta Wrangler is ontworpen voor het afhandelen van gegevens wrangling-workloads die gegevens moeten ondersteunen op schaal en een groot aantal eind gebruikers.|[Product pagina][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
-| ![WhereScape][14] |**Wherescape rood**<br> WhereScape RED is een IDE die teams voorziet van hulpprogram ma's voor automatisering om ETL-werk stromen te stroom lijnen. De IDE biedt best practice, geoptimaliseerde systeem eigen code voor populaire gegevens doelen. Gebruik WhereScape RED om de tijd te verkorten om uw gegevens infrastructuur te ontwikkelen, implementeren en beheren.|[Product pagina][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
+| ![Talend][12] |**Talend-Cloud**<br>Talend Cloud is een platform voor gegevens integratie voor ondernemingen waarmee u gegevens in de Cloud of on-premises kunt verbinden, benaderen en transformeren. Het is een iPaaS-aanbieding (platform-as-a-Service) die een brede connectiviteit, ingebouwde gegevens kwaliteit en systeem eigen ondersteuning biedt voor de nieuwste big data-en Cloud technologieën. |[Product pagina][talend_website]<br> [Azure Marketplace][talend_marketplace] |
+| ![TimeXtender][13] |**TimeXtender**<br>De detectie-hub van TimeXtender helpt bedrijven bij het bouwen van een modern gegevens systeem door een geïntegreerd platform voor gegevens beheer te bieden dat sneller tijd tot gegevens inzichten versnelt met Maxi maal tien keer. Het gaat verder dan dagelijks uitpakken, transformeren en laden (ETL) of extract, Load en Transform (ELT) door automatisering en mogelijkheden te bieden voor gegevens toegang, gegevens modellering en-naleving in één platform. Discovery hub biedt een samenhangende gegevens Fabric voor Cloud Scale Analytics, waarmee u verschillende gegevens silo's kunt verbinden en integreren, catalogi, model, verplaats en document gegevens voor analyse en AI. | [Product pagina][timextender_website] |
+| ![Trifacta][14] |**Trifacta Wrangler**<br> Trifacta helpt individuen en organisaties om diverse gegevens te verkennen en samen te voegen voor analyse. Trifacta Wrangler is ontworpen voor het afhandelen van gegevens wrangling-workloads die gegevens moeten ondersteunen op schaal en een groot aantal eind gebruikers.|[Product pagina][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
+| ![WhereScape][15] |**Wherescape rood**<br> WhereScape RED is een IDE die teams voorziet van hulpprogram ma's voor automatisering om ETL-werk stromen te stroom lijnen. De IDE biedt best practice, geoptimaliseerde systeem eigen code voor populaire gegevens doelen. Gebruik WhereScape RED om de tijd te verkorten om uw gegevens infrastructuur te ontwikkelen, implementeren en beheren.|[Product pagina][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -64,9 +65,10 @@ Raadpleeg [partners van Business Intelligence][bi_partners] en [Gegevensbeheer p
 [10]: ./media/sql-data-warehouse-partner-data-integration/segment_logo.png
 [11]: ./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png
 [12]: ./media/sql-data-warehouse-partner-data-integration/talend_logo.png
-[13]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
-[14]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
-[15]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
+[13]: ./media/sql-data-warehouse-partner-data-integration/timextender-logo.png
+[14]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
+[15]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
+[16]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
 
 
 
@@ -86,6 +88,7 @@ Raadpleeg [partners van Business Intelligence][bi_partners] en [Gegevensbeheer p
 [segment_website]:https://segment.com/
 [skyvia_website]:https://skyvia.com/
 [talend_website]:https://www.talend.com/
+[timextender_website]:https://www.timextender.com/
 [trifacta_website]:https://www.trifacta.com/
 [wherescape_website]:https://www.wherescape.com/
 [streamsets_website]:https://streamsets.com/partners/microsoft

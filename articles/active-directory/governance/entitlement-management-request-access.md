@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81697293be235c12ca009c76a9fd9d3975e232fc
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173701"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554092"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Toegang tot een toegangs pakket aanvragen in het beheer van rechten van Azure AD
 
@@ -80,6 +80,30 @@ Zodra u het toegangs pakket hebt gevonden in de portal van mijn toegang, kunt u 
 Als u toegang tot een toegangs pakket aanvraagt dat meerdere beleids regels van toepassing heeft, wordt u mogelijk gevraagd om een beleid te selecteren. Een Access package manager kan bijvoorbeeld een toegangs pakket configureren met twee beleids regels voor twee groepen interne werk nemers. Het eerste beleid kan toegang tot 60 dagen toestaan en moet goed keuring vereisen. Met het tweede beleid is het mogelijk dat u twee dagen toegang hebt en geen goed keuring vereist. Als u dit scenario ondervindt, moet u het beleid selecteren dat u wilt gebruiken.
 
 ![Mijn Access-portal-toegang aanvragen-meerdere beleids regels](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+## <a name="resubmit-a-request"></a>Een aanvraag opnieuw verzenden
+
+Wanneer u toegang tot een toegangs pakket aanvraagt, kan uw aanvraag worden geweigerd of kan uw aanvraag verlopen als goed keurders niet op tijd reageren. Als u toegang nodig hebt, kunt u het opnieuw proberen en uw aanvraag opnieuw verzenden. In de volgende procedure wordt uitgelegd hoe u een toegangs aanvraag opnieuw verzendt:
+
+**Vereiste rol:** Aanvrager
+
+1. Meld u aan bij de portal van **Mijn toegang** .
+
+1. Klik op **aanvraag geschiedenis** in het navigatie menu aan de linkerkant.
+
+1. Zoek het toegangs pakket waarvoor u een aanvraag opnieuw wilt verzenden.
+
+1. Klik op het vinkje om het toegangs pakket te selecteren.
+
+1. Klik op de koppeling blauwe **weer gave** rechts van het geselecteerde toegangs pakket.
+    
+    ![Toegangs pakket en koppeling weer geven selecteren](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
+
+    Er wordt aan de rechter kant een deel venster geopend met de aanvraag geschiedenis voor het toegangs pakket.
+    
+    ![Knop opnieuw verzenden selecteren](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
+
+1. Klik op de knop **opnieuw verzenden** onder aan het deel venster.
 
 ## <a name="cancel-a-request"></a>Een aanvraag annuleren
 

@@ -11,12 +11,12 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cfc427b11944cb81d8bc3d12d13668d53be698b7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 44abf23ce632aa1ac630eab3313ffd675eef1a0b
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693095"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559164"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Snelstartgids: een Azure SQL Data Warehouse met Azure PowerShell maken en doorzoeken
 
@@ -120,7 +120,7 @@ New-AzSqlDatabase `
 
 De vereiste parameters zijn:
 
-* **RequestedServiceObjectiveName**: de hoeveelheid [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md) die u aanvraagt. Het verhogen van deze waarde verhoogt de reken kosten. Zie [geheugen en gelijktijdigheids limieten] geheugen-gelijktijdigheids limits.md) voor een lijst met ondersteunde waarden.
+* **RequestedServiceObjectiveName**: de hoeveelheid [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md) die u aanvraagt. Het verhogen van deze waarde verhoogt de reken kosten. Zie [geheugen-en gelijktijdigheids limieten](memory-concurrency-limits.md)voor een lijst met ondersteunde waarden.
 * **DATABASENAME**: de naam van de SQL Data Warehouse die u maakt.
 * **Servername**: de naam van de server die u gebruikt voor het maken van.
 * **ResourceGroupName**: de resource groep die u gebruikt. Gebruik Get-AzureResource om beschikbare resourcegroepen in uw abonnement te zoeken.

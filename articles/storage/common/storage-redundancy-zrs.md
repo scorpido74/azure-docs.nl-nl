@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 46975cf7762e2d92e5112911bd491f372cb22a31
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: a86d94110e78b7ace0e963469e9f236f7cc72ab4
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544633"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555471"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundante opslag (ZRS) voor het bouwen van Maxi maal beschik bare Azure Storage toepassingen
 
@@ -22,9 +22,9 @@ ms.locfileid: "74544633"
 
 ## <a name="support-coverage-and-regional-availability"></a>Dekking en regionale Beschik baarheid
 
-ZRS ondersteunt momenteel standaard typen voor algemeen gebruik v2 en FileStorage-opslag accounts. Zie [Overzicht van Azure-opslagaccounts](storage-account-overview.md) voor meer informatie over de typen opslagaccounts.
+ZRS ondersteunt momenteel standaard-opslag account typen voor algemeen gebruik v2, FileStorage en BlockBlobStorage. Zie [Overzicht van Azure-opslagaccounts](storage-account-overview.md) voor meer informatie over de typen opslagaccounts.
 
-ZRS is beschikbaar voor blok-blobs, niet-schijf pagina-blobs, standaard bestands shares, tabellen en wacht rijen.
+Voor algemeen gebruik v2 ZRS-accounts ondersteunen blok-blobs, niet-schijf pagina-blobs, standaard bestands shares, tabellen en wacht rijen.
 
 Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende regio's:
 

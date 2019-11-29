@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
-ms.date: 10/28/2019
+ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 1749fb4c27a1bfa3048ec0e35c8a09556b0e995b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c08de444b691e7bdc1a378e307637fed15b390c3
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007740"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559097"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -69,7 +69,7 @@ Application Insights kosten worden toegevoegd aan uw Azure-factuur. U kunt de de
 ### <a name="using-data-volume-metrics"></a>Gegevens volume metrieken gebruiken
 <a id="understanding-ingested-data-volume"></a>
 
-Als u meer wilt weten over uw gegevens volumes, selecteert u de **metrieken** voor uw Application Insights resource, voegt u een nieuwe grafiek toe. Voor de grafiek metriek, onder **metrische gegevens op basis van een logboek**, selecteert u het **gegevens punt volume**. Klik op **splitsing Toep assen**en selecteer Groeperen op **type Telemetryitem**.
+Als u meer wilt weten over uw gegevens volumes, selecteert u de **metrieken** voor uw Application Insights resource, voegt u een nieuwe grafiek toe. Voor de grafiek metriek, onder **metrische gegevens op basis van een logboek**, selecteert u het **gegevens punt volume**. Klik op **splitsing Toep assen**en selecteer groeperen op **`Telemetryitem` type**.
 
 ![Metrische gegevens gebruiken om te kijken naar het data volume](./media/pricing/10-billing.png)
 
@@ -157,9 +157,9 @@ U kunt het dagelijks volume kapje gebruiken om de verzamelde gegevens te beperke
 
 In plaats van de dagelijkse volume limiet te gebruiken, gebruikt u [steek proeven](../../azure-monitor/app/sampling.md) om het gegevens volume op het gewenste niveau af te stemmen. Gebruik het dagelijks kapje alleen als een ' laatste redmiddel ' voor het geval uw toepassing een grote grotere hoeveelheid telemetrie verstuurt.
 
-### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse limiet voor gegevens definiëren
+### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse gegevens limiet moet worden gedefinieerd
 
-Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. Deze moet worden overwogen zorgvuldig, omdat het niet mogelijk om te controleren van uw bronnen nadat de limiet is bereikt. 
+Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. U moet er rekening mee houden, omdat u uw resources niet kunt bewaken nadat de limiet is bereikt. 
 
 ### <a name="set-the-daily-cap"></a>Het dagelijks kapje instellen
 
@@ -169,7 +169,7 @@ Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configurere
 
 Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), is de eigenschap die u wilt wijzigen de `dailyQuota`.  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de `warningThreshold`van het dagelijks kapje instellen. 
 
-## <a name="sampling"></a>Steekproeven
+## <a name="sampling"></a>Sampling
 [Steek proeven](../../azure-monitor/app/sampling.md) zijn een methode om de snelheid waarmee telemetrie wordt verzonden naar uw app te verminderen, terwijl u de mogelijkheid houdt om gerelateerde gebeurtenissen te vinden tijdens diagnostische Zoek opdrachten. U behoudt ook de juiste gebeurtenis aantallen.
 
 Steek proeven zijn een efficiënte manier om kosten te verlagen en binnen uw maandelijkse quotum te blijven. De bemonsterings algoritme houdt gerelateerde items van telemetrie bij, zodat u bijvoorbeeld de aanvraag met betrekking tot een bepaalde uitzonde ring kunt vinden wanneer u zoekt. Het algoritme behoudt ook de juiste aantallen, zodat u de juiste waarden ziet in metrische Explorer voor aanvraag tarieven, uitzonderings snelheden en andere aantallen.
@@ -195,7 +195,7 @@ Gebruik een [Analytics-query](analytics.md)om de werkelijke sampling frequentie 
 
 In elk bewaarde record geeft `itemCount` het aantal oorspronkelijke records dat het vertegenwoordigt. De waarde is gelijk aan 1 + het aantal eerder verwijderde records. 
 
-## <a name="change-the-data-retention-period"></a>Wijzigen van de bewaartermijn voor gegevens
+## <a name="change-the-data-retention-period"></a>De Bewaar periode voor gegevens wijzigen
 
 De standaard Bewaar periode voor Application Insights resources is 90 dagen. Er kunnen verschillende retentieperioden worden geselecteerd voor elke Application Insights-resource. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen. 
 
@@ -203,7 +203,7 @@ Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **ge
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-005.png)
 
-De retentie kan ook via [Power shell worden ingesteld](powershell.md#set-the-data-retention) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via Azure Resource Manager en moet worden gebruikt met extreme zorg. 
+De retentie kan ook via [Power shell worden ingesteld](powershell.md#set-the-data-retention) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via Azure Resource Manager en moet worden gebruikt met extreme zorg. De dagelijkse tijd voor het opnieuw instellen van de gegevens volume limiet kan worden geconfigureerd met behulp van Azure Resource Manager om de `dailyQuotaResetTime`-para meter in te stellen. 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Kosten voor gegevens overdracht met behulp van Application Insights
 
@@ -259,7 +259,7 @@ Omdat deze laag alleen van toepassing is op klanten met een Operations Managemen
 |:---------------------------------------|:----------------:|
 | 1 toepassing met 3 Azure App Service exemplaren en 1 virtuele server | 4 |
 | 3 toepassingen die worden uitgevoerd op 2 Vm's; de Application Insights resources voor deze toepassingen bevinden zich in hetzelfde abonnement en in de laag per knoop punt | 2 | 
-| 4 toepassingen waarvan de toepassingen Insights-resources zich in hetzelfde abonnement bevinden; elke toepassing die 2 instanties uitvoert gedurende 16-piek uren en 4 instanties gedurende 8 piek uren | 13.33 | 
+| 4 toepassingen waarvan de toepassingen Insights-resources zich in hetzelfde abonnement bevinden; elke toepassing die 2 instanties uitvoert gedurende 16-piek uren en 4 instanties gedurende 8 piek uren | 13,33 | 
 | Cloud Services met één werknemersrol en één webrol, elk met 2 exemplaren | 4 | 
 | Een Azure Service Fabric-cluster met 5 knoop punten met 50 micro Services; elke micro service die drie instanties uitvoert | 5|
 

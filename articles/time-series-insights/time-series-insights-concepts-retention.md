@@ -9,18 +9,18 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8200c2511d4f85705ff56df43f128034d29b0604
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2c68c64202efec6d7dab745b6e1bdc029fa3976f
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012704"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561314"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Gegevens retentie in Azure Time Series Insights begrijpen
 
-In dit artikel worden twee instellingen beschreven die van invloed zijn op de Bewaar periode van gegevens in uw Azure Time Series Insights omgeving.
+In dit artikel worden twee primaire instellingen beschreven die van invloed zijn op de Bewaar periode van gegevens in uw Azure Time Series Insights omgeving.
 
 ## <a name="video"></a>Video
 
@@ -88,7 +88,7 @@ Wanneer ingangs werkzaamheden worden hervat:
 
 In de betrokken Event Hubs kunt u overwegen om de eigenschap voor het **bewaren van berichten** aan te passen om gegevens verlies te minimaliseren wanneer inkomend onderbreken plaatsvindt in time series Insights.
 
-[![Event hub-bericht bewaaring.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[![Event hub-bericht bewaaring.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
 Als er geen eigenschappen zijn geconfigureerd voor de gebeurtenis bron (`timeStampPropertyName`), Time Series Insights standaard ingesteld op de tijds tempel van de aankomst bij Event Hub als de X-as. Als `timeStampPropertyName` is geconfigureerd om iets anders te zijn, zoekt de omgeving naar de geconfigureerde `timeStampPropertyName` in het gegevens pakket wanneer gebeurtenissen worden geparseerd.
 

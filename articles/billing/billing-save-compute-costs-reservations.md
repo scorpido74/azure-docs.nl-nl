@@ -3,16 +3,16 @@ title: Wat zijn Azure-reserveringen?
 description: Meer informatie over Azure-reserveringen en prijzen om geld te besparen op uw virtuele machines, SQL-databases, Azure Cosmos DB en andere resourcekosten.
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/01/2019
+ms.date: 11/22/2019
 ms.author: banders
-ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: df15bcc0e4a3ef7629abf7b62f8ff36caf732150
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580095"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420139"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
@@ -36,6 +36,12 @@ Service-abonnementen:
 - **Gereserveerde SQL Database-vCore**: alleen de rekenkosten worden opgenomen in een reservering. De licentie wordt afzonderlijk gefactureerd.
 - **SQL Data Warehouse**: onder een reservering valt het cDWU-gebruik. Een reservering omvat geen opslag- en netwerkkosten die samenhangen met het gebruik van SQL Data Warehouse.
 - **App Service-zegelkosten**: onder een reservering valt het gebruik van zegels. De reservering is niet van toepassing op werkrollen, dus alle andere resources die aan de zegel zijn gekoppeld, worden afzonderlijk in rekening gebracht.
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+- Azure Data Explorer
+- Premium SSD Managed Disks
+
 
 Voor virtuele Windows-machines en SQL Database kunt u de licentiekosten dekken met [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 

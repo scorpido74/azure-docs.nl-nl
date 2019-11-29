@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/09/2018
-ms.openlocfilehash: 0cdd962e5d027b5576a0556ca5decb976af45ff1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 11/22/2019
+ms.openlocfilehash: cec94b2ecb18bc9e8cceb24a21967a3c829d78a5
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494541"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561730"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Externe pakketten met Jupyter-notebooks gebruiken in Apache Spark clusters in HDInsight
 
@@ -21,7 +21,7 @@ ms.locfileid: "73494541"
 > * [Cell Magic gebruiken](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Script actie gebruiken](apache-spark-python-package-installation.md)
 
-Meer informatie over het configureren van een [Jupyter notebook](https://jupyter.org/) in Apache Spark cluster op HDInsight voor het gebruik van externe, door de Community bijgedragen Apache **maven** -pakketten die niet zijn opgenomen in het cluster. 
+Meer informatie over het configureren van een [Jupyter notebook](https://jupyter.org/) in Apache Spark cluster op HDInsight voor het gebruik van externe, door de Community bijgedragen Apache **maven** -pakketten die niet out-of-the-box in het cluster zijn opgenomen.
 
 U kunt in de [maven-opslag plaats](https://search.maven.org/) zoeken naar de volledige lijst met pakketten die beschikbaar zijn. U kunt ook een lijst met beschik bare pakketten uit andere bronnen ophalen. Een volledige lijst met door de Community bijgedragen pakketten is bijvoorbeeld beschikbaar in [Spark-pakketten](https://spark-packages.org/).
 
@@ -29,61 +29,56 @@ In dit artikel leert u hoe u het [Spark-CSV-](https://search.maven.org/#artifact
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet het volgende hebben:
-
 * Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
+
+* Weten hoe u Jupyter Notebook gebruikt met Spark on HDInsight. Zie [gegevens laden en query's uitvoeren met Apache Spark op HDInsight](./apache-spark-load-data-run-query.md)voor meer informatie.
+
+* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is `wasb://` voor Azure Storage, `abfs://` voor Azure Data Lake Storage Gen2 of `adl://` voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage of Data Lake Storage Gen2, wordt de URI `wasbs://` of `abfss://`ook wel een [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md)weer geven.
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Externe pakketten gebruiken met Jupyter-notebooks
 
-1. Klik vanuit de [Azure Portal](https://portal.azure.com/), vanaf het startboard, op de tegel voor uw Spark-cluster (als u deze aan het startboard hebt vastgemaakt). U kunt ook naar uw cluster navigeren onder **Bladeren** > **HDInsight-clusters**.
+1. Ga naar `https://CLUSTERNAME.azurehdinsight.net/jupyter` waarbij `CLUSTERNAME` de naam van uw Spark-cluster is.
 
-1. Klik vanuit de blade Spark-cluster op **Snelkoppelingen**. Klik vervolgens vanuit het **Cluster-dashboard** op **Jupyter Notebook**. Voer de beheerdersreferenties voor het cluster in als u daarom wordt gevraagd.
+1. Maak een nieuwe notebook. Selecteer **Nieuw**en selecteer vervolgens **Spark**.
 
-    > [!NOTE]  
-    > Mogelijk bereikt u de Jupyter-notebook voor uw cluster ook door de volgende URL in uw browser te openen. Vervang **CLUSTERNAME** door de naam van uw cluster.
-    > 
-    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-
-1. Maak een nieuwe notebook. Klik op **Nieuw**en klik vervolgens op **Spark**.
-   
     ![Een nieuwe Spark Jupyter-notebook maken](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Een nieuwe Jupyter-notebook maken")
 
-1. Er wordt een nieuwe notebook gemaakt en geopend met de naam Untitled.pynb. Klik bovenaan op de naam van de notebook en wijzig deze in een beschrijvende naam.
-   
+1. Er wordt een nieuwe notebook gemaakt en geopend met de naam Untitled.pynb. Selecteer de naam van het notitie blok bovenaan en geef een beschrijvende naam op.
+
     ![Geef een naam op voor het notitie blok](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Een naam opgeven voor de notebook")
 
-1. U gaat de `%%configure` Magic gebruiken om het notitie blok te configureren voor het gebruik van een extern pakket. Zorg er in notitie blokken die gebruikmaken van externe pakketten voor dat u de `%%configure` Magic aanroept in de eerste cel van de code. Dit zorgt ervoor dat de kernel zo is geconfigureerd dat het pakket wordt gebruikt voordat de sessie wordt gestart.
+1. U gebruikt de `%%configure` Magic om het notitie blok te configureren voor het gebruik van een extern pakket. Zorg er in notitie blokken die gebruikmaken van externe pakketten voor dat u de `%%configure` Magic aanroept in de eerste cel van de code. Dit zorgt ervoor dat de kernel zo is geconfigureerd dat het pakket wordt gebruikt voordat de sessie wordt gestart.
 
     >[!IMPORTANT]  
     >Als u vergeet de kernel in de eerste cel te configureren, kunt u de `%%configure` gebruiken met de para meter `-f`, maar wordt de sessie opnieuw gestart en gaat alle voortgang verloren.
 
     | HDInsight-versie | Opdracht |
     |-------------------|---------|
+    | Voor HDInsight 3,5 en HDInsight 3,6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.11:1.5.0" }}`|
     |Voor HDInsight 3,3 en HDInsight 3,4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
-    | Voor HDInsight 3,5 en HDInsight 3,6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
 
-1. Het bovenstaande fragment verwacht de Maven-coördinaten voor het externe pakket in de centrale opslag plaats maven. In dit fragment is `com.databricks:spark-csv_2.10:1.4.0` de Maven-coördinaat voor het **Spark-CSV-** pakket. Hier kunt u de coördinaten voor een pakket maken.
-   
-    a. Zoek het pakket in de Maven-opslag plaats. Voor dit artikel gebruiken we [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
-   
-    b. Verzamel de waarden voor **GroupId**, **ArtifactId**en **Version**uit de opslag plaats. Zorg ervoor dat de waarden die u verzamelt, overeenkomen met uw cluster. In dit geval gebruiken we een scala 2,10-en Spark 1.4.0-pakket, maar u moet mogelijk verschillende versies selecteren voor de juiste scala-of Spark-versie in uw cluster. U kunt de scala-versie in uw cluster vinden door `scala.util.Properties.versionString` uit te voeren op de Spark Jupyter-kernel of op Spark-verzen ding. U kunt de Spark-versie in uw cluster vinden door `sc.version` op Jupyter notebooks uit te voeren.
-   
+1. Het bovenstaande fragment verwacht de Maven-coördinaten voor het externe pakket in de centrale opslag plaats maven. In dit fragment is `com.databricks:spark-csv_2.11:1.5.0` de Maven-coördinaat voor het **Spark-CSV-** pakket. Hier kunt u de coördinaten voor een pakket maken.
+
+    a. Zoek het pakket in de Maven-opslag plaats. Voor dit artikel gebruiken we [Spark-CSV](https://mvnrepository.com/artifact/com.databricks/spark-csv).
+
+    b. Verzamel de waarden voor **GroupId**, **ArtifactId**en **Version**uit de opslag plaats. Zorg ervoor dat de waarden die u verzamelt, overeenkomen met uw cluster. In dit geval gebruiken we een scala 2,11-en Spark 1.5.0-pakket, maar u moet mogelijk verschillende versies selecteren voor de juiste scala-of Spark-versie in uw cluster. U kunt de scala-versie in uw cluster vinden door `scala.util.Properties.versionString` uit te voeren op de Spark Jupyter-kernel of op Spark-verzen ding. U kunt de Spark-versie in uw cluster vinden door `sc.version` op Jupyter notebooks uit te voeren.
+
     ![Externe pakketten gebruiken met Jupyter notebook](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Externe pakketten gebruiken met Jupyter notebook")
-   
+
     c. De drie waarden samen voegen, gescheiden door een dubbele punt ( **:** ).
-   
-        com.databricks:spark-csv_2.10:1.4.0
+
+        com.databricks:spark-csv_2.11:1.5.0
 
 1. Voer de code-cel uit met de `%%configure` Magic. Hiermee configureert u de onderliggende livy-sessie voor het gebruik van het pakket dat u hebt ingevoerd. In de volgende cellen in het notitie blok kunt u het pakket nu gebruiken, zoals hieronder wordt weer gegeven.
-   
-        val df = sqlContext.read.format("com.databricks.spark.csv").
+
+        val df = spark.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-    Voor HDInsight 3,6 moet u het volgende code fragment gebruiken.
+    Voor HDInsight 3,4 en lager moet u het volgende code fragment gebruiken.
 
-        val df = spark.read.format("com.databricks.spark.csv").
+        val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")

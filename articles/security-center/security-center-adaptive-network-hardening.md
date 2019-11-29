@@ -1,6 +1,6 @@
 ---
 title: Adaptieve netwerk beveiliging in Azure Security Center | Microsoft Docs
-description: " Meer informatie over het inschakelen van adaptieve netwerk beveiliging in Azure Security Center. "
+description: Meer informatie over de beveiliging, op basis van werkelijke verkeers patronen, uw NSG-regels (netwerk beveiligings groepen) en het verbeteren van uw beveiligings postuur.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 060a5a6a356574e04a3492cdeadd93ddf9a38535
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255236"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559280"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptieve netwerk beveiliging in Azure Security Center
 Meer informatie over het configureren van adaptieve netwerk beveiliging in Azure Security Center.
@@ -47,7 +47,7 @@ Stel bijvoorbeeld dat de bestaande NSG-regel verkeer van 140.20.30.10/24 op poor
 
      ![beschadigde resources](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
-2. Selecteer een virtuele machine op het tabblad **beschadigde resources** om de waarschuwingen te bekijken en de aanbevolen beveiligings regels te gebruiken.
+2. Op het tabblad **beschadigde bronnen** selecteert u een virtuele machine om de waarschuwingen en de aanbevolen beveiligings regels weer te geven die moeten worden toegepast.
 
     ![beveiligings waarschuwingen](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
 
@@ -83,7 +83,7 @@ Enkele belang rijke richt lijnen voor het wijzigen van een adaptieve netwerk bep
 * U kunt regels voor ' toestaan ' niet wijzigen zodat regels worden ' deny '. 
 
   > [!NOTE]
-  > Het maken en wijzigen van regels voor weigeren wordt rechtstreeks uitgevoerd op de NSG Zie [een netwerk beveiligings groep maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)voor meer informatie.
+  > Het maken en wijzigen van regels voor weigeren wordt rechtstreeks uitgevoerd op het NSG. Zie [een netwerk beveiligings groep maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)voor meer informatie.
 
 * Een regel voor het **weigeren van alle verkeer** is het enige type ' deny ' dat hier wordt vermeld en kan niet worden gewijzigd. U kunt het echter wel verwijderen (Zie [een regel verwijderen](#delete-rule)).
   > [!NOTE]
@@ -93,14 +93,14 @@ Enkele belang rijke richt lijnen voor het wijzigen van een adaptieve netwerk bep
 
 1. Als u een aantal para meters van een regel wilt wijzigen, klikt u op het tabblad **regels** op de drie puntjes (...) aan het einde van de rij van de regel en klikt u op **bewerken**.
 
-   ![regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
+   ![Regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
 1. In het venster **regel bewerken** werkt u de details bij die u wilt wijzigen en klikt u op **Opslaan**.
 
    > [!NOTE]
    > Nadat u op **Opslaan**hebt geklikt, is de regel gewijzigd. *U hebt deze echter niet toegepast op de NSG.* Als u deze wilt Toep assen, moet u de regel in de lijst selecteren en op **afdwingen** klikken (zoals in de volgende stap wordt uitgelegd).
 
-   ![regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+   ![Regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
 3. Als u de bijgewerkte regel wilt Toep assen, selecteert u in de lijst de bijgewerkte regel en klikt u op **afdwingen**.
 

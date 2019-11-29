@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd144f1922456520075c1863ec347e85eb3889db
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f2ae0d79076a0137b3756721675267d89990bf5a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379861"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554046"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Microsoft Authenticator-of Microsoft Intune-Bedrijfsportal gebruiken in Xamarin-toepassingen
 
@@ -182,7 +182,7 @@ De portal heeft een nieuwe portal voor het registreren van apps waarmee u de bro
 
 MSAL.NET ondersteunen op het moment alleen het platform Xamarin. iOS. Het biedt nog geen ondersteuning voor Brokers voor het platform Xamarin. Android.
 
-De systeem eigen bibliotheek van MSAL Android ondersteunt dit al. Zie [brokered auth in Android](https://docs.microsoft.com/azure/active-directory/develop/brokered-auth.md) voor meer informatie.
+De systeem eigen bibliotheek van MSAL Android ondersteunt dit al. Zie [brokered auth in Android](brokered-auth.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

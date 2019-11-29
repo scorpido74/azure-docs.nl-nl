@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7ea98baa9cb202e2584c18998c5ab96d1c1f9e5a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012646"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561394"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Beperking controleren en beperken om de latentie in Azure Time Series Insights te verminderen
 
@@ -42,13 +42,13 @@ U hebt hoogstwaarschijnlijk latentie en beperking bij het volgende:
 
 Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie problemen die door uw omgeving worden veroorzaakt.
 
-1. Selecteer in de Azure Portal **waarschuwingen**.
+1. Selecteer uw Time Series Insights omgeving in het Azure Portal. Selecteer vervolgens **waarschuwingen**.
 
-   [![waarschuwingen](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![een waarschuwing aan uw Time Series Insights omgeving toevoegen](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. Het deel venster **regel maken** wordt weer gegeven. Selecteer **toevoegen** onder **voor waarde**.
 
-   [waarschuwing ![toevoegen](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [deel venster waarschuwing ![toevoegen](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
 1. Vervolgens configureert u de exacte voor waarden voor de signaal logica.
 
@@ -70,7 +70,7 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
 
 1. Nadat u de gewenste signaal logica hebt geconfigureerd, controleert u de gekozen waarschuwings regel visueel.
 
-   [![ingang](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [![latentie weer geven en grafieken](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png)](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Beperkings-en ingangs beheer
 

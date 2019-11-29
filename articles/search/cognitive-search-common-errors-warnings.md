@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a86c809e239a84b2ec6910c47a17b935c440c741
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 472c4a75f5a4253220383ae79d88d5b90cec4795
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287000"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555050"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen voor Indexeer functies in azure Cognitive Search oplossen
 
@@ -34,10 +34,10 @@ Met ingang van API-versie `2019-05-06`worden indexerings fouten en waarschuwinge
 
 | Eigenschap | Beschrijving | Voorbeeld |
 | --- | --- | --- |
-| sleutel | De document-id van het document dat wordt beïnvloed door de fout of waarschuwing. | https://coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| sleutel | De document-ID van het document dat wordt beïnvloed door de fout of waarschuwing. | https:\/-coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | De naam van de bewerking waarin wordt beschreven waar de fout of waarschuwing zich voordeed. Dit wordt gegenereerd door de volgende structuur: [categorie]. [subcategorie]. [resource type]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName-verrijking. WebApiSkill. mySkillName projectie. SearchIndex. OutputFieldMapping. myOutputFieldName-projectie. SearchIndex. MergeOrUpload. myIndexName Projectie. KnowledgeStore. table. myTableName |
 | message | Een beschrijving van de fout of waarschuwing op hoog niveau. | Kan de vaardigheid niet uitvoeren omdat de Web-API-aanvraag is mislukt. |
-| details informatie | Aanvullende informatie die nuttig kan zijn bij het vaststellen van het probleem, zoals het WebApi-antwoord als het uitvoeren van een aangepaste kwalificatie is mislukt. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 bron, func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... rest van Stack tracering... |
+| Nadere | Aanvullende informatie die nuttig kan zijn bij het vaststellen van het probleem, zoals het WebApi-antwoord als het uitvoeren van een aangepaste kwalificatie is mislukt. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 bron, func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... rest van Stack tracering... |
 | documentationLink | Een koppeling naar relevante documentatie met gedetailleerde informatie voor het opsporen van fouten en het oplossen van het probleem. Deze koppeling wijst vaak naar een van de onderstaande secties op deze pagina. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -46,7 +46,7 @@ Met ingang van API-versie `2019-05-06`worden indexerings fouten en waarschuwinge
 
 De Indexeer functie kan het document niet lezen uit de gegevens bron. Dit kan gebeuren vanwege:
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | inconsistente veld typen in verschillende documenten | Het type van de waarde komt niet overeen met het kolom Type. Kan `'{47.6,-122.1}'` in de kolom AUTHORS niet opslaan.  Verwacht type is JArray. | Zorg ervoor dat het type van elk veld hetzelfde is in verschillende documenten. Als bijvoorbeeld het eerste document `'startTime'` veld een datum/tijd is en in het tweede document een teken reeks is, wordt deze fout weer bereikt. |
 | fouten van de onderliggende service van de gegevens bron | (van Cosmos DB) `{"Errors":["Request rate is large"]}` | Controleer uw opslag instantie om te controleren of deze in orde is. Mogelijk moet u de schaal/partitionering aanpassen. |
@@ -57,7 +57,7 @@ De Indexeer functie kan het document niet lezen uit de gegevens bron. Dit kan ge
 ## <a name="error-could-not-extract-document-content"></a>Fout: kan de document inhoud niet ophalen
 Indexeer functie met een BLOB-gegevens bron kan de inhoud niet ophalen uit het document (bijvoorbeeld een PDF-bestand). Dit kan gebeuren vanwege:
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | de BLOB overschrijdt de maximale grootte | Document is `'150441598'` bytes, wat de maximale grootte `'134217728'` bytes voor de document extractie voor uw huidige servicelaag overschrijdt. | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | de BLOB heeft een niet-ondersteund inhouds type | Het document bevat een niet-ondersteund inhouds type `'image/png'` | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ Indexeer functie met een BLOB-gegevens bron kan de inhoud niet ophalen uit het d
 ## <a name="error-could-not-parse-document"></a>Fout: kan het document niet parseren
 De Indexeer functie heeft het document uit de gegevens bron gelezen, maar er is een probleem opgetreden bij het converteren van de document inhoud naar het opgegeven veld toewijzings schema. Dit kan gebeuren vanwege:
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | De document sleutel ontbreekt | De document sleutel mag niet ontbreken of zijn leeg | Zorg ervoor dat alle documenten geldige document sleutels hebben |
 | De document sleutel is ongeldig | De document sleutel mag niet langer zijn dan 1024 tekens | Wijzig de document sleutel zodat deze voldoet aan de validatie vereisten. |
@@ -81,7 +81,7 @@ De Indexeer functie heeft het document uit de gegevens bron gelezen, maar er is 
 ## <a name="error-could-not-execute-skill"></a>Fout: kan de kwalificatie niet uitvoeren
 De Indexeer functie kan geen vaardigheid uitvoeren in de vaardig heden.
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | Problemen met de tijdelijke verbinding | Er is een tijdelijke fout opgetreden. Probeer het later opnieuw. | Af en toe zijn er onverwachte verbindings problemen. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
 | Mogelijke product bug | Er is een onverwachte fout opgetreden. | Dit duidt op een onbekende klasse fout. Dit kan betekenen dat er een product fout is opgetreden. Neem een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) op om hulp te krijgen. |
@@ -140,7 +140,7 @@ De maximum waarde die u voor de para meter `timeout` kunt instellen, is 230 seco
 
 Het document is gelezen en verwerkt, maar de Indexeer functie kan het niet toevoegen aan de zoek index. Dit kan gebeuren vanwege:
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | Een veld bevat een term die te groot is | Een term in uw document is groter dan de [limiet van 32 KB](search-limits-quotas-capacity.md#api-request-limits) | U kunt deze beperking vermijden door ervoor te zorgen dat het veld niet is geconfigureerd als filterbaar, facetable of sorteerbaar.
 | Het document is te groot om te worden geïndexeerd | Een document is groter dan de [maximale grootte](search-limits-quotas-capacity.md#api-request-limits) van de API-aanvraag | [Grote gegevens sets indexeren](search-howto-large-index.md)
@@ -195,7 +195,7 @@ Als u een standaard waarde wilt opgeven in het geval van een ontbrekende invoer,
 }
 ```
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | De vaardigheids invoer is van het verkeerde type | De vereiste `X` voor vaardigheids invoer is niet van het verwachte type `String`. De vereiste indeling voor het `X` van de kwalificatie invoer is niet in de verwachte vorm. | Bepaalde vaardig heden verwachten invoer van bepaalde typen, bijvoorbeeld [sentiment-vaardigheid](cognitive-search-skill-sentiment.md) verwacht `text` een teken reeks te zijn. Als met de invoer een niet-teken reeks waarde wordt opgegeven, wordt de kwalificatie niet uitgevoerd en worden er geen uitvoer gegenereerd. Zorg ervoor dat uw gegevensset uniforme invoer waarden bevat, of gebruik een [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md) om de invoer voor te verwerken. Als u de vaardigheid over een matrix wilt door lopen, controleert u of de context van de vaardigheid en de invoer `*` op de juiste posities hebben. Normaal gesp roken moet zowel de context als de invoer bron eindigen op `*` voor matrices. |
 | Vaardigheids invoer ontbreekt | De vereiste `X` voor vaardigheids invoer ontbreekt. | Als in al uw documenten deze waarschuwing wordt weer gegeven, is er waarschijnlijk een type fout in de invoer paden en moet u de naam van de eigenschap name, extra of ontbrekende `*` in het pad controleren en documenten uit de gegevens bron de vereiste invoer definiëren. |
@@ -208,7 +208,7 @@ Een of meer van de waarden die zijn door gegeven aan de optionele `languageCode`
 
 Als u weet dat uw gegevensset zich in één taal bevindt, moet u de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) en de `languageCode` vaardigheids invoer verwijderen en in plaats daarvan de para meter `defaultLanguageCode` vaardig heden voor die vaardigheid gebruiken, ervan uitgaande dat de taal voor die vaardigheid wordt ondersteund.
 
-Als u weet dat uw gegevensset meerdere talen bevat en u de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) en `languageCode` invoer nodig hebt, kunt u overwegen een [ConditionalSkill](cognitive-search-skill-conditional.md) toe te voegen om de tekst te filteren op basis van talen die niet worden ondersteund voordat ze worden door gegeven aan de tekst naar de downstream-vaardigheid.  Hier volgt een voor beeld van wat er in het EntityRecognitionSkill eruit kan zien:
+Als u weet dat uw gegevensset meerdere talen bevat en u de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) en `languageCode` invoer nodig hebt, kunt u overwegen om een [ConditionalSkill](cognitive-search-skill-conditional.md) toe te voegen om de tekst te filteren op basis van talen die niet worden ondersteund voordat de tekst wordt door gegeven aan de downstream-vaardigheid.  Hier volgt een voor beeld van wat er in het EntityRecognitionSkill eruit kan zien:
 
 ```json
 {

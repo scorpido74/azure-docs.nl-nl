@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77cda523582b513669adcafd3a46b6ac02dd99db
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285622"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558580"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Het inrichten van gebruikers accounts voor zakelijke apps beheren in de Azure Portal
 
@@ -85,4 +85,4 @@ Als het inrichten voor de eerste keer voor een toepassing wordt ingeschakeld, sc
 
 Wijzig de **inrichtings status** in **uit** om de inrichtings service te onderbreken. In deze status wordt in azure geen gebruikers-of groeps objecten in de app gemaakt, bijgewerkt of verwijderd. Wijzig de status weer **in op** en de service wordt opgehaald waar deze is gestopt.
 
-De **huidige status wissen en de synchronisatie opnieuw starten** genereert een eerste cyclus. De service evalueert vervolgens alle gebruikers in het bron systeem opnieuw en bepaalt of ze binnen het bereik van de inrichting vallen. Dit kan handig zijn als uw toepassing zich momenteel in quarantaine bevindt of als u een wijziging wilt aanbrengen in uw kenmerk toewijzingen. Dit mag niet worden gebruikt voor het activeren van een aanvraag om te verwijderen of uit te scha kelen omdat deze gebeurtenissen kunnen worden verwijderd wanneer een duidelijke status wordt geactiveerd en de computer opnieuw wordt opgestart. De eerste cyclus duurt ook langer dan de typische incrementele cyclus als gevolg van het aantal objecten dat moet worden geëvalueerd. Hier vindt u meer informatie over de prestaties van de eerste en incrementele cycli [.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).. 
+De **huidige status wissen en de synchronisatie opnieuw starten** genereert een eerste cyclus. De service evalueert vervolgens alle gebruikers in het bron systeem opnieuw en bepaalt of ze binnen het bereik van de inrichting vallen. Dit kan handig zijn als uw toepassing zich momenteel in quarantaine bevindt of als u een wijziging wilt aanbrengen in uw kenmerk toewijzingen. Houd er rekening mee dat de eerste cyclus langer duurt dan de typische incrementele cyclus als gevolg van het aantal objecten dat moet worden geëvalueerd. Hier vindt u meer informatie over de prestaties van de eerste en incrementele cycli [.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).. 

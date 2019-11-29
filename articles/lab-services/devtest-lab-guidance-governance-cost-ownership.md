@@ -1,6 +1,6 @@
 ---
-title: Beheer van Azure DevTest Labs-infrastructuur
-description: Dit artikel bevat richtlijnen voor het beheer van Azure DevTest Labs-infrastructuur.
+title: Kosten en eigendom beheren in Azure DevTest Labs
+description: In dit artikel vindt u informatie over het optimaliseren van kosten en het uitlijnen van het eigendom in uw omgeving.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,56 +10,56 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 7832691812d8f10342dc7df20a7cfab7265f2d9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b82d338f85f1b43712296ac7f27bdad55f8f1919
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775709"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561664"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Beheer van de infrastructuur van Azure DevTest Labs - kosten en eigendom beheren
-Kosten en het eigendom zijn primaire problemen wanneer u Houd rekening met het bouwen van uw ontwikkel- en testomgevingen. In deze sectie vindt u informatie waarmee u kunt optimaliseren voor kosten en eigendom uitlijnen in uw omgeving.
+# <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Governance van Azure DevTest Labs-infra structuur-kosten en eigendom beheren
+Kosten en eigendom zijn primair als u overweegt om uw ontwikkel-en test omgevingen te bouwen. In deze sectie vindt u informatie die u helpt bij het optimaliseren van kosten en het aanpassen van het eigendom in uw omgeving.
 
 ## <a name="optimize-for-cost"></a>Optimaliseren voor kosten
 
 ### <a name="question"></a>Vraag
-Hoe kan ik optimaliseren voor kosten binnen mijn DevTest Labs-omgeving?
+Hoe kan ik de kosten in mijn DevTest Labs-omgeving optimaliseren?
 
 ### <a name="answer"></a>Antwoord
-Er zijn een aantal ingebouwde functies van DevTest Labs die u helpen optimaliseren voor kosten. Zie [kostenbeheer, drempels](devtest-lab-configure-cost-management.md) [, en het beleid](devtest-lab-set-lab-policy.md) artikelen activiteiten van uw gebruikers te beperken. 
+Er zijn een aantal ingebouwde functies van DevTest Labs waarmee u de kosten kunt optimaliseren. Zie [kosten beheer, drempels](devtest-lab-configure-cost-management.md) [en](devtest-lab-set-lab-policy.md) artikel artikelen om activiteiten van uw gebruikers te beperken. 
 
-Als u DevTest Labs voor een ontwikkelings- en workloads gebruiken, kunt u overwegen om gebruik van de [Enterprise Dev/Test-abonnement voordeel](https://azure.microsoft.com/offers/ms-azr-0148p/), als onderdeel van uw Enterprise Agreement. U kunt ook als u een betalen-klant bent, kunt u rekening houden met de [betaalt u Ga DevTest aanbieding](https://azure.microsoft.com/offers/ms-azr-0023p/).
+Wanneer u DevTest Labs gebruikt voor een ontwikkelings-en test werkbelasting, kunt u overwegen het [Enterprise dev/test-abonnements voordeel](https://azure.microsoft.com/offers/ms-azr-0148p/)te gebruiken als onderdeel van uw Enterprise Agreement. Als u betaalt als u bent, kunt u ook rekening houden met de [betalen naar gebruik-DevTest aanbieding](https://azure.microsoft.com/offers/ms-azr-0023p/).
 
-Deze aanpak kunt u met profiteren van talrijke voordelen:
+Deze benadering biedt talloze voor delen:
 
-- Speciale lagere tarieven voor ontwikkelen/testen op Windows-virtuele machines, cloudservices, HDInsight, App Service en Logic Apps
-- Geweldige Enterprise Agreement (EA)-tarieven op andere Azure-services
+- Speciale lagere dev/test-tarieven voor virtuele Windows-machines, Cloud Services, HDInsight, App Service en Logic Apps
+- Fantastische tarieven voor Enterprise Agreement (EA) op andere Azure-Services
 - Toegang tot exclusieve Dev/Test-installatiekopieën in de galerie, waaronder Windows 8.1 en Windows 10
  
-Actieve Visual Studio-abonnees (standaardabonnementen, cloudjaarabonnementen en cloudmaandabonnementen) kunnen alleen Azure-bronnen in een enterprise Dev/Test-abonnement gebruiken. Eindgebruikers kunnen wel toegang tot de toepassing feedback geven of acceptatietesten uit te voeren. Gebruik van bronnen binnen dit abonnement is beperkt tot het ontwikkelen en testen van toepassingen en er wordt geen garantie voor actieve tijdsduur gegeven.
+Alleen actieve Visual Studio-abonnees (standaard abonnementen, jaarlijkse Cloud abonnementen en maandelijkse Cloud abonnementen) kunnen gebruikmaken van Azure-resources die worden uitgevoerd in een Enter prise dev/test-abonnement. Eind gebruikers hebben echter toegang tot de toepassing om feedback te geven of acceptatie tests uit te voeren. Gebruik van bronnen binnen dit abonnement is beperkt tot het ontwikkelen en testen van toepassingen en er wordt geen garantie voor actieve tijdsduur gegeven.
 
-Als u wilt gebruiken de DevTest-aanbieding, houd er rekening mee dat dit voordeel is uitsluitend bedoeld voor ontwikkeling en testen van uw toepassingen. Gebruik binnen het abonnement wordt niet geleverd met een SLA met financiële garantie, behalve voor het gebruik van Azure DevOps en HockeyApp.
+Als u besluit de DevTest-aanbieding te gebruiken, moet u er rekening mee houden dat dit voor deel uitsluitend is voor het ontwikkelen en testen van uw toepassingen. Voor gebruik binnen het abonnement geldt geen SLA met financiële garantie, met uitzonde ring van het gebruik van Azure DevOps en HockeyApp.
 
 ## <a name="define-a-role-based-access-across-your-organization"></a>Een op rollen gebaseerde toegang in uw organisatie definiëren
 ### <a name="question"></a>Vraag
-Hoe definieer ik op rollen gebaseerd toegangsbeheer voor mijn DevTest Labs omgevingen om ervoor te zorgen dat kan IT beheren terwijl ontwikkelaars en testen hun werk kunnen doen? 
+Hoe kan ik op rollen gebaseerd toegangs beheer definiëren voor mijn DevTest Labs-omgevingen om ervoor te zorgen dat IT kan bepalen wanneer ontwikkel aars/test hun werk kunnen doen? 
 
 ### <a name="answer"></a>Antwoord
-Er is een brede patroon, maar de details, is afhankelijk van uw organisatie.
+Er is een breed patroon, maar de details zijn afhankelijk van uw organisatie.
 
-Centrale IT moet alleen wat nodig is de eigenaar en inschakelen van het project en toepassing teams om het benodigde beheerniveau. Normaal gesproken betekent dit dat centrale IT eigenaar is van het abonnement en de grepen essentiële IT-functies, zoals netwerkconfiguraties. De set **eigenaren** voor een abonnement moet zo klein zijn. Deze eigenaren kunnen extra eigenaren benoemen als nodig is, of beleidsregels op abonnementsniveau, bijvoorbeeld "Er zijn geen openbare IP' toepassen.
+U hoeft alleen maar te beschikken over wat er nodig is, en het project en toepassings teams in staat stellen het benodigde beheer niveau te gebruiken. Normaal gesp roken betekent het dat de centrale IT eigenaar is van het abonnement en dat de kern IT-functies, zoals netwerk configuraties, worden afgehandeld. De set **eigen aars** voor een abonnement moet klein zijn. Deze eigen aren kunnen extra eigen aren benoemen wanneer er behoefte is of beleid op abonnements niveau Toep assen, bijvoorbeeld ' geen openbaar IP-adres '.
 
-Het is mogelijk dat er een subset van gebruikers die toegang nodig voor een abonnement, zoals Tier1 of laag 2-ondersteuning hebben. In dit geval wordt aangeraden dat u deze gebruikers geeft de **Inzender** toegang zodat ze kunnen de bronnen beheren, maar niet gebruiker toegang krijgen of beleid.
+Mogelijk is er een subset van gebruikers die toegang nodig hebben tot meerdere abonnementen, zoals Tier1 of Tier 2-ondersteuning. In dit geval wordt u aangeraden deze gebruikers de toegang tot de **Inzender** te geven, zodat ze de resources kunnen beheren, maar geen gebruikers toegang bieden of beleids regels aanpassen.
 
-De DevTest Labs-bron moet eigendom zijn van eigenaren die zich dicht bij de toepassing/project-team. Dit is omdat ze hun vereisten wat betreft de machines en de vereiste software begrijpen. De eigenaar van deze resource DevTest Labs is in de meeste organisaties vaak de lead project/ontwikkeling. De eigenaar van deze gebruikers en het beleid in de testomgeving kunt beheren en alle virtuele machines in de DevTest Labs-omgeving kunt beheren.
+De DevTest Labs-resource moet eigendom zijn van eigen aren die dicht bij het project/toepassings team vallen. Dit is omdat ze inzicht hebben in hun vereisten op het gebied van machines en vereiste software. In de meeste organisaties is de eigenaar van deze DevTest Labs resource meestal het project/de ontwikkelings lead. Deze eigenaar kan gebruikers en beleids regels in de test omgeving beheren en alle virtuele machines in de DevTest Labs-omgeving beheren.
 
-De teamleden project/toepassing moeten worden toegevoegd aan de rol van DevTest Labs-gebruikers. Deze gebruikers kunnen maken van virtuele machines (inline-lab en het abonnementsniveau). Ook kunnen ze hun eigen virtuele machines beheren. Ze kunnen geen virtuele machines die deel uitmaken van andere gebruikers beheren.
+De leden van het project/het toepassings team moeten worden toegevoegd aan de rol DevTest Labs-gebruikers. Deze gebruikers kunnen virtuele machines maken (op basis van de beleids regels Lab en abonnement op abonnements niveau). Ze kunnen ook hun eigen virtuele machines beheren. Ze kunnen geen virtuele machines beheren die deel uitmaken van andere gebruikers.
 
-Zie voor meer informatie, [Azure enterprise-platform-prescriptieve abonnementsgovernance](/azure/architecture/cloud-adoption/appendix/azure-scaffold) documentatie.
+Zie voor meer informatie [Azure Enter prise-steigers-](/azure/architecture/cloud-adoption/appendix/azure-scaffold) documentatie over het beheer van voorgeschreven abonnementen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [zakelijke beleid en naleving](devtest-lab-guidance-governance-policy-compliance.md).
+Zie [bedrijfs beleid en naleving](devtest-lab-guidance-governance-policy-compliance.md).

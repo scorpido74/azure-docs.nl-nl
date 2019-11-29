@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 922a2eb910a99a899bdb9f2b3e2392559ec9b0f3
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 7a8fe0f21ea8b31fb26727e2220f7395e2d71c2c
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548407"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555361"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie
 
@@ -128,7 +128,15 @@ Een belang rijk aspect van het gegevens beveiligings model is de mogelijkheid om
 
 ![Audit logboek](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-### <a name="manage-classifications"></a>Classificaties beheren
+## <a id="subheading-4"></a>Machtigingen
+
+De volgende ingebouwde rollen kunnen de gegevens classificatie van een Azure SQL database: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` en `User Access Administrator`lezen.
+
+De volgende ingebouwde rollen kunnen de gegevens classificatie wijzigen van een Azure SQL database: `Owner`, `Contributor``SQL Security Manager`.
+
+Meer informatie over [RBAC voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/overview)
+
+## <a id="subheading-5"></a>Classificaties beheren
 
 # <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
 U kunt T-SQL gebruiken om kolom classificaties toe te voegen of te verwijderen, en alle classificaties voor de hele Data Base op te halen.
@@ -152,8 +160,10 @@ U kunt ook REST-Api's gebruiken om classificaties programmatisch te beheren. De 
 
 - [Lijst aanbevolen door data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) : Hiermee wordt de aanbevolen gevoeligheids labels van een bepaalde data base opgehaald
 
-# <a name="powershell-cmdlet-for-azure-sqltabazure-portal-sqldb"></a>[Power shell-cmdlet voor Azure SQL](#tab/azure-portal-sqldb)
-U kunt Power shell gebruiken om alle aanbevolen kolommen op te halen in een Azure-SQL database.
+# <a name="powershell-cmdlettabazure-powelshell"></a>[Power shell-cmdlet](#tab/azure-powelshell)
+U kunt Power shell gebruiken om alle aanbevolen kolommen op te halen in een Azure SQL database en in een beheerd exemplaar.
+
+### <a name="powershell-cmdlet-for-azure-sql-database"></a>Power shell-cmdlet voor Azure SQL database
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
@@ -161,8 +171,7 @@ U kunt Power shell gebruiken om alle aanbevolen kolommen op te halen in een Azur
 - [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
 - [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-# <a name="powershell-cmdlets-for-managed-instancetabazure-powershell-mi"></a>[Power shell-cmdlets voor een beheerd exemplaar](#tab/azure-powershell-mi)
-U kunt Power shell gebruiken om alle aanbevolen kolommen in een beheerd exemplaar op te halen.
+### <a name="powershell-cmdlets-for-managed-instance"></a>Power shell-cmdlets voor een beheerd exemplaar
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
@@ -170,22 +179,17 @@ U kunt Power shell gebruiken om alle aanbevolen kolommen in een beheerd exemplaa
 - [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
-## <a name="permissions"></a>Machtigingen
+---
 
-De volgende ingebouwde rollen kunnen de gegevens classificatie van een Azure SQL database: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` en `User Access Administrator`lezen.
-
-De volgende ingebouwde rollen kunnen de gegevens classificatie wijzigen van een Azure SQL database: `Owner`, `Contributor``SQL Security Manager`.
-
-Meer informatie over [RBAC voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/overview)
-
-## <a id="subheading-5"></a>Volgende stappen
+## <a id="subheading-6"></a>Volgende stappen
 
 - Meer informatie over [geavanceerde gegevens beveiliging](sql-database-advanced-data-security.md).
 - Overweeg het configureren van [Azure SQL database controle](sql-database-auditing.md) voor het bewaken en controleren van de toegang tot uw geclassificeerde gevoelige gegevens.
 
 <!--Anchors-->
-[SQL data discovery & classification overview]: #subheading-1
+[What is data discovery & classification]: #subheading-1
 [Discovering, classifying & labeling sensitive columns]: #subheading-2
 [Auditing access to sensitive data]: #subheading-3
-[Automated/Programmatic classification]: #subheading-4
-[Next Steps]: #subheading-5
+[Permissions]: #subheading-4
+[Manage classifications]: #subheading-5
+[Next Steps]: #subheading-6

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 70e6bdfcf9718244632ad02e09d3ddadee71a617
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: eb204701b42436a5ae95bac97ed6fd97cf272860
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311561"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561867"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Horizon taal schalen van het cluster beheren (uitschalen) in azure Data Explorer voor het wijzigen van de vraag
 
@@ -33,7 +33,7 @@ Als u horizon taal schalen gebruikt, kunt u het aantal exemplaren automatisch sc
 
 1. Ga in het Azure Portal naar de cluster bron van Azure Data Explorer. Onder **instellingen**selecteert u **uitschalen**. 
 
-2. Selecteer in  het venster uitschalen de gewenste methode voor automatisch schalen: **Hand matig schalen**, **geoptimaliseerd**automatisch schalen of **aangepast automatisch schalen**.
+2. Selecteer in het venster **uitschalen** de gewenste methode voor automatisch schalen: **hand matig schalen**, **geoptimaliseerd**automatisch schalen of **aangepast automatisch schalen**.
 
 ### <a name="manual-scale"></a>Hand matig schalen
 
@@ -41,7 +41,7 @@ Hand matig schalen is de standaard instelling tijdens het maken van het cluster.
 
    ![Methode hand matig schalen](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
-### <a name="optimized-autoscale"></a>Geoptimaliseerd automatisch schalen
+### <a name="optimized-autoscale-preview"></a>Geoptimaliseerd automatisch schalen (preview)
 
 Geoptimaliseerd automatisch schalen is de aanbevolen methode voor automatisch schalen. Deze methode optimaliseert de prestaties en kosten van het cluster. Als het cluster de status onder gebruik nadert, wordt het geschaald in. Deze actie verlaagt de kosten, maar houdt het prestatie niveau bij. Als het cluster de status over het gebruik nadert, wordt het uitgeschaald om optimale prestaties te behouden. Geoptimaliseerde automatisch schalen configureren:
 
@@ -59,7 +59,7 @@ Geoptimaliseerd automatisch schalen wordt gestart. De bijbehorende acties zijn n
 
 Met aangepaste automatisch schalen kunt u uw cluster dynamisch schalen op basis van de metrische gegevens die u opgeeft. In de volgende afbeelding ziet u de stroom en de stappen voor het configureren van aangepaste automatisch schalen. Raadpleeg de afbeelding voor meer informatie.
 
-1. Voer in het vak **instellings naam automatisch schalen** een naam in, zoals uitschalen *: cache gebruik*. 
+1. Voer in het vak **instellings naam automatisch schalen** een naam in, zoals *uitschalen: cache gebruik*. 
 
    ![Schaal regel](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
@@ -76,7 +76,7 @@ Met aangepaste automatisch schalen kunt u uw cluster dynamisch schalen op basis 
     | **Tijd aggregatie** | Selecteer een aggregatie criterium, zoals **gemiddeld**. |
     | **Metrische naam** | Selecteer de metrische gegevens waarop u de schaal bewerking wilt baseren, zoals het **cache gebruik**. |
     | **Statistieken voor tijd korrels** | Kies een **gemiddelde**, een **minimum**, een **maximum**en een **som**. |
-    | **Operator** | Kies de gewenste optie, zoals **groter dan of gelijk aan**. |
+    | **And** | Kies de gewenste optie, zoals **groter dan of gelijk aan**. |
     | **Spreek** | Kies een geschikte waarde. Bijvoorbeeld: voor cache gebruik is 80 procent een goed uitgangs punt. |
     | **Duur (in minuten)** | Kies een geschikte hoeveelheid tijd om het systeem terug te laten kijken bij het berekenen van metrische gegevens. Begin met de standaard waarde van 10 minuten. |
     |  |  |
@@ -92,12 +92,12 @@ Met aangepaste automatisch schalen kunt u uw cluster dynamisch schalen op basis 
 
 5. Selecteer **Toevoegen**.
 
-6. Voer in de sectie limieten van het **exemplaar** aan de linkerkant waarden in voor elke instelling.
+6. Voer in de sectie **limieten** van het exemplaar aan de linkerkant waarden in voor elke instelling.
 
     | Instelling | Beschrijving en waarde |
     | --- | --- |
-    | **Minimum** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
-    | **Maximum** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
+    | **Maal** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
+    | **Gehalte** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
     | **Standaard** | Het standaard aantal exemplaren. Deze instelling wordt gebruikt als er problemen zijn met het lezen van de metrische gegevens van de resource. |
     |  |  |
 

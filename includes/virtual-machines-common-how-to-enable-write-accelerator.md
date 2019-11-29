@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/23/2019
+ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: c8e0bb50e14467d2950d97da660fc8e6fa176b99
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008904"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566247"
 ---
 Write Accelerator is een schijf mogelijkheid voor Virtual Machines van de M-serie (Vm's) op Premium Storage alleen met Azure Managed Disks. Als de naam statussen is het doel van de functionaliteit om de I/O-latentie van schrijf bewerkingen voor Azure Premium Storage te verbeteren. Write Accelerator is in het ideale geval waar logboek bestanden moeten worden opgeslagen op de schijf op een zeer krachtige manier voor moderne data bases.
 
@@ -46,8 +46,9 @@ Er zijn limieten van Azure Premium Storage Vhd's per VM die door Write Accelerat
 
 | VM-SKU | Aantal Write Accelerator schijven | Write Accelerator schijf-IOPS per VM |
 | --- | --- | --- |
+| M416ms_v2, M416s_v2| 16 | 20000 |
 | M208ms_v2, M208s_v2| 8 | 10.000 |
-| M128ms, 128s | 16 | 20000 |
+| M128ms, M128s | 16 | 20000 |
 | M64ms, M64ls, M64s | 8 | 10.000 |
 | M32 MS, M32ls, M32ts, M32s | 4 | 5000 |
 | M16 MS, M16s | 2 | 2500 |

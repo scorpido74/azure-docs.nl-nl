@@ -3,12 +3,12 @@ title: Back-upfouten van SAP HANA databases oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost die zich kunnen voordoen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 9c6e4c66d96b02c2d5b4b4fe70fe6e6798c4e2c6
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b4c39c631963a358dcdc9d1eafe954a85a9499ad
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285921"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554864"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Problemen met back-ups van SAP HANA-data bases in azure oplossen
 
@@ -20,16 +20,61 @@ Raadpleeg de secties [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) e
 
 ## <a name="common-user-errors"></a>Veelvoorkomende gebruikers fouten
 
-| Fout                                | Foutbericht                    | Mogelijke oorzaken                                              | Aanbevolen actie                                           |
-| ------------------------------------ | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| UserErrorInOpeningHanaOdbcConnection | Kan geen verbinding maken met het HANA-systeem | Het SAP HANA-exemplaar is mogelijk niet actief. <br> De vereiste machtigingen voor Azure backup voor interactie met de HANA-Data Base zijn niet ingesteld. | Controleer of de SAP HANA-data base actief is. Als de data base actief is, controleert u of alle vereiste machtigingen zijn ingesteld. Als een van de machtigingen ontbreekt, voert u het script voor de [voorafgaande registratie](https://aka.ms/scriptforpermsonhana) uit om de ontbrekende machtigingen toe te voegen. |
-| UserErrorHanaInstanceNameInvalid | Het opgegeven SAP HANA exemplaar is ongeldig of kan niet worden gevonden | Er kan geen back-up worden gemaakt van meerdere SAP HANA exemplaren op één virtuele Azure-machine. | Voer het [script voor de voorafgaande registratie](https://aka.ms/scriptforpermsonhana) uit op het SAP Hana-exemplaar waarvan u een back-up wilt maken. Neem contact op met micro soft ondersteuning als het probleem zich blijft voordoen. |
-| UserErrorHanaUnsupportedOperation | De opgegeven SAP HANA bewerking wordt niet ondersteund | Azure backup voor SAP HANA biedt geen ondersteuning voor incrementele back-ups en acties die worden uitgevoerd op SAP HANA systeem eigen clients (Studio/cockpit/DBA cockpit) | Zie [hier](sap-hana-backup-support-matrix.md#scenario-support)voor meer informatie. |
-| UserErrorHANAPODoesNotSupportBackupType | Deze SAP HANA-Data Base biedt geen ondersteuning voor het aangevraagde back-uptype | Azure Backup biedt geen ondersteuning voor incrementele back-ups en back-ups met behulp van moment opnamen | Zie [hier](sap-hana-backup-support-matrix.md#scenario-support)voor meer informatie. |
-| UserErrorHANALSNValidationFailure | De keten van het back-uplogboek is verbroken | Het doel van de logboek back-up is mogelijk bijgewerkt van backint naar File System of het uitvoer bare bestand backint is gewijzigd | Een volledige back-up activeren om het probleem op te lossen |
-| UserErrorIncomaptibleSrcTargetSystsemsForRestore | De bron-en doel systemen voor herstel zijn niet compatibel | Het doel systeem voor herstel is niet compatibel met de bron | Raadpleeg SAP Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) voor meer informatie over de typen herstel die momenteel worden ondersteund |
-| UserErrorSDCtoMDCUpgradeDetected | Upgrade van dit SDC naar MDC is gedetecteerd | Het SAP HANA-exemplaar is bijgewerkt van dit SDC naar MDC. Back-ups mislukken na de update. | Volg de stappen die worden beschreven in de [sectie upgrades van SAP HANA 1,0 naar 2,0](#upgrading-from-sap-hana-10-to-20) om het probleem op te lossen |
-| UserErrorInvalidBackintConfiguration | Ongeldige backint-configuratie gedetecteerd | De para meters voor back-ups zijn onjuist opgegeven voor Azure backup | Controleer of de volgende (backint)-para meters zijn ingesteld: <br> * [catalog_backup_using_backint: True] <br>  * [enable_accumulated_catalog_backup: False] <br> * [parallel_data_backup_backint_channels: 1] <br>* [log_backup_timeout_s: 900)] <br> * [backint_response_timeout: 7200] <br> Als de backint-para meters aanwezig zijn op de HOST, verwijdert u deze. Als de para meters niet aanwezig zijn op het niveau van de HOST, maar die hand matig zijn gewijzigd op database niveau, moet u deze herstellen naar de juiste waarden zoals eerder beschreven. Of voer de [beveiliging stoppen uit en behoud back-upgegevens](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) van de Azure Portal en selecteer vervolgens **back-up hervatten**. |
+###  <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection 
+
+| Foutbericht      | Kan geen verbinding maken met het HANA-systeem                             |
+| ------------------ | ------------------------------------------------------------ |
+| Mogelijke oorzaken    | Het SAP HANA-exemplaar is mogelijk niet actief.<br/>De vereiste machtigingen voor Azure backup voor interactie met de HANA-Data Base zijn niet ingesteld. |
+| Aanbevolen actie | Controleer of de SAP HANA-data base actief is. Als de data base actief is, controleert u of alle vereiste machtigingen zijn ingesteld. Als een van de machtigingen ontbreekt, voert u het script voor de [voorafgaande registratie](https://aka.ms/scriptforpermsonhana) uit om de ontbrekende machtigingen toe te voegen. |
+
+###  <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid 
+
+| Foutbericht      | Het opgegeven SAP HANA exemplaar is ongeldig of kan niet worden gevonden |
+| ------------------ | ------------------------------------------------------------ |
+| Mogelijke oorzaken    | Er kan geen back-up worden gemaakt van meerdere SAP HANA exemplaren op één virtuele Azure-machine. |
+| Aanbevolen actie | Voer het [script voor de voorafgaande registratie](https://aka.ms/scriptforpermsonhana) uit op het SAP Hana-exemplaar waarvan u een back-up wilt maken. Neem contact op met micro soft ondersteuning als het probleem zich blijft voordoen. |
+
+###  <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation 
+
+| Foutbericht      | De opgegeven SAP HANA bewerking wordt niet ondersteund             |
+| ------------------ | ------------------------------------------------------------ |
+| Mogelijke oorzaken    | Azure backup voor SAP HANA biedt geen ondersteuning voor incrementele back-ups en acties die worden uitgevoerd op SAP HANA systeem eigen clients (Studio/cockpit/DBA cockpit) |
+| Aanbevolen actie | Zie [hier](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)voor meer informatie. |
+
+###  <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType 
+
+| Foutbericht      | Deze SAP HANA-Data Base biedt geen ondersteuning voor het aangevraagde back-uptype |
+| ------------------ | ------------------------------------------------------------ |
+| Mogelijke oorzaken    | Azure Backup biedt geen ondersteuning voor incrementele back-ups en back-ups met behulp van moment opnamen |
+| Aanbevolen actie | Zie [hier](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)voor meer informatie. |
+
+###  <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure 
+
+| Foutbericht      | De keten van het back-uplogboek is verbroken                                   |
+| ------------------ | ------------------------------------------------------------ |
+| Mogelijke oorzaken    | Het doel van de logboek back-up is mogelijk bijgewerkt van backint naar File System of het uitvoer bare bestand backint is gewijzigd |
+| Aanbevolen actie | Een volledige back-up activeren om het probleem op te lossen                   |
+
+###  <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore 
+
+| Foutbericht      | De bron-en doel systemen voor herstel zijn niet compatibel   |
+| ------------------ | ------------------------------------------------------------ |
+| Mogelijke oorzaken    | Het doel systeem voor herstel is niet compatibel met de bron |
+| Aanbevolen actie | Raadpleeg SAP Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) voor meer informatie over de typen herstel die momenteel worden ondersteund |
+
+###  <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected 
+
+| Foutbericht      | Upgrade van dit SDC naar MDC is gedetecteerd                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Mogelijke oorzaken    | Het SAP HANA-exemplaar is bijgewerkt van dit SDC naar MDC. Back-ups mislukken na de update. |
+| Aanbevolen actie | Volg de stappen die worden beschreven in de [sectie upgrades van SAP HANA 1,0 naar 2,0](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) om het probleem op te lossen |
+
+###  <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration 
+
+| Foutbericht      | Ongeldige backint-configuratie gedetecteerd                       |
+| ------------------ | ------------------------------------------------------------ |
+| Mogelijke oorzaken    | De para meters voor back-ups zijn onjuist opgegeven voor Azure backup |
+| Aanbevolen actie | Controleer of de volgende (backint)-para meters zijn ingesteld:<br/>\* [catalog_backup_using_backint: True]<br/>\* [enable_accumulated_catalog_backup: False]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Als de backint-para meters aanwezig zijn op de HOST, verwijdert u deze. Als de para meters niet aanwezig zijn op het niveau van de HOST, maar die hand matig zijn gewijzigd op database niveau, moet u deze herstellen naar de juiste waarden zoals eerder beschreven. Of voer de [beveiliging stoppen uit en behoud back-upgegevens](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) van de Azure Portal en selecteer vervolgens **back-up hervatten**. |
 
 ## <a name="restore-checks"></a>Controles herstellen
 

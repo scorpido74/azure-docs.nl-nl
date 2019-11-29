@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 06/30/2017
+ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: f05c8724fe87888c93230b4ca77a7a82fe9357c2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3e316527992b4a478b82bef61fb6da608e218ba5
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677472"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554923"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Aangepaste bewerkingen bijhouden met Application Insights .NET SDK
 
@@ -30,7 +30,7 @@ Dit document bevat richt lijnen voor het bijhouden van aangepaste bewerkingen me
 ## <a name="overview"></a>Overzicht
 Een bewerking is een logisch gedeelte van het werk dat door een toepassing wordt uitgevoerd. Het heeft een naam, start tijd, duur, resultaat en een context van uitvoering zoals gebruikers naam, eigenschappen en resultaat. Als bewerking A werd geïnitieerd door bewerking B, wordt bewerking B ingesteld als een bovenliggend item voor een. Een bewerking kan slechts één bovenliggend element hebben, maar kan veel onderliggende bewerkingen hebben. Zie [Azure-toepassing Insights-correlatie voor telemetrie](correlation.md)voor meer informatie over bewerkingen en de correlatie tussen de telemetrie.
 
-In de Application Insights .NET SDK wordt de bewerking beschreven door de abstracte klasse [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) en de bijbehorende descendanten [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) en [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
+In de Application Insights .NET SDK wordt de bewerking beschreven door de abstracte klasse [OperationTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) en de bijbehorende descendanten [RequestTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) en [DependencyTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
 
 ## <a name="incoming-operations-tracking"></a>Tracering van binnenkomende bewerkingen 
 De Application Insights Web-SDK verzamelt automatisch HTTP-aanvragen voor ASP.NET-toepassingen die worden uitgevoerd in een IIS-pijp lijn en alle ASP.NET Core toepassingen. Er zijn oplossingen die door de community worden ondersteund voor andere platforms en frameworks. Als de toepassing echter niet wordt ondersteund door een van de Standard-of door de Community ondersteunde oplossingen, kunt u deze hand matig instrumenteren.
@@ -130,7 +130,7 @@ Hoewel er sprake is van een [W3C-tracerings context](https://www.w3.org/TR/trace
 Application Insights traceert Service Bus Messa ging-aanroepen met de nieuwe [Microsoft Azure ServiceBus-client voor .net](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) versie 3.0.0 en hoger.
 Als u een [bericht afhandelingsprocedure](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) gebruikt voor het verwerken van berichten, bent u klaar: alle Service Bus-aanroepen die door uw service worden uitgevoerd, worden automatisch getraceerd en gecorreleerd met andere telemetrie-items. Raadpleeg de [Service Bus client tracering met micro soft Application Insights](../../service-bus-messaging/service-bus-end-to-end-tracing.md) als u berichten hand matig verwerkt.
 
-Als u het [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) -pakket gebruikt, lees dan de volgende voor beelden laten zien hoe u aanroepen (en correleert) aan de Service Bus als service bus wachtrij gebruikmaakt van het AMQP-protocol en Application Insights de wachtrij niet automatisch houdt werk.
+Als u het [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) -pakket gebruikt, lees dan de volgende voor beelden laten zien hoe u aanroepen (en correleert) aan de Service Bus als service bus wachtrij gebruikmaakt van het AMQP-protocol en Application Insights niet automatisch wachtrij bewerkingen traceert.
 Correlatie-id's worden door gegeven in de bericht eigenschappen.
 
 #### <a name="enqueue"></a>Schedul
@@ -268,7 +268,7 @@ public async Task Enqueue(CloudQueue queue, string message)
 Als u de hoeveelheid telemetrie van uw toepassings rapporten wilt beperken of als u de `Enqueue` bewerking om andere redenen niet wilt bijhouden, gebruikt u de `Activity`-API rechtstreeks:
 
 - Maak (en start) een nieuwe `Activity` in plaats van de Application Insights bewerking te starten. U hoeft *geen* eigenschappen toe te wijzen, behalve de naam van de bewerking.
-- Serialisatie van `yourActivity.Id` naar de bericht lading in plaats van `operation.Telemetry.Id`. U kunt ook `Activity.Current.Id` gebruiken.
+- Serialisatie van `yourActivity.Id` naar de bericht lading in plaats van `operation.Telemetry.Id`. U kunt ook `Activity.Current.Id`gebruiken.
 
 
 #### <a name="dequeue"></a>Wachtrij verwijderen
@@ -346,7 +346,7 @@ Wanneer u het verwijderen van een bericht instrumenteert, moet u ervoor zorgen d
 - Start de `Activity`.
 - Volg de bewerkings-, proces-en verwijder bewerkingen met behulp van `Start/StopOperation` helpers. Doe dit vanuit dezelfde asynchrone controle stroom (uitvoerings context). Op deze manier worden ze op de juiste wijze gecorreleerd.
 - Stop de `Activity`.
-- Gebruik `Start/StopOperation` of bel `Track` telemetrie hand matig.
+- Gebruik `Start/StopOperation`of bel `Track` telemetrie hand matig.
 
 ### <a name="dependency-types"></a>Afhankelijkheids typen
 
@@ -427,7 +427,7 @@ public async Task RunMyTaskAsync()
 }
 ```
 
-Als u de bewerking ongedaan maakt, wordt de bewerking gestopt, dus u kunt dit doen in plaats van `StopOperation` aan te roepen.
+Als u de bewerking ongedaan maakt, wordt de bewerking gestopt, dus u kunt dit doen in plaats van `StopOperation`aan te roepen.
 
 *Waarschuwing*: in sommige gevallen kan een niet-beschik bare uitzonde ring [ertoe leiden dat](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` worden aangeroepen zodat bewerkingen mogelijk niet worden bijgehouden.
 

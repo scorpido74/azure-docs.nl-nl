@@ -5,19 +5,19 @@ services: multiple
 author: rothja
 manager: jeffreyg
 tags: billing
-ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: cost-management-billing
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 11/18/2019
 ms.author: byvinyal
-ms.openlocfilehash: 08c459a3c32b44df2d9e5cf783087dd34d660292
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 8d538f0267a36cae9f8e97239dc7d3441b9ee374
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463311"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555125"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnement en servicelimieten, quota's en beperkingen
+
 Dit document bevat enkele van de meest voorkomende Microsoft Azure limieten, ook wel quota's genoemd. Dit document geldt momenteel niet voor alle Azure-Services. De lijst wordt na verloop van tijd uitgebreid en bijgewerkt om meer services te kunnen behandelen.
 
 Zie [overzicht van Azure-prijzen](https://azure.microsoft.com/pricing/)voor meer informatie over Azure-prijzen. Daar kunt u uw kosten ramen met behulp van de [prijs calculator](https://azure.microsoft.com/pricing/calculator/). U kunt ook naar de pagina prijs informatie voor een bepaalde service gaan, bijvoorbeeld Windows- [vm's](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). Zie [onverwachte kosten voor komen met Azure billing and cost management](billing/billing-getting-started.md)voor tips voor het beheren van uw kosten.
@@ -29,6 +29,7 @@ Zie [overzicht van Azure-prijzen](https://azure.microsoft.com/pricing/)voor meer
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Limieten en Azure Resource Manager
+
 Het is nu mogelijk om meerdere Azure-resources te combi neren in één Azure-resource groep. Wanneer u resource groepen gebruikt, worden de limieten die eenmaal globaal worden beheerd op een regionaal niveau met Azure Resource Manager. Zie [Azure Resource Manager Overview](azure-resource-manager/resource-group-overview.md)voor meer informatie over Azure-resource groepen.
 
 In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met verschillen in limieten wanneer u Azure Resource Manager gebruikt. Er is bijvoorbeeld een tabel met **limieten voor abonnementen** en een **abonnements limiet-Azure Resource Manager** tabel. Wanneer een limiet van toepassing is op beide scenario's, wordt deze alleen weer gegeven in de eerste tabel. Tenzij anders aangegeven, zijn de limieten globaal in alle regio's.
@@ -41,6 +42,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 >
 
 ## <a name="service-specific-limits"></a>Servicespecifieke limieten
+
 * [Active Directory](#active-directory-limits)
 * [API Management](#api-management-limits)
 * [App Service](#app-service-limits)
@@ -62,7 +64,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
 * [Azure signalerings service](#azure-signalr-service-limits)
-* [Backup](#backup-limits)
+* [Een back-up maken](#backup-limits)
 * [Batch](#batch-limits)
 * [BizTalk Services](#biztalk-services-limits)
 * [Container Instances](#container-instances-limits)
@@ -90,14 +92,14 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
   * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
-  * [Load Balancer](#load-balancer)
+  * [Load balancer](#load-balancer)
   * [Network Watcher](#network-watcher-limits)
   * [Openbaar IP-adres](#publicip-address)
   * [Private Link](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
-  * [Virtual Network](#networking-limits)
+  * [Virtueel netwerk](#networking-limits)
   * [Virtueel WAN](#virtual-wan-limits)
-* [Meldingshubs](#notification-hubs-limits)
+* [Notification Hubs](#notification-hubs-limits)
 * [Resourcegroep](#resource-group-limits)
 * [Op rollen gebaseerd toegangsbeheer](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
@@ -109,14 +111,17 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [StorSimple systeem](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Abonnement](#subscription-limits)
-* [Virtual Machines](#virtual-machines-limits)
+* [Virtuele machines](#virtual-machines-limits)
 * [Virtuele-machineschaalsets](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Abonnementslimieten
+
 #### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>Abonnements limieten-Azure Service Management (klassiek implementatie model)
+
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>Abonnements limieten-Azure Resource Manager
+
 De volgende limieten gelden wanneer u Azure Resource Manager-en Azure-resource groepen gebruikt. Limieten die niet zijn gewijzigd met Azure Resource Manager worden niet weer gegeven. Zie de vorige tabel voor deze limieten.
 
 Zie [Resource Manager-aanvragen beperken](resource-manager-request-limits.md)voor meer informatie over de lees-en schrijf limieten van de Resource Manager-API.
@@ -124,13 +129,17 @@ Zie [Resource Manager-aanvragen beperken](resource-manager-request-limits.md)voo
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
 ### <a name="resource-group-limits"></a>Limieten voor resource groep
+
 [!INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
 
 ### <a name="virtual-machines-limits"></a>Virtual Machines limieten
+
 #### <a name="virtual-machines-limits"></a>Virtual Machines limieten
+
 [!INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 #### <a name="virtual-machines-limits---azure-resource-manager"></a>Virtual Machines limieten-Azure Resource Manager
+
 De volgende limieten gelden wanneer u Azure Resource Manager-en Azure-resource groepen gebruikt.
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
@@ -138,34 +147,43 @@ De volgende limieten gelden wanneer u Azure Resource Manager-en Azure-resource g
 #### <a name="shared-image-gallery-limits"></a>Limieten voor gedeelde afbeeldingen galerie
 
 Er zijn limieten, per abonnement, voor het implementeren van resources met behulp van de galerie met gedeelde afbeeldingen:
+
 - 100 gedeelde afbeeldings galerieën, per abonnement, per regio
 - 1\.000 installatie kopie definities, per abonnement, per regio
 - 10.000 installatie kopie versies, per abonnement, per regio
 
 ### <a name="virtual-machine-scale-sets-limits"></a>Limieten voor virtuele-machine schaal sets
+
 [!INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]
 
 ### <a name="container-instances-limits"></a>Container Instances limieten
+
 [!INCLUDE [container-instances-limits](../includes/container-instances-limits.md)]
 
 ### <a name="container-registry-limits"></a>Container Registry limieten
+
 De volgende tabel bevat een overzicht van de functies en limieten van de [service lagen](./container-registry/container-registry-skus.md)Basic, Standard en Premium.
 
 [!INCLUDE [container-registry-limits](../includes/container-registry-limits.md)]
 
 ### <a name="azure-kubernetes-service-limits"></a>Limieten voor Azure Kubernetes-service
+
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
 ### <a name="azure-machine-learning-limits"></a>Azure Machine Learning limieten
+
 De meest recente waarden voor Azure Machine Learning Compute quota vindt u op de [Azure machine learning quotum pagina](../articles/machine-learning/service/how-to-manage-quotas.md)
 
 ### <a name="networking-limits"></a>Netwerklimieten
+
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
 #### <a name="expressroute-limits"></a>Limieten voor ExpressRoute
+
 [!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
 
 #### <a name="virtual-wan-limits"></a>Virtuele WAN-limieten
+
 [!INCLUDE [virtual-wan-limits](../includes/virtual-wan-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Application Gateway limieten
@@ -174,27 +192,35 @@ De volgende tabel is van toepassing op v1-, v2-, Standard-en WAF-Sku's, tenzij a
 [!INCLUDE [application-gateway-limits](../includes/application-gateway-limits.md)]
 
 #### <a name="network-watcher-limits"></a>Network Watcher limieten
+
 [!INCLUDE [network-watcher-limits](../includes/network-watcher-limits.md)]
 
 #### <a name="private-link-limits"></a>Limieten voor persoonlijke koppelingen
+
 [!INCLUDE [private-link-limits](../includes/private-link-limits.md)]
 
 #### <a name="traffic-manager-limits"></a>Traffic Manager limieten
+
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
 
 #### <a name="azure-bastion-limits"></a>Limieten voor Azure Bastion
+
 [!INCLUDE [Azure Bastion limits](../includes/bastion-limits.md)]
 
 #### <a name="azure-dns-limits"></a>Azure DNS limieten
+
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
 
 #### <a name="azure-firewall-limits"></a>Azure Firewall limieten
+
 [!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
 
 #### <a name="azure-front-door-service-limits"></a>Azure front-deur-service limieten
+
 [!INCLUDE [azure-front-door-service-limits](../includes/front-door-limits.md)]
 
 ### <a name="storage-limits"></a>Opslag limieten
+
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
@@ -205,24 +231,30 @@ Zie [Azure Storage schaalbaarheids-en prestatie doelen](storage/common/storage-s
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
 #### <a name="azure-blob-storage-limits"></a>Limieten voor Azure Blob-opslag
+
 [!INCLUDE [storage-blob-scale-targets](../includes/storage-blob-scale-targets.md)]
 
 #### <a name="azure-files-limits"></a>Azure Files limieten
+
 Zie [Azure files schaal baarheid en prestatie doelen](storage/files/storage-files-scale-targets.md)voor meer informatie over Azure files limieten.
 
 [!INCLUDE [storage-files-scale-targets](../includes/storage-files-scale-targets.md)]
 
 #### <a name="azure-file-sync-limits"></a>Azure File Sync limieten
+
 [!INCLUDE [storage-sync-files-scale-targets](../includes/storage-sync-files-scale-targets.md)]
 
 #### <a name="azure-queue-storage-limits"></a>Opslag limieten voor Azure Queue
+
 [!INCLUDE [storage-queues-scale-targets](../includes/storage-queues-scale-targets.md)]
 
 #### <a name="azure-table-storage-limits"></a>Limieten voor Azure Table Storage
+
 [!INCLUDE [storage-tables-scale-targets](../includes/storage-tables-scale-targets.md)]
 
 <!-- conceptual info about disk limits -- applies to unmanaged and managed -->
 #### <a name="virtual-machine-disk-limits"></a>Schijf limieten van virtuele machine
+
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
 Zie [grootten van virtuele machines](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie.
@@ -238,40 +270,51 @@ Zie [grootten van virtuele machines](virtual-machines/linux/sizes.md?toc=%2fazur
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
 
 ### <a name="azure-cloud-services-limits"></a>Limieten voor Azure-Cloud Services
+
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 ### <a name="azure-cognitive-services-limits"></a>Limieten voor Azure-Cognitive Services
+
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cognitive-services-limits.md)]
 
 ### <a name="app-service-limits"></a>App Service limieten
+
 De volgende App Service limieten zijn limieten voor Web Apps, Mobile Apps en API Apps.
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
 ### <a name="functions-limits"></a>Limieten voor functies
+
 [!INCLUDE [functions-limits](../includes/functions-limits.md)]
 
 ### <a name="scheduler-limits"></a>Scheduler-limieten
+
 [!INCLUDE [scheduler-limits-table](../includes/scheduler-limits-table.md)]
 
 ### <a name="batch-limits"></a>Batch limieten
+
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
 ### <a name="biztalk-services-limits"></a>BizTalk Services limieten
+
 De volgende tabel bevat de limieten voor Azure BizTalk Services.
 
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB limieten
+
 Zie [limieten in azure Cosmos DB](cosmos-db/concepts-limits.md)voor Azure Cosmos DB limieten.
 
 ### <a name="azure-database-for-mysql"></a>Azure Database voor MySQL
+
 Zie [beperkingen in azure database for MySQL](mysql/concepts-limits.md)voor Azure database for MySQL limieten.
 
 ### <a name="azure-database-for-postgresql"></a>Azure Database voor PostgreSQL
+
 Zie [beperkingen in azure database for PostgreSQL](postgresql/concepts-limits.md)voor Azure database for PostgreSQL limieten.
 
 ### <a name="azure-cognitive-search-limits"></a>Limieten voor Azure-Cognitive Search
+
 Prijs categorieën bepalen de capaciteit en limieten van uw zoek service. Lagen zijn onder andere:
 
 * **Gratis** multi tenant-service, gedeeld met andere Azure-abonnees, is bedoeld voor evaluatie-en kleine ontwikkelings projecten.
@@ -289,12 +332,15 @@ Prijs categorieën bepalen de capaciteit en limieten van uw zoek service. Lagen 
 Zie [service limieten in Azure Cognitive Search](search/search-limits-quotas-capacity.md)voor meer informatie over de limieten op een meer gedetailleerd niveau, zoals de document grootte, query's per seconde, sleutels, aanvragen en antwoorden.
 
 ### <a name="media-services-limits"></a>Media Services limieten
+
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
 
 ### <a name="content-delivery-network-limits"></a>Content Delivery Network limieten
+
 [!INCLUDE [cdn-limits](../includes/cdn-limits.md)]
 
 ### <a name="mobile-services-limits"></a>Mobile Services limieten
+
 [!INCLUDE [mobile-services-limits](../includes/mobile-services-limits.md)]
 
 ### <a name="azure-monitor-limits"></a>Azure Monitor limieten
@@ -323,90 +369,118 @@ Zie [service limieten in Azure Cognitive Search](search/search-limits-quotas-cap
 
 
 ### <a name="notification-hubs-limits"></a>Notification Hubs limieten
+
 [!INCLUDE [notification-hub-limits](../includes/notification-hub-limits.md)]
 
 ### <a name="event-hubs-limits"></a>Event Hubs limieten
+
 [!INCLUDE [azure-servicebus-limits](../includes/event-hubs-limits.md)]
 
 ### <a name="service-bus-limits"></a>Service Bus limieten
+
 [!INCLUDE [azure-servicebus-limits](../includes/service-bus-quotas-table.md)]
 
 ### <a name="iot-central-limits"></a>IoT Central limieten
 [!INCLUDE [iot-central-limits](../includes/iot-central-limits.md)]
 
 ### <a name="iot-hub-limits"></a>IoT Hub limieten
+
 [!INCLUDE [azure-iothub-limits](../includes/iot-hub-limits.md)]
 
 ### <a name="iot-hub-device-provisioning-service-limits"></a>IoT Hub Device Provisioning Service limieten
+
 [!INCLUDE [azure-iotdps-limits](../includes/iot-dps-limits.md)]
 
 ### <a name="data-factory-limits"></a>Data Factory limieten
+
 [!INCLUDE [azure-data-factory-limits](../includes/azure-data-factory-limits.md)]
 
 ### <a name="data-lake-analytics-limits"></a>Data Lake Analytics limieten
+
 [!INCLUDE [azure-data-lake-analytics-limits](../includes/azure-data-lake-analytics-limits.md)]
 
 ### <a name="data-lake-store-limits"></a>Data Lake Store limieten
+
 [!INCLUDE [azure-data-lake-store-limits](../includes/azure-data-lake-store-limits.md)]
 
 ### <a name="database-migration-service-limits"></a>Database Migration Service limieten
+
 [!INCLUDE [database-migration-service-limits](../includes/database-migration-service-limits.md)]
 
 ### <a name="stream-analytics-limits"></a>Stream Analytics limieten
+
 [!INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
 
 ### <a name="active-directory-limits"></a>Active Directory limieten
+
 [!INCLUDE [AAD-service-limits](../includes/active-directory-service-limits-include.md)]
 
 ### <a name="event-grid-limits"></a>Event Grid limieten
+
 [!INCLUDE [event-grid-limits](../includes/event-grid-limits.md)]
 
 ### <a name="azure-maps-limits"></a>Azure Maps limieten
+
 [!INCLUDE [maps-limits](../includes/maps-limits.md)]
 
 ### <a name="azure-policy-limits"></a>Azure Policy limieten
+
 [!INCLUDE [policy-limits](../includes/azure-policy-limits.md)]
 
 ### <a name="storsimple-system-limits"></a>StorSimple systeem limieten
+
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
 
 ### <a name="backup-limits"></a>Back-uplimieten
+
 [!INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
 
 ### <a name="azure-signalr-service-limits"></a>Limieten voor Azure signalerings service
+
 [!INCLUDE [signalr-service-limits](../includes/signalr-service-limits.md)]
 
 ### <a name="site-recovery-limits"></a>Site Recovery-limieten
+
 [!INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]
 
 ### <a name="api-management-limits"></a>API Management limieten
+
 [!INCLUDE [api-management-service-limits](../includes/api-management-service-limits.md)]
 
 ### <a name="azure-cache-for-redis-limits"></a>Azure-cache voor redis-limieten
+
 [!INCLUDE [redis-cache-service-limits](../includes/redis-cache-service-limits.md)]
 
 ### <a name="key-vault-limits"></a>Key Vault limieten
+
 [!INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
 ### <a name="multi-factor-authentication-limits"></a>Multi-Factor Authentication limieten
+
 [!INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
 ### <a name="automation-limits"></a>Automatiserings limieten
+
 [!INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
 
 ### <a name="identity-manager-limits"></a>Limieten van identiteits beheer
+
 [!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
 
 ### <a name="role-based-access-control-limits"></a>Toegangs beheer limieten op basis van rollen
+
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>SQL Database limieten
+
 Zie [SQL database resource limieten voor afzonderlijke data bases](sql-database/sql-database-vcore-resource-limits-single-databases.md), [SQL database resource limieten voor elastische Pools en gegroepeerde Data bases](sql-database/sql-database-vcore-resource-limits-elastic-pools.md)en [SQL database resource limieten voor beheerde instanties](sql-database/sql-database-managed-instance-resource-limits.md)voor SQL database limieten.
 
 ### <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse limieten
+
 Zie [SQL Data Warehouse resource limieten](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)voor SQL Data Warehouse limieten.
 
 ## <a name="see-also"></a>Zie ook
-- [Meer informatie over Azure-limieten en toename](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-- [Grootten van virtuele machines en Cloud Services voor Azure](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Grootten voor Azure Cloud Services](cloud-services/cloud-services-sizes-specs.md)
+
+* [Meer informatie over Azure-limieten en toename](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+* [Grootten van virtuele machines en Cloud Services voor Azure](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Grootten voor Azure Cloud Services](cloud-services/cloud-services-sizes-specs.md)

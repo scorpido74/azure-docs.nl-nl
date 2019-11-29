@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor Azure VM-back-up
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8f84d7fefd2affc3a3c47227ab6f2a2d0b325f4e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 85a32dd9ea875bdfc73d7e4a9515e5cfe0e2da42
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172094"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559033"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteunings matrix voor Azure VM-back-up
 
@@ -136,7 +136,7 @@ VM herstellen in een ander virtueel netwerk |Ondersteund.<br/><br/> Het virtuele
 
 ## <a name="vm-compute-support"></a>Ondersteuning voor VM-berekening
 
-**Computing** | **Ondersteuning**
+**Compute** | **Ondersteuning**
 --- | ---
 VM-grootte |Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM-geheugen.<br/><br/> [Meer informatie.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 Back-ups maken van Vm's in [beschikbaarheids sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets) | Ondersteund.<br/><br/> U kunt een virtuele machine niet herstellen in een beschik bare set met behulp van de optie om snel een virtuele machine te maken. In plaats daarvan moet u, wanneer u de virtuele machine herstelt, de schijf herstellen en gebruiken om een virtuele machine te implementeren, of een schijf herstellen en gebruiken om een bestaande schijf te vervangen.
@@ -158,7 +158,7 @@ Azure VM-gegevensschijven | Maak een back-up van een virtuele machine met 16 of 
 Grootte van de gegevens schijf | De afzonderlijke schijf grootte kan Maxi maal 32 TB en Maxi maal 256 TB gecombineerd voor alle schijven in een VM zijn.
 Opslagtype | Standard-HDD, Standard-SSD Premium-SSD.
 Managed Disks | Ondersteund.
-Versleutelde schijven | Ondersteund.<br/><br/> Voor Azure-Vm's met Azure Disk Encryption kan een back-up worden gemaakt (met of zonder de Azure AD-app).<br/><br/> Versleutelde Vm's kunnen niet worden hersteld op het niveau van het bestand of de map. U moet de volledige VM herstellen.<br/><br/> U kunt versleuteling inschakelen voor virtuele machines die al worden beveiligd door Azure Backup.
+Versleutelde schijven | Ondersteund (Maxi maal 4 TB).<br/><br/> Voor Azure-Vm's met Azure Disk Encryption kan een back-up worden gemaakt (met of zonder de Azure AD-app).<br/><br/> Versleutelde Vm's kunnen niet worden hersteld op het niveau van het bestand of de map. U moet de volledige VM herstellen.<br/><br/> U kunt versleuteling inschakelen voor virtuele machines die al worden beveiligd door Azure Backup.
 Schijven waarop Write Accelerator is ingeschakeld | Wordt niet ondersteund.<br/><br/> Azure backup sluit automatisch de schijven uit met Write Accelerator ingeschakeld tijdens het maken van een back-up. Omdat er geen back-up is gemaakt, kunt u deze schijven niet herstellen vanaf herstel punten van de virtuele machine.
 Back-up maken & ontdubbelde Vm's/schijven herstellen | Azure Backup biedt geen ondersteuning voor ontdubbeling. Raadpleeg dit [artikel](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) voor meer informatie <br/> <br/>  -Azure Backup wordt niet gedupliceerd over Vm's in de Recovery Services kluis <br/> <br/>  -Als er Vm's in de ontdubbelings status zijn tijdens het herstellen, kunnen de bestanden niet worden hersteld omdat de kluis de indeling niet begrijpt
 Schijf toevoegen aan beveiligde VM | Ondersteund.
@@ -219,8 +219,8 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 
 **Machine** | **Comprimeren naar MABS/DPM (TCP)** | **Comprimeren naar kluis (HTTPS)**
 --- | --- | ---
-On-premises Windows-machines zonder DPM/MABS | N.v.t. | ![Ja][green]
-Azure-VM's | N.v.t. | N.v.t.
+On-premises Windows-machines zonder DPM/MABS | N.V.T. | ![Ja][green]
+Azure-VM's | N.V.T. | N.V.T.
 On-premises/Azure VM's met DPM | ![Ja][green] | ![Ja][green]
 On-premises/Azure VM's met MABS | ![Ja][green] | ![Ja][green]
 

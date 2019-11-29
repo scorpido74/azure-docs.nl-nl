@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2abc5434f11bf00c6872775b1336694c04972e95
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: c26197a14e78b1cf1a1e078ba0145eca207206bf
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200212"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561949"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Meer informatie over veilige, door Azure beheerde werk stations
 
 Beveiligde, geïsoleerde werk stations zijn van cruciaal belang voor de beveiliging van gevoelige rollen als beheerders, ontwikkel aars en essentiële service operators. Als de beveiliging van het client-werk station is aangetast, kunnen veel beveiligings controles en-garanties mislukken of niet worden doorgevoerd.
 
-In dit document wordt uitgelegd wat u nodig hebt voor het bouwen van een beveiligd werk station, vaak bekend als een privileged Access Workstation (PAW). Het artikel bevat ook gedetailleerde instructies voor het instellen van eerste beveiligings controles. In deze richt lijnen wordt beschreven hoe u met Cloud technologie de service kunt beheren. Het is afhankelijk van de beveiligings mogelijkheden die zijn geïntroduceerd in Windows 10RS5, micro soft Defender Advanced Threat Protection (ATP), Azure Active Directory en intune.
+In dit document wordt uitgelegd wat u nodig hebt voor het bouwen van een beveiligd werk station, vaak bekend als een privileged Access Workstation (PAW). Het artikel bevat ook gedetailleerde instructies voor het instellen van eerste beveiligings controles. In deze richt lijnen wordt beschreven hoe u met Cloud technologie de service kunt beheren. Het is afhankelijk van de beveiligings mogelijkheden die zijn geïntroduceerd in Windows 10RS5, micro soft Defender Advanced Threat Protection (ATP), Azure Active Directory en Microsoft Intune.
 
 > [!NOTE]
 > In dit artikel wordt het concept van een beveiligd werk station en het belang ervan uitgelegd. Als u al bekend bent met het concept en de implementatie wilt overs Laan, gaat u naar [een beveiligd werk station implementeren](howto-azure-managed-workstation.md).
@@ -52,6 +52,7 @@ In dit document wordt een oplossing beschreven waarmee u uw computer apparaten k
 * Windows 10 (huidige versie) voor apparaatstatusverklaring en gebruikers ervaring
 * Defender ATP voor Cloud-beheerde Endpoint Protection, detectie en respons
 * Azure AD PIM voor het beheren van autorisatie en just-in-time-toegang tot bronnen
+* Log Analytics en Sentinel voor bewaking en waarschuwingen
 
 ## <a name="who-benefits-from-a-secure-workstation"></a>Wie profiteren van een veilig werk station?
 
@@ -63,7 +64,7 @@ Alle gebruikers en Opera tors profiteren van het gebruik van een beveiligd werk 
 * Zeer gevoelig werk station, zoals een snelle betalings Terminal
 * Handels geheimen voor werk stations verwerken
 
-Om het risico te beperken, moet u verhoogde beveiligings controles implementeren voor bevoegde werk stations die gebruikmaken van deze accounts. Voor meer informatie raadpleegt u de [implementatie handleiding](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2)voor de Azure Active Directory-functie, [Office 365-wegwijzer](https://aka.ms/o365secroadmap)en de beveiliging van de [uitgebreide toegang](https://aka.ms/sparoadmap).
+Om het risico te beperken, moet u verhoogde beveiligings controles implementeren voor bevoegde werk stations die gebruikmaken van deze accounts. Voor meer informatie raadpleegt u de [implementatie handleiding](../fundamentals/active-directory-deployment-checklist-p2.md)voor de Azure Active Directory-functie, [Office 365-wegwijzer](https://aka.ms/o365secroadmap)en de beveiliging van de [uitgebreide toegang](https://aka.ms/sparoadmap).
 
 ## <a name="why-use-dedicated-workstations"></a>Waarom speciale werk stations gebruiken?
 
@@ -78,16 +79,29 @@ Containment-strategieën verg Roten de beveiliging door het aantal en type bestu
 
 ## <a name="supply-chain-management"></a>Supply Chain Management
 
-Essentieel voor een beveiligd werk station is een supply chain-oplossing waarbij u een vertrouwd werk station met de naam ' root of Trust ' gebruikt. Voor deze oplossing gebruikt de vertrouwens relatie [micro soft auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) -technologie. Voor het beveiligen van een werk station kunt u met auto pilot gebruikmaken van door micro soft OEM geoptimaliseerde Windows 10-apparaten. Deze apparaten komen in een bekende goede staat van de fabrikant. In plaats van een mogelijk onveilig apparaat te, kan auto pilot een Windows-apparaat omzetten in een status die klaar is voor het bedrijf. Hiermee worden instellingen en beleid toegepast, worden apps geïnstalleerd en wordt zelfs de editie van Windows 10 gewijzigd. Auto Pilot kan bijvoorbeeld de Windows-installatie van een apparaat wijzigen van Windows 10 Pro in Windows 10 Enter prise, zodat deze geavanceerde functies kan gebruiken.
+Essentieel voor een beveiligd werk station is een supply chain-oplossing waarbij u een vertrouwd werk station met de naam ' root of Trust ' gebruikt. Technologie die in aanmerking moet worden genomen in de selectie van de basis van Trust-hardware moet de volgende technologieën bevatten die zijn opgenomen in moderne laptops: 
+
+* [Trusted Platform Module (TPM) 2,0](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-tpm)
+* [BitLocker-stationsversleuteling](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-bitlocker)
+* [UEFI Secure boot](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot)
+* [Stuur Programma's en firmware die via Windows Update worden gedistribueerd](https://docs.microsoft.com/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
+* [Virtualisatie en HVCI ingeschakeld](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs)
+* [Stuur Programma's en apps HVCI-Ready](https://docs.microsoft.com/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
+* [Windows Hello](https://docs.microsoft.com/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
+* [DMA I/O-beveiliging](https://docs.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
+* [Systeem beveiliging](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
+* [Moderne stand-by](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)
+
+Voor deze oplossing wordt de basis van de vertrouwens relatie geïmplementeerd met behulp van [micro soft auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) -technologie met hardware die voldoet aan de moderne technische vereisten. Voor het beveiligen van een werk station kunt u met auto pilot gebruikmaken van door micro soft OEM geoptimaliseerde Windows 10-apparaten. Deze apparaten komen in een bekende goede staat van de fabrikant. In plaats van een mogelijk onveilig apparaat te, kan auto pilot een Windows-apparaat omzetten in een status die klaar is voor het bedrijf. Hiermee worden instellingen en beleid toegepast, worden apps geïnstalleerd en wordt zelfs de editie van Windows 10 gewijzigd. Auto Pilot kan bijvoorbeeld de Windows-installatie van een apparaat wijzigen van Windows 10 Pro in Windows 10 Enter prise, zodat deze geavanceerde functies kan gebruiken.
 
 ![Niveaus van beveiligde werk stations](./media/concept-azure-managed-workstation/supplychain.png)
 
 ## <a name="device-roles-and-profiles"></a>Apparaatfuncties en-profielen
 
-Deze richt lijnen verwijzen naar verschillende beveiligings profielen en rollen die u kunnen helpen bij het maken van veiligere oplossingen voor gebruikers, ontwikkel aars en IT-personeel. Deze profielen sluiten bruikbaarheid en risico's voor algemene gebruikers die kunnen profiteren van een uitgebreid of veilig werk station. De instellingen die hier worden beschreven, zijn gebaseerd op de door de industrie aanvaarde standaarden. In deze richt lijnen wordt beschreven hoe u Windows 10 kunt beveiligen en de Risico's kunt verminderen die aan het apparaat of de gebruiker zijn gekoppeld. Dit doet u door beleid en technologie te gebruiken om beveiligings functies en-risico's te beheren.
+Deze richt lijnen verwijzen naar verschillende beveiligings profielen en rollen die u kunnen helpen bij het maken van veiligere oplossingen voor gebruikers, ontwikkel aars en IT-personeel. Deze profielen sluiten bruikbaarheid en risico's voor algemene gebruikers die kunnen profiteren van een uitgebreid of veilig werk station. De instellingen die hier worden beschreven, zijn gebaseerd op de door de industrie aanvaarde standaarden. In deze richt lijnen wordt beschreven hoe u Windows 10 kunt beveiligen en de Risico's kunt verminderen die aan het apparaat of de gebruiker zijn gekoppeld. Om te profiteren van de moderne hardware-technologie en de basis van het vertrouwens apparaat, zullen we gebruikmaken van [Apparaatstatusverklaring](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Support-Tip-Using-Device-Health-Attestation-Settings-as-Part-of/ba-p/282643), dat is ingeschakeld vanaf het **High-Security** -profiel. Deze mogelijkheid is aanwezig om ervoor te zorgen dat de aanvallers niet permanent kunnen zijn tijdens het vroegtijdig opstarten van een apparaat. Dit doet u door beleid en technologie te gebruiken om beveiligings functies en-risico's te beheren.
 ![beveiligde werk station](./media/concept-azure-managed-workstation/seccon-levels.png)
 
-* **Lage beveiliging** : een beheerd, standaard werk station biedt een goed uitgangs punt voor het gebruik van de meeste thuis en kleine bedrijven. Deze apparaten worden geregistreerd in azure AD en beheerd met intune. Met dit profiel kunnen gebruikers toepassingen uitvoeren en bladeren door alle websites. Een anti-malware-oplossing zoals [micro soft Defender](https://www.microsoft.com/windows/comprehensive-security) moet zijn ingeschakeld.
+* **Basis beveiliging** : een beheerd, standaard werk station biedt een goed uitgangs punt voor het gebruik van de meeste thuis en kleine bedrijven. Deze apparaten worden geregistreerd in azure AD en beheerd met intune. Met dit profiel kunnen gebruikers toepassingen uitvoeren en bladeren door alle websites. Een anti-malware-oplossing zoals [micro soft Defender](https://www.microsoft.com/windows/comprehensive-security) moet zijn ingeschakeld.
 
 * **Verbeterde beveiliging** : deze op instap niveau beveiligde oplossing is geschikt voor thuis gebruikers, gebruikers van kleine bedrijven en algemene ontwikkel aars.
 
@@ -97,9 +111,9 @@ Deze richt lijnen verwijzen naar verschillende beveiligings profielen en rollen 
 
    De gebruiker met hoge beveiliging heeft een meer gecontroleerde omgeving nodig, terwijl er nog steeds activiteiten zoals e-mail en surfen op internet kunnen worden uitgevoerd in een gebruiks vriendelijke ervaring. De gebruikers verwachten dat functies, zoals cookies, favorieten en andere snelkoppelingen, worden gebruikt. Deze gebruikers vereisen echter mogelijk niet de mogelijkheid om hun apparaat te wijzigen of fouten op te sporen. Ze hoeven ook geen stuur Programma's te installeren. Het High-Security-profiel wordt geïmplementeerd met het High Security-Windows10 (1809-script).
 
-* **Gespecialiseerd** – kwaadwillenden richten zich op ontwikkel AARS en IT-beheerders omdat ze systemen van belang kunnen aanpassen aan de aanvallers. Het gespecialiseerde werk station wordt uitgebreid op het beleid van het High Security-werk station door lokale toepassingen te beheren en websites te beperken. Het biedt ook een beperking voor productiviteits mogelijkheden met een hoog risico, zoals ActiveX, Java, browser-invoeg toepassingen en andere Windows-besturings elementen. U implementeert dit profiel met het Security Baseline Baseline-script DeviceConfiguration_NCSC-Windows10 (1803).
+* **Gespecialiseerd** – kwaadwillenden richten zich op ontwikkel AARS en IT-beheerders omdat ze systemen van belang kunnen aanpassen aan de aanvallers. Het gespecialiseerde werk station wordt uitgebreid op het beleid van het High Security-werk station door lokale toepassingen te beheren en websites te beperken. Het biedt ook een beperking voor productiviteits mogelijkheden met een hoog risico, zoals ActiveX, Java, browser-invoeg toepassingen en andere Windows-besturings elementen. U implementeert dit profiel met het DeviceConfiguration_NCSC-Windows10 (1803) Security Baseline Baseline-script.
 
-* **Beveiligd** : een aanvaller die een beheerders account verkrijgt, kan aanzienlijke schade aan het bedrijf veroorzaken door gegevens diefstal, gegevens wijziging of onderbrekingen in de service. In deze beveiligde status maakt het werk station alle beveiligings controles en-beleids regels die het directe beheer van lokale toepassings beheer beperken. Een beveiligd werk station heeft geen productiviteits tools, waardoor het apparaat moeilijker te manipuleren is. Het blokkeert de meest voorkomende vector voor phishing-aanvallen: e-mail en sociale media.  Het beveiligde werk station kan worden geïmplementeerd met het Security Baseline Baseline-script Secure Workstation-Windows10 (1809).
+* **Beveiligd** : een aanvaller die een beheerders account verkrijgt, kan aanzienlijke schade aan het bedrijf veroorzaken door gegevens diefstal, gegevens wijziging of onderbrekingen in de service. In deze beveiligde status maakt het werk station alle beveiligings controles en-beleids regels die het directe beheer van lokale toepassings beheer beperken. Een beveiligd werk station heeft geen productiviteits tools, waardoor het apparaat moeilijker te manipuleren is. Het blokkeert de meest voorkomende vector voor phishing-aanvallen: e-mail en sociale media. Het beveiligde werk station kan worden geïmplementeerd met het Security Baseline Baseline-script Secure Workstation-Windows10 (1809).
 
    ![Beveiligd werk station](./media/concept-azure-managed-workstation/secure-workstation.png)
 
@@ -107,8 +121,8 @@ Deze richt lijnen verwijzen naar verschillende beveiligings profielen en rollen 
 
 * **Geïsoleerd** : dit aangepaste, offline scenario vertegenwoordigt het extreem einde van het spectrum. Er zijn geen installatie scripts voor deze aanvraag. Mogelijk moet u een bedrijfskritische functie beheren waarvoor een niet-ondersteund of verouderd besturings systeem is vereist. Bijvoorbeeld een productie lijn met hoge waarde of een systeem voor levens ondersteuning. Omdat de beveiliging kritiek is en Cloud Services niet beschikbaar zijn, kunt u deze computers hand matig of met een geïsoleerde Active Directory-forest-architectuur, zoals de verbeterde beveiligings beheer omgeving (ESAE), beheren en bijwerken. In deze omstandigheden kunt u alle toegang verwijderen, behalve basis intune en ATP-status controles.
 
-  * [Vereisten voor de intune-netwerk communicatie](https://docs.microsoft.com/intune/network-bandwidth-use)
-  * [Vereiste voor ATP-netwerk communicatie](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+   * [Vereisten voor de intune-netwerk communicatie](https://docs.microsoft.com/intune/network-bandwidth-use)
+   * [Vereiste voor ATP-netwerk communicatie](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
 
 ## <a name="next-steps"></a>Volgende stappen
 

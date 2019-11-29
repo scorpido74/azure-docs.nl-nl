@@ -11,15 +11,15 @@ ms.service: virtual-machines-sql
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/12/2018
+ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 855bd64bc8beb86a1bc62c65f71254f43c7a722a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 00b4647815d8330152ca2dd0b5e137e337e80210
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101988"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561104"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Wat is SQL Server op Azure Virtual Machines? (Windows)
 
@@ -57,7 +57,7 @@ Als u aan de slag wilt, kiest u een installatiekopie voor een virtuele machine v
 ### <a id="payasyougo"></a> Betalen per gebruik
 De volgende tabel bevat een matrix met SQL Server-installatiekopieën voor betalen naar gebruik.
 
-| Version | Besturingssysteem | Editie |
+| Version | Besturingssysteem | Versie |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2StandardWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2WebWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2ExpressWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2DeveloperWindowsServer2016) |
@@ -75,7 +75,7 @@ U kunt ook uw eigen licentie gebruiken (Bring Your Own Licence, BYOL). In dit sc
 
 Als u uw eigen licentie wilt meenemen, converteert u een SQL-VM waarbij per gebruik wordt betaald, of implementeert u een installatiekopie met **{BYOL}** vooraf ingesteld. Zie [Het licentiemodel voor een SQL-VM wijzigen](virtual-machines-windows-sql-ahb.md) voor meer informatie over het schakelen van uw licentiemodel tussen betalen per gebruik en BYOL. 
 
-| Version | Besturingssysteem | Editie |
+| Version | Besturingssysteem | Versie |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
@@ -128,13 +128,13 @@ Azure onderhoudt slechts één installatiekopie van een virtuele machine voor el
 Het programma voor kwaliteitsverbetering (CEIP) is standaard ingeschakeld. Met dit programma worden regelmatig rapporten naar Microsoft verzonden zodat SQL Server kan worden verbeterd. Er hoeft voor het programma voor kwaliteitsverbetering geen beheertaak worden uitgevoerd, tenzij u het na het inrichten wilt uitschakelen. U kunt het programma voor kwaliteitsverbetering aanpassen of uitschakelen door via Extern bureaublad verbinding te maken met de virtuele machine. Voer vervolgens het hulpprogramma **SQL Server-fouten- en gebruiksrapportage** uit. Volg de instructies voor het uitschakelen van rapportage. Zie de [privacyverklaring van SQL Server](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement) voor meer informatie over gegevensverzameling.
 
 ## <a name="related-products-and-services"></a>Gerelateerde producten en services
-### <a name="windows-virtual-machines"></a>Virtuele machines van Windows
+### <a name="windows-virtual-machines"></a>Windows Virtual Machines
 * [Overzicht van Virtual Machines](../overview.md)
 
 ### <a name="storage"></a>Storage
 * [Inleiding tot Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Netwerken
+### <a name="networking"></a>Networking
 * [Overzicht van Virtual Network](../../../virtual-network/virtual-networks-overview.md)
 * [IP-adressen in Azure](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Een Fully Qualified Domain Name maken in Azure Portal](../portal-create-fqdn.md)
@@ -152,3 +152,8 @@ Aan de slag met SQL Server op virtuele machines van Azure:
 Antwoorden op veelgestelde vragen over SQL-VM's:
 
 * [Veelgestelde vragen over SQL Server op virtuele machines van Azure](virtual-machines-windows-sql-server-iaas-faq.md)
+
+Referentie architecturen weer geven voor het uitvoeren van toepassingen met N-tier op SQL Server in IaaS
+
+* [Windows N-tier-toepassing op Azure met SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Een N-tier-toepassing uitvoeren in meerdere Azure-regio's voor hoge Beschik baarheid](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

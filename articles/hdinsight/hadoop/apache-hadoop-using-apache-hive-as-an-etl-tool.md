@@ -7,13 +7,13 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
-ms.openlocfilehash: 71631cd2394efd6743bc0e80a458fed2678d4be0
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/22/2019
+ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076250"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561760"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Apache Hive gebruiken als een hulp programma voor uitpakken, transformeren en laden (ETL)
 
@@ -21,11 +21,11 @@ Normaal gesp roken moet u inkomende gegevens opschonen en transformeren voordat 
 
 ## <a name="use-case-and-model-overview"></a>Overzicht van use-cases en modellen
 
-In de volgende afbeelding ziet u een overzicht van de use-case en het model voor ETL-automatisering. Invoer gegevens worden getransformeerd om de juiste uitvoer te genereren.  Tijdens die trans formatie kunnen de gegevens vorm, gegevens type en even taal wijzigen.  ETL-processen kunnen Britse naar metriek converteren, tijd zones wijzigen en de nauw keurigheid verbeteren om te uitlijnen met bestaande gegevens in het doel.  ETL-processen kunnen ook nieuwe gegevens combi neren met bestaande gegevens om de rapporten up-to-date te houden of om meer inzicht te krijgen in bestaande gegevens.  Toepassingen zoals rapportage hulpprogramma's en-services kunnen deze gegevens vervolgens in de gewenste indeling gebruiken.
+In de volgende afbeelding ziet u een overzicht van de use-case en het model voor ETL-automatisering. Invoer gegevens worden getransformeerd om de juiste uitvoer te genereren.  Tijdens die trans formatie kunnen de gegevens vorm, gegevens type en even taal wijzigen.  ETL-processen kunnen Britse naar metriek converteren, tijd zones wijzigen en de nauw keurigheid verbeteren om te uitlijnen met bestaande gegevens in het doel.  ETL-processen kunnen ook nieuwe gegevens combi neren met bestaande gegevens om de rapportage up-to-date te houden of om meer inzicht te krijgen in bestaande gegevens.  Toepassingen zoals rapportage hulpprogramma's en-services kunnen deze gegevens vervolgens in de gewenste indeling gebruiken.
 
 ![Apache Hive als ETL-architectuur](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Hadoop wordt doorgaans gebruikt in ETL-processen waarmee een groot aantal tekst bestanden (zoals Csv's) of een kleiner, maar vaak veranderende hoeveelheid tekst bestanden of beide worden geïmporteerd.  Hive is een uitstekend hulp programma dat u kunt gebruiken om de gegevens voor te bereiden voordat u deze in de gegevens bestemming laadt.  Met hive kunt u een schema maken over het CSV en een SQL-achtige taal gebruiken om MapReduce-Program ma's te genereren die met de gegevens werken. 
+Hadoop wordt doorgaans gebruikt in ETL-processen waarmee een groot aantal tekst bestanden (zoals Csv's) of een kleiner, maar vaak veranderende hoeveelheid tekst bestanden of beide worden geïmporteerd.  Hive is een uitstekend hulp programma dat u kunt gebruiken om de gegevens voor te bereiden voordat u deze in de gegevens bestemming laadt.  Met hive kunt u een schema maken over het CSV en een SQL-achtige taal gebruiken om MapReduce-Program ma's te genereren die met de gegevens werken.
 
 De gebruikelijke stappen voor het gebruik van Hive om ETL uit te voeren zijn als volgt:
 
@@ -38,14 +38,14 @@ De gebruikelijke stappen voor het gebruik van Hive om ETL uit te voeren zijn als
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
-    
+
     CREATE EXTERNAL TABLE hvac(`date` STRING, time STRING, targettemp BIGINT,
-        actualtemp BIGINT, 
-        system BIGINT, 
-        systemage BIGINT, 
+        actualtemp BIGINT,
+        system BIGINT,
+        systemage BIGINT,
         buildingid BIGINT)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
-    STORED AS TEXTFILE LOCATION 'wasb://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    STORED AS TEXTFILE LOCATION 'wasbs://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
     ```
 
 5. Transformeer de gegevens en laad deze in het doel.  Er zijn verschillende manieren om Hive tijdens de trans formatie te gebruiken en te laden:
@@ -70,10 +70,10 @@ U kunt Hive gebruiken om gegevens uit te voeren op verschillende doelen, waarond
 
 * Een relationele data base, zoals SQL Server of Azure SQL Database.
 * Een Data Warehouse, zoals Azure SQL Data Warehouse.
-* Excel.
+* Er.
 * Azure Table-en Blob-opslag.
 * Toepassingen of services waarvoor gegevens moeten worden verwerkt in specifieke indelingen of als bestanden die specifieke typen gegevens structuur bevatten.
-* Een JSON-document archief, zoals <a href="https://azure.microsoft.com/services/cosmos-db/">CosmosDB</a>.
+* Een JSON-document archief zoals [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
 ## <a name="considerations"></a>Overwegingen
 

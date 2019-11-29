@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 28666aaac4ec221acca00d937d54a753a4e6a055
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1c375370ec6bae2775ad758688825b92cbbbca50
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172661"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407028"
 ---
 ::: zone target="docs"
 
@@ -123,28 +123,7 @@ Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle
 2. Zorg ervoor dat het kopiëren van gegevens naar het apparaat is voltooid en dat de stappen in **Voorbereiding voor verzending** zijn uitgevoerd.
 3. Schakel het apparaat uit en verwijder de kabels.
 4. Rol het meegeleverde netsnoer op en plaats het in de opberglade aan de achterkant van het apparaat.
-5. Stuur een e-mail naar Quantium Solutions om een aanvraag in te dienen voor het ophalen van het apparaat. Vermeld hierbij het referentienummer voor service uit de Azure-portal. Gebruik de volgende e-mailsjabloon: - *Request for reverse shipping label with TAU code*. Neem de volgende gegevens op in het e-mailbericht: 
-
-    ```
-    To: Azure@quantiumsolutions.com
-    Subject: Pickup request for Azure｜Reference number：XXX XXX XXX
-    Body: 
-    - Company name：
-    - Address:
-    - Contact name:
-    - Contact number:
-    - Requested pickup date: mm/dd
-    ```
-6. U ontvangt van Quantium Solutions Australia per e-mail een retourlabel.
-7. Druk dit label af en bevestig het op de doos.
-8. Geef het pakket mee aan het transportbedrijf.
-
-Indien nodig kunt u Quantium Solutions per e-mail bereiken op Azure@quantiumsolutions.com of u kunt ze bellen.
-
-Voor informatie over uw bestelling via de telefoon:
-
-- Stuur eerst een e-mail over het ophalen.
-- Geef de naam van uw bestelling door via de telefoon.
+5. Boek via de [DHL-koppeling](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference)  online een afspraak voor de retourzending.
 
 ::: zone target="chromeless"
 

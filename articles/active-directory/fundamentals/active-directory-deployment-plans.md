@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 949676c622c87831d22dcfc7e1bc6d920b622738
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 17e6708225262349d56c6e261895882e9c31677f
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473281"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558533"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-implementatieplannen
 Zoekt u end-to-end-richt lijnen voor het implementeren van Azure Active Directory (Azure AD)-mogelijkheden? Met Azure AD-implementatie plannen kunt u de bedrijfs waarde, plannings overwegingen en operationele procedures door lopen die nodig zijn om algemene Azure AD-mogelijkheden te implementeren.
@@ -81,14 +81,14 @@ Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden 
 | [ADFS voor wachtwoordhash-synchronisatie](https://aka.ms/deploymentplans/adfs2phs)| Met wacht woord-hash-synchronisatie worden hashes van gebruikers wachtwoorden gesynchroniseerd van on-premises Active Directory naar Azure AD, zodat gebruikers zonder tussen komst van de on-premises-Active Directory worden geverifieerd met Azure AD. |
 | [ADFS voor Pass Through-verificatie](https://aka.ms/deploymentplans/adfs2pta)| Met Azure AD Pass-Through-verificatie kunnen gebruikers zich aanmelden bij zowel lokale als Cloud toepassingen met dezelfde wacht woorden. Deze functie biedt gebruikers een betere ervaring-een minder wacht woord om te onthouden en vermindert de IT-helpdesk kosten, omdat gebruikers minder kans hebben om zich aan te melden. Als iemand zich aanmeldt bij Azure AD, worden met deze functie de wachtwoorden rechtstreeks gecontroleerd tegen de on-premises Active Directory. |
 | [Azure AD-toepassingsproxy](https://aka.ms/deploymentplans/appproxy)| De huidige werknemer wil overal, op elke plek en op elk apparaat productief kunnen zijn. Ze moeten toegang hebben tot SaaS-apps in de Cloud en zakelijke apps on-premises. Azure AD-toepassings proxy maakt deze robuuste toegang mogelijk zonder kost bare en complexe virtuele particuliere netwerken (Vpn's) of gedemilitariseerde zones (Dmz's). |
-| [Naadloze eenmalige aanmelding](https://aka.ms/SeamlessSSODPDownload)| Met Naadloze eenmalige aanmelding van Azure Active Directory (Naadloze SSO van Azure AD) worden gebruikers aangemeld als hun bedrijfsapparaten zijn verbonden met net bedrijfsnetwerk. Met deze functie hoeven gebruikers hun wacht woord niet in te voeren om zich aan te melden bij Azure AD, en hoeven ze hun gebruikers namen meestal niet in te voeren. Deze functie biedt geautoriseerde gebruikers eenvoudig toegang tot uw Cloud toepassingen zonder dat hiervoor extra on-premises onderdelen nodig zijn. |
+| [Naadloze eenmalige aanmelding](../hybrid/how-to-connect-sso-quick-start.md)| Met Naadloze eenmalige aanmelding van Azure Active Directory (Naadloze SSO van Azure AD) worden gebruikers aangemeld als hun bedrijfsapparaten zijn verbonden met net bedrijfsnetwerk. Met deze functie hoeven gebruikers hun wacht woord niet in te voeren om zich aan te melden bij Azure AD, en hoeven ze hun gebruikers namen meestal niet in te voeren. Deze functie biedt geautoriseerde gebruikers eenvoudig toegang tot uw Cloud toepassingen zonder dat hiervoor extra on-premises onderdelen nodig zijn. |
 
 ## <a name="deploy-user-provisioning"></a>Gebruikers inrichten implementeren
 
 | Mogelijkheid | Beschrijving|
 | -| -|
 | [Inrichten van gebruikers](https://aka.ms/deploymentplans/userprovisioning)| Met Azure AD kunt u het maken, onderhouden en verwijderen van gebruikers-id's in cloud(SaaS)-toepassingen als Dropbox, Salesforce, ServiceNow en andere, automatiseren. |
-| [Op werk dagen aangedreven inkomend gebruikers inrichten](https://aka.ms/WorkdayDeploymentPlan)| Door werkdag aangestuurde inkomend gebruikers inrichten voor Active Directory maakt een basis voor de continue identiteits bestuur en verbetert de kwaliteit van bedrijfs processen die afhankelijk zijn van gezaghebbende identiteits gegevens. Met deze functie kunt u de identiteits levenscyclus van werk nemers en voorwaardelijke werkers naadloos beheren door regels te configureren die de processen voor het inrichten van de invoeg toepassing (zoals maken, beëindigen, overdragen) toewijzen aan IT-inrichtings acties (zoals Create, Enable, Scha |
+| [Gebruikers inrichten in de Cloud](https://aka.ms/deploymentplans/cloudhr)| Cloud HR-gebruikers die zich richten op Active Directory, maken een basis voor het aanhouden van identiteits beheer en verbeteren de kwaliteit van bedrijfs processen die afhankelijk zijn van gezaghebbende identiteits gegevens. Met behulp van deze functie in uw Cloud-HR-product, zoals workday of Successfactors, kunt u de identiteits levenscyclus van werk nemers en voorwaardelijke werk nemers naadloos beheren door regels te configureren die zijn toegewezen aan processen voor het door geven van invoeg gebruikers (zoals nieuwe huren, beëindigen, Overdracht) naar IT-inrichtings acties (zoals maken, inschakelen, uitschakelen) |
 
 ## <a name="deploy-governance-and-reporting"></a>Governance en rapportage implementeren
 

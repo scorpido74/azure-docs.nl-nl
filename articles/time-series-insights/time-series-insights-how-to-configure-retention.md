@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa905d1686939346827d07419a62fd6f299387ec
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 954e61aec5b622d44435a8a5b196fdbfed33c564
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012601"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561219"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Bewaar periode in Time Series Insights configureren
 
@@ -34,11 +34,11 @@ Lees de informatie [over retentie in time series Insights](time-series-insights-
 
 ## <a name="configure-data-retention"></a>Gegevensretentie configureren
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Ga naar uw bestaande Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Time Series Insights-omgeving.
+1. Zoek uw bestaande Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Time Series Insights-omgeving.
 
-1. Selecteer **configureren**onder de kop **instellingen** .
+1. Selecteer in de kop **instellingen** de optie **opslag configuratie**.
 
     [![instellingen selecteren en configureer vervolgens](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
@@ -50,7 +50,7 @@ Lees de informatie [over retentie in time series Insights](time-series-insights-
 
     [![bewaren van gegevens-accepteren en opslaan.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
-1. Accepteer het selectie vakje om aan te geven dat u de documentatie hebt gecontroleerd en inzicht hebt in de mogelijke Risico's van gegevens verlies. Selecteer **Opslaan** om de wijzigingen te configureren.
+1. Raadpleeg de documentatie om inzicht te krijgen in de mogelijke Risico's van gegevens verlies. Selecteer **Opslaan** om de wijzigingen te configureren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

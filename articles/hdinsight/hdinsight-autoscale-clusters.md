@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: fff5ad379aa11a0aae14b33f9f82f6da9c794517
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5cc473635543a22fd7e7223f4a5715f78457a897
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643732"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561754"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisch schalen van Azure HDInsight-clusters
 
@@ -26,14 +26,14 @@ Met de functie voor automatisch schalen van Azure HDInsight wordt het aantal wor
 
 In de volgende tabel worden de cluster typen en versies beschreven die compatibel zijn met de functie voor automatisch schalen.
 
-| Versie | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Version | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 zonder ESP | Ja | Ja | Nee | Nee | Nee | Nee | Nee |
+| HDInsight 3,6 zonder ESP | Alleen Ja 2,3| Ja | Nee | Nee | Nee | Nee | Nee |
 | HDInsight 4,0 zonder ESP | Ja | Ja | Nee | Nee | Nee | Nee | Nee |
-| HDInsight 3,6 met ESP | Ja | Ja | Nee | Nee | Nee | Nee | Nee |
+| HDInsight 3,6 met ESP | Alleen Ja 2,3 | Ja | Nee | Nee | Nee | Nee | Nee |
 | HDInsight 4,0 met ESP | Ja | Ja | Nee | Nee | Nee | Nee | Nee |
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 U kunt schalen op basis van een werk belasting of schalen op basis van een planning voor uw HDInsight-cluster kiezen. Schalen op basis van een belasting wijzigt het aantal knoop punten in het cluster, binnen een bereik dat u instelt, om ervoor te zorgen dat het CPU-gebruik optimaal verloopt en de lopende kosten worden geminimaliseerd.
 
@@ -233,7 +233,7 @@ De actieve taken blijven worden uitgevoerd en voltooid. De taken die in behandel
 
 Schaal uw cluster niet op minder dan drie knoop punten. Het schalen van uw cluster naar minder dan drie knoop punten kan ertoe leiden dat de veilige modus vastloopt vanwege onvoldoende bestands replicatie. Zie [vastzitten in de veilige modus]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode) voor meer informatie.
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 ### <a name="cluster-status"></a>De clusterstatus
 

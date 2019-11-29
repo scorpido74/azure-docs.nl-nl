@@ -4,12 +4,12 @@ description: Bewaak Azure Backup werk belastingen en maak aangepaste waarschuwin
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 66417071190fa45a746ce0b80a9de12968198bda
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bdb59e5ec461288c89e4c7d036488b5eaeb9472a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278278"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554879"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Op schaal controleren met behulp van Azure Monitor
 
@@ -37,7 +37,7 @@ Selecteer **Diagnostische instellingen** in het gedeelte bewaking en geef het do
 
 ![De diagnostische instelling van de Recovery Services kluis, gericht op Log Analytics](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
 
-U kunt een Log Analytics-werk ruimte richten op een ander abonnement. Als u de kluizen op één locatie wilt bewaken, selecteert u dezelfde Log Analytics werk ruimte voor meerdere Recovery Services kluizen. Als u wilt dat alle informatie die betrekking heeft op Azure Backup in de werk ruimte Log Analytics, kiest u **resource specifiek** in de wissel knop die wordt weer gegeven en selecteert u de volgende gebeurtenissen: **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. Raadpleeg [dit artikel](https://aka.ms/AA6jkus) voor meer informatie over het configureren van instellingen voor de diagnostische gegevens van een la.
+U kunt een Log Analytics-werk ruimte richten op een ander abonnement. Als u de kluizen op één locatie wilt bewaken, selecteert u dezelfde Log Analytics werk ruimte voor meerdere Recovery Services kluizen. Als u wilt dat alle informatie die betrekking heeft op Azure Backup in de werk ruimte Log Analytics, kiest u **resource specifiek** in de wissel knop die wordt weer gegeven en selecteert u de volgende gebeurtenissen: **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. Raadpleeg [dit artikel](backup-azure-diagnostic-events.md) voor meer informatie over het configureren van instellingen voor de diagnostische gegevens van een la.
 
 > [!IMPORTANT]
 > Nadat u de configuratie hebt voltooid, moet u 24 uur wachten totdat de eerste gegevens push is voltooid. Na deze eerste gegevens push worden alle gebeurtenissen gepusht, zoals verderop in dit artikel wordt beschreven, in de [sectie frequentie](#diagnostic-data-update-frequency).

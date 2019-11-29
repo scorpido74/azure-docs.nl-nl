@@ -2,17 +2,17 @@
 title: Sjabloon functies-implementatie
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om implementatie gegevens op te halen.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: a255cea128241465788f21013eb0522a29f5bd9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 11/27/2019
+ms.openlocfilehash: 67540a78e349285be032f696a9ef4b9ba3c7e242
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230240"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561455"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Implementatie functies voor Azure Resource Manager sjablonen 
 
-Resource Manager biedt de volgende functies voor het ophalen van waarden uit secties van de sjabloon en waarden die betrekking hebben op de implementatie:
+Resource Manager biedt de volgende functies voor het ophalen van waarden die betrekking hebben op de huidige implementatie:
 
 * [inhoudsdistributiepad](#deployment)
 * [variabelen](#environment)
@@ -21,13 +21,13 @@ Resource Manager biedt de volgende functies voor het ophalen van waarden uit sec
 
 Zie [resource functies](resource-group-template-functions-resource.md)om waarden van resources, resource groepen of abonnementen op te halen.
 
-## <a name="deployment"></a>deployment
+## <a name="deployment"></a>implementatie
 
 `deployment()`
 
 Retourneert informatie over de huidige implementatie bewerking.
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Retour waarde
 
 Deze functie retourneert het object dat tijdens de implementatie wordt door gegeven. De eigenschappen in het geretourneerde object wijken af van de vraag of het implementatie object wordt door gegeven als een koppeling of als een regel object. Wanneer het implementatie object in-line wordt door gegeven, bijvoorbeeld wanneer u de para meter **-TemplateFile** gebruikt in azure PowerShell om naar een lokaal bestand te verwijzen, heeft het geretourneerde object de volgende indeling:
 
@@ -139,9 +139,9 @@ Zie [implementatie functie voor abonnementen](https://github.com/Azure/azure-doc
 
 Retourneert informatie over de Azure-omgeving die wordt gebruikt voor de implementatie.
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Retour waarde
 
-Deze functie retourneert eigenschappen voor de huidige Azure-omgeving.
+Deze functie retourneert eigenschappen voor de huidige Azure-omgeving. In het volgende voor beeld ziet u de eigenschappen voor wereld wijd Azure. Soevereine Clouds retour neren mogelijk iets andere eigenschappen.
 
 ```json
 {
@@ -239,11 +239,11 @@ Retourneert een parameter waarde. De opgegeven parameter naam moet worden gedefi
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Verplicht | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | parameterName |Ja |string |De naam van de para meter die moet worden geretourneerd. |
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Retour waarde
 
 De waarde van de opgegeven para meter.
 
@@ -324,14 +324,14 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het vorige voor beeld met de standaard waarden is:
 
 | Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | stringOutput | Tekenreeks | Optie 1 |
-| intOutput | Int | 1 |
+| intOutput | Integer | 1 |
 | objectOutput | Object | {"een": "a", "twee": "b"} |
-| arrayOutput | Array | [1, 2, 3] |
+| arrayOutput | Matrix | [1, 2, 3] |
 | crossOutput | Tekenreeks | Optie 1 |
 
 Zie [para meters in azure Resource Manager sjabloon](template-parameters.md)voor meer informatie over het gebruik van para meters.
@@ -344,11 +344,11 @@ Retourneert de waarde van variable. De opgegeven naam van de variabele moet word
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Verplicht | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | variableName |Ja |Tekenreeks |De naam van de variabele die moet worden geretourneerd. |
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Retour waarde
 
 De waarde van de opgegeven variabele.
 
@@ -416,14 +416,14 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het vorige voor beeld met de standaard waarden is:
 
 | Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | exampleOutput1 | Tekenreeks | myVariable |
-| exampleOutput2 | Array | [1, 2, 3, 4] |
+| exampleOutput2 | Matrix | [1, 2, 3, 4] |
 | exampleOutput3 | Tekenreeks | myVariable |
-| exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
+| exampleOutput4 |  Object | {"property1": "waarde1", "property2": "Value2"} |
 
 Zie [variabelen in azure Resource Manager sjabloon](template-variables.md)voor meer informatie over het gebruik van variabelen.
 

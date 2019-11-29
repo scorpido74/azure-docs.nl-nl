@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f06da43e758c24da65664b34dd83f876a00e3a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174911"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554005"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Toewijzingen voor een toegangs pakket in azure AD-rechts beheer weer geven, toevoegen en verwijderen
 
@@ -76,6 +76,24 @@ In sommige gevallen wilt u mogelijk rechtstreeks specifieke gebruikers toewijzen
 1. Klik op **toevoegen** om de geselecteerde gebruikers rechtstreeks toe te wijzen aan het toegangs pakket.
 
     Na enkele ogen blikken klikt u op **vernieuwen** om de gebruikers in de lijst toewijzingen weer te geven.
+
+## <a name="remove-an-assignment"></a>Een toewijzing verwijderen
+
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+
+1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
+
+1. Klik in het menu links op **toewijzingen**.
+ 
+1. Klik op het selectie vakje naast de gebruiker van wie u de toewijzing wilt verwijderen uit het toegangs pakket. 
+
+1. Klik op de knop **verwijderen** boven aan het linkerdeel venster. 
+ 
+    ![Toewijzingen-gebruiker uit toegangs pakket verwijderen](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+
+    Er wordt een melding weer gegeven waarin wordt gemeld dat de toewijzing is verwijderd. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

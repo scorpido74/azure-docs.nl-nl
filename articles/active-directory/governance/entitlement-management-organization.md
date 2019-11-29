@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a8e5dc43170af8f33ad266edfa02ac5b41ca67a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2dec950f5475a8a64cfecfac1fb25246d6a7aa29
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174134"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561925"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Een verbonden organisatie toevoegen in het beheer van rechten van Azure AD
 
@@ -33,7 +33,7 @@ Een verbonden organisatie is een extern Azure AD-adres lijst of-domein waarmee u
 
 Stel bijvoorbeeld dat u werkt met de Woodgrove Bank en u wilt samen werken met twee externe organisaties: grafisch ontwerp Institute en contoso. U hebt door uw contact persoon op het grafisch ontwerp Institute verteld dat ze Azure AD gebruiken en dat de gebruikers van het grafisch ontwerp-Instituut een user principal name hebben dat eindigt op `graphicdesigninstitute.com`. En u hebt de contact persoon bij Contoso verteld dat ze nog geen Azure AD gebruiken, maar de gebruikers van Contoso hebben een user principal name die eindigt op `contoso.com`.
 
-U kunt twee verbonden organisaties configureren: één voor Graphic Design Institute met het domein `graphicdesigninstitute.com`en één voor contoso met het domein `contoso.com`. Als u deze twee verbonden organisaties vervolgens aan een beleid toevoegt, kunnen gebruikers van elke organisatie die een user principal name hebben dat overeenkomt met het beleid, toegangs pakketten aanvragen. Omdat het grafische ontwerp Institute is geïdentificeerd als het gebruik van Azure AD, en als het grafisch ontwerp Institute vervolgens subdomeinen heeft, zoals `graphicdesigninstitute.example`, kunnen gebruikers met die user principal name ook toegangs pakketten aanvragen via de hetzelfde beleid.
+U kunt twee verbonden organisaties configureren: één voor Graphic Design Institute met het domein `graphicdesigninstitute.com`en één voor contoso met het domein `contoso.com`. Als u deze twee verbonden organisaties vervolgens aan een beleid toevoegt, kunnen gebruikers van elke organisatie die een user principal name hebben dat overeenkomt met het beleid, toegangs pakketten aanvragen. Omdat het grafische ontwerp Institute is geïdentificeerd als het gebruik van Azure AD, en als het grafisch ontwerp Institute vervolgens subdomeinen heeft, zoals `graphicdesigninstitute.example`, kunnen gebruikers met die user principal name ook toegangs pakketten aanvragen met hetzelfde beleid.
 
 ![Voor beeld van verbonden organisatie](./media/entitlement-management-organization/connected-organization-example.png)
 
@@ -42,6 +42,10 @@ Hoe gebruikers van de Azure AD-Directory of het domein worden geverifieerd, is a
 - Azure AD
 - [Directe Federatie](../b2b/direct-federation.md)
 - [Eenmalige wachtwoord code](../b2b/one-time-passcode.md) (domein)
+
+Bekijk de volgende video voor een demonstratie van het toevoegen van een verbonden organisatie:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4dskS]
 
 ## <a name="add-a-connected-organization"></a>Een verbonden organisatie toevoegen
 

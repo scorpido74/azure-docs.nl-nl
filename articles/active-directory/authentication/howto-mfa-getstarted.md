@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cab4b57513f90a5cbe80724d4937f8d0f87b5517
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381784"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558539"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen
 
@@ -28,7 +28,7 @@ Mensen maken verbinding met de resources van de organisatie in steeds complexe s
 
 Voordat u een implementatie van Azure Multi-Factor Authentication start, zijn er vereiste items die moeten worden overwogen.
 
-| Scenario | Vereiste |
+| Scenario | Vereisten |
 | --- | --- |
 | **Cloud-only-** identiteits omgeving met moderne verificatie | **Geen aanvullende vereiste taken** |
 | Scenario's voor **hybride** identiteit | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) wordt geïmplementeerd en gebruikers identiteiten worden gesynchroniseerd of Federated met de on-premises Active Directory Domain Services met Azure Active Directory. |
@@ -80,7 +80,7 @@ Enkele van de door Azure Active Directory Identity Protection gedetecteerde risi
 
 ## <a name="define-network-locations"></a>Netwerk locaties definiëren
 
-Het wordt aanbevolen dat organisaties voorwaardelijke toegang gebruiken om hun netwerk te definiëren met behulp van [benoemde locaties](../conditional-access/location-condition.md#named-locations). Als uw organisatie identiteits beveiliging gebruikt, overweeg dan het gebruik van beleids regels op basis van Risico's in plaats van benoemde locaties.
+Het is raadzaam dat organisaties voorwaardelijke toegang gebruiken om hun netwerk te definiëren met behulp van [benoemde locaties](../conditional-access/location-condition.md#named-locations). Als uw organisatie identiteits beveiliging gebruikt, overweeg dan het gebruik van beleids regels op basis van Risico's in plaats van benoemde locaties.
 
 ### <a name="configuring-a-named-location"></a>Een benoemde locatie configureren
 
@@ -240,7 +240,7 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
     * Klik op **Selecteren**.
 1. Sla de **sessie** sectie over.
 1. Stel de **Schakel** optie voor het inschakelen van beleid in **op aan**.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Integratie met on-premises systemen plannen
 

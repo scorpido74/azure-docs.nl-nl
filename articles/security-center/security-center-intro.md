@@ -1,6 +1,6 @@
 ---
 title: Wat is Azure Security Center?| Microsoft Docs
-description: Meer informatie over Azure Security Center, de belangrijkste mogelijkheden van Azure Security Center en hoe Azure Security Center werkt.
+description: Op deze pagina worden de belangrijkste voor delen van Security Center beschreven, waarbij u de beveiligings status kunt detecteren en deze kunt verbeteren met een dekking van Cloud-en on-premises resources.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: e02fd0de00b8feed15fcd51b657afcc015d816f2
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202106"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558638"
 ---
-# <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
+# <a name="what-is-azure-security-center"></a>Wat is Azure Beveiligingscentrum?
 
 Azure Security Center is een geïntegreerd beveiligingsbeheersysteem voor de infrastructuur dat de beveiligingsstatus van uw datacenters verbetert en geavanceerde beveiliging tegen bedreigingen biedt voor uw hybride workloads in de cloud, of ze nu plaatsvinden in Azure of niet, en on-premises.
 
@@ -37,11 +37,11 @@ Azure Security Center biedt een oplossing voor de drie dringendste beveiligingsp
 
 Met Security Center kunt u zich tegen deze bedreigingen beveiligen. Het biedt namelijk hulpprogramma's waarmee u het volgende kunt doen:
 
--   **De beveiligingsstatus verbeteren**: Security Center beoordeling van uw omgeving en stelt u in staat om inzicht te krijgen in de status van uw resources en of ze veilig zijn.
+-   **Postuur versterking van beveiliging**: Security Center beoordeling van uw omgeving en stelt u in staat om de status van uw resources te begrijpen en te bepalen of ze veilig zijn.
 
--   **Beveiliging tegen bedreigingen**: Security Center beoordeelt uw workloads en genereert aanbevelingen voor het voorkomen van bedreigingen en waarschuwingen bij de detectie van bedreigingen.
+-   **Beveiligen tegen bedreigingen**: met Security Center worden uw workloads beoordeeld en worden aanbevelingen voor het voor komen van bedreigingen en waarschuwingen voor detectie van bedreigingen gegenereerd.
 
--   **Beveilig uw infrastructuur sneller**: In Security Center wordt alles gedaan met de snelheid van de cloud. Omdat Security Center in het eigen systeem is geïntegreerd, is het eenvoudig te implementeren en kan het u automatische inrichting en beveiliging bieden met Azure-services.
+-   Snel **veilig**werken: in Security Center wordt alles uitgevoerd in de Cloud snelheid. Omdat Security Center in het eigen systeem is geïntegreerd, is het eenvoudig te implementeren en kan het u automatische inrichting en beveiliging bieden met Azure-services.
 
 ## <a name="architecture"></a>Architectuur
 
@@ -95,7 +95,7 @@ Met de aanbevelingen kunt u de kwetsbaarheid voor aanvallen verminderen voor al 
 
 ![Voorbeeld van een Security Center-aanbeveling](media/security-center-intro/sc-recommendation-example.png)
 
-## <a name="protect-against-threats"></a>Beveiligen tegen bedreigingen
+## <a name="protect-against-threats"></a>Beschermen tegen bedreigingen
 
 Met de beveiliging tegen bedreigingen van Security Center kunt u bedreigingen detecteren en voorkomen op de IaaS-laag (infrastructuur als een dienst), andere servers dan Azure-servers en PaaS-services (platform als een dienst) in Azure.
 
@@ -145,5 +145,5 @@ Uitgebreide logboekverzameling: logboeken van Windows en Linux worden gebruikt d
 
 - U moet over een Microsoft Azure-abonnement beschikken om met Security Center aan de slag te gaan. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/).
 - De prijscategorie Gratis van Security Center wordt met uw Azure-abonnement ingeschakeld. Als u wilt profiteren van geavanceerd beveiligingsbeheer en mogelijkheden voor het detecteren van bedreigingen, moet u een upgrade uitvoeren naar de prijscategorie Standard. De prijscategorie Standard kan gratis worden uitgeprobeerd. Zie de [pagina met prijzen van Security Center](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
-- Als u klaar bent om nu Security Center Standard in te schakelen, kunt u de stappen doorlopen aan de hand van de [Snelstartgids: Uw Azure-abonnement onboarden voor Security Center Standard](security-center-get-started.md).
+- Als u nu Security Center Standard wilt inschakelen, raadpleegt u de [Quickstart: Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Snelstartgids: uw Azure-abonnement registreren voor Security Center Standard) voor meer informatie.
 

@@ -1,6 +1,6 @@
 ---
-title: Beheer van Azure DevTest Labs-infrastructuur
-description: Dit artikel bevat richtlijnen voor het beheer van Azure DevTest Labs-infrastructuur.
+title: Bedrijfs beleid en-naleving in Azure DevTest Labs
+description: Dit artikel bevat richt lijnen voor het beheren van het bedrijfs beleid en de naleving van de Azure DevTest Labs-infra structuur.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,71 +10,71 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e02400ef940efdf42370fbdc1da75bdc7062a8ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81ca2a90b1940d70e170cab3f8d18144a5d5e5a8
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127358"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560506"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Beheer van infrastructuur voor Azure DevTest Labs - bedrijfsbeleid en naleving
-In dit artikel bevat richtlijnen voor het betreffende bedrijfsbeleid en naleving voor Azure DevTest Labs-infrastructuur. 
+# <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Governance van Azure DevTest Labs-infra structuur-bedrijfs beleid en-naleving
+Dit artikel bevat richt lijnen voor het beheren van het bedrijfs beleid en de naleving van de Azure DevTest Labs-infra structuur. 
 
-## <a name="public-vs-private-artifact-repository"></a>Openbare en persoonlijke artefactopslagplaats
-
-### <a name="question"></a>Vraag
-Wanneer moet een organisatie een openbare artefactenopslag gebruiken versus persoonlijke artefactopslagplaats in DevTest Labs?
-
-### <a name="answer"></a>Antwoord
-De [openbare artefactenopslag](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) biedt een eerste set met software-updatepakketten die meestal worden gebruikt. Dit helpt bij de snelle implementatie zonder te hoeven investeren tijd om algemene hulpprogramma's voor ontwikkelaars en invoegtoepassingen te reproduceren. U kunt implementeren hun eigen privé-opslagplaats. U kunt een openbare en een privé-opslagplaats gelijktijdig gebruiken. U kunt er ook voor kiezen om uit te schakelen van de openbare opslagplaats. De criteria voor het implementeren van een privé-opslagplaats moeten worden aangestuurd door de volgende vragen en overwegingen:
-
-- Beschikt over de organisatie een vereiste zakelijke gelicentieerde software hebben als onderdeel van hun aanbieding DevTest Labs? Als het antwoord Ja is, moet een privé-opslagplaats worden gemaakt.
-- De organisatie aangepaste software waarmee een bepaalde bewerking, die vereist als onderdeel van het algehele proces van inrichting is ontwikkelen? Als het antwoord Ja is, moet een privé-opslagplaats worden geïmplementeerd.
-- Als organisatie governance beleid vereist dat isolatie en externe opslagplaatsen niet onder beheer van de directe configuratie door de organisatie vallen, moet een persoonlijke artefactopslagplaats worden geïmplementeerd. Als onderdeel van dit proces kan een initiële kopie van de openbare opslagplaats worden gekopieerd en geïntegreerd met de privé-opslagplaats. De openbare opslagplaats kan vervolgens worden uitgeschakeld zodat niemand binnen de organisatie toegang heeft tot deze niet meer. Deze aanpak zorgt ervoor dat alle gebruikers binnen de organisatie hebben slechts één enkele opslagruimte die door de organisatie is goedgekeurd en afwijkende configuraties te minimaliseren.
-
-### <a name="single-repository-or-multiple-repositories"></a>Één opslagplaats of meerdere opslagplaatsen 
+## <a name="public-vs-private-artifact-repository"></a>Openbaar versus persoonlijke artefact opslagplaats
 
 ### <a name="question"></a>Vraag
-Moet een organisatie van plan bent voor één enkele opslagruimte of meerdere opslagplaatsen toe te staan?
+Wanneer moet een organisatie een open bare artefact opslagplaats versus een persoonlijke artefact opslagplaats in DevTest Labs gebruiken?
 
 ### <a name="answer"></a>Antwoord
-Als onderdeel van de algehele governance van uw organisatie en beheer configuratiestrategie, raden wij aan dat u een centrale opslagplaats. Wanneer u meerdere opslagplaatsen, kunnen ze silo's van niet-beheerde software worden na verloop van de tijd. Met een centrale opslagplaats, kunnen meerdere teams artefacten uit deze opslagplaats voor hun projecten gebruiken. Het wordt afgedwongen standaardisatie, beveiliging, eenvoudig beheer en elimineert de duplicatie van inspanningen. Als onderdeel van de centralisatie, worden de volgende acties aanbevolen procedures voor het beheer van op de lange termijn en duurzaamheid:
+De [opslag plaats voor open bare artefacten](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) bevat een initiële set software pakketten die het meest worden gebruikt. Het helpt bij snelle implementatie zonder dat u tijd hoeft te investeren om algemene ontwikkel hulpprogramma's en-invoeg toepassingen te reproduceren. U kunt ervoor kiezen om hun eigen privé-opslag plaats te implementeren. U kunt een open bare en een privé opslag plaats parallel gebruiken. U kunt er ook voor kiezen om de open bare opslag plaats uit te scha kelen. De criteria voor het implementeren van een privé-opslag plaats moeten worden aangestuurd door de volgende vragen en overwegingen:
 
-- De Azure-opslagplaatsen koppelen aan dezelfde Azure Active Directory-tenant die het Azure-abonnement wordt gebruikt voor verificatie en autorisatie.
-- Maak een groep met de naam **alle DevTest Labs ontwikkelaars** in Azure Active Directory die centraal wordt beheerd. Elke ontwikkelaar die draagt bij aan de ontwikkeling van artefacten moet worden geplaatst in deze groep.
-- De dezelfde Azure Active Directory-groep kan worden gebruikt voor toegang tot de opslagplaats van de Azure-opslagplaatsen en de testomgeving.
-- In de Azure-opslagplaatsen, moet vertakkingen of splits worden gebruikt naar een afzonderlijke een in-ontwikkeling-opslagplaats van de primaire productie-opslagplaats. Inhoud is alleen toegevoegd aan de master-vertakking met een pull-aanvraag na een overzicht van de juiste code. Zodra de revisor van de code wordt de wijziging goedgekeurd, worden de bijgewerkte code door een ontwikkelaar lead, die verantwoordelijk voor onderhoud van de master-vertakking is, samengevoegd. 
+- Heeft de organisatie een vereiste om software met een bedrijfs licentie te hebben als onderdeel van hun DevTest Labs-aanbieding? Als het antwoord ja is, moet er een privé opslagplaats worden gemaakt.
+- Ontwikkelt de organisatie aangepaste software die een specifieke bewerking biedt, die vereist is als onderdeel van het algemene inrichtings proces? Als het antwoord ja is, moet een privé opslagplaats worden geïmplementeerd.
+- Als het governance beleid van de organisatie isolatie vereist en externe opslag plaatsen niet onder het directe configuratie beheer van de organisatie zijn, moet een opslag plaats voor persoonlijke artefacten worden geïmplementeerd. Als onderdeel van dit proces kan een eerste kopie van de open bare opslag plaats worden gekopieerd en geïntegreerd met de privé-opslag plaats. Vervolgens kan de open bare opslag plaats worden uitgeschakeld, zodat niemand binnen de organisatie er meer toegang toe heeft. Deze aanpak zorgt ervoor dat alle gebruikers binnen de organisatie slechts één opslag plaats hebben die door de organisatie is goedgekeurd en de configuratie drift minimaliseert.
 
-## <a name="corporate-security-policies"></a>Zakelijke beveiligingsbeleid
+### <a name="single-repository-or-multiple-repositories"></a>Eén opslag plaats of meerdere opslag plaatsen 
 
 ### <a name="question"></a>Vraag
-Hoe kan een organisatie dat zakelijke beveiligingsbeleid wordt voldaan
+Moet een organisatie plannen voor één opslag plaats of meerdere opslag plaatsen toestaan?
 
 ### <a name="answer"></a>Antwoord
-Een organisatie kan doen dit door de volgende acties uitvoeren:
+Als onderdeel van de algehele beheer-en configuratie strategie van uw organisatie wordt u aangeraden een gecentraliseerde opslag plaats te gebruiken. Wanneer u meerdere opslag plaatsen gebruikt, kunnen ze gedurende de periode een silo van onbeheerde software worden. Met een centrale opslag plaats kunnen meerdere teams artefacten uit deze opslag plaats gebruiken voor hun projecten. Het dwingt de standaardisatie af, de beveiliging, het gemak van het beheer en elimineert het dupliceren van inspanningen. Als onderdeel van de gecentraliseerde zijn de volgende acties aanbevolen procedures voor het beheer en duurzaamheid op lange termijn:
 
-1. Ontwikkelen en publiceren van een uitgebreide beveiligingsbeleid. Het beleid van de regels van aanvaardbaar gebruik die zijn gekoppeld aan de via articulates software, cloudassets. Het definieert ook wat duidelijk is in strijd met het beleid. 
-2. Ontwikkel een aangepaste installatiekopie, aangepaste artefacten en een proces waarmee voor het indelen van binnen de realm van de beveiliging die is gedefinieerd met active directory. Deze benadering dwingt af van het bedrijf bevindt en Hiermee stelt u een gemeenschappelijke set controles van de omgeving. Deze besturingselementen voor de omgeving een ontwikkelaar zou kan ontwikkelen en volgt u de levensduur van een veilige ontwikkeling als onderdeel van het algehele proces. Het doel is ook voor een omgeving die geen te streng die mei een belemmering vormen voor ontwikkeling, maar een redelijke set besturingselementen. Het groepsbeleid op de organisatie-eenheid (OE) met lab-virtuele machines mogelijk een subset van de totale groepsbeleidsregels die zijn gevonden in de productieomgeving. Ze kunnen ook worden een extra set goed een geïdentificeerde risico's te beperken.
+- Koppel de Azure-opslag plaatsen aan dezelfde Azure Active Directory-Tenant die door het Azure-abonnement wordt gebruikt voor verificatie en autorisatie.
+- Maak een groep met **de naam alle ontwikkel aars van DevTest Labs** in azure Active Directory die centraal worden beheerd. Ontwikkel aars die bijdraagt aan het ontwikkelen van artefacten, moeten in deze groep worden geplaatst.
+- Dezelfde Azure Active Directory groep kan worden gebruikt om toegang te bieden tot de Azure opslag plaatsen-opslag plaats en het lab.
+- In azure opslag plaatsen moet vertakkingen of forking worden gebruikt voor het scheiden van een opslag plaats in ontwikkeling van de primaire productie opslagplaats. Inhoud wordt alleen toegevoegd aan de hoofd vertakking met een pull-aanvraag nadat de juiste code is gecontroleerd. Zodra de code revisor de wijziging heeft goedgekeurd, wordt een lead ontwikkelaar, die verantwoordelijk is voor het onderhoud van de hoofd vertakking, samengevoegd met de bijgewerkte code. 
 
-## <a name="data-integrity"></a>Integriteit van gegevens
+## <a name="corporate-security-policies"></a>Beveiligings beleid van het bedrijf
 
 ### <a name="question"></a>Vraag
-Hoe zorgt een organisatie de integriteit van gegevens om ervoor te zorgen dat ontwikkelaars van externe toegang kunnen code verwijderen of kwaadaardige software of niet-goedgekeurde software introduceren?
+Hoe kan een organisatie ervoor zorgen dat beveiligings beleid voor ondernemingen wordt toegepast?
 
 ### <a name="answer"></a>Antwoord
-Er zijn verschillende lagen van besturingselement in op het oplossen van de bedreiging van externe adviseurs, aannemers of werknemers die zijn van externe toegang in kunnen samenwerken in DevTest Labs. 
+Een organisatie kan dit doen door de volgende acties uit te voeren:
 
-Zoals eerder vermeld, moet de eerste stap een gebruiksregels opgesteld en gedefinieerd die duidelijk de gevolgen geeft een overzicht van wanneer iemand in strijd is met het beleid hebben. 
+1. Het ontwikkelen en publiceren van een uitgebreid beveiligings beleid. Het beleid heeft betrekking op de regels van acceptabel gebruik die zijn gekoppeld aan het gebruik van software, Cloud activa. Ook wordt gedefinieerd wat het beleid duidelijk schendt. 
+2. Ontwikkel een aangepaste installatie kopie, aangepaste artefacten en een implementatie proces dat indeling toestaat binnen de beveiligings-realm die is gedefinieerd met Active Directory. Deze benadering dwingt de bedrijfs grens af en stelt een gemeen schappelijke set omgevings controles in. Deze besturings elementen voor de omgeving van een ontwikkelaar kunnen overwegen bij het ontwikkelen en volgen van een beveiligde ontwikkelings levenscyclus als onderdeel van hun algemene proces. Het doel is ook om een omgeving te bieden die niet meer beperkend is en die de ontwikkeling kan belemmeren, maar een redelijke set besturings elementen. De groeps beleidsregels in de organisatie-eenheid (OE) die virtuele machines van het Lab bevat, kunnen een subset zijn van het totale groeps beleid dat in productie is gevonden. Het is ook mogelijk dat ze een extra set zijn om geïdentificeerde Risico's goed te kunnen beperken.
 
-De eerste laag van besturingselementen voor externe toegang is het toepassen van een beleid voor externe toegang via een VPN-verbinding die niet direct is verbonden met het lab. 
+## <a name="data-integrity"></a>Gegevens integriteit
 
-De tweede laag van besturingselementen is het toepassen van een set van groepsbeleidsobjecten die voorkomen dat kopiëren en plakken via Extern bureaublad. Een beleid voor netwerken kan worden geïmplementeerd om toe te staan geen uitgaande services uit de omgeving, zoals FTP en RDP-services uit de omgeving. Alle netwerkverkeer Azure naar on-premises gebruiker gedefinieerde routering kan afdwingen, maar de routering kan geen rekening gehouden met alle URL's die mogelijk uploaden van gegevens, tenzij beheerd via een proxy voor het scannen van inhoud en sessies. Openbare IP-adressen kan worden beperkt in het virtuele netwerk ondersteunen DevTest Labs van een extern netwerk-resource-bridging niet zijn toegestaan.
+### <a name="question"></a>Vraag
+Hoe kan een organisatie gegevens integriteit garanderen om ervoor te zorgen dat externe ontwikkel aars de code niet kunnen verwijderen of malware of niet-goedgekeurde software introduceren?
 
-Uiteindelijk moet hetzelfde type van de beperkingen worden toegepast in de hele organisatie, die zelf zou moeten ook rekening voor alle mogelijke methoden van verwisselbare media of externe URL's die een bericht van de inhoud kunnen worden geaccepteerd. Neem contact op met uw professionele om te controleren en implementeren van een beveiligingsbeleid voor beveiliging. Zie voor meer aanbevelingen [Microsoft Cyber Security](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs).
+### <a name="answer"></a>Antwoord
+Er zijn verschillende lagen waarmee u de dreiging kunt beperken van externe consultants, aannemers of werk nemers die extern zijn in om samen te werken in DevTest Labs. 
+
+Zoals eerder vermeld, moet de eerste stap een acceptabel beleid voor gebruik hebben opgesteld en gedefinieerd, waardoor duidelijk de gevolgen worden aangegeven wanneer iemand het beleid schendt. 
+
+De eerste laag van besturings elementen voor externe toegang is het Toep assen van een beleid voor externe toegang via een VPN-verbinding die niet rechtstreeks is verbonden met het lab. 
+
+De tweede laag van besturings elementen is het Toep assen van een set groeps beleidsobjecten die het kopiëren en plakken via extern bureau blad verhinderen. Een netwerk beleid kan worden geïmplementeerd om uitgaande services van de omgeving, zoals FTP-en RDP-Services, niet uit de omgeving toe te staan. Door de gebruiker gedefinieerde route ring kan alle Azure-netwerk verkeer terugbrengen naar on-premises, maar de route ring kan niet worden ingesteld voor alle Url's die het uploaden van gegevens kunnen toestaan, tenzij deze worden beheerd via een proxy om inhoud en sessies te scannen. Open bare Ip's kunnen worden beperkt binnen het virtuele netwerk dat DevTest Labs ondersteunt, zodat er geen externe netwerk bron kan worden overbrugd.
+
+Uiteindelijk moet u hetzelfde type beperkingen Toep assen voor de hele organisatie, die ook moet gelden voor alle mogelijke methoden van Verwissel bare media of externe Url's die een bericht van inhoud kunnen accepteren. Neem contact op met uw Security Professional om een beveiligings beleid te controleren en te implementeren. Zie [micro soft Cyber Security](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs)(Engelstalig) voor meer aanbevelingen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [toepassingen migreren en integratie](devtest-lab-guidance-governance-application-migration-integration.md).
+Zie [toepassings migratie en-integratie](devtest-lab-guidance-governance-application-migration-integration.md).

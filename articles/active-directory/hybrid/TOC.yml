@@ -322,6 +322,8 @@
       href: reference-connect-version-history.md
     - name: Versiegeschiedenis van Azure AD Connect Health
       href: reference-connect-health-version-history.md
+    - name: Versiegeschiedenis van Pass-through-verificatie-agent in Azure AD
+      href: reference-connect-pta-version-history.md
     - name: Geschiedenis van connectorversie
       href: reference-connect-sync-connector-version-history.md
     - name: Accounts en machtigingen

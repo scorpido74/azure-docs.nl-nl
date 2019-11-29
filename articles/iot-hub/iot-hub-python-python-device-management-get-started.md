@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: eb5085db10c5763a4173f460eabde6afcccd5aff
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 514f4b26a708a6fec30a1f54cfe6da6d1b58b79d
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000451"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555523"
 ---
 # <a name="get-started-with-device-management-python"></a>Aan de slag met Apparaatbeheer (python)
 
@@ -63,13 +63,9 @@ In deze sectie doet u het volgende:
     pip install azure-iot-device
     ```
 
-   > [!NOTE]
-   > De PIP-pakketten voor Azure-iothub-service-client zijn alleen beschikbaar voor Windows-besturings systemen. Voor Linux/Mac OS raadpleegt u de sectie met Linux-en Mac OS-specifieke secties in de [ontwikkel omgeving voorbereiden voor python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) post.
-   >
-
 2. Maak met behulp van een tekst editor een bestand met de naam **dmpatterns_getstarted_device. py** in uw werkmap.
 
-3. Voeg de volgende `import` -instructies toe aan het begin van het bestand **dmpatterns_getstarted_device. py** .
+3. Voeg de volgende `import`-instructies toe aan het begin van het bestand **dmpatterns_getstarted_device. py** .
 
     ```python
     import threading
@@ -78,7 +74,7 @@ In deze sectie doet u het volgende:
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. Voeg de variabele **CONNECTION_STRING** toe. Vervang de `{deviceConnectionString}` waarde van de tijdelijke aanduiding door de Connection String van uw apparaat. U hebt dit connection string eerder in [de IOT-hub van een nieuw apparaat geregistreerd](#register-a-new-device-in-the-iot-hub).  
+4. Voeg de variabele **CONNECTION_STRING** toe. Vervang de waarde van de tijdelijke `{deviceConnectionString}` door de connection string van uw apparaat. U hebt dit connection string eerder in [de IOT-hub van een nieuw apparaat geregistreerd](#register-a-new-device-in-the-iot-hub).  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -139,7 +135,7 @@ In deze sectie doet u het volgende:
         iothub_client_sample_run()
     ```
 
-7. Sla het bestand **dmpatterns_getstarted_device. py** op en sluit het af.
+7. Sla het bestand **dmpatterns_getstarted_device. py** op en sluit het.
 
 > [!NOTE]
 > Om de zaken niet nodeloos ingewikkeld te maken, is in deze handleiding geen beleid voor opnieuw proberen geïmplementeerd. In productie code moet u beleid voor opnieuw proberen implementeren (zoals een exponentiële uitstel), zoals wordt voorgesteld in het artikel, [tijdelijke fout afhandeling](/azure/architecture/best-practices/transient-faults).
@@ -161,12 +157,12 @@ In deze sectie maakt u een python-console-app die extern opnieuw opstarten op ee
     ```
 
    > [!NOTE]
-   > De PIP-pakketten voor Azure-iothub-service-client en Azure-iothub-Device-client zijn momenteel alleen beschikbaar voor Windows-besturings systemen. Voor Linux/Mac OS raadpleegt u de sectie met Linux-en Mac OS-specifieke secties in de [ontwikkel omgeving voorbereiden voor python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) post.
+   > Het PIP-pakket voor Azure-iothub-service-client is momenteel alleen beschikbaar voor Windows-besturings systemen. Voor Linux/Mac OS raadpleegt u de sectie met Linux-en Mac OS-specifieke secties in de [ontwikkel omgeving voorbereiden voor python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) post.
    >
 
 2. Maak met behulp van een tekst editor een bestand met de naam **dmpatterns_getstarted_service. py** in uw werkmap.
 
-3. Voeg de volgende `import` -instructies toe aan het begin van het bestand **dmpatterns_getstarted_service. py** .
+3. Voeg de volgende `import`-instructies toe aan het begin van het bestand **dmpatterns_getstarted_service. py** .
 
     ```python
     import sys, time
@@ -175,7 +171,7 @@ In deze sectie maakt u een python-console-app die extern opnieuw opstarten op ee
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-4. Voeg de volgende variabelen declaraties toe. Vervang de `{IoTHubConnectionString}` waarde van de tijdelijke aanduiding door de IOT hub-Connection String die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang de `{deviceId}` waarde van de tijdelijke aanduiding door de apparaat-id die u hebt geregistreerd in [Registreer een nieuw apparaat in de IOT-hub](#register-a-new-device-in-the-iot-hub).
+4. Voeg de volgende variabelen declaraties toe. Vervang de waarde van de tijdelijke aanduiding `{IoTHubConnectionString}` door de IoT hub connection string die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang de waarde van de tijdelijke aanduiding `{deviceId}` door de apparaat-ID die u hebt geregistreerd in [een nieuw apparaat registreren bij de IOT-hub](#register-a-new-device-in-the-iot-hub).
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -238,7 +234,7 @@ In deze sectie maakt u een python-console-app die extern opnieuw opstarten op ee
         iothub_devicemethod_sample_run()
     ```
 
-6. Sla het bestand **dmpatterns_getstarted_service. py** op en sluit het af.
+6. Sla het bestand **dmpatterns_getstarted_service. py** op en sluit het.
 
 ## <a name="run-the-apps"></a>De apps uitvoeren
 
