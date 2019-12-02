@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 8a34dcd31ba15ed949fa0a50ec904da96a048a7d
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0d8bc302434ea973dd4d94156c65ee6965dd1dc1
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560070"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666241"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal
 
@@ -72,13 +72,17 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 1. Ga naar de **overzichts** pagina van de service en selecteer **Configuratie server**.
 
-1. In de sectie **standaard opslagplaats** stelt u de **URI** in op ' https\://github.com/azure-samples/piggymetrics ', stelt u een **Label** in op ' config ' en selecteert u **Toep assen** om uw wijzigingen op te slaan.
+1. Stel in het gedeelte **standaard opslagplaats** de **URI** in op https\://github.com/azure-samples/piggymetrics.
+
+1. Stel het **Label** in op config.
+
+1. Selecteer **Toep assen** om uw wijzigingen op te slaan.
 
     ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Micro service-toepassingen bouwen en implementeren
 
-1. Open een [Azure-Cloud shell](https://shell.azure.com) en kloon de opslag plaats van de voor beeld-app naar uw lokale computer.  Hier maken we eerst een tijdelijke map met de naam `source-code` voordat ze de app klonen.
+1. Open een [Azure Cloud shell](https://shell.azure.com) en kloon de opslag plaats van de voor beeld-app naar uw lokale computer.  Hier maken we eerst een tijdelijke map met de naam `source-code` voordat ze de app klonen.
 
     ```azurecli
     mkdir source-code
@@ -123,7 +127,7 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 1. Selecteer de `gateway` toepassing om de **overzichts** pagina weer te geven.
 
-1. Selecteer **domein toewijzen** om een openbaar eind punt toe te wijzen aan de gateway. Dit kan een paar minuten duren.
+1. Selecteer **domein toewijzen** om een openbaar eind punt toe te wijzen aan de gateway. Dit kan enkele minuten duren.
 
     ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 

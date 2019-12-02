@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 250cdedaa5155f1487cb842be492acd82c0f26b3
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090824"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666423"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Veelgestelde vragen over Azure Storage migratie
 
@@ -47,7 +47,7 @@ Er is geen optie om rechtstreeks een back-up te maken van een volledig opslag ac
 
 1.  Installeer het [AzCopy](storage-use-azcopy.md) -opdracht regel programma. Met dit hulp programma kunt u het VHD-bestand verplaatsen tussen opslag accounts.
 
-2.  Nadat u AzCopy op Windows hebt geïnstalleerd met behulp van het installatie programma, opent u een opdracht prompt venster en bladert u naar de installatiemap van AzCopy op de computer. AzCopy wordt standaard geïnstalleerd in **% ProgramFiles (x86) %\Microsoft SDKs\Azure\AzCopy** of **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
+2.  Nadat u AzCopy op Windows hebt geïnstalleerd met behulp van het installatie programma, opent u een opdracht prompt venster en bladert u naar de installatiemap van AzCopy op de computer. AzCopy wordt standaard geïnstalleerd op **% Program Files (x86)% \ micro soft SDKs\Azure\AzCopy** of **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
 
 3.  Voer de volgende opdracht uit om de container te verplaatsen. U moet de tekst vervangen door de werkelijke waarden.   
      
@@ -167,7 +167,7 @@ Gebruik AzCopy om de gegevens te downloaden. Zie [gegevens overdragen met AzCopy
 
 **Hoe kan ik de secundaire locatie wijzigen in de regio Europa van een opslag account?**
 
-Wanneer u een opslag account maakt, selecteert u de primaire regio voor het account. De selectie van de secundaire regio is gebaseerd op de primaire regio en kan niet worden gewijzigd. Zie [geo-redundante opslag (GRS) voor meer informatie: Kruis regionale replicatie voor Azure Storage](storage-redundancy.md).
+Wanneer u een opslag account maakt, selecteert u de primaire regio voor het account. De selectie van de secundaire regio is gebaseerd op de primaire regio en kan niet worden gewijzigd. Zie [geo-redundante opslag (GRS): cross-Regional Replication for Azure Storage (Engelstalig)](storage-redundancy.md)voor meer informatie.
 
 **Waar vind ik meer informatie over Azure Storage service Encryption (SSE)?**  
   
@@ -237,7 +237,7 @@ Als u virtuele machines hebt, moet u extra stappen uitvoeren voordat u de gegeve
 
 **Hoe kan ik van een klassiek opslag account naar een Azure Resource Manager Storage-account gaan?**
 
-U kunt de cmdlet **Move-AzStorageAccount** gebruiken. Deze cmdlet heeft meerdere stappen (valideren, voorbereiden, door voeren). U kunt de verplaatsing valideren voordat u deze maakt.
+U kunt de cmdlet **Move-AzureStorageAccount** gebruiken. Deze cmdlet heeft meerdere stappen (valideren, voorbereiden, door voeren). U kunt de verplaatsing valideren voordat u deze maakt.
 
 Als u virtuele machines hebt, moet u extra stappen uitvoeren voordat u de gegevens van het opslag account migreert. Zie [IaaS-resources van klassiek naar Azure Resource Manager migreren met behulp van Azure PowerShell](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md)voor meer informatie.
 
@@ -267,9 +267,9 @@ Andere personen toegang geven tot de opslag resources:
 
 -   Als u toegang hebt tot AzCopy vanaf de opdracht regel van Microsoft Azure Storage, typt u **AzCopy**. De opdracht regel wordt naast AzCopy geïnstalleerd.
 
--   Als u de 32-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program Files\\(x86\\)\\% micro soft sdk's Azure AzCopy**.
+-   Als u de 32-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program Files (x86)%\\micro soft sdk's\\Azure\\AzCopy**.
 
--   Als u de 64-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program\\files\\%\\micro soft sdk's Azure AzCopy**.
+-   Als u de 64-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program Files%\\micro soft sdk's\\Azure\\AzCopy**.
 
 **Hoe kan ik toegang krijgen tot gegevens die zijn opgeslagen in de secundaire regio voor een gerepliceerd opslag account (zoals zone-redundante opslag, geografisch redundante opslag of geografisch redundante opslag met lees toegang)?**
 
@@ -277,13 +277,13 @@ Andere personen toegang geven tot de opslag resources:
 
 -   Als u geografisch redundante opslag met lees toegang gebruikt, kunt u op elk gewenst moment toegang krijgen tot gegevens uit de secundaire regio. Gebruik een van de volgende methoden:  
       
-    - **AzCopy**: Voeg **-secundair** toe aan de naam van het opslag account in de URL voor toegang tot het secundaire eind punt. Bijvoorbeeld:  
+    - **AzCopy**: toevoeg **-secundair** aan de naam van het opslag account in de URL voor toegang tot het secundaire eind punt. Bijvoorbeeld:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **SAS-token**: Gebruik een SAS-token om toegang te krijgen tot gegevens van het eind punt. Zie [using Shared Access signatures](storage-sas-overview.md)(Engelstalig) voor meer informatie.
+    - **SAS-token**: gebruik een SAS-token om toegang te krijgen tot gegevens van het eind punt. Zie [using Shared Access signatures](storage-sas-overview.md)(Engelstalig) voor meer informatie.
 
-**Hoe kan ik een aangepast HTTPS-domein met mijn opslag account gebruiken? Hoe kan ik bijvoorbeeld ' https:\//mystorageaccountname.blob.core.Windows.net/Images/image.gif ' weer geven als ' https:\//www.contoso.com/images/image.gif '?**
+**Hoe kan ik een aangepast HTTPS-domein met mijn opslag account gebruiken? Hoe kan ik bijvoorbeeld ' https:\//mystorageaccountname.blob.core.windows.net/images/image.gif ' weer geven als ' https:\//www.contoso.com/images/image.gif '?**
 
 SSL wordt momenteel niet ondersteund voor opslag accounts met aangepaste domeinen.
 U kunt echter geen aangepaste niet-HTTPS-domeinen gebruiken. Zie [een aangepaste domein naam configureren voor het eind punt van de Blob-opslag](../blobs/storage-custom-domain-name.md)voor meer informatie.
@@ -298,6 +298,6 @@ Als u alleen gegevens wilt downloaden zonder gebruik te hoeven maken van Storage
 
  U kunt dit doen met behulp van het [BLOB-migratie script](../scripts/storage-common-transfer-between-storage-accounts.md).
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning.
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 
 Als u nog steeds hulp nodig hebt, neemt u [contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

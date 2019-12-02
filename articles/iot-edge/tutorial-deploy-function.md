@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: een Azure-functie implementeren op een apparaat - Azure IoT Edge | Microsoft Docs'
+title: 'Zelf studie: Azure functions implementeren als modules-Azure IoT Edge'
 description: In deze zelfstudie ontwikkelt u een Azure-functie als een IoT Edge-module en implementeert u die functie op een Edge-apparaat.
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1db64c2cc68dc9c47d4f2cf5f63eb0667907d737
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8edd6028e73690829129168d912b312247d8b880
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456719"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664094"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Zelfstudie: Azure-functies implementeren als IoT Edge-modules
 
@@ -43,7 +43,7 @@ De Azure-functie die u maakt in deze zelfstudie filtert de temperatuurgegevens d
 
 Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw ontwikkel omgeving in te stellen voor Linux-container ontwikkeling: [ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door deze zelf studie te volt ooien, moet u aan de volgende vereisten voldoen: 
 
-* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een [Linux-apparaat met Azure IOT Edge](quickstart-linux.md)
 * Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio-code](https://code.visualstudio.com/) die is geconfigureerd met de [Azure IOT-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -175,7 +175,7 @@ We gaan enkele extra code toevoegen, zodat de module de berichten aan de rand ve
 
 1. Sla het bestand op.
 
-## <a name="build-your-iot-edge-solution"></a>Uw eigen IoT Edge-oplossing bouwen
+## <a name="build-your-iot-edge-solution"></a>Uw IoT Edge-oplossing bouwen
 
 In de vorige sectie hebt u een IoT Edge-oplossing gemaakt en code toegevoegd aan de **CSharpFunction** om berichten te filteren waarin de gemelde temperatuur van de machine onder de aanvaardbare drempelwaarde is. Nu moet u de oplossing bouwen als een containerinstallatiekopie en deze naar het containerregister pushen.
 

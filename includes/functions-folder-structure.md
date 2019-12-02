@@ -9,37 +9,34 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: aad66a91f7de8380ac7e87f0ce8e35ed43cac4a6
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4460d19de1859a8a3c51d91d418b948b5d3532a6
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594544"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666714"
 ---
-De code voor alle functies in een specifieke functie-app bevindt zich in een hoofdmap van het project met een configuratiebestand voor de host en een of meer submappen. Elke submap bevat de code voor een afzonderlijke functie. De mapstructuur wordt weergegeven in de volgende afbeelding:
+De code voor alle functies in een specifieke functie-app bevindt zich in een hoofdmap van het project met een configuratie bestand voor een host en een of meer submappen. Elke submap bevat de code voor een afzonderlijke functie. De mapstructuur wordt weer gegeven in de volgende weer gave:
 
 ```
 FunctionApp
  | - host.json
- | - Myfirstfunction
+ | - MyFirstFunction
  | | - function.json
  | | - ...  
- | - mysecondfunction
+ | - MySecondFunction
  | | - function.json
  | | - ...  
  | - SharedCode
  | - bin
 ```
 
-In versie 2.x van de Functions-runtime, alle functies in de functie-app moeten delen de dezelfde taal-stack.  
+In versie 2. x van de functions-runtime moeten alle functies in de functie-app dezelfde taal stack delen.  
 
-De [host.json](../articles/azure-functions/functions-host-json.md) bestand bevat de runtime-specifieke configuraties en is in de hoofdmap van de functie-app. Een *bin* map bevat pakketten en andere bibliotheekbestanden waarvoor de functie-app is vereist. Zie de taal-specifieke vereisten voor een functie-app-project:
+Het bestand [host. json](../articles/azure-functions/functions-host-json.md) bevat runtime-specifieke configuraties en bevindt zich in de hoofdmap van de functie-app. Een *bin* -map bevat pakketten en andere bibliotheek bestanden die de functie-app nodig heeft. Zie de taalspecifieke vereisten voor een functie-app-project:
 
-* [C# class library (.csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
-* [C# script (.csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
-* [F#script](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
+* [C#klassebibliotheek (. csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
+* [C#script (. CSX)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
+* [F#Schriften](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
 * [Java](../articles/azure-functions/functions-reference-java.md#folder-structure)
 * [JavaScript](../articles/azure-functions/functions-reference-node.md#folder-structure)
-
-
-

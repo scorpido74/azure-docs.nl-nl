@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: gesimuleerde apparaatgegevens genereren-Machine Learning op Azure IoT Edge'
+title: 'Zelf studie: apparaatgegevens simuleren-Azure IoT Edge & Machine Learning'
 description: 'Zelf studie: virtuele apparaten maken die gesimuleerde telemetrie genereren die later kunnen worden gebruikt om een machine learning model te trainen.'
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 51d93e5b83d203f3fa99b69cc5f2877bbfdb6fb1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9b3b36cf5a0f426f2081179d08cf2f093a233fff
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112868"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665930"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Zelf studie: gesimuleerde apparaatgegevens genereren
 
@@ -141,7 +141,7 @@ De gegevens die door de DeviceHarness worden verzonden, zijn naar uw IoT-hub geg
 
 De gegevens die we zojuist naar uw IoT-hub hebben verzonden, worden doorgestuurd naar de opslag container die we in het vorige artikel hebben gemaakt. Laten we eens kijken naar de gegevens in het opslag account.
 
-1. Ga in Azure Portal naar het nieuwe opslagaccount.
+1. Ga in Azure Portal naar uw opslagaccount.
 
 1. Selecteer **Storage Explorer (preview)** in de Navigator voor opslag accounts.
 

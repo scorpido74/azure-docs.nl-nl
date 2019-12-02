@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cd26ed446ce676bcec85d8e413d3ec37ac236869
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: f994f4ec6d41fa0aab37e36d713eaefb22e85b28
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521993"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665054"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>Beveiligings waarschuwingen en aanbevelingen exporteren (preview-versie)
 
@@ -73,6 +73,29 @@ Als u wilt exporteren naar Log Analytics-werk ruimte, moet u beschikken over de 
 Beveiligings waarschuwingen en aanbevelingen worden respectievelijk opgeslagen in de *SecurityAlert* -en *SecurityRecommendations* -tabellen. De naam van de Log Analytics oplossing die deze tabellen bevat, is afhankelijk van of u zich in de laag gratis of Standard bevindt (Zie [prijzen](security-center-pricing.md)): Security of SecurityCenterFree.
 
 ![De * SecurityAlert *-tabel in Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
+
+###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>Geëxporteerde beveiligings waarschuwingen en aanbevelingen in Azure Monitor weer geven
+
+In sommige gevallen kunt u ervoor kiezen om de geëxporteerde beveiligings waarschuwingen en/of aanbevelingen in [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)weer te geven. 
+
+Azure Monitor biedt een uniforme waarschuwings ervaring voor verschillende Azure-waarschuwingen, waaronder diagnostisch logboeken, metrische waarschuwingen en aangepaste waarschuwingen op basis van Log Analytics werkruimte query's.
+
+Als u waarschuwingen en aanbevelingen van Security Center in Azure Monitor wilt weer geven, configureert u een waarschuwings regel op basis van Log Analytics query's (logboek waarschuwing):
+
+1. Klik op de pagina **waarschuwingen** van Azure monitor op **nieuwe waarschuwings regel**.
+
+    ![Pagina waarschuwingen van Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
+
+1. Configureer op de pagina regel maken uw nieuwe regel (op dezelfde manier als u een [waarschuwings regel voor het logboek configureert in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log):
+
+    * Selecteer voor **resource**de log Analytics werk ruimte waarnaar u beveiligings waarschuwingen en aanbevelingen hebt geëxporteerd.
+
+    * Selecteervoor voor waarde **aangepaste logboek zoekopdracht**. Configureer op de pagina die wordt weer gegeven, de query, de lookback periode en de frequentie periode. In de zoek query kunt u *SecurityAlert* of *SecurityRecommendation* typen om een query uit te voeren op de gegevens typen die Security Center doorlopend exporteren naar wanneer u de functie continue export naar log Analytics inschakelt. 
+    
+    * U kunt desgewenst de [actie groep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) configureren die u wilt activeren. Actie groepen kunnen e-mail verzenden, ITSM tickets, webhooks en meer activeren.
+    ![Azure Monitor waarschuwings regel](./media/continuous-export/azure-monitor-alert-rule.png)
+
+U ziet nu nieuwe Azure Security Center waarschuwingen of aanbevelingen (afhankelijk van uw configuratie) in Azure Monitor-waarschuwingen, waarbij automatisch een actie groep wordt geactiveerd (indien gegeven).
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>Hand matige eenmalige export van beveiligings waarschuwingen
 

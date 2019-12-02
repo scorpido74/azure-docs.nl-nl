@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 04/26/2019
-ms.author: rosh
-ms.openlocfilehash: 439f775fb6124c847631467caabe3f48cfa6b645
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 2265471001896652a4ce35dbf8bd84aca50000fb
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326712"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665675"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Snelstartgids: een query naar de Bing Local Business Search-API verzenden inC#
 
@@ -34,7 +34,7 @@ U moet beschikken over een [account voor de Cognitive Services-API](https://docs
 
 Met de volgende code maakt u een `WebRequest`, stelt u de kop van de toegangs sleutel in en voegt u een query reeks toe voor ' restaurant in Bellevue '.  Vervolgens wordt de aanvraag verzonden en het antwoord toegewezen aan een tekenreeks die de JSON-tekst moet bevatten.
 
-```
+```csharp
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
@@ -60,7 +60,7 @@ De Bing Local Business Search-API retourneert gelokaliseerde Zoek resultaten van
 3. Vervang de waarde van accessKey door een toegangs sleutel die geldig is voor uw abonnement.
 4. Voer het programma uit.
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Text;

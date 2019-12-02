@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: f18e5dbdc257aa1ae647505c323c17f9f197d360
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150982"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666491"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Over cryptografische vereisten en Azure VPN-gateways
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u Azure VPN-gateways kunt configureren om te
 
 ## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>Over IKEv1 en IKEv2 voor Azure VPN-verbindingen
 
-Traditioneel hebben we IKEv1-verbindingen voor alleen elementaire Sku's en toegestane IKEv2-verbindingen voor alle andere VPN-gateway-Sku's dan Basic Sku's toegestaan. De Basic-Sku's staan slechts 1 verbinding toe en samen met andere beperkingen, zoals prestaties, kunnen klanten die gebruikmaken van verouderde apparaten die alleen IKEv1-protocollen ondersteunen, een beperkte ervaring hebben. Om de gebruikers ervaring met het gebruik van IKEv1-protocollen te verbeteren, zijn er nu IKEv1-verbindingen toegestaan voor alle Sku's van de VPN-gateway. Zie [VPN gateway sku's](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku)voor meer informatie.
+Traditioneel hebben we IKEv1-verbindingen voor alleen elementaire Sku's en toegestane IKEv2-verbindingen voor alle andere VPN-gateway-Sku's dan Basic Sku's toegestaan. De Basic-Sku's staan slechts 1 verbinding toe en samen met andere beperkingen, zoals prestaties, kunnen klanten die gebruikmaken van verouderde apparaten die alleen IKEv1-protocollen ondersteunen, een beperkte ervaring hebben. Om de gebruikers ervaring met IKEv1-protocollen te verbeteren, zijn er nu IKEv1-verbindingen voor alle VPN-gateway-Sku's, met uitzonde ring van de basis-SKU. Zie [VPN gateway sku's](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku)voor meer informatie.
 
 ![Azure VPN Gateway IKEv1-en IKEv2-verbindingen](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 
@@ -42,7 +42,7 @@ Het IKEv2-beleid voor de hoofd modus voor Azure VPN-gateways maakt bijvoorbeeld 
 
 Azure VPN-gateways bieden nu ondersteuning voor het aangepaste IPsec/IKE-beleid per verbinding. Voor een site-naar-site-of VNet-naar-VNet-verbinding kunt u een specifieke combi natie van cryptografische algoritmen kiezen voor IPsec en IKE met de gewenste sleutel sterkte, zoals wordt weer gegeven in het volgende voor beeld:
 
-![ipsec-ike-policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
+![IPSec-IKE-beleid](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
 U kunt een IPsec/IKE-beleid maken en Toep assen op een nieuwe of bestaande verbinding.
 

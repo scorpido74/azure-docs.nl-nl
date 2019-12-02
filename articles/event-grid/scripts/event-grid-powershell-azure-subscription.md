@@ -11,20 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 8ab0d61e2c7ec23b7c3ed82d460cbb53711d5c7f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8c90e39cef1420ec06b7f62ebf9982720ffebf94
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790503"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664128"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>Abonneren op gebeurtenissen voor een Azure-abonnement met PowerShell
 
 Met dit script maakt u een Event Grid-abonnement op de gebeurtenissen voor een Azure-abonnement.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
-Voor het voorbeeldscript van de preview is de Event Grid-module vereist. Voer `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` uit om deze te installeren
 
 ## <a name="sample-script---stable"></a>Voorbeeldscript - stabiel
 
@@ -33,6 +31,8 @@ Voor het voorbeeldscript van de preview is de Event Grid-module vereist. Voer `I
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-azure-subscription/subscribe-to-azure-subscription.ps1 "Subscribe to Azure subscription")]
 
 ## <a name="sample-script---preview-module"></a>Voorbeeldscript - preview-module
+
+Voor dit voorbeeld script is de Event Grid-module vereist. Voer `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` uit om deze te installeren
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 

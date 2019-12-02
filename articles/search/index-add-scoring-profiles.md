@@ -7,7 +7,7 @@ author: Brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/28/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 60442ab101423d0a91fa35a7a12a0b930417af71
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113618"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666304"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Score profielen toevoegen aan een Azure Cognitive Search-index
 
@@ -37,7 +37,7 @@ ms.locfileid: "74113618"
  Het volgende voor beeld toont een eenvoudig profiel met de naam ' Geo ' om u een idee te geven van hoe een score profiel eruit ziet. Hiermee worden items met de zoek term in het veld naam **Hotel** verhoogd. Er wordt ook gebruikgemaakt van de functie `distance` om te voor komen dat items binnen tien kilo meter van de huidige locatie. Als iemand zoekt op de term ' Inn ' en ' Inn ' zich in de naam van het hotel bevinden, worden documenten die hotels bevatten met ' Inn ' binnen een RADIUS van 10 KM van de huidige locatie hoger weer gegeven in de zoek resultaten.  
 
 
-```  
+```json
 "scoringProfiles": [
   {  
     "name":"geo",
@@ -92,7 +92,7 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 
  In dit voor beeld wordt het schema van een index met twee Score profielen (`boostGenre`, `newAndHighlyRated`) weer gegeven. Elke query op basis van deze index die een van beide profielen als een query parameter bevat, gebruikt het profiel voor het beoordelen van de resultatenset.  
 
-```  
+```json
 {  
   "name": "musicstoreindex",  
   "fields": [  
@@ -234,14 +234,14 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 
 |Kenmerk|Beschrijving|  
 |---------------|-----------------|  
-|`Name`|Vereist. Dit is de naam van het Score profiel. Het volgt dezelfde naam conventies van een veld. De naam moet beginnen met een letter, mag geen punten, dubbele punten of @ symbolen bevatten en mag niet beginnen met de zin ' azureSearch ' (hoofdletter gevoelig).|  
-|`Text`|Bevat de eigenschap Weights.|  
-|`Weights`|Optioneel. Een naam/waarde-paar dat een veld naam en een relatief gewicht opgeeft. Relatief gewicht moet een positief geheel getal zijn of een getal met een drijvende komma. De maximum waarde is Int32. MaxValue.<br /><br /> U kunt de veld naam opgeven zonder een overeenkomend gewicht. Gewichten worden gebruikt om het belang van één veld ten opzichte van een ander aan te geven.|  
-|`Functions`|Optioneel. Een score functie kan alleen worden toegepast op velden die kunnen worden gefilterd.|  
-|`Type`|Vereist voor Score functies. Hiermee wordt het type functie aangegeven dat moet worden gebruikt. Geldige waarden zijn grootte, versheid, afstand en label. U kunt in elk Score profiel meer dan één functie gebruiken. De functie naam moet in kleine letters worden gebruikt.|  
-|`Boost`|Vereist voor Score functies. Een positief getal dat wordt gebruikt als vermenigvuldiger voor de onbewerkte Score. De waarde mag niet gelijk zijn aan 1.|  
-|`Fieldname`|Vereist voor Score functies. Een score functie kan alleen worden toegepast op velden die deel uitmaken van de veld verzameling van de index en die kunnen worden gefilterd. Daarnaast introduceert elk functie type extra beperkingen (de versheid wordt gebruikt met datum-en tijd velden, een grootte met gehele getallen of dubbele velden en de afstand met locatie velden). U kunt slechts één veld per functie definitie opgeven. Als u bijvoorbeeld twee keer in hetzelfde profiel een bepaalde grootte wilt gebruiken, moet u twee definities per veld hebben.|  
-|`Interpolation`|Vereist voor Score functies. Definieert de helling waarvoor de score wordt verhoogd van het begin van het bereik tot het einde van het bereik. Geldige waarden zijn onder andere lineair (standaard), constante, kwadratisch en logaritmisch. Zie [interpolatie instellen](#bkmk_interpolation) voor meer informatie.|  
+|`name`|Vereist. Dit is de naam van het Score profiel. Het volgt dezelfde naam conventies van een veld. De naam moet beginnen met een letter, mag geen punten, dubbele punten of @ symbolen bevatten en mag niet beginnen met de zin ' azureSearch ' (hoofdletter gevoelig).|  
+|`text`|Bevat de eigenschap Weights.|  
+|`weights`|Optioneel. Bevat naam/waarde-paren die elke veld naam en relatief gewicht opgeven. Relatief gewicht moet een positief geheel getal zijn of een getal met een drijvende komma.<br /><br /> Het gewicht wordt gebruikt om het belang van één Doorzoek bare veld ten opzichte van een ander aan te geven.|  
+|`functions`|Optioneel. Een score functie kan alleen worden toegepast op velden die kunnen worden gefilterd.|  
+|`type`|Vereist voor Score functies. Hiermee wordt het type functie aangegeven dat moet worden gebruikt. Geldige waarden zijn grootte, versheid, afstand en label. U kunt in elk Score profiel meer dan één functie gebruiken. De functie naam moet in kleine letters worden gebruikt.|  
+|`boost`|Vereist voor Score functies. Een positief getal dat wordt gebruikt als vermenigvuldiger voor de onbewerkte Score. De waarde mag niet gelijk zijn aan 1.|  
+|`fieldname`|Vereist voor Score functies. Een score functie kan alleen worden toegepast op velden die deel uitmaken van de veld verzameling van de index en die kunnen worden gefilterd. Daarnaast introduceert elk functie type extra beperkingen (de versheid wordt gebruikt met datum-en tijd velden, een grootte met gehele getallen of dubbele velden en de afstand met locatie velden). U kunt slechts één veld per functie definitie opgeven. Als u bijvoorbeeld twee keer in hetzelfde profiel een bepaalde grootte wilt gebruiken, moet u twee definities per veld hebben.|  
+|`interpolation`|Vereist voor Score functies. Definieert de helling waarvoor de score wordt verhoogd van het begin van het bereik tot het einde van het bereik. Geldige waarden zijn onder andere lineair (standaard), constante, kwadratisch en logaritmisch. Zie [interpolatie instellen](#bkmk_interpolation) voor meer informatie.|  
 |`magnitude`|De functie magnitude wordt gebruikt om de classificaties te wijzigen op basis van het bereik van waarden voor een numeriek veld. Enkele van de meest voorkomende gebruiks voorbeelden hiervan zijn:<br /><br /> -   **ster waardering:** Wijzig de score op basis van de waarde in het veld ster waardering. Wanneer twee items relevant zijn, wordt het item met de hogere classificatie eerst weer gegeven.<br />-   **marge:** wanneer twee documenten relevant zijn, kan een detail handelaar documenten met hogere marges eerst stimuleren.<br />-   **klikt u op aantallen:** voor toepassingen die volgen op acties voor producten of pagina's, kunt u de grootte gebruiken om items te verhogen die meestal het grootste verkeer krijgen.<br />aantal -   - **down loads:** voor toepassingen die down loads volgen, kunt u met de functie magnitude items verhogen die de meeste down loads hebben.|  
 |`magnitude` &#124; `boostingRangeStart`|Hiermee wordt de begin waarde ingesteld van het bereik waarvan de grootte wordt gescoord. De waarde moet een geheel getal zijn of een getal met een drijvende komma. Voor ster waarderingen van 1 tot en met 4 zou dit 1 zijn. Voor marges van meer dan 50% zou dit 50 zijn.|  
 |`magnitude` &#124; `boostingRangeEnd`|Hiermee wordt de eind waarde van het bereik ingesteld waarvan de grootte wordt gescoord. De waarde moet een geheel getal zijn of een getal met een drijvende komma. Voor ster waarderingen van 1 tot en met 4 zou dit 4 zijn.|  
@@ -261,10 +261,10 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 
 |||  
 |-|-|  
-|`Linear`|Voor items die binnen het bereik Max en min zijn, wordt de Boost toegepast op het item in een voortdurend dalende hoeveelheid. Lineair is de standaard interpolatie voor een score profiel.|  
-|`Constant`|Voor items die zich binnen het begin-en eind bereik bevinden, wordt een constante Boost toegepast op de positie resultaten.|  
-|`Quadratic`|In vergelijking met een lineaire interpolatie die een voortdurend dalende Boost heeft, wordt in eerste instantie de kwadratische afname kleiner naarmate het eind bereik wordt gereduceerd. Deze interpolatie optie is niet toegestaan in Tags Score functies.|  
-|`Logarithmic`|In vergelijking met een lineaire interpolatie die een voortdurend dalende Boost heeft, wordt het logaritmische eerst op een hoger tempo en vervolgens op het einde van het eind bereik verkleind. Deze interpolatie optie is niet toegestaan in Tags Score functies.|  
+|`linear`|Voor items die binnen het bereik Max en min zijn, wordt de Boost toegepast op het item in een voortdurend dalende hoeveelheid. Lineair is de standaard interpolatie voor een score profiel.|  
+|`constant`|Voor items die zich binnen het begin-en eind bereik bevinden, wordt een constante Boost toegepast op de positie resultaten.|  
+|`quadratic`|In vergelijking met een lineaire interpolatie die een voortdurend dalende Boost heeft, wordt in eerste instantie de kwadratische afname kleiner naarmate het eind bereik wordt gereduceerd. Deze interpolatie optie is niet toegestaan in Tags Score functies.|  
+|`logarithmic`|In vergelijking met een lineaire interpolatie die een voortdurend dalende Boost heeft, wordt het logaritmische eerst op een hoger tempo en vervolgens op het einde van het eind bereik verkleind. Deze interpolatie optie is niet toegestaan in Tags Score functies.|  
 
  ![Constante, lineaire, kwadratische, log10-lijnen in de grafiek](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
@@ -280,7 +280,7 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 |1 dag|"P1D"|  
 |2 dagen en 12 uur|"P2DT12H"|  
 |15 minuten|"PT15M"|  
-|30 dagen, 5 uur, 10 minuten en 6,334 seconden|"P30DT5H10M6.334S"|  
+|30 dagen, 5 uur, 10 minuten en 6,334 seconden|"P30DT5H10M 6.334 S"|  
 
  Zie [XML-schema: data types (w3.org-website)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)voor meer voor beelden.  
 

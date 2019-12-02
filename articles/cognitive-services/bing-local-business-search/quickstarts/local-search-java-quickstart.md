@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: 46187aa1d4e0670b45aeeafd643f541ab90fb9a7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326747"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665182"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Snelstartgids: een query naar de Bing Local Business Search-API verzenden met behulp van Java
 
@@ -25,7 +25,7 @@ In deze voorbeeld toepassing worden lokale antwoord gegevens opgehaald uit de AP
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* De [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 U moet beschikken over een [account voor de Cognitive Services-API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met Bing Zoeken-API's. De [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) is voldoende voor deze snelstart. U hebt de toegangssleutel nodig die is verstrekt tijdens het activeren van uw gratis proefversie.  Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
@@ -35,7 +35,7 @@ In deze voorbeeld toepassing worden lokale antwoord gegevens opgehaald uit de qu
 
 Met de volgende code maakt u een `WebRequest`, stelt u de kop van de toegangs sleutel in en voegt u een query reeks toe voor ' Hotel in Bellevue '.  Vervolgens wordt de aanvraag verzonden en het antwoord toegewezen aan een tekenreeks die de JSON-tekst moet bevatten.
 
-```
+```java
     // construct URL of search request (endpoint + query string)
      URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -58,7 +58,7 @@ De Bing Local Business Search-API retourneert resultaten van de Bing zoek machin
 4. Vervang de waarde van subscriptionKey door een geldige toegangssleutel voor uw abonnement.
 5. Voer het programma uit.
 
-```
+```java
 package localSearch;
 import java.net.*;
 import java.util.*;

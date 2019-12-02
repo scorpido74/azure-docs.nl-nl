@@ -1,6 +1,6 @@
 ---
-title: Linux-apparaten automatisch inrichten met DPS-Azure IoT Edge | Microsoft Docs
-description: Een gesimuleerd TPM gebruiken op een Linux-VM voor het testen van Azure Device Provisioning Service voor Azure IoT Edge
+title: Apparaat inrichten met een virtuele TPM op Linux VM-Azure IoT Edge
+description: Een gesimuleerde TPM op een virtuele Linux-machine gebruiken om de Azure Device Provisioning Service voor Azure IoT Edge te testen
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 292ae570d4f2ddd0c09e667860ee2ba01b9fc6b8
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8f664a2c503367410507ccba3bc9078d34acbe17
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457183"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666338"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Een IoT Edge apparaat maken en inrichten met een virtuele TPM op een virtuele Linux-machine
 
@@ -21,10 +21,10 @@ Azure IoT Edge apparaten kunnen automatisch worden ingericht met behulp van de [
 
 In dit artikel leest u hoe u automatisch inrichten op een gesimuleerd IoT Edge apparaat kunt testen met de volgende stappen:
 
-* Maak een virtuele Linux virtuele machine (VM) in Hyper-V met een gesimuleerde Trusted Platform Module (TPM) voor hardwarebeveiliging.
-* Maak een exemplaar van de IoT Hub Device Provisioning Service (DPS).
-* Maken van een afzonderlijke inschrijving voor het apparaat
-* Installeren van de IoT Edge-runtime en verbind het apparaat met IoT Hub
+* Een virtuele Linux-machine (VM) maken in Hyper-V met een gesimuleerde Trusted Platform Module (TPM) voor hardware-beveiliging.
+* Maak een instantie van IoT Hub Device Provisioning Service (DPS).
+* Een afzonderlijke inschrijving voor het apparaat maken
+* Installeer de IoT Edge runtime en verbind het apparaat met IoT Hub
 
 > [!NOTE]
 > TPM 2,0 is vereist voor het gebruik van TPM-Attestation met DPS en kan alleen worden gebruikt voor het maken van afzonderlijke, niet-groeps registraties.
@@ -36,8 +36,8 @@ In dit artikel leest u hoe u automatisch inrichten op een gesimuleerd IoT Edge a
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Windows-ontwikkel computer waarop [Hyper-V is ingeschakeld](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). In dit artikel maakt gebruik van Windows 10 waarop een Ubuntu-Server-VM wordt uitgevoerd.
-* Een actieve IoT-Hub.
+* Een Windows-ontwikkel computer waarop [Hyper-V is ingeschakeld](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). In dit artikel wordt gebruikgemaakt van Windows 10 waarop een Ubuntu-Server-VM wordt uitgevoerd.
+* Een actieve IoT Hub.
 * Als u een gesimuleerde TPM, [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 of hoger, met de [' Desktop C++Development with '](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) -werk belasting ingeschakeld.
 
 ## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>Een virtuele Linux-machine maken met een virtuele TPM
@@ -46,7 +46,7 @@ In deze sectie maakt u een nieuwe virtuele Linux-machine in Hyper-V. U hebt deze
 
 ### <a name="create-a-virtual-switch"></a>Een virtuele switch maken
 
-Een virtuele switch kunt uw virtuele machine verbinding maken met een fysiek netwerk.
+Met een virtuele switch kan de virtuele machine verbinding maken met een fysiek netwerk.
 
 1. Open Hyper-V-beheer op de Windows-computer. 
 
@@ -56,13 +56,13 @@ Een virtuele switch kunt uw virtuele machine verbinding maken met een fysiek net
 
 4. Geef de nieuwe virtuele switch een naam, bijvoorbeeld **EdgeSwitch**. Zorg ervoor dat het verbindings type is ingesteld op **extern netwerk**en selecteer **OK**.
 
-5. Een pop-upvenster waarschuwt u dat de verbinding met het netwerk kan worden onderbroken. Selecteer **Ja** om door te gaan. 
+5. In een pop-upvenster wordt u gewaarschuwd dat de netwerk verbinding mogelijk wordt verstoord. Selecteer **Ja** om door te gaan. 
 
-Als u fouten ziet tijdens het maken van de nieuwe virtuele switch, zorg ervoor dat er geen andere switches van de ethernet-adapter gebruikmaakt, en dat er geen andere switches dezelfde naam gebruiken. 
+Als er fouten worden weer geven tijdens het maken van de nieuwe virtuele switch, moet u ervoor zorgen dat er geen andere switches gebruikmaken van de Ethernet-adapter en dat er geen andere switches dezelfde naam gebruiken. 
 
 ### <a name="create-virtual-machine"></a>Virtuele machine maken
 
-1. Download een schijfimage-bestand wilt gebruiken voor uw virtuele machine en deze lokaal opslaat. Bijvoorbeeld [Ubuntu Server](https://www.ubuntu.com/download/server). 
+1. Down load een schijf kopie bestand dat u voor de virtuele machine wilt gebruiken en sla het lokaal op. Bijvoorbeeld [Ubuntu Server](https://www.ubuntu.com/download/server). 
 
 2. In Hyper-V-beheer opnieuw selecteert u **nieuw** > **virtuele machine** in het menu **acties** .
 
@@ -74,7 +74,7 @@ Als u fouten ziet tijdens het maken van de nieuwe virtuele switch, zorg ervoor d
 
 4. Selecteer in de wizard **volt ooien** om de virtuele machine te maken.
 
-Het duurt een paar minuten aan de nieuwe virtuele machine maken. 
+Het kan een paar minuten duren voordat de nieuwe VM is gemaakt. 
 
 ### <a name="enable-virtual-tpm"></a>Virtuele TPM inschakelen
 
@@ -90,7 +90,7 @@ Zodra de VM is gemaakt, opent u de instellingen om de Virtual trusted platform m
 
 5. Klik op **OK**.  
 
-### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>Start de virtuele machine en TPM-gegevens verzamelen
+### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>De virtuele machine starten en TPM-gegevens verzamelen
 
 Bouw in de virtuele machine een hulp programma dat u kunt gebruiken om de **registratie-id** en **goedkeurings sleutel**van het apparaat op te halen.
 
@@ -143,19 +143,19 @@ Bouw op uw apparaat een hulp programma dat u kunt gebruiken om de inrichtings ge
    sudo ./tpm_device_provision
    ```
 
-1. Kopieer de waarden voor de **registratie-id** en **goedkeurings sleutel**. Deze waarden kunt u een afzonderlijke inschrijving voor uw apparaat in DPS maken.
+1. Kopieer de waarden voor de **registratie-id** en **goedkeurings sleutel**. U gebruikt deze waarden voor het maken van een afzonderlijke inschrijving voor uw apparaat in DPS.
 
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>De IoT Hub Device Provisioning Service instellen
 
-Maak een nieuw exemplaar van de IoT Hub Device Provisioning Service in Azure en een koppeling naar uw IoT hub. U kunt de instructies voor [het instellen van de IOT hub DPS](../iot-dps/quick-setup-auto-provision.md)volgen.
+Maak een nieuw exemplaar van de IoT Hub Device Provisioning Service in Azure en koppel deze aan uw IoT-hub. U kunt de instructies voor [het instellen van de IOT hub DPS](../iot-dps/quick-setup-auto-provision.md)volgen.
 
-Nadat u de Device Provisioning Service hebt uitgevoerd, kopieert u de waarde van **id-bereik** van de pagina overzicht. U gebruikt deze waarde bij het configureren van de IoT Edge-runtime. 
+Nadat u de Device Provisioning Service hebt uitgevoerd, kopieert u de waarde van **id-bereik** van de pagina overzicht. U gebruikt deze waarde bij het configureren van de IoT Edge runtime. 
 
-## <a name="create-a-dps-enrollment"></a>Maken van een DPS-inschrijving
+## <a name="create-a-dps-enrollment"></a>Een DPS-inschrijving maken
 
-Ophalen van de Inrichtingsgegevens van uw virtuele machine en maakt u een afzonderlijke inschrijving in Device Provisioning Service. 
+Haal de inrichtings gegevens op van de virtuele machine en gebruik deze om een afzonderlijke registratie in Device Provisioning Service te maken. 
 
-Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om een **eerste dubbele toestand**van het apparaat te declareren. U kunt in de apparaatdubbel labels instellen om apparaten te groeperen door elke meetwaarde die u nodig hebt in uw oplossing, zoals regio, omgeving, locatie, of het apparaat. Deze tags worden gebruikt voor het maken van [automatische implementaties](how-to-deploy-monitor.md). 
+Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om een **eerste dubbele toestand**van het apparaat te declareren. In het dubbele apparaat kunt u Tags instellen om apparaten te groeperen op elke gewenste metrische waarde in uw oplossing, zoals regio, omgeving, locatie of apparaattype. Deze tags worden gebruikt voor het maken van [automatische implementaties](how-to-deploy-monitor.md). 
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar uw exemplaar van IOT hub Device Provisioning Service. 
 
@@ -174,9 +174,9 @@ Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om een **eerste 
 
    4. Kies de gekoppelde **IOT hub** waarmee u uw apparaat wilt verbinden. U kunt meerdere hubs kiezen en het apparaat wordt toegewezen aan een van deze op basis van het geselecteerde toewijzings beleid. 
 
-   5. Als u wilt, moet u een ID opgeven voor uw apparaat. Apparaat-id's kunt u richten op een afzonderlijk apparaat voor de implementatie van beleidsmodule. Als u geen apparaat-ID opgeeft, wordt de registratie-ID gebruikt.
+   5. Geef een ID op voor uw apparaat als u wilt. U kunt apparaat-Id's gebruiken om een afzonderlijk apparaat te richten op het implementeren van een module. Als u geen apparaat-ID opgeeft, wordt de registratie-ID gebruikt.
 
-   6. Voeg indien gewenst een tag-waarde toe aan de **eerste dubbele toestand** van het apparaat. U kunt tags voor doelgroepen van apparaten gebruiken voor de implementatie van beleidsmodule. Bijvoorbeeld: 
+   6. Voeg indien gewenst een tag-waarde toe aan de **eerste dubbele toestand** van het apparaat. U kunt tags gebruiken om groepen apparaten te richten op het implementeren van modules. Bijvoorbeeld: 
 
       ```json
       {
@@ -193,54 +193,54 @@ Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om een **eerste 
 
 Nu een inschrijving voor dit apparaat bestaat, kan de IoT Edge runtime automatisch het apparaat inrichten tijdens de installatie. 
 
-## <a name="install-the-iot-edge-runtime"></a>IoT Edge-runtime installeren
+## <a name="install-the-iot-edge-runtime"></a>De IoT Edge runtime installeren
 
-De IoT Edge-runtime wordt op alle IoT Edge-apparaten geïmplementeerd. De onderdelen in containers worden uitgevoerd, en kunnen u extra containers implementeren op het apparaat, zodat u kunt de code aan de rand uitvoeren. IoT Edge-runtime installeren op uw virtuele machine. 
+De IoT Edge-runtime wordt op alle IoT Edge-apparaten geïmplementeerd. De onderdelen worden in containers uitgevoerd en bieden u de mogelijkheid om extra containers op het apparaat te implementeren, zodat u code aan de rand kunt uitvoeren. Installeer de IoT Edge runtime op uw virtuele machine. 
 
-Ken uw DPS **-id-bereik** en **registratie-id** van het apparaat aan voordat u begint met het artikel dat overeenkomt met uw apparaattype. Als u de voor beeld-Ubuntu-Server hebt geïnstalleerd, gebruikt u de **x64** -instructies. Zorg ervoor dat u de IoT Edge-runtime voor het inrichten van automatische, niet handmatig configureren. 
+Ken uw DPS **-id-bereik** en **registratie-id** van het apparaat aan voordat u begint met het artikel dat overeenkomt met uw apparaattype. Als u de voor beeld-Ubuntu-Server hebt geïnstalleerd, gebruikt u de **x64** -instructies. Zorg ervoor dat u de IoT Edge-runtime configureert voor automatisch, niet hand matig, inrichten. 
 
 [Installeer de Azure IoT Edge runtime op Linux](how-to-install-iot-edge-linux.md)
 
-## <a name="give-iot-edge-access-to-the-tpm"></a>IoT Edge toegang geven tot de TPM
+## <a name="give-iot-edge-access-to-the-tpm"></a>IoT Edge toegang tot de TPM geven
 
-In de volgorde voor de IoT Edge-runtime voor het automatisch inrichten van uw apparaat, moet deze toegang hebben tot de TPM. 
+Om ervoor te zorgen dat de IoT Edge-runtime automatisch uw apparaat inricht, moet het toegang tot de TPM hebben. 
 
-U kunt TPM-toegang verlenen aan de IoT Edge-runtime door de systeem instellingen te overschrijven zodat de **iotedge** -service bevoegdheden heeft voor het hoofd niveau. Als u niet wilt en de service-bevoegdheden te verhogen, kunt u ook de volgende stappen gebruiken handmatig TPM om toegang te bieden. 
+U kunt TPM-toegang verlenen aan de IoT Edge-runtime door de systeem instellingen te overschrijven zodat de **iotedge** -service bevoegdheden heeft voor het hoofd niveau. Als u de service bevoegdheden niet wilt verhogen, kunt u ook de volgende stappen gebruiken om de toegang tot de TPM hand matig te bieden. 
 
-1. Het pad naar de TPM-hardware-module vinden op uw apparaat en sla deze op als een lokale variabele. 
+1. Zoek het bestandspad naar de TPM hardware-module op het apparaat en sla het bestand op als een lokale variabele. 
 
    ```bash
    tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
    ```
 
-2. Maak een nieuwe regel waarmee wordt de IoT Edge runtime toegang tot tpm0. 
+2. Maak een nieuwe regel waarmee de IoT Edge runtime toegang krijgt tot tpm0. 
 
    ```bash
    sudo touch /etc/udev/rules.d/tpmaccess.rules
    ```
 
-3. Open het regelbestand. 
+3. Open het regel bestand. 
 
    ```bash
    sudo nano /etc/udev/rules.d/tpmaccess.rules
    ```
 
-4. Kopieer de volgende toegang tot gegevens in het regelbestand. 
+4. Kopieer de volgende toegangs gegevens naar het regel bestand. 
 
    ```input 
    # allow iotedge access to tpm0
    KERNEL=="tpm0", SUBSYSTEM=="tpm", GROUP="iotedge", MODE="0660"
    ```
 
-5. Opslaan en sluiten van het bestand. 
+5. Sla het bestand op en sluit het af. 
 
-6. Activeer de udev-systeem om te evalueren van de nieuwe regel. 
+6. Activeer het udev-systeem om de nieuwe regel te evalueren. 
 
    ```bash
    /bin/udevadm trigger $tpm
    ```
 
-7. Controleer of dat de regel is toegepast.
+7. Controleer of de regel is toegepast.
 
    ```bash
    ls -l /dev/tpm0
@@ -252,47 +252,47 @@ U kunt TPM-toegang verlenen aan de IoT Edge-runtime door de systeem instellingen
    crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
 
-   Als u niet ziet dat de juiste machtigingen zijn toegepast, probeer het opnieuw opstarten van uw computer om te vernieuwen udev. 
+   Als u niet ziet dat de juiste machtigingen zijn toegepast, start u de computer opnieuw op om udev te vernieuwen. 
 
-## <a name="restart-the-iot-edge-runtime"></a>Opnieuw opstarten van de IoT Edge-runtime
+## <a name="restart-the-iot-edge-runtime"></a>De IoT Edge-runtime opnieuw starten
 
-IoT Edge-runtime opnieuw zodat deze neemt alle configuratiewijzigingen die u hebt aangebracht op het apparaat. 
+Start de IoT Edge-runtime opnieuw zodat alle configuratie wijzigingen die u op het apparaat hebt aangebracht, worden opgehaald. 
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-Controleer of de IoT Edge-runtime wordt uitgevoerd. 
+Controleer of de IoT Edge runtime wordt uitgevoerd. 
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-Als u fouten bij het inrichten ziet, kan het zijn dat de wijzigingen in de configuratie zijn niet doorgevoerd nog. Probeer opnieuw de IoT Edge-daemon opnieuw op te starten. 
+Als er inrichtings fouten worden weer gegeven, is het mogelijk dat de configuratie wijzigingen nog niet van kracht zijn. Probeer de IoT Edge-daemon opnieuw op te starten. 
 
    ```bash
    sudo systemctl daemon-reload
    ```
    
-Of probeer het opnieuw opstarten van uw virtuele machine om te zien als de wijzigingen van kracht op een nieuwe start. 
+Of probeer de virtuele machine opnieuw op te starten om te controleren of de wijzigingen van kracht worden op een nieuwe start. 
 
-## <a name="verify-successful-installation"></a>Controleer of geslaagde installatie
+## <a name="verify-successful-installation"></a>Geslaagde installatie controleren
 
-Als de runtime is gestart, kunt u met ingang van uw IoT-Hub en zien dat het nieuwe apparaat automatisch is ingericht. Uw apparaat is nu gereed voor het IoT Edge-modules uitvoeren. 
+Als de runtime is gestart, kunt u naar uw IoT Hub gaan en zien dat het nieuwe apparaat automatisch is ingericht. Uw apparaat is nu klaar om IoT Edge-modules uit te voeren. 
 
-Controleer de status van de IoT Edge-Daemon.
+Controleer de status van de IoT Edge-daemon.
 
 ```cmd/sh
 systemctl status iotedge
 ```
 
-Controleer de daemon-Logboeken.
+Raadpleeg daemon-Logboeken.
 
 ```cmd/sh
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Lijst met modules.
+Een lijst met actieve modules weer geven.
 
 ```cmd/sh
 iotedge list
@@ -302,4 +302,4 @@ U kunt controleren of de afzonderlijke registratie die u hebt gemaakt in Device 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het inschrijvingsproces Device Provisioning Service kunt u instellen de apparaat-ID en het apparaat dubbele tags op hetzelfde moment als u het nieuwe apparaat inrichten. Deze waarden kunt u afzonderlijke apparaten of groepen van apparaten met behulp van automatische Apparaatbeheer. Meer informatie over [het implementeren en bewaken van IOT Edge modules op schaal met behulp van de Azure Portal](how-to-deploy-monitor.md) of [met behulp van Azure cli](how-to-deploy-monitor-cli.md).
+Met het inschrijvings proces voor Device Provisioning Service kunt u de apparaat-ID en de dubbele Tags van het apparaat instellen op hetzelfde moment als u het nieuwe apparaat inricht. U kunt deze waarden gebruiken om afzonderlijke apparaten of groepen apparaten te richten met behulp van automatische Apparaatbeheer. Meer informatie over [het implementeren en bewaken van IOT Edge modules op schaal met behulp van de Azure Portal](how-to-deploy-monitor.md) of [met behulp van Azure cli](how-to-deploy-monitor-cli.md).

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279700"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664944"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Configuratie handleiding voor containers Health Monitor Azure Monitor
 
@@ -35,7 +35,7 @@ De algemene status van een bepaald object wordt bepaald aan de hand van de statu
 
 ## <a name="types-of-monitors"></a>Typen monitors
 
-|Bewaken | Beschrijving | 
+|Controleren | Beschrijving | 
 |--------|-------------|
 | Unit-monitor |Een unit-monitor meet een aspect van een resource of toepassing. Dit kan een prestatie meter item controleren om de prestaties van de resource of de beschik baarheid te bepalen. |
 |Aggregaatmonitor | Aggregatie bewaakt meerdere monitors om één status geaggregeerde status te bieden. Eenheids monitors worden doorgaans geconfigureerd onder een bepaalde aggregaatmonitor. Een knooppunt aggregatie kan bijvoorbeeld de status van het CPU-gebruik van het knoop punt, het geheugen gebruik en de knooppunt status samen vouwen.
@@ -82,7 +82,7 @@ Azure Monitor voor containers bevat een aantal scenario's voor sleutel bewaking 
 |Knoop punten (bovenliggend knoop punt groep) |Dit is een geaggregeerde monitor van alle knooppunt groepen. De status is gebaseerd op de slechtste status van de onderliggende monitors (dat wil zeggen, de knooppunt Pools die aanwezig zijn in het cluster). |Slechtste van |
 |Cluster (bovenliggend knoop punt/<br> Kubernetes-infra structuur) |Dit is de bovenliggende monitor die overeenkomt met de status van de onderliggende monitor met de slechtste status, dat wil zeggen kubernetes-infra structuur en-knoop punten. |Slechtste van |
 |Kubernetes-infra structuur |Deze monitor rapporteert de gecombineerde integriteits status van de onderdelen van de beheerde infra structuur van het cluster. de status wordt berekend als ' slechtste ' van de onderliggende monitor statussen, d.w.z. uitvoeren-systeem werk belastingen en API-server status. |Slechtste van|
-|Systeem belasting |Deze monitor rapporteert de status van een uitvoeren-systeem werk belasting. Deze monitor komt overeen met de status van de onderliggende monitor met de slechtste status, het verschil **in de status monitor Ready** en de containers in de werk belasting). |Slechtste van |
+|Systeem belasting |Deze monitor rapporteert de status van een uitvoeren-systeem werk belasting. Deze monitor komt overeen met de status van de onderliggende monitor met de slechtste status, dat wil zeggen de meest gunstige **status** (monitor en de containers in de werk belasting). |Slechtste van |
 |Container |Deze monitor rapporteert de algehele status van een container in een bepaalde werk belasting. Deze monitor komt overeen met de status van de onderliggende monitor met de slechtste status, dat wil zeggen het **CPU-gebruik** en de monitors voor **geheugen gebruik** . |Slechtste van |
 
 ## <a name="next-steps"></a>Volgende stappen

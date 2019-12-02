@@ -1,26 +1,26 @@
 ---
-title: Door de klant beheerde sleutels configureren voor het Azure Storage versleutelen van Power shell
+title: Door de klant beheerde sleutels met Azure Key Vault met behulp van Power shell-Azure Storage configureren
 description: Meer informatie over het gebruik van Power shell voor het configureren van door de klant beheerde sleutels voor Azure Storage versleuteling. Door de klant beheerde sleutels bieden u de mogelijkheid om toegangs beheer te maken, te draaien, uit te scha kelen en in te trekken.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/09/2019
+ms.topic: how-to
+ms.date: 11/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 30fed5a75e368e9d87da54d4c75e6f69759813e7
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: bd723787d9cea2d3b9d81ae9db63c70a21190854
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249275"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666219"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Door de klant beheerde sleutels configureren voor het Azure Storage versleutelen van Power shell
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-powershell"></a>Door de klant beheerde sleutels configureren voor Azure Storage met behulp van Power shell
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-In dit artikel wordt beschreven hoe u een sleutel kluis kunt configureren met door de klant beheerde sleutels met behulp van Power shell.
+In dit artikel wordt beschreven hoe u een Azure Key Vault configureert met door de klant beheerde sleutels met behulp van Power shell. Voor informatie over het maken van een sleutel kluis met behulp van Azure CLI, Zie [Quick Start: een geheim instellen en ophalen uit Azure Key Vault met behulp van Power shell](../../key-vault/quick-create-powershell.md).
 
 > [!IMPORTANT]
 > Het gebruik van door de klant beheerde sleutels met Azure Storage versleuteling vereist dat er twee eigenschappen worden ingesteld op de sleutel kluis, de functie **voorlopig verwijderen** en **niet leeg**te maken. Deze eigenschappen zijn niet standaard ingeschakeld. Als u deze eigenschappen wilt inschakelen, gebruikt u Power shell of Azure CLI.
@@ -96,5 +96,5 @@ Wanneer u een nieuwe versie van een sleutel maakt, moet u het opslag account bij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.md) 
+- [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.md)
 - [Wat is Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

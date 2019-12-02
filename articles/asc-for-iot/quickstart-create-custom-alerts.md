@@ -1,6 +1,6 @@
 ---
 title: 'Snelstartgids: aangepaste waarschuwingen voor Azure Security Center voor IoT maken'
-description: In deze Quick Start kunt u aangepaste waarschuwingen voor Azure Security Center voor IoT maken en toewijzen.
+description: Meer informatie over het maken en toewijzen van waarschuwingen voor aangepaste apparaten voor de Azure Security Center voor IoT-beveiligings service.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: eca5d69efb04cf8210b0b2aa502bcee5cd4f5264
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 992dd7b85dee0774b8388ae22fe18377ca9e5691
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904125"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664826"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Snelstartgids: aangepaste waarschuwingen maken
 
@@ -82,7 +82,7 @@ Gebruik beveiligings groepen om uw apparaten in logische categorieën te groeper
 De volgende tabel bevat een overzicht van de waarschuwingen die beschikbaar zijn voor aanpassing.
 
 
-| Severity | Naam | Gegevens bron | Beschrijving | Voorgestelde herstel|
+| Ernst | Naam | Gegevens bron | Beschrijving | Voorgestelde herstel|
 |---|---|---|---|---|
 | Laag      | Aangepaste waarschuwing: aantal berichten van de Cloud naar het apparaat in het AMQP-protocol valt buiten het toegestane bereik          | IoT Hub     | Het aantal Cloud-naar-apparaat-berichten (AMQP-Protocol) binnen een bepaald tijd venster ligt buiten het huidige geconfigureerde en toegestane bereik.||
 | Laag      | Aangepaste waarschuwing: aantal afgewezen Cloud-naar-apparaat-berichten in het AMQP-protocol valt buiten het toegestane bereik | IoT Hub     | Het aantal Cloud-naar-apparaat-berichten (AMQP-Protocol) dat door het apparaat is afgewezen, binnen een bepaald tijd venster valt buiten het huidige geconfigureerde en toegestane bereik.||

@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 5cc473635543a22fd7e7223f4a5715f78457a897
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5a8e641c8a1b29d657fe8b0eabf7657ab5973516
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561754"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666032"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisch schalen van Azure HDInsight-clusters
 
 > [!Important]
-> De functie voor automatisch schalen werkt alleen voor Spark-, Hive-en MapReduce-clusters die zijn gemaakt na 8 mei 2019. 
+> De functie voor automatisch schalen werkt alleen voor Spark-, Hive-, LLAP-en HBase-clusters die zijn gemaakt na 8 mei 2019. 
 
 Met de functie voor automatisch schalen van Azure HDInsight wordt het aantal worker-knoop punten in een cluster omhoog en omlaag geschaald. Andere typen knoop punten in het cluster kunnen momenteel niet worden geschaald.  Tijdens het maken van een nieuw HDInsight-cluster kunnen er mini maal en Maxi maal aantal worker-knoop punten worden ingesteld. Automatisch schalen bewaakt vervolgens de resource vereisten van de analyse belasting en schaalt het aantal worker-knoop punten omhoog of omlaag. Er zijn geen extra kosten verbonden aan deze functie.
 

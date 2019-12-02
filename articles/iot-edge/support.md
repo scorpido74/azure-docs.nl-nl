@@ -1,6 +1,6 @@
 ---
-title: Ondersteunde besturingssystemen, container-engines - Azure IoT Edge | Microsoft Docs
-description: Informatie over welke besturingssystemen voor de Azure IoT Edge-daemon en de runtime en de ondersteunde container-engines voor uw productieapparaten kunt uitvoeren
+title: Ondersteunde besturings systemen, container engines-Azure IoT Edge
+description: Meer informatie over de besturings systemen die de Azure IoT Edge daemon en runtime kunnen uitvoeren en ondersteunde container engines voor uw productie apparaten
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,28 +8,28 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0fe4a13a33b6d93266d68e632864e0b61a7eaf29
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0d6b5e826720cf51d38b3bc3c2b87d274a2ea816
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452525"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665879"
 ---
-# <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge ondersteunde systemen
+# <a name="azure-iot-edge-supported-systems"></a>Ondersteunde systemen Azure IoT Edge
 
 In dit artikel vindt u informatie over welke systemen en onderdelen worden ondersteund door IoT Edge, of dat nu officieel of in de preview-versie is. 
 
 Als u problemen ondervindt bij het gebruik van de Azure IoT Edge-service, zijn er verschillende manieren om ondersteuning te zoeken. Probeer een van de volgende kanalen voor ondersteuning:
 
-**Fouten rapporteren** : het meren deel van de ontwikkeling dat in het Azure IOT Edge product plaatsvindt, vindt plaats in het IOT Edge open-source project. U kunt fouten melden op de [pagina kwesties](https://github.com/azure/iotedge/issues) van het project. Oplossingen maken snel mogelijk naar productupdates van het project in.
+**Fouten rapporteren** : het meren deel van de ontwikkeling dat in het Azure IOT Edge product plaatsvindt, vindt plaats in het IOT Edge open-source project. U kunt fouten melden op de [pagina kwesties](https://github.com/azure/iotedge/issues) van het project. Oplossingen maken snel hun eigen werk van het project in op product updates.
 
 **Klanten ondersteuning van micro soft** : gebruikers die een [ondersteunings plan](https://azure.microsoft.com/support/plans/) hebben, kunnen het micro soft Customer Support-team benaderen door rechtstreeks vanuit de [Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac)een ondersteunings ticket te maken.
 
 **Functie aanvragen** – het Azure IOT Edge product traceert functie aanvragen via de [pagina gebruikers spraak](https://feedback.azure.com/forums/907045-azure-iot-edge)van het product.
 
-## <a name="container-engines"></a>Container-engines
+## <a name="container-engines"></a>Container engines
 
-Azure IoT Edge-modules worden geïmplementeerd als containers, zodat IoT Edge een container Engine nodig hebt om deze te starten. Microsoft biedt een container-engine, moby-engine, om te voldoen aan deze vereiste. Deze container engine is gebaseerd op het open-source project Moby. Docker CE- en Docker EE zijn andere populaire container-engines. Ze zijn ook gebaseerd op het open-source project Moby en zijn compatibel met Azure IoT Edge. Micro soft biedt best mogelijke ondersteuning voor systemen die gebruikmaken van deze container motoren; Micro soft kan echter geen oplossingen verzenden voor problemen. Microsoft adviseert om deze reden moby-engine op productiesystemen.
+Azure IoT Edge-modules worden geïmplementeerd als containers, zodat IoT Edge een container Engine nodig hebt om deze te starten. Micro soft biedt een container engine, Moby-engine, om aan deze vereiste te voldoen. Deze container engine is gebaseerd op het open-source project Moby. Docker CE en docker EE zijn andere populaire container engines. Ze zijn ook gebaseerd op het open-source project Moby en zijn compatibel met Azure IoT Edge. Micro soft biedt best mogelijke ondersteuning voor systemen die gebruikmaken van deze container motoren; Micro soft kan echter geen oplossingen verzenden voor problemen. Daarom raadt micro soft aan om Moby-engine te gebruiken op productie systemen.
 
 <br>
 <center>
@@ -38,13 +38,13 @@ Azure IoT Edge-modules worden geïmplementeerd als containers, zodat IoT Edge ee
 </center>
 
 ## <a name="operating-systems"></a>Besturingssystemen
-Azure IoT Edge wordt uitgevoerd op de meeste besturings systemen waarop containers kunnen worden uitgevoerd. al deze systemen worden echter niet gelijk ondersteund. Besturingssystemen zijn gegroepeerd in lagen, waarbij het niveau van ondersteuning voor gebruikers kunnen verwachten.
+Azure IoT Edge wordt uitgevoerd op de meeste besturings systemen waarop containers kunnen worden uitgevoerd. al deze systemen worden echter niet gelijk ondersteund. Besturings systemen zijn gegroepeerd in lagen die het niveau van ondersteunings gebruikers vertegenwoordigen.
 * Systemen met laag 1 worden ondersteund. Voor systemen met laag 1, micro soft:
     * heeft dit besturings systeem in geautomatiseerde tests
-    * biedt de installatiepakketten van deze
+    * bevat installatie pakketten voor deze
 * Systemen uit de laag 2 zijn compatibel met Azure IoT Edge en kunnen relatief eenvoudig worden gebruikt. Voor laag 2-systemen:
     * Micro soft heeft ad hoc tests uitgevoerd op de platforms of weet of een partner Azure IoT Edge op het platform heeft uitgevoerd
-    * Installatiepakketten voor andere platforms werken op deze platforms
+    * Installatie pakketten voor andere platformen kunnen op deze platforms worden uitgevoerd
     
 De familie van het hostbesturingssysteem moet altijd overeenkomen met de familie van het gast besturingssysteem dat in de container van een module wordt gebruikt. Met andere woorden, u kunt alleen Linux-containers gebruiken op Linux-en Windows-containers in Windows. Wanneer u Windows gebruikt, worden alleen geïsoleerde containers verwerken ondersteund, niet geïsoleerde Hyper-V-containers.  
 
@@ -96,7 +96,7 @@ De systemen die in de volgende tabel worden vermeld, worden beschouwd als compat
 sudo apt-get install libssl1.0.2
 ```
 
-## <a name="virtual-machines"></a>Virtuele machines
+## <a name="virtual-machines"></a>Virtual Machines
 Azure IoT Edge kunnen worden uitgevoerd op virtuele machines. Het gebruik van een virtuele machine als een IoT Edge apparaat is gebruikelijk wanneer klanten bestaande infra structuur willen uitbreiden met Edge Intelligence. De serie van het VM-besturings systeem van de host moet overeenkomen met de familie van het gast besturingssysteem dat in de container van een module wordt gebruikt. Deze vereiste is hetzelfde als wanneer Azure IoT Edge rechtstreeks op een apparaat wordt uitgevoerd. Azure IoT Edge is neutraal van de onderliggende technologie en werkt in Vm's op basis van platforms, zoals Hyper-V en vSphere.
 
 <br>

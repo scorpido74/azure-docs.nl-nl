@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 411710280a631d341adeb55bc4b587a613ee3c4c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643624"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664060"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ ms.locfileid: "73643624"
 1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 1. Gebruik het filter voor **adres lijst en abonnementen** in het bovenste menu om de map te selecteren die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
-1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
+1. Selecteer op de pagina overzicht de optie **identiteits ervaring-Framework** in het deel venster **beleid** .
 
 ### <a name="create-the-signing-key"></a>De handtekening sleutel maken
 
@@ -93,7 +93,7 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidi
 1. Voer bij **naam**`IdentityExperienceFramework`in.
 1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**.
 1. Onder **omleidings-URI**selecteert u **Web**en voert u `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`in, waarbij `your-tenant-name` de domein naam van de Azure AD B2C Tenant is.
-1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerders toestemming voor OpenID Connect-en offline_access-machtigingen* in.
+1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerder toestemming geven aan openid connect-en offline_access machtigingen* in.
 1. Selecteer **Registreren**.
 1. Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
 
@@ -130,7 +130,7 @@ Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**.
 1. Gebruik onder **omleidings-URI**de vervolg keuzelijst om een **open bare client/systeem eigen (mobiele & bureau blad)** te selecteren.
 1. Voer voor **omleidings-URI**`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`in, waarbij `your-tenant-name` uw Azure AD B2C Tenant is.
-1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerders toestemming voor OpenID Connect-en offline_access-machtigingen* in.
+1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerder toestemming geven aan openid connect-en offline_access machtigingen* in.
 1. Selecteer **Registreren**.
 1. Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
 
@@ -146,7 +146,7 @@ Ken nu machtigingen toe aan het API-bereik dat u eerder hebt weer gegeven in de 
 1. Selecteer onder **beheren**de optie **API-machtigingen**.
 1. Selecteer onder **geconfigureerde machtigingen** **de optie een machtiging toevoegen**.
 1. Selecteer het tabblad **mijn api's** en selecteer vervolgens de toepassing **IdentityExperienceFramework** .
-1. Selecteer onder **machtiging**het **user_impersonation** -bereik dat u eerder hebt gedefinieerd.
+1. Selecteer onder **machtiging**het **user_impersonation** bereik dat u eerder hebt gedefinieerd.
 1. Selecteer **machtigingen toevoegen**. Wacht een paar minuten voordat u verdergaat met de volgende stap.
 1. Selecteer **beheerder toestemming geven voor (uw Tenant naam)** .
 1. Selecteer het momenteel aangemelde Administrator-account of Meld u aan met een account in uw Azure AD B2C-Tenant waaraan ten minste de rol van *Cloud toepassings beheerder* is toegewezen.
@@ -213,7 +213,7 @@ Wanneer u de bestanden uploadt, voegt Azure het voor voegsel toe `B2C_1A_`.
 
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
-1. Onder **aangepast beleid**selecteert u **B2C_1A_signup_signin**.
+1. Selecteer **B2C_1A_signup_signin**onder **aangepast beleid**.
 1. Selecteer voor **Select-toepassing** op de pagina overzicht van het aangepaste beleid de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd.
 1. Zorg ervoor dat de **antwoord-URL** is `https://jwt.ms`.
 1. Selecteer **nu uitvoeren**.
@@ -233,7 +233,7 @@ Wanneer u de bestanden uploadt, voegt Azure het voor voegsel toe `B2C_1A_`.
    ```
 
 1. Upload het bestand *TrustFrameworkExtensions. XML* naar uw Tenant.
-1. Onder **aangepast beleid**selecteert u **B2C_1A_signup_signin**.
+1. Selecteer **B2C_1A_signup_signin**onder **aangepast beleid**.
 1. Selecteer **nu uitvoeren** en selecteer Facebook om u aan te melden met Facebook en het aangepaste beleid te testen.
 
 ## <a name="next-steps"></a>Volgende stappen

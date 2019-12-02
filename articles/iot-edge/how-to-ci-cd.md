@@ -1,6 +1,6 @@
 ---
-title: Continue integratie en continue implementatie - Azure IoT Edge | Microsoft Docs
-description: Instellen van continue integratie en continue implementatie - Azure IoT Edge met Azure DevOps, Azure-pijplijnen
+title: Continue integratie & doorlopende implementatie-Azure IoT Edge
+description: Continue integratie en doorlopende implementatie instellen-Azure IoT Edge met Azure DevOps, Azure-pijp lijnen
 author: shizn
 manager: philmea
 ms.author: xshi
@@ -8,18 +8,18 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 85f77d1132af63681ee92cfd2bde82a71d8ed999
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 463de1f49ad8fd21c355395bec3a55d9d40474e6
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457239"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666355"
 ---
-# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continue integratie en continue implementatie voor Azure IoT Edge
+# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continue integratie en continue implementatie naar Azure IoT Edge
 
 U kunt eenvoudig DevOps met uw Azure IoT Edge-toepassingen met de ingebouwde Azure IoT Edge taken in azure-pijp lijnen. In dit artikel wordt beschreven hoe u de functies continue integratie en continue implementatie van Azure-pijp lijnen kunt gebruiken om toepassingen snel en efficiënt te bouwen, te testen en te implementeren op uw Azure IoT Edge. 
 
-![Diagram - CI en CD vertakkingen voor ontwikkeling en productie](./media/how-to-ci-cd/cd.png)
+![Diagram-CI-en CD-vertakkingen voor ontwikkeling en productie](./media/how-to-ci-cd/cd.png)
 
 In dit artikel leert u hoe u de ingebouwde Azure IoT Edge taken voor Azure-pijp lijnen kunt gebruiken om twee pijp lijnen te maken voor uw IoT Edge oplossing. Er kunnen vier acties worden gebruikt in de Azure IoT Edge taken.
    - **Azure IOT Edge-build-installatie kopieën van de module maken** uw IOT Edge oplossings code en bouwt de container installatie kopieën.
@@ -67,7 +67,7 @@ In deze sectie maakt u een nieuwe build-pijp lijn. Configureer de pijp lijn zo d
 
    2. Selecteer **lege taak** in plaats van een sjabloon. 
 
-      ![Beginnen met een lege proces](./media/how-to-ci-cd/start-with-empty.png)
+      ![Beginnen met een leeg proces](./media/how-to-ci-cd/start-with-empty.png)
 
 4. Zodra de pijp lijn is gemaakt, wordt u naar de pijplijn editor geleid. Kies in de pijplijn beschrijving de juiste agent pool op basis van uw doel platform: 
     
@@ -77,7 +77,7 @@ In deze sectie maakt u een nieuwe build-pijp lijn. Configureer de pijp lijn zo d
 
    * Als u uw modules in platform arm32v7 of arm64 voor Linux-containers wilt maken, moet u [zelf-hostende agent instellen in Linux](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
     
-     ![Build-agentpool configureren](./media/how-to-ci-cd/configure-env.png)
+     ![Groep bouwen agent configureren](./media/how-to-ci-cd/configure-env.png)
 
 5. Uw pijp lijn wordt vooraf geconfigureerd met een taak genaamd **Agent taak 1**. Selecteer het plus teken ( **+** ) om drie taken toe te voegen aan de taak: **Azure IOT Edge** twee maal, **Kopieer de bestanden** eenmaal en publiceer de **Build-artefacten** eenmaal. (Beweeg de muis aanwijzer over de naam van elke taak om de knop **toevoegen** te zien.)
 
@@ -121,7 +121,7 @@ In deze sectie maakt u een nieuwe build-pijp lijn. Configureer de pijp lijn zo d
 
 10. Open het tabblad **Triggers** en schakel het selectie vakje in om **continue integratie in te scha kelen**. Zorg ervoor dat de vertakking met uw code is opgenomen.
 
-    ![Trigger continue integratie inschakelen](./media/how-to-ci-cd/configure-trigger.png)
+    ![Trigger voor continue integratie inschakelen](./media/how-to-ci-cd/configure-trigger.png)
 
 11. Sla de nieuwe build-pijp lijn op met de knop **Opslaan** .
 
@@ -134,11 +134,11 @@ Een nieuwe pijp lijn maken en een nieuw stadium toevoegen
 
 1. Klik op het tabblad **releases** op **+ nieuwe pijp lijn**. Als u al release pijplijnen hebt, kiest u de knop **+ Nieuw** en selecteert u **+ nieuwe release pijplijn**.  
 
-    ![Release-pijplijn toevoegen](./media/how-to-ci-cd/add-release-pipeline.png)
+    ![Release pijplijn toevoegen](./media/how-to-ci-cd/add-release-pipeline.png)
 
 2. Wanneer u wordt gevraagd om een sjabloon te selecteren, kiest u om te beginnen met een **lege taak**.
 
-    ![Beginnen met een leeg project](./media/how-to-ci-cd/start-with-empty-job.png)
+    ![Beginnen met een lege taak](./media/how-to-ci-cd/start-with-empty-job.png)
 
 3. Uw nieuwe release pijplijn wordt geïnitialiseerd met één fase, de naam **fase 1**. Wijzig de naam fase 1 in **dev** en behandel deze als een test omgeving. Doorgaans hebben doorlopende implementatie pijplijnen meerdere fasen, waaronder **ontwikkeling**, **fase ring** en **productie**. U kunt meer maken op basis van uw DevOps-oefening. Sluit het venster met fase details zodra de naam ervan is gewijzigd. 
 
@@ -190,24 +190,24 @@ Een nieuwe pijp lijn maken en een nieuw stadium toevoegen
     * **IOT hub naam**: Selecteer uw IOT-hub. 
     * **Kies één of meerdere**apparaten: Kies of u wilt dat de release pijplijn op één apparaat of op meerdere apparaten wordt geïmplementeerd. 
       * Als u op één apparaat implementeert, voert u de **IOT edge apparaat-id**in. 
-      * Als u implementeert op meerdere apparaten, geeft u de **voor waarde voor**het apparaat doel op. De doel voorwaarde is een filter dat overeenkomt met een set IoT Edge apparaten in IoT Hub. Als u wilt de apparaat-labels gebruiken als de voorwaarde, moet u voor het bijwerken van de bijbehorende apparaten Tags met dubbele voor IoT Hub-apparaat. Werk de **IOT Edge implementatie-id** en **IOT Edge implementatie prioriteit** bij in de geavanceerde instellingen. Zie [inzicht IOT Edge automatische implementaties](module-deployment-monitoring.md)voor meer informatie over het maken van een implementatie voor meerdere apparaten.
+      * Als u implementeert op meerdere apparaten, geeft u de **voor waarde voor**het apparaat doel op. De doel voorwaarde is een filter dat overeenkomt met een set IoT Edge apparaten in IoT Hub. Als u Device Tags als voor waarde wilt gebruiken, moet u de labels van de bijbehorende apparaten bijwerken met IoT Hub apparaat twee. Werk de **IOT Edge implementatie-id** en **IOT Edge implementatie prioriteit** bij in de geavanceerde instellingen. Zie [inzicht IOT Edge automatische implementaties](module-deployment-monitoring.md)voor meer informatie over het maken van een implementatie voor meerdere apparaten.
     * Vouw geavanceerde instellingen uit, selecteer **IOT Edge implementatie-id**, plaats de variabele `$(System.TeamProject)-$(Release.EnvironmentName)`. Hiermee wordt de naam van het project en de release toegewezen aan uw IoT Edge-implementatie-ID.
 
 11. Selecteer **Opslaan** om uw wijzigingen op te slaan in de nieuwe release pijplijn. Ga terug naar de pijplijn weergave door **pijp lijn** te selecteren in het menu. 
     
-## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Controleer of IoT Edge CI/CD met de build en pipelines vrijgeven
+## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>IoT Edge CI/CD controleren met pijp lijnen voor Build en release
 
-Voor het activeren van een build-taak, kunt u een wijziging naar de opslagplaats broncode pushen of deze handmatig te activeren. In deze sectie kunt u hand matig de CI/CD-pijp lijn activeren om te testen dat deze werkt. Controleer vervolgens of de implementatie slaagt.
+Als u een build-taak wilt activeren, kunt u een door voeren naar de opslag plaats van de bron code pushen of hand matig activeren. In deze sectie kunt u hand matig de CI/CD-pijp lijn activeren om te testen dat deze werkt. Controleer vervolgens of de implementatie slaagt.
 
 1. Ga naar de build-pijp lijn die u aan het begin van dit artikel hebt gemaakt. 
 
 2. U kunt een build-taak in uw build-pijp lijn activeren door de knop **Queue** te selecteren als de volgende scherm afbeelding.
 
-    ![Handmatige trigger](./media/how-to-ci-cd/manual-trigger.png)
+    ![Hand matige trigger](./media/how-to-ci-cd/manual-trigger.png)
 
 3. Selecteer de taak maken om de voortgang te bekijken. Als de build-pijp lijn met succes is voltooid, wordt een release-naar- **ontwikkelings** fase geactiveerd. 
 
-    ![Buildlogboeken](./media/how-to-ci-cd/build-logs.png)
+    ![Logboeken maken](./media/how-to-ci-cd/build-logs.png)
 
 4. Met de geslaagde **dev** -versie wordt IOT Edge-implementatie gemaakt voor doel apparaten van IOT Edge.
 

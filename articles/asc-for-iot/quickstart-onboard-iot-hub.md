@@ -1,6 +1,6 @@
 ---
 title: 'Snelstartgids: Azure Security Center inschakelen voor IoT-service in IoT Hub'
-description: In deze Quick Start vindt u informatie over het inschakelen van Azure Security Center voor IoT-service in uw IoT Hub.
+description: Meer informatie over het voorbereiden en inschakelen van de Azure Security Center voor IoT-beveiligings service in uw Azure IoT Hub.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 641ba4c8d3b0e54132c19a493e1e4bf17bb28e13
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0b1f09cfaf107802e1ce6586b3f96b14269aaced
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904118"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664855"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Snelstartgids: onboard Azure Security Center voor IoT-service in IoT Hub
 
@@ -46,7 +46,7 @@ Beveiliging op uw IoT Hub inschakelen:
 1. Klik in het menu **beveiliging** op **Beveilig uw IOT-oplossing**.    
 
 
-Gefeliciteerd. Het inschakelen van Azure Security Center voor IoT op uw IoT Hub is voltooid. 
+Gefeliciteerd! Het inschakelen van Azure Security Center voor IoT op uw IoT Hub is voltooid. 
 
 ### <a name="geolocation-and-ip-address-handling"></a>Verwerking van geolocatie en IP-adres
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/29/2019
 ms.author: juliako
-ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d06be1b5301889a1fcb8ff1390d8618bbb88c03f
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839142"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666474"
 ---
 # <a name="upload-and-index-your-videos"></a>Uw video's uploaden en indexeren  
 
@@ -87,9 +87,10 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
 
 Gebruik deze parameter als onbewerkte of externe opnamen achtergrondgeluiden bevatten. Deze parameter wordt gebruikt voor het configureren van het indexeringsproces. U kunt de volgende waarden opgeven:
 
-- `Default`: indexeren en inzichten extraheren met behulp van zowel audio als video
 - `AudioOnly`: indexeren en inzichten extraheren met behulp van alleen audio (video wordt genegeerd)
+- `Default`: indexeren en inzichten extraheren met behulp van zowel audio als video
 - `DefaultWithNoiseReduction`: indexeren en inzichten extraheren met behulp van zowel audio als video, waarbij algoritmen voor ruisvermindering worden toegepast op de audiostroom
+- `VideoOnly`-index en extra heren inzichten met alleen video 
 
 De prijs is afhankelijk van de geselecteerde optie voor indexering.  
 

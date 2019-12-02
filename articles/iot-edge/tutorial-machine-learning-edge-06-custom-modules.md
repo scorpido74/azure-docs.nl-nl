@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: aangepaste modules maken en implementeren-Machine Learning op Azure IoT Edge'
+title: 'Zelf studie: Train & Deploy model-Azure IoT Edge & Machine Learning'
 description: 'Zelf studie: IoT Edge modules maken en implementeren waarmee gegevens worden verwerkt van blad apparaten via een machine learning model en vervolgens de inzichten naar IoT Hub verzenden.'
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7bfe620510d5ff88a20c518be1f4dd1fb422daa2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 371c897f0b4858a642322ff35a6008edbe9a651d
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106562"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664213"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Zelf studie: aangepaste IoT Edge-modules maken en implementeren
 
@@ -22,7 +22,7 @@ ms.locfileid: "74106562"
 
 In dit artikel maken we drie IoT Edge modules die berichten van Leaf-apparaten ontvangen, de gegevens via uw machine learning model uitvoeren en inzichten vervolgens naar IoT Hub door sturen.
 
-IoT Edge hub vereenvoudigt module naar module communicatie. Als u de IoT Edge hub als Message Broker gebruikt, blijven de modules onafhankelijk van elkaar. Modules hoeft alleen te geven van de invoer waarop ze berichten en de uitvoer waaraan ze berichten schrijven accepteren.
+IoT Edge hub vereenvoudigt module naar module communicatie. Als u de IoT Edge hub als Message Broker gebruikt, blijven de modules onafhankelijk van elkaar. Modules hoeven alleen de invoer op te geven waarop de berichten worden geaccepteerd en de uitvoer waarnaar ze berichten schrijven.
 
 We willen dat het IoT Edge-apparaat vier dingen doet voor ons:
 
@@ -714,7 +714,7 @@ Configureer de functie voor het uploaden van IoT Hub-bestanden om de module file
 
 Nu u de configuratie wijzigingen hebt aangebracht, kunt u de installatie kopieën bouwen en publiceren naar ons Azure container Registry. Het bouw proces maakt gebruik van het bestand Deployment. template. json om te bepalen welke modules moeten worden gebouwd. De instellingen voor elke module, inclusief versie, vindt u in het bestand module. json in de map module. Het bouw proces voert eerst een docker-build uit op de Dockerfiles die overeenkomt met de huidige configuratie gevonden in het bestand module. json om een installatie kopie te maken. Vervolgens publiceert de installatie kopie naar het REGI ster vanuit het bestand module. json met een versie label dat overeenkomt met de naam in het bestand module. json. Ten slotte produceert het een configuratie-specifiek implementatie manifest (bijvoorbeeld implementatie. amd64. json), dat we implementeren op het IoT Edge-apparaat. Het IoT Edge apparaat leest de gegevens van het implementatie manifest en op basis van de instructies worden de modules gedownload, de routes geconfigureerd en de gewenste eigenschappen ingesteld. Deze implementatie methode heeft twee neven effecten waarvan u rekening moet houden:
 
-* **Implementatie vertraging:** omdat de IOT Edge runtime de wijziging in de gewenste eigenschappen moet herkennen voordat deze opnieuw wordt geconfigureerd, kan het enige tijd duren nadat u de modules hebt geïmplementeerd totdat de runtime deze ophaalt en de IOT Edge bijwerkt. apparaatconfiguratie.
+* **Implementatie vertraging:** omdat de IOT Edge runtime de wijziging in de gewenste eigenschappen moet herkennen voordat deze opnieuw wordt geconfigureerd, kan het enige tijd duren nadat u de modules hebt geïmplementeerd, totdat de runtime deze ophaalt en het IOT edge-apparaat begint bij te werken.
 
 * **Module versies:** als u een nieuwe versie van de container van een module naar het container register publiceert met dezelfde versie Tags als de vorige module, wordt de nieuwe versie van de module niet door de runtime gedownload. Het maakt een vergelijking van de versie code van de lokale installatie kopie en de gewenste installatie kopie uit het implementatie manifest. Als deze versies overeenkomen, hoeft de runtime geen actie te ondernemen. Daarom is het belang rijk om de versie van uw module te verhogen telkens wanneer u nieuwe wijzigingen wilt implementeren. Verhoog de versie door de eigenschap **Version** te wijzigen onder de eigenschap **tag** in het bestand module. json voor de module die u wilt wijzigen. Vervolgens bouwt en publiceert u de module.
 

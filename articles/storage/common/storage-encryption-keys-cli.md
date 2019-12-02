@@ -1,26 +1,26 @@
 ---
-title: Door de klant beheerde sleutels configureren voor Azure Storage versleuteling van Azure CLI
-description: Meer informatie over het gebruik van Azure CLI voor het configureren van door de klant beheerde sleutels voor Azure Storage versleuteling. Door de klant beheerde sleutels bieden u de mogelijkheid om toegangs beheer te maken, te draaien, uit te scha kelen en in te trekken.
+title: Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van Azure CLI-Azure Storage
+description: Meer informatie over het gebruik van Azure CLI voor het configureren van door de klant beheerde sleutels met Azure Key Vault voor Azure Storage versleuteling. Door de klant beheerde sleutels bieden u de mogelijkheid om toegangs beheer te maken, te draaien, uit te scha kelen en in te trekken.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/15/2019
+ms.topic: how-to
+ms.date: 11/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 18209816b5b73f58a8112efca0363b31dd47bd91
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: df65267924cfbfdc856b81928c4b6d7029f61184
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374276"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665964"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Door de klant beheerde sleutels configureren voor Azure Storage versleuteling van Azure CLI
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>Door de klant beheerde sleutels configureren voor Azure Storage met behulp van Azure CLI
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-In dit artikel wordt beschreven hoe u een sleutel kluis kunt configureren met door de klant beheerde sleutels met behulp van Azure CLI.
+In dit artikel wordt beschreven hoe u een Azure Key Vault configureert met door de klant beheerde sleutels met behulp van Azure CLI. Voor informatie over het maken van een sleutel kluis met behulp van Azure CLI, Zie [Quick Start: een geheim instellen en ophalen uit Azure Key Vault met behulp van Azure cli](../../key-vault/quick-create-cli.md).
 
 > [!IMPORTANT]
 > Het gebruik van door de klant beheerde sleutels met Azure Storage versleuteling vereist dat er twee eigenschappen worden ingesteld op de sleutel kluis, de functie **voorlopig verwijderen** en **niet leeg**te maken. Deze eigenschappen zijn niet standaard ingeschakeld. Als u deze eigenschappen wilt inschakelen, gebruikt u Power shell of Azure CLI.

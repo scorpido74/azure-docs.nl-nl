@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: overview
-ms.date: 09/13/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: bdada613ef46881bbf051144efded541ac3d0974
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 4e08596e8cf71bbb0e88abdc51f5d8e69972464d
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996693"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665252"
 ---
 # <a name="what-is-bing-local-business-search"></a>Wat is zoeken in lokale bedrijven in Bing?
 De Bing Local Business Search-API is een REST-service waarmee uw toepassingen informatie kunnen vinden over lokale bedrijven op basis van zoek query's. Bijvoorbeeld `q=<business-name> in Redmond, Washington`, of `q=Italian restaurants near me`. 
 
 ## <a name="features"></a>Functies
-| Functie | Description |  
+| Functie | Beschrijving |  
 | -- | -- | 
 | [Lokale bedrijven en locaties zoeken](quickstarts/local-quickstart.md) | De Bing Local Business Search-API krijgt gelokaliseerde resultaten van een query. Tot de resultaten behoren een URL voor de website van het bedrijf en de weergave tekst, het telefoon nummer en de geografische locatie, waaronder: GPS-coördinaten, plaats, straat adres |  
 | [Lokale resultaten filteren met geografische grenzen](specify-geographic-search.md) | Voeg coördinaten als zoek parameters toe om de resultaten te beperken tot een specifiek geografisch gebied, opgegeven door een omsluitend gebied of vier kant vak. | 
@@ -31,14 +31,14 @@ De Bing Local Business Search-API is een REST-service waarmee uw toepassingen in
 Roep de Bing lokale Business Search-API aan vanuit elke programmeer taal die HTTP-aanvragen kan maken en JSON-antwoorden kan parseren. Deze service is toegankelijk via de REST API.
  
 1. Maak een [Cognitive Services-API-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing zoeken-API's. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) maken.   
-2. URL Codeer uw zoek termen voor `q=""` de query parameter. Bijvoorbeeld, `q=nearby+restaurant` of `q=nearby%20restaurant`. Stel de paginering ook in, indien nodig. 
+2. URL Codeer uw zoek termen voor de `q=""` query parameter. Bijvoorbeeld `q=nearby+restaurant` of `q=nearby%20restaurant`. Stel de paginering ook in, indien nodig. 
 3. Een [aanvraag verzenden naar de Bing lokale zakelijke zoek-API](quickstarts/local-quickstart.md) 
 4. Het JSON-antwoord parseren 
 
 > [!NOTE]
-> Lokale bedrijfs zoekopdrachten ondersteunt momenteel alleen de `en-US` markt. 
-> [!NOTE]
-> Op dit moment biedt lokale zakelijke zoek acties geen ondersteuning voor automatische suggesties. 
+> Lokale zakelijke zoek acties op dit moment: 
+> * Alleen ondersteuning voor de `en-US` markt. 
+> * Biedt geen ondersteuning voor Bing Automatische suggesties. 
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Query en antwoord](local-search-query-response.md)

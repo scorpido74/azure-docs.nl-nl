@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 56283c1e07ec55c753701e86ff8c7c00078cffa2
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172787"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664099"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelf studie: secure LDAP configureren voor een Azure Active Directory Domain Services beheerd domein
 
@@ -208,7 +208,7 @@ We gaan een regel maken om binnenkomende beveiligde LDAP-toegang via TCP-poort 6
 
 1. Selecteer in de Azure Portal *resource groepen* aan de linkerkant navigatie.
 1. Kies een resource groep, zoals *myResourceGroup*, en selecteer vervolgens uw netwerk beveiligings groep, zoals *aaads-NSG*.
-1. De lijst met bestaande binnenkomende en uitgaande beveiligings regels wordt weer gegeven. Kies aan de linkerkant van het venster netwerk beveiligings groep de optie **beveiliging > regels voor binnenkomende beveiliging**.
+1. De lijst met bestaande binnenkomende en uitgaande beveiligings regels wordt weer gegeven. Kies aan de linkerkant van de netwerk beveiligings groep Windows **instellingen > regels voor binnenkomende beveiliging**.
 1. Selecteer **toevoegen**en maak een regel om *TCP* -poort *636*toe te staan. Voor een betere beveiliging kiest u de bron als *IP-adressen* en geeft u vervolgens uw eigen geldige IP-adres of bereik op voor uw organisatie.
 
     | Instelling                           | Waarde        |
@@ -243,7 +243,7 @@ In het volgende voor beeld van een DNS-vermelding, met uw externe DNS-provider o
 
 ## <a name="test-queries-to-the-managed-domain"></a>Query's naar het beheerde domein testen
 
-Als u verbinding wilt maken met uw Azure AD DS beheerd domein en een zoek opdracht wilt uitvoeren op LDAP, gebruikt u *Ldp. exe* . Dit hulp programma is opgenomen in het Remote Server Administration Tools-pakket (RSAT). Zie [install Remote Server Administration Tools][rsat](Engelstalig) voor meer informatie.
+Gebruik het hulp programma *Ldp. exe* om verbinding te maken en te verbinden met uw Azure AD DS beheerde domein en om te zoeken in LDAP. Dit hulp programma is opgenomen in het Remote Server Administration Tools-pakket (RSAT). Zie [install Remote Server Administration Tools][rsat](Engelstalig) voor meer informatie.
 
 1. Open *Ldp. exe* en maak verbinding met het beheerde domein. Selecteer **verbinding**en kies vervolgens **verbinding maken...** .
 1. Voer de naam van het beveiligde LDAP-DNS-domein in van uw beheerde domein dat in de vorige stap is gemaakt, zoals *LDAPS.contoso.com*. Als u beveiligde LDAP wilt gebruiken, stelt u **poort** in op *636*en schakelt u het selectie vakje in voor **SSL**.

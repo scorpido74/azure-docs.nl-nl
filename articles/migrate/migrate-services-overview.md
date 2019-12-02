@@ -4,15 +4,15 @@ description: Meer informatie over de evaluatie en migratie van servers met de Az
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/19/2019
+ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a64e7366281f15c94d6551c1f7be27f461737634
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 04e6eddb86d34089db0243ff102d5ebd5ee77e43
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185798"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666117"
 ---
 # <a name="about-azure-migrate"></a>Over Azure Migrate
 
@@ -49,7 +49,7 @@ Naast de systeem eigen Azure-hulpprogram ma's, kan Azure Migrate worden geïnteg
 [Cohuur technologie](https://www.corenttech.com/AzureMigrate/) | Servers beoordelen en migreren
 [Apparaat 42](https://docs.device42.com/) | Servers beoordelen
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | VDI beoordelen
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Servers migreren
+[RackWare](https://www.rackwareinc.com/cloud-migration) | Servers migreren
 [Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Servers beoordelen
 [UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Servers en data bases beoordelen
 

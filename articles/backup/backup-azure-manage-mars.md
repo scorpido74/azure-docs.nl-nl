@@ -4,12 +4,12 @@ description: Meer informatie over het beheren en bewaken van back-ups van agents
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: edb672f97f467378176bf6cdf04fe8e22cc5e51b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f299bdeebab4f42721255d462101f0065a640fab
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173069"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665590"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Back-ups van de agent voor Microsoft Azure Recovery Services (MARS) beheren met behulp van de Azure Backup-Service
 
@@ -124,7 +124,7 @@ U kunt uitsluitings regels toevoegen om bestanden en mappen over te slaan waarva
 
     ![De items selecteren](./media/backup-azure-manage-mars/select-items-exclude.png)
 
-4. Standaard worden alle **submappen** in de geselecteerde mappen uitgesloten. U kunt dit wijzigen door **Ja** of **Nee**te selecteren. U kunt de bestands typen die u wilt uitsluiten, bewerken, zoals hieronder wordt weer gegeven:
+4. Standaard worden alle **submappen** in de geselecteerde mappen uitgesloten. U kunt dit wijzigen door **Ja** of **Nee**te selecteren. U kunt de bestands typen die moeten worden uitgesloten, bewerken en opgeven, zoals hieronder wordt weer gegeven:
 
     ![De items selecteren](./media/backup-azure-manage-mars/subfolders-type.png)
 
@@ -159,12 +159,12 @@ Er zijn twee manieren om het maken van back-ups van bestanden en mappen te stopp
 
 1. Open de MARS-beheer console, ga naar het **deel venster acties**en **Selecteer back-up plannen**.
     een geplande back-up ![wijzigen of stoppen.](./media/backup-azure-manage-mars/mars-actions.png)
-1. Selecteer op de pagina **beleids item selecteren** **de optie een back-upschema voor uw bestanden en mappen wijzigen en** Klik op **volgende**.
+1. Selecteer op de pagina **beleids item selecteren** **de optie een back-upschema voor uw bestanden en mappen wijzigen** en klik op **volgende**.
     een geplande back-up ![wijzigen of stoppen.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
 1. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema, maar behoud de opgeslagen back-ups totdat een schema opnieuw wordt geactiveerd**. Selecteer vervolgens **Volgende**.  
     een geplande back-up ![wijzigen of stoppen.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. Bekijk in **geplande back-up onderbreken** de informatie door op **volt ooien** te klikken ![een geplande back-up te wijzigen of te stoppen.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. Controleer in **back-upproces wijzigen** of de status van het plannen van back-ups is geslaagd en klik op **sluiten** om te volt ooien.
+1. Bekijk de informatie in de **geplande back-up onderbreken** en klik op **volt ooien** ![een geplande back-up te wijzigen of te stoppen.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+1. Controleer in **back-upproces wijzigen** of de back-up voor het plannen van uw planning de status geslaagd heeft en klik op **sluiten** om te volt ooien.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Beveiliging stoppen en back-upgegevens verwijderen
 
@@ -194,7 +194,7 @@ Nadat u de on-premises back-upitems hebt verwijderd, voert u de volgende stappen
 Als u de beveiliging hebt gestopt terwijl u de gegevens behoudt en hebt besloten om de beveiliging te hervatten, kunt u het back-upschema opnieuw inschakelen met behulp van het back-upbeleid wijzigen.
 
 1. Selecteer bij **acties** de optie **back-up plannen**.
-1. Selecteer **back-upschema opnieuw inschakelen. U kunt ook back-upitems of TINES wijzigen** en op **volgende**klikken.
+1. Selecteer **back-upschema opnieuw inschakelen. U kunt ook back-upitems of tijden wijzigen** en op **volgende**klikken.
     de back-upinfrastructuur ![verwijderen.](./media/backup-azure-manage-mars/re-enable-policy-next.png)
 1. Klik in **items selecteren om een back-up te maken**op **volgende**.
     de back-upinfrastructuur ![verwijderen.](./media/backup-azure-manage-mars/re-enable-next.png)

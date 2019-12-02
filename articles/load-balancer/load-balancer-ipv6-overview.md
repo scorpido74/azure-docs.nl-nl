@@ -4,7 +4,7 @@ description: Met dit leer traject kunt u aan de slag met IPv6-ondersteuning voor
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6-, azure-load balancer, dual-stack, openbaar IP-adres, systeemeigen IPv6-, mobiele, iot
+keywords: IPv6, Azure load balancer, dual stack, openbaar IP, systeem eigen IPv6, mobiel, IOT
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 07dd3ee507f31099e32f18143d2beedf76e83c36
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4f4baea1c293a1707d87780044a21ff675cb7f98
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077025"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666202"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Overzicht van IPv6 voor Azure Load Balancer
 
 
 >[!NOTE] 
->Azure Load Balancer ondersteunt twee verschillende typen: Basic en Standard. In dit artikel wordt Basic Load Balancer beschreven. Zie [Overzicht van Standard Load Balancer](load-balancer-standard-overview.md) voor meer informatie over Standard Load Balancer.
+>Azure Load Balancer ondersteunt twee verschillende typen: Basic en Standard. In dit artikel wordt Basic Load Balancer beschreven. Zie [Standard Load Balancer Overview](load-balancer-standard-overview.md)voor meer informatie over Standard Load Balancer.
 
 Basis-SKU Internet gerichte load balancers kan worden geïmplementeerd met een IPv6-adres. Naast de IPv4-connectiviteit, kunnen de volgende mogelijkheden worden toegepast:
 
@@ -78,7 +78,6 @@ Beperkingen
 * Het wijzigen van de loadDistributionMethod-para meter voor IPv6 wordt **momenteel niet ondersteund**.
 * Gereserveerde IPv6 Ip's (waarbij IPAllocationMethod = static) worden **momenteel niet ondersteund**.
 * NAT64 (omzetting van IPv6 naar IPv4) wordt niet ondersteund.
-* Standaard SKU load balancers bieden momenteel geen ondersteuning voor IPv6-adressen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

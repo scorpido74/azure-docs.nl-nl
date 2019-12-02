@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: ed297a1005f67a14db1da15aba2c47c98e83df9c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884995"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665354"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Toepassings wijzigings analyse (preview) gebruiken in Azure Monitor
 
@@ -73,7 +73,7 @@ Selecteer de resource groep en de resources om de wijzigingen weer te geven.
 U kunt inzichten en gerelateerde afhankelijkheids resources zien die uw toepassing hosten. Deze weer gave is ontworpen om toepassingen gericht te zijn voor ontwikkel aars om problemen op te lossen.
 
 De resources die momenteel worden ondersteund zijn:
-- Virtuele machines
+- Virtual Machines
 - Schaalset voor virtuele machines
 - Azure-netwerk bronnen
 - Een web-app met wijzigingen in de gast bestands tracering en omgevings variabelen
@@ -102,7 +102,7 @@ In Azure Monitor is wijzigings analyse ook ingebouwd in de ervaring van de self-
 
    ![Scherm opname van de opties ' toepassings crashes '](./media/change-analysis/enable-changeanalysis.png)
 
-1. Schakel de **analyse van wijzigingen** in en selecteer **Opslaan**. Het hulp programma geeft alle web-apps weer onder een App Services-abonnement. U kunt de schakel optie plan niveau gebruiken om wijzigings analyse in te scha kelen voor alle web-apps onder een abonnement.
+1. Schakel de **analyse van wijzigingen** in en selecteer **Opslaan**. Het hulp programma geeft alle web-apps weer onder een App Service-abonnement. U kunt de schakel optie plan niveau gebruiken om wijzigings analyse in te scha kelen voor alle web-apps onder een abonnement.
 
     ![Scherm opname van de gebruikers interface voor het inschakelen van een analyse](./media/change-analysis/change-analysis-on.png)
 

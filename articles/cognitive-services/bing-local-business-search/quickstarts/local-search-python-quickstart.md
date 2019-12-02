@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 11/06/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: da8a0a7c27294838f8f5c4459eda890c1cbbec7a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a73851a4c88998a377a5123d411948946173fa89
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326676"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664927"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Snelstartgids: een query naar de Bing Local Business Search-API in python verzenden
 
@@ -41,7 +41,7 @@ De volgende code haalt gelokaliseerde resultaten op. De code wordt geïmplemente
 
 Dit is de volledige code voor deze demo:
 
-```
+```python
 import http.client, urllib.parse
 import json
 

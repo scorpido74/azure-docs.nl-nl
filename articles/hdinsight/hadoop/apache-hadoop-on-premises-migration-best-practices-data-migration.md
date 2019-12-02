@@ -2,18 +2,18 @@
 title: 'Gegevens migratie: on-premises Apache Hadoop naar Azure HDInsight'
 description: Meer informatie over de aanbevolen procedures voor gegevens migratie voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: hrasheed
-ms.openlocfilehash: 30f7ae2eeb928e3f8dc71baed20d9c9b2129d1f9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 11/22/2019
+ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494991"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665998"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>On-premises Apache Hadoop clusters migreren naar de aanbevolen procedures voor het migreren van Azure HDInsight-gegevens
 
@@ -23,16 +23,20 @@ Dit artikel bevat aanbevelingen voor het migreren van gegevens naar Azure HDInsi
 
 Er zijn twee belang rijke opties voor het migreren van gegevens van on-premises naar Azure-omgeving:
 
-1.  Gegevens overdragen via het netwerk met TLS
-    1. Via internet: u kunt gegevens overdragen naar Azure Storage via een reguliere Internet verbinding met een van de volgende hulpprogram ma's, zoals: Azure Storage Explorer, AzCopy, Azure Power shell en Azure CLI.  Zie [gegevens verplaatsen van en naar Azure Storage](../../storage/common/storage-moving-data.md) voor meer informatie.
-    2. Express route-ExpressRoute is een Azure-service waarmee u particuliere verbindingen kunt maken tussen micro soft-data centers en-infra structuur op uw locatie of in een functie voor samen locatie. ExpressRoute-verbindingen gaan niet via het open bare Internet en bieden betere beveiliging, betrouw baarheid en snelheden met lagere latenties dan typische verbindingen via internet. Zie [een ExpressRoute-circuit maken en wijzigen](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)voor meer informatie.
-    1. Data Box Online gegevens overdracht: Data Box Edge en Data Box Gateway zijn online gegevens overdracht producten die fungeren als gateways voor netwerk opslag om gegevens te beheren tussen uw site en Azure. Met Data Box Edge, een on-premises netwerkapparaat, worden gegevens overdragen van en naar Azure en worden gegevens verwerkt met behulp van Edge-rekenprocessen met artificial intelligence (AI). Data Box Gateway is een virtueel apparaat met opslaggatewaymogelijkheden. Zie [Azure data Box documentatie-online overdracht](https://docs.microsoft.com/azure/databox-online/)voor meer informatie.
-1.  Gegevens offline verzenden
-    1. Data Box offline gegevens overdracht: Data Box-, Data Box Disk-en Data Box Heavy-apparaten kunt u grote hoeveel heden gegevens naar Azure overdragen wanneer het netwerk geen optie is. Deze apparaten voor offlinegegevensoverdracht worden verzonden van het Azure-datacenter naar uw organisatie en vice versa. De apparaten maken gebruik van AES-versleuteling om uw gegevens tijdens de overdracht te beveiligen en ondergaan na het uploaden een grondig opschoningsproces om uw gegevens van het apparaat te verwijderen. Zie [Azure data Box-documentatie-offline overdracht](https://docs.microsoft.com/azure/databox/)voor meer informatie over de data Box apparaten voor offline overdracht. Zie [Azure data box gebruiken om te migreren van een on-premises HDFS-Store naar Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)voor meer informatie over de migratie van Hadoop-clusters.
+* Gegevens overdragen via het netwerk met TLS
+    * Via internet: u kunt gegevens overdragen naar Azure Storage via een reguliere Internet verbinding met een van de volgende hulpprogram ma's, zoals: Azure Storage Explorer, AzCopy, Azure Power shell en Azure CLI. Zie [gegevens verplaatsen van en naar Azure Storage](../../storage/common/storage-moving-data.md)voor meer informatie.
+
+    * Express route-ExpressRoute is een Azure-service waarmee u particuliere verbindingen kunt maken tussen micro soft-data centers en-infra structuur op uw locatie of in een functie voor samen locatie. ExpressRoute-verbindingen gaan niet via het open bare Internet en bieden betere beveiliging, betrouw baarheid en snelheden met lagere latenties dan typische verbindingen via internet. Zie [een ExpressRoute-circuit maken en wijzigen](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)voor meer informatie.
+
+    * Data Box Online gegevens overdracht: Data Box Edge en Data Box Gateway zijn online gegevens overdracht producten die fungeren als gateways voor netwerk opslag om gegevens te beheren tussen uw site en Azure. Met Data Box Edge, een on-premises netwerkapparaat, worden gegevens overdragen van en naar Azure en worden gegevens verwerkt met behulp van Edge-rekenprocessen met artificial intelligence (AI). Data Box Gateway is een virtueel apparaat met opslaggatewaymogelijkheden. Zie [Azure data Box documentatie-online overdracht](https://docs.microsoft.com/azure/databox-online/)voor meer informatie.
+
+* Gegevens offline verzenden
+
+    Data Box offline gegevens overdracht: Data Box-, Data Box Disk-en Data Box Heavy-apparaten kunt u grote hoeveel heden gegevens naar Azure overdragen wanneer het netwerk geen optie is. Deze apparaten voor offlinegegevensoverdracht worden verzonden van het Azure-datacenter naar uw organisatie en vice versa. De apparaten maken gebruik van AES-versleuteling om uw gegevens tijdens de overdracht te beveiligen en ondergaan na het uploaden een grondig opschoningsproces om uw gegevens van het apparaat te verwijderen. Zie [Azure data Box-documentatie-offline overdracht](https://docs.microsoft.com/azure/databox/)voor meer informatie over de data Box apparaten voor offline overdracht. Zie [Azure data box gebruiken om te migreren van een on-premises HDFS-Store naar Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)voor meer informatie over de migratie van Hadoop-clusters.
 
 De volgende tabel heeft geschatte duur van gegevens overdracht op basis van het gegevens volume en de netwerk bandbreedte. Gebruik een Data box als de gegevens migratie meer dan drie weken naar verwachting duurt.
 
-|**Hoeveelheid gegevens**|**Netwerk bandbreedte**||||
+|Hoeveelheid gegevens|Netwerk bandbreedte||||
 |---|---|---|---|---|
 || **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**|
 |1 TB|2 dagen|1 dag| 2 uur|14 minuten|
@@ -47,9 +51,7 @@ De volgende tabel heeft geschatte duur van gegevens overdracht op basis van het 
 
 Hulpprogram ma's systeem eigen naar Azure, zoals Apache Hadoop DistCp, Azure Data Factory en AzureCp, kunnen worden gebruikt voor het overdragen van gegevens via het netwerk. De WANDisco van het hulp programma van derden kunnen ook voor hetzelfde doel einde worden gebruikt. Apache Kafka MirrorMaker en Apache Sqoop kunnen worden gebruikt voor doorlopende gegevens overdracht van on-premises naar Azure-opslag systemen.
 
-
 ## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Prestatie overwegingen bij het gebruik van Apache Hadoop DistCp
-
 
 DistCp is een Apache-project dat gebruikmaakt van een MapReduce-toewijzings taak voor het overdragen van gegevens, het afhandelen van fouten en het herstellen van deze fouten. Er wordt een lijst met bron bestanden aan elke kaart taak toegewezen. De toewijzings taak kopieert vervolgens alle toegewezen bestanden naar de bestemming. Er zijn verschillende technieken waarmee de prestaties van DistCp kunnen worden verbeterd.
 
@@ -57,8 +59,9 @@ DistCp is een Apache-project dat gebruikmaakt van een MapReduce-toewijzings taak
 
 DistCp probeert toewijzings taken te maken zodat elk exemplaar ongeveer hetzelfde aantal bytes heeft. DistCp-taken gebruiken standaard 20 mappers. Het gebruik van meer mappers voor Distcp (met de para meter ' op de opdracht regel) verhoogt de parallellisme tijdens het proces van gegevens overdracht en vermindert de lengte van de gegevens overdracht. Er zijn echter twee dingen waarmee u rekening moet houden bij het verhogen van het aantal mappers:
 
-1. De laagste granulatie van DistCp is één bestand. Het opgeven van een aantal mappers meer dan het aantal bron bestanden niet helpt en zal de beschik bare cluster bronnen verspillen.
-1. Houd rekening met het beschik bare garen geheugen op het cluster om het aantal Mapper te bepalen. Elke kaart taak wordt gestart als een garen-container. Ervan uitgaande dat er geen andere zware werk belastingen op het cluster worden uitgevoerd, kan het aantal mappers worden bepaald door de volgende formule: m = (aantal worker-knoop punten \* garen geheugen voor elk worker-knoop punt)/grootte van de garen-container. Als andere toepassingen echter gebruikmaken van geheugen, moet u ervoor kiezen om alleen een deel van het geheugen van de DistCp te gebruiken voor de taken van de werk ruimte.
+* De laagste granulatie van DistCp is één bestand. Het opgeven van een aantal mappers is groter dan het aantal bron bestanden dat niet helpt en zal de beschik bare cluster bronnen verspillen.
+
+* Houd rekening met het beschik bare garen geheugen op het cluster om het aantal Mapper te bepalen. Elke kaart taak wordt gestart als een garen-container. Ervan uitgaande dat er geen andere zware werk belastingen op het cluster worden uitgevoerd, kan het aantal mappers worden bepaald door de volgende formule: m = (aantal worker-knoop punten \* garen geheugen voor elk worker-knoop punt)/grootte van de garen-container. Als andere toepassingen echter gebruikmaken van geheugen, moet u ervoor kiezen om alleen een deel van het geheugen van de DistCp te gebruiken voor de taken van de werk ruimte.
 
 ### <a name="use-more-than-one-distcp-job"></a>Meer dan één DistCp-taak gebruiken
 
@@ -102,14 +105,14 @@ De Hive-meta Store kan worden gemigreerd met behulp van de scripts of door gebru
 - Database replicatie instellen tussen on-premises Hive-metastore DB en HDInsight meta Store DB.
 - Gebruik het ' hive-hulp programma ' om de HDFS-URL te vervangen door WASB/ADLS/ABFS-url's, bijvoorbeeld:
 
-```bash
-./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
-```
+    ```bash
+    ./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
+    ```
 
 ### <a name="apache-ranger"></a>Apache Ranger
 
 - Een on-premises zwerver-beleid exporteren naar XML-bestanden.
-- Transformeer on premises specifieke, op HDFS gebaseerde paden naar WASB/ADLS met behulp van een hulp programma zoals XSLT.
+- Transformeer specifieke, op HDFS gebaseerde paden naar WASB/ADLS met behulp van een hulp programma zoals XSLT.
 - Importeer het beleid voor zwerver op HDInsight.
 
 ## <a name="next-steps"></a>Volgende stappen

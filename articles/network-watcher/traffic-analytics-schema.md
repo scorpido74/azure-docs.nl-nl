@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: a678039b3386c3df290327238d3bf968a803d2c1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229437"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666372"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema's en gegevens aggregatie in Traffic Analytics
 
@@ -117,7 +117,7 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 | FlowDirection_s | * I = inkomend<br> * O = uitgaande | Richting van de stroom in/uit NSG met per stroom logboek |
 | FlowStatus_s  | * A = toegestaan door de regel NSG <br> * D = geweigerd door de NSG-regel  | Status van de stroom die is toegestaan/nblocked door NSG volgens het stroom logboek |
 | NSGList_s | \<SUBSCRIPTIONID >\/< RESOURCEGROUP_NAME >\/< NSG_NAME > | De netwerk beveiligings groep (NSG) die aan de stroom is gekoppeld |
-| NSGRules_s | \<index waarde 0) >\|\<NSG_RULENAME >\|stroom richting \<>\|stroom status \<>\|FlowCount ProcessedByRule \< |  NSG-regel die deze stroom heeft toegestaan of geweigerd |
+| NSGRules_s | \<index waarde 0) >\|\<NSG_RULENAME >\|stroom richting \<\|stroom status \<\|FlowCount ProcessedByRule \< |  NSG-regel die deze stroom heeft toegestaan of geweigerd |
 | NSGRule_s | NSG_RULENAME |  NSG-regel die deze stroom heeft toegestaan of geweigerd |
 | NSGRuleType_s | * Door de gebruiker gedefinieerd * standaard |   Het type NSG-regel dat door de stroom wordt gebruikt |
 | MACAddress_s | MAC-adres | MAC-adres van de NIC waarop de stroom is vastgelegd |
@@ -142,8 +142,8 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 | LoadBalancer2_s | \<SubscriptionID >/\<ResourceGroupName >/\<LoadBalancerName > | De Load Balancer die is gekoppeld aan het doel-IP in de stroom |
 | LocalNetworkGateway1_s | \<SubscriptionID >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | De lokale netwerk gateway die is gekoppeld aan het bron-IP-adres in de stroom |
 | LocalNetworkGateway2_s | \<SubscriptionID >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | De lokale netwerk gateway die is gekoppeld aan het doel-IP in de stroom |
-| ConnectionType_s | Mogelijke waarden zijn VNetPeering, VpnGateway en ExpressRoute |    Verbindingstype |
-| ConnectionName_s | \<SubscriptionID >/\<ResourceGroupName >/\<connectionName > | Verbindingsnaam |
+| ConnectionType_s | Mogelijke waarden zijn VNetPeering, VpnGateway en ExpressRoute |    Verbindings type |
+| ConnectionName_s | \<SubscriptionID >/\<ResourceGroupName >/\<connectionName > | Verbindings naam. Voor flowtype P2S wordt dit opgemaakt als <gateway name>_<VPN Client IP> |
 | ConnectingVNets_s | Door spaties gescheiden lijst met namen van virtuele netwerken | In het geval van hub-en spoke-topologie worden de virtuele netwerken van de hub hier ingevuld |
 | Country_s | Land code van twee letters (ISO 3166-1 alpha-2) | Gevuld voor stroom type ExternalPublic. Alle IP-adressen in PublicIPs_s veld hebben hetzelfde land nummer |
 | AzureRegion_s | Azure-regio locaties | Gevuld voor stroom type AzurePublic. Alle IP-adressen in PublicIPs_s veld delen de Azure-regio |

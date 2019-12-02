@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Custom Vision-classificatie met een apparaat implementeren - Azure IoT Edge | Microsoft Docs'
+title: 'Zelf studie: afbeeldingen & Custom Vision Service-Azure IoT Edge'
 description: In deze zelfstudie leert u hoe u een Computer Vision-model uitvoert als een container met behulp van Custom Vision en IoT Edge.
 services: iot-edge
 author: kgremban
@@ -9,12 +9,12 @@ ms.date: 10/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3418c57493e19580f0d3dbd9ea979b0322d930b8
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2303b4f4b639d015e9322e167ffbd956446c5061
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457290"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665947"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Zelfstudie: Custom Vision Service gebruiken om afbeeldingsclassificatie uit te voeren aan de rand
 
@@ -44,7 +44,7 @@ implementeren </center>
 
 Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw omgeving in te stellen voor Linux-container ontwikkeling: [ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door deze zelf studie te volt ooien, moet u aan de volgende vereisten voldoen: 
 
-* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een [Linux-apparaat met Azure IOT Edge](quickstart-linux.md)
 * Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio-code](https://code.visualstudio.com/) die is geconfigureerd met de [Azure IOT-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -76,7 +76,7 @@ Wanneer de afbeeldingsclassificatie is gemaakt en getraind, kunt u deze als een 
    | ----- | ----- |
    | Naam | Geef een naam op voor uw project, bijvoorbeeld **EdgeTreeClassifier**. |
    | Beschrijving | Optionele projectbeschrijving. |
-   | Resource | Selecteer een van de Azure-resource groepen die een Custom Vision Service Resource bevat of **Maak een nieuwe** als u deze nog niet hebt toegevoegd. |
+   | Bron | Selecteer een van de Azure-resource groepen die een Custom Vision Service Resource bevat of **Maak een nieuwe** als u deze nog niet hebt toegevoegd. |
    | Projecttypen | **Classificatie** |
    | Classificatietypen | **Multiclass (één label per afbeelding)** |
    | Domeinen | **Algemeen (compact)** |
@@ -221,7 +221,7 @@ In deze sectie voegt u een nieuwe module aan dezelfde CustomVisionSolution toe e
 
    De nieuwe module wordt in de oplossingswerkruimte van het VS Code-venster geladen en het bestand deployment.template.json wordt bijgewerkt. Nu moet u twee modulemappen zien: classificatie en cameraCapture. 
 
-2. Open het bestand **main.py** in de mapcameraCapture /  van de **module**. 
+2. Open het bestand **main.py** in de map  / **cameraCapture** van de **module**. 
 
 3. Vervang het hele bestand door de volgende code. Deze voorbeeldcode verzendt POST-aanvragen naar de beeldverwerkingsservice die wordt uitgevoerd in de classificatiemodule. We geven deze modulecontainer met een voorbeeldafbeelding die u in de aanvragen kunt gebruiken. Vervolgens wordt het antwoord verpakt als een IoT Hub-bericht en naar een uitvoerwachtrij verzonden.  
 
