@@ -1,69 +1,142 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor de Azure Backup-service
+### YamlMime:Landing
+title: Documentatie voor Azure Backup-service
+summary: De Azure Backup-service biedt eenvoudige, beveiligde en kosteneffectieve oplossingen om een back-up te maken van uw gegevens en die te herstellen vanuit Microsoft Azure-cloud.
 metadata:
-  title: 'Documentatie voor Azure Backup - zelfstudies, API-verwijzing | Microsoft Docs'
-  description: 'Met Azure Backup kunt u een back-up maken van de gegevens van on-premises servers, virtuele machines, gevirtualiseerde workloads, SQL-server, SharePoint-server, en meer. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u een back-up maakt van uw gegevens en deze herstelt.'
-  services: backup
-  author: dcurwin
-  manager: carmonm
+  title: Documentatie over Azure Backup
+  description: De Azure Backup-service biedt eenvoudige, beveiligde en kosteneffectieve oplossingen om een back-up te maken van uw gegevens en die te herstellen vanuit Microsoft Azure-cloud.
   ms.service: backup
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 05/22/2018
+  author: dcurwin
   ms.author: dacurwin
-abstract:
-  description: 'Gebruik Azure Backup om de gegevens van on-premises servers, virtuele machines, gevirtualiseerde workloads, SQL-servers, SharePoint-servers en meer te beschermen. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u een back-up maakt van uw gegevens en deze herstelt.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Meer informatie over het maken van een back-up van een virtuele Azure-machine in Azure.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Azure-portal
-            href: quick-backup-vm-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: quick-backup-vm-powershell
-          - image:
-              src: 'https://docs.microsoft.com/media/common/cli.svg'
-            text: Azure-CLI
-            href: quick-backup-vm-cli
-  - title: Stapsgewijze zelfstudies
-    items:
-      - type: paragraph
-        text: Meer informatie over het maken van back-ups en het herstellen van virtuele machines in Azure of van Windows Server.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-backup-vm-at-scale">Back-ups maken van meerdere virtuele Azure-machines</a>
-          - html: <a href="tutorial-restore-disk">Een schijf herstellen en een herstelde VM maken</a>
-          - html: <a href="tutorial-restore-files">Bestanden herstellen naar een virtuele machine in Azure</a>
-          - html: <a href="tutorial-backup-windows-server-to-azure">Een back-up maken van Windows Server naar Azure</a>
-          - html: <a href="tutorial-backup-restore-files-windows-server">Bestanden herstellen van Azure naar een Windows-server</a>
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Gebruik de volgende voorbeelden ter beveiliging van uw gegevens in Azure.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/powershell/module/az.recoveryservices">Azure PowerShell</a></p><p><a href="/cli/azure/backup?view=azure-cli-latest">Azure-CLI</a></p>
-          - title: Talen
-            html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/backup/">Azure Backup API-naslaginformatie</a></p>
+  ms.date: 12/01/2019
+  ms.openlocfilehash: e352f5aa764795c27dd94ef2750b1265ffcc527d
+  ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 12/02/2019
+  ms.locfileid: "74669084"
+landingContent:
+- title: Meer informatie over Azure Backup
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Backup?
+      url: backup-overview.md
+  - linkListType: concept
+    links:
+    - text: Ondersteuningsmatrix voor Azure Backup
+      url: backup-support-matrix.md
+    - text: Azure Backup-architectuur
+      url: backup-architecture.md
+- title: Aan de slag met Azure Backup
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een back-up maken van een VM met de Azure-portal
+      url: quick-backup-vm-portal.md
+    - text: Een back-up maken van een VM met PowerShell
+      url: quick-backup-vm-powershell.md
+    - text: Een back-up maken van een VM met Azure CLI
+      url: quick-backup-vm-cli.md
+    - text: Een back-up maken van een VM met Resource Manager-sjabloon
+      url: quick-backup-vm-template.md
+- title: Probeer deze stapsgewijze zelfstudies
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Back-ups maken van Azure-VM's
+      url: tutorial-backup-vm-at-scale.md
+    - text: Een back-up maken van SQL Server in Azure-VM
+      url: tutorial-sql-backup.md
+    - text: Een back-up maken van bestanden en mappen in Windows Server
+      url: tutorial-backup-windows-server-to-azure.md
+    - text: Een back-up maken van Azure-bestandsshares
+      url: tutorial-backup-azure-files.md
+- title: Meer informatie over de nieuwste functies in Azure Backup
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Voorlopig verwijderen van back-upgegevens van Azure-VM
+      url: backup-azure-security-feature-cloud.md
+    - text: SQL Server in Azure-VM's herstellen als bestanden
+      url: restore-sql-database-azure-vm.md#restore-as-files
+    - text: SAP HANA-databases in back-ups van virtuele Azure-machines
+      url: backup-azure-sap-hana-database.md
+- title: Back-ups maken van Azure-VM's
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Over Azure VM Backup
+      url: backup-azure-vms-introduction.md
+    - text: Ondersteuningsmatrix voor back-up van Azure-VM
+      url: backup-support-matrix-iaas.md
+    - text: Veelgestelde vragen over Azure VM-back-ups
+      url: backup-azure-vm-backup-faq.md
+    - text: Back-ups van Azure-VM's beheren
+      url: backup-azure-manage-vms.md
+- title: Een back-up maken van SQL Server op virtuele Azure-machines
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Over SQL Server in back-ups van virtuele Azure-machines
+      url: backup-azure-sql-database.md
+    - text: Veelgestelde vragen over SQL Server in back-ups van virtuele Azure-machines
+      url: faq-backup-sql-server.md
+    - text: Back-ups maken van SQL Server-databases in virtuele Azure-machines
+      url: backup-sql-server-database-azure-vms.md
+    - text: Back-ups van SQL Server-databases beheren en bewaken
+      url: manage-monitor-sql-database-backup.md
+- title: Back-ups maken van SAP HANA in virtuele Azure-machines
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Back-ups maken van SAP HANA-databases in virtuele Azure-machines
+      url: backup-azure-sap-hana-database.md
+    - text: Back-ups van SAP HANA-databases beheren en bewaken
+      url: sap-hana-db-manage.md
+    - text: Veelgestelde vragen over back-ups maken van SAP HANA-databases in virtuele Azure-machines
+      url: sap-hana-faq-backup-azure-vm.md
+    - text: Ondersteuningsmatrix voor back-up van SAP HANA-databases in virtuele Azure-machines
+      url: sap-hana-backup-support-matrix.md
+- title: Een back-up maken van Azure-bestandsshares
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Back-ups maken van Azure-bestandsshares en deze terugzetten
+      url: backup-azure-files.md
+    - text: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
+      url: backup-azure-files-faq.md
+- title: Back-up maken met Microsoft Azure Recovery Services-agent (MARS)
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Back-up maken van Windows-machines met de Azure Backup MARS-agent
+      url: backup-configure-vault.md
+    - text: Back-ups van MARS-agent beheren met de Azure Backup-service
+      url: backup-azure-manage-mars.md
+    - text: Ondersteuningsmatrix voor MARS-agent
+      url: backup-support-matrix-mars-agent.md
+    - text: Veelgestelde vragen over MARS-agent
+      url: backup-azure-file-folder-backup-faq.md
+- title: Back-up met Microsoft Azure Backup Server (MABS) en DPM
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: MABS-beschermingsmatrix
+      url: backup-mabs-protection-matrix.md
+    - text: MABS-/DPM-ondersteuningsmatrix
+      url: backup-support-matrix-mabs-dpm.md
+    - text: Veelgestelde vragen over MABS en DPM
+      url: backup-azure-dpm-azure-server-faq.md
+    - text: MABS installeren en upgraden
+      url: backup-azure-microsoft-azure-backup.md
+- title: Resources voor Azure Backup verkennen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Backup-prijscalculator
+      url: https://azure.microsoft.com/pricing/details/backup/
+    - text: Azure Backup-service-updates
+      url: https://azure.microsoft.com/updates/?product=backup
+    - text: MSDN-forum van Azure Backup
+      url: https://social.msdn.microsoft.com/Forums/home?forum=windowsazureonlinebackup
