@@ -1,24 +1,17 @@
 ---
-title: Offline synchronisatie inschakelen voor uw mobiele Azure-app (Android)
-description: Meer informatie over het gebruik van App Service Mobile Apps om offline gegevens in uw Android-toepassing in de cache op te slaan en te synchroniseren
-documentationcenter: android
-author: elamalani
-manager: crdun
-services: app-service\mobile
+title: Offline synchronisatie inschakelen (Android)
+description: Meer informatie over het gebruik van App Service Mobile Apps om offline gegevens in uw Android-toepassing in de cache op te slaan en te synchroniseren.
 ms.assetid: 32a8a079-9b3c-4faf-8588-ccff02097224
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 9c845c09c6b05436017f98323dfa78185cd58aa6
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8449b4f92636a7b73d07c34515f33dc9dc6816ab
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388985"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668937"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Offline synchronisatie inschakelen voor uw mobiele Android-app
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

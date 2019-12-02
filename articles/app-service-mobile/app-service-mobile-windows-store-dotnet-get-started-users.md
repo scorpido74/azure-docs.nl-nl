@@ -1,25 +1,17 @@
 ---
-title: Verificatie toevoegen aan uw Universeel Windows-platform-app (UWP) | Microsoft Docs
-description: 'Informatie over het gebruik van Azure App Service Mobile Apps om gebruikers van uw Universeel Windows-platform (UWP)-app te verifiëren met behulp van verschillende id-providers, waaronder: AAD, Google, Facebook, Twitter en micro soft.'
-services: app-service\mobile
-documentationcenter: windows
-author: elamalani
-manager: panarasi
-editor: ''
+title: Verificatie toevoegen aan uw UWP-app
+description: Meer informatie over het gebruik van Azure App Service Mobile Apps om gebruikers te verifiëren van uw Universeel Windows-platform (UWP)-app met id-providers zoals AAD, Google, Facebook, Twitter en micro soft.
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: d5012ccc503e48785e23ff00564bbc9f6735eea8
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 23d3c897f227dd49253abfcc6d3a84d477341c13
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388536"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668388"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Verificatie toevoegen aan uw Windows-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388536"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 In dit onderwerp wordt beschreven hoe u Cloud verificatie kunt toevoegen aan uw mobiele app. In deze zelf studie voegt u verificatie toe aan het project Universeel Windows-platform (UWP) Quick start voor Mobile Apps met behulp van een id-provider die door Azure App Service wordt ondersteund. Nadat de authenticatie door de back-end van uw mobiele app is geverifieerd en geautoriseerd, wordt de waarde van de gebruikers-ID weer gegeven.
@@ -45,7 +37,7 @@ Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app.
 
 2. Klik op de menu optie voor **verificatie/autorisatie** .
 
-3. Voer in de **toegestane externe omleidings-url's**`url_scheme_of_your_app://easyauth.callback` in.  De **url_scheme_of_your_app** in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
+3. In de **toegestane externe omleidings-url's**voert u `url_scheme_of_your_app://easyauth.callback`in.  De **url_scheme_of_your_app** in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
 
 4. Klik op **Opslaan**.
 
@@ -147,7 +139,7 @@ Vervolgens werkt u de app bij om gebruikers te verifiëren voordat ze resources 
             Window.Current.Activate();
             base.OnActivated(args);
         }
-6. Open Package. appxmanifest-bestand, navigeer naar **declaraties**in de vervolg keuzelijst **beschik bare aangiften** , selecteer **protocol** en klik op de knop **toevoegen** . Configureer nu de **Eigenschappen** van de **protocol** declaratie. In **weergave naam**, voegt u de naam die u wilt weer geven toe aan gebruikers van uw toepassing. Voeg uw {url_scheme_of_your_app} toe aan de **naam**.
+6. Open Package. appxmanifest-bestand, navigeer naar **declaraties**in de vervolg keuzelijst **beschik bare aangiften** , selecteer **protocol** en klik op de knop **toevoegen** . Configureer nu de **Eigenschappen** van de **protocol** declaratie. In **weergave naam**, voegt u de naam die u wilt weer geven toe aan gebruikers van uw toepassing. In **naam**kunt u {url_scheme_of_your_app} toevoegen.
 7. Druk op de toets F5 om de app uit te voeren, klik op de knop **Aanmelden** en meld u aan bij de app met uw gekozen ID-provider. Nadat uw aanmelding is gelukt, wordt de app zonder fouten uitgevoerd en kunt u een query uitvoeren op uw back-end en zo gegevens bijwerken.
 
 ## <a name="tokens"></a>Het verificatie token opslaan op de client

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: a7a9efbf6fd9c3dbe6b16d12a54f743d5b0820ba
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8dec673408b706a92a29f418af3bef4cc05a8d2d
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838215"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668577"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Azure Data Explorer implementeren in uw Virtual Network (preview-versie)
 
@@ -64,6 +64,9 @@ Het totale aantal IP-adressen:
 Met [Azure service-eind punten](/azure/virtual-network/virtual-network-service-endpoints-overview) kunt u uw Azure multi tenant-resources beveiligen naar uw virtuele netwerk.
 Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens verbindingen met [Event hub](/azure/event-hubs/event-hubs-about) of [Event grid](/azure/event-grid/overview) instellen tijdens het beperken van de onderliggende resources voor Azure Data Explorer subnet.
 
+> [!NOTE]
+> Wanneer u EventGrid-instellingen gebruikt met [opslag](/azure/storage/common/storage-introduction) en [Event hub], kan het opslag account dat in het abonnement wordt gebruikt, worden vergrendeld met Service-eind punten in het subnet van Azure Data Explorer terwijl er vertrouwde Azure-platform services worden toegestaan in de [firewall configuratie](/azure/storage/common/storage-network-security), maar de Event hub service-eind punt niet kan inschakelen omdat het geen ondersteuning biedt voor vertrouwde services van het [Azure-platform](/azure/event-hubs/event-hubs-service-endpoints).
+
 ## <a name="dependencies-for-vnet-deployment"></a>Afhankelijkheden voor VNet-implementatie
 
 ### <a name="network-security-groups-configuration"></a>Configuratie van netwerk beveiligings groepen
@@ -76,7 +79,7 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | --- | --- | --- | --- |
 | Beheer  |[ADX beheer adressen](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX-subnet: 443  | TCP  |
 | Statuscontrole  | [Adressen voor status controle ADX](#health-monitoring-addresses)  | ADX-subnet: 443  | TCP  |
-| ADX interne communicatie  | ADX-subnet: alle poorten  | ADX-subnet: alle poorten  | Alle  |
+| ADX interne communicatie  | ADX-subnet: alle poorten  | ADX-subnet: alle poorten  | Alles  |
 | Azure load balancer-inkomend (Health probe) toestaan  | AzureLoadBalancer  | ADX-subnet: 80443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>Configuratie van uitgaande NSG
@@ -90,7 +93,7 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | Azure Monitor configuratie downloaden  | ADX-subnet  | [Azure monitor configuratie-eindpunt adressen](#azure-monitor-configuration-endpoint-addresses): 443 | TCP  |
 | Active Directory (indien van toepassing) | ADX-subnet | AzureActiveDirectory: 443 | TCP |
 | Certificerings instantie | ADX-subnet | Internet: 80 | TCP |
-| Interne communicatie  | ADX-subnet  | ADX-subnet: alle poorten  | Alle  |
+| Interne communicatie  | ADX-subnet  | ADX-subnet: alle poorten  | Alles  |
 | Poorten die worden gebruikt voor `sql\_request`-en `http\_request`-invoeg toepassingen  | ADX-subnet  | Internet: aangepast  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>Relevante IP-adressen
@@ -101,37 +104,37 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | --- | --- |
 | Australië - centraal | 20.37.26.134 |
 | Australië-Central2 | 20.39.99.177 |
-| Australië - oost | 40.82.217.84 |
-| Australië - zuidoost | 20.40.161.39 |
+| Australië Oost | 40.82.217.84 |
+| Australië Zuidoost | 20.40.161.39 |
 | BrazilSouth | 191.233.25.183 |
-| Canada - midden | 40.82.188.208 |
-| Canada - oost | 40.80.255.12 |
+| Canada-Midden | 40.82.188.208 |
+| Canada-Oost | 40.80.255.12 |
 | India - centraal | 40.81.249.251 |
-| US - centraal | 40.67.188.68 |
+| VS - centraal | 40.67.188.68 |
 | Centrale VS-EUAP | 40.89.56.69 |
 | Azië - oost | 20.189.74.103 |
-| US - oost | 52.224.146.56 |
-| VS - oost2 | 52.232.230.201 |
+| VS - oost | 52.224.146.56 |
+| US - oost 2 | 52.232.230.201 |
 | Oost-VS2 EUAP | 52.253.226.110 |
 | Frankrijk - centraal | 40.66.57.91 |
 | Frankrijk - zuid | 40.82.236.24 |
-| Japan - oost | 20.43.89.90 |
-| Japan - west | 40.81.184.86 |
+| Japan - Oost | 20.43.89.90 |
+| Japan - West | 40.81.184.86 |
 | Korea - centraal | 40.82.156.149 |
-| Korea - zuid | 40.80.234.9 |
-| US - noord-centraal | 40.81.45.254 |
+| Korea (Zuid) | 40.80.234.9 |
+| VS - noord-centraal | 40.81.45.254 |
 | Europa - noord | 52.142.91.221 |
 | Zuid-Afrika - noord | 102.133.129.138 |
 | Zuid-Afrika - west | 102.133.0.97 |
-| US - zuid-centraal | 20.45.3.60 |
+| VS - zuid-centraal | 20.45.3.60 |
 | Azië - zuidoost | 40.119.203.252 |
 | India - zuid | 40.81.72.110 |
 | VK - zuid | 40.81.154.254 |
-| Verenigd Koninkrijk West | 40.81.122.39 |
-| US - west-centraal | 52.159.55.120 |
-| Europa -west | 51.145.176.215 |
+| VK - west | 40.81.122.39 |
+| VS - west-centraal | 52.159.55.120 |
+| Europa - west | 51.145.176.215 |
 | India - west | 40.81.88.112 |
-| US - west | 13.64.38.225 |
+| VS - west | 13.64.38.225 |
 | US - west 2 | 40.90.219.23 |
 
 #### <a name="health-monitoring-addresses"></a>Adressen voor status controle
@@ -140,38 +143,38 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | --- | --- |
 | Australië - centraal | 191.239.64.128 |
 | Australië - centraal 2 | 191.239.64.128 |
-| Australië - oost | 191.239.64.128 |
-| Australië - zuidoost | 191.239.160.47 |
-| Brazilië - zuid | 23.98.145.105 |
-| Canada - midden | 168.61.212.201 |
-| Canada - oost | 168.61.212.201 |
+| Australië Oost | 191.239.64.128 |
+| Australië Zuidoost | 191.239.160.47 |
+| Brazilië - Zuid | 23.98.145.105 |
+| Canada-Midden | 168.61.212.201 |
+| Canada-Oost | 168.61.212.201 |
 | India - centraal | 23.99.5.162 |
-| US - centraal | 168.61.212.201 |
+| VS - centraal | 168.61.212.201 |
 | Centrale VS-EUAP | 168.61.212.201 |
 | Azië - oost | 168.63.212.33 |
-| US - oost | 137.116.81.189 |
-| US - oost 2 | 137.116.81.189 |
+| VS - oost | 137.116.81.189 |
+| VS - oost 2 | 137.116.81.189 |
 | VS-Oost 2 EUAP | 137.116.81.189 |
 | Frankrijk - centraal | 23.97.212.5 |
 | Frankrijk - zuid | 23.97.212.5 |
-| Japan - oost | 138.91.19.129 |
-| Japan - west | 138.91.19.129 |
+| Japan - Oost | 138.91.19.129 |
+| Japan - West | 138.91.19.129 |
 | Korea - centraal | 138.91.19.129 |
-| Korea - zuid | 138.91.19.129 |
-| US - noord-centraal | 23.96.212.108 |
+| Korea (Zuid) | 138.91.19.129 |
+| VS - noord-centraal | 23.96.212.108 |
 | Europa - noord | 191.235.212.69 
 | Zuid-Afrika - noord | 104.211.224.189 |
 | Zuid-Afrika - west | 104.211.224.189 |
-| US - zuid-centraal | 23.98.145.105 |
+| VS - zuid-centraal | 23.98.145.105 |
 | India - zuid | 23.99.5.162 |
 | Azië - zuidoost | 168.63.173.234 |
 | VK - zuid | 23.97.212.5 |
-| Verenigd Koninkrijk West | 23.97.212.5 |
-| US - west-centraal | 168.61.212.201 |
-| Europa -west | 23.97.212.5 |
+| VK - west | 23.97.212.5 |
+| VS - west-centraal | 168.61.212.201 |
+| Europa - west | 23.97.212.5 |
 | India - west | 23.99.5.162 |
-| US - west | 23.99.5.162 |
-| US - west 2 | 23.99.5.162 | 
+| VS - west | 23.99.5.162 |
+| VS - west 2 | 23.99.5.162 | 
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitor configuratie-eindpunt adressen
 
@@ -206,7 +209,7 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | Zuidoost-Azië | 52.148.86.165 |
 | UK - zuid | 52.174.4.112 |
 | UK - west | 52.169.237.246 |
-| US - west-centraal | 52.161.31.69 |
+| VS - west-centraal | 52.161.31.69 |
 | Europa - west | 52.174.4.112 |
 | India-West | 13.71.25.187 |
 | VS-West | 40.78.70.148 |

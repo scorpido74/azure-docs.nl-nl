@@ -1,24 +1,17 @@
 ---
-title: IOS-SDK voor Azure Mobile Apps gebruiken
+title: De iOS-SDK gebruiken
 description: IOS-SDK voor Azure Mobile Apps gebruiken
-services: app-service\mobile
-documentationcenter: ios
-author: elamalani
-editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 175351d6bab6cc6aee06b83bdeb8544c2e7c2d24
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9860ab6b16c6639581d0bcd1783d43f420f88d74
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435391"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668430"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>IOS-client bibliotheek gebruiken voor Azure Mobile Apps
 
@@ -51,7 +44,7 @@ In deze hand leiding wordt ervan uitgegaan dat u een back-end hebt gemaakt met e
 
 Maak een `MSClient`om toegang te krijgen tot een Azure Mobile Apps-back-end in uw project. Vervang `AppUrl` door de URL van de app. U kunt `gatewayURLString` en `applicationKey` leeg laten. Als u een gateway voor verificatie instelt, vult u `gatewayURLString` in met de gateway-URL.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
@@ -67,7 +60,7 @@ let client = MSClient(applicationURLString: "AppUrl")
 
 Maak een verwijzing naar de back-endtabel als u gegevens wilt bekijken of bijwerken. Vervang `TodoItem` door de naam van uw tabel
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 MSTable *table = [client tableWithName:@"TodoItem"];
@@ -83,7 +76,7 @@ let table = client.tableWithName("TodoItem")
 
 Als u een database query wilt maken, moet u een query uitvoeren op het `MSTable`-object. Met de volgende query worden alle items in `TodoItem` opgehaald en wordt de tekst van elk item geregistreerd.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [table readWithCompletion:^(MSQueryResult *result, NSError *error) {
@@ -117,7 +110,7 @@ Er zijn veel beschik bare opties om de resultaten te filteren.
 
 Als u wilt filteren met een predikaat, gebruikt u een `NSPredicate` en `readWithPredicate`. Met de volgende filters worden gegevens geretourneerd om alleen onvolledige TODO-items te vinden.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 // Create a predicate that finds items where complete is false
@@ -155,7 +148,7 @@ table.readWithPredicate(predicate) { (result, error) in
 
 Als u een complexe query wilt uitvoeren (met inbegrip van sorteren en pagineren), maakt u een `MSQuery`-object rechtstreeks of met behulp van een predikaat:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 MSQuery *query = [table query];
@@ -184,7 +177,7 @@ Voer een `MSQuery` query uit door het aanroepen van `readWithCompletion` voor he
 
 We kijken naar een voor beeld om de resultaten te sorteren. Als u wilt sorteren op veld ' tekst ' en vervolgens op ' aflopend ', roept u `MSQuery` als volgt aan:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [query orderByAscending:@"text"];
@@ -220,7 +213,7 @@ query.readWithCompletion { (result, error) in
 
 Als u de velden die in een query worden geretourneerd wilt beperken, geeft u de namen van de velden in de eigenschap **selectFields** op. In dit voor beeld worden alleen de velden tekst en voltooid geretourneerd:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 query.selectFields = @[@"text", @"complete"];
@@ -234,7 +227,7 @@ query.selectFields = ["text", "complete"]
 
 Als u aanvullende query teken reeks parameters wilt toevoegen aan de server aanvraag (bijvoorbeeld omdat er een aangepast script aan de server zijde wordt gebruikt), vult u `query.parameters` als volgt:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 query.parameters = @{
@@ -263,7 +256,7 @@ Deze instelling is ook het *aantal* gegevens records, niet de *byte grootte*.
 
 Als u het pagina formaat van de client verg root, moet u ook de pagina grootte op de server verg Roten. Zie [' How to: de grootte van de tabel paginering aanpassen '](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) voor de stappen om dit te doen.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
   MSPullSettings *pullSettings = [[MSPullSettings alloc] initWithPageSize:3];
@@ -294,7 +287,7 @@ Als `id` niet wordt gegeven, wordt door de back-end automatisch een nieuwe uniek
 
 Het `result` bevat het nieuwe item dat is ingevoegd. Afhankelijk van de server logica zijn er mogelijk extra of gewijzigde gegevens in vergelijking met wat er is door gegeven aan de-server.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"complete" : @NO};
@@ -324,7 +317,7 @@ table.insert(newItem) { (result, error) in
 
 Als u een bestaande rij wilt bijwerken, wijzigt u een item en roept u `update`aan:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
@@ -355,7 +348,7 @@ if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
 
 U kunt ook de rij-ID en het bijgewerkte veld opgeven:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [table update:@{@"id":@"custom-id", @"text":"my EDITED item"} completion:^(NSDictionary *result, NSError *error) {
@@ -385,7 +378,7 @@ U moet mini maal het kenmerk `id` instellen bij het maken van updates.
 
 Als u een item wilt verwijderen, roept u `delete` aan met het item:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [table delete:item completion:^(id itemId, NSError *error) {
@@ -411,7 +404,7 @@ table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
 
 U kunt ook verwijderen door een rij-ID op te geven:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [table deleteWithId:@"37BBF396-11F0-4B39-85C8-B319C729AF6D" completion:^(id itemId, NSError *error) {
@@ -443,7 +436,7 @@ Met een aangepaste API kunt u alle back-end-functies zichtbaar maken. Deze hoeft
 
 Roep `MSClient.invokeAPI`aan om een aangepaste API aan te roepen. De aanvraag-en antwoord inhoud worden behandeld als JSON. Als u andere media typen wilt gebruiken, [gebruikt u de andere overbelasting van `invokeAPI`][5].  Als u een `GET` aanvraag wilt maken in plaats van een `POST` aanvraag, stelt u de para meter `HTTPMethod` in op `"GET"` en para meter `body` naar `nil` (aangezien GET-aanvragen geen bericht tekst bevatten.) Als uw aangepaste API andere HTTP-woorden ondersteunt, wijzigt u `HTTPMethod` op de juiste manier.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [self.client invokeAPI:@"sendEmail"
@@ -482,7 +475,7 @@ client.invokeAPI("sendEmail",
 
 Als u sjablonen wilt registreren, geeft u sjablonen door met de methode **client. push registerDeviceToken** in uw client-app.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [client.push registerDeviceToken:deviceToken template:iOSTemplate completion:^(NSError *error) {
@@ -504,7 +497,7 @@ client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { 
 
 Uw sjablonen zijn van het type NSDictionary en kunnen meerdere sjablonen bevatten in de volgende indeling:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"alert": @"$(message)" } } } };
@@ -524,7 +517,7 @@ Wanneer u een Azure App Service mobiele back-end aanroept, bevat het voltooiings
 
 Het bestand [`<WindowsAzureMobileServices/MSError.h>`][6] definieert de constanten `MSErrorResponseKey`, `MSErrorRequestKey`en `MSErrorServerItemKey`. Meer informatie over de fout:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 NSDictionary *serverItem = [error.userInfo objectForKey:MSErrorServerItemKey];
@@ -538,7 +531,7 @@ let serverItem = error.userInfo[MSErrorServerItemKey]
 
 Daarnaast definieert het bestand constanten voor elke fout code:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 if (error.code == MSErrorPreconditionFailed) {
@@ -568,12 +561,12 @@ U kunt de Active Directory Authentication Library (ADAL) gebruiken voor het onde
 3. Gebruik de terminal om `pod install` uit te voeren vanuit de map met uw project en open vervolgens de gegenereerde Xcode-werk ruimte (niet het project).
 4. Voeg de volgende code toe aan uw toepassing, afhankelijk van de taal die u gebruikt. Voer de volgende vervangingen uit:
 
-   * Vervang de **INVOEG instantie** door de naam van de Tenant waarin u uw toepassing hebt ingericht. De notatie moet https://login.microsoftonline.com/contoso.onmicrosoft.comzijn. Deze waarde kan worden gekopieerd van het tabblad domein in uw Azure Active Directory in de [Azure Portal].
+   * Vervang de **INVOEG instantie** door de naam van de Tenant waarin u uw toepassing hebt ingericht. De notatie moet https://login.microsoftonline.com/contoso.onmicrosoft.com zijn. Deze waarde kan worden gekopieerd van het tabblad domein in uw Azure Active Directory in de [Azure-portal].
    * Vervang de **Insert-resource-id hier** door de client-id voor de back-end van uw mobiele app. U kunt de client-ID verkrijgen via het tabblad **Geavanceerd** onder **Azure Active Directory instellingen** in de portal.
    * Vervang **Insert-client-id-hier** door de client-id die u hebt gekopieerd uit de systeem eigen client toepassing.
    * Vervang **Insert-redirect-Uri-hier** met het */.auth/login/done* -eind punt van uw site met behulp van het HTTPS-schema. Deze waarde moet gelijk zijn aan *https://contoso.azurewebsites.net/.auth/login/done* .
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 #import <ADALiOS/ADAuthenticationContext.h>
@@ -664,7 +657,7 @@ U kunt de Facebook-SDK voor iOS gebruiken om gebruikers te ondertekenen in uw to
 4. Naast het toevoegen van `FBSDKCoreKit.framework` aan uw project, moet u ook een verwijzing naar `FBSDKLoginKit.framework` op dezelfde manier toevoegen.
 5. Voeg de volgende code toe aan uw toepassing, afhankelijk van de taal die u gebruikt.
 
-    **Objective-C**:
+    **Doel-C**:
 
     ```objc
     #import <FBSDKLoginKit/FBSDKLoginKit.h>
@@ -728,7 +721,7 @@ U kunt infra structuur voor iOS gebruiken om gebruikers te ondertekenen in uw to
 
     Als u ervoor kiest om de geheimen te gebruiken die u eerder hebt gemaakt, voegt u de volgende code toe aan de gemachtigde van de app:
 
-    **Objective-C**:
+    **Doel-C**:
 
     ```objc
     #import <Fabric/Fabric.h>
@@ -759,7 +752,7 @@ U kunt infra structuur voor iOS gebruiken om gebruikers te ondertekenen in uw to
 
 3. Voeg de volgende code toe aan uw toepassing, afhankelijk van de taal die u gebruikt.
 
-    **Objective-C**:
+    **Doel-C**:
 
     ```objc
     #import <TwitterKit/TwitterKit.h>
@@ -806,7 +799,7 @@ U kunt de Google-aanmeld-SDK voor iOS gebruiken om gebruikers in uw toepassing t
 2. Installeer de Google SDK voor iOS door de [Google-aanmeldings voor IOS te](https://developers.google.com/identity/sign-in/ios/start-integrating) volgen. U kunt de sectie verifiëren met een back-end-server overs Laan.
 3. Voeg het volgende toe aan de `signIn:didSignInForUser:withError:` methode van uw gemachtigde, afhankelijk van de taal die u gebruikt.
 
-    **Objective-C**:
+    **Doel-C**:
     ```objc
     NSDictionary *payload = @{
                                 @"id_token":user.authentication.idToken,
@@ -829,7 +822,7 @@ U kunt de Google-aanmeld-SDK voor iOS gebruiken om gebruikers in uw toepassing t
 
 4. Zorg ervoor dat u ook het volgende toevoegt aan `application:didFinishLaunchingWithOptions:` in de gemachtigde van de app en vervang ' SERVER_CLIENT_ID ' door de ID die u hebt gebruikt voor het configureren van App Service in stap 1.
 
-    **Objective-C**:
+    **Doel-C**:
 
     ```objc
     [GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
@@ -843,7 +836,7 @@ U kunt de Google-aanmeld-SDK voor iOS gebruiken om gebruikers in uw toepassing t
 
 5. Voeg de volgende code toe aan uw toepassing in een UIViewController die het `GIDSignInUIDelegate`-protocol implementeert, afhankelijk van de taal die u gebruikt.  U bent afgemeld voordat u zich opnieuw aanmeldt, maar u hoeft uw referenties niet opnieuw in te voeren. u ziet dan een dialoog venster voor toestemming.  Roep deze methode alleen aan als het sessie token is verlopen.
 
-   **Objective-C**:
+   **Doel-C**:
 
     ```objc
     #import <Google/SignIn.h>
@@ -904,7 +897,7 @@ U kunt de Google-aanmeld-SDK voor iOS gebruiken om gebruikers in uw toepassing t
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/
 [Handling Expired Tokens]: https://go.microsoft.com/fwlink/p/?LinkId=301955
 [Live Connect SDK]: https://go.microsoft.com/fwlink/p/?LinkId=301960
 [Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx

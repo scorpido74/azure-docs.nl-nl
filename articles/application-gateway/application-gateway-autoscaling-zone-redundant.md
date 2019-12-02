@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 8f3a732d5d6128ff38f81f715113e87710b11c47
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847256"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668154"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
 
@@ -35,7 +35,7 @@ De nieuwe v2-SKU bevat de volgende verbeteringen:
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 
-De Standard_v2-en WAF_v2 SKU is beschikbaar in de volgende regio's: Noord-Centraal VS, Zuid-Centraal VS, VS-West, VS-West 2, VS-Oost, VS-Oost 2, centraal VS, Europa-noord, Europa-west, Zuidoost-Azië, Frankrijk-centraal, UK-west, Japan-Oost, Japan-West, Australië-Oost , Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Azië-oost, Korea-centraal, Korea-zuid, India-zuid, UK-zuid, Centraal-India, West-India, India-zuid.
+De Standard_v2-en WAF_v2 SKU is beschikbaar in de volgende regio's: Noord-Centraal VS, Zuid-Centraal VS, VS-West, VS-West 2, VS-Oost, VS-Oost 2, centraal VS, Europa-noord, Europa-west, Zuidoost-Azië, Frankrijk-centraal, UK-west, Japan-Oost, Japan-West, Australië-Oost , Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Azië-oost, Korea-centraal, Korea-zuid, UK-zuid, Centraal-India, West-India, India-zuid.
 
 ## <a name="pricing"></a>Prijzen
 
@@ -157,7 +157,7 @@ De volgende tabel vergelijkt de functies die beschikbaar zijn voor elke SKU.
 | Sessieaffiniteit                                  | &#x2713; | &#x2713; |
 | Aangepaste foutenpagina's                                | &#x2713; | &#x2713; |
 | Ondersteuning voor WebSocket                                 | &#x2713; | &#x2713; |
-| Ondersteuning voor HTTP/2                                    | &#x2713; | &#x2713; |
+| HTTP/2-ondersteuning                                    | &#x2713; | &#x2713; |
 | Verwerkingsstop voor verbindingen                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
@@ -172,7 +172,7 @@ De volgende tabel vergelijkt de functies die beschikbaar zijn voor elke SKU.
 |Door de gebruiker gedefinieerde route (UDR) op Application Gateway subnet|Niet ondersteund|
 |NSG voor binnenkomend poort bereik| -65200 tot 65535 voor Standard_v2 SKU<br>-65503 tot 65534 voor standaard-SKU.<br>Raadpleeg de [Veelgestelde vragen](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)voor meer informatie.|
 |Prestatie Logboeken in azure Diagnostics|Wordt niet ondersteund.<br>De metrische gegevens van Azure moeten worden gebruikt.|
-|Facturering|De facturering is gepland om te beginnen op 1 juli 2019.|
+|Billing|De facturering is gepland om te beginnen op 1 juli 2019.|
 |FIPS-modus|Deze worden momenteel niet ondersteund.|
 |Modus alleen ILB|Dit wordt momenteel niet ondersteund. De open bare en ILB modus samen worden ondersteund.|
 |Netwatcher-integratie|Wordt niet ondersteund.|

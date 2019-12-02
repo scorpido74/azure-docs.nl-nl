@@ -1,25 +1,17 @@
 ---
-title: Offline synchronisatie inschakelen voor uw mobiele Azure-app (Xamarin. Forms) | Microsoft Docs
-description: Meer informatie over het gebruik van App Service mobiele app om offline gegevens in de cache op te slaan en te synchroniseren in uw Xamarin. Forms-toepassing
-documentationcenter: xamarin
-author: elamalani
-manager: yochayk
-editor: ''
-services: app-service\mobile
+title: Offline synchronisatie inschakelen (Xamarin. Forms) | Microsoft Docs
+description: Leer hoe u App Service mobiele app kunt gebruiken om offline gegevens in de cache op te slaan en te synchroniseren in uw Xamarin. Forms-toepassing.
 ms.assetid: acf0f874-3ea5-4410-bd22-b0e72140f3b5
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 65bd619a95b102c4ad4be57f1661a89fbae43e22
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 85cb39de40d72d4fb4629d055d016e8a3dca23bd
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388432"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668282"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Offlinesynchronisatie inschakelen voor uw mobiele Xamarin.Forms-app
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

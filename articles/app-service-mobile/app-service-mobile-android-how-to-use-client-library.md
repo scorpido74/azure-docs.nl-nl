@@ -1,24 +1,17 @@
 ---
-title: De Azure Mobile Apps SDK voor Android gebruiken | Microsoft Docs
+title: De SDK voor Android gebruiken
 description: De Azure Mobile Apps SDK voor Android gebruiken
-services: app-service\mobile
-documentationcenter: android
-author: elamalani
-manager: crdun
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 991f3c8939c0f9e270423ff30282b02f110eb39e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 32e0584478031226ed52d6ed5f6849f7ad6d3cfe
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388919"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668893"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>De Azure Mobile Apps SDK voor Android gebruiken
 
@@ -1114,7 +1107,7 @@ U kunt de Active Directory Authentication Library (ADAL) gebruiken voor het onde
 
 3. Voeg de volgende code toe aan uw toepassing, waardoor de volgende vervangingen worden uitgevoerd:
 
-    * Vervang de **INVOEG instantie** door de naam van de Tenant waarin u uw toepassing hebt ingericht. De notatie moet https://login.microsoftonline.com/contoso.onmicrosoft.comzijn.
+    * Vervang de **INVOEG instantie** door de naam van de Tenant waarin u uw toepassing hebt ingericht. De notatie moet https://login.microsoftonline.com/contoso.onmicrosoft.com zijn.
     * Vervang de **Insert-resource-id hier** door de client-id voor de back-end van uw mobiele app. U kunt de client-ID verkrijgen via het tabblad **Geavanceerd** onder **Azure Active Directory instellingen** in de portal.
     * Vervang **Insert-client-id-hier** door de client-id die u hebt gekopieerd uit de systeem eigen client toepassing.
     * Vervang **Insert-redirect-Uri-hier** met het */.auth/login/done* -eind punt van uw site met behulp van het HTTPS-schema. Deze waarde moet gelijk zijn aan *https://contoso.azurewebsites.net/.auth/login/done* .

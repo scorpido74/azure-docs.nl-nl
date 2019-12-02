@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 8a5ea692bfdec7f676a80cc670f686af66152e6f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 17312840b0081056ad04723f2b2c241c47902021
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606609"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667290"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>Data Base-en tabel beleid maken voor Azure-Data Explorer met behulp vanC#
 
@@ -21,27 +21,22 @@ ms.locfileid: "73606609"
 > * [Python](database-table-policies-python.md)
 >
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. In dit artikel maakt u een Data Base-en tabel beleid voor Azure Data Explorer met C#behulp van.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. In dit artikel maakt u een Data Base-en tabel beleid voor Azure Data Explorer met C#behulp van.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Visual Studio 2019. Als u niet beschikt over Visual Studio 2019, kunt u de *gratis* [visual studio Community 2019](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** selecteert tijdens de installatie van Visual Studio.
-
 * Een Azure-abonnement. Als dat het geval is, kunt u een [gratis Azure-account](https://azure.microsoft.com/free/) maken voordat u begint.
-
 * [Een test cluster en data base](create-cluster-database-csharp.md).
-
 * [Een test tabel](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
 
 ## <a name="install-c-nuget"></a>NuGet C# installeren
 
 * Installeer het [Azure Data Explorer (Kusto) NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-
 * Installeer het [pakket micro soft. Azure. Kusto. data. Netstandard NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). (Optioneel, voor wijzigen van tabel beleid.)
-
 * Installeer het [NuGet-pakket micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)voor verificatie.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 Als u de voor beelden in dit artikel wilt uitvoeren, hebt u een Azure Active Directory (Azure AD)-toepassing en service-principal nodig waarmee u toegang krijgt tot resources. U kunt dezelfde Azure AD-toepassing gebruiken voor verificatie vanuit [een test cluster en data base](create-cluster-database-csharp.md#authentication). Als u een andere Azure AD-toepassing wilt gebruiken, raadpleegt u [een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnements bereik. In dit artikel wordt ook uitgelegd hoe u de `Directory (tenant) ID`, `Application ID`en `Client secret`kunt ophalen. Mogelijk moet u de nieuwe Azure AD-toepassing toevoegen als een principal in de data base. Zie [Azure Data Explorer-database machtigingen beheren](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)voor meer informatie.
 
 ## <a name="alter-database-retention-policy"></a>Beleid voor het bewaren van data bases wijzigen

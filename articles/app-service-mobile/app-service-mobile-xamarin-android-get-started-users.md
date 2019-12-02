@@ -1,25 +1,17 @@
 ---
-title: Aan de slag met verificatie voor Mobile Apps in Xamarin Android
-description: Meer informatie over het gebruik van Mobile Apps voor het verifiëren van gebruikers van uw Xamarin Android-app via verschillende id-providers, waaronder AAD, Google, Facebook, Twitter en micro soft.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: panarasi
-editor: ''
+title: Aan de slag met verificatie in Xamarin Android
+description: Meer informatie over het gebruik van Mobile Apps voor het verifiëren van gebruikers van uw Xamarin Android-app met id-providers zoals AAD, Google, Facebook, Twitter en micro soft.
 ms.assetid: 570fc12b-46a9-4722-b2e0-0d1c45fb2152
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: e0baf64c3490dd5b7edd8c3f7d209c135c546ed5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 60c46c32c8650bf72c0032cf0ec03895905bae1c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388445"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668377"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Verificatie toevoegen aan uw Xamarin. Android-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388445"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 In dit onderwerp wordt beschreven hoe u gebruikers van een mobiele app verifieert vanuit uw client toepassing. In deze zelf studie voegt u verificatie toe aan het Quick start-project met behulp van een id-provider die wordt ondersteund door Azure Mobile Apps. Nadat de authenticatie is geverifieerd en geautoriseerd in de mobiele app, wordt de waarde van de gebruikers-ID weer gegeven.
@@ -45,7 +37,7 @@ Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app.
 
 2. Klik op de menu optie voor **verificatie/autorisatie** .
 
-3. Voer in de **toegestane externe omleidings-url's**`url_scheme_of_your_app://easyauth.callback` in.  De **url_scheme_of_your_app** in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
+3. In de **toegestane externe omleidings-url's**voert u `url_scheme_of_your_app://easyauth.callback`in.  De **url_scheme_of_your_app** in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
 
 4. Klik op **OK**.
 
@@ -119,7 +111,7 @@ De app is bijgewerkt zodat gebruikers moeten tikken op de knop **Aanmelden** en 
 4. Voeg het volgende element toe aan het bestand strings. XML resources:
    
         <string name="login_button_text">Sign in</string>
-5. Open het bestand AndroidManifest. XML, voeg de volgende code toe in het XML-element `<application>`:
+5. Open het bestand AndroidManifest. XML, voeg de volgende code toe in `<application>` XML-element:
 
         <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
           <intent-filter>

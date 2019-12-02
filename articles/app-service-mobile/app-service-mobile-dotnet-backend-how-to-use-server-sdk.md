@@ -1,26 +1,19 @@
 ---
-title: Werken met de .NET back-end-server-SDK voor Mobile Apps | Microsoft Docs
+title: Werken met de .NET back-end-server-SDK
 description: Meer informatie over het werken met de .NET back-end-server-SDK voor Azure App Service Mobile Apps.
 keywords: app service, Azure app service, mobiele app, mobiele service, schaal, schaalbaar, app-implementatie, implementatie van Azure-app
-services: app-service\mobile
-documentationcenter: ''
 author: conceptdev
-manager: crdun
-editor: ''
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 5372385bd4de0f5592a7fff3e4a78fbb5e1648dc
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 019979307f6dff1dba2ef5f661a971f330b8a9cd
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388782"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668862"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Werken met de .NET-back-endserver-SDK voor Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -41,7 +34,7 @@ In dit onderwerp wordt beschreven hoe u de .NET back-end server-SDK kunt gebruik
 De referentie documentatie voor de server SDK bevindt zich hier: [Azure Mobile apps .net-referentie][1].
 
 ## <a name="create-app"></a>Procedure: een back-end voor een mobiele app van .NET maken
-Als u een nieuw project start, kunt u een App Service-toepassing maken met behulp van de [Azure Portal] of Visual Studio. U kunt de App Service toepassing lokaal uitvoeren of het project publiceren naar uw mobiele app voor App Service op basis van de Cloud.
+Als u een nieuw project start, kunt u een App Service-toepassing maken met behulp van de [Azure-portal] of Visual Studio. U kunt de App Service toepassing lokaal uitvoeren of het project publiceren naar uw mobiele app voor App Service op basis van de Cloud.
 
 Als u mobiele mogelijkheden toevoegt aan een bestaand project, raadpleegt u de sectie [de SDK downloaden en initialiseren](#install-sdk) .
 
@@ -80,11 +73,11 @@ Installeer de [Azure SDK voor .net][4] (versie 2.9.0 of hoger) om een Azure Mobi
 De SDK is beschikbaar op [NuGet.org]. Dit pakket bevat de basis functionaliteit die is vereist om aan de slag te gaan met de SDK. Als u de SDK wilt initialiseren, moet u acties uitvoeren op het object **HttpConfiguration** .
 
 ### <a name="install-the-sdk"></a>De SDK installeren
-Als u de SDK wilt installeren, klikt u met de rechter muisknop op het server project in Visual Studio, selecteert u **NuGet-pakketten beheren**, zoekt u naar het [Microsoft.Azure.Mobile.Server] -pakket en klikt u op **installeren**.
+Als u de SDK wilt installeren, klikt u met de rechter muisknop op het server project in Visual Studio, selecteert u **NuGet-pakketten beheren**, zoekt u naar het [micro soft. Azure. Mobile. server] -pakket en klikt u op **installeren**.
 
 ### <a name="server-project-setup"></a>Het server project initialiseren
-Een .NET-back-endserver wordt geïnitialiseerd, net als bij andere ASP.NET-projecten, door een OWIN-opstart klasse op te nemen. Zorg ervoor dat u de NuGet-pakket `Microsoft.Owin.Host.SystemWeb`hebt gerefereerd. Deze klasse toevoegen in Visual Studio, met de rechtermuisknop op uw serverproject en selecteer **toevoegen** >
-**Nieuw Item**, klikt u vervolgens **Web** > **Algemene** > **OWIN-Opstartklasse**.  Een klasse wordt gegenereerd met het volgende kenmerk:
+Een .NET-back-endserver wordt geïnitialiseerd, net als bij andere ASP.NET-projecten, door een OWIN-opstart klasse op te nemen. Zorg ervoor dat u de NuGet-pakket `Microsoft.Owin.Host.SystemWeb`hebt gerefereerd. Als u deze klasse wilt toevoegen in Visual Studio, klikt u met de rechter muisknop op uw server project en selecteert u >
+**Nieuw item** **toevoegen** en vervolgens **Web** > **algemene** > **OWIN-opstart klasse**.  Een klasse wordt gegenereerd met het volgende kenmerk:
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
@@ -135,14 +128,14 @@ De gebruikte extensie methoden zijn:
 ### <a name="sdk-extensions"></a>SDK-extensies
 De volgende uitbreidings pakketten op basis van NuGet bieden diverse mobiele functies die door uw toepassing kunnen worden gebruikt. U schakelt uitbrei dingen in tijdens de initialisatie met behulp van het **MobileAppConfiguration** -object.
 
-* [Microsoft.Azure.Mobile.Server.Quickstart] start ondersteunt de basis Mobile apps setup. Wordt toegevoegd aan de configuratie door het aanroepen van de **UseDefaultConfiguration** -extensie methode tijdens de initialisatie. Deze uitbrei ding omvat de volgende uitbrei dingen: meldingen, verificatie, entiteit, tabellen, kruislings domein en Home-pakketten. Dit pakket wordt gebruikt door de Mobile Apps Snelstartgids die beschikbaar is op de Azure Portal.
+* [Micro soft. Azure. Mobile. server. Quick Start] start ondersteunt de basis Mobile apps setup. Wordt toegevoegd aan de configuratie door het aanroepen van de **UseDefaultConfiguration** -extensie methode tijdens de initialisatie. Deze uitbrei ding omvat de volgende uitbrei dingen: meldingen, verificatie, entiteit, tabellen, kruislings domein en Home-pakketten. Dit pakket wordt gebruikt door de Mobile Apps Snelstartgids die beschikbaar is op de Azure Portal.
 * [Micro soft. Azure. Mobile. server. Home](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) implementeert de standaard instelling voor *deze mobiele app* op de pagina voor de hoofdmap van de website. Voeg aan de configuratie toe door de **AddMobileAppHomeController** -extensie methode aan te roepen.
 * [Micro soft. Azure. Mobile. server. Tables](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) bevat klassen voor het werken met gegevens en het instellen van de gegevens pijplijn. Voeg aan de configuratie toe door de **AddTables** -extensie methode aan te roepen.
 * [Micro soft. Azure. Mobile. server. entity](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) maakt het Entity Framework toegang tot gegevens in de SQL database. Voeg aan de configuratie toe door de **AddTablesWithEntityFramework** -extensie methode aan te roepen.
-* [Microsoft.Azure.Mobile.Server.Authentication] maakt verificatie en het instellen van de OWIN-middleware die wordt gebruikt voor het valideren van tokens. Voeg aan de configuratie toe door de **AddAppServiceAuthentication** en **IAppBuilder**aan te roepen. **UseAppServiceAuthentication** -extensie methoden.
-* [Microsoft.Azure.Mobile.Server.Notifications] maakt push meldingen mogelijk en definieert een push registratie-eind punt. Voeg aan de configuratie toe door de **AddPushNotifications** -extensie methode aan te roepen.
+* [Micro soft. Azure. Mobile. server. Authentication] maakt verificatie en het instellen van de OWIN-middleware die wordt gebruikt voor het valideren van tokens. Voeg aan de configuratie toe door de **AddAppServiceAuthentication** en **IAppBuilder**aan te roepen. **UseAppServiceAuthentication** -extensie methoden.
+* [Micro soft. Azure. Mobile. server. meldingen] maakt push meldingen mogelijk en definieert een push registratie-eind punt. Voeg aan de configuratie toe door de **AddPushNotifications** -extensie methode aan te roepen.
 * [Micro soft. Azure. Mobile. server. CrossDomain](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) maakt een controller die gegevens in verouderde webbrowsers van uw mobiele app verzendt. Voeg aan de configuratie toe door de **MapLegacyCrossDomainController** -extensie methode aan te roepen.
-* [Microsoft.Azure.Mobile.Server.Login] biedt de methode AppServiceLoginHandler. Okta (), een statische methode die wordt gebruikt tijdens aangepaste verificatie scenario's.
+* [Micro soft. Azure. Mobile. server. login] biedt de methode AppServiceLoginHandler. Okta (), een statische methode die wordt gebruikt tijdens aangepaste verificatie scenario's.
 
 ## <a name="publish-server-project"></a>Procedure: het server project publiceren
 In deze sectie wordt beschreven hoe u uw .NET-back-upproject publiceert vanuit Visual Studio. U kunt uw back-end-project ook implementeren met behulp van [Git](../app-service/deploy-local-git.md) of een van de andere beschik bare methoden.
@@ -208,7 +201,7 @@ Als u de Azure SDK hebt geïnstalleerd, kunt u nu als volgt een controller voor 
    * Selecteer in de vervolg keuzelijst **model klasse** uw nieuwe DTO.
    * Selecteer in de vervolg keuzelijst **DbContext** de DbContext-klasse voor mobiele services.
    * De naam van de controller wordt voor u gemaakt.
-4. Klik op **Toevoegen**.
+4. Klik op **Add**.
 
 Het Quick Start-Server Project bevat een voor beeld van een eenvoudige **TodoItemController**.
 
@@ -251,9 +244,9 @@ Azure Mobile Apps gebruikt App Service verificatie/autorisatie om uw mobiele bac
 * [Procedure: gegevens toegang beperken voor gemachtigde gebruikers](#authorize)
 
 ### <a name="add-auth"></a>Procedure: verificatie toevoegen aan een server project
-U kunt verificatie toevoegen aan uw server project door het **MobileAppConfiguration** -object uit te breiden en OWIN middleware te configureren. Wanneer u het pakket [Microsoft.Azure.Mobile.Server.Quickstart] start installeert en de **UseDefaultConfiguration** -extensie methode aanroept, kunt u door gaan naar stap 3.
+U kunt verificatie toevoegen aan uw server project door het **MobileAppConfiguration** -object uit te breiden en OWIN middleware te configureren. Wanneer u het pakket [Micro soft. Azure. Mobile. server. Quick Start] start installeert en de **UseDefaultConfiguration** -extensie methode aanroept, kunt u door gaan naar stap 3.
 
-1. Installeer in Visual Studio het pakket [Microsoft.Azure.Mobile.Server.Authentication] .
+1. Installeer in Visual Studio het pakket [micro soft. Azure. Mobile. server. Authentication] .
 2. Voeg in het project bestand Startup.cs de volgende regel code toe aan het begin van de **configuratie** methode:
 
         app.UseAppServiceAuthentication(config);
@@ -268,7 +261,7 @@ Zie [verificatie toevoegen aan uw app](app-service-mobile-ios-get-started-users.
 > Als u aangepaste verificatie wilt inschakelen, moet u eerst App Service-verificatie inschakelen zonder een provider voor uw App Service te selecteren in de Azure Portal. Hiermee schakelt u de WEBSITE_AUTH_SIGNING_KEY omgevings variabele in als deze wordt gehost.
 > 
 > 
-> Als u een van de App Service verificatie/autorisatie providers niet wilt gebruiken, kunt u uw eigen aanmeldings systeem implementeren. Installeer het pakket [Microsoft.Azure.Mobile.Server.Login] om te helpen bij het genereren van het verificatie token.  Geef uw eigen code op voor het valideren van gebruikers referenties. U kunt bijvoorbeeld controleren op gezouten en gehashte wacht woorden in een Data Base. In het onderstaande voor beeld is de `isValidAssertion()` methode (gedefinieerd elders) verantwoordelijk voor deze controles.
+> Als u een van de App Service verificatie/autorisatie providers niet wilt gebruiken, kunt u uw eigen aanmeldings systeem implementeren. Installeer het pakket [micro soft. Azure. Mobile. server. login] om te helpen bij het genereren van het verificatie token.  Geef uw eigen code op voor het valideren van gebruikers referenties. U kunt bijvoorbeeld controleren op gezouten en gehashte wacht woorden in een Data Base. In het onderstaande voor beeld is de `isValidAssertion()` methode (gedefinieerd elders) verantwoordelijk voor deze controles.
 
 De aangepaste verificatie wordt weer gegeven door een ApiController te maken en `register` en `login` acties beschikbaar te stellen. De client moet een aangepaste gebruikers interface gebruiken om de gegevens van de gebruiker te verzamelen.  De gegevens worden vervolgens naar de API verzonden met een standaard HTTP POST-oproep. Zodra de server de bevestiging valideert, wordt er een token uitgegeven met behulp van de `AppServiceLoginHandler.CreateToken()` methode.  De ApiController **mag niet** gebruikmaken van het kenmerk `[MobileAppController]`.
 
@@ -461,7 +454,7 @@ U kunt uw toepassing lokaal uitvoeren om wijzigingen te testen voordat u ze naar
 
 U moet een mobiele app op de Cloud hebben met App Service verificatie/autorisatie is geconfigureerd en uw client moet het Cloud eindpunt opgeven dat is opgegeven als de alternatieve aanmeldings-host. Raadpleeg de documentatie voor uw client platform voor de specifieke stappen die vereist zijn.
 
-Zorg ervoor dat op uw mobiele back-end [Microsoft.Azure.Mobile.Server.Authentication] is geïnstalleerd. Voeg vervolgens in de opstart klasse van uw toepassing de volgende toe, nadat `MobileAppConfiguration` is toegepast op uw `HttpConfiguration`:
+Zorg ervoor dat op uw mobiele back-end [micro soft. Azure. Mobile. server. Authentication] is geïnstalleerd. Voeg vervolgens in de opstart klasse van uw toepassing de volgende toe, nadat `MobileAppConfiguration` is toegepast op uw `HttpConfiguration`:
 
         app.UseAppServiceAuthentication(new AppServiceAuthenticationOptions()
         {
@@ -474,7 +467,7 @@ Zorg ervoor dat op uw mobiele back-end [Microsoft.Azure.Mobile.Server.Authentica
 In het voor gaande voor beeld moet u de toepassings instellingen *authAudience* en *authIssuer* in het bestand Web. config configureren op elk de URL van de hoofdmap van uw toepassing, met behulp van het HTTPS-schema. Op dezelfde manier moet u *authSigningKey* instellen als de waarde van de handtekening sleutel van uw toepassing.
 De handtekening sleutel verkrijgen:
 
-1. Navigeer naar uw app binnen het [Azure Portal]
+1. Navigeer naar uw app binnen het [Azure-portal]
 2. Klik op **extra**, **kudu**en **Ga naar**.
 3. Klik in de kudu-beheer site op **omgeving**.
 4. Zoek de waarde voor *WEBSITE\_AUTH\_ondertekenen\_sleutel*.
@@ -487,11 +480,11 @@ Gebruik de handtekening sleutel voor de para meter *authSigningKey* in de config
 [4]: https://azure.microsoft.com/downloads/
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com
 [NuGet.org]: https://www.nuget.org/
-[Microsoft.Azure.Mobile.Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
-[Microsoft.Azure.Mobile.Server.Quickstart]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
-[Microsoft.Azure.Mobile.Server.Authentication]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
-[Microsoft.Azure.Mobile.Server.Login]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
-[Microsoft.Azure.Mobile.Server.Notifications]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
+[Micro soft. Azure. Mobile. server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
+[Micro soft. Azure. Mobile. server. Quick Start]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
+[Micro soft. Azure. Mobile. server. Authentication]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
+[Micro soft. Azure. Mobile. server. login]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
+[Micro soft. Azure. Mobile. server. meldingen]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx

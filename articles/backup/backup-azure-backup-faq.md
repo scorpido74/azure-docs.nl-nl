@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: f95a4e7e9084c304838b01bdfaceee261d8151cf
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4005b171ef61fa02821b4a32db3be26cfb94c9ff
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173232"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668078"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Veelgestelde vragen over Azure Backup
 
@@ -88,7 +88,7 @@ Windows Server 2016 64-bits | Standard, Datacenter, Essentials | Met de nieuwste
 Windows Server 2012 R2 64 bits | Standard, Datacenter, Foundation | Met de nieuwste service packs/updates.
 Windows Server 2012 64-bits | Datacenter, Foundation, Standard | Met de nieuwste service packs/updates.
 Windows Storage Server 2016 64 bits | Standard, Workgroup | Met de nieuwste service packs/updates.
-Windows Storage Server 2012 R2 64 bits | Standard, Workgroup, Essential | Met de nieuwste service packs/updates.
+Windows Storage Server 2012 R2 64 bits | Standaard, werk groep, essentieel | Met de nieuwste service packs/updates.
 Windows Storage Server 2012 64 bits | Standard, Workgroup | Met de nieuwste service packs/updates.
 Windows Server 2008 R2 SP1 64 bits | Standard, Enterprise, Datacenter, Foundation | Met de nieuwste updates.
 Windows Server 2008 64-bits | Standard, Enter prise, Data Center | Met de nieuwste updates.
@@ -116,9 +116,9 @@ In de volgende tabel wordt uitgelegd hoe de grootte voor elke gegevensbron wordt
 **Gegevens bron** | **Details**
 --- | ---
 Volume |De hoeveelheid gegevens waarvan een back-up wordt gemaakt van een virtuele machine met één volume waarvan een back-up wordt gemaakt.
-SQL Server-database |Grootte van de grootte van één SQL database waarvan een back-up wordt gemaakt.
+SQL Server-Data Base |Grootte van de grootte van één SQL database waarvan een back-up wordt gemaakt.
 SharePoint | Som van de inhoud en configuratie databases binnen een share point-Farm waarvan een back-up wordt gemaakt.
-Exchange |De som van alle Exchange-data bases in een Exchange-server waarvan een back-up wordt gemaakt.
+Uitwisselen |De som van alle Exchange-data bases in een Exchange-server waarvan een back-up wordt gemaakt.
 BMR/systeem status |Elk afzonderlijk exemplaar van BMR of systeem status van de computer waarvan een back-up wordt gemaakt.
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Geldt er een limiet voor de hoeveelheid gegevens waarvan een back-up is gemaakt met behulp van een Recovery Services kluis?
@@ -176,7 +176,7 @@ De opslagarchitectuur van Azure Backup biedt u het beste van beide werelden door
 
 U kunt maximaal 9999 herstelpunten maken per beveiligd exemplaar. Een beveiligd exemplaar is een computer, een server (fysiek of virtueel) of een werk belasting die back-ups maakt van Azure.
 
-- Meer informatie over [back-up en retentie](./backup-overview.md#backup-and-retention).
+- Meer informatie over [back-up en retentie](./backup-support-matrix.md).
 
 ### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Hoe vaak kan ik gegevens herstellen waarvan een back-up is gemaakt naar Azure?
 

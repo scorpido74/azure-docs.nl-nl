@@ -1,25 +1,17 @@
 ---
-title: Aan de slag met Azure App Service Mobile Apps voor Xamarin.iOS-apps | Microsoft Docs
+title: Aan de slag met Xamarin. iOS-apps
 description: Volg deze zelfstudie om aan de slag te gaan met Mobile Apps voor Xamarin.iOS-ontwikkeling.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 14428794-52ad-4b51-956c-deb296cafa34
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 14fb925896fc94def59b753711eb74f155b2e139
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2bb13393a9f348d85ab9fc964b784ba4d4d6a783
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388359"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668621"
 ---
 # <a name="create-a-xamarinios-app"></a>Een Xamarin.iOS-app maken
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388359"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 Deze zelfstudie laat zien hoe u een cloudgebaseerde back-endservice toevoegt aan een mobiele Xamarin.iOS-app met een back-end voor mobiele apps van Azure.  U maakt zowel een nieuwe back-end voor mobiele apps als een eenvoudige Xamarin.iOS-app voor *takenlijsten* die app-gegevens opslaat in Azure.
@@ -54,7 +46,7 @@ Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden vol
 
 3. Open het bestand `QSTodoService.cs` in deze map-xamarin. iOS/ZUMOAPPNAME. De naam van de toepassing is `ZUMOAPPNAME`.
 
-4. Vervang in de klasse `QSTodoService` `ZUMOAPPURL`-variabele met een openbaar eind punt hierboven.
+4. Vervang `ZUMOAPPURL` variabele met open bare eind punt in `QSTodoService`-klasse.
 
     `const string applicationURL = @"ZUMOAPPURL";`
 

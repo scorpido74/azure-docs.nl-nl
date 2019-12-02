@@ -1,25 +1,17 @@
 ---
-title: Verificatie op iOS toevoegen met Azure Mobile Apps
-description: Informatie over het gebruik van Azure Mobile Apps om gebruikers van uw iOS-app te verifiëren via verschillende id-providers, waaronder AAD, Google, Facebook, Twitter en micro soft.
-services: app-service\mobile
-documentationcenter: ios
-author: elamalani
-manager: crdun
-editor: ''
+title: Verificatie toevoegen op iOS
+description: Informatie over het gebruik van Azure Mobile Apps om gebruikers van uw iOS-app te verifiëren via id-providers zoals AAD, Google, Facebook, Twitter en micro soft.
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 800d86750f091404ee7f940d7cf8f6631e3fbbeb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 925894cab00537cb9aeb03ca05c9699bb4bf6a84
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388700"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668459"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Verificatie toevoegen aan uw iOS-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -38,7 +30,7 @@ In deze zelf studie voegt u verificatie toe aan het [Quick start voor iOS] -proj
 
 Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app.  Hierdoor kan het verificatie systeem terugkeren naar uw app nadat het verificatie proces is voltooid.  In deze zelf studie gebruiken we het URL-schema _AppName_ in.  U kunt echter elk gewenst URL-schema gebruiken.  Deze moet uniek zijn voor uw mobiele toepassing.  De omleiding inschakelen op de server zijde:
 
-1. Selecteer uw App Service in de [Azure Portal].
+1. Selecteer uw App Service in de [Azure-portal].
 
 2. Klik op de menu optie voor **verificatie/autorisatie** .
 
@@ -58,7 +50,7 @@ Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app.
 Druk in Xcode op **uitvoeren** om de app te starten. Er wordt een uitzonde ring gegenereerd omdat de app toegang probeert te krijgen tot de back-end als niet-geverifieerde gebruiker, maar voor de tabel *TodoItem* nu verificatie is vereist.
 
 ## <a name="add-authentication"></a>Verificatie toevoegen aan de app
-**Objective-C**:
+**Doel-C**:
 
 1. Open *QSTodoListViewController. m* in Xcode in uw Mac en voeg de volgende methode toe:
 
@@ -222,7 +214,7 @@ Bij App Service-verificatie wordt gebruikgemaakt van Apple-communicatie tussen a
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
 [2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com
 
 [Quick start voor iOS]: app-service-mobile-ios-get-started.md
 

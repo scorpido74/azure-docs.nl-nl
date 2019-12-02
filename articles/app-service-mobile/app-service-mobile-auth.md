@@ -1,30 +1,21 @@
 ---
-title: Verificatie en autorisatie in Azure App Service voor mobiele apps | Microsoft Docs
-description: Conceptuele Naslag informatie en overzicht van de functie voor verificatie/autorisatie voor Azure App Service, met name voor mobiele apps
-services: app-service
-documentationcenter: ''
-author: mattchenderson
-manager: erikre
-editor: ''
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
+title: Verificatie en autorisatie
+description: Conceptuele Naslag informatie en overzicht van de functie voor verificatie/autorisatie voor Azure App Service, met name voor mobiele apps.
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: mahender
-ms.openlocfilehash: 6017d9bc8b9a791e46fd1562660c9049ca0f72e5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2c3bc1f9563a5657d7574020fc908f23a711391c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388895"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668517"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Verificatie en autorisatie in Azure App Service voor mobiele apps
 
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 In dit artikel wordt beschreven hoe verificatie en autorisatie werkt bij het ontwikkelen van systeem eigen mobiele apps met een App Service back-end. App Service biedt geïntegreerde verificatie en autorisatie, zodat uw mobiele apps gebruikers kunnen ondertekenen zonder code in App Service te wijzigen. Het biedt een eenvoudige manier om uw toepassing te beveiligen en te werken met gegevens per gebruiker. 
 

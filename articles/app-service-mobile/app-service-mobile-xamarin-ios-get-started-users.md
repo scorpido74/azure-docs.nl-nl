@@ -1,25 +1,17 @@
 ---
-title: Aan de slag met verificatie voor Mobile Apps in Xamarin iOS
-description: Meer informatie over het gebruik van Mobile Apps voor het verifiëren van gebruikers van uw Xamarin iOS-app via verschillende id-providers, waaronder AAD, Google, Facebook, Twitter en micro soft.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Aan de slag met authenticatie in Xamarin iOS
+description: Meer informatie over het gebruik van Mobile Apps voor het verifiëren van gebruikers van uw Xamarin iOS-app met id-providers zoals AAD, Google, Facebook, Twitter en micro soft.
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 859c2d4cc1c2be7b4e96a955e78dc0339875c96f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f2c78c3d4b18e7c662c4f7345938ddab377229b
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388345"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668266"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Authenticatie toevoegen aan uw Xamarin.iOS-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388345"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 
@@ -46,7 +38,7 @@ Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app.
 
 2. Klik op de menu optie voor **verificatie/autorisatie** .
 
-3. Voer in de **toegestane externe omleidings-url's**`url_scheme_of_your_app://easyauth.callback` in.  De **url_scheme_of_your_app** in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
+3. In de **toegestane externe omleidings-url's**voert u `url_scheme_of_your_app://easyauth.callback`in.  De **url_scheme_of_your_app** in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
 
 4. Klik op **OK**.
 
@@ -64,7 +56,7 @@ Vervolgens werkt u de client-app bij om resources op te vragen bij de back-end v
 ## <a name="add-authentication-to-the-app"></a>Verificatie toevoegen aan de app
 In deze sectie wijzigt u de app zodat er een aanmeldings scherm wordt weer gegeven voordat gegevens worden weer gegeven. Wanneer de app wordt gestart, wordt er geen verbinding gemaakt met uw App Service en worden er geen gegevens weer gegeven. Na de eerste keer dat de gebruiker de vernieuwings beweging heeft uitgevoerd, wordt het aanmeldings scherm weer gegeven. Nadat de aanmelding is geslaagd, wordt de lijst met TODO-items weer gegeven.
 
-1. Open in het client project het bestand **QSTodoService.cs** en voeg het volgende toe met behulp van de instructie en `MobileServiceUser` met de accessor voor de klasse QSTodoService:
+1. Open in het client project het bestand **QSTodoService.cs** en voeg het volgende toe met de instructie en `MobileServiceUser` met accessor aan de klasse QSTodoService:
 
     ```csharp
     using UIKit;

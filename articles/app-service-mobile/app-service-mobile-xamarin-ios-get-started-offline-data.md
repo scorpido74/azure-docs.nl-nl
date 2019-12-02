@@ -1,25 +1,17 @@
 ---
-title: Offline synchronisatie inschakelen voor uw mobiele Azure-app (Xamarin iOS)
-description: Meer informatie over het gebruik van App Service mobiele app om offline gegevens in uw Xamarin iOS-toepassing in de cache op te slaan en te synchroniseren
-documentationcenter: xamarin
-author: elamalani
-manager: cfowler
-editor: ''
-services: app-service\mobile
+title: Offline synchronisatie inschakelen (Xamarin iOS)
+description: Meer informatie over het gebruik van App Service mobiele app om offline gegevens in de iOS-toepassing in uw Xamarin op te slaan en te synchroniseren.
 ms.assetid: 828a287c-5d58-4540-9527-1309ebb0f32b
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: fc4fd639f364a0d0852ed066d26eb0e3cf73e68c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 615f8f028182178928d3d755c102daceef402ef4
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388375"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668254"
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>Offlinesynchronisatie inschakelen voor uw mobiele Xamarin.iOS-app
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

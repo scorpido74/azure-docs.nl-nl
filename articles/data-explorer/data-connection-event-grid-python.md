@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 11ae18714d1806aac1cc4f55ce6511fc12498440
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 16f944146cf97666fd9866607ff436a49d5fb031
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800435"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667728"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-python"></a>Een Event Grid gegevens verbinding maken voor Azure Data Explorer met behulp van python
 
@@ -20,19 +20,16 @@ ms.locfileid: "72800435"
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
+> * [Azure Resource Manager-sjabloon](data-connection-event-grid-resource-manager.md)
 
 Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt opname (gegevens laden) van Event Hubs, IoT hubs en blobs die zijn geschreven naar BLOB-containers. In dit artikel maakt u een Event Grid gegevens verbinding voor Azure Data Explorer met behulp van python.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-
 * [Een cluster en data base](create-cluster-database-csharp.md) maken
-
 * [Tabel-en kolom toewijzing](net-standard-ingest-data.md#create-a-table-on-your-test-cluster) maken
-
 * [Data Base-en tabel beleid](database-table-policies-csharp.md) instellen (optioneel)
-
 * Maak een [opslag account met een event grid-abonnement](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
@@ -91,7 +88,7 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | client_secret | *xxxxxxxxxxxxxx* | Het client geheim van de toepassing die toegang heeft tot bronnen in uw Tenant. |
 | resource_group_name | *testrg* | De naam van de resource groep die het cluster bevat.|
 | cluster_name | *mykustocluster* | De naam van uw cluster.|
-| database | *mykustodatabase* | De naam van de doel database in uw cluster.|
+| database_name | *mykustodatabase* | De naam van de doel database in uw cluster.|
 | data_connection_name | *myeventhubconnect* | De gewenste naam van uw gegevens verbinding.|
 | table_name | *StormEvents* | De naam van de doel tabel in de doel database.|
 | mapping_rule_name | *StormEvents_CSV_Mapping* | De naam van de kolom toewijzing die is gerelateerd aan de doel tabel.|

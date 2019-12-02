@@ -1,25 +1,17 @@
 ---
-title: Aan de slag met verificatie voor Mobile Apps in Xamarin Forms-app | Microsoft Docs
-description: Meer informatie over het gebruik van Mobile Apps voor het verifiëren van gebruikers van uw Xamarin Forms-app via verschillende id-providers, waaronder AAD, Google, Facebook, Twitter en micro soft.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Aan de slag met authenticatie in Xamarin Forms-app
+description: Meer informatie over het gebruik van Mobile Apps voor het verifiëren van gebruikers van uw Xamarin Forms-app met id-providers zoals AAD, Google, Facebook, Twitter en micro soft.
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: d9bd698535b09ecb5c484eefcbe31228eb99e04f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 90d26d6469c5f3e238ac2410cdccb8ef5e0c160f
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388410"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668332"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Verificatie toevoegen aan uw Xamarin Forms-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388410"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 In dit onderwerp wordt beschreven hoe u gebruikers van een mobiele app van App Service kunt verifiëren vanuit uw client toepassing. In deze zelf studie voegt u verificatie toe aan het Quick start-project van Xamarin-formulieren met behulp van een id-provider die wordt ondersteund door App Service. Nadat de verificatie is voltooid en geautoriseerd door uw mobiele app, wordt de waarde voor de gebruikers-ID weer gegeven en kunt u toegang krijgen tot beperkte tabel gegevens.
@@ -48,7 +40,7 @@ Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app.
 
 2. Klik op de menu optie voor **verificatie/autorisatie** .
 
-3. Voer in de **toegestane externe omleidings-url's**`url_scheme_of_your_app://easyauth.callback` in.  De **url_scheme_of_your_app** in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
+3. In de **toegestane externe omleidings-url's**voert u `url_scheme_of_your_app://easyauth.callback`in.  De **url_scheme_of_your_app** in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
 
 4. Klik op **OK**.
 
@@ -64,10 +56,10 @@ Als u wilt verifiëren met een Xamarin Forms-project, definieert u een **IAuthen
 
 Implementeer de **IAuthenticate** -interface voor elk platform dat wordt ondersteund door uw app.
 
-1. Open in Visual Studio of Xamarin Studio App.cs van het project met een **draag bare** naam, een draagbaar Class Library-project en voeg de volgende `using`-instructie toe:
+1. Open in Visual Studio of Xamarin Studio App.cs van het project met een **draag bare** naam, een draagbaar Class Library-project en voeg vervolgens de volgende `using`-instructie toe:
 
         using System.Threading.Tasks;
-2. Voeg in App.cs de volgende `IAuthenticate`-interface definitie direct voor de definitie van de `App`-klasse.
+2. Voeg in App.cs de volgende `IAuthenticate` interface definitie direct voor de definitie van de `App`-klasse toe.
 
         public interface IAuthenticate
         {
@@ -172,7 +164,7 @@ In deze sectie wordt uitgelegd hoe u de **IAuthenticate** -interface in het Andr
 
     Als u een andere ID-provider dan Facebook gebruikt, kiest u een andere waarde voor [MobileServiceAuthenticationProvider][7].
 
-6. Werk het bestand **AndroidManifest. XML** bij door de volgende XML toe te voegen in het element `<application>`:
+6. Werk het bestand **AndroidManifest. XML** bij door de volgende XML toe te voegen in het `<application>`-element:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
@@ -257,7 +249,7 @@ In deze sectie wordt uitgelegd hoe u de **IAuthenticate** -interface in het IOS-
             return TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(url);
         }
    
-7. Voeg de volgende regel code toe aan de methode **FinishedLaunching** vóór de aanroep van `LoadApplication()`:
+7. Voeg de volgende regel code toe aan de methode **FinishedLaunching** voordat de aanroep van `LoadApplication()`:
 
         App.Init(this);
 
@@ -279,7 +271,7 @@ In deze sectie wordt uitgelegd hoe u de **IAuthenticate** -interface implementee
         using Windows.UI.Popups;
         using <your_Portable_Class_Library_namespace>;
 
-    Vervang `<your_Portable_Class_Library_namespace>` door de naam ruimte voor uw draag bare klassen bibliotheek.
+    Vervang `<your_Portable_Class_Library_namespace>` door de naam ruimte voor uw Portable Class-bibliotheek.
 4. Werk de **Mainpage** -klasse voor het implementeren van de **IAuthenticate** -interface als volgt bij:
 
         public sealed partial class MainPage : IAuthenticate
@@ -321,12 +313,12 @@ In deze sectie wordt uitgelegd hoe u de **IAuthenticate** -interface implementee
 
     Als u een andere ID-provider dan Facebook gebruikt, kiest u een andere waarde voor [MobileServiceAuthenticationProvider][7].
 
-1. Voeg de volgende regel code toe aan de constructor voor de klasse **Mainpage** voordat u de aanroep van `LoadApplication()`:
+1. Voeg de volgende regel code in de constructor voor de klasse **Mainpage** toe vóór de aanroep van `LoadApplication()`:
 
         // Initialize the authenticator before loading the app.
         <your_Portable_Class_Library_namespace>.App.Init(this);
 
-    Vervang `<your_Portable_Class_Library_namespace>` door de naam ruimte voor uw draag bare klassen bibliotheek.
+    Vervang `<your_Portable_Class_Library_namespace>` door de naam ruimte voor uw Portable Class-bibliotheek.
 
 3. Als u **UWP**gebruikt, voegt u de volgende **OnActivated** -methode onderdrukking toe aan de **app** -klasse:
 

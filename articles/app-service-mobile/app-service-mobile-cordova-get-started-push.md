@@ -1,25 +1,17 @@
 ---
-title: Push meldingen toevoegen aan een Apache Cordova-app met de functie Mobile Apps van Azure App Service | Microsoft Docs
+title: Push meldingen toevoegen aan een Apache Cordova-app
 description: Meer informatie over het gebruik van Mobile Apps voor het verzenden van push meldingen naar uw Apache Cordova-app.
-services: app-service\mobile
-documentationcenter: javascript
-manager: crdun
-editor: ''
-author: elamalani
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 7a7e64b32a084075fe96cbd4ab7a0d28fc0f8e19
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 6ec214c0f1a4f8333bf88790de8d2936fce39002
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388870"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668916"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Push meldingen toevoegen aan uw Apache Cordova-app
 
@@ -28,7 +20,7 @@ ms.locfileid: "72388870"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 
@@ -87,9 +79,9 @@ Voer de volgende opdracht uit:
 
 **Vanuit Visual Studio:**
 
-1. Open het bestand `config.xml` in Solution Explorer. Selecteer vervolgens **invoeg toepassingen** > **aangepast**. Selecteer vervolgens **Git** als de installatie bron.
+1. Open in Solution Explorer het `config.xml` bestand. Selecteer vervolgens **invoeg toepassingen** > **aangepast**. Selecteer vervolgens **Git** als de installatie bron.
 
-2. Geef `https://github.com/phonegap/phonegap-plugin-push` op als bron.
+2. Voer `https://github.com/phonegap/phonegap-plugin-push` in als bron.
 
     ![Open het bestand config. XML in Solution Explorer][img1]
 
@@ -106,7 +98,7 @@ De push-invoeg toepassing is nu geïnstalleerd.
 
 #### <a name="install-the-device-plugin"></a>De invoeg toepassing voor apparaten installeren
 
-Volg dezelfde procedure die u hebt gebruikt voor het installeren van de push-invoeg toepassing. Voeg de invoeg toepassing voor het apparaat toe vanuit de lijst core-invoeg toepassingen. (Als u het wilt zoeken, selecteert u **Plugins** > **kern**.) U hebt deze invoeg toepassing nodig om de platform naam op te halen.
+Volg dezelfde procedure die u hebt gebruikt voor het installeren van de push-invoeg toepassing. Voeg de invoeg toepassing voor het apparaat toe vanuit de lijst core-invoeg toepassingen. (Als u het wilt zoeken, selecteert u **Plugins** > **core**.) U hebt deze invoeg toepassing nodig om de platform naam op te halen.
 
 #### <a name="register-your-device-when-the-application-starts"></a>Uw apparaat registreren wanneer de toepassing wordt gestart 
 
@@ -223,7 +215,7 @@ pushRegistration = PushNotification.init({
 Voordat u uw toepassing kunt implementeren op uw Android-apparaat, moet u USB-fout opsporing inschakelen. Voer de volgende stappen uit op uw Android-telefoon:
 
 1. Ga naar **instellingen** > **over de telefoon**. Tik vervolgens op het **buildnummer** totdat de ontwikkelaars modus is ingeschakeld (ongeveer zeven keer).
-2. Terug in **instellingen** > **Opties voor ontwikkel aars**, Schakel **USB-fout opsporing**in. Verbind vervolgens uw Android-telefoon met uw ontwikkel computer met een USB-kabel.
+2. Schakel terug in **instellingen** > **ontwikkelaars opties**in om **USB-fout opsporing**in te scha kelen. Verbind vervolgens uw Android-telefoon met uw ontwikkel computer met een USB-kabel.
 
 We hebben dit getest met behulp van een Google Nexus 5X-apparaat met Android 6,0 (Marshmallow). De technieken zijn echter gebruikelijk in alle moderne Android-versies.
 
@@ -231,7 +223,7 @@ We hebben dit getest met behulp van een Google Nexus 5X-apparaat met Android 6,0
 
 De push-invoeg toepassing is afhankelijk van Android Google Play Services voor push meldingen.
 
-1. Selecteer in Visual Studio **extra** > **Android**- > **Android SDK Manager**. Vouw vervolgens de map **extra's** uit. Schakel de juiste selectie vakjes in om ervoor te zorgen dat elk van de volgende Sdk's is geïnstalleerd:
+1. Selecteer in Visual Studio **Hulpprogram ma's** > **ANDROID** > **Android SDK Manager**. Vouw vervolgens de map **extra's** uit. Schakel de juiste selectie vakjes in om ervoor te zorgen dat elk van de volgende Sdk's is geïnstalleerd:
 
    * Android 2,3 of hoger
    * Google repository revisie 27 of hoger
@@ -257,7 +249,7 @@ U kunt nu Push meldingen testen door de app uit te voeren en items in de tabel T
 
     Als u een snellere x86-emulator wilt gebruiken, [installeert u het HAXM-stuur programma][11]en configureert u de emulator om het te gebruiken.
 
-    Voeg een Google-account toe aan het Android-apparaat door **apps**te selecteren  > **instellingen** > **account toevoegen**. Volg vervolgens de aanwijzingen.
+    Voeg een Google-account toe aan het Android-apparaat door **apps** te selecteren > **instellingen** > **account toevoegen**. Volg vervolgens de aanwijzingen.
 
     ![Een Google-account toevoegen aan het Android-apparaat](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
@@ -280,7 +272,7 @@ Zorg ervoor dat u de app voor iOS kunt bouwen. De stappen in de installatie hand
 
 #### <a name="find-the-id-to-use-as-your-app-id"></a>De ID zoeken die moet worden gebruikt als uw app-ID
 
-Voordat u uw app voor push meldingen registreert, opent u config. XML in uw Cordova-app, zoekt u de kenmerk waarde `id` in het widget-element en kopieert u deze voor later gebruik. De ID van de volgende XML-code is `io.cordova.myapp7777777`.
+Voordat u uw app voor push meldingen registreert, opent u config. XML in uw Cordova-app, zoekt u de waarde van het `id` kenmerk in het widget-element en kopieert u dit voor later gebruik. De ID van de volgende XML-code is `io.cordova.myapp7777777`.
 
 ```xml
 <widget defaultlocale="en-US" id="io.cordova.myapp7777777"
@@ -306,7 +298,7 @@ Als de App-ID die u hebt gemaakt in uw Apple Developer-account al overeenkomt me
 
 1. Verwijder de map platforms uit uw project.
 2. Verwijder de map plugins uit uw project.
-3. Verwijder de map node_modules uit uw project.
+3. Verwijder de node_modules map uit uw project.
 4. Werk het kenmerk id van het element widget in het bestand config. XML bij om de App-ID te gebruiken die u hebt gemaakt in uw Apple Developer-account.
 5. Bouw het project opnieuw op.
 

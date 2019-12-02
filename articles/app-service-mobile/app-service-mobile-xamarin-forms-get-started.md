@@ -1,24 +1,17 @@
 ---
-title: Aan de slag met Mobile Apps met behulp van Xamarin.Forms
+title: Aan de slag met Xamarin. Forms
 description: Volg deze zelfstudie om aan de slag te gaan met Mobile Apps voor Xamarin.Forms-ontwikkeling
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: e891bc34840e8c8bb61be1a9da607c43a93f2d17
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 69a9b3294bf080f7ae1516b0acbfc4be077518f4
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388451"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668654"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Een Xamarin.Forms-app maken met Azure
 
@@ -27,7 +20,7 @@ ms.locfileid: "72388451"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 Deze zelfstudie laat zien hoe u een cloudgebaseerde back-endservice toevoegt aan een mobiele Xamarin.Forms-app door de functie Mobile Apps van Azure App Service als de back-end te gebruiken. U maakt zowel een nieuwe back-end voor Mobile Apps als een eenvoudige Xamarin.Forms-app voor takenlijsten die app-gegevens opslaat in Azure.
@@ -60,7 +53,7 @@ De Visual Studio Tools voor Xamarin zijn vereist om de oplossing te openen. Zie 
 
 2. Open het bestand `Constants.cs` in deze map-xamarin. Forms/ZUMOAPPNAME. De naam van de toepassing is `ZUMOAPPNAME`.
 
-3. Vervang in de klasse `Constants.cs` `ZUMOAPPURL`-variabele met een openbaar eind punt hierboven.
+3. Vervang `ZUMOAPPURL` variabele met open bare eind punt in `Constants.cs`-klasse.
 
     `public static string ApplicationURL = @"ZUMOAPPURL";`
 

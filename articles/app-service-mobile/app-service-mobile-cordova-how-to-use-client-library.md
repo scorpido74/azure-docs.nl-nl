@@ -1,25 +1,17 @@
 ---
-title: Apache Cordova-invoeg toepassing voor Azure Mobile Apps gebruiken
+title: Apache Cordova-invoeg toepassing gebruiken
 description: Apache Cordova-invoeg toepassing voor Azure Mobile Apps gebruiken
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 25bff77da6c2bd89916fe40ebb153ff9631e62eb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ecca8f719a01abe68b368987fce4ea883193e844
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388795"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668511"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Apache Cordova-client bibliotheek gebruiken voor Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388795"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 Deze hand leiding leert u veelvoorkomende scenario's uit te voeren met behulp van de nieuwste [Apache Cordova-invoeg toepassing voor Azure Mobile apps]. Als u nog geen ervaring hebt met Azure Mobile Apps, voltooit u eerst [azure Mobile Apps Quick Start] om een back-end te maken, een tabel te maken en een vooraf gebouwd Apache Cordova-project te downloaden. In deze hand leiding richten we ons op de client-side Apache Cordova-invoeg toepassing.
@@ -130,7 +122,7 @@ Voeg deze loop back-Url's ook toe aan de CORS-instellingen voor uw App Service:
 Het duurt ongeveer 10-15 seconden voordat de nieuwe instellingen van kracht worden.
 
 ## <a name="register-for-push"></a>Procedure: registreren voor push meldingen
-Installeer de [PhoneGap-invoeg toepassing-push] om Push meldingen te verwerken.  Deze invoeg toepassing kan eenvoudig worden toegevoegd met behulp van de `cordova plugin add`-opdracht op de opdracht regel of via het installatie programma voor de Git-invoeg toepassing in Visual Studio.  Met de volgende code in uw Apache Cordova-app wordt uw apparaat voor push meldingen geregistreerd:
+Installeer de [PhoneGap-invoeg toepassing-push] om Push meldingen te verwerken.  Deze invoeg toepassing kan eenvoudig worden toegevoegd met behulp van de `cordova plugin add` opdracht op de opdracht regel of via het installatie programma voor de Git-invoeg toepassing in Visual Studio.  Met de volgende code in uw Apache Cordova-app wordt uw apparaat voor push meldingen geregistreerd:
 
 ```javascript
 var pushOptions = {

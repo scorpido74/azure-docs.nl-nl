@@ -1,25 +1,17 @@
 ---
-title: Offline synchronisatie met mobiele iOS-apps inschakelen | Microsoft Docs
+title: Offline synchronisatie inschakelen (iOS)
 description: Meer informatie over het gebruik van Azure App Service mobiele apps voor het opslaan en synchroniseren van offline gegevens in iOS-toepassingen.
-documentationcenter: ios
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: f29a28f9a80b64ef0a6890fa8fc7ecd0ca205e66
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388760"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668480"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Offline synchronisatie met mobiele iOS-apps inschakelen
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -47,7 +39,7 @@ In **QSTodoService. m** (objectief-C) of **ToDoTableViewController. Swift** (SWI
 
 Voordat een tabel bewerking kan worden uitgevoerd, moet het lokale archief worden geïnitialiseerd. Dit is de relevante code:
 
-* **Objective-C**. In de methode **QSTodoService. init** :
+* **Doel-C**. In de methode **QSTodoService. init** :
 
    ```objc
    MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
@@ -65,7 +57,7 @@ Voordat een tabel bewerking kan worden uitgevoerd, moet het lokale archief worde
 
 Nu gaan we de daad werkelijke synchronisatie bewerking uitvoeren en gegevens ophalen van de externe back-end:
 
-* **Objective-C**. `syncData` worden eerst nieuwe wijzigingen gepusht en vervolgens **pullData** aangeroepen om gegevens op te halen van de externe back-end. De methode **pullData** haalt op zijn beurt nieuwe gegevens op die overeenkomen met een query:
+* **Doel-C**. `syncData` worden eerst nieuwe wijzigingen gepusht en vervolgens **pullData** aangeroepen om gegevens op te halen van de externe back-end. De methode **pullData** haalt op zijn beurt nieuwe gegevens op die overeenkomen met een query:
 
    ```objc
    -(void)syncData:(QSCompletionBlock)completion
@@ -145,7 +137,7 @@ Omdat de app wordt gesynchroniseerd wanneer gegevens worden gewijzigd (doel-C) o
 ## <a name="review-core-data"></a>Het kern gegevens model controleren
 Wanneer u het offline archief met de basis gegevens gebruikt, moet u bepaalde tabellen en velden in uw gegevens model definiëren. De voor beeld-app bevat al een gegevens model met de juiste indeling. In deze sectie worden deze tabellen door lopen om te laten zien hoe ze worden gebruikt.
 
-Open **QSDataModel.xcdatamodeld**. Er zijn vier tabellen gedefinieerd: drie die worden gebruikt door de SDK en een die wordt gebruikt voor de taak items zelf:
+Open **QSDataModel. xcdatamodeld**. Er zijn vier tabellen gedefinieerd: drie die worden gebruikt door de SDK en een die wordt gebruikt voor de taak items zelf:
   * MS_TableOperations: houdt de items bij die moeten worden gesynchroniseerd met de server.
   * MS_TableOperationErrors: houdt eventuele fouten bij die optreden tijdens de offline synchronisatie.
   * MS_TableConfig: houdt de laatst bijgewerkte tijd bij voor de laatste synchronisatie bewerking voor alle pull-bewerkingen.
@@ -166,11 +158,11 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 
 | Kenmerk | Type |
 | --- | --- |
-| id | Integer 64 |
+| id | Geheel getal 64 |
 | itemId | Tekenreeks |
-| properties | Binary Data |
-| table | Tekenreeks |
-| tableKind | Integer 16 |
+| properties | Binaire gegevens |
+| tabel | Tekenreeks |
+| tableKind | Geheel getal 16 |
 
 
 **MS_TableOperationErrors**
@@ -180,9 +172,9 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 | Kenmerk | Type |
 | --- | --- |
 | id |Tekenreeks |
-| operationId |Integer 64 |
-| properties |Binary Data |
-| tableKind |Integer 16 |
+| operationId |Geheel getal 64 |
+| properties |Binaire gegevens |
+| tableKind |Geheel getal 16 |
 
  **MS_TableConfig**
 
@@ -192,8 +184,8 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 | --- | --- |
 | id |Tekenreeks |
 | sleutel |Tekenreeks |
-| keyType |Integer 64 |
-| table |Tekenreeks |
+| keyType |Geheel getal 64 |
+| tabel |Tekenreeks |
 | waarde |Tekenreeks |
 
 ### <a name="data-table"></a>Gegevens tabel
@@ -205,14 +197,14 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 | id | Teken reeks, gemarkeerd als vereist |Primaire sleutel in externe opslag |
 | aangevuld | Booleaans | Veld taak item |
 | tekst |Tekenreeks |Veld taak item |
-| createdAt | Date | Beschrijving Verwijst naar de systeem eigenschap **createdAt** |
-| updatedAt | Date | Beschrijving Verwijst naar de systeem eigenschap **updatedAt** |
-| version | Tekenreeks | Beschrijving Wordt gebruikt om conflicten te detecteren, toegewezen aan versie |
+| createdAt | Datum | Beschrijving Verwijst naar de systeem eigenschap **createdAt** |
+| updatedAt | Datum | Beschrijving Verwijst naar de systeem eigenschap **updatedAt** |
+| versie | Tekenreeks | Beschrijving Wordt gebruikt om conflicten te detecteren, toegewezen aan versie |
 
 ## <a name="setup-sync"></a>Het synchronisatie gedrag van de App wijzigen
 In deze sectie wijzigt u de app zodat deze niet wordt gesynchroniseerd bij het starten van de app of wanneer u items invoegt en bijwerkt. Het wordt alleen gesynchroniseerd wanneer de knop beweging vernieuwen wordt uitgevoerd.
 
-**Objective-C**:
+**Doel-C**:
 
 1. Wijzig in **QSTodoListViewController. m**de methode **viewDidLoad** om de aanroep naar `[self refresh]` te verwijderen aan het einde van de methode. De gegevens worden nu niet gesynchroniseerd met de server op de app starten. In plaats daarvan wordt het gesynchroniseerd met de inhoud van het lokale archief.
 2. In **QSTodoService. m**wijzigt u de definitie van `addItem` zodat deze niet wordt gesynchroniseerd nadat het item is ingevoegd. Verwijder het `self syncData` blok en vervang dit door het volgende:
@@ -243,7 +235,7 @@ In deze sectie maakt u verbinding met een ongeldige URL om een offline scenario 
 
 1. Wijzig de URL van de mobiele app in **QSTodoService. m** in een ongeldige URL en voer de app opnieuw uit:
 
-   **Objective-C**. In QSTodoService. m:
+   **Doel-C**. In QSTodoService. m:
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```

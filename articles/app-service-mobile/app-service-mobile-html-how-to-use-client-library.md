@@ -1,25 +1,17 @@
 ---
-title: De Java script-SDK voor Azure Mobile Apps gebruiken
+title: De Java script-SDK gebruiken
 description: V voor Azure Mobile Apps gebruiken
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 8a22de6b3e518bb3c9392d7fd64411969b32f33f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f70523b5b27a4f3db86bacf39469e233e43f807
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388737"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668833"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>De Java script-client bibliotheek voor Azure-Mobile Apps gebruiken
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388737"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 Deze hand leiding leert u veelvoorkomende scenario's uit te voeren met behulp van de nieuwste [Java script-SDK voor Azure Mobile Apps]. Als u nog geen ervaring hebt met Azure Mobile Apps, voltooit u eerst [azure Mobile Apps Quick Start] om een back-end te maken en een tabel te maken. In deze hand leiding richten we ons op het gebruik van de mobiele back-end in HTML/Java script-webtoepassingen.
@@ -40,7 +32,7 @@ Het pakket wordt gedistribueerd als een universele java script-module, zodat het
 ## <a name="Setup"></a>Installatie en vereisten
 In deze hand leiding wordt ervan uitgegaan dat u een back-end hebt gemaakt met een tabel. In deze hand leiding wordt ervan uitgegaan dat de tabel hetzelfde schema heeft als de tabellen in deze zelf studies.
 
-U kunt de Azure Mobile Apps java script SDK installeren met behulp van de `npm`-opdracht:
+U kunt de Azure Mobile Apps java script SDK installeren met behulp van de `npm` opdracht:
 
 ```
 npm install azure-mobile-apps-client --save
@@ -92,7 +84,7 @@ Lokaal uitvoeren kan problemen veroorzaken omdat App Service verificatie standaa
              "https://localhost:3000"
          ],
 
-    Vervang de Url's in de matrix door de Url's van uw service, die in dit voor beeld `http://localhost:3000` zijn voor de lokale node. js-voorbeeld service. U kunt ook `http://localhost:4400` gebruiken voor de rimpel-service of een andere URL, afhankelijk van de configuratie van uw app.
+    Vervang de Url's in de matrix door de Url's van uw service, die in dit voor beeld `http://localhost:3000` voor de lokale node. js-voorbeeld service. U kunt ook `http://localhost:4400` gebruiken voor de rimpel-service of een andere URL, afhankelijk van de configuratie van uw app.
 8. Klik boven aan de pagina op **lezen/schrijven**en klik vervolgens op **put** om uw updates op te slaan.
 
 U moet ook dezelfde loop back-Url's toevoegen aan de CORS white list-instellingen:

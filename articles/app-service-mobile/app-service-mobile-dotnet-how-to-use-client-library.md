@@ -1,25 +1,17 @@
 ---
-title: Werken met de App Service Mobile Apps beheerde client bibliotheek | Microsoft Docs
+title: Werken met de beheerde client bibliotheek
 description: Meer informatie over het gebruik van de .NET-client bibliotheek voor Azure App Service Mobile Apps met Windows-en Xamarin-apps.
-services: app-service\mobile
-documentationcenter: ''
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 1a56c6eed8b6a78587ea272c44f01d16e8a2b88d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 741d286126bedb8b92828486927283fa9887658e
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388705"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668472"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>De beheerde client gebruiken voor Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -42,7 +34,7 @@ Het .NET-platform ondersteunt de volgende platforms:
 * Xamarin Android-releases voor API 19 tot 24 (KitKat via Nougat)
 * Xamarin iOS-releases voor iOS-versies 8,0 en hoger
 * Universeel Windows-platform
-* Windows Phone 8.1
+* Windows Phone 8,1
 * Windows Phone 8,0, met uitzonde ring van Silverlight-toepassingen
 
 De verificatie server stroom gebruikt een webweergave voor de weer gegeven gebruikers interface.  Als het apparaat geen gebruikers interface voor webweergave kan presen teren, zijn er andere verificatie methoden nodig.  Deze SDK is dus niet geschikt voor controle-en soort gelijke apparaten.
@@ -67,7 +59,7 @@ public class TodoItem
 
 De [JsonPropertyAttribute][6] wordt gebruikt voor het definiëren van de toewijzing van de naam van de *eigenschap* tussen het veld client en het tabel veld.
 
-Zie het [onderwerp .NET Server SDK][7] of het [onderwerp node. js Server SDK][8]voor meer informatie over het maken van tabellen in uw Mobile apps back-end. Als u de back-end van uw mobiele app hebt gemaakt in de Azure Portal met behulp van Quick Start, kunt u ook de instelling **eenvoudige tabellen** gebruiken in de [Azure Portal].
+Zie het [onderwerp .NET Server SDK][7] of het [onderwerp node. js Server SDK][8]voor meer informatie over het maken van tabellen in uw Mobile apps back-end. Als u de back-end van uw mobiele app hebt gemaakt in de Azure Portal met behulp van Quick Start, kunt u ook de instelling **eenvoudige tabellen** gebruiken in de [Azure-portal].
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Procedure: het SDK-pakket voor beheerde clients installeren
 Gebruik een van de volgende methoden om het beheerde client SDK-pakket voor Mobile Apps te installeren vanuit [NuGet][9]:
@@ -94,7 +86,7 @@ Met de volgende code wordt het [mobileserviceclient te maken][12] -object gemaak
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-Vervang in de voor gaande code `MOBILE_APP_URL` door de URL van de back-end van de mobiele app. deze vindt u in de Blade voor de back-end van uw mobiele app in de [Azure Portal]. Het Mobileserviceclient te maken-object moet een singleton zijn.
+Vervang in de voor gaande code `MOBILE_APP_URL` door de URL van de back-end van de mobiele app. deze vindt u in de Blade voor de back-end van uw mobiele app in de [Azure-portal]. Het Mobileserviceclient te maken-object moet een singleton zijn.
 
 ## <a name="work-with-tables"></a>Werken met tabellen
 De volgende sectie bevat informatie over het zoeken en ophalen van records en het wijzigen van de gegevens in de tabel.  De volgende onderwerpen komen aan bod:
@@ -335,7 +327,7 @@ Mobile Apps ondersteunt unieke aangepaste teken reeks waarden voor de **id-** ko
 * Records kunnen gemakkelijker worden samengevoegd vanuit verschillende tabellen of data bases.
 * Id-waarden kunnen beter worden geïntegreerd met de logica van een toepassing.
 
-Wanneer een teken reeks-ID-waarde niet is ingesteld voor een ingevoegde record, genereert de back-end van de mobiele app een unieke waarde voor de ID. U kunt de methode [Guid.NewGuid] gebruiken om uw eigen id-waarden te genereren, hetzij op de client hetzij in de back-end.
+Wanneer een teken reeks-ID-waarde niet is ingesteld voor een ingevoegde record, genereert de back-end van de mobiele app een unieke waarde voor de ID. U kunt de methode [GUID. NewGuid] gebruiken om uw eigen id-waarden te genereren, hetzij op de client hetzij in de back-end.
 
 ```csharp
 JObject jo = new JObject();
@@ -636,7 +628,7 @@ Twee verificatie stromen worden ondersteund: door de *client beheerde* en *Serve
 > [!NOTE]
 > We raden u aan een door de client beheerde stroom te gebruiken in uw productie-apps.
 
-Als u verificatie wilt instellen, moet u uw app registreren bij een of meer id-providers.  De ID-provider genereert een client-ID en een client geheim voor uw app.  Deze waarden worden vervolgens ingesteld op uw back-end om Azure App Service verificatie/autorisatie in te scha kelen.  Voor meer informatie, volgt u de gedetailleerde instructies in de zelfstudie [Verificatie toevoegen aan uw app].
+Als u verificatie wilt instellen, moet u uw app registreren bij een of meer id-providers.  De ID-provider genereert een client-ID en een client geheim voor uw app.  Deze waarden worden vervolgens ingesteld op uw back-end om Azure App Service verificatie/autorisatie in te scha kelen.  Volg de gedetailleerde instructies in de zelf studie [verificatie toevoegen aan uw app]voor meer informatie.
 
 In deze sectie komen de volgende onderwerpen aan bod:
 
@@ -659,7 +651,7 @@ U kunt de Active Directory Authentication Library (ADAL) gebruiken voor het init
 2. Open in Visual Studio of Xamarin Studio het project en voeg een verwijzing naar het NuGet-pakket van `Microsoft.IdentityModel.Clients.ActiveDirectory` toe. Bij het zoeken van voorlopige versies bevatten.
 3. Voeg de volgende code toe aan uw toepassing, afhankelijk van het platform dat u gebruikt. Voer in elk de volgende vervangingen uit:
 
-   * Vervang de **INVOEG instantie** door de naam van de Tenant waarin u uw toepassing hebt ingericht. De notatie moet https://login.microsoftonline.com/contoso.onmicrosoft.comzijn. Deze waarde kan worden gekopieerd van het tabblad domein in uw Azure Active Directory in de [Azure Portal].
+   * Vervang de **INVOEG instantie** door de naam van de Tenant waarin u uw toepassing hebt ingericht. De notatie moet https://login.microsoftonline.com/contoso.onmicrosoft.com zijn. Deze waarde kan worden gekopieerd van het tabblad domein in uw Azure Active Directory in de [Azure-portal].
    * Vervang de **Insert-resource-id hier** door de client-id voor de back-end van uw mobiele app. U kunt de client-ID verkrijgen via het tabblad **Geavanceerd** onder **Azure Active Directory instellingen** in de portal.
    * Vervang **Insert-client-id-hier** door de client-id die u hebt gekopieerd uit de systeem eigen client toepassing.
    * Vervang **Insert-redirect-Uri-hier** met het */.auth/login/done* -eind punt van uw site met behulp van het HTTPS-schema. Deze waarde moet gelijk zijn aan *https://contoso.azurewebsites.net/.auth/login/done* .
@@ -832,7 +824,7 @@ private async System.Threading.Tasks.Task Authenticate()
 
 Als u een andere ID-provider gebruikt dan Facebook, wijzigt u de waarde van [MobileServiceAuthenticationProvider] in de waarde voor uw provider.
 
-In een server stroom beheert Azure App Service de OAuth-verificatie stroom door de aanmeldings pagina van de geselecteerde provider weer te geven.  Wanneer de ID-provider retourneert, wordt door Azure App Service een App Service-verificatie token gegenereerd. De methode [LoginAsync] retourneert een [MobileServiceUser], die zowel de [UserID] van de geverifieerde gebruiker als de [MobileServiceAuthenticationToken]als een JSON-webtoken (JWT) biedt. Dit token kan worden opgeslagen in de cache en opnieuw worden gebruikt totdat het verloopt. Zie [het verificatie token in de cache opslaan](#caching)voor meer informatie.
+In een server stroom beheert Azure App Service de OAuth-verificatie stroom door de aanmeldings pagina van de geselecteerde provider weer te geven.  Wanneer de ID-provider retourneert, wordt door Azure App Service een App Service-verificatie token gegenereerd. De methode [LoginAsync] retourneert een [MobileServiceUser], die zowel de [Naam] van de geverifieerde gebruiker als de [MobileServiceAuthenticationToken]als een JSON-webtoken (JWT) biedt. Dit token kan worden opgeslagen in de cache en opnieuw worden gebruikt totdat het verloopt. Zie [het verificatie token in de cache opslaan](#caching)voor meer informatie.
 
 ### <a name="caching"></a>Het verificatie token in de cache opslaan
 In sommige gevallen kan de aanroep van de aanmeldings methode worden vermeden na de eerste geslaagde verificatie door het verificatie token van de provider op te slaan.  Microsoft Store-en UWP-apps kunnen [PasswordVault] gebruiken om het huidige verificatie token op te slaan na een geslaagde aanmelding, als volgt:
@@ -870,7 +862,7 @@ client.Logout();
 vault.Remove(vault.Retrieve("Facebook", client.currentUser.UserId));
 ```
 
-Xamarin-apps gebruiken de [Xamarin.Auth] api's om referenties veilig op te slaan in een **account** object. Voor een voor beeld van het gebruik van deze Api's raadpleegt u het [AuthStore.cs] -code bestand in de [ContosoMoments foto sharing](https://github.com/azure-appservice-samples/ContosoMoments)-voor beeld.
+Xamarin-apps gebruiken de [Xamarin. auth] api's om referenties veilig op te slaan in een **account** object. Voor een voor beeld van het gebruik van deze Api's raadpleegt u het [AuthStore.cs] -code bestand in de [ContosoMoments foto sharing](https://github.com/azure-appservice-samples/ContosoMoments)-voor beeld.
 
 Wanneer u door client beheerde verificatie gebruikt, kunt u ook het toegangs token in de cache opslaan dat is opgehaald van uw provider, zoals Facebook of Twitter. Dit token kan als volgt worden verstrekt om een nieuw verificatie token aan te vragen bij de back-end:
 
@@ -904,7 +896,7 @@ private async void InitNotificationsAsync()
 }
 ```
 
-Als u naar WNS pusht, moet u [een Microsoft Store-pakket-sid verkrijgen](#package-sid).  Zie voor meer informatie over Windows-apps, inclusief het registreren voor de sjabloon-registraties [Pushmeldingen toevoegen aan uw app].
+Als u naar WNS pusht, moet u [een Microsoft Store-pakket-sid verkrijgen](#package-sid).  Zie [Pushmeldingen toevoegen aan uw app]voor meer informatie over Windows-apps, onder andere hoe u zich kunt registreren voor sjabloon registraties.
 
 Het aanvragen van tags van de client wordt niet ondersteund.  Label aanvragen worden op de achtergrond verwijderd uit de registratie.
 Als u uw apparaat met tags wilt registreren, maakt u een aangepaste API die gebruikmaakt van de Notification Hubs-API om de registratie namens u uit te voeren.  Roep de aangepaste API aan in plaats van de `RegisterNativeAsync()` methode.
@@ -1071,11 +1063,11 @@ public class MyHandler : DelegatingHandler
 [Selecteren]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
 [Verdergaan]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
-[UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
+[Naam]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Positie]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
-[Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
+[GUID. NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
 [Windows-ontwikkelaars centrum]: https://dev.windows.com/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
@@ -1089,6 +1081,6 @@ public class MyHandler : DelegatingHandler
 [OData v3-documentatie]: https://www.odata.org/documentation/odata-version-3-0/
 [Fiddler]: https://www.telerik.com/fiddler
 [Json.NET]: https://www.newtonsoft.com/json
-[Xamarin.Auth]: https://components.xamarin.com/view/xamarin.auth/
+[Xamarin. auth]: https://components.xamarin.com/view/xamarin.auth/
 [AuthStore.cs]: https://github.com/azure-appservice-samples/ContosoMoments
 [ContosoMoments photo sharing sample]: https://github.com/azure-appservice-samples/ContosoMoments
