@@ -26,6 +26,8 @@
       href: spring-cloud-tutorial-scale-manual.md
     - name: Uw toepassing controleren met behulp van gedistribueerde tracering en App Insights
       href: spring-cloud-tutorial-distributed-tracing.md
+    - name: Spring Cloud-resources bewaken met behulp van waarschuwingen en actiegroepen
+      href: spring-cloud-tutorial-alerts-action-groups.md
     - name: Uw toepassing verbinden met Azure CosmosDB
       href: spring-cloud-tutorial-bind-cosmos.md
     - name: Uw toepassing verbinden met Azure-cache voor Redis
