@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131972"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672590"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
@@ -39,7 +39,17 @@ Voor aanvullende hulp gaat u naar ons op farmbeatssupport@microsoft.com, neemt u
 3. Als er **geen inkomende berichten**zijn, neemt u contact op met de partner van uw apparaat.  
 4. Als er **inkomende berichten**zijn, neemt u contact op met farmbeatssupport@microsoft.com met data hub-en Accelerator logboeken en vastgelegde telemetrie.
 
-Zie de [sectie logs](#collect-logs-manually) van het document voor meer informatie over het downloaden van Logboeken.    
+Zie de [sectie logs](#collect-logs-manually) van het document voor meer informatie over het downloaden van Logboeken.  
+
+### <a name="dont-have-the-eventhub-connection-string"></a>Geen Eventhub-verbindings reeks
+
+**Corrigerende actie**: Ga naar de Datahub Swagger en voer de volgende stappen uit:
+1. Navigeer naar partner-API
+2. Klik op GET-> probeer het uit-> uitvoeren
+3. Noteer de partner-id van de sensor partner die u interesseert
+4. Ga terug naar de partner-API en klik op GET/{id}
+5. Geef de id op uit stap 3 en klik op uitvoeren
+6. De API-reactie moet de EventHub-verbindings reeks hebben
 
 ### <a name="device-appears-offline"></a>Apparaat wordt offline weer gegeven
 
@@ -84,7 +94,7 @@ Dat **wil zeggen**: het apparaat is gekoppeld aan meerdere Sens oren die in de f
 
 ## <a name="accelerator-troubleshooting"></a>Problemen met accelerators oplossen
 
-### <a name="access-control"></a>Toegangsbeheer
+### <a name="access-control"></a>Access Control
 
 **Fout bij het toevoegen van roltoewijzing**
 

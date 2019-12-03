@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/13/2018
-ms.openlocfilehash: 229216ee873ade9418574141017aaf88235ba9e4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d313fed6a61ac98e596e6f8caca8f0e46a8c9600
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820712"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689084"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systeem prestatie meter items in Application Insights
 
@@ -34,7 +34,7 @@ De huidige standaard prestatie meter items die zijn geconfigureerd om te worden 
 - \\privé bytes verwerken
 - \\IO-gegevens bytes per seconde verwerken
 - ASP.NET toepassingen\\aanvragen in de wachtrij van de toepassing
-- Processor (_Totaal)\\percentage processor tijd
+- Processor (_Total)\\percentage processor tijd
 
 ## <a name="add-counters"></a>Items toevoegen
 
@@ -139,7 +139,7 @@ Net als bij andere telemetrie heeft **Performance Counters** ook een kolom `clou
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Prestatie meter items voor toepassingen die worden uitgevoerd in azure Web Apps
 
-Zowel ASP.NET-als ASP.NET Core-toepassingen die zijn geïmplementeerd op Azure Web Apps in een speciale sandbox-omgeving worden uitgevoerd. Deze omgeving staat geen directe toegang tot systeem prestatie meter items toe. Een beperkte subset van tellers wordt echter weer gegeven als omgevings variabelen, zoals [hier](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables)wordt beschreven. Application Insights SDK voor ASP.NET en ASP.NET Core verzamelt prestatie meter items van Azure Web Apps vanuit deze speciale omgevings variabelen. Er is slechts een subset van de prestatie meter items beschikbaar in deze omgeving en de volledige lijst vindt u [hier.](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)
+Zowel ASP.NET-als ASP.NET Core-toepassingen die zijn geïmplementeerd op Azure Web Apps in een speciale sandbox-omgeving worden uitgevoerd. Deze omgeving staat geen directe toegang tot systeem prestatie meter items toe. Een beperkte subset van tellers wordt echter weer gegeven als omgevings variabelen, zoals [hier](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables)wordt beschreven. Application Insights SDK voor ASP.NET en ASP.NET Core verzamelt prestatie meter items van Azure Web Apps vanuit deze speciale omgevings variabelen. Er is slechts een subset van de prestatie meter items beschikbaar in deze omgeving en de volledige lijst vindt u [hier.](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/WEB/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>Prestatie meter items in ASP.NET Core toepassingen
 

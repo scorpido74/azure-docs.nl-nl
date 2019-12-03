@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/02/2016
+ms.date: 2/02/2019
 ms.author: genli
-ms.openlocfilehash: 5ef80ccd01c9c6979fd95d161d97d0dfaab58b24
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0f957c5d59dec06057841a95ec48a54462778a69
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056653"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672486"
 ---
 # <a name="create-a-network-security-group-classic-using-powershell"></a>Een netwerk beveiligings groep (klassiek) maken met behulp van Power shell
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
@@ -65,7 +65,13 @@ De onderstaande Power shell-voorbeeld opdrachten verwachten een eenvoudige omgev
       -SourceAddressPrefix Internet  -SourcePortRange '*' `
       -DestinationAddressPrefix '*' -DestinationPortRange '80'
     ```
+5. De netwerk beveiligings groep aan een subnet koppelen:
 
+    ```powershell   
+    Get-AzureNetworkSecurityGroup -Name "NSG-Frontend" `
+    | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName "TestVNet" `
+    -Subnet "FrontEnd"
+    ```
 ## <a name="create-an-nsg-for-the-back-end-subnet"></a>Een NSG maken voor het back-end-subnet
 
 1. Een netwerk beveiligings groep maken met de naam *NSG-back-end*:
@@ -94,3 +100,9 @@ De onderstaande Power shell-voorbeeld opdrachten verwachten een eenvoudige omgev
       -SourceAddressPrefix '*'  -SourcePortRange '*' `
       -DestinationAddressPrefix Internet -DestinationPortRange '*'
    ```
+4. De netwerk beveiligings groep aan een subnet koppelen:
+    ```powershell   
+    Get-AzureNetworkSecurityGroup -Name "NSG-Backend" `
+    | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName "TestVNet" `
+    -Subnet "BackEnd"
+    ```

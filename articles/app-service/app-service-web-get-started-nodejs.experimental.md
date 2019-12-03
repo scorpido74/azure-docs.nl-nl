@@ -1,25 +1,18 @@
 ---
-title: Een Node.js-web-app maken - Azure App Service | Microsoft Docs
-description: Implementeer in enkele minuten uw eerste Node.js-app (Hallo wereld) in Azure App Service Web Apps.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Snelstartgids: een node. js-web-app maken'
+description: Implementeer in enkele minuten uw eerste node. js-Hallo wereld naar Azure App Service. U implementeert met behulp van een ZIP-pakket, dat een van de vele manieren is om te implementeren in App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7d81dae25b793144bfe044f8434a6df181dbcd1b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+experimental: false
+experiment_id: a231f2b4-2625-4d
+ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067392"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671410"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure
 
@@ -39,7 +32,7 @@ U kunt de onderstaande stappen volgen met behulp van een Mac-, Windows- of Linux
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Maak een map 'snelstart' in de Cloud Shell en ga er vervolgens naartoe.
+Maak een map 'quickstart' in de Cloud Shell en ga er vervolgens naartoe.
 
 ```azurecli-interactive
 mkdir quickstart
@@ -47,7 +40,7 @@ mkdir quickstart
 cd $HOME/quickstart
 ```
 
-Voer vervolgens de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen naar de map 'snelstart'.
+Voer vervolgens de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen naar de map 'quickstart'.
 
 ```azurecli-interactive
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
@@ -71,7 +64,7 @@ Checking connectivity... done.
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-scus.md)]
 
-## <a name="create-a-web-app"></a>Een web-app maken
+## <a name="create-a-web-app"></a>Een webtoepassing maken
 
 Maak in Cloud Shell een web-app in het App Service-plan van `myAppServicePlan` met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create).
 
@@ -113,7 +106,7 @@ Blader naar uw nieuwe web-app. Vervang `<app_name>` door een unieke app-naam.
 http://<app_name>.azurewebsites.net
 ```
 
-Zo zou uw nieuwe web-app er moeten uitzien: ![Lege pagina van web-app](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
+De nieuwe web-app moet er als volgt uitzien: ![lege web-app-pagina](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
 ## <a name="deploy-zip-file"></a>Het ZIP-bestand implementeren
 

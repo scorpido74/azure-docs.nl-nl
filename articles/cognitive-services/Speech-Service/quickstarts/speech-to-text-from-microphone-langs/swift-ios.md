@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 661dd94caa2a1998b26ec1270688c0729011c15a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5bc7ce5cee6235125cf65f492d9294af5214a760
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503624"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672609"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>Snelstartgids: spraak in Swift op iOS herkennen met de Speech SDK
 
@@ -36,7 +36,7 @@ Voordat u aan de slag gaat, hebt u het volgende nodig:
 
 Deze zelf studie werkt niet met een versie van de SDK die ouder is dan 1.6.0.
 
-De Cognitive Services Speech SDK voor iOS wordt gedistribueerd als een framework-bundel. Het kan worden gebruikt in Xcode-projecten als [CocoaPod](https://cocoapods.org/) of worden gedownload van https://aka.ms/csspeech/macosbinary en hand matig worden gekoppeld. In dit artikel wordt gebruikgemaakt van een CocoaPod.
+De Cognitive Services Speech SDK voor iOS wordt gedistribueerd als een framework-bundel. Het kan worden gebruikt in Xcode-projecten als [CocoaPod](https://cocoapods.org/) of worden gedownload van https://aka.ms/csspeech/iosbinary en hand matig worden gekoppeld. In dit artikel wordt gebruikgemaakt van een CocoaPod.
 
 ## <a name="create-an-xcode-project"></a>Een Xcode-project maken
 

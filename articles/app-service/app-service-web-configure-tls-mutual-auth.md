@@ -1,25 +1,16 @@
 ---
-title: Wederzijdse TLS-verificatie configureren-Azure App Service
-description: Meer informatie over hoe u uw app kunt configureren voor het gebruik van verificatie van client certificaten op TLS.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
+title: Wederzijdse TLS-verificatie configureren
+description: Meer informatie over het verifiëren van client certificaten op TLS. Azure App Service kunt het client certificaat beschikbaar maken voor de app-code voor verificatie.
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/01/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a07fa597305771ed3f4da01f2819297fc9cd3d77
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: aa4d0b5089c07cbbeb3d40224518b9eb9a927585
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271696"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672128"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Wederzijdse TLS-verificatie voor Azure App Service configureren
 

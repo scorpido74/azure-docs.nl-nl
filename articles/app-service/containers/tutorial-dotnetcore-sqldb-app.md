@@ -1,26 +1,17 @@
 ---
-title: ASP.NET Core met SQL Database in Linux-Azure App Service | Microsoft Docs
-description: Meer informatie over het verkrijgen van een ASP.NET Core-app in Azure App Service op Linux, met verbinding met een SQL Database.
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Zelf studie: Linux ASP.NET Core met SQL DB'
+description: Meer informatie over het verkrijgen van een gegevensgestuurde Linux ASP.NET Core-app in Azure App Service, met verbinding met een SQL Database.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 532c6a45351f872260ea9383adaacacd486b9d9a
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 67ea11b2e1457bf4a788f54664ed54ff7ca9c8d9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532713"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688924"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Een ASP.NET Core-en SQL Database-app bouwen in Azure App Service in Linux
 
@@ -100,7 +91,7 @@ Voor SQL Database wordt in deze zelfstudie gebruikgemaakt van [Azure SQL Databas
 
 Maak een logische Azure SQL Database-server in Cloud Shell met de opdracht [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create).
 
-Vervang de tijdelijke aanduiding voor de *\<server naam >* door een unieke SQL database naam. Deze naam wordt gebruikt als onderdeel van het SQL Database-eindpunt, `<server-name>.database.windows.net`. De naam moet dus uniek zijn voor alle logische servers in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn. Vervang ook *\<db-username >* en *\<db-Password >* door de gebruikers naam en het wacht woord van uw keuze. 
+Vervang de tijdelijke aanduiding voor de *\<server naam >* door een unieke SQL database naam. Deze naam wordt gebruikt als onderdeel van het SQL Database-eindpunt, `<server-name>.database.windows.net`. De naam moet dus uniek zijn voor alle logische servers in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn. Vervang ook *\<DB-gebruikers naam >* en *\<DB-wacht woord >* door de gebruikers naam en het wacht woord van uw keuze. 
 
 
 ```azurecli-interactive
@@ -171,7 +162,7 @@ In deze stap implementeert u de met SQL Database verbonden .NET Core-app met App
 
 ### <a name="configure-connection-string"></a>connection string configureren
 
-Als u verbindingsreeksen voor de Azure-app wilt instellen, gebruikt u de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell. Vervang in de volgende opdracht de *\<app naam >* , evenals de para meter *\<connection-string >* met de Connection String die u eerder hebt gemaakt.
+Als u verbindingsreeksen voor de Azure-app wilt instellen, gebruikt u de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell. Vervang in de volgende opdracht de *\<app-naam >* en de para meter *\<verbindingsteken reeks >* met de Connection String die u eerder hebt gemaakt.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
@@ -185,7 +176,7 @@ Zie [verbinding maken met SQL database in productie](#connect-to-sql-database-in
 
 Vervolgens stelt u de instelling voor `ASPNETCORE_ENVIRONMENT`-app in op _Productie_. Met deze instelling kunt u zien of u in azure werkt, omdat u SQLite gebruikt voor uw lokale ontwikkel omgeving en SQL Database voor uw Azure-omgeving.
 
-In het volgende voorbeeld wordt de app-instelling `ASPNETCORE_ENVIRONMENT` in de Azure-app geconfigureerd. Vervang de tijdelijke aanduiding voor de *\<app naam >* .
+In het volgende voorbeeld wordt de app-instelling `ASPNETCORE_ENVIRONMENT` in de Azure-app geconfigureerd. Vervang de tijdelijke aanduiding voor de *\<app-naam >* .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"

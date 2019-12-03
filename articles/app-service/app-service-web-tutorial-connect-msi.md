@@ -1,25 +1,16 @@
 ---
-title: SQL Database-verbinding beveiligen met beheerde identiteit - Azure App Service | Microsoft Docs
+title: 'Zelf studie: toegang tot gegevens met beheerde identiteit'
 description: Meer informatie over hoe u de connectiviteit van de data base veiliger maakt met behulp van een beheerde identiteit en hoe u deze kunt Toep assen op andere Azure-Services.
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: syntaxc4
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f10d3ee78dffb32db01a48ccf935e5443fae08b6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 53dc6291d699ce08e08d3504bfcd63a525eb9196
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227470"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671199"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: De Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 20a08345d8335b4857ca9777efb55f953ee63e9f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ae6ff5fb5a5bfc6ba9299e06bad9afafc1403f3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681535"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671578"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -120,6 +120,14 @@ Als u bijvoorbeeld een lijst met gegevens bestanden van juli 2019 hebt die u wil
 ```DateFiles/*_201907*.txt```
 
 Als u Joker tekens gebruikt, bevat uw pijp lijn slechts één gegevens stroom activiteit. Dit zal beter zijn dan een zoek actie voor de BLOB-Store die vervolgens doorloopt over alle overeenkomende bestanden met behulp van een ForEach met de activiteit gegevens stroom uitvoeren in.
+
+### <a name="optimizing-for-cosmosdb"></a>Optimaliseren voor CosmosDB
+
+Het instellen van de door Voer en batch-eigenschappen op CosmosDB-sinks worden alleen van kracht tijdens de uitvoering van de gegevens stroom van een pijplijn activiteit. De oorspronkelijke verzamelings instellingen worden tijdens de uitvoering van de gegevens stroom gehonoreerd door CosmosDB.
+
+* Batch grootte: Bereken de omvang van de ruwe rijen van uw gegevens en zorg ervoor dat rowSize * Batch grootte kleiner is dan 2.000.000. Als dat het geval is, verg root u de Batch grootte om een betere door voer te krijgen
+* Througput: Stel hier een hogere doorvoer instelling in zodat documenten sneller naar CosmosDB kunnen schrijven. Houd de hogere RU-kosten in acht op basis van een instelling voor hoge door voer.
+*   Budget voor schrijf doorvoer: gebruik een waarde die kleiner is dan het totaal van RUs per minuut. Als u een gegevens stroom hebt met een groot aantal Spark-partitiongs, is het instellen van een budget doorvoer meer evenwicht over die partities.
 
 ## <a name="next-steps"></a>Volgende stappen
 

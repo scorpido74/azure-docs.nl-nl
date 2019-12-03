@@ -1,24 +1,17 @@
 ---
-title: SSL-certificaten toevoegen en beheren-Azure App Service | Microsoft Docs
-description: Meer informatie over het kopen van een App Service certificaat en het koppelen aan uw App Service-app
-services: app-service
-author: cephalin
-manager: gwallace
+title: SSL-certificaten toevoegen en beheren
+description: Maak een gratis certificaat, importeer een App Service certificaat, importeer een Key Vault certificaat of koop een App Service certificaat in Azure App Service.
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 10/25/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 2cba4e8223e98f95fc8d0f0472c10b2f9b67a658
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907139"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670742"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat in Azure App Service toevoegen
 
@@ -364,7 +357,7 @@ U kunt nu het App Service certificaat verwijderen. Selecteer **overzicht** > **v
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
@@ -372,7 +365,7 @@ U kunt nu het App Service certificaat verwijderen. Selecteer **overzicht** > **v
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Meer bronnen
+## <a name="more-resources"></a>Meer informatiebronnen
 
 * [Een aangepaste DNS-naam beveiligen met een SSL-binding](configure-ssl-bindings.md)
 * [HTTPS afdwingen](configure-ssl-bindings.md#enforce-https)

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/17/2019
-ms.openlocfilehash: 3664a7c311e15ce3aa61fc71f98a46e3f2618143
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 0eb2c2692ed2444a85e7253c6fdd8734385ff881
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184694"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672272"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Opbouw functie voor gegevens stroom expressie koppelen
 
@@ -78,7 +78,7 @@ Met expressie functies die matrices retour neren, gebruikt u vier Kante haken []
 Wanneer u kolom namen hebt die speciale tekens of spaties bevatten, plaatst u de naam tussen accolades.
 * ```{[dbo].this_is my complex name$$$}```
 
-## <a name="keyboard-shortcuts"></a>Sneltoetsen
+## <a name="keyboard-shortcuts"></a>Toetsencombinaties
 
 * ```Ctrl-K Ctrl-C```: volledige regel commentaar
 * ```Ctrl-K Ctrl-U```: Opmerking opheffen
@@ -104,7 +104,13 @@ Als u een opmerking boven aan de expressie plaatst, wordt deze weer gegeven in h
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-Als u letterlijke teken reeksen in de uitvoer van de tijds tempel wilt gebruiken, moet u de conversie binnen een toString () afronden.
+Als u letterlijke teken reeksen wilt toevoegen aan de uitvoer van de tijds tempel, moet u de conversie binnen ```toString()```afronden.
+
+U kunt als volgt seconden omzetten van epoche naar een datum of tijds tempel:
+
+```toTimestamp(1574127407*1000l)```
+
+U ziet dat de volgende ' l ' aan het einde van de bovenstaande expressie wordt vermeld. Dit geeft aan dat de conversie zo lang als de regel syntaxis wordt genoemd.
 
 ## <a name="handling-column-names-with-special-characters"></a>Verwerken van kolom namen met speciale tekens
 

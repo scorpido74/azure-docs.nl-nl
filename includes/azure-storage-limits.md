@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a48c1352e4628d8e1776a9479aceac7c294a2ea1
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 577ecad169c30da77a69e17b247195088949ec66
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72023063"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74701071"
 ---
 In de volgende tabel worden de standaard limieten voor v1-, v2-en Blob Storage-accounts voor Azure voor algemeen gebruik beschreven. De *ingangs* limiet verwijst naar alle gegevens van aanvragen die worden verzonden naar een opslag account. De *limiet* voor uitgaand verkeer verwijst naar alle gegevens van antwoorden die worden ontvangen van een opslag account.
 
-| Resource | Standaardlimiet |
+| Bron | Standaardlimiet |
 | --- | --- |
 | Aantal opslag accounts per regio per abonnement, inclusief standaard-en Premium-accounts | 250 |
 | Maximale capaciteit van opslag account | 2 PiB voor VS en Europa, en 500 TiB voor alle andere regio's (inclusief het Verenigd Konink rijk)<sup>1</sup>|
@@ -28,6 +28,8 @@ In de volgende tabel worden de standaard limieten voor v1-, v2-en Blob Storage-a
 | Maximale uitgaand verkeer voor de v2-en Blob Storage-accounts voor algemeen gebruik (alle regio's) | 50 Gbps |
 | Maximum aantal uitgangen voor v1-opslag accounts voor algemeen gebruik (regio's in de VS) | 20 Gbps als RA-GRS/GRS is ingeschakeld, 30 Gbps voor LRS/ZRS<sup>2</sup> |
 | Maximum aantal uitgangen voor v1-opslag accounts voor algemeen gebruik (niet-Amerikaanse regio's) | 10 Gbps als RA-GRS/GRS is ingeschakeld, 15 Gbps voor LRS/ZRS<sup>2</sup> |
+| Maximum aantal regels voor virtuele netwerken per opslag account | 200 |
+| Maximum aantal IP-adres regels per opslag account | 200 |
 
 <sup>1</sup> Azure Standard-opslag accounts ondersteunen hogere capaciteits limieten en hogere limieten voor binnenkomend op aanvraag. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/faq/)om een verhoging van de account limieten voor inkomend verkeer aan te vragen. Zie voor meer informatie [aankondigen van grotere opslag accounts met hogere schaal](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 

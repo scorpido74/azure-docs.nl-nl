@@ -1,30 +1,21 @@
 ---
-title: Problemen met een app oplossen met Visual Studio-Azure App Service
+title: Problemen oplossen met Visual Studio
 description: Meer informatie over het oplossen van problemen met een App Service-app met externe fout opsporing, tracering en logboek registratie van hulpprogram ma's die zijn ingebouwd in Visual Studio 2013.
-services: app-service
-documentationcenter: .net
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 13ba1ced2d14ed22c89e7df594f3b2a44eea983f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5c0a236dc6ebf02c859d9db3f25f0e9016ac35ab
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359953"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688370"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problemen met een app in Azure App Service oplossen met Visual Studio
 ## <a name="overview"></a>Overzicht
-Deze zelf studie laat zien hoe u met behulp van Visual Studio-hulpprogram ma's fouten opspoort in [app service](https://go.microsoft.com/fwlink/?LinkId=529714), door [op afstand de](https://docs.microsoft.com/visualstudio/debugger/) foutopsporingsmodus uit te voeren of door toepassings logboeken en webserver logboeken te bekijken.
+Deze zelf studie laat zien hoe u met behulp van Visual Studio-hulpprogram ma's fouten opspoort in [app service](https://go.microsoft.com/fwlink/?LinkId=529714), door [op afstand de foutopsporingsmodus uit](https://docs.microsoft.com/visualstudio/debugger/) te voeren of door toepassings logboeken en webserver logboeken te bekijken.
 
 U leert het volgende:
 
@@ -70,12 +61,12 @@ Visual Studio biedt toegang tot een subset van de app-beheer functies en configu
 
     In deze zelf studie gebruikt u de vervolg keuzelijst logboek registratie en tracering. U gebruikt ook externe fout opsporing, maar u gebruikt een andere methode om deze functie in te scha kelen.
 
-    Voor informatie over de vakken app-instellingen en verbindings reeksen in dit venster, [Zie Azure app service: Hoe toepassings reeksen en verbindings reeksen werken](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/).
+    Zie [Azure app service: hoe toepassings reeksen en verbindings reeksen werken](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)voor meer informatie over de vakken app-instellingen en verbindings reeksen in dit venster.
 
     Als u een app-beheer taak wilt uitvoeren die niet in dit venster kan worden uitgevoerd, klikt u op **openen in Beheerportal** om een browser venster te openen voor de Azure Portal.
 
 ## <a name="remoteview"></a>Toegang tot app-bestanden in Server Explorer
-U implementeert doorgaans een webproject met `customErrors` de markering in het bestand Web. config ingesteld `On` op `RemoteOnly`of, wat betekent dat u geen handig fout bericht krijgt wanneer er iets verkeerd gaat. Voor veel fouten krijgt u alleen een pagina als een van de volgende:
+U implementeert doorgaans een webproject met de vlag `customErrors` in het bestand Web. config ingesteld op `On` of `RemoteOnly`. Dit betekent dat u geen handig fout bericht krijgt wanneer er iets verkeerd gaat. Voor veel fouten krijgt u alleen een pagina als een van de volgende:
 
 **Server fout in/-toepassing:**
 
@@ -89,21 +80,21 @@ U implementeert doorgaans een webproject met `customErrors` de markering in het 
 
 ![Niet-Help fout pagina](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
 
-De eenvoudigste manier om de oorzaak van de fout te vinden, is vaak om gedetailleerde fout berichten in te scha kelen, zoals in de eerste van de voor gaande scherm afbeeldingen wordt uitgelegd hoe u dit moet doen. Hiervoor is een wijziging in het geïmplementeerde web. config-bestand vereist. U kunt het bestand *Web. config* in het project bewerken en het project opnieuw implementeren, of een [Web. config-trans formatie](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) maken en een debug-build implementeren, maar er is een snellere manier om bestanden in de externe app direct weer te geven en te bewerken **Solution Explorer**. met de functie *externe weer gave* .
+De eenvoudigste manier om de oorzaak van de fout te vinden, is vaak om gedetailleerde fout berichten in te scha kelen, zoals in de eerste van de voor gaande scherm afbeeldingen wordt uitgelegd hoe u dit moet doen. Hiervoor is een wijziging in het geïmplementeerde web. config-bestand vereist. U kunt het bestand *Web. config* in het project bewerken en het project opnieuw implementeren, of een [Web. config-trans formatie](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) maken en een debug-build implementeren, maar er is een snellere manier **Solution Explorer**om bestanden in de externe app rechtstreeks weer te geven en te bewerken met behulp van de functie *externe weer gave* .
 
 1. Vouw in **Server Explorer** **Azure**uit, vouw **app service**uit, vouw de resource groep uit waarin uw app zich bevindt en vouw vervolgens het knoop punt voor uw app uit.
 
     U ziet knoop punten die u toegang geven tot de inhouds bestanden en logboek bestanden van de app.
 2. Vouw het knoop punt **bestanden** uit en dubbel klik op het bestand *Web. config* .
 
-    ![Open Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
+    ![Web. config openen](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
     Visual Studio opent het bestand Web. config vanuit de externe app en toont [Remote] naast de naam van het bestand in de titel balk.
-3. Voeg de volgende regel toe aan `system.web` het element:
+3. Voeg de volgende regel toe aan het `system.web`-element:
 
     `<customErrors mode="Off"></customErrors>`
 
-    ![Edit Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
+    ![Web. config bewerken](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 4. Vernieuw de browser waarin het fout bericht niet meer wordt weer gegeven en u krijgt nu een gedetailleerd fout bericht, zoals het volgende voor beeld:
 
     ![Gedetailleerd fout bericht](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
@@ -123,7 +114,7 @@ In deze sectie wordt uitgelegd hoe u op afstand fouten oplost met het project da
 
 1. Open *Controllers\HomeController.cs*.
 
-1. Verwijder de `About()` -methode en voeg de volgende code toe.
+1. Verwijder de `About()` methode en voeg de volgende code toe.
 
     ```csharp
     public ActionResult About()
@@ -160,13 +151,13 @@ In deze sectie wordt uitgelegd hoe u op afstand fouten oplost met het project da
 
     Visual Studio stopt op het onderbrekings punt en de code wordt uitgevoerd in azure, niet op uw lokale computer.
 
-1. Beweeg de muis `currentTime` aanwijzer over de variabele om de tijd waarde weer te geven.
+1. Beweeg de muis aanwijzer over de variabele `currentTime` om de tijd waarde weer te geven.
 
     ![De variabele weer geven in de foutopsporingsmodus die in azure wordt uitgevoerd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
 
     De tijd die u ziet, is de Azure-server tijd, die mogelijk in een andere tijd zone ligt dan uw lokale computer.
 
-1. Voer een nieuwe waarde in voor `currentTime` de variabele, zoals ' nu uitgevoerd in azure '.
+1. Voer een nieuwe waarde in voor de variabele `currentTime`, zoals ' nu uitgevoerd in azure '.
 
 1. Druk op F5 om door te gaan met uitvoeren.
 
@@ -185,7 +176,7 @@ Externe fout opsporing werkt alleen met doorlopende webjobs. Geplande en on-dema
 
 2. Open *functions.cs*in het project ContosoAdsWebJob.
 
-3. [Stel een onderbrekings punt](https://docs.microsoft.com/visualstudio/debugger/) in op de eerste `GnerateThumbnail` instructie in de methode.
+3. [Stel een onderbrekings punt](https://docs.microsoft.com/visualstudio/debugger/) in op de eerste instructie in de methode `GnerateThumbnail`.
 
     ![Onderbrekings punt instellen](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -197,7 +188,7 @@ Externe fout opsporing werkt alleen met doorlopende webjobs. Geplande en on-dema
 
     Visual Studio implementeert de web-en Webtaak projecten en uw browser wordt geopend met de Azure-URL van uw app.
 
-7. Vouw in **Server Explorer** **Azure > app service > uw resource groep > uw app**> Webjobs > doorlopend en klik vervolgens met de rechter muisknop op **ContosoAdsWebJob**.
+7. Vouw in **Server Explorer** **Azure > app service > uw resource groep > uw app > webjobs > doorlopend**en klik vervolgens met de rechter muisknop op **ContosoAdsWebJob**.
 
 8. Klik op **fout opsporing toevoegen**.
 
@@ -209,7 +200,7 @@ Externe fout opsporing werkt alleen met doorlopende webjobs. Geplande en on-dema
 
     Als u een AD maakt, wordt er een wachtrij bericht gemaakt dat wordt opgehaald door de Webtaak en verwerkt. Wanneer de webjobs SDK de functie aanroept om het wachtrij bericht te verwerken, komt de code voor uw onderbrekings punt.
 
-10. Wanneer het fout opsporingsprogramma op uw onderbrekings punt breekt, kunt u de waarden van de variabelen bekijken en wijzigen terwijl de Cloud wordt uitgevoerd. In de volgende afbeelding ziet u het fout opsporingsprogramma de inhoud van het blobInfo-object dat is door `GenerateThumbnail` gegeven aan de-methode.
+10. Wanneer het fout opsporingsprogramma op uw onderbrekings punt breekt, kunt u de waarden van de variabelen bekijken en wijzigen terwijl de Cloud wordt uitgevoerd. In de volgende afbeelding ziet u het fout opsporingsprogramma de inhoud van het blobInfo-object dat is door gegeven aan de `GenerateThumbnail` methode.
 
      ![blobInfo-object in fout opsporing](./media/web-sites-dotnet-troubleshoot-visual-studio/blobinfo.png)
 
@@ -227,13 +218,13 @@ Externe fout opsporing werkt alleen met doorlopende webjobs. Geplande en on-dema
 
      ![Klik op ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
 
-     Het dash board laat zien `GenerateThumbnail` dat de functie onlangs is uitgevoerd.
+     In het dash board ziet u dat de functie `GenerateThumbnail` recent is uitgevoerd.
 
      (De volgende keer dat u op **dash board weer geven**klikt, hoeft u zich niet aan te melden en de browser gaat rechtstreeks naar de pagina voor uw Webtaak.)
 
 16. Klik op de naam van de functie om details over de uitvoering van de functie weer te geven.
 
-     ![Functiedetails](./media/web-sites-dotnet-troubleshoot-visual-studio/funcdetails.png)
+     ![Functie Details](./media/web-sites-dotnet-troubleshoot-visual-studio/funcdetails.png)
 
 Als uw functie [Logboeken heeft geschreven](https://github.com/Azure/azure-webjobs-sdk/wiki), kunt u op **ToggleOutput** klikken om ze weer te geven.
 
@@ -242,7 +233,7 @@ Als uw functie [Logboeken heeft geschreven](https://github.com/Azure/azure-webjo
 * Het uitvoeren van de foutopsporingsmodus in de productie omgeving wordt niet aanbevolen. Als uw productie-app niet naar meerdere server instanties kan worden geschaald, voor komt fout opsporing dat de webserver reageert op andere aanvragen. Als u meerdere webserver instanties hebt, wanneer u aan het fout opsporingsprogramma koppelt, krijgt u een wille keurig exemplaar en hebt u geen enkele manier om ervoor te zorgen dat volgende browser aanvragen naar hetzelfde exemplaar gaan. Het is ook niet mogelijk om een build voor fout opsporing te implementeren voor productie en compilatie optimalisaties voor builds voor het maken van een compiler kan ertoe leiden dat het niet mogelijk is om te laten zien wat er in de bron code op regel staat. Voor het oplossen van problemen met productie zijn de beste bronnen voor toepassings tracering en webserver logboeken.
 * Vermijd lange stops bij onderbrekings punten wanneer externe fout opsporing. Azure behandelt een proces dat langer dan een paar minuten wordt gestopt als een proces dat niet reageert en sluit het af.
 * Tijdens het opsporen van fouten, verzendt de server gegevens naar Visual Studio. Dit kan van invloed zijn op de bandbreedte kosten. Zie [Azure-prijzen](https://azure.microsoft.com/pricing/calculator/)voor meer informatie over de bandbreedte tarieven.
-* Zorg ervoor dat het `debug` kenmerk van het `compilation` element in het bestand *Web. config* is ingesteld op True. De instelling is standaard ingesteld op true wanneer u een configuratie voor het maken van fout opsporing publiceert.
+* Zorg ervoor dat het kenmerk `debug` van het element `compilation` in het bestand *Web. config* is ingesteld op True. De instelling is standaard ingesteld op true wanneer u een configuratie voor het maken van fout opsporing publiceert.
 
     ```xml
     <system.web>
@@ -268,7 +259,7 @@ Een ASP.NET-toepassing die wordt uitgevoerd in een App Service-app, kan de volge
 
 Logboek registratie is van invloed op de prestaties van de app, zodat Azure u de mogelijkheid biedt om elk type logboek naar wens in of uit te scha kelen. Voor toepassings Logboeken kunt u opgeven dat alleen logboeken boven een bepaald Ernst niveau moeten worden geschreven. Wanneer u een nieuwe app maakt, wordt standaard alle logboek registratie uitgeschakeld.
 
-Logboeken worden geschreven naar bestanden in  een map LogFiles in het bestands systeem van uw app en zijn toegankelijk via FTP. Webserver logboeken en toepassings logboeken kunnen ook worden geschreven naar een Azure Storage-account. U kunt een groter volume aan logboeken in een opslag account bewaren dan mogelijk is in het bestands systeem. Wanneer u het bestands systeem gebruikt, bent u beperkt tot een maximum van 100 MB aan logboeken. (Bestandssysteem logboeken zijn alleen bedoeld voor retentie op korte termijn. Azure verwijdert oude logboek bestanden om ruimte te maken voor nieuwe, nadat de limiet is bereikt.)  
+Logboeken worden geschreven naar bestanden in een map *logfiles* in het bestands systeem van uw app en zijn toegankelijk via FTP. Webserver logboeken en toepassings logboeken kunnen ook worden geschreven naar een Azure Storage-account. U kunt een groter volume aan logboeken in een opslag account bewaren dan mogelijk is in het bestands systeem. Wanneer u het bestands systeem gebruikt, bent u beperkt tot een maximum van 100 MB aan logboeken. (Bestandssysteem logboeken zijn alleen bedoeld voor retentie op korte termijn. Azure verwijdert oude logboek bestanden om ruimte te maken voor nieuwe, nadat de limiet is bereikt.)  
 
 ## <a name="apptracelogs"></a>Tracerings logboeken voor toepassingen maken en weer geven
 In deze sectie voert u de volgende taken uit:
@@ -280,7 +271,7 @@ In deze sectie voert u de volgende taken uit:
 Voor informatie over het maken van toepassings Logboeken in webjobs, raadpleegt [u werken met Azure Queue Storage met de Webjobs SDK-logboeken schrijven](https://github.com/Azure/azure-webjobs-sdk/wiki). De volgende instructies voor het weer geven van Logboeken en bepalen hoe ze worden opgeslagen in azure zijn ook van toepassing op toepassings logboeken die zijn gemaakt door webjobs.
 
 ### <a name="add-tracing-statements-to-the-application"></a>Tracerings instructies toevoegen aan de toepassing
-1. Open *Controllers\HomeController.cs*en `Index`Vervang de methoden, `About`, en `Contact` door de volgende code om instructies toe te voegen `Trace` en een `using` instructie voor `System.Diagnostics`:
+1. Open *Controllers\HomeController.cs*en vervang de methoden `Index`, `About`en `Contact` door de volgende code om `Trace`-instructies en een `using` instructie voor `System.Diagnostics`toe te voegen:
 
     ```csharp
     public ActionResult Index()
@@ -311,17 +302,17 @@ Voor informatie over het maken van toepassings Logboeken in webjobs, raadpleegt 
     }        
     ```
 
-1. Een `using System.Diagnostics;` instructie boven aan het bestand toevoegen.
+1. Voeg boven aan het bestand een `using System.Diagnostics;`-instructie toe.
 
 ### <a name="view-the-tracing-output-locally"></a>De tracerings uitvoer lokaal weer geven
 1. Druk op F5 om de toepassing uit te voeren in de foutopsporingsmodus.
 
-    De default Trace listener schrijft alle uitvoer van de tracering naar het **uitvoer** venster, samen met andere uitvoer van fout opsporing. In de volgende afbeelding ziet u de uitvoer van de trace-instructies die u `Index` aan de methode hebt toegevoegd.
+    De default Trace listener schrijft alle uitvoer van de tracering naar het **uitvoer** venster, samen met andere uitvoer van fout opsporing. In de volgende afbeelding ziet u de uitvoer van de trace-instructies die u hebt toegevoegd aan de `Index` methode.
 
     ![Traceren in het venster fout opsporing](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugtracing.png)
 
     De volgende stappen laten zien hoe u de tracerings uitvoer in een webpagina kunt weer geven zonder te compileren in de foutopsporingsmodus.
-1. Open het web. config-bestand van de toepassing (de map die zich in de projectmap bevindt) en voeg een `<system.diagnostics>` element toe aan het einde van het bestand net vóór het afsluitende `</configuration>` element:
+1. Open het web. config-bestand van de toepassing (de map die zich in de projectmap bevindt) en voeg een `<system.diagnostics>`-element aan het einde van het bestand toe net vóór het afsluitende `</configuration>` element:
 
     ``` xml
     <system.diagnostics>
@@ -338,7 +329,7 @@ Voor informatie over het maken van toepassings Logboeken in webjobs, raadpleegt 
     </system.diagnostics>
     ```
 
-Met `WebPageTraceListener` de kunt u tracerings uitvoer weer geven `/trace.axd`door te bladeren naar.
+Met de `WebPageTraceListener` kunt u tracerings uitvoer weer geven door te bladeren naar `/trace.axd`.
 1. Voeg een <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">tracerings element</a> toe onder `<system.web>` in het bestand Web. config, zoals in het volgende voor beeld:
 
     ``` xml
@@ -351,15 +342,15 @@ Met `WebPageTraceListener` de kunt u tracerings uitvoer weer geven `/trace.axd`d
 
     ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
-    De pagina **aanvraag Details** wordt weer gegeven en in de sectie **tracerings gegevens** ziet u de uitvoer van de trace-instructies die u `Index` hebt toegevoegd aan de-methode.
+    De pagina **aanvraag Details** wordt weer gegeven en in de sectie **tracerings gegevens** ziet u de uitvoer van de trace-instructies die u hebt toegevoegd aan de `Index` methode.
 
     ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
 
-    `trace.axd` Is standaard alleen lokaal beschikbaar. Als u het beschikbaar wilt maken vanuit een externe app, kunt u dit toevoegen `localOnly="false"` aan het `trace` -element in het *Web. config* -bestand, zoals wordt weer gegeven in het volgende voor beeld:
+    `trace.axd` is standaard alleen lokaal beschikbaar. Als u het beschikbaar wilt maken vanuit een externe app, kunt u `localOnly="false"` toevoegen aan het `trace`-element in het *Web. config* -bestand, zoals wordt weer gegeven in het volgende voor beeld:
 
         <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
 
-    Het inschakelen `trace.axd` van een productie-app wordt echter niet aanbevolen om veiligheids redenen. In de volgende secties ziet u een eenvoudige manier om traceer Logboeken in een App Service-app te lezen.
+    Het inschakelen van `trace.axd` in een productie-app wordt echter niet aanbevolen om veiligheids redenen. In de volgende secties ziet u een eenvoudige manier om traceer Logboeken in een App Service-app te lezen.
 
 ### <a name="view-the-tracing-output-in-azure"></a>De tracerings uitvoer in azure weer geven
 1. Klik in **Solution Explorer**met de rechter muisknop op het webproject en klik op **publiceren**.
@@ -375,7 +366,7 @@ Met `WebPageTraceListener` de kunt u tracerings uitvoer weer geven `/trace.axd`d
     ![Streaming-Logboeken in het context menu weer geven](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
 4. Klik in het browser venster waarin de start pagina van uw toepassing wordt weer gegeven op **contact persoon**.
 
-    Binnen een paar seconden wordt de uitvoer van de tracering op fout niveau die u hebt `Contact` toegevoegd aan de-methode weer gegeven in het **uitvoer** venster.
+    Binnen een paar seconden wordt de uitvoer van de tracering op fout niveau die u hebt toegevoegd aan de `Contact` methode weer gegeven in het **uitvoer** venster.
 
     ![Fout traceren in uitvoer venster](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png)
 
@@ -423,7 +414,7 @@ Webserver logboeken registreren alle HTTP-activiteiten voor de app. Als u deze w
 2. Klik in het venster **uitvoer** op de knop **opgeven welke Microsoft Azures logboeken wilt bewaken** .
 
     ![Opgeven welke Azure-logboeken moeten worden bewaakt](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-specifylogs.png)
-3. Selecteer in het dialoog venster **Opties voor Microsoft Azure logboek registratie** de optie webserver **Logboeken**en klik vervolgens op **OK**.
+3. Selecteer in het dialoog venster **Opties voor Microsoft Azure logboek registratie** de optie **webserver logboeken**en klik vervolgens op **OK**.
 
     ![Webserver logboeken bewaken](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorwslogson.png)
 4. In het browser venster waarin de app wordt weer gegeven, klikt u op **Start**, klikt u op **about**en klikt u vervolgens op **contact persoon**.
@@ -477,7 +468,7 @@ Logboeken die u kunt bewaken in het **uitvoer** venster kunnen ook worden gedown
    * Webserver logboeken bevinden zich in *. log* -bestanden in de map *LogFiles\http\RawLogs* . U kunt een hulp programma zoals [log parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) gebruiken om deze bestanden weer te geven en te bewerken.
    * Gedetailleerde logboeken voor fout berichten bevinden zich in *. html-* bestanden in de map *LogFiles\DetailedErrors*
 
-     (De  map implementaties is voor bestanden die zijn gemaakt door de publicatie van broncode beheer, maar heeft niets te maken met Visual Studio Publishing. De map *Git* is voor traceringen met betrekking tot broncode beheer en de service voor het streamen van logboek bestanden.)  
+     (De map *implementaties* is voor bestanden die zijn gemaakt door de publicatie van broncode beheer, maar heeft niets te maken met Visual Studio Publishing. De map *Git* is voor traceringen met betrekking tot broncode beheer en de service voor het streamen van logboek bestanden.)  
 
 <!-- ## <a name="storagelogs"></a>View storage logs
 Application tracing logs can also be sent to an Azure storage account, and you can view them in Visual Studio. To do that you'll create a storage account, enable storage logs in the Azure portal, and view them in the **Logs** tab of the **Azure Web App** window.
@@ -567,7 +558,7 @@ U kunt het traceren van mislukte aanvragen inschakelen met behulp van Visual Stu
 
 U kunt Logboeken voor tracering van mislukte aanvragen bekijken in een browser rechtstreeks via FTP of lokaal nadat u een FTP-programma hebt gebruikt om ze te downloaden naar uw lokale computer. In deze sectie bekijkt u deze rechtstreeks in een browser.
 
-1. Op het tabblad **configuratie** van het venster van de **Azure-web-app** dat u hebt geopend vanuit **Server Explorer**, wijzigt u het traceren van **mislukte aanvragen** in **op**aan en klikt u vervolgens op **Opslaan**.
+1. Op het tabblad **configuratie** van het venster van de **Azure-web-app** dat u hebt geopend vanuit **Server Explorer**, wijzigt u het **traceren van mislukte aanvragen** in **op**aan en klikt u vervolgens op **Opslaan**.
 
     ![Tracering van mislukte aanvragen inschakelen](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequeston.png)
 2. In de adres balk van het browser venster waarin de app wordt weer gegeven, voegt u een extra teken toe aan de URL en klikt u op ENTER om een 404-fout te veroorzaken.
@@ -590,7 +581,7 @@ U kunt Logboeken voor tracering van mislukte aanvragen bekijken in een browser r
 
     In de browser wordt de hoofdmap van de app weer gegeven.
 
-7. Open de  map LogFiles.
+7. Open de map *logfiles* .
 
     ![Map met logboek bestanden openen](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilesfolder.png)
 
@@ -630,7 +621,7 @@ Start een thread in een van de volgende forums voor hulp bij een specifieke vraa
 
 * [Het Azure-forum op de ASP.net-site](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
 * [Het Azure-forum op MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/).
-* [StackOverflow.com](https://www.stackoverflow.com).
+* [Stackoverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Fout opsporing in Visual Studio
 Zie [fout opsporing in Visual Studio](/visualstudio/debugger/debugging-in-visual-studio) en [Tips voor fout opsporing](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx)in Visual Studio 2010 voor meer informatie over het gebruik van de foutopsporingsmodus in Visual Studio.
@@ -654,7 +645,7 @@ Er zijn geen uitgebreide en recente inleidingen voor ASP.NET tracering beschikba
   Oud, maar nog steeds een goede resource voor een basis kennis van het onderwerp.
 * [Traceer listeners](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
   Informatie over traceer listeners, maar geen vermelding van de [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
-* [Begint ASP.NET tracering integreren met System. Diagnostics-tracering](/previous-versions/b0ectfxd(v=vs.140))<br/>
+* [Walkthrough: ASP.NET tracering integreren met System. Diagnostics-tracering](/previous-versions/b0ectfxd(v=vs.140))<br/>
   Dit artikel is ook oud, maar bevat aanvullende informatie die niet geldt voor het inleidende artikel.
 * [Tracering in ASP.NET MVC-weer gaven](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
   Naast het traceren in haar weer gaven, wordt in het bericht ook uitgelegd hoe u een fout filter maakt om alle niet-verwerkte uitzonde ringen in een MVC-toepassing te registreren. Zie voor meer informatie over het registreren van alle niet-verwerkte uitzonde ringen in een Web Forms-toepassing het voor beeld Global. asax in het [volledige voor beeld voor fout afhandeling](/previous-versions/bb397417(v=vs.140)) op MSDN. Als u in MVC-of webformulieren bepaalde uitzonde ringen wilt vastleggen, maar de standaard verwerking van het Framework wilt laten gelden, kunt u deze ondervangen en opnieuw genereren, zoals in het volgende voor beeld:
@@ -678,7 +669,7 @@ Er zijn geen uitgebreide en recente inleidingen voor ASP.NET tracering beschikba
 
 Voor fouten logboek registratie is het gebruik van een open source-framework voor logboek registratie, zoals [ELMAH](https://nuget.org/packages/elmah/), een alternatief voor het schrijven van uw eigen tracerings code. Zie [de blog berichten van Scott Hanselman over ELMAH](https://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)voor meer informatie.
 
-Bovendien hoeft u ASP.net of `System.Diagnostics` tracering niet te gebruiken voor het ophalen van streaming-logboeken vanuit Azure. Met de App Service-logboek service voor het streamen van apps worden alle *txt*-, *HTML-* of *log* -bestanden in de map *logfiles* gestreamd. Daarom kunt u uw eigen logboek registratie systeem maken dat naar het bestands systeem van de app schrijft, waarna het bestand automatisch wordt gestreamd en gedownload. U hoeft alleen maar een toepassings code te schrijven waarmee bestanden worden gemaakt in de map *d:\home\logfiles* .
+Bovendien hoeft u ASP.NET of `System.Diagnostics` tracering niet te gebruiken om streaming-logboeken van Azure te ontvangen. Met de App Service-logboek service voor het streamen van apps worden alle *txt*-, *HTML-* of *log* -bestanden in de map *logfiles* gestreamd. Daarom kunt u uw eigen logboek registratie systeem maken dat naar het bestands systeem van de app schrijft, waarna het bestand automatisch wordt gestreamd en gedownload. U hoeft alleen maar een toepassings code te schrijven waarmee bestanden worden gemaakt in de map *d:\home\logfiles* .
 
 ### <a name="analyzing-web-server-logs"></a>Webserver logboeken analyseren
 Raadpleeg de volgende bronnen voor meer informatie over het analyseren van webserver logboeken:

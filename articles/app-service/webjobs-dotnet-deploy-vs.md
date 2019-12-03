@@ -1,21 +1,19 @@
 ---
-title: Webjobs ontwikkelen en implementeren met behulp van Visual Studio-Azure
-description: Meer informatie over het ontwikkelen en implementeren van Azure WebJobs voor Azure App Service met behulp van Visual Studio.
+title: Webjobs ontwikkelen en implementeren met behulp van VS
+description: Meer informatie over het ontwikkelen van Azure WebJobs in Visual Studio en het implementeren ervan naar Azure App Service, inclusief het maken van een geplande taak.
 author: ggailey777
-manager: gwallace
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
-ms.service: app-service
 ms.topic: conceptual
 ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ac458b01135be8628fbf939e310f8bda02b8d290
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: feacd463a10bae66dc8fa88a99b9ea60f399e9ec
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303563"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684174"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Webjobs ontwikkelen en implementeren met behulp van Visual Studio-Azure App Service
 
@@ -164,7 +162,7 @@ De velden in dit dialoog venster komen overeen met velden in het dialoog venster
 > 
 > 
 
-### <a id="publishsettings"></a>webjob-publish-settings.json
+### <a id="publishsettings"></a>Webtaak-Publish-Settings. json
 Wanneer u een console toepassing voor webjobs-implementatie configureert, installeert Visual Studio het [micro soft. Web. webjobs. Publiceer](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) het NuGet-pakket en slaat plannings gegevens op in een *Webtaak-Publish-Settings. json* -bestand in de map project *Eigenschappen* van het webjobs-project. Hier volgt een voor beeld van dat bestand:
 
         {
@@ -179,7 +177,7 @@ Wanneer u een console toepassing voor webjobs-implementatie configureert, instal
 
 U kunt dit bestand rechtstreeks bewerken en Visual Studio biedt IntelliSense. Het bestands schema wordt opgeslagen op [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) en kan hier worden weer gegeven.  
 
-### <a id="webjobslist"></a>webjobs-list.json
+### <a id="webjobslist"></a>webjobs-list. json
 Wanneer u een project met webjobs koppelt aan een webproject, wordt in Visual Studio de naam van het webjobs-project opgeslagen in een *webjobs-lijst. json-* bestand in de map *Eigenschappen* van het webproject. De lijst bevat mogelijk meerdere webjobs-projecten, zoals wordt weer gegeven in het volgende voor beeld:
 
         {

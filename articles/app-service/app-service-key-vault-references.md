@@ -1,22 +1,17 @@
 ---
-title: Key Vault verwijzingen-Azure App Service | Microsoft Docs
-description: Conceptuele Naslag informatie en installatie handleiding voor Azure Key Vault verwijzingen in Azure App Service en Azure Functions
-services: app-service
+title: Key Vault verwijzingen gebruiken
+description: Meer informatie over het instellen van Azure App Service en Azure Functions om Azure Key Vault verwijzingen te gebruiken. Key Vault geheimen beschikbaar maken voor uw toepassings code.
 author: mattchenderson
-manager: jeconnoc
-editor: ''
-ms.service: app-service
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 8f237e4c676a53f6df15940a196a998bee529f6b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f0d3d36d3489557f0a07e9400c59debb2dca7073
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817972"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671457"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Gebruik Key Vault verwijzingen voor App Service en Azure Functions
 

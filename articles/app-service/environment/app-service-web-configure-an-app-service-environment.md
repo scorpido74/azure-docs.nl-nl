@@ -1,25 +1,18 @@
 ---
-title: Een App Service Environment v1-Azure configureren
-description: Configuratie, beheer en controle van de App Service Environment v1
-services: app-service
-documentationcenter: ''
+title: ASE v1 configureren
+description: Configuratie, beheer en controle van de App Service Environment v1. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b8a05b7e8466187202e6a4d11efce288238cc19b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069938"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687264"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Een App Service Environment v1 configureren
 
@@ -36,7 +29,7 @@ Op hoog niveau bestaat een Azure App Service Environment uit verschillende belan
 * Een klassiek (v1) of Resource Manager (v2) Azure Virtual Network (VNet) 
 * Een subnet waarop de App Service Environment gehoste service wordt uitgevoerd
 
-### <a name="compute-resources"></a>Rekenresources
+### <a name="compute-resources"></a>Reken resources
 U gebruikt de reken resources voor uw vier resource groepen.  Elke App Service Environment (ASE) heeft een set front-ends en drie mogelijke werk groepen. U hoeft niet alle drie de werkgroepen te gebruiken. Als u wilt, kunt u slechts één of twee gebruiken.
 
 De hosts in de resource groepen (front-ends en werk rollen) zijn niet rechtstreeks toegankelijk voor tenants. U kunt Remote Desktop Protocol (RDP) niet gebruiken om er verbinding mee te maken, hun inrichting te wijzigen of als beheerder te fungeren.
@@ -44,14 +37,14 @@ De hosts in de resource groepen (front-ends en werk rollen) zijn niet rechtstree
 U kunt het aantal en de grootte van de resource groep instellen. In een ASE hebt u vier grootte opties, die zijn gemarkeerd met P1 via P4. Zie [app service prijzen](https://azure.microsoft.com/pricing/details/app-service/)voor meer informatie over deze formaten en hun prijzen.
 Het wijzigen van de hoeveelheid of grootte wordt een schaal bewerking genoemd.  Er kan slechts één schaal bewerking tegelijk worden uitgevoerd.
 
-**Front-ends**: De front-ends zijn de HTTP/HTTPS-eind punten voor uw apps die in uw ASE zijn opgeslagen. U voert geen workloads uit in de front-ends.
+**Front-ends**: de front-ends zijn de http/https-eind punten voor uw apps die in uw ASE worden bewaard. U voert geen workloads uit in de front-ends.
 
 * Een ASE begint met twee P2s. Dit is voldoende voor dev/test-workloads en werk belastingen op laag niveau. We raden u ten zeerste aan om P3s te produceren voor gemiddeld tot zware productie workloads.
 * Voor gemiddeld tot zware productie workloads wordt u aangeraden ten minste vier P3s te hebben om ervoor te zorgen dat er voldoende front-ends actief zijn wanneer gepland onderhoud plaatsvindt. Geplande onderhouds activiteiten gaan één front-end tegelijk omlaag. Dit reduceert de totale beschik bare front-end capaciteit tijdens onderhouds activiteiten.
 * Het kan een uur duren voordat front-ends zijn ingericht. 
 * Voor een verdere schaal aanpassing moet u het CPU-percentage, het geheugen percentage en actieve aanvragen voor de front-end-groep bewaken. Als het CPU-of geheugen percentage hoger is dan 70 procent bij het uitvoeren van P3s, voegt u meer front-ends toe. Als de waarde van de actieve aanvragen een gemiddelde oploopt van 15.000 tot 20.000 aanvragen per front-end, moet u ook meer front-ends toevoegen. Het algemene doel is om het CPU-en geheugen percentage lager te blijven dan 70%, en actieve aanvragen die gemiddeld naar beneden 15.000 aanvragen per front-end lopen wanneer u P3s uitvoert.  
 
-**Werk nemers**: De werk nemers zijn waar uw apps daad werkelijk worden uitgevoerd. Wanneer u uw App Service-abonnementen opschaalt, wordt er gebruikgemaakt van werk nemers in de bijbehorende werk groep.
+**Werk nemers**: de werk nemers zijn waar uw apps daad werkelijk worden uitgevoerd. Wanneer u uw App Service-abonnementen opschaalt, wordt er gebruikgemaakt van werk nemers in de bijbehorende werk groep.
 
 * U kunt geen werk nemers direct toevoegen. Het kan tot een uur duren voordat ze zijn ingericht.
 * Het schalen van de grootte van een reken resource voor een pool duurt < 1 uur per update domein. Er zijn 20 Update domeinen in een ASE. Als u de reken grootte van een werk groep met tien exemplaren hebt geschaald, kan het tot tien uur duren voordat deze is voltooid.
@@ -68,7 +61,7 @@ Als uw apps een grotere Compute-resource grootte vereisen, kunt u niet profitere
 * Wijs uw App Service-abonnementen die als host fungeren voor de apps die een grotere grootte hebben, opnieuw toe aan de zojuist geconfigureerde werk groep. Dit is een snelle bewerking die minder dan een minuut in beslag neemt.  
 * U kunt de eerste groep werk nemers omlaag schalen als u niet alle ongebruikte instanties meer nodig hebt. Het duurt enkele minuten voordat deze bewerking is voltooid.
 
-**Automatische schaling**: Een van de hulpprogram ma's die u kan helpen bij het beheren van het gebruik van de reken resource is automatisch geschaald. U kunt automatisch schalen gebruiken voor front-end-of worker-groepen. U kunt dingen doen, zoals het verg Roten van uw groeps type in de ochtend en de kortings uren. Of misschien kunt u instanties toevoegen wanneer het aantal werk rollen dat beschikbaar is in een werknemers groep onder een bepaalde drempel waarde komt.
+Automatisch **schalen**: een van de hulpprogram ma's die u kan helpen bij het beheren van het gebruik van de reken resource is automatisch geschaald. U kunt automatisch schalen gebruiken voor front-end-of worker-groepen. U kunt dingen doen, zoals het verg Roten van uw groeps type in de ochtend en de kortings uren. Of misschien kunt u instanties toevoegen wanneer het aantal werk rollen dat beschikbaar is in een werknemers groep onder een bepaalde drempel waarde komt.
 
 Als u regels voor automatisch schalen wilt instellen om metrische gegevens over de resource groep te berekenen, moet u rekening houden met de tijd die nodig is voor het inrichten. Zie voor meer informatie over het automatisch schalen van App Service omgevingen, [automatisch schalen configureren in een app service Environment][ASEAutoscale].
 
@@ -114,9 +107,9 @@ Als u de gebruikers interface wilt openen waarin al uw App Service omgevingen wo
 
 ![Gebruikers interface voor het bewaken en beheren van uw App Service Environment][2]
 
-Op de eerste blade ziet u enkele eigenschappen van uw ASE, samen met een metrische grafiek per resource groep. Sommige van de eigenschappen die worden weer gegeven in het Essentials-blok zijn ook Hyper links waarmee de Blade wordt geopend die eraan is gekoppeld. U kunt bijvoorbeeld de **Virtual Network** naam selecteren om de gebruikers interface te openen die is gekoppeld aan het virtuele netwerk waarop uw ASE wordt uitgevoerd. **App service plannen** en **apps** elke open Blades die een lijst met deze items in uw ASE.  
+Op de eerste blade ziet u enkele eigenschappen van uw ASE, samen met een metrische grafiek per resource groep. Sommige van de eigenschappen die worden weer gegeven in het **Essentials** -blok zijn ook Hyper links waarmee de Blade wordt geopend die eraan is gekoppeld. U kunt bijvoorbeeld de **Virtual Network** naam selecteren om de gebruikers interface te openen die is gekoppeld aan het virtuele netwerk waarop uw ASE wordt uitgevoerd. **App service plannen** en **apps** elke open Blades die een lijst met deze items in uw ASE.  
 
-### <a name="monitoring"></a>Bewaking
+### <a name="monitoring"></a>Controleren
 Met de grafieken kunt u diverse prestatie gegevens in elke resource groep bekijken. Voor de front-end-pool kunt u de gemiddelde CPU en het geheugen bewaken. Voor werk groepen kunt u de hoeveelheid bewaken die wordt gebruikt en de hoeveelheid die beschikbaar is.
 
 Meerdere App Service-abonnementen kunnen gebruikmaken van de werk rollen in een werk groep. De werk belasting wordt niet op dezelfde manier gedistribueerd als bij de front-endservers, waardoor het CPU-en geheugen gebruik niet veel op de manier van nuttige informatie wordt geboden. Het is belang rijker om bij te houden hoeveel werk rollen u hebt gebruikt en beschikbaar is, met name als u dit systeem beheert zodat anderen het kunnen gebruiken.  
@@ -132,13 +125,13 @@ In een ASE zijn alle App Service plannen toegewezen App Service plannen. Dit bet
 ### <a name="settings"></a>Instellingen
 Op de Blade ASE vindt u een sectie met **instellingen** die een aantal belang rijke mogelijkheden bevat:
 
- > **Eigenschappen**van instellingen: De Blade **instellingen** wordt automatisch geopend wanneer u uw ASE-Blade samenbrengt. Bovenaan vindt u **Eigenschappen**. Er zijn hier een aantal items die overbodig zijn voor wat u ziet in Essentials, maar wat nuttig is voor **virtueel IP-adres**, evenals **uitgaande IP-adressen**.
+**Instellingen** > **Eigenschappen**: de Blade **instellingen** wordt automatisch geopend wanneer u uw ASE-Blade samenbrengt. Bovenaan vindt u **Eigenschappen**. Er zijn hier een aantal items die overbodig zijn voor wat u ziet in **Essentials**, maar wat nuttig is voor **virtueel IP-adres**, evenals **uitgaande IP-adressen**.
 
 ![Blade instellingen en eigenschappen][4]
 
- > **IP-adressen**van instellingen: Wanneer u een IP-Secure Sockets Layer (SSL)-app in uw ASE maakt, hebt u een IP SSL-adres nodig. Uw ASE moet IP SSL adressen hebben waarvan het eigenaar is dat deze kan worden toegewezen. Wanneer een ASE wordt gemaakt, heeft deze een IP SSL adres voor dit doel, maar u kunt er meer toevoegen. Er worden kosten in rekening gebracht voor extra IP SSL adressen, zoals wordt weer gegeven in [app service prijzen][AppServicePricing] (in de sectie op SSL-verbindingen). De extra prijs is de IP SSL prijs.
+**Instellingen** > **IP-adressen**: wanneer u een IP-Secure Sockets Layer (SSL)-app in uw ASE maakt, hebt u een IP SSL adres nodig. Uw ASE moet IP SSL adressen hebben waarvan het eigenaar is dat deze kan worden toegewezen. Wanneer een ASE wordt gemaakt, heeft deze een IP SSL adres voor dit doel, maar u kunt er meer toevoegen. Er worden kosten in rekening gebracht voor extra IP SSL adressen, zoals wordt weer gegeven in [app service prijzen][AppServicePricing] (in de sectie op SSL-verbindingen). De extra prijs is de IP SSL prijs.
 
- > **Werk groepen** **voor de front-end groep** / voor instellingen: Elk van deze Blades van de resource groep biedt de mogelijkheid om alleen informatie in die resource groep te bekijken, naast de besturings elementen om de resource groep volledig te schalen.  
+**Instellingen** > **Front-End-pool** / **worker-groepen**: elk van deze Blades van een resource groep biedt de mogelijkheid om alleen informatie te bekijken in die resource groep en om besturings elementen te bieden om deze resource groep volledig te schalen.  
 
 De basis-Blade voor elke resource groep biedt een grafiek met metrische gegevens voor die resource groep. Net als bij de grafieken van de Blade ASE kunt u naar de grafiek gaan en de gewenste waarschuwingen instellen. Het instellen van een waarschuwing op de Blade ASE voor een specifieke resource groep heeft hetzelfde effect als het uitvoeren van de resource groep. Op de Blade **instellingen** voor werk groepen hebt u toegang tot alle Apps of app service plannen die worden uitgevoerd in deze werk groep.
 
@@ -161,7 +154,7 @@ Als u de schaal bewerking op de Blade ASE wilt gebruiken, sleept u de schuif reg
 
 ![Gebruikers interface schalen][6]
 
-Als u de mogelijkheden hand matig of automatisch schalen in een specifieke resource groep wilt gebruiken, gaat u naar de gewenste **instellingen** > van de**front-end groep** / **werk groepen** . Open vervolgens de groep die u wilt wijzigen. Ga naar **instellingen** > **uitschalen** of **instellingen** > **Omhoog schalen**. Met de Blade uitschalen kunt u de hoeveelheid van het exemplaar bepalen. U kunt de resource grootte bepalen door **omhoog te schalen** .  
+Als u de mogelijkheden hand matig of automatisch schalen in een specifieke resource groep wilt gebruiken, gaat u naar **instellingen** > **Front-End-pool** / **werk groepen** . Open vervolgens de groep die u wilt wijzigen. Ga naar **instellingen** > **uitschalen** of **instellingen** > **omhoog te schalen**. Met de Blade **uitschalen** kunt u de hoeveelheid van het exemplaar bepalen. U kunt de resource grootte bepalen door **omhoog te schalen** .  
 
 ![Gebruikers interface voor schaal instellingen][7]
 

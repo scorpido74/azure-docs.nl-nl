@@ -1,24 +1,16 @@
 ---
-title: Implementatie referenties configureren-Azure App Service | Microsoft Docs
-description: Meer informatie over het gebruik van de Azure App Service implementatie referenties.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnoc
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Implementatie referenties configureren
+description: Meer informatie over de typen implementatie referenties in Azure App Service en hoe u deze kunt configureren en gebruiken.
 ms.topic: article
 ms.date: 08/14/2019
-ms.author: cephalin
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: fc9445b64baae0e625b62356fee381329b01e8fd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c4e7a66a9535812da505045c26e7b1e6fbc6c661
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098484"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669975"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Implementatie referenties voor Azure App Service configureren
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) ondersteunt twee typen referenties voor [lokale Git-implementatie](deploy-local-git.md) en [FTP/S-implementatie](deploy-ftp.md). Deze referenties zijn niet hetzelfde als de referenties van uw Azure-abonnement.
@@ -33,7 +25,7 @@ U kunt uw referenties op gebruikers niveau configureren op de [resource pagina](
 
 ### <a name="in-the-cloud-shell"></a>In de Cloud Shell
 
-Als u de implementatie gebruiker wilt configureren in de [Cloud shell](https://shell.azure.com), voert u de opdracht [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit. Vervang \< gebruikers\<> naam en wacht woord > door een gebruikers naam en wacht woord voor de implementatie gebruiker. 
+Als u de implementatie gebruiker wilt configureren in de [Cloud shell](https://shell.azure.com), voert u de opdracht [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit. Vervang \<gebruikers naam > en \<wacht woord > door de gebruikers naam en het wacht woord van de implementatie gebruiker. 
 
 - De gebruikers naam moet uniek zijn binnen Azure en voor lokale Git-pushes mag het symbool ' @ ' niet bevatten. 
 - Het wacht woord moet ten minste acht tekens lang zijn, met twee van de volgende drie elementen: letters, cijfers en symbolen. 
@@ -42,17 +34,17 @@ Als u de implementatie gebruiker wilt configureren in de [Cloud shell](https://s
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-De JSON-uitvoer toont het wacht `null`woord als. Als er een `'Conflict'. Details: 409`-fout optreedt, wijzigt u de gebruikersnaam. Als er een `'Bad Request'. Details: 400`-fout optreedt, kiest u een sterker wachtwoord. 
+De JSON-uitvoer toont het wacht woord als `null`. Als er een `'Conflict'. Details: 409`-fout optreedt, wijzigt u de gebruikersnaam. Als er een `'Bad Request'. Details: 400`-fout optreedt, kiest u een sterker wachtwoord. 
 
 ### <a name="in-the-portal"></a>In de portal
 
 In de Azure Portal moet u ten minste één app hebben voordat u toegang kunt krijgen tot de pagina implementatie referenties. Uw referenties op gebruikers niveau configureren:
 
-1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **app Services** >  **\<any_app >**  > **Deployment Center** >  **-FTP-**  > **dash board**.
+1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **App Services** >  **\<any_app** > > **Deployment Center** > **dash board**van de **FTP-**  > .
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Als u de Git-implementatie al hebt geconfigureerd, selecteert u **app Services** >  **&lt;any_app >**  > **Deployment Center** > **FTP/credentials**.
+    Als u de Git-implementatie al hebt geconfigureerd, selecteert u **App Services** >  **&lt;Any_app >**  > **Deployment Center** > **FTP/credentials**.
 
     ![](./media/app-service-deployment-credentials/access-with-git.png)
 
@@ -71,14 +63,14 @@ Als de Git-implementatie is geconfigureerd, wordt op de pagina een **Git/impleme
 
 ## <a name="use-user-level-credentials-with-ftpftps"></a>Referenties op gebruikers niveau gebruiken met FTP-FTPS
 
-Verificatie bij een FTP-FTPS-eind punt met referenties op gebruikers niveau vereist een gebruikers naam in de volgende indeling:`<app-name>\<user-name>`
+Verificatie bij een FTP-FTPS-eind punt met referenties op gebruikers niveau vereist een gebruikers naam in de volgende indeling: `<app-name>\<user-name>`
 
 Omdat referenties op gebruikers niveau zijn gekoppeld aan de gebruiker en niet aan een specifieke resource, moet de gebruikers naam de volgende indeling hebben om de aanmeldings actie door te sturen naar het juiste app-eind punt.
 
 ## <a name="appscope"></a>Referenties op app-niveau ophalen en opnieuw instellen
 De referenties op app-niveau ophalen:
 
-1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **app Services** >  **&lt;any_app >**  > **Deployment Center** > **FTP/credentials**.
+1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **App Services** >  **&lt;any_app** > het **implementatie centrum** > **FTP/referenties**.
 
 2. Selecteer **app-referenties**en selecteer de koppeling **kopiëren** om de gebruikers naam of het wacht woord te kopiëren.
 

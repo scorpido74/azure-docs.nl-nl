@@ -1,26 +1,17 @@
 ---
-title: 'Zelf studie: geruste API hosten met CORS-Azure App Service'
-description: Informatie over hoe u met Azure App Service uw RESTful API's met CORS-ondersteuning kunt hosten.
-services: app-service\api
-documentationcenter: dotnet
-author: cephalin
-manager: cfowler
-editor: ''
+title: 'Zelf studie: REST-API hosten met CORS'
+description: Informatie over hoe u met Azure App Service uw RESTful API's met CORS-ondersteuning kunt hosten. App Service kunnen zowel front-end web-apps als back-end-Api's hosten.
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/21/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f13b390047ea4d8280b106f3b02a8f18944a6f99
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: e2eca624fabf30eae86c480ede6c4bdffc2226bc
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255165"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671129"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Zelfstudie: een RESTful API hosten met CORS in Azure App Service
 

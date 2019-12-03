@@ -1,25 +1,19 @@
 ---
-title: Problemen met domein-en SSL-certificaten oplossen-Azure App Service | Microsoft Docs
-description: Problemen met domein-en SSL-certificaten in Azure App Service oplossen
-services: app-service\web
-documentationcenter: ''
+title: Problemen met domein-en SSL-certificaten oplossen
+description: Vind oplossingen voor de veelvoorkomende problemen die u kunt tegen komen wanneer u een domein-of SSL-certificaat in Azure App Service configureert.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 778836661ff15c334823f95fef42acadb3e8b649
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470148"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688347"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problemen met domein-en SSL-certificaten in Azure App Service oplossen
 
@@ -94,7 +88,7 @@ Dit probleem kan om de volgende redenen optreden:
 
     **Oplossing**: als het certificaat is gemarkeerd als fraude en na 24 uur niet is opgelost, voert u de volgende stappen uit:
 
-    1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+    1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
     2. Ga naar **app service certificaten**en selecteer het certificaat.
     3. Selecteer **certificaat configuratie** > **stap 2: Controleer** de **verificatie**van > domein. Met deze stap verzendt u een e-mail bericht naar de Azure-certificaat provider om het probleem op te lossen.
 
@@ -196,7 +190,7 @@ App Service synchroniseert uw certificaat automatisch binnen 48 uur. Wanneer u e
 
 U kunt de synchronisatie van het certificaat forceren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **app service certificaten**en selecteer vervolgens het certificaat.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **app service certificaten**en selecteer vervolgens het certificaat.
 2. Selecteer opnieuw **genereren en synchroniseren**en selecteer vervolgens **synchroniseren**. Het kan enige tijd duren voordat de synchronisatie is voltooid. 
 3. Wanneer de synchronisatie is voltooid, ziet u de volgende melding: alle resources zijn bijgewerkt met het nieuwste certificaat.
 
@@ -235,17 +229,17 @@ U kunt geen App Service domein kopen in de Azure Portal.
 
 Dit probleem treedt op om een van de volgende redenen:
 
-- Er is geen credit card in het Azure-abonnement of de credit card is ongeldig.
+- Er is geen creditcard in het Azure-abonnement, of de creditcard is ongeldig.
 
     **Oplossing**: Voeg een geldige credit card toe aan uw abonnement.
 
-- U bent niet de eigenaar van het abonnement, dus u hebt geen machtiging om een domein aan te schaffen.
+- U bent niet de eigenaar van het abonnement, dus u bent niet gemachtigd om een domein aan te schaffen.
 
     **Oplossing**: [Wijs de rol eigenaar](../role-based-access-control/role-assignments-portal.md) toe aan uw account. Of neem contact op met de abonnements beheerder om toestemming te krijgen om een domein aan te schaffen.
-- U hebt de limiet bereikt voor het aanschaffen van domeinen in uw abonnement. De huidige limiet is 20.
+- U hebt de limiet voor het aanschaffen van domeinen in uw abonnement bereikt. De huidige limiet is 20.
 
     **Oplossing**: Neem contact op met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)om een verhoging van de limiet aan te vragen.
-- Uw type Azure-abonnement biedt geen ondersteuning voor de aankoop van een App Service domein.
+- Uw type Azure-abonnement biedt geen ondersteuning voor de aanschaf van een App Service-domein.
 
     **Oplossing**: Voer een upgrade uit van uw Azure-abonnement naar een ander abonnements type, zoals een abonnement op basis van betalen naar gebruik.
 

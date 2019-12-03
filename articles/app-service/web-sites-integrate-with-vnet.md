@@ -1,24 +1,18 @@
 ---
-title: App integreren met Azure Virtual Network-Azure App Service
-description: Laat zien hoe u een app in Azure App Service verbindt met een nieuw of bestaand virtueel Azure-netwerk
-services: app-service
-documentationcenter: ''
+title: App integreren met Azure Virtual Network
+description: Meer informatie over hoe Azure App Service integreert met Azure Virtual Network en hoe u een app verbindt met een virtueel netwerk.
 author: ccompy
-manager: stefsch
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034721"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688292"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uw app integreren met een Azure-Virtual Network
 In dit document wordt de Azure App Service functie voor de integratie van virtuele netwerken beschreven en wordt uitgelegd hoe u deze kunt instellen met apps in de [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Met [Azure Virtual Networks][VNETOverview] (VNets) kunt u veel van uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen.  
@@ -112,7 +106,7 @@ Voor regionale VNet-integratie moet het integratie-subnet worden gedelegeerd naa
 Selecteer de **verbinding verbreken**om uw app te verbreken vanuit het VNet. Hiermee wordt de web-app opnieuw opgestart. 
 
 
-#### <a name="web-app-for-containers"></a>Web App for Containers
+#### <a name="web-app-for-containers"></a>Web Apps for Containers
 
 Als u gebruikmaakt van App Service op Linux met de ingebouwde installatie kopieën, werkt de regionale VNet-integratie functie zonder extra wijzigingen. Als u Web App for Containers gebruikt, moet u uw docker-installatie kopie aanpassen om VNet-integratie te kunnen gebruiken. Gebruik in uw docker-installatie kopie de variabele poort omgeving als de gateway poort van de hoofd webserver, in plaats van een hardcoded poort nummer te gebruiken. De variabele poort omgeving wordt automatisch ingesteld door App Service platform op de opstart tijd van de container. Als u SSH gebruikt, moet de SSH-daemon worden geconfigureerd om te Luis teren naar het poort nummer dat is opgegeven door de SSH_PORT omgevings variabele bij gebruik van regionale VNet-integratie.
 
@@ -244,7 +238,7 @@ Als u de gateway vereist VNet-integratie met peering gebruikt, moet u enkele ext
 1. Ga naar het App Service plan > netwerken > VNet-integratie GEBRUIKERSINTERFACE in de portal.  Selecteer het VNet waarmee uw app verbinding maakt. Voeg onder de sectie route ring het adres bereik toe van het VNet dat is gekoppeld aan het VNet waarmee uw app is verbonden.  
 
 
-## <a name="pricing-details"></a>Prijsdetails
+## <a name="pricing-details"></a>Prijsinformatie
 De regionale VNet-integratie functie heeft geen extra kosten voor gebruik buiten de ASP-prijs categorie kosten.
 
 Er zijn drie kosten verbonden aan het gebruik van de gateway vereiste VNet-integratie functie:
@@ -257,7 +251,7 @@ Er zijn drie kosten verbonden aan het gebruik van de gateway vereiste VNet-integ
 ## <a name="troubleshooting"></a>Problemen oplossen
 Hoewel de functie eenvoudig kan worden ingesteld, betekent dat niet dat uw ervaring geen probleem is. Als u problemen ondervindt met het verkrijgen van toegang tot uw gewenste eind punt, kunt u een aantal hulpprogram ma's gebruiken om de connectiviteit vanuit de app-console te testen. Er zijn twee consoles die u kunt gebruiken. Een van de kudu-console en de andere is de console in de Azure Portal. Als u de kudu-console wilt bereiken vanuit uw app, gaat u naar extra-> kudu. U kunt de Kudo-console ook bereiken op [site naam]. scm. azurewebsites. net. Zodra de website is geladen, gaat u naar het tabblad debug console. Als u naar de Azure Portal gehoste console wilt gaan vanuit uw app, gaat u naar Hulpprogram Ma's->-console. 
 
-#### <a name="tools"></a>Hulpprogramma's
+#### <a name="tools"></a>Tools
 De **ping**-hulpprogram ma's van **nslookup** en **tracert** werken niet via de console vanwege beveiligings beperkingen. Als u de void wilt vullen, worden er twee afzonderlijke extra hulp middelen toegevoegd. We hebben een hulp programma met de naam nameresolver. exe toegevoegd om de DNS-functionaliteit te testen. De syntaxis is:
 
     nameresolver.exe hostname [optional: DNS Server]

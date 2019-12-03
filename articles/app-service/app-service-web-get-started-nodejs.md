@@ -1,27 +1,18 @@
 ---
-title: Een Node.js-web-app maken - Azure App Service | Microsoft Docs
-description: Implementeer in enkele minuten uw eerste Node.js-app (Hallo wereld) in Azure App Service Web Apps.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Snelstartgids: een node. js-web-app maken'
+description: Implementeer in enkele minuten uw eerste node. js-Hallo wereld naar Azure App Service. U implementeert met behulp van Visual Studio code, een van de vele manieren waarop u kunt implementeren in App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 09/30/2019
-ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 98d939c69bb03666dbeed124778b06f8a7e73532
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91494cc9c1e3a1fc159702bdbb7f68a4423b604c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471475"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671369"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure 
 
@@ -39,7 +30,7 @@ U moet ook de [Azure app service-extensie](vscode:extension/ms-azuretools.vscode
 
 Nadat de extensie is geïnstalleerd, meldt u zich aan bij uw Azure-account. Selecteer op de activiteiten balk in het Azure-logo om de **Azure app service** Explorer weer te geven. Selecteer **Aanmelden bij Azure...** en volg de instructies.
 
-![Aanmelden bij Azure](containers/media/quickstart-nodejs/sign-in.png)
+![aanmelden bij Azure](containers/media/quickstart-nodejs/sign-in.png)
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 
@@ -100,7 +91,7 @@ Open nu uw browser en navigeer naar [http://localhost:3000](http://localhost:300
 > [!div class="nextstepaction"]
 > [Ik heb een probleem ondertreden](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-## <a name="deploy-to-azure"></a>Implementeren in Azure
+## <a name="deploy-to-azure"></a>Implementatie in Azure
 
 In deze sectie implementeert u uw node. js-app met behulp van VS code en de uitbrei ding Azure App Service. Deze Snelstartgids maakt gebruik van het meest eenvoudige implementatie model waarin uw app is ingepakt en geïmplementeerd op een Azure Web App on Linux.
 

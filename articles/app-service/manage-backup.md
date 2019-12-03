@@ -1,24 +1,16 @@
 ---
-title: Back-up maken van app-Azure App Service
-description: Meer informatie over het maken van back-ups van uw apps in Azure App Service.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: Een back-up maken van een app
+description: Meer informatie over het maken van back-ups van uw apps in Azure App Service. Voer hand matige of geplande back-ups uit. Pas back-ups aan door de bijgevoegde Data Base op te nemen.
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a56abbcb72afc1f45683259d3bd3bf13309cda07
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886070"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671646"
 ---
 # <a name="back-up-your-app-in-azure"></a>Back-up maken van uw app in Azure
 Met de functie voor het maken en terugzetten van back-ups in [Azure app service](overview.md) kunt u eenvoudig hand matig app-back-ups maken of volgens een planning. U kunt instellen dat de back-ups tot een onbeperkte tijd worden bewaard. U kunt de app herstellen naar een moment opname van een vorige status door de bestaande app te overschrijven of te herstellen naar een andere app.

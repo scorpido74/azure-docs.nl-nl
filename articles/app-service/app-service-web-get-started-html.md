@@ -1,25 +1,18 @@
 ---
-title: Een statische HTML-web-app maken - Azure App Service | Microsoft Docs
-description: Ontdek hoe eenvoudig het is om web-apps uit te voeren in App Service door een voorbeeld van een statische HTML-app te implementeren.
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Snelstartgids: een statische HTML-Web-app maken'
+description: Implementeer binnen enkele minuten uw eerste HTML-Hallo wereld naar Azure App Service. U implementeert met git, een van de vele manieren waarop u kunt implementeren in App Service.
+author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 12c034e6521a1afd25e2390502faec39461bf5b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5c2aca1996d1ec764dcdca30c7657ee360b9c355
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471522"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671476"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Een statische HTML-web-app maken in Azure
 
@@ -33,7 +26,7 @@ ms.locfileid: "73471522"
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Maak een map 'snelstart' in de Cloud Shell en ga er vervolgens naartoe.
+Maak een map 'quickstart' in de Cloud Shell en ga er vervolgens naartoe.
 
 ```bash
 mkdir quickstart
@@ -99,7 +92,7 @@ De pagina wordt als een web-app uitgevoerd in Azure App Service.
 
 ## <a name="update-and-redeploy-the-app"></a>De app bijwerken en opnieuw implementeren
 
-Typ `nano index.html` in de Cloud Shell om de nano-teksteditor te openen. Wijzig in de tag van de `<h1>`-kop 'Azure App Service - Sample Static HTML Site' in 'Azure App Service', zoals hieronder wordt weergegeven.
+Typ `nano index.html` in Cloud Shell om de nano-teksteditor te openen. Wijzig in de tag van de `<h1>`-kop 'Azure App Service - Sample Static HTML Site' in 'Azure App Service', zoals hieronder wordt weergegeven.
 
 ![Nano index.html](media/app-service-web-get-started-html/nano-index-html.png)
 

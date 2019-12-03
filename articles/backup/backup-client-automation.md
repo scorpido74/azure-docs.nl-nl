@@ -2,13 +2,13 @@
 title: Power shell gebruiken om een back-up te maken van Windows Server naar Azure
 description: In dit artikel leert u hoe u Power shell kunt gebruiken voor het instellen van Azure Backup op Windows Server of een Windows-client, en het beheren van back-up en herstel.
 ms.topic: conceptual
-ms.date: 08/20/2019
-ms.openlocfilehash: 6285b7fc6493090ab0bead5f00124a6eaa02dc7e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.date: 12/2/2019
+ms.openlocfilehash: 54cfbb4a550ff14705d8d02b0589ee023cf9c225
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172446"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689195"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor een Windows-server/Windows-client
 
@@ -113,7 +113,7 @@ De beschik bare opties zijn onder andere:
 
 | Optie | Details | Standaard |
 | --- | --- | --- |
-| /q |Stille installatie |- |
+| q |Stille installatie |- |
 | /p: "locatie" |Het pad naar de installatiemap voor de Azure Backup-Agent. |C:\Program Files\Microsoft Azure Recovery Services-agent |
 | /s: "locatie" |Het pad naar de cachemap voor de Azure Backup-Agent. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |Opt-in Microsoft Update |- |
@@ -411,7 +411,7 @@ In deze sectie wordt de Power shell-opdracht voor het instellen van de systeem s
 $sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
 ```
 
-### <a name="retention"></a>Bewaartermijn
+### <a name="retention"></a>Retentie
 
 ```powershell
 $rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
@@ -569,7 +569,7 @@ In deze sectie wordt u begeleid bij de stappen voor het automatiseren van herste
 
 1. Het bron volume kiezen
 2. Kies een back-uppunt om te herstellen
-3. Kies een item dat u wilt herstellen
+3. Een item opgeven dat moet worden hersteld
 4. Het herstel proces activeren
 
 ### <a name="picking-the-source-volume"></a>Het bron volume wordt opgehaald
@@ -593,95 +593,61 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>Een back-uppunt kiezen waarvan u wilt herstellen
 
-U haalt een lijst met back-uppunten op door de cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) uit te voeren met de juiste para meters. In ons voor beeld kiezen we het meest recente back-uppunt voor het bron volume *D:* en gebruiken om een specifiek bestand te herstellen.
+U haalt een lijst met back-uppunten op door de cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) uit te voeren met de juiste para meters. In ons voor beeld kiezen we het meest recente back-uppunt voor het bron volume *C:* en gebruiken om een specifiek bestand te herstellen.
 
 ```powershell
-$Rps = Get-OBRecoverableItem -Source $Source[1]
+$Rps = Get-OBRecoverableItem $Source[0]
+$Rps
 ```
 
 ```Output
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 17-Jun-15 6:31:31 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/16/2019 7:00:19 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 ```
 
 Het object `$Rps` is een matrix met back-uppunten. Het eerste element is het laatste punt en het n-element is het oudste punt. We gebruiken `$Rps[0]`om het nieuwste punt te kiezen.
 
-### <a name="choosing-an-item-to-restore"></a>Een item kiezen om te herstellen
+### <a name="specifying-an-item-to-restore"></a>Een item opgeven dat moet worden hersteld
 
-Recursief gebruiken van de cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) om het bestand of de map te identificeren die u wilt herstellen. Op die manier kan de maphiërarchie alleen worden gebladerd met behulp van de `Get-OBRecoverableItem`.
-
-Als we in dit voor beeld het bestand *Financiën. xls* willen herstellen, kunnen we verwijzen naar met behulp van het object `$FilesFolders[1]`.
+Als u een specifiek bestand wilt herstellen, geeft u de bestands naam ten opzichte van het basis volume op. Als u bijvoorbeeld C:\Test\Cat.job wilt ophalen, voert u de volgende opdracht uit. 
 
 ```powershell
-$FilesFolders = Get-OBRecoverableItem $Rps[0]
-$FilesFolders
+$Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
+$Item
 ```
 
 ```Output
-IsDir : True
-ItemNameFriendly : D:\MyData\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : MyData
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
-ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
-```
-
-```powershell
-$FilesFolders = Get-OBRecoverableItem $FilesFolders[0]
-$FilesFolders
-```
-
-```Output
-IsDir : False
-ItemNameFriendly : D:\MyData\screenshot.oxps
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : screenshot.oxps
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 228313
-ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
-
-IsDir : False
-ItemNameFriendly : D:\MyData\finances.xls
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\finances.xls
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : finances.xls
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 96256
+IsDir                : False
+ItemNameFriendly     : C:\Test\cat.jpg
+ItemNameGuid         :
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : cat.jpg
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
-```
 
-U kunt ook zoeken naar items die u wilt herstellen met behulp van de cmdlet ```Get-OBRecoverableItem```. In ons voor beeld om te zoeken naar *Financiën. xls* kunnen we een ingang voor het bestand krijgen door deze opdracht uit te voeren:
-
-```powershell
-$Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
 ### <a name="triggering-the-restore-process"></a>Het herstel proces activeren

@@ -2,13 +2,13 @@
 title: Aanbevolen procedures voor sjablonen
 description: Hierin worden aanbevolen benaderingen beschreven voor het ontwerpen van Azure Resource Manager sjablonen. Biedt suggesties om veelvoorkomende problemen te voor komen bij het gebruik van sjablonen.
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.openlocfilehash: 7e1b6496302af3edde4d888c67ec3e461d300a5a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/02/2019
+ms.openlocfilehash: d4cf4364b2e835db3d53fa64682a99710ceb2b29
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150295"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689103"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Aanbevolen procedures voor Azure Resource Manager sjabloon
 
@@ -204,7 +204,7 @@ De volgende informatie kan nuttig zijn wanneer u met [resources](resource-group-
    }
    ```
    
-   Als het opslag account wordt geïmplementeerd in dezelfde sjabloon die u maakt en de naam van het opslag account niet wordt gedeeld met een andere resource in de sjabloon, hoeft u de naam ruimte van de provider of de apiVersion niet op te geven wanneer u naar de resource verwijst. In het volgende voor beeld ziet u de vereenvoudigde syntaxis:
+   Als het opslag account is geïmplementeerd in dezelfde sjabloon die u maakt en de naam van het opslag account niet wordt gedeeld met een andere resource in de sjabloon, hoeft u de naam ruimte van de provider of de apiVersion niet op te geven als u verwijst naar de bron. In het volgende voor beeld ziet u de vereenvoudigde syntaxis:
    
    ```json
    "diagnosticsProfile": {
@@ -276,23 +276,6 @@ De volgende informatie kan nuttig zijn wanneer u met [resources](resource-group-
    > Gebruik de eigenschap **protectedSettings** van de relevante extensies om ervoor te zorgen dat geheimen worden versleuteld wanneer ze worden door gegeven als para meters voor vm's en uitbrei dingen.
    > 
    > 
-
-## <a name="outputs"></a>Uitvoer
-
-Als u een sjabloon gebruikt voor het maken van open bare IP-adressen, neemt u een [sectie outputs](template-outputs.md) op waarmee details van het IP-adres en de Fully QUALIFIED domain name (FQDN) worden geretourneerd. U kunt uitvoerwaarden gebruiken om op te halen eenvoudig meer informatie over openbare IP-adressen en FQDN's na de implementatie.
-
-```json
-"outputs": {
-    "fqdn": {
-        "value": "[reference(parameters('publicIPAddresses_name')).dnsSettings.fqdn]",
-        "type": "string"
-    },
-    "ipaddress": {
-        "value": "[reference(parameters('publicIPAddresses_name')).ipAddress]",
-        "type": "string"
-    }
-}
-```
 
 ## <a name="next-steps"></a>Volgende stappen
 

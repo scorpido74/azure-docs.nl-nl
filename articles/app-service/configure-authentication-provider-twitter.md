@@ -1,25 +1,16 @@
 ---
-title: Twitter-verificatie configureren-Azure App Service
-description: Meer informatie over het configureren van Twitter-verificatie voor uw App Service-app.
-services: app-service
-documentationcenter: ''
-author: mattchenderson
-manager: syntaxc4
-editor: ''
+title: Twitter-verificatie configureren
+description: Meer informatie over het configureren van Twitter-verificatie als een id-provider voor uw App Service-app.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
-ms.service: app-service-mobile
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/19/2018
-ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 02008b7dc1609a5f28ac6ba2a582933a96428198
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b5ec17c18cec8053f0732366c0cc5d0c5003e4de
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176962"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670801"
 ---
 # <a name="configure-your-app-service-app-to-use-twitter-login"></a>Uw App Service-app configureren voor het gebruik van Twitter-aanmelding
 
@@ -48,9 +39,9 @@ Voor het volt ooien van de procedure in dit artikel hebt u een Twitter-account n
 ## <a name="secrets"> </a>Twitter-gegevens toevoegen aan uw toepassing
 
 1. Ga naar uw toepassing in de [Azure-portal].
-1. Selecteer **instellingen** > **verificatie/autorisatie**en zorg ervoor dat **app service-verificatie** is **ingeschakeld**.
+1. Selecteer **instellingen** > **verificatie/autorisatie**en controleer of app service- **verificatie** is **ingeschakeld**.
 1. Selecteer **Twitter**.
-1. Plak de `API Key`-en `API Secret`-waarden die u eerder hebt verkregen.
+1. Plak de `API Key` en `API Secret` waarden die u eerder hebt verkregen.
 1. Selecteer **OK**.
 
    ![Scherm afbeelding van Twitter-instellingen voor mobiele apps][1]

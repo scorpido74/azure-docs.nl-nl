@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7097faa64319a46b1efc91233e30ea992d064246
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595128"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687642"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en problemen oplossen
 
@@ -62,10 +62,10 @@ Als u gedetailleerde Help-informatie voor deze opdracht wilt weer geven, typt u 
 
 ### <a name="optimize-throughput"></a>Door Voer optimaliseren
 
-U kunt de vlag `cap-mbps` gebruiken om een plafond te plaatsen op basis van het gegevens aantal door voer. Met de volgende opdracht wordt bijvoorbeeld een hoofd letter doorvoer tot `10` megabits (MB) per seconde.
+U kunt de vlag `cap-mbps` gebruiken om een plafond te plaatsen op basis van het gegevens aantal door voer. Met de volgende opdracht wordt bijvoorbeeld een hoofd letter door Voer voor de `10` megabits (MB) per seconde.
 
 ```azcopy
-azcopy cap-mbps 10
+azcopy --cap-mbps 10
 ```
 
 De door Voer kan afnemen bij het overbrengen van kleine bestanden. U kunt de door Voer verhogen door de omgevings variabele `AZCOPY_CONCURRENCY_VALUE` in te stellen. Met deze variabele geeft u het aantal gelijktijdige aanvragen op dat kan worden uitgevoerd.  
@@ -80,7 +80,7 @@ Als uw computer minder dan 5 Cpu's heeft, wordt de waarde van deze variabele ing
 
 Gebruik de `azcopy env` om de huidige waarde van deze variabele te controleren. Als de waarde leeg is, kunt u lezen welke waarde wordt gebruikt door te kijken naar het begin van een AzCopy-logboek bestand. De geselecteerde waarde, en de reden dat deze is geselecteerd, worden daar gerapporteerd.
 
-Voordat u deze variabele instelt, wordt u aangeraden een bench Mark-test uit te voeren. In het Bench Mark-test proces wordt de aanbevolen gelijktijdigheids waarde gerapporteerd. Als uw netwerk voorwaarden en nettoladingen verschillen, stelt u deze variabele in op het woord `AUTO` in plaats van een bepaald aantal. Hierdoor wordt AzCopy altijd hetzelfde automatische afstemmings proces uitgevoerd dat wordt gebruikt in Bench Mark-tests.
+Voordat u deze variabele instelt, wordt u aangeraden een bench Mark-test uit te voeren. In het Bench Mark-test proces wordt de aanbevolen gelijktijdigheids waarde gerapporteerd. Als uw netwerk voorwaarden en nettoladingen verschillen, stelt u deze variabele in op het woord `AUTO` in plaats van op een bepaald getal. Hierdoor wordt AzCopy altijd hetzelfde automatische afstemmings proces uitgevoerd dat wordt gebruikt in Bench Mark-tests.
 
 ### <a name="optimize-memory-use"></a>Geheugen gebruik optimaliseren
 
@@ -97,7 +97,7 @@ Deze waarde in gigabytes (GB) uitdrukken.
 
 AzCopy maakt logboek-en plan bestanden voor elke taak. U kunt de Logboeken gebruiken om potentiële problemen te onderzoeken en op te lossen. 
 
-De logboeken bevatten de status mislukt (`UPLOADFAILED`, `COPYFAILED` en `DOWNLOADFAILED`), het volledige pad en de reden van de fout.
+De logboeken bevatten de status van de fout (`UPLOADFAILED`, `COPYFAILED`en `DOWNLOADFAILED`), het volledige pad en de reden van de fout.
 
 Standaard bevinden de logboek-en plan bestanden zich in de map `%USERPROFILE$\.azcopy` op Windows of `$HOME$\.azcopy` Directory op Mac en Linux, maar u kunt deze locatie desgewenst wijzigen.
 
@@ -106,7 +106,7 @@ Standaard bevinden de logboek-en plan bestanden zich in de map `%USERPROFILE$\.a
 
 ### <a name="review-the-logs-for-errors"></a>De logboeken controleren op fouten
 
-Met de volgende opdracht worden alle fouten met de status `UPLOADFAILED` uit het logboek van `04dc9ca9-158f-7945-5933-564021086c79` opgehaald:
+Met de volgende opdracht worden alle fouten met `UPLOADFAILED` status uit het `04dc9ca9-158f-7945-5933-564021086c79` logboek opgehaald:
 
 **Windows (Power shell)**
 
@@ -181,12 +181,12 @@ Gebruik de `azcopy env` om de huidige waarde van deze variabele te controleren. 
 
 AzCopy-logboek niveau is standaard ingesteld op `INFO`. Als u de uitgebreidheid van het logboek wilt beperken om schijf ruimte te besparen, kunt u deze instelling overschrijven met de optie ``--log-level``. 
 
-Beschik bare logboek niveaus zijn: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` en `FATAL`.
+Beschik bare logboek niveaus zijn: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC`en `FATAL`.
 
 ## <a name="remove-plan-and-log-files"></a>Plan-en logboek bestanden verwijderen
 
-Als u alle plannings-en logboek bestanden van uw lokale computer wilt verwijderen om schijf ruimte te besparen, gebruikt u de `azcopy jobs clean` opdracht.
+Als u alle plannings-en logboek bestanden van uw lokale computer wilt verwijderen om schijf ruimte te besparen, gebruikt u de opdracht `azcopy jobs clean`.
 
-Als u de plannings-en logboek bestanden die zijn gekoppeld aan één taak wilt verwijderen, gebruikt u `azcopy jobs rm <job-id>`. Vervang de tijdelijke aanduiding `<job-id>` in dit voor beeld door de taak-id van de taak.
+Gebruik `azcopy jobs rm <job-id>`om het plan en de logboek bestanden te verwijderen die zijn gekoppeld aan één taak. Vervang de tijdelijke aanduiding `<job-id>` in dit voor beeld door de taak-id van de taak.
 
 

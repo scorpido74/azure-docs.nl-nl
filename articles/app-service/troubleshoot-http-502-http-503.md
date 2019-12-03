@@ -1,27 +1,18 @@
 ---
-title: Fix 502 ongeldige gateway, 503 Service niet-beschik bare fouten-Azure App Service | Microsoft Docs
+title: HTTP 502-en HTTP 503-fouten oplossen
 description: Problemen oplossen met 502 ongeldige gateway en de 503-Service niet-beschik bare fouten in uw app die wordt gehost in Azure App Service.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
 tags: top-support-issue
 keywords: 502 ongeldige gateway, 503-Service niet beschikbaar, fout 503, fout 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fdbd77db349eed62af2eb8cf539ef749217a187a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066688"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688328"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Problemen met HTTP-fouten van "502 ongeldige gateway" en "503-Service niet beschikbaar" in Azure App Service
 "502 ongeldige gateway" en "503-Service niet beschikbaar" zijn veelvoorkomende fouten in uw app die wordt gehost in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Dit artikel helpt u bij het oplossen van deze fouten.
@@ -49,7 +40,7 @@ Probleem oplossing kan worden onderverdeeld in drie afzonderlijke taken, in sequ
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. Gedrag van de toepassing observeren en bewaken
+### <a name="1-observe-and-monitor-application-behavior"></a>1. gedrag van de toepassing observeren en bewaken
 #### <a name="track-service-health"></a>Service status bijhouden
 Microsoft Azure bekendmaking telkens wanneer er sprake is van een onderbreking van de service of prestaties. U kunt de status van de service in de [Azure-Portal](https://portal.azure.com/)volgen. Zie [service status bijhouden](../monitoring-and-diagnostics/insights-service-health.md)voor meer informatie.
 
@@ -58,10 +49,10 @@ Met deze optie kunt u nagaan of uw toepassing problemen ondervindt. Klik in de B
 
 Enkele van de metrische gegevens die u mogelijk wilt bewaken voor uw app, zijn
 
-* Gemiddeld geheugenwerkset
-* Gemiddelde reactietijd
+* Gemiddelde werkset geheugen
+* Gemiddelde reactie tijd
 * CPU-tijd
-* Geheugenwerkset
+* Werkset geheugen
 * Aanvragen
 
 ![app bewaken bij het oplossen van HTTP-fouten van 502 ongeldige gateway en de 503-Service is niet beschikbaar](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
@@ -73,7 +64,7 @@ Zie voor meer informatie:
 
 <a name="collect" />
 
-### <a name="2-collect-data"></a>2. Gegevens verzamelen
+### <a name="2-collect-data"></a>2. gegevens verzamelen
 #### <a name="use-the-diagnostics-tool"></a>Het hulp programma voor diagnostische gegevens gebruiken
 App Service biedt een intelligente en interactieve ervaring om u te helpen bij het oplossen van problemen met uw app zonder dat hiervoor configuratie is vereist. Wanneer u problemen ondervindt met uw app, wordt in het diagnostische hulp programma aangegeven wat er mis is met de juiste informatie om snel te kunnen werken en het probleem op te lossen.
 
@@ -82,7 +73,7 @@ Om toegang te krijgen tot App Service diagnostische gegevens, gaat u naar uw App
 #### <a name="use-the-kudu-debug-console"></a>De kudu-console voor fout opsporing gebruiken
 App Service wordt geleverd met een console voor fout opsporing die u kunt gebruiken voor het opsporen van fouten, het verkennen, uploaden van bestanden en JSON-eind punten voor het verkrijgen van informatie over uw omgeving. Dit wordt de *kudu-console* of het *SCM-dash board* voor uw app genoemd.
 
-U kunt dit dash board openen door naar de koppeling te gaan **https://&lt;uw app-naam >. scm. azurewebsites. net/** .
+U kunt dit dash board openen door naar de koppeling **https://te gaan&lt;uw app-naam >. scm. azurewebsites. net/** .
 
 Enkele van de dingen die kudu biedt:
 
@@ -97,7 +88,7 @@ Zie voor meer informatie over de beschik bare functies in kudu [Azure websites o
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Het probleem oplossen
+### <a name="3-mitigate-the-issue"></a>3. het probleem oplossen
 #### <a name="scale-the-app"></a>De app schalen
 In Azure App Service kunt u voor betere prestaties en door Voer de schaal aanpassen waarop u uw toepassing uitvoert. Voor het omhoog schalen van een app zijn twee gerelateerde acties vereist: het wijzigen van uw App Service plan in een hogere prijs categorie en het configureren van bepaalde instellingen nadat u bent overgeschakeld naar de hogere prijs categorie.
 

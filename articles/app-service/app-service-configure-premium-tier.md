@@ -1,26 +1,17 @@
 ---
-title: PremiumV2-laag configureren-Azure App Service | Microsoft Docs
+title: PremiumV2-laag configureren
 description: Meer informatie over het verbeteren van de prestaties van uw web-, mobiele en API-app in Azure App Service door te schalen naar de nieuwe prijs categorie PremiumV2.
 keywords: App Service, Azure App Service, schaal, schaalbaar, App Service-abonnement, kosten App Service
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aa1e522e395f869f73c0b250623665a9b175384e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067234"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672214"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>PremiumV2-laag configureren voor Azure App Service
 
@@ -98,7 +89,7 @@ Als uw app wordt uitgevoerd in een App Service implementatie waarbij **PremiumV2
 
 U kunt het maken van apps in de **PremiumV2** -laag automatiseren met scripts, met behulp van [Azure cli](/cli/azure/install-azure-cli) of [Azure PowerShell](/powershell/azure/overview).
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Met de volgende opdracht maakt u een App Service plan in _P1V2_. U kunt deze in de Cloud Shell uitvoeren. De opties voor `--sku` zijn P1V2, _P2V2_en _P3V2_.
 
@@ -113,7 +104,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Met de volgende opdracht maakt u een App Service plan in _P1V2_. De opties voor `-WorkerSize` zijn _kleine_, _middel_grote en _grote_.
+Met de volgende opdracht maakt u een App Service plan in _P1V2_. De opties voor `-WorkerSize` zijn _klein_, _gemiddeld_en _groot_.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
@@ -122,7 +113,7 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
     -Tier "PremiumV2" `
     -WorkerSize "Small"
 ```
-## <a name="more-resources"></a>Meer bronnen
+## <a name="more-resources"></a>Meer informatiebronnen
 
 [Een app omhoog schalen in azure](manage-scale-up.md)  
 [Het aantal exemplaren handmatig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md)

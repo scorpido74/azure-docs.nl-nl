@@ -1,23 +1,20 @@
 ---
-title: Inhoud afleveren van Azure Storage op Linux-App Service
-description: Het configureren en beheren van inhoud van Azure Storage in Azure App Service op Linux.
-author: msangapu
-manager: jeconnoc
-ms.service: app-service
-ms.workload: web
+title: Aangepaste opslag container aan linux koppelen
+description: Meer informatie over het koppelen van een aangepaste netwerk share aan uw Linux-container in Azure App Service. Bestanden delen tussen apps, statische inhoud extern beheren en lokaal toegang krijgen, enzovoort.
+author: msangapu-msft
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu
-ms.openlocfilehash: 97c03ad294bba1f8a0285fff4595991ca0acc8b5
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 00c60edeefa5fd8d1304aa5fc301a3b0304f5ca3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018264"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671791"
 ---
-# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Inhoud van Azure Storage in App Service in Linux verzenden
+# <a name="attach-azure-storage-containers-to-linux-containers"></a>Azure Storage containers koppelen aan linux-containers
 
-Deze hand leiding laat zien hoe u statische inhoud in App Service op Linux kunt leveren met behulp van [Azure Storage](/azure/storage/common/storage-introduction). Voor delen zijn onder andere beveiligde inhoud, draag baarheid van inhoud, permanente opslag, toegang tot meerdere apps en meerdere overdrachts methoden.
+In deze hand leiding wordt beschreven hoe u netwerk shares koppelt aan App Service op Linux met behulp van [Azure Storage](/azure/storage/common/storage-introduction). Voor delen zijn onder andere beveiligde inhoud, draag baarheid van inhoud, permanente opslag, toegang tot meerdere apps en meerdere overdrachts methoden.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,7 +41,7 @@ az storage container create --name <storage_container_name> --account-name <stor
 
 ## <a name="upload-files-to-azure-storage"></a>Bestanden uploaden naar Azure Storage
 
-Als u een lokale map wilt uploaden naar het opslag account, gebruikt [`az storage blob upload-batch`](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload-batch) u de opdracht zoals in het volgende voor beeld:
+Als u een lokale map wilt uploaden naar het opslag account, gebruikt u de [`az storage blob upload-batch`](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload-batch) opdracht zoals in het volgende voor beeld:
 
 ```azurecli
 az storage blob upload-batch -d <full_path_to_local_directory> --account-name <storage_account_name> --account-key "<access_key>" -s <source_location_name>
@@ -56,7 +53,7 @@ az storage blob upload-batch -d <full_path_to_local_directory> --account-name <s
 > Als u een bestaande map in een web-app aan een opslag account koppelt, wordt de inhoud van de map verwijderd. Als u bestanden migreert voor een bestaande app, maakt u een back-up van uw app en de bijbehorende inhoud voordat u begint.
 >
 
-Als u een opslag account wilt koppelen aan een map in uw app service-app, [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) gebruikt u de opdracht. Het opslag type kan AzureBlob of Azure files zijn. U gebruikt AzureBlob voor deze container.
+Als u een opslag account wilt koppelen aan een map in uw App Service-app, gebruikt u de [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) opdracht. Het opslag type kan AzureBlob of Azure files zijn. U gebruikt AzureBlob voor deze container.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureBlob --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory>
@@ -64,7 +61,7 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 
 U moet dit doen voor alle andere directory's die u aan een opslag account wilt koppelen.
 
-## <a name="verify"></a>Bevestigen
+## <a name="verify"></a>Verifiëren
 
 Zodra een opslag container is gekoppeld aan een web-app, kunt u dit controleren door de volgende opdracht uit te voeren:
 
@@ -74,9 +71,9 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 ## <a name="use-custom-storage-in-docker-compose"></a>Aangepaste opslag gebruiken in docker-samen stellen
 
-Azure Storage kunnen worden gekoppeld met apps met meerdere containers met behulp van de aangepaste ID. Voer uit [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)om de naam van de aangepaste ID weer te geven.
+Azure Storage kunnen worden gekoppeld met apps met meerdere containers met behulp van de aangepaste ID. Voer [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)uit om de naam van de aangepaste ID weer te geven.
 
-Wijs in uw *docker-Compose. yml* -bestand de `volumes` optie toe `custom-id`aan. Bijvoorbeeld:
+Wijs in uw *docker-Compose. yml* -bestand de optie `volumes` toe aan `custom-id`. Bijvoorbeeld:
 
 ```yaml
 wordpress:

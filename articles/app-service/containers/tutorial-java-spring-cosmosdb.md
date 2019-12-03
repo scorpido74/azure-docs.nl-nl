@@ -1,20 +1,18 @@
 ---
-title: Java-web-app ontwikkelen in Linux - Azure App Service
-description: Ontwikkel, implementeer en schaal Spring Boot-Java-Web-apps met Azure App Service in Linux en Azure Cosmos DB.
+title: 'Zelf studie: linux java-app met MongoDB'
+description: Meer informatie over het verkrijgen van een gegevensgestuurde Linux java-app in Azure App Service, met verbinding met een MongoDB dat wordt uitgevoerd in azure (Cosmos DB).
 author: rloutlaw
 ms.author: routlaw
-manager: angerobe
-ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 077c9b22dbb629c8408d431de3e2e621b79c9c48
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a3e9c05fbe68bf1b03f45d045afd8754753fecd3
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747688"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688833"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Zelf studie: een Java Spring boot-web-app bouwen met Azure App Service op Linux en Azure Cosmos DB
 

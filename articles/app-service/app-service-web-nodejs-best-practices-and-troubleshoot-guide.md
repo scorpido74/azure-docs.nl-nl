@@ -1,26 +1,19 @@
 ---
-title: Aanbevolen procedures en probleem oplossing voor node. js-Azure App Service
-description: Meer informatie over de aanbevolen procedures en stappen voor probleem oplossing voor knooppunt toepassingen op Azure App Service.
-services: app-service\web
-documentationcenter: nodejs
+title: Aanbevolen procedures en probleem oplossing voor node. js
+description: Meer informatie over de aanbevolen procedures en stappen voor het oplossen van problemen met node. js-toepassingen die worden uitgevoerd in Azure App Service.
 author: ranjithr
-manager: wadeh
-editor: ''
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: bwren
 ms.custom: seodec18
-ms.openlocfilehash: 5ef0cf691ae3a199ea82cb8cfa23c386d30551dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024228"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672050"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Aanbevolen procedures en richt lijnen voor probleem oplossing voor knooppunt toepassingen op Azure App Service Windows
 
@@ -36,7 +29,7 @@ In dit [schema bestand](https://github.com/Azure/iisnode/blob/master/src/config/
 
 ### <a name="nodeprocesscountperapplication"></a>nodeProcessCountPerApplication
 
-Met deze instelling bepaalt u het aantal knooppunt processen dat per IIS-toepassing wordt gestart. De standaardwaarde is 1. U kunt net zoveel node. exe starten als het aantal vCPU van uw virtuele machine door de waarde te wijzigen in 0. De aanbevolen waarde is 0 voor de meeste toepassingen, zodat u alle Vcpu's op uw computer kunt gebruiken. Node. exe heeft één thread, waardoor één node. exe een maximum van 1 vCPU verbruikt. Als u de maximale prestaties van uw knooppunt toepassing wilt ontvangen, wilt u alle Vcpu's gebruiken.
+Met deze instelling bepaalt u het aantal knooppunt processen dat per IIS-toepassing wordt gestart. De standaard waarde is 1. U kunt net zoveel node. exe starten als het aantal vCPU van uw virtuele machine door de waarde te wijzigen in 0. De aanbevolen waarde is 0 voor de meeste toepassingen, zodat u alle Vcpu's op uw computer kunt gebruiken. Node. exe heeft één thread, waardoor één node. exe een maximum van 1 vCPU verbruikt. Als u de maximale prestaties van uw knooppunt toepassing wilt ontvangen, wilt u alle Vcpu's gebruiken.
 
 ### <a name="nodeprocesscommandline"></a>nodeProcessCommandLine
 
@@ -94,7 +87,7 @@ Een door punt komma's gescheiden lijst met bestanden die worden bekeken voor wij
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-De standaardwaarde is false. Als deze functie is ingeschakeld, kan de knooppunt toepassing verbinding maken met een named pipe (omgevings variabele IISNODE\_besturings\_PIPE) en een ' recycle ' bericht verzenden. Dit zorgt ervoor dat de W3wp zonder problemen wordt gerecycled.
+De standaard waarde is False. Als deze functie is ingeschakeld, kan de knooppunt toepassing verbinding maken met een named pipe (omgevings variabele IISNODE\_besturings\_PIPE) en een ' recycle ' bericht verzenden. Dit zorgt ervoor dat de W3wp zonder problemen wordt gerecycled.
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -106,7 +99,7 @@ De standaard waarde is 0, wat betekent dat deze functie is uitgeschakeld. Wannee
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-De standaardwaarde is false. Als deze eigenschap is ingesteld op True, voegt iisnode een HTTP-antwoord header toe `iisnode-debug` toe aan elke HTTP-reactie die de `iisnode-debug` header-waarde verzendt een URL. Afzonderlijke stukjes diagnostische gegevens kunnen worden verkregen door te kijken naar het URL-fragment, maar een visualisatie is beschikbaar door de URL in een browser te openen.
+De standaard waarde is False. Als deze eigenschap is ingesteld op True, voegt iisnode een HTTP-antwoord header toe `iisnode-debug` toe aan elke HTTP-reactie die de `iisnode-debug` header-waarde verzendt een URL. Afzonderlijke stukjes diagnostische gegevens kunnen worden verkregen door te kijken naar het URL-fragment, maar een visualisatie is beschikbaar door de URL in een browser te openen.
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -114,7 +107,7 @@ Met deze instelling bepaalt u de logboek registratie van stdout en stderr door i
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-De standaardwaarde is false. Als deze eigenschap is ingesteld op True, worden in iisnode de HTTP-status code en de Win32-fout code in uw browser weer gegeven. De Win32-code is handig bij het opsporen van fouten in bepaalde typen problemen.
+De standaard waarde is False. Als deze eigenschap is ingesteld op True, worden in iisnode de HTTP-status code en de Win32-fout code in uw browser weer gegeven. De Win32-code is handig bij het opsporen van fouten in bepaalde typen problemen.
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (niet inschakelen op de live productie site)
 
@@ -276,7 +269,7 @@ Schakel FREB in voor uw toepassing om de Win32-fout code te bekijken (zorg ervoo
 
 NODE. exe heeft een instelling met de naam `NODE_PENDING_PIPE_INSTANCES`. Op Azure App Service is deze waarde ingesteld op 5000. Dit betekent dat node. exe 5000 aanvragen tegelijk kan accepteren op de named pipe. Deze waarde moet voldoende zijn voor de meeste knooppunt toepassingen die op Azure App Service worden uitgevoerd. U moet 503,1003 niet zien op Azure App Service vanwege de hoge waarde voor de `NODE_PENDING_PIPE_INSTANCES`
 
-## <a name="more-resources"></a>Meer bronnen
+## <a name="more-resources"></a>Meer informatiebronnen
 
 Volg deze koppelingen voor meer informatie over node. js-toepassingen op Azure App Service.
 

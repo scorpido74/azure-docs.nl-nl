@@ -1,25 +1,16 @@
 ---
-title: Een PHP-app maken in Linux - Azure App Service | Microsoft Docs
-description: Implementeer in enkele minuten uw eerste PHP-web-app (Hello World) in een App Service on Linux.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Snelstartgids: een PHP-app maken in Linux'
+description: Ga aan de slag met Linux-apps op Azure App Service door uw eerste PHP-app te implementeren in een Linux-container in App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 414d34065b78db0f76683752b93d5ed89ebcdf75
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: feab990f1d9b0e26ff134a7232a358fd2bca7cc2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071181"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687550"
 ---
 # <a name="create-a-php-app-in-app-service-on-linux"></a>Een PHP-web-app maken in App Service op Linux
 
@@ -37,7 +28,7 @@ U kunt de stappen in dit artikel volgen met behulp van een Mac-, Windows- of Lin
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 * <a href="https://git-scm.com/" target="_blank">Git installeren</a>
 * <a href="https://php.net" target="_blank">PHP installeren</a>
@@ -75,7 +66,7 @@ Druk in uw terminalvenster op **Ctrl + C** om de webserver af te sluiten.
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Een web-app maken
+## <a name="create-a-web-app"></a>Een webtoepassing maken
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
@@ -168,7 +159,7 @@ Het linkermenu bevat een aantal pagina's voor het configureren van uw app.
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: PHP-app met MySQL](tutorial-php-mysql-app.md)
+> [Zelf studie: PHP-app met MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
 > [PHP-app configureren](configure-language-php.md)

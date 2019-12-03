@@ -7,16 +7,16 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 98598a28e14dfd8175cbb019ff1b001c65503580
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c4ee4ed81cd4cc443a8f412462a5a7f204c91898
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73644598"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688199"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Gebruik een opname met één klik om gegevens op te nemen in azure Data Explorer
 
-In dit artikel wordt beschreven hoe u met één klik kunt opnemen in een nieuwe tabel in JSON-of CSV-indelingen van opslag in azure Data Explorer. Zodra de gegevens zijn opgenomen, kunt u de tabel bewerken en query's uitvoeren met de webgebruikersinterface.
+Dit artikel laat u zien hoe u met één klik kunt klikken voor een snelle opname van een nieuwe tabel in JSON-of CSV-indelingen van opslag of lokaal bestand in een bestaande tabel of een nieuwe tabel in azure Data Explorer. Gebruik de intuïtieve wizard en binnen enkele minuten, uw gegevens worden opgenomen, u kunt de tabel bewerken en query's uitvoeren met de webgebruikersinterface.
 
 ## <a name="prerequisites"></a>Vereisten
 

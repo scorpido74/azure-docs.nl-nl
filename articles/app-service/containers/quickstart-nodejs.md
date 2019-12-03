@@ -1,18 +1,17 @@
 ---
-title: Een node. js-web-app maken-Azure App Service
-description: Een node. js-app implementeren in Azure App Service
-author: msangapu
+title: 'Snelstartgids: een Linux node. js-app maken'
+description: Ga aan de slag met Linux-apps op Azure App Service door uw eerste node. js-app te implementeren in een Linux-container in App Service.
+author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
-ms.service: app-service
 ms.devlang: javascript
-ms.openlocfilehash: 32e141cae98e3fe34c8207f1565a82d2d76bdd25
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: fb79f4b87d8ddc5303fea834c81329315401464a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439206"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688974"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Een node. js-app maken in azure
 
@@ -30,11 +29,11 @@ U moet ook de [Azure app service-extensie](vscode:extension/ms-azuretools.vscode
 
 Nadat de extensie is geïnstalleerd, meldt u zich aan bij uw Azure-account. Selecteer in de activiteiten balk het Azure-logo om de **Azure app service** Explorer weer te geven. Selecteer **Aanmelden bij Azure...** en volg de instructies.
 
-![Aanmelden bij Azure](./media/quickstart-nodejs/sign-in.png)
+![aanmelden bij Azure](./media/quickstart-nodejs/sign-in.png)
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 
-Als u de fout melding **' kan geen abonnement vinden met de naam [abonnements-id] '** ziet, kan het zijn dat u zich achter een proxy bevindt en de Azure API niet kunt bereiken. Configureer `HTTP_PROXY`-en `HTTPS_PROXY`-omgevings variabelen met uw proxy gegevens in uw Terminal met behulp van `export`.
+Als u de fout melding **' kan geen abonnement vinden met de naam [abonnements-id] '** ziet, kan het zijn dat u zich achter een proxy bevindt en de Azure API niet kunt bereiken. Configureer `HTTP_PROXY`-en `HTTPS_PROXY` omgevings variabelen met uw proxy gegevens in uw Terminal met behulp van `export`.
 
 ```sh
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -61,15 +60,15 @@ Maak vervolgens een node. js-toepassing die in de cloud kan worden geïmplemente
 
 ### <a name="scaffold-a-new-application-with-the-express-generator"></a>Steiger een nieuwe toepassing met de Express-generator
 
-[Express](https://www.expressjs.com) is een populair Framework voor het bouwen en uitvoeren van node. js-toepassingen. U kunt een nieuwe Express-toepassing maken met behulp van het hulp programma [Express Generator](https://expressjs.com/en/starter/generator.html) . De Express-generator wordt geleverd als een NPM-module en kan direct worden uitgevoerd (zonder installatie) met behulp van het opdracht regel programma NPM `npx`.
+[Express](https://www.expressjs.com) is een populair Framework voor het bouwen en uitvoeren van node. js-toepassingen. U kunt een nieuwe Express-toepassing maken met behulp van het hulp programma [Express Generator](https://expressjs.com/en/starter/generator.html) . De Express-generator wordt geleverd als een NPM-module en kan rechtstreeks worden uitgevoerd (zonder installatie) met behulp van het NPM-opdracht regel programma `npx`.
 
 ```bash
 npx express-generator myExpressApp --view pug --git
 ```
 
-Met de para meters voor de `--view pug --git` wordt de generator verteld om de [Pug](https://pugjs.org/api/getting-started.html) -sjabloon Engine (voorheen bekend als `jade`) te gebruiken en om een `.gitignore`-bestand te maken.
+De `--view pug --git`-para meters geven de generator de [Pug](https://pugjs.org/api/getting-started.html) -sjabloon Engine (voorheen bekend als `jade`) en om een `.gitignore` bestand te maken.
 
-Als u alle afhankelijkheden van de toepassing wilt installeren, gaat u naar de nieuwe map en voert u `npm install` uit.
+Als u alle afhankelijkheden van de toepassing wilt installeren, gaat u naar de nieuwe map en voert u `npm install`uit.
 
 ```bash
 cd myExpressApp
@@ -78,7 +77,7 @@ npm install
 
 ### <a name="run-the-application"></a>De toepassing uitvoeren
 
-Controleer vervolgens of de toepassing wordt uitgevoerd. Start vanuit de Terminal de toepassing met behulp van de `npm start`-opdracht om de server te starten.
+Controleer vervolgens of de toepassing wordt uitgevoerd. Start vanuit de Terminal de toepassing met behulp van de `npm start` opdracht om de server te starten.
 
 ```bash
 npm start

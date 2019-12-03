@@ -1,25 +1,18 @@
 ---
-title: Automatisch schalen en App Service Environment v1-Azure
-description: Automatisch schalen en App Service Environment
-services: app-service
-documentationcenter: ''
+title: Automatisch schalen v1
+description: Automatisch schalen en App Service Environment v1. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
 author: btardif
-manager: erikre
-editor: ''
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f0c49e1835412b61817ff3571dd3ee1eaa29f21f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070090"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687282"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatisch schalen en App Service Environment v1
 
@@ -69,7 +62,7 @@ De App Service omgeving wordt als volgt geconfigureerd als hand matig schalen:
 * **Front-ends:** 3
 * **Werknemers groep 1**: 10
 * **Werknemers groep 2**: 5
-* **Werk groep 3**: 5
+* **Werknemers groep 3**: 5
 
 Werk groep 1 wordt gebruikt voor werk belastingen voor productie, terwijl werk groep 2 en werk groep 3 worden gebruikt voor kwaliteits controle (QA) en ontwikkelings werk belastingen.
 
@@ -83,29 +76,29 @@ Frank is bekend met de toepassing. Ze weten dat de piek uren voor belasting tuss
 | --- | --- |
 | **Naam:** Weekdag profiel |**Naam:** Weekend-profiel |
 | **Schalen op:** Regels voor planning en prestaties |**Schalen op:** Regels voor planning en prestaties |
-| **Uplinkpoortprofiel** Week dagen |**Uplinkpoortprofiel** Weekend |
-| **Type:** Terugkeerpatroon |**Type:** Terugkeerpatroon |
-| **Doel bereik:** 5 tot 20 exemplaren |**Doel bereik:** 3 tot 10 exemplaren |
-| **Resterende** Maandag, dinsdag, woensdag, donderdag, vrijdag |**Resterende** Zaterdag, zondag |
-| **Begin tijd:** 9:00 UUR |**Begin tijd:** 9:00 UUR |
+| **Profiel:** Week dagen |**Profiel:** Week |
+| **Type:** Optreden |**Type:** Optreden |
+| **Doel bereik:** 5 tot 20 exemplaren |**Doel bereik:** 3 tot 10 instanties |
+| **Dagen:** Maandag, dinsdag, woensdag, donderdag, vrijdag |**Dagen:** Zaterdag, zondag |
+| **Begin tijd:** 9:00 uur |**Begin tijd:** 9:00 uur |
 | **Tijd zone:** UTC-08 |**Tijd zone:** UTC-08 |
 |  | |
 | **Regel voor automatisch schalen (omhoog schalen)** |**Regel voor automatisch schalen (omhoog schalen)** |
-| **Resource** Productie (App Service Environment) |**Resource** Productie (App Service Environment) |
-| **Gemeten** VERBRUIK |**Gemeten** VERBRUIK |
-| **Schijf** Meer dan 60% |**Schijf** Meer dan 80% |
-| **Hebben** 5 minuten |**Hebben** 10 minuten |
-| **Tijd aggregatie:** Average |**Tijd aggregatie:** Average |
-| **Optreden** Aantal verhogen met 2 |**Optreden** Aantal verhogen met 1 |
+| **Resource:** Productie (App Service Environment) |**Resource:** Productie (App Service Environment) |
+| **Metriek:** VERBRUIK |**Metriek:** VERBRUIK |
+| **Bewerking:** Meer dan 60% |**Bewerking:** Meer dan 80% |
+| **Duur:** 5 minuten |**Duur:** 10 minuten |
+| **Tijd aggregatie:** Evenredig |**Tijd aggregatie:** Evenredig |
+| **Actie:** Aantal verhogen met 2 |**Actie:** Aantal verhogen met 1 |
 | **Afkoelen (minuten):** 15 |**Afkoelen (minuten):** 20 |
 |  | |
 | **Regel voor automatisch schalen (omlaag schalen)** |**Regel voor automatisch schalen (omlaag schalen)** |
-| **Resource** Productie (App Service Environment) |**Resource** Productie (App Service Environment) |
-| **Gemeten** VERBRUIK |**Gemeten** VERBRUIK |
-| **Schijf** Minder dan 30% |**Schijf** Minder dan 20% |
-| **Hebben** 10 minuten |**Hebben** 15 minuten |
-| **Tijd aggregatie:** Average |**Tijd aggregatie:** Average |
-| **Optreden** Aantal verlagen met 1 |**Optreden** Aantal verlagen met 1 |
+| **Resource:** Productie (App Service Environment) |**Resource:** Productie (App Service Environment) |
+| **Metriek:** VERBRUIK |**Metriek:** VERBRUIK |
+| **Bewerking:** Minder dan 30% |**Bewerking:** Minder dan 20% |
+| **Duur:** 10 minuten |**Duur:** 15 minuten |
+| **Tijd aggregatie:** Evenredig |**Tijd aggregatie:** Evenredig |
+| **Actie:** Aantal verlagen met 1 |**Actie:** Aantal verlagen met 1 |
 | **Afkoelen (minuten):** 20 |**Afkoelen (minuten):** 10 |
 
 ### <a name="app-service-plan-inflation-rate"></a>Inflatie frequentie App Service plan
@@ -154,29 +147,29 @@ Met deze informatie kan Frank het volgende profiel voor automatisch schalen en r
 | --- | --- |
 | **Naam:** Weekdag profiel |**Naam:** Weekend-profiel |
 | **Schalen op:** Regels voor planning en prestaties |**Schalen op:** Regels voor planning en prestaties |
-| **Uplinkpoortprofiel** Week dagen |**Uplinkpoortprofiel** Weekend |
-| **Type:** Terugkeerpatroon |**Type:** Terugkeerpatroon |
+| **Profiel:** Week dagen |**Profiel:** Week |
+| **Type:** Optreden |**Type:** Optreden |
 | **Doel bereik:** 13 tot 25 exemplaren |**Doel bereik:** 6 tot 15 exemplaren |
-| **Resterende** Maandag, dinsdag, woensdag, donderdag, vrijdag |**Resterende** Zaterdag, zondag |
-| **Begin tijd:** 7:00 UUR |**Begin tijd:** 9:00 UUR |
+| **Dagen:** Maandag, dinsdag, woensdag, donderdag, vrijdag |**Dagen:** Zaterdag, zondag |
+| **Begin tijd:** 7:00 uur |**Begin tijd:** 9:00 uur |
 | **Tijd zone:** UTC-08 |**Tijd zone:** UTC-08 |
 |  | |
 | **Regel voor automatisch schalen (omhoog schalen)** |**Regel voor automatisch schalen (omhoog schalen)** |
-| **Resource** Werknemers groep 1 |**Resource** Werknemers groep 1 |
-| **Gemeten** WorkersAvailable |**Gemeten** WorkersAvailable |
-| **Schijf** Minder dan 8 |**Schijf** Minder dan 3 |
-| **Hebben** 20 minuten |**Hebben** 30 minuten |
-| **Tijd aggregatie:** Average |**Tijd aggregatie:** Average |
-| **Optreden** Aantal verhogen met 8 |**Optreden** Aantal verhogen met 3 |
+| **Resource:** Werknemers groep 1 |**Resource:** Werknemers groep 1 |
+| **Metriek:** WorkersAvailable |**Metriek:** WorkersAvailable |
+| **Bewerking:** Minder dan 8 |**Bewerking:** Minder dan 3 |
+| **Duur:** 20 minuten |**Duur:** 30 minuten |
+| **Tijd aggregatie:** Evenredig |**Tijd aggregatie:** Evenredig |
+| **Actie:** Aantal verhogen met 8 |**Actie:** Aantal verhogen met 3 |
 | **Afkoelen (minuten):** 180 |**Afkoelen (minuten):** 180 |
 |  | |
 | **Regel voor automatisch schalen (omlaag schalen)** |**Regel voor automatisch schalen (omlaag schalen)** |
-| **Resource** Werknemers groep 1 |**Resource** Werknemers groep 1 |
-| **Gemeten** WorkersAvailable |**Gemeten** WorkersAvailable |
-| **Schijf** Groter dan 8 |**Schijf** Groter dan 3 |
-| **Hebben** 20 minuten |**Hebben** 15 minuten |
-| **Tijd aggregatie:** Average |**Tijd aggregatie:** Average |
-| **Optreden** Aantal verlagen met 2 |**Optreden** Aantal verlagen met 3 |
+| **Resource:** Werknemers groep 1 |**Resource:** Werknemers groep 1 |
+| **Metriek:** WorkersAvailable |**Metriek:** WorkersAvailable |
+| **Bewerking:** Groter dan 8 |**Bewerking:** Groter dan 3 |
+| **Duur:** 20 minuten |**Duur:** 15 minuten |
+| **Tijd aggregatie:** Evenredig |**Tijd aggregatie:** Evenredig |
+| **Actie:** Aantal verlagen met 2 |**Actie:** Aantal verlagen met 3 |
 | **Afkoelen (minuten):** 120 |**Afkoelen (minuten):** 120 |
 
 Het doel bereik dat in het profiel is gedefinieerd, wordt berekend op basis van het minimum aantal exemplaren dat is gedefinieerd in het profiel voor de App Service plan +-buffer.
@@ -199,29 +192,29 @@ In dit scenario weet Frank dat de fout frequentie toeneemt nadat de front-ends e
 | --- |
 | **Naam:** Automatisch schalen: front-ends |
 | **Schalen op:** Regels voor planning en prestaties |
-| **Uplinkpoortprofiel** Elke dag |
-| **Type:** Terugkeerpatroon |
-| **Doel bereik:** 3 tot 10 exemplaren |
-| **Resterende** Elke dag |
-| **Begin tijd:** 9:00 UUR |
+| **Profiel:** Elke dag |
+| **Type:** Optreden |
+| **Doel bereik:** 3 tot 10 instanties |
+| **Dagen:** Elke dag |
+| **Begin tijd:** 9:00 uur |
 | **Tijd zone:** UTC-08 |
 |  |
 | **Regel voor automatisch schalen (omhoog schalen)** |
-| **Resource** Front-end-pool |
-| **Gemeten** VERBRUIK |
-| **Schijf** Meer dan 60% |
-| **Hebben** 20 minuten |
-| **Tijd aggregatie:** Average |
-| **Optreden** Aantal verhogen met 3 |
+| **Resource:** Front-end-pool |
+| **Metriek:** VERBRUIK |
+| **Bewerking:** Meer dan 60% |
+| **Duur:** 20 minuten |
+| **Tijd aggregatie:** Evenredig |
+| **Actie:** Aantal verhogen met 3 |
 | **Afkoelen (minuten):** 120 |
 |  |
 | **Regel voor automatisch schalen (omlaag schalen)** |
-| **Resource** Werknemers groep 1 |
-| **Gemeten** VERBRUIK |
-| **Schijf** Minder dan 30% |
-| **Hebben** 20 minuten |
-| **Tijd aggregatie:** Average |
-| **Optreden** Aantal verlagen met 3 |
+| **Resource:** Werknemers groep 1 |
+| **Metriek:** VERBRUIK |
+| **Bewerking:** Minder dan 30% |
+| **Duur:** 20 minuten |
+| **Tijd aggregatie:** Evenredig |
+| **Actie:** Aantal verlagen met 3 |
 | **Afkoelen (minuten):** 120 |
 
 <!-- IMAGES -->

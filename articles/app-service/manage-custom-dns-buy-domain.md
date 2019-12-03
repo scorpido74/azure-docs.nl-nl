@@ -1,25 +1,16 @@
 ---
-title: Aangepaste domein naam kopen in azure-App Service
-description: Meer informatie over het kopen van een aangepaste domein naam met een web-app in Azure App Service.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: Een aangepaste domein naam kopen
+description: Meer informatie over het kopen van een App Service domein en het gebruiken als aangepast domein voor uw app Azure App Service.
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1354f48843f8006b4a6180a2cea60e735413e446
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0723a3b0c96339ba86b98ab851c44d2a65e6f34b
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470463"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672384"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Een aangepaste domein naam voor Azure App Service kopen
 
@@ -68,7 +59,7 @@ Als het App Service plan zich niet in de **F1** -laag bevindt, sluit u de pagina
 
 Selecteer een van de lagen die niet gratis zijn (**D1**, **B1**, **B2**, **B3** of een laag in de categorie **Productie**). Klik op **Aanvullende opties bekijken** voor aanvullende opties.
 
-Klik op **Toepassen**.
+Klik op **Apply** (Toepassen).
 
 ![Controleer prijscategorie](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 

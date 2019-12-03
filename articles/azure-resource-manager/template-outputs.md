@@ -3,12 +3,12 @@ title: Uitvoer in sjablonen
 description: Hierin wordt beschreven hoe u uitvoer waarden definieert in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: b4c652d71436202b9b6e551f9c582e5c98508259
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 61120b9941a6a20812ea046265ecbe13014d769e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149179"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689148"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Uitvoer in Azure Resource Manager sjabloon
 
@@ -16,7 +16,7 @@ In dit artikel wordt beschreven hoe u uitvoer waarden definieert in uw Azure Res
 
 ## <a name="define-output-values"></a>Uitvoer waarden definiëren
 
-Het volgende voorbeeld laat zien hoe geretourneerd van de resource-ID voor een openbaar IP-adres:
+In het volgende voor beeld ziet u hoe u de resource-ID voor een openbaar IP-adres als resultaat kunt geven:
 
 ```json
 "outputs": {
@@ -51,7 +51,7 @@ Gebruik de functie [Reference](resource-group-template-functions-resource.md#ref
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Bij het ophalen van een eigenschap van een uitvoer van een gekoppelde sjabloon, kan niet de eigenschapsnaam van de een streepje bestaan.
+Bij het ophalen van een uitvoer eigenschap van een gekoppelde sjabloon, mag de naam van de eigenschap geen streepje bevatten.
 
 In het volgende voor beeld ziet u hoe u het IP-adres instelt op een load balancer door een waarde op te halen uit een gekoppelde sjabloon.
 
@@ -61,7 +61,7 @@ In het volgende voor beeld ziet u hoe u het IP-adres instelt op een load balance
 }
 ```
 
-U kunt geen gebruiken de `reference` functie in de uitvoersectie van een [geneste sjabloon](resource-group-linked-templates.md#nested-template). Als u wilt de waarden voor een geïmplementeerde resource in een geneste sjabloon, uw geneste sjabloon te converteren naar een gekoppelde sjabloon.
+U kunt de functie `reference` niet gebruiken in het gedeelte outputs van een [geneste sjabloon](resource-group-linked-templates.md#nested-template). Als u de waarden voor een geïmplementeerde resource in een geneste sjabloon wilt retour neren, converteert u de geneste sjabloon naar een gekoppelde sjabloon.
 
 ## <a name="get-output-values"></a>Uitvoer waarden ophalen
 
@@ -77,7 +77,7 @@ Als u uitvoer waarden wilt ophalen uit de implementatie geschiedenis, kunt u scr
   -Name <deployment-name>).Outputs.resourceID.value
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group deployment show \
@@ -88,17 +88,16 @@ az group deployment show \
 
 ---
 
-## <a name="example-templates"></a>Voorbeeldsjablonen
+## <a name="example-templates"></a>Voorbeeld sjablonen
 
 In de volgende voor beelden ziet u scenario's voor het gebruik van uitvoer.
 
-|Template  |Beschrijving  |
+|Sjabloon  |Beschrijving  |
 |---------|---------|
-|[Kopieer variabelen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Complexe variabelen maakt en deze waarden weergeeft. Niet alle resources niet implementeren. |
-|[Openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Hiermee maakt u een openbaar IP-adres en de uitvoer van de resource-ID. |
-|[Load balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Koppelingen naar de voorgaande sjabloon. Maakt gebruik van de resource-ID in de uitvoer bij het maken van de load balancer. |
+|[Variabelen kopiëren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Maakt complexe variabelen en voert deze waarden uit. Implementeert geen resources. |
+|[Openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Hiermee maakt u een openbaar IP-adres en voert u de resource-ID uit. |
+|[Load balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Koppelingen naar de vorige sjabloon. Maakt gebruik van de resource-ID in de uitvoer bij het maken van de load balancer. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager-sjablonen](resource-group-authoring-templates.md)voor meer informatie over de beschik bare eigenschappen voor uitvoer.
-* Zie [Aanbevolen procedures-uitvoer](template-best-practices.md#outputs)voor aanbevelingen voor het maken van uitvoer.

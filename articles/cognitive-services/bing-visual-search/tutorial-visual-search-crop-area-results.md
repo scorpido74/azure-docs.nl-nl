@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een afbeelding bijsnijden met de Bing Visual Search SDK'
+title: 'Zelf studie: een afbeelding bijsnijden met de Bing Visual Search SDK'
 description: Gebruik de Bing Visual Search SDK om inzichten te verkrijgen op basis van specifieke aren van een afbeelding.
 services: cognitive-services
 titleSuffix: Azure Cognitive Services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 04/26/2019
-ms.author: rosh
-ms.openlocfilehash: a6b625325e2adfe441d8abd2012f100780b659b4
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 7adca44f1710431ad1095cbd0da897d4c7c7f325
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910035"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689353"
 ---
-# <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Zelfstudie: Een afbeelding bijsnijden met de Bing Visual Search SDK voorC#
+# <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Zelf studie: een afbeelding bijsnijden met de Bing Visual Search SDK voorC#
 
 Met de Bing Visual Search SDK kunt u een afbeelding bijsnijden voordat u vergelijk bare online afbeeldingen kunt vinden. Met deze toepassing wordt één persoon bijgesneden van een afbeelding met meerdere personen, waarna Zoek resultaten worden geretourneerd met vergelijk bare afbeeldingen die online zijn gevonden.
 
@@ -49,7 +49,7 @@ Met deze toepassing wordt een gebied van deze afbeelding van het team van micro 
 
 ![Senior leidinggevenden bij Microsoft](./media/MS_SrLeaders.jpg)
 
-Deze afbeelding wordt bijgesneden door een `ImageInfo` object te maken op basis van het snij gebied en het `ImageInfo` object in `VisualSearchRequest`een te laden. Het `ImageInfo` object bevat ook de URL van de afbeelding:
+Deze afbeelding wordt bijgesneden door een `ImageInfo`-object te maken op basis van het snij gebied en het `ImageInfo` object in een `VisualSearchRequest`te laden. Het `ImageInfo`-object bevat ook de URL van de afbeelding:
 
 ```csharp
 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
@@ -61,7 +61,7 @@ VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: ima
 
 ## <a name="search-for-images-similar-to-the-crop-area"></a>Zoeken naar afbeeldingen die vergelijkbaar zijn met het snij gebied
 
-De variabele `VisualSearchRequest` bevat informatie over het snij gebied van de afbeelding en de bijbehorende URL. De `VisualSearchMethodAsync()` -methode haalt de resultaten op:
+De variabele `VisualSearchRequest` bevat informatie over het snij gebied van de afbeelding en de bijbehorende URL. De resultaten van de `VisualSearchMethodAsync()` methode worden opgehaald:
 
 ```csharp
 Console.WriteLine("\r\nSending visual search request with knowledgeRequest that contains URL and crop area");
@@ -69,9 +69,9 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ```
 
-## <a name="get-the-url-data-from-imagemoduleaction"></a>De URL-gegevens ophalen van`ImageModuleAction`
+## <a name="get-the-url-data-from-imagemoduleaction"></a>De URL-gegevens ophalen van `ImageModuleAction`
 
-Bing Visual Search resultaten zijn `ImageTag` objecten. Elke tag bevat een lijst met `ImageAction`-objecten. Elk `ImageAction` bevat een `Data` veld. Dit is een lijst met waarden die afhankelijk zijn van het type actie.
+Bing Visual Search resultaten zijn `ImageTag`-objecten. Elke tag bevat een lijst met `ImageAction`-objecten. Elk `ImageAction` bevat een `Data` veld, een lijst met waarden die afhankelijk zijn van het type actie.
 
 U kunt de verschillende typen afdrukken met de volgende code:
 
@@ -81,20 +81,20 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 
 De volledige toepassing retourneert:
 
-|ActionType  |URL  | |
+|Soort  |URL  | |
 |---------|---------|---------|
 |PagesIncluding WebSearchURL     |         |
 |MoreSizes WebSearchURL     |         |  
 |VisualSearch WebSearchURL    |         |
 |ImageById WebSearchURL     |         |  
 |RelatedSearches WebSearchURL     |         |
-|Entiteit-> WebSearchUrl     | https\://www.Bing.com/CR?IG=E40D0E1A13404994ACB073504BC937A4&cid=03DCF882D7386A442137F49BD6596BEF&RD=1&h=BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v=1&r=https%3a%2F%2fwww.Bing.com%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5380.1        |
-|TopicResults-> WebSearchUrl    |  https\://www.Bing.com/CR?IG=E40D0E1A13404994ACB073504BC937A4&cid=03DCF882D7386A442137F49BD6596BEF&RD=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v=1&r=https%3a%2F%2fwww.Bing.com%2fdiscover%2fnadella%2bsatya&p=DevEx,5382.1        |
-|ImageResults-> WebSearchUrl    |  https\://www.Bing.com/CR?IG=E40D0E1A13404994ACB073504BC937A4&cid=03DCF882D7386A442137F49BD6596BEF&RD=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v=1&r=https%3a%2F%2fwww.Bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5384.1        |
+|Entiteit-> WebSearchUrl     | https-\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v=1&r=https%3a%2f%2fwww.bing.com%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5380.1        |
+|TopicResults-> WebSearchUrl    |  https-\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fnadella%2bsatya&p=DevEx,5382.1        |
+|ImageResults-> WebSearchUrl    |  https-\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5384.1        |
 
-Zoals hierboven wordt weer gegeven `Entity` , bevat de action type een Bing-Zoek query die informatie over een herken bare persoon, plaats of ding retourneert. De typen `TopicResults` en `ImageResults` bevatten zoekopdrachten naar gerelateerde afbeeldingen. De URL's in de lijst zijn koppelingen naar Bing-zoekresultaten.
+Zoals hierboven wordt weer gegeven, bevat de `Entity` action type een Bing-Zoek query die informatie over een herken bare persoon, plaats of ding retourneert. De typen `TopicResults` en `ImageResults` bevatten zoekopdrachten naar gerelateerde afbeeldingen. De URL's in de lijst zijn koppelingen naar Bing-zoekresultaten.
 
-## <a name="get-urls-for-pagesincluding-actiontype-images"></a>Url's voor `PagesIncluding` `ActionType` installatie kopieën ophalen
+## <a name="get-urls-for-pagesincluding-actiontype-images"></a>Url's voor `PagesIncluding` `ActionType`-installatie kopieën ophalen
 
 Voor het ophalen van de werkelijke afbeeldings-URL's is een cast vereist die een `ActionType` leest als `ImageModuleAction`, die een `Data`-element met een waardelijst bevat. Elke waarde is de URL van een afbeelding. Hieronder wordt het `PagesIncluding` actie type gecast naar `ImageModuleAction` en worden de waarden gelezen:
 

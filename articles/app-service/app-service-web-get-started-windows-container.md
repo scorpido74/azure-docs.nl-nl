@@ -1,24 +1,15 @@
 ---
-title: Aangepaste Windows-container uitvoeren (preview) - Azure App Service | Microsoft Docs
-description: Leer hoe u een aangepaste Windows-container implementeert in Azure App Service.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 'Snelstartgids: Windows-container (preview-versie)'
+description: Implementeer uw eerste aangepaste Windows-container naar Azure App Service. Profiteer van container opslag en pas de Windows-container aan zoals u dat wilt.
 ms.topic: quickstart
 ms.date: 08/30/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 230ff96aaf2c78827c7c4da92abe0f356cc2643e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241929"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671352"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Een aangepaste Windows-container uitvoeren in Azure (Preview)
 
@@ -35,8 +26,8 @@ Vereisten voor het voltooien van deze zelfstudie:
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Docker instellen voor het uitvoeren van Windows-containers</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Installeer Visual Studio 2019</a> met de **ASP.net-en Web Development** -en **Azure-ontwikkel** werkbelastingen. Als u Visual Studio 2019 al hebt geïnstalleerd:
 
-    - Installeer de meest recente updates in Visual Studio door **Help** > **controleren op updates**te selecteren.
-    - Voeg de werk belastingen in Visual Studio toe door **extra** > hulp middelen**en functies**te selecteren.
+    - Installeer de meest recente updates in Visual Studio door **Help** te selecteren > **op updates te controleren**.
+    - Voeg de werk belastingen in Visual Studio toe door **extra** > **Hulpprogram Ma's en functies ophalen**te selecteren.
 
 ## <a name="create-an-aspnet-web-app"></a>Een ASP.NET-web-app maken
 
@@ -64,7 +55,7 @@ Maak een ASP.NET-Web-app door de volgende stappen uit te voeren:
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
    ```
 
-1. Selecteer in het Visual Studio-menu de optie **fout opsporing** > **starten zonder fout opsporing** om de web-app lokaal uit te voeren.
+1. Selecteer in het menu van Visual Studio **fout opsporing** > **zonder fout opsporing starten** om de web-app lokaal uit te voeren.
 
    ![De app lokaal uitvoeren](./media/app-service-web-get-started-windows-container/local-web-app.png)
 
@@ -88,7 +79,7 @@ Maak een ASP.NET-Web-app door de volgende stappen uit te voeren:
 
 ## <a name="create-a-windows-container-app"></a>Een Windows-container-app maken
 
-1. Meld u aan bij [Azure Portal]( https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal]( https://portal.azure.com).
 
 1. Kies in de linkerbovenhoek van Azure Portal **Een resource maken**.
 
@@ -96,7 +87,7 @@ Maak een ASP.NET-Web-app door de volgende stappen uit te voeren:
 
 1. Kies uw abonnement en een **resource groep**in **Web-app maken**. U kunt zo nodig een nieuwe resource groep maken.
 
-1. Geef een naam op voor de app, zoals *Win-container-demo* , en kies **Windows** voor het **besturings systeem**. Selecteer **Volgende: Docker** om door te gaan.
+1. Geef een naam op voor de app, zoals *Win-container-demo* , en kies **Windows** voor het **besturings systeem**. Selecteer **volgende: docker** om door te gaan.
 
    ![Een Web App for Containers maken](media/app-service-web-get-started-windows-container/create-web-app-continer.png)
 

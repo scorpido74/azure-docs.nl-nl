@@ -1,25 +1,16 @@
 ---
-title: DNS-namen configureren voor apps die gebruikmaken van Traffic Manager-Azure App Service
-description: Gebruik een aangepaste domein naam voor een web-app in Azure App Service die Traffic Manager voor taak verdeling bevat.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: DNS-namen configureren met Traffic Manager
+description: Meer informatie over het configureren van een aangepast domein voor een Azure App Service-app die kan worden geïntegreerd met Traffic Manager voor taak verdeling.
 ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/17/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e6a59d519ae8bb515ab16632bd39509682959f50
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9139b83f1f2920da47b4a0d440f622626d41c938
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074034"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689282"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Het configureren van een aangepaste domein naam voor een web-app in Azure App Service met behulp van Traffic Manager
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -57,7 +48,7 @@ Als u uw aangepaste domein wilt koppelen aan een web-app in Azure App Service, m
 Hoewel de specifieke kenmerken van elke domein provider verschillen, kunt u toewijzen *vanuit* uw aangepaste domein naam (zoals **contoso.com**) *aan* de Traffic Manager domein naam (**contoso.trafficmanager.net**) die is geïntegreerd met uw web-app.
 
 > [!NOTE]
-> Als er al een record wordt gebruikt en u uw apps aan het preventief moet koppelen, kunt u een extra CNAME-record maken. Als u bijvoorbeeld preventief **www\.contoso.com** wilt binden aan uw web-app, maakt u een CNAME-record van **awverify. www** in **contoso.trafficmanager.net**. U kunt vervolgens ' www\.contoso.com ' toevoegen aan uw web-app zonder de ' www ' CNAME-record te wijzigen. Zie [DNS-records voor een web-app maken in een aangepast domein][CREATEDNS]voor meer informatie.
+> Als er al een record wordt gebruikt en u uw apps aan het preventief moet koppelen, kunt u een extra CNAME-record maken. Als u bijvoorbeeld preventief van **www\.contoso.com** wilt binden aan uw web-app, maakt u een CNAME-record van **awverify. www** in **contoso.trafficmanager.net**. U kunt vervolgens ' www\.contoso.com ' toevoegen aan uw web-app zonder de ' www ' CNAME-record te wijzigen. Zie [DNS-records voor een web-app maken in een aangepast domein][CREATEDNS]voor meer informatie.
 
 Zodra u klaar bent met het toevoegen of wijzigen van DNS-records bij uw domein provider, slaat u de wijzigingen op.
 
@@ -67,7 +58,7 @@ Zodra u klaar bent met het toevoegen of wijzigen van DNS-records bij uw domein p
 [!INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het [Node.js Developer Center](https://azure.microsoft.com/develop/nodejs/) voor meer informatie.
+Zie het [Node.js-ontwikkelaarscentrum](https://azure.microsoft.com/develop/nodejs/) voor meer informatie.
 
 <!-- URL List -->
 

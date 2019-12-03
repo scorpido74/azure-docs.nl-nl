@@ -1,27 +1,20 @@
 ---
-title: Aanbevolen procedures-Azure App Service
-description: Lees de aanbevolen procedures en probleem oplossing voor Azure App Service.
-services: app-service
-documentationcenter: ''
+title: Aanbevolen procedures
+description: Lees de aanbevolen procedures en de veelvoorkomende scenario's voor het oplossen van problemen met uw app in Azure App Service.
 author: dariagrigoriu
-manager: erikre
-editor: mollybos
 ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: c40191c8682d6ff93f70e0853e767c89248ae887
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071619"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671498"
 ---
-# <a name="best-practices-for-azure-app-service"></a>Aanbevolen procedures voor Azure App Service
+# <a name="best-practices-for-azure-app-service"></a>Best practices voor Azure App Service
 Dit artikel bevat een overzicht van de aanbevolen procedures voor het gebruik van [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). 
 
 ## <a name="colocation"></a>Co
@@ -38,17 +31,17 @@ Wanneer u merkt dat een app meer geheugen verbruikt dan verwacht, zoals wordt aa
 ## <a name="CPUresources"></a>Wanneer apps meer CPU verbruiken dan verwacht
 Wanneer u merkt dat een app meer CPU verbruikt dan verwacht of een herhaalde CPU-pieken ondervindt, zoals wordt aangegeven door middel van bewakings-of service aanbevelingen, kunt u overwegen om het App Service plan omhoog of omhoog te schalen. Als uw toepassing stateful is, kunt u de optie alleen omhoog schalen selecteren. als uw toepassing stateless is, kunt u een grotere flexibiliteit en schaal baarheid bieden. 
 
-Voor meer informatie over stateful en stateless toepassingen kunt u deze video bekijken: [Een schaal bare end-to-end toepassing met meerdere lagen plannen op Azure app service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Zie [een web-app schalen in azure app service](manage-scale-up.md)voor meer informatie over opties voor app service schalen en automatisch schalen.  
+Voor meer informatie over stateful en stateless toepassingen kunt u deze video bekijken: [een schaal bare end-to-end toepassing met meerdere lagen plannen op Azure app service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Zie [een web-app schalen in azure app service](manage-scale-up.md)voor meer informatie over opties voor app service schalen en automatisch schalen.  
 
 ## <a name="socketresources"></a>Wanneer socket bronnen worden uitgeput
 Een veelvoorkomende reden voor het uitvallen van uitgaande TCP-verbindingen is het gebruik van client bibliotheken die niet zijn geïmplementeerd voor het opnieuw gebruiken van TCP-verbindingen, of wanneer een protocol op een hoger niveau, zoals HTTP-Keep-Alive, niet wordt gebruikt. Raadpleeg de documentatie voor elk van de bibliotheken waarnaar wordt verwezen door de apps in uw App Service-abonnement om te controleren of deze in uw code zijn geconfigureerd of geopend, zodat uitgaande verbindingen efficiënt kunnen worden hergebruikt. Volg ook de richt lijnen voor bibliotheek documentatie voor het maken en vrijgeven of opschonen om lekkende verbindingen te voor komen. Hoewel dergelijke client bibliotheken onderzoeken worden uitgevoerd, kan de impact worden verkleind door naar meerdere instanties te schalen.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node. js en uitgaande HTTP-aanvragen
-Wanneer u werkt met node. js en veel uitgaande HTTP-aanvragen, is het belang rijk dat u de trans actie HTTP-Keep-Alive kunt gebruiken. U kunt het [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` -pakket gebruiken om uw code gemakkelijker te maken.
+Wanneer u werkt met node. js en veel uitgaande HTTP-aanvragen, is het belang rijk dat u de trans actie HTTP-Keep-Alive kunt gebruiken. U kunt het [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) -`npm`-pakket gebruiken om uw code gemakkelijker te maken.
 
-Het `http` antwoord altijd afhandelen, zelfs als u niets in de handler doet. Als u het antwoord niet op de juiste manier afhandelt, wordt uw toepassing uiteindelijk vastgelopen omdat er geen sockets meer beschikbaar zijn.
+Het `http`-antwoord altijd afhandelen, zelfs als u niets in de handler doet. Als u het antwoord niet op de juiste manier afhandelt, wordt uw toepassing uiteindelijk vastgelopen omdat er geen sockets meer beschikbaar zijn.
 
-Als u bijvoorbeeld werkt met het pakket `http` of `https` , doet u het volgende:
+Als u bijvoorbeeld werkt met het `http`-of `https`-pakket:
 
 ```javascript
 const request = https.request(options, function(response) {

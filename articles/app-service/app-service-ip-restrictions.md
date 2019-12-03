@@ -1,25 +1,18 @@
 ---
-title: Toegang beperken-Azure App Service | Microsoft Docs
-description: Toegangs beperkingen gebruiken met Azure App Service
+title: Toegang beperken voor IP-adressen
+description: Lees hoe u uw app in Azure App Service kunt beveiligen door expliciet client-IP-adressen of-adresbereiken white list.
 author: ccompy
-manager: stefsch
-editor: ''
-services: app-service\web
-documentationcenter: ''
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cee6fc9fb5cc10a2b3442e146ef5688ed74290bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 64ce74c84f8f69e72510be76a1309e1a5ea42f2f
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088440"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672172"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Toegangs beperkingen Azure App Service #
 
@@ -37,7 +30,7 @@ De mogelijkheid om de toegang tot uw web-app vanuit een Azure Virtual Network (V
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Toegangs beperkings regels toevoegen en bewerken in de portal ##
 
-Als u een toegangs beperkings regel wilt toevoegen aan uw app, gebruikt u het menu om**beperkingen** voor **netwerk**>toegang te openen en klikt u op **toegangs beperkingen configureren**
+Als u een toegangs beperkings regel wilt toevoegen aan uw app, gebruikt u het menu om **toegangs beperkingen** voor **netwerk**>te openen en klikt u op **toegangs beperkingen configureren**
 
 ![App Service-netwerk opties](media/app-service-ip-restrictions/access-restrictions.png)  
 

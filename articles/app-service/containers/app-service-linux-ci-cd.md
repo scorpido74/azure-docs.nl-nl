@@ -1,36 +1,29 @@
 ---
-title: Doorlopende implementatie met Web App for Containers-Azure App Service | Microsoft Docs
-description: Continue implementatie instellen in Web App for Containers.
+title: CI/CD naar aangepaste Linux-containers
+description: Meer informatie over het instellen van continue implementatie naar een aangepaste Linux-container in Azure App Service. Continue implementatie wordt ondersteund voor docker hub en ACR.
 keywords: Azure app service, Linux, docker, ACR, oss
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1dc776f0a61ac1a29ab3fe3ebdd542469863cd50
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d43491de7500204ed470757a1b744017a8180b57
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071358"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687638"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Doorlopende implementatie met Web App for Containers
 
-In deze zelf studie configureert u continue implementatie voor een aangepaste container installatie kopie van beheerde [Azure container Registry](https://azure.microsoft.com/services/container-registry/) -opslag plaatsen of docker- [hub](https://hub.docker.com).
+In deze zelf studie configureert u continue implementatie voor een aangepaste container installatie kopie van beheerde [Azure container Registry](https://azure.microsoft.com/services/container-registry/) -opslag plaatsen of [docker-hub](https://hub.docker.com).
 
 ## <a name="enable-continuous-deployment-with-acr"></a>Continue implementatie met ACR inschakelen
 
 ![Scherm opname van ACR-webhook](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer de optie **app service** aan de linkerkant van de pagina.
 3. Selecteer de naam van de app waarvoor u een continue implementatie wilt configureren.
 4. Selecteer op de pagina **container instellingen** de optie **Eén container**
@@ -48,7 +41,7 @@ Klik in uw Container Registry op webhooks om de huidige webhooks weer te geven.
 
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>Continue implementatie met docker hub inschakelen (optioneel)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer de optie **app service** aan de linkerkant van de pagina.
 3. Selecteer de naam van de app waarvoor u een continue implementatie wilt configureren.
 4. Selecteer op de pagina **container instellingen** de optie **Eén container**
@@ -58,7 +51,7 @@ Klik in uw Container Registry op webhooks om de huidige webhooks weer te geven.
 
 ![Scherm afbeelding van de app-instelling](./media/app-service-webapp-service-linux-ci-cd/ci-cd-docker-02.png)
 
-Kopieer de webhook-URL. Als u een webhook voor docker hub wilt toevoegen, volgt u webhooks <a href="https://docs.docker.com/docker-hub/webhooks/" target="_blank">voor docker hub</a>.
+Kopieer de webhook-URL. Als u een webhook voor docker hub wilt toevoegen, volgt u <a href="https://docs.docker.com/docker-hub/webhooks/" target="_blank">webhooks voor docker hub</a>.
 
 ## <a name="next-steps"></a>Volgende stappen
 

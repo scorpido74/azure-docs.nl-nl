@@ -1,22 +1,18 @@
 ---
-title: Een Java Enterprise-web-app maken onder Linux - Azure App Service | Microsoft Docs
-description: Leer hoe u een Java Enterprise-app kunt maken die in Wildfly in Azure App Service onder Linux kan worden uitgevoerd.
+title: 'Zelf studie: Java Enter prise-app in Linux'
+description: Meer informatie over het verkrijgen van een Java-bedrijfs-app in Wildfly op Azure App Service op Linux, met verbinding met een PostgreSQL-data base in Azure.
 author: JasonFreeberg
-manager: routlaw
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 2d26d9e145030e5972289c224dc2f76078d67527
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 84f22d52e9a92707a26a4e64f194e82cca87757d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498485"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687436"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Zelfstudie: een Java EE- en Postgres-web-app in Azure maken
 
@@ -165,24 +161,24 @@ Vervolgens moet de configuratie van de Java Transaction API (JTA) worden bewerkt
 
 Voordat de opnieuw geconfigureerde toepassing kan worden geïmplementeerd, moet de WildFly-toepassingsserver met de Postgres-module en de bijbehorende afhankelijkheden worden bijgewerkt. Meer informatie over de configuratie vindt [u op WildFly-server configureren](configure-language-java.md#configure-java-ee-wildfly).
 
-Voor het configureren van de-server zijn de vier bestanden in de *wildfly_config/* map vereist:
+Voor het configureren van de server zijn de vier bestanden in de *wildfly_config/* map vereist:
 
 - **postgresql-42.2.5.jar**: dit JAR-bestand is het JDBC-stuurprogramma voor Postgres. Zie de [officiële website](https://jdbc.postgresql.org/index.html) (Engelstalig) voor meer informatie.
 - **postgres-module.xml**: dit XML-bestand declareert een naam voor de Postgres-module (org.postgres). Het geeft teven de resources en afhankelijkheden op die nodig zijn voor de te gebruiken module.
-- **jboss_cli_commands. cli**: dit bestand bevat configuratieopdrachten die door de JBoss CLI worden uitgevoerd. Met de opdrachten wordt de Postgres-module aan de WildFly-toepassingsserver toegevoegd, worden de referenties opgegeven, wordt een JNDI-naam gedeclareerd, de drempelwaarde voor de time-out ingesteld, enzovoort. Zie de [officiële documentatie](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli) (Engelstalig) als u niet bekend bent met de JBoss CLI.
+- **jboss_cli_commands. cli**: dit bestand bevat configuratie opdrachten die worden uitgevoerd door de JBoss cli. Met de opdrachten voegt u de post gres-module toe aan de WildFly-toepassings server, geeft u de referenties op, declareert u een JNDI-naam, stelt u de drempel waarde voor time-out, enzovoort Zie de [officiële documentatie](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)als u niet bekend bent met de JBoss cli.
 - **startup_script.sh**: ten slotte wordt dit script uitgevoerd als uw App Service-exemplaar wordt gestart. Het script voert slechts één functie uit: sluizen de opdrachten in *jboss_cli_commands. cli* naar de JBoss cli.
 
 U wordt ten sterkste aangeraden de inhoud van deze bestanden te lezen, met name *jboss_cli_commands.cli*.
 
 ### <a name="ftp-the-configuration-files"></a>Configuratiebestanden via FTP verzenden
 
-We moeten de inhoud van *wildfly_config/* naar ons app service-exemplaar FTP. U kunt uw FTP-referenties ophalen door op de knop **Publicatieprofiel ophalen** te klikken in de App Service-blade in de Azure-portal. De gebruikersnaam en het wachtwoord voor de FTP staan in het gedownloade XML-document. Zie [dit document](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials) voor meer informatie over het publicatieprofiel.
+De inhoud van *wildfly_config/* naar ons app service exemplaar moet worden FTP. U kunt uw FTP-referenties ophalen door op de knop **Publicatieprofiel ophalen** te klikken in de App Service-blade in de Azure-portal. De gebruikersnaam en het wachtwoord voor de FTP staan in het gedownloade XML-document. Zie [dit document](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials) voor meer informatie over het publicatieprofiel.
 
 Gebruik een FTP-hulp programma voor het overdragen van de vier bestanden in *wildfly_config/* naar */Home/site/Deployments/tools/* . (Draag alleen de bestanden over, niet de hele map.)
 
 ### <a name="finalize-app-service"></a>App Service voltooien
 
-Ga in de App Service-blade naar het paneel Toepassingsinstellingen. Stel onder runtime het veld opstart bestand in op */Home/site/Deployments/tools/startup_script.sh*. Dit garandeert dat het shellscript wordt uitgevoerd nadat het App Service-exemplaar is gemaakt, maar voordat de WildFly-server wordt gestart.
+Ga in de App Service-blade naar het paneel Toepassingsinstellingen. Stel onder runtime het veld opstart bestand in op */home/site/deployments/tools/startup_script. sh*. Dit zorgt ervoor dat het shell script wordt uitgevoerd nadat het App Service exemplaar is gemaakt, maar voordat de WildFly-server wordt gestart.
 
 Start ten slotte App Service opnieuw. De knop bevindt zich in het paneel Overzicht.
 
@@ -194,7 +190,7 @@ U kunt de toepassing opnieuw samenstellen en implementeren in een terminalvenste
 mvn clean install -DskipTests azure-webapp:deploy
 ```
 
-Gefeliciteerd! Uw toepassing gebruikt nu een post gres-data base en eventuele records die in de toepassing worden gemaakt, worden opgeslagen in post gres, in plaats van de vorige H2-data base in het geheugen. U kunt dit controleren door een record te maken en App Service opnieuw te starten. De records zijn nog steeds aanwezig als u de toepassing opnieuw start.
+Gefeliciteerd! Uw toepassing gebruikt nu een post gres-data base en eventuele records die in de toepassing worden gemaakt, worden opgeslagen in post gres in plaats van de vorige H2-in-memory database. U kunt dit controleren door een record te maken en App Service opnieuw te starten. De records zijn nog steeds aanwezig als u de toepassing opnieuw start.
 
 ## <a name="clean-up"></a>Opruimen
 
@@ -206,7 +202,7 @@ az group delete --name <your-resource-group>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Java EE-app in Azure implementeren via Maven
@@ -218,7 +214,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aan uw app kunt toewijzen.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
+> [Zelf studie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
 
 U kunt ook andere resources bekijken:
 

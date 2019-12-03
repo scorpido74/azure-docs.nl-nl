@@ -1,25 +1,16 @@
 ---
-title: Overzicht van beveiliging-Azure App Service | Microsoft Docs
+title: Beveiliging
 description: Meer informatie over hoe App Service uw app kunt beveiligen en hoe u uw app kunt vergren delen tegen bedreigingen.
 keywords: Azure app service, Web-app, mobiele app, API-app, functie-app, beveiliging, beveiligd, beveiligd, naleving, compatibel, certificaat, certificaten, HTTPS, ftps, TLS, vertrouwen, versleuteling, versleutelen, versleutelen, IP-beperking, verificatie, autorisatie, verificatie, authenticationo, MSI, beheerde service-identiteit, beheerde identiteit, geheimen, geheim, patches, patch, patches, versie, isolatie, netwerk isolatie, DDoS, MitM
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/24/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 07dbbb956dcf6f1204bef2af3a28a0af3eeb5226
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 28394689048e730aa0c84e3bf807ef3afb898b1e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470093"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688558"
 ---
 # <a name="security-in-azure-app-service"></a>Beveiliging in Azure App Service
 
@@ -86,7 +77,7 @@ Er zijn drie typen externe resources die uw app nodig heeft om toegang te krijge
 
 In elk van deze gevallen biedt App Service een manier om beveiligde verbindingen te maken, maar u moet wel rekening houden met de aanbevolen beveiligings procedures. Gebruik bijvoorbeeld altijd versleutelde verbindingen, zelfs als de back-end-bron niet-versleutelde verbindingen toestaat. Zorg er bovendien voor dat uw back-end Azure-service de minimale set IP-adressen toestaat. U kunt de uitgaande IP-adressen voor uw app vinden op [inkomende en uitgaande IP-adressen in azure app service](overview-inbound-outbound-ips.md).
 
-### <a name="azure-resources"></a>Azure-resources
+### <a name="azure-resources"></a>Azure-bronnen
 
 Wanneer uw app verbinding maakt met Azure-resources, zoals [SQL database](https://azure.microsoft.com/services/sql-database/) en [Azure Storage](/azure/storage/), blijft de verbinding binnen Azure en heeft deze geen grenzen van het netwerk. De verbinding gaat echter via het gedeelde netwerk in azure, dus zorg er altijd voor dat uw verbinding is versleuteld. 
 

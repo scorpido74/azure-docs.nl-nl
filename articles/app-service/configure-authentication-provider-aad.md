@@ -1,25 +1,16 @@
 ---
-title: Azure Active Directory authenticatie configureren-Azure App Service
-description: Meer informatie over het configureren van Azure Active Directory verificatie voor uw App Service-app.
-author: cephalin
-services: app-service
-documentationcenter: ''
-manager: gwallace
-editor: ''
+title: Azure AD-verificatie configureren
+description: Meer informatie over het configureren van Azure Active Directory-verificatie als een id-provider voor uw App Service-app.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
-ms.service: app-service
-ms.workload: web,mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/03/2019
-ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6812f99d8433ef318eca37eb2615d43f4749e944
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b833604ce18873e22c22990a26dcbae1d9928628
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886177"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670892"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Uw App Service-app configureren voor het gebruik van Azure AD-aanmelding
 
@@ -38,7 +29,7 @@ Volg deze aanbevolen procedures bij het instellen van uw app en verificatie:
 
 ## <a name="express"> </a>Configureren met Express-instellingen
 
-1. Ga in het [Azure Portal]naar uw app service-app.
+1. Ga in het [Azure-portal]naar uw app service-app.
 1. Selecteer **instellingen** > **verificatie/autorisatie** in het linkerdeel venster en controleer of app service- **verificatie** is **ingeschakeld**.
 1. Selecteer **Azure Active Directory**en selecteer vervolgens **Express** onder **beheer modus**.
 1. Selecteer **OK** om de app app service te registreren in azure Active Directory. Er wordt een nieuwe app-registratie gemaakt.
@@ -74,7 +65,7 @@ U hebt de volgende informatie nodig wanneer u uw App Service-app configureert:
 
 Voer de volgende stappen uit:
 
-1. Meld u aan bij de [Azure Portal] en ga naar uw app service-app. Noteer de **URL**van uw app. U gebruikt deze om de registratie van uw Azure Active Directory-app te configureren.
+1. Meld u aan bij de [Azure-portal] en ga naar uw app service-app. Noteer de **URL**van uw app. U gebruikt deze om de registratie van uw Azure Active Directory-app te configureren.
 1. Selecteer **Azure Active Directory** > **app-registraties** > **nieuwe registratie**.
 1. Voer op de pagina **een toepassing registreren** een **naam** in voor de registratie van uw app.
 1. In **omleidings-URI**selecteert u **Web** en voert u de URL van uw app service-app in en voegt u het pad toe `/.auth/login/aad/callback`. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
@@ -95,7 +86,7 @@ Voer de volgende stappen uit:
 
 ### <a name="secrets"> </a>Azure Active Directory gegevens toevoegen aan uw app service-app
 
-1. Ga in het [Azure Portal]naar uw app service-app. 
+1. Ga in het [Azure-portal]naar uw app service-app. 
 1. Selecteer **instellingen > verificatie/autorisatie** in het linkerdeel venster en controleer of app service- **verificatie** is **ingeschakeld**.
 1. Beschrijving Standaard staat App Service verificatie niet-geverifieerde toegang tot uw app toe. Als u gebruikers verificatie wilt afdwingen, stelt **u de actie in die moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd** om u aan te **melden met Azure Active Directory**.
 1. Selecteer **Azure Active Directory**onder verificatie providers.
@@ -118,7 +109,7 @@ U bent nu klaar om Azure Active Directory te gebruiken voor verificatie in uw Ap
 
 U kunt systeem eigen clients registreren om verificatie toe te staan met behulp van een client bibliotheek, zoals de **Active Directory Authentication Library**.
 
-1. Selecteer in de [Azure Portal] **Active Directory** > **app-registraties** > **nieuwe registratie**.
+1. Selecteer in de [Azure-portal] **Active Directory** > **app-registraties** > **nieuwe registratie**.
 1. Voer op de pagina **een toepassing registreren** een **naam** in voor de registratie van uw app.
 1. In **omleidings-URI**selecteert u **open bare client (mobiele & bureau blad)** en voert u de URL van uw app service app in en voegt u het pad `/.auth/login/aad/callback`toe. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 1. Selecteer **Maken**.
@@ -152,5 +143,5 @@ U hebt nu een systeem eigen client toepassing geconfigureerd die toegang heeft t
 
 <!-- URLs. -->
 
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/
 [alternative method]:#advanced

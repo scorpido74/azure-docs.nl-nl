@@ -1,26 +1,17 @@
 ---
-title: Een ASP.NET-app maken met SQL Database - Azure App Service | Microsoft Docs
+title: 'Zelf studie: ASP.NET-app met SQL Database'
 description: Informatie over het implementeren van een C# ASP.NET-app met een SQL Server-database in Azure.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2f815d99c32c2dcaa1fd35d00110b27a90f53ab4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2a0b3994af48372b8ed0a3c6eaecf4289d0980c1
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471197"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671383"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Zelfstudie: Een ASP.NET-app bouwen in Azure met SQL Database
 
@@ -55,7 +46,7 @@ Als u Visual Studio al hebt geïnstalleerd, voegt u de workloads toe in Visual S
 
 Het voorbeeldproject bevat een eenvoudige [ASP.NET MVC](https://www.asp.net/mvc)-CRUD-app (create-read-update-delete) die gebruikmaakt van [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
-### <a name="run-the-app"></a>De app uitvoeren
+### <a name="run-the-app"></a>De app kunt uitvoeren
 
 Open het bestand *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* in Visual Studio. 
 
@@ -119,7 +110,7 @@ Configureer in het dialoogvenster **App Service-plan configureren** het nieuwe A
 | Instelling  | Voorgestelde waarde | Voor meer informatie |
 | ----------------- | ------------ | ----|
 |**App Service Plan**| myAppServicePlan | [App Service-abonnementen](../app-service/overview-hosting-plans.md) |
-|**Locatie**| Europa -west | [Azure-regio's](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
+|**Locatie**| Europa - west | [Azure-regio's](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
 |**Grootte**| Gratis | [Prijscategorieën](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
 ### <a name="create-a-sql-server-instance"></a>Een SQL Server-instantie maken
@@ -410,7 +401,7 @@ In de portal wordt standaard de pagina **Overzicht** getoond. Deze pagina geeft 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een SQL-database in Azure maken

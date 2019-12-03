@@ -1,27 +1,18 @@
 ---
-title: Problemen met prestatie vermindering oplossen-Azure App Service | Microsoft Docs
-description: Dit artikel helpt u bij het oplossen van problemen met prestatie problemen met langzame apps in Azure App Service.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: Prestatie vermindering oplossen
+description: Meer informatie over het oplossen van problemen met trage prestaties in Azure App Service, waaronder het gedrag van de bewakings app, het verzamelen van gegevens en het beperken van het probleem.
 tags: top-support-issue
 keywords: prestaties van web-apps, trage app, trage app
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/03/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3f7389022eaee4268d5d4fc5439b64d7f7f1bf07
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066532"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688305"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problemen met prestatie problemen met langzame apps in Azure App Service oplossen
 Dit artikel helpt u bij het oplossen van problemen met prestatie problemen met langzame apps in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -50,7 +41,7 @@ Probleem oplossing kan worden onderverdeeld in drie afzonderlijke taken, in sequ
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. Gedrag van de toepassing observeren en bewaken
+### <a name="1-observe-and-monitor-application-behavior"></a>1. gedrag van de toepassing observeren en bewaken
 #### <a name="track-service-health"></a>Service status bijhouden
 Microsoft Azure bekendmaking telkens wanneer er sprake is van een onderbreking van de service of prestaties. U kunt de status van de service op het [Azure Portal](https://portal.azure.com/)volgen. Zie [service status bijhouden](../monitoring-and-diagnostics/insights-service-health.md)voor meer informatie.
 
@@ -59,10 +50,10 @@ Met deze optie kunt u nagaan of uw toepassing problemen ondervindt. Klik in de B
 
 Enkele van de metrische gegevens die u mogelijk wilt bewaken voor uw app, zijn
 
-* Gemiddeld geheugenwerkset
-* Gemiddelde reactietijd
+* Gemiddelde werkset geheugen
+* Gemiddelde reactie tijd
 * CPU-tijd
-* Geheugenwerkset
+* Werkset geheugen
 * Aanvragen
 
 ![prestaties van apps bewaken](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
@@ -95,7 +86,7 @@ Elke App Service-app biedt een uitbreidbaar beheer eindpunt waarmee u een kracht
 
 <a name="collect" />
 
-### <a name="2-collect-data"></a>2. Gegevens verzamelen
+### <a name="2-collect-data"></a>2. gegevens verzamelen
 App Service biedt diagnostische functionaliteit voor het vastleggen van logboek gegevens van zowel de webserver als de webtoepassing. De informatie wordt onderverdeeld in webserver diagnostiek en toepassings diagnoses.
 
 #### <a name="enable-web-server-diagnostics"></a>Diagnostische gegevens van webserver inschakelen
@@ -103,7 +94,7 @@ U kunt de volgende soorten logboeken in-of uitschakelen:
 
 * **Gedetailleerde fout registratie** : gedetailleerde fout informatie voor HTTP-status codes die duiden op een fout (status code 400 of hoger). Dit kan informatie bevatten die u kan helpen om te bepalen waarom de server de fout code heeft geretourneerd.
 * **Tracering van mislukte aanvragen** -gedetailleerde informatie over mislukte aanvragen, inclusief een tracering van de IIS-onderdelen die worden gebruikt om de aanvraag te verwerken en de tijd die in elk onderdeel is gemaakt. Dit kan handig zijn als u probeert de prestaties van de app te verbeteren of te isoleren wat een specifieke HTTP-fout veroorzaakt.
-* **Logboek registratie** van webserver-informatie over http-trans acties met de uitgebreide W3C-indeling van logboek bestand. Dit is handig bij het bepalen van de algemene metrische gegevens van de app, zoals het aantal verwerkte aanvragen of hoeveel aanvragen van een specifiek IP-adres.
+* **Logboek registratie van webserver** -informatie over http-trans acties met de uitgebreide W3C-indeling van logboek bestand. Dit is handig bij het bepalen van de algemene metrische gegevens van de app, zoals het aantal verwerkte aanvragen of hoeveel aanvragen van een specifiek IP-adres.
 
 #### <a name="enable-application-diagnostics"></a>Application Diagnostics inschakelen
 Er zijn verschillende opties voor het verzamelen van prestatie gegevens van toepassingen van App Service, het profiel van uw toepassing in Visual Studio of het wijzigen van de toepassings code om meer informatie en traceringen te registreren. U kunt de opties kiezen op basis van de mate van toegang tot de toepassing en wat u hebt geconstateerd via de controle hulpprogramma's.
@@ -123,7 +114,7 @@ Externe profile ring is handig als het CPU-gebruik van het proces hoog is en het
 Zie [ondersteuning voor externe profilering in azure app service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service)voor meer informatie.
 
 ##### <a name="set-up-diagnostic-traces-manually"></a>Diagnostische traceringen hand matig instellen
-Als u toegang hebt tot de bron code van de webtoepassing, kunt u met Application Diagnostics gegevens vastleggen die zijn gemaakt door een webtoepassing. ASP.NET-toepassingen kunnen de `System.Diagnostics.Trace` -klasse gebruiken om informatie te registreren in het logboek voor toepassings diagnose. U moet echter de code wijzigen en uw toepassing opnieuw implementeren. Deze methode wordt aanbevolen als uw app wordt uitgevoerd in een test omgeving.
+Als u toegang hebt tot de bron code van de webtoepassing, kunt u met Application Diagnostics gegevens vastleggen die zijn gemaakt door een webtoepassing. ASP.NET-toepassingen kunnen de `System.Diagnostics.Trace`-klasse gebruiken om informatie te registreren in het logboek voor toepassings diagnose. U moet echter de code wijzigen en uw toepassing opnieuw implementeren. Deze methode wordt aanbevolen als uw app wordt uitgevoerd in een test omgeving.
 
 Zie [Diagnostische logboek registratie inschakelen voor apps in azure app service](troubleshoot-diagnostic-logs.md)voor gedetailleerde instructies voor het configureren van uw toepassing voor logboek registratie.
 
@@ -135,7 +126,7 @@ Om toegang te krijgen tot App Service diagnostische gegevens, gaat u naar uw App
 #### <a name="use-the-kudu-debug-console"></a>De kudu-console voor fout opsporing gebruiken
 App Service wordt geleverd met een console voor fout opsporing die u kunt gebruiken voor het opsporen van fouten, het verkennen, uploaden van bestanden en JSON-eind punten voor het verkrijgen van informatie over uw omgeving. Deze console wordt de *kudu-console* of het *SCM-dash board* voor uw app genoemd.
 
-U kunt dit dash board openen door naar de koppeling te gaan **https://&lt;uw app-naam >. scm. azurewebsites. net/** .
+U kunt dit dash board openen door naar de koppeling **https://te gaan&lt;uw app-naam >. scm. azurewebsites. net/** .
 
 Enkele van de dingen die kudu biedt:
 
@@ -150,7 +141,7 @@ Zie [Azure DevOps-hulpprogram ma's waarover u moet weten](https://azure.microsof
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Het probleem oplossen
+### <a name="3-mitigate-the-issue"></a>3. het probleem oplossen
 #### <a name="scale-the-app"></a>De app schalen
 In Azure App Service kunt u voor betere prestaties en door Voer de schaal aanpassen waarop u uw toepassing uitvoert. Voor het omhoog schalen van een app zijn twee gerelateerde acties vereist: het wijzigen van uw App Service plan in een hogere prijs categorie en het configureren van bepaalde instellingen nadat u bent overgeschakeld naar de hogere prijs categorie.
 

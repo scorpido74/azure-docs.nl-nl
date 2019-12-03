@@ -1,25 +1,16 @@
 ---
-title: SSL-certificaat gebruiken in code-Azure App Service | Microsoft Docs
-description: Meer informatie over hoe u client certificaten gebruikt om verbinding te maken met externe bronnen waarvoor ze nodig zijn.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: SSL-certificaat gebruiken in code
+description: Meer informatie over het gebruik van client certificaten in uw code. Verifieer met externe resources met een client certificaat of voer cryptografische taken met deze uit.
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1546ded1977e1e26792189e1d992d106d3d77ef2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d783b61c372c7d0f8cca13106bf297ab9b55c424
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271288"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671884"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Gebruik een SSL-certificaat in uw code in Azure App Service
 
@@ -27,7 +18,7 @@ In de toepassings code kunt u toegang krijgen tot de [open bare of persoonlijke 
 
 Deze methode voor het gebruik van certificaten in uw code maakt gebruik van de SSL-functionaliteit in App Service. hiervoor moet uw app in de **Basic** -laag of hoger zijn. Als uw app zich in de **vrije** of **gedeelde** laag bevindt, kunt u [het certificaat bestand toevoegen aan de opslag plaats van uw app](#load-certificate-from-file).
 
-Als u App Service uw SSL-certificaten laat beheren, kunt u de certificaten afzonderlijk houden van de code van uw toepassing en zo uw gevoelige gegevens beschermen.
+Wanneer u uw SSL-certificaten App Service beheren, kunt u de certificaten en de code van uw toepassing afzonderlijk onderhouden en uw gevoelige gegevens beveiligen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -159,7 +150,7 @@ var cert = new X509Certificate2(bytes);
 
 Zie de documentatie voor de desbetreffende taal of het webplatform voor meer informatie over het laden van een SSL-certificaat van een bestand in node. js, PHP, Python, Java of Ruby.
 
-## <a name="more-resources"></a>Meer bronnen
+## <a name="more-resources"></a>Meer informatiebronnen
 
 * [Een aangepaste DNS-naam beveiligen met een SSL-binding](configure-ssl-bindings.md)
 * [HTTPS afdwingen](configure-ssl-bindings.md#enforce-https)

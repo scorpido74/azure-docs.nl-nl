@@ -1,26 +1,19 @@
 ---
-title: SSH-ondersteuning voor App Service op Linux-Azure | Microsoft Docs
-description: Meer informatie over het gebruik van SSH met Azure App Service op Linux.
+title: SSH-toegang voor Linux-containers
+description: U kunt een SSH-sessie openen naar een Linux-container in Azure App Service. Aangepaste Linux-containers worden ondersteund met enkele wijzigingen in uw aangepaste installatie kopie.
 keywords: Azure app service, Web-app, Linux, oss
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fef8a17de4539a1427c269cdc512063d07df195c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 299bbfbc50e9ba779898ab0e0e9dec060bf6541d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066868"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687578"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-ondersteuning voor Azure App Service in Linux
 
@@ -50,14 +43,14 @@ Met TCP-tunneling kunt u een netwerk verbinding maken tussen uw ontwikkel comput
 
 Om aan de slag te gaan, moet u [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest)installeren. Open [Azure Cloud shell](../../cloud-shell/overview.md)om te zien hoe het werkt zonder Azure CLI te installeren. 
 
-Open een externe verbinding met uw app met behulp van de opdracht [AZ webapp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) . \<Geef \_  _\<het abonnement-id >_ ,  _\<de groeps naam >_ en de app-naam > _ op voor uw app.
+Open een externe verbinding met uw app met behulp van de opdracht [AZ webapp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) . Geef _\<abonnement-id >_ op, _\<groeps naam >_ en \_\<app-naam > _ voor uw app.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]
-> `&`aan het einde van de opdracht is alleen bedoeld voor het gemak als u Cloud Shell gebruikt. Het proces wordt op de achtergrond uitgevoerd, zodat u de volgende opdracht in dezelfde shell kunt uitvoeren.
+> `&` aan het einde van de opdracht is alleen voor het gemak als u Cloud Shell gebruikt. Het proces wordt op de achtergrond uitgevoerd, zodat u de volgende opdracht in dezelfde shell kunt uitvoeren.
 
 De uitvoer van de opdracht geeft u de informatie die u nodig hebt om een SSH-sessie te openen.
 
@@ -73,7 +66,7 @@ Open een SSH-sessie met uw container met de client van uw keuze, met behulp van 
 ssh root@127.0.0.1 -p <port>
 ```
 
-Wanneer u hierom wordt gevraagd `yes` , typt u om door te gaan met verbinding maken. U wordt vervolgens gevraagd om het wacht woord. Gebruik `Docker!`, dat eerder is weer gegeven.
+Wanneer u wordt gevraagd, typt u `yes` om door te gaan met verbinding maken. U wordt vervolgens gevraagd om het wacht woord. Gebruik `Docker!`, die u eerder hebt weer gegeven.
 
 ```
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
@@ -96,7 +89,7 @@ A P P   S E R V I C E   O N   L I N U X
 
 U bent nu verbonden met uw connector.  
 
-Voer de opdracht [boven](https://ss64.com/bash/top.html) uit. U zou het proces van uw app moeten kunnen zien in de lijst proces. In het voor beeld hieronder ziet u de `PID 263`uitvoer.
+Voer de opdracht [boven](https://ss64.com/bash/top.html) uit. U zou het proces van uw app moeten kunnen zien in de lijst proces. In het onderstaande voor beeld is het de uitvoer met `PID 263`.
 
 ```
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached

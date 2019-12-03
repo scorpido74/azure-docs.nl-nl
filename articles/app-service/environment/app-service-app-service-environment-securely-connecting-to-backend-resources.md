@@ -1,29 +1,21 @@
 ---
-title: Veilig verbinding maken met back-end-bronnen vanuit App Service omgeving-Azure
-description: Meer informatie over hoe u veilig verbinding maakt met de back-end-bronnen via een App Service Environment.
-services: app-service
-documentationcenter: ''
+title: Verbinding maken met back-end v1
+description: Meer informatie over hoe u veilig verbinding maakt met de back-end-bronnen via een App Service Environment. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: adb7c246a9f8c8d202d45b58f4d22eeb8d51a773
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 03f773e286697a12188f238cf2f422a18a20054f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069965"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687296"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Veilig verbinding maken met back-end-bronnen vanuit een App Service omgeving
-## <a name="overview"></a>Overzicht
-Omdat er altijd een App Service Environment wordt gemaakt in een Azure Resource Manager virtueel netwerk **of** een klassiek implementatie model [virtueel netwerk][virtualnetwork], uitgaande verbindingen van een app service Environment naar andere back-upbronnen kan alleen stromen via het virtuele netwerk.  Met een recente wijziging in juni 2016 kan as ook worden geïmplementeerd in virtuele netwerken die gebruikmaken van open bare adresbereiken, of RFC1918-adres ruimten (dat wil zeggen particuliere adressen).  
+Omdat een App Service Environment altijd wordt **gemaakt in een** Azure Resource Manager virtueel netwerk **of** een klassiek implementatie model [virtueel netwerk][virtualnetwork], kunnen uitgaande verbindingen van een app service Environment naar andere back-upbronnen alleen stromen via het virtuele netwerk.  Met een recente wijziging in juni 2016 kan as ook worden geïmplementeerd in virtuele netwerken die gebruikmaken van open bare adresbereiken, of RFC1918-adres ruimten (dat wil zeggen particuliere adressen).  
 
 Er kan bijvoorbeeld een SQL Server worden uitgevoerd op een cluster met virtuele machines met poort 1433 vergrendeld.  Het eind punt kan worden ACLd om alleen toegang toe te staan vanuit andere bronnen in hetzelfde virtuele netwerk.  
 
@@ -49,7 +41,7 @@ Een algemene SQL Server configuratie heeft een eind punt dat luistert op poort 1
 
 Er zijn twee benaderingen voor het beperken van verkeer naar dit eind punt:
 
-* [Lijst met netwerk Access Control][NetworkAccessControlLists] (Netwerk-Acl's)
+* [Lijst met netwerk Access Control][NetworkAccessControlLists] (netwerk-acl's)
 * [Netwerkbeveiligingsgroepen][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Toegang beperken met een netwerk toegangs beheer lijst
@@ -87,7 +79,7 @@ Het eind resultaat is een set beveiligings regels waarmee externe toegang wordt 
 ## <a name="getting-started"></a>Aan de slag
 Zie [Inleiding tot app service Environment][IntroToAppServiceEnvironment] om aan de slag te gaan met app service omgevingen
 
-Zie voor meer informatie over het beheren van inkomend verkeer naar uw App Service Environment het beheren van inkomend [verkeer naar een app service Environment][ControlInboundASE]
+Zie voor meer informatie over het beheren van inkomend verkeer naar uw App Service Environment het [beheren van inkomend verkeer naar een app service Environment][ControlInboundASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

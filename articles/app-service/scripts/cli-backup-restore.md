@@ -1,25 +1,20 @@
 ---
-title: Voorbeeld van Azure CLI-script - Een web-app terugzetten vanuit een back-up | Microsoft Docs
-description: Voorbeeld van Azure CLI-script - Een web-app terugzetten vanuit een back-up
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'CLI: een app terugzetten vanuit een back-up'
+description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voor beeld ziet u hoe u een app terugzet vanuit een back-up.
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
+ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0ff8527fc7a811ffc77c7807899bf6ee1dac9924
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3c73831d2c094fba62aaea611a0a2b43de89fb12
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098440"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688503"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>Een web-app terugzetten vanuit een back-up met CLI
 
@@ -39,7 +34,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

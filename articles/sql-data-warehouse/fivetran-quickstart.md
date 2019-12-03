@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 715f891484458f3bf3febc6807c3490b88062d50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c9b4a15cd6cbae80d80407ba929bfbfa1402eeb5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229093"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689224"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Snel aan de slag met Fivetran en SQL Data Warehouse
 
@@ -81,5 +81,5 @@ Als u zich wilt aanmelden bij Fivetran, voert u de referenties in die u gebruikt
 * Host (uw server naam).
 * Importeer.
 * Database.
-* Gebruiker (de gebruikers naam moet **fivetran\@_server_name_**  waarbij *server_name* deel uitmaakt van de URI van uw Azure-host: ***server_name *. data base. Windows. net**).
+* Gebruiker (de gebruikers naam moet **fivetran\@_server_name_**  waarbij *server_name* deel uitmaakt van de URI van uw Azure-host:  **_Server\_name_. database.Windows.net**).
 * Wacht woord.

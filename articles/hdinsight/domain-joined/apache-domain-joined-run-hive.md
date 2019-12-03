@@ -1,31 +1,33 @@
 ---
 title: Apache Hive beleid in Apache zwerver-Azure HDInsight
 description: Meer informatie over het configureren van Apache zwerver-beleids regels voor Hive in een Azure HDInsight-service met Enterprise Security Package.
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: e49e2d103fd9c91824c8e8a1603cddddf16366e1
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: 9005b2e01cdb17d6aa6c630ec8be3d702d5b138c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044876"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688106"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-beleidsregels configureren in HDInsight met Enterprise Security Package
-Meer informatie over het configureren van Apache zwerver-beleids regels voor Apache Hive. In dit artikel maakt u twee Ranger-beleidsregels om toegang tot de hivesampletable te beperken. De hivesampletable wordt geleverd met HDInsight-clusters. Nadat u de beleidsregels hebt geconfigureerd, gebruikt u Excel en het ODBC-stuurprogramma om verbinding te maken met Hive-tabellen in HDInsight.
+
+Meer informatie over het configureren van Apache zwerver-beleids regels voor Apache Hive. In dit artikel maakt u twee Ranger-beleidsregels om toegang tot de hivesampletable te beperken. De hivesampletable wordt geleverd met HDInsight-clusters. Nadat u het beleid hebt geconfigureerd, gebruikt u Excel en het ODBC-stuur programma om verbinding te maken met hive-tabellen in HDInsight.
 
 ## <a name="prerequisites"></a>Vereisten
+
 * Een HDInsight-cluster met Enterprise Security Package. Zie [HDInsight-clusters configureren met ESP](apache-domain-joined-configure.md).
 * Een werkstation met Office 2016, Office 2013 Professional Plus, Office 365 Pro Plus, een zelfstandige versie van Excel 2013 of Office 2010 Professional Plus.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Verbinding maken met de beheerinterface van Apache Ranger
 **Verbinding maken met de beheerinterface van Ranger**
 
-1. Maak vanuit een browser verbinding met de beheerinterface van Ranger. De URL is https://&lt;ClusterName>.azurehdinsight.net/Ranger/.
+1. Ga vanuit een browser naar de gebruikers interface van zwerver op `https://CLUSTERNAME.azurehdinsight.net/Ranger/` waarbij CLUSTERNAME de naam van uw cluster is.
 
    > [!NOTE]  
    > Zwerver gebruikt andere referenties dan Apache Hadoop cluster. Als u browsers wilt voor komen dat Hadoop-referenties in de cache worden gebruikt, gebruikt u het nieuwe InPrivate-browser venster om verbinding te maken met de gebruikers interface van zwerver.
@@ -37,47 +39,54 @@ Meer informatie over het configureren van Apache zwerver-beleids regels voor Apa
     Op dit moment werkt Ranger alleen met Yarn en Hive.
 
 ## <a name="create-domain-users"></a>Domeingebruikers maken
+
 Zie [een HDInsight-cluster met ESP maken](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)voor informatie over het maken van hiveruser1 en hiveuser2. U gebruikt de twee gebruikers accounts in dit artikel.
 
 ## <a name="create-ranger-policies"></a>Ranger-beleidsregels maken
-In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampletable. U geeft de machtiging SELECT op voor verschillende sets kolommen. Beide gebruikers zijn gemaakt met behulp [van een HDInsight-cluster met ESP maken](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp). In de volgende sectie test u de twee beleidsregels in Excel.
+
+In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampletable. U geeft de machtiging SELECT op voor verschillende sets kolommen. Beide gebruikers zijn gemaakt met behulp [van een HDInsight-cluster met ESP maken](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp). In de volgende sectie test u de twee beleids regels in Excel.
 
 **Ranger-beleidsregels maken**
 
 1. Open de beheerinterface van Ranger. Zie verbinding maken met de gebruikers interface van Apache zwerver.
-2. Klik op **&lt;ClusterName>_hive** onder **Hive**. Er worden twee vooraf geconfigureerde beleidsregels weergegeven.
-3. Klik op **Nieuw beleid toevoegen** en voer de volgende waarden in:
+2. Selecteer **CLUSTERNAME_Hive**onder **Hive**. Er worden twee vooraf geconfigureerde beleidsregels weergegeven.
+3. Selecteer **Nieuw beleid toevoegen**en voer de volgende waarden in:
 
-   * Beleidsnaam: read-hivesampletable-all
-   * Hive-database: standaard
-   * Tabel: hivesampletable
-   * Hive-kolom:*
-   * Gebruiker selecteren: hiveuser1
-   * Machtigingen: SELECT
+    |Eigenschap |Waarde |
+    |---|---|
+    |Policy Name|lezen-hivesampletable-alle|
+    |Hive-data base|standaardinstelling|
+    |tabel|hivesampletable|
+    |Hive-kolom|*|
+    |Select User|hiveuser1|
+    |Machtigingen|uitgeschakeld|
 
-     ![HDInsight ESP zwerver-Hive-beleid configureren](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+    ![HDInsight ESP zwerver Hive-beleid configureren](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
-     > [!NOTE]  
-     > Als een domeingebruiker niet is ingevuld in Gebruiker selecteren, wacht u even, zodat Ranger met AAD kan synchroniseren.
-     >
-     >
-4. Klik op **Toevoegen** om het beleid op te slaan.
+    > [!NOTE]  
+    > Als een domeingebruiker niet is ingevuld in Gebruiker selecteren, wacht u even, zodat Ranger met AAD kan synchroniseren.
+
+4. Selecteer **toevoegen** om het beleid op te slaan.
+
 5. Herhaal de laatste twee stappen, zodat u een ander beleid kunt maken met de volgende eigenschappen:
 
-   * Beleidsnaam: read-hivesampletable-devicemake
-   * Hive-database: standaard
-   * Tabel: hivesampletable
-   * Hive-kolom: clientid, devicemake
-   * Gebruiker selecteren: hiveuser2
-   * Machtigingen: SELECT
+    |Eigenschap |Waarde |
+    |---|---|
+    |Policy Name|lezen-hivesampletable-devicemake|
+    |Hive-data base|standaardinstelling|
+    |tabel|hivesampletable|
+    |Hive-kolom|ClientID, devicemake|
+    |Select User|hiveuser2|
+    |Machtigingen|uitgeschakeld|
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC-gegevensbron maken
+
 De instructies vindt u in [Hive ODBC-gegevensbron maken](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).  
 
  | Eigenschap  |Beschrijving |
  | --- | --- |
  | Naam van de gegevensbron | Geef uw gegevensbron een naam |
- | Host | Voer &lt;HDInsightClusterName>.azurehdinsight.net in. Bijvoorbeeld: myHDICluster.azurehdinsight.net |
+ | Host | Voer CLUSTERNAME.azurehdinsight.net in. Bijvoorbeeld: myHDICluster.azurehdinsight.net |
  | Port | Gebruik **443**. (Deze poort is gewijzigd van 563 in 443.) |
  | Database | Gebruik **Standaard**. |
  | Type Hive-server | Selecteer **Hive Server 2** |
@@ -89,28 +98,38 @@ De instructies vindt u in [Hive ODBC-gegevensbron maken](../hadoop/apache-hadoop
 Zorg ervoor dat u op **Test** klikt voordat u de gegevensbron opslaat.
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>Gegevens in Excel importeren vanuit HDInsight
-In de laatste sectie hebt u twee beleidsregels geconfigureerd.  hiveuser1 heeft de machtiging SELECT voor alle kolommen en hiveuser2 heeft de machtiging SELECT voor twee kolommen. In deze sectie imiteert u de twee gebruikers, zodat u gegevens kunt importeren in Excel.
+
+In de laatste sectie hebt u twee beleids regels geconfigureerd.  hiveuser1 heeft de machtiging SELECT voor alle kolommen en hiveuser2 heeft de machtiging SELECT voor twee kolommen. In deze sectie imiteert u de twee gebruikers, zodat u gegevens kunt importeren in Excel.
 
 1. Open een nieuwe of bestaande werkmap in Excel.
-2. Klik op het tabblad **Gegevens** op de optie **Van andere gegevensbronnen** en klik vervolgens op **Van wizard Gegevensverbinding** om de **Wizard Gegevensverbinding** te starten.
 
-    ![Open de Wizard Gegevensverbinding][img hdi simbahiveodbc.excel.dataconnection]
-3. Selecteer **ODBC DSN** als de gegevensbron en klik op **Volgende**.
-4. Selecteer uit ODBC-gegevensbronnen de naam van de gegevensbron die u in de vorige stap hebt gemaakt en klik op **Volgende**.
-5. Geef het wacht woord voor het cluster opnieuw op in de wizard en klik vervolgens op **OK**. Wacht totdat het dialoogvenster **Database en tabel selecteren** wordt geopend. Dit kan een paar seconden duren.
-6. Selecteer **hivesampletable** en klik op **Volgende**.
-7. Klik op **Voltooien**.
-8. In het dialoogvenster **Gegevens importeren** kunt u de query wijzigen of opgeven. Als u dit wilt doen, klikt u op **Eigenschappen**. Dit kan een paar seconden duren.
-9. Klik op het tabblad **definitie** . De opdracht tekst is:
+1. Ga op het tabblad **gegevens** naar **gegevens** > **uit andere bronnen** > **van ODBC** om het venster **van ODBC** te starten.
+
+    ![Wizard gegevens verbinding openen](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
+
+1. Selecteer in de vervolg keuzelijst de naam van de gegevens bron die u in de laatste sectie hebt gemaakt en selecteer vervolgens **OK**.
+
+1. Voor het eerste gebruik wordt het dialoog venster **ODBC-stuur programma** geopend. Selecteer **Windows** in het menu links. Selecteer vervolgens **verbinding maken** om het **Navigator** venster te openen.
+
+1. Wacht totdat het dialoogvenster **Database en tabel selecteren** wordt geopend. Dit kan een paar seconden duren.
+
+1. Selecteer **hivesampletable**en selecteer **volgende**.
+
+1. Selecteer **Finish**.
+
+1. In het dialoogvenster **Gegevens importeren** kunt u de query wijzigen of opgeven. Als u dit wilt doen, selecteert u **Eigenschappen**. Dit kan een paar seconden duren.
+
+1. Selecteer het tabblad **definitie** . De opdracht tekst is:
 
        SELECT * FROM "HIVE"."default"."hivesampletable"
 
-   Bij de Ranger-beleidsregels hebt u gedefinieerd dat hiveuser1 de machtiging SELECT heeft voor alle kolommen.  Deze query werkt daarom met hiveuser1-referenties, maar deze query werkt niet met hiveuser2-referenties.
+   Bij de Ranger-beleidsregels hebt u gedefinieerd dat hiveuser1 de machtiging SELECT heeft voor alle kolommen.  Deze query werkt dus met hiveuser1-referenties, maar deze query werkt niet met hiveuser2-referenties.
 
-   ![Verbindingseigenschappen][img-hdi-simbahiveodbc-excel-connectionproperties]
-10. Klik op **OK** om het dialoogvenster Verbindingseigenschappen te sluiten.
-11. Klik op **OK** om het dialoogvenster **Gegevens importeren** te sluiten.  
-12. Voer het wachtwoord van hiveuser1 opnieuw in en klik op **OK**. Het duurt een paar seconden voordat de gegevens naar Excel worden geïmporteerd. Wanneer dit is voltooid, worden er 11 kolommen met gegevens weergegeven.
+1. Selecteer **OK** om het dialoog venster verbindings eigenschappen te sluiten.
+
+1. Selecteer **OK** om het dialoog venster **gegevens importeren** te sluiten.  
+
+1. Voer het wachtwoord van hiveuser1 opnieuw in en klik op **OK**. Het duurt een paar seconden voordat de gegevens naar Excel worden geïmporteerd. Wanneer u klaar bent, ziet u elf kolommen met gegevens.
 
 Als u het tweede beleid wilt testen (Read-hivesampletable-devicemake), hebt u in de laatste sectie gemaakt
 
@@ -118,6 +137,7 @@ Als u het tweede beleid wilt testen (Read-hivesampletable-devicemake), hebt u in
 2. Voer de vorige procedure uit om de gegevens te importeren.  De enige wijziging die u aanbrengt, is het gebruik van hiveuser2-referenties in plaats van hiveuser1. Dit mislukt omdat hiveuser2 alleen machtigingen heeft om twee kolommen weer te geven. De volgende fout wordt weergegeven:
 
         [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
+        
 3. Voer dezelfde procedure uit om gegevens te importeren. Gebruik deze keer de referenties van hiveuser2 en wijzig ook de SELECT-instructie van:
 
         SELECT * FROM "HIVE"."default"."hivesampletable"
@@ -126,9 +146,10 @@ Als u het tweede beleid wilt testen (Read-hivesampletable-devicemake), hebt u in
 
         SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
 
-    Wanneer dit is voltooid, worden er twee kolommen met geïmporteerde gegevens weergegeven.
+    Wanneer u klaar bent, ziet u twee kolommen met geïmporteerde gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * Zie [hdinsight-clusters met ESP configureren](apache-domain-joined-configure.md)voor meer informatie over het configureren van een hdinsight-cluster met Enterprise Security Package.
 * Zie [hdinsight-clusters beheren met ESP](apache-domain-joined-manage.md)voor meer informatie over het beheren van een hdinsight-cluster met ESP.
 * Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)voor het uitvoeren van Hive-QUERY'S met SSH op HDInsight-clusters met ESP.

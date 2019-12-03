@@ -1,25 +1,17 @@
 ---
-title: Doorlopende implementatie-Azure App Service | Microsoft Docs
-description: Meer informatie over hoe u continue implementatie voor Azure App Service kunt inschakelen.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
+title: Continue implementatie inschakelen
+description: Meer informatie over het inschakelen van CI/CD-Azure App Service van GitHub, BitBucket, Azure opslag plaatsen of een andere opslag plaatsen. Selecteer de build-pijp lijn die aan uw behoeften voldoet.
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2019
-ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 98f82914af8216789a04d3cfd2972f83c16b3fa0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 692b07c82c329a93d79ad3a87beec5dbe1c595d3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070669"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669983"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continue implementatie naar Azure App Service
 
@@ -39,7 +31,7 @@ Autoriseer Azure App Service voor bitbucket of GitHub om verbinding te maken met
    
 1. Selecteer op de pagina app het menu **implementatie centrum** in het linkermenu.
    
-1. Selecteer op de pagina **implementatie centrum** **github** of **bitbucket**, en selecteer vervolgens autoriseren. 
+1. Selecteer op de pagina **implementatie centrum** **github** of **bitbucket**, en selecteer vervolgens **autoriseren**. 
    
    ![Selecteer broncode beheer service en selecteer vervolgens autoriseren.](media/app-service-continuous-deployment/github-choose-source.png)
    
@@ -49,7 +41,7 @@ Autoriseer Azure App Service voor bitbucket of GitHub om verbinding te maken met
 
 Nadat u een broncode beheer service hebt geautoriseerd, configureert u uw app voor continue implementatie via de ingebouwde [kudu-app service build-server](#option-1-use-the-app-service-build-service)of via [Azure-pijp lijnen](#option-2-use-azure-pipelines). 
 
-### <a name="option-1-use-the-app-service-build-service"></a>Optie 1: De App Service build-service gebruiken
+### <a name="option-1-use-the-app-service-build-service"></a>Optie 1: de App Service build-service gebruiken
 
 U kunt de ingebouwde kudu-App Service build-server gebruiken om voortdurend te implementeren vanuit GitHub, bitbucket of Azure opslag plaatsen. 
 
@@ -90,7 +82,7 @@ U kunt de ingebouwde kudu-App Service build-server gebruiken om voortdurend te i
    
    ![Door voeringen en implementaties bijhouden in het implementatie centrum](media/app-service-continuous-deployment/github-finished.png)
 
-### <a name="option-2-use-azure-pipelines"></a>Optie 2: Gebruik Azure Pipelines 
+### <a name="option-2-use-azure-pipelines"></a>Optie 2: Azure-pijp lijnen gebruiken 
 
 Als uw account over de benodigde machtigingen beschikt, kunt u Azure-pijp lijnen zo instellen dat ze voortdurend worden geïmplementeerd vanuit GitHub of Azure opslag plaatsen-opslag plaatsen. Zie [een web-app implementeren voor Azure-app Services](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)voor meer informatie over de implementatie via Azure-pijp lijnen.
 
@@ -151,7 +143,7 @@ Als u continue implementatie wilt uitschakelen, selecteert u de **verbinding ver
 
 Voor Windows-apps kunt u een continue implementatie hand matig configureren vanuit een Git-of mecurial-opslag plaats in de cloud die niet rechtstreeks wordt ondersteund door de portal, zoals [GitLab](https://gitlab.com/). U doet dit door het externe vak op de pagina **implementatie centrum** te kiezen. Zie [continue implementatie instellen met behulp van hand matige stappen](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)voor meer informatie.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Veelvoorkomende problemen met doorlopende implementatie onderzoeken](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [Azure PowerShell gebruiken](/powershell/azureps-cmdlets-docs)

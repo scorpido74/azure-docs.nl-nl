@@ -1,26 +1,17 @@
 ---
-title: Gebruikers eind-tot-eind verifiëren en autoriseren - Azure App Service | Microsoft Docs
+title: 'Zelf studie: authn/auth-end-to-end'
 description: Leer hoe u verificatie en autorisatie van App Service kunt gebruiken om uw App Service-apps te beveiligen, waaronder toegang tot externe API's.
 keywords: app service, azure app service, authN, authZ, beveiligen, beveiliging, meerdere lagen, azure active directory, azure ad
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 55ba5a193e15ac4e8bd83ac046deeac1f12d61d0
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 6c243839e59038d439e177847df4427d253dbe98
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961957"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672053"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Zelfstudie: Gebruikers eind-tot-eind verifiëren en autoriseren in Azure App Service
 
@@ -80,7 +71,7 @@ Druk op `Ctrl+C` in de terminal als u ASP.NET Core wilt stoppen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-apps-to-azure"></a>Apps in Azure implementeren
+## <a name="deploy-apps-to-azure"></a>Apps implementeren in Azure
 
 In deze stap implementeert u het project in twee App Service-apps. De ene is de front-end-app en de andere is de back-end-app.
 
@@ -281,7 +272,7 @@ Meld u aan bij [Azure Resource Explorer](https://resources.azure.com). Klik bove
 
 ![ASP.NET Core-API uitvoeren in Azure App Service](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-Klik in de linkernavigatiebalk op **abonnementen** >  **_\<uw abonnement >_**  > **resourceGroups** > **MyAuthResourceGroup** > **providers** > **micro soft. Web** > **site** >  **_\<front-end-app-name >_**  > **config** > **authsettings**.
+Klik in de linkernavigatiebalk op **abonnementen** >  **_\<uw abonnement >_**  > **resourceGroups** > **MyAuthResourceGroup** > **providers** > **micro soft. Web** > - **sites** > \< **_front-end-app-naam_** > > **config** > **authsettings**.
 
 Klik in de weergave **authsettings** op **Bewerken**. Stel `additionalLoginParams` in op de volgende JSON-teken reeks met behulp van de client-ID die u hebt gekopieerd. 
 
@@ -333,7 +324,7 @@ Meld u opnieuw aan bij `https://<front-end-app-name>.azurewebsites.net`. Klik op
 
 U moet nu net als eerder gegevens uit de back-end-app kunnen maken, lezen, bijwerken en verwijderen. Het enige verschil is dat beide apps nu worden beveiligd door App Service-verificatie en -autorisatie, waaronder de aanroepen tussen services.
 
-Gefeliciteerd. De servercode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
+Gefeliciteerd! De servercode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
 
 ## <a name="call-api-securely-from-browser-code"></a>API veilig vanuit browsercode aanroepen
 
@@ -415,7 +406,7 @@ git push frontend master
 
 Ga opnieuw naar `https://<front-end-app-name>.azurewebsites.net`. U moet nu rechtstreeks in de Angular.js-app gegevens in de back-end kunnen maken, lezen, bijwerken en verwijderen.
 
-Gefeliciteerd. De clientcode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
+Gefeliciteerd! De clientcode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
 
 ## <a name="when-access-tokens-expire"></a>Wanneer de toegangstokens verlopen
 

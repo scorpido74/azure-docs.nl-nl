@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 06b96bf548be45952e1ff21f0433a1607ab36501
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e9781d9c277d19257d9b00bea3106adb3b04ffd6
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227888"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672522"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Privé-eind punten gebruiken voor Azure Storage (preview-versie)
 
@@ -32,7 +32,9 @@ Een persoonlijk eind punt is een speciale netwerk interface voor een Azure-servi
 
 Toepassingen in het VNet kunnen naadloos verbinding maken met de opslag service via het persoonlijke eind punt, **met behulp van dezelfde verbindings reeksen en autorisatie mechanismen die ze anders zouden gebruiken**. Privé-eind punten kunnen worden gebruikt met alle protocollen die worden ondersteund door het opslag account, inclusief REST en SMB.
 
-Wanneer u een persoonlijk eind punt voor een opslag service in uw VNet maakt, wordt er een aanvraag voor goed keuring verzonden naar de eigenaar van het opslag account. Als de gebruiker die het persoonlijke eind punt wil maken ook eigenaar van het opslag account is, wordt deze aanvraag voor toestemming automatisch goedgekeurd.
+Privé-eind punten kunnen worden gemaakt in subnetten die gebruikmaken van [service-eind punten](/azure/virtual-network/virtual-network-service-endpoints-overview.md). Clients in een subnet kunnen daarom verbinding maken met één opslag account met behulp van een persoonlijk eind punt, terwijl service-eind punten worden gebruikt voor toegang tot anderen.
+
+Wanneer u een privé-eindpunt voor een opslagservice in uw VNet maakt, wordt er een aanvraag voor goedkeuring verzonden naar de eigenaar van het opslagaccount. Als de gebruiker die het persoonlijke eind punt wil maken ook eigenaar van het opslag account is, wordt deze aanvraag voor toestemming automatisch goedgekeurd.
 
 Eigen aren van opslag accounts kunnen toestemmings aanvragen en de persoonlijke eind punten beheren via het tabblad*privé-eind punten*voor het opslag account in de [Azure Portal](https://portal.azure.com).
 
@@ -70,7 +72,7 @@ Er wordt standaard een [privé-DNS-zone](../../dns/private-dns-overview.md) geko
 
 ## <a name="dns-changes-for-private-endpoints"></a>DNS-wijzigingen voor privé-eind punten
 
-De DNS CNAME-bron record voor een opslag account met een persoonlijk eind punt wordt bijgewerkt naar een alias in een subdomein met het voor voegsel '*privatelink*'. Standaard maken we ook een [privé-DNS-zone](../../dns/private-dns-overview.md) die is gekoppeld aan het VNet dat overeenkomt met het subdomein met het voor voegsel '*privatelink*' en bevat de DNS a-bron records voor de persoonlijke eind punten.
+Wanneer u een persoonlijk eind punt maakt, wordt de DNS CNAME-bron record voor het opslag account bijgewerkt naar een alias in een subdomein met het voor voegsel '*privatelink*'. Standaard maken we ook een [privé-DNS-zone](../../dns/private-dns-overview.md), die overeenkomt met het subdomein '*privatelink*', met de DNS a-bron records voor de privé-eind punten.
 
 Wanneer u de URL van het opslag eindpunt oplost van buiten het VNet met het persoonlijke eind punt, wordt dit omgezet in het open bare eind punt van de opslag service. Wanneer het is opgelost vanuit het VNet dat het persoonlijke eind punt host, wordt de URL van het opslag eindpunt omgezet naar het IP-adres van het privé-eind punt.
 
@@ -93,7 +95,7 @@ De DNS-bron records voor StorageAccountA, wanneer deze zijn opgelost door een cl
 
 Deze aanpak maakt het mogelijk toegang tot het opslag account te krijgen **met behulp van dezelfde Connection String** voor clients op het VNet dat als host fungeert voor de privé-eind punten, evenals clients buiten het vnet.
 
-Als u een aangepaste DNS-server gebruikt in uw netwerk, moeten clients de FQDN-naam voor het eind punt van het opslag account kunnen omzetten naar het IP-adres van het privé-eind punt. Hiervoor moet u uw DNS-server zo configureren dat het subdomein van uw privé-koppeling wordt overgedragen aan de privé-DNS-zone voor het VNet, of dat u de A-records voor '*StorageAccountA.privatelink.blob.core.Windows.net*' configureert met het IP-adres van het privé-eind punt. 
+Als u een aangepaste DNS-server gebruikt in uw netwerk, moeten clients de FQDN-naam voor het eind punt van het opslag account kunnen omzetten naar het IP-adres van het privé-eind punt. U moet uw DNS-server zo configureren dat uw privé-koppelings subdomein wordt overgedragen aan de privé-DNS-zone voor het VNet, of dat u de A-records voor '*StorageAccountA.privatelink.blob.core.Windows.net*' configureert met het IP-adres van het privé-eind punt.
 
 > [!TIP]
 > Wanneer u een aangepaste of lokale DNS-server gebruikt, moet u de DNS-server zo configureren dat de naam van het opslag account in het subdomein ' privatelink ' wordt omgezet in het IP-adres van het privé-eind punt. U kunt dit doen door het subdomein ' privatelink ' te delegeren aan de privé-DNS-zone van het VNet of door de DNS-zone op de DNS-server te configureren en de DNS A-records toe te voegen.
@@ -102,7 +104,7 @@ De aanbevolen DNS-zone namen voor privé-eind punten voor opslag Services zijn:
 
 | Opslag service        | Zone naam                            |
 | :--------------------- | :----------------------------------- |
-| Blob-service           | `privatelink.blob.core.windows.net`  |
+| Blob service           | `privatelink.blob.core.windows.net`  |
 | Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
 | Bestands service           | `privatelink.file.core.windows.net`  |
 | Queue-service          | `privatelink.queue.core.windows.net` |
@@ -125,9 +127,6 @@ Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pr
 ### <a name="copy-blob-support"></a>Ondersteuning voor BLOB kopiëren
 
 Tijdens de preview-versie bieden we geen ondersteuning voor het [kopiëren van BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) -opdrachten die worden verleend aan opslag accounts die toegankelijk zijn via persoonlijke eind punten wanneer het bron opslag account wordt beveiligd door een firewall.
-
-### <a name="subnets-with-service-endpoints"></a>Subnetten met Service-eind punten
-Op dit moment kunt u geen persoonlijk eind punt maken in een subnet met Service-eind punten. Als tijdelijke oplossing kunt u afzonderlijke subnetten in hetzelfde VNet maken voor service-eind punten en privé-eind punten.
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Toegangs beperkingen voor opslag voor clients in VNets met privé-eind punten
 

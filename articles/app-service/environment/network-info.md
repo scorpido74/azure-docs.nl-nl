@@ -1,24 +1,18 @@
 ---
-title: Netwerk overwegingen met App Service Environment-Azure
-description: Hierin wordt het ASE-netwerk verkeer beschreven en wordt uitgelegd hoe u Nsg's en Udr's kunt instellen met uw ASE
-services: app-service
-documentationcenter: na
+title: Aandachtspunten voor netwerken
+description: Meer informatie over het ASE-netwerk verkeer en over het instellen van netwerk beveiligings groepen en door de gebruiker gedefinieerde routes met uw ASE.
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ee7e3cb200a20b52a307dba31682a534e9f7b455
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470656"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687128"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Netwerk overwegingen voor een App Service Environment #
 
@@ -59,7 +53,7 @@ Wanneer u omhoog of omlaag schaalt, worden nieuwe rollen van de juiste grootte t
 
 Alleen voor de ASE van de ASE moeten de volgende poorten zijn geopend:
 
-| Gebruiken | Vanaf | Handeling |
+| Gebruiken | Vanaf | Tot |
 |-----|------|----|
 | Beheer | App Service-beheer adressen | ASE-subnet: 454, 455 |
 |  ASE interne communicatie | ASE-subnet: alle poorten | ASE-subnet: alle poorten
@@ -96,7 +90,7 @@ De ASE communiceert met internet toegankelijke adressen op de volgende poorten:
 | NTP | 123 |
 | 8CRL, Windows-updates, Linux-afhankelijkheden, Azure-Services | 80/443 |
 | Azure SQL | 1433 | 
-| Bewaking | 12000 |
+| Controleren | 12000 |
 
 De uitgaande afhankelijkheden worden weer gegeven in het document met een beschrijving van het [vergren delen van app service Environment uitgaand verkeer](./firewall-integration.md). Als de ASE geen toegang meer heeft tot de afhankelijkheden, werkt deze niet meer. Wanneer dit lang genoeg duurt, wordt de ASE onderbroken. 
 
@@ -115,7 +109,7 @@ Als u de DNS-instelling van het VNet wijzigt waarin uw ASE zich bevindt, moet u 
 Naast de functionele afhankelijkheden van ASE zijn er enkele extra items die betrekking hebben op de portal-ervaring. Enkele van de mogelijkheden van de Azure Portal zijn afhankelijk van directe toegang tot de _SCM-site_. Voor elke app in Azure App Service zijn er twee Url's. De eerste URL is om toegang te krijgen tot uw app. De tweede URL is om toegang te krijgen tot de SCM-site, die ook wel de _kudu-console_wordt genoemd. Functies die gebruikmaken van de SCM-site zijn onder andere:
 
 -   Webjobs
--   Functions
+-   Functies
 -   Logboek streaming
 -   Kudu
 -   Extensies

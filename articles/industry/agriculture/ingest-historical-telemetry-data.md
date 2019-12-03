@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 5ae64371bd114a898ddca874e23b499bc4a2b8a3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 27aec53fd2e92e19f1c749e833217fb8b5deae57
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128775"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672578"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -21,6 +21,7 @@ Het opnemen van historische gegevens van Internet of Things (IoT) voor resources
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Voordat u verder gaat met dit artikel, moet u ervoor zorgen dat u FarmBeats hebt geïnstalleerd en historische gegevens van IoT hebt verzameld.
+U moet ook toegang tot de partner inschakelen zoals vermeld in de volgende stappen.
 
 ## <a name="enable-partner-access"></a>Partner toegang inschakelen
 
@@ -29,7 +30,7 @@ U moet de partner integratie inschakelen voor uw Azure FarmBeats-exemplaar. Met 
 - API-eind punt: dit is de data hub-URL, bijvoorbeeld https://<datahub>. azurewebsites.net
 - Tenant-id
 - Client-id
-- Clientgeheim
+- Client geheim
 - EventHub-verbindings reeks
 
 Volg de onderstaande stappen om deze te genereren:
@@ -125,7 +126,7 @@ Als u een API-aanvraag wilt maken, combineert u de HTTP-methode (POST), de URL n
 De FarmBeats data hub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft die we in de bovenstaande sectie hebben gegenereerd.
 
 - Client-id
-- Clientgeheim
+- Client geheim
 - Tenant-id  
 
 Met behulp van de bovenstaande referenties kan de aanroeper een toegangs token aanvragen, dat in de volgende API-aanvragen in de koptekst sectie als volgt moet worden verzonden:

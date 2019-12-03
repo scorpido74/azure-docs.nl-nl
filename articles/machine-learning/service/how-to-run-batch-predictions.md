@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 3613639b43db1cd5310a7ea5d7fa18f34e22ed44
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 62a2c3324df70c7ccdbbac273d314ff94cbb7b9a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276731"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671569"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-deinterferentie uitvoeren op grote hoeveel heden gegevens met behulp van Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ In deze procedure leert u de volgende taken:
 
 * Voor het beheren van uw eigen omgeving en afhankelijkheden raadpleegt u de [hand leiding](how-to-configure-environment.md) voor het configureren van uw eigen omgeving. Voer `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` in uw omgeving uit om de vereiste afhankelijkheden te downloaden.
 
-## <a name="set-up-machine-learning-resources"></a>Machine learning-resources instellen
+## <a name="set-up-machine-learning-resources"></a>machine learning-resources instellen
 
 Met de volgende acties worden de resources ingesteld die u nodig hebt om een batch-uitstel pijplijn uit te voeren:
 
@@ -149,7 +149,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-## <a name="prepare-the-model"></a>Voorbereiden van het model
+## <a name="prepare-the-model"></a>Het model voorbereiden
 
 [Down load het vooraf getrainde afbeeldings classificatie model](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)en pak het uit naar de `models` Directory.
 
@@ -241,7 +241,7 @@ def run(mini_batch):
 
 Nu hebt u alles wat u nodig hebt om de pijp lijn te bouwen.
 
-### <a name="prepare-the-run-environment"></a>Voorbereiden van de uitvoeringsomgeving
+### <a name="prepare-the-run-environment"></a>De uitvoerings omgeving voorbereiden
 
 Geef eerst de afhankelijkheden voor uw script op. U kunt dit object later gebruiken bij het maken van de pijplijn stap.
 
@@ -255,7 +255,7 @@ batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
 batch_env.docker.enabled = True
-batch_env.docker.base_image = DEFAULT_CPU_IMAGE
+batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 batch_env.spark.precache_packages = False
 ```
 
@@ -292,7 +292,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>De stap pijplijn maken
+### <a name="create-the-pipeline-step"></a>De pijplijn stap maken
 
 Maak de pijplijn stap met behulp van het script, de omgevings configuratie en de para meters. Geef het reken doel op dat u al aan uw werk ruimte hebt gekoppeld als het doel van de uitvoering van het script. Gebruik `ParallelRunStep` om de pipeline-stap voor batch-deinterferentie te maken, waarbij alle volgende para meters worden gebruikt:
 - `name`: de naam van de stap, met de volgende naam beperkingen: uniek, 3-32 tekens en regex ^\[a-z\]([-a-z0-9] * [a-z0-9])? $.

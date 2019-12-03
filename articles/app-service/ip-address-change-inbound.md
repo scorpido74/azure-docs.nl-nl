@@ -1,53 +1,46 @@
 ---
-title: Voorbereiden voor inkomende IP-adres wijzigen - Azure App Service
-description: Als uw inkomende IP-adres wordt gebruikt om te worden gewijzigd, leert u wat te doen zodat uw app blijft gewoon werken na de wijziging.
-services: app-service\web
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
+title: Voorbereiden op wijziging van binnenkomend IP-adres
+description: Als uw binnenkomende IP-adres wordt gewijzigd, leest u wat u moet doen om ervoor te zorgen dat uw app blijft werken na de wijziging.
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aaa89b5a3bb1af6878ed21e0160a534a1c989228
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61270061"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672420"
 ---
-# <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Voorbereiden voor een inkomende IP-adres wijzigen
+# <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Voor bereiding voor het wijzigen van een inkomend IP-adres
 
-Als u een melding dat het wijzigen van de inkomende IP-adres van uw app in Azure App Service ontvangen, volg de instructies in dit artikel.
+Als u een melding hebt ontvangen dat het inkomende IP-adres van uw Azure App Service-app wordt gewijzigd, volgt u de instructies in dit artikel.
 
-## <a name="determine-if-you-have-to-do-anything"></a>Bepalen of u hebt verder niets te doen
+## <a name="determine-if-you-have-to-do-anything"></a>Bepaal of u iets moet doen
 
-* Optie 1: Als uw App Service-app heeft geen een aangepast domein, is geen actie vereist.
+* Optie 1: als uw App Service-app geen aangepast domein heeft, hoeft u geen actie te ondernemen.
 
-* Optie 2: Als er slechts een CNAME-record (DNS-record die verwijst naar een URI) is geconfigureerd in uw domein-Registratieportal (externe DNS-Provider of de Azure DNS), is geen actie vereist.
+* Optie 2: als er alleen een CNAME-record (DNS-record die verwijst naar een URI) is geconfigureerd in uw domein registratie Portal (DNS-provider of Azure DNS van derden), hoeft u geen actie te ondernemen.
 
-* Optie 3: Als een A-record (DNS-record die verwijst rechtstreeks naar uw IP-adres) is geconfigureerd in uw domein-Registratieportal (externe DNS-Provider of de Azure DNS), moet u de bestaande IP-adres vervangen door de nieuwe. U kunt het nieuwe IP-adres vinden door de instructies in de volgende sectie.
+* Optie 3: als een record (DNS-record die rechtstreeks naar uw IP-adres verwijst) is geconfigureerd in uw domein registratie Portal (DNS-provider of Azure DNS van derden), vervangt u het bestaande IP-adres door het nieuwe. U kunt het nieuwe IP-adres vinden door de instructies in de volgende sectie te volgen.
 
-* Optie 4: Als uw toepassing zich achter een load balancer, IP-Filter of een ander IP-mechanisme dat IP-adres van uw app is vereist, moet u de bestaande IP-adres vervangen door de nieuwe. U kunt het nieuwe IP-adres vinden door de instructies in de volgende sectie.
+* Optie 4: als uw toepassing zich achter een load balancer, IP-filter of een ander IP-mechanisme bevindt waarvoor het IP-adres van uw app is vereist, vervangt u het bestaande IP-adres door het nieuwe. U kunt het nieuwe IP-adres vinden door de instructies in de volgende sectie te volgen.
 
-## <a name="find-the-new-inbound-ip-address-in-the-azure-portal"></a>De nieuwe inkomende IP-adres vinden in Azure portal
+## <a name="find-the-new-inbound-ip-address-in-the-azure-portal"></a>Zoek het nieuwe inkomende IP-adres in de Azure Portal
 
-Het nieuwe inkomende IP-adres die aan uw app is in de portal in de **virtueel IP-adres** veld. Zowel dit nieuwe IP-adres en de oude heeft zijn verbonden met uw app nu en later de oude versie wordt verbroken.
+Het nieuwe inkomende IP-adres dat wordt toegewezen aan uw app bevindt zich in de portal in het veld **virtuele IP-adres** . Dit nieuwe IP-adres en de oude zijn nu verbonden met uw app, en later wordt de verbinding met de oude verbroken.
 
-1.  Open de [Azure Portal](https://portal.azure.com).
+1.  Open de [Azure-portal](https://portal.azure.com).
 
-2.  Selecteer in het navigatiemenu aan **App Services**.
+2.  Selecteer **app Services**in het navigatie menu aan de linkerkant.
 
 3.  Selecteer uw App Service-app in de lijst.
 
-1.  Als de app een functie-app is, raadpleegt u [functie-app inkomende IP-adres](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
+1.  Als de app een functie-app is, raadpleegt u het [binnenkomende IP-adres van de functie-app](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
 
-4.  Onder de **instellingen** kop, klikt u op **eigenschappen** in de navigatiebalk aan de linkerkant en zoek de sectie met het label **virtueel IP-adres**.
+4.  Klik onder de kop **instellingen** op **Eigenschappen** in het linkernavigatievenster en zoek de sectie met het **virtuele IP-adres**.
 
-5. Het IP-adres te kopiëren en opnieuw configureren van uw domein-record of het IP-mechanisme.
+5. Kopieer het IP-adres en configureer uw domein record of IP-mechanisme opnieuw.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Dit artikel wordt uitgelegd hoe u voorbereidt een IP-adres wijzigen die door Azure is gestart. Zie voor meer informatie over IP-adressen in Azure App Service, [inkomende en uitgaande IP-adressen in Azure App Service](overview-inbound-outbound-ips.md).
+In dit artikel wordt uitgelegd hoe u een wijziging van een IP-adres voorbereidt die is geïnitieerd door Azure. Zie voor meer informatie over IP-adressen in Azure App Service [binnenkomende en uitgaande IP-adressen in azure app service](overview-inbound-outbound-ips.md).

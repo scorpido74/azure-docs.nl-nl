@@ -1,30 +1,23 @@
 ---
-title: Een app schalen in een App Service Environment-Azure
-description: Een app schalen in een App Service Environment
-services: app-service
-documentationcenter: ''
+title: Een app schalen in ASE v1
+description: Een app schalen in een App Service Environment. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
 author: ccompy
-manager: stefsch
-editor: jimbe
 ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 711dc4d59785418d6637eb144b644948ed495e2c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069735"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688682"
 ---
-# <a name="scaling-apps-in-an-app-service-environment"></a>Apps schalen in een App Service-omgeving
+# <a name="scaling-apps-in-an-app-service-environment-v1"></a>Apps schalen in een App Service Environment v1
 In de Azure App Service zijn doorgaans drie dingen die u kunt schalen:
 
-* prijs plan
+* Prijs plan
 * grootte van werk nemer 
 * aantal exemplaren.
 
@@ -39,7 +32,7 @@ Het wijzigen van een item wordt uitgevoerd via de juiste gebruikers interface di
 
 ![][1]
 
-U kunt uw ASP niet meer schalen dan het aantal beschik bare reken resources in de werk groep waarin uw ASP zich bevindt.  Als u reken resources in die werk groep nodig hebt, moet u uw ASE-beheerder vragen om deze toe te voegen.  Lees de informatie hier voor informatie over het opnieuw configureren van uw ASE: [Een app service omgeving configureren][HowtoConfigureASE].  U kunt ook profiteren van de ASE-functies voor automatisch schalen om capaciteit toe te voegen op basis van planning of metrische gegevens.  Zie voor meer informatie over het configureren van automatisch schalen voor de ASE-omgeving zelf [het automatisch schalen configureren voor een app service Environment][ASEAutoscale].
+U kunt uw ASP niet meer schalen dan het aantal beschik bare reken resources in de werk groep waarin uw ASP zich bevindt.  Als u reken resources in die werk groep nodig hebt, moet u uw ASE-beheerder vragen om deze toe te voegen.  Lees de informatie hier voor informatie over het opnieuw configureren van uw ASE: [een app service omgeving configureren][HowtoConfigureASE].  U kunt ook profiteren van de ASE-functies voor automatisch schalen om capaciteit toe te voegen op basis van planning of metrische gegevens.  Zie voor meer informatie over het configureren van automatisch schalen voor de ASE-omgeving zelf [het automatisch schalen configureren voor een app service Environment][ASEAutoscale].
 
 U kunt meerdere app service-plannen maken met behulp van reken resources uit verschillende werk groepen of u kunt dezelfde werk groep gebruiken.  Als u bijvoorbeeld (10) beschik bare reken resources in werk groep 1 hebt, kunt u ervoor kiezen om één app service-plan te maken met behulp van (6) reken resources en een tweede app service-plan dat gebruikmaakt van (4) reken resources.
 
@@ -50,7 +43,7 @@ Als uw ASE voldoende capaciteit heeft, is dit tamelijk eenvoudig.  U gaat naar u
 
 ![][2] 
 
-De regels voor automatisch schalen voor een ASP in een ASE werken op dezelfde manier als normaal.  U kunt een ***CPU-percentage*** selecteren onder ***schalen door*** en regels voor automatisch SCHALEN maken voor uw ASP op basis van het CPU-percentage of u kunt complexere regels maken met behulp van ***schema-en prestatie regels***.  Meer informatie over het configureren van automatisch schalen vindt u in de hand leiding hier schaalt u [een app in azure app service][AppScale]. 
+De regels voor automatisch schalen voor een ASP in een ASE werken op dezelfde manier als normaal.  U kunt een ***CPU-percentage*** selecteren onder ***schalen door*** en regels voor automatisch SCHALEN maken voor uw ASP op basis van het CPU-percentage of u kunt complexere regels maken met behulp van ***schema-en prestatie regels***.  Meer informatie over het configureren van automatisch schalen vindt u in de hand leiding hier [schaalt u een app in azure app service][AppScale]. 
 
 ### <a name="worker-pool-selection"></a>Selectie van werknemers groep
 Zoals eerder is vermeld, wordt de selectie van de werknemers groep geopend vanuit de ASP-gebruikers interface.  Open de Blade voor de ASP die u wilt schalen en selecteer werknemers groep.  U ziet alle worker-groepen die u in uw App Service Environment hebt geconfigureerd.  Als u slechts één werk groep hebt, ziet u alleen de ene groep die wordt vermeld.  Als u wilt wijzigen in welke werk groep uw ASP zich bevindt, selecteert u alleen de werk groep waaraan u het App Service plan wilt verplaatsen.  
@@ -60,7 +53,7 @@ Zoals eerder is vermeld, wordt de selectie van de werknemers groep geopend vanui
 Voordat u uw ASP van de ene werk groep naar het andere verplaatst, is het belang rijk om ervoor te zorgen dat u over voldoende capaciteit beschikt voor uw ASP.  In de lijst met werk groepen is niet alleen de naam van de werk groep vermeld, maar u kunt ook zien hoeveel werk nemers er beschikbaar zijn in die werknemers groep.  Zorg ervoor dat er voldoende instanties beschikbaar zijn om uw App Service-abonnement te bevatten.  Als u meer reken resources nodig hebt in de werk groep waarnaar u wilt verplaatsen, kunt u de ASE-beheerder vragen om deze toe te voegen.  
 
 > [!NOTE]
-> Als u een ASP-item verplaatst van een werk groep, worden de apps in die ASP koud gestart.  Dit kan ertoe leiden dat aanvragen langzaam worden uitgevoerd als uw app koud wordt gestart op de nieuwe reken resources.  De koude start kan worden vermeden door gebruik te maken van de [toepassing][AppWarmup] opwarmen in azure app service.  De module voor het initialiseren van toepassingen die in het artikel wordt beschreven, werkt ook voor koude start, omdat het initialisatie proces ook wordt aangeroepen wanneer apps koud worden gestart op nieuwe reken resources. 
+> Als u een ASP-item verplaatst van een werk groep, worden de apps in die ASP koud gestart.  Dit kan ertoe leiden dat aanvragen langzaam worden uitgevoerd als uw app koud wordt gestart op de nieuwe reken resources.  De koude start kan worden vermeden door gebruik te maken van de [toepassing opwarmen][AppWarmup] in azure app service.  De module voor het initialiseren van toepassingen die in het artikel wordt beschreven, werkt ook voor koude start, omdat het initialisatie proces ook wordt aangeroepen wanneer apps koud worden gestart op nieuwe reken resources. 
 > 
 > 
 

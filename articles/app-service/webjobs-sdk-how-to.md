@@ -1,24 +1,17 @@
 ---
-title: De webjobs SDK-Azure gebruiken
-description: Meer informatie over het schrijven van code voor de webjobs SDK. Maak gebeurtenis gerichte achtergrond verwerkings taken die toegang hebben tot gegevens in Azure-Services en services van derden.
-services: app-service\web, storage
-documentationcenter: .net
+title: De webjobs SDK gebruiken
+description: Meer informatie over het schrijven van code voor de webjobs SDK. Maak gebeurtenis gerichte achtergrond verwerkings taken die toegang hebben tot gegevens in Azure en services van derden.
 author: ggailey777
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67cd7f82597d306c8bf3c463d11457199aec7277
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 8e29c632ff3920c77a757fe45475a12c212cf579
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815748"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684004"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>De Azure WebJobs SDK gebruiken voor op gebeurtenissen gebaseerde achtergrond verwerking
 
@@ -284,9 +277,9 @@ Als u de timer trigger of de binding van de bestanden wilt gebruiken die deel ui
 
 Deze trigger-en bindings typen zijn opgenomen in versie 2. *x* van het `Microsoft.Azure.WebJobs`-pakket:
 
-* Blob Storage
+* Blob-opslag
 * Queue Storage
-* Table Storage
+* Tabelopslag
 
 Als u andere typen triggers en bindingen wilt gebruiken, installeert u het NuGet-pakket dat deze bevat en roept u een `Use<binding>`-methode aan op het `JobHostConfiguration`-object. Als u bijvoorbeeld een timer trigger wilt gebruiken, installeert u `Microsoft.Azure.WebJobs.Extensions` en roept u `UseTimers` aan in de methode `Main`, zoals hier wordt weer gegeven:
 
@@ -752,11 +745,11 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 }
 ```
 
-### <a name="singletonmodelistener"></a>SingletonMode.Listener
+### <a name="singletonmodelistener"></a>SingletonMode. listener
 
 Sommige triggers hebben ingebouwde ondersteuning voor gelijktijdigheids beheer:
 
-* **QueueTrigger**. Stel `JobHostConfiguration.Queues.BatchSize` in op `1`.
+* **Queue trigger**. Stel `JobHostConfiguration.Queues.BatchSize` in op `1`.
 * **ServiceBusTrigger**. Stel `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` in op `1`.
 * **FileTrigger**. Stel `FileProcessor.MaxDegreeOfParallelism` in op `1`.
 
@@ -834,15 +827,15 @@ We raden aan het Framework voor logboek registratie dat is ontwikkeld voor ASP.N
 
 Elk logboek dat door een `ILogger` exemplaar wordt gemaakt, heeft een gekoppelde `Category` en `Level`. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) is een opsomming en de gehele code geeft het relatieve belang aan:
 
-|LogLevel    |Code|
+|LogLevel    |Coderen|
 |------------|---|
 |Tracering       | 0 |
-|Fouten opsporen       | 1 |
+|Foutopsporing       | 1 |
 |Informatie | 2 |
 |Waarschuwing     | 3 |
 |Fout       | 4 |
 |Kritiek    | 5 |
-|None        | 6 |
+|Geen        | 6 |
 
 U kunt elke categorie onafhankelijk filteren op een bepaalde [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Het is bijvoorbeeld mogelijk dat u alle logboeken wilt weer geven voor de verwerking van BLOB-triggers, maar alleen `Error` en hoger voor alle andere.
 
@@ -1011,9 +1004,9 @@ config.LoggerFactory = new LoggerFactory()
 
 In dit artikel vindt u code fragmenten die laten zien hoe u veelvoorkomende scenario's kunt verwerken voor het werken met de webjobs SDK. Zie voor volledige voor beelden [Azure-webjobs-SDK-voor beelden](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
-[`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
-[`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
-[`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-[`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
-[`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
-[`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs
+['ExecutionContext']: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
+[TelemetryClient]: /dotnet/api/microsoft.applicationinsights.telemetryclient
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
+['ITelemetryInitializer']: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+['TelemetryConfiguration']: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
+['JobHostConfiguration']: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs

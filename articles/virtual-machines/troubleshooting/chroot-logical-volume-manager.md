@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 0dd07b3394e385b3931e01867d467af7559b4f8b
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664162"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684136"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Problemen met een virtuele Linux-machine oplossen wanneer er geen toegang is tot de Azure-seriële console en de schijf indeling gebruikmaakt van LVM (Logical Volume Manager)
 
@@ -211,6 +211,29 @@ Verwijder, indien nodig, een upgrade van de **kernel**
 ### <a name="example-3---enable-serial-console"></a>Voor beeld 3: seriële console inschakelen
 Als toegang tot de seriële Azure-console niet mogelijk is, controleert u de GRUB-configuratie parameters voor uw virtuele Linux-machine en corrigeert u deze. Gedetailleerde informatie vindt u [in dit document](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)
 
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Voor beeld 4: kernel laden met problematisch LVM swap-volume
+
+Een virtuele machine kan niet volledig worden opgestart en de **Dracut** -prompt wordt verbroken.
+Meer informatie over de fout kunt u vinden in de Azure-seriële console of naar Azure Portal-> diagnostische gegevens over opstarten > serieel logboek
+
+
+Er is een fout met de volgende strekking aanwezig:
+
+```
+[  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
+         Starting Dracut Emergency Shell...
+Warning: /dev/VG/SwapVol does not exist
+```
+
+Grub. cfg wordt in dit voor beeld geconfigureerd om een LV te laden met de naam **rd. lvm. lv = VG/SwapVol** en de virtuele machine kan dit niet vinden. Deze regel toont hoe de kernel wordt geladen, die verwijst naar de LV-SwapVol
+
+```
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
+[    0.000000] e820: BIOS-provided physical RAM map:
+```
+
+ Verwijder de foutieve LV uit de/etc/default/grub-configuratie en bouw grub2. cfg opnieuw in
+
 
 ## <a name="exit-chroot-and-swap-the-os-disk"></a>Chroot afsluiten en de besturingssysteem schijf wisselen
 
@@ -247,4 +270,8 @@ Als de virtuele machine wordt uitgevoerd, wordt de schijf swap afgesloten. Start
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [Azure Serial console]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+Meer informatie over
+
+ [Azure-seriële console]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+
+[Modus voor één gebruiker](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)

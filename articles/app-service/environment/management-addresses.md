@@ -1,24 +1,18 @@
 ---
-title: App Service Environment beheer adressen-Azure
-description: Een lijst met de beheer adressen die worden gebruikt om een App Service Environment te opdracht
-services: app-service
-documentationcenter: na
+title: Beheeradressen
+description: Zoek de beheer adressen die worden gebruikt voor het beheren van een App Service Environment. Ze zijn geconfigureerd in een route tabel om problemen met asymmetrische route ring te voor komen.
 author: ccompy
-manager: stefsch
 ms.assetid: a7738a24-89ef-43d3-bff1-77f43d5a3952
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 80841988b997bd4caa776191bf9b8468e95a977d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 7d7f97552e8faadee1af928a9ce4e1eea2df476e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74089498"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687119"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service Environment-beheer adressen
 

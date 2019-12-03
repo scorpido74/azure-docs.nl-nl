@@ -1,24 +1,15 @@
 ---
-title: Uitgebracht voor besturingssysteem-en runtime patches-Azure App Service | Microsoft Docs
-description: Hierin wordt beschreven hoe Azure App Service het besturings systeem en de runtime bijwerkt en hoe u update aankondigingen kunt ophalen.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Uitgebracht voor besturings systeem en runtime patches
+description: Meer informatie over hoe Azure App Service het besturings systeem en runtime bijwerkt, welke Runtimes en patch niveau uw apps hebben en hoe u update aankondigingen kunt ophalen.
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3469c4f11a075ceb958e35e4cfc87a78e60b3882
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1a56fed04399325be315d8d977e5a72223bddac5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074136"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688571"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patches voor besturings systeem en uitvoering in Azure App Service
 
@@ -84,21 +75,21 @@ Hoewel essentiële besturingssysteem gegevens worden vergrendeld vanuit Access (
 
 In de volgende tabel ziet u hoe de versies van Windows en de taal runtime worden uitgevoerd op uw apps:
 
-| Information | Waar u het kunt vinden | 
+| Informatie | Waar u het kunt vinden | 
 |-|-|
 | Windows-versie | Zie `https://<appname>.scm.azurewebsites.net/Env.cshtml` (onder systeem info) |
-| .NET-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| .NET core-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br> `dotnet --version` |
-| PHP-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br> `php --version` |
+| .NET-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET core-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br> `dotnet --version` |
+| PHP-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br> `php --version` |
 | Standaard versie van node. js | Voer in het [Cloud shell](../cloud-shell/overview.md)de volgende opdracht uit: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Python-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br> `python --version` |  
+| Python-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br> `python --version` |  
 
 > [!NOTE]  
-> Toegang tot de register `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`locatie, waar informatie over [KB](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) -patches wordt opgeslagen, is vergrendeld.
+> Toegang tot de register locatie `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, waarbij informatie over [KB-patches](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) wordt opgeslagen, is vergrendeld.
 >
 >
 
-## <a name="more-resources"></a>Meer bronnen
+## <a name="more-resources"></a>Meer informatiebronnen
 
-[Vertrouwens centrum: Beveiliging](https://www.microsoft.com/en-us/trustcenter/security)  
+[Vertrouwens centrum: beveiliging](https://www.microsoft.com/en-us/trustcenter/security)  
 [64-bits ASP.NET Core op Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

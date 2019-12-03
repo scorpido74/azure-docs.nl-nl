@@ -1,23 +1,18 @@
 ---
-title: Voorbeeldsjablonen van Azure Resource Manager - App Service | Microsoft Docs
-description: Voorbeeldsjablonen van Azure Resource Manager voor App Service
-services: app-service
-documentationcenter: app-service
+title: Azure Resource Manager-voorbeeldsjablonen
+description: Zoek Azure Resource Manager sjabloon voorbeelden voor een aantal algemene App Service scenario's. Meer informatie over het automatiseren van uw App Service-implementatie-of beheer taken.
 author: tfitzmac
 tags: azure-service-management
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: app-service
 ms.date: 01/04/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 83bb357544d9069da1c86f583eaca5a470953ce8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 58871035eac89931dce0c1cd289cf3fab97c0c3e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066475"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688416"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Azure Resource Manager-sjablonen voor App Service
 

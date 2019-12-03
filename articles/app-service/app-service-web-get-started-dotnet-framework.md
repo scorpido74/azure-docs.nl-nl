@@ -1,24 +1,16 @@
 ---
-title: Een C# ASP.NET Framework-web-app maken - Azure App Service| Microsoft Docs
-description: Leer hoe u web-apps uitvoert in Azure App Service door de standaard C# ASP.NET-web-app te implementeren.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: 'Quick Start: een C# ASP.net-app maken'
+description: Meer informatie over het uitvoeren van web-apps in Azure App Service door C# de standaard sjabloon voor ASP.net Web-apps te implementeren vanuit Visual Studio.
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 10/21/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 04dd7cb55f9a6d4ceb722606f0eb90792413e414
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f2e31723dc2761007994f652d9d6c28ab3f7d47d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471778"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671392"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Een ASP.NET Framework-web-app maken in Azure
 
@@ -91,7 +83,7 @@ Maak een ASP.NET-Web-app door de volgende stappen uit te voeren:
    | Instelling | Voorgestelde waarde | Beschrijving |
    |-|-|-|
    |App Service-plan| myAppServicePlan | De naam van het App Service-plan. |
-   | Locatie | Europa -west | Het datacenter waar de web-app wordt gehost. |
+   | Locatie | Europa - west | Het datacenter waar de web-app wordt gehost. |
    | Grootte | Gratis | De [prijscategorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bepaalt de hosting-functies. |
 
    ![Een App Service-plan maken](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)

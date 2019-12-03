@@ -1,25 +1,16 @@
 ---
-title: Functionaliteit van het besturings systeem in App Service-Azure
-description: Meer informatie over de functionaliteit van het besturings systeem die beschikbaar is voor web-apps, back-end van mobiele apps en API apps op Azure App Service
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: mollybos
+title: Functionaliteit van besturingssysteem
+description: Meer informatie over de functionaliteit van het besturings systeem in Azure App Service in Windows. Meer informatie over de typen bestands-, netwerk-en register toegang die uw app krijgt.
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b108814caaace83cd417dc8858e27ed01d54c39e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066771"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671612"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Functionaliteit van het besturings systeem op Azure App Service
 In dit artikel wordt de algemene besturingssysteem functionaliteit beschreven die beschikbaar is voor alle Windows-apps die worden uitgevoerd op [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Deze functionaliteit omvat bestands-, netwerk-en register toegang, en Diagnostische logboeken en-gebeurtenissen. 
@@ -31,7 +22,7 @@ In dit artikel wordt de algemene besturingssysteem functionaliteit beschreven di
 <a id="tiers"></a>
 
 ## <a name="app-service-plan-tiers"></a>App Service plan lagen
-App Service voert klant-apps uit in een omgeving met meerdere tenants. Apps die zijn geïmplementeerd in de lagen **gratis** en **gedeeld** , worden uitgevoerd in werk processen op gedeelde virtuele machines, terwijl apps die zijn geïmplementeerd in de lagen **Standard** en **Premium** , worden uitgevoerd op de virtuele machine (s) die speciaal zijn toegewezen voor de apps die zijn gekoppeld met één klant.
+App Service voert klant-apps uit in een omgeving met meerdere tenants. Apps die zijn geïmplementeerd in de lagen **gratis** en **gedeeld** , worden uitgevoerd in werk processen op gedeelde virtuele machines, terwijl apps die zijn geïmplementeerd in de lagen **Standard** en **Premium** , worden uitgevoerd op de virtuele machine (s) die speciaal zijn toegewezen voor de apps die zijn gekoppeld aan één klant.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -85,7 +76,7 @@ Op de lokale stations die zijn gekoppeld aan de virtuele machine waarop een app 
 
 Twee voor beelden van hoe App Service tijdelijke lokale opslag gebruikt, zijn de map voor tijdelijke ASP.NET-bestanden en de map voor IIS-gecomprimeerde bestanden. Het ASP.NET-compilatie systeem gebruikt de map ' Temporary ASP.NET files ' als tijdelijke compilatie cache locatie. IIS maakt gebruik van de directory ' IIS Temporary Compressed Files ' voor het opslaan van de uitvoer van gecomprimeerde antwoorden. Beide typen bestands gebruik (evenals andere) worden opnieuw toegewezen in App Service aan de tijdelijke lokale opslag per app. Deze opnieuw toewijzen zorgt ervoor dat de functionaliteit wordt voortgezet zoals verwacht.
 
-Elke app in App Service wordt uitgevoerd als een wille keurige unieke id voor een werk proces met beperkte machtigingen, de ' identiteit van de [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)groep van toepassingen ', zoals hier wordt beschreven:. Toepassings code gebruikt deze identiteit voor basis alleen-lezen toegang tot het station van het besturings systeem (de D:\ station). Dit betekent dat de toepassings code algemene mapstructuren kan weer geven en algemene bestanden op het besturingssysteem station kan lezen. Hoewel dit een enigszins breed onderliggend toegangs niveau lijkt, zijn dezelfde mappen en bestanden toegankelijk wanneer u een werknemersrol inricht in een door Azure gehoste service en de inhoud van het station leest. 
+Elke app in App Service wordt uitgevoerd als een wille keurige unieke id voor een werk proces met beperkte machtigingen, de ' identiteit van de groep van toepassingen ', zoals hier wordt beschreven: [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities). Toepassings code gebruikt deze identiteit voor basis alleen-lezen toegang tot het station van het besturings systeem (de D:\ station). Dit betekent dat de toepassings code algemene mapstructuren kan weer geven en algemene bestanden op het besturingssysteem station kan lezen. Hoewel dit een enigszins breed onderliggend toegangs niveau lijkt, zijn dezelfde mappen en bestanden toegankelijk wanneer u een werknemersrol inricht in een door Azure gehoste service en de inhoud van het station leest. 
 
 <a name="multipleinstances"></a>
 
@@ -124,7 +115,7 @@ De diagnostische logboeken en tracering die niet beschikbaar zijn voor apps zijn
 <a id="RegistryAccess"></a>
 
 ## <a name="registry-access"></a>Toegang tot het REGI ster
-Apps hebben alleen-lezen toegang tot veel (maar niet alle) van het REGI ster van de virtuele machine waarop ze worden uitgevoerd. In de praktijk betekent dit dat register sleutels die alleen-lezen toegang tot de lokale gebruikers groep toestaan, toegankelijk zijn voor apps. Een gedeelte van het REGI ster dat momenteel niet wordt ondersteund voor een lees-of schrijf toegang is\_de\_HKEY huidige gebruikers component.
+Apps hebben alleen-lezen toegang tot veel (maar niet alle) van het REGI ster van de virtuele machine waarop ze worden uitgevoerd. In de praktijk betekent dit dat register sleutels die alleen-lezen toegang tot de lokale gebruikers groep toestaan, toegankelijk zijn voor apps. Een gedeelte van het REGI ster dat momenteel niet wordt ondersteund voor een lees-of schrijf toegang is de HKEY\_huidige\_gebruikers component.
 
 Schrijf toegang tot het REGI ster is geblokkeerd, inclusief toegang tot register sleutels per gebruiker. Vanuit het perspectief van de app mag schrijf toegang tot het REGI ster nooit worden vertrouwd in de Azure-omgeving, omdat apps kunnen (en doen) worden gemigreerd naar verschillende virtuele machines. De enige permanente schrijf bare opslag die kan worden verzorgd door een app is de inhouds mappen structuur per app die is opgeslagen op de App Service UNC-shares. 
 

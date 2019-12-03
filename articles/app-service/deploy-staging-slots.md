@@ -1,31 +1,21 @@
 ---
-title: Faserings omgevingen instellen voor web-apps in Azure App Service | Microsoft Docs
-description: Meer informatie over het gebruik van gefaseerde publicatie voor web-apps in Azure App Service.
-services: app-service
-documentationcenter: ''
-author: cephalin
-writer: cephalin
-manager: jpconnoc
-editor: mollybos
+title: Faserings omgevingen instellen
+description: Meer informatie over het implementeren van apps op een niet-productie sleuf en voor het omwisselen naar productie. Verg root de betrouw baarheid en Elimineer de uitval tijd van de app van implementaties.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
-ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7f98ba9851216737712b6be1ec29156ba0b1a68b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382273"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671760"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faserings omgevingen instellen in Azure App Service
 <a name="Overview"></a>
 
-Wanneer u uw web-app, Web-app op Linux, mobiele back-end of API-app op [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714)implementeert, kunt u een afzonderlijke implementatie sleuf gebruiken in plaats van de standaard productie sleuf wanneer u werkt in de **Standard**-, **Premium**-of **geïsoleerde** App service plan-laag. Implementatie sites zijn live apps met hun eigen hostnamen. Elementen voor app-inhoud en-configuraties kunnen worden omgewisseld tussen twee implementatie sleuven, met inbegrip van de productie site. 
+Wanneer u uw web-app, Web-app op Linux, mobiele back-end of API-app voor [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714)implementeert, kunt u een afzonderlijke implementatie sleuf gebruiken in plaats van de standaard productie sleuf wanneer u in de laag **Standard**, **Premium**of **geïsoleerd** app service plan werkt. Implementatie sites zijn live apps met hun eigen hostnamen. Elementen voor app-inhoud en-configuraties kunnen worden omgewisseld tussen twee implementatie sleuven, met inbegrip van de productie site. 
 
 Het implementeren van uw toepassing in een niet-productie sleuf biedt de volgende voor delen:
 

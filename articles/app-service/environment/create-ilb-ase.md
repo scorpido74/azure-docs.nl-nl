@@ -1,24 +1,18 @@
 ---
-title: Een interne load balancer maken met App Service Environment - Azure
-description: Meer informatie over het maken en gebruiken van een Azure App Service-omgeving die geïsoleerd is van internet
-services: app-service
-documentationcenter: na
+title: Een ILB-ASE met ARM maken
+description: Meer informatie over het maken van een App Service omgeving met een interne load balancer (ILB ASE) met behulp van Azure Resource Manager-sjablonen. Uw apps volledig isoleren via internet.
 author: ccompy
-manager: stefsch
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 07b47374484cf954b1fc4279c93dddcc6cec7e61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ae1d04043c740456368b0831bee84490778f0171
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470567"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687215"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Een interne Load Balancer maken en gebruiken App Service Environment 
 
@@ -120,7 +114,7 @@ De SCM-sitenaam leidt naar de Kudu-console, genaamd de **Geavanceerde portal**, 
 
 Op internet gebaseerde CI-systemen, zoals GitHub en Azure DevOps, werken nog steeds met een ILB AS-omgeving, als de buildagent toegankelijk is via internet en zich op hetzelfde netwerk bevindt als de ILB AS-omgeving. Als de buildagent dus, in het geval van Azure DevOps, is gemaakt in hetzelfde VNET als de ILB AS-omgeving (verschillende subnetten vormen geen probleem), kan met deze agent code worden opgehaald uit Azure DevOps-git en worden geïmplementeerd in de ILB AS-omgeving. Als u niet zelf een buildagent wilt maken, moet u een CI-systeem met een pull-model gebruiken, zoals Dropbox.
 
-De publicatie-eindpunten voor apps in een ILB AS-omgeving maken gebruik van het domein waarmee de ILB AS-omgeving is gemaakt. Dit domein wordt weergegeven in het publicatieprofiel van de app en in de portalblade van de app (**Overzicht** > **Essentials** en ook **Eigenschappen**). Als u een ILB-ASE hebt met het domein achtervoegsel *&lt;naam&gt;. appserviceenvironment.net*en een app met de naam *mytest*, gebruikt u *mytest.&lt;ASE name&gt;. appserviceenvironment.net* voor FTP en  *mytest.scm.contoso.net* voor Web-implementatie.
+De publicatie-eindpunten voor apps in een ILB AS-omgeving maken gebruik van het domein waarmee de ILB AS-omgeving is gemaakt. Dit domein wordt weergegeven in het publicatieprofiel van de app en in de portalblade van de app (**Overzicht** > **Essentials** en ook **Eigenschappen**). Als u een ILB-ASE hebt met het domein achtervoegsel *&lt;naam&gt;. appserviceenvironment.net*en een app met de naam *mytest*, gebruikt u *mytest.&lt;ASE name&gt;. appserviceenvironment.net* voor FTP en *mytest.scm.contoso.net* voor webimplementatie.
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Een ILB-ASE met een WAF-apparaat configureren ##
 

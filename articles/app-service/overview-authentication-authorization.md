@@ -1,26 +1,17 @@
 ---
-title: Verificatie en autorisatie-Azure App Service | Microsoft Docs
-description: Conceptuele Naslag informatie en overzicht van de functie voor verificatie/autorisatie voor Azure App Service
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
+title: Verificatie en autorisatie
+description: Meer informatie over de ingebouwde ondersteuning voor verificatie en autorisatie in Azure App Service en hoe u deze kunt gebruiken om uw app te beveiligen tegen onbevoegde toegang.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 2179f4e7d5350cdf9d82413e4f70647c20c3c399
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808749"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672248"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authenticatie en autorisatie in Azure App Service
 
@@ -32,8 +23,10 @@ Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie
 
 Voor beveiligde verificatie en autorisatie is grondige inzichten van beveiliging vereist, waaronder Federatie, versleuteling, [JSON-webtokens (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) -beheer, [toekennings typen](https://oauth.net/2/grant-types/), enzovoort. App Service biedt deze hulpprogram ma's, zodat u meer tijd en energie kunt best Eden aan het leveren van bedrijfs waarde aan uw klant.
 
-> [!NOTE]
-> U bent niet verplicht om App Service te gebruiken voor verificatie en autorisatie. Veel web frameworks worden gebundeld met beveiligings functies, en u kunt ze gebruiken als u wilt. Als u meer flexibiliteit nodig hebt dan App Service biedt, kunt u ook uw eigen hulpprogram ma's schrijven.  
+> [!IMPORTANT]
+> U hoeft App Service voor authn/autho niet te gebruiken. Veel web frameworks worden gebundeld met beveiligings functies, en u kunt ze gebruiken als u wilt. Als u meer flexibiliteit nodig hebt dan App Service biedt, kunt u ook uw eigen hulpprogram ma's schrijven.  
+>
+> Als u echter met een van de niet-App Service opties voor externe authenticatie gaat, moet u er ook voor zorgen dat Chrome 80 een belang rijke [wijziging in de implementatie van SameSite voor cookies aanbrengt](https://www.chromestatus.com/feature/5088147346030592) (release datum rond maart 2020) en het authenticatie mechanisme van uw app kan afbreken wanneer client browsers worden bijgewerkt. De ASP.NET Core documentatie bevat informatie over hoe u deze in uw app kunt aanpakken, op [http: browser SameSite verandert van invloed op verificatie](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). Het bevat nuttige richt lijnen over het testen van deze breuk wijziging ten opzichte van de belang rijke browsers, ongeacht of u ASP.NET Core gebruikt of niet.
 >
 
 Zie [gebruikers verificatie en autorisatie voor mobiele apps met Azure app service](../app-service-mobile/app-service-mobile-auth.md)voor meer informatie over systeem eigen mobiele apps.

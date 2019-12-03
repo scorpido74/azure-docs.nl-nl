@@ -1,26 +1,20 @@
 ---
-title: Veelgestelde vragen over toepassings prestaties-Azure App Service | Microsoft Docs
-description: Krijg antwoorden op veelgestelde vragen over de beschik baarheid, prestaties en toepassings problemen in de Web Apps functie van Azure App Service.
-services: app-service\web
-documentationcenter: ''
+title: Veelgestelde vragen over toepassings prestaties
+description: Krijg antwoorden op veelgestelde vragen over de beschik baarheid, prestaties en toepassings problemen in Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a5af98aae420193b8316a48aa60550cef70a9c4a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122074"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671695"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over toepassings prestaties voor Web Apps in azure
 
@@ -53,10 +47,10 @@ U kunt Power shell-cmdlets gebruiken om App Service web-apps te beheren en te on
 De gebeurtenis logboeken van uw web-app weer geven:
 
 1. Meld u aan bij uw [kudu-website](https://*yourwebsitename*.scm.azurewebsites.net).
-2. Selecteer in het menu **fout opsporing console** > -**cmd**.
+2. Selecteer in het menu **fout opsporing Console** > **cmd**.
 3. Selecteer de map **logfiles** .
 4. Als u gebeurtenis logboeken wilt weer geven, selecteert u het potlood pictogram naast **eventlog. XML**.
-5. Voer de Power shell-cmdlet `Save-AzureWebSiteLog -Name webappname`uit om de logboeken te downloaden.
+5. Als u de logboeken wilt downloaden, voert u de Power shell-cmdlet `Save-AzureWebSiteLog -Name webappname`uit.
 
 ## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Hoe kan ik een gebruikers modus geheugen dump van mijn web-app vastleggen?
 
@@ -65,7 +59,7 @@ Een gebruikers modus geheugen dump van uw web-app vastleggen:
 1. Meld u aan bij uw [kudu-website](https://*yourwebsitename*.scm.azurewebsites.net).
 2. Selecteer het menu van het **proces Verkenner** .
 3. Klik met de rechter muisknop op het proces **W3wp. exe** of uw webtaakproces.
-4. Selecteer**volledige dump**voor het **downloaden van geheugen** > .
+4. Selecteer **geheugen dump downloaden** > **volledige dump**.
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Hoe kan ik gegevens op proces niveau voor mijn web-app weer geven?
 
@@ -87,7 +81,7 @@ Drie voor waarden kunnen deze fout veroorzaken:
 * De web-app is gestopt in de portal.
 * De web-app heeft een limiet voor resource quota bereikt die mogelijk van toepassing is op een gratis of gedeeld service plan voor schalen.
 
-Volg de stappen in web apps om te zien wat de oorzaak van [de fout is en om het probleem op te lossen: ' Fout 403: deze web-app is gestopt](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)'.
+Volg de stappen in [Web apps: ' fout 403: deze web-app is gestopt '](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)om te zien wat de oorzaak van de fout is en om het probleem op te lossen.
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Waar kan ik meer informatie vinden over quota en limieten voor verschillende App Service plannen?
 
@@ -147,8 +141,8 @@ Tracering van mislukte aanvragen inschakelen:
     </tracing>
     ```
 13. Als u de traceringen van mislukte aanvragen wilt downloaden, gaat u in de [Portal](https://portal.azure.com)naar uw website.
-15. Selecteer **extra** > kuduGo > .
-18. Selecteer in het menu **fout opsporing console** > -**cmd**.
+15. Selecteer **extra** > **kudu** > **Go**.
+18. Selecteer in het menu **fout opsporing Console** > **cmd**.
 19. Selecteer de map **logfiles** en selecteer vervolgens de map met een naam die begint met **W3SVC**.
 20. Als u het XML-bestand wilt weer geven, selecteert u het potlood pictogram.
 
@@ -170,7 +164,7 @@ Webjobs is ontworpen voor achtergrond verwerking. U kunt zoveel achtergrond verw
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>ASP.NET Core toepassingen die worden gehost in App Service soms niet meer reageren. Dit probleem Hoe kan ik oplossen?
 
-Een bekend probleem met een eerdere [versie van Kestrel](https://github.com/aspnet/KestrelHttpServer/issues/1182) kan ertoe leiden dat een ASP.net Core 1,0-app die in app service wordt gehost, niet meer reageert. Dit bericht kan ook worden weer gegeven: "Er is een fout opgetreden in de opgegeven CGI-toepassing en het proces is beëindigd door de server."
+Een bekend probleem met een eerdere [versie van Kestrel](https://github.com/aspnet/KestrelHttpServer/issues/1182) kan ertoe leiden dat een ASP.net Core 1,0-app die in app service wordt gehost, niet meer reageert. Dit bericht kan ook worden weer gegeven: ' er is een fout opgetreden in de opgegeven CGI-toepassing en het proces is beëindigd door de server. '
 
 Dit probleem is opgelost in Kestrel-versie 1.0.2. Deze versie is opgenomen in de ASP.NET Core 1.0.3-update. Om dit probleem op te lossen, moet u de app-afhankelijkheden bijwerken om Kestrel 1.0.2 te gebruiken. U kunt ook een van de twee tijdelijke oplossingen gebruiken die worden beschreven in het blog bericht [ASP.NET Core 1,0 trage prestatie problemen in app service Web-apps](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites).
 
@@ -179,7 +173,7 @@ Dit probleem is opgelost in Kestrel-versie 1.0.2. Deze versie is opgenomen in de
 
 Als u de functie lokale cache van App Service gebruikt, heeft dit gevolgen voor de mapstructuur van de logboek bestanden en gegevens mappen voor uw App Service exemplaar. Wanneer lokale cache wordt gebruikt, worden submappen gemaakt in de opslag logboeken en gegevens mappen. De submappen gebruiken het naam patroon ' unieke id ' + tijds tempel. Elke submap komt overeen met een VM-exemplaar waarin de web-app wordt uitgevoerd of is uitgevoerd.
 
-Controleer het tabblad App Service **Toepassings instellingen** om te bepalen of u lokale cache gebruikt. Als de lokale cache wordt gebruikt, is de app `WEBSITE_LOCAL_CACHE_OPTION` -instelling ingesteld `Always`op.
+Controleer het tabblad App Service **Toepassings instellingen** om te bepalen of u lokale cache gebruikt. Als de lokale cache wordt gebruikt, is de app-instelling `WEBSITE_LOCAL_CACHE_OPTION` ingesteld op `Always`.
 
 Als u geen lokale cache gebruikt en dit probleem ondervindt, dient u een ondersteunings aanvraag in.
 

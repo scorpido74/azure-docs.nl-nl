@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: bd099b9d76e17eda36be1650ef5081e5aaa7e53a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9338f0e26595c1ab25ab51578880daf8c0c5bbc4
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "67303532"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672458"
 ---
-# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Quickstart: Ontwikkelen op Azure Kubernetes service (AKS) met Draft
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Snelstartgids: ontwikkelen op Azure Kubernetes service (AKS) met Draft
 
 Concept is een open source-hulp programma waarmee u toepassings containers kunt inpakken en uitvoeren in een Kubernetes-cluster. Met concept kunt u een toepassing snel opnieuw implementeren naar Kubernetes wanneer er code wijzigingen optreden zonder dat u uw wijzigingen in versie beheer hoeft door te voeren. Zie de [documentatie over concepten op github][draft-documentation]voor meer informatie over concepten.
 
@@ -26,7 +26,7 @@ In dit artikel leest u hoe u een concept pakket gebruikt en hoe u een toepassing
 * Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 * [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Docker is geïnstalleerd en geconfigureerd. Docker biedt pakketten die docker configureren op een [Mac][docker-for-mac]-, [Windows][docker-for-windows]-of [Linux][docker-for-linux] -systeem.
-* [Helm is geïnstalleerd](https://github.com/helm/helm/blob/master/docs/install.md).
+* [Helm is geïnstalleerd](https://github.com/helm/helm#install).
 * [Concept geïnstalleerd][draft-documentation].
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken
@@ -113,7 +113,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 Voordat u helm kunt implementeren in een AKS-cluster met RBAC, hebt u een service account en een rol-koppeling voor de Tiller-service nodig. Zie voor meer informatie over het beveiligen van helm/Tiller in een op RBAC ingeschakeld cluster [Tiller, naam ruimten en RBAC][tiller-rbac]. Als op uw AKS-cluster geen RBAC is ingeschakeld, slaat u deze stap over.
 
-Maak een bestand met `helm-rbac.yaml` de naam en kopieer de volgende YAML:
+Maak een bestand met de naam `helm-rbac.yaml` en kopieer de volgende YAML:
 
 ```yaml
 apiVersion: v1
@@ -136,14 +136,14 @@ subjects:
     namespace: kube-system
 ```
 
-Maak het service account en de functie binding met `kubectl apply` de opdracht:
+Maak het service account en de functie binding met de opdracht `kubectl apply`:
 
 ```console
 kubectl apply -f helm-rbac.yaml
 ```
 
 ## <a name="configure-helm"></a>Helm configureren
-Als u een Basic-Tiller in een AKS-cluster wilt implementeren, gebruikt u de opdracht [helm init][helm-init] . Als het cluster niet is ingesteld op RBAC, `--service-account` verwijdert u het argument en de waarde.
+Als u een Basic-Tiller in een AKS-cluster wilt implementeren, gebruikt u de opdracht [helm init][helm-init] . Als op uw cluster geen RBAC is ingeschakeld, verwijdert u het argument en de waarde `--service-account`.
 
 ```console
 helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
@@ -151,7 +151,7 @@ helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="lin
 
 ## <a name="configure-draft"></a>Concept configureren
 
-Als u concept nog niet op uw lokale computer hebt geconfigureerd `draft init`, voert u de volgende handelingen uit:
+Als u concept nog niet hebt geconfigureerd op uw lokale machine, voert u `draft init`uit:
 
 ```console
 $ draft init
@@ -162,7 +162,7 @@ Installing default pack repositories...
 Happy Sailing!
 ```
 
-U moet ook een concept configureren om de *login server* van uw ACR te gebruiken. De volgende opdracht wordt `draft config set` gebruikt voor `mydraftacr.azurecr.io` gebruik als een REGI ster.
+U moet ook een concept configureren om de *login server* van uw ACR te gebruiken. De volgende opdracht maakt gebruik van `draft config set` om `mydraftacr.azurecr.io` als een REGI ster te gebruiken.
 
 ```console
 draft config set registry mydraftacr.azurecr.io
@@ -172,7 +172,7 @@ U hebt Draft zo geconfigureerd dat uw ACR wordt gebruikt. concepten kunnen conta
 
 ## <a name="download-the-sample-application"></a>De voorbeeldtoepassing downloaden
 
-In deze Snelstartgids wordt [een voor beeld van een Java-toepassing uit de GitHub-opslag plaats][example-java]gebruikt. Kloon de toepassing van github en navigeer naar de `draft/examples/example-java/` map.
+In deze Snelstartgids wordt [een voor beeld van een Java-toepassing uit de GitHub-opslag plaats][example-java]gebruikt. Kloon de toepassing van GitHub en navigeer naar de map `draft/examples/example-java/`.
 
 ```console
 git clone https://github.com/Azure/draft
@@ -181,7 +181,7 @@ cd draft/examples/example-java/
 
 ## <a name="run-the-sample-application-with-draft"></a>De voorbeeld toepassing uitvoeren met concept
 
-Gebruik de `draft create` opdracht om de toepassing voor te bereiden.
+Gebruik de opdracht `draft create` om de toepassing voor te bereiden.
 
 ```console
 draft create
@@ -196,7 +196,7 @@ $ draft create
 --> Ready to sail
 ```
 
-Gebruik de `draft up` opdracht om de voorbeeld toepassing in uw AKS-cluster uit te voeren.
+Gebruik de opdracht `draft up` om de voorbeeld toepassing in uw AKS-cluster uit te voeren.
 
 ```console
 draft up
@@ -216,7 +216,7 @@ Inspect the logs with `draft logs 01CMZAR1F4T1TJZ8SWJQ70HCNH`
 
 ## <a name="connect-to-the-running-sample-application-from-your-local-machine"></a>Verbinding maken met de actieve voorbeeld toepassing vanaf uw lokale computer
 
-Als u de toepassing wilt testen, `draft connect` gebruikt u de opdracht.
+Als u de toepassing wilt testen, gebruikt u de opdracht `draft connect`.
 
 ```console
 draft connect
@@ -235,13 +235,13 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-Ga naar de toepassing in een browser met behulp van de `localhost` URL om de voorbeeld toepassing te bekijken. In het bovenstaande voor beeld is `http://localhost:49804`de URL. Stop de verbinding met `Ctrl+c`behulp van.
+Ga naar de toepassing in een browser met behulp van de `localhost` URL om de voorbeeld toepassing te bekijken. In het bovenstaande voor beeld is de URL `http://localhost:49804`. Stop de verbinding met behulp van `Ctrl+c`.
 
 ## <a name="access-the-application-on-the-internet"></a>Toegang tot de toepassing op Internet
 
 In de vorige stap hebt u een proxy verbinding gemaakt met de toepassing pod in uw AKS-cluster. Tijdens het ontwikkelen en testen van uw toepassing kunt u de toepassing beschikbaar maken op internet. Als u een toepassing op internet beschikbaar wilt stellen, kunt u een Kubernetes-service maken met een type [LoadBalancer][kubernetes-service-loadbalancer].
 
-Update `charts/example-java/values.yaml` voor het maken van een *Load Balancer* -service. Wijzig de waarde van *service. type* van *ClusterIP* in *LoadBalancer*.
+`charts/example-java/values.yaml` bijwerken om een *Load Balancer* -service te maken. Wijzig de waarde van *service. type* van *ClusterIP* in *LoadBalancer*.
 
 ```yaml
 ...
@@ -259,7 +259,7 @@ Sla de wijzigingen op, sluit het bestand en voer `draft up` uit om de toepassing
 draft up
 ```
 
-Het duurt enkele minuten voordat de service een openbaar IP-adres heeft geretourneerd. Als u de voortgang wilt bewaken `kubectl get service` , gebruikt u de opdracht met de para meter *Watch* :
+Het duurt enkele minuten voordat de service een openbaar IP-adres heeft geretourneerd. Als u de voortgang wilt bewaken, gebruikt u de `kubectl get service` opdracht met de para meter *Watch* :
 
 ```console
 $ kubectl get service --watch
@@ -270,7 +270,7 @@ example-java-java   LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 example-java-java   LoadBalancer   10.0.141.72   52.175.224.118  80:32150/TCP   7m
 ```
 
-Navigeer naar het load balancer van uw toepassing in een browser met behulp van het *externe-IP-adres* om de voorbeeld toepassing te bekijken. In het bovenstaande voor beeld is `52.175.224.118`het IP-adres.
+Navigeer naar het load balancer van uw toepassing in een browser met behulp van het *externe-IP-adres* om de voorbeeld toepassing te bekijken. In het bovenstaande voor beeld is het IP-adres `52.175.224.118`.
 
 ## <a name="iterate-on-the-application"></a>Herhaal de toepassing
 

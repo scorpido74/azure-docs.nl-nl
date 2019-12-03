@@ -1,27 +1,20 @@
 ---
-title: Een Java-Web-app maken in Windows-Azure App Service
-description: In deze Quick Start implementeert u uw eerste Java-Hallo wereld in Azure App Service in Windows binnen enkele minuten.
+title: 'Quick Start: een Java-app maken in Windows'
+description: Implementeer in enkele minuten uw eerste Java-Hallo wereld op Azure App Service in Windows. Met de Maven-invoeg toepassing voor App Service is het handig om Java-apps te implementeren.
 keywords: Azure, app service, Web-app, Windows, Java, Maven, Quick Start
-services: app-service\web
-documentationcenter: ''
 author: msangapu-msft
-manager: jeconnoc
-editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: d119ffdcb952405f17e0df152c817df9a8a63110
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c511ed3f432c8e54a820c01839269712271774bd
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833647"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672160"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Quick Start: een Java-app maken op Azure App Service in Windows
 

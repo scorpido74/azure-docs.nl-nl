@@ -1,26 +1,17 @@
 ---
-title: Overzicht van App Service plan-Azure | Microsoft Docs
-description: Meer informatie over het App Service plannen voor Azure App Service werk en hoe deze uw beheer ervaring voor u bieden.
+title: App Service-abonnementen
+description: Meer informatie over de werking van App Service plannen in Azure App Service, hoe deze worden gefactureerd voor de klant en hoe u deze kunt schalen voor uw behoeften.
 keywords: app service, Azure app service, schaal, schaalbaar, schaal baarheid, app service-plan, kosten van app service
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 78440185b4a26bccc8ffb0258416a19aa929af6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c0b28bd7a854d1b4a8b387e40fb045d47160768d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470249"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672289"
 ---
 # <a name="azure-app-service-plan-overview"></a>Overzicht van Azure App Service plan
 

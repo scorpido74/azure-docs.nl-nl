@@ -1,25 +1,18 @@
 ---
-title: Details van de netwerk configuratie voor Azure ExpressRoute-App Service
-description: Details van de netwerk configuratie voor het App Service Environment van PowerApps in virtuele netwerken die zijn verbonden met een Azure ExpressRoute-circuit.
-services: app-service
-documentationcenter: ''
+title: Azure ExpressRoute v1 configureren
+description: Netwerk configuratie voor App Service Environment voor PowerApps met Azure ExpressRoute. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: b10bd15538ecca7934a397ca63db1150a0bfc32c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070025"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688750"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Details van de netwerk configuratie voor het App Service Environment van PowerApps met Azure ExpressRoute
 
@@ -56,7 +49,7 @@ App Service Environment moeten de volgende instellingen voor netwerk connectivit
 
 * Het uitgaande netwerkpad kan niet worden gereist via interne bedrijfs proxy's en kan niet on-premises geforceerd worden getunneld. Met deze acties wordt het effectief NAT-adres van het uitgaande netwerk verkeer gewijzigd van App Service Environment. Wijzigingen in het NAT-adres van App Service Environment uitgaand netwerk verkeer veroorzaken verbindings fouten aan veel van de eind punten. Het maken van App Service Environment mislukt. Alle bestaande App Service Environment is als beschadigd gemarkeerd.
 
-* Inkomende netwerk toegang tot de vereiste poorten voor App Service Environment moet zijn toegestaan. Zie inkomend [verkeer voor app service Environment beheren][requiredports]voor meer informatie.
+* Inkomende netwerk toegang tot de vereiste poorten voor App Service Environment moet zijn toegestaan. Zie [inkomend verkeer voor app service Environment beheren][requiredports]voor meer informatie.
 
 Zorg ervoor dat een geldige DNS-infra structuur is geconfigureerd en onderhouden voor het virtuele netwerk om te voldoen aan de DNS-vereisten. Als de DNS-configuratie wordt gewijzigd nadat App Service Environment is gemaakt, kunnen ontwikkel aars afdwingen App Service Environment om de nieuwe DNS-configuratie op te halen. U kunt het opnieuw opstarten van een doorlopende omgeving activeren met behulp van het pictogram **opnieuw starten** onder App service Environment beheer in de [Azure Portal][NewPortal]. Bij het opnieuw opstarten wordt de nieuwe DNS-configuratie door de omgeving opgehaald.
 
@@ -94,20 +87,20 @@ In deze sectie ziet u een voor beeld van een UDR-configuratie voor App Service E
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Installeer Azure PowerShell vanaf de [pagina Azure down loads][AzureDownloads]. Kies een down load met een datum van 2015 juni of hoger. Onder **opdracht regel Programma's** > **Windows Power shell**selecteert u **installeren** om de meest recente Power shell-cmdlets te installeren.
+* Installeer Azure PowerShell vanaf de [pagina Azure down loads][AzureDownloads]. Kies een down load met een datum van 2015 juni of hoger. Selecteer onder **opdracht regel programma's** > **Windows Power shell**de optie **installeren** om de nieuwste Power shell-cmdlets te installeren.
 
 * Maak een uniek subnet voor exclusief gebruik door App Service Environment. Het unieke subnet zorgt ervoor dat de Udr's die op het subnet wordt toegepast, het uitgaande verkeer alleen voor App Service Environment heeft geopend.
 
 > [!IMPORTANT]
 > Implementeer App Service Environment alleen nadat u de configuratie stappen hebt voltooid. De stappen zorgen ervoor dat uitgaande netwerk verbinding beschikbaar is voordat u App Service Environment probeert te implementeren.
 
-### <a name="step-1-create-a-route-table"></a>Stap 1: Een routetabel maken
+### <a name="step-1-create-a-route-table"></a>Stap 1: een route tabel maken
 
 Maak een route tabel met de naam **DirectInternetRouteTable** in de regio vs West Azure, zoals wordt weer gegeven in dit fragment:
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>Stap 2: Routes maken in de tabel
+### <a name="step-2-create-routes-in-the-table"></a>Stap 2: routes maken in de tabel
 
 Routes toevoegen aan de route tabel om uitgaande internet toegang in te scha kelen.  
 
@@ -126,13 +119,13 @@ U kunt ook een actuele, uitgebreide lijst met CIDR-bereiken downloaden die worde
 > Eén UDR heeft een standaard bovengrens van 100 routes. U moet de IP-adresbereiken van het Azure samenvatten zodat deze binnen de routerings limiet van 100 passen. UDR routes moeten specifieker zijn dan routes die worden geadverteerd door uw ExpressRoute-verbinding.
 > 
 
-### <a name="step-3-associate-the-table-to-the-subnet"></a>Stap 3: De tabel koppelen aan het subnet
+### <a name="step-3-associate-the-table-to-the-subnet"></a>Stap 3: de tabel koppelen aan het subnet
 
 Koppel de route tabel aan het subnet waar u App Service Environment wilt implementeren. Met deze opdracht wordt de tabel **DirectInternetRouteTable** gekoppeld aan het **ASESubnet** -subnet dat app service Environment bevat.
 
 `Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-### <a name="step-4-test-and-confirm-the-route"></a>Stap 4: De route testen en bevestigen
+### <a name="step-4-test-and-confirm-the-route"></a>Stap 4: de route testen en bevestigen
 
 Nadat de route tabel is gebonden aan het subnet, test en bevestig de route.
 

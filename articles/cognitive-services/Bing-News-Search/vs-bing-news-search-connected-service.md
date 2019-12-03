@@ -3,19 +3,19 @@ title: Verbinding maken met de Bing Nieuws zoeken-API met behulp van Connected S
 titleSuffix: Azure Cognitive Services
 description: Met behulp van de Bing Nieuws zoeken-API kunt u apps en services de mogelijkheid bieden om gebruik te maken van de kracht van een zoekprogramma voor het internet zonder advertenties.
 services: cognitive-services
-author: ghogen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.author: ghogen
-ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 9cac13f8fb42959e79cafedcc7057d1cb7c2f7d5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111509"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689385"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Zelf studie: verbinding maken met Bing Nieuws zoeken-API met verbonden services in Visual Studio enC#
 
@@ -26,16 +26,16 @@ Dit artikel bevat informatie voor het gebruik van de functie Connected Services 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement. Als u nog geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
-- Visual Studio 2019, waarbij de werk belasting voor Web Development is geïnstalleerd. [Nu downloaden](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Visual Studio 2019, waarbij de werk belasting voor Web Development is geïnstalleerd. [Download nu](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
 ## <a name="add-support-to-your-project-for-bing-news-search-api"></a>Ondersteuning voor de Bing Nieuws zoeken-API toevoegen aan uw project
 
-1. Maak een nieuw ASP.NET Core-web-project met de naam MyWebApplication. Gebruik de projectsjabloon **Web Application (Model-View-Controller)** , met alle standaardinstellingen. Het is belangrijk om het project de naam MyWebApplication te geven, zodat de naamruimte overeenkomt wanneer u code naar het project kopieert. 
+1. Maak een nieuw ASP.NET Core-web-project met de naam MyWebApplication. Gebruik de projectsjabloon **Web Application (Model-View-Controller)** , met alle standaardinstellingen. Het is belangrijk om het project de naam MyWebApplication te geven zodat de naamruimte overeenkomt wanneer u code hebt gekopieerd in het project. 
 
-1. Kies in **Solution Explorer** **Add** > **Connected Service**.
-   De pagina Connected Service-pagina wordt weergegeven, met services die u aan uw project kunt toevoegen.
+1. In **Solution Explorer** kiest u **Connected Service** > **Toevoegen**.
+   De Connected Service-pagina wordt weergegeven met services die u aan uw project toevoegen kunt.
 
    ![Schermafbeelding van het menu-item Add > Connected Service](../media/vs-common/Connected-Service-Menu.PNG)
 
@@ -43,17 +43,17 @@ Dit artikel bevat informatie voor het gebruik van de functie Connected Services 
 
    ![Schermafbeelding van lijst met verbonden services](./media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-0.PNG)
 
-   Als u bent aangemeld bij Visual Studio en een Azure-abonnement hebt dat is gekoppeld aan uw account, wordt er een pagina weergegeven met een vervolgkeuzelijst met uw abonnementen. Selecteer het abonnement dat u wilt gebruiken en kies vervolgens een naam voor de Bing Nieuws zoeken-API. U kunt ook **Edit** kiezen om de automatisch gegenereerde naam te wijzigen.
+   Als u bent aangemeld bij Visual Studio en een Azure-abonnement hebt dat is gekoppeld aan uw account, wordt een pagina weergegeven met een vervolgkeuzelijst met uw abonnementen. Selecteer het abonnement dat u wilt gebruiken en kies vervolgens een naam voor de Bing Nieuws zoeken-API. U kunt ook **Edit** kiezen om de automatisch gegenereerde naam te wijzigen.
 
    ![Schermafbeelding van de velden voor het abonnement en de naam](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-1.PNG)
 
 1. Kies de resourcegroep (Resource Group) en de prijscategorie (Pricing tier).
 
-   ![Schermafbeelding van de velden voor de resourcegroep en de prijscategorie](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-2.PNG)
+   ![Schermafbeelding van de resourcegroep en prijscategorie-velden](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-2.PNG)
 
    Als u meer informatie wilt over de prijscategorieën, selecteert u **Review pricing**.
 
-1. Kies **Add** om ondersteuning voor de Connected Service toe te voegen.
+1. Kies **Toevoegen** om ondersteuning van Connected Service toe te voegen.
    Visual Studio past uw project aan om de NuGet-pakketten toe te voegen, evenals vermeldingen in het configuratiebestand en andere wijzigingen voor de ondersteuning van een verbinding met de Bing Nieuws zoeken-API. In de uitvoer ziet u een logboek van wat er gebeurt met uw project. Er verschijnt informatie die er ongeveer als volgt uitziet:
 
    ```output
@@ -260,7 +260,7 @@ Nu u ondersteuning voor de Bing Nieuws zoeken-API hebt toegevoegd aan uw project
            
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de resourcegroep niet meer nodig hebt, kunt u deze verwijderen. Hiermee verwijdert u ook de Cognitive Service en gerelateerde resources. De resourcegroep verwijderen via de portal:
+Als u de resourcegroep niet meer nodig hebt, kunt u deze verwijderen. Hiermee verwijdert u de Cognitive Service en gerelateerde resources. De resourcegroep verwijderen via de portal:
 
 1. Typ de naam van uw resourcegroep in het zoekvak bovenaan de portal. Selecteer de resourcegroep die u wilt verwijderen.
 2. Selecteer **Resourcegroep verwijderen**.

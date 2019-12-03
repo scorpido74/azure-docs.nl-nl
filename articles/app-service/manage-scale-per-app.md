@@ -1,25 +1,18 @@
 ---
-title: Hosten met hoge dichtheid en schalen per app-Azure App Service | Microsoft Docs
-description: Hosten met hoge dichtheid op Azure App Service
+title: Schalen per app voor high-density hosting
+description: Schaal apps onafhankelijk van de App Service plannen en Optimaliseer de uitgeschaalde instanties in uw abonnement.
 author: btardif
-manager: erikre
-editor: ''
-services: app-service\web
-documentationcenter: ''
 ms.assetid: a903cb78-4927-47b0-8427-56412c4e3e64
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 7130c9547e0778ce40a0ad1c1ea41607a02df23e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088107"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672355"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hosten met hoge dichtheid op Azure App Service met schalen per app
 
@@ -39,7 +32,7 @@ Het platform is niet afhankelijk van metrische gegevens om te beslissen over de 
 
 ## <a name="per-app-scaling-using-powershell"></a>Schalen per app met behulp van Power shell
 
-Maak een plan met schalen per app door de ```-PerSiteScaling $true``` para meter aan de ```New-AzAppServicePlan``` cmdlet door te geven.
+Maak een plan met schalen per app door de para meter ```-PerSiteScaling $true``` door te geven aan de ```New-AzAppServicePlan```-cmdlet.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -48,7 +41,7 @@ New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-Schakel per app schalen in met een bestaand app service plan door de `-PerSiteScaling $true` para meter door te geven aan de ```Set-AzAppServicePlan``` cmdlet.
+Schakel per app schalen in met een bestaand App Service plan door de para meter `-PerSiteScaling $true` door te geven aan de ```Set-AzAppServicePlan```-cmdlet.
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
@@ -72,7 +65,7 @@ Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> `$newapp.SiteConfig.NumberOfWorkers`wijkt af van `$newapp.MaxNumberOfWorkers`. Schaal baarheid per app wordt gebruikt `$newapp.SiteConfig.NumberOfWorkers` om de schaal kenmerken van de app te bepalen.
+> `$newapp.SiteConfig.NumberOfWorkers` wijkt af van `$newapp.MaxNumberOfWorkers`. Schalen per app maakt gebruik van `$newapp.SiteConfig.NumberOfWorkers` om de schaal kenmerken van de app te bepalen.
 
 ## <a name="per-app-scaling-using-azure-resource-manager"></a>Schalen per app met behulp van Azure Resource Manager
 
@@ -81,7 +74,7 @@ Met de volgende Azure Resource Manager sjabloon maakt u:
 - Een App Service plan dat is geschaald naar 10 instanties
 - een app die is geconfigureerd om te worden geschaald naar een maximum van vijf exemplaren.
 
-De eigenschap **PerSiteScaling** wordt ingesteld op True `"perSiteScaling": true`voor het app service plan. De App stelt het **aantal werk** rollen in dat moet worden gebruikt `"properties": { "numberOfWorkers": "5" }`voor 5.
+De eigenschap **PerSiteScaling** wordt ingesteld op True `"perSiteScaling": true`voor het app service plan. De App stelt het **aantal werk** rollen in dat moet worden gebruikt voor 5 `"properties": { "numberOfWorkers": "5" }`.
 
 ```json
 {
@@ -137,7 +130,7 @@ Het schalen per app is een functie die is ingeschakeld in zowel wereld wijde Azu
 Volg deze stappen om hosting met hoge dichtheid voor uw apps te configureren:
 
 1. Wijs een App Service plan aan als het hoge dichtheids plan en schaal het naar de gewenste capaciteit.
-1. Stel de `PerSiteScaling` vlag in op True voor het app service plan.
+1. Stel de vlag `PerSiteScaling` in op waar voor het App Service plan.
 1. Er worden nieuwe apps gemaakt en toegewezen aan dat App Service plan waarbij de eigenschap **numberOfWorkers** is ingesteld op **1**.
    - Het gebruik van deze configuratie levert de hoogst mogelijke dichtheid.
 1. Het aantal werk nemers kan onafhankelijk per app worden geconfigureerd om extra resources toe te kennen wanneer dat nodig is. Bijvoorbeeld:

@@ -7,14 +7,14 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: e33fce7b3fc19d6dfa83f95b6a9bcb43588945d1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 03fdd67adf5df440cafe4e7411064437b8ef89ac
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228074"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671543"
 ---
-# <a name="what-is-azure-private-link-preview"></a>Wat is Azure Private Link? (Preview-versie)
+# <a name="what-is-azure-private-link-preview"></a>Wat is Azure Private Link? (Preview)
 Met Azure private link kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage, Azure Cosmos DB en SQL Database) en Azure hostende klanten/partner services via een [persoonlijk eind punt](private-endpoint-overview.md) in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt ook uw eigen [privé koppelings service](private-link-service-overview.md) maken in uw virtuele netwerk (VNet) en deze privé leveren aan uw klanten. De installatie en consumptie-ervaring met behulp van persoonlijke Azure-koppeling is consistent voor Azure PaaS-, klanten-en Shared partner services.
 
 > [!IMPORTANT]
@@ -38,11 +38,11 @@ Persoonlijke Azure-koppeling biedt de volgende voor delen:
 ## <a name="availability"></a>Beschikbaarheid 
  De volgende tabel geeft een lijst van de services voor persoonlijke koppelingen en de regio's waar ze beschikbaar zijn. 
 
-|Scenario  |Ondersteunde services   |Beschikbare regio's | Status   |
-|---------|---------|---------|---------|
-|Persoonlijke koppeling voor services die eigendom zijn van de klant|Persoonlijke koppelings Services achter Standard Load Balancer | Alle open bare regio's  |  Preview  |
-|Persoonlijke koppeling voor Azure PaaS Services   | Azure Storage        |  Alle open bare regio's      | Preview         |
-|  | Azure Data Lake Storage Gen2        |  Alle open bare regio's      | Preview         |
+|Scenario  |Ondersteunde services  |Beschikbare regio's | Status  |
+|:---------|:-------------------|:-----------------|:--------|
+|Persoonlijke koppeling voor services die eigendom zijn van de klant|Persoonlijke koppelings Services achter Standard Load Balancer | Alle open bare regio's  | Preview  |
+|Persoonlijke koppeling voor Azure PaaS Services   | Azure Storage        |  Alle open bare regio's      | Preview <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints).  |
+|  | Azure Data Lake Storage Gen2        |  Alle open bare regio's      | Preview <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints).  |
 |  |  Azure SQL Database         | Alle open bare regio's      |   Preview      |
 ||Azure SQL Data Warehouse| Alle open bare regio's |Preview|
 ||Azure Cosmos DB| West-Centraal VS, Westus, Noord-Centraal VS |Preview|
@@ -64,7 +64,7 @@ Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pr
 ## <a name="faqs"></a>Veelgestelde vragen  
 Zie [Veelgestelde vragen over Azure private link](private-link-faq.md)voor veelgestelde vragen.
  
-## <a name="limits"></a>Limieten  
+## <a name="limits"></a>Beperkingen  
 Zie [limieten voor persoonlijke Azure-koppelingen](../azure-subscription-service-limits.md#private-link-limits)voor limieten.
 
 ## <a name="next-steps"></a>Volgende stappen

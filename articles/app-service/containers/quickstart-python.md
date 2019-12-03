@@ -1,27 +1,17 @@
 ---
-title: 'Quick Start: een python-app maken op Linux-Azure App Service'
-description: Leer hoe u in een paar minuten uw eerste Python-app (Hello World) implementeert in Azure App Service on Linux.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 'Snelstartgids: een Linux python-app maken'
+description: Ga aan de slag met Linux-apps op Azure App Service door uw eerste python-app te implementeren in een Linux-container in App Service.
 ms.topic: quickstart
 ms.date: 10/22/2019
-ms.author: cephalin
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 69e7cfef01005432a99dd10ed5bc7f004562e582
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 67fbffbe96bc32b6ec38fa75c1e754c7f11d38d6
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470802"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687473"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snelstartgids: een python-app maken in Azure App Service in Linux
 
@@ -182,7 +172,7 @@ Zodra de implementatie is voltooid, gaat u terug naar het browser venster open n
 
 U hebt toegang tot de console logboeken die zijn gegenereerd in de app en de container waarin deze wordt uitgevoerd. Logboeken bevatten een uitvoer die wordt gegenereerd met behulp van `print`-instructies.
 
-Schakel eerst container logboek registratie in door de volgende opdracht uit te voeren in een Terminal, waarbij u `<app-name>` vervangt door de naam van uw app en `<resource-group-name>` met de naam van de resource groep die wordt weer gegeven in de uitvoer van de `az webapp up` opdracht die u hebt gebruikt (zoals ' appsvc_rg_Linux_centralus ' ):
+Schakel eerst container logboek registratie in door de volgende opdracht uit te voeren in een Terminal, waarbij u `<app-name>` vervangt door de naam van uw app en `<resource-group-name>` met de naam van de resource groep die wordt weer gegeven in de uitvoer van de `az webapp up` opdracht die u hebt gebruikt (zoals ' appsvc_rg_Linux_centralus '):
 
 ```terminal
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem

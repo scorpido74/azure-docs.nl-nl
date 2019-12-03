@@ -1,24 +1,16 @@
 ---
-title: Functies en capaciteiten omhoog schalen-Azure App Service | Microsoft Docs
-description: Meer informatie over het opschalen van een app in Azure App Service om capaciteit en functies toe te voegen.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: Functies en capaciteit omhoog schalen
+description: Meer informatie over het opschalen van een app in Azure App Service. Haal meer CPU, geheugen, schijf ruimte en extra functies op.
 ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/19/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 91a6681c2ef4a6d0ac01889e6e92e752975e90a5
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 37120377f87bee53f73fe4d3dd7ced59551a491f
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74089461"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672316"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Een app omhoog schalen in Azure App Service
 
@@ -83,7 +75,7 @@ Zie [app service limieten](../azure-subscription-service-limits.md#app-service-l
 
 <a name="Next Steps"></a>
 
-## <a name="more-resources"></a>Meer bronnen
+## <a name="more-resources"></a>Meer informatiebronnen
 
 [Het aantal exemplaren handmatig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md)  
 [PremiumV2-laag configureren voor App Service](app-service-configure-premium-tier.md)

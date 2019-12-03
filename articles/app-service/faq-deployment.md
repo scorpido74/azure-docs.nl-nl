@@ -1,26 +1,20 @@
 ---
 title: Veelgestelde vragen over implementatie-Azure App Service | Microsoft Docs
 description: Krijg antwoorden op veelgestelde vragen over implementatie voor de functie Web Apps van Azure App Service.
-services: app-service\web
-documentationcenter: ''
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 0a01f25894d1226466473dec7333859c7415f1fd
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 25f43051f11d42c4f8565039d3168f2ae162eb37
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121206"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671689"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over implementaties voor Web Apps in azure
 
@@ -39,7 +33,7 @@ Zie [uw app implementeren voor app service](deploy-local-git.md)voor meer inform
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Er wordt een fout bericht weer gegeven wanneer ik probeer te implementeren vanuit Visual Studio. Hoe kan ik deze fout op te lossen?
 
-Als het volgende bericht wordt weer gegeven, gebruikt u mogelijk een oudere versie van de SDK: ' Fout tijdens het implementeren van de resource ' YourResourceName ' in de resource groep ' YourResourceGroup ': MissingRegistrationForLocation: Het abonnement is niet geregistreerd voor het resource type ' componenten ' in de locatie ' Central US '. Meld u opnieuw aan voor deze provider om toegang te krijgen tot deze locatie. " 
+Als u het volgende bericht ziet, gebruikt u mogelijk een oudere versie van de SDK: ' fout tijdens de implementatie van de resource ' YourResourceName ' in de resource groep ' YourResourceGroup ': MissingRegistrationForLocation: het abonnement is niet geregistreerd voor de resource type ' componenten ' in de locatie ' Central US '. Meld u opnieuw aan voor deze provider om toegang te krijgen tot deze locatie. " 
 
 Als u deze fout wilt oplossen, moet u een upgrade uitvoeren naar de [nieuwste SDK](https://azure.microsoft.com/downloads/). Als u dit bericht ziet en u de nieuwste SDK hebt, dient u een ondersteunings aanvraag in.
 
@@ -74,8 +68,8 @@ FTP-problemen oplossen:
 
 1. Controleer of u de juiste hostnaam en referenties hebt ingevoerd. Zie [implementatie referenties](https://github.com/projectkudu/kudu/wiki/Deployment-credentials)voor meer informatie over de verschillende typen referenties en hoe u deze kunt gebruiken.
 2. Controleer of de FTP-poorten niet zijn geblokkeerd door een firewall. De poorten moeten de volgende instellingen hebben:
-    * Verbindings poort voor FTP-besturings element: 21
-    * Poort voor FTP-gegevens verbinding: 989, 10001-10300
+    * Verbindingspoort voor FTP-besturingselement: 21
+    * FTP-gegevens verbindings poort: 989, 10001-10300
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>Hoe kan ik mijn code naar App Service publiceren?
 

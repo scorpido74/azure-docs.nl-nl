@@ -1,29 +1,22 @@
 ---
-title: Inkomend verkeer naar App Service omgeving beheren-Azure
-description: Meer informatie over het configureren van netwerk beveiligings regels voor het beheren van inkomend verkeer naar een App Service Environment.
-services: app-service
-documentationcenter: ''
+title: Beheer van inkomend verkeer v1
+description: Meer informatie over het beheren van inkomend verkeer naar een App Service Environment. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
 author: ccompy
-manager: erikre
-editor: ''
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: c887ae5568bfd0f72f8d90daecd95547ed7b8b7d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070408"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687395"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Inkomend verkeer naar een App Service Environment beheren
 ## <a name="overview"></a>Overzicht
-Een App Service Environment kan worden gemaakt in een Azure Resource Manager virtueel netwerk **of** een [virtueel netwerk][virtualnetwork]in het klassieke implementatie model.  Er kan een nieuw virtueel netwerk en een nieuw subnet worden gedefinieerd op het moment dat een App Service Environment wordt gemaakt.  U kunt ook een App Service Environment maken in een bestaand virtueel netwerk en al het bestaande subnet.  Als er een wijziging is aangebracht in juni 2016, kan as ook worden geïmplementeerd in virtuele netwerken die gebruikmaken van open bare adresbereiken of RFC1918-adres ruimten (dat wil zeggen particuliere adressen).  Zie [een app service Environment maken][HowToCreateAnAppServiceEnvironment]voor meer informatie over het maken van een app service environment.
+Een App Service Environment kan worden gemaakt in een Azure Resource Manager virtueel netwerk **of** een [virtueel netwerk][virtualnetwork] **in het klassieke** implementatie model.  Er kan een nieuw virtueel netwerk en een nieuw subnet worden gedefinieerd op het moment dat een App Service Environment wordt gemaakt.  U kunt ook een App Service Environment maken in een bestaand virtueel netwerk en al het bestaande subnet.  Als er een wijziging is aangebracht in juni 2016, kan as ook worden geïmplementeerd in virtuele netwerken die gebruikmaken van open bare adresbereiken of RFC1918-adres ruimten (dat wil zeggen particuliere adressen).  Zie [een app service Environment maken][HowToCreateAnAppServiceEnvironment]voor meer informatie over het maken van een app service environment.
 
 In een subnet moet altijd een App Service Environment worden gemaakt, omdat een subnet een netwerk grens biedt die kan worden gebruikt voor het vergren delen van inkomend verkeer achter upstream-apparaten en-services, zodat HTTP-en HTTPS-verkeer alleen wordt geaccepteerd vanuit een specifieke upstream IP-adressen.
 
@@ -38,16 +31,16 @@ Voordat u binnenkomend netwerk verkeer met een netwerk beveiligings groep vergre
 
 Hier volgt een lijst met poorten die worden gebruikt door een App Service Environment. Alle poorten zijn **TCP**, tenzij anders duidelijk vermeld:
 
-* 454:  De **vereiste poort** die wordt gebruikt door de Azure-infra structuur voor het beheren en onderhouden van app service omgevingen via SSL.  Verkeer naar deze poort niet blok keren.  Deze poort is altijd gebonden aan het open bare VIP van een ASE.
-* 455:  De **vereiste poort** die wordt gebruikt door de Azure-infra structuur voor het beheren en onderhouden van app service omgevingen via SSL.  Verkeer naar deze poort niet blok keren.  Deze poort is altijd gebonden aan het open bare VIP van een ASE.
-* 80:  Standaard poort voor binnenkomend HTTP-verkeer naar apps die worden uitgevoerd in App Service plannen in een App Service Environment.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
-* 443: Standaard poort voor binnenkomend SSL-verkeer naar apps die worden uitgevoerd in App Service plannen in een App Service Environment.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
-* 20  Besturings kanaal voor FTP.  Deze poort kan veilig worden geblokkeerd als FTP niet wordt gebruikt.  Op een ILB-ASE kan deze poort worden gebonden aan het ILB-adres voor een ASE.
-* 990:  Besturings kanaal voor FTPS.  Deze poort kan veilig worden geblokkeerd als FTPS niet wordt gebruikt.  Op een ILB-ASE kan deze poort worden gebonden aan het ILB-adres voor een ASE.
-* 10001-10020: Gegevens kanalen voor FTP.  Net als bij het besturings kanaal kunnen deze poorten veilig worden geblokkeerd als FTP niet wordt gebruikt.  Op een ILB-ASE kan deze poort worden gebonden aan het ILB-adres van de ASE.
-* 4016: Wordt gebruikt voor fout opsporing op afstand met Visual Studio 2012.  Deze poort kan veilig worden geblokkeerd als de functie niet wordt gebruikt.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
-* 4018: Wordt gebruikt voor fout opsporing op afstand met Visual Studio 2013.  Deze poort kan veilig worden geblokkeerd als de functie niet wordt gebruikt.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
-* 4020: Wordt gebruikt voor fout opsporing op afstand met Visual Studio 2015.  Deze poort kan veilig worden geblokkeerd als de functie niet wordt gebruikt.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
+* 454: de **vereiste poort** die wordt gebruikt door de Azure-infra structuur voor het beheren en onderhouden van app service omgevingen via SSL.  Verkeer naar deze poort niet blok keren.  Deze poort is altijd gebonden aan het open bare VIP van een ASE.
+* 455: de **vereiste poort** die wordt gebruikt door de Azure-infra structuur voor het beheren en onderhouden van app service omgevingen via SSL.  Verkeer naar deze poort niet blok keren.  Deze poort is altijd gebonden aan het open bare VIP van een ASE.
+* 80: standaard poort voor binnenkomend HTTP-verkeer naar apps die worden uitgevoerd in App Service plannen in een App Service Environment.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
+* 443: standaard poort voor binnenkomend SSL-verkeer naar apps die worden uitgevoerd in App Service plannen in een App Service Environment.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
+* 21: besturings kanaal voor FTP.  Deze poort kan veilig worden geblokkeerd als FTP niet wordt gebruikt.  Op een ILB-ASE kan deze poort worden gebonden aan het ILB-adres voor een ASE.
+* 990: besturings kanaal voor FTPS.  Deze poort kan veilig worden geblokkeerd als FTPS niet wordt gebruikt.  Op een ILB-ASE kan deze poort worden gebonden aan het ILB-adres voor een ASE.
+* 10001-10020: gegevens kanalen voor FTP.  Net als bij het besturings kanaal kunnen deze poorten veilig worden geblokkeerd als FTP niet wordt gebruikt.  Op een ILB-ASE kan deze poort worden gebonden aan het ILB-adres van de ASE.
+* 4016: wordt gebruikt voor fout opsporing op afstand met Visual Studio 2012.  Deze poort kan veilig worden geblokkeerd als de functie niet wordt gebruikt.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
+* 4018: wordt gebruikt voor fout opsporing op afstand met Visual Studio 2013.  Deze poort kan veilig worden geblokkeerd als de functie niet wordt gebruikt.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
+* 4020: wordt gebruikt voor fout opsporing op afstand met Visual Studio 2015.  Deze poort kan veilig worden geblokkeerd als de functie niet wordt gebruikt.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>Uitgaande connectiviteits-en DNS-vereisten
 Voor een goede werking van App Service Environment is ook uitgaande toegang tot verschillende eind punten vereist. Een volledige lijst van de externe eind punten die worden gebruikt door een ASE vindt u in de sectie ' vereiste netwerk verbinding ' van het artikel [netwerk configuratie voor ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) .
@@ -95,7 +88,7 @@ Als externe fout opsporing met Visual Studio wordt gebruikt, demonstreert de vol
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT RemoteDebuggingVS2015" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '4020' -Protocol TCP
 
 ## <a name="assigning-a-network-security-group-to-a-subnet"></a>Een netwerk beveiligings groep toewijzen aan een subnet
-Een netwerk beveiligings groep heeft een standaard beveiligings regel waarmee de toegang tot alle externe verkeer wordt geweigerd.  Het resultaat van het combi neren van de netwerk beveiligings regels die hierboven worden beschreven en de standaard beveiligings regel die inkomend verkeer blokkeert, is dat alleen verkeer van bronbereiken die zijn gekoppeld aan een actie *toestaan* , verkeer kan verzenden naar apps die worden uitgevoerd in een App Service Environment.
+Een netwerk beveiligings groep heeft een standaard beveiligings regel waarmee de toegang tot alle externe verkeer wordt geweigerd.  Het resultaat van het combi neren van de netwerk beveiligings regels die hierboven worden beschreven en de standaard beveiligings regel die binnenkomend verkeer blokkeert, is dat alleen verkeer van bronbereiken die zijn gekoppeld aan een actie *toestaan* , verkeer kan verzenden naar apps die worden uitgevoerd in een app service environment.
 
 Nadat een netwerk beveiligings groep is gevuld met beveiligings regels, moet deze worden toegewezen aan het subnet met de App Service Environment.  De toewijzings opdracht verwijst naar zowel de naam van het virtuele netwerk waar de App Service Environment zich bevindt, evenals de naam van het subnet waarin de App Service Environment is gemaakt.  
 
@@ -110,7 +103,7 @@ Voor volledigheid ziet u in het volgende voor beeld hoe u de netwerk beveiliging
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecurityGroupFromSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
 ## <a name="special-considerations-for-explicit-ip-ssl"></a>Speciale overwegingen voor expliciete IP-SSL
-Als een app is geconfigureerd met een expliciet IP-SSL-adres ( *alleen* van toepassing op as die een open bare VIP hebben), in plaats van het standaard IP-adres van de app service Environment, worden zowel http-als HTTPS-verkeer in het subnet over een andere set poorten stromen behalve de poorten 80 en 443.
+Als een app is geconfigureerd met een expliciet IP-SSL-adres ( *alleen* van toepassing op as met een openbaar VIP), in plaats van het standaard IP-adres van de app service Environment, worden zowel http-als HTTPS-verkeer naar het subnet stromen via een andere set andere poorten dan de poorten 80 en 443.
 
 Het afzonderlijke paar poorten dat door elk IP-SSL-adres wordt gebruikt, kunt u vinden in de gebruikers interface van de portal op de Blade Details van de App Service Environment UX.  Selecteer alle instellingen--> IP-adressen.  De Blade IP-adressen bevat een tabel met alle expliciet geconfigureerde IP-SSL-adressen voor de App Service Environment, samen met het speciale poort paar dat wordt gebruikt voor het routeren van HTTP-en HTTPS-verkeer dat is gekoppeld aan elk IP-SSL-adres.  Het is dit poort paar dat moet worden gebruikt voor de DestinationPortRange-para meters bij het configureren van regels in een netwerk beveiligings groep.
 

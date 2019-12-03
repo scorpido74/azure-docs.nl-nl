@@ -1,26 +1,17 @@
 ---
-title: Een Ruby-web-app maken in Linux - Azure App Service | Microsoft Docs
-description: Meer informatie over het maken van een Ruby on Rails-app met App Service op Linux.
+title: 'Snelstartgids: een Linux ruby-app maken'
+description: Ga aan de slag met Linux-apps op Azure App Service door uw eerste ruby-app te implementeren in een Linux-container in App Service.
 keywords: azure app service, linux, oss, ruby, rails
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 07/11/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cfcea4c4450ea806b36d1d46c17c6676f7d92893
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 17c81ab71352f57731d9b36138c88c34421e374c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071067"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689018"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Een Ruby on Rails-app maken met App Service op Linux
 
@@ -74,7 +65,7 @@ Navigeer naar `http://localhost:3000` met uw webbrowser om de app lokaal te test
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Een web-app maken
+## <a name="create-a-web-app"></a>Een webtoepassing maken
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
@@ -133,7 +124,7 @@ http://<app-name>.azurewebsites.net
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Ruby on Rails met post gres](tutorial-ruby-postgres-app.md)
+> [Zelf studie: Ruby on Rails met post gres](tutorial-ruby-postgres-app.md)
 
 > [!div class="nextstepaction"]
 > [Ruby-app configureren](configure-language-ruby.md)

@@ -1,25 +1,18 @@
 ---
-title: Inleiding tot App Service Environment v1-Azure
-description: Meer informatie over de App Service Environment v1-functie die beveiligde, aan VNet toegevoegde, toegewezen schaal eenheden biedt om al uw apps uit te voeren.
-services: app-service
-documentationcenter: ''
+title: Inleiding tot ASE v1
+description: Meer informatie over de App Service Environment v1-functies. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 32450d0c5fbb5599b286921b9653ae68faf40ecf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070159"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687365"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Inleiding tot App Service Environment v1
 
@@ -43,7 +36,7 @@ Zie voor een overzicht van de manier waarop App Service-omgevingen grootschalige
 
 Zie het artikel over het instellen van een [geografisch gedistribueerd app-Opper vlak][GeodistributedAppFootprint]voor een diep gaande op horizon taal schalen met meerdere app service omgevingen.
 
-Zie het artikel over het implementeren van een gelaagde [beveiligings architectuur](app-service-app-service-environment-layered-security.md) met app service omgevingen voor meer informatie over hoe de beveiligings architectuur die wordt weer gegeven in de AzureCon diepe duik is geconfigureerd.
+Zie het artikel over het implementeren van een [gelaagde beveiligings architectuur](app-service-app-service-environment-layered-security.md) met app service omgevingen voor meer informatie over hoe de beveiligings architectuur die wordt weer gegeven in de AzureCon diepe duik is geconfigureerd.
 
 Voor apps die op App Service omgevingen worden uitgevoerd, kan de toegang worden gedecodeerd via upstream-apparaten, zoals Web Application firewalls (WAF).  Het artikel over het [configureren van een WAF voor app service omgevingen](app-service-app-service-environment-web-application-firewall.md) behandelt dit scenario.
 
@@ -67,7 +60,7 @@ Raadpleeg de pagina met [app service prijzen][AppServicePricing] voor meer infor
 
 ## <a name="virtual-network-support"></a>Ondersteuning voor Virtual Network
 
-Een App Service Environment kan worden gemaakt in een Azure Resource Manager virtueel netwerk **of** een klassiek implementatie model virtueel netwerk ([meer informatie over virtuele netwerken][MoreInfoOnVirtualNetworks]).  Omdat een App Service Environment altijd bestaat in een virtueel netwerk en nauw keuriger is binnen een subnet van een virtueel netwerk, kunt u gebruikmaken van de beveiligings functies van virtuele netwerken om zowel binnenkomende als uitgaande netwerk communicatie te beheren.  
+Een App Service Environment kan worden **gemaakt in een** Azure Resource Manager virtueel netwerk **of** een klassiek implementatie model virtueel netwerk ([meer informatie over virtuele netwerken][MoreInfoOnVirtualNetworks]).  Omdat een App Service Environment altijd bestaat in een virtueel netwerk en nauw keuriger is binnen een subnet van een virtueel netwerk, kunt u gebruikmaken van de beveiligings functies van virtuele netwerken om zowel binnenkomende als uitgaande netwerk communicatie te beheren.  
 
 Een App Service Environment kan Internet zijn met een openbaar IP-adres of intern gericht met alleen een Azure intern Load Balancer (ILB)-adres.
 
@@ -75,7 +68,7 @@ U kunt [netwerk beveiligings groepen][NetworkSecurityGroups] gebruiken om de ink
 
 Apps hebben ook vaak toegang nodig tot bedrijfsresources zoals interne databases en webservices.  Een veelvoorkomende aanpak is om deze eind punten alleen beschikbaar te maken voor intern netwerk verkeer dat binnen een virtueel Azure-netwerk loopt.  Zodra een App Service Environment is gekoppeld aan hetzelfde virtuele netwerk als de interne services, hebben apps die in de omgeving worden uitgevoerd, toegang tot de toepassingen, waaronder eind punten die bereikbaar zijn via [site-naar-site-][SiteToSite] en [Azure ExpressRoute][ExpressRoute] -verbindingen.
 
-Raadpleeg de volgende artikelen over de [netwerk architectuur][NetworkArchitectureOverview], beheer van binnenkomend [verkeer][ControllingInboundTraffic]en [veilig verbinding maken met back-endservers][SecurelyConnectingToBackends]voor meer informatie over de werking van app service omgevingen met virtuele netwerken en on-premises netwerken. 
+Raadpleeg de volgende artikelen over de [netwerk architectuur][NetworkArchitectureOverview], [beheer van binnenkomend verkeer][ControllingInboundTraffic]en [veilig verbinding maken met back-endservers][SecurelyConnectingToBackends]voor meer informatie over de werking van app service omgevingen met virtuele netwerken en on-premises netwerken. 
 
 ## <a name="getting-started"></a>Aan de slag
 

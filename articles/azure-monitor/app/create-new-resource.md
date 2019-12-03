@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 08/16/2019
-ms.openlocfilehash: be68c70a105737f232741f02994da87c0c628bd7
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.date: 12/02/2019
+ms.openlocfilehash: 11b581649e6d7a048899394d69e574e8f9a4d22c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677506"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689216"
 ---
 # <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
 
@@ -30,9 +30,12 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com)en maak een Applicatio
 
    | Instellingen        |  Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
-   | **Naam**      | Globaal unieke waarde | Naam waarmee de app wordt geïdentificeerd die u bewaken. |
+   | **Naam**      | Unieke waarde | Naam waarmee de app wordt geïdentificeerd die u bewaken. |
    | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe of bestaande resource groep om app Insights-gegevens te hosten. |
    | **Locatie** | VS - oost | Kies een locatie bij u in de buurt of in de buurt van waar de app wordt gehost. |
+
+> [!NOTE]
+> Hoewel u dezelfde resource naam in verschillende resource groepen kunt gebruiken, kan het nuttig zijn om een wereld wijd unieke naam te gebruiken. Dit kan handig zijn als u van plan bent om [query's voor meerdere resources uit te voeren](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) terwijl het de vereiste syntaxis vereenvoudigt.
 
 Voer de juiste waarden in de vereiste velden in en selecteer vervolgens **controleren + maken**.
 

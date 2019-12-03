@@ -1,32 +1,24 @@
 ---
-title: Overzicht van de netwerk architectuur van App Service omgevingen-Azure
-description: Overzicht van de architectuur van de netwerk topologie ofApp-service omgevingen.
-services: app-service
-documentationcenter: ''
+title: Netwerk architectuur v1
+description: Overzicht van de architectuur van de netwerk topologie van App Service omgevingen. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 98eb4d7440126bedb3d2e1de5711141eaac8b07a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070070"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687353"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Overzicht van de netwerkarchitectuur van App Service-omgevingen
-## <a name="introduction"></a>Inleiding
 App Service omgevingen worden altijd gemaakt binnen een subnet van een [virtueel netwerk][virtualnetwork] : apps die worden uitgevoerd in een app service Environment kunnen communiceren met privé-eind punten die zich in dezelfde virtuele netwerk topologie bevinden.  Omdat klanten delen van hun virtuele netwerk infrastructuur kunnen vergren delen, is het belang rijk om inzicht te krijgen in de typen netwerk communicatie stromen die zich voordoen met een App Service Environment.
 
 ## <a name="general-network-flow"></a>Algemene netwerk stroom
-Wanneer een App Service Environment (ASE) een openbaar virtueel IP-adres (VIP) voor apps gebruikt, arriveert al het binnenkomende verkeer op die open bare VIP.  Dit omvat HTTP-en HTTPS-verkeer voor apps, evenals andere verkeer voor FTP, de functionaliteit voor fout opsporing op afstand en Azure-beheer bewerkingen.  Zie het artikel over het beheren van inkomend [verkeer][controllinginboundtraffic] naar een app service Environment voor een volledige lijst met de specifieke poorten (zowel vereist als optioneel) die beschikbaar zijn op de open bare VIP. 
+Wanneer een App Service Environment (ASE) een openbaar virtueel IP-adres (VIP) voor apps gebruikt, arriveert al het binnenkomende verkeer op die open bare VIP.  Dit omvat HTTP-en HTTPS-verkeer voor apps, evenals andere verkeer voor FTP, de functionaliteit voor fout opsporing op afstand en Azure-beheer bewerkingen.  Zie het artikel over het [beheren van inkomend verkeer][controllinginboundtraffic] naar een app service Environment voor een volledige lijst met de specifieke poorten (zowel vereist als optioneel) die beschikbaar zijn op de open bare VIP. 
 
 App Service omgevingen bieden ook ondersteuning voor het uitvoeren van apps die alleen zijn gebonden aan een intern adres van een virtueel netwerk, ook wel een ILB-adres (interne load balancer) genoemd.  Op een ILB ingeschakeld ASE, HTTP-en HTTPS-verkeer voor apps en externe fout opsporings aanroepen, arriveren op het ILB-adres.  Voor de meeste veelvoorkomende ILB-ASE-configuraties zal het FTP/FTPS-verkeer ook op het ILB-adres arriveren.  Azure-beheer bewerkingen stromen echter nog wel naar poorten 454/455 op het open bare VIP van een ILB ingeschakelde ASE.
 
@@ -72,7 +64,7 @@ In het bovenstaande diagram:
 ## <a name="calls-between-app-service-environments"></a>Aanroepen tussen App Service omgevingen
 Een complexere scenario kan zich voordoen als u meerdere App Service omgevingen in hetzelfde virtuele netwerk implementeert en uitgaande aanroepen van een App Service Environment naar een ander App Service Environment maakt.  Deze typen cross-App Service Environment-aanroepen worden ook behandeld als Internet-aanroepen.
 
-In het volgende diagram ziet u een voor beeld van een gelaagde architectuur met apps op één App Service Environment (bijvoorbeeld "Front-deur" Web-apps) die apps aanroepen op een tweede App Service Environment (bijvoorbeeld interne back-end-API-apps die niet bedoeld zijn om toegankelijk te zijn via internet). 
+Het volgende diagram toont een voor beeld van een gelaagde architectuur met apps op één App Service Environment (bijvoorbeeld ' front-deur ' web-apps) die apps aanroepen op een tweede App Service Environment (bijvoorbeeld interne back-end-API-apps die niet zijn bedoeld om te worden benaderd via internet). 
 
 ![Aanroepen tussen App Service omgevingen][CallsBetweenAppServiceEnvironments] 
 

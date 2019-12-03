@@ -3,12 +3,12 @@ title: Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer van Azure-resources, zodat deze toegankelijk is en kan worden beheerd via uw eigen Tenant.
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: fde0e82ff2dcf048643524b5a2d076d66a4f5a50
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 88e75b92ca09f3c6671fe4399c4672240f863f66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463952"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689265"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 
@@ -36,7 +36,7 @@ Voor een onboarding van de Tenant van een klant moet deze een actief Azure-abonn
 
 Als u deze gegevens niet al hebt, kunt u deze op een van de volgende manieren ophalen.
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 
 Uw Tenant-ID kan worden gezien door de muis aanwijzer over de naam van uw account in de rechter bovenhoek van de Azure Portal te bewegen of door een **andere map**te selecteren. Als u uw Tenant-ID wilt selecteren en kopiëren, zoekt u in de portal naar ' Azure Active Directory ' en selecteert u vervolgens **Eigenschappen** en kopieert u de waarde die wordt weer gegeven in het veld **Directory-id** . Als u de ID van een abonnement wilt vinden, zoekt u naar ' Abonnementen ' en selecteert u vervolgens de juiste abonnements-ID.
 
@@ -48,7 +48,7 @@ Uw Tenant-ID kan worden gezien door de muis aanwijzer over de naam van uw accoun
 Select-AzSubscription <subscriptionId>
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -86,7 +86,7 @@ Als u autorisaties wilt definiëren, moet u de ID-waarden weten voor elke gebrui
 (Get-AzRoleDefinition -Name '<roleName>').id
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -106,7 +106,7 @@ az role definition list --name "<roleName>" | grep name
 > [!TIP]
 > U kunt het beste de functie voor het verwijderen van de [registratie toewijzing beheerde services](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) toewijzen bij het voorbereiden van een klant, zodat gebruikers in uw Tenant [de toegang tot de overdracht](#remove-access-to-a-delegation) later indien nodig kunnen verwijderen. Als deze rol niet is toegewezen, kunnen gedelegeerde resources alleen worden verwijderd door een gebruiker in de Tenant van de klant.
 
-## <a name="create-an-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon maken
+## <a name="create-an-azure-resource-manager-template"></a>Een Azure Resource Manager sjabloon maken
 
 Voor het onboarden van uw klant moet u een [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) -sjabloon maken voor uw aanbieding met de volgende gegevens. De waarden **mspOfferName** en **mspOfferDescription** zijn zichtbaar voor de klant wanneer u details van de aanbieding bekijkt op de [pagina service providers](view-manage-service-providers.md) van de Azure Portal.
 
@@ -115,7 +115,7 @@ Voor het onboarden van uw klant moet u een [Azure Resource Manager](https://docs
 |**mspOfferName**     |Een naam die deze definitie beschrijft. Deze waarde wordt weer gegeven aan de klant als de titel van de aanbieding.         |
 |**mspOfferDescription**     |Een korte beschrijving van uw aanbieding (bijvoorbeeld ' contoso VM-beheer aanbieding ')      |
 |**managedByTenantId**     |Uw Tenant-ID         |
-|**autorisaties**     |De **principalId** -waarden voor de gebruikers/groepen/spn's van uw Tenant, elk met een **principalIdDisplayName** om uw klant te helpen het doel van de autorisatie te begrijpen en te koppelen aan een ingebouwde **roledefinitionid hebben** -waarde om de toegangs niveau         |
+|**autorisaties**     |De **principalId** -waarden voor de gebruikers/groepen/spn's van uw Tenant, elk met een **principalIdDisplayName** om uw klant te helpen het doel van de autorisatie te begrijpen en toegewezen aan een ingebouwde **roledefinitionid hebben** -waarde om het toegangs niveau op te geven         |
 
 Als u het abonnement van een klant wilt opzeggen, gebruikt u de juiste Azure Resource Manager-sjabloon die we hebben opgegeven in onze voor [beelden opslag plaats](https://github.com/Azure/Azure-Lighthouse-samples/), samen met een bijbehorend parameter bestand dat u wijzigt zodat dit overeenkomt met uw configuratie en uw autorisaties definieert. Er worden afzonderlijke sjablonen gegeven, afhankelijk van of u een volledig abonnement, een resource groep of meerdere resource groepen in een abonnement hebt voor bereid. We bieden ook een sjabloon die kan worden gebruikt voor klanten die een beheerde service aanbieding hebben gekocht die u naar Azure Marketplace hebt gepubliceerd, als u uw abonnement (en) op deze manier wilt vrijgeven.
 
@@ -214,7 +214,7 @@ New-AzDeployment -Name <deploymentName> `
                  -Verbose
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -238,7 +238,7 @@ az deployment create –-name <deploymentName \
 
 Wanneer het abonnement van een klant is opgebruikt voor het beheer van de gedelegeerde resources van Azure, kunnen gebruikers in de Tenant van de service provider het abonnement en de bijbehorende resources zien (als ze hiervoor toegang hebben gekregen via bovenstaand proces) afzonderlijk of als lid van een Azure AD-groep met de juiste machtigingen). Als u dit wilt bevestigen, controleert u of het abonnement op een van de volgende manieren wordt weer gegeven.  
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 
 In de Tenant van de service provider:
 
@@ -247,7 +247,7 @@ In de Tenant van de service provider:
 3. Bevestig dat u de abonnement/abonnementen kunt zien met de naam van de aanbieding die u in de Resource Manager-sjabloon hebt opgenomen.
 
 > [!IMPORTANT]
-> Als u het gedelegeerde abonnement in [mijn klanten](view-manage-customers.md)wilt zien, moeten gebruikers in de Tenant van de service provider beschikken over de rol van [lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (of een andere ingebouwde rol die lezers toegang bevat) wanneer het abonnement voor Azure is voor bereid gedelegeerd resource beheer.
+> Als u het gedelegeerde abonnement in [mijn klanten](view-manage-customers.md)wilt zien, moeten gebruikers in de Tenant van de service provider beschikken over de rol van [lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (of een andere ingebouwde rol die lezers toegang bevat) wanneer het abonnement voor het beheer van de gedelegeerde resources van Azure is uitgevoerd.
 
 In de Tenant van de klant:
 
@@ -266,7 +266,7 @@ In de Tenant van de klant:
 Get-AzContext
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -316,7 +316,7 @@ Get-AzManagedServicesAssignment -Scope "/subscriptions/{delegatedSubscriptionId}
 Remove-AzManagedServicesAssignment -ResourceId "/subscriptions/{delegatedSubscriptionId}/providers/Microsoft.ManagedServices/registrationAssignments/{assignmentGuid}"
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -335,7 +335,7 @@ az managedservices assignment list
 
 # Delete the registration assignment
 
-az managedservices assignment delete –assignment <id or full resourceId>
+az managedservices assignment delete --assignment <id or full resourceId>
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

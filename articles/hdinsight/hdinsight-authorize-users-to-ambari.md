@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 8fada1d944a3d6bb6c0f85b3fd456581b2b0bdc6
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: cbdf4a4c9e7f3816a0a5b280c81bfa60b65d9769
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720018"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687897"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Gebruikers machtigen voor Apache Ambari-weergaven
 
@@ -28,7 +28,7 @@ Als u dit nog niet hebt gedaan, volgt u [deze instructies](./domain-joined/apach
 
 ## <a name="access-the-ambari-management-page"></a>Toegang tot de Ambari-beheer pagina
 
-Als u naar de **Ambari-beheer pagina** van de [Apache AMBARI-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md)wilt **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** gaan, bladert u naar. Voer de gebruikers naam en het wacht woord in van de Cluster beheerder die u hebt gedefinieerd bij het maken van het cluster. Selecteer vervolgens in het Ambari-dash board de optie **Ambari beheren** onder het menu **beheerder** :
+Als u naar de **Ambari-beheer pagina** van de [Apache AMBARI-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md)wilt gaan, bladert u naar `https://CLUSTERNAME.azurehdinsight.net`. Voer de gebruikers naam en het wacht woord in van de Cluster beheerder die u hebt gedefinieerd bij het maken van het cluster. Selecteer vervolgens in het Ambari-dash board de optie **Ambari beheren** onder het menu **beheerder** :
 
 ![Apache Ambari-dash board beheren](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
@@ -46,7 +46,7 @@ Als u naar de **Ambari-beheer pagina** van de [Apache AMBARI-webgebruikersinterf
 
 ### <a name="add-users-through-powershell"></a>Gebruikers toevoegen via Power shell
 
-Bewerk de onderstaande variabelen door `CLUSTERNAME`, `NEWUSER` en `PASSWORD` te vervangen door de juiste waarden.
+Bewerk de onderstaande variabelen door `CLUSTERNAME`, `NEWUSER`en `PASSWORD` te vervangen door de juiste waarden.
 
 ```powershell
 # Set-ExecutionPolicy Unrestricted
@@ -135,7 +135,7 @@ Write-Output $zookeeperHosts
 
 ### <a name="add-users-through-curl"></a>Gebruikers toevoegen via krul
 
-Bewerk de onderstaande variabelen door `CLUSTERNAME`, `ADMINPASSWORD`, `NEWUSER` en `USERPASSWORD` te vervangen door de juiste waarden. Het script is ontworpen om te worden uitgevoerd met bash. Er zijn kleine wijzigingen nodig voor een Windows-opdracht prompt.
+Bewerk de onderstaande variabelen door `CLUSTERNAME`, `ADMINPASSWORD`, `NEWUSER`en `USERPASSWORD` te vervangen door de juiste waarden. Het script is ontworpen om te worden uitgevoerd met bash. Er zijn kleine wijzigingen nodig voor een Windows-opdracht prompt.
 
 ```bash
 export clusterName="CLUSTERNAME"
@@ -179,9 +179,9 @@ Ambari wordt geleverd met View instances voor [Apache Hive](https://hive.apache.
 
 3. Schuif naar de onderkant van de pagina weer geven. In het gedeelte *machtigingen* hebt u twee opties voor het verlenen van domein gebruikers hun machtigingen voor de weer gave:
 
-**Machtigingen verlenen aan deze gebruikers** ![Machtigingen verlenen aan deze gebruikers](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
+**Machtigingen verlenen aan deze gebruikers** ![toestemming te verlenen aan deze gebruikers](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
 
-**Machtigingen verlenen aan deze groepen** ![Machtigingen verlenen aan deze groepen](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
+**Machtigingen verlenen aan deze groepen** ![machtigingen verlenen aan deze groepen](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
 
 1. Als u een gebruiker wilt toevoegen, selecteert u de knop **gebruiker toevoegen** .
 
@@ -232,7 +232,7 @@ Als u de lijst met machtigingen wilt zien die aan elke rol zijn gegeven, klikt u
 
 ![Menu opdracht koppelings machtigingen voor Apache Ambari-rollen](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Menu opdracht koppelings machtigingen voor Apache Ambari-rollen")
 
-Op deze pagina zijn er twee verschillende weer gaven die u kunt gebruiken voor het beheren van rollen voor gebruikers en groepen: Blok en lijst.
+Op deze pagina zijn er twee verschillende weer gaven die u kunt gebruiken voor het beheren van rollen voor gebruikers en groepen: blok keren en lijst.
 
 ### <a name="block-view"></a>Blok weergave
 
@@ -240,15 +240,15 @@ In de blok weergave wordt elke rol in een eigen rij weer gegeven en worden de ro
 
 ![Blok weergave van Apache Ambari-rollen](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
 
-### <a name="list-view"></a>Lijstweergave
+### <a name="list-view"></a>Lijst weergave
 
-De lijst weergave biedt snelle bewerkings mogelijkheden in twee categorieën: Gebruikers en groepen.
+De lijst weergave biedt snelle bewerkings mogelijkheden in twee categorieën: gebruikers en groepen.
 
 * De categorie gebruikers van de lijst weergave bevat een lijst met alle gebruikers, zodat u een rol voor elke gebruiker in de vervolg keuzelijst kunt selecteren.
 
     ![Weer gave Apache Ambari-rollen lijst-gebruikers](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-*  In de categorie groepen van de lijst weergave worden alle groepen weer gegeven, evenals de rol die aan elke groep is toegewezen. In ons voor beeld wordt de lijst met groepen gesynchroniseerd vanuit de Azure AD-groepen die zijn opgegeven in de eigenschap **gebruikers groep** van het cluster. Zie [een HDInsight-cluster maken waarvoor ESP is ingeschakeld](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
+* In de categorie groepen van de lijst weergave worden alle groepen weer gegeven, evenals de rol die aan elke groep is toegewezen. In ons voor beeld wordt de lijst met groepen gesynchroniseerd vanuit de Azure AD-groepen die zijn opgegeven in de eigenschap **gebruikers groep** van het cluster. Zie [een HDInsight-cluster maken waarvoor ESP is ingeschakeld](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
 
     ![Apache Ambari roles list view-groups](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

@@ -1,28 +1,20 @@
 ---
-title: Gelaagde beveiligings architectuur met App Service omgevingen-Azure
-description: Een gelaagde beveiligings architectuur implementeren met App Service omgevingen.
-services: app-service
-documentationcenter: ''
+title: Gelaagde beveiliging v1
+description: Meer informatie over het implementeren van een gelaagde beveiligings architectuur in uw App Service omgeving. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 2d9eedcdc66dceabdd6506c5b64f0c15c874efee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8920e97d315dc7bfd0ba22386b8b637afb7c05e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070132"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688787"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Een gelaagde beveiligings architectuur implementeren met App Service omgevingen
-## <a name="overview"></a>Overzicht
 Omdat App Service omgevingen een geïsoleerde runtime-omgeving bieden die is geïmplementeerd in een virtueel netwerk, kunnen ontwikkel aars een gelaagde beveiligings architectuur maken die verschillende niveaus van netwerk toegang biedt voor elke fysieke toepassingslaag.
 
 Een gemeen schappelijke wens is de API-back-ends van algemene Internet toegang te verbergen en alleen Api's toe te staan door upstream-web-apps.  [Netwerk beveiligings groepen (nsg's)][NetworkSecurityGroups] kunnen worden gebruikt op subnetten met app service omgevingen om de open bare toegang tot API-toepassingen te beperken.
@@ -50,7 +42,7 @@ Voor de voorbeeld architectuur bevinden de omgevingen zich in Zuid-Centraal VS, 
 
     New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" -Label "Only allow web frontend and loopback traffic"
 
-Eerst wordt een regel voor expliciete toegang toegevoegd voor de Azure-beheer infrastructuur zoals vermeld in het artikel over binnenkomend [verkeer][InboundTraffic] voor app service omgevingen.
+Eerst wordt een regel voor expliciete toegang toegevoegd voor de Azure-beheer infrastructuur zoals vermeld in het artikel over [binnenkomend verkeer][InboundTraffic] voor app service omgevingen.
 
     #Open ports for access by Azure management infrastructure
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP

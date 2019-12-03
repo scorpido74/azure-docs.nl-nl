@@ -1,25 +1,18 @@
 ---
-title: Interne load balancer maken en gebruiken met App Service omgeving-Azure | Microsoft Docs
-description: Een ASE maken en gebruiken met een ILB
-services: app-service
-documentationcenter: ''
+title: Een ILB ASE v1 maken
+description: Een ASE maken en gebruiken met een ILB. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65d62df954dbbfbdd221adb33eccd82f73588fae
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d8ed6b1806e1cbb0ca7419c5892a4a84bc62e541
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069900"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688729"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Een interne Load Balancer gebruiken met een App Service Environment
 
@@ -100,18 +93,18 @@ Als u de stroom met uw eigen certificaten wilt proberen en de HTTP-en HTTPS-toeg
 4. Maak na het maken van een web-app in ASE. 
 5. Maak een virtuele machine als u deze niet in het VNET hebt (niet in hetzelfde subnet als de ASE of dingen).
 6. Stel DNS in voor uw subdomein. U kunt een Joker teken gebruiken met uw subdomein in uw DNS of als u een aantal eenvoudige tests wilt uitvoeren, bewerkt u het hosts-bestand op uw virtuele machine om de naam van de web-app in te stellen op VIP IP-adres. Als uw ASE de subdomeinnaam. ilbase.com had en u de web-app mytestapp hebt gemaakt, zodat deze op mytestapp.ilbase.com wordt opgelost, stelt u die in uw hosts-bestand in. (Het hosts-bestand bevindt zich op Windows op C:\Windows\System32\drivers\etc\)
-7. Gebruik een browser op deze VM en ga naar https://mytestapp.ilbase.com (of de naam van uw web-app met uw subdomein).
+7. Gebruik een browser op deze VM en ga naar https://mytestapp.ilbase.com (of de naam van uw web-app is met uw subdomein).
 8. Gebruik een browser op die virtuele machine en ga naar https://mytestapp.ilbase.com. U moet het gebrek aan beveiliging accepteren als u een zelfondertekend certificaat gebruikt. 
 
 Het IP-adres voor uw ILB wordt vermeld in uw eigenschappen als het virtuele IP-adres.
 
 ![][4]
 
-## <a name="using-an-ilb-ase"></a>Een App Service Environment met interne Load Balancer gebruiken
+## <a name="using-an-ilb-ase"></a>Een ILB-ASE gebruiken
 #### <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen
 Een ILB-ASE maakt netwerk isolatie mogelijk voor uw apps. De apps zijn niet toegankelijk of zelfs niet bekend via internet. Deze aanpak is uitstekend voor het hosten van intranet sites, zoals line-of-business-toepassingen. Wanneer u de toegang nog verder wilt beperken, kunt u nog steeds netwerk beveiligings groepen (Nsg's) gebruiken om de toegang op netwerk niveau te beheren. 
 
-Als u Nsg's wilt gebruiken om de toegang verder te beperken, moet u ervoor zorgen dat u niet de communicatie verbreekt die de ASE nodig heeft om te kunnen werken. Hoewel de HTTP/HTTPS-toegang alleen is via de ILB die door de ASE wordt gebruikt, is de ASE nog steeds afhankelijk van resources buiten het VNet. Zie inkomend [verkeer beheren voor een app service Environment][ControlInbound] en [netwerk configuratie Details voor app service omgevingen met ExpressRoute][ExpressRoute]om te zien welke netwerk toegang nog steeds vereist is. 
+Als u Nsg's wilt gebruiken om de toegang verder te beperken, moet u ervoor zorgen dat u niet de communicatie verbreekt die de ASE nodig heeft om te kunnen werken. Hoewel de HTTP/HTTPS-toegang alleen is via de ILB die door de ASE wordt gebruikt, is de ASE nog steeds afhankelijk van resources buiten het VNet. Zie [inkomend verkeer beheren voor een app service Environment][ControlInbound] en [netwerk configuratie Details voor app service omgevingen met ExpressRoute][ExpressRoute]om te zien welke netwerk toegang nog steeds vereist is. 
 
 Als u uw Nsg's wilt configureren, moet u het IP-adres weten dat door Azure wordt gebruikt voor het beheren van uw ASE. Dat IP-adres is ook het uitgaande IP-adres van uw ASE als Internet aanvragen worden uitgevoerd. Het uitgaande IP-adres voor uw ASE blijft statisch voor de levens duur van uw ASE. Als u uw ASE verwijdert en opnieuw maakt, krijgt u een nieuw IP-adres. Als u het IP-adres wilt vinden, gaat u naar **instellingen-> eigenschappen** en zoekt u het **uitgaande IP-adres**. 
 

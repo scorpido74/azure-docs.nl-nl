@@ -1,22 +1,17 @@
 ---
-title: Richt lijnen voor het implementeren van apps met sjablonen-Azure App Service | Microsoft Docs
-description: Aanbevelingen voor het maken van Azure Resource Manager sjablonen voor het implementeren van web-apps.
-services: app-service
-documentationcenter: app-service
+title: Apps implementeren met sjablonen
+description: Vind hulp bij het maken van Azure Resource Manager sjablonen voor het inrichten en implementeren van App Service-apps.
 author: tfitzmac
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 2af3ec61537dc28ab652b669ff46500db19ab307
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 082ef9753f84aef3f867a9dee4b4e9fbf73dd379
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130606"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670100"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Richt lijnen voor het implementeren van web-apps met behulp van Azure Resource Manager sjablonen
 
@@ -39,20 +34,20 @@ U implementeert resources in de volgende volg orde:
 * App Service plan.
 * Alle andere gerelateerde resources, zoals data bases of opslag accounts.
 
-**Tier 2**
+**Laag 2**
 * Web-app--is afhankelijk van het App Service-abonnement.
 * Azure-toepassing Insights-exemplaar dat de server farm bedoelt, is afhankelijk van het App Service plan.
 
-**Tier 3**
+**Laag 3**
 * Broncode beheer: is afhankelijk van de web-app.
 * Site-uitbrei ding MSDeploy--is afhankelijk van de web-app.
 * Azure-toepassing Insights-exemplaar dat de web-app bedoelt, is afhankelijk van de web-app.
 
-**Tier 4**
+**Laag 4**
 * App Service certificaat: afhankelijk van broncode beheer of MSDeploy, indien aanwezig. Anders is dit afhankelijk van de web-app.
 * Configuratie-instellingen (verbindings reeksen, Web. config-waarden, app-instellingen): afhankelijk van broncode beheer of MSDeploy, indien aanwezig. Anders is dit afhankelijk van de web-app.
 
-**Tier 5**
+**Laag 5**
 * Host-naam bindingen: afhankelijk van het certificaat, indien aanwezig. Anders is dit afhankelijk van een resource van een hoger niveau.
 * Site-extensies: afhankelijk van de huidige configuratie-instellingen. Anders is dit afhankelijk van een resource van een hoger niveau.
 

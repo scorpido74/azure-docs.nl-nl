@@ -1,31 +1,22 @@
 ---
-title: Node. js (MEAN. js) met MongoDB op Linux-Azure App Service | Microsoft Docs
-description: Informatie over hoe u een Node.js-web-app kunt laten werken in Azure App Service onder Linux, gekoppeld aan een Cosmos DB-database met een MongoDB-verbindingsreeks. MEAN. js wordt in de zelf studie gebruikt.
-services: app-service\web
-documentationcenter: nodejs
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Zelf studie: Linux node. js-app met MongoDB'
+description: Meer informatie over het ophalen van een Linux node. js-app die in Azure App Service werkt, met verbinding met een MongoDB-data base in azure (Cosmos DB). MEAN. js wordt in de zelf studie gebruikt.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cf145e04ca0e0ddf336521e72f6dc230dc8fc86b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: ca73c7e610b8bd818355f30b9d08bceffeddfc73
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024952"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688895"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Een Node.js-app en een MongoDB-app maken in Azure App Service op Linux
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie _Een Node.js- en een MongoDB-app in Azure maken_ als u App Service onder [Windows](../app-service-web-tutorial-nodejs-mongodb-app.md) wilt implementeren.
+> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie [Een Node.js- en een MongoDB-app in Azure maken](../app-service-web-tutorial-nodejs-mongodb-app.md) als u App Service onder _Windows_ wilt implementeren.
 >
 
 [App Service onder Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. In deze zelfstudie wordt beschreven hoe u een Node.js-app maakt, deze lokaal verbindt met een MongoDB-database en vervolgens in een database in de API van Azure Cosmos DB voor MongoDB implementeert. Als u klaar bent, beschikt u over een MEAN-toepassing (MongoDB, Express, AngularJS en Node.js) die wordt uitgevoerd in App Service onder Linux. In het voorbeeld wordt ter vereenvoudiging gebruikgemaakt van het [MEAN.js-webframework](https://meanjs.org/).
@@ -188,7 +179,7 @@ Kopieer de waarde van `primaryMasterKey`. U hebt deze informatie nodig voor de v
 
 Maak in de lokale MEAN.js-opslagplaats, in de map _config/env/_ , een bestand met de naam _lokale-productie.js_. _.gitignore_ wordt geconfigureerd om dit bestand buiten de opslagplaats te houden.
 
-Kopieer er de volgende code naartoe. Zorg ervoor dat u de twee *\<cosmosdb-> naam* aanduidingen vervangt door de naam van de Cosmos DB-Data Base en vervang de tijdelijke aanduiding voor de *\<primaire-sleutel >* door de sleutel die u in de vorige stap hebt gekopieerd.
+Kopieer er de volgende code in. Zorg ervoor dat u de twee *\<cosmosdb-> naam* aanduidingen vervangt door de naam van de Cosmos DB-Data Base en vervang de tijdelijke aanduiding voor de *\<primaire-sleutel >* door de sleutel die u in de vorige stap hebt gekopieerd.
 
 ```javascript
 module.exports = {
@@ -216,7 +207,7 @@ Voer in het lokale terminalvenster de volgende opdracht uit om de verbindingsree
 NODE_ENV=production node server.js
 ```
 
-`NODE_ENV=production` stelt de omgevingsvariabele in die aangeeft dat Node.js in de productieomgeving moet worden uitgevoerd.  `node server.js` start de Node.js-server met `server.js` in de hoofdmap van de opslagplaats. Op deze manier wordt de Node.js-toepassing in Azure geladen.
+`NODE_ENV=production` stelt de omgevingsvariabele in die aan Node.js meldt om in de productieomgeving te worden uitgevoerd.  `node server.js` start de Node.js-server met `server.js` in de hoofdmap van de opslagplaats. Op deze manier wordt de Node.js-toepassing in Azure geladen.
 
 Nadat de app is geladen, controleert u of de app wordt uitgevoerd in de productieomgeving:
 
@@ -257,7 +248,7 @@ In deze stap implementeert u de Node.js-toepassing in Azure App Service.
 
 Standaard houdt het MEAN.js-project _config/env/local-production.js_ buiten de Git-opslagplaats. Voor uw Azure-app gebruikt u dus app-instellingen om de MongoDB-verbindingsreeks te definiëren.
 
-Gebruik de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell om de app-instellingen te definiëren.
+Gebruik de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell om de app-instellingen in te stellen.
 
 In het volgende voorbeeld wordt de app-instelling `MONGODB_URI` in de Azure-app geconfigureerd. Vervang de\<naam van de *app-naam >* , *\<cosmosdb >* en\<tijdelijke aanduidingen voor *primaire-sleutel >* .
 
@@ -333,7 +324,7 @@ In deze stap wijzigt u het `article`-gegevensmodel en publiceert u de wijziging 
 
 Open _modules/articles/server/models/article.server.model.js_ in de lokale MEAN.js-opslagplaats.
 
-Voeg een `ArticleSchema`-type met de naam `String` toe in `comment`. Als u klaar bent, ziet het schema er als volgt uit:
+Voeg een `String`-type met de naam `comment` toe in `ArticleSchema`. Als u klaar bent, ziet het schema er als volgt uit:
 
 ```javascript
 let ArticleSchema = new Schema({

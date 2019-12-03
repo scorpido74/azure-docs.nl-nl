@@ -1,25 +1,18 @@
 ---
-title: Hybride verbindingen-Azure App Service | Microsoft Docs
-description: Hybride verbindingen maken en gebruiken voor toegang tot bronnen in verschillende netwerken
-services: app-service
-documentationcenter: ''
+title: Hybride verbindingen
+description: Meer informatie over het maken en gebruiken van hybride verbindingen in Azure App Service om toegang te krijgen tot bronnen in verschillende netwerken.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff2dac5d27cfffb92922038c1d1c67cd5118557a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ffc5ee32541cfbbda2ae54fd229c1436f133d730
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082395"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671513"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybride verbindingen #
 

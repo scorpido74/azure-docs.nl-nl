@@ -1,26 +1,17 @@
 ---
-title: Apps in de portal configureren-Azure App Service
-description: Meer informatie over het configureren van algemene instellingen voor een App Service-app in de Azure Portal.
+title: Apps in de portal configureren
+description: Meer informatie over het configureren van algemene instellingen voor een App Service-app in de Azure Portal. App-instellingen, verbindings reeksen, platform, taal stack, container, enzovoort.
 keywords: Azure app service, Web-app, app-instellingen, omgevings variabelen
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c22f88487fd8b34d48d3012c706bb0415760b21e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470936"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671950"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Een App Service-app configureren in het Azure Portal
 
@@ -34,7 +25,7 @@ Ga in het [Azure Portal]naar de beheer pagina van uw app. Klik in het menu links
 
 ![Toepassings instellingen](./media/configure-common/open-ui.png)
 
-Voor ASP.NET-en ASP.NET Core-ontwikkel aars is het instellen van de app-instellingen in App Service vergelijkbaar met het instellen van deze in `<appSettings>` in *Web. config* of *appSettings. json*, maar de waarden in app service negeren ze in *Web. config* of *appSettings. json* . U kunt de ontwikkelings instellingen (bijvoorbeeld lokaal MySQL-wacht woord) in *Web. config* of *appSettings. json*blijven gebruiken, maar productie geheimen (bijvoorbeeld Azure MySQL-database wachtwoord) veilig in app service. Dezelfde code maakt gebruik van uw ontwikkelings instellingen wanneer u lokaal fouten opspoort en uw productie geheimen gebruikt wanneer deze worden geïmplementeerd in Azure.
+Voor ASP.NET-en ASP.NET Core-ontwikkel aars is het instellen van de app-instellingen in App Service vergelijkbaar met het instellen hiervan in `<appSettings>` in *Web. config* of *appSettings. json*, maar de waarden in app service negeren deze in *Web. config* of *appSettings. json*. U kunt de ontwikkelings instellingen (bijvoorbeeld lokaal MySQL-wacht woord) in *Web. config* of *appSettings. json*blijven gebruiken, maar productie geheimen (bijvoorbeeld Azure MySQL-database wachtwoord) veilig in app service. Dezelfde code maakt gebruik van uw ontwikkelings instellingen wanneer u lokaal fouten opspoort en uw productie geheimen gebruikt wanneer deze worden geïmplementeerd in Azure.
 
 U kunt ook de app-instellingen ophalen als omgevings variabelen tijdens runtime. Zie voor taalspecifieke stappen voor de taal stack:
 

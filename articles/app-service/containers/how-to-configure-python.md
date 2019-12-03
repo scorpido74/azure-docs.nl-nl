@@ -1,32 +1,22 @@
 ---
-title: Python-apps configureren - Azure App Service
-description: Deze zelfstudie beschrijft opties voor het schrijven en configureren van Python-apps voor Azure App Service met Linux.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Linux python-apps configureren
+description: Meer informatie over het configureren van een vooraf gemaakte python-container voor uw app. In dit artikel vindt u de meest voorkomende configuratie taken.
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: cephalin
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 8563e0ac060e5cce6853472dfb1c51c6c2c36a4d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071095"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670481"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Een Linux python-app voor Azure App Service configureren
 
 In dit artikel wordt beschreven hoe Python-apps worden uitgevoerd in [Azure App Service](app-service-linux-intro.md) en hoe u het gedrag van Azure App Service zo nodig kunt aanpassen. Python-apps moeten worden geïmplementeerd met alle vereiste [PIP](https://pypi.org/project/pip/) -modules.
 
-De implementatie-engine van app service activeert automatisch een virtuele omgeving `pip install -r requirements.txt` en wordt voor u uitgevoerd wanneer u een [Git-opslag plaats](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)implementeert, of een [zip-pakket](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) met Build-processen ingeschakeld.
+De implementatie-engine van App Service activeert automatisch een virtuele omgeving en voert `pip install -r requirements.txt` voor u uit wanneer u een [Git-opslag plaats](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)implementeert, of een [zip-pakket](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) met Build-processen is ingeschakeld.
 
 Deze hand leiding bevat belang rijke concepten en instructies voor python-ontwikkel aars die een ingebouwde Linux-container gebruiken in App Service. Als u Azure App Service nog nooit hebt gebruikt, moet u eerst de [python-Snelstartgids](quickstart-python.md) en [python met postgresql zelf studie](tutorial-python-postgresql-app.md) volgen.
 
@@ -119,7 +109,7 @@ U kunt het opstartgedrag van de container sturen door een aangepaste Gunicorn-op
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Als u bijvoorbeeld een kolf-app hebt waarvan de hoofd module *Hello.py* is en het app-object van de kolf in dat `myapp`bestand een naam heeft, dan  *\<is de aangepaste opdracht >* als volgt:
+Als u bijvoorbeeld een kolf-app hebt waarvan de hoofd module *Hello.py* is en het app-object van de kolf in dat bestand de naam `myapp`heeft, *\<aangepaste opdracht >* als volgt:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -131,9 +121,9 @@ Als de belangrijkste module zich in een submap bevindt, zoals `website`, geeft u
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-U kunt ook aanvullende argumenten voor Gunicorn toevoegen aan  *\<aangepaste-opdracht >* , zoals `--workers=4`. Zie voor meer informatie [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Gunicorn uitvoeren, docs.gunicorn.org).
+U kunt ook aanvullende argumenten voor Gunicorn toevoegen aan *\<> voor aangepaste opdrachten*, zoals `--workers=4`. Zie voor meer informatie [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Gunicorn uitvoeren, docs.gunicorn.org).
 
-Als u een niet-Gunicorn-server wilt gebruiken, zoals [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), kunt u  *\<aangepaste-opdracht >* vervangen door iets zoals het volgende:
+Als u een niet-Gunicorn-server wilt gebruiken, zoals [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), kunt u *\<aangepaste-opdracht >* vervangen door iets zoals de volgende:
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -184,10 +174,10 @@ Populaire webframeworks bieden toegang tot de `X-Forwarded-*`-informatie in het 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Python-app met PostgreSQL](tutorial-python-postgresql-app.md)
+> [Zelf studie: python-app met PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Implementeren vanuit een persoonlijke container opslagplaats](tutorial-custom-docker-image.md)
+> [Zelf studie: implementeren vanuit een persoonlijke container opslagplaats](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
 > [Veelgestelde vragen over App Service Linux](app-service-linux-faq.md)

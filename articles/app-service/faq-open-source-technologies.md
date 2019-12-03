@@ -1,26 +1,20 @@
 ---
-title: Veelgestelde vragen over open-source technologieën-Azure App Service | Microsoft Docs
-description: Krijg antwoorden op veelgestelde vragen over open-source technologieën in de Web Apps functie van Azure App Service.
-services: app-service\web
-documentationcenter: ''
+title: Veelgestelde vragen over open-source technologieën
+description: Krijg antwoorden op veelgestelde vragen over open-source technologieën in Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169690"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672431"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Open-source technologieën Veelgestelde vragen over Web Apps in azure
 
@@ -78,7 +72,7 @@ Als u de versie van de node. js-toepassing wilt wijzigen, kunt u een van de volg
   Het implementatie proces van het Azure-bron beheer omvat de volgende stappen:
   1. Hiermee verplaatst u inhoud naar de Azure-web-app.
   2. Hiermee maakt u een standaard implementatie script als er zich geen (Deploy. cmd,. Deployment-bestanden) in de hoofdmap van de web-app bevindt.
-  3. Voert een implementatie script uit waarin het een iisnode. yml-bestand maakt als u de node. js-versie in het bestand Package. json van de > engine `"engines": {"node": "5.9.1","npm": "3.7.3"}` vermeldt.
+  3. Voert een implementatie script uit waarin het een iisnode. yml-bestand maakt als u de node. js-versie in het bestand Package. json > engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Het bestand iisnode. yml heeft de volgende regel code:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -86,7 +80,7 @@ Als u de versie van de node. js-toepassing wilt wijzigen, kunt u een van de volg
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>Ik zie het bericht ' fout bij het maken van een database verbinding ' in de WordPress-app die wordt gehost in App Service. Hoe kan ik dit probleem oplossen?
 
-Als deze fout wordt weer geven in de Azure WordPress-app, kunt u php_errors. log en debug. log inschakelen door de stappen uit te voeren die worden beschreven in [WordPress-fouten logboeken inschakelen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+Als deze fout wordt weer geven in de Azure WordPress-app, kunt u php_errors. log en debug. log uitvoeren door de stappen uit te voeren die worden beschreven in [WordPress-fouten logboeken inschakelen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
 
 Als de logboeken zijn ingeschakeld, reproduceert u de fout en raadpleegt u de logboeken om te controleren of er verbinding is met de volgende:
 ```
