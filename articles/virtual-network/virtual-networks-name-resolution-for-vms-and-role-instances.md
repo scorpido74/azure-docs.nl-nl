@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176053"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707576"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Naam omzetting voor bronnen in azure Virtual Networks
 
@@ -127,7 +127,7 @@ Het bestand ungenerate. conf wordt doorgaans automatisch gegenereerd en mag niet
   1. Voeg de *optie* lijn toe aan **/etc/resolvconf/resolv.conf.d/tail**.
   2. Voer `resolvconf -u` uit om bij te werken.
 * **SuSE** (gebruikt netconf):
-  1. *Time-out toevoegen: 1 pogingen: 5* naar de para meter **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** in **/etc/sysconfig/network/config**.
+  1. *Time-out toevoegen: 1 pogingen: 5* tot de para meter **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** in **/etc/sysconfig/network/config**.
   2. Voer `netconfig update` uit om bij te werken.
 * **CentOS** (maakt gebruik van NetworkManager):
   1. *Echo ' Options time-out: 1 pogingen: 5 '* toevoegen aan **/etc/NetworkManager/dispatcher.d/11-dhclient**.
@@ -149,7 +149,7 @@ Door sturen via DNS zorgt er ook voor dat de DNS-omzetting tussen virtuele netwe
 > Met een rolinstantie kan naam omzetting van Vm's binnen hetzelfde virtuele netwerk worden uitgevoerd. Dit doet u met behulp van de FQDN-naam, die bestaat uit de hostnaam van de virtuele machine en het DNS-achtervoegsel van de **Internal.cloudapp.net** . In dit geval wordt naam omzetting echter alleen geslaagd als voor de rolinstantie de VM-naam is gedefinieerd in het [Role-schema (cscfg-bestand)](https://msdn.microsoft.com/library/azure/jj156212.aspx).
 > `<Role name="<role-name>" vmName="<vm-name>">`
 >
-> U moet de volgende methoden gebruiken om de naam omzetting van virtuele machines in een ander virtueel netwerk (FQDN met het **Internal.cloudapp.net** -achtervoegsel) te kunnen uitvoeren met behulp van de methode die wordt beschreven in deze sectie (aangepaste DNS-servers die worden doorgestuurd tussen de twee virtuele netwerken).
+> U moet de volgende methoden gebruiken om de naam omzetting van Vm's in een ander virtueel netwerk (FQDN met het **Internal.cloudapp.net** -achtervoegsel) te kunnen uitvoeren met behulp van de methode die in deze sectie wordt beschreven (aangepaste DNS-servers die worden doorgestuurd tussen de twee virtuele netwerken).
 >
 
 ![Diagram van DNS tussen virtuele netwerken](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
@@ -206,7 +206,7 @@ Wanneer u het Azure Resource Manager-implementatie model gebruikt, kunt u DNS-se
 Wanneer u het klassieke implementatie model gebruikt, kunt u DNS-servers voor het virtuele netwerk opgeven in het Azure Portal of het [netwerk configuratie bestand](https://msdn.microsoft.com/library/azure/jj157100). Voor Cloud Services kunt u DNS-servers opgeven via het [Service configuratie bestand](https://msdn.microsoft.com/library/azure/ee758710) of met behulp van Power shell, met [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
-> Als u de DNS-instellingen wijzigt voor een virtueel netwerk of een virtuele machine die al is geïmplementeerd, moet u elke betrokken VM opnieuw opstarten om de wijzigingen van kracht te laten worden.
+> Als u de DNS-instellingen voor een virtueel netwerk of een virtuele machine die al is geïmplementeerd, wijzigt, moet u de DHCP-lease vernieuwing uitvoeren op alle betrokken Vm's in het virtuele netwerk om de nieuwe DNS-instellingen van kracht te laten worden. Voor virtuele machines waarop het Windows-besturings systeem wordt uitgevoerd, kunt u dit doen door `ipconfig /renew` rechtstreeks in de virtuele machine te typen. De stappen variëren afhankelijk van het besturings systeem. Raadpleeg de relevante documentatie voor het type besturings systeem. 
 >
 >
 
