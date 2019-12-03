@@ -1,24 +1,17 @@
 ---
-title: Een aangepaste DNS-naam beveiligen met een SSL-binding-Azure App Service | Microsoft Docs
-description: Meer informatie over het kopen van een App Service certificaat en het koppelen aan uw App Service-app
-services: app-service
-author: cephalin
-manager: gwallace
+title: Een aangepaste DNS beveiligen met een SSL-binding
+description: Beveiligde HTTPS-toegang tot uw aangepaste domein door een TLS/SSL-binding met een certificaat te maken. Verbeter de beveiliging van uw website door HTTPS of TLS 1,2 af te dwingen.
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 10/25/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 259a4d33ba6e8c072f8df906da4784119b299822
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501216"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670680"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Een aangepaste DNS-naam beveiligen met een SSL-binding in Azure App Service
 
@@ -154,7 +147,7 @@ Als de bewerking is voltooid, worden in de app alle verbindingen met lagere TLS-
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
@@ -162,7 +155,7 @@ Als de bewerking is voltooid, worden in de app alle verbindingen met lagere TLS-
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Meer bronnen
+## <a name="more-resources"></a>Meer informatiebronnen
 
 * [Een SSL-certificaat gebruiken in uw toepassings code](configure-ssl-certificate-in-code.md)
 * [Veelgestelde vragen: App Service certificaten](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

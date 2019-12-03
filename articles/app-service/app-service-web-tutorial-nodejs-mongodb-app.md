@@ -1,28 +1,19 @@
 ---
-title: Node. js (MEAN. js) met MongoDB-Azure App Service | Microsoft Docs
-description: Informatie over hoe u een Node.js-web-app kunt laten werken in Azure, gekoppeld aan een Cosmos DB-database met een MongoDB-verbindingsreeks. MEAN. js wordt in de zelf studie gebruikt.
-services: app-service\web
-documentationcenter: nodejs
-author: cephalin
-manager: erikre
-editor: ''
+title: 'Zelf studie: node. js-app met MongoDB'
+description: Meer informatie over hoe u een node. js-app kunt ophalen in azure, met verbinding met een MongoDB-data base in azure (Cosmos DB). MEAN. js wordt in de zelf studie gebruikt.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0b9b10542b861b49e83ff9704912a569cdca7616
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7d0a1d89b0547b1cd982b2717ac7548bec848a77
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024917"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671304"
 ---
-# <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Zelfstudie: Een app voor Node.js en MongoDB bouwen in Azure
+# <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Zelf studie: een node. js-en MongoDB-app bouwen in azure
 
 > [!NOTE]
 > In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een Node.js- en MongoDB-app bouwen in Azure App Service in Linux ](./containers/tutorial-nodejs-mongodb-app.md) om een app te implementeren in App Service in _Linux_.
@@ -94,7 +85,7 @@ npm install
 npm start
 ```
 
-Wanneer de app volledig is geladen, ziet u een bericht zoals dit:
+Als de app is geladen, ziet u een bericht zoals dit:
 
 ```console
 --
@@ -197,7 +188,7 @@ Kopieer de waarde van `primaryMasterKey`. U hebt deze informatie nodig voor de v
 
 Maak in de lokale MEAN.js-opslagplaats, in de map _config/env/_ , een bestand met de naam _lokale-productie.js_. _.gitignore_ is standaard geconfigureerd om dit bestand buiten de opslagplaats te houden. 
 
-Kopieer er de volgende code naartoe. Vervang de twee tijdelijke aanduidingen *\<cosmosdb_name>* door de naam van de Cosmos DB-database en vervang de tijdelijke aanduiding *\<primary_master_key>* door de sleutel die u in de vorige stap hebt gekopieerd.
+Kopieer er de volgende code in. Vervang de twee tijdelijke aanduidingen *\<cosmosdb_name>* door de naam van de Cosmos DB-database en vervang de tijdelijke aanduiding *\<primary_master_key>* door de sleutel die u in de vorige stap hebt gekopieerd.
 
 ```javascript
 module.exports = {
@@ -230,7 +221,7 @@ $env:NODE_ENV = "production"
 node server.js
 ```
 
-`NODE_ENV=production` stelt de omgevingsvariabele in die aangeeft dat Node.js in de productieomgeving moet worden uitgevoerd.  `node server.js` start de Node.js-server met `server.js` in de hoofdmap van de opslagplaats. Op deze manier wordt de Node.js-toepassing in Azure geladen. 
+`NODE_ENV=production` stelt de omgevingsvariabele in die aan Node.js meldt om in de productieomgeving te worden uitgevoerd.  `node server.js` start de Node.js-server met `server.js` in de hoofdmap van de opslagplaats. Op deze manier wordt de Node.js-toepassing in Azure geladen. 
 
 Nadat de app is geladen, controleert u of de app wordt uitgevoerd in de productieomgeving:
 
@@ -270,7 +261,7 @@ In deze step implementeert u uw met MongoDB verbonden Node.js-toepassing in Azur
 
 Standaard houdt het MEAN.js-project _config/env/local-production.js_ buiten de Git-opslagplaats. Voor uw Azure-app gebruikt u dus app-instellingen om de MongoDB-verbindingsreeks te definiëren.
 
-Gebruik de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell om de app-instellingen te definiëren. 
+Gebruik de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell om de app-instellingen in te stellen. 
 
 In het volgende voorbeeld wordt de app-instelling `MONGODB_URI` in de Azure-app geconfigureerd. Vervang de tijdelijke aanduidingen *\<app_name>* , *\<cosmosdb_name>* en *\<primary_master_key>* .
 

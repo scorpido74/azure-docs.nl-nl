@@ -1,25 +1,19 @@
 ---
-title: Azure PowerShell-voorbeeldscript - een back-up van een web-app verwijderen | Microsoft Docs
-description: Azure PowerShell-voorbeeldscript - een back-up van een web-app verwijderen
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Power shell: een app-back-up verwijderen'
+description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u een app-back-up verwijdert.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9b9a6ecc93489c6690e0128ef9129c480f506b31
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b8d3175b4266e132d94f6f2dde163cb60fb11396
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098428"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685801"
 ---
 # <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Een back-up van een web-app verwijderen met Azure PowerShell
 
@@ -43,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

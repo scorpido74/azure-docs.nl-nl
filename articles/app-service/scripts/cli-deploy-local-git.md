@@ -1,31 +1,24 @@
 ---
-title: 'Azure CLI-voorbeeldscript: een app maken en code implementeren vanuit een lokale Git-opslagplaats| Microsoft Docs'
-description: Voorbeeld van Azure CLI-script - Een App Service-app maken en code implementeren vanuit een lokale Git-opslagplaats
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'CLI: implementeren vanuit lokale Git-opslag plaats'
+description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voor beeld ziet u hoe u code kunt implementeren vanuit een lokale Git-opslag plaats.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 048f98aa-f708-44cb-9b9e-953f67dc6da8
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 747d215810710c6810df02dca556d7a685ae4060
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 768b3319b1366f45df1fbcaf1039853c0501a8cf
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136744"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74686181"
 ---
 # <a name="create-an-app-service-app-and-deploy-code-from-a-local-git-repository-using-azure-cli"></a>Een App Service-app maken en code implementeren vanuit een lokale Git-opslagplaats met behulp van Azure CLI
 
-Met dit voorbeeldscript maakt u een app in App Service met de bijbehorende resources, en implementeert vervolgens de code van de app in een lokale Git-opslagplaats.
+Met dit voorbeeld script maakt u een app in App Service met de bijbehorende resources en implementeert u vervolgens uw app-code in een lokale Git-opslag plaats.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -42,11 +35,11 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Hiermee maakt u een App Service-abonnement. |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Hiermee maakt u een App Service-app. |
 | [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) | Hiermee stelt u de implementatiereferenties voor App Service in op accountniveau. |

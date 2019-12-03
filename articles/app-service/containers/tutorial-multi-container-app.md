@@ -1,24 +1,17 @@
 ---
-title: Een app met meerdere containers maken in Web App for Containers - Azure App Service
-description: Meer informatie over het gebruik van meerdere containers op Azure met docker-compositie, WordPress en MySQL.
+title: 'Zelf studie: een app met meerdere containers maken'
+description: Leer hoe u een app met meerdere containers bouwt op Azure App Service die een WordPress-app en een MySQL-container bevat en de WordPress-app configureren.
 keywords: Azure app service, Web-app, Linux, docker, samen stellen, meerdere containers, multi-container, Web-app voor containers, meerdere containers, container, WordPress, Azure DB voor mysql, productie database met containers
-services: app-service
-documentationcenter: ''
 author: msangapu-msft
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: f4a366809bd5c6267ef76632e8990309f100c393
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 327b2aaadd77c00d847504ff16415813d2fcf89c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554938"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687466"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Zelfstudie: Een app met meerdere containers (preview) maken in Web App for Containers
 
@@ -112,7 +105,7 @@ Wanneer het App Service-plan is gemaakt, toont Cloud Shell soortgelijke informat
 
 ## <a name="create-a-docker-compose-app"></a>Een Docker Compose-app maken
 
-Maak in Cloud Shell een [web-app](app-service-linux-intro.md) met meerdere containers in het `myAppServicePlan` App Service-plan met de opdracht [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Vergeet niet om _\<app naam >_ te vervangen door een unieke app-naam.
+Maak in Cloud Shell een [web-app](app-service-linux-intro.md) met meerdere containers in het `myAppServicePlan` App Service-plan met de opdracht [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Vergeet niet om _\<app-naam >_ te vervangen door een unieke app-naam.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -151,7 +144,7 @@ Het wordt niet aanbevolen databasecontainers te gebruiken in een productieomgevi
 
 Maak een Azure Database for MySQL-server met de opdracht [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create).
 
-Vervang in de volgende opdracht de naam van uw MySQL-server, waarbij u de tijdelijke aanduiding _&lt;mysql-server naam >_ ziet (geldige tekens zijn `a-z`, `0-9` en `-`). Deze naam maakt deel uit van de hostnaam van de MySQL-server (`<mysql-server-name>.database.windows.net`) en moet globaal uniek zijn.
+Vervang in de volgende opdracht de naam van uw MySQL-server, waarbij u de tijdelijke aanduiding _&lt;mysql-server-name >_ ziet (geldige tekens zijn `a-z`, `0-9`en `-`). Deze naam maakt deel uit van de hostnaam van de MySQL-server (`<mysql-server-name>.database.windows.net`) en moet globaal uniek zijn.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
@@ -282,7 +275,7 @@ Sla uw wijzigingen op en sluit nano af. Sla op met de opdracht `^O` en sluit af 
 
 ### <a name="update-app-with-new-configuration"></a>De app bijwerken met de nieuwe configuratie
 
-Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om _\<app naam >_ te vervangen door de naam van de web-app die u eerder hebt gemaakt.
+Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om _\<app-naam >_ te vervangen door de naam van de web-app die u eerder hebt gemaakt.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -358,7 +351,7 @@ services:
 
 ### <a name="update-app-with-new-configuration"></a>De app bijwerken met de nieuwe configuratie
 
-Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om _\<app naam >_ te vervangen door een unieke app-naam.
+Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om _\<app-naam >_ te vervangen door een unieke app-naam.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -442,7 +435,7 @@ Wanneer de app-instelling is gemaakt, toont Cloud Shell soortgelijke informatie 
 
 ### <a name="update-app-with-new-configuration"></a>De app bijwerken met de nieuwe configuratie
 
-Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om _\<app naam >_ te vervangen door een unieke app-naam.
+Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om _\<app-naam >_ te vervangen door een unieke app-naam.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml

@@ -7,22 +7,22 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: ca3486610d6cf71ba315e407b58a2a2551ad6ee1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e66a9f8a775a46c906601ea08be52ca9dfbe0171
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837489"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689293"
 ---
 # <a name="get-labels-for-data"></a>Labels voor gegevens ophalen
 
-Het labelen van grote hoeveel heden gegevens is vaak een hoofd in machine learning projecten. ML projecten met een computer vision-onderdeel, zoals afbeeldings classificatie of object detectie, vereisen doorgaans duizenden afbeeldingen en bijbehorende labels. 
+Het labelen van Voluminous-gegevens in machine learning projecten is vaak een hoofd. Projecten met een computer vision-onderdeel, zoals afbeeldings classificatie of object detectie, hebben doorgaans labels nodig voor duizenden afbeeldingen.
  
-Azure Machine Learning biedt u een centrale locatie voor het maken, beheren en bewaken van label projecten. Het labelen van projecten helpt bij het coördineren van de gegevens, labels en team leden, zodat u de taken voor het label efficiënter kunt beheren. Momenteel ondersteunde taken zijn afbeeldings classificatie, ofwel meerdere labels, meerdere klassen en object-id's die gebruikmaken van begrensde vakken.
+[Azure machine learning](https://ml.azure.com/) biedt u een centrale locatie voor het maken, beheren en bewaken van etiket projecten. Gebruik deze functie om gegevens, labels en team leden te coördineren om op efficiënte wijze label taken te beheren. Machine Learning ondersteunt de classificatie van afbeeldingen, ofwel meerdere labels, meerdere klassen en object-id's samen met gebonden vakken.
 
-Azure traceert de voortgang en onderhoudt de wachtrij met onvolledige label taken. Labels hebben geen Azure-account nodig om deel te nemen. Als ze zijn geverifieerd met hun micro soft-account (MSA) of [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis), kunnen ze net zo veel of zo weinig labels krijgen als in hun tijd. Ze kunnen labels toewijzen en wijzigen met behulp van sneltoetsen. 
+Machine Learning volgt de voortgang en onderhoudt de wachtrij met onvolledige label taken. Labels hebben geen Azure-account nodig om deel te nemen. Nadat ze zijn geverifieerd met uw Microsoft-account of [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis), kunnen ze net zo veel labels krijgen als in hun tijd.
 
-U kunt het project starten en stoppen, mensen en teams toevoegen en verwijderen, en de voortgang controleren. U kunt gelabelde gegevens exporteren in de COCO-indeling of als een Azure ML-gegevensset. 
+In Machine Learning kunt u het project starten en stoppen, mensen en teams toevoegen en verwijderen en de voortgang controleren. U kunt gelabelde gegevens in de COCO-indeling exporteren of als een Azure Machine Learning-gegevensset.
 
 In dit artikel leert u het volgende:
 
@@ -31,129 +31,129 @@ In dit artikel leert u het volgende:
 > * De gegevens en structuur van het project opgeven
 > * De teams en personen beheren die aan het project werken
 > * Het project uitvoeren en bewaken
-> * De labels exporteren 
+> * De labels exporteren
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De gegevens die u wilt labelen, hetzij in lokale bestanden of al in azure Storage
-* De set labels die u wilt Toep assen
-* Instructies voor het labelen
-* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
-* Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).
+* De gegevens die u wilt labelen, hetzij in lokale bestanden of in azure Storage.
+* De set labels die u wilt Toep assen.
+* De instructies voor het labelen.
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://aka.ms/AMLFree) aan voordat u begint.
+* Een Machine Learning-werk ruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).
 
 ## <a name="create-a-labeling-project"></a>Een label project maken
 
-Labels van projecten worden beheerd vanuit [Azure machine learning](https://ml.azure.com/). Op de pagina **labelen projecten** kunt u uw projecten, teams en personen beheren. Aan een project zijn een of meer teams toegewezen en aan een team zijn een of meer personen toegewezen. 
+Labels van projecten worden beheerd vanuit Azure Machine Learning. U gebruikt de pagina **Label projecten** om uw projecten en personen te beheren. Aan een project zijn een of meer teams toegewezen en aan een team zijn een of meer personen toegewezen.
 
-Als uw gegevens al zijn opgeslagen in Azure Blob-opslag, moet u deze beschikbaar maken als een gegevens opslag voordat u het label project maakt. Zie gegevens [opslag maken en registreren](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores)voor meer informatie. 
+Als uw gegevens al in Azure Blob-opslag aanwezig zijn, moet u deze beschikbaar maken als een gegevens opslag voordat u het label project maakt. Zie [gegevens opslag maken en registreren](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores)voor meer informatie.
 
-Kies **project toevoegen**om een project te maken. Geef het een passende naam en selecteer het **taak type labelen**. 
+Selecteer **project toevoegen**om een project te maken. Geef het project een passende naam en selecteer het **taak type labelen**.
 
 ![Wizard voor het maken van labels](media/how-to-create-labeling-projects/labeling-creation-wizard.png)
 
-* Kies **afbeeldings classificatie meerdere labels** voor projecten waarin **een _of meer_**  labels van een set klassen kunnen worden toegepast op een afbeelding. Zo kan een foto van een hond worden gelabeld met zowel *hond* als *Daytime*
-* Kies **afbeeldings classificatie meerdere klassen** voor projecten waarin slechts **één klasse** van een set klassen kan worden toegepast op een installatie kopie
-* Kies **object Identification (begrenzingsvak)** voor projecten waarin de taak een klasse moet toewijzen aan een object binnen een afbeelding, en om een selectie kader op te geven dat het object omheen
+* Kies **afbeeldings classificatie meerdere labels** voor projecten wanneer u *een of meer* labels wilt Toep assen van een set klassen naar een afbeelding. Zo kan een foto van een hond worden gelabeld met zowel *honden* als *Daytime*.
+* Kies **afbeeldings classificatie meerdere klassen** voor projecten wanneer u slechts *één klasse* van een reeks klassen wilt Toep assen op een installatie kopie.
+* Kies **object identificatie (begrenzingsvak)** voor projecten wanneer u een klasse en een selectie kader wilt toewijzen aan elk object binnen een afbeelding.
 
-Kies **volgende** wanneer u klaar bent om door te gaan.
+Selecteer **volgende** als u klaar bent om door te gaan.
 
-## <a name="specify-data-to-be-labeled"></a>Geef de gegevens op die moeten worden gelabeld
+## <a name="specify-the-data-to-label"></a>Geef de gegevens op die u wilt labelen
 
-Als u al een gegevensset hebt gemaakt die uw gegevens bevat, kunt u deze selecteren in de vervolg keuzelijst **een bestaande gegevensset selecteren** . Of kies **een gegevensset maken** om een bestaand Azure-gegevens archief te selecteren of lokale bestanden te uploaden. 
+Als u al een gegevensset hebt gemaakt die uw gegevens bevat, selecteert u deze in de vervolg keuzelijst **een bestaande gegevensset selecteren** . Of selecteer **een gegevensset maken** voor het gebruik van een bestaande Azure-gegevens opslag of voor het uploaden van lokale bestanden.
 
 ### <a name="create-a-dataset-from-an-azure-datastore"></a>Een gegevensset maken op basis van een Azure-gegevens opslag
 
-Hoewel het kiezen van direct uploaden van lokale bestanden prima is voor veel gebruiks gevallen, is [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) zowel robuuster als sneller voor het overdragen van aanzienlijke hoeveel heden gegevens. U wordt aangeraden Azure Storage Explorer als de standaard manier om bestanden te verplaatsen.
+In veel gevallen is het prima om alleen lokale bestanden te uploaden. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) biedt echter een snellere en robuuste manier om grote hoeveel heden gegevens over te dragen. U wordt aangeraden Storage Explorer als de standaard manier om bestanden te verplaatsen.
 
 Een gegevensset maken op basis van gegevens die u al hebt opgeslagen in Azure Blob-opslag:
 
-1. Kies **een gegevensset maken** en **uit de gegevens opslag** .
-1. Een **naam** voor uw gegevensset toewijzen
-1. U moet "bestand" kiezen als het **type gegevensset**  
-1. Het gegevens archief selecteren 
-1. Als uw gegevens zich in een submap van de Blob-opslag bevinden, kiest u **Bladeren** om het pad te selecteren. 
-    * U kunt ook `/**` toevoegen na het pad om alle bestanden in de submappen van het geselecteerde pad op te kunnen bevatten
-    * `**/*.*` gebruiken voor het toevoegen van alle gegevens in de huidige container en submappen
-1. Geef een beschrijving van uw gegevensset op
-1. Kies **volgende** 
-1. Bevestig de details. U kunt **teruggaan** om de instellingen te wijzigen of kies **maken** om de gegevensset te maken
+1. Selecteer **een gegevensset maken** > **uit gegevens opslag**.
+1. Wijs een **naam** toe aan uw gegevensset.
+1. Kies **bestand** als **type gegevensset**.  
+1. Selecteer de gegevens opslag.
+1. Als uw gegevens zich in een submap in uw Blob-opslag bevinden, kiest u **Bladeren** om het pad te selecteren.
+    * Voeg "/* *" toe aan het pad om alle bestanden in de submappen van het geselecteerde pad op te kunnen bevatten.
+    * Voeg "* */* . *" toe om alle gegevens in de huidige container en de submappen ervan op te halen.
+1. Geef een beschrijving op voor de gegevensset.
+1. Selecteer **Next**.
+1. Bevestig de details. Selecteer **vorige** om de instellingen te wijzigen of **maken** om de gegevensset te maken.
 
-### <a name="create-a-dataset-by-uploading-data"></a>Een gegevensset maken door gegevens te uploaden
+### <a name="create-a-dataset-from-uploaded-data"></a>Een gegevensset maken op basis van geüploade gegevens
 
-Als u uw gegevens direct wilt uploaden:
+Uw gegevens rechtstreeks uploaden:
 
-1. Kies **een gegevensset maken** en **van lokale bestanden**
-1. Een **naam** voor uw gegevensset toewijzen
-1. U moet "bestand" kiezen als het **type gegevensset**
-1. Als u **Geavanceerde instellingen**kiest, kunt u het gegevens archief, de container en het pad naar uw data aanpassen
-1. Kies **Bladeren** om lokale bestanden te selecteren die u wilt uploaden
-1. Geef een beschrijving van uw gegevensset op
-1. Kies **volgende** 
-1. Bevestig de details. U kunt **teruggaan** om de instellingen te wijzigen of kies **maken** om de gegevensset te maken
+1. Selecteer **een gegevensset maken** > **van lokale bestanden**.
+1. Wijs een **naam** toe aan uw gegevensset.
+1. Kies "bestand" als **type gegevensset**.
+1. *Optioneel:* Selecteer **Geavanceerde instellingen** voor het aanpassen van de gegevens opslag, container en het pad naar uw data.
+1. Selecteer **Bladeren** om de lokale bestanden te selecteren die u wilt uploaden.
+1. Geef een beschrijving op voor de gegevensset.
+1. Selecteer **Next**.
+1. Bevestig de details. Selecteer **vorige** om de instellingen te wijzigen of **maken** om de gegevensset te maken.
 
-De gegevens worden geüpload naar de standaard-Blob-opslag (`workspaceblobstore`) van uw Azure ML-werk ruimte.
+De gegevens worden geüpload naar de standaard-BLOB Store ("workspaceblobstore") van uw Machine Learning-werk ruimte.
 
 ## <a name="specify-label-classes"></a>Label klassen opgeven
 
-Op de pagina **Label klassen** geeft u de set klassen op die worden gebruikt voor het categoriseren van uw gegevens. Denk aan deze klassen, omdat de nauw keurigheid en snelheid van de labelers worden beïnvloed door de versnelling waarmee ze op de juiste wijze kunnen kiezen. In plaats van de volledige geslacht en soort voor planten of dieren te spellen, is het wellicht beter om veld codes te gebruiken of het genus af te korten. 
+Geef op de pagina **Label klassen** de set klassen op om uw gegevens te categoriseren. Doe dit zorgvuldig omdat de nauw keurigheid en snelheid van uw labelers worden beïnvloed door de mogelijkheid om te kiezen uit de klassen. In plaats van de volledige geslacht en soort voor planten of dieren te spellen, moet u bijvoorbeeld een veld code gebruiken of het genus afkorten.
 
-Voer één label per rij in met behulp van de knop **+** om een nieuwe rij toe te voegen. Als u meer dan 3 of vier etiketten hebt, maar minder dan 10, kunt u het beste een voor voegsel geven met ' 1: ', ' 2: ', enzovoort. u kunt aan de hand van de cijfer toetsen een aantal sneltoetsen gebruiken om hun werk te versnellen. 
+Voer één label per rij in. Gebruik de knop **+** om een nieuwe rij toe te voegen. Als u meer dan 3 of vier etiketten hebt, maar minder dan 10, wilt u mogelijk de namen met cijfers ("1:", "2:") als voor voegsel toevoegen, zodat de labelers de cijfer toetsen kunnen gebruiken om hun werk te versnellen.
 
 ## <a name="describe-the-labeling-task"></a>De taak labelen beschrijven
 
-Het is belang rijk dat u de label taak duidelijk uitspreekt. Op de pagina **instructies voor labelen** kunt u een koppeling maken naar een externe site voor instructies die aan labels moeten worden gepresenteerd. Behoud de instructies op de taak gericht en geschikt voor de doel groep. 
+Het is belang rijk om de label taak duidelijk te verklaren. Op de pagina **Label instructies** kunt u een koppeling naar een externe site toevoegen voor het labelen van instructies. Behoud de instructies op de taak gericht en geschikt voor de doel groep. Houd rekening met de volgende vragen:
 
-* Wat zijn de labels die ze zien en hoe worden deze gekozen? Is er een referentie tekst waarnaar ze moeten verwijzen?
-* Wat moet u doen als er geen label geschikt is? 
+* Wat zijn de labels die ze zien en hoe worden deze gekozen? Is er een referentie tekst waarnaar kan worden verwezen?
+* Wat moet u doen als er geen label geschikt is?
 * Wat moet u doen als er meerdere labels relevant zijn?
 * Welke betrouwbaarheids drempel waarden moeten worden toegepast op een label? Wilt u de ' beste schatting ' als ze niet zeker zijn?
 * Wat moet er gebeuren met gedeeltelijk occluded of overlappende objecten?
 * Wat moet er gebeuren als een interessant object wordt geknipt door de rand van de afbeelding?
-* Wat moeten ze doen als ze van mening zijn dat ze een fout hebben gemaakt bij het verzenden van een afbeelding? 
+* Wat moet er gebeuren nadat ze een label hebben ingediend als ze denken dat ze een fout hebben gemaakt?
 
-Met omsluitende kaders zijn andere belang rijke vragen:
+Voor selectie kaders zijn belang rijke vragen:
 
-* Hoe wordt het begrenzingsvak voor deze taak gedefinieerd? Moeten deze zo nauw keurig mogelijk worden bijgesneden naar het object, of is het een zekere mate van toegestane afstand? 
-* Welk niveau van Care en consistentie wilt u verwachten dat de Labeler wordt toegepast voor het definiëren van selectie vakjes?
+* Hoe wordt het begrenzingsvak voor deze taak gedefinieerd? Moet het zich helemaal in de binnenkant van het object bevallen, of moet het zich op de buiten kant bezien? Moet deze zo nauw keurig mogelijk worden bijgesneden of is een bepaalde vrije ruimte acceptabel?
+* Welk niveau van zorg en consistentie verwacht u dat de labels worden toegepast bij het definiëren van selectie vakjes?
 
->[!Note]
-> Zorg ervoor dat de Labeler kan kiezen uit de eerste 9 labels met nummer toetsen 1-9. 
+>[!NOTE]
+> Houd er rekening mee dat de labelers de eerste 9 Labels kunnen selecteren met behulp van nummer toetsen 1-9.
 
 ## <a name="initialize-the-labeling-project"></a>Het label project initialiseren
 
-Na de initialisatie zijn sommige aspecten van het label project onveranderbaar: u kunt het taak type of de gegevensset niet wijzigen. U mag labels wijzigen en u kunt de URL voor de taak beschrijving wijzigen. Controleer de instellingen zorgvuldig voordat u het project maakt. Zodra u het project hebt verzonden, wordt u teruggeleid naar de start pagina van de **Label** , zodat het project wordt weer gegeven als **initialisatie**. Deze pagina wordt niet automatisch vernieuwd. Als u deze hand matig vernieuwt, wordt het project weer gegeven als **gemaakt**. 
+Nadat het label project is geïnitialiseerd, zijn sommige aspecten van het project onveranderbaar. U kunt het taak type of de gegevensset niet wijzigen. U *kunt* labels en de URL voor de taak beschrijving wijzigen. Controleer de instellingen zorgvuldig voordat u het project maakt. Nadat u het project hebt verzonden, keert u terug naar de start pagina van de **Label** , waarmee het project als **initialisatie**wordt weer gegeven. Deze pagina wordt niet automatisch vernieuwd. Daarom moet u na een onderbreking de pagina hand matig vernieuwen om de status van het project weer te **geven.**
 
 ## <a name="manage-teams-and-people"></a>Teams en personen beheren
 
-Een label project krijgt een standaard team en voegt u als een standaardlid toe. Elk label project krijgt een nieuw standaard team, maar teams kunnen tussen projecten worden gedeeld. Projecten kunnen meer dan één team hebben. Het maken van een team doet u door **team toevoegen** te kiezen op de pagina **teams** . 
+Elk label project dat u maakt, krijgt standaard een nieuw team met u als lid. Teams kunnen ook tussen projecten worden gedeeld. En projecten kunnen meer dan één team hebben. Als u een team wilt maken, selecteert u **team toevoegen** op de pagina **teams** .
 
-Personen worden beheerd op de pagina **personen** . U kunt personen toevoegen aan en verwijderen uit hun e-mail adres. Elke Labeler moet worden geverifieerd met behulp van hun micro soft-account of Azure Active Directory als u het gebruikt.  
+U beheert personen op de pagina **personen** . Personen toevoegen en verwijderen op e-mail adres. Elke Labeler moet worden geverifieerd via uw Microsoft-account of Azure Active Directory als u deze gebruikt.  
 
-Zodra u een persoon hebt toegevoegd, kunt u deze toewijzen aan een of meer teams. Ga naar de pagina **teams** , selecteer het specifieke team waarin u geïnteresseerd bent en gebruik vervolgens **personen toewijzen** of **Verwijder mensen** naar wens.
+Nadat u een persoon hebt toegevoegd, kunt u die persoon toewijzen aan een of meer teams: Ga naar de pagina **teams** , selecteer het team en selecteer vervolgens **personen toewijzen** of **personen verwijderen**.
 
-Als u ooit een e-mail naar iedereen in het team wilt verzenden, kunt u dit doen door het team te kiezen om de pagina **Team Details** te openen. Op deze pagina wordt uw e-mail editor door de knop **e-mail team** geopend met de adressen van iedereen in het team.
+Als u een e-mail bericht wilt verzenden naar het team, selecteert u het team om de pagina **Team Details** weer te geven. Selecteer op deze pagina **e-mail team** om een e-mail concept te openen met de adressen van iedereen in het team.
 
 ## <a name="run-and-monitor-the-project"></a>Het project uitvoeren en bewaken
 
-Zodra het project is geïnitialiseerd, wordt het met Azure gestart. Als u op de hoofd pagina voor **labelen** op het project klikt, wordt u naar **Project Details**geleid. Op het tabblad **dash board** ziet u de voortgang van de taak labelen. 
+Nadat u het project hebt geïnitialiseerd, wordt het met Azure gestart. Selecteer het project op de hoofd pagina **labelen** om naar **Project Details**te gaan. Op het tabblad **dash board** ziet u de voortgang van de taak labelen.
 
-Op het tabblad **gegevens** kunt u uw gegevensset bekijken en gelabelde gegevens bekijken. Als u onjuist gelabelde gegevens ziet, kunt u deze **selecteren** en vervolgens **weigeren**kiezen, waardoor de labels worden verwijderd en de gegevens weer in de niet-gelabelde wachtrij worden geplaatst. 
+Op het tabblad **gegevens** kunt u uw gegevensset bekijken en gelabelde gegevens bekijken. Als u onjuist gelabelde gegevens ziet, selecteert u deze en kiest u **weigeren**, waardoor de labels worden verwijderd en de gegevens weer in de niet-gelabelde wachtrij worden geplaatst.
 
-Op het tabblad **team** kunt u teams aan dit project toewijzen of de toewijzing ervan opheffen. 
+Gebruik het tabblad **team** om teams toe te wijzen of te verwijderen aan het project.
 
-Als u het project offline of online wilt halen, kiest u de knop **pause**/**Start** , waarmee u de actieve status van het project kunt in-of uitschakelen.
+Selecteer de knop **pause**/**Start** om het project te onderbreken of opnieuw te starten. U kunt alleen gegevens labelen wanneer het project wordt uitgevoerd.
 
-U kunt gegevens rechtstreeks labelen op de pagina **Project Details** door **Label gegevens**te selecteren. U kunt alleen gegevens labelen wanneer het project wordt uitgevoerd. 
+U kunt gegevens rechtstreeks labelen op de pagina **Project Details** door **Label gegevens**te selecteren.
 
 ## <a name="export-the-labels"></a>De labels exporteren
 
-U kunt op elk gewenst moment de label gegevens exporteren voor machine learning experimenten. Labels van afbeeldingen kunnen worden geëxporteerd in [Coco-indeling](http://cocodataset.org/#format-data) of als een Azure ml-gegevensset. U vindt de knop **exporteren** op de pagina **Project Details** van het label project.
+U kunt de label gegevens voor Machine Learning experimenten op elk gewenst moment exporteren. Labels van afbeeldingen kunnen worden geëxporteerd in [Coco-indeling](http://cocodataset.org/#format-data) of als een Azure machine learning-gegevensset. Gebruik de knop **exporteren** op de pagina **Project Details** van het label project.
 
-Het COCO-bestand wordt gemaakt in de standaard-Blob-opslag van de Azure ML-werk ruimte in een map in **export-Coco**. U kunt de geëxporteerde Azure ML-gegevensset openen via de sectie **gegevens sets** van Azure machine learning. De pagina Details van gegevensset biedt ook voorbeeld code voor toegang tot uw labels vanuit Python.
+Het COCO-bestand wordt gemaakt in de standaard-Blob-opslag van de Azure Machine Learning werk ruimte in een map in *export-Coco*. U kunt toegang krijgen tot de geëxporteerde Azure Machine Learning-gegevensset in het gedeelte **gegevens sets** van machine learning. De pagina Details gegevensset biedt ook voorbeeld code voor toegang tot uw labels vanuit Python.
 
 ![Geëxporteerde gegevensset](media/how-to-create-labeling-projects/exported-dataset.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Label afbeeldingen voor [afbeeldings classificatie of object detectie](how-to-label-images.md)
-* Meer informatie over [Azure machine learning en Studio](../compare-azure-ml-to-studio-classic.md)
+* Meer informatie over [Azure machine learning en machine learning Studio (klassiek)](../compare-azure-ml-to-studio-classic.md)

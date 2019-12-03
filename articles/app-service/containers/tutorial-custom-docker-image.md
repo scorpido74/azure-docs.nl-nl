@@ -1,28 +1,21 @@
 ---
-title: Een aangepaste installatie kopie maken en uitvoeren in App Service vanuit een persoonlijk REGI ster
-description: Een aangepaste Docker-installatiekopie voor Web App for Containers gebruiken.
+title: 'Zelf studie: een aangepaste installatie kopie maken en uitvoeren'
+description: Meer informatie over het bouwen van een aangepaste Linux-installatie kopie die kan worden uitgevoerd op Azure App Service, deze implementeren in azure-container registers en deze uitvoeren in App Service.
 keywords: azure-app-service, web-app, linux, docker, container
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 07d5b718cb96a938cb6e796e1cf4864851433516
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d960af01eed9fae0fec2566772799e4972053d7b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070940"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687497"
 ---
-# <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Zelfstudie: Een aangepaste installatie kopie maken en uitvoeren in App Service vanuit een persoonlijk REGI ster
+# <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Zelf studie: een aangepaste installatie kopie maken en uitvoeren in App Service vanuit een persoonlijk REGI ster
 
 [App service](app-service-linux-intro.md) biedt ingebouwde docker-installatie kopieën op Linux met ondersteuning voor specifieke versies, zoals PHP 7,3 en node. js 10,14. App Service maakt gebruik van de docker-container technologie voor het hosten van zowel ingebouwde installatie kopieën als aangepaste installatie kopieën als een platform als een service. In deze zelf studie leert u hoe u een aangepaste installatie kopie maakt en deze uitvoert in App Service. Dit patroon is handig als de taal van keuze niet is inbegrepen in de ingebouwde installatiekopieën, of wanneer uw toepassing een specifieke configuratie vereist die niet door de ingebouwde installatiekopieën wordt verschaft.
 
@@ -84,7 +77,7 @@ EXPOSE 8000 2222
 ENTRYPOINT ["init.sh"]
 ```
 
-Bouw de docker-installatie kopie `docker build` met de opdracht.
+Bouw de docker-installatie kopie met de opdracht `docker build`.
 
 ```bash
 docker build --tag mydockerimage .
@@ -120,7 +113,7 @@ az acr create --name <azure-container-registry-name> --resource-group myResource
 
 ### <a name="sign-in-to-azure-container-registry"></a>Aanmelden bij Azure Container Registry
 
-Als u een installatie kopie naar het REGI ster wilt pushen, moet u zich verifiëren met het persoonlijke REGI ster. Gebruik in de Cloud shell de [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az-acr-show) opdracht om de referenties op te halen uit het REGI ster dat u hebt gemaakt.
+Als u een installatie kopie naar het REGI ster wilt pushen, moet u zich verifiëren met het persoonlijke REGI ster. Gebruik in de Cloud Shell de [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az-acr-show) opdracht om de referenties op te halen uit het REGI ster dat u hebt gemaakt.
 
 ```azurecli-interactive
 az acr credential show --name <azure-container-registry-name>
@@ -144,7 +137,7 @@ De uitvoer toont twee wacht woorden samen met de gebruikers naam.
 }
 ```
 
-Meld u vanuit uw lokale terminal venster aan bij de Azure container Registry met behulp van de `docker login` opdracht, zoals wordt weer gegeven in het volgende voor beeld. *Vervang\<Azure-container-Registry-name >* en  *\<REGI ster-gebruikers naam >* door waarden voor het REGI ster. Wanneer u hierom wordt gevraagd, typt u een van de wacht woorden uit de vorige stap.
+Meld u vanuit uw lokale terminal venster aan bij de Azure Container Registry met behulp van de `docker login` opdracht, zoals wordt weer gegeven in het volgende voor beeld. Vervang *\<Azure-container-Registry-name >* en *\<registry-username >* door waarden voor het REGI ster. Wanneer u hierom wordt gevraagd, typt u een van de wacht woorden uit de vorige stap.
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <registry-username>
@@ -185,7 +178,7 @@ U moet de volgende uitvoer ophalen.
 
 ### <a name="create-web-app"></a>Een web-app maken
 
-Maak in de Cloud Shell een [web-app](app-service-linux-intro.md) in het `myAppServicePlan`App Service-plan met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). _Vervang\<app-name >_ door een unieke app-naam en  _\<Azure-container-Registry-name >_ met de register naam.
+Maak in de Cloud Shell een [web-app](app-service-linux-intro.md) in het `myAppServicePlan`App Service-plan met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Vervang _\<app-naam >_ door een unieke app-naam en _\<Azure-container-registry-name >_ met de register naam.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -210,19 +203,19 @@ Wanneer de web-app is gemaakt, toont de Azure CLI soortgelijke uitvoer als in he
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Register referenties configureren in de web-app
 
-Als App Service de persoonlijke installatie kopie wilt ophalen, heeft deze informatie nodig over het REGI ster en de installatie kopie. Geef [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) de opdracht op in de Cloud shell. *Vervang\<app-name >* ,  *\<Azure-container-Registry-name >* ,  _\<REGI ster-gebruikers naam >_ en  _\<wacht woord >_ .
+Als App Service de persoonlijke installatie kopie wilt ophalen, heeft deze informatie nodig over het REGI ster en de installatie kopie. Geef in de Cloud Shell de [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) -opdracht op. Vervang *\<-app-naam >* , *\<Azure-container-registry-name >* , _\<Registry-gebruikers naam >_ en _\<wachtwoord >_ .
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
 ```
 
 > [!NOTE]
-> Wanneer u een ander REGI ster dan docker hub `--docker-registry-server-url` gebruikt, moet dit `https://` worden geformatteerd als gevolgd door de Fully Qualified Domain name van het REGI ster.
+> Wanneer u een ander REGI ster dan docker hub gebruikt, moet `--docker-registry-server-url` worden geformatteerd als `https://` gevolgd door de Fully Qualified Domain Name van het REGI ster.
 >
 
 ### <a name="configure-environment-variables"></a>Omgevingsvariabelen configureren
 
-De meeste docker-installatie kopieën gebruiken aangepaste omgevings variabelen, zoals een andere poort dan 80. U vertelt app service over de poort die uw installatie kopie gebruikt met behulp van de `WEBSITES_PORT` app-instelling. De GitHub-pagina voor het [Python-voorbeeld in deze zelfstudie](https://github.com/Azure-Samples/docker-django-webapp-linux) laat zien dat u `WEBSITES_PORT` in moet stellen op _8000_.
+De meeste docker-installatie kopieën gebruiken aangepaste omgevings variabelen, zoals een andere poort dan 80. U vertelt App Service over de poort die wordt gebruikt door de installatie kopie met behulp van de `WEBSITES_PORT` app-instelling. De GitHub-pagina voor het [Python-voorbeeld in deze zelfstudie](https://github.com/Azure-Samples/docker-django-webapp-linux) laat zien dat u `WEBSITES_PORT` in moet stellen op _8000_.
 
 Gebruik de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell om de app-instellingen in te stellen. App-instellingen zijn hoofdlettergevoelig en door spaties gescheiden.
 
@@ -277,7 +270,7 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. Als 
     > [!NOTE]
     > Deze configuratie staat geen externe verbindingen naar de container toe. SSH is alleen beschikbaar via de Kudu/SCM-Site. De kudu/SCM-site wordt geverifieerd met uw Azure-account.
 
-* De [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) kopieert het [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) -bestand in de opslag plaats naar de map */etc/ssh/* .
+* De [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) kopieert het [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) -bestand in de opslag plaats naar de */etc/ssh/* -map.
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
@@ -298,7 +291,7 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. Als 
 
 ### <a name="open-ssh-connection-to-container"></a>SSH-verbinding met de container openen
 
-SSH-verbinding is alleen beschikbaar via de kudu-site, die toegankelijk `https://<app-name>.scm.azurewebsites.net`is op.
+SSH-verbinding is alleen beschikbaar via de kudu-site, die toegankelijk is op `https://<app-name>.scm.azurewebsites.net`.
 
 Als u wilt verbinden, bladert u naar `https://<app-name>.scm.azurewebsites.net/webssh/host` en meldt u zich aan met uw Azure-account.
 
@@ -346,7 +339,7 @@ Wat u hebt geleerd:
 Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aan uw app kunt toewijzen.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
+> [Zelf studie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
 
 U kunt ook andere resources bekijken:
 
@@ -354,4 +347,4 @@ U kunt ook andere resources bekijken:
 > [Aangepaste container configureren](configure-custom-container.md)
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: WordPress-app met meerdere containers](tutorial-multi-container-app.md)
+> [Zelf studie: WordPress-app met meerdere containers](tutorial-multi-container-app.md)

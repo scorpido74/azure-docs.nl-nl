@@ -1,30 +1,21 @@
 ---
-title: Een C# ASP.NET Core-web-app maken - Azure App Service | Microsoft Docs
-description: Leer hoe u web-apps uitvoert in Azure App Service door de standaard C# ASP.NET Core-web-app te implementeren.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: 'Snelstartgids: een C# ASP.net core-app maken'
+description: Meer informatie over het uitvoeren van web-apps in Azure App Service door C# de standaard sjabloon voor ASP.net core web-apps te implementeren vanuit Visual Studio.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/30/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 919e717811b3b04ca7407772fcf11f293d58508c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 285e4cc1f38dd2adb5934e49d87b43e09d74ce11
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471608"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672111"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Een ASP.NET Core-web-app maken in Azure
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie _Een .NET Core-web-app maken en implementeren in App Service onder Linux_  om een app te implementeren in App Service onder [Linux](./containers/quickstart-dotnetcore.md).
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een .NET Core-web-app maken en implementeren in App Service onder Linux ](./containers/quickstart-dotnetcore.md) om een app te implementeren in App Service onder _Linux_.
 >
 
 [Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.
@@ -95,7 +86,7 @@ Maak een ASP.NET Core-web-app door de volgende stappen uit te voeren:
    | Instelling | Voorgestelde waarde | Beschrijving |
    |-|-|-|
    |App Service-plan| myAppServicePlan | De naam van het App Service-plan. |
-   | Locatie | Europa -west | Het datacenter waar de web-app wordt gehost. |
+   | Locatie | Europa - west | Het datacenter waar de web-app wordt gehost. |
    | Grootte | Gratis | De [prijscategorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bepaalt de hosting-functies. |
 
    ![Een App Service-plan maken](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)
