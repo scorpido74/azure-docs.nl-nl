@@ -1,6 +1,6 @@
 ---
-title: Toegang tot Azure-resources voor externe gast gebruikers beheren met RBAC | Microsoft Docs
-description: Meer informatie over het beheren van toegang tot Azure-resources voor gebruikers buiten een organisatie met behulp van op rollen gebaseerd toegangs beheer (RBAC).
+title: Roltoewijzingen toevoegen aan of verwijderen uit externe gast gebruikers met behulp van Azure RBAC en de Azure Portal
+description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers buiten een organisatie met behulp van Azure op rollen gebaseerd toegangs beheer (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,20 +12,26 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/12/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555550"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707887"
 ---
-# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Toegang tot Azure-resources beheren voor externe gast gebruikers met RBAC
+# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Roltoewijzingen toevoegen aan of verwijderen uit externe gast gebruikers met behulp van Azure RBAC en de Azure Portal
 
-Op rollen gebaseerd toegangs beheer (RBAC) biedt betere beveiliging voor grote organisaties en voor kleine en middel grote bedrijven met externe deel nemers, leveranciers of freelancers die toegang nodig hebben tot specifieke bronnen in uw omgeving, maar niet noodzakelijkerwijs de volledige infra structuur of een facturerings bereik. U kunt de mogelijkheden van [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) gebruiken om samen te werken met externe gast gebruikers en u kunt RBAC gebruiken om alleen de machtigingen te verlenen die gast gebruikers in uw omgeving nodig hebben.
+[Op rollen gebaseerd toegangs beheer (RBAC) van Azure](overview.md) is een betere beveiliging mogelijk voor grote organisaties en voor kleine en middel grote bedrijven met externe deel nemers, leveranciers of freelancers die toegang nodig hebben tot specifieke bronnen in uw omgeving, maar niet noodzakelijkerwijs voor de hele infra structuur of een facturerings bereik. U kunt de mogelijkheden van [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) gebruiken om samen te werken met externe gast gebruikers en u kunt RBAC gebruiken om alleen de machtigingen te verlenen die gast gebruikers in uw omgeving nodig hebben.
+
+## <a name="prerequisites"></a>Vereisten
+
+Om roltoewijzingen toe te voegen of te verwijderen, hebt u het volgende nodig:
+
+- `Microsoft.Authorization/roleAssignments/write`-en `Microsoft.Authorization/roleAssignments/delete` machtigingen, zoals beheerder of [eigenaar](built-in-roles.md#owner) van [gebruikers toegang](built-in-roles.md#user-access-administrator)
 
 ## <a name="when-would-you-invite-guest-users"></a>Wanneer wilt u gast gebruikers uitnodigen?
 
@@ -61,9 +67,9 @@ De gast gebruiker moet het uitnodigings proces volt ooien om toegang te kunnen k
 
 Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-directory/b2b/redemption-experience.md)voor meer informatie over het uitnodigings proces.
 
-## <a name="grant-access-to-a-guest-user"></a>Toegang verlenen aan een gast gebruiker
+## <a name="add-a-role-assignment-for-a-guest-user"></a>Een roltoewijzing voor een gast gebruiker toevoegen
 
-In RBAC kunt u een rol toewijzen om toegang te verlenen. Als u toegang wilt verlenen aan een gast gebruiker, voert u [dezelfde stappen uit](role-assignments-portal.md#add-a-role-assignment) als voor een gebruiker, groep, Service-Principal of beheerde identiteit. Volg deze stappen om toegang te verlenen aan een gast gebruiker op verschillende bereiken.
+In RBAC kunt u een rol toewijzen om toegang te verlenen. Als u een roltoewijzing wilt toevoegen voor een gast gebruiker, voert u [dezelfde stappen uit](role-assignments-portal.md#add-a-role-assignment) als voor een gebruiker, groep, Service-Principal of beheerde identiteit. Volg deze stappen om een roltoewijzing voor een gast gebruiker in verschillende bereiken toe te voegen.
 
 1. Klik in Azure Portal op **Alle services**.
 
@@ -95,9 +101,9 @@ In RBAC kunt u een rol toewijzen om toegang te verlenen. Als u toegang wilt verl
 
     ![Roltoewijzing voor Inzender voor virtuele machines](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>Toegang verlenen aan een gast gebruiker die nog niet in uw directory is
+## <a name="add-a-role-assignment-for-a-guest-user-not-yet-in-your-directory"></a>Een roltoewijzing voor een gast gebruiker toevoegen die nog niet in uw directory is
 
-In RBAC kunt u een rol toewijzen om toegang te verlenen. Als u toegang wilt verlenen aan een gast gebruiker, voert u [dezelfde stappen uit](role-assignments-portal.md#add-a-role-assignment) als voor een gebruiker, groep, Service-Principal of beheerde identiteit.
+Als u een roltoewijzing wilt toevoegen voor een gast gebruiker, voert u [dezelfde stappen uit](role-assignments-portal.md#add-a-role-assignment) als voor een gebruiker, groep, Service-Principal of beheerde identiteit.
 
 Als de gast gebruiker zich nog niet in uw directory bevindt, kunt u de gebruiker rechtstreeks uitnodigen vanuit het deel venster roltoewijzing toevoegen.
 
@@ -179,7 +185,7 @@ Als een gast gebruiker in de Directory extra bevoegdheden nodig heeft, kunt u ee
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>Gast gebruiker kan niet bladeren naar gebruikers, groepen of service-principals om rollen toe te wijzen
 
-Gast gebruikers hebben beperkte mapmachtigingen. Zelfs als een gast gebruiker een rol is die [eigenaar](built-in-roles.md#owner) is van een bereik, kunt u, als ze een roltoewijzing proberen te maken om iemand anders toegang te verlenen, niet bladeren in de lijst met gebruikers, groepen of service-principals.
+Gast gebruikers hebben beperkte mapmachtigingen. Zelfs als een gast [gebruiker een roltoewijzing](built-in-roles.md#owner) moet toevoegen om iemand anders toegang te verlenen, kunnen ze niet door de lijst met gebruikers, groepen of service-principals bladeren.
 
 ![Gast gebruiker kan niet bladeren in beveiligings-principals om rollen toe te wijzen](./media/role-assignments-external-users/directory-no-browse.png)
 

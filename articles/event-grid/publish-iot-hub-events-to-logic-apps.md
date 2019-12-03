@@ -1,18 +1,18 @@
 ---
 title: Zelf studie-IoT Hub gebeurtenissen gebruiken om Azure Logic Apps te activeren
-description: 'Zelf studie: de service voor gebeurtenis routering van Azure Event Grid gebruiken om geautomatiseerde processen te maken om Azure Logic Apps acties uit te voeren op basis van IoT Hub gebeurtenissen.'
+description: In deze zelf studie ziet u hoe u de service voor gebeurtenis routering van Azure Event Grid kunt gebruiken om geautomatiseerde processen te maken om Azure Logic Apps acties op basis van IoT Hub gebeurtenissen uit te voeren.
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
-ms.openlocfilehash: 70ad74715446a54605a23a049ebc92a81d7ee673
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 334b7b2c59b328e8eff3c7c2b9c3ed46bffc3442
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423740"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706439"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Zelf studie: e-mail meldingen over Azure IoT Hub-gebeurtenissen verzenden met behulp van Event Grid en Logic Apps
 
@@ -216,7 +216,7 @@ Test de logische app door een nieuw apparaat te maken om zo een e-mail voor meld
 
 2. Selecteer **Nieuw**.
 
-3. Geef **op voor**Apparaat-ID`Building1_Floor1_Room1_Light`.
+3. Geef `Building1_Floor1_Room1_Light` op voor **Apparaat-ID**.
 
 4. Selecteer **Opslaan**. 
 

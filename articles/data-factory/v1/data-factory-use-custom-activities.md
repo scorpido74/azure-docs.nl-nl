@@ -13,16 +13,16 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8826dd51766ee0d1059ab73046e7e078f27a8e03
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990656"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703329"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Aangepaste activiteiten gebruiken in een Azure Data Factory-pijplijn)
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](data-factory-use-custom-activities.md)
+> * [Versie 1](data-factory-use-custom-activities.md)
 > * [Versie 2 (huidige versie)](../transform-data-using-dotnet-custom-activity.md)
 
 > [!NOTE]
@@ -68,7 +68,7 @@ Voor de zelf studie maakt u een Azure Batch-account met een groep Vm's. Dit zijn
       3. Selecteer een **prijs categorie voor het knoop punt**.
       4. Voer **2** in als waarde voor de **toegewezen doel** instelling.
       5. Voer **2** als waarde in voor de **maximum aantal taken per knoop punt** .
-   5. Klik op **OK** om de pool te maken.
+   5. Klik op **OK** om de groep te maken.
    6. Noteer de **id** van de pool.
 
 ### <a name="high-level-steps"></a>Stappen op hoog niveau
@@ -106,7 +106,7 @@ De-methode retourneert een woorden lijst die kan worden gebruikt om aangepaste a
      <li>Selecteer <b>Class Library</b> in de lijst met project typen aan de rechter kant. Kies in Visual Studio <b>Class Library (.NET Framework)</b> </li>
      <li>Voer <b>MyDotNetActivity</b> in als <b>naam</b>.</li>
      <li>Selecteer <b>C:\ADFGetStarted</b> voor de <b>locatie</b>.</li>
-     <li>Klik op <b>OK</b> om het project aan te maken.</li>
+     <li>Klik op <b>OK</b> om het project te maken.</li>
    </ol>
 
 2. Klik op **Tools**, wijs **NuGet Package Manager** aan en klik op **Package Manager Console**.
@@ -455,7 +455,7 @@ Met gekoppelde services worden gegevensarchieven of compute-services gekoppeld a
    1. Geef Azure Batch account naam op voor de eigenschap **AccountName** . De **URL** van de **Blade Azure batch account** heeft de volgende indeling: `http://accountname.region.batch.azure.com`. Voor de eigenschap **batchUri** in de JSON moet u `accountname.` verwijderen uit de URL en de `accountname` voor de JSON-eigenschap `accountName` gebruiken.
    2. Geef de sleutel van het Azure Batch-account op voor de eigenschap **accessKey** .
    3. Geef de naam op van de groep die u hebt gemaakt als onderdeel van vereisten voor de eigenschap **pool** naam. U kunt ook de ID van de pool opgeven in plaats van de naam van de pool.
-   4. Geef Azure Batch URI op voor de eigenschap **batchUri** . Voorbeeld: `https://westus.batch.azure.com`.
+   4. Geef Azure Batch URI op voor de eigenschap **batchUri** . Voor beeld: `https://westus.batch.azure.com`.
    5. Geef de **AzureStorageLinkedService** op voor de eigenschap **linkedServiceName** .
 
         ```json
@@ -722,7 +722,7 @@ Het oplossen van problemen bestaat uit een aantal basis technieken:
 Als u de code voor de aangepaste activiteit bijwerkt, bouwt u deze op en uploadt u het zip-bestand dat nieuwe binaire bestanden bevat naar de Blob-opslag.
 
 ## <a name="appdomain-isolation"></a>AppDomain-isolatie
-Zie [Cross AppDomain voor beeld](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) waarin wordt uitgelegd hoe u een aangepaste activiteit maakt die niet is beperkt tot assembly versies die worden gebruikt door de Data Factory Launcher (bijvoorbeeld: WindowsAzure. Storage v 4.3.0, Newton soft. json v 6.0. x, enzovoort).
+Zie [Cross AppDomain voor beeld](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) waarin wordt uitgelegd hoe u een aangepaste activiteit maakt die niet is beperkt tot assembly versies die worden gebruikt door de Data Factory Launcher (bijvoorbeeld: WindowsAzure. Storage v 4.3.0, Newton soft. json v 6.0. x, enzovoort).
 
 ## <a name="access-extended-properties"></a>Uitgebreide eigenschappen van Access
 U kunt uitgebreide eigenschappen declareren in de JSON van de activiteit, zoals wordt weer gegeven in het volgende voor beeld:

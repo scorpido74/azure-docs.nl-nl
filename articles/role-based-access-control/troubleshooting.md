@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 2351e6a63723156cce646a6a1cdda837b18a8f91
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 5429ebb611f852f7672d89de190ddd68dbcb01cf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456834"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707783"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Problemen met RBAC voor Azure-resources oplossen
 
@@ -90,7 +90,7 @@ Ook als u deze roltoewijzing met behulp van Azure CLI vermeldt, ziet u een leeg 
 }
 ```
 
-Het is geen probleem om deze roltoewijzingen te verlaten, maar u kunt ze wel verwijderen met behulp van stappen die vergelijkbaar zijn met andere roltoewijzingen. Zie [Azure Portal](role-assignments-portal.md#remove-role-assignments), [Azure POWERSHELL](role-assignments-powershell.md#remove-access)of [Azure cli](role-assignments-cli.md#remove-access) (Engelstalig) voor meer informatie over het verwijderen van roltoewijzingen
+Het is geen probleem om deze roltoewijzingen te verlaten, maar u kunt ze wel verwijderen met behulp van stappen die vergelijkbaar zijn met andere roltoewijzingen. Zie [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)of [Azure cli](role-assignments-cli.md#remove-a-role-assignment) (Engelstalig) voor meer informatie over het verwijderen van roltoewijzingen
 
 Als u in Power shell probeert de roltoewijzingen te verwijderen met de naam van de object-ID en roldefinitie en er meer dan één roltoewijzing overeenkomt met de para meters, wordt het volgende fout bericht weer gegeven: ' de opgegeven informatie is niet toegewezen aan een roltoewijzing '. Hieronder ziet u een voor beeld van het fout bericht:
 
@@ -164,7 +164,7 @@ Voor deze items is **Schrijf** toegang tot de **virtuele machine**vereist:
 
 * Eindpunten  
 * IP-adressen  
-* Disks  
+* Schijven  
 * Extensies  
 
 Hiervoor is **Schrijf** toegang vereist voor zowel de **virtuele machine**als de **resource groep** (samen met de domein naam) waarin deze zich bevindt:  

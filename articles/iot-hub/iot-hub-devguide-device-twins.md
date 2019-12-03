@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 406f6f7a3db5f63fb50242a93f021c481631adaa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a800336fb6fda8a0ed0af71f243936d29e8079e7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209722"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706832"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Apparaat-apparaatdubbels in IoT Hub begrijpen en gebruiken
 
@@ -21,7 +21,7 @@ ms.locfileid: "74209722"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Dit artikel wordt beschreven:
+In dit artikel wordt beschreven:
 
 * De structuur van het apparaat: *labels*, *gewenste* en *gerapporteerde eigenschappen*.
 * De bewerkingen die apps en back-ends van apparaten kunnen uitvoeren op apparaat apparaatdubbels.
@@ -187,7 +187,7 @@ De back-end van de oplossing werkt op het apparaat tussen het gebruik van de vol
     $content-type | application/json |
     $iothub-enqueuedtime |  Tijdstip waarop de melding is verzonden |
     $iothub-bericht bron | twinChangeEvents |
-    $content-encoding | utf-8 |
+    $content-encoding | UTF-8 |
     deviceId | ID van het apparaat |
     hubName | Naam van IoT Hub |
     operationTimestamp | [Iso8601](https://en.wikipedia.org/wiki/ISO_8601) tijds tempel van bewerking |
@@ -285,7 +285,7 @@ Labels, gewenste eigenschappen en gerapporteerde eigenschappen zijn JSON-objecte
 
 ## <a name="device-twin-size"></a>Dubbele grootte van apparaat
 
-IoT Hub dwingt een limiet van 8 kB af voor elk van de respectieve totale waarden van `tags`, `properties/desired`en `properties/reported`, met uitzonde ring van alleen-lezen elementen.
+IoT Hub dwingt een maximale grootte van 8 KB af voor de waarde van `tags`en een maximale grootte van 32 KB voor elke waarde van `properties/desired` en `properties/reported`. Deze totalen zijn uitsluitend van elementen met het kenmerk alleen-lezen.
 
 De grootte wordt berekend door alle tekens te tellen, met uitzonde ring van UNICODE-besturings tekens (segmenten C0 en C1) en spaties die zich buiten teken reeks constanten bevinden.
 

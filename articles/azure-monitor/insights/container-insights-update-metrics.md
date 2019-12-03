@@ -7,27 +7,27 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/11/2019
-ms.openlocfilehash: 8fb1c6c65ab9c38ef16cfbc20435b35d0c7a7ce5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5a43d7e23c9d6550e8985599786ff968050f19c1
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279621"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707488"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Azure Monitor voor containers bijwerken om metrische gegevens in te scha kelen
 
 Azure Monitor voor containers wordt ondersteuning geïntroduceerd voor het verzamelen van metrische gegevens van knoop punten van Azure Kubernetes Services (AKS) en van peulen en het schrijven naar de opslag voor de Azure Monitor metrische gegevens. Deze wijziging is bedoeld om een verbeterde tijd lijn te bieden bij het presen teren van geaggregeerde berekeningen (Gem, aantal, Max, min, Sum) in prestatie grafieken, ondersteuning voor het vastmaken van prestatie grafieken in Azure Portal Dash boards en het ondersteunen van metrische waarschuwingen.
 
 >[!NOTE]
->Deze functie biedt momenteel geen ondersteuning voor Red Hat open Shift-clusters.
+>Deze functie biedt momenteel geen ondersteuning voor Azure Red Hat open Shift-clusters.
 >
 
 De volgende metrische gegevens zijn ingeschakeld als onderdeel van deze functie:
 
 | Metrische naam ruimte | Gegevens | Beschrijving |
 |------------------|--------|-------------|
-| insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Dit zijn metrische gegevens van *knoop punten* en *host* als een dimensie, en ze bevatten ook de<br> de naam van het knoop punt als waarde voor de *host* -dimensie. |
-| insights.container/pods | podCount | Dit zijn *pod* metrische gegevens en bevatten de volgende dimensies: dimensie-controller naam, naam ruimte van Kubernetes, name, Phase. |
+| inzichten. container/knoop punten | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Dit zijn metrische gegevens van *knoop punten* en *host* als een dimensie, en ze bevatten ook de<br> de naam van het knoop punt als waarde voor de *host* -dimensie. |
+| inzichten. container/peul | podCount | Dit zijn *pod* metrische gegevens en bevatten de volgende dimensies: dimensie-controller naam, naam ruimte van Kubernetes, name, Phase. |
 
 Het bijwerken van het cluster ter ondersteuning van deze nieuwe mogelijkheden kan worden uitgevoerd vanuit de Azure Portal, Azure PowerShell of met Azure CLI. Met Azure PowerShell en CLI kunt u dit per cluster of voor alle clusters in uw abonnement inschakelen. Nieuwe implementaties van AKS bevatten automatisch deze configuratie wijziging en mogelijkheden.
 
@@ -40,7 +40,7 @@ Voordat u begint, controleert u het volgende:
 * Aangepaste metrische gegevens zijn alleen beschikbaar in een subset van Azure-regio's. [Hier](../platform/metrics-custom-overview.md#supported-regions)wordt een lijst met ondersteunde regio's beschreven.
 * U bent lid van de rol **[eigenaar](../../role-based-access-control/built-in-roles.md#owner)** op de AKS-cluster bron om het verzamelen van aangepaste prestatie gegevens voor knoop punten en pod in te scha kelen. 
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Een cluster upgraden van de Azure Portal
 
@@ -62,7 +62,7 @@ Voer de volgende stappen uit om alle clusters in uw abonnement bij te werken met
     curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
-    Het kan een paar seconden duren voordat de configuratie wijziging is voltooid. Wanneer deze voltooid, wordt er een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
+    Het kan een paar seconden duren voordat de configuratie wijziging is voltooid. Wanneer de service is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat:
 
     ```azurecli
     completed role assignments for all AKS clusters in subscription: <subscriptionId>
@@ -331,7 +331,7 @@ Voer de volgende stappen uit om alle clusters in uw abonnement bij te werken met
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
     ```
-    Het kan een paar seconden duren voordat de configuratie wijziging is voltooid. Wanneer deze voltooid, wordt er een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
+    Het kan een paar seconden duren voordat de configuratie wijziging is voltooid. Wanneer de service is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat:
 
     ```powershell
     Completed adding role assignment for the aks clusters in subscriptionId :<subscriptionId>
@@ -582,7 +582,7 @@ Voer de volgende stappen uit om een specifiek cluster bij te werken met Azure Po
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
-    Het kan een paar seconden duren voordat de configuratie wijziging is voltooid. Wanneer deze voltooid, wordt er een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
+    Het kan een paar seconden duren voordat de configuratie wijziging is voltooid. Wanneer de service is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat:
 
     ```powershell
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>

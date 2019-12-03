@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24279ff81daf0a350aa5234e78f27a99b7e4a03e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4b64c420290bec687388690f1c901c2ae789a3c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528028"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707551"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Werken met NSG-toegang en Azure Bastion
 
@@ -58,7 +58,7 @@ Als u een NSG maakt en toepast op ***AzureBastionSubnet***, moet u ervoor zorgen
 * **Logboek registratie van diagnostische gegevens en anderen:** Uitgaand op 443 tot cloud. Regionale Tags binnen deze service code worden nog niet ondersteund.
 * **Doel-VM:** Uitgaand voor 3389 en 22 tot VirtualNetwork
 
-Een voor beeld van een NSG-regel is beschikbaar als referentie in deze Quick Start- [sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion).
+Een voor beeld van een NSG-regel is beschikbaar als referentie in deze Quick Start- [sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg).
 
 ## <a name="next-steps"></a>Volgende stappen
 

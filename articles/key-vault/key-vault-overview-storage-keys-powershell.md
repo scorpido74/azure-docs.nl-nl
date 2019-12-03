@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 225d9b715c56e4813a8e26d881c876e7bd498155
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 46e6f19a071986cf12590e9bd5c420e070572a14
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204211"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707107"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Sleutels voor opslag accounts beheren met Key Vault en Azure PowerShell
 
@@ -42,11 +42,11 @@ Een Azure AD-Tenant voorziet elke geregistreerde toepassing van een [Service-Pri
 
 Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure AD-tenants. Key Vault is geregistreerd onder dezelfde toepassings-ID in elke Azure-Cloud.
 
-| tenants | Cloud | Toepassings-id |
+| Tenants | Cloud | Toepassings-id |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Azure openbaar | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Overige  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Open bare Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Overige  | Alle | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -74,7 +74,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>Variabelen instellen
 
-Stel eerst de variabelen in die moeten worden gebruikt door de Power shell-cmdlets in de volgende stappen. Zorg ervoor dat u de <YourResourceGroupName>tijdelijke <YourStorageAccountName>aanduidingen <YourKeyVaultName> ,,, en $keyVaultSpAppId instelt op `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (zoals opgegeven in de [Service Principal Application id](#service-principal-application-id)hierboven).
+Stel eerst de variabelen in die moeten worden gebruikt door de Power shell-cmdlets in de volgende stappen. Zorg ervoor dat u de <YourResourceGroupName>, <YourStorageAccountName>en <YourKeyVaultName> tijdelijke aanduidingen bijwerkt en stel $keyVaultSpAppId in op `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (zoals opgegeven in de [Service Principal Application id](#service-principal-application-id)hierboven).
 
 We gebruiken ook de cmdlets Azure PowerShell [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) en [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) om uw gebruikers-id en de context van uw Azure Storage-account op te halen.
 
@@ -133,7 +133,7 @@ Houd er rekening mee dat machtigingen voor opslag accounts niet beschikbaar zijn
 
 ### <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Een beheerd opslag account toevoegen aan uw Key Vault-exemplaar
 
-Gebruik de Azure PowerShell cmdlet [add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) voor het maken van een beheerd opslag account in uw Key Vault-exemplaar. Met `-DisableAutoRegenerateKey` de schakel optie wordt de sleutel van het opslag account niet opnieuw gegenereerd.
+Gebruik de Azure PowerShell cmdlet [add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) voor het maken van een beheerd opslag account in uw Key Vault-exemplaar. Met de schakel optie `-DisableAutoRegenerateKey` geeft u de sleutels voor het opslag account niet opnieuw genereren.
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
@@ -185,18 +185,18 @@ Tags                :
 
 ## <a name="shared-access-signature-tokens"></a>Shared Access Signature-tokens
 
-U kunt ook Key Vault vragen om de tokens voor Shared Access-hand tekeningen te genereren. Een shared access signature biedt gedelegeerde toegang tot resources in uw opslagaccount. U kunt clients toegang verlenen tot resources in uw opslag account zonder uw account sleutels te delen. Een Shared Access Signature biedt u een veilige manier om uw opslag resources te delen zonder in te boeten voor uw account sleutels.
+U kunt ook Key Vault vragen om de tokens voor Shared Access-hand tekeningen te genereren. Een Shared Access Signature biedt gedelegeerde toegang tot resources in uw opslag account. U kunt clients toegang verlenen tot resources in uw opslag account zonder uw account sleutels te delen. Een Shared Access Signature biedt u een veilige manier om uw opslag resources te delen zonder in te boeten voor uw account sleutels.
 
 De opdrachten in deze sectie voeren de volgende acties uit:
 
 - Stel de definitie van een gedeelde toegangs handtekening voor een account in. 
 - Maak een account voor Shared Access Signature-token voor blob-, bestands-, tabel-en wachtrij Services. Het token is gemaakt voor resource type-service,-container en-object. Het token wordt gemaakt met alle machtigingen, via https en met de opgegeven begin-en eind datum.
-- Stel in de kluis een definitie in van een Key Vault Managed Storage-hand tekening voor gedeelde opslag. De definitie heeft de sjabloon-URI van het Shared Access Signature-token dat is gemaakt. De definitie heeft het type `account` Shared Access Signature en is N dagen geldig.
+- Stel in de kluis een definitie in van een Key Vault Managed Storage-hand tekening voor gedeelde opslag. De definitie heeft de sjabloon-URI van het Shared Access Signature-token dat is gemaakt. De definitie heeft het type gedeelde toegangs handtekening `account` en is N dagen geldig.
 - Controleer of de Shared Access-hand tekening is opgeslagen in de sleutel kluis als een geheim.
 - 
 ### <a name="set-variables"></a>Variabelen instellen
 
-Stel eerst de variabelen in die moeten worden gebruikt door de Power shell-cmdlets in de volgende stappen. Zorg ervoor dat u de <YourStorageAccountName> en <YourKeyVaultName> tijdelijke aanduidingen bijwerkt.
+Stel eerst de variabelen in die moeten worden gebruikt door de Power shell-cmdlets in de volgende stappen. Zorg ervoor dat u de tijdelijke aanduidingen <YourStorageAccountName> en <YourKeyVaultName> bijwerkt.
 
 We gebruiken ook de Azure PowerShell [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) -cmdlets om de context van uw Azure Storage-account op te halen.
 
@@ -225,7 +225,7 @@ De waarde van $sasToken ziet er ongeveer als volgt uit.
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Een definitie van een gedeelde Access-hand tekening genereren
 
-Gebruik de Azure PowerShell [set-AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) cmdlet om een definitie van een Shared Access-hand tekening te maken.  U kunt de naam van uw keuze opgeven voor de `-Name` para meter.
+Gebruik de Azure PowerShell [set-AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) cmdlet om een definitie van een Shared Access-hand tekening te maken.  U kunt de naam van uw keuze opgeven voor de para meter `-Name`.
 
 ```azurepowershell-interactive
 Set-AzKeyVaultManagedStorageSasDefinition -AccountName $storageAccountName -VaultName $keyVaultName -Name <YourSASDefinitionName> -TemplateUri $sasToken -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
@@ -238,7 +238,7 @@ U kunt controleren of de definitie van de hand tekening voor gedeelde toegang is
 Zoek eerst de definitie van de hand tekening voor gedeelde toegang in uw sleutel kluis.
 
 ```azurepowershell-interactive
-Get-AzKeyVaultSecret -vault-name <YourKeyVaultName>
+Get-AzKeyVaultSecret -VaultName <YourKeyVaultName>
 ```
 
 Het geheim dat overeenkomt met uw SAS-definitie heeft de volgende eigenschappen:

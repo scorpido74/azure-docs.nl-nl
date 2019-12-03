@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Vragen en antwoorden toevoegen in QnA Maker Portal'
+title: 'Snelstartgids: vragen en antwoorden toevoegen in QnA Maker Portal'
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: ed50e6adbcca7cbb4935400c7850c37dc2ed389f
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: bf88928ca24a1205ec7a1ddd2fd20af0d0e91468
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803535"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422670"
 ---
-# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Quickstart: Vragen toevoegen en een antwoord geven met QnA Maker Portal
+# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Snelstartgids: vragen toevoegen en antwoord geven met QnA Maker Portal
 
 Zodra een Knowledge Base is gemaakt, voegt u vraag-en antwoord sets toe met meta gegevens zodat uw gebruikers het juiste antwoord op hun vraag kunnen vinden.
 
@@ -28,10 +28,10 @@ De vragen in de volgende tabel zijn bijvoorbeeld ongeveer Azure-service limieten
 <a name="qna-table"></a>
 
 
-|Set|Vragen|Antwoord|Metagegevens|
+|Instellen|Vragen|Antwoord|Metagegevens|
 |--|--|--|--|
 |#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
-|#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Search tier supports.`|`service=search`<br>`link_in_answer=false`|
+|#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
 Zodra de meta gegevens zijn toegevoegd aan een vraag-en-antwoordset, kan de client toepassing het volgende doen:
 
@@ -61,7 +61,7 @@ Wanneer deze URL is geïmporteerd, is er slechts één vraag gemaakt met één a
 
 In deze procedure voegt u aanvullende vragen toe.
 
-1. Gebruik op de pagina **bewerken** het tekstvak Zoeken boven de vraag-en-antwoord sets om de vraag `How large a knowledge base can I create?` te vinden
+1. Gebruik op de pagina **bewerken** het tekstvak Zoeken boven de vraag-en-antwoord sets om de vraag te vinden `How large a knowledge base can I create?`
 
 1. Selecteer in de kolom **vraag** **+ alternatieve formule ring** toevoegen en voeg vervolgens elke nieuwe formule ring toe, zoals in de volgende tabel.
 
@@ -92,11 +92,11 @@ Door meta gegevens toe te voegen aan een vraag-en-antwoordset kan uw client toep
 
 1. Selecteer **weergave opties**en selecteer vervolgens **meta gegevens weer geven**. 
 
-1. Voor de vraag en de antwoordset die u zojuist hebt toegevoegd, selecteert u **labels voor meta gegevens toevoegen**en voegt u de naam `service` en de waarde `search`, `service:search` toe.
+1. Voor de vraag en de antwoordset die u zojuist hebt toegevoegd, selecteert u **labels voor meta gegevens toevoegen**en vervolgens de naam `service` en waarde van `search`toevoegen `service:search`.
 
-1. Voeg nog andere meta gegevenslabels toe met de naam `link_in_answer` en de waarde `false`, `link_in_answer:false`.
+1. Voeg nog andere meta gegevenslabels toe met de naam `link_in_answer` en waarde `false`, `link_in_answer:false`.
 
-1. Zoek het eerste antwoord in de tabel, `How large a knowledge base can I create?`. 
+1. Zoek het eerste antwoord in de tabel `How large a knowledge base can I create?`. 
 1. Voeg Meta gegevensparen toe voor dezelfde twee meta gegevenslabels:
 
     `link_in_answer`: `true`<br>
@@ -121,7 +121,7 @@ Door meta gegevens toe te voegen aan een vraag-en-antwoordset kan uw client toep
     curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    U ziet dat de vraag slechts één woord is, `size`, waarmee een vraag en een antwoordset kunnen worden geretourneerd. De matrix `strictFilters` vertelt het antwoord om alleen de `qna_maker`-antwoorden te verminderen. 
+    U ziet dat de vraag slechts één woord is, `size`, waarmee een vraag en een antwoordset kunnen worden geretourneerd. De `strictFilters` matrix vertelt u het antwoord om alleen de `qna_maker`-antwoorden te verminderen. 
 
     [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
 
@@ -171,9 +171,9 @@ Door meta gegevens toe te voegen aan een vraag-en-antwoordset kan uw client toep
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure-CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Antwoord krijgen met behulp van postman](get-answer-from-kb-using-postman.md)
+> [Antwoord krijgen met behulp van Postman of krul](get-answer-from-knowledge-base-using-url-tool.md)

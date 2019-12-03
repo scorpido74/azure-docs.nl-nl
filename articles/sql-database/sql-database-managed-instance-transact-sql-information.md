@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186431"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707645"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen, beperkingen en bekende problemen met beheerde exemplaren
 
@@ -26,10 +26,10 @@ In dit artikel vindt u een overzicht van de verschillen in de syntaxis en het ge
 
 Er zijn enkele PaaS-beperkingen die worden geïntroduceerd in een beheerde instantie en sommige gedrags wijzigingen vergeleken met SQL Server. De verschillen zijn onderverdeeld in de volgende categorieën:<a name="Differences"></a>
 
-- [Beschik baarheid](#availability) omvat de verschillen in [altijd](#always-on-availability) en [back-ups](#backup).
+- [Beschik baarheid](#availability) omvat de verschillen in AlwaysOn- [beschikbaarheids groepen](#always-on-availability-groups) en [back-ups](#backup).
 - [Beveiliging](#security) omvat de verschillen in [controle](#auditing), [certificaten](#certificates), [referenties](#credential), [cryptografische providers](#cryptographic-providers), [aanmeldingen en gebruikers](#logins-and-users), en de [Service sleutel en service hoofd sleutel](#service-key-and-service-master-key).
 - De [configuratie](#configuration) bevat de verschillen [in de buffergroepuitbreiding](#buffer-pool-extension), [sortering](#collation), [compatibiliteits niveaus](#compatibility-levels), [database spiegeling](#database-mirroring), [database opties](#database-options), [SQL Server Agent](#sql-server-agent)en [tabel opties](#tables).
-- De [functies](#functionalities) omvatten [Bulk Insert/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [Distributed trans actions](#distributed-transactions), [Extended Events](#extended-events), [externe bibliotheken](#external-libraries), [FileStream en bestands tabel](#filestream-and-filetable), [volledige tekst Semantisch zoeken](#full-text-semantic-search), [gekoppelde servers](#linked-servers), [poly base](#polybase), [replicatie](#replication), [herstel](#restore-statement), [Service Broker](#service-broker), [opgeslagen procedures, functies en triggers](#stored-procedures-functions-and-triggers).
+- [Functies](#functionalities) zijn onder [andere Bulk Insert/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [gedistribueerde trans acties](#distributed-transactions), [Extended Events](#extended-events), [externe bibliotheken](#external-libraries), [FileStream en bestands tabel](#filestream-and-filetable), [semantisch zoeken in volledige tekst](#full-text-semantic-search), [gekoppelde servers](#linked-servers), [poly base](#polybase), [replicatie](#replication), [herstel](#restore-statement), [Service Broker](#service-broker), [opgeslagen procedures, functies en triggers](#stored-procedures-functions-and-triggers).
 - [Omgevings instellingen](#Environment) , zoals VNets en subnet-configuraties.
 
 De meeste van deze functies zijn architectuur beperkingen en vertegenwoordigen service onderdelen.
@@ -38,7 +38,7 @@ Op deze pagina worden ook [tijdelijke bekende problemen](#Issues) beschreven die
 
 ## <a name="availability"></a>Beschikbaarheid
 
-### <a name="always-on-availability"></a>Altijd aan
+### <a name="always-on-availability-groups"></a>AlwaysOn-beschikbaarheids groepen
 
 [Hoge Beschik baarheid](sql-database-high-availability.md) is ingebouwd in een beheerd exemplaar en kan niet worden beheerd door gebruikers. De volgende instructies worden niet ondersteund:
 
@@ -48,7 +48,7 @@ Op deze pagina worden ook [tijdelijke bekende problemen](#Issues) beschreven die
 - [BESCHIKBAARHEIDS GROEP NEERZETTEN](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - De [set HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) -component van de instructie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql)
 
-### <a name="backup"></a>Back-up
+### <a name="backup"></a>Backup
 
 Beheerde exemplaren hebben automatische back-ups, zodat gebruikers volledige data bases kunnen maken `COPY_ONLY` back-ups. Differentiële back-ups, logboek bestanden en moment opnamen van bestands momentopnamen worden niet ondersteund.
 
@@ -80,7 +80,7 @@ Zie [back-up](/sql/t-sql/statements/backup-transact-sql)voor informatie over bac
 
 ## <a name="security"></a>Beveiliging
 
-### <a name="auditing"></a>Controleren
+### <a name="auditing"></a>Controle
 
 De belangrijkste verschillen tussen controles in data bases in Azure SQL Database en data bases in SQL Server zijn:
 
@@ -95,7 +95,7 @@ De belangrijkste verschillen in de `CREATE AUDIT` syntaxis voor de controle van 
 - Er wordt een nieuwe syntaxis `TO URL` opgegeven die u kunt gebruiken om de URL op te geven van de Azure Blob Storage-container waarin de `.xel` bestanden worden geplaatst.
 - De syntaxis `TO FILE` wordt niet ondersteund omdat een beheerd exemplaar geen toegang krijgt tot Windows-bestands shares.
 
-Ga voor meer informatie naar: 
+Zie voor meer informatie: 
 
 - [SERVER CONTROLE MAKEN](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -163,7 +163,7 @@ Een beheerd exemplaar heeft geen toegang tot bestanden, zodat er geen cryptograf
     - Een Data Base uit een beheerd exemplaar exporteren en importeren in SQL Server (versie 2012 of hoger).
       - In deze configuratie worden alle Azure AD-gebruikers gemaakt als SQL database-principals (gebruikers) zonder aanmeldingen. Het type gebruikers wordt weer gegeven als SQL (zichtbaar als SQL_USER in sys. database_principals). De machtigingen en rollen blijven aanwezig in de meta gegevens van de data base van SQL Server en kunnen worden gebruikt voor imitatie. Ze kunnen echter niet worden gebruikt voor toegang tot en aanmelding bij de SQL Server met behulp van hun referenties.
 
-- Alleen de principal-aanmelding op server niveau, die wordt gemaakt door het proces van het inrichten van het beheerde exemplaar, leden van de server functies, zoals `securityadmin` of `sysadmin`, of andere aanmeldingen waarbij elke AANMELDINGS machtiging op server niveau wordt gewijzigd, kan Azure AD-server maken principals (aanmeldingen) in de hoofd database voor een beheerd exemplaar.
+- Alleen de principal-aanmelding op server niveau, die door het inrichtings proces van het beheerde exemplaar wordt gemaakt, leden van de server functies, zoals `securityadmin` of `sysadmin`, of andere aanmeldingen met wijziging van de machtiging Aanmelden op server niveau, kunnen Azure AD-server principals (aanmeldingen) in de hoofd database voor een beheerd exemplaar maken.
 - Als de aanmelding een SQL-principal is, kunnen alleen aanmeldingen die deel uitmaken van de functie `sysadmin`, de opdracht maken gebruiken om aanmeldingen voor een Azure AD-account in te stellen.
 - De Azure AD-aanmelding moet lid zijn van een Azure AD in dezelfde map die wordt gebruikt voor Azure SQL Database Managed instance.
 - Azure AD server-principals (aanmeldingen) zijn zichtbaar in Objectverkenner vanaf SQL Server Management Studio 18,0 Preview 5.
@@ -191,7 +191,7 @@ Een beheerd exemplaar heeft geen toegang tot bestanden, zodat er geen cryptograf
 - De [buffergroepuitbreiding](/sql/database-engine/configure-windows/buffer-pool-extension) wordt niet ondersteund.
 - `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` wordt niet ondersteund. Zie [ALTER Server Configuration](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Serverconfiguratie
+### <a name="collation"></a>Sortering
 
 De standaard sortering van exemplaren is `SQL_Latin1_General_CP1_CI_AS` en kan worden opgegeven als een aanmaak parameter. Zie [sorteringen](/sql/t-sql/statements/collations).
 
@@ -389,7 +389,7 @@ Gekoppelde servers in beheerde instanties ondersteunen een beperkt aantal doelen
 - Gekoppelde servers ondersteunen geen gedistribueerde Beschrijf bare trans acties (MS DTC).
 - Doelen die niet worden ondersteund zijn bestanden, Analysis Services en andere RDBMS. Gebruik `BULK INSERT` of `OPENROWSET` als alternatief voor het importeren van bestanden om een systeem eigen CSV-Import uit Azure Blob Storage te gebruiken.
 
-Bewerkingen
+Operations
 
 - Trans acties voor cross-instances worden niet ondersteund.
 - `sp_dropserver` wordt ondersteund voor het verwijderen van een gekoppelde server. Zie [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
@@ -529,7 +529,7 @@ De volgende variabelen, functies en weer gaven retour neren verschillende result
 ### <a name="vnet"></a>VNET
 - VNet kan worden geïmplementeerd met behulp van resource model-Klassiek model voor VNet wordt niet ondersteund.
 - Nadat een beheerd exemplaar is gemaakt, wordt het beheerde exemplaar of VNet naar een andere resource groep of een ander abonnement niet ondersteund.
-- Sommige services, zoals App Service omgevingen, Logic apps en beheerde instanties (gebruikt voor geo-replicatie, transactionele replicatie of via gekoppelde servers), hebben geen toegang tot beheerde instanties in verschillende regio's als hun VNets zijn verbonden met behulp van [Global peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). U kunt via VNet-gateways verbinding maken met deze resources via ExpressRoute of VNet-naar-VNet.
+- Sommige services, zoals App Service omgevingen, Logic apps en beheerde instanties (gebruikt voor geo-replicatie, transactionele replicatie of via gekoppelde servers), hebben geen toegang tot beheerde instanties in verschillende regio's als hun VNets zijn verbonden via [globale peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). U kunt via VNet-gateways verbinding maken met deze resources via ExpressRoute of VNet-naar-VNet.
 
 ### <a name="tempdb"></a>TEMPDB
 
@@ -569,7 +569,7 @@ Voortdurende `RESTORE`-instructie, migratie proces van gegevens migratie service
 
 **Datum:** Sep 2019
 
-[Resource Governor](/sql/relational-databases/resource-governor/resource-governor) functie waarmee u de resources die aan de werk belasting van de gebruiker zijn toegewezen, kunt beperken, kan de werk belasting van een bepaalde gebruiker onjuist worden geclassificeerd na een failover of door de gebruiker geïnitieerde wijziging van de servicelaag (bijvoorbeeld de wijziging van de maximale vCore of het maximale aantal exemplaren opslag grootte).
+[Resource Governor](/sql/relational-databases/resource-governor/resource-governor) functie waarmee u kunt beperken dat de resources die aan de werk belasting van de gebruiker zijn toegewezen, een bepaalde werk belasting onjuist classificeert na een failover of door de gebruiker geïnitieerde wijziging van de servicelaag (bijvoorbeeld de wijziging van de maximale vCore of de maximale opslag grootte voor instanties).
 
 **Tijdelijke oplossing**: Voer `ALTER RESOURCE GOVERNOR RECONFIGURE` regel matig of als onderdeel van de SQL-Agent taak uit die de SQL-taak uitvoert wanneer het exemplaar wordt gestart als u [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)gebruikt.
 
@@ -623,7 +623,7 @@ De `tempdb` data base is altijd gesplitst in 12 gegevens bestanden en de bestand
 
 Elk Algemeen Managed instance heeft tot 35 TB aan opslag ruimte gereserveerd voor Azure Premium. Elk database bestand wordt geplaatst op een afzonderlijke fysieke schijf. Schijf grootten kunnen 128 GB, 256 GB, 512 GB, 1 TB of 4 TB zijn. Voor ongebruikte ruimte op de schijf worden geen kosten in rekening gebracht, maar de totale som van Azure Premium-schijf grootten mag niet groter zijn dan 35 TB. In sommige gevallen kan een beheerd exemplaar dat niet 8 TB in totaal nodig heeft, de Azure-limiet van 35 TB overschrijden bij de opslag grootte vanwege interne fragmentatie.
 
-Een Algemeen Managed instance kan bijvoorbeeld één groot bestand hebben dat 1,2 TB groot is voor een schijf van 4 TB. Er kunnen ook 248-bestanden zijn met een grootte van 1 GB die wordt geplaatst op afzonderlijke 128 GB-schijven. In dit voorbeeld:
+Een Algemeen Managed instance kan bijvoorbeeld één groot bestand hebben dat 1,2 TB groot is voor een schijf van 4 TB. Er kunnen ook 248-bestanden zijn met een grootte van 1 GB die wordt geplaatst op afzonderlijke 128 GB-schijven. In dit voor beeld:
 
 - De totale toegewezen schijf ruimte is 1 x 4 TB + 248 x 128 GB = 35 TB.
 - De totale gereserveerde ruimte voor data bases op het exemplaar is 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.

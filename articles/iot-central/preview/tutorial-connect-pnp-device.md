@@ -1,6 +1,6 @@
 ---
-title: Een IoT Plug en Play preview-apparaat verbinden met Azure IoT Central | Microsoft Docs
-description: Gebruik een mogelijkheidsprofiel om de apparaatcode te genereren. Vervolgens voert u de apparaatcode uit, raadpleegt u het apparaat verbinding maken met uw IoT Central-toepassing en gebruikt u de automatisch gegenereerde weer gaven.
+title: Zelf studie-een IoT Plug en Play preview-apparaat verbinden met Azure IoT Central
+description: In deze zelf studie leert u hoe u een mogelijkheidsprofiel kunt gebruiken om een apparaatcode te genereren. Vervolgens voert u de apparaatcode uit, raadpleegt u het apparaat verbinding maken met uw IoT Central-toepassing en gebruikt u de automatisch gegenereerde weer gaven.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/08/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: be03684f89382f198c13540bbdfb3de5bf8513a6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 59261d6a1cea034df58bd7e8d53439cdf1fbae6b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404555"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702866"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Zelf studie: een mogelijkheidsprofiel gebruiken om een IoT Plug en Play-apparaat te maken en dit te verbinden met uw IoT Central toepassing
 

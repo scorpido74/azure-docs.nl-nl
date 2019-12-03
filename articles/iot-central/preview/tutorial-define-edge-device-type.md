@@ -1,5 +1,5 @@
 ---
-title: Een nieuw type Azure IoT Edge apparaat definiëren in azure IoT Central | Microsoft Docs
+title: 'Zelf studie: een nieuw type Azure IoT Edge apparaat in azure definiëren IoT Central'
 description: In deze zelf studie wordt uitgelegd hoe u, als ontwerper, een nieuw Azure IoT Edge apparaat maakt in uw Azure IoT Central-toepassing. U definieert de telemetrie, de status, de eigenschappen en de opdrachten voor uw type.
 author: rangv
 ms.author: rangv
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0a293d74c9e37a6771c5bb246b74bda38db3b7c3
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 97bfd2b1e8b571f44c0b782459567f5677dd36a7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406465"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702792"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Zelf studie: een nieuw type Azure IoT Edge apparaat in uw Azure IoT Central-toepassing definiëren (preview-functies)
 
@@ -103,7 +103,7 @@ Selecteer op de pagina **sjabloon type selecteren** de optie **Azure IOT Edge**e
 
 In IoT Edge kunt u bedrijfs logica implementeren en beheren in de vorm van modules. IoT Edge modules zijn de kleinste reken eenheid die wordt beheerd door IoT Edge en kunnen Azure-Services (zoals Azure Stream Analytics) of uw eigen oplossings code bevatten. Zie [IOT Edge modules](../../iot-edge/iot-edge-modules.md)voor informatie over hoe modules worden ontwikkeld, geïmplementeerd en onderhouden.
 
-Op hoog niveau is een manifest van de implementatie van een lijst met moduledubbels die zijn geconfigureerd met de gewenste eigenschappen. Een implementatie manifest vertelt een IoT Edge apparaat (of een groep apparaten) welke modules moeten worden geïnstalleerd en hoe ze kunnen worden geconfigureerd. Implementatie manifesten bevatten de gewenste eigenschappen voor elke module dubbele. IoT Edge-apparaten melden de gerapporteerde eigenschappen voor elke module terug.
+Op hoog niveau is een implementatie manifest een lijst met module apparaatdubbels die zijn geconfigureerd met de gewenste eigenschappen. Een implementatie manifest vertelt een IoT Edge apparaat (of een groep apparaten) welke modules moeten worden geïnstalleerd en hoe ze kunnen worden geconfigureerd. Implementatie manifesten bevatten de gewenste eigenschappen voor elke module dubbele. IoT Edge-apparaten melden de gerapporteerde eigenschappen voor elke module terug.
 
 Visual Studio code gebruiken om een implementatie manifest te maken. Zie [Azure IOT Edge voor Visual Studio code voor](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)meer informatie.
 
@@ -293,8 +293,8 @@ Een sjabloon voor een apparaat kan Cloud eigenschappen bevatten. Cloud eigenscha
 
     | Weergavenaam      | Semantisch type | Schema |
     | ----------------- | ------------- | ------ |
-    | Laatste servicedatum | None          | Date   |
-    | Klant naam     | None          | Tekenreeks |
+    | Laatste servicedatum | Geen          | Datum   |
+    | Klant naam     | Geen          | Tekenreeks |
 
 2. Selecteer **Opslaan**.
 
@@ -387,7 +387,7 @@ Nadat een apparaat sjabloon is gepubliceerd, wordt deze weer gegeven op de pagin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 * Een nieuwe rand maken als een sjabloon voor een Leaf-apparaat.
 * Modules genereren op basis van een geüpload implementatie manifest.

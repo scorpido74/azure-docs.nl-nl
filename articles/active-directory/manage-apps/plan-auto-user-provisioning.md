@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473345"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706229"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
@@ -69,11 +69,11 @@ In dit artikel worden de volgende termen gebruikt:
 
 | Bronnen| Koppeling en beschrijving |
 | - | - |
-| Webinars op aanvraag| [Uw bedrijfs toepassingen beheren met Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Meer informatie over hoe u met Azure AD eenmalige aanmelding kunt verkrijgen voor uw zakelijke SaaS-toepassingen en aanbevolen procedures voor het beheren van de toegang. |
-| Video's| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
+| On-demand webinars| [Uw bedrijfs toepassingen beheren met Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Meer informatie over hoe u met Azure AD eenmalige aanmelding kunt verkrijgen voor uw zakelijke SaaS-toepassingen en aanbevolen procedures voor het beheren van de toegang. |
+| Video’s| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Onlinecursussen| SkillUp online: [identiteiten beheren](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Leer hoe u Azure AD integreert met veel SaaS-toepassingen en gebruikers toegang tot deze toepassingen kunt beveiligen. |
 | Boeken| [Moderne verificatie met Azure Active Directory voor webtoepassingen (Naslag informatie voor ontwikkel aars) 1e editie](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Dit is een gezaghebbende, diep gaande hand leiding voor het bouwen van Active Directory verificatie oplossingen voor deze nieuwe omgevingen. |
-| Zelfstudies| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
+| Zelfstudie| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
 | Veelgestelde vragen| [Veelgestelde vragen](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) over het automatisch inrichten van gebruikers |
 
 ### <a name="solution-architectures"></a>Architecturen voor oplossingen
@@ -98,7 +98,7 @@ In dit voor beeld worden gebruikers en of groepen gemaakt in een HR-data base di
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatische gebruikers inrichting voor Cloud ondernemingen
 
-In dit voor beeld vindt het maken van een gebruiker plaats in azure AD en de Azure AD-inrichtings service beheert automatische gebruikers inrichting voor de doel (SaaS)-toepassingen:
+In dit voor beeld vindt het maken van een gebruiker plaats in azure AD en de Azure AD-inrichtings service beheert automatische gebruikers inrichting voor de doel-en SaaS-toepassingen.
 
 ![Afbeelding 2](media/auto-user-provision-dp/cloudprovisioning.png)
 
@@ -112,16 +112,17 @@ In dit voor beeld vindt het maken van een gebruiker plaats in azure AD en de Azu
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Automatische gebruikers inrichting voor Cloud-HR-toepassingen 
 
-In dit voor beeld worden de gebruikers en of groepen gemaakt in een HR-toepassing in de Cloud, zoals workday.
+In dit voor beeld worden de gebruikers en of groepen gemaakt in een Cloud HR-toepassing, zoals workday en SuccessFactors. De Azure AD Provisioning-Service en Azure AD Connect inrichtings agent voorzien in de gebruikers gegevens van de Tenant van de HR-app van de cloud in AD. Zodra de accounts zijn bijgewerkt in AD, wordt deze gesynchroniseerd met Azure AD via Azure AD Connect en kunnen de kenmerken van het e-mail adres en de gebruikers naam worden teruggeschreven naar de Tenant van de HR-app in de Cloud.
 
 ![Afbeelding 2](media/auto-user-provision-dp/workdayprovisioning.png)
 
-1. Accounts die zijn gemaakt in het HR-systeem van de Cloud
-1. Gegevens stromen naar on-premises AD via Azure AD Provisioning Service en de inrichtings agent.
-1. Azure AD Connect synchroniseert gegevens met Azure AD
-1. Kenmerk e-mail en gebruikers naam kunnen worden teruggeschreven naar de Cloud-HR-toepassing.
-
-Zie [zelf studie: werk dagen configureren voor het automatisch inrichten van gebruikers](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)voor meer informatie over de architectuur en implementatie van de oplossing.
+1.  **HR-team** voert de trans acties uit in de Cloud HR app-Tenant.
+2.  De **Azure AD-inrichtings service** voert de geplande cycli uit van de Tenant van de HR-app in de Cloud en identificeert wijzigingen die moeten worden verwerkt voor synchronisatie met AD.
+3.  De **Azure AD-inrichtings service** roept de Azure AD Connect-inrichtings agent aan met een aanvraag lading die ad-account maken/bijwerken/inschakelen/uitschakelen heeft.
+4.  **Azure AD Connect-inrichtings agent** gebruikt een service account voor het beheren van AD-account gegevens.
+5.  **Azure AD Connect** voert Delta synchronisatie uit voor het ophalen van updates in AD.
+6.  **Ad** -updates worden gesynchroniseerd met Azure AD. 
+7.  **Azure AD Provisioning Service** materialiseren-e-mail kenmerk en gebruikers naam van Azure AD naar de Cloud HR app Tenant.
 
 ## <a name="plan-the-deployment-project"></a>Het implementatie project plannen
 

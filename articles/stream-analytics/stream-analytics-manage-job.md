@@ -1,5 +1,5 @@
 ---
-title: een Stream Analytics-taak maken en beheren met behulp van de Azure-portal
+title: 'Zelf studie: een Stream Analytics taak maken en beheren met Azure Portal'
 description: Deze zelfstudie biedt een end-to-end-demonstratie van het gebruik van Azure Stream Analytics voor het analyseren van frauduleuze gesprekken in een reeks telefoongesprekken.
 services: stream-analytics
 author: mamccrea
@@ -9,14 +9,14 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 128859a00402c3381edfa65918a7135c9fd775de
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cca9f25fae9646b4207db7aa98f4c334457fc426
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925280"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707381"
 ---
-# <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Gegevens van telefoongesprekken met Stream Analytics analyseren en de resultaten visualiseren in een Power BI-dashboard
+# <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Zelf studie: gegevens van telefoon gesprekken analyseren met Stream Analytics en resultaten visualiseren in Power BI dash board
 
 In deze zelfstudie leert u hoe u telefoongesprekken kunt analyseren met Azure Stream Analytics. De gegevens van de telefoon oproep, gegenereerd door een client toepassing, bevatten enkele frauduleuze aanroepen die worden gefilterd door de Stream Analytics taak.
 

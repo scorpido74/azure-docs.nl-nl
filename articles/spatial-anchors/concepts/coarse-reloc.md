@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f03d2fba01dadc443da19416871a93a72289c0c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 87179cbce9fa99d4c3422ce88b630312b5080481
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270155"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706244"
 ---
 # <a name="coarse-relocalization"></a>Coarse-relokalisatie
 
@@ -129,7 +129,7 @@ Vervolgens moet u bepalen welke Sens oren u wilt gebruiken voor grove Herlokalis
 |             | Binnendeuren | Gek |
 |-------------|---------|----------|
 | GPS         | Uit | Aan |
-| Wi-Fi        | Aan | Aan (optioneel) |
+| WiFi        | Aan | Aan (optioneel) |
 | Conbakeners | Aan (optioneel met aanvullende opmerkingen, zie hieronder) | Uit |
 
 
@@ -495,7 +495,7 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-In azure spatiale ankers worden alleen Bluetooth-beacons bijgehouden die in de lijst staan. Kwaadwillende beacons die zijn geprogrammeerd voor het gebruik van met wit vermelde UUID, kunnen nog steeds de kwaliteit van de service echter negatief beïnvloeden. Daarom moet u bakens alleen gebruiken in de ruimten met een hoofd element, waar u de implementatie ervan kunt beheren.
+In azure spatiale ankers worden alleen Bluetooth-beacons bijgehouden die in de lijst staan. Kwaadwillende beacons die zijn geprogrammeerd met Allow-List-UUIDen kunnen nog steeds een negatieve invloed hebben op de kwaliteit van de service. Daarom moet u bakens alleen gebruiken in de ruimten met een hoofd element, waar u de implementatie ervan kunt beheren.
 
 ## <a name="querying-with-sensor-data"></a>Query's uitvoeren met sensor gegevens
 
@@ -655,7 +655,7 @@ In de onderstaande tabel wordt de verwachte Zoek ruimte voor elk type sensor ges
 | Sensoren      | RADIUS van zoek ruimte (ong.) | Details |
 |-------------|:-------:|---------|
 | GPS         | 20 m-30 m | Bepaald door de GPS-onzekerheid onder andere factoren. De gerapporteerde getallen worden geschat voor de mediaan GPS nauw keurigheid van mobiele telefoons met een-GPS, dat wil zeggen 7 meters. |
-| Wi-Fi        | 50 m-100 m | Bepaald door het bereik van de draadloze toegangs punten. Is afhankelijk van de frequentie, de verzender sterkte, de fysieke obstakels, de interferentie, enzovoort. |
+| WiFi        | 50 m-100 m | Bepaald door het bereik van de draadloze toegangs punten. Is afhankelijk van de frequentie, de verzender sterkte, de fysieke obstakels, de interferentie, enzovoort. |
 | Conbakeners |  70 m | Bepaald door het bereik van het Beacon. Is afhankelijk van de frequentie, overdrachts sterkte, fysieke obstakels, interferentie, enzovoort. |
 
 ## <a name="per-platform-support"></a>Ondersteuning per platform
@@ -665,8 +665,8 @@ De volgende tabel bevat een overzicht van de sensor gegevens die op elk van de o
 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
-| GPS         | N.v.t. | Ondersteund via [LocationManager][3] API'S (GPS en netwerk) | Ondersteund via [CLLocationManager][4] -api's |
-| Wi-Fi        | Wordt ondersteund met een snelheid van ongeveer één scan om de 3 seconden | Ondersteund. Vanaf API Level 28 worden WiFi-scans om de 2 minuten beperkt tot 4 aanroepen. In Android 10 kan de beperking worden uitgeschakeld vanuit het menu instellingen voor ontwikkel aars. Raadpleeg de [Android-documentatie][5]voor meer informatie. | N.v.t.-geen open bare API |
+| GPS         | N/A | Ondersteund via [LocationManager][3] API'S (GPS en netwerk) | Ondersteund via [CLLocationManager][4] -api's |
+| WiFi        | Wordt ondersteund met een snelheid van ongeveer één scan om de 3 seconden | Ondersteund. Vanaf API Level 28 worden WiFi-scans om de 2 minuten beperkt tot 4 aanroepen. In Android 10 kan de beperking worden uitgeschakeld vanuit het menu instellingen voor ontwikkel aars. Raadpleeg de [Android-documentatie][5]voor meer informatie. | N.v.t.-geen open bare API |
 | Conbakeners | Beperkt tot [Eddystone][1] en [iBeacon][2] | Beperkt tot [Eddystone][1] en [iBeacon][2] | Beperkt tot [Eddystone][1] en [iBeacon][2] |
 
 ## <a name="next-steps"></a>Volgende stappen

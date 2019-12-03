@@ -1,6 +1,6 @@
 ---
 title: 'Zelf studie: apparaat instellen voor Azure IoT Hub Device Provisioning Service'
-description: 'Zelf studie: een apparaat instellen om in te richten via de IoT Hub Device Provisioning Service tijdens het proces van de productie van het apparaat'
+description: Deze zelf studie laat zien hoe u een apparaat kunt instellen om in te richten via de IoT Hub Device Provisioning Service tijdens het proces van het apparaat.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e7f6151968fb14d44f1e330fb6ddc06fabad3ee6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: bdda46a89fc2bcf8b16b2ce771c6540c9ceaa3e0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112755"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701981"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Zelf studie: een apparaat instellen voor inrichten met behulp van de Azure IoT Hub Device Provisioning Service
 
@@ -197,11 +197,11 @@ Mogelijk moet u ook de Device Provisioning Service-clientoepassing voor registra
 
 Op dit punt worden Device Provisioning Service en IoT Hub mogelijk uitgevoerd in de portal. Als u de installatie van apparaatinrichting wilt afbreken, en/of de afronding van deze reeks zelfstudies wilt uitstellen, raden we u aan ze uit te schakelen om onnodige kosten te vermijden.
 
-1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer uw Device Provisioning Service. Klik bovenaan de blade **Alle resources** op **Verwijderen**.  
-1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer vervolgens uw IoT-hub. Klik bovenaan de blade **Alle resources** op **Verwijderen**.  
+1. Klik in het linkermenu in Azure Portal op **All resources** en selecteer uw Device Provisioning-service. Klik bovenaan de blade **All resources** op **Delete**.  
+1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer vervolgens uw IoT-hub. Klik bovenaan de blade **All resources** op **Delete**.  
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Platformspecifieke SDK van de Device Provisioning Service-client bouwen
@@ -212,4 +212,3 @@ Ga verder met de volgende zelfstudie voor informatie over het inrichten van het 
 
 > [!div class="nextstepaction"]
 > [Het apparaat inrichten in de IoT-hub](tutorial-provision-device-to-hub.md)
-

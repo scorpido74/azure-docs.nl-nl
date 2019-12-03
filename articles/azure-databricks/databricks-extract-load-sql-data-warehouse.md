@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: ETL-bewerkingen uitvoeren met behulp van Azure Databricks'
-description: Leer gegevens op te halen uit Data Lake Storage Gen2 en over te dragen naar Azure Databricks, de gegevens te transformeren en ze vervolgens in Azure SQL Data Warehouse te laden.
+title: Zelf studie-ETL-bewerkingen uitvoeren met Azure Databricks
+description: In deze zelf studie leert u hoe u gegevens extraheert van Data Lake Storage Gen2 naar Azure Databricks, hoe u de gegevens transformeert en vervolgens de gegevens in Azure SQL Data Warehouse laadt.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 8ceb9e940584ae4c41484fe31ce5cb1832bb3400
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 11e5aac559370c478b774f2a503bde590dfeedf4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605701"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707462"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Zelf studie: gegevens extra heren, transformeren en laden met behulp van Azure Databricks
 
@@ -65,7 +65,7 @@ Voltooi deze taken voordat u aan deze zelfstudie begint:
 
    * Bij het uitvoeren van de stappen in de sectie [waarden ophalen voor ondertekening in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) van het artikel, plakt u de Tenant-id, app-id en wachtwoord waarden in een tekst bestand. U hebt deze binnenkort nodig.
 
-* Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Verzamel de benodigde informatie
 
@@ -73,7 +73,7 @@ Zorg dat u over alle vereisten voor deze zelfstudie beschikt.
 
    Voor u begint, moet u de volgende gegevens hebben:
 
-   : heavy_check_mark: de database naam, de naam van de database server, de gebruikers naam en het wacht woord van uw Azure SQL Data Warehouse.
+   : heavy_check_mark: de naam van de data base, de naam van de database server, de gebruikers naam en het wacht woord van uw Azure SQL Data Warehouse.
 
    : heavy_check_mark: de toegangs sleutel van uw Blob Storage-account.
 
@@ -81,7 +81,7 @@ Zorg dat u over alle vereisten voor deze zelfstudie beschikt.
 
    : heavy_check_mark: de Tenant-ID van uw abonnement.
 
-   : heavy_check_mark: de toepassings-ID van de app die u hebt geregistreerd met Azure Active Directory (Azure AD).
+   : heavy_check_mark: de toepassings-ID van de app die u hebt geregistreerd bij Azure Active Directory (Azure AD).
 
    : heavy_check_mark: de verificatie sleutel voor de app die u hebt geregistreerd bij Azure AD.
 
@@ -107,7 +107,7 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) voor meer informatie. |
     |**Locatie**     | Selecteer **US - west 2**.  Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.      |
-    |**Prijscategorie**     |  selecteer **Standaard**.     |
+    |**Prijscategorie**     |  Selecteer **standaard**.     |
 
 3. Het duurt enkele minuten om het account te maken. Bekijk de voortgangsbalk bovenaan om de bewerkingsstatus te volgen.
 
@@ -390,7 +390,7 @@ Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Azure Databricks-service maken

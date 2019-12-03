@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 894396686a54ed3a685366fcf3e933fa8f03bee8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32020341c7ac3bf33082ba365f053a613dcdffc2
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474525"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705086"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>groepsbeleid beheren in een Azure AD Domain Services beheerd domein
 
@@ -53,7 +53,7 @@ Als u groepsbeleid object (Gpo's) wilt maken en configureren, moet u de groepsbe
 1. Selecteer in het deel venster *dash board* van het **Serverbeheer** -venster **functies en onderdelen toevoegen**.
 1. Selecteer op de pagina **voordat u begint** van de *wizard functies en onderdelen toevoegen*de optie **volgende**.
 1. Voor het *installatie type*, houdt u de **installatie optie op basis van functie of op basis** van het onderdeel ingeschakeld en selecteert u **volgende**.
-1. Kies op de pagina **server selectie** de huidige virtuele machine uit de Server groep, bijvoorbeeld *myvm.contoso.com*, en selecteer vervolgens **volgende**.
+1. Kies op de pagina **server selectie** de huidige virtuele machine uit de Server groep, bijvoorbeeld *myvm.aadds.contoso.com*, en selecteer vervolgens **volgende**.
 1. Klik op de pagina **Server functies** op **volgende**.
 1. Selecteer op de pagina **functies** de **Groepsbeleid beheer** functie.
 
@@ -76,7 +76,7 @@ Standaard groeps beleidsobjecten (Gpo's) bestaan voor gebruikers en computers in
 
 Er zijn twee ingebouwde groepsbeleid objecten (Gpo's) in een door Azure AD DS beheerd domein, een voor de container *AADDC computers* en één voor de container *gebruikers van AADDC* . U kunt deze groeps beleidsobjecten zo instellen dat groeps beleid zo nodig wordt geconfigureerd in uw Azure AD DS beheerde domein.
 
-1. Vouw in de **Groepsbeleid-beheer** console het knoop punt **forest: contoso.com** uit. Vouw vervolgens de knoop punten **domeinen** uit.
+1. Vouw in de **Groepsbeleid-beheer** console het knoop punt **forest: aadds.contoso.com** uit. Vouw vervolgens de knoop punten **domeinen** uit.
 
     Er bestaan twee ingebouwde containers voor *AADDC-computers* en *AADDC-gebruikers*. Voor elk van deze containers is een standaard groeps beleidsobject toegepast.
 

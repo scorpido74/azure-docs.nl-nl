@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 598168285ee67921ab17ab8c2ce780753c562f81
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6ecce4dc97272f03a3151708cd9c047212c36e03
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072345"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707204"
 ---
 # <a name="monitor-published-apis"></a>Gepubliceerde API's bewaken
 
@@ -39,8 +39,8 @@ In de volgende video kunt u zien hoe u API Management kunt bewaken met Azure Mon
 ## <a name="prerequisites"></a>Vereisten
 
 + Informatie over de [terminologie van Azure API Management](api-management-terminology.md).
-+ Voltooi de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
-+ Voltooi ook de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
++ Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
++ Voltooi tevens de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -61,7 +61,7 @@ Metrische gegevens openen:
 
 1. Selecteer **Metrische gegevens** in het menu onder aan de pagina.
 
-    ![metrische gegevens](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+    ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
 1. Selecteer in de vervolgkeuzelijst de gewenste metrische gegevens. Bijvoorbeeld **aanvragen**. 
 1. De grafiek toont het totale aantal API-aanroepen.
@@ -120,7 +120,7 @@ Activiteitenlogboeken weergeven:
 
 3. Selecteer het gewenste filterbereik en klik op **Toepassen**.
 
-## <a name="diagnostic-logs"></a>Logboeken met diagnostische gegevens
+## <a name="diagnostic-logs"></a>Diagnostische logboeken
 
 Diagnoselogboeken bieden uitgebreide informatie over bewerkingen en fouten die belangrijk zijn voor zowel controles als het oplossen van problemen. Diagnoselogboeken verschillen van activiteitenlogboeken. Activiteitenlogboeken bieden inzicht in de bewerkingen die zijn uitgevoerd op uw Azure-resources. Diagnoselogboeken bieden inzicht in bewerkingen die door de resources zelf zijn uitgevoerd.
 
@@ -180,33 +180,33 @@ API Management biedt momenteel diagnostische logboeken (ingedeeld in batches per
 }  
 ```
 
-| Eigenschap  | Type | Description |
+| Eigenschap  | Type | Beschrijving |
 | ------------- | ------------- | ------------- |
-| isRequestSuccess | boolean | Waar als de HTTP-aanvraag is voltooid met een antwoordstatuscode binnen 2xx tot 3xx |
-| time | date-time | Tijdstempel van ontvangst van de HTTP-aanvraag door de gateway |
+| isRequestSuccess | booleaans | Waar als de HTTP-aanvraag is voltooid met een antwoordstatuscode binnen 2xx tot 3xx |
+| tijd | date-time | Tijds tempel van wanneer de gateway wordt gestart met de verwerking van de aanvraag |
 | operationName | string | Constante waarde 'Microsoft.ApiManagement/GatewayLogs' |
 | category | string | Constante waarde 'GatewayLogs' |
-| durationMs | integer | Aantal milliseconden vanaf het moment dat de gateway de aanvraag ontving tot het moment dat het antwoord volledig werd verzonden |
+| durationMs | geheel getal | Het aantal milliseconden vanaf het moment dat de gateway de aanvraag ontving tot het moment dat het antwoord volledig is verzonden. Het bevat clienTime, cacheTime en backendTime. |
 | callerIpAddress | string | IP-adres van de onmiddellijke gatewayaanroeper (kan een tussenschakel zijn) |
 | correlationId | string | Unieke HTTP-aanvraag-ID die is toegewezen door API Management |
 | location | string | Naam van de Azure-regio waar de gateway die de aanvraag heeft verwerkt zicht bevond |
-| httpStatusCodeCategory | string | Categorie van HTTP-antwoordstatuscode: Geslaagd (301 of minder of 304 of 307), niet geautoriseerd (401, 403, 429), fout (400, tussen 500 en 600), anders |
-| resourceId | string | ID van het/SUBSCRIPTIONS/\<-abonnement van de API Management Resource >/RESOURCEGROUPS/\<resource-group >/providers/Microsoft. APIMANAGEMENT/service/\<naam > |
+| httpStatusCodeCategory | string | Categorie van de HTTP-antwoordstatuscode: geslaagd (301 of minder of 304 of 307), niet geautoriseerd (401, 403, 429), fout (400, tussen 500 en 600), anders |
+| resourceId | string | ID van de API Management resource/SUBSCRIPTIONS/\<abonnement >/RESOURCEGROUPS/\<resource groep >/PROVIDERS/MICROSOFT. APIMANAGEMENT/SERVICE/\<naam > |
 | properties | object | Eigenschappen van de huidige aanvraag |
-| methode | string | HTTP-methode van de inkomende aanvraag |
+| method | string | HTTP-methode van de inkomende aanvraag |
 | url | string | URL van de binnenkomende aanvraag |
 | clientProtocol | string | HTTP-protocolversie van de inkomende aanvraag |
 | responseCode | geheel getal | Statuscode van het HTTP-antwoord dat is verzonden naar een client |
 | backendMethod | string | HTTP-methode van de aanvraag die is verzonden naar een back-end |
 | backendUrl | string | URL van de aanvraag die is verzonden naar een back-end |
-| backendResponseCode | integer | Code van het HTTP-antwoord dat is ontvangen van een back-end |
+| backendResponseCode | geheel getal | Code van het HTTP-antwoord dat is ontvangen van een back-end |
 | backendProtocol | string | HTTP-protocolversie van de aanvraag die is verzonden naar een back-end | 
 | requestSize | geheel getal | Aantal bytes dat van een client is ontvangen tijdens de verwerking van aanvragen | 
 | responseSize | geheel getal | Aantal bytes dat naar een client is verzonden tijdens de verwerking van aanvragen | 
 | cache | string | Status van de betrokkenheid van de API Management-cache bij het verwerken van aanvragen (dat wil zeggen, treffer, misser, geen) | 
-| cacheTime | integer | Aantal milliseconden dat in totaal is besteed aan IO van de API Management-cache (verbinding maken, bytes verzenden en ontvangen) | 
-| backendTime | integer | Aantal milliseconden dat in totaal is besteed aan IO van de back-end (verbinding maken, bytes verzenden en ontvangen) | 
-| clientTime | integer | Aantal milliseconden dat in totaal is besteed aan IO van de client (verbinding maken, bytes verzenden en ontvangen) | 
+| cacheTime | geheel getal | Aantal milliseconden dat in totaal is besteed aan IO van de API Management-cache (verbinding maken, bytes verzenden en ontvangen) | 
+| backendTime | geheel getal | Aantal milliseconden dat in totaal is besteed aan IO van de back-end (verbinding maken, bytes verzenden en ontvangen) | 
+| clientTime | geheel getal | Aantal milliseconden dat in totaal is besteed aan IO van de client (verbinding maken, bytes verzenden en ontvangen) | 
 | apiId | string | ID van de API-entiteit voor de huidige aanvraag | 
 | operationId | string | ID van de bewerkingsentiteit voor de huidige aanvraag | 
 | productId | string | ID van de productentiteit voor de huidige aanvraag | 
@@ -214,16 +214,16 @@ API Management biedt momenteel diagnostische logboeken (ingedeeld in batches per
 | apimSubscriptionId | string | ID van de abonnemententiteit voor de huidige aanvraag | 
 | backendId | string | ID van de back-end-entiteit voor de huidige aanvraag | 
 | LastError | object | Laatste fout bij de aanvraagverwerking | 
-| elapsed | integer | Het aantal milliseconden tussen het moment dat de gateway de aanvraag ontving tot het moment dat de fout optrad | 
+| elapsed | geheel getal | Het aantal milliseconden dat is verstreken tussen het moment dat de gateway de aanvraag heeft ontvangen en het moment waarop de fout is opgetreden | 
 | source | string | Naam van de interne handler voor beleid of verwerking die de fout heeft veroorzaakt | 
-| bereik | string | Bereik van het beleidsdocument met het beleid dat de fout heeft veroorzaakt | 
+| scope | string | Bereik van het beleidsdocument met het beleid dat de fout heeft veroorzaakt | 
 | section | string | Gedeelte van het beleidsdocument met het beleid dat de fout heeft veroorzaakt | 
 | reason | string | Reden voor de fout | 
 | message | string | Foutbericht | 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Activiteitenlogboeken bekijken

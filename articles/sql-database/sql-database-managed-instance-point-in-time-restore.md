@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: ad96d0a04b03e070a7108832370749377d723826
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821748"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707655"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Een SQL database in een beheerd exemplaar herstellen naar een eerder tijdstip
 
@@ -48,7 +48,7 @@ De volgende tabel toont scenario's voor herstel naar een bepaald tijdstip voor b
 
 |           |Bestaande Data Base naar hetzelfde beheerde exemplaar herstellen| Een bestaande data base herstellen naar een ander beheerd exemplaar|Verwijderde data base naar hetzelfde beheerde exemplaar herstellen|Verwijderde data base herstellen naar een ander beheerd exemplaar|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Ja|Nee |Nee|Nee|
+|**Azure-portal**| Ja|Nee |Nee|Nee|
 |**Azure CLI**|Ja |Ja |Nee|Nee|
 |**PowerShell**| Ja|Ja |Ja|Ja|
 
@@ -58,7 +58,7 @@ Een bestaande data base herstellen naar hetzelfde exemplaar met behulp van de Az
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Ga naar uw beheerde exemplaar en selecteer de data base die u wilt herstellen.
 3. Selecteer **herstellen** op de pagina Data Base:
 
@@ -230,7 +230,7 @@ az sql midb delete -g mygroupname --mi myinstancename -n mymanageddbname
 Maak rechtstreeks verbinding met het beheerde exemplaar en start SQL Server Management Studio. Voer vervolgens de volgende Transact-SQL-query (T-SQL) uit. De query wijzigt de naam van de herstelde data base in die van de verwijderde data base die u wilt overschrijven.
 
 ```sql
-ALTER WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
+ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 ```
 
 Gebruik een van de volgende methoden om verbinding te maken met uw data base in het beheerde exemplaar:

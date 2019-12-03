@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c31c04137a8d36adfe41a18cbc276a45483b05b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10445aba9c52c5367a8ea03729462d14e2d51085
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467173"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707185"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Key Vault verificatie met een toegangscontrole beleid bieden
 
@@ -53,7 +53,7 @@ Elk sleutel kluis toegangs beleid wordt een afzonderlijke set machtigingen verle
 
 Als u een toepassing, een Azure AD-groep of een gebruiker toegang wilt geven tot uw sleutel kluis, moet u eerst de objectId ophalen.
 
-#### <a name="applications"></a>Toepassingen
+#### <a name="applications"></a>Applicaties
 
 De objectId voor een toepassing komt overeen met de bijbehorende service-principal. Voor volledige informatie over service-principals. Zie [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). 
 
@@ -220,6 +220,7 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 
 Geef tot slot de AD-groep machtigingen voor uw sleutel kluis met behulp van de Azure CLI [AZ set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) opdracht, of de Azure PowerShell cmdlet [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) . Zie de sectie [de toepassing, Azure AD-groep of gebruikers toegang geven tot uw sleutel kluis](#give-the-principal-access-to-your-key-vault) hierboven voor voor beelden.
 
+De toepassing moet ook ten minste één IAM-rol (Identity and Access Management) hebben die is toegewezen aan de sleutel kluis. Anders is het niet mogelijk om zich aan te melden en mislukt met onvoldoende rechten voor toegang tot het abonnement.
 
 ## <a name="next-steps"></a>Volgende stappen
 

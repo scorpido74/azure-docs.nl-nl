@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d0efbaec6905d0d24d9dc1c310d472958011960
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228415"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702086"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie (preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -43,7 +43,7 @@ In [deel twee](tutorial-designer-automobile-price-deploy.md) van de zelf studie 
 
 Met Azure Machine Learning pijp lijnen worden meerdere, afhankelijke machine learning en gegevens verwerkings stappen in één resource ingedeeld. Met pijp lijnen kunt u complexe machine learning werk stromen in projecten en gebruikers organiseren, beheren en hergebruiken. Als u een Azure Machine Learning pijp lijn wilt maken, hebt u een Azure Machine Learning-werk ruimte nodig. In deze sectie leert u hoe u deze resources kunt maken.
 
-### <a name="create-a-new-workspace"></a>Een nieuwe werkruimte maken
+### <a name="create-a-new-workspace"></a>Een nieuwe werk ruimte maken
 
 Als u een Azure Machine Learning-werk ruimte hebt met een Enter prise-editie, [gaat u naar de volgende sectie](#create-the-pipeline).
 
@@ -55,7 +55,7 @@ Als u een Azure Machine Learning-werk ruimte hebt met een Enter prise-editie, [g
 
 1. Selecteer **ontwerp functie**.
 
-    ![Scherm afbeelding van de Visual-werk ruimte met weer gave van toegang tot de ontwerp functie](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
+    ![Scherm afbeelding van de Visual-werk ruimte met weer gave van toegang tot de ontwerp functie](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
 1. Selecteer **eenvoudig te gebruiken vooraf gedefinieerde modules**.
 
@@ -127,7 +127,7 @@ Wanneer u een model traint, moet u iets doen over de gegevens die ontbreken. In 
 
 1. Selecteer in het deel venster Eigenschappen de optie **para meters** > **Opmerking** en voer *normaal verlies uitsluiten*in.
 
-### <a name="clean-missing-data"></a>Schone, ontbrekende gegevens
+### <a name="clean-missing-data"></a>Ontbrekende gegevens opschonen
 
 Uw gegevensset heeft nog steeds ontbrekende waarden nadat u de kolom **normaled-verliezen** hebt verwijderd. U kunt de resterende ontbrekende gegevens verwijderen met behulp van de module **clean Missing Data** .
 

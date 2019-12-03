@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f35c9c3c6c974c79dc849425fc91b532aed4d22
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755689"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705001"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Een virtuele machine met Windows Server toevoegen aan een Azure Active Directory Domain Services beheerd domein met behulp van een resource manager-sjabloon
 
@@ -93,7 +93,7 @@ Als u een Windows Server-VM wilt maken, voegt u deze toe aan een door Azure AD D
     | Bestaande Subnetnaam      | De naam van het bestaande subnet van het virtuele netwerk, zoals *werk belastingen*. |
     | DNS-label voorvoegsel          | Voer een DNS-naam in om te gebruiken voor de virtuele machine, zoals *myvm*. |
     | VM-grootte                   | Geef een VM-grootte op, bijvoorbeeld *Standard_DS2_v2*. |
-    | Domein om lid te worden            | De DNS-naam van het beheerde domein van Azure AD DS, zoals *contoso.com*. |
+    | Domein om lid te worden            | De DNS-naam van het beheerde domein van Azure AD DS, zoals *aadds.contoso.com*. |
     | Domein gebruikers naam           | Het gebruikers account in de Azure-AD DS beheerd domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
     | Domein wachtwoord           | Het wacht woord voor het gebruikers account dat is opgegeven in de vorige instelling. |
     | Optioneel pad naar OE          | De aangepaste organisatie-eenheid waaraan de virtuele machine moet worden toegevoegd. Als u geen waarde opgeeft voor deze para meter, wordt de virtuele machine toegevoegd aan de standaard organisatie-eenheid voor *Aad DC-computers* . |

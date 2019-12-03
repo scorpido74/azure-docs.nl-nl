@@ -1,6 +1,6 @@
 ---
-title: Cloud instellen voor Azure-IoT Hub Device Provisioning Service in Portal
-description: 'Zelf studie: de cloud resources voor het inrichten van apparaten instellen in het [Azure Portal](https://portal.azure.com) met behulp van de IOT hub Device Provisioning Service'
+title: Zelf studie-Cloud instellen voor Azure-IoT Hub Device Provisioning Service in Portal
+description: Deze zelf studie laat zien hoe u de cloud resources kunt instellen voor het inrichten van apparaten in het [Azure Portal](https://portal.azure.com) met behulp van de IOT hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: bdfe851532383e5a051f43cc4b20772f8053dbfc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ad7ccf9dd91d635cfaab30a51e1b145a98117079
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228317"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702490"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Zelf studie: cloud resources configureren voor het inrichten van apparaten met de IoT Hub Device Provisioning Service
 
@@ -29,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Een instantie van een Device Provisioning Service maken en het id-bereik ophalen
 
@@ -76,7 +76,7 @@ De volgende stap bestaat uit het koppelen van de Device Provisioning Service en 
 
 2. Klik op de pagina Device Provisioning Service op **Gekoppelde IoT-hubs**.
 
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
 
 4. Voer op de pagina **Koppeling toevoegen aan IoT-hub** de volgende gegevens in en klik op **Opslaan**:
 
@@ -112,7 +112,7 @@ Andere zelfstudies in deze verzameling zijn op deze zelfstudie gebaseerd. Als u 
  
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Azure Portal gebruiken voor het maken van een IoT Hub Device Provisioning Service en het ophalen van het id-bereik

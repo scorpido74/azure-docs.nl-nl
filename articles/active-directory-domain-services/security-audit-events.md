@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6ff996129cc140c9154edb8fb60840cd48017a5e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569818"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704292"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Beveiligings controles voor Azure Active Directory Domain Services inschakelen (preview)
 
@@ -82,7 +82,7 @@ Voer de volgende stappen uit om beveiligings controle gebeurtenissen van Azure A
 > Azure AD DS-beveiligings controles zijn niet terugwerkt. Het is niet mogelijk om gebeurtenissen uit het verleden op te halen of om gebeurtenissen uit het verleden opnieuw af te spelen. Azure AD DS kan alleen gebeurtenissen verzenden die plaatsvinden nadat deze is ingeschakeld.
 
 1. Meld u aan bij Azure Portal op https://portal.azure.com.
-1. Zoek en selecteer **Azure AD Domain Services**aan de bovenkant van de Azure Portal. Kies uw beheerde domein, zoals *contoso.com*.
+1. Zoek en selecteer **Azure AD Domain Services**aan de bovenkant van de Azure Portal. Kies uw beheerde domein, zoals *aadds.contoso.com*.
 1. Selecteer in het venster Azure AD DS **Diagnostische instellingen (preview)** aan de linkerkant.
 1. Er worden standaard geen diagnostische gegevens geconfigureerd. Selecteer **Diagnostische instelling toevoegen**om aan de slag te gaan.
 

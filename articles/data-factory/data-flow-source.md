@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 33a63b8a887594747aba03e19c107653e438853f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217735"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702040"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Bron transformatie voor het toewijzen van gegevens stroom 
 
@@ -156,7 +156,7 @@ U kunt de kolom gegevens typen wijzigen in een trans formatie die is afgeleid va
 
 ### <a name="import-schema"></a>Schema importeren
 
-Gegevens sets zoals Avro en CosmosDB die ondersteuning bieden voor complexe gegevens structuren, vereisen niet dat schema definities aanwezig zijn in de gegevensset. Daarom kunt u op de knop schema importeren klikken op het tabblad projectie voor deze typen bronnen.
+Gegevens sets zoals Avro en CosmosDB die ondersteuning bieden voor complexe gegevens structuren, vereisen niet dat schema definities aanwezig zijn in de gegevensset. Daarom kunt u klikken op de knop **schema importeren** op het tabblad **projectie** voor deze typen bronnen.
 
 ## <a name="cosmosdb-specific-settings"></a>Specifieke instellingen voor CosmosDB
 

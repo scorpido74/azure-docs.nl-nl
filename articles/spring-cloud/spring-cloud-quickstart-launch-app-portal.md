@@ -1,17 +1,17 @@
 ---
 title: 'Snelstartgids: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal'
-description: Implementeer een voorbeeld toepassing in de Azure lente-Cloud met behulp van de Azure Portal.
+description: In deze Quick Start implementeert u een voorbeeld toepassing in de Azure lente-Cloud met behulp van de Azure Portal.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 0d8bc302434ea973dd4d94156c65ee6965dd1dc1
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 891952000f633d7d873c6d76c475916acc8ac4ec
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666241"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708851"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal
 

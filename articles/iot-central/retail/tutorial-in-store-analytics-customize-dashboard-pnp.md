@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 0dcabada522bf8189d163936551ea94cb4dd2657
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112913"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702693"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Zelf studie: het operator dashboard aanpassen en apparaten beheren in azure IoT Central
 
@@ -248,7 +248,7 @@ Een opdracht tegel toevoegen om de gateway opnieuw op te starten:
 1. Selecteer desgewenst de tegel **opnieuw opstarten** om de opdracht opnieuw opstarten op de gateway uit te voeren.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 * De naam van het dash board wijzigen
 * Afbeeldings tegels op het dash board aanpassen

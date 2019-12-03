@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 3d55e0e7ecbd52b6d96c657e333c5557388f2721
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406512"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706027"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive-workloads migreren naar HDInsight 4,0
 
@@ -78,7 +78,7 @@ Gebruik de waarden in de tabel hieronder. Vervang `SQLSERVERNAME DATABASENAME US
 |Script type|-Aangepast|
 |Naam|Hive-upgrade|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
-|Knooppunt type (n)|Head|
+|Knooppunt type (n)|Kop|
 |Parameters|GEBRUIKERS NAAM DATABASENAME DATA BASE WACHT WOORD|
 
 > [!Warning]  
@@ -118,7 +118,7 @@ Deze compressie is vereist omdat de tabellen HDInsight 3,6 en HDInsight 4,0 ACID
 
 Wanneer u de migratie en de compressie stappen van de meta Store hebt voltooid, kunt u het werkelijke magazijn migreren. Nadat u de Hive-Warehouse migratie hebt voltooid, heeft het HDInsight 4,0-magazijn de volgende eigenschappen:
 
-|3.6 |4.0 |
+|3,6 |4,0 |
 |---|---|
 |Externe tabellen|Externe tabellen|
 |Niet-transactionele beheerde tabellen|Externe tabellen|
@@ -174,14 +174,14 @@ Er zijn twee manieren voor het uitvoeren en opsporen van fouten in Hive/LLAP-que
 
 In HDInsight 4,0 is HiveCLI vervangen door Beeline. HiveCLI is een thrift-client voor Hiveserver 1 en Beeline is een JDBC-client die toegang biedt tot Hiveserver 2. Beeline kan ook worden gebruikt om verbinding te maken met een ander data base-eind punt dat compatibel is met JDBC. Beeline is out-of-box beschikbaar op HDInsight 4,0 zonder dat hiervoor een installatie nodig is.
 
-In HDInsight 3,6 is de GUI-client voor interactie met hive-server de Hive-weer gave Ambari. HDInsight 4,0 vervangt de Hive-weer gave met Hortonworks Data Analytics Studio (DAS). DAS wordt niet verzonden met HDInsight-clusters out-of-Box en is geen officieel ondersteund pakket. DAS kan echter als volgt worden geïnstalleerd op het cluster met behulp van een [script actie](../hdinsight-hadoop-customize-cluster-linux.md) :
+In HDInsight 3,6 is de GUI-client voor interactie met hive-server de Hive-weer gave Ambari. HDInsight 4,0 wordt niet geleverd met de weer gave Ambari. We hebben onze klanten een manier gegeven om Data Analytics Studio (DAS) te gebruiken. Dit is geen kern HDInsight-service. DAS wordt niet verzonden met HDInsight-clusters out-of-the-box en is geen officieel ondersteund pakket. DAS kan echter als volgt worden geïnstalleerd op het cluster met behulp van een [script actie](../hdinsight-hadoop-customize-cluster-linux.md) :
 
 |Eigenschap | Waarde |
 |---|---|
 |Script type|-Aangepast|
 |Naam|DAS|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|Knooppunt type (n)|Head|
+|Knooppunt type (n)|Kop|
 
 Wacht 5 tot 10 minuten en start vervolgens Data Analytics Studio met behulp van deze URL: `https://CLUSTERNAME.azurehdinsight.net/das/`.
 

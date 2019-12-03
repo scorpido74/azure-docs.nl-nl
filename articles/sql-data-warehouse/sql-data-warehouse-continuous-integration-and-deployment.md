@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646136"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708656"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Continue integratie en implementatie voor Azure SQL Data Warehouse
 
@@ -25,12 +25,8 @@ In deze eenvoudige zelf studie wordt uitgelegd hoe u het SSDT-data base project 
 
 - Door loop de [zelf studie over de integratie van bron beheer](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
 
-- Een [zelf-hostende agent](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops#install) maken die de SSDT preview Bits (16,3 Preview 2 en hoger) heeft geïnstalleerd voor SQL Data Warehouse (preview-versie)
-
 - Azure DevOps instellen en er verbinding mee maken
 
-  > [!NOTE]
-  > SSDT is momenteel beschikbaar als preview-versie, waarbij u een zelf-hostende agent moet gebruiken. De door micro soft gehoste agents worden in de komende maanden bijgewerkt.
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Continue integratie met Visual Studio build
 
@@ -49,13 +45,13 @@ In deze eenvoudige zelf studie wordt uitgelegd hoe u het SSDT-data base project 
 Op dit moment hebt u een eenvoudige omgeving waar elke check-in voor de hoofd vertakking van de opslag plaats van de bron beheer automatisch een succes volle Visual Studio-build van uw database project moet activeren. Controleer of de automatisering aan het einde van het project wordt uitgevoerd door een wijziging aan te brengen in uw lokale data base en de wijzigingen in uw hoofd vertakking in te scha kelen.
 
 
-## <a name="continuous-deployment-with-the-azure-sql-database-deployment-task"></a>Continue implementatie met de Azure SQL Database-implementatie taak
+## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Doorlopende implementatie met de implementatie taak van Azure SQL Data Warehouse (of data base)
 
-1. Voeg een nieuwe taak toe met behulp van de [implementatie taak Azure SQL database](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) en vul de vereiste velden in om verbinding te maken met uw doel-Data Warehouse. Wanneer deze taak wordt uitgevoerd, wordt de DACPAC die is gegenereerd op basis van het vorige bouw proces, geïmplementeerd naar het doel Data Warehouse.
+1. Voeg een nieuwe taak toe met behulp van de [implementatie taak Azure SQL database](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) en vul de vereiste velden in om verbinding te maken met uw doel-Data Warehouse. Wanneer deze taak wordt uitgevoerd, wordt de DACPAC die is gegenereerd op basis van het vorige bouw proces, geïmplementeerd naar het doel Data Warehouse. U kunt ook de [implementatie taak van Azure SQL Data Warehouse](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) gebruiken 
 
       ![Implementatie taak](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Implementatie taak")
 
-2. Wanneer u een zelf-hostende agent gebruikt, moet u ervoor zorgen dat u de omgevings variabele hebt ingesteld om de juiste SqlPackage. exe te gebruiken voor SQL Data Warehouse. Het pad moet er ongeveer als volgt uitzien:
+2. Als u een zelf-hostende agent gebruikt, moet u ervoor zorgen dat u de omgevings variabele hebt ingesteld om de juiste SqlPackage. exe te gebruiken voor SQL Data Warehouse. Het pad moet er ongeveer als volgt uitzien:
 
       ![Omgevings variabele](media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Omgevings variabele")
 

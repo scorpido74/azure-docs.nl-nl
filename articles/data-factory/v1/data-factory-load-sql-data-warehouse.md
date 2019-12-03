@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 05dcff2276a799b1debc76e4f85fbbac6606eb59
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 47ee1682118fd761d55625428e3522de92b9e38a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682552"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703408"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB onder 15 minuten aan Azure SQL Data Warehouse laden met Data Factory
 > [!NOTE]
@@ -47,7 +47,7 @@ In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegeven
 
 ## <a name="prerequisites"></a>Vereisten
 * Azure-Blob Storage: dit experiment maakt gebruik van Azure Blob Storage (GRS) voor het opslaan van de gegevensset van de TPC-H-test.  Als u geen Azure Storage-account hebt, leert u [hoe u een opslag account maakt](../../storage/common/storage-quickstart-create-account.md).
-* [TPC-h-](http://www.tpc.org/tpch/) gegevens: we gaan TPC-h gebruiken als de gegevensset voor testen.  Hiervoor moet u `dbgen` van de TPC-H Toolkit gebruiken, waarmee u de gegevensset kunt genereren.  U kunt de bron code voor `dbgen` van de [TPC-Hulpprogram ma's](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) downloaden en zelf compileren of het gecompileerde binaire bestand downloaden uit [github](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools).  Voer dbgen. exe uit met de volgende opdrachten om een plat bestand van 1 TB te genereren voor `lineitem` tabel verdeeld over 10 bestanden:
+* [TPC-h-](http://www.tpc.org/tpch/) gegevens: we gaan TPC-h gebruiken als de gegevensset voor testen.  Hiervoor moet u `dbgen` van de TPC-H Toolkit gebruiken, waarmee u de gegevensset kunt genereren.  U kunt de bron code voor `dbgen` van de [TPC-Hulpprogram ma's](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) downloaden en zelf compileren of het gecompileerde binaire bestand downloaden uit [github](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Voer dbgen. exe uit met de volgende opdrachten om een plat bestand van 1 TB te genereren voor `lineitem` tabel verdeeld over 10 bestanden:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`

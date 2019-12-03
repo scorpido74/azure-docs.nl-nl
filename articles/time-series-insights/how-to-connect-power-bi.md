@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e218877ee0d29e493a31091ccbce406ed888f8cc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114732"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705980"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Gegevens visualiseren van Time Series Insights in Power BI
 
@@ -32,7 +32,10 @@ Zorg ervoor dat u zich aanmeldt voor een [gratis Azure-abonnement](https://azure
 ## <a name="prerequisites"></a>Vereisten
 
 * Down load en installeer de nieuwste versie van [Power bi Desktop](https://powerbi.microsoft.com/downloads/)
-* Een [Azure time series INSIGHTS ga-exemplaar](time-series-insights-get-started.md) of [Azure time series Insights preview-exemplaar](time-series-insights-update-how-to-manage.md) maken
+* Een [Azure time series Insights preview-exemplaar](time-series-insights-update-how-to-manage.md) hebben of maken
+
+> [!IMPORTANT]
+> De Power BI-connector wordt momenteel ondersteund in Time Series Insights voor beeld van *betalen naar gebruik* -omgevingen die zijn geconfigureerd voor **warme Store**.
 
 ## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Gegevens verbinden van Time Series Insights naar Power BI
 
@@ -45,7 +48,7 @@ Voer de volgende stappen uit om uw Time Series Insights-omgeving te verbinden me
 
 ### <a name="export-data-into-power-bi-desktop"></a>Gegevens exporteren naar Power BI bureau blad
 
-Aan de slag:
+Aan de slag gaan:
 
 1. Open de Time Series Insights preview Explorer en uw gegevens te openen.
 1. Wanneer u een weer gave hebt gemaakt waarin u tevreden bent, gaat u naar het vervolg keuzemenu **meer acties** en klikt u op **verbinding maken met Power bi**. 
@@ -65,12 +68,12 @@ Aan de slag:
 
        [![verbinding maken](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. Als u uw Time Series Insights-exemplaar voor warme Store niet hebt geconfigureerd, wordt een waarschuwing weer gegeven.
+   1. Als u uw Time Series Insights-exemplaar voor **warme Store**niet hebt geconfigureerd, wordt een waarschuwing weer gegeven.
 
        [![verbinding maken](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > U kunt uw bestaande exemplaar configureren voor warme Store in de Azure Portal.
+       > U kunt uw bestaande exemplaar configureren voor **warme Store** in de Azure Portal.
 
 1. Selecteer **query kopiëren naar klem bord**.
 1. Start nu Power BI Desktop.

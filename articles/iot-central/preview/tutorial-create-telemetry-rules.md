@@ -1,6 +1,6 @@
 ---
-title: Regels maken en beheren in uw Azure IoT Central-toepassing | Microsoft Docs
-description: Met Azure IoT Central-regels kunt u uw apparaten in bijna realtime bewaken en automatisch acties aanroepen, zoals het verzenden van een e-mail bericht wanneer de regel wordt geactiveerd.
+title: 'Zelf studie: regels maken en beheren in uw Azure IoT Central-toepassing'
+description: Deze zelf studie laat zien hoe u met Azure IoT Central regels uw apparaten in bijna realtime kunt bewaken en automatisch acties kunt aanroepen, zoals het verzenden van een e-mail bericht wanneer de regel wordt geactiveerd.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6327ee8a1b0d52c933844670d9b8098c2c3c4f09
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: e2ec01e372ebda79272b585ea6f1708029ea7b13
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958149"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702543"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Zelf studie: een regel maken en meldingen instellen in uw Azure IoT Central-toepassing (preview-functies)
 
@@ -109,7 +109,7 @@ Kies de regel die u wilt in-of uitschakelen. Voeg in de sectie **bereiken** een 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 * Een regel op basis van telemetrie maken
 * Een actie toevoegen

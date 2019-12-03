@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: vashan
-ms.openlocfilehash: 7269c76236b7cbe60995d84e85857da596bec961
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: d3d7f92b3803114321bc7420b5c4ba059aabcb9d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264682"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705925"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Melding beëindigen voor instanties van virtuele-machine schaal sets van Azure (preview-versie)
 Instanties van een schaalset kunnen zich aanmelden voor het ontvangen van meldingen voor het beëindigen van een exemplaar en het instellen van een vooraf gedefinieerde vertragings time-out voor de bewerking beëindigen. De beëindigings melding wordt verzonden via Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), waarmee impact bewerkingen kunnen worden vertraagd, zoals het opnieuw opstarten en opnieuw implementeren. Met de preview-oplossing wordt een andere gebeurtenis toegevoegd: beëindigen: aan de lijst met Scheduled Events en de bijbehorende vertraging van de gebeurtenis Terminate is afhankelijk van de vertragings limiet, zoals opgegeven door gebruikers in de model configuraties van de schaalset.
@@ -67,7 +67,7 @@ Nadat u *scheduledEventsProfile* op het model voor de schaalset hebt ingeschakel
 >Beëindigen van meldingen op instanties van schaal sets kunnen alleen worden ingeschakeld met API-versie 2019-03-01 en hoger
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Wanneer u een nieuwe schaalset maakt, kunt u beëindigings meldingen inschakelen voor de schaalset met behulp van de cmdlet [New-AzVmssVM](/powershell/module/az.compute/new-azvmss) .
+Wanneer u een nieuwe schaalset maakt, kunt u beëindigings meldingen inschakelen voor de schaalset met behulp van de cmdlet [New-AzVmss](/powershell/module/az.compute/new-azvmss) .
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -84,7 +84,7 @@ New-AzVmss `
 
 In het bovenstaande voor beeld wordt een nieuwe schaalset gemaakt waarbij meldingen voor beëindigen worden ingeschakeld met een standaard time-out van 5 minuten. Bij het maken van een nieuwe schaalset heeft de para meter *TerminateScheduledEvents* geen waarde nodig. Als u de time-outwaarde wilt wijzigen, geeft u de gewenste time-out op via de para meter *TerminateScheduledEventNotBeforeTimeoutInMinutes* .
 
-Gebruik de cmdlet [Update-AzVmssVM](/powershell/module/az.compute/update-azvmss) om beëindigings meldingen in te scha kelen voor een bestaande schaalset.
+Gebruik de cmdlet [Update-AzVmss](/powershell/module/az.compute/update-azvmss) om beëindigings meldingen in te scha kelen voor een bestaande schaalset.
 
 ```azurepowershell-interactive
 Update-AzVmss `
@@ -152,13 +152,13 @@ Zorg ervoor dat elke virtuele machine in de schaalset alleen de alleen-lezen geb
 
 U kunt ook verwijzen naar voorbeeld scripts voor het uitvoeren van query's en het reageren op gebeurtenissen met behulp van [Power shell](../virtual-machines/windows/scheduled-events.md#powershell-sample) en [python](../virtual-machines/linux/scheduled-events.md#python-sample).
 
-## <a name="tips-and-best-practices"></a>Tips en aanbevolen procedures
+## <a name="tips-and-best-practices"></a>Tips en best practices
 -   Meldingen alleen beëindigen bij ' delete '-bewerkingen: alle Verwijder bewerkingen (hand matig verwijderen of automatisch schalen gestarte inschalen) genereren Terminate-gebeurtenissen als voor uw schaalset *scheduledEventsProfile* is ingeschakeld. Voor andere bewerkingen, zoals opnieuw opstarten, opnieuw instellen van installatie kopieën, opnieuw implementeren en stoppen/toewijzing, worden geen Terminate-gebeurtenissen gegenereerd. Beëindigen van meldingen kan niet worden ingeschakeld voor Vm's met een lage prioriteit.
 -   Geen verplichte wacht tijd voor time-out: u kunt de bewerking beëindigen op elk gewenst moment starten nadat de gebeurtenis is ontvangen en voordat de *NotBefore* -tijd van de gebeurtenis is verlopen.
 -   Verplicht verwijderen bij time-out: de preview biedt geen mogelijkheid om de time-outwaarde uit te breiden nadat een gebeurtenis is gegenereerd. Zodra de time-out is verlopen, wordt de gebeurtenis pending Terminate verwerkt en wordt de virtuele machine verwijderd.
 -   Aanpas bare time-outwaarde: u kunt de time-outwaarde op elk moment wijzigen voordat een instantie wordt verwijderd, door de eigenschap *notBeforeTimeout* in het model van de schaalset te wijzigen en de VM-exemplaren bij te werken naar het meest recente model.
--   Alle in behandeling zijnde verwijderingen goed keuren: als er een verwijdering in behandeling is op VM_1 die niet is goedgekeurd en u een andere Terminate-gebeurtenis op VM_2 hebt goedgekeurd, wordt VM_2 niet verwijderd totdat de gebeurtenis Terminate voor VM_1 is goedgekeurd of omdat de time-out is verstreken. Zodra u de gebeurtenis Terminate voor VM_1 goedkeurt, worden zowel VM_1 als VM_2 verwijderd.
--   Alle gelijktijdige verwijderingen goed keuren – met uitbrei ding van het bovenstaande voor beeld, als VM_1 en VM_2 dezelfde *NotBefore* -tijd hebben, moeten beide Terminate-gebeurtenissen worden goedgekeurd of wordt de VM niet verwijderd voordat de time-out is verstreken.
+-   Alle in behandeling zijnde verwijderingen goed keuren: als er een verwijdering in behandeling is op VM_1 die niet is goedgekeurd en u een andere Terminate-gebeurtenis hebt goedgekeurd op VM_2, wordt VM_2 pas verwijderd als de gebeurtenis Terminate voor VM_1 is goedgekeurd of omdat de time-out is verstreken. Zodra u de gebeurtenis Terminate voor VM_1 goedkeurt, worden zowel VM_1 als VM_2 verwijderd.
+-   Alle gelijktijdige verwijderingen goed keuren: als VM_1 en VM_2 hetzelfde *NotBefore* hebben, moeten beide gebeurtenissen worden goedgekeurd of wordt de VM niet verwijderd voordat de time-out is verstreken.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 ### <a name="failure-to-enable-scheduledeventsprofile"></a>Kan scheduledEventsProfile niet inschakelen

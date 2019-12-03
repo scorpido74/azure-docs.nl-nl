@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f7b4f926bb9611d87c67276f754a6b596850b59d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 9e64d184ef0fd120d1bc64ce274ee882b7938df0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645590"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708652"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW)
 
@@ -23,7 +23,7 @@ ms.locfileid: "73645590"
 
 V. Wat is Azure Synapse?
 
-A. Azure Synapse is een oneindig analyse service waarmee gegevens-en Big data-analyses worden gecombineerd. Het biedt u de vrijheid om gegevens op uw voor waarden op te vragen met behulp van serverloze on-demand of ingerichte resources op schaal. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te verwerken voor direct BI en machine learning behoeften. Zie [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)? voor meer informatie.
+A. Azure Synapse is een oneindig analyse service waarmee gegevens-en Big data-analyses worden gecombineerd. Het biedt u de vrijheid om gegevens op uw voor waarden op te vragen met behulp van serverloze on-demand of ingerichte resources op schaal. In Azure Synapse komen deze werelden bij elkaar met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te leveren voor directe BI- en machine learning-behoeften. Zie [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)? voor meer informatie.
 
 V. Wat is er gebeurd met Azure SQL Data Warehouse?
 
@@ -83,10 +83,6 @@ A. Veel functies worden ondersteund, de onderdelen die niet worden ondersteund e
 
 ## <a name="tooling-and-administration"></a>Hulp middelen en beheer
 
-V. Biedt ondersteuning voor database projecten in Visual Studio.
-
-A. Data base-projecten worden momenteel niet ondersteund in Visual Studio. Als u een stemming wilt casten om deze functie te downloaden, gaat u naar onze [Functie aanvraag voor database projecten]voor gebruikers voice-database projecten.
-
 V. Ondersteunt SQL Analytics REST Api's?
 
 A. Ja. De meeste REST-functionaliteit die met SQL Database kan worden gebruikt, is ook beschikbaar met SQL Analytics. U vindt API-informatie in REST-documentatie pagina's of [MSDN].
@@ -130,6 +126,6 @@ Zie onze pagina [overzicht] voor meer informatie over Azure Synapse als geheel.
 [Niet-ondersteunde tabel functies]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
 [Azure Storage blobs]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-[Functie aanvraag voor database projecten]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
+[Database projects feature request]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
 [Overzicht]: ./sql-data-warehouse-overview-faq.md

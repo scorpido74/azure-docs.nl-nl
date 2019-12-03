@@ -1,6 +1,6 @@
 ---
-title: Apparaat inrichten met behulp van Azure IoT Hub Device Provisioning Service
-description: 'Zelf studie: uw apparaat inrichten in een enkele IoT-hub met behulp van Azure IoT Hub Device Provisioning Service'
+title: Zelf studie-apparaat inrichten met behulp van Azure IoT Hub Device Provisioning Service
+description: Deze zelf studie laat zien hoe u uw apparaat kunt inrichten voor één IoT-hub met behulp van de Azure-IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6be3832163d4aa857b15f73671985b96d864b730
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358fa1fdc767919720ecb26497c818f4945badb6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228298"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702465"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Zelf studie: het apparaat inrichten voor een IoT-hub met behulp van de Azure-IoT Hub Device Provisioning Service
 
-In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor automatische inrichting **_inschrijvingslijsten_** . In deze handleiding ontdekt u hoe u:
+In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor automatische inrichting **_inschrijvingslijsten_** . In deze zelfstudie ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Het apparaat inschrijven
@@ -91,7 +91,7 @@ Nadat het apparaat is opgestart, worden de volgende acties uitgevoerd:
 Zie het voorbeeld voor het inrichten van de apparaatclient, [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c), voor meer informatie. Het voorbeeld demonstreert het inrichten van een gesimuleerd apparaat met TPM, X.509-certificaten en symmetrische sleutels. Raadpleeg de quickstarts voor attestation van [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), [X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) en [Symmetrische sleutels](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key) voor stapsgewijze aanwijzingen voor het gebruik van het voorbeeld.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Het apparaat inschrijven

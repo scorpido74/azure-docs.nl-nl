@@ -1,6 +1,6 @@
 ---
-title: Toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen | Microsoft Docs
-description: Meer informatie over het beheren van de toegang tot Azure-resources voor gebruikers, groepen en toepassingen met behulp van RBAC (op rollen gebaseerd toegangs beheer) en Azure Resource Manager sjablonen.
+title: Roltoewijzingen toevoegen met behulp van Azure RBAC en Azure Resource Manager sjablonen
+description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van op rollen gebaseerd toegangs beheer (RBAC) en Azure Resource Manager sjablonen van Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/21/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 268913fb7aebd1d6c8b377b95939c3bc1f77daca
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a183dc3b318cb9d740fe91bf553dc9f0c7ec99c4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383997"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707806"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen
+# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Roltoewijzingen toevoegen met behulp van Azure RBAC en Azure Resource Manager sjablonen
 
-[Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. Naast het gebruik van Azure PowerShell of de Azure CLI kunt u de toegang tot Azure-resources beheren met behulp van [Azure Resource Manager-sjablonen](../azure-resource-manager/resource-group-authoring-templates.md). Sjablonen kunnen nuttig zijn als u resources consistent en herhaaldelijk wilt implementeren. In dit artikel wordt beschreven hoe u toegang kunt beheren met RBAC en sjablonen.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] naast het gebruik van Azure PowerShell of de Azure CLI kunt u rollen toewijzen met behulp van [Azure Resource Manager-sjablonen](../azure-resource-manager/resource-group-authoring-templates.md). Sjablonen kunnen nuttig zijn als u resources consistent en herhaaldelijk wilt implementeren. In dit artikel wordt beschreven hoe u rollen toewijst met behulp van sjablonen.
 
 ## <a name="get-object-ids"></a>Object-Id's ophalen
 
@@ -64,9 +64,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Een roltoewijzing maken in een bereik van een resource groep (zonder para meters)
+## <a name="add-a-role-assignment"></a>Een roltoewijzing toevoegen
 
-In RBAC verleent u toegang door een roltoewijzing te maken. In de volgende sjabloon ziet u een eenvoudige manier om een roltoewijzing te maken. Sommige waarden worden opgegeven in de sjabloon. In de volgende sjabloon ziet u:
+Als u in RBAC toegang wilt verlenen, voegt u een roltoewijzing toe.
+
+### <a name="resource-group-without-parameters"></a>Resource groep (zonder para meters)
+
+De volgende sjabloon toont een eenvoudige manier om een roltoewijzing toe te voegen. Sommige waarden worden opgegeven in de sjabloon. In de volgende sjabloon ziet u:
 
 -  De rol van [lezer](built-in-roles.md#reader) toewijzen aan een gebruiker, groep of toepassing in een bereik van een resource groep
 
@@ -107,7 +111,7 @@ Hieronder ziet u een voor beeld van de toewijzing van de rol van lezers aan een 
 
 ![Roltoewijzing op het bereik van de resource groep](./media/role-assignments-template/role-assignment-template.png)
 
-## <a name="create-a-role-assignment-at-a-resource-group-or-subscription-scope"></a>Een roltoewijzing maken voor een resource groep of abonnements bereik
+### <a name="resource-group-or-subscription"></a>Resource groep of-abonnement
 
 De vorige sjabloon is niet zeer flexibel. De volgende sjabloon maakt gebruik van para meters en kan worden gebruikt in verschillende bereiken. In de volgende sjabloon ziet u:
 
@@ -191,9 +195,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-scope"></a>Een roltoewijzing maken in een resource bereik
+### <a name="resource"></a>Bron
 
-Als u een roltoewijzing op het niveau van een resource wilt maken, is de indeling van de roltoewijzing afwijkend. U geeft de naam ruimte van de resource provider en het resource type van de resource waaraan u de rol wilt toewijzen. U neemt ook de naam van de resource op in de naam van de roltoewijzing.
+Als u een roltoewijzing moet toevoegen op het niveau van een resource, is de indeling van de roltoewijzing verschillend. U geeft de naam ruimte van de resource provider en het resource type van de resource waaraan u de rol wilt toewijzen. U neemt ook de naam van de resource op in de naam van de roltoewijzing.
 
 Voor het type en de naam van de roltoewijzing gebruikt u de volgende indeling:
 
@@ -287,7 +291,7 @@ Hieronder ziet u een voor beeld van de toewijzing van de rol Inzender aan een ge
 
 ![Roltoewijzing bij resource bereik](./media/role-assignments-template/role-assignment-template-resource.png)
 
-## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Een roltoewijzing maken voor een nieuwe Service-Principal
+### <a name="new-service-principal"></a>Nieuwe Service-Principal
 
 Als u een nieuwe Service-Principal maakt en een rol onmiddellijk probeert toe te wijzen aan die Service-Principal, kan die roltoewijzing in sommige gevallen mislukken. Als u bijvoorbeeld een nieuwe beheerde identiteit maakt en vervolgens probeert een rol toe te wijzen aan die Service-Principal in hetzelfde Azure Resource Manager sjabloon, kan de roltoewijzing mislukken. De oorzaak van deze fout is waarschijnlijk een replicatie vertraging. De service-principal wordt gemaakt in één regio. de roltoewijzing kan echter plaatsvinden in een andere regio waarvoor de Service-Principal nog niet is gerepliceerd. Als u dit scenario wilt aanpakken, moet u de eigenschap `principalType` instellen op `ServicePrincipal` bij het maken van de roltoewijzing.
 

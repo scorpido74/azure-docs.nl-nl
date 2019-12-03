@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 0ac9247f5156eb1b766aec7403b2dc8473114659
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 6f6c64acf814b39d38138ed0e6a9c6075b693c7d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483716"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707983"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architectuur van Azure SQL-connectiviteit
 
@@ -45,13 +45,13 @@ Azure SQL Database ondersteunt de volgende drie opties voor de instelling van he
 
 - **Proxy:** In deze modus worden alle verbindingen via de gateways van de Azure SQL Database verzonden, waardoor de latentie wordt verhoogd en in de hele periode wordt gereduceerd. Voor verbindingen voor het gebruik van deze modus moeten clients binnenkomende en uitgaande communicatie toestaan van de client om IP-adressen van de gateway te Azure SQL Database op poort 1433.
 
-- **Standaard:** Dit is het verbindings beleid dat wordt toegepast op alle servers na het maken, tenzij u het verbindings beleid expliciet wijzigt in `Proxy` of `Redirect`. Het standaard beleid is`Redirect` voor alle client verbindingen die afkomstig zijn van Azure (bijvoorbeeld van een virtuele machine van Azure) en `Proxy`voor alle client verbindingen die afkomstig zijn (bijvoorbeeld verbindingen van uw lokale werk station)
+- **Standaard:** Dit is het verbindings beleid dat wordt toegepast op alle servers na het maken, tenzij u het verbindings beleid expliciet wijzigt in `Proxy` of `Redirect`. Het standaard beleid is`Redirect` voor alle client verbindingen die afkomstig zijn van Azure (bijvoorbeeld van een virtuele machine van Azure) en `Proxy`voor alle client verbindingen die afkomstig zijn van buiten (bijvoorbeeld verbindingen van uw lokale werk station).
 
  Het beleid voor `Redirect`-verbindingen wordt ten zeerste aangeraden voor het `Proxy` verbindings beleid voor de laagste latentie en de hoogste door voer. U moet echter wel voldoen aan de aanvullende vereisten voor het toestaan van netwerk verkeer zoals hierboven wordt beschreven. Als de client een virtuele machine van Azure is, kunt u dit doen met behulp van netwerk beveiligings groepen (NSG) met [service Tags](../virtual-network/security-overview.md#service-tags). Als de client verbinding maakt met behulp van een on-premises werk station, moet u mogelijk samen werken met uw netwerk beheerder om netwerk verkeer via uw bedrijfs firewall toe te staan.
 
 ## <a name="connectivity-from-within-azure"></a>Connectiviteit vanuit Azure
 
-Als u verbinding maakt vanuit Azure, hebben uw verbindingen standaard een verbindings beleid van `Redirect`. Een beleid van `Redirect` betekent dat nadat de TCP-sessie tot stand is gebracht met de Azure-SQL database, de client sessie wordt doorgestuurd naar het juiste database cluster met een wijziging in de virtuele doel-IP van die van de Azure SQL Database gateway naar die van de cluster. Daarna stroomt alle volgende pakketten rechtstreeks naar het cluster, waarbij de Azure SQL Database gateway wordt omzeild. In het volgende diagram ziet u deze verkeers stroom.
+Als u verbinding maakt vanuit Azure, hebben uw verbindingen standaard een verbindings beleid van `Redirect`. Een beleid van `Redirect` betekent dat nadat de TCP-sessie tot stand is gebracht met de Azure-SQL database, de client sessie wordt omgeleid naar het juiste database cluster met een wijziging in de virtuele doel-IP van die van de Azure SQL Database gateway naar die van het cluster. Daarna stroomt alle volgende pakketten rechtstreeks naar het cluster, waarbij de Azure SQL Database gateway wordt omzeild. In het volgende diagram ziet u deze verkeers stroom.
 
 ![architectuur overzicht](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
@@ -76,9 +76,9 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | --- | --- |
 | Australië - centraal    | 20.36.105.0 |
 | Australië-Central2   | 20.36.113.0 |
-| Australië - oost       | 13.75.149.87, 40.79.161.1 |
+| Australië Oost       | 13.75.149.87, 40.79.161.1 |
 | Australië - zuidoost | 191.239.192.109, 13.73.109.251 |
-| Brazilië - zuid         | 104.41.11.5, 191.233.200.14 |
+| Brazilië - Zuid         | 104.41.11.5, 191.233.200.14 |
 | Canada-Midden       | 40.85.224.249      |
 | Canada-Oost          | 40.86.226.166      |
 | VS - centraal           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
@@ -95,8 +95,8 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | India - centraal        | 104.211.96.159     |
 | India - zuid          | 104.211.224.146    |
 | India - west           | 104.211.160.80     |
-| Japan - oost           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
-| Japan - west           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
+| Japan - Oost           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
+| Japan - West           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Korea - centraal        | 52.231.32.42       |
 | Korea (Zuid)          | 52.231.200.86      |
 | VS - noord-centraal     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030596"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705555"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>De firewall van het gastbesturingssysteem uitschakelen in Azure VM
 
@@ -27,13 +27,13 @@ Dit artikel bevat een verwijzing naar situaties waarin u vermoedt dat de firewal
 
 ## <a name="solution"></a>Oplossing
 
-Het proces dat in dit artikel wordt beschreven, is bedoeld om te worden gebruikt als tijdelijke oplossing, zodat u zich kunt richten op het oplossen van uw echte probleem. Dit is de manier waarop u de firewall regels correct instelt. It\rquote s een Best Practice van micro soft om het Windows Firewall onderdeel ingeschakeld te laten. Hoe u de firewall regels configureert \cf3 is afhankelijk van het toegangs niveau voor de VM that\rquote s die zijn vereist.
+Het proces dat in dit artikel wordt beschreven, is bedoeld om te worden gebruikt als tijdelijke oplossing, zodat u zich kunt richten op het oplossen van uw echte probleem. Dit is de manier waarop u de firewall regels correct instelt. Het is een Best Practice van micro soft om het onderdeel Windows Firewall te kunnen inschakelen. Hoe u de firewall regels configureert, is afhankelijk van het niveau van toegang tot de vereiste virtuele machine.
 
 ### <a name="online-solutions"></a>Online oplossingen 
 
 Als de virtuele machine online is en toegankelijk is op een andere VM in hetzelfde virtuele netwerk, kunt u deze oplossingen doen met behulp van de andere VM.
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Risico beperking 1: Aangepaste script extensie of opdracht uitvoeren
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Beperking 1: aangepaste script extensie of opdracht uitvoeren
 
 Als u een werkende Azure-agent hebt, kunt u [aangepaste script extensie](../extensions/custom-script-windows.md) of de functie [opdrachten uitvoeren](../windows/run-command.md) (alleen vm's van Resource Manager) gebruiken om de volgende scripts op afstand uit te voeren.
 
@@ -54,11 +54,11 @@ Als u een werkende Azure-agent hebt, kunt u [aangepaste script extensie](../exte
 >   ```
 >   Zodra het beleid opnieuw wordt toegepast, wordt u echter niet meer op de externe sessie uitgevoerd. De permanente oplossing voor dit probleem is het wijzigen van het beleid dat op deze computer wordt toegepast.
 
-#### <a name="mitigation-2-remote-powershell"></a>Beperking 2: Externe Power shell
+#### <a name="mitigation-2-remote-powershell"></a>Beperking 2: externe Power shell
 
 1.  Maak verbinding met een virtuele machine die zich in hetzelfde virtuele netwerk bevindt als de virtuele machine die u niet kunt bereiken met behulp van een RDP-verbinding.
 
-2.  Open een PowerShell-consolevenster.
+2.  Open een Power shell-console venster.
 
 3.  Voer de volgende opdrachten uit:
 
@@ -86,11 +86,11 @@ Als u een werkende Azure-agent hebt, kunt u [aangepaste script extensie](../exte
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>Beperking 4: Extern REGI ster 
+#### <a name="mitigation-4-remote-registry"></a>Risico beperking 4: extern REGI ster 
 
 Volg deze stappen om [extern REGI ster](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)te gebruiken.
 
-1.  Start de REGI ster-editor op de virtuele machine voor probleem oplossing en ga naar **bestand** > **Connect netwerk register**.
+1.  Start de REGI ster-editor op de virtuele machine voor probleem oplossing en ga naar **bestand** > **verbinding maken met het netwerk register**.
 
 2.  Open de *doel machine*\System-vertakking en geef de volgende waarden op:
 
@@ -118,9 +118,9 @@ Volg deze stappen om [extern REGI ster](https://support.microsoft.com/help/31483
 
 Als u een situatie hebt waarin u de virtuele machine niet op een wille keurige manier kunt bereiken, mislukt de aangepaste script extensie en moet u in de OFFLINE modus werken door rechtstreeks via de systeem schijf te werken. Voer hiervoor de volgende stappen uit:
 
-1.  [De schijf koppelen aan een virtuele machine voor herstel](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Koppel de systeem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Start een externe bureaubladverbinding met de virtuele machine voor herstel.
+2.  Start een Extern bureaublad verbinding met de virtuele machine voor herstel.
 
 3.  Zorg ervoor dat de schijf is gemarkeerd als online in de schijf beheer-console. Noteer de stationsletter die is toegewezen aan de gekoppelde systeem schijf.
 
@@ -130,7 +130,7 @@ Als u een situatie hebt waarin u de virtuele machine niet op een wille keurige m
 
 6.  Voor deze probleemoplossings procedure koppelen we de componenten als BROKENSYSTEM en BROKENSOFTWARE.
 
-7.  Markeer de sleutel HKEY_LOCAL_MACHINE en selecteer vervolgens Bestand > component laden in het menu.
+7.  Markeer de HKEY_LOCAL_MACHINE sleutel en selecteer vervolgens Bestand > component laden in het menu.
 
 8.  Zoek het bestand \windows\system32\config\SYSTEM op de gekoppelde systeem schijf.
 
@@ -160,6 +160,6 @@ Als u een situatie hebt waarin u de virtuele machine niet op een wille keurige m
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [De schijf loskoppelen en opnieuw maken van de virtuele machine](troubleshoot-recovery-disks-portal-windows.md).
+10. [Ontkoppel de systeem schijf en maak de virtuele machine opnieuw](troubleshoot-recovery-disks-portal-windows.md).
 
-11. Controleer of het probleem opgelost is.
+11. Controleer of het probleem is opgelost.

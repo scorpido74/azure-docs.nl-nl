@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: gegevens verzenden via gateway-Azure IoT Edge & Machine Learning'
-description: 'Zelf studie: uw ontwikkel computer als een gesimuleerd IoT Edge apparaat gebruiken om gegevens te verzenden naar de IoT Hub door middel van een apparaat dat is geconfigureerd als een transparante gateway.'
+title: 'Zelf studie: apparaatgegevens verzenden via transparante gateway-Machine Learning op Azure IoT Edge'
+description: Deze zelf studie laat zien hoe u uw ontwikkel computer als een gesimuleerd IoT Edge apparaat kunt gebruiken om gegevens te verzenden naar de IoT Hub door een apparaat te passeren dat is geconfigureerd als een transparante gateway.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cdd1e1d83b1d184e6a904fc64e9c2395c2896d54
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 50f339b257110f0a5dc0ac08b9f40043ee384afb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665624"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706912"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Zelf studie: gegevens verzenden via een transparante gateway
 

@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 4a1d835ebe47ec36bb839da8dcbcd107ffcb9c4c
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 11/22/2019
+ms.openlocfilehash: 15d44f95cccf15fd0f7615655f5bbac1b0c35127
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161962"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706065"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters schalen
 
@@ -29,12 +29,12 @@ U kunt een cluster hand matig schalen met behulp van een van de hieronder beschr
 
 Micro soft biedt de volgende hulpprogram ma's om clusters te schalen:
 
-|NUTS | Description|
+|NUTS | Beschrijving|
 |---|---|
-|[Power shell AZ](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) - \<clustername cluster name >-TargetInstanceCount \<NewSize >|
-|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) - \<clustername cluster name >-TargetInstanceCount \<NewSize >|
-|[Azure-CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [AZ hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource \<groep resource group >-naam \<cluster naam >--doel exemplaar-aantal \<NewSize >|
-|[Azure-CLI](hdinsight-administer-use-command-line.md)|Azure hdinsight-cluster \<grootte van cluster \<naam > aantal doel instanties > |
+|[Power shell AZ](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -clustername \<cluster naam >-TargetInstanceCount \<NewSize >|
+|[Power shell-AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -clustername \<cluster naam >-TargetInstanceCount \<NewSize >|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [AZ hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource groep \<resource groep >--name \<Cluster name >--target-instance-Count \<NewSize >|
+|[Azure CLI](hdinsight-administer-use-command-line.md)|Azure hdinsight-cluster verg Roten/verkleinen \<clustername > \<aantal doel instanties > |
 |[Azure-portal](https://portal.azure.com)|Open het deel venster HDInsight-cluster, selecteer **cluster grootte** in het menu aan de linkerkant en typ in het deel venster cluster grootte het aantal worker-knoop punten en selecteer Opslaan.|  
 
 ![Optie voor Azure Portal schaal cluster](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
@@ -114,7 +114,7 @@ Als u een lijst met in behandeling zijnde en actieve taken wilt weer geven, kunt
 
     ![Gebruikers interface voor Apache Ambari Quick links Resource Manager](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
-U hebt rechtstreeks toegang tot de Resource Manager `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`-gebruikers interface met.
+U hebt rechtstreeks toegang tot de Resource Manager-gebruikers interface met `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`.
 
 U ziet een lijst met taken, samen met de huidige status. In de scherm afbeelding wordt momenteel één taak uitgevoerd:
 
@@ -136,7 +136,7 @@ yarn application -kill "application_1499348398273_0003"
 
 Wanneer u omlaag schaalt in een cluster, gebruikt HDInsight Apache Ambari-beheer interfaces om de extra worker-knoop punten uit bedrijf te nemen, waardoor de HDFS-blokken worden gerepliceerd naar andere knoop punten online Worker. Daarna wordt het cluster veilig door HDInsight geschaald. HDFS gaat in de veilige modus tijdens de schaal bewerking en moet worden opgehaald zodra het schalen is voltooid. In sommige gevallen wordt HDFS tijdens een schaal bewerking echter vastzitten in de veilige modus vanwege een bestands blokkering onder replicatie.
 
-HDFS wordt standaard geconfigureerd met de `dfs.replication` instelling 3, die bepaalt hoeveel exemplaren van elk bestands blok er beschikbaar zijn. Elk exemplaar van een bestands blok wordt opgeslagen op een ander knoop punt van het cluster.
+HDFS wordt standaard geconfigureerd met een `dfs.replication`-instelling van 1, die bepaalt hoeveel exemplaren van elk bestands blok er beschikbaar zijn. Elk exemplaar van een bestands blok wordt opgeslagen op een ander knoop punt van het cluster.
 
 Wanneer HDFS detecteert dat het verwachte aantal geblokkeerde blok exemplaren niet beschikbaar is, wordt de veilige modus geactiveerd en Ambari waarschuwingen gegenereerd. Als HDFS de veilige modus voor een schaal bewerking invoert, maar de veilige modus niet kan afsluiten omdat het vereiste aantal knoop punten niet is gedetecteerd voor replicatie, kan het cluster vastlopen in de veilige modus.
 
@@ -150,7 +150,7 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-U kunt de naam van de logboeken in `/var/log/hadoop/hdfs/` de map bekijken, in de buurt van het tijdstip waarop het cluster is geschaald, om te zien wanneer de veilige modus is geactiveerd. De logboek bestanden hebben de `Hadoop-hdfs-namenode-hn0-clustername.*`naam.
+U kunt de naam knooppunt Logboeken in de map `/var/log/hadoop/hdfs/` bekijken, in de buurt van het tijdstip waarop het cluster is geschaald, om te zien wanneer de veilige modus is geactiveerd. De logboek bestanden hebben de naam `Hadoop-hdfs-namenode-hn0-clustername.*`.
 
 De hoofd oorzaak van de eerdere fouten is dat de Hive afhankelijk is van tijdelijke bestanden in HDFS tijdens het uitvoeren van query's. Als HDFS de veilige modus wordt geactiveerd, kan Hive geen query's uitvoeren omdat er niet naar HDFS kan worden geschreven. De tijdelijke bestanden in HDFS bevinden zich op het lokale station dat is gekoppeld aan de virtuele machines van het knoop punt van de werk nemer en wordt gerepliceerd tussen andere werk knooppunten van drie replica's, mini maal.
 
@@ -159,7 +159,7 @@ De hoofd oorzaak van de eerdere fouten is dat de Hive afhankelijk is van tijdeli
 Er zijn verschillende manieren om te voor komen dat HDInsight in de veilige modus wordt verlaten:
 
 * Stop alle Hive-taken voordat u HDInsight uitschaalt. U kunt ook het proces voor omlaag schalen plannen om te voor komen dat er conflicten ontstaan met het uitvoeren van Hive-taken.
-* Verwijder hand matig de Scratch `tmp` Directory-bestanden van de Hive in HDFS voordat u omlaag schaalt.
+* Reinig `tmp` Directory bestanden van de Hive hand matig in HDFS voordat u omlaag schaalt.
 * Schaal HDInsight alleen naar drie worker-knoop punten, mini maal. Vermijd het gebruik van één worker-knoop punt.
 * Voer de opdracht uit om de veilige modus te verlaten, indien nodig.
 
@@ -175,7 +175,7 @@ Als u de Hive-taken voor het schalen stopt, beperkt u het aantal Scratch-bestand
 
 Als Hive zich achter tijdelijke bestanden bevindt, kunt u deze bestanden hand matig opschonen voordat u uitschaalt om de veilige modus te voor komen.
 
-1. Controleer welke locatie wordt gebruikt voor tijdelijke bestanden van Hive door te kijken naar `hive.exec.scratchdir` de configuratie-eigenschap. Deze para meter is ingesteld `/etc/hive/conf/hive-site.xml`in:
+1. Controleer welke locatie wordt gebruikt voor tijdelijke bestanden van Hive door te kijken naar de `hive.exec.scratchdir` configuratie-eigenschap. Deze para meter wordt ingesteld in `/etc/hive/conf/hive-site.xml`:
 
     ```xml
     <property>
@@ -185,7 +185,7 @@ Als Hive zich achter tijdelijke bestanden bevindt, kunt u deze bestanden hand ma
     ```
 
 1. Stop Hive-Services en zorg ervoor dat alle query's en taken zijn voltooid.
-2. Geef een lijst weer van de inhoud van de map `hdfs://mycluster/tmp/hive/` Scratch die hierboven is gevonden om te zien of deze bestanden bevat:
+2. Geef een lijst weer van de inhoud van de map Scratch die hierboven is gevonden, `hdfs://mycluster/tmp/hive/` om te zien of deze bestanden bevat:
 
     ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive

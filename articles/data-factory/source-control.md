@@ -5,19 +5,19 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: naF
 ms.topic: conceptual
 ms.date: 01/09/2019
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 264c60c719ffdd94664ae3a85fc67894d14f394d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 904165c4a221e1db30f9aa1ce1f2ce7b21cf04ed
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484461"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703839"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Broncode beheer in Azure Data Factory
 
@@ -236,7 +236,7 @@ Het is raadzaam om directe incheckers niet toe te staan voor de vertakking voor 
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Wacht woorden van Azure Key Vault gebruiken
 
-het wordt aanbevolen Azure Key Vault te gebruiken voor het opslaan van verbindings reeksen of wacht woorden voor Data Factory gekoppelde services. Uit veiligheids overwegingen worden deze geheime gegevens niet opgeslagen in Git, zodat eventuele wijzigingen in gekoppelde services onmiddellijk worden gepubliceerd in de Azure Data Factory-service.
+Het is raadzaam om Azure Key Vault te gebruiken voor het opslaan van verbindings reeksen of wacht woorden voor Data Factory gekoppelde services. Uit veiligheids overwegingen worden deze geheime gegevens niet opgeslagen in Git, zodat eventuele wijzigingen in gekoppelde services onmiddellijk worden gepubliceerd in de Azure Data Factory-service.
 
 Het gebruik van Key Vault zorgt ook voor continue integratie en implementatie, omdat u deze geheimen niet hoeft op te geven tijdens de implementatie van Resource Manager-sjablonen.
 

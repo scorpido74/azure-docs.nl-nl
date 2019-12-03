@@ -150,9 +150,9 @@
         - name: Aangepaste .NET-activiteit
           href: data-factory-use-custom-activities.md
         - name: R-scripts aanroepen
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample'
         - name: Modellen in Azure Analysis Services opnieuw verwerken
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample'
         - name: Gekoppelde services berekenen
           href: data-factory-compute-linked-services.md
     - name: Ontwikkelen

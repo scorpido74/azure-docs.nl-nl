@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/20/2019
+ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052514"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706266"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: veelgestelde vragen
 
@@ -90,7 +90,7 @@ Ja. Als u extra onderdelen wilt installeren of cluster configuratie wilt aanpass
 
 Microsoft Ondersteuning teams kunnen echter alleen ondersteuning bieden voor de volgende situaties:
 
-- Problemen of fouten die optreden tijdens het laden van het script. Fouten die optreden tijdens het uitvoeren van aangepaste scripts vallen buiten het bereik van een ondersteunings ticket.
+- Problemen of fouten die optreden tijdens het laden van het script. Eventuele fouten die optreden tijdens het uitvoeren van aangepaste scripts, vallen buiten het bereik van een ondersteuningsticket.
 
 - Aanvullende toepassingen die deel uitmaken van het proces dat door het cluster wordt gemaakt. 
 
@@ -180,6 +180,11 @@ Ja, u kunt een extra virtuele machine implementeren binnen hetzelfde subnet als 
 - Edge-knoop punten: u kunt een ander Edge-knoop punt toevoegen aan het cluster, zoals wordt beschreven in [lege Edge-knoop punten gebruiken op Apache Hadoop clusters in HDInsight](hdinsight-apps-use-edge-node.md).
 
 - Zelfstandige knoop punten: u kunt een zelfstandige virtuele machine toevoegen aan hetzelfde subnet en vanaf die virtuele machine toegang krijgen tot het cluster met behulp van het persoonlijke eind punt `https://<CLUSTERNAME>-int.azurehdinsight.net`. Zie [netwerk verkeer beheren](hdinsight-plan-virtual-network-deployment.md#networktraffic)voor meer informatie.
+
+### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>Moet ik gegevens opslaan op de lokale schijf van een Edge-knoop punt?
+
+Nee, het is niet een goed idee om gegevens op een lokale schijf op te slaan. Als het knoop punt uitvalt, gaan alle lokaal opgeslagen gegevens verloren. Het is raadzaam om gegevens op te slaan in Azure Data Lake Storage Gen2 of Azure Blob-opslag of door een Azure Files share te koppelen voor het opslaan van de gegevens.
+
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Kan ik een bestaand HDInsight-cluster toevoegen aan een ander virtueel netwerk?
 

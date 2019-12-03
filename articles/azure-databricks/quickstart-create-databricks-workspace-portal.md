@@ -1,6 +1,6 @@
 ---
-title: Een Apache Spark-taak uitvoeren in Azure Databricks met behulp van Azure Portal
-description: De quickstart laat zien hoe er met Azure Portal een Azure Databricks-werkruimte en een Apache Spark-cluster kan worden gemaakt, en hoe een Spark-taak kan worden uitgevoerd.
+title: 'Quick Start: een Spark-taak uitvoeren op Azure Databricks met behulp van Azure Portal'
+description: In deze Quick start ziet u hoe u Azure Portal kunt gebruiken om een Azure Databricks-werk ruimte, een Apache Spark-cluster en een Spark-taak te maken.
 services: azure-databricks
 ms.service: azure-databricks
 author: mamccrea
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 004557ab3eb73f3f793b0514913260a414645d40
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 23d04062d5db7c944b7734f5e8339342548062fa
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129366"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706199"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Quickstart: Een Spark-taak uitvoeren op Azure Databricks met Azure portal
 
@@ -27,7 +27,7 @@ In deze Quick Start gebruikt u de Azure Portal om een Azure Databricks-werk ruim
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
@@ -152,7 +152,7 @@ Voer de volgende taken uit om een notitie blok in Databricks te maken, Configure
    * Stel **Aggregatie** in op **AANTAL**.
    * **Weergave type** instellen op **cirkel diagram**.
 
-     Klik op **Toepassen**.
+     Klik op **Apply** (Toepassen).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

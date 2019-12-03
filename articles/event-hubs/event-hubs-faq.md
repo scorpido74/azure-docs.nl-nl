@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen - Azure Event Hubs | Microsoft Docs
-description: Dit artikel bevat een lijst met veelgestelde vragen (FAQ) voor Azure Event Hubs en de antwoorden.
+title: Veelgestelde vragen-Azure Event Hubs | Microsoft Docs
+description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Event Hubs en de antwoorden hiervan.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -8,21 +8,21 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 05/15/2019
+ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 66b11ef8e746222074eadab2348f8a2cf9dab39f
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3b46c574ea47622ec97e70c0d2f2cdc3aa54ec0d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479152"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706384"
 ---
-# <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Eventhubs
+# <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
 ## <a name="general"></a>Algemeen
 
-### <a name="what-is-an-event-hubs-namespace"></a>Wat is een Event Hubs-naamruimte?
-Een naamruimte is een scoping container voor Event Hub/Kafka-onderwerpen. Dit biedt u een unieke [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Een naamruimte fungeert als een toepassingscontainer dat met meerdere Event Hub/Kafka-onderwerpen werken kan. 
+### <a name="what-is-an-event-hubs-namespace"></a>Wat is een Event Hubs naam ruimte?
+Een naam ruimte is een container voor Event hub/Kafka-onderwerpen. Het biedt u een unieke [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Een naam ruimte fungeert als een toepassings container die meerdere Event hub-Kafka onderwerpen kan bevatten. 
 
 ### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Wanneer moet ik een nieuwe naam ruimte maken versus een bestaande naam ruimte gebruiken?
 Capaciteits toewijzingen ([doorvoer eenheden (TUs)](#throughput-units)) worden gefactureerd op het niveau van de naam ruimte. Een naam ruimte is ook gekoppeld aan een regio.
@@ -33,37 +33,39 @@ U kunt een nieuwe naam ruimte maken in plaats van een bestaande te gebruiken in 
 - U hebt een event hub nodig die is gekoppeld aan een ander abonnement.
 - U hebt een event hub met een afzonderlijke capaciteits toewijzing nodig (dat wil zeggen, de capaciteits behoefte voor de naam ruimte met de toegevoegde Event Hub zou de drempel waarde 40 TU overschrijden en u niet wilt voor het toegewezen cluster)  
 
-### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Wat is het verschil tussen Event Hubs basis en standaard-laag?
+### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Wat is het verschil tussen Event Hubs Basic-en Standard-lagen?
 
-De prijscategorie Standard van Azure Event Hubs biedt functies dan wat er beschikbaar is in de laag basis. De volgende functies zijn inbegrepen in Standard:
+De Standard-laag van Azure Event Hubs biedt functies die groter zijn dan in de Basic-laag. De volgende functies zijn opgenomen in de standaard:
 
-* Langere bewaartermijn van de gebeurtenis
-* Extra brokered verbindingen met een vaste kosten voor meer dan het aantal opgenomen
-* Meer dan één [consumentengroep](event-hubs-features.md#consumer-groups)
-* [vastleggen](event-hubs-capture-overview.md)
+* Langer bewaren van gebeurtenissen
+* Extra brokered Connections, met een overschrijding kosten voor meer dan het aantal inbegrepen
+* Meer dan één [consumenten groep](event-hubs-features.md#consumer-groups)
+* [Opnames](event-hubs-capture-overview.md)
 * [Kafka-integratie](event-hubs-for-kafka-ecosystem-overview.md)
 
-Zie voor meer informatie over de prijzen van lagen, met inbegrip van Event Hubs Dedicated, de [Event Hubs prijsinformatie](https://azure.microsoft.com/pricing/details/event-hubs/).
+Voor meer informatie over prijs categorieën, waaronder Event Hubs Dedicated, raadpleegt u de [Event hubs prijs informatie](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="where-is-azure-event-hubs-available"></a>Waar is Azure Event Hubs beschikbaar?
 
-Azure Event Hubs is beschikbaar in alle ondersteunde Azure-regio's. Voor een lijst, gaat u naar de [Azure-regio's](https://azure.microsoft.com/regions/) pagina.  
+Azure Event Hubs is beschikbaar in alle ondersteunde Azure-regio's. Ga voor een lijst naar de pagina [Azure-regio's](https://azure.microsoft.com/regions/) .  
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Kan ik één AMQP-verbinding gebruiken om te verzenden en ontvangen van meerdere eventhubs?
+### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Kan ik één AMQP-verbinding gebruiken voor het verzenden en ontvangen van meerdere Event hubs?
 
-Ja, zolang alle eventhubs in dezelfde naamruimte zijn.
+Ja, zolang alle Event hubs zich in dezelfde naam ruimte bevinden.
 
-### <a name="what-is-the-maximum-retention-period-for-events"></a>Wat is de maximale bewaarperiode voor gebeurtenissen?
+### <a name="what-is-the-maximum-retention-period-for-events"></a>Wat is de maximale Bewaar periode voor gebeurtenissen?
 
-Event Hubs Standard-laag biedt momenteel ondersteuning voor een maximale bewaarperiode van zeven dagen. Eventhubs zijn niet bedoeld als permanente gegevensopslag. Bewaarperioden langer dan 24 uur zijn bedoeld voor scenario's waarbij het handig is dat een gebeurtenisstroom dezelfde systemen; Als u bijvoorbeeld wilt trainen of te controleren of een nieuw model voor machine learning op bestaande gegevens. Als u de bewaarperiode na zeven dagen bericht moet, waardoor [Event Hubs Capture](event-hubs-capture-overview.md) op uw event hub haalt de gegevens uit uw event hub in de Storage-account of Azure Data Lake-Service-account van uw keuze. Capture inschakelen leidt tot een kosten in rekening gebracht op basis van de aangekochte doorvoereenheden.
+Event Hubs Standard-laag ondersteunt momenteel een maximale Bewaar periode van zeven dagen. Event hubs is niet bedoeld als een permanent gegevens archief. Bewaar perioden van meer dan 24 uur zijn bedoeld voor scenario's waarin het handig is om een gebeurtenis stroom opnieuw te spelen in dezelfde systemen. bijvoorbeeld, om een nieuw machine learning model op bestaande gegevens te trainen of te controleren. Als u na zeven dagen een Bewaar periode van berichten nodig hebt, worden de gegevens van uw Event Hub naar het opslag account of het Azure Data Lake service account van uw keuze opgehaald als [Event hubs Capture](event-hubs-capture-overview.md) op uw event hub wordt ingeschakeld. Bij het inschakelen van Capture worden er kosten in rekening gebracht op basis van uw aangeschafte doorvoer eenheden.
 
-### <a name="how-do-i-monitor-my-event-hubs"></a>Hoe bewaak ik mijn Event Hubs?
-Eventhubs verzendt uitgebreide metrische gegevens die de status van uw resources te bieden [Azure Monitor](../azure-monitor/overview.md). Ook kunt u bij het bepalen van de algemene status van de Event Hubs-service niet alleen op het niveau van de naamruimte, maar ook op het entiteitsniveau van de. Meer informatie over welke bewaking wordt aangeboden voor [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
+U kunt de Bewaar periode voor de vastgelegde gegevens in uw opslag account configureren. De functie **levenscyclus beheer** van Azure Storage biedt een uitgebreid beleid op basis van regels voor algemeen gebruik v2-en Blob Storage-accounts. Gebruik het beleid om uw gegevens over te zetten naar de juiste toegangs lagen of verloopt aan het einde van de levens cyclus van de gegevens. Zie [de levens cyclus van Azure Blob-opslag beheren](../storage/blobs/storage-lifecycle-management-concepts.md)voor meer informatie. 
+
+### <a name="how-do-i-monitor-my-event-hubs"></a>Mijn Event Hubs Hoe kan ik controleren?
+Event Hubs levert uitgebreide metrische gegevens die de status van uw resources [Azure monitor](../azure-monitor/overview.md). Ze kunnen ook de algemene status van de Event Hubs-service alleen beoordelen op het niveau van de naam ruimte, maar ook op het niveau van de entiteit. Meer informatie over welke bewaking wordt aangeboden voor [Azure Event hubs](event-hubs-metrics-azure-monitor.md).
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Welke poorten moet ik op de firewall openen? 
 U kunt de volgende protocollen gebruiken met Azure Service Bus voor het verzenden en ontvangen van berichten:
 
-- Advanced Message Queuing Protocol (AMQP)
+- Advanced Message Queueing Protocol (AMQP)
 - HTTP
 - Apache Kafka
 
@@ -83,7 +85,7 @@ Ga als volgt te werk om de juiste IP-adressen voor uw verbindingen te zoeken naa
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Noteer het IP-adres dat is `Non-authoritative answer`geretourneerd in. Wanneer u de naam ruimte op een ander cluster herstelt, wordt het enige tijdstip gewijzigd dat het zou veranderen.
+2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer`. Als u de naam ruimte op een ander cluster herstelt, wordt de enige keer dat deze wordt gewijzigd.
 
 Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra stappen uitvoeren: 
 
@@ -103,152 +105,152 @@ Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra 
 
 ## <a name="apache-kafka-integration"></a>Integratie van Apache Kafka
 
-### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Hoe Integreer ik mijn bestaande Kafka-toepassing met Event Hubs?
-Eventhubs biedt een Kafka-eindpunt dat kan worden gebruikt door uw bestaande Apache Kafka op basis van toepassingen. Een wijziging in de configuratie is het enige dat is vereist om de ervaring PaaS Kafka. Het biedt een alternatief voor het uitvoeren van uw eigen Kafka-cluster. Eventhubs biedt ondersteuning voor Apache Kafka 1.0 en nieuwere clientversies en werkt met uw bestaande toepassingen, hulpprogramma's en frameworks in Kafka. Zie voor meer informatie, [Event Hubs voor Kafka-opslagplaats](https://github.com/Azure/azure-event-hubs-for-kafka).
+### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Hoe kan ik mijn bestaande Kafka-toepassing met Event Hubs integreren?
+Event Hubs biedt een Kafka-eind punt dat kan worden gebruikt door uw bestaande op Apache Kafka gebaseerde toepassingen. Een configuratie wijziging is vereist voor de PaaS Kafka-ervaring. Het biedt een alternatief voor het uitvoeren van uw eigen Kafka-cluster. Event Hubs ondersteunt Apache Kafka 1,0-en nieuwere client versies en werkt met uw bestaande Kafka-toepassingen,-hulpprogram ma's en-frameworks. Zie [Event hubs voor Kafka opslag plaats](https://github.com/Azure/azure-event-hubs-for-kafka)voor meer informatie.
 
-### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Welke wijzigingen in de configuratie moeten worden uitgevoerd voor mijn bestaande toepassingen kan communiceren met Event Hubs?
-Voor verbinding met een Gebeurtenishub waarvoor Kafka is ingeschakeld, moet u de configuraties van Kafka-client bijwerken. Dit wordt gedaan door het maken van een Event Hubs-naamruimte en het verkrijgen van de [verbindingsreeks](event-hubs-get-connection-string.md). De bootstrap.servers dat deze de FQDN-naam Event Hubs en de poort naar 9093 wijzigen. Bijwerken van de sasl.jaas.config als u wilt de Kafka-client naar het eindpunt van uw Event Hubs waarvoor Kafka is ingeschakeld (dit is de verbindingsreeks die u hebt verkregen), met de juiste verificatie, zoals hieronder weergegeven:
+### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Welke configuratie wijzigingen moeten worden uitgevoerd voor mijn bestaande toepassing om te praten met Event Hubs?
+Als u verbinding wilt maken met een event hub met Kafka-functionaliteit, moet u de Kafka-client configuraties bijwerken. Dit doet u door een Event Hubs naam ruimte te maken en de [Connection String](event-hubs-get-connection-string.md)te verkrijgen. Wijzig de Boots trap. servers om de Event Hubs FQDN en de poort te laten verwijzen naar 9093. Werk de sasl. JAAS. config bij om de Kafka-client naar uw Kafka te sturen Event Hubs-eind punt (dit is de connection string die u hebt verkregen), met de juiste verificatie zoals hieronder wordt weer gegeven:
 
-bootstrap.servers={Your. EVENT HUBS. FQDN-naam}: 9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule vereist gebruikersnaam = '$ConnectionString' wachtwoord = "{uw. EVENT HUBS. DE VERBINDING. TEKENREEKS} ";
+Boots trap. servers = {uw. Event hubs. FQDN}: 9093-aanvraag. time-out. MS = 60000 Security. Protocol = SASL_SSL sasl. mechanisme = sasl. JAAS. config = org. apache. Kafka. common. Security. Plains. PlainLoginModule vereist username = "$ConnectionString" Password = "{YOUR. Event hubs. Combi. TEKEN reeks} ";
 
 Voorbeeld:
 
-bootstrap.servers=dummynamespace.servicebus.Windows.NET:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule vereist gebruikersnaam = "$ Password="Endpoint=sb://dummynamespace.servicebus.windows.net/ ConnectionString'; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
+Boots trap. servers = dummynamespace. servicebus. Windows. net: 9093 Request. time-out. MS = 60000 Security. Protocol = SASL_SSL sasl. mechanisme = sasl. JAAS. config = org. apache. Kafka. common. Security. Plains. PlainLoginModule vereist username = "$ConnectionString" Password = "endpoint = SB://dummynamespace.servicebus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Opmerking: Als sasl. JAAS. config geen ondersteunde configuratie in uw Framework is, zoekt u de configuraties die worden gebruikt voor het instellen van de SASL gebruikers naam en het wacht woord en het gebruik daarvan. Stel de gebruikersnaam op $ConnectionString en het wachtwoord voor uw Event Hubs-verbindingsreeks.
+Opmerking: als sasl. JAAS. config geen ondersteunde configuratie in uw Framework is, zoekt u de configuraties die worden gebruikt voor het instellen van de SASL gebruikers naam en het wacht woord en het gebruik daarvan. Stel de gebruikers naam in op $ConnectionString en het wacht woord voor uw Event Hubs connection string.
 
-### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Wat is de bericht-/ gebeurtenisgrootte voor Event Hubs waarvoor Kafka is ingeschakeld?
-De maximale berichtgrootte die is toegestaan voor de Event-Hubs voor Kafka-functionaliteit is 1MB.
+### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Wat is de bericht/gebeurtenis grootte voor Kafka-Event Hubs?
+De maximale bericht grootte die is toegestaan voor Kafka-ingeschakelde Event Hubs is 1 MB.
 
-## <a name="throughput-units"></a>Doorvoereenheden
+## <a name="throughput-units"></a>Eenheden gegevensdoorvoer
 
-### <a name="what-are-event-hubs-throughput-units"></a>Wat zijn Event hub-doorvoereenheden?
-Doorvoer in Event Hubs definieert de hoeveelheid gegevens in bytes mega of het aantal (in duizendtallen) gebeurtenissen van 1 KB die inkomend en uitgaand verkeer via Event Hubs. Deze doorvoer wordt gemeten in doorvoereenheden (tabel). Doorvoereenheden aanschaffen voordat u kunt beginnen met behulp van de Event Hubs-service. U kunt expliciet Event Hubs-Doorvoereenheden selecteren met behulp van de portal of Event Hubs-Resource Manager-sjablonen. 
+### <a name="what-are-event-hubs-throughput-units"></a>Wat zijn Event Hubs doorvoer eenheden?
+Door Voer in Event Hubs definieert de hoeveelheid gegevens in mega bytes of het aantal (in duizend tallen) gebeurtenissen van 1 KB die via Event Hubs binnenkomen en uitvallen. Deze door Voer wordt gemeten in doorvoer eenheden (TUs). Koop TUs voordat u de Event Hubs-service kunt gaan gebruiken. U kunt Event Hubs TUs expliciet selecteren met behulp van de portal of Event Hubs Resource Manager-sjablonen. 
 
 
-### <a name="do-throughput-units-apply-to-all-event-hubs-in-a-namespace"></a>Doorvoereenheden van toepassing op alle eventhubs in een naamruimte?
-Ja, doorvoereenheden (Doorvoereenheden) van toepassing op alle eventhubs in een Event Hubs-naamruimte. Betekent dit dat u Doorvoereenheden op het niveau van de naamruimte aanschaft en worden gedeeld tussen de eventhubs in die naamruimte. Elke TU voorziet de naamruimte van de volgende mogelijkheden:
+### <a name="do-throughput-units-apply-to-all-event-hubs-in-a-namespace"></a>Worden doorvoer eenheden toegepast op alle Event hubs in een naam ruimte?
+Ja, doorvoer eenheden (TUs) zijn van toepassing op alle Event hubs in een Event Hubs naam ruimte. Dit betekent dat u TUs op het niveau van de naam ruimte koopt en dat wordt gedeeld tussen de Event hubs onder die naam ruimte. Elke di geeft de naam ruimte aan de volgende mogelijkheden:
 
-- Maximaal 1 MB per seconde aan ingangsgebeurtenissen (gebeurtenissen die worden verzonden naar een event hub), maar niet meer dan 1000 ingangsgebeurtenissen, beheerbewerkingen of besturingselement API-aanroepen per seconde.
-- Maximaal 2 MB per seconde voor uitgaande gebeurtenissen (gebeurtenissen gebruikt vanaf een event hub), maar niet meer dan 4096 uitgaande gebeurtenissen.
-- Maximaal 84 GB voor opslag van gebeurtenissen (voldoende voor de bewaartermijn voor 24 uur).
+- Maxi maal 1 MB per seconde aan ingangs gebeurtenissen (gebeurtenissen die worden verzonden naar een Event Hub), maar niet meer dan 1000 ingangs gebeurtenissen, beheer bewerkingen of besturings-API-aanroepen per seconde.
+- Maxi maal 2 MB per seconde voor afwijkings gebeurtenissen (gebeurtenissen die worden verbruikt van een Event Hub), maar niet meer dan 4096 uitwijkings gebeurtenissen.
+- Maxi maal 84 GB gebeurtenis opslag (voldoende voor de standaard Bewaar periode van 24 uur).
 
-### <a name="how-are-throughput-units-billed"></a>Hoe worden doorvoereenheden gefactureerd?
-Throughput units (Doorvoereenheden) worden gefactureerd op uurbasis. De facturering is gebaseerd op het maximum aantal eenheden dat tijdens het opgegeven uur is geselecteerd. 
+### <a name="how-are-throughput-units-billed"></a>Hoe worden doorvoer eenheden in rekening gebracht?
+Doorvoer eenheden (TUs) worden per uur gefactureerd. De facturering is gebaseerd op het maximum aantal eenheden dat tijdens het opgegeven uur is geselecteerd. 
 
-### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>Hoe kan ik het gebruik van mijn doorvoereenheden optimaliseren?
-U kunt slechts één doorvoereenheid mogelijk (TU) starten en inschakelen [automatisch vergroten](event-hubs-auto-inflate.md). Het automatisch vergroten functie kunt u uw Doorvoereenheden groeien als uw verkeer/nettolading toeneemt. U kunt ook een bovengrens instellen op het aantal Doorvoereenheden.
+### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>Hoe kan ik het gebruik optimaliseren voor mijn doorvoer eenheden?
+U kunt beginnen met één doorvoer eenheid (di) en [automatisch verg Roten](event-hubs-auto-inflate.md)inschakelen. Met de functie voor automatisch verg Roten kunt u uw TUs groeien naarmate uw verkeer/nettolading toeneemt. U kunt ook een bovengrens voor het aantal TUs instellen.
 
-### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Hoe werkt de functie voor automatisch vergroten van Event Hubs?
-De functie kunt u uw doorvoereenheden (Doorvoereenheden opschalen) automatisch vergroten. Betekent dit dat u kunt beginnen door lage Doorvoereenheden aanschaffen en automatisch schalen van uw Doorvoereenheden vergroten als uw invoer toeneemt. Het biedt een voordelige optie zijn en de volledige controle over het aantal Doorvoereenheden te beheren. Deze functie is een **scale-up alleen** functie, en u kunt zelf de volledige controle het omlaag schalen van het aantal Doorvoereenheden door deze bij te werken. 
+### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Hoe werkt de functie voor het automatisch verg Roten van Event Hubs?
+Met de functie voor automatisch verg Roten kunt u uw doorvoer eenheden (TUs) omhoog schalen. Dit betekent dat u kunt beginnen met het kopen van lage TUs en het automatisch verg Roten of uitbreiden van uw TUs wanneer de inkomende kracht toeneemt. Het biedt een voordelige optie en volledige controle over het aantal TUs dat u wilt beheren. Deze functie is een functie die alleen kan worden **geschaald** , en u kunt de schaal van het aantal TUs volledig regelen door deze bij te werken. 
 
-U wilt beginnen met lage doorvoereenheden (tabel), bijvoorbeeld 2 Doorvoereenheden. Als u dat uw verkeer tot 15 Doorvoereenheden uitbreiden kan voorspellen inschakelen de functie op uw naamruimte automatisch vergroten en de maximale limiet ingesteld op 15 Doorvoereenheden. U kunt uw Doorvoereenheden nu automatisch groeien als uw verkeer toeneemt.
+Mogelijk wilt u beginnen met een lage doorvoer eenheid (TUs), bijvoorbeeld 2 TUs. Als u voor spelt dat uw verkeer kan toenemen tot 15 TUs, schakelt u de functie automatisch verg Roten in uw naam ruimte in en stelt u de maximum limiet in op 15 TUs. U kunt uw TUs nu automatisch laten groeien naarmate uw verkeer toeneemt.
 
-### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>Zijn er kosten wanneer ik inschakelen nadat de functie voor automatisch vergroten?
-Er is **gratis** die zijn gekoppeld aan deze functie. 
+### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>Zijn er kosten verbonden aan het inschakelen van de functie voor automatisch verg Roten?
+Er zijn **geen kosten** verbonden aan deze functie. 
 
-### <a name="how-are-throughput-limits-enforced"></a>Hoe wordt de doorvoerlimieten toegepast?
-Als de totale ingangsdoorvoer of de totale snelheid van ingangsgebeurtenissen voor alle eventhubs in een naamruimte groter is dan de cumulatieve throughput unit-limiet, worden de afzenders zijn beperkt en ontvangen ze foutberichten die aangeven dat het ingangsquotum is overschreden.
+### <a name="how-are-throughput-limits-enforced"></a>Hoe worden doorvoer limieten afgedwongen?
+Als de totale ingangs doorvoer of het totale aantal ingangs gebeurtenissen voor alle Event hubs in een naam ruimte de cumulatieve doorvoer eenheid overschrijdt, worden afzenders beperkt en ontvangen ze fouten die aangeven dat het ingangs quotum is overschreden.
 
-Als de totale uitgangsdoorvoer of de totale snelheid van uitgangsgebeurtenissen voor alle eventhubs in een naamruimte groter is dan de cumulatieve throughput unit-limiet, worden de ontvangers worden vertraagd en ontvangen ze foutberichten die aangeven dat het uitgangsquotum is overschreden. Inkomend en uitgaand verkeer worden afzonderlijk toegepast, waardoor afzenders geen vertraging voor gebeurtenisverbruik veroorzaken kan te vertragen, en niet kan een ontvanger te voorkomen dat gebeurtenissen worden verzonden naar een event hub.
+Als de totale uitgangs doorvoer of het totale percentage voor het oplopen van gebeurtenissen voor alle Event hubs in een naam ruimte de cumulatieve doorvoer eenheid overschrijdt, worden ontvangers beperkt en ontvangen fouten die aangeven dat het uitgangs quotum is overschreden. Ingangs-en uitgangs quota worden afzonderlijk afgedwongen, zodat de afzender geen gebeurtenis verbruik kan veroorzaken om te vertragen, en kan een ontvanger voor komen dat gebeurtenissen worden verzonden naar een Event Hub.
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Is er een limiet voor het aantal doorvoereenheden (tabel) die gereserveerd/geselecteerd worden kan?
-Op een aanbieding met meerdere tenants, kunnen doorvoereenheden meegroeien, maximaal 40 Doorvoereenheden (u kunt maximaal 20 Doorvoereenheden selecteert in de portal en een ondersteuningsticket om te verhogen naar 40 Doorvoereenheden op dezelfde naamruimte verhogen). Meer dan 40 Doorvoereenheden Event Hubs biedt het bron/capaciteit-model met de naam de **Event Hubs Dedicated clusters**. Toegewezen clusters worden verkocht in capaciteitseenheden (Cu's).
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Is er een limiet voor het aantal doorvoer eenheden (TUs) dat kan worden gereserveerd of geselecteerd?
+Bij een multi tenant-aanbieding kunnen doorvoer eenheden Maxi maal 40 TUs (u kunt Maxi maal 20 TUs selecteren in de portal en een ondersteunings ticket verhogen om dit te doen tot 40 TUs op dezelfde naam ruimte). Meer dan 40 TUs biedt Event Hubs het model op basis van resource/capaciteit dat de **Event hubs dedicated clusters**wordt genoemd. Toegewezen clusters worden verkocht in capaciteits eenheden (CUs).
 
 ## <a name="dedicated-clusters"></a>Toegewezen clusters
 
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>Wat zijn Event Hubs Dedicated clusters?
-Event Hubs Dedicated-clusters bieden één tenant-implementaties voor klanten met de meest veeleisende behoeften. Deze aanbieding bouwt een cluster op basis van capaciteit die niet door doorvoereenheden is gekoppeld. Dit betekent dat u het cluster als u wilt opnemen en streamen van uw gegevens, zoals bepaald door de CPU- en geheugengebruik van het cluster kan gebruiken. Zie voor meer informatie, [Event Hubs Dedicated clusters](event-hubs-dedicated-overview.md).
+Event Hubs Dedicated-clusters bieden implementaties met één Tenant voor klanten met de meest veeleisende vereisten. Deze aanbieding bouwt voort op capaciteits clusters die niet zijn gebonden door doorvoer eenheden. Dit betekent dat u het cluster kunt gebruiken om uw gegevens op te nemen en te streamen, zoals bepaald door het CPU-en geheugen gebruik van het cluster. Zie [Event hubs dedicated clusters](event-hubs-dedicated-overview.md)voor meer informatie.
 
-### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Hoeveel kiest een één capaciteitseenheid me bereiken?
-Voor een specifieke cluster hoeveel u kunt opnemen en stream is afhankelijk van diverse factoren, zoals uw producenten, consumenten, de snelheid waarmee u kan opnemen en verwerken en nog veel meer. 
+### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Wat kan ik doen met één capaciteits eenheid?
+Hoeveel u voor een toegewezen cluster kunt opnemen en streamen, is afhankelijk van verschillende factoren, zoals uw producenten, consumenten, de snelheid waarmee u opnamet en verwerkt, en nog veel meer. 
 
-Onderstaande tabel ziet u de benchmarkresultaten dat we tijdens onze testen bereikt:
+De volgende tabel toont de Bench Mark-resultaten die we hebben behaald tijdens onze tests:
 
-| Nettolading vorm | Ontvangers | Binnenkomende bandbreedte| Binnenkomende berichten | Uitgaande bandbreedte | Uitgaande berichten | Totaal aantal Doorvoereenheden | Doorvoereenheden per Capaciteitseenheid |
+| De shape Payload | Ontvangers | Ingangs bandbreedte| Berichten binnenkomend | Uitgangs band breedte | Uitstaande berichten | Totaal aantal TUs | TUs per CU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Batches van 100x1KB | 2 | 400 MB per seconde | 400 k berichten per seconde | 800 MB per seconde | 800 k berichten/sec | 400 Doorvoereenheden | 100 Doorvoereenheden | 
-| Batches van 10x10KB | 2 | 666 MB per seconde | 66.6 k berichten/sec | 1.33 GB/sec | 133 k berichten/sec | 666 Doorvoereenheden | 166 Doorvoereenheden |
-| Batches van 6x32KB | 1 | 1,05 GB/sec | 34 k berichten / sec | 1,05 GB/sec | 34 k berichten/sec | 1000 Doorvoereenheden | 250 Doorvoereenheden |
+| Batches van 100x1KB | 2 | 400 MB/sec. | 400k berichten per seconde | 800 MB/sec. | 800k berichten per seconde | 400 TUs | 100 TUs | 
+| Batches van 10x10KB | 2 | 666 MB/sec. | 66.6 k-berichten/sec | 1,33 GB/sec. | 133k berichten per seconde | 666 TUs | 166 TUs |
+| Batches van 6x32KB | 1 | 1,05 GB/sec. | 34k berichten per seconde | 1,05 GB/sec. | 34k berichten per seconde | 1000 TUs | 250 TUs |
 
-In het testen, is de volgende criteria gebruikt:
+Bij het testen zijn de volgende criteria gebruikt:
 
-- Er is een specifieke Event Hubs-cluster met vier capaciteitseenheden (Cu's) gebruikt. 
-- De event hub die wordt gebruikt voor gegevensopname heeft 200 partities. 
-- De gegevens die is opgenomen is ontvangen door twee ontvanger toepassingen ontvangen van alle partities.
+- Er is een toegewezen Event Hubs cluster met vier capaciteits eenheden (CUs) gebruikt. 
+- De Event Hub die wordt gebruikt voor opname, had 200 partities. 
+- De gegevens die zijn opgenomen, zijn ontvangen door twee receiver-toepassingen die van alle partities ontvangen.
 
-De resultaten geven u een idee van wat kan worden bereikt met een specifieke Event Hubs-cluster. Bovendien een cluster toewijzen wordt geleverd met de Event Hubs Capture ingeschakeld voor uw scenario's van microbatches als langdurige opslag.
+De resultaten geven u een idee van wat er met een toegewezen Event Hubs cluster kan worden gerealiseerd. Daarnaast wordt een exclusief cluster geleverd met de Event Hubs Capture ingeschakeld voor uw scenario's voor de Bewaar periode van micro batch en lange termijn.
 
-### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Hoe maak ik een Event Hubs Dedicated-cluster?
-U een specifieke Event Hubs-cluster maken door het indienen van een [ondersteuningsaanvraag voor quotum toename](https://portal.azure.com/#create/Microsoft.Support) of neem contact op met de [team van Event Hubs](mailto:askeventhubs@microsoft.com). Het duurt meestal ongeveer twee weken voor het cluster geïmplementeerd en afgegeven aan door u worden gebruikt. Dit proces is tijdelijk totdat een volledige Self-service voor stroomactiviteitvoortgang beschikbaar wordt gesteld via de Azure portal of Azure Resource Manager-sjablonen, wat ongeveer twee uur duurt om het cluster te implementeren.
+### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Hoe kan ik een Event Hubs Dedicated cluster maken?
+U maakt een Event Hubs toegewezen cluster door een [ondersteunings aanvraag voor quotum verhoging](https://portal.azure.com/#create/Microsoft.Support) in te dienen of door contact op te nemen met het [Event hubs team](mailto:askeventhubs@microsoft.com). Het duurt doorgaans ongeveer twee weken om het cluster op te halen en door te geven om door u te worden gebruikt. Dit proces is tijdelijk totdat een volledig zelfvoorzienings pakket beschikbaar is via de Azure Portal-of Azure Resource Manager sjablonen, die ongeveer twee uur duren om het cluster te implementeren.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-### <a name="how-many-partitions-do-i-need"></a>Het aantal partities heb ik nodig?
-Het aantal partities wordt opgegeven bij het maken en moet tussen 2 en 32 liggen. Het aantal partities kan niet worden gewijzigd. Houd bij het instellen van het aantal partities dus uw doelen op de lange termijn in gedachten. Partities zijn een mechanisme voor gegevensordening. Ze hebben betrekking op de mate van downstreamparallelheid die is vereist bij het gebruik van toepassingen. Het aantal partities in een Event Hub houdt rechtstreeks verband met het aantal verwachte gelijktijdige lezers. Zie [partities](event-hubs-features.md#partitions)voor meer informatie over partities.
+### <a name="how-many-partitions-do-i-need"></a>Hoeveel partities heb ik nodig?
+Het aantal partities wordt opgegeven bij het maken en moet tussen 2 en 32 liggen. Het aantal partities kan niet worden gewijzigd. Houd daarom rekening met de lange termijn bij het instellen van het aantal partities. Partities zijn een mechanisme voor gegevensordening. Ze hebben betrekking op de mate van downstreamparallelheid die is vereist bij het gebruik van toepassingen. Het aantal partities in een Event Hub houdt rechtstreeks verband met het aantal verwachte gelijktijdige lezers. Zie [partities](event-hubs-features.md#partitions)voor meer informatie over partities.
 
-Het is raadzaam om de waarde in te stellen op het hoogst mogelijke niveau: 32, op het moment dat deze wordt gemaakt. Houd er rekening mee dat er meer dan één partitie heeft als gevolg dat er gebeurtenissen worden verzonden naar meerdere partities zonder de volg orde te behouden, tenzij u afzenders configureert om alleen te verzenden naar één enkele partitie van de 32, waardoor de resterende 31 partities overbodig zijn. In het eerste geval moet u gebeurtenissen lezen in alle 32-partities. In het laatste geval zijn er geen duidelijke extra kosten van de extra configuratie die u moet maken op de host van de gebeurtenis processor.
+Het is raadzaam om de waarde in te stellen op het hoogst mogelijke niveau: 32, op het moment dat deze wordt gemaakt. Houd er rekening mee dat er meer dan één partitie heeft als gevolg dat er gebeurtenissen worden verzonden naar meerdere partities zonder de volg orde te behouden, tenzij u afzenders configureert om alleen te verzenden naar één enkele partitie van de 32, waardoor de resterende 31 partities overbodig zijn. In het eerste geval moet u gebeurtenissen lezen in alle 32-partities. In het laatste geval zijn er geen extra kosten in rekening van de extra configuratie die u moet maken op de host van de gebeurtenis processor.
 
-Eventhubs is ontworpen om toe te staan een lezer één partitie per consumergroep. Gebruik in de meeste gevallen is de standaardinstelling van vier partities voldoende. Als u schalen van de verwerking van gebeurtenissen wilt, kunt u overwegen extra partities toe te voegen. Er is geen doorvoerlimiet voor specifieke op een partitie, maar de geaggregeerde doorvoer in uw naamruimte wordt beperkt door het aantal doorvoereenheden. Als u het aantal throughput units in uw naamruimte verhoogt, kunt u extra partities om toe te staan van gelijktijdige lezers hun eigen maximale doorvoer te realiseren.
+Event Hubs is ontworpen om één partitie lezer per Consumer groep toe te staan. In de meeste gevallen is de standaard instelling van vier partities voldoende. Als u van plan bent uw gebeurtenis verwerking te schalen, kunt u overwegen extra partities toe te voegen. Er is geen specifieke doorvoer limiet voor een partitie, maar de geaggregeerde door Voer in uw naam ruimte wordt beperkt door het aantal doorvoer eenheden. Als u het aantal doorvoer eenheden in uw naam ruimte verhoogt, wilt u mogelijk extra partities toestaan dat gelijktijdige lezers hun eigen maximale door Voer kunnen verzorgen.
 
-Echter, hebt u een model waarin uw toepassing een affiniteit met een bepaalde partitie heeft, waardoor het aantal partities mogelijk niet van een voordeel voor u. Zie voor meer informatie, [beschikbaarheid en consistentie](event-hubs-availability-and-consistency.md).
+Als u echter een model hebt waarin uw toepassing een affiniteit met een bepaalde partitie heeft, is het mogelijk dat het aantal partities niet van nut is voor u. Zie [Beschik baarheid en consistentie](event-hubs-availability-and-consistency.md)voor meer informatie.
 
 ## <a name="pricing"></a>Prijzen
 
-### <a name="where-can-i-find-more-pricing-information"></a>Waar vind ik meer informatie over de prijzen?
+### <a name="where-can-i-find-more-pricing-information"></a>Waar vind ik meer prijs informatie?
 
-Zie voor meer informatie over prijzen van Event Hubs, de [Event Hubs prijsinformatie](https://azure.microsoft.com/pricing/details/event-hubs/).
+Zie de [Event hubs prijs informatie](https://azure.microsoft.com/pricing/details/event-hubs/)voor volledige informatie over Event hubs prijzen.
 
-### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Is er een post voor die gebeurtenissen van Event Hubs bewaren gedurende meer dan 24 uur?
+### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Worden er kosten in rekening gebracht voor het bewaren van Event Hubs gebeurtenissen gedurende meer dan 24 uur?
 
-De Event Hubs Standard-laag is toegestaan voor bewaarperiode van bericht perioden van meer dan 24 uur, maximaal zeven dagen. Als de grootte van het totale aantal opgeslagen gebeurtenissen de opslaglimiet voor het aantal geselecteerde doorvoereenheden (84 GB per doorvoereenheid) overschrijdt, de maximaal toegestane limiet overschrijdt, wordt in rekening gebracht tegen de gepubliceerde tarief voor de Azure Blob-opslag. De opslaglimiet voor elke throughput unit omvat alle opslagkosten voor bewaarperioden van 24 uur (de standaardinstelling), zelfs als de throughput unit in de limiet voor de maximale ingangslimiet is verbruikt.
+Met de laag Event Hubs standaard worden de Bewaar periode van een bericht langer dan 24 uur toegestaan, gedurende een maximum van zeven dagen. Als de grootte van het totale aantal opgeslagen gebeurtenissen de opslag limiet overschrijdt voor het aantal geselecteerde doorvoer eenheden (84 GB per doorvoer eenheid), wordt de grootte die de limiet overschrijdt, in rekening gebracht tegen de gepubliceerde Azure Blob-opslag snelheid. De opslag limiet in elke doorvoer eenheid omvat alle opslag kosten voor Bewaar perioden van 24 uur (de standaard instelling), zelfs als de doorvoer eenheid wordt gebruikt tot de maximale ingangs limiet.
 
-### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Hoe wordt de Event Hubs-opslaggrootte berekend en in rekening gebracht?
+### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Hoe wordt de opslag grootte van Event Hubs berekend en in rekening gebracht?
 
-De totale grootte van alle opgeslagen gebeurtenissen, inclusief interne overhead voor gebeurteniskoppen of opslagstructuren op schijf in alle eventhubs, wordt gedurende de hele dag gemeten. Aan het einde van de dag wordt de grootte van de piekopslag berekend. De dagelijkse opslaglimiet wordt berekend op basis van het minimum aantal doorvoereenhden dat gedurende de dag is geselecteerd (elke doorvoereenheid biedt een limiet van 84 GB). Als de totale grootte van de berekende dagelijkse opslaglimiet overschrijdt, de overtollige opslag wordt gefactureerd met behulp van Azure Blob storage-tarieven (op de **lokaal redundante opslag** tarief).
+De totale grootte van alle opgeslagen gebeurtenissen, inclusief interne overhead voor gebeurtenis koppen of opslag structuren op schijf in alle Event hubs, wordt gedurende de hele dag gemeten. Aan het einde van de dag wordt de grootte van de piekopslag berekend. De dagelijkse opslaglimiet wordt berekend op basis van het minimum aantal doorvoereenhden dat gedurende de dag is geselecteerd (elke doorvoereenheid biedt een limiet van 84 GB). Als de totale grootte de berekende dagelijkse opslag limiet overschrijdt, wordt de overmatige opslag gefactureerd met behulp van Azure Blob-opslag tarieven (tegen de **lokaal redundante opslag** snelheid).
 
-### <a name="how-are-event-hubs-ingress-events-calculated"></a>Hoe worden ingangsgebeurtenissen voor Event Hubs berekend?
+### <a name="how-are-event-hubs-ingress-events-calculated"></a>Hoe worden Event Hubs ingangs gebeurtenissen berekend?
 
-Elke gebeurtenis verzonden naar een event hub telt als een factureerbaar bericht. Een *ingangsgebeurtenis* is gedefinieerd als een eenheid van de gegevens die kleiner is dan of gelijk is aan 64 KB. Elke gebeurtenis kleiner dan of gelijk is aan 64 KB groot is, wordt beschouwd als één factureerbare gebeurtenis. Als de gebeurtenis groter dan 64 KB is, wordt het aantal factureerbare gebeurtenissen berekend op basis van de gebeurtenisgrootte in veelvouden van 64 KB. Bijvoorbeeld, een 8 KB gebeurtenis verzonden naar de event hub wordt gefactureerd als één gebeurtenis, maar een bericht van 96 KB-bericht verzonden naar de event hub wordt gefactureerd als twee gebeurtenissen.
+Elke gebeurtenis die naar een Event Hub wordt verzonden, telt als een Factureerbaar bericht. Een *ingangs gebeurtenis* wordt gedefinieerd als een gegevens eenheid die kleiner is dan of gelijk is aan 64 kB. Een gebeurtenis die kleiner dan of gelijk is aan 64 KB groot is, wordt beschouwd als één factureer bare gebeurtenis. Als de gebeurtenis groter is dan 64 KB, wordt het aantal factureer bare gebeurtenissen berekend op basis van de grootte van de gebeurtenis, in veelvouden van 64 KB. Zo wordt een gebeurtenis met 8 KB die wordt verzonden naar de Event Hub, gefactureerd als één gebeurtenis, maar een 96-KB-bericht dat naar de Event Hub wordt verzonden, wordt gefactureerd als twee gebeurtenissen.
 
-Gebeurtenissen gebruikt vanaf een event hub, evenals beheerbewerkingen en controle-aanroepen, zoals controlepunten, worden niet gerekend als factureerbare ingangsgebeurtenissen, maar doorlopen tot de limiet voor doorvoereenheden.
+Gebeurtenissen die vanuit een Event Hub worden verbruikt, en beheer bewerkingen en besturings aanroepen zoals controle punten, worden niet meegeteld als factureer bare ingangs gebeurtenissen, maar toenemen tot de maximale doorvoer eenheid.
 
-### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Gelden er kosten voor brokered Connections naar Event Hubs?
+### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Zijn de kosten voor brokered Connections van toepassing op Event Hubs?
 
-Verbindingskosten van toepassing alleen wanneer het AMQP-protocol wordt gebruikt. Er worden geen verbindingskosten in rekening gebracht voor het verzenden van gebeurtenissen via HTTP, ongeacht het aantal verzendsystemen/-apparaten. Als u van plan bent AMQP (bijvoorbeeld, voor een efficiëntere gebeurtenisstroom of om bi-directionele communicatie in IoT-opdracht inschakelen en beheren van scenario's) gebruiken, Zie de [informatie prijzen van Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/) pagina voor meer informatie over hoeveel verbindingen zijn opgenomen in elke servicelaag.
+Verbindings kosten zijn alleen van toepassing wanneer het AMQP-protocol wordt gebruikt. Er worden geen verbindingskosten in rekening gebracht voor het verzenden van gebeurtenissen via HTTP, ongeacht het aantal verzendsystemen/-apparaten. Als u van plan bent AMQP te gebruiken (bijvoorbeeld om efficiëntere gebeurtenis streaming te maken of om bidirectionele communicatie in IoT-opdracht-en controle scenario's in te scha kelen), raadpleegt u de pagina met [prijs informatie voor Event hubs](https://azure.microsoft.com/pricing/details/event-hubs/) voor meer informatie over hoeveel verbindingen in elke servicelaag zijn opgenomen.
 
 ### <a name="how-is-event-hubs-capture-billed"></a>Hoe wordt Event Hubs Capture gefactureerd?
 
-Vastleggen is ingeschakeld wanneer een event hub in de naamruimte de optie vastleggen is ingeschakeld is. Event Hubs Capture wordt per uur gefactureerd per aangeschafte doorvoereenheid. Als het aantal doorvoereenheden toe- of afneemt, Event Hubs Capture facturering deze wijzigingen in stappen van hele uren weerspiegeld worden weergegeven. Zie voor meer informatie over Event Hubs Capture facturering [informatie prijzen van Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
+Vastleggen is ingeschakeld wanneer voor een Event Hub in de naam ruimte de optie vastleggen is ingeschakeld. Event Hubs Capture wordt per uur gefactureerd op basis van de aangeschafte doorvoer eenheid. Naarmate het aantal doorvoer eenheden wordt verg root of verkleind, worden deze wijzigingen in de hele tijds duur van Event Hubs vastleg ging in rekening gebracht. Zie [Event hubs prijs informatie](https://azure.microsoft.com/pricing/details/event-hubs/)voor meer informatie over het vastleggen van de facturering van Event hubs.
 
-### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>In rekening gebracht voor het opslagaccount dat ik voor Event Hubs Capture Selecteer?
+### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Worden er kosten in rekening gebracht voor het opslag account dat ik Selecteer voor Event Hubs Capture?
 
-Vastleggen maakt gebruik van een opslagaccount dat die u verschaft wanneer dit is ingeschakeld op een event hub. Uw storage-account is, worden eventuele wijzigingen voor deze configuratie met uw Azure-abonnement gefactureerd.
+Capture maakt gebruik van een opslag account dat u opgeeft wanneer het is ingeschakeld op een Event Hub. Als uw opslag account is, worden alle wijzigingen voor deze configuratie in rekening gebracht voor uw Azure-abonnement.
 
 ## <a name="quotas"></a>Quota
 
-### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Zijn er geen quota's die zijn gekoppeld aan de Event Hubs?
+### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Zijn er quota's gekoppeld aan Event Hubs?
 
-Zie voor een lijst van alle Event Hubs-quota's, [quota](event-hubs-quotas.md).
+Zie [quota's](event-hubs-quotas.md)voor een lijst met alle Event hubs quota's.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Waarom kan ik geen naam ruimte maken nadat ik deze heb verwijderd uit een ander abonnement? 
 Wanneer u een naam ruimte uit een abonnement verwijdert, wacht u vier uur voordat u deze opnieuw maakt met dezelfde naam in een ander abonnement. Anders wordt het volgende fout bericht weer gegeven: `Namespace already exists`. 
 
-### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Wat zijn enkele van de uitzonderingen die worden gegenereerd door de Event Hubs en hun voorgestelde acties?
+### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Wat zijn de uitzonde ringen die door Event Hubs worden gegenereerd en de voorgestelde acties?
 
-Zie voor een lijst van mogelijke uitzonderingen voor Event Hubs, [uitzonderingen overzicht](event-hubs-messaging-exceptions.md).
+Zie [overzicht van uitzonde ringen](event-hubs-messaging-exceptions.md)voor een lijst met mogelijke Event hubs uitzonde ringen.
 
 ### <a name="diagnostic-logs"></a>Diagnostische logboeken
 
-Eventhubs ondersteunt twee typen [diagnoselogboeken](event-hubs-diagnostic-logs.md) -foutenlogboeken en operationele logboeken - beide worden weergegeven in json en kunnen worden ingeschakeld via de Azure-portal vastleggen.
+Event Hubs ondersteunt twee typen [Diagnostische logboeken](event-hubs-diagnostic-logs.md) : fout logboeken en operationele logboeken vastleggen: beide worden weer gegeven in JSON en kunnen via de Azure Portal worden ingeschakeld.
 
 ### <a name="support-and-sla"></a>Ondersteuning en SLA
 
-Technische ondersteuning voor Event Hubs is beschikbaar via de [communityforums](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus). Ondersteuning bij facturering en abonnementsbeheer is gratis.
+Technische ondersteuning voor Event Hubs is beschikbaar via de [forums](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)van de community. Ondersteuning bij facturering en abonnementsbeheer is gratis.
 
-Zie voor meer informatie over onze SLA de [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/) pagina.
+Voor meer informatie over onze SLA gaat u naar de pagina [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -256,4 +258,4 @@ U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
 * [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
 * [Een Event Hub maken](event-hubs-create.md)
-* [Event Hubs automatisch vergroten](event-hubs-auto-inflate.md)
+* [Event Hubs automatisch verg Roten](event-hubs-auto-inflate.md)

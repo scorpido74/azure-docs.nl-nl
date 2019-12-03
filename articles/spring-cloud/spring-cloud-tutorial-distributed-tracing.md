@@ -1,17 +1,17 @@
 ---
-title: 'Zelf studie: gedistribueerde tracering gebruiken met Azure lente Cloud | Microsoft Docs'
-description: Meer informatie over het gebruik van de gedistribueerde tracering van Lente Clouds via Azure-toepassing Insights
+title: Zelf studie-gedistribueerde tracering gebruiken met Azure veer Cloud
+description: In deze zelf studie wordt uitgelegd hoe u de gedistribueerde tracering van Lente-Clouds via Azure-toepassing Insights gebruikt
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a9d2100103cdd5858d0d58cf6ef77a6ccac3745f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c049ecbea3c630e0f7d08e4a42bd441ba3f5cfa
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607553"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708761"
 ---
 # <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Zelf studie: gedistribueerde tracering met Azure lente-Cloud gebruiken
 
@@ -39,7 +39,7 @@ Schakel de zipkin-afzender in om naar het web te verzenden door de volgende rege
 spring.zipkin.sender.type = web
 ```
 
-U kunt de volgende stap overs Laan als u onze [hand leiding voor het bereidt van een Azure lente-Cloud toepassing](spring-cloud-tutorial-prepare-app-deployment.md)hebt gevolgd. Als dat niet het geval is, gaat u naar uw lokale ontwikkel omgeving en bewerkt u uw `pom.xml`-bestand om de veer Sleuth afhankelijkheid voor de cloud te bevatten:
+U kunt de volgende stap overs Laan als u onze [hand leiding voor het bereidt van een Azure lente-Cloud toepassing](spring-cloud-tutorial-prepare-app-deployment.md)hebt gevolgd. Als dat niet het geval is, gaat u naar uw lokale ontwikkel omgeving en bewerkt u uw `pom.xml`-bestand om de lente-Sleuth afhankelijkheid voor de Cloud op te
 
 ```xml
 <dependencyManagement>
@@ -64,7 +64,7 @@ U kunt de volgende stap overs Laan als u onze [hand leiding voor het bereidt van
 * Bouw en implementeer opnieuw voor de Azure lente-Cloud service om deze wijzigingen weer te geven. 
 
 ## <a name="modify-the-sample-rate"></a>De sample frequentie wijzigen
-U kunt de snelheid waarmee uw telemetrie wordt verzameld, wijzigen door de sample frequentie aan te passen. Als u bijvoorbeeld de helft bijvoorbeeld vaak wilt bemonsteren, gaat u naar het bestand `application.properties` en wijzigt u de volgende regel:
+U kunt de snelheid waarmee uw telemetrie wordt verzameld, wijzigen door de sample frequentie aan te passen. Als u bijvoorbeeld vaak een steek proef wilt doen, gaat u naar uw `application.properties`-bestand en wijzigt u de volgende regel:
 
 ```xml
 spring.sleuth.sampler.probability=0.5

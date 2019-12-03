@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9dc7e6341f77fc17ae26f34ea029b3eb5414dcbc
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546314"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705303"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Een door een groep beheerd service account (gMSA) maken in Azure AD Domain Services
 
@@ -65,7 +65,7 @@ Maak eerst een aangepaste OE met behulp van de cmdlet [New-ADOrganizationalUnit]
 > [!TIP]
 > [Gebruik uw beheer-VM][tutorial-create-management-vm]om deze stappen uit te voeren om een gMSA te maken. Deze beheer-VM moet al de vereiste AD Power shell-cmdlets en de verbinding met het beheerde domein hebben.
 
-In het volgende voor beeld wordt een aangepaste OE gemaakt met de naam *myNewOU* in het door Azure AD DS beheerde domein met de naam *contoso.com*. Gebruik uw eigen OE en beheerde domein naam:
+In het volgende voor beeld wordt een aangepaste OE gemaakt met de naam *myNewOU* in het door Azure AD DS beheerde domein met de naam *aadds.contoso.com*. Gebruik uw eigen OE en beheerde domein naam:
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
@@ -75,20 +75,20 @@ Maak nu een gMSA met de cmdlet [New-ADServiceAccount][New-ADServiceAccount] . De
 
 * **-Naam** is ingesteld op *WebFarmSvc*
 * **-Path** para meter geeft u de aangepaste OE op voor de gMSA die u in de vorige stap hebt gemaakt.
-* DNS-vermeldingen en spn's (Service Principal Names) worden ingesteld voor *WebFarmSvc.contoso.com*
+* DNS-vermeldingen en spn's (Service Principal Names) worden ingesteld voor *WebFarmSvc.aadds.contoso.com*
 * Principals in *CONTOSO-server $* mogen het wacht woord gebruiken om de identiteit op te halen.
 
 Geef uw eigen namen en domein namen op.
 
 ```powershell
 New-ADServiceAccount -Name WebFarmSvc `
-    -DNSHostName WebFarmSvc.contoso.com `
+    -DNSHostName WebFarmSvc.aadds.contoso.com `
     -Path "OU=MYNEWOU,DC=contoso,DC=com" `
     -KerberosEncryptionType AES128, AES256 `
     -ManagedPasswordIntervalInDays 30 `
-    -ServicePrincipalNames http/WebFarmSvc.contoso.com/contoso.com, `
-        http/WebFarmSvc.contoso.com/contoso, `
-        http/WebFarmSvc/contoso.com, `
+    -ServicePrincipalNames http/WebFarmSvc.aadds.contoso.com/aadds.contoso.com, `
+        http/WebFarmSvc.aadds.contoso.com/contoso, `
+        http/WebFarmSvc/aadds.contoso.com, `
         http/WebFarmSvc/contoso `
     -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
 ```

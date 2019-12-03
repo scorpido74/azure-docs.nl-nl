@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 8b31a5ab716b58d167a0d16579b44aa7df95a0ff
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 684c067f393b1f6037e67d3b49a861341f3353c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232834"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706126"
 ---
 # <a name="what-are-durable-functions"></a>Wat is Durable Functions?
 
@@ -22,8 +22,8 @@ ms.locfileid: "74232834"
 Durable Functions ondersteunt momenteel de volgende talen:
 
 * **C#** : zowel [vooraf gecompileerde klassebibliotheken](../functions-dotnet-class-library.md) als [C#-script](../functions-reference-csharp.md).
-* **F#** : vooraf gecompileerde klassebibliotheken en F#-script. F#-script wordt alleen ondersteund voor versie 1.x van de Azure Functions-runtime.
 * **JavaScript**: alleen ondersteund voor versie 2.x van de Azure Functions-runtime. Versie 1.7.0 of hoger van de Durable Functions-extensie vereist. 
+* **F#** : vooraf gecompileerde klassebibliotheken en F#-script. F#-script wordt alleen ondersteund voor versie 1.x van de Azure Functions-runtime.
 
 Durable Functions heeft als doel alle [Azure Functions-talen](../supported-languages.md) te ondersteunen. Zie [Durable Functions issues list](https://github.com/Azure/azure-functions-durable-extension/issues) voor de laatste voortgangsstatus van de ondersteuning voor meer talen.
 
@@ -38,7 +38,7 @@ De primaire use case voor Durable Functions is het vereenvoudigen van complexe s
 * [Asynchrone HTTP-API's](#async-http)
 * [Controle](#monitoring)
 * [Menselijke tussenkomst](#human)
-* [Aggregator](#aggregator)
+* [Aggregator (stateful-entiteiten)](#aggregator)
 
 ### <a name="chaining"></a>Patroon #1: functie koppeling
 
@@ -46,9 +46,11 @@ In het patroon functie koppeling wordt een reeks functies in een specifieke volg
 
 ![Een diagram van het patroon van de functie koppeling](./media/durable-functions-concepts/function-chaining.png)
 
-U kunt Durable Functions gebruiken om het patroon van de functie koppeling beknopt te implementeren, zoals wordt weer gegeven in het volgende voor beeld:
+U kunt Durable Functions gebruiken om het patroon van de functie koppeling beknopt te implementeren, zoals wordt weer gegeven in het volgende voor beeld.
 
-#### <a name="c"></a>C#
+In dit voor beeld zijn de waarden `F1`, `F2`, `F3`en `F4` de namen van andere functies in de functie-app. U kunt de controle stroom implementeren met behulp van normale verplichte coderings constructies. Code wordt van boven naar beneden uitgevoerd. De code kan bestaan uit de bestaande semantiek van de taal besturings flow, zoals voor waarden en lussen. U kunt de logica voor fout afhandeling in `try`/`catch`/`finally` blokken toevoegen.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -69,25 +71,31 @@ public static async Task<object> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+U kunt de para meter `context` gebruiken om andere functies aan te roepen op naam, para meters door geven en retour neren functie uitvoer. Telkens wanneer de code `await`aanroept, wordt door het Durable Functions Framework-controle punt de voortgang van het huidige functie-exemplaar gecontroleerd. Als het proces of de virtuele machine halverwege de uitvoering wordt gerecycled, hervat het functie-exemplaar van de voor gaande `await` aanroep. Zie de volgende sectie, patroon #2: uitwaaieren/ventilatoren in voor meer informatie.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
-    const x = yield context.df.callActivity("F1");
-    const y = yield context.df.callActivity("F2", x);
-    const z = yield context.df.callActivity("F3", y);
-    return    yield context.df.callActivity("F4", z);
+    try {
+        const x = yield context.df.callActivity("F1");
+        const y = yield context.df.callActivity("F2", x);
+        const z = yield context.df.callActivity("F3", y);
+        return    yield context.df.callActivity("F4", z);
+    } catch (error) {
+        // Error handling or compensation goes here.
+    }
 });
 ```
 
-In dit voor beeld zijn de waarden `F1`, `F2`, `F3`en `F4` de namen van andere functies in de functie-app. U kunt de controle stroom implementeren met behulp van normale verplichte coderings constructies. Code wordt van boven naar beneden uitgevoerd. De code kan bestaan uit de bestaande semantiek van de taal besturings flow, zoals voor waarden en lussen. U kunt de logica voor fout afhandeling in `try`/`catch`/`finally` blokken toevoegen.
-
-U kunt de `context` para meter [IDurableOrchestrationContext] \(.NET\) en het object `context.df` (Java script) gebruiken om andere functies aan te roepen op naam, para meters en retour uitvoer. Telkens wanneer de code `await` (C#) of `yield` (Java script) aanroept, wordt in het Durable functions Framework de voortgang van het huidige functie-exemplaar gecontroleerd. Als het proces of de virtuele machine halverwege de uitvoering wordt gerecycled, wordt het functie-exemplaar hervat vanaf de vorige `await` of `yield` aanroep. Zie de volgende sectie, patroon #2: uitwaaieren/ventilatoren in voor meer informatie.
+U kunt het `context.df`-object gebruiken om andere functies aan te roepen op naam, para meters door geven en retour neren functie uitvoer. Telkens wanneer de code `yield`aanroept, wordt door het Durable Functions Framework-controle punt de voortgang van het huidige functie-exemplaar gecontroleerd. Als het proces of de virtuele machine halverwege de uitvoering wordt gerecycled, hervat het functie-exemplaar van de voor gaande `yield` aanroep. Zie de volgende sectie, patroon #2: uitwaaieren/ventilatoren in voor meer informatie.
 
 > [!NOTE]
-> Het `context`-object in Java script vertegenwoordigt de volledige [functie context](../functions-reference-node.md#context-object), niet alleen de para meter [IDurableOrchestrationContext].
+> Het `context`-object in Java script vertegenwoordigt de volledige [functie context](../functions-reference-node.md#context-object). Open de Durable Functions context met behulp van de eigenschap `df` in de hoofd context.
+
+---
 
 ### <a name="fan-in-out"></a>Patroon #2: uitwaaieren/ventilator in
 
@@ -99,7 +107,7 @@ Met normale functies kunt u uitwaaieren door de functie meerdere berichten naar 
 
 Met de extensie Durable Functions wordt dit patroon afgehandeld met relatief eenvoudige code:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -124,7 +132,11 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+Het werk van de ventilator wordt gedistribueerd naar meerdere exemplaren van de functie `F2`. Het werk wordt bijgehouden met behulp van een dynamische lijst met taken. `Task.WhenAll` wordt aangeroepen om te wachten tot alle aangeroepen functies zijn voltooid. Vervolgens worden de resultaten van de `F2` functie geaggregeerd van de lijst met dynamische taken en door gegeven aan de functie `F3`.
+
+De automatische controle punten die zich voordoen bij de `await`-aanroep op `Task.WhenAll` zorgen ervoor dat een mogelijke Midway-crash of opnieuw opstarten niet nodig is om een reeds voltooide taak opnieuw te starten.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -146,9 +158,11 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Het werk van de ventilator wordt gedistribueerd naar meerdere exemplaren van de functie `F2`. Het werk wordt bijgehouden met behulp van een dynamische lijst met taken. De .NET `Task.WhenAll` API of Java script `context.df.Task.all`-API wordt aangeroepen, zodat wordt gewacht tot alle aangeroepen functies zijn voltooid. Vervolgens worden de resultaten van de `F2` functie geaggregeerd van de lijst met dynamische taken en door gegeven aan de functie `F3`.
+Het werk van de ventilator wordt gedistribueerd naar meerdere exemplaren van de functie `F2`. Het werk wordt bijgehouden met behulp van een dynamische lijst met taken. `context.df.Task.all`-API wordt aangeroepen om te wachten tot alle aangeroepen functies zijn voltooid. Vervolgens worden de resultaten van de `F2` functie geaggregeerd van de lijst met dynamische taken en door gegeven aan de functie `F3`.
 
-De automatische controle punten die zich voordoen bij de `await` of `yield` aanroepen op `Task.WhenAll` of `context.df.Task.all` zorgen ervoor dat een mogelijke Midway-crash of opnieuw opstarten niet nodig is om een reeds voltooide taak opnieuw te starten.
+De automatische controle punten die zich voordoen bij de `yield`-aanroep op `context.df.Task.all` zorgen ervoor dat een mogelijke Midway-crash of opnieuw opstarten niet nodig is om een reeds voltooide taak opnieuw te starten.
+
+---
 
 > [!NOTE]
 > In zeldzame gevallen is het mogelijk dat er een crash in het venster kan optreden nadat een activiteit functie is voltooid, maar voordat de voltooiing wordt opgeslagen in de Orchestration-geschiedenis. Als dit gebeurt, wordt de activiteit functie opnieuw uitgevoerd vanaf het begin nadat het proces is hersteld.
@@ -200,11 +214,11 @@ Een voor beeld van het monitor patroon is het terugdraaien van het eerdere async
 
 ![Een diagram van het monitor patroon](./media/durable-functions-concepts/monitor.png)
 
-In een paar regels code kunt u Durable Functions gebruiken om meerdere monitors te maken die wille keurige eind punten observeren. De monitors kunnen de uitvoering beëindigen wanneer aan een voor waarde wordt voldaan, of de `IDurableOrchestrationClient` kan de monitors beëindigen. U kunt het `wait` interval van een monitor wijzigen op basis van een specifieke voor waarde (bijvoorbeeld exponentiële uitstel.) 
+In een paar regels code kunt u Durable Functions gebruiken om meerdere monitors te maken die wille keurige eind punten observeren. De monitors kunnen de uitvoering beëindigen wanneer aan een voor waarde wordt voldaan, of een andere functie kan de duurzame Orchestration-client gebruiken om de monitors te beëindigen. U kunt het `wait` interval van een monitor wijzigen op basis van een specifieke voor waarde (bijvoorbeeld exponentiële uitstel.) 
 
 Met de volgende code wordt een basis monitor geïmplementeerd:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -234,7 +248,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -262,7 +276,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Wanneer een aanvraag wordt ontvangen, wordt er een nieuw Orchestration-exemplaar gemaakt voor die taak-ID. Het exemplaar pollt een status totdat aan een voor waarde wordt voldaan en de lus wordt afgesloten. Een duurzame timer bepaalt het polling-interval. Vervolgens kan er meer werk worden uitgevoerd of kan de indeling worden beëindigd. Wanneer de `context.CurrentUtcDateTime` (.NET) of `context.df.currentUtcDateTime` (Java script) de `expiryTime` waarde overschrijdt, wordt de monitor beëindigd.
+---
+
+Wanneer een aanvraag wordt ontvangen, wordt er een nieuw Orchestration-exemplaar gemaakt voor die taak-ID. Het exemplaar pollt een status totdat aan een voor waarde wordt voldaan en de lus wordt afgesloten. Een duurzame timer bepaalt het polling-interval. Vervolgens kan er meer werk worden uitgevoerd of kan de indeling worden beëindigd. Wanneer `nextCheck` overschrijdt `expiryTime`, wordt de monitor beëindigd.
 
 ### <a name="human"></a>Patroon #5: menselijke interactie
 
@@ -276,7 +292,7 @@ U kunt het patroon in dit voor beeld implementeren met behulp van een Orchestrat
 
 In deze voor beelden wordt een goedkeurings proces voor het voor beeld van het menselijke interactie patroon gemaakt:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -303,7 +319,9 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+Roep `context.CreateTimer`aan om de duurzame timer te maken. De melding wordt ontvangen door `context.WaitForExternalEvent`. Vervolgens wordt `Task.WhenAny` aangeroepen om te bepalen of er eerst een time-out optreedt of de goed keuring verwerken (de goed keuring wordt ontvangen vóór de time-out).
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -325,9 +343,19 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Als u de duurzame timer wilt maken, roept u `context.CreateTimer` (.NET) of `context.df.createTimer` (Java script) aan. De melding wordt ontvangen door `context.WaitForExternalEvent` (.NET) of `context.df.waitForExternalEvent` (Java script). Vervolgens wordt `Task.WhenAny` (.NET) of `context.df.Task.any` (Java script) aangeroepen om te bepalen of er eerst een time-out optreedt of de goed keuring verwerken (de goed keuring wordt ontvangen vóór de time-out).
+Roep `context.df.createTimer`aan om de duurzame timer te maken. De melding wordt ontvangen door `context.df.waitForExternalEvent`. Vervolgens wordt `context.df.Task.any` aangeroepen om te bepalen of er eerst een time-out optreedt of de goed keuring verwerken (de goed keuring wordt ontvangen vóór de time-out).
 
-Een externe client kan de gebeurtenis melding verzenden naar een wacht functie die gebruikmaakt van de [ingebouwde http-api's](durable-functions-http-api.md#raise-event) of met behulp van de methode `RaiseEventAsync` (.net) of `raiseEvent` (Java script) vanuit een andere functie:
+---
+
+Een externe client kan de gebeurtenis melding leveren aan een functie die wacht op een wachtrij met behulp van de [ingebouwde http-api's](durable-functions-http-api.md#raise-event):
+
+```bash
+curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
+```
+
+Een gebeurtenis kan ook worden gegenereerd met behulp van de duurzame Orchestration-client vanuit een andere functie:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -340,6 +368,8 @@ public static async Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -350,11 +380,9 @@ module.exports = async function (context) {
 };
 ```
 
-```bash
-curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
-```
+---
 
-### <a name="aggregator"></a>Patroon #6: aggregator
+### <a name="aggregator"></a>Pattern #6: aggregator (stateful entiteiten)
 
 Het zesde patroon is het verzamelen van gebeurtenis gegevens over een bepaalde periode in een enkele, adresseer bare *entiteit*. In dit patroon kunnen de gegevens die worden geaggregeerd afkomstig zijn uit meerdere bronnen, worden geleverd in batches of kunnen ze over een lange periode worden verspreid. De aggregator moet mogelijk actie ondernemen op gebeurtenis gegevens terwijl deze arriveert, en externe clients moeten mogelijk query's uitvoeren op de geaggregeerde gegevens.
 
@@ -363,6 +391,8 @@ Het zesde patroon is het verzamelen van gebeurtenis gegevens over een bepaalde p
 Het lastiger zijn om dit patroon te implementeren met normale, stateless functies is dat gelijktijdigheids beheer een enorme uitdaging wordt. U hoeft zich geen zorgen te maken over meerdere threads die tegelijkertijd dezelfde gegevens wijzigen. u moet er ook voor zorgen dat de aggregator alleen op één virtuele machine tegelijk wordt uitgevoerd.
 
 U kunt [duurzame entiteiten](durable-functions-entities.md) gebruiken om dit patroon eenvoudig te implementeren als een enkele functie.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -385,26 +415,6 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-```javascript
-const df = require("durable-functions");
-
-module.exports = df.entity(function(context) {
-    const currentValue = context.df.getState(() => 0);
-    switch (context.df.operationName) {
-        case "add":
-            const amount = context.df.getInput();
-            context.df.setState(currentValue + amount);
-            break;
-        case "reset":
-            context.df.setState(0);
-            break;
-        case "get":
-            context.df.return(currentValue);
-            break;
-    }
-});
-```
-
 Duurzame entiteiten kunnen ook worden gemodelleerd als klassen in .NET. Dit model kan nuttig zijn als de lijst met bewerkingen is opgelost en groot wordt. Het volgende voor beeld is een equivalente implementatie van de `Counter` entiteit met behulp van .NET-klassen en-methoden.
 
 ```csharp
@@ -425,7 +435,33 @@ public class Counter
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
+
+---
+
 Clients kunnen *bewerkingen* in de wachtrij plaatsen voor (ook wel ' Signa lering ' genoemd) een entiteits functie met de [client binding](durable-functions-bindings.md#entity-client)van de entiteit.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -445,6 +481,7 @@ public static async Task Run(
 > [!NOTE]
 > Dynamische gegenereerde proxy's zijn ook beschikbaar in .NET voor het Signa leren van entiteiten op een type veilige manier. Naast Signa lering kunnen clients ook een query uitvoeren op de status van een entiteit functie met behulp van [type veilige methoden](durable-functions-bindings.md#entity-client-usage) op de Orchestration-client binding.
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -455,6 +492,8 @@ module.exports = async function (context) {
     await context.df.signalEntity(entityId, "add", 1);
 };
 ```
+
+---
 
 Entiteits functies zijn beschikbaar in [Durable Functions 2,0](durable-functions-versions.md) en hoger.
 

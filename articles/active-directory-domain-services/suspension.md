@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 31a1c7cd72d57b9c680452d5e84f8fe78f47cebb
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693320"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704279"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Meer informatie over de statussen en het oplossen van onderbroken domeinen in Azure Active Directory Domain Services
 
@@ -35,7 +35,7 @@ Een door Azure AD DS beheerd domein kan een van de volgende statussen hebben:
 * [Wordt uitgevoerd](#running-state)
 * [Aandacht vereist](#needs-attention-state)
 * [Gebroken](#suspended-state)
-* [Vervallen](#deleted-state)
+* [Verwijderd](#deleted-state)
 
 ## <a name="running-state"></a>Uitvoerings status
 
@@ -72,7 +72,7 @@ Wanneer een door Azure AD DS beheerd domein in de *attentie status vereist* is, 
 Een door Azure AD DS beheerd domein voert de **onderbroken** status om een van de volgende redenen:
 
 * Een of meer kritieke waarschuwingen zijn in 15 dagen niet opgelost.
-    * Kritieke waarschuwingen kunnen worden veroorzaakt door een onjuiste configuratie waarmee de toegang wordt geblokkeerd tot resources die nodig zijn voor Azure AD DS. Bijvoorbeeld, de waarschuwing [AADDS104: De netwerk][alert-nsg] fout is langer dan 15 dagen in het beheerde domein niet meer geldig.
+    * Kritieke waarschuwingen kunnen worden veroorzaakt door een onjuiste configuratie waarmee de toegang wordt geblokkeerd tot resources die nodig zijn voor Azure AD DS. De waarschuwing [AADDS104: de netwerk fout][alert-nsg] is langer dan 15 dagen in het beheerde domein.
 * Er is een facturerings probleem met het Azure-abonnement of het Azure-abonnement is verlopen.
 
 Beheerde domeinen worden onderbroken wanneer het Azure-platform niet in staat is om het domein te beheren, te controleren, te bewaken of te maken. Een beheerd domein blijft 15 dagen in een *onderbroken* status. Als u de toegang tot het beheerde domein wilt behouden, moet u de kritieke waarschuwingen direct oplossen.
@@ -96,7 +96,7 @@ U ziet een [waarschuwing][resolve-alerts] op de pagina Azure AD DS Health in de 
 Voer de volgende stappen uit om de status van een door Azure AD DS beheerd domein met de status *opgeschort* te herstellen:
 
 1. Zoek en selecteer in het Azure Portal **Domain Services**.
-1. Kies uw door Azure AD DS beheerd domein in de lijst, zoals *contoso.com*, en selecteer vervolgens **status**.
+1. Kies uw door Azure AD DS beheerd domein in de lijst, zoals *aadds.contoso.com*, en selecteer vervolgens **status**.
 1. Selecteer de waarschuwing, zoals *AADDS503* of *AADDS504*, afhankelijk van de oorzaak van de onderbreking.
 1. Kies de oplossings koppeling die in de waarschuwing wordt weer gegeven en volg de stappen om deze op te lossen.
 

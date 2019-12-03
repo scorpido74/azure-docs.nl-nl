@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844410"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706072"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Niet-gepartitioneerde containers migreren naar gepartitioneerde containers
 
@@ -24,7 +24,7 @@ De niet-gepartitioneerde containers zijn verouderd en u moet uw bestaande niet-g
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Container migreren met de door het systeem gedefinieerde partitie sleutel
 
-Ter ondersteuning van de migratie bevat Azure Cosmos DB een door het systeem gedefinieerde partitie `/_partitionkey` sleutel met de naam op alle containers die geen partitie sleutel hebben. U kunt de partitie sleutel definitie niet wijzigen nadat de containers zijn gemigreerd. De definitie van een container die naar een gepartitioneerde container wordt gemigreerd, ziet er bijvoorbeeld als volgt uit:
+Ter ondersteuning van de migratie bevat Azure Cosmos DB een door het systeem gedefinieerde partitie sleutel met de naam `/_partitionkey` op alle containers die geen partitie sleutel hebben. U kunt de partitie sleutel definitie niet wijzigen nadat de containers zijn gemigreerd. De definitie van een container die naar een gepartitioneerde container wordt gemigreerd, ziet er bijvoorbeeld als volgt uit:
 
 ```json
 {
@@ -38,7 +38,7 @@ Ter ondersteuning van de migratie bevat Azure Cosmos DB een door het systeem ged
 }
 ```
 
-Nadat de container is gemigreerd, kunt u documenten maken door de `_partitionKey` eigenschap samen met de andere eigenschappen van het document in te vullen. De `_partitionKey` eigenschap vertegenwoordigt de partitie sleutel van uw documenten.
+Nadat de container is gemigreerd, kunt u documenten maken door de eigenschap `_partitionKey` samen met de andere eigenschappen van het document in te vullen. De eigenschap `_partitionKey` vertegenwoordigt de partitie sleutel van uw documenten.
 
 Het kiezen van de juiste partitie sleutel is belang rijk om de ingerichte door Voer optimaal te benutten. Zie [het artikel een partitie sleutel kiezen](partitioning-overview.md) voor meer informatie.
 
@@ -91,11 +91,11 @@ ItemResponse<DeviceInformationItem> readResponse =
 
 ```
 
-Zie de GitHub-opslag plaats voor [.net](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) -voor beelden voor het volledige voor beeld.
+Zie de GitHub-opslag plaats voor [.net][1] -voor beelden voor het volledige voor beeld.
                       
 ## <a name="migrate-the-documents"></a>De documenten migreren
 
-Hoewel de container definitie wordt uitgebreid met een partitie sleutel eigenschap, worden de documenten in de container niet automatisch gemigreerd. Dit betekent dat het pad naar de `/_partitionKey` eigenschap van de systeem partitie sleutel niet automatisch wordt toegevoegd aan de bestaande documenten. U moet de bestaande documenten opnieuw partitioneren door de documenten te lezen die zijn gemaakt zonder partitie sleutel en ze terug te schrijven naar `_partitionKey` de eigenschap in de documenten.
+Hoewel de container definitie wordt uitgebreid met een partitie sleutel eigenschap, worden de documenten in de container niet automatisch gemigreerd. Dit betekent dat de eigenschap van de systeem partitie sleutel `/_partitionKey` pad niet automatisch wordt toegevoegd aan de bestaande documenten. U moet de bestaande documenten opnieuw partitioneren door de documenten te lezen die zijn gemaakt zonder partitie sleutel en deze opnieuw te schrijven met `_partitionKey` eigenschap in de documenten.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Toegang tot documenten die geen partitie sleutel hebben
 
@@ -110,7 +110,7 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 ```
 
-Zie de GitHub-opslag plaats voor .net-voor [beelden](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) voor het volledige voor beeld voor het opnieuw partitioneren van de documenten. 
+Zie de GitHub-opslag plaats voor .net-voor [beelden][1] voor het volledige voor beeld voor het opnieuw partitioneren van de documenten. 
 
 ## <a name="compatibility-with-sdks"></a>Compatibiliteit met Sdk's
 
@@ -122,5 +122,7 @@ Als een gemigreerde container wordt gebruikt door de nieuwste/V3-versie van de S
 
 * [Partitionering in Azure Cosmos DB](partitioning-overview.md)
 * [Aanvraageenheden in Azure Cosmos DB](request-units.md)
-* [Door Voer voor het inrichten van containers en data bases](set-throughput.md)
+* [Doorvoer voor containers en databases inrichten](set-throughput.md)
 * [Werken met een Azure Cosmos-account](account-overview.md)
+
+[1]: https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/NonPartitionContainerMigration

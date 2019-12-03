@@ -1,19 +1,19 @@
 ---
 title: 'Snelstartgids: uw lente-Cloud toepassing vanuit de bron code starten'
-description: Meer informatie over hoe u uw Azure lente-Cloud toepassing rechtstreeks vanuit uw bron code kunt starten
+description: In deze Quick Start leert u hoe u uw Azure lente-Cloud toepassing rechtstreeks vanuit uw bron code kunt starten
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 6e18ac6c0fa97125b89ea5760a5d7da6c1545393
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721287"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708877"
 ---
-# <a name="launch-your-spring-cloud-application-from-source-code"></a>Start uw lente-Cloud toepassing vanuit de bron code
+# <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Snelstartgids: uw lente-Cloud toepassing vanuit de bron code starten
 
 Met Azure lente Cloud kunt u eenvoudig lente-Cloud toepassingen uitvoeren op Azure.
 
@@ -110,7 +110,7 @@ az spring-cloud app deployment create --app <app-name> -n <deployment-name> --ja
 Azure veer Cloud maakt gebruik van [kpack](https://github.com/pivotal/kpack) om uw project te bouwen.  U kunt Azure CLI gebruiken om uw bron code te uploaden, uw project te bouwen met kpack en het te implementeren in de doel toepassing.
 
 > [!WARNING]
-> Het project mag slechts één JAR-bestand produceren met een `main-class`-vermelding in de `MANIFEST.MF` in `target` (voor maven-implementaties of `build/libs` (voor Gradle-implementaties).  Meerdere JAR-bestanden met `main-class` vermeldingen zorgen ervoor dat de implementatie mislukt.
+> Het project moet slechts één JAR-bestand produceren met een `main-class` vermelding in de `MANIFEST.MF` in `target` (voor maven-implementaties of `build/libs` (voor Gradle-implementaties).  Meerdere JAR-bestanden met `main-class` vermeldingen zullen ervoor zorgen dat de implementatie mislukt.
 
 Voor maven/Gradle-projecten met één module:
 
@@ -146,7 +146,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u de volgende zaken geleerd:
+In deze snelstart hebt u de volgende zaken geleerd:
 
 > [!div class="checklist"]
 > * Een service-exemplaar inrichten

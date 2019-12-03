@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467186"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707955"
 ---
 # <a name="what-is-personalizer"></a>Wat is Personalizer?
 
-Azure Personaler is een API-service in de Cloud waarmee u de beste ervaring kunt kiezen die wordt weer gegeven aan uw gebruikers.
+Azure Personaler is een API-service in de Cloud waarmee uw toepassing de beste ervaring kan kiezen die aan uw gebruikers wordt weer gegeven, en leer vanuit hun collectieve real-time gedrag.
 
 * Geef informatie op over uw gebruikers en inhoud en ontvang de meest voorkomende actie om uw gebruikers weer te geven. 
 * U hoeft geen gegevens op te schonen en labelen voordat u Personaler gebruikt.
@@ -60,8 +60,8 @@ Personaler is geen service voor het persistent maken en beheren van gebruikers p
 
 Personaler service heeft twee Api's:
 
-* Verzend informatie (_functies_) over uw gebruikers en de inhoud (_acties_) die u wilt personaliseren. Personaler reageert met de bovenste actie.
-* Stuur feedback naar persoonlijkere informatie over hoe goed de classificatie werkt als een [belonings Score](concept-rewards.md). 
+* *Positie*: gebruik de Rank API om te bepalen welke _actie_ moet worden weer gegeven in de huidige _context_. Acties worden verzonden als een matrix van JSON-objecten, met een ID en informatie (_functies_) over elk; context wordt verzonden als een ander JSON-object. De API retourneert de actionId die door uw toepassing moet worden weer gegeven aan de gebruiker.
+* *Beloning*: nadat uw gebruiker heeft gecommuniceerd met uw toepassing, meet u hoe goed het persoonlijke karakter heeft gewerkt als een getal tussen 0 en 1 en dit als een [belonings Score](concept-rewards.md)te verzenden. 
 
 ![Eenvoudige reeks gebeurtenissen voor personalisatie](media/what-is-personalizer/personalization-intro.png)
 

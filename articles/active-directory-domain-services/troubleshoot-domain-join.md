@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 1016fbc1478ec713d50a2f04bcc80d08288b03f3
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 73a76c4442bb8af70168e54a294f2cb100ff653c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827244"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703657"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Problemen met domein deelname oplossen met een door Azure AD Domain Services beheerd domein
 
@@ -32,10 +32,10 @@ Als de virtuele machine Azure AD DS Managed Domain niet kan vinden, is er meesta
 
 1. Zorg ervoor dat de virtuele machine is verbonden met hetzelfde of een peered virtueel netwerk dat is ingeschakeld voor Azure AD DS. Als dat niet het geval is, kan de virtuele machine geen verbinding maken met het domein om lid te worden van.
     * Als de virtuele machine niet is verbonden met hetzelfde virtuele netwerk, controleert u of de peering of VPN-verbinding van het virtuele netwerk *actief* is of *verbinding* heeft om het verkeer goed te laten stromen.
-1. Probeer het domein te pingen met de domein naam van het beheerde Azure AD DS-domein, zoals `ping contoso.com`.
+1. Probeer het domein te pingen met de domein naam van het beheerde Azure AD DS-domein, zoals `ping aadds.contoso.com`.
     * Als het ping-antwoord mislukt, probeert u de IP-adressen voor het domein te pingen dat wordt weer gegeven op de pagina overzicht in de portal voor uw Azure AD DS beheerde domein, zoals `ping 10.0.0.4`.
     * Als u het IP-adres, maar niet het domein, kunt pingen, is het mogelijk dat DNS onjuist is geconfigureerd. Zorg ervoor dat u de Azure AD DS Managed Domain DNS-servers voor het virtuele netwerk hebt geconfigureerd.
-1. Probeer de cache van de DNS-resolver te leegmaken op de virtuele machine, bijvoorbeeld `ipconfig /flushdns`.
+1. Probeer de cache van de DNS-resolver te leegmaken op de virtuele machine, zoals `ipconfig /flushdns`.
 
 ### <a name="network-security-group-nsg-configuration"></a>Configuratie van de netwerk beveiligings groep (NSG)
 

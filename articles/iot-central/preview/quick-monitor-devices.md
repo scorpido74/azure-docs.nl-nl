@@ -1,6 +1,6 @@
 ---
-title: Uw apparaten bewaken in Azure IoT Central | Microsoft Docs
-description: Gebruik als operator uw Azure IoT Central-toepassing om uw apparaten te bewaken.
+title: 'Quick Start: uw apparaten bewaken in azure IoT Central'
+description: Als operator kunt u uw Azure IoT Central-toepassing gebruiken om uw apparaten in deze Quick Start te controleren.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: de83315f38766bc1e2f37ac82452bb023930f241
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a6bc4b76dc00330e39526aec8bc5651b9abb590b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893772"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706742"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices-preview-features"></a>Snelstartgids: Azure IoT Central gebruiken om uw apparaten te bewaken (preview-functies)
 
@@ -58,7 +58,7 @@ Kies **Eigenschappen van de omgevings sensor**. **Helderheids niveau** wijzigen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u de volgende zaken geleerd:
+In deze snelstart hebt u de volgende zaken geleerd:
 
 * Een melding ontvangen
 * Een probleem onderzoeken

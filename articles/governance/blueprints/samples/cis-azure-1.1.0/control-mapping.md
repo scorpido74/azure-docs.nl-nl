@@ -1,14 +1,14 @@
 ---
 title: Voor beeld-besturings elementen in CIS Microsoft Azure Stichtings basis benchmarks
 description: Aanbevelings toewijzing van het CIS-voor beeld van het DIS Microsoft Azure fundament voor de basis voor Azure Policy.
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 55abac9f7479f0ee7d1adddea64cb81a1c7cf2b5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544535"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707416"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Aanbevelings toewijzing van het CIS-voor beeld van het DIS Microsoft Azure fundament-benchmarks
 
@@ -40,6 +40,12 @@ Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe
 - Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
 - Externe accounts met lees machtigingen moeten worden verwijderd uit uw abonnement
 - Externe accounts met schrijfmachtigingen moeten worden verwijderd uit uw abonnement
+
+## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1,23 zorg ervoor dat er geen rollen voor aangepaste abonnements eigenaren worden gemaakt
+
+Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe die u helpen bij het bewaken van rollen van aangepaste abonnements eigenaren die mogelijk moeten worden verwijderd.
+
+- De rollen van het aangepaste abonnements eigenaar mogen niet bestaan
 
 ## <a name="21-ensure-that-standard-pricing-tier-is-selected"></a>2,1 Controleer of de prijs categorie Standard is geselecteerd
 
@@ -243,11 +249,35 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 - SSL-verbinding afdwingen moet zijn ingeschakeld voor MySQL-database servers
 
+## <a name="412-ensure-server-parameter-log_checkpoints-is-set-to-on-for-postgresql-database-server"></a>4,12 Controleer of de server parameter log_checkpoints is ingesteld op ON voor de PostgreSQL-database server
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat PostgreSQL database servers logboek controlepunten registreren.
+
+- Logboek controlepunten moeten zijn ingeschakeld voor PostgreSQL-database servers
+
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4,13 Controleer of ' SSL-verbinding afdwingen ' is ingesteld op ingeschakeld voor PostgreSQL-database server
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat PostgreSQL database servers SSL-verbindingen afdwingen.
 
 - SSL-verbinding afdwingen moet zijn ingeschakeld voor PostgreSQL-database servers
+
+## <a name="414-ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>4,14 Controleer of de server parameter log_connections is ingesteld op ON voor de PostgreSQL-database server
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat PostgreSQL database servers verbinding maken met het logboek.
+
+- Logboek verbindingen moeten zijn ingeschakeld voor PostgreSQL-database servers
+
+## <a name="415-ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>4,15 Controleer of de server parameter log_disconnections is ingesteld op ON voor de PostgreSQL-database server
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat PostgreSQL database servers verbinding met het logboek verbreken.
+
+- Verbroken verbindingen moeten worden vastgelegd voor PostgreSQL-database servers.
+
+## <a name="416-ensure-server-parameter-log_duration-is-set-to-on-for-postgresql-database-server"></a>4,16 Controleer of de server parameter log_duration is ingesteld op ON voor de PostgreSQL-database server
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat PostgreSQL database servers de duur van voltooide instructies registreren.
+
+- De duur van het logboek moet zijn ingeschakeld voor PostgreSQL-database servers
 
 ## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4,17 Controleer of de server parameter connection_throttling is ingesteld op ON voor de PostgreSQL-database server
 
@@ -350,6 +380,71 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat webtoepassingen alleen toegankelijk zijn via beveiligde verbindingen.
 
 - Webtoepassing mag alleen toegankelijk zijn via HTTPS
+
+## <a name="93-ensure-web-app-is-using-the-latest-version-of-tls-encryption"></a>9,3 Zorg ervoor dat web-apps de meest recente versie van TLS-code ring gebruikt
+
+Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee u ervoor kunt zorgen dat web-apps de meest recente TLS-versie gebruiken.
+
+- De laatste TLS-versie moet worden gebruikt in uw API-app
+- De meest recente versie van TLS moet worden gebruikt in uw functie-app
+- De laatste TLS-versie moet worden gebruikt in uw web-app
+
+## <a name="94-ensure-the-web-app-has-client-certificates-incoming-client-certificates-set-to-on"></a>9,4 Controleer of de web-app ' client certificaten (binnenkomende client certificaten) ' is ingesteld op ' on '
+
+Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee u ervoor kunt zorgen dat alleen clients met geldige certificaten een web-app kunnen bereiken.
+
+- Zorg ervoor dat de API-app ' client certificaten (binnenkomende client certificaten) ' is ingesteld op ' on '
+- Zorg ervoor dat voor de functie-app client certificaten (binnenkomende client certificaten) zijn ingesteld op aan
+- Zorg ervoor dat de WEB-app client certificaten (binnenkomende client certificaten) heeft ingesteld op on
+
+## <a name="95-ensure-that-register-with-azure-active-directory-is-enabled-on-app-service"></a>9,5 zorg ervoor dat registreren bij Azure Active Directory is ingeschakeld op App Service
+
+Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee u ervoor kunt zorgen dat web-apps een beheerde identiteit gebruiken.
+
+- Zorg ervoor dat registreren met Azure Active Directory is ingeschakeld op API-app
+- Zorg ervoor dat registreren met Azure Active Directory is ingeschakeld op functie-app
+- Zorg ervoor dat registreren bij Azure Active Directory is ingeschakeld voor WEB-app
+
+## <a name="96-ensure-that-net-framework-version-is-the-latest-if-used-as-a-part-of-the-web-app"></a>9,6 Controleer of de versie van .NET Framework het meest recent is, als deze wordt gebruikt als onderdeel van de web-app
+
+Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee u ervoor kunt zorgen dat web-apps de nieuwste versie van .NET Framework gebruiken.
+
+- Zorg ervoor dat .NET Framework versie het meest recent is, als deze wordt gebruikt als onderdeel van de API-app
+- Zorg ervoor dat .NET Framework versie het meest recent is, als u deze gebruikt als onderdeel van de functie-app
+- Zorg ervoor dat .NET Framework versie het meest recent is, als deze wordt gebruikt als onderdeel van de web-app
+
+## <a name="97-ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>9,7 Controleer of ' PHP-versie ' het meest recent is, als deze wordt gebruikt om de web-app uit te voeren
+
+Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee u ervoor kunt zorgen dat web-apps de nieuwste versie van PHP gebruiken.
+
+- Zorg ervoor dat ' PHP-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de API-app
+- Zorg ervoor dat ' PHP-versie ' de meest recente is, als deze wordt gebruikt als onderdeel van de functie-app
+- Zorg ervoor dat ' PHP-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de WEB-app
+
+## <a name="98-ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>9,8 Controleer of ' python-versie ' het meest recent is, als deze wordt gebruikt om de web-app uit te voeren
+
+Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee u ervoor kunt zorgen dat web-apps de meest recente versie van python gebruiken.
+
+- Controleer of ' python-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de API-app
+- Controleer of ' python-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de functie-app
+- Controleer of ' python-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de web-app
+
+## <a name="99-ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>9,9 Controleer of ' Java version ' de meest recente is, indien gebruikt voor het uitvoeren van de web-app
+
+Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee u ervoor kunt zorgen dat web-apps de meest recente versie van Java gebruiken.
+
+- Zorg ervoor dat ' Java-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de API-app
+- Zorg ervoor dat ' Java-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de funtion-app
+- Zorg ervoor dat ' Java-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de web-app
+
+## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9,10 Controleer of ' HTTP-versie ' het meest recent is, als deze wordt gebruikt om de web-app uit te voeren
+
+Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee u ervoor kunt zorgen dat web-apps de nieuwste versie van http gebruiken.
+
+- Zorg ervoor dat ' HTTP-versie ' het meest recent is, indien gebruikt voor het uitvoeren van de API-app
+- Zorg ervoor dat HTTP-versie de meest recente is, als deze wordt gebruikt om de functie-app uit te voeren
+- Zorg ervoor dat HTTP-versie de meest recente is, als deze wordt gebruikt om de web-app uit te voeren
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

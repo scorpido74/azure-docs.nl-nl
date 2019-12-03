@@ -1,61 +1,61 @@
 ---
-title: Meer informatie over moduledubbels Azure IoT Hub | Microsoft Docs
-description: Handleiding voor ontwikkelaars - moduledubbels gebruiken om de status en configuratie van gegevens tussen IoT-Hub en uw apparaten te synchroniseren
+title: Meer informatie over Azure IoT Hub module apparaatdubbels | Microsoft Docs
+description: 'Ontwikkelaars handleiding: gebruik module apparaatdubbels om status-en configuratie gegevens te synchroniseren tussen IoT Hub en uw apparaten'
 author: chrissie926
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: cd0a9a66f3014a39a73cf04badfc67cd2ff4c3de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6ab1e3e01f66e071e3d16b196b3ecdcd30c2620
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363467"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701814"
 ---
-# <a name="understand-and-use-module-twins-in-iot-hub"></a>Begrijpen en gebruiken van moduledubbels in IoT Hub
+# <a name="understand-and-use-module-twins-in-iot-hub"></a>Module apparaatdubbels in IoT Hub begrijpen en gebruiken
 
-In dit artikel wordt ervan uitgegaan dat u hebt gelezen [apparaatdubbels begrijpen en gebruiken in IoT Hub](iot-hub-devguide-device-twins.md) eerste. In IoT-Hub, kunt onder per apparaat-id, u maximaal 20 module identiteiten maken. De identiteit van elke module genereert impliciet een moduledubbel. Net als bij dubbele apparaten, moduledubbels zijn JSON-documenten waarin statusinformatie van module met inbegrip van metagegevens, configuraties en voorwaarden. Azure IoT Hub onderhoudt een moduledubbel voor elke module die u met IoT Hub verbindt. 
+In dit artikel wordt ervan uitgegaan dat u de [apparaatdubbels-apparaten in IOT hub](iot-hub-devguide-device-twins.md) eerst hebt gelezen en gebruikt. In IoT Hub kunt u onder elke apparaat-id Maxi maal 20 module-identiteiten maken. Elke module-id genereert impliciet een module dubbele. Net als bij Device apparaatdubbels zijn module apparaatdubbels JSON-documenten waarin de status informatie van de module wordt opgeslagen, inclusief meta gegevens, configuraties en voor waarden. Azure IoT Hub onderhoudt een module voor elke module die u aansluit op IoT Hub. 
 
-Aan de kant van het apparaat kunnen de IoT Hub apparaat-SDK's u maken van modules waarbij elk ervan een onafhankelijke verbinding met IoT Hub wordt geopend. Deze functie kunt u afzonderlijke naamruimten voor de verschillende onderdelen op uw apparaat gebruikt. U hebt bijvoorbeeld een Verkoopautomaat waarvoor drie verschillende sensoren. De sensor wordt bepaald door de verschillende afdelingen in uw bedrijf. U kunt een module voor elke sensor maken. Op deze manier elke afdeling is alleen het verzenden van taken of directe methoden aan de sensor die ze beheren, voorkomen van conflicten en gebruikersfouten.
+Aan de kant van het apparaat kunt u met de Sdk's van het IoT Hub apparaat modules maken waarbij elke ene een onafhankelijke verbinding met IoT Hub opent. Met deze functie kunt u afzonderlijke naam ruimten voor verschillende onderdelen op het apparaat gebruiken. U hebt bijvoorbeeld een verkoop machine met drie verschillende Sens oren. Elke sensor wordt beheerd door verschillende afdelingen in uw bedrijf. U kunt voor elke sensor een module maken. Op deze manier kan elke afdeling alleen taken of directe methoden verzenden naar de sensor die ze beheren, conflicten en gebruikers fouten voor komen.
 
- Module identiteits- en moduledubbel bieden dezelfde mogelijkheden als de apparaat-id en het dubbele apparaat, maar op een fijnere granulatie. Deze weer specifieker kunt apparaten, zoals apparaten op basis van het besturingssysteem of de firmware-apparaten beheren van meerdere onderdelen, als u wilt isoleren, configuratie en voorwaarden voor elk van deze onderdelen. Module identiteits- en moduledubbels bieden een scheiding van problemen bij het werken met IoT-apparaten waarvoor modulaire software-onderdelen. We gericht op de ondersteuning van alle apparaat dubbele functionaliteit op het niveau van module dubbele door module dubbele algemene beschikbaarheid. 
+ Module-identiteit en module twee bieden dezelfde mogelijkheden als de apparaat-id en het apparaat, met een nauw keurigere granulariteit. Met deze nauw keurigheid kunnen apparaten, zoals apparaten op basis van een besturings systeem of firmware-apparaten meerdere onderdelen beheren, de configuratie en voor waarden voor elk van deze onderdelen worden geïsoleerd. Module identiteit en module apparaatdubbels bieden een beheer schei ding van problemen bij het werken met IoT-apparaten met modulaire software onderdelen. We streven naar het ondersteunen van de dubbele functionaliteit van het apparaat op het niveau van de module dubbele niveaus per module dubbele algemene Beschik baarheid. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Dit artikel wordt beschreven:
+In dit artikel wordt beschreven:
 
-* De structuur van de moduledubbel: *tags*, *gewenste* en *gerapporteerde eigenschappen*.
-* De bewerkingen die de modules en back-ends op moduledubbels kunnen uitvoeren.
+* De structuur van de module: *labels*, *gewenste* en *gerapporteerde eigenschappen*.
+* De bewerkingen die de modules en back-ends kunnen uitvoeren op module apparaatdubbels.
 
-Raadpleeg [richtlijnen voor communicatie van apparaat-naar-cloud](iot-hub-devguide-d2c-guidance.md) voor informatie over het gebruik van de gerapporteerde eigenschappen, apparaat-naar-cloud-berichten of bestand uploaden.
+Raadpleeg de [informatie over apparaat-naar-Cloud-communicatie](iot-hub-devguide-d2c-guidance.md) voor hulp bij het gebruik van gerapporteerde eigenschappen, apparaat-naar-Cloud-berichten of het uploaden van bestanden.
 
-Raadpleeg [Cloud-naar-apparaat communicatie richtlijnen](iot-hub-devguide-c2d-guidance.md) voor informatie over het gebruik van de gewenste eigenschappen, directe methoden of cloud-naar-apparaat-berichten.
+Raadpleeg de [communicatie richtlijnen van Cloud naar apparaat](iot-hub-devguide-c2d-guidance.md) voor hulp bij het gebruik van de gewenste eigenschappen, directe methoden of Cloud-naar-apparaat-berichten.
 
-## <a name="module-twins"></a>Moduledubbels
+## <a name="module-twins"></a>Module apparaatdubbels
 
-Moduledubbels opslaan van informatie met betrekking tot de module die:
+Module apparaatdubbels Store-informatie met betrekking tot de module:
 
-* Modules op het apparaat en IoT-Hub kunnen gebruiken om te synchroniseren van de voorwaarden van de module en de configuratie.
+* Modules op het apparaat en IoT Hub kunnen worden gebruikt voor het synchroniseren van module omstandigheden en configuratie.
 
-* De back-end oplossing kunt gebruiken voor query- en doel langlopende bewerkingen.
+* De back-end van de oplossing kan worden gebruikt om query's uit te voeren en langlopende bewerkingen te bereiken.
 
-De levenscyclus van een moduledubbel is gekoppeld aan de bijbehorende [module identiteit](iot-hub-devguide-identity-registry.md). Modules dubbels worden impliciet gemaakt en verwijderd wanneer de identiteit van een module is gemaakt of verwijderd uit IoT Hub.
+De levens cyclus van een module dubbele is gekoppeld aan de bijbehorende [module-identiteit](iot-hub-devguide-identity-registry.md). Modules apparaatdubbels worden impliciet gemaakt en verwijderd wanneer een module-id wordt gemaakt of verwijderd in IoT Hub.
 
-Een moduledubbel is een JSON-document met:
+Een module dubbele is een JSON-document dat het volgende bevat:
 
-* **Tags**. Een gedeelte van het JSON-document dat de back-end van de oplossing kan lezen en schrijven naar. Tags zijn niet zichtbaar voor modules op het apparaat. Tags zijn ingesteld voor het uitvoeren van query's doel.
+* **Tags**. Een sectie van het JSON-document waarnaar de back-end van de oplossing kan lezen en waarnaar kan worden geschreven. Tags zijn niet zichtbaar voor modules op het apparaat. Labels worden ingesteld voor het doel van query's.
 
-* **Gewenste eigenschappen**. Gebruikt samen met de gerapporteerde eigenschappen om te synchroniseren van configuratie van de module of voorwaarden. De back-end oplossing gewenste eigenschappen kunt instellen en deze kan worden gelezen door de module-app. De module-app kan ook met het ontvangen van meldingen van wijzigingen in de gewenste eigenschappen.
+* **Gewenste eigenschappen**. Wordt samen met de gerapporteerde eigenschappen gebruikt voor het synchroniseren van module configuratie of-voor waarden. De back-end van de oplossing kan gewenste eigenschappen instellen en de module-App kan deze lezen. De module-App kan ook meldingen ontvangen over wijzigingen in de gewenste eigenschappen.
 
-* **Gerapporteerde eigenschappen**. Gebruikt samen met de gewenste eigenschappen voor het synchroniseren van configuratie van de module of voorwaarden. De module app gerapporteerde eigenschappen kunt instellen en de back-end oplossing kunt lezen en query's voor uitvoert.
+* **Gerapporteerde eigenschappen**. Wordt samen met de gewenste eigenschappen gebruikt voor het synchroniseren van module configuratie of-voor waarden. De module-App kan gerapporteerde eigenschappen instellen en de back-end van de oplossing kan deze lezen en er query's op uitvoeren.
 
-* **Identiteitseigenschappen van de module**. De hoofdmap van de module dubbele JSON-document bevat de alleen-lezen eigenschappen van de overeenkomstige module-id die zijn opgeslagen in de [id-register](iot-hub-devguide-identity-registry.md).
+* **Eigenschappen van module-identiteit**. De hoofdmap van het document van de module dubbele JSON bevat de alleen-lezen eigenschappen van de bijbehorende module-id die is opgeslagen in het [identiteits register](iot-hub-devguide-identity-registry.md).
 
-![Architectuur van de weergave van apparaatdubbel](./media/iot-hub-devguide-device-twins/module-twin.jpg)
+![Architectuur representatie van het apparaat dubbele](./media/iot-hub-devguide-device-twins/module-twin.jpg)
 
-Het volgende voorbeeld ziet u een moduledubbel JSON-document:
+In het volgende voor beeld wordt een module-document met dubbele JSON weer gegeven:
 
 ```json
 {
@@ -102,20 +102,20 @@ Het volgende voorbeeld ziet u een moduledubbel JSON-document:
 }
 ```
 
-In het hoofdobject zijn de module identiteitseigenschappen en container-objecten voor `tags` , en beide `reported` en `desired` eigenschappen. De `properties` container bevat bepaalde onderdelen van de alleen-lezen (`$metadata`, `$etag`, en `$version`) die worden beschreven in de [Module dubbele metagegevens](iot-hub-devguide-module-twins.md#module-twin-metadata) en [optimistische gelijktijdigheid](iot-hub-devguide-device-twins.md#optimistic-concurrency) de secties.
+In het hoofd object bevinden zich de eigenschappen van de module-identiteit en container objecten voor `tags` en zowel `reported` als `desired` eigenschappen. De `properties`-container bevat enkele alleen-lezen elementen (`$metadata`, `$etag`en `$version`) die worden beschreven in de [module dubbele meta gegevens](iot-hub-devguide-module-twins.md#module-twin-metadata) en [optimistische gelijktijdigheids](iot-hub-devguide-device-twins.md#optimistic-concurrency) secties.
 
-### <a name="reported-property-example"></a>Voorbeeld van de gerapporteerde eigenschap
+### <a name="reported-property-example"></a>Voor beeld van een gerapporteerde eigenschap
 
-In het vorige voorbeeld de moduledubbel bevat een `batteryLevel` eigenschap die moet worden gerapporteerd door de module-app. Deze eigenschap maakt het mogelijk is om te zoeken en modules op basis van de laatste gerapporteerde accuniveau gehandeld. Andere voorbeelden zijn onder meer de rapportage-module mogelijkheden voor app-module of opties voor netwerkconnectiviteit.
+In het vorige voor beeld bevat de module twee een `batteryLevel`-eigenschap die wordt gerapporteerd door de module-app. Met deze eigenschap kunnen modules worden opgevraagd en uitgevoerd op basis van het laatst gerapporteerde accu niveau. Andere voor beelden zijn de module mogelijkheden van module App Reporting of de connectiviteits opties.
 
 > [!NOTE]
-> Gerapporteerde eigenschappen vereenvoudigen van scenario's waarin de back-end van de oplossing is geïnteresseerd in de laatste bekende waarde van een eigenschap. Gebruik [apparaat-naar-cloud-berichten](iot-hub-devguide-messages-d2c.md) als de back-end van de oplossing moet verwerken module telemetrie in de vorm van reeksen voorzien van een tijdstempel gebeurtenissen, zoals een tijdreeks.
+> De gerapporteerde eigenschappen vereenvoudigen scenario's waarbij de back-end van de oplossing relevant is voor de laatst bekende waarde van een eigenschap. Gebruik [apparaat-naar-Cloud-berichten](iot-hub-devguide-messages-d2c.md) als de back-end van de oplossing module-telemetrie moet verwerken in de vorm van reeksen van tijds tempels, zoals een tijd reeks.
 
-### <a name="desired-property-example"></a>Voorbeeld van de gewenste eigenschap
+### <a name="desired-property-example"></a>Voor beeld van gewenste eigenschap
 
-In het vorige voorbeeld de `telemetryConfig` moduledubbel gewenst en gerapporteerde eigenschappen worden gebruikt door de back-end van de oplossing en de module-app om te synchroniseren van de configuratie van de telemetrie voor deze module. Bijvoorbeeld:
+In het vorige voor beeld worden de dubbele gewenste en gerapporteerde eigenschappen van de module `telemetryConfig` gebruikt door de back-end van de oplossing en de module-app om de telemetrie-configuratie voor deze module te synchroniseren. Bijvoorbeeld:
 
-1. De back-end oplossing Hiermee stelt u de gewenste eigenschap met de waarde van de gewenste configuratie. Dit is het gedeelte van het document met de gewenste eigenschap is ingesteld:
+1. Met de back-end van de oplossing stelt u de gewenste eigenschap in op de gewenste configuratie waarde. Hier is het gedeelte van het document met de gewenste eigenschap ingesteld:
 
     ```json
     ...
@@ -128,7 +128,7 @@ In het vorige voorbeeld de `telemetryConfig` moduledubbel gewenst en gerapportee
     ...
     ```
 
-2. De module-app wordt op de hoogte gesteld van de wijziging onmiddellijk als verbonden of op de eerste opnieuw verbinding te maken. De module-app vervolgens de bijgewerkte configuratie rapporten (of een fout voorwaarde met behulp van de `status` eigenschap). Dit is het gedeelte van de gerapporteerde eigenschappen:
+2. De module-app wordt onmiddellijk op de hoogte gesteld wanneer deze is verbonden, of bij de eerste keer opnieuw verbinding maken. De module-App rapporteert vervolgens de bijgewerkte configuratie (of een fout voorwaarde met behulp van de eigenschap `status`). Hier volgt het gedeelte van de gerapporteerde eigenschappen:
 
     ```json
     "reported": {
@@ -140,19 +140,19 @@ In het vorige voorbeeld de `telemetryConfig` moduledubbel gewenst en gerapportee
     }
     ```
 
-3. De back-end oplossing kunt volgen de resultaten van de configuratiebewerking in veel modules door [uitvoeren van query's](iot-hub-devguide-query-language.md) moduledubbels.
+3. Met de back-end van de oplossing kunt u de resultaten van de configuratie bewerking in veel modules volgen door de module apparaatdubbels te [doorzoeken](iot-hub-devguide-query-language.md) .
 
 > [!NOTE]
-> De voorgaande fragmenten zijn voorbeelden, geoptimaliseerd voor de leesbaarheid van een manier om het coderen van een configuratie van de module en de status ervan. IoT Hub legt een specifieke schema voor de moduledubbel gewenst en eigenschappen in de moduledubbels gerapporteerde.
+> De voor gaande fragmenten zijn voor beelden die zijn geoptimaliseerd voor de Lees baarheid, van een manier om een module configuratie en de status ervan te coderen. IoT Hub maakt geen specifiek schema voor de module dubbele gewenste en gerapporteerde eigenschappen in de module apparaatdubbels.
 > 
 > 
 
 ## <a name="back-end-operations"></a>Back-end-bewerkingen
-De back-end van de oplossing is van invloed op de moduledubbel met behulp van de volgende atomische bewerkingen, die toegankelijk is via HTTPS:
+De back-end van de oplossing werkt op de module, met behulp van de volgende atomische bewerkingen, beschikbaar via HTTPS:
 
-* **Ophalen van de moduledubbel op ID**. Deze bewerking wordt de module dubbele document, inclusief tags en eigenschappen van het gewenste en gerapporteerde geretourneerd.
+* **Haal de module op met id**. Met deze bewerking wordt het module dubbele document geretourneerd, inclusief tags en gewenste en gerapporteerde systeem eigenschappen.
 
-* **Gedeeltelijk bijwerken moduledubbel**. Met deze bewerking kunt de back-end oplossing de tags of de gewenste eigenschappen in een moduledubbel gedeeltelijk bijwerken. De gedeeltelijke update wordt uitgedrukt als een JSON-document dat een eigenschap bijgewerkt of toegevoegd. Eigenschappen ingesteld op `null` worden verwijderd. Het volgende voorbeeld wordt een nieuwe gewenste eigenschap met de waarde `{"newProperty": "newValue"}`, overschrijft de bestaande waarde van `existingProperty` met `"otherNewValue"`, en verwijdert u `otherOldProperty`. Er zijn geen andere wijzigingen zijn aangebracht aan de bestaande gewenste eigenschappen of labels:
+* **Module is gedeeltelijk bijgewerkt**. Met deze bewerking kan de back-end van de oplossing de labels gedeeltelijk bijwerken of de gewenste eigenschappen in een module dubbele. De gedeeltelijke update wordt uitgedrukt als een JSON-document waarmee elke eigenschap wordt toegevoegd of bijgewerkt. De eigenschappen die zijn ingesteld op `null`, worden verwijderd. In het volgende voor beeld wordt een nieuwe gewenste eigenschap met de waarde `{"newProperty": "newValue"}`gemaakt, wordt de bestaande waarde van `existingProperty` door `"otherNewValue"`overschreven en wordt `otherOldProperty`verwijderd. Er worden geen andere wijzigingen aangebracht in de bestaande gewenste eigenschappen of Tags:
 
     ```json
     {
@@ -168,32 +168,32 @@ De back-end van de oplossing is van invloed op de moduledubbel met behulp van de
     }
     ```
 
-* **Gewenste eigenschappen vervangen**. Met deze bewerking kunt u de back-end oplossing voor het volledig overschrijft alle bestaande gewenste eigenschappen en vervangen door een nieuwe JSON-document voor `properties/desired`.
+* **Gewenste eigenschappen vervangen**. Met deze bewerking kan de back-end van de oplossing alle bestaande gewenste eigenschappen volledig overschrijven en een nieuw JSON-document voor `properties/desired`vervangen.
 
-* **Vervang tags**. Met deze bewerking kunt u de back-end oplossing voor het volledig overschrijft alle bestaande tags en vervangen door een nieuwe JSON-document voor `tags`.
+* **Tags vervangen**. Met deze bewerking kan de back-end van de oplossing alle bestaande Tags volledig overschrijven en een nieuw JSON-document voor `tags`vervangen.
 
-* **Dubbele meldingen ontvangen**. Met deze bewerking kunt de back-end oplossing om te worden geïnformeerd wanneer het dubbele wordt gewijzigd. Om dit te doen, moet uw IoT-oplossing een route te maken en in te stellen de gegevensbron gelijk zijn aan *twinChangeEvents*. Standaard geen dubbele meldingen worden verzonden, dat wil zeggen, er zijn geen dergelijke routes vooraf bestaan. Als de wijzigingssnelheid te hoog is, of om andere redenen, zoals interne fouten, worden de IoT-Hub slechts één melding alle wijzigingen bevat verzonden. Als uw toepassing moet betrouwbare controle en logboekregistratie van alle tussenliggende statussen, moet u apparaat-naar-cloud-berichten. Het meldingsbericht dubbele bevat eigenschappen en de hoofdtekst.
+* **Ontvang dubbele meldingen**. Met deze bewerking kan de back-end van de oplossing worden gewaarschuwd wanneer het dubbele wordt gewijzigd. Hiervoor moet uw IoT-oplossing een route maken en de gegevens bron instellen op *twinChangeEvents*. Standaard worden er geen dubbele meldingen verzonden, dat wil zeggen dat er geen dergelijke routes vooraf bestaan. Als de wijzigings ratio te hoog is of om andere redenen, zoals interne fouten, kan de IoT Hub slechts één melding verzenden die alle wijzigingen bevat. Als uw toepassing bijvoorbeeld betrouw bare controle en logboek registratie van alle tussenliggende statussen vereist, moet u apparaat-naar-Cloud-berichten gebruiken. Het dubbele meldings bericht bevat eigenschappen en hoofd tekst.
 
-  - Properties
+  - Eigenschappen
 
-    | Name | Value |
+    | Naam | Waarde |
     | --- | --- |
     $content-type | application/json |
-    $iothub-enqueuedtime |  Tijd waarop de melding is verzonden |
-    $iothub-bericht-bron | twinChangeEvents |
-    $content-encoding | utf-8 |
+    $iothub-enqueuedtime |  Tijdstip waarop de melding is verzonden |
+    $iothub-bericht bron | twinChangeEvents |
+    $content-encoding | UTF-8 |
     deviceId | ID van het apparaat |
     moduleId | ID van de module |
     hubName | Naam van IoT Hub |
-    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp van bewerking |
-    iothub-bericht-schema | deviceLifecycleNotification |
+    operationTimestamp | [Iso8601](https://en.wikipedia.org/wiki/ISO_8601) tijds tempel van bewerking |
+    iothub-Message-schema | deviceLifecycleNotification |
     opType | "replaceTwin" of "updateTwin" |
 
-    Systeemeigenschappen bericht worden voorafgegaan door de `$` symbool.
+    Eigenschappen van het berichten systeem worden voorafgegaan door het `$`-symbool.
 
   - Hoofdtekst
         
-    Deze sectie bevat alle wijzigingen in de apparaatdubbel in een JSON-indeling. Het maakt gebruik van dezelfde indeling als een patch, met het verschil dat deze alle dubbele secties kan bevatten: labels, properties.reported, properties.desired en dat deze de elementen '$metadata bevat'. Bijvoorbeeld:
+    In deze sectie vindt u alle dubbele wijzigingen in een JSON-indeling. Er wordt gebruikgemaakt van dezelfde indeling als een patch, met het verschil dat deze alle dubbele secties kan bevatten: Tags, eigenschappen. gerapporteerd, eigenschappen. desired en de elementen $metadata bevatten. Bijvoorbeeld:
 
     ```json
     {
@@ -214,33 +214,33 @@ De back-end van de oplossing is van invloed op de moduledubbel met behulp van de
     }
     ```
 
-Ondersteuning voor alle voorgaande bewerkingen [optimistische gelijktijdigheid](iot-hub-devguide-device-twins.md#optimistic-concurrency) en vereisen dat de **ServiceConnect** machtiging, zoals gedefinieerd in de [toegang tot IoT Hub regelen](iot-hub-devguide-security.md) artikel.
+Alle voor gaande bewerkingen ondersteunen [optimistische gelijktijdigheid](iot-hub-devguide-device-twins.md#optimistic-concurrency) en vereisen de **ServiceConnect** -machtiging, zoals gedefinieerd in de [toegang tot IOT hub](iot-hub-devguide-security.md) artikel.
 
-Naast deze bewerkingen kunt een back-end van de oplossing de moduledubbels met behulp van de SQL-achtige query [IoT Hub-querytaal](iot-hub-devguide-query-language.md).
+Naast deze bewerkingen kan de back-end van de oplossing een query uitvoeren op de module apparaatdubbels met behulp van de SQL-achtige [IOT hub query taal](iot-hub-devguide-query-language.md).
 
-## <a name="module-operations"></a>Modulebewerkingen
+## <a name="module-operations"></a>Module bewerkingen
 
-De module-app is van invloed op de moduledubbel met behulp van de volgende atomische bewerkingen:
+De module-App werkt op de module met behulp van de volgende atomische bewerkingen:
 
-* **Ophalen van de moduledubbel**. Met deze bewerking wordt het module-twin-document (met inbegrip van de labels en gewenste en gerapporteerde eigenschappen) voor de momenteel verbonden module.
+* De **module twee ophalen** Met deze bewerking wordt het module dubbele document (inclusief tags en gewenste en gerapporteerde systeem eigenschappen) voor de momenteel verbonden module geretourneerd.
 
-* **Gedeeltelijk gerapporteerde eigenschappen bij te werken**. Met deze bewerking kunt het gedeeltelijke update van de gerapporteerde eigenschappen van de momenteel verbonden module. Deze bewerking wordt de dezelfde JSON-update-indeling dat de oplossing back-end wordt gebruikt voor een gedeeltelijke update van gewenste eigenschappen.
+* De **gerapporteerde eigenschappen zijn gedeeltelijk bijgewerkt**. Met deze bewerking wordt de gedeeltelijke update van de gerapporteerde eigenschappen van de momenteel verbonden module ingeschakeld. Deze bewerking maakt gebruik van dezelfde JSON-update-indeling als de back-end van de oplossing gebruikt voor een gedeeltelijke update van de gewenste eigenschappen.
 
-* **Gewenste eigenschappen observeren**. De momenteel verbonden module kunt kiezen om te worden geïnformeerd over updates voor de gewenste eigenschappen wanneer ze zich voordoen. De module ontvangt de dezelfde vorm van update (gedeeltelijke of volledige vervanging) dat door de back-end van de oplossing wordt uitgevoerd.
+* **Bekijk de gewenste eigenschappen**. De momenteel verbonden module kan ervoor kiezen om op de hoogte te worden gesteld van updates voor de gewenste eigenschappen wanneer deze zich voordoen. De module ontvangt dezelfde vorm van update (gedeeltelijke of volledige vervanging) die wordt uitgevoerd door de back-end van de oplossing.
 
-De voorgaande behoeft de **ModuleConnect** machtiging, zoals gedefinieerd in de [toegang tot IoT Hub regelen](iot-hub-devguide-security.md) artikel.
+Voor alle voor gaande bewerkingen is de machtiging **ModuleConnect** vereist, zoals gedefinieerd in de [toegang tot IOT hub](iot-hub-devguide-security.md) artikel.
 
-De [Azure IoT device SDK's](iot-hub-devguide-sdks.md) gemakkelijk te gebruiken van de voorgaande bewerkingen van veel talen en platforms.
+De [sdk's van het Azure IOT-apparaat](iot-hub-devguide-sdks.md) maken het eenvoudig om de voor gaande bewerkingen uit vele talen en platforms te gebruiken.
 
 ## <a name="tags-and-properties-format"></a>Indeling van tags en eigenschappen
 
-Labels en gewenste eigenschappen, gerapporteerde eigenschappen zijn JSON-objecten met de volgende beperkingen:
+Labels, gewenste eigenschappen en gerapporteerde eigenschappen zijn JSON-objecten met de volgende beperkingen:
 
-* Alle sleutels in JSON-objecten zijn hoofdlettergevoelig 64 bytes UNICODE UTF-8-tekenreeksen. Toegestane tekens uitsluiten Unicode-tekens (segmenten C0 en C1), en `.`, SP, en `$`.
+* Alle sleutels in JSON-objecten zijn hoofdletter gevoelige 64 bytes UTF-8 UNICODE-teken reeksen. Toegestane tekens uitsluiten UNICODE-besturings tekens (segmenten C0 en C1) en `.`, SP en `$`.
 
-* Alle waarden in de JSON-objecten van de volgende JSON-typen zijn: boolean, getal, string, object. Matrices zijn niet toegestaan. De maximale waarde voor gehele getallen is 4503599627370495 en de minimale waarde voor gehele getallen-4503599627370496 is.
+* Alle waarden in JSON-objecten kunnen van de volgende JSON-typen zijn: Boolean, Number, String, object. Matrices zijn niet toegestaan. De maximum waarde voor gehele getallen is 4503599627370495 en de minimum waarde voor gehele getallen is-4503599627370496.
 
-* Alle JSON-objecten in de gewenste en gerapporteerde eigenschappen-tags kunnen hebben een maximale diepte van 5. Bijvoorbeeld, geldt het volgende object:
+* Alle JSON-objecten in labels, gewenste en gerapporteerde eigenschappen kunnen een maximale diepte van 5 hebben. Het volgende object is bijvoorbeeld geldig:
 
     ```json
     {
@@ -262,19 +262,19 @@ Labels en gewenste eigenschappen, gerapporteerde eigenschappen zijn JSON-objecte
     }
     ```
 
-* Alle tekenreekswaarden kunnen maximaal 512 bytes lang zijn.
+* Alle teken reeks waarden kunnen Maxi maal 512 bytes lang zijn.
 
-## <a name="module-twin-size"></a>Omvang van integratiemodule twin
+## <a name="module-twin-size"></a>Dubbele grootte van module
 
-IoT Hub dwingt een beperking van de grootte van 8KB op elk van de respectieve totale waarden van `tags`, `properties/desired`, en `properties/reported`, met uitzondering van alleen-lezen-elementen.
+IoT Hub dwingt een maximale grootte van 8 KB af voor de waarde van `tags`en een maximale grootte van 32 KB voor elke waarde van `properties/desired` en `properties/reported`. Deze totalen zijn uitsluitend van elementen met het kenmerk alleen-lezen.
 
-De grootte wordt berekend door het tellen van alle tekens, met uitzondering van Unicode-tekens (segmenten C0 en C1) en die zich buiten de tekenreeksconstanten.
+De grootte wordt berekend door alle tekens te tellen, met uitzonde ring van UNICODE-besturings tekens (segmenten C0 en C1) en spaties die zich buiten teken reeks constanten bevinden.
 
-IoT Hub is geweigerd door een fout. alle bewerkingen die de grootte van deze documenten boven de limiet wilt verhogen.
+IoT Hub weigert een fout bij alle bewerkingen die de grootte van deze documenten boven de limiet verg Roten.
 
-## <a name="module-twin-metadata"></a>Module dubbele metagegevens
+## <a name="module-twin-metadata"></a>Dubbele meta gegevens van module
 
-IoT Hub onderhoudt de tijdstempel van de laatste update voor elk JSON-object in de moduledubbel gewenst en gerapporteerde eigenschappen. De tijdstempels in UTC en gecodeerd in de [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) indeling `YYYY-MM-DDTHH:MM:SS.mmmZ`.
+IoT Hub onderhoudt de tijds tempel van de laatste update voor elk JSON-object in de module dubbele gewenste en gerapporteerde eigenschappen. De tijds tempels zijn in UTC en worden gecodeerd in de [iso8601](https://en.wikipedia.org/wiki/ISO_8601) -indeling `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 Bijvoorbeeld:
 
 ```json
@@ -322,19 +322,19 @@ Bijvoorbeeld:
 }
 ```
 
-Deze informatie wordt opgeslagen op elk niveau (niet alleen de knooppunten van de JSON-structuur) als u wilt behouden van updates die objectsleutels te verwijderen.
+Deze informatie wordt op elk niveau (niet alleen de bladeren van de JSON-structuur) bewaard om updates die object sleutels verwijderen te behouden.
 
 ## <a name="optimistic-concurrency"></a>Optimistische gelijktijdige uitvoering
 
-Tags, gewenste en gerapporteerde eigenschappen alle ondersteuning van optimistische gelijktijdigheid.
-Tags zijn een ETag volgens [RFC7232](https://tools.ietf.org/html/rfc7232), die de JSON-weergave van de tag vertegenwoordigt. U kunt ETags in voorwaardelijke bewerkingen van de back-end oplossing gebruiken om te zorgen voor consistentie.
+De labels, gewenste en gerapporteerde eigenschappen bieden ondersteuning voor optimistische gelijktijdigheid.
+Labels hebben een ETag, zoals per [RFC7232](https://tools.ietf.org/html/rfc7232), die de JSON-weer gave van de tag vertegenwoordigt. U kunt ETags gebruiken in bewerkingen voor voorwaardelijke updates van de back-end van de oplossing om consistentie te garanderen.
 
-Moduledubbel gewenst en gerapporteerde eigenschappen geen ETags, maar hebben een `$version` waarde die kan worden gegarandeerd incrementeel zijn. Op dezelfde manier naar een ETag, kan de versie worden gebruikt door de partij bijwerken voor het afdwingen van consistentie van updates. Bijvoorbeeld, een module-app voor een gerapporteerde eigenschap of de back-end oplossing voor een gewenste eigenschap.
+De gewenste module en gerapporteerde eigenschappen hebben geen ETags, maar hebben een `$version` waarde die gegarandeerd incrementeel is. Net als bij een ETag kan de versie worden gebruikt door de update partij om consistentie van updates af te dwingen. Bijvoorbeeld een module-App voor een gerapporteerde eigenschap of de back-end van de oplossing voor een gewenste eigenschap.
 
-Versies zijn ook handig wanneer een observing agent (zoals de module app inachtneming van de gewenste eigenschappen) op elkaar stappen tussen het resultaat van een bewerking ophalen en een melding van updates afstemmen moet. De sectie [apparaat opnieuw verbinden met flow](iot-hub-devguide-device-twins.md#device-reconnection-flow) vindt u meer informatie. 
+Versies zijn ook handig wanneer een waarneem bare agent (zoals de module-app die de gewenste eigenschappen waarneemt), races moet afstemmen tussen het resultaat van een ophalen-bewerking en een update-melding. De stroom voor het opnieuw verbinden van het [apparaat](iot-hub-devguide-device-twins.md#device-reconnection-flow) biedt meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt uitproberen enkele concepten die in dit artikel wordt beschreven, Zie de volgende zelfstudies voor IoT Hub:
+Zie de volgende IoT Hub zelf studies voor het uitproberen van de concepten die in dit artikel worden beschreven:
 
-* [Aan de slag met IoT Hub identiteits- en module moduledubbel met behulp van .NET-back-end en .NET-apparaat](iot-hub-csharp-csharp-module-twin-getstarted.md)
+* [Aan de slag met IoT Hub module-identiteit en-module, met behulp van .NET-back-end en .NET-apparaat](iot-hub-csharp-csharp-module-twin-getstarted.md)

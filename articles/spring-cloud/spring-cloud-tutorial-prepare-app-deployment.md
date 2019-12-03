@@ -1,17 +1,17 @@
 ---
-title: Een lente toepassing voorbereiden voor implementatie in azure lente Cloud | Microsoft Docs
-description: In deze Quick Start hebt u een Java lente-toepassing voor bereid voor implementatie.
+title: 'Zelf studie: een lente toepassing voorbereiden voor implementatie in azure lente Cloud'
+description: In deze zelf studie gaat u een Java lente-toepassing voorbereiden voor implementatie.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3c567c54f887afe9ac112970a682b9466515d949
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721248"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708735"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Zelf studie: een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud
 
@@ -32,7 +32,7 @@ Spring boot-versie | Lente-Cloud versie
 2,0. x | Finchley. RELEASE
 2.1. x | Greenwich. RELEASE
 
-Controleer of uw `pom.xml`-bestand de lente-opstart-en lente-Cloud afhankelijkheden heeft die zijn gebaseerd op uw versie.
+Controleer of uw `pom.xml`-bestand de lente-opstart-en lente-Cloud afhankelijkheden op basis van uw versie heeft.
 
 ### <a name="version-20"></a>Versie 2,0:
 
@@ -119,7 +119,7 @@ Uw toepassing moet de volgende afhankelijkheden bevatten om de ingebouwde functi
 
 ### <a name="service-registry"></a>Service register
 
-Als u de beheerde Azure Service Registry-service wilt gebruiken, neemt u `spring-cloud-starter-netflix-eureka-client` op in `POM.xml`, zoals hieronder wordt weer gegeven.
+Als u de beheerde Azure Service Registry-service wilt gebruiken, neemt u `spring-cloud-starter-netflix-eureka-client` op in `POM.xml` zoals hieronder wordt weer gegeven.
 
 Het eind punt van de service register server wordt automatisch geïnjecteerd als omgevings variabelen met uw app. Toepassingen kunnen zichzelf registreren bij de service register server en andere afhankelijke micro services ontdekken.
 
@@ -132,7 +132,7 @@ Het eind punt van de service register server wordt automatisch geïnjecteerd als
 
 ### <a name="distributed-configuration"></a>Gedistribueerde configuratie
 
-Als u gedistribueerde configuratie wilt inschakelen, neemt u `spring-cloud-config-client` op in het gedeelte afhankelijkheden van uw `pom.xml`.
+Als u gedistribueerde configuratie wilt inschakelen, neemt u `spring-cloud-config-client` op in het gedeelte met afhankelijkheden van uw `pom.xml`.
 
 ```xml
 <dependency>
@@ -142,7 +142,7 @@ Als u gedistribueerde configuratie wilt inschakelen, neemt u `spring-cloud-confi
 ```
 
 > [!WARNING]
-> Geef `spring.cloud.config.enabled=false` niet op in de Boots trap-configuratie, omdat hierdoor wordt voor komen dat de toepassing werkt met de configuratie server.
+> Geef `spring.cloud.config.enabled=false` niet op in Boots trap configuratie, omdat de toepassing niet meer met de configuratie server kan werken.
 
 ### <a name="metrics"></a>Metrische gegevens
 
@@ -157,7 +157,7 @@ Neem `spring-boot-starter-actuator` op in het gedeelte met afhankelijkheden van 
 
 ### <a name="distributed-tracing"></a>Gedistribueerde tracering
 
-Neem `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` op in het gedeelte afhankelijkheden van uw pom. XML zoals hieronder. U moet ook een Azure-app Insights-exemplaar inschakelen om te werken met uw Azure lente-Cloud service-exemplaar. Meer informatie over het inschakelen van app Insights met Azure veer Cloud [hier](spring-cloud-tutorial-distributed-tracing.md)
+Neem `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` op in het gedeelte met afhankelijkheden van uw pom. XML zoals hieronder. U moet ook een Azure-app Insights-exemplaar inschakelen om te werken met uw Azure lente-Cloud service-exemplaar. Meer informatie over het inschakelen van app Insights met Azure veer Cloud [hier](spring-cloud-tutorial-distributed-tracing.md)
 
 ```xml
 <dependency>
@@ -176,4 +176,3 @@ In deze zelf studie hebt u geleerd hoe u uw Java lente-toepassing kunt configure
 
 > [!div class="nextstepaction"]
 > [Meer informatie over het instellen van uw configuratie server](spring-cloud-tutorial-config-server.md).
-

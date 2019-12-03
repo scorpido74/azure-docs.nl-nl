@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 73facea2b99ee038b16053fd818d93d35da4cbdd
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196197"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707688"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Wat is Azure Machine Learning Designer (preview)? 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -45,7 +45,7 @@ De Designer biedt u een visueel canvas om machine learning modellen te bouwen, t
     + Publiceer een batch-uitstel **pijp lijn** om voor spellingen te maken op nieuwe gegevens met behulp van een eerder getraind model.
 + [Implementeer](#deploy) een **real-time pipeline-pijp lijn** naar een real-time eind punt om voor spellingen te maken op nieuwe gegevens in realtime.
 
-![Werk stroom diagram voor training, batch deinterferentie en real-time detrainer in de ontwerp functie](media/ui-concept-visual-interface/designer-workflow-diagram.png)
+![Werk stroom diagram voor training, batch deinterferentie en real-time detrainer in de ontwerp functie](media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>Pijplijn
 
@@ -80,17 +80,17 @@ Een module is een algoritme dat u met uw gegevens kunt uitvoeren. De ontwerper h
 
 Een module kan een reeks parameters hebben waarmee u de interne algoritmen van de module kunt configureren. Wanneer u een module op het canvas selecteert, worden de para meters van de module weer gegeven in het deel venster Eigenschappen rechts van het canvas. U kunt de parameters in dit deelvenster wijzigen om het model af te stemmen. U kunt de reken resources voor afzonderlijke modules in de ontwerp functie instellen. 
 
-![Eigenschappen van module](media/ui-concept-visual-interface/properties.png)
+![Eigenschappen van module](media/concept-designer/properties.png)
 
 Zie voor meer informatie over de beschik bare bibliotheek met machine learning algoritmen [overzicht van algoritme & module](../algorithm-module-reference/module-reference.md)
 
 ## <a name="compute"></a>Reken resources
 
-Gebruik reken resources van uw werk ruimte om uw pijp lijn uit te voeren en uw geïmplementeerde modellen als realtime-eind punten of pijplijn eindpunten te hosten (voor batch-deinterferentie). De ondersteunde compute-doelen zijn:
+Gebruik reken resources van uw werk ruimte om uw pijp lijn uit te voeren en uw geïmplementeerde modellen als realtime-eind punten of pijplijn eindpunten te hosten (voor batch-deinterferentie). De ondersteunde Compute-doelen zijn:
 
 | Rekendoel | Training | Implementatie |
 | ---- |:----:|:----:|
-| Azure Machine Learning-Computing | ✓ | |
+| Azure Machine Learning compute | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 Reken doelen zijn gekoppeld aan uw Machine Learning- [werk ruimte](concept-workspace.md). U beheert uw reken doelen in uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).
@@ -107,7 +107,7 @@ Zie [zelf studie: een machine learning model implementeren met de ontwerp functi
 
 U kunt ook een pijp lijn publiceren naar een **pijplijn eindpunt**. Net als bij een real-time-eind punt kunt u met een pijplijn eindpunt nieuwe pijp lijn uitvoeringen vanuit externe toepassingen verzenden met behulp van REST-aanroepen. U kunt echter geen gegevens in realtime verzenden of ontvangen met behulp van een pijplijn eindpunt.
 
-Gepubliceerde pijp lijnen zijn flexibel, ze kunnen worden gebruikt om modellen te trainen of opnieuw te trainen, een batch-detraining uit te voeren, nieuwe gegevens te verwerken en nog veel meer. U kunt meerdere pijp lijnen naar één pijp lijn-eind punt publiceren en opgeven welke pijplijn versie moet worden uitgevoerd.
+Gepubliceerde pijp lijnen zijn flexibel, ze kunnen worden gebruikt om modellen te trainen of opnieuw te trainen, een batch-detraining [uit te voeren](how-to-run-batch-predictions-designer.md), nieuwe gegevens te verwerken en nog veel meer. U kunt meerdere pijp lijnen naar één pijp lijn-eind punt publiceren en opgeven welke pijplijn versie moet worden uitgevoerd.
 
 Een gepubliceerde pijp lijn wordt uitgevoerd op de reken resources die u in de pijp lijn concept voor elke module definieert.
 
@@ -122,7 +122,7 @@ Als gevolg van deze updates zijn sommige concepten en voor waarden voor de visue
 
 | Concept in de ontwerp functie | Eerder in de visuele interface |
 | ---- |:----:|
-| Pijp lijn concept | Experiment |
+| Pijp lijn concept | Probeer |
 | Real-time eind punt | Webservice |
 
 ### <a name="migrating-to-the-designer"></a>Migreren naar de ontwerp functie

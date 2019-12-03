@@ -1,5 +1,5 @@
 ---
-title: Een Stream Analytics-taak maken met behulp van Azure PowerShell
+title: 'Quick Start: een Stream Analytics-taak maken met behulp van Azure PowerShell'
 description: In deze quickstart wordt uitgelegd hoe u met de Azure PowerShell-module een Azure Stream Analytics-taak kunt implementeren en uitvoeren.
 services: stream-analytics
 author: mamccrea
@@ -8,14 +8,14 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: f46f437ffd79ae9d0457606a72719ef13314aa1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44fe16caf6805819b0d942a02f5138fe766ae99c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117003"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707328"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Quickstart: Een Stream Analytics-taak maken met behulp van Azure PowerShell
+# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Snelstartgids: een Stream Analytics-taak maken met behulp van Azure PowerShell
 
 De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources met behulp van PowerShell-cmdlets of -scripts. In deze snelstart vindt u informatie over het gebruik van de Azure PowerShell-module om een Azure Stream Analytics-taak te implementeren en uit te voeren.
 
@@ -308,7 +308,7 @@ New-AzStreamAnalyticsTransformation `
 
     ![Raspberry Pi Azure IoT Online Simulator](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 
-## <a name="start-the-stream-analytics-job-and-check-the-output"></a>De Stream Analytics-taak starten en uitvoer controleren
+## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics-taak starten en uitvoer controleren
 
 Start de taak met de cmdlet [Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob). Deze cmdlet gebruikt de taaknaam, resourcegroepnaam, uitvoerstartmodus en begintijd als parameters. `OutputStartMode` accepteert waarden van `JobStartTime`, `CustomTime` of `LastOutputEventTime`. Zie de sectie [Parameters](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) in de PowerShell-documentatie voor meer informatie over waar deze waarden naar verwijzen.
 

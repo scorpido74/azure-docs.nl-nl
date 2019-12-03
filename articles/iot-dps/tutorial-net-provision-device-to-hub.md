@@ -1,6 +1,6 @@
 ---
-title: Apparaat inrichten met behulp van Azure IoT Hub Device Provisioning Service (.NET)
-description: 'Zelf studie: uw apparaat inrichten met één IoT-hub met behulp van Azure IoT Hub Device Provisioning Service (.NET)'
+title: Zelf studie-apparaat inrichten met behulp van Azure IoT Hub Device Provisioning Service (.NET)
+description: Deze zelf studie laat zien hoe u uw apparaat kunt inrichten voor één IoT-hub met behulp van Azure IoT Hub Device Provisioning Service (.NET)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: a19774a163c8725e0232e955a7be907420ce8249
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 98b2ef05a1abb6ebea8dac073fbf7671ed79c06e
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229485"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701993"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Zelf studie: het apparaat inschrijven bij een IoT-hub met behulp van de Azure IoT Hub Provisioning Service-client (.NET)
 
-In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor zowel **_Individuele registratie_** als **_Registratiegroepen_** . In deze handleiding ontdekt u hoe u:
+In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor zowel **_Individuele registratie_** als **_Registratiegroepen_** . In deze zelfstudie ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Het apparaat inschrijven
@@ -63,7 +63,7 @@ Er zijn twee manieren om het apparaat te registreren bij Device Provisioning Ser
 
 1. Selecteer in het venster **NuGet Package Manager** de optie **Bladeren** en zoek naar **microsoft.azure.devices.provisioning.service**. Selecteer de vermelding en klik op **Installeren** om het pakket **Microsoft.Azure.Devices.Provisioning.Service** te installeren en de gebruiksvoorwaarden te accepteren. Met deze procedure worden het NuGet-pakket van de [Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) en de bijbehorende afhankelijkheden gedownload en geïnstalleerd. Ook worden verwijzingen hiernaar toegevoegd.
 
-1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe:
+1. Voeg aan het begin van het bestand **Program.cs** de volgende `using`-instructies toe:
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
@@ -146,7 +146,7 @@ Wanneer het apparaat is ingeschreven, ziet u dat deze in de portal als volgt wor
 
 1. Open in de Solution Explorer van Visual Studio het project **DeviceProvisioning** dat eerder is gemaakt. 
 
-1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe:
+1. Voeg aan het begin van het bestand **Program.cs** de volgende `using`-instructies toe:
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;
@@ -240,7 +240,7 @@ Zodra het apparaat is opgestart, worden de volgende acties uitgevoerd. Zie het [
     ![Geslaagde verbinding met de hub in de portal](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Het apparaat inschrijven

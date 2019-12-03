@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Azure Machine Learning implementeren op een apparaat-Azure IoT Edge'
+title: Zelf studie-Azure Machine Learning implementeren op een apparaat met behulp van Azure IoT Edge
 description: In deze zelf studie maakt u een Azure Machine Learning model en implementeert u het als een module op een edge-apparaat
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3f1bd4ce5b701652318679f3277bc7c9109fa529
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 3d46e0695238ed7a09f180fe59063f8e2590f307
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457635"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701924"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Zelfstudie: Azure Machine Learning implementeren als een IoT Edge-module (preview)
 
@@ -48,7 +48,7 @@ Een Azure IoT Edge-apparaat:
 
 Cloudresources:
 
-* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een Azure Machine Learning-werkruimte. Volg de instructies in [het Azure Portal gebruiken om aan de slag te gaan met Azure machine learning](../machine-learning/service/quickstart-get-started.md) om er een te maken en te leren hoe u deze kunt gebruiken.
    * Noteer de naam van de werk ruimte, de resource groep en de abonnements-ID. Deze waarden zijn allemaal beschikbaar in het overzicht van de werk ruimte in de Azure Portal. U gebruikt deze waarden later in de zelf studie om een Azure-notebook te verbinden met uw werkruimte resources. 
 
@@ -165,4 +165,3 @@ In deze zelfstudie hebt u een IoT Edge-module geïmplementeerd die werd aangedre
 
 > [!div class="nextstepaction"]
 > [Afbeeldingen classificeren met Custom Vision Service](tutorial-deploy-custom-vision.md)
-

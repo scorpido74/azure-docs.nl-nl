@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: a6861a22f853bb0b48eb7c9832adb251bc3467ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682400"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703197"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Pig-activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformatie activiteiten"]
@@ -82,9 +82,9 @@ Met de HDInsight Pig-activiteit in een Data Factory [pijp lijn](data-factory-cre
 
 ## <a name="syntax-details"></a>Syntaxis Details
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
-| naam |Naam van de activiteit |Ja |
+| name |Naam van de activiteit |Ja |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |Nee |
 | type |HDinsightPig |Ja |
 | invoer |Een of meer invoer waarden die worden gebruikt door de Pig-activiteit |Nee |
@@ -224,4 +224,4 @@ Ga als volgt te werk om het Pig-script te gebruiken:
 * [MapReduce-activiteit](data-factory-map-reduce.md)
 * [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
 * [Spark-programma's aanroepen](data-factory-spark.md)
-* [R-scripts aanroepen](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R-scripts aanroepen](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)

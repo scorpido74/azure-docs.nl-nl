@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Stream Analytics aan de rand Azure IoT Edge'
+title: Zelf studie-Stream Analytics aan de rand met behulp van Azure IoT Edge
 description: In deze zelf studie implementeert u Azure Stream Analytics als een module voor een IoT Edge apparaat
 author: kgremban
 ms.author: kgremban
@@ -7,12 +7,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7fbbe32efcedd4fa2635db1cc21f7ce98557515b
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b4c4415819ba614bb584f1bc5cb0acfe136c174c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452531"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707068"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Zelf studie: Azure Stream Analytics implementeren als een IoT Edge module
 
@@ -47,7 +47,7 @@ Een Azure IoT Edge-apparaat:
 
 Cloudresources:
 
-* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure. 
+* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure. 
 
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Een Azure Stream Analytics-taak maken
@@ -67,7 +67,7 @@ Wanneer u een Azure Stream Analytics-taak maakt die op een IoT Edge-apparaat moe
 
    | Veld | Waarde |
    | ----- | ----- |
-   | Subscription | Kies het hetzelfde abonnement als uw IoT-hub. |
+   | Abonnement | Kies het hetzelfde abonnement als uw IoT-hub. |
    | Resourcegroep | Het wordt aangeraden om dezelfde resourcegroep te gebruiken voor alle test-resources die u maakt met de snelstartgidsen en zelfstudies voor IoT Edge, zoals **IoTEdgeResources**. |
    | Naam | Voer een unieke naam in voor het opslagaccount. | 
    | Locatie | Kies een locatie dicht bij u in de buurt. |
@@ -86,7 +86,7 @@ Wanneer u een Azure Stream Analytics-taak maakt die op een IoT Edge-apparaat moe
    | Veld | Waarde |
    | ----- | ----- |
    | Taaknaam | Geef de taak een naam. Bijvoorbeeld **IoTEdgeJob**. | 
-   | Subscription | Kies het hetzelfde abonnement als uw IoT-hub. |
+   | Abonnement | Kies het hetzelfde abonnement als uw IoT-hub. |
    | Resourcegroep | Het wordt aangeraden om dezelfde resourcegroep te gebruiken voor alle test-resources die u maakt met de snelstartgidsen en zelfstudies voor IoT Edge, zoals **IoTEdgeResources**. |
    | Locatie | Kies een locatie dicht bij u in de buurt. | 
    | Hostingomgeving | Selecteer **Edge**. |
@@ -208,7 +208,7 @@ In deze zelfstudie gaat u twee modules implementeren. De eerste is **SimulatedTe
 
    De routes die u hier declareert bepalen de gegevensstroom die via het IoT Edge-apparaat gaat. De telemetriegegevens van SimulatedTemperatureSensor worden verzonden naar IoT Hub en naar de **temperatuur** invoer die in de stream Analytics taak is geconfigureerd. De **bericht uitvoer berichten** worden verzonden naar IOT hub en naar de module SimulatedTemperatureSensor om de opdracht reset te activeren. 
 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 
 1. In de stap **implementatie controleren** kunt u zien hoe de gegevens die u in de wizard hebt gegeven, worden geconverteerd naar een JSON-implementatie manifest. Wanneer u klaar bent met het bekijken van het manifest, selecteert u **verzenden**.
 

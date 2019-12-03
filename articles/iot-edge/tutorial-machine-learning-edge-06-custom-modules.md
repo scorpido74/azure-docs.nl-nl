@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Train & Deploy model-Azure IoT Edge & Machine Learning'
-description: 'Zelf studie: IoT Edge modules maken en implementeren waarmee gegevens worden verwerkt van blad apparaten via een machine learning model en vervolgens de inzichten naar IoT Hub verzenden.'
+title: 'Zelf studie: aangepaste modules maken en implementeren-Machine Learning op Azure IoT Edge'
+description: Deze zelf studie laat zien hoe u IoT Edge modules maakt en implementeert waarmee gegevens van Blade apparaten worden verwerkt via een machine learning model en vervolgens de inzichten naar IoT Hub verzenden.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 371c897f0b4858a642322ff35a6008edbe9a651d
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664213"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701833"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Zelf studie: aangepaste IoT Edge-modules maken en implementeren
 

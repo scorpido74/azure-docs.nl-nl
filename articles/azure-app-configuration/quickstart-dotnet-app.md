@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f1fd1c21789c272bf8deae72ef64f2bbb1c6b3cb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185063"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707436"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Snelstartgids: een .NET Framework-app maken met Azure-app configuratie
 
@@ -49,7 +49,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
 1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)** . Klik op **Volgende**.
 
-1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4.7.1** of hoger. Klik op **Create**.
+1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4.7.1** of hoger. Klik op **Maken**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
@@ -112,7 +112,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een .NET Framework-console-app. De waarde `AppSettings` van `ConfiguratoinManager` wordt niet gewijzigd nadat de toepassing is gestart. De bibliotheek van de app-configuratie provider .NET Standard kan echter ook worden gebruikt in een .NET Framework-app. Ga door naar de volgende zelf studie voor meer informatie over het inschakelen van uw .NET Framework-app om configuratie-instellingen dynamisch te vernieuwen.
+In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een .NET Framework-console-app. De waarde `AppSettings` van `ConfigurationManager` wordt niet gewijzigd nadat de toepassing is gestart. De bibliotheek van de app-configuratie provider .NET Standard kan echter ook worden gebruikt in een .NET Framework-app. Ga door naar de volgende zelf studie voor meer informatie over het inschakelen van uw .NET Framework-app om configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
 > [Dynamische configuratie inschakelen](./enable-dynamic-configuration-dotnet.md)

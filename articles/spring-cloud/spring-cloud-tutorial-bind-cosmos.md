@@ -1,17 +1,17 @@
 ---
-title: Een Azure Cosmos DB binden aan uw Azure lente-Cloud toepassing | Microsoft Docs
-description: Meer informatie over het binden van Azure Cosmos DB aan uw Azure lente-Cloud toepassing
+title: 'Zelf studie: een Azure Cosmos DB binden aan uw Azure lente-Cloud toepassing'
+description: In deze zelf studie leert u hoe u Azure Cosmos DB bindt aan uw Azure lente-Cloud toepassing
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 76a2b9f305f041a19b8d7ace8234a804825f6a0e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7e796c6f8b2ae17ba267a19da1d909087163d99c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607132"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708830"
 ---
 # <a name="tutorial-bind-an-azure-cosmos-db-to-your-azure-spring-cloud-application"></a>Zelf studie: een Azure Cosmos DB binden aan uw Azure lente-Cloud toepassing
 
@@ -25,9 +25,9 @@ Vereisten:
 
 Azure Cosmos DB heeft vijf verschillende typen API die ondersteuning bieden voor binding:
 
-1. Hiermee maakt u een Azure Cosmos DB-database. [Raadpleeg dit artikel](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) voor hulp bij het maken van de data base. Noteer de naam van uw data base. De naam van de familie is `testdb`.
+1. Hiermee maakt u een Azure Cosmos DB-database. [Raadpleeg dit artikel](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) voor hulp bij het maken van de data base. Noteer de naam van uw data base. Ren heet `testdb`.
 
-1. Voeg een van de volgende afhankelijkheden toe aan de `pom.xml` van de lente-Cloud toepassing op basis van uw API-type.
+1. Voeg op basis van uw API-type een van de volgende afhankelijkheden toe aan de `pom.xml` van de lente-Cloud toepassing.
     
     #### <a name="api-type-core-sql"></a>API-type: core (SQL)
 
@@ -77,7 +77,7 @@ Azure Cosmos DB heeft vijf verschillende typen API die ondersteuning bieden voor
     </dependency>
     ```
 
-1. Werk de huidige implementatie bij met `az spring-cloud app update` of maak een nieuwe implementatie voor deze wijziging met behulp van `az spring-cloud app deployment create`.  Met deze opdrachten kunt u de toepassing bijwerken of maken met de nieuwe afhankelijkheid.
+1. Werk de huidige implementatie bij met behulp van `az spring-cloud app update` of maak een nieuwe implementatie voor deze wijziging met behulp van `az spring-cloud app deployment create`.  Met deze opdrachten kunt u de toepassing bijwerken of maken met de nieuwe afhankelijkheid.
 
 1. Ga naar de pagina Azure lente-Cloud service in de Azure Portal. Dit is de toepassing die u in de vorige stap hebt bijgewerkt of geïmplementeerd. Zoek het **dash board** van de toepassing en selecteer de toepassing die u wilt verbinden met de Cosmos db. Selecteer vervolgens `Service binding` en selecteer de knop `Create service binding`. Vul het formulier in en selecteer **bindings type** `Azure Cosmos DB`, het API-type, de naam van uw data base en het Azure Cosmos DB-account.
 

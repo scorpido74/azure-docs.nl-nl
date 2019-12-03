@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een IoT Edge apparaat configureren Azure IoT Edge & Machine Learning'
-description: 'Zelf studie: een virtuele Azure-machine met Linux configureren als een Azure IoT Edge apparaat dat als transparante gateway fungeert.'
+title: 'Zelf studie: IoT Edge apparaat-Machine Learning configureren op Azure IoT Edge'
+description: In deze zelf studie configureert u een virtuele Azure-machine waarop Linux wordt uitgevoerd als een Azure IoT Edge apparaat dat als transparante gateway fungeert.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 510580dff575d60d9071667f6be28b525bc05d88
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 5be7b66a51113121ed755d8ad9cea3518577f2e7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665658"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706955"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Zelf studie: een IoT Edge apparaat configureren
 

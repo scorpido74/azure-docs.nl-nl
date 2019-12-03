@@ -1,5 +1,5 @@
 ---
-title: Referentie gegevens beheren in uw GA-omgeving C# met-Azure time series Insights | Microsoft Docs
+title: Referentie gegevens beheren in GA omgevingen met C# -Azure time series Insights | Microsoft Docs
 description: Meer informatie over het beheren van referentie gegevens voor uw GA-omgeving door het maken van C#een aangepaste toepassing die is geschreven in.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: a32bf00d21311a1a8041a901f70b9b400a49ab76
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ebc616d07c24a02b71010e315f288543dfd92b74
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012570"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705949"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>GA referentie gegevens beheren voor een Azure Time Series Insights omgeving met behulp vanC#
 

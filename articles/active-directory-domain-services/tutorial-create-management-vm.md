@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172324"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703635"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Zelf studie: een beheer-VM maken om een Azure Active Directory Domain Services beheerd domein te configureren en te beheren
 
@@ -105,7 +105,7 @@ Voer de volgende stappen uit om de Active Directory-beheer hulpprogramma's te in
 1. Selecteer in het deel venster *dash board* van het **Serverbeheer** -venster **functies en onderdelen toevoegen**.
 1. Selecteer op de pagina **voordat u begint** van de *wizard functies en onderdelen toevoegen*de optie **volgende**.
 1. Voor het *installatie type*, houdt u de **installatie optie op basis van functie of op basis** van het onderdeel ingeschakeld en selecteert u **volgende**.
-1. Kies op de pagina **server selectie** de huidige virtuele machine uit de Server groep, bijvoorbeeld *myvm.contoso.com*, en selecteer vervolgens **volgende**.
+1. Kies op de pagina **server selectie** de huidige virtuele machine uit de Server groep, bijvoorbeeld *myvm.aadds.contoso.com*, en selecteer vervolgens **volgende**.
 1. Klik op de pagina **Server functies** op **volgende**.
 1. Vouw op de pagina **functies** het knoop punt **Remote Server Administration Tools** uit en vouw vervolgens het knoop punt **hulpprogram ma's voor functie beheer** uit.
 
@@ -125,7 +125,7 @@ Als u de beheer Programma's hebt geïnstalleerd, ziet u hoe u deze kunt gebruike
     ![Lijst met beheer Programma's die op de server zijn geïnstalleerd](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. Selecteer **Active Directory-beheercentrum**.
-1. Als u de door Azure AD DS beheerde domein wilt verkennen, kiest u de domein naam in het linkerdeel venster, zoals *contoso.com*. Twee containers met de naam *AADDC computers* en *AADDC-gebruikers* bevinden zich boven aan de lijst.
+1. Als u de door Azure AD DS beheerde domein wilt verkennen, kiest u de domein naam in het linkerdeel venster, zoals *aadds.contoso.com*. Twee containers met de naam *AADDC computers* en *AADDC-gebruikers* bevinden zich boven aan de lijst.
 
     ![Een lijst maken van de beschik bare containers in het beheerde Azure AD DS-domein](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

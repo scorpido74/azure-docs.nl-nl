@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 525ea421eb0fa0131fa91078b0619b8463f6fbb0
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: e6645a131766b7ec055ba1c8bb639f054f50c80b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546251"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704382"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Scoped Synchronization from Azure AD to Azure Active Directory Domain Services configureren
 
@@ -70,7 +70,7 @@ Wanneer de Azure Portal laat zien dat de inrichting van het beheerde Azure AD DS
 
 Voer de volgende stappen uit om de lijst met groepen te wijzigen waarvan gebruikers moeten worden gesynchroniseerd met het beheerde Azure AD DS-domein:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw instantie, bijvoorbeeld *contoso.com*.
+1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw instantie, bijvoorbeeld *aadds.contoso.com*.
 1. Selecteer **synchronisatie** in het menu aan de linkerkant.
 1. Als u een groep wilt toevoegen, **selecteert u groepen bovenaan selecteren** en kiest u vervolgens de groepen die u wilt toevoegen.
 1. Als u een groep uit het synchronisatie bereik wilt verwijderen, selecteert u deze in de lijst met momenteel gesynchroniseerde groepen en kiest u **groepen verwijderen**.
@@ -82,7 +82,7 @@ Als u het synchronisatie bereik wijzigt, wordt het door Azure AD DS beheerde dom
 
 Voer de volgende stappen uit als u de synchronisatie op basis van een groep wilt uitschakelen voor een beheerd domein in azure AD DS:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw instantie, bijvoorbeeld *contoso.com*.
+1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw instantie, bijvoorbeeld *aadds.contoso.com*.
 1. Selecteer **synchronisatie** in het menu aan de linkerkant.
 1. Stel het synchronisatie **bereik in op** **alle**en selecteer vervolgens **synchronisatie bereik opslaan**.
 
@@ -194,11 +194,11 @@ Gebruik Power shell om deze reeks stappen te volt ooien. Raadpleeg de instructie
 
 1. Maak nu de door Azure AD DS beheerde domein en schakel op groepen gebaseerde synchronisatie van het bereik in. Neem *' filteredSync ' = ' enabled* ' op in de para meter *-Properties* .
 
-    Stel de ID van uw Azure-abonnement in en geef een naam op voor het beheerde domein, zoals *contoso.com*. U kunt uw abonnements-ID ophalen met behulp van de cmdlet [Get-AzSubscription][Get-AzSubscription] . Stel de naam van de resource groep, de naam van het virtuele netwerk en de regio in op de waarden die worden gebruikt in de vorige stappen voor het maken van de ondersteunende Azure-resources:
+    Stel de ID van uw Azure-abonnement in en geef een naam op voor het beheerde domein, zoals *aadds.contoso.com*. U kunt uw abonnements-ID ophalen met behulp van de cmdlet [Get-AzSubscription][Get-AzSubscription] . Stel de naam van de resource groep, de naam van het virtuele netwerk en de regio in op de waarden die worden gebruikt in de vorige stappen voor het maken van de ondersteunende Azure-resources:
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "contoso.com"
+   $ManagedDomainName = "aadds.contoso.com"
    $ResourceGroupName = "myResourceGroup"
    $VnetName = "myVnet"
    $AzureLocation = "westus"

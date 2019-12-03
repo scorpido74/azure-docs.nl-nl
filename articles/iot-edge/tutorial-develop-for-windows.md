@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: module ontwikkelen voor Windows-apparaten-Azure IoT Edge'
+title: 'Zelf studie: een module ontwikkelen voor Windows-apparaten met Azure IoT Edge'
 description: In deze zelf studie wordt uitgelegd hoe u uw ontwikkel computer-en cloud resources instelt voor het ontwikkelen van IoT Edge modules met behulp van Windows-containers voor Windows-apparaten
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 67a80178c5cd800ea08d9f5493efd0f37422fe36
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4a56a79798acf4948739b26062ab770fcbb47f7b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113978"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707074"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Zelf studie: IoT Edge-modules ontwikkelen voor Windows-apparaten
 
@@ -35,7 +35,7 @@ In deze zelfstudie leert u het volgende:
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="key-concepts"></a>Belangrijkste concepten
+## <a name="key-concepts"></a>Belangrijke concepten
 
 In deze zelf studie wordt de ontwikkeling van een IoT Edge module door lopen. Een *IOT Edge module*, of soms alleen *module* voor kort, is een container die uitvoer bare code bevat. U kunt een of meer modules implementeren op een IoT Edge apparaat. Modules voeren specifieke taken uit, zoals het opnemen van gegevens van Sens oren, het uitvoeren van gegevens analyses of het opschonen van gegevens, of het verzenden van berichten naar een IoT-hub. Zie voor meer informatie [Azure IOT Edge modules begrijpen](iot-edge-modules.md).
 
@@ -176,7 +176,7 @@ De IoT Edge runtime heeft uw register referenties nodig om de container installa
 
 1. Sla de wijzigingen in het. env-bestand op.
 
-### <a name="review-the-sample-code"></a>De voorbeeldcode controleren
+### <a name="review-the-sample-code"></a>De voorbeeld code bekijken
 
 De oplossings sjabloon die u hebt gemaakt, bevat voorbeeld code voor een IoT Edge module. In deze voorbeeld module worden berichten gewoon ontvangen en vervolgens door gegeven aan. Met de pijplijn functionaliteit wordt een belang rijk concept in IoT Edge gedemonstreerd, waarmee modules met elkaar communiceren.
 

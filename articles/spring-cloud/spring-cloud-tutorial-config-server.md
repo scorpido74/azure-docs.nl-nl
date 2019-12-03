@@ -1,17 +1,17 @@
 ---
-title: Uw configuratie Server-exemplaar instellen in azure lente-Cloud | Microsoft Docs
+title: 'Zelf studie: uw configuratie Server-exemplaar instellen in azure lente-Cloud'
 description: In deze zelf studie leert u hoe u een lente-Cloud configuratie Server-exemplaar instelt voor uw Azure lente-Cloud op de Azure Portal
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/18/2019
-ms.openlocfilehash: 7589a3a750e2fe04736bb3c8fc072c7a2c0a7358
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 186ba771d2df3b08244a05e349beea8dad2af93b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147550"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708806"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Zelf studie: een lente Cloud config server-exemplaar instellen voor uw service
 
@@ -53,7 +53,7 @@ In de volgende tabel vindt u alle Configureer bare eigenschappen die worden gebr
 > [!NOTE]
 > Het gebruik van een afbreek streepje (-) voor het scheiden van woorden is de enige naam Conventie die momenteel wordt ondersteund. U kunt bijvoorbeeld *standaard label*gebruiken, maar niet *defaultLabel*.
 
-| Eigenschap        | Vereist | Functie                                                      |
+| Eigenschap        | Verplicht | Functie                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | Ja    | De URI van de Git-opslag plaats die wordt gebruikt als back-end van de configuratie server begint met *http://* , *https://* , *Git@* of *SSH://* . |
 | `default-label` | Nee     | Het standaard label van de Git-opslag plaats moet de *vertakkings naam*, de naam van de *tag*of de *door Voer-id* van de opslag plaats zijn. |
@@ -68,7 +68,7 @@ Alle Configureer bare eigenschappen die worden gebruikt voor het instellen van e
 > [!NOTE]
 > Het gebruik van een afbreek streepje (-) voor het scheiden van woorden is de enige naam Conventie die momenteel wordt ondersteund. U kunt bijvoorbeeld *standaard label*gebruiken, maar niet *defaultLabel*.
 
-| Eigenschap                   | Vereist | Functie                                                      |
+| Eigenschap                   | Verplicht | Functie                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
 | `uri`                      | Ja    | De URI van de Git-opslag plaats die wordt gebruikt als de back-end van de configuratie server, moet worden gestart met *http://* , *https://* , *Git@* of *SSH://* . |
 | `default-label`            | Nee     | Het standaard label van de Git-opslag plaats moet de *vertakkings naam*, de naam van de *tag*of de *door Voer-id* van de opslag plaats zijn. |
@@ -87,7 +87,7 @@ Alle Configureer bare eigenschappen die worden gebruikt voor het instellen van e
 > [!NOTE]
 > Het gebruik van een afbreek streepje (-) voor het scheiden van woorden is de enige naam Conventie die momenteel wordt ondersteund. Gebruik bijvoorbeeld *standaard label*, niet *defaultLabel*.
 
-| Eigenschap        | Vereist | Functie                                                      |
+| Eigenschap        | Verplicht | Functie                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | Ja    | De URI van de Git-opslag plaats die als back-end van de configuratie server wordt gebruikt, moet worden gestart met *http://* , *https://* , *Git@* of *SSH://* . |
 | `default-label` | Nee     | Het standaard label van de Git-opslag plaats moet de *vertakkings naam*, de naam van de *tag*of de *door Voer-id* van de opslag plaats zijn. |
@@ -105,7 +105,7 @@ Hieronder vindt u alle Configureer bare eigenschappen die worden gebruikt om Git
 > [!NOTE]
 > Het gebruik van een afbreek streepje (-) voor het scheiden van woorden is de enige naam Conventie die momenteel wordt ondersteund. Gebruik bijvoorbeeld *standaard label*, niet *defaultLabel*.
 
-| Eigenschap                           | Vereist         | Functie                                                      |
+| Eigenschap                           | Verplicht         | Functie                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | Nee             | Een toewijzing die bestaat uit de instellingen voor een Git-opslag plaats met een opgegeven naam. |
 | `repos."uri"`                      | Ja op `repos` | De URI van de Git-opslag plaats die als back-end van de configuratie server wordt gebruikt, moet worden gestart met *http://* , *https://* , *Git@* of *SSH://* . |
@@ -124,7 +124,7 @@ Hieronder vindt u alle Configureer bare eigenschappen die worden gebruikt om Git
 
 Nu uw configuratie bestanden zijn opgeslagen in een opslag plaats, moet u er verbinding mee maken met Azure lente.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Ga naar de **overzichts** pagina van Azure lente Cloud.
 

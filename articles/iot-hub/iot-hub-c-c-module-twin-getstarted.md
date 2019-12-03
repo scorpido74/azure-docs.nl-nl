@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: e33a7a1360a837df08725b2e592973b465dff38c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4443d1117d0dd08cbe2fe89b8ca8465c0c7083f8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954230"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706943"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Aan de slag met IoT Hub module-identiteit en-module dubbele (C)
 
@@ -190,7 +190,9 @@ In deze sectie maakt u een C-app op uw gesimuleerde apparaat die de module dubbe
 
     ![Details van de Azure Portal-module](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **UpdateModuleTwinReportedProperties-app maken** Voeg boven aan het **Program.cs** -bestand de volgende `using`-instructies toe:
+2. **UpdateModuleTwinReportedProperties-app maken**
+   
+   Voeg het volgende toe aan uw C-bestand:
 
     ```C
     #include <stdio.h>

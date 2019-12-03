@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 8c1736fcd4356e0778c3b36301b4490764efab76
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240887"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707224"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Ondersteunings beleid voor de Azure Kubernetes-service
 
@@ -41,7 +41,7 @@ AKS is geen volledig beheerde cluster oplossing. Sommige onderdelen, zoals worke
 De services worden *beheerd* in de zin dat micro soft en het AKS-team implementeert, werkt en verantwoordelijk is voor de beschik baarheid en functionaliteit van de service. Klanten kunnen deze beheerde onderdelen niet wijzigen. Micro soft beperkt de aanpassing tot een consistente en schaal bare gebruikers ervaring. Zie de [AKS-engine](https://github.com/Azure/aks-engine)voor een volledig aanpas bare oplossing.
 
 > [!NOTE]
-> AKS worker-knoop punten worden weer gegeven in de Azure Portal als normale Azure IaaS-resources. Deze virtuele machines worden echter geïmplementeerd in een aangepaste Azure-resource groep (voorafgegaan door MC\\*). Het is mogelijk om AKS worker-knoop punten te wijzigen. U kunt bijvoorbeeld Secure Shell (SSH) gebruiken om AKS worker-knoop punten te wijzigen op de manier waarop u normale virtuele machines wijzigt (u kunt de basis installatie kopie van het besturings systeem niet wijzigen, en wijzigingen worden mogelijk niet persistent gemaakt via een update of opnieuw opstarten) en u kunt andere Azure-resources koppelen aan AKS worker-knoop punten. Maar wanneer u wijzigingen aanbrengt *buiten-band beheer en-aanpassing,* kan het AKS-cluster niet meer worden ondersteund. Vermijd het wijzigen van worker-knoop punten tenzij Microsoft Ondersteuning u wijzigingen aanbrengt.
+> AKS worker-knoop punten worden weer gegeven in de Azure Portal als normale Azure IaaS-resources. Maar deze virtuele machines worden geïmplementeerd in een aangepaste Azure-resource groep (voorafgegaan door MC\\*). Het is mogelijk om AKS worker-knoop punten te wijzigen. U kunt bijvoorbeeld Secure Shell (SSH) gebruiken om AKS worker-knoop punten te wijzigen op de manier waarop u normale virtuele machines wijzigt (u kunt de basis installatie kopie van het besturings systeem niet wijzigen, en wijzigingen worden mogelijk niet persistent gemaakt via een update of opnieuw opstarten) en u kunt andere Azure-resources koppelen aan AKS worker-knoop punten. Maar wanneer u wijzigingen aanbrengt *buiten-band beheer en-aanpassing,* kan het AKS-cluster niet meer worden ondersteund. Vermijd het wijzigen van worker-knoop punten tenzij Microsoft Ondersteuning u wijzigingen aanbrengt.
 
 ## <a name="shared-responsibility"></a>Gedeelde verantwoordelijkheid
 
@@ -89,13 +89,13 @@ Micro soft en klanten delen de verantwoordelijkheid voor Kubernetes-worker-knoop
 * De basis installatie kopie van het besturings systeem heeft vereiste toevoegingen (zoals controle-en netwerk agents).
 * De worker-knoop punten ontvangen automatisch OS-patches.
 * Problemen met de Kubernetes-besturings vlak onderdelen die worden uitgevoerd op de worker-knoop punten, worden automatisch hersteld. Onderdelen zijn onder andere:
-  * Kube-proxy
+  * Uitvoeren-proxy
   * Netwerk tunnels die communicatie paden naar de hoofd onderdelen van de Kubernetes bieden
   * Kubelet
   * Docker-of Moby-daemon
 
 > [!NOTE]
-> Als een besturings element van een werk knooppunt niet operationeel is, moet het AKS-team mogelijk afzonderlijke onderdelen of het hele worker-knoop punt opnieuw opstarten. Deze bewerkingen voor opnieuw opstarten worden geautomatiseerd en bieden automatisch herstel voor veelvoorkomende problemen. Deze opnieuw opstarten vindt alleen plaats op _knooppunt_ niveau en niet op het cluster, tenzij dit nood onderhoud of onderbreking is.
+> Als een besturings element van een werk knooppunt niet operationeel is, moet het AKS-team mogelijk afzonderlijke onderdelen of het hele worker-knoop punt opnieuw opstarten. Deze bewerkingen voor opnieuw opstarten worden geautomatiseerd en bieden automatisch herstel voor veelvoorkomende problemen. Deze opnieuw opstarten vindt alleen plaats op _knooppunt_ niveau en niet op het cluster, tenzij er sprake is van nood onderhoud of-onderbreking.
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Verantwoordelijkheden van de klant voor AKS worker-knoop punten
 

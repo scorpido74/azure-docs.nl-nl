@@ -182,8 +182,6 @@
           href: service-bus-end-to-end-tracing.md
         - name: Een Service Bus-toepassing met meerdere lagen maken
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-        - name: Java Enterprise Edition-toepassing migreren naar Azure
-          href: migrate-java-apps-wild-fly.md
     - name: Beheren
       items:
         - name: Azure PowerShell gebruiken om entiteiten in te richten

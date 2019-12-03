@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 50b142acb457d16abeb24f22d56b653a38aca76d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 501214f87a65c71436e262608f7e9b3471cc9775
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898255"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705413"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>De status controleren van een door Azure Active Directory Domain Services beheerd domein
 
@@ -29,7 +29,7 @@ In dit artikel wordt uitgelegd hoe u de status van Azure AD DS kunt bekijken en 
 De status van een beheerd domein van Azure AD DS wordt weer gegeven met behulp van de Azure Portal. Informatie over de tijd van de laatste back-up en synchronisatie met Azure AD kan worden weer gegeven, samen met eventuele waarschuwingen die duiden op een probleem met de status van het beheerde domein. Voer de volgende stappen uit om de status van een beheerd domein van Azure AD DS te bekijken:
 
 1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**.
-1. Selecteer uw door Azure AD DS beheerde domein, zoals *contoso.com*.
+1. Selecteer uw door Azure AD DS beheerde domein, zoals *aadds.contoso.com*.
 1. Selecteer aan de linkerkant van het venster Azure AD DS resource de optie **status**. De volgende voorbeeld scherm afbeelding toont een gezonde Azure AD DS beheerde domein en de status van de laatste back-up en Azure AD-synchronisatie:
 
     ![Overzicht van status pagina's in de Azure Portal de Azure Active Directory Domain Services status weer geven](./media/check-health/health-page.png)
@@ -38,12 +38,12 @@ De *laatste geëvalueerde* tijds tempel van de status pagina wordt weer gegeven 
 
 Met de status in de rechter bovenhoek wordt de algemene status van het beheerde domein van Azure AD DS aangeduid. Met de status worden alle bestaande waarschuwingen in uw domein gemeten. De volgende tabel bevat een overzicht van de beschik bare status indicatoren:
 
-| Status | Pictogram | Uitleg |
+| Status | diapictogram | Uitleg |
 | --- | :----: | --- |
-| Wordt uitgevoerd | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Het beheerde domein van Azure AD DS wordt correct uitgevoerd en heeft geen kritieke of waarschuwings meldingen. Het domein heeft mogelijk informatieve waarschuwingen. |
+| In uitvoering | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Het beheerde domein van Azure AD DS wordt correct uitgevoerd en heeft geen kritieke of waarschuwings meldingen. Het domein heeft mogelijk informatieve waarschuwingen. |
 | Aandacht vereist (waarschuwing) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Er zijn geen kritieke waarschuwingen op het beheerde domein van Azure AD DS, maar er zijn een of meer waarschuwingen die moeten worden behandeld. |
 | Aandacht vereist (kritiek) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Er zijn een of meer kritieke waarschuwingen op de Azure AD DS beheerde domein die moeten worden geadresseerd. Mogelijk hebt u ook waarschuwings-en/of informatieve waarschuwingen. |
-| Implementeren | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Het Azure AD DS domein wordt geïmplementeerd. |
+| Installeert | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Het Azure AD DS domein wordt geïmplementeerd. |
 
 ## <a name="understand-monitors-and-alerts"></a>Monitors en waarschuwingen begrijpen
 
@@ -53,7 +53,7 @@ Met de status voor een beheerd domein van Azure AD DS worden twee soorten inform
 
 Monitors zijn gebieden van een Azure AD DS beheerde domein die regel matig worden gecontroleerd. Als er actieve waarschuwingen zijn voor het beheerde domein van Azure AD DS, kan dit ertoe leiden dat een van de monitors een probleem meldt. Azure AD Domain Services controleert momenteel de volgende gebieden:
 
-* Back-up
+* Backup
 * Synchronisatie met Azure AD
 
 #### <a name="backup-monitor"></a>Back-upmonitor

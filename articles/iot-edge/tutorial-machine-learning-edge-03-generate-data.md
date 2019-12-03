@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: apparaatgegevens simuleren-Azure IoT Edge & Machine Learning'
-description: 'Zelf studie: virtuele apparaten maken die gesimuleerde telemetrie genereren die later kunnen worden gebruikt om een machine learning model te trainen.'
+title: 'Zelf studie: gesimuleerde apparaatgegevens genereren-Machine Learning op Azure IoT Edge'
+description: In deze zelf studie maakt u virtuele apparaten die gesimuleerde telemetrie genereren die later kunnen worden gebruikt om een machine learning model te trainen.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9b3b36cf5a0f426f2081179d08cf2f093a233fff
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: d51a577b8a460e872b2baddcb668b13981609e40
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665930"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707750"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Zelf studie: gesimuleerde apparaatgegevens genereren
 

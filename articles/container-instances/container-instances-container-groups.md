@@ -4,12 +4,12 @@ description: Meer informatie over container groepen in Azure Container Instances
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 9fbf9fea7da0896ee6c0e248d18e18d52798fbd7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482114"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706318"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Container groepen in Azure Container Instances
 
@@ -48,15 +48,15 @@ Azure Container Instances wijst resources, zoals Cpu's, geheugen en optioneel [g
 
 ### <a name="resource-usage-by-instances"></a>Resource gebruik per instantie
 
-Aan elk container exemplaar zijn de resources toegewezen die zijn opgegeven in de resource-aanvraag. Het resource gebruik door een container instantie in een groep is echter afhankelijk van de configuratie van de optionele [resource limiet][resource-limits] eigenschap.
+Aan elk container exemplaar zijn de resources toegewezen die zijn opgegeven in de resource-aanvraag. Het resource gebruik door een container instantie in een groep is echter afhankelijk van de configuratie van de optionele [resource limiet][resource-limits] eigenschap. De resource limiet moet kleiner zijn dan de verplichte eigenschap van de [resource aanvraag][resource-requests] .
 
 * Als u geen resource limiet opgeeft, is het maximale resource gebruik van het exemplaar hetzelfde als de resource aanvraag.
 
 * Als u een resource limiet opgeeft voor een exemplaar, kunt u het resource gebruik van het exemplaar aanpassen voor de werk belasting, ofwel het gebruik beperken of verhogen ten opzichte van de resource aanvraag. De maximale resource limiet die u kunt instellen is het totale aantal resources dat aan de groep is toegewezen.
     
-    In een groep met twee instanties die 1 CPU aanvragen, kan een van uw containers bijvoorbeeld een werk belasting uitvoeren waarvoor meer Cpu's moeten worden uitgevoerd dan de andere.
+In een groep met twee instanties die 1 CPU aanvragen, kan een van uw containers bijvoorbeeld een werk belasting uitvoeren waarvoor meer Cpu's moeten worden uitgevoerd dan de andere.
 
-    In dit scenario kunt u een resource limiet van 0,5 CPU instellen voor één exemplaar en een limiet van 2 Cpu's voor de tweede. Met deze configuratie wordt het resource gebruik van de eerste container beperkt tot 0,5 CPU, waardoor de tweede container Maxi maal twee Cpu's kan gebruiken, indien beschikbaar.
+In dit scenario kunt u een resource limiet van 0,5 CPU instellen voor één exemplaar en een limiet van 2 Cpu's voor de tweede. Met deze configuratie wordt het resource gebruik van de eerste container beperkt tot 0,5 CPU, waardoor de tweede container Maxi maal twee Cpu's kan gebruiken, indien beschikbaar.
 
 Zie de eigenschap [ResourceRequirements][resource-requirements] in de container groepen rest API voor meer informatie.
 
@@ -66,7 +66,7 @@ Zie de eigenschap [ResourceRequirements][resource-requirements] in de container 
 
 * Voor het **maximum aantal** resources in een container groep raadpleegt u de [Beschik baarheid van resources][region-availability] voor Azure container instances in de implementatie regio.
 
-## <a name="networking"></a>Netwerken
+## <a name="networking"></a>Networking
 
 Container groepen delen een IP-adres en een poort naam ruimte op dat IP-adres. Om externe clients in staat te stellen een container binnen de groep te bereiken, moet u de poort op het IP-adres en uit de container zichtbaar maken. Omdat containers binnen de groep een poort naam ruimte delen, wordt poort toewijzing niet ondersteund. Containers in een groep kunnen elkaar via localhost bereiken op de poorten die ze hebben blootgesteld, zelfs als deze poorten niet extern worden weer gegeven op het IP-adres van de groep.
 

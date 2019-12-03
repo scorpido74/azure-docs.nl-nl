@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 334a5c3c76f1ebaf4c8c36020110ef9c0bcc8d69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46764fdae89d5af4c9dedf4037d07dc48d1cda83
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208703"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703680"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Zelf studie: een Azure Active Directory Domain Services-exemplaar maken en configureren met geavanceerde configuratie opties
 
@@ -73,7 +73,7 @@ Wanneer u een exemplaar van Azure AD DS maakt, geeft u een DNS-naam op. Er zijn 
 >
 > U kunt de DNS-basis naam voor uw Azure AD DS beheerde domein gebruiken, maar u moet mogelijk enkele extra DNS-records maken voor andere services in uw omgeving. Als u bijvoorbeeld een webserver uitvoert die als host fungeert voor een-site met behulp van de DNS-naam van de basis, kan er sprake zijn van naam conflicten waarvoor extra DNS-vermeldingen zijn vereist.
 >
-> In deze zelf studies en artikelen met procedures wordt het aangepaste domein *contoso.com* als een kort voor beeld gebruikt. Geef in alle opdrachten uw eigen domein naam op. Dit kan ook een uniek voor voegsel bevatten.
+> In deze zelf studies en artikelen met procedures wordt het aangepaste domein *aadds.contoso.com* als een kort voor beeld gebruikt. Geef in alle opdrachten uw eigen domein naam op. Dit kan ook een uniek voor voegsel bevatten.
 >
 > Zie [een naam voorvoegsel selecteren voor het domein] [naam-prefix] voor meer informatie.
 
@@ -167,7 +167,7 @@ Controleer op de pagina **samen vatting** van de wizard de configuratie-instelli
 
     ![Melding in de Azure Portal van de implementatie die wordt uitgevoerd](./media/tutorial-create-instance-advanced/deployment-in-progress.png)
 
-1. Selecteer uw resource groep, zoals *myResourceGroup*, en kies vervolgens uw Azure AD DS-exemplaar in de lijst met Azure-resources, zoals *contoso.com*. Op het tabblad **overzicht** ziet u dat het beheerde domein momenteel wordt *geïmplementeerd*. U kunt het beheerde domein pas configureren als het volledig is ingericht.
+1. Selecteer uw resource groep, zoals *myResourceGroup*, en kies vervolgens uw Azure AD DS-exemplaar in de lijst met Azure-resources, zoals *aadds.contoso.com*. Op het tabblad **overzicht** ziet u dat het beheerde domein momenteel wordt *geïmplementeerd*. U kunt het beheerde domein pas configureren als het volledig is ingericht.
 
     ![Status van domein Services tijdens de inrichtings status](./media/tutorial-create-instance-advanced/provisioning-in-progress.png)
 
@@ -223,7 +223,7 @@ Het duurt enkele minuten voordat u uw wacht woord voor het nieuwe wacht woord he
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * DNS-en virtuele netwerk instellingen configureren voor een beheerd domein

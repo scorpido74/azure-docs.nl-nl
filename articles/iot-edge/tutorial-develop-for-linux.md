@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: module ontwikkelen voor Linux-apparaten-Azure IoT Edge'
+title: 'Zelf studie: een module ontwikkelen voor Linux-apparaten met behulp van Azure IoT Edge'
 description: In deze zelf studie wordt uitgelegd hoe u uw ontwikkel computer en cloud resources instelt om IoT Edge modules te ontwikkelen met Linux-containers voor Linux-apparaten
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 01ca118348b3a084c97182338bf656da83d52cb4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e4291c5dcea27699de72b72c52a832a7dc86b97b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114050"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701889"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Zelf studie: IoT Edge-modules voor Linux-apparaten ontwikkelen
 
@@ -36,7 +36,7 @@ In deze zelfstudie leert u het volgende:
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="key-concepts"></a>Belangrijkste concepten
+## <a name="key-concepts"></a>Belangrijke concepten
 
 In deze zelf studie wordt de ontwikkeling van een IoT Edge module door lopen. Een *IOT Edge module*, of soms alleen *module* voor kort, is een container die uitvoer bare code bevat. U kunt een of meer modules implementeren op een IoT Edge apparaat. Modules voeren specifieke taken uit, zoals het opnemen van gegevens van Sens oren, het uitvoeren van gegevens analyses of het opschonen van gegevens, of het verzenden van berichten naar een IoT-hub. Zie voor meer informatie [Azure IOT Edge modules begrijpen](iot-edge-modules.md).
 
@@ -168,7 +168,7 @@ Visual Studio code kan momenteel modules ontwikkelen C# voor linux amd64-en ARM3
 
 2. Selecteer in het opdracht palet de doel architectuur in de lijst met opties. Voor deze zelf studie gebruiken we een virtuele machine van Ubuntu als het IoT Edge-apparaat, zodat de standaard **amd64**wordt bewaard. 
 
-### <a name="review-the-sample-code"></a>De voorbeeldcode controleren
+### <a name="review-the-sample-code"></a>De voorbeeld code bekijken
 
 De oplossings sjabloon die u hebt gemaakt, bevat voorbeeld code voor een IoT Edge module. In deze voorbeeld module worden berichten gewoon ontvangen en vervolgens door gegeven aan. Met de pijplijn functionaliteit wordt een belang rijk concept in IoT Edge gedemonstreerd, waarmee modules met elkaar communiceren.
 
@@ -330,5 +330,5 @@ In deze zelf studie stelt u Visual Studio code in op uw ontwikkel computer en im
 > [C](tutorial-c-module.md)
 > [C#](tutorial-csharp-module.md)
 > [Java](tutorial-java-module.md)
-> [Node.js](tutorial-node-module.md)
-> [Python](tutorial-python-module.md)
+> [node. js](tutorial-node-module.md)
+> [python](tutorial-python-module.md)

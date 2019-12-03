@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622413"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706365"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Herstel na nood geval instellen voor een share point-toepassing met meerdere lagen voor herstel na nood geval met behulp van Azure Site Recovery
 
@@ -65,7 +65,7 @@ Site Recovery is neutraal van toepassingen en moet werken met elke versie van sh
 **Hyper-V** | Ja | Ja
 **VMware** | Ja | Ja
 **Fysieke server** | Ja | Ja
-**Azure** | N.v.t. | Ja
+**Azure** | N.V.T. | Ja
 
 
 ### <a name="things-to-keep-in-mind"></a>Dingen die u moet onthouden
@@ -82,7 +82,7 @@ Volg [deze richt lijnen](site-recovery-vmware-to-azure.md) om te beginnen met he
 
 * Raadpleeg voor meer informatie over het beveiligen van Active Directory en DNS het document [Active Directory en DNS beveiligen](site-recovery-active-directory.md) .
 
-* Raadpleeg SQL Server-document [beveiligen](site-recovery-active-directory.md) voor meer informatie over het beveiligen van de database tier die op SQL Server wordt uitgevoerd.
+* Raadpleeg SQL Server-document [beveiligen](site-recovery-sql.md) voor meer informatie over het beveiligen van de database tier die op SQL Server wordt uitgevoerd.
 
 ## <a name="networking-configuration"></a>Netwerk configuratie
 
@@ -170,7 +170,7 @@ U kunt de meest gebruikte Azure Site Recovery scripts implementeren in uw Automa
 
     * Bij deze methode wordt ervan uitgegaan dat er een back-up van de data base ' Search Administration ' beschikbaar is op de DR-site.
     * Omdat de andere Search Service toepassings databases niet worden gerepliceerd, moeten ze opnieuw worden gemaakt. Hiertoe gaat u naar Centraal beheer en verwijdert u de Search Service toepassing. Verwijder de index bestanden op alle servers die als host fungeren voor de zoek index.
-    * Maak de Search Service-toepassing opnieuw en maakt de data base opnieuw. Het is raadzaam om een voor bereid script te hebben dat deze service toepassing opnieuw maakt, omdat het niet mogelijk is om alle acties uit te voeren via de gebruikers interface. Het instellen van de locatie van het index station en het configureren van de zoek topologie is bijvoorbeeld alleen mogelijk met share point Power shell-cmdlets. Gebruik de Windows Power shell-cmdlet Restore-SPEnterpriseSearchServiceApplication en geef de door het logboek verzonden en gerepliceerde Zoek beheer database, Search_Service__DB. Deze cmdlet geeft de zoek configuratie, het schema, de beheerde eigenschappen, regels en bronnen en maakt een standaardset van de andere onderdelen.
+    * Maak de Search Service-toepassing opnieuw en maakt de data base opnieuw. Het is raadzaam om een voor bereid script te hebben dat deze service toepassing opnieuw maakt, omdat het niet mogelijk is om alle acties uit te voeren via de gebruikers interface. Het instellen van de locatie van het index station en het configureren van de zoek topologie is bijvoorbeeld alleen mogelijk met share point Power shell-cmdlets. Gebruik de Windows Power shell-cmdlet Restore-SPEnterpriseSearchServiceApplication en geef de door het logboek verzonden en gerepliceerde Zoek beheer database Search_Service__DB op. Deze cmdlet geeft de zoek configuratie, het schema, de beheerde eigenschappen, regels en bronnen en maakt een standaardset van de andere onderdelen.
     * Zodra de Search Service toepassing opnieuw is gemaakt, moet u een volledige verkenning starten voor elke inhouds bron om de Search Service te herstellen. U verliest enige analyse gegevens van de on-premises Farm, zoals zoek aanbevelingen.
 
 7. Als alle stappen zijn voltooid, slaat u het herstel plan op en het laatste herstel plan ziet er als volgt uit.

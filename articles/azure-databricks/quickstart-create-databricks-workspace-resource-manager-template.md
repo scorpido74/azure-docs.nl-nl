@@ -1,6 +1,6 @@
 ---
-title: Een Azure Databricks-werk ruimte maken met Azure Resource Manager
-description: De snelstart laat zien hoe er met de Resource Manager-sjabloon een Azure Databricks-werkruimte en een Apache Spark-cluster kan worden gemaakt, en hoe een Spark-taak kan worden uitgevoerd.
+title: 'Quick Start: een Azure Databricks-werk ruimte maken met Azure Resource Manager'
+description: In deze Quick start ziet u hoe u de Azure Resource Manager sjabloon kunt gebruiken om een Azure Databricks-werk ruimte te maken, vervolgens een Apache Spark cluster te maken en een Spark-taak uit te voeren.
 services: azure-databricks
 ms.service: azure-databricks
 author: mamccrea
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 83dc18424bc8606eff9a735b76cdaa09e381d588
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2fbe1e91204df7901b4ac3ccfdcd323304b2ce3c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129352"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706174"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Snelstart: Een Spark-taak uitvoeren op Azure Databricks met de Resource Manager-sjabloon
 
@@ -27,7 +27,7 @@ In deze Quick Start gebruikt u een Azure Resource Manager sjabloon om een Azure 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
@@ -170,7 +170,7 @@ Voer de volgende taken uit om een notitieblok in Databricks te maken. Configuree
    * Stel **Waarden** in op **niveau**.
    * Stel **Aggregatie** in op **AANTAL**.
 
-   Klik op **Toepassen**.
+   Klik op **Apply** (Toepassen).
 
 9. De uitvoer toont de visuele weergave zoals de volgende schermafbeelding laat zien:
 

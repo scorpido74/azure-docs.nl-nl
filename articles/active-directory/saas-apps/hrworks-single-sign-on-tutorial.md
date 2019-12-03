@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met HRworks Single Sign-On | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en HRworks Single Sign-On.
+title: 'Zelf studie: integratie met HRworks-eenmalige aanmelding Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en HRworks eenmalige aanmelding.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 790df60f973e6f86bd4424173909159fdd81ee0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a36266c14531f935779266829402392dc4a03411
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100854"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705999"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>Zelfstudie: Azure Active Directory-integratie met HRworks Single Sign-On
+# <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>Zelf studie: integratie met HRworks-eenmalige aanmelding Azure Active Directory
 
-In deze zelfstudie leert u hoe u HRworks Single Sign-On integreren met Azure Active Directory (Azure AD).
-HRworks Single Sign-On integreren met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u eenmalige aanmelding integreert met Azure Active Directory (Azure AD).
+Het integreren van HRworks single sign-on met Azure AD biedt de volgende voor delen:
 
-* U kunt beheren in Azure AD toegang aan HRworks Single Sign-On heeft.
-* U kunt uw gebruikers worden automatisch aangemeld op HRworks eenmalige aanmelding (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U kunt beheren in azure AD die toegang heeft tot HRworks eenmalige aanmelding.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld voor HRworks eenmalige aanmelding (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -36,24 +36,24 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met HRworks Single Sign-On, moet u de volgende items:
+Als u Azure AD-integratie met HRworks eenmalige aanmelding wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* HRworks Single Sign-On eenmalige aanmelding ingeschakeld abonnement
+* Abonnement voor eenmalige aanmelding van HRworks-abonnementen
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Ondersteunt HRworks Single Sign-On **SP** gestart door SSO
+* Eenmalige aanmelding voor HRworks ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-hrworks-single-sign-on-from-the-gallery"></a>Toe te voegen HRworks Single Sign-On uit de galerie
+## <a name="adding-hrworks-single-sign-on-from-the-gallery"></a>Eenmalige aanmelding voor HRworks toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van HRworks Single Sign-On in Azure AD, moet u HRworks Single Sign-On uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van HRworks eenmalige aanmelding wilt configureren in azure AD, moet u HRworks eenmalige aanmelding toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen HRworks Single Sign-On uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om eenmalige aanmelding voor HRworks toe te voegen in de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van HRworks Single Sign-On in Azure AD, 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **HRworks Single Sign-On**, selecteer **HRworks Single Sign-On** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ in het zoekvak **HRworks eenmalige aanmelding**, selecteer **HRworks eenmalige aanmelding** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
      ![HRworks eenmalige aanmelding in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met HRworks eenmalige aanmelding op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in HRworks eenmalige aanmelding tot stand worden gebracht.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met HRworks eenmalige aanmelding op basis van een test gebruiker met de naam **Julia Simon**.
+Als u eenmalige aanmelding wilt gebruiken, moet u een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in HRworks eenmalige aanmelding tot stand brengen.
 
-Als u wilt configureren en testen van Azure AD eenmalige aanmelding met HRworks Single Sign-On, u nodig hebt voor de volgende bouwstenen:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met HRworks eenmalige aanmelding, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer HRworks Single Sign-On Single Sign-On](#configure-hrworks-single-sign-on-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. Eenmalige aanmelding van **[HRworks configureren](#configure-hrworks-single-sign-on-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak HRworks Single Sign-On testgebruiker](#create-hrworks-single-sign-on-test-user)**  : als u wilt een equivalent van Britta Simon in HRworks eenmalige aanmelding die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[Maak een HRworks-test gebruiker voor eenmalige aanmelding](#create-hrworks-single-sign-on-test-user)** , zodat er een equivalent van Julia Simon in HRworks eenmalige aanmelding is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met HRworks Single Sign-On, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met HRworks eenmalige aanmelding te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **HRworks Single Sign-On** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **HRworks single sign-on** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,18 +103,18 @@ Voor het configureren van Azure AD eenmalige aanmelding met HRworks Single Sign-
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![HRworks Single Sign-On-domein en URL's, eenmalige aanmelding informatie](common/sp-signonurl.png)
+    ![Gegevens over eenmalige aanmelding van HRworks en Url's voor eenmalige aanmelding](common/sp-signonurl.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://login.hrworks.de/?companyId=<companyId>&directssologin=true`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [HRworks Single Sign-On-Client-ondersteuningsteam](mailto:support@hrworks.de) om de waarde. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van de client voor eenmalige aanmelding van HRworks](https://www.hrworks.de/dienstleistungen/support/) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de **instellen van HRworks Single Sign-On** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer op de sectie **eenmalige aanmelding voor HRworks instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -124,21 +124,21 @@ Voor het configureren van Azure AD eenmalige aanmelding met HRworks Single Sign-
 
     c. Afmeldings-URL
 
-### <a name="configure-hrworks-single-sign-on-single-sign-on"></a>HRworks Single Sign-On eenmalige aanmelding configureren
+### <a name="configure-hrworks-single-sign-on-single-sign-on"></a>Eenmalige aanmelding HRworks eenmalige aanmelding configureren
 
-1. In een ander browservenster, meld u aan HRworks Single Sign-On als beheerder.
+1. Meld u in een ander webbrowser venster aan om eenmalige aanmelding in te HRworks als beheerder.
 
-2. Klik op **beheerder** > **basisbeginselen** > **Security** > **Single Sign-on** uit aan de linkerkant van het menu van de balk en voer de volgende stappen uit:
+2. Klik op **beheerder** > **basis principes** > **beveiliging** > **eenmalige aanmelding** aan de linkerkant van de menu balk en voer de volgende stappen uit:
 
     ![Eenmalige aanmelding configureren](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
-    a. Controleer de **gebruik Single Sign-on** vak.
+    a. Schakel het selectie vakje **eenmalige aanmelding gebruiken** in.
 
-    b. Selecteer **XML-metagegevens** als **metagegevens invoermethode**.
+    b. Selecteer **XML-meta** gegevens als **invoer methode voor meta gegevens**.
 
-    c. Selecteer **afzonderlijke NameID id** als **waarde voor de NameID**.
+    c. Selecteer **afzonderlijke NameID-id** als **waarde voor NameID**.
 
-    d. In Kladblok, opent u de Metadata XML die u hebt gedownload van de Azure-portal, Kopieer de inhoud en plak deze in de **metagegevens** tekstvak.
+    d. Open in Klad blok de XML voor meta gegevens die u hebt gedownload van de Azure Portal, kopieer de inhoud en plak deze in het tekstvak **meta gegevens** .
 
     e. Klik op **Opslaan**.
 
@@ -160,25 +160,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon** in.
   
-    b. In de **gebruikersnaam** veld, typt u de gebruikersnaam, zoals BrittaSimon@contoso.com.
+    b. Typ in het veld **gebruikers naam** de gebruikers naam, zoals BrittaSimon@contoso.com.
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan HRworks eenmalige aanmelding.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan eenmalige aanmelding voor HRworks.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **HRworks Single Sign-On**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer **eenmalige aanmelding HRworks**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **HRworks Single Sign-On**.
+2. Selecteer in de lijst toepassingen de optie **eenmalige aanmelding HRworks**.
 
-    ![De koppeling HRworks Single Sign-On in de lijst met toepassingen](common/all-applications.png)
+    ![De HRworks-koppeling voor eenmalige aanmelding in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -192,15 +192,15 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-hrworks-single-sign-on-test-user"></a>HRworks Single Sign-On testgebruiker maken
+### <a name="create-hrworks-single-sign-on-test-user"></a>Test gebruiker voor eenmalige aanmelding voor HRworks maken
 
-Als u wilt dat Azure AD-gebruikers, meld u aan in op HRworks Single Sign-On, ze moeten worden ingericht in HRworks Single Sign-On. Inrichten is in HRworks Single Sign-On, een handmatige taak.
+Als u Azure AD-gebruikers wilt inschakelen, meldt u zich aan bij HRworks eenmalige aanmelding, moeten ze worden ingericht in HRworks eenmalige aanmelding. In HRworks-eenmalige aanmelding is inrichting een hand matige taak.
 
 **Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. Aanmelden bij HRworks Single Sign-On als beheerder.
+1. Meld u aan om eenmalige aanmelding te HRworks als beheerder.
 
-2. Klik op **beheerder** > **personen** > **personen** > **nieuwe persoon** vanuit de Klik linksboven in de menubalk.
+2. Klik op **beheerder** > **personen** > **personen** > **nieuwe persoon** aan de linkerkant van de menu balk.
 
      ![Eenmalige aanmelding configureren](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
@@ -208,17 +208,17 @@ Als u wilt dat Azure AD-gebruikers, meld u aan in op HRworks Single Sign-On, ze 
 
     ![Eenmalige aanmelding configureren](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
-4. Op de **maken nieuwe persoon met land voor juridische voorwaarden** pop, vul de details van de respectieve, zoals **voornaam**, **achternaam** en klikt u op **maken**.
+4. Vul in het pop-upvenster **nieuwe persoon met land voor juridische voor waarden** de relevante gegevens in, zoals de **voor naam**, **Achternaam** en klik op **maken**.
     
     ![Eenmalige aanmelding configureren](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel HRworks Single Sign-On in het toegangsvenster, moet u worden automatisch aangemeld op de HRworks Single Sign-On waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel HRworks single sign-on in het toegangs venster klikt, moet u automatisch worden aangemeld bij de eenmalige aanmelding van HRworks waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6d32cd12989262ebeaafee60a02bb7ea2a9b1e32
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139300"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703158"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>MapReduce-Program Ma's aanroepen vanuit Data Factory
 > [!div class="op_single_selector" title1="Transformatie activiteiten"]
@@ -39,7 +39,7 @@ ms.locfileid: "70139300"
 Met de HDInsight MapReduce-activiteit in een Data Factory [pijp lijn](data-factory-create-pipelines.md) worden MapReduce-Program ma's uitgevoerd op [uw eigen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) of [op aanvraag](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) gebaseerd HDInsight-cluster op basis van Windows/Linux. In dit artikel vindt u een overzicht van het artikel over de [activiteiten voor gegevens transformatie](data-factory-data-transformation-activities.md) , dat een algemene informatie bevat over de gegevens transformatie en de ondersteunde transformatie activiteiten.
 
 > [!NOTE] 
-> Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](data-factory-introduction.md) en voer de volgende zelf studie uit: [Bouw uw eerste gegevens pijplijn voordat u](data-factory-build-your-first-pipeline.md) dit artikel leest.  
+> Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](data-factory-introduction.md) en voer de zelf studie uit: [bouw uw eerste gegevens pijplijn](data-factory-build-your-first-pipeline.md) voordat u dit artikel leest.  
 
 ## <a name="introduction"></a>Inleiding
 Met een pijp lijn in een Azure-data factory worden gegevens verwerkt in gekoppelde opslag Services met behulp van gekoppelde Compute-Services. Het bevat een reeks activiteiten waarbij elke activiteit een specifieke verwerkings bewerking uitvoert. In dit artikel wordt beschreven hoe u de HDInsight MapReduce-activiteit gebruikt.
@@ -112,7 +112,7 @@ In de JSON-definitie voor de HDInsight-activiteit:
    U kunt de HDInsight MapReduce-activiteit gebruiken om een MapReduce jar-bestand uit te voeren op een HDInsight-cluster. In de volgende JSON-voorbeeld definitie van een pijp lijn is de HDInsight-activiteit geconfigureerd om een mahout JAR-bestand uit te voeren.
 
 ## <a name="sample-on-github"></a>Voor beeld op GitHub
-U kunt een voor beeld downloaden van het gebruik van de HDInsight MapReduce-activiteit van: [Data Factory voor beelden op github](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  
+U kunt een voor beeld downloaden van het gebruik van de HDInsight MapReduce-activiteit van: [Data Factory voor beelden op github](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample).  
 
 ## <a name="running-the-word-count-program"></a>Het programma voor het tellen van woorden uitvoeren
 Met de pijp lijn in dit voor beeld wordt de telling van het aantal woorden in het Azure HDInsight-cluster uitgevoerd.   
@@ -183,11 +183,11 @@ De pijp lijn in dit voor beeld heeft maar één activiteit van het type: HDInsig
 
 | Eigenschap | Opmerkingen |
 |:--- |:--- |
-| Type |Het type moet zijn ingesteld op **HDInsightMapReduce**. |
+| type |Het type moet zijn ingesteld op **HDInsightMapReduce**. |
 | className |De naam van de klasse is: **WordCount** |
 | jarFilePath |Het pad naar het jar-bestand met de klasse. Als u de volgende code kopieert/plakt, vergeet dan niet om de naam van het cluster te wijzigen. |
 | jarLinkedService |Azure Storage gekoppelde service die het jar-bestand bevat. Deze gekoppelde service verwijst naar de opslag die is gekoppeld aan het HDInsight-cluster. |
-| arguments |Het WordCount-programma neemt twee argumenten, een invoer en een uitvoer. Het invoer bestand is het DaVinci. txt-bestand. |
+| opmerkingen |Het WordCount-programma neemt twee argumenten, een invoer en een uitvoer. Het invoer bestand is het DaVinci. txt-bestand. |
 | frequency/interval |De waarden voor deze eigenschappen komen overeen met de uitvoer gegevensset. |
 | linkedServiceName |verwijst naar de gekoppelde HDInsight-service die u eerder hebt gemaakt. |
 
@@ -250,5 +250,5 @@ U kunt de MapReduce-activiteit gebruiken om Spark-programma's uit te voeren op u
 * [Pig-activiteit](data-factory-pig-activity.md)
 * [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
 * [Spark-programma's aanroepen](data-factory-spark.md)
-* [R-scripts aanroepen](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R-scripts aanroepen](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

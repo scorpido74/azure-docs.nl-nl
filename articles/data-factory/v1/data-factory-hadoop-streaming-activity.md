@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c56961b28750f3ba6450c26c897c1ef6c54b3ed8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667509"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703373"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hadoop streaming-activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformatie activiteiten"]
@@ -98,7 +98,7 @@ Houd rekening met de volgende punten:
 2. Stel het type van de activiteit in op **HDInsightStreaming**.
 3. Geef voor de **toewijzings** eigenschap de naam van het uitvoer bare toewijzings programma op. In het voor beeld is Cat. exe het uitvoer bare toewijzings programma.
 4. Voor de eigenschap **reducer** geeft u de naam van het uitvoer bare bestand voor verkleining op. In het voor beeld is wc. exe het uitvoer bare bestand van de reducer.
-5. Geef voor de eigenschap **invoer** type het invoer bestand (inclusief de locatie) voor de Mapper op. In het voor beeld: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample is de BLOB-container, example/data/Gutenberg is de map en DaVinci. txt de blob.
+5. Geef voor de eigenschap **invoer** type het invoer bestand (inclusief de locatie) voor de Mapper op. In het voor beeld: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample is de BLOB-container, example/data/Gutenberg is de map en DaVinci. txt is de blob.
 6. Geef voor de eigenschap **uitvoer** type het uitvoer bestand op (met inbegrip van de locatie) voor de verkorter. De uitvoer van de Hadoop streaming-taak wordt geschreven naar de locatie die is opgegeven voor deze eigenschap.
 7. Geef in de sectie **filepath** de paden op voor de uitvoer bare bestanden van de Mapper en de uitvoerder. In het voor beeld: ' adfsample/example/apps/WC. exe ', adfsample is de BLOB-container, voor beeld/apps is de map en WC. exe is het uitvoer bare bestand.
 8. Geef voor de eigenschap **fileLinkedService** de Azure Storage gekoppelde service op die staat voor de Azure-opslag met de bestanden die zijn opgegeven in de sectie filepath.
@@ -227,5 +227,5 @@ Het HDInsight-cluster wordt automatisch gevuld met voorbeeld programma's (WC. ex
 * [Pig-activiteit](data-factory-pig-activity.md)
 * [MapReduce-activiteit](data-factory-map-reduce.md)
 * [Spark-programma's aanroepen](data-factory-spark.md)
-* [R-scripts aanroepen](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R-scripts aanroepen](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

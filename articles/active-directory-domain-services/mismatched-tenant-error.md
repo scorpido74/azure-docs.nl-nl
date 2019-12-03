@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 8b1c3184ada743fddb78e1a3d0ce8d67f1f1a94f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 0d96fd4c435251fb4dd604351e6efeea8bde8353
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693332"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704551"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Fouten van niet-overeenkomende mappen oplossen voor bestaande Azure AD Domain Services beheerde domeinen
 
@@ -26,7 +26,7 @@ In dit artikel wordt uitgelegd waarom de fout optreedt en hoe u deze kunt oploss
 
 ## <a name="what-causes-this-error"></a>Wat resulteert er in deze fout?
 
-Er treedt een fout op die niet overeenkomt wanneer een door Azure AD DS beheerd domein en een virtueel netwerk deel uitmaken van twee verschillende Azure AD-tenants. U kunt bijvoorbeeld een beheerd domein van Azure AD DS met de naam *contoso.com* dat wordt uitgevoerd in de Azure AD-Tenant van contoso. Het virtuele netwerk van Azure voor het beheerde domein maakt echter deel uit van de fabrikam Azure AD-Tenant.
+Er treedt een fout op die niet overeenkomt wanneer een door Azure AD DS beheerd domein en een virtueel netwerk deel uitmaken van twee verschillende Azure AD-tenants. U kunt bijvoorbeeld een beheerd domein van Azure AD DS met de naam *aadds.contoso.com* dat wordt uitgevoerd in de Azure AD-Tenant van contoso. Het virtuele netwerk van Azure voor het beheerde domein maakt echter deel uit van de fabrikam Azure AD-Tenant.
 
 Azure gebruikt op rollen gebaseerd toegangs beheer (RBAC) om de toegang tot resources te beperken. Wanneer u Azure AD DS in een Azure AD-Tenant inschakelt, worden referentie-hashes gesynchroniseerd met het beheerde domein. Deze bewerking vereist dat u een Tenant beheerder bent voor de Azure AD-adres lijst en dat toegang tot de referenties moet worden beheerd. Als u resources wilt implementeren in een virtueel Azure-netwerk en beheer verkeer, moet u over beheerders bevoegdheden beschikken voor het virtuele netwerk waarin u Azure AD DS implementeert.
 

@@ -9,12 +9,12 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 28a387b77c9a4db4be151dffc853617c426c6927
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666557"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707595"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>De versleutelings status van een BLOB controleren
 
@@ -72,7 +72,7 @@ Controleer de waarde van de eigenschap **gemaakt** om te bepalen wanneer de blob
 
 ---
 
-### <a name="force-encryption-of-a-blob"></a>Versleuteling van een BLOB afdwingen
+## <a name="force-encryption-of-a-blob"></a>Versleuteling van een BLOB afdwingen
 
 Als een blob die is gemaakt vóór 20 oktober 2017 nog niet is versleuteld door het achtergrond proces, kunt u afdwingen dat versleuteling onmiddellijk plaatsvindt door de BLOB te downloaden en opnieuw te uploaden. Een eenvoudige manier om dit te doen is met AzCopy.
 

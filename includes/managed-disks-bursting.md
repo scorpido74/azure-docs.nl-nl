@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c2ce39c40ad535b4a66349fcbb4529333218555a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512663"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705536"
 ---
-Premium Ssd's ondersteunt bursting op elke schijf grootte < = 512 GiB (P20 of lager). Deze schijf grootten ondersteunen de burstisatie op basis van beste inspanningen en gebruiken een tegoed systeem voor het beheren van bursting. De tegoeden worden in een burst-Bucket verzameld wanneer het schijf verkeer lager is dan het ingerichte prestatie doel voor de schijf grootte en crediteert wanneer het verkeer groter wordt dan het doel. Schijf verkeer wordt getraceerd voor zowel IOPS als band breedte in het ingerichte doel.
+Schijf bursting is momenteel een preview-functie voor Premium-Ssd's. Bursting wordt ondersteund op een Premium SSD-schijf grootte < = 512 GiB (P20 of lager). Deze schijf grootten ondersteunen de burstisatie op basis van beste inspanningen en gebruiken een tegoed systeem voor het beheren van bursting. De tegoeden worden in een burst-Bucket verzameld wanneer het schijf verkeer lager is dan het ingerichte prestatie doel voor de schijf grootte en crediteert wanneer het verkeer groter wordt dan het doel. Schijf verkeer wordt getraceerd voor zowel IOPS als band breedte in het ingerichte doel.
 
 Schijf bursting is standaard ingeschakeld voor nieuwe implementaties van de schijf grootten die dit ondersteunen. Bestaande schijf grootten, als deze schijf bursting ondersteunen, kunnen bursting op een van de volgende manieren inschakelen:
 

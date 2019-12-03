@@ -1,17 +1,17 @@
 ---
-title: 'Snelstartgids: een toepassing starten met maven-Azure lente-Cloud'
-description: Een voorbeeld toepassing starten met behulp van Maven
+title: 'Quick Start: een toepassing starten met maven met Azure veer Cloud'
+description: In deze Snelstartgids start u een voorbeeld toepassing met behulp van Maven
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1a719b878f3e5fbade3adf453ac7d0604ea85077
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ea840d1e133c213c907e596e5eb0a651820291c9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384082"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708865"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Snelstartgids: een Azure lente-Cloud-app starten met de Maven-invoeg toepassing
 
