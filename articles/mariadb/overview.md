@@ -1,18 +1,18 @@
 ---
-title: Overzicht van de relationele databaseservice Azure Database for MariaDB
+title: Overzicht-Azure Database for MariaDB
 description: Meer informatie over de Azure Database for MariaDB-service, een relationele database service in de micro soft Cloud op basis van de MySQL Community Edition.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/25/2019
-ms.openlocfilehash: aed2e090a1e3a6a4c80f70ba25da9a903a6192c1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: f2dc6ec2fb99addc6a2c050c072e0221fd2c8e0b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484143"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769078"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Wat is Azure Database for MariaDB?
 
@@ -53,7 +53,7 @@ De toonaangevende serviceovereenkomst (SLA) van Azure met 99,99% beschikbaarheid
 
 ## <a name="secure-your-data"></a>Uw gegevens beveiligen
 
-Azure-databaseservices hebben traditiegetrouw een uitstekende gegevensbeveiliging die Azure Database for MariaDB voortzet. Azure Database for MariaDB biedt functies voor toegangsbeperking, beveiliging van data-at-rest en in-motion en activiteitsbewaking. Bezoek het [Vertrouwenscentrum van Azure](https://www.microsoft.com/trustcenter/security) voor informatie over de beveiliging van het Azure-platform. Zie het [overzicht van beveiliging](concepts-security.md)voor meer informatie over Azure database for MySQL beveiligings functies.
+Azure-databaseservices hebben traditiegetrouw een uitstekende gegevensbeveiliging die Azure Database for MariaDB voortzet. Azure Database for MariaDB biedt functies voor toegangsbeperking, beveiliging van data-at-rest en in-motion en activiteitsbewaking. Bezoek het [Vertrouwenscentrum van Azure](https://www.microsoft.com/trustcenter/security) voor informatie over de beveiliging van het Azure-platform. Zie het [overzicht van beveiliging](concepts-security.md)voor meer informatie over Azure database for MariaDB beveiligings functies.
 
 ## <a name="contacts"></a>Contactpersonen
 

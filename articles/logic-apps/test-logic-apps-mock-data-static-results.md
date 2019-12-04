@@ -1,146 +1,145 @@
 ---
-title: Logische apps met Hiermee mock-gegevens - Azure Logic Apps testen
-description: Statische resultaten voor het testen van logische apps met Hiermee mock-gegevens zonder die betrekking hebben op de productie-omgevingen instellen
+title: Logische apps testen met voorbeeldgegevens
+description: Statische resultaten instellen voor het testen van logische apps met gegevens over modellen zonder dat dit van invloed is op productie omgevingen
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
-ms.openlocfilehash: 45eeb20e5c572ddd98244b2e751322fcce1d4b76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597206"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790279"
 ---
-# <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Logische apps met Hiermee mock-gegevens door het instellen van statische resultaten testen
+# <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Logische Apps testen met gegevens modeleren door statische resultaten in te stellen
 
-Bij het testen van uw logische apps, kunt u mogelijk niet daadwerkelijk aanroepen of toegang tot apps, services en systemen om verschillende redenen. In deze scenario's mogelijk u meestal aan andere voorwaarde paden worden uitgevoerd, fouten forceren, bieden specifieke antwoord de berichttekst of zelfs Probeer enkele stappen wordt overgeslagen. Door het instellen van statische resultaten voor een actie in uw logische app, kunt u uitvoergegevens van deze actie model. Inschakelen van statische resultaten op een actie die de actie kan niet worden uitgevoerd, maar in plaats daarvan de Hiermee mock-gegevens geretourneerd.
+Bij het testen van uw logische apps bent u mogelijk niet in de hand om diverse redenen om apps, services en systemen te bellen of te openen. Normaal gesp roken is het mogelijk dat u verschillende paden voor voor waarden moet uitvoeren, fouten moet afdwingen, specifieke bericht tekst wilt opgeven of zelfs een aantal stappen wilt overs Laan. Door statische resultaten in te stellen voor een actie in uw logische app, kunt u uitvoer gegevens uit die actie detrekken. Als u statische resultaten voor een actie inschakelt, wordt de actie niet uitgevoerd, maar worden de gegevens voor de model ring wel geretourneerd.
 
-Bijvoorbeeld, als u statische resultaten voor de Outlook 365 actie e-mail verzenden, de Logic Apps-engine retourneert alleen de mock gegevens die u hebt opgegeven als statische resultaten, in plaats van bij het aanroepen van Outlook en een e-mail verzenden.
+Als u bijvoorbeeld statische resultaten voor de e-mail actie Outlook 365-verzen ding hebt ingesteld, retourneert de engine van de Logic Apps alleen de model gegevens die u hebt opgegeven als statische resultaten, in plaats van Outlook aan te roepen en een e-mail te verzenden.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>.
 
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u het instellen van statische resultaten
+* De logische app waar u statische resultaten wilt instellen
 
 <a name="set-up-static-results"></a>
 
 ## <a name="set-up-static-results"></a>Statische resultaten instellen
 
-1. Als u dat nog niet gedaan hebt, in de [Azure-portal](https://portal.azure.com), opent u uw logische app in de ontwerper van logische Apps.
+1. Als u dat nog niet hebt gedaan, opent u de logische app in de Logic Apps designer in de [Azure Portal](https://portal.azure.com).
 
-1. Op de actie waar u het instellen van statische resultaten, de volgende stappen uit: 
+1. Voer de volgende stappen uit op de actie waar u statische resultaten wilt instellen: 
 
-   1. In de rechterbovenhoek van de actie, kiest u de weglatingstekens ( *...* ) en selecteer **statische resultaat**, bijvoorbeeld:
+   1. Klik in de rechter bovenhoek van de actie op de knop met weglatings tekens ( *...* ) en selecteer **statisch resultaat**, bijvoorbeeld:
 
-      ![Selecteer 'Statische resultaat' > "Statische resultaat inschakelen"](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
+      ![Selecteer statisch resultaat > ' statisch resultaat inschakelen '](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
-   1. Kies **inschakelen statische resultaat**. Geef de mock uitvoerwaarden die u wilt ophalen voor de reactie van de actie voor de eigenschappen vereist (*).
+   1. Kies **statisch resultaat inschakelen**. Geef voor de vereiste eigenschappen (*) de uitvoer waarden van de model op die u wilt retour neren voor de reactie van de actie.
 
       Dit zijn bijvoorbeeld de vereiste eigenschappen voor de HTTP-actie:
 
-      | Eigenschap | Description |
+      | Eigenschap | Beschrijving |
       |----------|-------------|
-      | **Status** | De status van de actie moeten worden geretourneerd |
-      | **Statuscode** | De specifieke statuscode om terug te keren |
-      | **Headers** | De inhoud van de koptekst om terug te keren |
+      | **Status** | De status van de actie die moet worden geretourneerd |
+      | **Statuscode** | De specifieke status code die moet worden geretourneerd |
+      | **Headers** | De inhoud van de header die moet worden geretourneerd |
       |||
 
-      ![Selecteer 'Statische resultaat inschakelen'](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
+      ![Selecteer ' statisch resultaat inschakelen '](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      Als u wilt de mock-gegevens in JavaScript Object Notation (JSON)-indeling invoeren, kies **overschakelen naar de JSON-modus** (![kiezen 'Overschakelen naar JSON-modus'](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)).
+      Als u de gegevens voor de Modeling in JavaScript Object Notation indeling (JSON) wilt invoeren, kiest **u overschakelen naar JSON-modus** (![op de JSON-modus overschakelen](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)).
 
-   1. Voor de optionele eigenschappen, opent u de **optionele velden selecteren** lijst en selecteer de eigenschappen die u wilt model.
+   1. Voor optionele eigenschappen opent u de lijst **optionele velden selecteren** en selecteert u de eigenschappen die u wilt weer geven.
 
-      ![Selecteer de optionele eigenschappen](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
+      ![Optionele eigenschappen selecteren](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
 
-1. Wanneer u klaar om op te slaan bent, kies **gedaan**.
+1. Wanneer u klaar bent om op te slaan, kiest u **gereed**.
 
-   In de rechterbovenhoek van de actie klikken, de titelbalk wordt nu een pictogram van een test bekerglas (![pictogram voor statische resultaten](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)), wat aangeeft dat u statische resultaten hebt ingeschakeld.
+   In de rechter bovenhoek van de actie toont de titel balk nu een pictogram voor een test beker glas (![pictogram voor statische resultaten](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)). Dit geeft aan dat u statische resultaten hebt ingeschakeld.
 
-   ![Pictogram weergeven statische resultaten ingeschakeld](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
+   ![Pictogram met ingeschakelde statische resultaten](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
-   Vorige uitvoeringen die Hiermee mock-gegevens gebruiken, Zie [uitvoeringen die gebruikmaken van statische resultaten vinden](#find-runs-mock-data) verderop in dit onderwerp.
+   Zie [Zoek uitvoeringen die statische resultaten gebruiken](#find-runs-mock-data) verderop in dit onderwerp voor informatie over eerdere uitvoeringen die gebruikmaken van model gegevens.
 
 <a name="reuse-sample-outputs"></a>
 
-## <a name="reuse-previous-outputs"></a>Hergebruik van vorige uitvoer
+## <a name="reuse-previous-outputs"></a>Eerdere uitvoer opnieuw gebruiken
 
-Als uw logische app een vorige is kunt uitvoeren met uitvoer die u opnieuw als mock-uitvoer gebruiken kunt, u kopiëren en plakken de uitvoer van die worden uitgevoerd.
+Als uw logische app een vorige uitvoering heeft met uitvoer die u kunt hergebruiken als uitvoer van een model, kunt u de uitvoer van die uitvoering kopiëren en plakken.
 
-1. Als u dat nog niet gedaan hebt, in de [Azure-portal](https://portal.azure.com), opent u uw logische app in de ontwerper van logische Apps.
+1. Als u dat nog niet hebt gedaan, opent u de logische app in de Logic Apps designer in de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer in het hoofdmenu van uw logische app, **overzicht**.
+1. Selecteer **overzicht**in het hoofd menu van de logische app.
 
-1. In de **geschiedenis van uitvoeringen** sectie, selecteer de logische app die u wilt.
+1. Selecteer in de sectie uitvoerings **geschiedenis** de gewenste logische App-toepassing.
 
-1. Zoek in de werkstroom van uw logische app, en vouw de actie die de uitvoer die u wilt.
+1. Zoek en vouw in de werk stroom van de logische app de actie uit die de gewenste uitvoer heeft.
 
-1. Kies de **onbewerkte uitvoer weergeven** koppeling.
+1. Kies de koppeling **onbewerkte uitvoer weer geven** .
 
-1. Kopieer de volledige JavaScript Object Notation (JSON)-object of de specifieke subsectie die u gebruiken wilt, bijvoorbeeld, de uitvoersectie of zelfs alleen de headers-sectie.
+1. Kopieer het volledige JavaScript Object Notation (JSON)-object of de specifieke Subsectie die u wilt gebruiken, bijvoorbeeld de sectie outputs of zelfs alleen de sectie headers.
 
-1. Volg de stappen voor het openen de **statische resultaat** vak voor de actie in [instellen op statisch resultaten](#set-up-static-results).
+1. Volg de stappen voor het openen van het **statische resultaat** vak voor uw actie in [statische resultaten instellen](#set-up-static-results).
 
-1. Na de **statische resultaat** vak wordt geopend, kiest u een stap:
+1. Nadat het vak **statisch resultaat** wordt geopend, kiest u stap:
 
-   * Als u een volledige JSON-object, kies **overschakelen naar de JSON-modus** (![kiezen 'Overschakelen naar JSON-modus'](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)):
+   * Als u een volledig JSON-object wilt plakken, kiest **u overschakelen naar JSON-modus** (![Kies overschakelen naar JSON-modus](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)):
 
-     !['Switch voor JSON-modus' voor volledig object kiezen](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
+     ![Kies overschakelen naar JSON-modus voor een volledig object](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
 
-   * Als u alleen een sectie van het JSON, naast die sectielabel, kies **overschakelen naar de JSON-modus** voor die sectie, bijvoorbeeld:
+   * Als u alleen een JSON-gedeelte wilt plakken naast het label van die sectie, kiest **u overschakelen naar JSON-modus** voor die sectie, bijvoorbeeld:
 
-     !['Switch voor JSON-modus' voor uitvoer kiezen](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-outputs.png)
+     ![Kies overschakelen naar JSON-modus voor uitvoer](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-outputs.png)
 
-1. Plak de eerder gekopieerde JSON in de JSON-editor.
+1. Plak in de JSON-editor de eerder gekopieerde JSON.
 
    ![JSON-modus](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. Wanneer u klaar bent, kiest u **Gereed**. Of, als u wilt terugkeren naar de ontwerpfunctie, kiezen **Switch bewerkingsmodus** (![kiezen "Bewerkingsmodus Switch"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)).
+1. Wanneer u klaar bent, kiest u **Gereed**. Als u wilt terugkeren naar de ontwerper, kiest u **modus switch editor** (![Kies de modus ' switch editor '](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)).
 
 <a name="find-runs-mock-data"></a>
 
-## <a name="find-runs-that-use-static-results"></a>Wordt uitgevoerd die gebruikmaken van statische resultaten vinden
+## <a name="find-runs-that-use-static-results"></a>Zoek runs die statische resultaten gebruiken
 
-Geschiedenis van uitvoeringen van uw logische app identificeert de uitgevoerd waarbij de acties die gebruik maken van statische resultaten. U vindt deze wordt uitgevoerd, de volgende stappen uit:
+De uitvoerings geschiedenis van de logische app identificeert de uitvoeringen waar de acties statische resultaten gebruiken. Voer de volgende stappen uit om deze uitvoeringen te vinden:
 
-1. Selecteer in het hoofdmenu van uw logische app, **overzicht**. 
+1. Selecteer **overzicht**in het hoofd menu van de logische app. 
 
-1. In het rechterdeelvenster onder **geschiedenis van uitvoeringen**, vinden de **statische resultaten** kolom. 
+1. Zoek in het rechterdeel venster onder **uitvoerings geschiedenis**de kolom **statische resultaten** . 
 
-   Elke run met acties met resultaten heeft de **statische resultaten** kolom is ingesteld op **ingeschakeld**, bijvoorbeeld:
+   Voor elke uitvoering die acties met resultaten bevat, is de kolom **statische resultaten** ingesteld op **ingeschakeld**, bijvoorbeeld:
 
-   ![Uitvoeringsgeschiedenis - statische resultatenkolom](./media/test-logic-apps-mock-data-static-results/run-history.png)
+   ![Uitvoerings geschiedenis-kolom met statische resultaten](./media/test-logic-apps-mock-data-static-results/run-history.png)
 
-1. Wilt acties die gebruikmaken van statische resultaten weergeven, selecteert u de uitvoering u waar u wilt de **statische resultaten** kolom is ingesteld op **ingeschakeld**.
+1. Als u acties wilt weer geven die statische resultaten gebruiken, selecteert u de gewenste uitvoeren waar de kolom **statische resultaten** is ingesteld op **ingeschakeld**.
 
-   Acties die gebruikmaken van statische resultaten weergeven in het bekerglas test (![pictogram voor statische resultaten](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) pictogram, bijvoorbeeld:
+   Acties die gebruikmaken van statische resultaten tonen de test bekerer (![pictogram voor statische resultaten](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) pictogram, bijvoorbeeld:
 
-   ![Geschiedenis - acties die gebruikmaken van statische resultaten uitvoeren](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
+   ![Uitvoerings geschiedenis-acties die statische resultaten gebruiken](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
 
 ## <a name="disable-static-results"></a>Statische resultaten uitschakelen
 
-Het uitschakelen van statische resultaten weggooien niet de waarden van de laatste installatie. Dus wanneer u de volgende keer statische resultaten inschakelt, kunt u doorgaan met behulp van uw vorige waarden.
+Als u statische resultaten uitschakelt, worden de waarden niet uit de laatste installatie verwijderd. Dus wanneer u statische resultaten de volgende keer inschakelt, kunt u de vorige waarden blijven gebruiken.
 
-1. De actie vinden waar u wilt uitschakelen statische uitvoer. In de rechterbovenhoek van de actie, kies het pictogram van de bekerglas test (![pictogram voor statische resultaten](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)).
+1. Zoek de actie waarvoor u statische uitvoer wilt uitschakelen. Kies in de rechter bovenhoek van de actie het pictogram test beker glas (![pictogram voor statische resultaten](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)).
 
    ![Statische resultaten uitschakelen](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. Kies **uitschakelen statische resultaat** > **gedaan**.
+1. Kies **uitschakelen statisch resultaat** > **gereed**.
 
    ![Statische resultaten uitschakelen](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
 ## <a name="reference"></a>Referentie
 
-Zie voor meer informatie over deze instelling in de onderliggende werkstroomdefinities [statische resultaten - schemaverwijzing voor Werkstroomdefinitietaal](../logic-apps/logic-apps-workflow-definition-language.md#static-results) en [runtimeConfiguration.staticResult - Runtime configuratie-instellingen](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
+Zie [statische resultaten-schema verwijzing voor werk stroom definitie taal](../logic-apps/logic-apps-workflow-definition-language.md#static-results) en [runtimeConfiguration. staticResult-runtime-configuratie-instellingen](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings) voor meer informatie over deze instelling in uw onderliggende werk stroom definities.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure Logic Apps](../logic-apps/logic-apps-overview.md)
+* Meer informatie over [Azure Logic apps](../logic-apps/logic-apps-overview.md)

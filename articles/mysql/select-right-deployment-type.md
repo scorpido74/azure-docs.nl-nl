@@ -1,17 +1,17 @@
 ---
-title: Het juiste implementatie type voor Azure Database for MySQL selecteren
+title: Het juiste implementatie type-Azure Database for MySQL selecteren
 description: In dit artikel wordt beschreven welke factoren u moet overwegen voordat u Azure Database for MySQL implementeert als Infrastructure as a Service (IaaS) of platform as a Service (PaaS).
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: 5cdd65d5509d8f46f095d91c509a1fda288517c4
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/02/2019
+ms.openlocfilehash: 3cc03ba1670299f1ea43a1fde666c2917eaf6b9d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132434"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770455"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Kies de optie juiste MySQL-server in azure
 
@@ -31,7 +31,7 @@ Houd rekening met de volgende twee opties bij het nemen van uw beslissing:
 
 De belangrijkste verschillen tussen deze opties worden weer gegeven in de volgende tabel:
 
-|            | Azure Database for MySQL | MySQL op virtuele Azure-machines    |
+|            | Azure Database voor MySQL | MySQL op virtuele Azure-machines    |
 |:-------------------|:-----------------------------|:--------------------|
 | Serviceovereenkomst (SLA)                | Biedt een SLA van 99,99% Beschik baarheid| Maxi maal 99,95% Beschik baarheid met twee of meer exemplaren in dezelfde beschikbaarheidsset.<br/><br/>99,9% Beschik baarheid met een virtuele machine met één exemplaar met Premium Storage.<br/><br/>99,99% met Beschikbaarheidszones met meerdere exemplaren in meerdere beschikbaarheids sets.<br/><br/>Zie de [virtual machines Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
 | Patches besturings systeem        | Automatisch  | Beheerd door klanten |
@@ -84,7 +84,7 @@ In de volgende lijst worden administratieve aandachtspunten voor elke optie besc
   - Aanmelden
   - Indexafstemming
   - Query afstemmen
-  - Controleren
+  - Controle
   - Beveiliging
 
   Daarnaast is het configureren van hoge Beschik baarheid voor een ander Data Center Mini maal, zodat er geen configuratie of beheer nodig is.

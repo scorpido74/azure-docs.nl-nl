@@ -3,21 +3,21 @@ title: Richt lijnen voor het ontwerpen van vrijgeven
 titleSuffix: Azure Cognitive Services
 description: Inleiding tot de richt lijnen voor het vrijgeven van informatie en het beoordelen van het niveau van de publicatie
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837384"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776382"
 ---
-# <a name="disclosure-design-guidelines"></a>Richt lijnen voor het ontwerpen van vrijgeven
+# <a name="disclosure-design-guidelines"></a>Richtlijnen voor het ontwerpen van openbaarmakingen
 Meer informatie over het bouwen en onderhouden van vertrouwen met klanten door transparante informatie te krijgen over de synthetische aard van uw stem ervaring.
 
 ## <a name="what-is-disclosure"></a>Wat is een openbaar making?

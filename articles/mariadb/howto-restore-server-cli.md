@@ -1,18 +1,18 @@
 ---
-title: Een back-up maken en herstellen van een server in Azure Database for MariaDB
+title: Back-ups maken en herstellen-Azure CLI-Azure Database for MariaDB
 description: Meer informatie over het maken van een back-up en het herstellen van een server in Azure Database for MariaDB met behulp van de Azure CLI.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: ae2e8049c58be312eed380fe2197985e61d28a26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: 4564aff5e8fe2119a494af33e71ff927718646db
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965231"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765848"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Een back-up maken en herstellen van een server in Azure Database for MariaDB met behulp van de Azure CLI
 
@@ -117,7 +117,7 @@ De opdracht `az mariadb server georestore` vereist de volgende para meters:
 |name | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
 |source-server | mydemoserver | De naam van de bestaande server waarvoor geo redundante back-ups worden gebruikt. |
 |location | eastus | De locatie van de nieuwe server. |
-|sku-name| GP_Gen5_8 | Met deze para meter worden de prijs categorie, generatie van Compute en het aantal vCores van de nieuwe server ingesteld. GP_Gen5_8 wordt toegewezen aan een Algemeen, Gen 5-server met 8 vCores.|
+|sku-name| GP_Gen5_8 | Met deze para meter worden de prijs categorie, generatie van Compute en het aantal vCores van de nieuwe server ingesteld. GP_Gen5_8 is toegewezen aan een Algemeen, Gen 5-server met 8 vCores.|
 
 Wanneer u een nieuwe server maakt door een geo-terugzet bewerking, neemt deze dezelfde opslag grootte en prijs categorie over als de bron server. Deze waarden kunnen niet worden gewijzigd tijdens het maken. Nadat de nieuwe server is gemaakt, kan de opslag grootte worden uitgebreid.
 

@@ -1,20 +1,19 @@
 ---
-title: Logische apps bewaken met Azure Monitor-Azure Logic Apps
+title: Logische apps bewaken met Azure Monitor
 description: Inzichten en fouten opsporen voor het oplossen van problemen met logische apps en de uitvoering van problemen met Azure Monitor-logboeken
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/29/2019
-ms.openlocfilehash: a038a05f03ce7a209ae82203441750749bc6c4c4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 305b50c86a468354f049fcc57fcb79b537e8dfed
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138703"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791895"
 ---
 # <a name="get-insights-and-debugging-data-for-logic-apps-by-using-azure-monitor-logs"></a>Inzichten en gegevens voor Logic apps opsporen met behulp van Azure Monitor-logboeken
 
@@ -31,7 +30,7 @@ Voordat u begint, hebt u een Log Analytics-werk ruimte nodig. Meer informatie [o
 
 ## <a name="turn-on-logging-for-new-logic-apps"></a>Logboek registratie inschakelen voor nieuwe logische apps
 
-1. Maak in [Azure Portal](https://portal.azure.com)uw logische app. Selecteer in het hoofd menu van Azure **een resource** > **Integration** > **Logic-app**maken.
+1. Maak in [Azure Portal](https://portal.azure.com)uw logische app. Selecteer in het hoofd menu van Azure **een resource maken** > **integratie** > **logische app**.
 
    ![Een nieuwe logische app maken](media/logic-apps-monitor-your-logic-apps-oms/create-new-logic-app.png)
 
@@ -65,7 +64,7 @@ Als u Azure Monitor logboeken al hebt ingesteld tijdens het maken van uw logisch
 
    ![Uw Log Analytics-werk ruimte selecteren](./media/logic-apps-monitor-your-logic-apps-oms/select-log-analytics-workspace.png)
 
-1. Selecteer in het deel venster Overzicht onder **aan de slag met log Analytics** > **bewakings oplossingen configureren**de optie **oplossingen weer geven**.
+1. Selecteer in het deel venster Overzicht onder **aan de slag met Log Analytics** > **bewakings oplossingen configureren**de optie **oplossingen weer geven**.
 
    ![Selecteer oplossingen weer geven](media/logic-apps-monitor-your-logic-apps-oms/log-analytics-workspace.png)
 
@@ -95,7 +94,7 @@ Als u Azure Monitor logboeken al hebt ingesteld tijdens het maken van uw logisch
 
 Wanneer de logische app wordt uitgevoerd, kunt u de status en het aantal weer geven voor die uitvoeringen op de tegel **Logic apps beheer** .
 
-1. Ga naar uw log Analytics-werk ruimte en selecteer **werkruimte overzicht** > **Logic apps beheer**.
+1. Ga naar uw Log Analytics-werk ruimte en selecteer **werkruimte samenvatting** > **Logic apps beheer**.
 
    ![Uitvoerings status en aantal van logische app](media/logic-apps-monitor-your-logic-apps-oms/logic-app-runs-summary.png)
 
@@ -111,23 +110,23 @@ Wanneer de logische app wordt uitgevoerd, kunt u de status en het aantal weer ge
 
    Deze pagina heeft geavanceerde opties: 
 
-   * Kolom met **bijgehouden eigenschappen** : Voor een logische app waar u bijgehouden eigenschappen instelt, die zijn gegroepeerd op acties, kunt u deze eigenschappen uit deze kolom weer geven. Als u deze bijgehouden eigenschappen wilt weer geven, selecteert u **weer gave**. Gebruik het kolom filter om de bijgehouden eigenschappen te doorzoeken.
+   * Kolom met **bijgehouden eigenschappen** : voor een logische app waarvoor u bijgehouden eigenschappen, die zijn gegroepeerd op acties, kunt u de eigenschappen uit deze kolom weer geven. Als u deze bijgehouden eigenschappen wilt weer geven, selecteert u **weer gave**. Gebruik het kolom filter om de bijgehouden eigenschappen te doorzoeken.
 
       ![Bijgehouden eigenschappen voor een logische app weer geven](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
       Nieuw toegevoegde bijgehouden eigenschappen kunnen 10-15 minuten duren voordat ze de eerste keer worden weer gegeven. Meer informatie [over het toevoegen van bijgehouden eigenschappen aan uw logische app](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
 
-   * **Opnieuw verzenden**: U kunt een of meer Logic apps-uitvoeringen opnieuw indienen die zijn mislukt, geslaagd of nog actief zijn. Schakel de selectie vakjes in voor de uitvoeringen die u opnieuw wilt indienen en selecteer vervolgens **opnieuw verzenden**.
+   * **Opnieuw verzenden**: u kunt een of meer Logic apps-uitvoeringen opnieuw indienen die zijn mislukt, geslaagd of nog actief zijn. Schakel de selectie vakjes in voor de uitvoeringen die u opnieuw wilt indienen en selecteer vervolgens **opnieuw verzenden**.
 
      ![Uitvoeringen van logische app opnieuw verzenden](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
 1. Als u uw resultaten wilt filteren, kunt u zowel client-side als server-side filters uitvoeren.
 
-   * **Filter aan client zijde**: Selecteer voor elke kolom de filters die u wilt, bijvoorbeeld:
+   * **Filter aan client zijde**: Selecteer voor elke kolom de gewenste filters, bijvoorbeeld:
 
      ![Voor beeld van kolom filters](media/logic-apps-monitor-your-logic-apps-oms/filters.png)
 
-   * **Filter aan de server zijde**: Als u een bepaald tijd venster wilt selecteren of het aantal uitvoeringen wilt beperken dat wordt weer gegeven, gebruikt u het bereik besturings element boven aan de pagina. Standaard worden slechts 1.000 records per keer weer gegeven.
+   * **Filter aan de server zijde**: als u een bepaald tijd venster wilt selecteren of als u het aantal uitvoeringen wilt beperken dat wordt weer gegeven, gebruikt u het bereik besturings element boven aan de pagina. Standaard worden slechts 1.000 records per keer weer gegeven.
 
      ![Het tijd venster wijzigen](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
 
@@ -137,11 +136,11 @@ Wanneer de logische app wordt uitgevoerd, kunt u de status en het aantal weer ge
 
    ![Acties voor het uitvoeren van een logische app weer geven](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
 
-1. Selecteer op de pagina resultaten de optie **Alles bekijken**om de query achter de resultaten weer te geven of om alle resultaten weer te geven. Hiermee opent u de pagina Logboeken.
+1. Selecteer op de pagina resultaten de optie **Alles bekijken**om de query achter de resultaten weer te geven of om alle resultaten weer te geven. Hiermee opent u de pagina **Logboeken** .
 
    ![Alle resultaten weer geven](media/logic-apps-monitor-your-logic-apps-oms/logic-app-see-all.png)
 
-   Op de pagina Logboeken kunt u de volgende opties kiezen:
+   Op de pagina **Logboeken** kunt u de volgende opties kiezen:
 
    * Als u de query resultaten in een tabel wilt weer geven, selecteert u **tabel**.
 

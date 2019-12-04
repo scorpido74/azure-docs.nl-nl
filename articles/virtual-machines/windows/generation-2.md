@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 12/03/2019
 ms.author: lahugh
-ms.openlocfilehash: d6fcbcb7f5d1b6bb25840ad1bddc5327b068c15d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6f03826bf0b82150fa89ad6e17cbcb76f98bb835
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075473"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790033"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -53,15 +53,12 @@ Virtuele machines van de eerste generatie worden ondersteund door alle VM-groott
 
 Vm's van generatie 2 ondersteunen de volgende installatie kopieën van Marketplace:
 
-* Windows Server 2019 Datacenter
-* Windows Server 2016 Datacenter
-* Windows Server 2012 R2 Datacenter
-* Windows Server 2012 Datacenter
+* Windows Server 2019, 2016, 2012 R2, 2012
+* Windows 10
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04, 18.04, 19,04, 19,10
+* Ubuntu Server 16,04, 18,04, 19,04, 19,10 
 * RHEL 8,0
-
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>On-premises versus Azure Generation 2 Vm's
 
@@ -83,7 +80,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 |---------|--------------|--------------|
 | Opstarten             | PCAT                      | UEFI                               |
 | Schijf controllers | IDE                       | SCSI                               |
-| Formaten van virtuele machines         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
+| VM-grootten         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Mogelijkheden van generatie 1 vs. generatie 2
 
@@ -103,7 +100,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 
 In de Azure Portal of Azure CLI kunt u virtuele machines van de tweede generatie maken op basis van een Marketplace-installatie kopie die ondersteuning biedt voor UEFI-opstart bewerkingen.
 
-#### <a name="azure-portal"></a>Azure-portal
+#### <a name="azure-portal"></a>Azure Portal
 
 Installatie kopieën van de tweede generatie voor Windows en SLES zijn opgenomen in dezelfde server aanbieding als de gen1-installatie kopieën. Wat het betekent voor een stroom perspectief is dat, u selecteert de aanbieding en de SKU in de portal voor uw VM. Als de SKU zowel installatie kopieën van de 1e 1 als de tweede generatie ondersteunt, kunt u een virtuele machine van de tweede generatie maken op het tabblad *Geavanceerd* in de stroom voor het maken van de virtuele machine.
 

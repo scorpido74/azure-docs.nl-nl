@@ -1,89 +1,89 @@
 ---
-title: Maken en beheren van Azure Database voor MariaDB-firewallregels met behulp van Azure CLI
-description: In dit artikel wordt beschreven hoe u maken en beheren van Azure Database voor MariaDB-firewallregels met behulp van Azure CLI-opdrachtregel.
+title: Firewall regels beheren-Azure CLI-Azure Database for MariaDB
+description: In dit artikel wordt beschreven hoe u Azure Database for MariaDB firewall regels maakt en beheert met behulp van de Azure CLI-opdracht regel.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: 562987b953f0a8a20a917e208f43557bd768c0a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 6690c0862b83af70f3beda4190547d6fbb80a601
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038617"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764249"
 ---
-# <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Maken en beheren van Azure Database voor MariaDB-firewallregels met behulp van de Azure CLI
-Firewallregels op serverniveau kunnen worden gebruikt om toegang tot een Azure Database voor MariaDB-Server beheren vanaf een specifiek IP-adres of een bereik van IP-adressen. Met behulp van handige Azure CLI-opdrachten, kunt u maken, bijwerken, verwijderen, lijst, en firewallregels voor het beheren van uw server weergeven. Zie voor een overzicht van Azure Database voor MariaDB firewalls, [Azure Database voor MariaDB server firewall-regels](./concepts-firewall-rules.md).
+# <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Azure Database for MariaDB firewall regels maken en beheren met behulp van de Azure CLI
+Firewall regels op server niveau kunnen worden gebruikt om de toegang tot een Azure Database for MariaDB server te beheren vanuit een specifiek IP-adres of een bereik met IP-adressen. Met behulp van handige Azure CLI-opdrachten kunt u firewall regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for MariaDB Server firewall-regels](./concepts-firewall-rules.md)voor een overzicht van Azure database for MariaDB firewalls.
 
-Regels voor virtueel netwerk (VNet) kunnen ook worden gebruikt voor het beveiligen van toegang tot uw server. Meer informatie over [maken en beheren van Virtual Network-service-eindpunten en regels met de Azure CLI](howto-manage-vnet-cli.md).
+Regels voor Virtual Network (VNet) kunnen ook worden gebruikt voor het beveiligen van de toegang tot uw server. Meer informatie over [het maken en beheren van Virtual Network Service-eind punten en-regels met behulp van de Azure cli](howto-manage-vnet-cli.md).
 
 ## <a name="prerequisites"></a>Vereisten
 * [Installeer Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-* Een [Azure Database voor MariaDB-server en database](quickstart-create-mariadb-server-database-using-azure-cli.md).
+* Een [Azure database for MariaDB-server en-data base](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
-## <a name="firewall-rule-commands"></a>Firewall-regel opdrachten:
-De **az mariadb server firewall-rule** opdracht van de Azure CLI wordt gebruikt voor het maken, verwijderen, vermelden, weergeven en firewallregels bijwerken.
+## <a name="firewall-rule-commands"></a>Opdracht firewall regel:
+De opdracht **AZ mariadb Server firewall-Rule** wordt gebruikt vanuit de Azure CLI om firewall regels te maken, verwijderen, weer geven en bijwerken.
 
-Opdrachten:
-- **Maak**: Maak een firewallregel voor Azure MariaDB-server.
-- **Verwijder**: Een Azure MariaDB server firewall-regel verwijderen.
-- **Lijst met**: Lijst met de Azure-MariaDB server firewall-regels.
-- **weergeven**: De details van een Azure-MariaDB-server firewall-regel weergeven.
-- **Update**: Een firewallregel voor Azure MariaDB-server bijwerken.
+Opdrachten
+- **maken**: Maak een firewall regel voor Azure MariaDB server.
+- **verwijderen**: Verwijder een Azure MariaDB Server-firewall regel.
+- **lijst**: Geef de firewall regels van de Azure MariaDB-server weer.
+- **weer geven**: de details van een Azure MariaDB Server-firewall regel weer geven.
+- **Update**: een Azure MariaDB Server-firewall regel bijwerken.
 
-## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Aanmelden bij Azure en de lijst met uw Azure Database voor MariaDB-Servers
-Veilig verbinding maken met Azure CLI met uw Azure-account met behulp van de **az login** opdracht.
+## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Meld u aan bij Azure en vermeld uw Azure Database for MariaDB-servers
+Maak veilig verbinding met Azure CLI met uw Azure-account met behulp van de opdracht **AZ login** .
 
-1. Voer de volgende opdracht uit vanaf de opdrachtregel:
+1. Voer vanaf de opdracht regel de volgende opdracht uit:
    ```azurecli
    az login
    ```
-   Met deze opdracht voert een die moet worden gebruikt in de volgende stap.
+   Met deze opdracht voert u een code uit die in de volgende stap wordt gebruikt.
 
-2. Gebruik een webbrowser om de pagina te openen [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin), en voer de code.
+2. Gebruik een webbrowser om de pagina [https://aka.ms/devicelogin](https://aka.ms/devicelogin)te openen en voer vervolgens de code in.
 
 3. Meld u aan met uw Azure-referenties bij de prompt.
 
-4. Nadat uw aanmelding is geautoriseerd, wordt een lijst met abonnementen in de console afgedrukt. Kopieer de ID van het gewenste abonnement om in te stellen van het huidige abonnement te gebruiken. Gebruik de [az account set](/cli/azure/account#az-account-set) opdracht.
+4. Nadat uw aanmelding is geautoriseerd, wordt een lijst met abonnementen afgedrukt in de-console. Kopieer de ID van het gewenste abonnement om het huidige abonnement in te stellen op gebruik. Gebruik de opdracht [AZ account set](/cli/azure/account#az-account-set) .
    ```azurecli-interactive
    az account set --subscription <your subscription id>
    ```
 
-5. Vraag de Databases op Azure voor MariaDB-servers voor uw abonnement en de resourcegroep groep als u niet zeker van de namen bent. Gebruik de [az mariadb-serverlijst](/cli/azure/mariadb/server#az-mariadb-server-list) opdracht.
+5. Vermeld de Azure-data bases voor MariaDB-servers voor uw abonnement en resource groep als u niet zeker weet wat de namen zijn. Gebruik de opdracht [AZ mariadb server list](/cli/azure/mariadb/server#az-mariadb-server-list) .
 
    ```azurecli-interactive
    az mariadb server list --resource-group myresourcegroup
    ```
 
-   Houd er rekening mee het naamkenmerk in het overzicht, u opgeven de MariaDB-server moet voor gebruik op. Als het nodig is, controleert u of de details voor die server en het gebruik van het kenmerk name om te controleren of dat deze juist is. Gebruik de [az mariadb server show](/cli/azure/mariadb/server#az-mariadb-server-show) opdracht.
+   Noteer het naam kenmerk in de vermelding, waarvoor u de MariaDB-server moet opgeven om te werken. Controleer, indien nodig, de details van die server en gebruik het naam kenmerk om te controleren of het juist is. Gebruik de opdracht [AZ mariadb server show](/cli/azure/mariadb/server#az-mariadb-server-show) .
 
    ```azurecli-interactive
    az mariadb server show --resource-group myresourcegroup --name mydemoserver
    ```
 
-## <a name="list-firewall-rules-on-azure-database-for-mariadb-server"></a>Lijst met firewallregels voor Azure Database voor MariaDB-Server 
-Met de naam van de en naam van de resourcegroep, de bestaande server firewall-regels op de server weergeven. Gebruik de [az mariadb-serverlijst firewall](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-list) opdracht.  U ziet dat het kenmerk van de server name is opgegeven in de **--server** overschakelen en niet in de **--naam** overschakelen. 
+## <a name="list-firewall-rules-on-azure-database-for-mariadb-server"></a>Firewall regels op Azure Database for MariaDB server weer geven 
+Gebruik de server naam en de naam van de resource groep om de bestaande server firewall regels op de-server weer te geven. Gebruik de opdracht [AZ mariadb Server firewall List](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-list) .  U ziet dat het kenmerk server naam is opgegeven in de schakel optie **-Server** en niet in de schakel optie **-naam** . 
 ```azurecli-interactive
 az mariadb server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
-De uitvoer bevat de regels, indien aanwezig, in JSON-indeling (standaard). U kunt de **--uitvoertabel** overschakelen naar de resultaten in een beter leesbare tabelindeling.
+In de uitvoer worden de regels, indien aanwezig, in JSON-indeling weer gegeven (standaard). U kunt de schakel optie **--output** gebruiken om de resultaten in een meer Lees bare tabel indeling uit te voeren.
 ```azurecli-interactive
 az mariadb server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```
-## <a name="create-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Maak een firewallregel op Azure Database voor MariaDB-Server
-Met de naam van de Azure-MariaDB-server en de naam van de resourcegroep, een nieuwe firewallregel maken op de server. Gebruik de [az mariadb-serverfirewall maken](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) opdracht. Geef een naam voor de regel, evenals de begin-IP en laatste IP-adres (voor toegang tot een bereik van IP-adressen) voor de regel.
+## <a name="create-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Een firewall regel maken op Azure Database for MariaDB server
+Maak een nieuwe firewall regel op de server met behulp van de naam van de Azure MariaDB-server en de naam van de resource groep. Gebruik de opdracht [AZ mariadb Server firewall Create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) . Geef een naam op voor de regel, evenals het eerste IP-adres en het laatste IP-adres (om toegang te bieden tot een bereik van IP-adressen) voor de regel.
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
 ```
 
-Als u wilt toestaan dat toegang voor één IP-adres, bevatten hetzelfde IP-adres als de eerste IP- en eind-IP-adres, zoals in dit voorbeeld.
+Als u toegang wilt verlenen voor een enkel IP-adres, geeft u hetzelfde IP-adres op als het IP-begin-en eind-IP, zoals in dit voor beeld.
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1 --start-ip-address 1.1.1.1 --end-ip-address 1.1.1.1
 ```
 
-Geef het IP-adres 0.0.0.0 als de eerste IP- en eind-IP-adres, zoals in dit voorbeeld zodat toepassingen vanuit Azure IP-adressen te verbinden met uw Azure Database voor MariaDB-server.
+Als u wilt toestaan dat toepassingen van IP-adressen van Azure verbinding maken met uw Azure Database for MariaDB server, geeft u het IP-adres 0.0.0.0 op als IP-begin-en eind-IP, zoals in dit voor beeld.
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mariadb --name "AllowAllWindowsAzureIps" --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
@@ -92,33 +92,33 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 > Met deze optie configureert u de firewall zo dat alle verbindingen vanuit Azure zijn toegestaan, inclusief verbindingen vanuit de abonnementen van andere klanten. Wanneer u deze optie selecteert, zorg dan dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.
 > 
 
-Implementatie is geslaagd maakt elke opdracht uitvoer toont de details van de firewallregel die u hebt gemaakt, in JSON-indeling (standaard). Als er een fout is, ziet de uitvoer in plaats daarvan tekst van foutberichten.
+Bij voltooiing worden met elke opdracht uitvoer een lijst gemaakt met de details van de firewall regel die u hebt gemaakt, in JSON-indeling (standaard). Als er een fout is, wordt in plaats daarvan de tekst van het fout bericht weer gegeven in de uitvoer.
 
-## <a name="update-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Een firewallregel op Azure Database voor MariaDB-server bijwerken 
-Met de naam van de Azure-MariaDB-server en de naam van de resourcegroep, een bestaande firewallregel op de server worden bijgewerkt. Gebruik de [az mariadb serverupdate firewall](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-update) opdracht. Geef de naam van de bestaande firewallregel als invoer, evenals het begin IP- en IP-kenmerken om bij te werken.
+## <a name="update-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Een firewall regel op Azure Database for MariaDB server bijwerken 
+Werk een bestaande firewall regel op de server bij met behulp van de naam van de Azure MariaDB-server en de naam van de resource groep. Gebruik de opdracht [AZ mariadb Server firewall update](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-update) . Geef de naam van de bestaande firewall regel op als invoer, evenals het eerste IP-adres en het laatste IP-kenmerk dat moet worden bijgewerkt.
 ```azurecli-interactive
 az mariadb server firewall-rule update --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
 ```
-Implementatie is geslaagd bevat de uitvoer van de opdracht de details van de firewallregel die u hebt bijgewerkt, in JSON-indeling (standaard). Als er een fout is, ziet de uitvoer in plaats daarvan tekst van foutberichten.
+Wanneer de opdracht is voltooid, worden de details weer gegeven van de firewall regel die u hebt bijgewerkt, in JSON-indeling (standaard). Als er een fout is, wordt in plaats daarvan de tekst van het fout bericht weer gegeven in de uitvoer.
 
 > [!NOTE]
-> Als de firewallregel niet bestaat, wordt de regel wordt gemaakt door de opdracht update.
+> Als de firewall regel niet bestaat, wordt de regel gemaakt met de opdracht bijwerken.
 
-## <a name="show-firewall-rule-details-on-azure-database-for-mariadb-server"></a>Firewall regeldetails weergeven op Azure Database voor MariaDB-Server
-Met de naam van de Azure-MariaDB-server en de naam van de resourcegroep, de firewall van de bestaande regeldetails weergeven van de server. Gebruik de [az mariadb server firewall show](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-show) opdracht. Geef de naam van de bestaande firewallregel als invoer.
+## <a name="show-firewall-rule-details-on-azure-database-for-mariadb-server"></a>Details van firewall regel op Azure Database for MariaDB server weer geven
+De naam van de bestaande firewall regel van de server weer geven met behulp van de naam van de Azure MariaDB-server en de resource groep. Gebruik de opdracht [AZ mariadb Server firewall show](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-show) . Geef de naam van de bestaande firewall regel op als invoer.
 ```azurecli-interactive
 az mariadb server firewall-rule show --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1
 ```
-Implementatie is geslaagd bevat de uitvoer van de opdracht de details van de firewallregel die u hebt opgegeven, in JSON-indeling (standaard). Als er een fout is, ziet de uitvoer in plaats daarvan tekst van foutberichten.
+Wanneer de opdracht is voltooid, worden de details van de firewall regel die u hebt opgegeven, weer gegeven in JSON-indeling (standaard). Als er een fout is, wordt in plaats daarvan de tekst van het fout bericht weer gegeven in de uitvoer.
 
-## <a name="delete-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Een firewallregel op Azure Database voor MariaDB-Server verwijderen
-Met de naam van de Azure-MariaDB-server en de naam van de resourcegroep, een bestaande firewallregel verwijderen van de server. Gebruik de [az mariadb-serverfirewall verwijderen](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-delete) opdracht. Geef de naam van de bestaande firewallregel.
+## <a name="delete-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Een firewall regel op Azure Database for MariaDB server verwijderen
+Verwijder een bestaande firewall regel van de server met behulp van de naam van de Azure MariaDB-server en de naam van de resource groep. Gebruik de opdracht [AZ mariadb Server firewall delete](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-delete) . Geef de naam op van de bestaande firewall regel.
 ```azurecli-interactive
 az mariadb server firewall-rule delete --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1
 ```
-Implementatie is geslaagd wordt er geen uitvoer. Als de mislukt, tekst van foutberichten worden weergegeven.
+Als de bewerking is voltooid, is er geen uitvoer. Wanneer de fout is opgetreden, wordt tekst weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer inzicht [Azure Database voor MariaDB Server firewall-regels](./concepts-firewall-rules.md).
-- [Maken en beheren van Azure Database voor MariaDB-firewallregels met behulp van de Azure-portal](./howto-manage-firewall-portal.md).
-- Verder te beveiligen, toegang tot uw server door [maken en beheren van Virtual Network-service-eindpunten en regels met de Azure CLI](howto-manage-vnet-cli.md).
+- Meer informatie over de [firewall regels van Azure database for MariaDB server](./concepts-firewall-rules.md).
+- [Azure database for MariaDB firewall regels maken en beheren met behulp van de Azure Portal](./howto-manage-firewall-portal.md).
+- Verdere beveiligde toegang tot uw server door [het maken en beheren van Virtual Network Service-eind punten en-regels met behulp van de Azure cli](howto-manage-vnet-cli.md).
