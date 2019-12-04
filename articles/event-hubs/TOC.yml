@@ -168,7 +168,7 @@
           href: configure-customer-managed-key.md
     - name: Problemen oplossen
       items:
-        - name: Uitzonderingen
+        - name: Handleiding voor het oplossen van problemen
           href: event-hubs-messaging-exceptions.md
 - name: Naslaginformatie
   items:

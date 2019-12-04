@@ -46,10 +46,10 @@
         - name: 2. Gebruikersgegevens extraheren
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+        - name: 3. Sentiment van uitingen van gebruiker ophalen
+          href: tutorial-publish-settings.md
     - name: App maken
       items:
-        - name: Sentiment van uitingen van gebruiker ophalen
-          href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: Correct opgemaakte gegevens met reguliere expressies ophalen
           href: luis-quickstart-intents-regex-entity.md
         - name: Exact overeenkomende tekst met lijsten ophalen
