@@ -1,19 +1,19 @@
 ---
-title: Zelfstudie over het controleren en afstemmen in Azure Database voor PostgreSQL - één Server
-description: Deze zelfstudie leidt u door bewaking en afstemming in Azure Database voor PostgreSQL - één Server.
+title: 'Zelf studie: Azure Database for PostgreSQL-één server bewaken en afstemmen'
+description: In deze zelf studie wordt uitgelegd hoe u Azure Database for PostgreSQL-één server bewaken en afstemmen.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: dcd8363db33809e2a33885f43e570c53807505fd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073092"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774734"
 ---
-# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Zelfstudie: Controleren en afstemmen van Azure Database voor PostgreSQL - één Server
+# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Zelf studie: Azure Database for PostgreSQL-één server bewaken en afstemmen
 
 Azure Database for PostgreSQL bevat functies die u helpen om inzicht te krijgen in de prestaties van uw server en om deze te verbeteren. In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -70,7 +70,7 @@ De weergave [Query Performance Insight](concepts-query-performance-insight.md) i
 De machtigingen **Eigenaar** of **Inzender** zijn vereist om de tekst van de query's weer te geven in Query Performance Insight. Met de machtiging **Lezer** kunt u grafieken en tabellen weergeven maar geen tekst opvragen.
 
 
-## <a name="performance-recommendations"></a>Prestatieaanbevelingen
+## <a name="performance-recommendations"></a>Aanbevelingen voor prestaties
 De functie [Prestatieaanbevelingen](concepts-performance-recommendations.md) analyseert workloads op de server om indexen te analyseren met de mogelijkheid om prestaties te verbeteren.
 
 1. Open **Prestatieaanbevelingen** in de sectie **Ondersteuning en probleemoplossing** van de menubalk op de Azure Portal-pagina voor uw PostgreSQL-server.

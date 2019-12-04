@@ -1,16 +1,16 @@
 ---
-title: Azure Deployment Manager gebruiken met Resource Manager-sjablonen | Microsoft Docs
-description: Resource Manager-sjablonen met Azure Deployment Manager gebruiken om Azure-resources te implementeren.
+title: Azure Deployment Manager gebruiken om sjablonen te implementeren
+description: Meer informatie over het gebruik van Resource Manager-sjablonen met Azure Deployment Manager voor het implementeren van Azure-resources.
 author: mumian
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: db130da9943007e647adf77411b456914af9886f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: f8091aedcf1f03ef83dbab3b27e9af6b2912d25a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307028"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789988"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Zelfstudie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen (openbare preview)
 
@@ -186,7 +186,7 @@ Later in de zelfstudie voert u een implementatie uit. Een door de gebruiker toeg
 
 U moet een door de gebruiker toegewezen beheerde identiteit maken en toegangsbeheer voor uw abonnement configureren.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Maak een [door de gebruiker toegewezen beheerde identiteit](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. Selecteer in de portal **Abonnementen** in het linkermenu en selecteer vervolgens uw abonnement.
 4. Selecteer **Toegangsbeheer (IAM)** en selecteer vervolgens **Roltoewijzing toevoegen**.
@@ -427,7 +427,7 @@ Azure PowerShell kan worden gebruikt om de sjablonen te implementeren.
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 2. Blader naar de zojuist gemaakte webtoepassingen onder de nieuwe resourcegroepen die zijn gemaakt door de implementatie.
 3. Open de webtoepassing in een webbrowser. Controleer de locatie en de versie in het index.html-bestand.
 

@@ -1,17 +1,17 @@
 ---
-title: Query Store in Azure Database for PostgreSQL-één server
+title: Query Store-Azure Database for PostgreSQL-één server
 description: In dit artikel wordt de functie query Store in Azure Database for PostgreSQL-één server beschreven.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 198ef6889ffb7874c44f15338afbd8b3135ae3ef
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ccc503e6718ee8f516920cfbea3ad86e7ed81d84
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331317"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768262"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Prestaties bewaken met de query Store
 
@@ -91,19 +91,19 @@ Wanneer query Store is ingeschakeld, worden gegevens opgeslagen in een periode v
 
 De volgende opties zijn beschikbaar voor het configureren van query Store-para meters.
 
-| **Parameter** | **Beschrijving** | **Standaard** | **Range**|
+| **Bepaalde** | **Beschrijving** | **Standaard** | **Range**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Hiermee stelt u in welke instructies worden bijgehouden. | geen | geen, boven, alle |
-| pg_qs.max_query_text_length | Hiermee stelt u de maximale query lengte in die kan worden opgeslagen. Langere query's worden afgekapt. | 6000 | 100-10K |
-| pg_qs.retention_period_in_days | Hiermee stelt u de Bewaar periode. | 7 | 1 - 30 |
-| pg_qs.track_utility | Hiermee wordt ingesteld of hulp opdrachten worden bijgehouden | op | aan, uit |
+| pg_qs. query_capture_mode | Hiermee stelt u in welke instructies worden bijgehouden. | geen | geen, boven, alle |
+| pg_qs. max_query_text_length | Hiermee stelt u de maximale query lengte in die kan worden opgeslagen. Langere query's worden afgekapt. | 6000 | 100-10K |
+| pg_qs. retention_period_in_days | Hiermee stelt u de Bewaar periode. | 7 | 1 - 30 |
+| pg_qs. track_utility | Hiermee wordt ingesteld of hulp opdrachten worden bijgehouden | waarop | aan, uit |
 
 De volgende opties zijn specifiek van toepassing op wacht statistieken.
 
-| **Parameter** | **Beschrijving** | **Standaard** | **Range**|
+| **Bepaalde** | **Beschrijving** | **Standaard** | **Range**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | Hiermee wordt ingesteld welke instructies worden bijgehouden voor wachtende statistieken. | geen | geen, alle|
-| Pgms_wait_sampling.history_period | Stel de frequentie in milliseconden in waarop wacht gebeurtenissen worden bemonsterd. | 100 | 1-600000 |
+| pgms_wait_sampling. query_capture_mode | Hiermee wordt ingesteld welke instructies worden bijgehouden voor wachtende statistieken. | geen | geen, alle|
+| Pgms_wait_sampling. history_period | Stel de frequentie in milliseconden in waarop wacht gebeurtenissen worden bemonsterd. | 100 | 1-600000 |
 
 > [!NOTE] 
 > **pg_qs. query_capture_mode** vervangt **pgms_wait_sampling. query_capture_mode**. Als pg_qs. query_capture_mode geen, de instelling pgms_wait_sampling. query_capture_mode geen effect heeft.
@@ -122,8 +122,8 @@ In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één
 |**Naam**   |**Type** | **Referentie**  | **Beschrijving**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | ID uit de runtime_stats_entries tabel|
-|user_id    |oid    |pg_authid.oid  |OID van de gebruiker die de instructie heeft uitgevoerd|
-|db_id  |oid    |pg_database.oid    |De OID van de Data Base waarin de instructie is uitgevoerd|
+|user_id    |nogmaals    |pg_authid. OID  |OID van de gebruiker die de instructie heeft uitgevoerd|
+|db_id  |nogmaals    |pg_database. OID    |De OID van de Data Base waarin de instructie is uitgevoerd|
 |query_id   |bigint  || Interne hash-code, berekend op basis van de ontledings structuur van de instructie|
 |query_sql_text |Varchar (10000)  || De tekst van een representatieve verklaring. Verschillende query's met dezelfde structuur worden samen geclusterd. deze tekst is de tekst voor de eerste van de query's in het cluster.|
 |plan_id    |bigint |   |De ID van het abonnement dat is gekoppeld aan deze query en die nog niet beschikbaar is|
@@ -157,25 +157,25 @@ Deze weer gave retourneert query tekst gegevens in query Store. Er is één rij 
 |query_text_id  |bigint     |ID voor de query_texts tabel|
 |query_sql_text |Varchar (10000)     |De tekst van een representatieve verklaring. Verschillende query's met dezelfde structuur worden samen geclusterd. deze tekst is de tekst voor de eerste van de query's in het cluster.|
 
-### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
+### <a name="query_storepgms_wait_sampling_view"></a>query_store. pgms_wait_sampling_view
 Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID, query-ID en gebeurtenis.
 
 |**Naam**|  **Type**|   **Referentie**| **Beschrijving**|
 |---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |OID van de gebruiker die de instructie heeft uitgevoerd|
-|db_id  |oid    |pg_database.oid    |De OID van de Data Base waarin de instructie is uitgevoerd|
+|user_id    |nogmaals    |pg_authid. OID  |OID van de gebruiker die de instructie heeft uitgevoerd|
+|db_id  |nogmaals    |pg_database. OID    |De OID van de Data Base waarin de instructie is uitgevoerd|
 |query_id   |bigint     ||Interne hash-code, berekend op basis van de ontledings structuur van de instructie|
 |event_type |tekst       ||Het type gebeurtenis waarvoor de back-end wacht|
-|gebeurtenis  |tekst       ||De wacht gebeurtenis naam als de back-end momenteel wacht|
+|gebeurtenislog  |tekst       ||De wacht gebeurtenis naam als de back-end momenteel wacht|
 |rpc's  |Geheel getal        ||Nummer van dezelfde gebeurtenis vastgelegd|
 
 
-### <a name="functions"></a>Functions
-Query_store.qs_reset() returns void
+### <a name="functions"></a>Functies
+Query_store. qs_reset () retourneert void
 
 `qs_reset` alle statistieken die tot nu toe zijn verzameld door de query Store verwijderd. Deze functie kan alleen worden uitgevoerd door de rol Server beheerder.
 
-Query_store.staging_data_reset() returns void
+Query_store. staging_data_reset () retourneert void
 
 `staging_data_reset` alle statistieken die in het geheugen zijn verzameld, worden verwijderd door de query Store (dat wil zeggen, de gegevens in het geheugen die nog niet zijn leeg gemaakt voor de data base). Deze functie kan alleen worden uitgevoerd door de rol Server beheerder.
 

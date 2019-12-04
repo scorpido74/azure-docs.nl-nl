@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0abf4bb015be52a10178423a566433b87127a167
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/03/2019
+ms.openlocfilehash: bdd33d85ee0aac4808c343af088d4db1a0dc963e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821915"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767769"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Automatisch afstemmen inschakelen om query's te bewaken en de prestaties van de werk belasting te verbeteren
 
@@ -92,7 +92,7 @@ Als u afzonderlijke opties voor automatisch afstemmen wilt configureren via T-SQ
 ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
 ```
 
-Als u de individuele afstemmings optie instelt op aan, wordt elke instelling die door de data base is overgenomen en de afstemmings optie ingeschakeld. Als u deze instelling uitschakelt, wordt ook alle instellingen die door de Data Base zijn overgenomen, overschreven en wordt de afstemmings optie uitgeschakeld. Voor de optie automatisch afstemmen, waarvoor standaard is opgegeven, wordt de configuratie overgenomen van de instelling voor automatisch afstemmen op database niveau.  
+Als u de individuele afstemmings optie instelt op aan, wordt elke instelling die door de data base is overgenomen en de afstemmings optie ingeschakeld. Als u deze instelling uitschakelt, wordt ook alle instellingen die door de Data Base zijn overgenomen, overschreven en wordt de afstemmings optie uitgeschakeld. De optie automatisch afstemmen, waarvoor standaard is opgegeven, neemt de configuratie voor automatisch afstemmen over van de instellingen op server niveau.  
 
 > [!IMPORTANT]
 > In het geval van [actieve geo-replicatie](sql-database-auto-failover-group.md)moet automatisch afstemmen worden geconfigureerd op de primaire data base. Automatisch toegepaste afstemmings acties, zoals het maken of verwijderen van een index, worden automatisch gerepliceerd naar het secundaire kenmerk alleen-lezen. Als u probeert automatische afstemming via T-SQL in te scha kelen op het alleen-lezen secundair, resulteert dit in een fout omdat een andere afstemmings configuratie op het secundaire kenmerk alleen-lezen niet wordt ondersteund.

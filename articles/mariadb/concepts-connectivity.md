@@ -1,48 +1,48 @@
 ---
-title: Afhandeling van tijdelijke connectiviteitsfouten voor Azure Database voor MariaDB | Microsoft Docs
-description: Leer hoe u voor het afhandelen van tijdelijke connectiviteitsfouten voor Azure Database voor MariaDB.
-keywords: MySQL-verbinding, verbindingsreeks, problemen met de netwerkverbinding, tijdelijke fout, -verbindingsfout
+title: Tijdelijke connectiviteits fouten-Azure Database for MariaDB
+description: Meer informatie over het afhandelen van tijdelijke connectiviteits fouten voor Azure Database for MariaDB.
+keywords: MySQL-verbinding, connection string, connectiviteits problemen, tijdelijke fout, verbindings fout
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: f5f5915e6fdb240fa519ee10526c935a524cb5b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: f061f9cc6d3f03acf01995e2632b229aaea5ab8f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042213"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772859"
 ---
-# <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Afhandeling van tijdelijke connectiviteitsfouten voor Azure Database voor MariaDB
+# <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Verwerking van tijdelijke verbindings fouten voor Azure Database for MariaDB
 
-Dit artikel wordt beschreven hoe u voor het afhandelen van tijdelijke fouten verbinden met Azure Database voor MariaDB.
+In dit artikel wordt beschreven hoe u tijdelijke fouten kunt afhandelen die verbinding maken met Azure Database for MariaDB.
 
 ## <a name="transient-errors"></a>Tijdelijke fouten
 
-Een tijdelijke fout, ook wel bekend als een tijdelijke fouten, is een fout die wordt automatisch opgelost. Deze fouten manifest doorgaans als een verbinding met de database-server wordt verwijderd. Ook kunnen niet nieuwe verbindingen met een server worden geopend. Tijdelijke fouten kunnen bijvoorbeeld optreden wanneer de hardware-of netwerk gebeurt. Een andere reden kan zijn van een nieuwe versie van een PaaS-service die is geïmplementeerd. De meeste van deze gebeurtenissen worden automatisch door het systeem verholpen in minder dan 60 seconden. Er is een best practice voor het ontwerpen en ontwikkelen van toepassingen in de cloud kunt verwachten van tijdelijke fouten. Wordt ervan uitgegaan dat ze kunnen gebeuren in een onderdeel op elk gewenst moment en om de juiste logica voor het verwerken van deze situaties.
+Een tijdelijke fout, ook wel bekend als tijdelijke fout, is een fout die zichzelf zal oplossen. Meestal worden deze fouten manifesten beschouwd als een verbinding met de database server die wordt verwijderd. Er kunnen ook geen nieuwe verbindingen met een server worden geopend. Tijdelijke fouten kunnen bijvoorbeeld optreden als er een hardware-of netwerk fout optreedt. Een andere reden kan een nieuwe versie zijn van een PaaS-service die wordt geïmplementeerd. De meeste van deze gebeurtenissen worden in minder dan 60 seconden automatisch door het systeem beperkt. Een best practice voor het ontwerpen en ontwikkelen van toepassingen in de Cloud is het verwachten van tijdelijke fouten. We gaan ervan uit dat ze op elk gewenst moment in elk onderdeel kunnen plaatsvinden en dat ze de juiste logica hebben om deze situaties af te handelen.
 
-## <a name="handling-transient-errors"></a>Afhandeling van tijdelijke fouten
+## <a name="handling-transient-errors"></a>Tijdelijke fouten verwerken
 
-Tijdelijke fouten moeten worden verwerkt met behulp van de logica voor opnieuw proberen. Situaties die moeten worden beschouwd:
+Tijdelijke fouten moeten worden afgehandeld met behulp van logica opnieuw proberen. Situaties die in overweging moeten worden genomen:
 
-* Er treedt een fout op wanneer u probeert om een verbinding te openen
-* Een niet-actieve verbindingen is op de server verwijderd. Wanneer u een opdracht kan niet worden uitgevoerd
-* Een actieve verbinding die momenteel is een opdracht is uitgevoerd, is verwijderd.
+* Er treedt een fout op wanneer u een verbinding probeert te openen
+* Er wordt een niet-actieve verbinding aan de server zijde verwijderd. Wanneer u een opdracht probeert uit te geven, kan deze niet worden uitgevoerd
+* Een actieve verbinding die momenteel een opdracht uitvoert, wordt verwijderd.
 
-Het eerste en tweede geval zijn redelijk eenvoudig om af te handelen. Probeer de verbinding opnieuw te openen. Als u erin slaagt, is de tijdelijke fout is verholpen door het systeem. U kunt uw Azure Database voor MariaDB opnieuw gebruiken. We raden u aan wacht voordat opnieuw wordt geprobeerd de verbinding. Back-ups uitgeschakeld als de eerste nieuwe pogingen mislukken. Op deze manier het systeem kunt alle resources die beschikbaar zijn om te strijden tegen de foutsituatie gebruiken. Er is een goede patroon te volgen:
+Het eerste en tweede geval zijn redelijk direct in de richting van de hand. Probeer de verbinding opnieuw te openen. Wanneer u dit hebt gedaan, wordt de tijdelijke fout door het systeem verholpen. U kunt uw Azure Database for MariaDB opnieuw gebruiken. We raden u aan te wachten op het opnieuw proberen van de verbinding. Back-ups maken als de eerste pogingen mislukken. Op deze manier kan het systeem alle bronnen gebruiken die beschikbaar zijn om de fout situatie op te lossen. Een goed patroon dat u moet volgen:
 
-* Wacht 5 seconden voordat de eerste poging.
-* Voor elke volgende nieuwe poging, worden de toename van het wachten tot exponentieel toeneemt, 60 seconden.
-* Stel een maximum aantal nieuwe pogingen op het moment waarop uw toepassing rekening gehouden met de bewerking is mislukt.
+* Wacht vijf seconden vóór uw eerste nieuwe poging.
+* Voor elke volgende poging wordt de wacht tijd exponentieel verhoogd, tot 60 seconden.
+* Stel een maximum aantal nieuwe pogingen in op het moment dat de bewerking door uw toepassing wordt beschouwd.
 
-Wanneer een verbinding met een actieve transactie mislukt, is het moeilijker voor het afhandelen van het herstel correct. Er zijn twee mogelijke situaties: Als de transactie alleen-lezen in aard is, is het veilig om de verbinding opnieuw te openen en voer de transactie opnieuw uit. Als echter als de transactie is ook schrijven naar de database, moet u bepalen als de transactie is teruggedraaid of als deze is geslaagd voordat wordt de tijdelijke fout is opgetreden. In dat geval wordt u mogelijk niet hebt ontvangen de bevestiging van het doorvoeren van de database-server.
+Wanneer een verbinding met een actieve trans actie mislukt, is het moeilijker om het herstel af te handelen. Er zijn twee gevallen: als de trans actie alleen-lezen is, is het veilig om de verbinding opnieuw te openen en de trans actie opnieuw uit te voeren. Als de trans actie echter ook is geschreven naar de data base, moet u bepalen of de trans actie is teruggedraaid of dat deze is geslaagd voordat de tijdelijke fout is opgetreden. In dat geval is het mogelijk dat u alleen de bevestiging van de door Voer hebt ontvangen van de database server.
 
-Er is één manier om dit te doen, het genereren van een unieke ID op de client die wordt gebruikt voor alle nieuwe pogingen. U doorgeven deze unieke ID als onderdeel van de transactie op de server en bewaar deze in een kolom met een unique-beperking. Op deze manier die u veilig opnieuw de transactie proberen kunt. Deze zal slagen als de vorige transactie is teruggedraaid en de unieke ID van de client gegenereerd nog niet in het systeem bestaat. Deze mislukken, die wijzen op een schending van de dubbele sleutel als de unieke ID eerder opgeslagen is omdat de vorige transactie is voltooid.
+Een manier om dit te doen, is door een unieke ID te genereren op de client die wordt gebruikt voor alle nieuwe pogingen. U geeft deze unieke ID door als onderdeel van de trans actie op de server en om deze op te slaan in een kolom met een unieke beperking. Op deze manier kunt u de trans actie veilig opnieuw proberen. Dit gebeurt als de vorige trans actie is teruggedraaid en de door de client gegenereerde unieke ID nog niet in het systeem bestaat. Deze fout kan optreden als de unieke ID eerder is opgeslagen, omdat de vorige trans actie is voltooid.
 
-Wanneer uw programma met Azure Database voor MariaDB via externe middleware communiceert, vraagt u de leverancier of de middleware Pogingslogica voor tijdelijke fouten bevat.
+Wanneer uw programma communiceert met Azure Database for MariaDB via middleware van een derde partij, vraagt u de leverancier of de middleware logica voor tijdelijke fouten bevat.
 
-Zorg ervoor dat voor het testen van u logica voor opnieuw proberen. Bijvoorbeeld, probeert uit te voeren van uw code tijdens schaal omhoog of omlaag de rekenresources van u Azure Database voor MariaDB-server. Uw toepassing moet de korte uitvaltijd die wordt aangetroffen tijdens deze bewerking zonder problemen verwerken.
+Zorg ervoor dat u de logica probeert te testen. Probeer bijvoorbeeld uw code uit te voeren terwijl u de reken resources van Azure Database for MariaDB server omhoog of omlaag kunt schalen. Uw toepassing moet de korte downtime die tijdens deze bewerking wordt aangetroffen zonder problemen verwerken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,22 +1,19 @@
 ---
-title: B2B-berichten beveiligen met certificaten-Azure Logic Apps | Microsoft Docs
+title: B2B-berichten beveiligen met certificaten
 description: Voeg certificaten toe voor het beveiligen van B2B-berichten in Azure Logic Apps met de Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-manager: jeconnoc
-ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: be3dbc386b0ac89a85bc1719081df944523c28ce
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 6c5de6eba000c9052c7eb7b31d75804b9f454607
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997826"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790684"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>B2B-berichten beveiligen met certificaten
 
@@ -37,7 +34,7 @@ U kunt deze certificaten gebruiken in uw Enter prise Integration-apps:
 
 Als u een *openbaar certificaat* wilt gebruiken in Logic apps die B2B-mogelijkheden hebben, moet u het certificaat eerst uploaden naar uw integratie account. Nadat u de eigenschappen hebt gedefinieerd in de [overeenkomsten](logic-apps-enterprise-integration-agreements.md) die u hebt gemaakt, is het certificaat beschikbaar om u te helpen bij het beveiligen van uw B2B-berichten.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**in het hoofd menu van Azure. Voer in het zoekvak de naam van uw integratie account in en selecteer vervolgens het gewenste integratie account.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**in het hoofd menu van Azure. Voer in het zoekvak de naam van uw integratie account in en selecteer vervolgens het gewenste integratie account.
 
    ![Uw integratie account zoeken en selecteren](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
@@ -49,7 +46,7 @@ Als u een *openbaar certificaat* wilt gebruiken in Logic apps die B2B-mogelijkhe
 
    | Eigenschap | Waarde | Beschrijving | 
    |----------|-------|-------------|
-   | **Name** | <*certificaat naam*> | De naam van uw certificaat, dat is "publicCert" in dit voor beeld | 
+   | **Naam** | <*certificaat naam*> | De naam van uw certificaat, dat is "publicCert" in dit voor beeld | 
    | **Certificaat type** | Public | Het type van het certificaat |
    | **Certificaat** | <*certificaat bestand-naam*> | Klik op het mappictogram naast het vak **certificaat** om het certificaat bestand te zoeken en te selecteren dat u wilt uploaden. |
    ||||
@@ -76,7 +73,7 @@ Nadat u de eigenschappen hebt gedefinieerd in de [overeenkomsten](logic-apps-ent
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**in het hoofd menu van Azure. Voer in het zoekvak de naam van uw integratie account in en selecteer vervolgens het gewenste integratie account.
+3. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**in het hoofd menu van Azure. Voer in het zoekvak de naam van uw integratie account in en selecteer vervolgens het gewenste integratie account.
 
    ![Uw integratie account zoeken](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
@@ -88,12 +85,12 @@ Nadat u de eigenschappen hebt gedefinieerd in de [overeenkomsten](logic-apps-ent
 
    | Eigenschap | Waarde | Beschrijving | 
    |----------|-------|-------------|
-   | **Name** | <*certificaat naam*> | De naam van uw certificaat, dat is "privateCert" in dit voor beeld | 
+   | **Naam** | <*certificaat naam*> | De naam van uw certificaat, dat is "privateCert" in dit voor beeld | 
    | **Certificaat type** | Privé | Het type van het certificaat |
    | **Certificaat** | <*certificaat bestand-naam*> | Klik op het mappictogram naast het vak **certificaat** om het certificaat bestand te zoeken en te selecteren dat u wilt uploaden. Wanneer u een sleutel kluis voor de persoonlijke sleutel gebruikt, is het geüploade bestand het open bare certificaat. | 
-   | **Resourcegroep** | <*integration-account-resource-group*> | De resource groep van uw integratie account, dat wil zeggen ' MyResourceGroup ' in dit voor beeld | 
-   | **Key Vault** | <*sleutel-kluis-naam*> | De naam van uw Azure-sleutel kluis |
-   | **Sleutel naam** | <*key-name*> | De naam van uw sleutel |
+   | **Resourcegroep** | <*Integration-account-resource groep*> | De resource groep van uw integratie account, dat wil zeggen ' MyResourceGroup ' in dit voor beeld | 
+   | **Key Vault** | <*sleutel-kluis naam*> | De naam van uw Azure-sleutel kluis |
+   | **Sleutel naam** | <*sleutel naam*> | De naam van uw sleutel |
    ||||
 
    ![Kies toevoegen, geef certificaat details op](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)

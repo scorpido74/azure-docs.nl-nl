@@ -1,19 +1,19 @@
 ---
-title: De server Logboeken in Azure Database for MariaDB van de Azure Portal configureren en openen
-description: In dit artikel wordt beschreven hoe u de server Logboeken in Azure Database for MariaDB kunt configureren en openen vanuit de Azure Portal.
+title: Toegang tot langzame query logboeken-Azure Portal-Azure Database for MariaDB
+description: In dit artikel wordt beschreven hoe u de langzame query Logboeken in Azure Database for MariaDB kunt configureren en openen vanuit de Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: c7e95521e503ad2d92bf13ae7e410b71ed6dfcd3
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 12/02/2019
+ms.openlocfilehash: 69a01ec021ecbade235a693b1be502353420fde0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844699"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767463"
 ---
-# <a name="configure-and-access-server-logs-from-the-azure-portal"></a>Server logboeken van de Azure Portal configureren en openen
+# <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Langzame query logboeken van de Azure Portal configureren en openen
 
 U kunt de [Azure database for MariaDB langzame query logboeken](concepts-server-logs.md) configureren, weer geven en downloaden vanuit de Azure Portal.
 
@@ -23,7 +23,7 @@ Voor de stappen in dit artikel moet [Azure database for MariaDB server](quicksta
 ## <a name="configure-logging"></a>Logboek registratie configureren
 Configureer de toegang tot het logboek voor langzame query's. 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer uw Azure Database for MariaDB-server.
 

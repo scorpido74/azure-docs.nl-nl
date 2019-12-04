@@ -1,25 +1,23 @@
 ---
-title: Verbinding maken met de SFTP-server met SSH-Azure Logic Apps
+title: Verbinding maken met de SFTP-server met SSH
 description: Taken automatiseren voor het bewaken, maken, beheren, verzenden en ontvangen van bestanden voor een SFTP-server met behulp van SSH en Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, klam, LADocs
+author: divyaswarnkar
+ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 54a1d1183ac16f5ec3db5477cda75c6e1a776b3d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837138"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786878"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met SSH en Azure Logic Apps
 
-U kunt met behulp van het SSH-protocol [(Secure Shell)](https://www.ssh.com/ssh/protocol/) voor het automatiseren van taken voor het bewaken, maken, verzenden en ontvangen van bestanden op een [Secure File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) -server door het gebruik van Azure Logic apps en de SFTP-SSH te automatiseren connector. SFTP is een netwerkprotocol dat bestandstoegang, bestandsoverdracht en bestandsbeheer mogelijk maakt via elke betrouwbare gegevensstroom. Hier volgen enkele voor beelden van taken die u kunt automatiseren:
+U kunt met behulp van het SSH-protocol [(Secure Shell)](https://www.ssh.com/ssh/protocol/) werk stromen met behulp van Azure Logic apps en de SFTP-SSH-connector maken en automatiseren om taken te automatiseren die bestanden op een [beveiligde File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) -server bewaken, maken, verzenden en ontvangen. SFTP is een netwerkprotocol dat bestandstoegang, bestandsoverdracht en bestandsbeheer mogelijk maakt via elke betrouwbare gegevensstroom. Hier volgen enkele voor beelden van taken die u kunt automatiseren:
 
 * Controleren wanneer bestanden worden toegevoegd of gewijzigd.
 * Bestanden downloaden, maken, kopiëren, een andere naam geven, bijwerken, weer geven en verwijderen.
@@ -31,7 +29,7 @@ U kunt triggers gebruiken die gebeurtenissen op uw SFTP-server controleren en ui
 
 Zie de sectie [SFTP-SSH versus SFTP vergelijken](#comparison) verderop in dit onderwerp voor verschillen tussen de SFTP-SSH-connector en de SFTP-connector.
 
-## <a name="limits"></a>Limieten
+## <a name="limits"></a>Beperkingen
 
 * Met SFTP-SSH-acties kunnen standaard bestanden worden gelezen of geschreven die *1 GB of kleiner* zijn, maar slechts in *15 MB* segmenten tegelijk. Voor het afhandelen van bestanden die groter zijn dan 15 MB, worden met SFTP-SSH-acties [bericht chunks](../logic-apps/logic-apps-handle-large-messages.md)ondersteund, met uitzonde ring van de actie bestand kopiëren, waarmee slechts 15 MB bestanden kunnen worden verwerkt. De actie **Bestands inhoud ophalen** maakt impliciet gebruik van bericht Chunking.
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: alzam
-ms.openlocfilehash: 0319e3aec71d37b49a094861fdcbb3b96b6def67
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0572a919675ab363c55938f8731c691cd8129826
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585439"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767650"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Zelf studie: een VPN-verbinding voor een gebruiker maken met behulp van Azure Virtual WAN
 
@@ -134,7 +134,7 @@ Gebruik het gedownloade profiel om de clients voor externe toegang te configurer
 1. Download en installeer de OpenVPN-client op de officiële website.
 2. Download het VPN-profiel voor de gateway. U kunt dit doen via het tabblad gebruikers VPN-configuraties in Azure Portal, of New-AzureRmVpnClientConfiguration in Power shell.
 3. Pak het profiel uit. Open het configuratiebestand vpnconfig.ovpn uit de map OpenVPN in Kladblok.
-4. Vul het gedeelte P2S client certificate met de openbare P2S-clientcertificatcode in base64. In een certificaat met PEM-indeling kunt u gewoon het .cer-bestand openen en de base64-code tussen de headers van het certificaat kopiëren. Hier ziet u hoe u een certificaat kunt exporteren om de gecodeerde openbare sleutel te verkrijgen.
+4. Vul het gedeelte P2S client certificate met de openbare P2S-clientcertificatcode in base64. In een certificaat met PEM-indeling kunt u gewoon het .cer-bestand openen en de base64-code tussen de headers van het certificaat kopiëren. Hier ziet u [hoe u een certificaat exporteert om de gecodeerde open bare sleutel op te halen.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)
 5. Vul in het gedeelte voor de persoonlijke sleutel de persoonlijke P2S-clientcertificaatsleutel in Base64 in. Bekijk hier hoe u de persoonlijke sleutel kunt uitpakken.
 6. Wijzig geen andere velden. Gebruik de ingevulde configuratie in de clientinvoer om verbinding te maken met de VPN.
 7. Kopieer het bestand vpnconfig.ovpn naar C:\Program Files\OpenVPN\config folder.
@@ -145,7 +145,7 @@ Gebruik het gedownloade profiel om de clients voor externe toegang te configurer
 1. Selecteer de VPN-clientconfiguratiebestanden die overeenkomen met de architectuur van de Windows-computer. Kies voor een architectuur met 64-bits processor het installatiepakket ‘VpnClientSetupAmd64’. Kies voor een architectuur met 32-bits processor het installatiepakket ‘VpnClientSetupAmdX86’.
 2. Dubbelklik op het pakket om het te installeren. Klik op Meer info en vervolgens op Toch uitvoeren als u een SmartScreen-melding ziet.
 3. Navigeer op de clientcomputer naar Netwerkinstellingen en klik op VPN. De VPN-verbinding bevat de naam van het virtuele netwerk waarmee verbinding wordt gemaakt.
-4. Controleer of u een clientcertificaat op de clientcomputer hebt geïnstalleerd voordat u verbinding probeert te maken. Een clientcertificaat is vereist voor verificatie als u het systeemeigen verificatietype met Azure-certificaat gebruikt. Raadpleeg Certificaten genereren voor meer informatie over het genereren van certificaten. Raadpleeg Een clientcertificaat installeren voor meer informatie over het installeren van een clientcertificaat.
+4. Controleer of u een clientcertificaat op de clientcomputer hebt geïnstalleerd voordat u verbinding probeert te maken. Een clientcertificaat is vereist voor verificatie als u het systeemeigen verificatietype met Azure-certificaat gebruikt. Zie [certificaten genereren](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)voor meer informatie over het genereren van certificaten. Raadpleeg Een clientcertificaat installeren voor meer informatie over het installeren van een clientcertificaat.
 
 ## <a name="viewwan"></a>Uw virtuele WAN weer geven
 

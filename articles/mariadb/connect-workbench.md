@@ -1,20 +1,20 @@
 ---
-title: Verbinding maken met Azure Database for MariaDB via MySQL Workbench
+title: Verbinding maken met MySQL Workbench-Azure Database for MariaDB
 description: Deze snelstart bevat de stappen voor het gebruik van MySQL Workbench om verbinding te maken met en gegevens op te vragen uit Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 8f2ae27e19acb5bf324202b463d2b3027ad2ea5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2018
+ms.openlocfilehash: 85a38fe3e2d17eb53d1ed5f8f231898849bd01db
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60936204"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772058"
 ---
-# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: MySQL Workbench gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: MySQL Workbench gebruiken om verbinding te maken en gegevens op te vragen
 
 In deze snelstart ziet u hoe u met behulp van MySQL Workbench verbinding maakt met een Azure Database for MariaDB-instantie. 
 
@@ -33,7 +33,7 @@ In deze snelstart worden de resources die in een van de volgende handleidingen z
 
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database for MariaDB-instantie. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer in het linkse menu van de Azure-portal de optie **Alle resources**. Zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 
@@ -54,11 +54,11 @@ Verbinding maken met een Azure Database for MariaDB-server met behulp van MySQL 
    | Instelling | Voorgestelde waarde | Beschrijving van veld |
    |---|---|---|
    |   Verbindingsnaam | **Demoverbinding** | Geef een label op voor deze verbinding. |
-   | Verbindingsmethode | **Standard (TCP/IP)** | Standard (TCP/IP) is voldoende. |
+   | Verbindingsmethode | **Standaard (TCP/IP)** | Standard (TCP/IP) is voldoende. |
    | Hostnaam | *servernaam* | Geef de servernaamwaarde op die u hebt gebruikt toen u de Azure Database for MariaDB-instantie maakte. De server in ons voorbeeld is **mydemoserver.mariadb.database.azure.com**. Gebruik de FQDN (Fully Qualified Domain Name) (\*.mariadb.database.azure.com) zoals weergegeven in het voorbeeld. Als u de servernaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen.  |
-   | Poort | **3306** | Gebruik altijd poort 3306 bij het verbinden met Azure Database for MariaDB. |
-   | Gebruikersnaam |  *aanmeldnaam van serverbeheerder* | Geef de aanmeldnaam van de serverbeheerder op die u hebt gebruikt toen u de Azure Database for MariaDB-instantie maakte. De gebruikersnaam van ons voorbeeld is **myadmin\@mydemoserver**. Als u de aanmeldnaam van de serverbeheerder niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *gebruikersnaam\@servername*.
-   | Wachtwoord | *Uw wachtwoord* | Selecteer **Opslaan in de kluis** om het wachtwoord op te slaan. |
+   | Port | **3306** | Gebruik altijd poort 3306 bij het verbinden met Azure Database for MariaDB. |
+   | Gebruikersnaam |  *aanmeldnaam van serverbeheerder* | Geef de aanmeldnaam van de serverbeheerder op die u hebt gebruikt toen u de Azure Database for MariaDB-instantie maakte. De gebruikers naam van ons voor beeld is **myadmin\@mydemoserver**. Als u de aanmeldnaam van de serverbeheerder niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *username\@servername*.
+   | Wachtwoord | *uw wachtwoord* | Selecteer **Opslaan in de kluis** om het wachtwoord op te slaan. |
 
    ![Een nieuwe verbinding instellen](./media/connect-workbench/2-setup-new-connection.png)
 

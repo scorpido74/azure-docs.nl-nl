@@ -1,5 +1,5 @@
 ---
-title: Wat is geautomatiseerde ML/automl
+title: Wat is geautomatiseerde ML/AutoML
 titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe Azure Machine Learning automatisch een algoritme voor u kunt kiezen, en hoe u hiermee een model genereert om u tijd te besparen met behulp van de para meters en de criteria die u opgeeft om het beste algoritme voor uw model te selecteren.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 1320448b88fa3851196a3dfcb3107921721d364d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4ed27009a3549757881c84d92b3b29b60ecbfbc1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707683"
+ms.locfileid: "74790560"
 ---
 # <a name="what-is-automated-machine-learning"></a>Wat is automatische machine learning?
 
@@ -100,8 +100,58 @@ Er zijn ook aanvullende geavanceerde preverwerkings-en parametrisatie beschikbaa
 
 + Python-SDK: Geef `"feauturization": auto' / 'off' / FeaturizationConfig` op voor de [`AutoMLConfig` klasse](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py).
 
+## <a name="prevent-over-fitting"></a>Voor komen dat de installatie meer wordt uitgevoerd
+
+Over het machine learning vindt plaats wanneer een model te groot is voor de opleidings gegevens en daardoor niet nauw keurig kan worden voor speld op onduidelijke test gegevens. Met andere woorden, het model heeft simpelweg specifieke patronen en ruis in de trainings gegevens, maar is niet flexibel genoeg om voor spellingen te doen op echte gegevens. In de meeste gevallen van egregious wordt ervan uitgegaan dat de combi Naties van functie waarden die tijdens de training worden weer gegeven, altijd resulteren in exact dezelfde uitvoer voor het doel. 
+
+De beste manier om te voor komen dat u aan de slag gaat, is het volgen van de best practices van ML, waaronder:
+
+* Meer trainings gegevens gebruiken en statistische afwijking elimineren
+* Doel lekkage voor komen
+* Minder functies gebruiken
+* **Regularisatie en afstemming optimaliseren**
+* **Complexiteits beperkingen voor modellen**
+* **Kruis validatie**
+
+In de context van automatische ML zijn de eerste drie bovenstaande items de **Best practices die u implementeert**. De laatste drie vetgedrukte items zijn de **Best practices waarmee automatische milliliters worden geïmplementeerd** . In andere instellingen dan automatische MILLILITERs zijn alle zes aanbevolen procedures te volgen om te voor komen dat modellen worden overbelast.
+
+### <a name="best-practices-you-implement"></a>Aanbevolen procedures voor het implementeren van
+
+Het gebruik van **meer gegevens** is de eenvoudigste en best mogelijke manier om te voor komen dat u aan de slag gaat, en naarmate een extra bonus doorgaans nauw keuriger wordt. Wanneer u meer gegevens gebruikt, is het moeilijker voor het model om exacte patronen te onthouden. het is ook mogelijk om oplossingen te bereiken die flexibeler zijn om meer voor waarden te bieden. Het is ook belang rijk om **statistische afwijking**te herkennen, om ervoor te zorgen dat uw trainings gegevens geen geïsoleerde patronen bevatten die niet voor komen in Live-Voorspellings gegevens. Dit scenario kan moeilijk worden opgelost, omdat er mogelijk geen verdere aanpassing is tussen uw Train-en test sets, maar er mogelijk sprake is van een overmatige installatie van gegevens in vergelijking met live test.
+
+Het doel lekkage is een soortgelijk probleem, waar u mogelijk geen overmatige installatie van de sets voor Train/Test ziet, maar deze wordt weer gegeven bij voor spellingen. Lekkage van het doel treedt op wanneer uw model ' vals speelt ' tijdens de training wordt uitgevoerd door toegang te hebben tot gegevens die niet normaal gesp roken bij voor spelling moeten zijn. Als het probleem zich bijvoorbeeld voordoet om op maandag te voors pellen wat een basisproduct prijs op vrijdag is, maar een van uw functies per ongeluk opgenomen gegevens uit donderdag, worden de gegevens in het model niet in de toekomst weer gegeven. Lekkage van het doel is een eenvoudige fout om te missen, maar wordt vaak gekenmerkt door abnormaal hoge nauw keurigheid van uw probleem. Als u probeert aandelen koers te voors pellen en een model met een nauw keurigheid van 95% hebt getraind, is er een zeer waarschijnlijke lekkage in uw functies.
+
+Het verwijderen van functies kan ook helpen om te voor komen dat het model te veel velden bevat om specifieke patronen te onthouden, waardoor het flexibeler is. Het kan lastig zijn om kwantitatief te meten, maar als u functies kunt verwijderen en dezelfde nauw keurigheid wilt behouden, hebt u waarschijnlijk het model flexibeler en hebt u het risico van meerwaarde verbeterd.
+
+### <a name="best-practices-automated-ml-implements"></a>Aanbevolen procedures voor de implementatie van automatische MILLILITERs
+
+Regularisatie is het proces van het minimaliseren van een kosten functie voor het bestraffen van complexe en meer bewaarde modellen. Er zijn verschillende soorten regularisatie-functies, maar in het algemeen zijn ze allemaal in het gepaste formaat, variantie en complexiteit van het model. Automatische MILLILITERs maakt gebruik van L1 (lasso), L2 (tanden) en ElasticNet (L1 en L2) in verschillende combi Naties met verschillende model afstemming-instellingen die de voor-en hand leiding regelen. In eenvoudige termen variëren automatische MILLILITERs hoeveel een model wordt gereguleerd en wordt het beste resultaat gekozen.
+
+Automatische ML implementeert ook de complexiteits beperkingen van expliciete modellen om te voor komen dat ze niet meer worden toegepast. In de meeste gevallen is dit specifiek voor beslissings structuur of forest-algoritmen, waarbij de maximale diepte van afzonderlijke structuren beperkt is en het totale aantal gebruikte bomen in forest-of ensemble-technieken beperkt is.
+
+Kruis validatie (AVK) is het proces van het nemen van veel subsets van uw volledige trainings gegevens en het trainen van een model op elke subset. Het is een goed idee dat een model ' blij ' kan krijgen en een uitstekende nauw keurigheid heeft met één subset, maar door veel subsets te gebruiken, wordt deze hoge nauw keurigheid niet elke keer door het model gerealiseerd. Bij het uitvoeren van AVK geeft u een evaluatie-gegevensset voor validatie op, geeft u uw CV-vouwen (aantal subsets) op en geautomatiseerd ML traint uw model en verlaagt u Hyper parameters om de fout in uw valideringsset te minimaliseren. Een CV-vouw is mogelijk te groot, maar door veel ervan te gebruiken, wordt de kans kleiner dat uw uiteindelijke model over de juiste plaats komt. De balans is dat de AVK een langere opleidings tijd en dus meer kosten in beslag neemt, omdat u deze voor elke *n* -CV-subsets eenmaal hoeft te trainen.
+
+> [!NOTE]
+> Kruis validatie is standaard niet ingeschakeld. Deze moet worden geconfigureerd in de instellingen voor automatische ML. Wanneer AVK echter is geconfigureerd en er een validatie gegevensset is opgegeven, wordt het proces automatisch voor u geautomatiseerd.
+
+### <a name="identifying-over-fitting"></a>Identificerende over-montage
+
+Bekijk de volgende getrainde modellen en de bijbehorende trein-en test keurigheden.
+
+| Model | Nauw keurigheid trainen | Nauw keurigheid testen |
+|-------|----------------|---------------|
+| A | 99,9% | 95% |
+| B | 87% | 87% |
+| C | 99,9% | 45% |
+
+Als model **a**wordt overwogen, is er sprake van een veelvoorkomende, niet-gemeen schappelijke gegevens. De nauw keurigheid van de test moet echter altijd kleiner zijn dan de nauw keurigheid van de training, en het onderscheid voor meer informatie over de juiste aanpassing is afhankelijk van *wat* nauw keuriger is. 
+
+Bij het vergelijken van modellen **a** en **B**is model **a** een beter model omdat het een hogere nauw keurigheid voor de test heeft en hoewel de nauw keurigheid van de test op 95% iets lager is. U hebt model **B** niet gewoon gekozen, omdat de keurigheden van de trein en test dichter bij elkaar komen.
+
+Model **C** staat voor een duidelijk beeld van over-montage; de nauw keurigheid van de training is zeer hoog, maar de nauw keurigheid van de test is nergens bijna zo hoog. Dit onderscheid is enigszins subjectief, maar komt van kennis van uw probleem en gegevens, en van de omvang van de fout die acceptabel is. 
 
 ## <a name="time-series-forecasting"></a>Prognoses met tijdreeksen
+
 Het maken van prognoses is een integraal onderdeel van een bedrijf, of het nu gaat om inkomsten, inventaris, verkoop of klant vraag. U kunt automatische ML gebruiken om technieken en benaderingen te combi neren en een aanbevolen prognose voor de time-series van hoge kwaliteit te krijgen.
 
 Een geautomatiseerd experiment in de tijd reeks wordt behandeld als een multidimensionale regressie probleem. De waarden voor de laatste tijd reeksen zijn ' gedraaid ' om aanvullende dimensies te krijgen voor de regressor hierop samen met andere voor spellingen. Deze methode, in tegens telling tot de methoden van de klassieke tijd reeks, heeft een voor deel van het gebruik van natuurlijk meerdere contextuele variabelen en hun relatie met elkaar tijdens de training. Automatische ML leert een enkelvoudig, maar vaak intern vertakkings model voor alle items in de gegevensset en de voor spellingen Horizons. Er zijn meer gegevens beschikbaar voor het schatten van model parameters en generalisatie naar onzichtbaar serie.

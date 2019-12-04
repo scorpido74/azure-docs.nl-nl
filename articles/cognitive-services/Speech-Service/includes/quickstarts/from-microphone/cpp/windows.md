@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 1a08a5413ae41ef8c17e817a01be9e9efcb7ff99
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dd31ae7b0fbbd9c411cf1bb511551bfba57a1838
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503638"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795705"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
 > * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=windows)
+> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
@@ -36,9 +37,12 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
 1. Kies in de menu balk de optie **bestand** > alles op te **slaan**.
+
+> [!NOTE]
+> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3ea77eb5dd8a03f877164179e3accc3a6f6d0aef
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548322"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793362"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -48,14 +48,12 @@ Niet-beheerde VM-schijven worden niet ondersteund in accounts met een hiërarchi
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="api-scope-for-data-lake-storage-client-library-for-sdk-powershell-and-cli"></a>API-bereik voor Data Lake Storage-client bibliotheek voor SDK, Power shell en CLI
-
-### <a name="filesystem-support-in-sdks"></a>Bestandssysteem ondersteuning in Sdk's
+## <a name="filesystem-support-in-sdks"></a>Bestandssysteem ondersteuning in Sdk's
 
 - .NET, Java en python bevinden zich in de open bare preview. Andere Sdk's worden momenteel niet ondersteund.
 - Het ophalen en instellen van Acl's-bewerkingen zijn momenteel niet recursief.
 
-### <a name="filesystem-support-in-powershell-and-azure-cli"></a>Bestandssysteem ondersteuning in Power shell en Azure CLI
+## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Bestandssysteem ondersteuning in Power shell en Azure CLI
 
 Het ophalen en instellen van Acl's-bewerkingen zijn momenteel niet recursief.
 
@@ -77,7 +75,6 @@ De volgende tabel bevat alle andere functies en hulpprogram ma's die nog niet wo
 | **Registratie in diagnoselogboek** |Diagnostische logboeken worden ondersteund (preview).<br><br>Het inschakelen van Logboeken in het Azure Portal wordt momenteel niet ondersteund. Hier volgt een voor beeld van het inschakelen van de logboeken met behulp van Power shell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Zorg ervoor dat u `Blob` opgeeft als de waarde van de para meter `-ServiceType`, zoals wordt weer gegeven in dit voor beeld. <br><br>Momenteel kan Azure Storage Explorer niet worden gebruikt voor het weer geven van Diagnostische logboeken. Als u logboeken wilt weer geven, gebruikt u AzCopy of Sdk's.
 | **Onveranderbare opslag** |Nog niet ondersteund <br><br>Onveranderbare opslag biedt de mogelijkheid om gegevens op te slaan in een [worm (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
 | **Lagen op object niveau** |De lagen cool en Archive worden ondersteund. De Archive-laag is beschikbaar als preview-versie. Alle andere toegangs lagen worden nog niet ondersteund. <br><br> Er zijn momenteel enkele fouten die van invloed zijn op de toegangs laag voor het archief.  Meld u aan voor de preview-versie van de Access [-laag voor](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)het archief.|
-| **Ondersteuning voor Power shell en CLI** | Beperkte functionaliteit <br><br>BLOB-bewerkingen worden ondersteund. Werken met mappen en toegangs beheer lijsten (Acl's) instellen wordt nog niet ondersteund. |
 | **Statische websites** |Nog niet ondersteund <br><br>Met name de mogelijkheid om bestanden te leveren aan [statische websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
 | **Toepassingen van derden** | Beperkte ondersteuning <br><br>Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven werken als u ze gebruikt met Data Lake Storage Gen2. <br>Toepassingen die BLOB-Api's aanroepen, werken waarschijnlijk.|
 |**Voorlopig verwijderen** |Nog niet ondersteund|

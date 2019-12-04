@@ -1,20 +1,17 @@
 ---
-title: Verificatie toevoegen aan aangepaste Api's-Azure Logic Apps | Microsoft Docs
+title: Verificatie toevoegen aan aangepaste Api's
 description: Verificatie instellen voor het aanroepen van aangepaste Api's van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039134"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793158"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Beveiligde aanroepen van aangepaste Api's van Azure Logic Apps
 
@@ -200,10 +197,10 @@ Open de definitie van de logische app in de code weergave, ga naar de **http-** 
 }
 ```
 
-| Eigenschap | Vereist | Beschrijving | 
+| Eigenschap | Verplicht | Beschrijving | 
 | -------- | -------- | ----------- | 
-| tenant | Ja | De GUID voor de Azure AD-Tenant | 
-| audience | Ja | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
+| bouw | Ja | De GUID voor de Azure AD-Tenant | 
+| gericht | Ja | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
 | clientId | Ja | De GUID voor de client die toegang vraagt, de client-ID van de toepassings identiteit voor uw logische app | 
 | geheim | Ja | De sleutel of het wacht woord van de toepassings-id voor de client die het toegangs token aanvraagt | 
 | type | Ja | Het verificatie type. Voor ActiveDirectoryOAuth-verificatie is de waarde `ActiveDirectoryOAuth`. | 
@@ -251,7 +248,7 @@ Neem de volgende eigenschappen op in de sectie **autorisatie** :
 } 
 ```
 
-| Eigenschap | Vereist | Beschrijving |
+| Eigenschap | Verplicht | Beschrijving |
 | -------- | -------- | ----------- |
 | `type` | Ja | Het verificatie type. Voor SSL-client certificaten moet de waarde `ClientCertificate`zijn. |
 | `password` | Nee | Het wacht woord voor toegang tot het client certificaat (PFX-bestand) |
@@ -274,7 +271,7 @@ Neem de volgende eigenschappen op in de sectie **autorisatie** :
 }
 ```
 
-| Eigenschap | Vereist | Beschrijving | 
+| Eigenschap | Verplicht | Beschrijving | 
 | -------- | -------- | ----------- | 
 | type | Ja | Het verificatie type dat u wilt gebruiken. Voor basis verificatie moet de waarde `Basic`zijn. | 
 | gebruikersnaam | Ja | De gebruikers naam die u wilt gebruiken voor verificatie | 

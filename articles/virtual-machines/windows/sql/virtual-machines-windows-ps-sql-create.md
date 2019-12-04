@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 072c58377645c807328bfcd79028daad70df7338
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b1578547fbca4caaecb209021569f0fbb2f1ae24
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102115"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790628"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>SQL Server virtuele machines inrichten met Azure PowerShell
 
@@ -63,7 +63,7 @@ $StorageName = $ResourceGroupName + "storage"
 $StorageSku = "Premium_LRS"
 ```
 
-### <a name="network-properties"></a>Netwerkeigenschappen
+### <a name="network-properties"></a>Netwerk eigenschappen
 Definieer de eigenschappen die door het netwerk in de virtuele machine moeten worden gebruikt. 
 
 - Netwerkinterface
@@ -138,7 +138,7 @@ Voer deze cmdlet uit om uw nieuwe resource groep te maken.
 New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Maak een opslagaccount
 Voor de virtuele machine zijn opslag resources vereist voor de schijf met het besturings systeem en voor de SQL Server gegevens en logboek bestanden. Voor eenvoud maakt u één schijf voor beide. U kunt later extra schijven toevoegen met behulp van de cmdlet [add-Azure Disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azuredisk) om uw SQL Server-gegevens en-logboek bestanden op toegewezen schijven te plaatsen. Gebruik de cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) om een standaard-opslag account te maken in de nieuwe resource groep. Geef de variabelen op die u eerder hebt geïnitialiseerd voor de naam van het opslag account, de naam van de opslag-SKU en de locatie.
 
 Voer deze cmdlet uit om uw nieuwe opslag account te maken.
@@ -171,7 +171,7 @@ Voer deze cmdlet uit om de configuratie van uw virtuele subnet te maken.
 $SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
 ```
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 Maak vervolgens het virtuele netwerk in de nieuwe resource groep met behulp van de cmdlet [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) . Geef de variabelen op die u eerder hebt geïnitialiseerd voor de naam, locatie en adres voorvoegsel. Gebruik de configuratie van het subnet dat u in de vorige stap hebt gedefinieerd.
 
 Voer deze cmdlet uit om het virtuele netwerk te maken.
@@ -337,12 +337,13 @@ De virtuele machine wordt gemaakt.
 > Als er een fout optreedt in de diagnostische gegevens over opstarten, kunt u deze negeren. Er wordt een standaard-opslag account voor diagnostische gegevens over opstarten gemaakt, omdat het opgegeven opslag account voor de schijf van de virtuele machine een Premium-opslag account is.
 
 ## <a name="install-the-sql-iaas-agent"></a>SQL IaaS-agent installeren
-SQL Server virtuele machines ondersteunen geautomatiseerde beheer functies met de [uitbrei ding SQL Server IaaS agent](virtual-machines-windows-sql-server-agent-extension.md). Als u de agent op de nieuwe virtuele machine wilt installeren, voert u de volgende opdracht uit nadat deze is gemaakt.
+SQL Server virtuele machines ondersteunen geautomatiseerde beheer functies met de [uitbrei ding SQL Server IaaS agent](virtual-machines-windows-sql-server-agent-extension.md). Als u de agent wilt installeren op de nieuwe virtuele machine en wilt registreren bij de resource provider, moet u de opdracht [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) uitvoeren nadat de virtuele machine is gemaakt. Geef het licentie type voor uw SQL Server virtuele machine op en kies een van de betalen per gebruik-of uw eigen licentie via de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). Zie [licentie model](virtual-machines-windows-sql-ahb.md)voor meer informatie over licentie verlening. 
 
 
    ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
 
 ## <a name="stop-or-remove-a-vm"></a>Een virtuele machine stoppen of verwijderen
 
@@ -419,8 +420,8 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName $Publis
 # Create the VM in Azure
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
-# Add the SQL IaaS Extension
-Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+# Add the SQL IaaS Extension, and choose the license type
+New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

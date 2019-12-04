@@ -1,17 +1,17 @@
 ---
-title: Overzicht van het eind punt van Azure Database for MariaDB server VNet-Services | Microsoft Docs
+title: VNet-service-eind punten-Azure Database for MariaDB
 description: Hierin wordt beschreven hoe VNet-service-eind punten werken voor uw Azure Database for MariaDB-server.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 5ca7a62ed6b9cd132e0cae226c2123043c833ffa
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 12/02/2019
+ms.openlocfilehash: 72d8e58d1f4ca2955ed2469d061277949751d8b3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610413"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772695"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Virtual Network Service-eind punten en-regels gebruiken voor Azure Database for MariaDB
 
@@ -30,9 +30,9 @@ Als u een regel voor een virtueel netwerk wilt maken, moet u eerst een [virtueel
 
 **Virtueel netwerk:** U kunt virtuele netwerken koppelen aan uw Azure-abonnement.
 
-**Subnetrouter** Een virtueel netwerk bevat **subnetten**. Alle Azure virtual machines (Vm's) die u hebt toegewezen aan subnetten. Eén subnet kan meerdere Vm's of andere reken knooppunten bevatten. Reken knooppunten die zich buiten uw virtuele netwerk bevinden, hebben geen toegang tot het virtuele netwerk tenzij u de beveiliging zo configureert dat toegang wordt toegestaan.
+**Subnet:** Een virtueel netwerk bevat **subnetten**. Alle Azure virtual machines (Vm's) die u hebt toegewezen aan subnetten. Eén subnet kan meerdere Vm's of andere reken knooppunten bevatten. Reken knooppunten die zich buiten uw virtuele netwerk bevinden, hebben geen toegang tot het virtuele netwerk tenzij u de beveiliging zo configureert dat toegang wordt toegestaan.
 
-**Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt][vm-virtual-network-service-endpoints-overview-649d] is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. In dit artikel bent u geïnteresseerd in de type naam van **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database. Deze servicetag is ook van toepassing op de Azure Database for MariaDB-, MySQL-en PostgreSQL-Services. Het is belang rijk te weten wanneer u de code van de **micro soft. SQL** -service toepast op een VNet-service-eind punt Hiermee wordt het verkeer van service-eind punten geconfigureerd voor alle Azure SQL Database, Azure Database for MariaDB, Azure Database for MySQL en Azure database for PostgreSQL servers in het subnet.
+**Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt][vm-virtual-network-service-endpoints-overview-649d] is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. In dit artikel bent u geïnteresseerd in de type naam van **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database. Deze servicetag is ook van toepassing op de Azure Database for MariaDB-, MySQL-en PostgreSQL-Services. Het is belang rijk te weten wanneer u de code van de **micro soft. SQL** -service toepast op een VNet-service-eind punt Hiermee wordt service-eindpunt verkeer geconfigureerd voor alle Azure SQL Database, Azure Database for MariaDB, Azure Database for MySQL en Azure database for PostgreSQL servers in het subnet.
 
 **Regel voor virtueel netwerk:** Een regel voor het virtuele netwerk voor uw Azure Database for MariaDB-server is een subnet dat wordt vermeld in de toegangs beheer lijst (ACL) van uw Azure Database for MariaDB-server. Het subnet moet de naam van het **micro soft. SQL** -type bevatten in de ACL voor uw Azure database for MariaDB-server.
 
@@ -50,7 +50,7 @@ Met een regel voor het virtuele netwerk krijgt uw Azure Database for MariaDB-ser
 
 Totdat u actie onderneemt, kunnen de Vm's op uw subnetten niet communiceren met uw Azure Database for MariaDB-server. Een actie die de communicatie tot stand brengt, is het maken van een regel voor een virtueel netwerk. De motivering van het kiezen van de methode voor de VNet-regel vereist een vergelijking en contrast met betrekking tot de concurrerende beveiligings opties die door de firewall worden geboden.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Toegang tot Azure-services toestaan
+### <a name="a-allow-access-to-azure-services"></a>A. Toegang tot Azure-Services toestaan
 
 Het deel venster verbindings beveiliging heeft een **aan/uit-** knop met de naam **toegang tot Azure-Services toestaan**. Met de instelling **bij** kunt u communicatie van alle Azure IP-adressen en alle Azure-subnetten toestaan. Deze IP-adressen of subnetten van Azure zijn mogelijk niet het eigendom van u. Deze **bij** instelling is waarschijnlijk meer open dan u wilt dat uw Azure database for MariaDB-data base. De functie regel voor virtueel netwerk biedt veel nauw keurigere controle.
 
@@ -88,8 +88,8 @@ Elke regel voor het virtuele netwerk is van toepassing op uw hele Azure Database
 
 Er is een schei ding van beveiligings rollen in het beheer van Virtual Network Service-eind punten. Actie is vereist voor elk van de volgende rollen:
 
-- **Netwerk beheerder:** &nbsp;Schakel het eind punt in.
-- **Database beheerder:** &nbsp;Werk de toegangs beheer lijst (ACL) bij om het opgegeven subnet toe te voegen aan de Azure Database for MariaDB-server.
+- **Netwerk beheerder:** &nbsp; het eind punt in te scha kelen.
+- **Database beheerder:** &nbsp; de toegangs beheer lijst (ACL) bij te werken om het opgegeven subnet toe te voegen aan de Azure database for MariaDB-server.
 
 *Alternatief voor RBAC:*
 
@@ -115,9 +115,9 @@ Voor Azure Database for MariaDB heeft de functie regels voor virtuele netwerken 
 
 - De regels voor virtuele netwerken zijn alleen van toepassing op Azure Resource Manager virtuele netwerken. en niet op [klassieke implementatie model][resource-manager-deployment-model-568f] netwerken.
 
-- Als u de service-eind punten voor virtuele netwerken inschakelt om Azure Database for MariaDB met behulp van het tag **micro soft. SQL** service, worden ook de eind punten voor alle Azure Data Base-Services ingeschakeld: Azure Database for MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database en Azure SQL Data Warehouse.
+- Als u de service-eind punten van het virtuele netwerk inschakelt voor Azure Database for MariaDB met het tag **micro soft. SQL** -service, worden ook de eind punten ingeschakeld voor alle Azure data base-services: Azure Database for MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database en Azure SQL Data Warehouse.
 
-- Ondersteuning voor VNet-service-eindpunten is alleen voor algemeen gebruik en geoptimaliseerd voor geheugen-servers.
+- Ondersteuning voor VNet-service-eind punten is alleen voor servers met Algemeen en geoptimaliseerd voor geheugen.
 
 - IP-adresbereiken op de firewall zijn van toepassing op de volgende netwerk items, maar de regels voor het virtuele netwerk doen dit niet:
     - [Virtueel particulier netwerk (VPN) van site-naar-site (S2S)][vpn-gateway-indexmd-608y]
@@ -131,7 +131,7 @@ Als u communicatie van uw circuit naar Azure Database for MariaDB wilt toestaan,
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Een VNET-firewall regel toevoegen aan uw server zonder de VNET-service-eind punten in te scha kelen
 
-Als u alleen een firewall regel instelt, kunt u de server niet beveiligen met het VNet. U moet ook VNet-service-eind punten inschakelen om de **beveiliging van kracht** te laten worden. Wanneer u service-eind punten inschakelt **, wordt**de downtime van uw VNet-subnet in stand gezet totdat de overgang van **uit** naar wordt **voltooid.** Dit geldt met name in de context van grote VNets. U kunt de vlag **IgnoreMissingServiceEndpoint** gebruiken om de downtime te verminderen of te elimineren tijdens de overgang.
+Als u alleen een firewall regel instelt, kunt u de server niet beveiligen met het VNet. U moet ook VNet-service-eind punten **inschakelen om de beveiliging van kracht** te laten worden. Wanneer u service-eind punten inschakelt, wordt de **downtime van uw**VNet- **subnet in stand**gezet totdat de overgang van **uit** naar wordt voltooid. Dit geldt met name in de context van grote VNets. U kunt de vlag **IgnoreMissingServiceEndpoint** gebruiken om de downtime te verminderen of te elimineren tijdens de overgang.
 
 U kunt de vlag **IgnoreMissingServiceEndpoint** instellen met behulp van de Azure CLI of portal.
 

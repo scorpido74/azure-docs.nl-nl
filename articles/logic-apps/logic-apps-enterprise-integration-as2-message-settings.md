@@ -1,62 +1,61 @@
 ---
-title: Instellingen voor AS2-bericht - Azure Logic Apps
-description: Naslaggids voor AS2 verzenden en ontvangen van de instellingen in Azure Logic Apps met Enterprise Integration Pack
+title: AS2-berichtinstellingen
+description: Naslag Gids voor AS2-instellingen voor verzenden en ontvangen in Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2019
-ms.openlocfilehash: ead92094b9af1dff56ff68e1ff58a3a4cdd9dca5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad047a30b901d71604c775e9882b0f242f094638
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "63769449"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793030"
 ---
-# <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Naslaginformatie voor instellingen van de AS2-bericht in Azure Logic Apps met Enterprise Integration Pack
+# <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Naslag informatie voor AS2-bericht instellingen in Azure Logic Apps met Enterprise Integration Pack
 
-Deze referentie bevat de eigenschappen die u instellen kunt voor het op te geven hoe een AS2-overeenkomst worden verzonden en ontvangen tussen handelspartners berichten verwerkt. Instellen van deze eigenschappen op basis van uw overeenkomst met de partner die berichten met u worden uitgewisseld.
+Deze verwijzing beschrijft de eigenschappen die u kunt instellen om op te geven hoe een AS2-overeenkomst berichten verwerkt die worden verzonden en ontvangen tussen handels partners. Stel deze eigenschappen in op basis van uw overeenkomst met de partner die berichten met u uitwisselt.
 
 <a name="AS2-incoming-messages"></a>
 
-## <a name="as2-receive-settings"></a>Instellingen voor AS2 ontvangen
+## <a name="as2-receive-settings"></a>AS2 ontvangen instellingen
 
-![Selecteer 'Ontvangen instellingen'](./media/logic-apps-enterprise-integration-as2-message-settings/receive-settings.png)
+![Selecteer instellingen voor ontvangen](./media/logic-apps-enterprise-integration-as2-message-settings/receive-settings.png)
 
-| Eigenschap | Vereist | Description |
+| Eigenschap | Verplicht | Beschrijving |
 |----------|----------|-------------|
-| **Berichteigenschappen negeren** | Nee | Onderdrukt de eigenschappen op inkomende berichten met de eigenschapsinstellingen van de. |
-| **Bericht moet ondertekend zijn** | Nee | Hiermee geeft u op of alle binnenkomende berichten moeten digitaal worden ondertekend. Als u nodig u zich aanmeldt hebt, uit de **certificaat** , selecteert u een bestaand Gast partner openbare certificaat voor het valideren van de handtekening van de berichten. Als u niet een certificaat hebt, meer informatie over [certificaten toe te voegen](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
-| **Bericht moet worden versleuteld** | Nee | Hiermee geeft u op of alle inkomende berichten moeten worden versleuteld. Niet-versleutelde berichten worden geweigerd. Als u versleuteling, van vereisen de **certificaat** , selecteert u een bestaande host partner persoonlijk certificaat voor het ontsleutelen van binnenkomende berichten. Als u niet een certificaat hebt, meer informatie over [certificaten toe te voegen](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
-| **Bericht moet worden gecomprimeerd** | Nee | Hiermee geeft u op of alle inkomende berichten moeten worden gecomprimeerd. Niet-gecomprimeerde berichten worden geweigerd. |
-| **Dubbele bericht-ID niet toestaan** | Nee | Hiermee geeft u op of u wilt toestaan dat berichten met dubbele id. Als u dubbele id's niet toestaan, selecteert u het aantal dagen tussen controles. U kunt ook kiezen of u wilt onderbreken van duplicaten. |
-| **MDN-tekst** | Nee | Hiermee geeft u de standaard toestand melding (MDN) die u wilt dat naar de afzender van het bericht verzonden. |
-| **MDN verzenden** | Nee | Geeft aan of synchrone MDN's voor de ontvangen berichten te verzenden.  |
-| **Ondertekende MDN verzenden** | Nee | Hiermee bepaalt u of voor het verzenden van ondertekende MDN's voor de ontvangen berichten. Als u nodig u zich aanmeldt hebt, uit de **MIC-algoritme** , selecteert u het algoritme moet worden gebruikt voor het ondertekenen van berichten. |
-| **Asynchrone MDN verzenden** | Nee | Geeft aan of MDN's asynchroon verzenden. Als u asynchrone MDN's, selecteert u in de **URL** vak, geef de URL voor het verzenden van de MDN's. |
+| **Bericht eigenschappen onderdrukken** | Nee | Onderdrukt de eigenschappen van inkomende berichten met de instellingen van uw eigenschap. |
+| **Het bericht moet worden ondertekend** | Nee | Hiermee geeft u op of alle inkomende berichten digitaal moeten worden ondertekend. Als u ondertekening nodig hebt, selecteert u in de lijst **certificaat** een bestaand openbaar certificaat van een gast partner voor het valideren van de hand tekening op de berichten. Als u geen certificaat hebt, kunt u meer te weten komen over het [toevoegen van certificaten](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Het bericht moet worden versleuteld** | Nee | Hiermee wordt aangegeven of alle inkomende berichten moeten worden versleuteld. Niet-versleutelde berichten worden geweigerd. Als u versleuteling nodig hebt, selecteert u in de lijst **certificaat** een bestaand certificaat van een host-partner voor het ontsleutelen van inkomende berichten. Als u geen certificaat hebt, kunt u meer te weten komen over het [toevoegen van certificaten](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Het bericht moet worden gecomprimeerd** | Nee | Hiermee geeft u op of alle inkomende berichten moeten worden gecomprimeerd. Niet-gecomprimeerde berichten worden geweigerd. |
+| **Bericht-ID-duplicaten niet toestaan** | Nee | Hiermee wordt aangegeven of berichten met dubbele Id's mogen worden toegestaan. Als u dubbele Id's niet toestaat, selecteert u het aantal dagen tussen de controles. U kunt ook kiezen of u dubbele items wilt onderbreken. |
+| **MDN tekst** | Nee | Hiermee geeft u de standaard melding voor het verplaatsen van berichten (MDN) op die u wilt verzenden naar de afzender van het bericht. |
+| **MDN verzenden** | Nee | Hiermee geeft u op of synchrone MDNs moeten worden verzonden voor ontvangen berichten.  |
+| **Ondertekende MDN verzenden** | Nee | Hiermee wordt aangegeven of een ondertekende MDNs moet worden verzonden voor ontvangen berichten. Als u ondertekening nodig hebt, selecteert u in de lijst met **Mic-algoritmen** het algoritme dat moet worden gebruikt voor het ondertekenen van berichten. |
+| **Asynchrone MDN verzenden** | Nee | Hiermee geeft u op of MDNs asynchroon moet worden verzonden. Als u asynchrone MDNs selecteert, geeft u in het vak **URL** de URL op voor het verzenden van de MDNs. |
 ||||
 
 <a name="AS2-outgoing-messages"></a>
 
-## <a name="as2-send-settings"></a>Instellingen voor AS2-verzenden
+## <a name="as2-send-settings"></a>Instellingen voor verzenden AS2
 
-![Selecteer "Verzenden"](./media/logic-apps-enterprise-integration-as2-message-settings/send-settings.png)
+![Selecteer instellingen verzenden](./media/logic-apps-enterprise-integration-as2-message-settings/send-settings.png)
 
-| Eigenschap | Vereist | Description |
+| Eigenschap | Verplicht | Beschrijving |
 |----------|----------|-------------|
-| **Berichtondertekening inschakelen** | Nee | Hiermee geeft u op of alle uitgaande berichten moeten digitaal worden ondertekend. Als u de ondertekening vereisen, selecteert u deze waarden: <p>-Van de **algoritme voor ondertekening** , selecteert u het algoritme moet worden gebruikt voor het ondertekenen van berichten. <br>-Van de **certificaat** , selecteert u een bestaande host partner persoonlijk certificaat voor het ondertekenen van berichten. Als u niet een certificaat hebt, meer informatie over [certificaten toe te voegen](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
-| **Berichtversleuteling inschakelen** | Nee | Hiermee geeft u op of alle uitgaande berichten moeten worden versleuteld. Als u versleuteling vereist, selecteert u deze waarden: <p>-Van de **versleutelingsalgoritme** , selecteert u het algoritme Gast partner openbaar certificaat te gebruiken voor het versleutelen van berichten. <br>-Van de **certificaat** , selecteert u een bestaand Gast partner persoonlijke certificaat voor het versleutelen van berichten. Als u niet een certificaat hebt, meer informatie over [certificaten toe te voegen](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
-| **Berichtcompressie inschakelen** | Nee | Hiermee geeft u op of alle uitgaande berichten moeten worden gecomprimeerd. |
-| **HTTP-headers uitvouwen** | Nee | Hebt u de HTTP `content-type` header op één regel. |
-| **Bestandsnaam in MIME-header verzenden** | Nee | Hiermee geeft u op of de bestandsnaam in de MIME-header worden opgenomen. |
-| **MDN aanvragen** | Nee | Hiermee geeft u op of u meldingen wilt ontvangen bericht toestand (MDN's) voor alle uitgaande berichten. |
-| **Ondertekende MDN aanvragen** | Nee | Hiermee bepaalt u of voor het ontvangen van ondertekende MDN's voor alle uitgaande berichten. Als u nodig u zich aanmeldt hebt, uit de **MIC-algoritme** , selecteert u het algoritme moet worden gebruikt voor het ondertekenen van berichten. |
-| **Asynchrone MDN aanvragen** | Nee | Geeft aan of MDN's asynchroon ontvangen. Als u asynchrone MDN's, selecteert u in de **URL** vak, geef de URL voor het verzenden van de MDN's. |
-| **Enable NRR** | Nee | Hiermee geeft u op of niet-afwijzing ontvangst (NRR). Dit communicatiekenmerk aantoont dat de gegevens als opgelost is ontvangen. |
-| **De indeling SHA2-algoritme** | Nee | Hiermee geeft u de indeling van de MIC-algoritme voor ondertekening in de headers voor de uitgaande AS2-berichten of MDN |
+| **Bericht ondertekening inschakelen** | Nee | Hiermee geeft u op of alle uitgaande berichten digitaal moeten worden ondertekend. Als u zich moet ondertekenen, selecteert u deze waarden: <p>-Selecteer in de lijst **handtekening algoritme** het algoritme dat moet worden gebruikt voor het ondertekenen van berichten. <br>-Selecteer in de lijst **certificaat** een bestaand privé certificaat van een host-partner voor het ondertekenen van berichten. Als u geen certificaat hebt, kunt u meer te weten komen over het [toevoegen van certificaten](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Bericht versleuteling inschakelen** | Nee | Hiermee geeft u op of alle uitgaande berichten moeten worden versleuteld. Als u versleuteling nodig hebt, selecteert u deze waarden: <p>-Selecteer in de lijst **versleutelings algoritme** het algoritme voor het open bare certificaat van de gast partner die moet worden gebruikt voor het versleutelen van berichten. <br>-Selecteer in de lijst **certificaat** een bestaand privé certificaat van een gast partner voor het versleutelen van uitgaande berichten. Als u geen certificaat hebt, kunt u meer te weten komen over het [toevoegen van certificaten](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Bericht compressie inschakelen** | Nee | Hiermee geeft u op of alle uitgaande berichten moeten worden gecomprimeerd. |
+| **HTTP-headers vouwen** | Nee | Hiermee wordt de HTTP-`content-type` header op één regel geplaatst. |
+| **Bestands naam in MIME-header verzenden** | Nee | Hiermee geeft u op of de bestands naam in de MIME-header moet worden meegenomen. |
+| **MDN aanvragen** | Nee | Hiermee geeft u op of meldingen over het verplaatsen van berichten (MDNs) moeten worden ontvangen voor alle uitgaande berichten. |
+| **Ondertekende MDN aanvragen** | Nee | Hiermee wordt aangegeven of een ondertekende MDNs moet worden ontvangen voor alle uitgaande berichten. Als u ondertekening nodig hebt, selecteert u in de lijst met **Mic-algoritmen** het algoritme dat moet worden gebruikt voor het ondertekenen van berichten. |
+| **Asynchrone MDN aanvragen** | Nee | Hiermee wordt aangegeven of MDNs asynchroon moet worden ontvangen. Als u asynchrone MDNs selecteert, geeft u in het vak **URL** de URL op voor het verzenden van de MDNs. |
+| **NRR inschakelen** | Nee | Hiermee wordt aangegeven of ontvangst (non-weerleg baarheid) vereist is (NRR). Dit communicatie kenmerk geeft aan dat de gegevens zijn ontvangen als beschreven. |
+| **SHA2-algoritme-indeling** | Nee | Hiermee geeft u de indeling van de MIC-algoritme op die moet worden gebruikt voor het ondertekenen van de kopteksten voor uitgaande AS2-berichten of MDN |
 ||||
 
 ## <a name="next-steps"></a>Volgende stappen

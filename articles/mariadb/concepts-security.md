@@ -1,19 +1,19 @@
 ---
-title: Beveiliging in Azure Database for MariaDB-één server
-description: Een overzicht van de beveiligings functies in Azure Database for MariaDB-één server.
+title: Beveiliging-Azure Database for MariaDB
+description: Een overzicht van de beveiligings functies in Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 1a2d7ac449c131519473afaa80eb3a57c287eb28
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: d23eabdacc57a3f5a10d9e3b132a6daac42fbd4d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485183"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772145"
 ---
-# <a name="security-in-azure-database-for-mariadb---single-server"></a>Beveiliging in Azure Database for MariaDB-één server
+# <a name="security-in-azure-database-for-mariadb"></a>Beveiliging in Azure Database for MariaDB
 
 Er zijn meerdere beveiligings lagen die beschikbaar zijn om de gegevens op uw Azure Database for MariaDB-server te beveiligen. In dit artikel vindt u een overzicht van deze beveiligings opties.
 

@@ -1,23 +1,18 @@
 ---
-title: Taak stromen automatiseren in Visual Studio-Azure Logic Apps
+title: Taak stromen automatiseren in Visual Studio
 description: Maak, plan en voer terugkerende werk stromen voor bedrijfs integratie uit met behulp van Azure Logic Apps en Visual Studio
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: azure-vs
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.manager: carmonm
+ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: e7ce31f489ae274eddb02c1bfb7e57eb486f5851
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 49269cf2171269063de4a3cf5de1f22ebc545005
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796947"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790824"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Snelstartgids: geautomatiseerde taken, processen en werk stromen maken met Azure Logic Apps-Visual Studio
 
@@ -85,7 +80,7 @@ Om te beginnen, maakt u een [Azure-resourcegroepproject](../azure-resource-manag
 
    Als u Visual Studio 2019 gebruikt, voert u de volgende stappen uit:
 
-   1. Selecteer in het vak **een nieuw project maken** het project van de **Azure-resource groep** voor Visual C# of Visual Basic. Selecteer **Volgende**.
+   1. Selecteer in het vak **een nieuw project maken** het project van de **Azure-resource groep** voor Visual C# of Visual Basic. Selecteer **Next**.
 
    1. Geef een naam op voor de Azure-resource groep die u wilt gebruiken en andere project gegevens. Selecteer **Maken**.
 
@@ -178,7 +173,7 @@ Gefeliciteerd, u hebt uw logische app gemaakt en geïmplementeerd met Visual Stu
 
 Wanneer u een bestaand project van een Azure-resource groep hebt, kunt u een nieuwe, lege logische app toevoegen aan dat project met behulp van het JSON-overzichts venster.
 
-1. Open het bestand `<logic-app-name>.json` in Solution Explorer.
+1. Open in Solution Explorer het `<logic-app-name>.json` bestand.
 
 1. Selecteer in het menu **weer gave** de optie andere **JSON-overzicht**van **Windows** > .
 

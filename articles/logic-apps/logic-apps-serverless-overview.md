@@ -2,19 +2,18 @@
 title: Overzicht-zonder Azure server
 description: Maak krachtige oplossingen in de Cloud zonder dat u zich zorgen hoeft te maken over de infra structuur
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: jeffhollan
 ms.author: jehollan
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 363002712bdd06e74360de9af186f5a458a4999d
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: d658efd278425358a2a931fe976827c3bae4247d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68385353"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792827"
 ---
 # <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Overzicht: Azure server zonder Azure Logic Apps en Azure Functions
 

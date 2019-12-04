@@ -1,19 +1,19 @@
 ---
-title: 'Zelf studie: een Azure Database for MySQL-server inrichten met Azure Resource Manager sjabloon'
+title: 'Zelf studie: Azure Database for MySQL maken-Azure Resource Manager sjabloon'
 description: In deze zelfstudie wordt uitgelegd hoe u Azure Database for MySQL-serverimplementaties inricht en automatiseert met behulp van een Azure Resource Manager-sjabloon.
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.devlang: json
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 69025dd70ffe88c1592cf656e956b3e78a97a5e7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163899"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771085"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Zelf studie: een Azure Database for MySQL-server inrichten met Azure Resource Manager sjabloon
 
@@ -88,7 +88,7 @@ In deze aanvraag moeten de volgende waarden worden aangepast:
 +   `sku/tier` - Geef de laag Basic, GeneralPurpose of MemoryOptimized voor de implementatie op.
 +   `sku/capacity` - Geef de vCore-capaciteit op. Mogelijke waarden zijn 2, 4, 8, 16, 32 of 64.
 +   `sku/family`: Geef GEN5 op om de hardware-generatie voor de server implementatie te kiezen.
-+   `sku/name` -Geef TierPrefix_family_capacity op. Bijvoorbeeld B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Raadpleeg de documentatie over [prijscategorieën](./concepts-pricing-tiers.md) om de geldige waarden per regio en per laag te begrijpen.
++   `sku/name` -Geef TierPrefix_family_capacity op. Bijvoorbeeld B_Gen5_1, GP_Gen5_16 MO_Gen5_32. Raadpleeg de documentatie over [prijscategorieën](./concepts-pricing-tiers.md) om de geldige waarden per regio en per laag te begrijpen.
 +   `resources/properties/virtualNetworkSubnetId` -Geef de Azure-id van het subnet in VNet op waar de Azure MySQL-server moet worden geplaatst. 
 +   `tags(optional)` -Geef optioneel tags op. Dit zijn sleutel-waardeparen zijn die u zou gebruiken om de resources voor facturering en dergelijke te categoriseren.
 

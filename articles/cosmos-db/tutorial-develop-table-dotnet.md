@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 05/20/2019
-ms.openlocfilehash: 677ea48244f8417670a2645ab67fa08c1f869f1a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 11179d6adc676ae99257442b186a15e69dcc4a03
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142588"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764470"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Aan de slag met Azure Cosmos DB Table-API en Azure-tabel opslag met behulp van de .NET SDK
 
@@ -23,7 +23,7 @@ ms.locfileid: "70142588"
 
 U kunt de Azure Cosmos DB Table-API of Azure-tabel opslag gebruiken om gestructureerde NoSQL-gegevens op te slaan in de Cloud, waarbij u een sleutel/kenmerk opslag oplevert met een schema dat minder hoeft te worden ontworpen. Omdat Azure Cosmos DB Table-API en tabel opslag minder schema's zijn, is het eenvoudig om uw gegevens aan te passen aan de ontwikkeling van uw toepassing. U kunt Azure Cosmos DB Table-API of de tabel opslag gebruiken voor het opslaan van flexibele gegevens sets, zoals gebruikers gegevens voor webtoepassingen, adres boeken, apparaatgegevens of andere soorten meta gegevens die uw service nodig heeft. 
 
-In deze zelf studie wordt een voor beeld beschreven van het gebruik [van de Microsoft Azure Cosmos DB-tabel bibliotheek voor .net](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) met Azure Cosmo DB-Table-API en Scenario's voor Azure-tabel opslag. U moet de verbinding die specifiek is voor de Azure-service gebruiken. Deze scenario's worden beschreven met voor C# beelden van het maken van tabellen, invoegen/bijwerken van gegevens, query's uitvoeren op gegevens en de tabellen verwijderen.
+In deze zelf studie wordt een voor beeld beschreven waarin wordt uitgelegd hoe u de [Microsoft Azure Cosmos DB-tabel bibliotheek voor .net](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) kunt gebruiken met de scenario's voor Azure Cosmos db table-API en Azure-tabel opslag. U moet de verbinding die specifiek is voor de Azure-service gebruiken. Deze scenario's worden beschreven met voor C# beelden van het maken van tabellen, invoegen/bijwerken van gegevens, query's uitvoeren op gegevens en de tabellen verwijderen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -59,7 +59,7 @@ Voer de volgende stappen uit om het NuGet-pakket te verkrijgen:
 
 1. Klik met de rechtermuisknop op het project in **Solution Explorer** en kies **NuGet-pakketten beheren**.
 
-1. `Microsoft.Azure.Cosmos.Table`Zoek online naar, `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json`enselecteerinstalleren om de Microsoft Azure Cosmos DB-tabel bibliotheek te installeren. `Microsoft.Extensions.Configuration.Binder`
+1. Zoek online naar `Microsoft.Azure.Cosmos.Table`, `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json`, `Microsoft.Extensions.Configuration.Binder` en selecteer **installeren** om de Microsoft Azure Cosmos DB tabel bibliotheek te installeren.
 
 ## <a name="configure-your-storage-connection-string"></a>De opslagverbindingsreeks configureren
 
@@ -149,7 +149,7 @@ namespace CosmosTableSamples
 
 ## <a name="create-a-table"></a>Een tabel maken 
 
-Met behulp van de [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient)-klasse kunt u tabellen en entiteiten ophalen die zijn opgeslagen in de Table Storage. Omdat we geen tabellen hebben in de Cosmos db table-API-account, gaan we de `CreateTableAsync` methode toevoegen aan de klasse **common.cs** om een tabel te maken:
+Met behulp van de [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient)-klasse kunt u tabellen en entiteiten ophalen die zijn opgeslagen in de Table Storage. Omdat er geen tabellen zijn in het Cosmos DB Table-API-account, gaan we de methode `CreateTableAsync` toevoegen aan de klasse **common.cs** om een tabel te maken:
 
 ```csharp
 public static async Task<CloudTable> CreateTableAsync(string tableName)
@@ -318,7 +318,7 @@ public static async Task DeleteEntityAsync(CloudTable table, CustomerEntity dele
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>De ruwe bewerkingen uitvoeren op voorbeeld gegevens
 
-Nadat u de methoden voor het maken van een tabel, het invoegen of samen voegen van een entiteit hebt gedefinieerd, voert u deze methoden uit op de voorbeeld gegevens. Hiertoe klikt u met de rechter muisknop op uw project **CosmosTableSamples**. Selecteer **toevoegen**, **Nieuw item** en voeg een klasse toe met de naam **BasicSamples.cs** en voeg hieraan de volgende code toe. Met deze code wordt een tabel gemaakt waaraan entiteiten worden toegevoegd. Als u de entiteit en tabel aan het einde van het project wilt verwijderen, verwijdert u de opmerkingen `table.DeleteIfExistsAsync()` uit `SamplesUtils.DeleteEntityAsync(table, customer)` en-methoden uit de volgende code:
+Nadat u de methoden voor het maken van een tabel, het invoegen of samen voegen van een entiteit hebt gedefinieerd, voert u deze methoden uit op de voorbeeld gegevens. Hiertoe klikt u met de rechter muisknop op uw project **CosmosTableSamples**. Selecteer **toevoegen**, **Nieuw item** en voeg een klasse toe met de naam **BasicSamples.cs** en voeg hieraan de volgende code toe. Met deze code wordt een tabel gemaakt waaraan entiteiten worden toegevoegd. Als u de entiteit en tabel aan het einde van het project wilt verwijderen, verwijdert u de opmerkingen uit `table.DeleteIfExistsAsync()` en `SamplesUtils.DeleteEntityAsync(table, customer)` methoden uit de volgende code:
 
 ```csharp
 using System;

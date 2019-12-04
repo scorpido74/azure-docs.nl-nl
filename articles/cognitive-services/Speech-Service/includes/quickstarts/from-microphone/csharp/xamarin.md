@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: d0d1cfee535a04203d9ff995b94fcad5d432ed3e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f67c98eb8417b66c3315bccb1d56b98a68aac839
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960770"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796023"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
 > * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=xamarin)
 > * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=xamarin)
+> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
 Als u dit al hebt gedaan, is dit geweldig. Laten we verder gaan.
 

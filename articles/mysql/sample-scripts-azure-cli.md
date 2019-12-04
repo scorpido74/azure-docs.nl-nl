@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-voorbeelden voor Azure Database for MySQL
+title: Voor beelden van Azure CLI-Azure Database for MySQL
 description: Dit artikel geeft een overzicht van de Azure CLI-codevoorbeelden die beschikbaar zijn voor interactie met Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: c5ecaf5ba893cce38327d38236d593e06b31abb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: 18c52505ddf82cb29b13a9ee7621db5c3422eab6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61226372"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769758"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>Azure CLI-voorbeelden voor Azure Database for MySQL 
 De volgende tabel bevat koppelingen naar Azure CLI-voorbeeldscripts voor Azure Database for MySQL.

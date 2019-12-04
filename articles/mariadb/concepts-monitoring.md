@@ -1,17 +1,17 @@
 ---
-title: Bewaking in Azure Database for MariaDB
+title: Bewaking-Azure Database for MariaDB
 description: In dit artikel worden de metrische gegevens beschreven voor bewaking en waarschuwingen voor Azure Database for MariaDB, inclusief CPU-, opslag-en verbindings statistieken.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: e3c25798be8af26c1f5e5c1178395cd1688bb132
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/02/2019
+ms.openlocfilehash: 15a396a86103f41f49d3b49878ec51c1e71add40
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382047"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772476"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Bewaking in Azure Database for MariaDB
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for MariaDB biedt diverse metrische gegevens die inzicht geven in het gedrag van uw server.
@@ -24,7 +24,7 @@ Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](howto-
 ### <a name="list-of-metrics"></a>Lijst met metrische gegevens
 Deze metrische gegevens zijn beschikbaar voor Azure Database for MariaDB:
 
-|Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Beschrijving|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Beschrijving|
 |---|---|---|---|
 |cpu_percent|CPU-percentage|Procent|Het percentage CPU-gebruik.|
 |memory_percent|Geheugen percentage|Procent|Het percentage geheugen dat in gebruik is.|
@@ -35,8 +35,8 @@ Deze metrische gegevens zijn beschikbaar voor Azure Database for MariaDB:
 |serverlog_storage_usage|Gebruikte server logboek opslag|Bytes|De hoeveelheid server logboek opslag die in gebruik is.|
 |serverlog_storage_limit|Opslag limiet voor server logboek|Bytes|De maximale server logboek opslag voor deze server.|
 |storage_limit|Opslag limiet|Bytes|De maximale opslag voor deze server.|
-|active_connections|Actieve verbindingen|Count|Het aantal actieve verbindingen met de server.|
-|connections_failed|Mislukte verbindingen|Count|Het aantal mislukte verbindingen met de server.|
+|active_connections|Actieve verbindingen|Aantal|Het aantal actieve verbindingen met de server.|
+|connections_failed|Mislukte verbindingen|Aantal|Het aantal mislukte verbindingen met de server.|
 |network_bytes_egress|Netwerk uit|Bytes|Netwerk uit over actieve verbindingen.|
 |network_bytes_ingress|Netwerk in|Bytes|Netwerk in meerdere actieve verbindingen.|
 
@@ -56,7 +56,7 @@ In het [query archief](concepts-query-store.md) worden de query prestaties in de
 
 De functie voor [prestatie aanbevelingen](concepts-performance-recommendations.md) identificeert mogelijkheden voor het verbeteren van de prestaties van de werk belasting. Prestatie aanbevelingen bieden u aanbevelingen voor het maken van nieuwe indexen die de prestaties van uw workloads kunnen verbeteren. Voor het produceren van index aanbevelingen, neemt de functie rekening met diverse database kenmerken, waaronder het schema en de werk belasting zoals gerapporteerd door de query Store. Na de implementatie van de aanbevolen prestaties, moeten klanten de prestaties testen om de impact van deze wijzigingen te evalueren.
 
-## <a name="service-health"></a>Status van service
+## <a name="service-health"></a>Servicestatus
 [Azure service Health](../service-health/overview.md) biedt een overzicht van alle service status meldingen in uw abonnement. U kunt Service Health waarschuwingen instellen om u te waarschuwen via de communicatie kanalen van uw voor keur wanneer er problemen zijn of wijzigingen die van invloed kunnen zijn op de Azure-Services en-regio's die u gebruikt.
 
 U kunt geplande onderhouds gebeurtenissen voor Azure Database for MariaDB weer geven met behulp van het gebeurtenis type **gepland onderhoud** . Ga voor meer informatie over het maken van **service Health-waarschuwingen**naar het artikel [activiteiten logboeken maken op service meldingen](../service-health/alerts-activity-log-service-notifications.md) .

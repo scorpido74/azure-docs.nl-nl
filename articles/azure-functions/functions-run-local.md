@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8604df894367ccc25d7e9ffae4453a6b3080b7d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226705"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784711"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -109,7 +109,7 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
 
 1. Controleer het `/etc/apt/sources.list.d/dotnetdev.list`-bestand voor een van de juiste Linux-versie teken reeksen die hieronder worden weer gegeven:
 
-    | Linux-distributie | Versie |
+    | Linux-distributie | Version |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
@@ -117,7 +117,7 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
-    | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
+    | Ubuntu 16.04/Linux licht 18    | `xenial`  |
 
 1. Start de APT-bron update:
 
@@ -211,7 +211,7 @@ Als er geen geldige opslag connection string is ingesteld voor [`AzureWebJobsSto
 
 Zelfs wanneer u de opslag emulator gebruikt voor ontwikkeling, wilt u wellicht testen met een echte opslag verbinding. Ervan uitgaande dat u al [een opslag account hebt gemaakt](../storage/common/storage-create-storage-account.md), kunt u op een van de volgende manieren een geldig opslag Connection String krijgen:
 
-- Zoek en selecteer **opslag accounts**vanuit het [Azure Portal]. 
+- Zoek en selecteer **opslag accounts**vanuit het [Azure-portal]. 
   ![Storagea-accounts selecteren van Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
   Selecteer uw opslag account, selecteer **toegangs sleutels** in **instellingen**en kopieer een van de **verbindings reeks** waarden.
@@ -305,7 +305,7 @@ In versie 2. x van de runtime varieert de start opdracht, afhankelijk van de taa
 func start --build
 ```
 
-#### <a name="javascript"></a>JavaScript
+#### <a name="javascript"></a>Javascript
 
 ```command
 func start
@@ -517,13 +517,13 @@ Voor dit type streaming-logboeken moet u [Application Insights-integratie inscha
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Azure Functions Core Tools is [open source en wordt gehost op github](https://github.com/azure/azure-functions-cli).  
+Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions met behulp van Azure Functions Core Tools [micro soft-leer module](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure functions core tools is [open source en wordt gehost op github](https://github.com/azure/azure-functions-cli).  
 [Open een github-probleem](https://github.com/azure/azure-functions-cli/issues)als u een fout of een functie aanvraag wilt indienen.
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure-portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 ['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage

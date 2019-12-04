@@ -1,22 +1,18 @@
 ---
-title: Taken automatiseren met meerdere Azure-Services-Azure Logic Apps
+title: Taken automatiseren met meerdere Azure-Services
 description: 'Zelf studie: automatische werk stromen maken voor het verwerken van e-mail berichten met Azure Logic Apps, Azure Storage en Azure Functions'
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 52c9a23e3e00075e934b9f9f22a835090e02f1b9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 6486427753543e0f4fe9a197b6825a555ef2fc70
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820106"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793482"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Zelf studie: taken automatiseren voor het verwerken van e-mail berichten met behulp van Azure Logic Apps, Azure Functions en Azure Storage
 
@@ -62,7 +58,7 @@ U kunt binnenkomende e-mails en bijlagen als blobs opslaan in een [Azure-opslagc
    |---------|-------|-------------|
    | **Abonnement** | <*Azure-subscription-name*> | De naam van uw Azure-abonnement |  
    | **Resourcegroep** | <*Azure-resource-group*> | De naam van de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) die wordt gebruikt om verwante resources te organiseren en te beheren. In dit voor beeld wordt ' LA-zelf studie-RG ' gebruikt. <p>**Opmerking:** resourcegroepen bestaan binnen een bepaalde regio. Hoewel de items in deze zelfstudie mogelijk niet in alle regio's beschikbaar zijn, dient u, wanneer mogelijk, dezelfde regio te gebruiken. |
-   | **Naam van opslagaccount** | <*Azure-Storage-account-name* > | De naam van uw opslag account, die 3-24 tekens moet hebben en alleen kleine letters en cijfers kan bevatten. In dit voor beeld wordt ' attachmentstorageacct ' gebruikt. |
+   | **Naam van opslagaccount** | <*Azure-Storage-account-name*> | De naam van uw opslag account, die 3-24 tekens moet hebben en alleen kleine letters en cijfers kan bevatten. In dit voor beeld wordt ' attachmentstorageacct ' gebruikt. |
    | **Locatie** | <*Azure-regio*> | De regio waar informatie over uw opslag account moet worden opgeslagen. In dit voor beeld wordt ' West US ' gebruikt. |
    | **Prestaties** | Standard | Deze instelling bepaalt de gegevenstypen die worden ondersteund en de media die moeten worden opgeslagen. Zie [Typen opslagaccounts](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Type account** | Algemeen doel | Het [type opslagaccount](../storage/common/storage-introduction.md#types-of-storage-accounts) |
@@ -144,7 +140,7 @@ Gebruik nu het codefragment in deze stappen om een Azure-functie te maken waarme
 
    | Instelling | Waarde | Beschrijving |
    | ------- | ----- | ----------- |
-   | **Naam van app** | <*functie-app-naam* > | De naam van de functie-app, die wereld wijd uniek moet zijn in Azure. In dit voor beeld wordt CleanTextFunctionApp al gebruikt. Geef dus een andere naam op, bijvoorbeeld ' MyCleanTextFunctionApp-<*your-name*> ' |
+   | **Naam van app** | <*functie-app-naam*> | De naam van de functie-app, die wereld wijd uniek moet zijn in Azure. In dit voor beeld wordt CleanTextFunctionApp al gebruikt. Geef dus een andere naam op, bijvoorbeeld ' MyCleanTextFunctionApp-<*your-name*> ' |
    | **Abonnement** | <*your-Azure-subscription-name*> | Hetzelfde Azure-abonnement dat u eerder hebt gebruikt |
    | **Resourcegroep** | LA-Tutorial-RG | Dezelfde Azure-resourcegroep die u eerder hebt gebruikt |
    | **Besturingssysteem** | <*uw> voor uw besturings systeem* | Selecteer het besturings systeem dat de programmeer taal van uw favoriete functie ondersteunt. Voor dit voor beeld selecteert u **Windows**. |

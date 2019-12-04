@@ -1,20 +1,19 @@
 ---
-title: Herstel na nood geval voor integratie accounts-Azure Logic Apps
+title: Herstel na nood geval voor integratie accounts
 description: Herstel na nood geval in meerdere regio's instellen voor integratie accounts in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 321bfb673bab748176d75db7bcf21d76ddf0c819
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 5ab0b14a190461d4dfba74e277f3d2ec30d9981a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680402"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793131"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Herstel na nood geval in meerdere regio's instellen voor integratie accounts in Azure Logic Apps
 
@@ -113,7 +112,7 @@ Als u herstel na nood gevallen voor inkomende berichten wilt inschakelen, select
 
    ![Controle nummers toevoegen of bijwerken](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. Als u een actie wilt verbinden met een integratie account voor een secundaire regio, selecteert u **verbinding wijzigen**  > **nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**. 
+7. Als u een actie wilt verbinden met een integratie account voor een secundaire regio, selecteert u **verbinding wijzigen** > **nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**. 
 
    ![Naam van het account voor de integratie van secundaire regio's](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -168,7 +167,7 @@ Als u herstel na nood gevallen voor inkomende berichten wilt inschakelen, select
 
    ![Controle nummers toevoegen of bijwerken](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. Als u een actie wilt verbinden met een integratie account voor een secundaire regio, selecteert u **verbinding wijzigen**  > **nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**.
+8. Als u een actie wilt verbinden met een integratie account voor een secundaire regio, selecteert u **verbinding wijzigen** > **nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**.
 
    ![Naam van het account voor de integratie van secundaire regio's](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -220,7 +219,7 @@ Bedrijfs continuïteit voor documenten die gebruikmaken van het AS2-protocol is 
 
    ![MIC toevoegen of bijwerken](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. Als u een actie wilt verbinden met een secundair integratie account, selecteert u **verbinding wijzigen**  > **nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**.
+7. Als u een actie wilt verbinden met een secundair integratie account, selecteert u **verbinding wijzigen** > **nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**.
 
    ![Naam van het account voor de integratie van secundaire regio's](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 

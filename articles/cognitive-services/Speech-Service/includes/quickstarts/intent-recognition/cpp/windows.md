@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: spraak, intenties en entiteiten herkennen, C++ -spraak service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 277548c859370a700973d9f60556fe38e94548b0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 04b6193299004996862a577176dfb9c52a7709cd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280427"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796058"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,6 +46,7 @@ Laten we een code toevoegen die als een skelet voor het project werkt. Houd er r
 Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van uw LUIS-eindpunt sleutel en-regio. Voeg deze code in de methode `recognizeIntent()` toe.
 
 In dit voor beeld wordt de `FromSubscription()` methode gebruikt om de `SpeechConfig`te bouwen. Zie [SpeechConfig-klasse](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)voor een volledige lijst met beschik bare methoden.
+De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
 
 > [!NOTE]
 > Het is belang rijk dat u de LUIS-eindpunt sleutel gebruikt en niet de Starter-of ontwerp sleutels, omdat alleen de eindpunt sleutel geldig is voor spraak op de intentie herkenning. Zie [een Luis-toepassing maken en een eindpunt sleutel ophalen](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) voor instructies over het ophalen van de juiste sleutel.

@@ -1,22 +1,18 @@
 ---
-title: Verbinding maken met Twitter vanuit Azure Logic Apps | Microsoft Docs
+title: Verbinding maken met Twitter vanuit Azure Logic Apps
 description: Automatiseer taken en werk stromen voor het bewaken en beheren van tweets, plus gegevens over de volgers, uw gevolgde gebruikers, andere gebruikers, tijd lijnen en meer van uw Twitter-account met behulp van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 22b75b2d2b47dbd496eda06c09b418ae66f6403a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 8ffd0fd558cf759fadd912de9dff4acf49d9659f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050701"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789083"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Twitter controleren en beheren met behulp van Azure Logic Apps
 
@@ -70,15 +66,15 @@ U kunt triggers gebruiken die reacties ophalen van uw Twitter-account en de uitv
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter-trigger: Wanneer een nieuwe tweet wordt geplaatst
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter-trigger: wanneer een nieuwe tweet wordt geplaatst
 
 Deze trigger start een werk stroom voor logische apps wanneer de trigger een nieuwe Tweet detecteert, bijvoorbeeld met de hashtag, #Seattle. Als deze tweets bijvoorbeeld worden gevonden, kunt u een bestand met de inhoud van de Tweets toevoegen aan de opslag, zoals een Dropbox-account met behulp van de Dropbox-connector. 
 
 U kunt desgewenst een voor waarde toevoegen die in aanmerking komt voor tweets van gebruikers met ten minste een opgegeven aantal volgers.
 
-**Bedrijfs voorbeeld**: U kunt deze trigger gebruiken om tweets over uw bedrijf te bewaken en de tweets-inhoud te uploaden naar een SQL database.
+**Enter prise-voor beeld**: u kunt deze trigger gebruiken om tweets over uw bedrijf te bewaken en de tweets-inhoud te uploaden naar een SQL database.
 
-### <a name="twitter-action-post-a-tweet"></a>Twitter-actie: Een tweet plaatsen
+### <a name="twitter-action-post-a-tweet"></a>Twitter-actie: een Tweet plaatsen
 
 Met deze actie wordt een Tweet geboekt, maar u kunt de actie zodanig instellen dat de Tweet de inhoud bevat van tweets die door de eerder beschreven trigger is gevonden. 
 
@@ -86,11 +82,11 @@ Met deze actie wordt een Tweet geboekt, maar u kunt de actie zodanig instellen d
 
 Raadpleeg de [referentie pagina](/connectors/twitterconnector/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 * Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 * Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

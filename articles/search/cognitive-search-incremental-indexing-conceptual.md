@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c44228d7e1456bce870765935beb011cb24626d5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113600"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790927"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Wat is incrementele indexering in azure Cognitive Search?
 
@@ -47,7 +47,7 @@ U moet de eigenschap `cache` van de Indexeer functie instellen om profiteert te 
     },
     "fieldMappings" : [],
     "outputFieldMappings": [],
-    "parameters":{}
+    "parameters": {}
 }
 ```
 
@@ -83,7 +83,7 @@ Indexeer functies verplaatsen niet alleen nieuwe documenten, maar zijn nu in sta
 
 ### <a name="invalidating-changes"></a>Wijzigingen ongeldig worden
 
-Het ongeldig maken van wijzigingen is zeldzaam, maar heeft een aanzienlijk effect op de status van uw verrijkings pijplijn. Een ongeldige wijziging is een van de wijzigingen die niet meer geldig zijn in de volledige cache. Een voor beeld van een invalidatie wijziging is één waar uw gegevens bron wordt bijgewerkt. Als u weet dat de wijziging de cache niet ongeldig moet worden, zoals het draaien van de sleutel op het opslag account, moet de `ignoreResetRequirement` query string-para meter worden ingesteld op `true` op de update-bewerking van de specifieke resource om ervoor te zorgen dat de bewerking niet afgekeurd.
+Het ongeldig maken van wijzigingen is zeldzaam, maar heeft een aanzienlijk effect op de status van uw verrijkings pijplijn. Een ongeldige wijziging is een van de wijzigingen die niet meer geldig zijn in de volledige cache. Een voor beeld van een invalidatie wijziging is één waar uw gegevens bron wordt bijgewerkt. Als u weet dat de wijziging de cache niet ongeldig moet worden, zoals het draaien van de sleutel op het opslag account, moet de `ignoreResetRequirement` query string-para meter worden ingesteld op `true` op de update-bewerking van de specifieke resource om ervoor te zorgen dat de bewerking niet wordt afgewezen.
 
 Hier volgt de volledige lijst met wijzigingen die uw cache ongeldig maken:
 

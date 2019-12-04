@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: spraak herkennen vanuit een microfoon C# , (Unit)-spraak service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,24 +10,27 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: babc6b1c0b6207d404091db3117f95f6d71c53ac
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b6439c6461ca9f4fa272eb43ef16240175fdec4f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503498"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795716"
 ---
 > [!NOTE]
 > De Speech SDK voor unit ondersteunt Windows Desktop (x86 en x64) of Universeel Windows-platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) en iOS (x64 Simulator, ARM32 en ARM64)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
 > * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=unity) Als u dit al hebt gedaan, is dit geweldig. Laten we verder gaan.
+> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=unity)
+> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
+
+Als u dit al hebt gedaan, is dit geweldig. Laten we verder gaan.
 
 ## <a name="create-a-unity-project"></a>Een Unity-project maken
 

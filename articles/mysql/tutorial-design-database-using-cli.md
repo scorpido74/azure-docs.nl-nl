@@ -1,21 +1,21 @@
 ---
-title: 'Zelfstudie: Een Azure Database for MySQL ontwerpen met Azure CLI'
+title: 'Zelf studie: een server ontwerpen-Azure CLI-Azure Database for MySQL'
 description: In deze zelfstudie wordt uitgelegd hoe u een Azure Database voor MySQL-server en -database maakt en beheert via Azure CLI vanaf de opdrachtregel.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/29/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 00c2efacab72c08d33b0004650bece2c369c757b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 00beae5a65e61f814d3498dbb41af02aaf0287fb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64936001"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771209"
 ---
-# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Zelfstudie: Een Azure Database for MySQL ontwerpen met Azure CLI
+# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Zelfstudie: een Azure Database for MySQL ontwerpen met Azure CLI
 
 Azure Database voor MySQL is een relationele databaseservice in de Microsoft Cloud die is gebaseerd op de MySQL Community Edition database engine. In deze zelfstudie gebruikt u Azure CLI (Command Line Interface of opdrachtregelinterface in goed Nederlands) en andere hulpprogramma's om deze bewerkingen uit te voeren:
 
@@ -53,13 +53,13 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-mysql-server"></a>Een Azure-database voor MySQL-server maken
 Maak een Azure Database for MySQL-server met de opdracht az mysql server create. Een server kan meerdere databases beheren. Een aparte database wordt doorgaans gebruikt voor elk project of voor elke gebruiker.
 
-In het volgende voorbeeld wordt een Azure-database voor MySQL-server gemaakt die zich in `westus` bevindt in de resourcegroep `myresourcegroup` met de naam `mydemoserver`. De server heeft een beheerder met de naam `myadmin`. Dit is een Gen 5-server voor Algemeen gebruik met twee vCores. Vervang het `<server_admin_password>` door uw eigen waarde.
+In het volgende voorbeeld wordt een Azure-database voor MySQL-server gemaakt die zich in `westus` bevindt in de resourcegroep `myresourcegroup` met de naam `mydemoserver`. De server heeft een beheerders gebruiker met de naam `myadmin`. Dit is een Gen 5-server voor Algemeen gebruik met twee vCores. Vervang het `<server_admin_password>` door uw eigen waarde.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 De parameterwaarde voor de sku-naam volgt de conventie {prijscategorie} \_{compute-generatie}\_{vCores}, zoals in de onderstaande voorbeelden:
-+ `--sku-name B_Gen5_2` toewijzingen voor Basic, Gen 5 en 2 vCores.
++ `--sku-name B_Gen5_2` is toegewezen aan Basic-, Gen 5-en 2-vCores.
 + `--sku-name GP_Gen5_32` komt overeen met Algemeen gebruik, Gen 5 en 32 vCores.
 + `--sku-name MO_Gen5_2` komt overeen met Geoptimaliseerd voor geheugen, Gen 5 en 2 vCores.
 
@@ -175,9 +175,9 @@ Stel dat u deze tabel per ongeluk hebt verwijderd. Dit is iets wat u niet eenvou
 Voor deze herstelbewerking hebt u de volgende gegevens nodig:
 
 - Herstelpunt: selecteer een tijdstip voorafgaand aan het moment waarop de server is gewijzigd. De tijd moet eerder zijn dan of gelijk zijn aan het tijdstip van de oudste back-up van de brondatabase.
-- Doelserver: geef de naam op van de nieuwe server waarnaar u wilt herstellen
-- Bronserver: geef de naam op van de server waarvan u gegevens wilt terugzetten
-- Locatie: u kunt de regio niet selecteren, standaard is deze hetzelfde als die van de bronserver
+- Doelserver: geef de naam op van de nieuwe server waarnaar u wilt herstellen.
+- Bronserver: geef de naam op van de server waarvan u gegevens wilt terugzetten.
+- Locatie: u kunt de regio niet selecteren, standaard is deze hetzelfde als die van de bronserver.
 
 ```azurecli-interactive
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -185,7 +185,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 De opdracht `az mysql server restore` vereist de volgende parameters:
 
-| Instelling | Voorgestelde waarde | Description  |
+| Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resourcegroep waarin de bronserver bestaat.  |
 | name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
@@ -197,7 +197,7 @@ Wanneer u een server naar een bepaald tijdstip herstelt, wordt er een nieuwe ser
 De opdracht is synchroon en keert terug nadat de server is hersteld. Nadat het herstel is voltooid, zoekt u de nieuwe server. Controleer of de gegevens zijn hersteld zoals verwacht.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Azure-database voor MySQL-server maken
 > * De serverfirewall configureren

@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: spraak herkennen vanuit een microfoon C# , (UWP)-spraak service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d1da9a9ef32aed1975595bb15909b9531ab2400
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 50de8fd6ba28039c5ca7660c96c6d863f53cf02a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503554"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795775"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
 > * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=uwp)
 > * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=uwp)
+> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
 Als u dit al hebt gedaan, is dit geweldig. Laten we verder gaan.
 
@@ -42,7 +43,7 @@ Laten we een code toevoegen die als een skelet voor het project werkt.
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml#StackPanel)]
 
-3. Open in **Solution Explorer**het bron bestand van de code-behind `MainPage.xaml.cs`. (Deze wordt gegroepeerd onder `MainPage.xaml`.)
+3. Open in **Solution Explorer**het bron bestand van de code-behind `MainPage.xaml.cs`. (Deze is gegroepeerd onder `MainPage.xaml`.)
 
 4. Vervang de code door de volgende basis code:
 

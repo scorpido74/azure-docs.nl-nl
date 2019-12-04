@@ -1,20 +1,19 @@
 ---
-title: Verbinding maken met bestands systemen on-premises-Azure Logic Apps
+title: Verbinding maken met bestands systemen op locatie
 description: Taken en werk stromen automatiseren die verbinding maken met on-premises bestands systemen met de bestandssysteem connector via de on-premises gegevens gateway in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 1b5cf27c49a003042086cd9452f288c7f348d343
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799702"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792785"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Verbinding maken met on-premises bestands systemen met Azure Logic Apps
 
@@ -68,7 +67,7 @@ In dit artikel wordt uitgelegd hoe u verbinding kunt maken met een on-premises b
 
    | Eigenschap | Verplicht | Waarde | Beschrijving |
    | -------- | -------- | ----- | ----------- |
-   | **Verbindingsnaam** | Ja | <*naam* van de verbinding > | De naam die u voor de verbinding wilt hebben |
+   | **Verbindingsnaam** | Ja | <*naam* van de verbinding> | De naam die u voor de verbinding wilt hebben |
    | **Hoofdmap** | Ja | <*root-mapnaam*> | De hoofdmap voor uw bestands systeem, bijvoorbeeld als u de on-premises gegevens gateway hebt geïnstalleerd, zoals een lokale map op de computer waarop de on-premises gegevens gateway is geïnstalleerd, of de map voor een netwerk share waartoe de computer toegang heeft. <p>Bijvoorbeeld: `\\PublicShare\\DropboxFiles` <p>De hoofdmap is de bovenliggende map, die wordt gebruikt voor relatieve paden voor alle bestand-gerelateerde acties. |
    | **Verificatie type** | Nee | <*Authentication-type*> | Het type verificatie dat door het bestands systeem wordt gebruikt, bijvoorbeeld **Windows** |
    | **Gebruikersnaam** | Ja | <*domein*>\\<*gebruikers naam*> | De gebruikers naam van de computer waarop u het bestands systeem hebt |

@@ -1,17 +1,17 @@
 ---
-title: Firewall regels van Azure Database for MariaDB server
+title: Firewall regels-Azure Database for MariaDB
 description: Meer informatie over het gebruik van firewall regels om verbindingen met uw Azure Database for MariaDB server in te scha kelen.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 82e07edc615fd8c1ef0ebc84cf57035727bbcdf6
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: 5efde68469df1780214fee98cf2be44775acdc35
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965264"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772673"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Firewall regels van Azure Database for MariaDB server
 Firewalls verhinderen alle toegang tot uw database server totdat u opgeeft welke computers zijn gemachtigd. De firewall verleent toegang tot de server op basis van het oorspronkelijke IP-adres van elke aanvraag.

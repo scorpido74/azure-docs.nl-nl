@@ -1,42 +1,40 @@
 ---
-title: Werkstromen maken met sjablonen - Azure Logic Apps | Microsoft Docs
-description: Werkstromen sneller bouwen met behulp van sjablonen voor logische apps in Azure Logic Apps
+title: Werk stromen maken op basis van sjablonen
+description: Sneller werk stromen bouwen met behulp van Logic app-sjablonen in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 134a8f9625b45a8196ebd47f10286093f6ba0d46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7033185ac3a5411568195d788242a674b569183
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459626"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793180"
 ---
-# <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Het maken van de logic app workflows met vooraf gedefinieerde sjablonen
+# <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Logische app-werk stromen maken op basis van vooraf ontwikkelde sjablonen
 
-Logic Apps biedt om u snel werkstromen maken, sjablonen, die zijn vooraf gemaakte logische apps die veelgebruikte patronen volgen. Deze sjablonen gebruiken, zoals bepaald of bewerk ze zodat ze aansluiten bij uw scenario.
+Logic Apps biedt sjablonen die preconstrueerde Logic apps hebben die de veelgebruikte patronen volgen, zodat u sneller aan de slag kunt gaan met het maken van werk stromen. Gebruik deze sjablonen zoals deze zijn verschaft of bewerk ze voor uw scenario.
 
-Hier volgen enkele Sjablooncategorieën:
+Hier volgen enkele sjabloon categorieën:
 
-| Het sjabloontype | Description | 
+| Sjabloon type | Beschrijving | 
 | ------------- | ----------- | 
-| Sjablonen van Enterprise cloud | Voor het integreren van Azure Blob-, Dynamics CRM, Salesforce, Box, en andere connectors bevat voor de cloud voor ondernemingen. Bijvoorbeeld, kunt u deze sjablonen kunt organiseren zakelijke potentiële klanten of back-up van uw zakelijke bestandsgegevens. | 
-| Hun eigen sjablonen | De persoonlijke productiviteit te verbeteren door in te stellen van dagelijkse herinneringen ontvangen, schakelen belangrijk werkitems in takenlijsten en automatisering van langdurige taken op een enkele gebruiker goedkeuringsstap. | 
-| Sjablonen voor consumenten-cloud | Voor integratie van sociale mediaservices, zoals Twitter, Slack, en e-mailbericht. Dit is handig voor versterking van sociale media initiatieven marketing. Deze sjablonen ook bevatten taken, zoals kopiëren, cloud die de productiviteit toeneemt door de tijd te besparen op traditioneel terugkerende taken. | 
-| Enterprise integration pack-sjablonen | Voor het configureren van VETER (valideren, extraheren, transformeren, verrijken, route) pijplijnen, ontvangen een X12 EDI-document via AS2 en transformeren naar XML en X12, EDIFACT, verwerking en AS2-berichten. | 
-| Protocol patroon sjablonen | Voor het implementeren van protocol patronen zoals request response via HTTP en integraties in FTP- en SFTP. Deze sjablonen gebruiken zoals u verstrekt, of bouw op deze voor complexe protocol patronen. | 
+| Enter prise Cloud-sjablonen | Voor de integratie van Azure Blob, Dynamics CRM, Sales Force, box en ook andere connectors voor uw Enter prise Cloud-behoeften. U kunt deze sjablonen bijvoorbeeld gebruiken om zakelijke leads te organiseren of een back-up te maken van uw bedrijfs bestands gegevens. | 
+| Persoonlijke productiviteits sjablonen | Verbeter de persoonlijke productiviteit door dagelijks herinneringen in te stellen, belang rijke werk items in te scha kelen in taken lijsten en langdurige taken uit te voeren naar één stap voor het goed keuren van een gebruiker. | 
+| Cloud sjablonen voor consumenten | Voor de integratie van sociale media-services zoals Twitter, toegestane vertraging en e-mail. Handig voor het versterken van marketing initiatieven voor sociale media. Deze sjablonen omvatten ook taken als het kopiëren van de Cloud, waardoor de productiviteit wordt verhoogd door tijd te besparen op traditionele, terugkerende taken. | 
+| Enter prise Integration Pack-sjablonen | Voor het configureren van VETER (valideren, uitpakken, transformeren, verrijken, route) pijp lijnen, het ontvangen van een X12 EDI-document via AS2 en transformeren naar XML, en het verwerken van X12, EDIFACT en AS2 berichten. | 
+| Protocol patroon Sjablonen | Voor het implementeren van protocol patronen zoals aanvraag-Response via HTTP en integraties in FTP en SFTP. Gebruik deze sjablonen zoals u dat hebt gedaan, of bouw ze op voor complexe protocol patronen. | 
 ||| 
 
-Als u nog geen abonnement op Azure hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint. Zie voor meer informatie over het bouwen van een logische app [maken van een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Als u nog geen abonnement op Azure hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint. Zie [een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md)voor meer informatie over het bouwen van een logische app.
 
-## <a name="create-logic-apps-from-templates"></a>Logische apps maken met sjablonen
+## <a name="create-logic-apps-from-templates"></a>Logic apps maken op basis van sjablonen
 
-1. Als u niet hebt gedaan, meld u aan de [Azure-portal](https://portal.azure.com "Azure-portal").
+1. Als u dat nog niet hebt gedaan, meldt u zich aan bij de [Azure Portal](https://portal.azure.com "Azure Portal").
 
 2. Kies in het hoofdmenu van Azure **Een resource maken** > **Bedrijfsintegratie** > **Logische app**.
 
@@ -50,9 +48,9 @@ Als u nog geen abonnement op Azure hebt, [meld u dan aan voor een gratis Azure-a
    | ------- | ----- | ----------- | 
    | **Naam** | *naam-van-uw-logische-app* | Geef een unieke naam voor de logische app op. | 
    | **Abonnement** | *naam-van-uw-Azure-abonnement* | Selecteer het Azure-abonnement dat u wilt gebruiken. | 
-   | **Resourcegroep** | *naam-van-uw-Azure-resourcegroep* | Maak of Selecteer een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) voor deze logische app en alle resources die zijn gekoppeld aan deze app te organiseren. | 
-   | **Location** | *uw-Azure-datacenter-regio* | Selecteer de regio van het datacenter voor het implementeren van uw logische app, bijvoorbeeld US - west. | 
-   | **Log Analytics** | **Uit** (standaard) of **op** | Schakel [registratie in diagnoselogboek](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) voor uw logische app via [logboeken van Azure Monitor](../log-analytics/log-analytics-overview.md). Vereist dat u al een Log Analytics-werkruimte. | 
+   | **Resourcegroep** | *naam-van-uw-Azure-resourcegroep* | Maak of selecteer een [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) voor deze logische app en beheer alle resources die zijn gekoppeld aan deze app. | 
+   | **Locatie** | *uw-Azure-datacenter-regio* | Selecteer de regio van het datacenter voor het implementeren van uw logische app, bijvoorbeeld US - west. | 
+   | **Log Analytics** | **Uit** (standaard) of **op** | Schakel [Diagnostische logboek registratie](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) in voor uw logische app via [Azure monitor-logboeken](../log-analytics/log-analytics-overview.md). Hiervoor hebt u al een Log Analytics-werk ruimte nodig. | 
    |||| 
 
 4. Wanneer u klaar bent, selecteert u **Vastmaken aan dashboard**. Op die manier wordt uw logische app automatisch weergegeven op uw Azure-dashboard en wordt geopend na de implementatie. Kies **Maken**.
@@ -63,97 +61,97 @@ Als u nog geen abonnement op Azure hebt, [meld u dan aan voor een gratis Azure-a
    Nadat Azure uw logische app heeft geïmplementeerd, wordt de ontwerper voor logische apps geopend en ziet u een pagina met een inleidende video. 
    Onder de video ziet u sjablonen voor veelvoorkomende patronen voor logische apps. 
 
-5. Schuif voorbij de inleiding video en veelvoorkomende triggers op **sjablonen**. Kies een vooraf gedefinieerde sjabloon. Bijvoorbeeld:
+5. Schuif voorbij de inleidings video en veelgebruikte triggers naar **sjablonen**. Kies een vooraf gemaakte sjabloon. Bijvoorbeeld:
 
-   ![Een sjabloon voor logische app kiezen](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
+   ![Een sjabloon voor een logische app kiezen](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
    > [!TIP]
-   > Kies voor het maken van uw logische app helemaal, **lege logische App**.
+   > Kies **lege logische app**om uw logische app helemaal zelf te maken.
 
-   Wanneer u een vooraf gedefinieerde sjabloon selecteren, vindt u meer informatie over deze sjabloon. 
+   Wanneer u een vooraf gemaakte sjabloon selecteert, kunt u meer informatie over die sjabloon weer geven. 
    Bijvoorbeeld:
 
-   ![Kies een vooraf gemaakte sjabloon](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
+   ![Een vooraf gemaakte sjabloon kiezen](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-6. Als u wilt doorgaan met de geselecteerde sjabloon, kies **Gebruik deze sjabloon**. 
+6. Kies **deze sjabloon gebruiken**om door te gaan met de geselecteerde sjabloon. 
 
-7. Op basis van de connectors in de sjabloon, wordt u gevraagd om uit te voeren op een van deze stappen:
+7. Op basis van de connectors in de sjabloon wordt u gevraagd om een van de volgende stappen uit te voeren:
 
-   * Meld u aan met uw referenties aan systemen of -services waarnaar wordt verwezen door de sjabloon.
+   * Meld u aan met uw referenties voor systemen of services waarnaar wordt verwezen door de sjabloon.
 
-   * Verbindingen maken voor de services en systemen waarnaar wordt verwezen door de sjabloon. Geef een naam op voor de verbinding een verbinding wilt maken, en indien nodig, selecteert u de resource die u wilt gebruiken. 
+   * Maak verbindingen voor services of systemen waarnaar wordt verwezen door de sjabloon. Als u een verbinding wilt maken, geeft u een naam op voor de verbinding en selecteert u, indien nodig, de resource die u wilt gebruiken. 
 
-   * Als u deze verbindingen al ingesteld, kiest u **doorgaan**.
+   * Als u deze verbindingen al hebt ingesteld, kiest u **door gaan**.
 
    Bijvoorbeeld:
 
    ![Verbindingen maken](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
-   Wanneer u klaar bent, wordt uw logische app wordt geopend en wordt weergegeven in de ontwerper van logische Apps.
+   Wanneer u klaar bent, wordt uw logische App geopend en weer gegeven in de ontwerp functie voor Logic Apps.
 
    > [!TIP]
-   > Als u wilt terugkeren naar de logboeken van de sjabloon, kies **sjablonen** op de werkbalk van de ontwerper. Met deze actie verwijdert niet-opgeslagen wijzigingen, zodat er wordt een waarschuwing weergegeven om te bevestigen van uw aanvraag.
+   > Als u wilt terugkeren naar de sjabloon viewer, kiest u **sjablonen** op de werk balk van de ontwerp functie. Met deze actie worden niet-opgeslagen wijzigingen verwijderd. er wordt dus een waarschuwings bericht weer gegeven om uw aanvraag te bevestigen.
 
-8. Doorgaan met het ontwikkelen van uw logische app.
+8. Ga door met het bouwen van uw logische app.
 
    > [!NOTE] 
-   > Veel-sjablonen bevatten connectors die mogelijk al zijn vooraf ingevuld vereiste eigenschappen. Sommige sjablonen kunnen echter nog steeds vereist dat u waarden opgeven voordat u de logische app correct kunt implementeren. Als u probeert te implementeren zonder het voltooien van de ontbrekende eigenschapsvelden, krijgt u een foutbericht weergegeven. 
+   > Veel sjablonen bevatten connectors die mogelijk al vooraf ingevuld vereiste eigenschappen hebben. Voor sommige sjablonen is het echter mogelijk dat u nog steeds waarden moet opgeven voordat u de logische app correct kunt implementeren. Als u probeert te implementeren zonder de ontbrekende eigenschaps velden te volt ooien, wordt er een fout bericht weer gegeven. 
 
 ## <a name="update-logic-apps-with-templates"></a>Logische apps bijwerken met sjablonen
 
-1. In de [Azure-portal](https://portal.azure.com "Azure-portal"), zoeken en openen van uw logische app in de ontwerper van logische App.
+1. Zoek en open in de [Azure Portal](https://portal.azure.com "Azure Portal")uw logische app in de ontwerp functie voor logische apps.
 
-2. Kies op de werkbalk van de ontwerper **sjablonen**. Met deze actie verwijdert niet-opgeslagen wijzigingen, zodat er wordt een waarschuwing weergegeven, zodat u bevestigen kunt dat u wilt doorgaan. Om te bevestigen, kies **OK**. Bijvoorbeeld:
+2. Kies **sjablonen**op de werk balk van de ontwerp functie. Met deze actie worden niet-opgeslagen wijzigingen verwijderd. er wordt dus een waarschuwing weer gegeven, zodat u kunt bevestigen dat u wilt door gaan. Klik op **OK**om te bevestigen. Bijvoorbeeld:
 
-   ![Kies "Sjablonen"](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
+   ![Kies sjablonen](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
 
-3. Schuif voorbij de inleiding video en veelvoorkomende triggers op **sjablonen**. Kies een vooraf gedefinieerde sjabloon. Bijvoorbeeld:
+3. Schuif voorbij de inleidings video en veelgebruikte triggers naar **sjablonen**. Kies een vooraf gemaakte sjabloon. Bijvoorbeeld:
 
-   ![Een sjabloon voor logische app kiezen](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
+   ![Een sjabloon voor een logische app kiezen](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
-   Wanneer u een vooraf gedefinieerde sjabloon selecteren, vindt u meer informatie over deze sjabloon. 
+   Wanneer u een vooraf gemaakte sjabloon selecteert, kunt u meer informatie over die sjabloon weer geven. 
    Bijvoorbeeld:
 
-   ![Kies een vooraf gemaakte sjabloon](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
+   ![Een vooraf gemaakte sjabloon kiezen](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-4. Als u wilt doorgaan met de geselecteerde sjabloon, kies **Gebruik deze sjabloon**. 
+4. Kies **deze sjabloon gebruiken**om door te gaan met de geselecteerde sjabloon. 
 
-5. Op basis van de connectors in de sjabloon, wordt u gevraagd om uit te voeren op een van deze stappen:
+5. Op basis van de connectors in de sjabloon wordt u gevraagd om een van de volgende stappen uit te voeren:
 
-   * Meld u aan met uw referenties aan systemen of -services waarnaar wordt verwezen door de sjabloon.
+   * Meld u aan met uw referenties voor systemen of services waarnaar wordt verwezen door de sjabloon.
 
-   * Verbindingen maken voor de services en systemen waarnaar wordt verwezen door de sjabloon. Geef een naam op voor de verbinding een verbinding wilt maken, en indien nodig, selecteert u de resource die u wilt gebruiken. 
+   * Maak verbindingen voor services of systemen waarnaar wordt verwezen door de sjabloon. Als u een verbinding wilt maken, geeft u een naam op voor de verbinding en selecteert u, indien nodig, de resource die u wilt gebruiken. 
 
-   * Als u deze verbindingen al ingesteld, kiest u **doorgaan**.
+   * Als u deze verbindingen al hebt ingesteld, kiest u **door gaan**.
 
    ![Verbindingen maken](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
-   Uw logische app nu wordt geopend en wordt weergegeven in de ontwerper van logische Apps.
+   Uw logische app wordt nu geopend en wordt weer gegeven in de ontwerp functie voor Logic Apps.
 
-8. Doorgaan met het ontwikkelen van uw logische app. 
+8. Ga door met het bouwen van uw logische app. 
 
    > [!TIP]
-   > Als u de wijzigingen nog niet hebt opgeslagen, kunt u uw werk negeren en terug naar de vorige logische app. Kies op de werkbalk van de ontwerper **negeren**.
+   > Als u uw wijzigingen nog niet hebt opgeslagen, kunt u uw werk verwijderen en terugkeren naar uw vorige logische app. Kies **verwijderen**op de werk balk van de ontwerp functie.
 
 > [!NOTE] 
-> Veel-sjablonen bevatten connectors die mogelijk zijn al vooraf is ingevuld vereiste eigenschappen. Sommige sjablonen kunnen echter nog steeds vereist dat u waarden opgeven voordat u de logische app correct kunt implementeren. Als u probeert te implementeren zonder het voltooien van de ontbrekende eigenschapsvelden, krijgt u een foutbericht weergegeven.
+> Veel sjablonen bevatten connectors waarvoor mogelijk al vooraf de vereiste eigenschappen zijn ingevuld. Voor sommige sjablonen is het echter mogelijk dat u nog steeds waarden moet opgeven voordat u de logische app correct kunt implementeren. Als u probeert te implementeren zonder de ontbrekende eigenschaps velden te volt ooien, wordt er een fout bericht weer gegeven.
 
-## <a name="deploy-logic-apps-built-from-templates"></a>Logische apps die zijn gebouwd op basis van sjablonen implementeren
+## <a name="deploy-logic-apps-built-from-templates"></a>Logic Apps implementeren die zijn gemaakt op basis van sjablonen
 
-Nadat u uw wijzigingen aan de sjabloon aanbrengt, kunt u uw wijzigingen opslaan. Deze actie wordt ook automatisch uw logische app publiceert.
+Nadat u de wijzigingen in de sjabloon hebt aangebracht, kunt u de wijzigingen opslaan. Deze actie publiceert ook automatisch uw logische app.
 
 Kies **Opslaan** op de werkbalk van de ontwerper.
 
-![Opslaan en publiceren van uw logische app](./media/logic-apps-create-logic-apps-from-templates/logic-app-save.png)  
+![Uw logische app opslaan en publiceren](./media/logic-apps-create-logic-apps-from-templates/logic-app-save.png)  
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 * Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 * Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het bouwen van logische apps via voorbeelden, scenario's, verhalen van klanten en -scenario's.
+Meer informatie over het bouwen van logische apps met voor beelden, scenario's, ervaringen van klanten en instructies.
 
 > [!div class="nextstepaction"]
-> [Gebruik logic app-voorbeelden, scenario's en rondleidingen](../logic-apps/logic-apps-examples-and-scenarios.md)
+> [Voor beelden, scenario's en instructies voor logische apps bekijken](../logic-apps/logic-apps-examples-and-scenarios.md)

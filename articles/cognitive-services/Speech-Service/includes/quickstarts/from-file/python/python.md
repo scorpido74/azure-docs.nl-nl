@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 91b136b7986dc3551ebc28b7e35bfe206b273497
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 221a5ef40f2ebe59b0a40b3cd666b53fabf82e85
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504275"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796041"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -26,6 +26,8 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 > * [Een LUIS-toepassing maken en een eindpunt sleutel ophalen](../../../../quickstarts/create-luis.md)
 > * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md)
 > * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="support-and-updates"></a>Ondersteuning en updates
 
@@ -48,6 +50,9 @@ python quickstart.py
 Of u kunt deze quickstart-zelfstudie downloaden als een [Jupyter](https://jupyter.org)-notebook uit de [opslagplaats met Speech-SDK-voorbeelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) en de quickstart uitvoeren als een notitieblok.
 
 ### <a name="sample-code"></a>Voorbeeldcode
+
+> [!NOTE]
+> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
 
 ````Python
 

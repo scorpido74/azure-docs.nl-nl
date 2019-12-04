@@ -1,16 +1,16 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/09/2018
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 3fa71085d649ace95aa24ac87c8714a7268f5386
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/09/2018
+ms.openlocfilehash: 89c2467843d7abc7c005804fd5263fe3beb668b6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176628"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793444"
 ---
-Voor een meer nauwkeurige verbruikskosten schatting, houd rekening met het aantal berichten of gebeurtenissen die mogelijk op een willekeurige dag binnenkomen, in plaats van uw berekeningen baseren op alleen het polling-interval. Wanneer een gebeurtenis of een bericht voldoet aan de criteria van de trigger, wordt er onmiddellijk veel triggers probeert te lezen en alle andere wachten gebeurtenissen of de berichten die voldoen aan de criteria. Dit gedrag betekent dat zelfs als u een langer polling-interval, de trigger wordt geactiveerd op basis van het aantal gebeurtenissen van de wachtrij of berichten die in aanmerking komen voor het starten van werkstromen. Triggers die dit gedrag volgen zijn Azure Service Bus en Azure Event Hub.
+Als u nauw keuriger verbruiks kosten wilt ramen, moet u rekening houden met het mogelijke aantal berichten of gebeurtenissen dat op een wille keurige dag kan arriveren, in plaats van uw berekeningen alleen op het polling-interval te baseren. Wanneer een gebeurtenis of bericht voldoet aan de trigger criteria, proberen veel triggers elke en alle andere wacht gebeurtenissen of berichten die voldoen aan de criteria, direct te lezen. Dit gedrag houdt in dat zelfs wanneer u een langere polling-interval selecteert, de trigger wordt geactiveerd op basis van het aantal wachtende gebeurtenissen of berichten die in aanmerking komen voor het starten van werk stromen. Triggers die volgen op dit gedrag zijn onder andere Azure Service Bus en Azure Event hub.
 
-Dus Stel bijvoorbeeld dat u de trigger waarmee wordt gecontroleerd of een eindpunt voor elke dag instellen. Wanneer de trigger controleert of het eindpunt en 15 gebeurtenissen die voldoen aan de criteria wordt gevonden, wordt de trigger wordt geactiveerd en de bijbehorende werkstroom 15 keer uitvoert. Logic Apps-meters alle acties die deze 15 werkstromen, met inbegrip van de trigger-aanvragen uitvoert. Voor het berekenen van de mogelijke kosten, probeert de [prijscalculator van Azure](https://azure.microsoft.com/pricing/calculator/).
+Stel bijvoorbeeld dat u trigger hebt ingesteld waarmee een eind punt elke dag wordt gecontroleerd. Wanneer de trigger het eind punt controleert en er 15 gebeurtenissen vindt die voldoen aan de criteria, wordt de trigger geactiveerd en wordt de corresponderende werk stroom 15 keer uitgevoerd. Logic Apps meter alle acties die door die 15 werk stromen worden uitgevoerd, met inbegrip van de trigger aanvragen. Probeer de [Azure-prijs calculator](https://azure.microsoft.com/pricing/calculator/)om uw potentiële kosten te berekenen.

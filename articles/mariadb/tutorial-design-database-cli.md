@@ -1,19 +1,19 @@
 ---
-title: 'Zelfstudie: een Azure Database for MariaDB ontwerpen met Azure CLI'
+title: 'Zelf studie: een Azure Database for MariaDB ontwerpen-Azure CLI'
 description: In deze zelfstudie wordt uitgelegd hoe u een Azure Database for MariaDB-server en -database maakt en beheert met behulp van Azure CLI vanaf de opdrachtregel.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/10/2018
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 548f4f10758b2d69bf4fda00f8bf52d33d20306c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 91283b453e71e476d247e752b24e9eec0047a814
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999159"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776778"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Zelfstudie: een Azure Database for MariaDB ontwerpen met Azure CLI
 
@@ -175,9 +175,9 @@ Stel dat u deze tabel per ongeluk hebt verwijderd. Dit is iets wat u niet eenvou
 Voor deze herstelbewerking hebt u de volgende gegevens nodig:
 
 - Herstelpunt: selecteer een tijdstip voorafgaand aan het moment waarop de server is gewijzigd. De tijd moet eerder zijn dan of gelijk zijn aan het tijdstip van de oudste back-up van de brondatabase.
-- Doelserver: geef de naam op van de nieuwe server waarnaar u wilt herstellen
-- Bronserver: geef de naam op van de server waarvan u gegevens wilt terugzetten
-- Locatie: u kunt de regio niet selecteren, standaard is deze hetzelfde als die van de bronserver
+- Doelserver: geef de naam op van de nieuwe server waarnaar u wilt herstellen.
+- Bronserver: geef de naam op van de server waarvan u gegevens wilt terugzetten.
+- Locatie: u kunt de regio niet selecteren, standaard is deze hetzelfde als die van de bronserver.
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -185,7 +185,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 De opdracht `az mariadb server restore` vereist de volgende parameters:
 
-| Instelling | Voorgestelde waarde | Description  |
+| Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resourcegroep waarin de bronserver bestaat.  |
 | name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
@@ -197,7 +197,7 @@ Wanneer u een server naar een bepaald tijdstip herstelt, wordt er een nieuwe ser
 De opdracht is synchroon en keert terug nadat de server is hersteld. Nadat het herstel is voltooid, zoekt u de nieuwe server. Controleer of de gegevens zijn hersteld zoals verwacht.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Azure Database for MariaDB-server maken
 > * De serverfirewall configureren

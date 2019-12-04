@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69781b7c5187bd9166946a96a8b47233d0f77208
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8994079cf18a9af5f5e1368761015bbd8b836bd9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100677"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790908"
 ---
-# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Quickstart: Een virtuele SQL Server-machine voor Windows maken met Azure PowerShell
+# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Snelstartgids: een virtuele SQL Server-machine voor Windows maken met Azure PowerShell
 
 In deze snelstartgids gaat u een virtuele SQL Server-machine maken met Azure PowerShell.
 
@@ -151,7 +151,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 Voor integratie met de portal en voor de functies van de SQL-VM, moet u de [extensie voor de SQL Server IaaS-agent](virtual-machines-windows-sql-server-agent-extension.md) installeren. Als u de agent wilt installeren op de nieuwe VM, voert u de volgende opdracht uit nadat de VM is gemaakt.
 
    ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
    ```
 
 ## <a name="remote-desktop-into-the-vm"></a>Extern bureaublad op de VM

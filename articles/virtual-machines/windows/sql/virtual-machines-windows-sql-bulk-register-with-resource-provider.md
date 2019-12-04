@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 97541484501a3ecdd1bd5998314c1ee9e7a4e3a5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489074"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790546"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Virtuele SQL-machines in azure bulksgewijs registreren met de resource provider van de SQL-VM
 
@@ -222,7 +222,7 @@ Fouten worden vastgelegd in het logboek bestand met de naam `VMsNotRegisteredDue
 
 Wanneer u SQL Server Vm's registreert bij de resource provider met behulp van het meegeleverde script, moet u rekening houden met het volgende:
 
-- Registratie bij de resource provider vereist een gast agent die wordt uitgevoerd op de SQL Server VM. Installatie kopieën van Windows Server 2008 hebben geen gast agent, zodat deze virtuele machines mislukken en hand matig moeten worden geregistreerd met de [beheer modus](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)voor niet-agents.
+- Registratie bij de resource provider vereist een gast agent die wordt uitgevoerd op de SQL Server VM. Installatie kopieën van Windows Server 2008 hebben geen gast agent, zodat deze virtuele machines mislukken en hand matig moeten worden geregistreerd met de [beheer modus](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)voor niet-agents.
 - Er is een nieuwe logica ingebouwd om transparante fouten te verholpen. Als de virtuele machine is geregistreerd, is het een snelle bewerking. Als de registratie echter mislukt, wordt elke virtuele machine opnieuw geprobeerd.  Als zodanig is het belang rijk dat u veel tijd hebt om het registratie proces te volt ooien, maar de vereiste voor de werkelijke hoeveelheid tijd is afhankelijk van het type en het aantal fouten. 
 
 ## <a name="full-script"></a>Volledige script

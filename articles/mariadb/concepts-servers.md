@@ -1,55 +1,55 @@
 ---
-title: Concepten van de server in Azure Database voor MariaDB
-description: In dit onderwerp vindt u overwegingen en richtlijnen voor het werken met Azure Database voor MariaDB-servers.
+title: Servers-Azure Database for MariaDB
+description: In dit onderwerp vindt u overwegingen en richt lijnen voor het werken met Azure Database for MariaDB-servers.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: f61f8740c9514f6276afb2ee84bcdccdc54c0710
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 048d9f3089a433dbf8c2647ed86ddab69c78ebaa
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61040910"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772041"
 ---
-# <a name="server-concepts-in-azure-database-for-mariadb"></a>Concepten van de server in Azure Database voor MariaDB
-In dit artikel vindt u overwegingen en richtlijnen voor het werken met Azure Database voor MariaDB-servers.
+# <a name="server-concepts-in-azure-database-for-mariadb"></a>Server concepten in Azure Database for MariaDB
+In dit artikel vindt u overwegingen en richt lijnen voor het werken met Azure Database for MariaDB-servers.
 
-## <a name="what-is-an-azure-database-for-mariadb-server"></a>Wat is een Azure Database voor MariaDB-server?
+## <a name="what-is-an-azure-database-for-mariadb-server"></a>Wat is een Azure Database for MariaDB-server?
 
-Een Azure Database voor MariaDB-server is een centraal beheerpunt voor meerdere databases. Dit is dezelfde MariaDB-server om voor te bereiden die u al bekend mee in de on-premises wereld wellicht. Met name de Azure Database voor MariaDB-service wordt beheerd, prestaties biedt en wordt aangegeven dat toegang en -functies op serverniveau.
+Een Azure Database for MariaDB server is een centraal beheer punt voor meerdere data bases. Het is dezelfde MariaDB-server constructie die u mogelijk kent in de on-premises wereld. Met name de Azure Database for MariaDB-service wordt beheerd, levert prestatie garanties en biedt toegang en functies op server niveau.
 
-Een Azure Database voor MariaDB-server:
+Een Azure Database for MariaDB-server:
 
 - Wordt gemaakt binnen een Azure-abonnement.
-- Is de bovenliggende resource voor databases.
-- Biedt een naamruimte voor databases.
-- Is een container met sterke levensduursemantiek; d.w.z. - een server verwijderen en de ingesloten databases worden verwijderd.
-- Groepeert resources in een regio.
-- Biedt een verbindingseindpunt voor server en database-toegang.
-- Vindt u het bereik voor management-beleid die van toepassing op de betreffende databases zijn: aanmelding, firewall, gebruikers, rollen, configuraties, enzovoort.
-- Is beschikbaar in de versie van de engine MariaDB 10.2. Zie voor meer informatie, [ondersteund Azure Database voor MariaDB databaseversies](./concepts-supported-versions.md).
+- Is de bovenliggende resource voor data bases.
+- Biedt een naam ruimte voor data bases.
+- Is een container met sterke levens duur semantiek: een server verwijderen en de Inge sloten data bases verwijdert.
+- Groepeert bronnen in een regio.
+- Biedt een verbindings eindpunt voor toegang tot de server en data base.
+- Voorziet in het bereik voor beheer beleid dat van toepassing is op de bijbehorende data bases: aanmelden, firewall, gebruikers, rollen, configuraties, enzovoort.
+- Is beschikbaar in de MariaDB-Engine versie 10,2. Zie [supported Azure database for MariaDB data base versions](./concepts-supported-versions.md)(Engelstalig) voor meer informatie.
 
-Op een Azure Database for MariaDB-server kunt u een of meerdere databases maken. U kunt kiezen voor het maken van een individuele database per server om alle resources te gebruiken of om meerdere databases voor het delen van de resources te maken. De prijzen zijn gestructureerd per server, op basis van de configuratie van prijzen laag vCores en opslag (GB). Zie voor meer informatie, [Prijscategorieën](./concepts-pricing-tiers.md).
+Op een Azure Database for MariaDB-server kunt u een of meerdere databases maken. U kunt ervoor kiezen om één data base per server te maken voor het gebruik van alle resources of om meerdere data bases te maken om de resources te delen. De prijzen zijn gestructureerd per server, op basis van de configuratie van de prijs categorie, vCores en opslag (GB). Zie [prijs categorieën](./concepts-pricing-tiers.md)voor meer informatie.
 
-## <a name="how-do-i-secure-an-azure-database-for-mariadb-server"></a>Hoe beveilig ik een Azure Database voor MariaDB-server?
+## <a name="how-do-i-secure-an-azure-database-for-mariadb-server"></a>Hoe kan ik een Azure Database for MariaDB server beveiligen?
 
-De volgende elementen zorgen veilige toegang tot uw database.
+De volgende elementen helpen veilige toegang tot uw data base te garanderen.
 
 |||
 | :--| :--|
-| **Verificatie en autorisatie** | Azure Database voor MariaDB-server biedt ondersteuning voor systeemeigen MySQL-verificatie. U kunt verbinding maken en verifiëren met een server met de serverbeheerder. |
-| **Protocol** | De service ondersteunt een protocol op basis van een bericht dat wordt gebruikt door MySQL. |
-| **TCP/IP** | Het protocol wordt ondersteund via TCP/IP en sockets van Unix-domein. |
-| **Firewall** | Ter bescherming van uw gegevens, voorkomt een firewallregel alle toegang tot uw databaseserver totdat u opgeeft welke computers zijn gemachtigd. Zie [Azure Database voor MariaDB Server firewall-regels](./concepts-firewall-rules.md). |
-| **SSL** | De service biedt ondersteuning voor afdwingen van SSL-verbindingen tussen uw toepassingen en uw database-server. Zie [configureren van SSL-connectiviteit in uw toepassing veilig verbinding maken met Azure Database voor MariaDB](./howto-configure-ssl.md). |
+| **Verificatie en autorisatie** | Azure Database for MariaDB-server ondersteunt native MySQL-verificatie. U kunt verbinding maken met en verifiëren met een server met de beheerders aanmelding van de server. |
+| **Protocol** | De service ondersteunt een op berichten gebaseerd protocol dat wordt gebruikt door MySQL. |
+| **TCP/IP** | Het protocol wordt ondersteund via TCP/IP en via Unix-domein sockets. |
+| **Firewall** | Ter bescherming van uw gegevens voor komt een firewall regel alle toegang tot uw database server, totdat u opgeeft welke computers zijn gemachtigd. Zie [Azure database for MariaDB Server firewall-regels](./concepts-firewall-rules.md). |
+| **-** | De service biedt ondersteuning voor het afdwingen van SSL-verbindingen tussen uw toepassingen en uw database server. Zie [SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure database for MariaDB](./howto-configure-ssl.md). |
 
 ## <a name="how-do-i-manage-a-server"></a>Hoe kan ik een server beheren?
-U kunt Azure Database voor MariaDB-servers beheren met behulp van de Azure-portal of de Azure CLI.
+U kunt Azure Database for MariaDB servers beheren door gebruik te maken van de Azure Portal of de Azure CLI.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie voor een overzicht van de service, [Azure Database voor MariaDB-overzicht](./overview.md)
-- Voor informatie over specifieke resource quota en beperkingen op basis van uw **servicelaag**, Zie [Servicelagen](./concepts-pricing-tiers.md)
+- Zie [overzicht van Azure database for MariaDB](./overview.md) voor een overzicht van de service
+- Zie [service lagen](./concepts-pricing-tiers.md) voor informatie over specifieke resource quota en beperkingen op basis **van uw servicelaag**.
 
 <!-- - For information about connecting to the service, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md). -->

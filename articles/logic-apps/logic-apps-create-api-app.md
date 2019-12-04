@@ -1,21 +1,17 @@
 ---
-title: Web-Api's maken & REST-Api's voor Azure Logic Apps | Microsoft Docs
+title: Web-Api's maken & REST-Api's voor Azure Logic Apps
 description: Maak Web-Api's & REST-Api's om uw Api's, services of systemen aan te roepen voor systeem integratie in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
-ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 0d73f40c77c1b73a52522eafdb3c093b691d3e14
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583456"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793223"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Aangepaste Api's maken die u kunt aanroepen vanuit Azure Logic Apps
 
@@ -224,7 +220,7 @@ Als u uw aangepaste Api's beschikbaar wilt maken voor andere Logic Apps gebruike
 
 Als u uw aangepaste Api's beschikbaar wilt maken voor alle gebruikers in Logic Apps, energie automatisering en micro soft power apps, moet u beveiliging toevoegen, uw Api's registreren als logische app-connectors en uw connectors benoemen voor het [Microsoft Azure gecertificeerde programma](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 * Neem voor specifieke hulp met aangepaste Api's contact op met [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com).
 

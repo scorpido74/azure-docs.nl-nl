@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 33c26ff15095928d6050a77794b74480e364bfb6
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9301da884e26a65b198c885000159c383655b2d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707762"
+ms.locfileid: "74771459"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB gegevens indexeren met behulp van een Indexeer functie in azure Cognitive Search 
 
@@ -294,7 +294,7 @@ De algemeen beschik bare .NET SDK heeft volledige pariteit met de algemeen besch
 
 ## <a name="indexing-changed-documents"></a>Gewijzigde documenten indexeren
 
-Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt identificeren van gewijzigde gegevens items. Momenteel is het enige ondersteunde beleid het `High Water Mark`-beleid met behulp van de eigenschap `_ts` (Time Stamp) van Azure Cosmos DB, die als volgt wordt opgegeven:
+Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt identificeren van gewijzigde gegevens items. Op dit moment is het enige ondersteunde beleid het [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) met behulp van de eigenschap `_ts` (Time Stamp) van Azure Cosmos DB, die als volgt wordt opgegeven:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bfe306f089a26258ba9c7a07c54925f4540b44b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 90dc42ed6ca16947902622cba0e5a81a2bc900e3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382025"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785991"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Aan de slag met verificatie op basis van certificaten in Azure Active Directory
 
@@ -36,13 +36,16 @@ Dit onderwerp:
 
 Als u verificatie op basis van certificaten wilt configureren, moeten de volgende instructies waar zijn:
 
-- Verificatie op basis van een certificaat (dit) wordt alleen ondersteund voor federatieve omgevingen voor browser toepassingen of systeem eigen clients die gebruikmaken van moderne authenticatie (ADAL). De enige uitzonde ring is Exchange Active Sync (EAS) voor Exchange Online (EXO), die kan worden gebruikt voor federatieve en beheerde accounts.
+- Verificatie op basis van een certificaat (dit) wordt alleen ondersteund voor federatieve omgevingen voor browser toepassingen, native clients die gebruikmaken van moderne verificatie (ADAL) of MSAL-bibliotheken. De enige uitzonde ring is Exchange Active Sync (EAS) voor Exchange Online (EXO), die kan worden gebruikt voor federatieve en beheerde accounts.
 - De basis certificerings instantie en alle tussenliggende certificerings instanties moeten worden geconfigureerd in Azure Active Directory.
 - Elke certificerings instantie moet een certificaatintrekkingslijst (CRL) hebben waarnaar kan worden verwezen via een Internet gerichte URL.
 - U moet ten minste één certificerings instantie configureren in Azure Active Directory. U vindt verwante stappen in de sectie [de certificaat instanties configureren](#step-2-configure-the-certificate-authorities) .
 - Voor Exchange ActiveSync-clients moet het client certificaat het e-mail adres van de gebruiker in Exchange Online hebben in de principal-naam of de naam waarde RFC822 van het veld alternatieve naam voor onderwerp. Azure Active Directory wijst de waarde RFC822 toe aan het kenmerk proxy adres in de Directory.
 - Uw client apparaat moet toegang hebben tot ten minste één certificerings instantie die client certificaten uitgeeft.
 - Er moet een client certificaat voor client verificatie worden verleend aan de client.
+
+>[!IMPORTANT]
+>De maximale grootte van een CRL voor Azure Active Directory het downloaden en opslaan van de cache is 20 MB, en de tijd die nodig is om de CRL te downloaden, mag niet langer zijn dan 10 seconden.  Als Azure Active Directory geen CRL kan downloaden, zullen op certificaten gebaseerde verificaties die gebruikmaken van certificaten die zijn uitgegeven door de bijbehorende CA, mislukken. Aanbevolen procedures om ervoor te zorgen dat CRL-bestanden zich in grootte beperkingen bevinden, is om de levens duur van certificaten binnen redelijke limieten te houden en verlopen certificaten op te schonen. 
 
 ## <a name="step-1-select-your-device-platform"></a>Stap 1: het platform van het apparaat selecteren
 
@@ -96,7 +99,7 @@ Voor de configuratie kunt u de [Azure Active Directory Power shell versie 2](/po
 
 Als eerste configuratie stap moet u een verbinding maken met uw Tenant. Zodra er een verbinding met uw Tenant bestaat, kunt u de vertrouwde certificerings instanties die in uw Directory zijn gedefinieerd, bekijken, toevoegen, verwijderen en wijzigen.
 
-### <a name="connect"></a>Verbinding maken
+### <a name="connect"></a>Connect
 
 Gebruik de cmdlet [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) om verbinding te maken met uw Tenant:
 

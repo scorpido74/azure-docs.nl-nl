@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: ae645f15672693466ba87f2364c756ed164ce629
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 795661912633f0d225aef4de8ea7620a8766e096
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669173"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766987"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Gegevens verzameling in Azure Security Center
 Security Center verzamelt gegevens van uw virtuele machines van Azure (Vm's), schaal sets voor virtuele machines, IaaS containers en niet-Azure-computers (inclusief on-premises) om te controleren op beveiligings problemen en bedreigingen. Gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende aan beveiliging gerelateerde configuraties en gebeurtenis logboeken van de computer leest en de gegevens naar uw werk ruimte kopieert voor analyse. Voor beelden van dergelijke gegevens zijn: besturingssysteem type en-versie, logboeken van besturings systemen (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent kopieert ook crash dump bestanden naar uw werk ruimte.
@@ -304,7 +304,12 @@ U kunt de Log Analytics-agent hand matig installeren, zodat Security Center beve
 -  Zie [problemen met de netwerk vereisten](security-center-troubleshooting-guide.md#mon-network-req)voor de bewakings agent oplossen om de netwerk vereisten voor de bewakings agent te identificeren.
 -   Zie problemen met de voorbereidings [procedure van Operations Management Suite oplossen](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)voor informatie over hand matige onboarding-problemen.
 
-- Als u niet-bewaakte Vm's en computers problemen wilt identificeren, raadpleegt u niet- [bewaakte vm's en computers](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers).
+- Om niet-bewaakte Vm's en computers problemen te identificeren:
+
+    Een virtuele machine of computer wordt niet bewaakt door Security Center als op de computer niet de micro soft Monitoring Agent-extensie wordt uitgevoerd. Op een computer is mogelijk al een lokale agent geïnstalleerd, bijvoorbeeld de OMS direct-agent of de System Center Operations Manager-agent. Computers met deze agents worden geïdentificeerd als niet-bewaakt omdat deze agents niet volledig worden ondersteund in Security Center. De Microsoft Monitoring Agent-extensie is vereist om volledig te profiteren van alle mogelijkheden van Security Center.
+
+    Zie [agent health issues](security-center-troubleshooting-guide.md#mon-agent)(Engelstalig) voor meer informatie over de redenen waarom Security Center vm's en computers die zijn geïnitialiseerd voor automatische inrichting niet kunnen controleren.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel wordt uitgelegd hoe het verzamelen en automatisch inrichten van gegevens in Security Center werkt. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:

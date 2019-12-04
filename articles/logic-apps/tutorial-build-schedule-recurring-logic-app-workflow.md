@@ -1,24 +1,20 @@
 ---
-title: Op planning gebaseerde geautomatiseerde werk stromen bouwen-Azure Logic Apps
+title: Geautomatiseerde werk stromen op basis van een planning bouwen
 description: 'Zelf studie: een op een planning gebaseerde, terugkerende, geautomatiseerde werk stroom maken met behulp van Azure Logic Apps'
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: eae2319e8d1c162969a04f8dafa18eec671ee1d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f9203f77d5b398f53fcb7c9fceb70604b364a4e0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034646"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790300"
 ---
-# <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Zelfstudie: Geautomatiseerde, op planning gebaseerde, terugkerende werk stromen maken met behulp van Azure Logic Apps
+# <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Zelf studie: een geautomatiseerde, op planning gebaseerde, terugkerende werk stromen maken met behulp van Azure Logic Apps
 
 Deze zelf studie laat zien hoe u een [logische app](../logic-apps/logic-apps-overview.md) bouwt en een terugkerende werk stroom automatiseert die volgens een planning wordt uitgevoerd. Met name deze logische app wordt elke weekdag morgen uitgevoerd en controleert de reis tijd, inclusief verkeer, tussen twee locaties. Als de tijd een bepaalde limiet overschrijdt, verzendt de logische app een e-mail met de reistijd en de extra tijd die u nodig hebt om uw bestemming te bereiken.
 
@@ -50,7 +46,7 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
 ## <a name="create-your-logic-app"></a>Uw logische app maken
 
-1. Selecteer in het hoofd menu van Azure **een resource maken** > -**integratie** > **Logic-app**.
+1. Selecteer in het hoofd menu van Azure **een resource maken** > **integratie** > **logische app**.
 
    ![Uw logische app-resource maken](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 
@@ -60,10 +56,10 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Name** | LA-TravelTime | De naam van uw logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) mag bevatten. In dit voor beeld wordt gebruikgemaakt van ' LA-TravelTime '. |
+   | **Naam** | LA-TravelTime | De naam van uw logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt gebruikgemaakt van ' LA-TravelTime '. |
    | **Abonnement** | <*your-Azure-subscription-name*> | De naam van uw Azure-abonnement |
    | **Resourcegroep** | LA-TravelTime-RG | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md), die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' LA-TravelTime-RG ' gebruikt. |
-   | **Location** | US - west | De tKan-regio waar de logische app-gegevens moeten worden opgeslagen. In dit voor beeld wordt ' West US ' gebruikt. |
+   | **Locatie** | VS - west | De tKan-regio waar de logische app-gegevens moeten worden opgeslagen. In dit voor beeld wordt ' West US ' gebruikt. |
    | **Log Analytics** | Uit | Behoud de instelling **Uit** voor het vastleggen van diagnostische gegevens. |
    ||||
 
@@ -93,10 +89,10 @@ Voeg vervolgens de terugkeer patroon [trigger](../logic-apps/logic-apps-overview
 
    ![Het interval en de frequentie van de terugkeer trigger wijzigen](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | Eigenschap | Verplicht | Value | Description |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | **Interval** | Ja | 1 | Het aantal intervallen dat tussen controles moet worden gewacht |
-   | **Frequentie** | Ja | Wekelijks | Tijdseenheid die voor het terugkeerpatroon wordt gebruikt |
+   | **Frequentie** | Ja | Week | Tijdseenheid die voor het terugkeerpatroon wordt gebruikt |
    |||||
 
 1. Open onder **interval** en **frequentie**de lijst **nieuwe para meter toevoegen** en selecteer deze eigenschappen om aan de trigger toe te voegen.
@@ -111,7 +107,7 @@ Voeg vervolgens de terugkeer patroon [trigger](../logic-apps/logic-apps-overview
 
    ![Gegevens van de planning en het terugkeerpatroon opgeven](./media/tutorial-build-scheduled-recurring-logic-app-workflow/recurrence-trigger-property-values.png)
 
-   | Eigenschap | Waarde | Description |
+   | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
    | **Deze dagen** | Maandag, dinsdag, woensdag, donderdag, vrijdag | Alleen beschikbaar wanneer **Frequentie** is ingesteld op "Wekelijks" |
    | **Deze uren** | 7, 8, 9 | Alleen beschikbaar wanneer **Frequentie** is ingesteld op 'Wekelijks' of 'Dagelijks'. Selecteer de uren van de dag waarop dit terugkeerpatroon wordt uitgevoerd. Dit voorbeeld wordt uitgevoerd om 7, 8 en 9 uur. |
@@ -142,7 +138,7 @@ Nu u een trigger hebt, voegt u een [actie](../logic-apps/logic-apps-overview.md#
 
    ![Verbinding maken met de Bing Maps-API](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Eigenschap | Verplicht | Value | Description |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | **Verbindingsnaam** | Ja | BingMapsConnection | Geef een naam op voor uw verbinding. In dit voor beeld wordt ' BingMapsConnection ' gebruikt. |
    | **API-sleutel** | Ja | <*your-Bing-Maps-key*> | Voer de sleutel voor Bing Kaarten in die u eerder hebt ontvangen. Leer [hoe u een sleutel kunt verkrijgen](https://msdn.microsoft.com/library/ff428642.aspx) als u geen sleutel voor Bing Kaarten hebt. |
@@ -162,7 +158,7 @@ Nu u een trigger hebt, voegt u een [actie](../logic-apps/logic-apps-overview.md#
 
    ![Geef details op voor de actie route ophalen](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Eigenschap | Verplicht | Value | Description |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | **Routepunt 1** | Ja | <*start-location*> | Het beginpunt van uw route |
    | **Routepunt 2** | Ja | <*end-location*> | De bestemming van uw route |
@@ -193,10 +189,10 @@ De vorige actie **route ophalen** retourneert standaard de huidige reis tijd met
 
 1. Geef details op voor uw variabele zoals hier wordt beschreven:
 
-   | Eigenschap | Verplicht | Value | Beschrijving |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Name** | Ja | travelTime | De naam van de variabele. In dit voor beeld wordt ' travelTime ' gebruikt. |
-   | **Type** | Ja | Integer | Het gegevenstype van uw variabele |
+   | **Naam** | Ja | travelTime | De naam van de variabele. In dit voor beeld wordt ' travelTime ' gebruikt. |
+   | **Type** | Ja | Geheel getal | Het gegevenstype van uw variabele |
    | **Waarde** | Nee| Een expressie die de actuele reistijd van seconden naar minuten converteert (zie de stappen onder deze tabel). | De beginwaarde van uw variabele |
    ||||
 
@@ -251,7 +247,7 @@ Vervolgens voegt u een voorwaarde toe waarmee wordt gecontroleerd of de actuele 
 
    1. Selecteer in het vak middelste vergelijking de operator **is groter dan** .
 
-   1. Voer in het vak **een waarde kiezen** op de rechter kant deze limiet in: `15`
+   1. Geef in het vak **een waarde kiezen** op de rechter zijde de volgende limiet op: `15`
 
       Wanneer u klaar bent, ziet de voor waarde eruit als in dit voor beeld:
 

@@ -3,17 +3,17 @@ title: Modules in Azure Automation beheren
 description: In dit artikel wordt beschreven hoe u modules beheert in Azure Automation
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 06/05/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 492dd182c782b0f6375c2f857cfa4921b065c546
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231575"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786466"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modules in Azure Automation beheren
 
@@ -34,7 +34,15 @@ U kunt de [New-AzureRmAutomationModule](/powershell/module/azurerm.automation/ne
 New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
 ```
 
-### <a name="azure-portal"></a>Azure-portal
+U kunt ook dezelfde cmdlet gebruiken om rechtstreeks een module te importeren vanuit PowerShell Gallery. Zorg ervoor dat u de **module** naam en **ModuleVersion** van [PowerShell Gallery](https://www.powershellgallery.com)ophaalt.
+
+```azurepowershell-interactive
+$moduleName = <ModuleName>
+$moduleVersion = <ModuleVersion>
+New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
+```
+
+### <a name="azure-portal"></a>Azure Portal
 
 Navigeer in het Azure Portal naar uw Automation-account en selecteer **modules** onder **gedeelde bronnen**. Klik op **+ een module toevoegen**. Selecteer een **zip** -bestand dat de module bevat en klik op **OK** om te beginnen met het importeren van het proces.
 
@@ -54,7 +62,7 @@ U kunt ook modules vanuit het PowerShell Gallery rechtstreeks vanuit uw Automati
 
 Als u problemen ondervindt met een module of als u een eerdere versie van een module wilt herstellen, kunt u deze verwijderen uit uw Automation-account. U kunt de oorspronkelijke versie van de [standaard modules](#default-modules) die worden geïmporteerd niet verwijderen wanneer u een Automation-account maakt. Als de module die u wilt verwijderen een nieuwere versie is van een van de [standaard modules](#default-modules) die zijn geïnstalleerd, wordt de versie teruggezet die is geïnstalleerd met uw Automation-account. Anders wordt elke module verwijderd die u uit uw Automation-account verwijdert.
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 
 Navigeer in het Azure Portal naar uw Automation-account en selecteer **modules** onder **gedeelde bronnen**. Selecteer de module die u wilt verwijderen. Op de pagina **module** , clcick **verwijderen**. Als deze module een van de [standaard modules](#default-modules)is, wordt deze teruggedraaid naar de versie die aanwezig was tijdens het maken van het Automation-account.
 
@@ -69,6 +77,10 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 ## <a name="internal-cmdlets"></a>Interne cmdlets
 
 Hier volgt een lijst met cmdlets in de module interne `Orchestrator.AssetManagement.Cmdlets` die in elk Automation-account wordt geïmporteerd. Deze cmdlets zijn toegankelijk in uw runbooks en DSC-configuraties en bieden u de mogelijkheid om te communiceren met uw assets in uw Automation-account. Daarnaast kunt u met de interne cmdlets geheimen ophalen van versleutelde **variabelen** waarden, **referenties**en versleutelde **verbindings** velden. De Azure PowerShell-cmdlets kunnen deze geheimen niet ophalen. Voor deze cmdlets hoeft u niet impliciet verbinding te maken met Azure wanneer u deze gebruikt, zoals het gebruik van een uitvoeren als-account om te verifiëren bij Azure.
+
+>[!NOTE]
+>Deze interne cmdlets zijn niet beschikbaar op een Hybrid Runbook Worker, ze zijn alleen toegankelijk vanuit runbooks die worden uitgevoerd in Azure. Gebruik de bijbehorende modules [AzureRM. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) of [AZ](../az-modules.md) voor runbooks die rechtstreeks op de computer of op basis van resources in uw omgeving worden uitgevoerd. 
+>
 
 |Naam|Beschrijving|
 |---|---|
@@ -240,7 +252,7 @@ Voeg `[OutputType([<MyOutputType>])]` toe waarbij MyOutputType een geldig type i
 
 De volgende tabel bevat de modules die standaard worden geïmporteerd wanneer een Automation-account wordt gemaakt. In de onderstaande modules kunnen nieuwere versies van deze onderdelen worden geïmporteerd, maar de oorspronkelijke versie kan niet worden verwijderd uit uw Automation-account, zelfs niet als u een nieuwere versie ervan verwijdert.
 
-|Module naam|Versie|
+|Module naam|Version|
 |---|---|
 | AuditPolicyDsc | 1.1.0.0 |
 | Azure | 1.0.3 |
@@ -252,14 +264,14 @@ De volgende tabel bevat de modules die standaard worden geïmporteerd wanneer ee
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0.2 |
-| Microsoft.PowerShell.Core | 0 |
-| Microsoft.PowerShell.Diagnostics |  |
-| Microsoft.PowerShell.Management |  |
-| Microsoft.PowerShell.Security |  |
+| GPRegistryPolicyParser | 0,2 |
+| Micro soft. Power shell. core | 0 |
+| Micro soft. Power shell. Diagnostics |  |
+| Micro soft. Power shell. Management |  |
+| Micro soft. Power shell. Security |  |
 | Microsoft.PowerShell.Utility |  |
-| Microsoft.WSMan.Management |  |
-| Orchestrator.AssetManagement.Cmdlets | 1 |
+| Micro soft. WSMan. Management |  |
+| Orchestrator. AssetManagement. cmdlets | 1 |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
 | StateConfigCompositeResources | 1 |
@@ -269,4 +281,4 @@ De volgende tabel bevat de modules die standaard worden geïmporteerd wanneer ee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Een Windows PowerShell-module schrijven](/powershell/scripting/developer/windows-powershell) voor meer informatie over het maken van PowerShell-modules
+* Zie [Een Windows PowerShell-module schrijven](/powershell/scripting/developer/windows-powershell) voor meer informatie over het maken van PowerShell-modules.

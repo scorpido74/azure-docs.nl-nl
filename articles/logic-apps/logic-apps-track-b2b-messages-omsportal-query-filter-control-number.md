@@ -1,20 +1,19 @@
 ---
-title: Tracerings query's maken voor B2B-berichten-Azure Logic Apps
+title: Tracerings query's maken voor B2B-berichten
 description: Query's maken voor het bijhouden van AS2-, X12-en EDIFACT-berichten in azure Log Analytics voor Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 7d7bb53d24a113ea78b5bac3f9682fbb61ce2de9
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 36cf45aa0f7d46b62caa586d1939ec52e67b1a3e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680097"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792854"
 ---
 # <a name="create-tracking-queries-for-b2b-messages-in-azure-monitor-logs-for-azure-logic-apps"></a>Tracerings query's maken voor B2B-berichten in Azure Monitor logboeken voor Azure Logic Apps
 
@@ -69,14 +68,14 @@ Als u berichten wilt zoeken op basis van specifieke eigenschappen of waarden, ku
 
 1. Voer onder **filters toevoegen**de filter naam in die u wilt zoeken. Als u het filter hebt gevonden, selecteert u dat filter. Kies opnieuw **toevoegen** in het linkerdeel venster.
 
-   Dit is bijvoorbeeld een andere query die zoekt op **type = = "AzureDiagnostics"** -gebeurtenissen en resultaten zoekt op basis van het uitwisselings controle nummer door het filter **event_record_messageProperties_interchangeControlNumber_s** te selecteren.
+   Dit is bijvoorbeeld een andere query die zoekt op **type = = "AzureDiagnostics"** -gebeurtenissen en resultaten zoekt op basis van het uitwisselings controle nummer door het **event_record_messageProperties_interchangeControlNumber_s** filter te selecteren.
 
    ![Filter waarde selecteren](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/filter-example.png)
 
    Nadat u **toevoegen**hebt gekozen, wordt uw query bijgewerkt met de geselecteerde filter gebeurtenis en-waarde. 
    Uw vorige resultaten worden nu ook gefilterd. 
 
-   Met deze query wordt bijvoorbeeld gezocht naar **type = = "AzureDiagnostics"** en worden resultaten gevonden op basis van een uitwisselings controle nummer met behulp van het **event_record_messageProperties_interchangeControlNumber_s** -filter.
+   Met deze query wordt bijvoorbeeld gezocht naar **type = = "AzureDiagnostics"** en worden resultaten gevonden op basis van een uitwisselings controle nummer met behulp van het **event_record_messageProperties_interchangeControlNumber_s** filter.
 
    ![Gefilterde resultaten](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/filtered-results.png)
 

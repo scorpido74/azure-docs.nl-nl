@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: 23e3116a0cc3283191d00079e0926dc206e677f0
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a1a0a1462c8a4e52a065eafad315aab3ddae5f3b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819337"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784592"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Java-traceer logboeken verkennen in Application Insights
 Als u logback of Log4J (v 1.2 of v 2.0) gebruikt voor tracering, kunt u uw traceer logboeken automatisch laten verzenden naar Application Insights waar u ze kunt verkennen en doorzoeken.
@@ -22,27 +22,41 @@ Als u logback of Log4J (v 1.2 of v 2.0) gebruikt voor tracering, kunt u uw trace
 
 ## <a name="using-the-application-insights-java-agent"></a>De Application Insights Java-Agent gebruiken
 
-U kunt de Application Insights Java-agent zo configureren dat uw logboeken automatisch worden vastgelegd door de functie in het `AI-Agent.xml`-bestand in te scha kelen:
+Standaard legt de Application Insights Java-agent automatisch de logboek registratie vast die op `WARN` niveau en hoger wordt uitgevoerd.
+
+U kunt de drempel waarde wijzigen van de logboek registratie die wordt vastgelegd met het `AI-Agent.xml`-bestand:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsightsAgent>
    <Instrumentation>
-      <BuiltIn enabled="true">
-         <Logging enabled="true" />
+      <BuiltIn>
+         <Logging threshold="info"/>
       </BuiltIn>
    </Instrumentation>
-   <AgentLogger />
 </ApplicationInsightsAgent>
 ```
 
-U kunt ook de onderstaande instructies volgen.
+U kunt de logboek registratie van de Java Agent uitschakelen met het `AI-Agent.xml`-bestand:
 
-## <a name="install-the-java-sdk"></a>De Java-SDK installeren
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging enabled="false"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>U kunt ook de onderstaande instructies volgen (in plaats van de Java-Agent).
+
+### <a name="install-the-java-sdk"></a>De Java-SDK installeren
 
 Volg de instructies voor het installeren [van Application INSIGHTS SDK voor Java][java], als u dat nog niet hebt gedaan.
 
-## <a name="add-logging-libraries-to-your-project"></a>Logboek registratie bibliotheken toevoegen aan uw project
+### <a name="add-logging-libraries-to-your-project"></a>Logboek registratie bibliotheken toevoegen aan uw project
 *Kies de juiste methode voor uw project.*
 
 #### <a name="if-youre-using-maven"></a>Als u Maven gebruikt...
@@ -123,7 +137,7 @@ Volg de richt lijnen om Application Insights Java SDK hand matig te installeren,
 | Log4j v 1.2 |[Log4J v 1.2-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>Voeg de toevoegder toe aan uw Framework voor logboek registratie
+### <a name="add-the-appender-to-your-logging-framework"></a>Voeg de toevoegder toe aan uw Framework voor logboek registratie
 Als u wilt beginnen met het ophalen van traceringen, voegt u het relevante code fragment uit in het configuratie bestand Log4J of logback: 
 
 *Logback*

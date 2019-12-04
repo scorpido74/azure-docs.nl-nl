@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI-script: serverlogboeken downloaden in Azure Database for MySQL'
+title: CLI-script-trage query logboeken downloaden-Azure Database for MySQL
 description: Dit Azure CLI-voorbeeldscript laat zien hoe u de serverlogboeken van een Azure Database for MySQL-server kunt activeren en downloaden.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: 7cb28d22dbd1fb7fcefbc16d01f55f4785a5932d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: a574d7c36ce1d701504ea1d202eeafca542ad946
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60342641"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771252"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Langzame-querylogboeken van een Azure Database for MySQL-server activeren en downloaden met behulp van Azure CLI
 Met dit CLI-voorbeeldscript worden de langzame-querylogboeken van één Azure Database for MySQL-server geactiveerd en gedownload.
@@ -41,8 +41,8 @@ Dit script maakt gebruik van de opdrachten die in de volgende tabel worden weerg
 | [az mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) | Hiermee werkt u de configuratie van een server bij. |
 | [az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) | Hiermee maakt u een lijst met de logboekbestanden van een server. |
 | [az mysql server-logs download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) | Hiermee kunt u logboekgegevens downloaden. |
-| [az group delete](/cli/azure/group#az-group-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [az group delete](/cli/azure/group#az-group-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over Azure CLI: [Azure CLI-documentatie](/cli/azure).
-- Aanvullende scripts proberen: [Azure CLI-voorbeelden voor Azure Database for MySQL](../sample-scripts-azure-cli.md)
+- Lees de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+- Meer scripts om te proberen: [Azure CLI-voorbeelden voor Azure Database for MySQL](../sample-scripts-azure-cli.md)

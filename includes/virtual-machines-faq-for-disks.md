@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008576"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796079"
 ---
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
-## <a name="managed-disks"></a>Beheerde schijven
+## <a name="managed-disks"></a>Managed Disks
 
 **Wat is Azure Managed Disks?**
 
@@ -137,7 +137,9 @@ Voor beheerde schijven kunt u de naam niet wijzigen. U kunt de naam van een niet
 
 **Kan ik GPT-partitionering op een Azure-schijf gebruiken?**
 
-GPT-partitionering kan alleen worden gebruikt op gegevens schijven, niet op besturingssysteem schijven. Voor besturingssysteem schijven moet de partitie stijl MBR worden gebruikt.
+Installatie kopieën van de eerste generatie kunnen alleen gebruikmaken van GPT-partitionering op gegevens schijven, niet op besturingssysteem schijven. Voor besturingssysteem schijven moet de partitie stijl MBR worden gebruikt.
+
+[Installatie kopieën van de 2e generatie](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) kunnen gebruikmaken van GPT-partitionering op de besturingssysteem schijf en de gegevens schijven.
 
 **Welke schijf typen ondersteunen moment opnamen?**
 
@@ -149,7 +151,7 @@ Moment opnamen van Premium-SSD, Standard SSD en Standard HDD-ondersteuning. Voor
 Schijf reservering is de mogelijkheid om één jaar aan schijf ruimte te kopen, zodat u de totale kosten kunt verlagen.
 
 **Welke opties biedt Azure Disk reservation-aanbieding?**
-Azure Disk reservation biedt de mogelijkheid om Premium-Ssd's te kopen in de opgegeven Sku's van P30 (1 TiB) tot P80 (32 TiB) voor een periode van één jaar. Er is geen beperking voor de minimale hoeveelheid schijven die nodig is om een schijf reservering te kopen. U kunt er ook voor kiezen om te betalen met één enkele, vooraf betaalde betaling of maandelijkse betalingen. Er zijn geen aanvullende transactie kosten toegepast voor Premium-SSD Managed Disks.
+Azure Disk reservation biedt de mogelijkheid om Premium-Ssd's te kopen in de opgegeven Sku's van P30 (1 TiB) tot P80 (32 TiB) voor een periode van één jaar. Er is geen beperking voor de minimale hoeveelheid schijven die nodig is om een schijf reservering te kopen. Daarnaast kunt u ervoor kiezen om in één keer alles vooruit te betalen of om maandelijkse betalingen te doen. Er zijn geen aanvullende transactie kosten toegepast voor Premium-SSD Managed Disks.
 
 Reserve ringen worden gemaakt in de vorm van schijven, niet op capaciteit. Met andere woorden, wanneer u een P80-schijf (32 TiB) reserveert, krijgt u één P80 schijf, kunt u die specifieke reserve ring niet divvy tot twee kleinere P70-schijven (16 TiB). U kunt natuurlijk zo veel of zo weinig schijven reserveren als u wilt, met inbegrip van twee afzonderlijke P70 (16 TiB)-schijven.
 
@@ -252,7 +254,7 @@ Zie [een virtuele machine maken op basis van een Windows-installatie kopie met S
 
 **Kan ik mijn bestaande schijven converteren naar Standard-SSD?**
 Ja, dat is mogelijk. Raadpleeg de [opslag voor Azure Managed disks converteren van Standard naar Premium en](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) omgekeerd voor de algemene richt lijnen voor het converteren van Managed disks. En gebruik de volgende waarde om het schijf type bij te werken naar Standard-SSD.
--AccountType StandardSSD_LRS
+-Account type StandardSSD_LRS
 
 **Wat is het voor deel van het gebruik van Standard-SSD schijven in plaats van HDD?**
 Standard-SSD schijven bieden betere latentie, consistentie, Beschik baarheid en betrouw baarheid in vergelijking met HDD-schijven. Werk belastingen van toepassingen worden veel soepeler uitgevoerd op Standard-SSD vanwege dat. Houd er rekening mee dat Premium-SSD schijven de aanbevolen oplossing zijn voor de meeste IO-intensieve productie workloads.
@@ -410,7 +412,7 @@ De grootste grootte van de pagina-blob die door Azure wordt ondersteund, is 8 Ti
 
 U hoeft de bestaande Azure-hulpprogram ma's niet bij te werken om schijven groter dan 1 TiB te maken, te koppelen of te wijzigen. Als u uw VHD-bestand rechtstreeks van on-premises naar Azure wilt uploaden als pagina-BLOB of een niet-beheerde schijf, moet u de meest recente programma sets gebruiken die hieronder worden weer gegeven. Er worden alleen VHD-uploads ondersteund van Maxi maal 8 TiB.
 
-|Azure-hulpprogramma 's      | Ondersteunde versies                                |
+|Azure-hulpprogram ma's      | Ondersteunde versies                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Versie nummer 4.1.0: juni 2017 release of hoger|
 |Azure CLI v1     | Versie nummer 0.10.13: mogelijk 2017 release of hoger|

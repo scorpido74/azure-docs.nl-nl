@@ -1,6 +1,6 @@
 ---
-title: Gebruik C# te verbinden met Azure Database voor PostgreSQL - één Server
-description: Deze snelstartgids bevat een C# (.NET)-codevoorbeeld dat u kunt verbinding maken en query uitvoeren op gegevens uit een Azure Database voor PostgreSQL - één Server.
+title: Verbinding maken C# met-Azure database for PostgreSQL-één server
+description: In deze Quick Start C# vindt u een code voorbeeld van (.net) waarmee u verbinding kunt maken met gegevens van Azure database for PostgreSQL-één server en hoe u er query's op uitvoert.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 546626b1bf655ce6755e0a34ae8d8a85bcf6990f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 4ac462873d34faa5ffa9d1e1bd873734be88e442
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067352"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767973"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-net-c-to-connect-and-query-data"></a>Azure Database voor PostgreSQL - één-Server: .NET (C#) gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="azure-database-for-postgresql---single-server-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL-één server: .NET (C#) gebruiken om verbinding te maken en gegevens op te vragen
 In deze snelstartgids ziet u hoe u met behulp van een C#-toepassing verbinding maakt met een Azure Database voor PostgreSQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In de stappen van dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met C#, maar geen ervaring hebt met het werken met Azure Database voor PostgreSQL.
 
 ## <a name="prerequisites"></a>Vereisten

@@ -1,17 +1,17 @@
 ---
-title: Prijs categorieën voor Azure Database for PostgreSQL-één server
-description: In dit artikel worden de prijs categorieën voor Azure Database for PostgreSQL-één server beschreven.
+title: Prijs categorieën-Azure Database for PostgreSQL-één server
+description: In dit artikel worden de berekenings-en opslag opties in Azure Database for PostgreSQL-één server beschreven.
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 4f8bbf22d1081948cf6effd5fdbd8b6a6b7d5332
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f7e5d3e681c86d5ecb014f95d838e6d3d51e1c48
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903300"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768364"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prijs categorieën in Azure Database for PostgreSQL-één server
 
@@ -31,7 +31,7 @@ Als u een prijs categorie wilt kiezen, gebruikt u de volgende tabel als uitgangs
 | Prijscategorie | Beoogde workloads |
 |:-------------|:-----------------|
 | Basic | Werk belastingen waarvoor lichte reken kracht en I/O-prestaties zijn vereist. Voor beelden zijn servers die worden gebruikt voor ontwikkeling of testen of kleinschalige, niet-veelgebruikte toepassingen. |
-| Algemeen gebruik | De meeste zakelijke workloads die evenwichtige reken kracht en geheugen vereisen met schaal bare I/O-door voer. Voor beelden zijn servers voor het hosten van web-en mobiele apps en andere zakelijke toepassingen.|
+| Algemeen doel | De meeste zakelijke workloads die evenwichtige reken kracht en geheugen vereisen met schaal bare I/O-door voer. Voor beelden zijn servers voor het hosten van web-en mobiele apps en andere zakelijke toepassingen.|
 | Geoptimaliseerd geheugen | Data bases met hoogwaardige prestaties waarvoor de prestaties in het geheugen zijn vereist voor een snellere transactie verwerking en hogere gelijktijdigheid. Voor beelden zijn servers voor het verwerken van real-time gegevens en transactionele of analytische toepassingen met hoge prestaties.|
 
 Nadat u een server hebt gemaakt, kunt u binnen enkele seconden het aantal vCores, de generatie van de hardware en de prijs categorie (met uitzonde ring van en van basis) wijzigen. U kunt ook onafhankelijk de hoeveelheid opslag ruimte en de Bewaar periode voor back-ups op afstand aanpassen zonder uitval tijd van de toepassing. U kunt het opslag type voor back-ups niet wijzigen nadat een server is gemaakt. Zie de sectie [resources schalen](#scale-resources) voor meer informatie.

@@ -1,22 +1,18 @@
 ---
-title: Automatisch goed keuren op basis van automatische werk stromen bouwen-Azure Logic Apps
+title: Geautomatiseerde werk stromen op basis van goed keuring bouwen
 description: 'Zelf studie: een geautomatiseerde werk stroom op basis van goed keuring maken waarmee abonnementen van adressen lijsten worden verwerkt met behulp van Azure Logic Apps'
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: f720e22542533d17fc7ab581f8ba8d9c03a89570
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: bcd90859066911797d78737187cae6d361029ddd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025602"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784660"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Zelf studie: geautomatiseerde werk stromen op basis van goed keuring maken met behulp van Azure Logic Apps
 
@@ -51,7 +47,7 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
 ## <a name="create-your-logic-app"></a>Uw logische app maken
 
-1. Selecteer in het hoofd menu van Azure **een resource maken** > -**integratie** > **Logic-app**.
+1. Selecteer in het hoofd menu van Azure **een resource maken** > **integratie** > **logische app**.
 
    ![De nieuwe logische app-resource maken](./media/tutorial-process-mailing-list-subscriptions-workflow/create-new-logic-app-resource.png)
 
@@ -68,7 +64,7 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
    | **Log Analytics** | Uit | Behoud de instelling **Uit** voor het vastleggen van diagnostische gegevens. |
    ||||
 
-1. Nadat Azure uw app heeft geïmplementeerd, selecteert u op de Azure-werk balk **meldingen**  > **gaat u naar de resource** voor uw geïmplementeerde logische app.
+1. Nadat Azure uw app heeft geïmplementeerd, selecteert u op de Azure-werk balk **meldingen** > **gaat u naar de resource** voor uw geïmplementeerde logische app.
 
    ![Ga naar de nieuwe logische app-resource](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
 

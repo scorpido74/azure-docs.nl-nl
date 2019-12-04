@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806447f788b7a394b29ee08e8b562662c2cc3e1b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 420a046ddf66270f52001d4ff4f3ad49895d4c11
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208398"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784545"
 ---
 # <a name="what-are-security-defaults"></a>Wat zijn de standaard beveiligings instellingen?
 
@@ -77,9 +77,9 @@ Nadat de standaard instellingen voor beveiliging zijn ingeschakeld in uw Tenant,
 
 Organisaties gebruiken verschillende Azure-Services die worden beheerd via de Azure Resource Manager-API, waaronder:
 
-- Azure-portal 
+- Azure Portal 
 - Azure PowerShell 
-- Azure-CLI
+- Azure CLI
 
 Het gebruik van Azure Resource Manager voor het beheren van uw services is een zeer geprivilegieerde actie. Azure Resource Manager kunt de configuratie van de Tenant breed wijzigen, zoals service-instellingen en abonnements facturering. Verificatie met één factor is kwetsbaar voor diverse aanvallen zoals phishing en wachtwoord spray. 
 
@@ -124,6 +124,20 @@ Standaard instellingen voor beveiliging in uw Directory inschakelen:
 1. Blader naar **Azure Active Directory** > **Eigenschappen**.
 1. Selecteer **standaard instellingen voor beveiliging beheren**.
 1. Stel de **Schakel optie standaard instellingen inschakelen** in op **Ja**.
+1. Selecteer **Opslaan**.
+
+## <a name="disabling-security-defaults"></a>Standaard instellingen voor beveiliging uitschakelen
+
+Organisaties die kiezen voor het implementeren van beleid voor voorwaardelijke toegang waarbij de standaard instellingen voor beveiliging worden vervangen, moeten de standaard instellingen voor beveiliging uitschakelen. 
+
+![Waarschuwings bericht voor het uitschakelen van de standaard instellingen voor het inschakelen van voorwaardelijke toegang](./media/concept-conditional-access-security-defaults/security-defaults-disable-before-conditional-access.png)
+
+Standaard instellingen voor beveiliging in uw Directory uitschakelen:
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een beveiligings beheerder, een beheerder voor voorwaardelijke toegang of een globale beheerder.
+1. Blader naar **Azure Active Directory** > **Eigenschappen**.
+1. Selecteer **standaard instellingen voor beveiliging beheren**.
+1. Stel de **standaard instellingen** voor het inschakelen van de beveiliging in op **Nee**.
 1. Selecteer **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen

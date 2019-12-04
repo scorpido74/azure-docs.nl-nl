@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9efaeb9d3fe0ec8684f10c58897f5490d0f28cb9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182370"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786483"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met F5
 
@@ -179,7 +179,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
    1. Voer in het veld **Naam** `B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -216,11 +216,11 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 1. U moet het meta gegevens certificaat importeren in F5, dat later wordt gebruikt in het installatie proces.
 
-1. Navigeer naar **System > Certificate management > Traffic Certificate management > SSL Certificate List**. Selecteer **importeren** in de rechter bovenhoek. Geef een **certificaat naam** op (later in de configuratie waarnaar wordt verwezen). Selecteer in de bron van het **certificaat**uploaden bestand Geef het certificaat op dat u van Azure hebt gedownload bij het configureren van eenmalige aanmelding voor SAML. Klik op **Import**.
+1. Navigeer naar **System > Certificate management > Traffic Certificate management > SSL Certificate List**. Selecteer **importeren** in de rechter bovenhoek. Geef een **certificaat naam** op (later in de configuratie waarnaar wordt verwezen). Selecteer in de bron van het **certificaat**uploaden bestand Geef het certificaat op dat u van Azure hebt gedownload bij het configureren van eenmalige aanmelding voor SAML. Klik op **Importeren**.
 
     ![F5-configuratie (Kerberos)](./media/kerbf5-tutorial/configure01.png) 
 
-1. Daarnaast hebt u **een SSL-certificaat voor de hostnaam van de toepassing nodig. Navigeer naar System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **importeren** in de rechter bovenhoek. Het **import type** is **PKCS 12 (IIS)** . Geef een **sleutel naam** op (hiernaar wordt verwezen verderop in de configuratie) en geef het pfx-bestand op. Geef het **wacht woord** voor de pfx op. Klik op **Import**.
+1. Daarnaast hebt u **een SSL-certificaat voor de hostnaam van de toepassing nodig. Navigeer naar System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **importeren** in de rechter bovenhoek. Het **import type** is **PKCS 12 (IIS)** . Geef een **sleutel naam** op (hiernaar wordt verwezen verderop in de configuratie) en geef het pfx-bestand op. Geef het **wacht woord** voor de pfx op. Klik op **Importeren**.
 
     >[!NOTE]
     >In het voor beeld van de app-naam is `Kerbapp.superdemo.live`een Joker certificaat gebruikt, de naam van de computer is `WildCard-SuperDemo.live`
@@ -269,7 +269,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
  
     ![F5-configuratie (Kerberos)](./media/kerbf5-tutorial/configure12.png)
 
-1. Zodra de toepassing is ingeschakeld, klikt u op **volt ooien**.
+1. Klik op **volt ooien**zodra de toepassing is geconfigureerd.
 
     ![F5-configuratie (Kerberos)](./media/kerbf5-tutorial/configure13.png)
 
@@ -284,7 +284,7 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
 
 1.  Klik op het tabblad Main op **Access Policy > AAA Servers > Active Directory**. Het scherm Active Directory servers lijst wordt geopend.
 
-2.  Klik op **Create**. Het scherm nieuwe server eigenschappen wordt geopend.
+2.  Klik op **Maken**. Het scherm nieuwe server eigenschappen wordt geopend.
 
 3.  Typ in het veld **naam** een unieke naam voor de verificatie server.
 
@@ -485,7 +485,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de F5-tegel in het toegangs venster klikt, moet u automatisch worden aangemeld bij de F5 waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 

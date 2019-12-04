@@ -1,31 +1,31 @@
 ---
-title: Verbinding maken met toepassingen met Azure Database voor MariaDB
-description: Dit document geeft een lijst van de momenteel ondersteunde verbindingsreeksen voor toepassingen verbinding kunnen maken met Azure Database voor MariaDB, met inbegrip van ADO.NET (C#), JDBC, Node.js, ODBC-, PHP, Python en Ruby.
+title: Verbindings reeksen-Azure Database for MariaDB
+description: In dit document worden de momenteel ondersteunde verbindings reeksen vermeld voor toepassingen waarmee verbinding kan worden gemaakt metC#Azure database for MariaDB, waaronder ADO.net (), JDBC, node. js, ODBC, PHP, python en Ruby.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 70cd25ff63101fa2a477cde2502d5d286b289366
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 1b598385d533b3fc157a7a90ecc34c3cb18df4ac
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61039673"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767276"
 ---
-# <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Verbinding maken tussen toepassingen met Azure Database voor MariaDB
-In dit onderwerp geeft een lijst van de tekenreeks verbindingstypen die worden ondersteund door Azure Database voor MariaDB, samen met sjablonen en voorbeelden. Mogelijk hebt u verschillende parameters en instellingen in de verbindingsreeks.
+# <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Toepassingen verbinden met Azure Database for MariaDB
+In dit onderwerp vindt u een overzicht van de connection string typen die door Azure Database for MariaDB worden ondersteund, samen met sjablonen en voor beelden. Er zijn mogelijk verschillende para meters en instellingen in uw connection string.
 
-- Als u het certificaat, Zie [over het configureren van SSL](./howto-configure-ssl.md).
-- {your_host} [servernaam].mariadb.database.azure.com =
-- {your_user}@{servername} = indeling van de gebruikers-id voor de verificatie correct.  Als u alleen de gebruikers-id gebruikt, mislukt de verificatie.
+- Zie [SSL configureren voor meer informatie over](./howto-configure-ssl.md)het verkrijgen van het certificaat.
+- {your_host} = [servername]. mariadb. data base. Azure. com
+- {your_user} @ {servername} = indeling van gebruikers-id voor de juiste verificatie.  Als u alleen de gebruikers-id gebruikt, mislukt de verificatie.
 
 ## <a name="adonet"></a>ADO.NET
 ```csharp
 Server={your_host}; Port=3306; Database={your_database}; Uid={username@servername}; Pwd={your_password}; SslMode=Preferred;
 ```
 
-In dit voorbeeld is de servernaam `mydemoserver`, de databasenaam is `wpdb`, de gebruikersnaam van de is `WPAdmin`, en het wachtwoord is `mypassword!2`. Als gevolg hiervan moet de verbindingsreeks:
+In dit voor beeld is de server naam `mydemoserver`, de naam van de data base `wpdb`, de gebruikers naam `WPAdmin`en het wacht woord `mypassword!2`. Als gevolg hiervan moet de connection string:
 
 ```csharp
 Server= "mydemoserver.mariadb.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -61,10 +61,10 @@ cnx = mysql.connector.connect(user="{username@servername}", password={your_passw
 client = Mysql2::Client.new(username: "{username@servername}", password: {your_password}, database: {your_database}, host: "{your_host}", port: 3306, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA')
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>De verbinding details van de verbindingsreeks ophalen uit de Azure portal
-In de [Azure-portal](https://portal.azure.com), gaat u naar uw Azure Database voor MariaDB-server en klik vervolgens op **verbindingsreeksen** voor de tekenreekslijst voor uw exemplaar: ![Het deelvenster verbinding tekenreeksen in de Azure-portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-the-connection-string-details-from-the-azure-portal"></a>De connection string Details ophalen uit de Azure Portal
+Ga in het [Azure Portal](https://portal.azure.com)naar de Azure database for MariaDB-server en klik vervolgens op **verbindings reeksen** om de teken reeks lijst voor uw exemplaar op te halen: ![het deel venster verbindings reeksen in het Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-De tekenreeks bevat informatie zoals het stuurprogramma, server en andere database verbindingsparameters. Deze voorbeelden voor het gebruik van uw eigen parameters, zoals de databasenaam van de en wachtwoord wijzigen. U kunt vervolgens deze tekenreeks verbinding maken met de server vanuit uw code en toepassingen.
+De teken reeks bevat details zoals het stuur programma, de server en andere para meters voor database verbindingen. Wijzig deze voor beelden om uw eigen para meters te gebruiken, zoals de database naam, het wacht woord, enzovoort. U kunt deze teken reeks vervolgens gebruiken om vanuit uw code en toepassingen verbinding te maken met de server.
 
 <!-- 
 ## Next steps

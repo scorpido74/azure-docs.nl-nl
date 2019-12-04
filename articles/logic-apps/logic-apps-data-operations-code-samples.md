@@ -1,27 +1,23 @@
 ---
-title: Voor beelden van gegevens bewerkingen-Azure Logic Apps
+title: Voor beelden van gegevens bewerkingen
 description: Code voorbeelden voor bewerkingen voor gegevens bewerkingen in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 09/01/2019
-ms.openlocfilehash: d692d943249c9fc6b46ed6eb1ddff3f07152f5b6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: d59e461fab52bddf9cb1f881d52a751931c7312b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179145"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793081"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Voor beelden van gegevens bewerkings code voor Azure Logic Apps
 
 Hier volgen de code voorbeelden voor de actie definities van de gegevens bewerking in het artikel, [uitvoeren van gegevens bewerkingen](../logic-apps/logic-apps-perform-data-operations.md). U kunt deze voor beelden gebruiken als u de voor beeld wilt uitproberen met de onderliggende werk stroom definitie, Azure-abonnement en API-verbindingen van uw eigen logische app. Kopieer en plak deze actie definities in de code weergave-editor voor de werk stroom definitie van uw logische app en wijzig vervolgens de definities voor uw specifieke werk stroom. 
 
-Op basis van JavaScript Object Notation (JSON)-standaarden worden deze actie definities in alfabetische volg orde weer gegeven. In de ontwerp functie voor logische apps wordt elke definitie echter in de juiste volg orde in de werk stroom weer gegeven, `runAfter` omdat de eigenschaps definitie van elke actie de uitvoerings volgorde aangeeft.
+Op basis van JavaScript Object Notation (JSON)-standaarden worden deze actie definities in alfabetische volg orde weer gegeven. In de ontwerp functie voor logische apps wordt elke definitie echter weer gegeven in de juiste volg orde binnen uw werk stroom, omdat de eigenschap `runAfter` van elke actie definitie de volg orde aangeeft.
 
 <a name="compose-action-example"></a>
 
@@ -326,7 +322,7 @@ Als u het [voor beeld van JSON-actie **parseren** ](../logic-apps/logic-apps-per
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>Selecteren
+## <a name="select"></a>Selecteer
 
 Als u het [voor beeld voor de **Select** -actie](../logic-apps/logic-apps-perform-data-operations.md#select-action)wilt proberen, kunt u de volgende actie definities gebruiken:
 

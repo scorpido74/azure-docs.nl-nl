@@ -1,23 +1,18 @@
 ---
-title: HTTPS-aanroepen ontvangen en erop reageren-Azure Logic Apps
+title: HTTPS-aanroepen ontvangen en erop reageren
 description: HTTPS-aanvragen en-gebeurtenissen in realtime verwerken door gebruik te maken van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewers: klam, LADocs
-manager: carmonm
-ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
+ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: 6062ca1ce09eb243825b1fb9ae4ecb3d5ac95d1a
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b3723ccc247b8a9451b9a5fdc628bff58da361a0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264346"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786992"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Binnenkomende HTTPS-aanroepen ontvangen en erop reageren met behulp van Azure Logic Apps
 
@@ -108,7 +103,7 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
    }
    ```
 
-   Wanneer u een JSON-schema invoert, wordt in de ontwerp functie een herinnering weer gegeven voor de `Content-Type`-header in uw aanvraag en wordt de waarde voor de header ingesteld op `application/json`. Zie voor meer informatie [inhouds typen verwerken](../logic-apps/logic-apps-content-type.md).
+   Wanneer u een JSON-schema invoert, wordt in de ontwerp functie een herinnering weer gegeven voor het toevoegen van de `Content-Type`-header in uw aanvraag en wordt die header waarde ingesteld op `application/json`. Zie voor meer informatie [inhouds typen verwerken](../logic-apps/logic-apps-content-type.md).
 
    ![Herinnering voor het toevoegen van de header content-type](./media/connectors-native-reqres/include-content-type.png)
 
@@ -169,7 +164,7 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
 
    U kunt bijvoorbeeld reageren op de aanvraag door [een reactie actie toe te voegen](#add-response), die u kunt gebruiken om een aangepast antwoord te retour neren en dit later in dit onderwerp wordt beschreven.
 
-   Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw logische app een `504 GATEWAY TIMEOUT` naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED`-antwoord naar de aanroeper.
+   Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw logische app een `504 GATEWAY TIMEOUT` naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` antwoord op de aanroeper.
 
 1. Wanneer u klaar bent, slaat u de logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie. 
 
@@ -195,7 +190,7 @@ Hier volgt meer informatie over de uitvoer van de aanvraag trigger:
 
 U kunt de reactie actie gebruiken om te reageren met een Payload (gegevens) naar een binnenkomende HTTPS-aanvraag, maar alleen in een logische app die wordt geactiveerd door een HTTPS-aanvraag. U kunt de reactie actie op elk gewenst moment in uw werk stroom toevoegen. Zie het [actie type reactie](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)voor meer informatie over de onderliggende JSON-definitie voor deze trigger.
 
-Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw logische app een `504 GATEWAY TIMEOUT` naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED`-antwoord naar de aanroeper.
+Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw logische app een `504 GATEWAY TIMEOUT` naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` antwoord op de aanroeper.
 
 1. Selecteer in de ontwerp functie voor logische apps onder de stap waarin u een reactie actie wilt toevoegen de optie **nieuwe stap**.
 
@@ -215,7 +210,7 @@ Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan
 
    In sommige velden wordt de lijst met dynamische inhoud geopend wanneer u in hun vakken klikt. Vervolgens kunt u tokens selecteren die beschik bare uitvoer van de vorige stappen in de werk stroom vertegenwoordigen. Eigenschappen uit het schema dat in het vorige voor beeld is opgegeven, worden nu weer gegeven in de lijst met dynamische inhoud.
 
-   Bijvoorbeeld, voor het vak **kopteksten** , `Content-Type` als sleutel naam, en stel de sleutel waarde in op `application/json` zoals eerder in dit onderwerp is genoemd. Voor het vak **hoofd tekst** kunt u de uitvoer van de trigger hoofdtekst selecteren in de lijst met dynamische inhoud.
+   Neem bijvoorbeeld voor het vak **Headers** `Content-Type` als sleutel naam op en stel de sleutel waarde in op `application/json` zoals eerder in dit onderwerp is genoemd. Voor het vak **hoofd tekst** kunt u de uitvoer van de trigger hoofdtekst selecteren in de lijst met dynamische inhoud.
 
    ![Details van reactie actie](./media/connectors-native-reqres/response-details.png)
 

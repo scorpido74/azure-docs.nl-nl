@@ -1,20 +1,17 @@
 ---
-title: Schema voor werk stroom definitie taal-Azure Logic Apps
+title: Schema voor werk stroom definitie taal
 description: Schema verwijzing voor de taal van de werk stroom definitie in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 64c01baf0852e7e09ce9ffed2d079b47e95f7190
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 9c235c76e3d96ce02efc113c65c62081fcba20ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680086"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790804"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Naslag Gids voor schema's voor de taal van de werk stroom definitie in Azure Logic Apps
 
@@ -79,14 +76,14 @@ Hier volgt de algemene structuur voor een parameter definitie:
 
 | Kenmerk | Verplicht | Type | Beschrijving |
 |-----------|----------|------|-------------|
-| <*para meter-name* > | Ja | Tekenreeks | De naam voor de para meter die u wilt definiëren |
-| <*para meter-type* > | Ja | int, float, String, BOOL, array, object, securestring, secureobject <p><p>**Opmerking**: voor alle wacht woorden, sleutels en geheimen gebruikt u de typen `securestring` of `secureobject` omdat de `GET`-bewerking deze typen niet retourneert. Zie [beveiligings aanbevelingen voor actie-en invoer parameters](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)voor meer informatie over het beveiligen van para meters. | Het type voor de para meter |
-| <*standaard-para meter-waarde* > | Ja | Hetzelfde als `type` | De standaard parameter waarde die moet worden gebruikt als er geen waarde wordt opgegeven bij het instantiëren van de werk stroom. Het `defaultValue` kenmerk is vereist zodat de Logic app Designer de para meter correct kan weer geven, maar u kunt een lege waarde opgeven. |
-| <*matrix-met-toegestane-para meter-waarden* > | Nee | Matrix | Een matrix met waarden die door de para meter kunnen worden geaccepteerd |
-| <*para meter-beschrijving* > | Nee | JSON-object | Eventuele andere parameter Details, zoals een beschrijving van de para meter |
+| <*para meter-name*> | Ja | Tekenreeks | De naam voor de para meter die u wilt definiëren |
+| <*para meter-type*> | Ja | int, float, String, BOOL, array, object, securestring, secureobject <p><p>**Opmerking**: voor alle wacht woorden, sleutels en geheimen gebruikt u de typen `securestring` of `secureobject` omdat de `GET`-bewerking deze typen niet retourneert. Zie [beveiligings aanbevelingen voor actie-en invoer parameters](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)voor meer informatie over het beveiligen van para meters. | Het type voor de para meter |
+| <*standaard-para meter-waarde*> | Ja | Hetzelfde als `type` | De standaard parameter waarde die moet worden gebruikt als er geen waarde wordt opgegeven bij het instantiëren van de werk stroom. Het `defaultValue` kenmerk is vereist zodat de Logic app Designer de para meter correct kan weer geven, maar u kunt een lege waarde opgeven. |
+| <*matrix-met-toegestane-para meter-waarden*> | Nee | Matrix | Een matrix met waarden die door de para meter kunnen worden geaccepteerd |
+| <*para meter-beschrijving*> | Nee | JSON-object | Eventuele andere parameter Details, zoals een beschrijving van de para meter |
 ||||
 
-Maak vervolgens een [Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-overview.md) voor de definitie van uw werk stroom, definieer sjabloon parameters die de gewenste waarden accepteren tijdens de implementatie, vervang hardcoded-waarden door verwijzingen naar sjabloon-of werk stroom definitie parameters als en sla de waarden op die moeten worden gebruikt bij de implementatie in een afzonderlijk [parameter bestand](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Op die manier kunt u deze waarden gemakkelijker wijzigen via het parameter bestand zonder dat u uw logische app hoeft bij te werken en opnieuw te implementeren. Voor informatie die gevoelig is of die moet worden beveiligd, zoals gebruikers namen, wacht woorden en geheimen, kunt u deze waarden opslaan in Azure Key Vault en uw parameter bestand de waarden laten ophalen uit uw sleutel kluis. Zie [overzicht: implementatie voor Logic apps automatiseren met Azure Resource Manager sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)voor meer informatie en voor beelden over het definiëren van para meters in de sjabloon en de definities van werk stromen.
+Maak vervolgens een [Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-overview.md) voor de definitie van uw werk stroom, definieer sjabloon parameters die de waarden accepteren die u tijdens de implementatie wilt gebruiken, vervang hardcoded-waarden door verwijzingen naar sjabloon-of werk stroom definitie parameters en sla de waarden op die moeten worden gebruikt bij de implementatie in een afzonderlijk [parameter bestand](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Op die manier kunt u deze waarden gemakkelijker wijzigen via het parameter bestand zonder dat u uw logische app hoeft bij te werken en opnieuw te implementeren. Voor informatie die gevoelig is of die moet worden beveiligd, zoals gebruikers namen, wacht woorden en geheimen, kunt u deze waarden opslaan in Azure Key Vault en uw parameter bestand de waarden laten ophalen uit uw sleutel kluis. Zie [overzicht: implementatie voor Logic apps automatiseren met Azure Resource Manager sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)voor meer informatie en voor beelden over het definiëren van para meters in de sjabloon en de definities van werk stromen.
 
 <a name="static-results"></a>
 
@@ -117,11 +114,11 @@ In het kenmerk `staticResults` definieert u de model van een actie `outputs` en 
 
 | Kenmerk | Verplicht | Type | Beschrijving |
 |-----------|----------|------|-------------|
-| <*statisch-resultaat definitie naam* > | Ja | Tekenreeks | De naam voor een statische resultaat definitie waarmee een actie definitie kan verwijzen naar een `runtimeConfiguration.staticResult`-object. Zie runtime-configuratie- [instellingen](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)voor meer informatie. <p>U kunt elke gewenste unieke naam gebruiken. Deze unieke naam wordt standaard toegevoegd met een nummer, dat zo nodig wordt verhoogd. |
-| <*uitvoer kenmerken-en-waarden-geretourneerd* > | Ja | Varieert | De vereisten voor deze kenmerken variëren op basis van verschillende voor waarden. Als bijvoorbeeld de `status` is `Succeeded`, bevat het kenmerk `outputs` kenmerken en waarden die worden geretourneerd als de uitvoer van de actie. Als de `status` is `Failed`, bevat het kenmerk `outputs` het kenmerk `errors`, een matrix met een of meer fout `message` objecten met fout gegevens. |
-| <*header-waarden* > | Nee | JSON | Eventuele header waarden die zijn geretourneerd door de actie |
-| <*status: geretourneerde* > | Ja | Tekenreeks | De status code die wordt geretourneerd door de actie |
-| <*actie-status* > | Ja | Tekenreeks | De status van de actie, bijvoorbeeld `Succeeded` of `Failed` |
+| <*statisch-resultaat definitie naam*> | Ja | Tekenreeks | De naam voor een statische resultaat definitie waarmee een actie definitie kan verwijzen naar een `runtimeConfiguration.staticResult`-object. Zie runtime-configuratie- [instellingen](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)voor meer informatie. <p>U kunt elke gewenste unieke naam gebruiken. Deze unieke naam wordt standaard toegevoegd met een nummer, dat zo nodig wordt verhoogd. |
+| <*uitvoer kenmerken-en-waarden-geretourneerd*> | Ja | Varieert | De vereisten voor deze kenmerken variëren op basis van verschillende voor waarden. Als bijvoorbeeld de `status` is `Succeeded`, bevat het kenmerk `outputs` kenmerken en waarden die worden geretourneerd als de uitvoer van de actie. Als de `status` is `Failed`, bevat het kenmerk `outputs` het kenmerk `errors`, een matrix met een of meer fout `message` objecten met fout gegevens. |
+| <*header-waarden*> | Nee | JSON | Eventuele header waarden die zijn geretourneerd door de actie |
+| <*status: geretourneerde*> | Ja | Tekenreeks | De status code die wordt geretourneerd door de actie |
+| <*actie-status*> | Ja | Tekenreeks | De status van de actie, bijvoorbeeld `Succeeded` of `Failed` |
 |||||
 
 In deze HTTP-actie definitie verwijst het `runtimeConfiguration.staticResult.name` kenmerk bijvoorbeeld naar `HTTP0` binnen het `staticResults`-kenmerk waarin de uitvoer van de model voor de actie wordt gedefinieerd. Het kenmerk `runtimeConfiguration.staticResult.staticResultOptions` geeft aan dat de instelling voor statische resultaten `Enabled` is voor de HTTP-actie.
@@ -202,7 +199,7 @@ Het resultaat is altijd een teken reeks, waardoor deze functionaliteit vergelijk
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Als u een letterlijke teken reeks hebt die begint met het \@ teken, plaatst u een voor voegsel van het \@ teken met een ander \@ teken als escape-teken: \@ \@
+Als u een letterlijke teken reeks hebt die begint met het \@ teken, plaatst u een voor voegsel van het \@ teken met een ander \@ teken als escape-teken: \@\@
 
 In deze voor beelden ziet u hoe expressies worden geëvalueerd:
 
@@ -210,8 +207,8 @@ In deze voor beelden ziet u hoe expressies worden geëvalueerd:
 |------------|--------|
 | "Sophia Owen" | Deze tekens retour neren: ' Sophia Owen ' |
 | matrix [1] | Deze tekens retour neren: matrix [1] |
-| ' \@ \@ ' | Deze tekens retour neren als een teken reeks met één teken: ' \@ ' |
-| "\@" | Deze tekens retour neren als een teken reeks van twee tekens: ' \@ ' |
+| '\@\@' | Deze tekens retour neren als een teken reeks met één teken: '\@' |
+| "\@" | Deze tekens retour neren als een teken reeks van twee tekens: ' \@' |
 |||
 
 Voor deze voor beelden definieert u "myBirthMonth" gelijk aan "januari" en "myAge" gelijk aan het getal 42:
@@ -225,13 +222,13 @@ In deze voor beelden ziet u hoe de volgende expressies worden geëvalueerd:
 
 | JSON-expressie | Resultaat |
 |-----------------|--------|
-| "\@parameters (' myBirthMonth ')" | Deze teken reeks retour neren: ' januari ' |
-| "\@ {para meters (' myBirthMonth ')}" | Deze teken reeks retour neren: ' januari ' |
-| "\@parameters (' myAge ')" | Retour waarde: 42 |
-| "\@ {para meters (' myAge ')}" | Dit getal als een teken reeks retour neren: "42" |
-| ' Mijn leeftijd is \@ {para meters (' myAge ')} ' | Deze teken reeks retour neren: ' mijn leeftijd is 42 ' |
+| "\@-para meters (' myBirthMonth ')" | Deze teken reeks retour neren: ' januari ' |
+| "\@{para meters (' myBirthMonth ')}" | Deze teken reeks retour neren: ' januari ' |
+| "\@-para meters (' myAge ')" | Retour waarde: 42 |
+| "\@{para meters (' myAge ')}" | Dit getal als een teken reeks retour neren: "42" |
+| ' Mijn leeftijd is \@{para meters (' myAge ')} ' | Deze teken reeks retour neren: ' mijn leeftijd is 42 ' |
 | "\@concat (' mijn leeftijd is ', String (para meters (' myAge ')))" | Deze teken reeks retour neren: ' mijn leeftijd is 42 ' |
-| ' Mijn leeftijd is \@ \@ {para meters (' myAge ')} ' | Retour neer deze teken reeks, die de volgende expressie bevat: ' mijn leeftijd is \@ {para meters (' myAge ')} ' |
+| ' Mijn leeftijd is \@\@{para meters (' myAge ')} ' | Retour neer deze teken reeks, die de volgende expressie bevat: ' mijn leeftijd is \@{para meters (' myAge ')} ' |
 |||
 
 Wanneer u visueel met de Logic Apps Designer werkt, kunt u expressies maken via de opbouw functie van de expressie, bijvoorbeeld:
@@ -265,7 +262,7 @@ Wanneer u klaar bent, wordt de expressie weer gegeven voor de bijbehorende eigen
 In de sectie `outputs` definieert u de gegevens die uw werk stroom kan retour neren als de uitvoering is voltooid. Als u bijvoorbeeld een specifieke status of waarde van elke uitvoering wilt bijhouden, geeft u op dat de uitvoer van de werk stroom die gegevens retourneert.
 
 > [!NOTE]
-> Gebruik `outputs` niet voor het beantwoorden van binnenkomende aanvragen van de REST API van een service. Gebruik in plaats daarvan het `Response` actie type. Zie [werk stroom triggers en acties](../logic-apps/logic-apps-workflow-actions-triggers.md)voor meer informatie.
+> Gebruik `outputs`niet voor het beantwoorden van binnenkomende aanvragen van de REST API van een service. Gebruik in plaats daarvan het `Response` actie type. Zie [werk stroom triggers en acties](../logic-apps/logic-apps-workflow-actions-triggers.md)voor meer informatie.
 
 Hier volgt de algemene structuur voor een uitvoer definitie:
 
@@ -280,9 +277,9 @@ Hier volgt de algemene structuur voor een uitvoer definitie:
 
 | Kenmerk | Verplicht | Type | Beschrijving |
 |-----------|----------|------|-------------|
-| <*sleutel naam* > | Ja | Tekenreeks | De naam van de sleutel voor de retour waarde van de uitvoer |
-| <*sleutel type* > | Ja | int, float, String, securestring, BOOL, array, JSON-object | Het type voor de uitvoer retour waarde |
-| <*sleutel waarde* > | Ja | Hetzelfde als <*sleutel type* > | De resultaat waarde van de uitvoer |
+| <*sleutel naam*> | Ja | Tekenreeks | De naam van de sleutel voor de retour waarde van de uitvoer |
+| <*sleutel type*> | Ja | int, float, String, securestring, BOOL, array, JSON-object | Het type voor de uitvoer retour waarde |
+| <*sleutel waarde*> | Ja | Hetzelfde als <*sleutel type*> | De resultaat waarde van de uitvoer |
 |||||
 
 Als u de uitvoer van een werk stroom wilt uitvoeren, controleert u de uitvoerings geschiedenis van de logische app en de details in de Azure Portal of gebruikt u de [werk stroom rest API](https://docs.microsoft.com/rest/api/logic/workflows). U kunt ook de uitvoer door geven aan externe systemen, bijvoorbeeld Power BI, zodat u Dash boards kunt maken.

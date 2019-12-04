@@ -1,29 +1,29 @@
 ---
-title: Prijs categorieën voor Azure Database for MariaDB
+title: Prijs categorieën-Azure Database for MariaDB
 description: Meer informatie over de verschillende prijs categorieën voor Azure Database for MariaDB, waaronder reken generaties, opslag typen, opslag grootte, vCores, geheugen en bewaar perioden voor back-ups.
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: ca9552ee60237158bd570ede4a13dbc349b6d1d1
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 36563e11d7a5fb7cfd5878294c3b83977f6bb619
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973565"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772394"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB prijs Categorieën
 
-U kunt een Azure Database for MariaDB-server maken in een van drie verschillende prijs Categorieën: Basic, Algemeen gebruik en Geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de MariaDB-server. Een server kan een of meer data bases bevatten.
+U kunt een Azure Database for MariaDB-server maken in een van drie verschillende prijs Categorieën: basis, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de MariaDB-server. Een server kan een of meer data bases bevatten.
 
 |    | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
-| Compute-generatie | Gen 5 |Gen 5 | Gen 5 |
+| Compute genereren | Gen 5 |Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Geheugen per vCore | 2 GB | 5 GB | 10 GB |
 | Opslag grootte | 5 GB tot 1 TB | 5 GB tot 4 TB | 5 GB tot 4 TB |
-| Opslagtype | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Opslagtype | Azure Standard-opslag | Azure Premium Storage | Azure Premium Storage |
 | Bewaar periode voor database back-ups | 7 tot 35 dagen | 7 tot 35 dagen | 7 tot 35 dagen |
 
 Als u een prijs categorie wilt kiezen, gebruikt u de volgende tabel als uitgangs punt.
@@ -46,7 +46,7 @@ De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikb
 
 |    | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
-| Opslagtype | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Opslagtype | Azure Standard-opslag | Azure Premium Storage | Azure Premium Storage |
 | Opslag grootte | 5 GB tot 1 TB | 5 GB tot 4 TB | 5 GB tot 4 TB |
 | Grootte van toename van opslag | 1 GB | 1 GB | 1 GB |
 | IOPS | Variabele |3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 6000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 6000 IOPS |
@@ -78,7 +78,7 @@ Als u bijvoorbeeld 1000 GB aan opslag hebt ingericht en het werkelijke gebruik m
 
 Houd er rekening mee dat opslag alleen omhoog kan worden geschaald.
 
-## <a name="backup"></a>Back-up
+## <a name="backup"></a>Backup
 
 De service maakt automatisch back-ups van uw server. De minimale Bewaar periode voor back-ups is zeven dagen. U kunt een Bewaar periode van Maxi maal 35 dagen instellen. De retentie kan op elk moment worden aangepast tijdens de levens duur van de server. U kunt kiezen tussen lokaal redundante en geografisch redundante back-ups. Geografisch redundante back-ups worden ook opgeslagen in het [geo-paard gebied](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) van de regio waar uw server is gemaakt. Deze redundantie biedt een beveiligings niveau in het geval van een ramp. U krijgt ook de mogelijkheid om uw server te herstellen naar een andere Azure-regio waarin de service beschikbaar is met geo-redundante back-ups. Het is niet mogelijk om te wisselen tussen de twee opties voor back-upopslag nadat de server is gemaakt.
 

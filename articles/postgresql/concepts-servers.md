@@ -1,17 +1,17 @@
 ---
-title: Server concepten in Azure Database for PostgreSQL-één server
+title: Servers-Azure Database for PostgreSQL-één server
 description: In dit artikel vindt u overwegingen en richt lijnen voor het configureren en beheren van Azure Database for PostgreSQL-één server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bd7c24489e8ac7b26cb703923ddf9cbb741cfd68
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029961"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768160"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-één server
 In dit artikel vindt u overwegingen en richt lijnen voor het werken met Azure Database for PostgreSQL-één server.
@@ -48,7 +48,7 @@ U kunt Azure Database for PostgreSQL servers beheren door gebruik te maken van d
 
 Tijdens het maken van een server stelt u de referenties voor de gebruiker van de beheerder in. De gebruiker met beheerders rechten is de hoogste bevoegdheids gebruiker op de server. Deze behoort tot de rol azure_pg_admin. Deze rol heeft geen machtigingen voor volledige super gebruiker. 
 
-Het kenmerk PostgreSQL user wordt toegewezen aan de azure_superuser die bij de beheerde service hoort. U hebt geen toegang tot deze rol.
+Het kenmerk PostgreSQL user wordt toegewezen aan de azure_superuser, die bij de beheerde service hoort. U hebt geen toegang tot deze rol.
 
 Een Azure Database for PostgreSQL server heeft standaard databases: 
 - **post gres** : een standaard database waarmee u verbinding kunt maken zodra de server is gemaakt.

@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: c52bf372f21d9c2ef3d1a148aadd899435ad4181
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383064"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790333"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Zelf studie: gebeurtenissen in azure Digital Apparaatdubbels visualiseren en analyseren met behulp van Time Series Insights
 
@@ -48,7 +48,7 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
 
 ### <a name="create-an-event-hub"></a>Een Event Hub maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **Een resource maken** in het linkerdeelvenster.
 
@@ -82,7 +82,7 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
     > [!TIP]
     > Controleer of u een SAS-beleid maakt voor uw Event Hub-exemplaar in plaats van uw naam ruimte.
 
-1. Open het beleid **ManageSend** dat u hebt gemaakt, en kopieer de waarden voor **Verbindingsreeks: primaire sleutel** en **Verbindingsreeks: secundaire sleutel** naar een tijdelijk bestand. U hebt deze waarden in de volgende sectie nodig om een eindpunt te maken voor de Event Hub.
+1. Open het **ManageSend** -beleid dat u hebt gemaakt en kopieer de waarden voor de **verbindings reeks: primaire sleutel** en **verbindings reeks-secundaire sleutel** naar een tijdelijk bestand. U hebt deze waarden in de volgende sectie nodig om een eindpunt te maken voor de Event Hub.
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>Eindpunt maken voor de Event Hub
 
@@ -108,13 +108,13 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
       path: Name_of_your_Event_Hub
     ```
 
-1. Vervang de tijdelijke aanduidingen `Primary_connection_string_for_your_event_hub` door de waarde van **Verbindingsreeks: primaire sleutel** voor de Event Hub. Zorg ervoor dat de indeling van deze verbindingsreeks er als volgt uitziet:
+1. Vervang de tijdelijke aanduidingen `Primary_connection_string_for_your_event_hub` door de waarde van de **verbindings reeks: primaire sleutel** voor de Event hub. Zorg ervoor dat de indeling van deze verbindingsreeks er als volgt uitziet:
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Vervang de tijdelijke aanduidingen `Secondary_connection_string_for_your_event_hub` door de waarde van **Verbindingsreeks: secundaire sleutel** voor de Event Hub. Zorg ervoor dat de indeling van deze verbindingsreeks er als volgt uitziet: 
+1. Vervang de tijdelijke aanduidingen `Secondary_connection_string_for_your_event_hub` door de waarde van de **verbindings reeks: secundaire sleutel** voor de Event hub. Zorg ervoor dat de indeling van deze verbindingsreeks er als volgt uitziet: 
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
@@ -145,7 +145,7 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
 
     [![selecties voor het maken van een Time Series Insights instantie](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
-1. Voer op het tabblad **gebeurtenis bron** een **naam**in, selecteer **Event hub** als **bron type**en zorg ervoor dat de andere waarden correct zijn geselecteerd. Selecteer **ManageSend** voor de naam van het **toegangs beleid van de Event hub**en selecteer vervolgens de Consumer groep die u hebt gemaakt in de vorige sectie voor de **Event hub-consumenten groep**. Selecteer **Controleren + maken**.
+1. Voer op het tabblad **gebeurtenis bron** een **naam**in, selecteer **Event hub** als **bron type**en zorg ervoor dat de andere waarden correct worden geselecteerd om te verwijzen naar de Event hub die u hebt gemaakt. Selecteer **ManageSend** voor de naam van het **toegangs beleid van de Event hub**en selecteer vervolgens de Consumer groep die u hebt gemaakt in de vorige sectie voor de **Event hub-consumenten groep**. Selecteer **Controleren + maken**.
 
     [![selecties voor het maken van een gebeurtenis bron](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 

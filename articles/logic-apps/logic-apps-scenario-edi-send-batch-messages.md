@@ -1,19 +1,18 @@
 ---
-title: EDI-berichten batchgewijs verwerken als een groep-Azure Logic Apps
+title: EDI-berichten batch verwerken als een groep
 description: EDI-berichten verzenden en ontvangen als batches, groepen of verzamelingen in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680184"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793001"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>EDI-berichten in batches verzenden naar handels partners met Azure Logic Apps
 
@@ -72,7 +71,7 @@ Voor deze batch-ontvanger geeft u de batch modus, naam, release criteria, X12 ov
    | **Release criteria** | Aantal berichten op basis van planning | Alleen beschikbaar in de **inline** batch modus | 
    | **Aantal berichten** | 10 | Alleen beschikbaar voor release criteria **op basis van het aantal berichten** | 
    | **Interval** | 10 | Alleen beschikbaar met release criteria **op basis van een planning** | 
-   | **Frequentie** | Notulen | Alleen beschikbaar met release criteria **op basis van een planning** | 
+   | **Frequentie** | notulen | Alleen beschikbaar met release criteria **op basis van een planning** | 
    ||| 
 
    ![Details van batch trigger opgeven](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -168,9 +167,9 @@ Maak nu een of meer logische apps die berichten verzenden naar de logische app-o
 
       ![De logische app voor de batch-ontvanger selecteren](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Selecteer deze actie: **Batch_messages-<*your-batch-receiver* >**
+   4. Selecteer deze actie: **Batch_messages-<*uw-batch-ontvanger*>**
 
-      ![Selecteer de actie ' Batch_messages '](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
+      ![Selecteer de actie Batch_messages](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
 4. De eigenschappen van de batch Sender instellen.
 

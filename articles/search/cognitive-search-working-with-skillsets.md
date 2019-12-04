@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113645"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790895"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Concepten en samen stelling van vaardig heden in azure Cognitive Search
 
@@ -43,9 +43,9 @@ Zodra een document zich in de verrijkings pijplijn bevindt, wordt het weer gegev
 
 |Modus data Source\Parsing|Standaard|JSON, JSON-lijnen & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|N.v.t. |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N.v.t.|
+|Blobopslag|/document/content<br>/document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
+|SQL|/document/{column1}<br>/document/{column2}<br>...|N/A |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|N/A|
 
  Wanneer vaardig heden worden uitgevoerd, voegen ze nieuwe knoop punten toe aan de verrijkings structuur. Deze nieuwe knoop punten kunnen vervolgens worden gebruikt als invoer voor downstream-vaardig heden, projecteren naar het kennis archief of toewijzing aan index velden. Verrijkingen zijn niet onveranderbaar: als u deze eenmaal hebt gemaakt, kunnen knoop punten niet worden bewerkt. Naarmate uw vaardig heden ingewik kelder wordt, is uw verrijkings structuur, maar niet alle knoop punten in de verrijkings structuur nodig om deze naar de index of het kennis archief te brengen. U kunt slechts een subset van de verrijkingen van de index of het kennis archief selectief blijven.
 
@@ -65,7 +65,7 @@ Elke vaardigheid vereist een context. Een context bepaalt het volgende:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-Het `sourceContext` wordt alleen gebruikt in [shaper-vaardig heden](cognitive-search-skill-shaper.md) en [projecties](knowledge-store-projection-overview.md). Dit wordt gebruikt om geneste multi-level-objecten te bouwen. Met de `sourceContext` kunt u een hiërarchisch, anoniem type object maken dat meerdere vaardig heden zou moeten hebben als u de context alleen gebruikt. Het gebruik van `sourceContext` wordt weer gegeven in de volgende sectie.
+De `sourceContext` wordt alleen gebruikt voor invoer van vaardig heden en [projecties](knowledge-store-projection-overview.md). Dit wordt gebruikt om geneste multi-level-objecten te bouwen. Mogelijk moet u een nieuwe oject maken om deze te geven als invoer voor een vaardigheid of project in het kennis archief. Omdat verrijkings knooppunten mogelijk geen geldig JSON-object in de verrijkings structuur zijn en refrencing een knoop punt in de structuur retourneert alleen die status van het knoop punt wanneer het werd gemaakt, met behulp van de verrijkingen als vaardigheids invoer of projecties moet u een goed gevormd JSON-object maken. Met de `sourceContext` kunt u een hiërarchisch, anoniem type object maken dat meerdere vaardig heden zou moeten hebben als u de context alleen gebruikt. Het gebruik van `sourceContext` wordt weer gegeven in de volgende sectie. Bekijk de vaardigheids uitvoer die een verrijking heeft gegenereerd om te bepalen of het een geldig JSON-object is en niet een primitief type.
 
 ### <a name="projections"></a>Projecties
 

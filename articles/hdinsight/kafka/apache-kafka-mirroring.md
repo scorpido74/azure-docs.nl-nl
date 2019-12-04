@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/24/2019
-ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 11/29/2019
+ms.openlocfilehash: 2bd25ad823217c5e9260142912a3d2d748b9c15a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123248"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767701"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker gebruiken om Apache Kafka-onderwerpen te repliceren met Kafka in HDInsight
 
@@ -42,13 +42,13 @@ De primaire en secundaire clusters kunnen verschillen in het aantal knoop punten
 
 Als u een mirror moet maken tussen Kafka-clusters in verschillende netwerken, zijn er de volgende aanvullende overwegingen:
 
-* **Gateways**: De netwerken moeten kunnen communiceren op het niveau van TCP/IP.
+* **Gateways**: de netwerken moeten kunnen communiceren op het niveau van de TCP/IP.
 
-* **Server adressen**: U kunt ervoor kiezen om uw cluster knooppunten te adresseren met hun IP-adressen of volledig gekwalificeerde domein namen.
+* **Server adressen**: u kunt uw cluster knooppunten adresseren met behulp van hun IP-adressen of volledig gekwalificeerde domein namen.
 
-    * **IP-adressen**: Als u uw Kafka-clusters configureert voor het gebruik van IP-adres reclame, kunt u door gaan met de installatie van het spie gelen van de IP-adressen van de knoop punten Broker en Zookeeper.
+    * **IP-adressen**: als u uw Kafka-clusters configureert voor het gebruik van IP-adres reclame, kunt u door gaan met de installatie van het spie gelen van de IP-adressen van de knoop punten Broker en Zookeeper.
     
-    * **Domein namen**: Als u uw Kafka-clusters niet configureert voor het adverteren van IP-adressen, moeten de clusters verbinding met elkaar kunnen maken met behulp van FQDN-namen (FULLy Qualified Domain Name). Hiervoor is een Domain Name System-server (DNS) vereist in elk netwerk dat is geconfigureerd voor het door sturen van aanvragen naar de andere netwerken. Wanneer u een Azure-Virtual Network maakt, moet u in plaats van de automatische DNS-naam die bij het netwerk wordt gebruikt, een aangepaste DNS-server en het IP-adres voor de server opgeven. Nadat de Virtual Network is gemaakt, moet u vervolgens een virtuele Azure-machine maken die dat IP-adres gebruikt, vervolgens DNS-software installeren en configureren.
+    * **Domein namen**: als u uw Kafka-clusters niet configureert voor het adverteren van IP-adressen, moeten de clusters verbinding met elkaar kunnen maken met behulp van FQDN-namen (Fully Qualified Domain Name). Hiervoor is een Domain Name System-server (DNS) vereist in elk netwerk dat is geconfigureerd voor het door sturen van aanvragen naar de andere netwerken. Wanneer u een Azure-Virtual Network maakt, moet u in plaats van de automatische DNS-naam die bij het netwerk wordt gebruikt, een aangepaste DNS-server en het IP-adres voor de server opgeven. Nadat de Virtual Network is gemaakt, moet u vervolgens een virtuele Azure-machine maken die dat IP-adres gebruikt, vervolgens DNS-software installeren en configureren.
 
     > [!WARNING]  
     > Maak en configureer de aangepaste DNS-server voordat u HDInsight in de Virtual Network installeert. Er is geen aanvullende configuratie vereist voor HDInsight voor het gebruik van de DNS-server die is geconfigureerd voor de Virtual Network.
@@ -63,10 +63,10 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
 1. Maak twee nieuwe resource groepen:
 
-    |Resourcegroep | Location |
+    |Resourcegroep | Locatie |
     |---|---|
-    | kafka-primary-rg | US - centraal |
-    | kafka-secondary-rg | US - noord-centraal |
+    | Kafka-primair-RG | VS - centraal |
+    | Kafka-secundair-RG | VS - noord-centraal |
 
 1. Maak een nieuw virtueel netwerk **Kafka-primair-vnet** in **Kafka-Primary-RG**. Behoud de standaard instellingen.
 1. Maak een nieuw virtueel netwerk **Kafka-secundair-vnet** in **Kafka-Secondary-RG**, ook met de standaard instellingen.
@@ -75,22 +75,22 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
     | Clusternaam | Resourcegroep | Virtueel netwerk | Opslagaccount |
     |---|---|---|---|
-    | kafka-primary-cluster | kafka-primary-rg | kafka-primary-vnet | kafkaprimarystorage |
-    | kafka-secondary-cluster | kafka-secondary-rg | kafka-secondary-vnet | kafkasecondarystorage |
+    | Kafka-primair-cluster | Kafka-primair-RG | Kafka-primair-vnet | kafkaprimarystorage |
+    | Kafka-secundair-cluster | Kafka-secundair-RG | Kafka-secundair-vnet | kafkasecondarystorage |
 
 1. Maak peerings voor virtuele netwerken. Met deze stap maakt u twee peerings: één van **Kafka-Primary-vnet** naar **Kafka-Secondary-vnet** en één keer van **Kafka-Secondary-vnet** naar **Kafka-Primary-vnet**.
     1. Selecteer het virtuele netwerk **Kafka-Primary-vnet** .
-    1. Klik op **peerings** onder **instellingen**.
-    1. Klik op **Toevoegen**.
+    1. Selecteer **peerings** onder **instellingen**.
+    1. Selecteer **Toevoegen**.
     1. Geef in het scherm **peering toevoegen** de details op, zoals wordt weer gegeven in de onderstaande scherm afbeelding.
 
         ![HDInsight Kafka vnet-peering toevoegen](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. IP-reclame configureren:
-    1. Ga naar het Ambari-dash board voor het primaire `https://PRIMARYCLUSTERNAME.azurehdinsight.net`cluster:.
-    1. Klik op **Services** > **Kafka**. Klik op het tabblad **configuratie** .
-    1. Voeg de volgende configuratie regels toe aan de onderste **sjabloon sectie Kafka-env** . Klik op **Opslaan**.
-    
+    1. Ga naar het Ambari-dash board voor het primaire cluster: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
+    1. Selecteer **Services** > **Kafka**. CliSelectck het tabblad **configuraties** .
+    1. Voeg de volgende configuratie regels toe aan de onderste **sjabloon sectie Kafka-env** . Selecteer **Opslaan**.
+
         ```
         # Configure Kafka to advertise IP addresses instead of FQDN
         IP_ADDRESS=$(hostname -i)
@@ -101,18 +101,18 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
     1. Voer een opmerking in het scherm **configuratie opslaan** in en klik op **Opslaan**.
     1. Als u wordt gevraagd om een configuratie waarschuwing, klikt u op **door gaan**.
-    1. Klik op **OK** in de **configuratie wijzigingen opslaan**.
-    1. Klik op **opnieuw opstarten**opnieuw starten,**waarbij dit probleem optreedt** in het bericht **opnieuw opstarten is vereist** . >  Klik op **Bevestig opnieuw opstarten**.
+    1. Selecteer **OK** op de **wijzigingen in de configuratie opslaan**.
+    1. Selecteer **opnieuw opstarten** > **alle betrokken problemen** in de melding **opnieuw opstarten vereist** opnieuw opstarten. Selecteer **Bevestig opnieuw opstarten**.
 
         ![Apache Ambari alle betrokken software opnieuw opstarten](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. Configureer Kafka om te Luis teren op alle netwerk interfaces.
-    1. Blijf op het tabblad **configuratie** onder **Services** > **Kafka**. Stel in het gedeelte **Kafka-Broker** de eigenschap **listeners** in `PLAINTEXT://0.0.0.0:9092`op.
-    1. Klik op **Opslaan**.
-    1. Klik op **opnieuw opstarten**en **Bevestig opnieuw opstarten**.
+    1. Blijf op het tabblad **configuratie** onder **Services** > **Kafka**. Stel in het gedeelte **Kafka-Broker** de eigenschap **listeners** in op `PLAINTEXT://0.0.0.0:9092`.
+    1. Selecteer **Opslaan**.
+    1. Selecteer **opnieuw opstarten**en **Bevestig opnieuw opstarten**.
 
 1. Registreer Broker IP-adressen en Zookeeper-adressen voor primair cluster.
-    1. Klik op **hosts** in het Ambari-dash board.
+    1. Selecteer **hosts** op het Ambari-dash board.
     1. Noteer de IP-adressen voor de brokers en Zookeepers. De Broker knooppunten hebben **wn** als de eerste twee letters van de hostnaam en de Zookeeper-knoop punten hebben **ZK** als de eerste twee letters van de hostnaam.
 
         ![IP-adressen van Apache Ambari-weergave knooppunt](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
@@ -127,24 +127,24 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
     ssh sshuser@PRIMARYCLUSTER-ssh.azurehdinsight.net
     ```
 
-    Vervang **sshuser** door de SSH-gebruikers naam die wordt gebruikt bij het maken van het cluster. Vervang **basispad** door de basis naam die wordt gebruikt bij het maken van het cluster.
+    Vervang **sshuser** door de SSH-gebruikers naam die wordt gebruikt bij het maken van het cluster. Vervang **PRIMARYCLUSTER** door de basis naam die wordt gebruikt bij het maken van het cluster.
 
     Zie [SSH-sleutels gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie.
 
-2. Gebruik de volgende opdracht om een variabele te maken met de Apache Zookeeper-hosts voor het primaire cluster. De teken reeksen `ZOOKEEPER_IP_ADDRESS1` zoals moeten worden vervangen door de werkelijke IP-adressen `10.23.0.11` die eerder zijn geregistreerd `10.23.0.7`, zoals en. Als u de FQDN-resolutie met een aangepaste DNS-server gebruikt, voert u [de volgende stappen uit om de](apache-kafka-get-started.md#getkafkainfo) namen van Broker en Zookeeper op te halen.:
+1. Gebruik de volgende opdracht om een variabele te maken met de Apache Zookeeper-hosts voor het primaire cluster. De teken reeksen zoals `ZOOKEEPER_IP_ADDRESS1` moeten worden vervangen door de werkelijke IP-adressen die eerder zijn vastgelegd, zoals `10.23.0.11` en `10.23.0.7`. Als u de FQDN-resolutie met een aangepaste DNS-server gebruikt, voert u [de volgende stappen uit om de](apache-kafka-get-started.md#getkafkainfo) namen van Broker en Zookeeper op te halen.:
 
     ```bash
     # get the zookeeper hosts for the primary cluster
     export PRIMARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181, ZOOKEEPER_IP_ADDRESS2:2181, ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-3. Als u een onderwerp met `testtopic`de naam wilt maken, gebruikt u de volgende opdracht:
+1. Als u een onderwerp met de naam `testtopic`wilt maken, gebruikt u de volgende opdracht:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-3. Gebruik de volgende opdracht om te controleren of het onderwerp is gemaakt:
+1. Gebruik de volgende opdracht om te controleren of het onderwerp is gemaakt:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $PRIMARY_ZKHOSTS
@@ -152,7 +152,7 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
     Het antwoord bevat `testtopic`.
 
-4. Gebruik de volgende informatie om de Zookeeper van de host te bekijken (het **primaire**) cluster:
+1. Gebruik de volgende informatie om de Zookeeper van de host te bekijken (het **primaire**) cluster:
 
     ```bash
     echo $PRIMARY_ZKHOSTS
@@ -176,26 +176,26 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
     Zie [SSH-sleutels gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie.
 
-2. Een `consumer.properties` bestand wordt gebruikt voor het configureren van de communicatie met het **primaire** cluster. Gebruik de volgende opdracht om het bestand te maken:
+1. Een `consumer.properties`-bestand wordt gebruikt voor het configureren van de communicatie met het **primaire** cluster. Gebruik de volgende opdracht om het bestand te maken:
 
     ```bash
     nano consumer.properties
     ```
 
-    Gebruik de volgende tekst als de inhoud van het `consumer.properties` bestand:
+    Gebruik de volgende tekst als de inhoud van het `consumer.properties`-bestand:
 
     ```yaml
     zookeeper.connect=PRIMARY_ZKHOSTS
     group.id=mirrorgroup
     ```
 
-    Vervang **PRIMARY_ZKHOSTS** door de IP-adressen van Zookeeper uit het **primaire** cluster.
+    Vervang **PRIMARY_ZKHOSTS** door de IP-adressen van de Zookeeper van het **primaire** cluster.
 
     In dit bestand wordt de consument informatie beschreven die moet worden gebruikt bij het lezen van het primaire Kafka-cluster. Zie configuratie van [consumenten](https://kafka.apache.org/documentation#consumerconfigs) op Kafka.apache.org voor meer informatie.
 
     Als u het bestand wilt opslaan, gebruikt u **CTRL + X**, **Y**en **voert**u in.
 
-3. Voordat u de producent configureert die met het secundaire cluster communiceert, stelt u een variabele in voor de IP-adressen van de Broker van het **secundaire** cluster. Gebruik de volgende opdrachten om deze variabele te maken:
+1. Voordat u de producent configureert die met het secundaire cluster communiceert, stelt u een variabele in voor de IP-adressen van de Broker van het **secundaire** cluster. Gebruik de volgende opdrachten om deze variabele te maken:
 
     ```bash
     export SECONDARY_BROKERHOSTS='BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092'
@@ -205,33 +205,33 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
     `10.23.0.14:9092,10.23.0.4:9092,10.23.0.12:9092`
 
-4. Een `producer.properties` bestand wordt gebruikt om het **secundaire** cluster te communiceren. Gebruik de volgende opdracht om het bestand te maken:
+1. Een `producer.properties`-bestand wordt gebruikt om het **secundaire** cluster te communiceren. Gebruik de volgende opdracht om het bestand te maken:
 
     ```bash
     nano producer.properties
     ```
 
-    Gebruik de volgende tekst als de inhoud van het `producer.properties` bestand:
+    Gebruik de volgende tekst als de inhoud van het `producer.properties`-bestand:
 
     ```yaml
     bootstrap.servers=SECONDARY_BROKERHOSTS
     compression.type=none
     ```
 
-    Vervang **SECONDARY_BROKERHOSTS** door de IP-adressen van de broker die worden gebruikt in de vorige stap.
+    Vervang **SECONDARY_BROKERHOSTS** door de in de vorige stap gebruikte Broker-IP-adressen.
 
     Zie [producent configuraties](https://kafka.apache.org/documentation#producerconfigs) op Kafka.apache.org voor meer informatie.
 
-5. Gebruik de volgende opdrachten om een omgevings variabele te maken met de IP-adressen van de Zookeeper-hosts voor het secundaire cluster:
+1. Gebruik de volgende opdrachten om een omgevings variabele te maken met de IP-adressen van de Zookeeper-hosts voor het secundaire cluster:
 
     ```bash
     # get the zookeeper hosts for the secondary cluster
     export SECONDARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181,ZOOKEEPER_IP_ADDRESS2:2181,ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-7. De standaard configuratie voor Kafka in HDInsight staat het automatisch maken van onderwerpen niet toe. U moet een van de volgende opties gebruiken voordat u het spiegel proces start:
+1. Met de standaard configuratie voor Kafka in HDInsight is het automatisch maken van onderwerpen niet toegestaan. U moet een van de volgende opties gebruiken voordat u het spiegel proces start:
 
-    * **Maak de onderwerpen op het secundaire cluster**: Met deze optie kunt u ook het aantal partities en de replicatie factor instellen.
+    * **De onderwerpen maken op het secundaire cluster**: met deze optie kunt u ook het aantal partities en de replicatie factor instellen.
 
         U kunt de volgende opdracht gebruiken om eerder onderwerpen te maken:
 
@@ -241,15 +241,15 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
         Vervang `testtopic` door de naam van het onderwerp dat u wilt maken.
 
-    * **Het cluster configureren voor het automatisch maken van een onderwerp**: Met deze optie kan MirrorMaker automatisch onderwerpen maken, maar deze kan worden gemaakt met een ander aantal partities of replicatie factor dan het primaire onderwerp.
+    * **Het cluster configureren voor het automatisch maken van een onderwerp**: met deze optie kan MirrorMaker automatisch onderwerpen maken, maar dit kan worden gemaakt met een ander aantal partities of replicatie factor dan het primaire onderwerp.
 
         Voer de volgende stappen uit om het secundaire cluster zo te configureren dat er automatisch onderwerpen worden gemaakt:
 
-        1. Ga naar het Ambari-dash board voor het secundaire `https://SECONDARYCLUSTERNAME.azurehdinsight.net`cluster:.
+        1. Ga naar het Ambari-dash board voor het secundaire cluster: `https://SECONDARYCLUSTERNAME.azurehdinsight.net`.
         1. Klik op **Services** > **Kafka**. Klik op het tabblad **configuratie** .
-        5. Voer in het veld __filter__ een waarde van `auto.create`in. Hiermee wordt de lijst met eigenschappen gefilterd `auto.create.topics.enable` en wordt de instelling weer gegeven.
-        6. Wijzig de waarde van `auto.create.topics.enable` in waar en selecteer vervolgens __Opslaan__. Voeg een notitie toe en selecteer vervolgens __Opslaan__ opnieuw.
-        7. Selecteer de __Kafka__ -service, selecteer __opnieuw opstarten__en selecteer vervolgens __alle betrokkenen opnieuw opstarten__. Selecteer __Bevestig opnieuw opstarten__als dit wordt gevraagd.
+        1. Voer in het veld __filter__ de waarde `auto.create`in. Hiermee wordt de lijst met eigenschappen gefilterd en wordt de `auto.create.topics.enable` instelling weer gegeven.
+        1. Wijzig de waarde van `auto.create.topics.enable` in True en selecteer vervolgens __Opslaan__. Voeg een notitie toe en selecteer vervolgens __Opslaan__ opnieuw.
+        1. Selecteer de __Kafka__ -service, selecteer __opnieuw opstarten__en selecteer vervolgens __alle betrokkenen opnieuw opstarten__. Selecteer __Bevestig opnieuw opstarten__als dit wordt gevraagd.
 
         ![Kafka inschakelen voor automatisch maken](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
@@ -263,13 +263,12 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
     De para meters die in dit voor beeld worden gebruikt, zijn:
 
-    * **--Consumer. config**: Hiermee geeft u het bestand op dat de eigenschappen van de gebruiker bevat. Deze eigenschappen worden gebruikt voor het maken van een consumer die leest van het *primaire* Kafka-cluster.
-
-    * **--producer. config**: Hiermee geeft u het bestand op dat de eigenschappen van de producent bevat. Deze eigenschappen worden gebruikt voor het maken van een producent die naar het *secundaire* Kafka-cluster schrijft.
-
-    * **--white list**: Een lijst met onderwerpen die MirrorMaker repliceren van het primaire cluster naar de secundaire.
-
-    * **--num. streams**: Het aantal te maken Consumer threads.
+    |Parameter |Beschrijving |
+    |---|---|
+    |--Consumer. config|Hiermee geeft u het bestand op dat de eigenschappen van de gebruiker bevat. Deze eigenschappen worden gebruikt voor het maken van een consumer die leest van het *primaire* Kafka-cluster.|
+    |--producer. config|Hiermee geeft u het bestand op dat de eigenschappen van de producent bevat. Deze eigenschappen worden gebruikt voor het maken van een producent die naar het *secundaire* Kafka-cluster schrijft.|
+    |--White List|Een lijst met onderwerpen die MirrorMaker repliceren van het primaire cluster naar de secundaire.|
+    |--num. streams|Het aantal te maken Consumer threads.|
 
     De consument op het secundaire knoop punt wacht nu op het ontvangen van berichten.
 
@@ -288,7 +287,7 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $SECONDARY_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    De lijst met onderwerpen bevat `testtopic`nu een MirrorMaster die wordt gemaakt wanneer het onderwerp van het primaire cluster wordt gespiegeld met de secundaire. De berichten die worden opgehaald uit het onderwerp, zijn dezelfde als die u hebt ingevoerd op het primaire cluster.
+    De lijst met onderwerpen bevat nu `testtopic`, die wordt gemaakt wanneer MirrorMaster het onderwerp van de primaire cluster naar de secundaire spiegelt. De berichten die worden opgehaald uit het onderwerp, zijn dezelfde als die u hebt ingevoerd op het primaire cluster.
 
 ## <a name="delete-the-cluster"></a>Het cluster verwijderen
 

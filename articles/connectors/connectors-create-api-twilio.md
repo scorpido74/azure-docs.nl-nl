@@ -1,22 +1,18 @@
 ---
-title: Verbinding maken met Twilio vanuit Azure Logic Apps | Microsoft Docs
+title: Verbinding maken met Twilio vanuit Azure Logic Apps
 description: Automatiseer taken en werk stromen die algemene SMS-, MMS-en IP-berichten beheren via uw Twilio-account met behulp van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 09d4a6acf93f5fb01c70f9e9bd935c404c5abf50
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: e5b218efd9c8cfaad99d76d8118d181390a977c3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050704"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789100"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Berichten in Twilio beheren met Azure Logic Apps
 
@@ -31,7 +27,7 @@ Met Azure Logic Apps en de Twilio-connector kunt u geautomatiseerde taken en wer
   * Uw Twilio-account-ID en [verificatie token](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them), die u op uw Twilio-dash board kunt vinden
 
     Met uw referenties wordt uw logische app geautoriseerd om een verbinding te maken en toegang te krijgen tot uw Twilio-account vanuit uw logische app. 
-    Als u een Twilio-proef account gebruikt, kunt u alleen SMS-berichten verzenden naar geverifieerde telefoon nummers.
+    Als u een Twilio-proef account gebruikt, kunt u alleen SMS-berichten verzenden naar *geverifieerde* telefoon nummers.
 
   * Een geverifieerd Twilio-telefoon nummer waarmee SMS-berichten kunnen worden verzonden
 
@@ -71,11 +67,11 @@ Met Azure Logic Apps en de Twilio-connector kunt u geautomatiseerde taken en wer
 
 Raadpleeg de [referentie pagina](/connectors/twilio/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 * Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 * Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

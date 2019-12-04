@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 7a2b15ffdcc1a611c2cb165b4f2657ad7276e05b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 77497d709d7106bf7c13d1fafcc4e64ee0ed1d39
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706357"
+ms.locfileid: "74790307"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Kiezen tussen berichtenservices van Azure - Event Grid, Event Hubs en Service Bus
 
@@ -98,7 +98,7 @@ In andere gevallen kunt u ze koppelen om een gebeurtenis- en gegevenspijplijn te
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen: 
-- [Opties voor asynchrone berichten in azure](/azure/architecture/guide/technology-choices/messaging.md)
+- [Opties voor asynchrone berichten in azure](/azure/architecture/guide/technology-choices/messaging)
 - [Gebeurtenissen, gegevenspunten en berichten - De juiste Azure-berichtenservice voor uw gegevens kiezen](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
 - [Storage Queues and Service Bus Queues - Compared and Contrasted](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md) (Storage-wachtrijen en Service Bus-wachtrijen: overeenkomsten en verschillen)
 - Zie [Aangepaste gebeurtenissen maken en routeren met behulp van Azure Event Grid](custom-event-quickstart.md) om aan de slag te gaan met Event Grid.

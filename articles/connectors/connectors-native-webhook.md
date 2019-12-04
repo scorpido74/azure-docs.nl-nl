@@ -1,21 +1,18 @@
 ---
-title: Wachten en reageren op gebeurtenissen-Azure Logic Apps
+title: Wachten en reageren op gebeurtenissen
 description: Werk stromen automatiseren die op basis van gebeurtenissen in een service-eind punt activeren, onderbreken en hervatten met behulp van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: ee86f53795b1b3e7bd61480a490d4e18c844d4c2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804258"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787043"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Geautomatiseerde op gebeurtenis gebaseerde werk stromen maken en uitvoeren met behulp van HTTP-webhooks in Azure Logic Apps
 
@@ -83,7 +80,7 @@ Deze ingebouwde trigger registreert een call back-URL met de opgegeven service e
 
    Als u uw logische app opslaat, wordt het eind punt van de abonnee aangeroepen en wordt de call back-URL geregistreerd voor het activeren van deze logische app.
 
-1. Wanneer de doel service nu een `HTTP POST`-aanvraag naar de call back-URL verzendt, wordt de logische app geactiveerd en worden alle gegevens opgenomen die via de aanvraag zijn door gegeven.
+1. Wanneer de doel service nu een `HTTP POST` aanvraag verzendt naar de call back-URL, wordt de logische app geactiveerd en worden alle gegevens opgenomen die via de aanvraag zijn door gegeven.
 
 ## <a name="add-an-http-webhook-action"></a>Een HTTP-webhook-actie toevoegen
 
@@ -107,7 +104,7 @@ Met deze ingebouwde actie wordt een call back-URL voor de opgegeven service gere
 
    ![Actie parameters voor HTTP-webhook opgeven](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   Tijdens runtime roept de logische app het abonnements eindpunt aan wanneer deze actie wordt uitgevoerd. De logische app onderbreekt de werk stroom en wacht totdat de doel service een `HTTP POST`-aanvraag naar de call back-URL verzendt. Als de actie is voltooid, wordt de actie afgemeld bij het eind punt en wordt uw logische app hervat met het uitvoeren van de werk stroom.
+   Tijdens runtime roept de logische app het abonnements eindpunt aan wanneer deze actie wordt uitgevoerd. De logische app onderbreekt vervolgens de werk stroom en wacht tot de doel service een `HTTP POST` aanvraag naar de call back-URL verzendt. Als de actie is voltooid, wordt de actie afgemeld bij het eind punt en wordt uw logische app hervat met het uitvoeren van de werk stroom.
 
 1. Als u andere beschik bare para meters wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste para meters.
 

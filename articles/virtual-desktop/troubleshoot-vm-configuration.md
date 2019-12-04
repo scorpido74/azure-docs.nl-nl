@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607402"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791154"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
 
@@ -123,7 +123,7 @@ Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd o
 1. Down load een nieuwe versie van de agent op de host-VM van de sessie.
 2. Start taak beheer en stop de RDAgentBootLoader-service op het tabblad Service.
 3. Voer het installatie programma uit voor de nieuwe versie van de virtuele bureau blad-agent van Windows.
-4. Als u wordt gevraagd om het registratie token, verwijdert u de vermelding INVALID_TOKEN en drukt u op volgende (er is geen nieuw token vereist).
+4. Als u wordt gevraagd om het registratie token, verwijdert u de vermelding INVALID_TOKEN en klikt u op volgende (er is geen nieuw token vereist).
 5. Voltooi de installatie wizard.
 6. Open taak beheer en start de RDAgentBootLoader-service.
 
@@ -201,7 +201,7 @@ Controleer de hieronder vermelde Register vermeldingen en controleer of de waard
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Fout: O_REVERSE_CONNECT_STACK_FAILURE
 
-![O_REVERSE_CONNECT_STACK_FAILURE-fout code.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![Fout code O_REVERSE_CONNECT_STACK_FAILURE.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Oorzaak:** De side-by-side-stack is niet geïnstalleerd op de host-VM van de sessie.
 
@@ -309,7 +309,7 @@ Als u een van deze berichten ziet, betekent dit dat de installatie kopie niet de
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>De groeps beleids instelling Extern bureaublad licentie modus uitschakelen
 
-Controleer de groeps beleids instelling door de groepsbeleid editor te openen in de virtuele machine en te navigeren naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad sessiehost** > **licentie verlening** > **de licentie modus Extern bureaublad instellen**. Als de groeps beleids instelling is **ingeschakeld**, wijzigt u deze in **uitgeschakeld**. Als de functie al is uitgeschakeld, kunt u deze vervolgens ongewijzigd laten.
+Controleer de groeps beleids instelling door de groepsbeleid editor te openen in de virtuele machine en te navigeren naar **Beheersjablonen** > **Windows-onderdelen** > **Extern bureaublad-services** > extern bureaublad **sessie host** > **licentie** > **de licentie modus voor extern bureaublad instellen**. Als de groeps beleids instelling is **ingeschakeld**, wijzigt u deze in **uitgeschakeld**. Als de functie al is uitgeschakeld, kunt u deze vervolgens ongewijzigd laten.
 
 >[!NOTE]
 >Als u groeps beleid via uw domein instelt, schakelt u deze instelling uit voor beleids regels die zijn gericht op deze Windows 10 Enter prise-Vm's met meerdere sessies.
@@ -333,7 +333,7 @@ Als uw versie nummer 1809 is, installeert u [de update KB4516077](https://suppor
 
 ### <a name="version-1903"></a>Versie 1903
 
-Als uw versie nummer 1903 is, installeert u [de update KB4517211](https://support.microsoft.com/help/4517211).
+Implementeer het hostbesturingssysteem opnieuw met de nieuwste versie van de installatie kopie van Windows 10, versie 1903 van de Azure Gallery.
 
 ## <a name="next-steps"></a>Volgende stappen
 

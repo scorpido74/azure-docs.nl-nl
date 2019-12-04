@@ -1,27 +1,21 @@
 ---
-title: De query actie toevoegen in Logic apps | Microsoft Docs
-description: Overzicht van de query actie voor het uitvoeren van acties zoals filter matrix.
-services: ''
-documentationcenter: ''
-author: jeffhollan
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
-ms.service: logic-apps
+title: De query actie toevoegen in Logic apps
+description: Overzicht van de query actie voor het uitvoeren van acties zoals filter matrix
+services: logic-apps
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/20/2016
-ms.author: jehollan
-ms.openlocfilehash: 10332b95e0d385d7155003efcc52b4bae3969313
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+tags: connectors
+ms.openlocfilehash: 2e5c9d371a280b776699b2e10d3e8e94b5f41f6f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973754"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787129"
 ---
 # <a name="get-started-with-the-query-action"></a>Aan de slag met de query actie
+
 Met de query actie kunt u werken met batches en matrices om werk stromen uit te voeren voor het volgende:
 
 * Maak een taak voor alle records met hoge prioriteit uit een Data Base.
@@ -30,6 +24,7 @@ Met de query actie kunt u werken met batches en matrices om werk stromen uit te 
 Zie [een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md)om aan de slag te gaan met de query actie in een logische app.
 
 ## <a name="use-the-query-action"></a>De query actie gebruiken
+
 Een actie is een bewerking die wordt uitgevoerd door de werk stroom die is gedefinieerd in een logische app. 
 [Meer informatie over acties](../connectors/apis-list.md).  
 
@@ -55,30 +50,30 @@ U kunt dit als volgt toevoegen aan een logische app:
 ## <a name="query-action"></a>Query actie
 Hier vindt u de Details voor de actie die door deze connector wordt ondersteund. De connector heeft een mogelijke actie.
 
-| Action | Description |
+| Bewerking | Beschrijving |
 | --- | --- |
 | Matrix filteren |Evalueert een voor waarde voor elk item in een matrix en retourneert de resultaten |
 
-## <a name="action-details"></a>Actiedetails
+## <a name="action-details"></a>Actie Details
 De query actie wordt geleverd met een mogelijke actie. De volgende tabellen beschrijven de vereiste en optionele invoer velden voor de actie en de bijbehorende uitvoer details die zijn gekoppeld aan het gebruik van de actie.
 
 ### <a name="filter-array"></a>Matrix filteren
 Hieronder ziet u de invoer velden voor de actie, waarmee een HTTP-uitgaande aanvraag wordt gemaakt.
 Een * betekent dat het een verplicht veld is.
 
-| `Display name` | Naam van eigenschap | Description |
+| Weergavenaam | Naam van eigenschap | Beschrijving |
 | --- | --- | --- |
-| Na |from |De matrix die moet worden gefilterd |
-| Regeling |waarbij |De voor waarde die voor elk item moet worden geëvalueerd |
+| Na |Van |De matrix die moet worden gefilterd |
+| Regeling |positie |De voor waarde die voor elk item moet worden geëvalueerd |
 
 <br>
 
 ### <a name="output-details"></a>Uitvoer Details
 Hieronder vindt u informatie over de uitvoer van het HTTP-antwoord.
 
-| Naam van eigenschap | Gegevenstype | Description |
+| Naam van eigenschap | Gegevenstype | Beschrijving |
 | --- | --- | --- |
-| Gefilterde matrix |array |Een matrix die een object bevat voor elk gefilterd resultaat |
+| Gefilterde matrix |matrix |Een matrix die een object bevat voor elk gefilterd resultaat |
 
 ## <a name="next-steps"></a>Volgende stappen
 Probeer nu het platform uit en [Maak een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). U kunt de andere beschik bare connectors in Logic apps verkennen door de [lijst met api's](apis-list.md)te bekijken.

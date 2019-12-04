@@ -1,36 +1,36 @@
 ---
-title: Concepten van hoge beschikbaarheid in Azure Database for MySQL
-description: Dit onderwerp vindt u informatie van hoge beschikbaarheid bij het gebruik van Azure Database voor MySQL
+title: Hoge Beschik baarheid-Azure Database for MySQL
+description: In dit onderwerp vindt u informatie over hoge Beschik baarheid bij het gebruik van Azure Database for MySQL
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 055727695bfa1ce8a6bb160a7e071c2a161afb3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 532cb62c371718a59adf2877517fcdb8f7047bcf
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837825"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770965"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Concepten van hoge beschikbaarheid in Azure Database for MySQL
-De Azure Database for MySQL-service biedt een gegarandeerde hoge mate van beschikbaarheid. De met financiële garantie service level agreement (SLA) is 99,99% bij algemene beschikbaarheid. Er is bijna geen toepassing uitvaltijd wanneer u deze service.
+# <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Concepten met hoge Beschik baarheid in Azure Database for MySQL
+De Azure Database for MySQL-service biedt een gegarandeerd hoog niveau van Beschik baarheid. De financieel ondersteunde service level agreement (SLA) is 99,99% bij de algemene Beschik baarheid. Er is bijna geen toepassings tijd meer wanneer u deze service gebruikt.
 
 ## <a name="high-availability"></a>Hoge beschikbaarheid
-Het model met hoge beschikbaarheid (HA) is gebaseerd op ingebouwde mechanismen voor failover als een knooppunt op serverniveau onderbreking optreedt. Een onderbreking knooppunt op serverniveau kan zich voordoen vanwege een hardwarestoring optreedt of als reactie op een service-implementatie.
+Het model voor hoge Beschik baarheid (HA) is gebaseerd op ingebouwde mechanismen voor failover wanneer een onderbreking op knooppunt niveau optreedt. Een onderbreking op knooppunt niveau kan zich voordoen als gevolg van een hardwarestoring of als reactie op een service-implementatie.
 
-Allen tijde optreden wijzigingen aangebracht in een Azure Database for MySQL-database-server in de context van een transactie. Wijzigingen worden synchroon geregistreerd in Azure storage als de transactie doorgevoerd wordt. Als een knooppunt op serverniveau onderbreking optreedt, wordt de database-server automatisch maakt u een nieuw knooppunt en de opslag van gegevens is gekoppeld aan het nieuwe knooppunt. Alle actieve verbindingen verbroken en eventuele actieve transacties zijn niet doorgevoerd.
+Wijzigingen die zijn aangebracht in een Azure Database for MySQL database server, worden altijd uitgevoerd in de context van een trans actie. Wijzigingen worden synchroon vastgelegd in azure Storage wanneer de trans actie wordt doorgevoerd. Als er een onderbreking op knooppunt niveau optreedt, maakt de database server automatisch een nieuw knoop punt en koppelt deze gegevens opslag aan het nieuwe knoop punt. Actieve verbindingen worden verwijderd en eventuele trans acties met invlucht worden niet doorgevoerd.
 
-## <a name="application-retry-logic-is-essential"></a>Logica voor opnieuw proberen van toepassing is van essentieel belang
-Het is belangrijk dat MySQL database-toepassingen zijn gebouwd om te detecteren en probeer het opnieuw verbindingen verbroken en transacties is mislukt. Wanneer de toepassing opnieuw probeert, wordt de verbinding van de toepassing transparant omgeleid naar de zojuist gemaakte instantie ten opzichte van het mislukte exemplaar heeft.
+## <a name="application-retry-logic-is-essential"></a>Logica voor opnieuw proberen van toepassing is essentieel
+Het is belang rijk dat MySQL-database toepassingen zijn gebouwd voor het detecteren en opnieuw proberen van verbroken verbindingen en mislukte trans acties. Wanneer de toepassing opnieuw probeert, wordt de verbinding van de toepassing op transparante wijze omgeleid naar het nieuwe exemplaar, dat voor het mislukte exemplaar overneemt.
 
-In Azure, wordt een gateway intern gebruikt om te leiden van de verbindingen naar het nieuwe exemplaar. De volledige failover-proces duurt meestal tientallen seconden na een onderbreking. Omdat de omleiding intern door de gateway verwerkt wordt, wordt de tekenreeks voor externe verbinding blijft hetzelfde voor de clienttoepassingen.
+Een gateway wordt intern in azure gebruikt om de verbindingen met het nieuwe exemplaar om te leiden. Na een onderbreking duurt het hele failover-proces meestal tien seconden. Omdat de omleiding intern door de gateway wordt verwerkt, blijft de externe connection string hetzelfde voor de client toepassingen.
 
 ## <a name="scaling-up-or-down"></a>Omhoog of omlaag schalen
-Net als bij de HA-model, wanneer een Azure Database for MySQL omhoog of omlaag wordt geschaald, een nieuw exemplaar van de server met de opgegeven grootte is gemaakt. De bestaande opslag van gegevens is losgekoppeld van het oorspronkelijke exemplaar en gekoppeld aan het nieuwe exemplaar.
+Net als bij het HA-model, wanneer een Azure Database for MySQL omhoog of omlaag wordt geschaald, een nieuw Server exemplaar met de opgegeven grootte wordt gemaakt. De bestaande gegevens opslag wordt losgekoppeld van het oorspronkelijke exemplaar en gekoppeld aan het nieuwe exemplaar.
 
-Tijdens de schaalbewerking is een onderbreking van de databaseverbindingen vindt plaats. De clienttoepassingen die niet zijn verbonden en open niet-doorgevoerde transacties worden geannuleerd. Nadat u de clienttoepassing probeert opnieuw verbinding of een nieuwe verbinding maakt, is de gateway zorgt ervoor dat de verbinding met de nieuwe grootte-exemplaar. 
+Tijdens de schaal bewerking vindt een onderbreking van de database verbindingen plaats. De client toepassingen worden losgekoppeld en de open niet-doorgevoerde trans acties worden geannuleerd. Zodra de client toepassing de verbinding opnieuw probeert te maken of een nieuwe verbinding maakt, stuurt de gateway de verbinding naar het exemplaar met de nieuwe grootte. 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [afhandeling van tijdelijke connectiviteitsfouten](concepts-connectivity.md)
-- Meer informatie over het [repliceert uw gegevens met meer replica's](howto-read-replicas-portal.md)
+- Meer informatie over het [verwerken van tijdelijke connectiviteits fouten](concepts-connectivity.md)
+- Meer informatie over het [repliceren van uw gegevens met replica's](howto-read-replicas-portal.md)

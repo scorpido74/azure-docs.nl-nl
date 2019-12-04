@@ -1,101 +1,99 @@
 ---
-title: EDIFACT-berichten - Azure Logic Apps-decodering | Microsoft Docs
-description: EDI valideren en het genereren van bevestigingen met de decoder EDIFACT-bericht voor Azure Logic Apps met Enterprise Integration Pack
+title: EDIFACT-berichten decoderen
+description: Valideer EDI en Genereer bevestigingen met de EDIFACT-bericht decoder voor Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
 ms.date: 01/27/2017
-ms.openlocfilehash: ccad6eab68fff0891ba287a076692f9437495a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78c0d20c0f32a6d63d134e958b30d38fe11fcc5c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696196"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790666"
 ---
-# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>EDIFACT-berichten decoderen voor Azure Logic Apps met het Enterprise Integration Pack
+# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>EDIFACT-berichten decoderen voor Azure Logic Apps met de Enterprise Integration Pack
 
-Met de EDIFACT-decodering bericht-connector, kunt u valideren EDI en partner-specifieke eigenschappen, uitwisselingen in transacties sets splitsen of hele uitwisselingen behouden en genereren van bevestigingen voor verwerkte transacties. Voor het gebruik van deze connector, moet u de connector toevoegen aan een bestaande trigger in uw logische app.
+Met de decodeer EDIFACT-berichten connector kunt u EDI-en partner-specifieke eigenschappen valideren, interacties in transactie sets splitsen of volledige interwijzigingen behouden en bevestigingen voor verwerkte trans acties genereren. Als u deze connector wilt gebruiken, moet u de connector toevoegen aan een bestaande trigger in uw logische app.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Hier volgt de items die u nodig hebt:
+Dit zijn de items die u nodig hebt:
 
-* Een Azure-account; u kunt maken een [gratis account](https://azure.microsoft.com/free)
-* Een [integratieaccount](logic-apps-enterprise-integration-create-integration-account.md) die al is gedefinieerd en die zijn gekoppeld aan uw Azure-abonnement. Hebt u een integratieaccount om de EDIFACT-decodering bericht-connector te gebruiken. 
-* Ten minste twee [partners](logic-apps-enterprise-integration-partners.md) die al zijn gedefinieerd in uw integratieaccount
-* Een [EDIFACT-overeenkomst](logic-apps-enterprise-integration-edifact.md) die al gedefinieerd in uw integratieaccount
+* Een Azure-account; u kunt een [gratis account](https://azure.microsoft.com/free) maken
+* Een [integratie account](logic-apps-enterprise-integration-create-integration-account.md) dat al is gedefinieerd en gekoppeld aan uw Azure-abonnement. U moet een integratie account hebben voor het gebruik van de decodeer EDIFACT-bericht connector. 
+* Ten minste twee [partners](logic-apps-enterprise-integration-partners.md) die al zijn gedefinieerd in uw integratie account
+* Een [EDIFACT-overeenkomst](logic-apps-enterprise-integration-edifact.md) die al is gedefinieerd in uw integratie account
 
 ## <a name="decode-edifact-messages"></a>EDIFACT-berichten decoderen
 
 1. [Maak een logische app](quickstart-create-first-logic-app-workflow.md).
 
-2. De EDIFACT-decodering bericht connector geen triggers, dus moet u een trigger voor het starten van uw logische app, zoals een aanvraag als trigger toevoegen. Een trigger toevoegen in de Logic App Designer en klikt u vervolgens een actie toevoegen aan uw logische app.
+2. De decodeer EDIFACT-bericht connector heeft geen triggers, dus u moet een trigger toevoegen voor het starten van uw logische app, zoals een aanvraag trigger. Voeg in de ontwerp functie voor logische apps een trigger toe en voeg vervolgens een actie toe aan uw logische app.
 
-3. Typ 'EDIFACT' als filter in het zoekvak. Selecteer **EDIFACT-bericht decoderen**.
+3. Voer in het zoekvak ' EDIFACT ' in als uw filter. Selecteer **EDIFACT-bericht decoderen**.
    
     ![EDIFACT zoeken](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
-3. Als u geen verbindingen voor uw integratieaccount eerder hebt gemaakt, wordt u gevraagd om nu deze verbinding te maken. Naam van de verbinding en selecteer de integratieaccount waarmee u verbinding wilt maken.
+3. Als u eerder geen verbindingen met uw integratie account hebt gemaakt, wordt u gevraagd om die verbinding nu te maken. Geef uw verbinding een naam en selecteer het integratie account dat u wilt verbinden.
    
-    ![integratie-account maken](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
+    ![integratie account maken](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
 
     Eigenschappen met een sterretje zijn vereist.
 
     | Eigenschap | Details |
     | --- | --- |
-    | Verbindingsnaam * |Voer een naam voor de verbinding. |
-    | Integratie-Account * |Voer een naam voor uw integratie-account. Zorg ervoor dat uw integratie-account en logica-app zich in dezelfde Azure-locatie. |
+    | Verbindings naam * |Voer een naam in voor de verbinding. |
+    | Integratie account * |Voer een naam in voor het integratie account. Zorg ervoor dat het integratie account en de logische app zich op dezelfde Azure-locatie bevinden. |
 
-4. Als u klaar bent voor de verbinding hebt aangemaakt, kiest u **maken**. Uw verbindingsgegevens moeten met het volgende voorbeeld als volgt uitzien:
+4. Wanneer u klaar bent om het maken van de verbinding te volt ooien, kiest u **maken**. De verbindings details moeten er ongeveer als volgt uitzien:
 
-    ![details van de integratie-account](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
+    ![Details van het integratie account](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
-5. Nadat de verbinding is gemaakt, zoals wordt weergegeven in dit voorbeeld, selecteert u de platte bestandsindeling EDIFACT-bericht moet worden gedecodeerd.
+5. Nadat de verbinding is gemaakt, selecteert u in dit voor beeld het bericht EDIFACT plat file om te decoderen.
 
-    ![integratie-accountverbinding hebt gemaakt](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
+    ![verbinding voor integratie account gemaakt](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
     Bijvoorbeeld:
 
-    ![Selecteer het EDIFACT-bericht met platte bestanden voor het decoderen van](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
+    ![Selecteer EDIFACT-bericht met platte bestanden voor het decoderen](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
-## <a name="edifact-decoder-details"></a>Details van de EDIFACT-decodeerfunctie
+## <a name="edifact-decoder-details"></a>Details van EDIFACT-decoder
 
-De EDIFACT-decodering connector voert deze taken uit: 
+De decode EDIFACT-connector voert de volgende taken uit: 
 
-* Valideert de envelop tegen trading partner agreement.
-* Oplossing voor de overeenkomst door die overeenkomt met de afzenderkwalificatie van de-id en ontvangerskwalificatie & id.
-* Hiermee wordt een knooppunt in meerdere transacties wanneer de uitwisseling heeft meer dan één transactie op basis van de overeenkomst van de instellingen voor configuratie ontvangen.
-* De uitwisseling ontleden.
-* Valideert EDI en partner-specifieke eigenschappen met inbegrip van:
-  * Validatie van de structuur van de envelop uitwisseling
-  * Schemavalidatie van de enveloppe op basis van het schema van het besturingselement
-  * Schemavalidatie van de gegevenselementen van de transactie-set op basis van de berichtschema
-  * EDI-validatie uitgevoerd voor de transactieset gegevenselementen
-* Hiermee wordt gecontroleerd dat de uitwisseling, groep en transactie set controlenummers geen dubbele waarden zijn (indien geconfigureerd) 
-  * Controleert of het controlenummer voor de uitwisseling tegen eerder ontvangen uitwisselingen. 
-  * Controleert of het groepscontrolenummer op basis van andere groep controlenummers in de uitwisseling. 
-  * Controleert of dat de transactie controlenummer ingesteld op basis van andere transactie set controlenummers in die groep.
-* Hiermee wordt de uitwisseling in transactiesets of behoudt de gehele uitwisseling:
-  * Uitwisseling splitsen in transactiereeksen - onderbreken transactiereeksen bij fout: Uitwisseling splitsen in transactie wordt ingesteld en wordt elke transactieset geparseerd. 
-  De X12 decoderen actie voert alleen deze transactie wordt ingesteld die niet voldoen aan de validatie `badMessages`, en de resterende transacties wordt ingesteld op uitvoer `goodMessages`.
-  * Uitwisseling splitsen in transactiereeksen - onderbreken uitwisseling bij fout: Uitwisseling splitsen in transactie wordt ingesteld en wordt elke transactieset geparseerd. 
-  Als een of meer transactie wordt ingesteld in de uitwisseling mislukt de validatie van de X12 decoderen actie voert alle de transactie wordt ingesteld in dat knooppunt aan `badMessages`.
-  * Uitwisseling bewaren-transactiereeksen onderbreken bij fout: De uitwisseling behouden en verwerken van de gehele uitwisseling van de batch. 
-  De X12 decoderen actie voert alleen deze transactie wordt ingesteld die niet voldoen aan de validatie `badMessages`, en de resterende transacties wordt ingesteld op uitvoer `goodMessages`.
-  * Uitwisseling bewaren-uitwisseling onderbreken bij fout: De uitwisseling behouden en verwerken van de gehele uitwisseling van de batch. 
-  Als een of meer transactie wordt ingesteld in de uitwisseling mislukt de validatie van de X12 decoderen actie voert alle de transactie wordt ingesteld in dat knooppunt aan `badMessages`.
-* Genereert een technische (beheer) en/of functionele bevestigingen (indien geconfigureerd).
-  * De bevestiging van een technische of de ACK CONTRL rapporteert de resultaten van een syntactische controle van de volledige ontvangen uitwisseling.
-  * Een functionele bevestiging erkent accepteren of weigeren van een ontvangen uitwisseling of een groep
+* Valideert de envelop tegen de overeenkomst van de handels partner.
+* Hiermee wordt de overeenkomst opgelost door de kwalificatie van de afzender & id en de kwalificatie & id te vergelijken.
+* Splitst een uitwisseling in meerdere trans acties wanneer de uitwisseling meer dan één trans actie heeft op basis van de configuratie van de ontvangst instellingen van de overeenkomst.
+* Deassembleert de uitwisseling.
+* Valideert EDI en partner-specifieke eigenschappen, waaronder:
+  * Validatie van de structuur voor de uitwisseling van enveloppen
+  * Schema validatie van de envelop op basis van het controle schema
+  * Schema validatie van de gegevens elementen van de trans actie op basis van het bericht schema
+  * EDI-validatie uitgevoerd op gegevens elementen van trans actie-set
+* Controleert of de controle nummers voor de uitwisseling, groep en trans actie geen duplicaten zijn (indien geconfigureerd) 
+  * Hiermee wordt het uitwisselings controle nummer gecontroleerd op eerder ontvangen wissels. 
+  * Hiermee wordt het groeps controle nummer gecontroleerd op andere groeps controle nummers in de uitwisseling. 
+  * Hiermee wordt het controle nummer van de transactieset gecontroleerd op andere trans actie besturings nummers instellen in die groep.
+* Splitst de uitwisseling in transactie sets of behoudt de volledige uitwisseling:
+  * Gesplitste uitwisseling als transactie sets: Stel transactie sets uit bij fout: Splits de uitwisseling in transactie sets en parseert elke transactie groep. 
+  Met de X12 decode actie worden alleen de transactie sets uitgevoerd die niet zijn gevalideerd voor `badMessages`, en worden de resterende transactie sets uitgevoerd op `goodMessages`.
+  * Gesplitste uitwisseling als transactie sets-uitwisseling onderbreken bij fout: het splitsen van uitwisseling in transactie sets en het parseren van elke transactie groep. 
+  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie X12 alle transactie sets in die uitwisseling uitgevoerd naar `badMessages`.
+  * Trans actie sets met uitwisselingen behouden bij fout: de uitwisseling behouden en de volledige batch uitwisseling verwerken. 
+  Met de X12 decode actie worden alleen de transactie sets uitgevoerd die niet zijn gevalideerd voor `badMessages`, en worden de resterende transactie sets uitgevoerd op `goodMessages`.
+  * Uitwisseling van Interchange-Suspend behouden bij fout: behoud de uitwisseling en verwerk de volledige batch uitwisseling. 
+  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie X12 alle transactie sets in die uitwisseling uitgevoerd naar `badMessages`.
+* Hiermee wordt een technische (controle) en/of functionele bevestiging gegenereerd (indien geconfigureerd).
+  * Een technische bevestiging of de CONTRL ACK rapporteert de resultaten van een syntactische controle van de volledige ontvangen uitwisseling.
+  * Een functie bevestiging erkent of weigert een ontvangen uitwisseling of groep
 
-## <a name="view-swagger-file"></a>Swagger-bestand weergeven
-De details Swagger voor de EDIFACT-connector, Zie [EDIFACT](/connectors/edifact/).
+## <a name="view-swagger-file"></a>Swagger-bestand weer geven
+Zie [EDIFACT](/connectors/edifact/)voor informatie over het weer geven van de Swagger-gegevens voor de EDIFACT-connector.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over het Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "meer informatie over Enterprise Integration Pack") 
+[Meer informatie over de Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack") 
 

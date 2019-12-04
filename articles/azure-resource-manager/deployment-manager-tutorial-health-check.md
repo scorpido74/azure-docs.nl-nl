@@ -1,16 +1,16 @@
 ---
-title: Azure Deployment Manager gebruiken met sjablonen
-description: Resource Manager-sjablonen met Azure Deployment Manager gebruiken om Azure-resources te implementeren.
+title: Azure Deployment Manager Health Check gebruiken
+description: Gebruik status controle om Azure-resources veilig te implementeren met Azure Deployment Manager.
 author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0ce37a744cdf22beddcef433fca1a64252e1673d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 355a40db7714ddae39c4171aaa0ebe4b5e5f777e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149890"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784677"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Zelf studie: status controle gebruiken in azure Deployment Manager (open bare preview)
 
@@ -73,7 +73,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 Controleren en testen van de Azure-functie:
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 1. Open de resource groep.  De standaard naam is de naam van het project waaraan **RG** is toegevoegd.
 1. Selecteer app service in de resource groep.  De standaard naam van de app service is de project naam met **webapp** toegevoegd.
 1. Vouw **functies**uit en selecteer vervolgens **HttpTrigger1**.
@@ -348,7 +348,7 @@ Herhaal deze sectie voor het opnieuw implementeren van de implementatie met de U
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 2. Blader naar de zojuist gemaakte webtoepassingen onder de nieuwe resourcegroepen die zijn gemaakt door de implementatie.
 3. Open de webtoepassing in een webbrowser. Controleer de locatie en de versie in het index.html-bestand.
 

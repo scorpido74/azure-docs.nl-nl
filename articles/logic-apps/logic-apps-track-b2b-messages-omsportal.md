@@ -1,24 +1,23 @@
 ---
-title: B2B-berichten bijhouden met Azure Monitor-logboeken-Azure Logic Apps | Microsoft Docs
+title: B2B-berichten bijhouden met Azure Monitor-logboeken
 description: B2B-communicatie bijhouden voor integratie accounts en Azure Logic Apps met Azure Log Analytics
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 33c4efb2b783b5071513f069beac9cdf73c373a8
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997850"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792928"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>B2B-berichten bijhouden met Azure Monitor-logboeken
 
-Nadat u B2B-communicatie tussen handels partners in uw integratie account hebt ingesteld, kunnen deze partners berichten uitwisselen met protocollen zoals AS2, X12 en EDIFACT. U kunt deze berichten volgen met [Azure monitor](../log-analytics/log-analytics-overview.md)-Logboeken om te controleren of deze berichten correct worden verwerkt. U kunt bijvoorbeeld de volgende webgebaseerde tracking mogelijkheden gebruiken voor het bijhouden van berichten:
+Nadat u B2B-communicatie tussen handels partners in uw integratie account hebt ingesteld, kunnen deze partners berichten uitwisselen met protocollen zoals AS2, X12 en EDIFACT. U kunt deze berichten volgen met [Azure monitor-logboeken](../log-analytics/log-analytics-overview.md)om te controleren of deze berichten correct worden verwerkt. U kunt bijvoorbeeld de volgende webgebaseerde tracking mogelijkheden gebruiken voor het bijhouden van berichten:
 
 * Aantal berichten en status
 * Status van bevestigingen
@@ -37,13 +36,13 @@ Nadat u B2B-communicatie tussen handels partners in uw integratie account hebt i
 
 * Een integratie account dat is ingesteld met bewaking en logboek registratie. Meer informatie [over het maken van een integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) en [het instellen van controle en logboek registratie voor dat account](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Als u dat nog niet hebt [gedaan, kunt u Diagnostische gegevens publiceren naar Azure monitor](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)-Logboeken.
+* Als u dat nog niet hebt [gedaan, kunt u Diagnostische gegevens publiceren naar Azure monitor-logboeken](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 * Nadat u aan de vorige vereisten hebt voldaan, hebt u ook een Log Analytics-werk ruimte nodig die u kunt gebruiken voor het volgen van B2B-communicatie via Log Analytics. Als u geen Log Analytics-werk ruimte hebt, leert u [hoe u een log Analytics-werk ruimte maakt](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="install-logic-apps-b2b-solution"></a>Logische apps B2B oplossing installeren
 
-Voordat u Azure Monitor Logboeken kunt volgen voor het bijhouden van B2B-berichten voor uw logische app, voegt u de **logische apps B2B** -oplossing toe aan Azure monitor Logboeken. Meer informatie over [het toevoegen van oplossingen aan Azure monitor](../azure-monitor/learn/quick-create-workspace.md)-Logboeken.
+Voordat u Azure Monitor Logboeken kunt volgen voor het bijhouden van B2B-berichten voor uw logische app, voegt u de **logische apps B2B** -oplossing toe aan Azure monitor Logboeken. Meer informatie over [het toevoegen van oplossingen aan Azure monitor-logboeken](../azure-monitor/learn/quick-create-workspace.md).
 
 1. Selecteer in [Azure Portal](https://portal.azure.com) de optie **Alle services**. Zoek in het zoekvak ' Log Analytics ' en selecteer **log Analytics**.
 
@@ -53,7 +52,7 @@ Voordat u Azure Monitor Logboeken kunt volgen voor het bijhouden van B2B-bericht
 
    ![Log Analytics werk ruimte selecteren](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
-1. Kies onder aan de **slag met log Analytics** > **bewakings oplossingen configureren**de optie **oplossingen weer geven**.
+1. Kies onder aan de **slag met Log Analytics** > **bewakings oplossingen configureren**de optie **oplossingen weer geven**.
 
    ![Kies oplossingen weer geven](media/logic-apps-track-b2b-messages-omsportal/log-analytics-workspace.png)
 
@@ -146,17 +145,17 @@ Hier volgen de beschrijvingen van eigenschappen en naam indelingen voor gedownlo
 
 Hier volgen de beschrijvingen van de eigenschappen voor elk AS2-bericht.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 | --- | --- |
 | Afzender | De gast partner die is opgegeven in de **instellingen voor ontvangen**of de host-partner die is opgegeven in instellingen voor het **verzenden** van een AS2-overeenkomst |
 | Ontvanger | De host-partner die is opgegeven in de instellingen voor **ontvangen**of de gast partner die is opgegeven in **instellingen verzenden** voor een AS2-overeenkomst |
 | Logische app | De logische app waar de AS2 acties worden ingesteld |
 | Status | De status van het AS2-bericht <br>Geslaagd = er is een geldig AS2-bericht ontvangen of verzonden. Er is geen MDN ingesteld. <br>Geslaagd = er is een geldig AS2-bericht ontvangen of verzonden. MDN wordt ingesteld en ontvangen, of MDN wordt verzonden. <br>Mislukt = er is een ongeldig AS2-bericht ontvangen. Er is geen MDN ingesteld. <br>In behandeling = er is een geldig AS2-bericht ontvangen of verzonden. MDN is ingesteld en MDN wordt verwacht. |
 | Terug | De status van het MDN-bericht <br>Geaccepteerd = er is een positief MDN ontvangen of verzonden. <br>In behandeling = wachten op ontvangen of verzenden van een MDN. <br>Afgewezen = er is een negatieve MDN ontvangen of verzonden. <br>Niet vereist = MDN is niet ingesteld in de overeenkomst. |
-| Direction | De richting van het AS2-bericht |
+| Richting | De richting van het AS2-bericht |
 | Correlatie-id | De ID die overeenkomt met alle triggers en acties in een logische app |
 | Bericht-ID | De AS2 bericht-ID van de AS2-bericht koppen |
-| Timestamp | Het tijdstip waarop de AS2-actie het bericht heeft verwerkt |
+| Tijdstempel | Het tijdstip waarop de AS2-actie het bericht heeft verwerkt |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
@@ -167,8 +166,8 @@ Dit zijn de naam notaties voor elke gedownloade AS2-bericht map en bestanden.
 
 | Map of bestand | Naam indeling |
 | :------------- | :---------- |
-| Map bericht | [sender]\_[receiver]\_AS2\_[correlation-ID]\_[message-ID]\_[timestamp] |
-| Invoer, uitvoer en indien ingesteld, bevestigings bestanden | **Invoer lading**: [Sender\_] [receiver\_\_] AS2 [correlatie-\_id] input_payload. txt </p>**Uitvoer lading**: [Sender\_] [receiver\_\_] AS2 [correlatie-\_id\_] uitvoer payload. txt </p></p>**Invoer**: [afzender]\_[ontvanger]\_AS2\_[correlatie-id]\_inputs. txt </p></p>**Outputs**: [Sender\_] [receiver\_]\_AS2 [correlatie-\_id] outputs. txt |
+| Map bericht | [Sender]\_[receiver]\_AS2\_[correlatie-ID]\_[Message-ID]\_[Time Stamp] |
+| Invoer, uitvoer en indien ingesteld, bevestigings bestanden | **Invoer lading**: [Sender]\_[receiver]\_AS2\_[correlatie-ID]\_input_payload. txt </p>**Uitvoer lading**: [Sender]\_[receiver]\_AS2\_[correlatie-ID]\_uitvoer\_payload. txt </p></p>**Invoer**: [Sender]\_[receiver]\_AS2\_[correlatie-ID]\_inputs. txt </p></p>**Uitvoer**: [Sender]\_[receiver]\_AS2\_[correlatie-ID]\_outputs. txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
@@ -177,19 +176,19 @@ Dit zijn de naam notaties voor elke gedownloade AS2-bericht map en bestanden.
 
 Hier volgen de beschrijvingen van de eigenschappen voor elk X12-bericht.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 | --- | --- |
 | Afzender | De gast partner die is opgegeven in de **instellingen voor ontvangen**of de host-partner die is opgegeven in instellingen voor het **verzenden** van een X12-overeenkomst |
 | Ontvanger | De host-partner die is opgegeven in de instellingen voor **ontvangen**of de gast partner die is opgegeven in **instellingen verzenden** voor een X12-overeenkomst |
 | Logische app | De logische app waar de X12 acties worden ingesteld |
 | Status | De status van het X12-bericht <br>Geslaagd = er is een geldig X12-bericht ontvangen of verzonden. Er is geen functionele ACK ingesteld. <br>Geslaagd = er is een geldig X12-bericht ontvangen of verzonden. Functionele ACK is ingesteld en ontvangen, of er wordt een functionele ACK verzonden. <br>Mislukt = er is een ongeldig X12-bericht ontvangen of verzonden. <br>In behandeling = er is een geldig X12-bericht ontvangen of verzonden. Functionele ACK is ingesteld en er wordt een functionele ACK verwacht. |
 | Terug | Status van functionele ACK (997) <br>Geaccepteerd = een positieve functionele Ack ontvangen of verzonden. <br>Afgewezen = er is een negatieve functionele Ack ontvangen of verzonden. <br>In behandeling = er is een functionele ACK verwacht, maar deze is niet ontvangen. <br>In behandeling = er is een functionele ACK gegenereerd, maar er kan niet naar de partner worden verzonden. <br>Niet vereist = functionele ACK is niet ingesteld. |
-| Direction | De richting van het X12-bericht |
+| Richting | De richting van het X12-bericht |
 | Correlatie-id | De ID die overeenkomt met alle triggers en acties in een logische app |
 | Msg-type | Het EDI X12-bericht type |
 | ICN | Het uitwisselings controle nummer voor het X12-bericht |
 | TSCN | Het controle nummer voor de Transactieset voor het X12-bericht |
-| Timestamp | Het tijdstip waarop de X12-actie het bericht heeft verwerkt |
+| Tijdstempel | Het tijdstip waarop de X12-actie het bericht heeft verwerkt |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
@@ -200,8 +199,8 @@ Dit zijn de naam notaties voor elke gedownloade X12-bericht map en bestanden.
 
 | Map of bestand | Naam indeling |
 | :------------- | :---------- |
-| Map bericht | [sender]\_[receiver]\_X12\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
-| Invoer, uitvoer en indien ingesteld, bevestigings bestanden | **Invoer lading**: [Sender\_] [receiver\_]\_X12 [Interchange Control-Number\_] input_payload. txt </p>**Uitvoer lading**: [Sender\_] [receiver\_\_] X12 [Interchange Control-Number\_]\_output payload. txt </p></p>**Invoer**: [Sender\_] [receiver\_]\_X12 [Interchange-control-\_number] inputs. txt </p></p>**Outputs**: [Sender\_] [receiver\_]\_X12 [Interchange Control-Number\_] outputs. txt |
+| Map bericht | [Sender]\_[receiver]\_X12\_[Interchange Control-Number]\_[Global-Control-Number]\_[Trans Action-Set-Control-Number]\_[Time Stamp] |
+| Invoer, uitvoer en indien ingesteld, bevestigings bestanden | **Invoer lading**: [Sender]\_[receiver]\_X12\_[Interchange Control-number]\_input_payload. txt </p>**Uitvoer lading**: [Sender]\_[receiver]\_X12\_[Interchange Control-number]\_output\_payload. txt </p></p>**Invoer**: [Sender]\_[receiver]\_X12\_[Interchange Control-number]\_inputs. txt </p></p>**Uitvoer**: [Sender]\_[receiver]\_X12\_[Interchange Control-number]\_outputs. txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -210,19 +209,19 @@ Dit zijn de naam notaties voor elke gedownloade X12-bericht map en bestanden.
 
 Hier volgen de beschrijvingen van de eigenschappen voor elk EDIFACT-bericht.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 | --- | --- |
 | Afzender | De gast partner die is opgegeven in de **instellingen voor ontvangen**of de host-partner die is opgegeven in instellingen voor het **verzenden** van een Edifact-overeenkomst |
 | Ontvanger | De host-partner die is opgegeven in de instellingen voor **ontvangen**of de gast partner die is opgegeven in **instellingen verzenden** voor een Edifact-overeenkomst |
 | Logische app | De logische app waar de EDIFACT acties worden ingesteld |
 | Status | De status van het EDIFACT-bericht <br>Geslaagd = er is een geldig EDIFACT-bericht ontvangen of verzonden. Er is geen functionele ACK ingesteld. <br>Geslaagd = er is een geldig EDIFACT-bericht ontvangen of verzonden. Functionele ACK is ingesteld en ontvangen, of er wordt een functionele ACK verzonden. <br>Mislukt = er is een ongeldig EDIFACT-bericht ontvangen of verzonden <br>In behandeling = er is een geldig EDIFACT-bericht ontvangen of verzonden. Functionele ACK is ingesteld en er wordt een functionele ACK verwacht. |
 | Terug | Status van functionele ACK (CONTRL) <br>Geaccepteerd = een positieve functionele Ack ontvangen of verzonden. <br>Afgewezen = er is een negatieve functionele Ack ontvangen of verzonden. <br>In behandeling = er is een functionele ACK verwacht, maar deze is niet ontvangen. <br>In behandeling = er is een functionele ACK gegenereerd, maar er kan niet naar de partner worden verzonden. <br>Niet vereist = functionele ACK is niet ingesteld. |
-| Direction | De richting van het EDIFACT-bericht |
+| Richting | De richting van het EDIFACT-bericht |
 | Correlatie-id | De ID die overeenkomt met alle triggers en acties in een logische app |
 | Msg-type | Het EDIFACT-bericht type |
 | ICN | Het uitwisselings controle nummer voor het EDIFACT-bericht |
 | TSCN | Het controle nummer voor de Transactieset voor het EDIFACT-bericht |
-| Timestamp | Het tijdstip waarop de EDIFACT-actie het bericht heeft verwerkt |
+| Tijdstempel | Het tijdstip waarop de EDIFACT-actie het bericht heeft verwerkt |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>
@@ -233,8 +232,8 @@ Dit zijn de naam notaties voor elke gedownloade EDIFACT-bericht map en bestanden
 
 | Map of bestand | Naam indeling |
 | :------------- | :---------- |
-| Map bericht | [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
-| Invoer, uitvoer en indien ingesteld, bevestigings bestanden | **Invoer lading**: [Sender\_] [receiver\_]\_EDIFACT [Interchange Control-Number\_] input_payload. txt </p>**Uitvoer lading**: [Sender\_] [receiver\_\_] EDIFACT [Interchange Control-Number\_]\_output payload. txt </p></p>**Invoer**: [Sender\_] [receiver\_]\_EDIFACT [Interchange-control-\_number] inputs. txt </p></p>**Outputs**: [Sender\_] [receiver\_]\_EDIFACT [Interchange Control-Number\_] outputs. txt |
+| Map bericht | [Sender]\_[receiver]\_EDIFACT\_[Interchange Control-Number]\_[Global-Control-Number]\_[Trans Action-Set-Control-Number]\_[Time Stamp] |
+| Invoer, uitvoer en indien ingesteld, bevestigings bestanden | **Invoer lading**: [Sender]\_[receiver]\_EDIFACT\_[Interchange Control-number]\_input_payload. txt </p>**Uitvoer lading**: [Sender]\_[receiver]\_EDIFACT\_[Interchange Control-number]\_output\_payload. txt </p></p>**Invoer**: [Sender]\_[receiver]\_EDIFACT\_[Interchange Control-number]\_inputs. txt </p></p>**Uitvoer**: [Sender]\_[receiver]\_EDIFACT\_[Interchange Control-number]\_outputs. txt |
 |          |             |
 
 ## <a name="next-steps"></a>Volgende stappen

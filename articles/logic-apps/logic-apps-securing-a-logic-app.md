@@ -1,20 +1,17 @@
 ---
-title: Beveiligde toegang en gegevens Azure Logic Apps
+title: Toegang en gegevens beveiligen
 description: Beveiliging toevoegen voor het beveiligen van invoer, uitvoer, op aanvragen gebaseerde triggers, uitvoerings geschiedenis, beheer taken en toegang tot andere resources in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: c9dfc4ed6fce186fea9474222875a072edb32f59
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 0e9b382b27d0bd1e4fd3a553ca468dd562eca368
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084727"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792910"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -347,11 +344,11 @@ Hier volgen enkele [aandachtspunten om te controleren](#obfuscation-consideratio
 
   **Instelling voor beveiligde invoer**
 
-  Wanneer u **beveiligde invoer** in een trigger of actie hand matig inschakelt, Logic apps deze invoer in de uitvoerings geschiedenis beveiligen. Als een stroomafwaartse actie expliciet gebruikmaakt van de zicht bare uitvoer van die trigger of actie als invoer, Logic Apps de invoer van deze stroomafwaartse actie verbergen in de uitvoerings geschiedenis, maar worden *geen* **beveiligde invoer waarden** in deze actie ingeschakeld en wordt deze actie niet verborgen uitvoer.
+  Wanneer u **beveiligde invoer** in een trigger of actie hand matig inschakelt, Logic apps deze invoer in de uitvoerings geschiedenis beveiligen. Als een stroomafwaartse actie expliciet gebruikmaakt van de zicht bare uitvoer van die trigger of actie als invoer, Logic Apps de invoer van deze stroomafwaartse actie verbergen in de uitvoerings geschiedenis, maar worden *geen* **beveiligde invoer** in deze actie ingeschakeld en worden de uitvoer van deze actie niet verborgen.
 
   ![Beveiligde invoer en downstream van invloed op de meeste acties](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
-  Als de acties opstellen, JSON en respons maken expliciet gebruikmaken van de zicht bare uitvoer van de trigger of actie die de beveiligde invoer heeft, Logic Apps de invoer en uitvoer van deze acties verbergen, maar worden de **beveiligde invoer** van deze actie *niet ingeschakeld* stelt. Als een stroomafwaartse actie expliciet gebruikmaakt van de verborgen uitvoer van de acties opstellen, parseren van JSON of respons als invoer, Logic Apps *de invoer of uitvoer van deze stroomafwaartse actie niet verbergen*.
+  Als de acties opstellen, parseren van JSON en respons expliciet gebruikmaken van de zicht bare uitvoer van de trigger of actie die de beveiligde invoer heeft, Logic Apps de invoer en uitvoer van deze acties verbergen, maar schakelt de instelling **beveiligde invoer** van deze actie *niet in* . Als een stroomafwaartse actie expliciet gebruikmaakt van de verborgen uitvoer van de acties opstellen, parseren van JSON of respons als invoer, Logic Apps *de invoer of uitvoer van deze stroomafwaartse actie niet verbergen*.
 
   ![Beveiligde invoer en downstream-impact op specifieke acties](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
@@ -625,7 +622,7 @@ HTTP-en HTTPS-eind punten ondersteunen verschillende soorten verificatie. Op bas
 
 Als de optie [basis](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) beschikbaar is, geeft u de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | Basic | Het te gebruiken verificatie type |
 | **Gebruikersnaam** | `username` | Ja | <*gebruikers naam*>| De gebruikers naam voor het verifiëren van de toegang tot het eind punt van de doel service |
@@ -656,7 +653,7 @@ Wanneer u [beveiligde para meters](#secure-action-parameters) gebruikt voor het 
 
 Als de optie [client certificaat](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) beschikbaar is, geeft u de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | **Client certificaat** <br>of <br>`ClientCertificate` | Het verificatie type dat moet worden gebruikt voor client certificaten voor Secure Sockets Layer (SSL). Zelfondertekende certificaten worden ondersteund, maar zelfondertekende certificaten voor SSL worden niet ondersteund. |
 | **Pfx** | `pfx` | Ja | <*encoded-pfx-bestand-inhoud*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) <p><p>Als u het PFX-bestand wilt converteren naar een base64-gecodeerde indeling, kunt u Power shell gebruiken door de volgende stappen uit te voeren: <p>1. Sla de certificaat inhoud op in een variabele: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Converteer de certificaat inhoud met behulp van de functie `ToBase64String()` en sla die inhoud op in een tekst bestand: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
@@ -695,9 +692,9 @@ Zie de volgende onderwerpen voor meer informatie over het beveiligen van service
 
 Als de optie [OAuth Active Directory](../active-directory/develop/about-microsoft-identity-platform.md) beschikbaar is, geeft u de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
-| **Verificatie** | `type` | Ja | **Active Directory OAuth** <br>of <br>`ActiveDirectoryOAuth` | Het verificatietype te gebruiken. Het [OAuth 2,0-protocol](../active-directory/develop/v2-overview.md)wordt momenteel gevolgd door Logic apps. |
+| **Verificatie** | `type` | Ja | **Active Directory OAuth** <br>of <br>`ActiveDirectoryOAuth` | Het verificatie type dat moet worden gebruikt. Het [OAuth 2,0-protocol](../active-directory/develop/v2-overview.md)wordt momenteel gevolgd door Logic apps. |
 | **Bouw** | `tenant` | Ja | *Tenant-id* van <> | De Tenant-ID voor de Azure AD-Tenant |
 | **Gericht** | `audience` | Ja | <> voor de goed keuring van *resources* | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld `https://management.core.windows.net/` |
 | **Client ID** | `clientId` | Ja | <*client-ID*> | De client-ID voor de app die autorisatie aanvraagt |
@@ -749,9 +746,9 @@ Authorization: OAuth realm="Photos",
 
 Geef in de trigger of actie die onbewerkte authenticatie ondersteunt de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
-| **Verificatie** | `type` | Ja | uitgang | Het te gebruiken verificatie type |
+| **Verificatie** | `type` | Ja | Uitgang | Het te gebruiken verificatie type |
 | **Waarde** | `value` | Ja | <*autorisatie-header-waarde*> | De waarde van de autorisatie-header die moet worden gebruikt voor verificatie |
 ||||||
 
@@ -784,7 +781,7 @@ Als de optie [beheerde identiteit](../active-directory/managed-identities-azure-
 
 3. Geef in de trigger of actie waar u de beheerde identiteit wilt gebruiken, de volgende eigenschaps waarden op:
 
-   | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
+   | Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
    |---------------------|-----------------|----------|-------|-------------|
    | **Verificatie** | `type` | Ja | **Beheerde identiteit** <br>of <br>`ManagedServiceIdentity` | Het te gebruiken verificatie type |
    | **Gericht** | `audience` | Ja | <*doel-Resource-ID*> | De resource-ID voor de doel resource waartoe u toegang wilt krijgen. <p>`https://storage.azure.com/` maakt bijvoorbeeld de toegangs tokens voor verificatie geldig voor alle opslag accounts. U kunt echter ook een URL voor de basis service opgeven, zoals `https://fabrikamstorageaccount.blob.core.windows.net` voor een specifiek opslag account. <p>**Opmerking**: deze eigenschap is mogelijk verborgen in sommige triggers of acties. Als u deze eigenschap zichtbaar wilt maken, opent u de lijst **nieuwe para meter toevoegen** in de trigger of actie en selecteert u **doel groep**. <p><p>**Belang rijk**: Zorg ervoor dat deze doel resource-id precies overeenkomt met de waarde die door Azure AD wordt verwacht, inclusief alle vereiste afsluitende slashes. Daarom vereist de `https://storage.azure.com/` Resource-ID voor alle Azure Blob Storage-accounts een afsluitende slash. De resource-ID voor een specifiek opslag account vereist echter geen afsluitende slash. Zie [Azure-Services die ondersteuning bieden voor Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)om deze resource-id's te vinden. |

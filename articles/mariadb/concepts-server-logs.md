@@ -1,17 +1,17 @@
 ---
-title: Server logboeken voor Azure Database for MariaDB
+title: Langzame query logboeken-Azure Database for MariaDB
 description: Hierin worden de Logboeken beschreven die beschikbaar zijn in Azure Database for MariaDB en de beschik bare para meters voor het inschakelen van verschillende registratie niveaus.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 10dbd4d7fa838ee7f8a3f70b3caadb570877d685
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 12/02/2019
+ms.openlocfilehash: 8a451b06c8166b48fd892050e53204e2b65856c3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259973"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772101"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Trage query Logboeken in Azure Database for MariaDB
 In Azure Database for MariaDB is het langzame query logboek beschikbaar voor gebruikers. Toegang tot het transactie logboek wordt niet ondersteund. Het logboek met trage query's kan worden gebruikt om prestatie knelpunten voor het oplossen van problemen te identificeren.
@@ -31,14 +31,14 @@ Logboeken zijn Maxi maal zeven dagen beschikbaar vanaf het maken ervan. Als de t
 Logboeken worden elke 24 uur of 7 GB gedraaid, afhankelijk van wat het eerste komt.
 
 ## <a name="configure-slow-query-logging"></a>Langzame query logboek registratie configureren
-Het logboek voor langzame query's is standaard uitgeschakeld. Als u deze wilt inschakelen, stelt u slow_query_log in op ON.
+Het logboek voor langzame query's is standaard uitgeschakeld. Als u deze functie wilt inschakelen, stelt u slow_query_log in op aan.
 
 Andere para meters die u kunt aanpassen zijn onder andere:
 
 - **long_query_time**: als een query langer duurt dan long_query_time (in seconden) dat de query wordt geregistreerd. De standaard waarde is 10 seconden.
-- **log_slow_admin_statements**: als het gaat om beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies die naar de slow_query_log zijn geschreven.
-- **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd in de slow_query_log
-- **log_throttle_queries_not_using_indexes**: Met deze para meter wordt het aantal niet-index query's beperkt dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht wanneer log_queries_not_using_indexes is ingesteld op ON.
+- **log_slow_admin_statements**: als u beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies bevat die naar de slow_query_log zijn geschreven.
+- **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd in het slow_query_log
+- **log_throttle_queries_not_using_indexes**: deze para meter beperkt het aantal niet-index query's dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht als log_queries_not_using_indexes is ingesteld op aan.
 
 Zie de documentatie voor MariaDB [langzame query logboeken](https://mariadb.com/kb/en/library/slow-query-log-overview/) voor volledige beschrijvingen van de para meters van de langzame query-Logboeken.
 
@@ -54,7 +54,7 @@ In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van
 |---|---|
 | `TenantId` | Uw Tenant-ID |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Tijds tempel voor het vastleggen van het logboek in UTC |
+| `TimeGenerated` [UTC] | Tijds tempel voor het vastleggen van het logboek in UTC |
 | `Type` | Het type van het logboek. Altijd `AzureDiagnostics` |
 | `SubscriptionId` | GUID voor het abonnement waartoe de server behoort |
 | `ResourceGroup` | Naam van de resource groep waartoe de server behoort |
@@ -65,7 +65,7 @@ In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Naam van de server |
-| `start_time_t`UTC | Tijdstip waarop de query is gestart |
+| `start_time_t` [UTC] | Tijdstip waarop de query is gestart |
 | `query_time_s` | De totale tijd die de query heeft uitgevoerd |
 | `lock_time_s` | Totale tijd dat de query is vergrendeld |
 | `user_host_s` | Gebruikersnaam |
@@ -74,7 +74,7 @@ In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van
 | `last_insert_id_s` | [last_insert_id](https://mariadb.com/kb/en/library/last_insert_id/) |
 | `insert_id_s` | Invoeg-ID |
 | `sql_text_s` | Volledige query |
-| `server_id_s` | Server-id |
+| `server_id_s` | Server-ID |
 | `thread_id_s` | Thread-ID |
 | `\_ResourceId` | Resource-URI |
 

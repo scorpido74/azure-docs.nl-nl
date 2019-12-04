@@ -1,23 +1,23 @@
 ---
-title: SSL-verbinding configureren om veilig verbinding te maken met Azure Database for MariaDB
+title: SSL-Azure Database for MariaDB configureren
 description: Instructies voor het correct configureren van Azure Database for MariaDB en gekoppelde toepassingen om SSL-verbindingen correct te gebruiken
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/02/2019
-ms.openlocfilehash: e57371bb7598a92f35dd4fd0ec22a55fad722987
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 12/02/2019
+ms.openlocfilehash: a0fb1bdf1aac9b3c5a2d8c83d0597326de38caaf
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360501"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767361"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure Database for MariaDB
 Azure Database for MariaDB ondersteunt het verbinden van uw Azure Database for MariaDB server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
 
 ## <a name="obtain-ssl-certificate"></a>SSL-certificaat verkrijgen
-Down load het certificaat dat nodig is om via SSL met uw Azure database for MariaDB [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) -server te communiceren en sla het certificaat bestand op uw lokale station op (in deze zelf studie wordt c:\ssl bijvoorbeeld gebruikt).
+Down load het certificaat dat nodig is om via SSL te communiceren met uw Azure Database for MariaDB-server van [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) en sla het certificaat bestand op uw lokale station op (in deze zelf studie wordt c:\ssl bijvoorbeeld gebruikt).
 **Voor micro soft Internet Explorer en micro soft Edge:** Wanneer het downloaden is voltooid, wijzigt u de naam van het certificaat in BaltimoreCyberTrustRoot. CRT. pem.
 
 ## <a name="bind-ssl"></a>SSL binden
@@ -43,12 +43,12 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 ```
 
 > [!NOTE]
-> Wanneer u de MySQL-opdracht regel interface in Windows gebruikt, wordt er mogelijk een `SSL connection error: Certificate signature check failed`fout bericht weer gegeven. Als dit het geval is, `--ssl-mode=REQUIRED --ssl-ca={filepath}` vervangt u `--ssl`de para meters door.
+> Wanneer u de MySQL-opdracht regel interface in Windows gebruikt, kan er een fout `SSL connection error: Certificate signature check failed`worden weer gegeven. Als dit het geval is, vervangt u de `--ssl-mode=REQUIRED --ssl-ca={filepath}` parameters door `--ssl`.
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>SSL-verbindingen afdwingen in azure 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 Ga met behulp van de Azure Portal naar uw Azure Database for MariaDB-server en klik vervolgens op **verbindings beveiliging**. Gebruik de wissel knop om de instelling SSL- **verbinding afdwingen** in of uit te scha kelen en klik vervolgens op **Opslaan**. Micro soft adviseert altijd de instelling **SSL-verbinding afdwingen** in te scha kelen voor verbeterde beveiliging.
-![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
+![Enable-SSL](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 U kunt de **SSL-afdwinging-** para meter in-of uitschakelen door respectievelijk ingeschakelde of uitgeschakelde waarden in azure CLI te gebruiken.
@@ -61,7 +61,7 @@ Voer de MySQL- **status** opdracht uit om te controleren of u verbinding hebt me
 ```sql
 status
 ```
-Controleer of de verbinding is versleuteld door de uitvoer te bekijken. deze moet er als volgt uitzien:  **SSL: De code die in gebruik is, is AES256-SHA** 
+Controleer of de verbinding is versleuteld door de uitvoer te bekijken. deze moet er als volgt uitzien: **SSL: code in gebruik is AES256-SHA** 
 
 ## <a name="sample-code"></a>Voorbeeldcode
 Raadpleeg de volgende code voorbeelden om een beveiligde verbinding tot stand te brengen met Azure Database for MariaDB via SSL van uw toepassing:

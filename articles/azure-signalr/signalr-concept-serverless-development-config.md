@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: 68ada90699fe9a9db6faeb32a04e8eb02c176944
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74157648"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786772"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions ontwikkeling en configuratie met de Azure signalerings service
 
@@ -40,7 +40,7 @@ Een client toepassing vereist een geldig toegangs token om verbinding te maken m
 
 Gebruik een door HTTP geactiveerde Azure-functie en de *SignalRConnectionInfo* -invoer binding om het object verbindings gegevens te genereren. De functie moet een HTTP-route hebben die eindigt op `/negotiate`.
 
-Zie voor meer informatie over het maken van de onderhandelings functie de referentie voor [ *SignalRConnectionInfo* -invoer binding](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
+Zie voor meer informatie over het maken van de onderhandelings functie de referentie voor [ *SignalRConnectionInfo* -invoer binding](../azure-functions/functions-bindings-signalr-service.md#input).
 
 Zie [app service-verificatie gebruiken](#using-app-service-authentication)voor meer informatie over het maken van een geverifieerd token.
 
@@ -50,7 +50,7 @@ De *signaal* uitvoer binding gebruiken om berichten te verzenden naar clients di
 
 Gebruikers kunnen worden toegevoegd aan een of meer groepen. U kunt ook de uitvoer binding van de *signaal sterkte* gebruiken om gebruikers toe te voegen aan of te verwijderen uit groepen.
 
-Zie voor meer informatie de referentie voor de [ *signaal* uitvoer binding](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding).
+Zie voor meer informatie de referentie voor de [ *signaal* uitvoer binding](../azure-functions/functions-bindings-signalr-service.md#output).
 
 ### <a name="signalr-hubs"></a>Seingevings hubs
 

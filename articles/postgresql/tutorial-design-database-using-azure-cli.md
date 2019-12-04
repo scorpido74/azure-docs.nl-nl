@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Een Azure Database for PostgreSQL - één Server met behulp van Azure CLI ontwerpen'
-description: Deze zelfstudie laat zien hoe u kunt maken, configureren en vragen van uw eerste Azure Database voor PostgreSQL - één Server met behulp van Azure CLI.
+title: 'Zelf studie: een Azure Database for PostgreSQL ontwerpen-één server-Azure CLI'
+description: Deze zelf studie laat zien hoe u uw eerste Azure Database for PostgreSQL-één server maakt, configureert en een query uitvoert met behulp van Azure CLI.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: db0ff9facbd8609955c5ef1918b0f8a6aa53ea65
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0f1f4c07f3dc694bcae9b540c71a11e53a00eb7f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447228"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773677"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Zelfstudie: Een Azure Database for PostgreSQL - één Server met behulp van Azure CLI ontwerpen 
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Zelf studie: een Azure Database for PostgreSQL-één-server ontwerpen met behulp van Azure CLI 
 In deze zelfstudie gebruikt u Azure CLI (Command Line Interface of opdrachtregelinterface in goed Nederlands) en andere hulpprogramma's om deze bewerkingen uit te voeren:
 > [!div class="checklist"]
 > * Een Azure-database voor PostgreSQL-server maken
@@ -51,7 +51,7 @@ In het volgende voorbeeld wordt een server gemaakt met de naam `mydemoserver` in
 az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 De parameterwaarde voor de sku-naam volgt de conventie {prijscategorie} \_{compute-generatie}\_{vCores}, zoals in de onderstaande voorbeelden:
-+ `--sku-name B_Gen5_2` toewijzingen voor Basic, Gen 5 en 2 vCores.
++ `--sku-name B_Gen5_2` is toegewezen aan Basic-, Gen 5-en 2-vCores.
 + `--sku-name GP_Gen5_32` komt overeen met Algemeen gebruik, Gen 5 en 32 vCores.
 + `--sku-name MO_Gen5_2` komt overeen met Geoptimaliseerd voor geheugen, Gen 5 en 2 vCores.
 
@@ -67,7 +67,7 @@ De database **postgres** wordt standaard gemaakt op uw server. De database [post
 
 Maak een Azure PostgreSQL-firewallregel op serverniveau met de opdracht [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule). Met een firewallregel op serverniveau kan een externe toepassing, zoals [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) of [PgAdmin](https://www.pgadmin.org/) verbinding maken met uw server via de firewall van de Azure PostgreSQL-service. 
 
-U kunt een firewallregel voor een IP-bereik zodat u vanaf uw netwerk verbinding kunt maken. In het volgende voorbeeld wordt [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) gebruikt om een firewallregel `AllowMyIP` te maken die verbinding vanaf één IP-adres toestaat.
+U kunt een firewallregel voor een IP-bereik instellen, zodat u vanaf uw netwerk verbinding kunt maken. In het volgende voorbeeld wordt [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) gebruikt om een firewallregel `AllowMyIP` te maken die verbinding vanaf één IP-adres toestaat.
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -132,7 +132,7 @@ Als op uw clientcomputer PostgreSQL is geïnstalleerd, kunt u een lokale instant
    ```
 
    > [!TIP]
-   > Als u liever een URL-pad gebruiken voor verbinding met Postgres, URL-codering het @-teken in de gebruikersnaam met `%40`. Bijvoorbeeld zou de verbindingsreeks voor de psql zijn,
+   > Als u liever een URL-pad gebruikt om verbinding te maken met post gres, URL codeert u het @-teken in de gebruikers naam met `%40`. Bijvoorbeeld: de connection string voor psql zou zijn,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -199,7 +199,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 De opdracht `az postgres server restore` vereist de volgende parameters:
 
-| Instelling | Voorgestelde waarde | Description  |
+| Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resourcegroep waarin de bronserver bestaat.  |
 | name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
@@ -222,4 +222,4 @@ In deze zelfstudie hebt u geleerd hoe u Azure CLI (Command Line Interface of opd
 > * Gegevens bijwerken
 > * Gegevens terugzetten
 
-Vervolgens leert u hoe u de Azure-portal gebruikt om soortgelijke taken uit te voeren. Bekijk deze zelfstudie: [Uw eerste Azure Database for PostgreSQL ontwerpen met Azure Portal](tutorial-design-database-using-azure-portal.md)
+Als u meer informatie wilt over het gebruik van Azure Portal voor vergelijkbare taken, gaat u verder met deze zelfstudie: [Uw eerste Azure Database for PostgreSQL ontwerpen met Azure Portal](tutorial-design-database-using-azure-portal.md)

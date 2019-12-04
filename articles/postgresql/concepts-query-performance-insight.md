@@ -1,19 +1,19 @@
 ---
-title: Query Performance Insight in Azure Database for PostgreSQL-één server
+title: Query Performance Insight-Azure Database for PostgreSQL-één server
 description: In dit artikel wordt de functie Query Performance Insight van Azure Database for PostgreSQL-één-server beschreven.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 748c6f08da535013724f68b8be424e50a2d49dfd
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764437"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768381"
 ---
-# <a name="query-performance-insight"></a>Query Performance Insight 
+# <a name="query-performance-insight"></a>Inzicht in queryprestaties 
 
 **Van toepassing op:** Azure Database for PostgreSQL-één server versie 9,6, 10, 11
 

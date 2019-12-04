@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: 9cac13f8fb42959e79cafedcc7057d1cb7c2f7d5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2afe9a66d9f0ebecaef9626ef6caf9fc30f20841
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689385"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771067"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Zelf studie: verbinding maken met Bing Nieuws zoeken-API met verbonden services in Visual Studio enC#
 
@@ -268,4 +268,4 @@ Als u de resourcegroep niet meer nodig hebt, kunt u deze verwijderen. Hiermee ve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Wat is Bing News Search?](index.yml) voor meer informatie over de Bing Nieuws zoeken-API.
+Zie [Wat is Bing News Search?](search-the-web.md) voor meer informatie over de Bing Nieuws zoeken-API.

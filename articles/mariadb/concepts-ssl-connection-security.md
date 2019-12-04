@@ -1,30 +1,30 @@
 ---
-title: SSL-connectiviteit voor Azure Database voor MariaDB
-description: Informatie voor het configureren van Azure Database voor MariaDB en gekoppelde toepassingen gebruiken SSL-verbindingen
+title: SSL-connectiviteit-Azure Database for MariaDB
+description: Informatie voor het configureren van Azure Database for MariaDB en de bijbehorende toepassingen voor een juiste gebruik van SSL-verbindingen
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 15bb28846b3409dd31bcdf8d42990facc94fd06d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 12/02/2019
+ms.openlocfilehash: b7206db24c813c8f273dd57407c43974932ff110
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332683"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772024"
 ---
-# <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>SSL-verbindingen in Azure Database voor MariaDB
-Azure Database voor MariaDB ondersteunt verbindingen van uw database-server voor clienttoepassingen met Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
+# <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>SSL-connectiviteit in Azure Database for MariaDB
+Azure Database for MariaDB ondersteunt het verbinden van uw database server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
 
-## <a name="default-settings"></a>Standaardinstellingen
-Standaard moet de database-service worden geconfigureerd voor SSL-verbindingen vereisen bij het verbinden met MariaDB.  We raden aan om te voorkomen dat de SSL-optie zoveel mogelijk uit te schakelen.
+## <a name="default-settings"></a>Standaard instellingen
+De database service moet standaard zodanig worden geconfigureerd dat SSL-verbindingen worden vereist wanneer verbinding wordt gemaakt met MariaDB.  U wordt aangeraden de SSL-optie zo mogelijk niet uit te scha kelen.
 
-Bij het inrichten van een nieuwe Azure-Database voor MariaDB-server via de Azure-portal en CLI kan afdwingen van SSL-verbindingen is standaard ingeschakeld.
+Wanneer u een nieuwe Azure Database for MariaDB-server inricht via de Azure Portal en CLI, wordt het afdwingen van SSL-verbindingen standaard ingeschakeld.
 
-Verbindingsreeksen voor verschillende programmeertalen worden weergegeven in de Azure-portal. Deze tekenreeksen voor databaseverbindingen omvatten de vereiste parameters SSL verbinding maakt met uw database. Selecteer uw server in de Azure-portal. Onder de **instellingen** kop, selecteer de **verbindingsreeksen**. De SSL-parameter is afhankelijk van de connector, bijvoorbeeld ' ssl = true "of" sslmode = vereisen "of" sslmode = vereist ' en andere verschillen.
+Verbindings reeksen voor verschillende programmeer talen worden weer gegeven in de Azure Portal. Deze verbindings reeksen bevatten de vereiste SSL-para meters om verbinding te maken met uw data base. Selecteer uw server in de Azure Portal. Selecteer onder de kop **instellingen** de **verbindings reeksen**. De SSL-para meter varieert op basis van de connector, bijvoorbeeld "SSL = True" of "sslmode = vereist" of "sslmode = required" en andere variaties.
 
-Raadpleeg voor informatie over het in- of uitschakelen van SSL-verbinding bij het ontwikkelen van toepassingen, [over het configureren van SSL](howto-configure-ssl.md).
+Zie [SSL configureren](howto-configure-ssl.md)voor meer informatie over het in-of uitschakelen van SSL-verbinding tijdens het ontwikkelen van een toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [firewallregels voor server](concepts-firewall-rules.md)
-- Meer informatie over het [SSL configureren](howto-configure-ssl.md).
+- Meer informatie over [firewall regels voor servers](concepts-firewall-rules.md)
+- Meer informatie over het [configureren van SSL](howto-configure-ssl.md).

@@ -1,6 +1,6 @@
 ---
-title: Ruby gebruiken om te verbinden met Azure Database voor PostgreSQL - één Server
-description: Deze snelstartgids bevat een Ruby-codevoorbeeld dat die u kunt verbinding maken en query uitvoeren op gegevens uit een Azure Database voor PostgreSQL - één Server.
+title: Verbinding maken met Ruby-Azure Database for PostgreSQL-één server
+description: In deze Quick Start vindt u een voor beeld van Ruby-code waarmee u verbinding kunt maken met gegevens van Azure Database for PostgreSQL-één server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 242f5724e81f9b8ac6177e5c9d3844b3fab9a7f2
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5dd4cfe9bee0db6f14f736c79fe91770641008fb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067287"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766902"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>Azure Database voor PostgreSQL - één-Server: Ruby gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL-één server: Ruby gebruiken om verbinding te maken en gegevens op te vragen
 In deze snelstartgids ziet u hoe u met behulp van een [Ruby](https://www.ruby-lang.org)-toepassing verbinding maakt met een Azure Database voor PostgreSQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In de stappen van dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van Ruby en geen ervaring hebt met het werken met Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -23,9 +23,9 @@ In deze snelstartgids worden de resources die in een van deze handleidingen zijn
 - [Database maken - Portal](quickstart-create-server-database-portal.md)
 - [Database maken - Azure CLI](quickstart-create-server-database-azure-cli.md)
 
-U moet ook beschikken over:
+U moet ook zijn geïnstalleerd:
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
-- Ruby pg, de PostgreSQL-module voor Ruby
+- Ruby PG, de PostgreSQL-module voor ruby
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor PostgreSQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
@@ -37,7 +37,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
  ![Servernaam Azure Database for PostgreSQL](./media/connect-ruby/1-connection-string.png)
 
 > [!NOTE]
-> De `@` symbool in de Azure-Postgres-gebruikersnaam is de url-codering als `%40` in de verbindingsreeksen. 
+> Het `@`-symbool in de gebruikers naam van Azure post Gres is URL gecodeerd als `%40` in alle verbindings reeksen. 
 
 ## <a name="connect-and-create-a-table"></a>Verbinding maken en een tabel maken
 Gebruik de volgende code om een tabel te verbinden en te maken met de SQL-instructie **CREATE TABLE**, gevolgd door **INSERT INTO**-instructies om rijen in de tabel toe te voegen.

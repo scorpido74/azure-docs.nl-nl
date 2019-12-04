@@ -1,17 +1,17 @@
 ---
-title: Meldt zich aan Azure Database for PostgreSQL-één server
-description: Concepten van configuratie van logboek registratie, opslag en analyse in Azure Database for PostgreSQL-één server
+title: Logboeken-Azure Database for PostgreSQL-één server
+description: Beschrijft configuratie van logboek registratie, opslag en analyse in Azure Database for PostgreSQL-één server
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 9e8b1d08e950849773c9d8413c3ba4188d257d5b
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 87f79f0ed21ec1f6a550c47f9f60d18511883300
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965934"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768211"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Meldt zich aan Azure Database for PostgreSQL-één server
 Met Azure Database for PostgreSQL kunt u de standaard logboeken van post gres configureren en gebruiken. De logboeken kunnen worden gebruikt om configuratie fouten en suboptimale prestaties te identificeren, op te lossen en te herstellen. Logboek registratie-informatie die u kunt configureren en toegang bevat fouten, query gegevens, autovacuüm records, verbindingen en controle punten. (Toegang tot transactie Logboeken is niet beschikbaar).
@@ -111,7 +111,7 @@ De volgende tabel beschrijft de velden voor het type **PostgreSQLLogs** . Afhank
 | Gelijk | Logboek registratie niveau, voor beeld: logboek, fout, kennisgeving |
 | Bericht | Primair logboek bericht | 
 | Domain | Server versie, voor beeld: post gres-10 |
-| Specificatie | Secundair logboek bericht (indien van toepassing) |
+| specificatie | Secundair logboek bericht (indien van toepassing) |
 | ColumnName | De naam van de kolom (indien van toepassing) |
 | SchemaName | De naam van het schema (indien van toepassing) |
 | Gegevens type | Naam van het gegevens type (indien van toepassing) |

@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706229"
+ms.locfileid: "74786415"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
@@ -90,11 +90,11 @@ In dit voor beeld worden gebruikers en of groepen gemaakt in een HR-data base di
 
 1. Gebruikers/groepen worden gemaakt in een on-premises HR-toepassing/systeem, zoals SAP. 
 
-1. Azure AD Connect agent voert geplande synchronisaties van identiteiten (gebruikers en groepen) uit van de lokale AD naar Azure AD.
+1. **Azure AD connect agent** voert geplande synchronisaties van identiteiten (gebruikers en groepen) uit van de lokale AD naar Azure AD.
 
-1. De Azure AD-inrichtings service start een [eerste cyclus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) op basis van het bron systeem en het doel systeem. 
+1. De **Azure AD-inrichtings service** start een [eerste cyclus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) op basis van het bron systeem en het doel systeem. 
 
-1. Azure AD Provisioning service voert een query uit op het bron systeem voor gebruikers en groepen die zijn gewijzigd sinds de eerste cyclus en tijdens het pushen van wijzigingen in [incrementele cycli](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. **Azure AD Provisioning Service** voert een query uit op het bron systeem voor gebruikers en groepen die zijn gewijzigd sinds de eerste cyclus en tijdens het pushen van wijzigingen in [incrementele cycli](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatische gebruikers inrichting voor Cloud ondernemingen
 
@@ -106,9 +106,9 @@ In dit voor beeld vindt het maken van een gebruiker plaats in azure AD en de Azu
 
 1. Gebruikers/groepen worden gemaakt in azure AD.
 
-1. De Azure AD-inrichtings service start een [eerste cyclus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) op basis van het bron systeem en het doel systeem. 
+1. De **Azure AD-inrichtings service** start een [eerste cyclus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) op basis van het bron systeem en het doel systeem. 
 
-1. De Azure AD-inrichtings service vraagt het bron systeem voor alle gebruikers en groepen die zijn bijgewerkt sinds de eerste cyclus en voert eventuele [incrementele cycli](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)uit.
+1. De **Azure AD-inrichtings service** vraagt het bron systeem voor alle gebruikers en groepen die zijn bijgewerkt sinds de eerste cyclus en voert eventuele [incrementele cycli](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)uit.
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Automatische gebruikers inrichting voor Cloud-HR-toepassingen 
 

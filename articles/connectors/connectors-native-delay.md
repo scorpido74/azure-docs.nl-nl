@@ -1,94 +1,91 @@
 ---
-title: Vertraging van de volgende actie in werkstromen - Azure Logic Apps
-description: Wachten tot de volgende actie uitvoeren in logic app workflows met behulp van de vertraging of vertraging tot acties in Azure Logic Apps
+title: De volgende actie in werk stromen vertragen
+description: Wacht op het uitvoeren van de volgende actie in logische app-werk stromen met behulp van de vertraging of vertraging tot acties in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: deli, klam, LADocs
-tags: connectors
+ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 27475fb3f086dbc5166a473e9d657d2dab723938
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+tags: connectors
+ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297636"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787333"
 ---
-# <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Vertraging voor het uitvoeren van de volgende actie in Azure Logic Apps
+# <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Uitvoering van de volgende actie in Azure Logic Apps vertragen
 
-Als u wilt uw logische app een hoeveelheid tijd voordat het uitvoeren van de volgende actie wachten, kunt u de ingebouwde toevoegen **vertraging - plannen** actie voordat u een actie in uw logic app-werkstroom. U kunt de ingebouwde toevoegen **vertragen tot - plannen** actie moet worden gewacht totdat een specifieke datum en tijd voordat u de volgende actie uitvoert. Zie voor meer informatie over de ingebouwde schema acties en triggers [planning en uitvoering terugkerende, geautomatiseerde, taken en werkstromen met Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Als u wilt dat uw logische app even lang wacht voordat de volgende actie wordt uitgevoerd, kunt u de ingebouwde actie **vertraging plannen** vóór een actie in de werk stroom van de logische app. U kunt ook de ingebouwde vertraging toevoegen aan de actie **plannen** om te wachten tot een specifieke datum en tijd voordat de volgende actie wordt uitgevoerd. Zie voor meer informatie over de ingebouwde plannings acties en-triggers [plannen en uitvoeren van terugkerende automatische, taken en werk stromen met Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
-* **vertraging**: Wachten op het opgegeven aantal tijdseenheden, zoals seconden, minuten, uren, dagen, weken of maanden, voordat u de volgende actie uitgevoerd.
+* **Vertraging**: wacht op het opgegeven aantal tijds eenheden, zoals seconden, minuten, uren, dagen, weken of maanden voordat de volgende actie wordt uitgevoerd.
 
-* **Vertragen tot**: Wachten tot de opgegeven datum en tijd voordat de volgende actie wordt uitgevoerd.
+* **Vertraging tot**: wachten tot de opgegeven datum en tijd voordat de volgende actie wordt uitgevoerd.
 
-Hier volgen enkele manieren voorbeeld om het gebruik van deze acties:
+Hier volgen enkele voor beelden van manieren om deze acties te gebruiken:
 
-* Wachten tot een weekdag voor een statusupdate verzenden via e-mail.
+* Wacht tot een weekdag een status update via e-mail heeft verzonden.
 
-* Uw werkstroom uitstellen totdat een HTTP-aanroep is voltooid voordat deze wordt hervat en het ophalen van gegevens.
+* Stel uw werk stroom uit totdat een HTTP-aanroep is voltooid voordat de gegevens worden hervat en opgehaald.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u geen abonnement hebt, kunt u [zich aanmelden voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Basiskennis over [logische apps](../logic-apps/logic-apps-overview.md). Voordat u een actie gebruiken kunt, moet eerst uw logische app starten met een trigger. U kunt een trigger die u wilt en andere acties toevoegen voordat u een vertragingsactie toevoegen. In dit onderwerp wordt gebruikgemaakt van een Office 365 Outlook-trigger. Als u geen ervaring met logische apps, krijgt u informatie [over het maken van uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Basis kennis over [Logic apps](../logic-apps/logic-apps-overview.md). Voordat u een actie kunt gebruiken, moet uw logische app eerst beginnen met een trigger. U kunt elke gewenste trigger gebruiken en andere acties toevoegen voordat u een vertragings actie toevoegt. In dit onderwerp wordt gebruikgemaakt van een Office 365 Outlook-trigger. Als u geen ervaring hebt met Logic apps, kunt u leren [hoe u uw eerste logische app maakt](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="add-delay"></a>
 
-## <a name="add-the-delay-action"></a>Voeg de actie vertragen
+## <a name="add-the-delay-action"></a>De vertragings actie toevoegen
 
-1. Kies in de Logic App Designer onder de stap waarin u wilt toevoegen van de vertragingsactie **nieuwe stap**.
+1. Klik in de ontwerp functie voor logische apps, onder de stap waar u de vertragings actie wilt toevoegen, op **nieuwe stap**.
 
-   Als u wilt toevoegen de vertragingsactie tussen fasen, gaat u de aanwijzer over de pijl die verbinding maakt de stappen. Kies het plusteken (+) dat wordt weergegeven, en selecteer vervolgens **een actie toevoegen**.
+   Als u de vertragings actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl die de stappen verbindt. Kies het plus teken (+) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Typ 'vertraging' als filter in het zoekvak. Selecteer deze actie uit de lijst met acties: **Delay**
+1. Voer in het zoekvak ' delay ' in als uw filter. Selecteer in de lijst acties deze actie: **vertraging**
 
-   !["Vertraging"-actie toevoegen](./media/connectors-native-delay/add-delay-action.png)
+   ![Actie ' delay ' toevoegen](./media/connectors-native-delay/add-delay-action.png)
 
-1. Geef de hoeveelheid tijd moet worden gewacht voordat de volgende actie uitgevoerd.
+1. Geef de hoeveelheid tijd op die moet worden gewacht voordat de volgende actie wordt uitgevoerd.
 
-   ![Hoeveelheid tijd voor de vertraging instellen](./media/connectors-native-delay/delay-time-intervals.png)
+   ![Stel de hoeveelheid tijd in voor de vertraging](./media/connectors-native-delay/delay-time-intervals.png)
 
-   | Eigenschap | JSON-naam | Vereist | Type | Description |
+   | Eigenschap | JSON-naam | Verplicht | Type | Beschrijving |
    |----------|-----------|----------|------|-------------|
-   | Count | count | Ja | Geheel getal | Het aantal tijdseenheden vertraging |
-   | Eenheid | Eenheid | Ja | String | De eenheid van de tijd, bijvoorbeeld: `Second`, `Minute`, `Hour`, `Day`, `Week`, of `Month` |
+   | Aantal | count | Ja | Geheel getal | Het aantal tijds eenheden dat moet worden vertraagd |
+   | Eenheid | teleenheid | Ja | Tekenreeks | De tijds eenheid, bijvoorbeeld: `Second`, `Minute`, `Hour`, `Day`, `Week`of `Month` |
    ||||||
 
-1. Voeg eventuele andere vereiste acties uit te voeren in uw werkstroom.
+1. Voeg andere acties toe die u in uw werk stroom wilt uitvoeren.
 
-1. Wanneer u klaar bent, kunt u uw logische app opslaan.
+1. Wanneer u klaar bent, slaat u de logische app op.
 
 <a name="add-delay-until"></a>
 
-## <a name="add-the-delay-until-action"></a>De vertraging toevoegen-tot actie
+## <a name="add-the-delay-until-action"></a>De actie vertraging-tot-tijd toevoegen
 
-1. Kies in de Logic App Designer onder de stap waarin u wilt toevoegen van de vertragingsactie **nieuwe stap**.
+1. Klik in de ontwerp functie voor logische apps, onder de stap waar u de vertragings actie wilt toevoegen, op **nieuwe stap**.
 
-   Als u wilt toevoegen de vertragingsactie tussen fasen, gaat u de aanwijzer over de pijl die verbinding maakt de stappen. Kies het plusteken (+) dat wordt weergegeven, en selecteer vervolgens **een actie toevoegen**.
+   Als u de vertragings actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl die de stappen verbindt. Kies het plus teken (+) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Typ 'vertraging' als filter in het zoekvak. Selecteer deze actie uit de lijst met acties: **Vertragen tot**
+1. Voer in het zoekvak ' delay ' in als uw filter. Selecteer in de lijst acties deze actie: **vertraging tot**
 
-   ![De actie 'Vertragen tot' toevoegen](./media/connectors-native-delay/add-delay-until-action.png)
+   ![Actie ' vertraging tot ' toevoegen](./media/connectors-native-delay/add-delay-until-action.png)
 
-1. Geef de datum en tijd voor als u wilt doorgaan met de werkstroom.
+1. Geef de eind datum en-tijd op wanneer u de werk stroom wilt hervatten.
 
-   ![Tijdstempel voor het einde van de vertraging opgeven](./media/connectors-native-delay/delay-until-timestamp.png)
+   ![Tijds tempel opgeven voor wanneer de vertraging moet worden beëindigd](./media/connectors-native-delay/delay-until-timestamp.png)
 
-   | Eigenschap | JSON-naam | Vereist | Type | Description |
+   | Eigenschap | JSON-naam | Verplicht | Type | Beschrijving |
    |----------|-----------|----------|------|-------------|
-   | Tijdstempel | timestamp | Ja | String | De einddatum en -tijd voor het hervatten van de werkstroom met behulp van deze indeling: <p>JJJJ-MM-ddTHH <p>Bijvoorbeeld als u wilt dat 18 September 2017 om 14:00 uur, geeft ' 2017-09-18T14:00:00Z '. <p>**Opmerking:** Deze tijd-indeling moet volgen de [ISO 8601 datum tijdsspecificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [UTC-datum-tijdnotatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset). Zonder een tijdzone, moet u de letter 'Z' toevoegen aan het einde zonder spaties. Deze "Z" verwijst naar het equivalent [nautische tijd](https://en.wikipedia.org/wiki/Nautical_time). |
+   | Tijdstempel | tijdstempel | Ja | Tekenreeks | De eind datum en-tijd voor het hervatten van de werk stroom met de volgende indeling: <p>JJJJ-MM-DDTuu: mm: ssZ <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00Z" op. <p>**Opmerking:** Deze tijd notatie moet voldoen aan de [ISO 8601-datum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) en-tijd [notatie in UTC-datum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)en-tijd, maar zonder UTC- [afwijking](https://en.wikipedia.org/wiki/UTC_offset). Zonder tijd zone moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). |
    ||||||
 
-1. Voeg eventuele andere vereiste acties uit te voeren in uw werkstroom.
+1. Voeg andere acties toe die u in uw werk stroom wilt uitvoeren.
 
-1. Wanneer u klaar bent, kunt u uw logische app opslaan.
+1. Wanneer u klaar bent, slaat u de logische app op.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Maken, plannen en uitvoeren van terugkerende taken en werkstromen met de trigger met terugkeerpatroon](../connectors/connectors-native-recurrence.md)
+* [Terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor terugkeer patroon](../connectors/connectors-native-recurrence.md)
 * [Connectors voor Logic Apps](../connectors/apis-list.md)

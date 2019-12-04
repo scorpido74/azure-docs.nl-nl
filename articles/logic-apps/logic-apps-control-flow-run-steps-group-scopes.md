@@ -1,20 +1,17 @@
 ---
-title: Acties groeperen en uitvoeren op basis van het bereik-Azure Logic Apps
+title: Acties groeperen en uitvoeren op basis van het bereik
 description: Bereik acties maken die worden uitgevoerd op basis van de groeps status in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b0f53d1dbcd5b8bbbe38ffe3dd9ba62087ed3432
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680007"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791486"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Acties uitvoeren op basis van de groeps status met behulp van scopes in Azure Logic Apps
 
@@ -79,7 +76,7 @@ U kunt uw logische app op elk gewenst moment opslaan, zodat u uw werk regel mati
       | Instelling | Waarde | Beschrijving |
       | ------- | ----- | ----------- |
       | **Routepunt 1** | > <*starten* | Voer de oorsprong van uw route in. | 
-      | **Routepunt 2** | <*end* > | Voer de bestemming van uw route in. | 
+      | **Routepunt 2** | <*end*> | Voer de bestemming van uw route in. | 
       | **Vermijden** | Geen | Voer items in om te voor komen op uw route, zoals snelwegen, gestuurde berichten, enzovoort. Zie [een route berekenen](https://msdn.microsoft.com/library/ff701717.aspx)voor mogelijke waarden. | 
       | **Optimaliseren** | timeWithTraffic | Selecteer een para meter voor het optimaliseren van uw route, zoals de afstand, tijd met de huidige verkeers informatie, enzovoort. In dit voor beeld wordt deze waarde gebruikt: ' timeWithTraffic ' | 
       | **Afstandseenheid** | <*your-preference*> | Voer de afstands eenheid in om uw route te berekenen. In dit voor beeld wordt deze waarde gebruikt: ' mijl ' | 
@@ -150,7 +147,7 @@ U kunt uw logische app op elk gewenst moment opslaan, zodat u uw werk regel mati
   
        Uw **tekst** veld ziet er nu uit als in dit voor beeld:
 
-       ![Finished veld ' hoofd tekst ' ](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![' hoofd veld ' is](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
 1. Sla uw logische app op.
@@ -199,8 +196,8 @@ Vervolgens voegt u een bereik toe zodat u specifieke acties kunt groeperen en de
 
    1. Voor beide rijen selecteert u **is gelijk aan** als de operator. 
    
-   1. Voer voor de vergelijkings waarden in de eerste rij `Failed` in. 
-   Voer in de tweede rij `Aborted` in. 
+   1. Voer voor de vergelijkings waarden in de eerste rij `Failed`in. 
+   Voer in de tweede rij `Aborted`in. 
 
       Wanneer u klaar bent, ziet de voorwaarde eruit zoals in dit voorbeeld:
 

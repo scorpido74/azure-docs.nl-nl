@@ -4,17 +4,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 3623d18e53881768ea6409c970065de231d233c3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6d4076563ac803c72f3749399bed6aaa235a0343
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750223"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795762"
 ---
 <a name="HOLTop"></a>
 
 
-[Referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [pakket (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | -voor [beelden](https://github.com/Azure-Samples/samples-cognitive-services-python-sdk/)
+[Referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [pakket (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | -voor [beelden](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -147,7 +147,7 @@ Document ID: 2
         Offset: 88, Length: 7,  Score: 0.9998779296875
 ```
 
-## <a name="key-phrase-extraction"></a>Sleuteltermextractie
+## <a name="key-phrase-extraction"></a>Sleuteluitdrukkingen extraheren
 
 Roep de [key_phrases ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) -functie aan en haal het resultaat op met behulp van de client die u eerder hebt gemaakt. Vervolgens doorloopt u de resultaten en drukt u de ID van elk document af en de sleutel zinnen erin.
 

@@ -1,21 +1,17 @@
 ---
-title: Bewerkingen uitvoeren op gegevens-Azure Logic Apps
+title: Bewerkingen uitvoeren op gegevens
 description: Gegevens uitvoer en-indelingen in Azure Logic Apps converteren, beheren en bewerken
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990439"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793114"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Gegevens bewerkingen uitvoeren in Azure Logic Apps
 
@@ -80,7 +76,7 @@ en maakt deze uitvoer:
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Volg deze stappen met behulp van de ontwerp functie voor logische apps als u een voor beeld wilt uitproberen. Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld **opstellen** en **variabele** actie definities van dit artikel naar de onderliggende werk stroom definitie van uw eigen logische app kopiëren: [voor beelden van gegevens bewerkings code- Opstellen](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Volg deze stappen met behulp van de ontwerp functie voor logische apps als u een voor beeld wilt uitproberen. Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld **opstellen** en **variabele** actie definities van dit artikel naar de onderliggende werk stroom definitie van uw eigen logische app kopiëren: [voor beelden van gegevens bewerkings code-opstellen](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
@@ -138,7 +134,7 @@ Als u wilt controleren of met de actie **opstellen** de verwachte resultaten wor
 
 Gebruik de actie **CSV-tabel maken** om een tabel met door komma's gescheiden waarden (CSV) met de eigenschappen en waarden van JavaScript object NOTATION (JSON)-objecten in een matrix te maken. U kunt de resulterende tabel vervolgens gebruiken in acties die volgen op de actie **CSV-tabel maken** .
 
-Als u liever met de code weergave-editor werkt, kunt u het voor beeld voor het maken van een **CSV-tabel** en het **initialiseren van variabele** actie definities vanuit dit artikel naar de onderliggende werk stroom definitie van uw eigen logische app kopiëren: [voor beelden van gegevens bewerkings code- CSV-tabel maken](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
+Als u liever met de code weergave-editor werkt, kunt u het voor beeld voor het maken van een **CSV-tabel** en het **initialiseren van variabele** actie definities vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app kopiëren: [voor beelden van gegevens bewerkings code-CSV-tabel maken](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
 1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
@@ -289,7 +285,7 @@ Als u wilt controleren of de actie **CSV-tabel maken** de verwachte resultaten m
 
 Als u een HTML-tabel wilt maken met de eigenschappen en waarden van de JavaScript Object Notation (JSON)-objecten in een matrix, gebruikt u de actie **HTML-tabel maken** . U kunt de resulterende tabel vervolgens gebruiken in acties die volgen op de actie **HTML-tabel maken** .
 
-Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld voor het maken van een **HTML-tabel** en het **initialiseren van variabele** actie definities vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app kopiëren: [voor beelden van gegevens bewerkings code- HTML-tabel maken](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld voor het maken van een **HTML-tabel** en het **initialiseren van variabele** actie definities vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app kopiëren: [voor beelden van data operation-code-HTML-tabel maken](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
@@ -448,7 +444,7 @@ Gebruik de actie **matrix filteren** om een kleinere matrix te maken die items b
 > 
 > Voor acties om de matrix uitvoer van de **filter matrix** actie te gebruiken, moeten die acties matrices accepteren als invoer, of moet u de uitvoer matrix omzetten in een andere compatibele indeling.
 
-Als u liever met de code weergave-editor werkt, kunt u de voor beeld- **filter matrix** kopiëren en variabele actie definities **initialiseren** vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app: [voor beelden van code voor gegevens bewerking- Matrix filteren](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
+Als u liever aan de slag gaat met de code weergave-editor, kunt u de voorbeeld **filter matrix** kopiëren en variabele actie definities **initialiseren** vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app: [Data operation code-voor beelden-filter matrix](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
 1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
@@ -573,7 +569,7 @@ Als u wilt controleren of de actie **samen voegen** de verwachte resultaten heef
 
 Als u wilt verwijzen naar of toegang wilt krijgen tot eigenschappen in JavaScript Object Notation (JSON)-inhoud, kunt u gebruikers vriendelijke velden of tokens voor die eigenschappen maken met behulp van de actie **JSON parseren** . Op die manier kunt u die eigenschappen selecteren in de lijst met dynamische inhoud wanneer u invoer opgeeft voor uw logische app. Voor deze actie kunt u een JSON-schema opgeven of een JSON-schema genereren op basis van uw voor beeld-JSON-inhoud of-nettolading.
 
-Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld- **JSON parseren** en variabele actie definities **initialiseren** vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app: [voor beelden van bewerkings code voor gegevens-parseren JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
+Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld- **JSON parseren** en variabele actie definities **initialiseren** vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app: [voor beelden van bewerkings code voor gegevens-JSON parseren](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
 1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
@@ -648,7 +644,7 @@ Gebruik de actie **selecteren** om een matrix te maken met JSON-objecten die zij
 > [!NOTE]
 > Voor acties om de matrix uitvoer van de **Select** -actie te gebruiken, moeten die acties matrices accepteren als invoer, of moet u de uitvoer matrix omzetten in een andere compatibele indeling. 
 
-Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld kopiëren en **variabelen** actie definities van dit artikel **selecteren** in de onderliggende werk stroom definitie van uw eigen logische app: [voor beelden van code voor gegevens bewerking-selecteren ](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld kopiëren en **variabelen** actie definities van dit artikel **selecteren** in de onderliggende werk stroom definitie van uw eigen logische app: [voor beelden van code voor gegevens bewerking-selecteren](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
@@ -676,7 +672,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
 1. Geef in de linkerkolom van de **kaart** de naam op van de eigenschap die u wilt toewijzen aan elke waarde in de bron matrix. Geef in de rechter kolom een expressie op die de waarde vertegenwoordigt die u wilt toewijzen aan de eigenschap.
 
-   In dit voor beeld wordt ' Product_ID ' opgegeven als de naam van de eigenschap voor het toewijzen van elke waarde in de matrix met gehele getallen door gebruik te maken van de functie `item()` in een expressie die elk matrix item opent. 
+   In dit voor beeld wordt ' Product_ID ' opgegeven als eigenschaps naam om elke waarde in de gehele matrix toe te wijzen met behulp van de functie `item()` in een expressie die elk matrix item opent. 
 
    ![JSON-object eigenschap en-waarden opgeven om matrix te maken](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 

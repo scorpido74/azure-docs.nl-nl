@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e9d484da1b59c456b30cf0b465ec6de5af77d1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014298"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786364"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fout codes voor aanmeldings activiteiten rapport 
 
@@ -107,7 +107,7 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |50128|Ongeldige domein naam: er zijn geen Tenant gegevens gevonden in de aanvraag of geïmpliceerd door de verstrekte referenties.|
 |50129|Het apparaat is niet gekoppeld aan de werk **plek-koppelen** is vereist voor het registreren van het apparaat.|
 |50130|Claim waarde kan niet worden geïnterpreteerd als een bekende verificatie methode.|
-|50131|Wordt gebruikt in verschillende fout berichten voor voorwaardelijke toegang. Voorbeeld: Een slechte Windows-apparaatstatus, geblokkeerde aanvraag vanwege verdachte activiteit, beslissingen voor toegangsbeleid en beveiligingsbeleid.|
+|50131|Wordt gebruikt in verschillende fout berichten voor voorwaardelijke toegang. Bijvoorbeeld Een slechte Windows-apparaatstatus, geblokkeerde aanvraag vanwege verdachte activiteit, beslissingen voor toegangsbeleid en beveiligingsbeleid.|
 |50132|Referenties zijn om de volgende redenen ingetrokken:<ul><li>SSO-artefact is ongeldig of verlopen</li><li>Sessie is niet actueel genoeg voor toepassing</li><li>Een aanvraag voor stille aanmelding is verzonden, maar de gebruikerssessie met Azure AD is ongeldig of verlopen.</li></ul>|
 |50133|Sessie is ongeldig omdat het wachtwoord is verlopen of recent is gewijzigd.|
 |50135|Het wacht woord moet worden gewijzigd vanwege een account risico.|
@@ -181,7 +181,8 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |90051| Ongeldig delegerings token. Er is een ongeldige nationale Cloud-ID ({cloudId}) opgegeven.|
 |90072| Het account moet eerst worden toegevoegd als een externe gebruiker in de Tenant. Meld u af en meld u opnieuw aan met een ander Azure AD-account.|
 |90094| De toekenning vereist beheerders machtigingen. Vraag uw Tenant beheerder om toestemming te geven voor deze toepassing.|
-|500021|De Tenant wordt beperkt door de bedrijfs proxy. De toegang tot de bron wordt geweigerd.|
+|500011| De resource-principal met de naam <site address> is niet gevonden in de Tenant met de naam <tenant ID>. Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de Tenant of is gezonden door een gebruiker in de Tenant. Mogelijk hebt u de verificatieaanvraag naar de verkeerde tenant verzonden.|
+|500021| De Tenant wordt beperkt door de bedrijfs proxy. De toegang tot de bron wordt geweigerd.|
 |500121| Verificatie is mislukt tijdens sterke verificatie aanvraag.|
 |500133| De verklaring valt niet binnen het geldige tijds bereik. Zorg ervoor dat het toegangs token niet is verlopen voordat u het gebruikt voor gebruikers bevestiging of een nieuw token aanvragen.|
 |530021|De toepassing voldoet niet aan de goedgekeurde app-vereisten voor voorwaardelijke toegang.|

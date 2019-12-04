@@ -1,20 +1,17 @@
 ---
-title: Schema verwijzing voor de triggers-en actie typen-Azure Logic Apps
+title: Schema verwijzing voor de triggers-en actie typen
 description: Naslag Gids voor schema's voor de trigger van de werk stroom definitie taal en actie typen in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 7b4267f672ab5ad902c0f96dd7ba7e377316e4f5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a847e08f0249bd968060d10f7686b0e04ba037ca
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839786"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790849"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Naslag Gids voor schema's voor trigger-en actie typen in Azure Logic Apps
 
@@ -340,7 +337,7 @@ Deze trigger verzendt een aanvraag naar het opgegeven HTTP-of HTTPS-eind punt op
 
 Voor een goede samen werking met uw logische app moet het eind punt voldoen aan een specifiek trigger patroon of contract, en deze eigenschappen herkennen:  
   
-| Antwoord | Vereist | Beschrijving | 
+| Antwoord | Verplicht | Beschrijving | 
 |----------|----------|-------------| 
 | Statuscode | Ja | Met de status code ' 200 OK ' wordt een uitvoering gestart. Met een andere status code wordt geen uitvoering gestart. | 
 | Header opnieuw proberen na | Nee | Het aantal seconden tot de logische app het eind punt opnieuw pollt | 

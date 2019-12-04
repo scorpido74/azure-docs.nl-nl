@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 09defe9648208e2300594169add990d4bcbd7a39
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 348bc2d92f636d1f3c3b50ea31334355da59a60f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112570"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790501"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Incrementele indexering van verrijkte documenten instellen in azure Cognitive Search
 
@@ -41,13 +41,32 @@ api-key: [admin key]
 
 ### <a name="step-2-add-the-cache-property"></a>Stap 2: de eigenschap cache toevoegen
 
-Bewerk de reactie van de GET-aanvraag om de eigenschap `cache` toe te voegen aan de Indexeer functie. Het cache object vereist slechts één eigenschap en de connection string een Azure Storage-account.
+< < < < < <-kop Bewerk het antwoord van de GET-aanvraag om de eigenschap < toe te voegen aan de Indexeer functie. Het cache object vereist slechts één eigenschap `storageConnectionString` dit de connection string voor het opslag account is. = = = = = = = Bewerk de reactie van de GET-aanvraag om de eigenschap `cache` toe te voegen aan de Indexeer functie. Het cache object vereist slechts één eigenschap en de connection string een Azure Storage-account.
+>>>>>>> 3519a330aa86b6827d31403690529105825b1b16
 
 ```json
-    "cache": {
-        "storageConnectionString": "[your storage connection string]"
+{
+    "name": "myIndexerName",
+    "targetIndexName": "myIndex",
+    "dataSourceName": "myDatasource",
+    "skillsetName": "mySkillset",
+    "cache" : {
+        "storageConnectionString" : "Your storage account connection string",
+        "enableReprocessing": true,
+        "id" : "Auto generated Id you do not need to set"
+    },
+    "fieldMappings" : [],
+    "outputFieldMappings": [],
+    "parameters": {
+        "configuration": {
+            "enableAnnotationCache": true
+        }
     }
+}
 ```
+#### <a name="enable-reporocessing"></a>Reporocessing inschakelen
+
+U kunt eventueel de `enableReprocessing` Boole-eigenschap instellen in de cache die standaard is ingesteld op True. Met de vlag `enableReprocessing` kunt u het gedrag van de Indexeer functie beheren. In scenario's waarin u wilt dat de Indexeer functie een prioriteit geeft aan nieuwe documenten aan de index toe te voegen, stelt u de vlag in op false. Als uw Indexeer functie is gekoppeld aan de nieuwe documenten en de vlag naar waar wordt gespiegeld, zou de Indexeer functie de bestaande documenten op de uiteindelijke consistentie kunnen starten. Tijdens de periode dat de vlag `enableReprocessing` is ingesteld op False, schrijft de Indexeer functie alleen naar de cache, maar worden bestaande documenten niet verwerkt op basis van de geïdentificeerde wijzigingen in de verrijkings pijplijn.
 
 ### <a name="step-3-reset-the-indexer"></a>Stap 3: de Indexeer functie opnieuw instellen
 

@@ -1,17 +1,17 @@
 ---
-title: Opslag in Azure Database for MariaDB automatisch verg Roten met behulp van de Azure Portal
+title: Opslag Azure Portal automatisch verg Roten-Azure Database for MariaDB
 description: In dit artikel wordt beschreven hoe u automatische groei opslag voor Azure Database for MariaDB kunt inschakelen met behulp van Azure Portal
 author: ambhatna
 ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 5/29/2019
-ms.openlocfilehash: 9d7b126b5c07cc8661cf50b4c4e13f78592b118e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 12/02/2019
+ms.openlocfilehash: 5c5e9154260a255d9e9b8bc5775a479df7e41522
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136700"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767497"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-using-the-azure-portal"></a>Opslag in Azure Database for MariaDB automatisch verg Roten met behulp van de Azure Portal
 In dit artikel wordt beschreven hoe u een Azure Database for MariaDB Server-opslag kunt configureren om te groeien zonder dat dit van invloed is op de werk belasting.
@@ -19,7 +19,7 @@ In dit artikel wordt beschreven hoe u een Azure Database for MariaDB Server-opsl
 Wanneer een server de toegewezen opslag limiet bereikt, is de server gemarkeerd als alleen-lezen. Als u automatisch verg Roten van opslag inschakelt, neemt de server opslag echter toe om de groeiende gegevens te verwerken. Voor servers met een ingerichte opslag van minder dan 100 GB wordt de ingerichte opslag grootte met 5 GB verhoogd zodra de beschik bare opslag onder het hoogste van 1 GB of 10% van de ingerichte opslag ligt. Voor servers met meer dan 100 GB ingerichte opslag wordt de ingerichte opslag grootte verhoogd met 5% wanneer de beschik bare opslag ruimte lager is dan 5% van de ingerichte opslag grootte. De maximale opslag limieten die [hier](https://docs.microsoft.com/azure/mariadb/concepts-pricing-tiers#storage) zijn opgegeven, zijn van toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
-Voor deze handleiding, hebt u het volgende nodig:
+U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for MariaDB server](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 ## <a name="enable-storage-auto-grow"></a>Opslag automatisch verg Roten inschakelen 

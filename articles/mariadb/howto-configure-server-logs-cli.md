@@ -1,21 +1,21 @@
 ---
-title: Access Server meldt zich aan bij Azure Database for MariaDB met behulp van Azure CLI
-description: In dit artikel wordt beschreven hoe u toegang krijgt tot de server Logboeken in Azure Database for MariaDB met behulp van het opdracht regel hulpprogramma van Azure CLI.
-author: rachel-msft
-ms.author: raagyema
+title: Toegang tot langzame query logboeken-Azure CLI-Azure Database for MariaDB
+description: In dit artikel wordt beschreven hoe u de trage Logboeken in Azure Database for MariaDB kunt openen met behulp van het opdracht regel hulpprogramma van Azure CLI.
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: ffc724ef5133ee25643a966d2b6d8448a4c3a920
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 32e73835732538813f90de5cb737429373c3762a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023610"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767378"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Server logboeken configureren en openen met behulp van Azure CLI
-U kunt de logboeken van de Azure Database for MariaDB-server downloaden met behulp van Azure CLI, het opdracht regel programma van Azure.
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Langzame query logboeken configureren en openen met behulp van Azure CLI
+U kunt de Azure Database for MariaDB langzame query logboeken downloaden met behulp van Azure CLI, het opdracht regel programma van Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:

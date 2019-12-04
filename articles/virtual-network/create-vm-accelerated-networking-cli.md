@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 29014674cee4d6498ca7b56582313265da886122
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083672"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793316"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Een virtuele Linux-machine maken met versneld netwerken met behulp van Azure CLI
 
@@ -62,6 +62,9 @@ Op instanties die HyperThreading ondersteunen, wordt versneld netwerken onderste
 
 Zie [Linux VM-grootten](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over VM-exemplaren.
 
+### <a name="custom-images"></a>Aangepaste installatiekopieën
+Als u een aangepaste installatie kopie gebruikt en uw installatie kopie versneld netwerken ondersteunt, moet u ervoor zorgen dat de vereiste Stuur Programma's worden gebruikt om te werken met de Mellanox Connectx-3-en Connectx-4 LX-Nic's in Azure.
+
 ### <a name="regions"></a>Regio's
 Beschikbaar in alle open bare Azure-regio's en Azure Government Clouds.
 
@@ -82,7 +85,7 @@ Hoewel dit artikel stappen bevat voor het maken van een virtuele machine met ver
 Nadat de virtuele machine is gemaakt, kunt u de versnelde netwerken bevestigen door de instructies te volgen in de [bevestigen dat versneld netwerken zijn ingeschakeld](#confirm-that-accelerated-networking-is-enabled).
 
 ## <a name="cli-creation"></a>CLI maken
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 
 Installeer de nieuwste [Azure cli](/cli/azure/install-azure-cli) en meld u aan bij een Azure-account met de opdracht [AZ login](/cli/azure/reference-index). Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup*, *myNic*en *myVm*.
 

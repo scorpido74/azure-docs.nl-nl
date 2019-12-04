@@ -1,21 +1,19 @@
 ---
-title: Schema-updates juni-1-2016-Azure Logic Apps | Microsoft Docs
+title: Schema-updates juni-1-2016
 description: De schema versie 2016-06-01 is bijgewerkt voor definities van logische apps in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
-ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 0558c309cc22f39c2ed439b7930443ca0adb071e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385372"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792871"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schema-updates voor Azure Logic Apps van 1 juni 2016
 
@@ -23,9 +21,9 @@ De [bijgewerkte schema](https://schema.management.azure.com/schemas/2016-06-01/M
 
 * Met [bereiken](#scopes) kunt u acties groeperen of nesten als een verzameling acties.
 * [Voor waarden en lussen](#conditions-loops) zijn nu acties voor de eerste klasse.
-* Nauw keurige volg orde voor het uitvoeren `runAfter` van acties met de eigenschap, vervangen`dependsOn`
+* Nauw keurige volg orde voor het uitvoeren van acties met de eigenschap `runAfter`, het vervangen van `dependsOn`
 
-Als u uw Logic apps van het voorbeeld schema van 1 augustus 2015 wilt bijwerken naar het schema van 1 juni 2016, raadpleegt u [de sectie upgrades](#upgrade-your-schema).
+Als u uw Logic apps van het voorbeeld schema van 1 augustus 2015 wilt bijwerken naar het schema van 1 juni 2016, [raadpleegt u de sectie upgrades](#upgrade-your-schema).
 
 <a name="scopes"></a>
 
@@ -87,7 +85,7 @@ In vorige schema versies waren voor waarden en lussen para meters die zijn gekop
 
 ## <a name="runafter-property"></a>eigenschap runAfter
 
-De `runAfter` eigenschap vervangt `dependsOn`meer nauw keurigheid wanneer u de uitvoerings volgorde opgeeft voor acties op basis van de status van vorige acties. De `dependsOn` eigenschap geeft aan of de actie is uitgevoerd en is geslaagd, op basis van het feit of de vorige actie is geslaagd, mislukt of is overgeslagen, niet het aantal keren dat u de actie wilt uitvoeren. De `runAfter` eigenschap biedt flexibiliteit als een object dat alle actie namen opgeeft waarna het object wordt uitgevoerd. Deze eigenschap definieert ook een matrix met statussen die acceptabel zijn als triggers. Als u bijvoorbeeld wilt dat een actie wordt uitgevoerd nadat de actie is voltooid en nadat actie B is geslaagd of mislukt, stelt u deze `runAfter` eigenschap in:
+De eigenschap `runAfter` vervangt `dependsOn`, wat nauw keuriger is wanneer u de uitvoerings volgorde voor acties opgeeft op basis van de status van vorige acties. De eigenschap `dependsOn` aangegeven of de actie is uitgevoerd en is geslaagd, op basis van het feit of de vorige actie is geslaagd, mislukt of is overgeslagen, niet het aantal keren dat u de actie wilt uitvoeren. De eigenschap `runAfter` biedt flexibiliteit als een object dat alle actie namen opgeeft waarna het object wordt uitgevoerd. Deze eigenschap definieert ook een matrix met statussen die acceptabel zijn als triggers. Als u bijvoorbeeld wilt dat een actie wordt uitgevoerd nadat actie een slaagt en ook nadat actie B is geslaagd of mislukt, stelt u deze `runAfter` eigenschap in:
 
 ```json
 {
@@ -123,13 +121,13 @@ Als u een upgrade wilt uitvoeren naar het [meest recente schema](https://schema.
    > [!NOTE]
    > Als u een hand matige of aanvraag trigger gebruikt, wordt de call back-URL in uw nieuwe logische app gewijzigd. Test de nieuwe URL om te controleren of de end-to-end-ervaring werkt. Als u eerdere Url's wilt behouden, kunt u de bestaande logische app klonen.
 
-6. *Optioneel* Als u uw vorige logische app wilt overschrijven met de nieuwe schema versie, kiest u in de werk balk klonen naast **schema bijwerken**. Deze stap is alleen nodig als u dezelfde resource-ID of de aanvraag-URL van uw logische app wilt blijven gebruiken.
+6. *Optioneel* Als u uw vorige logische app wilt overschrijven met de nieuwe schema versie, kiest u in de werk balk **klonen**naast **schema bijwerken**. Deze stap is alleen nodig als u dezelfde resource-ID of de aanvraag-URL van uw logische app wilt blijven gebruiken.
 
 ## <a name="upgrade-tool-notes"></a>Opmerkingen bij upgrade hulpprogramma
 
 ### <a name="mapping-conditions"></a>Toewijzings voorwaarden
 
-In de definitie van de upgrade maakt het hulp programma het beste resultaat bij het groeperen van waar en ONWAAR Branch-acties samen als een bereik. Met name het ontwerp patroon van `@equals(actions('a').status, 'Skipped')` wordt weer gegeven `else` als een actie. Als het hulp programma echter niet-herken bare patronen detecteert, kan het hulp programma afzonderlijke voor waarden maken voor zowel de vertakking waar als de onwaar. U kunt, indien nodig, acties opnieuw toewijzen na de upgrade.
+In de definitie van de upgrade maakt het hulp programma het beste resultaat bij het groeperen van waar en ONWAAR Branch-acties samen als een bereik. Met name het ontwerp patroon van `@equals(actions('a').status, 'Skipped')` wordt weer gegeven als een `else` actie. Als het hulp programma echter niet-herken bare patronen detecteert, kan het hulp programma afzonderlijke voor waarden maken voor zowel de vertakking waar als de onwaar. U kunt, indien nodig, acties opnieuw toewijzen na de upgrade.
 
 #### <a name="foreach-loop-with-condition"></a>foreach-lus met voor waarde
 
@@ -143,19 +141,19 @@ Nadat u de upgrade hebt uitgevoerd, worden de resource Tags verwijderd, dus u mo
 
 ### <a name="renamed-manual-trigger-to-request-trigger"></a>De naam van de trigger Manual is gewijzigd in de trigger ' aanvraag '
 
-Het `manual` trigger type is afgeschaft en is hernoemd `request` met `http`type. Deze wijziging maakt meer consistentie voor het soort patroon dat wordt gebruikt voor het bouwen van de trigger.
+Het trigger type `manual` is afgeschaft en heeft een andere naam gekregen `request` met type `http`. Deze wijziging maakt meer consistentie voor het soort patroon dat wordt gebruikt voor het bouwen van de trigger.
 
 ### <a name="new-filter-action"></a>Nieuwe actie filter
 
-Als u een grote matrix omlaag wilt filteren op een kleinere set items, accepteert `filter` het nieuwe type een matrix en een voor waarde, evalueert de voor waarde voor elk item en retourneert een matrix met items die aan de voor waarde voldoen.
+Als u een grote matrix omlaag wilt filteren op een kleinere set items, accepteert het nieuwe `filter` type een matrix en een voor waarde, evalueert de voor waarde voor elk item en retourneert een matrix met items die aan de voor waarde voldoen.
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>Beperkingen voor de acties foreach en until
 
-De `foreach` and`until` -lus is beperkt tot één actie.
+De lus `foreach` en `until` zijn beperkt tot één actie.
 
 ### <a name="new-trackedproperties-for-actions"></a>Nieuwe ' trackedProperties ' voor acties
 
-Acties kunnen nu een extra eigenschap hebben met `trackedProperties`de naam, die gelijk is `runAfter` aan `type` de eigenschappen en. Dit object geeft bepaalde actie-invoer of uitvoer op die u wilt opnemen in de telemetrie van Azure diagnostische gegevens die worden verzonden als onderdeel van een werk stroom. Bijvoorbeeld:
+Acties kunnen nu een extra eigenschap met de naam `trackedProperties`, die gelijk is aan de `runAfter` en `type` eigenschappen. Dit object geeft bepaalde actie-invoer of uitvoer op die u wilt opnemen in de telemetrie van Azure diagnostische gegevens die worden verzonden als onderdeel van een werk stroom. Bijvoorbeeld:
 
 ``` json
 {

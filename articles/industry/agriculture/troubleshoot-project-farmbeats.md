@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 22c304b26eddaee4444f6eb12957e2a6fedf7810
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672590"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793279"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
@@ -34,12 +34,12 @@ Voor aanvullende hulp gaat u naar ons op farmbeatssupport@microsoft.com, neemt u
 
 **Corrigerende actie**: Ga naar de Azure Portal en voer de volgende stappen uit:
 
-1. Ga naar de resource groep FarmBeats data hub.   
-2. Selecteer de **Event hub** (DatafeedEventHubNamespace...)  en controleer het aantal inkomende berichten.   
+1. Ga naar de resource groep FarmBeats data hub.   
+2. Selecteer de **Event hub** (DatafeedEventHubNamespace....) en controleer het aantal inkomende berichten.   
 3. Als er **geen inkomende berichten**zijn, neemt u contact op met de partner van uw apparaat.  
 4. Als er **inkomende berichten**zijn, neemt u contact op met farmbeatssupport@microsoft.com met data hub-en Accelerator logboeken en vastgelegde telemetrie.
 
-Zie de [sectie logs](#collect-logs-manually) van het document voor meer informatie over het downloaden van Logboeken.  
+Zie de [sectie logs](#collect-logs-manually) van het document voor meer informatie over het downloaden van Logboeken.  
 
 ### <a name="dont-have-the-eventhub-connection-string"></a>Geen Eventhub-verbindings reeks
 
@@ -55,7 +55,7 @@ Zie de [sectie logs](#collect-logs-manually) van het document voor meer informat
 
 **Symptomen**: er zijn apparaten geïnstalleerd en u hebt FarmBeats gekoppeld aan de partner van uw apparaat. De apparaten zijn online en verzenden telemetriegegevens, maar ze worden offline weer gegeven.
 
-**Corrigerende actie**: het rapportage-interval is niet geconfigureerd voor dit apparaat. Neem contact op met de fabrikant van uw apparaat om het rapportage-interval in te stellen. 
+**Corrigerende actie**: het rapportage-interval is niet geconfigureerd voor dit apparaat. Neem contact op met de fabrikant van uw apparaat om het rapportage-interval in te stellen. 
 
 ### <a name="error-deleting-a-resource"></a>Fout bij het verwijderen van een resource
 
@@ -135,44 +135,44 @@ Sluit alle browser tabbladen die de Accelerator hebben geopend en sluit het brow
 
 **Corrigerende actie**: mislukte taak opnieuw uitvoeren of een satelliet-indexen taak voor datum bereik van 5-7 dagen uitvoeren. Controleer of de taak is voltooid.
 
-### <a name="sentinel-hub-wrongurlor-not-accessible"></a>Onjuiste URL van Sentinel hub of niet toegankelijk 
+### <a name="sentinel-hub-wrong-url-or-not-accessible"></a>Onjuiste URL van Sentinel hub of niet toegankelijk 
 
-**Fout bericht over taak**: er is iets fout gegaan. De pagina die u probeert te openen, is (tijdelijk) niet beschikbaar. 
+**Fout bericht over taak**: er is iets fout gegaan. De pagina die u probeert te openen, is (tijdelijk) niet beschikbaar. 
 
 **Corrigerende actie**:
-1.  Open verklikker-URL (https://scihub.copernicus.eu/dhus/) in browser en controleer of de website toegankelijk is. 
-2.  Als de website niet toegankelijk is, controleert u of er een firewall/bedrijfs netwerk etc. de website blokkeert en de benodigde stappen neemt om de bovenstaande URL toe te staan. 
+1.  Open verklikker-URL (https://scihub.copernicus.eu/dhus/) in browser en controleer of de website toegankelijk is. 
+2.  Als de website niet toegankelijk is, controleert u of er een firewall/bedrijfs netwerk etc. de website blokkeert en de benodigde stappen neemt om de bovenstaande URL toe te staan. 
 3.  De taak kan niet worden uitgevoerd of een satelliet-indexen taak voor een datum bereik van 5-7 dagen opnieuw uitvoeren en controleren of de taak is voltooid.  
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Sentinel-server voor onderhoud
 
-**Taak fout bericht**: de Open Access-hub Copernicus wordt binnenkort weer gegeven. Onze excuses voor het ongemak. we voeren nu een aantal onderhoud uit. We zijn binnenkort weer online. 
+**Taak fout bericht**: de Open Access-hub Copernicus wordt binnenkort weer gegeven. Onze excuses voor het ongemak. we voeren nu een aantal onderhoud uit. We zijn binnenkort weer online. 
 
 **Corrigerende actie**:
 
-1.  Dit probleem kan zich voordoen als er onderhouds activiteiten op de Sentinel-server worden uitgevoerd. 
-2.  Als een taak/pijp lijn mislukt met de bovenstaande reden, moet u de taak na enige tijd opnieuw verzenden. 
-3.  De gebruiker kan naar https://scihub.copernicus.eu/news/ gaan om informatie te controleren over alle geplande/ongeplande onderhouds activiteiten.  
+1.  Dit probleem kan zich voordoen als er onderhouds activiteiten op de Sentinel-server worden uitgevoerd. 
+2.  Als een taak/pijp lijn mislukt met de bovenstaande reden, moet u de taak na enige tijd opnieuw verzenden. 
+3.  De gebruiker kan naar https://scihub.copernicus.eu/news/ gaan om informatie te controleren over alle geplande/ongeplande onderhouds activiteiten.  
 4.  De taak kan niet worden uitgevoerd of een satelliet-indexen taak voor een datum bereik van 5-7 dagen opnieuw uitvoeren en controleren of de taak is voltooid.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Verklikker maximum aantal verbindingen bereikt
 
-**Taak fout bericht**: maximum aantal twee gelijktijdige stromen dat door de gebruiker<username>is bereikt 
+**Taak fout bericht**: maximum aantal twee gelijktijdige stromen dat door de gebruiker<username>is bereikt 
 
 **Corrigerende actie**
-1.  Als een taak met de bovenstaande reden mislukt, wordt hetzelfde Sentinel-account gebruikt in een andere implementatie/software. 
+1.  Als een taak met de bovenstaande reden mislukt, wordt hetzelfde Sentinel-account gebruikt in een andere implementatie/software. 
 2.  De gebruiker kan een nieuw Sentinel-account maken en het installatie programma opnieuw uitvoeren om de data hub bij te werken met een nieuwe Sentinel-gebruikers naam en-wacht woord.  
 3.  De taak kan niet worden uitgevoerd of een satelliet-indexen taak voor het datum bereik van 5-7 dagen opnieuw uitvoeren en controleren of de taak is voltooid.
 
-### <a name="sentinel-server-refused-connection"></a>De Sentinel-server heeft de verbinding geweigerd 
+### <a name="sentinel-server-refused-connection"></a>De Sentinel-server heeft de verbinding geweigerd 
 
 **Taak fout bericht**:
 
-De server heeft de verbinding geweigerd op: http://172.30.175.69:8983/solr/dhus 
+De server heeft de verbinding geweigerd op: http://172.30.175.69:8983/solr/dhus 
 
-**Corrigerende actie**: dit probleem kan optreden als er onderhouds activiteiten worden uitgevoerd op een Sentinel-server. 
-1.  Als een taak/pijp lijn mislukt met de bovenstaande reden, moet u de taak na enige tijd opnieuw verzenden. 
-2.  De gebruiker kan naar https://scihub.copernicus.eu/news/ gaan om informatie te controleren over alle geplande/ongeplande onderhouds activiteiten.  
+**Corrigerende actie**: dit probleem kan optreden als er onderhouds activiteiten worden uitgevoerd op een Sentinel-server. 
+1.  Als een taak/pijp lijn mislukt met de bovenstaande reden, moet u de taak na enige tijd opnieuw verzenden. 
+2.  De gebruiker kan naar https://scihub.copernicus.eu/news/ gaan om informatie te controleren over alle geplande/ongeplande onderhouds activiteiten.  
 3.  De taak kan niet worden uitgevoerd of een satelliet-indexen taak voor het datum bereik van 5-7 dagen opnieuw uitvoeren en controleren of de taak is voltooid.
 
 
@@ -281,11 +281,11 @@ Dat **wil zeggen**dat er al een Azure AD-App-registratie met dezelfde naam besta
 
 ## <a name="high-cpu-usage"></a>Hoog CPU-gebruik
 
-**Fout**: er wordt een e-mail waarschuwing weer geven die verwijst naar een hoog CPU-gebruik. 
+**Fout**: er wordt een e-mail waarschuwing weer geven die verwijst naar een hoog CPU-gebruik. 
 
-**Corrigerende actie**: 
+**Corrigerende actie**: 
 1.  Ga naar de resource groep FarmBeats data hub.
-2.  Selecteer app service.  
+2.  Selecteer app service.  
 3.  Ga naar omhoog schalen (App Service plan) en selecteer een geschikte [prijs categorie](https://azure.microsoft.com/pricing/details/app-service/windows/)
 
 ## <a name="next-steps"></a>Volgende stappen

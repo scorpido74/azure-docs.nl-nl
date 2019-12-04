@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823006"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791347"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Mogelijkheden en overwegingen voor commerciële Marketplace-trans acties
 
@@ -66,7 +66,7 @@ Afhankelijk van de gebruikte transactie optie kunnen de software licentie kosten
 
 * Betalen naar gebruik: de kosten voor software licenties worden gepresenteerd als een prijs per uur, per kern (vCPU) op basis van de gebruikte Azure-infra structuur. Dit geldt alleen voor Virtual Machines en Azure-toepassingen.
 
-* • Abonnements prijzen: de kosten voor software licenties worden weer gegeven als maandelijks of jaarlijks, terugkerende kosten als een vast tarief of per seat. Dit is alleen van toepassing op SaaS-apps en door Azure toepassingen beheerde apps.
+* Abonnements prijzen: de kosten voor software licenties worden weer gegeven als maandelijks of jaarlijks, terugkerend bedrag in rekening gebracht als een vast tarief of per seat. Dit is alleen van toepassing op SaaS-apps en door Azure toepassingen beheerde apps.
 
 * Gratis proef versie: er worden gedurende 30 dagen of 90 dagen geen kosten in rekening gebracht voor software licenties.
 
@@ -94,7 +94,7 @@ Met deze optie kunnen hogere of lagere prijzen worden gemaakt dan voor de openba
 
 ### <a name="examples"></a>Voorbeelden
 
-**Betalen per gebruik** 
+**Pay-As-You-Go** 
 
 * Als u de optie betalen naar gebruik inschakelt, hebt u de volgende kosten structuur.
 
@@ -163,7 +163,7 @@ Klanten kunnen ook betalen met een credit card en een maandelijkse factuur. In d
 
 Als de klant bijvoorbeeld gebruikmaakt van een credit card:
 
-|Beschrijving    |    Date  |
+|Beschrijving    |    Datum  |
 |----------|----------|
 |Bestel periode   | 15 augustus 2018-aug 30, 2018 |
 |Einde van de term (maand)   | 30 augustus 2018 |
@@ -177,12 +177,12 @@ Als de klant bijvoorbeeld gebruikmaakt van een credit card:
 
 Als de klant wordt gekocht met een Enterprise Agreement:
 
-| Beschrijving |    Date  |
+| Beschrijving |    Datum  |
 |----------|----------|
 |Bestel periode | 15 augustus 2018-aug 30, 2018 |
 |Einde van de term (kwar taal) | Sept 30, 2018 |
 |Factuur datum | 15 oktober 2018 |
-|Borg periode (alleen voor credit cards, 30 dagen) | N.v.t. |
+|Borg periode (alleen voor credit cards, 30 dagen) | n.v.t. |
 |Begin van verzamelings periode | 15 oktober 2018 |
 |Einde van verzamelings periode (Maxi maal 90 dagen) | 15 januari 2019 |
 |Betalings datum van klant | 30 dec, 2018 |

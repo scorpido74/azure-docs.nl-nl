@@ -2,20 +2,17 @@
 title: Verbinding maken met REST-eind punten van Azure Logic Apps
 description: REST-eind punten in geautomatiseerde taken, processen en werk stromen bewaken met behulp van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 030401623a61e7fcff40187f522309255482647f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824823"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787366"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-eind punten aanroepen met behulp van Azure Logic Apps
 
@@ -33,7 +30,7 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde ht
 
   * Voor het Swagger-bestand moet [Cross-Origin Resource Sharing (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) zijn ingeschakeld.
 
-  Als u wilt verwijzen naar een Swagger-bestand dat niet wordt gehost of niet voldoet aan de beveiligings-en cross-Origin-vereisten, kunt u [het Swagger-bestand uploaden naar een BLOB-container in een Azure-opslag account](#host-swagger)en CORS inschakelen voor dat opslag account, zodat u kunt verwijzen naar het bestand.
+  Als u wilt verwijzen naar een Swagger-bestand dat niet wordt gehost of niet voldoet aan de beveiligings-en cross-Origin-vereisten, kunt u [het Swagger-bestand uploaden naar een BLOB-container in een Azure-opslag account](#host-swagger)en CORS inschakelen voor dat opslag account, zodat u naar het bestand kunt verwijzen.
 
   In de voor beelden in dit onderwerp wordt gebruikgemaakt van de [Cognitive Services Face-API](https://docs.microsoft.com/azure/cognitive-services/face/overview), waarvoor een [Cognitive Services account en toegangs sleutel](../cognitive-services/cognitive-services-apis-create-account.md)is vereist.
 
@@ -45,7 +42,7 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde ht
 
 Deze ingebouwde trigger verzendt een HTTP-aanvraag naar een URL voor een Swagger-bestand waarin een REST API wordt beschreven en een antwoord wordt geretourneerd dat de inhoud van het bestand bevat.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
 1. Voer op de ontwerp functie in het zoekvak ' Swagger ' in als uw filter. Selecteer in de lijst **Triggers** de **http + Swagger-** trigger.
 
@@ -81,7 +78,7 @@ Deze ingebouwde trigger verzendt een HTTP-aanvraag naar een URL voor een Swagger
 
 Deze ingebouwde actie maakt een HTTP-aanvraag voor de URL voor het Swagger-bestand waarin een REST API wordt beschreven en retourneert een antwoord met daarin de inhoud van dat bestand.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
 
 1. Selecteer **nieuwe stap**onder de stap waar u de http + Swagger-actie wilt toevoegen.
 

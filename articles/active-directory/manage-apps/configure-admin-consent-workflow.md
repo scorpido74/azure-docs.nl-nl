@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d1654556df455accb7f615442d3a97952c5e50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180418"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786432"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>De beheerder toestemming werk stroom configureren (preview-versie)
 
@@ -33,10 +33,10 @@ Voor het goed keuren van aanvragen moet een revisor een globale beheerder, Cloud
 
 De beheerder toestemming werk stroom inschakelen en revisoren kiezen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder.
-2. Klik op **alle services** boven aan het navigatie menu aan de linkerkant. De **uitbrei ding** van de Azure Active Directory wordt geopend.
-3. In het zoekvak filteren typt u '**Azure Active Directory**' en selecteert u **de Azure Active Directory** item.
-4. Klik in het navigatie menu op **bedrijfs toepassingen**. 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder.
+2. Klik op **alle services** boven aan het navigatie menu aan de linkerkant. De **uitbrei ding Azure Active Directory** wordt geopend.
+3. In het zoekvak filteren typt u '**Azure Active Directory**' en selecteert u **het Azure Active Directory** item.
+4. Klik in het navigatie menu op **bedrijfs toepassingen**. 
 5. Selecteer onder **beheren**de optie **gebruikers instellingen**.
 6. Stel gebruikers in het geval van **beheerders toestemming (preview)** in om de toestemming van de **beheerder in te stellen voor apps die niet kunnen worden geinstemming** met **Ja**.
 
@@ -74,10 +74,10 @@ Nadat de beheerder toestemming werk stroom is ingeschakeld, kunnen gebruikers go
 
 De beheerders toestemmings aanvragen controleren en actie ondernemen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een van de geregistreerde revisoren van de werk stroom voor het beheer van toestemming.
-2. Selecteer **alle services** boven aan het navigatie menu aan de linkerkant. De **uitbrei ding** van de Azure Active Directory wordt geopend.
-3. In het zoekvak filteren typt u '**Azure Active Directory**' en selecteert u de **Azure Active Directory** item.
-4. Klik in het navigatie menu op **bedrijfs toepassingen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een van de geregistreerde revisoren van de werk stroom voor het beheer van toestemming.
+2. Selecteer **alle services** boven aan het navigatie menu aan de linkerkant. De **uitbrei ding Azure Active Directory** wordt geopend.
+3. In het zoekvak filteren typt u '**Azure Active Directory**' en selecteert u het **Azure Active Directory** item.
+4. Klik in het navigatie menu op **bedrijfs toepassingen**.
 5. Selecteer onder **activiteit**de optie **beheerders toestemming aanvragen (preview)** .
 
    > [!NOTE]
@@ -120,12 +120,12 @@ In de onderstaande tabel ziet u een overzicht van de scenario's en controle waar
 
 |Scenario  |Audit service  |Controlecategorie  |Controle activiteit  |Actor controleren  |Beperkingen van het controle logboek  |
 |---------|---------|---------|---------|---------|---------|
-|Beheerder die de werk stroom voor de toestemming aanvraag inschakelt        |Toegangsbeoordelingen           |UserManagement           |Governance-beleids sjabloon maken          |App-context            |U kunt de gebruikers context momenteel niet vinden            |
-|Beheerder schakelt de werk stroom voor de toestemming aanvraag uit       |Toegangsbeoordelingen           |UserManagement           |Governance-beleids sjabloon verwijderen          |App-context            |U kunt de gebruikers context momenteel niet vinden           |
-|Beheerder de configuraties voor de toestemming werk stroom bij te werken        |Toegangsbeoordelingen           |UserManagement           |Beleids sjabloon governance bijwerken          |App-context            |U kunt de gebruikers context momenteel niet vinden           |
-|Eind gebruiker heeft een aanvraag voor een beheerders vergunning gemaakt voor een app       |Toegangsbeoordelingen           |Beleid         |Aanvraag maken           |App-context            |U kunt de gebruikers context momenteel niet vinden           |
-|Revisoren die een aanvraag voor beheerders toestemming goed keuren       |Toegangsbeoordelingen           |UserManagement           |Alle aanvragen goed keuren in bedrijfs stroom          |App-context            |Op dit moment kunt u de gebruikers context of de App-ID die door de beheerder toestemming is verleend, niet vinden.           |
-|Revisoren die een aanvraag voor beheerders toestemming weigeren       |Toegangsbeoordelingen           |UserManagement           |Alle aanvragen goed keuren in bedrijfs stroom          |App-context            | Momenteel kunt u de gebruikers context niet vinden van de actor die een aanvraag voor een beheerder heeft geweigerd          |
+|Beheerder die de werk stroom voor de toestemming aanvraag inschakelt        |Toegangsbeoordelingen           |UserManagement           |Governance-beleids sjabloon maken          |App-context            |U kunt de gebruikers context momenteel niet vinden            |
+|Beheerder schakelt de werk stroom voor de toestemming aanvraag uit       |Toegangsbeoordelingen           |UserManagement           |Governance-beleids sjabloon verwijderen          |App-context            |U kunt de gebruikers context momenteel niet vinden           |
+|Beheerder de configuraties voor de toestemming werk stroom bij te werken        |Toegangsbeoordelingen           |UserManagement           |Beleids sjabloon governance bijwerken          |App-context            |U kunt de gebruikers context momenteel niet vinden           |
+|Eind gebruiker heeft een aanvraag voor een beheerders vergunning gemaakt voor een app       |Toegangsbeoordelingen           |Beleid         |Aanvraag maken           |App-context            |U kunt de gebruikers context momenteel niet vinden           |
+|Revisoren die een aanvraag voor beheerders toestemming goed keuren       |Toegangsbeoordelingen           |UserManagement           |Alle aanvragen goed keuren in bedrijfs stroom          |App-context            |Op dit moment kunt u de gebruikers context of de App-ID die door de beheerder toestemming is verleend, niet vinden.           |
+|Revisoren die een aanvraag voor beheerders toestemming weigeren       |Toegangsbeoordelingen           |UserManagement           |Alle aanvragen goed keuren in bedrijfs stroom          |App-context            | Momenteel kunt u de gebruikers context niet vinden van de actor die een aanvraag voor een beheerder heeft geweigerd          |
 
 ## <a name="faq"></a>Veelgestelde vragen 
 
@@ -157,4 +157,4 @@ Zie [Azure Active Directory instemming-Framework](../develop/consent-framework.m
 
 [Toestemming en machtiging voor AzureAD v 2.0 geconvergeerde apps](../develop/active-directory-v2-scopes.md)
 
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
