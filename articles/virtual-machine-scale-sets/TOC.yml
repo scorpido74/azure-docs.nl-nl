@@ -231,8 +231,8 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Een sjabloon voor schaalsets converteren voor gebruik van beheerde schijven
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: Lage prioriteit gebruiken
-          href: virtual-machine-scale-sets-use-low-priority.md
+        - name: Spot-exemplaar gebruiken
+          href: use-spot.md
     - name: Beheren
       items:
         - name: Veelvoorkomende beheertaken

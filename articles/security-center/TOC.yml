@@ -127,8 +127,12 @@
           href: security-center-monitoring.md
         - name: Uw machines en apps beschermen
           href: security-center-virtual-machine-protection.md
+        - name: Naslaginformatie over aanbevelingen voor machines en apps
+          href: recommendations-compute-and-apps.md
         - name: Netwerkresources beschermen
           href: security-center-network-recommendations.md
+        - name: Naslaginformatie over aanbevelingen voor netwerken
+          href: recommendations-network.md
         - name: Gegevens en opslagservices beschermen
           href: security-center-sql-service-recommendations.md
         - name: Identiteit en toegang beveiligen

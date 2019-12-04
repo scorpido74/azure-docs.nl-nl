@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 11/04/2019
-  ms.openlocfilehash: 15a89528ce53eabe7ed70ca66a514b71ef5e5307
-  ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+  ms.openlocfilehash: fae1321f70d538dcacde83cadd83f5cb15155459
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 11/27/2019
-  ms.locfileid: "74554943"
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74775520"
 highlightedContent:
   items:
   - title: Wat is Cognitive Services?
@@ -111,34 +111,37 @@ conceptualContent:
   - title: Search
     summary: Voeg Bing Search-API's toe aan uw apps en maak het mogelijk om miljarden webpagina's, afbeeldingen, video's en nieuwsartikelen met één API-aanroep te doorzoeken.
     links:
-    - url: ./Bing-Autosuggest/index.yml
+    - url: ./Bing-web-search/index.yml
+      itemType: overview
+      text: Hubpagina voor Bing Search-API's
+    - url: ./Bing-Autosuggest/get-suggested-search-terms.md
       itemType: overview
       text: Zoeken met automatische suggesties
-    - url: ./bing-custom-search/index.yml
+    - url: ./bing-custom-search/overview.md
       itemType: overview
       text: Aangepast zoeken
-    - url: ./bing-entities-search/index.yml
+    - url: ./bing-entities-search/overview.md
       itemType: overview
       text: Entiteiten zoeken
-    - url: ./bing-image-search/index.yml
+    - url: ./bing-image-search/overview.md
       itemType: overview
       text: Afbeeldingen zoeken
-    - url: ./bing-local-business-search/index.yml
+    - url: ./bing-local-business-search/overview.md
       itemType: overview
       text: Lokale bedrijven zoeken (preview)
-    - url: ./bing-news-search/index.yml
+    - url: ./bing-news-search/search-the-web.md
       itemType: overview
       text: Nieuws zoeken
-    - url: ./bing-spell-check/index.yml
+    - url: ./bing-spell-check/overview.md
       itemType: overview
       text: Spellingscontrole
-    - url: ./Bing-Video-Search/index.yml
+    - url: ./Bing-Video-Search/overview.md
       itemType: overview
       text: Video's zoeken
-    - url: ./bing-visual-search/index.yml
+    - url: ./bing-visual-search/overview.md
       itemType: overview
       text: Visueel zoeken
-    - url: ./bing-web-search/index.yml
+    - url: ./bing-web-search/overview.md
       itemType: overview
       text: Webpagina's zoeken
   - title: Containers voor Cognitive Services
@@ -159,9 +162,6 @@ conceptualContent:
     - url: ./containers/docker-compose-recipe.md
       itemType: get-started
       text: Docker Compose gebruiken om meerdere containers te implementeren
-    - url: ./containers/container-image-tags.md
-      itemType: reference
-      text: Tags voor Cognitive Services-containerinstallatiekopie
     - url: ./containers/container-faq.md
       itemType: reference
       text: Veelgestelde vragen over Cognitive Services-containers
@@ -170,12 +170,10 @@ additionalContent:
   - items:
     - title: Aanvullende resources
       links:
-      - text: Opties voor ondersteuning en hulp
-        url: cognitive-services-support-options.md
       - text: Azure-CLI
         url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
       - text: PowerShell
-        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-3.0.0#cognitive_services
+        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
     - title: REST-API’s
       links:
       - text: Cognitive Services-beheer

@@ -1,14 +1,14 @@
 ### YamlMime:Yaml
-ms.openlocfilehash: 8f0811dacfbedd59726fcdfe58d6a71cb02797da
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
-ms.translationtype: MT
+ms.openlocfilehash: 798a3ad1a2e81eae8621ae43d47d41031603331f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968408"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74734457"
 groups:
 - id: programming-languages-set-one
-  title: Programmeer talen
-  prompt: Een programmeer taal kiezen
+  title: Programmeertalen
+  prompt: Een programmeertaal kiezen
   pivots:
   - id: programming-language-csharp
     title: C#
@@ -19,4 +19,84 @@ groups:
   - id: programming-language-nodejs
     title: Node.js
   - id: programming-language-go
-    title: Start
+    title: Aan de slag
+- id: cogsvcs-text-analytics-features
+  title: Functies van Text Analytics
+  prompt: Een functieaanbod van Text Analytics kiezen
+  pivots:
+  - id: text-analytics-key-phrase-extraction
+    title: Sleuteltermextractie
+  - id: text-analytics-language-detection
+    title: Taaldetectie
+  - id: text-analytics-sentiment-analysis
+    title: Sentimentanalyse
+- id: client-operating-system
+  title: Programmeertalen
+  prompt: Een clientbesturingssysteem kiezen
+  pivots:
+  - id: client-operating-system-linux
+    title: Linux
+  - id: client-operating-system-macos
+    title: MacOS
+  - id: client-operating-system-windows
+    title: Windows
+- id: programming-languages-set-two
+  title: Programmeertalen
+  prompt: Een programmeertaal kiezen
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: Meer talen...
+- id: programming-languages-set-three
+  title: Programmeertalen
+  prompt: Een programmeertaal kiezen
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-four
+  title: Programmeertalen
+  prompt: Een programmeertaal kiezen
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: Meer talen...
+- id: programming-languages-set-five
+  title: Programmeertalen
+  prompt: Een programmeertaal kiezen
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-go
+    title: Aan de slag
+  - id: programming-language-ruby
+    title: Ruby
+- id: URL-test-interface
+  title: Hulpprogramma voor URL-tests
+  prompt: Kies een van de volgende
+  pivots:
+  - id: url-test-tool-curl
+    title: cURL
+  - id: url-test-tool-postman
+    title: Postman

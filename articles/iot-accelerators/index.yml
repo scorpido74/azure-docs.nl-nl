@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Documentatie voor Azure IoT-oplossingsversnellers
+summary: De Azure IoT-oplossingsverbeteringen zijn complete, eenvoudig te implementeren IoT-oplossingen waarmee veelvoorkomende IoT-scenario's kunnen worden geïmplementeerd, zoals externe bewaking.
+metadata:
+  title: Documentatie voor Azure IoT-oplossingsversnellers
+  description: De IoT-oplossingsverbeteringen zijn complete, eenvoudig te implementeren IoT-oplossingen waarmee veelvoorkomende IoT-scenario's kunnen worden geïmplementeerd. De scenario's zijn onder meer externe bewaking, verbonden factory, predictief onderhoud en apparaatsimulatie. Wanneer u een oplossingsversneller implementeert, bevat de implementatie alle vereiste cloudservices samen met de vereiste toepassingscode.
+  services: iot-accelerators
+  ms.service: iot-accelerators
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  manager: philmea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: cdad55cb8972e54f613319e890f052c26d94f0ef
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74781623"
+landingContent:
+- title: Over IoT-oplossingsversnellers
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat zijn Azure IoT-oplossingsversnellers?
+      url: about-iot-accelerators.md
+    - text: De website AzureIoTSolutions.com
+      url: iot-accelerators-permissions.md
+- title: Aan de slag met externe bewaking
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Overzicht van de verbetering voor de externe bewakingsoplossing
+      url: iot-accelerators-remote-monitoring-sample-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: Een externe bewakingsoplossing in de cloud proberen
+      url: quickstart-remote-monitoring-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Uw apparaten bewaken
+      url: iot-accelerators-remote-monitoring-monitor.md
+    - text: Problemen met apparaten detecteren
+      url: iot-accelerators-remote-monitoring-automate.md
+- title: Aan de slag met industriële IoT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Overzicht van industriële IoT
+      url: overview-iot-industrial.md
+    - text: Overzicht van OPC Twin
+      url: overview-opc-twin.md
+    - text: Overzicht van OPC Vault
+      url: overview-opc-vault.md
+    - text: Overzicht van OPC Publisher
+      url: overview-opc-publisher.md
+    - text: Wat is industriële IoT?
+      url: iot-accelerators-connected-factory-features.md
+  - linkListType: quickstart
+    links:
+    - text: Een cloudoplossing voor een verbonden fabriek uitproberen
+      url: quickstart-connected-factory-deploy.md
+- title: Aan de slag met apparaatsimulatie
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Overzicht van de oplossingsversneller voor apparaatsimulatie
+      url: iot-accelerators-device-simulation-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Een apparaatsimulatieoplossing uitproberen
+      url: quickstart-device-simulation-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Een nieuwe IoT-apparaatsimulatie maken en uitvoeren
+      url: iot-accelerators-device-simulation-create-simulation.md
+    - text: Een aangepast gesimuleerd apparaat maken
+      url: iot-accelerators-device-simulation-create-custom-device.md
+- title: Aan de slag met voorspellend onderhoud
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Overzicht van de oplossingsversneller Voorspeld onderhoud
+      url: iot-accelerators-predictive-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: Een oplossing voor voorspellend onderhoud uitproberen
+      url: quickstart-predictive-maintenance-deploy.md

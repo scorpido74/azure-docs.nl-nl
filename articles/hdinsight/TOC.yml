@@ -49,6 +49,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: Planning clustercapaciteit
           href: ./hdinsight-capacity-planning.md
+        - name: Best practices voor clusterbeheer
+          href: ./cluster-management-best-practices.md
         - name: Beschikbaarheid en betrouwbaarheid
           href: ./hdinsight-high-availability-linux.md
         - name: Opslagopties vergelijken
