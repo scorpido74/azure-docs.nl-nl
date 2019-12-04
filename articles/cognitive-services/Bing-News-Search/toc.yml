@@ -1,5 +1,5 @@
 - name: Documentatie voor Bing Nieuws zoeken
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Overzicht
   expanded: true
   items:

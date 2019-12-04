@@ -205,7 +205,7 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Problemen oplossen
       items:
-        - name: Uitzonderingen
+        - name: Handleiding voor het oplossen van problemen
           href: service-bus-messaging-exceptions.md
 - name: Naslaginformatie
   items:

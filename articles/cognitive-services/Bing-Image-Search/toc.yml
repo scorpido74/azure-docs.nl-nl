@@ -1,5 +1,5 @@
 - name: Documentatie voor Bing Afbeeldingen zoeken-API
-  href: index.yml
+  href: ../bing-web-search/index.yml
 - name: Overzicht
   expanded: true
   items:

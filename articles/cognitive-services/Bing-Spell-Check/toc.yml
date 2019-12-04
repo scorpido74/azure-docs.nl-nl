@@ -1,5 +1,5 @@
 - name: Documentatie voor Bing Spellingcontrole-API
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Overzicht
   items:
     - name: Wat is de Bing Spellingcontrole-API?

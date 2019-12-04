@@ -1,5 +1,5 @@
 - name: Documentatie voor de Bing-API voor zoeken naar lokale bedrijven
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
   expanded: true
   items: null
 - name: Overzicht

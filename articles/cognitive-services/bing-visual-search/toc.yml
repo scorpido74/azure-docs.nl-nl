@@ -1,5 +1,5 @@
 - name: Documentatie voor Bing Visual Search
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Overzicht
   items:
     - name: Wat is Bing Visual Search-API?

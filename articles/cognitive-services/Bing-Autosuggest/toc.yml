@@ -1,5 +1,5 @@
 - name: Documentatie voor Bing Automatische suggesties
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Overzicht
   items:
     - name: Wat is Bing Automatische suggesties?
