@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 04c4192293cbfa96eefcc1c84083dd54042ebe8f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: fe0eb6c2305dd01d8ff3df5be7056cbeae92fff2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484080"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762714"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Nuttige bronnen voor het werken met Azure Sentinel
 
@@ -40,8 +40,8 @@ De volgende ondersteunde bewerkingen kunnen worden gecontroleerd.
 |----|----|
 |Werkmap maken of bijwerken  |Micro soft. Insights/werkmappen|
 |Werkmap verwijderen    |Micro soft. Insights/werkmappen|
-|Werk stroom instellen   |Microsoft.Logic/workflows|
-|Werk stroom verwijderen    |Microsoft.Logic/workflows|
+|Werk stroom instellen   |Micro soft. Logic/werk stromen|
+|Werk stroom verwijderen    |Micro soft. Logic/werk stromen|
 |Opgeslagen zoek opdracht maken    |Micro soft. OperationalInsights/werk ruimten/savedSearches|
 |Opgeslagen zoek opdracht verwijderen    |Micro soft. OperationalInsights/werk ruimten/savedSearches|
 |Dash board instellen  |Micro soft. Portal/Dash boards|

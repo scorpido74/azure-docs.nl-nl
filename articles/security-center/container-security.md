@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 31e45906dfeafcd2af1651347dde9dc6d3c6fb7c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274065"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769214"
 ---
 # <a name="container-security-in-security-center"></a>Beveiliging van de container in Security Center
 
@@ -34,7 +34,7 @@ In dit artikel wordt beschreven hoe u de beveiliging van uw containers en hun ap
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Beveiligings beheer-container installatie kopieën scannen (preview)
 Als u uw Azure Container Registry wilt bewaken, moet u ervoor zorgen dat u de Standard-laag van Security Center hebt (Zie [prijzen](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Schakel vervolgens de optionele container registers bundel in. Wanneer een nieuwe installatie kopie wordt gepusht, wordt de installatie kopie door Security Center gescand met behulp van een scanner uit de toonaangevende beveiligings problemen voor het scannen van leveranciers, Qualys.
 
-Als er problemen worden gevonden, wordt er een melding weer gegeven in het Security Center-dash board van Qualys of Security Center. Security Center voorziet in elk beveiligings probleem met actie-aanbevelingen, samen met een Ernst classificatie en richt lijnen voor het oplossen van het probleem. Zie de lijst met aanbevelingen in [beveiliging van virtuele machines](security-center-virtual-machine-protection.md##compute-and-app-recs)voor meer informatie over de aanbevelingen van Security Center.
+Als er problemen worden gevonden, wordt er een melding weer gegeven in het Security Center-dash board van Qualys of Security Center. Security Center voorziet in elk beveiligings probleem met actie-aanbevelingen, samen met een Ernst classificatie en richt lijnen voor het oplossen van het probleem. Zie de lijst met aanbevelingen voor meer informatie over [de aanbevelingen van Security Center.](recommendations-compute-and-apps.md)
 
 ## <a name="environment-hardening"></a>Omgevings beveiliging
 

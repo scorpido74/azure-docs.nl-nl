@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 481acfdccb54077f18c1f4bf0375c0dc66e66007
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: a38beb0700e470d325545a2523143ecdab9f6dfb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240666"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777414"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Gegevens verbinden vanuit Office 365-logboeken
 
@@ -42,7 +42,7 @@ U kunt audit logboeken vanuit [Office 365](https://docs.microsoft.com/office365/
 
 1. Selecteer in azure Sentinel **Data connectors** en klik vervolgens op de tegel **Office 365** .
 
-2. Als u dit nog niet hebt ingeschakeld, kunt u onder **verbinding** de knop **inschakelen** gebruiken om de Office 365-oplossing in te scha kelen. Als deze al is ingeschakeld, wordt dit in het scherm verbinding aangeduid als reeds ingeschakeld.
+2. Als u dit nog niet hebt ingeschakeld, kunt u dit doen door naar de Blade **Data connectors** te gaan en **Office 365** -connector te selecteren. Hier kunt u **op** de **pagina connector openen** klikken en **de Office 365-oplossing in uw werk ruimte inschakelen in de** sectie configuratie om deze in te scha kelen. Als deze al is ingeschakeld, wordt dit in het scherm verbinding aangeduid als reeds ingeschakeld.
 1. Met Office 365 kunt u gegevens van meerdere tenants naar Azure Sentinel streamen. Voor elke Tenant waarmee u verbinding wilt maken, voegt u de Tenant toe onder **tenants verbinden met Azure Sentinel**. 
 1. Er wordt een Active Directory scherm geopend. U wordt gevraagd om u te verifiëren met een gebruiker van de globale beheerder op elke Tenant die u wilt verbinden met Azure Sentinel en machtigingen voor Azure Sentinel te geven om de logboeken te lezen. 
 5. Klik onder activiteiten logboeken van Office 365 streamen op **selecteren** om te kiezen welke logboek typen u naar Azure Sentinel wilt streamen. Op dit moment ondersteunt Azure Sentinel Exchange en share point.

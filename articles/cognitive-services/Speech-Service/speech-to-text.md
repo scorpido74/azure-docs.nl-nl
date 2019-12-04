@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 12/03/2019
 ms.author: erhopf
-ms.openlocfilehash: 49bfa4a0dbf0adc498d545a2908c20f0ffa35b4b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f04ad388922ad7f73bf4409f9a846291cbb08da3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075723"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774005"
 ---
 # <a name="what-is-speech-to-text"></a>Wat is spraak-naar-tekst?
 
@@ -23,26 +23,28 @@ Spraak-naar-tekst van Azure speech Services, ook wel spraak naar tekst genoemd, 
 
 De spraak-naar-tekst-service maakt standaard gebruik van het universele-taal model. Dit model is getraind met gegevens van micro soft en wordt geïmplementeerd in de Cloud. Het is optimaal voor gespreks-en dicteer scenario's. Als u spraak-naar-tekst gebruikt voor herkenning en transcriptie in een unieke omgeving, kunt u aangepaste akoestische, taal en uitspraak modellen maken en trainen om omgevings lawaai of branchespecifieke woorden lijsten te verhelpen.
 
-U kunt eenvoudig audio van een microfoon vastleggen, vanuit een stroom lezen of audio bestanden openen vanuit Storage met de spraak-SDK en REST Api's. De Spraak-SDK ondersteunt WAV/PCM 16-bit, 16 kHz/8 kHz geluid met één kanaal voor spraakherkenning. Extra geluidsindelingen worden ondersteund als u de [Spraak-naar-tekst REST-eindpunt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) of de [batchtranscriptieservice](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats) gebruikt.
+U kunt eenvoudig audio van een microfoon vastleggen, vanuit een stroom lezen of audio bestanden openen vanuit Storage met de spraak-SDK en REST Api's. De Spraak-SDK ondersteunt WAV/PCM 16-bit, 16 kHz/8 kHz geluid met één kanaal voor spraakherkenning. Aanvullende audio-indelingen worden ondersteund met behulp van het [spraak-naar-tekst rest-eind punt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) of de [batch transcriptie-service](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 
 ## <a name="core-features"></a>Kern functies
 
-Hier volgen de functies die beschikbaar zijn via de Speech SDK en REST Api's:
+Dit zijn de functies die beschikbaar zijn via de Speech SDK en REST Api's:
 
 | Toepassing | SDK | REST |
 |--------- | --- | ---- |
-| Vertranscribeer korte uitingen (< 15 seconden). Biedt alleen ondersteuning voor het uiteindelijke transcriptie resultaat. | Ja | Ja |
+| Vertranscribeer korte uitingen (< 15 seconden). Ondersteunt slechts één eind transcriptie resultaat. | Ja | Ja\* |
 | Continue transcriptie van lange uitingen en streaming audio (> 15 seconden). Ondersteunt tussentijdse en definitieve transcriptie-resultaten. | Ja | Nee |
-| Intenties afleiden van herkennings resultaten met [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Ja | Nee\* |
-| Batch-transcriptie van audio bestanden asynchroon. | Nee  | Ja\*\* |
-| Spraak modellen maken en beheren. | Nee | Ja\*\* |
-| Aangepaste model implementaties maken en beheren. | Nee  | Ja\*\* |
-| Maak nauwkeurigheids tests om de nauw keurigheid van het basis model versus aangepaste modellen te meten. | Nee  | Ja\*\* |
-| Abonnementen beheren. | Nee  | Ja\*\* |
+| Intenties afleiden van herkennings resultaten met [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Ja | Geen\*\* |
+| Batch-transcriptie van audio bestanden asynchroon. | Nee  | Ja\*\*\* |
+| Spraak modellen maken en beheren. | Nee | Ja\*\*\* |
+| Aangepaste model implementaties maken en beheren. | Nee  | Ja\*\*\* |
+| Maak nauwkeurigheids tests om de nauw keurigheid van het basis model versus aangepaste modellen te meten. | Nee  | Ja\*\*\* |
+| Abonnementen beheren. | Nee  | Ja\*\*\* |
 
-\*_Luis intenties en entiteiten kunnen worden afgeleid met behulp van een afzonderlijke Luis-abonnement. Met dit abonnement kan de SDK LUIS voor u aanroepen en de resultaten van de entiteit en het doel opgeven. Met de REST API kunt u LUIS zelf aanroepen om intenties en entiteiten af te leiden met uw LUIS-abonnement._
+\*_met behulp van de rest-functionaliteit, kunt u Maxi maal 60 seconden aan audio overdragen en ontvangt u één eind transcriptie resultaat._
 
-\*\*_deze services zijn beschikbaar via het CRIS.ai-eind punt. Zie [Swagger-verwijzing](https://westus.cris.ai/swagger/ui/index)._
+\*\*_Luis-intenties en entiteiten kunnen worden afgeleid met behulp van een afzonderlijke Luis-abonnement. Met dit abonnement roept de SDK LUIS voor u aan en geeft u de resultaten van de entiteit en het doel op. Met de REST API roept u LUIS aan om intenties en entiteiten met uw LUIS-abonnement af te leiden._
+
+\*\*\*_deze services zijn beschikbaar via het CRIS.ai-eind punt. Zie [Swagger-verwijzing](https://westus.cris.ai/swagger/ui/index)._
 
 ## <a name="get-started-with-speech-to-text"></a>Aan de slag met spraak naar tekst
 

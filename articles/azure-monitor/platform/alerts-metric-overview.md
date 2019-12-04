@@ -7,12 +7,12 @@ ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: b92b4233b6ecd8743f98f7f0dd13e07ad4c76c81
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: aa54b9ce23ffab266ed6403e3525ae1290d99cec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484257"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775718"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe metrische waarschuwingen werken in Azure Monitor
 
@@ -133,7 +133,7 @@ U kunt op een van de volgende drie manieren het bewakings bereik opgeven voor é
 - alle virtuele machines (in één Azure-regio) in een of meer resource groepen in een abonnement
 - alle virtuele machines (in één Azure-regio) in één abonnement
 
-Het maken van metrische waarschuwings regels waarmee meerdere resources worden bewaakt, is vergelijkbaar met [het maken van een andere metrische waarschuwing](alerts-metric.md) waarmee één resource wordt gecontroleerd. Alleen een verschil is dat u alle resources selecteert die u wilt bewaken. U kunt deze regels ook maken via [Azure Resource Manager sjablonen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). U ontvangt afzonderlijke meldingen voor elke virtuele machine.
+Het maken van metrische waarschuwings regels waarmee meerdere resources worden bewaakt, is vergelijkbaar met [het maken van een andere metrische waarschuwing](alerts-metric.md) waarmee één resource wordt gecontroleerd. Alleen een verschil is dat u alle resources selecteert die u wilt bewaken. U kunt deze regels ook maken via [Azure Resource Manager sjablonen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). U ontvangt afzonderlijke meldingen voor elke virtuele machine.
 
 ## <a name="typical-latency"></a>Normale latentie
 

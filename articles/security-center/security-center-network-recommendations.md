@@ -13,20 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: bf33fe29b18b09bf903e1fc331f1c378eacb3e17
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21feed73d025e0c0a4b2c7bb07d23f450780126e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201712"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766783"
 ---
-# <a name="protect-your-network-resources-in-azure-security-center"></a>Uw netwerk bronnen beveiligen in Azure Security Center
+# <a name="protect-your-network-resources"></a>Uw netwerk bronnen beveiligen
 Azure Security Center de beveiligings status van uw Azure-resources voortdurend geanalyseerd op de aanbevolen procedures voor netwerk beveiliging. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
+
+In dit artikel wordt de pagina **netwerken** van de sectie resource beveiliging van Azure Security Center beschreven en enkele aanbevelingen die u hier ziet.
+
+Zie [aanbevelingen voor netwerken](recommendations-network.md)voor een volledige lijst met aanbevelingen voor netwerken.
 
 In dit artikel worden aanbevelingen gedaan die van toepassing zijn op uw Azure-resources op basis van een netwerk beveiligings perspectief. Aanbevelingen voor netwerken rond de volgende generatie firewalls, netwerk beveiligings groepen, JIT-VM-toegang en regels voor binnenkomend verkeer, en meer. Zie [beveiligings aanbevelingen beheren in azure Security Center](security-center-recommendations.md)voor een lijst met aanbevelingen en herstel acties voor netwerken.
 
 > [!NOTE]
-> Op de pagina **netwerken** kunt u de Azure-resource status van een netwerk perspectief dieper laten opkomen. De netwerk kaart en adaptieve netwerk besturings elementen zijn alleen beschikbaar voor de laag Azure Security Center standaard. [Als u de laag gratis gebruikt, kunt u klikken op de knop om verouderde **netwerken weer te geven** en aanbevelingen voor netwerk bronnen te ontvangen](#legacy-networking).
+> Op de pagina **netwerken** kunt u de Azure-resource status van een netwerk perspectief dieper laten opkomen. De netwerk kaart en adaptieve netwerk besturings elementen zijn alleen beschikbaar voor de laag Azure Security Center standaard. [Als u de laag gratis gebruikt, kunt u klikken op de knop om **verouderde netwerken weer te geven** en aanbevelingen voor netwerk bronnen te ontvangen](#legacy-networking).
 >
 
 Op de pagina **netwerken** vindt u een overzicht van de secties die u uitgebreid kunt bekijken, voor meer informatie over de status van uw netwerk bronnen:
@@ -38,7 +42,7 @@ Op de pagina **netwerken** vindt u een overzicht van de secties die u uitgebreid
  
 ![Netwerk venster](./media/security-center-network-recommendations/networking-pane.png)
 
-## <a name="network-map"></a>Netwerktoewijzing
+## <a name="network-map"></a>Netwerk toewijzing
 De interactieve netwerk kaart biedt een grafische weer gave met beveiligings-overlays waarmee u aanbevelingen en inzichten krijgt voor het versterken van uw netwerk bronnen. Met de kaart ziet u de netwerk topologie van uw Azure-workloads, verbindingen tussen uw virtuele machines en subnetten, en de mogelijkheid om in te zoomen op de kaart in specifieke bronnen en de aanbevelingen voor deze resources.
 
 De netwerk kaart openen:
@@ -75,9 +79,9 @@ Omdat de kaart interactief en dynamisch is, wordt elk knoop punt kan worden gekl
 
 1. U kunt wijzigen wat u ziet op de netwerk kaart door de filters bovenaan te gebruiken. U kunt de kaart richten op basis van:
 
-   -  **Beveiligings status**: U kunt de kaart filteren op basis van de ernst (hoog, gemiddeld, laag) van uw Azure-resources.
-   - **Aanbevelingen**: U kunt selecteren welke resources worden weer gegeven op basis van de aanbevelingen die actief zijn op deze resources. U kunt bijvoorbeeld alleen resources weer geven waarvoor Security Center raadt u aan om netwerk beveiligings groepen in te scha kelen.
-   - **Netwerk zones**: Standaard worden in de kaart alleen Internet gerichte bronnen weer gegeven. u kunt ook interne Vm's selecteren.
+   -  **Beveiligings status**: u kunt de kaart filteren op basis van de ernst (hoog, gemiddeld, laag) van uw Azure-resources.
+   - **Aanbevelingen**: u kunt selecteren welke resources worden weer gegeven op basis waarvan de aanbevelingen actief zijn op deze resources. U kunt bijvoorbeeld alleen resources weer geven waarvoor Security Center raadt u aan om netwerk beveiligings groepen in te scha kelen.
+   - **Netwerk zones**: standaard worden in de kaart alleen Internet gerichte bronnen weer gegeven. u kunt ook interne vm's selecteren.
  
 2. U kunt op elk gewenst moment op **Reset** klikken in de linkerbovenhoek om de standaard status van de kaart te herstellen.
 
@@ -113,7 +117,7 @@ Inzoomen op een resource:
 
 Als u geen Security Center Standard-laag hebt, wordt in deze sectie uitgelegd hoe u aanbevelingen voor gratis netwerken kunt weer geven.
 
-Als u deze informatie wilt openen, klikt u op de Blade netwerken op verouderde **netwerken weer geven**. 
+Als u deze informatie wilt openen, klikt u op de Blade netwerken op **verouderde netwerken weer geven**. 
 
 ![Verouderde netwerken](./media/security-center-network-recommendations/legacy-networking.png)
 
@@ -131,31 +135,8 @@ In deze topologie weergave wordt op het eerste niveau Vnets weer gegeven. De twe
 
 Op het derde niveau worden virtuele machines weer gegeven. Dit is vergelijkbaar met wat eerder is beschreven. U kunt klikken op een resource voor meer informatie of de vereiste beveiligings controle of-configuratie Toep assen.
 
-## <a name="network-recommendations"></a>Aanbevelingen voor netwerken
-
-|Aanbevolen naam|Description|Severity|Beveiligingsscore|Resourcetype|
-|----|----|----|----|----|----|
-|Netwerk beveiligings groepen op het subnetniveau moeten zijn ingeschakeld|Netwerk beveiligings groepen inschakelen voor het beheren van netwerk toegang van resources die zijn geïmplementeerd in uw subnetten.|Hoog/gemiddeld|30|Subnet|
-|Virtuele machines moeten worden gekoppeld aan een netwerk beveiligings groep|Schakel netwerk beveiligings groepen in om de netwerk toegang van uw virtuele machines te beheren.|Hoog/gemiddeld|30|Virtuele machine|
-|Toegang moet worden beperkt voor strikte netwerk beveiligings groepen met Internet gerichte Vm's|Beperk de netwerk beveiligings groepen van uw Internet gerichte Vm's door de toegang tot uw bestaande regels voor toestaan te beperken.|Hoog|20|Virtuele machine|
-|De regels voor webtoepassingen op IaaS Nsg's moeten worden gehard|De netwerk beveiligings groep (NSG) van uw virtuele machines waarop webtoepassingen worden uitgevoerd, beveiligen met NSG-regels die zich te maken hebben met betrekking tot de poorten van de web-app.|Hoog|20|Virtuele machine|
-|Toegang tot App Services moet worden beperkt|Beperk de toegang tot uw App Services door de netwerk configuratie te wijzigen, om inkomend verkeer te weigeren van bereiken die te breed zijn.|Hoog|10|App Service|
-|Beheer poorten moeten worden gesloten op uw virtuele machines|Beperk de netwerk beveiligings groep van uw virtuele machines om de toegang tot beheer poorten te beperken.|Hoog|10|Virtuele machine|
-DDoS Protection standaard moet zijn ingeschakeld|Beveilig virtuele netwerken met toepassingen met open bare Ip's door de DDoS Protection Service-standaard in te scha kelen. DDoS Protection maakt het beperken van netwerk-en protocol aanvallen mogelijk.|Hoog|10|Virtueel netwerk|
-|Door sturen via IP op uw virtuele machine moet worden uitgeschakeld|Schakel door sturen via IP uit. Als door sturen via IP is ingeschakeld op de NIC van een virtuele machine, kan de computer verkeer ontvangen dat is geadresseerd aan andere bestemmingen. Door sturen via IP is zelden vereist (bijvoorbeeld wanneer u de virtuele machine als een virtueel netwerk apparaat gebruikt), en dit moet daarom worden gecontroleerd door het netwerk beveiligings team.|Gemiddeld|10|Virtuele machine|
-|Web-App moet alleen toegankelijk zijn via HTTPS|Schakel de toegang ' alleen HTTPS ' in voor webtoepassingen. Het gebruik van HTTPS garandeert Server/service-verificatie en beveiligt gegevens tijdens de overdracht van aanvallen met een netwerklaag.|Gemiddeld|20|Webtoepassing|
-|Just-in-time-netwerk toegangs beheer moet worden toegepast op virtuele machines|Pas een just-in-time-toegangs beheer (VM) toe om de toegang tot geselecteerde poorten permanent te vergren delen en stel gemachtigde gebruikers in staat om ze te openen via JIT, gedurende een beperkte periode.|Hoog|20|Virtuele machine|
-|Functie-apps moeten alleen toegankelijk zijn via HTTPS|Schakel de toegang ' alleen HTTPS ' in voor functie-apps. Het gebruik van HTTPS garandeert Server/service-verificatie en beveiligt gegevens tijdens de overdracht van aanvallen met een netwerklaag.|Gemiddeld|20|Function App|
-|Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld|Schakel beveiligde overdracht naar opslag accounts in. Beveiligde overdracht is een optie die ervoor zorgt dat uw opslag account alleen aanvragen van beveiligde verbindingen (HTTPS) accepteert. Het gebruik van HTTPS zorgt voor verificatie tussen de server en de service en beveiligt de door Voer van gegevens via netwerklaag aanvallen, zoals man-in-the-Middle, inkomend en inkomend en sessie overname.|Hoog|20|Storage-account|
-
 ## <a name="see-also"></a>Zie ook
-Zie de volgende onderwerpen voor meer informatie over aanbevelingen die betrekking hebben op andere typen Azure-resources:
+Zie het volgende voor meer informatie over de aanbevelingen die van toepassing zijn op andere Azure-resource typen:
 
 * [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
-* [Beveiligen van uw Azure SQL-service in Azure Security Center](security-center-sql-service-recommendations.md)
-
-Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
-
-* [Setting security policies in Azure Security Center](tutorial-security-policy.md) (Beveiligingsbeleid instellen in Azure Security Center): leer hoe u beveiligingsbeleid voor uw Azure-abonnementen en -resourcegroepen configureert.
-* [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center): ontdek hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren.
-* [Azure Security Center FAQ](security-center-faq.md) (Veelgestelde vragen over Azure Security Center): raadpleeg veelgestelde vragen over het gebruik van de service.
+* [Uw Azure SQL-service beveiligen in Azure Security Center](security-center-sql-service-recommendations.md)

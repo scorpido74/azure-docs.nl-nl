@@ -1,22 +1,18 @@
 ---
-title: Verbinding maken met toegestane vertraging van Azure Logic Apps | Microsoft Docs
+title: Verbinding maken met toegestane vertraging van Azure Logic Apps
 description: Taken en werk stromen automatiseren waarmee bestanden worden bewaakt en kanalen, groepen en berichten in uw toegestane account kunnen worden beheerd met behulp van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 2606fdc15194264bc3d84496d2de258adfc314be
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 5f61009ee7b43be618e37acb4a783a54dbf11e55
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050790"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789168"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>De toegestane vertraging controleren en beheren met Azure Logic Apps
 
@@ -72,11 +68,11 @@ U kunt triggers gebruiken die antwoorden krijgen van uw toegestane account en de
 
 Raadpleeg de [referentie pagina](/connectors/slack/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 * Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 * Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

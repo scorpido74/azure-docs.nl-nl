@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 7a7544ef9fe5724d1f6c11918411a76461d908e5
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104402"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777551"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Cluster prestaties in azure HDInsight bewaken
 
@@ -27,13 +27,13 @@ Hadoop-clusters kunnen de meest optimale prestaties leveren wanneer de belasting
 
 Meld u aan bij de [Ambari-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md)en selecteer vervolgens het tabblad **hosts** om een hoog niveau te krijgen voor de knoop punten van uw cluster en het laden ervan. Uw hosts worden weer gegeven op basis van de volledig gekwalificeerde domein namen. De operationele status van elke host wordt weer gegeven met een gekleurde status indicator:
 
-| Kleur | Description |
+| Kleur | Beschrijving |
 | --- | --- |
 | Rood | Ten minste één hoofd onderdeel op de host is niet beschikbaar. Beweeg de muis aanwijzer om een knop Info weer te geven waarin de betrokken onderdelen worden weer gegeven. |
-| Oranje | Ten minste één secundair onderdeel op de host is niet beschikbaar. Beweeg de muis aanwijzer om een knop Info weer te geven waarin de betrokken onderdelen worden weer gegeven. |
+| Orange | Ten minste één secundair onderdeel op de host is niet beschikbaar. Beweeg de muis aanwijzer om een knop Info weer te geven waarin de betrokken onderdelen worden weer gegeven. |
 | Geel | De Ambari-server heeft meer dan drie minuten geen heartbeat van de host ontvangen. |
 | Groen | Normale status. |
-
+ 
 U ziet ook kolommen met het aantal kernen en de hoeveelheid RAM-geheugen voor elke host, en het schijf gebruik en de gemiddelde belasting.
 
 ![Overzicht van Apache Ambari hosts-tabblad](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -72,11 +72,11 @@ Selecteer in de gebruikers interface van Resource Manager **scheduler** in het m
 
 ## <a name="storage-throttling"></a>Opslag beperking
 
-Het prestatie knelpunt van een cluster kan zich voordoen op het opslag niveau. Dit type knel punt wordt meestal veroorzaakt door het *blok keren* van invoer/uitvoer-bewerkingen (i/o), wat er gebeurt wanneer uw actieve taken meer io verzenden dan de opslag service kan verwerken. Deze blok kering maakt een wachtrij met i/o-aanvragen die nog moeten worden verwerkt totdat de huidige IOs is verwerkt. De blokken worden veroorzaakt door *beperking*van de opslag, wat geen fysieke limiet is, maar een limiet die door de opslag service wordt opgelegd door een Service Level Agreement (Sla). Deze limiet zorgt ervoor dat er geen enkele client of Tenant de service in beslag kan nemen. De SLA beperkt het aantal IOs per seconde (IOPS) voor Azure Storage-Zie [Azure Storage schaal baarheid en prestatie doelen](https://docs.microsoft.com/azure/storage/storage-scalability-targets)voor meer informatie.
+Het prestatie knelpunt van een cluster kan zich voordoen op het opslag niveau. Dit type bottleneck is vaak het gevolg van het *blok keren* van i/o-bewerkingen (invoer/uitvoer), wat er gebeurt wanneer uw actieve taken meer io verzenden dan de opslag service kan verwerken. Deze blok kering maakt een wachtrij met i/o-aanvragen die nog moeten worden verwerkt totdat de huidige IOs is verwerkt. De blokken zijn vanwege *opslag beperking*, wat geen fysieke limiet is, maar een limiet die door de opslag service wordt opgelegd door een Service Level Agreement (Sla). Deze limiet zorgt ervoor dat er geen enkele client of Tenant de service in beslag kan nemen. De SLA beperkt het aantal IOs per seconde (IOPS) voor Azure Storage-Zie [Azure Storage schaal baarheid en prestatie doelen](https://docs.microsoft.com/azure/storage/storage-scalability-targets)voor meer informatie.
 
 Als u Azure Storage gebruikt, raadpleegt u voor meer informatie over het bewaken van problemen met betrekking tot opslag, zoals beperking, het [controleren, diagnosticeren en probleem oplossing van Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 
-Als de back-upopslag van uw cluster Azure Data Lake Storage is (ADLS), is uw beperking waarschijnlijk het gevolg van bandbreedte limieten. Beperking in dit geval kan worden geïdentificeerd door beperkings fouten in taak logboeken te observeren. Voor ADLS raadpleegt u de sectie beperking voor de betreffende service in de volgende artikelen:
+Als de back-upopslag van uw cluster Azure Data Lake Storage (ADLS) is, wordt uw beperking waarschijnlijk veroorzaakt door bandbreedte limieten. Beperking in dit geval kan worden geïdentificeerd door beperkings fouten in taak logboeken te observeren. Voor ADLS raadpleegt u de sectie beperking voor de betreffende service in de volgende artikelen:
 
 * [Richt lijnen voor het afstemmen van de prestaties van Apache Hive op HDInsight en Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Richt lijnen voor het afstemmen van de prestaties voor MapReduce in HDInsight en Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)

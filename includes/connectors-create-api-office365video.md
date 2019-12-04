@@ -1,29 +1,30 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 20729d1e73dd0ff9010201a1c6597b616b364a09
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: c0dcba2dd003dfebdd9ce67bf4d78082c32824ba
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176292"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789479"
 ---
-### <a name="prerequisites"></a>Vereisten
-* Een [Office 365 Video](https://support.office.com/article/Meet-Office-365-Video-ca1cc1a9-a615-46e1-b6a3-40dbd99939a6) account  
+## <a name="prerequisites"></a>Vereisten
 
-Voordat u uw Office 365 Video-account in een logische app gebruiken kunt, verleent u de logische app verbinding maken met uw Office 365 Video-account. Gelukkig kunt u dit eenvoudig vanuit doen binnen uw logische app in de Azure Portal.  
+* Een [Office 365-video](https://support.office.com/article/Meet-Office-365-Video-ca1cc1a9-a615-46e1-b6a3-40dbd99939a6) account  
 
-Hier volgen de stappen voor het autoriseren van uw logische app verbinding maken met uw Office 365 Video-account:  
+Voordat u uw Office 365-Video account kunt gebruiken in een logische app, moet u de logische app toestemming geven om verbinding te maken met uw Office 365-Video account. Gelukkig kunt u dit eenvoudig doen vanuit uw logische app in azure Portal.  
 
-1. Voor het maken van een verbinding met Office 365 Video in de Logic app designer selecteert **beheerde API's van Microsoft weergeven** Voer in de vervolgkeuzelijst *Office 365 Video* in het zoekvak in. Selecteer de trigger of actie wilt u zult gebruiken:  
-   ![Office 365 Video verbinding stap](./media/connectors-create-api-office365video/office365video-1.png)  
-2. Als u alle verbindingen met Office 365 Video voordat u dit nog niet hebt gemaakt, zult u wordt gevraagd de referenties van uw Office 365 Video op te geven. Deze referenties worden gebruikt voor het autoriseren van uw logische app verbinding maken met en toegang tot gegevens van uw Office 365 Video-account:  
-   ![Office 365 Video verbinding stap](./media/connectors-create-api-office365video/office365video-2.png)  
-3. Geef uw referenties verbinding maken met Office 365 Video:  
-   ![Office 365 Video verbinding stap](./media/connectors-create-api-office365video/office365video-3.png)  
-4. U ziet dat de verbinding is gemaakt en u bent nu vrij om door te gaan met de overige stappen in uw logische app:  
-   ![Office 365 Video verbinding stap](./media/connectors-create-api-office365video/office365video-4.png)  
+Hier volgen de stappen om uw logische app te autoriseren om verbinding te maken met uw Office 365-Video account:  
+
+1. Als u een verbinding met Office 365-video wilt maken, selecteert u in de ontwerp functie voor logische apps de optie **micro soft Managed Api's weer geven** in de vervolg keuzelijst en voert u vervolgens *Office 365-video* in het zoekvak in. Selecteer de trigger of actie die u wilt gebruiken:  
+   ![Office 365-stap voor het maken van de video verbinding](./media/connectors-create-api-office365video/office365video-1.png)  
+2. Als u nog geen verbindingen met Office 365-video hebt gemaakt, wordt u gevraagd om uw Office 365-video referenties op te geven. Deze referenties worden gebruikt om uw logische app te autoriseren om verbinding te maken met en om toegang te krijgen tot de gegevens van uw Office 365-Video account:  
+   ![Office 365-stap voor maken van video verbinding](./media/connectors-create-api-office365video/office365video-2.png)  
+3. Geef uw referenties op om verbinding te maken met Office 365-video:  
+   ![Office 365-stap voor maken van video verbinding](./media/connectors-create-api-office365video/office365video-3.png)  
+4. U ziet dat de verbinding is gemaakt en u kunt nu door gaan met de andere stappen in uw logische app:  
+   ![Office 365-stap voor maken van video verbinding](./media/connectors-create-api-office365video/office365video-4.png)  
 

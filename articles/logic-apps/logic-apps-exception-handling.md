@@ -1,20 +1,19 @@
 ---
-title: Afhandeling van fouten en uitzonde ringen-Azure Logic Apps
+title: Afhandeling van fouten en uitzonde ringen
 description: Meer informatie over patronen voor het afhandelen van fouten en uitzonde ringen in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/31/2018
 ms.topic: article
-ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 781abb1ce92a9d96a93ac0c6b04d55075d752db8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208187"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792080"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Fouten en uitzonde ringen in Azure Logic Apps afhandelen
 
@@ -28,7 +27,7 @@ Voor de meest eenvoudige uitzonde ring en fout afhandeling kunt u een *beleid vo
 
 Dit zijn de beleids typen voor opnieuw proberen: 
 
-| type | Description | 
+| Type | Beschrijving | 
 |------|-------------| 
 | **Standaard** | Met dit beleid worden Maxi maal vier nieuwe pogingen verzonden met *exponentieel toenemende* intervallen. deze worden geschaald op 7,5 seconden, maar worden tussen 5 en 45 seconden gelimiteerd. | 
 | **Exponentieel interval**  | Dit beleid wacht een wille keurig interval dat is geselecteerd uit een exponentieel groeiend bereik voordat de volgende aanvraag wordt verzonden. | 
@@ -48,7 +47,7 @@ Voer de volgende stappen uit om een ander beleid voor opnieuw proberen te select
 
 3. Als de actie of trigger het beleid voor nieuwe pogingen ondersteunt, selecteert u het gewenste type onder **beleid voor opnieuw proberen**. 
 
-Of u kunt het beleid voor opnieuw proberen hand matig opgeven `inputs` in de sectie voor een actie of trigger die beleids regels voor opnieuw proberen ondersteunt. Als u geen beleid voor opnieuw proberen opgeeft, gebruikt de actie het standaard beleid.
+Of u kunt het beleid voor opnieuw proberen hand matig opgeven in het gedeelte `inputs` voor een actie of trigger die beleids regels voor opnieuw proberen ondersteunt. Als u geen beleid voor opnieuw proberen opgeeft, gebruikt de actie het standaard beleid.
 
 ```json
 "<action-name>": {
@@ -70,19 +69,19 @@ Of u kunt het beleid voor opnieuw proberen hand matig opgeven `inputs` in de sec
 
 *Vereist*
 
-| Value | type | Description |
+| Waarde | Type | Beschrijving |
 |-------|------|-------------|
-| <*retry-policy-type*> | String | Het type beleid voor opnieuw proberen dat u wilt `default`gebruiken `none`: `fixed`,,, of`exponential` | 
-| <*retry-interval*> | String | Het interval voor nieuwe pogingen waarbij de waarde de [ISO 8601-notatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)moet gebruiken. Het minimale standaard interval is `PT5S` en het maximum `PT1D`interval. Wanneer u het beleid voor exponentiële intervallen gebruikt, kunt u verschillende minimum-en maximum waarden opgeven. | 
-| <*retry-attempts*> | Integer | Het aantal nieuwe pogingen, dat tussen 1 en 90 ligt | 
+| <*opnieuw proberen-beleid type*> | Tekenreeks | Het type beleid voor opnieuw proberen dat u wilt gebruiken: `default`, `none`, `fixed`of `exponential` | 
+| <*interval voor opnieuw proberen*> | Tekenreeks | Het interval voor nieuwe pogingen waarbij de waarde de [ISO 8601-notatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)moet gebruiken. Het minimale standaard interval is `PT5S` en het maximum interval wordt `PT1D`. Wanneer u het beleid voor exponentiële intervallen gebruikt, kunt u verschillende minimum-en maximum waarden opgeven. | 
+| <*nieuwe pogingen:* > | Geheel getal | Het aantal nieuwe pogingen, dat tussen 1 en 90 ligt | 
 ||||
 
 *Beschrijving*
 
-| Value | type | Description |
+| Waarde | Type | Beschrijving |
 |-------|------|-------------|
-| <*minimum-interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen wordt het kleinste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
-| <*maximum-interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen is het grootste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*Mini maal interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen wordt het kleinste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*maximum interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen is het grootste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
 |||| 
 
 Hier vindt u meer informatie over de verschillende beleids typen.
@@ -115,11 +114,11 @@ Hoewel niet expliciet is gedefinieerd in uw actie of trigger, is dit het standaa
 
 ### <a name="none"></a>Geen
 
-Als u wilt opgeven dat de actie of de trigger geen mislukte aanvragen opnieuw probeert uit te voeren, stelt u het `none`*type < opnieuw proberen*> in op.
+Als u wilt opgeven dat bij de actie of trigger geen mislukte aanvragen worden uitgevoerd, stelt u het > <*opnieuw proberen*in op `none`.
 
 ### <a name="fixed-interval"></a>Vast interval
 
-Als u wilt opgeven dat de actie of trigger het opgegeven interval moet wachten voordat de volgende aanvraag wordt verzonden, stelt u het > <*opnieuw proberen*in op `fixed`.
+Als u wilt opgeven dat de actie of trigger het opgegeven interval moet wachten voordat de volgende aanvraag wordt verzonden, stelt u de <*opnieuw proberen beleid type*> in `fixed`.
 
 *Voorbeeld*
 
@@ -144,7 +143,7 @@ Dit beleid voor opnieuw proberen probeert het laatste nieuws twee keer na de eer
 
 ### <a name="exponential-interval"></a>Exponentieel interval
 
-Als u wilt opgeven dat de actie of trigger een wille keurig interval moet wachten voordat de volgende aanvraag wordt verzonden, stelt u het > < `exponential`*opnieuw proberen*in. Het wille keurig interval wordt geselecteerd uit een exponentieel groeiend bereik. U kunt eventueel ook de standaard minimum-en maximum intervallen onderdrukken door uw eigen minimum-en maximum intervallen op te geven.
+Als u wilt opgeven dat bij de actie of trigger een wille keurig interval moet worden gewacht voordat de volgende aanvraag wordt verzonden, stelt u het > <*opnieuw proberen*in op `exponential`. Het wille keurig interval wordt geselecteerd uit een exponentieel groeiend bereik. U kunt eventueel ook de standaard minimum-en maximum intervallen onderdrukken door uw eigen minimum-en maximum intervallen op te geven.
 
 **Bereiken voor wille keurige variabele**
 
@@ -153,7 +152,7 @@ In deze tabel ziet u hoe Logic Apps een uniforme wille keurige variabele in het 
 | Aantal nieuwe pogingen | Minimum interval | Maximum interval |
 |--------------|------------------|------------------|
 | 1 | Max (0, <*Mini maal interval*>) | min (interval, <*maximum-interval*>) |
-| 2 | max(interval, <*minimum-interval*>) | min (2 * interval, <*maximum-interval*>) |
+| 2 | Max (interval, <*Mini maal interval*>) | min (2 * interval, <*maximum-interval*>) |
 | 3 | Max (2 * interval, <*Mini maal interval*>) | min (4 * interval, <*maximum-interval*>) |
 | 4 | Max (4 * interval, <*Mini maal interval*>) | min (8 * interval, <*maximum-interval*>) |
 | .... | .... | .... | 
@@ -163,7 +162,7 @@ In deze tabel ziet u hoe Logic Apps een uniforme wille keurige variabele in het 
 
 Met elke actie van een logische app worden de acties gedeclareerd die moeten worden voltooid voordat deze actie wordt gestart, vergelijkbaar met hoe u de volg orde van de stappen in uw werk stroom opgeeft. In een actie definitie definieert de eigenschap **runAfter** deze volg orde en is dit een object dat beschrijft welke acties en actie status de actie uitvoeren.
 
-Standaard zijn alle acties die u toevoegt in de ontwerp functie voor logische apps zo ingesteld dat ze worden uitgevoerd na de vorige stap wanneer het resultaat van de vorige stap is **voltooid**. U kunt de waarde van **runAfter** echter aanpassen zodat acties worden gestart wanneer de vorige acties resulteren in **mislukt**, **overgeslagen**of een combi natie van deze waarden. Als u bijvoorbeeld een item wilt toevoegen aan een specifiek Service Bus onderwerp nadat een bepaalde **Insert_Row** -actie is mislukt, kunt u dit voor beeld gebruiken **runAfter** definitie:
+Standaard zijn alle acties die u toevoegt in de ontwerp functie voor logische apps zo ingesteld dat ze worden uitgevoerd na de vorige stap wanneer het resultaat van de vorige stap is **voltooid**. U kunt de waarde van **runAfter** echter aanpassen zodat acties worden gestart wanneer de vorige acties resulteren in **mislukt**, **overgeslagen**of een combi natie van deze waarden. Als u bijvoorbeeld een item wilt toevoegen aan een specifiek Service Bus onderwerp nadat een bepaalde **Insert_Row** actie mislukt, kunt u dit voor beeld gebruiken **runAfter** definitie:
 
 ```json
 "Send_message": {
@@ -191,7 +190,7 @@ Standaard zijn alle acties die u toevoegt in de ontwerp functie voor logische ap
 }
 ```
 
-De eigenschap **runAfter** wordt ingesteld om te worden uitgevoerd wanneer de status van de **Insert_Row** -actie **mislukt**. Als u de actie wilt uitvoeren als de actie status **geslaagd**, **mislukt**of **overgeslagen**is, gebruikt u de volgende syntaxis:
+De eigenschap **runAfter** wordt ingesteld om te worden uitgevoerd wanneer de status van de **Insert_Row** actie **mislukt**. Als u de actie wilt uitvoeren als de actie status **geslaagd**, **mislukt**of **overgeslagen**is, gebruikt u de volgende syntaxis:
 
 ```json
 "runAfter": {
@@ -212,7 +211,7 @@ Net als bij het uitvoeren van stappen na afzonderlijke acties met de eigenschap 
 
 Als u de status van een bereik wilt controleren, kunt u dezelfde criteria gebruiken die u gebruikt om de uitvoerings status van een logische app te controleren, zoals **geslaagd**, **mislukt**, enzovoort. 
 
-Wanneer alle acties van het bereik slagen, is de status van het bereik standaard gemarkeerd als **geslaagd**. Als de laatste actie in een bereik als **mislukt** of afgebroken resulteert, wordt de status van het bereik gemarkeerd als **mislukt**. 
+Wanneer alle acties van het bereik slagen, is de status van het bereik standaard gemarkeerd als **geslaagd**. Als de laatste actie in een bereik als **mislukt** of **afgebroken**resulteert, wordt de status van het bereik gemarkeerd als **mislukt**. 
 
 Als u uitzonde ringen in een **mislukte** scope wilt ondervangen en acties wilt uitvoeren die deze fouten verwerken, kunt u de eigenschap **RunAfter** voor die **mislukte** scope gebruiken. Op die manier, als *er* acties in de scope mislukken en u de eigenschap **runAfter** voor dat bereik gebruikt, kunt u één actie maken om fouten te ondervangen.
 
@@ -224,11 +223,11 @@ Zie [limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md)voo
 
 Hoewel het niet nuttig is om een bereik te bereiken, is het mogelijk dat u ook wilt weten welke acties zijn mislukt plus eventuele fouten of status codes die zijn geretourneerd.
 
-De [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) functie biedt context over de resultaten van alle acties in een bereik. De `result()` functie accepteert één para meter, de naam van het bereik en retourneert een matrix die alle actie resultaten van binnen dat bereik bevat. Deze actie objecten bevatten dezelfde kenmerken als het `@actions()` object, zoals de begin tijd van de actie, de eind tijd, status, invoer, correlatie-id's en uitvoer. Als u context wilt verzenden voor acties die zijn mislukt binnen een bereik, kunt u eenvoudig `@result()` een expressie koppelen `runAfter` aan de eigenschap.
+De functie [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) biedt context over de resultaten van alle acties in een bereik. De functie `result()` accepteert één para meter, de naam van het bereik, en retourneert een matrix die alle actie resultaten van binnen dat bereik bevat. Deze actie objecten bevatten dezelfde kenmerken als het `@actions()`-object, zoals de begin tijd, eind tijd, status, invoer, correlatie-Id's en uitvoer van de actie. Als u context wilt verzenden voor acties die zijn mislukt binnen een bereik, kunt u eenvoudig een `@result()` expressie koppelen aan de eigenschap `runAfter`.
 
 Als u een actie wilt uitvoeren voor elke actie in een bereik met een **mislukt** resultaat en als u de matrix met resultaten wilt filteren op de mislukte acties, kunt u een `@result()` expressie koppelen met een [**filter matrix**](../connectors/connectors-native-query.md) actie en een [**voor elke**](../logic-apps/logic-apps-control-flow-loops.md) lus. U kunt de gefilterde resultaat matrix nemen en een actie uitvoeren voor elke fout met behulp **van de voor elke** lus.
 
-Hier volgt een voor beeld, gevolgd door een gedetailleerde uitleg die een HTTP POST-aanvraag verzendt met de antwoord tekst voor acties die zijn mislukt binnen het bereik ' My_Scope ':
+Hier volgt een voor beeld, gevolgd door een gedetailleerde uitleg, waarmee een HTTP POST-aanvraag wordt verzonden met de antwoord tekst voor acties die zijn mislukt binnen de scope ' My_Scope ':
 
 ```json
 "Filter_array": {
@@ -271,22 +270,22 @@ Hier volgt een voor beeld, gevolgd door een gedetailleerde uitleg die een HTTP P
 
 Hier volgt een gedetailleerde beschrijving van wat er in dit voor beeld gebeurt:
 
-1. Als u het resultaat wilt ophalen uit alle acties in ' My_Scope ', maakt de **filter matrix** actie gebruik van deze filter expressie:`@result('My_Scope')`
+1. Als u het resultaat wilt ophalen uit alle acties in ' My_Scope ', gebruikt de actie **filter matrix** deze filter expressie: `@result('My_Scope')`
 
-2. De voor waarde voor de **filter matrix** is `@result()` een item waarvan de status gelijk is aan **mislukt**. Met deze voor waarde wordt de matrix met alle actie resultaten van ' My_Scope ' naar een matrix met alleen de mislukte actie resultaten gefilterd.
+2. De voor waarde voor de **filter matrix** is een `@result()` item waarvan de status gelijk is aan **mislukt**. Met deze voor waarde wordt de matrix met alle actie resultaten van ' My_Scope ' naar een matrix met alleen de mislukte actie resultaten gefilterd.
 
-3. Voer **voor elke** lus een actie uit op de gefilterde *matrix* uitvoer. Met deze stap voert u een actie uit voor elk mislukt actie resultaat dat eerder is gefilterd.
+3. Voer **voor elke** lus een actie uit op de *gefilterde matrix* uitvoer. Met deze stap voert u een actie uit voor elk mislukt actie resultaat dat eerder is gefilterd.
 
    Als één actie in het bereik is mislukt, worden de acties in de lus **voor elke** herhalingslus slechts eenmaal uitgevoerd. 
    Meerdere mislukte acties veroorzaken één actie per fout.
 
-4. Verzend een HTTP post op de tekst **van elk** item antwoord, wat de `@item()['outputs']['body']` expressie is. 
+4. Verzend een HTTP POST op de tekst **van elk** item antwoord, wat de `@item()['outputs']['body']`-expressie is. 
 
-   De `@result()` shape item is hetzelfde als de `@actions()` shape en kan op dezelfde manier worden geparseerd.
+   De shape `@result()` item is hetzelfde als de `@actions()` vorm en kan op dezelfde manier worden geparseerd.
 
-5. Voeg twee aangepaste headers toe met de mislukte actie naam`@item()['name']`() en de mislukte tracking-ID (`@item()['clientTrackingId']`) van de client.
+5. Voeg twee aangepaste headers toe met de mislukte actie naam (`@item()['name']`) en de mislukte tracking-ID van de client (`@item()['clientTrackingId']`).
 
-Ter referentie: Hier volgt een voor beeld van één `@result()` item, met de **naam**, de **hoofd tekst**en de **clientTrackingId** -eigenschappen die in het vorige voor beeld worden geparseerd. Buiten een **voor elke** actie `@result()` retourneert een matrix van deze objecten.
+Ter referentie: Hier volgt een voor beeld van een enkel `@result()` item, met daarin de eigenschappen **name**, **Body**en **clientTrackingId** die in het vorige voor beeld worden geparseerd. Buiten een **voor elke** actie retourneert `@result()` een matrix van deze objecten.
 
 ```json
 {
@@ -318,7 +317,7 @@ Ter referentie: Hier volgt een voor beeld van één `@result()` item, met de **n
 }
 ```
 
-Als u andere patronen voor uitzonde ringen wilt verwerken, kunt u de eerder beschreven expressies in dit artikel gebruiken. U kunt ervoor kiezen om één actie voor het afhandelen van uitzonde ringen uit te voeren buiten het bereik dat de volledige gefilterde matrix van fouten accepteert en de **voor elke** actie verwijderen. U kunt ook andere nuttige eigenschappen van het  **\@resultaat ()** -antwoord toevoegen zoals eerder is beschreven.
+Als u andere patronen voor uitzonde ringen wilt verwerken, kunt u de eerder beschreven expressies in dit artikel gebruiken. U kunt ervoor kiezen om één actie voor het afhandelen van uitzonde ringen uit te voeren buiten het bereik dat de volledige gefilterde matrix van fouten accepteert en de **voor elke** actie verwijderen. U kunt ook andere nuttige eigenschappen van het **\@resultaat ()** -antwoord toevoegen zoals eerder is beschreven.
 
 ## <a name="azure-diagnostics-and-metrics"></a>Azure Diagnostics en metrische gegevens
 

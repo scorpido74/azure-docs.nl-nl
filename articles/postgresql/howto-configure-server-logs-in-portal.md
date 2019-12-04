@@ -1,17 +1,17 @@
 ---
-title: Server logboeken configureren en openen in Azure Database for PostgreSQL-één server van de Azure Portal
-description: In dit artikel wordt beschreven hoe u de server logboeken van Azure Database for PostgreSQL-één server kunt configureren en openen vanuit de Azure Portal.
+title: Logboeken beheren-Azure Portal-Azure Database for PostgreSQL-één server
+description: In dit artikel wordt beschreven hoe u de server Logboeken (logboek bestanden) in Azure Database for PostgreSQL-één server kunt configureren en openen vanuit de Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c77e708e14d34545754ca38095aedb63ff0172a1
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 3da48a9b6d3acb1f2811bc279de7963fa1d83918
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841510"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763687"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Azure Database for PostgreSQL-logboeken met één server configureren en gebruiken vanuit de Azure Portal
 
@@ -23,7 +23,7 @@ Voor de stappen in dit artikel moet [Azure database for postgresql server](quick
 ## <a name="configure-logging"></a>Logboek registratie configureren
 De toegang tot de query logboeken en fout logboeken configureren. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer uw Azure Database for PostgreSQL-server.
 
@@ -53,7 +53,7 @@ Nadat de logboek registratie is gestart, kunt u een lijst met beschik bare logbo
    ![Scherm opname van de pagina Server logboeken, met de lijst met gemarkeerde logboeken](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > De naam Conventie van het logboek is **postgresql-yyyy-mm-dd_hh0000. log**. De datum en tijd die in de bestands naam wordt gebruikt, is het tijdstip waarop het logboek is uitgegeven. De logboek bestanden draaien elk uur of 100 MB, afhankelijk van wat het eerste komt.
+   > De naam Conventie van het logboek is **postgresql-jjjj-mm-dd_hh0000. log**. De datum en tijd die in de bestands naam wordt gebruikt, is het tijdstip waarop het logboek is uitgegeven. De logboek bestanden draaien elk uur of 100 MB, afhankelijk van wat het eerste komt.
 
 4. Gebruik, indien nodig, het zoekvak om snel naar een specifiek logboek te beperken, op basis van datum en tijd. De zoek opdracht bevindt zich op de naam van het logboek.
 

@@ -1,22 +1,18 @@
 ---
-title: Verbinding maken met Excel online-Azure Logic Apps
+title: Verbinding maken met Excel online
 description: Gegevens beheren met Excel online REST Api's en Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: d3c6395f7fd66e1b89fc49536e228249bc4ed2a9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a4356b4f88df3fc457917be563a79e9054a1638e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859253"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789798"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel online-gegevens beheren met Azure Logic Apps
 
@@ -72,4 +68,4 @@ Voor technische details, zoals triggers, acties en limieten, zoals wordt beschre
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

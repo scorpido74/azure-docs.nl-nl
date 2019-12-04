@@ -1,5 +1,5 @@
 ---
-title: Serverloos
+title: Serverless
 description: In dit artikel wordt de nieuwe serverloze Compute-laag beschreven en vergelijkt deze met de bestaande ingerichte Compute-laag
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: moslake
+author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 11/04/2019
-ms.openlocfilehash: fecc394080f54f023529ed2da8c9690c38c1da08
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/03/2019
+ms.openlocfilehash: a304b7fb0ba90d4ccf3805f47a5b04a2d3d8765e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818266"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775580"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database - Serverloos
 
@@ -129,9 +129,9 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |Verificatie en autorisatie|Aanmelden|
 |Detectie van bedreigingen|Instellingen voor detectie van bedreigingen in-of uitschakelen op Data Base-of server niveau.<br>Instellingen voor detectie van bedreigingen wijzigen op Data Base-of server niveau.|
 |Gegevensdetectie en -classificatie|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
-|Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
+|Controle|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
-|Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
+|Transparante dataversleuteling|Status of status van transparante gegevens versleuteling weer geven|
 |Gegevens Archief voor query (prestaties)|Query Store-instellingen wijzigen of weer geven|
 |Autotuning|Toepassing en verificatie van aanbevelingen voor automatische afstemming, zoals automatisch indexeren|
 |Data base kopiëren|Maak een Data Base als kopie.<br>Exporteren naar een BACPAC-bestand.|
@@ -155,17 +155,17 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
 
 1. Geef de naam van de service doelstelling op. De service doelstelling schrijft de service tier, het genereren van hardware en het maximale aantal vCores. In de volgende tabel worden de opties voor service doelstelling weer gegeven:
 
-   |Naam van service doelstelling|Servicelaag|Hardware genereren|Maximum aantal vCores|
+   |Naam van service doelstelling|Serviceniveau|Hardware genereren|Maximum aantal vCores|
    |---|---|---|---|
-   |GP_S_Gen5_1|Algemeen gebruik|Gen5|1|
-   |GP_S_Gen5_2|Algemeen gebruik|Gen5|2|
-   |GP_S_Gen5_4|Algemeen gebruik|Gen5|4|
-   |GP_S_Gen5_6|Algemeen gebruik|Gen5|6|
-   |GP_S_Gen5_8|Algemeen gebruik|Gen5|8|
-   |GP_S_Gen5_10|Algemeen gebruik|Gen5|10|
-   |GP_S_Gen5_12|Algemeen gebruik|Gen5|12|
-   |GP_S_Gen5_14|Algemeen gebruik|Gen5|14|
-   |GP_S_Gen5_16|Algemeen gebruik|Gen5|16|
+   |GP_S_Gen5_1|Algemeen doel|Gen5|1|
+   |GP_S_Gen5_2|Algemeen doel|Gen5|2|
+   |GP_S_Gen5_4|Algemeen doel|Gen5|4|
+   |GP_S_Gen5_6|Algemeen doel|Gen5|6|
+   |GP_S_Gen5_8|Algemeen doel|Gen5|8|
+   |GP_S_Gen5_10|Algemeen doel|Gen5|10|
+   |GP_S_Gen5_12|Algemeen doel|Gen5|12|
+   |GP_S_Gen5_14|Algemeen doel|Gen5|14|
+   |GP_S_Gen5_16|Algemeen doel|Gen5|16|
 
 2. Geef desgewenst de minimale vCores en de vertraging voor autopause op om de standaard waarden te wijzigen. De volgende tabel bevat de beschik bare waarden voor deze para meters.
 
@@ -263,7 +263,7 @@ Het wijzigen van de min-vCores wordt uitgevoerd met behulp van de [set-AzSqlData
 
 Het wijzigen van de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in Power shell met behulp van het argument `AutoPauseDelayInMinutes`.
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 ### <a name="resources-used-and-billed"></a>Gebruikte resources en gefactureerd
 
@@ -306,11 +306,11 @@ Get-AzSqlDatabase `
   | Select -ExpandProperty "Status"
 ```
 
-## <a name="resource-limits"></a>Bronlimieten
+## <a name="resource-limits"></a>Bronbeperkingen
 
 Zie [serverloze Compute-laag](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)voor resource limieten.
 
-## <a name="billing"></a>Facturering
+## <a name="billing"></a>Billing
 
 De hoeveelheid berekenings kosten is het maximum van CPU-gebruik en het geheugen dat elke seconde wordt gebruikt. Als de gebruikte hoeveelheid CPU en het gebruikte geheugen kleiner is dan het minimum aantal dat voor elk is ingericht, wordt de ingerichte hoeveelheid gefactureerd. Als u de CPU wilt vergelijken met geheugen voor facturerings doeleinden, wordt geheugen genormaliseerd in eenheden van vCores door de hoeveelheid geheugen in GB met 3 GB per vCore opnieuw te schalen.
 

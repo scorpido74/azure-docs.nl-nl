@@ -1,22 +1,18 @@
 ---
-title: Verbinding maken met SQL Server of Azure SQL Database-Azure Logic Apps
+title: Verbinding maken met SQL Server of Azure SQL Database
 description: Automatiseer taken voor SQL-data bases on-premises of in de Cloud met behulp van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam; LADocs
-manager: carmonm
+ms.reviewer: klam; logicappspm
 ms.topic: conceptual
-tags: connectors
 ms.date: 11/08/2019
-ms.openlocfilehash: a6367e5897e9bd548550b099c0bd2e6186845d6d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+tags: connectors
+ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826335"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789189"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor SQL Server of Azure SQL Database met behulp van Azure Logic Apps
 

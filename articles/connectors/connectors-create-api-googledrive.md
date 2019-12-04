@@ -1,43 +1,40 @@
 ---
-title: Verbinding maken met Google Drive - Azure Logic Apps | Microsoft Docs
-description: Maken en beheren van bestanden met Google Drive REST API's en Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 11/07/2016
-ms.topic: article
-ms.service: logic-apps
+title: Verbinding maken met Google Drive
+description: Bestanden maken en beheren met REST Api's en Azure Logic Apps van Google Drive
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 43bd5248f1bb80c71a85935c585deac6152be78b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6310c3b7e5b84915fa336708bc702e94317ad04c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105086"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789721"
 ---
-# <a name="get-started-with-the-google-drive-connector"></a>Aan de slag met de Google Drive-connector
-Verbinding maken met Google Drive voor het maken van bestanden en rijen ophalen. Met Google Drive, kunt u het volgende doen: 
+# <a name="get-started-with-the-google-drive-connector"></a>Aan de slag met de connector van Google Drive
 
-* Bouw uw bedrijfswerkstroom op basis van de gegevens die u van uw zoekopdracht krijgt. 
-* Acties gebruiken om te zoeken naar afbeeldingen, zoek het nieuws en nog veel meer. Deze acties reageert, en vervolgens de uitvoer beschikbaar voor andere acties. U kunt bijvoorbeeld zoeken naar een video en gebruik vervolgens Twitter te plaatsen die video naar een Twitter-feed.
+Maak verbinding met Google Drive om bestanden te maken, rijen op te halen en meer. Met Google Drive kunt u het volgende doen: 
 
-U kunt aan de slag met het maken van een logische app nu, Zie [maken van een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Bouw uw bedrijfs stroom op basis van de gegevens die u van uw zoek opdracht ontvangt. 
+* Gebruik acties om afbeeldingen te zoeken, het nieuws te doorzoeken en meer. Deze acties ontvangen een antwoord en maken vervolgens de uitvoer beschikbaar voor andere acties. U kunt bijvoorbeeld zoeken naar een video en vervolgens Twitter gebruiken om die video te plaatsen op een Twitter-feed.
 
-## <a name="create-the-connection-to-google-drive"></a>De verbinding met Google Drive
-Wanneer u deze connector aan uw logische apps toevoegen, verleent u logische apps verbinding maken met uw Google Drive.
+U kunt nu aan de slag met het maken van een logische app, Zie [een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+
+## <a name="create-the-connection-to-google-drive"></a>Verbinding maken met Google Drive
+
+Wanneer u deze connector aan uw Logic apps toevoegt, moet u logische apps autoriseren om verbinding te maken met uw Google Drive.
 
 > [!INCLUDE [Steps to create a connection to googledrive](../../includes/connectors-create-api-googledrive.md)]
-> 
-> 
 
-Nadat u de verbinding hebt gemaakt, kunt u de eigenschappen van Google Drive, zoals de naam van de map pad of de bestandsnaam invoeren. 
+Nadat u de verbinding hebt gemaakt, voert u de eigenschappen van het Google-station in, zoals het mappad of de bestands naam. 
 
-## <a name="connector-specific-details"></a>Connector-specifieke details
+## <a name="connector-specific-details"></a>Connector-specifieke Details
 
-Alle triggers en acties die zijn gedefinieerd in de swagger bekijken en ziet u ook eventuele beperkingen in de [connectorgegevens](/connectors/googledrive/).
+Bekijk de triggers en acties die zijn gedefinieerd in Swagger en Zie ook eventuele limieten in de details van de [connector](/connectors/googledrive/).
 
 ## <a name="more-connectors"></a>Meer connectors
-Ga terug naar de [lijst van API's](apis-list.md).
+
+Ga terug naar de [lijst met api's](apis-list.md).

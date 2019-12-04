@@ -1,22 +1,20 @@
 ---
-title: Verbinding maken met Dynamics 365-Azure Logic Apps
+title: Verbinding maken met Dynamics 365
 description: Records maken en beheren met Dynamics 365 (online) REST Api's en Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: Mattp123
 ms.author: matp
-manager: carmonm
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: ce83e6b1847a8f08467cb7877e517bdaace27953
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9837b68fbfba783a468712d8ba1883b198af4954
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051021"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789884"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Dynamics 365-records beheren met Azure Logic Apps
 
@@ -51,7 +49,7 @@ Voeg eerst een Dynamics 365-trigger toe die wordt geactiveerd wanneer een nieuwe
 
 1. Geef de volgende details op voor de trigger:
 
-   | Eigenschap | Vereist | Description |
+   | Eigenschap | Verplicht | Beschrijving |
    |----------|----------|-------------|
    | **Organisatie naam** | Ja | De naam van het Dynamics 365-exemplaar van uw organisatie om te controleren, bijvoorbeeld ' Contoso ' |
    | **Naam van entiteit** | Ja | De naam van de entiteit die u wilt bewaken, bijvoorbeeld ' leads ' | 
@@ -67,23 +65,23 @@ Voeg nu de actie Dynamics 365 toe waarmee een taak record voor de nieuwe lead re
 
 1. Kies **nieuwe stap**onder de trigger.
 
-1. Voer in het zoekvak ' Dynamics 365 ' in als uw filter. Selecteer in de lijst acties deze actie: **Een nieuwe record maken**
+1. Voer in het zoekvak ' Dynamics 365 ' in als uw filter. Selecteer in de lijst acties deze actie: **een nieuwe record maken**
 
    ![Actie selecteren](./media/connectors-create-api-crmonline/select-action.png)
 
 1. Geef de volgende actie Details op:
 
-   | Eigenschap | Vereist | Description |
+   | Eigenschap | Verplicht | Beschrijving |
    |----------|----------|-------------|
    | **Organisatie naam** | Ja | Het Dynamics 365-exemplaar waar u de record wilt maken, dat niet hetzelfde exemplaar van de trigger moet zijn, maar ' Contoso ' in dit voor beeld is |
    | **Naam van entiteit** | Ja | De entiteit waar u de record wilt maken, bijvoorbeeld ' taken ' |
    | | |
 
-   ![Actiedetails](./media/connectors-create-api-crmonline/action-details.png)
+   ![Actie Details](./media/connectors-create-api-crmonline/action-details.png)
 
 1. Wanneer het vak **onderwerp** wordt weer gegeven in uw actie, klikt u in het vak **onderwerp** , zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in deze lijst de veld waarden die moeten worden opgenomen in het taak record dat is gekoppeld aan de nieuwe lead record:
 
-   | Veld | Description |
+   | Veld | Beschrijving |
    |-------|-------------|
    | **Achternaam** | De achternaam van de lead als de primaire contact persoon in de record |
    | **Onderwerp** | De beschrijvende naam voor de lead in de record |
@@ -104,7 +102,7 @@ Voeg nu de actie Dynamics 365 toe waarmee een taak record voor de nieuwe lead re
 Kies **Geavanceerde opties weer geven** in deze actie om op te geven hoe u gegevens in een Dynamics 365-actie wilt filteren. U kunt vervolgens een filter of order by-query toevoegen.
 U kunt bijvoorbeeld een filter query gebruiken om alleen de actieve accounts op te halen en deze records op account naam te rangschikken. Voer de volgende stappen uit voor deze taak:
 
-1. Voer onder **filter query**deze OData-filter query in:`statuscode eq 1`
+1. Voer onder **filter query**deze OData-filter query in: `statuscode eq 1`
 
 2. Selecteer onder sorteren op, wanneer de lijst **met**dynamische inhoud wordt weer gegeven, de **account naam**. 
 
@@ -121,24 +119,24 @@ Wanneer u een waarde opgeeft voor een veld in een actie of trigger, moet het geg
 
 In deze tabel worden enkele veld typen en de vereiste gegevens typen voor hun waarden beschreven.
 
-| Veldtype | Vereist gegevens type | Description | 
+| Veld type | Vereist gegevens type | Beschrijving | 
 |------------|--------------------|-------------|
 | Tekst velden | Eén tekst regel | Voor deze velden is één tekst regel of dynamische inhoud met het tekst type vereist. <p><p>*Voorbeeld velden*: **Beschrijving** en **categorie** | 
-| Velden met gehele getallen | Geheel getal | Voor sommige velden is een geheel getal of dynamische inhoud vereist die het type geheel getal heeft. <p><p>*Voorbeeld velden*: **Percentage voltooid** en **duur** | 
-| Datum velden | Datum en tijd | Voor sommige velden is een datum vereist met een notatie van mm/dd/jjjj of dynamische inhoud met het datum type. <p><p>*Voorbeeld velden*: **Gemaakt op**, **begin datum**, **werkelijke start**, **werkelijk einde**en **verval datum** | 
+| Velden met gehele getallen | Geheel getal | Voor sommige velden is een geheel getal of dynamische inhoud vereist die het type geheel getal heeft. <p><p>*Voorbeeld velden*: **percentage voltooid** en **duur** | 
+| Datum velden | Datum en tijd | Voor sommige velden is een datum vereist met een notatie van mm/dd/jjjj of dynamische inhoud met het datum type. <p><p>*Voorbeeld velden*: **gemaakt op**, **begin datum**, **werkelijke start**, **werkelijk einde**en **verval datum** | 
 | Velden waarvoor een record-ID en een opzoek type zijn vereist | Primaire sleutel | Voor sommige velden die verwijzen naar een andere entiteits record zijn zowel een record-ID als een Zoek type vereist. | 
 ||||
 
 Als u deze veld typen uitvouwt, ziet u voor beelden van velden in Dynamics 365-triggers en acties waarvoor zowel een record-ID als een opzoek type nodig zijn. Deze vereiste betekent dat waarden die u selecteert in de dynamische lijst, niet werken.
 
-| Veld | Description |
+| Veld | Beschrijving |
 |-------|-------------|
 | **Eigenaar** | Moet een geldige gebruikers-ID of een team record-ID zijn. |
-| **Type eigenaar** | Moet ofwel `systemusers` of `teams`zijn. |
+| **Type eigenaar** | Moet `systemusers` of `teams`zijn. |
 | **Over** | Moet een geldige record-ID zijn, zoals een account-id of record-ID van de contact persoon. |
 | **Betreft type** | Dit moet een opzoek type zijn, zoals `accounts` of `contacts`. |
-| **De klant** | Moet een geldige record-ID zijn, zoals een account-id of record-ID van de contact persoon. |
-| **Klant type** | Moet het type lookup zijn, zoals `accounts` of. `contacts` |
+| **Gebruikers** | Moet een geldige record-ID zijn, zoals een account-id of record-ID van de contact persoon. |
+| **Klant type** | Moet het type lookup zijn, zoals `accounts` of `contacts`. |
 |||
 
 In dit voor beeld maakt de actie met de naam **een nieuwe record maken** een nieuwe taak record:
@@ -161,10 +159,10 @@ Voer de volgende stappen uit om een record-ID te vinden:
 
 2. Kies een van de volgende stappen op de werk balk acties:
 
-   * Kies **pop-out**. ![record popout](./media/connectors-create-api-crmonline/popout-record.png) 
+   * Kies **pop-out**. ![popout-record](./media/connectors-create-api-crmonline/popout-record.png) 
    * Kies **een E-mail verzenden naar een koppeling** zodat u de volledige URL kunt kopiëren naar uw standaard e-mail programma.
 
-   De record-id wordt weer gegeven in de `%7b` URL `%7d` tussen de tekens en de code ring:
+   De record-ID wordt weer gegeven in de URL tussen de `%7b` en `%7d` coderings tekens:
 
    ![Record-ID zoeken](./media/connectors-create-api-crmonline/find-record-ID.png)
 
@@ -184,7 +182,7 @@ Als u de stappen in uw logische app wilt zoeken en controleren, kunt u de uitvoe
 
    ![Mislukte stap-invoer en uitvoer](./media/connectors-create-api-crmonline/expand-failed-step-inputs-outputs.png)
 
-Zie voor meer informatie over het oplossen van problemen met Logic apps storingen in [Logic app-fouten vaststellen](../logic-apps/logic-apps-diagnosing-failures.md).
+Zie voor meer informatie over het oplossen van problemen met Logic apps [storingen in Logic app-fouten vaststellen](../logic-apps/logic-apps-diagnosing-failures.md).
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
@@ -192,4 +190,4 @@ Zie de [referentie pagina van de connector](/connectors/dynamicscrmonline/)voor 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

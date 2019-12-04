@@ -1,6 +1,6 @@
 ---
-title: Het maken van waarschuwingen met dynamische drempelwaarden in Azure Monitor
-description: Waarschuwingen maken met machine learning op basis van dynamische drempelwaarden
+title: Waarschuwingen maken met dynamische drempel waarden in Azure Monitor
+description: Waarschuwingen maken met op machine learning gebaseerde Dynamische drempel waarden
 author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,169 +8,186 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d6c578186dab9622ce650f535e11d505efcecb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 750aded128804468ae557d7c016a50c5378d9217
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067623"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762506"
 ---
-# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrische waarschuwingen met dynamische drempelwaarden in Azure Monitor
+# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrische waarschuwingen met dynamische drempel waarden in Azure Monitor
 
-Waarschuwing voor metrische gegevens met dynamische drempelwaarden detectie maakt gebruik van geavanceerde machine learning (ML) meer historische gedrag van de metrische gegevens, patronen en afwijkingen die wijzen op problemen met de mogelijke service kunt identificeren. Deze biedt ondersteuning van zowel een eenvoudige gebruikersinterface en bewerkingen op schaal door toe te staan gebruikers waarschuwingsregels via de Azure Resource Manager-API op een volledig geautomatiseerde manier configureren.
+Een metrische waarschuwing met dynamische drempel waarden detectie maakt gebruik van geavanceerde machine learning (ML) om het historische gedrag van metrische gegevens te leren, identificeert patronen en afwijkingen die duiden op mogelijke service problemen. Het biedt ondersteuning voor zowel een eenvoudige UI als bewerkingen op schaal door gebruikers in staat te stellen waarschuwings regels te configureren via de Azure Resource Manager-API, op een volledig geautomatiseerde manier.
 
-Zodra een waarschuwingsregel is gemaakt, er volgt een waarschuwing alleen wanneer de bewaakte metrische gegevens niet wordt gedragen zich zoals verwacht, op basis van de op maat gemaakte drempelwaarden.
+Zodra een waarschuwings regel is gemaakt, wordt deze alleen geactiveerd wanneer de gecontroleerde metrische gegevens niet zoals verwacht functioneren, op basis van de aangepaste drempel waarden.
 
-Wij willen graag uw feedback horen, bewaart u deze binnenkort op <azurealertsfeedback@microsoft.com>.
+We horen graag uw feedback en blijven op <azurealertsfeedback@microsoft.com>.
 
-## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Waarom en wanneer is met behulp van dynamische voorwaardetype aanbevolen?
+## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Waarom en wanneer wordt dynamisch voor waarden type gebruikt?
 
-1. **Schaalbare waarschuwen** : dynamische drempelwaarden voor waarschuwingen, regels kunnen maken die zijn afgestemd drempelwaarden voor honderden metrische reeksen tegelijkertijd. Het leveren van nog net zo gemakkelijk van het definiëren van een waarschuwingsregel op één metrische waarde. Met behulp van de UI of de API van Azure Resource Manager-resultaten in minder waarschuwingsregels voor het beheren van. De schaalbare aanpak is vooral nuttig wanneer omgaan met metrische dimensies of toe te passen op meerdere resources, zoals alle resources van het abonnement. Dit wordt omgezet in een aanzienlijke tijd bespaart op beheer en het maken van regels voor waarschuwingen. [Meer informatie over het configureren van waarschuwingen voor metrische gegevens met dynamische drempelwaarden met behulp van sjablonen](alerts-metric-create-templates.md).
+1. **Schaal bare waarschuwing** : dynamische regels voor drempel waarden kunnen een aangepaste drempel waarde voor honderden metrische reeksen tegelijk maken, maar bieden hetzelfde gemak voor het definiëren van een waarschuwings regel voor één metriek. Ze geven u minder waarschuwingen om te maken en te beheren. U kunt Azure Portal of de Azure Resource Manager-API gebruiken om ze te maken. De schaal bare aanpak is vooral nuttig bij het omgaan met metrische dimensies of bij het Toep assen op meerdere resources, zoals bij alle abonnements bronnen.  Meer [informatie over het configureren van metrische waarschuwingen met dynamische drempel waarden met behulp van sjablonen](alerts-metric-create-templates.md).
 
-1. **Slimme metriek patroonherkenning** – met behulp van onze unieke ML-technologie, kunnen we automatisch detecteren van metrische patronen en gedurende een periode, die vaak seizoensgebondenheid (per uur / dagelijks / wekelijks) kan worden aangepast aan metrische wijzigingen. Aanpassing aan gedrag de metrische gegevens voor tijd en waarschuwingen op basis van de afwijkingen ten opzichte van het patroon ervan neemt de belasting van de wetenschap dat het 'recht' drempelwaarde voor elke metrische gegevens. Het ML-algoritme dat wordt gebruikt in dynamische drempelwaarden is ontworpen om te voorkomen dat ruis (geringe precisie) of hele (laag intrekken)-drempelwaarden die een verwacht patroon geen hebt.
+1. **Herkenning van Smart metrische patronen** : met onze ml-technologie kunnen we automatisch metrische patronen detecteren en aanpassen aan metrische wijzigingen in de loop van de tijd, wat vaak een seizoensgebondenheid (per uur/dagelijks/wekelijks) kan zijn. Het aanpassen van het gedrag van metrische gegevens in de loop van de tijd en waarschuwing op basis van afwijkingen van het patroon, wordt de last van het weten van de drempel waarde ' right ' voor elke metriek vrijgegeven. Het ML-algoritme dat wordt gebruikt in dynamische drempel waarden is ontworpen om te voor komen dat er ruis (lage precisie) of grote (lage) drempel waarden zijn die geen verwacht patroon hebben.
 
-1. **Configuratie van intuïtieve** : dynamische drempelwaarden toestaan instellen metrische waarschuwingen met behulp van geavanceerde concepten, moet uitgebreide kennis van over de metrische gegevens zijn te verlichten.
+1. **Intuïtieve configuratie** : Dynamische drempel waarden maken het mogelijk om metrische waarschuwingen in te stellen met behulp van concepten op hoog niveau, waardoor er geen uitgebreide domein kennis nodig is over de metriek.
 
-## <a name="how-to-configure-alerts-rules-with-dynamic-thresholds"></a>Hoe kunt u regels voor waarschuwingen configureren met dynamische drempelwaarden?
+## <a name="how-to-configure-alerts-rules-with-dynamic-thresholds"></a>Waarschuwings regels met dynamische drempel waarden configureren?
 
-Waarschuwingen met dynamische drempelwaarden kunnen worden geconfigureerd via Metric Alerts in Azure Monitor. [Meer informatie over het configureren van waarschuwingen voor metrische gegevens](alerts-metric.md).
+Waarschuwingen met dynamische drempel waarden kunnen worden geconfigureerd via metrische waarschuwingen in Azure Monitor. Meer [informatie over het configureren van metrische waarschuwingen](alerts-metric.md).
 
-## <a name="how-are-the-thresholds-calculated"></a>Hoe worden de drempelwaarden berekend?
+## <a name="how-are-the-thresholds-calculated"></a>Hoe worden de drempel waarden berekend?
 
-Dynamische drempelwaarden continu de gegevens van de metrische gegevens uit de serie leert en probeert om modellen te maken met behulp van een set algoritmen en methoden. Deze patronen in gegevens zoals seizoensgebondenheid (per uur / dagelijks / wekelijks) detecteert en ruis metrische gegevens (zoals machine CPU of geheugen) en metrische gegevens met lage spreiding (zoals beschikbaarheid en fout-tarief) overweg kan.
+Dynamische drempel waarden worden doorlopend ontdekt bij de gegevens van de metrische reeks en proberen deze te model leren met behulp van een set algoritmen en methoden. Het detecteert patronen in de gegevens, zoals seizoensgebondenheid (per uur/dagelijks/wekelijks), en kan de metrische gegevens van de ruis (zoals CPU of geheugen van de machine) en de metrieken met lage sprei ding (zoals Beschik baarheid en fout percentage) afhandelen.
 
-De drempelwaarden zijn geselecteerd in zodanig dat een afwijking van deze drempels geeft aan een anomalie in het metrische gedrag dat.
+De drempel waarden worden geselecteerd op een zodanige manier dat een afwijking van deze drempel waarden een afwijking van het meet gedrag aangeeft.
 
 > [!NOTE]
-> Detectie van seizoenspatroon is ingesteld op een uur, dag of week interval. Dit betekent dat andere patronen, zoals bihourly patroon of tweewekelijkse kan niet worden gevonden.
+> Het seizoen patroon detectie wordt ingesteld op een uur, dag of week interval. Dit betekent dat andere patronen zoals bihourly patroon of semiweekly mogelijk niet worden gedetecteerd.
 
-## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Wat betekent ' gevoeligheidsinstelling ' in dynamische drempelwaarden gemiddelde?
+## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Wat betekent ' gevoeligheid ' in dynamische drempels?
 
-Drempelwaarde voor waarschuwing bij gevoeligheid is een op hoog niveau concept die bepaalt de hoeveelheid afwijking van metrische gedrag vereist om een waarschuwing te activeren.
-Deze optie vereist geen kennis over de metrische gegevens, zoals statische drempelwaarde van het domein. De beschikbare opties zijn:
+De gevoeligheid van de waarschuwings drempel is een concept op hoog niveau waarmee de mate van afwijking van het metrische gedrag dat nodig is om een waarschuwing te activeren, wordt bepaald.
+Voor deze optie is geen kennis van het domein vereist over de metrische gegevens zoals statische drempel waarden. De beschikbare opties zijn:
 
-- Hoog – de drempelwaarden worden contour en dicht bij de metrische gegevens uit de serie patroon. Een waarschuwingsregel wordt geactiveerd op de kleinste afwijking, wat resulteert in meer waarschuwingen.
-- Gemiddeld: minder krachtige en meer met gelijke taakverdeling drempelwaarden, minder waarschuwingen dan met hoge gevoeligheid (standaard).
-- Laag – de drempelwaarden worden losse met meer afstand van metrische gegevens uit de serie patroon. Een waarschuwingsregel wordt alleen geactiveerd op grote afwijkingen, wat resulteert in minder waarschuwingen.
+- Hoog: de drempel waarden worden nauw keurig en dicht bij het patroon van de metrische serie. Een waarschuwings regel wordt op de kleinste afwijking geactiveerd, wat resulteert in meer waarschuwingen.
+- Gemiddeld: minder nauw keurig en evenwichtigere drempel waarden, minder waarschuwingen dan met hoge gevoeligheid (standaard).
+- Laag – de drempels worden los van het patroon van de metrische serie op afstand. Een waarschuwings regel wordt alleen geactiveerd op grote afwijkingen, wat resulteert in minder waarschuwingen.
 
-## <a name="what-are-the-operator-setting-options-in-dynamic-thresholds"></a>Wat zijn de opties van de instelling 'Operator' in dynamische drempelwaarden?
+## <a name="what-are-the-operator-setting-options-in-dynamic-thresholds"></a>Wat zijn de instellings opties voor Opera tors in dynamische drempel waarden?
 
-Dynamische drempelwaarden voor waarschuwingsregel kunt maken die zijn afgestemd op basis van metrische gedrag voor beide boven en ondergrenzen met behulp van de dezelfde waarschuwingsregel drempelwaarden.
-U kunt de waarschuwing wordt geactiveerd op een van de volgende drie voorwaarden:
+Waarschuwings regel voor dynamische drempel waarden kan aangepaste drempel waarden maken op basis van het metrische gedrag voor zowel boven-als ondergrenzen met dezelfde waarschuwings regel.
+U kunt kiezen welke waarschuwing moet worden geactiveerd op een van de volgende drie voor waarden:
 
-- Groter dan de hoogste drempelwaarde of lager dan de lagere drempelwaarde (standaard)
-- Groter dan de hoogste drempelwaarde
-- Lager dan de lagere drempelwaarde.
+- Groter dan de hoogste drempel waarde of lager dan de onderste drempel waarde (standaard)
+- Groter dan de bovenste drempel waarde
+- Lager dan de laagste drempel waarde.
 
-## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Wat de geavanceerde instellingen in dynamische drempelwaarden gemiddelde?
+## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Wat betekenen de geavanceerde instellingen in dynamische drempel waarden?
 
-**Perioden mislukt** -dynamische drempelwaarden ook kunt u configureren 'Aantal schendingen voor het activeren van de waarschuwing', een minimum aantal afwijkingen vereist binnen een bepaalde periode voor het systeem een waarschuwing (het standaardtijdvenster is vier te activeren afwijkingen in 20 minuten). De gebruiker kan configureren mislukt punten en kiezen wat u wilt worden gewaarschuwd op door de punten van mislukken en tijdvenster te wijzigen. Deze mogelijkheid vermindert waarschuwingsruis die worden gegenereerd door tijdelijke pieken. Bijvoorbeeld:
+Als er een **fout optreedt** , kunt u met dynamische drempel waarden ook ' aantal schendingen voor het activeren van de waarschuwing ' configureren, een minimum aantal afwijkingen dat is vereist binnen een bepaald tijd venster voor het systeem om een waarschuwing te genereren (het standaardtijds venster is vier afwijkingen in 20 minuten). De gebruiker kan mislukte Peri Oden configureren en bepalen wat er moet worden gewaarschuwd door de peri Oden en het tijd venster te wijzigen. Deze mogelijkheid vermindert het waarschuwings geluid dat door tijdelijke pieken wordt gegenereerd. Bijvoorbeeld:
 
-Als u wilt een waarschuwing geactiveerd wanneer het probleem continue voor 20 minuten is, 4 opeenvolgende keren dat in een bepaalde periode groepering van 5 minuten, gebruik de volgende instellingen:
+Gebruik de volgende instellingen om een waarschuwing te activeren wanneer het probleem in een periode van vijf minuten doorlopend is gedurende 20 minuten, 4 opeenvolgende tijdstippen in een bepaalde Peri Oden.
 
-![Instellingen voor continue probleem perioden mislukt voor 20 minuten, 4 opeenvolgende keren dat in een bepaalde periode groepering van 5 minuten](media/alerts-dynamic-thresholds/0008.png)
+![Instellingen voor niet-aaneengesloten Peri Oden voor een doorlopend probleem gedurende 20 minuten, 4 opeenvolgende tijden in een bepaalde periode groepering van vijf minuten](media/alerts-dynamic-thresholds/0008.png)
 
-Als u wilt een waarschuwing geactiveerd wanneer er een schending van een dynamische drempelwaarden in 20 minuten buiten de laatste 30 minuten met een periode van 5 minuten is, gebruik de volgende instellingen:
+Gebruik de volgende instellingen om een waarschuwing te activeren wanneer er een schending van de dynamische drempel waarden in 20 minuten van de laatste 30 minuten is opgetreden met een periode van vijf minuten:
 
-![Perioden-instellingen voor uitgifte mislukt voor 20 minuten buiten de laatste 30 minuten met periode groepering van 5 minuten](media/alerts-dynamic-thresholds/0009.png)
+![De instellingen voor het mislukken van een probleem met een periode van vijf minuten in de laatste 30 minuten bij het oplossen van problemen met peri Oden](media/alerts-dynamic-thresholds/0009.png)
 
-**Gegevens negeren vóór** -gebruikers kunnen eventueel ook een begindatum van waaruit het systeem moet beginnen met de berekening van de drempelwaarden van definiëren. Een typische gebruiksscenario's kan optreden wanneer een resource is een die wordt uitgevoerd in een modus voor testen en nu om aan te bieden van een productie-werkbelasting wordt gepromoveerd, en daarom het gedrag van een willekeurige statistiek tijdens de testfase moet worden genegeerd.
+**Gegevens negeren voor** -gebruikers kunnen eventueel ook een begin datum definiëren van waaruit het systeem moet beginnen met het berekenen van de drempel waarden. Een typische use-case kan zich voordoen wanneer een resource in een test modus werd uitgevoerd en is gepromoveerd tot een productiewerk belasting, en dus het gedrag van elke metriek tijdens de test fase moet worden genegeerd.
 
-## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Hoe u nagaan waarom een dynamische drempelwaarden waarschuwing is geactiveerd?
+## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Hoe kom ik erachter waarom een waarschuwing over dynamische drempel waarden is geactiveerd?
 
-U kunt verkennen geactiveerde waarschuwing exemplaren in de waarschuwingsweergave door te klikken op de koppeling in het e-mailbericht of SMS-bericht of browser om te zien van de waarschuwingen bekijken in de Azure portal. [Meer informatie over de waarschuwingsweergave](alerts-overview.md#alerts-experience).
+U kunt geactiveerde waarschuwings instanties in de weer gave waarschuwingen verkennen door te klikken op de koppeling in het e-mail bericht of in de browser om de weer gave waarschuwingen in de Azure Portal weer te geven. Meer [informatie over de weer gave waarschuwingen](alerts-overview.md#alerts-experience).
 
-De waarschuwingsweergave wordt weergegeven:
+De weer gave waarschuwingen wordt weer gegeven:
 
-- De metrische gegevens op het moment dat de drempelwaarden voor dynamische-waarschuwing wordt geactiveerd.
-- Een diagram van de periode waarin de waarschuwing is geactiveerd met de dynamische drempelwaarden op dat punt in tijd gebruikt.
-- De mogelijkheid om feedback te geven op de waarschuwing voor dynamische drempelwaarden en waarschuwingen weergave-ervaring, waardoor kan de toekomstige detecties worden verbeterd.
+- Alle metrische gegevens op het moment dat de waarschuwing voor dynamische drempel waarden wordt geactiveerd.
+- Een grafiek van de periode waarin de waarschuwing is geactiveerd, inclusief de dynamische drempel waarden die op dat moment zijn gebruikt.
+- De mogelijkheid om feedback te geven over dynamische drempel waarden waarschuwing en de weer gave van waarschuwingen, waardoor toekomstige detecties kunnen worden verbeterd.
 
-## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Trage gedrag veranderen in de metrische trigger een waarschuwing?
+## <a name="will-slow-behavior-changes-in-the-metric-trigger-an-alert"></a>Worden de wijzigingen in de metrische gegevens voor een waarschuwing traag?
 
-Waarschijnlijk niet. Dynamische drempelwaarden zijn geschikt voor grote afwijkingen detecteren in plaats van langzaam problemen in ontwikkeling.
+Waarschijnlijk niet. Dynamische drempel waarden zijn handig voor het detecteren van belang rijke afwijkingen in plaats van langzaam veranderende problemen.
 
-## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Hoeveel gegevens wordt gebruikt om te bekijken en vervolgens drempelwaarden te berekenen?
+## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Hoeveel gegevens worden gebruikt om de drempel waarden te bekijken en te berekenen?
 
-De drempelwaarden die worden weergegeven in de grafiek, voordat een waarschuwingsregel wordt gemaakt op de metrische gegevens, worden berekend op basis van voldoende historische gegevens voor het berekenen van uur of dagelijks seizoensgebonden patronen (10 dagen). Zodra een waarschuwingsregel is gemaakt, wordt de dynamische drempelwaarden alle benodigde historische gegevens die beschikbaar is en wordt continu leren en aanpassen op basis van nieuwe gegevens zodat de drempelwaarden nauwkeurigere gebruiken. Dit betekent dat na deze berekening wordt de grafiek ook Wekelijkse patronen weergegeven wordt.
+Wanneer en waarschuwing voor het eerst worden gemaakt, worden de drempel waarden die worden weer gegeven in de grafiek berekend op basis van voldoende historische gegevens voor het berekenen van het uur of het dagelijks seizoen patroon (10 dagen). Zodra een waarschuwings regel is gemaakt, gebruikt dynamische drempels alle benodigde historische gegevens die beschikbaar zijn en doorlopend en aanpassen op basis van nieuwe gegevens om de drempel waarden nauw keuriger te maken. Dit betekent dat na deze berekening ook wekelijkse patronen worden weer gegeven in de grafiek.
 
-## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Hoeveel gegevens nodig is om een waarschuwing te activeren?
+## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Hoeveel gegevens zijn er nodig om een waarschuwing te activeren?
 
-Hebt u een nieuwe resource of metrische gegevens ontbreken, wordt niet dynamische drempelwaarden voor waarschuwingen activeren voordat de drie dagen aan gegevens zijn beschikbaar om te controleren of nauwkeurige drempelwaarden.
+Als u een nieuwe resource hebt of metrische gegevens ontbreken, worden er door dynamische drempel waarden geen waarschuwingen geactiveerd voordat er drie dagen aan gegevens beschikbaar zijn om nauw keurige drempels te garanderen.
 
-## <a name="dynamic-thresholds-best-practices"></a>Aanbevolen procedures voor dynamische drempelwaarden
+## <a name="dynamic-thresholds-best-practices"></a>Aanbevolen procedures voor dynamische drempel waarden
 
-Dynamische drempelwaarden kunnen worden toegepast op elk platform of aangepaste metrische gegevens in Azure Monitor en het is ook afgestemd op voor de algemene metrische gegevens van toepassingen en infrastructuur.
-De volgende items zijn aanbevolen procedures voor het configureren van waarschuwingen voor sommige van deze metrische gegevens met behulp van dynamische drempelwaarden.
+Dynamische drempel waarden kunnen worden toegepast op elk platform of aangepaste metrische gegevens in Azure Monitor en is ook afgestemd op de algemene metrische gegevens van de toepassing en de infra structuur.
+De volgende items zijn aanbevolen procedures voor het configureren van waarschuwingen voor sommige van deze metrische gegevens met behulp van dynamische drempel waarden.
 
-### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>Dynamische drempelwaarden op virtuele machines CPU-percentage metrische gegevens
+### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>Dynamische drempel waarden voor metrische gegevens van CPU-percentage van virtuele machine
 
-1. In [Azure-portal](https://portal.azure.com), klikt u op **Monitor**. De Monitor-weergave worden samengevoegd voor alle controle-instellingen en gegevens in één weergave.
+1. Klik in [Azure Portal](https://portal.azure.com)op **monitor**. In de weer gave monitor worden alle bewakings instellingen en-gegevens in één weer gave geconsolideerd.
 
-2. Klik op **waarschuwingen** klikt u vervolgens op **+ nieuwe waarschuwingsregel**.
+2. Klik op **waarschuwingen** en vervolgens op **+ nieuwe waarschuwings regel**.
 
     > [!TIP]
-    > De meeste resourceblades hebben ook **waarschuwingen** in hun resourcemenu onder **bewaking**, u kunt waarschuwingen maken ook.
+    > De meeste resource-Blades hebben ook **waarschuwingen** in het resource menu onder **bewaking**, u kunt hier ook waarschuwingen van maken.
 
-3. Klik op **doel selecteren**, in het deelvenster context die wordt geladen, selecteert u een doelresource die u een waarschuwing wilt maken. Gebruik **abonnement** en **'Virtuele Machines' resourcetype** vervolgkeuzelijsten om te vinden van de resource die u wilt bewaken. U kunt ook de zoekbalk te vinden van uw resource.
+3. Klik op **doel selecteren**in het context deel venster dat wordt geladen, selecteer een doel resource waarop u een waarschuwing wilt ontvangen. Gebruik het **abonnement** en de vervolg keuzelijst **virtual machines resource type** om de resource te vinden die u wilt bewaken. U kunt ook de zoek balk gebruiken om uw bron te vinden.
 
-4. Als u een doelbron hebt geselecteerd, klikt u op **voorwaarde toevoegen**.
+4. Wanneer u een doel resource hebt geselecteerd, klikt u op **voor waarde toevoegen**.
 
-5. Selecteer de **CPU-Percentage**.
+5. Selecteer het **CPU-percentage**.
 
-6. (Optioneel) de metriek verfijnen door aan te passen **periode** en **aggregatie**. Het wordt afgeraden samenvoegingstype 'Maximaal' voor dit type metrische gegevens gebruiken, omdat dit minder vertegenwoordiger van het gedrag van. Voor type 'Maximale' aggregatie statische drempelwaarde mogelijk meer nodig.
+6. U kunt de metriek eventueel verfijnen door de **periode** en **aggregatie**aan te passen. Het wordt afgeraden om het aggregatie type ' maximum ' te gebruiken voor dit metrische type omdat het minder representatief is voor het gedrag. De statische drempel waarde voor het aggregatie type ' maximum ' kan wellicht beter overeenkomen.
 
-7. U ziet een grafiek voor de metrische gegevens voor de afgelopen 6 uur. Definieer de parameters voor waarschuwing:
-    1. **Type voorwaarde** -optie voor 'Dynamische'.
-    1. **Gevoeligheid** -Kies/Laag gevoeligheid voor waarschuwingsruis te verminderen.
-    1. **Operator** -groter is dan te kiezen, tenzij gedrag Hiermee geeft u het gebruik van toepassingen.
-    1. **Frequentie** -overwegen verlagen op basis van impact op bedrijf van de waarschuwing.
-    1. **Perioden mislukt** (geavanceerde optie) - het uiterlijk back-venster moet ten minste 15 minuten. Bijvoorbeeld, als de periode is ingesteld op vijf minuten, moet klikt u vervolgens mislukt perioden ten minste drie of meer.
+7. Er wordt een grafiek weer gegeven met de metrische gegevens voor de afgelopen zes uur. Definieer de waarschuwings parameters:
+    1. **Voorwaarde type** : Kies optie Dynamic.
+    1. **Gevoeligheid** : Kies gemiddeld/laag gevoeligheid om waarschuwings ruis te verminderen.
+    1. **Operator** : Kies groter dan, tenzij gedrag staat voor het toepassings gebruik.
+    1. **Frequentie** : overweeg het verlagen op basis van de bedrijfs impact van de waarschuwing.
+    1. **Mislukte Peri Oden** (geavanceerde optie): het venster terugkijken moet ten minste 15 minuten zijn. Als de periode bijvoorbeeld is ingesteld op vijf minuten, moeten de mislukte Peri Oden ten minste drie of meer zijn.
 
-8. De grafiek met metrische gegevens, wordt de berekende drempelwaarden op basis van recente gegevens weergegeven.
+8. De metrische grafiek geeft de berekende drempel waarden weer op basis van recente gegevens.
 
 9. Klik op **Gereed**.
 
-10. Vul in **Waarschuwingsdetails** zoals **waarschuwing regelnaam**, **beschrijving**, en **ernst**.
+10. Vul de **waarschuwings Details** in, zoals de naam, **Beschrijving**en **Ernst**van de **waarschuwings regel**.
 
-11. Een actiegroep toevoegen aan de waarschuwing door een bestaande actiegroep selecteren of door een nieuwe actiegroep maken.
+11. Voeg een actie groep toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
 
-12. Klik op **gedaan** om op te slaan van de waarschuwingsregel voor metrische gegevens.
+12. Klik op **gereed** om de waarschuwings regel voor metrische gegevens op te slaan.
 
 > [!NOTE]
-> Waarschuwing voor metrische gegevens regels die zijn gemaakt via de portal worden gemaakt in dezelfde resourcegroep bevinden als de doelresource.
+> Metrische waarschuwings regels die via de portal zijn gemaakt, worden gemaakt in dezelfde resource groep als de doel resource.
 
-### <a name="dynamic-thresholds-on-application-insights-http-request-execution-time"></a>Dynamische drempelwaarden in uitvoeringstijd van Application Insights HTTP-aanvraag
+### <a name="dynamic-thresholds-on-application-insights-http-request-execution-time"></a>Dynamische drempel waarden voor de uitvoerings tijd van de HTTP-aanvraag van Application Insights
 
-1. In [Azure-portal](https://portal.azure.com), klikt u op **Monitor**. De Monitor-weergave worden samengevoegd voor alle controle-instellingen en gegevens in één weergave.
+1. Klik in [Azure Portal](https://portal.azure.com)op **monitor**. In de weer gave monitor worden alle bewakings instellingen en-gegevens in één weer gave geconsolideerd.
 
-2. Klik op **waarschuwingen** klikt u vervolgens op **+ nieuwe waarschuwingsregel**.
+2. Klik op **waarschuwingen** en vervolgens op **+ nieuwe waarschuwings regel**.
 
     > [!TIP]
-    > De meeste resourceblades hebben ook **waarschuwingen** in hun resourcemenu onder **bewaking**, u kunt waarschuwingen maken ook.
+    > De meeste resource-Blades hebben ook **waarschuwingen** in het resource menu onder **bewaking**, u kunt hier ook waarschuwingen van maken.
 
-3. Klik op **doel selecteren**, in het deelvenster context die wordt geladen, selecteert u een doelresource die u een waarschuwing wilt maken. Gebruik **abonnement** en **type 'Application Insights-Resource** vervolgkeuzelijsten om te vinden van de resource die u wilt bewaken. U kunt ook de zoekbalk te vinden van uw resource.
+3. Klik op **doel selecteren**in het context deel venster dat wordt geladen, selecteer een doel resource waarop u een waarschuwing wilt ontvangen. Gebruik het **abonnement** en de vervolg keuzelijst **Application Insights resource type** om de resource te vinden die u wilt bewaken. U kunt ook de zoek balk gebruiken om uw bron te vinden.
 
-4. Als u een doelbron hebt geselecteerd, klikt u op **voorwaarde toevoegen**.
+4. Wanneer u een doel resource hebt geselecteerd, klikt u op **voor waarde toevoegen**.
 
-5. Selecteer de **HTTP-aanvraag uitvoeringstijd**.
+5. Selecteer de **uitvoerings tijd van de HTTP-aanvraag**.
 
-6. (Optioneel) de metriek verfijnen door aan te passen **periode** en **aggregatie**. Het wordt afgeraden samenvoegingstype 'Maximaal' voor dit type metrische gegevens gebruiken, omdat dit minder vertegenwoordiger van het gedrag van. Voor type 'Maximale' aggregatie statische drempelwaarde mogelijk meer nodig.
+6. U kunt de metriek eventueel verfijnen door de **periode** en **aggregatie**aan te passen. Het wordt afgeraden om het aggregatie type ' maximum ' te gebruiken voor dit metrische type omdat het minder representatief is voor het gedrag. De statische drempel waarde voor het aggregatie type ' maximum ' kan wellicht beter overeenkomen.
 
-7. U ziet een grafiek voor de metrische gegevens voor de afgelopen 6 uur. Definieer de parameters voor waarschuwing:
-    1. **Type voorwaarde** -optie voor 'Dynamische'.
-    1. **Operator** -Kies 'Groter dan' te verminderen voor verbetering van de duur van de geactiveerde waarschuwingen.
-    1. **Frequentie** -overwegen verlagen op basis van impact op bedrijf van de waarschuwing.
+7. Er wordt een grafiek weer gegeven met de metrische gegevens voor de afgelopen zes uur. Definieer de waarschuwings parameters:
+    1. **Voorwaarde type** : Kies optie Dynamic.
+    1. **Operator** : Kies groter dan om waarschuwingen te verminderen die worden geactiveerd tijdens de duur van de verbetering.
+    1. **Frequentie** : overweeg het verlagen op basis van de bedrijfs impact van de waarschuwing.
 
-8. De grafiek met metrische gegevens, wordt de berekende drempelwaarden op basis van recente gegevens weergegeven.
+8. De metrische grafiek geeft de berekende drempel waarden weer op basis van recente gegevens.
 
 9. Klik op **Gereed**.
 
-10. Vul in **Waarschuwingsdetails** zoals **waarschuwing regelnaam**, **beschrijving**, en **ernst**.
+10. Vul de **waarschuwings Details** in, zoals de naam, **Beschrijving**en **Ernst**van de **waarschuwings regel**.
 
-11. Een actiegroep toevoegen aan de waarschuwing door een bestaande actiegroep selecteren of door een nieuwe actiegroep maken.
+11. Voeg een actie groep toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
 
-12. Klik op **gedaan** om op te slaan van de waarschuwingsregel voor metrische gegevens.
+12. Klik op **gereed** om de waarschuwings regel voor metrische gegevens op te slaan.
 
 > [!NOTE]
-> Waarschuwing voor metrische gegevens regels die zijn gemaakt via de portal worden gemaakt in dezelfde resourcegroep bevinden als de doelresource.
+> Metrische waarschuwings regels die via de portal zijn gemaakt, worden gemaakt in dezelfde resource groep als de doel resource.
+
+## <a name="interpreting-dynamic-threshold-charts"></a>Dynamische drempel grafieken interpreteren
+
+Hieronder ziet u een grafiek met een metrische waarde, de dynamische drempel limieten en enkele waarschuwingen die worden geactiveerd wanneer de waarde buiten de toegestane drempel waarden valt.
+
+![Meer informatie over het configureren van metrische waarschuwingen](media/alerts-dynamic-thresholds/threshold-picture-8bit.png)
+
+Gebruik de volgende informatie om de vorige grafiek te interpreteren.
+
+- **Blauwe lijn** : de werkelijke gemeten waarde over tijd.
+- **Blauw grijs vlak** : hier wordt het toegestane bereik voor de metrische gegevens weer gegeven. Zolang de metrische waarden binnen dit bereik blijven, wordt er geen waarschuwing weer gegeven.
+- **Blauwe stippen** : als u op een deel van de grafiek hebt geklikt en vervolgens met de muis aanwijzer over de blauwe lijn beweegt, ziet u een blauwe stip onder uw cursor met daarin een afzonderlijke geaggregeerde metrische waarde.
+- **Pop-up met blauwe stip** : toont de gemeten metrische waarde (de blauwe stip) en de bovenste en onderste waarden van het toegestane bereik.  
+- **Rode stip met een zwarte cirkel** : toont de eerste meet waarde uit het toegestane bereik. Dit is de waarde die een metrische waarschuwing activeert en deze in een actieve status plaatst.
+- **Rode puntjes**: Geef extra gemeten waarden aan buiten het toegestane bereik. Er worden geen aanvullende metrische waarschuwingen geactiveerd, maar de waarschuwing blijft actief.
+- **Rood gebied** : geeft de tijd weer waarop de metrische waarde buiten het toegestane bereik valt. De waarschuwing blijft actief zolang de volgende gemeten waarden buiten het toegestane bereik vallen, maar er worden geen nieuwe waarschuwingen geactiveerd.
+- **Einde van het rode gebied** : wanneer de blauwe lijn in de toegestane waarden terugkomt, wordt het rode gebied gestopt en wordt de regel voor de gemeten waarde blauw. De status van de metrische waarschuwing die wordt geactiveerd op het moment van de rode punt met een zwart kader, wordt ingesteld op opgelost. 

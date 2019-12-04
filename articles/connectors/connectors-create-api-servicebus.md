@@ -1,21 +1,18 @@
 ---
-title: Berichten uitwisselen met Azure Service Bus-Azure Logic Apps
+title: Berichten uitwisselen met Azure Service Bus
 description: Berichten verzenden en ontvangen met behulp van Azure Service Bus in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 477fdc2291d875c57bfb0ae3cb87b6df9bd41398
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c83e2bc0411c9bec3c3a5fa35dcc6565ed7f44f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024293"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789394"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
@@ -48,7 +45,7 @@ U kunt triggers gebruiken die reacties ophalen van Service Bus en de uitvoer bes
 
 Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Service Bus-naam ruimte.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Ga naar uw Service Bus *naam ruimte*. Selecteer op de pagina naam ruimte onder **instellingen**de optie **beleid voor gedeelde toegang**. Onder **claims**controleert u of u machtigingen voor het **beheren** van die naam ruimte hebt.
 

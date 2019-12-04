@@ -1,22 +1,18 @@
 ---
-title: Verbinding maken met share point vanuit Azure Logic Apps | Microsoft Docs
+title: Verbinding maken met share point via Azure Logic Apps
 description: Taken en werk stromen automatiseren waarmee resources in share point online of share Point server on-premises worden gecontroleerd en beheerd met behulp van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 8a34ee4e90b551da35aff8802c8badc0d74ff539
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: bb82ef2d6fb83c2e1b0fa81aa9504c9bb7d8234b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050786"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789253"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Share point-resources bewaken en beheren met Azure Logic Apps
 
@@ -80,11 +76,11 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?]
 
 Raadpleeg de [referentie pagina](/connectors/sharepoint/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 * Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 * Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

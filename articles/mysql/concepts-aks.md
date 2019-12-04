@@ -1,53 +1,53 @@
 ---
-title: Verbinding maken met Azure Kubernetes Service (AKS) met Azure Database for MySQL
-description: Meer informatie over Azure Kubernetes Service te verbinden met Azure Database for MySQL
+title: Verbinding maken met de Azure Kubernetes-service-Azure Database for MySQL
+description: Meer informatie over het verbinden van Azure Kubernetes service met Azure Database for MySQL
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/28/2018
-ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 71b266231b7ed3012e5ea7f65fe9487eeb5fb358
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790518"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773608"
 ---
-# <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Maak verbinding van Azure Kubernetes Service en Azure Database voor MySQL
+# <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Verbinding maken met Azure Kubernetes service en Azure Database for MySQL
 
-Azure Kubernetes Service (AKS) biedt een beheerde Kubernetes-cluster die kunt u in Azure. Hieronder vindt u enkele opties om te overwegen bij het gebruik van AKS en Azure Database for MySQL samen om een toepassing te maken.
+Azure Kubernetes service (AKS) biedt een beheerd Kubernetes-cluster dat u kunt gebruiken in Azure. Hieronder vindt u enkele opties waarmee u rekening moet houden wanneer u AKS en Azure Database for MySQL samen gebruikt om een toepassing te maken.
 
 
 ## <a name="accelerated-networking"></a>Versneld netwerken
-Versneld netwerken is ingeschakeld onderliggende VM's in uw AKS-cluster gebruiken. Wanneer versneld netwerken is ingeschakeld op een virtuele machine, is er lagere latentie, minder jitter en minder CPU-gebruik op de virtuele machine. Meer informatie over hoe u versnelde netwerken works, de ondersteunde versies van het besturingssysteem en VM-exemplaren voor ondersteund [Linux](../virtual-network/create-vm-accelerated-networking-cli.md).
+Gebruik versneld netwerken met onderliggende virtuele machines in uw AKS-cluster. Wanneer versneld netwerken op een virtuele machine is ingeschakeld, is er sprake van een lagere latentie, verminderde jitter en minder CPU-gebruik op de VM. Meer informatie over de werking van versneld netwerken, de ondersteunde versies van besturings systemen en ondersteunde VM-instanties voor [Linux](../virtual-network/create-vm-accelerated-networking-cli.md).
 
-Vanaf November 2018 ondersteunt AKS versneld netwerken op deze ondersteunde VM-exemplaren. Versneld netwerken is standaard ingeschakeld op nieuwe AKS-clusters die gebruikmaken van deze virtuele machines.
+Vanaf november 2018 ondersteunt AKS versneld netwerken op die ondersteunde VM-exemplaren. Versneld netwerken zijn standaard ingeschakeld voor nieuwe AKS-clusters die gebruikmaken van deze Vm's.
 
-U kunt controleren of uw AKS-cluster netwerken versnelde:
-1. Ga naar de Azure-portal en selecteer uw AKS-cluster.
+U kunt controleren of uw AKS-cluster versneld netwerken heeft:
+1. Ga naar de Azure Portal en selecteer uw AKS-cluster.
 2. Selecteer het tabblad Eigenschappen.
-3. Kopieer de naam van de **resourcegroep voor infrastructuur**.
-4. Gebruik de zoekbalk van de portal om te zoeken en openen van de resourcegroep voor infrastructuur.
-5. Selecteer een virtuele machine in die resourcegroep.
-6. Ga naar de VM's **netwerken** tabblad.
-7. Controleer of **versnelde netwerken** is 'ingeschakeld.'
+3. Kopieer de naam van de **infrastructuur resource groep**.
+4. Gebruik de zoek balk van de portal om de resource groep voor de infra structuur te zoeken en te openen.
+5. Selecteer een virtuele machine in die resource groep.
+6. Ga naar het tabblad **netwerken** van de VM.
+7. Controleer of **versneld netwerken** zijn ingeschakeld.
 
 Of via de Azure CLI met behulp van de volgende twee opdrachten:
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
 ```
-De uitvoer is de gegenereerde resourcegroep AKS wordt gemaakt waarin de netwerkinterface. Nemen de naam 'nodeResourceGroup' en deze gebruiken in de volgende opdracht. **EnableAcceleratedNetworking** wordt een true of false zijn:
+De uitvoer is de gegenereerde resource groep die AKS maakt die de netwerk interface bevat. Voer de naam ' nodeResourceGroup ' in en gebruik deze in de volgende opdracht. **EnableAcceleratedNetworking** heeft de waarde True of False:
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker voor Azure 
-[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) kunt u Azure-services rechtstreeks via Kubernetes of Cloud Foundry inrichten. Het is een [Open Service Broker API](https://www.openservicebrokerapi.org/) implementatie voor Azure.
+Met [Service Broker open voor Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) kunt u Azure-Services rechtstreeks vanuit Kubernetes of Cloud Foundry inrichten. Het is een [Open service BROKER API](https://www.openservicebrokerapi.org/) -implementatie voor Azure.
 
-U kunt met OSBA, een Azure Database for MySQL-server maken en koppelen aan uw AKS-cluster met behulp van Kubernetes de eigen taal. Meer informatie over het gebruik van OSBA en Azure Database for MySQL samen op de [OSBA GitHub-pagina](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md). 
+Met OSBA kunt u een Azure Database for MySQL-server maken en deze koppelen aan uw AKS-cluster met behulp van Kubernetes ' native taal '. Meer informatie over het gebruik van OSBA en Azure Database for MySQL samen op de [pagina OSBA github](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md). 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een Azure Kubernetes Service-cluster maken](../aks/kubernetes-walkthrough.md)
-- Meer informatie over het [WordPress installeren vanaf een Helm-grafiek die met OSBA en Azure Database for MySQL](../aks/integrate-azure.md)
+- [Een Azure Kubernetes service-cluster maken](../aks/kubernetes-walkthrough.md)
+- Meer informatie over het [installeren van WordPress vanuit een helm-diagram met OSBA en Azure database for MySQL](../aks/integrate-azure.md)

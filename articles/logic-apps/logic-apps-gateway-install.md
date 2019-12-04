@@ -1,20 +1,17 @@
 ---
-title: On-premises gegevens gateway installeren-Azure Logic Apps
+title: On-premises gegevensgateway installeren
 description: U kunt de on-premises gegevens gateway downloaden en installeren voordat u toegang hebt tot gegevens on-Azure Logic Apps premises.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: arthii, LADocs
+ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: e1e56d18b0874a724849e28092ed46892a1b5519
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 9f933a9ad63af11bcfee7c90f17318f5a237b962
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326377"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792094"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevens gateway voor Azure Logic Apps installeren
 

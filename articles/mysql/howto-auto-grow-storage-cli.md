@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL opslag automatisch uitbreiden met Azure CLI
+title: Opslag automatisch uitbreiden-Azure CLI-Azure Database for MySQL
 description: In dit artikel wordt beschreven hoe u automatische groei opslag kunt inschakelen met behulp van de Azure CLI in Azure Database for MySQL.
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 8/7/2019
-ms.openlocfilehash: c9faaa5d011a32dfbaa5a841d3bce824f7ba5c9d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.date: 12/02/2019
+ms.openlocfilehash: fb39c3afa2977038df7c9a233ba6720771f545dc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390561"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770625"
 ---
 # <a name="auto-grow-azure-database-for-mysql-storage-using-the-azure-cli"></a>Azure Database for MySQL opslag automatisch uitbreiden met behulp van de Azure CLI
 In dit artikel wordt beschreven hoe u een Azure Database for MySQL server-opslag kunt configureren om te groeien zonder dat dit van invloed is op de werk belasting.
@@ -19,13 +19,13 @@ In dit artikel wordt beschreven hoe u een Azure Database for MySQL server-opslag
 De server die [de opslag limiet bereikt](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#reaching-the-storage-limit), wordt ingesteld op alleen-lezen. Als automatisch verg Roten 100 van de opslag is ingeschakeld, wordt de ingerichte opslag grootte met 5 GB verhoogd zodra de beschik bare opslag ruimte groter is dan 1 GB of 10% van de ingerichte opslag ruimte. Voor servers met meer dan 100 GB ingerichte opslag wordt de ingerichte opslag grootte verhoogd met 5% wanneer de beschik bare opslag ruimte lager is dan 5% van de ingerichte opslag grootte. De maximale opslag limieten die [hier](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) zijn opgegeven, zijn van toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
-Voor deze handleiding, hebt u het volgende nodig:
+U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for mysql server](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> In deze gebruiksaanwijzing vereist het gebruik van Azure CLI versie 2.0 of hoger. Als u wilt controleren welke versie, bij de Azure CLI-opdrachtprompt, voer `az --version`. Als u wilt installeren of upgraden, Zie [Azure CLI installeren]( /cli/azure/install-azure-cli).
+> Voor deze hand leiding moet u Azure CLI versie 2,0 of hoger gebruiken. Als u de versie wilt bevestigen, voert u bij de opdracht prompt van Azure CLI `az --version`in. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren]( /cli/azure/install-azure-cli).
 
 ## <a name="enable-mysql-server-storage-auto-grow"></a>De MySQL-server opslag automatisch verg Roten inschakelen
 

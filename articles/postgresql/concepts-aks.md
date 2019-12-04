@@ -1,57 +1,57 @@
 ---
-title: Verbinding maken met Azure Kubernetes Service (AKS) met Azure Database voor PostgreSQL - één Server
-description: Meer informatie over Azure Kubernetes Service te verbinden met Azure Database voor PostgreSQL - één Server
+title: Verbinding maken met de Azure Kubernetes-service-Azure Database for PostgreSQL-één server
+description: Meer informatie over het verbinden van Azure Kubernetes service (AKS) met Azure Database for PostgreSQL-één server
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.date: 5/6/2019
 ms.topic: conceptual
-ms.openlocfilehash: a98d9b89db0406d67d1b067c3e53eb5c3dae7957
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46aa411826dd3ea578a2d98b0fe631ab0a12ef4a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068940"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769877"
 ---
-# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Azure Kubernetes Service en Azure Database voor PostgreSQL - Server met één verbinding te maken
+# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Verbinding maken met de Azure Kubernetes-service en Azure Database for PostgreSQL-één server
 
-Azure Kubernetes Service (AKS) biedt een beheerde Kubernetes-cluster die kunt u in Azure. Hieronder vindt u enkele opties om te overwegen bij het gebruik van AKS en Azure Database for PostgreSQL samen om een toepassing te maken.
+Azure Kubernetes service (AKS) biedt een beheerd Kubernetes-cluster dat u kunt gebruiken in Azure. Hieronder vindt u enkele opties waarmee u rekening moet houden wanneer u AKS en Azure Database for PostgreSQL samen gebruikt om een toepassing te maken.
 
 
 ## <a name="accelerated-networking"></a>Versneld netwerken
-Versneld netwerken is ingeschakeld onderliggende VM's in uw AKS-cluster gebruiken. Wanneer versneld netwerken is ingeschakeld op een virtuele machine, is er lagere latentie, minder jitter en minder CPU-gebruik op de virtuele machine. Meer informatie over hoe u versnelde netwerken works, de ondersteunde versies van het besturingssysteem en VM-exemplaren voor ondersteund [Linux](../virtual-network/create-vm-accelerated-networking-cli.md).
+Gebruik versneld netwerken met onderliggende virtuele machines in uw AKS-cluster. Wanneer versneld netwerken op een virtuele machine is ingeschakeld, is er sprake van een lagere latentie, verminderde jitter en minder CPU-gebruik op de VM. Meer informatie over de werking van versneld netwerken, de ondersteunde versies van besturings systemen en ondersteunde VM-instanties voor [Linux](../virtual-network/create-vm-accelerated-networking-cli.md).
 
-Vanaf November 2018 ondersteunt AKS versneld netwerken op deze ondersteunde VM-exemplaren. Versneld netwerken is standaard ingeschakeld op nieuwe AKS-clusters die gebruikmaken van deze virtuele machines.
+Vanaf november 2018 ondersteunt AKS versneld netwerken op die ondersteunde VM-exemplaren. Versneld netwerken zijn standaard ingeschakeld voor nieuwe AKS-clusters die gebruikmaken van deze Vm's.
 
-U kunt controleren of uw AKS-cluster netwerken versnelde:
-1. Ga naar de Azure-portal en selecteer uw AKS-cluster.
+U kunt controleren of uw AKS-cluster versneld netwerken heeft:
+1. Ga naar de Azure Portal en selecteer uw AKS-cluster.
 2. Selecteer het tabblad Eigenschappen.
-3. Kopieer de naam van de **resourcegroep voor infrastructuur**.
-4. Gebruik de zoekbalk van de portal om te zoeken en openen van de resourcegroep voor infrastructuur.
-5. Selecteer een virtuele machine in die resourcegroep.
-6. Ga naar de VM's **netwerken** tabblad.
-7. Controleer of **versnelde netwerken** is 'ingeschakeld.'
+3. Kopieer de naam van de **infrastructuur resource groep**.
+4. Gebruik de zoek balk van de portal om de resource groep voor de infra structuur te zoeken en te openen.
+5. Selecteer een virtuele machine in die resource groep.
+6. Ga naar het tabblad **netwerken** van de VM.
+7. Controleer of **versneld netwerken** zijn ingeschakeld.
 
 Of via de Azure CLI met behulp van de volgende twee opdrachten:
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
 ```
-De uitvoer is de gegenereerde resourcegroep AKS wordt gemaakt waarin de netwerkinterface. Nemen de naam 'nodeResourceGroup' en deze gebruiken in de volgende opdracht. **EnableAcceleratedNetworking** wordt een true of false zijn:
+De uitvoer is de gegenereerde resource groep die AKS maakt die de netwerk interface bevat. Voer de naam ' nodeResourceGroup ' in en gebruik deze in de volgende opdracht. **EnableAcceleratedNetworking** heeft de waarde True of False:
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker voor Azure 
-[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) kunt u Azure-services rechtstreeks via Kubernetes of Cloud Foundry inrichten. Het is een [Open Service Broker API](https://www.openservicebrokerapi.org/) implementatie voor Azure.
+Met [Service Broker open voor Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) kunt u Azure-Services rechtstreeks vanuit Kubernetes of Cloud Foundry inrichten. Het is een [Open service BROKER API](https://www.openservicebrokerapi.org/) -implementatie voor Azure.
 
-U kunt met OSBA, een Azure Database for PostgreSQL-server maken en koppelen aan uw AKS-cluster met behulp van Kubernetes de eigen taal. Meer informatie over het gebruik van OSBA en Azure Database for PostgreSQL samen op de [OSBA GitHub-pagina](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md). 
+Met OSBA kunt u een Azure Database for PostgreSQL-server maken en deze koppelen aan uw AKS-cluster met behulp van Kubernetes ' native taal '. Meer informatie over het gebruik van OSBA en Azure Database for PostgreSQL samen op de [pagina OSBA github](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md). 
 
 
 ## <a name="connection-pooling"></a>Groepsgewijze verbinding
-Een verbindingsgroepering minimaliseert de kosten en de tijd die is gekoppeld met het maken en nieuwe verbindingen met de database wordt gesloten. De pool is een verzameling van verbindingen die kunnen worden hergebruikt. 
+Een verbindings groep minimaliseert de kosten en tijd die zijn gekoppeld aan het maken en sluiten van nieuwe verbindingen met de data base. De pool is een verzameling verbindingen die opnieuw kunnen worden gebruikt. 
 
-Er zijn meerdere verbinding poolers die kunt u met PostgreSQL. Een van deze is [PgBouncer](https://pgbouncer.github.io/). In het Containerregister van Microsoft bieden we een lichtgewicht containers PgBouncer die kan worden gebruikt in een sidecar pool verbindingen van AKS met Azure Database voor PostgreSQL. Ga naar de [docker hub-pagina](https://hub.docker.com/r/microsoft/azureossdb-tools-pgbouncer/) voor informatie over het openen en gebruiken van deze installatiekopie. 
+Er zijn meerdere groepsgewijze verbindingen die u kunt gebruiken met PostgreSQL. Een van deze is [PgBouncer](https://pgbouncer.github.io/). In de micro soft-Container Registry bieden we een licht gewicht container PgBouncer die in een zijspan wagen kan worden gebruikt om verbindingen van AKS te maken naar Azure Database for PostgreSQL. Ga naar de [docker hub-pagina](https://hub.docker.com/r/microsoft/azureossdb-tools-pgbouncer/) voor meer informatie over het openen en gebruiken van deze installatie kopie. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
--  [Een Azure Kubernetes Service-cluster maken](../aks/kubernetes-walkthrough.md)
+-  [Een Azure Kubernetes service-cluster maken](../aks/kubernetes-walkthrough.md)

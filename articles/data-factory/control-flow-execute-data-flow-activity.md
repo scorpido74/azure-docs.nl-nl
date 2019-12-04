@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f05b9ae490ea2b9d8e7b89ce02c7c1eb818bb0a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679950"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769572"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Gegevens stroom activiteit in Azure Data Factory
 
@@ -49,7 +49,7 @@ Gebruik de activiteit gegevens stroom om gegevens te transformeren en te verplaa
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Beschrijving | Toegestane waarden | Vereist
+Eigenschap | Beschrijving | Toegestane waarden | Verplicht
 -------- | ----------- | -------------- | --------
 stroom | De verwijzing naar de gegevens stroom die wordt uitgevoerd | DataFlowReference | Ja
 integrationRuntime | De compute-omgeving waarop de gegevens stroom wordt uitgevoerd | IntegrationRuntimeReference | Ja
@@ -98,6 +98,43 @@ De pijp lijn voor fout opsporing wordt uitgevoerd op het actieve debug-cluster, 
 ## <a name="monitoring-the-data-flow-activity"></a>De activiteit gegevens stroom bewaken
 
 De activiteit gegevens stroom heeft een speciale bewakings ervaring waarbij u gegevens over partitionering, fase tijd en gegevens afkomst kunt weer geven. Open het deel venster bewaking via het pictogram bril onder **acties**. Zie [gegevens stromen bewaken](concepts-data-flow-monitoring.md)voor meer informatie.
+
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Resultaten van de gegevens stroom activiteit gebruiken in een volgende activiteit
+
+De gegevens stroom activiteit voert metrische waarden uit op basis van het aantal rijen dat naar elke sink is geschreven en rijen die van elke bron zijn gelezen. Deze resultaten worden geretourneerd in het gedeelte `output` van het resultaat van de uitvoering van de activiteit. De metrische gegevens worden in de indeling van de onderstaande JSON weer gegeven.
+
+``` json
+{
+    "runStatus": {
+        "metrics": {
+            "<your sink name1>": {
+                "rowsWritten": <number of rows written>,
+                "sinkProcessingTime": <sink processing time in ms>,
+                "sources": {
+                    "<your source name1>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    "<your source name2>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    ...
+                }
+            },
+            "<your sink name2>": {
+                ...
+            },
+            ...
+        }
+    }
+}
+```
+
+Als u bijvoorbeeld wilt zoeken naar het aantal rijen dat is geschreven naar een Sink met de naam ' sink1 ' in een activiteit met de naam ' dataflowActivity ', gebruikt u `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`.
+
+Als u het aantal rijen wilt ophalen dat is gelezen uit een bron met de naam ' source1 ' die in die sink is gebruikt, gebruikt u `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`.
+
+> [!NOTE]
+> Als een Sink nul rijen heeft geschreven, wordt deze niet weer gegeven in metrische gegevens. Aanwezigheid kan worden gecontroleerd met behulp van de functie `contains`. `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` controleert bijvoorbeeld of er rijen zijn geschreven naar sink1.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 0d3cbe8c3d2d7931e3e4cc052eedc844a296ccf0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099758"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775735"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -22,7 +22,7 @@ ms.locfileid: "73099758"
 In dit artikel wordt beschreven hoe u een [Azure Resource Manager sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md) kunt gebruiken om [nieuwe metrische waarschuwingen](../../azure-monitor/platform/alerts-metric-near-real-time.md) te configureren in azure monitor. Met Resource Manager-sjablonen kunt u via programma code waarschuwingen instellen op een consistente en reproduceer bare manier in uw omgevingen. Er zijn momenteel nieuwere metrische waarschuwingen beschikbaar voor [Deze set met resource typen](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 > [!IMPORTANT]
-> Resource sjabloon voor het maken van metrische waarschuwingen voor het resource type: Azure Log Analytics-werk ruimte (bijvoorbeeld) `Microsoft.OperationalInsights/workspaces` vereist extra stappen. Zie het artikel over [metrische waarschuwing voor logboeken-resource sjabloon](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)voor meer informatie.
+> Resource sjabloon voor het maken van metrische waarschuwingen voor het resource type: Azure Log Analytics-werk ruimte (i.e.) `Microsoft.OperationalInsights/workspaces`vereist extra stappen. Zie het artikel over [metrische waarschuwing voor logboeken-resource sjabloon](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)voor meer informatie.
 
 De basis stappen zijn als volgt:
 
@@ -551,9 +551,11 @@ az group deployment create \
 >
 > Terwijl de metrische waarschuwing in een andere resource groep kan worden gemaakt naar de doel resource, raden we u aan dezelfde resource groep te gebruiken als de doel resource.
 
-## <a name="template-for-a-more-advanced-static-threshold-metric-alert"></a>Sjabloon voor een meer geavanceerde waarschuwing voor een meting van een vaste drempel waarde
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Sjabloon voor een waarschuwing over een statische drempel waarde waarmee meerdere criteria worden bewaakt
 
-Nieuwere metrische waarschuwingen bieden ondersteuning voor waarschuwingen over multidimensionale metrische gegevens en het ondersteunen van meerdere criteria. U kunt de volgende sjabloon gebruiken om een meer geavanceerde metrische waarschuwing te maken voor dimensionale metrieken en meerdere criteria op te geven.
+Nieuwere metrische waarschuwingen bieden ondersteuning voor waarschuwingen over multidimensionale metrische gegevens en het ondersteunen van meerdere criteria. U kunt de volgende sjabloon gebruiken om een meer geavanceerde waarschuwings regel voor metrische gegevens te maken over dimensionale metrische gegevens en meerdere criteria op te geven.
+
+Houd er rekening mee dat als de waarschuwings regel meerdere criteria bevat, het gebruik van dimensies is beperkt tot één waarde per dimensie in elk criterium.
 
 Sla de JSON hieronder op als advancedstaticmetricalert. json voor het doel van deze procedure.
 
@@ -757,7 +759,7 @@ Sla de JSON hieronder op en wijzig deze als advancedstaticmetricalert. para mete
 ```
 
 
-U kunt de waarschuwing voor metrische gegevens maken met behulp van de sjabloon en het parameter bestand met behulp van Power shell of Azure CLI vanuit uw huidige werkmap
+U kunt de metrische waarschuwing maken met behulp van de sjabloon en het parameter bestand met behulp van Power shell of Azure CLI vanuit uw huidige werkmap.
 
 Azure PowerShell gebruiken
 ```powershell
@@ -784,13 +786,243 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Terwijl de metrische waarschuwing in een andere resource groep kan worden gemaakt naar de doel resource, raden we u aan dezelfde resource groep te gebruiken als de doel resource.
+> Wanneer een waarschuwings regel meerdere criteria bevat, is het gebruik van dimensies beperkt tot één waarde per dimensie in elk criterium.
 
-## <a name="template-for-a-more-advanced-dynamic-thresholds-metric-alert"></a>Sjabloon voor een geavanceerde waarschuwing voor de metrische gegevens over dynamische drempel waarden
+## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Sjabloon voor een statische metrische waarschuwing waarmee meerdere dimensies worden bewaakt
 
-U kunt de volgende sjabloon gebruiken om een geavanceerdere dynamische drempel waarden waarschuwing voor metrische gegevens te maken. Er worden momenteel niet meerdere criteria ondersteund.
+U kunt de volgende sjabloon gebruiken om een statische metrische waarschuwings regel te maken op dimensionale metrische gegevens.
 
-Waarschuwings regel voor dynamische drempel waarden kan aangepaste drempel waarden maken voor honderden metrische gegevens reeksen (zelfs verschillende typen) tegelijk, wat leidt tot minder waarschuwings regels om te beheren.
+Eén waarschuwings regel kan meerdere metrische tijd reeksen tegelijk bewaken, wat leidt tot minder waarschuwings regels om te beheren.
+
+In het onderstaande voor beeld worden met de waarschuwings regel de dimensie Dimensiewaardecombinaties van de dimensies **ResponseType** en **ApiName** voor de metrische gegevens van de **trans acties** gecontroleerd:
+1. **ResponsType** : het gebruik van het Joker teken '\*' houdt in dat voor elke waarde van de dimensie **ResponseType** , met inbegrip van toekomstige waarden, een andere tijd reeks afzonderlijk wordt gecontroleerd.
+2. **ApiName** : een andere tijd reeks wordt alleen bewaakt voor de dimensie waarden **GetBlob** en **PutBlob** .
+
+Zo zijn een aantal van de mogelijke tijd reeksen die door deze waarschuwings regel worden bewaakt:
+- Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *GetBlob*
+- Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *PutBlob*
+- Metrische waarde = *trans acties*, ResponseType = *time-out van server*, ApiName = *GetBlob*
+- Metrische waarde = *trans acties*, ResponseType = *time-out van server*, ApiName = *PutBlob*
+
+Sla de JSON hieronder op als multidimensionalstaticmetricalert. json voor het doel van deze procedure.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "alertDescription": {
+            "type": "string",
+            "defaultValue": "This is a metric alert",
+            "metadata": {
+                "description": "Description of alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 3,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "isEnabled": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "resourceId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Resource ID of the resource emitting the metric that will be used for the comparison."
+            }
+        },
+        "criterion":{
+            "type": "object",
+            "metadata": {
+                "description": "Criterion includes metric name, dimension values, threshold and an operator. The alert rule fires when ALL criteria are met"
+            }
+        },
+        "windowSize": {
+            "type": "string",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
+            }
+        },
+        "evaluationFrequency": {
+            "type": "string",
+            "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
+            "metadata": {
+                "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": { 
+        "criteria": "[array(parameters('criterion'))]"
+     },
+    "resources": [
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/metricAlerts",
+            "location": "global",
+            "apiVersion": "2018-03-01",
+            "tags": {},
+            "properties": {
+                "description": "[parameters('alertDescription')]",
+                "severity": "[parameters('alertSeverity')]",
+                "enabled": "[parameters('isEnabled')]",
+                "scopes": ["[parameters('resourceId')]"],
+                "evaluationFrequency":"[parameters('evaluationFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "allOf": "[variables('criteria')]"
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[parameters('actionGroupId')]"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+U kunt de bovenstaande sjabloon gebruiken, samen met het parameter bestand dat hieronder wordt vermeld. 
+
+Sla de JSON hieronder op en wijzig deze als multidimensionalstaticmetricalert. para meters. json voor het doel van deze procedure.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "value": "New multi-dimensional metric alert rule (replace with your alert name)"
+        },
+        "alertDescription": {
+            "value": "New multi-dimensional metric alert rule created via template (replace with your alert description)"
+        },
+        "alertSeverity": {
+            "value":3
+        },
+        "isEnabled": {
+            "value": true
+        },
+        "resourceId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
+        },
+        "criterion": {
+            "value": {
+                    "name": "Criterion",
+                    "metricName": "Transactions",
+                    "dimensions": [
+                        {
+                            "name":"ResponseType",
+                            "operator": "Include",
+                            "values": ["*"]
+                        },
+                        {
+                "name":"ApiName",
+                            "operator": "Include",
+                            "values": ["GetBlob", "PutBlob"]    
+                        }
+                    ],
+                    "operator": "GreaterThan",
+                    "threshold": "5",
+                    "timeAggregation": "Total"
+                }
+        },
+        "actionGroupId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
+        }
+    }
+}
+```
+
+
+U kunt de metrische waarschuwing maken met behulp van de sjabloon en het parameter bestand met behulp van Power shell of Azure CLI vanuit uw huidige werkmap.
+
+Azure PowerShell gebruiken
+```powershell
+Connect-AzAccount
+
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
+ 
+New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupofTargetResource `
+  -TemplateFile multidimensionalstaticmetricalert.json -TemplateParameterFile multidimensionalstaticmetricalert.parameters.json
+```
+
+
+
+Azure CLI gebruiken
+```azurecli
+az login
+
+az group deployment create \
+    --name AlertDeployment \
+    --resource-group ResourceGroupofTargetResource \
+    --template-file multidimensionalstaticmetricalert.json \
+    --parameters @multidimensionalstaticmetricalert.parameters.json
+```
+
+
+## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>Sjabloon voor een waarschuwing met een dynamische drempel waarde die meerdere dimensies bewaakt
+
+U kunt de volgende sjabloon gebruiken om een geavanceerdere waarschuwings regel voor dynamische drempel waarden voor metrische gegevens te maken.
+
+Een waarschuwings regel met enkele dynamische drempel waarden kan aangepaste drempel waarden maken voor honderden meettijd reeksen (zelfs verschillende typen) tegelijk, wat leidt tot minder waarschuwings regels om te beheren.
+
+In het onderstaande voor beeld worden met de waarschuwings regel de dimensie Dimensiewaardecombinaties van de dimensies **ResponseType** en **ApiName** voor de metrische gegevens van de **trans acties** gecontroleerd:
+1. **ResponsType** : voor elke waarde van de dimensie **ResponseType** , met inbegrip van toekomstige waarden, wordt een andere tijd reeks afzonderlijk gecontroleerd.
+2. **ApiName** : een andere tijd reeks wordt alleen bewaakt voor de dimensie waarden **GetBlob** en **PutBlob** .
+
+Zo zijn een aantal van de mogelijke tijd reeksen die door deze waarschuwings regel worden bewaakt:
+- Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *GetBlob*
+- Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *PutBlob*
+- Metrische waarde = *trans acties*, ResponseType = *time-out van server*, ApiName = *GetBlob*
+- Metrische waarde = *trans acties*, ResponseType = *time-out van server*, ApiName = *PutBlob*
 
 Sla de JSON hieronder op als advanceddynamicmetricalert. json voor het doel van deze procedure.
 
@@ -936,7 +1168,7 @@ Sla de JSON hieronder op en wijzig deze als advanceddynamicmetricalert. para met
         "resourceId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
         },
-        "criterion1": {
+        "criterion": {
             "value": {
                     "criterionType": "DynamicThresholdCriterion",
                     "name": "1st criterion",
@@ -945,12 +1177,12 @@ Sla de JSON hieronder op en wijzig deze als advanceddynamicmetricalert. para met
                         {
                             "name":"ResponseType",
                             "operator": "Include",
-                            "values": ["Success"]
+                            "values": ["*"]
                         },
                         {
                             "name":"ApiName",
                             "operator": "Include",
-                            "values": ["GetBlob"]
+                            "values": ["GetBlob", "PutBlob"]
                         }
                     ],
                     "operator": "GreaterOrLessThan",
@@ -961,7 +1193,7 @@ Sla de JSON hieronder op en wijzig deze als advanceddynamicmetricalert. para met
                     },
                     "timeAggregation": "Total"
                 }
-        }
+        },
         "actionGroupId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
         }
@@ -970,7 +1202,7 @@ Sla de JSON hieronder op en wijzig deze als advanceddynamicmetricalert. para met
 ```
 
 
-U kunt de waarschuwing voor metrische gegevens maken met behulp van de sjabloon en het parameter bestand met behulp van Power shell of Azure CLI vanuit uw huidige werkmap
+U kunt de metrische waarschuwing maken met behulp van de sjabloon en het parameter bestand met behulp van Power shell of Azure CLI vanuit uw huidige werkmap.
 
 Azure PowerShell gebruiken
 ```powershell
@@ -997,11 +1229,11 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Terwijl de metrische waarschuwing in een andere resource groep kan worden gemaakt naar de doel resource, raden we u aan dezelfde resource groep te gebruiken als de doel resource.
+> Er worden momenteel niet meerdere criteria ondersteund voor metrische waarschuwings regels die gebruikmaken van dynamische drempel waarden.
 
-## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>Sjabloon voor metrische waarschuwing waarmee meerdere bronnen worden bewaakt
+## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Sjabloon voor een metrische waarschuwing waarmee meerdere bronnen worden bewaakt
 
-In de vorige secties beschreven voor beelden van Azure Resource Manager sjablonen voor het maken van metrische waarschuwingen die één resource bewaken. Azure Monitor ondersteunt nu het bewaken van meerdere resources met één metrische waarschuwings regel. Deze functie wordt momenteel alleen ondersteund in de open bare Azure-Cloud en alleen voor virtuele machines en Databox edge-apparaten.
+In de vorige secties beschreven voor beelden van Azure Resource Manager sjablonen voor het maken van metrische waarschuwingen die één resource bewaken. Azure Monitor ondersteunt nu het bewaken van meerdere resources met één metrische waarschuwings regel. Deze functie wordt momenteel alleen ondersteund in de open bare Azure-Cloud en alleen voor virtuele machines, SQL-data bases, elastische SQL-Pools en Databox edge-apparaten.
 
 Waarschuwings regel voor dynamische drempel waarden kan ook helpen bij het maken van aangepaste drempel waarden voor honderden metrische reeksen (zelfs verschillende typen) tegelijk, wat leidt tot minder waarschuwings regels om te beheren.
 
@@ -1836,6 +2068,7 @@ Sla de JSON hieronder op als alle vm's-in-abonnement-static. json voor het doel 
             "type": "string",
             "defaultValue": "PT1M",
             "allowedValues": [
+                "PT1M",
                 "PT5M",
                 "PT15M",
                 "PT30M",

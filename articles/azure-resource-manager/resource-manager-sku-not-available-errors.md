@@ -3,12 +3,12 @@ title: Niet-beschik bare SKU-fouten
 description: Hierin wordt beschreven hoe u problemen met de SKU niet beschik bare fout bij het implementeren van resources met Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 10/19/2018
-ms.openlocfilehash: 56afca6b6a59ca08f3fd59c4d9b3ebf12bda415a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 0b3696d3207a88d87b11e65f4697473963f960d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150492"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769129"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Fouten oplossen voor SKU is niet beschikbaar
 
@@ -30,7 +30,9 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 Deze fout wordt weer gegeven wanneer de resource-SKU die u hebt geselecteerd (zoals VM-grootte) niet beschikbaar is voor de locatie die u hebt geselecteerd.
 
-## <a name="solution-1---powershell"></a>Oplossing 1: PowerShell
+Als u een Azure spot VM of een instantie van een steun schaalset implementeert, is er geen capaciteit voor Azure-steun op deze locatie. Zie [Spot fout berichten](../virtual-machines/error-codes-spot.md)voor meer informatie.
+
+## <a name="solution-1---powershell"></a>Oplossing 1-Power shell
 
 Gebruik de opdracht [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) om te bepalen welke sku's beschikbaar zijn in een regio. De resultaten filteren op locatie. U moet de meest recente versie van Power shell voor deze opdracht hebben.
 
@@ -48,7 +50,7 @@ virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      M
 virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
 ```
 
-## <a name="solution-2---azure-cli"></a>Oplossing 2 - Azure CLI
+## <a name="solution-2---azure-cli"></a>Oplossing 2-Azure CLI
 
 Gebruik de opdracht `az vm list-skus` om te bepalen welke Sku's beschikbaar zijn in een regio. Gebruik de para meter `--location` om de uitvoer te filteren op de locatie die u gebruikt. Gebruik de para meter `--size` om te zoeken op een gedeeltelijke grootte naam.
 
@@ -68,7 +70,7 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 ```
 
 
-## <a name="solution-3---azure-portal"></a>Oplossing 3 - Azure portal
+## <a name="solution-3---azure-portal"></a>Oplossing 3-Azure Portal
 
 Gebruik de [Portal](https://portal.azure.com)om te bepalen welke sku's beschikbaar zijn in een regio. Meld u aan bij de portal en voeg een resource toe via de-interface. Wanneer u de waarden instelt, ziet u de beschik bare Sku's voor die bron. U hoeft de implementatie niet te volt ooien.
 

@@ -1,20 +1,19 @@
 ---
-title: Berichten in batch verwerken als een groep-Azure Logic Apps
+title: Berichten in batch verwerken als een groep
 description: Berichten verzenden en ontvangen als batches in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, jonfan, LADocs
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: b56a50fceec8ac6be966c0c58a82e94e0c977143
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 813c625fc72fa7c1440b5d1b9147af9a44c2260f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680443"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791573"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Berichten verzenden, ontvangen en verwerken in Azure Logic Apps
 
@@ -60,7 +59,7 @@ Voordat u berichten naar een batch kunt verzenden, moet deze batch eerst bestaan
    |----------|-------------|
    | **Batch modus** | **inline**- : voor het definiëren van release criteria binnen de batch trigger <br>- **integratie account**: voor het definiëren van configuraties met meerdere release criteria via een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Met een integratie account kunt u deze configuraties op één plek behouden in plaats van in afzonderlijke logische apps. | 
    | **Batch naam** | De naam voor uw batch, die in dit voor beeld ' TestBatch ' is, en geldt alleen voor de **inline** batch modus |  
-   | **Release criteria** | Is alleen van toepassing op de **inline** batch modus en selecteert de criteria om te voldoen aan de verwerking van elke batch: <p>- **telling op basis van berichten**: de batch vrijgeven op basis van het aantal berichten dat door de batch is verzameld. <br>**op basis**van -  grootte: de batch vrijgeven op basis van de totale grootte in bytes voor alle berichten die door die batch worden verzameld. <br>- **schema**: de batch vrijgeven op basis van een terugkeer schema, waarmee een interval en frequentie worden opgegeven. In de geavanceerde opties kunt u ook een tijd zone selecteren en een begin datum en-tijd opgeven. <br>- **Alles selecteren**: gebruik alle opgegeven criteria. | 
+   | **Release criteria** | Is alleen van toepassing op de **inline** batch modus en selecteert de criteria om te voldoen aan de verwerking van elke batch: <p>- **telling op basis van berichten**: de batch vrijgeven op basis van het aantal berichten dat door de batch is verzameld. <br>**op basis**van - grootte: de batch vrijgeven op basis van de totale grootte in bytes voor alle berichten die door die batch worden verzameld. <br>- **schema**: de batch vrijgeven op basis van een terugkeer schema, waarmee een interval en frequentie worden opgegeven. In de geavanceerde opties kunt u ook een tijd zone selecteren en een begin datum en-tijd opgeven. <br>- **Alles selecteren**: gebruik alle opgegeven criteria. | 
    | **Aantal berichten** | Het aantal berichten dat in de batch moet worden verzameld, bijvoorbeeld 10 berichten. De limiet voor een batch is 8.000 berichten. | 
    | **Batch grootte** | De totale grootte in bytes die in de batch moet worden verzameld, bijvoorbeeld 10 MB. De maximale grootte van een batch is 80 MB. | 
    | **Planning** | Het interval en de frequentie tussen batch releases, bijvoorbeeld 10 minuten. De minimale terugkeer patroon is 60 seconden of 1 minuut. Gedeeltelijke minuten worden effectief afgerond tot 1 minuut. Kies **Geavanceerde opties weer geven**om een tijd zone of een start datum en-tijd op te geven. | 
@@ -88,7 +87,7 @@ Voordat u berichten naar een batch kunt verzenden, moet deze batch eerst bestaan
       Als u een Gmail-account hebt, selecteert u de Gmail-connector. 
       In dit voor beeld wordt Office 365 Outlook gebruikt. 
 
-   3. Selecteer deze actie: e-mail ***provider* voor e-mail < verzenden >**
+   3. Selecteer deze actie: e-mail ***provider* voor e-mail < verzenden>**
 
       Bijvoorbeeld:
 
@@ -163,9 +162,9 @@ Maak nu een of meer logische apps voor batch Sender die berichten verzenden naar
       > 
       > Als u Visual Studio gebruikt en er geen batch-ontvangers worden weer gegeven, controleert u of u uw batch-ontvanger hebt geïmplementeerd in Azure. Als u dat nog niet hebt gedaan, kunt u leren hoe u [de logische app voor uw batch-ontvanger naar Azure implementeert](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure). 
 
-   4. Selecteer deze actie: **Batch_messages-<*your-batch-receiver* >**
+   4. Selecteer deze actie: **Batch_messages-<*uw-batch-ontvanger*>**
 
-      ![Selecteer deze actie: ' Batch_messages-< your-logic-app > '](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
+      ![Selecteer deze actie: ' Batch_messages-< uw-Logic-app > '](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
 3. De eigenschappen van de batch Sender instellen:
 
@@ -181,7 +180,7 @@ Maak nu een of meer logische apps voor batch Sender die berichten verzenden naar
 
    2. Wanneer de lijst met dynamische inhoud wordt weer gegeven, kiest u **expressie**. 
 
-   3. Voer de expressie in `utcnow()` en kies vervolgens **OK**. 
+   3. Voer de expressie in `utcnow()`en kies vervolgens **OK**. 
 
       ![Kies in ' bericht inhoud ' expressie ', voer ' utcnow () ' in en kies OK.](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
 
@@ -199,7 +198,7 @@ Maak nu een of meer logische apps voor batch Sender die berichten verzenden naar
 
    2. Kies in de lijst met dynamische inhoud voor **Expressie**.
    
-   3. Voer de expressie in `rand(1,6)` en kies vervolgens **OK**.
+   3. Voer de expressie in `rand(1,6)`en kies vervolgens **OK**.
 
       ![Een partitie voor de doel batch instellen](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 

@@ -1,35 +1,35 @@
 ---
-title: Gebruikers maken in Azure Database voor MySQL-server
-description: Dit artikel wordt beschreven hoe u nieuwe gebruikersaccounts om te communiceren met een Azure Database for MySQL-server kunt maken.
+title: Gebruikers maken-Azure Database for MySQL
+description: In dit artikel wordt beschreven hoe u nieuwe gebruikers accounts kunt maken om te communiceren met een Azure Database for MySQL-server.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 4cd2305ed3d7f88f6c3825d8f7cdb5d81f9a0f6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: e76e63030cc8e10c857d361cca69e1d35ba8c2c1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61460181"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770472"
 ---
-# <a name="create-users-in-azure-database-for-mysql-server"></a>Gebruikers maken in Azure Database voor MySQL-server 
-Dit artikel wordt beschreven hoe u gebruikers in een Azure Database for MySQL-server kunt maken.
+# <a name="create-users-in-azure-database-for-mysql-server"></a>Gebruikers maken op Azure Database for MySQL server 
+In dit artikel wordt beschreven hoe u gebruikers kunt maken in een Azure Database for MySQL-server.
 
-Wanneer u eerst uw Azure Database for MySQL hebt gemaakt, u hebt een gebruiker van de serverbeheerder en het wachtwoord opgegeven. Voor meer informatie kunt u volgen de [snelstartgids](quickstart-create-mysql-server-database-using-azure-portal.md). U vindt de gebruiker aanmeldnamen van serverbeheerder vanuit Azure portal.
+Wanneer u uw Azure Database for MySQL voor het eerst hebt gemaakt, hebt u de gebruikers naam en het wacht woord van de server beheerder aangemeld. Voor meer informatie kunt u de [Snelstartgids](quickstart-create-mysql-server-database-using-azure-portal.md)volgen. U kunt de gebruikers naam van de server beheerder aanmelden via de Azure Portal.
 
-De gebruiker server admin wordt bepaalde bevoegdheden voor de server die worden beschreven: SELECTEREN, INVOEGEN, BIJWERKEN, VERWIJDEREN, MAKEN, VERWIJDEREN, OPNIEUW LADEN, VERWERKEN, VERWIJZINGEN, INDEX, ALTER, DATABASES, GEVEN TIJDELIJKE TABELLEN MAKEN, VERGRENDELEN VAN TABELLEN, WORDEN UITGEVOERD, HET MAKEN VAN SLAVE-REPLICATIE, REPLICATIE-CLIENT WEERGEVEN, WEERGEVEN, MAKEN ROUTINEMATIGE, ROUTINE WIJZIGEN, GEBRUIKER MAKEN , GEBEURTENIS, TRIGGER
+De gebruiker van de server beheerder heeft bepaalde bevoegdheden voor uw server als vermeld: selecteren, invoegen, bijwerken, verwijderen, maken, verwijderen, opnieuw laden, verwerken, verwijzingen, INDEX, wijzigen, data BASEs weer geven, tijdelijke tabellen maken, vergren delen, tabellen, uitvoeren, replicatie-slave, replicatie CLIENT, WEER GAVE MAKEN, WEER GAVE TONEN, ROUTINE MAKEN, ALTER ROUTINE, GEBRUIKER MAKEN, GEBEURTENIS, TRIGGER
 
-Nadat de Azure Database for MySQL-server is gemaakt, kunt u het eerste gebruikersaccount van de server-beheerder kunt gebruiken voor het maken van extra gebruikers en beheerderstoegang verlenen. Het serverbeheerdersaccount kan ook worden gebruikt om minder bevoegde gebruikers die toegang tot afzonderlijke databaseschema hebben te maken.
+Zodra de Azure Database for MySQL-server is gemaakt, kunt u het eerste gebruikers account van de server beheerder gebruiken om extra gebruikers te maken en beheerders toegang te verlenen. Het account voor de server beheerder kan ook worden gebruikt om gebruikers met minder bevoegdheden te maken die toegang hebben tot afzonderlijke database schema's.
 
-## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>Hoe u extra beheergebruikers maken in Azure Database for MySQL
-1. De verbinding informatie en beheerder gebruikersnaam niet ophalen.
-   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U kunt eenvoudig vinden voor de servernaam en aanmeldingsgegevens informatie van de server **overzicht** pagina of het **eigenschappen** pagina in de Azure portal. 
+## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>Aanvullende gebruikers met beheerders rechten maken in Azure Database for MySQL
+1. De verbindings gegevens en de gebruikers naam van de beheerder ophalen.
+   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U kunt eenvoudig de server naam en aanmeldings gegevens vinden op de pagina **overzicht** van de server of op de pagina **eigenschappen** in de Azure Portal. 
 
-2. De beheerdersaccount en het wachtwoord om verbinding met uw database-server te gebruiken. Gebruik uw favoriete clienthulpprogramma, zoals MySQL Workbench, mysql.exe, HeidiSQL of anderen. 
-   Als u niet hoe u verbinding maakt weet, Zie [gebruik MySQL Workbench verbinding maken en gegevens op te vragen](./connect-workbench.md)
+2. Gebruik het beheerders account en-wacht woord om verbinding te maken met uw database server. Gebruik het client hulpprogramma van uw voor keur, zoals MySQL Workbench, mysql. exe, HeidiSQL of anderen. 
+   Als u niet zeker weet hoe u verbinding kunt maken, raadpleegt u [MySQL Workbench gebruiken om verbinding te maken en gegevens op te vragen](./connect-workbench.md)
 
-3. Bewerken en voer de volgende SQL-code. Vervang de gebruikersnaam van uw nieuwe voor de tijdelijke aanduidingswaarde `new_master_user`. Deze syntaxis geeft de vermelde machtigingen op alle schema's van de database ( *.* ) aan de gebruikersnaam (new_master_user in dit voorbeeld). 
+3. Bewerk de volgende SQL-code en voer deze uit. Vervang de nieuwe gebruikers naam voor de waarde voor de tijdelijke aanduiding `new_master_user`. Met deze syntaxis worden de vermelde bevoegdheden voor alle database schema's ( *.* ) verleend aan de gebruikers naam (new_master_user in dit voor beeld). 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -39,24 +39,24 @@ Nadat de Azure Database for MySQL-server is gemaakt, kunt u het eerste gebruiker
    FLUSH PRIVILEGES;
    ```
 
-4. Controleer of de verleent 
+4. De subsidies verifiëren 
    ```sql
    USE sys;
    
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
 
-## <a name="how-to-create-database-users-in-azure-database-for-mysql"></a>Databasegebruikers in Azure Database voor MySQL maken
+## <a name="how-to-create-database-users-in-azure-database-for-mysql"></a>Database gebruikers maken in Azure Database for MySQL
 
-1. De verbinding informatie en beheerder gebruikersnaam niet ophalen.
-   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U kunt eenvoudig vinden voor de servernaam en aanmeldingsgegevens informatie van de server **overzicht** pagina of het **eigenschappen** pagina in de Azure portal. 
+1. De verbindings gegevens en de gebruikers naam van de beheerder ophalen.
+   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U kunt eenvoudig de server naam en aanmeldings gegevens vinden op de pagina **overzicht** van de server of op de pagina **eigenschappen** in de Azure Portal. 
 
-2. De beheerdersaccount en het wachtwoord om verbinding met uw database-server te gebruiken. Gebruik uw favoriete clienthulpprogramma, zoals MySQL Workbench, mysql.exe, HeidiSQL of anderen. 
-   Als u niet hoe u verbinding maakt weet, Zie [gebruik MySQL Workbench verbinding maken en gegevens op te vragen](./connect-workbench.md)
+2. Gebruik het beheerders account en-wacht woord om verbinding te maken met uw database server. Gebruik het client hulpprogramma van uw voor keur, zoals MySQL Workbench, mysql. exe, HeidiSQL of anderen. 
+   Als u niet zeker weet hoe u verbinding kunt maken, raadpleegt u [MySQL Workbench gebruiken om verbinding te maken en gegevens op te vragen](./connect-workbench.md)
 
-3. Bewerken en voer de volgende SQL-code. Vervang de tijdelijke aanduidingswaarde `db_user` met uw beoogde nieuwe gebruikersnaam en een tijdelijke aanduiding `testdb` met de databasenaam van uw eigen.
+3. Bewerk de volgende SQL-code en voer deze uit. Vervang de waarde van de tijdelijke aanduiding `db_user` door de gewenste nieuwe gebruikers naam en de tijdelijke aanduiding `testdb` met uw eigen database naam.
 
-   De syntaxis van deze sql-code maakt een nieuwe database met de naam testdb als voorbeeld. Vervolgens maakt een nieuwe gebruiker in de MySQL-service en alle bevoegdheden naar het nieuwe databaseschema verleent (testdb.\*) voor die gebruiker. 
+   Deze SQL-code syntaxis maakt bijvoorbeeld een nieuwe Data Base met de naam testdb. Vervolgens wordt er een nieuwe gebruiker in de MySQL-service gemaakt en worden alle bevoegdheden verleend aan het nieuwe database schema (testdb.\*) voor die gebruiker. 
 
    ```sql
    CREATE DATABASE testdb;
@@ -68,20 +68,20 @@ Nadat de Azure Database for MySQL-server is gemaakt, kunt u het eerste gebruiker
    FLUSH PRIVILEGES;
    ```
 
-4. Controleer of de verleent binnen de database.
+4. Controleer de subsidies in de data base.
    ```sql
    USE testdb;
    
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
-5. Meld u aan bij de server, de aangewezen database, met behulp van de nieuwe gebruikersnaam en het wachtwoord op te geven. Dit voorbeeld toont de mysql-opdrachtregel. Met deze opdracht wordt u gevraagd om het wachtwoord voor de naam van de gebruiker. Vervangen door uw eigen servernaam, databasenaam en gebruikersnaam.
+5. Meld u aan bij de server, waarbij u de aangewezen data base opgeeft, met de nieuwe gebruikers naam en wacht woord. In dit voor beeld wordt de MySQL-opdracht regel weer gegeven. Met deze opdracht wordt u gevraagd om het wacht woord voor de gebruikers naam. Vervang uw eigen server naam, database naam en gebruikers naam.
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Open de firewall voor IP-adressen van de nieuwe gebruikers machines waarmee ze verbinding kunnen maken: [Maken en beheren van Azure Database voor MySQL-firewallregels met behulp van de Azure-portal](howto-manage-firewall-using-portal.md) of [Azure CLI](howto-manage-firewall-using-cli.md).
+Open de firewall voor de IP-adressen van de computers van de nieuwe gebruikers zodat ze verbinding kunnen maken: [Azure database for MySQL firewall regels maken en beheren met behulp van de Azure Portal](howto-manage-firewall-using-portal.md) of [Azure cli](howto-manage-firewall-using-cli.md).
 
-Zie voor meer informatie met betrekking tot beheer van gebruikersaccounts, MySQL-productdocumentatie voor [Gebruikersaccountbeheer](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), [verlenen syntaxis](https://dev.mysql.com/doc/refman/5.7/en/grant.html), en [bevoegdheden](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).
+Zie voor meer informatie over beheer van gebruikers accounts MySQL-product documentatie voor [Gebruikersaccountbeheer](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), [syntaxis van Grant](https://dev.mysql.com/doc/refman/5.7/en/grant.html)en [bevoegdheden](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).

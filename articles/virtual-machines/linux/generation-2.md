@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 12/03/2019
 ms.author: lahugh
-ms.openlocfilehash: 02ab7cdcbf0f150157eb44ef5e28e8284621b813
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cfa8d28a41bb5551277bca29c118698ecaa8d112
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173955"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791732"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -53,13 +53,11 @@ Virtuele machines van de eerste generatie worden ondersteund door alle VM-groott
 
 Vm's van generatie 2 ondersteunen de volgende installatie kopieën van Marketplace:
 
-* Windows Server 2019 Datacenter
-* Windows Server 2016 Datacenter
-* Windows Server 2012 R2 Datacenter
-* Windows Server 2012 Datacenter
+* Windows Server 2019, 2016, 2012 R2, 2012
+* Windows 10
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04, 18.04, 19,04, 19,10 
+* Ubuntu Server 16,04, 18,04, 19,04, 19,10 
 * RHEL 8,0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>On-premises versus Azure Generation 2 Vm's
@@ -82,7 +80,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 |---------|--------------|--------------|
 | Opstarten             | PCAT         | UEFI |
 | Schijf controllers | IDE          | SCSI |
-| Formaten van virtuele machines         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
+| VM-grootten         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Mogelijkheden van generatie 1 vs. generatie 2
 

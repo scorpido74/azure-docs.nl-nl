@@ -1,18 +1,18 @@
 ---
-title: Server logboeken configureren en openen voor PostgreSQL-één-server met behulp van Azure CLI
-description: In dit artikel wordt beschreven hoe u de server Logboeken in Azure Database for PostgreSQL-server kunt configureren en openen met behulp van de Azure CLI-opdracht regel.
+title: Logboeken beheren-Azure CLI-Azure Database for PostgreSQL-één server
+description: In dit artikel wordt beschreven hoe u de server Logboeken (logboek bestanden) kunt configureren en openen in Azure Database for PostgreSQL-één server met behulp van de Azure CLI.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bb33debaa23ad8625b6ddc1cc63738b13bcd19e1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: be679be91d49516bd2f6c672eb53640cfad2ae2a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023621"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763569"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Server logboeken configureren en openen met behulp van Azure CLI
 U kunt de fouten logboeken van de PostgreSQL-server downloaden met behulp van de opdracht regel interface (Azure CLI). Toegang tot transactie Logboeken wordt echter niet ondersteund. 

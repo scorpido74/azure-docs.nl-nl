@@ -1,20 +1,19 @@
 ---
-title: B2B-berichten bewaken met Azure Monitor-Azure Logic Apps
+title: B2B-berichten bewaken met Azure Monitor
 description: Diagnostische logboek registratie instellen voor AS2-, X12-en EDIFACT-berichten in Azure Logic Apps met behulp van Azure Monitor
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: cd96376f764ec3075b916bf2207ec6ee3dd3fcbd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680190"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791939"
 ---
 # <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>Diagnostische logboek registratie voor B2B-berichten in Azure Logic Apps instellen met behulp van Azure Monitor
 
@@ -49,9 +48,9 @@ Wanneer u klaar bent, kiest u **Diagnostische instelling toevoegen**.
    | Eigenschap | Waarde | Beschrijving | 
    |----------|-------|-------------|
    | **Abonnement** | <*Azure-subscription-name*> | Het Azure-abonnement dat is gekoppeld aan uw integratie account | 
-   | **Resourcegroep** | <*Azure-resource-group-name* > | De Azure-resource groep voor uw integratie account | 
+   | **Resourcegroep** | <*Azure-resource-group-name*> | De Azure-resource groep voor uw integratie account | 
    | **Resourcetype** | **Integratieaccounts** | Het type voor de Azure-resource waarvoor u logboek registratie wilt inschakelen | 
-   | **Resource** | <*Integration-account-name* > | De naam voor uw Azure-resource waarvoor u logboek registratie wilt inschakelen | 
+   | **Resource** | <*Integration-account-name*> | De naam voor uw Azure-resource waarvoor u logboek registratie wilt inschakelen | 
    ||||  
 
    Bijvoorbeeld:
@@ -91,9 +90,9 @@ Wanneer u klaar bent, kiest u **Diagnostische instelling toevoegen**.
    | Eigenschap | Waarde | Beschrijving | 
    |----------|-------|-------------|
    | **Abonnement** | <*Azure-subscription-name*> | Het Azure-abonnement dat is gekoppeld aan uw integratie account | 
-   | **Resourcegroep** | <*Azure-resource-group-name* > | De Azure-resource groep voor uw integratie account | 
+   | **Resourcegroep** | <*Azure-resource-group-name*> | De Azure-resource groep voor uw integratie account | 
    | **Resourcetype** | **Integratieaccounts** | Het type voor de Azure-resource waarvoor u logboek registratie wilt inschakelen | 
-   | **Resource** | <*Integration-account-name* > | De naam voor uw Azure-resource waarvoor u logboek registratie wilt inschakelen | 
+   | **Resource** | <*Integration-account-name*> | De naam voor uw Azure-resource waarvoor u logboek registratie wilt inschakelen | 
    ||||  
 
    Bijvoorbeeld:

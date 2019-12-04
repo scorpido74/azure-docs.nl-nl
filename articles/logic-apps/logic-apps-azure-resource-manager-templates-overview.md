@@ -2,19 +2,16 @@
 title: 'Overzicht: implementatie voor Azure Logic Apps automatiseren'
 description: Meer informatie over Azure Resource Manager sjablonen voor het automatiseren van de implementatie voor Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: bc61e39a02d16827521758ca8248488e46c109b5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f5216181efcd6593fc9f85de0792b98a5d7fd0a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838099"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792561"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen
 
@@ -322,7 +319,7 @@ De resource definitie van de logische app begint met het `properties`-object, da
 
 Dit zijn de kenmerken die specifiek zijn voor de resource definitie van de logische app:
 
-| Kenmerk | Vereist | Type | Beschrijving |
+| Kenmerk | Verplicht | Type | Beschrijving |
 |-----------|----------|------|-------------|
 | `state` | Ja | Tekenreeks | De status van uw logische app bij implementatie waarbij `Enabled` betekent dat uw logische app Live is en `Disabled` betekent dat uw logische app niet actief is. Als u bijvoorbeeld niet klaar bent voor uw logische app om live te gaan, maar een concept versie wilt implementeren, kunt u de optie `Disabled` gebruiken. |
 | `integrationAccount` | Nee | Object | Als uw logische app gebruikmaakt van een integratie account dat artefacten voor Business-to-Business-scenario's (B2B) opslaat, bevat dit object het `id` kenmerk, waarmee de ID van het integratie account wordt opgegeven. |

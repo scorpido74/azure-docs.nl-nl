@@ -1,20 +1,17 @@
 ---
-title: Verifiëren met beheerde identiteiten-Azure Logic Apps
+title: Verifiëren met beheerde identiteiten
 description: Toegang krijgen tot bronnen in andere Azure Active Directory-tenants zonder u aan te melden met referenties of geheimen met behulp van een beheerde identiteit
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 2d1dbde2499dbe793a895f894e5ae83c36c54449
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200625"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792669"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Toegang tot Azure-bronnen verifiëren door beheerde identiteiten te gebruiken in Azure Logic Apps
 

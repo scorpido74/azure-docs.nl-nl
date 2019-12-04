@@ -1,20 +1,19 @@
 ---
-title: XML-berichten en platte bestanden-Azure Logic Apps
+title: XML-berichten en platte bestanden
 description: XML-berichten in Azure Logic Apps verwerken, valideren en transformeren met Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2017
-ms.openlocfilehash: 730adf3e6ef3ddab5a8b0e927f94ffe3725358f4
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 3cb3472572abbd891f8d36ea036b371c1224f38c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679908"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792146"
 ---
 # <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-berichten en platte bestanden in Azure Logic Apps met Enterprise Integration Pack
 

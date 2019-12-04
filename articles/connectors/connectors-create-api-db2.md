@@ -1,21 +1,18 @@
 ---
-title: Verbinding maken met IBM DB2-Azure Logic Apps
+title: Verbinding maken met IBM DB2
 description: Resources beheren met IBM DB2 REST Api's en Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: plarsen, LADocs
+ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: a7079115b381d094cec77f96015342b5bc568c27
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 3c2bb01254b19c42fdd704544a6812177fecf4ca
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051036"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789899"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>IBM DB2-resources beheren met Azure Logic Apps
 
@@ -69,7 +66,7 @@ In de voor beelden in dit artikel wordt de **terugkeer patroon** trigger gebruik
 
 1. Kies **nieuwe stap**onder de trigger.
 
-1. Voer in het zoekvak ' DB2 ' in als uw filter. Voor dit voor beeld selecteert u onder de lijst met acties deze actie: **Tabellen ophalen (preview-versie)**
+1. Voer in het zoekvak ' DB2 ' in als uw filter. Voor dit voor beeld selecteert u onder de lijst acties de volgende actie: **tabellen ophalen (preview)**
 
    ![Actie selecteren](./media/connectors-create-api-db2/select-db2-action.png)
 
@@ -83,13 +80,13 @@ In de voor beelden in dit artikel wordt de **terugkeer patroon** trigger gebruik
 
 Als u de verbinding wilt instellen, geeft u deze verbindings Details op wanneer u hierom wordt gevraagd, kiest u **maken**en slaat u vervolgens uw logische app op:
 
-| Eigenschap | Vereist | Description |
+| Eigenschap | Verplicht | Beschrijving |
 |----------|----------|-------------|
 | **Verbinding maken via on-premises gateway** | Nee | Geldt alleen voor on-premises verbindingen. |
 | **Verbindingsnaam** | Ja | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' |
-| **Server** | Ja | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld ' myDB2server.cloudapp.net:50000 ' <p><p>**Opmerking**: Deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
-| **Database** | Ja | De naam voor uw data base <p><p>**Opmerking**: Deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
-| **Gebruikersnaam** | Ja | Uw gebruikers naam voor de data base <p><p>**Opmerking**: Deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
+| **Server** | Ja | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld ' myDB2server.cloudapp.net:50000 ' <p><p>**Opmerking**: deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
+| **Database** | Ja | De naam voor uw data base <p><p>**Opmerking**: deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
+| **Gebruikersnaam** | Ja | Uw gebruikers naam voor de data base <p><p>**Opmerking**: deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
 | **Wachtwoord** | Ja | Uw wacht woord voor de data base |
 ||||
 
@@ -103,16 +100,16 @@ Bijvoorbeeld:
 
 Voordat u een verbinding maakt, moet uw on-premises gegevens gateway al zijn geïnstalleerd. Anders kunt u de instelling van uw verbinding niet volt ooien. Als u de gateway hebt geïnstalleerd, gaat u door met het leveren van deze verbindings gegevens en kiest u **maken**.
 
-| Eigenschap | Vereist | Description |
+| Eigenschap | Verplicht | Beschrijving |
 |----------|----------|-------------|
 | **Verbinding maken via on-premises gateway** | Ja | Is van toepassing wanneer u een on-premises verbinding wilt en de on-premises verbindings eigenschappen wilt weer geven. |
 | **Verbindingsnaam** | Ja | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' | 
-| **Server** | Ja | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld "myDB2server: 50.000" <p><p>**Opmerking**: Deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
-| **Database** | Ja | De naam voor uw data base <p><p>**Opmerking**: Deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
+| **Server** | Ja | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld "myDB2server: 50.000" <p><p>**Opmerking**: deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
+| **Database** | Ja | De naam voor uw data base <p><p>**Opmerking**: deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
 | **Verificatie** | Ja | Het verificatie type voor de verbinding, bijvoorbeeld ' Basic ' <p><p>**Opmerking**: Selecteer deze waarde in de lijst, die basis of Windows (Kerberos) omvat. |
-| **Gebruikersnaam** | Ja | Uw gebruikers naam voor de data base <p><p>**Opmerking**: Deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
+| **Gebruikersnaam** | Ja | Uw gebruikers naam voor de data base <p><p>**Opmerking**: deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
 | **Wachtwoord** | Ja | Uw wacht woord voor de data base |
-| **Gateway** | Ja | De naam voor de geïnstalleerde on-premises gegevens gateway <p><p>**Opmerking**: Selecteer deze waarde in de lijst, die alle geïnstalleerde gegevens gateways binnen uw Azure-abonnement en resource groep bevat. |
+| **Gateway** | Ja | De naam voor de geïnstalleerde on-premises gegevens gateway <p><p>**Opmerking**: Selecteer deze waarde uit de lijst, die alle geïnstalleerde gegevens gateways binnen uw Azure-abonnement en resource groep bevat. |
 ||||
 
 Bijvoorbeeld:
@@ -134,9 +131,9 @@ Vouw de actie **tabellen ophalen** uit.
 
    ![Actie uitvouwen](./media/connectors-create-api-db2/expand-action-step.png)
 
-1. Kies onbewerkte **invoer weer**geven om de invoer weer te geven.
+1. Kies **onbewerkte invoer weer**geven om de invoer weer te geven.
 
-1. Kies onbewerkte **uitvoer weer**geven om de uitvoer weer te geven.
+1. Kies **onbewerkte uitvoer weer**geven om de uitvoer weer te geven.
 
    De uitvoer bevat een lijst met tabellen.
 
@@ -144,7 +141,7 @@ Vouw de actie **tabellen ophalen** uit.
 
 ## <a name="get-row"></a>Rij ophalen
 
-Als u één record in een DB2-database tabel wilt ophalen, gebruikt u de actie **rij ophalen** in uw logische app. Met deze actie wordt een `SELECT WHERE` DB2-instructie uitgevoerd, `SELECT FROM AREA WHERE AREAID = '99999'`bijvoorbeeld.
+Als u één record in een DB2-database tabel wilt ophalen, gebruikt u de actie **rij ophalen** in uw logische app. Met deze actie wordt een DB2-`SELECT WHERE`-instructie uitgevoerd, bijvoorbeeld `SELECT FROM AREA WHERE AREAID = '99999'`.
 
 1. Als u geen DB2-acties eerder hebt gebruikt in uw logische app, leest u de stappen in de sectie [DB2-actie toevoegen-tabellen ophalen](#add-db2-action) , maar voegt u in plaats daarvan de actie **rij ophalen** toe, en keert u vervolgens terug om door te gaan.
 
@@ -154,7 +151,7 @@ Als u één record in een DB2-database tabel wilt ophalen, gebruikt u de actie *
 
 1. Geef waarden op voor alle vereiste eigenschappen (*). Nadat u een tabel hebt geselecteerd, toont de actie de relevante eigenschappen die specifiek zijn voor records in die tabel.
 
-   | Eigenschap | Vereist | Description |
+   | Eigenschap | Verplicht | Beschrijving |
    |----------|----------|-------------|
    | **Tabel naam** | Ja | De tabel met de gewenste record, zoals ' gebied ' in dit voor beeld |
    | **Gebieds-ID** | Ja | De ID voor de record die u wilt, zoals ' 99999 ' in dit voor beeld |
@@ -175,9 +172,9 @@ Als u uw logische app hand matig wilt uitvoeren, kiest u **uitvoeren**op de werk
 1. Onder **Logic app run**kunt u nu de status, invoer en uitvoer voor elke stap in uw logische app bekijken.
 Vouw de actie **rij ophalen** uit.
 
-1. Kies onbewerkte **invoer weer**geven om de invoer weer te geven.
+1. Kies **onbewerkte invoer weer**geven om de invoer weer te geven.
 
-1. Kies onbewerkte **uitvoer weer**geven om de uitvoer weer te geven.
+1. Kies **onbewerkte uitvoer weer**geven om de uitvoer weer te geven.
 
    De uitvoer bevat de opgegeven rij.
 
@@ -185,7 +182,7 @@ Vouw de actie **rij ophalen** uit.
 
 ## <a name="get-rows"></a>Rijen ophalen
 
-Als u alle records in een DB2-database tabel wilt ophalen, gebruikt u de actie **rijen ophalen** in uw logische app. Met deze actie wordt een `SELECT` DB2-instructie uitgevoerd, `SELECT * FROM AREA`bijvoorbeeld.
+Als u alle records in een DB2-database tabel wilt ophalen, gebruikt u de actie **rijen ophalen** in uw logische app. Met deze actie wordt een DB2-`SELECT`-instructie uitgevoerd, bijvoorbeeld `SELECT * FROM AREA`.
 
 1. Als u geen DB2-acties eerder hebt gebruikt in uw logische app, leest u de stappen in de sectie [DB2-actie toevoegen-tabellen ophalen](#add-db2-action) , maar voegt u in plaats daarvan de actie **rijen ophalen** toe, en keert u vervolgens terug om door te gaan.
 
@@ -212,9 +209,9 @@ Als u uw logische app hand matig wilt uitvoeren, kiest u **uitvoeren**op de werk
 1. Onder **Logic app run**kunt u nu de status, invoer en uitvoer voor elke stap in uw logische app bekijken.
 Vouw de actie **rijen ophalen** uit.
 
-1. Kies onbewerkte **invoer weer**geven om de invoer weer te geven.
+1. Kies **onbewerkte invoer weer**geven om de invoer weer te geven.
 
-1. Kies onbewerkte **uitvoer weer**geven om de uitvoer weer te geven.
+1. Kies **onbewerkte uitvoer weer**geven om de uitvoer weer te geven.
 
    De uitvoer bevat alle records in de opgegeven tabel.
 
@@ -222,7 +219,7 @@ Vouw de actie **rijen ophalen** uit.
 
 ## <a name="insert-row"></a>Rij invoegen
 
-Als u één record wilt toevoegen aan een tabel met een DB2-Data Base, gebruikt u de actie **rij invoegen** in uw logische app. Met deze actie wordt een `INSERT` DB2-instructie uitgevoerd, `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`bijvoorbeeld.
+Als u één record wilt toevoegen aan een tabel met een DB2-Data Base, gebruikt u de actie **rij invoegen** in uw logische app. Met deze actie wordt een DB2-`INSERT`-instructie uitgevoerd, bijvoorbeeld `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
 1. Als u geen DB2-acties eerder hebt gebruikt in uw logische app, leest u de stappen in de sectie [DB2-actie toevoegen-tabellen ophalen](#add-db2-action) , maar voegt u in plaats daarvan de actie **rij invoegen** toe en keert u vervolgens terug om door te gaan.
 
@@ -234,7 +231,7 @@ Als u één record wilt toevoegen aan een tabel met een DB2-Data Base, gebruikt 
 
    In dit voor beeld ziet u de volgende eigenschappen:
 
-   | Eigenschap | Vereist | Description |
+   | Eigenschap | Verplicht | Beschrijving |
    |----------|----------|-------------|
    | **Tabel naam** | Ja | De tabel waar de record moet worden toegevoegd, zoals ' gebied ' |
    | **Gebieds-ID** | Ja | De ID voor het gebied dat moet worden toegevoegd, zoals "99999" |
@@ -259,9 +256,9 @@ Als u uw logische app hand matig wilt uitvoeren, kiest u **uitvoeren**op de werk
 1. Onder **Logic app run**kunt u nu de status, invoer en uitvoer voor elke stap in uw logische app bekijken.
 Vouw de actie **rij invoegen** uit.
 
-1. Kies onbewerkte **invoer weer**geven om de invoer weer te geven.
+1. Kies **onbewerkte invoer weer**geven om de invoer weer te geven.
 
-1. Kies onbewerkte **uitvoer weer**geven om de uitvoer weer te geven.
+1. Kies **onbewerkte uitvoer weer**geven om de uitvoer weer te geven.
 
    De uitvoer bevat de record die u hebt toegevoegd aan de opgegeven tabel.
 
@@ -269,7 +266,7 @@ Vouw de actie **rij invoegen** uit.
 
 ## <a name="update-row"></a>Rij bijwerken
 
-Als u één record in een DB2-database tabel wilt bijwerken, gebruikt u de actie **rij bijwerken** in uw logische app. Met deze actie wordt een `UPDATE` DB2-instructie uitgevoerd, `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`bijvoorbeeld.
+Als u één record in een DB2-database tabel wilt bijwerken, gebruikt u de actie **rij bijwerken** in uw logische app. Met deze actie wordt een DB2-`UPDATE`-instructie uitgevoerd, bijvoorbeeld `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`.
 
 1. Als u geen DB2-acties eerder hebt gebruikt in uw logische app, leest u de stappen in de sectie [DB2-actie toevoegen-tabellen ophalen](#add-db2-action) , maar voegt u in plaats daarvan de actie **rij bijwerken** toe en keert u vervolgens terug om door te gaan.
 
@@ -281,7 +278,7 @@ Als u één record in een DB2-database tabel wilt bijwerken, gebruikt u de actie
 
    In dit voor beeld ziet u de volgende eigenschappen:
 
-   | Eigenschap | Vereist | Description |
+   | Eigenschap | Verplicht | Beschrijving |
    |----------|----------|-------------|
    | **Tabel naam** | Ja | De tabel waar de record moet worden bijgewerkt, bijvoorbeeld ' gebied ' |
    | **Rij-ID** | Ja | De ID voor de record die moet worden bijgewerkt, bijvoorbeeld "99999" |
@@ -307,9 +304,9 @@ Als u uw logische app hand matig wilt uitvoeren, kiest u **uitvoeren**op de werk
 1. Onder **Logic app run**kunt u nu de status, invoer en uitvoer voor elke stap in uw logische app bekijken.
 Vouw de actie **rij bijwerken** uit.
 
-1. Kies onbewerkte **invoer weer**geven om de invoer weer te geven.
+1. Kies **onbewerkte invoer weer**geven om de invoer weer te geven.
 
-1. Kies onbewerkte **uitvoer weer**geven om de uitvoer weer te geven.
+1. Kies **onbewerkte uitvoer weer**geven om de uitvoer weer te geven.
 
    De uitvoer bevat het record dat u in de opgegeven tabel hebt bijgewerkt.
 
@@ -317,7 +314,7 @@ Vouw de actie **rij bijwerken** uit.
 
 ## <a name="delete-row"></a>Rij verwijderen
 
-Als u één record uit een DB2-database tabel wilt verwijderen, gebruikt u de actie **rij verwijderen** in uw logische app. Met deze actie wordt een `DELETE` DB2-instructie uitgevoerd, `DELETE FROM AREA WHERE AREAID = '99999'`bijvoorbeeld.
+Als u één record uit een DB2-database tabel wilt verwijderen, gebruikt u de actie **rij verwijderen** in uw logische app. Met deze actie wordt een DB2-`DELETE`-instructie uitgevoerd, bijvoorbeeld `DELETE FROM AREA WHERE AREAID = '99999'`.
 
 1. Als u geen DB2-acties eerder hebt gebruikt in uw logische app, leest u de stappen in de sectie [DB2-actie toevoegen-tabellen ophalen](#add-db2-action) , maar voegt u in plaats daarvan de actie **rij verwijderen** toe en keert u vervolgens terug om door te gaan.
 
@@ -329,7 +326,7 @@ Als u één record uit een DB2-database tabel wilt verwijderen, gebruikt u de ac
 
    In dit voor beeld ziet u de volgende eigenschappen:
 
-   | Eigenschap | Vereist | Description |
+   | Eigenschap | Verplicht | Beschrijving |
    |----------|----------|-------------|
    | **Tabel naam** | Ja | De tabel waar de record moet worden verwijderd, zoals ' gebied ' |
    | **Rij-ID** | Ja | De ID voor de record die moet worden verwijderd, bijvoorbeeld "99999" |
@@ -352,9 +349,9 @@ Als u uw logische app hand matig wilt uitvoeren, kiest u **uitvoeren**op de werk
 1. Onder **Logic app run**kunt u nu de status, invoer en uitvoer voor elke stap in uw logische app bekijken.
 Vouw de actie **rij verwijderen** uit.
 
-1. Kies onbewerkte **invoer weer**geven om de invoer weer te geven.
+1. Kies **onbewerkte invoer weer**geven om de invoer weer te geven.
 
-1. Kies onbewerkte **uitvoer weer**geven om de uitvoer weer te geven.
+1. Kies **onbewerkte uitvoer weer**geven om de uitvoer weer te geven.
 
    In de uitvoer is de record die u hebt verwijderd uit de opgegeven tabel niet meer opgenomen.
 
@@ -366,4 +363,4 @@ Zie de [referentie pagina van de connector](/connectors/db2/)voor technische det
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

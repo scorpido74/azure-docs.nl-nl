@@ -1,66 +1,66 @@
 ---
-title: Advanced Threat Protection - Azure Database for PostgreSQL - één-Server
-description: Beveiliging tegen bedreigingen detecteert afwijkende activiteiten die wijzen op mogelijke beveiligingsrisico's met de database.
-author: bolzmj
-ms.author: mbolz
+title: Advanced Threat Protection gebruiken-Azure Database for PostgreSQL-één server
+description: Bedreigings beveiliging detecteert afwijkende database activiteiten die duiden op mogelijke beveiligings dreigingen voor de data base.
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a69a8b651188b9566fdbec4bc6de09a8fec164c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b7f52ea318432e97a450a54526f6481b14139c9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067469"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776140"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Advanced Threat Protection voor Azure Database voor PostgreSQL - één Server
+# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Advanced Threat Protection voor Azure Database for PostgreSQL-één server
 
 Advanced Threat Protection for Azure Database for PostgreSQL detecteert vreemde activiteiten die duiden op ongebruikelijke en mogelijk schadelijke pogingen om toegang te verkrijgen tot databases of om deze aan te vallen.
 
-Advanced Threat Protection maakt deel uit van de aanbieding met geavanceerde beveiliging van gegevens, dit een geïntegreerde-pakket voor geavanceerde beveiligingsmogelijkheden is. Advanced Threat Protection kan worden geopend en beheerd de [Azure-portal](https://portal.azure.com) en is momenteel in preview.
+Advanced Threat Protection maakt deel uit van de Advanced Data Security-aanbieding, een uniform pakket voor geavanceerde beveiligings mogelijkheden. Geavanceerde beveiliging tegen bedreigingen kan worden geopend en beheerd via de [Azure Portal](https://portal.azure.com) en is momenteel beschikbaar als preview-versie.
 
 > [!NOTE]
-> De functie Advanced Threat Protection is **niet** beschikbaar in de volgende Azure government en onafhankelijke cloud-regio's: VS (overheid)-Texas, VS (overheid)-Arizona, VS (overheid)-Iowa, VS (overheid)-Virginia, US DoD-Oost, VS DoD-centraal, Duitsland-centraal, Noord Duitsland, China-Oost, China-Oost 2. Ga naar [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/) voor algemene beschikbaarheid.
+> De functie Advanced Threat Protection is **niet** beschikbaar in de volgende Azure Government-en soevereine Cloud regio's: US Gov-Texas, US Gov-Arizona, US gov-Iowa, VS, gov Virginia, US DoD-oost, US DoD-centraal, Duitsland-centraal, Duitsland-noord, China-oost, China-Oost 2. Ga naar beschik [bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/) voor de beschik baarheid van algemene producten.
 >
 
 > [!NOTE]
-> Deze functie is beschikbaar in alle regio's van Azure waarop Azure Database for PostgreSQL voor algemeen gebruik en geoptimaliseerd voor geheugen-servers wordt geïmplementeerd.
+> Deze functie is beschikbaar in alle regio's van Azure waar Azure Database for PostgreSQL wordt geïmplementeerd voor Algemeen en servers die zijn geoptimaliseerd voor geheugen.
 
 ## <a name="set-up-threat-detection"></a>Detectie van bedreigingen instellen
-1. Starten van de Azure portal op [ https://portal.azure.com ](https://portal.azure.com).
-2. Navigeer naar de configuratiepagina van de Azure Database for PostgreSQL-server die u wilt beveiligen. Selecteer in de beveiligingsinstellingen **Advanced Threat Protection (Preview)** .
-3. Op de **Advanced Threat Protection (Preview)** configuratiepagina:
+1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+2. Ga naar de configuratie pagina van de Azure Database for PostgreSQL-server die u wilt beveiligen. Selecteer in de beveiligings instellingen **Advanced Threat Protection (preview)** .
+3. Op de configuratie pagina **Advanced Threat Protection (preview)** :
 
-   - Advanced Threat Protection inschakelen op de server.
-   - In **Advanced Threat Protection-instellingen**, in de **waarschuwingen verzenden naar** tekst geeft u de lijst met e-mailberichten ontvangen beveiligingswaarschuwingen tijdens de detectie van afwijkende activiteiten.
+   - Geavanceerde beveiliging tegen bedreigingen inschakelen op de-server.
+   - Geef in het tekstvak **waarschuwingen verzenden naar** een lijst met e-mail berichten op voor het ontvangen van beveiligings waarschuwingen bij de detectie van afwijkende database activiteiten in de **instellingen voor geavanceerde beveiliging tegen bedreigingen**.
   
    ![Detectie van bedreigingen instellen](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
 
-## <a name="explore-anomalous-database-activities"></a>Afwijkende databaseactiviteiten verkennen
+## <a name="explore-anomalous-database-activities"></a>Afwijkende database activiteiten verkennen
 
-U ontvangt een e-mailmelding bij detectie van afwijkende activiteiten. Het e-mailbericht bevat informatie over de verdachte beveiligingsgebeurtenis, inclusief de aard van de afwijkende activiteiten, databasenaam, servernaam, de naam van toepassing en de tijd van de gebeurtenis. Bovendien het e-mailbericht bevat informatie over mogelijke oorzaken en aanbevolen acties om te onderzoeken en oplossen van de mogelijke bedreiging met de database.
+U ontvangt een e-mail melding wanneer er afwijkende database activiteiten worden gedetecteerd. Het e-mail bericht bevat informatie over de verdachte beveiligings gebeurtenis, inclusief de aard van de afwijkende activiteiten, de database naam, de server naam, de toepassings naam en de tijd van de gebeurtenis. Daarnaast bevat het e-mail bericht informatie over mogelijke oorzaken en aanbevolen acties voor het onderzoeken en oplossen van de mogelijke bedreiging voor de data base.
     
-1. Klik op de **recente waarschuwingen weergeven** koppeling in de e-mail om te starten van de Azure-portal en weergeven van de Azure Security Center pagina met waarschuwingen, waarmee u een overzicht van actieve bedreigingen die zijn gedetecteerd op de SQL-database.
+1. Klik op de koppeling **recente waarschuwingen weer geven** in het e-mail bericht om de Azure portal te starten en de pagina Azure Security Center waarschuwingen weer te geven. Deze bevat een overzicht van actieve bedreigingen die zijn gedetecteerd op de SQL database.
     
-    ![Rapport van de afwijkende activiteit](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
+    ![Rapport afwijkende activiteiten](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
 
-    Weergave actieve bedreigingen:
+    Actieve bedreigingen weer geven:
 
-    ![actieve bedreigingen](./media/howto-database-threat-protection-portal/active-threats.png)
+    ![Actieve bedreigingen](./media/howto-database-threat-protection-portal/active-threats.png)
 
-2. Klik op een specifieke waarschuwing om aanvullende gegevens en acties voor deze bedreiging te onderzoeken en oplossen van problemen met toekomstige bedreigingen.
+2. Klik op een specifieke waarschuwing voor aanvullende details en acties voor het onderzoeken van deze dreiging en het oplossen van toekomstige bedreigingen.
     
     ![Specifieke waarschuwing](./media/howto-database-threat-protection-portal/specific-alert.png)
 
-## <a name="explore-threat-detection-alerts"></a>Meldingen voor geconstateerde bedreigingen verkennen
+## <a name="explore-threat-detection-alerts"></a>Waarschuwingen voor detectie van dreigingen verkennen
 
-Advanced Threat Protection integreert de waarschuwingen met [Azure Security Center](https://azure.microsoft.com/services/security-center/). 
+Geavanceerde beveiliging tegen bedreigingen integreert de waarschuwingen met [Azure Security Center](https://azure.microsoft.com/services/security-center/). 
 
-Klik op **beveiligingswaarschuwingen** onder **THREAT PROTECTION** naar de Azure Security Center start waarschuwingen pagina en krijg een overzicht van actieve SQL-bedreigingen gedetecteerd op de database.
+Klik op **beveiligings waarschuwingen** onder **bedreigings beveiliging** om de pagina Azure Security Center waarschuwingen te starten en een overzicht te krijgen van actieve SQL-bedreigingen die zijn gedetecteerd op de data base.
 
-  ![Threat protection asc](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  ![Beveiliging tegen bedreigingen ASC](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Zie voor meer informatie over prijzen voor de [Azure Database for PostgreSQL-prijzen-pagina](https://azure.microsoft.com/pricing/details/postgresql/)  
+* Zie de [pagina met prijzen voor Azure database for PostgreSQL](https://azure.microsoft.com/pricing/details/postgresql/) voor meer informatie over prijzen.  

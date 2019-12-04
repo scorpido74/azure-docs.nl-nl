@@ -1,23 +1,23 @@
 ---
-title: SSL-verbinding configureren om veilig verbinding te maken met Azure Database for MySQL
+title: SSL-Azure Database for MySQL configureren
 description: Instructies voor het correct configureren van Azure Database for MySQL en gekoppelde toepassingen om SSL-verbindingen correct te gebruiken
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 07/02/2019
-ms.openlocfilehash: 7a6c42da3fb92dc7dda014faa64fb8daa8c58774
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 12/02/2019
+ms.openlocfilehash: 590e2e7e735af55f8c7ad96f87f947115f8783fc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359442"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770557"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure Database for MySQL
 Azure Database for MySQL ondersteunt het verbinden van uw Azure Database for MySQL server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
 
-## <a name="step-1-obtain-ssl-certificate"></a>Stap 1: SSL-certificaat verkrijgen
-Down load het certificaat dat nodig is om via SSL met uw Azure database for MySQL [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) -server te communiceren en sla het certificaat bestand op uw lokale station op (in deze zelf studie wordt c:\ssl bijvoorbeeld gebruikt).
+## <a name="step-1-obtain-ssl-certificate"></a>Stap 1: een SSL-certificaat verkrijgen
+Down load het certificaat dat nodig is om via SSL te communiceren met uw Azure Database for MySQL-server van [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) en sla het certificaat bestand op uw lokale station op (in deze zelf studie wordt c:\ssl bijvoorbeeld gebruikt).
 **Voor micro soft Internet Explorer en micro soft Edge:** Wanneer het downloaden is voltooid, wijzigt u de naam van het certificaat in BaltimoreCyberTrustRoot. CRT. pem.
 
 ## <a name="step-2-bind-ssl"></a>Stap 2: SSL binden
@@ -45,12 +45,12 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 ```
 
 > [!NOTE]
-> Wanneer u de MySQL-opdracht regel interface in Windows gebruikt, wordt er mogelijk een `SSL connection error: Certificate signature check failed`fout bericht weer gegeven. Als dit het geval is, `--ssl-mode=REQUIRED --ssl-ca={filepath}` vervangt u `--ssl`de para meters door.
+> Wanneer u de MySQL-opdracht regel interface in Windows gebruikt, kan er een fout `SSL connection error: Certificate signature check failed`worden weer gegeven. Als dit het geval is, vervangt u de `--ssl-mode=REQUIRED --ssl-ca={filepath}` parameters door `--ssl`.
 
-## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Stap 3:  SSL-verbindingen afdwingen in azure 
+## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Stap 3: SSL-verbindingen in azure afdwingen 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 Ga met behulp van de Azure Portal naar uw Azure Database for MySQL-server en klik vervolgens op **verbindings beveiliging**. Gebruik de wissel knop om de instelling SSL- **verbinding afdwingen** in of uit te scha kelen en klik vervolgens op **Opslaan**. Micro soft adviseert altijd de instelling **SSL-verbinding afdwingen** in te scha kelen voor verbeterde beveiliging.
-![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
+![Enable-SSL](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 U kunt de **SSL-afdwinging-** para meter in-of uitschakelen door respectievelijk ingeschakelde of uitgeschakelde waarden in azure CLI te gebruiken.
@@ -58,12 +58,12 @@ U kunt de **SSL-afdwinging-** para meter in-of uitschakelen door respectievelijk
 az mysql server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
-## <a name="step-4-verify-the-ssl-connection"></a>Stap 4: De SSL-verbinding controleren
+## <a name="step-4-verify-the-ssl-connection"></a>Stap 4: de SSL-verbinding controleren
 Voer de MySQL- **status** opdracht uit om te controleren of u verbinding hebt met de mysql-server met behulp van SSL:
 ```dos
 mysql> status
 ```
-Controleer of de verbinding is versleuteld door de uitvoer te bekijken. deze moet er als volgt uitzien:  **SSL: De code die in gebruik is, is AES256-SHA** 
+Controleer of de verbinding is versleuteld door de uitvoer te bekijken. deze moet er als volgt uitzien: **SSL: code in gebruik is AES256-SHA** 
 
 ## <a name="sample-code"></a>Voorbeeldcode
 Raadpleeg de volgende code voorbeelden om een beveiligde verbinding tot stand te brengen met Azure Database for MySQL via SSL van uw toepassing:

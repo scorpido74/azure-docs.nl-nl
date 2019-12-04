@@ -1,6 +1,6 @@
 ---
-title: Toepassing met één pagina (verplaatsen naar productie) - Microsoft identity-platform
-description: Informatie over het bouwen van een toepassing met één pagina (verplaatsen naar productie)
+title: Toepassing met één pagina (verplaatsen naar productie)-micro soft Identity-platform
+description: Meer informatie over het bouwen van een toepassing met één pagina (verplaatsen naar productie)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,42 +15,38 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6a04f5d62ec750cfbe44765e833552bd694654d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2dbb481c75323304d71f85a722fc45a9b634055
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075008"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766103"
 ---
-# <a name="single-page-application---move-to-production"></a>Single-page toepassing - verplaatsen naar productie
+# <a name="single-page-application-move-to-production"></a>Toepassing met één pagina: verplaatsen naar productie
 
-Nu dat u hoe u om een token weet voor het aanroepen van Web-API's te verkrijgen, leert u hoe u verplaatst naar productie.
+Nu u weet hoe u een token kunt verkrijgen om Web-Api's aan te roepen, leert u hoe u kunt overstappen op productie.
 
-## <a name="improve-your-app"></a>Uw App
+## <a name="improve-your-app"></a>Uw app verbeteren
 
-Volg de stappen die nodig zijn voor de productie van uw app gereed te maken.
-
-- [Logboekregistratie inschakelen](msal-logging.md) in uw toepassing.
+[Schakel logboek registratie](msal-logging.md) in om uw app-productie gereed te maken.
 
 ## <a name="test-your-integration"></a>Uw integratie testen
 
-- Uw integratie testen door de [Microsoft identity-platform-integratie controlelijst](identity-platform-integration-checklist.md).
+Test uw integratie door de [controle lijst voor de integratie van micro soft Identity platform](identity-platform-integration-checklist.md)te volgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hier volgen enkele andere voorbeelden/zelfstudies:
+Grondige kennis van het Snelstartgids-voor beeld, waarin de code wordt uitgelegd voor het aanmelden van gebruikers en het verkrijgen van een toegangs token om de Microsoft Graph-API aan te roepen met behulp van MSAL. js:
 
-- Voor gedetailleerde informatie van de Snelstartgids voorbeeld waarin wordt uitgelegd van de code voor het aanmelden van gebruikers en een toegangstoken voor het aanroepen van de MS Graph API met behulp van MSAL.js
+> [!div class="nextstepaction"]
+> [Java script-zelf studie](./tutorial-v2-javascript-spa.md)
 
-    > [!div class="nextstepaction"]
-    > [Beveiligd-WACHTWOORDVERIFICATIE JavaScript-zelfstudie](./tutorial-v2-javascript-spa.md)
+Voor beeld dat laat zien hoe u tokens kunt ophalen voor uw eigen back-end web-API met behulp van MSAL. js:
 
-- Voorbeeld laat zien hoe u tokens verkrijgen voor uw eigen back-end web-API met behulp van MSAL.js
+> [!div class="nextstepaction"]
+> [Beveiligd-wachtwoord verificatie met een ASP.NET-back-end](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
 
-     > [!div class="nextstepaction"]
-     > [Beveiligd-WACHTWOORDVERIFICATIE met een ASP.NET-back-end](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+Voor beeld waarin wordt getoond hoe u MSAL. js kunt gebruiken om gebruikers te ondertekenen in een app die is geregistreerd met Azure Active Directory B2C (Azure AD B2C):
 
-- Voorbeeld ziet u hoe u MSAL.js gebruiken voor aanmelding bij gebruikers in een app die is geregistreerd bij Azure AD B2C
-
-    > [!div class="nextstepaction"]
-    > [Beveiligd-WACHTWOORDVERIFICATIE met Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+> [!div class="nextstepaction"]
+> [Beveiligd-wachtwoord verificatie met Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)

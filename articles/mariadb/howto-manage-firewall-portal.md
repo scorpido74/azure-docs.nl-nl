@@ -1,59 +1,59 @@
 ---
-title: Maken en beheren van MariaDB firewall-regels in Azure Database voor MariaDB
-description: Maken en beheren van Azure Database voor MariaDB-firewallregels met behulp van de Azure portal
+title: Firewall regels beheren-Azure Portal-Azure Database for MariaDB
+description: Azure Database for MariaDB firewall regels maken en beheren met behulp van de Azure Portal
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: e9ab243692f5a4a1ec7de25774f5bad867698fc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 70e6611cc3006424bcd1bc3a0f0838ad40c09634
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746230"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766018"
 ---
-# <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Maken en beheren van Azure Database voor MariaDB-firewallregels met behulp van Azure portal
-Firewallregels op serverniveau kunnen worden gebruikt om toegang tot een Azure Database voor MariaDB-Server beheren vanaf een opgegeven IP-adres of een bereik van IP-adressen.
+# <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Azure Database for MariaDB firewall regels maken en beheren met behulp van de Azure Portal
+Firewall regels op server niveau kunnen worden gebruikt voor het beheren van toegang tot een Azure Database for MariaDB server vanaf een opgegeven IP-adres of een bereik van IP-adressen.
 
-Regels voor virtueel netwerk (VNet) kunnen ook worden gebruikt voor het beveiligen van toegang tot uw server. Meer informatie over [maken en beheren van Virtual Network-service-eindpunten en regels met behulp van de Azure-portal](howto-manage-vnet-portal.md).
+Regels voor Virtual Network (VNet) kunnen ook worden gebruikt voor het beveiligen van de toegang tot uw server. Meer informatie over [het maken en beheren van Virtual Network Service-eind punten en-regels met behulp van de Azure Portal](howto-manage-vnet-portal.md).
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Een serverfirewallregel maken in Azure Portal
 
-1. Op de pagina MariaDB-server onder instellingen kop, klikt u op **verbindingsbeveiliging** op de pagina verbindingsbeveiliging openen voor de Azure Database voor MariaDB.
+1. Klik op de pagina MariaDB-server, onder instellingen kop, op **verbindings beveiliging** om de pagina verbindings beveiliging te openen voor de Azure database for MariaDB.
 
-   ![Azure-portal: klik op de beveiliging van de verbinding](./media/howto-manage-firewall-portal/1-connection-security.png)
+   ![Azure Portal-Klik op verbindings beveiliging](./media/howto-manage-firewall-portal/1-connection-security.png)
 
-2. Klik op **Mijn IP toevoegen** op de werkbalk. Dit maakt automatisch een firewall-regel met het openbare IP-adres van uw computer, zoals waargenomen door de Azure-systeem.
+2. Klik op **Mijn IP toevoegen** op de werk balk. Hiermee wordt automatisch een firewall regel gemaakt met het open bare IP-adres van uw computer, zoals wordt waargenomen door het Azure-systeem.
 
-   ![Azure-portal: klik op Mijn IP toevoegen](./media/howto-manage-firewall-portal/2-add-my-ip.png)
+   ![Azure Portal-Klik op mijn IP toevoegen](./media/howto-manage-firewall-portal/2-add-my-ip.png)
 
-3. Controleer of uw IP-adres voor het opslaan van de configuratie. In sommige gevallen is het IP-adres dat door Azure-portal waargenomen wijkt af van het IP-adres dat is gebruikt bij het openen van het internet en Azure-servers. In dat geval moet u ervoor zorgen dat de regel werkt zoals verwacht het eerste IP- en eind-IP-wijzigen.
+3. Controleer uw IP-adres voordat u de configuratie opslaat. In sommige gevallen wijkt het IP-adres van Azure Portal af van het IP-adres dat wordt gebruikt voor toegang tot het internet en Azure-servers. Daarom moet u het eerste IP-adres en het laatste IP-adres wijzigen om de regel te laten werken zoals verwacht.
 
-   Gebruik een zoekmachine of andere online hulpprogramma om te controleren of uw eigen IP-adres. Zoek bijvoorbeeld naar 'Wat is Mijn IP-adres'.
+   Gebruik een zoek machine of een ander online hulp programma om uw eigen IP-adres te controleren. Zoek bijvoorbeeld ' wat is mijn IP-adres '.
 
-4. Voeg aanvullende adresbereiken. In de firewallregels voor de Azure Database voor MariaDB, kunt u één IP-adres of een reeks adressen. Als u beperken van de regel moet één IP-adres wilt, typt u hetzelfde adres in het eerste IP- en eind-IP-velden. De firewall opent, kunnen beheerders, gebruikers en toepassingen voor toegang tot elke database op de MariaDB-server waarvoor ze geldige aanmeldgegevens hebben.
+4. Voeg extra adresbereiken toe. In de firewall regels voor de Azure Database for MariaDB, kunt u één IP-adres of een bereik van adressen opgeven. Als u de regel wilt beperken tot één IP-adres, typt u hetzelfde adres in de velden Begin-IP en eind-IP. Als u de firewall opent, kunnen beheerders, gebruikers en toepassingen toegang krijgen tot alle data bases op de MariaDB-server waarvoor ze geldige referenties hebben.
 
-   ![Azure portal - firewall-regels](./media/howto-manage-firewall-portal/4-specify-addresses.png)
+   ![Azure Portal-firewall regels](./media/howto-manage-firewall-portal/4-specify-addresses.png)
 
-5. Klik op **opslaan** op de werkbalk om op te slaan deze firewallregel op serverniveau. Wachten op de bevestiging dat de update van de firewall-regels voltooid is.
+5. Klik op **Opslaan** op de werk balk om deze firewall regel op server niveau op te slaan. Wacht tot de bevestiging van de update van de firewall regels is geslaagd.
 
-   ![Azure-portal: klik op Opslaan](./media/howto-manage-firewall-portal/5-save-firewall-rule.png)
+   ![Azure Portal-Klik op opslaan](./media/howto-manage-firewall-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>Verbinding maken vanuit Azure
-Opdat toepassingen vanuit Azure verbinding maken met uw Azure Database voor MariaDB-server, moeten de Azure-verbindingen zijn ingeschakeld. Bijvoorbeeld als host voor een Azure Web Apps-toepassing of een toepassing die wordt uitgevoerd in een Azure-VM, of verbinding te maken van een Azure Data Factory data management gateway. De resources hoeft te worden in het hetzelfde Virtueelnetwerk (VNet) of de resourcegroep voor de firewallregel om in te schakelen deze verbindingen. Wanneer een toepassing vanuit Azure probeert verbinding te maken met uw databaseserver, verifieert de firewall of Azure-verbindingen zijn toegestaan. Er zijn een aantal methoden voor het inschakelen van deze typen verbindingen. Een firewallinstelling waarvan het begin- en eindadres gelijk zijn aan 0.0.0.0 geeft aan dat deze verbindingen zijn toegestaan. U kunt ook instellen de **toegang tot Azure-services toestaan** optie naar **ON** in de portal van de **verbindingsbeveiliging** deelvenster en klik op **Opslaan**. Als de verbindingspoging niet is toegestaan, wordt in de aanvraag de Azure Database voor MariaDB-server niet bereiken.
+Azure-verbindingen moeten zijn ingeschakeld om toepassingen van Azure toe te staan om verbinding te maken met uw Azure Database for MariaDB server. Als u bijvoorbeeld een Azure Web Apps-toepassing wilt hosten, of een toepassing die wordt uitgevoerd in een Azure-VM of als u verbinding wilt maken vanuit een Azure Data Factory Data Management Gateway. De resources hoeven zich niet in dezelfde Virtual Network (VNet) of resource groep voor de firewall regel te bevinden om deze verbindingen in te scha kelen. Wanneer een toepassing vanuit Azure probeert verbinding te maken met uw databaseserver, verifieert de firewall of Azure-verbindingen zijn toegestaan. Er zijn een aantal methoden om deze typen verbindingen in te scha kelen. Een firewallinstelling waarvan het begin- en eindadres gelijk zijn aan 0.0.0.0 geeft aan dat deze verbindingen zijn toegestaan. U kunt ook de optie toegang tot **Azure-Services toestaan** in **op** in de Portal instellen in het deel venster **verbindings beveiliging** en op **Opslaan**klikken. Als de verbindings poging niet is toegestaan, wordt de Azure Database for MariaDB server niet bereikt door de aanvraag.
 
 > [!IMPORTANT]
 > Met deze optie configureert u de firewall zo dat alle verbindingen vanuit Azure zijn toegestaan, inclusief verbindingen vanuit de abonnementen van andere klanten. Wanneer u deze optie selecteert, zorg dan dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.
 > 
 
-## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>Bestaande firewallregels in Azure portal beheren
-Herhaal de stappen voor het beheren van de firewall-regels.
-* De huidige computer toevoegen, klikt u op **+ Mijn IP toevoegen**. Klik op **Opslaan** om de wijzigingen op te slaan.
-* Als u wilt toevoegen van extra IP-adressen, typt u in de **REGELNAAM**, **eerste IP**, en **END-IP**. Klik op **Opslaan** om de wijzigingen op te slaan.
-* Klik op een van de velden in de regel voor het wijzigen van een bestaande regel en wijzig vervolgens. Klik op **Opslaan** om de wijzigingen op te slaan.
-* Als u wilt een bestaande regel verwijderen, klikt u op het weglatingsteken [...] en klik vervolgens op **verwijderen**. Klik op **Opslaan** om de wijzigingen op te slaan.
+## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>Bestaande firewall regels beheren in de Azure Portal
+Herhaal de stappen voor het beheren van de firewall regels.
+* Als u de huidige computer wilt toevoegen, klikt u op **+ Mijn IP toevoegen**. Klik op **Opslaan** om de wijzigingen op te slaan.
+* Als u extra IP-adressen wilt toevoegen, typt u de naam van de **regel**, het **eerste IP-** adres en het **laatste IP-** adres. Klik op **Opslaan** om de wijzigingen op te slaan.
+* Als u een bestaande regel wilt wijzigen, klikt u op een van de velden in de regel en wijzigt u vervolgens. Klik op **Opslaan** om de wijzigingen op te slaan.
+* Als u een bestaande regel wilt verwijderen, klikt u op het weglatings teken [...] en klikt u vervolgens op **verwijderen**. Klik op **Opslaan** om de wijzigingen op te slaan.
 
 ## <a name="next-steps"></a>Volgende stappen
- - Op dezelfde manier, u kunt een script op [maken en beheren van Azure Database voor MariaDB-firewallregels met behulp van Azure CLI](howto-manage-firewall-cli.md).
- - Verder te beveiligen, toegang tot uw server door [maken en beheren van Virtual Network-service-eindpunten en regels met behulp van de Azure-portal](howto-manage-vnet-portal.md).
+ - Op dezelfde manier kunt u scripts [maken en beheren Azure database for MariaDB firewall regels met behulp van Azure cli](howto-manage-firewall-cli.md).
+ - U kunt de toegang tot uw server verder beveiligen door [Virtual Network Service-eind punten en-regels te maken en beheren met behulp van de Azure Portal](howto-manage-vnet-portal.md).

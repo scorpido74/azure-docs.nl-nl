@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Azure Database for MySQL via C++
+title: Verbinding maken C++ met behulp van-Azure database for MySQL
 description: Deze snelstartgids bevat een voorbeeld van C++-code dat u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit een Azure Database voor MySQL.
 author: ajlam
 ms.author: andrela
@@ -7,16 +7,16 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 04/12/2018
-ms.openlocfilehash: ff5232c4569e94322d76928f19f202c8bad1a39a
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.date: 12/02/2019
+ms.openlocfilehash: 1cec92631208b446f5621c9010d8cb7b86ae38e9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428504"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770795"
 ---
-# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Connector/C++ gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
-In deze quickstart ziet u hoe u met behulp van een C++-toepassing verbinding maakt met een Azure Database for MySQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In dit onderwerp wordt ervan uitgegaan dat u bekend bent met ontwikkelen met behulp van C++ en u geen ervaring met het werken met Azure Database voor MySQL.
+# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database voor MySQL: Connector/C++ gebruiken om verbinding te maken en gegevens op te vragen
+In deze quickstart ziet u hoe u met behulp van een C++-toepassing verbinding maakt met een Azure Database for MySQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In dit onderwerp wordt ervan uitgegaan dat u bekend C++ bent met het ontwikkelen met behulp van en u nog geen ervaring hebt met het werken met Azure database for MySQL.
 
 ## <a name="prerequisites"></a>Vereisten
 In deze quickstart worden de resources die in een van de volgende handleidingen zijn gemaakt, als uitgangspunt gebruikt:
@@ -30,25 +30,25 @@ U moet ook het volgende doen:
 - [Boost](https://www.boost.org/) installeren
 
 ## <a name="install-visual-studio-and-net"></a>Visual Studio en .NET installeren
-De stappen in deze sectie wordt ervan uitgegaan dat u bekend bent met ontwikkelen met behulp van .NET.
+Bij de stappen in dit gedeelte wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met .NET.
 
 ### <a name="windows"></a>**Windows**
-- Installeer Visual Studio 2019 Community. Visual Studio 2019 Community is een volledig functionele, uitbreidbare, gratis IDE. U kunt met deze IDE maken van moderne toepassingen voor Android, iOS, Windows, web- en database-toepassingen, en cloudservices. U kunt de volledige .NET Framework installeren of slechts .NET Core; in de quickstart wordt met beide codefragmenten gewerkt. Als Visual Studio al is geïnstalleerd op de computer, kunt u de volgende twee stappen overslaan.
-   1. Download de [2019 van Visual Studio installer](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15). 
+- Installeer de Visual Studio 2019-community. Visual Studio 2019 Community is een volledig functionele, uitbreid bare en gratis IDE. Met deze IDE kunt u moderne toepassingen maken voor Android-, iOS-, Windows-, Web-en database toepassingen en Cloud Services. U kunt de volledige .NET Framework installeren of slechts .NET Core; in de quickstart wordt met beide codefragmenten gewerkt. Als Visual Studio al is geïnstalleerd op de computer, kunt u de volgende twee stappen overslaan.
+   1. Down load het [installatie programma voor Visual Studio 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15). 
    2. Voer het installatieprogramma uit en volg de weergegeven opdrachten om de installatie te voltooien.
 
 ### <a name="configure-visual-studio"></a>**Visual Studio configureren**
-1. In Visual Studio naar Project-eigenschappen > Linker -> Algemeen -> > aanvullende bibliotheekmappen, de map '\lib\opt' toe te voegen (bijvoorbeeld: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9\lib\opt) van de C++-connector toe.
+1. Voeg in Visual Studio eigenschappen voor Project >-> linker-> algemene > extra bibliotheek mappen de map ' \lib\opt ' toe (bijvoorbeeld: C:\Program Files (x86) \MySQL\MySQL connector C++ 1.1.9 \ lib\opt) van de C++ connector.
 2. Ga in Visual Studio naar Project > Eigenschappen > C/C++ > Algemeen > Aanvullende Include-mappen:
-   - De map "\include" van c ++-connector toe te voegen (bijvoorbeeld: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\) toe.
-   - Voeg de hoofdmap van de Boost-bibliotheek toe (bijvoorbeeld: C:\boost_1_64_0\).
+   - Voeg de map ' \include ' van c++ connector toe (bijvoorbeeld: C:\Program Files (x86) \MySQL\MySQL- C++ connector 1.1.9 \ include\).
+   - Voeg de hoofdmap van de Boost-bibliotheek toe (bijvoorbeeld: C:\ boost_1_64_0\).
 3. Ga in Visual Studio naar Project > Eigenschappen > Linker > Invoer > Extra afhankelijkheden, en voeg **mysqlcppconn.lib** toe in het tekstveld.
 4. Kopieer **mysqlcppconn.dll** uit de bibliotheekmap van de C++-connector in stap 3 naar dezelfde map als het uitvoerbare bestand van de toepassing, of voeg de map toe aan de omgevingsvariabele, zodat de toepassing deze kan vinden.
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor MySQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
@@ -57,7 +57,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
 ## <a name="connect-create-table-and-insert-data"></a>Verbinden, tabel maken en gegevens invoegen
 Gebruik de volgende code om verbinding te maken en de gegevens te laden met behulp van de SQL-instructies **CREATE TABLE** EN **INSERT INTO**. In de code wordt de klasse sql::Driver met de methode connect() gebruikt om een verbinding te maken met MySQL. Vervolgens worden de methoden createStatement() en execute()) gebruikt om de databaseopdrachten uit te voeren. 
 
-Vervang de parameters Host, DBName, gebruiker en wachtwoord. U kunt de parameters vervangen door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
+Vervang de para meters host, DBName, User en password. U kunt de para meters vervangen door de waarden die u hebt opgegeven tijdens het maken van de server en data base. 
 
 ```c++
 #include <stdlib.h>
@@ -131,7 +131,7 @@ int main()
 
 Gebruik de volgende code om verbinding te maken en de gegevens te lezen met behulp van de SQL-instructie **SELECT**. In de code wordt de klasse sql::Driver met de methode connect() gebruikt om een verbinding te maken met MySQL. Vervolgens worden de methoden prepareStatement() en executeQuery() gebruikt om de SELECT-opdrachten uit te voeren. Vervolgens wordt next() gebruikt om naar de records in de resultaten te gaan. Ten slotte worden getInt() en getString() gebruikt om de waarden in de record te parseren.
 
-Vervang de parameters Host, DBName, gebruiker en wachtwoord. U kunt de parameters vervangen door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
+Vervang de para meters host, DBName, User en password. U kunt de para meters vervangen door de waarden die u hebt opgegeven tijdens het maken van de server en data base. 
 
 ```c++
 #include <stdlib.h>
@@ -190,7 +190,7 @@ int main()
 ## <a name="update-data"></a>Gegevens bijwerken
 Gebruik de volgende code om verbinding te maken en de gegevens te lezen met behulp van de SQL-instructie **UPDATE**. In de code wordt de klasse sql::Driver met de methode connect() gebruikt om een verbinding te maken met MySQL. Vervolgens worden de methoden prepareStatement() en executeQuery() gebruikt om de UPDATE-opdrachten uit te voeren. 
 
-Vervang de parameters Host, DBName, gebruiker en wachtwoord. U kunt de parameters vervangen door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
+Vervang de para meters host, DBName, User en password. U kunt de para meters vervangen door de waarden die u hebt opgegeven tijdens het maken van de server en data base. 
 
 ```c++
 #include <stdlib.h>
@@ -248,7 +248,7 @@ int main()
 ## <a name="delete-data"></a>Gegevens verwijderen
 Gebruik de volgende code om verbinding te maken en de gegevens te lezen met behulp van de SQL-instructie **DELETE**. In de code wordt de klasse sql::Driver met de methode connect() gebruikt om een verbinding te maken met MySQL. Vervolgens worden de methoden prepareStatement() en executeQuery() gebruikt om de DELETE-opdrachten uit te voeren.
 
-Vervang de parameters Host, DBName, gebruiker en wachtwoord. U kunt de parameters vervangen door de waarden die u hebt opgegeven tijdens het maken van de server en database. 
+Vervang de para meters host, DBName, User en password. U kunt de para meters vervangen door de waarden die u hebt opgegeven tijdens het maken van de server en data base. 
 
 ```c++
 #include <stdlib.h>

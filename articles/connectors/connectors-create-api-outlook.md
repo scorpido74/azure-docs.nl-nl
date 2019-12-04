@@ -1,22 +1,18 @@
 ---
-title: Verbinding maken met Outlook.com-Azure Logic Apps | Microsoft Docs
+title: Verbinding maken met Outlook.com
 description: E-mail, agenda's en contact personen beheren met Outlook.com REST-Api's en Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-manager: jeconnoc
-ms.assetid: 87113c85-d158-4dd5-9ed5-5748130003d6
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/18/2016
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 4586255e96647267bc913f2bc054610163e16bd3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 750efc2cb928bf127c4f3c68d5a58c5f52ca7d51
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050877"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789359"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>E-mail, agenda's en contact personen in Outlook.com beheren met Azure Logic Apps
 
@@ -48,11 +44,11 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](
 
 Zie de [referentie pagina van de connector](/connectors/outlook/)voor technische details, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector. 
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 * Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 * Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

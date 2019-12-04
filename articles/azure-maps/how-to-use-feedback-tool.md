@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 076f98cb240014bcc88a395902203413e31fe0f1
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 28c463204080296e431edb3c30b4fdd66f07a189
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642121"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776589"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Feedback geven over de Azure Maps
 
-Azure Maps is over het algemeen beschikbaar sinds mei 2018, met nieuwe kaart gegevens, eenvoudig te gebruiken REST Api's en krachtige Sdk's om onze zakelijke klanten te ondersteunen op diverse zaken. De echte wereld verandert elke seconde en is van cruciaal belang om onze klanten een feitelijke digitale vertegenwoordiging te geven. Onze klanten die plannen voor het openen of sluiten van faciliteiten, moeten ervoor zorgen dat onze kaarten onmiddellijk worden bijgewerkt, zodat ze de levering, het onderhoud of de klanten service op de juiste wijze kunnen plannen. We hebben Azure Maps het hulp programma voor gegevens feedback gemaakt om ervoor te zorgen dat onze klanten direct feedback kunnen geven. De gegevens feedback van klanten gaat rechtstreeks naar onze gegevens providers en hun kaart editors die snel feedback kunnen evalueren en opnemen in onze toewijzings producten.  
+Azure Maps is over het algemeen beschikbaar sinds mei 2018, met nieuwe kaart gegevens, eenvoudig te gebruiken REST Api's en krachtige Sdk's om onze zakelijke klanten te ondersteunen op diverse zaken. De echte wereld verandert elke seconde en is van cruciaal belang om onze klanten een feitelijke digitale vertegenwoordiging te geven. Onze klanten die plannen voor het openen of sluiten van faciliteiten, moeten ervoor zorgen dat onze kaarten onmiddellijk worden bijgewerkt, zodat ze de levering, het onderhoud of de klanten service op de juiste wijze kunnen plannen. We hebben de Azure Maps data feedback-site gemaakt om ervoor te zorgen dat onze klanten direct feedback kunnen geven. De gegevens feedback van klanten gaat rechtstreeks naar onze gegevens providers en hun kaart editors die snel feedback kunnen evalueren en opnemen in onze toewijzings producten.  
 
-[Azure Maps hulp programma voor gegevens feedback](https://feedback.azuremaps.com) biedt onze klanten een eenvoudige manier om informatie over de kaart gegevens op te geven, met name op zakelijke punten van interesse-en verblijfs adressen. In dit artikel wordt uitgelegd hoe u verschillende soorten feedback kunt geven met behulp van het hulp programma Azure Maps feedback.
+[Azure Maps site voor gegevens feedback](https://feedback.azuremaps.com) biedt onze klanten een gemakkelijke manier om feedback te geven over kaart gegevens, met name op zakelijke punten van interesse en privé. In dit artikel wordt uitgelegd hoe u verschillende soorten feedback kunt geven met behulp van de Azure Maps feedback site.
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>Een bedrijfs locatie of een woon adres toevoegen 
 
-Mogelijk wilt u feedback geven voor een ontbrekend tijdstip of een woon adres op de kaart. Er zijn twee manieren om dit te doen: Open het hulp programma Azure map Data feedback en zoek naar de coördinaten van de ontbrekende locatie en klik vervolgens op een plaats toevoegen.
+Mogelijk wilt u feedback geven voor een ontbrekend tijdstip of een woon adres op de kaart. Er zijn twee manieren om dit te doen: Open de Azure Maps data feedback-site en zoek naar de coördinaten van de ontbrekende locatie en klik vervolgens op een plaats toevoegen.
 
   ![ontbrekende locatie zoeken](./media/how-to-use-feedback-tool/search-poi.png)
 
@@ -38,7 +38,7 @@ Wanneer u op klikt, wordt u omgeleid naar een formulier om de bijbehorende Detai
 
 ## <a name="fix-a-business-place-or-a-residential-address"></a>Een bedrijfs locatie of een woon adres corrigeren 
 
-Met het feedback programma kunt u ook een bedrijfs locatie of een adres zoeken en feedback geven om het adres of de pincode op te lossen, als deze niet correct zijn. Als u feedback wilt geven om het adres te herstellen, gebruikt u de zoek balk om te zoeken naar een bedrijfs locatie of een woon adres. Klik op de locatie van uw interesse in de lijst met resultaten en klik op ' deze locatie oplossen '.
+Met de feedback site kunt u ook een bedrijfs locatie of een adres zoeken en feedback geven om het adres of de pincode op te lossen, als deze niet correct zijn. Als u feedback wilt geven om het adres te herstellen, gebruikt u de zoek balk om te zoeken naar een bedrijfs locatie of een woon adres. Klik op de locatie van uw interesse in de lijst met resultaten en klik op ' deze locatie oplossen '.
 
   ![Zoek locatie die u wilt herstellen](./media/how-to-use-feedback-tool/fix-place.png)
 

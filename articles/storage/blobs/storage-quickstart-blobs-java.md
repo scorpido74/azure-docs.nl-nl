@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 27fbd0084f9f8c91ee83802efe6a96213363b78f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: b5a59e51190fc8309d35445fba7ef4a2dd22b970
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422055"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770438"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor Java
 
@@ -46,7 +46,7 @@ In deze sectie wordt uitgelegd hoe u een project voorbereidt voor gebruik met de
 
 ### <a name="create-the-project"></a>Het project maken
 
-Maak een Java-kern toepassing *met de naam BLOB-Quick Start-V12*.
+Maak een Java-toepassing *met de naam BLOB-Quick Start-V12*.
 
 1. In een console venster (zoals cmd, Power shell of bash), gebruikt u maven om een nieuwe console-app te maken met de naam *BLOB-Quick Start-V12*. Typ de volgende **MVN** -opdracht op één regel om een eenvoudig ' Hello World! ' te maken. Java-project. De opdracht wordt hier op meerdere regels weer gegeven voor de Lees baarheid.
 

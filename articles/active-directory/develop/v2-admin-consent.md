@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa63b1343fcc981629dd96e2209bf26ec2cc2bd5
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b820be5631d207a32cbf14aa1eec9f3f6de2af52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326224"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766052"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Toestemming van de beheerder op het micro soft Identity-platform
 
 Sommige machtigingen vereisen toestemming van een beheerder voordat ze kunnen worden verleend binnen een Tenant.  U kunt ook het beheerders toestemming-eind punt gebruiken om machtigingen te verlenen aan een hele Tenant.  
 
-## <a name="recommended-sign-the-user-into-your-app"></a>Aanbevolen: De gebruiker aan uw app melden
+## <a name="recommended-sign-the-user-into-your-app"></a>Aanbevolen: Onderteken de gebruiker in uw app
 
 Wanneer u een toepassing bouwt die gebruikmaakt van het door de beheerder toestemmings eindpunt, moet de app doorgaans een pagina of weer gave hebben waarin de beheerder de machtigingen van de app kan goed keuren. Deze pagina kan deel uitmaken van de registratie stroom van de app, een deel van de instellingen van de app of een specifieke stroom ' Connect ' zijn. In veel gevallen is het zinvol voor de app om deze weer gave ' verbinding maken ' alleen weer te geven nadat een gebruiker zich heeft aangemeld met een werk-of school Microsoft-account.
 
@@ -51,16 +51,16 @@ Wanneer u klaar bent om machtigingen aan te vragen bij de beheerder van uw organ
 ```
 
 
-| Parameter     | Voorwaarde     | Description                                                                               |
+| Parameter     | Voorwaarde     | Beschrijving                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
-| `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Kan worden geleverd in de indeling GUID of beschrijvende naam of in het algemeen `common` , zoals wordt weer gegeven in het voor beeld. |
-| `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
-| `redirect_uri` | Vereist |De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. Het moet exact overeenkomen met een van de omleidings-Uri's die u hebt geregistreerd in de app-registratie Portal. |
+| `tenant` | Verplicht | De Directory-Tenant waarvan u toestemming wilt aanvragen. Kan worden geleverd in de indeling GUID of beschrijvende naam of in het algemeen waarnaar wordt verwezen met `organizations`, zoals wordt weer gegeven in het voor beeld. Gebruik ' common ' niet, omdat persoonlijke accounts geen toestemming van de beheerder kunnen bieden, behalve in de context van een Tenant. Gebruik, indien mogelijk, de Tenant-ID om te zorgen voor optimale compatibiliteit met persoonlijke accounts die tenants beheren. |
+| `client_id` | Verplicht | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
+| `redirect_uri` | Verplicht |De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. Het moet exact overeenkomen met een van de omleidings-Uri's die u hebt geregistreerd in de app-registratie Portal. |
 | `state` | Aanbevolen | Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in de token reactie. Dit kan een teken reeks zijn van elke gewenste inhoud. Gebruik de status om informatie over de status van de gebruiker in de app te coderen voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin deze zijn aangemeld. |
-|`scope`        | Vereist      | Hiermee wordt de set machtigingen gedefinieerd die worden aangevraagd door de toepassing. Dit kan statisch zijn (met behulp van/.default) of dynamische bereiken.  Dit kan de OIDC-bereiken (`openid`, `profile`, `email`) bevatten. | 
+|`scope`        | Verplicht      | Hiermee wordt de set machtigingen gedefinieerd die worden aangevraagd door de toepassing. Dit kan statisch zijn (met behulp van/.default) of dynamische bereiken.  Dit kan bestaan uit de OIDC-bereiken (`openid`, `profile``email`). | 
 
 
-Op dit moment heeft Azure AD een Tenant beheerder nodig om zich aan te melden om de aanvraag te volt ooien. De beheerder wordt gevraagd om alle machtigingen die u in de `scope` para meter hebt aangevraagd goed te keuren.  Als u een statische (`/.default`)-waarde hebt gebruikt, werkt deze als het eind punt v 1.0-beheerder toestemming en vraagt u toestemming aan voor alle scopes die zijn gevonden in de vereiste machtigingen voor de app.
+Op dit moment heeft Azure AD een Tenant beheerder nodig om zich aan te melden om de aanvraag te volt ooien. De beheerder wordt gevraagd om alle machtigingen die u in de para meter `scope` hebt aangevraagd goed te keuren.  Als u een statische (`/.default`)-waarde hebt gebruikt, werkt deze als het eind punt v 1.0-beheerder toestemming en vraagt u toestemming aan voor alle scopes die zijn gevonden in de vereiste machtigingen voor de app.
 
 ### <a name="successful-response"></a>Geslaagde reactie
 
@@ -70,7 +70,7 @@ Als de beheerder de machtigingen voor uw app goedkeurt, ziet het geslaagde antwo
 http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
 ```
 
-| Parameter         | Description                                                                                       |
+| Parameter         | Beschrijving                                                                                       |
 |------------------:|:-------------------------------------------------------------------------------------------------:|
 | `tenant`| De Directory-Tenant die uw toepassing heeft toegewezen aan de aangevraagde machtigingen, in GUID-indeling.|
 | `state`           | Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in het token antwoord. Dit kan een teken reeks zijn van elke gewenste inhoud. De status wordt gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden.|
@@ -83,7 +83,7 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 
 Toevoegen aan de para meters die worden weer gegeven in een geslaagde reactie, worden de volgende fout parameters weer gegeven.
 
-| Parameter          | Description                                                                                      |
+| Parameter          | Beschrijving                                                                                      |
 |-------------------:|:-------------------------------------------------------------------------------------------------:|
 | `error`            | Een teken reeks voor fout codes die kan worden gebruikt voor het classificeren van typen fouten die optreden en kunnen worden gebruikt om te reageren op fouten.|
 | `error_description`| Een specifiek fout bericht dat een ontwikkelaar kan helpen bij het identificeren van de hoofd oorzaak van een fout.|

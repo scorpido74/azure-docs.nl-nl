@@ -1,20 +1,17 @@
 ---
-title: Limieten en configuratie-Azure Logic Apps
+title: Limieten en configuratie
 description: Service limieten, zoals de duur, de door Voer en de capaciteit, plus configuratie waarden, zoals IP-adressen die kunnen worden toegestaan, voor Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/19/2019
-ms.openlocfilehash: 89b4a08a3ecb85abd56f0b2ae852123ac2883364
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 13bced5cb692366f46032d51c3b635533110d781
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547535"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791972"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -71,7 +68,7 @@ Volg deze stappen als u de standaard limiet voor de uitvoerings duur en opslag b
 
    > [!NOTE]
    > Voor logische apps in azure met meerdere tenants is de standaard limiet van 90 dagen gelijk aan de maximum limiet. U kunt deze waarde alleen verlagen.
-   > Voor Logic apps in een integratie service omgeving kunt u de standaard limiet van 90 dagen decreause of verhogen.
+   > Voor Logic apps in een integratie service omgeving kunt u de standaard limiet van 90 dagen verlagen of verhogen.
 
 <a name="looping-debatching-limits"></a>
 

@@ -3,12 +3,12 @@ title: Beheerde identiteit inschakelen in container groep
 description: Meer informatie over het inschakelen van een beheerde identiteit in Azure Container Instances die kan worden geverifieerd met andere Azure-Services
 ms.topic: article
 ms.date: 10/22/2018
-ms.openlocfilehash: b5546e8c4b512b584a57e8e4c2ff46c52ab856a0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ccf754fac0d884c8a2af9db01578f97b73d54ac4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533684"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776507"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Beheerde identiteiten gebruiken met Azure Container Instances
 
@@ -31,7 +31,7 @@ De voor beelden aanpassen om identiteiten in Azure Container Instances in te sch
 Gebruik een beheerde identiteit in een actieve container om te verifiëren bij elke [service die ondersteuning biedt voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) zonder dat u referenties in uw container code hoeft te beheren. Voor services die geen ondersteuning bieden voor AD-verificatie, kunt u geheimen opslaan in Azure Key Vault en de beheerde identiteit gebruiken om toegang te krijgen tot Key Vault om referenties op te halen. Zie [Wat is beheerde identiteiten voor Azure-resources?](../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie over het gebruik van een beheerde identiteit.
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt. Beheerde identiteiten worden momenteel alleen ondersteund in Linux-container exemplaren.
+> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt. Beheerde identiteiten op Azure Container Instances worden momenteel alleen ondersteund met Linux-containers en nog niet met Windows-containers.
 >  
 
 ### <a name="enable-a-managed-identity"></a>Een beheerde identiteit inschakelen

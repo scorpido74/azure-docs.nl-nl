@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495981"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791702"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik
 
-V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van Azure Storage en bevatten alle functionaliteit van v1-en Blob Storage-accounts voor algemeen gebruik. V2-accounts voor algemeen gebruik worden aanbevolen voor de meeste opslag scenario's. Bij v2-accounts voor algemeen gebruik worden de laagste capaciteits prijzen per GB voor Azure Storage en de prijzen voor de toonaangevende trans acties geleverd.
+V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van Azure Storage en bevatten alle functionaliteit van v1-en Blob Storage-accounts voor algemeen gebruik. V2-accounts voor algemeen gebruik worden aanbevolen voor de meeste opslag scenario's. Bij v2-accounts voor algemeen gebruik worden de laagste capaciteits prijzen per GB voor Azure Storage en de prijzen voor de toonaangevende trans acties geleverd. Algemeen-doeleinden v2-accounts ondersteunen de standaard toegangs lagen voor accounts van warme of koelen en lagen op blobniveau tussen warme, koude of archief.
 
 Een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik vanuit uw opslag accounts voor algemeen gebruik v1 of blobs is eenvoudig. U kunt een upgrade uitvoeren met behulp van de Azure Portal, Power shell of Azure CLI.
 
@@ -25,7 +25,7 @@ Een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik vanuit uw
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Ga naar uw opslagaccount.
 3. Klik in de sectie **instellingen** op **configuratie**.
 4. Klik onder **Soort account** op **Upgrade**.
@@ -40,19 +40,19 @@ Een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik vanuit uw
 
 Als u een algemeen v1-account wilt bijwerken naar een v2-account voor algemeen gebruik met Power shell, moet u Power shell eerst bijwerken om de nieuwste versie van de module **AZ. Storage** te gebruiken. Zie [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van PowerShell.
 
-Roep vervolgens de volgende opdracht aan om het account bij te werken, waarbij u de naam van de resource groep en het opslag account vervangt:
+Roep vervolgens de volgende opdracht aan om het account bij te werken, de naam van de resource groep, de naam van het opslag account en de gewenste account toegangs laag te vervangen.
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een algemeen v1-account wilt bijwerken naar een v2-account voor algemeen gebruik met behulp van Azure CLI, moet u eerst de nieuwste versie van Azure CLI installeren. Zie [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) voor meer informatie over het installeren van de CLI.
 
-Roep vervolgens de volgende opdracht aan om het account bij te werken, waarbij u de naam van de resource groep en het opslag account vervangt:
+Roep vervolgens de volgende opdracht aan om het account bij te werken, de naam van de resource groep, de naam van het opslag account en de gewenste account toegangs laag te vervangen.
 
 ```cli
-az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
+az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
 ```
 
 ---
@@ -72,7 +72,7 @@ In beide gevallen is de eerste prioriteit het schatten van de kosten voor het op
 
 ## <a name="pricing-and-billing"></a>Prijzen en facturering
 
-Een upgrade uitvoeren van een v1-opslag account naar een v2-account voor algemeen gebruik is gratis. Het wijzigen van de opslag toegangs laag kan echter leiden tot wijzigingen in uw factuur. 
+Een upgrade uitvoeren van een v1-opslag account naar een v2-account voor algemeen gebruik is gratis. U kunt de gewenste gegevenslaagtoepassing tijdens het upgrade proces opgeven. Als er bij een upgrade geen AccountName is opgegeven, wordt de standaardlaag van het bijgewerkte account `Hot`. Het wijzigen van de opslag toegangs laag na de upgrade kan echter leiden tot wijzigingen in uw factuur, zodat u de nieuwe gegevenslaagtoepassing tijdens de upgrade kunt opgeven.
 
 Alle opslagaccounts maken gebruik van een prijsmodel voor het opslaan van blobs op basis van laag van elke blob. Als u een opslagaccount gebruikt, zijn de volgende factureringsvoorwaarden van toepassing:
 

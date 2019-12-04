@@ -1,43 +1,43 @@
 ---
-title: Serverparameters configureren in Azure Database voor MariaDB
-description: In dit artikel wordt beschreven hoe u MariaDB-serverparameters configureren in Azure Database voor MariaDB met behulp van de Azure portal.
+title: Server parameters configureren-Azure Portal-Azure Database for MariaDB
+description: In dit artikel wordt beschreven hoe u MariaDB-server parameters in Azure Database for MariaDB kunt configureren met behulp van de Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: c618a4035e9ec9b1ca1986e898ea1060ac05712d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 3477820cb20d856c2e979cdfbe5528113bf4b562
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60922492"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769401"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Parameters van de server in Azure Database voor MariaDB configureren met behulp van Azure portal
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Server parameters configureren in Azure Database for MariaDB met behulp van de Azure Portal
 
-Azure Database voor MariaDB ondersteunt de configuratie van bepaalde parameters van de server. In dit artikel wordt beschreven hoe u deze parameters configureren met behulp van de Azure-portal. Niet alle parameters van de server kunnen worden aangepast.
+Azure Database for MariaDB ondersteunt de configuratie van sommige server parameters. In dit artikel wordt beschreven hoe u deze para meters configureert met behulp van de Azure Portal. Niet alle server parameters kunnen worden aangepast.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigeer naar de Parameters van de Server in Azure portal
+## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigeer naar server parameters op Azure Portal
 
-1. Meld u aan bij Azure portal en zoek uw Azure Database voor MariaDB-server.
-2. Onder de **instellingen** sectie, klikt u op **serverparameters** openen van de pagina de parameters voor de Azure Database voor MariaDB-server.
-![Pagina van de parameters voor Azure portal-server](./media/howto-server-parameters/azure-portal-server-parameters.png)
-3. Zoek alle instellingen die u nodig hebt om aan te passen. Controleer de **beschrijving** kolom om te begrijpen van het doel en de toegestane waarden.
-![Vervolgkeuzelijst omlaag opsommen](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Klik op **opslaan** uw wijzigingen op te slaan.
-![Opslaan of wijzigingen negeren](./media/howto-server-parameters/4-save_parameters.png)
-5. Als u nieuwe waarden voor de parameters hebt opgeslagen, kunt u altijd terugkeren alles weer op de standaardwaarden hiervoor **alle standaardinstellingen opnieuw instellen**.
-![Alle standaardinstellingen opnieuw instellen](./media/howto-server-parameters/5-reset_parameters.png)
+1. Meld u aan bij de Azure Portal en zoek vervolgens de Azure Database for MariaDB-server.
+2. Klik onder de sectie **instellingen** op **server parameters** om de pagina server parameters voor de Azure database for MariaDB-server te openen.
+![pagina Azure Portal Server parameters](./media/howto-server-parameters/azure-portal-server-parameters.png)
+3. Zoek alle instellingen die u moet aanpassen. Bekijk de kolom **Beschrijving** om inzicht te krijgen in het doel en de toegestane waarden.
+![vervolg keuzelijst opsommen](./media/howto-server-parameters/3-toggle_parameter.png)
+4. Klik op **Opslaan** om uw wijzigingen op te slaan.
+wijzigingen ![opslaan of negeren](./media/howto-server-parameters/4-save_parameters.png)
+5. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard**waarde te selecteren.
+![alles opnieuw instellen op de standaard](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>Lijst met parameters van de server kunnen worden geconfigureerd
+## <a name="list-of-configurable-server-parameters"></a>Lijst met Configureer bare server parameters
 
-De lijst met ondersteunde serverparameters groeit voortdurend. Gebruik het tabblad van de parameters-server in Azure portal naar de definitie en parameters van de server op basis van de toepassingsvereisten van uw configureren.
+De lijst met ondersteunde server parameters groeit voortdurend. Gebruik het tabblad Server parameters in Azure Portal om de definitie op te halen en server parameters te configureren op basis van uw toepassings vereisten.
 
-## <a name="non-configurable-server-parameters"></a>Niet-configureerbare serverparameters
+## <a name="non-configurable-server-parameters"></a>Niet-Configureer bare server parameters
 
-InnoDB-buffergroep en maximum aantal verbindingen zijn niet kunnen worden geconfigureerd en gekoppeld aan uw [prijscategorie](concepts-pricing-tiers.md).
+De InnoDB-buffer groep en het maximum aantal verbindingen kunnen niet worden geconfigureerd en zijn gekoppeld aan uw [prijs categorie](concepts-pricing-tiers.md).
 
-|**Prijscategorie**| **vCore(s)**|**InnoDB buffergroep (MB)**| **Maximum aantal verbindingen**|
+|**Prijscategorie**| **vCore (s)**|**InnoDB buffer pool (MB)**| **Maximum aantal verbindingen**|
 |---|---|---|---|
 |Basic| 1| 1024| 50|
 |Basic| 2| 2560| 100|
@@ -46,58 +46,58 @@ InnoDB-buffergroep en maximum aantal verbindingen zijn niet kunnen worden geconf
 |Algemeen doel| 8| 15360| 1250|
 |Algemeen doel| 16| 31232| 2500|
 |Algemeen doel| 32| 62976| 5000|
-|Algemeen doel| 64| 125952| 10\.000|
+|Algemeen doel| 64| 125952| 10.000|
 |Geoptimaliseerd geheugen| 2| 7168| 600|
 |Geoptimaliseerd geheugen| 4| 15360| 1250|
 |Geoptimaliseerd geheugen| 8| 30720| 2500|
 |Geoptimaliseerd geheugen| 16| 62464| 5000|
-|Geoptimaliseerd geheugen| 32| 125952| 10\.000|
+|Geoptimaliseerd geheugen| 32| 125952| 10.000|
 
-Deze extra server-parameters zijn niet kunnen worden geconfigureerd in het systeem:
+Deze aanvullende server parameters kunnen niet worden geconfigureerd in het systeem:
 
-|**Parameter**|**Vaste waarde**|
+|**Bepaalde**|**Vaste waarde**|
 | :------------------------ | :-------- |
-|innodb_file_per_table in Basic-laag|UIT|
+|innodb_file_per_table in de Basic-laag|UIT|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512 MB|
 
-Andere parameters van de server die hier niet worden vermeld, zijn ingesteld op hun MariaDB standaardwaarden out-of-box voor [MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/).
+Andere server parameters die hier niet worden vermeld, worden ingesteld op hun MariaDB-out-of-Box-standaard waarden voor [MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/).
 
-## <a name="working-with-the-time-zone-parameter"></a>Werken met de parameter tijdzone
+## <a name="working-with-the-time-zone-parameter"></a>Werken met de para meter tijd zone
 
-### <a name="populating-the-time-zone-tables"></a>Invullen van de tijdzone-tabellen
+### <a name="populating-the-time-zone-tables"></a>De tijd zone tabellen worden gevuld
 
-De tijdzone-tabellen op de server kunnen worden gevuld door het aanroepen van de `az_load_timezone` opgeslagen procedure van een hulpprogramma zoals de MySQL-opdrachtregel of MySQL Workbench.
+De tijd zone tabellen op uw server kunnen worden gevuld door de `az_load_timezone` opgeslagen procedure aan te roepen vanuit een hulp programma zoals de MySQL-opdracht regel of MySQL Workbench.
 
 > [!NOTE]
-> Als u werkt met de `az_load_timezone` opdracht via MySQL Workbench, moet u de veilige modus eerst uitschakelen met behulp van `SET SQL_SAFE_UPDATES=0;`.
+> Als u de `az_load_timezone`-opdracht uit MySQL Workbench uitvoert, moet u de veilige update modus mogelijk eerst uitschakelen met behulp van `SET SQL_SAFE_UPDATES=0;`.
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
-Als u wilt weergeven van waarden van de beschikbare tijd zone, moet u de volgende opdracht uitvoeren:
+Voer de volgende opdracht uit om de beschik bare tijd zone waarden weer te geven:
 
 ```sql
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>De globale niveau tijdzone instellen
+### <a name="setting-the-global-level-time-zone"></a>De tijd zone van het globale niveau instellen
 
-De globale niveau tijdzone kan worden ingesteld van de **serverparameters** pagina in de Azure portal. De onderstaande stelt de globale tijdzone op de waarde "VS / Stille Oceaan '.
+De tijd zone op het globale niveau kan worden ingesteld op de pagina **server parameters** in de Azure Portal. In het onderstaande voor de globale tijd zone wordt de waarde ' VS/Pacific ' ingesteld.
 
-![De tijdzoneparameter instellen](./media/howto-server-parameters/timezone.png)
+![De para meter voor de tijd zone instellen](./media/howto-server-parameters/timezone.png)
 
-### <a name="setting-the-session-level-time-zone"></a>De sessie niveau tijdzone instellen
+### <a name="setting-the-session-level-time-zone"></a>De tijd zone op sessie niveau instellen
 
-De sessie niveau time zone kan worden ingesteld door het uitvoeren van de `SET time_zone` opdracht uit vanaf een hulpprogramma zoals de MySQL-opdrachtregel of MySQL Workbench. In het volgende voorbeeld wordt de tijdzone ingesteld op de **VS / Stille Oceaan** tijdzone.
+De tijd zone op sessie niveau kan worden ingesteld door de `SET time_zone` opdracht uit te voeren vanuit een hulp programma zoals de MySQL-opdracht regel of MySQL Workbench. In het volgende voor beeld wordt de tijd zone ingesteld op de **Amerikaanse/Pacific-** tijd zone.
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-Raadpleeg de documentatie MariaDB voor [datum- en tijdfuncties](https://mariadb.com/kb/en/library/convert_tz/).
+Raadpleeg de MariaDB-documentatie voor [datum-en tijd functies](https://mariadb.com/kb/en/library/convert_tz/).
 
 <!--
 ## Next steps

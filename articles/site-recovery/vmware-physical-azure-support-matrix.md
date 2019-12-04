@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b75d9e9fc88cabacab912efa17938708eb061b99
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8c5b932a1b44169cc50c8c7214d3f3410c581f4e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232437"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792275"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -21,7 +21,7 @@ In dit artikel vindt u een overzicht van de ondersteunde onderdelen en instellin
 - Meer [informatie](vmware-azure-architecture.md) over de architectuur voor herstel na nood gevallen voor de virtuele VMWare-machine of fysieke server.
 - Volg de [zelf studies](tutorial-prepare-azure.md) om herstel na nood gevallen uit te proberen.
 
-## <a name="deployment-scenarios"></a>Implementatiescenario's
+## <a name="deployment-scenarios"></a>Implementatiescenario’s
 
 **Scenario** | **Details**
 --- | ---
@@ -45,7 +45,7 @@ De configuratie server is een on-premises machine waarop Site Recovery-onderdele
 
 **Onderdeel** | **Vereisten**
 --- |---
-CPU-kernen | 8
+Cpu-cores | 8
 RAM | 16 GB
 Aantal schijven | 3 schijven<br/><br/> Schijven bevatten de besturingssysteem schijf, de cache schijf van de proces server en het Bewaar station voor failback.
 Beschik bare schijf ruimte | 600 GB aan ruimte voor de cache van de proces server.
@@ -74,18 +74,20 @@ Machine workload | Site Recovery ondersteunt replicatie van elke werk belasting 
 Windows Server 2019 | Ondersteund door [Update pakket 34](https://support.microsoft.com/help/4490016) (versie 9,22 van de Mobility-service).
 Windows Server 2016 64-bits | Ondersteund voor Server Core, server met bureaublad ervaring.
 Windows Server 2012 R2/Windows Server 2012 | Ondersteund.
-Windows Server 2008 R2 met SP1 en hoger. | Ondersteund.<br/><br/> Van versie 9.30. x. x (verwachte release van november 2019) van de Mobility Service-agent hebt u de [onderhouds stack update (Ssu)](https://support.microsoft.com/help/4490628) en de [SHA-2-update](https://support.microsoft.com/help/4474419) geïnstalleerd op computers met Windows 2008 R2 met SP1 of hoger. SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over de [SHA-2-upgrade en de vereisten](https://aka.ms/SHA-2KB).
-Windows Server 2008 met SP2 of hoger (64-bits/32-bits) |  Alleen ondersteund voor migratie. [Meer informatie](migrate-tutorial-windows-server-2008.md).<br/><br/> Van versie 9.30. x. x (verwachte release van november 2019) van de Mobility Service-agent hebt u de service [stack update (Ssu)](https://support.microsoft.com/help/4493730) en de [SHA-2-update](h https://support.microsoft.com/help/4474419) geïnstalleerd op computers met Windows 2008 SP2. ISHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over de [SHA-2-upgrade en de vereisten](https://aka.ms/SHA-2KB).
+Windows Server 2008 R2 met SP1 en hoger. | Ondersteund.<br/><br/> Van versie 9.30. x. x (verwachte release van november 2019) van de Mobility Service-agent hebt u de [onderhouds stack update (Ssu)](https://support.microsoft.com/help/4490628) en de [SHA-2-update](https://support.microsoft.com/help/4474419) geïnstalleerd op computers met Windows 2008 R2 met SP1 of hoger. SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
+Windows Server 2008 met SP2 of hoger (64-bits/32-bits) |  Alleen ondersteund voor migratie. [Meer informatie](migrate-tutorial-windows-server-2008.md).<br/><br/> Van versie 9.30. x. x (verwachte release van november 2019) van de Mobility Service-agent hebt u de service [stack update (Ssu)](https://support.microsoft.com/help/4493730) en de [SHA-2-update](h https://support.microsoft.com/help/4474419) geïnstalleerd op computers met Windows 2008 SP2. ISHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
 Windows 10, Windows 8,1, Windows 8 | Ondersteund.
-Windows 7 met SP1 64-bits | Ondersteund door [Update pakket 36](https://support.microsoft.com/help/4503156) (versie 9,22 van de Mobility-service). </br></br> Van versie 9.30. x. x (verwachte release van november 2019) van de Mobility Service-agent hebt u de service [stack update (Ssu)](https://support.microsoft.com/help/4490628) en de [SHA-2-update](https://support.microsoft.com/help/4474419) geïnstalleerd op computers met Windows 7 SP1.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over de [SHA-2-upgrade en de vereisten](https://aka.ms/SHA-2KB).
+Windows 7 met SP1 64-bits | Ondersteund door [Update pakket 36](https://support.microsoft.com/help/4503156) (versie 9,22 van de Mobility-service). </br></br> Van versie 9.30. x. x (verwachte release van november 2019) van de Mobility Service-agent hebt u de service [stack update (Ssu)](https://support.microsoft.com/help/4490628) en de [SHA-2-update](https://support.microsoft.com/help/4474419) geïnstalleerd op computers met Windows 7 SP1.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
 Linux | Alleen 64-bits systeem wordt ondersteund. 32-bits systeem wordt niet ondersteund.<br/><br/>Op elke Linux-server moeten [Lis-onderdelen (Linux Integration Services)](https://www.microsoft.com/download/details.aspx?id=55106) zijn geïnstalleerd. Het is vereist om de server op te starten in azure na een testfailover of failover. Als er LIS-onderdelen ontbreken, moet u ervoor zorgen dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat u replicatie inschakelt om de computers op te starten in Azure. <br/><br/> Site Recovery organiseert de failover voor het uitvoeren van Linux-servers in Azure. Linux-leveranciers kunnen echter wel de ondersteuning beperken tot distributie versies die geen einde van de levens duur hebben bereikt.<br/><br/> In Linux-distributies worden alleen de voorraad kernels ondersteund die deel uitmaken van de distributie secundaire versie/update.<br/><br/> Het bijwerken van beveiligde machines in grote Linux-distributie versies wordt niet ondersteund. Als u een upgrade wilt uitvoeren, schakelt u replicatie uit, voert u een upgrade van het besturings systeem uit en schakelt u de replicatie opnieuw in<br/><br/> Meer [informatie](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) over ondersteuning voor Linux en open-source technologie in Azure.
-Linux Red Hat Enterprise | 5,2 tot 5,11</b><br/> 6,1 tot 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) <br/> Servers met Red Hat Enterprise Linux 5.2-5,11 & 6.1-6.10 hebben geen [Lis-onderdelen (Linux Integration Services)](https://www.microsoft.com/download/details.aspx?id=55106) vooraf geïnstalleerd. Zorg ervoor dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat u replicatie inschakelt voor de computers om op te starten in Azure.
+Linux Red Hat Enter prise | 5,2 tot 5,11</b><br/> 6,1 tot 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) <br/> Servers met Red Hat Enterprise Linux 5.2-5,11 & 6.1-6.10 hebben geen [Lis-onderdelen (Linux Integration Services)](https://www.microsoft.com/download/details.aspx?id=55106) vooraf geïnstalleerd. Zorg ervoor dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat u replicatie inschakelt voor de computers om op te starten in Azure.
 Linux: CentOS | 5,2 tot 5,11</b><br/> 6,1 tot 6,10</b><br/> 7,0 tot 7,6<br/> <br/> Servers met CentOS 5.2-5,11 & 6.1-6.10 hebben geen [Lis-onderdelen (Linux Integration Services)](https://www.microsoft.com/download/details.aspx?id=55106) vooraf geïnstalleerd. Zorg ervoor dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat u replicatie inschakelt voor de computers om op te starten in Azure.
 Ubuntu | Ubuntu 14,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(ondersteunde kernel-versies controleren)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(ondersteunde kernel-versies controleren)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Het upgraden van gerepliceerde machines van SUSE Linux Enterprise Server 11 SP3 naar SP4 wordt niet ondersteund. Als u een upgrade wilt uitvoeren, schakelt u replicatie uit en schakelt u na de upgrade opnieuw in.
 Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Met de Red Hat compatibele kernel of een onherstelbare versie van de Enter prise kernel van 3, 4 & 5 (UEK3, UEK4, UEK5) 
 
+> [!Note]
+> Voor elk van de Windows-versies biedt Azure Site Recovery alleen ondersteuning voor [LTSC-builds (Long-term Servicing Channel)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) .  [Semi-Annual-kanaal](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) releases worden op dit moment niet ondersteund.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu-kernel-versies
 
@@ -176,7 +178,7 @@ ELB | Ja
 Azure Traffic Manager | Ja
 Multi-NIC | Ja
 Gereserveerde IP-adressen | Ja
-IPv4 | Ja
+IPv6 | Ja
 Bron-IP-adres behouden | Ja
 Service-eindpunten voor een virtueel Azure-netwerk<br/> | Ja
 Versneld netwerken | Nee
@@ -218,7 +220,7 @@ EFI/UEFI-opstart procedure voor gast/server | -Ondersteund voor Windows Server 2
 |Offline seeding        |   Nee      |
 | Azure Data Box | Nee
 
-## <a name="azure-storage"></a>Azure-opslag
+## <a name="azure-storage"></a>Azure Storage
 
 **Onderdeel** | **Ondersteund**
 --- | ---
@@ -230,7 +232,7 @@ Hot Storage| Nee
 Blok-blobs | Nee
 Versleuteling-at-rest (SSE)| Ja
 Versleuteling-at-rest (CMK)| Nee
-Premium Storage | Ja
+Premium-opslag | Ja
 Import/export-service | Nee
 Firewalls voor VNets Azure Storage | Ja.<br/> Geconfigureerd op het doel opslag/cache-opslag account (wordt gebruikt voor het opslaan van replicatie gegevens).
 V2-opslag accounts voor algemeen gebruik (warme en coole lagen) | Ja (de transactie kosten zijn aanzienlijk hoger voor v2 vergeleken met v1)

@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL beheren-Azure Portal
+title: Server-Azure Portal-Azure Database for MySQL beheren
 description: Meer informatie over het beheren van een Azure Database for MySQL-server vanuit de Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 286209673e5743d08ddaa2fed2f507f84d622ea6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/02/2019
+ms.openlocfilehash: 553234410a7b8b798d26f0e2fee6132a2602b1cc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534052"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770506"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Een Azure Database for MySQL-server beheren met behulp van de Azure Portal
 Dit artikel laat u zien hoe u uw Afire-Data Base voor MySQL-servers kunt beheren. Beheer taken zijn onder andere berekening en opslag schalen, beheerders wachtwoord opnieuw instellen en server details weer geven.
@@ -79,7 +79,7 @@ U kunt het wacht woord van de beheerdersrol wijzigen met behulp van de Azure Por
 
 2. Voer een nieuw wacht woord in en bevestig het wacht woord. In het tekstvak wordt u gevraagd om de vereisten voor wachtwoord complexiteit.
 
-   ![Opnieuw instellen-wacht woord](./media/howto-create-manage-server-portal/reset-password.png)
+   ![opnieuw instellen-wacht woord](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Selecteer **OK** om het nieuwe wacht woord op te slaan.
 

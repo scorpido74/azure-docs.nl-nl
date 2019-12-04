@@ -1,22 +1,18 @@
 ---
-title: Verbinding maken met SendGrid vanuit Azure Logic Apps | Microsoft Docs
+title: Verbinding maken met SendGrid vanuit Azure Logic Apps
 description: Taken en werk stromen automatiseren waarmee e-mails worden verzonden en mailing lijsten worden beheerd in SendGrid met behulp van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 4f5efd73ef2a08069e3b9f2c7d60be99c209ddca
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 998020c5e39c8d50e8a14c74c43b7b435752f43d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050804"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789304"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>E-mails verzenden en mailing lijsten beheren in SendGrid met behulp van Azure Logic Apps
 
@@ -70,11 +66,11 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?]
 
 Raadpleeg de [referentie pagina](/connectors/sendgrid/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 * Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 * Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

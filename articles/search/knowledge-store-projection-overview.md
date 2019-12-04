@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e7ed7eef961e357b8c1e4e59790f9f150c286c61
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326598"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790000"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Werken met projecties in een Knowledge Store in azure Cognitive Search
 
@@ -28,11 +28,11 @@ Projecties kunnen in tabel vorm worden opgeslagen, met gegevens die in rijen en 
 
 Het kennis archief ondersteunt drie soorten projecties:
 
-+ **Tabellen**: voor gegevens die het beste als rijen en kolommen worden weer gegeven, kunt u met tabel prognoses een geschematiseerde vorm of projectie definiëren in tabel opslag.
++ **Tabellen**: voor gegevens die het beste als rijen en kolommen worden weer gegeven, kunt u met tabel prognoses een geschematiseerde vorm of projectie definiëren in tabel opslag. Alleen geldige JSON-objecten kunnen worden geprojecteerd als tabellen, het verrijkte document kan knoop punten bevatten die geen JSON-objecten zijn en wanneer deze objecten worden geprojecteerd, maakt u een geldig JSON-object met een shaper-vaardigheid of inline-vorm.
 
-+ **Objecten**: wanneer u een JSON-weer gave van uw gegevens en verrijkingen nodig hebt, worden object projecties opgeslagen als blobs.
++ **Objecten**: wanneer u een JSON-weer gave van uw gegevens en verrijkingen nodig hebt, worden object projecties opgeslagen als blobs. Alleen geldige JSON-objecten kunnen worden geprojecteerd als objecten, het verrijkte document kan knoop punten bevatten die geen JSON-objecten zijn en wanneer deze objecten worden geprojecteerd, maakt u een geldig JSON-object met een shaper-vaardigheid of inline-vorm.
 
-+ **Bestanden**: wanneer u de afbeeldingen die zijn geëxtraheerd uit de documenten wilt opslaan, kunt u met bestands prognoses de genormaliseerde installatie kopieën opslaan.
++ **Bestanden**: wanneer u de afbeeldingen die zijn geëxtraheerd uit de documenten wilt opslaan, kunt u met bestands projectes de genormaliseerde installatie kopieën opslaan in Blob Storage.
 
 Als u de prognoses wilt weer geven die in de context zijn gedefinieerd, kunt u stapsgewijs aan de [slag met kennis opslag](knowledge-store-howto.md).
 
@@ -47,7 +47,7 @@ Deze onafhankelijkheid impliceert dat u dezelfde gegevens anders hebt geshaped e
 
 ### <a name="relatedness"></a>Gerelateerd aan
 
-Met projectie groepen kunt u uw documenten nu projecteren in verschillende projectie typen, terwijl u de relaties tussen projectie typen behoudt. Alle inhoud die is geprojecteerd binnen één projectie groep, behoudt de relaties binnen de gegevens in de projectie typen. In tabellen zijn relaties gebaseerd op een gegenereerde sleutel en elk onderliggend knoop punt behoudt een verwijzing naar het bovenliggende knoop punt. In typen (tabellen, objecten en bestanden) worden relaties behouden wanneer één knoop punt wordt geprojecteerd over verschillende typen. Denk bijvoorbeeld aan een scenario waarin u een document hebt met afbeeldingen en tekst. U kunt de tekst projecteren naar tabellen of objecten en de afbeeldingen naar bestanden waar de tabellen of objecten een eigenschap hebben die de URL van het bestand bevat.
+Met projectie groepen kunt u uw documenten nu projecteren in verschillende projectie typen, terwijl u de relaties tussen projectie typen behoudt. Alle inhoud die is geprojecteerd binnen één projectie groep, behoudt de relaties binnen de gegevens in de projectie typen. In tabellen zijn relaties gebaseerd op een gegenereerde sleutel en elk onderliggend knoop punt behoudt een verwijzing naar het bovenliggende knoop punt. In typen (tabellen, objecten en bestanden) worden relaties behouden wanneer één knoop punt wordt geprojecteerd over verschillende typen. Denk bijvoorbeeld aan een scenario waarin u een document hebt met afbeeldingen en tekst. U kunt de tekst projecteren naar tabellen of objecten en de afbeeldingen naar bestanden waar de tabellen of objecten een kolom/eigenschap met de bestands-URL hebben.
 
 ## <a name="input-shaping"></a>Invoer vorming
 

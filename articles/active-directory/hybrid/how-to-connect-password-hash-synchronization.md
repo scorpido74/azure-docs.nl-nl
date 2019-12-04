@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e77368c7c0c104e777595a16735a7cf1e797a48
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: dfb4b7d2cb34855208eb54c6d30b29e4bbff636b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539010"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766613"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Wachtwoord hash-synchronisatie implementeren met Azure AD Connect Sync
 In dit artikel vindt u informatie die u nodig hebt om uw gebruikers wachtwoorden te synchroniseren vanuit een on-premises Active Directory-exemplaar naar een op de cloud gebaseerde Azure Active Directory (Azure AD)-exemplaar.
@@ -123,13 +123,9 @@ Het is gebruikelijk dat een gebruiker het wacht woord tijdens de eerste aanmeldi
   
 De functionaliteit van het tijdelijke wacht woord helpt ervoor te zorgen dat de overdracht van eigendom van de referentie wordt voltooid bij het eerste gebruik, om zo de tijd te beperken dat meer dan één persoon kennis van die referentie heeft.
 
-Ter ondersteuning van tijdelijke wacht woorden in azure AD voor gesynchroniseerde gebruikers, kunt u de functie *ForcePasswordResetOnLogonFeature* inschakelen door de volgende opdracht op uw Azure AD Connect server uit te voeren, waarbij u <AAD Connector Name> vervangt door de naam van de connector die specifiek is voor uw omgeving:
+Ter ondersteuning van tijdelijke wacht woorden in azure AD voor gesynchroniseerde gebruikers, kunt u de functie *ForcePasswordResetOnLogonFeature* inschakelen door de volgende opdracht uit te voeren op uw Azure AD Connect-server:
 
-`Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
-
-U kunt de volgende opdracht gebruiken om de naam van de connector te bepalen:
-
-`(Get-ADSyncConnector | where{$_.ListName -eq "Windows Azure Active Directory (Microsoft)"}).Name`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
 
 Voor behoud: wanneer een gebruiker het wacht woord bij de volgende aanmelding moet wijzigen, moet het wacht woord tegelijkertijd worden gewijzigd.  AD Connect neemt de vlag voor het wijzigen van het wacht woord niet op zichzelf op. Dit is een aanvulling op de gedetecteerde wachtwoord wijziging die optreedt tijdens de wachtwoord-hash-synchronisatie.
 

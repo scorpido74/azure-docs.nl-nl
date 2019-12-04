@@ -1,17 +1,17 @@
 ---
-title: Back-ups maken en herstellen in Azure Database for PostgreSQL-één server
+title: Backup en Restore-Azure Database for PostgreSQL-één server
 description: Meer informatie over automatische back-ups en het herstellen van uw Azure Database for PostgreSQL server-één server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cbd434f2f9e1217a3a481a28988f4e1d855ba08b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209638"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769860"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Back-ups maken en herstellen in Azure Database for PostgreSQL-één server
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL maakt back-ups van de gegevens bestanden en het tr
 
 ### <a name="backup-frequency"></a>Back-upfrequentie
 
-Over het algemeen worden volledige back-ups wekelijks uitgevoerd, differentiële back-ups twee keer per dag voor servers met een Maxi maal ondersteunde opslag van 4 TB. Back-ups van moment opnamen worden minstens één keer per dag uitgevoerd voor servers die ondersteuning bieden voor Maxi maal 16 TB aan opslag ruimte. Back-ups van transactie Logboeken in beide gevallen worden elke vijf minuten uitgevoerd. De eerste moment opname van een volledige back-up wordt onmiddellijk gepland nadat een server is gemaakt. De eerste volledige back-up kan langer duren op een grote herstelde server. Het vroegste tijdstip waarop een nieuwe server kan worden hersteld, is het tijdstip waarop de eerste volledige back-up is voltooid. Als moment opnamen zijn instantanious, kunnen servers met ondersteuning van Maxi maal 16 TB aan opslag worden hersteld.
+Over het algemeen worden volledige back-ups wekelijks uitgevoerd, differentiële back-ups twee keer per dag voor servers met een Maxi maal ondersteunde opslag van 4 TB. Back-ups van momentopnamen worden minstens één keer per dag uitgevoerd voor servers die ondersteuning bieden voor maximaal 16 TB opslag. Back-ups van transactielogboeken worden voor beide gevallen elke vijf minuten uitgevoerd. De eerste moment opname van een volledige back-up wordt onmiddellijk gepland nadat een server is gemaakt. De eerste volledige back-up kan langer duren op een grote herstelde server. Het vroegste tijdstip waarop een nieuwe server kan worden hersteld, is het tijdstip waarop de eerste volledige back-up is voltooid. Omdat moment opnamen direct worden ondersteund, kunnen servers met ondersteuning tot wel 16 TB aan opslag ruimte worden hersteld.
 
 ### <a name="backup-redundancy-options"></a>Opties voor back-upredundantie
 
@@ -52,7 +52,7 @@ De geschatte duur van de herstel bewerking is afhankelijk van verschillende fact
 > [!IMPORTANT]
 > Verwijderde servers **kunnen niet** worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
 
-### <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
+### <a name="point-in-time-restore"></a>Herstel naar een bepaald tijdstip
 
 Onafhankelijk van de optie voor de redundantie van de back-up kunt u een herstel bewerking uitvoeren op elk gewenst moment binnen de retentie periode van de back-up. Er wordt een nieuwe server gemaakt in dezelfde Azure-regio als de oorspronkelijke server. Het wordt gemaakt met de oorspronkelijke server configuratie voor de prijs categorie, het berekenen van de berekening, het aantal vCores, de opslag grootte, de Bewaar periode voor back-ups en de optie voor de redundantie van back-ups.
 

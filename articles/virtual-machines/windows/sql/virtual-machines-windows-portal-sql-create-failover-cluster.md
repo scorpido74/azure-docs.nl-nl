@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 08549935c7a0651709a08bef61624e4e436d4aad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084096"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792176"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren op virtuele machines van Azure
 
@@ -81,9 +81,7 @@ U moet ook algemene informatie over deze technologieën hebben:
 - [Azure-resource groepen](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Op dit moment worden SQL Server failover-cluster exemplaren op virtuele machines van Azure alleen ondersteund met de [licht gewicht](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) beheer modus van de [SQL Server IaaS agent-extensie](virtual-machines-windows-sql-server-agent-extension.md). Verwijder de volledige uitbrei ding van de virtuele machines die deel uitmaken van het failovercluster en Registreer deze vervolgens bij de resource provider van de SQL-VM in de Lightweight-modus.
->
-> De volledige extensie ondersteunt functies als automatische back-ups, patches en Geavanceerd Portal beheer. Deze functies werken niet voor SQL Server Vm's nadat de agent opnieuw is geïnstalleerd in de modus voor licht gewicht beheer.
+> Op dit moment worden SQL Server failover-cluster exemplaren op virtuele machines van Azure alleen ondersteund in de [Lightweight-beheer modus](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) van de [SQL Server IaaS agent-extensie](virtual-machines-windows-sql-server-agent-extension.md). Als u wilt overschakelen van de volledige extensie modus naar Lightweight, verwijdert u de resource van de **virtuele SQL-machine** voor de bijbehorende vm's en registreert u deze vervolgens bij de resource provider van de SQL-vm in de Lightweight-modus. Als u de bron van de **virtuele SQL-machine** verwijdert met behulp van de Azure Portal, **schakelt u het selectie vakje naast de juiste virtuele machine uit**. De volledige extensie ondersteunt functies zoals automatische back-ups, patches en Geavanceerd Portal beheer. Deze functies werken niet voor SQL-Vm's nadat de agent opnieuw is geïnstalleerd in de modus voor licht gewicht beheer.
 
 ### <a name="what-to-have"></a>Wat u moet hebben
 
@@ -238,14 +236,14 @@ Als u het cluster wilt valideren met behulp van de gebruikers interface, voert u
 
 1. Klik onder **Serverbeheer**op **extra**en selecteer vervolgens **Failoverclusterbeheer**.
 1. Selecteer onder **Failoverclusterbeheer** **actie**en selecteer vervolgens **configuratie valideren**.
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Voer onder **servers of een cluster selecteren**de namen van beide virtuele machines in.
-1. Onder **test opties**selecteert u **alleen geselecteerde tests uitvoeren**. Selecteer **Volgende**.
+1. Onder **test opties**selecteert u **alleen geselecteerde tests uitvoeren**. Selecteer **Next**.
 1. Selecteer onder **selectie testen**alle tests, met uitzonde ring van **opslag**, zoals hier wordt weer gegeven:
 
    ![Cluster validatie tests selecteren](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Klik onder **bevestiging**op **volgende**.
 
 Met de wizard een configuratie valideren worden de validatie tests uitgevoerd.

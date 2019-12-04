@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e4778693e448b9a989d70d3ca8cf91c76ce380
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0d840cbaba2cc8325c619248bb7f4421d3b2f83c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482057"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766069"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Web-app die zich aanmeldt bij gebruikers: app-registratie
 
@@ -68,27 +68,27 @@ U kunt deze koppelingen gebruiken om het maken van uw webtoepassing te Boots tra
    1. Voer in de sectie **naam** een zinvolle toepassings naam in die wordt weer gegeven voor gebruikers van de app. Voer bijvoorbeeld **MailApp-openidconnect-v2**in.
    1. Selecteer in de sectie de **omleidings-URI (optioneel)** **Web** in de keuze lijst met invoervak en voer de volgende OMleidings-URI in: **https://localhost:44326/** .
 1. Selecteer **Registreren** om de toepassing te maken.
-1. Selecteer het menu **verificatie** . 
+1. Selecteer het menu **verificatie** .
 1. Selecteer in de sectie **Geavanceerde instellingen** | **impliciete toekenning** de optie **id-tokens**. Voor dit voor beeld moet de [impliciete toekennings stroom](v2-oauth2-implicit-grant-flow.md) zijn ingeschakeld om u aan te melden bij de gebruiker.
 1. Selecteer **Opslaan**.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-1. Wanneer de **pagina een toepassing registreren** wordt weer gegeven, voert u een weergave naam in voor de toepassing. Voer bijvoorbeeld **Java-webapp**in. 
+1. Wanneer de **pagina een toepassing registreren** wordt weer gegeven, voert u een weergave naam in voor de toepassing. Voer bijvoorbeeld **Java-webapp**in.
 1. Selecteer **accounts in een organisatorische map en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com)** en selecteer **Web-app/API** voor **toepassings type**.
 1. Selecteer **registreren** om de toepassing te registreren.
-1. Selecteer in het menu links **verificatie**. Onder **omleidings-uri's**, selecteert u **Web**. 
+1. Selecteer in het menu links **verificatie**. Onder **omleidings-uri's**, selecteert u **Web**.
 
 1. Voer twee omleidings-Uri's in: één voor de aanmeldings pagina en een voor de grafiek pagina. Gebruik voor beide dezelfde host en hetzelfde poort nummer, gevolgd door **/msal4jsample/Secure/Aad** voor de aanmeldings pagina en **msal4jsample/Graph/me** voor de pagina met gebruikers informatie.
- 
+
    Het voor beeld maakt standaard gebruik van:
 
    - **http://localhost:8080/msal4jsample/secure/aad**
    - **http://localhost:8080/msal4jsample/graph/me**
 
-1. Stel in het gedeelte **Geavanceerde instellingen** de **afmeldings-URL** in op **http://localhost:8080/msal4jsample/sign_out** . Selecteer vervolgens **Opslaan**.
+  Selecteer vervolgens **Opslaan**.
 
-1. Selecteer **certificaten & geheimen** in het menu. 
+1. Selecteer **certificaten & geheimen** in het menu.
 1. Selecteer in de sectie **client geheimen** de optie **Nieuw client geheim**en voer vervolgens de volgende handelingen uit:
 
    1. Voer een beschrijving van de sleutel in.
@@ -104,7 +104,6 @@ U kunt deze koppelingen gebruiken om het maken van uw webtoepassing te Boots tra
    1. Selecteer in de sectie de **omleidings-URI (optioneel)** **Web** in de keuze lijst met invoervak en voer de volgende OMleidings-URI in: **http://localhost:5000/getAToken** .
 1. Selecteer **Registreren** om de toepassing te maken.
 1. Zoek op de **overzichts** pagina van de app naar de waarde van de **toepassings-id** en noteer deze voor later. U hebt deze nodig voor het configureren van het Visual Studio-configuratie bestand voor dit project.
-1. Selecteer de sectie **verificatie** . Stel in **Geavanceerde instellingen**de **afmeldings-URL** in op **http://localhost:5000/logout** . Selecteer vervolgens **Opslaan**.
 1. Selecteer in het linkermenu **certificaten & geheimen**.
 1. Selecteer in de sectie **client geheimen** de optie **Nieuw client geheim**en voer vervolgens de volgende handelingen uit:
 

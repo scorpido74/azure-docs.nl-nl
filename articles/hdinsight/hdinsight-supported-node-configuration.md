@@ -9,59 +9,75 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: e482cf9b5367beba00784e69c5bad88142df5225
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 278639b27d821e8d6440248a1add43bcd9de22c6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076210"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775222"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Wat zijn de standaard en aanbevolen knooppunt configuraties voor Azure HDInsight?
 
 In dit artikel worden de standaard-en aanbevolen knooppunt configuraties voor Azure HDInsight-clusters besproken.
 
-## <a name="default-and-recommended-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Standaard en aanbevolen knooppunt configuratie en grootte van virtuele machines voor clusters
+## <a name="default-and-minimum-recommended-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Standaard en mini maal aanbevolen knooppunt configuratie en grootte van virtuele machines voor clusters
 
-In de volgende tabellen worden de standaard en aanbevolen VM-grootten (Virtual Machine) weer geven voor HDInsight-clusters.  Deze informatie is nodig om inzicht te krijgen in de VM-grootten die moeten worden gebruikt bij het maken van Power shell-of Azure CLI-scripts voor het implementeren van HDInsight-clusters. 
+In de volgende tabellen worden de standaard en aanbevolen VM-grootten (Virtual Machine) weer geven voor HDInsight-clusters.  Deze informatie is nodig om inzicht te krijgen in de VM-grootten die moeten worden gebruikt bij het maken van Power shell-of Azure CLI-scripts voor het implementeren van HDInsight-clusters.
 
 Als u meer dan 32 worker-knoop punten in een cluster nodig hebt, selecteert u een hoofd knooppunt grootte met ten minste 8 kernen en 14 GB aan RAM-geheugen. 
 
 De enige cluster typen met gegevens schijven zijn Kafka-en HBase-clusters waarvoor de functie voor versneld schrijven is ingeschakeld. HDInsight ondersteunt de P30-en S30-schijf grootten in deze scenario's.
 
-Raadpleeg de volgende documenten voor meer informatie over de specificatie van elk VM-type:
+De specificaties van alle mini maal aanbevolen VM-typen die in dit document worden gebruikt, worden in de volgende tabel samenvatten.
 
-* [Grootte van virtuele machines voor algemene doel einden: Dv2-serie 1-5](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dv2-series)
-* [Grootte van virtuele machines geoptimaliseerd voor geheugen: Dv2-serie 11-15](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#dv2-series-11-15)
-* [Grootte van virtuele machines voor algemene doel einden: Av2-serie 1-8](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#av2-series)
+| Grootte              | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Maximumaantal gegevensschijven / doorvoer: IOPS | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+|-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_D3_v2 | 4    | 14          | 200                    | 12.000 / 187 / 93                                           | 16-16x500           | 4 / 3000                                       |
+| Standard_D4_v2 | 8    | 28          | 400                    | 24.000 / 375 / 187                                          | 32/32x500           | 8 / 6000                                       |
+| Standard_D5_v2 | 16   | 56          | 800                    | 48.000 / 750 / 375                                          | 64/64x500           | 8 / 12000                                    |
+| Standard_D12_v2   | 4         | 28          | 200            | 12.000 / 187 / 93                                         | 16 / 16 x 500                         | 4 / 3000                     |
+| Standard_D13_v2   | 8         | 56          | 400            | 24.000 / 375 / 187                                        | 32 / 32 x 500                       | 8 / 6000                     |
+| Standard_D14_v2   | 16        | 112         | 800            | 48.000 / 750 / 375                                        | 64/64x500                       | 8 / 12000          |
+| Standard_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2 x 500               | 2 / 250                 |
+| Standard_A2_v2  | 2         | 4           | 20             | 2000 / 40 / 20                                           | 4 / 4 x 500               | 2 / 500                 |
+| Standard_A4_v2  | 4         | 8           | 40             | 4000 / 80 / 40                                           | 8 / 8 x 500               | 4 / 1000                     |
+
+Raadpleeg de volgende documenten voor meer informatie over de specificaties van elk VM-type:
+
+* [Grootte van virtuele machines voor algemene doel einden: dv2 Series 1-5](../virtual-machines/linux/sizes-general.md#dv2-series)
+* [Grootte van virtuele machines geoptimaliseerd voor geheugen: dv2 Series 11-15](../virtual-machines/linux/sizes-memory.md#dv2-series-11-15)
+* [Grootte van virtuele machines voor algemene doel einden: Av2 Series 1-8](../virtual-machines/linux/sizes-general.md#av2-series)
 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>Alle ondersteunde regio's met uitzonde ring van Brazilië-Zuid en Japan-West
 
 > [!Note]
-> Als u de SKU-id wilt ophalen voor gebruik in Power shell en `Standard_` andere scripts, voegt u aan het begin van alle VM-sku's in de onderstaande tabellen toe. Dit wordt bijvoorbeeld `D12_v2`. `Standard_D12_v2`
+> Als u de SKU-id wilt ophalen voor gebruik in Power shell en andere scripts, voegt u `Standard_` toe aan het begin van alle VM-Sku's in de onderstaande tabellen. `D12_v2` worden bijvoorbeeld `Standard_D12_v2`.
 
-| Clustertype | Hadoop | HBase | Interactive Query | Storm | Spark | ML Server | Kafka |
+| Clustertype | Hadoop | HBase | Interactieve query | Storm | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
-| Head: standaard VM-grootte | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 | D3_v2 |
-| Kop: aanbevolen VM-grootten | D13_v2,<br/>D14_v2,<br/>D5_v2 | D3_v2,<br/>D4_v2,<br/>D12_v2 | D13_v2,<br/>D14_v2 | A4_v2,<br/>A8_v2 | D12_v2,<br/>D13_v2,<br/>D14_v2 | D12_v2,<br/>D13_v2,<br/>D14_v2 | D3_v2,<br/>D4_v2,<br/>D12_v2 |
+| Head: standaard VM-grootte | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
+| Kop: Mini maal aanbevolen VM-grootten | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Werk nemer: standaard VM-grootte | D4_v2 | D4_v2 | D14_v2 | D3_v2 | D13_v2 | D4_v2 | 4 D12_v2 met 2 S30 schijven per Broker |
-| Werk nemer: aanbevolen VM-grootten | D5_v2,<br>D12_v2,<br/>D13_v2 | D3_v2,<br/>D4_v2,<br/>D13_v2 | D13_v2,<br/>D14_v2 | D3_v2<br/>D4_v2,<br/>D12_v2 | D12_v2,<br>D13_v2,<br>D14_v2 | D4_v2,<br/>D12_v2,<br>D13_v2,<br>D14_v2 | D3_v2,<br/>D4_v2,<br/>DS3_v2,<br/>DS4_v2 |
+| Werk nemer: Mini maal aanbevolen VM-grootten | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 | D3_v2 |
 | ZooKeeper: standaard VM-grootte |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 | A4_v2 |
-| ZooKeeper: aanbevolen VM-grootten |  | A4_v2, <br/>A8_v2, <br/>A2m_v2 | A4_v2,<br/>A8_v2,<br/>A2m_v2 | A4_v2,<br/>A2_v2,<br/>A8_v2 |  | A2_v2 | A4_v2,<br/> A8_v2,<br/>A2m_v2 |
+| ZooKeeper: Mini maal aanbevolen VM-grootten |  | A4_v2 | A4_v2 | A2_v2 |  | A2_v2 | A4_v2 |
 | ML Services: standaard VM-grootte |  |  |  |  |  | D4_v2 |  |
-| ML Services: aanbevolen VM-grootte |  |  |  |  |  | D4_v2,<br/> D12_v2,<br/> D13_v2,<br/>D14_v2 |  |
+| ML Services: Mini maal aanbevolen VM-grootte |  |  |  |  |  | D4_v2 |  |
+
+\* = VM-grootten voor Spark-Enterprise Security Package (ESP)-clusters
 
 ### <a name="brazil-south-and-japan-west-only"></a>Alleen Brazilië-Zuid en Japan-West
 
-| Clustertype | Hadoop | HBase | Interactive Query | Storm | Spark | ML-services |
+| Clustertype | Hadoop | HBase | Interactieve query | Storm | Spark | ML Services |
 |---|---|---|---|---|---|---|
 | Head: standaard VM-grootte | D12 | D12 | D13 | A4_v2 | D12 | D12 |
-| Kop: aanbevolen VM-grootten | D5_v2,<br/> D13_v2,<br/> D14_v2 | D3_v2,<br/> D4_v2,<br/> D12_v2 | D13_v2,<br/> D14_v2 | A4_v2,<br/> A8_v2 | D12_v2,<br/> D13_v2,<br/> D14_v2 | D12_v2,<br/> D13_v2,<br/> D14_v2 |
+| Kop: Mini maal aanbevolen VM-grootten | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |
 | Werk nemer: standaard VM-grootte | D4 | D4 | D14 | D3 | D13 | D4 |
-| Werk nemer: aanbevolen VM-grootten | D5_v2,<br/> D12_v2,<br/> D13_v2 | D3_v2,<br/> D4_v2,<br/> D13_v2 | D13_v2,<br/> D14_v2 | D3_v2,<br/> D4_v2,<br/> D12_v2 | D12_v2,<br/> D13_v2,<br/> D14_v2 | D4_v2,<br/> D12_v2,<br/> D13_v2,<br/> D14_v2 |
+| Werk nemer: Mini maal aanbevolen VM-grootten | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 |
 | ZooKeeper: standaard VM-grootte |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
-| ZooKeeper: aanbevolen VM-grootten |  | A4_v2,<br/> A8_v2,<br/> A2m_v2 | A4_v2,<br/> A8_v2,<br/> A2m_v2 | A4_v2,<br/> A8_v2 |  | A2_v2 |
+| ZooKeeper: Mini maal aanbevolen VM-grootten |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
 | ML Services: standaard VM-grootten |  |  |  |  |  | D4 |
-| ML Services: aanbevolen VM-grootten |  |  |  |  |  | D4_v2,<br/> D12_v2,<br/> D13_v2,<br/> D14_v2 |
+| ML Services: Mini maal aanbevolen VM-grootten |  |  |  |  |  | D4_v2 |
 
 > [!NOTE]
 > - Head staat bekend als *Nimbus* voor het Storm-cluster type.
@@ -70,4 +86,4 @@ Raadpleeg de volgende documenten voor meer informatie over de specificatie van e
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat zijn de Apache Hadoop-onderdelen en versies die beschikbaar met HDInsight?](hdinsight-component-versioning.md)
+* [Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?](hdinsight-component-versioning.md)

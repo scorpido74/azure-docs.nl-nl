@@ -1,6 +1,6 @@
 ---
-title: U PHP gebruikt om verbinding maken met Azure Database for PostgreSQL - één Server
-description: Deze snelstartgids bevat een PHP-voorbeeldcode die u kunt verbinding maken en query uitvoeren op gegevens uit een Azure Database voor PostgreSQL - Server met één.
+title: Verbinding maken met PHP-Azure Database for PostgreSQL-één server
+description: Deze Quick Start biedt een PHP-code voorbeeld dat u kunt gebruiken om verbinding te maken en gegevens op te vragen van Azure Database for PostgreSQL-één server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: c6320eabd4d5808e8cfe1d39ec4a72bbbce42f77
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6e453201eb499f65ee7f3b8c17cbf0e5127182b0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067374"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766375"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database voor PostgreSQL - één-Server: PHP gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL-één server: PHP gebruiken om verbinding te maken en gegevens op te vragen
 In deze snelstartgids ziet u hoe u met behulp van een [PHP](https://secure.php.net/manual/intro-whatis.php)-toepassing verbinding maakt met een Azure Database voor PostgreSQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In de stappen van dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van PHP en geen ervaring hebt met het werken met Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Vereisten

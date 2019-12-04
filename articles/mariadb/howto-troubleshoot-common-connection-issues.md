@@ -1,17 +1,17 @@
 ---
-title: Verbindings problemen met Azure Database for MariaDB oplossen
+title: Verbindings problemen oplossen-Azure Database for MariaDB
 description: Meer informatie over het oplossen van verbindings problemen met Azure Database for MariaDB, waaronder tijdelijke fouten die moeten worden herhaald, Firewall problemen en storingen.
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 11/09/2018
-ms.openlocfilehash: a8354cdc364f221a086f4d2f4ec7da95c55baf6e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 613de96ee58d37e6270266852e513e53857a441a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973517"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765729"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Verbindings problemen met Azure Database for MariaDB oplossen
 
@@ -39,15 +39,15 @@ Er treden tijdelijke fouten op wanneer onderhoud wordt uitgevoerd. het systeem d
 1. Controleer het [Microsoft Azure-service dashboard](https://azure.microsoft.com/status) voor eventuele bekende storingen die zijn opgetreden tijdens de periode waarin de fouten zijn gerapporteerd door de toepassing.
 2. Toepassingen die verbinding maken met een Cloud service, zoals Azure Database for MariaDB, moeten tijdelijke fouten verwachten en proberen logica te implementeren voor het afhandelen van deze fouten in plaats van deze te halen als toepassings fouten aan gebruikers. Bekijk de [verwerking van tijdelijke connectiviteits fouten voor Azure database for MariaDB](concepts-connectivity.md) voor aanbevolen procedures en ontwerp richtlijnen voor het afhandelen van tijdelijke fouten.
 3. Wanneer een server de resource limieten nadert, kunnen fouten een probleem met de tijdelijke verbinding zijn. Zie de [beperkingen in azure database for MariaDB](concepts-limits.md).
-4. Als er verbindings problemen blijven bestaan of als de duur waarvoor uw toepassing zich voordoet de fout groter is dan 60 seconden of als er meerdere exemplaren van de fout in een bepaalde dag worden weer gegeven, moet u een Azure-ondersteunings aanvraag indienen door **ondersteuning** voor Azure in te scha kelen [ Ondersteunings](https://azure.microsoft.com/support/options) site.
+4. Als er verbindings problemen blijven bestaan of als de duur waarvoor uw toepassing de fout ondervindt, groter is dan 60 seconden of als er meerdere exemplaren van de fout in een bepaalde dag worden weer gegeven, kunt u een Azure-ondersteunings aanvraag indienen door **ondersteuning** te selecteren op de [ondersteunings](https://azure.microsoft.com/support/options) site van Azure.
 
 ## <a name="troubleshoot-persistent-errors"></a>Problemen met persistente fouten oplossen
 
 Als de toepassing permanent geen verbinding kan maken met Azure Database for MariaDB, duidt dit meestal op een probleem met een van de volgende:
 
-* Firewallconfiguratie: De Azure Database for MariaDB-server of firewall aan de client zijde blokkeert verbindingen.
-* Herconfiguratie van het netwerk aan de client zijde: Er is een nieuw IP-adres of een proxy server toegevoegd.
-* Gebruikers fout: Het is bijvoorbeeld mogelijk dat u een type verbindings parameter hebt opgegeven, zoals de server naam in de connection string of een ontbrekend *\@servername* achtervoegsel in de gebruikers naam.
+* Firewall configuratie: de Azure Database for MariaDB server of firewall van de client blokkeert verbindingen.
+* Herconfiguratie van het netwerk aan de client zijde: er is een nieuw IP-adres of een proxy server toegevoegd.
+* Gebruikers fout: u hebt bijvoorbeeld mogelijk een type verbindings parameter, zoals de server naam in de connection string of een ontbrekend *\@servername* in de gebruikers naam.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Stappen voor het oplossen van problemen met de permanente verbinding
 

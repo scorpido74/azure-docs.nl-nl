@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/12/2019
+ms.date: 12/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 06ebe8ed22453289fa02c238d9b2e6ef13191f2a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 912fd6bde4d00cca304a1506465a524cda947a07
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888553"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769843"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Snelstartgids: Azure NetApp Files instellen en een NFS-volume maken 
 
@@ -257,9 +257,6 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
     * Selecteer de NFS-versie (**NFSv3** of **nfsv 4.1**) voor het volume.  
       Zie [overwegingen](azure-netapp-files-create-volumes.md#considerations) en [Best Practice](azure-netapp-files-create-volumes.md#best-practice) over NFS-versies. 
       
-> [!IMPORTANT] 
-> Voor toegang tot de functie NFSv 4.1 is white list vereist.  Als u White List wilt aanvragen, dient u een aanvraag in bij <anffeedback@microsoft.com>. 
-
   ![NFS-protocol voor Quick Start opgeven](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. Klik op **Controleren + maken**.

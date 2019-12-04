@@ -1,29 +1,30 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 752c43604349a2361a8f5b26cd6d0bce7b516bc0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: a7290e46a0c5e228689dd1f1a0dc7f9a1182ad60
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176296"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789640"
 ---
-### <a name="prerequisites"></a>Vereisten
-* Een [MailChimp](https://www.MailChimp.com/) account 
+## <a name="prerequisites"></a>Vereisten
 
-Voordat u uw MailChimp-account in een logische app gebruiken kunt, verleent u de logische app verbinding maken met uw MailChimp-account. Gelukkig kunt u dit eenvoudig vanuit doen binnen uw logische app in de Azure Portal. 
+* Een [MailChimp](https://www.MailChimp.com/) -account 
 
-Hier volgen de stappen voor het autoriseren van uw logische app verbinding maken met uw MailChimp-account:
+Voordat u uw MailChimp-account in een logische app kunt gebruiken, moet u de logische app machtigen om verbinding te maken met uw MailChimp-account. Gelukkig kunt u dit eenvoudig doen vanuit uw logische app in azure Portal. 
 
-1. Voor het maken van een verbinding met MailChimp, in de Logic app designer selecteert **beheerde API's van Microsoft weergeven** Voer in de vervolgkeuzelijst *MailChimp* in het zoekvak in. Selecteer de trigger of actie wilt u zult gebruiken:  
-   ![MailChimp-stap 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)
-2. Als u alle verbindingen met MailChimp voordat u dit nog niet hebt gemaakt, zult u wordt gevraagd uw MailChimp-referenties op te geven. Deze referenties worden gebruikt voor het autoriseren van uw logische app verbinding maken met en toegang tot gegevens van uw MailChimp-account:  
-   ![MailChimp-stap 2](./media/connectors-create-api-mailchimp/mailchimp-2.png)
-3. Geef uw MailChimp-gebruikersnaam en wachtwoord om uw logische app te autoriseren:  
-   ![MailChimp-stap 3](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
-4. U ziet dat de verbinding is gemaakt en u bent nu vrij om door te gaan met de overige stappen in uw logische app:  
-   ![MailChimp-stap 4](./media/connectors-create-api-mailchimp/mailchimp-4.png)
+Hier volgen de stappen om uw logische app te autoriseren om verbinding te maken met uw MailChimp-account:
+
+1. Als u een verbinding met MailChimp wilt maken, selecteert u in de ontwerp functie voor logische apps de optie **micro soft Managed Api's weer geven** in de vervolg keuzelijst en voert u vervolgens *MailChimp* in het zoekvak in. Selecteer de trigger of actie die u wilt gebruiken:  
+   ![MailChimp stap 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)
+2. Als u nog geen verbindingen met MailChimp hebt gemaakt, wordt u gevraagd om uw MailChimp-referenties op te geven. Deze referenties worden gebruikt om uw logische app te autoriseren om verbinding te maken met en om toegang te krijgen tot de gegevens van uw MailChimp-account:  
+   ![MailChimp stap 2](./media/connectors-create-api-mailchimp/mailchimp-2.png)
+3. Geef uw MailChimp-gebruikers naam en-wacht woord op om uw logische app te autoriseren:  
+   ![MailChimp stap 3](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
+4. U ziet dat de verbinding is gemaakt en u kunt nu door gaan met de andere stappen in uw logische app:  
+   ![MailChimp stap 4](./media/connectors-create-api-mailchimp/mailchimp-4.png)
 

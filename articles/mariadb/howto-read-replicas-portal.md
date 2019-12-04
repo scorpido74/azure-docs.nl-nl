@@ -1,17 +1,17 @@
 ---
-title: Lees replica's maken en beheren in Azure Database for MariaDB
+title: Lees replica's beheren-Azure Portal-Azure Database for MariaDB
 description: In dit artikel wordt beschreven hoe u in Azure Database for MariaDB Lees replica's instelt en beheert met behulp van de portal
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: cceb1814089436efe4d4f9352f40f24d6eae790d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 12/02/2019
+ms.openlocfilehash: 7e290e6d773485b84ef42c7a79abf084e3b0da9f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123601"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765933"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van de Azure Portal
 
@@ -22,15 +22,15 @@ In dit artikel leert u hoe u in de Azure Database for MariaDB-service Lees repli
 - Een [Azure database for MariaDB-server](quickstart-create-mariadb-server-database-using-azure-portal.md) die wordt gebruikt als de hoofd server.
 
 > [!IMPORTANT]
-> De functie voor het lezen van replica's is alleen beschikbaar voor Azure Database for MariaDB-servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Controleer of de hoofd-server in een van deze Prijscategorieën.
+> De functie voor het lezen van replica's is alleen beschikbaar voor Azure Database for MariaDB-servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de hoofd server zich in een van deze prijs categorieën bevindt.
 
-## <a name="create-a-read-replica"></a>Maken van een replica lezen
+## <a name="create-a-read-replica"></a>Een lees replica maken
 
 Een lees replica-server kan worden gemaakt met behulp van de volgende stappen:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
-2. Selecteer de bestaande Azure Database for MariaDB-server die u wilt gebruiken als een Master. Deze actie opent u de **overzicht** pagina.
+2. Selecteer de bestaande Azure Database for MariaDB-server die u wilt gebruiken als een Master. Met deze actie wordt de pagina **overzicht** geopend.
 
 3. Selecteer **replicatie** in het menu onder **instellingen**.
 
@@ -52,16 +52,16 @@ Een lees replica-server kan worden gemaakt met behulp van de volgende stappen:
 7. Selecteer **OK** om te bevestigen dat u de replica wilt maken.
 
 > [!NOTE]
-> Lezen-replica's worden gemaakt met de configuratie van de dezelfde server als de master. De configuratie van de replica-server kan worden gewijzigd nadat deze is gemaakt. Het wordt aanbevolen dat de configuratie van de replica-server moet worden opgeslagen op de waarden gelijk zijn aan of groter zijn dan het model om te controleren of dat de replica kan houden met de master.
+> Lees replica's worden gemaakt met dezelfde server configuratie als de Master. De configuratie van de replica server kan worden gewijzigd nadat deze is gemaakt. Het is raadzaam om de configuratie van de replica server te behouden in gelijke of hogere waarden dan de Master om ervoor te zorgen dat de replica kan blijven werken met de Master.
 
 Zodra de replica server is gemaakt, kan deze worden weer gegeven op de Blade **replicatie** .
 
    ![Azure Database for MariaDB-lijst replica's](./media/howto-read-replica-portal/list-replica.png)
 
-## <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica-server stoppen
+## <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
 
 > [!IMPORTANT]
-> Replicatie naar een server stoppen is niet ongedaan worden gemaakt. Wanneer u replicatie tussen een model en de replica is gestopt, kunnen deze kan niet ongedaan worden gemaakt. De replica-server vervolgens wordt een zelfstandige server en biedt nu ondersteuning voor zowel lees- en schrijfbewerkingen. Deze server kan niet opnieuw worden gemaakt in een replica.
+> Het stoppen van de replicatie naar een server is onomkeerbaar. Zodra de replicatie tussen een hoofd-en replica is gestopt, kan deze niet meer ongedaan worden gemaakt. De replica-server wordt vervolgens een zelfstandige server en ondersteunt nu lezen en schrijven. Deze server kan niet opnieuw in een replica worden gemaakt.
 
 Voer de volgende stappen uit om de replicatie tussen een Master en een replica server te stoppen met de Azure Portal:
 
@@ -81,7 +81,7 @@ Voer de volgende stappen uit om de replicatie tussen een Master en een replica s
 
    ![Azure Database for MariaDB-replicatie stoppen bevestigen](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
-## <a name="delete-a-replica-server"></a>Een replica-server verwijderen
+## <a name="delete-a-replica-server"></a>Een replica server verwijderen
 
 Voer de volgende stappen uit om een lees replica-server te verwijderen uit de Azure Portal:
 
@@ -101,10 +101,10 @@ Voer de volgende stappen uit om een lees replica-server te verwijderen uit de Az
 
    ![Azure Database for MariaDB-replica verwijderen bevestigen](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
-## <a name="delete-a-master-server"></a>Een hoofd-server verwijderen
+## <a name="delete-a-master-server"></a>Een hoofd server verwijderen
 
 > [!IMPORTANT]
-> Verwijderen van een hoofd-server-replicatie naar alle replicaservers stopt en Hiermee verwijdert u de hoofd-server zelf. Replica-servers worden zelfstandige servers die bieden nu ondersteuning voor zowel lees- en schrijfbewerkingen.
+> Als u een hoofdserver verwijdert, wordt de replicatie naar alle replicaservers gestopt en wordt de hoofdserver zelf verwijderd. Replicaservers worden zelfstandige servers die nu zowel lees-als schrijfbewerkingen ondersteunen.
 
 Als u een master-server wilt verwijderen uit de Azure Portal, gebruikt u de volgende stappen:
 
@@ -138,4 +138,4 @@ Als u een master-server wilt verwijderen uit de Azure Portal, gebruikt u de volg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [lezen replica's](concepts-read-replicas.md)
+- Meer informatie over het [lezen van replica's](concepts-read-replicas.md)

@@ -1,17 +1,17 @@
 ---
-title: Server logboeken voor Azure Database for MySQL
+title: Langzame query logboeken-Azure Database for MySQL
 description: Beschrijft de logboeken voor trage query's die beschikbaar zijn in Azure Database for MySQL en de beschik bare para meters voor het inschakelen van verschillende registratie niveaus.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 90f3e80c92cd4409a77d4661462ae027c535eaf7
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: cd0d09e4d46747b7f3f8e6fb714dd711beef9484
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434296"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770833"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Trage query Logboeken in Azure Database for MySQL
 In Azure Database for MySQL is het langzame query logboek beschikbaar voor gebruikers. Toegang tot het transactie logboek wordt niet ondersteund. Het logboek met trage query's kan worden gebruikt om prestatie knelpunten voor het oplossen van problemen te identificeren.
@@ -23,7 +23,7 @@ U kunt Azure Database for MySQL langzame query logboeken weer geven en downloade
 
 Selecteer uw Azure Database for MySQL server in het Azure Portal. Selecteer de pagina **Server logboeken** onder de sectie **bewaking** .
 
-Zie [Server logboeken configureren en openen met Azure cli](howto-configure-server-logs-in-cli.md)voor meer informatie over Azure cli.
+Zie voor meer informatie over Azure CLI [langzame query logboeken configureren en openen met behulp van Azure cli](howto-configure-server-logs-in-cli.md).
 
 ## <a name="log-retention"></a>Bewaar periode logboek
 Logboeken zijn Maxi maal zeven dagen beschikbaar vanaf het maken ervan. Als de totale grootte van de beschik bare logboeken groter is dan 7 GB, worden de oudste bestanden verwijderd totdat er ruimte beschikbaar is. 
@@ -31,17 +31,17 @@ Logboeken zijn Maxi maal zeven dagen beschikbaar vanaf het maken ervan. Als de t
 Logboeken worden elke 24 uur of 7 GB gedraaid, afhankelijk van wat het eerste komt.
 
 ## <a name="configure-slow-query-logging"></a>Langzame query logboek registratie configureren 
-Het logboek voor langzame query's is standaard uitgeschakeld. Als u deze wilt inschakelen, stelt u slow_query_log in op ON.
+Het logboek voor langzame query's is standaard uitgeschakeld. Als u deze functie wilt inschakelen, stelt u slow_query_log in op aan.
 
 Andere para meters die u kunt aanpassen zijn onder andere:
 
 - **long_query_time**: als een query langer duurt dan long_query_time (in seconden) dat de query wordt geregistreerd. De standaard waarde is 10 seconden.
-- **log_slow_admin_statements**: als het gaat om beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies die naar de slow_query_log zijn geschreven.
-- **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd in de slow_query_log
-- **log_throttle_queries_not_using_indexes**: deze para meter beperkt het aantal niet-index query's dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht wanneer log_queries_not_using_indexes is ingesteld op ON.
+- **log_slow_admin_statements**: als u beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies bevat die naar de slow_query_log zijn geschreven.
+- **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd in het slow_query_log
+- **log_throttle_queries_not_using_indexes**: deze para meter beperkt het aantal niet-index query's dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht als log_queries_not_using_indexes is ingesteld op aan.
 
 > [!Note]
-> Voor `sql_text` wordt het logboek afgekapt als dit 2048 tekens overschrijdt.
+> Voor `sql_text`wordt het logboek afgekapt als dit 2048 tekens overschrijdt.
 
 Zie de documentatie van het MySQL- [logboek voor langzame query's](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) voor volledige beschrijvingen van de para meters van de langzame query-Logboeken.
 

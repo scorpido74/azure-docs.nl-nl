@@ -1,24 +1,21 @@
 ---
-title: Definities voor logische apps maken, bewerken of uitbreiden-Azure Logic Apps
+title: Definities voor logische apps maken, bewerken of uitbreiden
 description: JSON-definities voor logische apps schrijven, bewerken en uitbreiden in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 03203a5fdb6d61ed95e96581a7e4a979c911cd02
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: bffbc29322a57d6bb9b8497299add5dbb0478d2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680028"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792587"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>JSON maken, bewerken of uitbreiden voor definities van logische apps in Azure Logic Apps
 
-Wanneer u oplossingen voor bedrijfs integratie met automatische werk stromen in [Azure Logic apps](../logic-apps/logic-apps-overview.md)maakt, gebruiken de onderliggende definities van logische apps eenvoudige en declaratieve JavaScript object NOTATION (JSON) samen met de [werk stroom definitie taal (WDL) schema](../logic-apps/logic-apps-workflow-definition-language.md) voor de beschrijving en validatie. Met deze indelingen kunnen definities van logische apps eenvoudiger worden gelezen en begrepen zonder dat u iets hoeft te weten over code. Als u het maken en implementeren van Logic Apps wilt automatiseren, kunt u logische app-definities als [Azure-resources](../azure-resource-manager/resource-group-overview.md) in [Azure Resource Manager sjablonen](../azure-resource-manager/template-deployment-overview.md)toevoegen. Als u logische Apps wilt maken, beheren en implementeren, kunt u vervolgens [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)of de [Azure Logic apps rest-api's](https://docs.microsoft.com/rest/api/logic/)gebruiken.
+Wanneer u oplossingen voor bedrijfs integratie met geautomatiseerde werk stromen in [Azure Logic apps](../logic-apps/logic-apps-overview.md)maakt, gebruiken de onderliggende definities van logische apps eenvoudige en declaratieve JavaScript object NOTATION (JSON) samen met het schema voor de [werk stroom definitie taal (WDL)](../logic-apps/logic-apps-workflow-definition-language.md) voor de beschrijving en validatie. Met deze indelingen kunnen definities van logische apps eenvoudiger worden gelezen en begrepen zonder dat u iets hoeft te weten over code. Als u het maken en implementeren van Logic Apps wilt automatiseren, kunt u logische app-definities als [Azure-resources](../azure-resource-manager/resource-group-overview.md) in [Azure Resource Manager sjablonen](../azure-resource-manager/template-deployment-overview.md)toevoegen. Als u logische Apps wilt maken, beheren en implementeren, kunt u vervolgens [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)of de [Azure Logic apps rest-api's](https://docs.microsoft.com/rest/api/logic/)gebruiken.
 
 Als u de definities van logische apps in JSON wilt gebruiken, opent u de code weergave-editor bij het werken in de Azure Portal of in Visual Studio of kopieert u de definitie naar een gewenste editor. Als u geen ervaring hebt met Logic apps, lees dan [hoe u uw eerste logische app maakt](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -61,7 +58,7 @@ In Visual Studio kunt u logische apps openen die zijn gemaakt en geïmplementeer
 
 ## <a name="parameters"></a>Parameters
 
-De levens cyclus van de implementatie heeft doorgaans verschillende omgevingen voor ontwikkeling, testen, faseren en productie. Wanneer u waarden hebt die u opnieuw wilt gebruiken in uw logische app zonder hardcoding of die variëren afhankelijk van uw implementatie behoeften, kunt u een [Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-overview.md) maken voor uw werk stroom definitie, zodat u ook de logische app kunt automatiseren inhoudsdistributiepad. 
+De levens cyclus van de implementatie heeft doorgaans verschillende omgevingen voor ontwikkeling, testen, faseren en productie. Wanneer u waarden hebt die u opnieuw wilt gebruiken in uw logische app zonder hardcoding of die variëren afhankelijk van uw implementatie behoeften, kunt u een [Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-overview.md) maken voor uw werk stroom definitie, zodat u ook de implementatie van logische apps kunt automatiseren. 
 
 Volg deze algemene stappen voor het *para meters*of definiëren en gebruiken van para meters voor deze waarden. U kunt vervolgens de waarden opgeven in een afzonderlijk parameter bestand dat deze waarden doorgeeft aan uw sjabloon. Op die manier kunt u deze waarden gemakkelijker wijzigen zonder dat u uw logische app hoeft bij te werken en opnieuw te implementeren. Zie [overzicht: de implementatie voor Logic apps automatiseren met Azure Resource Manager sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)voor meer informatie.
 
@@ -122,13 +119,13 @@ In deze stappen wordt beschreven hoe dit voor beeld deze teken reeks verwerkt, v
 
 1. Haal het [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) op voor de naam van het bedrijf, zodat u het totale aantal tekens krijgt.
 
-2. Als u een kortere teken reeks wilt krijgen, moet u `5` aftrekken.
+2. Als u een kortere teken reeks wilt krijgen, moet u `5`aftrekken.
 
-3. Krijg nu een [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md). Begin bij index `5` en ga naar de rest van de teken reeks.
+3. Krijg nu een [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md). Begin bij index `5`en ga naar de rest van de teken reeks.
 
 4. Deze subtekenreeks converteren naar een [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) teken reeks.
 
-5. [@No__t_1](../logic-apps/logic-apps-workflow-definition-language.md) nu alle `+` tekens met `-` tekens.
+5. [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) nu alle `+` tekens met `-` tekens.
 
 6. Ten slotte [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) alle `/` tekens met `_` tekens.
 
@@ -218,7 +215,7 @@ Als u gegevens wilt ophalen uit een gegevens bron die geen systeem eigen onderst
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. Pak de `startTime` uit `order` actie uit.
+1. Pak de `startTime`uit `order` actie uit.
 2. De huidige tijd ophalen met `utcNow()`.
 3. Eén seconde aftrekken:
 

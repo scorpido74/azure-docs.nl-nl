@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Azure Database for MySQL via C#
+title: Verbinding maken C# met behulp van-Azure database for MySQL
 description: Deze snelstartgids bevat een voorbeeld van C#-code (.NET) dat u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit een Azure Database voor MySQL.
 author: ajlam
 ms.author: andrela
@@ -7,15 +7,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: e0536440ea38f127a34639ffb40e5015154ec550
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: 2f740d21c7fb59a05fa1df4a0b3b1385cf2f0831
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60526211"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770778"
 ---
-# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>Azure Database for MySQL: .NET (C#) gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>Azure Database voor MySQL: .NET (C#) gebruiken om verbinding te maken en gegevens op te vragen
 In deze quickstart ziet u hoe u met behulp van een C#-toepassing verbinding maakt met Azure Database voor MySQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met C#, maar geen ervaring hebt met het werken met Azure Database voor MySQL.
 
 ## <a name="prerequisites"></a>Vereisten

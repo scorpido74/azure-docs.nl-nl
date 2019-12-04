@@ -1,20 +1,19 @@
 ---
-title: Apps verplaatsen van BizTalk Services naar Azure Logic Apps | Microsoft Docs
+title: Apps verplaatsen van BizTalk Services naar Azure Logic Apps
 description: Migreren van Azure BizTalk Services (MABS) naar Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: jonfancey
 ms.author: jonfan
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: dfc0aa4fa7c70ae91f25f97671b15dacfe991594
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 97b498091451b0bf39741ed4340b8e02517c5447
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273188"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791887"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>Migreren van BizTalk Services naar Azure Logic Apps
 
@@ -33,10 +32,10 @@ BizTalk Services bestaat uit twee subservices:
 
 Deze tabel wijst BizTalk Services mogelijkheden toe aan Logic Apps.
 
-| BizTalk Services   | Logic Apps            | Doel                      |
+| BizTalk Services   | Logische apps            | Doel                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Connector          | Connector             | Gegevens verzenden en ontvangen   |
-| Bridge             | Logische apps             | Pijplijn processor           |
+| Bridge             | Logische app             | Pijplijn processor           |
 | Fase valideren     | XML-validatie actie | Een XML-document valideren op basis van een schema | 
 | Verrijk fase       | Gegevens tokens           | Eigenschappen promo veren naar berichten of beslissingen voor route ring |
 | Transformatie fase    | Trans formatie actie      | XML-berichten van de ene indeling naar de andere converteren |
@@ -78,7 +77,7 @@ Daarnaast voegt een XML eenrichtings brug de fase ring en versleutelen aan het b
 
 In BizTalk Services kunt u verschillende typen XML-berichten ontvangen en het overeenkomende schema voor het ontvangen bericht bepalen. Dit werk wordt uitgevoerd in de fase *bericht typen* van de pipeline voor de verwerking van ontvangen. In de dedecodeer fase wordt vervolgens het gedetecteerde bericht type gebruikt om het bericht te decoderen met behulp van het meegeleverde schema. Als het schema een plat bestands schema is, converteert deze fase het binnenkomende platte bestand naar XML. 
 
-Logic Apps biedt vergelijk bare mogelijkheden. U ontvangt een plat bestand via verschillende protocollen met behulp van de verschillende connector triggers (bestands systeem, FTP, HTTP, enzovoort) en u gebruikt de actie voor het decoderen van [platte bestanden](../logic-apps/logic-apps-enterprise-integration-flatfile.md) om de binnenkomende gegevens te converteren naar XML. U kunt uw bestaande platte bestands schema's rechtstreeks verplaatsen naar Logic Apps zonder wijzigingen, en vervolgens schema's uploaden naar uw integratie account.
+Logic Apps biedt vergelijk bare mogelijkheden. U ontvangt een plat bestand via verschillende protocollen met behulp van de verschillende connector triggers (bestands systeem, FTP, HTTP, enzovoort) en u gebruikt de actie voor het [decoderen van platte bestanden](../logic-apps/logic-apps-enterprise-integration-flatfile.md) om de binnenkomende gegevens te converteren naar XML. U kunt uw bestaande platte bestands schema's rechtstreeks verplaatsen naar Logic Apps zonder wijzigingen, en vervolgens schema's uploaden naar uw integratie account.
 
 ### <a name="validation"></a>Validatie
 
@@ -100,7 +99,7 @@ Logic Apps biedt geavanceerde logica mogelijkheden plus geavanceerde controle st
 
 ### <a name="enrich"></a>Verrijken
 
-Bij BizTalk Services verwerking voegt het verrijkte stadium eigenschappen toe aan de bericht context die is gekoppeld aan de ontvangen gegevens. U kunt bijvoorbeeld een eigenschap promoten die moet worden gebruikt voor route ring vanuit een zoek opdracht in de data base of door een waarde te extra heren met behulp van een XPath-expressie. Logic Apps biedt toegang tot alle contextuele gegevens uitvoer van de voor gaande acties, waardoor het eenvoudig is om hetzelfde gedrag te repliceren. Als u bijvoorbeeld de `Get Row` actie SQL-verbinding gebruikt, haalt u gegevens op uit een SQL Server-Data Base en gebruikt u de gegevens in een beslissings actie voor route ring. Daarnaast zijn eigenschappen van binnenkomende Service Bus berichten in de wachtrij door een trigger adresseerbaar, evenals XPath met behulp van de XPath-expressie voor de definitie taal van de werk stroom.
+Bij BizTalk Services verwerking voegt het verrijkte stadium eigenschappen toe aan de bericht context die is gekoppeld aan de ontvangen gegevens. U kunt bijvoorbeeld een eigenschap promoten die moet worden gebruikt voor route ring vanuit een zoek opdracht in de data base of door een waarde te extra heren met behulp van een XPath-expressie. Logic Apps biedt toegang tot alle contextuele gegevens uitvoer van de voor gaande acties, waardoor het eenvoudig is om hetzelfde gedrag te repliceren. U kunt bijvoorbeeld de `Get Row` SQL-verbindings actie gebruiken om gegevens uit een SQL Server-Data Base te retour neren en de gegevens in een beslissings actie voor route ring te gebruiken. Daarnaast zijn eigenschappen van binnenkomende Service Bus berichten in de wachtrij door een trigger adresseerbaar, evenals XPath met behulp van de XPath-expressie voor de definitie taal van de werk stroom.
 
 ### <a name="run-custom-code"></a>Aangepaste code uitvoeren
 
@@ -117,7 +116,7 @@ In Logic Apps krijgt u deze functionaliteit via de [Enterprise Integration Pack 
 
 * AS2-code ring
 * AS2 decoderen
-* X12 Encode
+* X12-code ring
 * X12 decoderen
 * EDIFACT-code ring
 * EDIFACT decoderen

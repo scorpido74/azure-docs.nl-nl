@@ -1,229 +1,226 @@
 ---
-title: XML transformeren met XSLT-toewijzingen - Azure Logic Apps | Microsoft Docs
-description: XSLT-toewijzingen voor het transformeren van XML-code in Azure Logic Apps met Enterprise Integration Pack toevoegen
+title: XML transformeren met XSLT-kaarten
+description: XSLT-kaarten toevoegen aan het transformeren van XML in Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
-manager: carmonm
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: d0d40ca0ae6ccd4f709d7d94d52764d4affcc215
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e510cc4073a4b0075cdaeb80091657dbee93fcb
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244702"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792485"
 ---
-# <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML transformeren met kaarten in Azure Logic Apps met Enterprise Integration Pack
+# <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML transformeren met Maps in Azure Logic Apps met Enterprise Integration Pack
 
-Uw logische app kunt om over te dragen XML-gegevens tussen notaties voor scenario's enterprise integration in Azure Logic Apps, kaarten, of meer specifiek, uitbreidbare opmaakmodel Language-transformaties (XSLT) kaarten gebruiken. Een kaart is een XML-document dat wordt beschreven hoe u gegevens uit een XML-document converteren naar een andere indeling. 
+Als u XML-gegevens wilt overdragen tussen indelingen voor scenario's voor bedrijfs integratie in Azure Logic Apps, kunt u met uw logische app gebruikmaken van kaarten of meer specifieke XSLT-kaarten (Extensible Style Sheet Language Transformations). Een kaart is een XML-document dat beschrijft hoe gegevens van een XML-document naar een andere indeling moeten worden geconverteerd. 
 
-Stel bijvoorbeeld dat u B2B orders of facturen regelmatig van een klant die gebruikmaakt van de datumnotatie YYYMMDD ontvangt. Echter, de datumnotatie MMDDYYY maakt gebruik van uw organisatie. U kunt definiëren en gebruiken van een kaart waarop de datumnotatie YYYMMDD naar de indeling MMDDYYY voordat u de details van de volgorde of per factuur opslaat in uw klantendatabase activiteit transformeert.
+Stel bijvoorbeeld dat u regel matig B2B-orders of facturen ontvangt van een klant die de datum notatie YYYMMDD gebruikt. Uw organisatie gebruikt echter de datum notatie MMDDYYY. U kunt een kaart definiëren en gebruiken die de YYYMMDD datum notatie naar de MMDDYYY-indeling transformeert voordat u de order-of factuur details opslaat in uw data base met klant activiteiten.
 
-Zie voor beperkingen met betrekking tot integratieaccounts en artefacten, zoals kaarten, [limieten en configuratie-informatie voor Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
+Zie [limieten en configuratie-informatie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)voor limieten met betrekking tot integratie accounts en-artefacten, zoals Maps.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [integratieaccount](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) waar u uw maps en andere artefacten voor bedrijfsintegratie en oplossingen, business-to-business (B2B) opslaan.
+* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) waar u uw kaarten en andere artefacten opslaat voor Enter prise Integration en Business-to-Business (B2B)-oplossingen.
 
-* Als uw kaart verwijst naar een externe assembly, u moet uploaden *zowel de assembly en de kaart* aan uw integratie-account. Zorg ervoor dat u [ *eerst uw assembly uploaden*](#add-assembly), en upload de toewijzing die verwijst naar de assembly.
+* Als uw kaart verwijst naar een externe assembly, moet u *zowel de assembly als de kaart* uploaden naar uw integratie account. Zorg ervoor dat u [*eerst uw assembly uploadt*](#add-assembly)en upload vervolgens de kaart die verwijst naar de assembly.
 
-  Als uw assembly 2 MB is of kleiner, u uw assembly aan uw integratieaccount toevoegen kunt *rechtstreeks* vanuit Azure portal. Echter, als uw assembly of de kaart groter dan 2 MB, maar niet groter zijn dan is de [maximale grootte voor assembly's of kaarten](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), beschikt u over deze opties:
+  Als uw assembly 2 MB of kleiner is, kunt u de assembly *rechtstreeks* vanuit de Azure portal toevoegen aan uw integratie account. Als uw assembly of toewijzing echter groter is dan 2 MB maar niet groter is dan de [maximale grootte voor verzamelingen of kaarten](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), hebt u de volgende opties:
 
-  * Voor assembly's moet u een Azure blob-container waarin u uw assembly en de locatie van de container kunt uploaden. Op die manier kunt u opgeven die locatie later wanneer u de assembly aan uw integratie-account toevoegen. 
-  Voor deze taak moet u deze items:
+  * Voor assembly's hebt u een Azure Blob-container nodig waar u de assembly en de locatie van die container kunt uploaden. Op die manier kunt u deze locatie later opgeven wanneer u de assembly toevoegt aan uw integratie account. 
+  Voor deze taak hebt u de volgende items nodig:
 
-    | Item | Description |
+    | Item | Beschrijving |
     |------|-------------|
-    | [Azure Storage-account](../storage/common/storage-account-overview.md) | In dit account door een Azure blob-container te maken voor uw assembly. Informatie over [over het maken van een storage-account](../storage/common/storage-quickstart-create-account.md). |
-    | Blob container | In deze container, kunt u uw assembly uploaden. U moet ook de locatie van de container wanneer u de assembly aan uw integratie-account toevoegen. Meer informatie over het [maken van een blob-container](../storage/blobs/storage-quickstart-blobs-portal.md). |
-    | [Azure-opslagverkenner](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Dit hulpprogramma kunt u meer eenvoudig het beheer van opslagaccounts en blob-containers. Gebruik van Storage Explorer, ofwel [downloaden en installeren van Azure Storage Explorer](https://www.storageexplorer.com/). Koppel vervolgens Storage Explorer aan uw storage-account met de volgende stappen in [aan de slag met Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md). Raadpleeg voor meer informatie [Snelstart: Een blob maken in objectopslag met Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Of, in de Azure-portal, zoek en selecteer uw storage-account. Selecteer in het menu van uw opslagaccount, **Opslagverkenner**. |
+    | [Azure Storage-account](../storage/common/storage-account-overview.md) | Maak in dit account een Azure Blob-container voor de assembly. Meer informatie [over het maken van een opslag account](../storage/common/storage-quickstart-create-account.md). |
+    | Blobcontainer | In deze container kunt u uw assembly uploaden. U hebt ook de locatie van deze container nodig wanneer u de assembly toevoegt aan uw integratie account. Meer informatie over het [maken van een BLOB-container](../storage/blobs/storage-quickstart-blobs-portal.md). |
+    | [Azure-opslagverkenner](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Met dit hulp programma kunt u opslag accounts en BLOB-containers eenvoudiger beheren. Als u Storage Explorer wilt gebruiken, moet u [Azure Storage Explorer downloaden en installeren](https://www.storageexplorer.com/). Vervolgens verbindt u Storage Explorer met uw opslag account door de stappen in aan de [slag met Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)te volgen. Zie [Quick Start: een BLOB maken in object opslag met Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)voor meer informatie. <p>U kunt ook uw opslag account zoeken en selecteren in het Azure Portal. Selecteer in het menu van uw opslag account **Storage Explorer**. |
     |||
 
-  * Voor kaarten, kunt u momenteel groter toewijzingen toevoegen met behulp van de [REST API van Azure Logic Apps - kaarten](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
+  * Voor Maps kunt u op dit moment grotere kaarten toevoegen met behulp van de [Azure Logic apps-rest API-kaarten](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
 
-U hoeft geen een logische app bij het maken en toevoegen van maps. Voor het gebruik van een kaart, uw logische app moet echter koppelen aan een integratieaccount waar u die zijn toegewezen opslaat. Informatie over [logische apps koppelen aan integratieaccounts](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Als u een logische app nog niet hebt, krijgt u informatie [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+U hebt geen logische app nodig bij het maken en toevoegen van Maps. Voor het gebruik van een kaart moet uw logische app echter een koppeling hebben met een integratie account waar u die kaart opslaat. Meer informatie [over het koppelen van Logic apps aan integratie accounts](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Als u nog geen logische app hebt, leert u [hoe u logische apps kunt maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="add-assembly"></a>
 
-## <a name="add-referenced-assemblies"></a>Waarnaar wordt verwezen, assembly's toevoegen
+## <a name="add-referenced-assemblies"></a>Assembly's waarnaar wordt verwezen, toevoegen
 
 1. Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Portal](https://portal.azure.com).
 
-1. Als u wilt zoeken en openen van uw integratie-account, op de Azure-hoofdmenu in, selecteer **alle services**. 
-   Voer in het zoekvak ' integratieaccount'. 
-   Selecteer **integratieaccounts**.
+1. Als u uw integratie account wilt zoeken en openen, selecteert u in het hoofd menu van Azure **alle services**. 
+   Voer in het zoekvak ' integratie account ' in. 
+   Selecteer **integratie accounts**.
 
-   ![Integratie-account zoeken](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
+   ![Integratie account zoeken](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
-1. Selecteer het integratieaccount waar u wilt toevoegen de assembly, bijvoorbeeld:
+1. Selecteer het integratie account waaraan u de assembly wilt toevoegen, bijvoorbeeld:
 
-   ![Integratie-account selecteren](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
+   ![Integratie account selecteren](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Op uw integratie-account **overzicht** pagina onder **onderdelen**, selecteer de **assembly's** tegel.
+1. Selecteer op de pagina **overzicht** van uw integratie account onder **onderdelen**de tegel **assembly's** .
 
-   ![Selecteer "Assembly's"](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
+   ![Selecteer Assembly's](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
 
-1. Na de **assembly's** pagina wordt geopend, kiest u **toevoegen**.
+1. Nadat de pagina **assembly's** is geopend, kiest u **toevoegen**.
 
-   ![Kies 'Toevoegen'](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![Kies toevoegen](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
-Op basis van de grootte van de assemblybestand, volgt u de stappen voor het uploaden van een assembly die ofwel [maximaal 2 MB](#smaller-assembly) of [meer dan 2 MB, maar alleen tot 8 MB](#larger-assembly).
-Zie voor de limieten voor assembly hoeveelheden in de integratieaccounts, [limieten en configuratie voor Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
+Op basis van de grootte van uw assembly-bestand, volgt u de stappen voor het uploaden van een assembly van [Maxi maal 2 MB](#smaller-assembly) of [meer dan 2 MB, maar Maxi maal 8 MB](#larger-assembly).
+Zie [limieten en configuratie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)voor limieten voor assembly aantallen in integratie accounts.
 
 > [!NOTE]
-> Als u uw assembly wijzigt, moet u ook uw kaart bijwerken, al dan niet de kaart gewijzigd is.
+> Als u de assembly wijzigt, moet u ook uw kaart bijwerken, ongeacht of de kaart wijzigingen bevat.
 
 <a name="smaller-assembly"></a>
 
-### <a name="add-assemblies-up-to-2-mb"></a>Assembly's toevoegen tot 2 MB
+### <a name="add-assemblies-up-to-2-mb"></a>Assembly's Maxi maal 2 MB toevoegen
 
-1. Onder **Assembly toevoegen**, voer een naam voor de assembly. Houd **klein bestand** geselecteerde. Naast de **Assembly** Kies het pictogram van de map. Zoek en selecteer de assembly die u, bijvoorbeeld uploadt:
+1. Voer onder **Assembly toevoegen**een naam in voor de assembly. **Klein bestand** selecteren. Klik naast het vak **Assembly** op het mappictogram. Zoek en selecteer de assembly die u wilt uploaden, bijvoorbeeld:
 
    ![Kleinere assembly uploaden](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
 
-   In de **assemblynaam** eigenschap, de bestandsnaam van de assembly wordt automatisch weergegeven nadat u de assembly hebt geselecteerd.
+   In de eigenschap **assembly naam** wordt de bestands naam van de assembly automatisch weer gegeven nadat u de assembly hebt geselecteerd.
 
 1. Wanneer u klaar bent, kiest u **OK**.
 
-   Nadat uw assemblybestand geüpload is, de assembly wordt weergegeven in de **assembly's** lijst.
+   Nadat het assembly-bestand is geüpload, wordt de assembly weer gegeven in de lijst met **assembly's** .
 
-   ![Lijst met geüploade assembly 's](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
+   ![Lijst met geüploade assembly's](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
 
-   Op uw integratie-account **overzicht** pagina onder **onderdelen**, wordt de **assembly's** tegel wordt nu het aantal geüploade assembly's, bijvoorbeeld:
+   Op de **overzichts** pagina van uw integratie account, onder **onderdelen**, bevat de tegel **assembly's** nu het aantal geüploade assembly's, bijvoorbeeld:
 
-   ![Geüploade assembly 's](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies.png)
+   ![Geüploade assembly's](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies.png)
 
 <a name="larger-assembly"></a>
 
 ### <a name="add-assemblies-more-than-2-mb"></a>Assembly's meer dan 2 MB toevoegen
 
-Om toe te voegen grotere assembly's, kunt u uw assembly uploaden naar een Azure blob-container in uw Azure storage-account. De stappen voor het toevoegen van assembly's verschillen op basis van of uw blob-container, openbare leestoegang heeft. Dus eerst controleren of uw blob-container openbare leestoegang heeft door de volgende stappen: [Openbaar toegangsniveau voor blob-container instellen](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+Als u grotere assembly's wilt toevoegen, kunt u uw assembly uploaden naar een Azure-Blob-container in uw Azure Storage-account. De stappen voor het toevoegen van assembly's variëren op basis van het feit of de BLOB-container open bare Lees toegang heeft. Controleer eerst of de BLOB-container open bare Lees toegang heeft door de volgende stappen uit te voeren: [openbaar toegangs niveau voor BLOB-container instellen](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
-#### <a name="check-container-access-level"></a>Niveau van de container toegang controleren
+#### <a name="check-container-access-level"></a>Toegangs niveau voor container controleren
 
-1. Open Azure Storage Explorer. Vouw in het Explorer-venster uit uw Azure-abonnement als nog niet is uitgevouwen.
+1. Open Azure Storage Explorer. In het venster Explorer breidt u uw Azure-abonnement uit als dat nog niet is gebeurd.
 
-1. Vouw **Opslagaccounts** > {*uw storage-account*} > **Blob-Containers**. Selecteer uw blob-container.
+1. Vouw **opslag accounts** uit > {*your-storage-account*} > **BLOB-containers**. Selecteer uw BLOB-container.
 
-1. Selecteer in het snelmenu van uw blobcontainer, **niveau openbare toegang instelt**.
+1. Selecteer in het snelmenu van de BLOB-container het optie **openbaar toegangs niveau instellen**.
 
-   * Als uw blob-container ten minste openbare toegang heeft, kiest u **annuleren**, en volg deze stappen verderop op deze pagina: [Uploaden naar containers met openbare toegang](#public-access-assemblies)
+   * Als uw BLOB-container ten minste open bare toegang heeft, kiest u **Annuleren**en volgt u deze stappen verderop op deze pagina: [uploaden naar containers met open bare toegang](#public-access-assemblies)
 
-     ![Openbare toegang](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+     ![Open bare toegang](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Als uw blob-container geen openbare toegang heeft, kiest u **annuleren**, en volg deze stappen verderop op deze pagina: [Uploaden naar containers zonder openbare toegang](#no-public-access-assemblies)
+   * Als uw BLOB-container geen open bare toegang heeft, kiest u **Annuleren**en volgt u deze stappen verderop op deze pagina: [uploaden naar containers zonder open bare toegang](#no-public-access-assemblies)
 
-     ![Er zijn geen openbare toegang](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
+     ![Geen open bare toegang](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
 <a name="public-access-assemblies"></a>
 
-#### <a name="upload-to-containers-with-public-access"></a>Uploaden naar containers met openbare toegang
+#### <a name="upload-to-containers-with-public-access"></a>Uploaden naar containers met open bare toegang
 
-1. De assembly uploaden naar uw opslagaccount. 
-   Kies in het rechter venster **uploaden**.
+1. Upload de assembly naar uw opslag account. 
+   Kies **uploaden**in het rechterdeel venster.
 
-1. Nadat u klaar bent met het uploaden, selecteert u de geüploade assembly. Kies op de werkbalk **kopie URL** zodat u de URL van de assembly kopiëren.
+1. Nadat u klaar bent met uploaden, selecteert u de geüploade assembly. Kies op de werk balk **URL kopiëren** zodat u de URL van de assembly kopieert.
 
-1. Ga terug naar de Azure-portal waar de **Assembly toevoegen** deelvenster is geopend. 
-   Voer een naam voor de assembly. 
-   Kies **groot bestand (groter dan 2 MB)** .
+1. Ga terug naar de Azure Portal waar het deel venster **Assembly toevoegen** is geopend. 
+   Voer een naam in voor de assembly. 
+   Kies een **groot bestand (groter dan 2 MB)** .
 
-   De **inhouds-URI** in het nu wordt weergegeven, in plaats van de **Assembly** vak.
+   Het vak **URI van inhoud** wordt nu weer gegeven in plaats van het vak voor de **Assembly** .
 
-1. In de **inhouds-URI** vak, plak de URL van de assembly. 
-   Voltooi uw assembly toe te voegen.
+1. Plak de URL van de assembly in het vak **URI van inhoud** . 
+   Toevoegen van de assembly volt ooien.
 
-Nadat de assembly geüpload is, het schema wordt weergegeven in de **assembly's** lijst.
-Op uw integratie-account **overzicht** pagina onder **onderdelen**, wordt de **assembly's** tegel toont nu het aantal geüploade assembly's.
+Nadat de assembly is geüpload, wordt het schema weer gegeven in de lijst met **assembly's** .
+Op de **overzichts** pagina van uw integratie account, onder **onderdelen**, bevat de tegel **assembly's** nu het aantal geüploade assembly's.
 
 <a name="no-public-access-assemblies"></a>
 
-#### <a name="upload-to-containers-without-public-access"></a>Uploaden naar containers zonder openbare toegang
+#### <a name="upload-to-containers-without-public-access"></a>Uploaden naar containers zonder open bare toegang
 
-1. De assembly uploaden naar uw opslagaccount. 
-   Kies in het rechter venster **uploaden**.
+1. Upload de assembly naar uw opslag account. 
+   Kies **uploaden**in het rechterdeel venster.
 
-1. Nadat u klaar bent met het uploaden, moet u een shared access signature (SAS) genereren voor de assembly. 
-   Selecteer in het snelmenu van de assembly, **Shared Access Signature ophalen**.
+1. Genereer een Shared Access Signature (SAS) voor uw assembly nadat u klaar bent met het uploaden. 
+   Selecteer in het snelmenu van de assembly de optie **Shared Access Signature ophalen**.
 
-1. In de **handtekening voor gedeelde toegang** venster **handtekening van de container op serverniveau gedeelde toegang genereren URI** > **maken**. 
-   Nadat de SAS-URL wordt gegenereerd, naast de **URL** Kies **kopie**.
+1. Selecteer in het deel venster **Shared Access Signature** de optie **URI voor Shared Access-hand tekening op container niveau genereren** > **maken**. 
+   Wanneer de SAS-URL wordt gegenereerd, klikt u naast het vak **URL** op **kopiëren**.
 
-1. Ga terug naar de Azure-portal waar de **Assembly toevoegen** deelvenster is geopend. 
-   Voer een naam voor de assembly. 
-   Kies **groot bestand (groter dan 2 MB)** .
+1. Ga terug naar de Azure Portal waar het deel venster **Assembly toevoegen** is geopend. 
+   Voer een naam in voor de assembly. 
+   Kies een **groot bestand (groter dan 2 MB)** .
 
-   De **inhouds-URI** in het nu wordt weergegeven, in plaats van de **Assembly** vak.
+   Het vak **URI van inhoud** wordt nu weer gegeven in plaats van het vak voor de **Assembly** .
 
-1. In de **inhouds-URI** vak, plak de SAS-URI u eerder hebt gegenereerd. Voltooi uw assembly toe te voegen.
+1. Plak in het vak **URI van inhoud** de SAS-URI die u eerder hebt gegenereerd. Toevoegen van de assembly volt ooien.
 
-Nadat de assembly geüpload is, de assembly wordt weergegeven in de **schema's** lijst. Op uw integratie-account **overzicht** pagina onder **onderdelen**, wordt de **assembly's** tegel toont nu het aantal geüploade assembly's.
+Nadat de assembly is geüpload, wordt de assembly weer gegeven in de lijst **schemas** . Op de **overzichts** pagina van uw integratie account, onder **onderdelen**, bevat de tegel **assembly's** nu het aantal geüploade assembly's.
 
 ## <a name="create-maps"></a>Kaarten maken
 
-Als u wilt een XSLT-document dat u als een kaart gebruiken kunt maakt, kunt u Visual Studio 2015 gebruiken voor het maken van een BizTalk-integratie-project met behulp van de [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md). In dit project bouwt u een integratie van toewijzingsbestand, waarmee u visueel items tussen twee bestanden van de XML-schema worden toegewezen. Nadat u dit project bouwt, krijgt u een XSLT-document.
-Zie voor limieten op de kaart hoeveelheden in integratieaccounts [limieten en configuratie voor Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). 
+Als u een XSLT-document wilt maken, kunt u gebruiken als kaart, kunt u Visual Studio 2015 gebruiken voor het maken van een BizTalk-integratie project met behulp van de [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md). In dit project kunt u een bestand met een integratie toewijzing maken, waarmee u items visueel kunt toewijzen tussen twee XML-schema bestanden. Nadat u dit project hebt gemaakt, krijgt u een XSLT-document.
+Zie [limieten en configuratie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)voor limieten voor het toewijzen van aantallen in integratie accounts. 
 
-## <a name="add-maps"></a>Toewijzingen toevoegen
+## <a name="add-maps"></a>Maps toevoegen
 
-Na het uploaden van een assembly's waarnaar wordt verwezen naar de kaart, kunt u nu uw kaart uploaden.
+Nadat u alle assembly's hebt geüpload die door uw kaart worden verwezen, kunt u nu uw kaart uploaden.
 
-1. Als u al dit nog niet hebt aangemeld, aanmelden bij de [Azure-portal](https://portal.azure.com) met de referenties van uw Azure-account. 
+1. Als u zich nog niet hebt aangemeld, meldt u zich aan bij de [Azure Portal](https://portal.azure.com) met de referenties van uw Azure-account. 
 
-1. Als uw integratie-account nog niet geopend, in het hoofdmenu van Azure is, selecteert u **alle services**. 
-   Voer in het zoekvak ' integratieaccount'. 
-   Selecteer **integratieaccounts**.
+1. Als uw integratie account nog niet is geopend, selecteert u in het hoofd menu van Azure **alle services**. 
+   Voer in het zoekvak ' integratie account ' in. 
+   Selecteer **integratie accounts**.
 
-   ![Integratie-account zoeken](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
+   ![Integratie account zoeken](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
-1. Selecteer het integratieaccount waar u wilt toevoegen van uw map, bijvoorbeeld:
+1. Selecteer het integratie account waaraan u de kaart wilt toevoegen, bijvoorbeeld:
 
-   ![Integratie-account selecteren](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
+   ![Integratie account selecteren](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Op uw integratie-account **overzicht** pagina onder **onderdelen**, selecteer de **Maps** tegel.
+1. Selecteer op de pagina **overzicht** van uw integratie account onder **onderdelen**de tegel **kaarten** .
 
-   ![Selecteer "Kaarten"](./media/logic-apps-enterprise-integration-maps/select-maps.png)
+   ![Selecteer kaarten](./media/logic-apps-enterprise-integration-maps/select-maps.png)
 
-1. Na de **Maps** pagina wordt geopend, kiest u **toevoegen**.
+1. Nadat de pagina **kaarten** is geopend, kiest u **toevoegen**.
 
-   ![Kies 'Toevoegen'](./media/logic-apps-enterprise-integration-maps/add-map.png)  
+   ![Kies toevoegen](./media/logic-apps-enterprise-integration-maps/add-map.png)  
 
 <a name="smaller-map"></a>
 
-### <a name="add-maps-up-to-2-mb"></a>Toewijzingen toevoegen tot 2 MB
+### <a name="add-maps-up-to-2-mb"></a>Kaarten toevoegen tot 2 MB
 
-1. Onder **toewijzing toevoegen**, voer een naam in voor uw kaart. 
+1. Voer onder **kaart toevoegen**een naam in voor de kaart. 
 
-1. Onder **type toewijzing**, selecteer het type, bijvoorbeeld: **Liquid**, **XSLT**, **XSLT 2.0**, of **XSLT 3.0**.
+1. Onder **kaart type**selecteert u het type, bijvoorbeeld: **liquide**, **XSLT**, **XSLT 2,0**of **XSLT 3,0**.
 
-1. Houd **klein bestand** geselecteerde. Naast de **kaart** Kies het pictogram van de map. Zoek en selecteer de kaart die u, bijvoorbeeld uploadt:
+1. **Klein bestand** selecteren. Kies het mappictogram naast het vak **kaart** . Zoek en selecteer de kaart die u wilt uploaden, bijvoorbeeld:
 
-   ![Map uploaden](./media/logic-apps-enterprise-integration-maps/upload-map-file.png)
+   ![Kaart uploaden](./media/logic-apps-enterprise-integration-maps/upload-map-file.png)
 
-   Als u de **naam** eigenschap leeg, de bestandsnaam van de kaart automatisch wordt weergegeven in die eigenschap automatisch nadat u de kaart-bestand hebt geselecteerd. 
+   Als u de eigenschap **name** leeg hebt gelaten, wordt de bestands naam van de kaart automatisch in die eigenschap automatisch weer gegeven nadat u het kaart bestand hebt geselecteerd. 
    U kunt echter een unieke naam gebruiken.
 
 1. Wanneer u klaar bent, kiest u **OK**. 
-   Nadat uw kaart-bestand geüpload is, de kaart wordt weergegeven in de **Maps** lijst.
+   Nadat het kaart bestand is geüpload, wordt de kaart weer gegeven in de lijst **kaarten** .
 
-   ![Geüploade maps-lijst](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
+   ![Lijst met geüploade kaarten](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
 
-   Op uw integratie-account **overzicht** pagina onder **onderdelen**, wordt de **toegewezen** tegel wordt nu het aantal geüploade maps, bijvoorbeeld:
+   Op de **overzichts** pagina van uw integratie account, onder **onderdelen**, bevat de tegel **kaarten** nu het aantal geüploade kaarten, bijvoorbeeld:
 
-   ![Geüploade maps](./media/logic-apps-enterprise-integration-maps/uploaded-maps.png)
+   ![Geüploade kaarten](./media/logic-apps-enterprise-integration-maps/uploaded-maps.png)
 
 <a name="larger-map"></a>
 
-### <a name="add-maps-more-than-2-mb"></a>Voeg kaarten meer dan 2 MB
+### <a name="add-maps-more-than-2-mb"></a>Maps toevoegen meer dan 2 MB
 
-Op dit moment om toe te voegen grotere maps, gebruiken de [REST API van Azure Logic Apps - kaarten](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
+Als u op dit moment grotere kaarten wilt toevoegen, gebruikt u de [Azure Logic apps-rest API-kaarten](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
 
 <!--
 
@@ -311,44 +308,44 @@ the map appears in the **Maps** list.
 
 -->
 
-## <a name="edit-maps"></a>Toewijzingen bewerken
+## <a name="edit-maps"></a>Kaarten bewerken
 
-Voor het bijwerken van een bestaande toewijzing, moet u een nieuwe kaart-bestand met de wijzigingen die u wilt uploaden. U kunt echter eerst de bestaande toewijzing voor het bewerken van downloaden.
+Als u een bestaande kaart wilt bijwerken, moet u een nieuw kaart bestand uploaden dat de gewenste wijzigingen bevat. U kunt echter eerst de bestaande kaart voor bewerken downloaden.
 
-1. In de [Azure-portal](https://portal.azure.com), zoeken en openen van uw integratie-account, als dit al geopend.
+1. Zoek en open uw integratie account in de [Azure Portal](https://portal.azure.com)als dit nog niet is geopend.
 
-1. Selecteer in het hoofdmenu van Azure **alle services**. Voer in het zoekvak ' integratieaccount'. Selecteer **integratieaccounts**.
+1. Selecteer in het hoofd menu van Azure **alle services**. Voer in het zoekvak ' integratie account ' in. Selecteer **integratie accounts**.
 
-1. Selecteer het integratieaccount waar u wilt bijwerken van de kaart.
+1. Selecteer het integratie account waar u de kaart wilt bijwerken.
 
-1. Op uw integratie-account **overzicht** pagina onder **onderdelen**, selecteer de **Maps** tegel.
+1. Selecteer op de pagina **overzicht** van uw integratie account onder **onderdelen**de tegel **kaarten** .
 
-1. Na de **Maps** pagina wordt geopend, selecteert u de kaart. 
-   Om te downloaden en de kaart eerst bewerken, kiest u **downloaden**, en sla de kaart.
+1. Nadat de pagina **Maps** is geopend, selecteert u de kaart. 
+   Als u eerst de kaart wilt downloaden en bewerken, kiest u **downloaden**en slaat u de kaart op.
 
-1. Wanneer u bent klaar om te uploaden van de bijgewerkte kaart op de **Maps** pagina, selecteert u de kaart die u wilt bijwerken, en kies **bijwerken**.
+1. Wanneer u klaar bent om de bijgewerkte kaart te uploaden, selecteert u op de pagina **kaarten** de kaart die u wilt bijwerken en kiest u **bijwerken**.
 
-1. Zoek en selecteer de bijgewerkte toewijzing die u wilt uploaden. 
-   Nadat uw kaart-bestand geüpload is, wordt de bijgewerkte kaart weergegeven in de **Maps** lijst.
+1. Zoek en selecteer de bijgewerkte kaart die u wilt uploaden. 
+   Nadat het kaart bestand is geüpload, wordt de bijgewerkte kaart weer gegeven in de lijst **kaarten** .
 
-## <a name="delete-maps"></a>Maps verwijderen
+## <a name="delete-maps"></a>Kaarten verwijderen
 
-1. In de [Azure-portal](https://portal.azure.com), zoeken en openen van uw integratie-account, als dit al geopend.
+1. Zoek en open uw integratie account in de [Azure Portal](https://portal.azure.com)als dit nog niet is geopend.
 
-1. Selecteer in het hoofdmenu van Azure **alle services**. 
-   Voer in het zoekvak ' integratieaccount'. 
-   Selecteer **integratieaccounts**.
+1. Selecteer in het hoofd menu van Azure **alle services**. 
+   Voer in het zoekvak ' integratie account ' in. 
+   Selecteer **integratie accounts**.
 
-1. Selecteer het integratieaccount waar u wilt verwijderen van de kaart.
+1. Selecteer het integratie account waarnaar u de kaart wilt verwijderen.
 
-1. Op uw integratie-account **overzicht** pagina onder **onderdelen**, selecteer de **Maps** tegel.
+1. Selecteer op de pagina **overzicht** van uw integratie account onder **onderdelen**de tegel **kaarten** .
 
-1. Na de **Maps** pagina wordt geopend, selecteert u de kaart en kies **verwijderen**.
+1. Nadat de pagina **kaarten** is geopend, selecteert u uw kaart en kiest u **verwijderen**.
 
-1. Als u wilt bevestigen dat u wilt verwijderen van de kaart, kies **Ja**.
+1. Klik op **Ja**om te bevestigen dat u de kaart wilt verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)  
-* [Meer informatie over schema 's](../logic-apps/logic-apps-enterprise-integration-schemas.md)
-* [Meer informatie over transformaties](../logic-apps/logic-apps-enterprise-integration-transform.md)
+* [Meer informatie over de Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)  
+* [Meer informatie over schema's](../logic-apps/logic-apps-enterprise-integration-schemas.md)
+* [Meer informatie over trans formaties](../logic-apps/logic-apps-enterprise-integration-transform.md)

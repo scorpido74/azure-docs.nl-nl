@@ -1,24 +1,24 @@
 ---
-title: Azure Database for MariaDB VNet-service-eind punten en-regels maken en beheren met behulp van de Azure Portal | Microsoft Docs
+title: VNet-eind punten beheren-Azure Portal-Azure Database for MariaDB
 description: Azure Database for MariaDB VNet-service-eind punten en-regels maken en beheren met behulp van de Azure Portal
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 392428c0498458f49c439a0553d581a302c0c242
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 12/02/2019
+ms.openlocfilehash: 66e7c2160317d71ced7517e1ec19014c1475c915
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610092"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764096"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Azure Database for MariaDB VNet-service-eind punten en VNet-regels maken en beheren met behulp van de Azure Portal
 
-Virtual Network-Services (VNet)-eind punten en-regels breiden de privé-adres ruimte van een Virtual Network naar uw Azure Database for MariaDB-server uit. Zie [Azure database for MariaDB server VNet-service-eind punten](concepts-data-access-security-vnet.md)voor een overzicht van Azure database for MariaDB VNet-service-eind punten, met inbegrip van beperkingen. VNet-service-eind punten zijn beschikbaar in alle ondersteunde regio's voor Azure Database for MariaDB.
+Service-eindpunten en -regels voor virtuele netwerken (VNets) breiden de privé-adresruimte van een virtueel netwerk uit naar uw Azure Database for MariaDB-server. Zie [Azure database for MariaDB server VNet-service-eind punten](concepts-data-access-security-vnet.md)voor een overzicht van Azure database for MariaDB VNet-service-eind punten, met inbegrip van beperkingen. VNet-service-eind punten zijn beschikbaar in alle ondersteunde regio's voor Azure Database for MariaDB.
 
 > [!NOTE]
-> Ondersteuning voor VNet-service-eindpunten is alleen voor algemeen gebruik en geoptimaliseerd voor geheugen-servers.
+> Ondersteuning voor VNet-service-eind punten is alleen voor servers met Algemeen en geoptimaliseerd voor geheugen.
 
 ## <a name="create-a-vnet-rule-and-enable-service-endpoints"></a>Een VNet-regel maken en service-eind punten inschakelen
 
@@ -29,7 +29,7 @@ Virtual Network-Services (VNet)-eind punten en-regels breiden de privé-adres ru
 > [!Important]
 > Als u deze instelt op aan, accepteert uw Azure MariaDB-database server communicatie vanuit elk subnet. Het is mogelijk dat het besturings element dat is ingesteld op aan, overmatig toegankelijk is vanuit het beveiligings oogpunt van de weer gave. Met de functie Microsoft Azure Virtual Network Service-eind punt, in combi natie met de regel functie voor virtuele netwerken van Azure Database for MariaDB, kan uw beveiligings surface area worden verminderd.
 
-3. Klik vervolgens op **+ bestaand virtueel netwerk toevoegen**. Als u geen bestaand VNet hebt, kunt u op **+ nieuw virtueel netwerk maken** klikken om er een te maken. Zie [Quickstart: Een virtueel netwerk maken met behulp van de Azure Portal](../virtual-network/quick-create-portal.md)
+3. Klik vervolgens op **+ bestaand virtueel netwerk toevoegen**. Als u geen bestaand VNet hebt, kunt u op **+ nieuw virtueel netwerk maken** klikken om er een te maken. Zie [Quick Start: een virtueel netwerk maken met behulp van de Azure Portal](../virtual-network/quick-create-portal.md)
 
    ![Azure Portal-Klik op verbindings beveiliging](./media/howto-manage-vnet-portal/1-connection-security.png)
 
@@ -45,10 +45,10 @@ Virtual Network-Services (VNet)-eind punten en-regels breiden de privé-adres ru
     
    Meer informatie over [ingebouwde rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) en het toewijzen van specifieke machtigingen voor [aangepaste rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
     
-   VNets en Azure-serviceresources kunnen in hetzelfde abonnement of in verschillende abonnementen zitten. Als de VNet-en Azure-service resources zich in verschillende abonnementen bevinden, moeten de resources onder dezelfde Active Directory (AD)-Tenant vallen. Zorg ervoor dat de **micro soft. SQL** -resource provider is geregistreerd voor beide abonnementen. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
+   VNets en Azure-serviceresources kunnen in hetzelfde of in verschillend abonnementen zitten. Als de VNet-en Azure-service resources zich in verschillende abonnementen bevinden, moeten de resources onder dezelfde Active Directory (AD)-Tenant vallen. Zorg ervoor dat de **micro soft. SQL** -resource provider is geregistreerd voor beide abonnementen. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
 
    > [!IMPORTANT]
-   > Het is raadzaam om dit artikel te lezen over service-eindpunt configuraties en overwegingen voordat u service-eind punten configureert. **Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt](../virtual-network/virtual-network-service-endpoints-overview.md) is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. VNet-service-eind punten gebruiken de service type naam **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database. Deze servicetag is ook van toepassing op de Azure SQL Database-, Azure Database for MariaDB-, PostgreSQL-en MySQL-Services. Het is belang rijk te weten wanneer u de code van het **micro soft. SQL** -service toepast op een VNet-service-eind punt, waarbij service-eindpunt verkeer wordt geconfigureerd voor alle Azure Data Base-Services, waaronder Azure SQL Database, Azure database for PostgreSQL, Azure Data Base voor MariaDB en Azure Database for MySQL servers in het subnet.
+   > Het is raadzaam om dit artikel te lezen over service-eindpunt configuraties en overwegingen voordat u service-eind punten configureert. **Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt](../virtual-network/virtual-network-service-endpoints-overview.md) is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. VNet-service-eind punten gebruiken de service type naam **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database. Deze servicetag is ook van toepassing op de Azure SQL Database-, Azure Database for MariaDB-, PostgreSQL-en MySQL-Services. Het is belang rijk te weten wanneer u de code van het **micro soft. SQL** -service toepast op een VNet-service-eind punt, waarbij service-eindpunt verkeer wordt geconfigureerd voor alle Azure Data Base-Services, waaronder Azure SQL Database, Azure Database for PostgreSQL, Azure Database for MariaDB en Azure database for MySQL servers in het subnet.
    > 
 
 5. Als deze functie is ingeschakeld, klikt u op **OK** . u ziet dat de vnet-service-eind punten zijn ingeschakeld in combi natie met een VNet-regel.

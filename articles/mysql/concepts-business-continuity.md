@@ -1,17 +1,17 @@
 ---
-title: Inzicht in de bedrijfs continuïteit in Azure Database for MySQL
+title: Bedrijfs continuïteit-Azure Database for MySQL
 description: Meer informatie over bedrijfs continuïteit (herstel naar een bepaald tijdstip, de onderbreking van data centers, geo-Restore) bij het gebruik van Azure Database for MySQL service.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 28cd46077e67aa48169421607cd977103da735c5
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 3f82dfd5e289b09761dbdbdc5af4da76d7c961d4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972895"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765355"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Inzicht in de bedrijfs continuïteit in Azure Database for MySQL
 

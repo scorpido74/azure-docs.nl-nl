@@ -1,18 +1,18 @@
 ---
 title: Prijs opwaardering voor Data Explorer van vooruitbetalen om geld te besparen
 description: Meer informatie over het kopen van Azure Data Explorer gereserveerde capaciteit om uw kosten voor Azure Data Explorer op te slaan.
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 66c5644df7d796669105693d08788548334ae93a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681628"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769095"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Progeschikte-eenheden voor Azure-Data Explorer met Azure Data Explorer gereserveerde capaciteit
 
@@ -36,7 +36,7 @@ De grootte van de reserve ring moet worden gebaseerd op het totale aantal Azure 
 
 ## <a name="buy-azure-data-explorer-reserved-capacity"></a>Gereserveerde capaciteit van Azure Data Explorer kopen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **alle services** > **reserve ringen** > **Nu kopen**. Selecteer **Toevoegen**
 1. Selecteer in het deel venster **product type selecteren** de optie **Azure Data Explorer** om een nieuwe reserve ring te kopen voor Azure Data Explorer-markerings eenheden. 
 1. Selecteer **kopen**
@@ -52,7 +52,7 @@ De grootte van de reserve ring moet worden gebaseerd op het totale aantal Azure 
 
 Als u de reserve ring van de gereserveerde capaciteit van Azure Data Explorer moet annuleren, zijn er mogelijk 12% vroege ontslag kosten. De restituties zijn gebaseerd op de laagste prijs van uw aankoop prijs of de huidige prijs van de reserve ring. Restituties zijn beperkt tot $ 50.000 per jaar. De restitutie die u ontvangt, is het resterende bedrag naar rato saldo minus de kosten voor vroegtijdige beëindiging van 12%. Als u een annulering wilt aanvragen, gaat u naar de reserve ring in het Azure Portal en selecteert u **terugbetaling** om een ondersteunings aanvraag te maken.
 
-Als u de reserve ring van uw Azure Data Explorer gereserveerde capaciteit moet wijzigen naar een andere periode, kunt u deze uitwisselen voor een andere reserve ring met een waarde die gelijk of hoger is. De begindatum van de periode voor de nieuwe reservering wordt niet meegenomen naar de uitgewisselde reservering. De periode van 1 of 3 jaar begint bij het maken van de nieuwe reserve ring. Als u een uitwisseling wilt aanvragen, gaat u naar de reserve ring in het Azure Portal en selecteert u **Exchange** om een ondersteunings aanvraag te maken.
+Als u de reserve ring van uw Azure Data Explorer gereserveerde capaciteit moet wijzigen naar een andere periode, kunt u deze uitwisselen voor een andere reserve ring met een waarde die gelijk of hoger is. De begindatum van de termijn voor de nieuwe reservering wordt niet meegenomen naar de uitgewisselde reservering. De periode van 1 of 3 jaar begint bij het maken van de nieuwe reserve ring. Als u een uitwisseling wilt aanvragen, gaat u naar de reserve ring in het Azure Portal en selecteert u **Exchange** om een ondersteunings aanvraag te maken.
 
 Zie [reserverings uitwisselingen en](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)terugbetalingen voor meer informatie over het omruilen of terugbetalen van reserve ringen.
 
@@ -76,6 +76,6 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 * [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../billing/billing-understand-reserved-instance-usage-ea.md)
 * [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

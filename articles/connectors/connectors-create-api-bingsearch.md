@@ -1,22 +1,18 @@
 ---
-title: Verbinding maken met Bing Search-Azure Logic Apps
+title: Verbinding maken met Bing Search
 description: Zoek nieuws met Bing Search REST Api's en Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: f7558a5836d8f087e719346fb38bbf24ece2c8fb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026766"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789962"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Zoek nieuws met Bing Search en Azure Logic Apps
 
@@ -54,12 +50,12 @@ Als uw verbinding al bestaat, geeft u de benodigde informatie op voor de trigger
 
    Voor dit voor beeld geeft u criteria op voor het retour neren van overeenkomende nieuws artikelen van Bing Search.
 
-   | Eigenschap | Vereist | Waarde | Beschrijving |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | Search Query | Ja | <*search-words*> | Voer de zoek woorden in die u wilt gebruiken. |
-   | Market | Ja | <*locale*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
-   | Safe Search | Ja | <*search-level*> | Het filter niveau voor het uitsluiten van inhoud voor volwassenen. De standaard waarde is ' matig ', maar u selecteert een ander niveau. |
-   | Count | Nee | <*results-count*> | Retourneert het opgegeven aantal resultaten. De standaard instelling is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan kleiner zijn dan het opgegeven aantal. |
+   | Zoek query | Ja | <*Zoek woorden*> | Voer de zoek woorden in die u wilt gebruiken. |
+   | Market | Ja | <*land instelling*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
+   | Veilig zoeken | Ja | > op *Zoek niveau* < | Het filter niveau voor het uitsluiten van inhoud voor volwassenen. De standaard waarde is ' matig ', maar u selecteert een ander niveau. |
+   | Aantal | Nee | *aantal <resultaten*> | Retourneert het opgegeven aantal resultaten. De standaard instelling is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan kleiner zijn dan het opgegeven aantal. |
    | Offset | Nee | <*Skip-waarde*> | Het aantal resultaten dat moet worden overgeslagen voordat resultaten worden geretourneerd |
    |||||
 
@@ -105,12 +101,12 @@ Selecteer in de lijst acties de gewenste actie.
 
    Voor dit voor beeld geeft u de criteria op voor het retour neren van een subset van de resultaten van de trigger.
 
-   | Eigenschap | Vereist | Waarde | Beschrijving |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | Search Query | Ja | <*search-expression*> | Voer een expressie in voor het uitvoeren van query's op de trigger resultaten. U kunt kiezen uit de velden in de lijst met dynamische inhoud of een expressie maken met de opbouw functie voor expressies. |
-   | Market | Ja | <*locale*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
-   | Safe Search | Ja | <*search-level*> | Het filter niveau voor het uitsluiten van inhoud voor volwassenen. De standaard waarde is ' matig ', maar u selecteert een ander niveau. |
-   | Count | Nee | <*results-count*> | Retourneert het opgegeven aantal resultaten. De standaard instelling is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan kleiner zijn dan het opgegeven aantal. |
+   | Zoek query | Ja | <*Zoek expressie*> | Voer een expressie in voor het uitvoeren van query's op de trigger resultaten. U kunt kiezen uit de velden in de lijst met dynamische inhoud of een expressie maken met de opbouw functie voor expressies. |
+   | Market | Ja | <*land instelling*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
+   | Veilig zoeken | Ja | > op *Zoek niveau* < | Het filter niveau voor het uitsluiten van inhoud voor volwassenen. De standaard waarde is ' matig ', maar u selecteert een ander niveau. |
+   | Aantal | Nee | *aantal <resultaten*> | Retourneert het opgegeven aantal resultaten. De standaard instelling is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan kleiner zijn dan het opgegeven aantal. |
    | Offset | Nee | <*Skip-waarde*> | Het aantal resultaten dat moet worden overgeslagen voordat resultaten worden geretourneerd |
    |||||
 
@@ -152,11 +148,11 @@ Selecteer in de lijst acties de gewenste actie.
 
 1. Wanneer u wordt gevraagd om de verbindings gegevens, geeft u de volgende gegevens op:
 
-   | Eigenschap | Vereist | Waarde | Beschrijving |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | Verbindingsnaam | Ja | <*naam* van de verbinding> | De naam die voor uw verbinding moet worden gemaakt |
    | API-versie | Ja | < *-API-versie*> | De Bing Search API-versie is standaard ingesteld op de huidige versie. U kunt indien nodig een eerdere versie selecteren. |
-   | API-sleutel | Ja | <*API-key*> | De Bing Search-API-sleutel die u eerder hebt verkregen. Als u geen sleutel hebt, kunt u [nu uw API-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)ophalen. |  
+   | API-sleutel | Ja | < *-API-sleutel*> | De Bing Search-API-sleutel die u eerder hebt verkregen. Als u geen sleutel hebt, kunt u [nu uw API-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)ophalen. |  
    |||||  
 
    Bijvoorbeeld:

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/02/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5343387da7b2027e1071b19be826e329494cdd3e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 05230e39175e71f4eec2c99cd6cbd2f44f05df30
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452942"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766358"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor Windows 10-apparaten (preview-versie)
 
@@ -56,22 +56,22 @@ In azure AD gekoppelde apparaten waarop u wilt testen, moet Windows 10 versie 18
 Organisaties kunnen ervoor kiezen om een of meer van de volgende methoden te gebruiken om het gebruik van beveiligings sleutels voor Windows-aanmelding in te scha kelen op basis van de vereisten van de organisatie.
 
 - [Inschakelen met intune](#enable-with-intune)
-   - [Doel gerichte intune-implementatie](#targeted-intune-deployment)
+- [Doel gerichte intune-implementatie](#targeted-intune-deployment)
 - [Inschakelen met een inrichtings pakket](#enable-with-a-provisioning-package)
 
 ### <a name="enable-with-intune"></a>Inschakelen met intune
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Blader naar **Microsoft Intune** > **apparaatregistratie** > **Windows-inschrijving** > **Windows hello voor bedrijven** > - **Eigenschappen**.
 1. Onder **instellingen** instellen **beveiligings sleutels gebruiken voor aanmelden** bij **ingeschakeld**.
 
 Configuratie van beveiligings sleutels voor aanmelden is niet afhankelijk van het configureren van Windows hello voor bedrijven.
 
-#### <a name="targeted-intune-deployment"></a>Doel gerichte intune-implementatie
+### <a name="targeted-intune-deployment"></a>Doel gerichte intune-implementatie
 
 Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te scha kelen, gebruikt u de volgende aangepaste instellingen via intune.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Blader naar **Microsoft Intune** > **apparaatconfiguratie** > **profielen** > **profiel maken**.
 1. Configureer het nieuwe profiel met de volgende instellingen
    1. Naam: beveiligings sleutels voor Windows-aanmelding
@@ -80,7 +80,7 @@ Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te 
    1. Profiel type: aangepast
    1. Aangepaste OMA-URI-instellingen:
       1. Naam: Schakel FIDO-beveiligings sleutels voor Windows-aanmelding in
-      1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
+      1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       1. Gegevens type: geheel getal
       1. Waarde: 1
 1. Dit beleid kan worden toegewezen aan specifieke gebruikers, apparaten of groepen. Meer informatie vindt u in het artikel [gebruikers-en apparaatprofielen toewijzen in Microsoft intune](https://docs.microsoft.com/intune/device-profile-assign).
@@ -94,10 +94,10 @@ Voor apparaten die niet worden beheerd door intune, kan een inrichtings pakket w
 1. Start de ontwerp functie voor Windows-configuratie.
 1. Selecteer **bestand** > **Nieuw project**.
 1. Geef uw project een naam en noteer het pad waar het project is gemaakt.
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Verlaat het **inrichtings pakket** dat is geselecteerd als de **geselecteerde project werk stroom** en selecteer **volgende**.
 1. Selecteer **alle Windows Desktop-edities** onder **Kies welke instellingen u wilt weer geven en configureren** en selecteer **volgende**.
-1. Selecteer **Voltooien**.
+1. Selecteer **Finish**.
 1. Blader in het zojuist gemaakte project naar **runtime-instellingen** > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
 1. Stel **UseSecurityKeyForSignIn** in op **ingeschakeld**.
 1.  > **inrichtings pakket** voor **export** selecteren

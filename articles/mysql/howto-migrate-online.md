@@ -1,26 +1,26 @@
 ---
-title: Migratie met minimale downtime met Azure Database for MySQL
-description: In dit artikel wordt beschreven hoe u een migratie met minimale downtime van een MySQL-database met Azure Database voor MySQL met behulp van de Azure Database Migration Service uitvoeren.
+title: Migratie met minimale downtime-Azure Database for MySQL
+description: In dit artikel wordt beschreven hoe u een minimale downtime-migratie van een MySQL-data base naar Azure Database for MySQL uitvoert met behulp van de Azure Database Migration Service.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: 49e2662f215d845d416e46246b03e4408fae118b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 9f166323cc72cd22cc4dd28babdfd056100a32e0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61424157"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774140"
 ---
-# <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>Migratie met minimale downtime met Azure Database for MySQL
-U kunt MySQL-migratie naar Azure Database for MySQL met minimale downtime uitvoeren met behulp van de onlangs geïntroduceerde **doorlopende synchronisatie mogelijkheid** voor de [Azure Database Migration Service](https://aka.ms/get-dms) (DMS). Deze functionaliteit beperkt de hoeveelheid uitvaltijd beperkt die worden gemaakt door de toepassing.
+# <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>Minimale migratie van downtime naar Azure Database for MySQL
+U kunt MySQL-migraties uitvoeren om te Azure Database for MySQL met minimale downtime door gebruik te maken van de zojuist geïntroduceerde **voortdurende synchronisatie mogelijkheid** voor de [Azure database Migration service](https://aka.ms/get-dms) (DMS). Deze functionaliteit beperkt de hoeveelheid downtime die door de toepassing wordt gemaakt.
 
 ## <a name="overview"></a>Overzicht
-Azure DMS wordt uitgevoerd van een aanvankelijke belasting van uw on-premises naar Azure Database voor MySQL en vervolgens continu worden gesynchroniseerd met een nieuwe transacties naar Azure terwijl de toepassing actief blijft. Nadat de gegevens de resultaten op de doel-Azure aan clientzijde, u stop de toepassing voor een korte moment (minimale downtime) en wacht tot de laatste batch van gegevens (vanaf het moment dat u de toepassing stoppen voordat de toepassing effectief niet beschikbaar is voor alle nieuwe verkeer) om af te vangen omhoog in de doel- en werk vervolgens de verbindingsreeks om te verwijzen naar Azure. Wanneer u klaar bent, wordt uw toepassing worden live in Azure!
+Azure DMS voert een initiële belasting van uw on-premises naar Azure Database for MySQL uit en synchroniseert voortdurend nieuwe trans acties naar Azure terwijl de toepassing actief blijft. Nadat de gegevens op de doel-Azure-zijde zijn opgevangen, stopt u de toepassing voor een kort tijdstip (minimale downtime), wacht u tot de laatste batch met gegevens (vanaf het moment dat u de toepassing stopt totdat de toepassing daad werkelijk niet beschikbaar is voor het uitvoeren van een nieuw verkeer) in het doel en werk vervolgens uw connection string om naar Azure te verwijzen. Wanneer u klaar bent, is uw toepassing Live in Azure.
 
-![Doorlopende synchronisatie met de Azure Database Migration Service](./media/howto-migrate-online/ContinuousSync.png)
+![Doorlopend synchroniseren met de Azure Database Migration Service](./media/howto-migrate-online/ContinuousSync.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-- Bekijk de video [eenvoudig migreren MySQL/PostgreSQL apps naar Azure managed service](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201), waarin een demo van het MySQL-apps migreren naar Azure Database voor MySQL.
-- Zie de zelfstudie [MySQL migreren met Azure Database voor MySQL online met behulp van DMS](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online).
+- Bekijk de video [eenvoudig MySQL/PostgreSQL-apps migreren naar een door Azure beheerde service](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201), die een demonstratie bevat van het migreren van MySQL-apps naar Azure database for MySQL.
+- Raadpleeg de zelf studie [MySQL migreren naar Azure database for MySQL online met behulp van DMS](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online).

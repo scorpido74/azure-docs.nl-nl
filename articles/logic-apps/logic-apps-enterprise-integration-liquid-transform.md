@@ -1,20 +1,19 @@
 ---
-title: JSON-gegevens converteren met liquide trans formaties-Azure Logic Apps | Microsoft Docs
+title: JSON-gegevens converteren met liquide trans formaties
 description: Trans formaties of kaarten voor geavanceerde JSON-trans formaties maken met behulp van Logic Apps en vloei bare sjabloon
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 203c57a2755a3287566a774e2878a87b847337b9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900666"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792505"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Geavanceerde JSON-trans formaties uitvoeren met liquide sjablonen in Azure Logic Apps
 
@@ -58,7 +57,7 @@ Voordat u een liquide trans formatie in uw logische app kunt uitvoeren, moet u e
    }
    ```
 
-2. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**in het hoofd menu van Azure. Zoek en selecteer uw integratie account in het zoekvak.
+2. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**in het hoofd menu van Azure. Zoek en selecteer uw integratie account in het zoekvak.
 
    ![Integratie account selecteren](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
@@ -70,7 +69,7 @@ Voordat u een liquide trans formatie in uw logische app kunt uitvoeren, moet u e
 
    | Eigenschap | Waarde | Beschrijving | 
    |----------|-------|-------------|
-   | **Name** | JsonToJsonTemplate | De naam voor uw kaart, in dit voor beeld ' JsonToJsonTemplate ' | 
+   | **Naam** | JsonToJsonTemplate | De naam voor uw kaart, in dit voor beeld ' JsonToJsonTemplate ' | 
    | **Toewijzings type** | **Liquid** | Het type voor uw kaart. Voor JSON naar JSON-trans formatie moet u **liquide middelen**selecteren. | 
    | **Diagram** | "SimpleJsonToJsonTemplate. liquide" | In dit voor beeld wordt een bestaande vloeistof sjabloon of kaart bestand gebruikt voor trans formatie, dat "SimpleJsonToJsonTemplate. liquide" is. U kunt dit bestand vinden met behulp van de bestands kiezer. |
    ||| 
@@ -125,7 +124,7 @@ Vloei stof is niet beperkt tot JSON-trans formaties. Dit zijn andere beschik bar
   
    ![Voorbeeld uitvoer van JSON naar tekst](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
-* XML naar JSON transformeren
+* XML transformeren naar JSON
   
   Dit is de vloeistof sjabloon die wordt gebruikt voor dit voor beeld:
    
@@ -152,6 +151,6 @@ Vloei stof is niet beperkt tot JSON-trans formaties. Dit zijn andere beschik bar
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over de Enterprise Integration Pack] (../logic-apps/logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack")  
-* [Meer informatie over Maps] (../logic-apps/logic-apps-enterprise-integration-maps.md "Meer informatie over Enter prise Integration Maps")  
+* [Meer informatie over de Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack")  
+* [Meer informatie over Maps](../logic-apps/logic-apps-enterprise-integration-maps.md "Meer informatie over Enter prise Integration Maps")  
 

@@ -1,17 +1,17 @@
 ---
-title: Vooruitbetalen voor Azure Database for MySQL Compute-resources met gereserveerde capaciteit
+title: Vooruitbetalen voor reken kracht met gereserveerde capaciteit-Azure Database for MySQL
 description: Vooruitbetalen voor Azure Database for MySQL Compute-resources met gereserveerde capaciteit
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 595a96d07cc1804d3ee0830618a70557b768a3b5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 12/02/2019
+ms.openlocfilehash: 44bdd9a58bfe2f1a8d3a0102aa6652bb340ac719
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067097"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773828"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Vooruitbetalen voor Azure Database for MySQL Compute-resources met gereserveerde capaciteit
 
@@ -25,7 +25,7 @@ U kunt Azure Database for MySQL gereserveerde capaciteit kopen in de [Azure Port
 * Voor Enterprise Agreements moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA Portal](https://ea.azure.com/). Als deze instelling is uitgeschakeld, moet u een EA-beheerder zijn voor het abonnement.
 * Voor de Cloud Solution Provider (CSP)-programma kunnen alleen beheerders of verkoop medewerkers Azure Database for MySQL gereserveerde capaciteit kopen. </br>
 
-Meer informatie over hoe zakelijke klanten en betalen per gebruik-klanten in rekening worden gebracht voor reserverings aankopen, Zie [het gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) en [inzicht krijgen in het gebruik van Azure-reserve ringen voor uw betalen per gebruik abonnement](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
+De details over de manier waarop zakelijke klanten en betalen per gebruik-klanten in rekening worden gebracht voor reserverings aankopen, Zie [het gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) en [inzicht krijgen in het gebruik van Azure-reserve ringen voor uw abonnement op basis van betalen naar gebruik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
 
 
 ## <a name="determine-the-right-database-size-before-purchase"></a>De juiste data base-grootte bepalen vóór de aankoop
@@ -37,7 +37,7 @@ Stel bijvoorbeeld dat u een algemeen doel, GEN5-32 vCore MySQL-data base uitvoer
 
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>Azure Database for MySQL gereserveerde capaciteit kopen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer **Alle services** > **Reserveringen**.
 3. Selecteer **toevoegen** en selecteer vervolgens in het deel venster reserve ringen **Azure database for MySQL** om een nieuwe reserve ring voor uw MySQL-data bases aan te schaffen.
 4. Vul de vereiste velden in. Bestaande of nieuwe data bases die overeenkomen met de kenmerken die u selecteert, komen in aanmerking voor de korting op gereserveerde capaciteit. Het werkelijke aantal Azure Database for MySQL servers dat de korting krijgt, is afhankelijk van het bereik en de geselecteerde hoeveelheid.
@@ -51,16 +51,16 @@ In de volgende tabel worden de vereiste velden beschreven.
 | Veld | Beschrijving |
 | :------------ | :------- |
 | Abonnement   | Het abonnement dat wordt gebruikt om te betalen voor de reserve ring van de Azure Database for MySQL gereserveerde capaciteit. Voor de betalings methode voor het abonnement worden de kosten vooraf in rekening gebracht voor de reserve ring van de Azure Database for MySQL gereserveerde capaciteit. Het abonnements type moet een Enter prise Agreement zijn (nummer van de aanbieding: MS-AZR-0017P of MS-AZR-0148P) of een afzonderlijke overeenkomst met betalen per gebruik-prijs (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P). Voor een Enterprise-abonnement worden de kosten in mindering gebracht op het toezeggingsbedrag of ze worden in rekening gebracht als overschrijding. Voor een individueel abonnement met betalen per gebruik-tarieven worden de kosten in rekening gebracht op basis van de credit card of factuur betalings methode voor het abonnement.
-| Bereik | Het bereik van de vCore-reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u het volgende selecteert: </br></br> **Gedeeld**, de vCore-reserverings korting wordt toegepast op Azure database for MySQL servers die worden uitgevoerd in een abonnement binnen uw facturerings context. Voor zakelijke klanten is het gedeelde bereik de inschrijving en omvat alle abonnementen binnen de inschrijving. Voor betalen per gebruik-klanten bestaat het gedeelde bereik uit alle abonnementen op gebruiksbasis gemaakt door de accountbeheerder.</br></br> **Eén abonnement**, de vCore-reserverings korting wordt toegepast op Azure database for MySQL servers in dit abonnement. </br></br> **Eén resource groep**, de reserverings korting wordt toegepast op Azure database for MySQL servers in het geselecteerde abonnement en de geselecteerde resource groep in dat abonnement.
+| Scope | Het bereik van de vCore-reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u het volgende selecteert: </br></br> **Gedeeld**, de vCore-reserverings korting wordt toegepast op Azure database for MySQL servers die worden uitgevoerd in een abonnement binnen uw facturerings context. Voor zakelijke klanten is het gedeelde bereik de inschrijving en omvat alle abonnementen binnen de inschrijving. Voor betalen per gebruik-klanten bestaat het gedeelde bereik uit alle abonnementen op gebruiksbasis gemaakt door de accountbeheerder.</br></br> **Eén abonnement**, de vCore-reserverings korting wordt toegepast op Azure database for MySQL servers in dit abonnement. </br></br> **Eén resource groep**, de reserverings korting wordt toegepast op Azure database for MySQL servers in het geselecteerde abonnement en de geselecteerde resource groep in dat abonnement.
 | Regio | De Azure-regio die wordt gedekt door de Azure Database for MySQL gereserveerde capaciteits reservering.
 | Implementatie type | Het resource type Azure Database for MySQL waarvoor u de reserve ring wilt kopen.
 | Prestatielaag | De servicelaag voor de Azure Database for MySQL-servers.
 | Termijn | Één jaar
-| Aantal | De hoeveelheid reken resources die worden aangeschaft in de Azure Database for MySQL gereserveerde capaciteits reservering. De hoeveelheid is een aantal vCores in de geselecteerde Azure-regio en-prestatie-laag die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld werkt met of plant om een Azure Database for MySQL servers uit te voeren met de totale reken capaciteit van GEN5 16 vCores in de regio VS-Oost, zou u de hoeveelheid instellen op 16 om het voor deel van alle servers te maximaliseren.
+| Hoeveelheid | De hoeveelheid reken resources die worden aangeschaft in de Azure Database for MySQL gereserveerde capaciteits reservering. De hoeveelheid is een aantal vCores in de geselecteerde Azure-regio en-prestatie-laag die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld werkt met of plant om een Azure Database for MySQL servers uit te voeren met de totale reken capaciteit van GEN5 16 vCores in de regio VS-Oost, zou u de hoeveelheid instellen op 16 om het voor deel van alle servers te maximaliseren.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfservice voor omruiling en terugbetaling van Azure-reserveringen](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund) voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfservice voor ruiling en terugbetaling van Azure-reserveringen](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund) voor meer informatie.
 
 ## <a name="vcore-size-flexibility"></a>flexibiliteit van vCore-grootte
 
@@ -82,5 +82,5 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 * [Korting op Azure-reserveringen begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
 * [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)
 * [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [Azure-reserveringen in CSP-programma (Cloud Solution Provider) van partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)
 

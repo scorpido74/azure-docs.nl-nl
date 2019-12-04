@@ -1,17 +1,17 @@
 ---
-title: Advanced Threat Protection-Azure Database for MySQL
+title: Advanced Threat Protection-Azure Portal-Azure Database for MySQL
 description: Meer informatie over het configureren van geavanceerde beveiliging tegen bedreigingen voor het detecteren van afwijkende database activiteiten die duiden op mogelijke beveiligings dreigingen voor de data base.
 author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: fe058433cfe4c6c9f89f14d2c74e33ff1b8372ac
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 11ac05c710f7daf709ffbc29aebff706aea704d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970488"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765043"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection voor Azure Database for MySQL
 
@@ -20,7 +20,7 @@ Advanced Threat Protection for Azure Database for MySQL detecteert vreemde activ
 Advanced Threat Protection maakt deel uit van de Advanced Data Security-aanbieding, een uniform pakket voor geavanceerde beveiligings mogelijkheden. Geavanceerde beveiliging tegen bedreigingen kan worden geopend en beheerd via de [Azure Portal](https://portal.azure.com) en is momenteel beschikbaar als preview-versie.
 
 > [!NOTE]
-> De functie Advanced Threat Protection is **niet** beschikbaar in de volgende Azure Government-en soevereine Cloud regio's: US Gov-Texas, US Gov-Arizona, US Gov-Iowa, US, gov Virginia, US DoD-oost, US DoD-centraal, Duitsland-centraal, Duitsland-noord, China-oost, China-oost 2. Ga naar beschik [bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/) voor de beschik baarheid van algemene producten.
+> De functie Advanced Threat Protection is **niet** beschikbaar in de volgende Azure Government-en soevereine Cloud regio's: US Gov-Texas, US Gov-Arizona, US gov-Iowa, VS, gov Virginia, US DoD-oost, US DoD-centraal, Duitsland-centraal, Duitsland-noord, China-oost, China-Oost 2. Ga naar beschik [bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/) voor de beschik baarheid van algemene producten.
 >
 
 > [!NOTE]

@@ -1,17 +1,17 @@
 ---
-title: Replica's in Azure Database for MySQL lezen.
+title: Replica's lezen-Azure Database for MySQL.
 description: "Meer informatie over het lezen van replica's in Azure Database for MySQL: het kiezen van regio's, het maken van replica's, het verbinden van replica's, het bewaken van replicatie en het stoppen van de replicatie."
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 66864870f29729e54ad06aef1208641f673c0612
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 12/03/2019
+ms.openlocfilehash: f3a6da6888b823c637411c508c949686fc378e58
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158314"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790092"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -41,7 +41,9 @@ U kunt een hoofd server in een [Azure database for MySQL regio](https://azure.mi
 ### <a name="universal-replica-regions"></a>Universele replica regio's
 U kunt in een van de volgende regio's een lees replica maken, ongeacht waar uw master server zich bevindt. De ondersteunde regio's voor universele replica's zijn:
 
-Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West 2.
+Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West.
+
+\* VS-West 2 is tijdelijk niet beschikbaar als replica locatie voor meerdere regio's.
 
 
 ### <a name="paired-regions"></a>Gekoppelde regio's

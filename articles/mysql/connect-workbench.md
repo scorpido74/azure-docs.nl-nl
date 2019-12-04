@@ -1,20 +1,20 @@
 ---
-title: Verbinding maken met Azure Database for MySQL via MySQL Workbench
+title: Verbinding maken met MySQL Workbench-Azure Database for MySQL
 description: Deze quickstart bevat de stappen voor het gebruik van MySQL Workbench om verbinding te maken met en gegevens op te vragen uit Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: aa7d38171fdfaa6fb25b1863a09273a4e733b6e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: 16218dcac2f0a4301b52b0efc54fc04ae39d5e22
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60526128"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770676"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: MySQL Workbench gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: MySQL Workbench gebruiken om verbinding te maken en gegevens op te vragen
 In deze quickstart ziet u hoe u met behulp van een MySQL Workbench-toepassing verbinding maakt met een Azure Database for MySQL. 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -51,8 +51,8 @@ Verbinding maken met Azure MySQL Server met behulp van het GUI-hulpprogramma MyS
     |   Verbindingsnaam | Demo-verbinding | Geef een label op voor deze verbinding. |
     | Verbindingsmethode | Standard (TCP/IP) | Standard (TCP/IP) is voldoende. |
     | Hostnaam | *servernaam* | Geef de waarde van de servernaam op die u hebt gebruikt toen u de Azure Database voor MySQL-server eerder hebt gemaakt. De server in ons voorbeeld is mydemoserver.mysql.database.azure.com. Gebruik de FQDN (Fully Qualified Domain Name) (\*.mysql.database.azure.com) zoals weergegeven in het voorbeeld. Volg de stappen in de vorige sectie om de verbindingsgegevens op te halen als u de servernaam bent vergeten.  |
-    | Poort | 3306 | Gebruik altijd poort 3306 bij het verbinden met Azure Database voor MySQL. |
-    | Gebruikersnaam |  *aanmeldnaam van serverbeheerder* | Typ de gebruikersnaam van de serverbeheerder die u hebt opgegeven toen u de Azure Database voor MySQL-server eerder hebt gemaakt. De gebruikersnaam in ons voorbeeld is myadmin@mydemoserver. Volg de stappen in de vorige sectie om de verbindingsgegevens op te halen als u de gebruikersnaam bent vergeten. De indeling is *gebruikersnaam\@servername*.
+    | Port | 3306 | Gebruik altijd poort 3306 bij het verbinden met Azure Database voor MySQL. |
+    | Gebruikersnaam |  *aanmeldnaam van serverbeheerder* | Typ de gebruikersnaam van de serverbeheerder die u hebt opgegeven toen u de Azure Database voor MySQL-server eerder hebt gemaakt. De gebruikersnaam in ons voorbeeld is myadmin@mydemoserver. Volg de stappen in de vorige sectie om de verbindingsgegevens op te halen als u de gebruikersnaam bent vergeten. De indeling is *username\@servername*.
     | Wachtwoord | Uw wachtwoord | Klik op de knop **Opslaan in de kluis...** om het wachtwoord op te slaan. |
 
 3.   Klik op **Verbinding testen** om te controleren of alle parameters juist zijn geconfigureerd. 

@@ -1,17 +1,17 @@
 ---
-title: Het juiste implementatie type voor Azure Database for MariaDB selecteren
+title: Het juiste implementatie type-Azure Database for MariaDB selecteren
 description: In dit artikel wordt beschreven welke factoren u moet overwegen voordat u Azure Database for MariaDB implementeert als Infrastructure as a Service (IaaS) of platform as a Service (PaaS).
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: 59064c71d19f81a5edc322bc4c8158773a104b5d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/02/2019
+ms.openlocfilehash: d53a3f270c1de3c8d533b5886e0051f6aa1ef10d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151981"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776735"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Kies de juiste MariaDB-Server optie in azure
 
@@ -31,7 +31,7 @@ Houd rekening met de volgende twee opties bij het nemen van uw beslissing:
 
 De belangrijkste verschillen tussen deze opties worden weer gegeven in de volgende tabel:
 
-|            | Azure Database for MariaDB | MariaDB op Azure Vm's    |
+|            | Azure Database voor MariaDB | MariaDB op Azure Vm's    |
 |:-------------------|:-----------------------------|:--------------------|
 | Serviceovereenkomst (SLA)                | Biedt een SLA van 99,99% Beschik baarheid| Maxi maal 99,95% Beschik baarheid met twee of meer exemplaren in dezelfde beschikbaarheidsset.<br/><br/>99,9% Beschik baarheid met een virtuele machine met één exemplaar met Premium Storage.<br/><br/>99,99% met Beschikbaarheidszones met meerdere exemplaren in meerdere beschikbaarheids sets.<br/><br/>Zie de [virtual machines Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
 | Patches besturings systeem        | Automatisch  | Beheerd door klanten |
@@ -84,7 +84,7 @@ In de volgende lijst worden administratieve aandachtspunten voor elke optie besc
   - Aanmelden
   - Indexafstemming
   - Query afstemmen
-  - Controleren
+  - Controle
   - Beveiliging
 
   Daarnaast is het configureren van hoge Beschik baarheid voor een ander Data Center Mini maal, zodat er geen configuratie of beheer nodig is.

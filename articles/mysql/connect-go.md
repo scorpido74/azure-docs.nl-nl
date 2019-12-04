@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Azure Database for MySQL via Go
+title: Verbinding maken met behulp van Go-Azure Database for MySQL
 description: Deze snelstartgids bevat enkele voorbeelden van Go-code die u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit een Azure-database voor MySQL.
 author: ajlam
 ms.author: andrela
@@ -7,15 +7,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 3cd25f935a38f5192811d7f7886d3c6654d5d221
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: b3ee0caa380cacc697a87307c3107b93aa241afb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60526055"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770761"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: de taal Go gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure-database voor MySQL: de taal Go gebruiken om verbinding te maken en gegevens op te vragen
 In deze quickstart leest u hoe u op Windows-, Ubuntu Linux- en Apple macOS-platforms verbinding maakt met Azure Database for MySQL met behulp van code geschreven in de taal [Go](https://golang.org/). U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van Go, maar geen ervaring hebt met het werken met Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -24,7 +24,7 @@ In deze snelstartgids worden de resources die in een van deze handleidingen zijn
 - [Een Azure-database voor een MySQL-server maken met behulp van Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-go-and-mysql-connector"></a>Go en de MySQL-connector installeren
-Installeer [Go](https://golang.org/doc/install) en het [Go-SQL-stuurprogramma voor MySQL](https://github.com/go-sql-driver/mysql#installation) op uw computer. Afhankelijk van uw platform voert u de volgende stappen uit in de toepasselijke sectie:
+Installeer [Go](https://golang.org/doc/install) en het [Go-SQL-stuurprogramma voor MySQL](https://github.com/go-sql-driver/mysql#installation) op uw computer. Volg afhankelijk van uw platform de volgende stappen uit in de toepasselijke sectie:
 
 ### <a name="windows"></a>Windows
 1. [Download](https://golang.org/dl/) en installeer Go voor Microsoft Windows volgens de [installatie-instructies](https://golang.org/doc/install).

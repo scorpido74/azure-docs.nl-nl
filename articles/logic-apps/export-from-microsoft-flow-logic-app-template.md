@@ -2,21 +2,18 @@
 title: Stromen exporteren van automatische stroom naar Azure Logic Apps
 description: Migreer stromen van automatische stroom naar Azure Logic Apps door te exporteren als Azure Resource Manager sjablonen
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e0dda5c2097243143d18851c47e7006c81769c87
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583258"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792642"
 ---
-# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Stromen exporteren van automatische stroom en implementeren naar Azure Logic Apps
+# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Stromen exporteren vanuit Power Automate en implementeren in Azure Logic Apps
 
 Om de mogelijkheden van uw stroom uit te breiden en uit te breiden, kunt u die stroom migreren van [Automatische stroom](https://flow.microsoft.com) naar [Azure Logic apps](../logic-apps/logic-apps-overview.md). U kunt uw stroom exporteren als een Azure Resource Manager sjabloon voor een logische app, de sjabloon Logic app implementeren naar een Azure-resource groep en die logische app vervolgens openen in de ontwerp functie voor logische apps.
 

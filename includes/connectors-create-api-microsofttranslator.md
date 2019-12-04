@@ -1,27 +1,28 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 46a6fcb57a21f3f1e30b39fc6967256550e31616
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 94f18b20d84a1929368053c44b4f07793e385b38
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176295"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789562"
 ---
-### <a name="prerequisites"></a>Vereisten
-* Een [MicrosoftTranslator](https://www.microsoft.com/translator) account  
+## <a name="prerequisites"></a>Vereisten
 
-Voordat u uw account MicrosoftTranslator in een logische app gebruiken kunt, moet u de logische app verbinding maken met uw account MicrosoftTranslator machtigen. Gelukkig kunt u dit eenvoudig vanuit doen binnen uw logische app in de Azure Portal.  
+* Een [MicrosoftTranslator](https://www.microsoft.com/translator) -account  
 
-Hier volgen de stappen voor het autoriseren van uw logische app verbinding maken met uw account MicrosoftTranslator:  
+Voordat u uw MicrosoftTranslator-account in een logische app kunt gebruiken, moet u de logische app machtigen om verbinding te maken met uw MicrosoftTranslator-account. Gelukkig kunt u dit eenvoudig doen vanuit uw logische app in azure Portal.  
 
-1. Voor het maken van een verbinding met MicrosoftTranslator, in de Logic app designer selecteert **beheerde API's van Microsoft weergeven** Voer in de vervolgkeuzelijst *MicrosoftTranslator* in het zoekvak in. Selecteer de trigger of actie wilt u zult gebruiken:  
-   ![Stap MicrosoftTranslator verbinding](./media/connectors-create-api-microsofttranslator/microsofttranslator-1.png)  
-2. Als u alle verbindingen met MicrosoftTranslator voordat u dit nog niet hebt gemaakt, zult u wordt gevraagd uw referenties MicrosoftTranslator op te geven. Deze referenties worden gebruikt voor het autoriseren van uw logische app verbinding maken met en toegang tot gegevens van uw MicrosoftTranslator-account:  
-   ![Stap MicrosoftTranslator verbinding](./media/connectors-create-api-microsofttranslator/microsofttranslator-2.png)  
-3. U ziet dat de verbinding is gemaakt en u bent nu vrij om door te gaan met de overige stappen in uw logische app:  
-   ![Stap MicrosoftTranslator verbinding](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
+Hier volgen de stappen om uw logische app te autoriseren om verbinding te maken met uw MicrosoftTranslator-account:  
+
+1. Als u een verbinding met MicrosoftTranslator wilt maken, selecteert u in de ontwerp functie voor logische apps de optie **micro soft Managed Api's weer geven** in de vervolg keuzelijst en voert u vervolgens *MicrosoftTranslator* in het zoekvak in. Selecteer de trigger of actie die u wilt gebruiken:  
+   MicrosoftTranslator-stap voor het maken van een ![-verbinding](./media/connectors-create-api-microsofttranslator/microsofttranslator-1.png)  
+2. Als u nog geen verbindingen met MicrosoftTranslator hebt gemaakt, wordt u gevraagd om uw MicrosoftTranslator-referenties op te geven. Deze referenties worden gebruikt om uw logische app te autoriseren om verbinding te maken met en om toegang te krijgen tot de gegevens van uw MicrosoftTranslator-account:  
+   ![Stap MicrosoftTranslator-verbinding maken](./media/connectors-create-api-microsofttranslator/microsofttranslator-2.png)  
+3. U ziet dat de verbinding is gemaakt en u kunt nu door gaan met de andere stappen in uw logische app:  
+   ![Stap MicrosoftTranslator-verbinding maken](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
 

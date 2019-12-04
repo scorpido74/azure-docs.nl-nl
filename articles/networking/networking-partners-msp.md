@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 3151d72c0e74e7eb694ef2bdd5737f65992fe905
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 10c27c18b8003bf286789e478f504bca98ebe7ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824368"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766479"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informatie over MSP-partners voor Azure-netwerken
 
-Het [Azure Networking managed service provider (MSP)-partner programma](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) maakt netwerk services gericht Msp's, telecom municatie en systeem integrators (SIs) mogelijk om Cloud-en hybride netwerk services aan te bieden die zijn gecentreerd rond de Port Folio van netwerken producten van Azure en-services.
+Het [Azure Networking managed service provider (MSP)-partner programma](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) maakt netwerk services gericht Msp's, telecom municatie en systeem integrators (SIs) mogelijk om Cloud-en hybride netwerk services aan te bieden die zijn gecentreerd rond de Port Folio van netwerken producten en services van Azure.
 
 Azure Networking Msp's is een gespecialiseerde set beheerde service providers die de vereisten en uitdagingen van de Enter prise-Cloud netwerken verhelpen over alle aspecten van Cloud-en hybride netwerken. De beheerde netwerk services omvatten een of meer van de volgende services: netwerk architectuur, planning, implementatie, bewerkingen, onderhoud en Optima Lise ring.
 
@@ -28,12 +28,13 @@ Klanten kunnen MSP-Managed Services-aanbiedingen kopen op de Azure Marketplace o
 
 Gebruik de koppelingen in deze sectie voor meer informatie over beheerde Cloud netwerk services die worden aangeboden door Azure Networking MSP-partners. Als uw Cloud Network Services-partner niet wordt vermeld in de onderstaande sectie, laat u de provider contact met ons opnemen. Ze kunnen contact met ons opnemen door een e-mail naar ManagedVirtualWAN@microsoft.comte sturen. 
 
-| **MSP** | **Transformatie Services voor Cloud netwerken** | **Beheerde ExpressRoute** | **Beheerd virtueel WAN** | **Beheerde netwerk beveiligings Services** |**Rand berekening beheerde netwerk** |
+| **MSP** | **Transformatie Services voor Cloud netwerken** | **Beheerde ExpressRoute** | **Beheerd virtueel WAN** | **Beheerde netwerk beveiligings Services** |**Beheerde Edge-Compute met meerdere toegang** |
 | ---| ---| ---| ---| ---| ---|
 |[Amdocs](https://www.amdocs.com/)|||||Ja|
 |[ANT groep UK](https://www.ans.co.uk/)|Ja|Ja||||
 |[Aryaka-netwerken](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)|Ja |Ja |Ja | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|Ja|Ja|Ja|||
+|[Coontwikkeling](https://www.coevolve.com/services/azure-networking-services/)|Ja||Ja|Ja||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|Ja|||||
 |[Dimensie gegevens](https://www.dimensiondata.com/)|Ja|||||
 |[Equinix](https://www.equinix.com/)|Ja|Ja||||

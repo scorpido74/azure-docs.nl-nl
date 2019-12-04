@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: c7e102b6b8976f8caf7676fd456e6c23488c935a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bd9f659589b222350fe688ee4da876801a65226a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932277"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769962"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-producten/-services verbinden met IT Service Management-connector
 Dit artikel bevat informatie over het configureren van de verbinding tussen uw ITSM-product/-service en de IT Service Management-connector (ITSMC) in Log Analytics om uw werk items centraal te beheren. Zie [overzicht](../../azure-monitor/platform/itsmc-overview.md)voor meer informatie over ITSMC.
@@ -192,7 +192,7 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan:
     - [OAuth voor Istanboel instellen](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth instellen voor Helsinki](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth instellen voor Genève](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-
+    - [OAuth voor New York instellen](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 
 - Installeer de gebruikers-app voor micro soft Log Analytics Integration (ServiceNow-app). [Meer informatie](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Maak een gebruikersrol voor integratie voor de app van de gebruiker geïnstalleerd. [Hier](#create-integration-user-role-in-servicenow-app)vindt u informatie over het maken van de gebruikersrol integratie.
@@ -262,7 +262,7 @@ De zojuist gemaakte gebruiker wordt weer gegeven met de standaard rollen toegewe
 **Standaard rollen**:
 - personalize_choices
 - import_transformer
--   x_mioms_microsoft. User
+-   x_mioms_microsoft. gebruiker
 -   ITIL
 -   template_editor
 -   view_changer

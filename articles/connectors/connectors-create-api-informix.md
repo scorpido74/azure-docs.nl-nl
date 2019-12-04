@@ -1,277 +1,275 @@
 ---
-title: Verbinding maken met IBM Informix-database - Azure Logic Apps | Microsoft Docs
-description: Resources beheren met IBM Informix REST-API's en Azure Logic Apps
-author: gplarsen
-manager: jeconnoc
-ms.author: plarsen
-ms.date: 09/26/2016
-ms.topic: article
-ms.service: logic-apps
+title: Verbinding maken met de IBM Informix-data base
+description: Resources beheren met de IBM Informix REST Api's en Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+author: gplarsen
+ms.author: plarsen
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 09/26/2016
 tags: connectors
-ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d6f768bc76d19c0aa21a245c008a4b05588f8f43
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60690811"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789725"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Aan de slag met de Informix-connector
-Logic Apps verbindt connector van Microsoft voor Informix met bronnen die zijn opgeslagen in een IBM Informix-database. De Informix-connector bevat een client voor Microsoft om te communiceren met externe computers voor Informix-server via een TCP/IP-netwerk. Dit omvat clouddatabases zoals IBM Informix voor Windows die wordt uitgevoerd in Azure-virtualisatie, en het on-premises databases met behulp van de on-premises gegevensgateway. Zie de [lijst met ondersteunde](connectors-create-api-informix.md#supported-informix-platforms-and-versions) van IBM Informix-platforms en versies (in dit onderwerp).
+Micro soft-connector voor Informix verbindt Logic Apps met resources die zijn opgeslagen in een IBM Informix-data base. De Informix-connector bevat een micro soft-client om te communiceren met externe Informix-Server computers via een TCP/IP-netwerk. Dit omvat Cloud databases, zoals IBM Informix voor Windows die worden uitgevoerd in azure virtualisatie, en on-premises data bases met behulp van de on-premises gegevens gateway. Zie de [lijst met ondersteunde](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix-platforms en-versies (in dit onderwerp).
 
-De connector ondersteunt de volgende databasebewerkingen uit:
+De connector ondersteunt de volgende database bewerkingen:
 
-* Lijst met database-tabellen
-* Lezen van één rij met behulp van selecteren
-* Lezen van alle rijen met behulp van selecteren
-* Een rij met behulp van INSERT toevoegen
-* Wijzigen van één rij met UPDATE
-* Verwijderen van één rij verwijderen gebruiken
+* Database tabellen weer geven
+* Eén rij lezen met selecteren
+* Alle rijen lezen met behulp van selecteren
+* Eén rij toevoegen met INSERT
+* Een rij met UPDATE wijzigen
+* Eén rij verwijderen met behulp van verwijderen
 
-Dit onderwerp ziet u hoe u de connector in een logische app databasebewerkingen proces gebruiken.
+In dit onderwerp wordt beschreven hoe u de connector in een logische app kunt gebruiken om database bewerkingen te verwerken.
 
-Zie voor meer informatie over Logic Apps, [maken van een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Zie [een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md)voor meer informatie over Logic apps.
 
-## <a name="available-actions"></a>Beschikbare acties
-Deze connector ondersteunt de volgende acties van logische Apps:
+## <a name="available-actions"></a>Beschik bare acties
+Deze connector ondersteunt de volgende bewerkingen voor logische apps:
 
 * Getables
 * GetRow
-* GetRows
+* Ophalen
 * InsertRow
 * UpdateRow
 * DeleteRow
 
-## <a name="list-tables"></a>Lijst met tabellen
-Het maken van een logische app voor elke bewerking die bestaat uit veel stappen die worden uitgevoerd via de Microsoft Azure-portal.
+## <a name="list-tables"></a>Tabellen weer geven
+Het maken van een logische app voor elke bewerking bestaat uit veel stappen die worden uitgevoerd via de Microsoft Azure-portal.
 
-In de logische app, kunt u een actie toevoegen aan lijst met tabellen in een Informix-database. Hiermee geeft u de connector voor het verwerken van een Informix-schema-instructie, zoals `CALL SYSIBM.SQLTABLES`.
+In de logische app kunt u een actie toevoegen aan lijst tabellen in een Informix-data base. Met deze actie wordt de connector geïnstrueerd een Informix-schema-instructie te verwerken, zoals `CALL SYSIBM.SQLTABLES`.
 
 ### <a name="create-a-logic-app"></a>Een logische app maken
-1. In de **Azure start board**, selecteer **+** (plusteken), **Web en mobiel**, en vervolgens **logische App**.
-2. Voer de **naam**, zoals `InformixgetTables`, **abonnement**, **resourcegroep**, **locatie**, en **App Service Plan**. Selecteer **vastmaken aan dashboard**, en selecteer vervolgens **maken**.
+1. Selecteer in het **Start bord van Azure**de optie **+** (plus teken), **Web en mobiel**en vervolgens **logische app**.
+2. Voer de **naam**in, zoals `InformixgetTables`, **abonnement**, **Resource groep**, **locatie**en **app service plan**. Selecteer vastmaken **aan dash board**en selecteer vervolgens **maken**.
 
-### <a name="add-a-trigger-and-action"></a>Een trigger en een actie toevoegen
-1. In de **ontwerper van logische Apps**, selecteer **leeg LogicApp** in de **sjablonen** lijst.
-2. In de **triggers** in de lijst met **terugkeerpatroon**. 
-3. In de **terugkeerpatroon** trigger, selecteer **bewerken**, selecteer **frequentie** vervolgkeuzelijst te selecteren **dag**, en selecteer vervolgens  **Interval** naar het type **7**.  
-4. Selecteer de **+ nieuwe stap** vak en selecteer vervolgens **een actie toevoegen**.
-5. In de **acties** weergeven, typt u **informix** in de **zoeken naar meer acties** invoervak en selecteer vervolgens **Informix - tabellen ophalen (Preview)** .
+### <a name="add-a-trigger-and-action"></a>Een trigger en actie toevoegen
+1. Selecteer in de **Logic apps Designer** **lege LogicApp** in de lijst **sjablonen** .
+2. Selecteer in de lijst **Triggers** de optie **terugkeer patroon**. 
+3. Selecteer in de trigger voor **terugkeer patroon** de optie **bewerken**, selecteer de vervolg keuzelijst **frequentie** om **dag**te selecteren en selecteer vervolgens **interval** tot type **7**.  
+4. Selecteer het vak **+ nieuwe stap** en selecteer vervolgens **een actie toevoegen**.
+5. Typ in de lijst **acties** op **Informix** in het invoervak **Zoek naar meer acties** en selecteer vervolgens **Informix-ophalen tabellen (preview)** .
    
    ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
-6. In de **Informix - Get-tabellen** configuratie venster **selectievakje** om in te schakelen **verbinding maken via een on-premises gegevensgateway**. U ziet dat de instellingen voor het wijzigen van cloud naar on-premises.
+6. Schakel in het deel venster configuratie van **Informix-ophalen van tabellen** het **selectie vakje** in om verbinding te maken **via een on-premises gegevens gateway**. U ziet dat de instellingen van de Cloud naar on-premises worden gewijzigd.
    
-   * Typ de waarde voor **Server**, in de vorm van-adres of alias poortnummer voor dubbele punt. Typ bijvoorbeeld `ibmserver01:9089`.
-   * Typ de waarde voor **Database**. Typ bijvoorbeeld `nwind`.
-   * Selecteer de waarde voor **verificatie**. Selecteer bijvoorbeeld **Basic**.
-   * Typ de waarde voor **gebruikersnaam**. Typ bijvoorbeeld `informix`.
-   * Typ de waarde voor **wachtwoord**. Typ bijvoorbeeld `Password1`.
-   * Selecteer de waarde voor **Gateway**. Selecteer bijvoorbeeld **datagateway01**.
-7. Selecteer **maken**, en selecteer vervolgens **opslaan**. 
+   * Typ waarde voor **Server**, in de vorm van adres of alias dubbele punt poort nummer. Typ bijvoorbeeld `ibmserver01:9089`.
+   * Typ de waarde voor de **Data Base**. Typ bijvoorbeeld `nwind`.
+   * Selecteer een waarde voor **authenticatie**. Selecteer bijvoorbeeld **Basic**.
+   * Typ de waarde voor de **gebruikers naam**. Typ bijvoorbeeld `informix`.
+   * Typ een waarde voor het **wacht woord**. Typ bijvoorbeeld `Password1`.
+   * Selecteer een waarde voor de **Gateway**. Selecteer bijvoorbeeld **datagateway01**.
+7. Selecteer **maken**en selecteer vervolgens **Opslaan**. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
-8. In de **InformixgetTables** blade in de **All runs** lijst onder **samenvatting**, selecteert u het item eerst weergegeven (meest recente uitvoering).
-9. In de **logische app** Selecteer **Details uitvoering van**. Binnen de **actie** in de lijst met **Get_tables**. Zie de waarde voor **Status**, die moet worden **geslaagd**. Selecteer de **invoerkoppeling** om weer te geven van de invoer. Selecteer de **uitvoerkoppeling**, en de uitvoer bekijken, waaronder is een lijst met tabellen.
+8. Selecteer in de Blade **InformixgetTables** in de lijst **alle uitvoeringen** onder **samen vatting**het eerste vermelde item (de meest recente uitvoering).
+9. Selecteer in de Blade **logische app uitvoeren** de optie **Details uitvoeren**. Selecteer in de lijst **actie** de optie **Get_tables**. Bekijk de waarde voor **status**, die moet worden **geslaagd**. Selecteer de **koppeling invoer** om de invoer weer te geven. Selecteer de **koppeling uitvoer**en Bekijk de uitvoer. Dit moet een lijst met tabellen bevatten.
    
    ![](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 
 ## <a name="create-the-connections"></a>De verbindingen maken
-Deze connector biedt ondersteuning voor verbindingen met database on-premises en in de cloud met behulp van de volgende verbindingseigenschappen. 
+Deze connector ondersteunt verbindingen met data base on-premises en in de Cloud met behulp van de volgende verbindings eigenschappen. 
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 | --- | --- |
-| server |Vereist. Accepteert een string-waarde vertegenwoordigt een TCP/IP-adres of de alias in IPv4 of IPv6-indeling, gevolgd (puntkomma's gescheiden) door een TCP/IP-poortnummer. |
-| database |Vereist. Accepteert een string-waarde vertegenwoordigt een DRDA relationele Database de naam (RDBNAM). Informix accepteert een 128-byte-tekenreeks (de database staat bekend als de naam van een IBM Informix-database (dbname)). |
-| verificatie |Optioneel. Accepteert een item lijstwaarde, Basic of Windows (kerberos). |
-| username |Vereist. Een string-waarde accepteert. |
-| password |Vereist. Een string-waarde accepteert. |
-| Gateway |Vereist. Accepteert een lijst met item-waarde voor de on-premises gegevensgateway naar Logic Apps is gedefinieerd in de opslaggroep. |
+| server |Vereist. Hiermee wordt een teken reeks waarde geaccepteerd die een TCP/IP-adres of alias vertegenwoordigt, in de IPv4-of IPv6-indeling, gevolgd door een TCP/IP-poort nummer (door komma's gescheiden). |
+| database |Vereist. Hiermee wordt een teken reeks waarde geaccepteerd die een DRDA relationele database naam vertegenwoordigt (RDBNAM). Informix accepteert een teken reeks van 128 bytes (Data Base staat bekend als een IBM Informix-database naam (dbname)). |
+| verificatie |Optioneel. Hiermee wordt een waarde voor het lijst item geaccepteerd: Basic of Windows (Kerberos). |
+| gebruikersnaam |Vereist. Hiermee wordt een teken reeks waarde geaccepteerd. |
+| wachtwoord |Vereist. Hiermee wordt een teken reeks waarde geaccepteerd. |
+| #B0 |Vereist. Hiermee wordt een waarde van het lijst item geaccepteerd die de on-premises gegevens gateway vertegenwoordigt die is gedefinieerd voor Logic Apps binnen de opslag groep. |
 
-## <a name="create-the-on-premises-gateway-connection"></a>De on-premises gatewayverbinding maken
-Deze connector kan toegang tot een on-premises Informix-database met behulp van de on-premises gegevensgateway. Zie gateway-onderwerpen voor meer informatie. 
+## <a name="create-the-on-premises-gateway-connection"></a>De on-premises gateway verbinding maken
+Deze connector heeft toegang tot een on-premises Informix-data base met behulp van de on-premises gegevens gateway. Zie de onderwerpen over gateways voor meer informatie. 
 
-1. In de **Gateways** configuratie venster **selectievakje** om in te schakelen **verbinding maken via een gateway**. Zie de instellingen wijzigen van cloud naar on-premises.
-2. Typ de waarde voor **Server**, in de vorm van-adres of alias poortnummer voor dubbele punt. Typ bijvoorbeeld `ibmserver01:9089`.
-3. Typ de waarde voor **Database**. Typ bijvoorbeeld `nwind`.
-4. Selecteer de waarde voor **verificatie**. Selecteer bijvoorbeeld **Basic**.
-5. Typ de waarde voor **gebruikersnaam**. Typ bijvoorbeeld `informix`.
-6. Typ de waarde voor **wachtwoord**. Typ bijvoorbeeld `Password1`.
-7. Selecteer de waarde voor **Gateway**. Selecteer bijvoorbeeld **datagateway01**.
+1. Schakel in het configuratie venster **gateways** het **selectie vakje** in om **verbinding via gateway**in te scha kelen. Zie de instellingen wijzigen van Cloud naar on-premises.
+2. Typ waarde voor **Server**, in de vorm van adres of alias dubbele punt poort nummer. Typ bijvoorbeeld `ibmserver01:9089`.
+3. Typ de waarde voor de **Data Base**. Typ bijvoorbeeld `nwind`.
+4. Selecteer een waarde voor **authenticatie**. Selecteer bijvoorbeeld **Basic**.
+5. Typ de waarde voor de **gebruikers naam**. Typ bijvoorbeeld `informix`.
+6. Typ een waarde voor het **wacht woord**. Typ bijvoorbeeld `Password1`.
+7. Selecteer een waarde voor de **Gateway**. Selecteer bijvoorbeeld **datagateway01**.
 8. Selecteer **maken** om door te gaan. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
 
-## <a name="create-the-cloud-connection"></a>De cloudverbinding maken
-Deze connector hebben toegang tot een cloud Informix-database. 
+## <a name="create-the-cloud-connection"></a>De Cloud verbinding maken
+Deze connector kan toegang krijgen tot een Informix-data base in de Cloud. 
 
-1. In de **Gateways** deelvenster configuratie, laat de **selectievakje** uitgeschakeld (gekleurd) **verbinding maken via een gateway**. 
-2. Typ de waarde voor **verbindingsnaam**. Typ bijvoorbeeld `hisdemo2`.
-3. Typ de waarde voor **Informix-servernaam**, in de vorm van-adres of alias poortnummer voor dubbele punt. Typ bijvoorbeeld `hisdemo2.cloudapp.net:9089`.
-4. Typ de waarde voor **Informix-databasenaam**. Typ bijvoorbeeld `nwind`.
-5. Typ de waarde voor **gebruikersnaam**. Typ bijvoorbeeld `informix`.
-6. Typ de waarde voor **wachtwoord**. Typ bijvoorbeeld `Password1`.
+1. In het deel venster configuratie van **gateways** , sluit u het **selectie vakje** uitgeschakeld (niet geklikt) **verbinding maken via gateway**. 
+2. Typ een waarde voor de **verbindings naam**. Typ bijvoorbeeld `hisdemo2`.
+3. Typ een waarde voor de naam van de **Informix-server**, in de vorm van adres of alias dubbele poort nummer. Typ bijvoorbeeld `hisdemo2.cloudapp.net:9089`.
+4. Typ een waarde voor de naam van de **Informix-data base**. Typ bijvoorbeeld `nwind`.
+5. Typ de waarde voor de **gebruikers naam**. Typ bijvoorbeeld `informix`.
+6. Typ een waarde voor het **wacht woord**. Typ bijvoorbeeld `Password1`.
 7. Selecteer **maken** om door te gaan. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
 
-## <a name="fetch-all-rows-using-select"></a>Ophalen van alle rijen met behulp van selecteren
-U kunt een actie voor logische app om op te halen van alle rijen in de Informix-tabel maken. Hiermee geeft u de connector voor het verwerken van een Informix SELECT-instructie, zoals `SELECT * FROM AREA`.
+## <a name="fetch-all-rows-using-select"></a>Alle rijen ophalen met behulp van selecteren
+U kunt een actie van een logische app maken om alle rijen in de tabel Informix op te halen. Met deze actie wordt de connector geïnstrueerd om een Informix SELECT-instructie, zoals `SELECT * FROM AREA`, te verwerken.
 
 ### <a name="create-a-logic-app"></a>Een logische app maken
-1. In de **Azure start board**, selecteer **+** (plusteken), **Web en mobiel**, en vervolgens **logische App**.
-2. Voer de **naam** (bijvoorbeeld) "**InformixgetRows**"), **abonnement**, **resourcegroep**, **locatie**, en **App Service-Plan**. Selecteer **vastmaken aan dashboard**, en selecteer vervolgens **maken**.
+1. Selecteer in het **Start bord van Azure**de optie **+** (plus teken), **Web en mobiel**en vervolgens **logische app**.
+2. Voer de **naam** in (bijvoorbeeld '**InformixgetRows**'), **abonnement**, **resource groep**, **locatie**en **app service plan**. Selecteer vastmaken **aan dash board**en selecteer vervolgens **maken**.
 
-### <a name="add-a-trigger-and-action"></a>Een trigger en een actie toevoegen
-1. In de **ontwerper van logische Apps**, selecteer **leeg LogicApp** in de **sjablonen** lijst.
-2. In de **triggers** in de lijst met **terugkeerpatroon**. 
-3. In de **terugkeerpatroon** trigger, selecteer **bewerken**, selecteer **frequentie** vervolgkeuzelijst te selecteren **dag**, en selecteer vervolgens  **Interval** naar het type **7**. 
-4. Selecteer de **+ nieuwe stap** vak en selecteer vervolgens **een actie toevoegen**.
-5. In de **acties** weergeven, typt u **informix** in de **zoeken naar meer acties** invoervak en selecteer vervolgens **Informix - rijen ophalen (Preview)** .
-6. In de **rijen (Preview) ophalen** actie, selecteer **verbinding wijzigen**.
-7. In de **verbindingen** configuratie venster **nieuw**. 
+### <a name="add-a-trigger-and-action"></a>Een trigger en actie toevoegen
+1. Selecteer in de **Logic apps Designer** **lege LogicApp** in de lijst **sjablonen** .
+2. Selecteer in de lijst **Triggers** de optie **terugkeer patroon**. 
+3. Selecteer in de trigger voor **terugkeer patroon** de optie **bewerken**, selecteer de vervolg keuzelijst **frequentie** om **dag**te selecteren en selecteer vervolgens **interval** tot type **7**. 
+4. Selecteer het vak **+ nieuwe stap** en selecteer vervolgens **een actie toevoegen**.
+5. Typ in de lijst **acties** het type **Informix** in het invoervak **Zoek naar meer acties** en selecteer vervolgens **Informix-rijen ophalen (preview)** .
+6. Selecteer in de actie **rijen ophalen (voor beeld)** de optie **verbinding wijzigen**.
+7. Selecteer in het deel venster **verbindingen** configuratie de optie **nieuwe maken**. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorNewConnection.png)
-8. In de **Gateways** deelvenster configuratie, laat de **selectievakje** uitgeschakeld (gekleurd) **verbinding maken via een gateway**.
+8. In het deel venster configuratie van **gateways** , sluit u het **selectie vakje** uitgeschakeld (niet geklikt) **verbinding maken via gateway**.
    
-   * Typ de waarde voor **verbindingsnaam**. Typ bijvoorbeeld `HISDEMO2`.
-   * Typ de waarde voor **Informix-servernaam**, in de vorm van-adres of alias poortnummer voor dubbele punt. Typ bijvoorbeeld `HISDEMO2.cloudapp.net:9089`.
-   * Typ de waarde voor **Informix-databasenaam**. Typ bijvoorbeeld `NWIND`.
-   * Typ de waarde voor **gebruikersnaam**. Typ bijvoorbeeld `informix`.
-   * Typ de waarde voor **wachtwoord**. Typ bijvoorbeeld `Password1`.
+   * Typ een waarde voor de **verbindings naam**. Typ bijvoorbeeld `HISDEMO2`.
+   * Typ een waarde voor de naam van de **Informix-server**, in de vorm van adres of alias dubbele poort nummer. Typ bijvoorbeeld `HISDEMO2.cloudapp.net:9089`.
+   * Typ een waarde voor de naam van de **Informix-data base**. Typ bijvoorbeeld `NWIND`.
+   * Typ de waarde voor de **gebruikers naam**. Typ bijvoorbeeld `informix`.
+   * Typ een waarde voor het **wacht woord**. Typ bijvoorbeeld `Password1`.
 9. Selecteer **maken** om door te gaan.
    
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-10. In de **tabelnaam** in de lijst met de **pijl-omlaag**, en selecteer vervolgens **gebied**.
-11. Selecteer desgewenst **geavanceerde opties weergeven** om op te geven van de opties voor query's.
+10. Selecteer in de lijst **tabel naam** de **pijl-omlaag**en selecteer vervolgens **gebied**.
+11. Selecteer eventueel **Geavanceerde opties weer geven** om query opties op te geven.
 12. Selecteer **Opslaan**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsTableName.png)
-13. In de **InformixgetRows** blade in de **All runs** lijst onder **samenvatting**, selecteert u het item eerst weergegeven (meest recente uitvoering).
-14. In de **logische app** Selecteer **Details uitvoering van**. Binnen de **actie** in de lijst met **Get_rows**. Zie de waarde voor **Status**, die moet worden **geslaagd**. Selecteer de **invoerkoppeling** om weer te geven van de invoer. Selecteer de **uitvoerkoppeling**, en de uitvoer bekijken, waaronder is een lijst met rijen.
+13. Selecteer in de Blade **InformixgetRows** in de lijst **alle uitvoeringen** onder **samen vatting**het eerste vermelde item (de meest recente uitvoering).
+14. Selecteer in de Blade **logische app uitvoeren** de optie **Details uitvoeren**. Selecteer in de lijst **actie** de optie **Get_rows**. Bekijk de waarde voor **status**, die moet worden **geslaagd**. Selecteer de **koppeling invoer** om de invoer weer te geven. Selecteer de **koppeling uitvoer**en Bekijk de uitvoer. Dit moet een lijst met rijen bevatten.
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
 
-## <a name="add-one-row-using-insert"></a>Een rij met behulp van INSERT toevoegen
-U kunt een actie voor logische app als u wilt toevoegen van een rij in een Informix-tabel maken. Deze actie geeft de connector voor het verwerken van een Informix INSERT-instructie zoals `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
+## <a name="add-one-row-using-insert"></a>Eén rij toevoegen met INSERT
+U kunt een actie van een logische app maken om één rij in een Informix-tabel toe te voegen. Met deze actie wordt de connector geïnstrueerd om een Informix INSERT-instructie, zoals `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`, te verwerken.
 
 ### <a name="create-a-logic-app"></a>Een logische app maken
-1. In de **Azure start board**, selecteer **+** (plusteken), **Web en mobiel**, en vervolgens **logische App**.
-2. Voer de **naam**, zoals `InformixinsertRow`, **abonnement**, **resourcegroep**, **locatie**, en **App Service Plan**. Selecteer **vastmaken aan dashboard**, en selecteer vervolgens **maken**.
+1. Selecteer in het **Start bord van Azure**de optie **+** (plus teken), **Web en mobiel**en vervolgens **logische app**.
+2. Voer de **naam**in, zoals `InformixinsertRow`, **abonnement**, **Resource groep**, **locatie**en **app service plan**. Selecteer vastmaken **aan dash board**en selecteer vervolgens **maken**.
 
-### <a name="add-a-trigger-and-action"></a>Een trigger en een actie toevoegen
-1. In de **ontwerper van logische Apps**, selecteer **leeg LogicApp** in de **sjablonen** lijst.
-2. In de **triggers** in de lijst met **terugkeerpatroon**. 
-3. In de **terugkeerpatroon** trigger, selecteer **bewerken**, selecteer **frequentie** vervolgkeuzelijst te selecteren **dag**, en selecteer vervolgens  **Interval** naar het type **7**. 
-4. Selecteer de **+ nieuwe stap** vak en selecteer vervolgens **een actie toevoegen**.
-5. In de **acties** weergeven, typt u **informix** in de **zoeken naar meer acties** invoervak en selecteer vervolgens **Informix - rij invoegen (Preview)** .
-6. In de **rijen (Preview) ophalen** actie, selecteer **verbinding wijzigen**. 
-7. In de **verbindingen** configuratie in het deelvenster selecteren om een verbinding te kiezen. Selecteer bijvoorbeeld **hisdemo2**.
+### <a name="add-a-trigger-and-action"></a>Een trigger en actie toevoegen
+1. Selecteer in de **Logic apps Designer** **lege LogicApp** in de lijst **sjablonen** .
+2. Selecteer in de lijst **Triggers** de optie **terugkeer patroon**. 
+3. Selecteer in de trigger voor **terugkeer patroon** de optie **bewerken**, selecteer de vervolg keuzelijst **frequentie** om **dag**te selecteren en selecteer vervolgens **interval** tot type **7**. 
+4. Selecteer het vak **+ nieuwe stap** en selecteer vervolgens **een actie toevoegen**.
+5. Typ in de lijst **acties** op **Informix** in het invoervak **Zoek naar meer acties** en selecteer vervolgens **Informix-invoegrij (preview)** .
+6. Selecteer in de actie **rijen ophalen (voor beeld)** de optie **verbinding wijzigen**. 
+7. Selecteer in het deel venster **verbindingen** configuratie de optie om een verbinding te selecteren. Selecteer bijvoorbeeld **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. In de **tabelnaam** in de lijst met de **pijl-omlaag**, en selecteer vervolgens **gebied**.
-9. Geef waarden voor alle vereiste kolommen (Zie rode asterisk). Typ bijvoorbeeld `99999` voor **gebieds-id**, type `Area 99999`, en het type `102` voor **REGIONID**. 
+8. Selecteer in de lijst **tabel naam** de **pijl-omlaag**en selecteer vervolgens **gebied**.
+9. Voer waarden in voor alle vereiste kolommen (zie rood sterretje). Typ bijvoorbeeld `99999` voor **AREAID**, typ `Area 99999`en typ `102` voor **REGIONID**. 
 10. Selecteer **Opslaan**.
     
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowValues.png)
-11. In de **InformixinsertRow** blade in de **All runs** lijst onder **samenvatting**, selecteert u het item eerst weergegeven (meest recente uitvoering).
-12. In de **logische app** Selecteer **Details uitvoering van**. Binnen de **actie** in de lijst met **Get_rows**. Zie de waarde voor **Status**, die moet worden **geslaagd**. Selecteer de **invoerkoppeling** om weer te geven van de invoer. Selecteer de **uitvoerkoppeling**, en de uitvoer bekijken, waaronder is de nieuwe rij.
+11. Selecteer in de Blade **InformixinsertRow** in de lijst **alle uitvoeringen** onder **samen vatting**het eerste vermelde item (de meest recente uitvoering).
+12. Selecteer in de Blade **logische app uitvoeren** de optie **Details uitvoeren**. Selecteer in de lijst **actie** de optie **Get_rows**. Bekijk de waarde voor **status**, die moet worden **geslaagd**. Selecteer de **koppeling invoer** om de invoer weer te geven. Selecteer de **koppeling uitvoer**en Bekijk de uitvoer. Dit moet de nieuwe rij bevatten.
     
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
 
-## <a name="fetch-one-row-using-select"></a>Ophalen van één rij met behulp van selecteren
-U kunt een actie voor logische app om op te halen van een rij in een Informix-tabel maken. Deze actie geeft de connector voor het verwerken van een instructie Informix selecteren waar zoals `SELECT FROM AREA WHERE AREAID = '99999'`.
+## <a name="fetch-one-row-using-select"></a>Eén rij ophalen met selecteren
+U kunt een actie van een logische app maken om één rij in een Informix-tabel op te halen. Met deze actie wordt de connector geïnstrueerd om een Informix SELECT WHERE-instructie te verwerken, zoals `SELECT FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Een logische app maken
-1. In de **Azure start board**, selecteer **+** (plusteken), **Web en mobiel**, en vervolgens **logische App**.
-2. Voer de **naam**, zoals `InformixgetRow`, **abonnement**, **resourcegroep**, **locatie**, en **App Service Plan**. Selecteer **vastmaken aan dashboard**, en selecteer vervolgens **maken**.
+1. Selecteer in het **Start bord van Azure**de optie **+** (plus teken), **Web en mobiel**en vervolgens **logische app**.
+2. Voer de **naam**in, zoals `InformixgetRow`, **abonnement**, **Resource groep**, **locatie**en **app service plan**. Selecteer vastmaken **aan dash board**en selecteer vervolgens **maken**.
 
-### <a name="add-a-trigger-and-action"></a>Een trigger en een actie toevoegen
-1. In de **ontwerper van logische Apps**, selecteer **leeg LogicApp** in de **sjablonen** lijst.
-2. In de **triggers** in de lijst met **terugkeerpatroon**. 
-3. In de **terugkeerpatroon** trigger, selecteer **bewerken**, selecteer **frequentie** vervolgkeuzelijst te selecteren **dag**, en selecteer vervolgens  **Interval** naar het type **7**. 
-4. Selecteer de **+ nieuwe stap** vak en selecteer vervolgens **een actie toevoegen**.
-5. In de **acties** weergeven, typt u **informix** in de **zoeken naar meer acties** invoervak en selecteer vervolgens **Informix - rijen ophalen (Preview)** .
-6. In de **rijen (Preview) ophalen** actie, selecteer **verbinding wijzigen**. 
-7. In de **verbindingen** deelvenster configuraties, selecteer een bestaande verbinding selecteren. Selecteer bijvoorbeeld **hisdemo2**.
+### <a name="add-a-trigger-and-action"></a>Een trigger en actie toevoegen
+1. Selecteer in de **Logic apps Designer** **lege LogicApp** in de lijst **sjablonen** .
+2. Selecteer in de lijst **Triggers** de optie **terugkeer patroon**. 
+3. Selecteer in de trigger voor **terugkeer patroon** de optie **bewerken**, selecteer de vervolg keuzelijst **frequentie** om **dag**te selecteren en selecteer vervolgens **interval** tot type **7**. 
+4. Selecteer het vak **+ nieuwe stap** en selecteer vervolgens **een actie toevoegen**.
+5. Typ in de lijst **acties** het type **Informix** in het invoervak **Zoek naar meer acties** en selecteer vervolgens **Informix-rijen ophalen (preview)** .
+6. Selecteer in de actie **rijen ophalen (voor beeld)** de optie **verbinding wijzigen**. 
+7. Selecteer in het deel venster configuraties voor **verbindingen** een bestaande verbinding selecteren. Selecteer bijvoorbeeld **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. In de **tabelnaam** in de lijst met de **pijl-omlaag**, en selecteer vervolgens **gebied**.
-9. Geef waarden voor alle vereiste kolommen (Zie rode asterisk). Typ bijvoorbeeld `99999` voor **gebieds-id**. 
-10. Selecteer desgewenst **geavanceerde opties weergeven** om op te geven van de opties voor query's.
+8. Selecteer in de lijst **tabel naam** de **pijl-omlaag**en selecteer vervolgens **gebied**.
+9. Voer waarden in voor alle vereiste kolommen (zie rood sterretje). Typ bijvoorbeeld `99999` voor **AREAID**. 
+10. Selecteer eventueel **Geavanceerde opties weer geven** om query opties op te geven.
 11. Selecteer **Opslaan**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowValues.png)
-12. In de **InformixgetRow** blade in de **All runs** lijst onder **samenvatting**, selecteert u het item eerst weergegeven (meest recente uitvoering).
-13. In de **logische app** Selecteer **Details uitvoering van**. Binnen de **actie** in de lijst met **Get_rows**. Zie de waarde voor **Status**, die moet worden **geslaagd**. Selecteer de **invoerkoppeling** om weer te geven van de invoer. Selecteer de **uitvoerkoppeling**, en de uitvoer weergeven; dat moet rij bevatten.
+12. Selecteer in de Blade **InformixgetRow** in de lijst **alle uitvoeringen** onder **samen vatting**het eerste vermelde item (de meest recente uitvoering).
+13. Selecteer in de Blade **logische app uitvoeren** de optie **Details uitvoeren**. Selecteer in de lijst **actie** de optie **Get_rows**. Bekijk de waarde voor **status**, die moet worden **geslaagd**. Selecteer de **koppeling invoer** om de invoer weer te geven. Selecteer de **koppeling uitvoer**en Bekijk de uitvoer. Dit moet een rij bevatten.
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
 
-## <a name="change-one-row-using-update"></a>Wijzigen van één rij met UPDATE
-U kunt een actie voor logische app als u wilt wijzigen van een rij in een Informix-tabel maken. Hiermee geeft u de connector voor het verwerken van een Informix-UPDATE-instructie, zoals `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
+## <a name="change-one-row-using-update"></a>Eén rij wijzigen met UPDATE
+U kunt een actie van een logische app maken om één rij in een Informix-tabel te wijzigen. Met deze actie wordt de connector geïnstrueerd om een Informix-UPDATE-instructie, zoals `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`, te verwerken.
 
 ### <a name="create-a-logic-app"></a>Een logische app maken
-1. In de **Azure start board**, selecteer **+** (plusteken), **Web en mobiel**, en vervolgens **logische App**.
-2. Voer de **naam**, zoals `InformixupdateRow`, **abonnement**, **resourcegroep**, **locatie**, en **App Service Plan**. Selecteer **vastmaken aan dashboard**, en selecteer vervolgens **maken**.
+1. Selecteer in het **Start bord van Azure**de optie **+** (plus teken), **Web en mobiel**en vervolgens **logische app**.
+2. Voer de **naam**in, zoals `InformixupdateRow`, **abonnement**, **Resource groep**, **locatie**en **app service plan**. Selecteer vastmaken **aan dash board**en selecteer vervolgens **maken**.
 
-### <a name="add-a-trigger-and-action"></a>Een trigger en een actie toevoegen
-1. In de **ontwerper van logische Apps**, selecteer **leeg LogicApp** in de **sjablonen** lijst.
-2. In de **triggers** in de lijst met **terugkeerpatroon**. 
-3. In de **terugkeerpatroon** trigger, selecteer **bewerken**, selecteer **frequentie** vervolgkeuzelijst te selecteren **dag**, en selecteer vervolgens  **Interval** naar het type **7**. 
-4. Selecteer de **+ nieuwe stap** vak en selecteer vervolgens **een actie toevoegen**.
-5. In de **acties** weergeven, typt u **informix** in de **zoeken naar meer acties** invoervak en selecteer vervolgens **Informix - rij bijwerken (Preview)** .
-6. In de **rijen (Preview) ophalen** actie, selecteer **verbinding wijzigen**. 
-7. In de **verbindingen** deelvenster configuraties, selecteer een bestaande verbinding selecteren. Selecteer bijvoorbeeld **hisdemo2**.
+### <a name="add-a-trigger-and-action"></a>Een trigger en actie toevoegen
+1. Selecteer in de **Logic apps Designer** **lege LogicApp** in de lijst **sjablonen** .
+2. Selecteer in de lijst **Triggers** de optie **terugkeer patroon**. 
+3. Selecteer in de trigger voor **terugkeer patroon** de optie **bewerken**, selecteer de vervolg keuzelijst **frequentie** om **dag**te selecteren en selecteer vervolgens **interval** tot type **7**. 
+4. Selecteer het vak **+ nieuwe stap** en selecteer vervolgens **een actie toevoegen**.
+5. Typ in de lijst **acties** het type **Informix** in het invoervak **Zoek naar meer acties** en selecteer vervolgens **Informix-update Row (preview)** .
+6. Selecteer in de actie **rijen ophalen (voor beeld)** de optie **verbinding wijzigen**. 
+7. Selecteer in het deel venster configuraties voor **verbindingen** een bestaande verbinding selecteren. Selecteer bijvoorbeeld **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. In de **tabelnaam** in de lijst met de **pijl-omlaag**, en selecteer vervolgens **gebied**.
-9. Geef waarden voor alle vereiste kolommen (Zie rode asterisk). Typ bijvoorbeeld `99999` voor **gebieds-id**, type `Updated 99999`, en het type `102` voor **REGIONID**. 
+8. Selecteer in de lijst **tabel naam** de **pijl-omlaag**en selecteer vervolgens **gebied**.
+9. Voer waarden in voor alle vereiste kolommen (zie rood sterretje). Typ bijvoorbeeld `99999` voor **AREAID**, typ `Updated 99999`en typ `102` voor **REGIONID**. 
 10. Selecteer **Opslaan**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowValues.png)
-11. In de **InformixupdateRow** blade in de **All runs** lijst onder **samenvatting**, selecteert u het item eerst weergegeven (meest recente uitvoering).
-12. In de **logische app** Selecteer **Details uitvoering van**. Binnen de **actie** in de lijst met **Get_rows**. Zie de waarde voor **Status**, die moet worden **geslaagd**. Selecteer de **invoerkoppeling** om weer te geven van de invoer. Selecteer de **uitvoerkoppeling**, en de uitvoer bekijken, waaronder is de nieuwe rij.
+11. Selecteer in de Blade **InformixupdateRow** in de lijst **alle uitvoeringen** onder **samen vatting**het eerste vermelde item (de meest recente uitvoering).
+12. Selecteer in de Blade **logische app uitvoeren** de optie **Details uitvoeren**. Selecteer in de lijst **actie** de optie **Get_rows**. Bekijk de waarde voor **status**, die moet worden **geslaagd**. Selecteer de **koppeling invoer** om de invoer weer te geven. Selecteer de **koppeling uitvoer**en Bekijk de uitvoer. Dit moet de nieuwe rij bevatten.
     
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
 
-## <a name="remove-one-row-using-delete"></a>Verwijderen van één rij verwijderen gebruiken
-U kunt een actie voor logische app als u wilt verwijderen van een rij in een Informix-tabel maken. Hiermee geeft u de connector voor het verwerken van een instructie Informix verwijderen, zoals `DELETE FROM AREA WHERE AREAID = '99999'`.
+## <a name="remove-one-row-using-delete"></a>Eén rij verwijderen met behulp van verwijderen
+U kunt een actie van een logische app maken om één rij in een Informix-tabel te verwijderen. Met deze actie wordt de connector geïnstrueerd om een Informix DELETE-instructie, zoals `DELETE FROM AREA WHERE AREAID = '99999'`, te verwerken.
 
 ### <a name="create-a-logic-app"></a>Een logische app maken
-1. In de **Azure start board**, selecteer **+** (plusteken), **Web en mobiel**, en vervolgens **logische App**.
-2. Voer de **naam**, zoals `InformixdeleteRow`, **abonnement**, **resourcegroep**, **locatie**, en **App Service Plan**. Selecteer **vastmaken aan dashboard**, en selecteer vervolgens **maken**.
+1. Selecteer in het **Start bord van Azure**de optie **+** (plus teken), **Web en mobiel**en vervolgens **logische app**.
+2. Voer de **naam**in, zoals `InformixdeleteRow`, **abonnement**, **Resource groep**, **locatie**en **app service plan**. Selecteer vastmaken **aan dash board**en selecteer vervolgens **maken**.
 
-### <a name="add-a-trigger-and-action"></a>Een trigger en een actie toevoegen
-1. In de **ontwerper van logische Apps**, selecteer **leeg LogicApp** in de **sjablonen** lijst.
-2. In de **triggers** in de lijst met **terugkeerpatroon**. 
-3. In de **terugkeerpatroon** trigger, selecteer **bewerken**, selecteer **frequentie** vervolgkeuzelijst te selecteren **dag**, en selecteer vervolgens  **Interval** naar het type **7**. 
-4. Selecteer de **+ nieuwe stap** vak en selecteer vervolgens **een actie toevoegen**.
-5. In de **acties** weergeven, typt u **informix** in de **zoeken naar meer acties** invoervak en selecteer vervolgens **Informix - rij verwijderen (Preview)** .
-6. In de **rijen (Preview) ophalen** actie, selecteer **verbinding wijzigen**. 
-7. In de **verbindingen** configuraties in het deelvenster een bestaande verbinding selecteren. Selecteer bijvoorbeeld **hisdemo2**.
+### <a name="add-a-trigger-and-action"></a>Een trigger en actie toevoegen
+1. Selecteer in de **Logic apps Designer** **lege LogicApp** in de lijst **sjablonen** .
+2. Selecteer in de lijst **Triggers** de optie **terugkeer patroon**. 
+3. Selecteer in de trigger voor **terugkeer patroon** de optie **bewerken**, selecteer de vervolg keuzelijst **frequentie** om **dag**te selecteren en selecteer vervolgens **interval** tot type **7**. 
+4. Selecteer het vak **+ nieuwe stap** en selecteer vervolgens **een actie toevoegen**.
+5. Typ in de lijst **acties** op **Informix** in het invoervak **Zoek naar meer acties** en selecteer vervolgens **Informix-verwijderen (preview)** .
+6. Selecteer in de actie **rijen ophalen (voor beeld)** de optie **verbinding wijzigen**. 
+7. Selecteer een bestaande verbinding in het deel venster configuraties voor **verbindingen** . Selecteer bijvoorbeeld **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. In de **tabelnaam** in de lijst met de **pijl-omlaag**, en selecteer vervolgens **gebied**.
-9. Geef waarden voor alle vereiste kolommen (Zie rode asterisk). Typ bijvoorbeeld `99999` voor **gebieds-id**. 
+8. Selecteer in de lijst **tabel naam** de **pijl-omlaag**en selecteer vervolgens **gebied**.
+9. Voer waarden in voor alle vereiste kolommen (zie rood sterretje). Typ bijvoorbeeld `99999` voor **AREAID**. 
 10. Selecteer **Opslaan**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowValues.png)
-11. In de **InformixdeleteRow** blade in de **All runs** lijst onder **samenvatting**, selecteert u het item eerst weergegeven (meest recente uitvoering).
-12. In de **logische app** Selecteer **Details uitvoering van**. Binnen de **actie** in de lijst met **Get_rows**. Zie de waarde voor **Status**, die moet worden **geslaagd**. Selecteer de **invoerkoppeling** om weer te geven van de invoer. Selecteer de **uitvoerkoppeling**, en de uitvoer bekijken, die de verwijderde rij moet bevatten.
+11. Selecteer in de Blade **InformixdeleteRow** in de lijst **alle uitvoeringen** onder **samen vatting**het eerste vermelde item (de meest recente uitvoering).
+12. Selecteer in de Blade **logische app uitvoeren** de optie **Details uitvoeren**. Selecteer in de lijst **actie** de optie **Get_rows**. Bekijk de waarde voor **status**, die moet worden **geslaagd**. Selecteer de **koppeling invoer** om de invoer weer te geven. Selecteer de **koppeling uitvoer**en Bekijk de uitvoer. Dit moet de verwijderde rij bevatten.
     
     ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
 
-## <a name="supported-informix-platforms-and-versions"></a>Ondersteunde Informix-platforms en versies
-Deze connector ondersteunt de volgende versies van de IBM Informix, wanneer geconfigureerd ter ondersteuning van clientverbindingen gedistribueerd relationele Database architectuur (DRDA).
+## <a name="supported-informix-platforms-and-versions"></a>Ondersteunde Informix-platforms en-versies
+Deze connector ondersteunt de volgende IBM Informix-versies, wanneer deze zijn geconfigureerd voor de ondersteuning van gedistribueerde DRDA-client verbindingen (Relational Data Base Architecture).
 
-* IBM Informix 12.1
-* IBM Informix korting van 11,7
+* IBM Informix 12,1
+* IBM Informix 11,7
 
-## <a name="connector-specific-details"></a>Connector-specifieke details
+## <a name="connector-specific-details"></a>Connector-specifieke Details
 
-Alle triggers en acties die zijn gedefinieerd in de swagger bekijken en ziet u ook eventuele beperkingen in de [connectorgegevens](/connectors/informix/). 
+Bekijk de triggers en acties die zijn gedefinieerd in Swagger en Zie ook eventuele limieten in de details van de [connector](/connectors/informix/). 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Maak een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Verken de andere beschikbare connectors in Logic Apps op onze [lijst van API's](apis-list.md).
+[Maak een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Verken de andere beschik bare connectors in Logic Apps in onze [api's-lijst](apis-list.md).
 

@@ -1,109 +1,107 @@
 ---
-title: X12 decoderen berichten - Azure Logic Apps | Microsoft Docs
-description: EDI valideren en het genereren van bevestigingen met X12 bericht decoder in Azure Logic Apps met Enterprise Integration Pack
+title: X12-berichten decoderen
+description: Valideer EDI en Genereer bevestigingen met X12-bericht decoder in Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.openlocfilehash: 4a19462f4f849602fd14fe1204f1c7e3c01e6ec4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701448"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792368"
 ---
-# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12 decoderen berichten in Azure Logic Apps met Enterprise Integration Pack
+# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12-berichten in Azure Logic Apps decoderen met Enterprise Integration Pack
 
-Met de connector van het bericht decoderen X12, kunt u valideren van de envelop tegen een handelspartnerovereenkomst, valideren EDI en partner-specifieke eigenschappen uitwisselingen in transacties sets splitsen of hele uitwisselingen behouden en genereren van bevestigingen voor verwerkte transacties. Voor het gebruik van deze connector, moet u de connector toevoegen aan een bestaande trigger in uw logische app.
+Met de decodeer X12-berichten connector kunt u de envelop valideren op basis van een overeenkomst voor handels partners, EDI en partner-specifieke eigenschappen valideren, interacties in trans acties opsplitsen of de hele intervallen behouden en bevestigingen genereren voor verwerkte trans acties. Als u deze connector wilt gebruiken, moet u de connector toevoegen aan een bestaande trigger in uw logische app.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Hier volgt de items die u nodig hebt:
+Dit zijn de items die u nodig hebt:
 
-* Een Azure-account; u kunt maken een [gratis account](https://azure.microsoft.com/free)
-* Een [integratieaccount](logic-apps-enterprise-integration-create-integration-account.md) die al is gedefinieerd en die zijn gekoppeld aan uw Azure-abonnement. Hebt u een integratieaccount om het bericht decoderen X12 connector te gebruiken.
-* Ten minste twee [partners](logic-apps-enterprise-integration-partners.md) die al zijn gedefinieerd in uw integratieaccount
-* Een [X12 overeenkomst](logic-apps-enterprise-integration-x12.md) die al gedefinieerd in uw integratieaccount
+* Een Azure-account; u kunt een [gratis account](https://azure.microsoft.com/free) maken
+* Een [integratie account](logic-apps-enterprise-integration-create-integration-account.md) dat al is gedefinieerd en gekoppeld aan uw Azure-abonnement. U moet een integratie account hebben voor het gebruik van de decodeer X12-bericht connector.
+* Ten minste twee [partners](logic-apps-enterprise-integration-partners.md) die al zijn gedefinieerd in uw integratie account
+* Een [X12-overeenkomst](logic-apps-enterprise-integration-x12.md) die al is gedefinieerd in uw integratie account
 
-## <a name="decode-x12-messages"></a>X12 decoderen berichten
+## <a name="decode-x12-messages"></a>X12-berichten decoderen
 
 1. [Maak een logische app](quickstart-create-first-logic-app-workflow.md).
 
-2. Het bericht decoderen X12 connector geen triggers, dus moet u een trigger voor het starten van uw logische app, zoals een aanvraag als trigger toevoegen. Een trigger toevoegen in de Logic App Designer en klikt u vervolgens een actie toevoegen aan uw logische app.
+2. De decodeer X12-bericht connector heeft geen triggers, dus u moet een trigger toevoegen voor het starten van uw logische app, zoals een aanvraag trigger. Voeg in de ontwerp functie voor logische apps een trigger toe en voeg vervolgens een actie toe aan uw logische app.
 
-3.  Voer in het zoekvak 'x12' voor uw filter. Selecteer **X12-decoderen X12 bericht**.
+3.  Voer in het zoekvak ' X12 ' in voor uw filter. Selecteer **X12-X12-bericht decoderen**.
    
-    ![Zoek naar "x12"](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
+    ![Zoeken naar ' X12 '](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
-3. Als u geen verbindingen voor uw integratieaccount eerder hebt gemaakt, wordt u gevraagd om nu deze verbinding te maken. Naam van de verbinding en selecteer de integratieaccount waarmee u verbinding wilt maken. 
+3. Als u eerder geen verbindingen met uw integratie account hebt gemaakt, wordt u gevraagd om die verbinding nu te maken. Geef uw verbinding een naam en selecteer het integratie account dat u wilt verbinden. 
 
-    ![Geef de integratie van accountgegevens voor de verbinding](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)
+    ![Verbindings Details van het integratie account opgeven](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)
 
     Eigenschappen met een sterretje zijn vereist.
 
     | Eigenschap | Details |
     | --- | --- |
-    | Verbindingsnaam * |Voer een naam voor de verbinding. |
-    | Integratie-Account * |Voer een naam voor uw integratie-account. Zorg ervoor dat uw integratie-account en logica-app zich in dezelfde Azure-locatie. |
+    | Verbindings naam * |Voer een naam in voor de verbinding. |
+    | Integratie account * |Voer een naam in voor het integratie account. Zorg ervoor dat het integratie account en de logische app zich op dezelfde Azure-locatie bevinden. |
 
-5.  Wanneer u klaar bent, moeten uw verbindingsgegevens lijken op het volgende voorbeeld. Kies voor het voltooien van het maken van uw verbinding, **maken**.
+5.  Wanneer u klaar bent, moeten de verbindings details er ongeveer als volgt uitzien. Kies **maken**om het maken van de verbinding te volt ooien.
    
-    ![integratie-account-verbindingsgegevens](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
+    ![verbindings Details van het integratie account](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
 
-6. Nadat de verbinding is gemaakt, zoals wordt weergegeven in dit voorbeeld, selecteer de X12 plat bestand bericht moet worden gedecodeerd.
+6. Nadat de verbinding is gemaakt, selecteert u in dit voor beeld het bericht X12 plat file om te decoderen.
 
-    ![integratie-accountverbinding hebt gemaakt](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
+    ![verbinding voor integratie account gemaakt](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 
     Bijvoorbeeld:
 
-    ![Selecteer X12 platte bericht voor het decoderen van bestand](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
+    ![Selecteer X12-bericht met platte bestanden voor het decoderen](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 
    > [!NOTE]
-   > De inhoud van het werkelijke bericht of de nettolading voor de bericht-matrix, goed of slecht, is base64-gecodeerd. Daarom moet u een expressie die deze inhoud verwerkt.
-   > Hier volgt een voorbeeld waarin de inhoud als XML-bestand dat u opgeven kunt in de codeweergave of verwerkt met behulp van de opbouwfunctie voor expressies in de ontwerpfunctie.
+   > De daad werkelijke bericht inhoud of Payload voor de bericht matrix, goed of beschadigd, is base64-gecodeerd. U moet dus een expressie opgeven waarmee deze inhoud wordt verwerkt.
+   > Hier volgt een voor beeld waarin de inhoud wordt verwerkt als XML die u kunt invoeren in de code weergave of met behulp van Expression Builder in de ontwerp functie.
    > ``` json
    > "content": "@xml(base64ToBinary(item()?['Payload']))"
    > ```
-   > ![Voorbeeld van de inhoud](media/logic-apps-enterprise-integration-x12-decode/content-example.png)
+   > ![Voor beeld van inhoud](media/logic-apps-enterprise-integration-x12-decode/content-example.png)
    >
 
 
-## <a name="x12-decode-details"></a>X12 details decoderen
+## <a name="x12-decode-details"></a>Details van X12-decodering
 
-De X12 decoderen connector voert deze taken uit:
+De X12 decode connector voert de volgende taken uit:
 
-* Valideert de envelop tegen trading partner agreement
-* EDI- en partner-specifieke eigenschappen worden gevalideerd
-  * Structurele EDI-validatie, en uitgebreide schemavalidatie
-  * Validatie van de structuur van de enveloppe uitwisseling.
-  * Schemavalidatie van de enveloppe op basis van het schema van het besturingselement.
-  * Schemavalidatie van de gegevenselementen van de transactie-set op basis van de berichtschema.
-  * EDI-validatie uitgevoerd voor de transactieset gegevenselementen 
-* Controleert of de uitwisseling, groep en transactie set controlenummers zijn niet identiek
-  * Controleert of het controlenummer voor de uitwisseling tegen eerder ontvangen uitwisselingen.
-  * Controleert of het groepscontrolenummer op basis van andere groep controlenummers in de uitwisseling.
-  * Controleert of dat de transactie controlenummer ingesteld op basis van andere transactie set controlenummers in die groep.
-* Hiermee wordt de uitwisseling in transactiesets of behoudt de gehele uitwisseling:
-  * Uitwisseling splitsen in transactiereeksen - onderbreken transactiereeksen bij fout: Uitwisseling splitsen in transactie wordt ingesteld en wordt elke transactieset geparseerd. 
-  De X12 decoderen actie voert alleen deze transactie wordt ingesteld die niet voldoen aan de validatie `badMessages`, en de resterende transacties wordt ingesteld op uitvoer `goodMessages`.
-  * Uitwisseling splitsen in transactiereeksen - onderbreken uitwisseling bij fout: Uitwisseling splitsen in transactie wordt ingesteld en wordt elke transactieset geparseerd. 
-  Als een of meer transactie wordt ingesteld in de uitwisseling mislukt de validatie van de X12 decoderen actie voert alle de transactie wordt ingesteld in dat knooppunt aan `badMessages`.
-  * Uitwisseling bewaren-transactiereeksen onderbreken bij fout: De uitwisseling behouden en verwerken van de gehele uitwisseling van de batch. 
-  De X12 decoderen actie voert alleen deze transactie wordt ingesteld die niet voldoen aan de validatie `badMessages`, en de resterende transacties wordt ingesteld op uitvoer `goodMessages`.
-  * Uitwisseling bewaren-uitwisseling onderbreken bij fout: De uitwisseling behouden en verwerken van de gehele uitwisseling van de batch. 
-  Als een of meer transactie wordt ingesteld in de uitwisseling mislukt de validatie van de X12 decoderen actie voert alle de transactie wordt ingesteld in dat knooppunt aan `badMessages`. 
-* Genereert een bevestiging technische en/of functionele (indien geconfigureerd).
-  * Een technische bevestiging genereert als gevolg van validatie van de header. De technische bevestiging meldt de status van de verwerking van een uitwisseling-header en aanhangwagen door de ontvanger van het adres.
-  * Een functionele bevestiging genereert als gevolg van de hoofdtekst van de validatie. De functionele bevestiging meldt een fout opgetreden tijdens het verwerken van het document ontvangen
+* Valideert de envelop op basis van de overeenkomst voor handels partners
+* Hiermee worden EDI-en partner-specifieke eigenschappen gevalideerd
+  * EDI Structured Validation en Extended schema validatie
+  * Validatie van de structuur van de uitwisselings enveloppe.
+  * Schema validatie van de envelop op basis van het controle schema.
+  * Schema validatie van de gegevens elementen van de trans actie op basis van het bericht schema.
+  * EDI-validatie uitgevoerd op gegevens elementen van trans actie-set 
+* Controleert of de controle nummers voor de uitwisseling, groep en trans actie geen duplicaten zijn
+  * Hiermee wordt het uitwisselings controle nummer gecontroleerd op eerder ontvangen wissels.
+  * Hiermee wordt het groeps controle nummer gecontroleerd op andere groeps controle nummers in de uitwisseling.
+  * Hiermee wordt het controle nummer van de transactieset gecontroleerd op andere trans actie besturings nummers instellen in die groep.
+* Splitst de uitwisseling in transactie sets of behoudt de volledige uitwisseling:
+  * Gesplitste uitwisseling als transactie sets: Stel transactie sets uit bij fout: Splits de uitwisseling in transactie sets en parseert elke transactie groep. 
+  Met de X12 decode actie worden alleen de transactie sets uitgevoerd die niet zijn gevalideerd voor `badMessages`, en worden de resterende transactie sets uitgevoerd op `goodMessages`.
+  * Gesplitste uitwisseling als transactie sets-uitwisseling onderbreken bij fout: het splitsen van uitwisseling in transactie sets en het parseren van elke transactie groep. 
+  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie X12 alle transactie sets in die uitwisseling uitgevoerd naar `badMessages`.
+  * Trans actie sets met uitwisselingen behouden bij fout: de uitwisseling behouden en de volledige batch uitwisseling verwerken. 
+  Met de X12 decode actie worden alleen de transactie sets uitgevoerd die niet zijn gevalideerd voor `badMessages`, en worden de resterende transactie sets uitgevoerd op `goodMessages`.
+  * Uitwisseling van Interchange-Suspend behouden bij fout: behoud de uitwisseling en verwerk de volledige batch uitwisseling. 
+  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie X12 alle transactie sets in die uitwisseling uitgevoerd naar `badMessages`. 
+* Hiermee wordt een technische en/of functionele bevestiging gegenereerd (indien geconfigureerd).
+  * Een technische bevestiging wordt gegenereerd als gevolg van de validatie van de header. De technische bevestiging rapporteert de status van de verwerking van een uitwisselings header en trailer door de ontvanger van het adres.
+  * Een functie bevestiging wordt gegenereerd als gevolg van de validatie van de hoofd tekst. De functie bevestigings rapporteert elke fout die is opgetreden tijdens het verwerken van het ontvangen document
 
-## <a name="view-the-swagger"></a>De swagger weergeven
-Zie de [details swagger](/connectors/x12/). 
+## <a name="view-the-swagger"></a>De Swagger weer geven
+Zie [Swagger-gegevens](/connectors/x12/). 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over het Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "meer informatie over Enterprise Integration Pack") 
+[Meer informatie over de Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack") 
 

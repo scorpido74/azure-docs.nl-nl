@@ -1,21 +1,19 @@
 ---
-title: B2B Enter prise Integration-Azure Logic Apps
+title: B2B-bedrijfsintegratie
 description: Meer informatie over het bouwen van geautomatiseerde B2B-werk stromen voor bedrijfs integratie met behulp van Azure Logic Apps en Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, logicappspm
 ms.topic: overview
-ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 08/01/2019
-ms.openlocfilehash: 54d665d6a4fd9aa0216d9eccf821f5af539a3636
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 141f1a7fc8f966132cb3570fd9d9cfa911127eed
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71087561"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792448"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>B2B-oplossingen voor bedrijfs integratie met Azure Logic Apps en Enterprise Integration Pack
 

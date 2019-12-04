@@ -1,20 +1,20 @@
 ---
-title: Verbinding maken met Azure Database for MySQL via PHP
+title: Verbinding maken met behulp van PHP-Azure Database for MySQL
 description: Deze snelstartgids bevat enkele voorbeelden van PHP-code die u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit een Azure Database voor MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 76d721ca102ae0affeba23c46d5da9fd44743f5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: b8923000b0bbc75e6d96b1b27a1154ef8ff87f24
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61091884"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770710"
 ---
-# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL: PHP gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database voor MySQL: PHP gebruiken om verbinding te maken en gegevens op te vragen
 In deze snelstartgids ziet u hoe u met behulp van een [PHP](https://secure.php.net/manual/intro-whatis.php)-toepassing verbinding maakt met een Azure Database voor MySQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van PHP, maar geen ervaring hebt met het werken met Azure Database voor MySQL.
 
 ## <a name="prerequisites"></a>Vereisten

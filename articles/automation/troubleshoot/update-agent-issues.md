@@ -1,44 +1,44 @@
 ---
-title: Inzicht in de resultaten van de Windows agent-controle in azure Updatebeheer
-description: Informatie over het oplossen van problemen met de updatebeheer-agent.
+title: Meer informatie over de Windows-Hybrid Runbook Worker status in azure Updatebeheer
+description: Meer informatie over het oplossen van problemen met de Hybrid Runbook Worker in Windows die ondersteuning bieden voor Updatebeheer.
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 11/25/2019
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 72fdfe912a5560ce0c0e3886dd3c56cf9534dc22
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: bb5b5214c96162147e1bd005e994ec04e0a1ddb7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480785"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763654"
 ---
-# <a name="understand-the-windows-agent-check-results-in-update-management"></a>Inzicht in de resultaten van de Windows agent-controle in Updatebeheer
+# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Inzicht in de status van de Windows-Hybrid Runbook Worker in Updatebeheer
 
-Er kunnen veel redenen zijn waarom uw computer niet **gereed** is in updatebeheer. U kunt de status van een Hybrid Worker-agent om te bepalen van het onderliggende probleem controleren in Update Management. In dit artikel wordt beschreven hoe u de probleem oplosser voor Azure-machines uitvoert vanaf de Azure Portal-en niet-Azure-machines in het [offline scenario](#troubleshoot-offline).
+Er kunnen veel redenen zijn waarom uw computer niet **gereed** is in updatebeheer. In Updatebeheer kunt u de status van een Hybrid Runbook Worker agent controleren om het onderliggende probleem te bepalen. In dit artikel wordt beschreven hoe u de probleem oplosser voor Azure-machines uitvoert vanaf de Azure Portal-en niet-Azure-machines in het [offline scenario](#troubleshoot-offline).
 
 De volgende lijst geeft een overzicht van de drie gereedheids statussen die een machine kan hebben:
 
-* **Gereed** : de Update-Agent is geïmplementeerd en is minder dan 1 uur geleden voor het laatst gezien.
-* De **verbinding is verbroken** : de Update Agent is geïmplementeerd en is meer dan 1 uur geleden voor het laatst gezien.
-* **Niet geconfigureerd** : de Update Agent is niet gevonden of is niet gereed voor onboarding.
+* **Gereed** : de Hybrid Runbook Worker is geïmplementeerd en is minder dan 1 uur geleden voor het laatst gezien.
+* De **verbinding is verbroken** : de Hybrid Runbook Worker is geïmplementeerd en is meer dan 1 uur geleden voor het laatst gezien.
+* **Niet geconfigureerd** : de Hybrid Runbook Worker is niet gevonden of is niet gereed voor onboarding.
 
 > [!NOTE]
 > Er kan een lichte vertraging optreden tussen de Azure Portal weer geven en de huidige status van de machine.
 
-## <a name="start-the-troubleshooter"></a>De probleemoplosser voor starten
+## <a name="start-the-troubleshooter"></a>De probleem Oplosser starten
 
 Voor Azure-machines klikt u op de koppeling **problemen oplossen** onder de gereedheids kolom van de **Update Agent** in de portal, wordt de pagina **problemen met Update agent oplossen** gestart. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie de [offline-instructies](#troubleshoot-offline) voor het oplossen van problemen met een niet-Azure-machine.
 
 ![Update beheer lijst van virtuele machines](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> De virtuele machine moet worden uitgevoerd om de status van een agent te controleren. Als de VM niet wordt uitgevoerd, wordt **de knop VM starten** weer gegeven.
+> De virtuele machine moet worden uitgevoerd om de status van de Hybrid Runbook Worker te controleren. Als de VM niet wordt uitgevoerd, wordt **de knop VM starten** weer gegeven.
 
-Selecteer op de pagina **Update Agent voor problemen oplossen** de optie **controles uitvoeren** om de probleem oplosser te starten. De probleem Oplosser gebruikt de [opdracht uitvoeren](../../virtual-machines/windows/run-command.md) om een script uit te voeren op de machine om de agent afhankelijkheden te controleren. Wanneer de probleem Oplosser is voltooid, wordt het resultaat van de controles geretourneerd.
+Selecteer op de pagina **Update Agent voor problemen oplossen** de optie **controles uitvoeren** om de probleem oplosser te starten. De probleem Oplosser gebruikt de [opdracht uitvoeren](../../virtual-machines/windows/run-command.md) om een script uit te voeren op de computer om afhankelijkheden te controleren. Wanneer de probleem Oplosser is voltooid, wordt het resultaat van de controles geretourneerd.
 
 ![Problemen met de pagina Update agent oplossen](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -50,7 +50,7 @@ De resultaten worden weer gegeven op de pagina wanneer ze klaar zijn. In de sect
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De controle van het besturings systeem controleert of op de Hybrid Runbook Worker een van deze besturings systemen wordt uitgevoerd:
+Met de controle van het besturings systeem wordt gecontroleerd of op de Hybrid Runbook Worker een van de volgende besturings systemen wordt uitgevoerd:
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
@@ -61,27 +61,27 @@ De controle van het besturings systeem controleert of op de Hybrid Runbook Worke
 
 Met de .NET Framework controle wordt gecontroleerd of er mini maal [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) is geïnstalleerd op het systeem.
 
-### <a name="wmf-51"></a>WMF 5.1
+### <a name="wmf-51"></a>WMF 5,1
 
 De WMF-controle controleert of het systeem de vereiste versie van het Windows Management Framework (WMF)- [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616)bevat.
 
-### <a name="tls-12"></a>TLS 1.2
+### <a name="tls-12"></a>TLS 1,2
 
 Met deze controle wordt bepaald of u gebruikmaakt van TLS 1,2 om uw communicatie te versleutelen. TLS 1,0 wordt niet meer ondersteund door het platform. We raden aan dat clients TLS 1,2 gebruiken om te communiceren met Updatebeheer.
 
-## <a name="connectivity-checks"></a>Controles voor connectiviteit
+## <a name="connectivity-checks"></a>Connectiviteits controles
 
-### <a name="registration-endpoint"></a>Eindpunt voor clientregistratie
+### <a name="registration-endpoint"></a>Registratie-eind punt
 
 Met deze controle wordt bepaald of de agent goed kan communiceren met de Agent service.
 
-Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met het eindpunt voor clientregistratie toestaan. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met het eind punt van de registratie. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
 
-### <a name="operations-endpoint"></a>Operations-eindpunt
+### <a name="operations-endpoint"></a>Eind punt van bewerkingen
 
 Met deze controle wordt bepaald of de agent goed kan communiceren met de taak runtime gegevens service.
 
-Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met de taak Runtime Data-Service toestaan. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met de taak runtime gegevens service. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
 
 ## <a name="vm-service-health-checks"></a>Status controles van de VM-service
 
@@ -206,4 +206,3 @@ CheckResultMessageArguments : {}
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [problemen met Hybrid Runbook Workers oplossen](hybrid-runbook-worker.md)om meer problemen met uw Hybrid runbook Workers op te lossen.
-

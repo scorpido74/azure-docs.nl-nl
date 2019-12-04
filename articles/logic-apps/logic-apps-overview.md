@@ -1,22 +1,18 @@
 ---
-title: Taken automatiseren voor Enter prise Integration-Azure Logic Apps
+title: Taken automatiseren voor bedrijfs integratie
 description: Meer informatie over het automatiseren van werk stromen die apps, gegevens, services en systemen integreren met minimale code voor bedrijfs integratie met behulp van Azure Logic Apps.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/29/2018
-ms.openlocfilehash: 22b8558c8808afacc6ef92bd0fd41d3adbc92bf5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2327632fc2a71855874bb8fe45e97af430fa696a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533831"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791853"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Overzicht: wat is Azure Logic Apps?
 

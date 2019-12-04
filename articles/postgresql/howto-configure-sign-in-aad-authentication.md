@@ -1,17 +1,17 @@
 ---
-title: Configureren en aanmelden met Azure AD voor Azure Database for PostgreSQL-één server
-description: Meer informatie over het instellen van Azure Active Directory voor verificatie met een Azure Database for PostgreSQL-enkele server
+title: Azure Active Directory-Azure Database for PostgreSQL-één server gebruiken
+description: Meer informatie over het instellen van Azure Active Directory (AAD) voor verificatie met Azure Database for PostgreSQL-één server
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d5abfe4cc6aa0679d8009343fa24c1059700bb79
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c929ac1c171547a4ff485fc43f0f329440f9c3b5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516030"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763637"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory gebruiken voor verificatie met PostgreSQL
 
@@ -193,7 +193,7 @@ Ze kunnen zich nu aanmelden met Azure AD-referenties in plaats van het eerder ge
 
 ### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>Voor beeld 2: PostgreSQL gebruikers naam wijkt af van de Azure AD User Principal name
 
-Als een PostgreSQL-gebruiker niet bestaat in azure AD of een andere gebruikers naam heeft, kunt u Azure AD-groepen gebruiken om te verifiëren als deze PostgreSQL-gebruiker. U kunt bestaande Azure Database for PostgreSQL-gebruikers migreren naar Azure AD door een Azure AD-groep te maken met een naam die overeenkomt met de PostgreSQL-gebruiker en vervolgens rol azure_ad_user te verlenen aan de bestaande PostgreSQL-gebruiker:
+Als een PostgreSQL-gebruiker niet bestaat in azure AD of een andere gebruikers naam heeft, kunt u Azure AD-groepen gebruiken om te verifiëren als deze PostgreSQL-gebruiker. U kunt bestaande Azure Database for PostgreSQL-gebruikers migreren naar Azure AD door een Azure AD-groep te maken met een naam die overeenkomt met de PostgreSQL-gebruiker en vervolgens de rol azure_ad_user aan de bestaande PostgreSQL-gebruiker te verlenen:
 
 ```sql
 GRANT azure_ad_user TO "DBReadUser";

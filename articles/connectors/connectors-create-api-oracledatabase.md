@@ -1,134 +1,130 @@
 ---
-title: Verbinding maken met Oracle Database - Azure Logic Apps | Microsoft Docs
-description: Plaats en -records met Oracle Database REST-API's en Azure Logic Apps beheren
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 03/29/2017
-ms.topic: article
-ms.service: logic-apps
+title: Verbinding maken met Oracle Database
+description: Records invoegen en beheren met Oracle Database REST-Api's en Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 03/29/2017
 tags: connectors
-ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 99abd48bde97c2a2e085688cdfbb365e5e4cfd56
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453615"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789423"
 ---
-# <a name="get-started-with-the-oracle-database-connector"></a>Aan de slag met de Oracle-Database-connector
+# <a name="get-started-with-the-oracle-database-connector"></a>Aan de slag met de Oracle Database-Connector
 
-Met de Oracle-Database-connector maken u organisatie werkstromen die gebruikmaken van gegevens in uw bestaande database. Deze connector kunt verbinding maken met een on-premises Oracle-Database of een Azure-machines met Oracle-Database is geïnstalleerd. Met deze connector kunt u het volgende doen:
+Met behulp van de Oracle Database-connector maakt u organisatie werk stromen die gebruikmaken van de gegevens in uw bestaande data base. Deze connector kan verbinding maken met een on-premises Oracle Database, of een virtuele machine van Azure met Oracle Database geïnstalleerd. Met deze connector kunt u het volgende doen:
 
-* Bouw uw werkstroom door het toevoegen van een nieuwe klant met een database klanten of bijwerken van een order in een orderdatabase.
-* Acties gebruiken om te ontvangen van een rij met gegevens, een nieuwe rij invoegen en zelfs verwijderen. Bijvoorbeeld, wanneer een record wordt gemaakt in Dynamics CRM Online (een trigger), klikt u vervolgens een rij invoegen in een Oracle-Database (een actie). 
+* Bouw uw werk stroom door een nieuwe klant toe te voegen aan een klanten database of een bestelling bij te werken in een Data Base voor orders.
+* Gebruik acties om een rij gegevens op te halen, een nieuwe rij in te voegen en zelfs te verwijderen. Als er bijvoorbeeld een record wordt gemaakt in Dynamics CRM Online (een trigger), voegt u een rij in een Oracle Database (een actie). 
 
-Dit artikel leest u hoe het gebruik van de Oracle-Database-connector in een logische app.
+Dit artikel laat u zien hoe u de Oracle Database-Connector in een logische app kunt gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Ondersteunde Oracle-versies: 
     * Oracle 9 en hoger
-    * Oracle-clientsoftware 8.1.7 en hoger
+    * Oracle-client software 8.1.7 en hoger
 
-* De on-premises gegevensgateway installeren. [Verbinding maken met on-premises gegevens vanuit logische apps](../logic-apps/logic-apps-gateway-connection.md) vermeldt de stappen. De gateway is vereist voor het verbinding maken met een on-premises Oracle-Database of een Azure-VM met Oracle-database is geïnstalleerd. 
+* De on-premises gegevens gateway installeren. [Als u verbinding maakt met on-premises gegevens uit Logic apps](../logic-apps/logic-apps-gateway-connection.md) , worden de stappen weer gegeven. De gateway is vereist om verbinding te maken met een on-premises Oracle Database, of een virtuele machine van Azure met Oracle DB geïnstalleerd. 
 
     > [!NOTE]
-    > De on-premises gegevensgateway fungeert als een brug en biedt een veilige gegevensoverdracht tussen on-premises gegevens (gegevens die zich niet in de cloud) en uw logische apps. Dezelfde gateway kan worden gebruikt met meerdere services en meerdere gegevensbronnen. Dus, wellicht u alleen voor het installeren van de gateway eenmaal.
+    > De on-premises gegevens gateway fungeert als een brug en biedt een beveiligde gegevens overdracht tussen on-premises gegevens (gegevens die zich niet in de Cloud bevindt) en uw Logic apps. Dezelfde gateway kan worden gebruikt met meerdere services en meerdere gegevens bronnen. Het is dus mogelijk dat u de gateway slechts één keer hoeft te installeren.
 
-* Het Oracle-Client installeren op de computer waarop u de on-premises gegevensgateway hebt geïnstalleerd. Zorg ervoor dat de 64-bits Oracle-gegevensprovider voor .NET van Oracle te installeren:  
+* Installeer de Oracle-client op de computer waarop u de on-premises gegevens gateway hebt geïnstalleerd. Zorg ervoor dat u de 64-bits Oracle-gegevens provider voor .NET van Oracle installeert:  
 
-  [64-bits ODAC 12c Release 4 (12.1.0.2.4) voor Windows x64](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
+  [64-bits ODAC 12c release 4 (12.1.0.2.4) voor Windows x64](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
-    > Als de Oracle-client niet is geïnstalleerd, wordt er een fout optreedt wanneer u probeert te maken of de verbinding gebruiken. Zie de veelvoorkomende fouten in dit artikel.
+    > Als de Oracle-client niet is geïnstalleerd, treedt er een fout op wanneer u de verbinding probeert te maken of gebruiken. Zie de veelvoorkomende fouten in dit artikel.
 
 
 ## <a name="add-the-connector"></a>De connector toevoegen
 
 > [!IMPORTANT]
-> Deze connector beschikt niet over geen triggers. Er worden alleen acties. Dus wanneer u uw logische app maakt, een andere trigger voor het starten van uw logische app, zoals toevoegen **planning - terugkeerpatroon**, of **aanvraag / antwoord - antwoord**. 
+> Deze connector heeft geen triggers. Het heeft alleen acties. Wanneer u uw logische app maakt, voegt u dus een andere trigger toe om uw logische app te starten, zoals **planning-recurrence**of **aanvraag/antwoord-antwoord**. 
 
-1. In de [Azure-portal](https://portal.azure.com), een lege logische app maken.
+1. Maak in de [Azure Portal](https://portal.azure.com)een lege logische app.
 
-2. Aan het begin van de logische app, selecteer de **aanvraag / antwoord - aanvraag** trigger: 
+2. Selecteer aan het begin van uw logische app de trigger **aanvraag/antwoord-aanvraag** : 
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. Selecteer **Opslaan**. Wanneer u opslaat, wordt een aanvraag-URL wordt automatisch gegenereerd. 
+3. Selecteer **Opslaan**. Wanneer u opslaat, wordt er automatisch een aanvraag-URL gegenereerd. 
 
-4. Selecteer **nieuwe stap**, en selecteer **een actie toevoegen**. Typ in `oracle` om te zien van de beschikbare acties: 
+4. Selecteer **nieuwe stap**en selecteer **een actie toevoegen**. Typ `oracle` om de beschik bare acties weer te geven: 
 
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
-    > Dit is ook de snelste manier om te zien van de triggers en acties die beschikbaar zijn voor elke connector. Typ in het gedeelte van de connectornaam van de, zoals `oracle`. De ontwerpfunctie voor een lijst met alle triggers en acties. 
+    > Dit is ook de snelste manier om de triggers en acties weer te geven die beschikbaar zijn voor elke connector. Typ een deel van de naam van de connector, zoals `oracle`. In de ontwerp functie worden alle triggers en acties weer gegeven. 
 
-5. Selecteer een van de acties, zoals **Oracle Database - Get-rij**. Selecteer **verbinding maken via een on-premises gegevensgateway**. Voer de naam van de Oracle-server, verificatiemethode, gebruikersnaam, wachtwoord en selecteer de gateway:
+5. Selecteer een van de acties, zoals **Oracle database-rij ophalen**. Selecteer **verbinding via on-premises gegevens gateway**. Voer de naam van de Oracle-Server, de verificatie methode, de gebruikers naam, het wacht woord en selecteer de gateway:
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
-6. Eenmaal verbinding hebben, een tabel in de lijst selecteren en de rij-ID invoeren op de tabel. U moet weten de id voor de tabel. Als u niet weet, contact op met uw beheerder Oracle DB, en de uitvoer van `select * from yourTableName`. Hierdoor kunt u persoonlijke informatie die u nodig hebt om door te gaan.
+6. Zodra de verbinding is gemaakt, selecteert u een tabel in de lijst en voert u de rij-ID in voor uw tabel. U moet de id van de tabel weten. Als u dat niet weet, neemt u contact op met uw Oracle DB-beheerder en haalt u de uitvoer op van `select * from yourTableName`. Dit geeft u de informatie die u nodig hebt om door te gaan.
 
-    In het volgende voorbeeld taakgegevens uit een Human Resources-database geretourneerd: 
+    In het volgende voor beeld worden taak gegevens geretourneerd vanuit een Human Resources-Data Base: 
 
     ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. In deze stap kunt u een van de andere connectors gebruiken om u te maken van uw werkstroom. Als u ophalen van gegevens uit Oracle testen wilt, klikt u vervolgens Stuur uzelf een e-mailbericht met de Oracle-gegevens met behulp van een van de verzenden e-connectors, zoals Office 365- of Gmail. De dynamische tokens van de Oracle-tabel gebruiken om te bouwen de `Subject` en `Body` van uw e-mailadres:
+7. In deze volgende stap kunt u een van de andere connectors gebruiken om uw werk stroom te bouwen. Als u het ophalen van gegevens van Oracle wilt testen, stuurt u een e-mail met de Oracle-gegevens via een van de e-mail connectors verzenden, zoals Office 365 of Gmail. Gebruik de dynamische tokens uit de Oracle-tabel om de `Subject` en `Body` van uw e-mail adres te maken:
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. **Sla** uw logische app en selecteer vervolgens **uitvoeren**. Sluit de ontwerpfunctie en kijken naar de geschiedenis van uitvoeringen van de status. Als dit mislukt, selecteert u de mislukte bericht rij. De ontwerpfunctie wordt geopend en toont u die stap is mislukt en toont ook de foutgegevens. Als dat lukt, ontvangt u een e-mailbericht met de informatie die u hebt toegevoegd.
+8. **Sla** de logische app op en selecteer vervolgens **uitvoeren**. Sluit de ontwerp functie en Bekijk de uitvoerings geschiedenis voor de status. Als dit mislukt, selecteert u de map met het mislukte bericht. De ontwerp functie wordt geopend en toont u de stap die is mislukt. Daarnaast wordt de fout informatie weer gegeven. Als dit lukt, ontvangt u een e-mail bericht met de informatie die u hebt toegevoegd.
 
 
-### <a name="workflow-ideas"></a>Werkstroom ideeën
+### <a name="workflow-ideas"></a>Werk stroom ideeën
 
-* U wilt controleren van de hashtag #oracle en plaats u de tweets in een database, zodat ze kunnen worden opgevraagd en in andere toepassingen gebruikt. Een logische app, voeg de `Twitter - When a new tweet is posted` activeren en voer de **#oracle** hashtag. Voeg vervolgens de `Oracle Database - Insert row` actie, en selecteer uw tabel:
+* U wilt de #oracle hashtag bewaken en de tweets in een Data Base plaatsen, zodat deze kunnen worden opgevraagd en in andere toepassingen kan worden gebruikt. Voeg in een logische app de trigger `Twitter - When a new tweet is posted` toe en voer de **#oracle** hashtag in. Voeg vervolgens de `Oracle Database - Insert row` actie toe en selecteer de tabel:
 
     ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
-* Berichten worden verzonden naar een Service Bus-wachtrij. U wilt ophalen, deze berichten en plaats u ze in een database. Een logische app, voeg de `Service Bus - when a message is received in a queue` activeren en selecteert u de wachtrij. Voeg vervolgens de `Oracle Database - Insert row` actie, en selecteer uw tabel:
+* Berichten worden verzonden naar een Service Bus wachtrij. U wilt deze berichten ophalen en in een Data Base opnemen. Voeg in een logische app de trigger `Service Bus - when a message is received in a queue` toe en selecteer de wachtrij. Voeg vervolgens de `Oracle Database - Insert row` actie toe en selecteer de tabel:
 
     ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
 ## <a name="common-errors"></a>Algemene fouten
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Fout**: Kan de Gateway niet bereiken
+#### <a name="error-cannot-reach-the-gateway"></a>**Fout**: kan de gateway niet bereiken
 
-**Oorzaak**: De on-premises gegevensgateway is niet alleen verbinding maken met de cloud. 
+**Oorzaak**: de on-premises gegevens gateway kan geen verbinding maken met de Cloud. 
 
-**Risicobeperking**: Zorg ervoor dat uw gateway wordt uitgevoerd op de on-premises computer waar u deze hebt geïnstalleerd, en dat deze verbinding kan maken met internet.  Het is raadzaam om de gateway niet installeren op een computer die kan worden uitgeschakeld of de slaapstand. U kunt ook de on-premises gegevensgatewayservice (PBIEgwService) opnieuw.
+**Risico beperking**: Zorg ervoor dat uw gateway wordt uitgevoerd op de on-premises machine waarop u deze hebt geïnstalleerd en dat deze verbinding kan maken met internet.  U wordt aangeraden de gateway niet te installeren op een computer die kan worden uitgeschakeld of in de slaap stand kan worden gezet. U kunt ook de on-premises gegevens Gateway Service (PBIEgwService) opnieuw starten.
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fout**: De gebruikte provider is verouderd: ' System.Data.OracleClient is Oracle-clientsoftwareversie 8.1.7 of hoger.'. Zie [ https://go.microsoft.com/fwlink/p/?LinkID=272376 ](https://go.microsoft.com/fwlink/p/?LinkID=272376) om de officiële provider te installeren.
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fout**: de gebruikte provider is afgeschaft: System. data. OracleClient vereist Oracle client software version 8.1.7 of hoger. Zie [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) om de officiële provider te installeren.
 
-**Oorzaak**: De SDK van de Oracle-client is niet geïnstalleerd op de computer waarop de on-premises gegevensgateway is uitgevoerd.  
+**Oorzaak**: de Oracle-client-SDK is niet geïnstalleerd op de computer waarop de on-premises gegevens gateway wordt uitgevoerd.  
 
-**Resolutie**: Download en installeer de Oracle-client-SDK op dezelfde computer als de on-premises gegevensgateway.
+**Oplossing**: down load en installeer de Oracle-client-SDK op dezelfde computer als de on-premises gegevens gateway.
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Fout**: Voor tabel [tabelnaam] geen sleutelkolommen gedefinieerd
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Fout**: in tabel [TableName] worden geen sleutel kolommen gedefinieerd
 
-**Oorzaak**: De tabel heeft geen primaire sleutel.  
+**Oorzaak**: de tabel heeft geen primaire sleutel.  
 
-**Resolutie**: Het Oracle Database-connector vereist dat een tabel met een primaire-sleutelkolom worden gebruikt.
+**Oplossing**: de Oracle Database-Connector vereist dat er een tabel met een primaire sleutel kolom wordt gebruikt.
 
-#### <a name="currently-not-supported"></a>Momenteel ondersteund niet
+#### <a name="currently-not-supported"></a>Momenteel niet ondersteund
 
 * Weergaven 
 * Een tabel met samengestelde sleutels
-* Geneste objecttypen in tabellen
+* Geneste object typen in tabellen
  
-## <a name="connector-specific-details"></a>Connector-specifieke details
+## <a name="connector-specific-details"></a>Connector-specifieke Details
 
-Alle triggers en acties die zijn gedefinieerd in de swagger bekijken en ziet u ook eventuele beperkingen in de [connectorgegevens](/connectors/oracle/). 
+Bekijk de triggers en acties die zijn gedefinieerd in Swagger en Zie ook eventuele limieten in de details van de [connector](/connectors/oracle/). 
 
 ## <a name="get-some-help"></a>Hulp krijgen
 
-De [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) is een fantastische plek om te vragen stellen, vragen te beantwoorden en zien wat andere gebruikers van Logic Apps het doen zijn. 
+Het [Azure Logic apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) is een goede plaats om vragen te stellen, vragen te beantwoorden en te zien wat andere Logic Apps gebruikers doen. 
 
-U kunt helpen Logic Apps en connectors verbeteren door te stemmen en het verzenden van uw ideeën op [ https://aka.ms/logicapps-wish ](https://aka.ms/logicapps-wish). 
+U kunt Logic Apps en connectors verbeteren door te stemmen en uw ideeën op [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish)te verzenden. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Maak een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md), en bekijk de beschikbare connectors in Logic Apps op [lijst van API's](apis-list.md).
+[Maak een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)en verken de beschik bare connectors in Logic apps in de [lijst api's](apis-list.md).

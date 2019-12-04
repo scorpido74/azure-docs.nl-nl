@@ -1,22 +1,18 @@
 ---
-title: Verbinding maken met Dropbox-Azure Logic Apps
+title: Verbinding maken met Dropbox
 description: Bestanden uploaden en beheren met Dropbox REST Api's en Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/01/2019
 tags: connectors
-ms.openlocfilehash: 4e0689454ec074348fcbc775373a48d6825cfac4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: b38f9b9626e5eec0272256aacc71f7503a006dd6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050989"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789812"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Bestanden in Dropbox uploaden en beheren met behulp van Azure Logic Apps
 
@@ -60,7 +56,7 @@ Selecteer in de lijst acties deze actie: **Bestands inhoud ophalen met behulp va
 
 1. Als u wilt bladeren naar het bestandspad dat u wilt gebruiken, naast het vak **pad naar bestand** , kiest u de knop met weglatings tekens ( **...** ). 
 
-   U kunt ook in het vak bestandspad klikken en in de lijst met dynamische inhoud de optie **bestandspad**selecteren, waarvan de waarde beschikbaar is als uitvoer van de trigger die u in de vorige sectie hebt toegevoegd.
+   U kunt **ook in het vak bestandspad** klikken en in de lijst met dynamische inhoud de optie **bestandspad**selecteren, waarvan de waarde beschikbaar is als uitvoer van de trigger die u in de vorige sectie hebt toegevoegd.
 
 1. Wanneer u klaar bent, slaat u de logische app op.
 
@@ -72,4 +68,4 @@ Zie de [referentie pagina van de connector](/connectors/dropbox/)voor technische
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

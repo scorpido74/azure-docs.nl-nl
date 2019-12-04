@@ -1,48 +1,48 @@
 ---
-title: "& Voor het beheren van Lees replica's maken-Azure Database for MySQL"
+title: Lees replica's beheren-Azure CLI, REST API-Azure Database for MySQL
 description: Meer informatie over het instellen en beheren van Lees replica's in Azure Database for MySQL met behulp van de Azure CLI of REST API.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/14/2019
-ms.openlocfilehash: 741b50bdb2ec9c8d29a9f759e46209856de3a49c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 56ba530c4f684bf89db9c5b87306592fbfeee7fa
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970312"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774091"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van de Azure CLI en REST API
 
 In dit artikel wordt beschreven hoe u in de Azure Database for MySQL-service Lees replica's maakt en beheert met behulp van de Azure CLI en REST API. Zie het [overzicht](concepts-read-replicas.md)voor meer informatie over het lezen van replica's.
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
 
 ### <a name="prerequisites"></a>Vereisten
 
 - [Installeer Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- Een [Azure Database for MySQL-server](quickstart-create-mysql-server-database-using-azure-portal.md) die wordt gebruikt als de hoofd-server. 
+- Een [Azure database for mysql-server](quickstart-create-mysql-server-database-using-azure-portal.md) die wordt gebruikt als de hoofd server. 
 
 > [!IMPORTANT]
-> De functie lezen replica is alleen beschikbaar voor Azure Database voor MySQL-servers in de Prijscategorieën voor algemeen gebruik of geoptimaliseerd voor geheugen. Controleer of de hoofd-server in een van deze Prijscategorieën.
+> De functie voor het lezen van replica's is alleen beschikbaar voor Azure Database for MySQL-servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de hoofd server zich in een van deze prijs categorieën bevindt.
 
-### <a name="create-a-read-replica"></a>Maken van een replica lezen
+### <a name="create-a-read-replica"></a>Een lees replica maken
 
-Een lezen-replica-server kan worden gemaakt met de volgende opdracht:
+Een lees replica-server kan worden gemaakt met behulp van de volgende opdracht:
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-De `az mysql server replica create` opdracht moet de volgende parameters:
+De opdracht `az mysql server replica create` vereist de volgende para meters:
 
-| Instelling | Voorbeeldwaarde | Description  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resourcegroep waar de replica-server om te worden gemaakt.  |
-| naam | mydemoreplicaserver | De naam van de nieuwe replicaserver die is gemaakt. |
-| source-server | mydemoserver | De naam of ID van de bestaande hoofd-server om te repliceren van. |
+| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
+| name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
+| source-server | mydemoserver | De naam of ID van de bestaande hoofd server waaruit moet worden gerepliceerd. |
 
 Als u een lees replica wilt maken, gebruikt u de para meter `--location`. In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
 
@@ -54,56 +54,56 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 > Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica. 
 
 > [!NOTE]
-> Lezen-replica's worden gemaakt met de configuratie van de dezelfde server als de master. De configuratie van de replica-server kan worden gewijzigd nadat deze is gemaakt. Het wordt aanbevolen dat de configuratie van de replica-server moet worden opgeslagen op de waarden gelijk zijn aan of groter zijn dan het model om te controleren of dat de replica kan houden met de master.
+> Lees replica's worden gemaakt met dezelfde server configuratie als de Master. De configuratie van de replica server kan worden gewijzigd nadat deze is gemaakt. Het is raadzaam om de configuratie van de replica server te behouden in gelijke of hogere waarden dan de Master om ervoor te zorgen dat de replica kan blijven werken met de Master.
 
 
-### <a name="list-replicas-for-a-master-server"></a>Lijst met replica's voor een hoofd-server
+### <a name="list-replicas-for-a-master-server"></a>Replica's voor een hoofd server weer geven
 
-Als u wilt weergeven van alle replica's voor een bepaalde hoofd-server, moet u de volgende opdracht uitvoeren: 
+Als u alle replica's voor een bepaalde hoofd server wilt weer geven, voert u de volgende opdracht uit: 
 
 ```azurecli-interactive
 az mysql server replica list --server-name mydemoserver --resource-group myresourcegroup
 ```
 
-De `az mysql server replica list` opdracht moet de volgende parameters:
+De opdracht `az mysql server replica list` vereist de volgende para meters:
 
-| Instelling | Voorbeeldwaarde | Description  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resourcegroep waar de replica-server om te worden gemaakt.  |
-| servernaam | mydemoserver | De naam of ID van de hoofd-server. |
+| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
+| servernaam | mydemoserver | De naam of ID van de hoofd server. |
 
-### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica-server stoppen
+### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
 
 > [!IMPORTANT]
-> Replicatie naar een server stoppen is niet ongedaan worden gemaakt. Wanneer u replicatie tussen een model en de replica is gestopt, kunnen deze kan niet ongedaan worden gemaakt. De replica-server vervolgens wordt een zelfstandige server en biedt nu ondersteuning voor zowel lees- en schrijfbewerkingen. Deze server kan niet opnieuw worden gemaakt in een replica.
+> Het stoppen van de replicatie naar een server is onomkeerbaar. Zodra de replicatie tussen een hoofd-en replica is gestopt, kan deze niet meer ongedaan worden gemaakt. De replica-server wordt vervolgens een zelfstandige server en ondersteunt nu lezen en schrijven. Deze server kan niet opnieuw in een replica worden gemaakt.
 
-Replicatie naar een lezen-replica-server kan worden gestopt met de volgende opdracht:
+Replicatie naar een lees replica-server kan worden gestopt met de volgende opdracht:
 
 ```azurecli-interactive
 az mysql server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
 ```
 
-De `az mysql server replica stop` opdracht moet de volgende parameters:
+De opdracht `az mysql server replica stop` vereist de volgende para meters:
 
-| Instelling | Voorbeeldwaarde | Description  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resourcegroep waarin de replica-server bestaat.  |
-| naam | mydemoreplicaserver | De naam van de replica-server om replicatie te stoppen op. |
+| resource-group |  myResourceGroup |  De resource groep waar de replica-server bestaat.  |
+| name | mydemoreplicaserver | De naam van de replica server waarvoor replicatie moet worden gestopt. |
 
-### <a name="delete-a-replica-server"></a>Een replica-server verwijderen
+### <a name="delete-a-replica-server"></a>Een replica server verwijderen
 
-Verwijderen van een lezen-replica-server kan worden gedaan door het uitvoeren van de **[az mysql server delete](/cli/azure/mysql/server)** opdracht.
+Het verwijderen van een lees replica-server kan worden uitgevoerd door de opdracht **[AZ mysql server delete](/cli/azure/mysql/server)** uit te voeren.
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserver
 ```
 
-### <a name="delete-a-master-server"></a>Een hoofd-server verwijderen
+### <a name="delete-a-master-server"></a>Een hoofd server verwijderen
 
 > [!IMPORTANT]
-> Verwijderen van een hoofd-server-replicatie naar alle replicaservers stopt en Hiermee verwijdert u de hoofd-server zelf. Replica-servers worden zelfstandige servers die bieden nu ondersteuning voor zowel lees- en schrijfbewerkingen.
+> Als u een hoofdserver verwijdert, wordt de replicatie naar alle replicaservers gestopt en wordt de hoofdserver zelf verwijderd. Replicaservers worden zelfstandige servers die nu zowel lees-als schrijfbewerkingen ondersteunen.
 
-Als u wilt verwijderen een hoofd-server, kunt u uitvoeren de **[az mysql server delete](/cli/azure/mysql/server)** opdracht.
+Als u een master server wilt verwijderen, kunt u de opdracht **[AZ mysql server delete](/cli/azure/mysql/server)** uitvoeren.
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
@@ -113,7 +113,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="rest-api"></a>REST-API
 U kunt met behulp van de [Azure rest API](/rest/api/azure/)Lees replica's maken en beheren.
 
-### <a name="create-a-read-replica"></a>Maken van een replica lezen
+### <a name="create-a-read-replica"></a>Een lees replica maken
 U kunt een lees replica maken met behulp van de [API Create](/rest/api/mysql/servers/create):
 
 ```http
@@ -148,7 +148,7 @@ U kunt de lijst met replica's van een hoofd server weer geven met behulp van de 
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
-### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica-server stoppen
+### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
 U kunt de replicatie tussen een hoofd server en een lees replica stoppen met de [Update-API](/rest/api/mysql/servers/update).
 
 Nadat u de replicatie naar een hoofd server en een lees replica hebt gestopt, kunt u deze niet meer ongedaan maken. De Lees replica wordt een zelfstandige server die zowel lees-als schrijf bewerkingen ondersteunt. De zelfstandige server kan niet opnieuw in een replica worden gemaakt.
@@ -177,4 +177,4 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [lezen replica's](concepts-read-replicas.md)
+- Meer informatie over het [lezen van replica's](concepts-read-replicas.md)

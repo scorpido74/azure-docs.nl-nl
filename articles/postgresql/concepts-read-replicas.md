@@ -1,17 +1,17 @@
 ---
-title: Replica's lezen in Azure Database for PostgreSQL-één server
+title: Replica's lezen-Azure Database for PostgreSQL-één server
 description: In dit artikel wordt de functie voor het lezen van replica's in Azure Database for PostgreSQL-één server beschreven.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 5d3d752f549fe336f584fa3534b61cb5a009c3bd
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 12/03/2019
+ms.openlocfilehash: 35d568afa0c45529b33b7918fd453213f432ba06
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158800"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792296"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -40,7 +40,9 @@ U kunt een hoofd server in een [Azure database for PostgreSQL regio](https://azu
 ### <a name="universal-replica-regions"></a>Universele replica regio's
 U kunt altijd een lees replica maken in een van de volgende regio's, ongeacht waar uw master server zich bevindt. Dit zijn de universele replica regio's:
 
-Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West 2.
+Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West.
+
+\* VS-West 2 is tijdelijk niet beschikbaar als replica locatie voor meerdere regio's.
 
 
 ### <a name="paired-regions"></a>Gekoppelde regio's

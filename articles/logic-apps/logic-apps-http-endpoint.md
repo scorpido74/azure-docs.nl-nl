@@ -1,20 +1,17 @@
 ---
-title: Logische apps aanroepen, activeren of nesten-Azure Logic Apps
+title: Logische apps aanroepen, triggeren of nesten
 description: HTTP-eind punten instellen voor het aanroepen, activeren of nesten van logische app-werk stromen in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.workload: integration
-author: ecfan
-ms.author: klam
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: 27a3bf036cce27a5f215068ff71928cb7e181452
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833926"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792032"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Logische apps aanroepen, activeren of nesten met behulp van HTTP-eind punten in Azure Logic Apps
 
@@ -39,7 +36,7 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](
 
 ## <a name="create-a-callable-endpoint"></a>Een aanroepbaar eind punt maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Een lege logische app maken en openen in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege logische app maken en openen in de ontwerp functie voor logische apps.
 
    In dit voor beeld wordt de trigger voor aanvragen gebruikt, maar u kunt elke trigger gebruiken die binnenkomende HTTP-aanvragen kan ontvangen. Alle principes zijn identiek van toepassing op deze triggers. Zie voor meer informatie over de aanvraag trigger [binnenkomende https-aanroepen ontvangen en erop reageren met behulp van Azure Logic apps](../connectors/connectors-native-reqres.md).
 

@@ -5,42 +5,43 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.openlocfilehash: 0e80aa44652efbc58f8259944058aabe59ca5d1a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.custom: hdinsightactive
+ms.date: 11/29/2019
+ms.openlocfilehash: 110a8e86fc1916254ab914630ce10d2b7ae073b7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338465"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775330"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Fouten opsporen Apache Spark taken die worden uitgevoerd op Azure HDInsight
 
-In dit artikel leert u hoe u [Apache Spark](https://spark.apache.org/) taken die worden uitgevoerd op HDInsight-clusters kunt volgen en opsporen met behulp van de [Apache Hadoop garen](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) -UI, Spark-gebruikers interface en de Spark-geschiedenis server. U start een Spark-taak met behulp van een notitie blok dat **beschikbaar is in het Spark-cluster, machine learning: Voorspellende analyse van gegevens over levensmiddelen inspecties**met behulp van MLLib. U kunt de volgende stappen gebruiken om een toepassing bij te houden die u hebt verzonden met behulp van een andere methode, bijvoorbeeld **Spark-verzen**ding.
+In dit artikel leert u hoe u [Apache Spark](https://spark.apache.org/) taken die worden uitgevoerd op HDInsight-clusters kunt volgen en opsporen met behulp van de [Apache Hadoop garen](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) -UI, Spark-gebruikers interface en de Spark-geschiedenis server. U start een Spark-taak met behulp van een notitie blok dat beschikbaar is in het Spark-cluster, **machine learning: voorspellende analyse van gegevens van levensmiddelen inspecties met behulp van MLLib**. U kunt de volgende stappen gebruiken om een toepassing bij te houden die u hebt verzonden met behulp van een andere methode, bijvoorbeeld **Spark-verzen**ding.
+
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet het volgende hebben:
-
-* Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
-* U moet het notitie blok hebben gestart,  **[machine learning: Voorspellende analyse van gegevens over levensmiddelen inspecties](apache-spark-machine-learning-mllib-ipython.md)met behulp van MLLib**. Volg de koppeling voor instructies over het uitvoeren van dit notitie blok.  
+
+* U moet het notitie blok, **[machine learning: voorspellende analyse van gegevens van de levensmiddelen inspectie starten met behulp van MLLib](apache-spark-machine-learning-mllib-ipython.md)** . Volg de koppeling voor instructies over het uitvoeren van dit notitie blok.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Een toepassing volgen in de garen-gebruikers interface
 
-1. Start de garen-gebruikers interface. Klik op **garens** onder **cluster dashboards**.
+1. Start de garen-gebruikers interface. Selecteer **garens** onder **cluster dashboards**.
 
     ![Azure Portal GARENs-UI starten](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
 
    > [!TIP]  
-   > U kunt ook de gebruikers interface van garen starten vanuit de Ambari-gebruikers interface. Als u de Ambari-gebruikers interface wilt starten, klikt u op **Ambari start** onder **cluster dashboards**. Klik in de Ambari-gebruikers interface op **garens**, klik op **snelle koppelingen**, klik op actieve Resource Manager en klik vervolgens op **Resource Manager-gebruikers interface**.
+   > U kunt ook de gebruikers interface van garen starten vanuit de Ambari-gebruikers interface. Als u de Ambari-gebruikers interface wilt starten, selecteert u **Ambari Home** onder **cluster dashboards**. Ga in de Ambari-gebruikers interface naar **garens** > **snelle koppelingen** > de actieve Resource Manager > **Resource Manager-gebruikers interface**.
 
-2. Omdat u de Spark-taak met Jupyter-notebooks hebt gestart, heeft de toepassing de naam **remotesparkmagics** (dit is de naam voor alle toepassingen die vanuit de notitie blokken worden gestart). Klik op de toepassings-ID voor de toepassings naam om meer informatie over de taak weer te geven. Hiermee opent u de weer gave van de toepassing.
+2. Omdat u de Spark-taak met Jupyter-notebooks hebt gestart, heeft de toepassing de naam **remotesparkmagics** (dit is de naam voor alle toepassingen die vanuit de notitie blokken worden gestart). Selecteer de toepassings-ID voor de toepassings naam om meer informatie over de taak weer te geven. Hiermee opent u de weer gave van de toepassing.
 
     ![Spark-geschiedenis server zoeken naar Spark-toepassings-ID](./media/apache-spark-job-debugging/find-application-id1.png)
 
     Voor dergelijke toepassingen die worden gestart vanuit de Jupyter-notebooks, wordt de status altijd **uitgevoerd** totdat u het notitie blok sluit.
+
 3. Vanuit de toepassings weergave kunt u verder inzoomen op de containers die zijn gekoppeld aan de toepassing en de logboeken (stdout/stderr). U kunt ook de Spark-gebruikers interface starten door te klikken op de koppeling die overeenkomt met de **tracerings-URL**, zoals hieronder wordt weer gegeven.
 
     ![Container logboeken van de Spark-geschiedenis server downloaden](./media/apache-spark-job-debugging/download-container-logs.png)
@@ -49,21 +50,21 @@ U moet het volgende hebben:
 
 In de Spark-gebruikers interface kunt u inzoomen op de Spark-taken die worden uitgevoerd door de toepassing die u eerder hebt gestart.
 
-1. Als u de Spark-gebruikers interface wilt starten, klikt u in de toepassings weergave op de koppeling met de **tracerings-URL**, zoals wordt weer gegeven in de bovenstaande scherm opname. U kunt alle Spark-taken zien die worden gestart door de toepassing die wordt uitgevoerd in de Jupyter-notebook.
+1. Als u de Spark-gebruikers interface wilt starten, selecteert u in de toepassings weergave de koppeling met de **tracerings-URL**, zoals wordt weer gegeven in de bovenstaande scherm opname. U kunt alle Spark-taken zien die worden gestart door de toepassing die wordt uitgevoerd in de Jupyter-notebook.
 
     ![Het tabblad Server taken van Spark-geschiedenis](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 
-2. Klik op het tabblad **uitvoerende uitvoeringen** om de verwerkings-en opslag informatie voor elke uitvoerder te bekijken. U kunt de aanroep stack ook ophalen door te klikken op de koppeling **thread dump** .
+2. Selecteer het tabblad **uitvoerende uitvoeringen** om de verwerkings-en opslag informatie voor elke uitvoerder te bekijken. U kunt de aanroep stack ook ophalen door de **thread dump** koppeling te selecteren.
 
     ![Tabblad voor het uitvoeren van de Spark-geschiedenis server](./media/apache-spark-job-debugging/view-spark-executors.png)
 
-3. Klik op het tabblad **fasen** om de fasen te zien die zijn gekoppeld aan de toepassing.
+3. Selecteer het tabblad **stadia** om de fasen te zien die zijn gekoppeld aan de toepassing.
 
-    ![Tabblad in Spark-geschiedenis server stadia](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Spark-fasen weer geven")
+    ![Het tabblad Server fasen van Spark-geschiedenis](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Spark-fasen weer geven")
 
     Elke fase kan meerdere taken bevatten waarvoor u uitvoerings statistieken kunt bekijken, zoals hieronder wordt weer gegeven.
 
-    ![Details van het tabblad Server stadia Spark-geschiedenis](./media/apache-spark-job-debugging/view-spark-stages-details.png "weer geven details van Spark-fasen")
+    ![Details van het tabblad Server fasen in Spark-geschiedenis](./media/apache-spark-job-debugging/view-spark-stages-details.png "Details van Spark-fasen weer geven")
 
 4. Op de pagina Details van fase kunt u DAG visualisatie starten. Vouw de koppeling **dag visualisatie** boven aan de pagina uit, zoals hieronder wordt weer gegeven.
 
@@ -82,8 +83,8 @@ In de Spark-gebruikers interface kunt u inzoomen op de Spark-taken die worden ui
 
 6. Andere tabbladen in de Spark-gebruikers interface geven ook nuttige informatie over de Spark-instantie.
 
-   * Tabblad opslag: als uw toepassing een Rdd's maakt, vindt u informatie over die op het tabblad opslag.
-   * Tabblad omgeving: dit tabblad bevat een groot aantal nuttige informatie over uw Spark-exemplaar, zoals:
+   * Tabblad opslag: als uw toepassing een RDD maakt, vindt u informatie over die op het tabblad opslag.
+   * Tabblad omgeving: dit tabblad bevat nuttige informatie over uw Spark-exemplaar, zoals:
      * Scala-versie
      * De map met gebeurtenis logboeken die aan het cluster zijn gekoppeld
      * Aantal uitvoer kernen voor de toepassing
@@ -93,16 +94,16 @@ In de Spark-gebruikers interface kunt u inzoomen op de Spark-taken die worden ui
 
 Zodra een taak is voltooid, wordt de informatie over de taak opgeslagen in de Spark-geschiedenis server.
 
-1. Als u de Spark-geschiedenis server wilt starten, klikt u op de Blade overzicht op **Spark-geschiedenis server** onder **cluster dashboards**.
+1. Als u de Spark-geschiedenis server wilt starten, selecteert u op de pagina **overzicht** de optie **Spark-geschiedenis server** onder **cluster dashboards**.
 
-    ![Azure Portal Spark-geschiedenis server starten](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spark-geschiedenis starten server1")
+    ![Azure Portal Spark-geschiedenis server starten](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spark geschiedenis server1 starten")
 
    > [!TIP]  
-   > U kunt ook de gebruikers interface van de Spark-geschiedenis server starten vanuit de Ambari-gebruikers interface. Als u de Ambari-gebruikers interface wilt starten, klikt u op de Blade overzicht op **Ambari start** onder **cluster dashboards**. Klik in de Ambari-gebruikers interface op **Spark**, klik op **snelle koppelingen**en klik vervolgens op de **gebruikers interface van de Spark-geschiedenis server**.
+   > U kunt ook de gebruikers interface van de Spark-geschiedenis server starten vanuit de Ambari-gebruikers interface. Als u de Ambari-gebruikers interface wilt starten, selecteert u op de Blade overzicht de optie **Ambari Home** onder **cluster dashboards**. Ga in de Ambari-gebruikers interface naar **Spark2** > **snelle koppelingen** > **gebruikers interface van Spark2 geschiedenis server**.
 
-2. U ziet alle voltooide toepassingen die worden weer gegeven. Klik op een toepassings-ID om in te zoomen op een toepassing voor meer informatie.
+2. U ziet alle voltooide toepassingen die worden weer gegeven. Selecteer een toepassings-ID om in te zoomen op een toepassing voor meer informatie.
 
-    ![Voltooide Spark-geschiedenis server toepassingen](./media/apache-spark-job-debugging/view-completed-applications.png "starten Spark-geschiedenis server2")
+    ![Voltooide Spark-geschiedenis server toepassingen](./media/apache-spark-job-debugging/view-completed-applications.png "Spark-geschiedenis server2 starten")
 
 ## <a name="see-also"></a>Zie ook
 

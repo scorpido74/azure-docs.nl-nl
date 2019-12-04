@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0af2d306a5f5923f5e14eb0ebc4707f9c5caee90
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 87e1d94fe9f86f5916219feac732bf80af1f3121
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288566"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769027"
 ---
 # <a name="azure-maps-weather-coverage"></a>Weer dekking Azure Maps
 
@@ -164,7 +164,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Tanzania                    | ✓               |                              |        ✓| 
 | Togo                        | ✓               |                              |        ✓| 
 | Tunesië                     | ✓               |                              |        ✓| 
-| Oeganda                      | ✓               |                              |        ✓| 
+| Uganda                      | ✓               |                              |        ✓| 
 | Verenigde Arabische Emiraten        | ✓               |                              |        ✓| 
 | Westelijke Sahara              | ✓               |                              |        ✓| 
 | Jemen                       | ✓               |                              |        ✓| 
@@ -172,7 +172,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Zimbabwe                    | ✓               |                              |        ✓| 
 
 
-## <a name="asia-pacific"></a>Azië en Stille Oceaan
+## <a name="asia-pacific"></a>Azië-Pacific
 
 | Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
@@ -220,7 +220,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Pakistan                          | ✓ |   |  ✓| 
 | Palau                             | ✓ |   |  ✓| 
 | Papoea-Nieuw-Guinea                  | ✓ |   |  ✓| 
-| Filipijnen                       | ✓ |   |  ✓| 
+| Filippijnen                       | ✓ |   |  ✓| 
 | Pitcairneilanden                  | ✓ |   |  ✓| 
 | Samoa                             | ✓ |   |  ✓| 
 | Singapore                         | ✓ |   |  ✓| 
@@ -229,7 +229,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Taiwan                            | ✓ |   |  ✓| 
 | Tadzjikistan                        | ✓ |   |  ✓| 
 | Thailand                          | ✓ |   |  ✓| 
-| Timor-Leste                       | ✓ |   |  ✓| 
+| Oost-leste                       | ✓ |   |  ✓| 
 | Tokelau                           | ✓ |   |  ✓| 
 | Tonga                             | ✓ |   |  ✓| 
 | Turkmenistan                      | ✓ |   |  ✓| 
@@ -248,7 +248,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Andorra                | ✓ |   |  ✓| 
 | Armenië                | ✓ |   |  ✓| 
 | Oostenrijk                | ✓ | ✓ |  ✓| 
-| Belarus                | ✓ |   |  ✓| 
+| Wit-Rusland                | ✓ |   |  ✓| 
 | België                | ✓ | ✓ |  ✓| 
 | Bosnië en Herzegovina | ✓ | ✓ |  ✓| 
 | Bulgarije               | ✓ |   |  ✓| 

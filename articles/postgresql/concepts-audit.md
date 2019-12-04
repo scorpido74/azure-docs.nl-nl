@@ -1,17 +1,17 @@
 ---
-title: Controle logboek registratie met behulp van pgAudit in Azure Database for PostgreSQL-één server
+title: Controle logboek registratie-Azure Database for PostgreSQL-één server
 description: Concepten voor pgAudit-controle logboek registratie in Azure Database for PostgreSQL-één server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 49ad7334c418e29c821320608be729e060b4a8ae
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4a41e5eda3ca2bd92d78a81d73c1ad4c859e25a3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331332"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764556"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Controle logboek registratie in Azure Database for PostgreSQL-één server
 
@@ -37,13 +37,13 @@ Ga naar de sectie Diagnostische logboeken in het [artikel server logboeken](conc
 
 ## <a name="installing-pgaudit"></a>PgAudit installeren
 
-Als u pgAudit wilt installeren, moet u deze toevoegen aan de gedeelde vooraf geladen bibliotheken van de server. Voor een wijziging in de para meter `shared_preload_libraries` van post gres moet de server opnieuw worden opgestart. U kunt para meters wijzigen met behulp van de [Azure Portal](howto-configure-server-parameters-using-portal.md), [Azure cli](howto-configure-server-parameters-using-cli.md)of [rest API](/rest/api/postgresql/configurations/createorupdate).
+Als u pgAudit wilt installeren, moet u deze toevoegen aan de gedeelde vooraf geladen bibliotheken van de server. Voor een wijziging in de `shared_preload_libraries` para meter van post gres moet de server opnieuw worden opgestart. U kunt para meters wijzigen met behulp van de [Azure Portal](howto-configure-server-parameters-using-portal.md), [Azure cli](howto-configure-server-parameters-using-cli.md)of [rest API](/rest/api/postgresql/configurations/createorupdate).
 
 Met behulp van de [Azure Portal](https://portal.azure.com):
 
    1. Selecteer uw Azure Database for PostgreSQL-server.
    2. Selecteer op de zijbalk **server parameters**.
-   3. Zoek naar de para meter `shared_preload_libraries`.
+   3. Zoek de para meter `shared_preload_libraries`.
    4. Selecteer **pgaudit**.
    5. Start de server opnieuw op om de wijziging toe te passen.
 
@@ -65,13 +65,13 @@ met pgAudit kunt u de sessie of object controle logboek registratie configureren
 Nadat u [pgAudit hebt geïnstalleerd](#installing-pgaudit), kunt u de para meters configureren om de logboek registratie te starten. De [pgAudit-documentatie](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) bevat de definitie van elke para meter. Test eerst de para meters en controleer of u het verwachte gedrag krijgt.
 
 > [!NOTE]
-> Als `pgaudit.log_client` wordt ingesteld op aan, worden logboeken omgeleid naar een client proces (zoals psql) in plaats van naar het bestand te schrijven. Deze instelling moet over het algemeen uitgeschakeld blijven.
+> Als u `pgaudit.log_client` instelt op aan, worden logboeken omgeleid naar een client proces (zoals psql) in plaats van naar het bestand te schrijven. Deze instelling moet over het algemeen uitgeschakeld blijven.
 
 > [!NOTE]
-> `pgaudit.log_level` is alleen ingeschakeld wanneer `pgaudit.log_client` is ingeschakeld. Daarnaast is er in de Azure Portal momenteel een bug met `pgaudit.log_level`: er wordt een keuze lijst met invoervak weer gegeven, zodat u meerdere niveaus kunt selecteren. Er moet echter maar één niveau worden geselecteerd. 
+> `pgaudit.log_level` is alleen ingeschakeld wanneer `pgaudit.log_client` is ingeschakeld. Daarnaast is er in het Azure Portal momenteel een bug met `pgaudit.log_level`: een keuze lijst met invoervak wordt weer gegeven, zodat u meerdere niveaus kunt selecteren. Er moet echter maar één niveau worden geselecteerd. 
 
 > [!NOTE]
-> In Azure Database for PostgreSQL kan `pgaudit.log` niet worden ingesteld met behulp van een snelkoppeling naar een `-`-teken (minteken) zoals beschreven in de pgAudit-documentatie. Alle vereiste instructieklassen (lezen, schrijven, enzovoort) moeten afzonderlijk worden opgegeven.
+> In Azure Database for PostgreSQL kan `pgaudit.log` niet worden ingesteld met behulp van een snelkoppeling naar een `-` (minteken) zoals beschreven in de pgAudit-documentatie. Alle vereiste instructieklassen (lezen, schrijven, enzovoort) moeten afzonderlijk worden opgegeven.
 
 ### <a name="audit-log-format"></a>Audit logboek indeling
 Elke controle vermelding wordt aangegeven door `AUDIT:` aan het begin van de logboek regel. De indeling van de rest van de vermelding wordt beschreven in de [pgAudit-documentatie](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
@@ -85,7 +85,7 @@ t=%m u=%u db=%d pid=[%p]:
 Ga naar de [postgresql-documentatie](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX)voor meer informatie over `log_line_prefix`.
 
 ### <a name="getting-started"></a>Aan de slag
-Als u snel aan de slag wilt, stelt u `pgaudit.log` in op `WRITE` en opent u de logboeken om de uitvoer te controleren. 
+Als u snel aan de slag wilt gaan, stelt u `pgaudit.log` in op `WRITE`en opent u de logboeken om de uitvoer te controleren. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

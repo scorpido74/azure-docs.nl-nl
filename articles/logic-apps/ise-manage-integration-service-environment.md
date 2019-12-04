@@ -2,19 +2,16 @@
 title: Integratie service omgevingen in Azure Logic Apps beheren
 description: Controleer de netwerk status en beheer logische apps, verbindingen, aangepaste connectors en integratie accounts in uw integratie service omgeving (ISE) voor Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6a6b096911ac8596fe29aeb4596f1da6d5266794
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 1d91813e0f39207bcf7768de89600a6bdee0fc53
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967815"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792617"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Uw ISE (Integration service Environment) beheren in Azure Logic Apps
 
@@ -22,7 +19,7 @@ Volg de stappen in dit onderwerp om de netwerk status van uw [ISE (Integration s
 
 ## <a name="view-your-ise"></a>Uw ISE weer geven
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Voer in het zoekvak van de portal "integratie service omgevingen" in en selecteer vervolgens **integratie service omgevingen**.
 

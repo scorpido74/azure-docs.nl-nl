@@ -1,89 +1,89 @@
 ---
-title: Maken en beheren van Azure Database voor MySQL-firewallregels met behulp van Azure CLI
-description: In dit artikel wordt beschreven hoe u maken en beheren van Azure Database voor MySQL-firewallregels met behulp van Azure CLI-opdrachtregel.
+title: Firewall regels beheren-Azure CLI-Azure Database for MySQL
+description: In dit artikel wordt beschreven hoe u Azure Database for MySQL firewall regels maakt en beheert met behulp van de Azure CLI-opdracht regel.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: dca7d09a5358f5e8b4025dc5e35e4465e21d77a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 0c64a5d80bace68f72274224ca9ba7c99a84f86a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458464"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764947"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Maken en beheren van Azure Database voor MySQL-firewallregels met behulp van de Azure CLI
-Firewallregels op serverniveau kunnen worden gebruikt om toegang tot een Azure Database voor MySQL-Server beheren vanaf een specifiek IP-adres of een bereik van IP-adressen. Met behulp van handige Azure CLI-opdrachten, kunt u maken, bijwerken, verwijderen, lijst, en firewallregels voor het beheren van uw server weergeven. Zie voor een overzicht van Azure Database voor MySQL-firewalls, [Azure Database for MySQL server firewall-regels](./concepts-firewall-rules.md).
+# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure Database for MySQL firewall regels maken en beheren met behulp van de Azure CLI
+Firewall regels op server niveau kunnen worden gebruikt om de toegang tot een Azure Database for MySQL server te beheren vanuit een specifiek IP-adres of een bereik met IP-adressen. Met behulp van handige Azure CLI-opdrachten kunt u firewall regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for MySQL Server firewall-regels](./concepts-firewall-rules.md)voor een overzicht van Azure database for MySQL firewalls.
 
-Regels voor virtueel netwerk (VNet) kunnen ook worden gebruikt voor het beveiligen van toegang tot uw server. Meer informatie over [maken en beheren van Virtual Network-service-eindpunten en regels met de Azure CLI](howto-manage-vnet-using-cli.md).
+Regels voor Virtual Network (VNet) kunnen ook worden gebruikt voor het beveiligen van de toegang tot uw server. Meer informatie over [het maken en beheren van Virtual Network Service-eind punten en-regels met behulp van de Azure cli](howto-manage-vnet-using-cli.md).
 
 ## <a name="prerequisites"></a>Vereisten
 * [Installeer Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-* Een [Azure Database for MySQL-server en database](quickstart-create-mysql-server-database-using-azure-cli.md).
+* Een [Azure database for mysql-server en-data base](quickstart-create-mysql-server-database-using-azure-cli.md).
 
-## <a name="firewall-rule-commands"></a>Firewall-regel opdrachten:
-De **az mysql server firewall-rule** opdracht van de Azure CLI wordt gebruikt voor het maken, verwijderen, vermelden, weergeven en firewallregels bijwerken.
+## <a name="firewall-rule-commands"></a>Opdracht firewall regel:
+De opdracht **AZ mysql server firewall-Rule** wordt gebruikt vanuit de Azure CLI om firewall regels te maken, verwijderen, weer geven en bijwerken.
 
-Opdrachten:
-- **Maak**: Maak een Azure MySQL server firewall-regel.
-- **Verwijder**: Een Azure MySQL server firewall-regel verwijderen.
-- **lijst met**: Lijst met de Azure MySQL server firewall-regels.
-- **weergeven**: De details van een Azure MySQL server firewall-regel weergeven.
-- **Update**: Een firewallregel voor Azure MySQL-server bijwerken.
+Opdrachten
+- **maken**: een Azure mysql server-firewall regel maken.
+- **verwijderen**: een Azure mysql server-firewall regel verwijderen.
+- **lijst**: Geef de firewall regels voor de Azure mysql-server weer.
+- **weer geven**: de details van een Azure mysql server-firewall regel weer geven.
+- **Update**: een Azure mysql server-firewall regel bijwerken.
 
-## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Aanmelden bij Azure en de lijst met uw Azure Database voor MySQL-Servers
-Veilig verbinding maken met Azure CLI met uw Azure-account met behulp van de **az login** opdracht.
+## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Meld u aan bij Azure en vermeld uw Azure Database for MySQL-servers
+Maak veilig verbinding met Azure CLI met uw Azure-account met behulp van de opdracht **AZ login** .
 
-1. Voer de volgende opdracht uit vanaf de opdrachtregel:
+1. Voer vanaf de opdracht regel de volgende opdracht uit:
     ```azurecli
     az login
     ```
-   Met deze opdracht voert een die moet worden gebruikt in de volgende stap.
+   Met deze opdracht voert u een code uit die in de volgende stap wordt gebruikt.
 
-2. Gebruik een webbrowser om de pagina te openen [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin), en voer de code.
+2. Gebruik een webbrowser om de pagina [https://aka.ms/devicelogin](https://aka.ms/devicelogin)te openen en voer vervolgens de code in.
 
 3. Meld u aan met uw Azure-referenties bij de prompt.
 
-4. Nadat uw aanmelding is geautoriseerd, wordt een lijst met abonnementen in de console afgedrukt. Kopieer de ID van het gewenste abonnement om in te stellen van het huidige abonnement te gebruiken. Gebruik de [az account set](/cli/azure/account#az-account-set) opdracht.
+4. Nadat uw aanmelding is geautoriseerd, wordt een lijst met abonnementen afgedrukt in de-console. Kopieer de ID van het gewenste abonnement om het huidige abonnement in te stellen op gebruik. Gebruik de opdracht [AZ account set](/cli/azure/account#az-account-set) .
     ```azurecli-interactive
     az account set --subscription <your subscription id>
     ```
 
-5. Vraag de Databases op Azure voor MySQL-servers voor uw abonnement en de resourcegroep groep als u niet zeker van de namen bent. Gebruik de [az mysql serverlijst](/cli/azure/mysql/server#az-mysql-server-list) opdracht.
+5. Vermeld de Azure-data bases voor MySQL-servers voor uw abonnement en resource groep als u niet zeker weet wat de namen zijn. Gebruik de opdracht [AZ mysql server list](/cli/azure/mysql/server#az-mysql-server-list) .
 
     ```azurecli-interactive
     az mysql server list --resource-group myresourcegroup
     ```
 
-   Houd er rekening mee naamkenmerk in de aanbieding die u nodig hebt om op te geven van de MySQL-server voor gebruik op. Als het nodig is, controleert u of de details voor die server en het gebruik van het kenmerk name om te controleren of dat deze juist is. Gebruik de [az mysql server show](/cli/azure/mysql/server#az-mysql-server-show) opdracht.
+   Noteer het naam kenmerk in de vermelding, waarin u de MySQL-server moet opgeven waarop u wilt werken. Controleer, indien nodig, de details van die server en gebruik het naam kenmerk om te controleren of het juist is. Gebruik de opdracht [AZ mysql server show](/cli/azure/mysql/server#az-mysql-server-show) .
 
     ```azurecli-interactive
     az mysql server show --resource-group myresourcegroup --name mydemoserver
     ```
 
-## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>Lijst met firewallregels voor Azure Database voor MySQL-Server 
-Met de naam van de en naam van de resourcegroep, de bestaande server firewall-regels op de server weergeven. Gebruik de [lijst met az mysql server firewall](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-list) opdracht.  U ziet dat het kenmerk van de server name is opgegeven in de **--server** overschakelen en niet in de **--naam** overschakelen. 
+## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>Firewall regels op Azure Database for MySQL server weer geven 
+Gebruik de server naam en de naam van de resource groep om de bestaande server firewall regels op de-server weer te geven. Gebruik de opdracht [AZ mysql server firewall List](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-list) .  U ziet dat het kenmerk server naam is opgegeven in de schakel optie **-Server** en niet in de schakel optie **-naam** . 
 ```azurecli-interactive
 az mysql server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
-De uitvoer bevat de regels, indien aanwezig, in JSON-indeling (standaard). U kunt de **--uitvoertabel** overschakelen naar de resultaten in een beter leesbare tabelindeling.
+In de uitvoer worden de regels, indien aanwezig, in JSON-indeling weer gegeven (standaard). U kunt de schakel optie **--output** gebruiken om de resultaten in een meer Lees bare tabel indeling uit te voeren.
 ```azurecli-interactive
 az mysql server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```
-## <a name="create-a-firewall-rule-on-azure-database-for-mysql-server"></a>Maak een firewallregel op Azure Database voor MySQL-Server
-Met de naam van de Azure MySQL-server en de naam van de resourcegroep, een nieuwe firewallregel maken op de server. Gebruik de [az mysql serverfirewall maken](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) opdracht. Geef een naam voor de regel, evenals de begin-IP en laatste IP-adres (voor toegang tot een bereik van IP-adressen) voor de regel.
+## <a name="create-a-firewall-rule-on-azure-database-for-mysql-server"></a>Een firewall regel maken op Azure Database for MySQL server
+Maak een nieuwe firewall regel op de server met behulp van de naam van de Azure MySQL-server en de naam van de resource groep. Gebruik de opdracht [AZ mysql server firewall Create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) . Geef een naam op voor de regel, evenals het eerste IP-adres en het laatste IP-adres (om toegang te bieden tot een bereik van IP-adressen) voor de regel.
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
 ```
 
-Als u wilt toestaan dat toegang voor één IP-adres, bevatten hetzelfde IP-adres als de eerste IP- en eind-IP-adres, zoals in dit voorbeeld.
+Als u toegang wilt verlenen voor een enkel IP-adres, geeft u hetzelfde IP-adres op als het IP-begin-en eind-IP, zoals in dit voor beeld.
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1 --start-ip-address 1.1.1.1 --end-ip-address 1.1.1.1
 ```
 
-Geef het IP-adres 0.0.0.0 als de eerste IP- en eind-IP-adres, zoals in dit voorbeeld zodat toepassingen vanuit Azure IP-adressen te verbinden met uw Azure Database voor MySQL-server.
+Als u wilt toestaan dat toepassingen van IP-adressen van Azure verbinding maken met uw Azure Database for MySQL server, geeft u het IP-adres 0.0.0.0 op als IP-begin-en eind-IP, zoals in dit voor beeld.
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myresourcegroup --server mysql --name "AllowAllWindowsAzureIps" --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
@@ -92,33 +92,33 @@ az mysql server firewall-rule create --resource-group myresourcegroup --server m
 > Met deze optie configureert u de firewall zo dat alle verbindingen vanuit Azure zijn toegestaan, inclusief verbindingen vanuit de abonnementen van andere klanten. Wanneer u deze optie selecteert, zorg dan dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.
 > 
 
-Implementatie is geslaagd maakt elke opdracht uitvoer toont de details van de firewallregel die u hebt gemaakt, in JSON-indeling (standaard). Als er een fout is, ziet de uitvoer in plaats daarvan tekst van foutberichten.
+Bij voltooiing worden met elke opdracht uitvoer een lijst gemaakt met de details van de firewall regel die u hebt gemaakt, in JSON-indeling (standaard). Als er een fout is, wordt in plaats daarvan de tekst van het fout bericht weer gegeven in de uitvoer.
 
-## <a name="update-a-firewall-rule-on-azure-database-for-mysql-server"></a>Een firewallregel op Azure Database voor MySQL-server bijwerken 
-Met de naam van de Azure MySQL-server en de naam van de resourcegroep, een bestaande firewallregel op de server worden bijgewerkt. Gebruik de [az mysql server firewall-update](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-update) opdracht. Geef de naam van de bestaande firewallregel als invoer, evenals het begin IP- en IP-kenmerken om bij te werken.
+## <a name="update-a-firewall-rule-on-azure-database-for-mysql-server"></a>Een firewall regel op Azure Database for MySQL server bijwerken 
+Werk een bestaande firewall regel op de server bij met behulp van de naam van de Azure MySQL-server en de naam van de resource groep. Gebruik de opdracht [AZ mysql server firewall update](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-update) . Geef de naam van de bestaande firewall regel op als invoer, evenals het eerste IP-adres en het laatste IP-kenmerk dat moet worden bijgewerkt.
 ```azurecli-interactive
 az mysql server firewall-rule update --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
 ```
-Implementatie is geslaagd bevat de uitvoer van de opdracht de details van de firewallregel die u hebt bijgewerkt, in JSON-indeling (standaard). Als er een fout is, ziet de uitvoer in plaats daarvan tekst van foutberichten.
+Wanneer de opdracht is voltooid, worden de details weer gegeven van de firewall regel die u hebt bijgewerkt, in JSON-indeling (standaard). Als er een fout is, wordt in plaats daarvan de tekst van het fout bericht weer gegeven in de uitvoer.
 
 > [!NOTE]
-> Als de firewallregel niet bestaat, wordt de regel wordt gemaakt door de opdracht update.
+> Als de firewall regel niet bestaat, wordt de regel gemaakt met de opdracht bijwerken.
 
-## <a name="show-firewall-rule-details-on-azure-database-for-mysql-server"></a>Firewall regeldetails weergeven op Azure Database voor MySQL-Server
-Met de naam van de Azure MySQL-server en de naam van de resourcegroep, de firewall van de bestaande regeldetails weergeven van de server. Gebruik de [az mysql server firewall show](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-show) opdracht. Geef de naam van de bestaande firewallregel als invoer.
+## <a name="show-firewall-rule-details-on-azure-database-for-mysql-server"></a>Details van firewall regel op Azure Database for MySQL server weer geven
+De naam van de bestaande firewall regel van de server weer geven met behulp van de naam van de Azure MySQL-server en de resource groep. Gebruik de opdracht [AZ mysql server firewall show](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-show) . Geef de naam van de bestaande firewall regel op als invoer.
 ```azurecli-interactive
 az mysql server firewall-rule show --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1
 ```
-Implementatie is geslaagd bevat de uitvoer van de opdracht de details van de firewallregel die u hebt opgegeven, in JSON-indeling (standaard). Als er een fout is, ziet de uitvoer in plaats daarvan tekst van foutberichten.
+Wanneer de opdracht is voltooid, worden de details van de firewall regel die u hebt opgegeven, weer gegeven in JSON-indeling (standaard). Als er een fout is, wordt in plaats daarvan de tekst van het fout bericht weer gegeven in de uitvoer.
 
-## <a name="delete-a-firewall-rule-on-azure-database-for-mysql-server"></a>Een firewallregel op Azure Database voor MySQL-Server verwijderen
-Met de naam van de Azure MySQL-server en de naam van de resourcegroep, een bestaande firewallregel verwijderen van de server. Gebruik de [az mysql serverfirewall verwijderen](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-delete) opdracht. Geef de naam van de bestaande firewallregel.
+## <a name="delete-a-firewall-rule-on-azure-database-for-mysql-server"></a>Een firewall regel op Azure Database for MySQL server verwijderen
+Verwijder een bestaande firewall regel van de server met de naam van de Azure MySQL-server en de naam van de resource groep. Gebruik de opdracht [AZ mysql server firewall delete](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-delete) . Geef de naam op van de bestaande firewall regel.
 ```azurecli-interactive
 az mysql server firewall-rule delete --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1
 ```
-Implementatie is geslaagd wordt er geen uitvoer. Als de mislukt, tekst van foutberichten worden weergegeven.
+Als de bewerking is voltooid, is er geen uitvoer. Wanneer de fout is opgetreden, wordt tekst weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer inzicht [Azure Database for MySQL Server firewall-regels](./concepts-firewall-rules.md).
-- [Maken en beheren van Azure Database voor MySQL-firewallregels met behulp van de Azure-portal](./howto-manage-firewall-using-portal.md).
-- Verder te beveiligen, toegang tot uw server door [maken en beheren van Virtual Network-service-eindpunten en regels met de Azure CLI](howto-manage-vnet-using-cli.md).
+- Meer informatie over de [firewall regels van Azure database for mysql server](./concepts-firewall-rules.md).
+- [Azure database for MySQL firewall regels maken en beheren met behulp van de Azure Portal](./howto-manage-firewall-using-portal.md).
+- Verdere beveiligde toegang tot uw server door [het maken en beheren van Virtual Network Service-eind punten en-regels met behulp van de Azure cli](howto-manage-vnet-using-cli.md).

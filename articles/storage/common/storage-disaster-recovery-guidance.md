@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889789"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775925"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Herstel na nood gevallen en failover van het opslag account (preview) in Azure Storage
 
@@ -120,9 +120,9 @@ U kunt een failover van een account initiëren vanuit de Azure Portal, Power she
 Account-failover is beschikbaar als preview-versie voor alle klanten die gebruikmaken van GRS of RA-GRS met Azure Resource Manager-implementaties. Algemeen gebruik v1, algemeen v2 en Blob Storage-account typen worden ondersteund. de failover van het account is momenteel beschikbaar in deze regio's:
 
 - Azië - oost
-- Azië - zuidoost
-- Australië - oost
-- Australië - zuidoost
+- Azië (zuidoost)
+- Australië Oost
+- Australië Zuidoost
 - US - centraal
 - US - oost 2
 - US - west-centraal
@@ -139,7 +139,7 @@ Connect-AzAccount -SubscriptionId <subscription-id>
 Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
-Het kan 1-2 dagen duren voordat goed keuring voor de preview wordt ontvangen. Voer de volgende opdracht uit om te controleren of uw registratie is goedgekeurd:
+Het kan 5-7 dagen duren voordat goed keuring voor de preview wordt ontvangen. Voer de volgende opdracht uit om te controleren of uw registratie is goedgekeurd:
 
 ```powershell
 Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage

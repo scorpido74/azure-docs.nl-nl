@@ -1,17 +1,17 @@
 ---
-title: Dump en herstel in Azure Database for PostgreSQL-één server
+title: Dump en Restore-Azure Database for PostgreSQL-één server
 description: Hierin wordt beschreven hoe u een PostgreSQL-data base ophaalt in een dump bestand en herstelt vanuit een bestand dat is gemaakt door pg_dump in Azure Database for PostgreSQL-één server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 4291db0bb1edbc366c42febed992a7c27d46eb15
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 4365338efa56593e80edcc19cba5944b213d2b72
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796756"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770234"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Uw PostgreSQL-data base migreren met dump en herstel
 U kunt [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) gebruiken om een postgresql-data base te extra heren naar een dump bestand en [Pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) om de postgresql-data base te herstellen vanuit een archief bestand dat door pg_dump is gemaakt.

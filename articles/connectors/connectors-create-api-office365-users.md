@@ -1,43 +1,39 @@
 ---
-title: Verbinding maken met Office 365-gebruikers - Azure Logic Apps | Microsoft Docs
-description: Gebruikersprofielen met REST API's voor gebruikers van de Office 365 en Azure Logic Apps beheren
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
+title: Verbinding maken met Office 365-gebruikers
+description: Gebruikers profielen beheren met Office 365-gebruikers REST Api's en Azure Logic Apps
+services: logic-apps
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.date: 08/18/2016
 ms.topic: article
-ms.service: logic-apps
-services: logic-apps
-ms.reviewer: klam, LADocs
-ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 3865fbc4fbc39da0860218565b0a8956b2dad8ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: addb64a9b43c51af8363caa6f0fb3261a618e893
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105868"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789513"
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Aan de slag met de connector Office 365-gebruikers
-Verbinding maken met Office 365-gebruikers om op te halen, profielen, gebruikers zoeken en meer. Met Office 365-gebruikers, kunt u het volgende doen:
+Maak verbinding met Office 365-gebruikers om profielen op te halen, gebruikers te zoeken, en meer. Met Office 365-gebruikers kunt u het volgende doen:
 
-* Bouw uw bedrijfswerkstroom op basis van de gegevens die u van Office 365-gebruikers krijgt. 
-* Gebruik acties die directe ondergeschikten, ophalen ophalen van een manager gebruikersprofiel, en meer. Deze acties reageert, en vervolgens de uitvoer beschikbaar voor andere acties. Bijvoorbeeld direct ondergeschikten van een persoon, ophalen en vervolgens deze gegevens nemen en bijwerken in een SQL Azure-database. 
+* Bouw uw bedrijfs stroom op basis van de gegevens die u van Office 365-gebruikers krijgt. 
+* Gebruik acties die directe rapporten ophalen, het gebruikers profiel van een manager ophalen, en meer. Deze acties ontvangen een antwoord en maken vervolgens de uitvoer beschikbaar voor andere acties. U kunt bijvoorbeeld directe ondergeschikten van een persoon ophalen en deze gegevens vervolgens bijwerken en een SQL Azure-data base updaten. 
 
-U kunt aan de slag met het maken van een logische app nu, Zie [maken van een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+U kunt nu aan de slag met het maken van een logische app, Zie [een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-office-365-users"></a>Maak een verbinding met Office 365-gebruikers
-Wanneer u deze connector aan uw logische apps toevoegen, moet u aanmelden bij uw gebruikers van Office 365-account en u kunt logische apps verbinding maken met uw account.
+## <a name="create-a-connection-to-office-365-users"></a>Een verbinding maken met Office 365-gebruikers
+Wanneer u deze connector toevoegt aan uw Logic apps, moet u zich aanmelden bij uw Office 365-gebruikers account en logische apps toestaan om verbinding te maken met uw account.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
 > 
 > 
 
-Nadat u de verbinding hebt gemaakt, voert u de eigenschappen van de Office 365-gebruikers, zoals de gebruikers-ID. De **REST API-verwijzing** in dit artikel beschrijft deze eigenschappen.
+Nadat u de verbinding hebt gemaakt, voert u de eigenschappen van Office 365-gebruikers in, zoals de gebruikers-ID. In de **referentie rest API** in dit artikel worden deze eigenschappen beschreven.
 
-## <a name="connector-specific-details"></a>Connector-specifieke details
+## <a name="connector-specific-details"></a>Connector-specifieke Details
 
-Alle triggers en acties die zijn gedefinieerd in de swagger bekijken en ziet u ook eventuele beperkingen in de [connectorgegevens](/connectors/officeusers/).
+Bekijk de triggers en acties die zijn gedefinieerd in Swagger en Zie ook eventuele limieten in de details van de [connector](/connectors/officeusers/).
 
 ## <a name="more-connectors"></a>Meer connectors
-Ga terug naar de [lijst van API's](apis-list.md).
+Ga terug naar de [lijst met api's](apis-list.md).

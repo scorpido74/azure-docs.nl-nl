@@ -1,72 +1,71 @@
 ---
-title: Handelspartners voor B2B - integratie van Azure Logic Apps toevoegen
-description: Handelspartners in uw integratie-account te gebruiken met Azure Logic Apps maken
+title: Handels partners voor B2B-integraties toevoegen
+description: Handels partners in uw integratie account maken voor gebruik met Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 681f16132c1de2ec5f3b27f80633d32879b0746c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330153"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792436"
 ---
-# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Handelspartners toevoegen aan integratieaccounts voor Azure Logic Apps
+# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Handels partners toevoegen aan integratie accounts voor Azure Logic Apps
 
-In [Azure Logic Apps](../logic-apps/logic-apps-overview.md), kunt u geautomatiseerde werkstromen business-to-business (B2B) voor gegevensintegratie maken met behulp van een [integratieaccount](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) met uw logische apps. Om weer te geven en andere gebruikers van uw organisatie, u maakt en handelspartners als artefacten toevoegen aan uw integratieaccount. Partners zijn de entiteiten die deel uitmaken van B2B-transacties en -berichten uitwisselen met elkaar.
+In [Azure Logic apps](../logic-apps/logic-apps-overview.md)kunt u geautomatiseerde business-to-Business (B2B) integratie werk stromen maken met behulp van een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) met uw Logic apps. Om uw organisatie en anderen weer te geven, maakt en voegt u handels partners als artefacten toe aan uw integratie account. Partners zijn entiteiten die deel nemen aan B2B-trans acties en Exchange-berichten met elkaar.
 
-Voordat u deze partners, zorg bespreken en gegevens delen met uw partners over het identificeren en valideren van de berichten die de andere verzendt. Nadat u akkoord op deze gegevens gaat, bent u klaar om te maken van partners in het integratieaccount.
+Voordat u deze partners maakt, moet u de informatie bespreken en delen met uw partners over het identificeren en valideren van de berichten die door de andere worden verzonden. Nadat u deze gegevens hebt geaccepteerd, bent u klaar om partners te maken in uw integratie account.
 
-## <a name="partner-roles-in-integration-accounts"></a>Partner-rollen in integratieaccounts
+## <a name="partner-roles-in-integration-accounts"></a>Partner rollen in integratie accounts
 
-Voor het definiëren van de details over de berichten uitgewisseld met uw partners, u maakt en toevoegt [overeenkomsten](../logic-apps/logic-apps-enterprise-integration-agreements.md) als artefacten voor uw integratieaccount. Overeenkomsten vereist ten minste twee partners in het integratieaccount. Uw organisatie is altijd de *hostpartner* in de overeenkomst. De organisatie die uitwisseling van berichten met uw organisatie is de *gastpartner*. Een gastpartner mag bestaan uit een ander bedrijf of zelfs een afdeling in uw eigen organisatie. Nadat u deze partners hebt toegevoegd, kunt u een overeenkomst kunt maken.
+Als u de details wilt definiëren van de berichten die worden uitgewisseld met uw partners, maakt en voegt u [overeenkomsten](../logic-apps/logic-apps-enterprise-integration-agreements.md) toe als artefacten aan uw integratie account. Voor overeenkomsten zijn ten minste twee partners in uw integratie account vereist. Uw organisatie is altijd de *host-partner* in de overeenkomst. De organisatie die berichten uitwisselt met uw organisatie is de *gast partner*. Een gast partner kan een ander bedrijf zijn of zelfs een afdeling in uw eigen organisatie. Nadat u deze partners hebt toegevoegd, kunt u een overeenkomst maken.
 
-In een overeenkomst geeft u de details voor het verwerken van inkomende en uitgaande berichten vanuit het perspectief van de hostpartner. Voor inkomende berichten, het **instellingen ontvangen** opgeven hoe de hostpartner, ontvangt berichten van de gastpartner in de overeenkomst. Voor uitgaande berichten, het **instellingen voor verzenden** opgeven hoe de hostpartner-berichten verzendt naar de gastpartner.
+In een overeenkomst geeft u de details op voor het verwerken van binnenkomende en uitgaande berichten van het perspectief van de hostserver. Voor inkomende berichten geeft de **Receive-instellingen** op hoe de host-partner berichten van de gast partner in de overeenkomst ontvangt. Voor uitgaande berichten geeft de **Verzend instellingen** op hoe de host-partner berichten naar de gast partner verzendt.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u een Azure-abonnement nog geen [zich aanmelden voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [integratieaccount](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) voor het opslaan van uw partners, overeenkomsten en andere B2B-artefacten. Deze integratie-account moet worden gekoppeld aan uw Azure-abonnement.
+* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) voor het opslaan van uw partners, overeenkomsten en andere B2B-artefacten. Dit integratie account moet worden gekoppeld aan uw Azure-abonnement.
 
-## <a name="create-partner"></a>Maken van partner
+## <a name="create-partner"></a>Partner maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer in het hoofdmenu van Azure **alle services**. Voer 'integration' in het zoekvak en selecteer **integratieaccounts**.
+1. Selecteer in het hoofd menu van Azure **alle services**. Voer in het zoekvak ' integratie ' in en selecteer **integratie accounts**.
 
-   ![Selecteer "Integratieaccounts"](./media/logic-apps-enterprise-integration-partners/find-integration-accounts.png)
+   ![Selecteer integratie accounts](./media/logic-apps-enterprise-integration-partners/find-integration-accounts.png)
 
-1. Onder **Integratieaccounts**, selecteert u de integratieaccount waar u wilt toevoegen, uw partners.
+1. Onder **integratie accounts**selecteert u het integratie account waaraan u uw partners wilt toevoegen.
 
-   ![Integratie-account selecteren](./media/logic-apps-enterprise-integration-partners/select-integration-account.png)
+   ![Integratie account selecteren](./media/logic-apps-enterprise-integration-partners/select-integration-account.png)
 
-1. Kies de **Partners** tegel.
+1. Kies de tegel **partners** .
 
-   ![Kies 'Partners' tegel](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
+   ![De tegel partners kiezen](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
-1. Onder **Partners**, kiest u **toevoegen**. Onder **Partner toevoegen**, geef de details van de partner zoals is beschreven in de onderstaande tabel.
+1. Klik onder **partners**op **toevoegen**. Onder **partner toevoegen**geeft u de details van de partner op, zoals wordt beschreven in de onderstaande tabel.
 
-   ![Kies 'Toevoegen' en geef Partnerdetails](./media/logic-apps-enterprise-integration-partners/add-partners.png)
+   ![Kies toevoegen en geef de partner gegevens op](./media/logic-apps-enterprise-integration-partners/add-partners.png)
 
-   | Eigenschap | Vereist | Description |
+   | Eigenschap | Verplicht | Beschrijving |
    |----------|----------|-------------|
    | **Naam** | Ja | De naam van de partner |
-   | **De kwalificatie** | Ja | De verificatie-instantie die unieke zakelijke identiteiten met organisaties, bijvoorbeeld biedt **D-U-N-S (Dun & Bradstreet)** . <p>Partners kunnen voor een sluiten elkaar wederzijds gedefinieerde bedrijfsidentiteit kiezen. Selecteer voor deze scenario's, **sluiten elkaar wederzijds gedefinieerd** voor EDIFACT of **sluiten elkaar wederzijds gedefinieerd (X12)** voor X12. <p>Selecteer alleen voor RosettaNet, **DUNS**, dit is de standaard. |
-   | **Waarde** | Ja | Een waarde die aangeeft van de documenten die uw logische apps worden weergegeven. <p>Deze waarde moet een getal van negen cijfers die overeenkomt met het nummer DUNS voor RosettaNet. |
+   | **Kwalificatie** | Ja | De verificatie-tekst die unieke zakelijke identiteiten biedt aan organisaties, bijvoorbeeld **D-U-N-S (Dun & Bradstreet)** . <p>Partners kunnen voor een onderling gedefinieerde zakelijke identiteit kiezen. Voor deze scenario's selecteert u **wederzijds gedefinieerd** voor Edifact of **wederzijds gedefinieerd (X12)** voor X12. <p>Selecteer voor RosettaNet alleen **Duns**. Dit is de standaard. |
+   | **Waarde** | Ja | Een waarde waarmee de documenten worden geïdentificeerd die door uw Logic apps worden ontvangen. <p>Voor RosettaNet moet deze waarde een getal van negen cijfers zijn dat overeenkomt met het DUNS-nummer. |
    ||||
 
    > [!NOTE]
-   > Voor partners die RosettaNet gebruiken, kunt u aanvullende informatie opgeven door eerst deze partners en vervolgens [bewerken hiervan daarna](#edit-partner).
+   > Voor partners die gebruikmaken van RosettaNet kunt u aanvullende informatie opgeven door deze partners eerst te maken en [deze later te bewerken](#edit-partner).
 
 1. Als u klaar bent, kiest u **Done**.
 
-   Uw nieuwe partner wordt nu weergegeven op de **Partners** lijst. Ook de **Partners** tegel werkt het huidige aantal partners.
+   Uw nieuwe partner wordt nu weer gegeven in de lijst met **partners** . Daarnaast werkt de tegel **partners** het huidige aantal partners bij.
 
    ![Nieuwe partner](./media/logic-apps-enterprise-integration-partners/new-partner.png)
 
@@ -74,36 +73,36 @@ In een overeenkomst geeft u de details voor het verwerken van inkomende en uitga
 
 ## <a name="edit-partner"></a>Partner bewerken
 
-1. In de [Azure-portal](https://portal.azure.com), zoek en selecteer uw integratie-account.
-Kies de **Partners** tegel.
+1. Zoek en selecteer uw integratie account in de [Azure Portal](https://portal.azure.com).
+Kies de tegel **partners** .
 
-   ![Kies 'Partners' tegel](./media/logic-apps-enterprise-integration-partners/edit.png)
+   ![De tegel partners kiezen](./media/logic-apps-enterprise-integration-partners/edit.png)
 
-1. Onder **Partners**, selecteert u de partner die u wilt bewerken, en kies **bewerken**. Onder **bewerken**, breng uw wijzigingen.
+1. Onder **partners**selecteert u de partner die u wilt bewerken en kiest u **bewerken**. Breng onder **bewerken**de gewenste wijzigingen aan.
 
    ![Uw wijzigingen aanbrengen en opslaan](./media/logic-apps-enterprise-integration-partners/edit-partner.png)
 
-   Voor RosettaNet, onder **RosettaNet Partner eigenschappen**, kunt u deze extra informatie:
+   Voor RosettaNet kunt u onder **RosettaNet-partner eigenschappen**de volgende aanvullende gegevens opgeven:
 
-   | Eigenschap | Vereist | Description |
+   | Eigenschap | Verplicht | Beschrijving |
    |----------|----------|-------------|
-   | **Partner-classificatie** | Nee | Type van de organisatie van de partner |
-   | **Supply chain code** | Nee | Van de partner aanbod keten code, bijvoorbeeld 'Information Technology' of "Elektronische onderdelen" |
-   | **Neem contact op met de naam** | Nee | Neem contact op met naam van de partner |
-   | **E-mail** | Nee | E-mailadres van de partner |
-   | **Fax** | Nee | Faxnummer van de partner |
-   | **Telefoonnummer** | Nee | Telefoonnummer van de partner |
+   | **Partner classificatie** | Nee | Het organisatie type van de partner |
+   | **Toeleverings keten code** | Nee | De code van de toeleverings keten van de partner, bijvoorbeeld ' informatie technologie ' of ' elektronische onderdelen ' |
+   | **Naam van contact persoon** | Nee | De naam van de contact persoon van de partner |
+   | **E-mail** | Nee | Het e-mail adres van de partner |
+   | **Faxtaken** | Nee | Het faxnummer van de partner |
+   | **Telefoonnummer** | Nee | Het telefoon nummer van de partner |
    ||||
 
-1. Wanneer u klaar bent, kiest u **OK** uw wijzigingen op te slaan.
+1. Wanneer u klaar bent, kiest u **OK** om uw wijzigingen op te slaan.
 
 ## <a name="delete-partner"></a>Partner verwijderen
 
-1. In de [Azure-portal](https://portal.azure.com), zoek en selecteer uw integratie-account. Kies de **Partners** tegel.
+1. Zoek en selecteer uw integratie account in de [Azure Portal](https://portal.azure.com). Kies de tegel **partners** .
 
-   ![Kies 'Partners' tegel](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
+   ![De tegel partners kiezen](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
-1. Onder **Partners**, selecteert u de partner die u wilt verwijderen. Kies **verwijderen**.
+1. Selecteer onder **partners**de partner die u wilt verwijderen. Kies **verwijderen**.
 
    ![Partner verwijderen](./media/logic-apps-enterprise-integration-partners/delete-partner.png)
 

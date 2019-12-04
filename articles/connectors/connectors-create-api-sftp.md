@@ -1,21 +1,19 @@
 ---
-title: Verbinding maken met het SFTP-account-Azure Logic Apps
+title: Verbinding maken met het SFTP-account
 description: Automatiseer taken en processen voor het bewaken, maken, beheren, verzenden en ontvangen van bestanden voor een SFTP-server via SSH met behulp van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, klam, LADocs
+author: divyaswarnkar
+ms.reviewer: divswa, klam, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 20702f5bc0dfc513d1fba84b69595dec885613ac
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837115"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789270"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met behulp van Azure Logic Apps
 
@@ -31,7 +29,7 @@ Voor het automatiseren van taken die bestanden op een [beveiligde File Transfer 
 
 U kunt triggers gebruiken die gebeurtenissen op uw SFTP-server controleren en uitvoer beschikbaar maken voor andere acties. U kunt acties gebruiken waarmee verschillende taken op uw SFTP-server worden uitgevoerd. U kunt ook andere acties in uw logische app gebruiken de uitvoer van SFTP-acties. Als u bijvoorbeeld regel matig bestanden van uw SFTP-server ophaalt, kunt u e-mail waarschuwingen over die bestanden en hun inhoud verzenden met behulp van de Office 365 Outlook Connector of de Outlook.com-connector. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="limits"></a>Limieten
+## <a name="limits"></a>Beperkingen
 
 De SFTP-connector verwerkt alleen bestanden van *50 MB of kleiner* en biedt geen ondersteuning voor het delen van [berichten](../logic-apps/logic-apps-handle-large-messages.md). Gebruik de [SFTP-SSH-connector](../connectors/connectors-sftp-ssh.md)voor grotere bestanden. Voor verschillen tussen de SFTP-connector en de SFTP-SSH-connector, raadpleegt u [SFTP-SSH vergeleken met SFTP](../connectors/connectors-sftp-ssh.md#comparison) in het SFTP-SSH-artikel.
 

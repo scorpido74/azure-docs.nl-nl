@@ -1,20 +1,19 @@
 ---
-title: Status controleren, logboek registratie instellen en waarschuwingen ontvangen-Azure Logic Apps
+title: Status controleren, logboek registratie instellen en waarschuwingen ontvangen
 description: Status controleren, diagnostische gegevens registreren en waarschuwingen instellen voor Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/21/2017
-ms.openlocfilehash: 336e2ac93a954c35b7afc8dbb98dd1fca1838985
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ca1e2836ddfb38de640a5a90cf53e416b8923c04
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680300"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791912"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Status controleren, diagnostische logboek registratie instellen en waarschuwingen voor Azure Logic Apps inschakelen
 
@@ -179,7 +178,7 @@ Als u specifieke metrische gegevens of drempel waarden voor uw logische app wilt
 
 Voer de volgende stappen uit om waarschuwingen in te stellen zonder [Azure monitor logboeken](../log-analytics/log-analytics-overview.md). [Stel Azure monitor-logboeken](#azure-diagnostics) ook in voor meer geavanceerde waarschuwings criteria en-acties.
 
-1. Kies in het menu Blade van de logische app onder **controle**de optie **diagnostische gegevens**  > **waarschuwings regels**  > **waarschuwing toevoegen** , zoals hier wordt weer gegeven:
+1. Kies in het menu Blade van de logische app onder **controle**de optie **diagnostische gegevens** > **waarschuwings regels** > **waarschuwing toevoegen** , zoals hier wordt weer gegeven:
 
    ![Een waarschuwing voor uw logische app toevoegen](media/logic-apps-monitor-your-logic-apps/set-up-alerts.png)
 

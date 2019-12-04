@@ -1,17 +1,17 @@
 ---
-title: Verbindings bibliotheken voor Azure Database for MySQL
+title: Verbindings bibliotheken-Azure Database for MySQL
 description: In dit artikel vindt u een lijst met alle bibliotheken of stuur Programma's die door client Programma's kunnen worden gebruikt wanneer verbinding wordt gemaakt met Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 2eda6986f0c7c2ab58849a5da6c355d458714f37
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 12/02/2019
+ms.openlocfilehash: 276adcb796c6fcdf1ef2d38458ca8f6ac73e5f5a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177759"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765272"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Verbindings bibliotheken voor Azure Database for MySQL
 In dit artikel vindt u een lijst met alle bibliotheken of stuur Programma's die door client Programma's kunnen worden gebruikt wanneer verbinding wordt gemaakt met Azure Database for MySQL.

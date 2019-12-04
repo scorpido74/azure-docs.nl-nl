@@ -1,17 +1,17 @@
 ---
-title: Opslag automatisch uitbreiden met de Azure Portal in Azure Database for PostgreSQL-enkele server
-description: In dit artikel wordt beschreven hoe u automatische groei opslag kunt inschakelen met behulp van de Azure Portal in Azure Database for PostgreSQL-enkele server
+title: Opslag Azure Portal automatisch uitbreiden-Azure Database for PostgreSQL-één server
+description: In dit artikel wordt beschreven hoe u de automatische groei van opslag kunt configureren met behulp van de Azure Portal in Azure Database for PostgreSQL-enkele server
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/29/2019
-ms.openlocfilehash: 1d028093b030e1f2cf00ceae9297563c36c314c5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5e4f9d68d02edf456394d4ce10b7b6af5f8643d9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142881"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769231"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Opslag automatisch uitbreiden met de Azure Portal in Azure Database for PostgreSQL-enkele server
 In dit artikel wordt beschreven hoe u een Azure Database for PostgreSQL Server-opslag kunt configureren om te groeien zonder dat dit van invloed is op de werk belasting.
@@ -19,7 +19,7 @@ In dit artikel wordt beschreven hoe u een Azure Database for PostgreSQL Server-o
 Wanneer een server de toegewezen opslag limiet bereikt, is de server gemarkeerd als alleen-lezen. Als u automatisch verg Roten van opslag inschakelt, neemt de server opslag echter toe om de groeiende gegevens te verwerken. Voor servers met een ingerichte opslag van minder dan 100 GB wordt de ingerichte opslag grootte met 5 GB verhoogd zodra de beschik bare opslag onder het hoogste van 1 GB of 10% van de ingerichte opslag ligt. Voor servers met meer dan 100 GB ingerichte opslag wordt de ingerichte opslag grootte verhoogd met 5% wanneer de beschik bare opslag ruimte lager is dan 5% van de ingerichte opslag grootte. De maximale opslag limieten die [hier](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) zijn opgegeven, zijn van toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
-Voor deze handleiding, hebt u het volgende nodig:
+U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for postgresql server](quickstart-create-server-database-portal.md)
 
 ## <a name="enable-storage-auto-grow"></a>Opslag automatisch verg Roten inschakelen 

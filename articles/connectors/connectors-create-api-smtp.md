@@ -1,22 +1,18 @@
 ---
-title: Verbinding maken met SMTP vanuit Azure Logic Apps | Microsoft Docs
+title: Verbinding maken met SMTP vanuit Azure Logic Apps
 description: Taken en werk stromen automatiseren waarmee e-mail via uw SMTP-account (Simple Mail Transfer Protocol) wordt verzonden met behulp van Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 1649f197d4dbd88e2b485ab32f254a2d09696a84
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: fb501a158c839e6d4d71fc2af5ae50e48c248466
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050741"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789151"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail verzenden vanuit uw SMTP-account met Azure Logic Apps
 
@@ -53,7 +49,7 @@ Met Azure Logic Apps en de Simple Mail Transfer Protocol (SMTP)-connector kunt u
 
 1. Wanneer u hierom wordt gevraagd, geeft u de volgende verbindings gegevens op:
 
-   | Eigenschap | Vereist | Description |
+   | Eigenschap | Verplicht | Beschrijving |
    |----------|----------|-------------|
    | **Verbindingsnaam** | Ja | Een naam voor de verbinding met de SMTP-server | 
    | **SMTP-server adres** | Ja | Het adres voor de SMTP-server | 
@@ -71,11 +67,11 @@ Met Azure Logic Apps en de Simple Mail Transfer Protocol (SMTP)-connector kunt u
 
 Raadpleeg de [referentie pagina](/connectors/smtpconnector/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 * Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 * Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

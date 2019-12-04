@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e95b230d4f9699f15296ba94946c7063cabd0516
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847197"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766086"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect Sync: kenmerken gesynchroniseerd met Azure Active Directory
 In dit onderwerp vindt u de kenmerken die worden gesynchroniseerd door Azure AD Connect synchronisatie.  
@@ -52,7 +52,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | userPrincipalName |X |UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
 
 ## <a name="exchange-online"></a>Exchange Online
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerk naam | Gebruiker | Contact | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | assistent |X |X | | |
@@ -175,7 +175,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerk naam | Gebruiker | Contact | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | authOrig |X |X |X | |
@@ -209,7 +209,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | hideDLMembership | | |X | |
 | HomePhone |X |X | | |
 | valuta |X |X |X | |
-| Initialen |X |X | | |
+| initialen |X |X | | |
 | ipPhone |X |X | | |
 | winst |X |X | | |
 | mail |X |X |X | |
@@ -257,7 +257,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>Teams en Skype voor bedrijven online
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerk naam | Gebruiker | Contact | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | g |X |X | | |
@@ -305,7 +305,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerk naam | Gebruiker | Contact | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | genoemd |X | |X |Algemene naam of alias. Meestal het voor voegsel van de waarde [mail]. |
@@ -320,7 +320,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | userPrincipalName |X | | |Deze UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
 
 ## <a name="intune"></a>Intune
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerk naam | Gebruiker | Contact | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | g |X |X | | |
@@ -338,7 +338,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | userPrincipalName |X | | |UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerk naam | Gebruiker | Contact | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | g |X |X | | |
@@ -377,7 +377,7 @@ Deze groep is een set kenmerken die wordt gebruikt als de minimale kenmerken die
 
 Deze groep is een set kenmerken die kan worden gebruikt als de Azure AD-Directory niet wordt gebruikt ter ondersteuning van Office 365, Dynamics of intune. Het bevat een kleine set kern kenmerken.
 
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerk naam | Gebruiker | Contact | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | genoemd |X | |X | |
@@ -422,7 +422,7 @@ Deze kenmerken voor de **gebruiker** zijn naast de andere apps die u hebt gesele
 ## <a name="exchange-hybrid-writeback"></a>Hybride write-back van Exchange
 Deze kenmerken worden teruggeschreven van Azure AD naar on-premises Active Directory wanneer u **Exchange Hybrid**inschakelt. Afhankelijk van uw Exchange-versie kunnen minder kenmerken worden gesynchroniseerd.
 
-| Kenmerk naam (on-premises AD) | Kenmerk naam (gebruikers interface verbinden) | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerk naam (on-premises AD) | Kenmerk naam (gebruikers interface verbinden) | Gebruiker | Contact | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| MS-DS-externe-Directory-object-id |X | | |Afgeleid van cloudAnchor in azure AD. Dit kenmerk is nieuw in Exchange 2016 en Windows Server 2016 AD. |
 | msExchArchiveStatus| MS-Herw-ArchiveStatus |X | | |Online archief: klanten kunnen e-mail archiveren. |
@@ -430,7 +430,7 @@ Deze kenmerken worden teruggeschreven van Azure AD naar on-premises Active Direc
 | msExchSafeRecipientsHash| MS-Herw-SafeRecipientsHash  |X | | |Filteren: schrijft terug on-premises filteren en online veilige en geblokkeerde afzender gegevens van clients. |
 | msExchSafeSendersHash| MS-Herw-SafeSendersHash  |X | | |Filteren: schrijft terug on-premises filteren en online veilige en geblokkeerde afzender gegevens van clients. |
 | msExchUCVoiceMailSettings| MS-Herw-UCVoiceMailSettings |X | | |Unified Messa ging (UM)-online voice mail inschakelen: wordt gebruikt door micro soft Lync Server-integratie om aan te geven dat de gebruiker voice mail in onlineservices heeft. |
-| msExchUserHoldPolicies| MS-exc-hUserHoldPolicies |X | | |Juridische ruimte: Hiermee kunnen Cloud Services bepalen welke gebruikers in het kader van een rechts zaak worden bewaard. |
+| msExchUserHoldPolicies| MS-Herw-UserHoldPolicies |X | | |Juridische ruimte: Hiermee kunnen Cloud Services bepalen welke gebruikers in het kader van een rechts zaak worden bewaard. |
 | proxyAddresses| proxyAddresses |X |X |X |Alleen het een x500-adres van Exchange Online wordt ingevoegd. |
 | publicDelegates| MS-Herw-Public-gemachtigden  |X | | |Hiermee kan een Exchange Online-postvak SendOnBehalfTo rechten krijgen voor gebruikers met een on-premises Exchange-postvak. Vereist Azure AD Connect build 1.1.552.0 of After. |
 

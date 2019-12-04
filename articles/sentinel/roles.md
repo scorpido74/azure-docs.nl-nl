@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 02d87ed5f26d36b7cd438b0d818c7bdcce43520d
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464123"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762699"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Machtigingen in azure Sentinel
 
@@ -30,9 +30,9 @@ Met RBAC kunt u rollen binnen uw beveiligings team gebruiken en maken om de juis
 
 Er zijn drie specifieke, ingebouwde Azure Sentinel-rollen.  
 **Alle ingebouwde Azure Sentinel-rollen verlenen Lees toegang tot de gegevens in uw Azure Sentinel-werk ruimte.**
-- **Azure Sentinel Reader**: Zie [ingebouwde rollen](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) voor meer informatie
-- **Azure Sentinel responder**: Zie [ingebouwde rollen](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) voor meer informatie.
-- **Azure Sentinel contributor**: Zie [ingebouwde rollen](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) voor meer informatie
+- [Azure Sentinel Reader](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
+- [Azure Sentinel responder](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
+- [Azure Sentinel-bijdrager](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
 
 Naast Azure Sentinel dedicated RBAC-rollen zijn er Azure-en Log Analytics RBAC-rollen die een grotere set machtigingen kunnen verlenen die toegang hebben tot uw Azure Sentinel-werk ruimte en andere resources:
 

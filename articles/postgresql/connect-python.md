@@ -1,5 +1,5 @@
 ---
-title: Python gebruiken om verbinding te maken met Azure Database for PostgreSQL-één server
+title: Verbinding maken met python-Azure Database for PostgreSQL-één server
 description: In deze Quick Start vindt u voor beelden van python-code die u kunt gebruiken om verbinding te maken en gegevens op te vragen van Azure Database for PostgreSQL-één server.
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 441ff1ebeffde36d1940520404050f6cc29ea53e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f01ac67b25cbcc098973a3beb0a2b7b311827a37
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066275"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766392"
 ---
 # <a name="use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL-één server
 In deze Quick start ziet u hoe u kunt werken met een Azure Database for PostgreSQL met behulp van python in macOS, Ubuntu Linux of Windows. De Quick Start laat zien hoe u verbinding maakt met de data base en hoe u SQL-instructies gebruikt om gegevens te zoeken, in te voegen, bij te werken en te verwijderen. In het artikel wordt ervan uitgegaan dat u bekend bent met python, maar geen ervaring hebt met het werken met Azure Database for PostgreSQL.

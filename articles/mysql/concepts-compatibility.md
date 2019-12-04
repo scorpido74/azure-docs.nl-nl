@@ -1,17 +1,17 @@
 ---
-title: Compatibiliteit met stuur Programma's en beheer Programma's Azure Database for MySQL
+title: Compatibiliteit van Stuur Programma's en hulpprogram ma's-Azure Database for MySQL
 description: In dit artikel worden de MySQL-Stuur Programma's en-beheer hulpprogramma's beschreven die compatibel zijn met Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.openlocfilehash: 916c02c30f6d54aef44459775a7a437fe96a4ff9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 12/02/2019
+ms.openlocfilehash: 83c1463beec47ed3535811de822348cc7706f757
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720134"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765338"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-Stuur Programma's en-beheer hulpprogramma's die compatibel zijn met Azure Database for MySQL
 In dit artikel worden de Stuur Programma's en beheer Programma's beschreven die compatibel zijn met Azure Database for MySQL.
@@ -21,7 +21,7 @@ Azure Database for MySQL maakt gebruik van de populairste Community-editie van d
 
 | **Programmeer taal** | **Stuurprogrammamodel** | **Koppelen** | **Compatibele versies** | **Incompatibele versies** | **Opmerkingen** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |
-| PHP | mysqli, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5,3 | Voeg MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT in het connection string toe voor PHP 7,0-verbinding met SSL-MySQLi. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Bob ingesteld: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` optie op ONWAAR.|
+| PHP | mysqli, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5,3 | Voeg MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT toe aan de connection string voor PHP 7,0-verbinding met SSL-MySQLi. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Bob ingesteld: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` optie op ONWAAR.|
 | .NET | Asynchrone MySQL-Connector voor .NET | https://github.com/mysql-net/MySqlConnector <br> [Installatie pakket van Nuget](https://www.nuget.org/packages/MySqlConnector/) | 0,27 en na | 0.26.5 en vóór | |
 | .NET | MySQL-Connector/NET | https://github.com/mysql/mysql-connector-net | 8,0, 7,0, 6,10 |  | Een coderings fout kan ertoe leiden dat verbindingen mislukken op sommige niet-UTF8 Windows-systemen. |
 | Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Installatie pakket van NPM:<br> `npm install mysql` uitvoeren vanuit NPM | 2,15 | 2.14.1 en vóór | |
@@ -50,7 +50,7 @@ Het compatibiliteits voordeel kan ook worden uitgebreid naar beheer hulpprogramm
 | SQL-query automatisch aanvullen | X | X |  |
 | Gegevens importeren en exporteren | X | X | X | 
 | Exporteren naar meerdere indelingen | X | X | X |
-| Back-up en herstel |  | X |  |
+| Back-up en herstellen |  | X |  |
 | Server parameters weer geven | X | X | X |
 | Client verbindingen weer geven | X | X | X |
 

@@ -1,8 +1,7 @@
 ---
-title: Verbinding maken met 3270-apps op IBM-mainframes-Azure Logic Apps
+title: Verbinding maken met 3270-apps op IBM-mainframes
 description: Met behulp van Azure Logic Apps en IBM 3270-connector integreert u 3270 op het scherm gestuurde apps met Azure.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: ChristopherHouser
 ms.author: chrishou
@@ -10,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: f039d0cbfa2b34fecbcdee53ebe2b56b6e9b6d69
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 309cf59c4b27c2a5906acfc519edd5306dece2d5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787575"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789236"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Op het scherm gestuurde apps op IBM-mainframes 3270 integreren met Azure met behulp van Azure Logic Apps en IBM 3270-connector
 
@@ -119,7 +118,7 @@ In deze modus markeert u een item op elk 3270 scherm waarmee het scherm uniek wo
 
      Wanneer u voor het eerst verbinding maakt met [CICS](https://www.ibm.com/it-infrastructure/z/cics), moet u de sleutel ' Clear ' verzenden voordat u de naam kunt invoeren voor de trans actie die u wilt uitvoeren. Het scherm waarin u de sleutel ' Clear ' verzendt, heeft geen *herkennings kenmerken*, zoals een scherm titel, die u kunt toevoegen met behulp van de editor voor scherm herkenning. De miniaturen bevatten een scherm met de naam empty om dit scherm weer te geven. U kunt dit scherm later gebruiken voor het scherm waarin u de naam van de trans actie opgeeft.
 
-   * De naam voor een vastgelegd scherm maakt standaard gebruik van het eerste woord op het scherm. Als deze naam al bestaat, wordt de naam met een onderstrepings teken en een nummer toegevoegd, bijvoorbeeld ' WBGB ' en ' WBGB_1 '.
+   * De naam voor een vastgelegd scherm maakt standaard gebruik van het eerste woord op het scherm. Als deze naam al bestaat, wordt de naam met een onderstrepings teken en een nummer, bijvoorbeeld ' WBGB ' en ' WBGB_1 ', toegevoegd.
 
 1. Voer de volgende stappen uit om een herken bare naam te geven aan een vastgelegd scherm:
 
@@ -361,8 +360,8 @@ Wanneer u al deze stappen hebt voltooid, kunt u de actie die u in uw logische ap
 
    | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Verbindingsnaam** | Ja | <*naam* van de verbinding > | De naam voor de verbinding |
-   | **Integratie account-ID** | Ja | <*Integration-account-name* > | De naam van uw integratie account |
+   | **Verbindingsnaam** | Ja | <*naam* van de verbinding> | De naam voor de verbinding |
+   | **Integratie account-ID** | Ja | <*Integration-account-name*> | De naam van uw integratie account |
    | **SAS-URL van integratie account** | Ja | <*Integration-account-SAS-URL*> | De URL van de Shared Access Signature (SAS) van uw integratie account, die u kunt genereren op basis van de instellingen van uw integratie account in de Azure Portal. <p>1. Selecteer in het menu van het integratie account onder **instellingen**de optie **URL voor terugbellen**. <br>2. Kopieer in het rechterdeel venster de waarde voor de **gegenereerde call back-URL** . |
    | **Server** | Ja | <*TN3270-Server naam*> | De server naam voor uw TN3270-service |
    | **Poort** | Nee | <*TN3270-Server-poort*> | De poort die wordt gebruikt door uw TN3270-Server. Als dit veld leeg blijft, gebruikt de connector `23` als de standaard waarde. |

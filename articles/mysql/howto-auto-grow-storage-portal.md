@@ -1,17 +1,17 @@
 ---
-title: Opslag in Azure Database for MySQL automatisch verg Roten met behulp van de Azure Portal
+title: Opslag Azure Portal automatisch verg Roten-Azure Database for MySQL
 description: In dit artikel wordt beschreven hoe u automatische groei opslag voor Azure Database for MySQL kunt inschakelen met behulp van Azure Portal
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/29/2019
-ms.openlocfilehash: 864bfaefba783d93e795e8780cc02dcf991e38f1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 12/02/2019
+ms.openlocfilehash: 7be3e7e1a0d2e48b37c319f67e3b382f825469df
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142037"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770608"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>Opslag in Azure Database for MySQL automatisch verg Roten met behulp van de Azure Portal
 In dit artikel wordt beschreven hoe u een Azure Database for MySQL server-opslag kunt configureren om te groeien zonder dat dit van invloed is op de werk belasting.
@@ -19,7 +19,7 @@ In dit artikel wordt beschreven hoe u een Azure Database for MySQL server-opslag
 Wanneer een server de toegewezen opslag limiet bereikt, is de server gemarkeerd als alleen-lezen. Als u automatisch verg Roten van opslag inschakelt, neemt de server opslag echter toe om de groeiende gegevens te verwerken. Voor servers met een ingerichte opslag van minder dan 100 GB wordt de ingerichte opslag grootte met 5 GB verhoogd zodra de beschik bare opslag onder het hoogste van 1 GB of 10% van de ingerichte opslag ligt. Voor servers met meer dan 100 GB ingerichte opslag wordt de ingerichte opslag grootte verhoogd met 5% wanneer de beschik bare opslag ruimte lager is dan 5% van de ingerichte opslag grootte. De maximale opslag limieten die [hier](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) zijn opgegeven, zijn van toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
-Voor deze handleiding, hebt u het volgende nodig:
+U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for mysql server](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="enable-storage-auto-grow"></a>Opslag automatisch verg Roten inschakelen 

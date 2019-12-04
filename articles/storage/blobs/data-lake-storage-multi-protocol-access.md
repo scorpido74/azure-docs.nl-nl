@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3470e27f64a672db0165b0132996db91a1447c08
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: aebd7b58a2107ac109a03d3ce12f27d65ba0ab90
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033970"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769809"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Toegang tot meerdere protocollen op Azure Data Lake Storage
 
@@ -48,10 +48,13 @@ De items die in deze tabel worden weer gegeven, worden na verloop van tijd gewij
 |Blob-opslag functie | Ondersteunings niveau |
 |---|---|
 |[Cool-Access-laag](storage-blob-storage-tiers.md)|Algemeen beschikbaar|
-|BLOB Sdk's |Algemeen beschikbaar|
 |BLOB REST Api's|Algemeen beschikbaar|
-|[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Algemeen beschikbaar|
-|[CLI](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Algemeen beschikbaar|
+|BLOB Sdk's |Algemeen beschikbaar|
+|[Power shell (BLOB)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Algemeen beschikbaar|
+|[CLI (BLOB)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Algemeen beschikbaar|
+|BLOB-Sdk's met bestandssysteem semantiek ([.net](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [Java](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java))|Preview|
+|[Power shell met bestandssysteem semantiek](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|Preview|
+|[CLI met bestandssysteem semantiek](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|Preview|
 |[Diagnostische logboeken](../common/storage-analytics-logging.md)| Preview|
 |[Levenscyclus beheer beleid](storage-lifecycle-management-concepts.md)| Preview|
 |[Meldingen via Azure Event Grid](data-lake-storage-events.md)|Preview|
