@@ -2,22 +2,22 @@
 title: De HBase .NET SDK-Azure HDInsight gebruiken
 description: Gebruik de HBase .NET SDK om tabellen te maken en te verwijderen en om gegevens te lezen en te schrijven.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/13/2017
-ms.author: ashishth
-ms.openlocfilehash: d998ff44804a2dcd2b3282679a9cb53f893991e3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/02/2019
+ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077168"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806657"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>De .NET-SDK gebruiken voor Apache HBase
 
-[Apache HBase](apache-hbase-overview.md) biedt twee primaire opties voor het werken met uw gegevens: [Apache Hive query's en aanroepen naar de rest API van HBase](apache-hbase-tutorial-get-started-linux.md). U kunt rechtstreeks met de rest API werken met behulp van de `curl` opdracht of een vergelijkbaar hulp programma.
+[Apache HBase](apache-hbase-overview.md) biedt twee primaire opties voor het werken met uw gegevens: [Apache Hive query's en aanroepen naar de rest API van HBase](apache-hbase-tutorial-get-started-linux.md). U kunt rechtstreeks met de REST API werken met behulp van de `curl`-opdracht of een vergelijkbaar hulp programma.
 
 Voor C# -en .NET-toepassingen biedt de [micro soft HBase rest-client bibliotheek voor .net](https://www.nuget.org/packages/Microsoft.HBase.Client/) een client bibliotheek boven op de HBase-rest API.
 
@@ -29,7 +29,7 @@ De HBase .NET SDK wordt weer gegeven als een NuGet-pakket, dat via de Visual Stu
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>Een nieuw HBaseClient-object instantiëren
 
-Als u de SDK wilt gebruiken, moet `HBaseClient` u een nieuw object `ClusterCredentials` instantiëren, `Uri` bestaande uit het cluster en de Hadoop-gebruikers naam en-wacht woord.
+Als u de SDK wilt gebruiken, maakt u een nieuw `HBaseClient`-object, waarbij u in `ClusterCredentials` bestaande uit de `Uri` aan uw cluster en de Hadoop-gebruikers naam en het-wacht woord.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
@@ -44,7 +44,7 @@ HBase slaat gegevens op in tabellen. Een tabel bestaat uit een *Rowkey*, de prim
 
 De gegevens worden fysiek opgeslagen in *HFiles*. Eén HFile bevat gegevens voor één tabel, één regio en één kolom familie. Rijen in HFile worden opgeslagen in Rowkey. Elke HFile heeft een *B +-structuur* index voor het snel ophalen van de rijen.
 
-Als u een nieuwe tabel wilt maken, `TableSchema` geeft u een en kolommen op. Met de volgende code wordt gecontroleerd of de tabel RestSDKTable al bestaat. als dat niet het geval is, wordt de tabel gemaakt.
+Als u een nieuwe tabel wilt maken, geeft u een `TableSchema` en kolommen op. Met de volgende code wordt gecontroleerd of de tabel RestSDKTable al bestaat. als dat niet het geval is, wordt de tabel gemaakt.
 
 ```csharp
 if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
@@ -58,7 +58,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-Deze nieuwe tabel heeft twee kolom families, T1 en T2. Aangezien kolom families afzonderlijk in verschillende HFiles worden opgeslagen, is het zinvol om een afzonderlijke kolom familie te hebben voor vaak opgevraagde gegevens. In het volgende voor beeld van [Insert data](#insert-data) worden kolommen toegevoegd aan de T1-kolom familie.
+Deze nieuwe tabel bestaat uit twee kolom families, T1 en T2. Aangezien kolom families afzonderlijk in verschillende HFiles worden opgeslagen, is het zinvol om een afzonderlijke kolom familie te hebben voor vaak opgevraagde gegevens. In het volgende voor beeld van [Insert data](#insert-data) worden kolommen toegevoegd aan de T1-kolom familie.
 
 ## <a name="delete-a-table"></a>Een tabel verwijderen
 
@@ -70,7 +70,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 ## <a name="insert-data"></a>Gegevens invoegen
 
-Als u gegevens wilt invoegen, geeft u een unieke rijdefinitie op als de rij-id. Alle gegevens worden opgeslagen in een `byte[]` matrix. De volgende code definieert en voegt de `title`kolommen `director`,, `release_date` en toe aan de T1-kolom familie, omdat deze kolommen het meest worden gebruikt. De `description` kolommen `tagline` en worden toegevoegd aan de kolom familie T2. U kunt uw gegevens naar behoefte in kolom families partitioneren.
+Als u gegevens wilt invoegen, geeft u een unieke rijdefinitie op als de rij-id. Alle gegevens worden opgeslagen in een `byte[]` matrix. Met de volgende code worden de `title`, `director`en `release_date` kolommen gedefinieerd en toegevoegd aan de T1-kolom familie, omdat deze kolommen het meest worden gebruikt. De kolommen `description` en `tagline` worden toegevoegd aan de kolom familie T2. U kunt uw gegevens naar behoefte in kolom families partitioneren.
 
 ```csharp
 var key = "fifth_element";
@@ -112,13 +112,13 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase implementeert [Cloud Bigtable](https://cloud.google.com/bigtable/), zodat de gegevens indeling er als volgt uitziet:
+HBase implementeert [Cloud Bigtable](https://cloud.google.com/bigtable/), dus de gegevens indeling ziet eruit als in de volgende afbeelding:
 
 ![Voorbeeld gegevens uitvoer Apache HBase](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>Gegevens selecteren
 
-Als u gegevens uit een HBase-tabel wilt lezen, geeft u de tabel naam en `GetCellsAsync` de rij-sleutel `CellSet`door aan de methode om de te retour neren.
+Als u gegevens uit een HBase-tabel wilt lezen, geeft u de tabel naam en de rij-sleutel door aan de `GetCellsAsync` methode om de `CellSet`te retour neren.
 
 ```csharp
 var key = "fifth_element";
@@ -132,7 +132,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-In dit geval retourneert de code alleen de eerste overeenkomende rij, omdat er slechts één rij voor een unieke sleutel moet zijn. De geretourneerde waarde wordt gewijzigd `string` in de indeling `byte[]` van de matrix. U kunt de waarde ook converteren naar andere typen, zoals een geheel getal voor de release datum van de film:
+In dit geval retourneert de code alleen de eerste overeenkomende rij, omdat er slechts één rij voor een unieke sleutel moet zijn. De geretourneerde waarde wordt in `string` indeling gewijzigd vanuit de `byte[]` matrix. U kunt de waarde ook converteren naar andere typen, zoals een geheel getal voor de release datum van de film:
 
 ```csharp
 var releaseDateField = cells.rows[0].values
@@ -149,7 +149,7 @@ Console.WriteLine(releaseDate);
 
 ## <a name="scan-over-rows"></a>Scannen over rijen
 
-HBase gebruikt `scan` om een of meer rijen op te halen. In dit voor beeld wordt een aanvraag voor meerdere rijen in batches van 10 en worden gegevens opgehaald waarvan de sleutel waarden tussen 25 en 35 liggen. Nadat u alle rijen hebt opgehaald, verwijdert u de scanner om de resources op te schonen.
+HBase maakt gebruik van `scan` om een of meer rijen op te halen. In dit voor beeld wordt een aanvraag voor meerdere rijen in batches van 10 en worden gegevens opgehaald waarvan de sleutel waarden tussen 25 en 35 liggen. Nadat u alle rijen hebt opgehaald, verwijdert u de scanner om de resources op te schonen.
 
 ```csharp
 var tableName = "mytablename";

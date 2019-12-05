@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: e9781d9c277d19257d9b00bea3106adb3b04ffd6
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: fff92057bc9812a5ef1488a46ed469382ad3ace3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672522"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806878"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Privé-eind punten gebruiken voor Azure Storage (preview-versie)
 
@@ -32,7 +32,7 @@ Een persoonlijk eind punt is een speciale netwerk interface voor een Azure-servi
 
 Toepassingen in het VNet kunnen naadloos verbinding maken met de opslag service via het persoonlijke eind punt, **met behulp van dezelfde verbindings reeksen en autorisatie mechanismen die ze anders zouden gebruiken**. Privé-eind punten kunnen worden gebruikt met alle protocollen die worden ondersteund door het opslag account, inclusief REST en SMB.
 
-Privé-eind punten kunnen worden gemaakt in subnetten die gebruikmaken van [service-eind punten](/azure/virtual-network/virtual-network-service-endpoints-overview.md). Clients in een subnet kunnen daarom verbinding maken met één opslag account met behulp van een persoonlijk eind punt, terwijl service-eind punten worden gebruikt voor toegang tot anderen.
+Privé-eind punten kunnen worden gemaakt in subnetten die gebruikmaken van [service-eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md). Clients in een subnet kunnen daarom verbinding maken met één opslag account met behulp van een persoonlijk eind punt, terwijl service-eind punten worden gebruikt voor toegang tot anderen.
 
 Wanneer u een privé-eindpunt voor een opslagservice in uw VNet maakt, wordt er een aanvraag voor goedkeuring verzonden naar de eigenaar van het opslagaccount. Als de gebruiker die het persoonlijke eind punt wil maken ook eigenaar van het opslag account is, wordt deze aanvraag voor toestemming automatisch goedgekeurd.
 
@@ -106,7 +106,7 @@ De aanbevolen DNS-zone namen voor privé-eind punten voor opslag Services zijn:
 | :--------------------- | :----------------------------------- |
 | Blob service           | `privatelink.blob.core.windows.net`  |
 | Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
-| Bestands service           | `privatelink.file.core.windows.net`  |
+| Bestandsservice           | `privatelink.file.core.windows.net`  |
 | Queue-service          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |
 | Statische websites        | `privatelink.web.core.windows.net`   |
@@ -115,8 +115,8 @@ De aanbevolen DNS-zone namen voor privé-eind punten voor opslag Services zijn:
 
 Raadpleeg de volgende artikelen voor meer informatie over het configureren van uw eigen DNS-server voor de ondersteuning van persoonlijke eind punten:
 
-- [Naamomzetting voor resources in virtuele Azure-netwerken](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [DNS-configuratie voor privé-eind punten](/private-link/private-endpoint-overview#dns-configuration)
+- [Naamomzetting voor resources in virtuele Azure-netwerken](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [DNS-configuratie voor privé-eind punten](/azure/private-link/private-endpoint-overview#dns-configuration)
 
 ## <a name="pricing"></a>Prijzen
 

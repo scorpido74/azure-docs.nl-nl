@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5864424f003ce9254a6452d8374d78c54516f2bc
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08c1db1a8e377edd1bf9b8f1b942e65b970edf56
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322733"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803674"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Voorwaardelijke toegang: vertrouwde locatie vereisen voor MFA-registratie
 
@@ -26,7 +26,7 @@ Beveiligen wanneer en hoe gebruikers zich registreren voor Azure Multi-Factor Au
 
 Het volgende beleid is van toepassing op alle geselecteerde gebruikers die zich willen registreren met de gecombineerde registratie-ervaring en blokkeert de toegang tenzij ze verbinding maken vanaf een locatie die is gemarkeerd als vertrouwd netwerk.
 
-1. Blader in het **Azure Portal**naar **Azure Active Directory** **voorwaardelijke toegang** > .
+1. Ga in het **Azure Portal**naar **Azure Active Directory** > **beveiliging** > **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Voer bij naam een naam in voor dit beleid. Bijvoorbeeld **registratie van gegevens over gecombineerde beveiliging op vertrouwde netwerken**.
 1. Klik onder **toewijzingen**op **gebruikers en groepen**en selecteer de gebruikers en groepen waarop u dit beleid wilt Toep assen.
@@ -44,7 +44,7 @@ Het volgende beleid is van toepassing op alle geselecteerde gebruikers die zich 
 1. Onder **Access controls** > **Grant**.
    1. Klik op **toegang blok keren**.
    1. Klik vervolgens op **Selecteren**.
-1. Stel **beleid inschakelen** op aan **in**.
+1. Stel **Beleid inschakelen** in op **Aan**.
 1. Klik vervolgens op **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen

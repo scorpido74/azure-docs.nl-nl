@@ -1,7 +1,7 @@
 ---
 title: Stream-codec gecomprimeerde audio met de Speech SDK op Android
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het streamen van gecomprimeerde audio naar Azure speech Services met de Speech SDK op Android.
+description: Meer informatie over het streamen van gecomprimeerde audio naar de speech-service met de Speech SDK op Android.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109898"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805838"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Procedure: compressie van gecomprimeerde audio-invoer met de Speech SDK op Android gebruiken
 
@@ -133,7 +133,7 @@ Zodra het gedeelde object (libgstreamer_android. so) is gebouwd, moet de ontwikk
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Voorbeeld code met behulp van gecomprimeerde audio-invoer van de codec
 
-Als u een gecomprimeerde audio-indeling naar de spraak Services wilt streamen, maakt u `PullAudioInputStream` of `PushAudioInputStream`. Maak vervolgens een `AudioConfig` van een instantie van uw Stream-klasse, waarbij u de compressie-indeling van de stroom opgeeft.
+Als u een gecomprimeerde audio-indeling naar de speech-service wilt streamen, maakt u `PullAudioInputStream` of `PushAudioInputStream`. Maak vervolgens een `AudioConfig` van een instantie van uw Stream-klasse, waarbij u de compressie-indeling van de stroom opgeeft.
 
 We gaan ervan uit dat u een invoer stroom klasse hebt met de naam `myPullStream` en gebruikmaakt van OPUS/OGG. Uw code kan er als volgt uitzien:
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64b7add9ddb1734d763c46e93d6788ce21a2c321
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 26299ca12071b521fc825a0b1ab1425f24af67e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150887"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803594"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Voorwaardelijke toegang: toegang blok keren per locatie
 
@@ -25,20 +25,20 @@ Met de voor waarde voor de locatie in voorwaardelijke toegang kunt u de toegang 
 ## <a name="define-locations"></a>Locaties definiëren
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
 1. Kies **nieuwe locatie**.
 1. Geef een naam op voor uw locatie.
 1. Kies **IP-adresbereiken** als u de specifieke, extern toegankelijke IPv4-adresbereiken die deze locatie of **landen/regio's**vormen, kent.
    1. Geef het **IP-bereik** op of selecteer de **landen/regio's** voor de locatie die u opgeeft.
       * Als u landen/regio's hebt gekozen, kunt u desgewenst ook onbekende gebieden opgeven.
-1. Kies **Opslaan**
+1. Kies **Opslaan**.
 
 Meer informatie over de locatie voorwaarde in voorwaardelijke toegang vindt u in het artikel, [Wat is de voor waarde voor de locatie in azure Active Directory voorwaardelijke toegang](location-condition.md)
 
 ## <a name="create-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
@@ -50,7 +50,7 @@ Meer informatie over de locatie voorwaarde in voorwaardelijke toegang vindt u in
    1. Selecteer **geselecteerde locaties** **toevoegen**
    1. Selecteer de geblokkeerde locatie die u hebt gemaakt voor uw organisatie.
    1. Klik **op** > **gereed** > **gereed**.
-1. Onder **Access controls** > **blok**en selecteert u **selecteren**.
+1. Onder **toegangs elementen** > **blok keren**en selecteert **u selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.
 

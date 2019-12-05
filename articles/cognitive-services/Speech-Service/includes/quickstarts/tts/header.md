@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 263a8e98c4c029728272c020efe00e82be20f5e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d19f779f67cc0dea8cc7f06aa275885d75c3092e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503078"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818198"
 ---
 In deze Quick start gaat u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) gebruiken om tekst te converteren naar gesynthesizerde spraak. Nadat u aan enkele vereisten hebt voldaan, worden in de standaard luidsprekers alleen vier stappen weer gegeven:
 > [!div class="checklist"]

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110069"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806147"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Procedure: opdrachten op de client uitvoeren met de Speech-SDK (preview)
 
@@ -29,7 +29,7 @@ In dit artikel voert u de volgende handelingen uit:
 ## <a name="prerequisites"></a>Vereisten
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Een Azure-abonnements sleutel voor spraak Services
+- Een sleutel van een Azure-abonnement voor de speech-service
   - [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com)
 - Een eerder gemaakte aangepaste opdrachten-app
   - [Snelstartgids: een aangepaste opdracht maken met para meters (preview)](./quickstart-custom-speech-commands-create-parameters.md)
@@ -131,7 +131,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 };
 ```
 
-## <a name="try-it-out"></a>Uitproberen
+## <a name="try-it-out"></a>Probeer het
 
 1. De toepassing starten
 1. Selecteer microfoon inschakelen

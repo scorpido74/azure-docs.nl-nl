@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801542"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806093"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Nauw keurigheid van Custom Speech evalueren
 
@@ -29,9 +29,9 @@ De industrie standaard om de nauw keurigheid van het model te meten is een *woor
 
 Onjuist geïdentificeerde woorden vallen in drie categorieën:
 
-* Invoeg actie (I): Woorden die onjuist zijn toegevoegd in de transcripten van hypo Thesen
-* Verwijdering (D): Woorden die niet worden gedetecteerd in de transcripten van hypo Thesen
-* Vervanging (en): Woorden die zijn vervangen tussen verwijzing en hypo these
+* Invoegen (I): woorden die onjuist zijn toegevoegd in de transcripten voor hypo Thesen
+* Verwijdering (D): woorden die niet worden gedetecteerd in de transcripten van hypo Thesen
+* Vervanging (en): woorden die zijn vervangen tussen verwijzing en hypo these
 
 Hier volgt een voorbeeld:
 
@@ -56,7 +56,7 @@ Modellen naast elkaar evalueren:
 3. Klik op **test toevoegen**.
 4. Selecteer **nauw keurigheid evalueren**. Geef een naam en beschrijving op voor de test en selecteer uw transcriptie-gegevensset voor audio + met Human label.
 5. Selecteer Maxi maal twee modellen die u wilt testen.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 
 Nadat de test is gemaakt, kunt u de resultaten naast elkaar vergelijken.
 
@@ -69,7 +69,7 @@ Zodra de test is voltooid, wordt aangegeven dat de status is gewijzigd in *gesla
 * [Uw model trainen](how-to-custom-speech-train-model.md)
 * [Uw model implementeren](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md)
 * [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)

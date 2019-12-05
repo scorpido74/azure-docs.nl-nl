@@ -3,12 +3,12 @@ title: Over Azure VM Backup
 description: In dit artikel leest u hoe de Azure Backup-service een back-up maakt van virtuele Azure-machines en hoe u de aanbevolen procedures volgt.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f1c89b9ac7aeb51f43ef84267b20f83b408fd56c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4bd42acbf682b51e17f60702e5695cfb29db812b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172480"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806436"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Een overzicht van Azure VM backup
 
@@ -54,7 +54,7 @@ De back-up-BEKs (geheimen) en KEKs (sleutels) zijn versleuteld. Ze kunnen alleen
 
 Er wordt ook een back-up gemaakt van BEKs. Als de BEKs verloren zijn gegaan, kunnen geautoriseerde gebruikers dus de BEKs herstellen naar de sleutel kluis en de versleutelde Vm's herstellen. Alleen gebruikers met het benodigde machtigings niveau kunnen back-ups maken van versleutelde Vm's, sleutels en geheimen en deze herstellen.
 
-## <a name="snapshot-creation"></a>Moment opname maken
+## <a name="snapshot-creation"></a>Maken van momentopnamen
 
 Azure Backup maakt moment opnamen volgens het back-upschema.
 
@@ -79,14 +79,14 @@ In de volgende tabel ziet u de verschillende soorten consistentie van moment opn
 --- | --- | --- | ---
 **Toepassings consistent** | Met app-consistente back-ups worden geheugen inhoud en I/O-bewerkingen in behandeling vastgelegd. App-consistente moment opnamen maken gebruik van een VSS Writer (of pre/post scripts voor Linux) om de consistentie van de app-gegevens te garanderen voordat een back-up wordt uitgevoerd. | Wanneer u een virtuele machine herstelt met een app-consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. De apps beginnen met een consistente status. | Windows: alle VSS-schrijvers zijn geslaagd<br/><br/> Linux: vóór/post-scripts zijn geconfigureerd en geslaagd
 **Bestands systeem consistent** | Bestandssysteem consistente back-ups bieden consistentie door een moment opname van alle bestanden tegelijk te maken.<br/><br/> | Wanneer u een virtuele machine herstelt met een bestandssysteem consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. Apps moeten hun eigen mechanisme ' herstellen ' implementeren om ervoor te zorgen dat de herstelde gegevens consistent zijn. | Windows: sommige VSS-schrijvers zijn mislukt <br/><br/> Linux: standaard (als er vooraf/post-scripts niet zijn geconfigureerd of mislukt)
-**Crash-consistent** | Crash-consistente moment opnamen doen zich meestal voor als een Azure-VM wordt afgesloten op het moment van de back-up. Alleen de gegevens die al op de schijf aanwezig zijn op het moment van de back-up worden vastgelegd en er een back-up van wordt gemaakt.<br/><br/> Een crash-consistent herstel punt garandeert geen gegevens consistentie voor het besturings systeem of de app. | Hoewel er geen garanties zijn, start de virtuele machine meestal op en vervolgens wordt er een schijf controle gestart om beschadigings fouten op te lossen. Gegevens in het geheugen of schrijf bewerkingen die niet naar de schijf zijn overgedragen voordat de crash is verbroken. Apps implementeren hun eigen gegevens verificatie. Een Data Base-app kan bijvoorbeeld het transactie logboek voor verificatie gebruiken. Als het transactie logboek vermeldingen bevat die zich niet in de data base bevinden, worden trans acties teruggedraaid door de data base software totdat de gegevens consistent zijn. | De virtuele machine heeft de status afsluiting
+**Crash-consistent** | Crash-consistente moment opnamen doen zich meestal voor als een Azure-VM wordt afgesloten op het moment van de back-up. Alleen de gegevens die al op de schijf aanwezig zijn op het moment van de back-up worden vastgelegd en er een back-up van wordt gemaakt. | Begint met het opstart proces van de virtuele machine, gevolgd door een schijf controle om beschadigings fouten op te lossen. Gegevens in het geheugen of schrijf bewerkingen die niet naar de schijf zijn overgedragen voordat de crash is verbroken. Apps implementeren hun eigen gegevens verificatie. Een Data Base-app kan bijvoorbeeld het transactie logboek voor verificatie gebruiken. Als het transactie logboek vermeldingen bevat die zich niet in de data base bevinden, worden trans acties teruggedraaid door de data base software totdat de gegevens consistent zijn. | De virtuele machine is afgesloten (status gestopt/toegewezen).
 
 ## <a name="backup-and-restore-considerations"></a>Overwegingen voor back-up en herstel
 
 **Overweging** | **Details**
 --- | ---
 **Schijf** | Back-ups van VM-schijven zijn parallel. Als een virtuele machine bijvoorbeeld vier schijven heeft, probeert de back-upservice tegelijkertijd een back-up te maken van alle vier de schijven. De back-up is incrementeel (alleen gewijzigde gegevens).
-**Schema** |  Als u het back-upverkeer wilt verminderen, maakt u op verschillende tijdstippen van de dag een back-up van verschillende Vm's en zorgt u ervoor dat de tijden niet overlappen. Als er op hetzelfde moment back-ups worden gemaakt van Vm's, loopt verkeer storingen.
+**Plannen** |  Als u het back-upverkeer wilt verminderen, maakt u op verschillende tijdstippen van de dag een back-up van verschillende Vm's en zorgt u ervoor dat de tijden niet overlappen. Als er op hetzelfde moment back-ups worden gemaakt van Vm's, loopt verkeer storingen.
 **Back-ups voorbereiden** | Houd de tijd die nodig is om de back-up voor te bereiden. De voorbereidings tijd omvat het installeren of bijwerken van de back-upextensie en het activeren van een moment opname volgens het back-upschema.
 **Gegevensoverdracht** | Bedenk de tijd die nodig is om Azure Backup de incrementele wijzigingen van de vorige back-up te identificeren.<br/><br/> In een incrementele back-up worden de wijzigingen door Azure Backup bepaald door de controlesom van het blok te berekenen. Als een blok wordt gewijzigd, wordt het gemarkeerd voor overdracht naar de kluis. De service analyseert de geïdentificeerde blokken om te proberen de hoeveelheid gegevens die moet worden overgedragen, verder te minimaliseren. Nadat alle gewijzigde blokken zijn geëvalueerd, worden de wijzigingen in de kluis Azure Backup overgedragen.<br/><br/> Er is mogelijk een vertraging tussen het maken van de moment opname en het kopiëren naar de kluis.<br/><br/> Het kan Maxi maal acht uur duren voordat back-ups worden verwerkt. De back-uptijd voor een virtuele machine is minder dan 24 uur voor de dagelijkse back-up.
 **Eerste back-up** | Hoewel de totale back-uptijd voor incrementele back-ups minder dan 24 uur is, is dit mogelijk niet het geval voor de eerste back-up. De tijd die nodig is om de eerste back-up te maken, is afhankelijk van de grootte van de gegevens en wanneer de back-up wordt verwerkt.
@@ -130,20 +130,10 @@ Neem bijvoorbeeld een VM met a2-standaard met twee extra gegevens schijven met e
 --- | --- | ---
 Besturingssysteemschijf | 4095 GB | 17 GB
 Lokale/tijdelijke schijf | 135 GB | 5 GB (niet inbegrepen voor back-up)
-Gegevens schijf 1 | 4095 GB | 30 GB
+Gegevensschijf 1 | 4095 GB | 30 GB
 Gegevens schijf 2 | 4095 GB | 0 GB
 
 De werkelijke grootte van de virtuele machine in dit geval 17 GB + 30 GB + 0 GB = 47 GB. Deze beveiligde-instantie grootte (47 GB) wordt de basis voor de maandelijkse factuur. Naarmate de hoeveelheid gegevens in de virtuele machine groeit, wordt de grootte van de beveiligde instantie die wordt gebruikt voor het aanpassen van de facturering, gewijzigd.
-
-<a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-
-## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Open bare Preview: back-up van de virtuele machine met een schijf grootte van Maxi maal 30 TB
-
-Azure Backup ondersteunt nu een open bare preview van grotere en krachtige [Azure-Managed disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) van Maxi maal 30 TB. Deze preview biedt ondersteuning op productie niveau voor beheerde virtuele machines.
-
-De back-ups voor uw virtuele machines met elke schijf grootte van Maxi maal 30 TB en een maximum van 256 TB gecombineerd voor alle schijven in een VM, moeten naadloos werken zonder dat dit van invloed is op uw bestaande back-ups. Er is geen gebruikers actie vereist voor het ophalen van de back-ups die worden uitgevoerd voor de grote schijven, als de virtuele machine al is geconfigureerd met Azure Backup.
-
-Voor alle Azure-Virtual Machines met grote schijven waarvan de back-up is geconfigureerd, moet een back-up worden gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

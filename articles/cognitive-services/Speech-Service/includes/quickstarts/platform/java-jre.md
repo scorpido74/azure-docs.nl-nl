@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: Speech SDK voor Java (Windows, Linux, macOS) platform Setup-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding om uw platform in te stellen voor het gebruik van Java (Windows, Linux, macOS) met de speech Services SDK.
+description: Gebruik deze hand leiding om uw platform in te stellen voor het gebruik van Java (Windows, Linux, macOS) met de Speech Service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 2814327bdc434dbdae5644bd40b09d0506b21df9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 195d43739ff27a493b2f2923eac43df03313963b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502434"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816292"
 ---
 In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) installeert voor 64-bits Java 8 jre.
 
 > [!NOTE]
-> Zie [Speech Devices SDK](~/articles/cognitive-services/speech-service/speech-devices-sdk.md) voor de Speech Devices SDK en het Roobo-apparaat.
+> Zie [Speech Devices SDK](~/articles/cognitive-services/speech-service/speech-devices-sdk.md) voor de Speech Devices-SDK en het Roobo-apparaat.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 

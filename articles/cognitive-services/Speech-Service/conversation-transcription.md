@@ -1,5 +1,5 @@
 ---
-title: 'Wat is een conversatie transcriptie (preview): spraak service'
+title: Wat is een conversatie transcriptie (preview)? -Spraak service
 titleSuffix: Azure Cognitive Services
 description: Conversation transcriptie is een oplossing voor spraak naar tekst waarmee spraak herkenning, de identificatie van de spreker en de toewijzing van zinnen aan elke spreker (ook wel bekend als diarization) worden gecombineerd om te voorzien in realtime en/of asynchrone transcriptie van elke enger.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c15b053028bd707159a632c98faaea8b9954a9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 07e3e498a3bd2693b72079a8a731c3d139414c90
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075851"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806283"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>Wat is een conversatie transcriptie (preview)?
 
-Conversation transcriptie is een oplossing [voor spraak naar tekst](speech-to-text.md) waarmee spraak herkenning, de identificatie van de spreker en de toewijzing van zinnen aan elke spreker (ook wel bekend als _diarization_) worden gecombineerd om realtime en/of asynchroon te bieden transcriptie van een gesprek. Conversatie transcriptie onderscheidt sprekers in een gesprek om te bepalen wie wat en wanneer en wanneer, en maakt het gemakkelijk voor ontwikkel aars om spraak-naar-tekst toe te voegen aan hun toepassingen die Multi-Speaker diarization uitvoeren.
+Conversation transcriptie is een oplossing [voor spraak naar tekst](speech-to-text.md) waarmee spraak herkenning, de identificatie van de spreker en de toewijzing van zinnen aan elke spreker (ook wel bekend als _diarization_) worden gecombineerd om te voorzien in realtime en/of asynchroon transcriptie van een gesprek. Conversatie transcriptie onderscheidt sprekers in een gesprek om te bepalen wie wat en wanneer en wanneer, en maakt het gemakkelijk voor ontwikkel aars om spraak-naar-tekst toe te voegen aan hun toepassingen die Multi-Speaker diarization uitvoeren.
 
 ## <a name="key-features"></a>Belangrijke functies
 
@@ -34,7 +34,7 @@ Conversation transcriptie is een oplossing [voor spraak naar tekst](speech-to-te
 > [!NOTE]
 > Hoewel door de conversatie transcriptie geen limiet wordt ingesteld voor het aantal luid sprekers in de ruimte, is deze geoptimaliseerd voor 2-10 sprekers per sessie.
 
-## <a name="use-cases"></a>Gebruiksvoorbeelden
+## <a name="use-cases"></a>Use cases
 
 ### <a name="inclusive-meetings"></a>Inclusieve vergaderingen
 

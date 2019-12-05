@@ -4,17 +4,17 @@ description: In dit artikel wordt beschreven hoe u de Azure Updatebeheer-oplossi
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 05/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66acb1284f0814eec91715284259272a065dbae2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 06d7ede1e9b91832f908c87a22cca37ec2866365
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690899"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806538"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
@@ -31,7 +31,7 @@ U kunt Updatebeheer voor virtuele machines (Vm's) rechtstreeks vanuit uw Azure A
 
 Computers die worden beheerd door Updatebeheer gebruiken de volgende configuraties voor het uitvoeren van analyses en het bijwerken van implementaties:
 
-* Micro soft Monitoring Agent (MMA) voor Windows of Linux
+* Microsoft Monitoring Agent (MMA) voor Windows of Linux
 * PowerShell Desired State Configuration (DSC) voor Linux
 * Automation Hybrid Runbook Worker
 * Microsoft Update of Windows Server Update Services (WSUS) voor Windows-computers
@@ -40,7 +40,7 @@ In het volgende diagram ziet u hoe de oplossing beveiligings updates evalueert e
 
 ![Proces stroom Updatebeheer](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Updatebeheer kan worden gebruikt om machines in meerdere abonnementen in dezelfde Tenant op te doen.
+Updatebeheer kan worden gebruikt voor de systeemeigen onboarding van computers in meerdere abonnementen in dezelfde tenant.
 
 Nadat een pakket is vrijgegeven, duurt het 2 tot 3 uur voordat de patch wordt weer gegeven voor Linux-machines voor evaluatie. Voor Windows-computers duurt het 12 tot 15 uur voordat de patch wordt weer gegeven voor evaluatie nadat deze is uitgebracht.
 
@@ -69,7 +69,7 @@ Het is niet mogelijk om een computer te registreren voor Updatebeheer in meer da
 
 ## <a name="clients"></a>Clients
 
-### <a name="supported-client-types"></a>Ondersteunde client typen
+### <a name="supported-client-types"></a>Ondersteunde client-typen
 
 De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie de installatie handleidingen voor het installeren van een [Windows-Hybrid Runbook worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) en een Linux- [Hybrid Runbook worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)voor meer informatie over Hybrid Runbook worker vereisten.
 
@@ -85,17 +85,17 @@ De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor u
 > Virtuele-machine schaal sets van Azure kunnen worden beheerd via Updatebeheer. Updatebeheer werkt op de instanties zelf en niet op basis van de installatie kopie. U moet de updates op een incrementele manier plannen, zodat niet alle VM-exemplaren tegelijk worden bijgewerkt.
 > U kunt knoop punten voor schaal sets voor virtuele machines toevoegen door de stappen onder [onboarding van een niet-Azure-computer](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)uit te voeren.
 
-### <a name="unsupported-client-types"></a>Niet-ondersteunde client typen
+### <a name="unsupported-client-types"></a>Niet-ondersteunde client-typen
 
 De volgende tabel bevat een lijst met niet-ondersteunde besturings systemen:
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
-|Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.        |
-|Windows Server 2016 nano server     | Wordt niet ondersteund.       |
+|Windows-client     | Client-besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.        |
+|Windows Server 2016 Nano Server     | Wordt niet ondersteund.       |
 |Azure Kubernetes-service knooppunten | Wordt niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../aks/node-updates-kured.md)|
 
-### <a name="client-requirements"></a>Client vereisten
+### <a name="client-requirements"></a>Clientvereisten
 
 In de volgende informatie worden OS-specifieke client vereisten beschreven. Zie [netwerk planning](#ports)voor meer informatie.
 
@@ -132,13 +132,13 @@ De oplossing bestaat uit de volgende resources. De resources worden toegevoegd a
 
 Nadat u deze oplossing hebt ingeschakeld, wordt elke Windows-computer die rechtstreeks is verbonden met uw Log Analytics-werk ruimte automatisch geconfigureerd als een Hybrid Runbook Worker ter ondersteuning van de runbooks die in deze oplossing zijn opgenomen.
 
-Elke Windows-computer die wordt beheerd door de oplossing, wordt weer gegeven in het deel venster **Hybrid worker groups** als een **Hybrid worker-groep** voor het Automation-account. De oplossingen gebruiken de *hostname FQDN_GUID* -naamgevings Conventie. U kunt deze groepen niet richten op runbooks in uw account. Als u probeert, mislukt de poging. Deze groepen zijn bedoeld om alleen de beheer oplossing te ondersteunen.
+Elke Windows-computer die wordt beheerd door de oplossing, wordt weer gegeven in het deel venster **Hybrid worker groups** als een **Hybrid worker-groep** voor het Automation-account. De oplossingen gebruiken de *hostname-FQDN_GUID* naam Conventie. U kunt deze groepen niet richten op runbooks in uw account. Als u probeert, mislukt de poging. Deze groepen zijn bedoeld om alleen de beheer oplossing te ondersteunen.
 
 U kunt de Windows-computers toevoegen aan een Hybrid Runbook Worker groep in uw Automation-account ter ondersteuning van Automation-runbooks als u hetzelfde account gebruikt voor zowel de oplossing als het lidmaatschap van de Hybrid Runbook Worker-groep. Deze functionaliteit is toegevoegd aan versie 7.2.12024.0 van de Hybrid Runbook Worker.
 
 ### <a name="management-packs"></a>Management packs
 
-Als uw System Center Operations Manager-beheer groep is verbonden met een Log Analytics-werk ruimte, worden de volgende Management Packs in Operations Manager geïnstalleerd. Deze Management Packs worden ook op rechtstreeks verbonden Windows-computers geïnstalleerd nadat u de oplossing hebt toegevoegd. U hoeft deze Management Packs niet te configureren of te beheren.
+Als de beheergroep van uw System Center Operations Manager is verbonden met een Log Analytics-werkruimte, worden de volgende management packs geïnstalleerd in Operations Manager. Zodra u de oplossing hebt toegevoegd, worden deze management packs ook op rechtstreeks verbonden Windows-computers geïnstalleerd. U hoeft deze management packs niet te configureren of te beheren.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -162,7 +162,7 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 | --- | --- | --- |
 | Windows-agents |Ja |De oplossing verzamelt informatie over systeem updates van Windows-agents en start vervolgens de installatie van de vereiste updates. |
 | Linux-agents |Ja |De oplossing verzamelt informatie over systeem updates van Linux-agents en start vervolgens de installatie van de vereiste updates op ondersteunde distributies. |
-| Beheergroep Operations Manager |Ja |De oplossing verzamelt informatie over systeemupdates van agents in een verboden beheergroep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
+| Beheergroep Operations Manager |Ja |De oplossing verzamelt informatie over systeemupdates van agents in een verboden beheergroep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens uit de beheergroep doorgestuurd naar de Log Analytics-werkruimte. |
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
 
@@ -170,7 +170,7 @@ Voor elke beheerde Windows-computer wordt twee keer per dag een scan uitgevoerd.
 
 Er wordt elk uur een scan uitgevoerd voor elke beheerde Linux-computer.
 
-Het kan tussen 30 minuten en 6 uur duren voordat het dash board bijgewerkte gegevens van beheerde computers weergeeft.
+Het kan dertig minuten tot zes uur duren voordat er in het dashboard bijgewerkte gegevens van beheerde computers worden weergegeven.
 
 Het gemiddelde gegevens gebruik door Azure Monitor logboeken voor een machine met Updatebeheer is ongeveer 25 MB per maand. Deze waarde is alleen een benadering en is onderhevig aan wijzigingen, afhankelijk van uw omgeving. U wordt aangeraden uw omgeving te bewaken om uw exacte gebruik bij te houden.
 
@@ -178,11 +178,11 @@ Het gemiddelde gegevens gebruik door Azure Monitor logboeken voor een machine me
 
 De volgende adressen zijn specifiek vereist voor Updatebeheer. Communicatie met deze adressen vindt plaats via poort 443.
 
-|Open bare Azure  |Azure Government  |
+|Openbare Azure-peering  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
 Voor Windows-computers moet u ook verkeer toestaan voor eind punten die vereist zijn voor Windows Update. U kunt een bijgewerkte lijst met vereiste eind punten vinden in [kwesties met betrekking tot http/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Als u een lokale [Windows Update server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)hebt, moet u ook verkeer toestaan naar de server die is opgegeven in uw [WSUS-sleutel](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry).
@@ -211,7 +211,7 @@ Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontb
 
 ![Ontbrekende updates](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
-## <a name="update-classifications"></a>Update classificaties
+## <a name="update-classifications"></a>Updateclassificaties
 
 De volgende tabellen geven een lijst van de update classificaties in Updatebeheer, met een definitie voor elke classificatie.
 
@@ -228,7 +228,7 @@ De volgende tabellen geven een lijst van de update classificaties in Updatebehee
 |Tools     | Een hulp programma of functie waarmee u een of meer taken kunt volt ooien.        |
 |Updates     | Een update voor een toepassing of bestand dat momenteel is geïnstalleerd.        |
 
-### <a name="linux-2"></a>Spreek
+### <a name="linux-2"></a>Linux
 
 |Classificatie  |Beschrijving  |
 |---------|---------|

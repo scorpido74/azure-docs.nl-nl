@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: Speech SDK C# voor (Xamarin) platform Setup-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding om uw platform voor C# Xamarin in te stellen met de speech Services SDK.
+description: Gebruik deze hand leiding om uw platform voor C# Xamarin in te stellen met de Speech Service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 3a86e1ffa581e1a8677e0a5d6db4b47b206e5490
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 498aaa03544acc5a7c8399f1928129b70a7114e9
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502448"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816542"
 ---
 In deze hand leiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) installeert voor [Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin), een open-source platform voor het bouwen van moderne en beste toepassingen voor IOS, Android en Windows met .net. 
 

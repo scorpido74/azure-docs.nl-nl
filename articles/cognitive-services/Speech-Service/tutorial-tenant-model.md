@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8ca31dcadebf2dc47d5a4b4db715f26fb38e204e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578223"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816378"
 ---
 # <a name="create-a-tenant-model-preview"></a>Een Tenant model maken (preview)
 
@@ -71,7 +71,7 @@ Nadat uw beheerder Tenant model heeft ingeschakeld voor uw organisatie, kunt u e
 1. Meld u aan bij de [Speech Studio](https://speech.microsoft.com/).
 2. Klik in de rechter bovenhoek op het tandwiel pictogram (instellingen) en selecteer vervolgens **Tenant model instellingen**.
 
-   ![Menu instellingen](media/tenant-language-model/tenant-language-settings.png)
+   ![Menu Instellingen](media/tenant-language-model/tenant-language-settings.png)
 
 3. Hier ziet u een bericht met de melding dat u een Tenant model wilt maken.
    > [!NOTE]
@@ -89,7 +89,7 @@ Wanneer uw Tenant model klaar is, voert u de volgende stappen uit om uw model te
 1. Klik op de knop **model weer geven** in de bevestigings-e-mail die u hebt ontvangen, of Meld u aan bij de [Speech Studio](https://speech.microsoft.com/).
 2. Klik in de rechter bovenhoek op het tandwiel pictogram (instellingen) en selecteer vervolgens **Tenant model instellingen**.
 
-   ![Menu instellingen](media/tenant-language-model/tenant-language-settings.png)
+   ![Menu Instellingen](media/tenant-language-model/tenant-language-settings.png)
 
 3. Klik op **Implementeren**.
 4. Wanneer het model is geïmplementeerd, wordt de status gewijzigd in **geïmplementeerd**.

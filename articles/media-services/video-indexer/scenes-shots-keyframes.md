@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860241"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806699"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scènes, opnamen en sleutelframes
 
@@ -30,7 +30,7 @@ Video Indexer bepaalt wanneer een scène wordt gewijzigd in video op basis van v
 > [!NOTE]
 > Van toepassing op Video's die ten minste drie scènes bevatten.
 
-## <a name="shot-detection"></a>Opnamedetectie
+## <a name="shot-detection"></a>Opname detectie
 
 Video Indexer bepaalt wanneer een foto in de video wordt gewijzigd op basis van visuele hints door zowel abrupte als geleidelijke overgangen in het kleuren schema van aangrenzende frames bij te houden. De meta gegevens van de opname bevatten een begin-en eind tijd, evenals de lijst met hoofd frames die in de afbeelding zijn opgenomen. De moment opnamen zijn opeenvolgende frames die tegelijkertijd zijn gemaakt van dezelfde camera.
 
@@ -38,9 +38,71 @@ Video Indexer bepaalt wanneer een foto in de video wordt gewijzigd op basis van 
 
 Selecteert de frames die het beste de afdruk vertegenwoordigen. Keyframes zijn de representatieve frames die zijn geselecteerd uit de volledige video op basis van esthetische eigenschappen (bijvoorbeeld contrast en stabiele gegevens). Video Indexer haalt een lijst met hoofd frame-Id's op als onderdeel van de meta gegevens van de opname, op basis waarvan klanten de hoofd frame miniatuur kunnen uitpakken. 
 
-Keyframes zijn gekoppeld aan opnamen in de uitvoer-JSON. 
+### <a name="extracting-keyframes"></a>Hoofd frames extra heren
+
+Als u hoofd frames met hoge resolutie wilt uitpakken voor uw video, moet u eerst de video uploaden en indexeren.
+
+![Keyframes](./media/scenes-shots-keyframes/extracting-keyframes.png)
+
+#### <a name="with-the-video-indexer-website"></a>Met de Video Indexer-website
+
+Als u hoofd frames wilt extra heren met behulp van de Video Indexer website, uploadt u uw video en indexeert u deze. Zodra de Indexeer taak is voltooid, klikt u op de knop **downloaden** en selecteert u **artefacten (zip)** . Hiermee wordt de map artefacten gedownload naar uw computer. 
+
+![Keyframes](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+ 
+Unzip en open de map. In de map *_KeyframeThumbnail* vindt u alle keyframes die zijn geëxtraheerd uit uw video. 
+
+#### <a name="with-the-video-indexer-api"></a>Met de Video Indexer-API
+
+Als u keyframes wilt ophalen met behulp van de API Video Indexer, uploadt u uw video en indexeert u deze met behulp van de video-oproep [uploaden](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) Zodra de Indexeer taak is voltooid, roept u [video-index ophalen aan](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?). Hiermee krijgt u alle inzichten die Video Indexer opgehaald uit uw inhoud in een JSON-bestand.  
+
+U krijgt een lijst met de keyframe-Id's als onderdeel van de meta gegevens van elke foto. 
+
+```json
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
+      ],
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+
+]
+```
+
+Nu moet u elk van deze keyframe-Id's uitvoeren op de aanroep [miniaturen ophalen](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) . Hiermee worden alle keyframe-installatie kopieën naar uw computer gedownload. 
 
 ## <a name="editorial-shot-type-detection"></a>Detectie van redactionele type
+
+Keyframes zijn gekoppeld aan opnamen in de uitvoer-JSON. 
 
 Het bewerkings type dat is gekoppeld aan een afzonderlijke opname in de JSON van Insights vertegenwoordigt het redactionele type. U kunt deze kenmerken van de afbeeldings typen nuttig vinden bij het bewerken van Video's in clips, Trailers of bij het zoeken naar een specifieke stijl van keyframe voor artistieke doel einden. De verschillende typen worden bepaald op basis van de analyse van het eerste keyframe van elke opname. Foto's worden geïdentificeerd aan de hand van de schaal, de grootte en de locatie van de gezichten die in het eerste keyframe worden weer gegeven. 
 
@@ -63,6 +125,7 @@ Aanvullende kenmerken:
 
 * Twee opnamen: toont twee personen van de gemiddelde grootte.
 * Meerdere gezichten: meer dan twee personen.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

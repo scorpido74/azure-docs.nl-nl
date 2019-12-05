@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: Speech SDK for .NET Framework (Windows) platform Setup-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding voor het instellen van uw C# platform voor onder .NET Framework voor Windows met de speech Services SDK.
+description: Gebruik deze hand leiding voor het instellen van uw C# platform voor onder .NET Framework voor Windows met de Speech Service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 2caa5124144146e2286b102bf6ded9c5d120f904
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a858a078f8e22a7176fc0eeb09ae0133e2ea11a4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502511"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818556"
 ---
 In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor .NET Framework (Windows) installeert.
 
@@ -55,7 +55,7 @@ U moet het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget) installeren,
 
 1. Klik in de Solution Explorer met de rechter muisknop op het project **HelloWorld** en selecteer vervolgens **NuGet-pakketten beheren** om de NuGet-pakket manager weer te geven.
 
-   ![NuGet-pakket beheer](~/articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
+   ![NuGet Package Manager](~/articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
 1. Zoek in de rechter bovenhoek de vervolg keuzelijst **pakket bron** en zorg ervoor dat **`nuget.org`** is geselecteerd.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 6b9d5eb3adb8cad963ec513d327d237e73f94878
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535585"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803730"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Naslag Gids voor verificatie beheer van Azure Active Directory
 
@@ -51,7 +51,7 @@ Wanneer u uw lijst bekijkt, moet u mogelijk een eigenaar toewijzen voor taken wa
 - [Beheerdersrollen toewijzen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
 - [Governance in Azure](https://docs.microsoft.com/azure/security/governance-in-azure)
 
-## <a name="credentials-management"></a>Referenties beheren
+## <a name="credentials-management"></a>Referentiebeheer
 
 ### <a name="password-policies"></a>Wachtwoordbeleid
 
@@ -141,7 +141,7 @@ Als u apparaten beheert met MDM of Microsoft Intune, maar niet met behulp van ap
 #### <a name="device-trust-access-policies-recommended-reading"></a>Toegangs beleid voor vertrouwens relaties van apparaten aanbevolen lezen
 
 - [Procedure: uw hybride Azure Active Directory deelname-implementatie plannen](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-- [Configuraties voor identiteits-en toegangs apparaten](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Configuraties voor identiteit en Apparaattoegang](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello voor Bedrijven
 
@@ -192,7 +192,7 @@ Als u daarentegen toepassingen vindt die aan afzonderlijke gebruikers zijn toege
 - [Machtigingen voor app-registratie in Azure Active Directory delegeren](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-app-roles)
 - [Dynamische lidmaatschaps regels voor groepen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)
 
-## <a name="access-policies"></a>Toegangs beleid
+## <a name="access-policies"></a>Toegangsbeleid
 
 ### <a name="named-locations"></a>Benoemde locaties
 
@@ -205,7 +205,7 @@ Met [benoemde locaties](https://docs.microsoft.com/azure/active-directory/report
 
 Gebruik de onderstaande tabel op basis van prioriteit voor de aanbevolen oplossing die het beste voldoet aan de behoeften van uw organisatie:
 
-| **Prioriteit** | **Scenario** | **Advies** |
+| **Prioriteit** | **Scenario** | **Aanbeveling** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1 | Als u PHS of PTA gebruikt en er geen benoemde locaties zijn gedefinieerd | Benoemde locaties definiëren voor het verbeteren van de detectie van risico gebeurtenissen |
 | 2 | Als u federatief bent en geen ' insideCorporateNetwork-claim gebruikt en er geen benoemde locaties zijn gedefinieerd | Benoemde locaties definiëren voor het verbeteren van de detectie van risico gebeurtenissen |
@@ -256,7 +256,7 @@ Voorwaardelijke toegang is een essentieel hulp programma voor het verbeteren van
 #### <a name="conditional-access-recommended-reading"></a>Voorwaardelijke toegang aanbevolen lezen
 
 - [Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Configuraties voor identiteits-en toegangs apparaten](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Configuraties voor identiteit en Apparaattoegang](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Verwijzing naar de Azure Active Directory-instellingen voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [Algemeen beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
@@ -319,7 +319,7 @@ Om dit scenario te voor komen, dient u te verwijzen naar [illegale toestemming s
 
 Hieronder ziet u de gebruikers-en groeps instellingen die kunnen worden vergrendeld als er geen expliciete bedrijfs behoeften zijn:
 
-#### <a name="user-settings"></a>Gebruikers instellingen
+#### <a name="user-settings"></a>Gebruikersinstellingen
 
 - **Externe gebruikers** : externe samen werking kan op biologische wijze plaatsvinden in de onderneming met Services als Teams, Power bi, share point Online en Azure Information Protection. Als u expliciete beperkingen hebt voor het beheren van de door de gebruiker gestarte externe samen werking, wordt u aangeraden externe gebruikers in te scha kelen met behulp van het [beheer van rechten van Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) of een gecontroleerde bewerking, zoals via uw Help Desk. Als u geen organische externe samen werking voor services wilt toestaan, kunt u [leden blok keren om externe gebruikers volledig uit te nodigen](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations). U kunt ook specifieke domeinen in uitnodigingen voor externe gebruikers [toestaan of blok keren](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list) .
 - **App-registraties** : als app-registraties zijn ingeschakeld, kunnen eind gebruikers toepassingen zelf opheffen en toegang tot hun gegevens verlenen. Een typisch voor beeld van app-registratie is het inschakelen van Outlook-invoeg toepassingen of spraak assistenten, zoals Alexa en SIRI, om hun e-mail en agenda te lezen of e-mail berichten te verzenden. Als de klant besluit om de app-registratie uit te scha kelen, moeten de InfoSec-en IAM-teams betrokken zijn bij het beheer van uitzonde ringen (app-registraties die nodig zijn op basis van de bedrijfs vereisten), omdat de toepassingen moeten worden geregistreerd bij een beheerders account. en het is waarschijnlijk nodig om een proces te ontwerpen om het proces te operationeel maken.
@@ -363,7 +363,7 @@ U hebt toegang tot de aanmeldings activiteiten, audits en risico gebeurtenissen 
 - [Gegevens ophalen met de rapportage-API van Azure AD met certificaten](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-with-certificates)
 - [Microsoft Graph voor Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 - [Naslag informatie voor Office 365 Management Activity API](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
-- [Het Azure Active Directory Power BI-inhouds pakket gebruiken](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-power-bi-content-pack-how-to)
+- [Het Azure Active Directory Power BI-inhouds pakket gebruiken](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ## <a name="summary"></a>Samenvatting
 

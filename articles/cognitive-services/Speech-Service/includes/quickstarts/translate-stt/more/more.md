@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: Vertaal spraak-naar-tekst-spraak-service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 915c7b15968988e6ccfa84644df2afe32ffaf0ee
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: addb188584b05661f01e61ac520cab91e031d911
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021078"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816995"
 ---
 ## <a name="additional-language-and-platform-support"></a>Aanvullende taal-en platform ondersteuning
 

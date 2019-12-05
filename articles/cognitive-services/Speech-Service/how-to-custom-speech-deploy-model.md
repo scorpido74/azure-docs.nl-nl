@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fcd3e5fd6db0d7c18a5f9bfba030cd3d809b452f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: e41653e4644b09cc357510223e5ee86c3806ae2c
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802536"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806110"
 ---
 # <a name="deploy-a-custom-model"></a>Aangepaste model implementeren
 
@@ -44,7 +44,7 @@ Logboek gegevens kunnen worden gedownload onder **eindpunt > Details**.
 
 * Uw aangepaste eind punt gebruiken met de [Speech SDK](speech-sdk.md)
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md)
 * [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)

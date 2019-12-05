@@ -11,19 +11,19 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: cb37bd0c83956b9858639a78d4995e14811498e5
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559329"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805753"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
 Azure SQL Database is gebaseerd op SQL Server data base engine-architectuur die is aangepast voor de cloud omgeving om 99,99% Beschik baarheid te garanderen, zelfs in het geval van infrastructuur fouten. Er zijn drie architectuur modellen die worden gebruikt in Azure SQL Database:
 - Algemeen/standaard 
 -  Hyperscale
--  Bedrijfskritiek/Premium
+-  Business Critical/Premium
 
 De grootschalige van de servicelaag in Azure SQL Database is de nieuwste servicelaag in het op vCore gebaseerde aankoop model. Deze servicelaag is een zeer schaal bare laag voor opslag en reken prestaties die gebruikmaakt van de Azure-architectuur voor het uitschalen van de opslag en de reken resources voor een Azure SQL Database die groter zijn dan de limieten die beschikbaar zijn voor de Algemeen en de onderneming Kritieke service lagen.
 
@@ -66,7 +66,7 @@ De grootschalige-servicelaag ondersteunt een breed scala aan SQL Server workload
 
 Grootschalige is alleen beschikbaar in het [vCore-model](sql-database-service-tiers-vcore.md). Als u wilt uitlijnen met de nieuwe architectuur, is het prijs model iets anders dan Algemeen of Bedrijfskritiek service lagen:
 
-- **Berekenen**:
+- **Compute**:
 
   De grootschalige reken eenheids prijs is per replica. De [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) prijs wordt toegepast om automatisch schaal replica's te lezen. Er wordt standaard een primaire replica en één alleen-lezen replica per grootschalige-data base gemaakt.  Gebruikers kunnen het totaal aantal replica's aanpassen, met inbegrip van de primaire van 1-5.
 
@@ -246,7 +246,7 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | Elastische pools |  Elastische Pools worden momenteel niet ondersteund met SQL Database grootschalige.|
 | Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks naar een andere servicelaag worden gemigreerd. Op dit moment is de enige manier om een Data Base te migreren van grootschalige naar een niet-grootschalige, het exporteren/importeren met behulp van een BACPAC-bestand of andere technologieën voor gegevens verplaatsing (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enzovoort).|
 | Migratie van data bases met persistente in-Memory objecten | Grootschalige ondersteunt alleen niet-permanente objecten in het geheugen (tabel typen, systeem eigen SPs en functies).  Permanente in-Memory tabellen en andere objecten moeten worden verwijderd en opnieuw worden gemaakt als objecten die geen deel uitmaken van het geheugen voordat een Data Base naar de service tier grootschalige wordt gemigreerd.|
-| Tracering wijzigen | U kunt Wijzigingen bijhouden nog niet configureren en gebruiken met Azure SQL grootschalige-data bases. |
+| Tracering wijzigen | Wijzigingen bijhouden is momenteel beschikbaar als open bare preview en kan worden ingeschakeld voor nieuwe of bestaande grootschalige-data bases. |
 | Geo-replicatie  | U kunt geo-replicatie voor Azure SQL Database grootschalige nog niet configureren. |
 | Data base kopiëren | U kunt geen database kopie gebruiken om een nieuwe data base in Azure SQL grootschalige te maken. |
 | TDE/Azure-integratie | Transparante database versleuteling met behulp van Azure Key Vault (ook wel uw eigen sleutel of BYOK genoemd) wordt nog niet ondersteund voor Azure SQL Database grootschalige, maar TDE met door service beheerde sleutels wordt volledig ondersteund. |

@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: de service spraak herkenning voor de spraak'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: d65d60f06bebd2383237431e27673ca73a8e0c73
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c4e1213cdf389903b84ee0af45dab529a72f1af0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021073"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818242"
 ---
 ## <a name="additional-language-and-platform-support"></a>Aanvullende taal-en platform ondersteuning
 

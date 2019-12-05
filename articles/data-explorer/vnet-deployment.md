@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 8dec673408b706a92a29f418af3bef4cc05a8d2d
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668577"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812720"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Azure Data Explorer implementeren in uw Virtual Network (preview-versie)
 
@@ -75,7 +75,7 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 
 #### <a name="inbound-nsg-configuration"></a>Configuratie van binnenkomende NSG
 
-| **Gebruiken**   | **Van**   | **Aan**   | **Protocol**   |
+| **Gebruiken**   | **From**   | **Aan**   | **Protocol**   |
 | --- | --- | --- | --- |
 | Beheer  |[ADX beheer adressen](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX-subnet: 443  | TCP  |
 | Statuscontrole  | [Adressen voor status controle ADX](#health-monitoring-addresses)  | ADX-subnet: 443  | TCP  |
@@ -84,7 +84,7 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 
 #### <a name="outbound-nsg-configuration"></a>Configuratie van uitgaande NSG
 
-| **Gebruiken**   | **Van**   | **Aan**   | **Protocol**   |
+| **Gebruiken**   | **From**   | **Aan**   | **Protocol**   |
 | --- | --- | --- | --- |
 | Afhankelijkheid van Azure Storage  | ADX-subnet  | Opslag: 443  | TCP  |
 | Afhankelijkheid van Azure Data Lake  | ADX-subnet  | AzureDataLake: 443  | TCP  |
@@ -92,7 +92,7 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | Metrische gegevens publiceren  | ADX-subnet  | AzureMonitor: 443 | TCP  |
 | Azure Monitor configuratie downloaden  | ADX-subnet  | [Azure monitor configuratie-eindpunt adressen](#azure-monitor-configuration-endpoint-addresses): 443 | TCP  |
 | Active Directory (indien van toepassing) | ADX-subnet | AzureActiveDirectory: 443 | TCP |
-| Certificerings instantie | ADX-subnet | Internet: 80 | TCP |
+| Certificeringsinstantie | ADX-subnet | Internet: 80 | TCP |
 | Interne communicatie  | ADX-subnet  | ADX-subnet: alle poorten  | Alles  |
 | Poorten die worden gebruikt voor `sql\_request`-en `http\_request`-invoeg toepassingen  | ADX-subnet  | Internet: aangepast  | TCP  |
 
@@ -236,7 +236,6 @@ azureprofilerfrontdoor.cloudapp.net:443
 *.core.windows.net:443
 *.servicebus.windows.net:443
 shoebox2.metrics.nsatc.net:443
-production.diagnostics.monitoring.core.windows.net:443
 prod-dsts.dsts.core.windows.net:443
 ocsp.msocsp.com:80
 *.windowsupdate.com:80

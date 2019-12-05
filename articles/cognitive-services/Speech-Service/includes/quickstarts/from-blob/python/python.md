@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: spraak herkennen die zijn opgeslagen in C# Blob Storage,-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 40b226796b4dfb9aced3c6b00eba1a12bad66894
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9223fa484d45b927059c73e23e0607526e70fae4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504023"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828986"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,7 +36,7 @@ Voer de volgende stappen uit om de installatie uit te voeren:
 
 1. Ga naar https://editor.swagger.io.
 1. Klik op **bestand**en klik vervolgens op **URL importeren**.
-1. Voer de URL voor Swagger in, met inbegrip van de regio voor uw speech Services-abonnement: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
+1. Voer de URL voor Swagger in, inclusief de regio voor uw speech service-abonnement: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
 1. Klik op **client genereren** en selecteer **python**.
 1. Sla de client bibliotheek op.
 1. Pak de gedownloade python-client-generated. zip ergens in het bestands systeem uit.

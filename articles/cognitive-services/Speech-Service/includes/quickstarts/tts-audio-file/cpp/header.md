@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: spraak samen te brengen in audio C++ bestand,-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: c311a19ee5de1d98e25e6305105f2ff6bf843699
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e2bfb684029a58100d19e12cbe9a2be82dbe774
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502987"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817899"
 ---
 Als u liever meteen naar rechts gaat, kunt u alle <a href="https://aka.ms/speech/github-cpp">Speech SDK C++ </a> -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.

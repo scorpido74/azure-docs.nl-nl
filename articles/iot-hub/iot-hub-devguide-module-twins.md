@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: b6ab1e3e01f66e071e3d16b196b3ecdcd30c2620
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701814"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807422"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Module apparaatdubbels in IoT Hub begrijpen en gebruiken
 
@@ -24,7 +24,7 @@ Aan de kant van het apparaat kunt u met de Sdk's van het IoT Hub apparaat module
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-In dit artikel wordt beschreven:
+Dit artikel wordt beschreven:
 
 * De structuur van de module: *labels*, *gewenste* en *gerapporteerde eigenschappen*.
 * De bewerkingen die de modules en back-ends kunnen uitvoeren op module apparaatdubbels.
@@ -33,7 +33,7 @@ Raadpleeg de [informatie over apparaat-naar-Cloud-communicatie](iot-hub-devguide
 
 Raadpleeg de [communicatie richtlijnen van Cloud naar apparaat](iot-hub-devguide-c2d-guidance.md) voor hulp bij het gebruik van de gewenste eigenschappen, directe methoden of Cloud-naar-apparaat-berichten.
 
-## <a name="module-twins"></a>Module apparaatdubbels
+## <a name="module-twins"></a>Moduledubbels
 
 Module apparaatdubbels Store-informatie met betrekking tot de module:
 
@@ -181,12 +181,12 @@ De back-end van de oplossing werkt op de module, met behulp van de volgende atom
     $content-type | application/json |
     $iothub-enqueuedtime |  Tijdstip waarop de melding is verzonden |
     $iothub-bericht bron | twinChangeEvents |
-    $content-encoding | UTF-8 |
+    $content-encoding | utf-8 |
     deviceId | ID van het apparaat |
     moduleId | ID van de module |
     hubName | Naam van IoT Hub |
     operationTimestamp | [Iso8601](https://en.wikipedia.org/wiki/ISO_8601) tijds tempel van bewerking |
-    iothub-Message-schema | deviceLifecycleNotification |
+    iothub-Message-schema | twinChangeNotification |
     opType | "replaceTwin" of "updateTwin" |
 
     Eigenschappen van het berichten systeem worden voorafgegaan door het `$`-symbool.

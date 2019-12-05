@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: stemmen uw bot in te scha kelen met behulp van Speech SDK'
+title: 'Zelf studie: stemmen uw bot in te scha kelen met behulp van Speech SDK-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: In deze zelf studie maakt u een echo bot met behulp van micro soft bot-Framework, implementeert u deze in Azure en registreert u deze met het bot-Framework direct line speech Channel. Vervolgens configureert u een voor beeld-client-app voor Windows waarmee u naar uw bot kunt praten en kunt horen dat deze wordt weer gegeven.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: c95bc7b58f3883fee54aaa8095cb187eaefdb3e0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b42314d1c8c1bd734181f02c36ae3f43507e9b79
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836970"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815207"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
-U kunt nu de kracht van de spraak Services gebruiken om snel een chat-bot in te scha kelen.
+U kunt nu de kracht van de speech-service gebruiken om snel een chat-bot in te scha kelen.
 
 In deze zelf studie maakt u een echo bot met behulp van micro soft bot-Framework, implementeert u deze in Azure en registreert u deze met het bot-Framework direct line speech Channel. Vervolgens configureert u een voor beeld-client-app voor Windows waarmee u naar uw bot kunt praten en kunt horen dat deze wordt weer gegeven.
 
@@ -39,7 +39,7 @@ Aan het einde van deze oefening hebt u een systeem ingesteld dat er als volgt ui
 ![diagram-tag](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "De stroom van het spraak kanaal")
 
 > [!NOTE]
-> Voor de stappen in deze zelf studie is geen betaalde service vereist. Als nieuwe Azure-gebruiker kunt u tegoed gebruiken van uw gratis Azure-proef abonnement en de gratis laag van spraak Services om deze zelf studie te volt ooien.
+> Voor de stappen in deze zelf studie is geen betaalde service vereist. Als nieuwe Azure-gebruiker kunt u tegoed gebruiken van uw gratis Azure-proef abonnement en de gratis laag van de speech-service om deze zelf studie te volt ooien.
 
 Deze zelf studie bevat de volgende onderwerpen:
 > [!div class="checklist"]
@@ -63,9 +63,9 @@ Dit is wat u moet doen om deze zelf studie te volt ooien:
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-De client-app die u in deze zelf studie maakt, maakt gebruik van een aantal Azure-Services. Als u de retour tijd voor reacties van uw bot wilt beperken, moet u ervoor zorgen dat deze services zich in dezelfde Azure-regio bevinden. In deze sectie maakt u een resource groep in de regio **VS-West** . Deze resource groep wordt gebruikt bij het maken van afzonderlijke resources voor het bot-Framework, het direct lijn spraak kanaal en spraak Services.
+De client-app die u in deze zelf studie maakt, maakt gebruik van een aantal Azure-Services. Als u de retour tijd voor reacties van uw bot wilt beperken, moet u ervoor zorgen dat deze services zich in dezelfde Azure-regio bevinden. In deze sectie maakt u een resource groep in de regio **VS-West** . Deze resource groep wordt gebruikt bij het maken van afzonderlijke resources voor het bot-Framework, het directe lijn spraak kanaal en de spraak service.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in de linkernavigatiebalk. Klik vervolgens op **toevoegen** om een nieuwe resource groep toe te voegen.
 1. U wordt gevraagd om de volgende informatie op te geven:
    * Stel **abonnement** in op **gratis proef versie** (u kunt ook een bestaand abonnement gebruiken).
@@ -89,7 +89,7 @@ Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations
 
 Nu u een resource groep hebt in de regio **VS-West** , is de volgende stap het maken van afzonderlijke resources voor elke service die u in deze zelf studie gaat gebruiken.
 
-### <a name="create-a-speech-services-resource"></a>Een speech Services-resource maken
+### <a name="create-a-speech-service-resource"></a>Een speech service-resource maken
 
 Volg deze instructies om een spraak bron te maken:
 
@@ -172,7 +172,7 @@ De [bot Framework-emulator](https://github.com/microsoft/botframework-emulator) 
    http://localhost:3978/api/messages
    ```
    en klik op verbinden.
-4. De bot moet u onmiddellijk begroeten met ' Hallo en Welkom! ' Bericht. Typ een tekst bericht en bevestig dat u een reactie van de bot ontvangt.
+4. De bot moet u onmiddellijk begroeten met ' Hallo en Welkom! ' . Typ een tekst bericht en bevestig dat u een reactie van de bot ontvangt.
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Uw bot implementeren op een Azure App Service
 
@@ -233,7 +233,7 @@ Nu u een Azure App Service hebt gemaakt om uw bot te hosten, is de volgende stap
 > [!NOTE]
 > Zie [een bot verbinden met kanalen](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)als u meer wilt weten over het gebruik van bots kanalen.
 
-1. De eerste stap is het maken van een nieuwe resource voor de registratie. Klik in de [Azure Portal](https://portal.azure.com)op **een resource maken**.
+1. De eerste stap is het maken van een nieuwe resource voor de registratie. Klik in [Azure Portal](https://portal.azure.com) op **Een resource maken**.
 2. Selecteer in de **bot**van het type zoek balk, nadat de resultaten worden weer gegeven, de **registratie bot-kanalen**.
 3. Klik op **Maken**.
 4. U wordt gevraagd om de volgende informatie op te geven:
@@ -253,7 +253,7 @@ Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup**
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
-| SpeechEchoBotTutorial-BotRegistration | Registratie van bot-kanalen | Wereldwijd |
+| SpeechEchoBotTutorial-BotRegistration | Registratie botkanalen | Wereldwijd |
 | SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
 
 > [!IMPORTANT]
@@ -426,7 +426,7 @@ Als u de in deze zelf studie geïmplementeerde ECHO-bot niet wilt blijven gebrui
 * Implementeren in een [Azure-regio die hoogwaardige NEURAL TTS-stemmen ondersteunt](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)
 * Prijzen gekoppeld aan direct-lijn spraak kanaal:
   * [Prijzen van bot-service](https://azure.microsoft.com/pricing/details/bot-service/)
-  * [Spraakservices](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+  * [Speech-Service](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Bouwen en implementeren van uw eigen spraak ingeschakelde bot:
   * Bouw een [bot-raam](https://dev.botframework.com/)werk op. Registreer deze met [direct line speech Channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) en [Pas uw bot aan voor spraak](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
   * Bekijk bestaande [bot-Framework oplossingen](https://microsoft.github.io/botframework-solutions/index): bouw een [virtuele assistent](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) en [breid deze uit naar direct line speech](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

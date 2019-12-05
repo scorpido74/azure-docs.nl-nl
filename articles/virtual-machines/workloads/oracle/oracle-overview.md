@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: 71caa6730e3a00f3aa80329d6b87d2531fdd8049
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891464"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806606"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Overzicht van Oracle-toepassingen en-oplossingen op Azure
 
@@ -42,7 +42,7 @@ Voer bedrijfs toepassingen uit in azure op ondersteunde Oracle-besturings system
 
 * Oracle WebLogic Server 12.1.2
 
-* Oracle Linux (UEK) 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 en 7,6
+* Oracle Linux met de onbreekbare Enter prise kernel (UEK) 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 en 7,6 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>Opties voor hoge Beschik baarheid en herstel na nood gevallen
 
@@ -71,7 +71,7 @@ Gebruik terraform-sjablonen om een Azure-infra structuur in te stellen en Oracle
 
 * E-Business Suite
 * JD Edwards EnterpriseOne
-* People
+* PeopleSoft
 * Retail toepassingen van Oracle
 * Financieel beheer van Oracle Hyperion
 
@@ -91,3 +91,5 @@ De implementatie van Oracle-toepassingen in Azure is gebaseerd op een model voor
 * Meer informatie over het implementeren van [Oracle-VM-installatie kopieën](oracle-vm-solutions.md) in de Azure-infra structuur.
 
 * Meer informatie over het [verbinden van Azure met OCI](oracle-oci-overview.md).
+
+* Bekijk de [overzichts sessie van Oracle op Azure](https://myignite.techcommunity.microsoft.com/sessions/82915) vanuit Ignite 2019. 

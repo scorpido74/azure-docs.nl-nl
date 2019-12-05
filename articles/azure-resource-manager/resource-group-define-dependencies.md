@@ -2,25 +2,23 @@
 title: Implementatie volgorde voor resources instellen
 description: Hierin wordt beschreven hoe u een resource instelt als afhankelijk van een andere resource tijdens de implementatie om ervoor te zorgen dat de resources in de juiste volg orde worden geïmplementeerd.
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.openlocfilehash: 6b608111f2fe24a0b426e5697ceb07349f2d4693
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/03/2019
+ms.openlocfilehash: f5990f099e8b91a4a075d2950f88aa83d34eef4a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149723"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806453"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definieer de volg orde voor het implementeren van resources in Azure Resource Manager sjablonen
 
-Voor een bepaalde resource kunnen er andere resources zijn die moeten bestaan voordat de resource wordt geïmplementeerd. Een SQL-Server moet bijvoorbeeld bestaan voordat een SQL database kan worden geïmplementeerd. U definieert deze relatie door één resource als afhankelijk van de andere bron te markeren. U definieert een afhankelijkheid met het **dependsOn** -element of met behulp van de functie **Reference** . 
+Wanneer u een resource implementeert, moet u er mogelijk voor zorgen dat er andere resources bestaan voordat deze wordt geïmplementeerd. U hebt bijvoorbeeld een SQL-Server nodig voordat u een SQL database implementeert. U definieert deze relatie door één resource als afhankelijk van de andere bron te markeren. U definieert een afhankelijkheid met het **dependsOn** -element of met behulp van de functie **Reference** .
 
-Resource Manager evalueert de afhankelijkheden tussen resources en implementeert ze in de volgorde van afhankelijkheid. Als resources niet van elkaar afhankelijk zijn, worden deze door Resource Manager parallel geïmplementeerd. U hoeft alleen afhankelijkheden te definiëren voor resources die in dezelfde sjabloon zijn geïmplementeerd. 
-
-Zie [zelf studie: Azure Resource Manager sjablonen met afhankelijke resources maken](./resource-manager-tutorial-create-templates-with-dependent-resources.md)voor een zelf studie.
+Resource Manager evalueert de afhankelijkheden tussen resources en implementeert ze in de volgorde van afhankelijkheid. Als resources niet van elkaar afhankelijk zijn, worden deze door Resource Manager parallel geïmplementeerd. U hoeft alleen afhankelijkheden te definiëren voor resources die in dezelfde sjabloon zijn geïmplementeerd.
 
 ## <a name="dependson"></a>dependsOn
 
-Binnen uw sjabloon kunt u met het dependsOn-element één resource definiëren als afhankelijk van een of meer resources. De waarde kan een door komma's gescheiden lijst met resource namen zijn. 
+Binnen uw sjabloon kunt u met het dependsOn-element één resource definiëren als afhankelijk van een of meer resources. De waarde is een door komma's gescheiden lijst met resource namen. De lijst kan resources bevatten die [voorwaardelijk worden geïmplementeerd](conditional-resource-deployment.md). Wanneer een voorwaardelijke resource niet is geïmplementeerd, wordt deze automatisch door Azure Resource Manager verwijderd uit de vereiste afhankelijkheden.
 
 In het volgende voor beeld ziet u een schaalset voor virtuele machines die afhankelijk is van een load balancer, een virtueel netwerk en een lus waarmee meerdere opslag accounts worden gemaakt. Deze andere resources worden niet weer gegeven in het volgende voor beeld, maar ze moeten ergens anders in de sjabloon aanwezig zijn.
 
@@ -51,12 +49,13 @@ Bij het definiëren van afhankelijkheden kunt u de naam ruimte van de resource p
   "[resourceId('Microsoft.Network/loadBalancers', variables('loadBalancerName'))]",
   "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
 ]
-``` 
+```
 
-Terwijl u mogelijk bent gedependsOnd om relaties tussen uw resources toe te wijzen, is het belang rijk om te begrijpen waarom u dit doet. Als u bijvoorbeeld wilt documenteren hoe resources zijn gekoppeld, is dependsOn niet de juiste benadering. U kunt geen query uitvoeren op de resources die na de implementatie zijn gedefinieerd in het dependsOn-element. Door dependsOn te gebruiken, is het mogelijk van invloed op de implementatie tijd, omdat Resource Manager niet in twee parallelle bronnen met een afhankelijkheid wordt geïmplementeerd. 
+Terwijl u mogelijk bent gedependsOnd om relaties tussen uw resources toe te wijzen, is het belang rijk om te begrijpen waarom u dit doet. Als u bijvoorbeeld wilt documenteren hoe resources zijn gekoppeld, is dependsOn niet de juiste benadering. U kunt geen query uitvoeren op de resources die na de implementatie zijn gedefinieerd in het dependsOn-element. Door dependsOn te gebruiken, is het mogelijk van invloed op de implementatie tijd, omdat Resource Manager niet in twee parallelle bronnen met een afhankelijkheid wordt geïmplementeerd.
 
 ## <a name="child-resources"></a>Onderliggende resources
-Met de eigenschap resources kunt u onderliggende resources opgeven die zijn gerelateerd aan de resource die wordt gedefinieerd. Onderliggende resources kunnen alleen vijf niveaus diep worden gedefinieerd. Het is belang rijk te weten dat er geen impliciete implementatie afhankelijkheid tussen een onderliggende bron en de bovenliggende resource is gemaakt. Als u wilt dat de onderliggende resource wordt geïmplementeerd na de bovenliggende resource, moet u de afhankelijkheid expliciet aangeven met de eigenschap dependsOn. 
+
+Met de eigenschap resources kunt u onderliggende resources opgeven die zijn gerelateerd aan de resource die wordt gedefinieerd. Onderliggende resources kunnen alleen vijf niveaus diep worden gedefinieerd. Het is belang rijk te weten dat er geen impliciete implementatie afhankelijkheid tussen een onderliggende bron en de bovenliggende resource is gemaakt. Als u wilt dat de onderliggende resource wordt geïmplementeerd na de bovenliggende resource, moet u de afhankelijkheid expliciet aangeven met de eigenschap dependsOn.
 
 Elke bovenliggende resource accepteert alleen bepaalde resource typen als onderliggende resources. De geaccepteerde resource typen worden opgegeven in het [sjabloon schema](https://github.com/Azure/azure-resource-manager-schemas) van de bovenliggende resource. De naam van het onderliggende bron type bevat de naam van het bovenliggende bron type, zoals **micro soft. web/sites/config** en **micro soft. web/sites/extensies** , zijn zowel onderliggende resources van **micro soft. web/sites**.
 
@@ -101,6 +100,7 @@ In het volgende voor beeld ziet u een SQL-Server en SQL database. U ziet dat er 
 ```
 
 ## <a name="reference-and-list-functions"></a>Naslag informatie en functies
+
 Met de [functie referentie](resource-group-template-functions-resource.md#reference) kan een expressie de waarde ervan afleiden uit andere JSON-naam-en-waardeparen of runtime-resources. De [lijst * functies](resource-group-template-functions-resource.md#list) retour neren waarden voor een resource vanuit een lijst bewerking.  Verwijzings-en lijst expressies declareren dat de ene resource afhankelijk is van een andere, wanneer de bron waarnaar wordt verwezen, wordt geïmplementeerd in dezelfde sjabloon en waarnaar wordt verwezen met de naam (geen Resource-ID). Als u de resource-ID doorgeeft in de functies verwijzing of lijst, wordt er geen impliciete verwijzing gemaakt.
 
 De algemene indeling van de referentie functie is:

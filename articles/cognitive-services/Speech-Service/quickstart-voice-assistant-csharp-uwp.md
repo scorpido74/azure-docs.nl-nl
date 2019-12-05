@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 75ecbe8351e68b77a59b40709a2beb15d09b16df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504086"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816222"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>Snelstartgids: een spraak assistent maken met de spraak-SDK, UWP
 
@@ -31,7 +31,7 @@ In dit artikel ontwikkelt u een C# universeel Windows-platform-toepassing (UWP) 
 Voor deze snelstart zijn de volgende zaken vereist:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
-* Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com).
+* Een Azure-abonnementssleutel voor de Spraakservice. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com).
 * Een eerder gemaakte bot die is geconfigureerd met het [directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
   > [!NOTE]
@@ -117,7 +117,7 @@ Vervolgens voegt u de bron code achter toe, zodat de toepassing werkt zoals verw
 
 Voer de volgende stappen uit om de code-behind-bron toe te voegen:
 
-1. Open in **Solution Explorer**het bron bestand van de code-behind `MainPage.xaml.cs`. (Deze wordt gegroepeerd onder `MainPage.xaml`.)
+1. Open in **Solution Explorer**het bron bestand van de code-behind `MainPage.xaml.cs`. (Deze is gegroepeerd onder `MainPage.xaml`.)
 
 1. Vervang de inhoud van het bestand door het volgende code fragment:
 
@@ -289,10 +289,10 @@ Voer de volgende stappen uit om de code-behind-bron toe te voegen:
     }
     ```
 
-1. Voeg het volgende code fragment toe aan de methode hoofdtekst van `InitializeDialogServiceConnector`. Met deze code wordt de `DialogServiceConnector` gemaakt met uw abonnements gegevens.
+1. Voeg het volgende code fragment toe aan de methode hoofdtekst van `InitializeDialogServiceConnector`. Met deze code maakt u de `DialogServiceConnector` met uw abonnements gegevens.
 
     ```csharp
-    // Create a BotFrameworkConfig by providing a Speech Service subscription key
+    // Create a BotFrameworkConfig by providing a Speech service subscription key
     // the RecoLanguage property is optional (default en-US)
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
     const string region = "YourServiceRegion"; // Your subscription service region.
@@ -365,7 +365,7 @@ Voer de volgende stappen uit om de code-behind-bron toe te voegen:
     };
     ```
 
-1. Voeg het volgende code fragment toe aan de hoofd tekst van de methode `ListenButton_ButtonClicked` in de klasse `MainPage`. Met deze code wordt `DialogServiceConnector` ingesteld om te Luis teren, omdat u de configuratie al hebt ingesteld en de gebeurtenis-handlers hebt geregistreerd.
+1. Voeg het volgende code fragment toe aan de hoofd tekst van de methode `ListenButton_ButtonClicked` in de klasse `MainPage`. Met deze code wordt `DialogServiceConnector` geluisterd, omdat u de configuratie al hebt ingesteld en de gebeurtenis-handlers hebt geregistreerd.
 
     ```csharp
     if (connector == null)
@@ -422,7 +422,7 @@ U bent nu klaar om uw toepassing te bouwen en te testen.
 ## <a name="see-also"></a>Zie ook
 
 - [Over spraak assistenten](voice-assistants.md)
-- [Gratis een abonnements sleutel voor spraak Services aanschaffen](get-started.md)
+- [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
 - [Aangepaste tref woorden](speech-devices-sdk-create-kws.md)
 - [Directe lijn spraak op uw bot aansluiten](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [C#-voorbeelden op GitHub bekijken](https://aka.ms/csspeech/samples)

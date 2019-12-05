@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e24b7efb9f4af9f730ce79751e2fc5a9d210edbd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791702"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806963"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik
 
-V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van Azure Storage en bevatten alle functionaliteit van v1-en Blob Storage-accounts voor algemeen gebruik. V2-accounts voor algemeen gebruik worden aanbevolen voor de meeste opslag scenario's. Bij v2-accounts voor algemeen gebruik worden de laagste capaciteits prijzen per GB voor Azure Storage en de prijzen voor de toonaangevende trans acties geleverd. Algemeen-doeleinden v2-accounts ondersteunen de standaard toegangs lagen voor accounts van warme of koelen en lagen op blobniveau tussen warme, koude of archief.
+V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van Azure Storage en bevatten alle functionaliteit van v1-en Blob Storage-accounts voor algemeen gebruik. V2-accounts voor algemeen gebruik worden aanbevolen voor de meeste opslag scenario's. Bij v2-accounts voor algemeen gebruik worden de laagste capaciteits prijzen per GB voor Azure Storage en de prijzen voor de toonaangevende trans acties geleverd. V2-accounts voor algemeen gebruik ondersteunen de standaard toegangs lagen voor accounts van warme of koelen en lagen op BLOB-niveau tussen warme, koude of archief.
 
 Een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik vanuit uw opslag accounts voor algemeen gebruik v1 of blobs is eenvoudig. U kunt een upgrade uitvoeren met behulp van de Azure Portal, Power shell of Azure CLI.
 
@@ -40,7 +40,7 @@ Een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik vanuit uw
 
 Als u een algemeen v1-account wilt bijwerken naar een v2-account voor algemeen gebruik met Power shell, moet u Power shell eerst bijwerken om de nieuwste versie van de module **AZ. Storage** te gebruiken. Zie [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van PowerShell.
 
-Roep vervolgens de volgende opdracht aan om het account bij te werken, de naam van de resource groep, de naam van het opslag account en de gewenste account toegangs laag te vervangen.
+Roep vervolgens de volgende opdracht aan om het account bij te werken, de naam van de resource groep, de naam van het opslag account en de gewenste toegangs laag voor het account te vervangen.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
@@ -49,7 +49,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 Als u een algemeen v1-account wilt bijwerken naar een v2-account voor algemeen gebruik met behulp van Azure CLI, moet u eerst de nieuwste versie van Azure CLI installeren. Zie [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) voor meer informatie over het installeren van de CLI.
 
-Roep vervolgens de volgende opdracht aan om het account bij te werken, de naam van de resource groep, de naam van het opslag account en de gewenste account toegangs laag te vervangen.
+Roep vervolgens de volgende opdracht aan om het account bij te werken, de naam van de resource groep, de naam van het opslag account en de gewenste toegangs laag voor het account te vervangen.
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
@@ -59,11 +59,11 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Een toegangs laag voor BLOB-gegevens opgeven
 
-V2-accounts voor algemeen gebruik ondersteunen alle Azure Storage-services en gegevens objecten, maar toegangs lagen zijn alleen beschikbaar voor blok-blobs in Blob-opslag. Wanneer u een upgrade uitvoert naar een v2-opslag account voor algemeen gebruik, kunt u een toegangs laag voor uw BLOB-gegevens opgeven.
+V2-accounts voor algemeen gebruik ondersteunen alle Azure Storage-services en gegevens objecten, maar toegangs lagen zijn alleen beschikbaar voor blok-blobs in Blob Storage. Wanneer u een upgrade uitvoert naar een v2-opslag account voor algemeen gebruik, kunt u een standaard account toegangs niveau van warme of koud opgeven. Dit geeft aan dat de standaardlaag uw BLOB-gegevens worden geüpload alsof de afzonderlijke BLOB-Access tier-para meter niet is opgegeven.
 
-Met toegangs lagen kunt u de meest rendabele opslag kiezen op basis van uw verwachte gebruiks patronen. Blok-blobs kunnen worden opgeslagen in een warme, koele of archief laag. Zie [Azure Blob Storage: warme, cool en archief opslag lagen](../blobs/storage-blob-storage-tiers.md)voor meer informatie over toegangs lagen.
+Met Blob-toegangs lagen kunt u de meest rendabele opslag kiezen op basis van uw verwachte gebruiks patronen. Blok-blobs kunnen worden opgeslagen in een warme, koele of archief laag. Zie [Azure Blob Storage: warme, cool en archief opslag lagen](../blobs/storage-blob-storage-tiers.md)voor meer informatie over toegangs lagen.
 
-Er wordt standaard een nieuw opslag account gemaakt in de laag Hot Access en er wordt een upgrade uitgevoerd van een algemeen v1-opslag account naar de laag Hot Access. Als u de toegangs laag bekijkt die u voor uw gegevens na de upgrade wilt gebruiken, moet u rekening houden met uw scenario. Er zijn twee typische gebruikers scenario's voor het migreren naar een v2-account voor algemeen gebruik:
+Er wordt standaard een nieuw opslag account gemaakt in de laag Hot Access en een algemeen v1-opslag account kan worden bijgewerkt naar de categorie Hot of cool. Als er geen toegangs niveau voor een account is opgegeven bij een upgrade, wordt het standaard bijgewerkt naar dynamisch. Als u de toegangs laag bekijkt die u voor uw upgrade wilt gebruiken, moet u rekening houden met het huidige scenario voor het gebruik van gegevens. Er zijn twee typische gebruikers scenario's voor het migreren naar een v2-account voor algemeen gebruik:
 
 * U hebt een bestaand v1-opslag account voor algemeen gebruik en wilt een upgrade naar een v2-opslag account voor algemeen gebruik evalueren, met de juiste opslag toegangs laag voor BLOB-gegevens.
 * U hebt besloten om een v2-opslag account voor algemeen gebruik of al een te gebruiken en u wilt te evalueren of u de warme of cool Storage Access-laag moet gebruiken voor BLOB-gegevens.

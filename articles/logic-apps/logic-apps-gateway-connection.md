@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 5adb342b733563fd0b062dd263a4fdd83259d166
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792038"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815161"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevens bronnen vanuit Azure Logic Apps
 
@@ -70,7 +70,7 @@ Nadat u de gateway op een lokale computer hebt geïnstalleerd, maakt u de Azure-
 
 1. Voer in het zoekvak Azure Portal "on-premises gegevens gateway" in en selecteer **on-premises gegevens gateways**.
 
-   ![On-premises gegevens gateway zoeken](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
+   ![On-premises gegevens gateway zoeken](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
 1. Selecteer **toevoegen**onder **on-premises gegevens gateways**.
 
@@ -89,7 +89,7 @@ Nadat u de gateway op een lokale computer hebt geïnstalleerd, maakt u de Azure-
 
    Hier volgt een voor beeld waarin een gateway-installatie wordt weer gegeven die zich in dezelfde regio bevindt als de gateway bron en is gekoppeld aan hetzelfde Azure-account:
 
-   ![Details opgeven voor het maken van een gegevens gateway resource](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
+   ![Details opgeven voor het maken van een gegevens gateway resource](./media/logic-apps-gateway-connection/on-premises-data-gateway-create-connection.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -128,7 +128,7 @@ Als u de instellingen voor een gateway verbinding wilt bijwerken, kunt u de verb
 
 1. Als u alle API-verbindingen voor uw logische app wilt vinden, selecteert u in het menu van de logische app onder **ontwikkelingsprogram ma's**de optie **API-verbindingen**.
 
-   ![Selecteer API-verbindingen in het menu van de logische app.](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
+   ![Selecteer API-verbindingen in het menu van de logische app.](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
 1. Selecteer de gewenste gateway verbinding en selecteer vervolgens API- **verbinding bewerken**.
 
@@ -137,8 +137,8 @@ Als u de instellingen voor een gateway verbinding wilt bijwerken, kunt u de verb
 
 Om te zoeken naar alle API-verbindingen die zijn gekoppeld aan uw Azure-abonnement:
 
-* Ga in het hoofd menu van Azure naar **alle services** > **Web** > **API-verbindingen**.
-* Of Ga vanuit het hoofd menu van Azure naar **alle resources**. Stel het **type** filter in op **API-verbinding**.
+* Selecteer in het menu Azure Portal **alle services** > **Web** > **API-verbindingen**.
+* U kunt ook **alle resources**in het menu Azure Portal selecteren. Stel het **type** filter in op **API-verbinding**.
 
 <a name="change-delete-gateway-resource"></a>
 
@@ -146,13 +146,13 @@ Om te zoeken naar alle API-verbindingen die zijn gekoppeld aan uw Azure-abonneme
 
 Als u een andere gateway bron wilt maken, koppelt u de gateway-installatie aan een andere gateway bron of verwijdert u de gateway bron, kunt u de gateway bron verwijderen zonder dat dit van invloed is op de installatie van de gateway.
 
-1. Selecteer **alle resources**in het hoofd menu van Azure. Zoek en selecteer de bron van de gateway.
+1. Selecteer in het menu Azure Portal **alle resources**, of zoek **alle resources** op een wille keurige pagina en selecteer deze. Zoek en selecteer de bron van de gateway.
 
 1. Als dit nog niet is geselecteerd, selecteert u in het menu van de gateway resource de optie **on-premises gegevens gateway**. Selecteer **verwijderen**op de werk balk van de gateway resource.
 
    Bijvoorbeeld:
 
-   ![Gateway resource verwijderen in azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
+   ![Gateway resource verwijderen in azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 
 <a name="faq"></a>
 

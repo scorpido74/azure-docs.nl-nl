@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
-ms.openlocfilehash: 3beda852b3e711ee969b7f80f8f326285cc2cad6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558890"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815413"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Problemen met de Speech-SDK oplossen
 
 In dit artikel vindt u informatie over het oplossen van problemen die kunnen optreden wanneer u de Speech SDK gebruikt.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Fout: De WebSocket-upgrade is mislukt met een verificatie fout (403)
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Fout: De WebSocket-Upgrade is mislukt met een verificatiefout (403)
 
 Mogelijk hebt u het juiste eindpunt voor uw regio of de service. Controleer de URI om te controleren of dat deze juist is.
 
 Bovendien kan er een probleem met uw abonnementssleutel of autorisatie token. Zie de volgende sectie voor meer informatie.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Fout: HTTP 403 verboden of HTTP 401 niet toegestaan
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Fout: HTTP 403 verboden of HTTP 401 Unauthorized
 
 Deze fout wordt vaak veroorzaakt door verificatieproblemen met. Verbindingsaanvragen zonder een geldig `Ocp-Apim-Subscription-Key` of `Authorization` header met de status 403 of 401 worden afgewezen.
 
@@ -107,11 +107,11 @@ Als u een geldig autorisatie token hebt opgegeven, retourneert de opdracht de tr
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Fout: HTTP 400-ongeldige aanvraag
+## <a name="error-http-400-bad-request"></a>Fout: HTTP 400-Ongeldige aanvraag
 
 Deze fout treedt meestal op wanneer de aanvraagtekst ongeldige audiogegevens bevat. Alleen WAV-indeling wordt ondersteund. Controleer ook of de aanvraagheaders om te controleren of u de juiste waarden voor opgeven `Content-Type` en `Content-Length`.
 
-## <a name="error-http-408-request-timeout"></a>Fout: Time-out HTTP 408-aanvraag
+## <a name="error-http-408-request-timeout"></a>Fout: HTTP 408 time-out van aanvraag
 
 De meest waarschijnlijke fout treedt op omdat er geen audiogegevens worden verzonden naar de service. Deze fout kan ook worden veroorzaakt door netwerkproblemen.
 

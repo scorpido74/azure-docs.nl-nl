@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 925d21d22806ab2854be29b9648aab78138741ec
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 741217cde5068468a7063a64361df8425346b590
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422619"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815454"
 ---
 # <a name="support-and-help-options"></a>Ondersteunings-en Help-opties
 
-Bent u gewoon begonnen met het verkennen van de functionaliteit van de spraak Services? Implementeert u een nieuwe functie voor uw toepassing? Hier vindt u suggesties over waar u hulp kunt krijgen als ontwikkel aars.
+Gaat u gewoon door met het verkennen van de functionaliteit van de speech-service? Implementeert u een nieuwe functie voor uw toepassing? Hier vindt u suggesties over waar u hulp kunt krijgen als ontwikkel aars.
 
 > [!div class="checklist"]
-> * Blijf op de hoogte van nieuwe ontwikkelingen in *Azure Cognitive Services*of zoek het meest recente nieuws met betrekking tot de *Speech Service*.
+> * Blijf op de hoogte van nieuwe ontwikkelingen in *Azure Cognitive Services*of zoek het meest recente nieuws met betrekking tot de *spraak service*.
 > * Release opmerkingen bevatten informatie voor alle releases.
 > * Zoek naar of uw probleem is besproken door de community, of dat er al een bestaande documentatie is voor de functie die u wilt implementeren.
 > * Als u geen bevredigend antwoord kunt vinden, kunt u een vraag stellen op *stack overflow*.
@@ -31,13 +31,13 @@ Bent u gewoon begonnen met het verkennen van de functionaliteit van de spraak Se
 
 ## <a name="stay-informed"></a>Blijf op de hoogte
 
-Nieuws over Cognitive Services wordt verzameld in het [Cognitive Services blog](https://azure.microsoft.com/blog/topics/cognitive-services/). Voor de meest recente informatie over spraak Services kunt u het [blog voor spraak Services](https://azure.microsoft.com/blog/tag/speech-service/)volgen.
+Nieuws over Cognitive Services wordt verzameld in het [Cognitive Services blog](https://azure.microsoft.com/blog/topics/cognitive-services/). Voor de meest recente informatie over de spraak service kunt u de blog van de [spraak service](https://azure.microsoft.com/blog/tag/speech-service/)volgen.
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
 De [release opmerkingen](https://aka.ms/csspeech/whatsnew) worden bijgewerkt zodra er een nieuwe versie beschikbaar is. De opmerkingen bevatten informatie over nieuwe functies, verbeteringen en oplossingen voor problemen.
 
-## <a name="search"></a>Zoeken
+## <a name="search"></a>Search
 
 U vindt het antwoord dat u nodig hebt in de documentatie, de voor beelden of antwoorden op [stack overflow](https://www.stackoverflow.com) vragen of in de voor beelden.
 
@@ -55,7 +55,7 @@ Waar *{uw zoek termen}* de zoek woorden zijn.
 
 Azure-klanten kunnen ondersteunings aanvragen maken en beheren in de Azure Portal.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure-portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure Portal voor de Verenigde Staten overheid](https://portal.azure.us)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Een vraag stellen aan Stack Overflow

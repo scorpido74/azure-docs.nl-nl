@@ -18,16 +18,16 @@ ms.author: abpati
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 148b9a4a890b22db63f03c673f5d779547a589e1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0aada339ab68eeb7f29eeb815611a8e434e6a998
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485027"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803645"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Ondersteuning voor Active Directory Federation Services in MSAL voor python
 
-Met Active Directory Federation Services (AD FS) in Windows Server kunt u OpenID Connect Connect en OAuth 2,0-verificatie en-autorisatie toevoegen aan uw apps met behulp van de micro soft Authentication Library (MSAL) voor python. Met de MSAL voor python-bibliotheek kan uw app gebruikers rechtstreeks verifiëren tegen AD FS. Zie [AD FS scenario's voor ontwikkel aars](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)voor meer informatie over scenario's.
+Met Active Directory Federation Services (AD FS) in Windows Server kunt u OpenID Connect Connect en OAuth 2,0-verificatie en-autorisatie toevoegen aan uw apps met behulp van de micro soft Authentication Library (MSAL) voor python. Met de MSAL voor python-bibliotheek kan uw app gebruikers rechtstreeks verifiëren tegen AD FS. Zie [AD FS scenario's voor ontwikkel aars](/windows-server/identity/ad-fs/ad-fs-development)voor meer informatie over scenario's.
 
 Er zijn meestal twee manieren om te verifiëren met AD FS:
 

@@ -1,7 +1,7 @@
 ---
 title: Gegevens voorbereiden voor de aangepaste Voice-Speech-Service
 titleSuffix: Azure Cognitive Services
-description: Maak een aangepaste stem voor uw merk met spraak service. U geeft studio-opnames en de bijbehorende scripts, de service genereert een uniek spraak model dat is afgestemd op de opgenomen spraak. Gebruik deze stem om spraak te gebruiken in uw producten, hulpprogram ma's en toepassingen.
+description: Maak een aangepaste stem voor uw merk met de spraak service. U geeft studio-opnames en de bijbehorende scripts, de service genereert een uniek spraak model dat is afgestemd op de opgenomen spraak. Gebruik deze stem om spraak te gebruiken in uw producten, hulpprogram ma's en toepassingen.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: a954118cd0697213674bb9981f0d94100488fb38
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464501"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805974"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Gegevens voorbereiden voor het maken van een aangepaste spraak
 
-Wanneer u klaar bent voor het maken van een aangepaste tekst-naar-spraak-stem voor uw toepassing, is de eerste stap het verzamelen van audio-opnames en bijbehorende scripts om te beginnen met het trainen van het spraak model. De service gebruikt deze gegevens om een unieke stem te maken die is afgestemd op de stem in de opnamen. Nadat u de stem hebt getraind, kunt u de spraak functie voor uw toepassingen starten.
+Wanneer u klaar bent voor het maken van een aangepaste tekst-naar-spraak-stem voor uw toepassing, is de eerste stap het verzamelen van audio-opnames en bijbehorende scripts om te beginnen met het trainen van het spraak model. De speech-service gebruikt deze gegevens om een unieke stem te maken die is afgestemd op de stem in de opnamen. Nadat u de stem hebt getraind, kunt u de spraak functie voor uw toepassingen starten.
 
 U kunt beginnen met een kleine hoeveelheid gegevens om een proef concept te maken. Hoe meer gegevens u ook opgeeft, hoe natuurlijk uw aangepaste stem klinkt. Voordat u uw eigen stem model voor tekst naar spraak kunt trainen, hebt u audio-opnames en de bijbehorende tekst transcripties nodig. Op deze pagina controleren we gegevens typen, hoe ze worden gebruikt en hoe u deze kunt beheren.
 
@@ -60,7 +60,7 @@ Volg deze richt lijnen bij het voorbereiden van audio.
 | Eigenschap | Waarde |
 | -------- | ----- |
 | Bestands indeling | RIFF (. wav), gegroepeerd in een zip-bestand |
-| Sampling frequentie | Ten minste 16.000 Hz |
+| Samplefrequentie | Ten minste 16.000 Hz |
 | Voorbeeld indeling | PCM, 16-bits |
 | Bestandsnaam | Numeric, met de extensie. WAV. Er zijn geen dubbele bestands namen toegestaan. |
 | Audio lengte | Korter dan 15 seconden |
@@ -76,7 +76,7 @@ Het transcriptie-bestand is een bestand met tekst zonder opmaak. Gebruik deze ri
 
 | Eigenschap | Waarde |
 | -------- | ----- |
-| Bestands indeling | Tekst zonder opmaak (. txt) |
+| Bestands indeling | Tekst zonder opmaak (.txt) |
 | Coderings indeling | ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE of UTF-16-to. Voor zh-CN, ANSI/ASCII en UTF-8-code ringen worden niet ondersteund. |
 | Aantal utterances per regel | **Eén** -elke regel van het transcriptie-bestand moet de naam bevatten van een van de audio bestanden, gevolgd door de bijbehorende transcriptie. De bestandsnaam en transcriptie moeten worden gescheiden door een tab (\t). |
 | Maximale bestandsgrootte | 2048 MB |
@@ -120,7 +120,7 @@ Transcripten moeten worden voor bereid op de specificaties die in deze tabel wor
 
 | Eigenschap | Waarde |
 | -------- | ----- |
-| Bestands indeling | Tekst zonder opmaak (. txt), gegroepeerd in een. zip |
+| Bestands indeling | Tekst zonder opmaak (.txt) gegroepeerd in een ZIP |
 | Bestandsnaam | Dezelfde naam gebruiken als het overeenkomende audio bestand |
 | Coderings indeling | Alleen UTF-8-stuk lijst |
 | Aantal utterances per regel | Geen limiet |

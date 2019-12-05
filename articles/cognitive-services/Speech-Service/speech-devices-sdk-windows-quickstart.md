@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: de SDK voor spraak apparaten uitvoeren op Windows'
+title: 'Snelstartgids: de speech apparaten SDK uitvoeren op de Windows Speech-Service'
 titleSuffix: Azure Cognitive Services
 description: Vereisten en instructies om aan de slag te gaan met een Windows speech-apparaat-SDK.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: e4da99d895ba7a6d9ce537ab513ce4cc248aff7a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e3764dbfa7de52bf210a1e6cc8bd240d64d64aeb
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111667"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815555"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Snelstartgids: de voor beeld-app voor de speech-apparaten SDK uitvoeren in Windows
 
@@ -23,7 +23,7 @@ In deze Quick Start leert u hoe u de speech apparaten SDK voor Windows kunt gebr
 
 De toepassing is gebouwd met het Speech SDK-pakket en de eclips Java IDE (v4) op 64-bits Windows. De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
 
-Voor deze hand leiding is een [Azure Cognitive Services](get-started.md) -account vereist met een speech Services-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
+Deze hand leiding vereist een [Azure Cognitive Services](get-started.md) -account met een speech service-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
 
 De bron code voor de [voorbeeld toepassing](https://aka.ms/sdsdk-download-JRE) is opgenomen in de speech-apparaten SDK. Het is ook [beschikbaar op GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -57,11 +57,11 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
 1. Maak in de menu balk voor eclips een nieuw project door **bestand** > **Nieuw** > **Java-project**te kiezen. Als deze niet beschikbaar is, kiest u **project** en vervolgens **Java project**.
 
-1. De wizard **nieuw Java-project** wordt gestart. **Blader** naar de locatie van het voorbeeld project. Selecteer **Voltooien**.
+1. De wizard **nieuw Java-project** wordt gestart. **Blader** naar de locatie van het voorbeeld project. Selecteer **Finish**.
 
    ![Schermopname van de wizard Nieuw Java-project](media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. Klik in de **pakket Verkenner**met de rechter muisknop op uw project. Kies in het contextmenu **Configureren** > **Naar Maven-project converteren**. Selecteer **Voltooien**.
+1. Klik in de **pakket Verkenner**met de rechter muisknop op uw project. Kies in het contextmenu **Configureren** > **Naar Maven-project converteren**. Selecteer **Finish**.
 
    ![Schermopname van Package explorer](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 

@@ -1,23 +1,23 @@
 ---
 title: Maxi maal beschik bare Spark streaming-taken in GARENs-Azure HDInsight
 description: Apache Spark streaming instellen voor een scenario met een hoge Beschik baarheid in azure HDInsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/26/2018
-ms.openlocfilehash: 3e48f220035c56d34d6ca5a7347e9a4ee100e1f1
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.date: 11/29/2019
+ms.openlocfilehash: ac51b77e1ffc2b476b0a73dac9b6917552a86ce4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241239"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807150"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Apache Spark streaming-taken met hoge Beschik baarheid maken met GARENs
 
-[Apache Spark](https://spark.apache.org/) Met streaming kunt u schaal bare en fout tolerante toepassingen met een hoge door Voer implementeren voor de verwerking van gegevens stromen. U kunt Spark streaming-toepassingen op een HDInsight Spark-cluster verbinden met verschillende gegevens bronnen, zoals Azure Event Hubs, Azure IoT Hub, [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZEROMQ](http://zeromq.org/), onbewerkte TCP-sockets of door de [ Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) -bestands systeem voor wijzigingen. Spark streaming ondersteunt fout tolerantie met de garantie dat een bepaalde gebeurtenis precies één keer wordt verwerkt, zelfs als er een storing in een knoop punt optreedt.
+[Apache Spark](https://spark.apache.org/) Met streaming kunt u schaal bare en fout tolerante toepassingen met een hoge door Voer implementeren voor de verwerking van gegevens stromen. U kunt Spark streaming-toepassingen op een HDInsight Spark-cluster verbinden met verschillende soorten gegevens bronnen, zoals Azure Event Hubs, Azure IoT Hub, [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZEROMQ](http://zeromq.org/), onbewerkte TCP-SOCKETs of door het [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) -bestands systeem te controleren op wijzigingen. Spark streaming ondersteunt fout tolerantie met de garantie dat een bepaalde gebeurtenis precies één keer wordt verwerkt, zelfs als er een storing in een knoop punt optreedt.
 
 Met Spark streaming kunt u langlopende taken maken om trans formaties toe te passen op de gegevens en vervolgens de resultaten te pushen naar bestands systemen, data bases, Dash boards en de-console. Met Spark streaming worden micro batches van gegevens verwerkt, door eerst een batch gebeurtenissen te verzamelen gedurende een opgegeven tijds interval. Vervolgens wordt deze batch verzonden op voor verwerking en uitvoer. Tijds intervallen voor batch worden doorgaans gedefinieerd in fracties van een seconde.
 
@@ -25,7 +25,7 @@ Met Spark streaming kunt u langlopende taken maken om trans formaties toe te pas
 
 ## <a name="dstreams"></a>DStreams
 
-Spark streaming vertegenwoordigt een doorlopende stream van gegevens met behulp van een *onderscheiden-stroom* (DStream). Deze DStream kan worden gemaakt op basis van invoer bronnen zoals Event Hubs of Kafka, of door trans formaties toe te passen op een andere DStream. Wanneer een gebeurtenis arriveert bij uw Spark-streaming-toepassing, wordt de gebeurtenis op een betrouw bare manier opgeslagen. Dat wil zeggen dat de gebeurtenis gegevens worden gerepliceerd, zodat meerdere knoop punten er een kopie van hebben. Dit zorgt ervoor dat de storing van een enkel knoop punt leidt tot verlies van uw gebeurtenis.
+Spark streaming vertegenwoordigt een doorlopende stream van gegevens met behulp van een *onderscheiden-stroom* (DStream). Deze DStream kan worden gemaakt op basis van invoer bronnen zoals Event Hubs of Kafka, of door trans formaties toe te passen op een andere DStream. Wanneer een gebeurtenis arriveert bij uw Spark-streaming-toepassing, wordt de gebeurtenis op een betrouw bare manier opgeslagen. Dat wil zeggen dat de gebeurtenis gegevens worden gerepliceerd, zodat meerdere knoop punten er een kopie van hebben. Dit zorgt ervoor dat de storing van een enkel knoop punt niet leidt tot verlies van uw gebeurtenis.
 
 De Spark-kern maakt gebruik van *robuuste gedistribueerde gegevens sets* (rdd's). Rdd's distribueert gegevens over meerdere knoop punten in het cluster, waarbij elk knoop punt de gegevens in het algemeen volledig in het geheugen onderhoudt voor de beste prestaties. Elke RDD vertegenwoordigt gebeurtenissen die worden verzameld over een batch-interval. Wanneer de batch-interval is verstreken, produceert Spark streaming een nieuwe RDD met alle gegevens in dat interval. Deze doorlopende set Rdd's wordt verzameld in een DStream. Een Spark-streaming-toepassing verwerkt de gegevens die zijn opgeslagen in de RDD van elke batch.
 
@@ -33,29 +33,29 @@ De Spark-kern maakt gebruik van *robuuste gedistribueerde gegevens sets* (rdd's)
 
 ## <a name="spark-structured-streaming-jobs"></a>Taken in Spark Structured streamen
 
-Spark Structured streaming werd geïntroduceerd in Spark 2,0 als analyse-engine voor gebruik in gestructureerde gegevens van streaming. In Spark Structured streaming wordt gebruikgemaakt van de SparkSQL-engine-Api's. Net als bij Spark-streaming worden de berekeningen door Spark Structured streaming uitgevoerd via continu-micro-batches van gegevens. Met Spark Structured streaming wordt een gegevens stroom aangeduid als een invoer tabel met onbeperkte rijen. Dat wil zeggen dat de invoer tabel blijft groeien naarmate er nieuwe gegevens binnenkomen. Deze invoer tabel wordt continu verwerkt door een langlopende query en de resultaten worden naar een uitvoer tabel geschreven.
+Spark Structured streaming werd geïntroduceerd in Spark 2,0 als analyse-engine voor gebruik in gestructureerde gegevens van streaming. In Spark Structured streaming wordt gebruikgemaakt van de SparkSQL-engine-Api's. Net als bij Spark-streaming worden de berekeningen door Spark Structured streaming uitgevoerd via continu micro-batches van gegevens. Met Spark Structured streaming wordt een gegevens stroom aangeduid als een invoer tabel met onbeperkte rijen. Dat wil zeggen dat de invoer tabel blijft groeien naarmate er nieuwe gegevens binnenkomen. Deze invoer tabel wordt continu verwerkt door een langlopende query en de resultaten worden naar een uitvoer tabel geschreven.
 
 ![Spark Structured streaming](./media/apache-spark-streaming-high-availability/structured-streaming.png)
 
-In structured streaming worden gegevens in het systeem bezorgd en onmiddellijk opgenomen in de invoer tabel. U schrijft query's waarmee bewerkingen worden uitgevoerd op basis van deze invoer tabel. De query uitvoer levert een andere tabel, de tabel met resultaten. De resultaten tabel bevat de resultaten van de query waaruit u gegevens tekent om deze te verzenden naar een externe gegevens opslag, zoals een relationele data base. Met het *trigger interval* wordt de timing ingesteld voor wanneer gegevens worden verwerkt uit de invoer tabel. Gestructureerde streaming verwerkt de gegevens standaard zodra ze binnenkomen. U kunt echter ook de trigger zo configureren dat deze wordt uitgevoerd op een langer interval, zodat de streaminggegevens worden verwerkt in op tijd gebaseerde batches. De gegevens in de tabel met resultaten kunnen worden vernieuwd elke keer dat er nieuwe gegevens zijn, zodat deze alle uitvoer gegevens bevat, omdat de streaming-query is gestart (*volledige modus*), of alleen alleen de gegevens die nieuw zijn sinds de laatste keer dat de query is uitgevoerd. ssed (*toevoeg modus*).
+In structured streaming worden gegevens in het systeem bezorgd en onmiddellijk opgenomen in de invoer tabel. U schrijft query's waarmee bewerkingen worden uitgevoerd op basis van deze invoer tabel. De query uitvoer levert een andere tabel, de tabel met resultaten. De resultaten tabel bevat de resultaten van de query waaruit u gegevens tekent om deze te verzenden naar een externe gegevens opslag, zoals een relationele data base. Met het *trigger interval* wordt de timing ingesteld voor wanneer gegevens worden verwerkt uit de invoer tabel. Gestructureerde streaming verwerkt de gegevens standaard zodra ze binnenkomen. U kunt echter ook de trigger zo configureren dat deze wordt uitgevoerd op een langer interval, zodat de streaminggegevens worden verwerkt in op tijd gebaseerde batches. De gegevens in de tabel met resultaten kunnen worden vernieuwd telkens wanneer er nieuwe gegevens zijn, zodat deze alle uitvoer gegevens bevat, omdat de streaming-query is gestart (*volledige modus*), of alleen de gegevens bevat die nieuw zijn sinds de laatste keer dat de query is verwerkt (*toevoeg modus*).
 
 ## <a name="create-fault-tolerant-spark-streaming-jobs"></a>Fout tolerante Spark-streaming-taken maken
 
 Als u een Maxi maal beschik bare omgeving voor uw Spark-streaming-taken wilt maken, begint u met het coderen van uw afzonderlijke taken voor herstel in het geval van een storing. Dergelijke taken die zichzelf herstellen, zijn fout tolerant.
 
-Rdd's hebben verschillende eigenschappen die Maxi maal beschik bare en fout tolerante Spark-streaming taken ondersteunen:
+Rdd's hebben verschillende eigenschappen die ondersteuning bieden voor Maxi maal beschik bare en fout tolerante Spark-streaming taken:
 
 * Batches van invoer gegevens die zijn opgeslagen in Rdd's als een DStream worden automatisch gerepliceerd in het geheugen voor fout tolerantie.
-* Gegevens die verloren zijn gegaan vanwege een fout in de werk nemer, kunnen worden herberekend op basis van gerepliceerde invoer gegevens op verschillende werk rollen, zolang deze werk knooppunten beschikbaar zijn.
+* Gegevens die verloren zijn gegaan vanwege een fout in de werk nemers, kunnen worden herberekend op basis van gerepliceerde invoer gegevens op verschillende werk rollen, zolang deze werk knooppunten beschikbaar zijn.
 * Snel fout herstel kan binnen één seconde optreden, omdat het herstel van fouten/stragglers plaatsvindt via de berekening in het geheugen.
 
 ### <a name="exactly-once-semantics-with-spark-streaming"></a>Precies eenmaal semantiek met Spark streaming
 
-Als u een toepassing wilt maken die elke gebeurtenis eenmaal verwerkt (en slechts één keer), overweeg dan hoe alle systeem punten van de fout opnieuw moeten worden opgestart na een probleem en hoe u gegevens verlies kunt voor komen. Als er sprake is van een nauw keurige semantiek, moeten er op geen enkele wijze gegevens verloren gaan en kan de bericht verwerking opnieuw worden gestart, ongeacht waar de fout optreedt. Zie [Spark-streaming-taken maken met precies één keer per gebeurtenis verwerking](apache-spark-streaming-exactly-once.md).
+Als u een toepassing wilt maken die elke gebeurtenis eenmaal verwerkt (en slechts één keer), overweeg dan hoe alle systeem punten van de fout opnieuw moeten worden opgestart na een probleem en hoe u gegevens verlies kunt voor komen. Er is precies één keer vereist dat er op geen enkel moment gegevens verloren zijn gegaan en dat de bericht verwerking opnieuw kan worden gestart, ongeacht waar de fout optreedt. Zie [Spark-streaming-taken maken met precies één keer per gebeurtenis verwerking](apache-spark-streaming-exactly-once.md).
 
 ## <a name="spark-streaming-and-apache-hadoop-yarn"></a>Spark-streaming en Apache Hadoop GARENs
 
-In HDInsight wordt het cluster werk gecoördineerd door *nog een resource-onderhandelaar* (garens). Het ontwerpen van hoge Beschik baarheid voor Spark streaming omvat technieken voor Spark-streaming en voor garen onderdelen.  Hieronder ziet u een voor beeld van een configuratie met GARENs. 
+In HDInsight wordt het cluster werk gecoördineerd door *nog een resource-onderhandelaar* (garens). Het ontwerpen van hoge Beschik baarheid voor Spark streaming omvat technieken voor Spark-streaming en voor garen onderdelen.  Hieronder ziet u een voor beeld van een configuratie met GARENs.
 
 ![GAREN architectuur](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
 
@@ -65,7 +65,7 @@ In de volgende secties worden ontwerp overwegingen voor deze configuratie beschr
 
 Als u een garen configuratie voor hoge Beschik baarheid wilt maken, moet u een mogelijke uitvoerder of een probleem met een stuur programma plannen. Sommige Spark-streaming-taken omvatten ook vereisten voor gegevens garantie waarvoor extra configuratie en installatie nodig is. Een streaming-toepassing kan bijvoorbeeld een zakelijke vereiste hebben voor een garantie van nul gegevens verlies ondanks een fout in het hosting streaming-systeem of het HDInsight-cluster.
 
-Als een uitvoerder mislukt, worden de taken en ontvangers automatisch opnieuw gestart door Spark, zodat er geen configuratie wijziging nodig is.
+Als een uitvoerder mislukt, worden de bijbehorende taken en ontvangers automatisch opnieuw gestart door Spark, zodat er geen configuratie wijziging nodig is.
 
 Als een **stuur programma** echter niet kan worden uitgevoerd, mislukken alle bijbehorende uitvoerder en gaan alle ontvangen blokken en reken resultaten verloren. Als u de fout wilt herstellen na een stuurprogrammafout, gebruikt u *DStream-controle punten* zoals beschreven in [Spark-streaming-taken maken met precies één keer per gebeurtenis verwerking](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers). Met DStream controlepunten wordt regel matig de *directed acyclic Graph* (dag) van DStreams opgeslagen op fout tolerante opslag, zoals Azure Storage.  Met controle punten kan met Spark Structured streaming het mislukte stuur programma opnieuw worden gestart door de controlepunt gegevens.  Met dit stuur programma opnieuw opstarten worden nieuwe uitvoerders gestart en worden ontvangers ook opnieuw opgestart.
 
@@ -93,7 +93,7 @@ Stuur Programma's herstellen met DStream controle punt:
 Als u wilt samenvatten, met behulp van controle punten + WAL + reliable receivers, kunt u ' ten minste eenmaal ' gegevens herstel leveren:
 
 * Slechts eenmaal, zolang de ontvangen gegevens niet verloren zijn gegaan en de uitvoer idempotent of transactioneel zijn.
-* Slechts eenmaal, met de nieuwe Kafka direct-benadering waarbij Kafka als gerepliceerd logboek wordt gebruikt in plaats van ontvangers of WALs te gebruiken.
+* Slechts eenmaal, met de nieuwe Kafka direct-benadering, waarbij Kafka als gerepliceerd logboek wordt gebruikt in plaats van ontvangers of WALs te gebruiken.
 
 ### <a name="typical-concerns-for-high-availability"></a>Typische problemen met hoge Beschik baarheid
 
@@ -106,7 +106,7 @@ Als u wilt samenvatten, met behulp van controle punten + WAL + reliable receiver
     spark.yarn.am.attemptFailuresValidityInterval=1h
     ```
 
-* Spark en de gebruikers interface van Spark-streaming hebben een configureerbaar metrisch systeem. U kunt ook extra bibliotheken gebruiken, zoals grafiet/Grafana, om de metrische gegevens van het dash board te downloaden, zoals ' num records verwerkte ', ' geheugen/GC-gebruik op Stuur & programma ', ' totale vertraging ', ' gebruik van het cluster ' enzovoort. In structured streaming versie 2,1 of hoger kunt u `StreamingQueryListener` gebruiken om extra metrische gegevens te verzamelen.
+* Spark en de gebruikers interface van Spark-streaming hebben een configureerbaar metrisch systeem. U kunt ook extra bibliotheken gebruiken, zoals grafiet/Grafana, om de metrische gegevens van het dash board te downloaden, zoals ' num records verwerkte ', ' geheugen/GC-gebruik op Stuur & programma ', ' totale vertraging ', ' gebruik van het cluster ', enzovoort. In structured streaming versie 2,1 of hoger kunt u `StreamingQueryListener` gebruiken om extra metrische gegevens te verzamelen.
 
 * U moet langlopende taken segmenteren.  Wanneer een Spark-streaming-toepassing wordt ingediend bij het cluster, moet de GARENs wachtrij waarin de taak wordt uitgevoerd, worden gedefinieerd. U kunt een [capaciteits planner voor garens](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) gebruiken om langlopende taken te verzenden naar afzonderlijke wacht rijen.
 
@@ -120,7 +120,7 @@ Als u wilt samenvatten, met behulp van controle punten + WAL + reliable receiver
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht van Apache Spark streaming](apache-spark-streaming-overview.md)
-* [Apache Spark streaming-taken maken met precies één keer per gebeurtenis verwerking](apache-spark-streaming-exactly-once.md)
-* [Langlopende Apache Spark streaming-taken op GARENs](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
+* [Apache Spark streaming-taken maken met precies eenmaal per gebeurtenis verwerking](apache-spark-streaming-exactly-once.md)
+* [Langlopende Apache Spark streaming-taken op GARENs](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/)
 * [Structured streaming: fout tolerante semantiek](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
 * [Onderscheiden streams: een fout tolerant model voor schaal bare stroom verwerking](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

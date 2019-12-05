@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 85022d52c9513e53da31cc3c962f3a54dd538371
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075709"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815482"
 ---
 # <a name="what-is-text-to-speech"></a>Wat is tekst-naar-spraak?
 
-Tekst-naar-spraak van Azure speech Services is een service waarmee u uw toepassingen, hulpprogram ma's of apparaten tekst kunt converteren naar natuurlijke menselijke-achtige, gesynthesizerde spraak. Kies uit standaard-en Neural stemmen of maak uw eigen aangepaste spraak die uniek is voor uw product of merk. 75 + standaard stemmen zijn verkrijgbaar in meer dan 45 talen en land instellingen en vijf Neural stemmen zijn beschikbaar in vier talen en land instellingen. Zie [ondersteunde talen](language-support.md#text-to-speech)voor een volledige lijst.
+Tekst-naar-spraak van de speech-service zorgt ervoor dat uw toepassingen, hulpprogram ma's of apparaten tekst kunnen omzetten in natuurlijke menselijke-achtige gesynthesizerde spraak. Kies uit standaard-en Neural stemmen of maak uw eigen aangepaste spraak die uniek is voor uw product of merk. 75 + standaard stemmen zijn verkrijgbaar in meer dan 45 talen en land instellingen en vijf Neural stemmen zijn beschikbaar in vier talen en land instellingen. Zie [ondersteunde talen](language-support.md#text-to-speech)voor een volledige lijst.
 
 Met de tekst-naar-spraak-technologie kunnen makers van inhoud op verschillende manieren communiceren met hun gebruikers. Tekst-naar-spraak kan de toegankelijkheid verbeteren door gebruikers de mogelijkheid te bieden om te communiceren met inhoud audibly. Of de gebruiker een visuele waardevermindering, een leer bare handicap of navigatie-informatie vereist tijdens het besturings element, tekst-naar-spraak, een bestaande ervaring kan verbeteren. Tekst-naar-spraak is ook een waardevolle invoeg toepassing voor spraak bots en spraak assistenten.
 
@@ -31,7 +31,7 @@ Standaard stemmen worden gemaakt met behulp van statistische parametrische synth
 
 ### <a name="neural-voices"></a>Neural stemmen
 
-Neural stemmen gebruiken diepe Neural-netwerken om de limieten van traditionele tekst-naar-spraak-systemen te verruimen in het vergelijken van de patronen van stress en intonation in gesp roken taal en bij het samen werken aan de spraak eenheden in een computer spraak. Standaard tekst-naar-spraak onderbreekt prosody in afzonderlijke linguïstische analyse en akoestische Voorspellings stappen die worden geregeld door onafhankelijke modellen, wat kan leiden tot muffled-spraak synthese. Onze Neural-functie biedt prosody voor spellingen en spraak synthese, wat leidt tot een meer vloeistof-en natuurlijk-geluids spraak.
+Neural stemmen gebruiken diepe Neural-netwerken om de limieten van traditionele tekst-naar-spraak-systemen te verruimen in het vergelijken van de patronen van stress en intonation in gesp roken taal en bij het samen werken aan de spraak eenheden in een computer spraak. Standaard tekst-naar-spraak onderbreekt prosody in afzonderlijke linguïstische analyse en akoestische Voorspellings stappen die worden geregeld door onafhankelijke modellen, wat kan leiden tot muffled-spraak synthese. Met onze neurale mogelijkheid wordt de voorspelling van de prosodie en de stemsynthese tegelijkertijd uitgevoerd. Dit leidt tot een vloeiender, natuurlijker klinkende stem.
 
 Neural stemmen kunnen worden gebruikt om interacties te maken met chat bots uitbreiden en spraak assistenten die natuurlijk en aantrekkelijker zijn, en om digitale teksten, zoals e-books, te converteren naar Audiobooks en in-car navigatie systemen te verbeteren. Met het menselijke net zoals natuurlijke prosody en heldere afbakening van woorden, verlaagt Neural stemmen veel luister intensief wanneer u met AI-systemen communiceert.
 
@@ -84,7 +84,7 @@ We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit t
 
 ### <a name="sdk-quickstarts"></a>SDK-Quick starts
 
-| Quick Start (SDK) | Platform | API-naslaginformatie |
+| Quick Start (SDK) | Platform | API-referentie |
 | ---------------- | -------- | ------------- |
 | [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | [C#.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Door](https://aka.ms/csspeech/csharpref) |
@@ -102,7 +102,7 @@ We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit t
 
 ### <a name="rest-quickstarts"></a>REST-Quick starts
 
-| Snelstartgids (REST) | Platform | API-verwijzing |
+| Snelstartgids (REST) | Platform | API-referentie |
 | ----------------- | -------- | ------------- |
 | [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Door](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Node.js](quickstart-nodejs-text-to-speech.md) | Venster, macOS, Linux | [Door](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -125,5 +125,5 @@ Voorbeeld code voor tekst-naar-spraak is beschikbaar op GitHub. Deze voor beelde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een gratis abonnement op spraak Services ontvangen](get-started.md)
+- [Een gratis spraak service-abonnement ontvangen](get-started.md)
 - [Aangepaste spraakstijlen maken](how-to-customize-voice-font.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: caa1959ec64bb3a123c60763750267b107685b82
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d1c709beb225dff0ae616a23eb67eb57f4643ac9
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111247"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812765"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Snelstartgids: een aangepaste opdracht maken met para meters (preview)
 
@@ -38,7 +38,7 @@ In dit artikel wordt deze toepassing uitgebreid met para meters zodat het mogeli
    | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
    | Naam               | OnOff           | Een beschrijvende naam voor uw para meter                                                                     |
    | Is wereld wijd          | uitgeschakeld       | Selectie vakje dat aangeeft of een waarde voor deze para meter globaal moet worden toegepast op alle opdrachten in het project |
-   | Vereist           | wel         | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid          |
+   | Verplicht           | wel         | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid          |
    | Antwoord sjabloon  | Aan of uit?      | Een prompt om te vragen naar de waarde van deze para meter als deze niet bekend is                                       |
    | Type               | Tekenreeks          | Het type para meter, zoals getal, teken reeks of datum/tijd                                               |
    | Configuratie      | Lijst met teken reeksen     | Voor teken reeksen beperkt een reeks lijst invoer naar een reeks mogelijke waarden                                      |
@@ -50,7 +50,7 @@ In dit artikel wordt deze toepassing uitgebreid met para meters zodat het mogeli
    | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
    | Naam               | SubjectDevice     | Een beschrijvende naam voor uw para meter                                                                     |
    | Is wereld wijd          | uitgeschakeld         | Selectie vakje dat aangeeft of een waarde voor deze para meter globaal moet worden toegepast op alle opdrachten in het project |
-   | Vereist           | wel           | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid          |
+   | Verplicht           | wel           | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid          |
    | Antwoord sjabloon  | Welk apparaat?     | Een prompt om te vragen naar de waarde van deze para meter als deze niet bekend is                                       |
    | Type               | Tekenreeks            | Het type para meter, zoals getal, teken reeks of datum/tijd                                               |
    | Configuratie      | Lijst met teken reeksen       | Voor teken reeksen beperkt een reeks lijst invoer naar een reeks mogelijke waarden                                      |
@@ -94,7 +94,7 @@ Wijzig de voltooiings regel die u hebt gemaakt in [de vorige Snelstartgids](./qu
    Ok, turning {OnOff} the {SubjectDevice}
    ```
 
-## <a name="try-it-out"></a>Uitproberen
+## <a name="try-it-out"></a>Probeer het
 
 Open het deel venster chat testen en probeer enkele interacties.
 

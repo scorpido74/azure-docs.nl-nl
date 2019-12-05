@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/27/2019
 ms.author: yinhew
-ms.openlocfilehash: af101862e824d6527c08c232812913565536bb4a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 38dac73d253245fce86ac419c7a4eb3a106df3f0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503148"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818131"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,7 +32,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/text-to-speech/helloworld/Program.cs#code)]
 
-1. Zoek de teken reeks `YourSubscriptionKey`en vervang deze door uw abonnements sleutel voor spraak Services.
+1. Zoek de teken reeks `YourSubscriptionKey`en vervang deze door de abonnements sleutel van uw speech-service.
 
 1. Zoek de teken reeks `YourServiceRegion`en vervang deze door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. Als u bijvoorbeeld het gratis proef abonnement gebruikt, is de regio `westus`.
 
@@ -44,7 +44,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Kies **fout opsporing** > **fout opsporing starten** (of selecteer **F5**) om de toepassing **HelloWorld** te starten.
 
-1. Voer een Engelse woord groep of zin in. De toepassing verzendt uw tekst naar de spraak Services, waarmee gesynthesizerde spraak naar de toepassing wordt verzonden om op uw spreker af te spelen.
+1. Voer een Engelse woord groep of zin in. De toepassing verzendt uw tekst naar de spraak service, waarmee gesynthesizerde spraak naar de toepassing wordt verzonden om op uw spreker af te spelen.
 
    ![Gebruikers interface voor spraak synthese](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
 

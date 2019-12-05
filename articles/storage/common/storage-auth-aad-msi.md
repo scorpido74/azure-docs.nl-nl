@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3e24cb2d4b5b82f6878647cdd631bd8ebca16199
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3bb3b632a184985f9a3a27d0e56e940ec7c30885
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666155"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806577"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Toegang verlenen tot blobs en wacht rijen met Azure Active Directory en beheerde identiteiten voor Azure-resources
 
@@ -36,13 +36,13 @@ Zie [beheerde identiteiten voor Azure-resources](../../active-directory/managed-
 
 ## <a name="authenticate-with-the-azure-identity-library"></a>Verifiëren met de Azure Identity-bibliotheek
 
-Een voor deel van de Azure Identity client-bibliotheek is dat u dezelfde code kunt gebruiken om te verifiëren of uw toepassing wordt uitgevoerd in de ontwikkel omgeving of in Azure. In code die in de Azure-omgeving wordt uitgevoerd, verifieert de client bibliotheek een beheerde identiteit voor Azure-resources. In de ontwikkel omgeving bestaat de beheerde identiteit niet, zodat de client bibliotheek de gebruiker of een Service-Principal verifieert voor test doeleinden.
+De Azure Identity client-bibliotheek biedt ondersteuning voor Azure Azure AD-token verificatie voor de [Azure SDK](https://github.com/Azure/azure-sdk). De nieuwste versies van de Azure Storage-client bibliotheken voor .NET, Java, python en Java script zijn geïntegreerd met de Azure-identiteits bibliotheek om een OAuth 2,0-token te verkrijgen voor autorisatie van Azure Storage aanvragen.
 
-De Azure Identity client-bibliotheek voor .NET verifieert een beveiligings-principal. Wanneer uw code wordt uitgevoerd in azure, is de beveiligingsprincipal een beheerde identiteit voor Azure-resources.
+Een voor deel van de Azure Identity client-bibliotheek is dat u dezelfde code kunt gebruiken om te verifiëren of uw toepassing wordt uitgevoerd in de ontwikkel omgeving of in Azure. De Azure Identity client-bibliotheek voor .NET verifieert een beveiligings-principal. Wanneer uw code wordt uitgevoerd in azure, is de beveiligingsprincipal een beheerde identiteit voor Azure-resources. In de ontwikkel omgeving bestaat de beheerde identiteit niet, zodat de client bibliotheek de gebruiker of een Service-Principal verifieert voor test doeleinden.
 
 Na de verificatie krijgt de Azure Identity client-bibliotheek een token referentie. Deze token referentie wordt vervolgens ingekapseld in het service-client object dat u maakt om bewerkingen uit te voeren op basis van Azure Storage. De bibliotheek verwerkt dit voor u probleemloos door de juiste token referentie op te halen.
 
-Zie de [Azure Identity client-bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)voor meer informatie over de Azure Identity client-bibliotheek.
+Zie de [Azure Identity client-bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)voor meer informatie over de Azure Identity client-bibliotheek voor .net. Zie [Azure. Identity naam ruimte](/dotnet/api/azure.identity)voor referentie documentatie voor de Azure Identity client-bibliotheek.
 
 ### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>RBAC-rollen (Role-based Access Control) toewijzen voor toegang tot gegevens
 
@@ -50,7 +50,7 @@ Wanneer een Azure AD-beveiligingsprincipal probeert toegang te krijgen tot BLOB-
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>De gebruiker verifiëren in de ontwikkel omgeving
 
-Wanneer uw code wordt uitgevoerd in de ontwikkel omgeving, wordt de verificatie mogelijk automatisch verwerkt of is er mogelijk een browser aanmelding vereist, afhankelijk van de hulpprogram ma's die u gebruikt. Micro soft Visual Studio ondersteunt eenmalige aanmelding (SSO), zodat het actieve Azure AD-gebruikers account automatisch wordt gebruikt voor verificatie. Zie [eenmalige aanmelding bij toepassingen](../../active-directory/manage-apps/what-is-single-sign-on.md)voor meer informatie over SSO.
+Wanneer uw code wordt uitgevoerd in de ontwikkel omgeving, wordt de verificatie mogelijk automatisch verwerkt of is er mogelijk een browser aanmelding vereist, afhankelijk van de hulpprogram ma's die u gebruikt. Bijvoorbeeld: micro soft Visual Studio ondersteunt eenmalige aanmelding (SSO), zodat het actieve Azure AD-gebruikers account automatisch wordt gebruikt voor verificatie. Zie [eenmalige aanmelding bij toepassingen](../../active-directory/manage-apps/what-is-single-sign-on.md)voor meer informatie over SSO.
 
 Andere ontwikkel hulpprogramma's vragen u mogelijk om u aan te melden via een webbrowser.
 
@@ -105,7 +105,7 @@ Zie [identiteit voor Azure-app maken in de portal](../../active-directory/develo
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET-code voorbeeld: een blok-Blob maken
+## <a name="net-code-example-create-a-block-blob"></a>.NET-codevoorbeeld: maken van een blok-blob
 
 Voeg de volgende `using`-instructies toe aan uw code voor het gebruik van de identiteits-en Azure Storage-client bibliotheken van Azure.
 
@@ -161,6 +161,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [toegangs rechten voor opslag gegevens beheren met RBAC](storage-auth-aad-rbac.md)voor meer informatie over RBAC-rollen voor Azure Storage.
-- Zie voor meer informatie over het machtigen van toegang tot containers en wacht rijen in uw opslag toepassingen [Azure AD gebruiken met opslag toepassingen](storage-auth-aad-app.md).
-- Zie voor meer informatie over het uitvoeren van Azure CLI-en Power shell-opdrachten met Azure AD-referenties [Azure CLI of Power shell-opdrachten uitvoeren met Azure AD-referenties voor toegang tot BLOB-of wachtrij gegevens](storage-auth-aad-script.md).
+- [Toegangs rechten voor opslag gegevens beheren met RBAC](storage-auth-aad-rbac.md).
+- [Gebruik Azure AD met opslag toepassingen](storage-auth-aad-app.md).
+- [Voer Azure CLI-of Power shell-opdrachten uit met Azure AD-referenties om toegang te krijgen tot BLOB-of wachtrij gegevens](storage-auth-aad-script.md).

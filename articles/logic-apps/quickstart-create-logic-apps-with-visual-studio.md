@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: 49269cf2171269063de4a3cf5de1f22ebc545005
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f4d10f6b0934e7dea9779f45d0f05d7c28966965
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790824"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819159"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Snelstartgids: geautomatiseerde taken, processen en werk stromen maken met Azure Logic Apps-Visual Studio
 
@@ -149,7 +149,7 @@ Voordat u uw logische app kunt uitvoeren en testen, implementeert u de app in az
 
    ![Logische app implementeren naar een Azure-resourcegroep](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-deployment.png)
 
-1. Als het vak **para meters bewerken** wordt weer gegeven, geeft u een resource naam op voor uw logische app. Sla de instellingen op.
+1. Als het vak **para meters bewerken** wordt weer gegeven, geeft u een resource naam op voor uw logische app. Sla uw wijzigingen op.
 
    ![Naam van de implementatie opgeven voor de logische app](./media/quickstart-create-logic-apps-with-visual-studio/edit-parameters-deployment.png)
 
@@ -191,11 +191,11 @@ Wanneer u klaar bent met uw logische app, verwijdert u de resource groep die uw 
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met hetzelfde account dat is gebruikt voor het maken van uw logische app.
 
-1. Selecteer **Resourcegroepen** in het hoofdmenu van Azure. Selecteer de resource groep van uw logische app en selecteer **overzicht**.
+1. Selecteer **resource groepen**in het menu Azure portal of zoek en selecteer **resource groepen** op een wille keurige pagina. Selecteer de resource groep van de logische app.
 
 1. Selecteer op de pagina **overzicht** de optie **resource groep verwijderen**. Voer de naam van de resource groep in als bevestiging en selecteer **verwijderen**.
 
-   !['Resourcegroepen' > 'Overzicht' > 'Resourcegroep verwijderen'](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
+   !['Resourcegroepen' > 'Overzicht' > 'Resourcegroep verwijderen'](./media/quickstart-create-logic-apps-with-visual-studio/clean-up-resources.png)
 
 1. Verwijder de Visual Studio-oplossing van uw lokale computer.
 

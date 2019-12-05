@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/20/2019
+ms.date: 12/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: df65267924cfbfdc856b81928c4b6d7029f61184
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: fd3b7767bad104f4074b2460ecba3fe89d5a23e1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665964"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806623"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>Door de klant beheerde sleutels configureren voor Azure Storage met behulp van Azure CLI
 
@@ -91,7 +91,7 @@ az keyvault key create
 
 Azure Storage versleuteling maakt standaard gebruik van door micro soft beheerde sleutels. Configureer uw Azure Storage-account voor door de klant beheerde sleutels en geef de sleutel op die u wilt koppelen aan het opslag account.
 
-Roep [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update)aan om de versleutelings instellingen van het opslag account bij te werken. In dit voor beeld worden ook query's uitgevoerd voor de sleutel kluis-URI en de sleutel versie. beide waarden zijn nodig om de sleutel te koppelen aan het opslag account. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden.
+Roep [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update)aan om de versleutelings instellingen van het opslag account bij te werken. In dit voor beeld worden ook query's uitgevoerd voor de sleutel kluis-URI en de nieuwste sleutel versie, beide waarden die nodig zijn om de sleutel te koppelen aan het opslag account. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -102,7 +102,7 @@ key_vault_uri=$(az keyvault show \
 key_version=$(az keyvault key list-versions \
     --name <key> \
     --vault-name <key-vault> \
-    --query [].kid \
+    --query [-1].kid \
     --output tsv | cut -d '/' -f 6)
 az storage account update 
     --name <storage-account> \

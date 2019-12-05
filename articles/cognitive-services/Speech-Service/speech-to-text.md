@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: erhopf
-ms.openlocfilehash: f04ad388922ad7f73bf4409f9a846291cbb08da3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 651a30bbcba7b4d4f5d00765c651be73953cd748
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774005"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815494"
 ---
 # <a name="what-is-speech-to-text"></a>Wat is spraak-naar-tekst?
 
-Spraak-naar-tekst van Azure speech Services, ook wel spraak naar tekst genoemd, biedt realtime transcriptie van audio-streams in tekst die uw toepassingen, hulpprogram ma's of apparaten kunnen gebruiken, weer geven en actie ondernemen als opdracht invoer. Deze service wordt aangestuurd door dezelfde herkennings technologie die door micro soft wordt gebruikt voor Cortana en Office-producten en werkt naadloos samen met de vertaling en tekst-naar-spraak. Zie [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text)voor een volledige lijst met beschik bare spraak-naar-tekst talen.
+Spraak-naar-tekst van de speech-service, ook wel spraak naar tekst genoemd, biedt realtime transcriptie van audio-streams in tekst die uw toepassingen, hulpprogram ma's of apparaten kunnen gebruiken, weer geven en actie ondernemen als opdracht invoer. Deze service wordt aangestuurd door dezelfde herkennings technologie die door micro soft wordt gebruikt voor Cortana en Office-producten en werkt naadloos samen met de vertaling en tekst-naar-spraak. Zie [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text)voor een volledige lijst met beschik bare spraak-naar-tekst talen.
 
 De spraak-naar-tekst-service maakt standaard gebruik van het universele-taal model. Dit model is getraind met gegevens van micro soft en wordt geïmplementeerd in de Cloud. Het is optimaal voor gespreks-en dicteer scenario's. Als u spraak-naar-tekst gebruikt voor herkenning en transcriptie in een unieke omgeving, kunt u aangepaste akoestische, taal en uitspraak modellen maken en trainen om omgevings lawaai of branchespecifieke woorden lijsten te verhelpen.
 
@@ -54,7 +54,7 @@ Zie [rest api's](https://docs.microsoft.com/azure/cognitive-services/speech-serv
 
 ## <a name="tutorials-and-sample-code"></a>Zelf studies en voorbeeld code
 
-Nadat u de spraak Services hebt gebruikt, kunt u zelf zelf studie proberen om de intenties van spraak te herkennen met behulp van de Speech SDK en LUIS.
+Nadat u de spraak service hebt bekeken, kunt u de zelf studie uitproberen die u leert hoe u de intenties kunt herkennen vanuit spraak met behulp van de Speech SDK en LUIS.
 
 - [Zelf studie: intenties herkennen vanuit spraak met de Speech SDK en LUIS,C#](how-to-recognize-intents-from-speech-csharp.md)
 
@@ -65,7 +65,7 @@ Voorbeeld code voor de Speech SDK is beschikbaar op GitHub. Deze voor beelden he
 
 ## <a name="customization"></a>Aanpassing
 
-Naast het standaard basislijn model dat wordt gebruikt door de spraak Services, kunt u modellen aanpassen aan uw behoeften met beschik bare gegevens, om de obstakels voor spraak herkenning te overwinnen, zoals spreek stijl, vocabulaire en achtergrond ruis, Zie [Custom speech](how-to-custom-speech.md)
+Naast het standaard basislijn model dat wordt gebruikt door de spraak service kunt u modellen aanpassen aan uw behoeften met beschik bare gegevens, om de belemmeringen voor spraak herkenning te overwinnen, zoals spreek stijl, vocabulaire en achtergrond ruis, Zie [Custom speech](how-to-custom-speech.md)
 
 > [!NOTE]
 > Aanpassings opties variëren per taal/land instelling (Zie [ondersteunde talen](supported-languages.md)).
@@ -75,10 +75,10 @@ Naast het standaard basislijn model dat wordt gebruikt door de spraak Services, 
 > [!WARNING]
 > Bing Speech is uit bedrijf genomen op 15 oktober 2019.
 
-Als uw toepassingen, hulpprogram ma's of producten gebruikmaken van de Bing Speech Api's of Custom Speech, hebben we gidsen gemaakt om u te helpen migreren naar spraak Services.
+Als uw toepassingen, hulpprogram ma's of producten gebruikmaken van de Bing Speech Api's of Custom Speech, hebben we gidsen gemaakt om u te helpen migreren naar de speech-service.
 
-- [Migreren van Bing Speech naar de spraak Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
-- [Migreren van Custom Speech naar de spraak Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
+- [Migreren van Bing Speech naar de speech-service](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
+- [Migreren van Custom Speech naar de speech-service](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
 
 ## <a name="reference-docs"></a>Referentiedocumenten
 
@@ -90,5 +90,5 @@ Als uw toepassingen, hulpprogram ma's of producten gebruikmaken van de Bing Spee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Gratis een abonnements sleutel voor spraak Services aanschaffen](get-started.md)
+- [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
 - [De Speech SDK ophalen](speech-sdk.md)

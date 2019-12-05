@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110158"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805889"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Intenties herkennen vanuit spraak met de Speech SDK voorC#
 
@@ -44,7 +44,7 @@ Zorg ervoor dat u de volgende items hebt voordat u aan de slag gaat met deze han
 
 ## <a name="luis-and-speech"></a>LUIS en spraakherkenning
 
-LUIS integreert met de spraak Services om intenties van spraak te herkennen. U hebt geen spraak Services-abonnement nodig, alleen LUIS.
+LUIS kan worden geïntegreerd met de Speech-service voor het herkennen van intenties van spraak. U hebt geen abonnement op de Speech-service nodig, alleen op LUIS.
 
 LUIS maakt gebruik van drie soorten sleutels:
 
@@ -56,7 +56,7 @@ LUIS maakt gebruik van drie soorten sleutels:
 
 Voor deze hand leiding hebt u het sleutel type van het eind punt nodig. In deze hand leiding wordt gebruikgemaakt van de voor beeld-app Home Automation LUIS, die u kunt maken door de Snelstartgids voor het [gebruik van vooraf ontwikkelde Home Automation-apps](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) te volgen. Als u zelf een LUIS-app hebt gemaakt, kunt u deze gebruiken in plaats daarvan.
 
-Wanneer u een LUIS-app maakt, wordt door LUIS automatisch een start sleutel gegenereerd zodat u de app kunt testen met behulp van tekst query's. Deze sleutel biedt geen ondersteuning voor spraak Services en werkt niet met deze hand leiding. Maak een LUIS-resource in het Azure-dash board en wijs deze toe aan de LUIS-app. U kunt de gratis Subscription-laag voor deze hand leiding gebruiken.
+Wanneer u een LUIS-app maakt, wordt door LUIS automatisch een start sleutel gegenereerd zodat u de app kunt testen met behulp van tekst query's. Met deze sleutel wordt de integratie van de spraak service niet ingeschakeld en werkt deze niet met deze hand leiding. Maak een LUIS-resource in het Azure-dash board en wijs deze toe aan de LUIS-app. U kunt de gratis Subscription-laag voor deze hand leiding gebruiken.
 
 Nadat u de LUIS-resource hebt gemaakt in het Azure-dash board, meldt u zich aan bij de [Luis-Portal](https://www.luis.ai/home), kiest u uw toepassing op de pagina **mijn apps** en gaat u naar de pagina **beheren** van de app. Ten slotte selecteert u de **toetsen en eind punten** in de zijbalk.
 
@@ -128,7 +128,7 @@ In de volgende secties wordt dieper ingegaan op de code.
 Eerst moet u een spraak configuratie maken op basis van uw LUIS-eindpunt sleutel en-regio. U kunt spraak configuraties gebruiken om herkennings functies te maken voor de verschillende mogelijkheden van de spraak-SDK. De spraak configuratie heeft meerdere manieren om het abonnement op te geven dat u wilt gebruiken. hier gebruiken we `FromSubscription`, die de sleutel en de regio van het abonnement neemt.
 
 > [!NOTE]
-> Gebruik de sleutel en de regio van uw LUIS-abonnement, niet van een speech Services-abonnement.
+> Gebruik de sleutel en regio van uw LUIS-abonnement, niet van een spraak service-abonnement.
 
 Maak vervolgens een mechanisme voor intentieherkenning met behulp van `new IntentRecognizer(config)`. Aangezien de configuratie al kent welk abonnement moet worden gebruikt, hoeft u de abonnements sleutel en het eind punt niet opnieuw op te geven bij het maken van de herkenner.
 

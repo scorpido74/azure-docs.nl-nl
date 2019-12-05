@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 75edb385a86be849ec7c165759d3b451eab804f6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: fec81e843753656d651c6d5d0b73077a964be9d4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828514"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807439"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-beveiliging 
 
@@ -79,7 +79,7 @@ Als u een ACL wilt Toep assen op uw certificaten voor uw Service Fabric cluster 
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Een Service Fabric cluster certificaat beveiligen op basis van algemene naam
 
-Als u uw Service Fabric-cluster wilt beveiligen op basis van certificaat `Common Name`, gebruikt u de Resource Manager-sjabloon eigenschap [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames), als volgt:
+Als u uw Service Fabric-cluster op basis van certificaat `Common Name`wilt beveiligen, gebruikt u de Resource Manager-sjabloon eigenschap [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames), als volgt:
 
 ```json
 "certificateCommonNames": {
@@ -96,16 +96,16 @@ Als u uw Service Fabric-cluster wilt beveiligen op basis van certificaat `Common
 > [!NOTE]
 > Service Fabric clusters gebruiken het eerste geldige certificaat dat wordt gevonden in het certificaat archief van de host. In Windows is dit het certificaat met de laatste verval datum die overeenkomt met uw algemene naam en de vinger afdruk van de verlener.
 
-Azure-domeinen, zoals * \<YOUR SUBDOMAIN\>.cloudapp.azure.com of \<YOUR SUBDOMAIN\>.trafficmanager.net, zijn eigendom van micro soft. Certificerings instanties geven geen certificaten voor domeinen aan niet-gemachtigde gebruikers. De meeste gebruikers moeten een domein aanschaffen bij een registratie service of een geautoriseerde domein beheerder zijn, zodat een certificerings instantie u een certificaat met deze algemene naam kan uitgeven.
+Azure-domeinen, zoals *\<uw subdomein\>. cloudapp.azure.com of \<uw subdomein\>. trafficmanager.net, zijn eigendom van micro soft. Certificerings instanties geven geen certificaten voor domeinen aan niet-gemachtigde gebruikers. De meeste gebruikers moeten een domein aanschaffen bij een registratie service of een geautoriseerde domein beheerder zijn, zodat een certificerings instantie u een certificaat met deze algemene naam kan uitgeven.
 
 Lees voor meer informatie over het configureren van DNS-service voor het omzetten van uw domein naar een micro soft IP-adres hoe u [Azure DNS configureert om uw domein te hosten](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns).
 
 > [!NOTE]
 > Voeg de volgende twee records toe aan uw DNS-zone nadat u de domein naam servers hebt gedelegeerd naar uw Azure DNS zone naam servers:
-> - Een A-record voor domein APEX die geen `Alias record set` is voor alle IP-adressen die door uw aangepaste domein worden omgezet.
-> - Een C-record voor micro soft-subdomeinen die u hebt ingericht en die geen `Alias record set` zijn. U kunt bijvoorbeeld uw Traffic Manager of de DNS-naam van Load Balancer gebruiken.
+> - Een A-record voor domein APEX die geen `Alias record set` is voor alle IP-adressen die uw aangepaste domein zal omzetten.
+> - Een C-record voor micro soft-subdomeinen die u hebt ingericht en die geen `Alias record set`zijn. U kunt bijvoorbeeld uw Traffic Manager of de DNS-naam van Load Balancer gebruiken.
 
-Als u uw portal wilt bijwerken om een aangepaste DNS-naam voor uw Service Fabric cluster weer te geven `"managementEndpoint"`, werkt u de eigenschappen van de volgende Service Fabric cluster resource manager-sjabloon bij:
+Als u uw portal wilt bijwerken om een aangepaste DNS-naam voor uw Service Fabric cluster `"managementEndpoint"`weer te geven, werkt u de eigenschappen van de volgende Service Fabric cluster resource manager-sjabloon bij:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
@@ -166,12 +166,12 @@ Als u uw toepassing toegang wilt geven tot geheimen, neemt u het certificaat op 
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Service Fabric toepassingen verifiëren voor Azure-resources met behulp van Managed Service Identity (MSI)
 
-Zie [Wat is beheerde identiteiten voor Azure-resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work)voor meer informatie over beheerde identiteiten voor Azure-resources.
+Zie [Wat is beheerde identiteiten voor Azure-resources?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)voor meer informatie over beheerde identiteiten voor Azure-resources.
 Azure Service Fabric-clusters worden gehost op Virtual Machine Scale Sets, die [Managed Service Identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)ondersteunen.
 Zie [Azure-Services die ondersteuning bieden voor Azure Active Directory-verificatie](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)voor een lijst met services die door MSI kunnen worden gebruikt voor verificatie.
 
 
-Declareer de door het systeem toegewezen beheerde identiteit tijdens het maken van een schaalset voor virtuele machines of een bestaande schaalset voor virtuele machines door de volgende `"Microsoft.Compute/virtualMachinesScaleSets"`-eigenschap in te stellen:
+Als u aan het systeem toegewezen beheerde identiteit wilt inschakelen tijdens het maken van een schaalset voor virtuele machines of een bestaande schaalset voor virtuele machines, declareert u de volgende `"Microsoft.Compute/virtualMachinesScaleSets"` eigenschap:
 
 ```json
 "identity": { 
@@ -217,7 +217,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [U wordt aangeraden een industrie standaard configuratie te implementeren die algemeen bekend en goed getest is, zoals micro soft-beveiligings basislijnen, in tegens telling tot het maken van een basis lijn](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines). een optie voor het inrichten van deze op uw Virtual Machine Scale Sets is het gebruik van de extensie-handler voor Azure desired state Configuration (DSC) om de virtuele machines te configureren zodra deze online zijn, zodat ze de productie software uitvoeren.
 
 ## <a name="azure-firewall"></a>Azure Firewall
-[Azure-firewall is een beheerde, Cloud service voor netwerk beveiliging die uw Azure Virtual Network-Resources beveiligt. Het is een volledig stateful firewall als een service met ingebouwde hoge Beschik baarheid en een onbeperkte Cloud schaalbaarheid. ](https://docs.microsoft.com/azure/firewall/overview); Hierdoor kan uitgaande HTTP/S-verkeer worden beperkt tot een opgegeven lijst met FQDN-namen (FULLy Qualified Domain names), inclusief joker tekens. Deze functie vereist geen SSL-beëindiging. Het is raadzaam om [Azure firewall FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) te gebruiken voor Windows-updates en om netwerk verkeer in te scha kelen naar micro soft Windows Update-eind punten door uw firewall kunnen stromen. [Azure firewall implementeren met behulp van een sjabloon](https://docs.microsoft.com/azure/firewall/deploy-template) biedt een voor beeld van de definitie van de resource sjabloon micro soft. Network/azureFirewalls. Firewall regels die gemeen schappelijk zijn voor Service Fabric toepassingen, zijn het volgende toe te staan voor uw clusters virtueel netwerk:
+[Azure firewall is een beheerde, Cloud service voor netwerk beveiliging die uw Azure Virtual Network-Resources beveiligt. Het is een volledig stateful firewall als een service met ingebouwde hoge Beschik baarheid en een onbeperkte schaal baarheid in de Cloud.](https://docs.microsoft.com/azure/firewall/overview) Hierdoor kan uitgaande HTTP/S-verkeer worden beperkt tot een opgegeven lijst met FQDN-namen (FULLy Qualified Domain names), inclusief joker tekens. Deze functie vereist geen SSL-beëindiging. Het is raadzaam om [Azure firewall FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) te gebruiken voor Windows-updates en om netwerk verkeer in te scha kelen naar micro soft Windows Update-eind punten door uw firewall kunnen stromen. [Azure firewall implementeren met behulp van een sjabloon](https://docs.microsoft.com/azure/firewall/deploy-template) biedt een voor beeld van de definitie van de resource sjabloon micro soft. Network/azureFirewalls. Firewall regels die gemeen schappelijk zijn voor Service Fabric toepassingen, zijn het volgende toe te staan voor uw clusters virtueel netwerk:
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -263,7 +263,7 @@ Windows Defender anti virus is standaard geïnstalleerd op Windows Server 2016. 
 > Raadpleeg de documentatie van uw anti-malware voor configuratie regels als u geen gebruik maakt van Windows Defender. Windows Defender wordt niet ondersteund in Linux.
 
 ## <a name="platform-isolation"></a>Platform isolatie
-Service Fabric toepassingen krijgen standaard toegang tot de Service Fabric runtime zelf, die zich in verschillende formulieren manifesteert: [omgevings variabelen](service-fabric-environment-variables-reference.md) die verwijzen naar bestands paden op de host die overeenkomt met toepassings-en infrastructuur bestanden, een interproces communicatie-eind punt dat toepassingsspecifieke aanvragen accepteert, en het client certificaat waarvan de infra structuur verwacht dat de toepassing wordt gebruikt om zichzelf te verifiëren. Als de service zichzelf niet-vertrouwde code host, is het raadzaam om deze toegang uit te scha kelen naar de SF-runtime, tenzij dit expliciet nodig is. Toegang tot de runtime wordt verwijderd met behulp van de volgende verklaring in de sectie beleid van het toepassings manifest: 
+Service Fabric-toepassingen krijgen standaard toegang tot de Service Fabric runtime zelf, die zich in verschillende vormen bevindt: [omgevings variabelen](service-fabric-environment-variables-reference.md) die verwijzen naar bestands paden op de host die overeenkomt met toepassings-en infrastructuur bestanden, een interproces communicatie-eind punt dat toepassingsspecifieke aanvragen accepteert, en het client certificaat dat door de toepassing wordt gebruikt om zichzelf te verifiëren. Als de service zichzelf niet-vertrouwde code host, is het raadzaam om deze toegang uit te scha kelen naar de SF-runtime, tenzij dit expliciet nodig is. Toegang tot de runtime wordt verwijderd met behulp van de volgende verklaring in de sectie beleid van het toepassings manifest: 
 
 ```xml
 <ServiceManifestImport>
@@ -276,8 +276,8 @@ Service Fabric toepassingen krijgen standaard toegang tot de Service Fabric runt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Een cluster maken op Vm's, of computers, waarop Windows Server wordt uitgevoerd: [Service Fabric cluster maken voor Windows Server](service-fabric-cluster-creation-for-windows-server.md).
-* Een cluster maken op Vm's of op computers met Linux: [Maak een Linux-cluster](service-fabric-cluster-creation-via-portal.md).
+* Een cluster maken op Vm's of computers waarop Windows Server wordt uitgevoerd: [service Fabric cluster maken voor Windows Server](service-fabric-cluster-creation-for-windows-server.md).
+* Een cluster maken op Vm's of computers waarop Linux wordt uitgevoerd: [een Linux-cluster maken](service-fabric-cluster-creation-via-portal.md).
 * Meer informatie over [service Fabric ondersteunings opties](service-fabric-support.md).
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

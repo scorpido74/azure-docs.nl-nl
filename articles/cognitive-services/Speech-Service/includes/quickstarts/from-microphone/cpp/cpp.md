@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: spraak herkennen vanuit een microfoon C++ , spraak service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: erhopf
-ms.openlocfilehash: 51c3d67a04805c8cc411af812755f3c4e0213dee
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 692ed0b758cd33471b02b71d8434c6fc5337f6a0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260705"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818709"
 ---
 **Kies uw doel omgeving**
 

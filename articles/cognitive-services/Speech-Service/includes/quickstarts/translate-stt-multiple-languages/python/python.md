@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: spraak herkennen, python-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: fe969b45384568a41fe74415995b0173450eeaf4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44fafa361744f3c405cdb5c7ad416146fc0b1de2
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503071"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817189"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -79,7 +79,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](../../../../regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](../../../../regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
 1. Sla de wijzigingen op die u hebt aangebracht in `quickstart.py`.
 
@@ -91,7 +91,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
    python quickstart.py
    ```
 
-1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de spraak Services, die worden vertaald naar tekst (in dit geval naar Frans en Duits). De spraak Services verzenden de tekst vervolgens terug naar de toepassing om weer te geven.
+1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de speech-service, die vertaalt en transcribeert naar tekst (in dit geval naar Frans en Duits). De spraak service verzendt vervolgens de tekst terug naar de toepassing om weer te geven.
 
    ```
    Say something...

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/26/2019
 ms.author: tamram
 ms.custom: include
-ms.openlocfilehash: 0adf1280fa50e9ee594f3025dff70786f5ba2199
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: de79ea50d12ab322d1e28d0ad650df30ecc0c222
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666156"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806576"
 ---
 ## <a name="install-client-library-packages"></a>Client bibliotheek pakketten installeren
 
@@ -31,5 +31,3 @@ De voor beelden die hier worden weer gegeven, gebruiken ook de nieuwste versie v
 ```powershell
 Install-Package Azure.Identity
 ```
-
-Voor meer informatie over het verifiëren van de identiteit van de Azure Identity client-bibliotheek van Azure Storage, zie de sectie **verificatie met de Azure Identity-bibliotheek** in [toegang verlenen tot blobs en wacht rijen met Azure Active Directory en beheerde identiteiten voor Azure-resources](/azure/storage/common/storage-auth-aad-msi?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).

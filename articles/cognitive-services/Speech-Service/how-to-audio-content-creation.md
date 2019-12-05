@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 2fa4bcb9db6f836346167b76e609a1437df88b04
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b65a39489f0823a411a9dddf79ec3abd1e5ee20d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554998"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806202"
 ---
 # <a name="audio-content-creation"></a>Audio-inhoud maken
 
@@ -65,7 +65,7 @@ Er zijn twee manieren om uw inhoud te verkrijgen in het hulp programma voor het 
 
    | Eigenschap | Waarde/opmerkingen |
    |----------|---------------|
-   | Bestands indeling | Tekst zonder opmaak (. txt)<br/> SSML tekst (. txt)<br/> Zip-bestanden worden niet ondersteund |
+   | Bestands indeling | Tekst zonder opmaak (.txt)<br/> SSML tekst (. txt)<br/> Zip-bestanden worden niet ondersteund |
    | Coderings indeling | UTF-8 |
    | Bestandsnaam | Elk bestand moet een unieke naam hebben. Dubbele waarden worden niet ondersteund. |
    | Tekst lengte | Tekst bestanden mogen niet langer zijn dan 10.000 tekens. |

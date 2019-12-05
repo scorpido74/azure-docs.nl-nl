@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: b6439c6461ca9f4fa272eb43ef16240175fdec4f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b0a9eddf147eedfa972e0574e62c9e7c2eace84f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795716"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818719"
 ---
 > [!NOTE]
 > De Speech SDK voor unit ondersteunt Windows Desktop (x86 en x64) of Universeel Windows-platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) en iOS (x64 Simulator, ARM32 en ARM64)
@@ -89,7 +89,7 @@ Voer de volgende stappen uit om de voorbeeld script code voor het Unity-project 
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/from-microphone/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Zoek en vervang de teken reeks `YourSubscriptionKey` door uw abonnements sleutel voor spraak Services.
+1. Zoek en vervang de teken reeks `YourSubscriptionKey` met de abonnements sleutel van uw speech-service.
 
 1. Zoek en vervang de teken reeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. Als u bijvoorbeeld gebruikmaakt van de gratis proefversie, dan is `westus` de regio.
 
@@ -120,7 +120,7 @@ U bent nu klaar om de toepassing uit te voeren in de Unity-editor.
 
 1. Ga naar de [ **Game** weergave](https://docs.unity3d.com/Manual/GameView.html)en wacht tot het **tekst** object wordt weer gegeven **Klik op de knop om spraak herkenning te herkennen**. (Er wordt **nieuwe tekst** weer gegeven wanneer de toepassing niet is gestart of niet gereed is om te reageren.)
 
-1. Selecteer de knop en spreek een Engelse zin of zin in op de microfoon van uw computer. Uw spraak wordt verzonden naar de spraak Services en getranscribeerd naar tekst, die wordt weer gegeven in de **Game** weergave.
+1. Selecteer de knop en spreek een Engelse zin of zin in op de microfoon van uw computer. Uw spraak wordt verzonden naar de speech-service en getranscribeerd naar tekst, die wordt weer gegeven in de **Game** weergave.
 
    [de weer gave van ![game in de eenheids editor](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: acd601512f2240802de47483a015f03a226da115
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795561"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828831"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Wat is het verschil tussen een virtuele Azure-netwerk gateway (VPN Gateway) en een virtueel WAN VPN-gateway van Azure?
 
@@ -113,7 +113,9 @@ U kunt een VNet verbinden in een andere regio dan uw virtuele WAN.
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Kunnen VNets op knooppunten die zijn verbonden met een virtuele hub met elkaar communiceren?
 
-Ja. Ster-VNets kunnen rechtstreeks communiceren via Virtual Network-peering. Zie voor meer informatie [Peering op virtueel netwerk](../articles/virtual-network/virtual-network-peering-overview.md). We ondersteunen ook VNets om transitief via de hub te communiceren.
+Ja. Standaard virtuele WAN ondersteunt Vnet naar transitieve Vnet-connectiviteit via de virtuele WAN-hub waarmee de Vnets zijn verbonden. In Virtual WAN-terminologie verwijzen we naar deze paden als ' lokale virtuele WAN VNet transit ' voor VNets die zijn verbonden met een virtuele WAN-hub binnen één regio en ' globaal virtueel WAN-VNet door Voer ' voor VNets die zijn verbonden via meerdere virtuele WAN-hubs over twee of meer secties. VNet-Transit ondersteunt Maxi maal 3 Gbps aan door Voer tijdens open bare preview. De door Voer wordt uitgebreid wanneer wereld wijd door Voer gaat.   
+
+Voor sommige scenario's kan spoke Vnets ook rechtstreeks worden gekoppeld met behulp van [Virtual Network peering](../articles/virtual-network/virtual-network-peering-overview.md) naast lokale of globale virtuele WAN-trans missie. In dit geval heeft Vnet-peering voor rang op de transitieve verbinding via de virtuele WAN-hub. 
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Wat is een vertakkings verbinding met Azure Virtual WAN?
 

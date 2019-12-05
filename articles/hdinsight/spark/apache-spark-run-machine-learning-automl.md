@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 14cb4f02bc18bda24f022f1ccf41a06776a5136b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 4e6b648ed70f6ff57a2d11cde43b8168b800fcb3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241479"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806912"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Azure Machine Learning werk belastingen uitvoeren met geautomatiseerde machine learning op Apache Spark in HDInsight
 
@@ -71,7 +71,7 @@ U kunt de gegevens opslag ook registreren bij de werk ruimte met behulp van een 
 
 ## <a name="experiment-submission"></a>Inzending experimenteren
 
-In de [configuratie van automatische machine learning](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig)moet de eigenschap `spark_context` worden ingesteld voor het uitvoeren van het pakket op de gedistribueerde modus. De eigenschap `concurrent_iterations`, het maximum aantal iteraties dat parallel wordt uitgevoerd, moet worden ingesteld op een getal dat kleiner is dan de uitvoer kernen voor de Spark-app.
+In de [configuratie van automatische machine learning](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)moet de eigenschap `spark_context` worden ingesteld voor het uitvoeren van het pakket op de gedistribueerde modus. De eigenschap `concurrent_iterations`, het maximum aantal iteraties dat parallel wordt uitgevoerd, moet worden ingesteld op een getal dat kleiner is dan de uitvoer kernen voor de Spark-app.
 
 ## <a name="next-steps"></a>Volgende stappen
 

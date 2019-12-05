@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 8e522b49c53dd40a4438755520481383984c1e01
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535884"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807082"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Onderhoud voor virtuele machines in azure
 
@@ -29,7 +29,7 @@ Updates zijn zelden van invloed op de gehoste Vm's. Wanneer de updates een effec
 
 Op deze pagina wordt beschreven hoe Azure beide soorten onderhoud uitvoert. Zie [de beschik baarheid van vm's voor Windows](./windows/manage-availability.md) of het bijbehorende artikel voor [Linux](./linux/manage-availability.md)beheren voor meer informatie over niet-geplande gebeurtenissen (uitval).
 
-Binnen een VM kunt u meldingen ontvangen over aanstaande onderhoud door [gebruik te maken van Scheduled Events voor Windows](/windows/scheduled-events.md) of voor [Linux](/linux/scheduled-events.md).
+Binnen een VM kunt u meldingen ontvangen over aanstaande onderhoud door [gebruik te maken van Scheduled Events voor Windows](./windows/scheduled-events.md) of voor [Linux](./linux/scheduled-events.md).
 
 
 
@@ -43,7 +43,7 @@ Het onderhoud van geheugen-behoud werkt meer dan 90 procent van de Azure-Vm's. H
 
 Voor deze onderhouds bewerkingen die niet opnieuw moeten worden opgestart, wordt één fout domein tegelijk toegepast. Deze worden gestopt als er waarschuwings status signalen worden ontvangen. 
 
-Deze typen updates kunnen van invloed zijn op sommige toepassingen. Wanneer de virtuele machine Live naar een andere host wordt gemigreerd, kan het even duren voordat de virtuele machine wordt onderbroken door bepaalde gevoelige workloads. Voor de voor bereiding op het onderhoud van de virtuele machine en het verminderen van de impact tijdens het onderhoud van Azure, kunt [u Scheduled Events voor Windows](/windows/scheduled-events.md) of [Linux](/linux/scheduled-events.md) gebruiken voor dergelijke toepassingen. 
+Deze typen updates kunnen van invloed zijn op sommige toepassingen. Wanneer de virtuele machine Live naar een andere host wordt gemigreerd, kan het even duren voordat de virtuele machine wordt onderbroken door bepaalde gevoelige workloads. Voor de voor bereiding op het onderhoud van de virtuele machine en het verminderen van de impact tijdens het onderhoud van Azure, kunt [u Scheduled Events voor Windows](./windows/scheduled-events.md) of [Linux](./linux/scheduled-events.md) gebruiken voor dergelijke toepassingen. 
 
 Er is ook een functie, onderhouds beheer, in open bare preview die u kan helpen onderhoud te beheren waarvoor opnieuw opstarten niet nodig is. U moet een met [Azure toegewezen hosts](./linux/dedicated-hosts.md) of een [geïsoleerde VM](../security/fundamentals/isolation-choices.md)gebruiken. Onderhouds beheer biedt u de mogelijkheid om platform updates over te slaan en de updates op uw gewenste tijdstip toe te passen binnen een 35-daags venster. Zie [updates beheren met onderhouds beheer en de Azure cli](maintenance-control-cli.md)voor meer informatie.
 

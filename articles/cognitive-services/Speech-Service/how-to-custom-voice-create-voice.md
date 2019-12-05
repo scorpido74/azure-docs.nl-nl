@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 370b5005f27fbfe6ee8fc96d6dd7e467a581ec67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 437b87a3d684d7751adc89ba77b20ea86b3455e4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464607"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805991"
 ---
 # <a name="create-a-custom-voice"></a>Een aangepaste stem maken
 
@@ -44,9 +44,9 @@ Gegevens sets worden automatisch gevalideerd zodra u op de knop uploaden hebt ge
 
 De volgende tabel toont de verwerkings statussen voor geïmporteerde gegevens sets:
 
-| Status | Betekenis |
+| Staat | Betekenis |
 | ----- | ------- |
-| Wordt verwerkt | Uw gegevensset is ontvangen en wordt verwerkt. |
+| Verwerken | Uw gegevensset is ontvangen en wordt verwerkt. |
 | Geslaagd | Uw gegevensset is gevalideerd en kan nu worden gebruikt voor het bouwen van een spraak model. |
 | Mislukt | De gegevensset is tijdens de verwerking mislukt omdat er veel redenen zijn, bijvoorbeeld bestands fouten, gegevens problemen of netwerk problemen. |
 
@@ -86,9 +86,9 @@ In de tabel training wordt een nieuw item weer gegeven dat overeenkomt met dit n
 
 De status die wordt weer gegeven, weerspiegelt het proces van het converteren van uw gegevensset naar een spraak model, zoals hier wordt weer gegeven.
 
-| Status | Betekenis |
+| Staat | Betekenis |
 | ----- | ------- |
-| Wordt verwerkt | Uw spraak model wordt gemaakt. |
+| Verwerken | Uw spraak model wordt gemaakt. |
 | Geslaagd | Uw spraak model is gemaakt en kan worden geïmplementeerd. |
 | Mislukt | Uw spraak model is niet in de cursus opgetreden omdat er veel redenen zijn, bijvoorbeeld ongevraagde gegevens problemen of netwerk problemen. |
 

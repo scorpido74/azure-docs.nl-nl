@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: wolfma
-ms.openlocfilehash: 2ee2b25958feac2387779d9e60734a6600b60a2e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 23f0b459b67088518375fbb4fd0b106da3aaf57c
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682076"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815841"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Quick Start: een LUIS-eindpunt sleutel ophalen
 
@@ -27,7 +27,7 @@ Zorg ervoor dat u de volgende items hebt voordat u met deze zelf studie begint:
 
 ## <a name="luis-and-speech"></a>LUIS en spraakherkenning
 
-LUIS integreert met de spraak Services om intenties van spraak te herkennen. U hebt geen spraak Services-abonnement nodig, alleen LUIS.
+LUIS kan worden geïntegreerd met de Speech-service voor het herkennen van intenties van spraak. U hebt geen abonnement op de Speech-service nodig, alleen op LUIS.
 
 LUIS maakt gebruik van drie soorten sleutels:
 
@@ -39,7 +39,7 @@ LUIS maakt gebruik van drie soorten sleutels:
 
 Voor deze zelf studie hebt u het type eindpunt sleutel nodig. In de zelf studie wordt gebruikgemaakt van de voor beeld-app Home Automation LUIS, die u kunt maken met [behulp van vooraf ontwikkelde Start Automation-apps](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) Als u zelf een LUIS-app hebt gemaakt, kunt u deze gebruiken in plaats daarvan.
 
-Wanneer u een LUIS-app maakt, wordt door LUIS automatisch een start sleutel gegenereerd zodat u de app kunt testen met behulp van tekst query's. Deze sleutel biedt geen ondersteuning voor spraak Services en werkt niet met deze zelf studie. Maak een LUIS-resource in het Azure-dash board en wijs deze toe aan de LUIS-app. U kunt de gratis versie van het abonnement gebruiken voor deze zelfstudie.
+Wanneer u een LUIS-app maakt, wordt door LUIS automatisch een start sleutel gegenereerd zodat u de app kunt testen met behulp van tekst query's. Met deze sleutel wordt de integratie van de spraak service niet ingeschakeld en werkt deze niet met deze zelf studie. Maak een LUIS-resource in het Azure-dash board en wijs deze toe aan de LUIS-app. U kunt de gratis versie van het abonnement gebruiken voor deze zelfstudie.
 
 Nadat u de LUIS-resource hebt gemaakt in het Azure-dash board, meldt u zich aan bij de [Luis-Portal](https://www.luis.ai/home), kiest u uw toepassing op de pagina **mijn apps** en gaat u naar de pagina **beheren** van de app. Ten slotte selecteert u de **toetsen en eind punten** in de zijbalk.
 

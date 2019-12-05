@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a601b0c40f84832101e97a7abf7dd7418a0a5c69
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 5bf93980a8be86c77240ab981eb812a738a96204
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673312"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828976"
 ---
 U hebt door deze stappen te volgen een VNet gemaakt met behulp van het Resource Manager-implementatiemodel en de Azure-portal. Zie [Overzicht van virtuele netwerken](../articles/virtual-network/virtual-networks-overview.md) voor meer informatie over virtuele netwerken.
 
@@ -22,28 +22,30 @@ U hebt door deze stappen te volgen een VNet gemaakt met behulp van het Resource 
 >
 >
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Create a resource**. De pagina **Nieuw** wordt geopend.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).  Klik in het menu Azure Portal of op de **Start** pagina en selecteer **een resource maken**. De pagina **Nieuw** wordt geopend.
 
-2. Voer in het veld **Search the marketplace** *virtueel netwerk* in en selecteer **Virtueel netwerk** in de geretourneerde lijst. De pagina **Virtueel netwerk** wordt geopend.
+2. In **de Marketplace zoeken**voert u het *virtuele netwerk* in en selecteert u **Virtual Network** in de resultaten.
 
-   ![Pagina voor zoeken van Virtual Network](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "Pagina voor zoeken van Virtual Network")
+   ![Virtual Network resource pagina zoeken](./media/vpn-gateway-basic-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "De resource pagina van het virtuele netwerk zoeken")
+
+   De pagina **Virtueel netwerk** wordt geopend.
 
 3. Selecteer in de lijst **Select a deployment model** onder aan de pagina de optie **Resource Manager** en selecteer vervolgens **Maken**. De pagina **Virtueel netwerk maken** wordt geopend.
 
-   ![Pagina Virtueel netwerk maken](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet.png "Pagina Virtueel netwerk maken")
+   ![Pagina virtueel netwerk maken](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet.png "De pagina Virtueel netwerk maken")
 
 4. Configureer de VNet-instellingen op de pagina **Virtueel netwerk maken**. Wanneer u de velden invult, verandert het rode uitroepteken in een groen vinkje als de tekens die u in het veld invoert, zijn gevalideerd. Sommige waarden worden automatisch ingevuld. Deze kunt u door uw eigen waarden vervangen:
 
-   - **Naam**: Voer de naam in van het virtuele netwerk.
+   - **Naam**: geef de naam op voor het virtuele netwerk.
 
-   - **Adresruimte**: voer de adresruimte in. Als er meerdere adresruimten moeten worden toegevoegd, voert u de eerste adresruimte hier toe. U kunt later, nadat u het VNet hebt gemaakt, extra adresruimten toevoegen.
+   - **Adresruimte**: voer de adresruimte. Als er meerdere adresruimten moeten worden toegevoegd, voert u de eerste adresruimte hier toe. U kunt later, nadat u het VNet hebt gemaakt, extra adresruimten toevoegen.
 
    - **Abonnement**: controleer of het weergegeven abonnement het juiste is. U kunt abonnementen wijzigen met behulp van de vervolgkeuzelijst.
 
-   - **Resourcegroep**: selecteer een bestaande resourcegroep of maak een nieuwe door een naam voor de nieuwe resourcegroep in te voeren. Geef de resourcegroep een naam die aansluit bij de geplande configuratiewaarden als u een nieuwe groep aanmaakt. Zie [Overzicht van Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) voor meer informatie over resourcegroepen.
+   - **Resource groep**: Selecteer een bestaande resource groep of maak een nieuwe door een naam in te voeren voor de nieuwe resource groep. Geef de resourcegroep een naam die aansluit bij de geplande configuratiewaarden als u een nieuwe groep aanmaakt. Zie [Overzicht van Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) voor meer informatie over resourcegroepen.
 
    - **Locatie**: selecteer de locatie voor uw VNet. De locatie bepaalt waar de resources die u naar dit VNet implementeert, zich bevinden.
 
-   - **Subnet**: voeg de **naam** en het **adresbereik** van het subnet toe. U kunt later, nadat u het VNet hebt gemaakt, extra subnetten toevoegen. 
+   - **Subnet**: Voeg de **naam** en het **adres bereik**van het subnet toe. U kunt later, nadat u het VNet hebt gemaakt, extra subnetten toevoegen. 
      
 5. Selecteer **Maken**.

@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dd3e27aefe03ee30e721fcbb915d9ad4b3821618
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579705"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806300"
 ---
-# <a name="custom-commands-preview"></a>Aangepaste opdrachten (preview-versie)
+# <a name="custom-commands-preview"></a>Aangepaste opdrachten (preview)
 
 [Spraak assistenten](voice-assistants.md) worden naar gebruikers geluisterd en nemen een actie in antwoord, vaak gesp roken terug. Ze gebruiken [spraak-naar-tekst](speech-to-text.md) om de spraak van de gebruiker te transcriberen en vervolgens actie te ondernemen op het memorandum van natuurlijke taal van de tekst. Deze actie omvat vaak gesp roken uitvoer van de assistent die is gegenereerd met [tekst-naar-spraak](text-to-speech.md). Apparaten maken verbinding met assistenten met het `DialogServiceConnector`-object van de Speech SDK.
 
@@ -49,7 +49,7 @@ Voorbeeld code voor het maken van een spraak assistent met aangepaste opdrachten
 
 ## <a name="customization"></a>Aanpassing
 
-Spraak assistenten die zijn gemaakt met behulp van Azure speech Services kunnen gebruikmaken van het volledige aanbod aan aanpassings opties voor [spraak naar tekst](speech-to-text.md), [tekst naar spraak](text-to-speech.md)en [aangepaste trefwoord selectie](speech-devices-sdk-create-kws.md).
+Spraak assistenten die zijn gebouwd met behulp van de spraak service kunnen gebruikmaken van het volledige aanbod aan aanpassings opties voor [spraak naar tekst](speech-to-text.md), [tekst naar spraak](text-to-speech.md)en [aangepaste trefwoord selectie](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
 > Aanpassings opties variëren per taal/land instelling (Zie [ondersteunde talen](supported-languages.md)).
@@ -60,5 +60,5 @@ Spraak assistenten die zijn gemaakt met behulp van Azure speech Services kunnen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gratis een abonnements sleutel voor spraak Services aanschaffen](get-started.md)
+* [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
 * [De Speech SDK ophalen](speech-sdk.md)

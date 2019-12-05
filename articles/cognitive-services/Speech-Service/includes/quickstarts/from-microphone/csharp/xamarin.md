@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: f67c98eb8417b66c3315bccb1d56b98a68aac839
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ecfdc74c72284da97ebf3107140911e666a3a12d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796023"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818642"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -136,7 +136,7 @@ Voeg nu de C# code toe die het UWP gedeelte van de toepassing definieert.
 
    ![Verzoek om toegang tot de microfoon](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. Selecteer **spraak herkenning starten**en spreek een Engelse zin of zin uit in de microfoon van uw apparaat. Uw spraak wordt verzonden naar spraak Services en getranscribeerd naar tekst, die wordt weer gegeven in het venster.
+1. Selecteer **spraak herkenning starten**en spreek een Engelse zin of zin uit in de microfoon van uw apparaat. Uw gesproken tekst wordt verzonden naar de Speech-service en getranscribeerd naar tekst, die in hetzelfde venster wordt weergegeven.
 
    ![Gebruikers interface voor spraak herkenning](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *

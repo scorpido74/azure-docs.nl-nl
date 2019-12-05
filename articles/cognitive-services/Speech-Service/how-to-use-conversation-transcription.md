@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: 4ee597f96d28b43b9c69d1515634aadde2f0ab7c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 93f0117096a5601632ccced6b698e84a0714bbd4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608050"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805804"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Real-time conversatie transcriptie (preview-versie)
 
-Met de **ConversationTranscriber** -API van de Speech SDK kunt u vergaderingen en andere gesp rekken transcriberen met de mogelijkheid om meerdere deel nemers toe te voegen, te verwijderen en te identificeren door audio naar spraak services te streamen met behulp van `PullStream` of `PushStream`. In dit onderwerp moet u weten hoe u spraak-naar-tekst kunt gebruiken met de Speech SDK (versie 1.8.0 of hoger). Zie [Wat zijn spraak Services](overview.md)? voor meer informatie.
+Met de **ConversationTranscriber** API van de Speech SDK kunt u vergaderingen en andere gesp rekken transcriberen met de mogelijkheid om meerdere deel nemers toe te voegen, te verwijderen en te identificeren door audio naar de spraak service te streamen met behulp van `PullStream` of `PushStream`. In dit onderwerp moet u weten hoe u spraak-naar-tekst kunt gebruiken met de Speech SDK (versie 1.8.0 of hoger). Zie [Wat zijn spraak Services](overview.md)? voor meer informatie.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -37,7 +37,7 @@ De SDK voor spraak apparaten biedt voorbeeld code in Java voor realtime audio-op
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een spraak Services-abonnement. U kunt [een proef abonnement voor spraak ontvangen](https://azure.microsoft.com/try/cognitive-services/) als u er nog geen hebt.
+Een spraak service-abonnement. U kunt [een proef abonnement voor spraak ontvangen](https://azure.microsoft.com/try/cognitive-services/) als u er nog geen hebt.
 
 ## <a name="create-voice-signatures"></a>Spraak handtekeningen maken
 

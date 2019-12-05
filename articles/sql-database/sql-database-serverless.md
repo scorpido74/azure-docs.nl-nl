@@ -4,19 +4,19 @@ description: In dit artikel wordt de nieuwe serverloze Compute-laag beschreven e
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
+ms.custom: test
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: a304b7fb0ba90d4ccf3805f47a5b04a2d3d8765e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d1f3bf6cb1467d0bb4906ff2409e72828b22cd20
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775580"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807014"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database - Serverloos
 
@@ -66,9 +66,9 @@ De volgende tabel bevat een overzicht van de verschillen tussen de serverloze Co
 | | **Serverloze compute** | **Ingerichte compute** |
 |:---|:---|:---|
 |**Database gebruiks patroon**| Onregelmatige, onvoorspelbaar gebruik met minder gemiddelde reken capaciteit gedurende een bepaalde periode. |  Meer reguliere gebruiks patronen met een hoger gemiddelde reken gebruik gedurende een bepaalde periode of meerdere data bases met elastische Pools.|
-| **Prestatie beheer-inspanning** |Onderliggende|Omhoog|
+| **Prestatie beheer-inspanning** |Lager|Hoger|
 |**Berekening schalen**|Automatisch|Handmatig|
-|**Reactie tijd van berekeningen**|Lager dan inactieve Peri Oden|Onmiddellijk|
+|**Reactie tijd van berekeningen**|Lager dan inactieve Peri Oden|Direct|
 |**Granulatie facturering**|Per seconde|Per uur|
 
 ## <a name="purchasing-model-and-service-tier"></a>Aankoop model en servicelaag
@@ -334,7 +334,7 @@ In dit geval wordt de data base in de eerste acht uur gefactureerd voor Compute 
 
 Nauw keuriger wordt de reken factuur in dit voor beeld als volgt berekend:
 
-|Tijds interval|vCores elke seconde gebruikt|GB gebruikt elke seconde|Gefactureerde reken dimensie|vCore seconden gefactureerd over het tijds interval|
+|Tijdsinterval|vCores elke seconde gebruikt|GB gebruikt elke seconde|Gefactureerde reken dimensie|vCore seconden gefactureerd over het tijds interval|
 |---|---|---|---|---|
 |0:00-1:00|4|9|vCores gebruikt|4 vCores seconden * 3600 seconde = 14400 vCore seconden|
 |1:00-2:00|1|12|Gebruikt geheugen|12 GB * 1/3 * 3600 seconden = 14400 vCore seconden|

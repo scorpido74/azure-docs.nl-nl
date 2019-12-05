@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: a00e5be4493b8c8116e2925e88a3ce4bf8cfb722
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8cf9fc0b3d9c13ebc5309be6d27c7be0f2e60878
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085315"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805685"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications met meldingen
 
@@ -71,12 +71,12 @@ In de volgende tabel worden alle mogelijke combi Naties van Event type + Provisi
 
 EventType | ProvisioningState | Trigger voor melding
 ---|---|---
-PUT | Afgewezen | De beheerde resource groep is gemaakt en geprojecteerd nadat de toepassing is geplaatst. (Voordat de implementatie binnen de beheerde RG wordt gestart.)
+PUT | Geaccepteerd | De beheerde resource groep is gemaakt en geprojecteerd nadat de toepassing is geplaatst. (Voordat de implementatie binnen de beheerde RG wordt gestart.)
 PUT | Geslaagd | Volledige inrichting van de beheerde toepassing is voltooid na een PUT.
 PUT | Mislukt | Fout bij het inrichten van een toepassings exemplaar op enig moment.
-VERZENDEN | Geslaagd | Na een geslaagde PATCH voor een exemplaar van de beheerde toepassing voor het bijwerken van tags, JIT-toegangs beleid of beheerde identiteit.
-DELETE | Verwijder | Zodra de gebruiker een exemplaar van een beheerde app verwijdert.
-DELETE | Verwijderen | Na de volledige en geslaagde verwijdering van de beheerde toepassing.
+PATCH | Geslaagd | Na een geslaagde PATCH voor een exemplaar van de beheerde toepassing voor het bijwerken van tags, JIT-toegangs beleid of beheerde identiteit.
+DELETE | Deleting | Zodra de gebruiker een exemplaar van een beheerde app verwijdert.
+DELETE | Deleted | Na de volledige en geslaagde verwijdering van de beheerde toepassing.
 DELETE | Mislukt | Na een fout tijdens het ongedaan maken van de inrichting die de verwijdering blokkeert.
 ## <a name="notification-schema"></a>Meldings schema
 Wanneer u het webhook-eind punt voor het afhandelen van meldingen hebt ingesteld, moet u de payload parseren om belang rijke eigenschappen op te halen om vervolgens te reageren op de melding. De Service catalogus en de meldingen van beheerde toepassingen op Marketplace bieden veel van dezelfde eigenschappen met het kleine verschil dat hieronder wordt beschreven.
@@ -132,6 +132,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -152,6 +155,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -178,9 +184,10 @@ eventType | Het type gebeurtenis dat de melding heeft geactiveerd. (bijvoorbeeld
 applicationId | De volledig gekwalificeerde resource-id van de beheerde toepassing waarvoor de melding is geactiveerd. 
 eventTime | De tijds tempel van de gebeurtenis die de melding heeft geactiveerd. (Datum en tijd in UTC ISO 8601-indeling.)
 ProvisioningState | De inrichtings status van het exemplaar van de beheerde toepassing. (bijvoorbeeld ' geslaagd ', ' mislukt ', ' verwijderen ', ' verwijderd ')
+billingDetails | De facturerings gegevens van het exemplaar van de beheerde toepassing. Bevat de resourceUsageId die kunnen worden gebruikt om een query uit te zoeken op Marketplace voor gebruiks gegevens.
 error | *Wordt alleen opgegeven als de provisioningState is mislukt*. Bevat de fout code, het bericht en de details van het probleem dat de fout heeft veroorzaakt.
 applicationDefinitionId | *Alleen opgegeven voor door de service catalog beheerde toepassingen*. Hiermee wordt de volledig gekwalificeerde resource-id van de toepassings definitie aangegeven waarvoor het exemplaar van de beheerde toepassing is ingericht.
-Fonds | *Alleen opgegeven voor toepassingen die door Marketplace worden beheerd*. Vertegenwoordigt de uitgever, aanbieding, SKU en versie van het exemplaar van de beheerde toepassing.
+plannen | *Alleen opgegeven voor toepassingen die door Marketplace worden beheerd*. Vertegenwoordigt de uitgever, aanbieding, SKU en versie van het exemplaar van de beheerde toepassing.
 
 ## <a name="endpoint-authentication"></a>Eindpunt verificatie
 Het webhook-eind punt beveiligen en de authenticiteit van de melding controleren:

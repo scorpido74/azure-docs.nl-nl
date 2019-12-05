@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: f3ad58c4094e9f39bcf9782b7b98e351e9d7809b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a1c2049d7355ab946dbf426ec71f7f6178b8f153
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058136"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819100"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Problemen met activering van Azure Windows-virtuele machines oplossen
 
@@ -26,7 +26,7 @@ Als u problemen ondervindt bij het activeren van Azure Windows Virtual Machine (
 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Informatie over Azure KMS-eind punten voor Windows-product activering van Azure Virtual Machines
 
-Azure gebruikt verschillende eind punten voor KMS-activering, afhankelijk van de regio van de Cloud waar de virtuele machine zich bevindt. Wanneer u deze hand leiding voor probleem oplossing gebruikt, gebruikt u het juiste KMS-eind punt dat van toepassing is op uw regio.
+Azure gebruikt verschillende eind punten voor KMS-activering (Key Management Services), afhankelijk van de regio van de Cloud waar de virtuele machine zich bevindt. Wanneer u deze hand leiding voor probleem oplossing gebruikt, gebruikt u het juiste KMS-eind punt dat van toepassing is op uw regio.
 
 * Open bare Cloud regio's van Azure: kms.core.windows.net:1688
 * Azure China 21Vianet nationale Cloud regio's: kms.core.chinacloudapi.cn:1688
@@ -37,7 +37,7 @@ Azure gebruikt verschillende eind punten voor KMS-activering, afhankelijk van de
 
 Wanneer u probeert een Azure Windows-VM te activeren, wordt een fout bericht weer gegeven dat lijkt op het volgende voor beeld:
 
-**Fout: 0xC004F074 de software-LicensingService heeft gerapporteerd dat de computer niet kan worden geactiveerd. Er kan geen verbinding worden gemaakt met Key ManagementService (KMS). Raadpleeg het gebeurtenis logboek van de toepassing voor meer informatie.**
+**Fout: 0xC004F074 software-LicensingService heeft gerapporteerd dat de computer niet kan worden geactiveerd. Er kan geen verbinding worden gemaakt met Key ManagementService (KMS). Raadpleeg het gebeurtenis logboek van de toepassing voor meer informatie.**
 
 ## <a name="cause"></a>Oorzaak
 
@@ -54,7 +54,7 @@ Over het algemeen worden er problemen met de activering van Azure VM gegenereerd
 
 Voor de virtuele machine die is gemaakt op basis van een aangepaste installatie kopie, moet u de juiste installatie sleutel voor de KMS-client configureren voor de virtuele machine.
 
-1. Voer **slmgr. vbs/dlv** uit vanaf een opdracht prompt met verhoogde bevoegdheden. Controleer de beschrijvings waarde in de uitvoer en bepaal vervolgens of deze is gemaakt op basis van Retail Channel (DETAILHANDELKANAAL) of volume (VOLUME_KMSCLIENT)-licentie media:
+1. Voer **slmgr. vbs/dlv** uit vanaf een opdracht prompt met verhoogde bevoegdheden. Controleer de beschrijvings waarde in de uitvoer en bepaal of deze is gemaakt op basis van Retail-(DETAILHANDELKANAAL) of volume (VOLUME_KMSCLIENT)-licentie media:
   
 
     ```
@@ -87,14 +87,14 @@ Voor de virtuele machine die is gemaakt op basis van een aangepaste installatie 
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
 
-    Met deze opdracht wordt dit geretourneerd: De naam van de Key Management service-computer is ingesteld op kms.core.windows.net:1688.
+    De opdracht moet retour neren: de computer naam van de Key Management-service is ingesteld op kms.core.windows.net:1688.
 
 4. Controleer met behulp van Psping dat u verbinding hebt met de KMS-server. Ga naar de map waarin u het gedownloade bestand Pstools.zip hebt uitgepakt en voer vervolgens het volgende uit:
   
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-   Controleer of u in de een-na-laatste regel van de uitvoer het volgende ziet: Verzonden = 4, ontvangen = 4, verloren = 0 (0% verlies).
+   Controleer op de tweede tot laatste regel van de uitvoer of u ziet: verzonden = 4, ontvangen = 4, verloren = 0 (0% verlies).
 
    Als verloren is groter dan 0 (nul), is de virtuele machine niet verbonden met de KMS-server. Als de virtuele machine zich in een virtueel netwerk bevindt en een aangepaste DNS-server is opgegeven, moet u ervoor zorgen dat de DNS-server kms.core.windows.net kan omzetten. U kunt ook de DNS-server wijzigen in een die kms.core.windows.net omzetten.
 
@@ -130,6 +130,6 @@ Ja.
  
 Wanneer de respijt periode is verlopen en Windows nog steeds niet wordt geactiveerd, worden in Windows Server 2008 R2 en latere versies van Windows aanvullende meldingen over het activeren weer gegeven. De achtergrond van het bureau blad blijft zwart en Windows Update installeert alleen beveiligings-en essentiële updates, maar geen optionele updates. Zie de sectie meldingen onder aan de pagina [licentie voorwaarden](https://technet.microsoft.com/library/ff793403.aspx) .   
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning.
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 
 Als u nog steeds hulp nodig hebt, neemt u [contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

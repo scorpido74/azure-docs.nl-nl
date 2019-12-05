@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: tekst-naar-spraak-, python-Speech-Service converteren'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u tekst naar spraak kunt converteren met behulp van python en de tekst-naar-spraak-REST API. De voorbeeld tekst in deze hand leiding is gestructureerd als SSML (Speech synthese Markup Language). Hiermee kunt u de stem en de taal van het antwoord op de spraak kiezen.
+description: In deze snelstartgids leert u hoe u om te converteren tekst naar spraak met behulp van Python en de tekst naar spraak REST-API. De voorbeeldtekst opgenomen in deze handleiding is opgebouwd als spraak synthese Markup Language (SSML). Hiermee kunt u de spraak en taal van het antwoord spraak te kiezen.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a66835d605b9005b8f94eb79a3c266f735f0a3b6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23f3a6b030b477d3dcc06317a545064da95100ff
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467209"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816209"
 ---
-# <a name="quickstart-convert-text-to-speech-using-python"></a>Snelstartgids: tekst-naar-spraak converteren met behulp van python
+# <a name="quickstart-convert-text-to-speech-using-python"></a>Snelstartgids: Converteren voor tekst naar spraak met behulp van Python
 
-In deze Quick Start leert u hoe u tekst naar spraak kunt converteren met behulp van python en de tekst-naar-spraak-REST API. De aanvraag tekst in deze hand leiding is gestructureerd als [SSML (Speech synthese Markup Language)](speech-synthesis-markup.md), waarmee u de stem en de taal van het antwoord kunt kiezen.
+In deze snelstartgids leert u hoe u om te converteren tekst naar spraak met behulp van Python en de Text to Speech REST-API. De hoofdtekst van de aanvraag in deze handleiding is opgebouwd als [spraak synthese Markup Language (SSML)](speech-synthesis-markup.md), waarmee u de spraak en taal van het antwoord te kiezen.
 
-Voor deze Snelstartgids is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vereist met een speech Services-resource. Als u geen account hebt, kunt u de [gratis proefversie](get-started.md) gebruiken om een abonnementssleutel op te halen.
+Deze Snelstartgids vereist een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een speech service-resource. Als u geen account hebt, kunt u de [gratis proefversie](get-started.md) gebruiken om een abonnementssleutel op te halen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,7 +29,7 @@ Voor deze snelstart zijn de volgende zaken vereist:
 
 * Python 2.7.x of 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) of uw favoriete teksteditor
-* Een sleutel van een Azure-abonnement voor de spraak Services
+* Een sleutel van een Azure-abonnement voor de speech-service
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
 
@@ -45,11 +45,11 @@ from xml.etree import ElementTree
 > [!NOTE]
 > Als u deze modules nog niet hebt gebruikt, moet u ze installeren voordat u het programma uitvoert. Voer voor het installeren van deze pakketten voert u `pip install requests` uit.
 
-Deze modules worden gebruikt voor het schrijven van het antwoord op een bestand met een tijds tempel, het maken van de HTTP-aanvraag en het aanroepen van de tekst-naar-spraak-API.
+Deze modules worden gebruikt voor het schrijven van het antwoord spraak als een bestand met een tijdstempel, de HTTP-aanvraag maken en aanroepen van de Text to Speech-API.
 
-## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>De abonnements sleutel instellen en een prompt voor TTS maken
+## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Stel de abonnementssleutel en een prompt voor TTS maken
 
-In de volgende secties maakt u methoden voor het afhandelen van autorisatie, het aanroepen van de tekst-naar-spraak-API en het valideren van het antwoord. Laten we beginnen door een code toe te voegen waarmee wordt gecontroleerd of dit voor beeld werkt met python 2.7. x en 3. x.
+In de volgende gedeelten maakt u methoden voor verwerking van autorisatie, de Text to Speech-API aanroepen en valideren van het antwoord. Laten we beginnen met het toevoegen van code die ervoor dat in dit voorbeeld zorgt werkt met Python 2.7.x en 3.x.
 
 ```python
 try:
@@ -58,7 +58,7 @@ except NameError:
     pass
 ```
 
-Vervolgens gaan we een klasse maken. Hier worden onze methoden voor het uitwisselen van tokens en het aanroepen van de tekst-naar-spraak-API.
+Vervolgens maken we een klasse. Dit is waar gaan we onze methoden voor token exchange en het aanroepen van de Text to Speech-API.
 
 ```python
 class TextToSpeech(object):
@@ -69,15 +69,15 @@ class TextToSpeech(object):
         self.access_token = None
 ```
 
-De `subscription_key` is uw unieke sleutel van de Azure Portal. `tts` vraagt de gebruiker om tekst in te voeren die naar spraak wordt geconverteerd. Deze invoer is een letterlijke teken reeks, dus tekens moeten dus niet worden voorafgegaan. Ten slotte wordt `timestr` de huidige tijd opgehaald, die we gebruiken om uw bestand een naam te gegeven.
+De `subscription_key` is de unieke sleutel vanuit de Azure-portal. `tts` vraagt de gebruiker tekst die wordt geconverteerd naar spraak in te voeren. Deze invoer is een tekenreeks, zodat tekens niet hoeft te worden weergegeven. Ten slotte `timestr` opgehaald van de huidige tijd, die we gebruiken om de naam van het bestand.
 
 ## <a name="get-an-access-token"></a>Een toegangstoken opvragen
 
-Voor de REST API tekst naar spraak is een toegangs token voor verificatie vereist. Voor het verkrijgen van een toegangs token is een uitwisseling vereist. In dit voor beeld wordt uw abonnements sleutel voor spraak Services voor een toegangs token uitgewisseld met behulp van het `issueToken`-eind punt.
+De Text to Speech REST-API is een toegangstoken voor verificatie vereist. Als u een toegangstoken, is een exchange vereist. In dit voor beeld wordt uw abonnements sleutel voor spraak Services voor een toegangs token uitgewisseld met behulp van het `issueToken`-eind punt.
 
-In dit voor beeld wordt ervan uitgegaan dat uw speech Services-abonnement zich in de regio vs-West bevindt. Als u een andere regio gebruikt, werkt u de waarde voor `fetch_token_url`bij. Zie [regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)voor een volledige lijst.
+In dit voor beeld wordt ervan uitgegaan dat uw speech service-abonnement zich in de regio vs-West bevindt. Als u een andere regio, werk de waarde voor `fetch_token_url`. Zie voor een volledige lijst [regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
-Kopieer deze code naar de klasse `TextToSpeech`:
+Kopieer deze code in de `TextToSpeech` klasse:
 
 ```python
 def get_token(self):
@@ -94,19 +94,19 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>Een aanvraag indienen en het antwoord opslaan
 
-Hier gaat u de aanvraag maken en het antwoord op de spraak actie Opslaan. Eerst moet u de `base_url` en `path`instellen. In dit voor beeld wordt ervan uitgegaan dat u gebruikmaakt van het eind punt vs West. Als uw resource is geregistreerd in een andere regio, moet u de `base_url`bijwerken. Zie voor meer informatie [spraak Services regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Hier gaat u naar de aanvraag voor het samenstellen en sla het antwoord spraak. Eerst moet u om in te stellen de `base_url` en `path`. In dit voorbeeld wordt ervan uitgegaan dat u het eindpunt van de VS-West. Als de bron naar een andere regio is geregistreerd, moet u bijwerken de `base_url`. Zie [Speech Service regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)(Engelstalig) voor meer informatie.
 
-Vervolgens moet u de vereiste headers voor de aanvraag toevoegen. Zorg ervoor dat u `User-Agent` bijwerkt met de naam van uw resource (in de Azure Portal) en stel `X-Microsoft-OutputFormat` in op uw favoriete audio-uitvoer. Zie [audio-uitvoer](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)voor een volledige lijst met uitvoer indelingen.
+Vervolgens moet u vereiste headers voor de aanvraag toevoegen. Zorg ervoor dat bij te werken `User-Agent` met de naam van uw resource (te vinden in Azure portal) en stel `X-Microsoft-OutputFormat` aan uw gewenste audio-uitvoer. Zie voor een volledige lijst van de uitvoerindeling op te geven, [Audio-uitvoer](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
-Maak vervolgens de aanvraag tekst met behulp van SSML (Speech synthese Markup Language). In dit voor beeld wordt de structuur gedefinieerd en wordt de `tts` invoer gebruikt die u eerder hebt gemaakt.
+Vervolgens maken de hoofdtekst van de aanvraag met behulp van spraak synthese Markup Language (SSML). In dit voorbeeld definieert u de structuur en maakt gebruik van de `tts` invoer u eerder hebt gemaakt.
 
 >[!NOTE]
-> In dit voor beeld wordt gebruikgemaakt van het `Guy24KRUS`-stem lettertype. Zie [taal ondersteuning](language-support.md)voor een volledige lijst van door micro soft geboden stemmen/talen.
-> Zie [aangepaste spraak lettertypen maken](how-to-customize-voice-font.md)als u geïnteresseerd bent in het maken van een unieke, herken bare spraak voor uw merk.
+> In dit voorbeeld wordt de `Guy24KRUS` spraakstijl. Voor een volledige lijst van door Microsoft geleverd stemmen/talen, Zie [taalondersteuning](language-support.md).
+> Als u geïnteresseerd bent in het maken van een unieke, herkenbare stem voor uw merk, Zie [het maken van aangepaste spraakstijlen](how-to-customize-voice-font.md).
 
-Ten slotte maakt u een aanvraag voor de service. Als de aanvraag is gelukt en er een 200-status code wordt geretourneerd, wordt het spraak antwoord naar een tijds tempel bestand geschreven.
+Ten slotte maakt u een aanvraag naar de service. Als de aanvraag geslaagd is, en een 200-statuscode is geretourneerd, wordt het antwoord spraak geschreven naar een bestand voorzien van een tijdstempel.
 
-Kopieer deze code naar de klasse `TextToSpeech`:
+Kopieer deze code in de `TextToSpeech` klasse:
 
 ```python
 def save_audio(self):
@@ -141,7 +141,7 @@ def save_audio(self):
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-U bent bijna klaar. De laatste stap is het instantiëren van uw klasse en het aanroepen van uw functies.
+U bent bijna klaar. De laatste stap is het instantiëren van de klasse en aanroepen van uw functies.
 
 ```python
 if __name__ == "__main__":
@@ -153,13 +153,13 @@ if __name__ == "__main__":
 
 ## <a name="run-the-sample-app"></a>De voorbeeld-app uitvoeren
 
-Dat is alles. u bent klaar om uw tekst-naar-spraak-voorbeeld-app uit te voeren. Ga vanaf de opdrachtregel (of terminalsessie) naar de projectmap en voer het volgende uit:
+Dat is alles, u kunt nu uw Text to Speech voorbeeldapp uit te voeren. Ga vanaf de opdrachtregel (of terminalsessie) naar de projectmap en voer het volgende uit:
 
 ```console
 python tts.py
 ```
 
-Wanneer u hierom wordt gevraagd, typt u in datgene wat u wilt converteren van tekst naar spraak. Als dit lukt, bevindt het spraak bestand zich in de projectmap. Speel het af met uw favoriete media speler.
+Wanneer u hierom wordt gevraagd, typt u in alles wat u wilt converteren van tekst naar spraak. Als dit lukt, wordt de spraak-bestand bevindt zich in de projectmap. Spelen met behulp van uw favoriete MediaPlayer.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -174,5 +174,5 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 
 * [Naslaginformatie voor de Text to Speech-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [Met python en Speech SDK tekst-naar-spraak converteren](quickstarts/speech-to-text-from-microphone.md)
-* [Aangepaste spraak lettertypen maken](how-to-customize-voice-font.md)
-* [Spraak voorbeelden vastleggen om een aangepaste spraak te maken](record-custom-voice-samples.md)
+* [Het maken van aangepaste spraakstijlen](how-to-customize-voice-font.md)
+* [Record stem voorbeelden voor het maken van een aangepaste spraak](record-custom-voice-samples.md)

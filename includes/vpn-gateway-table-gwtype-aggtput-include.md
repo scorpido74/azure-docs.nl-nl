@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cba54c65a314919b5509e1de029ad05f8722baa2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075440"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829172"
 ---
 |**VPN-<br>gateway<br>genereren** |**SKU**   | **S2S-/VNet-naar-VNet-<br>tunnels** | **P2S<br> SSTP-verbindingen** | **P2S<br> IKEv2/OpenVPN-verbindingen** | **Benchmark cumulatieve<br>doorvoer** | **BGP** | **Zone-redundant** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
@@ -27,14 +27,14 @@ ms.locfileid: "74075440"
 |        |            |            |           |                |           |           |     |
 |**Generation2**|**VpnGw2**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 500       | 1,25 Gbps | Ondersteund | Nee |
 |**Generation2**|**VpnGw3**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 2,5 Gbps  | Ondersteund | Nee |
-|**Generation2**|**VpnGw4**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 5 Gbps    | Ondersteund | Nee |
-|**Generation2**|**VpnGw5**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 10 Gbps   | Ondersteund | Nee |
+|**Generation2**|**VpnGw4**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 5000      | 5 Gbps    | Ondersteund | Nee |
+|**Generation2**|**VpnGw5**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 10.000      | 10 Gbps   | Ondersteund | Nee |
 |**Generation2**|**VpnGw2AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 500       | 1,25 Gbps | Ondersteund | Ja |
 |**Generation2**|**VpnGw3AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 2,5 Gbps  | Ondersteund | Ja |
-|**Generation2**|**VpnGw4AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 5 Gbps    | Ondersteund | Ja |
-|**Generation2**|**VpnGw5AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 10 Gbps   | Ondersteund | Ja |
+|**Generation2**|**VpnGw4AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 5000      | 5 Gbps    | Ondersteund | Ja |
+|**Generation2**|**VpnGw5AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 10.000      | 10 Gbps   | Ondersteund | Ja |
 
-(*) Gebruik [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md) als u meer dan 30 S2S VPN-tunnels nodig hebt.
+(\*) Gebruik [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md) als u meer dan 30 S2S VPN-tunnels nodig hebt.
 
 * Het wijzigen van de grootte van VpnGw Sku's is toegestaan binnen dezelfde generatie, behalve het wijzigen van de grootte van de basis-SKU. De basis-SKU is een verouderde SKU waarvoor beperkingen gelden voor de functie. Als u van de Basic-naar een andere VpnGw-SKU wilt gaan, moet u de basis-VPN-gateway van de Basic-SKU verwijderen en een nieuwe gateway maken met de gewenste combi natie van generatie en SKU.
 

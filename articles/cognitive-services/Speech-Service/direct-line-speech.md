@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 72029d1d56c9d561e629cc750244fd7de8ec113a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cec3131d791d591375fd87d1c080294c9034a815
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507174"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806215"
 ---
 # <a name="about-direct-line-speech"></a>Over directe lijn spraak
 
@@ -35,7 +35,7 @@ Raadpleeg voor een volledige stapsgewijze hand leiding voor het maken van een ee
 
 We bieden ook Quick starts die zijn ontworpen om u in minder dan 10 minuten code uit te voeren. Deze tabel bevat een lijst met Quick starts voor de Voice Assistant, geordend op taal.
 
-| Snelstart | Platform | API-verwijzing |
+| Snelstart | Platform | API-referentie |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Door](https://aka.ms/csspeech/javaref) |
@@ -50,7 +50,7 @@ Voorbeeld code voor het maken van een spraak-assistent is beschikbaar op GitHub.
 
 ## <a name="customization"></a>Aanpassing
 
-Spraak assistenten die zijn gemaakt met behulp van Azure speech Services kunnen gebruikmaken van het volledige aanbod aan aanpassings opties voor [spraak naar tekst](speech-to-text.md), [tekst naar spraak](text-to-speech.md)en [aangepaste trefwoord selectie](speech-devices-sdk-create-kws.md).
+Spraak assistenten die zijn gemaakt met Speech Service kunnen gebruikmaken van het volledige aanbod aan aanpassings opties voor [spraak naar tekst](speech-to-text.md), [tekst naar spraak](text-to-speech.md)en [aangepaste trefwoord selectie](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
 > Aanpassings opties variëren per taal/land instelling (Zie [ondersteunde talen](supported-languages.md)).
@@ -64,7 +64,7 @@ Direct line speech en de bijbehorende functionaliteit voor spraak assistenten zi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gratis een abonnements sleutel voor spraak Services aanschaffen](get-started.md)
+* [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
 * [De Speech SDK ophalen](speech-sdk.md)
 * [Een basisbot maken en implementeren](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [De Virtual assistent-oplossing en ondernemings sjabloon ophalen](https://github.com/Microsoft/AI)

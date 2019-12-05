@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: vertalen van spraak naar tekst, python-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: bcd0ef8766bfa293534797a95d6d4ccecbc14c04
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 990be17eb6f326241ceb2cb7050a404ff349c441
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503106"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817025"
 ---
 > [!div class="nextstepaction"]
 > [Python-voorbeelden in GitHub bekijken](https://aka.ms/speech/github-python)

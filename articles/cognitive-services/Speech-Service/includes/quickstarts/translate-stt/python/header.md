@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: Vertaal spraak-naar-spraak, python-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 099c7e6348f022ae8a1789758ad721c29053fcac
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3dee7e68b30524163e392c147066fd3e435aaaa
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503176"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816968"
 ---
 Als u liever meteen aan de slag gaat, kunt u alle voor <a href="https://aka.ms/speech/github-python">beelden van Speech SDK python</a> bekijken of downloaden op github. Zo niet, dan gaan we aan de slag.

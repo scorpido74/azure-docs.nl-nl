@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464558"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816402"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Gegevens voorbereiden voor Custom Speech
 
@@ -25,11 +25,11 @@ Of u nu test om te zien hoe nauw keurige spraak herkenning van micro soft is of 
 
 In deze tabel worden de geaccepteerde gegevens typen vermeld, wanneer elk gegevens type moet worden gebruikt en de aanbevolen hoeveelheid. Niet elk gegevens type is vereist voor het maken van een model. De gegevens vereisten variëren, afhankelijk van het feit of u een model maakt of een training uitvoert.
 
-| Gegevenstype | Testen gebruiken | Aantal | Gebruikt voor training | Aantal |
+| Gegevenstype | Testen gebruiken | Aanbevolen aantal | Gebruikt voor training | Aanbevolen aantal |
 |-----------|-----------------|----------|-------------------|----------|
-| [Geluiden](#audio-data-for-testing) | Ja<br>Gebruikt voor visuele inspectie | 5 + audio bestanden | Nee | n.v.t. |
+| [Audio](#audio-data-for-testing) | Ja<br>Gebruikt voor visuele inspectie | 5 + audio bestanden | Nee | N.v.t. |
 | [Audio en Transcripten met menselijke labels](#audio--human-labeled-transcript-data-for-testingtraining) | Ja<br>Wordt gebruikt om de nauw keurigheid te evalueren | 0,5-5 uur audio | Ja | 1-1.000 uur audio |
-| [Gerelateerde tekst](#related-text-data-for-training) | Nee | n.v.t. | Ja | 1-200 MB aan Verwante tekst |
+| [Gerelateerde tekst](#related-text-data-for-training) | Nee | N.v.t. | Ja | 1-200 MB aan Verwante tekst |
 
 Bestanden moeten worden gegroepeerd door te typen in een gegevensset en worden geüpload als een zip-bestand. Elke gegevensset kan slechts één gegevens type bevatten.
 
@@ -138,7 +138,7 @@ Als er ongebruikelijke voor waarden zijn zonder standaard uitspraak dat uw gebru
 
 Dit omvat voor beelden van een gesp roken utterance en een aangepaste uitspraak voor elk:
 
-| Herkend/weer gegeven formulier | Gesp roken formulier |
+| Herkend/weer gegeven formulier | Gesproken formulier |
 |--------------|--------------------------|
 | 3CPO | drie c p |  
 | CNTK | c n t k |
@@ -148,7 +148,7 @@ Het gesp roken formulier is de fonetische volg orde die is gespeld. Het kan best
 
 Aangepaste uitspraak is beschikbaar in het Engels (nl-nl) en Duits (de-DE). In deze tabel worden de ondersteunde tekens per taal weer gegeven:
 
-| Taal | Landinstelling | Aantal |
+| Taal | Landinstelling | Tekens |
 |----------|--------|------------|
 | Nederlands | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 | Duits | de-DE | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |

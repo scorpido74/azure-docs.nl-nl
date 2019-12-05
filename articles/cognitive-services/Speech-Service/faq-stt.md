@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 277d8e3fe8f54b8e95d8acc93d26100d3ac64db1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110700"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814854"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Veelgestelde vragen over spraak naar tekst
 
@@ -65,11 +65,32 @@ De oude gegevensset en de nieuwe gegevensset moeten worden gecombineerd in één
 
 Als u een model hebt aangepast en geïmplementeerd met basis lijn V 1.0, blijft die implementatie ongewijzigd. Klanten kunnen het geïmplementeerde model buiten gebruik stellen, opnieuw aanpassen met de nieuwere versie van de basis lijn en opnieuw implementeren.
 
+**V: kan ik mijn model downloaden en lokaal uitvoeren?**
+
+**A**: modellen kunnen niet lokaal worden gedownload en uitgevoerd.
+
+**V: zijn mijn aanvragen geregistreerd?**
+
+**A**: u kunt kiezen wanneer u een implementatie maakt om tracering uit te scha kelen. Op dat moment worden er geen audio-of transcripties vastgelegd. Anders worden aanvragen doorgaans vastgelegd in Azure in beveiligde opslag.
+
+**V: mijn aanvragen worden beperkt?**
+
+**A**: de rest API beperkt aanvragen tot 25 per 5 seconden. Meer informatie vindt u op onze pagina's voor [spraak op tekst](speech-to-text.md).
+
+**V: hoe worden er kosten in rekening gebracht voor Dual Channel audio?**
+
+**A**: als u elk kanaal afzonderlijk verzendt (elk kanaal in een eigen bestand), wordt u per duur van het bestand in rekening gebracht. Als u één bestand met elk kanaal hebt verzonden, worden er kosten in rekening gebracht voor de duur van het ene bestand.
+
+> [!IMPORTANT]
+> Neem contact op met een van de ondersteunings kanalen als u meer privacy-problemen hebt die verhinderen dat u de aangepaste spraak service kunt gebruiken.
+
+## <a name="increasing-concurrency"></a>Gelijktijdige gelijktijdigheid
+
 **V: wat moet ik doen als ik een hogere gelijktijdigheid nodig heb voor mijn geïmplementeerde model dan in de portal wordt aangeboden?**
 
 **A**: u kunt uw model omhoog schalen in stappen van 20 gelijktijdige aanvragen.
 
-Neem contact op met [spraak ondersteuning](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) als u een hogere schaal nodig hebt.
+Maak met de vereiste informatie een ondersteunings aanvraag in de [ondersteunings portal van Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Plaats de gegevens niet op een van de open bare kanalen (GitHub, stack overflow,...) die worden vermeld op de [ondersteunings pagina](support.md).
 
 We hebben de volgende informatie nodig om de gelijktijdigheid voor een ***aangepast model***te verg Roten:
 
@@ -97,25 +118,6 @@ of
   - Kies in de weer gegeven Services de spraak service waarvoor u de gelijktijdigheid wilt verhogen,
   - de `Properties` voor deze service weer geven
   - Kopieer de volledige `Resource ID`.
-
-**V: kan ik mijn model downloaden en lokaal uitvoeren?**
-
-**A**: modellen kunnen niet lokaal worden gedownload en uitgevoerd.
-
-**V: zijn mijn aanvragen geregistreerd?**
-
-**A**: u kunt kiezen wanneer u een implementatie maakt om tracering uit te scha kelen. Op dat moment worden er geen audio-of transcripties vastgelegd. Anders worden aanvragen doorgaans vastgelegd in Azure in beveiligde opslag.
-
-**V: mijn aanvragen worden beperkt?**
-
-**A**: de rest API beperkt aanvragen tot 25 per 5 seconden. Meer informatie vindt u op onze pagina's voor [spraak op tekst](speech-to-text.md).
-
-**V: hoe worden er kosten in rekening gebracht voor Dual Channel audio?**
-
-**A**: als u elk kanaal afzonderlijk verzendt (elk kanaal in een eigen bestand), wordt u per duur van het bestand in rekening gebracht. Als u één bestand met elk kanaal hebt verzonden, worden er kosten in rekening gebracht voor de duur van het ene bestand.
-
-> [!IMPORTANT]
-> Neem contact op met een van de ondersteunings kanalen als u meer privacy-problemen hebt die verhinderen dat u de aangepaste spraak service kunt gebruiken.
 
 ## <a name="importing-data"></a>Gegevens importeren
 
@@ -189,7 +191,7 @@ of
 
 **V: welke spraak ervaring zijn verbeterd door het Tenant model?**
 
-**A:** Wanneer het Tenant model is ingeschakeld, gemaakt en gepubliceerd, wordt het gebruikt voor het verbeteren van de herkenning van bedrijfs toepassingen die zijn gebouwd met behulp van spraak service; Er wordt ook een AAD-token van de gebruiker door gegeven dat het lidmaatschap van de onderneming aangeeft.
+**A:** Wanneer het Tenant model is ingeschakeld, gemaakt en gepubliceerd, wordt het gebruikt voor het verbeteren van de herkenning van bedrijfs toepassingen die zijn gebouwd met behulp van de spraak service; Er wordt ook een AAD-token van de gebruiker door gegeven dat het lidmaatschap van de onderneming aangeeft.
 
 De spraak ervaring die is ingebouwd in Office 365, zoals dicteer-en Power Point-ondertiteling, wordt niet gewijzigd wanneer u een Tenant model maakt voor uw speech service-toepassingen.
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278654"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806504"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Updates voor meerdere machines beheren
 
@@ -104,7 +104,7 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 | Windows-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start vervolgens de installatie van de vereiste updates. |
 | Linux-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start vervolgens de installatie van de vereiste updates op ondersteunde distributies. |
 | Beheergroep Operations Manager |Ja |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep. |
-| Azure Storage-account |Nee |Azure Storage bevat geen informatie over systeem updates. |
+| Azure-opslagaccount |Nee |Azure Storage bevat geen informatie over systeem updates. |
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
 
@@ -114,11 +114,15 @@ Naast het scan schema wordt de controle op update vereisten binnen 15 minuten ge
 
 Voor een Linux-computer wordt standaard elk uur de compatibiliteits scan uitgevoerd. Als de MMA-agent opnieuw wordt gestart, wordt een nalevings scan binnen 15 minuten gestart.
 
-Het kan tussen 30 minuten en 6 uur duren voordat het dash board bijgewerkte gegevens van beheerde computers weergeeft.
+Het kan dertig minuten tot zes uur duren voordat er in het dashboard bijgewerkte gegevens van beheerde computers worden weergegeven.
 
 ## <a name="schedule-an-update-deployment"></a>Een update-implementatie plannen
 
 Als u updates wilt installeren, plant u een implementatie die wordt uitgelijnd met uw release planning en service venster. U kunt kiezen welke typen updates moeten worden opgenomen in de implementatie. Zo kunt u belangrijke updates of beveiligingsupdates opnemen en updatepakketten uitsluiten.
+
+>[!NOTE]
+>Wanneer u een update-implementatie plant, wordt er een [plannings](shared-resources/schedules.md) resource gemaakt die is gekoppeld aan het **patch-MicrosoftOMSComputers-** runbook dat de update-implementatie op de doel computers afhandelt. Als u de plannings resource uit de Azure Portal verwijdert of Power shell na het maken van de implementatie gebruikt, wordt de geplande update-implementatie verbroken en wordt er een fout weer gegeven wanneer u deze opnieuw probeert te configureren vanuit de portal. U kunt de plannings resource alleen verwijderen door het bijbehorende implementatie schema te verwijderen.
+>
 
 Als u een nieuwe update-implementatie wilt plannen voor een of meer virtuele machines, klikt u onder **Update beheer**op **Update-implementatie plannen**.
 
@@ -143,7 +147,7 @@ Geef in het deel venster **nieuwe update-implementatie** de volgende informatie 
   - Functiepakketten
   - Servicepacks
   - Definitie-updates
-  - Hulpprogramma's
+  - Tools
   - Updates
 
 - **Updates om op te nemen/uit te sluiten**: hiermee opent u de pagina **Opnemen/uitsluiten**. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [een update-implementatie plannen](automation-tutorial-update-management.md#schedule-an-update-deployment)voor meer informatie over het verwerken van de opname.

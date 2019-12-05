@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: Speech SDK voor C++ (Windows) platform Setup-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding om uw platform in te C++ stellen voor op Windows Desktop met de speech Services SDK.
+description: Gebruik deze hand leiding om uw platform in te C++ stellen voor op Windows Desktop met de Speech Service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: ec1978c43150a5e16641ac134cf6deb6789eb876
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a023b68ce05eedd9fc1ad67940c9aa23e666cbf9
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502581"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818596"
 ---
 # <a name="quickstart-speech-sdk-for-c-windows-platform-setup"></a>Quick Start: Speech SDK C++ voor (Windows) platform Setup
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 12/03/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e7b0c379783af2f9131d487f45c0f4e2009e258
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 706cc38c997c91efc890b213444ff779eb86d5c1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232148"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805147"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
 
@@ -47,7 +47,7 @@ In dit artikel vindt u een overzicht van het rapport met aanmeldingen.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welke Azure AD-licentie heb ik nodig voor toegang tot aanmeldingsactiviteiten?
 
-* Aan uw Tenant moet een Azure AD Premium-licentie zijn gekoppeld om het rapport alle activiteiten voor aanmelden te bekijken. Zie [Aan de slag met Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) om uw versie van Azure Active Directory te upgraden. Het duurt enkele dagen voordat de gegevens in de rapporten worden weer gegeven nadat u een upgrade hebt uitgevoerd naar een Premium-licentie zonder gegevens activiteiten vóór de upgrade.
+* Uw tenant moet beschikken over een eraan gekoppelde Azure AD Premium-licentie om het complete rapport van aanmeldingsactiviteiten te kunnen zien. Zie [Aan de slag met Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) om uw versie van Azure Active Directory te upgraden. Het duurt enkele dagen voordat de gegevens in de rapporten worden weer gegeven nadat u een upgrade hebt uitgevoerd naar een Premium-licentie zonder gegevens activiteiten vóór de upgrade.
 
 ## <a name="sign-ins-report"></a>Aanmeldingenrapport
 
@@ -81,7 +81,7 @@ U kunt de lijstweergave aanpassen door te klikken op **Kolommen** op de werkbalk
 
 Geeft extra velden weer of verwijdert velden die al worden weer gegeven.
 
-![Aanmeldings activiteit](./media/concept-sign-ins/02.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/concept-sign-ins/columns.png "Aanmeldingsactiviteit")
 
 Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 
@@ -105,13 +105,13 @@ Met het filter **Toepassing** kunt u de naam van de gewenste toepassing opgeven.
 
 Met het filter **Aanmeldingsstatus** kunt u selecteren:
 
-- Alle
+- Alles
 - Geslaagd
 - Fout
 
 Met het filter voor **voorwaardelijke toegang** kunt u de CA-beleids status voor de aanmelding selecteren:
 
-- Alle
+- Alles
 - Niet toegepast
 - Geslaagd
 - Fout
@@ -144,7 +144,7 @@ Als u extra velden toevoegt aan uw aanmeldingsweergave, worden deze velden autom
         Office 2013, waarbij ADAL is ingeschakeld en gebruikmaakt van MAPI.
     - **Oude Office-clients**  
         Office 2013 in de standaard configuratie waarbij ADAL niet is ingeschakeld en gebruikmaakt van MAPI of Office 2016 waarbij ADAL is uitgeschakeld.
-    - **KEUZEMENU**  
+    - **POP**  
         Een legacy-mailclient die gebruikmaakt van POP3 om e-mail op te halen.
     - **SMTP**  
         Een verouderde e-mailclient die gebruikmaakt van SMTP om e-mail te verzenden.
@@ -153,7 +153,7 @@ Als u extra velden toevoegt aan uw aanmeldingsweergave, worden deze velden autom
 
 Klik op de **Download** optie om een CSV-of JSON-bestand te maken van de meest recente 250.000 records. Begin met [het downloaden van de gegevens van de aanmeldingen](quickstart-download-sign-in-report.md) als u wilt werken buiten de Azure Portal.  
 
-![Downloaden](./media/concept-sign-ins/71.png "Download")
+![Downloaden](./media/concept-sign-ins/71.png "Downloaden")
 
 > [!IMPORTANT]
 > Het aantal records dat u kunt downloaden, is beperkt door het [Bewaar beleid](reference-reports-data-retention.md)voor de Azure Active Directory-rapport.  
@@ -193,7 +193,7 @@ Door op een item te klikken, krijgt u meer informatie over de aanmelding:
 - Client
 - Locatie
 - IP-adres
-- Date
+- Datum
 - MFA vereist
 - Aanmeldingsstatus
 
@@ -222,7 +222,7 @@ De grafieken voor het gebruik van de app en wekelijkse aggregaties van aanmeldin
 
 Als u wilt, kunt u de focus instellen op een specifieke toepassing.
 
-![Rapportage](./media/concept-sign-ins/single-app-usage-graph.png "Rapportage")
+![Rapportage](./media/concept-sign-ins/single-app-usage-graph.png "Reporting")
 
 Als u op een dag in de appgebruikgrafiek klikt, ziet u een gedetailleerd overzicht van de aanmeldactiviteiten.
 

@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 08bac7cd833f52d2dfec4561c2f87330a4119748
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552874"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815590"
 ---
-# <a name="device-roobo-smart-audio-dev-kit"></a>Apparaat: Roobo slimme audio dev kit
+# <a name="device-roobo-smart-audio-dev-kit"></a>Apparaat: roobo Smart audio dev kit
 
 Dit artikel bevat apparaatspecifieke informatie voor de roobo Smart audio dev kit.
 
@@ -54,12 +54,12 @@ Dit artikel bevat apparaatspecifieke informatie voor de roobo Smart audio dev ki
     > [!NOTE]
     > Deze opdrachten gebruiken de brug Android foutopsporing `adb.exe`, deze maakt deel uit van de Android Studio-installatie. Dit hulpprogramma bevindt zich in C:\Users\[gebruikersnaam] \AppData\Local\Android\Sdk\platform-hulpprogramma's. U kunt deze map toevoegen aan het pad naar het eenvoudig om aan te roepen kunnen `adb`. Anders moet u het volledige pad naar uw installatie van adb.exe in elke opdracht die wordt aangeroepen `adb`.
     >
-    > Als er een fout optreedt `no devices/emulators found` , controleer dan of de USB-kabel is aangesloten en de kabel van een hoge kwaliteit is. U kunt gebruiken `adb devices` om te controleren of uw computer kan communiceren met de Development Kit, omdat er een lijst met apparaten wordt geretourneerd.
+    > Als er een fout `no devices/emulators found`, controleert u of de USB-kabel is aangesloten en is de kabel van een hoge kwaliteit. U kunt `adb devices` gebruiken om te controleren of uw computer kan communiceren met de Development Kit, omdat er een lijst met apparaten wordt geretourneerd.
     >
     > [!TIP]
     > De microfoon van uw PC en de spreker om ervoor te zorgen dat u werkt met de development kit microfoons dempen. Op deze manier wordt niet u per ongeluk het apparaat met audio van de PC activeren.
 
-1. Als u wilt een spreker koppelen aan de dev kit, kunt u het verbinding maken met de lijn-audio uit. U moet een goede luid spreker met een analoge stekker van 3,5 mm kiezen.
+1. Als u een spreker wilt toevoegen aan de dev kit, kunt u deze verbinden met de audio lijn uit. U moet een goede luid spreker met een analoge stekker van 3,5 mm kiezen.
 
     ![Vysor audio](media/speech-devices-sdk/qsg-14.png)
 

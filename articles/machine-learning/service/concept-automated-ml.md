@@ -10,14 +10,14 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 4ed27009a3549757881c84d92b3b29b60ecbfbc1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d8628bd62df650d76b0666b650af88038dbbda1f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790560"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807116"
 ---
-# <a name="what-is-automated-machine-learning"></a>Wat is automatische machine learning?
+# <a name="what-is-automated-machine-learning"></a>Wat is geautomatiseerde machine learning?
 
 Automatische machine learning, ook wel automatische ML genoemd, is het proces van het automatiseren van de tijdrovende, terugkerende taken van het ontwikkelen van machine learning modellen. Zo kunnen gegevens wetenschappers, analisten en ontwikkel aars ML-modellen bouwen met een hoge schaal, efficiëntie en productiviteit, terwijl de kwaliteit van het model goed wordt. Automatische ML is gebaseerd op een door braak van onze [micro soft research-afdeling](https://arxiv.org/abs/1705.05355).
 
@@ -88,7 +88,7 @@ In elk automatisch machine learning experiment worden uw gegevens automatisch ge
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformeert functies door elke functie te schalen op basis van het minimum en maximum van die kolom  |
 | [MaxAbsScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MaxAbsScaler.html#sklearn.preprocessing.MaxAbsScaler) |Elke functie schalen met de Maxi maal absolute waarde |
 | [RobustScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html) |Deze schaal functies op basis van hun quantile bereik |
-| [ASSISTENT](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) |Lineaire dimensionaliteit door de gegevens uit de enkelvoudige waarde te desamen stellen om deze te projecteren in een gereduceerde ruimte |
+| [PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) |Lineaire dimensionaliteit door de gegevens uit de enkelvoudige waarde te desamen stellen om deze te projecteren in een gereduceerde ruimte |
 | [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |Deze transformator voert lineaire dimensionaliteit uit met behulp van een afgekapte enkelvouds waarde (SVD). In tegens telling tot PCA worden de gegevens door deze Estimator niet gecentreerd voordat de enkelvoudige waarde wordt uitgevouwen. Dit betekent dat het kan worden gebruikt met scipy. sparse-matrices |
 | [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | Elk voor beeld (dat wil zeggen, elke rij van de gegevens matrix) met ten minste één niet-nul onderdeel wordt opnieuw geschaald, onafhankelijk van andere steek proeven, zodat de norm (L1 of L2) gelijk is aan 1 |
 
@@ -98,7 +98,7 @@ Er zijn ook aanvullende geavanceerde preverwerkings-en parametrisatie beschikbaa
 
 + Azure Machine Learning studio: als u de **parametrisatie-instellingen weer geven** in de sectie **configuratie-uitvoering** wilt selecteren, voert u de [volgende stappen uit](how-to-create-portal-experiments.md).
 
-+ Python-SDK: Geef `"feauturization": auto' / 'off' / FeaturizationConfig` op voor de [`AutoMLConfig` klasse](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py).
++ Python-SDK: Geef `"feauturization": auto' / 'off' / FeaturizationConfig` op voor de [`AutoMLConfig` klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
 ## <a name="prevent-over-fitting"></a>Voor komen dat de installatie meer wordt uitgevoerd
 

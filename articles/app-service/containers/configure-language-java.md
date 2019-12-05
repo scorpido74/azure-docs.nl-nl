@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: edb8f25ff1e4fa01e905c3ae5c7d0ec7ab58f8bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 571d4cd395cd0cec0982fedf267a88143fd73872
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705942"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805736"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Een Linux java-app voor Azure App Service configureren
 
@@ -54,7 +54,7 @@ Schakel [toepassings logboeken](../troubleshoot-diagnostic-logs.md?toc=/azure/ap
 
 Als uw toepassing gebruikmaakt van [logback](https://logback.qos.ch/) of [Log4j](https://logging.apache.org/log4j) voor tracering, kunt u deze traceringen door sturen naar Azure-toepassing Insights met behulp van de configuratie-instructies voor logboek registratie in [Java-traceer Logboeken in Application Insights verkennen](/azure/application-insights/app-insights-java-trace-logs).
 
-### <a name="troubleshooting-tools"></a>Hulpprogram ma's voor probleem oplossing
+### <a name="troubleshooting-tools"></a>Hulpprogramma's voor probleemoplossing
 
 De ingebouwde Java-installatie kopieën zijn gebaseerd op het besturings systeem [Alpine Linux](https://alpine-linux.readthedocs.io/en/latest/getting_started.html) . Gebruik het `apk`-pakket beheer om hulpprogram ma's of opdrachten voor probleem oplossing te installeren.
 
@@ -247,6 +247,9 @@ Er is mogelijk aanvullende configuratie nodig voor het versleutelen van uw JDBC-
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+- [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
+- [Cassandra](https://docs.datastax.com/developer/java-driver/4.3/)
+
 
 #### <a name="manually-initialize-and-load-the-key-store"></a>De sleutel opslag hand matig initialiseren en laden
 
@@ -616,7 +619,7 @@ In de volgende stappen worden de vereisten voor het koppelen van uw bestaande Ap
 
 6. Gebruik de Azure CLI om instellingen toe te voegen aan uw App Service die uw database verbindings gegevens bevatten. Vervang `<resource group>` en `<webapp name>` door de waarden die uw App Service gebruikt. Vervang `<database server name>`, `<database name>`, `<admin name>`en `<admin password>` door de verbindings gegevens van uw data base. U kunt uw App Service en Data Base-informatie ophalen uit de Azure Portal.
 
-    **PostgreSQL**
+    **PostgreSQL:**
 
     ```bash
     az webapp config appsettings set \
@@ -628,7 +631,7 @@ In de volgende stappen worden de vereisten voor het koppelen van uw bestaande Ap
             DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
     ```
 
-    **MySQL**
+    **MySQL:**
 
     ```bash
     az webapp config appsettings set \
@@ -653,7 +656,7 @@ In de volgende stappen worden de vereisten voor het koppelen van uw bestaande Ap
     De DATABASE_CONNECTION_URL waarden verschillen voor elke database server en verschillen van de waarden op de Azure Portal. De URL-indelingen die hier worden weer gegeven (en in de bovenstaande fragmenten) zijn vereist voor gebruik door WildFly:
 
     * **Postgresql:** `jdbc:postgresql://<database server name>:5432/<database name>?ssl=true`
-    * **Mysql:** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`
+    * **MySQL:** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`
     * **SQL Server:** `jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;`
 
 7. Ga in het Azure Portal naar uw App Service en zoek de pagina **configuratie** > **algemene instellingen** . Stel het veld **Startup script** in op de naam en locatie van het opstart script, bijvoorbeeld */Home/startup.sh*.

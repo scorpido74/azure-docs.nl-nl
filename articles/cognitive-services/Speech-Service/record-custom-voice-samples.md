@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 47e1f8bf178723a5d4be323f24724214a67499e2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b5cf375b1e5e4c09617dc6ae74513d303a9a6a4a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559190"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816671"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Record stem voorbeelden voor het maken van een aangepaste spraak
 
@@ -104,7 +104,7 @@ Het lezen van een actor van auteursrechtelijk beschermde tekst mogelijk onder de
 
 Gelukkig is het mogelijk om volledig te voorkomen dat deze problemen. Er zijn veel bronnen van de tekst die u zonder toestemming of licentie gebruiken kunt.
 
-|Tekstbron|Description|
+|Tekstbron|Beschrijving|
 |-|-|
 |[CMU Arctic corpus](http://festvox.org/cmu_arctic/)|Over 1100 zinnen hebt geselecteerd in out-van-copyright werkt specifiek voor gebruik in spraak synthese projecten. Een uitstekend uitgangspunt.|
 |Werkt niet meer<br>onder het auteursrecht|Doorgaans werkt gepubliceerd voordat 1923. Voor Engels, [Project Gutenberg](https://www.gutenberg.org/) biedt tienduizenden dergelijke werken. Kunt u zich kunt richten op nieuwere werkt als de taal die dichter bij moderne Engels.|
@@ -191,7 +191,7 @@ Registreren van een goede vijf seconden stilte voordat de eerste registratie voo
 Luister goed, hoofdtelefoon, om de prestaties van de stem-talent te gebruiken. U zoekt naar goede maar natuurlijke diction, juiste uitspraak en een gebrek aan ongewenste geluiden. Kunt u vragen uw talent om vast te leggen opnieuw een utterance die niet voldoet aan deze standaarden.
 
 > [!TIP]
-> Als u van een groot aantal uitingen gebruikmaakt, wellicht een enkel utterance een merkbare invloed op de resulterende aangepaste spraak. Het is mogelijk meer relevant om te weten gewoon alle uitingen met problemen, ze uitsluiten van uw gegevensset en Zie hoe uw aangepaste gesproken blijkt. U kunt altijd gaat u terug naar de studio en de gemiste voorbeelden later opnemen.
+> Als u van een groot aantal uitingen gebruikmaakt, wellicht een enkel utterance een merkbare invloed op de resulterende aangepaste spraak. Het kan beter zijn om uitingen met problemen te noteren, ze uit te sluiten van uw gegevensset en te zien hoe uw aangepaste stem wordt uitgeschakeld. U kunt altijd terugkeren naar de studio en de gemiste voor beelden later vastleggen.
 
 Houd er rekening mee de getal of de code op uw script tijd voor elke utterance. Vraag de engineer elke utterance in de metagegevens van de opname of hint blad ook markeren.
 

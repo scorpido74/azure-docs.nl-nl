@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 3a88f4fc14286a60feb9d72676827b0cce91eb25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 276de42f2a37a0e48cd323e285760c00e6db9f32
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503127"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818344"
 ---
 > [!NOTE]
 > Het Universal Windows Platform stelt u in staat om apps te ontwikkelen die kunnen worden uitgevoerd op elk apparaat dat ondersteuning biedt voor Windows 10, met inbegrip van pc's, Xbox, Surface Hub en andere apparaten.
@@ -39,7 +39,7 @@ Voeg nu de XAML-code toe die de gebruikers interface van de toepassing definieer
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/text-to-speech/helloworld/MainPage.xaml#StackPanel)]
 
-1. Open in **Solution Explorer**het bron bestand van de code-behind `MainPage.xaml.cs`. (Deze wordt gegroepeerd onder `MainPage.xaml`.)
+1. Open in **Solution Explorer**het bron bestand van de code-behind `MainPage.xaml.cs`. (Deze is gegroepeerd onder `MainPage.xaml`.)
 
 1. Vervang alle code hierin door het volgende fragment:
 
@@ -61,7 +61,7 @@ U bent nu klaar om uw toepassing te bouwen en te testen.
 
    ![Voor beeld van een UWP- C# toepassing voor spraak synthese in Quick Start](~/articles/cognitive-services/Speech-Service/media/sdk/qs-text-to-speech-uwp-helloworld-window.png)
 
-1. Voer tekst in het tekstvak in en klik op **spreken**. Uw tekst wordt verzonden naar de spraak Services en gesynthesizerd op spraak, die op uw spreker wordt afgespeeld.
+1. Voer tekst in het tekstvak in en klik op **spreken**. Uw tekst wordt verzonden naar de speech-service en gesynthesizerd op spraak, die op uw spreker wordt afgespeeld.
 
     ![Gebruikers interface voor spraak synthese](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-uwp-ui-result.png)
 

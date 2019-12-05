@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796290"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829025"
 ---
 ## <a name="benefits-of-managed-disks"></a>Voor delen van beheerde schijven
 
@@ -37,7 +37,7 @@ Beheerde schijven ondersteunen [Beschikbaarheidszones](../articles/availability-
 
 ### <a name="azure-backup-support"></a>Ondersteuning voor Azure Backup
 
-[Azure backup](../articles/backup/backup-overview.md) kunnen worden gebruikt om een back-uptaak te maken met back-ups op basis van tijd en het Bewaar beleid voor back-ups. Op die manier kunt u eenvoudig herstel bewerkingen voor de virtuele machine uitvoeren. Momenteel Azure Backup ondersteunt schijf grootten tot wel vier TiB-schijven (tebibyte).  Azure Backup ondersteunt het maken van back-ups en het herstellen van Managed disks. Meer [informatie](../articles/backup/backup-support-matrix-iaas.md) over ondersteuning voor Azure VM-back-ups.
+[Azure backup](../articles/backup/backup-overview.md) kunnen worden gebruikt om een back-uptaak te maken met back-ups op basis van tijd en het Bewaar beleid voor back-ups. Op die manier kunt u eenvoudig herstel bewerkingen voor de virtuele machine uitvoeren. Azure Backup ondersteunt het maken van back-ups en het herstellen van Managed disks. Meer [informatie](../articles/backup/backup-support-matrix-iaas.md) over ondersteuning voor Azure VM-back-ups.
 
 ### <a name="granular-access-control"></a>Gedetailleerd toegangs beheer
 
@@ -61,7 +61,7 @@ Beheerde schijven bieden twee verschillende soorten versleuteling. De eerste is 
 
 Met Azure Disk Encryption kunt u het besturings systeem en de gegevens schijven versleutelen die worden gebruikt door een virtuele IaaS-machine. Deze versleuteling bevat beheerde schijven. Voor Windows worden de stations versleuteld met de standaard BitLocker-versleutelings technologie. Voor Linux worden de schijven versleuteld met de DM-cryptografie technologie. Het versleutelingsproces is geïntegreerd met Azure Key Vault zodat u de schijfversleutelingssleutels kunt controleren en beheren. Zie [Azure Disk Encryption voor IaaS vm's](../articles/security/azure-security-disk-encryption-overview.md)voor meer informatie.
 
-## <a name="disk-roles"></a>Schijf rollen
+## <a name="disk-roles"></a>Schijfrollen
 
 Er zijn drie belang rijke schijf rollen in Azure: de gegevens schijf, de besturingssysteem schijf en de tijdelijke schijf. Deze rollen worden toegewezen aan schijven die zijn gekoppeld aan de virtuele machine.
 
@@ -117,9 +117,9 @@ In het volgende diagram ziet u de realtime toewijzing van band breedte en IOPS v
 
 De inrichting van het eerste niveau stelt het aantal IOPS per schijf en de bandbreedte toewijzing in.  Op het tweede niveau implementeert de Compute Server-host SSD-inrichting en past deze alleen toe op gegevens die zijn opgeslagen op de SSD van de server, inclusief schijven met caching (ReadWrite en ReadOnly), evenals lokale en tijdelijke schijven. Ten slotte vindt er een VM-netwerk inrichting plaats op het derde niveau voor elke I/O die de compute host verzendt naar de back-end van de Azure Storage. Met dit schema is de prestaties van een virtuele machine afhankelijk van verschillende factoren, van de manier waarop de virtuele machine gebruikmaakt van de lokale SSD, het aantal gekoppelde schijven, evenals de prestaties en het cache type van de schijven die zijn gekoppeld.
 
-Als voor beeld van deze beperkingen kan een Standard_DS1v1-VM ertoe leiden dat het 5.000 IOPS-potentieel van een P30-schijf, ongeacht of deze in de cache is opgeslagen, door limieten op de SSD-en netwerk niveaus:
+Als voor beeld van deze beperkingen kan een Standard_DS1v1 virtuele machine ervoor zorgen dat het 5.000 IOPS-potentieel van een P30-schijf, ongeacht of deze in de cache is opgeslagen, door limieten op het niveau van SSD en netwerk:
 
-![Toewijzing van Standard_DS1v1-voor beeld](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+![Toewijzing van Standard_DS1v1 voorbeeld](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
 
 Azure gebruikt netwerk kanaal met prioriteit voor schijf verkeer, dat de prioriteit krijgt boven een andere lage prioriteit van netwerk verkeer. Op die manier kunnen schijven hun verwachte prestaties behouden in het geval van netwerk conflicten. Op dezelfde manier worden resource-conflicten en andere problemen op de achtergrond met automatische taak verdeling door Azure Storage verwerkt. Azure Storage wijst de vereiste bronnen toe wanneer u een schijf maakt en past proactieve en reactieve verdeling van resources toe om het verkeers niveau af te handelen. Zo zorgt u ervoor dat schijven hun verwachte IOPS-en doorvoer doelen kunnen ondervangen. U kunt de metrische gegevens op het niveau van de virtuele machine en op schijf niveau gebruiken om de prestatie-en configuratie-meldingen naar behoefte bij te houden.
 

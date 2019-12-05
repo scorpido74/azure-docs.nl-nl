@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 460d2069bea8809b7d453bbe1cf27284109df9b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 09ee7f0918bce469186688a5d0e82441bb2e5457
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503470"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817773"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Quick Start: spraak op doel-C op iOS met behulp van de Speech SDK
 
@@ -25,7 +25,7 @@ In dit artikel leert u hoe u een iOS-app maakt in doel-C met behulp van de SDK v
 
 Voordat u begint, bekijkt u de lijst vereisten:
 
-* Een [abonnementssleutel](~/articles/cognitive-services/Speech-Service/get-started.md) voor Speech Service
+* Een [abonnements sleutel](~/articles/cognitive-services/Speech-Service/get-started.md) voor de speech-service
 * Een macOS-computer met [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) of hoger
 * De doel ingesteld op iOS-versie 9,3 of hoger
 
@@ -70,7 +70,7 @@ Maak in de dialoogvensters die volgen de volgende selecties:
 1. Vervang de inhoud van het automatisch gegenereerde bestand `ViewController.m` door:  
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/ios/text-to-speech/helloworld/helloworld/ViewController.m#code)]
 1. Vervang de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
 ## <a name="build-and-run-the-sample"></a>Het voorbeeldproject compileren en uitvoeren
 

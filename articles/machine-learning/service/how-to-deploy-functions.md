@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 9fba3221656405f2bf2b1654b43d687f1915cca6
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: d35f0bbc057c97ed4f8b6429c0573fa6bcf3742f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74542392"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807371"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Een machine learning model implementeren op Azure Functions (preview-versie)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Met Azure Machine Learning kunt u docker-installatie kopieën maken op basis van
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure Machine Learning-werkruimte. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
-* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* De [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Een getraind machine learning model dat is geregistreerd in uw werk ruimte. Als u geen model hebt, gebruikt u de [zelf studie voor installatie kopie classificatie: Train model](tutorial-train-models-with-aml.md) om er een te trainen en te registreren.
 
     > [!IMPORTANT]
@@ -234,8 +234,8 @@ Op dit punt begint de functie-app het laden van de installatie kopie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het configureren van uw functions-app in de [functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-linux-custom-imag) -documentatie.
+* Meer informatie over het configureren van uw functions-app in de [functions](/azure/azure-functions/functions-create-function-linux-custom-image) -documentatie.
 * Meer informatie over Blob Storage activeert [Azure Blob-opslag bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
 * [Implementeer uw model naar Azure app service](how-to-deploy-app-service.md).
-* [Een ML-model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
+* [Een ML-Model dat is geïmplementeerd als een webservice gebruiken](how-to-consume-web-service.md)
 * [API-naslaginformatie](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)

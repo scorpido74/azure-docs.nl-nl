@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d26fa3540edc4647bb7ba8091c9f0ac22b296bbc
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bf151b98c813feba9de317879106718551b11f9d
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793519"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814473"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Een bestaand forest en een nieuw forest met één Azure AD-Tenant integreren
 
@@ -53,22 +53,25 @@ In dit scenario wordt een bestaand forest gesynchroniseerd met Azure AD Connect 
    - Deblokkeren van de certificaat validatie de volgende Url's: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**en **www\.Microsoft.com:80**. Omdat deze Url's worden gebruikt voor certificaat validatie met andere micro soft-producten, is het mogelijk dat deze Url's al worden gedeblokkeerd.
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>De Azure AD Connect-inrichtings agent installeren
-1. Meld u aan bij de server die u wilt gebruiken met beheerders machtigingen voor de onderneming.  Als u de Basic-zelf studie over [AD en Azure-omgeving](tutorial-basic-ad-azure.md) gebruikt, zou deze DC1 zijn.
-2. Down load [hier](https://go.microsoft.com/fwlink/?linkid=2109037)de Azure AD Connect-inrichtings agent.
-3. Voer de Azure AD Connect-inrichtings agent (AADConnectProvisioningAgent. installer) uit
-3. **Accepteer** de licentie voorwaarden in het welkomst scherm en klik op **installeren**.</br>
+1. Meld u aan bij de server die lid is van het domein.  Als u de Basic-zelf studie over [AD en Azure-omgeving](tutorial-basic-ad-azure.md) gebruikt, zou deze DC1 zijn.
+2. Meld u aan bij de Azure Portal met behulp van globale beheerders referenties voor de Cloud.
+3. Selecteer aan de linkerkant **Azure Active Directory**, klik op **Azure AD Connect** en selecteer in het midden de optie **inrichting beheren (preview)** .</br>
+![Azure-portal](media/how-to-install/install6.png)</br>
+4. Klik op agent downloaden
+5. De Azure AD Connect-inrichtings agent uitvoeren
+6. **Accepteer** de licentie voorwaarden in het welkomst scherm en klik op **installeren**.</br>
 ![Welkomstscherm](media/how-to-install/install1.png)</br>
 
-4. Zodra deze bewerking is voltooid, wordt de configuratie wizard gestart.  Meld u aan met uw Azure AD Global Administrator-account.  Houd er rekening mee dat als u verbeterde beveiliging van Internet Explorer hebt ingeschakeld, het aanmelden wordt geblokkeerd.  Als dit het geval is, sluit u de installatie, schakelt u verbeterde beveiliging van Internet Explorer in Serverbeheer uit en klikt u op de **wizard Aad Connect inrichtings agent** om de installatie opnieuw te starten.
-5. Klik in het scherm **verbinding maken Active Directory** op **map toevoegen** en meld u vervolgens aan met uw Active Directory domein beheerders account.  Opmerking: het domein beheerders account mag geen vereisten voor wachtwoord wijziging hebben. Als het wacht woord is verlopen of gewijzigd, moet u de agent opnieuw configureren met de nieuwe referenties. Met deze bewerking wordt uw on-premises Directory toegevoegd.  Klik op **Volgende**.</br>
+7. Zodra deze bewerking is voltooid, wordt de configuratie wizard gestart.  Meld u aan met uw Azure AD Global Administrator-account.  Houd er rekening mee dat als u verbeterde beveiliging van Internet Explorer hebt ingeschakeld, het aanmelden wordt geblokkeerd.  Als dit het geval is, sluit u de installatie, schakelt u verbeterde beveiliging van Internet Explorer in Serverbeheer uit en klikt u op de **wizard Aad Connect inrichtings agent** om de installatie opnieuw te starten.
+8. Klik in het scherm **verbinding maken Active Directory** op **map toevoegen** en meld u vervolgens aan met uw Active Directory domein beheerders account.  Opmerking: het domein beheerders account mag geen vereisten voor wachtwoord wijziging hebben. Als het wacht woord is verlopen of gewijzigd, moet u de agent opnieuw configureren met de nieuwe referenties. Met deze bewerking wordt uw on-premises Directory toegevoegd.  Klik op **Volgende**.</br>
 ![Welkomstscherm](media/how-to-install/install3.png)</br>
 
-6. Klik in het scherm **configuratie voltooid** op **bevestigen**.  Met deze bewerking wordt de agent geregistreerd en opnieuw gestart.</br>
+9. Klik in het scherm **configuratie voltooid** op **bevestigen**.  Met deze bewerking wordt de agent geregistreerd en opnieuw gestart.</br>
 ![Welkomstscherm](media/how-to-install/install4.png)</br>
 
-7. Zodra deze bewerking is voltooid, ziet u een melding: **de configuratie van de agent is geverifieerd.**  U kunt op **Afsluiten**klikken.</br>
+10. Zodra deze bewerking is voltooid, ziet u een melding: **de configuratie van de agent is geverifieerd.**  U kunt op **Afsluiten**klikken.</br>
 ![Welkomstscherm](media/how-to-install/install5.png)</br>
-8. Als het eerste openings scherm nog steeds wordt weer gegeven, klikt u op **sluiten**.
+11. Als het eerste openings scherm nog steeds wordt weer gegeven, klikt u op **sluiten**.
 
 
 ## <a name="verify-agent-installation"></a>Agent installatie verifiëren

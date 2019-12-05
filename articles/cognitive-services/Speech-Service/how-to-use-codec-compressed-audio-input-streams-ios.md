@@ -1,7 +1,7 @@
 ---
 title: Streaming-codec gecomprimeerd met de Speech SDK op iOS
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het streamen van gecomprimeerde audio naar Azure speech Services met de Speech SDK op iOS.
+description: Meer informatie over het streamen van gecomprimeerde audio naar de speech-service met de Speech SDK op iOS.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 1d78c690fd07eb974418f0ea17d71d1f394d863d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109578"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805855"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Procedure: compressie van gecomprimeerde audio-invoer met de Speech SDK op iOS gebruiken
 
@@ -42,7 +42,7 @@ Open het project in Xcode en bouw het voor het **algemene IOS-apparaat** doel--h
 
 Met de stap build wordt een dynamisch Framework gegenereerd met een dynamische bibliotheek voor alle benodigde architecturen met de naam van `GStreamerWrapper.framework`.
 
-Dit framework moet worden opgenomen in alle apps die gebruikmaken van gecomprimeerde audio stromen met de speech Services SDK.
+Dit framework moet worden opgenomen in alle apps die gebruikmaken van gecomprimeerde audio stromen met de Speech Service SDK.
 
 Pas de volgende instellingen in uw Xcode-project toe om dit te bewerkstelligen:
 
@@ -54,7 +54,7 @@ Pas de volgende instellingen in uw Xcode-project toe om dit te bewerkstelligen:
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Voorbeeld code met behulp van gecomprimeerde audio-invoer van de codec
 
-Als u een gecomprimeerde audio-indeling naar de spraak Services wilt streamen, maakt u een `SPXPullAudioInputStream` of `SPXPushAudioInputStream`.
+Als u een gecomprimeerde audio-indeling naar de speech-service wilt streamen, maakt u een `SPXPullAudioInputStream` of `SPXPushAudioInputStream`.
 
 Het volgende code fragment laat zien hoe u een `SPXAudioConfiguration` maakt op basis van een exemplaar van een `SPXPushAudioInputStream`en hoe MP3 wordt opgegeven als de compressie-indeling van de stroom.
 

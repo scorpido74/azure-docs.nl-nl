@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3d9826e3eae2a60b217df1406d26d83c78fbdefb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a826bb01a906153b4ca2a3c854623c83b6192aec
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67673315"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829072"
 ---
 Volg onderstaande stappen als u in het Resource Manager-implementatiemodel een VNet wilt maken met behulp van Azure Portal. De schermafbeeldingen dienen alleen als voorbeeld. Zorg dat u de waarden vervangt door die van uzelf. Bekijk het [Virtual Network-overzicht](../articles/virtual-network/virtual-networks-overview.md) voor meer informatie over het gebruik van virtuele netwerken.
 
@@ -22,10 +22,12 @@ Volg onderstaande stappen als u in het Resource Manager-implementatiemodel een V
 >
 >
 
-1. Navigeer via een browser naar de [Azure Portal](https://portal.azure.com) en log, indien nodig, in met uw Azure-account.
-2. Klik op **+** . In het veld **Marketplace doorzoeken** typt u 'virtueel netwerk'. Zoek **Virtual Network** in de lijst met resultaten en klik erop om de pagina **Virtual Network** te openen.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).  Klik in het menu Azure Portal of op de **Start** pagina en selecteer **een resource maken**. De pagina **Nieuw** wordt geopend.
 
-   ![Virtual Network resource pagina zoeken](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/newvnetportal700.png "De resource pagina van het virtuele netwerk zoeken")
+2. In **de Marketplace zoeken**voert u het *virtuele netwerk* in en selecteert u **Virtual Network** in de resultaten.
+
+   ![Virtual Network resource pagina zoeken](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "De resource pagina van het virtuele netwerk zoeken")
+
 3. Ga onder aan de pagina Virtual Network naar de lijst **Selecteer een implementatiemodel**, selecteer de optie **Resource Manager** in de lijst en klik vervolgens op **Maken**.
 
    ![Resource Manager selecteren](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/resourcemanager250.png "Selecteer Resource Manager")

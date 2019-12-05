@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 137ab722df280d17fe5ccc5c07acfd323feb6531
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f617bed0d2d93d8c8586d5708e0e356934817f4a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091213"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816633"
 ---
-# <a name="speech-to-text-rest-api"></a>REST API's voor spraak-naar-tekst
+# <a name="speech-to-text-rest-api"></a>REST API voor spraak-naar-tekst
 
-Als alternatief voor de [spraak-SDK](speech-sdk.md)kunt u met spraak Services spraak-naar-tekst converteren met behulp van een rest API. Elk eindpunt dat toegankelijk is, is gekoppeld aan een regio. Uw toepassing is een abonnementssleutel vereist voor het eindpunt dat u van plan bent te gebruiken.
+Als alternatief voor de [Speech-SDK](speech-sdk.md)kunt u met de speech-service spraak-naar-tekst converteren met behulp van een rest API. Elk eindpunt dat toegankelijk is, is gekoppeld aan een regio. Uw toepassing is een abonnementssleutel vereist voor het eindpunt dat u van plan bent te gebruiken.
 
 Voordat u de REST API voor spraak naar tekst gebruikt, moet u het volgende weten:
 
@@ -42,7 +42,7 @@ Deze parameters kunnen worden opgenomen in de query-tekenreeks van de REST-aanvr
 
 | Parameter | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
-| `language` | Hiermee geeft u de gesproken taal die wordt herkend. Zie [ondersteunde talen](language-support.md#speech-to-text). | Vereist |
+| `language` | Hiermee geeft u de gesproken taal die wordt herkend. Zie [ondersteunde talen](language-support.md#speech-to-text). | Verplicht |
 | `format` | Hiermee geeft u de resultaatindeling. Geaccepteerde waarden zijn `simple` en `detailed`. Eenvoudige tot de resultaten behoren `RecognitionStatus`, `DisplayText`, `Offset`, en `Duration`. Gedetailleerde antwoorden bevatten meerdere resultaten met vertrouwen waarden en vier verschillende manieren. De standaardinstelling is `simple`. | Optioneel |
 | `profanity` | Geeft aan hoe grof taalgebruik in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `masked`, waarbij de woorden met sterretjes `removed`worden vervangen, waardoor alle woorden worden verwijderd uit het resultaat, of `raw`, waarbij de scheld woorden in het resultaat wordt opgenomen. De standaardinstelling is `masked`. | Optioneel |
 
@@ -54,10 +54,10 @@ Deze tabel bevat de vereiste en optionele headers voor spraak-naar-tekst-aanvrag
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Uw abonnements sleutel voor spraak Services. | Een van beide deze header of `Authorization` is vereist. |
 | `Authorization` | Een verificatietoken voorafgegaan door het woord `Bearer`. Zie [Verificatie](#authentication) voor meer informatie. | Een van beide deze header of `Ocp-Apim-Subscription-Key` is vereist. |
-| `Content-type` | Beschrijft de indeling en codec van de opgegeven gegevens. Geaccepteerde waarden zijn `audio/wav; codecs=audio/pcm; samplerate=16000` en `audio/ogg; codecs=opus`. | Vereist |
+| `Content-type` | Beschrijft de indeling en codec van de opgegeven gegevens. Geaccepteerde waarden zijn `audio/wav; codecs=audio/pcm; samplerate=16000` en `audio/ogg; codecs=opus`. | Verplicht |
 | `Transfer-Encoding` | Hiermee geeft u op of gesegmenteerde audiogegevens wordt verzonden, in plaats van één bestand. Gebruik alleen deze header als audiogegevens logische groepen te verdelen. | Optioneel |
-| `Expect` | Als u gesegmenteerde overdracht, stuurt u `Expect: 100-continue`. De spraak Services erkennen de eerste aanvraag en wachten op aanvullende gegevens.| Vereist als het gesegmenteerde audiogegevens verzenden. |
-| `Accept` | Indien opgegeven, moet deze `application/json`. De spraak services bieden resultaten in JSON. Sommige aanvraag raamwerken bieden een incompatibele standaard waarde. Het is raadzaam om altijd `Accept`te gebruiken. | Optioneel maar aanbevolen. |
+| `Expect` | Als u gesegmenteerde overdracht, stuurt u `Expect: 100-continue`. De speech-service erkent de eerste aanvraag en wacht op aanvullende gegevens.| Vereist als het gesegmenteerde audiogegevens verzenden. |
+| `Accept` | Indien opgegeven, moet deze `application/json`. De speech-service biedt resultaten in JSON. Sommige aanvraag raamwerken bieden een incompatibele standaard waarde. Het is raadzaam om altijd `Accept`te gebruiken. | Optioneel maar aanbevolen. |
 
 ## <a name="audio-formats"></a>Audio-indelingen
 
@@ -69,7 +69,7 @@ Audio wordt verzonden in de hoofdtekst van de HTTP `POST` aanvraag. Het moet zic
 | OGG | OPUS | 16-bits | 16 kHz, mono |
 
 >[!NOTE]
->De bovenstaande indelingen worden ondersteund via REST API en WebSocket in de spraak Services. De [spraak SDK](speech-sdk.md) momenteel alleen ondersteunt de WAV opmaken met PCM codec.
+>De bovenstaande indelingen worden ondersteund via REST API en WebSocket in de speech-service. De [spraak SDK](speech-sdk.md) momenteel alleen ondersteunt de WAV opmaken met PCM codec.
 
 ## <a name="sample-request"></a>Voorbeeld van een aanvraag
 
@@ -99,7 +99,7 @@ De HTTP-statuscode voor elke reactie geeft aan dat het slagen of veelvoorkomende
 
 ## <a name="chunked-transfer"></a>Gesegmenteerde overdracht
 
-Gesegmenteerde overdracht (`Transfer-Encoding: chunked`) kan helpen de latentie van herkenning te verminderen. Hiermee kunnen de spraak Services het audio bestand verwerken tijdens de overdracht. De REST-API biedt geen tijdelijke of gedeeltelijke resultaten.
+Gesegmenteerde overdracht (`Transfer-Encoding: chunked`) kan helpen de latentie van herkenning te verminderen. Hiermee kan de spraak service de verwerking van het audio bestand starten tijdens de verzen ding. De REST-API biedt geen tijdelijke of gedeeltelijke resultaten.
 
 Dit codevoorbeeld laat zien hoe voor het verzenden van audio in segmenten. Alleen de eerste chunk moet de audio bestands-header bevatten. `request` is een HTTPWebRequest-object dat is verbonden met het juiste REST-eindpunt. `audioFile` is het pad naar een audio-bestand op schijf.
 

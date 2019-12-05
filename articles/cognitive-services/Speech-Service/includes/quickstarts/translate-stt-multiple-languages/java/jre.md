@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: spraak vertalen naar meerdere talen, java (Windows, Linux)-spraak service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a5228faa7d02bbaa8cfde55c5dcdf76e9417d3d4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 556974ceff1e41f1956a358d48cec72a6029b184
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502994"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817041"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -128,15 +128,15 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Sla de wijzigingen in het project op.
+1. Sla de wijzigingen aan het project op.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
 Druk op F11 of selecteer **Uitvoeren** > **Fouten opsporen**.
 
-1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de spraak Services, die worden vertaald naar tekst (in dit geval naar Frans en Duits). De spraak Services verzenden de tekst vervolgens terug naar de toepassing om weer te geven.
+1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de speech-service, die vertaalt en transcribeert naar tekst (in dit geval naar Frans en Duits). De spraak service verzendt vervolgens de tekst terug naar de toepassing om weer te geven.
 
 ````
 Say something...

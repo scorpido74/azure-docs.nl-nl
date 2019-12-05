@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 1dc119f0f5949b37603bbc1100a4d89d4f420fd6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd5f9fc787a6299e8d7c14f4b99f6f4d59cf78af
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033440"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819075"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migreren naar Premium Storage met behulp van Azure Site Recovery
 
@@ -76,10 +76,10 @@ U kunt Site Recovery gebruiken om virtuele Azure IaaS-machines te migreren tusse
 
 ### <a name="step-1-create-a-recovery-services-vault"></a>Stap 1: een Recovery Services kluis maken
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 2. Selecteer **een resource maken** > **beheer** > **Backup en site Recovery (OMS)** . U kunt ook **bladeren** > **Recovery Services kluis** selecteren > **toevoegen**.
    >[!NOTE]
-   >Backup en Site Recovery waren voorheen deel uit van de ![OMS suite](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand).
+   >Backup en Site Recovery waren voorheen onderdeel van het [OMS-pakket](/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand).
 1. Geef een regio op waarnaar Vm's worden gerepliceerd. Voor het doel van de migratie in dezelfde regio selecteert u de regio waar uw bron-Vm's en bron opslag accounts zijn. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Stap 2: Kies uw beveiligings doelen 
@@ -195,7 +195,7 @@ Zorg ervoor dat u **Afsluiten vm's selecteert en de meest recente gegevens synch
 
 Site Recovery maakt een VM-exemplaar waarvan het type hetzelfde is als of vergelijkbaar is met een virtuele machine die Premium Storage ondersteunt. U kunt de prestaties en prijs van verschillende VM-exemplaren controleren door te gaan naar [Windows virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) of [Linux virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-## <a name="post-migration-steps"></a>Stappen na de migratie
+## <a name="post-migration-steps"></a>Post-migratiestappen
 
 1. **Configureer gerepliceerde vm's naar de beschikbaarheidsset, indien van toepassing**. Site Recovery biedt geen ondersteuning voor het migreren van Vm's samen met de beschikbaarheidsset. Voer een van de volgende handelingen uit, afhankelijk van de implementatie van uw gerepliceerde VM:
    * Voor een virtuele machine die is gemaakt via het klassieke implementatie model: Voeg de virtuele machine toe aan de beschikbaarheidsset in de Azure Portal. Ga voor gedetailleerde stappen naar [een bestaande virtuele machine toevoegen aan een beschikbaarheidsset](../linux/classic/configure-availability-classic.md).

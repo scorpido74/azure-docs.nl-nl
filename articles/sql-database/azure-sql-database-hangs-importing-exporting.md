@@ -9,12 +9,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 29edd7da42a5eb4586cd52cc0f913a56e199a5ba
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e1638c9779ca50507a1ce30dd3bbc9c18248964a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808280"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807065"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Het duurt lang voordat een Data Base wordt geïmporteerd of geëxporteerd met Azure SQL Database import/export-service
 
@@ -22,7 +22,7 @@ Wanneer u de Azure SQL Database import/export-service gebruikt, kan het proces l
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL Database import/export-service
 
-De Azure SQL Database import/export-service is een op REST gebaseerde webservice die in elk Azure-Data Center wordt uitgevoerd. Deze service wordt aangeroepen wanneer u de optie [Data Base importeren](https://docs.microsoft.com/azure/sql-database/sql-database-import#import-from-a-bacpac-file-in-the-azure-portal) of [exporteren](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) gebruikt om uw SQL database in de Azure portal te verplaatsen. De service biedt gratis aanvraag wachtrijen en Compute-Services voor het importeren en exporteren tussen een Azure SQL database en Azure Blob-opslag.
+De Azure SQL Database import/export-service is een op REST gebaseerde webservice die in elk Azure-Data Center wordt uitgevoerd. Deze service wordt aangeroepen wanneer u de optie [Data Base importeren](sql-database-import.md#using-azure-portal) of [exporteren](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) gebruikt om uw SQL database in de Azure portal te verplaatsen. De service biedt gratis aanvraag wachtrijen en Compute-Services voor het importeren en exporteren tussen een Azure SQL database en Azure Blob-opslag.
 
 De import-en export bewerkingen vertegenwoordigen geen traditionele back-up van de fysieke data base, maar in plaats daarvan een logische back-up van de data base die gebruikmaakt van een speciale BACPAC-indeling. Met de BACPAC-indeling kunt u voor komen dat u een fysieke indeling moet gebruiken die kan verschillen tussen de versies van Microsoft SQL Server en Azure SQL Database. Daarom kunt u het gebruiken om de data base veilig te herstellen naar een SQL Server-Data Base en naar een SQL database.
 

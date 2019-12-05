@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: f8b963c456e4d4318c6b28cd33c18ebd615487de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0e40ca55a9cd198e1b086362a2559ab2fc0ba95e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464528"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805957"
 ---
 # <a name="get-started-with-custom-voice"></a>Aan de slag met Custom Voice
 
@@ -23,13 +23,13 @@ ms.locfileid: "73464528"
 
 ## <a name="whats-in-custom-voice"></a>Wat is er in aangepaste spraak?
 
-Voordat u begint met een aangepaste spraak, hebt u een Azure-account en een abonnement op spraak services nodig. Zodra u een account hebt gemaakt, kunt u uw gegevens voorbereiden, uw modellen trainen en testen, de spraak kwaliteit evalueren en uiteindelijk uw aangepaste spraak model implementeren.
+Voordat u begint met een aangepaste spraak, hebt u een Azure-account en een spraak service-abonnement nodig. Zodra u een account hebt gemaakt, kunt u uw gegevens voorbereiden, uw modellen trainen en testen, de spraak kwaliteit evalueren en uiteindelijk uw aangepaste spraak model implementeren.
 
 In het onderstaande diagram worden de stappen beschreven voor het maken van een aangepast spraak model met behulp van de [aangepaste Voice Portal](https://aka.ms/customvoice). Gebruik de koppelingen voor meer informatie.
 
 ![Diagram van aangepaste spraak architectuur](media/custom-voice/custom-voice-diagram.png)
 
-1.  [Abonneren en een project maken](#set-up-your-azure-account) : een Azure-account maken en een spraak Services-abonnement maken. Dit uniforme abonnement geeft u toegang tot spraak naar tekst, tekst naar spraak, spraak omzetting en de aangepaste Voice Portal. Maak vervolgens uw eerste aangepaste spraak project met behulp van uw abonnement voor spraak Services.
+1.  [Abonneren en een project maken](#set-up-your-azure-account) : een Azure-account maken en een spraak service-abonnement maken. Dit uniforme abonnement geeft u toegang tot spraak naar tekst, tekst naar spraak, spraak omzetting en de aangepaste Voice Portal. Maak vervolgens uw eerste aangepaste spraak project met behulp van uw abonnement voor de spraak service.
 
 2.  [Gegevens](how-to-custom-voice-create-voice.md#upload-your-datasets) uploaden (audio en tekst) uploaden met behulp van de aangepaste spraak portal of aangepaste spraak-API. Vanuit de portal kunt u scores voor uitspraak en signaal-naar-ruis-verhoudingen onderzoeken en evalueren. Zie [gegevens voorbereiden voor aangepaste spraak](how-to-custom-voice-prepare-data.md)voor meer informatie.
 
@@ -46,11 +46,11 @@ De aanpassings functie voor Neural stem is momenteel beschikbaar als open bare p
 
 ## <a name="set-up-your-azure-account"></a>Uw Azure-account instellen
 
-Er is een abonnement op spraak Services vereist voordat u de Custom Speech Portal kunt gebruiken om een aangepast model te maken. Volg deze instructies voor het maken van een abonnement op spraak Services in Azure. Als u geen Azure-account hebt, kunt u zich aanmelden voor een nieuwe.  
+Er is een abonnement op de spraak service vereist voordat u de Custom Speech Portal kunt gebruiken om een aangepast model te maken. Volg deze instructies voor het maken van een spraak service-abonnement in Azure. Als u geen Azure-account hebt, kunt u zich aanmelden voor een nieuwe.  
 
-Zodra u een Azure-account en een speech Services-abonnement hebt gemaakt, moet u zich aanmelden bij de aangepaste Voice Portal en verbinding maken met uw abonnement.
+Zodra u een Azure-account en een spraak service-abonnement hebt gemaakt, moet u zich aanmelden bij de aangepaste Voice Portal en verbinding maken met uw abonnement.
 
-1. Down load uw abonnements sleutel voor spraak services van de Azure Portal.
+1. Haal uw abonnements sleutel voor uw spraak service op uit de Azure Portal.
 2. Meld u aan bij de [aangepaste Voice Portal](https://aka.ms/custom-voice).
 3. Selecteer uw abonnement en maak een spraak project.
 4. Als u wilt overschakelen naar een ander spraak abonnement, gebruikt u het tandwiel-pictogram in de bovenste navigatie balk.

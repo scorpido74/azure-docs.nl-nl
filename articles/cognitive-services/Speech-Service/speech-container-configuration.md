@@ -1,7 +1,7 @@
 ---
 title: Spraak containers configureren
 titleSuffix: Azure Cognitive Services
-description: Speech Services voorziet elke container van een gemeen schappelijk configuratie raamwerk, zodat u eenvoudig opslag, logboek registratie en telemetrie en beveiligings instellingen voor uw containers kunt configureren en beheren.
+description: Speech Service voorziet elke container van een gemeen schappelijk configuratie raamwerk, zodat u eenvoudig opslag, logboek registratie en telemetrie en beveiligings instellingen voor uw containers kunt configureren en beheren.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: f68bf989202c209f89ea273fee8d7610a49415ed
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 34b4664ec13f7ba1871433e37d86170b2207a17a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075740"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816570"
 ---
 # <a name="configure-speech-service-containers"></a>Spraak service containers configureren
 
@@ -50,7 +50,7 @@ Deze instelling bevindt zich op de volgende locatie:
 
 - Azure Portal: overzicht **van spraak** , gelabelde `Endpoint`
 
-| Vereist | Naam | Gegevenstype | Beschrijving |
+| Verplicht | Naam | Gegevenstype | Beschrijving |
 | -------- | ---- | --------- | ----------- |
 | Ja | `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](speech-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [aangepaste subdomein namen voor Cognitive Services](../cognitive-services-custom-subdomains.md)voor meer informatie en een volledige lijst met regionale eind punten. |
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50978b51fd1451cf65e33b38ca0699694cb115b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dd3de14d8c82a3e51d38a1e32241cb106e0f95b3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151186"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74804615"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Voorwaardelijke toegang: MFA vereisen voor beheerders
 
@@ -30,7 +30,7 @@ Micro soft raadt u aan MFA verplicht te stellen voor de volgende rollen ten mins
 * Beheerder van voorwaardelijke toegang
 * Beveiligingsbeheerder
 * Help Desk (wacht woord) beheerder
-* Wachtwoord beheerder
+* Wachtwoordbeheerder
 * Factureringsbeheerder
 * Gebruikers beheerder
 
@@ -50,7 +50,7 @@ Beleids regels voor voorwaardelijke toegang zijn krachtige hulp middelen. u word
 De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke toegang om te vereisen dat aan deze toegewezen beheerders rollen multi-factor Authentication wordt uitgevoerd.
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
@@ -61,13 +61,13 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
       * Beheerder van voorwaardelijke toegang
       * Beveiligingsbeheerder
       * Helpdesk beheerder
-      * Wachtwoord beheerder
+      * Wachtwoordbeheerder
       * Factureringsbeheerder
       * Gebruikers beheerder
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
    1. Selecteer **Done**.
 1. Selecteer onder **Cloud-apps of acties** > **bevatten** **alle Cloud-apps**en selecteer **gereed**.
-1. Onder **toegangs beheer** > **toekenning**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.
+1. Onder **toegangs beheer** > **verlenen**, selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.
 

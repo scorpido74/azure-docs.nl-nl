@@ -5,22 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.openlocfilehash: 51344ff7381b6392870b1fd0e331eed38a33915d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 12/02/2019
+ms.openlocfilehash: 65e85548420116bdfcab87fe9f81a20e66226beb
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103509"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803788"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor logboeken voor het controleren van HDInsight-clusters doorzoeken
 
 Meer informatie over de basis scenario's voor het gebruik van Azure Monitor logboeken voor het bewaken van Azure HDInsight-clusters:
 
 * [Metrische gegevens van HDInsight-cluster analyseren](#analyze-hdinsight-cluster-metrics)
-* [Specifieke logboek berichten zoeken](#search-for-specific-log-messages)
 * [Gebeurtenis waarschuwingen maken](#create-alerts-for-tracking-events)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
@@ -34,90 +33,95 @@ U moet een HDInsight-cluster hebben geconfigureerd om Azure Monitor-logboeken te
 Meer informatie over het zoeken naar specifieke metrische gegevens voor uw HDInsight-cluster.
 
 1. Open de Log Analytics-werk ruimte die is gekoppeld aan uw HDInsight-cluster via de Azure Portal.
-1. Selecteer de tegel **Zoeken in Logboeken** .
-1. Typ de volgende query in het zoekvak om te zoeken naar alle metrische gegevens voor alle beschik bare gegevens voor alle HDInsight-clusters die zijn geconfigureerd voor het gebruik van Azure Monitor logboeken en selecteer vervolgens **uitvoeren**.
+1. Onder **Algemeen**selecteert u **Logboeken**.
+1. Typ de volgende query in het zoekvak om te zoeken naar alle metrische gegevens voor alle beschik bare gegevens voor alle HDInsight-clusters die zijn geconfigureerd voor het gebruik van Azure Monitor logboeken en selecteer vervolgens **uitvoeren**. Bekijk de resultaten.
 
-        search *
+    ```kusto
+    search *
+    ```
 
     ![Apache Ambari Analytics alle metrische gegevens doorzoeken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Alle metrische gegevens zoeken")
 
-    De uitvoer ziet er als volgt uit:
+1. Selecteer in het menu links het tabblad **filter** .
 
-    ![log Analytics doorzoeken alle metrische gegevens](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "Zoeken in alle metrische gegevens uitvoer")
+1. Onder **type**, selecteer **heartbeat**. Selecteer vervolgens **Toep assen & uitvoeren**.
 
-1. Selecteer in het linkerdeel venster onder **type**de waarde die u wilt dieper in en selecteer vervolgens **Toep assen**. Op de volgende scherm afbeelding `metrics_resourcemanager_queue_root_default_CL` ziet u het type geselecteerd.
+    ![Log Analytics-specifieke metrische gegevens zoeken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Specifieke metrische gegevens zoeken")
 
-    > [!NOTE]  
-    > Mogelijk moet u de knop **[+] meer** selecteren om de metrische gegevens te vinden die u zoekt. De knop **Toep assen** bevindt zich ook onder aan de lijst, dus u moet omlaag schuiven om deze weer te geven.
+1. U ziet dat de query in het tekstvak verandert in:
 
-    U ziet dat de query in het tekstvak verandert in een van de weer gegeven in het gemarkeerde vak in de volgende scherm afbeelding:
+    ```kusto
+    search *
+    | where Type == "Heartbeat"
+    ```
 
-    ![log Analytics-specifieke metrische gegevens zoeken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Specifieke metrische gegevens zoeken")
+1. U kunt dieper met behulp van de beschik bare opties in het menu links. Bijvoorbeeld:
 
-1. Om te dieper in deze specifieke metriek. U kunt bijvoorbeeld de bestaande uitvoer verfijnen op basis van het gemiddelde van de resources die worden gebruikt in een interval van 10 minuten, gecategoriseerd op cluster naam met behulp van de volgende query:
+    - Logboeken van een specifiek knoop punt weer geven:
 
-        search in (metrics_resourcemanager_queue_root_default_CL) * | summarize AggregatedValue = avg(UsedAMResourceMB_d) by ClusterName_s, bin(TimeGenerated, 10m)
+        ![Zoeken naar specifieke fouten output1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png "Zoeken naar specifieke fouten output1")
 
-1. In plaats van te verfijnen op basis van het gemiddelde van gebruikte resources, kunt u de volgende query gebruiken om de resultaten te verfijnen op basis van de gebruikte maximum bronnen (evenals negen tigste en 95e percentiel) in een venster van 10 minuten:
+    - Logboeken op bepaalde momenten bekijken:
 
-        search in (metrics_resourcemanager_queue_root_default_CL) * | summarize ["max(UsedAMResourceMB_d)"] = max(UsedAMResourceMB_d), ["pct95(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 95), ["pct90(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 90) by ClusterName_s, bin(TimeGenerated, 10m)
+        ![Zoeken naar specifieke fouten output2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "Zoeken naar specifieke fouten output2")
 
-## <a name="search-for-specific-log-messages"></a>Specifieke logboek berichten zoeken
+1. Selecteer **Toep assen & uitvoeren** en Bekijk de resultaten. Houd er ook rekening mee dat de query is bijgewerkt naar:
 
-Meer informatie over het opzoeken van fout berichten tijdens een bepaald tijd venster. Hier volgen enkele voor beelden van hoe u kunt aankomen bij het fout bericht dat u geïnteresseerd bent. U kunt elke eigenschap gebruiken die beschikbaar is om te zoeken naar de fouten die u probeert te vinden.
+    ```kusto
+    search *
+    | where Type == "Heartbeat"
+    | where (Computer == "zk2-myhado") and (TimeGenerated == "2019-12-02T23:15:02.69Z" or TimeGenerated == "2019-12-02T23:15:08.07Z" or TimeGenerated == "2019-12-02T21:09:34.787Z")
+    ```
 
-1. Open de Log Analytics-werk ruimte die is gekoppeld aan uw HDInsight-cluster via de Azure Portal.
-2. Selecteer de tegel **Zoeken in Logboeken** .
-3. Typ de volgende query om te zoeken naar alle fout berichten voor alle HDInsight-clusters die zijn geconfigureerd voor het gebruik van Azure Monitor logboeken en selecteer vervolgens **uitvoeren**.
+### <a name="additional-sample-queries"></a>Aanvullende voorbeeld query's
 
-         search "Error"
+Een voorbeeld query op basis van het gemiddelde van de resources die worden gebruikt in een interval van 10 minuten, gecategoriseerd op cluster naam:
 
-    U ziet een uitvoer zoals de volgende uitvoer:
+```kusto
+search in (metrics_resourcemanager_queue_root_default_CL) * 
+| summarize AggregatedValue = avg(UsedAMResourceMB_d) by ClusterName_s, bin(TimeGenerated, 10m)
+```
 
-    ![Azure Portal fouten in logboek zoeken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "Uitvoer van alle fouten zoeken")
+In plaats van te verfijnen op basis van het gemiddelde van gebruikte resources, kunt u de volgende query gebruiken om de resultaten te verfijnen op basis van de gebruikte maximum bronnen (evenals negen tigste en 95e percentiel) in een venster van 10 minuten:
 
-4. Selecteer in het linkerdeel venster onder **type** -categorie een fout type dat u wilt dieper in en selecteer vervolgens **Toep assen**.  U ziet dat de resultaten worden verfijnd om alleen de fout van het geselecteerde type weer te geven.
-
-5. U kunt met behulp van de beschik bare opties in het linkerdeel venster dieper in deze specifieke fout lijst gaan. Bijvoorbeeld:
-
-    - Fout berichten van een specifiek worker-knoop punt weer geven:
-
-        ![Zoeken naar specifieke fouten output1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-refined.png "Zoeken naar specifieke fouten output1")
-
-    - Er is een fout opgetreden op een bepaald moment:
-
-        ![Zoeken naar specifieke fouten output2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-time.png "Zoeken naar specifieke fouten output2")
-
-6. Om de specifieke fout weer te geven. U kunt **[+] meer weer geven** selecteren om het werkelijke fout bericht te bekijken.
-
-    ![Zoeken naar specifieke fouten output3](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-arrived.png "Zoeken naar specifieke fouten output3")
+```kusto
+search in (metrics_resourcemanager_queue_root_default_CL) * 
+| summarize ["max(UsedAMResourceMB_d)"] = max(UsedAMResourceMB_d), ["pct95(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 95), ["pct90(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 90) by ClusterName_s, bin(TimeGenerated, 10m)
+```
 
 ## <a name="create-alerts-for-tracking-events"></a>Waarschuwingen voor het bijhouden van gebeurtenissen maken
 
 De eerste stap bij het maken van een waarschuwing is het aanroepen van een query op basis waarvan de waarschuwing wordt geactiveerd. U kunt elke query gebruiken waarvoor u een waarschuwing wilt maken.
 
 1. Open de Log Analytics-werk ruimte die is gekoppeld aan uw HDInsight-cluster via de Azure Portal.
-2. Selecteer de tegel **Zoeken in Logboeken** .
-3. Voer de volgende query uit waarop u een waarschuwing wilt maken en selecteer vervolgens **uitvoeren**.
+1. Onder **Algemeen**selecteert u **Logboeken**.
+1. Voer de volgende query uit waarop u een waarschuwing wilt maken en selecteer vervolgens **uitvoeren**.
 
-        metrics_resourcemanager_queue_root_default_CL | where AppsFailed_d > 0
+    ```kusto
+    metrics_resourcemanager_queue_root_default_CL | where AppsFailed_d > 0
+    ```
 
     De query bevat een lijst met mislukte toepassingen die worden uitgevoerd op HDInsight-clusters.
 
-4. Selecteer **nieuwe waarschuwings regel** boven aan de pagina.
+1. Selecteer **nieuwe waarschuwings regel** boven aan de pagina.
 
     ![Voer een query in om een alert1 te maken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Voer een query in om een alert1 te maken")
 
-5. Voer in het venster **regel maken** de query en andere details in om een waarschuwing te maken en selecteer vervolgens **waarschuwings regel maken**.
+1. Voer in het venster **regel maken** de query en andere details in om een waarschuwing te maken en selecteer vervolgens **waarschuwings regel maken**.
 
     ![Voer een query in om een alert2 te maken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Voer een query in om een alert2 te maken")
 
-Een bestaande waarschuwing bewerken of verwijderen:
+### <a name="edit-or-delete-an-existing-alert"></a>Een bestaande waarschuwing bewerken of verwijderen
 
 1. Open de werk ruimte Log Analytics vanuit de Azure Portal.
-2. Selecteer in het menu links de optie **waarschuwing**.
-3. Selecteer de waarschuwing die u wilt bewerken of verwijderen.
-4. U hebt de volgende opties: **Opslaan**, **verwijderen**, **uitschakelen**en **verwijderen**.
+
+1. Selecteer in het menu links onder **bewaking**de optie **waarschuwingen**.
+
+1. Selecteer in de bovenste **regel waarschuwings regels beheren**.
+
+1. Selecteer de waarschuwing die u wilt bewerken of verwijderen.
+
+1. U hebt de volgende opties: **Opslaan**, **verwijderen**, **uitschakelen**en **verwijderen**.
 
     ![Waarschuwing voor verwijderen van HDInsight-Azure Monitor logboeken](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
@@ -125,5 +129,5 @@ Zie [metrische waarschuwingen maken, weer geven en beheren met behulp van Azure 
 
 ## <a name="see-also"></a>Zie ook
 
+* [Aan de slag met logboek query's in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 * [Aangepaste weer gaven maken met behulp van de weer gave designer in Azure Monitor](../azure-monitor/platform/view-designer.md)
-* [Metrische waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor](../azure-monitor/platform/alerts-metric.md)

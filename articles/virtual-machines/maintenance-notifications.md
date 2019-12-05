@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ee7a03f27ab03feadedb7ac8441675a90468655c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535806"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807405"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Geplande onderhouds meldingen verwerken
 
@@ -80,7 +80,7 @@ Het is aan te raden selfservice onderhoud in de volgende gevallen te gebruiken:
 
 **A:** Virtuele machines die zijn geïmplementeerd in een beschikbaarheidsset of virtuele-machine schaal sets hebben het begrip update domeinen (UD). Bij het uitvoeren van onderhoud voldoet Azure aan de UD-beperking en worden virtuele machines van verschillende UD niet opnieuw opgestart (binnen dezelfde beschikbaarheidsset).  Azure wacht nog ten minste 30 minuten voordat de volgende groep virtuele machines wordt verplaatst. 
 
-Zie [Beschik baarheid voor virtuele machines in azure](/linux/availability.md)voor meer informatie over maximale Beschik baarheid.
+Zie [Beschik baarheid voor virtuele machines in azure](./linux/availability.md)voor meer informatie over maximale Beschik baarheid.
 
 **V: Hoe kan ik ontvang een melding over gepland onderhoud?**
 
@@ -92,7 +92,7 @@ Zie [Beschik baarheid voor virtuele machines in azure](/linux/availability.md)vo
 
 **V: is er een manier om precies te weten wanneer mijn virtuele machine wordt beïnvloed?**
 
-**A:** Wanneer u het schema instelt, definiëren we een tijd venster van enkele dagen. De exacte volg orde van servers (en Vm's) in dit venster is echter onbekend. Klanten die de exacte tijd willen weten voor hun virtuele machines, kunnen [geplande gebeurtenissen](/linux/scheduled-events.md) en query's vanaf de virtuele machine gebruiken en een melding van 15 minuten ontvangen voordat een VM opnieuw wordt opgestart.
+**A:** Wanneer u het schema instelt, definiëren we een tijd venster van enkele dagen. De exacte volg orde van servers (en Vm's) in dit venster is echter onbekend. Klanten die de exacte tijd willen weten voor hun virtuele machines, kunnen [geplande gebeurtenissen](./linux/scheduled-events.md) en query's vanaf de virtuele machine gebruiken en een melding van 15 minuten ontvangen voordat een VM opnieuw wordt opgestart.
 
 **V: hoe lang duurt het om mijn virtuele machine opnieuw op te starten?**
 

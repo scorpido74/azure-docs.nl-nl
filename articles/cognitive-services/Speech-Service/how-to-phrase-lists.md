@@ -1,7 +1,7 @@
 ---
 title: Woordgroepen lijsten-spraak service
 titleSuffix: Azure Cognitive Services
-description: Informatie over het leveren van spraak Services met een woordgroepen lijst met behulp van het `PhraseListGrammar`-object om de resultaten van spraak-naar-tekst herkenning te verbeteren.
+description: Informatie over het leveren van de speech-service met een woordgroepen lijst met behulp van het `PhraseListGrammar`-object om de resultaten van spraak-naar-tekst herkenning te verbeteren.
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 61d3e4d2de6b8707ee7433815f8002e5d5e3e3d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 052e02ef562da0637b6b5b9683120f0c397dbfd5
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464542"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805872"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Woordgroepen lijsten voor spraak naar tekst
 
-Door de spraak Services met een lijst met zinsdelen te bieden, kunt u de nauw keurigheid van spraak herkenning verbeteren. Woordgroepen lijsten worden gebruikt voor het identificeren van bekende woord groepen in audio gegevens, zoals de naam van een persoon of een specifieke locatie.
+Door de spraak service een lijst met zinsdelen te bieden, kunt u de nauw keurigheid van spraak herkenning verbeteren. Woordgroepen lijsten worden gebruikt voor het identificeren van bekende woord groepen in audio gegevens, zoals de naam van een persoon of een specifieke locatie.
 
 Als u bijvoorbeeld een opdracht ' verplaatsen naar ' en een mogelijke bestemming van ' naar onder ' hebt, kunt u een vermelding van ' verplaatsen naar binnen ' toevoegen. Als u een woord groep toevoegt, wordt de kans groter dat wanneer de audio wordt herkend dat ' naar binnen verplaatsen ' wordt herkend.
 
@@ -93,7 +93,7 @@ phraseListGrammar.clear();
 ```
 
 > [!NOTE]
-> Wijzigingen in een `PhraseListGrammar`-object worden van kracht bij de volgende herkenning of na het opnieuw verbinden met de spraak Services.
+> Wijzigingen in een `PhraseListGrammar`-object worden van kracht bij de volgende herkenning of na het opnieuw verbinden met de spraak service.
 
 ## <a name="next-steps"></a>Volgende stappen
 

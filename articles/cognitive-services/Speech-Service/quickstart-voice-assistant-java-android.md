@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 077f34e94423918d324eb41b56ab84c64a0db719
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111787"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816190"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Snelstartgids: een spraak assistent maken in Java op Android met behulp van de Speech SDK
 
@@ -26,11 +26,11 @@ In dit artikel maakt u een spraak assistent met Java voor Android met behulp van
 Deze toepassing is gebouwd met het Speech SDK maven-pakket en Android Studio 3,3. De Speech SDK is op dit moment compatibel met Android-apparaten met 32/64-bits ARM- en Intel x86/x64-compatibele processors.
 
 > [!NOTE]
-> Zie [Speech Devices SDK](speech-devices-sdk.md) voor de Speech Devices SDK en het Roobo-apparaat.
+> Zie [Speech Devices SDK](speech-devices-sdk.md) voor de Speech Devices-SDK en het Roobo-apparaat.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com).
+- Een Azure-abonnementssleutel voor de Spraakservice. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com).
 - Een eerder gemaakte bot die is geconfigureerd met het [directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [Android Studio](https://developer.android.com/studio/) v 3.3 of hoger
 
@@ -260,7 +260,7 @@ De tekst en de grafische weergave van uw gebruikersinterface moeten er nu ongeve
 
     * Vervang `YourSpeechSubscriptionKey` door uw abonnementssleutel.
 
-    * `YourServiceRegion` vervangen door de [regio](regions.md) die aan uw abonnement is gekoppeld alleen een subset van spraak Services regio's wordt momenteel ondersteund met direct line speech. Zie [regio's](regions.md#voice-assistants)voor meer informatie.
+    * `YourServiceRegion` vervangen door de [regio](regions.md) die aan uw abonnement is gekoppeld alleen een subset van spraak service regio's wordt momenteel ondersteund met direct line speech. Zie [regio's](regions.md#voice-assistants)voor meer informatie.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
@@ -285,7 +285,7 @@ Zodra de toepassing en de bijbehorende activiteiten zijn gestart, klikt u op de 
 
 ## <a name="see-also"></a>Zie ook
 - [Over spraak assistenten](voice-assistants.md)
-- [Gratis een abonnements sleutel voor spraak Services aanschaffen](get-started.md)
+- [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
 - [Aangepaste tref woorden](speech-devices-sdk-create-kws.md)
 - [Directe lijn spraak op uw bot aansluiten](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [Bekijk Java-voorbeelden op GitHub](https://aka.ms/csspeech/samples)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1eeb2e7ccf5c365fedd02a8de4c6b442dd3d5bc8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075815"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806059"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Transcripties met menselijke labels maken
 
@@ -57,7 +57,7 @@ Hier volgen enkele voor beelden van normalisatie die u moet uitvoeren op de tran
 | Mijn bloed type is O +         | Mijn bloed type is O positief           |
 | Water is H20                | Water is H 2 O                        |
 | OU812 Play by van halen     | O U 8 1 2 afspelen met van halen           |
-| UTF-8 met stuk lijst              | U T F 8 met stuk lijst                      |
+| UTF-8 met stuklijst              | U T F 8 met stuk lijst                      |
 
 De volgende regels voor normalisatie worden automatisch toegepast op transcripties:
 

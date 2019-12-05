@@ -8,12 +8,12 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: dd2b3bd584bb39810e0a5c9acde1a961330c273d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093759"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819136"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Data Explorer integreren met Azure Data Factory
 
@@ -118,13 +118,90 @@ In deze sectie wordt het gebruik van de Kopieer activiteit opgelost, waarbij Azu
 | **Complexiteit van gegevens verwerking** | De latentie varieert afhankelijk van de bron bestands indeling, de kolom toewijzing en de compressie.|
 | **De virtuele machine waarop uw Integration runtime wordt uitgevoerd** | <ul><li>Voor Azure copy kunnen ADF-Vm's en machine-Sku's niet worden gewijzigd.</li><li> Bepaal voor on-premises naar Azure kopiëren of de virtuele machine die als host fungeert voor uw zelf-hostende IR krachtig genoeg is.</li></ul>|
 
-## <a name="monitor-activity-progress"></a>Voortgang van activiteit bewaken
+## <a name="tips-and-common-pitfalls"></a>Tips en algemene Valk uilen
+
+### <a name="monitor-activity-progress"></a>Voortgang van activiteit bewaken
 
 * Bij het bewaken van de voortgang van de activiteit kan de eigenschap voor het *schrijven van gegevens* veel groter zijn dan de eigenschap voor het *lezen* van gegevens omdat de gegevens die worden *gelezen* , worden berekend volgens de binaire bestands grootte, terwijl gegevens die zijn *geschreven* , worden berekend op basis van de grootte in het geheugen, nadat de gegevens zijn gedeserialiseerd en gedecomprimeerd.
 
 * Wanneer u de voortgang van de activiteit bewaken, kunt u zien dat de gegevens naar de Azure Data Explorer-Sink zijn geschreven. Wanneer u een query uitvoert op de Azure Data Explorer-tabel, ziet u dat er geen gegevens zijn aangekomen. Dit komt doordat er twee fasen zijn bij het kopiëren naar Azure Data Explorer. 
     * In eerste instantie worden de bron gegevens gelezen, gesplitst naar segmenten van 900 MB en wordt elk segment geüpload naar een Azure-Blob. De eerste fase wordt gezien door de voortgangs weergave van de ADF-activiteit. 
     * De tweede fase begint zodra alle gegevens zijn geüpload naar Azure-blobs. De knoop punten van de Azure Data Explorer-engine downloaden de blobs en nemen de gegevens op in de Sink-tabel. De gegevens worden vervolgens weer gegeven in de Azure Data Explorer-tabel.
+
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>Fout bij het opnemen van CSV-bestanden vanwege onjuiste aanhalings tekens
+
+Azure Data Explorer verwacht dat CSV-bestanden worden uitgelijnd met [RFC 4180](https://www.ietf.org/rfc/rfc4180.txt).
+Verwacht:
+* Velden die tekens bevatten die moeten worden opgenomen in een escape-teken (zoals ' en nieuwe regels), moeten beginnen en eindigen met een **' character '** zonder spaties. Alle **"** tekens *in* het veld worden voorafgegaan door **een dubbel teken** ( **" "** ). Bijvoorbeeld _' Hallo ', ' wereld_ ' ' is een geldig CSV-bestand met één record met één kolom of veld met de inhoud _Hello, World_.
+* Alle records in het bestand moeten hetzelfde aantal kolommen en velden bevatten.
+
+Azure Data Factory staat het back slash-teken (Escape) toe. Als u een CSV-bestand met een back slash-teken genereert met behulp van Azure Data Factory, mislukt het opnemen van het bestand naar Azure Data Explorer.
+
+#### <a name="example"></a>Voorbeeld
+
+De volgende tekst waarden: Hallo, wereld<br/>
+ABC-DEF<br/>
+"ABC\D" EF<br/>
+"ABC-DEF<br/>
+
+Moet worden weer gegeven in een correct CSV-bestand als volgt: "Hallo," "wereld" ""<br/>
+"ABC-DEF"<br/>
+"" "ABC-DEF"<br/>
+"" "ABC\D" "EF"<br/>
+
+Met behulp van het standaard escape teken (back slash) werkt de volgende CSV niet met Azure Data Explorer: "Hallo, \"World\""<br/>
+"ABC-DEF"<br/>
+"\"ABC-DEF."<br/>
+"\"ABC\D\"EF"<br/>
+
+### <a name="nested-json-objects"></a>Geneste JSON-objecten
+
+Houd rekening met het volgende wanneer u een JSON-bestand naar Azure Data Explorer kopieert:
+* Matrices worden niet ondersteund.
+* Als uw JSON-structuur object gegevens typen bevat, worden de onderliggende items van het object door Azure Data Factory afgevlakt en wordt geprobeerd om elk onderliggend item toe te wijzen aan een andere kolom in uw Azure Data Explorer-tabel. Als u wilt dat het volledige object item wordt toegewezen aan één kolom in azure Data Explorer:
+    * De volledige JSON-rij opnemen in een enkele dynamische kolom in azure Data Explorer.
+    * Bewerk de pijplijn definitie hand matig met behulp van de JSON-editor van Azure Data Factory. In **toewijzingen**
+       * Verwijder de meerdere toewijzingen die zijn gemaakt voor elk onderliggend item en voeg één toewijzing toe waarmee u uw object type kunt toewijzen aan de tabel kolom.
+       * Voeg na het sluiten vier kant haakje een komma toe, gevolgd door:<br/>
+       `"mapComplexValuesToString": true`.
+
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>AdditionalProperties opgeven bij het kopiëren naar Azure Data Explorer
+
+> [!NOTE]
+> Deze functie is momenteel beschikbaar door de JSON-Payload hand matig te bewerken. 
+
+Voeg als volgt één rij toe onder het gedeelte ' sink ' van de Kopieer activiteit:
+
+```json
+"sink": {
+    "type": "AzureDataExplorerSink",
+    "additionalProperties": "{\"tags\":\"[\\\"drop-by:account_FiscalYearID_2020\\\"]\"}"
+},
+```
+
+Het maken van een Escape van de waarde kan lastig zijn. Gebruik het volgende code fragment als referentie:
+
+```csharp
+static void Main(string[] args)
+{
+       Dictionary<string, string> additionalProperties = new Dictionary<string, string>();
+       additionalProperties.Add("ignoreFirstRecord", "false");
+       additionalProperties.Add("csvMappingReference", "Table1_mapping_1");
+       IEnumerable<string> ingestIfNotExists = new List<string> { "Part0001" };
+       additionalProperties.Add("ingestIfNotExists", JsonConvert.SerializeObject(ingestIfNotExists));
+       IEnumerable<string> tags = new List<string> { "ingest-by:Part0001", "ingest-by:IngestedByTest" };
+       additionalProperties.Add("tags", JsonConvert.SerializeObject(tags));
+       var additionalPropertiesForPayload = JsonConvert.SerializeObject(additionalProperties);
+       Console.WriteLine(additionalPropertiesForPayload);
+       Console.ReadLine();
+}
+```
+
+De afgedrukte waarde:
+
+```json
+{"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

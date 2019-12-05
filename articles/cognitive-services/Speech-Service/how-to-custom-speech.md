@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d8e473afa2c8e7c0abf58e2dbc9caea030f2f5f
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554972"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806008"
 ---
 # <a name="what-is-custom-speech"></a>Wat is Custom Speech?
 
@@ -23,13 +23,13 @@ ms.locfileid: "74554972"
 
 ## <a name="whats-in-custom-speech"></a>Wat is er in Custom Speech?
 
-Voordat u iets met Custom Speech kunt doen, hebt u een Azure-account en een abonnement op spraak services nodig. Zodra u een account hebt, kunt u uw gegevens voorbereiden, uw modellen trainen en testen, de herkennings kwaliteit controleren, de nauw keurigheid evalueren en uiteindelijk het aangepaste spraak-naar-tekst model implementeren en gebruiken.
+Voordat u iets met Custom Speech kunt doen, hebt u een Azure-account en een spraak service-abonnement nodig. Zodra u een account hebt, kunt u uw gegevens voorbereiden, uw modellen trainen en testen, de herkennings kwaliteit controleren, de nauw keurigheid evalueren en uiteindelijk het aangepaste spraak-naar-tekst model implementeren en gebruiken.
 
 Dit diagram markeert de onderdelen waaruit de [Custom speech Portal](https://aka.ms/customspeech)is gemaakt. Gebruik de onderstaande koppelingen voor meer informatie over elke stap.
 
 ![Hier worden de verschillende onderdelen van de Custom Speech Portal gemarkeerd.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Meld u aan en maak een project](#set-up-your-azure-account) -Maak een Azure-account en Abonneer u op de spraak Services. Dit uniforme abonnement geeft u toegang tot spraak naar tekst, tekst naar spraak, spraak omzetting en de [Custom speech Portal](https://speech.microsoft.com/customspeech). Maak vervolgens uw eerste Custom Speech project met behulp van uw abonnement op spraak Services.
+1. [Abonneren en een project maken](#set-up-your-azure-account) : Maak een Azure-account en Abonneer u op de spraak service. Dit uniforme abonnement geeft u toegang tot spraak naar tekst, tekst naar spraak, spraak omzetting en de [Custom speech Portal](https://speech.microsoft.com/customspeech). Maak vervolgens uw eerste Custom Speech project met behulp van uw abonnement op de spraak service.
 
 2. [Test gegevens uploaden](how-to-custom-speech-test-data.md) test gegevens uploaden (audio bestanden) om de spraak-naar-tekst-aanbieding van micro soft voor uw toepassingen, hulpprogram ma's en producten te evalueren.
 
@@ -43,14 +43,14 @@ Dit diagram markeert de onderdelen waaruit de [Custom speech Portal](https://aka
 
 ## <a name="set-up-your-azure-account"></a>Uw Azure-account instellen
 
-Er is een abonnement op spraak Services vereist voordat u de [Custom speech Portal](https://speech.microsoft.com/customspeech) kunt gebruiken om een aangepast model te maken. Volg deze instructies voor het maken van een standaard abonnement op spraak Services: [een spraak abonnement maken](get-started.md#try-the-speech-service-using-a-new-azure-account).
+Er is een abonnement op de spraak service vereist voordat u de [Custom speech Portal](https://speech.microsoft.com/customspeech) kunt gebruiken om een aangepast model te maken. Volg deze instructies voor het maken van een standaard abonnement op spraak service: [een spraak abonnement maken](get-started.md#try-the-speech-service-using-a-new-azure-account).
 
 > [!NOTE]
 > Zorg ervoor dat u Standard (S0)-abonnementen maakt, maar gratis proef abonnementen (F0) worden niet ondersteund.
 
-Zodra u een Azure-account en een speech Services-abonnement hebt gemaakt, moet u zich aanmelden bij [Custom speech Portal](https://speech.microsoft.com/customspeech) en uw abonnement verbinden.
+Zodra u een Azure-account en een spraak service-abonnement hebt gemaakt, moet u zich aanmelden bij [Custom speech Portal](https://speech.microsoft.com/customspeech) en uw abonnement verbinden.
 
-1. Down load uw abonnements sleutel voor spraak services van de Azure Portal.
+1. Haal uw abonnements sleutel voor uw spraak service op uit de Azure Portal.
 2. Meld u aan bij de [Custom speech Portal](https://aka.ms/custom-speech).
 3. Selecteer het abonnement waarmee u wilt werken en maak een spraak project.
 4. Als u uw abonnement wilt wijzigen, gebruikt u het **tandwiel** -pictogram in de bovenste navigatie balk.

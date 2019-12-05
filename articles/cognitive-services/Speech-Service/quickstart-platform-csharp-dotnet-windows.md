@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: Speech SDK for .NET Framework Windows platform Setup-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding voor het instellen van uw C# platform voor onder .NET Framework voor Windows met de speech Services SDK.
+description: Gebruik deze hand leiding voor het instellen van uw C# platform voor onder .NET Framework voor Windows met de Speech Service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: efd4339f55f2b5454e3ad9853b9c8d833763ea86
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7073791a9ad1da910ee0811478b86840211d9a14
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111017"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818563"
 ---
 # <a name="quickstart-speech-sdk-for-net-framework-windows-platform-setup"></a>Snelstartgids: Speech SDK for .NET Framework (Windows) platform Setup
 
