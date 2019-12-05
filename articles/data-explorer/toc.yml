@@ -102,8 +102,12 @@
           href: data-lake-query-data.md
         - name: Query's uitvoeren op gegevens in Azure Monitor
           href: query-monitor-data.md
-        - name: Python
-          href: python-query-data.md
+        - name: Fouten opsporen in KQL inline Python
+          href: debug-inline-python.md
+        - name: met behulp van SDK's
+          items:
+            - name: Python
+              href: python-query-data.md
         - name: Tijdreeksanalyse en machine learning
           items:
             - name: Tijdreeksanalyse

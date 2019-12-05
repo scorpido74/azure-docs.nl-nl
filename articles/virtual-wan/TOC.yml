@@ -40,6 +40,10 @@
       href: virtual-wan-custom-ipsec-portal.md
     - name: Certificaten configureren voor een gebruikers-VPN (punt-naar-site)
       href: certificates-point-to-site.md
+    - name: Azure AD-tenant configureren voor een gebruikers-VPN
+      href: openvpn-azure-ad-tenant.md
+    - name: Meervoudige verificatie (MFA) inschakelen voor een gebruikers-VPN
+      href: openvpn-azure-ad-mfa.md
     - name: Azure Active Directory-verificatie instellen voor gebruikers-VPN (preview)
       href: virtual-wan-point-to-site-azure-ad.md
     - name: Automatisering configureren (Virtual WAN-partners)

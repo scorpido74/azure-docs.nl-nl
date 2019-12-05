@@ -508,7 +508,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
      Flags: rw,noatime,vers=<b>4.1</b>,rsize=262144,wsize=262144,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.23.2.4,local_lock=none,addr=10.23.1.4
     </code></pre>
 
-## <a name="installation"></a>Installeren  
+## <a name="installation"></a>Installatie  
 
 In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie met een stand-by-knoop punt met Azure, hebben we HANA 2,0 SP4 gebruikt.  
 
