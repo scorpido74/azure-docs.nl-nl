@@ -21,6 +21,8 @@
   items:
     - name: FarmBeats implementeren
       href: prepare-for-deployment.md
+    - name: Gebruikers beheren
+      href: manage-users.md
     - name: Een boerderij beheren
       href: manage-farms.md
     - name: Sensorgegevens ophalen

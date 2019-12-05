@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: d7ceb3acb1d2e3d174f3b665ec6210d3ddac9970
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: bdb459a69557269a20d36f05acc2da502064efb9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059153"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851346"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Problemen met virtuele Azure-machines oplossen
 
 ## <a name="tools-for-troubleshooting"></a>Hulpprogramma's voor probleemoplossing
 
-- [Seriële console](serial-console-windows.md)
+- [Seriële console](serial-console-overview.md)
 - [Diagnostische gegevens over opstarten](boot-diagnostics.md)
 - [Windows-VM: De schijf van het besturingssysteem aan een andere VM koppelen om problemen op te lossen](troubleshoot-recovery-disks-portal-windows.md)
 - [Linux-VM: De schijf van het besturingssysteem aan een andere VM koppelen om problemen op te lossen](troubleshoot-recovery-disks-portal-linux.md)
@@ -46,7 +46,7 @@ ms.locfileid: "71059153"
 
 **Opstartfouten van VM**
 
-* [Opstartfouten van BitLocker](troubleshoot-bitlocker-boot-error.md) 
+* [Opstartfouten van BitLocker](troubleshoot-bitlocker-boot-error.md)
 * [Windows tijdens opstarten: 'Controle van bestandssysteem'](troubleshoot-check-disk-boot-error.md)
 * [Fouten met blauw scherm](troubleshoot-common-blue-screen-error.md)
 * [Opstarten van VM blijft hangen bij Windows voorbereiden](troubleshoot-vm-boot-configure-update.md)
