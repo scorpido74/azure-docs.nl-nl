@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: Vertaal spraak-naar-tekst-spraak-service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: c45e75038d1731c933ccf8bf26f9de573e409292
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cd45657beacd04eb2376af3e4297eae051157778
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502784"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816932"
 ---
 In deze Quick Start gebruikt u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) om spraak van de ene taal te vertalen naar tekst in een andere taal. Nadat u hebt voldaan aan enkele vereisten, is het omzetten van spraak naar tekst in vijf stappen vereist:
 > [!div class="checklist"]

@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: de functie spraak, C# -Speech Service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/19/2019
 ms.author: erhopf
-ms.openlocfilehash: 0415159aaacbe1c03c92f1106fe68a4ce6ff6c0c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 800afbca58d78da28034e0fad785688b9d4b2251
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260704"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818112"
 ---
 **Kies uw doel omgeving**
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/19/2019
 ms.author: yulili
-ms.openlocfilehash: 47120c6b6fee945938ac5348091be55795077f6c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e38b1bdd3258675dfac9a155f7cee338a1f8f806
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503337"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818452"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,7 +34,7 @@ We gaan een eenvoudige gebruikersinterface maken voor de toepassing. Bewerk de l
 
 1. Sleep vanuit het palet in de linkerbovenhoek van het venster `activity_main.xml` een knop naar de lege ruimte boven de tekst.
 
-1. Ga naar de kenmerken van de knop aan de rechterkant en voer `onClick` in als de waarde voor het kenmerk `onSpeechButtonClicked`. We gaan een methode met deze naam schrijven om de knopgebeurtenis af te handelen.  Wijzig het kenmerk ID in de rechterbovenhoek in `button`.
+1. Ga naar de kenmerken van de knop aan de rechterkant en voer `onSpeechButtonClicked` in als de waarde voor het kenmerk `onClick`. We gaan een methode met deze naam schrijven om de knopgebeurtenis af te handelen.  Wijzig het kenmerk ID in de rechterbovenhoek in `button`.
 
 1. Sleep een tekst zonder opmaak naar de ruimte boven de knop. Wijzig het kenmerk ID in `speakText`en wijzig het tekst kenmerk in `Hi there!`.
 
@@ -59,7 +59,7 @@ De tekst en de grafische weergave van uw gebruikersinterface moeten er nu ongeve
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang ook de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang ook de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 

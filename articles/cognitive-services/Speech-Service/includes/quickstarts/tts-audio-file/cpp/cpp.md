@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: spraak samen te brengen in audio C++ bestand,-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a508f1f1740f4737faa771d3fe4f8692cdfdad6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fb26fa2fd43a9976c5abb89cef795c06d700db20
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502973"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817916"
 ---
 [!INCLUDE [windows](./windows.md)]
 

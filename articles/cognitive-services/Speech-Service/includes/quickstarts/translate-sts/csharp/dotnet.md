@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: vertalen van spraak naar spraak, C# (.NET Framework Windows)-spraak service'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: Nader te bepalen
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: erhopf
-ms.openlocfilehash: b93cd87a354bf327628d97a3796b3e51d7c508cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ebf289f22e9bffe926a641a12a0497fc7db0d9f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502889"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817413"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -117,7 +117,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
 1. Kies in de menu balk de optie **bestand** > alles op te **slaan**.
 
@@ -127,7 +127,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Kies **fout opsporing** > **fout opsporing starten** (of druk op **F5**) om de toepassing **HelloWorld** te starten.
 
-1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de spraak Services, die worden vertaald naar tekst (in dit geval naar Duits). De spraak Services verzenden vervolgens de gesynthesizerde audio en de tekst terug naar de toepassing voor weer gave.
+1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de speech-service, die vertaalt en transcribeert naar tekst (in dit geval naar Duits). De spraak service verzendt vervolgens de gesynthesizerde audio en de tekst terug naar de toepassing om weer te geven.
 
 ````
 Say something...

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/19/2019
 ms.author: yulili
-ms.openlocfilehash: 0ee22c7a34ac332fac930ead6b7d62f6e7aad5d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d7ca86092b973d369d37cbeac1bc9f8cfcf9b462
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503351"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818183"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,9 +40,9 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Sla de wijzigingen in het project op.
+1. Sla de wijzigingen aan het project op.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 

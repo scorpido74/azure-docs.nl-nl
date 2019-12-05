@@ -6,13 +6,13 @@ ms.suite: integration
 author: shae-hurst
 ms.author: shhurst
 ms.topic: article
-ms.date: 4/27/2018
-ms.openlocfilehash: e583bf53021d772db54c30ed5a4c9ea2a029e093
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/03/2019
+ms.openlocfilehash: 8c2e857808b0638fbba54cfe9a623ba3fd764119
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792015"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815099"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Grote berichten verwerken met Chunking in Azure Logic Apps
 
@@ -39,6 +39,9 @@ Anders krijgt u een runtime fout wanneer u toegang probeert te krijgen tot grote
 Services die communiceren met Logic Apps kunnen hun eigen bericht grootte limieten hebben. Deze limieten zijn vaak kleiner dan de Logic Apps limiet. Als er bijvoorbeeld wordt aangenomen dat een connector Chunking ondersteunt, kan een connector een bericht van 30 MB als groot beschouwen, terwijl Logic Apps dat niet doet. Om te voldoen aan de limiet van deze connector, Logic Apps een bericht dat groter is dan 30 MB in kleinere segmenten gesplitst.
 
 Voor connectors die ondersteuning bieden voor Chunking, is het onderliggende Chunking-protocol onzichtbaar voor eind gebruikers. Niet alle connectors ondersteunen echter Chunking, dus genereren deze connectors fouten wanneer binnenkomende berichten de limieten voor de grootte van de connector overschrijden.
+
+> [!NOTE]
+> Voor acties die gebruikmaken van Chunking, kunt u de hoofd tekst van de trigger niet door geven of expressies zoals `@triggerBody()?['Content']` in die acties gebruiken. In plaats daarvan kunt u voor inhoud van tekst of JSON-bestand proberen de [actie **opstellen** ](../logic-apps/logic-apps-perform-data-operations.md#compose-action) te gebruiken of [een variabele te maken](../logic-apps/logic-apps-create-variables-store-values.md) om die inhoud af te handelen. Als de hoofd tekst van de trigger andere inhouds typen bevat, zoals media bestanden, moet u andere stappen uitvoeren om die inhoud af te handelen.
 
 <a name="set-up-chunking"></a>
 
@@ -112,15 +115,15 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
 
    | Veld aanvraag header Logic Apps | Waarde | Type | Beschrijving |
    |---------------------------------|-------|------|-------------|
-   | **x-MS-overdracht-modus** | gesegmenteerde | Tekenreeks | Geeft aan dat de inhoud is geüpload in segmenten |
-   | **x-MS-content-length** | <*content-length*> | Geheel getal | De volledige inhouds grootte in bytes voordat deze wordt gesegmenteerd |
+   | **x-ms-transfer-mode** | gesegmenteerd | Tekenreeks | Geeft aan dat de inhoud is geüpload in segmenten |
+   | **x-ms-content-length** | <*content-length*> | Geheel getal | De volledige inhouds grootte in bytes voordat deze wordt gesegmenteerd |
    ||||
 
 2. Het eind punt reageert met de status code ' 200 ' en de volgende optionele informatie:
 
    | Veld koptekst eindpunt reactie | Type | Verplicht | Beschrijving |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-chunk-grootte** | Geheel getal | Nee | De voorgestelde segment grootte in bytes |
+   | **x-ms-chunk-size** | Geheel getal | Nee | De voorgestelde segment grootte in bytes |
    | **Locatie** | Tekenreeks | Ja | De URL-locatie waarnaar de HTTP-PATCH berichten moeten worden verzonden |
    ||||
 
@@ -133,8 +136,8 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
      | Veld aanvraag header Logic Apps | Waarde | Type | Beschrijving |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*bereik*> | Tekenreeks | Het bereik van de byte voor het huidige inhouds segment, met inbegrip van de begin waarde, de eind waarde en de totale inhouds grootte, bijvoorbeeld: ' bytes = 0-1023/10100 ' |
-     | **Inhouds type** | <*Content-type*> | Tekenreeks | Het type van de gesegmenteerde inhoud |
-     | **Content-length** | <*content-length*> | Tekenreeks | De lengte van de grootte in bytes van het huidige segment |
+     | **Inhouds type** | <*content-type*> | Tekenreeks | Het type van de gesegmenteerde inhoud |
+     | **Content-Length** | <*content-length*> | Tekenreeks | De lengte van de grootte in bytes van het huidige segment |
      |||||
 
 4. Na elke PATCH-aanvraag bevestigt het eind punt de ontvangst voor elk segment door te reageren met de status code ' 200 ' en de volgende antwoord headers:
@@ -142,7 +145,7 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
    | Veld koptekst eindpunt reactie | Type | Verplicht | Beschrijving |
    |--------------------------------|------|----------|-------------|
    | **Range** | Tekenreeks | Ja | Het bereik van de bytes voor inhoud die door het eind punt is ontvangen, bijvoorbeeld: "bytes = 0-1023" |   
-   | **x-MS-chunk-grootte** | Geheel getal | Nee | De voorgestelde segment grootte in bytes |
+   | **x-ms-chunk-size** | Geheel getal | Nee | De voorgestelde segment grootte in bytes |
    ||||
 
 Deze actie definitie toont bijvoorbeeld een HTTP POST-aanvraag voor het uploaden van gesegmenteerde inhoud naar een eind punt. In de eigenschap `runTimeConfiguration` van de actie stelt de `contentTransfer` eigenschap `transferMode` in op `chunked`:
