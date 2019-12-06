@@ -12,10 +12,6 @@
       href: require-tou.md
     - name: Toegang blokkeren wanneer er een sessierisico wordt gedetecteerd
       href: app-sign-in-risk.md
-- name: Zelfstudies
-  items:
-    - name: Klassiek MFA-beleid migreren
-      href: policy-migration-mfa.md
 - name: Concepten
   expanded: false
   items:
@@ -37,6 +33,8 @@
       href: service-dependencies.md
     - name: Hulpprogramma What If
       href: what-if-tool.md
+    - name: Klassieke beleidsmigraties
+      href: policy-migration.md
     - name: Basisbeschermingsbeleid
       href: concept-baseline-protection.md
 - name: Handleidingen
@@ -83,7 +81,7 @@
     - name: Aanmeldingsfrequentie en besturingselementen voor browserpersistentie
       href: howto-conditional-access-session-lifetime.md
     - name: Klassieke beleidsregels migreren
-      href: policy-migration.md
+      href: policy-migration-mfa.md
     - name: Voorwaardelijke toegang implementeren
       href: howto-conditional-access-adoption-kit.md
     - name: Problemen oplossen

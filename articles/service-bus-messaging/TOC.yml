@@ -203,6 +203,10 @@
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: 'Een naamruimte met een onderwerp, abonnement en regel maken'
               href: service-bus-resource-manager-namespace-topic-with-rule.md
+    - name: Beveiligen
+      items:
+        - name: Door de klant beheerde sleutels configureren voor versleuteling-at-rest (preview)
+          href: configure-customer-managed-key.md
     - name: Problemen oplossen
       items:
         - name: Handleiding voor het oplossen van problemen

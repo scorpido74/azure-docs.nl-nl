@@ -87,7 +87,7 @@
           href: deploy-kcd.md
         - name: Beleid voor wachtwoord- en accountvergrendeling configureren
           href: password-policy.md
-        - name: Beveiligingscontrolegebeurtenissen inschakelen (preview)
+        - name: Beveiligingscontrolegebeurtenissen inschakelen
           href: security-audit-events.md
     - name: Deelnemen aan domeinen van VM's
       items:

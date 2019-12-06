@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: f3e8495671b56eda804e33b78667cf75cc2f8e70
-  ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+  ms.openlocfilehash: 11d32abbcd07f16bd21d512d36cd08abd8ca97df
+  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 07/29/2019
-  ms.locfileid: "68607626"
+  ms.lasthandoff: 12/05/2019
+  ms.locfileid: "74842303"
 highlightedContent:
   items:
   - title: Wat is Azure AD?
@@ -95,6 +95,20 @@ conceptualContent:
       text: Aangepast beleid in Azure AD B2C
     footerLink:
       url: ../active-directory-b2c/index.yml
+      text: Meer informatie
+  - title: Cloudinrichting
+    links:
+    - url: ./cloud-provisioning/what-is-cloud-provisioning.md
+      itemType: overview
+      text: Wat is cloudinrichting?
+    - url: ./cloud-provisioning/tutorial-single-forest.md
+      itemType: tutorial
+      text: Een enkele forest integreren met enkele Azure AD-tenant
+    - url: ./cloud-provisioning/how-to-install.md
+      itemType: how-to-guide
+      text: Agent van Azure AD Connect-cloudinrichting installeren
+    footerLink:
+      url: ./cloud-provisioning/index.yml
       text: Meer informatie
   - title: Voorwaardelijke toegang
     links:

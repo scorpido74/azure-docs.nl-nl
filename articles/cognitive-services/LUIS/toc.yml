@@ -48,13 +48,13 @@
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
         - name: 3. Sentiment van uitingen van gebruiker ophalen
           href: tutorial-publish-settings.md
-    - name: App maken
+    - name: Entiteiten maken en gebruiken
       items:
-        - name: Correct opgemaakte gegevens met reguliere expressies ophalen
-          href: luis-quickstart-intents-regex-entity.md
-        - name: Exact overeenkomende tekst met lijsten ophalen
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: Gerelateerde gegevens met entiteitsrollen ophalen
+        - name: Entiteiten in de vorm van reguliere expressies
+          href: tutorial-regex-entity.md
+        - name: Entiteiten vermelden
+          href: tutorial-list-entity.md
+        - name: Entiteitsrollen
           href: tutorial-entity-roles.md
           displayName: 'roles, geographyV2, context'
         - name: Gerelateerde gegevens met samengestelde entiteiten ophalen

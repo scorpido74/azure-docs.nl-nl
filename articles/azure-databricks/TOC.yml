@@ -126,9 +126,6 @@
         - name: Clusterknooppunten initialiseren
           href: /azure/databricks/clusters/init-scripts
           maintainContext: true
-        - name: Aangepaste containers
-          href: /azure/databricks/clusters/custom-containers
-          maintainContext: true
         - name: Clusters met GPU
           href: /azure/databricks/clusters/gpu
           maintainContext: true
@@ -226,9 +223,6 @@
       maintainContext: true
     - name: Gegevens
       items:
-        - name: Databricks-bestandssysteem (DBFS)
-          href: /azure/databricks/data/databricks-file-system
-          maintainContext: true
         - name: Databases en tabellen
           href: /azure/databricks/data/tables
           maintainContext: true
@@ -317,6 +311,9 @@
             - name: Zipbestanden
               href: /azure/databricks/data/data-sources/zip-files
               maintainContext: true
+        - name: Databricks-bestandssysteem (DBFS)
+          href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
@@ -829,8 +826,8 @@
             - name: Modeldeductie met TensorFlow
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
               maintainContext: true
-            - name: Prestaties van modeldeductie afstemmen
-              href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
+            - name: Referentieoplossing voor modeldeductie van gedistribueerde installatiekopie
+              href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
               maintainContext: true
     - name: MLflow
       items:
@@ -1066,9 +1063,6 @@
             - name: Overzicht van clusterconfiguratie
               href: /azure/databricks/administration-guide/clusters/index
               maintainContext: true
-            - name: Containerservices inschakelen
-              href: /azure/databricks/administration-guide/clusters/container-services
-              maintainContext: true
             - name: Databricks Runtime voor Genomics inschakelen
               href: /azure/databricks/administration-guide/clusters/genomics-runtime
               maintainContext: true
@@ -1137,9 +1131,6 @@
               maintainContext: true
             - name: Configuratie-instellingen overschrijft standaardinstellingen
               href: /azure/databricks/kb/clusters/conf-overwrites-default-settings
-              maintainContext: true
-            - name: JNI-bibliotheken uitvoeren op executors met een enkele kern
-              href: /azure/databricks/kb/clusters/multiple-executors-single-worker
               maintainContext: true
             - name: log4j-configuraties overschrijven
               href: /azure/databricks/kb/clusters/overwrite-log4j-logs
@@ -1544,6 +1535,9 @@
           items:
             - name: Opmerkingen bij de release van het platform
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: December 2019
+              href: /azure/databricks/release-notes/product/2019/december
               maintainContext: true
             - name: November 2019
               href: /azure/databricks/release-notes/product/2019/november

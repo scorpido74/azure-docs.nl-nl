@@ -178,7 +178,7 @@
               href: dealing-with-duplicates.md
     - name: Implementeren
       items:
-        - name: Uw cluster in uw VNet implementeren
+        - name: Uw cluster implementeren in uw virtuele netwerk
           href: vnet-deployment.md
     - name: Controleren
       items:
