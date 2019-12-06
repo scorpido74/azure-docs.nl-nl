@@ -6,21 +6,21 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a229eef3d49964e71becf066d67f60b18da6fc18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bc721f4521c9ac9b8ed8fed2d6b41f6a1b8bd72
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113247"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846399"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Zelfstudie: Een Azure Multi-Factor Authentication-pilot implementeren
 
-In deze zelfstudie helpt u u bij het configureren van beleid voor voorwaardelijke toegang inschakelen van Azure multi-factor Authentication (MFA Azure) wanneer u zich aanmeldt bij Azure portal. Het beleid is geïmplementeerd en getest op een specifieke groep pilotgebruikers. Implementatie van Azure MFA met behulp van voorwaardelijke toegang biedt aanzienlijke flexibiliteit voor organisaties en beheerders in vergelijking met de traditionele methode afgedwongen.
+In deze zelf studie leert u hoe u een beleid voor voorwaardelijke toegang configureert om Azure Multi-Factor Authentication (Azure MFA) in te scha kelen wanneer u zich aanmeldt bij de Azure Portal. Het beleid is geïmplementeerd en getest op een specifieke groep pilotgebruikers. Implementatie van Azure MFA met voorwaardelijke toegang biedt grote flexibiliteit voor organisaties en beheerders in vergelijking met de traditionele afgedwongen methode.
 
 > [!div class="checklist"]
 > * Azure Multi-Factor Authentication inschakelen
@@ -30,13 +30,13 @@ In deze zelfstudie helpt u u bij het configureren van beleid voor voorwaardelijk
 
 * Een werkende Azure AD-tenant waarop minimaal een proeflicentie is ingeschakeld.
 * Een account met de bevoegdheden van een globale beheerder.
-* Zie het artikel [Quickstart: Nieuwe gebruikers toevoegen aan Azure Active Directory](../add-users-azure-active-directory.md) als een testgebruiker zonder beheerdersbevoegdheden een wachtwoord heeft dat u kent, en u een gebruiker moet maken.
+* Zie het artikel [Snelstart: Nieuwe gebruikers toevoegen aan Azure Active Directory](../add-users-azure-active-directory.md) als een testgebruiker zonder beheerdersbevoegdheden een bij u bekend wachtwoord heeft voor testdoeleinden, en u een gebruiker moet maken.
 * Zie het artikel [Een groep maken en leden toevoegen in Azure Active Directory](../active-directory-groups-create-azure-portal.md) als u een pilotgroep hebt om mee te testen waarvan de gebruiker zonder beheerdersbevoegdheden lid is, en u een groep wilt maken.
 
 ## <a name="enable-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication inschakelen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met een globale-beheerdersaccount.
-1. Blader naar **Azure Active Directory**, **voorwaardelijke toegang**
+1. Bladeren naar **Azure Active Directory**, **voorwaardelijke toegang**
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid de naam **MFA-pilot**
 1. Onder **Gebruikers en groepen** selecteert u het keuzerondje **Gebruikers en groepen selecteren**.
@@ -52,26 +52,26 @@ In deze zelfstudie helpt u u bij het configureren van beleid voor voorwaardelijk
     * Klik op **Selecteren**.
 1. Sla de sectie **Sessie** over.
 1. Stel de wisselknop **Beleid inschakelen** in op **Aan**.
-1. Klik op **Maken**
+1. Klik op **Maken**.
 
 ## <a name="test-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication testen
 
-Om te bewijzen dat uw beleid voor voorwaardelijke toegang werkt, test u aanmelden bij een resource die geen MFA vereist en klikt u vervolgens naar de Azure-portal die MFA vereist.
+Als u wilt bewijzen dat uw beleid voor voorwaardelijke toegang werkt, test u het aanmelden bij een resource die geen MFA vereist en vervolgens naar de Azure Portal waarvoor MFA vereist is.
 
 1. Open een nieuw browservenster in de InPrivate- of incognitomodus en blader naar [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com).
    * Meld u aan als de testgebruiker die u hebt gemaakt als onderdeel van de sectie over vereisten in dit artikel, en zoals u ziet wordt u niet gevraagd om een MFA uit te voeren.
    * Sluit het browservenster.
 2. Open een nieuw browservenster in de InPrivate- of incognitomodus en blader naar [https://portal.azure.com](https://portal.azure.com).
    * Meld u aan als de testgebruiker die u hebt gemaakt als onderdeel van de sectie over vereisten in dit artikel, en zoals u ziet bent u nu verplicht om u te registreren voor Azure Multi-Factor Authentication en er gebruik van te maken.
-   * Sluit  het browservenster.
+   * Sluit het browservenster.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Als u besluit dat u niet langer gebruik wilt maken van de functionaliteit die u als onderdeel van deze zelfstudie hebt geconfigureerd, moet u de volgende wijziging aanbrengen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory**, **voorwaardelijke toegang**.
-1. Selecteer het beleid voor voorwaardelijke toegang die u hebt gemaakt.
+1. Selecteer het beleid voor voorwaardelijke toegang dat u hebt gemaakt.
 1. Klik op **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen

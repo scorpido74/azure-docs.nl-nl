@@ -4,20 +4,23 @@ description: In deze zelfstudie leert u hoe u een Azure Container Registry-taak 
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8af8daa4233fe6461b4e129f56a063e7cc212245
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a26f1207eccd615804babe230df689d27beae49f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454755"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840779"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Zelf studie: builds van container installatie kopieën in de Cloud automatiseren bij het door voeren van de bron code
 
-Naast een [snelle taak](container-registry-tutorial-quick-task.md)ondersteunt ACR-taken geautomatiseerde docker-container installatie kopieën in de Cloud wanneer u bron code doorvoert in een Git-opslag plaats.
+Naast een [snelle taak](container-registry-tutorial-quick-task.md)ondersteunt ACR-taken geautomatiseerde docker-container installatie kopieën in de Cloud wanneer u bron code doorvoert in een Git-opslag plaats. Ondersteunde Git-contexten voor ACR-taken zijn onder andere open bare of persoonlijke GitHub of Azure opslag plaatsen.
+
+> [!NOTE]
+> Op dit moment bieden ACR-taken geen ondersteuning voor commit-of pull-aanvraag triggers in GitHub Enter prise opslag plaatsen.
 
 In deze zelf studie bouwt en pusht uw ACR-taak één container installatie kopie die is opgegeven in een Dockerfile wanneer u de bron code doorvoert in een Git-opslag plaats. Voor het maken van een [taak met meerdere stappen](container-registry-tasks-multi-step.md) die gebruikmaakt van een yaml-bestand voor het definiëren van stappen voor het bouwen, pushen en optioneel testen van meerdere containers op code doorvoer, raadpleegt [u zelf studie: een werk stroom voor meerdere stappen in de Cloud uitvoeren wanneer u de bron code doorvoert](container-registry-tutorial-multistep-task.md). Zie [reparatie van besturings systemen en Framework automatiseren met ACR-taken](container-registry-tasks-overview.md) voor een overzicht van ACR-taken
 
-In deze zelf studie:
+In deze zelfstudie hebt u het volgende gedaan:
 
 > [!div class="checklist"]
 > * Een taak maken

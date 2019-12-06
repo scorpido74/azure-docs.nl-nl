@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1efb67df6c31a3b03fdc45fffc0564fb09e39faf
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: e1ec439696c1ebd9d5929a4c8b2d9925fc1a71cc
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853029"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846468"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>Zelfstudie: Wachtwoord terugschrijven inschakelen
 
@@ -54,7 +54,7 @@ Het inschakelen van de functie voor het terugschrijven van wachtwoorden in Azure
 2. Blader naar **Azure Active Directory**, klik op **Wachtwoord opnieuw instellen** en kies vervolgens **On-premises integratie**.
 3. Stel **Wachtwoorden terugschrijven naar uw on-premises directory?** in op **Ja**.
 4. Stel de optie **Gebruikers toestaan accounts te ontgrendelen zonder hun wachtwoord opnieuw in te stellen?** in op **Ja**.
-5. Klik op **Opslaan**
+5. Klik op **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

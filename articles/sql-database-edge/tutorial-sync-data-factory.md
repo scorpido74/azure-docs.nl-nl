@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 2bfa65117bf31ad9cb9917fd8a643a0358e02be0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e6fd9e6431137708ba93328a8ed1359b93b4ee1f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384209"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851686"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Zelf studie: gegevens van SQL Database Edge synchroniseren met Azure Blob-opslag met behulp van Azure Data Factory
 
@@ -177,9 +177,9 @@ Maak een data factory door de instructies in [deze zelf studie](../data-factory/
 
 27. Ga naar het tabblad **verbinding** van SinkDataset en voer de volgende stappen uit:
 
-    1. Voer bij **bestandspad** *asdedatasync/incrementalcopy*in, waarbij *adftutorial* de naam van de BLOB-container is en *incrementalcopy* de mapnaam is. Maak de container als deze niet bestaat, of gebruik de naam van een bestaande. Azure Data Factory maakt automatisch de uitvoermap *incrementalcopy* als deze nog niet bestaat. U kunt ook de knop **Bladeren** voor het **bestandspad** gebruiken om naar een map in een blob-container te navigeren.
+    1. Voer bij **bestandspad** *asdedatasync/incrementalcopy*in, waarbij *asdedatasync* de naam van de BLOB-container is en *incrementalcopy* de mapnaam is. Maak de container als deze niet bestaat, of gebruik de naam van een bestaande. Azure Data Factory maakt automatisch de uitvoermap *incrementalcopy* als deze nog niet bestaat. U kunt ook de knop **Bladeren** voor het **bestandspad** gebruiken om naar een map in een blob-container te navigeren.
 
-    2. Voor het **bestand** deel **van het bestandspad**selecteert u **dynamische inhoud toevoegen [Alt + P]** en voert u vervolgens@CONCATin **(' incremental-', pipeline (). RunId, '. txt ')** in het venster dat wordt geopend. Selecteer **Voltooien**. De bestands naam wordt dynamisch gegenereerd door de expressie. Elke pijplijnuitvoering heeft een unieke id. De kopieeractiviteit gebruikt de run-id om de bestandsnaam te genereren.
+    2. Voor het **bestand** deel **van het bestandspad**selecteert u **dynamische inhoud toevoegen [Alt + P]** en voert u vervolgens@CONCATin **(' incremental-', pipeline (). RunId, '. txt ')** in het venster dat wordt geopend. Selecteer **Finish**. De bestands naam wordt dynamisch gegenereerd door de expressie. Elke pijplijnuitvoering heeft een unieke id. De kopieeractiviteit gebruikt de run-id om de bestandsnaam te genereren.
 
 28. Schakel over naar de pijplijn editor door het tabblad pijp lijn bovenaan te selecteren of door de naam van de pijp lijn in de structuur weergave aan de linkerkant te selecteren.
 
@@ -197,7 +197,7 @@ Maak een data factory door de instructies in [deze zelf studie](../data-factory/
 
     |Naam|Type|Waarde|
     |-----|----|-----|
-    |LastModifiedtime|DateTime|@ {activity (' NewWaterMark '). output. firstRow. NewWatermarkvalue}|
+    |LastModifiedtime|Datum/tijd|@ {activity (' NewWaterMark '). output. firstRow. NewWatermarkvalue}|
     |TableName|Tekenreeks|@ {activity (' OldWaterMark '). output. firstRow. TableName}|
 
 33. Selecteer **valideren** op de werk balk om de instellingen voor de pijp lijn te valideren. Controleer of er geen validatiefouten zijn. Selecteer **>>** om het venster **pijplijn validatie rapport** te sluiten.

@@ -1,15 +1,15 @@
 ---
 title: Gebruik Block Chain Data Manager om Azure Cosmos DB-Azure Block Chain-service bij te werken
 description: Gebruik Block Chain Data Manager voor de Azure Block Chain-service om Block Chain-gegevens te verzenden naar Azure Cosmos DB
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 497652f91d46592212a17a0a22832c02a696df62
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 642e8b4d9d2492c0d7119f0a5469176765565159
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326248"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849949"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Zelf studie: Block Chain Data Manager gebruiken om gegevens te verzenden naar Azure Cosmos DB
 
@@ -41,7 +41,7 @@ In deze zelfstudie hebt u:
 
 Een Block Chain Data Manager-exemplaar maakt verbinding met een Azure Block Chain Service-transactie knooppunt en bewaakt deze. Een exemplaar legt alle onbewerkte blok keringen en ruwe transactie gegevens vast van het trans actie-knoop punt. Een uitgaande verbinding verzendt Block Chain-gegevens naar Azure Event Grid. Wanneer u het exemplaar maakt, configureert u één uitgaande verbinding.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar het lid van de Azure Block Chain-service dat u hebt gemaakt in de Snelstartgids voor vereisten [: Maak een Block Chain-lid met behulp van de Azure Portal](create-member.md). Selecteer **block chain data manager**.
 1. Selecteer **Toevoegen**.
 
@@ -109,13 +109,13 @@ Block Chain Data Manager vereist dat de ABI-en byte code-bestanden van het contr
     | Instelling | Beschrijving |
     |---------|-------------|
     | Naam  | Geef de container een naam. Bijvoorbeeld *smartcontract* |
-    | Openbaar toegangs niveau | Kies *privé (geen anonieme toegang)* |
+    | Openbaar toegangsniveau | Kies *privé (geen anonieme toegang)* |
 
 1. Selecteer **OK** om de container te maken.
 1. Selecteer de container en selecteer vervolgens **uploaden**.
 1. Kies beide JSON-bestanden die u hebt gemaakt in de sectie [contract Abi en byte code ophalen](#get-contract-abi-and-bytecode) .
 
-    ![BLOB uploaden](./media/data-manager-cosmosdb/upload-blobs.png)
+    ![Blob uploaden](./media/data-manager-cosmosdb/upload-blobs.png)
 
     Selecteer **Uploaden**.
 
@@ -173,7 +173,7 @@ U kunt de Data Explorer in de Azure Portal gebruiken om een Data Base en contain
     |---------|-------------|
     | Database-id | Voer **Block chain-data** in als de naam voor de nieuwe data base. |
     | Doorvoer | De door Voer bij **400** aanvraag eenheden per seconde (ru/s) behouden. U kunt de doorvoer later opschalen als u de latentie wilt beperken.|
-    | Container-ID | Voer **berichten** in als de naam voor de nieuwe container. |
+    | Container-id | Voer **berichten** in als de naam voor de nieuwe container. |
     | Partitiesleutel | Gebruik **/MessageType** als partitie sleutel. |
 
 1. Selecteer **OK**. In de Data Explorer worden de nieuwe data base en de door u gemaakte container weer gegeven.
@@ -204,7 +204,7 @@ Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer e
     |---------|-------------|
     | Abonnement | Kies het abonnement dat het Event Grid onderwerp bevat. |
     | Resourcetype | Kies **micro soft. EventGrid. topics**. |
-    | Resourcenaam | Kies de naam van het Event Grid onderwerp waarin Block Chain Data Manager transactie gegevens berichten verzendt. |
+    | Naam resource | Kies de naam van het Event Grid onderwerp waarin Block Chain Data Manager transactie gegevens berichten verzendt. |
 
 ### <a name="add-cosmos-db-action"></a>Cosmos DB actie toevoegen
 
@@ -281,14 +281,14 @@ Nu u de Block Chain-Data Manager hebt verbonden met Azure Cosmos DB, kunt u de B
 
     De **DecodedProperties** -matrix bevat de eigenschappen van de trans actie.
 
-Gefeliciteerd. U hebt een transactie bericht Verkenner gemaakt met behulp van Block Chain Data Manager en Azure Cosmos DB.
+Gefeliciteerd! U hebt een transactie bericht Verkenner gemaakt met behulp van Block Chain Data Manager en Azure Cosmos DB.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 U kunt de resources en resource groepen die u voor deze zelf studie hebt gebruikt, verwijderen wanneer u deze niet meer nodig hebt. Een resource groep verwijderen:
 
-1. Ga in het Azure Portal naar de **resource groep** in het navigatie deel venster links en selecteer de resource groep die u wilt verwijderen.
-1. Selecteer **Resourcegroep verwijderen**. Controleer het verwijderen door de naam van de resource groep in te voeren en **verwijderen**te selecteren.
+1. In de Azure-portal, gaat u naar **resourcegroep** in het navigatiedeelvenster links en selecteert u de resourcegroep die u wilt verwijderen.
+1. Selecteer **Resourcegroep verwijderen**. Bevestig de verwijdering door de naam van de resourcegroep in te voeren en selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

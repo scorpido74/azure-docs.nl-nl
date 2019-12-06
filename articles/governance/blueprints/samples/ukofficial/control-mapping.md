@@ -1,14 +1,14 @@
 ---
 title: Voor beeld van Engelse, officiële & UK NHS blauw drukken-besturings elementen
 description: De toewijzing van de voor beelden van het Verenigd Konink rijk-en UK-NHS blauw drukken. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
-ms.date: 06/26/2019
+ms.date: 12/04/2019
 ms.topic: sample
-ms.openlocfilehash: 79c39ee058a74bc740e72b75fe85882a89f9cd85
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546438"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851363"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Controle van de toewijzing van de voor beelden van het Verenigd Konink rijk en UK NHS blauw drukken
 
@@ -23,18 +23,21 @@ De volgende toewijzingen zijn de besturings elementen voor de officiële en **UK
 
 De blauw druk helpt u ervoor te zorgen dat de overdracht van gegevens met Azure-Services veilig is door [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee Inveilige verbindingen met opslag accounts en redis cache worden gecontroleerd.
 
-- Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld
-- Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld
+- Alleen beveiligde verbindingen met uw Redis Cache moeten zijn ingeschakeld
+- Beveiligde overdracht naar opslagaccounts moet zijn ingeschakeld
+- Controle resultaten weer geven van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
+- Vereisten implementeren voor het controleren van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
+- De laatste TLS-versie moet worden gebruikt in uw API-app
+- De laatste TLS-versie moet worden gebruikt in uw web-app
+- De meest recente versie van TLS moet worden gebruikt in uw functie-app
 
 ## <a name="23-data-at-rest-protection"></a>2,3 gegevens bij rust beveiliging
 
 Deze blauw druk helpt u bij het afdwingen van uw beleid voor het gebruik van cryptograph-besturings elementen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die specifieke cryptograph-besturings elementen afdwingen en het gebruik van zwakke cryptografische instellingen te controleren.
 Als u wilt weten waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maat regelen nemen om ervoor te zorgen dat bronnen worden geconfigureerd in overeenstemming met uw informatie beveiligings beleid. Met name de beleids regels die door deze blauw drukken worden toegewezen, vereisen versleuteling voor data Lake Storage-accounts. transparante gegevens versleuteling vereisen voor SQL-data bases; ontbrekende versleuteling controleren voor opslag accounts, SQL-data bases, schijven van virtuele machines en Automation-account variabelen; Controleer onbeveiligde verbindingen met opslag accounts en Redis Cache; de zwakke versleuteling van het wacht woord van de virtuele machine controleren; en niet-versleutelde Service Fabric communicatie controleren.
 
-- Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld
-- Schijf versleuteling moet worden toegepast op virtuele machines
+- Schijfversleuteling moet worden toegepast op virtuele machines
 - De variabelen van het Automation-account moeten worden versleuteld
-- Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld
 - Voor Service Fabric clusters moet de eigenschap ClusterProtectionLevel zijn ingesteld op EncryptAndSign
 - Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld
 - Transparante gegevens versleuteling van SQL DB implementeren
@@ -46,24 +49,45 @@ Als u wilt weten waar uw Azure-resources mogelijk niet-optimale cryptografische 
 
 Deze blauw druk helpt u bij het beheren van beveiligings lekken met informatie door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die ontbrekende eindpunt beveiliging controleren, ontbrekende systeem updates, kwets baarheid van het besturings systeem, SQL-beveiligings problemen en beveiligings problemen met virtuele machines. Deze inzichten bieden real-time informatie over de beveiligings status van uw geïmplementeerde resources en kunnen u helpen bij het bepalen van herstel acties.
 
-- Ontbrekende Endpoint Protection in Azure Security Center controleren
-- Systeem updates moeten worden geïnstalleerd op uw computers
-- Beveiligings problemen in de beveiligings configuratie op uw computers moeten worden hersteld
+- Ontbrekende Endpoint Protection bewaken in Azure Security Center
+- Er moeten systeemupdates op uw computers zijn geïnstalleerd
+- Systeemupdates op virtuele-machineschaalsets moeten worden geïnstalleerd
+- Beveiligingsproblemen in de beveiligingsconfiguratie op uw computers moeten worden hersteld
 - Beveiligings problemen voor uw SQL-data bases moeten worden hersteld
 - Beveiligings problemen moeten worden opgelost met een oplossing voor de evaluatie van de beveiligings lekken
+- Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op uw SQL-servers
+- De evaluatie van beveiligings problemen moet worden ingeschakeld voor uw door SQL beheerde instanties
+- Beveiligingsproblemen in de beveiligingsconfiguratie van virtuele-machineschaalsets moeten worden hersteld
+- Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw door SQL beheerde instanties
+- Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
 
 ## <a name="53-protective-monitoring"></a>5,3 beveiligings bewaking
 
-Deze blauw druk helpt u bij het beveiligen van informatie systeem assets door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die beschermende bewaking bieden op onbeperkte toegang, white list-activiteit en bedreigingen.
+Deze blauw druk helpt u bij het beveiligen van informatie systeem assets door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die beschermende bewaking bieden op onbeperkte toegang, een lijst met toegestane activiteiten en bedreigingen.
 
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 - Adaptieve toepassings besturings elementen moeten worden ingeschakeld op virtuele machines
+- Virtuele machines controleren zonder nood herstel zijn geconfigureerd
+- De DDoS Protection-standaard moet zijn ingeschakeld
+- De geavanceerde beveiligings typen voor bedreigingen moeten worden ingesteld op ' all ' in de instellingen voor geavanceerde gegevens beveiliging van SQL Managed instance
+- De geavanceerde beveiligings typen voor bedreigingen moeten worden ingesteld op ' all ' in de instellingen voor geavanceerde gegevens beveiliging van SQL Server
 - Detectie van bedreigingen op SQL-servers implementeren
-- Standaard micro soft IaaS anti-malware-extensie voor Windows Server implementeren
+- Standaard micro soft IaaSAntimalware-extensie voor Windows Server implementeren
 
-## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 veilig gebruikers beheer/10 identiteit en verificatie
+## <a name="9-secure-user-management"></a>9 beveiligd gebruikers beheer 
 
 Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) om u te helpen bij het beheren van de toegang tot resources in Azure. Met behulp van de Azure Portal kunt u controleren wie toegang heeft tot Azure-resources en de bijbehorende machtigingen. Deze blauw druk helpt u om toegangs rechten te beperken en te beheren door [Azure Policy](../../../policy/overview.md) definities toe te wijzen voor het controleren van externe accounts met de machtigingen eigenaar en/of lezen/schrijven, en voor accounts met de machtigingen eigenaar, lezen en/of schrijven waarvoor multi-factor Authentication niet is ingeschakeld.
+
+- MFA moet zijn ingeschakeld voor accounts met eigenaars machtigingen voor uw abonnement
+- MFA moet zijn ingeschakeld voor accounts met schrijf machtigingen voor uw abonnement
+- MFA moet zijn ingeschakeld voor accounts met lees machtigingen voor uw abonnement
+- Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met schrijfmachtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met lees machtigingen moeten worden verwijderd uit uw abonnement
+
+## <a name="10-identity-and-authentication"></a>10 identiteit en verificatie
+
+Deze blauw druk helpt u om toegangs rechten te beperken en te beheren door [Azure Policy](../../../policy/overview.md) definities toe te wijzen voor het controleren van externe accounts met de machtigingen eigenaar en/of lezen/schrijven, en voor accounts met de machtigingen eigenaar, lezen en/of schrijven waarvoor multi-factor Authentication niet is ingeschakeld.
 
 - MFA moet zijn ingeschakeld voor accounts met eigenaars machtigingen voor uw abonnement
 - MFA moet zijn ingeschakeld voor accounts met schrijf machtigingen voor uw abonnement
@@ -86,7 +110,7 @@ Deze blauw druk wijst ook Azure Policy definities toe aan controle-accounts waar
 
 Deze blauw druk wijst ook een Azure Policy definitie toe waarmee de machtigingen van het Linux-VM-wacht woord worden gecontroleerd op waarschuwing als ze onjuist zijn ingesteld. Met dit ontwerp kunt u corrigerende maat regelen treffen om te voor komen dat verificators worden aangetast.
 
-- \[preview\]: de machtigingen van de Linux VM/etc/passwd-bestand controleren zijn ingesteld op 0644
+- \[preview-\]: controle resultaten weer geven van Linux-Vm's waarvoor de machtigingen voor het passwd-bestand niet zijn ingesteld op 0644
 
 Deze blauw druk helpt u sterke wacht woorden af te dwingen door Azure Policy definities toe te wijzen waarmee Windows-Vm's worden gecontroleerd die geen minimale sterkte en andere wachtwoord vereisten afdwingen. Het bewustzijn van Vm's in strijd met het beleid voor wachtwoord sterkte helpt u bij het uitvoeren van corrigerende maat regelen om ervoor te zorgen dat wacht woorden voor alle VM-gebruikers accounts voldoen aan het beleid.
 
@@ -94,12 +118,12 @@ Deze blauw druk helpt u sterke wacht woorden af te dwingen door Azure Policy def
 - \[preview\]: vereisten implementeren voor het controleren van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
 - \[preview\]: vereisten implementeren voor het controleren van Windows-Vm's die geen minimale wachtwoord duur van 1 dag hebben
 - \[preview\]: vereisten implementeren om Windows-Vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[preview\]: vereisten implementeren voor het controleren van Windows-Vm's die het opnieuw gebruiken van de voor gaande 24 wacht woorden mogelijk maken
-- \[preview\]: Windows-Vm's controleren waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
-- \[preview\]: Windows-Vm's controleren die geen maximale wachtwoord duur van 70 dagen hebben
-- \[preview\]: Windows-Vm's met een minimale wachtwoord leeftijd van 1 dag controleren
-- \[preview\]: Windows-Vm's controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[preview\]: Windows-Vm's controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[preview\]: vereisten implementeren voor het controleren van Windows-Vm's die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[preview\]: controle resultaten weer geven van Windows-Vm's waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
+- \[preview\]: controle resultaten weer geven van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
+- \[preview\]: controle resultaten weer geven van Windows-Vm's waarvoor geen minimale wachtwoord leeftijd van 1 dag is
+- \[preview\]: controle resultaten van Windows-Vm's weer geven die de minimale wachtwoord lengte niet beperken tot 14 tekens
+- \[preview\]: controle resultaten van virtuele Windows-machines weer geven die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
 
 Met deze blauw druk kunt u ook de toegang tot Azure-resources beheren door Azure Policy definities toe te wijzen. Met deze beleids regels wordt het gebruik van resource typen en configuraties gecontroleerd, waardoor de toegang tot bronnen kan worden uitgebreid. Informatie over resources die in strijd zijn met deze beleids regels, kan u helpen corrigerende maat regelen te nemen om ervoor te zorgen dat toegang tot Azure-resources wordt beperkt tot gemachtigde gebruikers.
 
@@ -117,6 +141,18 @@ Behalve met het gebruik van meer dan 25 beleids regels voor het juiste veilige g
 
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 - Adaptieve toepassings besturings elementen moeten worden ingeschakeld op virtuele machines
+- De Nsg's-regels voor webtoepassingen op IaaS moeten een harde verbinding hebben
+- Toegang via Internet gericht eind punt moet worden beperkt
+- De regels voor de netwerk beveiligings groep voor virtuele machines die zijn gericht op internet, moeten worden gehard
+- De Endpoint Protection-oplossing moet worden geïnstalleerd op virtuele-machineschaalsets
+- Just-In-Time-netwerktoegangsbeheer moet worden toegepast op virtuele machines
+- Onbeperkte netwerk toegang tot opslag accounts controleren
+- Fout opsporing op afstand moet worden uitgeschakeld voor functie-app
+- Foutopsporing op afstand moet worden uitgeschakeld voor Web-App
+- Fout opsporing op afstand moet worden uitgeschakeld voor de API-app
+- Web-App moet alleen toegankelijk zijn via HTTPS
+- Functie-App moet alleen toegankelijk zijn via HTTPS
+- De API-app mag alleen toegankelijk zijn via HTTPS
 
 ## <a name="12-secure-service-administration"></a>12 beheer van beveiligde services
 
@@ -151,9 +187,8 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 
 - Controle moet worden ingeschakeld voor geavanceerde instellingen voor gegevens beveiliging op SQL Server
 - Diagnostische instelling voor controleren
-- Controle-instellingen op SQL server-niveau controleren
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 - Network Watcher implementeren bij het maken van virtuele netwerken
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ada64d6bbce4fe7401bbfc078ba0903a28f06971
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795971"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875439"
 ---
 ### <a name="regions"></a>Welke regio's zijn er beschikbaar?
 
@@ -59,3 +59,7 @@ Azure Bastion ondersteunt momenteel de toetsenbord indeling en-US-QWERTY in de V
 
 Nee. UDR wordt niet ondersteund in een Azure Bastion-subnet.
 Voor scenario's met zowel Azure Bastion als Azure Firewall/netwerk virtueel apparaat (NVA) in hetzelfde virtuele netwerk, hoeft u geen verkeer van een Azure Bastion-subnet af te dwingen naar Azure Firewall omdat de communicatie tussen Azure Bastion en uw virtuele machines privé is. Zie [toegang tot vm's achter Azure Firewall met Bastion](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/)voor meer informatie.
+
+### <a name="filetransfer"></a>Wordt bestands overdracht ondersteund met Azure Bastion RDP-sessie?
+
+We werken hard om nieuwe functies toe te voegen. Vanaf nu wordt bestands overdracht niet ondersteund, maar maakt het deel uit van het schema. U kunt uw feedback over nieuwe functies op de [Azure Bastion-feedback pagina](https://feedback.azure.com/forums/217313-networking?category_id=367303)delen.

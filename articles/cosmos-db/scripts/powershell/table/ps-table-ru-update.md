@@ -1,18 +1,18 @@
 ---
 title: Azure PowerShell script-Azure Cosmos DB RU/s voor Table-API bijwerken
-description: Azure PowerShell script-Azure Cosmos DB RU/s voor Table-API bijwerken
+description: Meer informatie over het gebruik van een Power shell-script voor het bijwerken van de door Voer voor een Data Base of een container in Azure Cosmos DB Table-API-account
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: c9a210636dc277eec106248b13ea42ec58bf15b5
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 8188089f216fa33ba958cf670bb321816387f5c9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178689"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871871"
 ---
 # <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Update RU/s voor een tabel voor Azure Cosmos DB-Table-API
 
@@ -34,14 +34,14 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure-resources**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
 |**Azure-resource groepen**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen

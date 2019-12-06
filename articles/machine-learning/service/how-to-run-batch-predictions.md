@@ -11,21 +11,21 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 62a2c3324df70c7ccdbbac273d314ff94cbb7b9a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 207e8def168227cb419d25c8e98aa15c09c72b2c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671569"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851601"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-deinterferentie uitvoeren op grote hoeveel heden gegevens met behulp van Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In deze procedure leert u hoe u met behulp van Azure Machine Learning op een grote hoeveelheid gegevens asynchroon en parallel kunt profiteren. De functionaliteit voor batch-deinterferentie die hier wordt beschreven, is in open bare preview. Het is een snelle en hoge door Voer manier om gegevens te genereren en te verwerken. Het biedt asynchrone mogelijkheden uit het kader.
+Meer informatie over hoe u op basis van Azure Machine Learning kunt profiteren van grote hoeveel heden gegevens asynchroon en parallel. De functionaliteit voor batch-deinterferentie die hier wordt beschreven, is in open bare preview. Het is een snelle en hoge door Voer manier om gegevens te genereren en te verwerken. Het biedt asynchrone mogelijkheden uit het kader.
 
 Met batch-demijnen is het eenvoudig om offline-interferenties te schalen naar grote clusters van machines op terabytes aan productie gegevens, wat resulteert in verbeterde productiviteit en optimale kosten.
 
-In deze procedure leert u de volgende taken:
+In dit artikel leert u de volgende taken:
 
 > * Maak een externe Compute-resource.
 > * Een aangepast Afleidings script schrijven.
@@ -40,7 +40,7 @@ In deze procedure leert u de volgende taken:
 
 * Voor het beheren van uw eigen omgeving en afhankelijkheden raadpleegt u de [hand leiding](how-to-configure-environment.md) voor het configureren van uw eigen omgeving. Voer `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` in uw omgeving uit om de vereiste afhankelijkheden te downloaden.
 
-## <a name="set-up-machine-learning-resources"></a>machine learning-resources instellen
+## <a name="set-up-machine-learning-resources"></a>Machine learning-resources instellen
 
 Met de volgende acties worden de resources ingesteld die u nodig hebt om een batch-uitstel pijplijn uit te voeren:
 
@@ -149,7 +149,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-## <a name="prepare-the-model"></a>Het model voorbereiden
+## <a name="prepare-the-model"></a>Voorbereiden van het model
 
 [Down load het vooraf getrainde afbeeldings classificatie model](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)en pak het uit naar de `models` Directory.
 
@@ -189,7 +189,7 @@ model = Model.register(model_path="models/",
 Het script *moet* twee functies bevatten:
 - `init()`: gebruik deze functie voor een kost bare of gemeen schappelijke voor bereiding voor latere interferentie. U kunt dit bijvoorbeeld gebruiken om het model in een globaal object te laden.
 -  `run(mini_batch)`: de functie wordt uitgevoerd voor elk `mini_batch` exemplaar.
-    -  `mini_batch`: in batch-dedata frame wordt de methode Run aangeroepen en wordt een lijst of Panda als argument aan de methode door gegeven. Elke vermelding in min_batch is een bestandspad als invoer een FileDataset is, een Panda data frame als invoer een TabularDataset is.
+    -  `mini_batch`: in batch-dedata frame wordt de methode Run aangeroepen en wordt een lijst of Panda als argument aan de methode door gegeven. Elke vermelding in min_batch is een bestandspad als invoer een FileDataset is, een Panda data frame als de invoer een TabularDataset is.
     -  `response`: de methode Run () moet een Panda data frame of een matrix retour neren. Voor append_row output_action worden deze geretourneerde elementen toegevoegd aan het algemene uitvoer bestand. Voor summary_only wordt de inhoud van de elementen genegeerd. Voor alle uitvoer acties geeft elk geretourneerd uitvoer element een geslaagde afleiding van het invoer element in de invoer-mini-batch aan. De gebruiker moet er zeker van zijn dat er voldoende gegevens zijn opgenomen in het afnemen van de invoer aan de afleiding. De Afleidings uitvoer wordt geschreven naar het uitvoer bestand en is niet gegarandeerd in de juiste volg orde. de gebruiker moet een bepaalde sleutel in de uitvoer gebruiken om deze toe te wijzen aan de invoer.
 
 ```python
@@ -237,11 +237,20 @@ def run(mini_batch):
     return resultList
 ```
 
+### <a name="how-to-access-other-files-in-init-or-run-functions"></a>Toegang tot andere bestanden in `init()`-of `run()`-functies
+
+Als u een ander bestand of een andere map in dezelfde map hebt als uw Afleidings script, kunt u ernaar verwijzen door de huidige werkmap te zoeken.
+
+```python
+script_dir = os.path.realpath(os.path.join(__file__, '..',))
+file_path = os.path.join(script_dir, "<file_name>")
+```
+
 ## <a name="build-and-run-the-batch-inference-pipeline"></a>De pijp lijn voor de batch-deinterferentie maken en uitvoeren
 
 Nu hebt u alles wat u nodig hebt om de pijp lijn te bouwen.
 
-### <a name="prepare-the-run-environment"></a>De uitvoerings omgeving voorbereiden
+### <a name="prepare-the-run-environment"></a>Voorbereiden van de uitvoeringsomgeving
 
 Geef eerst de afhankelijkheden voor uw script op. U kunt dit object later gebruiken bij het maken van de pijplijn stap.
 
@@ -261,11 +270,11 @@ batch_env.spark.precache_packages = False
 
 ### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Geef de para meters op voor de pipeline-stap voor de batch-deinterferentie
 
-`ParallelRunConfig` is de belangrijkste configuratie voor de zojuist ingevoerde batch-interferentie `ParallelRunStep`-instantie binnen de Azure Machine Learning pijp lijn. U gebruikt dit om uw script uit te pakken en de vereiste para meters te configureren, inclusief alle volgende:
+`ParallelRunConfig` is de belangrijkste configuratie voor de zojuist ingevoerde batch-interferentie `ParallelRunStep`-instantie binnen de Azure Machine Learning pijp lijn. U gebruikt deze om uw script uit te pakken en de vereiste para meters te configureren, inclusief alle volgende para meters:
 - `entry_script`: een gebruikers script als een lokaal bestandspad dat parallel op meerdere knoop punten wordt uitgevoerd. Als `source_directly` aanwezig is, gebruikt u een relatief pad. Als dat niet het geval is, gebruikt u een wille keurig pad dat toegankelijk is op de computer.
 - `mini_batch_size`: de grootte van de mini-batch die wordt door gegeven aan een single `run()`-aanroep. (Optioneel; de standaard waarde is `1`.)
     - Voor `FileDataset`is het het aantal bestanden met een minimum waarde van `1`. U kunt meerdere bestanden combi neren in één mini-batch.
-    - Voor `TabularDataset`is het de grootte van de gegevens. Voor beelden van waarden zijn `1024`, `1024KB`, `10MB`en `1GB`. De aanbevolen waarde is `1MB`. Houd er rekening mee dat de mini batch van `TabularDataset` nooit de grenzen van bestanden overschrijdt. Als u bijvoorbeeld. CSV-bestanden met verschillende grootten hebt, is het kleinste bestand 100 KB en de grootste waarde is 10 MB. Als u `mini_batch_size = 1MB`instelt, worden bestanden met een grootte van minder dan 1 MB beschouwd als één mini-batch. Bestanden met een grootte die groter is dan 1 MB, worden in meerdere mini-batches gesplitst.
+    - Voor `TabularDataset`is het de grootte van de gegevens. Voor beelden van waarden zijn `1024`, `1024KB`, `10MB`en `1GB`. De aanbevolen waarde is `1MB`. De mini batch van `TabularDataset` nooit bestands grenzen overschrijdt. Als u bijvoorbeeld. CSV-bestanden met verschillende grootten hebt, is het kleinste bestand 100 KB en de grootste waarde is 10 MB. Als u `mini_batch_size = 1MB`instelt, worden bestanden met een grootte van minder dan 1 MB beschouwd als één mini-batch. Bestanden met een grootte die groter is dan 1 MB, worden in meerdere mini-batches gesplitst.
 - `error_threshold`: het aantal record fouten voor `TabularDataset` en bestands fouten voor `FileDataset` die tijdens de verwerking moeten worden genegeerd. Als het aantal fouten voor de volledige invoer boven deze waarde komt, wordt de taak gestopt. De drempel waarde voor de fout is voor de volledige invoer en niet voor afzonderlijke mini batches die worden verzonden naar de `run()` methode. Het bereik is `[-1, int.max]`. Het deel `-1` geeft aan dat alle fouten tijdens de verwerking worden genegeerd.
 - `output_action`: een van de volgende waarden geeft aan hoe de uitvoer wordt georganiseerd:
     - `summary_only`: de uitvoer wordt opgeslagen met het gebruikers script. `ParallelRunStep` wordt de uitvoer alleen gebruikt voor de berekening van de fout drempelwaarde.
@@ -276,7 +285,7 @@ batch_env.spark.precache_packages = False
 - `process_count_per_node`: het aantal processen per knoop punt.
 - `environment`: de definitie van de python-omgeving. U kunt deze configureren voor het gebruik van een bestaande python-omgeving of voor het instellen van een tijdelijke omgeving voor het experiment. De definitie is ook verantwoordelijk voor het instellen van de vereiste toepassings afhankelijkheden (optioneel).
 - `logging_level`: uitgebreide logboek registratie. De waarden in een verhoogde uitgebreider zijn: `WARNING`, `INFO`en `DEBUG`. De standaard waarde is `INFO` (optioneel).
-- `run_invocation_timeout`: de time-out voor de aanroep van de `run()`-methode in seconden. De standaard waarde is `60`.
+- `run_invocation_timeout`: de time-out voor de aanroep van de `run()`-methode in seconden. De standaardwaarde is `60`.
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunConfig
@@ -292,7 +301,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>De pijplijn stap maken
+### <a name="create-the-pipeline-step"></a>De stap pijplijn maken
 
 Maak de pijplijn stap met behulp van het script, de omgevings configuratie en de para meters. Geef het reken doel op dat u al aan uw werk ruimte hebt gekoppeld als het doel van de uitvoering van het script. Gebruik `ParallelRunStep` om de pipeline-stap voor batch-deinterferentie te maken, waarbij alle volgende para meters worden gebruikt:
 - `name`: de naam van de stap, met de volgende naam beperkingen: uniek, 3-32 tekens en regex ^\[a-z\]([-a-z0-9] * [a-z0-9])? $.
@@ -348,6 +357,8 @@ pipeline_run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>Volgende stappen
 
 Als u wilt zien hoe dit proces werkt, kunt u de batch-Afleidings [notitieblok](https://aka.ms/batch-inference-notebooks)gebruiken. 
+
+Voor fout opsporing en probleemoplossings richtlijnen voor ParallelRunStep raadpleegt u de [hand leiding](how-to-debug-batch-predictions.md)voor het oplossen van problemen.
 
 Raadpleeg de [hand leiding](how-to-debug-pipelines.md)voor fout opsporing en probleemoplossings richtlijnen voor pijp lijnen.
 

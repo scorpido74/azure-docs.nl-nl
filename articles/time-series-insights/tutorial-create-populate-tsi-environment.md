@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: fad850da6a7fccb6b97b86532a8d246049942a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014665"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872393"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Zelfstudie: Een Azure Time Series Insights-omgeving maken
 
@@ -55,11 +55,11 @@ In deze zelf studie wordt ook gebruikgemaakt van een [IOT-oplossings versneller]
 
 Maak eerst de simulatie oplossing voor apparaten, waarmee test gegevens worden gegenereerd om uw Time Series Insights omgeving in te vullen.
 
-1. Ga in een apart venster of tabblad naar [azureiotsolutions.com](https://www.azureiotsolutions.com). Meld u aan met hetzelfde account voor het Azure-abonnement en selecteer de **apparaat simulatie** Accelerator. Selecteer **Nu uitproberen**.
+1. Ga in een apart venster of tabblad naar [azureiotsolutions.com](https://www.azureiotsolutions.com). Meld u aan met hetzelfde account voor het Azure-abonnement en selecteer de **apparaat simulatie** Accelerator.
 
-   [de Device simulatie Accelerator ![uitvoeren](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+   [de Device simulatie Accelerator ![uitvoeren](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png#lightbox)
 
-1. Voer de vereiste para meters in op de pagina oplossing voor het maken van een **apparaat simulatie** .
+1.  Selecteer **Nu uitproberen**. Voer vervolgens de vereiste para meters in op de pagina oplossing voor het maken van een **apparaat simulatie** .
 
    Parameter|Beschrijving
    ---|---
@@ -70,18 +70,18 @@ Maak eerst de simulatie oplossing voor apparaten, waarmee test gegevens worden g
 
    Wanneer u klaar bent, selecteert u **maken** om de Azure-resources van de oplossing in te richten. Het kan Maxi maal 20 minuten duren voordat dit proces is voltooid.
 
-   [de oplossing voor het simuleren van apparaten ![inrichten](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+   [de oplossing voor het simuleren van apparaten ![inrichten](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Nadat het inrichten is voltooid, verandert de tekst boven uw nieuwe oplossing van **inrichting** in **gereed**.
+1. Nadat het inrichten is voltooid, worden er twee updates weer gegeven die aangeven dat de implementatie status is verplaatst van **inrichting** naar **gereed**. 
 
    >[!IMPORTANT]
-   > Selecteer nog niet **starten** . Laat deze webpagina geopend omdat u deze later weer gaat gebruiken.
+   > Voer uw oplossings versneller nog niet in. Laat deze webpagina geopend omdat u deze later weer gaat gebruiken.
 
-   [inrichting van de inrichtings oplossing voor ![Device simulatie is voltooid](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
+   [inrichting van de inrichtings oplossing voor ![Device simulatie is voltooid](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
 1. Inspecteer nu de zojuist gemaakte resources in het Azure Portal. Op de pagina **resource groepen** ziet u dat er een nieuwe resource groep is gemaakt met behulp van de **oplossings naam** die in de laatste stap is opgenomen. Noteer de resources die zijn gemaakt voor de simulatie van het apparaat.
 
-   [simulatie resources van ![apparaat](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
+   [simulatie resources van ![apparaat](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-an-environment"></a>Een omgeving maken
 
@@ -91,7 +91,7 @@ Maak vervolgens een Time Series Insights omgeving in uw Azure-abonnement.
 1. Selecteer linksboven **+ Een resource maken**. 
 1. Selecteer de categorie **Internet of Things** en vervolgens **Time Series Insights**. 
 
-   [![Selecteer de Time Series Insights-omgevingsresource](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png#lightbox)
+   [![Selecteer de Time Series Insights-omgevingsresource](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png)](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png#lightbox)
 
 1. Vul op de pagina **Time Series Insights omgeving** de vereiste para meters in.
 
@@ -106,17 +106,17 @@ Maak vervolgens een Time Series Insights omgeving in uw Azure-abonnement.
 
    Wanneer u klaar bent, selecteert u **volgende: gebeurtenis bron** om door te gaan naar de volgende stap.
 
-   [![een Time Series Insights omgevings resource maken](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
+   [![een Time Series Insights omgevings resource maken](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png#lightbox)
 
 1. Verbind de Time Series Insights-omgeving nu met de IoT-hub die is gemaakt met de oplossings versneller. Stel **Selecteer een hub** in op `Select existing`. Kies vervolgens de IoT-hub die is gemaakt door de oplossings versneller bij het instellen van **IOT hub naam**.
 
-   [![de Time Series Insights omgeving te verbinden met de gemaakte IoT-hub](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
+   [![de Time Series Insights omgeving te verbinden met de gemaakte IoT-hub](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png#lightbox)
 
    Selecteer tot slot de optie **controleren + maken**.
 
 1. Controleer het deel venster **meldingen** om de voltooiing van de implementatie te bewaken. 
 
-   [implementatie van ![Time Series Insights omgeving is voltooid](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
+   [implementatie van ![Time Series Insights omgeving is voltooid](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png#lightbox)
 
 ## <a name="run-device-simulation"></a>Simulatie van apparaten uitvoeren
 
@@ -126,19 +126,19 @@ Samen met de IoT-hub is een Azure App Service-webtoepassing gegenereerd voor het
 
 1. Ga terug naar het dashboard [Oplossingsverbeteringen](https://www.azureiotsolutions.com/Accelerators#dashboard). Meld u indien nodig opnieuw aan met behulp van hetzelfde Azure-account dat u in deze zelf studie hebt gebruikt. Selecteer uw ' oplossing voor apparaten ' en **Ga vervolgens naar uw oplossings versneller** om uw geïmplementeerde oplossing te starten.
 
-     [dash board voor ![oplossings versnellers](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
+   [dash board voor ![oplossings versnellers](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
-1. De web-app voor Device simulatie begint met de vraag of u de webtoepassing de machtiging ' aanmelden en uw profiel lezen ' wilt verlenen. Met deze machtiging kan de toepassing de gebruikers profiel gegevens ophalen die nodig zijn om de werking van de toepassing te ondersteunen.
+1. De web-app voor Device simulatie begint met de vraag of u de webtoepassing wilt verlenen voor het **Aanmelden en de machtiging voor uw profiel te lezen** . Met deze machtiging kan de toepassing de gebruikers profiel gegevens ophalen die nodig zijn om de werking van de toepassing te ondersteunen.
 
-     [toestemming voor webtoepassingen voor simulatie van ![apparaat](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
+   [toestemming voor webtoepassingen voor simulatie van ![apparaat](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
-1. Nadat de pagina **simulatie installatie** is geladen, voert u de vereiste para meters in.
+1. Selecteer **+ nieuwe simulatie**. Nadat de pagina **simulatie installatie** is geladen, voert u de vereiste para meters in.
 
    Parameter|Beschrijving
    ---|---
    **Doel-IoT-hub** | Selecteer **vooraf ingerichte IOT hub gebruiken**.
    **Apparaatmodel** | Selecteer **Koelunit**.
-   **Aantal apparaten**  | Geef `1000` op onder **bedrag**.
+   **Aantal apparaten**  | Geef `10` op onder **bedrag**.
    **Telemetriefrequentie** | Voer `10` seconden in.
    **Simulatieduur** | Selecteer **beëindigen in:** en voer `5` minuten in.
 
@@ -186,7 +186,7 @@ Vanuit het menu aan de linkerkant in het Azure Portal:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Maak een Time Series Insights-omgeving.

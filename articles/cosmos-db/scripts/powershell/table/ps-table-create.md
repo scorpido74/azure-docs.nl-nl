@@ -1,18 +1,18 @@
 ---
 title: 'Azure PowerShell script: Azure Cosmos DB Table-API tabel maken'
-description: 'Azure PowerShell script: Azure Cosmos DB Table-API tabel maken'
+description: Meer informatie over het gebruik van een Power shell-script voor het bijwerken van de door Voer voor een Data Base of een container in Azure Cosmos DB Table-API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 12/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 998379384c12c611989bf1ef04b149ab1ceaf25c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 12a7c9cd6e1a9c1271aa73b9c2b2e1c834c743a7
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178727"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873536"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Een tabel maken voor Azure Cosmos DB-Table-API
 
@@ -34,14 +34,14 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure-resources**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
 |**Azure-resource groepen**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen

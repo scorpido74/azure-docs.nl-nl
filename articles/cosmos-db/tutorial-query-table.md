@@ -1,6 +1,6 @@
 ---
 title: Tabelgegevens opvragen in Azure Cosmos DB
-description: Tabelgegevens opvragen in Azure Cosmos DB
+description: Meer informatie over het opvragen van gegevens die zijn opgeslagen in de Azure Cosmos DB Table-API-account met behulp van OData-filters en LINQ-query's
 author: wmengmsft
 ms.author: wmeng
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 161b424c5c89d34eaa55181c0d6ca0515b376168
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7dc2c00f273f327755dab52a4bda02840d911f96
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978772"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869915"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Zelfstudie: query's uitvoeren in Azure Cosmos DB met behulp van de Table-API
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Zelfstudie: Query's uitvoeren in Azure Cosmos DB met behulp van de tabel-API
 
 De [tabel-API](table-introduction.md) van Azure Cosmos DB ondersteunt de uitvoering van OData- en [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service)-query's op gegevens van de sleutelwaarde (tabel).  
 
@@ -26,7 +26,7 @@ Dit artikel behandelt de volgende taken:
 
 In de query's in dit artikel wordt de volgende voorbeeldtabel `People` gebruikt:
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -50,7 +50,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 ```
 **Results**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -76,7 +76,7 @@ Zie [Querying Tables and Entities](https://docs.microsoft.com/rest/api/storagese
 
 **Results**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 

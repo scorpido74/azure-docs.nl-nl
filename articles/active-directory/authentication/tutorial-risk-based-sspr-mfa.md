@@ -6,19 +6,19 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 01/31/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9289bfe9e90186896a753e5853d81d2f06669917
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e1a6858d5eda8227b3f7c1b90dee86f44273a258
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125179"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846348"
 ---
-# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Zelfstudie: Risico detecties gebruiken om Multi-Factor Authentication en wachtwoord wijzigingen te activeren
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Zelf studie: risico detecties gebruiken om Multi-Factor Authentication en wachtwoord wijzigingen te activeren
 
 In deze zelfstudie gaat u functies van Azure Active Directory (Azure AD) Identity Protection inschakelen. Dit is een Azure AD Premium P2-functie en is meer dan alleen een controle- en rapportagehulpmiddel. Ter bescherming van identiteiten binnen uw organisatie, kunt u op risicogebeurtenissen gebaseerde beleidsregels configureren die automatisch op risicovol gedrag reageren. Deze beleidsregels kunnen automatisch herstelstappen blokkeren of initiëren, zoals onder andere het verplicht wijzigen van wachtwoorden en het afdwingen van Multi-Factor Authentication.
 
@@ -54,7 +54,7 @@ Het inschakelen van het beleid op basis van risicogebeurtenissen is een eenvoudi
 
 Azure AD Identity Protection bevat een standaardbeleid dat u kan helpen bij het registreren van uw gebruikers voor Multi-Factor Authentication en om hun huidige registratiestatus vast te stellen. Door dit beleid in te schakelen, worden gebruikers niet meteen verplicht om Multi-Factor Authentication uit te voeren, maar wordt hen gevraagd zich vooraf te registreren.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik op **Alle services** en blader vervolgens naar **Azure AD Identity Protection**.
 1. Klik op **Registratie bij MFA**.
 1. Stel Beleid afdwingen in op **Aan**.
@@ -73,7 +73,7 @@ Microsoft werkt samen met onderzoekers, justitie en politie, diverse beveiliging
 1. Bij **Toegang** kiest u **Toegang toestaan** en selecteert u vervolgens **Wachtwoordwijziging vereisen**.
 1. Klik op Selecteren.
 1. Stel Beleid afdwingen in op **Aan**.
-1. Klik op **Opslaan**
+1. Klik op **Opslaan**.
 
 ### <a name="enable-risk-based-multi-factor-authentication"></a>Op risicogebeurtenissen gebaseerde Multi-Factor Authentication inschakelen
 
@@ -85,7 +85,7 @@ De meeste gebruikers vertonen normaal gedrag dat kan worden getraceerd. Wanneer 
 1. Bij **Toegang** kiest u **Toegang toestaan** en selecteert u vervolgens **Multi-Factor Authentication vereisen**.
 1. Klik op Selecteren.
 1. Stel Beleid afdwingen in op **Aan**.
-1. Klik op **Opslaan**
+1. Klik op **Opslaan**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

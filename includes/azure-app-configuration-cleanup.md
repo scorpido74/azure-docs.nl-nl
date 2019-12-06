@@ -5,27 +5,27 @@ services: azure-app-configuration
 author: yegu
 ms.service: azure-app-configuration
 ms.topic: include
-ms.date: 01/22/2019
+ms.date: 12/04/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: 8f2e956603fbb9aec81b08260eade846eb6a622c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 711b807372404815e5ba57b95def91429a1925dc
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393336"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875514"
 ---
-Als u van plan bent om door te gaan naar de volgende zelfstudie, houd u de resources die u in deze Quick Start hebt gemaakt. U kunt ze opnieuw gebruiken in de volgende zelfstudie.
+Als u van plan bent om door te gaan naar de volgende zelf studie, moet u de resources die u in deze Quick Start hebt gemaakt, behouden, zodat u ze opnieuw kunt gebruiken.
 
-Als u klaar met de voorbeeldtoepassing Quick Start bent, verwijdert u de Azure-resources u hebt gemaakt in deze Quick Start om kosten te voorkomen.
+Als u klaar bent met de voorbeeld toepassing Quick Start, verwijdert u de Azure-resources die u in deze Quick Start hebt gemaakt om kosten te voor komen.
 
 > [!IMPORTANT]
-> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u hebt gemaakt met de resources voor het hosten van dit voorbeeld in een resourcegroep met de resources die u wilt behouden, elke resource afzonderlijk verwijderen uit de respectieve deelvenster in plaats van de resourcegroep verwijderen.
+> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resource groep en alle resources erin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources hebt gemaakt voor het hosten van dit voor beeld in een resource groep die resources bevat die u wilt laten blijven staan, verwijdert u elke resource afzonderlijk uit het respectieve deel venster in plaats van de resource groep te verwijderen.
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en selecteer **resourcegroepen**.
-1. In de **filteren op naam** voert u de naam van de resourcegroep. In de instructies voor deze quickstart is een resourcegroep met de naam *AppConfigTestResources* gebruikt.
-1. In de lijst met resultaten, selecteer de resourcegroep en een met de rechtermuisknop op de rij of gebruik de **weglatingsteken** ( **...** ) om het contextmenu te openen.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer **resource groepen**.
+1. Voer in het vak **filteren op naam** de naam van de resource groep in. 
+1. In de lijst met resultaten selecteert u de resource groep en klikt u met de rechter muisknop op de rij of gebruikt u de knop met het **weglatings teken** ( **...** ) om het context menu te openen.
 1. Selecteer **Resourcegroep verwijderen**.
-1. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Voer de naam van de resourcegroep om te bevestigen en selecteer **verwijderen**.
+1. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Voer de naam van de resource groep in om te bevestigen en selecteer **verwijderen**.
 
-Na een paar seconden, de resourcegroep en alle bijbehorende resources verwijderd.
+Na enkele ogen blikken worden de resource groep en alle bijbehorende resources verwijderd.

@@ -1,18 +1,18 @@
 ---
 title: 'Zelf studie: zelf studie over globale distributie Azure Cosmos DB voor de SQL-API'
-description: 'Zelf studie: informatie over het instellen van Azure Cosmos DB globale distributie met behulp van de SQL-API.'
+description: "Zelf studie: informatie over het instellen van Azure Cosmos DB globale distributie met behulp van de SQL-API met .net, Java, python en verschillende andere Sdk's"
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7c7ea4ca8fc28ef47e60d5010c804223c3cfab3b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 541fcdd966ec1e0443fa6211d894bab3ed965f93
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173842"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870323"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Zelf studie: Azure Cosmos DB globale distributie instellen met behulp van de SQL-API
 

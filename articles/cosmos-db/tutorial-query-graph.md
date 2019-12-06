@@ -1,21 +1,21 @@
 ---
 title: Grafiekgegevens opvragen in Azure Cosmos DB
-description: Meer informatie over het opvragen van grafiekgegevens in Azure Cosmos DB
+description: Meer informatie over het opvragen van grafiek gegevens vanuit Azure Cosmos DB met behulp van Gremlin-query's
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-ms.date: 01/02/2018
+ms.date: 12/03/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 2bc79801864481562967702a7c52a7670950199b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1dde7bfc74c6a7b0c03d8f192f4e6eaf72e2de6b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61293105"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870170"
 ---
-# <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Zelfstudie: Azure Cosmos DB Gremlin-API-query's uitvoeren met Gremlin
+# <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Zelfstudie: Azure Cosmos DB Gremlin-API opvragen met Gremlin
 
 De Azure Cosmos DB [Gremlin-API](graph-introduction.md) ondersteunt [Gremlin](https://github.com/tinkerpop/gremlin/wiki)-query's. Dit artikel bevat voorbeelddocumenten en query's waarmee u direct aan de slag kunt. Een gedetailleerde Gremlin-verwijzing vindt u in het artikel [Gremlin-ondersteuning](gremlin-support.md).
 

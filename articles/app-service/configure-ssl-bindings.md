@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670680"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849748"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Een aangepaste DNS-naam beveiligen met een SSL-binding in Azure App Service
 
@@ -107,6 +107,8 @@ De pagina **Aangepast domein** van uw app wordt bijgewerkt met het nieuwe, speci
 Blader in verschillende browsers naar `https://<your.custom.domain>` om te controleren of het uw app is.
 
 ![Navigatie naar Azure-app in de portal](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+
+Uw toepassings code kan het protocol controleren via de header ' x-appservice-proto '. De header heeft de waarde `http` of `https`. 
 
 > [!NOTE]
 > Als uw app certificaatvalidatiefouten geeft, gebruikt u waarschijnlijk een zelfondertekend certificaat.
