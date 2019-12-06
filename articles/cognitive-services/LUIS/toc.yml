@@ -60,9 +60,6 @@
         - name: Gerelateerde gegevens met samengestelde entiteiten ophalen
           href: luis-tutorial-composite-entity.md
           displayName: roles
-        - name: Namen met eenvoudige entiteiten ophalen
-          href: luis-quickstart-primary-and-secondary-data.md
-          displayName: roles
     - name: App verbeteren
       items:
         - name: Onzekere voorspellingen herstellen

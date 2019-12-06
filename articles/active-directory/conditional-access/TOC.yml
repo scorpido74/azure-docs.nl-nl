@@ -64,8 +64,6 @@
           href: howto-conditional-access-policy-compliant-device.md
     - name: Verouderde verificatie blokkeren
       href: block-legacy-authentication.md
-    - name: Voorwaardelijke toegang voor MFA-registratie
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Goedgekeurde client-apps vereisen
       href: app-based-conditional-access.md
     - name: Beleid voor app-beveiliging vereisen
