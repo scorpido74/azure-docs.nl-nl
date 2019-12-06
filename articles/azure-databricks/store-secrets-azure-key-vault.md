@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: f1472d7043a092f35e10fdedbf4c52740e87c51c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706146"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849272"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Zelf studie: toegang tot Azure Blob Storage vanuit Azure Databricks met behulp van Azure Key Vault
 
@@ -93,7 +93,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
    |Eigenschap|Waarde|
    |--------|-----------|
-   |Upload opties|Handmatig|
+   |Uploadopties|Handmatig|
    |Naam|Beschrijvende naam voor de sleutel van uw opslag account.|
    |Waarde|Key1 van uw opslag account.|
 
@@ -113,7 +113,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
    |Eigenschap  |Beschrijving  |
    |---------|---------|
-   |Werkruimte naam     | Geef een naam op voor uw Databricks-werkruimte.        |
+   |Naam van de werkruimte     | Geef een naam op voor uw Databricks-werkruimte.        |
    |Abonnement     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
    |Resourcegroep     | Selecteer dezelfde resource groep die de sleutel kluis bevat. |
    |Locatie     | Selecteer dezelfde locatie als uw Azure Key Vault. Zie [Azure-Services beschikbaar per regio](https://azure.microsoft.com/regions/services/)voor alle beschik bare regio's.        |
@@ -129,7 +129,8 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 4. Nadat uw Azure Databricks-werk ruimte in een afzonderlijk venster is geopend, voegt u **#secrets/createscope** toe aan de URL. De URL moet de volgende indeling hebben: 
 
-   **https://< \location >. azuredatabricks. net/#secrets/createscope**.
+   **https://< \location >. azuredatabricks. net/? o = < \orgID > #secrets/createscope**.
+   
 
 5. Voer een scope naam in en voer de Azure Key Vault DNS-naam en de resource-ID in die u eerder hebt opgeslagen. Sla de naam van het bereik op in een tekst editor, zodat u deze later in deze zelf studie kunt gebruiken. Ten slotte selecteert u **Create**.
 
