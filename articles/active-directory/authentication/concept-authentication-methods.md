@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a7110ad3e6c9c66179c90c02c1572ee83cb9f15
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420759"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848745"
 ---
 # <a name="what-are-authentication-methods"></a>Wat zijn verificatiemethoden?
 
@@ -146,7 +146,7 @@ Als u het gebruik van beide meldingen via de mobiele app en de verificatie code 
 
 ### <a name="verification-code-from-mobile-app"></a>Verificatie code uit de mobiele app
 
-De Microsoft Authenticator-app of andere apps van derden kunnen worden gebruikt als een software token voor het genereren van een OATH-verificatie code. Nadat u uw gebruikers naam en wacht woord hebt ingevoerd, voert u de code die door de app is opgegeven, in het aanmeldings scherm in. De verificatie code biedt een tweede vorm van verificatie.
+De Microsoft Authenticator-app of andere apps van derden kunnen worden gebruikt als een software token voor het genereren van een OATH-verificatie code. Nadat u uw gebruikers naam en wacht woord hebt ingevoerd, voert u de code die door de app is opgegeven, in het aanmeldings scherm in. De verificatiecode biedt een tweede vorm van verificatie.
 
 > [!WARNING]
 > Voor selfservice voor het opnieuw instellen van wacht woorden wanneer er slechts één methode vereist is voor het opnieuw instellen van de verificatie code is de enige optie beschikbaar voor gebruikers **om het hoogste beveiligings niveau te garanderen**.
@@ -201,14 +201,14 @@ Micro soft biedt geen garantie voor consistentie op basis van SMS-of spraak Mult
 
 Er wordt een SMS-bericht verzonden naar het mobiele telefoon nummer met een verificatie code. Voer de verificatie code in die is opgegeven in de aanmeldings interface om door te gaan.
 
-#### <a name="phone-call"></a>Telefoon oproep
+#### <a name="phone-call"></a>Telefoongesprek
 
 Er wordt een automatische telefoon oproep gedaan naar het telefoon nummer dat u opgeeft. Vraag de oproep af en druk op # in het telefoon blok om te verifiëren
 
 > [!IMPORTANT]
 > Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet beschikbaar voor MFA-en SSPR-gebruikers in gratis/proef versie van Azure AD-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. De telefoon oproep blijft beschikbaar voor gebruikers in betaalde Azure AD-tenants. Deze wijziging is alleen van invloed op de Azure AD-tenants gratis en proef versie.
 
-### <a name="office-phone"></a>Office Phone
+### <a name="office-phone"></a>Zakelijke telefoon
 
 Er wordt een automatische telefoon oproep gedaan naar het telefoon nummer dat u opgeeft. Beantwoord het gesprek en druk op # in het telefoon blok om te verifiëren.
 

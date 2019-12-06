@@ -4,17 +4,17 @@ description: Dit artikel bevat informatie over het installeren en gebruiken van 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c10905c283619e6008dbe6ab8c4e721888b8b786
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 7329d32c01f005f4f5a727f80c6af0b58982b41f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743806"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850258"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Resources in uw Data Center of Cloud automatiseren met behulp van Hybrid Runbook Worker
 
@@ -34,7 +34,7 @@ Het proces voor het installeren van een Hybrid Runbook Worker is afhankelijk van
 
 Als u een Windows-Hybrid Runbook Worker wilt installeren en configureren, kunt u twee methoden gebruiken. De aanbevolen methode maakt gebruik van een Automation-runbook om het proces van het configureren van een Windows-computer volledig te automatiseren. De tweede methode volgt een stapsgewijze procedure voor het hand matig installeren en configureren van de rol. Voor Linux-machines voert u een python-script uit om de agent op de computer te installeren.
 
-|OS  |Implementatie typen  |
+|Besturingssysteem  |Implementatie typen  |
 |---------|---------|
 |Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Handmatig](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
@@ -63,7 +63,7 @@ Open een Power shell-sessie in de beheerders modus en voer de volgende opdracht 
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 ```
 
-Als u verouderde machines uit uw Hybrid worker groep wilt verwijderen `machineName` , gebruikt u de optionele para meter.
+Als u verouderde machines uit uw Hybrid Worker groep wilt verwijderen, gebruikt u de optionele para meter `machineName`.
 
 ```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
@@ -71,7 +71,7 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <Comp
 
 ### <a name="linux"></a>Linux
 
-U kunt de opdracht `ls /var/opt/microsoft/omsagent` op de Hybrid Runbook worker gebruiken om de workspaceid op te halen. Er bevindt zich een map in de map waarin de naam van de map de werk ruimte-id is.
+U kunt de opdracht `ls /var/opt/microsoft/omsagent` op de Hybrid Runbook Worker gebruiken om de workspaceid op te halen. Er bevindt zich een map in de map waarin de naam van de map de werk ruimte-id is.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
@@ -107,10 +107,10 @@ Als u een proxy server gebruikt voor communicatie tussen de agent en de Azure Au
 
 De volgende poort en Url's zijn vereist voor de Hybrid Runbook Worker rol om te communiceren met Automation:
 
-* Importeer Alleen TCP 443 is vereist voor uitgaande internet toegang.
+* Poort: alleen TCP 443 is vereist voor uitgaande internet toegang.
 * Globale URL: *. azure-automation.net
 * Globale URL van US Gov-Virginia: *. azure-automation.us
-* Agent service: https://\<workspaceId\>. agentsvc.Azure-Automation.net
+* Agent service: https://\<workspaceId\>. agentsvc.azure-automation.net
 
 Het is raadzaam om de adressen te gebruiken die worden weer gegeven bij het definiëren van uitzonde ringen. Voor IP-adressen kunt u de [IP-adresbereiken van Microsoft Azure Data Center](https://www.microsoft.com/en-us/download/details.aspx?id=56519)downloaden. Dit bestand wordt wekelijks bijgewerkt en heeft de huidige geïmplementeerde bereiken en eventuele toekomstige wijzigingen in de IP-bereiken.
 
@@ -118,20 +118,20 @@ Als u een Automation-account hebt dat is gedefinieerd voor een specifieke regio,
 
 | **Regio** | **DNS-record** |
 | --- | --- |
-| US - west-centraal | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| US - zuid-centraal |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| US - oost 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| US - west 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
-| Canada - midden |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| Europa -west |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
+| VS - west-centraal | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| VS - zuid-centraal |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| VS - oost 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
+| VS - west 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
+| Canada-Midden |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
+| Europa - west |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Europa - noord |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Azië - zuidoost |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | India - centraal |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Japan - oost |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
-| Australië - oost |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
+| Japan - Oost |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| Australië Oost |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
 | Australië - zuidoost |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Verenigd Koninkrijk Zuid | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| VS (overheid) - Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| VK - zuid | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| US Gov - Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Down load het [Azure Data Center IP-adres](https://www.microsoft.com/download/details.aspx?id=41653) XML-bestand in het micro soft Download centrum voor een lijst met IP-adressen van regio's in plaats van regio namen.
 
@@ -146,7 +146,7 @@ Down load het [Azure Data Center IP-adres](https://www.microsoft.com/download/de
 
 Op de standaard adressen en poorten die de Hybrid Runbook Worker vereist, zijn de volgende adressen specifiek vereist voor Updatebeheer. De communicatie met deze adressen geschiedt via poort 443.
 
-|Open bare Azure  |Azure Government  |
+|Openbare Azure-peering  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |

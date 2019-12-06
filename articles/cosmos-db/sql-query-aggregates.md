@@ -1,21 +1,21 @@
 ---
 title: Statistische functies in Azure Cosmos DB
-description: Meer informatie over SQL-syntaxis voor statistische functie voor Azure Cosmos DB.
+description: Meer informatie over de syntaxis van de statistische SQL-functie, typen statistische functies die door Azure Cosmos DB worden ondersteund.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: a6937e9e811ea8e44eda6f2bcb5d2c7d78db4934
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1ce3b18dd31944a1a4d4e6fad8fb49e63996dace
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342570"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871836"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Statistische functies in Azure Cosmos DB
 
-Statistische functies een berekening uitgevoerd op een set waarden in de component SELECT en één waarde retourneren. De volgende query retourneert bijvoorbeeld het aantal items in de `Families` container:
+Statistische functies voeren een berekening uit op een reeks waarden in de component SELECT en retour neren een enkele waarde. Met de volgende query wordt bijvoorbeeld het aantal items in de `Families` container geretourneerd:
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -24,7 +24,7 @@ Statistische functies een berekening uitgevoerd op een set waarden in de compone
     FROM Families f
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [{
@@ -32,20 +32,20 @@ De resultaten zijn:
     }]
 ```
 
-Ook kunt u alleen de scalaire waarde van de statistische functie met behulp van het sleutelwoord waarde retourneren. De volgende query retourneert bijvoorbeeld het aantal waarden als één getal:
+U kunt ook alleen de scalaire waarde van het aggregatie retour neren met behulp van het sleutel woord VALUE. De volgende query retourneert bijvoorbeeld het aantal waarden als één getal:
 
 ```sql
     SELECT VALUE COUNT(1)
     FROM Families f
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [ 2 ]
 ```
 
-U kunt ook aggregaties combineren met filters. De volgende query retourneert bijvoorbeeld het aantal items met de adresstatus van `WA`.
+U kunt ook aggregaties met filters combi neren. De volgende query retourneert bijvoorbeeld het aantal items met de adres status `WA`.
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -53,7 +53,7 @@ U kunt ook aggregaties combineren met filters. De volgende query retourneert bij
     WHERE f.address.state = "WA"
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [ 1 ]
@@ -61,9 +61,9 @@ De resultaten zijn:
 
 ## <a name="types-of-aggregate-functions"></a>Typen statistische functies
 
-De SQL-API biedt ondersteuning voor de volgende statistische functies. SOM en gemiddelde werken op basis van numerieke waarden en het aantal, MIN en MAX werken op getallen, tekenreeksen, Booleaanse waarden en null-waarden.
+De SQL-API biedt ondersteuning voor de volgende statistische functies. SUM en AVG functioneren op numerieke waarden en aantal, MIN en MAX werk voor getallen, teken reeksen, Booleaanse waarden en nullen.
 
-| Function | Description |
+| Functie | Beschrijving |
 |-------|-------------|
 | COUNT | Retourneert het aantal items in de expressie. |
 | SUM   | Retourneert de som van alle waarden in de expressie. |
@@ -71,13 +71,13 @@ De SQL-API biedt ondersteuning voor de volgende statistische functies. SOM en ge
 | MAX   | Retourneert de maximumwaarde in de expressie. |
 | AVG   | Retourneert het gemiddelde van de waarden in de expressie. |
 
-U kunt ook via de resultaten van een matrix iteratie samenvoegen.
+U kunt ook aggregatie over de resultaten van een matrix herhaling.
 
 > [!NOTE]
-> In de Azure portal Data Explorer kunnen aggregatie-query's gedeeltelijke resultaten samenvoegen op slechts één query op pagina. De SDK produceert één cumulatieve waarde op alle pagina's. Als u wilt uitvoeren van aggregatie-query's met behulp van code, moet u de .NET SDK 1.12.0, .NET Core SDK 1.1.0 of Java SDK 1.9.5 of hoger.
+> In de Data Explorer van de Azure Portal kunnen aggregatie query's gedeeltelijke resultaten op slechts één query pagina verzamelen. De SDK produceert één cumulatieve waarde op alle pagina's. Als u aggregatie query's wilt uitvoeren met behulp van code, hebt u .NET SDK 1.12.0, .NET Core SDK 1.1.0 of Java SDK 1.9.5 of hoger nodig.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Inleiding tot Azure Cosmos DB](introduction.md)
-- [Systeemfuncties](sql-query-system-functions.md)
-- [Door gebruikers gedefinieerde functies](sql-query-udfs.md)
+- [Systeem functies](sql-query-system-functions.md)
+- [Door de gebruiker gedefinieerde functies](sql-query-udfs.md)

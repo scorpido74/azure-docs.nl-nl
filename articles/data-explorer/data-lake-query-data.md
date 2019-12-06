@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1299ca9192481c1cc914732d47823c1d8cbd0fae
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383363"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849068"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Query's uitvoeren op gegevens in Azure Data Lake met behulp van Azure Data Explorer (preview-versie)
 
@@ -21,20 +21,15 @@ Azure Data Lake Storage is een zeer schaal bare en kosteneffectieve data Lake-op
 Azure Data Explorer kan worden geïntegreerd met Azure Blob Storage en Azure Data Lake Storage Gen2, waardoor snelle, in de cache opgeslagen en geïndexeerde toegang tot gegevens in het Lake wordt geboden. U kunt gegevens in het Lake analyseren en doorzoeken zonder voorafgaande opname in azure Data Explorer. U kunt ook een query uitvoeren in opgenomen en niet-opgenomen systeem eigen Lake data tegelijk.  
 
 > [!TIP]
-> Voor de beste query prestaties is het opnemen van gegevens in azure Data Explorer vereist. De mogelijkheid om gegevens op te vragen in Azure Data Lake Storage Gen2 zonder voorafgaande opname moet alleen worden gebruikt voor historische gegevens of gegevens die zelden worden doorzocht.
+> Voor de beste query prestaties is het opnemen van gegevens in azure Data Explorer vereist. De mogelijkheid om gegevens op te vragen in Azure Data Lake Storage Gen2 zonder voorafgaande opname moet alleen worden gebruikt voor historische gegevens of gegevens die zelden worden doorzocht. [Optimaliseer de prestaties van uw query in het Lake voor de](#optimize-your-query-performance) beste resultaten.
  
-## <a name="optimize-query-performance-in-the-lake"></a>Prestaties van query's optimaliseren in het Lake 
-
-* Partitie gegevens voor verbeterde prestaties en geoptimaliseerde query tijd.
-* Gegevens comprimeren voor verbeterde prestaties (gzip voor de beste compressie, LZ4 voor de beste prestaties).
-* Gebruik Azure Blob Storage of Azure Data Lake Storage Gen2 met dezelfde regio als uw Azure Data Explorer-cluster. 
 
 ## <a name="create-an-external-table"></a>Een externe tabel maken
 
  > [!NOTE]
  > Opslag accounts die momenteel worden ondersteund, zijn Azure Blob Storage of Azure Data Lake Storage Gen2. Momenteel ondersteunde gegevens indelingen zijn JSON, CSV, TSV en txt.
 
-1. Gebruik de `.create external table` opdracht voor het maken van een externe tabel in azure Data Explorer. Aanvullende `.show`opdrachten voor externe tabellen, zoals, `.drop`en `.alter` , worden beschreven in de [opdrachten van externe tabellen](/azure/kusto/management/externaltables).
+1. Gebruik de `.create external table` opdracht voor het maken van een externe tabel in azure Data Explorer. Aanvullende opdrachten voor externe tabellen, zoals `.show`, `.drop`en `.alter`, worden beschreven in de [opdrachten van externe tabellen](/azure/kusto/management/externaltables).
 
     ```Kusto
     .create external table ArchivedProducts(
@@ -50,7 +45,7 @@ Azure Data Explorer kan worden geïntegreerd met Azure Blob Storage en Azure Dat
     > * Er worden betere prestaties verwacht met een gedetailleerdere partitionering. Query's over externe tabellen met dagelijkse partities hebben bijvoorbeeld betere prestaties dan die query's met maandelijkse gepartitioneerde tabellen.
     > * Wanneer u een externe tabel met partities definieert, wordt de opslag structuur naar verwachting identiek.
 Als de tabel bijvoorbeeld is gedefinieerd met een DateTime-partitie in JJJJ/MM/DD-indeling (standaard), moet het pad naar het URI-opslag bestand *container1/jjjj/mm/dd/all_exported_blobs*zijn. 
-    > * Als de externe tabel is gepartitioneerd met een datum/tijd-kolom, neemt altijd een tijd filter op voor een gesloten bereik in uw query (bijvoorbeeld `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` : de query--moet beter worden uitgevoerd dan het geopende `ArchivedProducts | where Timestamp > ago(1h)` bereik) een-). 
+    > * Als de externe tabel is gepartitioneerd met een datum/tijd-kolom, neemt altijd een tijd filter op voor een gesloten bereik in uw query (bijvoorbeeld: de query-`ArchivedProducts | where Timestamp between (ago(1h) .. 10m)`-moet beter worden uitgevoerd dan het geopende bereik) één `ArchivedProducts | where Timestamp > ago(1h)`). 
 
 1. De externe tabel is zichtbaar in het linkerdeel venster van de Web-UI
 
@@ -91,7 +86,7 @@ U kunt een externe tabel maken met de JSON-indeling. Zie voor meer informatie [e
  
 ## <a name="query-an-external-table"></a>Een query uitvoeren op een externe tabel
  
-Als u een query wilt uitvoeren op een `external_table()` externe tabel, gebruikt u de functie en geeft u de tabel naam op als functie argument. De rest van de query is de standaard Kusto-query taal.
+Als u een query wilt uitvoeren op een externe tabel, gebruikt u de functie `external_table()` en geeft u de tabel naam op als functie argument. De rest van de query is de standaard Kusto-query taal.
 
 ```Kusto
 external_table("ArchivedProducts") | take 100
@@ -102,7 +97,7 @@ external_table("ArchivedProducts") | take 100
 
 ### <a name="query-an-external-table-with-json-format"></a>Een externe tabel met JSON-indeling opvragen
 
-Als u een externe tabel wilt opvragen met JSON-indeling `external_table()` , gebruikt u de functie en geeft u zowel de tabel naam als de naam van de toewijzing op als de functie argumenten. Als er in de onderstaande query geen *eigenaartoewijzing* is opgegeven, wordt een toewijzing die u eerder hebt gemaakt, gebruikt.
+Als u een query wilt uitvoeren op een externe tabel met JSON-indeling, gebruikt u de functie `external_table()` en geeft u zowel de tabel naam als de naam van de toewijzing op als de functie argumenten. Als er in de onderstaande query geen *eigenaartoewijzing* is opgegeven, wordt een toewijzing die u eerder hebt gemaakt, gebruikt.
 
 ```kusto
 external_table(‘ExternalTableJson’, ‘mappingName’)
@@ -110,7 +105,7 @@ external_table(‘ExternalTableJson’, ‘mappingName’)
 
 ## <a name="query-external-and-ingested-data-together"></a>Een query uitvoeren op externe en opgenomen gegevens
 
-U kunt zowel externe tabellen als opgenomen gegevens tabellen in dezelfde query opvragen. U [`join`](/azure/kusto/query/joinoperator) [of`union`](/azure/kusto/query/unionoperator) de externe tabel met aanvullende gegevens van Azure Data Explorer, SQL-servers of andere bronnen. Gebruik a [`let( ) statement`](/azure/kusto/query/letstatement) om een steno naam toe te wijzen aan een verwijzing naar een externe tabel.
+U kunt zowel externe tabellen als opgenomen gegevens tabellen in dezelfde query opvragen. U [`join`](/azure/kusto/query/joinoperator) of [`union`](/azure/kusto/query/unionoperator) de externe tabel met aanvullende gegevens van Azure Data Explorer, SQL-servers of andere bronnen. Gebruik een [`let( ) statement`](/azure/kusto/query/letstatement) om een steno naam toe te wijzen aan een verwijzing naar een externe tabel.
 
 In het onderstaande voor beeld is *Products* een opgenomen gegevens tabel en *ArchivedProducts* is een externe tabel met gegevens in de Azure data Lake Storage Gen2:
 
@@ -199,7 +194,7 @@ De set met *TaxiRides* -voorbeeld gegevens bevat nieuwe taxi's-gegevens van de R
 
 ### <a name="query-taxirides-external-table-data"></a>*TaxiRides* externe tabel gegevens opvragen 
 
-Meld u aan [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples) om de externe tabel *TaxiRides* op te vragen. 
+Meld u aan bij [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples) om de externe tabel *TaxiRides* op te vragen. 
 
 #### <a name="query-taxirides-external-table-without-partitioning"></a>*TaxiRides* externe tabel opvragen zonder partitioneren
 
@@ -231,6 +226,37 @@ Deze query maakt gebruik van partitionering, waarmee de query tijd en prestaties
 ![gepartitioneerde query weer geven](media/data-lake-query-data/taxirides-with-partition.png)
   
 U kunt extra query's schrijven om uit te voeren op de externe tabel *TaxiRides* en meer te weten te komen over de gegevens. 
+
+## <a name="optimize-your-query-performance"></a>De query prestaties optimaliseren
+
+Optimaliseer uw query prestaties in het Lake met behulp van de volgende aanbevolen procedures voor het uitvoeren van query's op externe gegevens. 
+ 
+### <a name="data-format"></a>Gegevensindeling
+ 
+Gebruik een kolom indeling voor analytische query's sinds:
+* Alleen de kolommen die relevant zijn voor een query kunnen worden gelezen. 
+* Kolom coderings technieken kunnen de gegevens omvang aanzienlijk verminderen.  
+Azure Data Explorer ondersteunt Parquet-en ORC-notaties. De Parquet-indeling wordt voorgesteld vanwege een geoptimaliseerde implementatie. 
+ 
+### <a name="azure-region"></a>Azure-regio 
+ 
+Controleer of de externe gegevens zich in dezelfde Azure-regio bevinden als uw Azure Data Explorer-cluster. Dit reduceert de kosten en de ophaal tijd van de gegevens.
+ 
+### <a name="file-size"></a>Bestandsgrootte
+ 
+De optimale bestands grootte is honderden MB (Maxi maal 1 GB) per bestand. Vermijd veel kleine bestanden waarvoor overbodige overhead nodig is, zoals een langzamere inventarisatie proces en een beperkt gebruik van de kolom indeling. Houd er rekening mee dat het aantal bestanden groter moet zijn dan het aantal CPU-kernen in uw Azure Data Explorer-cluster. 
+ 
+### <a name="compression"></a>Compressie
+ 
+Gebruik compressie om de hoeveelheid gegevens die uit de externe opslag wordt opgehaald, te verminderen. Gebruik voor Parquet-indeling het interne Parquet-compressie mechanisme dat kolom groepen afzonderlijk comprimeert, zodat u deze afzonderlijk kunt lezen. Als u het gebruik van het compressie mechanisme wilt valideren, controleert u of de bestanden de volgende naam hebben: '<filename>. gz. Parquet ' of '<filename>. Snappy. Parquet ' in plaats van '<filename>. parquet. gz '. 
+ 
+### <a name="partitioning"></a>Partitionering
+ 
+Organiseer uw gegevens met behulp van ' map-' partities waarmee de query irrelevante paden kan overs Laan. Bij het plannen van partities kunt u de bestands grootte en algemene filters in uw query's zoals tijds tempel of Tenant-ID overwegen.
+ 
+### <a name="vm-size"></a>VM-grootte
+ 
+Selecteer VM-Sku's met meer kernen en een hogere netwerk doorvoer (geheugen is minder belang rijk). Zie voor meer informatie [de juiste VM-SKU voor uw Azure Data Explorer-cluster selecteren](manage-cluster-choose-sku.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,64 +1,64 @@
 ---
-title: Het blokkeren van zwakke wachtwoorden in Azure AD - Azure Active Directory
-description: Zwakke wachtwoorden van uw envirionment met Azure AD dynamisch uitsluiten van passwrords blokkeren
+title: Zwakke wacht woorden in azure AD-Azure Active Directory verbieden
+description: Zwakke wacht woorden van uw envirionment met Azure AD dynamisch verboden passwrords
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f531174c889948308e27109ab4fd80a481ec6bdc
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: c58371edffa4400c2c2b3efd37c3ce6d7c3cad95
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798190"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847912"
 ---
-# <a name="configuring-the-custom-banned-password-list"></a>De lijst met aangepaste uitgesloten wachtwoorden configureren
+# <a name="configuring-the-custom-banned-password-list"></a>De aangepaste lijst met uitgesloten wacht woorden configureren
 
-Veel organisaties zien dat gebruikers maken met behulp van algemene lokale woorden, zoals een school, sportteam of beroemde personen, zodat ze gemakkelijk te raden wachtwoorden. Lijst met aangepaste uitgesloten wachtwoorden van Microsoft, waarmee organisaties om toe te voegen tekenreeksen om te evalueren en te blokkeren, naast de globale verboden lijst met wachtwoorden, wanneer gebruikers en beheerders probeert te wijzigen of opnieuw instellen van een wachtwoord.
+Veel organisaties vinden hun gebruikers een wacht woord met behulp van gang bare lokale woorden, zoals een school, een sport team of een beroemde persoon, zodat ze gemakkelijk te raden zijn. Met de aangepaste lijst met geblokkeerde wacht woorden van micro soft kunnen organisaties, naast de globale lijst met geblokkeerde wacht woorden, teken reeksen toevoegen om te evalueren en blok keren, wanneer gebruikers en beheerders een wacht woord proberen te wijzigen of opnieuw in te stellen.
 
-## <a name="add-to-the-custom-list"></a>Aan de aangepaste lijst toevoegen
+## <a name="add-to-the-custom-list"></a>Toevoegen aan de aangepaste lijst
 
-De lijst met aangepaste uitgesloten wachtwoorden configureren, is een Azure Active Directory Premium P1 of P2-licentie vereist. Zie voor meer informatie over de licentieverlening voor Azure Active Directory, de [Azure Active Directory pagina met prijzen](https://azure.microsoft.com/pricing/details/active-directory/).
+Voor het configureren van de aangepaste lijst met geblokkeerde wacht woorden is een Azure Active Directory Premium P1 of P2-licentie vereist. Zie de [pagina met Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory/)voor meer gedetailleerde informatie over Azure Active Directory-licenties.
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) en blader naar **Azure Active Directory**, **verificatiemethoden**, klikt u vervolgens **wachtwoordbeveiliging**.
-1. Stel de optie **afdwingen aangepaste lijst**naar **Ja**.
-1. Toevoegen van tekenreeksen die moeten worden de **aangepaste lijst met wachtwoorden verboden**, één tekenreeks per regel
-   * De lijst met aangepaste uitgesloten wachtwoorden kan maximaal 1000 termen bevatten.
-   * De lijst met aangepaste uitgesloten wachtwoorden is niet hoofdlettergevoelig.
-   * De lijst met uitgesloten wachtwoorden aangepaste rekening gehouden met algemene tekens vervangen.
-      * Voorbeeld: "o" en "0" of "a" en "\@"
-   * De minimale tekenreekslengte is vier tekens en de maximumwaarde is 16 tekens.
-1. Wanneer u alle tekenreeksen hebt toegevoegd, klikt u op **opslaan**.
-
-> [!NOTE]
-> Het duurt enkele uren voor updates aan de lijst met uitgesloten wachtwoorden aangepaste moet worden toegepast.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en blader naar **Azure Active Directory**, **verificatie methoden**en vervolgens **wachtwoord beveiliging**.
+1. Stel de optie **aangepaste lijst afdwingen**in op **Ja**.
+1. Teken reeksen toevoegen aan de **lijst met aangepaste verboden wacht woorden**, één teken reeks per regel
+   * De aangepaste lijst met verboden wacht woorden kan Maxi maal 1000 voor waarden bevatten.
+   * De aangepaste lijst met verboden wacht woorden is hoofdletter gevoelig.
+   * De aangepaste lijst met geblokkeerde wacht woorden beschouwt veelvoorkomende teken vervanging.
+      * Voor beeld: "o" en "0" of "a" en "\@"
+   * De minimale teken reeks lengte is vier tekens en het maximum aantal is 16 tekens.
+1. Wanneer u alle teken reeksen hebt toegevoegd, klikt u op **Opslaan**.
 
 > [!NOTE]
-> De lijst met aangepaste uitgesloten wachtwoorden is beperkt tot maximaal 1000 voorwaarden met. Het is niet ontworpen voor het blokkeren van zeer grote lijsten van wachtwoorden. Microsoft adviseert om volledig gebruik maken van de voordelen van de lijst met aangepaste uitgesloten wachtwoorden, dat u eerst controleren en begrijpen van de bedoelde ontwerp en het gebruik van de lijst met uitgesloten wachtwoorden aangepaste (Zie [aangepaste lijst met wachtwoorden verboden](concept-password-ban-bad.md#custom-banned-password-list)), en ook het wachtwoord evaluatie-algoritme (Zie [hoe wachtwoorden worden geëvalueerd](concept-password-ban-bad.md#how-are-passwords-evaluated)).
+> Het kan enkele uren duren voordat updates voor de aangepaste lijst met geblokkeerde wacht woorden worden toegepast.
 
-![Wijzigen van de aangepaste lijst met uitgesloten wachtwoorden onder verificatiemethoden in de Azure-portal](./media/howto-password-ban-bad/authentication-methods-password-protection.png)
+> [!NOTE]
+> De aangepaste lijst met verboden wacht woorden is beperkt tot een maximum van 1000 voor waarden. Het is niet ontworpen voor het blok keren van extreem grote lijsten met wacht woorden. Als u de voor delen van de aangepaste lijst met geblokkeerde wacht woorden volledig wilt benutten, raadt micro soft u aan eerst het beoogde ontwerp en gebruik van de aangepaste lijst met geblokkeerde wacht woorden te bekijken (Zie [aangepaste lijst met geblokkeerde wacht](concept-password-ban-bad.md#custom-banned-password-list)woorden) en ook het algoritme voor wachtwoord evaluatie (Zie [hoe wacht woorden worden geëvalueerd](concept-password-ban-bad.md#how-are-passwords-evaluated)).
 
-## <a name="how-it-works"></a>Hoe werkt het?
+![Wijzig de aangepaste lijst met verboden wacht woorden onder verificatie methoden in de Azure Portal](./media/howto-password-ban-bad/authentication-methods-password-protection.png)
 
-Telkens wanneer een gebruiker of beheerder wordt opnieuw ingesteld of een Azure AD-wachtwoord wijzigt stroomt hiervandaan het via de lijsten met uitgesloten wachtwoorden te bevestigen dat deze zich niet op een lijst. Deze controle is opgenomen in alle wachtwoorden instellen of wijzigen met behulp van Azure AD.
+## <a name="how-it-works"></a>Het werkt als volgt
+
+Telkens wanneer een gebruiker of beheerder een Azure AD-wacht woord opnieuw instelt of wijzigt, wordt de lijst met verboden wacht woorden door lopen om te bevestigen dat deze zich niet in een lijst bevindt. Deze controle is opgenomen in een wacht woord dat is ingesteld of gewijzigd met behulp van Azure AD.
 
 ## <a name="what-do-users-see"></a>Wat gebruikers zien
 
-Wanneer een gebruiker probeert een wachtwoord opnieuw wordt ingesteld op iets dat zou worden geblokkeerd, zien ze een van de volgende foutberichten:
+Wanneer een gebruiker probeert om een wacht woord opnieuw in te stellen op een waarde die verboden zou zijn, zien ze een van de volgende fout berichten:
 
-* Helaas komt bevat uw wachtwoord een woord, woordgroep of patroon dat uw wachtwoord gemakkelijk te raden maakt. Probeer het opnieuw met een ander wachtwoord.
-* U kunt dat wachtwoord helaas niet gebruiken omdat het woorden of tekens die zijn geblokkeerd door uw beheerder bevat. Probeer het opnieuw met een ander wachtwoord.
+* Uw wacht woord bevat helaas een woord, woord groep of patroon waarmee uw wacht woord gemakkelijk kan worden geraden. Probeer het opnieuw met een ander wacht woord.
+* Helaas kunt u dit wacht woord niet gebruiken omdat het woorden of tekens bevat die door uw beheerder zijn geblokkeerd. Probeer het opnieuw met een ander wacht woord.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Conceptueel overzicht van de lijsten met uitgesloten wachtwoorden](concept-password-ban-bad.md)
+[Conceptueel overzicht van de lijsten met verboden wacht woorden](concept-password-ban-bad.md)
 
-[Conceptueel overzicht van Azure AD-wachtwoordbeveiliging](concept-password-ban-bad-on-premises.md)
+[Conceptueel overzicht van Azure AD-wachtwoord beveiliging](concept-password-ban-bad-on-premises.md)
 
-[On-premises integratie met de lijsten met uitgesloten wachtwoorden inschakelen](howto-password-ban-bad-on-premises.md)
+[On-premises integratie met de lijsten met verboden wacht woorden inschakelen](howto-password-ban-bad-on-premises.md)

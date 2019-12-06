@@ -4,17 +4,17 @@ description: In dit artikel wordt beschreven hoe update-evaluaties voor update-i
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d4e20b2924504b714dff9f5ba650f9b25c1c26c3
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d27df57e9371f16a15d3a18b7722598062377d88
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690865"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850513"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Azure Updatebeheer update-evaluaties weer geven
 
@@ -32,7 +32,7 @@ Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontb
 
 ![Ontbrekende updates](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
-## <a name="update-classifications"></a>Update classificaties
+## <a name="update-classifications"></a>Updateclassificaties
 
 De volgende tabellen geven een lijst van de update classificaties in Updatebeheer, met een definitie voor elke classificatie.
 
@@ -49,7 +49,7 @@ De volgende tabellen geven een lijst van de update classificaties in Updatebehee
 |Tools     | Een hulp programma of functie waarmee u een of meer taken kunt volt ooien.        |
 |Updates     | Een update voor een toepassing of bestand dat momenteel is geïnstalleerd.        |
 
-### <a name="linux-2"></a>Spreek
+### <a name="linux-2"></a>Linux
 
 |Classificatie  |Beschrijving  |
 |---------|---------|

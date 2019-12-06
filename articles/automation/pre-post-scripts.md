@@ -4,17 +4,17 @@ description: In dit artikel wordt beschreven hoe u vooraf-scripts en post script
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 860eaf5d37b3d3064e3b10bd1dab02c04b95ab5b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a5d68b64fc24577621c82be62f833c356e8fb9c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755514"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850241"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Pre en post-scripts beheren
 
@@ -77,12 +77,12 @@ In de volgende tabel ziet u de eigenschappen die in de variabele zijn opgenomen.
 |SoftwareUpdateConfigurationName     | De naam van de configuratie van de software-update.        |
 |SoftwareUpdateConfigurationRunId     | De unieke ID voor de uitvoering.        |
 |SoftwareUpdateConfigurationSettings     | Een verzameling eigenschappen die betrekking hebben op de configuratie van de software-update.         |
-|SoftwareUpdateConfigurationSettings. Operating     | De besturings systemen die zijn gericht op de update-implementatie.         |
-|SoftwareUpdateConfigurationSettings. duur     | De maximale duur van het uitvoeren van de update-implementatie als `PT[n]H[n]M[n]S` per ISO8601; wordt ook wel het *onderhouds venster*genoemd.          |
-|SoftwareUpdateConfigurationSettings. Windows     | Een verzameling eigenschappen die betrekking hebben op Windows-computers.         |
-|SoftwareUpdateConfigurationSettings. Windows. excludedKbNumbers     | Een lijst met Kb's die zijn uitgesloten van de update-implementatie.        |
-|SoftwareUpdateConfigurationSettings. Windows. includedUpdateClassifications     | Update classificaties geselecteerd voor de update-implementatie.        |
-|SoftwareUpdateConfigurationSettings. Windows. rebootSetting     | Instellingen voor de update-implementatie opnieuw opstarten.        |
+|SoftwareUpdateConfigurationSettings.operatingSystem     | De besturings systemen die zijn gericht op de update-implementatie.         |
+|SoftwareUpdateConfigurationSettings.duration     | De maximale duur van het uitvoeren van de update-implementatie als `PT[n]H[n]M[n]S` per ISO8601; wordt ook wel het *onderhouds venster*genoemd.          |
+|SoftwareUpdateConfigurationSettings.Windows     | Een verzameling eigenschappen die betrekking hebben op Windows-computers.         |
+|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | Een lijst met Kb's die zijn uitgesloten van de update-implementatie.        |
+|SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | Update classificaties geselecteerd voor de update-implementatie.        |
+|SoftwareUpdateConfigurationSettings.Windows.rebootSetting     | Instellingen voor de update-implementatie opnieuw opstarten.        |
 |azureVirtualMachines     | Een lijst met resourceIds voor de virtuele Azure-machines in de update-implementatie.        |
 |nonAzureComputerNames|Een lijst met de FQDN-namen van niet-Azure-computers in de update-implementatie.|
 
@@ -231,7 +231,7 @@ Voorafgaande en natasken worden uitgevoerd in de Azure-context en hebben geen to
 * Een runbook dat u lokaal wilt uitvoeren
 * Een bovenliggend runbook
 
-Een bovenliggend runbook wordt uitgevoerd in de Azure-context om te communiceren met niet-Azure-machines. Met dit runbook wordt een onderliggend runbook aangeroepen met de cmdlet [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) . U moet de para meter `-RunOn` opgeven en de naam opgeven van de Hybrid Runbook Worker waarop het script moet worden uitgevoerd. Zie voor meer informatie het runbook-voor beeld [updatebeheer: script lokaal uitvoeren](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
+Een bovenliggend runbook wordt uitgevoerd in de Azure-context om te communiceren met niet-Azure-machines. Met dit runbook wordt een onderliggend runbook aangeroepen met de cmdlet [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) . U moet de para meter `-RunOn` opgeven en de naam opgeven van de Hybrid Runbook Worker voor het script dat moet worden uitgevoerd. Zie voor meer informatie het runbook-voor beeld [updatebeheer: script lokaal uitvoeren](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
 
 ## <a name="abort-patch-deployment"></a>Patch implementatie afbreken
 

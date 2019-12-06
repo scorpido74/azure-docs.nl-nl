@@ -1,18 +1,18 @@
 ---
 title: Wereld wijde distributie met Azure Cosmos DB-onder de motorkap
 description: In dit artikel vindt u technische gegevens met betrekking tot wereldwijde distributie van Azure Cosmos DB
-author: dharmas-cosmos
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615345"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872125"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Distributie van globale gegevens met Azure Cosmos DB-onder de motorkap
 
@@ -20,7 +20,7 @@ Azure Cosmos DB is een Foundational service in azure, zodat deze wereld wijd wor
 
 ![-Topologie](./media/global-dist-under-the-hood/distributed-system-topology.png)
 
-**Wereld wijde distributie in Azure Cosmos DB is kant-en-klare:** U kunt op elk gewenst moment, met enkele klikken of programmatisch met één API-aanroep, de geografische regio's toevoegen of verwijderen die zijn gekoppeld aan uw Cosmos-data base. Een Cosmos-data base bestaat op zijn beurt uit een set Cosmos-containers. In Cosmos DB fungeren containers als de logische eenheden van de distributie en schaalbaarheid. De verzamelingen, tabellen en grafieken die u maakt zijn (intern) alleen Cosmos-containers. Containers zijn volledig schema-neutraal en bieden een bereik voor een query. Gegevens in een Cosmos-container automatisch geïndexeerd bij opname. Met automatisch indexeren kunnen gebruikers de gegevens opvragen zonder dat er problemen zijn met schema-en index beheer, met name in een wereld wijd gedistribueerde configuratie.  
+**Wereld wijde distributie in azure Cosmos DB is kant** -en-klare: U kunt op elk gewenst moment, met enkele klikken of programmatisch met één API-aanroep, de geografische regio's toevoegen of verwijderen die zijn gekoppeld aan uw Cosmos-data base. Een Cosmos-data base bestaat op zijn beurt uit een set Cosmos-containers. In Cosmos DB fungeren containers als de logische eenheden van de distributie en schaalbaarheid. De verzamelingen, tabellen en grafieken die u maakt zijn (intern) alleen Cosmos-containers. Containers zijn volledig schema-neutraal en bieden een bereik voor een query. Gegevens in een Cosmos-container automatisch geïndexeerd bij opname. Met automatisch indexeren kunnen gebruikers de gegevens opvragen zonder dat er problemen zijn met schema-en index beheer, met name in een wereld wijd gedistribueerde configuratie.  
 
 - In een bepaalde regio worden gegevens in een container gedistribueerd met behulp van een partitie sleutel, die u opgeeft en die transparant wordt beheerd door de onderliggende fysieke partities (*lokale distributie*).  
 
@@ -32,7 +32,7 @@ Zoals in de volgende afbeelding wordt weer gegeven, worden de gegevens binnen ee
 
 ![Fysieke partities](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
 
-Een fysieke partitie wordt geïmplementeerd met een groep replica's, een zogenaamde replicaset. Elke machine fungeert als host voor honderden replica's die overeenkomen met verschillende fysieke partities binnen een vaste set processen, zoals wordt weer gegeven in de bovenstaande afbeelding. Replica's die overeenkomt met de fysieke partities dynamisch worden geplaatst en taakverdeling tussen de computers binnen een cluster en datacentrums binnen een regio.  
+Een fysieke partitie wordt geïmplementeerd met een groep replica's, een zogenaamde *replicaset*. Elke machine fungeert als host voor honderden replica's die overeenkomen met verschillende fysieke partities binnen een vaste set processen, zoals wordt weer gegeven in de bovenstaande afbeelding. Replica's die overeenkomt met de fysieke partities dynamisch worden geplaatst en taakverdeling tussen de computers binnen een cluster en datacentrums binnen een regio.  
 
 Een replica wordt een unieke behoort tot een Azure Cosmos DB-tenant. Elke replica als host fungeert voor een exemplaar van de Cosmos-DB [database-engine](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), die de resources, evenals de bijbehorende indexen beheert. De Cosmos-data base-engine wordt uitgevoerd op een ARS-systeem (Atom-record-Sequence). De engine is neutraal met het concept van een schema, waardoor de grens tussen de waarden van de structuur en het exemplaar van records wordt vervaagd. Cosmos DB realiseert volledige schema agnosticism door alles bij opname automatisch te indexeren op een efficiënte manier, waardoor gebruikers kunnen hun wereldwijd gedistribueerde gegevens op te vragen zonder dat u hoeft te bekommeren om schema's of indexbeheer.
 
@@ -50,11 +50,11 @@ Een fysieke partitie wordt gematerialeerd als een met zichzelf beheerde en dynam
 
 ## <a name="partition-sets"></a>Partitie-sets
 
-Een groep fysieke partities, één van elk geconfigureerd met de Cosmos-database regio's, bestaat uit het beheren van dezelfde set sleutels die worden gerepliceerd in alle geconfigureerde regio's. Deze hogere coördinatie primitieve wordt een partitieset genoemd: een geografisch gedistribueerde dynamische overlay van fysieke partities die een bepaalde set sleutels beheert. Terwijl een bepaalde fysieke partitie (een replicaset) binnen een cluster ligt, kan een partitieset clusters, data centers en geografische regio's omvatten, zoals wordt weer gegeven in de onderstaande afbeelding:  
+Een groep fysieke partities, één van elk geconfigureerd met de Cosmos-database regio's, bestaat uit het beheren van dezelfde set sleutels die worden gerepliceerd in alle geconfigureerde regio's. Deze hogere coördinatie primitieve wordt een *partitieset* genoemd: een geografisch gedistribueerde dynamische overlay van fysieke partities die een bepaalde set sleutels beheert. Terwijl een bepaalde fysieke partitie (een replicaset) binnen een cluster ligt, kan een partitieset clusters, data centers en geografische regio's omvatten, zoals wordt weer gegeven in de onderstaande afbeelding:  
 
 ![Partitiesets](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
 
-U kunt een partitie-set beschouwen als een geografisch verspreide "super-replicaset', die bestaat uit meerdere replicasets die eigenaar is dezelfde set sleutels. Net als bij een replicaset is het lidmaatschap van een partitieset ook dynamisch; het wordt geschommeld op basis van de impliciete bewerkingen voor fysieke partitie beheer om nieuwe partities toe te voegen aan of te verwijderen uit een bepaalde partitieset (bijvoorbeeld wanneer u de door Voer uitschaalt op een container, een regio toevoegen aan of verwijderen uit uw Cosmos-data base of wanneer er fouten optreden). Omdat elk van de partities (van een partitieset) het lidmaatschap van de partitieset binnen een eigen replicaset beheert, wordt het lidmaatschap volledig gedecentraliseerd en Maxi maal beschikbaar. De topologie van de overlay tussen fysieke partities wordt ook ingesteld tijdens de herconfiguratie van een partitie-set. De topologie wordt dynamisch geselecteerd op basis van het consistentie niveau, de geografische afstand en de beschik bare netwerk bandbreedte tussen de bron-en doel-fysieke partities.  
+U kunt een partitie-set beschouwen als een geografisch verspreide "super-replicaset', die bestaat uit meerdere replicasets die eigenaar is dezelfde set sleutels. Net als bij een replicaset is het lidmaatschap van een partitieset ook dynamisch. Dit kan worden geschommeld op basis van de impliciete bewerkingen voor fysieke partitie beheer om nieuwe partities toe te voegen aan of te verwijderen uit een bepaalde partitieset (bijvoorbeeld wanneer u de door Voer voor een container uitschaalt, een regio aan uw Cosmos-Data Base toevoegt of eruit verwijdert). Omdat elk van de partities (van een partitieset) het lidmaatschap van de partitieset binnen een eigen replicaset beheert, wordt het lidmaatschap volledig gedecentraliseerd en Maxi maal beschikbaar. De topologie van de overlay tussen fysieke partities wordt ook ingesteld tijdens de herconfiguratie van een partitie-set. De topologie wordt dynamisch geselecteerd op basis van het consistentie niveau, de geografische afstand en de beschik bare netwerk bandbreedte tussen de bron-en doel-fysieke partities.  
 
 De service kunt u uw Cosmos-databases configureren met een enkele schrijfregio of meerdere regio's voor schrijven en afhankelijk van uw keuze, partitie-sets zijn geconfigureerd voor het accepteren van schrijfbewerkingen in exact één of alle regio's. Het systeem maakt gebruik van een geneste consensus-protocol op twee niveaus: één niveau werkt binnen de replica's van een fysieke partitie die de schrijf bewerkingen accepteert, en de andere werkt op het niveau van een partitie, zodat de volledige best ordenings garanties worden geboden de vastgelegde schrijf bewerkingen binnen de partitieset. Deze consensus met meerdere lagen, geneste is essentieel voor de implementatie van onze strengere Sla's voor hoge beschikbaarheid, evenals de uitvoering van de consistentiemodellen, Cosmos DB biedt aan klanten.  
 
@@ -69,7 +69,7 @@ We maken gebruik van gecodeerde vector klokken (regio-ID en de logische klokken 
 Voor de Cosmos-databases is geconfigureerd met meerdere regio's voor schrijven en biedt het systeem een aantal flexibele automatische conflict resolutie beleidsregels voor de ontwikkelaars om de verkeersbelasting, met inbegrip van: 
 
 - **Last-write-WINS (LWW)** , die standaard gebruikmaakt van een door het systeem gedefinieerde tijds tempel eigenschap (die is gebaseerd op het klok protocol voor tijd synchronisatie). Cosmos DB kunt u een andere aangepaste numerieke eigenschap moet worden gebruikt voor conflictoplossing opgeven.  
-- **Beleid voor conflict oplossing door toepassing gedefinieerd (aangepast)** (uitgedrukt in samenvoeg procedures), dat is ontworpen voor het afstemmen van een door de toepassing gedefinieerde semantiek van conflicten. Deze procedures ophalen aangeroepen tijdens de detectie van het schrijven / schrijven veroorzaakt een conflict in het kader van een databasetransactie op de server. Het systeem biedt precies eenmaal garantie voor het uitvoeren van een samenvoeg procedure als onderdeel van het toezeggings protocol. Er zijn [verschillende voor beelden van conflict oplossing](how-to-manage-conflicts.md) beschikbaar waarmee u kunt spelen met.  
+- Door de **toepassing gedefinieerde (aangepast) beleid voor conflict oplossing** (uitgedrukt in samenvoeg procedures), dat is ontworpen voor het afstemmen van een door de toepassing gedefinieerde semantiek van conflicten. Deze procedures ophalen aangeroepen tijdens de detectie van het schrijven / schrijven veroorzaakt een conflict in het kader van een databasetransactie op de server. Het systeem biedt precies eenmaal garantie voor het uitvoeren van een samenvoeg procedure als onderdeel van het toezeggings protocol. Er zijn [verschillende voor beelden van conflict oplossing](how-to-manage-conflicts.md) beschikbaar waarmee u kunt spelen met.  
 
 ## <a name="consistency-models"></a>Consistentiemodellen
 
@@ -77,7 +77,7 @@ Of u uw Cosmos-data base met één of meerdere schrijf regio's configureert, u k
 
 Met de consistentie van de gebonden veroudering wordt gegarandeerd dat alle Lees bewerkingen binnen *K* -voor voegsels vallen of *T* seconden van de laatste schrijf bewerking in een van de regio's. Bovendien zijn Lees bewerkingen met gebonden verouderde consistentie gegarandeerd een monotone en met consistente voorvoegsel garanties. Het protocol anti entropie werkt op een manier beperkt in de snelheid en zorgt ervoor dat de voorvoegsels niet worden en de tegendruk op de schrijfbewerkingen niet hoeft te worden toegepast. Met sessie consistentie wordt de monotone Lees-, monotone schrijf-, lees-en schrijf bewerkingen gegarandeerd. Voor de data bases die zijn geconfigureerd met sterke consistentie, zijn de voor delen (lage schrijf latentie, hoge schrijf Beschik baarheid) van meerdere schrijf regio's niet van toepassing, vanwege synchrone replicatie tussen regio's.
 
-De semantiek van de vijf consistentie modellen in Cosmos DB worden [hier](consistency-levels.md)beschreven en mathematisch beschreven met behulp van een TLA-specificatie op hoog [](https://github.com/Azure/azure-cosmos-tla)niveau.
+De semantiek van de vijf consistentie modellen in Cosmos DB worden [hier](consistency-levels.md)beschreven en mathematisch beschreven met behulp van een TLA [-specificatie op](https://github.com/Azure/azure-cosmos-tla)hoog niveau.
 
 ## <a name="next-steps"></a>Volgende stappen
 

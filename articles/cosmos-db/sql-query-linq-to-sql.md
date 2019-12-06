@@ -1,17 +1,17 @@
 ---
 title: LINQ to SQL vertaling in Azure Cosmos DB
-description: LINQ-query's toewijzen aan Azure Cosmos DB SQL-query's.
+description: Meer informatie over de LINQ-Opera tors die worden ondersteund en hoe de LINQ-query's worden toegewezen aan SQL-query's in Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: ad6dcf7307955300a781a7a649b6ac76b3c69589
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d8dd6392cf22852a10c1dc2600edcbc647f3c510
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003558"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871156"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL-omzetting
 
@@ -58,19 +58,19 @@ De query provider ondersteunt de volgende scalaire expressies:
 
 De LINQ-provider die is opgenomen in de SQL .NET SDK ondersteunt de volgende Opera tors:
 
-- **Select**: Prognoses worden vertaald naar SQL SELECT, inclusief object constructie.
-- **Where**: Filters vertalen naar SQL waarbij vertaling wordt ondersteund tussen `&&`, `||`en `!` naar de SQL-Opera tors
+- **Select**: projecties vertalen naar SQL SELECT, inclusief object constructie.
+- **Waar**: filters vertalen naar SQL waarbij en ondersteunen de vertaling van `&&`, `||`en `!` naar de SQL-Opera tors
 - **SelectMany**: maakt het mogelijk om matrices af te wikkelen naar de SQL-JOIN-component. Gebruiken voor het koppelen of nesten van expressies voor het filteren op matrix elementen.
-- **OrderBy** en **OrderByDescending**: Vertalen in Best Ellen met ASC of DESC.
+- **OrderBy** en **OrderByDescending**: vertalen naar order by met ASC of DESC.
 - Operatoren **Count**, **Sum**, **Min**, **Max** en **Average** voor statistische functies en de bijbehorende asynchrone equivalenten **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** en **AverageAsync**.
 - **CompareTo**: wordt omgezet naar bereikvergelijkingen. Wordt meestal gebruikt voor teken reeksen, omdat ze niet vergelijkbaar zijn in .NET.
-- **Take**: Vertaalt de TOP van SQL voor het beperken van de resultaten van een query.
-- **Wiskundige functies**: Ondersteunt de vertaling van `Abs`.net `Acos`, `Asin`, `Atan`, `Ceiling`,, `Cos`, ,`Floor`,,, ,`Pow` `Log10` `Log` `Exp` `Round`, `Sign`, ,,`Sin`en naardeequivalenteingebouwde`Truncate` functies van SQL. `Sqrt` `Tan`
-- **Teken reeks functies**: Ondersteunt de vertaling van `Concat`.net `Contains`, `Count`, `EndsWith`,`IndexOf`,, `Replace`, ,`StartsWith`,,, ,`ToUpper` `ToLower` `SubString` `Reverse` `TrimEnd` en`TrimStart` voor de equivalente ingebouwde functies van SQL.
-- **Matrix functies**: Ondersteunt de vertaling van `Concat`.net `Contains`, en `Count` naar de equivalente ingebouwde functies van SQL.
-- **Georuimtelijke extensie functies**: Ondersteunt de vertaling van stub `Distance` `IsValidDetailed`- `IsValid`methoden,, `Within` en naar de equivalente ingebouwde functies van SQL.
-- Door de **gebruiker gedefinieerde functie-extensie functie**: Ondersteunt de vertaling van de stub `UserDefinedFunctionProvider.Invoke` -methode naar de bijbehorende door de gebruiker gedefinieerde functie.
-- **Miscellaneous**: Ondersteunt de omzetting `Coalesce` van en voorwaardelijke Opera tors. Kan worden `Contains` omgezet in een teken reeks, ARRAY_CONTAINS of SQL in, afhankelijk van de context.
+- **Nemen**: vertaalt de top van SQL voor het beperken van de resultaten van een query.
+- **Wiskundige functies**: ondersteunt de vertaling van .net `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan`en `Truncate` naar de equivalente ingebouwde functies van SQL.
+- **Teken reeks functies**: ondersteunt de vertaling van .net `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd`en `TrimStart` naar de equivalente ingebouwde functies van SQL.
+- **Matrix functies**: ondersteunt de vertaling van .net `Concat`, `Contains`en `Count` naar de equivalente ingebouwde functies van SQL.
+- **Georuimtelijke extensie functies**: ondersteunt de vertaling van stub-methoden `Distance`, `IsValid`, `IsValidDetailed`en `Within` naar de equivalente ingebouwde functies van SQL.
+- Door de **gebruiker gedefinieerde functie-extensie functie**: ondersteunt de vertaling van de stub-methode `UserDefinedFunctionProvider.Invoke` naar de bijbehorende door de gebruiker gedefinieerde functie.
+- **Diversen**: ondersteunt de vertaling van `Coalesce` en voorwaardelijke Opera tors. Kan `Contains` omzetten naar een teken reeks, ARRAY_CONTAINS of SQL IN, afhankelijk van de context.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -192,7 +192,7 @@ U kunt de voor gaande Opera tors samen stellen om krachtiger query's te maken. O
 
 ### <a name="concatenation"></a>Samenvoegen
 
-De syntaxis is `input(.|.SelectMany())(.Select()|.Where())*`. Een samengevoegde query kan beginnen met een optionele `SelectMany` query, gevolgd door `Where` meerdere `Select` Opera tors.
+De syntaxis is `input(.|.SelectMany())(.Select()|.Where())*`. Een samengevoegde query kan beginnen met een optionele `SelectMany` query, gevolgd door meerdere `Select` of `Where` Opera tors.
 
 **Samen voegen, voor beeld 1:**
 
@@ -264,7 +264,7 @@ De syntaxis is `input(.|.SelectMany())(.Select()|.Where())*`. Een samengevoegde 
 
 ### <a name="nesting"></a>Nesten
 
-De syntaxis is `input.SelectMany(x=>x.Q())` `Q` een `Select`, ,`SelectMany` of`Where` -operator.
+De syntaxis is `input.SelectMany(x=>x.Q())` waarbij `Q` een operator `Select`, `SelectMany`of `Where` is.
 
 Een geneste query past de interne query toe op elk element van de buitenste container. Een belang rijke functie is dat de binnenste query kan verwijzen naar de velden van de elementen in de buitenste container, zoals een self-join.
 

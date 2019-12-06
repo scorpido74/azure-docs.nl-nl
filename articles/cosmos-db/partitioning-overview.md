@@ -1,19 +1,19 @@
 ---
-title: Partitioneren in Azure Cosmos DB
-description: Overzicht van partitionering in Azure Cosmos DB.
+title: Partitionering in Azure Cosmos DB
+description: Meer informatie over partitioneren in Azure Cosmos DB, aanbevolen procedures bij het kiezen van een partitie sleutel en het beheren van logische partities
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 38b4e4c2541bf30bd9c95d9c0ec61779b0d1d7bb
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 12/02/2019
+ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753249"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871989"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Partitioneren in Azure Cosmos DB
+# <a name="partitioning-in-azure-cosmos-db"></a>Partitionering in Azure Cosmos DB
 
 Azure Cosmos DB maakt gebruik van partitionering om afzonderlijke containers in een Data Base te schalen om te voldoen aan de prestatie behoeften van uw toepassing. In partitioneren worden de items in een container onderverdeeld in afzonderlijke subsets met de naam *logische partities*. Logische partities worden gevormd op basis van de waarde van een *partitie sleutel* die is gekoppeld aan elk item in een container. Alle items in een logische partitie hebben dezelfde partitie sleutel waarde.
 

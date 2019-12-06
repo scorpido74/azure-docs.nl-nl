@@ -4,17 +4,17 @@ description: In dit artikel wordt de integratie van broncode beheer met GitHub i
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: fcb3885446e534a2a6a5153545fd39fb14a02776
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886519"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850156"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integratie van broncodebeheer in Azure Automation
 
@@ -24,7 +24,7 @@ Azure Automation ondersteunt drie typen broncode beheer:
 
 * GitHub
 * Azure-opslag plaatsen (Git)
-* Azure-opslag plaatsen (TFVC)
+* Azure Repos (TFVC)
 
 ## <a name="pre-requisites"></a>Vereisten
 
@@ -48,8 +48,8 @@ Vul op de pagina **overzicht van broncode beheer** de gegevens in en klik op **O
 |Eigenschap  |Beschrijving  |
 |---------|---------|
 |Naam van broncode beheer     | Een beschrijvende naam voor het broncode beheer. *Deze naam mag alleen letters en cijfers bevatten.*        |
-|Type broncode beheer     | Het type bron beheer bron. De volgende opties zijn beschikbaar:</br> GitHub</br>Azure-opslag plaatsen (Git)</br> Azure-opslag plaatsen (TFVC)        |
-|Opslag plaats     | De naam van de opslag plaats of het project. De eerste 200 opslag plaatsen worden geretourneerd. Als u wilt zoeken naar een opslag plaats, typt u de naam in het veld en klikt u op **zoeken op github**.|
+|Type broncode beheer     | Het type bron beheer bron. De volgende opties zijn beschikbaar:</br> GitHub</br>Azure-opslag plaatsen (Git)</br> Azure Repos (TFVC)        |
+|Opslagplaats     | De naam van de opslag plaats of het project. De eerste 200 opslag plaatsen worden geretourneerd. Als u wilt zoeken naar een opslag plaats, typt u de naam in het veld en klikt u op **zoeken op github**.|
 |Branch     | De vertakking waaruit de bron bestanden moeten worden gehaald. Vertakkings doelen zijn niet beschikbaar voor het TFVC-broncode beheer type.          |
 |Mappad     | De map die de runbooks bevat die moeten worden gesynchroniseerd. Voor beeld:/Runbooks </br>*Alleen runbooks in de opgegeven map worden gesynchroniseerd. Recursie wordt niet ondersteund.*        |
 |Automatische synchronisatie<sup>1</sup>     | Hiermee schakelt u automatische synchronisatie in of uit wanneer een door Voer wordt gemaakt in de bron beheer opslagplaats         |
@@ -73,7 +73,7 @@ U kunt Power shell ook gebruiken voor het configureren van broncode beheer in Az
 New-AzureRmAutomationSourceControl -Name SCReposGit -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
-### <a name="azure-repos-tfvc"></a>Azure-opslag plaatsen (TFVC)
+### <a name="azure-repos-tfvc"></a>Azure Repos (TFVC)
 
 ```powershell-interactive
 New-AzureRmAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
@@ -93,21 +93,21 @@ Voor broncode beheer zijn enkele minimale machtigingen vereist voor persoonlijke
 
 Voor meer informatie over het maken van een persoonlijk toegangs token in GitHub gaat u naar [een persoonlijk toegangs token maken voor de opdracht regel](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Bereik  |Beschrijving  |
+|Scope  |Beschrijving  |
 |---------|---------|
 |**opslagplaats**     |         |
 |opslag plaats: status     | Toegangs status voor door voeren         |
 |repo_deployment      | Toegangs implementatie status         |
 |public_repo     | Open bare opslag plaatsen openen         |
-|**beheerder: repo_hook**     |         |
+|**admin:repo_hook**     |         |
 |schrijven: repo_hook     | Opslag plaats-hooks schrijven         |
 |lezen: repo_hook|Opslag plaats hooks lezen|
 
-#### <a name="azure-repos"></a>Azure Repos
+#### <a name="azure-repos"></a>Azure-opslagplaatsen
 
 Ga voor meer informatie over het maken van een persoonlijk toegangs token in azure opslag plaatsen naar [verificatie van toegang met persoonlijke toegangs tokens](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
-|Bereik  |
+|Scope  |
 |---------|
 |Code (lezen)     |
 |Project en team (lezen)|

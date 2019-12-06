@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9f340ad12fbf26190a17bc4df97bfc95473093c
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bc2c68c53a7c03d1de08e5cde528f27aa61b0096
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381287"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847266"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Self-service voor wachtwoordherstel van Azure AD implementeren
 
@@ -56,17 +56,17 @@ De gecombineerde registratie-ervaring vereist niet dat organisaties zowel SSPR a
 
 De volgende instellingen zijn vereist om SSPR samen met aanbevolen waarden in te scha kelen.
 
-| Onderwerp | Instelling | Waarde |
+| Gebied | Instelling | Waarde |
 | --- | --- | --- |
 | **SSPR-eigenschappen** | Self-service voor wacht woord opnieuw instellen is ingeschakeld | **Geselecteerde** groep voor pilot/ **all** voor productie |
 | **Verificatiemethoden** | Verificatie methoden die nodig zijn om te registreren | Altijd 1 meer dan vereist voor opnieuw instellen |
 |   | Verificatie methoden die nodig zijn om opnieuw in te stellen | Een of twee |
 | **Registratie** | Vereisen dat gebruiker zich bij aanmelding registreren | Ja |
-|   | Aantal dagen waarna gebruikers wordt gevraagd om de verificatie gegevens opnieuw te bevestigen | 90 – 180 dagen |
+|   | Het aantal dagen waarna gebruikers wordt gevraagd om de verificatiegegevens opnieuw te bevestigen | 90 – 180 dagen |
 | **Meldingen** | Gebruikers een melding tonen over het opnieuw instellen van hun wachtwoord | Ja |
 |   | Alle beheerders waarschuwen wanneer andere beheerders hun wachtwoord opnieuw instellen | Ja |
-| **Aanpassing** | Help Desk-koppeling aanpassen | Ja |
-|   | Aangepaste e-mail adres of URL voor de Help Desk | Ondersteunings site of e-mail adres |
+| **Aanpassing** | Koppeling naar helpdesk aanpassen | Ja |
+|   | Aangepast(e) e-mailadres of URL van helpdesk | Ondersteunings site of e-mail adres |
 | **On-premises integratie** | Wacht woorden terugschrijven naar on-premises AD | Ja |
 |   | Gebruikers toestaan om het account te ontgrendelen zonder het wacht woord opnieuw in te stellen | Ja |
 
@@ -76,7 +76,7 @@ Als selfservice voor wacht woord opnieuw instellen is ingeschakeld, kiest u een 
 
 Wanneer u van plan bent om de service vaker te starten, kunt u het beste de optie alles gebruiken om SSPR af te dwingen voor iedereen in de organisatie. Als u niet kunt instellen op alle, selecteert u de juiste Azure AD-beveiligings groep of AD-groep die is gesynchroniseerd met Azure AD.
 
-### <a name="authentication-methods"></a>Verificatiemethoden
+### <a name="authentication-methods"></a>Authenticatiemethoden
 
 Stel de verificatie methoden in die vereist zijn om te registreren bij ten minste één waarde voor het aantal dat moet worden ingesteld. Het toestaan van meerdere gebruikers flexibiliteit wanneer ze opnieuw moeten worden ingesteld.
 
@@ -90,7 +90,7 @@ Stel **in dat gebruikers zich moeten registreren wanneer ze zich aanmelden** bij
 
 Stel het **aantal dagen in voordat gebruikers wordt gevraagd hun verificatie gegevens te bevestigen** tussen **90** en **180** dagen, tenzij uw organisatie voor een kortere periode een bedrijfs behoefte heeft.
 
-### <a name="notifications-settings"></a>Instellingen voor meldingen
+### <a name="notifications-settings"></a>Meldingsinstellingen
 
 Configureer de **gebruikers op de hoogte van het opnieuw instellen van wacht woorden** en stel **alle beheerders op de hoogte wanneer andere beheerders hun wacht woord opnieuw instellen** op **Ja**. Als u **Ja** selecteert, wordt de beveiliging verhoogd door ervoor te zorgen dat gebruikers op de hoogte zijn van het opnieuw instellen van het wacht woord en dat alle beheerders op de hoogte zijn wanneer een beheerder een wacht woord wijzigt. Als gebruikers of beheerders een dergelijke melding ontvangen en de wijziging niet hebben geïnitieerd, kunnen ze onmiddellijk een mogelijke schending van de beveiliging melden.
 
@@ -217,7 +217,7 @@ Vereiste rollen voor het beheren van functies die zijn gekoppeld aan selfservice
 
 | Zakelijke rol/persoona | Azure AD-rol (indien nodig) |
 | :---: | :---: |
-| Help Desk van niveau 1 | Wachtwoord beheerder |
+| Help Desk van niveau 1 | Wachtwoordbeheerder |
 | Help Desk van niveau 2 | Gebruikers beheerder |
 | SSPR-beheerder | Globale beheerder |
 
@@ -225,7 +225,7 @@ Vereiste rollen voor het beheren van functies die zijn gekoppeld aan selfservice
 
 Als u het ondersteunings team wilt inschakelen, kunt u een veelgestelde vragen maken op basis van vragen die u van uw gebruikers ontvangt. De volgende tabel bevat algemene ondersteunings scenario's.
 
-| Scenario 's | Beschrijving |
+| Scenario's | Beschrijving |
 | --- | --- |
 | De gebruiker heeft geen geregistreerde verificatie methoden beschikbaar | Een gebruiker probeert het wacht woord opnieuw in te stellen, maar heeft geen van de authenticatie methoden die ze beschikbaar hebben (voor beeld: ze hebben hun mobiele telefoon thuis verlaten en kunnen geen toegang krijgen tot e-mail) |
 | De gebruiker ontvangt geen tekst of oproep op hun kantoor of mobiele telefoon | Een gebruiker probeert zijn identiteit te verifiëren via tekst of oproep, maar ontvangt geen tekst/oproep. |

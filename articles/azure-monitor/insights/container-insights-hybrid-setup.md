@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: d25b9b3bb155dced973d415b396ebfaa4403b011
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/04/2019
+ms.openlocfilehash: 0d6615d832059a8b58c0d5d52533b8c8c962640d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514613"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841571"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hybride Kubernetes-clusters met Azure Monitor voor containers configureren
 
@@ -20,7 +20,7 @@ Azure Monitor voor containers biedt uitgebreide bewakings ervaring voor de Azure
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u ervoor zorgen dat u over het volgende beschikt:
+Voordat u begint, zorg ervoor dat u het volgende hebt:
 
 * Een Log Analytics-werkruimte.
 
@@ -72,20 +72,20 @@ Het inschakelen van Azure Monitor voor containers voor het hybride Kubernetes-cl
 
 U kunt de oplossing met de meegeleverde Azure Resource Manager sjabloon implementeren met behulp van de Azure PowerShell-cmdlet `New-AzResourceGroupDeployment` of met Azure CLI.
 
-Als u niet bekend bent met het concept van het implementeren van resources met behulp van een sjabloon, raadpleegt u:
+Als u niet bekend met het concept bent van het implementeren van resources met behulp van een sjabloon, Zie:
 
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)
 
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voor het identificeren van uw versie uitvoeren `az --version`. Als u wilt installeren of upgraden van de Azure CLI, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-Deze methode bevat twee JSON-sjablonen. Met één sjabloon geeft u de configuratie op om bewaking in te scha kelen. de andere bevat parameter waarden die u configureert om het volgende op te geven:
+Deze methode omvat twee JSON-sjablonen. Een sjabloon Hiermee geeft u de configuratie voor bewaking en de andere bevat parameterwaarden die u configureert voor het volgende opgeven:
 
 - **workspaceResourceId** : de volledige resource-id van uw log Analytics-werk ruimte.
 - **workspaceRegion** : de regio waarin de werk ruimte is gemaakt, die ook wel **locatie** in de werkruimte eigenschappen wordt genoemd bij het weer geven van de Azure Portal.
 
-Als u eerst de volledige Resource-ID wilt identificeren van uw Log Analytics werk ruimte die vereist is voor de `workspaceResourceId` parameter waarde in het bestand **containerSolutionParams. json** , voert u de volgende stappen uit en voert u vervolgens de Power shell-cmdlet of de Azure cli-opdracht uit om de oplossen.
+Als u eerst de volledige Resource-ID wilt identificeren van uw Log Analytics werk ruimte die vereist is voor de waarde van de `workspaceResourceId`-para meter in het bestand **containerSolutionParams. json** , voert u de volgende stappen uit en voert u de Power shell-cmdlet of de Azure cli-opdracht uit om de oplossing toe te voegen.
 
 1. Een lijst met alle abonnementen waartoe u toegang hebt met behulp van de volgende opdracht:
 
@@ -93,7 +93,7 @@ Als u eerst de volledige Resource-ID wilt identificeren van uw Log Analytics wer
     az account list --all -o table
     ```
 
-    De uitvoer ziet er ongeveer als volgt uit:
+    De uitvoer ziet eruit als in het volgende:
 
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
@@ -218,7 +218,7 @@ Als u eerst de volledige Resource-ID wilt identificeren van uw Log Analytics wer
        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of log analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
        ```
        
-       Het kan enkele minuten duren voordat de configuratie is gewijzigd. Wanneer de service is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat:
+       Wijzigen van de configuratie kan een paar minuten duren. Wanneer deze voltooid, wordt er een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
 
        ```powershell
        provisioningState       : Succeeded
@@ -235,13 +235,13 @@ Als u eerst de volledige Resource-ID wilt identificeren van uw Log Analytics wer
        az group deployment create --resource-group <resource group of log analytics workspace> --template-file ./containerSolution.json --parameters @./containerSolutionParams.json
        ```
 
-       Het kan enkele minuten duren voordat de configuratie is gewijzigd. Wanneer de service is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat:
+       Wijzigen van de configuratie kan een paar minuten duren. Wanneer deze voltooid, wordt er een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
 
        ```azurecli
        provisioningState       : Succeeded
        ```
      
-       Nadat u bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u de metrische gegevens van de status voor het cluster kunt weer geven. 
+       Wanneer u bewaking inschakelt, is het duurt ongeveer 15 minuten voordat u de gezondheid van metrische gegevens voor het cluster kunt weergeven. 
 
 ## <a name="install-the-chart"></a>De grafiek installeren
 
@@ -282,6 +282,25 @@ Nadat u de grafiek hebt geïmplementeerd, kunt u de gegevens voor uw hybride Kub
 
 >[!NOTE]
 >De latentie van de opname is ongeveer vijf tot tien minuten van de agent die moet worden doorgevoerd in de Azure Log Analytics-werk ruimte. De status van het cluster toont de waarde **geen gegevens** of is **onbekend** totdat alle vereiste bewakings gegevens beschikbaar zijn in azure monitor. 
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+Als er een fout optreedt bij het inschakelen van bewaking voor uw hybride Kubernetes-cluster, kopieert u het Power shell-script [TroubleshootError_nonAzureK8s. ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) en slaat u het op in een map op uw computer. Dit script wordt verstrekt om te helpen bij het detecteren en oplossen van de gevonden problemen. De problemen waarmee het volgende kan worden opgelost:
+
+* De opgegeven Log Analytics werk ruimte is geldig 
+* De Log Analytics-werk ruimte is geconfigureerd met de Azure Monitor voor containers. Als dat niet het geval is, configureert u de werk ruimte.
+* OmsAgent replicaset pod wordt uitgevoerd
+* OmsAgent daemonset pod wordt uitgevoerd
+* De OmsAgent Health-Service wordt uitgevoerd 
+* De Log Analytics werk ruimte-id en-sleutel die zijn geconfigureerd op de container agent komen overeen met de werk ruimte waarin het inzicht is geconfigureerd.
+* Valideer alle Linux worker-knoop punten hebben `kubernetes.io/role=agent` label voor het plannen van RS pod. Als deze niet bestaat, voegt u deze toe.
+* Valideer `cAdvisor port: 10255` is geopend op alle knoop punten in het cluster.
+
+Als u wilt uitvoeren met Azure PowerShell, gebruikt u de volgende opdrachten in de map die het script bevat:
+
+```powershell
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3221e6424b449066510667f8067e3bc6d8aec12a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381945"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848626"
 ---
 # <a name="combined-security-information-registration-preview"></a>Registratie van gecombineerde beveiligings gegevens (preview-versie)
 
@@ -54,8 +54,8 @@ Bij gecombineerde registratie worden de volgende verificatie methoden en-acties 
 | Hardware-token | Nee | Nee | Ja |
 | Telefoon | Ja | Ja | Ja |
 | Alternatief telefoon nummer | Ja | Ja | Ja |
-| Office Phone | Nee | Nee | Nee |
-| Email | Ja | Ja | Ja |
+| Zakelijke telefoon | Nee | Nee | Nee |
+| E-mail | Ja | Ja | Ja |
 | Beveiligingsvragen | Ja | Nee | Ja |
 | App-wachtwoorden | Ja | Nee | Ja |
 
@@ -67,7 +67,7 @@ Gebruikers kunnen een van de volgende opties instellen als de standaard Multi-Fa
 - Microsoft Authenticator: melding.
 - Verificator-app of-hardware-token-code.
 - Telefoon oproep.
-- SMS-bericht.
+- Sms-bericht.
 
 Wanneer we meer authenticatie methoden blijven toevoegen aan Azure AD, zullen deze methoden beschikbaar zijn in gecombineerde registratie.
 

@@ -2,18 +2,18 @@
 title: Problemen oplossen met onboarding van Updatebeheer, Wijzigingen bijhouden en inventaris
 description: Meer informatie over het oplossen van fouten met onboarding met de oplossingen voor Updatebeheer, Wijzigingen bijhouden en inventaris
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 8b4ee999bb23abdcea3411720bde244b2da4e89f
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0371c59ae63389bc3f7f0132260b0d98f496086c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516401"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849306"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Problemen oplossen bij het voorbereiden van oplossingen
 
@@ -21,7 +21,7 @@ Er kunnen fouten optreden bij het voorbereiden van oplossingen zoals Updatebehee
 
 ## <a name="known-issues"></a>Bekende problemen
 
-### <a name="node-rename"></a>Omstandigheden Voor het wijzigen van de naam van een geregistreerd knoop punt moet u de registratie/registratie opnieuw uitvoeren
+### <a name="node-rename"></a>Scenario: voor het wijzigen van de naam van een geregistreerd knoop punt moet u de registratie of het REGI ster opnieuw uitvoeren
 
 #### <a name="issue"></a>Probleem
 
@@ -31,12 +31,12 @@ Een knoop punt is geregistreerd bij Azure Automation en vervolgens wordt de naam
 
 Bij het wijzigen van de naam van geregistreerde knoop punten wordt de knooppunt naam in Azure Automation niet bijgewerkt.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Hef de registratie van het knoop punt uit de configuratie van Azure Automation status op en registreer dit vervolgens opnieuw.  Rapporten die worden gepubliceerd naar de service vóór dat moment, zijn niet meer beschikbaar.
 
 
-### <a name="resigning-cert"></a>Omstandigheden Het opnieuw ondertekenen van certificaten via een HTTPS-proxy wordt niet ondersteund
+### <a name="resigning-cert"></a>Scenario: het opnieuw ondertekenen van certificaten via een HTTPS-proxy wordt niet ondersteund
 
 #### <a name="issue"></a>Probleem
 
@@ -46,13 +46,13 @@ Klanten hebben gerapporteerd dat bij het maken van verbinding via een proxy-oplo
 
 Azure Automation biedt geen ondersteuning voor het opnieuw ondertekenen van certificaten die worden gebruikt voor het versleutelen van verkeer.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Er is geen oplossing voor dit probleem.
 
 ## <a name="general-errors"></a>Algemene fouten
 
-### <a name="missing-write-permissions"></a>Omstandigheden Onboarding mislukt met het bericht-de oplossing kan niet worden ingeschakeld
+### <a name="missing-write-permissions"></a>Scenario: onboarding mislukt met het bericht-de oplossing kan niet worden ingeschakeld
 
 #### <a name="issue"></a>Probleem
 
@@ -70,11 +70,11 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 Deze fout wordt veroorzaakt door onjuiste of ontbrekende machtigingen voor de virtuele machine, de werk ruimte of de gebruiker.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
-Zorg ervoor dat u over de juiste machtigingen beschikt om de virtuele machine onboarding te kunnen uitvoeren. Bekijk de [machtigingen die nodig zijn voor](../automation-role-based-access-control.md#onboarding) het onboarden van machines en probeer het opnieuw. Als u het fout `The solution cannot be enabled on this VM because the permission to read the workspace is missing`bericht ontvangt, moet u ervoor zorgen dat u `Microsoft.OperationalInsights/workspaces/read` gemachtigd bent om te kunnen vinden of de virtuele machine onboarded is voor een werk ruimte.
+Zorg ervoor dat u over de juiste machtigingen beschikt om de virtuele machine onboarding te kunnen uitvoeren. Bekijk de [machtigingen die nodig zijn voor het onboarden van machines](../automation-role-based-access-control.md#onboarding) en probeer het opnieuw. Als het fout `The solution cannot be enabled on this VM because the permission to read the workspace is missing`wordt weer gegeven, controleert u of u de `Microsoft.OperationalInsights/workspaces/read` machtiging hebt om te controleren of de virtuele machine onboarded is voor een werk ruimte.
 
-### <a name="diagnostic-logging"></a>Omstandigheden Onboarding mislukt met het bericht-het configureren van het Automation-account voor diagnostische logboek registratie is mislukt
+### <a name="diagnostic-logging"></a>Scenario: onboarding mislukt met het bericht-het configureren van het Automation-account voor diagnostische logboek registratie is mislukt
 
 #### <a name="issue"></a>Probleem
 
@@ -88,11 +88,11 @@ Failed to configure automation account for diagnostic logging
 
 Deze fout kan optreden als de prijs categorie niet overeenkomt met het facturerings model van het abonnement. Zie [verbruik en geschatte kosten in azure monitor bewaken](https://aka.ms/PricingTierWarning)voor meer informatie.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Maak uw Log Analytics-werk ruimte hand matig en herhaal het voorbereidings proces om de werk ruimte te selecteren die u hebt gemaakt.
 
-### <a name="computer-group-query-format-error"></a>Omstandigheden ComputerGroupQueryFormatError
+### <a name="computer-group-query-format-error"></a>Scenario: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Probleem
 
@@ -102,11 +102,11 @@ Deze fout code geeft aan dat de query voor de opgeslagen Zoek computer groep die
 
 Mogelijk hebt u de query gewijzigd of is deze door het systeem gewijzigd.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 U kunt de query voor deze oplossing verwijderen en de oplossing onboarden, waardoor de query opnieuw wordt gemaakt. De query kan worden gevonden in uw werk ruimte, onder **opgeslagen Zoek opdrachten**. De naam van de query is **MicrosoftDefaultComputerGroup**en de categorie van de query is de naam van de oplossing die is gekoppeld aan deze query. Als er meerdere oplossingen zijn ingeschakeld, wordt in de **MicrosoftDefaultComputerGroup** meerdere keren weer gegeven onder **opgeslagen Zoek opdrachten**.
 
-### <a name="policy-violation"></a>Omstandigheden PolicyViolation
+### <a name="policy-violation"></a>Scenario: PolicyViolation
 
 #### <a name="issue"></a>Probleem
 
@@ -116,7 +116,7 @@ Deze fout code geeft aan dat de implementatie is mislukt vanwege een schending v
 
 Er is een beleid aanwezig dat de bewerking niet kan volt ooien.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Als u de oplossing wilt implementeren, moet u overwegen om het aangegeven beleid te wijzigen. Omdat er veel verschillende soorten beleids regels kunnen worden gedefinieerd, zijn de specifieke wijzigingen vereist, afhankelijk van het beleid dat is geschonden. Als er bijvoorbeeld een beleid is gedefinieerd voor een resource groep die geen toestemming heeft gekregen om de inhoud van bepaalde typen resources in die resource groep te wijzigen, kunt u bijvoorbeeld een van de volgende handelingen uitvoeren:
 
@@ -126,9 +126,9 @@ Als u de oplossing wilt implementeren, moet u overwegen om het aangegeven beleid
   * Het beleid opnieuw instellen op een specifieke resource (zoals een specifiek Automation-account).
   * Het wijzigen van de set resources waarvan het beleid is geconfigureerd om te weigeren.
 
-Controleer de meldingen in de rechter bovenhoek van de Azure Portal of navigeer naar de resource groep die uw Automation-account bevat en selecteer **implementaties** onder **instellingen** om de mislukte implementatie te bekijken. Voor meer informatie over Azure Policy gaat u naar: [Overzicht van Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+Controleer de meldingen in de rechter bovenhoek van de Azure Portal of navigeer naar de resource groep die uw Automation-account bevat en selecteer **implementaties** onder **instellingen** om de mislukte implementatie te bekijken. Voor meer informatie over Azure Policy gaat u naar: [overzicht van Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 
-### <a name="unlink"></a>Omstandigheden Fouten bij het ontkoppelen van een werk ruimte
+### <a name="unlink"></a>Scenario: fouten bij het ontkoppelen van een werk ruimte
 
 #### <a name="issue"></a>Probleem
 
@@ -142,7 +142,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 Deze fout treedt op wanneer er nog steeds oplossingen actief zijn in uw Log Analytics-werk ruimte, afhankelijk van uw Automation-account en de analyse-werk ruimte die is gekoppeld aan het logboek.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Als u dit wilt oplossen, moet u de volgende oplossingen uit de werk ruimte verwijderen als u deze gebruikt:
 
@@ -155,8 +155,8 @@ Wanneer u de oplossingen hebt verwijderd, kunt u uw werk ruimte ontkoppelen. Het
 * Updatebeheer
   * Update-implementaties (Schema's) verwijderen uit uw Automation-account
 * VM's starten/stoppen buiten kantooruren
-  * Verwijder alle vergren delingen van oplossings onderdelen in uw Automation-account onder **instellingen** > **vergrendelingen**.
-  * Voor aanvullende stappen voor het verwijderen van de Vm's starten/stoppen buiten kantoor uren raadpleegt u [de virtuele machine starten/stoppen buiten kantoor uren](../automation-solution-vm-management.md##remove-the-solution).
+  * Verwijder alle vergren delingen van oplossings onderdelen in uw Automation-account onder **instellingen** > **sloten**.
+  * Voor aanvullende stappen voor het verwijderen van de VM's buiten bedrijfsuren starten/stoppen oplossing raadpleegt u [de virtuele machine starten/stoppen buiten kantoor uren](../automation-solution-vm-management.md##remove-the-solution).
 
 ## <a name="mma-extension-failures"></a>MMA-extensie fouten
 
@@ -168,7 +168,7 @@ De installatie van de MMA-of Log Analytics-agent voor Linux kan om verschillende
 
 In de volgende sectie worden verschillende problemen beschreven die u kunt voordoen bij het voorbereiden van een storing in de implementatie van de MMA-uitbrei ding.
 
-### <a name="webclient-exception"></a>Omstandigheden Er is een uitzonde ring opgetreden tijdens een webclient-aanvraag
+### <a name="webclient-exception"></a>Scenario: er is een uitzonde ring opgetreden tijdens een webclient-aanvraag
 
 De MMA-extensie op de virtuele machine kan niet communiceren met externe resources en de implementatie mislukt.
 
@@ -192,11 +192,11 @@ Enkele mogelijke oorzaken van deze fout zijn:
 
 * Een firewall instelling heeft de toegang tot de vereiste poorten en adressen geblokkeerd.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Zorg ervoor dat u de juiste poorten en adressen voor communicatie hebt geopend. Zie [uw netwerk plannen](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met poorten en adressen.
 
-### <a name="transient-environment-issue"></a>Omstandigheden De installatie is mislukt vanwege problemen met de tijdelijke omgeving
+### <a name="transient-environment-issue"></a>Scenario: de installatie is mislukt vanwege problemen met de tijdelijke omgeving
 
 De installatie van de micro soft Monitoring Agent-extensie is mislukt tijdens de implementatie vanwege een andere installatie of actie die de installatie blokkeert
 
@@ -223,11 +223,11 @@ Enkele mogelijke oorzaken van deze fout zijn:
 * Er wordt een andere installatie uitgevoerd
 * Het systeem wordt geactiveerd om opnieuw op te starten tijdens het implementeren van de sjabloon
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Deze fout is een tijdelijke fout. Voer de implementatie opnieuw uit om de extensie te installeren.
 
-### <a name="installation-timeout"></a>Omstandigheden Time-out voor installatie
+### <a name="installation-timeout"></a>Scenario: time-out voor installatie
 
 De installatie van de MMA-extensie is niet voltooid vanwege een time-out.
 
@@ -243,7 +243,7 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 Deze fout treedt op omdat de virtuele machine tijdens de installatie intensief wordt belast.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Probeer de MMA-extensie te installeren wanneer de virtuele machine minder wordt geladen.
 

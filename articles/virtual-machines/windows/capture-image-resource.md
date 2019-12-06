@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 5557028304d0e2bd5940dd9b01dddf525806d0c6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 01619027ddc79530dc9541584efa9a3e518f5136
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033662"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842055"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Een beheerde installatie kopie maken van een gegeneraliseerde VM in azure
 
-Een beheerde installatie kopie bron kan worden gemaakt op basis van een gegeneraliseerde virtuele machine (VM) die is opgeslagen als een beheerde schijf of een onbeheerde schijf in een opslag account. De installatie kopie kan vervolgens worden gebruikt om meerdere Vm's te maken. Zie [Managed disks-prijzen](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie over hoe beheerde installatie kopieën worden gefactureerd. 
+Een beheerde installatiekopie kan worden gemaakt op basis van een gegeneraliseerde virtuele machine (VM) die als een beheerde schijf of een onbeheerde schijf is opgeslagen in een opslagaccount. De installatiekopie kan vervolgens worden gebruikt om meerdere VM's te maken. Zie [Managed disks-prijzen](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie over hoe beheerde installatie kopieën worden gefactureerd. 
 
  
 
@@ -70,9 +70,9 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Een beheerde installatie kopie maken in de portal 
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Ga naar de [Azure Portal](https://portal.azure.com) om de VM-installatie kopie te beheren. Zoek en selecteer **virtuele machines**.
 
-2. Selecteer **virtuele machines** in het menu aan de linkerkant en selecteer vervolgens de virtuele machine in de lijst.
+2. Selecteer uw virtuele machine in de lijst.
 
 3. Selecteer op de pagina **virtuele machine** voor de VM de optie **vastleggen**in het bovenste menu.
 
@@ -80,7 +80,7 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 
 4. Voor **naam**accepteert u de vooraf ingevulde naam of voert u een naam in die u wilt gebruiken voor de installatie kopie.
 
-5. Voor **resource groep**selecteert u **nieuwe maken** en voert u een naam in of selecteert **u bestaande gebruiken** en selecteert u een resource groep die u wilt gebruiken in de vervolg keuzelijst.
+5. Voor **resource groep**selecteert u **Nieuw maken** en voert u een naam in of selecteert u een resource groep die u wilt gebruiken in de vervolg keuzelijst.
 
 6. Als u de bron-VM wilt verwijderen nadat de installatie kopie is gemaakt, selecteert u **deze virtuele machine automatisch verwijderen na het maken van de installatie kopie**.
 
@@ -88,7 +88,7 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 
 8. Selecteer **maken** om de installatie kopie te maken.
 
-9. Nadat de installatie kopie is gemaakt, kunt u deze als een **afbeeldings** resource vinden in de lijst met resources in de resource groep.
+Nadat de installatie kopie is gemaakt, kunt u deze als een **afbeeldings** resource vinden in de lijst met resources in de resource groep.
 
 
 
@@ -218,7 +218,7 @@ U kunt een beheerde installatie kopie maken op basis van een moment opname van e
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Een installatie kopie maken van een virtuele machine die gebruikmaakt van een opslag account
 
-Als u een beheerde installatie kopie wilt maken op basis van een virtuele machine die geen beheerde schijven gebruikt, hebt u de URI van de besturingssysteem-VHD in het opslag account nodig, in de volgende indeling: https://*mystorageaccount*. blob.core.windows.net/*vhdcontainer*/*vhdfilename. VHD* . In dit voor beeld bevindt de VHD zich in *mystorageaccount*, in een container met de naam *VHDCONTAINER*en de VHD-bestands naam *vhdfilename. VHD*.
+Als u een beheerde installatie kopie wilt maken op basis van een virtuele machine die geen beheerde schijven gebruikt, hebt u de URI van de besturingssysteem-VHD in het opslag account nodig, in de volgende indeling: https://*mystorageaccount*. blob.core.windows.net/*vhdcontainer*/*vhdfilename. VHD*. In dit voor beeld bevindt de VHD zich in *mystorageaccount*, in een container met de naam *VHDCONTAINER*en de VHD-bestands naam *vhdfilename. VHD*.
 
 
 1.  Maak enkele variabelen.

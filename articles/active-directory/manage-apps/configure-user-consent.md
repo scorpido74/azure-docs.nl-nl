@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a187ea9d22efa40c482ea8930be0271d84a899a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8ba3cc27777d13448b0e1114413128b550b0b2f5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273992"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842285"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>De manier configureren waarop eind gebruikers toestemming geven voor een toepassing in Azure Active Directory
 Meer informatie over het configureren van de manier waarop gebruikers toestemming geven voor toepassings machtigingen. U kunt de gebruikers ervaring vereenvoudigen door toestemming van de beheerder te verlenen. In dit artikel worden de verschillende manieren beschreven waarop u de gebruikers toestemming kunt configureren. De methoden zijn van toepassing op alle eind gebruikers in uw Azure Active Directory-Tenant (Azure AD). 
@@ -27,6 +27,8 @@ Zie [Azure Active Directory instemming-Framework](../develop/consent-framework.m
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het verlenen van een beheerders toestemming moet u zich aanmelden als globale beheerder, een toepassings beheerder of een Cloud toepassings beheerder.
+
+Als u de beheerder toestemming wilt geven voor machtigingen voor Microsoft Graph en Azure AD Graph, hebt u globale beheerders rechten nodig. 
 
 Als u de toegang tot toepassingen wilt beperken, moet u de gebruikers toewijzing vereisen en vervolgens gebruikers of groepen toewijzen aan de toepassing.  Zie [methoden voor het toewijzen van gebruikers en groepen](methods-for-assigning-users-and-groups.md)voor meer informatie.
 
@@ -78,4 +80,4 @@ De URL ziet er als volgt uit: `https://login.microsoftonline.com/<tenant-id>/oau
 
 [Toestemming en machtiging voor AzureAD v 2.0 geconvergeerde apps](../develop/active-directory-v2-scopes.md)
 
-[AzureAD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

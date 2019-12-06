@@ -4,17 +4,17 @@ description: Runbooks en modules van micro soft en de community kunnen worden ge
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 86eebf33f870780871e4c873936e491772c73b63
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 94910d0f42ad6b208cac54dd2826cbd2d917504b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231617"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850717"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook-en module galerieën voor Azure Automation
 
@@ -38,12 +38,12 @@ U kunt alleen rechtstreeks importeren vanuit de PowerShell Gallery met behulp va
 3. **Bron selecteren: PowerShell Gallery**.
 4. Zoek het gewenste galerij-item en selecteer dit om de details ervan weer te geven. Aan de linkerkant kunt u aanvullende zoek parameters opgeven voor de uitgever en het type.
 
-   ![Bladeren in galerie](media/automation-runbook-gallery/browse-gallery.png)
+   ![Bladergalerie](media/automation-runbook-gallery/browse-gallery.png)
 
 5. Klik op **bron project weer geven** om het item in het [TechNet-Script centrum](https://gallery.technet.microsoft.com/)weer te geven.
 6. Als u een item wilt importeren, klikt u erop om de details ervan weer te geven en klikt u vervolgens op de knop **importeren** .
 
-   ![Knop importeren](media/automation-runbook-gallery/gallery-item-detail.png)
+   ![Knop Importeren](media/automation-runbook-gallery/gallery-item-detail.png)
 
 7. Wijzig desgewenst de naam van het runbook en klik vervolgens op **OK** om het runbook te importeren.
 8. Het runbook wordt weer gegeven op het tabblad **Runbooks** voor het Automation-account.
@@ -69,7 +69,7 @@ Power shell-modules bevatten cmdlets die u in uw runbooks kunt gebruiken en best
 
 4. Op de pagina **Blade galerie** kunt u zoeken op de volgende velden:
 
-   * Module naam
+   * Modulenaam
    * Tags
    * Auteur
    * Cmdlet/DSC-resource naam

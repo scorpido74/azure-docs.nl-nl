@@ -4,12 +4,12 @@ description: Meer informatie over het toevoegen van een uitvoer binding om C# uw
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: bd899c5cc7aafc5b3349cf4cec9098a849665a2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227428"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849204"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Functies verbinden met Azure Storage met behulp van Visual Studio
 
@@ -23,7 +23,7 @@ Voor de meeste bindingen is een opgeslagen connection string vereist die functie
 
 Voordat u dit artikel begint, moet u het volgende doen: 
 
- - Volt ooien [deel 1 van de Visual Studio Quick Start] [./functions-Create-First-function-VS-code.MD]. 
+ - Voltooi [deel 1 van de Snelstartgids voor Visual Studio](./functions-create-first-function-vs-code.md). 
 
 - Meld u aan bij uw Azure-abonnement vanuit Visual Studio.
 

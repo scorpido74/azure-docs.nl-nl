@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 6c2d7dc64bca00ce664dc470e7c4405d69b49779
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 132cf6ccfec5af9951f5dc6d6a3c6d3c81363d81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531525"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850003"
 ---
 # <a name="standard-quota-regional-vcpu-limit-increase"></a>Standaard quotum: toename van regionale vCPU 
 
-Resource Manager ondersteunt twee typen vCPU-quota's voor virtuele machines. Voor de **vm's voor betalen per gebruik** en **gereserveerde VM-instanties** wordt standaard quotum gebruikt. **Virtuele machines met lage prioriteit** gebruiken een quotum met lage prioriteit. 
+Resource Manager ondersteunt twee typen vCPU-quota's voor virtuele machines. Voor de **vm's voor betalen per gebruik** en **gereserveerde VM-instanties** wordt standaard quotum gebruikt. **Spot-vm's** gebruiken steun quota. 
 
 Het standaard vCPU-quotum voor betalen per gebruik en gereserveerde VM-exemplaren worden op twee lagen afgedwongen voor elk abonnement in elke regio.
  
@@ -26,7 +26,7 @@ Wanneer een nieuw abonnement wordt gemaakt, is de standaard regionale Vcpu's mog
 
 Meer informatie over Standard vCPU-quota's op de pagina [vCPU quota voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) en [Azure-abonnement en service limieten](https://aka.ms/quotalimits) .
 
-Meer informatie over het verhogen van de **limieten voor VM-vCPUs met een lage prioriteit** [.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
+Meer informatie over het verhogen van de **vCPU limieten** [](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)voor de VM.
 
 U kunt een verhoging van de **standaard-VM-limiet voor regionale vCPU** aanvragen via de Blade **Help en ondersteuning** of de Blade gebruiks gegevens en **quota** in de portal.
 
@@ -52,7 +52,7 @@ Volg de onderstaande instructies om een ondersteunings aanvraag te maken via de 
    
 5. Selecteer **andere aanvragen** in de vervolg keuzelijst **quotum type** .
 
-![Quotum type](./media/resource-manager-core-quotas-request/regional-quotatype.png)
+![Quotumtype](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
 6. Geef in het deel venster **Details** in het onderstaande voor beeld aanvullende informatie op om uw aanvraag te verwerken en door te gaan met het maken van de aanvraag. 
     1.  **Implementatie model** : Geef ' Resource Manager ' op
@@ -83,7 +83,7 @@ Volg de onderstaande instructies voor het maken van een ondersteunings aanvraag 
 
 5. Selecteer **andere aanvragen** in de vervolg keuzelijst **quotum type** .
 
-![Quotum type](./media/resource-manager-core-quotas-request/regional-quotatype.png)
+![Quotumtype](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
 6. Geef in het deel venster **Details** in het onderstaande voor beeld aanvullende informatie op om uw aanvraag te verwerken en door te gaan met het maken van de aanvraag. 
     1.  **Implementatie model** : Geef ' Resource Manager ' op

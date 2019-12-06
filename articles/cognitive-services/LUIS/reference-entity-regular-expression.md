@@ -10,35 +10,35 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: ae46df875d588186cd083134820f349158d7e307
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695217"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841214"
 ---
-# <a name="regular-expression-entity"></a>Een entiteit in de vorm van een reguliere expressie 
+# <a name="regular-expression-entity"></a>Een entiteit in de vorm van een reguliere expressie
 
 Een reguliere expressie-entiteit extraheert een entiteit op basis van een reguliere expressie patroon dat u opgeeft.
 
-Een reguliere expressie is het meest geschikt voor onbewerkte utterance-tekst. Deze aanvraag wordt genegeerd en worden genegeerd culturele variant.  Reguliere expressie die overeenkomt met is na spellingcontrole wijzigingen op het niveau van het teken, niet het niveau van de token toegepast. Als de reguliere expressie te complex is, zoals het gebruik van een groot aantal haken, kunt u de expressie niet toevoegen aan het model. Maakt gebruik van een deel, maar niet alle [.net regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) -bibliotheek. 
+Een reguliere expressie is het meest geschikt voor onbewerkte utterance-tekst. Deze aanvraag wordt genegeerd en worden genegeerd culturele variant.  Reguliere expressie die overeenkomt met is na spellingcontrole wijzigingen op het niveau van het teken, niet het niveau van de token toegepast. Als de reguliere expressie te complex is, zoals het gebruik van een groot aantal haken, kunt u de expressie niet toevoegen aan het model. Maakt gebruik van een deel, maar niet alle [.net regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) -bibliotheek.
 
 **De entiteit is goed geschikt wanneer:**
 
 * De gegevens zijn consistent opgemaakt met elke variatie die ook consistent is.
-* De reguliere expressie heeft niet meer dan 2 geneste niveaus nodig. 
+* De reguliere expressie heeft niet meer dan 2 geneste niveaus nodig.
 
 ![Een entiteit in de vorm van een reguliere expressie](./media/luis-concept-entities/regex-entity.png)
 
 ## <a name="usage-considerations"></a>Gebruiks overwegingen
 
-Reguliere expressies kunnen overeenkomen met meer dan verwacht. Een voor beeld hiervan is een numeriek woord dat overeenkomt met `one` en `two`. Een voor beeld is de volgende regex die overeenkomt met het aantal `one` en andere getallen:
+Reguliere expressies kunnen overeenkomen met meer dan verwacht. Een voor beeld hiervan is een numeriek woord dat overeenkomt met `one` en `two`. Een voor beeld is de volgende regex die overeenkomt met het getal `one` samen met andere getallen:
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
+```
 
-Deze regex-expressie komt ook overeen met een wille keurig woord dat met deze getallen eindigt, zoals `phone`. Als u problemen wilt oplossen, moet u ervoor zorgen dat de regex-overeenkomsten rekening houden met woord grenzen. De regex voor het gebruik van woord grenzen voor dit voor beeld wordt gebruikt in de volgende regex:
+Deze regex-expressie komt ook overeen met woorden die eindigen op deze getallen, zoals `phone`. Als u problemen wilt oplossen, moet u ervoor zorgen dat de regex-overeenkomsten rekening houden met woord grenzen. De regex voor het gebruik van woord grenzen voor dit voor beeld wordt gebruikt in de volgende regex:
 
 ```javascript
 \b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
@@ -46,7 +46,7 @@ Deze regex-expressie komt ook overeen met een wille keurig woord dat met deze ge
 
 ### <a name="example-json"></a>Voorbeeld van JSON
 
-Bij het gebruik van `kb[0-9]{6}`, als de reguliere expressie-entiteits definitie, is de volgende JSON-reactie een voor beeld van een utterance met de geretourneerde reguliere expressie-entiteiten voor de query:
+Bij het gebruik van `kb[0-9]{6}`, als de definitie van de reguliere expressie-entiteit, is de volgende JSON-reactie een voor beeld van een utterance met de geretourneerde reguliere expressie-entiteiten voor de query:
 
 `When was kb123456 published?`:
 
@@ -102,8 +102,8 @@ Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
 }
 ```
 
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze [zelf studie](luis-quickstart-intents-regex-entity.md)maakt u een app om consistent opgemaakte gegevens te extra heren uit een utterance met behulp van de **reguliere expressie** -entiteit.
+In deze [zelf studie](tutorial-regex-entity.md)maakt u een app om consistent opgemaakte gegevens te extra heren uit een utterance met behulp van de **reguliere expressie** -entiteit.

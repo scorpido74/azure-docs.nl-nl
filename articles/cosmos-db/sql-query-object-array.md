@@ -1,23 +1,23 @@
 ---
 title: Werken met matrices en objecten in Azure Cosmos DB
-description: Meer informatie over de SQL-syntaxis voor het maken van matrices en objecten voor Azure Cosmos DB.
+description: Meer informatie over de SQL-syntaxis voor het maken van matrices en objecten in Azure Cosmos DB. Dit artikel bevat ook enkele voor beelden voor het uitvoeren van bewerkingen op Matrix objecten
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 17a0e4ddf5acd267a4cfbb68c218fe9409a91d57
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003935"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870918"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Werken met matrices en objecten in Azure Cosmos DB
 
 Een belang rijke functie van de Azure Cosmos DB SQL API is matrix en het maken van objecten.
 
-## <a name="arrays"></a>Matrices
+## <a name="arrays"></a>Matrixen
 
 U kunt matrices maken, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -26,7 +26,7 @@ U kunt matrices maken, zoals wordt weer gegeven in het volgende voor beeld:
     FROM Families f
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [
@@ -54,14 +54,14 @@ FROM f
 
 ## <a id="Iteration"></a>Herhaling
 
-De SQL-API biedt ondersteuning voor het herhalen van JSON-matrices, waarbij een nieuwe constructie wordt toegevoegd via het [sleutel woord in](sql-query-keywords.md#in) in de bron van. In het volgende voor beeld:
+De SQL-API biedt ondersteuning voor het herhalen van JSON-matrices, waarbij een nieuwe constructie wordt toegevoegd via het [sleutel woord in](sql-query-keywords.md#in) in de bron van. In het volgende voorbeeld:
 
 ```sql
     SELECT *
     FROM Families.children
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [
@@ -90,14 +90,14 @@ De resultaten zijn:
     ]
 ```
 
-`children` Met de volgende query wordt iteratie uitgevoerd in `Families` de container. De uitvoer matrix wijkt af van de voor gaande query. In dit voor beeld `children`worden de resultaten gesplitst en afgevlakt in één matrix:  
+Met de volgende query wordt iteratie uitgevoerd over `children` in de `Families`-container. De uitvoer matrix wijkt af van de voor gaande query. In dit voor beeld worden `children`gesplitst en worden de resultaten samengevoegd tot één matrix:  
 
 ```sql
     SELECT *
     FROM c IN Families.children
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [
@@ -130,7 +130,7 @@ U kunt verder filteren op elke afzonderlijke vermelding van de matrix, zoals wor
     WHERE c.grade = 8
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [{
@@ -145,7 +145,7 @@ U kunt ook aggregatie over het resultaat van een matrix herhaling. Met de volgen
     FROM child IN Families.children
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [

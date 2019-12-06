@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 11/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f1b2bdcecac0aade21c6c770b2495a1e15ba9bc5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dc5869acffe9a42d154bca61b9de7821121c85ec
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174005"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851623"
 ---
 # <a name="azure-storage-account-overview"></a>Overzicht van Azure Storage-account
 
@@ -32,8 +32,8 @@ V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van A
 - Blobs (alle typen: blok keren, toevoegen, pagina)
 - Data Lake Gen2
 - Bestanden
-- Disks
-- Wachtrijen
+- Schijven
+- Queues
 - Tabellen
 
 > [!NOTE]
@@ -49,25 +49,25 @@ V1-opslag accounts voor algemeen gebruik bieden toegang tot alle Azure Storage-s
 
 - Blobs (alle typen)
 - Bestanden
-- Disks
-- Wachtrijen
+- Schijven
+- Queues
 - Tabellen
 
-In de meeste gevallen worden v2-accounts voor algemeen gebruik aanbevolen voor de volgende scenario's:
+In de meeste gevallen moet u v2-accounts voor algemeen gebruik gebruiken. U kunt voor deze scenario's algemene v1-accounts gebruiken:
 
 * Voor uw toepassingen is het klassieke Azure-implementatie model vereist. V2-accounts voor algemeen gebruik en Blob Storage-accounts ondersteunen alleen het implementatie model van Azure Resource Manager.
 
 * Uw toepassingen zijn transactie intensief of gebruiken aanzienlijke band breedte met geo-replicatie, maar vereisen geen grote capaciteit. In dit geval is algemeen-doel v1 de meest economische keuze.
 
-* U gebruikt een versie van de [REST API voor Storage Services](https://msdn.microsoft.com/library/azure/dd894041.aspx) die ouder is dan 2014-02-14 of een clientbibliotheek met een lagere versie dan 4.x en u uw toepassing niet kunt upgraden.
+* U gebruikt een versie van de [Storage services-rest API](https://msdn.microsoft.com/library/azure/dd894041.aspx) die ouder is dan 2014-02-14 of een client bibliotheek met een lagere versie dan 4. x. U kunt de toepassing niet bijwerken.
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-accounts
 
-Een BlockBlobStorage-account is een gespecialiseerd opslag account dat wordt gebruikt voor het opslaan van ongestructureerde object gegevens als blok-blobs en het maken van Premium-blok-blobs. Dit type opslag account ondersteunt blok-blobs en toevoeg-blobs, maar niet pagina-blobs, tabellen of wacht rijen.
+Een BlockBlobStorage-account is een gespecialiseerd opslag account dat u gebruikt voor het opslaan van ongestructureerde object gegevens als blok-blobs. U kunt ook een BlockBlobStorage-account gebruiken om Premium-blok-blobs te maken. Dit type opslag account ondersteunt blok-blobs en toevoeg-blobs, maar niet pagina-blobs, tabellen of wacht rijen.
 
 Vergeleken met v2-en BlobStorage-accounts voor algemeen gebruik bieden BlockBlobStorage-accounts een lage en consistente latentie en hogere transactie tarieven.
 
-BlockBlobStorage-accounts bieden momenteel geen ondersteuning voor het maken van lagen op dynamische, koele of archief toegangs lagen.
+BlockBlobStorage-accounts ondersteunen momenteel geen lagen op dynamische, koele of archief toegangs lagen.
 
 ### <a name="filestorage-accounts"></a>FileStorage-accounts
 
@@ -99,9 +99,9 @@ Azure Storage biedt verschillende opties voor het openen van blok-BLOB-gegevens 
 
 De beschik bare toegangs lagen zijn:
 
-* De **warme** Access-laag, die is geoptimaliseerd voor veelvuldige toegang tot objecten in het opslag account. Het verkrijgen van toegang tot gegevens in de warme laag is de meest rendabel, terwijl de opslag kosten hoger zijn. Nieuwe opslag accounts worden standaard in de warme laag gemaakt.
-* De **cool** -laag, die is geoptimaliseerd voor het opslaan van grote hoeveel heden gegevens die niet regel matig worden geopend en die gedurende ten minste 30 dagen worden opgeslagen. Het opslaan van gegevens in de cool-laag is rendabeler, maar de toegang tot die gegevens kan duurder zijn dan de toegang tot gegevens in de warme laag.
-* De **Archief** laag, die alleen beschikbaar is voor afzonderlijke blok-blobs. De archief laag is geoptimaliseerd voor gegevens die een aantal uur van het ophalen van de latentie kunnen verdragen en die ten minste 180 dagen in de archief laag blijven. De opslaglaag is de meest rendabele optie voor het opslaan van gegevens, maar de toegang tot die gegevens is duurder dan het openen van gegevens in de warme of coole lagen.
+* De **warme** Access-laag. Deze laag is geoptimaliseerd voor veelvuldige toegang tot objecten in het opslag account. Het verkrijgen van toegang tot gegevens in de warme laag is de meest rendabel, terwijl de opslag kosten hoger zijn. Nieuwe opslag accounts worden standaard in de warme laag gemaakt.
+* De laag van de **coolbar** . Deze laag is geoptimaliseerd voor het opslaan van grote hoeveel heden gegevens die niet regel matig worden geopend en die gedurende ten minste 30 dagen worden opgeslagen. Het opslaan van gegevens in de cool-laag is rendabeler, maar de toegang tot die gegevens kan duurder zijn dan de toegang tot gegevens in de warme laag.
+* De laag van het **Archief** . Deze laag is alleen beschikbaar voor afzonderlijke blok-blobs. De archief laag is geoptimaliseerd voor gegevens die een aantal uur van het ophalen van de latentie kunnen verdragen en die ten minste 180 dagen in de archief laag blijven. De archief laag is de meest rendabele optie voor het opslaan van gegevens. Het is echter wel duurder om toegang te krijgen tot gegevens in de warme of coole lagen.
 
 Als er een wijziging is in het gebruiks patroon van uw gegevens, kunt u op elk gewenst moment scha kelen tussen deze toegangs lagen. Zie [Azure Blob Storage: warme, cool en archief toegangs lagen](../blobs/storage-blob-storage-tiers.md)voor meer informatie over toegangs lagen.
 
@@ -132,7 +132,7 @@ Als uw opslag account voor algemeen gebruik bijvoorbeeld *mystorageaccount*heet,
 > [!NOTE]
 > Blok-Blob-en Blob Storage-accounts bieden alleen het eind punt van de BLOB-service.
 
-De URL voor het openen van een object in een opslag account wordt samengesteld door de locatie van het object in het opslag account toe te voegen aan het eind punt. Een blobadres kan bijvoorbeeld de volgende indeling hebben: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
+Maak de URL voor toegang tot een object in een opslag account door de locatie van het object in het opslag account toe te voegen aan het eind punt. Een blobadres kan bijvoorbeeld de volgende indeling hebben: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
 
 U kunt uw opslag account ook configureren voor het gebruik van een aangepast domein voor blobs. Zie [een aangepaste domein naam configureren voor uw Azure Storage-account](../blobs/storage-custom-domain-name.md)voor meer informatie.  
 
@@ -140,13 +140,13 @@ U kunt uw opslag account ook configureren voor het gebruik van een aangepast dom
 
 De gegevens in uw account zijn standaard alleen beschikbaar voor u, de eigenaar van het account. U bepaalt wie toegang heeft tot uw gegevens en welke machtigingen ze hebben.
 
-Elke aanvraag die aan uw opslag account wordt gedaan, moet worden geautoriseerd. Op het niveau van de service moet de aanvraag een geldige *autorisatie* -header bevatten, inclusief alle informatie die nodig is voor de service om de aanvraag te valideren voordat deze wordt uitgevoerd.
+Elke aanvraag die aan uw opslag account wordt gedaan, moet worden geautoriseerd. Op het niveau van de service moet de aanvraag een geldige *autorisatie* -header bevatten. Deze header bevat met name alle informatie die nodig is voor de service om de aanvraag te valideren voordat deze wordt uitgevoerd.
 
 U kunt met behulp van de volgende benaderingen toegang tot de gegevens in uw opslag account verlenen:
 
 - **Azure Active Directory:** Gebruik de referenties van Azure Active Directory (Azure AD) om een gebruiker, groep of een andere identiteit te verifiëren voor toegang tot Blob-en wachtrij gegevens. Als de verificatie van een identiteit is geslaagd, retourneert Azure AD een token dat wordt gebruikt voor het autoriseren van de aanvraag bij Azure Blob-opslag of-wachtrij opslag. Zie [toegang tot Azure Storage verifiëren met behulp van Azure Active Directory](storage-auth-aad.md)voor meer informatie.
 - **Gedeelde sleutel autorisatie:** Gebruik de toegangs sleutel voor uw opslag account om een connection string te maken dat uw toepassing tijdens runtime gebruikt om toegang te krijgen tot Azure Storage. De waarden in de connection string worden gebruikt om de *autorisatie* -header te maken die wordt door gegeven aan Azure Storage. Zie [Azure Storage-verbindings reeksen configureren](storage-configure-connection-string.md)voor meer informatie.
-- **Shared Access Signature:** Gebruik een Shared Access Signature om de toegang tot resources in uw opslag account te delegeren als u geen Azure AD-autorisatie gebruikt. Een Shared Access Signature is een token dat alle informatie bevat die nodig is voor het autoriseren van een aanvraag voor het Azure Storage van de URL. U kunt de opslag Resource, de toegekende machtigingen en het interval opgeven waarvoor de machtigingen geldig zijn als onderdeel van de Shared Access-hand tekening. Zie [using Shared Access signatures (SAS) (Engelstalig)](storage-sas-overview.md)voor meer informatie.
+- **Shared Access Signature:** Gebruik een gedeelde hand tekening voor toegang om de toegang tot resources in uw opslag account te delegeren als u geen Azure AD-autorisatie gebruikt. Een Shared Access Signature is een token dat alle informatie bevat die nodig is voor het autoriseren van een aanvraag voor het Azure Storage van de URL. U kunt de opslag Resource, de toegekende machtigingen en het interval opgeven waarvoor de machtigingen geldig zijn als onderdeel van de Shared Access-hand tekening. Zie [using Shared Access signatures (SAS) (Engelstalig)](storage-sas-overview.md)voor meer informatie.
 
 > [!NOTE]
 > Het verifiëren van gebruikers of toepassingen die gebruikmaken van Azure AD-referenties biedt een superieure beveiliging en gebruiks gemak ten opzichte van andere autorisatie methoden. U kunt de verificatie van de gedeelde sleutel blijven gebruiken met uw toepassingen, maar met Azure AD wordt de nood zaak om uw account toegangs sleutel op te slaan met uw code. U kunt ook door gaan met het gebruik van Shared Access signatures (SAS) om nauw keurige toegang tot resources in uw opslag account te verlenen, maar Azure AD biedt soort gelijke mogelijkheden zonder de behoefte aan het beheer van SAS-tokens of een probleem bij het intrekken van een aangetaste SAS. 
@@ -155,9 +155,9 @@ U kunt met behulp van de volgende benaderingen toegang tot de gegevens in uw ops
 
 ## <a name="copying-data-into-a-storage-account"></a>Gegevens kopiëren naar een opslag account
 
-Micro soft biedt hulpprogram ma's en bibliotheken voor het importeren van uw gegevens van on-premises opslag apparaten of Cloud-opslag providers van derden. Welke oplossing u gebruikt, is afhankelijk van het aantal gegevens dat u overbrengt. 
+Micro soft biedt hulpprogram ma's en bibliotheken voor het importeren van uw gegevens van on-premises opslag apparaten of Cloud-opslag providers van derden. Welke oplossing u gebruikt, is afhankelijk van het aantal gegevens dat u wilt overbrengen. 
 
-Wanneer u een upgrade uitvoert naar een v2-account voor algemeen gebruik van een v1-of Blob-opslag account voor algemeen gebruik, worden uw gegevens automatisch gemigreerd. Micro soft adviseert dit traject voor het upgraden van uw account. Als u echter besluit gegevens te verplaatsen van een algemeen v1-account naar een Blob Storage-account, moet u uw gegevens hand matig migreren met behulp van de hulpprogram ma's en bibliotheken die hieronder worden beschreven. 
+Wanneer u een upgrade uitvoert naar een v2-account voor algemeen gebruik van een v1-of Blob-opslag account voor algemeen gebruik, worden uw gegevens automatisch gemigreerd. Micro soft adviseert dit traject voor het upgraden van uw account. Als u echter besluit gegevens te verplaatsen van een algemeen v1-account naar een Blob Storage-account, migreert u uw gegevens hand matig met behulp van de hulpprogram ma's en bibliotheken die hieronder worden beschreven. 
 
 ### <a name="azcopy"></a>AzCopy
 
@@ -165,22 +165,16 @@ AzCopy is een Windows-opdrachtregelprogramma dat is  ontworpen voor het high-per
 
 ### <a name="data-movement-library"></a>Bibliotheek voor gegevensverplaatsing
 
-De Azure Storage-bibliotheek voor gegevensverplaatsing voor .NET is gebaseerd op het basisframework voor gegevensverplaatsing voor AzCopy. De bibliotheek is ontworpen voor high-performance, betrouwbare en eenvoudige gegevensoverdracht vergelijkbaar met AzCopy. Hiermee kunt u in uw toepassing op systeemeigen wijze profiteren van de functies die AzCopy biedt, zonder dat u externe exemplaren van AzCopy hoeft uit te voeren of te controleren. Zie [Bibliotheek voor gegevensverplaatsing van Azure Storage voor .Net](https://github.com/Azure/azure-storage-net-data-movement) voor meer informatie
+De Azure Storage-bibliotheek voor gegevensverplaatsing voor .NET is gebaseerd op het basisframework voor gegevensverplaatsing voor AzCopy. De bibliotheek is ontworpen voor high-performance, betrouwbare en eenvoudige gegevensoverdracht vergelijkbaar met AzCopy. U kunt de gegevens verplaatsings bibliotheek gebruiken om de AzCopy-functies systeem eigen te benutten. Zie [Azure Storage-bibliotheek voor gegevens verplaatsing voor .net](https://github.com/Azure/azure-storage-net-data-movement) voor meer informatie
 
 ### <a name="rest-api-or-client-library"></a>REST-API of clientbibliotheek
 
-U kunt een aangepaste toepassing maken om gegevens naar een Blob Storage-account te migreren met behulp van een van de Azure-clientbibliotheken of de REST API voor Azure Storage-services. Azure Storage biedt uitgebreide clientbibliotheken voor meerdere talen en platforms, zoals  .NET, Java, C++, Node.JS, PHP, Ruby en Python. De clientbibliotheken bieden geavanceerde mogelijkheden, zoals pogingslogica, logboekregistratie en parallelle uploads. U kunt ook rechtstreeks met de REST API ontwikkelen. Deze kan worden aangeroepen in elke taal waarin HTTP-/HTTPS-verzoeken kunnen worden gemaakt.
+U kunt een aangepaste toepassing maken om uw gegevens te migreren van een v1-opslag account voor algemeen gebruik naar een Blob Storage-account. Gebruik een van de Azure-client bibliotheken of de Azure Storage-services REST API. Azure Storage biedt uitgebreide clientbibliotheken voor meerdere talen en platforms, zoals  .NET, Java, C++, Node.JS, PHP, Ruby en Python. De clientbibliotheken bieden geavanceerde mogelijkheden, zoals pogingslogica, logboekregistratie en parallelle uploads. U kunt ook rechtstreeks met de REST API ontwikkelen. Deze kan worden aangeroepen in elke taal waarin HTTP-/HTTPS-verzoeken kunnen worden gemaakt.
 
 Zie [Azure Storage Services rest API Reference](https://docs.microsoft.com/rest/api/storageservices/)(Engelstalig) voor meer informatie over de Azure Storage rest API. 
 
 > [!IMPORTANT]
 > Blobs die aan de clientzijde zijn versleuteld, bevatten versleutelingsgerelateerde metagegevens die samen met de blob zijn opgeslagen. Als u een blob met versleuteling aan de clientzijde kopieert, zorg er dan voor dat bij het kopiëren de blobmetagegevens behouden blijven, en dan met name de versleutelingsgerelateerde metagegevens. Als u een blob kopieert zonder versleutelingsgerelateerde metagegevens, kan de inhoud van de blob niet meer worden opgehaald. Zie [Azure Storage-versleuteling aan de clientzijde](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor meer informatie over versleutelingsgerelateerde metagegevens.
-
-### <a name="azure-importexport-service"></a>Azure import/export-service
-
-Als u een grote hoeveelheid gegevens wilt importeren naar uw opslag account, moet u de Azure import/export-service overwegen. De import/export-service wordt gebruikt voor het veilig importeren van grote hoeveel heden gegevens naar Azure Blob-opslag en Azure Files door het verzenden van schijf stations naar een Azure-Data Center. 
-
-De import/export-service kan ook worden gebruikt om gegevens over te dragen van Azure Blob-opslag naar schijf stations en te verzenden naar uw on-premises sites. Gegevens van een of meer schijf stations kunnen worden geïmporteerd naar Azure Blob-opslag of Azure Files. Zie [Wat is Azure import/export service?](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)voor meer informatie.
 
 ## <a name="storage-account-billing"></a>Facturering voor opslagaccounts
 
@@ -188,6 +182,6 @@ De import/export-service kan ook worden gebruikt om gegevens over te dragen van 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer informatie over het maken van een Azure-opslag account voor algemeen gebruik.
-* Zie [een blok-Blob-opslag account maken](../blobs/storage-blob-create-account-block-blob.md)voor meer informatie over het maken van een BlockBlobStorage-account.
-* Zie [Azure Storage-accounts beheren](storage-account-manage.md)voor meer informatie over het beheren of verwijderen van een bestaand opslag account.
+* [Een opslagaccount maken](storage-quickstart-create-account.md)
+* [Een blok-blob-opslagaccount maken](../blobs/storage-blob-create-account-block-blob.md)
+* [Azure Storage-accounts beheren](storage-account-manage.md)

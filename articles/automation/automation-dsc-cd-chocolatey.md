@@ -4,17 +4,17 @@ description: DevOps doorlopende implementatie met behulp van Azure Automation St
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f4512b79873d7f770b32a452a02c53bc5575bdac
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: ddbf652c35c4f1504e3253838a983fd0f6039401
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243603"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850360"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Voor beeld van gebruik: doorlopende implementatie naar Virtual Machines met behulp van de configuratie van de automatiserings status en chocolade
 

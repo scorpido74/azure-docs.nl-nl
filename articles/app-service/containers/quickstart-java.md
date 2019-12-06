@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: eb5c6ef9b342b149851f907b7bc81370327b12ca
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 64d70390b3563e17bbe0c70ed426dcda81b50198
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689005"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872737"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Quick Start: een Java-app maken op Azure App Service in Linux
 
@@ -34,7 +34,7 @@ ms.locfileid: "74689005"
 Voer de volgende Maven opdracht uit in de Cloud Shell-prompt om een ​​nieuwe app met de naam `helloworld` te maken:
 
 ```bash
-mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
 ```
 
 ## <a name="configure-the-maven-plugin"></a>De Maven-invoegtoepassing configureren
@@ -94,12 +94,12 @@ Ga opnieuw naar `pom.xml` om te zien of de configuratie van de invoeg toepassing
  Eigenschap | Verplicht | Beschrijving | Version
 ---|---|---|---
 `<schemaVersion>` | onwaar | Geef de versie van het configuratie schema op. Ondersteunde waarden zijn: `v1`, `v2`. | 1.5.2
-`<resourceGroup>` | waar | Azure-resource groep voor uw web-app. | 0.1.0 +
-`<appName>` | waar | De naam van uw web-app. | 0.1.0 +
-[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | waar | Hiermee geeft u de regio waar uw web-app wordt gehost. de standaard waarde is **Europa West**. Alle geldige regio's in de sectie [ondersteunde regio's](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) . | 0.1.0 +
-[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | onwaar | De prijs categorie voor uw web-app. De standaard waarde is **P1V2**.| 0.1.0 +
-[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | waar | De configuratie van de runtime-omgeving, u kunt [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)de details zien. | 0.1.0 +
-[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | waar | De implementatie configuratie, kunt u [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)de details zien. | 0.1.0 +
+`<resourceGroup>` | waar | Azure-resource groep voor uw web-app. | 0.1.0+
+`<appName>` | waar | De naam van uw web-app. | 0.1.0+
+[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | waar | Hiermee geeft u de regio waar uw web-app wordt gehost. de standaard waarde is **Europa West**. Alle geldige regio's in de sectie [ondersteunde regio's](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) . | 0.1.0+
+[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | onwaar | De prijs categorie voor uw web-app. De standaard waarde is **P1V2**.| 0.1.0+
+[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | waar | De configuratie van de runtime-omgeving, u kunt [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)de details zien. | 0.1.0+
+[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | waar | De implementatie configuratie, kunt u [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)de details zien. | 0.1.0+
 
 > [!div class="nextstepaction"]
 > [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)

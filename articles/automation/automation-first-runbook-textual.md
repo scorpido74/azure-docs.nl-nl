@@ -5,17 +5,17 @@ keywords: powershell-werkstroom, voorbeelden powershell-werkstroom, werkstroom p
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4973a5215d93a1ce9d0a80f83264dd8c1fbe0888
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: dea13d084d80ce787cb8d6cf6146325d8c556b37
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887226"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850836"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Mijn eerste PowerShell Workflow-runbook
 

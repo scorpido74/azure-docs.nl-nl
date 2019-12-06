@@ -2,28 +2,23 @@
 title: Woorden lijst voor ontwikkel aars van micro soft Identity platform | Azure
 description: Een lijst met voor waarden voor veelgebruikte concepten en functies voor ontwikkel aars van micro soft Identity platform.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 221a491abad6c11ee12c75b1d69f1263f4abddc4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8ffc9c0ed5787803fff01d929567bda23b698135
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322603"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843203"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Woorden lijst voor ontwikkel aars van micro soft Identity platform
 
@@ -79,7 +74,7 @@ Het verlenen van een geverifieerde beveiligingsprincipal machtiging om iets te d
 
 Een korte levens ' token ' dat aan een [client toepassing](#client-application) door het [autorisatie-eind punt](#authorization-endpoint)wordt door gegeven als onderdeel van de stroom ' autorisatie code ', een van de vier OAuth2- [autorisatie subsidies](#authorization-grant). De code wordt geretourneerd naar de client toepassing als reactie op de verificatie van een [resource-eigenaar](#resource-owner), met de mede deling dat de resource-eigenaar toestemming heeft gegeven om toegang te krijgen tot de aangevraagde resources. Als onderdeel van de stroom wordt de code later ingewisseld voor een [toegangs token](#access-token).
 
-## <a name="authorization-endpoint"></a>Autorisatie-eind punt
+## <a name="authorization-endpoint"></a>autorisatie-eind punt
 
 Een van de eind punten die worden geïmplementeerd door de [autorisatie server](#authorization-server), die wordt gebruikt om te communiceren met de [resource-eigenaar](#resource-owner) om een [autorisatie](#authorization-grant) machtiging te bieden tijdens een OAuth2-autorisatie stroom. Afhankelijk van de gebruikte overdrachts stroom, kan de daad werkelijke verleende toekenning variëren, met inbegrip van een [autorisatie code](#authorization-code) of [beveiligings token](#security-token).
 
@@ -202,7 +197,7 @@ Een exemplaar van een Azure AD-Directory wordt een Azure AD-Tenant genoemd. Het 
 
 Azure AD-tenants worden tijdens de registratie gemaakt/gekoppeld aan Azure-en Office 365-abonnementen, waardoor Identity & Access Management-functies voor het abonnement worden geboden. Beheerders van Azure-abonnementen kunnen ook extra Azure AD-tenants maken via de Azure Portal. Zie [een Azure Active Directory-Tenant verkrijgen][AAD-How-To-Tenant] voor meer informatie over de verschillende manieren waarop u toegang kunt krijgen tot een Tenant. Zie [hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory][AAD-How-Subscriptions-Assoc] voor meer informatie over de relatie tussen abonnementen en een Azure AD-Tenant.
 
-## <a name="token-endpoint"></a>Token eindpunt
+## <a name="token-endpoint"></a>token eindpunt
 
 Een van de eind punten die door de [autorisatie server](#authorization-server) worden geïmplementeerd ter ondersteuning van OAuth2- [autorisatie subsidies](#authorization-grant). Afhankelijk van de toekenning kan deze worden gebruikt voor het verkrijgen van een [toegangs token](#access-token) (en een gerelateerd ' vernieuwings token) aan een [client](#client-application)of [id-token](#id-token) bij gebruik met het [OpenID Connect Connect][OpenIDConnect] -protocol.
 

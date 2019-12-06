@@ -2,26 +2,23 @@
 title: Waarom bijwerken naar micro soft Identity platform (v 2.0) | Azure
 description: Ken de verschillen tussen het micro soft Identity platform (v 2.0)-eind punt en het Azure Active Directory (Azure AD) v 1.0-eind punt, en ontdek de voor delen van het bijwerken naar v 2.0.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5a000d08afb3afba06d82aae4414e87b61e502f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 882b4a8bfe951212d2d1fe081d16b25641dfa4d4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533045"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843883"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Waarom bijwerken naar micro soft Identity platform (v 2.0)?
 
@@ -151,7 +148,7 @@ De aanvraag voor het toevoegen van de DNS-naam mislukt als aan een van de volgen
 * De volledige DNS-naam van de nieuwe omleidings-URL komt niet overeen met de DNS-naam van de bestaande omleidings-URL.
 * De volledige DNS-naam van de nieuwe omleidings-URL is geen subdomein van de bestaande omleidings-URL.
 
-#### <a name="example-1"></a>Voor beeld 1
+#### <a name="example-1"></a>Voorbeeld 1
 
 Als de app een omleidings-URL van `https://login.contoso.com`heeft, kunt u een omleidings-URL toevoegen waarbij de DNS-naam precies overeenkomt, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -161,7 +158,7 @@ U kunt ook verwijzen naar een DNS-subdomein van login.contoso.com, zoals wordt w
 
 `https://new.login.contoso.com`
 
-#### <a name="example-2"></a>Voor beeld 2
+#### <a name="example-2"></a>Voorbeeld 2
 
 Als u een app wilt hebben die `login-east.contoso.com` en `login-west.contoso.com` als omleidings-Url's, moet u deze omleidings-Url's in de volgende volg orde toevoegen:
 

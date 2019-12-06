@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 163d1f7f457dcbca7fbb9e331ec889bcc0894dfc
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 812f9bc71cde26b6f32a1259984bb0859ba49d54
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814457"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868759"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilot Cloud inrichten voor een bestaand gesynchroniseerd AD-forest 
 
@@ -28,7 +28,11 @@ In deze zelf studie wordt u begeleid bij het inrichten van Cloud inrichting voor
 Voordat u deze zelf studie probeert, moet u rekening houden met de volgende items:
 1. Zorg ervoor dat u bekend bent met de basis principes van het inrichten van Clouds. 
 2. Zorg ervoor dat u Azure AD Connect synchronisatie versie 1.4.32.0 of hoger uitvoert en de synchronisatie regels hebt geconfigureerd zoals beschreven. Bij het testen van de test wordt een organisatie-eenheid of-groep uit Azure AD Connect synchronisatie bereik verwijderd. Het verplaatsen van objecten buiten het bereik leidt tot het verwijderen van die objecten in azure AD. In het geval van gebruikers objecten worden de objecten in azure AD zacht verwijderd en kunnen ze worden hersteld. In het geval van groeps objecten worden de objecten in azure AD permanent verwijderd en kunnen ze niet worden hersteld. Er is een nieuw koppelings type geïntroduceerd in Azure AD Connect Sync, waardoor het verwijderen in het geval van een pilot scenario wordt voor komen. 
-3. Zorg ervoor dat de objecten in het test bereik MS-DS-consistencyGUID hebben gevuld, zodat de inrichting van de Cloud moeilijk overeenkomt met de objecten. Houd er rekening mee dat Azure AD Connect Sync niet standaard MS-DS-consistencyGUID vult voor groeps objecten.
+3. Zorg ervoor dat de objecten in het test bereik MS-DS-consistencyGUID hebben gevuld, zodat de inrichting van de Cloud moeilijk overeenkomt met de objecten. 
+
+   > [!NOTE]
+   > Bij Azure AD Connect Sync worden standaard geen *MS-DS-consistencyGUID* gevuld voor groeps objecten. Volg de stappen in [dit blog bericht](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/) om *MS-DS-consistencyGUID* voor groeps objecten in te vullen.
+
 4. Dit is een geavanceerd scenario. Zorg ervoor dat u de stappen in deze zelf studie nauw keurig volgt.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -36,10 +40,11 @@ Dit zijn de vereisten voor het voltooien van deze zelfstudie
 - Een test omgeving met Azure AD Connect Sync-versie 1.4.32.0 of hoger
 - Een OE of groep die zich binnen het bereik van de synchronisatie bevindt en kan worden gebruikt voor de pilot. U kunt het beste beginnen met een klein aantal objecten.
 - Een server met Windows Server 2012 R2 of hoger die als host fungeert voor de inrichtings agent.  Dit kan niet dezelfde server zijn als de Azure AD Connect-server.
+- Het bron anker voor de AAD Connect-synchronisatie moet *objectGuid* of *MS-DS-consistencyGUID* zijn
 
 ## <a name="update-azure-ad-connect"></a>Azure AD Connect bijwerken
 
-Ten minste moet u [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.4.32.0 hebben. Volg de stappen in Azure AD Connect om Azure AD Connect synchronisatie bij te werken: Voer een [upgrade uit naar de nieuwste versie](../hybrid/how-to-upgrade-previous-version.md).  Deze stap wordt vermeld in het geval uw test omgeving niet de nieuwste versie van Azure AD Connect heeft.
+Ten minste moet u [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.4.32.0 hebben. Volg de stappen in Azure AD Connect om Azure AD Connect synchronisatie bij te werken: Voer een [upgrade uit naar de nieuwste versie](../hybrid/how-to-upgrade-previous-version.md).  
 
 ## <a name="stop-the-scheduler"></a>De planner stoppen
 Met Azure AD Connect Sync worden wijzigingen die in uw on-premises Directory optreden, gesynchroniseerd met een scheduler. Als u aangepaste regels wilt wijzigen en toevoegen, wilt u de scheduler uitschakelen zodat synchronisaties niet worden uitgevoerd terwijl u aan de slag gaat.  Voer de volgende stappen uit:
@@ -47,6 +52,9 @@ Met Azure AD Connect Sync worden wijzigingen die in uw on-premises Directory opt
 1.  Open Power shell op de server met Azure AD Connect sync met Administrator bevoegdheden.
 2.  Voer `Stop-ADSyncSyncCycle` uit.  Druk op ENTER.
 3.  Voer `Set-ADSyncScheduler -SyncCycleEnabled $false` uit.
+
+>[!NOTE] 
+>Als u uw eigen aangepaste planner uitvoert voor AAD Connect-synchronisatie, moet u de scheduler uitschakelen. 
 
 ## <a name="create-custom-user-inbound-rule"></a>Een aangepaste regel voor binnenkomende gebruikers maken
 
@@ -81,7 +89,7 @@ Met Azure AD Connect Sync worden wijzigingen die in uw on-premises Directory opt
  6. Voeg op de pagina **trans formaties** een constante trans formatie toe: flow True to cloudNoFlow-kenmerk. Klik op **Add**.
  Aangepaste regel](media/how-to-cloud-custom-user-rule/user4.png) ![</br>
 
-Dezelfde stappen moeten worden gevolgd voor alle object typen (gebruiker, groep en contact).
+Dezelfde stappen moeten worden gevolgd voor alle object typen (gebruiker, groep en contact). Herhaal de stappen per geconfigureerde AD-connector/per AD-forest. 
 
 ## <a name="create-custom-user-outbound-rule"></a>Uitgaande regel voor een aangepaste gebruiker maken
 
@@ -92,7 +100,7 @@ Dezelfde stappen moeten worden gevolgd voor alle object typen (gebruiker, groep 
 
     **Naam:** Geef een beschrijvende naam op voor de regel<br>
     **Beschrijving:** Een zinvolle beschrijving toevoegen<br> 
-    **verbonden systeem:** Kies de AD-connector waarvoor u de aangepaste synchronisatie regel voor hebt geschreven<br>
+    **verbonden systeem:** Kies de Aad-connector waarvoor u de aangepaste synchronisatie regel voor hebt geschreven<br>
     **Type verbonden systeem object:** Gebruiker<br>
     **Omgekeerd object type:** Gelaedeerde<br>
     **Type koppeling:** JoinNoFlow<br>
@@ -109,48 +117,38 @@ Dezelfde stappen moeten worden gevolgd voor alle object typen (gebruiker, groep 
 
 Dezelfde stappen moeten worden gevolgd voor alle object typen (gebruiker, groep en contact).
 
-## <a name="scope-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Bereik Azure AD Connect synchronisatie om de test-OE uit te sluiten
-Nu configureert u Azure AD Connect om de bovenliggende organisatie-eenheid die hierboven is gemaakt, uit te sluiten.  De Cloud Provisioning agent verwerkt de synchronisatie van deze gebruikers.  Gebruik de volgende stappen om Azure AD Connect te bereiken.
-
- 1. Op de server met Azure AD Connect dubbelklikt u op het pictogram Azure AD Connect.
- 2. Klik op **Configureren**
- 3. Selecteer **synchronisatie opties aanpassen** en klik op volgende.
- 4. Meld u aan bij Azure AD en klik op **volgende**.
- 5. Klik in het scherm **verbinding maken met uw mappen** op **volgende**.
- 6. Selecteer op het scherm **domein en OE filteren** de optie **geselecteerde domeinen en organisatie-eenheden synchroniseren**.
- 7. Vouw uw domein uit en **Selecteer** de OE van **cpu's** .  Klik op **Volgende**.
-![bereik](media/tutorial-existing-forest/scope1.png)</br>
- 9. Klik op het scherm **optionele functies** op **volgende**.
- 10. Klik in het scherm **Gereed om te configureren** op **Configureren**.
- 11. Als dat is voltooid, klikt u op **Afsluiten**. 
-
-## <a name="start-the-scheduler"></a>De scheduler starten
-Met Azure AD Connect Sync worden wijzigingen die in uw on-premises Directory optreden, gesynchroniseerd met een scheduler. Nu u de regels hebt gewijzigd, kunt u de Scheduler opnieuw starten.  Voer de volgende stappen uit:
-
-1.  Open Power shell op de server met Azure AD Connect sync met beheerders bevoegdheden
-2.  Voer `Set-ADSyncScheduler -SyncCycleEnabled $true` uit.
-3.  Voer `Start-ADSyncSyncCycle` uit.  Druk op ENTER.  
-
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>De Azure AD Connect-inrichtings agent installeren
-1. Meld u aan bij de server die lid is van het domein.  Als u de Basic-zelf studie over [AD en Azure-omgeving](tutorial-basic-ad-azure.md) gebruikt, zou deze DC1 zijn.
-2. Meld u aan bij de Azure Portal met behulp van globale beheerders referenties voor de Cloud.
-3. Selecteer aan de linkerkant **Azure Active Directory**, klik op **Azure AD Connect** en selecteer in het midden de optie **inrichting beheren (preview)** .</br>
-![Azure-portal](media/how-to-install/install6.png)</br>
-4. Klik op agent downloaden
-5. De Azure AD Connect-inrichtings agent uitvoeren
-6. **Accepteer** de licentie voorwaarden in het welkomst scherm en klik op **installeren**.</br>
+1. Meld u aan bij de server die u wilt gebruiken met beheerders machtigingen voor de onderneming.  Als u de eenvoudige zelf studie over [AD en Azure-omgeving](tutorial-basic-ad-azure.md) gebruikt, wordt deze CP1.
+2. Down load [hier](https://go.microsoft.com/fwlink/?linkid=2109037)de Azure AD Connect Cloud-inrichtings agent.
+3. Voer de Azure AD Connect Cloud inrichting (AADConnectProvisioningAgent. installer) uit
+3. **Accepteer** de licentie voorwaarden in het welkomst scherm en klik op **installeren**.</br>
 ![Welkomstscherm](media/how-to-install/install1.png)</br>
 
-7. Zodra deze bewerking is voltooid, wordt de configuratie wizard gestart.  Meld u aan met uw Azure AD Global Administrator-account.  Houd er rekening mee dat als u verbeterde beveiliging van Internet Explorer hebt ingeschakeld, het aanmelden wordt geblokkeerd.  Als dit het geval is, sluit u de installatie, schakelt u verbeterde beveiliging van Internet Explorer in Serverbeheer uit en klikt u op de **wizard Aad Connect inrichtings agent** om de installatie opnieuw te starten.
-8. Klik in het scherm **verbinding maken Active Directory** op **map toevoegen** en meld u vervolgens aan met uw Active Directory domein beheerders account.  Opmerking: het domein beheerders account mag geen vereisten voor wachtwoord wijziging hebben. Als het wacht woord is verlopen of gewijzigd, moet u de agent opnieuw configureren met de nieuwe referenties. Met deze bewerking wordt uw on-premises Directory toegevoegd.  Klik op **Volgende**.</br>
+4. Zodra deze bewerking is voltooid, wordt de configuratie wizard gestart.  Meld u aan met uw Azure AD Global Administrator-account.
+5. Klik in het scherm **verbinding maken Active Directory** op **map toevoegen** en meld u vervolgens aan met uw Active Directory beheerders account.  Met deze bewerking wordt uw on-premises Directory toegevoegd.  Klik op **Volgende**.</br>
 ![Welkomstscherm](media/how-to-install/install3.png)</br>
 
-9. Klik in het scherm **configuratie voltooid** op **bevestigen**.  Met deze bewerking wordt de agent geregistreerd en opnieuw gestart.</br>
+6. Klik in het scherm **configuratie voltooid** op **bevestigen**.  Met deze bewerking wordt de agent geregistreerd en opnieuw gestart.</br>
 ![Welkomstscherm](media/how-to-install/install4.png)</br>
 
-10. Zodra deze bewerking is voltooid, ziet u een melding: **de configuratie van de agent is geverifieerd.**  U kunt op **Afsluiten**klikken.</br>
+7. Zodra deze bewerking is voltooid, ziet u een melding dat **uw verificatie is geslaagd.**  U kunt op **Afsluiten**klikken.</br>
 ![Welkomstscherm](media/how-to-install/install5.png)</br>
-11. Als het eerste openings scherm nog steeds wordt weer gegeven, klikt u op **sluiten**.
+8. Als het eerste openings scherm nog steeds wordt weer gegeven, klikt u op **sluiten**. 1. Meld u aan bij de server die u wilt gebruiken met beheerders machtigingen voor de onderneming.
+2. Down load [hier](https://go.microsoft.com/fwlink/?linkid=2109037)de Azure AD Connect Cloud-inrichtings agent.
+3. Voer de Azure AD Connect Cloud inrichting (AADConnectProvisioningAgent. installer) uit
+3. **Accepteer** de licentie voorwaarden in het welkomst scherm en klik op **installeren**.</br>
+![Welkomstscherm](media/how-to-install/install1.png)</br>
+
+4. Zodra deze bewerking is voltooid, wordt de configuratie wizard gestart.  Meld u aan met uw Azure AD Global Administrator-account.
+5. Klik in het scherm **verbinding maken Active Directory** op **map toevoegen** en meld u vervolgens aan met uw Active Directory beheerders account.  Met deze bewerking wordt uw on-premises Directory toegevoegd.  Klik op **Volgende**.</br>
+![Welkomstscherm](media/how-to-install/install3.png)</br>
+
+6. Klik in het scherm **configuratie voltooid** op **bevestigen**.  Met deze bewerking wordt de agent geregistreerd en opnieuw gestart.</br>
+![Welkomstscherm](media/how-to-install/install4.png)</br>
+
+7. Zodra deze bewerking is voltooid, ziet u een melding dat **uw verificatie is geslaagd.**  U kunt op **Afsluiten**klikken.</br>
+![Welkomstscherm](media/how-to-install/install5.png)</br>
+8. Als het eerste openings scherm nog steeds wordt weer gegeven, klikt u op **sluiten**.
 
 ## <a name="verify-agent-installation"></a>Agent installatie verifiëren
 Verificatie van de agent vindt plaats in de Azure Portal en op de lokale server waarop de-agent wordt uitgevoerd.
@@ -208,10 +206,35 @@ U gaat nu controleren of de gebruikers die u in onze on-premises Directory had, 
 
 Daarnaast kunt u controleren of de gebruiker en groep bestaan in azure AD.
 
+## <a name="start-the-scheduler"></a>De scheduler starten
+Met Azure AD Connect Sync worden wijzigingen die in uw on-premises Directory optreden, gesynchroniseerd met een scheduler. Nu u de regels hebt gewijzigd, kunt u de Scheduler opnieuw starten.  Voer de volgende stappen uit:
+
+1.  Open Power shell op de server met Azure AD Connect sync met beheerders bevoegdheden
+2.  Voer `Set-ADSyncScheduler -SyncCycleEnabled $true` uit.
+3.  Voer `Start-ADSyncSyncCycle` uit.  Druk op ENTER.  
+
+>[!NOTE] 
+>Als u uw eigen aangepaste planner uitvoert voor AAD Connect-synchronisatie, moet u de Scheduler inschakelen. 
+
 ## <a name="something-went-wrong"></a>Er is iets fout gegaan
 Als de pilot niet werkt zoals verwacht, kunt u terugkeren naar de Azure AD Connect synchronisatie-instellingen door de volgende stappen uit te voeren:
 1.  De inrichtings configuratie uitschakelen in de Azure Portal. 
 2.  Schakel alle aangepaste synchronisatie regels die zijn gemaakt voor Cloud inrichting uit met het hulp programma synchronisatie regel Editor. Uitschakelen moet volledige synchronisatie op alle connectors veroorzaken.
+
+## <a name="configure-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Azure AD Connect synchronisatie configureren om de test-OE uit te sluiten
+Nadat u hebt gecontroleerd of gebruikers van de test-OE zijn beheerd door Cloud inrichting, kunt u Azure AD Connect opnieuw configureren om de bovenliggende organisatie-eenheid uit te sluiten die hierboven is gemaakt.  De Cloud Provisioning agent verwerkt de synchronisatie voor deze gebruikers.  Gebruik de volgende stappen om Azure AD Connect te bereiken.
+
+ 1. Op de server met Azure AD Connect dubbelklikt u op het pictogram Azure AD Connect.
+ 2. Klik op **Configureren**
+ 3. Selecteer **synchronisatie opties aanpassen** en klik op volgende.
+ 4. Meld u aan bij Azure AD en klik op **volgende**.
+ 5. Klik in het scherm **verbinding maken met uw mappen** op **volgende**.
+ 6. Selecteer op het scherm **domein en OE filteren** de optie **geselecteerde domeinen en organisatie-eenheden synchroniseren**.
+ 7. Vouw uw domein uit en **Selecteer** de OE van **cpu's** .  Klik op **Volgende**.
+![bereik](media/tutorial-existing-forest/scope1.png)</br>
+ 9. Klik op het scherm **optionele functies** op **volgende**.
+ 10. Klik in het scherm **Gereed om te configureren** op **Configureren**.
+ 11. Als dat is voltooid, klikt u op **Afsluiten**. 
 
 ## <a name="next-steps"></a>Volgende stappen 
 

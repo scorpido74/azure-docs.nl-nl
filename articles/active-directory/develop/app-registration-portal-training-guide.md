@@ -1,31 +1,27 @@
 ---
-title: Er wordt overgeschakeld van de portal voor toepassings registratie naar de nieuwe App-registraties ervaring in de Azure Portal
+title: Overstappen van de portal voor app-registratie naar de nieuwe ervaring voor app-registratie in de Azure-portal
 titleSuffix: Microsoft identity platform
 description: Een inleiding tot de nieuwe app-registratie ervaring in de Azure Portal
 services: active-directory
-documentationcenter: ''
 author: archieag
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/8/2019
 ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9c09ce2d997c58e2725c411fff0b87a0f5071b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013032"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844513"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Er wordt overgeschakeld van de portal voor toepassings registratie naar de nieuwe App-registraties ervaring in de Azure Portal
+# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Overstappen van de portal voor app-registratie naar de nieuwe ervaring voor app-registratie in de Azure-portal
 
 Er zijn veel verbeteringen aangebracht in de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring in de Azure Portal. Als u bekend bent met de apps.dev.microsoft.com-ervaring (Application Registration Portal) voor het registreren of beheren van geconvergeerde toepassingen, krijgt u in deze trainings gids de mogelijkheid om aan de slag te gaan met de nieuwe ervaring.
 

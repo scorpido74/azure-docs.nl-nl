@@ -1,18 +1,18 @@
 ---
 title: Door Voer in Azure Cosmos DB schalen
-description: In dit artikel wordt beschreven hoe Azure Cosmos DB door Voer elastisch inschaalt
-author: dharmas-cosmos
+description: In dit artikel wordt beschreven hoe Azure Cosmos DB door Voer wordt geschaald in verschillende regio's waarin het Azure Cosmos-account is ingericht.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 29a92f04a1d36004fa082bfafe2310f9e0e3e5c6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467606"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873502"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Wereldwijd schalen van ingerichte doorvoer 
 
@@ -34,7 +34,7 @@ Ervan uitgaande dat een Cosmos-container is geconfigureerd met *' R '* RUs en da
 
 - Als het Cosmos-account is geconfigureerd met meerdere schrijf regio's, is het totale RUs algemeen beschikbaar in de container = *R* x (*N*+ 1). Het aanvullende *R* RUs wordt automatisch ingericht om update conflicten en antientropie verkeer over de regio's te verwerken.
 
-Uw keuze van [consistentie model](consistency-levels.md) is ook van invloed op de door voer. U kunt ongeveer 2x Lees doorvoer bereiken voor de meer beperkte consistentie niveaus (bijvoorbeeld *sessie*, *consistent voor voegsel* en *uiteindelijke* consistentie) in vergelijking met sterkere consistentie niveaus (bijvoorbeeld *gebonden veroudering* of  *sterke* consistentie).
+Uw keuze van [consistentie model](consistency-levels.md) is ook van invloed op de door voer. U kunt ongeveer 2x Lees doorvoer bereiken voor de minder consistente consistentie niveaus (zoals een *sessie*, *consistent voor voegsel* en *uiteindelijke* consistentie) in vergelijking met sterkere consistentie niveaus (bijvoorbeeld *gebonden veroudering* of *sterke* consistentie).
 
 ## <a name="next-steps"></a>Volgende stappen
 

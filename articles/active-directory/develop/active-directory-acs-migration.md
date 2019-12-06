@@ -2,30 +2,26 @@
 title: Migreren vanuit Azure Access Control Service | Microsoft Docs
 description: Meer informatie over de opties voor het verplaatsen van apps en services van Azure Access Control Service (ACS).
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59a2cc971fbc1df967bc2655c672ab8f419eef71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c04377877619c96f139f4b6c1cf826573524d900
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835513"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845549"
 ---
-# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Procedure: Migreren vanuit de Azure Access Control Service
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Procedure: migreren vanuit Azure Access Control Service
 
 Microsoft Azure Access Control Service (ACS), een service van Azure Active Directory (Azure AD), wordt buiten gebruik gesteld op 7 november 2018. Toepassingen en services die momenteel gebruikmaken van Access Control, moeten door vervolgens volledig worden gemigreerd naar een ander verificatie mechanisme. In dit artikel worden aanbevelingen beschreven voor huidige klanten, wanneer u van plan bent om uw gebruik van Access Control af te laten. Als u Access Control momenteel niet gebruikt, hoeft u geen actie te ondernemen.
 
@@ -58,9 +54,9 @@ Als u deze onderdelen wilt gebruiken, moet u een of meer Access Control-naam rui
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-Alle communicatie met de STS-en beheer bewerkingen wordt uitgevoerd op deze URL. U gebruikt verschillende paden voor verschillende doel einden. Als u wilt bepalen of uw toepassingen of services gebruikmaken van Access Control, controleert u op&lt;alle&gt;verkeer naar https://namespace. accesscontrol.Windows.net. Elk verkeer naar deze URL wordt verwerkt door Access Control en moet worden stopgezet. 
+Alle communicatie met de STS-en beheer bewerkingen wordt uitgevoerd op deze URL. U gebruikt verschillende paden voor verschillende doel einden. Als u wilt bepalen of uw toepassingen of services gebruikmaken van Access Control, controleert u op alle verkeer naar https://&lt;naam ruimte&gt;. accesscontrol.windows.net. Elk verkeer naar deze URL wordt verwerkt door Access Control en moet worden stopgezet. 
 
-De uitzonde ring hierop is het verkeer `https://accounts.accesscontrol.windows.net`naar. Verkeer naar deze URL wordt al verwerkt door een andere service en **wordt niet** beïnvloed door de Access Control afschaffing. 
+De uitzonde ring hierop is het verkeer dat moet worden `https://accounts.accesscontrol.windows.net`. Verkeer naar deze URL wordt al verwerkt door een andere service en **wordt niet** beïnvloed door de Access Control afschaffing. 
 
 Zie [Access Control Service 2,0 (gearchiveerd)](https://msdn.microsoft.com/library/hh147631.aspx)voor meer informatie over Access Control.
 
@@ -95,18 +91,18 @@ Volg de stappen in deze sectie om erachter te komen welke van uw apps van invloe
 
 1. Maak verbinding met ACS met de cmdlet **Connect-AcsAccount** .
   
-    Mogelijk moet u uitvoeren `Set-ExecutionPolicy -ExecutionPolicy Bypass` voordat u opdrachten kunt uitvoeren en de beheerder van deze abonnementen moet zijn om de opdrachten uit te voeren.
+    Mogelijk moet u `Set-ExecutionPolicy -ExecutionPolicy Bypass` uitvoeren voordat u opdrachten kunt uitvoeren en de beheerder van deze abonnementen moet zijn om de opdrachten uit te voeren.
 
 1. Vermeld uw beschik bare Azure-abonnementen met de cmdlet **Get-AcsSubscription** .
 1. Vermeld uw ACS-naam ruimten met behulp van de cmdlet **Get-AcsNamespace** .
 
 ### <a name="check-which-applications-will-be-impacted"></a>Controleren welke toepassingen worden beïnvloed
 
-1. Gebruik de naam ruimte uit de vorige stap en ga naar`https://<namespace>.accesscontrol.windows.net`
+1. Gebruik de naam ruimte uit de vorige stap en ga naar `https://<namespace>.accesscontrol.windows.net`
 
-    Als een van de naam ruimten bijvoorbeeld contoso-test is, gaat u naar`https://contoso-test.accesscontrol.windows.net`
+    Als een van de naam ruimten bijvoorbeeld contoso-test is, gaat u naar `https://contoso-test.accesscontrol.windows.net`
 
-1. Onder **vertrouwens relaties**selecteert u **toepassingen** voor Relying Party om de lijst met apps weer te geven die van invloed zijn op de uittreding van ACS.
+1. Onder **vertrouwens relaties**selecteert u **toepassingen voor relying** Party om de lijst met apps weer te geven die van invloed zijn op de uittreding van ACS.
 1. Herhaal stap 1-2 voor elke andere ACS-naam ruimte die u hebt.
 
 ## <a name="retirement-schedule"></a>Pensioen planning
@@ -115,9 +111,9 @@ Vanaf november 2017 worden alle Access Control onderdelen volledig ondersteund e
 
 Dit is de planning voor het afAccess Controlen van onderdelen:
 
-- **November 2017**:  De Azure AD-beheer ervaring in de klassieke Azure-Portal [is buiten gebruik gesteld](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Op dit punt is naam ruimte beheer voor Access Control beschikbaar op een nieuwe, toegewezen URL: `https://manage.windowsazure.com?restoreClassic=true`. Gebruik deze URl om uw bestaande naam ruimten weer te geven, naam ruimten in te scha kelen en uit te scha kelen en om naam ruimten te verwijderen, indien gewenst.
-- **2 April 2018**: De klassieke Azure-Portal is volledig buiten gebruik gesteld, wat betekent dat Access Control naam ruimte beheer niet meer beschikbaar is via een URL. Op dit moment kunt u uw Access Control-naam ruimten niet in-of uitschakelen, verwijderen of opsommen. De Access Control Beheer Portal is echter volledig functioneel en bevindt zich `https://\<namespace\>.accesscontrol.windows.net`op. Alle andere onderdelen van Access Control blijven normaal functioneren.
-- **7 November 2018**: Alle Access Control onderdelen worden permanent afgesloten. Dit omvat de Access Control Beheer Portal, de beheer service, STS en de token transformatie regel engine. Op dit punt mislukken alle aanvragen die worden verzonden naar Access Control ( \<bevindt zich op naam ruimte\>. accesscontrol.Windows.net). U moet alle bestaande apps en services voor deze periode goed hebben gemigreerd naar andere technologieën.
+- **November 2017**: de Azure AD-beheer ervaring in de klassieke Azure-Portal [is buiten gebruik gesteld](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Op dit punt is naam ruimte beheer voor Access Control beschikbaar op een nieuwe, toegewezen URL: `https://manage.windowsazure.com?restoreClassic=true`. Gebruik deze URl om uw bestaande naam ruimten weer te geven, naam ruimten in te scha kelen en uit te scha kelen en om naam ruimten te verwijderen, indien gewenst.
+- **2 April 2018**: de klassieke Azure-Portal is volledig buiten gebruik gesteld, wat betekent dat Access Control naam ruimte beheer niet meer beschikbaar is via een URL. Op dit moment kunt u uw Access Control-naam ruimten niet in-of uitschakelen, verwijderen of opsommen. De Access Control Beheer Portal is echter volledig functioneel en bevindt zich op `https://\<namespace\>.accesscontrol.windows.net`. Alle andere onderdelen van Access Control blijven normaal functioneren.
+- **7 November 2018**: alle Access Control onderdelen worden permanent afgesloten. Dit omvat de Access Control Beheer Portal, de beheer service, STS en de token transformatie regel engine. Op dit punt mislukken alle aanvragen die worden verzonden naar Access Control (op \<naam ruimte\>. accesscontrol.windows.net). U moet alle bestaande apps en services voor deze periode goed hebben gemigreerd naar andere technologieën.
 
 > [!NOTE]
 > Een beleid schakelt naam ruimten uit die gedurende een bepaalde tijd geen token hebben aangevraagd. Vanaf begin september 2018 is deze periode op dit moment al 14 dagen inactief, maar dit wordt in de komende weken verkort tot 7 dagen van inactiviteit. Als u Access Control naam ruimten die momenteel zijn uitgeschakeld, kunt u [ACS Power shell downloaden en installeren](#download-and-install-acs-powershell) om de naam ruimte (n) weer in te scha kelen.
@@ -130,9 +126,9 @@ In de volgende secties worden de aanbevelingen op hoog niveau voor de migratie v
 
 Elke micro soft-Cloud service die tokens accepteert die zijn uitgegeven door Access Control, ondersteunt nu ten minste één alternatieve vorm van verificatie. Het juiste verificatie mechanisme varieert voor elke service. U wordt aangeraden om te verwijzen naar de specifieke documentatie voor elke service voor officiële richt lijnen. Voor het gemak wordt elke set van documentatie hier beschreven:
 
-| Service | Richtlijnen |
+| Service | Hulp |
 | ------- | -------- |
-| Azure Service Bus | [Migreren naar hand tekeningen voor gedeelde toegang](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
+| Service Bus van Azure | [Migreren naar hand tekeningen voor gedeelde toegang](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus relay | [Migreren naar hand tekeningen voor gedeelde toegang](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
 | Azure Managed cache | [Migreren naar Azure cache voor redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
 | Azure DataMarket | [Migreren naar het Cognitive Services-API's](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
@@ -151,7 +147,7 @@ Elke micro soft-Cloud service die tokens accepteert die zijn uitgegeven door Acc
 
 Share point 2013-, 2016-en share point online-klanten hebben in de Cloud, on-premises en hybride scenario's een langdurige ACS gebruikt voor verificatie doeleinden. Sommige share point-functies en-use-cases worden beïnvloed door ACS-uittreding, terwijl anderen dat niet doen. De onderstaande tabel bevat een overzicht van de migratie richtlijnen voor een aantal van de populairste share point-functies die gebruikmaken van ACS:
 
-| Functie | Richtlijnen |
+| Functie | Hulp |
 | ------- | -------- |
 | Gebruikers verifiëren vanuit Azure AD | Voorheen heeft Azure AD geen ondersteuning voor SAML 1,1-tokens die vereist zijn door share point voor verificatie, en ACS werd gebruikt als een tussen persoon die share point compatibel met Azure AD-token indelingen heeft gemaakt. Nu kunt u [rechtstreeks verbinding maken met share point met Azure AD met behulp van Azure AD-App galerie share point op de on-premises app](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [App-verificatie & server-naar-Server-verificatie in share point on-premises](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Niet beïnvloed door ACS-uittredingen; u hoeft niets te wijzigen. | 
@@ -205,7 +201,7 @@ Op hoog niveau *is Azure Active Directory waarschijnlijk de beste keuze voor uw 
 | WS-Trust | Ondersteund | Niet ondersteund |
 | **Token indelingen** | | |
 | JWT | Ondersteund in bèta | Ondersteund |
-| SAML 1.1 | Ondersteund | Preview |
+| SAML 1,1 | Ondersteund | Preview |
 | SAML 2.0 | Ondersteund | Ondersteund |
 | SWT | Ondersteund | Niet ondersteund |
 | **Aanpassingen** | | |
@@ -256,7 +252,7 @@ In de volgende tabel worden de functies van Access Control vergeleken die releva
 | WS-Trust | Ondersteund | Niet ondersteund |
 | **Token indelingen** | | |
 | JWT | Ondersteund in bèta | Ondersteund |
-| SAML 1.1 | Ondersteund | Niet ondersteund |
+| SAML 1,1 | Ondersteund | Niet ondersteund |
 | SAML 2.0 | Ondersteund | Niet ondersteund |
 | SWT | Ondersteund | Niet ondersteund |
 | **Aanpassingen** | | |
@@ -304,7 +300,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 Voor webservices die zijn beveiligd met tokens die zijn uitgegeven door Access Control, Access Control biedt de volgende functies en mogelijkheden:
 
-- De mogelijkheid om een of meer *service* -identiteiten in uw Access Control naam ruimte te registreren. Service-identiteiten kunnen worden gebruikt om tokens aan te vragen.
+- De mogelijkheid om een of meer *service-identiteiten* in uw Access Control naam ruimte te registreren. Service-identiteiten kunnen worden gebruikt om tokens aan te vragen.
 - Ondersteuning voor de OAuth-TERUGLOOP en OAuth 2,0 Draft 13-protocollen voor het aanvragen van tokens, door gebruik te maken van de volgende typen referenties:
     - Een eenvoudig wacht woord dat is gemaakt voor de service-identiteit
     - Een ondertekende SWT met behulp van een symmetrische sleutel of een x509-certificaat
@@ -325,7 +321,7 @@ U kunt ook Azure AD gebruiken voor server-naar-Server-verificatie met behulp van
 | Een webservice registreren | Een Relying Party maken in de Access Control Beheer Portal | Een Azure AD-webtoepassing maken in de Azure Portal |
 | Een client registreren | Een service-identiteit maken in Access Control Beheer Portal | Een andere Azure AD-webtoepassing maken in de Azure Portal |
 | Gebruikte protocol |-OAuth-TERUGLOOP Protocol<br />-OAuth 2,0 Draft 13-client referenties toewijzen | Referenties voor OAuth 2.0-client verlenen |
-| Methoden voor clientverificatie |-Eenvoudig wacht woord<br />-Ondertekende SWT<br />-SAML-token van een federatieve id-provider |-Eenvoudig wacht woord<br />-Ondertekende JWT |
+| Client verificatie methoden |-Eenvoudig wacht woord<br />-Ondertekende SWT<br />-SAML-token van een federatieve id-provider |-Eenvoudig wacht woord<br />-Ondertekende JWT |
 | Token indelingen |- JWT<br />-SAML 1,1<br />-SAML 2,0<br />-SWT<br /> | Alleen JWT |
 | Token transformatie |-Aangepaste claims toevoegen<br />-Eenvoudig als-dan claim de uitgifte logica | Aangepaste claims toevoegen | 
 | Configuratie-en beheer taken automatiseren | Ondersteund via Access Control Management-service | Ondersteund via Microsoft Graph en Azure AD Graph API |

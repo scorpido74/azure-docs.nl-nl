@@ -1,17 +1,17 @@
 ---
 title: Component OFFSET LIMIT in Azure Cosmos DB
-description: Meer informatie over de component OFFSET LIMIT voor Azure Cosmos DB.
+description: Meer informatie over het gebruik van de component OFFSET LIMIT voor het overs Laan en het uitvoeren van bepaalde waarden bij het uitvoeren van query's in Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7aae56783f83f13b50321c88d69f07d910e589dd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326880"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873247"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Component OFFSET LIMIT in Azure Cosmos DB
 
@@ -37,7 +37,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Opmerkingen
   
-  Zowel het aantal VERSCHUIVINGen als het aantal LIMIETen zijn vereist in de component OFFSET LIMIT. Als een optionele `ORDER BY`-component wordt gebruikt, wordt de resultatenset gemaakt door de overs laan van de geordende waarden over te slaan. Anders retourneert de query een vaste volg orde van waarden. Momenteel wordt deze component alleen ondersteund voor query's binnen één partitie, maar niet voor query's met meerdere partities.
+  Zowel het aantal VERSCHUIVINGen als het aantal LIMIETen zijn vereist in de component OFFSET LIMIT. Als er een optionele `ORDER BY`-component wordt gebruikt, wordt de resultatenset gemaakt door de overs laan van de geordende waarden over te slaan. Anders retourneert de query een vaste volg orde van waarden. Momenteel wordt deze component alleen ondersteund voor query's binnen één partitie, maar niet voor query's met meerdere partities.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -50,7 +50,7 @@ Hier volgt een query waarmee de eerste waarde wordt overgeslagen en de tweede wa
     OFFSET 1 LIMIT 1
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [
@@ -69,7 +69,7 @@ Hier volgt een query waarmee de eerste waarde wordt overgeslagen en de tweede wa
     OFFSET 1 LIMIT 1
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [

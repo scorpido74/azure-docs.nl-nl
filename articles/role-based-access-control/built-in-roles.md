@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/28/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: f3ee958484fdb8cacad0a3bfa0c3385374ac7487
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 00d4487abed97084976d81ee1ec78316fc688193
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185746"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851380"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Ingebouwde rollen voor Azure-resources
 
@@ -123,9 +123,10 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | [Bewakings lezer](#monitoring-reader) | Kan alle bewakings gegevens (metrieken, logboeken, enzovoort) lezen. Zie ook aan de [slag met rollen, machtigingen en beveiliging met Azure monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [Inzender voor netwerken](#network-contributor) | Hiermee kunt u netwerken beheren, maar niet de toegang tot de netwerk bestanden. | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | [Nieuwe Inzender voor Relic APM-account](#new-relic-apm-account-contributor) | Hiermee kunt u New Relic Application Performance Management accounts en-toepassingen beheren, maar niet de toegang tot ze. | 5d28c62d-5b37-4476-8438-e587778df237 |
+> | [Policy Insights Data Writer (preview-versie)](#policy-insights-data-writer-preview) | Hiermee wordt lees toegang tot bron beleid en schrijf toegang tot bron onderdeel beleids gebeurtenissen toegestaan. | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
 > | [Lezer en gegevens toegang](#reader-and-data-access) | Hiermee kunt u alles weer geven, maar kunt u geen opslag account of opgenomen resource verwijderen of maken. Ook wordt lees-/schrijftoegang tot alle gegevens in een opslag account toegestaan via toegang tot de sleutel van het opslag account. | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | [Inzender Redis Cache](#redis-cache-contributor) | Hiermee kunt u redis-caches beheren, maar niet de toegang tot deze bestanden. | e0f68234-74aa-48ed-b826-c38b57376e17 |
-> | [Inzender voor resource beleid (preview-versie)](#resource-policy-contributor-preview) | Evaluatie Alsnog gebruikers van EA, met rechten voor het maken/wijzigen van het resource beleid, het maken van een ondersteunings ticket en het lezen van resources/hiërarchie. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
+> | [Inzender voor resource beleid](#resource-policy-contributor) | Gebruikers met rechten voor het maken/wijzigen van het resource beleid, het maken van een ondersteunings ticket en het lezen van resources/hiërarchie. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Inzender voor scheduler-taak verzamelingen](#scheduler-job-collections-contributor) | Hiermee kunt u scheduler-taak verzamelingen beheren, maar niet de toegang tot deze taken. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | [Inzender Search Service](#search-service-contributor) | Hiermee kunt u zoek services beheren, maar niet de toegang tot ze. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [Beveiligings beheerder](#security-admin) | In Security Center: kan beveiligings beleid weer geven, beveiligings status weer geven, beveiligings beleid bewerken, waarschuwingen en aanbevelingen weer geven, waarschuwingen en aanbevelingen negeren | fb1c8493-542b-48eb-b624-b4c8fea62acd |
@@ -139,7 +140,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | [Lezer van ruimtelijk ankers-account](#spatial-anchors-account-reader) | Hiermee kunt u eigenschappen van ruimtelijke ankers in uw account zoeken en lezen | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
 > | [Inzender voor SQL-data base](#sql-db-contributor) | Hiermee kunt u SQL-data bases beheren, maar niet de toegang tot ze. U kunt ook hun beveiligings beleid of de bovenliggende SQL-servers niet beheren. | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 > | [Inzender voor SQL Managed instance](#sql-managed-instance-contributor) | Hiermee beheert u beheerde SQL-instanties en de vereiste netwerk configuratie, maar kunt u geen toegang verlenen aan anderen. | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
-> | [SQL-beveiligings beheer](#sql-security-manager) | Hiermee kunt u het beveiligings beleid van SQL-servers en-data bases beheren, maar niet de toegang tot de services. | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
+> | [SQL Security Manager](#sql-security-manager) | Hiermee kunt u het beveiligings beleid van SQL-servers en-data bases beheren, maar niet de toegang tot de services. | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | [Inzender SQL Server](#sql-server-contributor) | Hiermee kunt u SQL-servers en-data bases beheren, maar niet de toegang tot ze en niet het beveiligings beleid. | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 > | [Inzender voor opslagaccounts](#storage-account-contributor) | Hiermee staat u het beheer van opslag accounts toe. Biedt toegang tot de account sleutel, die kan worden gebruikt om toegang te krijgen tot gegevens via een gedeelde sleutel autorisatie. | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [Functie Service-sleutel operator van opslag account](#storage-account-key-operator-service-role) | Kan de toegangs sleutels voor het opslag account weer geven en opnieuw genereren. | 81a9662b-bebf-436f-a333-f67b29880f12 |
@@ -190,7 +191,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **Intact** |  |
 > | Microsoft.Authorization/*/Delete | Rollen, beleids toewijzingen, beleids definities en definities van beleids sets verwijderen |
 > | Microsoft.Authorization/*/Write | Rollen, roltoewijzingen, beleids toewijzingen, beleids definities en definities van beleids sets maken |
-> | Microsoft.Authorization/elevateAccess/Action | Hiermee wordt de gebruiker toegang tot beheerders verleend in het Tenant bereik |
+> | Microsoft.Authorization/elevateAccess/Action | Hiermee krijgt de Gebruikerstoegangbeheerder toegang op tenantniveau |
 > | Microsoft.Blueprint/blueprintAssignments/write | Een blauw druk-toewijzing maken of bijwerken |
 > | Microsoft.Blueprint/blueprintAssignments/delete | Eventuele blauw drukken-toewijzingen verwijderen |
 > | **DataActions** |  |
@@ -305,7 +306,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="api-management-service-contributor"></a>Inzender van API Management-service
+## <a name="api-management-service-contributor"></a>Inzender voor API Management-service
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -326,7 +327,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="api-management-service-operator-role"></a>Functie API Management service operator
+## <a name="api-management-service-operator-role"></a>Operatorrol voor API Management-service
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -666,6 +667,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
 > | Microsoft.OperationsManagement/solutions/read | De OMS-oplossing ophalen |
 > | Microsoft.OperationalInsights/workspaces/query/read | Query's uitvoeren voor de gegevens in de werk ruimte |
+> | Micro soft. OperationalInsights/werk ruimten/query/*/Read |  |
 > | Micro soft. OperationalInsights/werk ruimten/gegevens bronnen/lezen | Gegevens bronnen onder een werk ruimte ophalen. |
 > | Micro soft. Insights/werkmappen/* |  |
 > | Microsoft.Authorization/*/read | Rollen en roltoewijzingen lezen |
@@ -693,6 +695,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | Hiermee wordt een opgeslagen Zoek query opgehaald |
 > | Microsoft.OperationsManagement/solutions/read | De OMS-oplossing ophalen |
 > | Microsoft.OperationalInsights/workspaces/query/read | Query's uitvoeren voor de gegevens in de werk ruimte |
+> | Micro soft. OperationalInsights/werk ruimten/query/*/Read |  |
 > | Micro soft. OperationalInsights/werk ruimten/gegevens bronnen/lezen | Gegevens bronnen onder een werk ruimte ophalen. |
 > | Micro soft. Insights/werkmappen/lezen | Een werkmap lezen |
 > | Microsoft.Authorization/*/read | Rollen en roltoewijzingen lezen |
@@ -722,6 +725,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | Hiermee wordt een opgeslagen Zoek query opgehaald |
 > | Microsoft.OperationsManagement/solutions/read | De OMS-oplossing ophalen |
 > | Microsoft.OperationalInsights/workspaces/query/read | Query's uitvoeren voor de gegevens in de werk ruimte |
+> | Micro soft. OperationalInsights/werk ruimten/query/*/Read |  |
 > | Micro soft. OperationalInsights/werk ruimten/gegevens bronnen/lezen | Gegevens bronnen onder een werk ruimte ophalen. |
 > | Micro soft. Insights/werkmappen/lezen | Een werkmap lezen |
 > | Microsoft.Authorization/*/read | Rollen en roltoewijzingen lezen |
@@ -1361,6 +1365,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Resources/deployments/* | Implementaties van resource groepen maken en beheren |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | Microsoft.Support/* | Ondersteunings tickets maken en beheren |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Voegt een resource, zoals een opslag account of SQL database, toe aan een subnet. Niet alertable. |
 > | **Intact** |  |
 > | Microsoft.DocumentDB/databaseAccounts/readonlyKeys/* |  |
 > | Microsoft.DocumentDB/databaseAccounts/regenerateKey/* |  |
@@ -1631,6 +1636,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Resources/deployments/* | Implementaties van resource groepen maken en beheren |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | Microsoft.Support/* | Ondersteunings tickets maken en beheren |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Voegt een resource, zoals een opslag account of SQL database, toe aan een subnet. Niet alertable. |
 > | **Intact** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -1878,7 +1884,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Micro soft. Insights/metricDefinitions/*/Read | Hiermee worden de beschik bare metrische gegevens opgehaald voor Logic Apps. |
 > | Microsoft.Logic/*/read | Hiermee worden Logic Apps resources gelezen. |
 > | Microsoft.Logic/workflows/disable/action | Hiermee schakelt u de werk stroom uit. |
-> | Microsoft.Logic/workflows/enable/action | Hiermee wordt de werk stroom ingeschakeld. |
+> | Microsoft.Logic/workflows/enable/action | Hiermee wordt de werkstroom ingeschakeld. |
 > | Microsoft.Logic/workflows/validate/action | Valideert de werk stroom. |
 > | Micro soft. resources/implementaties/bewerkingen/lezen | Hiermee worden implementatie bewerkingen opgehaald of weer gegeven. |
 > | Microsoft.Resources/subscriptions/operationresults/read | De resultaten van de abonnements bewerking ophalen. |
@@ -2139,6 +2145,24 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
+## <a name="policy-insights-data-writer-preview"></a>Policy Insights Data Writer (preview-versie)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschrijving** | Hiermee wordt lees toegang tot bron beleid en schrijf toegang tot bron onderdeel beleids gebeurtenissen toegestaan. |
+> | **Id** | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
+> | **Acties** |  |
+> | Micro soft. Authorization/policyassignments/lezen | Informatie over een beleids toewijzing ophalen. |
+> | Micro soft. Authorization/policydefinitions/lezen | Informatie over een beleids definitie ophalen. |
+> | Micro soft. Authorization/policysetdefinitions/lezen | Informatie over een definitie van een beleidsset ophalen. |
+> | **Intact** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | Micro soft. PolicyInsights/checkDataPolicyCompliance/actie | Controleer de nalevings status van een bepaald onderdeel met gegevens beleid. |
+> | Micro soft. PolicyInsights/policyEvents/logDataEvents/Action | De gebeurtenissen van het bron onderdeel beleid registreren. |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
 ## <a name="reader-and-data-access"></a>Lezer en gegevens toegang
 > [!div class="mx-tableFixed"]
 > | | |
@@ -2177,11 +2201,11 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="resource-policy-contributor-preview"></a>Inzender voor resource beleid (preview-versie)
+## <a name="resource-policy-contributor"></a>Inzender voor resourcebeleid
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschrijving** | Evaluatie Alsnog gebruikers van EA, met rechten voor het maken/wijzigen van het resource beleid, het maken van een ondersteunings ticket en het lezen van resources/hiërarchie. |
+> | **Beschrijving** | Gebruikers met rechten voor het maken/wijzigen van het resource beleid, het maken van een ondersteunings ticket en het lezen van resources/hiërarchie. |
 > | **Id** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | **Acties** |  |
 > | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
@@ -2288,7 +2312,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="security-reader"></a>Beveiligings lezer
+## <a name="security-reader"></a>Beveiligingslezer
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2343,6 +2367,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Resources/deployments/* | Implementaties van resource groepen maken en beheren |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | Microsoft.Storage/storageAccounts/read | Retourneert de lijst met opslag accounts of haalt de eigenschappen voor het opgegeven opslag account op. |
+> | Micro soft. Recovery Services/kluizen/replicationOperationStatus/lezen | De status van de kluis replicatie bewerking lezen |
 > | Microsoft.Support/* | Ondersteunings tickets maken en beheren |
 > | **Intact** |  |
 > | *geen* |  |
@@ -3018,7 +3043,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Micro soft. Compute/Availability sets/* | Berekenings beschikbaarheids sets maken en beheren |
 > | Microsoft.Compute/locations/* | Reken locaties maken en beheren |
 > | Microsoft.Compute/virtualMachines/* | Virtuele machines maken en beheren |
-> | Microsoft.Compute/virtualMachineScaleSets/* | Schaal sets voor virtuele machines maken en beheren |
+> | Microsoft.Compute/virtualMachineScaleSets/* | Schaalsets voor virtuele machines maken en beheren |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Insights-waarschuwings regels maken en beheren |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Voegt een back-end-adres groep van een toepassings gateway samen. Niet Alertable. |

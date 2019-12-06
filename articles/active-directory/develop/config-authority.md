@@ -3,27 +3,23 @@ title: MSAL voor iOS en macOS configureren voor het gebruik van verschillende id
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het gebruik van verschillende instanties, zoals B2C, soevereine Clouds en gast gebruikers, met MSAL voor iOS en macOS.
 services: active-directory
-documentationcenter: ''
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4df5067317170e18a52fbac53bc02a2ba7d35aba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: feea11dfa8e199d4c1c01ba7ec09003233574fbe
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473791"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843628"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Procedure: MSAL voor iOS en macOS configureren voor het gebruik van verschillende id-providers
 
@@ -40,7 +36,7 @@ In dit artikel wordt uitgelegd hoe u uw micro soft-verificatie bibliotheek-app v
 
 In sommige scenario's, zoals Business-to-consumer (B2C), moet u mogelijk de standaard instantie wijzigen.
 
-### <a name="b2c"></a>B2C
+### <a name="b2c"></a>Business to consumer
 
 Voor het werken met B2C is voor de [micro soft Authentication Library (MSAL)](reference-v2-libraries.md) een andere certificerings instantie geconfigureerd. MSAL herkent één instantie-URL-indeling als B2C. De herkende indeling voor de B2C-instantie is `https://<host>/tfp/<tenant>/<policy>`, bijvoorbeeld `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`. U kunt echter ook andere ondersteunde B2C ca-Url's gebruiken door instanties expliciet te declareren als B2C-instantie.
 

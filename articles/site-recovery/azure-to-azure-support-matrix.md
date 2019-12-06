@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 9146430f512b065553d4c5362af8655eb01c1206
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d14b81075d1e1f98449ef655c3e00f172c7f407b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530958"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873774"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteunings matrix voor herstel na nood geval voor Azure-VM'S tussen Azure-regio's
 
@@ -65,7 +65,7 @@ Beperkte regio's die zijn gereserveerd voor in-the-Country nood herstel |Duitsla
 
 
 
-## <a name="cache-storage"></a>Cache opslag
+## <a name="cache-storage"></a>Cacheopslag
 
 Deze tabel geeft een overzicht van de ondersteuning van het cache-opslag account dat wordt gebruikt door Site Recovery tijdens de replicatie.
 
@@ -89,12 +89,11 @@ Windows Server 2019 | Ondersteund voor Server Core, server met bureaublad ervari
 Windows Server 2016  | Ondersteunde Server Core, server met bureaublad ervaring.
 Windows Server 2012 R2 | Ondersteund.
 Windows Server 2012 | Ondersteund.
-Windows Server 2008 R2 met SP1/SP2 | Ondersteund.<br/><br/> Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele machines van Azure, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 R2 SP1/SP2.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
-Windows Server 2008 met SP2 | Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele Azure-machines, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4493730) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 met SP2.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
+Windows Server 2008 R2 met SP1/SP2 | Ondersteund.<br/><br/> Van versie [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) van de Mobility service-extensie voor virtuele Azure-machines moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 R2 SP1/SP2.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
 Windows 10 (x64) | Ondersteund.
 Windows 8,1 (x64) | Ondersteund.
 Windows 8 (x64) | Ondersteund.
-Windows 7 (x64) met SP1 en hoger | Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele Azure-machines, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows 7 met SP1.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/geüpgraded. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
+Windows 7 (x64) met SP1 en hoger | Van versie [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) van de Mobility service-extensie voor virtuele Azure-machines moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows 7 met SP1.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/geüpgraded. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
 
 
 
@@ -110,14 +109,14 @@ Ubuntu 18,04 LTS-server | [Ondersteunde kernel-versie](#supported-ubuntu-kernel-
 Debian 7 | [Ondersteunde kernel-versies](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Ondersteunde kernel-versies](#supported-debian-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Ondersteunde kernel-versies)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 11 | Pack<br/><br/> De upgrade van replicerende machines van SP3 naar SP4 wordt niet ondersteund. Als een gerepliceerde machine is bijgewerkt, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen na de upgrade.
+SUSE Linux Enterprise Server 11 | SP3<br/><br/> De upgrade van replicerende machines van SP3 naar SP4 wordt niet ondersteund. Als een gerepliceerde machine is bijgewerkt, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen na de upgrade.
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) <br/><br/> Met de Red Hat compatibele kernel of een onherstelbare versie van de Enter prise kernel van 3, 4 & 5 (UEK3, UEK4, UEK5) 
 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Ondersteunde Ubuntu-kernel-versies voor virtuele Azure-machines
 
-**Heffing** | **Mobility Service-versie** | **Kernelversie** |
+**Release** | **Mobility Service-versie** | **Kernelversie** |
 --- | --- | --- |
 14,04 LTS | 9,28 | 3.13.0-24-generic naar 3.13.0-170-generic,<br/>3.16.0-25-generic naar 3.16.0-77-generic,<br/>3.19.0-18-generic naar 3.19.0-80-generic,<br/>4.2.0-18-generic naar 4.2.0-42-generic,<br/>4.4.0-21-generic naar 4.4.0-148-generic,<br/>4.15.0-1023-Azure naar 4.15.0-1045-Azure |
 14,04 LTS | 9,27 | 3.13.0-24-generic naar 3.13.0-170-generic,<br/>3.16.0-25-generic naar 3.16.0-77-generic,<br/>3.19.0-18-generic naar 3.19.0-80-generic,<br/>4.2.0-18-generic naar 4.2.0-42-generic,<br/>4.4.0-21-generic naar 4.4.0-148-generic,<br/>4.15.0-1023-Azure naar 4.15.0-1045-Azure |
@@ -136,7 +135,7 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Ondersteunde Debian-kernel-versies voor virtuele Azure-machines
 
-**Heffing** | **Mobility Service-versie** | **Kernelversie** |
+**Release** | **Mobility Service-versie** | **Kernelversie** |
 --- | --- | --- |
 Debian 7 | 9.25,9.26,9.27,9.28 | 3.2.0-4-amd64 tot 3.2.0-6-amd64, 3.16.0 -0. bpo. 4-amd64 |
 |||
@@ -146,7 +145,7 @@ Debian 8 | 9,25, 9,26 | 3.16.0-4-amd64 tot 3.16.0-8-amd64, 4.9.0 -0. bpo. 4-amd6
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Ondersteunde SUSE Linux Enterprise Server 12 kernel-versies voor virtuele Azure-machines
 
-**Heffing** | **Mobility Service-versie** | **Kernelversie** |
+**Release** | **Mobility Service-versie** | **Kernelversie** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,28 | SP1 3.12.49-11: standaard ingesteld op 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-standaard ingesteld op 3.12.74-60.64.118-standaard</br></br> SP2 4.4.21-69-standaard ingesteld op 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-standaard voor 4.4.121-92.117-default</br></br>SP3 4.4.73-5-standaard ingesteld op 4.4.180-94.100-default</br></br>SP3 4.4.138-4.7-Azure-naar-4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41-standaard ingesteld op 4.12.14-95.29-default</br>SP4 4.12.14-6.3-Azure naar 4.12.14-6.23-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,27 | SP1 3.12.49-11: standaard ingesteld op 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-standaard ingesteld op 3.12.74-60.64.115-standaard</br></br> SP2 4.4.21-69-standaard ingesteld op 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-standaard voor 4.4.121-92.117-default</br></br>SP3 4.4.73-5-standaard ingesteld op 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-Azure-naar-4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41-standaard ingesteld op 4.12.14-95.24-default</br>SP4 4.12.14-6.3-Azure naar 4.12.14-6.18-Azure |
@@ -206,16 +205,16 @@ Beheerde schijf-Premium | Ondersteund in azure-regio's waarin Azure Site Recover
 Standard - SSD | Ondersteund |
 Redundantie | LRS en GRS worden ondersteund.<br/><br/> ZRS wordt niet ondersteund.
 Coole en warme opslag | Niet ondersteund | VM-schijven worden niet ondersteund in coole en warme opslag
-Opslag ruimten | Ondersteund |
+Opslagruimten | Ondersteund |
 Versleuteling op rest (SSE) | Ondersteund | SSE is de standaard instelling voor opslag accounts.   
 Versleuteling in rust (CMK) | Niet ondersteund |   
 Azure Disk Encryption (ADE) voor Windows-besturings systeem | Ondersteund voor virtuele machines met beheerde schijven. Vm's die niet-beheerde schijven gebruiken, worden niet ondersteund |
 Azure Disk Encryption (ADE) voor Linux-besturings systeem | Ondersteund |
 Hot add | Ondersteund | Het inschakelen van replicatie voor een gegevens schijf die u toevoegt aan een gerepliceerde Azure-VM wordt ondersteund voor virtuele machines die gebruikmaken van beheerde schijven.
 Hot Remove-schijf | Niet ondersteund | Als u de gegevens schijf op de virtuele machine verwijdert, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen voor de virtuele machine.
-Schijf uitsluiten | Voor. U moet [Power shell](azure-to-azure-exclude-disks.md) gebruiken om te configureren. |  Tijdelijke schijven worden standaard uitgesloten.
+Schijf uitsluiten | Ondersteuning. U moet [Power shell](azure-to-azure-exclude-disks.md) gebruiken om te configureren. |  Tijdelijke schijven worden standaard uitgesloten.
 Storage Spaces Direct  | Ondersteund voor crash consistente herstel punten. Toepassings consistente herstel punten worden niet ondersteund. |
-Scale-out Bestands server  | Ondersteund voor crash consistente herstel punten. Toepassings consistente herstel punten worden niet ondersteund. |
+Scale-out bestandsserver  | Ondersteund voor crash consistente herstel punten. Toepassings consistente herstel punten worden niet ondersteund. |
 LRS | Ondersteund |
 GRS | Ondersteund |
 RA-GRS | Ondersteund |

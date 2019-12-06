@@ -2,26 +2,22 @@
 title: Verschillen tussen gedelegeerde en toepassings machtigingen herkennen | Microsoft Docs
 description: Meer informatie over gedelegeerde en toepassings machtigingen, hoe deze worden gebruikt door clients en worden weer gegeven door resources voor toepassingen die u ontwikkelt met Azure AD
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62a82fd71da5741b6ff7747f92dd38650f6a0fae
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 30371c1a8406b1d348277cf923a9d7fbe00e97c6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324650"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843305"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Verschillen tussen gedelegeerde en toepassings machtigingen herkennen
 

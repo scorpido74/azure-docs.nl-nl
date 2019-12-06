@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: helohr
-ms.openlocfilehash: 6b4e1a5024fec07ca73c79d2742933b7b115e6c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384308"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851176"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -28,16 +28,6 @@ Citrix breidt de waarde van Windows virtueel bureau blad uit met robuuste zakeli
 
 - [Ga naar de website van de partner](https://more.citrix.com/wvd).
 
-## <a name="cloudhouse"></a>Cloudhouse
-
-![Cloudhouse-logo](./media/partners/cloudhouse.png)
-
-Cloudhouse is een Windows-service provider voor virtueel bureau blad die klanten een kant-en-klare service voor toepassings migratie biedt die alle toepassingen kan verplaatsen, inclusief bestanden die niet compatibel zijn met moderne Windows-besturings systemen, naar de Windows Virtuele bureau blad-omgeving, zodat klanten de multi sessie-Windows 10 echt kunnen gebruiken. 
-
-Door gebruik te maken van bewezen Cloudhouse container opslag-technologie, heeft de Cloudhouse-service alle toepassingen, waaronder die bedoeld zijn voor Windows XP, Windows 7 of Windows 8, en worden ze geïmplementeerd op een modern virtueel bureau blad van Windows zonder code te hoeven wijzigen of impact op de gebruikers ervaring. Cloudhouse wordt verder toegevoegd aan de waarde van Windows virtueel bureau blad door toepassingen te isoleren van het onderliggende besturings systeem, zodat Windows-onderhouds updates kunnen worden geïmplementeerd zonder dat dit van invloed is op de container toepassing. 
-
-- [Ga naar de website van de partner](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
-
 ## <a name="vmware"></a>VMware
 
 ![VMware-logo](./media/partners/vmware.png)
@@ -48,6 +38,17 @@ Als goedgekeurde provider worden de voor delen van Windows virtueel bureau blad 
 
 - [Meld u aan voor de Tech Preview van Horizon-Cloud op Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Ga naar de website van de partner](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+
+
+## <a name="cloudhouse"></a>Cloudhouse
+
+![Cloudhouse-logo](./media/partners/cloudhouse.png)
+
+Cloudhouse is een Windows-service provider voor virtueel bureau blad die klanten een kant-en-klare service voor toepassings migratie biedt die alle toepassingen kan verplaatsen, inclusief bestanden die niet compatibel zijn met moderne Windows-besturings systemen, naar de Windows Virtuele bureau blad-omgeving, zodat klanten de multi sessie-Windows 10 echt kunnen gebruiken. 
+
+Door gebruik te maken van bewezen Cloudhouse container opslag-technologie, heeft de Cloudhouse-service alle toepassingen, waaronder die bedoeld zijn voor Windows XP, Windows 7 of Windows 8, en worden ze geïmplementeerd op een modern virtueel bureau blad van Windows zonder code te hoeven wijzigen of impact op de gebruikers ervaring. Cloudhouse wordt verder toegevoegd aan de waarde van Windows virtueel bureau blad door toepassingen te isoleren van het onderliggende besturings systeem, zodat Windows-onderhouds updates kunnen worden geïmplementeerd zonder dat dit van invloed is op de container toepassing. 
+
+- [Ga naar de website van de partner](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
 ## <a name="cloudjumper"></a>CloudJumper
 

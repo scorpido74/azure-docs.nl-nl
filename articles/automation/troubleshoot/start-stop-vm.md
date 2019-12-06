@@ -4,17 +4,17 @@ description: Dit artikel bevat informatie over het oplossen van problemen met he
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 860a47386b31403b6a3d41fc2473b1e1040889a7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1817d8e060f944b1bcc31c8ea9eb4fbcff58a165
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162027"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850105"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problemen oplossen met het starten/stoppen van Vm's buiten kantoor uren
 
@@ -112,7 +112,7 @@ Raadpleeg de volgende lijst voor mogelijke oplossingen voor uw probleem of voor 
 
 * Controleer of uw [runas-account](../manage-runas-account.md) de juiste machtigingen heeft voor de vm's die u probeert te starten of te stoppen. Zie voor meer informatie over het controleren van de machtigingen voor een resource [Quick Start: rollen weer geven die zijn toegewezen aan een gebruiker met behulp van de Azure Portal](../../role-based-access-control/check-access.md). U moet de toepassings-id opgeven voor de service-principal die wordt gebruikt door het run as-account. U kunt deze waarde ophalen door naar uw Automation-account in de Azure Portal te gaan en **uitvoeren als-accounts** te selecteren onder **account instellingen** en te klikken op het desbetreffende run as-account.
 
-* Vm's mogen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten Vm's op instellen in de variabele **External_ExcludeVMNames** in het Automation-account waarop de oplossing is geïmplementeerd. In het volgende voor beeld ziet u hoe u een query kunt uitvoeren op die waarde met Power shell.
+* Vm's mogen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten Vm's op ingesteld in de variabele **External_ExcludeVMNames** in het Automation-account waarop de oplossing is geïmplementeerd. In het volgende voor beeld ziet u hoe u een query kunt uitvoeren op die waarde met Power shell.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
@@ -143,7 +143,7 @@ Raadpleeg de volgende lijst voor mogelijke oplossingen voor uw probleem of voor 
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
   ```
 
-* Vm's mogen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten Vm's op instellen in de variabele **External_ExcludeVMNames** in het Automation-account waarop de oplossing is geïmplementeerd. In het volgende voor beeld ziet u hoe u een query kunt uitvoeren op die waarde met Power shell.
+* Vm's mogen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten Vm's op ingesteld in de variabele **External_ExcludeVMNames** in het Automation-account waarop de oplossing is geïmplementeerd. In het volgende voor beeld ziet u hoe u een query kunt uitvoeren op die waarde met Power shell.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value

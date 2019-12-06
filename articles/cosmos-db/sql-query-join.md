@@ -1,37 +1,37 @@
 ---
 title: SQL-SAMENVOEG query's voor Azure Cosmos DB
-description: Meer informatie over deelname aan SQL-syntaxis voor Azure Cosmos DB.
+description: Meer informatie over het koppelen van meerdere tabellen in Azure Cosmos DB om de gegevens op te vragen
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: d78904fde53da0e800a69d2148a9c4e3acf57307
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494410"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871139"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Samen voegen in Azure Cosmos DB
 
 In een relationele data base is het samen voegen van meerdere tabellen de logische corolling voor het ontwerpen van genormaliseerde schema's. De SQL-API maakt daarentegen gebruik van het Gedenormaliseerde gegevens model van items die zonder schema worden gebruikt. Dit is het logische equivalent van een *Self-deelname*.
 
-Inner joins resulteren in een volledig ander product van de sets die deel nemen aan de join. Het resultaat van een N-way-koppeling is een set N-element-Tuples, waarbij elke waarde in de tuple is gekoppeld aan de aliasset die deelneemt aan de samen voeging en toegankelijk is door naar die alias in andere componenten te verwijzen.
+Inner joins leiden tot een volledige vectorproduct van de sets die deel uitmaken van de join. Het resultaat van een join N manier is een set met tuples van de N-element, waarbij elke waarde in de tuple is gekoppeld aan de alias instellen die deel uitmaken van de join en kan worden geopend door te verwijzen naar deze alias in andere componenten.
 
 ## <a name="syntax"></a>Syntaxis
 
 De taal ondersteunt de syntaxis `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`. Deze query retourneert een set Tuples met `N` waarden. Elke tuple heeft waarden die worden geproduceerd door alle containeraliassen te herhalen voor hun respectieve sets. 
 
-Laten we eens kijken naar de volgende FROM-component: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
+Bekijk de volgende FROM-component: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
- Laat elke bron `input_alias1, input_alias2, …, input_aliasN`definiëren. Deze component FROM retourneert een set N-Tuples (tuple met N waarden). Elke tuple heeft waarden die worden geproduceerd door alle containeraliassen te herhalen voor hun respectieve sets.  
+ Elke bron definiëren, kunnen `input_alias1, input_alias2, …, input_aliasN`. Deze component FROM retourneert een set met N-tuples (tuple met N-waarden). Elke tuple heeft waarden die worden geproduceerd door alle containeraliassen te herhalen voor hun respectieve sets.  
   
-**Voor beeld 1** -2 bronnen  
+**Voorbeeld 1** -2 bronnen  
   
-- Laat `<from_source1>` een container bereik maken en de set {A, B, C} vertegenwoordigen.  
+- Laat `<from_source1>` container bereik en set {A, B, C} vertegenwoordigen.  
   
-- Stel in dat `<from_source2>` input_alias1 zijn die verwijzen naar de scope en die sets vertegenwoordigen:  
+- Laat `<from_source2>` worden document binnen het bereik van verwijst naar een input_alias1 en sets vertegenwoordigen:  
   
     {1, 2} voor `input_alias1 = A,`  
   
@@ -39,17 +39,17 @@ Laten we eens kijken naar de volgende FROM-component: `<from_source1> JOIN <from
   
     {4, 5} voor `input_alias1 = C,`  
   
-- De component FROM `<from_source1> JOIN <from_source2>` levert de volgende Tuples op:  
+- De component FROM `<from_source1> JOIN <from_source2>` resulteert in de volgende tuples:  
   
     (`input_alias1, input_alias2`):  
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-**Voor beeld 2** -3 bronnen  
+**Voorbeeld 2** -3-bronnen  
   
-- Laat `<from_source1>` een container bereik maken en de set {A, B, C} vertegenwoordigen.  
+- Laat `<from_source1>` container bereik en set {A, B, C} vertegenwoordigen.  
   
-- Laat `<from_source2>` verwijzen naar `input_alias1` en vertegenwoordigen sets:  
+- Laat `<from_source2>` verwijst naar een document binnen het bereik worden `input_alias1` en sets vertegenwoordigen:  
   
     {1, 2} voor `input_alias1 = A,`  
   
@@ -57,28 +57,28 @@ Laten we eens kijken naar de volgende FROM-component: `<from_source1> JOIN <from
   
     {4, 5} voor `input_alias1 = C,`  
   
-- Laat `<from_source3>` verwijzen naar `input_alias2` en vertegenwoordigen sets:  
+- Laat `<from_source3>` verwijst naar een document binnen het bereik worden `input_alias2` en sets vertegenwoordigen:  
   
     {100, 200} voor `input_alias2 = 1,`  
   
     {300} voor `input_alias2 = 3,`  
   
-- De component FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` levert de volgende Tuples op:  
+- De component FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` resulteert in de volgende tuples:  
   
     (input_alias1, input_alias2, input_alias3):  
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
   > [!NOTE]
-  > Geen Tuples voor andere waarden van `input_alias1`, `input_alias2`, waarvoor de `<from_source3>` geen waarden heeft geretourneerd.  
+  > Gebrek aan tuples voor andere waarden van `input_alias1`, `input_alias2`, waarvoor de `<from_source3>` heeft geen waarden geretourneerd.  
   
-**Voor beeld 3** -3 bronnen  
+**Voorbeeld 3** -3-bronnen  
   
-- Laat < from_source1 > een container bereik zijn en stel {A, B, C} in.  
+- Laat < from_source1 > worden binnen het bereik van container en set {A, B, C} vertegenwoordigen.  
   
-- Laat `<from_source1>` een container bereik maken en de set {A, B, C} vertegenwoordigen.  
+- Laat `<from_source1>` container bereik en set {A, B, C} vertegenwoordigen.  
   
-- Laat < from_source2 > verwijzen naar input_alias1 en vertegenwoordigen sets:  
+- < From_source2 > worden verwijzende input_alias1 document binnen het bereik en sets vertegenwoordigen, kunnen:  
   
     {1, 2} voor `input_alias1 = A,`  
   
@@ -86,20 +86,20 @@ Laten we eens kijken naar de volgende FROM-component: `<from_source1> JOIN <from
   
     {4, 5} voor `input_alias1 = C,`  
   
-- Laat `<from_source3>` op `input_alias1` staan en vertegenwoordigen sets:  
+- Laat `<from_source3>` worden afgestemd op `input_alias1` en sets vertegenwoordigen:  
   
     {100, 200} voor `input_alias2 = A,`  
   
     {300} voor `input_alias2 = C,`  
   
-- De component FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` levert de volgende Tuples op:  
+- De component FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` resulteert in de volgende tuples:  
   
     (`input_alias1, input_alias2, input_alias3`):  
   
-    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), (C, 4, 300), (C, 5, 300)  
+    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), C, 4, 300, (C, 5, 300)  
   
   > [!NOTE]
-  > Dit resulteerde in een kruis product tussen `<from_source2>` en `<from_source3>` omdat beide hetzelfde `<from_source1>`zijn.  Dit heeft geleid tot 4 (2x2) Tuples met waarde A, 0 Tuples met waarde B (1x0) en 2 (2x1) Tuples met waarde C.  
+  > Dit heeft geresulteerd in vectorproduct tussen `<from_source2>` en `<from_source3>` omdat beide zijn gericht op hetzelfde `<from_source1>`.  Dit leidde tot 4 (2 x 2) tuples die waarde A of 0 tuples waarde B (1, 0) en 2 (2 x 1) tuples waarde C.  
   
 ## <a name="examples"></a>Voorbeelden
 
@@ -126,7 +126,7 @@ In het volgende voor beeld is de samen voeging een kruis product tussen twee JSO
     JOIN f.children
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [
@@ -147,7 +147,7 @@ In het volgende voorbeeld ziet u een conventionelere join:
     JOIN c IN f.children
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [
@@ -184,7 +184,7 @@ Het echte hulp programma van de component samen voegen is om Tuples te vormen va
     JOIN p IN c.pets
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [
@@ -240,7 +240,7 @@ In het volgende voor beeld is er een aanvullend filter op `pet`, waarbij alle Tu
     WHERE p.givenName = "Shadow"
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [

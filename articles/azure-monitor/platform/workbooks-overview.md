@@ -1,5 +1,5 @@
 ---
-title: Interactieve rapporten maken met Azure Monitor werkmappen | Micro soft docs
+title: Overzicht van Azure Monitor werkmappen
 description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 2cbc128e59472e36e2b5685efdf4cd02144edf15
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: cf11ce3a77fb47b7d8586ef56141a72cd0a10c2e
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165925"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872856"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor werkmappen
 
@@ -30,7 +30,7 @@ Werkmappen zijn momenteel compatibel met de volgende gegevens bronnen:
 
 * [Logboeken](workbooks-data-sources.md#logs)
 * [Metrische gegevens](workbooks-data-sources.md#metrics)
-* [Azure-resource grafiek](workbooks-data-sources.md#azure-resource-graph)
+* [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
 * [Waarschuwingen (preview-versie)](workbooks-data-sources.md#alerts-preview)
 * [Workload status (preview-versie)](workbooks-data-sources.md#workload-health-preview)
 * [Azure Resource Health (preview-versie)](workbooks-data-sources.md#azure-resource-health)
@@ -41,7 +41,7 @@ Werkmappen zijn momenteel compatibel met de volgende gegevens bronnen:
 Werkmappen bieden een uitgebreide set mogelijkheden voor het visualiseren van uw gegevens. Raadpleeg de onderstaande voorbeeld koppelingen voor gedetailleerde voor beelden van elk type visualisatie:
 
 * [Tekst](workbooks-visualizations.md#text)
-* [Diagrammen](workbooks-visualizations.md#charts)
+* [Grafieken](workbooks-visualizations.md#charts)
 * [Rasters](workbooks-visualizations.md#grids)
 * [Pagina's](workbooks-visualizations.md#tiles)
 * [Mapstructuren](workbooks-visualizations.md#trees)

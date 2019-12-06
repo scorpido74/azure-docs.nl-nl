@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 851a405e5143ea5bb3a26de76f713914aa4bb569
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648517"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873230"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics wordt bijgewerkt naar de .NET Framework v-4.7.2
 
@@ -39,7 +39,7 @@ Controleer op de mogelijkheden van problemen met de compatibiliteit van het prob
 1. Voer de neerwaartse compatibiliteits controle uit op uw .NET Dll's door
    1. De Visual Studio-uitbrei ding gebruiken op de Visual Studio-uitbrei [ding .net portabiliteit Analyzer](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)
    1. Het zelfstandige hulp programma downloaden en gebruiken vanuit [github dotnetapiport](https://github.com/microsoft/dotnet-apiport). Instructies voor het uitvoeren van een zelfstandig hulp programma zijn te vinden op [github dotnetapiport](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md) -belang rijke wijzigingen
-   1. Voor 4.7.2. isRetargeting van de compatibiliteit lezen = = True zijn de breuk wijzigingen.
+   1. Voor 4.7.2. compatibiliteit, `read isRetargeting == True` mogelijke problemen te identificeren.
 2. Als het hulp programma aangeeft of uw code kan worden beïnvloed door een van de mogelijke achterwaartse compatibiliteits problemen (een aantal veelvoorkomende voor beelden van incompatibiliteit worden hieronder weer gegeven), kunt u verder controleren door
    1. De code analyseren en identificeren of uw code waarden door geven aan de betrokken Api's
    1. Voer een runtime controle uit. De runtime-implementatie wordt niet naast elkaar uitgevoerd in ADLA. U kunt een runtime controle uitvoeren vóór de upgrade, met behulp van de lokale uitvoering van Visual Studio met een lokale .NET Framework 4.7.2 op basis van een representatieve gegevensset.
@@ -65,7 +65,7 @@ De meest voorkomende achterwaartse incompatibiliteiten die de controle waarschij
   - Aanbevolen actie: Zorg ervoor dat TaskFactory. FromAsync correct retourneert
 
 - Data object. GetData haalt gegevens nu op als UTF-8
-  - Voor apps die zijn gericht op de .NET Framework 4 of die worden uitgevoerd op de .NET Framework 4.5.1 of eerdere versies, wordt met Data object. GetData HTML-gegevens opgehaald als een ASCII-teken reeks. Als gevolg hiervan worden niet-ASCII-tekens (tekens waarvan de ASCII-codes groter zijn dan 0x7F) weer gegeven met twee wille keurige tekens. #N # #N # voor apps die zijn gericht op de .NET Framework 4,5 of hoger en die worden uitgevoerd op de .NET Framework 4.5.2, `DataObject.GetData` haalt gegevens op die in HTML zijn ingedeeld als UTF-8, wat betekent dat tekens groter dan 0x7F correct zijn.
+  - Voor apps die zijn gericht op de .NET Framework 4 of die worden uitgevoerd op de .NET Framework 4.5.1 of eerdere versies, wordt met Data object. GetData HTML-gegevens opgehaald als een ASCII-teken reeks. Als gevolg hiervan worden niet-ASCII-tekens (tekens waarvan de ASCII-codes groter zijn dan 0x7F) weer gegeven met twee wille keurige tekens. #N # #N # voor apps die zijn gericht op de .NET Framework 4,5 of hoger en die worden uitgevoerd op de .NET Framework 4.5.2, `DataObject.GetData` haalt HTML-gegevens op als UTF-8, wat tekens bevat die groter zijn dan 0x7F.
   - Beïnvloede bibliotheken: Glo
   - Aanbevolen actie: Zorg ervoor dat de opgehaalde gegevens de gewenste indeling hebben
 

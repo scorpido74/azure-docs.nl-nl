@@ -1,17 +1,17 @@
 ---
 title: Een container maken in Azure Cosmos DB
-description: Leer hoe u een container maakt in Azure Cosmos DB
+description: Meer informatie over het maken van een container in Azure Cosmos DB met behulp van Azure Portal, .net, Java, Python, node. js en andere Sdk's.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 911f56cef58e5d9c161a3ba947850bcfff073200
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4eaa2974817bfcd8bef83e5139d75a2d4c2ec107
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242412"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873706"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Een Azure Cosmos-container maken
 
@@ -116,7 +116,7 @@ Voor een lijst met alle Azure CLI-voor beelden voor alle Azure Cosmos DB Api's r
 * [Een Gremlin-grafiek maken met Azure CLI](./scripts/cli/gremlin/create.md)
 * [Een Table-API tabel maken met Azure CLI](./scripts/cli/table/create.md)
 
-## Een container maken met behulp van<a id="ps-sql"></a>power<a id="ps-cassandra"></a>shell <a id="ps-mongodb"> <a id="ps-gremlin"><a id="ps-table"></a>
+## Een container maken met behulp van Power shell<a id="ps-sql"> </a> -<a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
 
 De onderstaande koppelingen laten zien hoe u container resources voor Azure Cosmos DB maakt met behulp van Power shell.
 
@@ -168,5 +168,5 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 
 * [Partitionering in Azure Cosmos DB](partitioning-overview.md)
 * [Aanvraageenheden in Azure Cosmos DB](request-units.md)
-* [Door Voer voor het inrichten van containers en data bases](set-throughput.md)
+* [Doorvoer voor containers en databases inrichten](set-throughput.md)
 * [Werken met een Azure Cosmos-account](account-overview.md)

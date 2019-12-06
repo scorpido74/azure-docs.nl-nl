@@ -2,13 +2,13 @@
 title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy-evaluaties en effecten bepaalt de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
 ms.date: 02/01/2019
-ms.topic: conceptual
-ms.openlocfilehash: 8cb95f0a9479da27ea6b9ef8ec6836f915aa4030
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: how-to
+ms.openlocfilehash: 891c9c72d8e83dc8f9adb930e8ebd11b70f6aad8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132802"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873145"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -22,7 +22,7 @@ Er zijn verschillende manieren toegang krijgen tot de informatie over naleving d
 Voordat u de methoden voor het rapporteren van naleving bekijkt, laten we kijken wanneer de compatibiliteitsinformatie wordt bijgewerkt en de frequentie en gebeurtenissen die een evaluatiecyclus van een te activeren.
 
 > [!WARNING]
-> Als de nalevings status wordt gerapporteerd als **niet geregistreerd**, controleert u of de resource provider **micro soft. PolicyInsights** is geregistreerd en of de gebruiker beschikt over de juiste machtigingen voor op rollen gebaseerde toegangs beheer (RBAC), zoals beschreven in [RBAC in Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
+> Als de nalevings status wordt gerapporteerd als **niet geregistreerd**, controleert u of de resource provider **micro soft. PolicyInsights** is geregistreerd en of de gebruiker beschikt over de juiste RBAC-machtigingen (op rollen gebaseerde toegangs beheer), zoals beschreven in [RBAC in azure Policy](../overview.md#rbac-permissions-in-azure-policy).
 
 ## <a name="evaluation-triggers"></a>Evaluatie-triggers
 
@@ -86,10 +86,10 @@ De volgende tabel toont hoe verschillende beleid effecten met de evaluatie van d
 
 | De status van resource | Effect | Evaluatie van het beleid | Nalevingsstatus |
 | --- | --- | --- | --- |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niet-compatibel |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | True | Niet-compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | False | Compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Waar | Niet-compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Onwaar | Naleving |
+| Nieuw | Controleren, AuditIfNotExist\* | Waar | Niet-compatibel |
+| Nieuw | Controleren, AuditIfNotExist\* | Onwaar | Naleving |
 
 \*Voor de acties Toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn.
 De acties vereisen ook dat de bestaansvoorwaarde FALSE is om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
@@ -244,7 +244,7 @@ Het onderstaande voorbeeldantwoord is bijgesneden tot een enkele niet-compatibel
 }
 ```
 
-### <a name="view-events"></a>Gebeurtenissen weergeven
+### <a name="view-events"></a>Evenementen bekijken
 
 Wanneer een resource wordt gemaakt of bijgewerkt, wordt een resultaat van evaluatie van beleid wordt gegenereerd. Resultaten worden genoemd _Beleidsgebeurtenissen_. Gebruik de volgende Uri om recente voor Beleidsgebeurtenissen die zijn gekoppeld aan het abonnement weer te geven.
 

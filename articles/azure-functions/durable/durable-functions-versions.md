@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 93c35eb4f69cc4f9b16f669d96c2df53f50bcf84
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231196"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849799"
 ---
 # <a name="durable-functions-versions-overview"></a>Overzicht van Durable Functions versies
 
@@ -55,7 +55,7 @@ Durable Functions 2. x introduceert diverse belang rijke wijzigingen. Durable Fu
 Durable Functions 2. x maakt gebruik van een nieuw host. json-schema. De belangrijkste wijzigingen van 1. x zijn onder andere:
 
 * `"storageProvider"` (en de Subsectie `"azureStorage"`) voor Storage-specifieke configuratie.
-* `"tracking"` voor het bijhouden van de configuratie en logboek registratie.
+* `"tracing"` voor configuratie van tracering en logboek registratie.
 * `"notifications"` (en de Subsectie `"eventGrid"`) voor configuratie van gebeurtenis raster meldingen.
 
 Zie de [referentie documentatie voor Durable functions host. json](durable-functions-bindings.md#durable-functions-2-0-host-json) voor meer informatie.

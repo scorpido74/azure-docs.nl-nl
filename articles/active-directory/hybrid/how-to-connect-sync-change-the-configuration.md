@@ -16,12 +16,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5844d440da768ae2647ea7f15c4c913f83078ce1
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: e7600bffd8d00caa6e9b5fdda03aefe429d4788b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672968"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842574"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronisatie: een wijziging in de standaard configuratie aanbrengen
 Het doel van dit artikel is om u te laten zien hoe u wijzigingen aanbrengt in de standaard configuratie in Azure Active Directory (Azure AD) Connect Sync. Het bevat stappen voor enkele veelvoorkomende scenario's. Met deze kennis moet u eenvoudige wijzigingen in uw eigen configuratie kunnen aanbrengen op basis van uw eigen bedrijfs regels.
@@ -204,7 +204,7 @@ Het kenmerk User type is standaard niet ingeschakeld voor synchronisatie omdat e
 
 - Azure AD accepteert alleen twee waarden voor het kenmerk User type: **lid** en **gast**.
 - Als het kenmerk User type niet is ingeschakeld voor synchronisatie in Azure AD Connect, zou de Azure AD-gebruikers die zijn gemaakt via Directory-synchronisatie, het kenmerk User type hebben ingesteld op **lid**.
-- Azure AD staat niet toe dat het kenmerk User type van bestaande Azure AD-gebruikers door Azure AD Connect wordt gewijzigd. Het kan alleen worden ingesteld tijdens het maken van de Azure AD-gebruikers.
+- Azure AD staat niet toe dat het kenmerk User type van bestaande Azure AD-gebruikers door Azure AD Connect wordt gewijzigd. Het kan alleen worden ingesteld tijdens het maken van de Azure AD-gebruikers en [gewijzigd via Power shell](https://docs.microsoft.com/en-us/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
 
 Voordat u synchronisatie van het kenmerk User type inschakelt, moet u eerst bepalen hoe het kenmerk wordt afgeleid van on-premises Active Directory. Hier volgen de meest voorkomende benaderingen:
 
@@ -288,13 +288,13 @@ De regel voor binnenkomende synchronisatie maakt het mogelijk dat de kenmerk waa
 
     | Stroom type | Doel kenmerk | Bron | Eenmaal Toep assen | Type samen voeging |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | extensionAttribute1 | uitgeschakeld | Update |
+    | Direct | UserType | extensionAttribute1 | Uitgeschakeld | Bijwerken |
 
     In een ander voor beeld wilt u de waarde voor het kenmerk User type afleiden van andere eigenschappen. U wilt bijvoorbeeld alle gebruikers synchroniseren als gast als hun on-premises AD userPrincipalName-kenmerk eindigt met het domein onderdeel <em>@partners.fabrikam123.org</em>. U kunt als volgt een expressie implementeren:
 
     | Stroom type | Doel kenmerk | Bron | Eenmaal Toep assen | Type samen voeging |
     | --- | --- | --- | --- | --- |
-    | Expressie | UserType | IIF (IsPresent ([userPrincipalName]), IIF (CBool (User type, LCase ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "lid", "gast"), fout ("UserPrincipalName is niet aanwezig om te bepalen")) | uitgeschakeld | Update |
+    | Expressie | UserType | IIF (IsPresent ([userPrincipalName]), IIF (CBool (User type, LCase ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "lid", "gast"), fout ("UserPrincipalName is niet aanwezig om te bepalen")) | Uitgeschakeld | Bijwerken |
 
 7. Klik op **toevoegen** om de regel voor binnenkomend verkeer te maken.
 
@@ -331,7 +331,7 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
 
     | Stroom type | Doel kenmerk | Bron | Eenmaal Toep assen | Type samen voeging |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | UserType | uitgeschakeld | Update |
+    | Direct | UserType | UserType | Uitgeschakeld | Bijwerken |
 
 7. Klik op **toevoegen** om de uitgaande regel te maken.
 

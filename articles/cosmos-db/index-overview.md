@@ -1,17 +1,17 @@
 ---
 title: Indexeren in Azure Cosmos DB
-description: Begrijpen hoe indexering werkt in Azure Cosmos DB.
+description: Begrijpen hoe indexering werkt in Azure Cosmos DB, verschillende soorten indexen, zoals bereik, ruimtelijke, samengestelde indexen worden ondersteund.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: thweiss
-ms.openlocfilehash: d679208914eb7d1f74bfaec77fbcff196909a2f4
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 65186262095560d7ae54d32b218d1c01f1fb921d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299783"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873621"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB-overzicht
 
@@ -120,7 +120,7 @@ Bereik indexen kunnen worden gebruikt voor scalaire waarden (teken reeks of geta
 
 ### <a name="spatial-index"></a>Ruimtelijke index
 
-Met **ruimtelijke** indexen kunnen efficiënte query's worden uitgevoerd op georuimtelijke objecten zoals-Points, lijnen, veelhoeken en multiveelhoeken. Deze query's gebruiken ST_DISTANCE-, ST_WITHIN-, ST_INTERSECTS-tref woorden. Hieronder vindt u enkele voor beelden van ruimtelijke-index type:
+Met **ruimtelijke** indexen kunnen efficiënte query's worden uitgevoerd op georuimtelijke objecten zoals-Points, lijnen, veelhoeken en multiveelhoeken. Deze query's gebruiken ST_DISTANCE, ST_WITHIN ST_INTERSECTS tref woorden. Hieronder vindt u enkele voor beelden van ruimtelijke-index type:
 
 - Georuimtelijke afstand query's:
 
@@ -146,13 +146,13 @@ Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GEOjson](geosp
 
 **Samengestelde** indexen verhogen de efficiëntie wanneer u bewerkingen uitvoert op meerdere velden. De samengestelde index soort wordt gebruikt voor:
 
-- `ORDER BY` query's op meerdere eigenschappen:
+- query's op meerdere eigenschappen `ORDER BY`:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Query's met een filter en `ORDER BY`. Deze query's kunnen gebruikmaken van een samengestelde index als de filter eigenschap wordt toegevoegd aan de component `ORDER BY`.
+- Query's met een filter en `ORDER BY`. Deze query's kunnen gebruikmaken van een samengestelde index als de eigenschap filter wordt toegevoegd aan de component `ORDER BY`.
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
@@ -173,14 +173,14 @@ Zolang de ene filter-predikaat gebruikmaakt van het index type, evalueert de que
 
 ## <a name="querying-with-indexes"></a>Query's uitvoeren met indexen
 
-De paden die worden geëxtraheerd bij het indexeren van gegevens, maken het gemakkelijker om de index bij het verwerken van een query te zoeken. Door de component `WHERE` van een query te vergelijken met de lijst met geïndexeerde paden, is het mogelijk om de items te identificeren die overeenkomen met het query predicaat zeer snel.
+De paden die worden geëxtraheerd bij het indexeren van gegevens, maken het gemakkelijker om de index bij het verwerken van een query te zoeken. Door de `WHERE`-component van een query te vergelijken met de lijst met geïndexeerde paden, is het mogelijk om de items te identificeren die overeenkomen met het query predicaat zeer snel.
 
 Bekijk bijvoorbeeld de volgende query: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Het query predicaat (filteren op items, waarbij een wille keurige locatie ' Frank rijk ' heeft als land) overeenkomt met het pad dat in rood is gemarkeerd:
 
 ![Een specifiek pad binnen een structuur zoeken](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Een `ORDER BY`-component waarmee orders met één eigenschap *altijd* een bereik index nodig hebben en mislukt als het pad waarnaar wordt verwezen, niet in een van beide eigenschappen voor komt. Op dezelfde manier kan een `ORDER BY`-query voor orders met meerdere eigenschappen *altijd* een samengestelde index nodig hebben.
+> Een `ORDER BY`-component waarmee orders per eigenschap *altijd* een bereik index nodig heeft en mislukt als het pad waarnaar wordt verwezen, niet is opgenomen. Op dezelfde manier wordt een samengestelde *index nodig voor* een `ORDER BY` die orders met meerdere eigenschappen heeft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

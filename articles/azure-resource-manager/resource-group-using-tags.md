@@ -2,21 +2,42 @@
 title: Label resources voor logische organisatie
 description: Laat zien hoe u Tags toepast om Azure-resources te organiseren voor facturering en beheer.
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.openlocfilehash: f3fca2030d33ba5a52d43924ff542801d435e4de
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/04/2019
+ms.openlocfilehash: c0a34204b5eb7080c6444e69def9d82d0193783b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484267"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850598"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Tags gebruiken om uw Azure-resources te organiseren
 
-[!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
+U past tags toe op uw Azure-resources om ze logisch in een taxonomie te organiseren. Elke tag bestaat uit een naam en een waardepaar. U kunt de naam Omgeving en de waarde Productie bijvoorbeeld toepassen op alle resources in de productie.
 
-Om labels toe te passen op resources, moet de gebruiker schrijf toegang hebben tot het bron type. Gebruik de rol [Inzender](../role-based-access-control/built-in-roles.md#contributor) om labels toe te passen op alle resource typen. Als u labels wilt Toep assen op slechts één resource type, gebruikt u de rol Inzender voor die resource. Gebruik bijvoorbeeld de Inzender van de [virtuele machine](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)om labels toe te passen op virtuele machines.
+Nadat u de tags hebt toegepast, kunt u alle resources in het abonnement ophalen met deze tagnaam en -waarde. Met tags kunt u verwante resources ophalen uit verschillende resourcegroepen. Deze aanpak is nuttig wanneer u resources moet ordenen voor facturering of beheer.
+
+Uw taxonomie moet rekening houden met een self-service voor het coderen van meta gegevens naast een strategie voor automatisch labelen om de belasting van gebruikers te verminderen en de nauw keurigheid te verg Roten.
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
+
+## <a name="limitations"></a>Beperkingen
+
+Voor tags gelden de volgende beperkingen:
+
+* Niet alle resource typen ondersteunen Tags. Zie [tag-ondersteuning voor Azure-resources](tag-support.md)om te bepalen of u een tag kunt Toep assen op een resource type.
+* Elke resource of resource groep mag Maxi maal 50 label naam/waarde-paren hebben. Als u meer tags wilt Toep assen dan het Maxi maal toegestane aantal, gebruikt u een JSON-teken reeks voor de waarde van de tag. De JSON-tekenreeks kan veel waarden bevatten die worden toegepast op een enkele tagnaam. Een resource groep kan veel resources bevatten die elk een 50-tag/waarde-paren hebben.
+* De tagnaam is beperkt tot 512 tekens en de tagwaarde is beperkt tot 256 tekens. Voor opslagaccounts is de tagnaam beperkt tot 128 tekens en de tagwaarde beperkt tot 256 tekens.
+* Gegeneraliseerde Vm's ondersteunen geen tags.
+* Tags die zijn toegepast op de resourcegroep, worden niet overgenomen door de resources in deze resourcegroep.
+* Labels kunnen niet worden toegepast op klassieke resources, zoals Cloud Services.
+* Label namen mogen niet deze tekens bevatten: `<`, `>`, `%`, `&`, `\`, `?``/`
+
+   > [!NOTE]
+   > Op het moment dat u Azure DNS zones en Traffic Manager-services, is het gebruik van spaties in het label ook niet toegestaan. 
+
+## <a name="required-access"></a>Vereiste toegang
+
+Om labels toe te passen op resources, moet de gebruiker schrijf toegang hebben tot het bron type. Gebruik de rol [Inzender](../role-based-access-control/built-in-roles.md#contributor) om labels toe te passen op alle resource typen. Als u labels wilt Toep assen op slechts één resource type, gebruikt u de rol Inzender voor die resource. Gebruik bijvoorbeeld de Inzender van de [virtuele machine](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)om labels toe te passen op virtuele machines.
 
 ## <a name="policies"></a>Beleid
 
@@ -25,8 +46,6 @@ U kunt [Azure Policy](../governance/policy/overview.md) gebruiken om regels en c
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
 ## <a name="powershell"></a>PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Gebruik het volgende om de bestaande tags van een *resourcegroep* te bekijken:
 
@@ -394,13 +413,13 @@ Als u labels van een resource groep wilt Toep assen op een resource, gebruikt u 
 
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 De Azure Portal en Power shell gebruiken beide de [Resource Manager rest API](https://docs.microsoft.com/rest/api/resources/) achter de schermen. Als u tags wilt integreren in een andere omgeving, kunt u Tags ophalen met behulp van de resource-ID **ophalen** en de set met Tags bijwerken met behulp van een **patch** -oproep.
 
 ## <a name="tags-and-billing"></a>Tags en facturering
 
-U kunt tags gebruiken om uw facturerings gegevens te groeperen. Als u bijvoorbeeld meerdere Vm's voor verschillende organisaties uitvoert, gebruikt u de labels om gebruik te groeperen op kosten plaats. U kunt ook labels gebruiken om de kosten te categoriseren per runtime-omgeving, zoals het facturerings gebruik voor Vm's die in de productie omgeving worden uitgevoerd.
+U kunt tags gebruiken om uw factureringsgegevens te groeperen. Als u bijvoorbeeld meerdere VM's voor verschillende organisaties uitvoert, kunt u de tags gebruiken om het gebruiker te groeperen op basis van de kostenplaats. U kunt ook tags gebruiken om de kosten te categoriseren op basis van de runtimeomgeving, zoals de facturering van het gebruik voor VM's die worden uitgevoerd in de productieomgeving.
 
 U kunt informatie over Tags ophalen via het [Azure resource usage-en RateCard-api's](../billing/billing-usage-rate-card-overview.md) of het gebruik van CSV-bestand (Comma Separated Values). U downloadt het gebruiks bestand van de [Azure-Accountcentrum](https://account.azure.com/Subscriptions) of Azure Portal. Zie uw Azure-factuur [en dagelijks gebruiks gegevens downloaden of weer geven](../billing/billing-download-azure-invoice-daily-usage-date.md)voor meer informatie. Selecteer **versie 2**bij het downloaden van het gebruiks bestand van de Azure-Accountcentrum. Voor services die Tags ondersteunen met facturering, worden de tags weer gegeven in de kolom **Tags** .
 

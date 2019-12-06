@@ -2,13 +2,13 @@
 title: Blauw drukken importeren en exporteren met Power shell
 description: Meer informatie over het werken met uw blauw drukken-definities als code. Delen, broncode beheer en beheren met de opdrachten exporteren en importeren.
 ms.date: 09/03/2019
-ms.topic: conceptual
-ms.openlocfilehash: 2822fd1aea1911ba264113d43595346a612ebc50
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.topic: how-to
+ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406359"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873196"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Blauw druk-definities importeren en exporteren met Power shell
 

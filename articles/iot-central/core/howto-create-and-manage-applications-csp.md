@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1588a27453dbc223e6aa1dd993905d274e5e1242
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480341"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851329"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Een Azure IoT Central-toepassing maken en beheren vanuit de CSP-Portal
 
@@ -63,7 +63,7 @@ Zie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 
 ## <a name="azure-subscription"></a>Azure-abonnement
 
-Met een Azure-abonnement kunt u exemplaren van Azure-Services maken. Azure IoT Central detecteert automatisch alle Azure-abonnementen van de klant naar wie u toegang hebt en geeft deze weer in een vervolg keuzelijst op de pagina **toepassing maken** . Kies een Azure-abonnement om een nieuwe Azure IoT Central-toepassing te maken.
+Met een Azure-abonnement kunt u exemplaren maken van Azure-services. Azure IoT Central detecteert automatisch alle Azure-abonnementen van de klant naar wie u toegang hebt en geeft deze weer in een vervolg keuzelijst op de pagina **toepassing maken** . Kies een Azure-abonnement om een nieuwe Azure IoT Central-toepassing te maken.
 
 Als u geen Azure-abonnement hebt, kunt u er een maken in het micro soft partner centrum. Nadat u het Azure-abonnement hebt gemaakt, gaat u terug naar de pagina **Toepassing maken**. Uw nieuwe abonnement wordt weergegeven in de vervolgkeuzelijst.**Azure-abonnement**.
 
@@ -74,7 +74,7 @@ Zie [Azure-abonnementen](https://docs.microsoft.com/azure/guides/developer/azure
 Kies de regio of [geografische](https://azure.microsoft.com/global-infrastructure/geographies/) locatie waar u de Azure IOT Central-toepassing wilt maken. Normaal gesp roken moet u de regio kiezen die het meest geschikt is voor uw apparaten om optimaal te kunnen profiteren van de prestaties.
 
 > [!NOTE]
-> De preview-toepassings sjablonen zijn momenteel alleen beschikbaar in de vestigingen **Europa** en **VS** .
+> De preview-toepassings sjablonen zijn momenteel alleen beschikbaar in de locaties **Europa** en **Verenigde Staten** .
 
 Zie [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/) en [Azure-geografi](https://azure.microsoft.com/global-infrastructure/geographies/)voor meer informatie.
 

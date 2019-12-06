@@ -3,32 +3,28 @@ title: Configureer bare levens duur van tokens in Azure Active Directory
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het instellen van de levens duur voor tokens die zijn uitgegeven door Azure AD.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021d0c19ecc4bf63861bf95d99b6ba6b8e910220
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 5abd6928ed92b80caabe71dd27dc2db2e53b1abf
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046557"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845243"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Configureer bare levens duur van tokens in Azure Active Directory (preview-versie)
 
-U kunt de levens duur opgeven van een token dat is uitgegeven door Azure Active Directory (Azure AD). U kunt de levens duur van tokens instellen voor alle apps in uw organisatie, voor een multi tenant-toepassing (meerdere organisaties) of voor een specifieke Service-Principal in uw organisatie.
+U kunt de levensduur opgeven van een token dat is uitgegeven door Azure Active Directory (Azure AD). U kunt de levensduur van een token instellen voor alle apps in uw organisatie, voor een multitenanttoepassing (voor meerdere organisaties) of voor een specifieke service-principal in uw organisatie.
 
 > [!IMPORTANT]
 > Nadat klanten tijdens de preview-periode hebben gehoord, hebben we [verificatie sessie beheer functies](https://go.microsoft.com/fwlink/?linkid=2083106) geïmplementeerd in voorwaardelijke toegang van Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Na 1 mei 2020 kunt u de Configureer bare token levensduur beleid niet gebruiken voor het configureren van sessie-en vernieuwings tokens. U kunt de levens duur van toegangs tokens na de afschaffing nog steeds configureren.
@@ -41,7 +37,6 @@ U kunt een beleid instellen als het standaard beleid voor uw organisatie. Het be
 > Het beleid voor de levens duur van Configureer bare tokens wordt niet ondersteund voor share point online.  Hoewel u de mogelijkheid hebt om dit beleid via Power shell te maken, wordt dit beleid niet door share point online bevestigd. Raadpleeg de [share point online-blog](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) voor meer informatie over het configureren van time-outs voor inactieve sessies.
 >* De standaard levensduur voor het share point online-toegangs token is 1 uur. 
 >* De standaard waarde voor inactieve tijd van het share point online-vernieuwings token is 90 dagen.
-
 
 ## <a name="token-types"></a>Token typen
 
@@ -462,7 +457,7 @@ Hiermee verwijdert u het opgegeven beleid.
 
 </br></br>
 
-### <a name="application-policies"></a>Toepassings beleid
+### <a name="application-policies"></a>Toepassingsbeleid
 U kunt de volgende cmdlets voor toepassings beleid gebruiken.</br></br>
 
 #### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy

@@ -1,31 +1,31 @@
 ---
 title: Azure MFA-server-Azure Active Directory bijwerken
-description: Stappen en richt lijnen voor het bijwerken van de Azure multi-factor Authentication-Server naar een nieuwere versie.
+description: Stappen en richt lijnen voor het bijwerken van de Azure-Multi-Factor Authentication-server naar een nieuwere versie.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19ca6d82b80a9ed77a842b638ff8e9ff346342e8
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 756c45541907c52448805376e1b054180c31fdf5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988547"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848099"
 ---
-# <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade uitvoeren naar de nieuwste Azure multi-factor Authentication-Server
+# <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade uitvoeren naar de nieuwste versie van Azure Multi-Factor Authentication-server
 
-In dit artikel wordt stapsgewijs uitgelegd hoe u Azure multi-factor Authentication (MFA) Server v 6.0 of hoger bijwerkt. Als u een upgrade wilt uitvoeren van een oude versie van de Phone factor-agent, raadpleegt u [de Phone factor-agent upgraden naar de Azure multi-factor Authentication-Server](howto-mfaserver-deploy-upgrade-pf.md).
+Dit artikel begeleidt u bij het upgraden van Azure Multi-Factor Authentication (MFA) Server v 6.0 of hoger. Als u een upgrade wilt uitvoeren van een oude versie van de Phone factor-agent, raadpleegt u [de Phone factor-agent bijwerken naar Azure multi-factor Authentication-Server](howto-mfaserver-deploy-upgrade-pf.md).
 
 Als u een upgrade uitvoert van v6. x of ouder naar v7. x of hoger, worden alle onderdelen gewijzigd van .NET 2,0 naar .NET 4,5. Voor alle onderdelen is ook micro C++ soft Visual 2015 Redistributable update 1 of hoger vereist. Het installatie programma van de MFA-server installeert zowel de x86-als de x64-versie van deze onderdelen als ze nog niet zijn geïnstalleerd. Als de gebruikers Portal en de webservice voor mobiele apps op verschillende servers worden uitgevoerd, moet u deze pakketten installeren voordat u deze onderdelen bijwerkt. U kunt in het C++ [micro soft Download centrum](https://www.microsoft.com/download/)zoeken naar de nieuwste update van micro soft Visual 2015 Redistributable. 
 
 > [!IMPORTANT]
-> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure multi-factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
+> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
 
 Upgrade stappen in een oogopslag:
 
@@ -35,7 +35,7 @@ Upgrade stappen in een oogopslag:
 
 ## <a name="upgrade-azure-mfa-server"></a>Azure MFA-Server upgraden
 
-1. Gebruik de instructies in [de Azure multi-factor Authentication-server downloaden](howto-mfaserver-deploy.md#download-the-mfa-server) om de meest recente versie van het installatie programma van de Azure MFA-server op te halen.
+1. Volg de instructies in [de Azure-multi-factor Authentication-server downloaden](howto-mfaserver-deploy.md#download-the-mfa-server) om de nieuwste versie van het installatie programma van de Azure MFA-server op te halen.
 2. Maak een back-up van het MFA-server gegevensbestand dat zich bevindt in de C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (uitgaande van de standaard installatie locatie) op de Master MFA-server.
 3. Als u meerdere servers voor hoge Beschik baarheid uitvoert, wijzigt u de client systemen die worden geverifieerd bij de MFA-server, zodat deze geen verkeer meer verzenden naar de servers die worden bijgewerkt. Als u een load balancer gebruikt, verwijdert u een ondergeschikte MFA-server uit de load balancer, voert u de upgrade uit en voegt u de server vervolgens weer toe aan de farm.
 4. Voer het nieuwe installatie programma uit op elke MFA-server. Voer eerst onderliggende servers bij, omdat deze het oude gegevens bestand dat door de Master wordt gerepliceerd, kan lezen.
@@ -53,9 +53,9 @@ Upgrade stappen in een oogopslag:
 
 Voltooi de upgrade van uw MFA-servers voordat u overstapt op deze sectie.
 
-1. Maak een back-up van het bestand Web. config dat zich in de virtuele map van de installatie locatie van de gebruikers Portal (bijvoorbeeld C:\inetpub\wwwroot\MultiFactorAuth) bevindt. Als er wijzigingen zijn aangebracht in het standaard thema, maakt u ook een back-up van de map App_Themes\Default. Het is beter om een kopie van de standaardmap te maken en een nieuw thema te maken dan het standaard thema te wijzigen.
+1. Maak een back-up van het bestand Web. config dat zich in de virtuele map van de installatie locatie van de gebruikers Portal (bijvoorbeeld C:\inetpub\wwwroot\MultiFactorAuth) bevindt. Als er wijzigingen zijn aangebracht in het standaard thema, maakt u ook een back-up van de map App_Themes \Default. Het is beter om een kopie van de standaardmap te maken en een nieuw thema te maken dan het standaard thema te wijzigen.
 2. Als de gebruikers Portal op dezelfde server als de andere MFA-Server onderdelen wordt uitgevoerd, wordt u door de installatie van de MFA-server gevraagd de gebruikers portal bij te werken. Accepteer de prompt en installeer de update voor de gebruikers Portal. Controleer of de naam van de virtuele map overeenkomt met de eerder geïnstalleerde virtuele map (bijvoorbeeld MultiFactorAuth).
-3. Als de gebruikers Portal zich op een eigen server bevindt, kopieert u het bestand MultiFactorAuthenticationUserPortalSetup64. msi vanaf de installatie locatie van een van de MFA-servers en plaatst u het op de webserver van de gebruikers Portal. Voer het installatie programma uit.
+3. Als de gebruikers Portal zich op een eigen server bevindt, kopieert u het bestand MultiFactorAuthenticationUserPortalSetup64. msi vanaf de installatie locatie van een van de MFA-servers en plaatst u het op de webserver van de gebruikers Portal. Voer het installatieprogramma uit.
 
    Als er een fout optreedt met de melding ' micro C++ soft Visual 2015 Redistributable update 1 of hoger is vereist, ' down load en installeer het meest recente update pakket in het [micro soft Download centrum](https://www.microsoft.com/download/). Installeer zowel de x86-als de x64-versie.
 
@@ -74,9 +74,9 @@ Voltooi de upgrade van uw MFA-servers en gebruikers Portal voordat u doorgaat na
 
 ### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Als MFA op verschillende servers wordt uitgevoerd dan AD FS
 
-Deze instructies zijn alleen van toepassing als u multi-factor Authentication-server afzonderlijk van uw AD FS-servers uitvoert. Als beide services worden uitgevoerd op dezelfde servers, slaat u deze sectie over en gaat u naar de installatie stappen. 
+Deze instructies zijn alleen van toepassing als u Multi-Factor Authentication-server los van uw AD FS servers uitvoert. Als beide services worden uitgevoerd op dezelfde servers, slaat u deze sectie over en gaat u naar de installatie stappen. 
 
-1. Sla een kopie op van het bestand bestand multifactorauthenticationadfsadapter. config dat is geregistreerd in AD FS of Exporteer de configuratie met behulp van de volgende `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]`Power shell-opdracht:. De adapter naam is "WindowsAzureMultiFactorAuthentication" of "AzureMfaServerAuthentication", afhankelijk van de versie die eerder is geïnstalleerd.
+1. Sla een kopie op van het bestand bestand multifactorauthenticationadfsadapter. config dat is geregistreerd in AD FS of Exporteer de configuratie met behulp van de volgende Power shell-opdracht: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]`. De adapter naam is "WindowsAzureMultiFactorAuthentication" of "AzureMfaServerAuthentication", afhankelijk van de versie die eerder is geïnstalleerd.
 2. Kopieer de volgende bestanden van de installatie locatie van de MFA-server naar de AD FS servers:
 
    * MultiFactorAuthenticationAdfsAdapterSetup64.msi
@@ -84,7 +84,7 @@ Deze instructies zijn alleen van toepassing als u multi-factor Authentication-se
    * Unregister-MultiFactorAuthenticationAdfsAdapter.ps1
    * MultiFactorAuthenticationAdfsAdapter.config
 
-3. Bewerk het script register-MultiFactorAuthenticationAdfsAdapter. ps1 door toe `-ConfigurationFilePath [path]` te voegen aan het `Register-AdfsAuthenticationProvider` einde van de opdracht. Vervang *[pad]* door het volledige pad naar het bestand bestand multifactorauthenticationadfsadapter. config of het configuratie bestand dat u in de vorige stap hebt geëxporteerd.
+3. Bewerk het script Register-MultiFactorAuthenticationAdfsAdapter. ps1 door `-ConfigurationFilePath [path]` toe te voegen aan het einde van de `Register-AdfsAuthenticationProvider` opdracht. Vervang *[pad]* door het volledige pad naar het bestand bestand multifactorauthenticationadfsadapter. config of het configuratie bestand dat u in de vorige stap hebt geëxporteerd.
 
    Controleer de kenmerken in de nieuwe bestand multifactorauthenticationadfsadapter. config om te zien of ze overeenkomen met het oude configuratie bestand. Als kenmerken zijn toegevoegd aan of verwijderd uit de nieuwe versie, kopieert u de kenmerk waarden van het oude configuratie bestand naar de nieuwe of wijzigt u het oude configuratie bestand zodat dit overeenkomt.
 
@@ -98,7 +98,7 @@ Deze instructies zijn alleen van toepassing als u multi-factor Authentication-se
 
    Als er een fout optreedt met de melding ' micro C++ soft Visual 2015 Redistributable update 1 of hoger is vereist, ' down load en installeer het meest recente update pakket in het [micro soft Download centrum](https://www.microsoft.com/download/). Installeer zowel de x86-als de x64-versie.
 
-3. Ga naar **AD FS** > -**verificatie beleid** > globaal multi-**Factor Authentication-beleid bewerken**. Schakel **WindowsAzureMultiFactorAuthentication** of **AzureMFAServerAuthentication** uit (afhankelijk van de huidige versie geïnstalleerd).
+3. Ga naar **AD FS** > **authenticatie beleid** > **globaal multi-factor Authentication-beleid bewerken**. Schakel **WindowsAzureMultiFactorAuthentication** of **AzureMFAServerAuthentication** uit (afhankelijk van de huidige versie geïnstalleerd).
 
    Nadat deze stap is voltooid, is verificatie in twee stappen via MFA server pas beschikbaar in dit AD FS cluster als u stap 8 hebt voltooid.
 
@@ -106,13 +106,13 @@ Deze instructies zijn alleen van toepassing als u multi-factor Authentication-se
 5. Registreer de nieuwe AD FS-adapter door het Power shell-script Register-MultiFactorAuthenticationAdfsAdapter. ps1 uit te voeren. Dit geldt voor alle servers in hetzelfde AD FS cluster, omdat er een centrale configuratie is.
 6. Start de AD FS-service opnieuw op elke server die is verwijderd uit de AD FS-farm.
 7. Voeg de bijgewerkte servers weer toe aan de AD FS-Farm en verwijder de andere servers uit de farm.
-8. Ga naar **AD FS** > -**verificatie beleid** > globaal multi-**Factor Authentication-beleid bewerken**. Controleer **AzureMfaServerAuthentication**.
+8. Ga naar **AD FS** > **authenticatie beleid** > **globaal multi-factor Authentication-beleid bewerken**. Controleer **AzureMfaServerAuthentication**.
 9. Herhaal stap 2 voor het bijwerken van de servers die nu zijn verwijderd uit de AD FS Farm en start de AD FS-service op die servers opnieuw.
 10. Voeg deze servers weer toe aan de AD FS-farm.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Profiteer van voor beelden van [Geavanceerde scenario's met Azure multi-factor Authentication en vpn's van](howto-mfaserver-nps-vpn.md) derden
+* Bekijk voor beelden van [Geavanceerde scenario's met Azure multi-factor Authentication en vpn's van](howto-mfaserver-nps-vpn.md) derden
 
 * [MFA-server synchroniseren met Windows Server Active Directory](howto-mfaserver-dir-ad.md)
 

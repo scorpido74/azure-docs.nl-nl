@@ -1,25 +1,25 @@
 ---
 title: Unieke sleutels voor een Azure Cosmos-container definiëren
-description: Meer informatie over het definiëren van unieke sleutels voor een Azure Cosmos-container
+description: Meer informatie over het definiëren van unieke sleutels voor een Azure Cosmos-container met behulp van Azure Portal, Power shell, .net, Java en diverse andere Sdk's.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 2f61afd12a50b1b135419585bfada52d7ef98f3a
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811641"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872108"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Unieke sleutels voor een Azure Cosmos-container definiëren
 
 In dit artikel worden de verschillende manieren beschreven waarop u [unieke sleutels](unique-keys.md) kunt definiëren bij het maken van een Azure Cosmos-container. Het is momenteel mogelijk deze bewerking uit te voeren met behulp van de Azure Portal of via een van de Sdk's.
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a>De Azure Portal gebruiken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account) of selecteer een bestaand abonnement.
 
@@ -41,7 +41,7 @@ Als u een container met unieke sleutels wilt maken, gaat u naar [een Azure Cosmo
 
 ## <a name="use-the-net-sdk-v2"></a>De .NET SDK v2 gebruiken
 
-Wanneer u een nieuwe container maakt met behulp van de [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/), kan een `UniqueKeyPolicy` object worden gebruikt voor het definiëren van unieke sleutel beperkingen.
+Wanneer u een nieuwe container maakt met behulp van de [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/), kan een `UniqueKeyPolicy`-object worden gebruikt voor het definiëren van unieke sleutel beperkingen.
 
 ```csharp
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
@@ -78,7 +78,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>De Java-SDK gebruiken
 
-Wanneer u een nieuwe container maakt met behulp van de `UniqueKeyPolicy` Java- [SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb), kan een object worden gebruikt voor het definiëren van unieke sleutel beperkingen.
+Wanneer u een nieuwe container maakt met behulp van de [Java-SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb), kan een `UniqueKeyPolicy`-object worden gebruikt voor het definiëren van unieke sleutel beperkingen.
 
 ```java
 // create a new DocumentCollection object
@@ -115,7 +115,7 @@ client.createCollection(String.format("/dbs/%s", "database"), container, null);
 
 ## <a name="use-the-nodejs-sdk"></a>De node. js-SDK gebruiken
 
-Wanneer u een nieuwe container maakt met behulp van de [node. js-SDK](https://www.npmjs.com/package/@azure/cosmos), kan een `UniqueKeyPolicy` object worden gebruikt voor het definiëren van unieke sleutel beperkingen.
+Wanneer u een nieuwe container maakt met behulp van de [node. js-SDK](https://www.npmjs.com/package/@azure/cosmos), kan een `UniqueKeyPolicy`-object worden gebruikt voor het definiëren van unieke sleutel beperkingen.
 
 ```javascript
 client.database('database').containers.create({

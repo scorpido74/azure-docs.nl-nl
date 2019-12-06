@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 27aec53fd2e92e19f1c749e833217fb8b5deae57
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 0ab2ba2c49dd0d0f946358c8f52a6daaf7428dd1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672578"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851414"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -27,10 +27,10 @@ U moet ook toegang tot de partner inschakelen zoals vermeld in de volgende stapp
 
 U moet de partner integratie inschakelen voor uw Azure FarmBeats-exemplaar. Met deze stap maakt u een client die toegang heeft tot uw Azure-FarmBeats als uw apparaat-partner en biedt u de volgende waarden die vereist zijn in de volgende stappen.
 
-- API-eind punt: dit is de data hub-URL, bijvoorbeeld https://<datahub>. azurewebsites.net
+- API-eind punt: dit is de data hub-URL, bijvoorbeeld https://\<datahub >. azurewebsites. net
 - Tenant-id
 - Client-id
-- Client geheim
+- Clientgeheim
 - EventHub-verbindings reeks
 
 Volg de onderstaande stappen om deze te genereren:
@@ -75,7 +75,7 @@ Volg de onderstaande stappen om deze te genereren:
 - /**sensor** -sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.  
 
 
-|        Model apparaat   |  Suggesties   |
+|        Apparaatmodel   |  Suggesties   |
 | ------- | -------             |
 |     Type (knoop punt, gateway)        |          1 ster      |
 |          Fabrikant            |         2 sterren     |
@@ -84,7 +84,7 @@ Volg de onderstaande stappen om deze te genereren:
 |     Naam                 |  Naam voor het identificeren van de resource. Bijvoorbeeld model naam/product naam.
       Beschrijving     | Geef een zinvolle beschrijving van het model
 |    Eigenschappen          |    Aanvullende eigenschappen van de fabrikant   |
-|    **Apparaatconfiguratie**             |                      |
+|    **Apparaat**             |                      |
 |   DeviceModelId     |     ID van het gekoppelde model van het apparaat  |
 |  HardwareId          | De unieke ID voor het apparaat, zoals MAC-adres enz.,
 |  ReportingInterval        |   Rapportage-interval in seconden
@@ -119,14 +119,14 @@ Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over o
 
 **API-aanvraag voor het maken van meta gegevens**
 
-Als u een API-aanvraag wilt maken, combineert u de HTTP-methode (POST), de URL naar de API-service, de URI naar een resource om een query uit te voeren, gegevens in te dienen om een aanvraag te maken of te verwijderen en een of meer HTTP-aanvraag headers toe te voegen. De URL naar de API-service is het API-eind punt, d.w.z. de data hub-URL (https://<yourdatahub>. azurewebsites.net)  
+Als u een API-aanvraag wilt maken, combineert u de HTTP-methode (POST), de URL naar de API-service, de URI naar een resource om een query uit te voeren, gegevens in te dienen om een aanvraag te maken of te verwijderen en een of meer HTTP-aanvraag headers toe te voegen. De URL naar de API-service is het API-eind punt, d.w.z. de data hub-URL (https://\<yourdatahub >. azurewebsites. net)  
 
 **Verificatie**:
 
 De FarmBeats data hub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft die we in de bovenstaande sectie hebben gegenereerd.
 
 - Client-id
-- Client geheim
+- Clientgeheim
 - Tenant-id  
 
 Met behulp van de bovenstaande referenties kan de aanroeper een toegangs token aanvragen, dat in de volgende API-aanvragen in de koptekst sectie als volgt moet worden verzonden:
@@ -134,6 +134,28 @@ Met behulp van de bovenstaande referenties kan de aanroeper een toegangs token a
 ```
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
+
+Hieronder volgt een voor beeld van een python-code die het toegangs token bevat dat kan worden gebruikt voor volgende API-aanroepen naar FarmBeats: 
+
+```python
+import azure 
+
+from azure.common.credentials import ServicePrincipalCredentials 
+import adal 
+#FarmBeats API Endpoint 
+ENDPOINT = "https://<yourdatahub>.azurewebsites.net" [Azure website](https://<yourdatahub>.azurewebsites.net)
+CLIENT_ID = "<Your Client ID>"   
+CLIENT_SECRET = "<Your Client Secret>"   
+TENANT_ID = "<Your Tenant ID>" 
+AUTHORITY_HOST = 'https://login.microsoftonline.com' 
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
+#Authenticating with the credentials 
+context = adal.AuthenticationContext(AUTHORITY) 
+token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
+#Should get an access token here 
+access_token = token_response.get('accessToken') 
+```
+
 
 **HTTP-aanvraag headers**:
 
@@ -271,6 +293,26 @@ U moet de telemetrie naar Azure Event hub verzenden voor verwerking. Azure Event
 **Een telemetrie-bericht verzenden als de client**
 
 Zodra u een verbinding hebt gemaakt als een EventHub-client, kunt u berichten verzenden naar de EventHub als een JSON-bestand.  
+
+Hier volgt een voor beeld van een python-code die telemetrie verzendt als een-client naar een opgegeven Event hub:
+
+```python
+import azure
+from azure.eventhub import EventHubClient, Sender, EventData, Receiver, Offset
+EVENTHUBCONNECTIONSTRING = "<EventHub Connection String provided by customer>"
+EVENTHUBNAME = "<EventHub Name provided by customer>"
+
+write_client = EventHubClient.from_connection_string(EVENTHUBCONNECTIONSTRING, eventhub=EVENTHUBNAME, debug=False)
+sender = write_client.add_sender(partition="0")
+write_client.run()
+for i in range(5):
+    telemetry = "<Canonical Telemetry message>"
+    print("Sending telemetry: " + telemetry)
+    sender.send(EventData(telemetry))
+write_client.stop()
+
+```
+
 Converteer de historische sensor gegevens indeling naar een canonieke indeling die door Azure FarmBeats wordt begrepen. De canonieke bericht indeling is als volgt:  
 
 ```json

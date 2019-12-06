@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 41e1228d127ddbbf0749036fc6f0129da1208bc7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f5578d00d633b4b1ccce41236526e1696744f59f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077123"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851771"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -46,15 +46,17 @@ De functie levenscyclus beheer is beschikbaar in alle Azure-regio's.
 
 U kunt een beleid toevoegen, bewerken of verwijderen met een van de volgende methoden:
 
-* [Azure Portal](https://portal.azure.com)
+* [Azure-portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [REST API's](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
-In dit artikel wordt uitgelegd hoe u beleid beheert met behulp van de portal-en Power shell-methoden.  
+Een beleid kan volledig worden gelezen of geschreven. Gedeeltelijke updates worden niet ondersteund. 
 
 > [!NOTE]
 > Als u firewall regels inschakelt voor uw opslag account, kunnen aanvragen voor levenscyclus beheer worden geblokkeerd. U kunt deze aanvragen deblokkeren door uitzonde ringen op te geven voor vertrouwde micro soft-Services. Zie de sectie uitzonde ringen in [firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)voor meer informatie.
+
+In dit artikel wordt uitgelegd hoe u beleid beheert met behulp van de portal-en Power shell-methoden.  
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -65,7 +67,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Lijst weergave Azure Portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **alle resources** en selecteer vervolgens uw opslag account.
 
@@ -86,7 +88,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 9. Selecteer **toevoegen** om het nieuwe beleid toe te voegen.
 
 #### <a name="azure-portal-code-view"></a>Code weergave Azure Portal
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **alle resources** en selecteer vervolgens uw opslag account.
 
@@ -230,12 +232,12 @@ Een beleid is een verzameling regels:
 
 Elke regel in het beleid heeft verschillende para meters:
 
-| Parameternaam | Parameter type | Opmerkingen | Vereist |
+| Parameternaam | Parameter type | Opmerkingen | Verplicht |
 |----------------|----------------|-------|----------|
-| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig.  Het moet uniek zijn binnen een beleid. | True |
-| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | False | 
-| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle`. | True |
-| `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | True |
+| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig.  Het moet uniek zijn binnen een beleid. | Waar |
+| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | Onwaar | 
+| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle`. | Waar |
+| `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | Waar |
 
 ## <a name="rules"></a>Regels
 
@@ -282,9 +284,9 @@ Met de volgende voorbeeld regel filtert u het account voor het uitvoeren van de 
 
 Filters beperken regel acties voor een subset van blobs binnen het opslag account. Als er meer dan één filter is gedefinieerd, wordt een logische `AND` uitgevoerd op alle filters.
 
-Filters zijn onder andere:
+Filters omvatten:
 
-| Filter naam | Filter type | Opmerkingen | Is vereist |
+| Bestandsnaam | Filtertype | Opmerkingen | Is vereist |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob`. | Ja |
 | prefixMatch | Een matrix met teken reeksen voor voor voegsels die overeenkomen. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` voor een regel wilt vergelijken, wordt de prefixMatch `container1/foo`. | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account.  | Nee |
@@ -295,7 +297,7 @@ Acties worden toegepast op de gefilterde blobs wanneer wordt voldaan aan de voor
 
 Levenscyclus beheer ondersteunt het trapsgewijs en verwijderen van blobs en het verwijderen van BLOB-moment opnamen. Definieer ten minste één actie voor elke regel op blobs of BLOB-moment opnamen.
 
-| Actie        | Basis-BLOB                                   | Momentopname      |
+| Bewerking        | Basis-BLOB                                   | Momentopname      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Ondersteuning voor blobs momenteel op warme laag         | Niet ondersteund |
 | tierToArchive | Ondersteuning voor blobs momenteel op warme of koud niveau | Niet ondersteund |

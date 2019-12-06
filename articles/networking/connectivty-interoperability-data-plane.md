@@ -1,6 +1,6 @@
 ---
-title: 'Interoperabiliteit in Azure back-end-connectiviteit-functies: Gegevens analysis vlak | Microsoft Docs'
-description: Dit artikel bevat de gegevens vlak analyse van de test-instellingen die u gebruiken kunt voor het analyseren van interoperabiliteit tussen ExpressRoute, een site-naar-site VPN- en virtueel netwerk in Azure-peering.
+title: 'Interoperabiliteit in azure back-end-connectiviteits functies: gegevens vlak analyse | Microsoft Docs'
+description: Dit artikel bevat de gegevenslaag analyse van de test instellingen die u kunt gebruiken voor het analyseren van de interoperabiliteit tussen ExpressRoute, een site-naar-site-VPN en virtuele netwerk peering in Azure.
 documentationcenter: na
 services: networking
 author: rambk
@@ -10,24 +10,24 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: f4d94536a8c1b509e0ce435a764e69984b5d415e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11c964bedce7a8b979434b888d756c2121d06a60
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60425473"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873825"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Interoperabiliteit in Azure back-end-connectiviteit-functies: Analyse van gegevens vlak
+# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Interoperabiliteit in azure back-end-connectiviteits functies: gegevens vlak analyse
 
-In dit artikel beschrijft de gegevens vlak analyse van de [instellingen testen][Setup]. U kunt ook bekijken de [setup Testconfiguratie] [ Configuration] en de [besturingselement vlak analysis] [ Control-Analysis] van de test-installatie.
+In dit artikel wordt de gegevenslaag analyse van de [test installatie][Setup]beschreven. U kunt ook de configuratie van de [test installatie][Configuration] en de analyse van het [controle vlak][Control-Analysis] van de test installatie controleren.
 
-Analyse van gegevens vlak onderzoekt het pad van de pakketten die van een lokale netwerk (LAN of een virtueel netwerk) naar een andere binnen een topologie passeren. Het gegevenspad tussen twee lokale netwerken is niet noodzakelijkerwijs symmetrisch. In dit artikel analyseren we daarom een pad doorsturen vanaf een lokaal netwerk naar een ander netwerk dat is gescheiden van de omgekeerde pad.
+Gegevens vlak analyse onderzoekt het pad dat wordt gebruikt door pakketten die van het ene lokale netwerk (LAN of virtueel netwerk) naar een andere worden verzonden binnen een topologie. Het gegevenspad tussen twee lokale netwerken is niet noodzakelijkerwijs symmetrisch. Daarom analyseren we in dit artikel een doorstuur traject van een lokaal netwerk naar een ander netwerk dat gescheiden is van het omgekeerde pad.
 
-## <a name="data-path-from-the-hub-vnet"></a>Het gegevenspad van de hub VNet
+## <a name="data-path-from-the-hub-vnet"></a>Gegevenspad van het hub-VNet
 
-### <a name="path-to-the-spoke-vnet"></a>Pad naar het knooppunt VNet
+### <a name="path-to-the-spoke-vnet"></a>Pad naar de spoke-VNet
 
-Peering op virtueel netwerk (VNet), emuleert netwerkfunctionaliteit de brug tussen de twee VNets die zijn gekoppeld. Traceroute uitvoer van een hub VNet met een virtuele machine in het knooppunt dat vnet wordt hier weergegeven:
+Met peering van virtuele netwerken (VNet) wordt de functionaliteit van de netwerk brug geëmuleerd tussen de twee VNets die gelijkwaardig zijn. Traceroute uitvoer van een hub-VNet naar een virtuele machine in het spoke VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -37,14 +37,14 @@ Peering op virtueel netwerk (VNet), emuleert netwerkfunctionaliteit de brug tuss
 
     Trace complete.
 
-De volgende afbeelding ziet u de verbinding met grafische weergave van de hub VNet en het knooppunt VNet vanuit het perspectief van Azure Network Watcher:
+In de volgende afbeelding ziet u de grafische verbindings weergave van de hub VNet en de spoke VNet vanuit het perspectief van Azure Network Watcher:
 
 
-[![1]][1]
+![1][1]
 
-### <a name="path-to-the-branch-vnet"></a>Pad naar de vertakking VNet
+### <a name="path-to-the-branch-vnet"></a>Pad naar het filiaal-VNet
 
-Traceroute uitvoer van een hub VNet met een virtuele machine in de vertakking die vnet wordt hier weergegeven:
+Traceroute uitvoer van een hub-VNet naar een virtuele machine in het filiaal VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -56,19 +56,19 @@ Traceroute uitvoer van een hub VNet met een virtuele machine in de vertakking di
 
     Trace complete.
 
-In deze traceroute is de eerste hop de VPN-gateway in de Azure VPN-Gateway van de hub VNet. De tweede hop is de VPN-gateway van de vertakking VNet. Het IP-adres van de VPN-gateway van de vertakking VNet wordt niet aangekondigd in de hub VNet. De derde hop is de virtuele machine op de vertakking VNet.
+In deze traceroute is de eerste hop de VPN-gateway in azure VPN Gateway van de hub VNet. De tweede hop is de VPN-gateway van het filiaal-VNet. Het IP-adres van de VPN-gateway van het filiaal-VNet wordt niet geadverteerd in de hub VNet. De derde hop is de virtuele machine op het filiaal-VNet.
 
-De volgende afbeelding ziet u de verbinding met grafische weergave van de hub VNet en de vertakking VNet vanuit het perspectief van Network Watcher:
+In de volgende afbeelding ziet u de grafische verbindings weergave van de hub VNet en de vertakkings-VNet uit het perspectief van Network Watcher:
 
-[![2]][2]
+![2][2]
 
-Voor de verbinding ziet de volgende afbeelding u de rasterweergave in Network Watcher:
+Voor dezelfde verbinding wordt in de volgende afbeelding de raster weergave in Network Watcher weer gegeven:
 
-[![3]][3]
+![3][3]
 
-### <a name="path-to-on-premises-location-1"></a>Pad naar on-premises locatie 1
+### <a name="path-to-on-premises-location-1"></a>Pad naar de on-premises locatie 1
 
-Traceroute uitvoer van een hub VNet met een virtuele machine in on-premises locatie 1 wordt hier weergegeven:
+Traceroute uitvoer van een hub-VNet naar een virtuele machine in on-premises locatie 1 wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -81,12 +81,12 @@ Traceroute uitvoer van een hub VNet met een virtuele machine in on-premises loca
 
     Trace complete.
 
-In deze traceroute is de eerste hop het eindpunt voor Azure ExpressRoute-gateway-tunnel naar een Microsoft Enterprise Edge Router (MSEE). De tweede en derde hops zijn de router van de klant-edge (CE) en de on-premises locatie 1 LAN IP-adressen. Deze IP-adressen worden niet geadverteerd in de hub VNet. De vierde hop is de virtuele machine in de on-premises locatie 1.
+In deze traceroute is de eerste hop het tunnel eindpunt van de Azure ExpressRoute-gateway naar een micro soft Enter prise edge-router (MSEE). De tweede en derde hop zijn de klant Edge (CE)-router en de on-premises locatie 1 LAN Ip's. Deze IP-adressen worden niet geadverteerd in het hub-VNet. De vierde hop is de virtuele machine op de on-premises locatie 1.
 
 
-### <a name="path-to-on-premises-location-2"></a>Pad naar on-premises locatie 2
+### <a name="path-to-on-premises-location-2"></a>Pad naar de on-premises locatie 2
 
-Traceroute uitvoer van een hub VNet met een virtuele machine in on-premises locatie 2 wordt hier weergegeven:
+Traceroute uitvoer van een hub-VNet naar een virtuele machine in on-premises locatie 2 wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.1.31.10
 
@@ -99,11 +99,11 @@ Traceroute uitvoer van een hub VNet met een virtuele machine in on-premises loca
 
     Trace complete.
 
-In deze traceroute is de eerste hop het eindpunt van de ExpressRoute-gateway tunnel voor een MSEE. De tweede en derde hops zijn de CE-router en de on-premises locatie 2 LAN IP-adressen. Deze IP-adressen worden niet geadverteerd in de hub VNet. De vierde hop is de virtuele machine op de on-premises locatie 2.
+In deze traceroute is de eerste hop het tunnel eindpunt van de ExpressRoute-gateway naar een MSEE. De tweede en derde hop zijn de CE-router en de on-premises locatie 2 LAN Ip's. Deze IP-adressen worden niet geadverteerd in het hub-VNet. De vierde hop is de virtuele machine op de on-premises locatie 2.
 
 ### <a name="path-to-the-remote-vnet"></a>Pad naar het externe VNet
 
-Traceroute uitvoer van een hub VNet met een virtuele machine in het externe VNet wordt hier weergegeven:
+Traceroute uitvoer van een hub-VNet naar een virtuele machine in het externe VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -115,15 +115,15 @@ Traceroute uitvoer van een hub VNet met een virtuele machine in het externe VNet
 
     Trace complete.
 
-In deze traceroute is de eerste hop het eindpunt van de ExpressRoute-gateway tunnel voor een MSEE. De tweede hop is van het externe VNet-gateway-IP. De tweede hop-IP-adresbereik is niet aangekondigd in de hub VNet. De derde hop is de virtuele machine op het externe VNet.
+In deze traceroute is de eerste hop het tunnel eindpunt van de ExpressRoute-gateway naar een MSEE. De tweede hop is het IP-adres van de gateway van het externe VNet. Het tweede hop IP-bereik wordt niet geadverteerd in de hub VNet. De derde hop is de virtuele machine op het externe VNet.
 
-## <a name="data-path-from-the-spoke-vnet"></a>Gegevenspad van het knooppunt VNet
+## <a name="data-path-from-the-spoke-vnet"></a>Gegevenspad van de spoke-VNet
 
-Het knooppunt VNet deelt de netwerk-weergave van de hub VNet. Het knooppunt VNet gebruikt de RAS-gateway-connectiviteit van de hub VNet via VNet-peering, alsof deze rechtstreeks verbonden met het knooppunt VNet.
+De spoke VNet deelt de netwerk weergave van het hub-VNet. Via VNet-peering gebruikt de spoke VNet de externe gateway connectiviteit van de hub VNet alsof deze rechtstreeks is verbonden met de spoke-VNet.
 
-### <a name="path-to-the-hub-vnet"></a>Pad naar de hub VNet
+### <a name="path-to-the-hub-vnet"></a>Pad naar het hub-VNet
 
-Traceroute uitvoer van het knooppunt VNet met een virtuele machine in de hub die vnet wordt hier weergegeven:
+Traceroute uitvoer van de spoke VNet naar een virtuele machine in de hub-VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -133,9 +133,9 @@ Traceroute uitvoer van het knooppunt VNet met een virtuele machine in de hub die
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet"></a>Pad naar de vertakking VNet
+### <a name="path-to-the-branch-vnet"></a>Pad naar het filiaal-VNet
 
-Traceroute uitvoer van het knooppunt VNet met een virtuele machine in de vertakking die vnet wordt hier weergegeven:
+Traceroute uitvoer van het spoke VNet naar een virtuele machine in het filiaal VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -147,29 +147,11 @@ Traceroute uitvoer van het knooppunt VNet met een virtuele machine in de vertakk
 
     Trace complete.
 
-In deze traceroute is de eerste hop de VPN-gateway van de hub VNet. De tweede hop is de VPN-gateway van de vertakking VNet. Het IP-adres van de VPN-gateway van de vertakking VNet is niet binnen de/ster VNet aangekondigd. De derde hop is de virtuele machine op de vertakking VNet.
+In deze traceroute is de eerste hop de VPN-gateway van de hub VNet. De tweede hop is de VPN-gateway van het filiaal-VNet. Het IP-adres van de VPN-gateway van het filiaal-VNet wordt niet geadverteerd binnen de hub/spoke VNet. De derde hop is de virtuele machine op het filiaal-VNet.
 
-### <a name="path-to-on-premises-location-1"></a>Pad naar on-premises locatie 1
+### <a name="path-to-on-premises-location-1"></a>Pad naar de on-premises locatie 1
 
-Traceroute uitvoer van het knooppunt VNet met een virtuele machine in on-premises locatie 1 wordt hier weergegeven:
-
-    C:\Users\rb>tracert 10.2.30.10
-
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
-
-      1    24 ms     2 ms     3 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
-
-    Trace complete.
-
-In deze traceroute is de eerste hop van de hub VNet ExpressRoute-gateway-tunneleindpunt voor een MSEE. De tweede en derde hops zijn de CE-router en de on-premises locatie 1 LAN IP-adressen. Deze IP-adressen worden niet geadverteerd in de hub/knooppunt VNet. De vierde hop is de virtuele machine in de on-premises locatie 1.
-
-### <a name="path-to-on-premises-location-2"></a>Pad naar on-premises locatie 2
-
-Traceroute uitvoer van het knooppunt VNet met een virtuele machine in on-premises locatie 2 wordt hier weergegeven:
-
+Traceroute uitvoer van het spoke VNet naar een virtuele machine in on-premises locatie 1 wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -182,11 +164,29 @@ Traceroute uitvoer van het knooppunt VNet met een virtuele machine in on-premise
 
     Trace complete.
 
-In deze traceroute is de eerste hop van de hub VNet ExpressRoute-gateway-tunneleindpunt voor een MSEE. De tweede en derde hops zijn de CE-router en de on-premises locatie 2 LAN IP-adressen. Deze IP-adressen worden niet in het hub/knooppunt VNets geadverteerd. De vierde hop is de virtuele machine in de on-premises locatie 2.
+In deze traceroute is de eerste hop het ExpressRoute gateway tunnel-eind punt van de hub VNet naar een MSEE. De tweede en derde hop zijn de CE-router en de on-premises locatie 1 LAN Ip's. Deze IP-adressen worden niet geadverteerd in de hub/spoke VNet. De vierde hop is de virtuele machine op de on-premises locatie 1.
+
+### <a name="path-to-on-premises-location-2"></a>Pad naar de on-premises locatie 2
+
+Traceroute uitvoer van het spoke VNet naar een virtuele machine in on-premises locatie 2 wordt hier weer gegeven:
+
+
+    C:\Users\rb>tracert 10.2.30.10
+
+    Tracing route to 10.2.30.10 over a maximum of 30 hops
+
+      1    24 ms     2 ms     3 ms  10.10.30.132
+      2     *        *        *     Request timed out.
+      3     *        *        *     Request timed out.
+      4     3 ms     2 ms     2 ms  10.2.30.10
+
+    Trace complete.
+
+In deze traceroute is de eerste hop het ExpressRoute gateway tunnel-eind punt van de hub VNet naar een MSEE. De tweede en derde hop zijn de CE-router en de on-premises locatie 2 LAN Ip's. Deze IP-adressen worden niet geadverteerd in de hub/spoke-VNets. De vierde hop is de virtuele machine op de on-premises locatie 2.
 
 ### <a name="path-to-the-remote-vnet"></a>Pad naar het externe VNet
 
-Traceroute uitvoer van het knooppunt VNet met een virtuele machine in het externe VNet wordt hier weergegeven:
+Traceroute uitvoer van het spoke VNet naar een virtuele machine in het externe VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -198,13 +198,13 @@ Traceroute uitvoer van het knooppunt VNet met een virtuele machine in het extern
 
     Trace complete.
 
-In deze traceroute is de eerste hop van de hub VNet ExpressRoute-gateway-tunneleindpunt voor een MSEE. De tweede hop is van het externe VNet-gateway-IP. De tweede hop-IP-adresbereik niet wordt in de hub/knooppunt VNet geadverteerd. De derde hop is de virtuele machine op het externe VNet.
+In deze traceroute is de eerste hop het ExpressRoute gateway tunnel-eind punt van de hub VNet naar een MSEE. De tweede hop is het IP-adres van de gateway van het externe VNet. Het tweede hop IP-bereik wordt niet geadverteerd in de hub/spoke VNet. De derde hop is de virtuele machine op het externe VNet.
 
-## <a name="data-path-from-the-branch-vnet"></a>Het gegevenspad van de VNet-vertakking
+## <a name="data-path-from-the-branch-vnet"></a>Gegevenspad van het vertakkings-VNet
 
-### <a name="path-to-the-hub-vnet"></a>Pad naar de hub VNet
+### <a name="path-to-the-hub-vnet"></a>Pad naar het hub-VNet
 
-Traceroute is de uitvoer van de VNet-vertakking naar een virtuele machine in de hub die vnet wordt hier weergegeven:
+Traceroute uitvoer van het filiaal-VNet naar een virtuele machine in de hub VNet wordt hier weer gegeven:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -216,11 +216,11 @@ Traceroute is de uitvoer van de VNet-vertakking naar een virtuele machine in de 
 
     Trace complete.
 
-In deze traceroute is de eerste hop de VPN-gateway van de vertakking VNet. De tweede hop is de VPN-gateway van de hub VNet. Het IP-adres van de VPN-gateway van de hub VNet wordt niet aangekondigd in het externe VNet. De derde hop is de virtuele machine op de hub VNet.
+In deze traceroute is de eerste hop de VPN-gateway van het filiaal-VNet. De tweede hop is de VPN-gateway van het hub-VNet. Het IP-adres van de VPN-gateway van de hub VNet wordt niet geadverteerd in het externe VNet. De derde hop is de virtuele machine op het hub-VNet.
 
-### <a name="path-to-the-spoke-vnet"></a>Pad naar het knooppunt VNet
+### <a name="path-to-the-spoke-vnet"></a>Pad naar de spoke-VNet
 
-Traceroute is de uitvoer van de VNet-vertakking naar een virtuele machine in het knooppunt dat vnet wordt hier weergegeven:
+Traceroute uitvoer van het filiaal-VNet naar een virtuele machine in het spoke-VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -232,11 +232,11 @@ Traceroute is de uitvoer van de VNet-vertakking naar een virtuele machine in het
 
     Trace complete.
 
-In deze traceroute is de eerste hop de VPN-gateway van de vertakking VNet. De tweede hop is de VPN-gateway van de hub VNet. Het IP-adres van de VPN-gateway van de hub VNet wordt niet aangekondigd in het externe VNet. De derde hop is de virtuele machine op het knooppunt VNet.
+In deze traceroute is de eerste hop de VPN-gateway van het filiaal-VNet. De tweede hop is de VPN-gateway van het hub-VNet. Het IP-adres van de VPN-gateway van de hub VNet wordt niet geadverteerd in het externe VNet. De derde hop is de virtuele machine op de spoke-VNet.
 
-### <a name="path-to-on-premises-location-1"></a>Pad naar on-premises locatie 1
+### <a name="path-to-on-premises-location-1"></a>Pad naar de on-premises locatie 1
 
-Traceroute uitvoer van de vertakking VNet met een virtuele machine in on-premises locatie 1 wordt hier weergegeven:
+Traceroute uitvoer van het filiaal-VNet naar een virtuele machine in on-premises locatie 1 wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -250,11 +250,11 @@ Traceroute uitvoer van de vertakking VNet met een virtuele machine in on-premise
 
     Trace complete.
 
-In deze traceroute is de eerste hop de VPN-gateway van de vertakking VNet. De tweede hop is de VPN-gateway van de hub VNet. Het IP-adres van de VPN-gateway van de hub VNet wordt niet aangekondigd in het externe VNet. De derde hop is het VPN-tunnel beëindiging punt op de primaire CE-router. De vierde hop is een interne IP-adres van de on-premises locatie 1. Dit LAN-IP-adres is niet buiten de router CE aangekondigd. De vijfde hop is de bestemming virtuele machine in de on-premises locatie 1.
+In deze traceroute is de eerste hop de VPN-gateway van het filiaal-VNet. De tweede hop is de VPN-gateway van het hub-VNet. Het IP-adres van de VPN-gateway van de hub VNet wordt niet geadverteerd in het externe VNet. De derde hop is het eind punt van de VPN-tunnel op de primaire CE-router. De vierde hop is een intern IP-adres van on-premises locatie 1. Dit LAN IP-adres wordt niet geadverteerd buiten de CE-router. De vijfde hop is de doel-VM op de on-premises locatie 1.
 
-### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>Pad naar het on-premises locatie 2 en het externe VNet
+### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>Pad naar de on-premises locatie 2 en het externe VNet
 
-Zoals in het besturingselement vlak-analyse besproken, heeft de vertakking VNet geen zichtbaarheid in on-premises locatie 2 of met het externe VNet per configuratie van het netwerk. De volgende ping-resultaat is bevestigen: 
+Zoals we in de Control-vlak analyse hebben besproken, heeft het filiaal VNet geen zicht baarheid op on-premises locatie 2 of op het externe VNet per netwerk configuratie. De volgende resultaten van de ping worden bevestigd: 
 
     C:\Users\rb>ping 10.1.31.10
 
@@ -280,9 +280,9 @@ Zoals in het besturingselement vlak-analyse besproken, heeft de vertakking VNet 
 
 ## <a name="data-path-from-on-premises-location-1"></a>Gegevenspad van on-premises locatie 1
 
-### <a name="path-to-the-hub-vnet"></a>Pad naar de hub VNet
+### <a name="path-to-the-hub-vnet"></a>Pad naar het hub-VNet
 
-Traceroute van on-premises locatie 1 worden uitgevoerd naar een virtuele machine in de hub die vnet wordt hier weergegeven:
+Traceroute uitvoer van on-premises locatie 1 naar een virtuele machine in het hub-VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -296,15 +296,15 @@ Traceroute van on-premises locatie 1 worden uitgevoerd naar een virtuele machine
 
     Trace complete.
 
-In deze traceroute zijn de eerste twee hops onderdeel van de on-premises netwerk. De derde hop is de primaire MSEE-interface waarmee de router CE gezichten. De vierde hop is de ExpressRoute-gateway van de hub VNet. Het IP-adresbereik van het ExpressRoute-gateway van de hub VNet wordt niet geadverteerd naar de on-premises netwerk. De vijfde hop is de bestemming VM.
+In deze traceroute maken de eerste twee hops deel uit van het on-premises netwerk. De derde hop is de primaire MSEE-interface die de CE-router bevindt. De vierde hop is de ExpressRoute-gateway van de hub VNet. Het IP-bereik van de ExpressRoute-gateway van de hub VNet wordt niet geadverteerd naar het on-premises netwerk. De vijfde hop is de doel-VM.
 
-Network Watcher biedt alleen een Azure-georiënteerde weergave. Voor het perspectief van een on-premises gebruiken we Azure Network Performance Monitor. Network Performance Monitor biedt agents die u op servers in netwerken buiten Azure voor gegevensanalyse van het pad installeren kunt.
+Network Watcher biedt alleen een Azure-georiënteerde weer gave. Voor een on-premises perspectief gebruiken we Azure Netwerkprestatiemeter. Netwerkprestatiemeter biedt agents die u kunt installeren op servers in netwerken buiten Azure voor analyse van gegevenspaden.
 
-De volgende afbeelding toont de Topologieweergave van de on-premises locatie 1 VM-connectiviteit met de virtuele machine op de hub VNet via ExpressRoute:
+In de volgende afbeelding ziet u de topologie weergave van de on-premises locatie 1 VM-verbinding met de VM op het hub-VNet via ExpressRoute:
 
-[![4]][4]
+![4][4]
 
-Zoals eerder besproken, gebruikt de instellingen voor een site-naar-site-VPN als back-connectiviteit voor ExpressRoute tussen de on-premises locatie-1 en de hub VNet. Als u wilt testen van het pad van de back-upgegevens, laten we u een ExpressRoute-koppeling communicatiefout tussen de on-premises locatie 1 primaire CE-router en de bijbehorende MSEE veroorzaken. Als u wilt een ExpressRoute-koppeling-fout veroorzaken, sluit u de CE-interface die de MSEE gezichten:
+Zoals eerder besproken, maakt de test installatie gebruik van een site-naar-site-VPN als back-upconnectiviteit voor ExpressRoute tussen de on-premises locatie 1 en de hub-VNet. Om het pad naar de back-upgegevens te testen, gaan we een ExpressRoute-koppelings fout maken tussen de on-premises locatie 1 primaire CE-router en de bijbehorende MSEE. Als u een ExpressRoute-koppelings fout wilt veroorzaken, sluit u de CE-interface die de MSEE getoont:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -316,15 +316,15 @@ Zoals eerder besproken, gebruikt de instellingen voor een site-naar-site-VPN als
 
     Trace complete.
 
-De volgende afbeelding toont de Topologieweergave van de on-premises locatie 1 VM-connectiviteit met de virtuele machine op de hub VNet via site-naar-site VPN-verbinding bij het ExpressRoute-connectiviteit is niet beschikbaar:
+In de volgende afbeelding ziet u de topologie weergave van de on-premises locatie 1 VM-verbinding met de VM op het hub-VNet via site-naar-site VPN-verbinding wanneer ExpressRoute-connectiviteit is uitgeschakeld:
 
-[![5]][5]
+![5][5]
 
-### <a name="path-to-the-spoke-vnet"></a>Pad naar het knooppunt VNet
+### <a name="path-to-the-spoke-vnet"></a>Pad naar de spoke-VNet
 
-Traceroute van on-premises locatie 1 worden uitgevoerd naar een virtuele machine in het knooppunt dat vnet wordt hier weergegeven:
+Traceroute uitvoer van on-premises locatie 1 naar een virtuele machine in het spoke VNet wordt hier weer gegeven:
 
-We brengen de primaire ExpressRoute-verbinding met het doen van de gegevensanalyse-pad naar het knooppunt VNet:
+We gaan de primaire ExpressRoute-verbinding terugbrengen om de gegevenspath-analyse uit te voeren naar de spoke-VNet:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -338,11 +338,11 @@ We brengen de primaire ExpressRoute-verbinding met het doen van de gegevensanaly
 
     Trace complete.
 
-Breng de primaire 1 ExpressRoute-connectiviteit voor de rest van de gegevensanalyse-pad.
+Breng de primaire ExpressRoute 1-connectiviteit voor de rest van de analyse van het gegevenspad.
 
-### <a name="path-to-the-branch-vnet"></a>Pad naar de vertakking VNet
+### <a name="path-to-the-branch-vnet"></a>Pad naar het filiaal-VNet
 
-Traceroute van on-premises locatie 1 worden uitgevoerd naar een virtuele machine in de vertakking die vnet wordt hier weergegeven:
+Traceroute uitvoer van on-premises locatie 1 naar een virtuele machine in het filiaal VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -354,9 +354,9 @@ Traceroute van on-premises locatie 1 worden uitgevoerd naar een virtuele machine
 
     Trace complete.
 
-### <a name="path-to-on-premises-location-2"></a>Pad naar on-premises locatie 2
+### <a name="path-to-on-premises-location-2"></a>Pad naar de on-premises locatie 2
 
-Zoals besproken de [besturingselement vlak analysis][Control-Analysis], de on-premises locatie 1 heeft geen zichtbaarheid in on-premises locatie 2 per configuratie van het netwerk. De volgende ping-resultaat is bevestigen: 
+Bij het bespreken van de [controle vlak analyse][Control-Analysis]is de on-premises locatie 1 niet zichtbaar voor on-premises locatie 2 per netwerk configuratie. De volgende resultaten van de ping worden bevestigd: 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -371,7 +371,7 @@ Zoals besproken de [besturingselement vlak analysis][Control-Analysis], de on-pr
 
 ### <a name="path-to-the-remote-vnet"></a>Pad naar het externe VNet
 
-Traceroute uitvoer van on-premises locatie 1 naar een virtuele machine in het externe VNet wordt hier weergegeven:
+Traceroute uitvoer van on-premises locatie 1 naar een virtuele machine in het externe VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -387,9 +387,9 @@ Traceroute uitvoer van on-premises locatie 1 naar een virtuele machine in het ex
 
 ## <a name="data-path-from-on-premises-location-2"></a>Gegevenspad van on-premises locatie 2
 
-### <a name="path-to-the-hub-vnet"></a>Pad naar de hub VNet
+### <a name="path-to-the-hub-vnet"></a>Pad naar het hub-VNet
 
-Traceroute van on-premises locatie 2 worden uitgevoerd naar een virtuele machine in de hub die vnet wordt hier weergegeven:
+Traceroute uitvoer van on-premises locatie 2 naar een virtuele machine in het hub-VNet wordt hier weer gegeven:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -403,9 +403,9 @@ Traceroute van on-premises locatie 2 worden uitgevoerd naar een virtuele machine
 
     Trace complete.
 
-### <a name="path-to-the-spoke-vnet"></a>Pad naar het knooppunt VNet
+### <a name="path-to-the-spoke-vnet"></a>Pad naar de spoke-VNet
 
-Traceroute van on-premises locatie 2 worden uitgevoerd naar een virtuele machine in het knooppunt dat vnet wordt hier weergegeven:
+Traceroute uitvoer van on-premises locatie 2 naar een virtuele machine in het spoke VNet wordt hier weer gegeven:
 
     C:\Windows\system32>tracert 10.11.30.4
 
@@ -418,15 +418,15 @@ Traceroute van on-premises locatie 2 worden uitgevoerd naar een virtuele machine
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Pad naar de vertakking VNet, on-premises locatie 1, en het externe VNet
+### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Pad naar het filiaal-VNet, on-premises locatie 1 en het externe VNet
 
-Zoals besproken de [besturingselement vlak analysis][Control-Analysis], de on-premises locatie 1 heeft geen zichtbaarheid op de vertakking VNet, on-premises locatie 1 of met het externe VNet per configuratie van het netwerk. 
+Bij het bespreken van de [controle vlak analyse][Control-Analysis]heeft de on-premises locatie 1 geen zicht baarheid van het filiaal VNet, naar on-premises locatie 1 of naar het externe VNet per netwerk configuratie. 
 
-## <a name="data-path-from-the-remote-vnet"></a>Het gegevenspad van de externe VNet
+## <a name="data-path-from-the-remote-vnet"></a>Gegevenspad van het externe VNet
 
-### <a name="path-to-the-hub-vnet"></a>Pad naar de hub VNet
+### <a name="path-to-the-hub-vnet"></a>Pad naar het hub-VNet
 
-Traceroute is de uitvoer van het externe VNet naar een virtuele machine in de hub die vnet wordt hier weergegeven:
+Traceroute uitvoer van het externe VNet naar een virtuele machine in de hub VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -438,9 +438,9 @@ Traceroute is de uitvoer van het externe VNet naar een virtuele machine in de hu
 
     Trace complete.
 
-### <a name="path-to-the-spoke-vnet"></a>Pad naar het knooppunt VNet
+### <a name="path-to-the-spoke-vnet"></a>Pad naar de spoke-VNet
 
-Traceroute is de uitvoer van het externe VNet naar een virtuele machine in het knooppunt dat vnet wordt hier weergegeven:
+Traceroute uitvoer van het externe VNet naar een virtuele machine in het spoke VNet wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -452,13 +452,13 @@ Traceroute is de uitvoer van het externe VNet naar een virtuele machine in het k
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Pad naar de vertakking VNet en on-premises locatie 2
+### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Pad naar het filiaal-VNet en on-premises locatie 2
 
-Zoals besproken de [besturingselement vlak analysis][Control-Analysis], het externe VNet heeft geen zichtbaarheid op de vertakking VNet of op on-premises locatie 2 per configuratie van het netwerk. 
+Tijdens het bespreken van de [controle vlak analyse][Control-Analysis]heeft het externe vnet geen zicht baarheid voor het filiaal-vnet of de on-premises locatie 2 per netwerk configuratie. 
 
-### <a name="path-to-on-premises-location-1"></a>Pad naar on-premises locatie 1
+### <a name="path-to-on-premises-location-1"></a>Pad naar de on-premises locatie 1
 
-Traceroute uitvoer van het externe VNet met een virtuele machine in on-premises locatie 1 wordt hier weergegeven:
+Traceroute uitvoer van het externe VNet naar een virtuele machine in on-premises locatie 1 wordt hier weer gegeven:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -472,49 +472,49 @@ Traceroute uitvoer van het externe VNet met een virtuele machine in on-premises 
     Trace complete.
 
 
-## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute- en site-naar-site VPN-connectiviteit in combinatie
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute-en site-naar-site-VPN-verbinding
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>Site-naar-site-VPN via ExpressRoute
 
-U kunt een site-naar-site-VPN configureren met behulp van ExpressRoute Microsoft-peering voor het uitwisselen van gegevens tussen uw on-premises netwerk en uw Azure-VNets privé. Met deze configuratie kunt u gegevens uitwisselen met de vertrouwelijkheid, echtheid en integriteit. De gegevensuitwisseling is ook anti opnieuw afspelen. Zie voor meer informatie over het configureren van een site-naar-site IPsec VPN in tunnelmodus met behulp van ExpressRoute Microsoft-peering [Site-naar-site-VPN via het ExpressRoute-Microsoft-peering][S2S-Over-ExR]. 
+U kunt een site-naar-site-VPN configureren door ExpressRoute micro soft-peering te gebruiken voor het privé uitwisselen van gegevens tussen uw on-premises netwerk en uw Azure VNets. Met deze configuratie kunt u gegevens uitwisselen met vertrouwelijkheid, authenticiteit en integriteit. De gegevens uitwisseling is ook anti-replay. Zie [site-naar-site VPN via ExpressRoute micro soft-peering][S2S-Over-ExR]voor meer informatie over het configureren van een site-naar-site IPSec VPN in de tunnel modus met behulp van ExpressRoute micro soft-peering. 
 
-De belangrijkste beperking van het configureren van een site-naar-site-VPN dat gebruikmaakt van Microsoft-peering is doorvoer. Doorvoer via de IPsec-tunnel wordt beperkt door de capaciteit van de VPN-gateway. De VPN-gateway-doorvoer is lager dan de doorvoer van ExpressRoute. In dit scenario, met behulp van de IPsec-tunnel voor goed beveiligd verkeer en het gebruik van persoonlijke peering voor al het andere verkeer kunt de ExpressRoute-bandbreedtegebruik optimaliseren.
+De primaire beperking van het configureren van een site-naar-site-VPN dat gebruikmaakt van micro soft-peering is door voer. De door Voer via de IPsec-tunnel wordt beperkt door de capaciteit van de VPN-gateway. De door Voer van de VPN-gateway is lager dan ExpressRoute door voer. In dit scenario zorgt het gebruik van de IPsec-tunnel voor zeer veilig verkeer en het gebruik van privé-peering voor al het andere verkeer voor het optimaliseren van het ExpressRoute bandbreedte gebruik.
 
-### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Site-naar-site-VPN als een beveiligd failoverpad voor ExpressRoute
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Site-naar-site-VPN als een beveiligd failover-pad voor ExpressRoute
 
-ExpressRoute fungeert als een paar redundante circuit om hoge beschikbaarheid te garanderen. U kunt geo-redundante ExpressRoute-connectiviteit configureren in verschillende Azure-regio's. Ook, zoals u in onze test setup, binnen een Azure-regio, kunt u een site-naar-site VPN een failoverpad voor de ExpressRoute-verbinding maken. Wanneer dezelfde voorvoegsels worden geadverteerd via ExpressRoute en een site-naar-site-VPN, prioriteert Azure ExpressRoute. Om te voorkomen dat asymmetrische routering tussen ExpressRoute en de site-naar-site VPN-verbinding, on-premises netwerkconfiguratie moet ook hyperlink met behulp van ExpressRoute-connectiviteit voordat deze site-naar-site VPN-verbinding gebruikt.
+ExpressRoute fungeert als een redundant circuit paar om hoge Beschik baarheid te garanderen. U kunt geo-redundante ExpressRoute-connectiviteit configureren in verschillende Azure-regio's. Net als tijdens de test installatie, in een Azure-regio, kunt u ook een site-naar-site-VPN gebruiken om een pad voor de ExpressRoute-verbinding te maken. Wanneer dezelfde voor voegsels worden geadverteerd via zowel ExpressRoute als een site-naar-site-VPN, krijgen de ExpressRoute van Azure prioriteit. Om asymmetrische route ring tussen ExpressRoute en de site-naar-site-VPN te voor komen, moet de on-premises netwerk configuratie ook reciprocate met ExpressRoute-connectiviteit voordat de site-naar-site-VPN-verbinding wordt gebruikt.
 
-Zie voor meer informatie over het naast elkaar bestaande verbindingen configureren voor ExpressRoute en een site-naar-site-VPN [ExpressRoute en site-naar-site co-existentie][ExR-S2S-CoEx].
+Zie [ExpressRoute en site-naar-site][ExR-S2S-CoEx]-samen werking voor meer informatie over het configureren van naast elkaar bestaande verbindingen voor ExpressRoute en een site-naar-site-VPN.
 
-## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Back-end-connectiviteit voor knooppunt VNets en filialen uitbreiden
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Back-end-connectiviteit met spoke VNets-en vertakkings locaties uitbreiden
 
-### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Knooppunt-VNet-connectiviteit met behulp van VNet-peering
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Spoke VNet-connectiviteit met behulp van VNet-peering
 
-Hub en spoke-VNet-architectuur wordt veel gebruikt. De hub is een VNet in Azure die als een centraal punt van connectiviteit tussen uw knooppunt VNets en naar uw on-premises netwerk fungeert. De spaken zijn VNets die zijn gekoppeld aan de hub, en die u kunt gebruiken om workloads te isoleren. Verkeer stroomt tussen het on-premises datacenter en de hub via een ExpressRoute of VPN-verbinding. Zie voor meer informatie over de architectuur, [een ster-netwerktopologie implementeren in Azure][Hub-n-Spoke].
+De hub-en spoke VNet-architectuur wordt veel gebruikt. De hub is een VNet in azure dat fungeert als een centraal punt van connectiviteit tussen uw spoke-VNets en uw on-premises netwerk. De spokes zijn VNets die peer met de hub en die u kunt gebruiken om werk belastingen te isoleren. Verkeer loopt tussen het on-premises Data Center en de hub via een ExpressRoute of een VPN-verbinding. Zie [een hub-spoke-netwerk topologie in azure implementeren][Hub-n-Spoke]voor meer informatie over de architectuur.
 
-In de VNet-peering binnen een regio, knooppunt VNets hub VNet-gateways (VPN- en ExpressRoute-gateways) gebruiken om te communiceren met externe netwerken.
+In VNet-peering binnen een regio kan spoke VNets hub VNet-gateways (zowel VPN-als ExpressRoute-gateways) gebruiken om te communiceren met externe netwerken.
 
-### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>VNet-connectiviteit vertakking met behulp van site-naar-site-VPN
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Vertakkings-VNet-connectiviteit met behulp van site-naar-site-VPN
 
-U kunt de vertakking VNets die zich in verschillende regio's en on-premises netwerken met elkaar communiceren via een hub VNet. De systeemeigen Azure-oplossing voor deze configuratie is de site-naar-site VPN-verbinding met behulp van een VPN. Een alternatief is het gebruik van een virtueel netwerkapparaat (NVA) voor de routering in de hub.
+Mogelijk wilt u VNets, die zich in verschillende regio's bevinden, en on-premises netwerken met elkaar via een hub-VNet. De systeem eigen Azure-oplossing voor deze configuratie is een site-naar-site-VPN-verbinding met behulp van een VPN. U kunt ook een virtueel netwerk apparaat (NVA) gebruiken voor route ring in de hub.
 
-Zie voor meer informatie, [wat is VPN-Gateway?] [ VPN] en [implementeren van een maximaal beschikbare NVA][Deploy-NVA].
+Zie [Wat is VPN gateway?][VPN] en [Implementeer een Maxi maal beschik bare NVA][Deploy-NVA]voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [Veelgestelde vragen over ExpressRoute] [ ExR-FAQ] aan:
--   Meer informatie over het aantal ExpressRoute-circuits die u verbinding met een ExpressRoute-gateway maken kunt.
--   Meer informatie over het aantal ExpressRoute-gateways die u verbinding met een ExpressRoute-circuit maken kunt.
--   Meer informatie over andere schaallimieten van ExpressRoute.
+Raadpleeg de [Veelgestelde vragen over ExpressRoute][ExR-FAQ] voor het volgende:
+-   Meer informatie over het aantal ExpressRoute-circuits waarmee u verbinding kunt maken met een ExpressRoute-gateway.
+-   Meer informatie over het aantal ExpressRoute-gateways waarmee u verbinding kunt maken met een ExpressRoute-circuit.
+-   Meer informatie over andere schaal limieten van ExpressRoute.
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "network Watcher-weergave van de verbinding van een hub VNet met een knooppunt VNet"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "network Watcher-weergave van de verbinding van een hub VNet met een vertakking VNet"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "rasterweergave network Watcher van de verbinding van een hub VNet aan een vertakking VNet"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "network Performance Monitor weergave van de verbinding van de locatie 1 virtuele machine naar de hub VNet via ExpressRoute 1"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "weergave van de verbinding van de locatie 1 virtuele machine naar de hub VNet via een site-naar-site-VPN network Performance Monitor"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "Network Watcher weer gave van connectiviteit vanuit een hub-VNet naar een spoke-VNet"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "Network Watcher weer gave van connectiviteit vanuit een hub-VNet naar een vertakkings-VNet"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "Network Watcher raster weergave van de connectiviteit van een hub-VNet naar een vertakkings-VNet"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "Netwerkprestatiemeter weer gave van connectiviteit vanaf de locatie 1 VM naar het hub-VNet via ExpressRoute 1"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "Netwerkprestatiemeter weer gave van connectiviteit vanaf de locatie 1 VM naar de hub-VNet via een site-naar-site-VPN"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

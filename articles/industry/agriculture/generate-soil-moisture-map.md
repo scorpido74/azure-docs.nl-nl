@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 61deb5361c9857956318f8b9b4ca836fcfa65d48
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: e11f560c2b101d86d41feb3f6c93cffe7c1a748d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798126"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851448"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Bodem vocht heatmap genereren
 
 Bodem vocht is het water dat in de ruimten tussen de bodem deeltjes wordt bewaard. Bodem vocht heatmap helpt u bij het begrijpen van de vocht gegevens op elke wille keurige diepte en met een hoge resolutie in uw farms. Om een nauw keurige en bruikbare bodem vocht heatmap te genereren, is een uniforme implementatie van Sens oren van dezelfde provider vereist. Verschillende providers hebben verschillen in de manier waarop bodem vocht wordt gemeten, samen met verschillen in kalibratie. De heatmap wordt gegenereerd voor een bepaalde diepte met behulp van de Sens oren die op die diepte zijn geïmplementeerd.
 
-In dit artikel wordt het proces beschreven voor het genereren van een bodem vocht heatmap voor uw farm, met behulp van de Azure FarmBeats-Accelerator. In dit artikel leert u het volgende:
+In dit artikel wordt het proces beschreven voor het genereren van een bodem vocht heatmap voor uw farm, met behulp van de Azure FarmBeats-Accelerator. In dit artikel leert u hoe u:
 
 - [Farms maken](#create-a-farm)
 - [Sens oren toewijzen aan Farms](#get-soil-moisture-sensor-data-from-partner)
@@ -24,13 +24,13 @@ In dit artikel wordt het proces beschreven voor het genereren van een bodem voch
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Controleer het volgende:  
+Zorg ervoor dat:  
 
 - Een Azure-abonnement.
 - Een actief exemplaar van Azure FarmBeats.
 - Er zijn mini maal drie sensors voor bodem vochtigheid beschikbaar voor de farm.
 
-## <a name="create-a-farm"></a>Een farm maken
+## <a name="create-a-farm"></a>Farm maken
 
 Een farm is een geografisch gedeelte waarvan u een bodem vocht heatmap wilt maken. U kunt een farm maken met behulp van de [Farms-API](https://aka.ms/FarmBeatsDatahubSwagger) of in de [FarmsBeats-gebruikers interface](manage-farms.md#create-farms)
 
@@ -93,4 +93,4 @@ Voer de volgende stappen uit:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een bodem vocht heatmap hebt gegenereerd, leert u hoe u de [plaatsing van sensors](generate-maps.md#sensor-placement-maps) en [historische telemetriegegevens](ingest-historical-telemetry-data.md)kunt genereren. 
+Nu u een bodem vocht heatmap hebt gegenereerd, leert u hoe u de [plaatsing van sensors](generate-maps.md#sensor-placement-map) en [historische telemetriegegevens](ingest-historical-telemetry-data.md)kunt genereren. 

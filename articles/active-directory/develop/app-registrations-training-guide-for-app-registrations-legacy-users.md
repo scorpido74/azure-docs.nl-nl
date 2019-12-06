@@ -2,29 +2,25 @@
 title: Trainings handleiding voor het overstappen van App-registraties (verouderd) naar de nieuwe App-registraties ervaring in de Azure Portal
 description: Een inleiding tot de nieuwe app-registratie ervaring in de Azure Portal
 services: active-directory
-documentationcenter: ''
 author: archieag
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01d543262a9eb358643c0860b24ac4306d2c5edf
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927100"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844257"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Overstappen van App-registraties (verouderd) naar de nieuwe App-registraties ervaring in de Azure Portal
+# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Overstappen van app-registraties (verouderd) naar de nieuwe ervaring voor app-registratie in de Azure-portal
 
 U kunt een groot aantal verbeteringen vinden in de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) -ervaring in de Azure Portal. Als u bekend bent met de App-registraties (verouderde) ervaring in de Azure Portal, gebruikt u deze hand leiding om aan de slag te gaan met de nieuwe ervaring.
 
@@ -61,13 +57,13 @@ De verouderde ervaring had een **Eigenschappen** pagina. **Eigenschappen** hebbe
 
 - **Naam**
 - **Object-ID**
-- **Toepassings-ID**
+- **Toepassings-id**
 - **App-id-URI**
 - **Logo**
 - **URL van start pagina**
 - **Afmeldings-URL**
 - **URL voor de service voorwaarden**
-- **URL van privacyverklaring**
+- **URL voor de privacyverklaring**
 - **Toepassingstype**
 - **Multi tenant**
 

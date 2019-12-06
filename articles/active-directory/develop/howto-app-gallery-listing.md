@@ -2,28 +2,24 @@
 title: Uw toepassing weer geven in de Azure Active Directory-toepassings galerie | Microsoft Docs
 description: Meer informatie over het weer geven van een toepassing die eenmalige aanmelding in de app-galerie van Azure Active Directory ondersteunt
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: ryanwi
-ms.reviewer: elisol, bryanla
+ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374075"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842775"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
 
@@ -114,7 +110,7 @@ Als u een bestaande toepassing wilt bijwerken of verwijderen in de app-galerie v
 
 ## <a name="list-requests-by-customers"></a>Aanvragen van klanten weer geven
 
-Klanten kunnen een aanvraag indienen om een toepassing weer te geven door **app-aanvragen per klant**te selecteren  > **nieuwe aanvraag**in te dienen.
+Klanten kunnen een aanvraag indienen om een toepassing weer te geven door **app-aanvragen per klant** te selecteren > **nieuwe aanvraag**in te dienen.
 
 ![Toont de tegel door de klant aangevraagde apps](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -122,7 +118,7 @@ Hier volgt de stroom van door de klant aangevraagde toepassingen.
 
 ![Toont de stroom van de door de klant aangevraagde apps](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Tijd lijnen
+## <a name="timelines"></a>Tijdlijnen
 
 De tijd lijn voor het proces van het weer geven van een SAML 2,0-of WS-set-toepassing in de galerie is 7 tot 10 werk dagen.
 
@@ -134,4 +130,4 @@ De tijd lijn voor het proces van het weer geven van een OpenID Connect Connect-t
 
 ## <a name="escalations"></a>Escalaties
 
-Voor eventuele escalaties verzendt u een e-mail naar het [Azure AD SSO-integratie team](mailto:SaaSApplicationIntegrations@service.microsoft.com) op SaaSApplicationIntegrations@service.microsoft.com, waarna we zo snel mogelijk reageren.
+Verzend voor eventuele escalaties e-mail naar het [Azure AD SSO-integratie team](mailto:SaaSApplicationIntegrations@service.microsoft.com) op SaaSApplicationIntegrations@service.microsoft.comen wij zullen zo snel mogelijk reageren.

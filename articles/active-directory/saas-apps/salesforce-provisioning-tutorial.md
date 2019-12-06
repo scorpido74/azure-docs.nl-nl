@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 32f3c439460ddc61dbf08fc4e8d7b7a000aa20f9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120550"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849170"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Zelf studie: Sales Force configureren voor het automatisch inrichten van gebruikers
 
@@ -60,7 +60,7 @@ In deze sectie wordt u begeleid bij het koppelen [van de API-V40 van uw Azure ad
 > [!Tip]
 > U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor Sales Force in te scha kelen, gevolgd door de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
 
-### <a name="configure-automatic-user-account-provisioning"></a>automatisch inrichten van gebruikers accounts configureren
+### <a name="configure-automatic-user-account-provisioning"></a>Automatisch inrichten van gebruikers accounts configureren
 
 Het doel van deze sectie is het maken van een overzicht van het inschakelen van de gebruikers inrichting van Active Directory gebruikers accounts in Sales Force.
 
@@ -129,9 +129,10 @@ Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [ra
 * **SalesforceDuplicateUserName:** De gebruiker kan niet worden ingericht omdat deze een Salesforce.com-gebruikers naam heeft die is gedupliceerd in een andere Salesforce.com-Tenant.  In Salesforce.com moet de waarde voor het kenmerk ' username ' uniek zijn in alle Salesforce.com-tenants.  Standaard wordt de userPrincipalName van een gebruiker in Azure Active Directory de gebruikers naam in Salesforce.com.   U hebt twee opties.  U kunt ook de gebruiker met de dubbele gebruikers naam in de andere Salesforce.com-Tenant vinden en de naam ervan wijzigen als u de andere Tenant beheert.  De andere optie is om de toegang van de Azure Active Directory gebruiker te verwijderen tot de Salesforce.com-Tenant waarmee uw directory is geïntegreerd. Deze bewerking wordt opnieuw geprobeerd tijdens de volgende synchronisatie poging. 
 * **SalesforceRequiredFieldMissing:** Voor Sales Force moeten bepaalde kenmerken aanwezig zijn op de gebruiker om de gebruiker te kunnen maken of bij te werken. Er ontbreekt een van de vereiste kenmerken voor deze gebruiker. Zorg ervoor dat kenmerken zoals e-mail en alias worden ingevuld voor alle gebruikers die u wilt inrichten voor Sales Force. U kunt gebruikers die deze kenmerken niet hebben, bereiken met behulp [van filtering op basis van kenmerken](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 * De standaard kenmerk toewijzing voor het inrichten van Sales Force bevat de SingleAppRoleAssignments-expressie voor het toewijzen van appRoleAssignments in azure AD aan profilenaam in Sales Force. Zorg ervoor dat de gebruikers niet meerdere app-roltoewijzingen in azure AD hebben omdat de kenmerk toewijzing alleen ondersteuning biedt voor het inrichten van één rol. 
+* Voor Sales Force moeten e-mail updates hand matig worden goedgekeurd voordat ze worden gewijzigd. Als gevolg hiervan ziet u mogelijk meerdere vermeldingen in de inrichtings Logboeken om het e-mail bericht van de gebruiker bij te werken (totdat de wijziging in het e-mail bericht is goedgekeurd).
 
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

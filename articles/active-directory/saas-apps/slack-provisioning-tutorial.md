@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4cd8e483d6c189e311fdb1925ad0f2effc2affe1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278170"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849140"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Zelf studie: toegestane vertraging voor automatische gebruikers inrichting configureren
 
@@ -66,13 +66,13 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
 
 4. Stel de **inrichtings modus** in op **automatisch**.
 
-   ![Inrichting van toegestane vertraging](./media/slack-provisioning-tutorial/Slack1.PNG)
+   ![Inrichting van toegestane vertraging](./media/slack-provisioning-tutorial/slack1.png)
 
 5. Klik onder de sectie **beheerders referenties** op **autoriseren**. Hiermee opent u een dialoog venster voor een toegestane autorisatie in een nieuw browser venster.
 
 6. Meld u in het nieuwe venster aan met de beheerders account van uw team. Selecteer in het dialoog venster resulterende autorisatie het uitstel team waarvoor u het inrichten wilt inschakelen en selecteer vervolgens **autoriseren**. Als u klaar bent, keert u terug naar de Azure Portal om de inrichtings configuratie te volt ooien.
 
-    ![Autorisatie dialoogvenster](./media/slack-provisioning-tutorial/Slack3.PNG)
+    ![Autorisatie dialoogvenster](./media/slack-provisioning-tutorial/slackauthorize.png)
 
 7. Klik in het Azure Portal op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw toegestane marge-app. Als de verbinding mislukt, zorg er dan voor dat uw toegestane account beheerders machtigingen voor het team heeft en probeer de stap ' autoriseren ' opnieuw uit te voeren.
 
@@ -106,7 +106,7 @@ U kunt eventueel het inrichten van groeps objecten van Azure AD inschakelen voor
 
 Dit heeft tot gevolg dat groeps objecten die zijn toegewezen aan toegestane vertraging in de sectie **gebruikers en groepen** , volledig worden gesynchroniseerd van Azure AD naar een toegestane vertraging. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in de app voor de toegestane vertraging.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Connector beperkingen
 
@@ -124,7 +124,7 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manag
 
 * De toegestane vertraging kan alleen overeenkomen met de kenmerken **username** en **e-mail**.  
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

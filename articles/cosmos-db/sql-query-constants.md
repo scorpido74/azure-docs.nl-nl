@@ -1,17 +1,17 @@
 ---
 title: SQL-constanten in Azure Cosmos DB
-description: Meer informatie over SQL-constanten in Azure Cosmos DB
+description: Meer informatie over hoe de SQL-query constanten in Azure Cosmos DB worden gebruikt om een specifieke gegevens waarde weer te geven
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: 41cafeb76b7b9481a78ffcff179676d0aa7bf6fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002034"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873417"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-query constanten  
 
@@ -107,7 +107,7 @@ ms.locfileid: "71002034"
 |-|-|-|  
 |\\'|enkel aanhalingsteken (')|U+0027|  
 |\\"|dubbel aanhalingsteken (")|U+0022|  
-|\\\ |omgekeerde schuine streep\\()|U + 005C|  
+|\\\ |omgekeerde schuine streep (\\)|U + 005C|  
 |\\/|schuine streep (/)|U+002F|  
 |\b|BACKSPACE|U+0008|  
 |\f|formulier-feed|U + 000C|  

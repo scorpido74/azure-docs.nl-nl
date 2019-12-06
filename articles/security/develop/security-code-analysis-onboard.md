@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 77be6d8518774a1e2656e23024490dd9c1431865
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 108d116500454605f33de201caffc11ae263f74c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707257"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851499"
 ---
 # <a name="onboarding-and-installing"></a>Onboarding en installatie
 
@@ -31,23 +31,23 @@ Vereisten om aan de slag te gaan met de analyse van micro soft-beveiligings code
 ## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>De uitbrei ding van de analyse van micro soft-beveiligings code onboarden
 
 - Als u een van de volgende ondersteunings aanbiedingen hebt, neemt u contact op met uw technische account beheerder om bestaande uren te kopen of te wisselen om toegang te krijgen tot de uitbrei ding:
-   - Geavanceerde laag voor ondersteuning van Unified support
-   - Prestatie niveau Unified support
-   - Premier Support voor ontwikkel aars
-   - Premier Support voor partners
-   - Premier Support voor bedrijven
+  - Geavanceerde laag voor ondersteuning van Unified support
+  - Prestatie niveau Unified support
+  - Premier Support voor ontwikkel aars
+  - Premier Support voor partners
+  - Premier Support voor bedrijven
 - Als u een van de volgende ondersteunings services of geen micro soft-ondersteunings abonnement hebt, moet u een upgrade uitvoeren naar een in aanmerking komende ondersteunings aanbieding:
-   - Azure-ondersteuning voor partners
-   - Azure Basic-ondersteuning
-   - Azure Developer Support
-   - Azure Standard Support
-   - Azure Professional Direct
-   - Kern niveau Unified support
+  - Azure-ondersteuning voor partners
+  - Azure Basic-ondersteuning
+  - Azure Developer Support
+  - Azure Standard Support
+  - Azure Professional Direct
+  - Kern niveau Unified support
 - Ga naar de [Start pagina van de ondersteunings services](https://www.microsoft.com/enterprise/services/support)als u een in aanmerking komend ondersteunings aanbieding wilt kopen.
 - Wanneer er een ondersteunings contract is opgesteld, neemt u contact op met uw technische account beheerder om u op weg te helpen en om u te helpen alle vereiste gegevens te verzamelen.
 
 >[!NOTE]
-> Als u een partner bent die is geregistreerd in het micro soft partners Network, komt u in aanmerking voor het aanschaffen van Premier Support voor partners. Anders moet u een van de hiervoor genoemde ondersteunings aanbiedingen aanschaffen.
+>Als u geen ondersteunings contract hebt, werken we ook aan een partner-aankoop programma waarin u partners van derden kunt gebruiken om de uitbrei ding te kopen zonder dat u het uniforme ondersteunings abonnement hoeft aan te schaffen. Stuur [ons een e-mail](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Onboarding%20Request). om ons te laten weten dat u geïnteresseerd bent in deze optie. Zodra deze optie beschikbaar is, wordt uw interesse weer gegeven.
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>De uitbrei ding voor de analyse van micro soft-beveiligings code installeren
 
@@ -87,6 +87,6 @@ Nadat u de uitbrei ding hebt geïnstalleerd, zijn de taken voor het ontwikkelen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie onze [configuratie handleiding](security-code-analysis-customize.md)voor meer informatie over het configureren van de build-taken.
+Voor meer informatie over het configureren van de build-taken raadpleegt u onze [configuratie](security-code-analysis-customize.md) handleiding of de [yaml-configuratie handleiding](yaml-configuration.md).
 
 Bekijk onze [pagina met veelgestelde vragen](security-code-analysis-faq.md)als u meer vragen hebt over de uitbrei ding en de hulpprogram ma's die worden aangeboden.

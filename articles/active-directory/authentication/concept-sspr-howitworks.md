@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e88669b5453069d9f6bb64e803adc65baf8afc6b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 5b19c80378aa40a7f791a3eb61130b013217ddee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420679"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848575"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Hoe werkt het? self-service voor wachtwoord herstel van Azure AD
 
@@ -52,15 +52,15 @@ Lees de volgende stappen voor meer informatie over de logica achter de pagina vo
      * Als write-back niet wordt geïmplementeerd en het wacht woord van de gebruiker on-premises wordt beheerd, wordt de gebruiker gevraagd contact op te nemen met de beheerder om hun wacht woord opnieuw in te stellen.
 4. Als wordt vastgesteld dat de gebruiker het wacht woord opnieuw kan instellen, wordt de gebruiker begeleid door het reset proces.
 
-## <a name="authentication-methods"></a>Verificatiemethoden
+## <a name="authentication-methods"></a>Authenticatiemethoden
 
 Als SSPR is ingeschakeld, moet u ten minste één van de volgende opties voor de verificatie methoden selecteren. Soms hoort u deze opties als ' Gates ' genoemd. We raden u ten zeerste aan **twee of meer authenticatie methoden te kiezen** zodat uw gebruikers meer flexibiliteit hebben wanneer ze er geen toegang toe hebben. Meer informatie over de hieronder vermelde methoden vindt u in het artikel [Wat zijn verificatie methoden?](concept-authentication-methods.md).
 
 * Meldingen via mobiele app
-* Mobiele app-code
-* Email
+* Code voor mobiele app
+* E-mail
 * Mobiele telefoon
-* Office Phone
+* Zakelijke telefoon
 * Beveiligingsvragen
 
 Gebruikers kunnen hun wacht woord alleen opnieuw instellen als ze gegevens bevatten in de verificatie methoden die de beheerder heeft ingeschakeld.
@@ -88,9 +88,9 @@ Wanneer u een mobiele app gebruikt, zoals de app Microsoft Authenticator, als me
 * Wanneer beheerders een andere methode moeten gebruiken om een wacht woord opnieuw in te stellen, is verificatie code de enige optie die beschikbaar is.
 * Wanneer beheerders twee methoden moeten gebruiken om een wacht woord opnieuw in te stellen, kunnen gebruikers naast andere ingeschakelde methoden **ofwel** een melding **of** verificatie code gebruiken.
 
-| Aantal methoden dat is vereist om opnieuw in te stellen | Een' | Twee |
+| Het aantal methoden dat is vereist om het wachtwoord opnieuw in te stellen | Een | Twee |
 | :---: | :---: | :---: |
-| Functies voor mobiele apps beschikbaar | Code | Code of melding |
+| Functies voor mobiele apps beschikbaar | Coderen | Code of melding |
 
 Gebruikers hebben geen optie om hun mobiele app te registreren wanneer ze zich registreren voor selfservice voor wachtwoord herstel van [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup). Gebruikers kunnen hun mobiele app registreren bij [https://aka.ms/mfasetup](https://aka.ms/mfasetup)of in de nieuwe preview-versie voor de registratie van beveiligings gegevens op [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
 
@@ -127,7 +127,7 @@ Voorbeeld:
 Als u deze optie inschakelt, moet de gebruiker de registratie van het wacht woord opnieuw instellen volt ooien als deze zich aanmeldt bij alle toepassingen die gebruikmaken van Azure AD. Deze werk stroom omvat de volgende toepassingen:
 
 * Office 365
-* Azure-portal
+* Azure Portal
 * Toegangsvenster
 * Federatieve toepassingen
 * Aangepaste toepassingen met Azure AD

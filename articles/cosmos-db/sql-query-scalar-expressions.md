@@ -1,17 +1,17 @@
 ---
 title: Scalaire expressies in Azure Cosmos DB SQL-query's
-description: Meer informatie over de SQL-syntaxis van scalaire expressies voor Azure Cosmos DB.
+description: Meer informatie over de SQL-syntaxis van scalaire expressies voor Azure Cosmos DB. In dit artikel wordt ook beschreven hoe u scalaire expressies kunt combi neren in complexe expressies met behulp van Opera tors.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: c35ad65a584f8ee95142e9bc85a58b5b6cd99744
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003532"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870731"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Scalaire expressies in Azure Cosmos DB SQL-query's
 
@@ -63,7 +63,7 @@ De [component SELECT](sql-query-select.md) ondersteunt scalaire expressies. Een 
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Vertegenwoordigt een waarde van de eigenschap met de `property_name` naam of het matrix element `array_index` met de index van een matrix. Als de eigenschap/matrixindex niet bestaat of index van de eigenschap/array wordt verwezen op een waarde die is geen object/matrix, wordt de expressie wordt geëvalueerd als niet-gedefinieerde waarde.  
+   Vertegenwoordigt een waarde van de eigenschap met de naam `property_name` of het matrix element met de index `array_index` van een matrix. Als de eigenschap/matrixindex niet bestaat of index van de eigenschap/array wordt verwezen op een waarde die is geen object/matrix, wordt de expressie wordt geëvalueerd als niet-gedefinieerde waarde.  
   
 - `unary_operator <scalar_expression>`  
   
@@ -111,7 +111,7 @@ De [component SELECT](sql-query-select.md) ondersteunt scalaire expressies. Een 
     SELECT ((2 + 11 % 7)-2)/3
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [{
@@ -126,7 +126,7 @@ In de volgende query is het resultaat van de scalaire expressie een Booleaanse w
     FROM Families f
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [

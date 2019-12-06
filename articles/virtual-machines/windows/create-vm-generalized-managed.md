@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 17100769bac2e7af08e0bcba6ca2eb129b621013
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: de59edc2e2c702993efd6187a590264d9aac16a7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037530"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841928"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Een virtuele machine maken op basis van een beheerde installatie kopie
 
@@ -29,8 +29,7 @@ Voordat u een nieuwe virtuele machine maakt, moet u [een beheerde VM-installatie
 
 ## <a name="use-the-portal"></a>Gebruik de portal
 
-1. Open de [Azure Portal](https://portal.azure.com).
-2. Selecteer **alle resources**in het menu links. U kunt de resources sorteren op **type** om eenvoudig uw installatie kopieën te vinden.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om een beheerde installatie kopie te vinden. Zoek en selecteer **installatie kopieën**.
 3. Selecteer de installatie kopie die u wilt gebruiken in de lijst. De pagina **overzicht** van installatie kopie wordt geopend.
 4. Selecteer **virtuele machine maken** in het menu.
 5. Geef de informatie van de virtuele machine op. De gebruikers naam en het wacht woord die u hier opgeeft, worden gebruikt om u aan te melden bij de virtuele machine. Wanneer u klaar bent, selecteert u **OK**. U kunt de nieuwe virtuele machine in een bestaande resource groep maken of **nieuwe** maken om een nieuwe resource groep te maken voor het opslaan van de virtuele machine.

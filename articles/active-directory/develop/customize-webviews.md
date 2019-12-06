@@ -3,27 +3,23 @@ title: Browsers en WebView aanpassen
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het aanpassen van de browser ervaring die wordt gebruikt door MSAL voor iOS en macOS voor het aanmelden van gebruikers
 services: active-directory
-documentationcenter: dev-center-name
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb314e46094bb6c283a17508c35b7fc17e010e5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 69b1e217bfa64ad08136e2763716d455332c5ba4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803373"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843322"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Procedure: browsers en webweergaven voor iOS/macOS aanpassen
 
@@ -45,7 +41,7 @@ MSAL voor macOS ondersteunt alleen `WKWebView`.
 
 ## <a name="system-browsers"></a>Systeem browsers
 
-Voor iOS worden `ASWebAuthenticationSession`, `SFAuthenticationSession` en `SFSafariViewController` beschouwd als systeem browsers. Over het algemeen delen systeem browsers cookies en andere website gegevens met de Safari-browser toepassing.
+Voor iOS worden `ASWebAuthenticationSession`, `SFAuthenticationSession`en `SFSafariViewController` als systeem browsers beschouwd. Over het algemeen delen systeem browsers cookies en andere website gegevens met de Safari-browser toepassing.
 
 Standaard detecteert MSAL de iOS-versie dynamisch en selecteert de aanbevolen systeem browser die beschikbaar is op die versie. Op iOS 12 + wordt `ASWebAuthenticationSession`. 
 
@@ -70,10 +66,10 @@ De browser die u gebruikt, is van invloed op de SSO-ervaring vanwege hoe ze cook
 
 | Technologie    | Browser type  | iOS-Beschik baarheid | macOS-Beschik baarheid | Cookies en andere gegevens delen  | MSAL-Beschik baarheid | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Systeem | iOS12 en up | macOS 10,15 en up | Ja | alleen iOS | exemplaren van w/Safari
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systeem | iOS11 en up | N/A | Ja | alleen iOS |  exemplaren van w/Safari
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systeem | iOS11 en up | N/A | Nee | alleen iOS | Geen * *
-| **SFSafariViewController** | Systeem | iOS10 | N/A | Ja | alleen iOS |  exemplaren van w/Safari
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Systeem | iOS12 en up | macOS 10,15 en up | Ja | Alleen voor iOS | exemplaren van w/Safari
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systeem | iOS11 en up | N/A | Ja | Alleen voor iOS |  exemplaren van w/Safari
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systeem | iOS11 en up | N/A | Nee | Alleen voor iOS | Geen * *
+| **SFSafariViewController** | Systeem | iOS10 | N/A | Ja | Alleen voor iOS |  exemplaren van w/Safari
 | **WKWebView**  | In-app | iOS8 en up | macOS 10,10 en up | Nee | iOS en macOS | Geen * *
 
 \* * Voor het werken met SSO moeten tokens worden gedeeld tussen apps. Hiervoor is een token cache of een Broker-toepassing vereist, zoals Microsoft Authenticator voor iOS.
@@ -88,7 +84,7 @@ U kunt een in-app-browser of een specifieke systeem browser gebruiken, afhankeli
 
 ## <a name="change-per-interactive-request"></a>Wijziging per interactieve aanvraag
 
-Elke aanvraag kan zo worden geconfigureerd dat de standaard browser wordt overschreven door de eigenschap `MSALInteractiveTokenParameters.webviewParameters.webviewType` te wijzigen voordat deze wordt door gegeven aan de API van `acquireTokenWithParameters:completionBlock:`.
+Elke aanvraag kan worden geconfigureerd om de standaard browser te onderdrukken door de `MSALInteractiveTokenParameters.webviewParameters.webviewType` eigenschap te wijzigen voordat u deze aan de `acquireTokenWithParameters:completionBlock:`-API doorgeeft.
 
 Daarnaast biedt MSAL ondersteuning voor het door geven van een aangepaste `WKWebView` door de eigenschap `MSALInteractiveTokenParameters.webviewParameters.customWebView` in te stellen.
 

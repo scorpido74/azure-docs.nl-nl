@@ -2,27 +2,23 @@
 title: Verificatie scenario's voor micro soft Identity platform | Azure
 description: Meer informatie over verificatie stromen en toepassings scenario's voor het micro soft Identity-platform. Meer informatie over de verschillende soorten toepassingen die identiteiten kunnen verifiëren, tokens verkrijgen en beveiligde Api's aanroepen.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24c891c3de9126de6b833dea30c78c14b709384d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 4c508bbafd31a2a72dcb7804ef2d274584345bf6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687757"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844291"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Verificatie stromen en toepassings scenario's
 

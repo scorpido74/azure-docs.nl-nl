@@ -4,17 +4,17 @@ description: In dit artikel wordt beschreven hoe u runbooks beheert in Azure Aut
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5a477811e46d97375d4dce4d83072dda60ca797c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 42b973ce8a25abff60211afb34ef719d42366175
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717218"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850496"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbooks in Azure Automation beheren
 
@@ -47,9 +47,9 @@ New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
 
 U kunt een nieuw runbook maken in Azure Automation door een Power shell-script of Power shell-werk stroom (. ps1-extensie), een geëxporteerd grafisch runbook (. graphrunbook) of een python 2-script (. py-extensie) te importeren.  U moet het [type runbook](automation-runbook-types.md) opgeven dat tijdens het importeren wordt gemaakt, waarbij rekening wordt gehouden met de volgende overwegingen.
 
-* Een `.graphrunbook` bestand kan alleen worden geïmporteerd in een nieuw [grafisch runbook](automation-runbook-types.md#graphical-runbooks)en grafische runbooks kunnen alleen worden gemaakt op basis van `.graphrunbook` een bestand.
-* Een `.ps1` bestand met een Power shell-werk stroom kan alleen in een [Power shell workflow-runbook](automation-runbook-types.md#powershell-workflow-runbooks)worden geïmporteerd. Als het bestand meerdere Power shell-werk stromen bevat, mislukt het importeren. U moet elke werk stroom opslaan in een eigen bestand en deze afzonderlijk importeren.
-* Een `.ps1` bestand met een Power shell-werk stroom moet niet in een [Power shell-runbook](automation-runbook-types.md#powershell-runbooks)worden geïmporteerd, omdat het niet kan worden herkend door de Power shell-script engine.
+* Een `.graphrunbook` bestand kan alleen in een nieuw [grafisch runbook](automation-runbook-types.md#graphical-runbooks)worden geïmporteerd en grafische runbooks kunnen alleen worden gemaakt op basis van een `.graphrunbook` bestand.
+* Een `.ps1`-bestand met een Power shell-werk stroom kan alleen in een [Power shell workflow-runbook](automation-runbook-types.md#powershell-workflow-runbooks)worden geïmporteerd. Als het bestand meerdere Power shell-werk stromen bevat, mislukt het importeren. U moet elke werk stroom opslaan in een eigen bestand en deze afzonderlijk importeren.
+* Een `.ps1`-bestand met een Power shell-werk stroom moet niet worden geïmporteerd in een [Power shell-runbook](automation-runbook-types.md#powershell-runbooks), omdat het niet kan worden herkend door de Power shell-script engine.
 * Een `.ps1` bestand dat geen werk stroom bevat, kan worden geïmporteerd in een [Power shell-runbook](automation-runbook-types.md#powershell-runbooks) of een [Power shell workflow-runbook](automation-runbook-types.md#powershell-workflow-runbooks).  Als de app wordt geïmporteerd in een Power shell workflow-runbook, wordt deze geconverteerd naar een werk stroom en worden opmerkingen opgenomen in het runbook waarin de wijzigingen zijn opgegeven die zijn aangebracht.
 
 ### <a name="to-import-a-runbook-from-a-file-with-the-azure-portal"></a>Een runbook importeren uit een bestand met de Azure Portal
@@ -71,7 +71,7 @@ U kunt de volgende procedure gebruiken om een script bestand te importeren in Az
 > [!NOTE]
 > Nadat u een grafisch runbook of een grafisch Power shell-werk stroom runbook hebt geïmporteerd, hebt u de mogelijkheid om naar het andere type te converteren, indien gewenst. U kunt niet converteren naar een tekst runbook.
 
-### <a name="to-import-a-runbook-from-a-script-file-with-windows-powershell"></a>Een runbook importeren vanuit een script bestand met Windows Power shell
+### <a name="to-import-a-runbook-from-a-script-file-with-windows-powershell"></a>Een runbook uit een scriptbestand importeren met Windows PowerShell
 
 U kunt de cmdlet [import-AzureRMAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/import-azurermautomationrunbook) gebruiken om een script bestand te importeren als een concept Power shell workflow-runbook. Als het runbook al bestaat, mislukt het importeren tenzij u de para meter *-Force* gebruikt.
 
@@ -111,7 +111,7 @@ Wanneer u een nieuw runbook maakt of importeert, moet u het publiceren voordat u
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Open het runbook in de Azure Portal.
-2. Klik op de knop **bewerken** .
+2. Klik op de knop **Bewerken**.
 3. Klik op de knop **publiceren** en vervolgens op **Ja** in het bevestigings bericht.
 
 ### <a name="powershell"></a>PowerShell

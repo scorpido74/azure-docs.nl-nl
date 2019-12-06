@@ -1,22 +1,22 @@
 ---
 title: Unieke sleutels gebruiken in Azure Cosmos DB
-description: Meer informatie over het gebruik van unieke sleutels in uw Azure Cosmos-data base
+description: Meer informatie over het definiëren en gebruiken van unieke sleutels voor een Azure Cosmos-data base. In dit artikel wordt ook beschreven hoe unieke sleutels een laag van gegevens integriteit toevoegen.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4a929566d464f8548c4bffeb9f89099e77722e67
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756777"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869830"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Beperkingen voor unieke sleutels in Azure Cosmos DB
 
-Unieke sleutels voegen een laag van gegevens integriteit toe aan een Azure Cosmos-container. U maakt een uniek sleutel beleid wanneer u een Azure Cosmos-container maakt. Met unieke sleutels, zorgt u ervoor dat een of meer waarden binnen een logische partitie uniek zijn. U kunt ook uniekheid per [partitie sleutel](partition-data.md)garanderen. 
+Unieke sleutels voegen een laag van gegevens integriteit toe aan een Azure Cosmos-container. U maakt een uniek sleutel beleid wanneer u een Azure Cosmos-container maakt. Met unieke sleutels, zorgt u ervoor dat een of meer waarden binnen een logische partitie uniek zijn. U kunt ook uniekheid per [partitie sleutel](partition-data.md)garanderen.
 
 Nadat u een container met een beleid met unieke sleutels hebt gemaakt, wordt het maken van een nieuwe of een update van een bestaand item dat resulteert in een duplicaat in een logische partitie, voor komen, zoals opgegeven door de beperking van de unieke sleutel. De partitie sleutel in combi natie met de unieke sleutel garandeert de uniekheid van een item binnen het bereik van de container.
 

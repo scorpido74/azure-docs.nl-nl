@@ -1,17 +1,17 @@
 ---
 title: Maak een synthetische partitie sleutel in Azure Cosmos DB om uw gegevens en werk belasting gelijkmatig te verdelen.
-description: Meer informatie over het gebruik van synthetische partitie sleutels in uw Azure Cosmos-containers
+description: Meer informatie over het gebruik van synthetische partitie sleutels in uw Azure Cosmos-containers om de gegevens en werk belasting gelijkmatig te verdelen over de partitie sleutels
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: 8b4e2b8abac39f3268e0da7838acd566f40fdccc
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 093610777b150c90ad55f1ce18337f1de8b17219
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754803"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870493"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Een synthetische partitiesleutel maken
 
@@ -44,15 +44,15 @@ In realtime scenario's kunt u duizenden items in een Data Base hebben. In plaats
 
 Een andere mogelijke strategie om de werk belasting gelijkmatiger te verdelen is om een wille keurig getal toe te voegen aan het einde van de waarde van de partitie sleutel. Wanneer u items op deze manier distribueert, kunt u parallelle schrijf bewerkingen uitvoeren op meerdere partities.
 
-Een voor beeld is een partitie sleutel die een datum voor stelt. U kunt een wille keurig getal tussen 1 en 400 kiezen en dit samen voegen als een achtervoegsel voor de datum. Deze methode resulteert in de partitie sleutel waarden zoals  `2018-08-09.1`, `2018-08-09.2`, enzovoort, via  `2018-08-09.400`. Omdat u de partitie sleutel wille keurig maakt, worden de schrijf bewerkingen op de container op elke dag gelijkmatig verdeeld over meerdere partities. Deze methode resulteert in een betere parallellisme en een hogere door voer.
+Een voor beeld is een partitie sleutel die een datum voor stelt. U kunt een wille keurig getal tussen 1 en 400 kiezen en dit samen voegen als een achtervoegsel voor de datum. Deze methode resulteert in de partitie sleutel waarden zoals `2018-08-09.1`,`2018-08-09.2`, enzovoort, via `2018-08-09.400`. Omdat u de partitie sleutel wille keurig maakt, worden de schrijf bewerkingen op de container op elke dag gelijkmatig verdeeld over meerdere partities. Deze methode resulteert in een betere parallellisme en een hogere door voer.
 
 ## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Een partitie sleutel met vooraf berekende achtervoegsels gebruiken 
 
 De strategie voor wille keurige achtervoegsels kan de schrijf doorvoer aanzienlijk verbeteren, maar het is moeilijk om een specifiek item te lezen. U weet niet welke achtervoegsel waarde is gebruikt toen u het item schreef. Gebruik de vooraf berekende achtervoegsels strategie om het gemakkelijker te maken om afzonderlijke items te lezen. In plaats van een wille keurig getal te gebruiken om de items te verdelen over de partities, gebruikt u een getal dat wordt berekend op basis van iets dat u wilt opvragen.
 
-Bekijk het vorige voor beeld, waarbij een container een datum als de partitie sleutel gebruikt. Stel nu dat elk item een  `Vehicle-Identification-Number` kenmerk (`VIN`) heeft dat we willen gebruiken. Stel dat u vaak query's uitvoert om items te vinden op de `VIN`, naast datum. Voordat uw toepassing het item naar de container schrijft, kan het een hash-achtervoegsel berekenen op basis van het chassis nummer en dit toevoegen aan de datum van de partitie sleutel. Tijdens de berekening wordt mogelijk een getal tussen 1 en 400 gegenereerd dat gelijkmatig is gedistribueerd. Dit resultaat is vergelijkbaar met de resultaten die door de strategie methode wille keurig achtervoegsel worden geproduceerd. De waarde van de partitie sleutel is vervolgens de datum die wordt samengevoegd met het berekende resultaat.
+Bekijk het vorige voor beeld, waarbij een container een datum als de partitie sleutel gebruikt. Stel nu dat elk item een `Vehicle-Identification-Number` kenmerk (`VIN`) heeft dat we willen gebruiken. Stel dat u vaak query's uitvoert om items te vinden op de `VIN`, naast datum. Voordat uw toepassing het item naar de container schrijft, kan het een hash-achtervoegsel berekenen op basis van het chassis nummer en dit toevoegen aan de datum van de partitie sleutel. Tijdens de berekening wordt mogelijk een getal tussen 1 en 400 gegenereerd dat gelijkmatig is gedistribueerd. Dit resultaat is vergelijkbaar met de resultaten die door de strategie methode wille keurig achtervoegsel worden geproduceerd. De waarde van de partitie sleutel is vervolgens de datum die wordt samengevoegd met het berekende resultaat.
 
-Met deze strategie worden de schrijf bewerkingen gelijkmatig verdeeld over de waarden van de partitie sleutel en over de partities. U kunt eenvoudig een bepaald item en datum lezen, omdat u de partitie sleutel waarde voor een specifieke `Vehicle-Identification-Number` kunt berekenen. Het voor deel van deze methode is dat u voor komt dat u een enkele Hot-partitie sleutel maakt, dat wil zeggen een partitie sleutel die alle werk belasting neemt. 
+Met deze strategie worden de schrijf bewerkingen gelijkmatig verdeeld over de waarden van de partitie sleutel en over de partities. U kunt eenvoudig een bepaald item en datum lezen, omdat u de partitie sleutel waarde voor een specifieke `Vehicle-Identification-Number`kunt berekenen. Het voor deel van deze methode is dat u voor komt dat u een enkele Hot-partitie sleutel maakt, dat wil zeggen een partitie sleutel die alle werk belasting neemt. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

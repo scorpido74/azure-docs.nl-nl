@@ -1,18 +1,18 @@
 ---
 title: GRADEN in Azure Cosmos DB query taal
-description: Meer informatie over de functie graden van SQL-systeem in Azure Cosmos DB.
+description: Meer informatie over de functie voor het SQL-systeem van graden in Azure Cosmos DB om de bijbehorende hoek in graden te retour neren voor een hoek opgegeven in radialen
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d8c2109c2c11f137b1966741a95d1d0c02895016
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5f432f5ef57c8eccc0cf629f00d2231364785b9a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351210"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871326"
 ---
 # <a name="degrees-azure-cosmos-db"></a>GRADEN (Azure Cosmos DB)
  Retourneert de overeenkomende hoek in graden voor een hoek die is opgegeven in radialen.  

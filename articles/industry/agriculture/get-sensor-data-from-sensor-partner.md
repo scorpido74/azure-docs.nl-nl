@@ -1,61 +1,60 @@
 ---
 title: Sensor gegevens ophalen van de partners
-description: Hierin wordt beschreven hoe u sensor gegevens van partners kunt ophalen
+description: In dit artikel wordt beschreven hoe u sensor gegevens van partners kunt ophalen.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b985dfc1f16372c3fad1b0a5c0894931b4c15dcc
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406487"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851295"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensor gegevens ophalen van sensor partners
 
-Met Azure FarmBeats kunt u streaming-gegevens van uw IoT-apparaten en Sens oren naar Data hub halen. Op dit moment worden de volgende partners voor sensor apparaten ondersteund:
+Met Azure FarmBeats kunt u streaming-gegevens van uw IoT-apparaten en Sens oren naar Datahub brengen. Op dit moment worden de volgende partners van sensor apparaten ondersteund.
 
-  ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![FarmBeats-partners](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
 
-Het integreren van apparaatgegevens met Azure FarmBeats helpt u bij het ophalen van de basis gegevens van de IoT-Sens oren die in uw farm zijn geïmplementeerd, naar de data hub. De gegevens kunnen worden gevisualiseerd via de FarmBeats-Accelerator en kunnen worden gebruikt voor het bouwen van gegevens fusie en AI/ML-modellen met behulp van FarmBeats.
+Het integreren van apparaatgegevens met Azure FarmBeats helpt u bij het ophalen van de basis gegevens van de IoT-Sens oren die in uw farm zijn geïmplementeerd, naar de data hub. De gegevens, zodra beschikbaar, kunnen worden gevisualiseerd via de FarmBeats-Accelerator. De gegevens kunnen worden gebruikt voor gegevens fusie en het samen stellen van machine learning/kunst matige intelligentie (ML/AI) met behulp van FarmBeats.
 
 Controleer het volgende om te beginnen met het streamen van sensor gegevens:
 
--  U hebt FarmBeats geïnstalleerd vanuit Azure Marketplace.
+-  U hebt FarmBeats geïnstalleerd in azure Marketplace.
 -  U hebt besloten over de Sens oren en apparaten die u wilt installeren op uw farm.
--  Als u van plan bent om bodem sensoren te gebruiken, kunt u de plaatsings kaart van de bodem vocht sensor gebruiken om een aanbeveling te krijgen over het aantal Sens oren en waar exact de Sens oren moeten worden geplaatst. Zie [genereren Maps](generate-maps.md)voor meer informatie.
+-  Als u van plan bent om gebruik te maken van bodem vocht Sens oren, gebruikt u de plaatsings kaart FarmBeats bodem vocht sensor om een aanbeveling te krijgen over het aantal Sens oren en waar u deze precies moet plaatsen. Zie [genereren Maps](generate-maps.md)voor meer informatie.
+- U koopt en implementeert apparaten of Sens oren van uw apparaat-partner op uw farm. Zorg ervoor dat u toegang hebt tot de sensor gegevens via de oplossing van uw apparaat partners.
 
-- Koop en implementeer apparaat/Sens oren van de partner van uw apparaat in uw farm. Zorg ervoor dat u toegang hebt tot de sensor gegevens via de oplossing van uw apparaat partners.
+## <a name="enable-device-integration-with-farmbeats"></a>Integratie van apparaten met FarmBeats inschakelen 
 
-### <a name="enable-device-integration-with-farmbeats"></a>Integratie van apparaten met FarmBeats inschakelen   
+Nadat u het streamen van sensor gegevens hebt gestart, kunt u beginnen met het proces van het ophalen van de gegevens in uw FarmBeats-systeem. Geef de volgende informatie op voor de provider van uw apparaat om de integratie met FarmBeats in te scha kelen:
 
-Zodra u het streamen van sensor gegevens hebt gestart, kunt u het proces voor het ophalen van de gegevens in uw FarmBeats-systeem starten. U moet de volgende informatie opgeven voor de provider van uw apparaat om de integratie met FarmBeats in te scha kelen:  
+ - API-eind punt
+ - Tenant-id
+ - Client-id
+ - Clientgeheim
+ - EventHub connection string
 
- - API-eindpunt  
- - Tenant-id  
- - Client-id  
- - Clientgeheim  
- - EventHub-verbindings reeks
+De vorige informatie wordt door uw systeem integrator verstrekt. Neem contact op met uw systeem integrator voor problemen die kunnen optreden wanneer u de integratie van het apparaat inschakelt.
 
-De bovenstaande informatie wordt door uw systeem integrator verstrekt. Neem contact op met uw systeem integrator voor problemen bij het inschakelen van de integratie van het apparaat.
+U kunt ook de referenties genereren door dit script uit Azure Cloud Shell uit te voeren. Volg deze stappen.
 
-U kunt ook de referenties genereren door dit script uit te voeren vanuit de Azure Cloud Shell. Volg de onderstaande stappen:
+1. Down load het [zip-bestand](https://aka.ms/farmbeatspartnerscript)en pak het uit naar uw lokale station. Twee bestanden bevinden zich in het zip-bestand.
+2. Meld u aan bij https://portal.azure.com/ en open Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de Azure Portal.
 
-1. Down load het [zip-bestand](https://aka.ms/farmbeatspartnerscript) en pak het uit naar uw lokale station. U vindt er twee bestanden in het ZIP-bestand.
-2. Meld u aan bij https://portal.azure.com/ en open Cloud Shell (deze optie is beschikbaar in de rechter balk van de portal)  
+    ![Azure Portal werk balk](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-    ![Maten van project-Farm](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
+3. Zorg ervoor dat de omgeving is ingesteld op **Power shell**. Standaard is deze ingesteld op bash.
 
-3. Zorg ervoor dat de omgeving is ingesteld op **Power shell** -standaard is ingesteld op bash.
+    ![Power shell-werkbalk instelling](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
+4. Upload de twee bestanden uit stap 1 van uw Cloud Shell-exemplaar.
 
-4. Upload de twee bestanden (uit stap 1 hierboven) in uw Cloud Shell.
+    ![Knop uploaden-werk balk](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
-
-5. Ga naar de map waarin de bestanden zijn geüpload (standaard wordt deze geüpload naar de basismap > gebruikers naam).
+5. Ga naar de map waarin de bestanden zijn geüpload. Standaard worden deze geüpload naar de basismap onder de gebruikers naam.
 6. Voer het volgende script uit:
 
     ```azurepowershell-interactive 
@@ -63,96 +62,96 @@ U kunt ook de referenties genereren door dit script uit te voeren vanuit de Azur
     ./generateCredentials.ps1   
 
     ```
-7. Volg de instructies op het scherm voor het vastleggen van de waarden. (API-eind punt, Tenant-ID, client-ID, client geheim en EventHub-verbindings reeks). De EventHub-verbindings reeks is beschikbaar als onderdeel van de API-reactie in Swagger.
+7. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**. De EventHub-connection string is beschikbaar als onderdeel van de API-reactie in Swagger.
 
-**Apparaatgegevens integreren met de gegenereerde referenties**
+### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Apparaatgegevens integreren met behulp van de gegenereerde referenties
 
-Ga naar de partner portal van het apparaat om FarmBeats te koppelen met behulp van de set met referenties die u hebt gegenereerd in de vorige sectie.
+Ga naar de partner portal van het apparaat om FarmBeats te koppelen met behulp van de set met referenties die u in de vorige sectie hebt gegenereerd:
 
- - API-eindpunt  
- - EventHub-verbindings reeks  
- - Client-id  
- - Clientgeheim  
- - Tenant-id  
+ - API-eind punt
+ - EventHub connection string
+ - Client-id
+ - Clientgeheim
+ - Tenant-id
 
  De provider van het apparaat bevestigt een geslaagde integratie. Na de bevestiging kunt u alle apparaten en Sens oren in azure FarmBeats bekijken.
 
 ## <a name="view-devices-and-sensors"></a>Apparaten en Sens oren weer geven
 
-Gebruik de volgende sectie om de apparaten en Sens oren in uw farm weer te geven.
+Gebruik de volgende sectie om de apparaten en Sens oren voor uw farm weer te geven.
 
 ### <a name="view-devices"></a>Apparaten weergeven
 
-Momenteel FarmBeats ondersteunt de volgende apparaten:
+FarmBeats ondersteunt momenteel de volgende apparaten:
 
 - **Knoop punt**: een apparaat waaraan een of meer Sens oren zijn gekoppeld.
 - **Gateway**: een apparaat waaraan een of meer knoop punten zijn gekoppeld.
 
-Voer de volgende stappen uit:
+Volg deze stappen.
 
 1. Op de start pagina selecteert u **apparaten** in het menu.
-  Op de pagina apparaten wordt het type apparaat, het model, de status, de farm waarin het is geplaatst en de datum waarop de meta gegevens voor het laatst zijn bijgewerkt weer gegeven. De kolom Farm is standaard ingesteld op NULL. U kunt ervoor kiezen om een apparaat toe te wijzen aan een farm. Zie [apparaten toewijzen](#assign-devices)voor meer informatie.
-2. Selecteer het apparaat om de apparaateigenschappen, telemetrie en onderliggende apparaten weer te geven die zijn verbonden met het apparaat.  
+  Op de pagina **apparaten** wordt het type apparaat, het model, de status, de farm waarin het is geplaatst en de datum waarop de meta gegevens voor het laatst zijn bijgewerkt weer gegeven. De kolom Farm is standaard ingesteld op *Null*. U kunt ervoor kiezen om een apparaat toe te wijzen aan een farm. Zie [apparaten toewijzen](#assign-devices)voor meer informatie.
+2. Selecteer het apparaat om de apparaateigenschappen, telemetrie en onderliggende apparaten weer te geven die zijn verbonden met het apparaat.
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
+    ![Pagina apparaten](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
 
 ### <a name="view-sensors"></a>Sens oren weer geven
 
-Voer de volgende stappen uit:
+Volg deze stappen.
 
 1. Selecteer op de start pagina **Sens oren** in het menu.
-  De pagina Sens oren bevat details over het type sensor, de farm waarmee deze is verbonden, het bovenliggende apparaat, de poort naam, het poort type en de laatst bijgewerkte status.
+  Op de pagina **Sens oren** worden details weer gegeven over het type sensor, de farm waarmee deze is verbonden, het bovenliggende apparaat, de poort naam, het poort type en de laatst bijgewerkte status.
 2. Selecteer de sensor om de sensor eigenschappen, actieve waarschuwingen en telemetrie van de sensor weer te geven.
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
+    ![Pagina Sens oren](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
 ## <a name="assign-devices"></a>Apparaten toewijzen  
 
-Zodra u de sensor gegevens in hebt geplaatst, kunt u deze toewijzen aan de farm waarin u de Sens oren hebt geïmplementeerd.
+Nadat de sensor gegevens in zijn stromen, kunt u deze toewijzen aan de farm waar u de Sens oren hebt geïmplementeerd.
 
-1. Selecteer op de start pagina **Farms** in het menu, de lijst pagina **Farms** wordt weer gegeven.  
-2. Selecteer de farm waaraan u het apparaat wilt toewijzen en selecteer **apparaten toevoegen**.  
+1. Selecteer op de start pagina de optie **Farms** in het menu. De pagina **Farms** lijst wordt weer gegeven.
+2. Selecteer de farm waaraan u het apparaat wilt toewijzen en selecteer **apparaten toevoegen**.
 3. Het venster **apparaten toevoegen** wordt weer gegeven. Selecteer het apparaat dat u wilt toewijzen aan de farm.
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Venster apparaten toevoegen](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
-4. Selecteer **apparaten toevoegen**. U kunt ook naar het menu **apparaten** gaan, de apparaten selecteren die u wilt toewijzen aan een farm en **apparaten koppelen**selecteren.  
-5. Selecteer in het venster **apparaten koppelen** de optie Farm in de vervolg keuzelijst en selecteer **Toep assen op alles** om de farm aan alle geselecteerde apparaten te koppelen.
+4. Selecteer **apparaten toevoegen**. U kunt ook naar het menu **apparaten** gaan, de apparaten selecteren die u wilt toewijzen aan een farm en **apparaten koppelen**selecteren.
+5. Selecteer in het venster **apparaten koppelen** de farm in de vervolg keuzelijst en selecteer **Toep assen op alles** om de farm aan alle geselecteerde apparaten te koppelen.
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
+    ![Venster Apparaten koppelen](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
 
-6. Als u elk apparaat aan een andere farm wilt koppelen, selecteert u de vervolg keuzelijst in de kolom **toewijzen aan Farm** en selecteert u een farm voor elke rij van het apparaat.  
+6. Als u elk apparaat aan een andere farm wilt koppelen, selecteert u de vervolg keuze pijl in de kolom **toewijzen aan Farm** en selecteert u een farm voor elke rij van het apparaat.
 7. Selecteer **toewijzen** om de apparaattoewijzing te volt ooien.
 
 ### <a name="visualize-sensor-data"></a>Sensor gegevens visualiseren
 
-Voer de volgende stappen uit:
+Volg deze stappen.
 
-1. Selecteer op de start pagina **Farms** in het menu om de pagina **Farms** weer te geven.  
-2. Selecteer de **Farm** waarvan u de sensor gegevens wilt bekijken.  
-3. Op het dash board van de **Farm** kunt u telemetrie-gegevens weer geven. U kunt ervoor kiezen om live-telemetrie weer te geven of een **aangepast bereik** te gebruiken om in een bepaald datum bereik weer te geven.
+1. Selecteer op de start pagina **Farms** in het menu om de pagina **Farms** weer te geven.
+2. Selecteer de **Farm** waarvan u de sensor gegevens wilt bekijken.
+3. Op het dash board van de **Farm** kunt u telemetrie-gegevens weer geven. U kunt live-telemetrie weer geven of een **aangepast bereik** gebruiken om een bepaald datum bereik weer te geven.
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
+    ![Farm dashboard](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
 
-## <a name="delete-sensor"></a>Sensor verwijderen
+## <a name="delete-a-sensor"></a>Een sensor verwijderen
 
-Volg deze stappen:
+Volg deze stappen.
 
-1. Op de start pagina selecteert u **Sens oren** in het menu om de pagina **Sens oren** weer te geven.  
-2. Selecteer het apparaat dat u wilt verwijderen en selecteer **verwijderen** uit bevestigings venster.
+1. Op de start pagina selecteert u **Sens oren** in het menu om de pagina **Sens oren** weer te geven.
+2. Selecteer het apparaat dat u wilt verwijderen en selecteer **verwijderen** in het bevestigings venster.
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
+    ![De knop Verwijderen](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
-Er wordt een bevestigings bericht weer gegeven dat de sensor is verwijderd.  
+Er wordt een bevestigings bericht weer gegeven dat de sensor is verwijderd.
 
 ## <a name="delete-devices"></a>Apparaten verwijderen
 
-Volg deze stappen:
+Volg deze stappen.
 
-1. Op de start pagina selecteert u **apparaten** in het menu om de pagina apparaten weer te geven.  
+1. Op de start pagina selecteert u **apparaten** in het menu om de pagina **apparaten** weer te geven.
 2. Selecteer het apparaat dat u wilt verwijderen en selecteer **verwijderen** in het bevestigings venster.
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
+    ![De knop Verwijderen](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

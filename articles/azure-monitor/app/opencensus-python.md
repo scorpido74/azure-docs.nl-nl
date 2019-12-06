@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2114e60b5ed684063ed100279ea19f561bd335ea
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132205"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849782"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor instellen voor uw python-toepassing (preview-versie)
 
@@ -26,7 +26,7 @@ Azure Monitor ondersteunt gedistribueerde tracering, metrische verzameling en lo
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Een Application Insights resource in Azure Monitor maken
 
@@ -42,7 +42,7 @@ Eerst moet u een Application Insights-resource in Azure Monitor maken, waarmee e
    | ------------- |:-------------|:-----|
    | **Naam**      | Wereld wijd unieke waarde | Naam waarmee de app wordt geïdentificeerd die u bewaken |
    | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe resource groep voor het hosten van Application Insights gegevens |
-   | **Locatie** | US - oost | Een locatie bij u in de buurt of in de buurt van waar de app wordt gehost |
+   | **Locatie** | VS - oost | Een locatie bij u in de buurt of in de buurt van waar de app wordt gehost |
 
 1. Selecteer **Maken**.
 
@@ -268,7 +268,7 @@ De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillend
     90
     ```
 
-3. Hoewel het invoeren van waarden nuttig is voor demonstratie doeleinden, willen we uiteindelijk de metrische gegevens naar Azure Monitor verzenden. Wijzig uw code uit de vorige stap op basis van het volgende code voorbeeld:
+3. Hoewel het invoeren van waarden nuttig is voor demonstratie doeleinden, willen we uiteindelijk de logboek gegevens naar Azure Monitor verzenden. Wijzig uw code uit de vorige stap op basis van het volgende code voorbeeld:
 
     ```python
     import logging
@@ -295,7 +295,53 @@ De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillend
 
 4. De export functie stuurt logboek gegevens naar Azure Monitor. U kunt de gegevens onder `traces`vinden.
 
-5. Zie voor meer informatie over het verrijken van uw logboeken met tracerings context gegevens integratie met opentellingen python [Logboeken](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
+5. Als u uw logboek berichten wilt Format teren, kunt u `formatters` gebruiken in de ingebouwde python- [logboek registratie-API](https://docs.python.org/3/library/logging.html#formatter-objects).
+
+    ```python
+    import logging
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    
+    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
+    date_format = '%Y-%m-%d %H:%M:%S'
+    formatter = logging.Formatter(format_str, date_format)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    handler = AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
+    
+    def main():
+        while True:
+            valuePrompt()
+    
+    if __name__ == "__main__":
+        main()
+    ```
+
+6. U kunt ook aangepaste dimensies toevoegen aan uw logboeken. Deze worden weer gegeven als sleutel-waardeparen in `customDimensions` in Azure Monitor.
+> [!NOTE]
+> Als u deze functie wilt gebruiken, moet u een woorden lijst als een argument door geven aan uw logboeken. elke andere gegevens structuur wordt genegeerd. Als u de teken reeks opmaak wilt behouden, slaat u ze op in een woorden lijst en geeft u ze als argumenten door.
+
+    ```python
+    import logging
+    
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+    ```
+
+7. Zie voor meer informatie over het verrijken van uw logboeken met tracerings context gegevens integratie met opentellingen python [Logboeken](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
 
 ## <a name="view-your-data-with-queries"></a>Uw gegevens weer geven met query's
 

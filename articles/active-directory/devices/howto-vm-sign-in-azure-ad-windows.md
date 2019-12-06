@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac52fa7eab055a2b2e9154481019d49acdca65d9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420536"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842404"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -79,7 +79,7 @@ Een Windows Server 2019 Data Center-VM maken in azure met Azure AD-aanmelding:
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com), met een account dat toegang heeft tot het maken van vm's en selecteer **+ een resource maken**.
 1. Typ **Windows Server** in zoeken in de zoek balk van Marketplace.
    1. Klik op **Windows Server** en kies **Windows Server 2019 Data Center** in een vervolg keuzelijst software plan selecteren.
-   1. Klik op **maken**.
+   1. Klik op **Maken**.
 1. Schakel op het tabblad beheer de optie in om u aan te **melden met Aad-referenties (preview)** onder de sectie Azure Active Directory van van **uit op aan.**
 1. Zorg ervoor dat door het **systeem toegewezen beheerde identiteit** onder het gedeelte identiteit is ingesteld op **aan**. Deze actie moet automatisch worden uitgevoerd wanneer u aanmelden met Azure AD-referenties inschakelt.
 1. Bespreek de rest van de ervaring van het maken van een virtuele machine. Tijdens dit voor beeld moet u een gebruikers naam en wacht woord voor de beheerder voor de virtuele machine maken.
@@ -116,6 +116,9 @@ az vm create \
     --admin-username azureuser \
     --admin-password yourpassword
 ```
+
+> [!NOTE]
+> U moet door het systeem toegewezen beheerde identiteit inschakelen op uw virtuele machine voordat u de Azure AD-aanmeld-VM-extensie installeert.
 
 Het maken van de virtuele machine en de ondersteunende resources duurt enkele minuten.
 
@@ -230,24 +233,24 @@ De AADLoginForWindows-extensie moet worden geïnstalleerd om de virtuele machine
 
    | Opdracht die moet worden uitgevoerd | Verwachte uitvoer |
    | --- | --- |
-   | krul-H meta gegevens: True "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Juiste informatie over de Azure VM |
-   | krul-H meta gegevens: True "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Geldige Tenant-ID die is gekoppeld aan het Azure-abonnement |
-   | krul-H meta gegevens: True "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Geldig toegangs token dat is uitgegeven door Azure Active Directory voor de beheerde identiteit die aan deze VM is toegewezen |
+   | krul-H meta gegevens: True "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Juiste informatie over de Azure VM |
+   | krul-H meta gegevens: True "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Geldige Tenant-ID die is gekoppeld aan het Azure-abonnement |
+   | krul-H meta gegevens: True "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Geldig toegangs token dat is uitgegeven door Azure Active Directory voor de beheerde identiteit die aan deze VM is toegewezen |
 
    > [!NOTE]
    > Het toegangs token kan worden gedecodeerd met een hulp programma als [http://calebb.net/](http://calebb.net/). Controleer of de ' AppID ' in het toegangs token overeenkomt met de beheerde identiteit die is toegewezen aan de virtuele machine.
 
 1. Zorg ervoor dat de vereiste eind punten toegankelijk zijn vanaf de virtuele machine met behulp van de opdracht regel:
    
-   - krul https://login.microsoftonline.com/-D –
-   - krul https://login.microsoftonline.com/`<TenantID>`/-D:
+   - krul https://login.microsoftonline.com/ -D –
+   - krul https://login.microsoftonline.com/`<TenantID>` /-D:
 
    > [!NOTE]
    > Vervang `<TenantID>` door de ID van de Azure AD-Tenant die is gekoppeld aan het Azure-abonnement.
 
-   - krul https://enterpriseregistration.windows.net/-D-
-   - krul https://device.login.microsoftonline.com/-D-
-   - krul https://pas.windows.net/-D-
+   - krul https://enterpriseregistration.windows.net/ -D-
+   - krul https://device.login.microsoftonline.com/ -D-
+   - krul https://pas.windows.net/ -D-
 
 1. De apparaatstatus kan worden weer gegeven door `dsregcmd /status`uit te voeren. Het doel is om de status van het apparaat weer te geven als `AzureAdJoined : YES`.
 
@@ -270,19 +273,19 @@ Deze afsluit code wordt omgezet naar DSREG_E_MSI_TENANTID_UNAVAILABLE omdat de e
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Probleem 2: de AADLoginForWindows-extensie kan niet worden geïnstalleerd met de afsluit code:-2145648607
 
-Deze afsluit code wordt omgezet naar DSREG_AUTOJOIN_DISC_FAILED omdat de extensie het https://enterpriseregistration.windows.net-eind punt niet kan bereiken.
+Deze afsluit code wordt omgezet naar DSREG_AUTOJOIN_DISC_FAILED omdat de extensie het https://enterpriseregistration.windows.net -eind punt niet kan bereiken.
 
 1. Controleer of de vereiste eind punten toegankelijk zijn vanaf de virtuele machine met behulp van de opdracht regel:
 
-   - krul https://login.microsoftonline.com/-D –
-   - krul https://login.microsoftonline.com/`<TenantID>`/-D:
+   - krul https://login.microsoftonline.com/ -D –
+   - krul https://login.microsoftonline.com/`<TenantID>` /-D:
    
    > [!NOTE]
    > Vervang `<TenantID>` door de ID van de Azure AD-Tenant die is gekoppeld aan het Azure-abonnement. Als u de Tenant-ID moet vinden, kunt u met de muis aanwijzer over uw account naam bewegen om de map/Tenant-ID op te halen, of Azure Active Directory > Eigenschappen > Directory-ID selecteren in het Azure Portal.
 
-   - krul https://enterpriseregistration.windows.net/-D-
-   - krul https://device.login.microsoftonline.com/-D-
-   - krul https://pas.windows.net/-D-
+   - krul https://enterpriseregistration.windows.net/ -D-
+   - krul https://device.login.microsoftonline.com/ -D-
+   - krul https://pas.windows.net/ -D-
 
 1. Als een van de opdrachten mislukt met ' kan host `<URL>`niet oplossen ', probeert u deze opdracht uit te voeren om te bepalen welke DNS-server wordt gebruikt door de virtuele machine.
    

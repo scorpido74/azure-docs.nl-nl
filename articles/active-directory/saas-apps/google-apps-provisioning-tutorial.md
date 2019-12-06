@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7c259371ccdb55eff01eb7f0605315b17c33cdd3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167856"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842727"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Zelf studie: G Suite configureren voor automatische gebruikers inrichting
 
@@ -134,7 +134,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor G suite in azure AD:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -178,7 +178,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![G suite-groeps toewijzingen](media/google-apps-provisioning-tutorial/groupmappings.png)
 
-12. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar G suite in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt voor het vergelijken van de groepen in G suite voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+12. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar G suite in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt voor het vergelijken van de groepen in G suite voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren. De gebruikers interface geeft de standaard set kenmerk toewijzingen weer tussen Azure AD en G suite. U kunt extra kenmerken toevoegen, zoals organisatie-eenheid door te klikken op nieuwe toewijzing toevoegen. 
 
     ![Kenmerken G suite-groep](media/google-apps-provisioning-tutorial/groupattributes.png)
 
@@ -200,10 +200,13 @@ Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en
 
 Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+
+## <a name="common-issues"></a>Algemene problemen
+* Autorisatie fouten kunnen optreden wanneer het account dat wordt gebruikt om een verbinding tot stand te brengen, niet voor een beheerder in GSuite is. Zorg ervoor dat het account dat wordt gebruikt om toegang te autoriseren, beheerders machtigingen heeft voor **alle domeinen** waarmee gebruikers moeten worden ingericht. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,20 +11,20 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: e7d79b15b6f55d925713e4ef7e49df391e087162
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 58a446baaf15facab3a85d4d83defdeb5e6d2ef9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687694"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851482"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL Database Auditing
 
-Controle voor Azure [SQL database](sql-database-technical-overview.md) en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) houdt database gebeurtenissen bij en schrijft deze naar een audit logboek in uw Azure storage-account, Log Analytics werk ruimte of event hubs. Controleren is ook:
+Controle voor Azure [SQL database](sql-database-technical-overview.md) en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) houdt database gebeurtenissen bij en schrijft deze naar een audit logboek in uw Azure storage-account, Log Analytics werk ruimte of event hubs. De controlefunctie biedt ook deze mogelijkheden:
 
-- Helpt u bij het onderhouden van naleving van regelgeving, het begrijpen van database activiteiten en inzicht te krijgen in verschillen en afwijkingen die kunnen wijzen op problemen met het bedrijf of vermoedelijke beveiligings schendingen.
+- Naleving van wet- en regelgeving, inzicht in activiteiten in de database en in de afwijkingen en discrepanties die kunnen wijzen op problemen voor het bedrijf of vermoedelijke schendingen van de beveiliging.
 
-- Maakt en vergemakkelijkt het naleven van nalevings standaarden, hoewel dit geen garantie biedt voor naleving. Voor meer informatie over Azure-Program ma's die naleving van standaarden ondersteunen, raadpleegt u de [Vertrouwenscentrum van Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) waarin u de meest recente lijst met SQL database nalevings certificeringen kunt vinden.
+- Mogelijk maken en faciliteren van nalevingsstandaarden, hoewel dit geen garantie biedt voor naleving. Voor meer informatie over Azure-Program ma's die naleving van standaarden ondersteunen, raadpleegt u de [Vertrouwenscentrum van Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) waarin u de meest recente lijst met SQL database nalevings certificeringen kunt vinden.
 
 
 > [!NOTE] 
@@ -35,11 +35,11 @@ Controle voor Azure [SQL database](sql-database-technical-overview.md) en [SQL D
 
 ## <a id="subheading-1"></a>Overzicht van de controle van Azure SQL database
 
-U kunt SQL database controle gebruiken voor het volgende:
+U kunt SQL Database Auditing gebruiken voor het volgende:
 
-- Een audittrail van geselecteerde gebeurtenissen **bewaren** . U kunt categorieën van database acties definiëren die moeten worden gecontroleerd.
-- **Rapport** over de database activiteit. U kunt vooraf geconfigureerde rapporten en een dash board gebruiken om snel aan de slag te gaan met activiteiten en gebeurtenis rapportage.
-- Rapporten **analyseren** . U vindt verdachte gebeurtenissen, ongebruikelijke activiteiten en trends.
+- Een audittrail van geselecteerde gebeurtenissen **bewaren** . U kunt categorieën van database-acties definiëren die moeten worden gecontroleerd.
+- **Rapport** over de database activiteit. U kunt vooraf geconfigureerde rapporten en een dashboard gebruiken om snel aan de slag te gaan met de rapportage bvavan activiteiten en gebeurtenissen.
+- Rapporten **analyseren** . U kunt verdachte gebeurtenissen, ongebruikelijke activiteiten en trends vinden.
 
 > [!IMPORTANT]
 > Audit logboeken worden geschreven om **blobs toe te voegen** in Azure Blob-opslag in uw Azure-abonnement.
@@ -104,7 +104,7 @@ In de volgende sectie wordt de configuratie van de controle met behulp van de Az
 
 7. Als u het schrijven van audit logboeken naar een Log Analytics-werk ruimte wilt configureren, selecteert u **log Analytics (preview)** en opent u **log Analytics Details**. Selecteer of maak de Log Analytics-werk ruimte waar de logboeken worden geschreven en klik vervolgens op **OK**.
 
-    ![Log Analytics werk ruimte](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Log Analytics-werkruimte](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. Als u het schrijven van audit logboeken naar een Event Hub wilt configureren, selecteert u **Event hub (preview)** en opent u **Details van Event hub**. Selecteer de Event Hub waar de logboeken worden geschreven en klik vervolgens op **OK**. Zorg ervoor dat de Event Hub zich in dezelfde regio bevindt als de-data base en-server.
 
@@ -124,7 +124,7 @@ In de volgende sectie wordt de configuratie van de controle met behulp van de Az
 
 Als u ervoor hebt gekozen om audit logboeken naar Azure Monitor-logboeken te schrijven:
 
-- Gebruik de [Azure Portal](https://portal.azure.com).  Open de relevante data base. Klik boven aan de **controle** pagina van de Data Base op **audit logboeken weer geven**.
+- Gebruik [Azure Portal](https://portal.azure.com).  Open de relevante data base. Klik boven aan de **controle** pagina van de Data Base op **audit logboeken weer geven**.
 
     ![audit logboeken weer geven](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
@@ -154,11 +154,11 @@ Als u ervoor hebt gekozen om audit logboeken naar Event hub te schrijven:
 Als u ervoor hebt gekozen om audit logboeken naar een Azure Storage-account te schrijven, zijn er verschillende methoden om de logboeken weer te geven:
 
 > [!NOTE] 
-> Controle op alleen-lezen replica is automatisch ingeschakeld. Voor meer informatie over de-hiërarchie van de opslagmap, de naam conventies en de logboek indeling, raadpleegt u de [SQL database controle logboek indeling](sql-database-audit-log-format.md). 
+> Controle op [alleen-lezen replica's](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) wordt automatisch ingeschakeld. Voor meer informatie over de hiërarchie van de opslag mappen, naam conventies en logboek indeling raadpleegt u de [SQL database controle logboek indeling](sql-database-audit-log-format.md). 
 
-- Audit logboeken worden geaggregeerd in het account dat u tijdens de installatie hebt gekozen. U kunt audit logboeken verkennen met behulp van een hulp programma zoals [Azure Storage Explorer](https://storageexplorer.com/). In azure Storage worden controle Logboeken opgeslagen als een verzameling BLOB-bestanden in een container met de naam **sqldbauditlogs**. Voor meer informatie over de-hiërarchie van de opslagmap, de naam conventies en de logboek indeling, raadpleegt u de [SQL database controle logboek indeling](https://go.microsoft.com/fwlink/?linkid=829599).
+- Audit logboeken worden geaggregeerd in het account dat u tijdens de installatie hebt gekozen. U kunt audit logboeken verkennen met behulp van een hulp programma zoals [Azure Storage Explorer](https://storageexplorer.com/). In azure Storage worden controle Logboeken opgeslagen als een verzameling BLOB-bestanden in een container met de naam **sqldbauditlogs**. Voor meer informatie over de hiërarchie van de opslag mappen, naam conventies en logboek indeling raadpleegt u de [SQL database controle logboek indeling](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Gebruik de [Azure Portal](https://portal.azure.com).  Open de relevante data base. Klik boven aan de **controle** pagina van de Data Base op **audit logboeken weer geven**.
+- Gebruik [Azure Portal](https://portal.azure.com).  Open de relevante data base. Klik boven aan de **controle** pagina van de Data Base op **audit logboeken weer geven**.
 
     ![Navigatievenster][7]
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8388d5b22cddcf148c68f35758ccdf797abbcd9e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 283bd56b9d9cbe412e9c28127dd9dab7decc2d7c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420632"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848303"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Uw bestaande NPS-infra structuur integreren met Azure Multi-Factor Authentication
 
@@ -68,7 +68,7 @@ De Microsoft Azure Active Directory-module voor Windows PowerShell is geïnstall
 
 Iedereen die de NPS-extensie gebruikt, moet worden gesynchroniseerd met Azure Active Directory met behulp van Azure AD Connect en moeten worden geregistreerd voor MFA.
 
-Wanneer u de uitbrei ding installeert, hebt u de map-ID en de beheerders referenties nodig voor uw Azure AD-Tenant. U kunt uw directory-ID vinden in de [Azure Portal](https://portal.azure.com). Meld u aan als beheerder. Zoek en selecteer de **Azure Active Directory**en selecteer vervolgens **Eigenschappen**. Kopieer de GUID in het vak **Directory-id** en sla deze op. U gebruikt deze GUID als Tenant-ID bij de installatie van de NPS-extensie.
+Wanneer u de uitbrei ding installeert, hebt u de map-ID en de beheerders referenties nodig voor uw Azure AD-Tenant. U vindt uw map-ID in de [Azure-portal](https://portal.azure.com). Meld u aan als beheerder. Zoek en selecteer de **Azure Active Directory**en selecteer vervolgens **Eigenschappen**. Kopieer de GUID in het vak **Directory-id** en sla deze op. U gebruikt deze GUID als Tenant-ID bij de installatie van de NPS-extensie.
 
 ![Zoek uw directory-ID onder Azure Active Directory eigenschappen](./media/howto-mfa-nps-extension/properties-directory-id.png)
 
@@ -82,7 +82,7 @@ De NPS-server moet kunnen communiceren met de volgende Url's via de poorten 80 e
 Daarnaast is connectiviteit met de volgende Url's vereist voor het volt ooien [van de installatie van de adapter met het opgegeven Power shell-script](#run-the-powershell-script)
 
 - https:\//login.microsoftonline.com
-- https:\/-provisioningapi.microsoftonline.com
+- https:\//provisioningapi.microsoftonline.com
 - https:\/-aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>Uw omgeving voorbereiden

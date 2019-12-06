@@ -2,13 +2,13 @@
 title: Gast configuratie beleidsregels maken
 description: Meer informatie over het maken van een Azure Policy gast configuratie beleid voor Windows-of Linux-Vm's met Azure PowerShell.
 ms.date: 11/21/2019
-ms.topic: conceptual
-ms.openlocfilehash: 2e653d07e783425afdcd71f9d58e3569692faaf9
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.topic: how-to
+ms.openlocfilehash: d31c03f05f3a27207eb4c184b78cb531f8bb43d6
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407043"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873077"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gast configuratie beleidsregels maken
 
@@ -162,7 +162,7 @@ Para meters van de cmdlet `New-GuestConfigurationPackage`:
 
 - **Naam**: naam van het gast configuratie pakket.
 - **Configuratie**: gecompileerd DSC-configuratie document volledig pad.
-- **Pad**: pad naar map voor uitvoer. Deze para meter is optioneel. Als u niets opgeeft, wordt het pakket gemaakt in de huidige map.
+- **Pad**: pad naar map voor uitvoer. Deze parameter is optioneel. Als u niets opgeeft, wordt het pakket gemaakt in de huidige map.
 - **ChefProfilePath**: volledig pad naar het INSPEC-profiel. Deze para meter wordt alleen ondersteund bij het maken van inhoud om Linux te controleren.
 
 Het voltooide pakket moet worden opgeslagen op een locatie die toegankelijk is voor de beheerde virtuele machines. Voor beelden zijn GitHub-opslag plaatsen, een Azure-opslag plaats of Azure-opslag. Als u het pakket liever niet openbaar wilt maken, kunt u een [SAS-token](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) in de URL toevoegen.
@@ -296,7 +296,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-Voor Linux-beleid voegt u de eigenschap **AttributesYmlContent** in uw configuratie toe en overschrijft u de waarden dienovereenkomstig. De gast configuratie agent maakt automatisch het YaML-bestand dat wordt gebruikt door de specificatie voor het opslaan van kenmerken. Zie het voorbeeld hieronder.
+Voor Linux-beleid voegt u de eigenschap **AttributesYmlContent** in uw configuratie toe en overschrijft u de waarden dienovereenkomstig. De gast configuratie agent maakt automatisch het YaML-bestand dat wordt gebruikt door de specificatie voor het opslaan van kenmerken. Zie onderstaand voorbeeld.
 
 ```azurepowershell-interactive
 Configuration FirewalldEnabled {

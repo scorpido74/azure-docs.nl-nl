@@ -1,32 +1,28 @@
 ---
-title: Toepassings-en Service-Principal-objecten in Azure Active Directory
+title: Toepassings- en service-principal-objecten in Azure Active Directory
 titleSuffix: Microsoft identity platform
 description: Meer informatie over de relatie tussen toepassings-en Service-Principal-objecten in Azure Active Directory.
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
 services: active-directory
-editor: ''
 ms.assetid: adfc0569-dc91-48fe-92c3-b5b4833703de
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1a4d9301894c6a98abd8244fdd6c10a058a26ad
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 03054f328513c7356b02d296076c211cc1c3865e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803435"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844580"
 ---
-# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Toepassings-en Service-Principal-objecten in Azure Active Directory
+# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Toepassings- en service-principal-objecten in Azure Active Directory
 
 Soms kan de betekenis van de term ' Application ' in de context van Azure Active Directory (Azure AD) worden gebruikt. In dit artikel worden de conceptuele en concrete aspecten van de integratie van Azure AD-toepassingen verduidelijkt, met een afbeelding van registratie en toestemming voor een [multi tenant-toepassing](developer-glossary.md#multi-tenant-application).
 
@@ -51,7 +47,7 @@ Wanneer u een Azure AD-toepassing registreert in de [Azure Portal][AZURE-Portal]
 - Een toepassings object en
 - Een Service-Principal-object
 
-### <a name="application-object"></a>Toepassings object
+### <a name="application-object"></a>toepassings object
 
 Een Azure AD-toepassing wordt gedefinieerd door de ene en enige toepassings object, die zich bevindt in de Azure AD-Tenant waar de toepassing is geregistreerd, ook wel de ' Home '-Tenant van de toepassing genoemd. De entiteit van de Microsoft Graph- [toepassing][MS-Graph-App-Entity] definieert het schema voor de eigenschappen van een toepassings object.
 
@@ -63,13 +59,13 @@ De beveiligingsprincipal definieert het toegangs beleid en de machtigingen voor 
 
 Wanneer een toepassing toestemming krijgt om toegang te krijgen tot bronnen in een Tenant (na registratie of [toestemming](developer-glossary.md#consent)), wordt er een Service-Principal-object gemaakt. De [entiteit Microsoft Graph ServicePrincipal][MS-Graph-Sp-Entity] definieert het schema voor de eigenschappen van een Service Principal-object.
 
-### <a name="application-and-service-principal-relationship"></a>Relatie tussen toepassing en Service-Principal
+### <a name="application-and-service-principal-relationship"></a>Relatie tussen toepassing en service-principal
 
 Overweeg het toepassings object als *globale* weer gave van uw toepassing voor gebruik in alle tenants en de Service-Principal als de *lokale* weer gave voor gebruik in een specifieke Tenant.
 
-Het object Application fungeert als de sjabloon waarvan de algemene en standaard eigenschappen zijn *afgeleid* voor gebruik bij het maken van bijbehorende service-principal-objecten. Een toepassings object heeft daarom een 1:1-relatie met de software toepassing en een 1: veel relaties met de bijbehorende service-principal-object (en).
+Het toepassingsobject fungeert als de sjabloon waaruit gemeenschappelijke en standaardeigenschappen worden *afgeleid* voor gebruik bij het maken van de bijbehorende service-principal-objecten. Een toepassings object heeft daarom een 1:1-relatie met de software toepassing en een 1: veel relaties met de bijbehorende service-principal-object (en).
 
-Een Service-Principal moet worden gemaakt in elke Tenant waar de toepassing wordt gebruikt, waardoor er een identiteit kan worden ingesteld voor aanmelding en/of toegang tot bronnen die worden beveiligd door de Tenant. Een toepassing met één Tenant heeft slechts één service-principal (in de eigen Tenant), die is gemaakt en wordt ingestemd voor gebruik tijdens de registratie van de toepassing. Een webtoepassing/API met meerdere tenants bevat ook een service-principal die is gemaakt in elke Tenant, waar een gebruiker van die Tenant toestemming heeft gegeven om het te gebruiken.
+Een Service-Principal moet worden gemaakt in elke Tenant waar de toepassing wordt gebruikt, waardoor er een identiteit kan worden ingesteld voor aanmelding en/of toegang tot bronnen die worden beveiligd door de Tenant. Een toepassing in één tenant heeft slechts één service-principal (in de starttenant) die is gemaakt en waarvoor toestemming is gegeven voor gebruik tijdens de toepassingsregistratie. Een webtoepassing/API met meerdere tenants bevat ook een service-principal die is gemaakt in elke Tenant, waar een gebruiker van die Tenant toestemming heeft gegeven om het te gebruiken.
 
 > [!NOTE]
 > Alle wijzigingen die u aanbrengt in het toepassings object, worden ook weer gegeven in het Service-Principal-object in de thuis Tenant van de toepassing (de Tenant waar deze is geregistreerd). Voor multi tenant-toepassingen worden wijzigingen aan het toepassings object niet weer gegeven in de Service-Principal-objecten van een consumenten Tenant, totdat de toegang wordt verwijderd via het [toegangs venster](https://myapps.microsoft.com) van de toepassing en opnieuw wordt toegewezen.

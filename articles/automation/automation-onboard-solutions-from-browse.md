@@ -3,18 +3,18 @@ title: Meer informatie over het voorbereiden van Updatebeheer-, Wijzigingen bijh
 description: Meer informatie over het voorbereiden van een virtuele machine van Azure met Updatebeheer, Wijzigingen bijhouden en inventaris oplossingen die deel uitmaken van Azure Automation
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3e56b44988dc6dbfed99f339795fee6d15c7dd57
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc6e3f3aaa77d7691e0443ee74405058bde2dfa0
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372786"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850802"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Oplossingen voor Updatebeheer, Wijzigingen bijhouden en inventaris inschakelen op meerdere Vm's
 

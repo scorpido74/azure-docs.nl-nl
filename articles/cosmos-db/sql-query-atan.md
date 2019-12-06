@@ -1,18 +1,18 @@
 ---
 title: BOOGTAN in Azure Cosmos DB query taal
-description: Meer informatie over de SQL-systeem functie BOOGTAN in Azure Cosmos DB.
+description: Meer informatie over hoe de arctangens (BOOGTAN) SQL-systeem functie in Azure Cosmos DB de hoek in radialen retourneert, waarvan de tangens de opgegeven numerieke expressie is
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4ee3867f3a4938358e8d61aa8a98f747756ee3e8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8fd398e343a3e617ceb9f49ca8f31ee776a7f073
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348559"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873451"
 ---
 # <a name="atan-azure-cosmos-db"></a>BOOGTAN (Azure Cosmos DB)
  Retourneert de hoek, in radialen, waarvan de tangens de opgegeven numerieke expressie is. Dit wordt ook wel de arctangens genoemd.  

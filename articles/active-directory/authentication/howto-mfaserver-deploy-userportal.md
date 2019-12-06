@@ -1,22 +1,22 @@
 ---
-title: Gebruikersportal voor Azure MFA-Server - Azure Active Directory
+title: Gebruikers portal voor Azure MFA-server-Azure Active Directory
 description: Aan de slag met Azure MFA en de gebruikersportal.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6feceff234bed51bcf6adf34f51313fa348d77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 886e6a33428d672a40eae821e035d0b5b7f25578
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056046"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848167"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Gebruikersportal voor de Azure Multi-Factor Authentication-server
 
@@ -29,9 +29,9 @@ Er kunnen beheerders voor de gebruikersportal worden ingesteld. Aan hen kan ook 
 Afhankelijk van uw omgeving kan het raadzaam zijn om de gebruikersportal te implementeren op dezelfde server als de Azure Multi-Factor Authentication Server of op een andere internetgerichte server.
 
 > [!IMPORTANT]
-> Vanaf 1 juli 2019, zal Microsoft MFA-Server niet meer bieden voor nieuwe implementaties. Nieuwe klanten die willen graag meervoudige verificatie van gebruikers vereisen moeten cloud-gebaseerde Azure multi-factor Authentication gebruiken. Bestaande klanten die vóór 1 juli MFA-Server hebben geactiveerd, worden kunnen de nieuwste versie downloaden door toekomstige updates en zoals gebruikelijk activeringsreferenties genereren.
+> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
 
-![Aanmeldingspagina van Gebruikersportal van MFA-Server](./media/howto-mfaserver-deploy-userportal/portal.png)
+![Aanmeldings pagina voor de gebruikers portal van de MFA-server](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
 > De gebruikersportal is alleen beschikbaar met Multi-Factor Authentication Server. Als u Multi-Factor Authentication in de cloud gebruikt, verwijst u uw gebruikers naar [Uw account instellen voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-first-time.md) of [Uw instellingen beheren voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-manage-settings.md).
@@ -92,7 +92,7 @@ Als uw organisatie gebruikmaakt van de Microsoft Authenticator-app als een van d
 
 Voor de installatie van de gebruikersportal op een andere server dan de Azure Multi-Factor Authentication-server moeten de volgende stappen worden uitgevoerd:
 
-1. **Op de MFA-Server**, blader naar het installatiepad (voorbeeld: C:\Program Files\Multi-Factor Authentication-Server), en kopieer het bestand **MultiFactorAuthenticationUserPortalSetup64** naar een locatie die toegankelijk is op de internetgerichte server waarop u deze wilt installeren.
+1. Blader **op de MFA-server** naar het installatiepad (voorbeeld: C:\Program Files\Multi-Factor Authentication-Server) en kopieer het bestand **MultiFactorAuthenticationUserPortalSetup64** naar een locatie die toegankelijk is voor de internetgerichte server waarop u het wilt installeren.
 2. Voer **op de internetgerichte webserver** het installatiebestand MultiFactorAuthenticationUserPortalSetup64 uit als beheerder, wijzig de site desgewenst en wijzig de naam van de virtuele map eventueel in een korte naam.
 3. Bind een SSL-certificaat aan de site in IIS.
 
@@ -118,7 +118,7 @@ Nu de gebruikersportal is geïnstalleerd, dient u de Azure Multi-Factor Authenti
 
 1. Klik in de console van de Azure Multi-Factor Authentication-server op het pictogram **Gebruikersportal**. Voer op het tabblad Instellingen in het tekstvak **URL gebruikersportal** de URL naar de gebruikersportal in. Als de e-mailfunctionaliteit is ingeschakeld, zal deze URL worden ingevoegd in e-mailberichten die worden verzonden naar gebruikers wanneer ze worden geïmporteerd op de Azure Multi-Factor Authentication-server.
 2. Kies de instellingen die u in de gebruikersportal wilt gebruiken. Als u bijvoorbeeld wilt toestaan dat gebruikers hun verificatiemethoden kiezen, zorgt u ervoor dat de optie **Toestaan dat gebruikers de methode selecteren** wordt ingeschakeld, samen met de methoden waaruit ze kunnen kiezen.
-3. Geef op het tabblad **Beheerders** aan wie de beheerders moeten zijn. U kunt gedetailleerde beheerdersmachtigingen maken met behulp van de selectievakjes en vervolgkeuzelijsten in de vakken voor toevoegen en bewerken.
+3. Definieer wie beheerders moeten zijn op het tabblad **beheerders** . U kunt gedetailleerde beheerders machtigingen maken met behulp van de selectie vakjes en vervolg keuzelijsten in de vakken toevoegen/bewerken.
 
 Optionele configuratie:
 
@@ -130,7 +130,7 @@ Optionele configuratie:
 
 De Azure Multi-Factor Authentication-server biedt verschillende opties voor de gebruikersportal. De volgende tabel geeft een lijst van deze opties en een verklaring van de taak waarvoor ze worden gebruikt.
 
-| Instellingen van gebruikersportal | Description |
+| Instellingen van gebruikersportal | Beschrijving |
 |:--- |:--- |
 | URL gebruikersportal | Hiermee kunt u de URL invoeren van de locatie waar de portal wordt gehost. |
 | Primaire authenticatie | Hiermee kunt u opgeven welk verificatietype moet worden gebruikt bij de aanmelding bij de portal. Windows-, Radius- of LDAP-authenticatie. |
@@ -146,15 +146,15 @@ De Azure Multi-Factor Authentication-server biedt verschillende opties voor de g
 | Logboekregistratie inschakelen | Hiermee schakelt u de logboekregistratie in op de gebruikersportal. De logboekbestanden bevinden zich op: C:\Program Files\Multi-Factor Authentication Server\Logs. |
 
 > [!IMPORTANT]
-> Vanaf maart van 2019 de opties telefoongesprek zich niet beschikbaar voor gebruikers van de MFA-Server in vrij/proefversie van Azure AD-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. Telefonische oproep blijft beschikbaar voor gebruikers in betaalde Azure AD-tenants. Deze wijziging geldt alleen voor gratis/proefversie van Azure AD-tenants.
+> Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet beschikbaar voor MFA-Server gebruikers in azure AD-tenants voor gratis/proef versies. SMS-berichten worden niet beïnvloed door deze wijziging. De telefoon oproep blijft beschikbaar voor gebruikers in betaalde Azure AD-tenants. Deze wijziging is alleen van invloed op de Azure AD-tenants gratis en proef versie.
 
 Deze instellingen zijn zichtbaar voor de gebruiker in de portal zodra deze zijn ingeschakeld en de gebruiker zich bij de gebruikersportal heeft aangemeld.
 
-![Uw MFA-Server-account met behulp van de gebruikersportal beheren](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
+![Uw MFA-Server account beheren met de gebruikers Portal](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
 
 ### <a name="self-service-user-enrollment"></a>Selfservice voor gebruikersregistratie
 
-Als u wilt dat uw gebruikers zich kunnen aanmelden en registreren, selecteert u op het tabblad Instellingen de opties **Aanmelden van gebruikers toestaan** en **Registreren van gebruikers toestaan**. Houd er rekening mee dat de instellingen die u selecteert, invloed hebben op de gebruikerservaring bij het aanmelden.
+Als u wilt dat uw gebruikers zich kunnen aanmelden en registreren, moet u de opties **gebruikers toestaan zich aan te melden** en **gebruikers registratie toestaan** inschakelen op het tabblad instellingen. Houd er rekening mee dat de instellingen die u selecteert, van invloed zijn op de aanmeldings ervaring van de gebruiker.
 
 Wanneer bijvoorbeeld een gebruiker zich voor het eerst bij de gebruikersportal aanmeldt, wordt de gebruiker naar de pagina met gebruikersinstellingen van Azure Multi-Factor Authentication geleid. Afhankelijk van hoe u Azure Multi-Factor Authentication hebt geconfigureerd, kan een gebruiker al dan niet de verificatiemethode selecteren.
 
@@ -166,7 +166,7 @@ Als de gebruiker bij de verificatie een pincode moet gebruiken, wordt de gebruik
 
 Als de gebruiker de verificatiemethode Sms-bericht selecteert of vooraf is geconfigureerd om die methode te gebruiken, wordt de gebruiker gevraagd zijn of haar mobiele telefoonnummer op te geven. Als de gebruiker bij de verificatie een pincode moet gebruiken, wordt de gebruiker ook gevraagd een pincode op te geven.  Nadat de gebruiker zijn of haar telefoonnummer en pincode (indien van toepassing) heeft ingevoerd, klikt de gebruiker op de knop **Sms me nu om te authenticeren**. Azure Multi-Factor Authentication zal een sms-verificatie uitvoeren met behulp van de mobiele telefoon van de gebruiker. De gebruiker ontvangt een sms-bericht met een eenmalige-wachtwoordcode (OTP). Vervolgens beantwoordt de gebruiker het bericht met die OTP plus de pincode (indien van toepassing).
 
-![Portal-gebruikersverificatie via SMS](./media/howto-mfaserver-deploy-userportal/text.png)
+![Verificatie van de gebruikers Portal met behulp van SMS](./media/howto-mfaserver-deploy-userportal/text.png)
 
 Als de gebruiker de verificatiemethode Mobiele app selecteert, wordt de gebruiker op de pagina gevraagd om de Microsoft Authenticator-app op zijn of haar apparaat te installeren en een activeringscode te genereren. Na de installatie van de app klikt de gebruiker op de knop Activeringscode genereren.
 

@@ -3,28 +3,24 @@ title: Hoe en waarom toepassingen worden toegevoegd aan Azure Active Directory
 titleSuffix: Microsoft identity platform
 description: Wat betekent het voor een toepassing die wordt toegevoegd aan Azure AD en hoe worden deze daar weer geven?
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 3321d130-f2a8-4e38-b35e-0959693f3576
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d2efdcf03b829b43f797ddb7ca32bb6d120609e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 6a04315d887a1774fa50743d4bb361b9d9082aba
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533005"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845056"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Hoe en waarom toepassingen worden toegevoegd aan Azure AD
 
@@ -38,7 +34,7 @@ Er zijn twee representaties van toepassingen in azure AD:
 U kunt [toepassings objecten](app-objects-and-service-principals.md#application-object) in de Azure portal beheren via de [app registraties](https://aka.ms/appregistrations) . Toepassings objecten beschrijven de toepassing naar Azure AD en kunnen worden beschouwd als de definitie van de toepassing, zodat de service kan weten hoe tokens moeten worden uitgegeven aan de toepassing op basis van de instellingen ervan. Het toepassings object bevinden zich alleen in de basismap, zelfs als dit een multi tenant-toepassing is die service-principals in andere mappen ondersteunt. Het toepassings object kan bestaan uit een van de volgende (evenals aanvullende informatie die hier niet wordt vermeld):
 
 * Naam, logo en uitgever
-* Omleidings-Uri's
+* Omleidings-URI's
 * Geheimen (symmetrische en/of asymmetrische sleutels die worden gebruikt voor het verifiëren van de toepassing)
 * API-afhankelijkheden (OAuth)
 * Gepubliceerde Api's/bronnen/bereiken (OAuth)
@@ -110,8 +106,8 @@ Toepassingen die u zelf toevoegt (wordt weer gegeven als **app (uw)** in het dia
   * Claim transformatie regels
   * Kenmerk toewijzingen (gebruikers inrichten)
 * Raadpleeg de documentatie van Azure AD Graph REST API Reference voor meer informatie over de Service-Principal en toepassings objecten:
-  * [Modules](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Service-Principal](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+  * [Toepassing](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Service Principal](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Waarom kunnen toepassingen worden geïntegreerd met Azure AD?
 

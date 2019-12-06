@@ -2,27 +2,24 @@
 title: Micro soft Identity platform-accounts en Tenant profielen (Android) | Azure
 description: Een overzicht van micro soft Identity platform-accounts voor Android
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.devlang: java
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7beab6759524037f86c83429644c1bb1fffe4d07
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 9af7d8c5a1793b34dd609c2cfd68fb468884ef8f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679839"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845719"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Accounts en tenantprofielen (Android)
 
@@ -32,10 +29,10 @@ De micro soft Authentication Library (MSAL)-API vervangt de term *gebruiker* met
 
 Een account in het micro soft Identity platform bestaat uit:
 
-  - Een unieke id.
-  - Een of meer referenties die worden gebruikt om het eigendom/beheer van het account te demonstreren.
-  - Een of meer profielen die bestaan uit kenmerken, zoals:
-    - Afbeelding, voor naam, familie naam, titel, kantoor locatie
+- Een unieke id.  
+- Een of meer referenties die worden gebruikt om het eigendom/beheer van het account te demonstreren.
+- Een of meer profielen die bestaan uit kenmerken, zoals:
+  - Afbeelding, voor naam, familie naam, titel, kantoor locatie
 - Een account heeft een bron van de instantie of het record systeem. Dit is het systeem waar het account wordt gemaakt en waar de referenties zijn opgeslagen die aan dat account zijn gekoppeld. In multi tenant systemen zoals het micro soft-identiteits platform is het record systeem het `tenant` waar het account is gemaakt. Deze Tenant wordt ook wel de `home tenant`genoemd.
 - Accounts in het micro soft Identity-platform hebben de volgende record systemen:
   - Azure Active Directory, inclusief Azure Active Directory B2C.
@@ -49,7 +46,6 @@ Een account in het micro soft Identity platform bestaat uit:
   - Deze lokale record, die de weer gave van het account is, is gekoppeld aan het oorspronkelijke account.
   - MSAL maakt deze lokale record beschikbaar als een `Tenant Profile`.
   - Het Tenant profiel kan verschillende kenmerken hebben die relevant zijn voor de lokale context, zoals de functie, de kantoor locatie, de contact gegevens, enzovoort.
- 
 - Omdat een account in een of meer tenants aanwezig kan zijn, heeft een account mogelijk meer dan één profiel.
 
 > [!NOTE]

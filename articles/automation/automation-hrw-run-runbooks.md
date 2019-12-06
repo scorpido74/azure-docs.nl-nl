@@ -4,17 +4,17 @@ description: Dit artikel bevat informatie over het uitvoeren van runbooks op com
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9c7084954fe58351a6f9af40552714faa34685ad
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c8da5736869a39815d9abf33cf4a03353681b193
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887050"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849714"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
@@ -39,7 +39,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 > [!NOTE]
 > De para meter **RunOn** is toegevoegd aan de cmdlet **Start-AzureAutomationRunbook** in versie 0.9.1 tot en van Microsoft Azure PowerShell. Als u een eerder geïnstalleerd hebt, moet u [de nieuwste versie downloaden](https://azure.microsoft.com/downloads/) . U hoeft deze versie alleen te installeren op een werk station waar u het runbook start vanuit Power shell. U hoeft deze niet te installeren op de werk computer, tenzij u runbooks vanaf die computer wilt starten. "
 
-## <a name="runbook-permissions"></a>Runbook-machtigingen
+## <a name="runbook-permissions"></a>Runbookmachtigingen
 
 Runbooks die worden uitgevoerd op een Hybrid Runbook Worker, kunnen niet dezelfde methode gebruiken die meestal wordt gebruikt voor runbooks die worden geverifieerd bij Azure-resources, omdat ze toegang hebben tot resources die niet in azure zijn. Het runbook kan een eigen verificatie bieden voor lokale bronnen of verificatie configureren met behulp [van beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager). U kunt ook een runas-account opgeven om een gebruikers context te bieden voor alle runbooks.
 

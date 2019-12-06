@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: eddfb9a8f2e3c034e50dc3bc1cdf4983a6163079
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4a95804bcff3653df42186907f03d0bc27a603ea
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667839"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869711"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Een Azure Data Explorer-cluster en-data base maken met behulp van een Azure Resource Manager sjabloon
 
@@ -26,7 +26,7 @@ ms.locfileid: "74667839"
 
 Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. De volgende stap is het opnemen (laden) van gegevens in een database, zodat u er query's op kunt uitvoeren. 
 
-In dit artikel maakt u een Azure Data Explorer-cluster en-data base met behulp van een [Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-overview.md). In het artikel wordt beschreven hoe u definieert welke resources worden geïmplementeerd en hoe u para meters definieert die worden opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen. Zie [Azure Resource Manager sjablonen ontwerpen](/azure/azure-resource-manager/resource-group-authoring-templates)voor meer informatie over het maken van sjablonen. Zie [resource typen micro soft. Kusto](/azure/templates/microsoft.kusto/allversions)voor de JSON-syntaxis en-eigenschappen die in een sjabloon moeten worden gebruikt.
+In dit artikel maakt u een Azure Data Explorer-cluster en-data base met behulp van een [Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-overview.md). Het artikel wordt beschreven hoe om te definiëren welke resources worden geïmplementeerd en over het definiëren van parameters die zijn opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen. Zie [Azure Resource Manager sjablonen ontwerpen](/azure/azure-resource-manager/resource-group-authoring-templates)voor meer informatie over het maken van sjablonen. Zie [resource typen micro soft. Kusto](/azure/templates/microsoft.kusto/allversions)voor de JSON-syntaxis en-eigenschappen die in een sjabloon moeten worden gebruikt.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -71,7 +71,7 @@ In dit artikel gebruikt u een [bestaande Quick](https://raw.githubusercontent.co
               "tier": "Standard",
               "capacity": 2
           },
-          "apiVersion": "2019-05-15",
+          "apiVersion": "2019-09-07",
           "location": "[parameters('location')]",
           "tags": {
             "Created By": "GitHub quickstart template"
@@ -80,7 +80,7 @@ In dit artikel gebruikt u een [bestaande Quick](https://raw.githubusercontent.co
       {
           "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
           "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2019-05-15",
+          "apiVersion": "2019-09-07",
           "location": "[parameters('location')]",
           "dependsOn": [
               "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"

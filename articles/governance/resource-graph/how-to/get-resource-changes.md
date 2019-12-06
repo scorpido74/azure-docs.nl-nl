@@ -2,13 +2,13 @@
 title: Resourcewijzigingen ophalen
 description: Meer informatie over hoe u kunt zoeken wanneer een resource is gewijzigd, een lijst met de gewijzigde eigenschappen ophalen en de verschillen evalueren.
 ms.date: 10/09/2019
-ms.topic: conceptual
-ms.openlocfilehash: 2ed2c0ef8638744aeaa9f31eded14d1716d891ae
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.topic: how-to
+ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74303990"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873026"
 ---
 # <a name="get-resource-changes"></a>Resourcewijzigingen ophalen
 

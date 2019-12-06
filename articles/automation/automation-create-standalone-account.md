@@ -4,17 +4,17 @@ description: Dit artikel begeleidt u stapsgewijs door de stappen voor het maken,
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1cdea358daa3bd0f9e738a0454613ea774a0e6dc
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 0dcfcfe5bc6e59eeb4ccb7272ed3f68edc9c4172
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146650"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850394"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Een zelfstandig Azure Automation-account maken
 
@@ -35,10 +35,10 @@ Met deze accounts die u voor u hebt gemaakt, kunt u snel runbooks bouwen en impl
 
 Als u een Automation-account wilt maken of bijwerken en de in dit artikel beschreven taken wilt uitvoeren, moet u over de volgende bevoegdheden en machtigingen beschikken:
 
-* Als u een Automation-account wilt maken, moet uw Azure AD-gebruikers account worden toegevoegd aan een rol met machtigingen die **equivalent zijn aan de rol van eigenaar voor micro soft. Automation** -resources. Zie voor meer informatie [Access Control op basis van rollen in azure Automation](automation-role-based-access-control.md).
-* Als **app-registraties** is ingesteld op **Ja**, worden in de Azure Portal, onder **Azure Active Directory** > **gebruikers instellingen** **beheren** > , gebruikers die geen beheerder zijn in uw Azure AD-Tenant, [actief kunnen registreren Directory-toepassingen](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Als **app-registraties** is ingesteld op **Nee**, moet de gebruiker die deze actie uitvoert een globale beheerder zijn in azure AD.
+* Als u een Automation-account wilt maken, moet uw Azure AD-gebruikers account worden toegevoegd aan een rol met machtigingen die equivalent zijn aan de rol van eigenaar voor **micro soft. Automation** -resources. Zie voor meer informatie [Access Control op basis van rollen in azure Automation](automation-role-based-access-control.md).
+* Als **app-registraties** is ingesteld op **ja**in de Azure Portal, kunt u, onder **Azure Active Directory** >  > **gebruikers instellingen** **beheren** , gebruikers die geen beheerder zijn in uw Azure AD-Tenant [Active Directory toepassingen registreren](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Als **app-registraties** is ingesteld op **Nee**, moet de gebruiker die deze actie uitvoert een globale beheerder zijn in azure AD.
 
-Als u geen lid bent van het Active Directory exemplaar van het abonnement voordat u wordt toegevoegd aan de rol van de globale beheerder/cobeheerder van het abonnement, wordt u als gast toegevoegd aan Active Directory. In dit scenario ziet u dit bericht op de pagina **Automation-account toevoegen** : "U hebt geen machtigingen om te maken."
+Als u geen lid bent van het Active Directory exemplaar van het abonnement voordat u wordt toegevoegd aan de rol van de globale beheerder/cobeheerder van het abonnement, wordt u als gast toegevoegd aan Active Directory. In dit scenario ziet u dit bericht op de pagina **Automation-account toevoegen** : "u hebt geen machtiging om te maken."
 
 Als een gebruiker eerst wordt toegevoegd aan de rol van globale beheerder/cobeheerdersrol, kunt u deze verwijderen uit het Active Directory exemplaar van het abonnement en deze vervolgens lezen voor de volledige gebruikersrol in Active Directory.
 
@@ -68,7 +68,7 @@ Voer de volgende stappen uit om een Azure Automation-account te maken in de Azur
    >
    > ![Waarschuwing voor Automation-account toevoegen](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. Voer in het deel venster **Automation-account toevoegen** in het vak **naam** een naam in voor uw nieuwe Automation-account. Deze naam kan niet worden gewijzigd nadat deze is gekozen. *Automation-accountnamen zijn uniek per regio en resourcegroep. Namen voor Automation-Accounts die zijn verwijderd, zijn mogelijk niet onmiddellijk beschikbaar.*
+1. Voer in het deel venster **Automation-account toevoegen** in het vak **naam** een naam in voor uw nieuwe Automation-account. Deze naam kan niet worden gewijzigd nadat deze is gekozen. *De namen van Automation-accounts zijn uniek per regio en resource groep. Namen voor Automation-accounts die zijn verwijderd, zijn mogelijk niet onmiddellijk beschikbaar.*
 1. Als u meer dan één abonnement hebt, geeft u in het vak **abonnement** het abonnement op dat u wilt gebruiken voor het nieuwe account.
 1. Voor **resource groep**, voert u een nieuwe of bestaande resource groep in of selecteert u deze.
 1. Selecteer bij **locatie**een locatie van een Azure-Data Center.
@@ -88,7 +88,7 @@ Voer de volgende stappen uit om een Azure Automation-account te maken in de Azur
 
 Wanneer het Automation-account is gemaakt, worden er automatisch verschillende resources voor u gemaakt. Na het maken kunnen deze runbooks veilig worden verwijderd als u deze niet wilt blijven gebruiken. De uitvoeren als-accounts kunnen worden gebruikt om te verifiëren bij uw account in een runbook, en moet blijven staan, tenzij u een andere maakt of niet nodig hebt. In de volgende tabel vindt u een overzicht van de bronnen voor het Uitvoeren als-account.
 
-| Resource | Description |
+| Bron | Beschrijving |
 | --- | --- |
 | AzureAutomationTutorial Runbook |Een voor beeld van een grafisch runbook dat laat zien hoe u kunt verifiëren met behulp van het uitvoeren als-account. Het runbook haalt alle Resource Manager-resources op. |
 | AzureAutomationTutorialScript Runbook |Een voor beeld van een Power shell-runbook dat laat zien hoe u kunt verifiëren met behulp van het uitvoeren als-account. Het runbook haalt alle Resource Manager-resources op. |

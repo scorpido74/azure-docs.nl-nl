@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e88f6f344c77109ee01cd6b0332138518f70270d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 903551bfcaae3ffa7ccee72b1a5d781413864b32
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793781"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868453"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Wat is Azure AD Connect Cloud inrichting?
 Azure AD Connect Cloud inrichting is een nieuwe micro soft-agent die is ontworpen om tegemoet te komen aan uw hybride identiteits doelstellingen voor synchronisatie van gebruikers, groepen en contact personen naar Azure AD.  Deze kan naast Azure AD Connect Sync worden gebruikt en biedt de volgende voor delen:
@@ -59,8 +59,9 @@ De volgende tabel bevat een vergelijking tussen Azure AD Connect en Azure AD Con
 | Toestaan dat het verwijderen van kenmerken van AD naar Azure AD stroomt |● |● |
 | Geavanceerd aanpassen voor kenmerkstromen toestaan |● | |
 | Ondersteuning voor write-back (wacht woorden, apparaten, groepen) |● | |
+| Ondersteuning voor Azure AD Domain Services|● | |
 
 ## <a name="next-steps"></a>Volgende stappen 
 
 - [Wat is inrichten?](what-is-provisioning.md)
-- [Wat is Azure AD Connect Cloud inrichting?](what-is-cloud-provisioning.md)
+- [Cloud inrichting installeren](how-to-install.md)

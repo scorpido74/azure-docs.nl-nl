@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d8c3e3c272ce12200ab7506fd7c9759a8cb3aa64
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685921"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851737"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Werkbelasting beheer met resource klassen in Azure SQL Data Warehouse
 
@@ -24,7 +24,7 @@ Richt lijnen voor het gebruik van resource klassen voor het beheren van geheugen
 
 ## <a name="what-are-resource-classes"></a>Wat zijn resource klassen
 
-De prestatie capaciteit van een query wordt bepaald door de resource klasse van de gebruiker.  Resource klassen zijn vooraf bepaalde resource limieten in Azure SQL Data Warehouse die de reken resources en gelijktijdigheid bepalen voor het uitvoeren van query's. Resource klassen kunnen u helpen bij het beheren van uw werk belasting door limieten in te stellen voor het aantal query's dat gelijktijdig wordt uitgevoerd en op de reken resources die zijn toegewezen aan elke query.  Er is sprake van een afweging tussen geheugen en gelijktijdigheid.
+De prestatie capaciteit van een query wordt bepaald door de resource klasse van de gebruiker.  Resource klassen zijn vooraf bepaalde resource limieten in Azure SQL Data Warehouse die de reken resources en gelijktijdigheid bepalen voor het uitvoeren van query's. Resource klassen kunnen u helpen bij het configureren van resources voor uw query's door limieten in te stellen voor het aantal query's dat gelijktijdig wordt uitgevoerd en op de reken resources die zijn toegewezen aan elke query.  Er is sprake van een afweging tussen geheugen en gelijktijdigheid.
 
 - Kleinere resource klassen verminderen het maximale geheugen per query, maar verhogen gelijktijdigheid.
 - Grotere bron klassen verhogen het maximale geheugen per query, maar verminderen gelijktijdig.
@@ -65,14 +65,18 @@ De dynamische resource klassen worden geïmplementeerd met de volgende vooraf ge
 - largerc
 - xlargerc
 
-De geheugen toewijzing voor elke bron klasse is als volgt, **ongeacht het service niveau**.  De minimale query's voor gelijktijdigheid worden ook weer gegeven.  Voor sommige service niveaus kan meer dan de minimale gelijktijdigheid worden behaald.
+De geheugen toewijzing voor elke resource klasse is als volgt. 
 
-| Resourceklasse | Percentage geheugen | Min. aantal gelijktijdige Query's |
-|:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 3D                | 32                     |
-| mediumrc       | 10%               | 10                     |
-| largerc        | 21               | 4                      |
-| xlargerc       | 70%               | 1                      |
+| Servicelaag  | smallrc           | mediumrc               | largerc                | xlargerc               |
+|:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
+| DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
+| DW200c         | 12,5%             | 12,5%                  | 22%                    | 70%                    |
+| DW300c         | 8%                | 10%                    | 22%                    | 70%                    |
+| DW400c         | 6,25%             | 10%                    | 22%                    | 70%                    |
+| DW500c         | 20%               | 10%                    | 22%                    | 70%                    |
+| DW1000c naar<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
+
+
 
 ### <a name="default-resource-class"></a>Standaard resource klasse
 
@@ -93,18 +97,20 @@ Resource klassen zijn ontworpen om de prestaties te verbeteren voor gegevens beh
 
 Deze bewerkingen zijn onderworpen aan resource klassen:
 
-- INVOEGEN-SELECTEREN, BIJWERKEN, VERWIJDEREN
+- INSERT-SELECT, UPDATE, DELETE
 - SELECTEREN (bij het opvragen van gebruikers tabellen)
 - ALTER INDEX-Rebuild of reorganiseren
 - ALTER TABLE REBUILD
 - CREATE INDEX
 - EEN GECLUSTERDE COLUMN STORE-INDEX MAKEN
-- CREATE TABLE ALS SELECTEREN (CTAS)
+- CREATE TABLE AS SELECT (CTAS)
 - Gegevens laden
 - Gegevens verplaatsings bewerkingen die worden uitgevoerd door de gegevens verplaatsings service (DMS)
 
 > [!NOTE]  
 > SELECT-instructies op dynamische beheer weergaven (Dmv's) of andere systeem weergaven vallen niet onder een van de gelijktijdigheids limieten. U kunt het systeem bewaken, ongeacht het aantal query's dat erop wordt uitgevoerd.
+>
+>
 
 ### <a name="operations-not-governed-by-resource-classes"></a>Bewerkingen die niet onder resource klassen vallen
 
@@ -179,6 +185,11 @@ Gebruikers kunnen lid zijn van meerdere resource klassen. Wanneer een gebruiker 
 
 ## <a name="recommendations"></a>Aanbevelingen
 
+>[!NOTE]
+>Overweeg het beheer van de werk belasting te benutten ([isolatie van werk belasting](sql-data-warehouse-workload-isolation.md), [classificatie](sql-data-warehouse-workload-classification.md) en [urgentie](sql-data-warehouse-workload-importance.md)) voor meer controle over uw werk belasting en voorspel bare prestaties.  
+>
+>
+
 We raden u aan een gebruiker te maken die is toegewezen voor het uitvoeren van een specifiek type query of het laden van een bewerking. Geef deze gebruiker een permanente resource klasse in plaats van de resource klasse regel matig te wijzigen. Statische resource klassen bieden meer algemene controle over de werk belasting, dus we raden aan gebruik te maken van statische resource klassen voordat u dynamische resource klassen overweegt.
 
 ### <a name="resource-classes-for-load-users"></a>Resource klassen voor het laden van gebruikers
@@ -231,11 +242,11 @@ Dit is het doel van deze opgeslagen procedure:
 
 ### <a name="usage-example"></a>Voor beeld van gebruik
 
-Syntaxis  
+Syntaxis:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU: Geef een NULL-para meter op om de huidige DWU uit de DW-data base te extra heren of geef een ondersteund DWU op in de vorm ' DW100c '
-2. @SCHEMA_NAME: een schema naam van de tabel opgeven
+1. @DWU: Geef een NULL-para meter op om de huidige DWU te extra heren uit de DW DB of geef een ondersteund DWU op in de vorm ' DW100c '
+2. @SCHEMA_NAME: een schema naam opgeven voor de tabel
 3. @TABLE_NAME: Geef een tabel naam op voor de interesse
 
 Voor beelden van deze opgeslagen procedure:
@@ -250,7 +261,7 @@ EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;
 Met de volgende instructie maakt u Tabel1 die in de voor gaande voor beelden wordt gebruikt.
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
 
-### <a name="stored-procedure-definition"></a>Definitie van opgeslagen procedure
+### <a name="stored-procedure-definition"></a>Definitie van de opgeslagen procedure
 
 ```sql
 -------------------------------------------------------------------------------

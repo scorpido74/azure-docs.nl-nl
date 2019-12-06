@@ -1,17 +1,17 @@
 ---
 title: Informatie over het beheren van consistentie in Azure Cosmos DB
-description: Informatie over het beheren van consistentie in Azure Cosmos DB
+description: Meer informatie over het configureren en beheren van consistentie niveaus in Azure Cosmos DB met behulp van Azure Portal, .NET SDK, Java SDK en diverse andere Sdk's
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: bc5554e2d56987e969894ba57052d548e1499938
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 46c4c4afe737fd11c2e711a23a3355f48dbd6231
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093307"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872074"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Consistentieniveaus in Azure Cosmos DB beheren
 
@@ -231,7 +231,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Metrische gegevens van aan waarschijnlijkheid gebonden veroudering (PBS) controleren
 
-Wat is de uiteindelijke consistentie? Voor het gemiddelde kunnen we verouderde grenzen bieden ten aanzien van versie geschiedenis en-tijd. De metrische gegevens van de [**Probabilistically-binding (PBS)** ](https://pbs.cs.berkeley.edu/) proberen de waarschijnlijkheid van veroudering te bepalen en geeft deze weer als een metrieke waarde. Als u de metrische gegevens van de PBS wilt weer geven, gaat u naar uw Azure Cosmos-account in de Azure Portal. Open het deelvenster **Metrische gegevens** en selecteer het tabblad **Consistentie**. Bekijk de grafiek met de naam '**Kans op sterk consistente leesbewerkingen op basis van uw werkbelasting (zie PBS)** '.
+Wat is de uiteindelijke consistentie? Voor het gemiddelde kunnen we verouderde grenzen bieden ten aanzien van versie geschiedenis en-tijd. De metrische gegevens van de [**Probabilistically-binding (PBS)** ](https://pbs.cs.berkeley.edu/) proberen de waarschijnlijkheid van veroudering te bepalen en geeft deze weer als een metrieke waarde. Als u de metrische gegevens van de PBS wilt weer geven, gaat u naar uw Azure Cosmos-account in de Azure Portal. Open het deel venster **metrieken** en selecteer het tabblad **consistentie** . Bekijk de grafiek met de naam **kans op zeer consistente Lees bewerkingen op basis van uw werk belasting (Zie PBS)** .
 
 ![PBS-grafiek in de Azure-portal](./media/how-to-manage-consistency/pbs-metric.png)
 

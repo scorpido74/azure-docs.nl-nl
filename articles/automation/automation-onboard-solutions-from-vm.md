@@ -2,19 +2,19 @@
 title: Updatebeheer, Wijzigingen bijhouden en inventarisatie oplossingen van een Azure-VM onboarden
 description: Leer hoe u een virtuele machine van Azure kunt vrijgeven met Updatebeheer-, Wijzigingen bijhouden-en inventaris oplossingen die deel uitmaken van Azure Automation.
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0069d2e8ccd3b4f65ced8b6e18ce568689f81e14
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 8dd69b1cf4ac8874175cff84d3c2b9fc5e323922
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374407"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849680"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Updatebeheer, Wijzigingen bijhouden en inventarisatie oplossingen van een virtuele machine in azure onboarden
 
@@ -26,7 +26,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="enable-the-solutions"></a>De oplossingen inschakelen
 
-Ga naar een bestaande virtuele machine. Selecteer onder **bewerkingen** **Update beheer**, **inventaris**of het bijhouden van **wijzigingen**. De virtuele machine kan in elke regio bestaan, ongeacht de locatie van uw Automation-account. Wanneer u een oplossing van een virtuele machine onboardt, moet u de `Microsoft.OperationalInsights/workspaces/read`-machtiging hebben om te bepalen of de virtuele machine onboarded is voor een werk ruimte. Zie voor meer informatie over extra machtigingen die in het algemeen nodig zijn de [machtigingen die nodig zijn voor het onboarden van computers](automation-role-based-access-control.md#onboarding).
+Ga naar een bestaande virtuele machine. Selecteer onder **bewerkingen** **Update beheer**, **inventaris**of het bijhouden van **wijzigingen**. De virtuele machine kan in elke regio bestaan, ongeacht de locatie van uw Automation-account. Wanneer u een oplossing van een virtuele machine uitschakelt, moet u de `Microsoft.OperationalInsights/workspaces/read` toestemming hebben om te bepalen of de virtuele machine onboarded is voor een werk ruimte. Zie voor meer informatie over extra machtigingen die in het algemeen nodig zijn de [machtigingen die nodig zijn voor het onboarden van computers](automation-role-based-access-control.md#onboarding).
 
 Als u de oplossing alleen voor de virtuele machine wilt inschakelen, moet u ervoor zorgen dat **inschakelen voor deze VM** is geselecteerd. Als u meerdere computers wilt voorbereiden op de oplossing, selecteert u **inschakelen voor vm's in dit abonnement**en selecteert u vervolgens **klikken om machines te selecteren die u wilt inschakelen**. Zie [Onboarding updatebeheer, wijzigingen bijhouden en Inventory Solutions](automation-onboard-solutions-from-automation-account.md)voor meer informatie over het voorbereiden van meerdere computers tegelijk.
 
@@ -45,9 +45,9 @@ Elke oplossing maakt gebruik van een scope configuratie in de werk ruimte om te 
 
 Als de geselecteerde werk ruimte nog niet beschikt over de Updatebeheer-of Wijzigingen bijhouden oplossingen, worden de volgende Scope configuraties gemaakt:
 
-* **MicrosoftDefaultScopeConfig-change tracking**
+* **MicrosoftDefaultScopeConfig-ChangeTracking**
 
-* **MicrosoftDefaultScopeConfig-updates**
+* **MicrosoftDefaultScopeConfig-Updates**
 
 Als de geselecteerde werk ruimte al de oplossing heeft, wordt de oplossing niet opnieuw geïmplementeerd en wordt de scope configuratie niet toegevoegd.
 
@@ -97,7 +97,7 @@ Als u de oplossing Updatebeheer hebt gebruikt, kunt u eventueel de volgende item
 
 * Update schema's: elk heeft een naam die overeenkomt met de update-implementaties die u hebt gemaakt.
 
-* Hybrid worker-groepen gemaakt voor de oplossing: elke groep krijgt dezelfde naam als machine1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
+* Hybrid worker-groepen gemaakt voor de oplossing: elke groep krijgt dezelfde naam als machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 
 Als u de oplossing VM's buiten bedrijfsuren starten/stoppen hebt gebruikt, kunt u eventueel de volgende items verwijderen die niet meer nodig zijn nadat u de oplossing hebt verwijderd.
 

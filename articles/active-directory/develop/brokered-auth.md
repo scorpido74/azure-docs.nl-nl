@@ -1,32 +1,27 @@
 ---
-title: Brokered auth in Android | Azure
+title: Brokered-verificatie in Android | Azure
+titlesuffix: Microsoft identity platform
 description: Een overzicht van brokered verificatie & autorisatie voor Android in het micro soft Identity-platform
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
-ms.reviewer: shoatman
+ms.reviewer: shoatman, hahamil, brianmel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f5204ad71efa2587341600d2c5c1e5195d15445e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175657"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843713"
 ---
-# <a name="brokered-auth-in-android"></a>Brokered auth in Android
-
-## <a name="introduction"></a>Inleiding
+# <a name="brokered-authentication-in-android"></a>Brokered-verificatie in Android
 
 U moet een van de verificatie-Brokers van micro soft gebruiken om deel te nemen aan SSO (single sign-on) voor het hele apparaat en om te voldoen aan beleid voor voorwaardelijke toegang voor organisaties. Integreren met een Broker biedt de volgende voor delen:
 
@@ -52,8 +47,8 @@ In het volgende diagram ziet u de relatie tussen uw app, de micro soft Authentic
 
 Apps met Broker-hosting kunnen op elk gewenst moment worden geïnstalleerd door de eigenaar van het apparaat vanuit hun App Store (meestal Google Play Store). Sommige Api's (bronnen) worden echter beschermd door beleids regels voor voorwaardelijke toegang waarvoor apparaten zijn vereist:
 
-- geregistreerd (toegevoegd aan werk plek) en/of
-- geregistreerd in Apparaatbeheer of
+- Geregistreerd (toegevoegd aan werk plek) en/of
+- Geregistreerd in Apparaatbeheer of
 - Inge schreven bij Intune-app-beveiliging
 
 Als op een apparaat nog geen Broker-app is geïnstalleerd, geeft MSAL de gebruiker de opdracht om er een te installeren zodra de app interactief een token probeert op te halen. De app moet de gebruiker vervolgens door geven aan de hand van de stappen om het apparaat compatibel te maken met het vereiste beleid.

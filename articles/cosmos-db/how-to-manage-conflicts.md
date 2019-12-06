@@ -1,17 +1,17 @@
 ---
 title: Informatie over het beheren van conflicten tussen regio’s in Azure Cosmos DB
-description: Informatie over het beheren van conflicten in Azure Cosmos DB
+description: Meer informatie over het beheren van conflicten in Azure Cosmos DB door het laatste schrijver-WINS-of een aangepast conflictoplossings beleid te maken
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 12/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4c62fcc81eb3b045d3b4233e1bb3770ecb9865b3
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9aab8f9bd202728f8882377f8249f6ebb99f3362
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388087"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873689"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Conflictoplossingsbeleid beheren in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Als er meerdere regio's worden geschreven, kunnen er conflicten optreden wanneer
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Het conflictoplossingsbeleid 'last writer wins' maken
 
-Deze voorbeelden laten zien hoe u een container kunt instellen met het conflictoplossingsbeleid 'last writer wins'. Het standaardpad voor de laatste schrijver: WINS is het tijds tempel veld of de eigenschap `_ts`. Voor SQL-API kan dit ook worden ingesteld op een door de gebruiker gedefinieerd pad met een numeriek type. Bij een conflict wordt de hoogste waarde wint. Als het pad niet is ingesteld of ongeldig is, wordt de standaard waarde `_ts`. Conflicten die met dit beleid zijn opgelost, worden niet weer gegeven in de feed conflict. Dit beleid kan door alle Api's worden gebruikt.
+Deze voorbeelden laten zien hoe u een container kunt instellen met het conflictoplossingsbeleid 'last writer wins'. Het standaardpad voor de laatste schrijver: WINS is het tijds tempel veld of de eigenschap `_ts`. Voor SQL-API kan dit ook worden ingesteld op een door de gebruiker gedefinieerd pad met een numeriek type. Bij een conflict wordt de hoogste waarde wint. Als het pad niet is ingesteld of ongeldig is, wordt standaard `_ts`. Conflicten die met dit beleid zijn opgelost, worden niet weer gegeven in de feed conflict. Dit beleid kan door alle Api's worden gebruikt.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
@@ -115,7 +115,7 @@ Opgeslagen procedures voor het oplossen van aangepaste conflicten moeten worden 
 > [!IMPORTANT]
 > Net als bij elke opgeslagen procedure heeft een aangepaste procedure voor het oplossen van conflicten toegang tot alle gegevens met dezelfde partitie sleutel en kan een invoeg-, update-of verwijder bewerking worden uitgevoerd om conflicten op te lossen.
 
-Met deze voor beeld van een opgeslagen procedure worden conflicten opgelost door de laagste waarde te selecteren in het `/myCustomId`-pad.
+Met deze voor beeld van een opgeslagen procedure worden conflicten opgelost door de laagste waarde te selecteren uit het `/myCustomId` pad.
 
 ```javascript
 function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {

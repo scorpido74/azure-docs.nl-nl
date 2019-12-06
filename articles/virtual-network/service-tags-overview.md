@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 33ee7351e547ee5ef57ef07f67ba6f5f4410b57f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 152b9f3974f24644e55bed68f5ed65faa90d7fe7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384147"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851652"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk 
 <a name="network-service-tags"></a>
@@ -38,7 +38,7 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud.  Sommige servi
 
 
 
-| Label | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
+| Tag | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Beheer verkeer voor APIM speciale implementaties. | Beide | Nee | Ja |
 | **AppService**    | App Service-Service. Deze tag wordt aanbevolen voor uitgaande beveiligings regels voor front-end-front-ends. | Uitgaand | Ja | Ja |
@@ -51,6 +51,7 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud.  Sommige servi
 | **AzureContainerRegistry** | Azure Container Registry-service. | Uitgaand | Ja | Ja |
 | **AzureCosmosDB** | Azure Cosmos-database service. | Uitgaand | Ja | Ja |
 | **AzureDataLake** | Azure Data Lake-service. | Uitgaand | Nee | Ja |
+| **AzureHDInsight** | Azure HDInsight-service. | Inkomend | Ja | Nee |
 | **AzureIoTHub** | Azure IoT Hub-service. | Uitgaand | Nee | Nee |
 | **AzureKeyVault** | Azure-sleutel kluis service.<br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de **AzureActiveDirectory** -tag. | Uitgaand | Ja | Ja |
 | **AzureLoadBalancer** | Load balancer van de infra structuur van Azure. De tag wordt omgezet in het [Virtuele IP-adres van de host](security-overview.md#azure-platform-considerations) (168.63.129.16) van waaruit statuscontroles van Azure worden uitgevoerd. Als u de load balancer van Azure niet gebruikt, kunt u deze regel onderdrukken. | Beide | Nee | Nee |
@@ -65,14 +66,14 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud.  Sommige servi
 | **Dynamics365ForMarketingEmail** | De adresbereiken voor de marketing-e-mail service van Dynamics 365. | Uitgaand | Ja | Nee |
 | **EventHub** | Azure EventHub-service. | Uitgaand | Ja | Ja |
 | **GatewayManager** | Beheer verkeer voor de eigen implementaties van VPN/app-gateways. | Inkomend | Nee | Nee |
-| **Browser** | De IP-adres ruimte die zich buiten het virtuele netwerk bevindt en bereikbaar is via het open bare Internet.<br/><br/>Dit adresbereik omvat ook de [openbare IP-adresruimte van Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Beide | Nee | Nee |
+| **Internet** | De IP-adres ruimte die zich buiten het virtuele netwerk bevindt en bereikbaar is via het open bare Internet.<br/><br/>Dit adresbereik omvat ook de [openbare IP-adresruimte van Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Beide | Nee | Nee |
 | **MicrosoftContainerRegistry** | Micro soft Container Registry service. | Uitgaand | Ja | Ja |
 | **ServiceBus** | Azure Service Bus service met de laag Premium-Service. | Uitgaand | Ja | Ja |
 | **ServiceFabric** | Service Fabric-service. | Uitgaand | Nee | Nee |
 | **SQL** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL en Azure SQL Data Warehouse Services.<br/><br/>*Opmerking:* Deze tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure SQL Database, maar geen specifieke SQL-database of -server. | Uitgaand | Ja | Ja |
 | **SqlManagement** | Beheer verkeer voor SQL-toegewezen implementaties. | Beide | Nee | Ja |
 | **Storage** | Azure Storage-service. <br/><br/>*Opmerking:* De tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure Storage, maar geen specifiek Azure Storage-account. | Uitgaand | Ja | Ja |
-| **VirtualNetwork** | De adres ruimte van het virtuele netwerk (alle IP-adresbereiken die zijn gedefinieerd voor het virtuele netwerk), alle verbonden on-premises adres ruimten, [gekoppelde virtuele netwerken](virtual-network-peering-overview.md) of een virtueel netwerk dat is verbonden met een [virtuele netwerk gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), de [virtuele IP adres van de host](security-overview.md#azure-platform-considerations) -en adres voorvoegsels die worden gebruikt voor door de [gebruiker gedefinieerde routes](virtual-networks-udr-overview.md). Houd er rekening mee dat deze tag mogelijk ook standaard routes bevat. | Beide | Nee | Nee |
+| **VirtualNetwork** | De adres ruimte van het virtuele netwerk (alle IP-adresbereiken die zijn gedefinieerd voor het virtuele netwerk), alle verbonden on-premises adres ruimten, [gekoppelde virtuele netwerken](virtual-network-peering-overview.md) of virtuele netwerken die zijn verbonden met een [virtuele netwerk gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), het [virtuele IP-adres van de host](security-overview.md#azure-platform-considerations) en adres voorvoegsels die worden gebruikt voor door de [gebruiker gedefinieerde routes](virtual-networks-udr-overview.md). Houd er rekening mee dat deze tag mogelijk ook standaard routes bevat. | Beide | Nee | Nee |
 
 >[!NOTE]
 >Wanneer u werkt in de *klassieke* omgeving (vooraf Azure Resource Manager), wordt een set van de bovenstaande tags worden ondersteund.  Deze gebruiken een alternatieve spelling:

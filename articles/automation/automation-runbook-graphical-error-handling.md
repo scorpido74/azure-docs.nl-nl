@@ -4,17 +4,17 @@ description: In dit artikel wordt beschreven hoe u foutafhandelingslogica kunt i
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ed6620333382a1e43ee1b38a009c91e8d7038233
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cb4f6827f58b882b8b1ae0ef8c093a09e090f17a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476941"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850700"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Foutafhandeling in grafische Azure Automation-runbooks
 
@@ -26,11 +26,11 @@ Wanneer er tijdens een runbookactiviteit een niet-afsluitfout optreedt, wordt de
 
 De typen PowerShell-fouten die zich kunnen voordoen tijdens de uitvoering, zijn afsluitfouten of niet-afsluitfouten. De verschillen tussen afsluitfouten en niet-afsluitfouten zijn als volgt:
 
-* **Afsluitfout**: Een ernstige fout tijdens het uitvoeren waardoor de opdracht (of de uitvoering van het script) volledig wordt gestopt. Voorbeelden zijn onder andere niet-bestaande cmdlets, syntaxisfouten waardoor een cmdlet niet kan worden uitgevoerd of andere fatale fouten.
+* **Afsluitfout**: een ernstige fout tijdens het uitvoeren waardoor de opdracht (of de uitvoering van het script) volledig wordt gestopt. Voorbeelden zijn onder andere niet-bestaande cmdlets, syntaxisfouten waardoor een cmdlet niet kan worden uitgevoerd of andere fatale fouten.
 
-* **Niet-afsluitfout**: Een niet-ernstige fout waarbij de uitvoering ondanks de fout toch wordt voortgezet. Voorbeelden zijn onder andere operationele fouten, zoals niet-gevonden bestanden en machtigingsproblemen.
+* **Niet-afsluitfout**: een niet-ernstige fout waarbij de uitvoering ondanks de fout toch wordt voortgezet. Voorbeelden zijn onder andere operationele fouten, zoals niet-gevonden bestanden en machtigingsproblemen.
 
-Azure Automation-grafische runbooks zijn verbeterd met de mogelijkheid om op te nemen van foutafhandeling. U kunt nu van uitzonderingen niet-afsluitfouten maken en foutkoppelingen tussen activiteiten maken. Met dit proces kunnen met een runbookauteur fouten worden gedetecteerd en kunnen gerealiseerde of onverwachte voorwaarden worden beheerd.  
+Azure Automation grafische runbooks zijn verbeterd met de mogelijkheid om fout afhandeling te bieden. U kunt nu van uitzonderingen niet-afsluitfouten maken en foutkoppelingen tussen activiteiten maken. Met dit proces kan een runbook-Auteur fouten ondervangen en gerealiseerde of onverwachte voor waarden beheren.  
 
 ## <a name="when-to-use-error-handling"></a>Wanneer foutafhandeling gebruiken
 

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 41a2b1a7d9aa5089ba2ee73cd3c5c5c5e31f5225
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0518b13ea228b4834a095a9bf126b131e70a5f45
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607674"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851550"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Quota's en service plannen voor Azure lente-Cloud
 
@@ -23,13 +23,12 @@ In dit artikel vindt u informatie over de service quota's die tijdens de huidige
 
 Tijdens de preview-periode biedt Azure lente-Cloud slechts één servicelaag.
 
-Resource | Aantal
+Bron | Bedrag
 ------- | -------
-vCPU | 4
-Geheugen | 8 GBytes
-Azure lente-Cloud abonnement | 1
-Azure veer Cloud service-instanties per regio per abonnement | 2
-Totaal aantal app-exemplaren per Azure veer Cloud service-exemplaar | 50
+vCPU | 4 per service-exemplaar
+Geheugen | 8 GBytes per service-exemplaar
+Azure veer Cloud service-instanties per regio per abonnement | 10
+Totaal aantal app-exemplaren per Azure veer Cloud service-exemplaar | 500
 Totaal aantal app-exemplaren per lente toepassing | 20
 Permanente volumes | 10 x 50 GBytes
 

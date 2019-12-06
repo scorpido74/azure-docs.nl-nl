@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: a67d3a9fb74b1a4f07fc4995c268bb40a84834f7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 74de621f88d9af65f8894319729f902bf11e57ce
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035929"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873009"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
@@ -48,7 +48,7 @@ Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te mel
 
 De volgende Linux-distributies worden momenteel ondersteund tijdens de preview-versie van deze functie:
 
-| Distributie | Versie |
+| Distributie | Version |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -67,6 +67,19 @@ De volgende Azure-regio's worden momenteel ondersteund tijdens de preview-versie
 
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.0.31 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+
+## <a name="network-requirements"></a>Netwerkvereisten
+
+Als u Azure AD-verificatie wilt inschakelen voor uw virtuele Linux-machines in azure, moet u ervoor zorgen dat de VM-netwerk configuratie uitgaande toegang tot de volgende eind punten via TCP-poort 443 toestaat:
+
+* https://login.microsoftonline.com
+* https://device.login.microsoftonline.com
+* https://pas.windows.net
+* https://management.azure.com
+* https://packages.microsoft.com
+
+> [!NOTE]
+> Momenteel kunnen Azure-netwerk beveiligings groepen niet worden geconfigureerd voor Vm's die zijn ingeschakeld met Azure AD-verificatie.
 
 ## <a name="create-a-linux-virtual-machine"></a>Een virtuele Linux-machine maken
 

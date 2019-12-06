@@ -1,17 +1,17 @@
 ---
 title: Configureren voor meerdere masters in Azure Cosmos DB
-description: Meer informatie over het configureren van meerdere masters in uw toepassingen in Azure Cosmos DB.
+description: Meer informatie over het configureren van multi-master voor uw toepassingen met behulp van verschillende Sdk's in Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: e86cacbd76a70c8b114d65a77ff013d32327a2d0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093105"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873638"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Multi-Master configureren in uw toepassingen die gebruikmaken van Azure Cosmos DB
 
@@ -22,7 +22,7 @@ Als een account is gemaakt terwijl meerdere schrijf regio's zijn ingeschakeld, m
 
 ## <a id="netv2"></a>.NET SDK v2
 
-`UseMultipleWriteLocations` Stel`true`in op om meerdere masters in uw toepassing in te scha kelen. Stel `SetCurrentLocation` ook de regio in waarin de toepassing wordt geïmplementeerd en waar Azure Cosmos DB worden gerepliceerd:
+Als u meerdere masters in uw toepassing wilt inschakelen, stelt u `UseMultipleWriteLocations` in op `true`. Stel ook `SetCurrentLocation` in op de regio waarin de toepassing wordt geïmplementeerd en waar Azure Cosmos DB wordt gerepliceerd:
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy
@@ -36,7 +36,7 @@ policy.SetCurrentLocation("West US 2");
 
 ## <a id="netv3"></a>.NET SDK v3
 
-Als u meerdere masters in uw toepassing wilt inschakelen, `ApplicationRegion` stelt u de regio in waarin de toepassing wordt geïmplementeerd en waar Cosmos DB worden gerepliceerd:
+Als u meerdere masters in uw toepassing wilt inschakelen, stelt u `ApplicationRegion` in op de regio waarin de toepassing wordt geïmplementeerd en waar Cosmos DB wordt gerepliceerd:
 
 ```csharp
 CosmosClient cosmosClient = new CosmosClient(
@@ -47,7 +47,7 @@ CosmosClient cosmosClient = new CosmosClient(
     });
 ```
 
-U kunt ook de `CosmosClientBuilder` `WithApplicationRegion` gebruiken om hetzelfde resultaat te krijgen:
+U kunt eventueel de `CosmosClientBuilder` en `WithApplicationRegion` gebruiken om hetzelfde resultaat te krijgen:
 
 ```csharp
 CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-string-from-portal>")
@@ -57,7 +57,7 @@ CosmosClient client = cosmosClientBuilder.Build();
 
 ## <a id="java"></a>Java Async SDK
 
-Als u meerdere masters in uw toepassing wilt inschakelen, `policy.setUsingMultipleWriteLocations(true)` stelt u `policy.setPreferredLocations` in en stelt u deze in op de regio waarin de toepassing wordt geïmplementeerd en waar Cosmos DB worden gerepliceerd:
+Als u meerdere masters in uw toepassing wilt inschakelen, stelt u `policy.setUsingMultipleWriteLocations(true)` in en stelt u `policy.setPreferredLocations` in op de regio waarin de toepassing wordt geïmplementeerd en waar Cosmos DB wordt gerepliceerd:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -74,7 +74,7 @@ AsyncDocumentClient client =
 
 ## <a id="javascript"></a>Node. js-, java script-en type script-Sdk's
 
-`connectionPolicy.UseMultipleWriteLocations` Stel`true`in op om meerdere masters in uw toepassing in te scha kelen. Stel `connectionPolicy.PreferredLocations` ook de regio in waarin de toepassing wordt geïmplementeerd en waar Cosmos DB worden gerepliceerd:
+Als u meerdere masters in uw toepassing wilt inschakelen, stelt u `connectionPolicy.UseMultipleWriteLocations` in op `true`. Stel ook `connectionPolicy.PreferredLocations` in op de regio waarin de toepassing wordt geïmplementeerd en waar Cosmos DB wordt gerepliceerd:
 
 ```javascript
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
@@ -91,7 +91,7 @@ const client = new CosmosClient({
 
 ## <a id="python"></a>Python SDK
 
-`connection_policy.UseMultipleWriteLocations` Stel`true`in op om meerdere masters in uw toepassing in te scha kelen. Stel `connection_policy.PreferredLocations` ook de regio in waarin de toepassing wordt geïmplementeerd en waar Cosmos DB worden gerepliceerd.
+Als u meerdere masters in uw toepassing wilt inschakelen, stelt u `connection_policy.UseMultipleWriteLocations` in op `true`. Stel ook `connection_policy.PreferredLocations` in op de regio waarin de toepassing wordt geïmplementeerd en waar Cosmos DB wordt gerepliceerd.
 
 ```python
 connection_policy = documents.ConnectionPolicy()
@@ -114,4 +114,4 @@ Lees de volgende artikelen:
 * [Compromissen tussen consistentie, beschikbaarheid en prestaties in Azure Cosmos DB](consistency-levels-tradeoffs.md)
 * [Beschikbaarheid en prestaties van optimalisatie voor verschillende consistentieniveaus](consistency-levels-tradeoffs.md)
 * [Wereld wijd schalen van ingerichte door Voer](scaling-throughput.md)
-* [Globale distributie: Kijkje achter de schermen](global-dist-under-the-hood.md)
+* [Wereld wijde distributie: onder de motorkap](global-dist-under-the-hood.md)

@@ -1,31 +1,31 @@
 ---
-title: Meerdere masters voordelen van Azure Cosmos DB
-description: Begrijp de voordelen van meerdere masters in Azure Cosmos DB.
+title: Azure Cosmos DB voor delen van meerdere masters
+description: Krijg inzicht in de voor delen van multi-master in Azure Cosmos DB, vergelijking van latentie-en SLA-vereisten in één en meerdere schrijf locaties.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: c78e5e4f8d396d777738bddfd6baf086c0b2ecf4
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: b21b6ba82ba1ada0103501b8beeca270df86abd9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789291"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872006"
 ---
-# <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>Inzicht in meerdere masters voordelen in Azure Cosmos DB
+# <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>Leer de voor delen van meerdere masters in Azure Cosmos DB
 
-Cosmos DB-Accountoperators moeten de juiste globale distributie configureren om te controleren of de latentie, beschikbaarheid en vereisten voor hun toepassingen RTO kiezen. Azure Cosmos-accounts geconfigureerd met meerdere locaties voor schrijven bieden aanzienlijke voordelen via accounts met één schrijven met inbegrip van locatie, schrijven 99,999% beschikbaarheids-SLA, < 10 ms latentie SLA in het 99e percentiel en RTO schrijven = 0 in een regionaal noodgeval.
+Cosmos DB account operators moeten de juiste globale distributie configuratie kiezen om ervoor te zorgen dat de latentie, Beschik baarheid en RTO-vereisten voor hun toepassingen. Azure Cosmos-accounts die zijn geconfigureerd met meerdere schrijf locaties, bieden aanzienlijke voor delen ten opzichte van accounts met één schrijf locatie, waaronder, 99,999% SLA voor schrijf beschikbaarheid, < 10 MS-SLA voor schrijf latentie in het 99e percentiel en RTO = 0 in een regionale nood geval.
 
 ## <a name="comparison-of-features"></a>Vergelijking van functies
 
-|Vereisten voor toepassingsimplementatie|Meerdere locaties voor schrijven|Locatie van enkele schrijven|Opmerking|
+|Toepassings vereiste|Meerdere schrijf locaties|Enkele schrijf locatie|Opmerking|
 |---|---|---|---|
-|Schrijven van SLA van de latentie van < 10ms bij P99|**Ja**|Nee|Accounts met één locatie schrijven worden extra regio-overschrijdende netwerklatentie voor elke schrijfbewerking.|
-|Lees de SLA latentie van < 10ms bij P99|**Ja**|Ja| |
-|SLA van 99,999% schrijven|**Ja**|Nee|Accounts met één locatie schrijven garanderen SLA van 99,99%|
-|RTO = 0|**Ja**|Nee|Geen uitvaltijd voor schrijfbewerkingen in regionale noodsituaties. Accounts met één schrijfbewerking locatie hebben RTO van 15 minuten.|
+|SLA voor schrijf latentie van < 10 MS op P99|**Ja**|Nee|Accounts met één schrijf locatie hebben extra netwerk latentie in meerdere regio's voor elke schrijf bewerking.|
+|SLA voor de lees latentie van < 10 MS op P99|**Ja**|Ja| |
+|SLA van 99,999% schrijven|**Ja**|Nee|Accounts met één schrijf locatie garantie voor de SLA van 99,99%|
+|RTO = 0|**Ja**|Nee|Geen tijd meer voor schrijf bewerkingen in het geval van regionale rampen. Accounts met één schrijf locatie hebben RTO van 15 minuten.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u nog steeds EnableMultipleWriteLocations uitschakelen in uw Azure Cosmos-account wilt, kunt u [open een ondersteuningsticket](https://azure.microsoft.com/support/create-ticket/).
+Als u EnableMultipleWriteLocations in uw Azure Cosmos-account wilt uitschakelen, kunt u [een ondersteunings ticket openen](https://azure.microsoft.com/support/create-ticket/).

@@ -1,34 +1,32 @@
 ---
 title: Verificatie protocollen voor Azure Active Directory | Microsoft Docs
 description: Een overzicht van de verificatie protocollen die worden ondersteund door Azure Active Directory (AD)
-documentationcenter: dev-center-name
 author: rwike77
 services: active-directory
 manager: CelesteDG
-editor: ''
 ms.assetid: 7a838ae2-c24c-4304-b6c0-e77fb888e6c0
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f292d4804adf7e1a58e5c2097f689aac182ff783
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b370736a5e4994651499716e3a923cf59465ca96
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835492"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845413"
 ---
 # <a name="azure-active-directory-authentication-protocols"></a>Verificatie protocollen Azure Active Directory
+
 Azure Active Directory (Azure AD) ondersteunt een aantal van de meest gebruikte verificatie-en autorisatie protocollen. De onderwerpen in deze sectie beschrijven de ondersteunde protocollen en de implementatie ervan in azure AD. De onderwerpen bevatten een overzicht van de ondersteunde claim typen, een inleiding tot het gebruik van federatieve meta gegevens, gedetailleerde OAuth 2,0. en de informatie over het SAML 2,0-protocol en een sectie voor probleem oplossing.
 
 ## <a name="authentication-protocols-articles-and-reference"></a>Verificatie protocollen artikelen en naslag informatie
+
 * [Belang rijke informatie over de rollover van de handtekening sleutel in azure AD](active-directory-signing-key-rollover.md) : meer informatie over de rollover van de uitgebracht van Azure AD, wijzigingen die u kunt aanbrengen om de sleutel automatisch bij te werken en om te zien hoe u de meest voorkomende toepassings scenario's bijwerkt.
 * [Ondersteunde token-en claim typen](v1-id-and-access-tokens.md) : meer informatie over de claims in de tokens die door Azure AD worden uitgegeven.
 * [Federatieve meta gegevens](azure-ad-federation-metadata.md) : informatie over het zoeken en interpreteren van de meta gegevens documenten die door Azure AD worden gegenereerd.
@@ -39,6 +37,6 @@ Azure Active Directory (Azure AD) ondersteunt een aantal van de meest gebruikte 
 * [SAML-protocol referentie](active-directory-saml-protocol-reference.md) -meer informatie over de SAML-profielen eenmalige aanmelding en eenmalige afmelding van Azure AD.
 
 ## <a name="see-also"></a>Zie ook
-[Ontwikkelaars handleiding Azure Active Directory](v1-overview.md)
 
-[Voor beelden van Active Directory code](sample-v1-code.md)
+* [Ontwikkelaars handleiding Azure Active Directory](v1-overview.md)
+* [Voor beelden van Active Directory code](sample-v1-code.md)

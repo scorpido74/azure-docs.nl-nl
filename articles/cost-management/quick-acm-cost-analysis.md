@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 858672a7fcfcfd5f50c91eb769fdd0d42578195f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 36b8a3bba82a338f3aab526d505c4d1e96061ddf
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230001"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849119"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Quick Start: kosten verkennen en analyseren met kosten analyse
 
@@ -32,7 +32,7 @@ In deze snelstart leert u de volgende zaken:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Kosten analyse ondersteunt verschillende soorten Azure-account typen. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](understand-cost-mgt-data.md). Als u kostengegevens wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig.
+Kosten analyse ondersteunt verschillende soorten Azure-account typen. Zie [Gegevens van kostenbeheer begrijpen](understand-cost-mgt-data.md) voor de volledige lijst met ondersteunde accounttypen. Als u kostengegevens wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig.
 
 Zie [toegang tot gegevens toewijzen](assign-access-acm-data.md)voor meer informatie over het toewijzen van toegang tot Azure Cost Management gegevens.
 
@@ -66,9 +66,9 @@ De analyse weergave voor initiële kosten omvat de volgende gebieden.
 
 Kosten analyse heeft vier ingebouwde weer gaven die zijn geoptimaliseerd voor de meest voorkomende doel stellingen:
 
-Weergave | Antwoorden op vragen zoals
+Weergeven | Antwoorden op vragen zoals
 --- | ---
-Geaccumuleerde kosten | Hoeveel heb ik tot nu toe deze maand gewerkt? Blijf ik binnen mijn budget?
+Samengevoegde kosten | Hoeveel heb ik tot nu toe deze maand gewerkt? Blijf ik binnen mijn budget?
 Dagelijkse kosten | Zijn de kosten per dag voor de afgelopen 30 dagen verhoogd?
 Kosten per service | Hoe verschilt mijn maandelijkse gebruik in de afgelopen drie facturen?
 Kosten per resource | Welke resources zijn het meest in de buurt van deze maand?
@@ -101,7 +101,9 @@ Over het algemeen kunt u verwachten dat gegevens of meldingen binnen 8 tot 12 uu
 
 **Groeperen op** algemene eigenschappen om de kosten te verlagen en de belangrijkste inzenders te identificeren. Als u wilt groeperen op resource Tags, selecteert u bijvoorbeeld de code sleutel waarop u wilt groeperen. De kosten worden opgesplitst op basis van elke code waarde, met een extra segment voor bronnen waarvoor deze tag niet is toegepast.
 
-De meeste [ondersteuning voor Azure-bronnen](../azure-resource-manager/tag-support.md). Sommige Tags zijn echter niet beschikbaar in Cost Management en facturering. Bovendien worden resourcegroeptags niet ondersteund. Cost Management ondersteunt resourcetags alleen vanaf de datum waarop de tags rechtstreeks worden toegepast op de resource. Bekijk de [code beleidsregels met Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) video voor meer informatie over het gebruik van Azure tag Policy om de zicht baarheid van de kosten gegevens te verbeteren.
+De meeste [ondersteuning voor Azure-bronnen](../azure-resource-manager/tag-support.md). Sommige Tags zijn echter niet beschikbaar in Cost Management en facturering. Bovendien worden resourcegroeptags niet ondersteund. Ondersteuning voor Tags is van toepassing op het gebruik dat wordt gerapporteerd *nadat* het label is toegepast op de resource. Labels worden niet met terugwerkende kracht toegepast voor kosten tellingen.
+
+Bekijk de [code beleidsregels met Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) video voor meer informatie over het gebruik van Azure tag Policy om de zicht baarheid van de kosten gegevens te verbeteren.
 
 Hier volgt een overzicht van de Azure-service kosten voor de huidige maand.
 

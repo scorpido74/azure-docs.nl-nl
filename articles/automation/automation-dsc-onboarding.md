@@ -4,17 +4,17 @@ description: Computers instellen voor beheer met Azure Automation status configu
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: cf95a66cf68cf0b33444a17cf762bae79db4b50c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 80038cf5fba18eca4fbbe1405df2a76cfc84e2db
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243421"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850326"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding van machines voor beheer door Azure Automation status configuratie
 
@@ -102,7 +102,7 @@ Linux-servers die on-premises of in andere Cloud omgevingen worden uitgevoerd, k
 1. Zorg ervoor dat de meest recente versie van de [Power shell desired state Configuration voor Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) is geïnstalleerd op de computers die u wilt voorbereiden op Azure Automation status configuratie.
 1. Als de [lokale Power shell DSC-Configuration Manager standaard waarden](/powershell/scripting/dsc/managing-nodes/metaConfig4) overeenkomen met uw use-case, en u computers wilt voorbereiden, zodat deze **beide** worden opgehaald en rapporteren aan Azure Automation status configuratie:
 
-   - Gebruik `Register.py` voor het onboarden van de lokale Configuration Manager standaard instellingen van Power shell voor elke Linux-computer om de configuratie van Azure Automation status uit te kunnen laten staan:
+   - Gebruik op elke Linux-computer om de configuratie van de Azure Automation-status onboarding uit te kunnen `Register.py` de standaard instellingen van Power shell DSC Local Configuration Manager:
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
@@ -126,7 +126,7 @@ Linux-servers die on-premises of in andere Cloud omgevingen worden uitgevoerd, k
 
 Op de computer waarop deze opdracht wordt uitgevoerd, moet de meest recente versie van [WMF 5](https://aka.ms/wmf5latest) zijn geïnstalleerd.
 
-1. Als u de Power shell DSC-webconfiguraties niet op afstand kunt Toep assen, kopieert u de door de map in stap 5 op de Linux-computer overeenkomende configuratie van de betreffende computer. Roep vervolgens `SetDscLocalConfigurationManager.py` lokaal aan op elke Linux-machine die u wilt voorbereiden op Azure Automation status configuratie:
+1. Als u de Power shell DSC-webconfiguraties niet op afstand kunt Toep assen, kopieert u de door de map in stap 5 op de Linux-computer overeenkomende configuratie van de betreffende computer. Roep vervolgens `SetDscLocalConfigurationManager.py` lokaal aan op elke Linux-computer die u wilt voorbereiden op Azure Automation status configuratie:
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 

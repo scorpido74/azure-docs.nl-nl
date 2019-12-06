@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80d356426fe312708d64cc4284dbb1fd925e47c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233332"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849328"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -236,16 +236,16 @@ Een gemeen schappelijke eis van alle connectors voor workday-inrichting is dat e
 
 **Een gebruiker van het integratie systeem maken:**
 
-1. Meld u aan bij uw workday-Tenant met een Administrator-account. Voer in de werk **dagen-app**gebruiker maken in het zoekvak in en klik vervolgens op **integratie systeem gebruiker maken**.
+1. Meld u met een beheerders account aan bij uw workday-Tenant. Voer in de werk **dagen-app**gebruiker maken in het zoekvak in en klik vervolgens op **integratie systeem gebruiker maken**.
 
-    ![Gebruiker maken](./media/workday-inbound-tutorial/wd_isu_01.png "Gebruiker maken")
+   ![Gebruiker maken](./media/workday-inbound-tutorial/wd_isu_01.png "Gebruiker maken")
 2. Voltooi de **gebruikers taak integratie systeem maken** door een gebruikers naam en wacht woord op te geven voor een nieuwe gebruiker van het integratie systeem.  
   
-* Laat de optie **Nieuw wacht woord vereisen bij volgende aanmelding** uitgeschakeld, omdat deze gebruiker via een programma wordt aangemeld.
-* Houd de **time-outwaarde** voor de sessie door de standaard waarde van 0, waardoor de sessie van de gebruiker niet tijdig kan verlopen.
-* Selecteer de optie **geen UI-sessies toestaan** omdat deze een extra beveiligingslaag biedt waarmee wordt voor komen dat een gebruiker het wacht woord van het integratie systeem kan aanmelden bij workday.
+   * Laat de optie **Nieuw wacht woord vereisen bij volgende aanmelding** uitgeschakeld, omdat deze gebruiker via een programma wordt aangemeld.
+   * Houd de **time-outwaarde** voor de sessie door de standaard waarde van 0, waardoor de sessie van de gebruiker niet tijdig kan verlopen.
+   * Selecteer de optie **geen UI-sessies toestaan** omdat deze een extra beveiligingslaag biedt waarmee wordt voor komen dat een gebruiker het wacht woord van het integratie systeem kan aanmelden bij workday.
 
-    ![Integratie systeem gebruiker maken](./media/workday-inbound-tutorial/wd_isu_02.png "Integratie systeem gebruiker maken")
+   ![Integratie systeem gebruiker maken](./media/workday-inbound-tutorial/wd_isu_02.png "Integratie systeem gebruiker maken")
 
 ### <a name="creating-an-integration-security-group"></a>Een integratie beveiligings groep maken
 
@@ -312,9 +312,9 @@ In deze stap verleent u machtigingen voor domein beleid voor de gegevens van de 
    | ---------- | ---------- |
    | Ophalen en plaatsen | Werknemers gegevens: rapporten van open bare werk nemers |
    | Ophalen en plaatsen | Persoons gegevens: contact gegevens voor werk |
-   | Ophalen | Werknemers gegevens: alle posities |
-   | Ophalen | Werknemers gegevens: huidige informatie over personeel |
-   | Ophalen | Werknemers gegevens: zakelijke titel op het werknemers profiel |
+   | Ontvang | Werknemers gegevens: alle posities |
+   | Ontvang | Werknemers gegevens: huidige informatie over personeel |
+   | Ontvang | Werknemers gegevens: zakelijke titel op het werknemers profiel |
    | Ophalen en plaatsen | Workday-accounts |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Machtigingen voor het beveiligings beleid voor het bedrijfs proces configureren
@@ -356,20 +356,44 @@ In deze stap geeft u de beleids machtigingen ' beveiliging van bedrijfs processe
 
 In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van workday naar elk Active Directory domein binnen het bereik van uw integratie.
 
-* [On-premises inrichtings agent (en) installeren en configureren](#part-1-install-and-configure-on-premises-provisioning-agents)
-* [De inrichtings connector-app toevoegen en de verbinding met workday maken](#part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday)
-* [Kenmerk toewijzingen configureren](#part-3-configure-attribute-mappings)
+* [De inrichtings connector-app toevoegen en de inrichtings agent downloaden](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
+* [On-premises inrichtings agent (en) installeren en configureren](#part-2-install-and-configure-on-premises-provisioning-agents)
+* [Connectiviteit met workday en Active Directory configureren](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)
+* [Kenmerk toewijzingen configureren](#part-4-configure-attribute-mappings)
 * [Gebruikers inrichting inschakelen en starten](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>Deel 1: on-premises inrichtings agent (en) installeren en configureren
+### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>Deel 1: de inrichtings connector-app toevoegen en de inrichtings agent downloaden
 
-Als u on-premises wilt inrichten Active Directory, moet een agent worden geïnstalleerd op een server met .NET 4.7.1 + Framework en netwerk toegang tot de gewenste Active Directory domein (en).
+**Werk dagen configureren voor Active Directory inrichting:**
+
+1. Ga naar <https://portal.azure.com>
+
+2. Selecteer in de linker navigatie balk de optie **Azure Active Directory**
+
+3. Selecteer **bedrijfs toepassingen**en vervolgens **alle toepassingen**.
+
+4. Selecteer **een toepassing toevoegen**en selecteer de categorie **alle** .
+
+5. Zoek **naar Active Directory werk dagen**en voeg die app toe vanuit de galerie.
+
+6. Nadat de app is toegevoegd en het scherm met details van de app wordt weer gegeven, selecteert u **inrichting** maken
+
+7. De **inrichtings** **modus** wijzigen in **automatisch**
+
+8. Klik op het informatie banner dat wordt weer gegeven om de inrichtings agent te downloaden. 
+
+   ![Agent downloaden](./media/workday-inbound-tutorial/pa-download-agent.png "Scherm van de agent downloaden")
+
+
+### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>Deel 2: on-premises inrichtings agent (en) installeren en configureren
+
+Als u een on-premises Active Directory wilt inrichten, moet de inrichtings agent zijn geïnstalleerd op een server met .NET 4.7.1 + Framework en netwerk toegang tot de gewenste Active Directory domein (en).
 
 > [!TIP]
 > U kunt de versie van .NET Framework op uw server controleren met behulp van de instructies die u [hier](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)kunt vinden.
 > Als op de server geen .NET 4.7.1 of hoger is geïnstalleerd, kunt u deze [hier](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)downloaden.  
 
-Nadat u .NET 4.7.1 + hebt geïmplementeerd, kunt u hier de **[on-premises inrichtings agent](https://go.microsoft.com/fwlink/?linkid=847801)** downloaden en de volgende stappen volgen om de configuratie van de agent te volt ooien.
+Zet het installatie programma van de gedownloade agent over naar de server host en volg de onderstaande stappen om de configuratie van de agent te volt ooien.
 
 1. Meld u aan bij de Windows-Server waarop u de nieuwe agent wilt installeren.
 
@@ -420,25 +444,12 @@ Nadat u .NET 4.7.1 + hebt geïmplementeerd, kunt u hier de **[on-premises inrich
   
    ![Services](./media/workday-inbound-tutorial/services.png)
 
-### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>Deel 2: de app voor de inrichtings connector toevoegen en de verbinding maken met workday
+### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>Deel 3: in de inrichtings-app de verbinding configureren voor workday en Active Directory
+In deze stap maken we verbinding met werkdag en Active Directory in de Azure Portal. 
 
-**Werk dagen configureren voor Active Directory inrichting:**
+1. Ga in de Azure Portal terug naar de werkdag om de app te Active Directory voor het inrichten van gebruikers die is gemaakt in [deel 1](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
 
-1. Ga naar <https://portal.azure.com>
-
-2. Selecteer in de linker navigatie balk de optie **Azure Active Directory**
-
-3. Selecteer **bedrijfs toepassingen**en vervolgens **alle toepassingen**.
-
-4. Selecteer **een toepassing toevoegen**en selecteer de categorie **alle** .
-
-5. Zoek **naar Active Directory werk dagen**en voeg die app toe vanuit de galerie.
-
-6. Nadat de app is toegevoegd en het scherm met details van de app wordt weer gegeven, selecteert u **inrichting** maken
-
-7. De **inrichtings** **modus** wijzigen in **automatisch**
-
-8. Voer de sectie **beheerders referenties** als volgt uit:
+1. Voer de sectie **beheerders referenties** als volgt uit:
 
    * **Gebruikers naam beheerder** : Voer de gebruikers naam in van het werk account van het workday-integratie systeem, waarbij de domein naam van de Tenant is toegevoegd. Het moet er ongeveer als volgt uitzien: **username\@tenant_name**
 
@@ -461,11 +472,11 @@ Nadat u .NET 4.7.1 + hebt geïmplementeerd, kunt u hier de **[on-premises inrich
 
    * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de workday-referenties en de AD-referenties die zijn geconfigureerd voor de installatie van de agent geldig zijn.
 
-     ![Azure-portal](./media/workday-inbound-tutorial/wd_1.png)
+     ![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
 
    * Zodra de referenties zijn opgeslagen, wordt in de sectie **toewijzingen** de standaard toewijzing voor **werk dagen op locatie Active Directory**
 
-### <a name="part-3-configure-attribute-mappings"></a>Deel 3: kenmerk toewijzingen configureren
+### <a name="part-4-configure-attribute-mappings"></a>Deel 4: kenmerk toewijzingen configureren
 
 In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar Active Directory.
 
@@ -526,7 +537,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 
 1. Klik boven aan de sectie kenmerk toewijzing op **Opslaan** om uw toewijzingen op te slaan.
 
-   ![Azure-portal](./media/workday-inbound-tutorial/wd_2.png)
+   ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Hieronder ziet u enkele voor beelden van kenmerk toewijzingen tussen werk dagen en Active Directory, met enkele algemene expressies
 
@@ -541,12 +552,12 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | **WorkerID**  |  EmployeeID | **Ja** | Geschreven bij alleen maken |
 | **PreferredNameData**    |  algemene naam    |   |   Geschreven bij alleen maken |
 | **SelectUniqueValue (toevoegen ('\@', samen voegen ('. ', \[voor naam\], \[LastName\]), ' contoso.com '), samen voegen ('\@', samen voegen ('. ', Mid (\[voor naam\], 1, 1), \[achternaam\]), ' contoso.com '), deel nemen ('\@', lid worden ('. ', Mid (\[FirstName\], 1, 2), \[LastName\])**   | userPrincipalName     |     | Geschreven bij alleen maken 
-| **Vervang (Mid (vervangen door\[gebruikers-id\],, "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\]) ",," ",,", 1, 20),, "([\\\\.)\*\$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Geschreven bij alleen maken |
+| **Vervang(Mid(Vervang(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Geschreven bij alleen maken |
 | **Switch (\[actieve\],, "0", "True", "1", "false")** |  accountDisabled      |     | \+ Update maken |
-| **Voor**   | givenName       |     |    \+ Update maken |
-| **Naam**   |   SN   |     |  \+ Update maken |
+| **Voornaam**   | givenName       |     |    \+ Update maken |
+| **LastName**   |   SN   |     |  \+ Update maken |
 | **PreferredNameData**  |  displayName |     |   \+ Update maken |
-| **Bedrijfs**         | company   |     |  \+ Update maken |
+| **Bedrijf**         | bedrijf   |     |  \+ Update maken |
 | **SupervisoryOrganization**  | department  |     |  \+ Update maken |
 | **ManagerReference**   | beheerder  |     |  \+ Update maken |
 | **BusinessTitle**   |  titel     |     |  \+ Update maken | 
@@ -556,10 +567,10 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | **CountryReferenceTwoLetter**    |  c  |     |         \+ Update maken |
 | **CountryRegionReference** |  St     |     | \+ Update maken |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  \+ Update maken |
-| **Code**  |   Postcode  |     | \+ Update maken |
+| **PostalCode**  |   Postcode  |     | \+ Update maken |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | \+ Update maken |
-| **Faxtaken**      | facsimileTelephoneNumber     |     |    \+ Update maken |
-| **Provider**  |    mobiele       |     |       \+ Update maken |
+| **Fax**      | facsimileTelephoneNumber     |     |    \+ Update maken |
+| **Mobile**  |    mobiele       |     |       \+ Update maken |
 | **LocalReference** |  preferredLanguage  |     |  \+ Update maken |                                               
 | **Switch (\[gemeente\], "OE = standaard gebruikers, OE = gebruikers, OE = standaard, OE = locaties, DC = contoso, DC = com", "Rotterdam", "OE = Standard users, OU = gebruikers, OE = Rotterdam, OU = locations, DC = contoso, DC = com", "Austin", "OE = Standard users, OU = Users, OU = Austin, OE = locaties, DC = contoso, DC = com", "Seattle", "OE = standaard gebruikers, OU = gebruikers, OE = Seattle, OU = locaties, DC = contoso, DC = com", "Londen", "OE = Standard users, OU = gebruikers, OU = Londen, DC =", DC = contoso, DC'S = com ")**  | parentDistinguishedName     |     |  \+ Update maken |
 
@@ -734,7 +745,7 @@ Zodra de configuratie van de app voor workday-inrichting is voltooid, kunt u de 
 
 5. Zodra de initiële synchronisatie is voltooid, wordt een overzichts rapport van de controle op het tabblad **inrichten** geschreven, zoals hieronder wordt weer gegeven.
 
-   ![Azure-portal](./media/workday-inbound-tutorial/wd_3.png)
+   ![Azure Portal](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
 
@@ -837,7 +848,7 @@ Wanneer u een nieuw idee bekijkt, moet u controleren of iemand anders een vergel
 * Ga naar **configuratie scherm** -> **een programma menu te verwijderen of te wijzigen**
 * Zoek naar de versie die overeenkomt met de vermelding **Microsoft Azure AD inrichtings agent verbinden**
 
-  ![Azure-portal](./media/workday-inbound-tutorial/pa_version.png)
+  ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Pusht micro soft automatisch de updates voor de inrichtings agent?
 
@@ -973,7 +984,7 @@ Hier vindt u informatie over het afhandelen van zulke vereisten voor het samen s
      | ----------------- | -------------------- |
      | PreferredFirstName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:First_Name/text() |
      | PreferredLastName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:Last_Name/text() |
-     | Bedrijf | Word: worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: ID [@wd:type= ' Organization_Type_ID '] = ' bedrijf ']/wd:Organization_Reference/@wd:Descriptor |
+     | Bedrijf | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data[wd:Organization_Data/wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Company']/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | Word: worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [@wd:type= ' Organization_Type_ID '] = ' toezicht ']/WD: Organization_Name/text () |
   
    Bevestig met uw werkdag team dat de API-expressie hierboven geldig is voor de Tenant configuratie van uw werkdag. Indien nodig kunt u deze bewerken zoals beschreven in de sectie [de lijst met gebruikers kenmerken van workday aanpassen](#customizing-the-list-of-workday-user-attributes).
@@ -984,10 +995,10 @@ Hier vindt u informatie over het afhandelen van zulke vereisten voor het samen s
 
      | Kenmerk workday | API XPATH-expressie |
      | ----------------- | -------------------- |
-     | CountryReference | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Alpha-3_Code ']/text () |
+     | CountryReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Alpha-3_Code']/text() |
      | CountryReferenceFriendly | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/@wd:Descriptor |
-     | CountryReferenceNumeric | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Numeric-3_Code ']/text () |
-     | CountryReferenceTwoLetter | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Alpha-2_Code ']/text () |
+     | CountryReferenceNumeric | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Numeric-3_Code']/text() |
+     | CountryReferenceTwoLetter | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Alpha-2_Code']/text() |
      | CountryRegionReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Region_Reference/@wd:Descriptor |
 
   Bevestig met uw werkdag team dat de API-expressies hierboven geldig zijn voor de Tenant configuratie van uw werkdag. Indien nodig kunt u deze bewerken zoals beschreven in de sectie [de lijst met gebruikers kenmerken van workday aanpassen](#customizing-the-list-of-workday-user-attributes).
@@ -1034,13 +1045,13 @@ Zie ook:
 
 * [Syntaxis van de mid-functie](../manage-apps/functions-for-customizing-application-data.md#mid)
 * [Syntaxis van de functie Replace](../manage-apps/functions-for-customizing-application-data.md#replace)
-* [Syntaxis van de functie SelectUniqueValue](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue)
+* [SelectUniqueValue Function Syntax](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue)
 
 #### <a name="how-do-i-remove-characters-with-diacritics-and-convert-them-into-normal-english-alphabets"></a>Hoe kan ik tekens verwijderen en deze converteren naar gewone Engelse alfabetten?
 
 Gebruik de functie [NormalizeDiacritics](../manage-apps/functions-for-customizing-application-data.md#normalizediacritics) om speciale tekens in de voor naam en achternaam van de gebruiker te verwijderen en tegelijkertijd het e-mail adres of de CN-waarde voor de gebruiker samen te stellen.
 
-## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
+## <a name="troubleshooting-tips"></a>Tips om problemen op te lossen
 
 In deze sectie vindt u specifieke richt lijnen voor het oplossen van problemen met het inrichten van uw workday met behulp van de Azure AD-controle logboeken en Windows Server Logboeken-Logboeken. Het is gebaseerd op de algemene stappen voor probleem oplossing en de concepten die in de [zelf studie zijn vastgelegd: rapportage over automatische toewijzing van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)
 

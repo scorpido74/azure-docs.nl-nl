@@ -1,17 +1,17 @@
 ---
 title: SQL-subquery's voor Azure Cosmos DB
-description: Meer informatie over SQL-subquery's en de veelvoorkomende use cases in Azure Cosmos DB
+description: Meer informatie over SQL-subquery's en de meest voorkomende use-cases en verschillende typen subquery's in Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003491"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870561"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Voor beelden van SQL-subquery voor Azure Cosmos DB
 
@@ -23,16 +23,16 @@ In dit artikel worden SQL-subquery's en de veelvoorkomende use cases in Azure Co
 
 Er zijn twee hoofd typen subquery's:
 
-* **Gecorreleerd**: Een subquery die verwijst naar waarden van de buitenste query. De subquery wordt eenmaal geëvalueerd voor elke rij die de buitenste query processen uitvoert.
-* **Niet-gecorreleerd**: Een subquery die onafhankelijk is van de buitenste query. Het kan zelfstandig worden uitgevoerd, zonder dat hiervoor de buitenste query nodig is.
+* **Gecorreleerd**: een subquery die verwijst naar waarden van de buitenste query. De subquery wordt eenmaal geëvalueerd voor elke rij die de buitenste query processen uitvoert.
+* **Niet-correled**: een subquery die onafhankelijk is van de buitenste query. Het kan zelfstandig worden uitgevoerd, zonder dat hiervoor de buitenste query nodig is.
 
 > [!NOTE]
 > Azure Cosmos DB ondersteunt alleen gecorreleerde subquery's.
 
 Subquery's kunnen verder worden geclassificeerd op basis van het aantal rijen en kolommen dat ze retour neren. Er zijn drie typen:
-* **Tabel**: Retourneert meerdere rijen en meerdere kolommen.
-* **Meerdere waarden**: Retourneert meerdere rijen en één kolom.
-* **Scalair**: Retourneert één rij en één kolom.
+* **Tabel**: retourneert meerdere rijen en meerdere kolommen.
+* **Meerdere waarden**: retourneert meerdere rijen en één kolom.
+* **Scalair**: retourneert één rij en één kolom.
 
 SQL-query's in Azure Cosmos DB retour neren altijd één kolom (een eenvoudige waarde of een complex document). Daarom zijn alleen multi-waarden en scalaire subquery's van toepassing op Azure Cosmos DB. U kunt een subquery met meerdere waarden alleen in de component FROM als een relationele expressie gebruiken. U kunt een scalaire subquery gebruiken als scalaire expressie in de component SELECT of WHERE, of als een relationele expressie in de component FROM.
 
@@ -47,7 +47,7 @@ Subquery's met meerdere waarden retour neren een set documenten en worden altijd
 
 Subquery's voor meerdere waarden kunnen samenvoegings expressies optimaliseren door predikaten te pushen na elke Select-veel'-expressie in plaats van alle kruis koppelingen in de component WHERE.
 
-Bekijk de volgende query:
+Laten we nu eens naar deze query kijken:
 
 ```sql
 SELECT Count(1) AS Count
@@ -79,7 +79,7 @@ Stel dat er slechts één item in de matrix Tags overeenkomt met het filter en d
 
 Subquery's kunnen helpen bij het optimaliseren van query's met dure expressies zoals door de gebruiker gedefinieerde functies (Udf's), complexe teken reeksen of reken kundige expressies. U kunt een subquery samen met een JOINEXPRESSIE expressie gebruiken om de expressie één keer te evalueren, maar hiernaar te verwijzen.
 
-Met de volgende query wordt de `GetMaxNutritionValue` UDF twee keer uitgevoerd:
+Met de volgende query wordt de UDF-`GetMaxNutritionValue` twee keer uitgevoerd:
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -124,24 +124,24 @@ Mogelijk moet u vaak verwijzen naar statische gegevens die zelden worden gewijzi
 
 Denk bijvoorbeeld aan deze set referentie gegevens:
 
-| **Teleenheid** | **Name**            | **Vermenigvuldig** | **Basis eenheid** |
+| **Teleenheid** | **Naam**            | **Vermenigvuldig** | **Basis eenheid** |
 | -------- | ------------------- | -------------- | ------------- |
-| lopen       | Nanogram            | 1,00 E-09       | Gram          |
-| µg       | Microgram           | 1,00 E-06       | Gram          |
-| mg       | Nauw           | 1,00 E-03       | Gram          |
-| g        | Gram                | 1,00 E + 00       | Gram          |
-| kg       | Kilo            | 1,00 E + 03       | Gram          |
-| mg       | Megagram            | 1,00 E + 06       | Gram          |
-| Gg       | Gigagram            | 1,00 E + 09       | Gram          |
-| nJ       | Nanojoule           | 1,00 E-09       | Joule         |
-| µJ       | Microjoule          | 1,00 E-06       | Joule         |
-| mJ       | Millijoule          | 1,00 E-03       | Joule         |
-| D        | Joule               | 1,00 E + 00       | Joule         |
-| kJ       | Kilojoule           | 1,00 E + 03       | Joule         |
-| MJ       | Megajoule           | 1,00 E + 06       | Joule         |
-| GJ       | Gigajoule           | 1,00 E + 09       | Joule         |
-| overeenkomst      | Calorie             | 1,00 E + 00       | calorie       |
-| kcal     | Calorie             | 1,00 E + 03       | calorie       |
+| lopen       | Nanogram            | 1,00 e-09       | Gram          |
+| µg       | Microgram           | 1,00 e-06       | Gram          |
+| mg       | Nauw           | 1,00 e-03       | Gram          |
+| g        | Gram                | 1,00 e + 00       | Gram          |
+| kg       | Kilo            | 1,00 e + 03       | Gram          |
+| Mg       | Megagram            | 1,00 e + 06       | Gram          |
+| Gg       | Gigagram            | 1,00 e + 09       | Gram          |
+| nJ       | Nanojoule           | 1,00 e-09       | Joule         |
+| µJ       | Microjoule          | 1,00 e-06       | Joule         |
+| mJ       | Millijoule          | 1,00 e-03       | Joule         |
+| "J"        | Joule               | 1,00 e + 00       | Joule         |
+| kJ       | Kilojoule           | 1,00 e + 03       | Joule         |
+| MJ       | Megajoule           | 1,00 e + 06       | Joule         |
+| GJ       | Gigajoule           | 1,00 e + 09       | Joule         |
+| overeenkomst      | Calorie             | 1,00 e + 00       | calorie       |
+| kcal     | Calorie             | 1,00 e + 03       | calorie       |
 | IU       | Internationale eenheden |                |               |
 
 
@@ -366,9 +366,9 @@ Als het sleutel woord VALUE in de voor gaande subquery wordt wegge laten, wordt 
 SELECT EXISTS (SELECT undefined) 
 ```
 
-De subquery plaatst de lijst met waarden in de geselecteerde lijst in een-object. Als de geselecteerde lijst geen waarden bevat, retourneert de subquery de enkele waarde{}' '. Deze waarde is gedefinieerd, dus resulteert in waar.
+De subquery plaatst de lijst met waarden in de geselecteerde lijst in een-object. Als de geselecteerde lijst geen waarden bevat, retourneert de subquery de enkelvoudige waarde{}. Deze waarde is gedefinieerd, dus resulteert in waar.
 
-### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Voorbeeld: ARRAY_CONTAINS en de samenvoegings bewerking worden herschreven
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Voor beeld: ARRAY_CONTAINS herschrijven en samen voegen als bestaan
 
 Een veelgebruikte use-case van ARRAY_CONTAINS is het filteren van een document door het bestaan van een item in een matrix. In dit geval controleren we of de labels matrix een item met de naam ' oranje ' bevat.
 
@@ -386,9 +386,9 @@ FROM food f
 WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 ```
 
-Daarnaast kan ARRAY_CONTAINS alleen controleren of een waarde gelijk is aan een element binnen een matrix. Als u complexere filters voor matrix eigenschappen nodig hebt, gebruikt u samen voegen.
+Daarnaast kan ARRAY_CONTAINS alleen controleren of een waarde gelijk is aan een wille keurig element in een matrix. Als u complexere filters voor matrix eigenschappen nodig hebt, gebruikt u samen voegen.
 
-Bekijk de volgende query die op basis van de eenheden en `nutritionValue` eigenschappen in de matrix filtert: 
+Bekijk de volgende query die op basis van de eigenschappen units en `nutritionValue` in de matrix filtert: 
 
 ```sql
 SELECT VALUE c.description

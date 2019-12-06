@@ -1,80 +1,80 @@
 ---
 title: Azure Automation-gegevens beheren
-description: In dit artikel bevat meerdere onderwerpen voor het beheren van een Azure Automation-omgeving.  Momenteel omvat het bewaren van gegevens en back-ups van Azure Automation-noodherstel in Azure Automation.
+description: Dit artikel bevat meerdere onderwerpen over het beheren van een Azure Automation omgeving.  Op dit moment neemt het bewaren van gegevens op en maakt het back-ups van Azure Automation herstel na nood gevallen in Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9de5909ddca5fd36f3fafcb79e2a4ad519402c9c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: da1b151a150dfbf602593451d3d68043352b73eb
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476587"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850768"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation-gegevens beheren
-In dit artikel bevat meerdere onderwerpen voor het beheren van een Azure Automation-omgeving.
+Dit artikel bevat meerdere onderwerpen over het beheren van een Azure Automation omgeving.
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
-Wanneer u een resource in Azure Automation verwijdert, wordt wel worden bewaard gedurende 90 dagen voor controledoeleinden voordat wordt permanent verwijderd.  U kan niet zien of de resource gebruiken gedurende deze tijd.  Dit beleid geldt ook voor resources die deel uitmaken van een automation-account dat wordt verwijderd.
+## <a name="data-retention"></a>Gegevens bewaren
+Wanneer u een resource in Azure Automation verwijdert, wordt deze 90 dagen bewaard voor controle doeleinden voordat deze permanent worden verwijderd.  U kunt de resource niet zien of gebruiken tijdens deze periode.  Dit beleid is ook van toepassing op bronnen die horen bij een Automation-account dat wordt verwijderd.
 
-Azure Automation wordt automatisch verwijderd en taken die ouder zijn dan 90 dagen permanent verwijderd.
+Met Azure Automation worden taken die ouder zijn dan 90 dagen automatisch verwijderd en permanent verwijderd.
 
-De volgende tabel geeft een overzicht van het bewaarbeleid voor verschillende resources.
+De volgende tabel bevat een overzicht van het Bewaar beleid voor verschillende resources.
 
-| Data | Beleid |
+| Gegevens | Beleid |
 |:--- |:--- |
-| Accounts |90 dagen nadat het account is verwijderd door een gebruiker permanent verwijderd. |
-| Assets |Negentig dagen na de asset door een gebruiker wordt verwijderd of 90 dagen na het account waarin dat de asset wordt verwijderd door een gebruiker permanent verwijderd. |
-| Modules |Negentig dagen na de module wordt verwijderd door een gebruiker of 90 dagen na de rekening met dat de module wordt verwijderd door een gebruiker permanent verwijderd. |
-| Runbooks |Negentig dagen na de resource wordt verwijderd door een gebruiker of 90 dagen na het account waarin dat de resource wordt verwijderd door een gebruiker permanent verwijderd. |
-| Taken |Verwijderde en permanent verwijderd 90 dagen na de laatste wordt gewijzigd. Dit wordt mogelijk nadat de taak is voltooid, is gestopt of is onderbroken. |
-| Knooppunt configuraties/MOF-bestanden |Oude knooppuntconfiguratie wordt definitief verwijderd van 90 dagen na de configuratie van een nieuw knooppunt wordt gegenereerd. |
-| DSC-knooppunten |Negentig dagen na het knooppunt ongedaan van Automation-Account met behulp van Azure portal is definitief verwijderd of de [Unregister-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) cmdlet in Windows PowerShell. Knooppunten worden 90 dagen na de rekening met dat het knooppunt wordt verwijderd door een gebruiker ook permanent verwijderd. |
-| Knooppunt-rapporten |90 dagen nadat een nieuw rapport is gegenereerd voor dat knooppunt permanent verwijderd |
+| Accounts |90 dagen permanent verwijderd nadat het account is verwijderd door een gebruiker. |
+| Assets |Definitief verwijderd 90 dagen nadat de Asset is verwijderd door een gebruiker of 90 dagen nadat het account dat de Asset bevat, is verwijderd door een gebruiker. |
+| Modules |Nadat de module is verwijderd door een gebruiker, of 90 dagen nadat het account dat de module bevat, door een gebruiker is verwijderd, wordt 90 dagen permanent verwijderd. |
+| Runbooks |Nadat de resource is verwijderd door een gebruiker, of 90 dagen nadat het account dat de resource heeft bevindt, 90 definitief is verwijderd door een gebruiker. |
+| Taken |90 dagen na de laatste wijziging verwijderd en definitief verwijderd. Dit kan zich voordoen nadat de taak is voltooid, is gestopt of is onderbroken. |
+| Knooppunt configuraties/MOF-bestanden |De oude configuratie van het knoop punt wordt 90 dagen na het genereren van een nieuwe knooppunt configuratie permanent verwijderd. |
+| DSC-knoop punten |Nadat het knoop punt is verwijderd uit het Automation-account, 90 dagen permanent is gewist met Azure Portal of de cmdlet [unregister-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) in Windows Power shell. Knoop punten worden ook definitief verwijderd 90 dagen nadat het account dat het knoop punt bevat, door een gebruiker is verwijderd. |
+| Knooppunt rapporten |90 dagen na het genereren van een nieuw rapport voor dat knoop punt definitief verwijderd |
 
-Het bewaarbeleid is van toepassing op alle gebruikers en momenteel niet worden aangepast.
+Het Bewaar beleid is van toepassing op alle gebruikers en kan momenteel niet worden aangepast.
 
-Echter, als u behouden van gegevens voor een langere periode wilt, kunt u doorsturen runbook de taaklogboeken voor logboeken van Azure Monitor.  Raadpleeg voor meer informatie, [doorsturen van Azure Automation-taakgegevens naar Azure Monitor logboeken](automation-manage-send-joblogs-log-analytics.md).   
+Als u echter gegevens wilt bewaren voor een langere periode, kunt u runbook-taak logboeken door sturen naar Azure Monitor Logboeken.  Raadpleeg [Azure Automation-taak gegevens door sturen naar Azure monitor-logboeken](automation-manage-send-joblogs-log-analytics.md)voor meer informatie.   
 
 ## <a name="backing-up-azure-automation"></a>Back-ups maken met Azure Automation
-Wanneer u een automation-account in Microsoft Azure verwijdert, worden alle objecten in het account verwijderd inclusief runbooks, modules, configuraties, instellingen, jobs en activa. De objecten kunnen niet worden hersteld nadat het account is verwijderd.  Gebruik de volgende informatie kunt u back-up van de inhoud van uw automation-account voordat deze worden verwijderd. 
+Wanneer u een Automation-account in Microsoft Azure verwijdert, worden alle objecten in het account verwijderd, met inbegrip van runbooks, modules, configuraties, instellingen, taken en assets. De objecten kunnen niet worden hersteld nadat het account is verwijderd.  U kunt de volgende informatie gebruiken om een back-up te maken van de inhoud van uw Automation-account voordat u deze verwijdert. 
 
 ### <a name="runbooks"></a>Runbooks
-U kunt uw runbooks exporteren naar scriptbestanden met behulp van de Azure portal of de [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet in Windows PowerShell.  Deze scriptbestanden kunnen worden geïmporteerd in een ander automation-account, zoals beschreven in [maken of importeren van een Runbook](/previous-versions/azure/dn643637(v=azure.100)).
+U kunt uw runbooks exporteren naar script bestanden met behulp van de Azure Portal of de cmdlet [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) in Windows Power shell.  Deze script bestanden kunnen worden geïmporteerd in een ander Automation-account, zoals wordt beschreven in [een Runbook maken of importeren](/previous-versions/azure/dn643637(v=azure.100)).
 
 ### <a name="integration-modules"></a>Integratiemodules
-U kunt integratiemodules exporteren vanuit Azure Automation.  U moet ervoor zorgen dat deze beschikbaar is buiten het automation-account zijn.
+U kunt geen integratie modules exporteren van Azure Automation.  U moet ervoor zorgen dat deze beschikbaar zijn buiten het Automation-account.
 
 ### <a name="assets"></a>Assets
-U kunt niet exporteren [activa](/previous-versions/azure/dn939988(v=azure.100)) van Azure Automation.  Met behulp van de Azure-portal, moet u de details van variabelen, -referenties, certificaten, verbindingen en schema's opmerking.  U moet alle activa die worden gebruikt door runbooks die u in een ander automation importeert vervolgens handmatig maken.
+U kunt geen [assets](/previous-versions/azure/dn939988(v=azure.100)) exporteren van Azure Automation.  Met de Azure Portal, moet u de details van de variabelen, referenties, certificaten, verbindingen en schema's noteren.  U moet vervolgens hand matig activa maken die worden gebruikt door runbooks die u importeert in een andere Automation.
 
-U kunt [Azure-cmdlets](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) ophalen van details van activa op niet-versleutelde en een opslaan voor toekomstig gebruik of gelijkwaardige activa in een ander automation-account maken.
+U kunt [Azure-cmdlets](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) gebruiken om details van niet-versleutelde assets op te halen en deze op te slaan voor toekomstige Naslag informatie of gelijkwaardige assets te maken in een ander Automation-account.
 
-U kunt de waarde voor gecodeerde variabelen of het wachtwoordveld van referenties met behulp van cmdlets niet ophalen.  Als u deze waarden niet weet en u ze wel vanuit een runbook met ophalen kunt de [Get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) en [Get-AutomationPSCredential](/previous-versions/azure/dn940015(v=azure.100)) activiteiten.
+U kunt de waarde voor versleutelde variabelen of het wachtwoord veld van referenties niet ophalen met behulp van cmdlets.  Als u deze waarden niet weet, kunt u ze ophalen uit een runbook met behulp van de [Get-AutomationVariable-](/previous-versions/azure/dn940012(v=azure.100)) en [Get-AutomationPSCredential-](/previous-versions/azure/dn940015(v=azure.100)) activiteiten.
 
-U kunt certificaten exporteren vanuit Azure Automation.  U moet ervoor zorgen dat er geen certificaten beschikbaar buiten Azure zijn.
+U kunt geen certificaten exporteren van Azure Automation.  U moet ervoor zorgen dat certificaten buiten Azure beschikbaar zijn.
 
 ### <a name="dsc-configurations"></a>DSC-configuraties
-U kunt uw configuraties exporteren naar scriptbestanden met behulp van de Azure portal of de [Export-AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration) cmdlet in Windows PowerShell. Deze configuraties kunnen worden geïmporteerd en gebruikt in een ander automation-account.
+U kunt uw configuraties exporteren naar script bestanden met behulp van de Azure Portal of de cmdlet [export-AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration) in Windows Power shell. Deze configuraties kunnen worden geïmporteerd en gebruikt in een ander Automation-account.
 
 ## <a name="geo-replication-in-azure-automation"></a>Geo-replicatie in Azure Automation
-Geo-replicatie, standaard in Azure Automation-accounts, back-ups van gegevens naar een andere geografische regio voor redundantie. U kunt een primaire regio kiezen bij het instellen van uw account en vervolgens een secundaire regio die is toegewezen aan deze automatisch. De secundaire gegevens gekopieerd van de primaire regio, wordt voortdurend bijgewerkt in het geval van verlies van gegevens.  
+Geo-replicatie, standaard in Azure Automation accounts, back-ups maken van account gegevens naar een andere geografische regio voor redundantie. U kunt een primaire regio kiezen bij het instellen van uw account en vervolgens wordt er automatisch een secundaire regio aan toegewezen. De secundaire gegevens, gekopieerd uit de primaire regio, worden voortdurend bijgewerkt in het geval van gegevens verlies.  
 
-De volgende tabel toont de beschikbare primaire en secundaire regiokoppelingen.
+De volgende tabel bevat de beschik bare primaire en secundaire regio's paars.
 
 | Primair | Secundair |
 | --- | --- |
-| US - zuid-centraal |US - noord-centraal |
-| US - oost 2 |US - centraal |
-| Europa -west |Europa - noord |
+| VS - zuid-centraal |VS - noord-centraal |
+| US - oost 2 |VS - centraal |
+| Europa - west |Europa - noord |
 | Azië - zuidoost |Azië - oost |
-| Japan - oost |Japan - west |
+| Japan - Oost |Japan - West |
 
-In het onwaarschijnlijke geval dat een primaire regiogegevens verloren gegaan zijn, probeert Microsoft om het te herstellen. Als de primaire gegevens kan niet worden hersteld, vervolgens geo-failover wordt uitgevoerd en de betrokken klanten worden ontvangen over dit via hun abonnement.
+In het onwaarschijnlijke geval dat de gegevens van de primaire regio verloren zijn gegaan, probeert micro soft deze te herstellen. Als de primaire gegevens niet kunnen worden hersteld, wordt er geo-failover uitgevoerd en worden de betrokken klanten hiervan op de hoogte gesteld via hun abonnement.
 
 

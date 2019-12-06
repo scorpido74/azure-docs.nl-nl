@@ -4,17 +4,17 @@ description: In dit artikel worden de Windows Update-instellingen beschreven die
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 813d34f9c07e6c2909c483f040d4f3bf09b3ad24
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 804f42121293e142cf77ad73c4aab36e62e3242d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690843"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850411"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Windows Update instellingen voor Updatebeheer configureren
 
@@ -34,7 +34,7 @@ $WUSettings.Save()
 
 ## <a name="disable-automatic-installation"></a>Automatische installatie uitschakelen
 
-In azure virtual machines (Vm's) is automatische installatie van updates standaard ingeschakeld. Dit kan ertoe leiden dat updates worden geïnstalleerd voordat u deze plant voor installatie door Updatebeheer. U kunt dit gedrag uitschakelen door de register sleutel `NoAutoUpdate` in te stellen op `1`. In het volgende Power shell-fragment ziet u hoe u dit doet:
+In azure virtual machines (Vm's) is automatische installatie van updates standaard ingeschakeld. Dit kan ertoe leiden dat updates worden geïnstalleerd voordat u deze plant voor installatie door Updatebeheer. U kunt dit gedrag uitschakelen door de `NoAutoUpdate` register sleutel in te stellen op `1`. In het volgende Power shell-fragment ziet u hoe u dit doet:
 
 ```powershell
 $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
@@ -43,7 +43,7 @@ Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
 
 ## <a name="configure-reboot-settings"></a>Instellingen voor opnieuw opstarten configureren
 
-De register sleutels die worden vermeld in [Automatische updates configureren door het REGI ster te bewerken en de](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) [register sleutels die worden gebruikt voor het beheren van opnieuw opstarten](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) , kunnen ertoe leiden dat uw computers opnieuw worden opgestart, zelfs als u in de instellingen voor **Update-implementatie** **nooit opnieuw opstarten** opgeeft . U moet deze register sleutels configureren om het beste bij uw omgeving te passen.
+De register sleutels die worden vermeld in [Automatische updates configureren door het REGI ster te bewerken en de](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) [register sleutels die worden gebruikt voor het beheren van opnieuw opstarten](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) , kunnen ertoe leiden dat uw computers opnieuw worden opgestart, zelfs als u in de instellingen voor **Update-implementatie** **nooit opnieuw opstarten** opgeeft. U moet deze register sleutels configureren om het beste bij uw omgeving te passen.
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Updates voor andere micro soft-producten inschakelen
 

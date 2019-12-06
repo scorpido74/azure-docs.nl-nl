@@ -1,79 +1,79 @@
 ---
-title: Wijzigingen van bestandsinhoud weergeven met Azure Automation
-description: Gebruik de functie voor het wijzigen van de inhoud van bestand van wijzigingen bijhouden om weer te geven van de inhoud van een bestand dat is gewijzigd.
+title: Wijzigingen in bestands inhoud weer geven met Azure Automation
+description: Gebruik de functie voor het wijzigen van de bestands inhoud van het bijhouden van wijzigingen om de inhoud weer te geven van een bestand dat is gewijzigd.
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6aef9a24e3337d1f5a5a6c9ac6b510cc7f9a66a5
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 4ab88aa2dc604172f00d875353dabba61fd101af
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478652"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850581"
 ---
-# <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Inhoud van een bestand dat wordt bijgehouden met wijzigingen bijhouden weergeven
+# <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Inhoud weer geven van een bestand dat wordt bijgehouden met Wijzigingen bijhouden
 
-Inhoud bijhouden bestand kunt u de inhoud van een bestand weergeven voor en na een wijziging die worden bijgehouden met wijzigingen bijhouden. U doet dit door wordt opgeslagen in de inhoud van het bestand een storage-account nadat elke wijziging optreedt.
+Met het bijhouden van bestands inhoud kunt u de inhoud van een bestand weer geven voor en na een wijziging die wordt bijgehouden met Wijzigingen bijhouden. Hiervoor wordt de bestands inhoud opgeslagen in een opslag account nadat elke wijziging is doorgevoerd.
 
 ## <a name="requirements"></a>Vereisten
 
-* Een standard storage-account met het implementatiemodel van Resource Manager is vereist voor het opslaan van de inhoud van bestand. Premium- en klassieke implementatie model storage-accounts moeten niet worden gebruikt. Zie voor meer informatie over de storage-accounts, [over Azure storage-accounts](../storage/common/storage-create-storage-account.md)
+* Een standaard opslag account met het Resource Manager-implementatie model is vereist voor het opslaan van bestands inhoud. Premium-en klassieke implementatie model opslag accounts mogen niet worden gebruikt. Zie [over Azure Storage-accounts](../storage/common/storage-create-storage-account.md) voor meer informatie over opslag accounts.
 
-* Het opslagaccount die gebruikt kan alleen 1 Automation-Account verbonden hebben.
+* Voor het gebruikte opslag account kan slechts één Automation-account zijn verbonden.
 
-* [Wijzigingen bijhouden](automation-change-tracking.md) is ingeschakeld in uw Automation-Account.
+* [Wijzigingen bijhouden](automation-change-tracking.md) is ingeschakeld in uw Automation-account.
 
-## <a name="enable-file-content-tracking"></a>Bestand inhoud bijhouden inschakelen
+## <a name="enable-file-content-tracking"></a>Tracering van bestands inhoud inschakelen
 
-1. Open uw Automation-account in de Azure-portal en selecteer vervolgens **wijzigingen bijhouden**.
-2. Selecteer op het bovenste menu **instellingen bewerken**.
-3. Selecteer **bestandsinhoud** en klikt u op **koppeling**. Hiermee opent u de **Inhoudslocatie toevoegen voor wijzigingen bijhouden** deelvenster.
+1. Open uw Automation-account in het Azure Portal en selecteer vervolgens **Wijzigingen bijhouden**.
+2. Selecteer in het bovenste menu **Instellingen bewerken**.
+3. Selecteer **Bestands inhoud** en klik op **koppelen**. Hiermee opent u het deel venster **locatie van inhoud toevoegen voor wijzigingen bijhouden** .
 
    ![Inschakelen](./media/change-tracking-file-contents/enable.png)
 
-4. Selecteer het abonnement en de storage-account te gebruiken voor het opslaan van de inhoud van het bestand op. Als u wilt een bestand inhoud bijhouden voor alle bestaande bijgehouden bestanden inschakelen, selecteert u **op** voor **bestandsinhoud voor alle instellingen uploaden**. U kunt dit wijzigen voor elk pad daarna.
+4. Selecteer het abonnement en het opslag account dat moet worden gebruikt voor het opslaan van de bestands inhoud. Als u het bijhouden van bestands inhoud voor alle bestaande bijgehouden bestanden wilt inschakelen, selecteert u **aan** voor **uploaden van bestands inhoud voor alle instellingen**. U kunt dit later voor elk bestandspad wijzigen.
 
-   ![storage-account instellen](./media/change-tracking-file-contents/storage-account.png)
+   ![opslag account instellen](./media/change-tracking-file-contents/storage-account.png)
 
-5. Eenmaal is ingeschakeld, worden de storage-account en de SAS-URI's weergegeven. De SAS-URI's 365 dagen na het verlopen en opnieuw kunnen worden gemaakt door te klikken op de **opnieuw genereren** knop.
+5. Als het opslag account en de SAS-Uri's eenmaal zijn ingeschakeld, worden deze weer gegeven. De SAS-Uri's verlopen na 365 dagen en kunnen opnieuw worden gemaakt door te klikken op de knop **opnieuw genereren** .
 
-   ![Een lijst met accountsleutels](./media/change-tracking-file-contents/account-keys.png)
+   ![lijst met account sleutels](./media/change-tracking-file-contents/account-keys.png)
 
 ## <a name="add-a-file"></a>Een bestand toevoegen
 
-De volgende stappen helpen u bij het inschakelen van bijhouden van wijzigingen voor een bestand:
+De volgende stappen helpen u bij het inschakelen van het bijhouden van wijzigingen voor een bestand:
 
-1. Op de **instellingen bewerken** pagina van **bijhouden**, selecteert u **Windows bestanden** of **Linux-bestanden** tabblad en klik op  **Toevoegen**
+1. Op de pagina **Instellingen bewerken** van **Wijzigingen bijhouden**selecteert u het tabblad **Windows-bestanden** of Linux- **bestanden** en klikt u op **toevoegen**
 
-1. Vul de gegevens voor het pad en selecteer **waar** onder **bestandsinhoud voor alle instellingen uploaden**. Deze instelling kunt bijhouden voor dit bestandspad alleen de inhoud van bestand.
+1. Vul de informatie voor het bestandspad in en selecteer **waar** onder **Bestands inhoud uploaden voor alle instellingen**. Met deze instelling wordt het bijhouden van bestands inhoud alleen voor dat bestandspad ingeschakeld.
 
-   ![een linux-bestand toevoegen](./media/change-tracking-file-contents/add-linux-file.png)
+   ![een Linux-bestand toevoegen](./media/change-tracking-file-contents/add-linux-file.png)
 
-## <a name="viewing-the-contents-of-a-tracked-file"></a>De inhoud van een bijgehouden bestand weergeven
+## <a name="viewing-the-contents-of-a-tracked-file"></a>De inhoud van een bijgehouden bestand weer geven
 
-1. Wanneer een wijziging gedetecteerd voor het bestand of een bestand in het pad, ziet u in de portal. Selecteer de wijziging van het gegevensbestand in de lijst met wijzigingen. De **details wijzigen** deelvenster wordt weergegeven.
+1. Als er een wijziging is gedetecteerd voor het bestand of een bestand in het pad, wordt het weer gegeven in de portal. Selecteer de wijziging van het bestand in de lijst met wijzigingen. Het deel venster **Details wijzigen** wordt weer gegeven.
 
-   ![lijst met wijzigingen](./media/change-tracking-file-contents/change-list.png)
+   ![wijzigingen weer geven](./media/change-tracking-file-contents/change-list.png)
 
-1. Op de **details wijzigen** pagina, ziet u de standaard voor en na de informatie in de linkerbovenhoek het bestand, klikt u op **wijzigingen van bestandsinhoud weergeven** om te zien van de inhoud van het bestand.
+1. Op de pagina **Details wijzigen** ziet u de standaard voor-en na-bestands informatie. Klik linksboven op **Bestands inhoud weer geven wijzigingen** om de inhoud van het bestand te bekijken.
 
    ![Details wijzigen](./media/change-tracking-file-contents/change-details.png)
 
-1. De nieuwe pagina ziet u de inhoud van het bestand in een side-by-side-weergave. U kunt ook selecteren **Inline** om een inline-weergave van de wijzigingen te zien.
+1. Op de pagina Nieuw wordt de inhoud van het bestand weer gegeven in een side-by-side-weer gave. U kunt ook **inline** selecteren om een inline weer gave van de wijzigingen weer te geven.
 
-   ![wijzigingen in bestanden weergeven](./media/change-tracking-file-contents/view-file-changes.png)
+   ![bestands wijzigingen weer geven](./media/change-tracking-file-contents/view-file-changes.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de zelfstudie over het bijhouden van wijzigingen voor meer informatie over het gebruik van de oplossing:
+Ga naar de zelf studie over Wijzigingen bijhouden voor meer informatie over het gebruik van de oplossing:
 
 > [!div class="nextstepaction"]
 > [Problemen met wijzigingen in uw omgeving oplossen](automation-tutorial-troubleshoot-changes.md)
 
-* Gebruik [zoekopdrachten in Logboeken van Azure Monitor](../log-analytics/log-analytics-log-searches.md) om gedetailleerde bijhouden van gegevens weer te geven.
+* [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md) gebruiken om gedetailleerde gegevens voor het bijhouden van wijzigingen weer te geven.
 

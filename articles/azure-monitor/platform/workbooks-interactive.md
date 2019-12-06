@@ -1,5 +1,5 @@
 ---
-title: Interactieve rapporten maken met Azure Monitor werkmappen aangepaste para meters | Micro soft docs
+title: Azure Monitor werkmappen met aangepaste para meters
 description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: eeb6eb5d8b3ad6498ff90a9afe1fa4f2c18d30e5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 19fd8c108e8075d30ca494ca75d52952849c284a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165951"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872839"
 ---
 # <a name="interactive-workbooks"></a>Interactieve werkmappen
 
@@ -109,7 +109,7 @@ Met werkmappen kunnen auteurs interactiviteit toevoegen via een speciaal type ra
 | `* Details` | Vergelijkbaar met details van aangepaste gebeurtenissen, met uitzonde ring van afhankelijkheden, uitzonde ringen, pagina weergaven, aanvragen en traceringen. |
 | `Custom Event User Flows` | Hiermee opent u de Application Insights Gebruikersstromen ervaring die in de cel is gedraaid op de aangepaste gebeurtenis naam |
 | `* User Flows` | Vergelijkbaar met aangepaste gebeurtenis Gebruikersstromen, behalve voor uitzonde ringen, pagina weergaven en aanvragen |
-| `User Timeline` | Hiermee opent u de gebruikers tijdlijn met de gebruikers-ID (user_Id) in de cel |
+| `User Timeline` | Hiermee opent u de gebruikers tijdlijn met de gebruikers-ID (user_Id) in de cel. |
 | `Session Timeline` | Hiermee opent u de Application Insights Zoek ervaring voor de waarde in de cel (bijvoorbeeld zoek naar tekst ' ABC ' waarbij ABC de waarde in de cel is) |
 | `Resource overview` | Open de resource-overzicht in de portal op basis van de resource-ID-waarde in de cel |
 

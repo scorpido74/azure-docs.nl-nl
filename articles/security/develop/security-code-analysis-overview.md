@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c3e22b34dbb770af2b4a719f8b4eaf040b724c47
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695433"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851465"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informatie over analyse van micro soft-beveiligings code
 
@@ -112,6 +112,6 @@ U kunt deze taak configureren om de build te verbreken voor problemen die worden
 
 Raadpleeg de [hand leiding](security-code-analysis-onboard.md)voor de installatie van micro soft voor meer informatie over het uitvoeren van een onboarding en het installeren van de analyse van beveiligings codes.
 
-Zie onze [configuratie handleiding](security-code-analysis-customize.md)voor meer informatie over het configureren van de build-taken.
+Voor meer informatie over het configureren van de build-taken raadpleegt u onze [configuratie](security-code-analysis-customize.md) handleiding of de [yaml-configuratie handleiding](yaml-configuration.md).
 
 Bekijk onze [pagina met veelgestelde vragen](security-code-analysis-faq.md)als u meer vragen hebt over de uitbrei ding en de hulpprogram ma's die worden aangeboden.

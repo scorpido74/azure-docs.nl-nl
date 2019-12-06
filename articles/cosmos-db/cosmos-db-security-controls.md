@@ -1,20 +1,18 @@
 ---
 title: Beveiligings controles voor Azure Cosmos DB
-description: Een controle lijst met beveiligings controles voor het evalueren van Azure Cosmos DB
+description: Vraag een controle lijst op met beveiligings controles zoals netwerk, bewaking, identiteit en gegevens beveiliging om Azure Cosmos DB te evalueren
 services: cosmos-db
-documentationcenter: ''
-author: msmbaldwin
-manager: rkarlin
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 20cdfc61a4cdfe5263e48d049aab14cad2458b06
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 12/02/2019
+ms.author: sngun
+ms.openlocfilehash: 5ab4281f1ad591befda5a439906604331a1ab323
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886448"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872142"
 ---
 # <a name="security-controls-for-azure-cosmos-db"></a>Beveiligings controles voor Azure Cosmos DB
 
@@ -27,8 +25,8 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
 | Ondersteuning voor service-eind punten| Ja |  |
-| Ondersteuning voor VNet-injectie| Ja | Met het VNet-service-eind punt kunt u een Azure Cosmos DB-account configureren om alleen toegang toe te staan vanuit een specifiek subnet van een virtueel netwerk (VNet). U kunt ook VNet-toegang combi neren met firewall regels.  Zie [toegang tot Azure Cosmos DB van virtuele netwerken](VNet-service-endpoint.md). |
-| Ondersteuning voor netwerk isolatie en firewalling| Ja | Met firewall ondersteuning kunt u uw Azure Cosmos-account zodanig configureren dat toegang alleen is toegestaan vanuit een goedgekeurde set van IP-adressen, een bereik van IP-adressen en/of Cloud Services. Zie [IP-Firewall configureren in azure Cosmos DB](how-to-configure-firewall.md).|
+| Ondersteuning voor VNet-injectie| Ja | Met het VNet-service-eind punt kunt u een Azure Cosmos DB-account configureren om alleen toegang toe te staan vanuit een specifiek subnet van een virtueel netwerk (VNet). U kunt ook VNet-toegang combi neren met firewall regels. Zie [toegang tot Azure Cosmos DB van virtuele netwerken](VNet-service-endpoint.md)voor meer informatie. |
+| Netwerk isolatie en firewall ondersteuning| Ja | Met firewall ondersteuning kunt u uw Azure Cosmos-account zodanig configureren dat toegang alleen is toegestaan vanuit een goedgekeurde set van IP-adressen, een bereik van IP-adressen en/of Cloud Services. Zie [IP-Firewall configureren in azure Cosmos DB](how-to-configure-firewall.md)voor meer informatie.|
 | Ondersteuning voor geforceerde tunneling| Ja | Kan worden geconfigureerd aan de client zijde op het VNet waar de virtuele machines zich bevinden.   |
 
 ## <a name="monitoring--logging"></a>& Logboek registratie controleren
@@ -39,18 +37,18 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Logboek registratie en controle op het vlak van controle en beheer| Ja | Azure-activiteiten logboek voor bewerkingen op account niveau, zoals firewalls, VNets, sleutels toegang en IAM. |
 | Logboek registratie en controle van het gegevens vlak | Ja | Diagnostische gegevens voor controle van de logboek registratie voor bewerkingen op container niveau, zoals het maken van een container, het inrichten van de door Voer, het indexeren van beleid en ruwe bewerkingen op documenten. |
 
-## <a name="identity"></a>Identiteit
+## <a name="identity"></a>Identity
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Authentication| Ja | Ja op het account niveau van de data base. op het niveau van het gegevensvlak Cosmos DB maakt gebruik van bron tokens en toegang tot sleutels. |
-| Authorization| Ja | Ondersteund in het Azure Cosmos-account met hoofd sleutels (primair en secundair) en bron tokens. U kunt alleen lees-en schrijf toegang krijgen tot gegevens met hoofd sleutels. Met bron tokens kunt u beperkte tijd toegang tot resources, zoals documenten en containers, toestaan. |
+| Verificatie| Ja | Ja op het account niveau van de data base. op het niveau van het gegevensvlak Cosmos DB maakt gebruik van bron tokens en toegang tot sleutels. |
+| Autorisatie| Ja | Ondersteund in het Azure Cosmos-account met hoofd sleutels (primair en secundair) en bron tokens. U kunt alleen lees-en schrijf toegang krijgen tot gegevens met hoofd sleutels. Met bron tokens kunt u beperkte tijd toegang tot resources, zoals documenten en containers, toestaan. |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Databeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling aan server zijde bij rest: Door micro soft beheerde sleutels | Ja | Alle Cosmos-data bases en back-ups worden standaard versleuteld. Zie [gegevens versleuteling in azure Cosmos DB](database-encryption-at-rest.md). Versleuteling aan de server zijde met door de klant beheerde sleutels wordt niet ondersteund. |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Alle Azure Cosmos-data bases en-back-ups worden standaard versleuteld. Zie [gegevens versleuteling in azure Cosmos DB](database-encryption-at-rest.md). Versleuteling aan de server zijde met door de klant beheerde sleutels wordt niet ondersteund. |
 | Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Nee |  |
 | Versleuteling op kolom niveau (Azure Data Services)| Ja | Alleen in de Table API Premium. Niet alle Api's ondersteunen deze functie. Zie [Inleiding tot Azure Cosmos DB: Table-API](table-introduction.md). |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Alle Azure Cosmos DB gegevens worden tijdens de overdracht versleuteld. |

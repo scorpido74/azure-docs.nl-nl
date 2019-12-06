@@ -2,13 +2,13 @@
 title: Oorzaken van niet-naleving bepalen
 description: Wanneer een resource niet-compatibel is, zijn er veel mogelijke redenen. Meer informatie over de oorzaak van de niet-naleving.
 ms.date: 04/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 839e6c61c4a44ba7c7581290408bb997b53b8f96
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.topic: how-to
+ms.openlocfilehash: 213797a1eafda10d5e97fbc60fc143de975fe221
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279414"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873128"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Oorzaken van niet-naleving bepalen
 
@@ -111,7 +111,7 @@ Voor _auditIfNotExists_ -beleid in de categorie _gast configuratie_ kunnen er me
 
 Het is ook mogelijk dat u niet rechtstreeks toegang hebt tot de virtuele machine, maar u moet rapporteren waarom de virtuele machine _niet compatibel_is.
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 
 Volg dezelfde stappen in de bovenstaande sectie voor het weer geven van nalevings Details van het beleid.
 

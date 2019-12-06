@@ -5,17 +5,17 @@ keywords: Power shell DSC, desired state Configuration, Power shell DSC Azure
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ed18f8a8bbd8bd323dec54ca3f700c7ce168dde
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 787cade13a0636bb25afa1d4043a977f512484f9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231632"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850887"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Overzicht van Azure Automation status configuratie
 
@@ -45,7 +45,7 @@ Knoop punten die worden beheerd met Azure Automation status configuratie, verzen
 
 Houd rekening met de volgende vereisten wanneer u Azure Automation State Configuration (DSC) gebruikt.
 
-### <a name="operating-system-requirements"></a>Besturingssysteem vereisten
+### <a name="operating-system-requirements"></a>Besturingssysteemvereisten
 
 Voor knoop punten waarop Windows worden uitgevoerd, worden de volgende versies ondersteund:
 
@@ -108,7 +108,7 @@ Als u een Automation-account hebt dat is gedefinieerd voor een specifieke regio,
 | Europa - noord |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Azië - zuidoost |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | India - centraal |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Japan - oost |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| Japan - Oost |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Australië - zuidoost |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | VK - zuid | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | US Gov - Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |

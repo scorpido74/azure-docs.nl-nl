@@ -1,18 +1,18 @@
 ---
 title: CO'S in Azure Cosmos DB-query taal
-description: Meer informatie over de functie CO'S van SQL-systeem in Azure Cosmos DB.
+description: Meer informatie over hoe de functie van cosinus (COS) SQL-systeem in Azure Cosmos DB de trigonometrische cosinus van de opgegeven hoek in radialen retourneert in de opgegeven expressie
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 7e64127b7af749af87b90331c3f175957cfa7f09
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 05546ef531059e05a1426a288a48446d63d8e5df
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351083"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873400"
 ---
 # <a name="cos-azure-cosmos-db"></a>COS (Azure Cosmos DB)
  Retourneert de trigonometrische cosinus van de opgegeven hoek, in radialen, in de opgegeven expressie.  

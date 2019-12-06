@@ -4,17 +4,17 @@ description: Variabele assets zijn waarden die beschikbaar zijn voor alle runboo
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910071"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849425"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variabele assets in Azure Automation
 
@@ -42,16 +42,16 @@ U kunt meerdere waarden opslaan voor één variabele door een matrix of hashtabe
 Hier volgt een lijst met beschik bare typen variabelen in Automation:
 
 * Tekenreeks
-* Integer
-* DateTime
-* Boolean-waarde
+* Geheel getal
+* Datum/tijd
+* Booleaans
 * Null
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM Power shell-cmdlets
 
 De cmdlets in de volgende tabel worden gebruikt voor AzureRM om Automation-referentie assets te maken en te beheren met Windows Power shell. Ze worden geleverd als onderdeel van de [AzureRM. Automation-module](/powershell/azure/overview), die beschikbaar is voor gebruik in Automation-RUNBOOKS en DSC-configuraties.
 
-| Cmdlets | Description |
+| Cmdlets | Beschrijving |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|De waarde van een bestaande variabele opgehaald.|
 |[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|Hiermee maakt u een nieuwe variabele en stelt u de waarde ervan in.|
@@ -62,7 +62,7 @@ De cmdlets in de volgende tabel worden gebruikt voor AzureRM om Automation-refer
 
 De activiteiten in de volgende tabel worden gebruikt voor toegang tot variabelen in een runbook en DSC-configuraties. Het verschil tussen Get-AzureRmAutomationVariable en Get-AutomationVariable-cmdlets wordt boven aan het begin van dit document verduidelijkt.
 
-| Activiteiten | Description |
+| Activiteiten | Beschrijving |
 |:---|:---|
 |Get-AutomationVariable|De waarde van een bestaande variabele opgehaald.|
 |Set-AutomationVariable|Hiermee stelt u de waarde voor een bestaande variabele.|
@@ -72,7 +72,7 @@ De activiteiten in de volgende tabel worden gebruikt voor toegang tot variabelen
 
 De functies in de volgende tabel worden gebruikt om variabelen in een Python2-runbook te openen en op te halen.
 
-|Python2-functies|Description|
+|Python2-functies|Beschrijving|
 |:---|:---|
 |automationassets.get_automation_variable|De waarde van een bestaande variabele opgehaald. |
 |automationassets.set_automation_variable|Hiermee stelt u de waarde voor een bestaande variabele. |

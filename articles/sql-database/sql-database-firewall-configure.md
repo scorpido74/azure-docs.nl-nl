@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ed13b5028341637d71dee95f38cc44cc91aa2376
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5c1a146a12fd8881982826e0a87868a6eaf05cb1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481436"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851813"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database en Azure SQL Data Warehouse IP-firewall regels
 
@@ -127,13 +127,15 @@ Als u een IP-firewall regel op server niveau wilt instellen in de Azure Portal, 
 
 #### <a name="from-the-database-overview-page"></a>Op de pagina overzicht van data base
 
-1. Als u een IP-firewall regel op server niveau wilt instellen op de overzichts pagina van de data base, selecteert u **Server firewall instellen** op de werk balk, zoals wordt weer gegeven in de volgende afbeelding. De pagina **Firewallinstellingen** voor de SQL Database-server wordt geopend.
+1. Als u een IP-firewall regel op server niveau wilt instellen op de overzichts pagina van de data base, selecteert u **Server firewall instellen** op de werk balk, zoals wordt weer gegeven in de volgende afbeelding. 
 
-      ![Server-IP-firewall regel](./media/sql-database-get-started-portal/server-firewall-rule.png)
+    ![Server-IP-firewall regel](./media/sql-database-get-started-portal/sql-database-server-set-firewall-rule.png)
+
+    De pagina **Firewallinstellingen** voor de SQL Database-server wordt geopend.
 
 2. Selecteer **client-IP toevoegen** op de werk balk om het IP-adres van de computer die u gebruikt toe te voegen en selecteer vervolgens **Opslaan**. Er wordt een IP-firewall regel op server niveau gemaakt voor uw huidige IP-adres.
 
-      ![IP-firewall regel op server niveau instellen](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
+    ![IP-firewall regel op server niveau instellen](./media/sql-database-get-started-portal/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>Op de pagina overzicht van server
 

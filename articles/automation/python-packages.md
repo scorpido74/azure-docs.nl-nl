@@ -1,71 +1,71 @@
 ---
-title: Python 2-pakketten in Azure Automation beheren
-description: In dit artikel wordt beschreven hoe u Python 2-pakketten in Azure Automation beheren.
+title: Python 2-pakketten beheren in Azure Automation
+description: In dit artikel wordt beschreven hoe u python 2-pakketten beheert in Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f98b1454ff59eae62bcab7792fd7fd742babfb23
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: f20865b92df2a197410f209cf921c5e573723286
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478212"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850190"
 ---
-# <a name="manage-python-2-packages-in-azure-automation"></a>Python 2-pakketten in Azure Automation beheren
+# <a name="manage-python-2-packages-in-azure-automation"></a>Python 2-pakketten beheren in Azure Automation
 
-Azure Automation kunt u Python 2-runbooks uitvoeren op Azure en op Linux Hybrid Runbook Workers. U kunt om te helpen bij de vereenvoudiging van runbooks, Python-pakketten gebruiken voor het importeren van de modules die u nodig hebt. Dit artikel wordt beschreven hoe u beheren en gebruiken van Python-pakketten in Azure Automation.
+Met Azure Automation kunt u python 2-runbooks uitvoeren op Azure en op hybride Runbook-werk rollen in Linux. Om runbooks te vereenvoudigen, kunt u Python-pakketten gebruiken om de modules te importeren die u nodig hebt. In dit artikel wordt beschreven hoe u Python-pakketten beheert en gebruikt in Azure Automation.
 
 ## <a name="import-packages"></a>Pakketten importeren
 
-Selecteer in uw Automation-Account **Python 2-pakketten** onder **gedeelde bronnen**. Klik op **+ toevoegen van een Python 2-pakket**.
+Selecteer in uw Automation-account **python 2-pakketten** onder **gedeelde bronnen**. Klik op **+ een python 2-pakket toevoegen**.
 
 ![Python-pakket toevoegen](media/python-packages/add-python-package.png)
 
-Op de **Python 2-pakket toevoegen** pagina, selecteert u een lokale pakket te uploaden. Het pakket mag een `.whl` bestand of `.tar.gz` bestand. Wanneer u hebt geselecteerd, klikt u op **OK** voor het uploaden van het pakket.
+Selecteer op de pagina **python 2-pakket toevoegen** een lokaal pakket dat u wilt uploaden. Het pakket kan een `.whl` bestand of `.tar.gz` bestand zijn. Als deze is geselecteerd, klikt u op **OK** om het pakket te uploaden.
 
 ![Python-pakket toevoegen](media/python-packages/upload-package.png)
 
-Wanneer een pakket is geïmporteerd, wordt deze weergegeven op de **Python 2-pakketten** pagina in uw Automation-Account. Als u nodig hebt om een pakket te verwijderen, selecteert u het pakket en kies **verwijderen** op de pakketpagina.
+Wanneer een pakket is geïmporteerd, wordt dit weer gegeven op de pagina **python 2-pakketten** in uw Automation-account. Als u een pakket wilt verwijderen, selecteert u het pakket en kiest u **verwijderen** op de pagina pakket.
 
-![Lijst met](media/python-packages/package-list.png)
+![Pakket lijst](media/python-packages/package-list.png)
 
-## <a name="import-packages-with-dependencies"></a>Importeren van pakketten met afhankelijkheden
+## <a name="import-packages-with-dependencies"></a>Pakketten met afhankelijkheden importeren
 
-Azure automation tijdens het importproces kan afhankelijkheden voor python-pakketten niet worden omgezet. Er zijn twee manieren voor het importeren van een pakket met alle afhankelijkheden ervan. Slechts één van de volgende stappen moet worden gebruikt voor het importeren van de pakketten in uw Automation-Account.
+Azure Automation lost geen afhankelijkheden voor python-pakketten op tijdens het import proces. Er zijn twee manieren om een pakket met alle afhankelijkheden te importeren. U moet slechts één van de volgende stappen gebruiken om de pakketten te importeren in uw Automation-account.
 
-### <a name="manually-download"></a>Handmatig downloaden
+### <a name="manually-download"></a>Hand matig downloaden
 
-Op een Windows 64-bits computer met [python2.7](https://www.python.org/downloads/release/latest/python2) en [pip](https://pip.pypa.io/en/stable/) geïnstalleerd, voer de volgende opdracht om een pakket en alle afhankelijkheden ervan te downloaden:
+Op een Windows 64-bits computer waarop [python 2.7](https://www.python.org/downloads/release/latest/python2) en [PIP](https://pip.pypa.io/en/stable/) is geïnstalleerd, voert u de volgende opdracht uit om een pakket en alle bijbehorende afhankelijkheden te downloaden:
 
 ```cmd
 C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 ```
 
-Nadat de pakketten zijn gedownload, kunt u ze kunt importeren in uw automation-account.
+Zodra de pakketten zijn gedownload, kunt u deze importeren in uw Automation-account.
 
 ### <a name="runbook"></a>Runbook
 
-Het python-runbook importeren [importeren Python 2-pakketten uit pypi in Azure Automation-account](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) uit de galerie in uw Automation-Account. Zorg ervoor dat de instellingen worden uitgevoerd zijn ingesteld op **Azure** en het runbook start met de parameters. Het runbook moet een Run As-Account voor het Automation-Account om te werken. Voor elke parameter Zorg ervoor dat starten u deze met de switch zoals in de volgende lijst en de volgende afbeelding:
+Importeer python 2-pakketten van het python-runbook [importeren van pypi in azure Automation account](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) uit de galerie in uw Automation-account. Zorg ervoor dat de uitvoerings instellingen zijn ingesteld op **Azure** en start het runbook met de para meters. Het runbook vereist een uitvoeren als-account voor het werken met het Automation-account. Zorg er voor elke para meter voor dat u deze met de switch start, zoals in de volgende lijst en afbeelding wordt weer gegeven:
 
-* -s \<abonnements-id\>
+* -s \<subscriptionId\>
 * -g \<resourceGroup\>
 * -a \<automationAccount\>
 * -m \<modulePackage\>
 
-![Lijst met](media/python-packages/import-python-runbook.png)
+![Pakket lijst](media/python-packages/import-python-runbook.png)
 
-Het runbook kunt u opgeven welk pakket te downloaden, bijvoorbeeld `Azure` (de vierde parameter) downloadt alle Azure-modules en alle bijbehorende afhankelijkheden, die ongeveer 105 is.
+Met het runbook kunt u opgeven welk pakket moet worden gedownload, bijvoorbeeld `Azure` (de vierde para meter) worden alle Azure-modules en alle bijbehorende afhankelijkheden gedownload, wat ongeveer 105 is.
 
-Als het runbook is voltooid. u kunt controleren de **Python 2-pakketten** pagina onder **gedeelde bronnen** in uw Automation-Account om te controleren of dat ze het pakket is correct geïmporteerd.
+Zodra het runbook is voltooid, kunt u de pagina **python 2-pakketten** onder **gedeelde bronnen** in uw Automation-account controleren om te controleren of het pakket correct is geïmporteerd.
 
 ## <a name="use-a-package-in-a-runbook"></a>Een pakket gebruiken in een runbook
 
-Wanneer u een pakket hebt geïmporteerd, kunt u deze nu in een runbook gebruiken. Het volgende voorbeeld wordt de [ pakket met het hulpprogramma Azure Automation](https://github.com/azureautomation/azure_automation_utility). Dit pakket wordt het gemakkelijker te Python gebruiken met Azure Automation. Volg de instructies in de GitHub-opslagplaats voor het gebruik van het pakket, en deze toevoegen aan het runbook met behulp van `from azure_automation_utility import get_automation_runas_credential` bijvoorbeeld voor het importeren van de functie voor het ophalen van het RunAs-Account.
+Nadat u een pakket hebt geïmporteerd, kunt u dit nu gebruiken in een runbook. In het volgende voor beeld wordt het [Azure Automation-hulpprogramma pakket](https://github.com/azureautomation/azure_automation_utility)gebruikt. Dit pakket maakt het gemakkelijker om python met Azure Automation te gebruiken. Als u het pakket wilt gebruiken, volgt u de instructies in de GitHub-opslag plaats en voegt u het toe aan het runbook met behulp van `from azure_automation_utility import get_automation_runas_credential` bijvoorbeeld om de functie te importeren voor het ophalen van het runas-account.
 
 ```python
 import azure.mgmt.resource
@@ -87,10 +87,10 @@ for group in groups:
     print group.name
 ```
 
-## <a name="develop-and-test-runbooks-offline"></a>Ontwikkelen en testen van runbooks offline
+## <a name="develop-and-test-runbooks-offline"></a>Runbooks online ontwikkelen en testen
 
-Als u wilt ontwikkelen en testen van uw Python 2-runbooks offline, kunt u de [Azure Automation python geëmuleerde activa](https://github.com/azureautomation/python_emulated_assets) module op GitHub. Deze module kunt u verwijzen naar de gedeelde bronnen zoals referenties, variabelen, verbindingen en certificaten.
+Als u uw python 2-runbooks offline wilt ontwikkelen en testen, kunt u de module [Azure Automation python geëmuleerde assets](https://github.com/azureautomation/python_emulated_assets) gebruiken op github. Met deze module kunt u verwijzen naar uw gedeelde bronnen, zoals referenties, variabelen, verbindingen en certificaten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt aan de slag met Python 2-runbooks, Zie [Mijn eerste Python 2-runbook](automation-first-runbook-textual-python2.md)
+Zie [mijn eerste python 2-runbook](automation-first-runbook-textual-python2.md) om aan de slag te gaan met python 2-runbooks

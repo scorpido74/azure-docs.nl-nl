@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603456"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848490"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Een authenticatie-implementatie met een wacht woord volt ooien
 
@@ -71,7 +71,7 @@ Met de verificatie methoden met een wacht woord van micro soft kunnen verschille
 
 Organisaties moeten voldoen aan de volgende vereisten voordat een implementatie met een wacht woord wordt gestart.
 
-| Vereiste | Authenticator-app | FIDO2-beveiligings sleutels |
+| Vereisten | Authenticator-app | FIDO2-beveiligings sleutels |
 | --- | --- | --- |
 | [Gecombineerde registratie voor Azure MFA en self-service voor wachtwoord herstel (SSPR)](howto-registration-mfa-sspr-combined.md) is ingeschakeld (preview-functie) | √ | √ |
 | [Gebruikers kunnen Azure MFA uitvoeren](howto-mfa-getstarted.md) | √ | √ |
@@ -84,7 +84,7 @@ Organisaties moeten voldoen aan de volgende vereisten voordat een implementatie 
 
 De vereisten voor Windows hello zijn zeer afhankelijk van of u implementeert in een on-premises, hybride of Cloud configuratie. Zie voor meer informatie de [volledige lijst met vereisten voor Windows hello voor bedrijven](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-multi-factor-authentication"></a>Verificatie op basis van meerdere factoren van Azure
 
 Gebruikers registreren hun eigen methode als onderdeel van de Azure MFA-registratie stroom. Multi-factor Authentication met een gebruikers naam en wacht woord samen met een andere geregistreerde methode kan worden gebruikt als terugval voor het geval ze hun telefoon of beveiligings sleutel in sommige scenario's niet kunnen gebruiken.
 
@@ -125,11 +125,11 @@ Er zijn geen extra kosten verbonden aan authenticatie zonder wacht woord, hoewel
 
 Houd rekening met de behoeften van uw bedrijf en de use cases voor elke verificatie methode. Selecteer vervolgens de methode die het beste bij uw behoeften past.
 
-### <a name="use-cases"></a>Gebruiksvoorbeelden
+### <a name="use-cases"></a>Use cases
 
 De volgende tabel bevat een overzicht van de use cases die tijdens dit project moeten worden geïmplementeerd.
 
-| Onderwerp | Beschrijving |
+| Gebied | Beschrijving |
 | --- | --- |
 | **Toegang** | Aanmelding zonder wacht woord is beschikbaar vanaf een zakelijk of persoonlijk apparaat binnen of buiten het bedrijfs netwerk. |
 | **Controle** | Gebruiks gegevens zijn beschikbaar voor beheerders die bijna in realtime kunnen worden gecontroleerd. <br> Gebruiks gegevens worden minstens elke 29 dagen naar bedrijfs systemen gedownload, of het hulp programma SIEM wordt gebruikt. |

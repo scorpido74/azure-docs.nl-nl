@@ -1,20 +1,21 @@
 ---
-title: Prestatie waarschuwingen maken met behulp van Azure Monitor voor containers | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers kunt gebruiken om aangepaste waarschuwingen te maken op basis van logboek query's voor geheugen-en CPU-gebruik.
+title: Prestatie waarschuwingen maken voor Azure Monitor voor containers | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u aangepaste waarschuwingen maakt op basis van logboek query's voor geheugen-en CPU-gebruik van Azure Monitor voor containers.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: dd92f5aedd1fbc51531730e6a7826322570cd1b1
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 66baa3095744c8b486430d587b992ba507d87733
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195020"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841622"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Waarschuwingen instellen voor prestatie problemen in Azure Monitor voor containers
+
 Azure Monitor voor containers bewaakt de prestaties van container werkbelastingen die zijn geïmplementeerd op Azure Container Instances of op beheerde Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS).
 
 In dit artikel wordt beschreven hoe u waarschuwingen inschakelt voor de volgende situaties:
@@ -30,6 +31,7 @@ Als u een waarschuwing wilt ontvangen voor hoog CPU-of geheugen gebruik, of wein
 Als u niet bekend bent met Azure Monitor waarschuwingen, raadpleegt u [overzicht van waarschuwingen in Microsoft Azure](../platform/alerts-overview.md) voordat u begint. Zie [waarschuwingen in Logboeken vastleggen in azure monitor](../platform/alerts-unified-log.md)voor meer informatie over waarschuwingen die gebruikmaken van logboek query's. Zie [metrische waarschuwingen in azure monitor](../platform/alerts-metric-overview.md)voor meer informatie over metrische waarschuwingen.
 
 ## <a name="resource-utilization-log-search-queries"></a>Zoek opdrachten in Logboeken van resource gebruik
+
 De query's in deze sectie ondersteunen elk waarschuwings scenario. Deze worden gebruikt in stap 7 van de sectie [waarschuwing maken](#create-an-alert-rule) van dit artikel.
 
 Met de volgende query wordt het gemiddelde CPU-gebruik berekend als gemiddelde van het CPU-gebruik van het knoop punt dat elke minuut wordt verbruikt.  
@@ -278,13 +280,14 @@ InsightsMetrics
 ```
 
 ## <a name="create-an-alert-rule"></a>Een waarschuwingsregel maken
-Volg deze stappen om een logboek waarschuwing in Azure Monitor te maken met behulp van een van de zoek regels voor logboeken die eerder zijn verschaft.  
+
+Volg deze stappen om een logboek waarschuwing in Azure Monitor te maken met behulp van een van de zoek regels voor logboeken die eerder zijn verschaft. Als u een ARM-sjabloon wilt maken, raadpleegt u voor [beeld van het maken van een logboek waarschuwing met een Azure-resource sjabloon](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
 
 >[!NOTE]
 >Met de volgende procedure voor het maken van een waarschuwings regel voor container resource gebruik moet u overschakelen naar een nieuwe API voor logboek waarschuwingen, zoals beschreven in de voor [keur voor de switch-API voor logboek waarschuwingen](../platform/alerts-log-api-switch.md).
 >
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **monitor** in het deel venster aan de linkerkant. Onder **inzichten**selecteert u **containers**.
 3. Selecteer op het tabblad **bewaakte clusters** een cluster in de lijst.
 4. Selecteer **Logboeken** in het deel venster aan de linkerkant onder **bewaking**om de pagina Azure monitor logboeken te openen. U gebruikt deze pagina om Azure Log Analytics-query's te schrijven en uit te voeren.

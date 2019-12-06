@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3312b5ba6f97dc51f5eeff06eeb194e367935e08
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791154"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869524"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
 
@@ -81,10 +81,10 @@ De aanbevolen manier om Vm's in te richten, is met behulp van de Azure Resource 
 Volg deze instructies om te bevestigen dat de onderdelen zijn geïnstalleerd en om te controleren op fout berichten.
 
 1. Controleer of de twee onderdelen zijn geïnstalleerd door in **het configuratie scherm** te controleren > **Program Ma's** > **Program ma's en onderdelen**. Als **Windows Virtual Desktop agent** en de **opstart lader van de Windows Virtual Desktop agent** niet zichtbaar zijn, zijn ze niet geïnstalleerd op de virtuele machine.
-2. Open **bestanden Verkenner** en ga naar **C:\Windows\Temp\scriptlogs.log**. Als het bestand ontbreekt, geeft dit aan dat de Power shell DSC waarmee de twee onderdelen zijn geïnstalleerd, niet kan worden uitgevoerd in de beschik bare beveiligings context.
-3. Als het bestand **C:\Windows\Temp\scriptlogs.log** aanwezig is, opent u het en controleert u op fout berichten.
+2. Open **bestanden Verkenner** en ga naar **C:\Windows\Temp\ScriptLog.log**. Als het bestand ontbreekt, geeft dit aan dat de Power shell DSC waarmee de twee onderdelen zijn geïnstalleerd, niet kan worden uitgevoerd in de beschik bare beveiligings context.
+3. Als het bestand **C:\Windows\Temp\ScriptLog.log** aanwezig is, opent u het en controleert u op fout berichten.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Fout: Windows Virtual Desktop agent en de opstart lader van de Windows Virtual Desktop agent ontbreken. C:\Windows\Temp\scriptlogs.log ontbreekt ook
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Fout: Windows Virtual Desktop agent en de opstart lader van de Windows Virtual Desktop agent ontbreken. C:\Windows\Temp\ScriptLog.log ontbreekt ook
 
 **Oorzaak 1:** De referenties die zijn opgegeven tijdens de invoer voor de Azure Resource Manager sjabloon zijn onjuist of de machtigingen zijn ontoereikend.
 
@@ -98,7 +98,7 @@ Volg deze instructies om te bevestigen dat de onderdelen zijn geïnstalleerd en 
 - Controleer of de naam van de Tenant juist is en of de Tenant bestaat in het virtuele bureau blad van Windows.
 - Bevestig dat het account ten minste RDS-Inzender machtigingen heeft.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Fout: de verificatie is mislukt, fout in C:\Windows\Temp\scriptlogs.log
+### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Fout: de verificatie is mislukt, fout in C:\Windows\Temp\ScriptLog.log
 
 **Oorzaak:** Power shell DSC kan worden uitgevoerd, maar kan geen verbinding maken met het virtuele bureau blad van Windows.
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05230e39175e71f4eec2c99cd6cbd2f44f05df30
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: ce2b420c2124c86610058ce2f31cd6d7bf620a97
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766358"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848456"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor Windows 10-apparaten (preview-versie)
 
@@ -29,7 +29,7 @@ Dit document is gericht op het inschakelen van FIDO2-verificatie op basis van wa
 
 ## <a name="requirements"></a>Vereisten
 
-- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Azure multi-factor Authentication](howto-mfa-getstarted.md)
 - [Preview van registratie van gecombineerde beveiligings gegevens](concept-registration-mfa-sspr-combined.md)
 - Compatibele [FIDO2-beveiligings sleutels](concept-authentication-passwordless.md#fido2-security-keys)
 - Webauthn vereist Windows 10 versie 1809 of hoger
@@ -80,7 +80,7 @@ Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te 
    1. Profiel type: aangepast
    1. Aangepaste OMA-URI-instellingen:
       1. Naam: Schakel FIDO-beveiligings sleutels voor Windows-aanmelding in
-      1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
+      1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       1. Gegevens type: geheel getal
       1. Waarde: 1
 1. Dit beleid kan worden toegewezen aan specifieke gebruikers, apparaten of groepen. Meer informatie vindt u in het artikel [gebruikers-en apparaatprofielen toewijzen in Microsoft intune](https://docs.microsoft.com/intune/device-profile-assign).

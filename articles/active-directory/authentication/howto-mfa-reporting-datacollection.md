@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09aa95e55b3d253ef41724298247694b9883e31f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381767"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848286"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Verzameling van Azure Multi-Factor Authentication-gebruikers gegevens
 
@@ -35,14 +35,14 @@ Verificatie pogingen (gebruikt voor rapportage en probleem oplossing):
 - Voornaam
 - Achternaam
 - E-mailadres
-- Gebruikers groep
+- Gebruikersgroep
 - Verificatie methode (telefoon oproep, tekst bericht, mobiele app, OATH-token)
 - Modus telefoon oproep (standaard, pincode)
 - Tekstbericht richting (in twee richtingen)
 - Modus voor tekst berichten (OTP, OTP + pincode)
 - Modus voor mobiele app (standaard, pincode)
 - Modus OATH-token (standaard, pincode)
-- Verificatie type
+- Type verificatie
 - Naam van de toepassing
 - Land code primaire oproep
 - Telefoon nummer van primaire oproep
@@ -57,7 +57,7 @@ Verificatie pogingen (gebruikt voor rapportage en probleem oplossing):
 - Algemeen geverifieerd
 - Algemeen resultaat
 - Resultaten
-- Gemachtigd
+- Geverifieerd
 - Resultaat
 - IP-adres wordt gestart
 - Apparaten
@@ -89,27 +89,27 @@ Blokken (gebruikt voor het bepalen van de geblokkeerde status en voor rapportage
 - Landnummer
 - Telefoonnummer
 - Telefoon nummer geformatteerd
-- Toestelnummer
+- Extensie
 - Extensie wissen
-- #
-- Reden voor blok kering
+- Geblokkeerd
+- Reden van blokkering
 - Timestamp van voltooiing
 - Voltooiings reden
 - Accountvergrendeling
-- Fraude waarschuwing
+- Fraudewaarschuwing
 - Fraude waarschuwing niet geblokkeerd
 - Taal
 
 Bypass (gebruikt voor rapportage):
 
 - Tijds tempel overs Laan
-- Bypass-seconden
+- Aantal seconden voor overslaan
 - Overs laan op gebruikers naam
 - Gebruikersnaam
 - Landnummer
 - Telefoonnummer
 - Telefoon nummer geformatteerd
-- Toestelnummer
+- Extensie
 - Extensie wissen
 - Reden voor bypass
 - Timestamp van voltooiing
@@ -127,7 +127,7 @@ Wijzigingen (gebruikt voor het synchroniseren van gebruikers wijzigingen naar de
 - Nieuw telefoon nummer voor back-up
 - Nieuwe back-upextensie
 - Nieuwe pincode
-- PINCODE wijziging vereist
+- Pincodewijziging vereist
 - Verouderd apparaat-token
 - Nieuw apparaat-token
 

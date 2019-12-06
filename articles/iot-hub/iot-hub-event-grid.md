@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151310"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851697"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reageren op IoT Hub gebeurtenissen met behulp van Event Grid om acties te activeren
 
@@ -31,7 +31,7 @@ De Event Grid-integratie is beschikbaar voor IoT-hubs in de regio's waar Event G
 
 IoT Hub publiceert de volgende gebeurtenis typen:
 
-| Gebeurtenis type | Beschrijving |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Gepubliceerd wanneer een apparaat wordt geregistreerd bij een IoT-hub. |
 | Microsoft.Devices.DeviceDeleted | Gepubliceerd wanneer een apparaat wordt verwijderd uit een IoT-hub. |
@@ -184,13 +184,11 @@ Als u berichten wilt filteren voordat telemetriegegevens worden verzonden, kunt 
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beperkingen voor de verbinding met het apparaat en de verbroken gebeurtenissen van het apparaat
 
-U moet de koppeling D2C of de C2D-koppeling voor uw apparaat openen om verbonden apparaten met een apparaat te ontvangen. Als uw apparaat gebruikmaakt van het MQTT-protocol, blijft de C2D IoT Hub-koppeling geopend. Voor AMQP kunt u de koppeling C2D openen door de [API receive async](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)aan te roepen.
+Als u gebeurtenissen wilt ontvangen voor de verbindings status van een apparaat, moet een apparaat een "C2D"-telemetrie verzenden of een ' bewerking voor het ontvangen van een bericht ' met IOT hub. Houd er echter rekening mee dat als een apparaat gebruikmaakt van het AMQP-protocol om verbinding te maken met IOT hub, u wordt aangeraden de bewerking ' C2D receive Message ' uit te voeren, anders worden de meldingen van de verbindings status mogelijk met enkele minuten uitgesteld. Als uw apparaat gebruikmaakt van het MQTT-protocol, blijft de C2D IoT Hub-koppeling geopend. Voor AMQP kunt u de koppeling C2D openen door de [Receive ASYNC API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet), voor IOT hub C# SDK of de [apparaatclient voor AMQP](iot-hub-amqp-support.md#device-client)aan te roepen.
 
 De koppeling D2C is open als u telemetrie verzendt. 
 
-Als de verbinding met het apparaat verloopt, wat betekent dat het apparaat regel matig verbinding maakt en de verbinding verbreekt, zullen we niet elke status van één verbinding verzenden, maar wordt de *laatste* verbindings status gepubliceerd, die uiteindelijk consistent is. Als uw apparaat in eerste instantie de status verbonden heeft, kunt u een paar seconden connectiviteits bewegingen maken en vervolgens weer in de status verbonden. Er worden geen nieuwe verbindings status gebeurtenissen voor apparaten gepubliceerd sinds de eerste verbindings status. 
-
-In het geval van een IoT Hub onderbreking publiceren we de status van de apparaat-verbinding zodra de storing is verlopen. Als het apparaat tijdens die onderbreking wordt losgekoppeld, wordt de verbroken gebeurtenis van het apparaat binnen tien minuten gepubliceerd.
+Als de verbinding met het apparaat Flik keert, wat betekent dat het apparaat regel matig verbinding maakt en de verbinding verbreekt, worden er niet elke verbindings status verzonden, maar wordt de huidige verbindings status gepubliceerd die is gemaakt op een periodieke moment opname, waarna de Flik kering wordt vervolgd. Als u dezelfde verbindings status gebeurtenis met andere Volg nummers of verschillende verbindings status gebeurtenissen ontvangt, betekent dit dat er een wijziging is opgetreden in de verbindings status van het apparaat.
 
 ## <a name="tips-for-consuming-events"></a>Tips voor het gebruiken van gebeurtenissen
 

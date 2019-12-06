@@ -1,17 +1,17 @@
 ---
 title: Containerdoorvoer inrichten in Azure Cosmos DB
-description: Meer informatie over het inrichten van doorvoer op containerniveau in Azure Cosmos DB
+description: Meer informatie over het inrichten van de door Voer op het niveau van de container in Azure Cosmos DB met behulp van Azure Portal, CLI, Power shell en diverse andere Sdk's.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0b48652f7b181f1254a4b20af75b83593c2aba05
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ed6a55c8b6049f16e96a4a95ecf3ef125db908d7
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147607"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872040"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Doorvoer inrichten voor een Azure Cosmos-container
 
@@ -19,7 +19,7 @@ In dit artikel wordt uitgelegd hoe u de door Voer kunt inrichten voor een contai
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 

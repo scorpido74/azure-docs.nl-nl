@@ -4,17 +4,17 @@ description: Uitleg en voor beelden van de meest voorkomende taken in Azure Auto
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f943aac4a91217983963fac6f8d0b2b3ba6895a1
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9fce9a769dd6d88c9926913d22716666284938c1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243614"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850955"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Aan de slag met de configuratie van de Azure Automation-status
 
@@ -71,7 +71,7 @@ Vervolgens importeert u de configuratie in het Automation-account.
 1. Klik aan de linkerkant op **alle resources** en vervolgens op de naam van uw Automation-account.
 1. Selecteer op de pagina **Automation-account** **status configuratie (DSC)** onder **configuratie beheer**.
 1. Klik op de pagina **status configuratie (DSC)** op het tabblad **configuraties** en klik vervolgens op **+ toevoegen**.
-1. Blader op de pagina **configuratie importeren** naar het `TestConfig.ps1`-bestand op uw computer.
+1. Blader op de pagina **configuratie importeren** naar het `TestConfig.ps1` bestand op uw computer.
 
    ![Scherm afbeelding van de Blade configuratie voor het importeren van * * * *](./media/automation-dsc-getting-started/AddConfig.png)
 
@@ -229,7 +229,7 @@ Als u een knoop punt niet meer wilt beheren door Azure Automation DSC, kunt u de
 
     ![Scherm afbeelding van de pagina knooppunt details die de knop registratie opheffen](./media/automation-dsc-getting-started/UnregisterNode.png)
 
-## <a name="related-articles"></a>Verwante artikelen
+## <a name="related-articles"></a>Gerelateerde artikelen
 
 - [Overzicht van Azure Automation status configuratie](automation-dsc-overview.md)
 - [Onboarding van machines voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md)

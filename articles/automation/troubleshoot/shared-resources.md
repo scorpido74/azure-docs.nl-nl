@@ -2,18 +2,18 @@
 title: Fouten met Azure Automation gedeelde resources oplossen
 description: Meer informatie over het oplossen van problemen met Azure Automation gedeelde bronnen
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a2836f40b55a71e080288fce7e48275747962c16
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9313b042433489307a2bd2822a96d1e0e127362b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231537"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849289"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Fouten met gedeelde resources oplossen
 
@@ -31,7 +31,7 @@ Wanneer u uw modules in azure Automation importeert of bijwerkt, wordt een modul
 
 Het importeren van Power shell-modules is een complexe proces voor meerdere stappen. Dit proces introduceert de mogelijkheid van een module die niet correct wordt geïmporteerd. Als dit probleem zich voordoet, kan de module die u wilt importeren vastzitten in een tijdelijke status. Zie [een Power shell-module importeren](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process)voor meer informatie over dit proces.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Om dit probleem op te lossen, moet u de module die in de **import** status zit, verwijderen met de cmdlet [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) . U kunt de module vervolgens opnieuw importeren.
 
@@ -53,7 +53,7 @@ Azure modules are being updated
 
 Er is een bekend probleem met het bijwerken van de AzureRM-modules in een Automation-account dat zich in een resource groep bevindt met een numerieke naam die begint met 0.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Als u uw Azure-modules in uw Automation-account wilt bijwerken, moet deze zich in een resource groep betreden die een alfanumerieke naam heeft. Resource groepen met een numerieke naam die begint met 0, kunnen op dit moment geen AzureRM-modules bijwerken.
 
@@ -72,7 +72,7 @@ Enkele veelvoorkomende redenen waarom een module mogelijk niet met succes kan wo
 * De afhankelijkheden van de module ontbreken in de map.
 * De cmdlet `New-AzureRmAutomationModule` wordt gebruikt om de module te uploaden en u hebt niet het volledige opslagpad opgegeven of u hebt de module niet geladen met behulp van een openbaar toegankelijke URL.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Het probleem wordt opgelost met een van de volgende oplossingen:
 
@@ -90,7 +90,7 @@ Wanneer u het runbook [Update-AzureModule. ps1](https://github.com/azureautomati
 
 De standaard instelling om te bepalen hoeveel modules tegelijk worden bijgewerkt, is 10 wanneer u het `Update-AzureModule.ps1` script gebruikt. Het update proces is gevoelig voor fouten wanneer te veel modules tegelijk worden bijgewerkt.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Het is niet gebruikelijk dat alle AzureRM-modules in hetzelfde Automation-account zijn vereist. Het is raadzaam om alleen de AzureRM-modules te importeren die u nodig hebt.
 
@@ -116,7 +116,7 @@ Als het update proces wordt onderbroken, moet u de para meter `SimultaneousModul
 "@
 ```
 
-## <a name="run-as-accounts"></a>Run as-accounts
+## <a name="run-as-accounts"></a>Uitvoeren als-accounts
 
 ### <a name="unable-create-update"></a>Scenario: u kunt een uitvoeren als-account niet maken of bijwerken
 
@@ -132,7 +132,7 @@ You do not have permissions to create…
 
 U hebt niet de machtigingen die u nodig hebt om het uitvoeren als-account te maken of bij te werken, of de resource is vergrendeld op het niveau van een resource groep.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Als u een uitvoeren als-account wilt maken of bijwerken, moet u de juiste machtigingen hebben voor de verschillende resources die worden gebruikt door het run as-account. Zie [Run as-account machtigingen](../manage-runas-account.md#permissions)voor meer informatie over de machtigingen die nodig zijn om een uitvoeren als-account te maken of bij te werken.
 
@@ -152,7 +152,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 Deze fout wordt waarschijnlijk veroorzaakt door een onjuist geconfigureerd [uitvoeren als-account](../manage-runas-account.md).
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Zorg ervoor dat het [uitvoeren als-account](../manage-runas-account.md) correct is geconfigureerd. Zodra de configuratie correct is geconfigureerd, controleert u of u de juiste code in uw runbook hebt om te verifiëren met Azure. In het volgende voor beeld ziet u een code fragment voor het verifiëren van Azure in een runbook met behulp van een run as-account.
 

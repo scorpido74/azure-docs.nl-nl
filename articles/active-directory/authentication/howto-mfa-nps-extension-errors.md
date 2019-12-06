@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ead9e5785297c9569d23573d4dd7f5f29354717
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8e93666c9a6388fb008bbe85c836d732685ed63a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381795"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848320"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Fout berichten oplossen vanuit de NPS-extensie voor Azure Multi-Factor Authentication
 
@@ -30,7 +30,7 @@ Als u problemen ondervindt met de NPS-extensie voor Azure Multi-Factor Authentic
 | **CLIENT_CERT_INSTALL_ERROR** | Er is mogelijk een probleem met de manier waarop het client certificaat is geïnstalleerd of gekoppeld aan uw Tenant. Volg de instructies in [Troubleshooting the MFA-extensie voor het](howto-mfa-nps-extension.md#troubleshooting) uitvoeren van problemen met client certificaten. |
 | **ESTS_TOKEN_ERROR** | Volg de instructies in [Troubleshooting the MFA-extensie voor het](howto-mfa-nps-extension.md#troubleshooting) uitvoeren van problemen met client certificaten en ADAL-tokens. |
 | **HTTPS_COMMUNICATION_ERROR** | De NPS-server kan geen reacties ontvangen van Azure MFA. Controleer of de firewalls zijn geopend in twee richtingen voor verkeer van en naar https://adnotifications.windowsazure.com |
-| **HTTP_CONNECT_ERROR** | Controleer op de server waarop de NPS-extensie wordt uitgevoerd of u https://adnotifications.windowsazure.com en https://login.microsoftonline.com/kunt bereiken. Als deze sites niet worden geladen, kunt u problemen met de connectiviteit op die server oplossen. |
+| **HTTP_CONNECT_ERROR** | Controleer op de server waarop de NPS-extensie wordt uitgevoerd of u https://adnotifications.windowsazure.com en https://login.microsoftonline.com/ kunt bereiken. Als deze sites niet worden geladen, kunt u problemen met de connectiviteit op die server oplossen. |
 | **NPS-extensie voor Azure MFA:** <br> De NPS-extensie voor Azure MFA voert alleen secundaire verificatie voor RADIUS-aanvragen uit in de AccessAccept-status. Er is een aanvraag ontvangen voor de gebruikers naam van de gebruiker met de reactie status AccessReject, aanvraag wordt genegeerd. | Deze fout weerspiegelt meestal een verificatie fout in AD of de NPS-server kan geen reacties ontvangen van Azure AD. Controleer of de firewalls zijn geopend voor verkeer naar en van https://adnotifications.windowsazure.com en https://login.microsoftonline.com met behulp van de poorten 80 en 443. Het is ook belang rijk om te controleren of op het tabblad inbel netwerk toegangs machtigingen de instelling is ingesteld op toegang beheren via NPS-netwerk beleid. Deze fout kan ook worden geactiveerd als aan de gebruiker geen licentie is toegewezen. |
 | **REGISTRY_CONFIG_ERROR** | Er ontbreekt een sleutel in het REGI ster voor de toepassing. Dit kan zijn omdat het [Power shell-script](howto-mfa-nps-extension.md#install-the-nps-extension) niet is uitgevoerd na de installatie. Het fout bericht moet de ontbrekende sleutel bevatten. Zorg ervoor dat u de sleutel onder HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Er ontbreekt een verplicht userName\Identifier kenmerk van de RADIUS-aanvraag. Controleren of NPS RADIUS-aanvragen ontvangt | Deze fout weerspiegelt meestal een installatie probleem. De NPS-extensie moet worden geïnstalleerd in NPS-servers die RADIUS-aanvragen kunnen ontvangen. NPS-servers die zijn geïnstalleerd als afhankelijkheden voor services als RDG en RRAS ontvangen geen RADIUS-aanvragen. De NPS-extensie werkt niet wanneer deze wordt geïnstalleerd via dergelijke installaties en er zijn fouten opgetreden omdat de gegevens van de verificatie aanvraag niet kunnen worden gelezen. |

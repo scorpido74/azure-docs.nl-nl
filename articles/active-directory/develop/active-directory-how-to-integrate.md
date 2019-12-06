@@ -2,28 +2,24 @@
 title: Integratie met Azure Active Directory | Microsoft Docs
 description: Ontdek de voor delen van het integreren van uw toepassing met Azure Active Directory en ontvang resources voor functies zoals vereenvoudigde aanmelding, identiteits beheer, multi-factor Authentication en toegangs beheer.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/08/2019
 ms.author: ryanwi
-ms.reviewer: bryanla
+ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48be16827da21643af485d1fb94b9a7b76728325
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 2815fbebd54a1e373aa8b3058f85d092c0bb098f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374036"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844886"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integreren met Azure Active Directory
 
@@ -31,7 +27,7 @@ ms.locfileid: "72374036"
 
 In dit artikel vindt u informatie over de voor delen van het integreren van uw toepassing met Azure Active Directory (Azure AD) en het ophalen van resources voor integratie. Azure AD biedt organisaties een identiteits beheer op ondernemings niveau voor Cloud toepassingen. Azure AD-integratie biedt uw gebruikers een gestroomlijnde aanmeldings ervaring en helpt uw toepassing te voldoen aan het IT-beleid.
 
-## <a name="how-to-integrate"></a>Integratie
+## <a name="how-to-integrate"></a>Het integreren van
 
 Er zijn verschillende manieren waarop uw toepassing kan worden geïntegreerd met Azure AD. Profiteer van zoveel of slechts enkele van deze scenario's als geschikt voor uw toepassing.
 

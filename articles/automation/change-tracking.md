@@ -4,18 +4,18 @@ description: De Wijzigingen bijhouden oplossing helpt u bij het identificeren va
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fc0aeab4e9603995130392e3560325ccaba1ffc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1fd800062c4a8362919b1818550b2fca9fa3eb88
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886806"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850547"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Wijzigingen in uw omgeving bijhouden met de Wijzigingen bijhouden oplossing
 
@@ -26,13 +26,13 @@ Wijzigingen in geïnstalleerde software, Windows-Services, Windows-REGI ster en-
 > [!NOTE]
 > Azure Automation Wijzigingen bijhouden houdt wijzigingen in de virtuele machines bij. Zie de [wijzigings geschiedenis](../governance/resource-graph/how-to/get-resource-changes.md)van de Azure-resource grafiek om de wijzigingen in de Azure Resource Manager-eigenschappen bij te houden.
 
-## <a name="supported-windows-operating-systems"></a>Ondersteunde Windows-besturings systemen
+## <a name="supported-windows-operating-systems"></a>Ondersteunde Windows-besturingssystemen
 
-De volgende versies van het Windows-besturings systeem worden officieel ondersteund voor de Windows-agent:
+De volgende versies van het Windows-besturingssysteem worden officieel ondersteund voor de Windows-agent:
 
-* Windows Server 2008 R2 of hoger
+* Windows Server 2008 R2 of later
 
-## <a name="supported-linux-operating-systems"></a>Ondersteunde Linux-besturings systemen
+## <a name="supported-linux-operating-systems"></a>Ondersteunde Linux-besturingssystemen
 
 De volgende Linux-distributies worden officieel ondersteund. De Linux-agent kan echter ook worden uitgevoerd op andere distributies die niet worden vermeld. Tenzij anders vermeld, worden alle secundaire releases ondersteund voor elke primaire versie die wordt vermeld.
 
@@ -46,7 +46,7 @@ De volgende Linux-distributies worden officieel ondersteund. De Linux-agent kan 
 * Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32-bits
+### <a name="32-bit"></a>32-bit
 
 * CentOS 6
 * Oracle Linux 6
@@ -74,7 +74,7 @@ Voor het bijhouden van wijzigingen in bestanden in zowel Windows als Linux, word
 Azure Security Center heeft FIM (File Integrity Monitoring) op basis van Azure Wijzigingen bijhouden toegevoegd. Hoewel FIM alleen bestanden en registers bewaakt, omvat de volledige Wijzigingen bijhouden-oplossing ook:
 
 - Software wijzigingen
-- Windows-Services
+- Windows-services
 - Linux-daemons
 
 Als u FIM al hebt ingeschakeld en de volledige Wijzigingen bijhouden-oplossing wilt uitproberen, moet u de volgende stappen uitvoeren. De instellingen worden niet verwijderd door dit proces.
@@ -201,7 +201,7 @@ De volgende tabel bevat de limieten voor het bijgehouden item per computer voor 
 |Windows-software|250|Bevat geen software-hotfixes|
 |Linux-pakketten|1250||
 |Services|250||
-|daemon|250||
+|Daemon|250||
 
 Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen bijhouden en inventaris is ongeveer 40MB per maand. Deze waarde is alleen een benadering en kan worden gewijzigd op basis van uw omgeving. Het is raadzaam om uw omgeving te controleren om precies het gebruik te zien dat u hebt.
 
@@ -245,11 +245,11 @@ Het doel van het bewaken van wijzigingen in register sleutels is het lokaliseren
 
 De volgende adressen zijn specifiek vereist voor Wijzigingen bijhouden. De communicatie met deze adressen geschiedt via poort 443.
 
-|Open bare Azure  |Azure Government  |
+|Openbare Azure-peering  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
 ## <a name="use-change-tracking"></a>Wijzigingen bijhouden gebruiken
@@ -268,11 +268,11 @@ Als u op een wijziging of gebeurtenis klikt, wordt gedetailleerde informatie ove
 
 Naast de details die in de portal zijn opgenomen, kunnen Zoek opdrachten worden uitgevoerd op basis van de logboeken. Klik op **log Analytics**op de pagina **Wijzigingen bijhouden** om de pagina **Logboeken** te openen.
 
-### <a name="sample-queries"></a>Voorbeeld query's
+### <a name="sample-queries"></a>Voorbeeldquery's
 
 De volgende tabel bevat voor beelden van zoek opdrachten in Logboeken voor wijzigings records die door deze oplossing worden verzameld:
 
-|Query’s uitvoeren  |Beschrijving  |
+|Query  |Beschrijving  |
 |---------|---------|
 |ConfigurationData<br>&#124;Where ConfigDataType = = "WindowsServices" and SvcStartupType = = "auto"<br>&#124;Where SvcState = = "stopped"<br>&#124;arg_max (TimeGenerated, *) samenvatten op software naam, computer         | Toont de meest recente inventaris records voor Windows-services die zijn ingesteld op auto, maar die zijn gerapporteerd als gestopt<br>De resultaten zijn beperkt tot de meest recente record voor die software naam en computer      |
 |ConfigurationChange<br>&#124;waarbij ConfigChangeType = = "software" en ChangeCategory = = "verwijderd"<br>&#124;order by TimeGenerated desc|Toont de wijzigings records voor verwijderde software|
@@ -301,7 +301,7 @@ Nadat alle para meters en logica zijn ingesteld, kunnen we de waarschuwing Toep 
 
 Het is een goede toepassing van waarschuwingen voor Wijzigingen bijhouden-of inventaris gegevens, maar er zijn veel meer scenario's voor waarschuwingen, waaronder de cases die zijn gedefinieerd samen met hun voorbeeld query's in de onderstaande sectie.
 
-|Query’s uitvoeren  |Beschrijving  |
+|Query  |Beschrijving  |
 |---------|---------|
 |ConfigurationChange <br>&#124;waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c:\\Windows\\System32\\Stuur Programma's\\"|Handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem|
 |ConfigurationChange <br>&#124;waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = ' c:\\Windows\\System32\\Stuur Programma's\\etc\\hosts '|Handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden|

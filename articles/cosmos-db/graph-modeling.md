@@ -1,18 +1,18 @@
 ---
 title: Graph data modellering voor Azure Cosmos DB Gremlin-API
-description: Meer informatie over het model leren van een grafiek database met behulp van Cosmos DB Gremlin API.
+description: Meer informatie over het model leren van een grafiek database met behulp van Azure Cosmos DB Gremlin API. In dit artikel wordt beschreven hoe u een grafiek database en aanbevolen procedures gebruikt voor het model leren van entiteiten en relaties.
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 06/24/2019
+ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 2bd8c07b384872f3107b5938380cea4c8eb0abae
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559130"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873723"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph data modellering voor Azure Cosmos DB Gremlin-API
 
@@ -47,10 +47,10 @@ Hieronder volgen de aanbevolen procedures voor de eigenschappen in de grafiek ob
 
 | Object | Eigenschap | Type | Opmerkingen |
 | --- | --- | --- |  --- |
-| Shad | Id | Tekenreeks | Uniek afgedwongen per partitie. Als er bij het invoegen geen waarde wordt opgegeven, wordt een automatisch gegenereerde GUID opgeslagen. |
-| Shad | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type entiteit te definiëren dat door het hoek punt wordt vertegenwoordigd. Als er geen waarde wordt opgegeven, wordt er een standaard waarde ' vertex ' gebruikt. |
-| Shad | properties | Teken reeks, Booleaanse waarde, getal | Een lijst met afzonderlijke eigenschappen die zijn opgeslagen als sleutel-waardeparen in elk hoek punt. |
-| Shad | partitie sleutel | Teken reeks, Booleaanse waarde, getal | Deze eigenschap bepaalt waar het hoek punt en de uitgaande randen ervan worden opgeslagen. Meer informatie over het [partitioneren van grafieken](graph-partitioning.md). |
+| Vertex | Id | Tekenreeks | Uniek afgedwongen per partitie. Als er bij het invoegen geen waarde wordt opgegeven, wordt een automatisch gegenereerde GUID opgeslagen. |
+| Vertex | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type entiteit te definiëren dat door het hoek punt wordt vertegenwoordigd. Als er geen waarde wordt opgegeven, wordt er een standaard waarde ' vertex ' gebruikt. |
+| Vertex | properties | Teken reeks, Booleaanse waarde, getal | Een lijst met afzonderlijke eigenschappen die zijn opgeslagen als sleutel-waardeparen in elk hoek punt. |
+| Vertex | partitie sleutel | Teken reeks, Booleaanse waarde, getal | Deze eigenschap bepaalt waar het hoek punt en de uitgaande randen ervan worden opgeslagen. Meer informatie over het [partitioneren van grafieken](graph-partitioning.md). |
 | Edge | Id | Tekenreeks | Uniek afgedwongen per partitie. Standaard automatisch gegenereerd. Randen hebben doorgaans niet de nood zaak om uniek te worden opgehaald met een ID. |
 | Edge | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type relatie te definiëren dat twee hoek punten hebben. |
 | Edge | properties | Teken reeks, Booleaanse waarde, getal | Een lijst met afzonderlijke eigenschappen die in elke rand worden opgeslagen als sleutel-waardeparen. |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: af24a6b6d165ba60a0d88a4ddf74a4f18836e813
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0572a18e530eaff2b5a2d8aa8ced5af26f762aa8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111753"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873927"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -73,8 +73,8 @@ Gebruik deze tabel als richt lijn:
 | Opslagtype | Momenteel ondersteunde autorisatie methode |
 |--|--|
 |**Blob Storage** | Azure AD & SAS |
-|**Blob-opslag (hiërarchie van naam ruimte)** | Azure AD & SAS |
-|**Bestands opslag** | Alleen SAS |
+|**Blob-opslag (hiërarchische naam ruimte)** | Azure AD & SAS |
+|**File Storage** | Alleen SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>Optie 1: Azure Active Directory gebruiken
 
@@ -254,7 +254,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 Zie [using Shared Access signatures (SAS) (Engelstalig)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)voor meer informatie over SAS-tokens en hoe u er een kunt verkrijgen.
 
-## <a name="transfer-files"></a>Bestanden overdragen
+## <a name="transfer-files"></a>Bestandsoverdracht
 
 Nadat u uw identiteit hebt geverifieerd of een SAS-token hebt aangeschaft, kunt u beginnen met het overdragen van bestanden.
 

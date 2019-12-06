@@ -4,21 +4,21 @@ description: In dit artikel worden de toewijzingen beschreven die zijn toegestaa
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cd4500b4ef6492f0b6499bb1e9aa1a773313e860
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 965d6b206bb64e90fe59798ce0c37ccf029117f5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498369"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849510"
 ---
 # <a name="workspace-mappings"></a>Werkruimte toewijzingen
 
-Bij het inschakelen van oplossingen als Updatebeheer, Wijzigingen bijhouden en inventaris of het starten/stoppen van Vm's in de oplossing buiten kantoor uren, worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Deze toewijzing is alleen van toepassing op het Automation-account en de Log Analytics-werk ruimte. De resources die worden gerapporteerd aan uw Automation-account of Log Analytics werk ruimte kunnen zich in andere regio's bevinden.
+Bij het inschakelen van oplossingen als Updatebeheer, Wijzigingen bijhouden en inventaris of de VM's buiten bedrijfsuren starten/stoppen oplossing, worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Deze toewijzing is alleen van toepassing op het Automation-account en de Log Analytics-werk ruimte. De resources die worden gerapporteerd aan uw Automation-account of Log Analytics werk ruimte kunnen zich in andere regio's bevinden.
 
 ## <a name="supported-mappings"></a>Ondersteunde toewijzingen
 
@@ -49,7 +49,7 @@ De volgende tabel bevat de ondersteunde toewijzingen:
 
 ## <a name="unlink-workspace"></a>Werk ruimte ontkoppelen
 
-Als u besluit dat u uw Automation-account niet meer wilt integreren met een Log Analytics-werk ruimte, kunt u uw account rechtstreeks van de Azure Portal ontkoppelen. Voordat u doorgaat, moet u eerst de Updatebeheer, Wijzigingen bijhouden en inventaris verwijderen, of de Vm's voor starten/stoppen buiten kantoor uren als u deze gebruikt. Als u ze niet verwijdert, kan dit proces niet worden voortgezet. Raadpleeg het artikel voor de specifieke oplossing die u hebt geïmporteerd om inzicht te krijgen in de stappen die nodig zijn om deze te verwijderen.
+Als u besluit dat u uw Automation-account niet meer wilt integreren met een Log Analytics-werk ruimte, kunt u uw account rechtstreeks van de Azure Portal ontkoppelen. Voordat u doorgaat, moet u eerst de Updatebeheer, Wijzigingen bijhouden en inventaris of de VM's buiten bedrijfsuren starten/stoppen oplossingen verwijderen als u deze gebruikt. Als u ze niet verwijdert, kan dit proces niet worden voortgezet. Raadpleeg het artikel voor de specifieke oplossing die u hebt geïmporteerd om inzicht te krijgen in de stappen die nodig zijn om deze te verwijderen.
 
 Nadat u deze oplossingen hebt verwijderd, kunt u de volgende stappen uitvoeren om het Automation-account te ontkoppelen.
 
@@ -66,9 +66,9 @@ Als u de oplossing Updatebeheer hebt gebruikt, kunt u eventueel de volgende item
 
 * Update schema's: elk heeft een naam die overeenkomt met de update-implementaties die u hebt gemaakt.
 
-* Hybrid worker-groepen die zijn gemaakt voor de oplossing: elke groep `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8`krijgt dezelfde naam als).
+* Hybrid worker-groepen gemaakt voor de oplossing: elke groep krijgt dezelfde naam als `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8`).
 
-Als u de oplossing Vm's starten/stoppen buiten kantoor uren hebt gebruikt, wilt u eventueel mogelijk de volgende items verwijderen die niet meer nodig zijn nadat u de oplossing hebt verwijderd.
+Als u de oplossing VM's buiten bedrijfsuren starten/stoppen hebt gebruikt, kunt u eventueel de volgende items verwijderen die niet meer nodig zijn nadat u de oplossing hebt verwijderd.
 
 * VM-runbook-schema's starten en stoppen
 * VM-runbooks starten en stoppen
@@ -89,4 +89,4 @@ Updatebeheer en Wijzigingen bijhouden en inventaris:
 
 VM's starten/stoppen buiten kantooruren
 
-* [Vm's starten/stoppen buiten kantoor uren implementeren](../automation-solution-vm-management.md)
+* [VM's buiten bedrijfsuren starten/stoppen implementeren](../automation-solution-vm-management.md)

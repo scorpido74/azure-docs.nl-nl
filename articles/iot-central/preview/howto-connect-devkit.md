@@ -3,17 +3,17 @@ title: Een DevKit-apparaat verbinden met uw Azure IoT Central-toepassing | Micro
 description: Als ontwikkelaar van een apparaat leert u hoe u met IoT Plug en Play een MXChip IoT DevKit-apparaat verbindt met uw Azure IoT Central-toepassing.
 author: liydu
 ms.author: liydu
-ms.date: 08/17/2019
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 178f518ed7ab24fc0d3678f77ae75933a7163b58
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 32dd3fa1fc137d786174e47d842f762c2a479d64
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930130"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848944"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing (preview-functies)
 
@@ -34,9 +34,21 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
 ## <a name="get-device-connection-details"></a>Verbindings Details van apparaat ophalen
 
-Selecteer in uw Azure IoT Central-toepassing het tabblad **beheer** en selecteer **apparaat-verbinding**. Noteer de **bereik-id** en de **primaire sleutel** (in de koppeling **sleutels weer geven** ). En zorg ervoor dat **automatisch goed keuren** is ingeschakeld.
+1. Selecteer in uw Azure IoT Central-toepassing het tabblad **device templates** en selecteer **Nieuw**. Kies in de sectie **een vooraf geconfigureerde apparaatprofiel gebruiken**de optie **MXChip IOT DevKit** in de lijst. En kies **volgende: aanpassen** en **maken**.
 
-![Verbindings Details van de apparaatgroep](media/howto-connect-devkit/device-group-connection-details.png)
+    ![Device-sjabloon voor MXChip IoT DevKit](media/howto-connect-devkit/device-template.png)
+
+1. Selecteer op het tabblad **apparaten** in de lijst apparaten de optie **MXChip IOT DevKit** en selecteer **Nieuw** om een nieuw apparaat te maken op basis van de Device-sjabloon.
+
+    ![Nieuw apparaat](media/howto-connect-devkit/new-device.png)
+
+1. Voer in het pop-upvenster de **apparaat-id** in als `SampleDevKit` en de naam van het **apparaat** als `MXChip IoT DevKit - Sample`. Zorg ervoor dat de **gesimuleerde** optie is uitgeschakeld. Selecteer vervolgens **Maken**.
+
+    ![Apparaat-ID en naam](media/howto-connect-devkit/device-id-name.png)
+
+1. Klik op het apparaat dat u zojuist hebt gemaakt en selecteer **verbinding maken**. Noteer het **id-bereik**, de **apparaat-id** en de **primaire sleutel**.
+
+    ![Verbindings gegevens apparaat](media/howto-connect-devkit/device-connection-info.png)
 
 ## <a name="prepare-the-device"></a>Het apparaat voorbereiden
 
@@ -61,7 +73,7 @@ Selecteer in uw Azure IoT Central-toepassing het tabblad **beheer** en selecteer
 
     - De naam van uw WiFi-netwerk (SSID).
     - Uw WiFi-netwerk wachtwoord.
-    - De verbindings Details: de **apparaat-id** die u zelf kunt kiezen en de **bereik-id** en **groeps-SAS-primaire sleutel** die u eerder hebt genoteerd.
+    - De verbindings Details: Voer de **apparaat-id**, het **id-bereik** en de **primaire SAS-sleutel** in die u eerder hebt genoteerd.
 
     > [!NOTE]
     > Momenteel kan IoT DevKit alleen verbinding maken met 2,4 GHz Wi-Fi. 5 GHz wordt niet ondersteund als gevolg van hardwarebeperkingen.
@@ -86,7 +98,7 @@ Selecteer op het tabblad **apparaten** In uw IOT Central-toepassing het apparaat
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Om de code te controleren of te wijzigen en te compileren, gaat u naar de [MXChip IOT DevKit sample code github-opslag plaats](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp).
+Ga naar de [code voorbeelden](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)om de code te bekijken of te wijzigen en te compileren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

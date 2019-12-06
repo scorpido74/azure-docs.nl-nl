@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB query taal aanmelden
-description: Meer informatie over de functie voor SQL-systeem functies in Azure Cosmos DB.
+description: Meer informatie over de SQL-functie voor logboek registratie in Azure Cosmos DB om de natuurlijke logaritme van de opgegeven numerieke expressie te retour neren
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 16f2321eb48afacbc9636b5c0588b1ea3a01a284
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ae7812670da836efa326b9224547e4d1b64374c2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349734"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873281"
 ---
 # <a name="log-azure-cosmos-db"></a>LOGBOEK (Azure Cosmos DB)
  Retourneert de natuurlijke logaritme van de opgegeven numerieke expressie.  
@@ -41,7 +41,7 @@ LOG (<numeric_expr> [, <base>])
   
   De natuurlijke logaritme is de logaritme voor de base **e**, waarbij **e** is een constante irrational ongeveer gelijk zijn aan 2.718281828.  
   
-  De natuurlijke logaritme van de exponentiële waarde van een getal is het getal zelf: LOG (EXP (n)) = n. En de exponentiële waarde van de natuurlijke logaritme van een getal is het getal zelf: EXP (logboek (n)) = n.  
+  De natuurlijke logaritme van de exponentiële van een getal is het aantal zelf: LOG (EXP (n)) = n. En de exponentiële waarde van de natuurlijke logaritme van een getal is het aantal zelf: EXP (logboek (n)) = n.  
   
 ## <a name="examples"></a>Voorbeelden
   
@@ -57,7 +57,7 @@ SELECT LOG(10) AS log
 [{log: 2.3025850929940459}]  
 ```  
   
- In het volgende voor beeld wordt de `LOG` berekend voor de exponent van een getal.  
+ In het volgende voor beeld wordt de `LOG` voor de exponent van een getal berekend.  
   
 ```sql
 SELECT EXP(LOG(10)) AS expLog  

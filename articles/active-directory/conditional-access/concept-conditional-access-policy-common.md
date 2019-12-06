@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf338ad0c555038cd99c3604d69ab80371d6ea22
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e3d85850fb18b80490bba44b293ece7765124133
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74804971"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846110"
 ---
 # <a name="common-conditional-access-policies"></a>Algemeen beleid voor voorwaardelijke toegang
 
@@ -44,4 +44,5 @@ Meer informatie over accounts voor toegang in nood gevallen en waarom ze belang 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
+- [Simuleer aanmeldings gedrag met het hulp programma voor voorwaardelijke toegang What If.](troubleshoot-conditional-access-what-if.md)
+- [Gebruik de modus alleen rapport voor voorwaardelijke toegang om de impact van nieuwe beleids beslissingen te bepalen.](concept-conditional-access-report-only.md)

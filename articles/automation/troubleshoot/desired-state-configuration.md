@@ -4,17 +4,17 @@ description: In dit artikel vindt u informatie over het oplossen van problemen m
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ab9a39cfba082ea4c4d1cc6c29764619011d8cb8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a45ed90b2b2c4a3a4f8eb11c4618c11e6d66761
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231541"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849357"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Problemen met desired state Configuration (DSC) oplossen
 
@@ -59,7 +59,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 Deze fout is een tijdelijk probleem dat is gepland om te worden opgelost.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 * Gebruik de AZ-cmdlet Remove-AzAutomationDscConfiguration om de configuratie te verwijderen.
 * De documentatie voor deze cmdlet is nog niet bijgewerkt.  Tot slot raadpleegt u de documentatie voor de module AzureRM.
@@ -86,7 +86,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 Deze fout wordt meestal veroorzaakt door een firewall, de computer zich achter een proxy server bevindt of andere netwerk fouten.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Controleer of de computer toegang heeft tot de juiste eind punten voor Azure Automation DSC en probeer het opnieuw. Zie [netwerk planning](../automation-dsc-overview.md#network-planning) voor een lijst met poorten en adressen.
 
@@ -104,7 +104,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 Deze fout treedt doorgaans op wanneer het knoop punt is toegewezen aan een configuratie naam (bijvoorbeeld ABC) in plaats van een knooppunt configuratie naam (bijvoorbeeld ABC. Webserver).
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 * Zorg ervoor dat u het knoop punt met de naam ' knooppunt configuratie ' en niet de ' configuratie naam ' toewijst.
 * U kunt een knooppunt configuratie toewijzen aan een knoop punt met behulp van Azure Portal of met een Power shell-cmdlet.
@@ -126,7 +126,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 Wanneer de expressie die volgt op het sleutel woord van het **knoop punt** in de DSC-configuratie, wordt geëvalueerd als `$null`, worden er geen knooppunt configuraties geproduceerd.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Het probleem wordt opgelost met een van de volgende oplossingen:
 
@@ -147,7 +147,7 @@ No instance found with given property values
 
 U hebt uw WMF-versie bijgewerkt en hebt WMI beschadigd.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Volg de instructies in het artikel [bekende problemen en beperkingen van DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) om het probleem op te lossen.
 
@@ -165,7 +165,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 U hebt een referentie in een configuratie gebruikt, maar u hebt niet de juiste **ConfigurationData** om **PSDscAllowPlainTextPassword** in te stellen op True voor elke knooppunt configuratie.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 * Zorg ervoor dat u de juiste **ConfigurationData** geeft om **PSDscAllowPlainTextPassword** in te stellen op True voor elke knooppunt configuratie die wordt vermeld in de configuratie. Zie [assets in azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation)voor meer informatie.
 
@@ -183,7 +183,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 Deze fout treedt doorgaans op wanneer aan het knoop punt een knooppunt configuratie naam wordt toegewezen die niet voor komt in de service.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 * Zorg ervoor dat u het knoop punt toewijst met een knooppunt configuratie naam die exact overeenkomt met de naam in de service.
 * U kunt ervoor kiezen om de naam van de configuratie van het knoop punt niet op te stellen, wat resulteert in het voorbereiden van het knoop punt, maar geen knooppunt configuratie toewijzen
@@ -202,7 +202,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 Klanten hebben vastgesteld dat als de `/tmp` locatie is ingesteld op `noexec`, de huidige versie van DSC geen configuraties kan Toep assen.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 * Verwijder de optie `noexec` van de locatie van `/tmp`.
 
@@ -218,7 +218,7 @@ Als er bijvoorbeeld één configuratie script wordt gebruikt om configuraties te
 
 Bekend probleem met de compilatie service.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 De beste oplossing is om lokaal of in een CI/CD-pijp lijn te compileren en de MOF-bestanden rechtstreeks te uploaden naar de service.  Als de compilatie in de service een vereiste is, is de volgende beste tijdelijke oplossing om de compilatie taken te splitsen, zodat er geen overlap is in namen.
 

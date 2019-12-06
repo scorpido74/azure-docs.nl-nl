@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44e25efcb068fe51f05dbbde50e8a96da492a735
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381236"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847283"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Procedure: wacht woord opnieuw instellen inschakelen vanuit het Windows-aanmeldings scherm
 
@@ -113,7 +113,7 @@ Wanneer gebruikers hun wacht woord opnieuw instellen vanuit het aanmeldings sche
 > [!WARNING]
 > TLS 1,2 moet zijn ingeschakeld, niet alleen ingesteld op automatisch onderhandelen
 
-### <a name="install"></a>Installeren
+### <a name="install"></a>Installatie
 
 1. Down load het juiste installatie programma voor de versie van Windows die u wilt inschakelen.
    - Software is beschikbaar in het micro soft Download centrum op [https://aka.ms/sspraddin](https://aka.ms/sspraddin)

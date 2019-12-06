@@ -6,15 +6,15 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/04/2019
-ms.openlocfilehash: e4fc00d3889d10dddb9ec147a19f06a7211f53be
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/04/2019
+ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230303"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850071"
 ---
-# <a name="monitor-azure-app-service-performance"></a>Azure App Service prestaties bewaken
+# <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
 
 Het inschakelen van controle op uw ASP.NET-en ASP.NET Core op webtoepassingen die worden uitgevoerd op [Azure-app Services](https://docs.microsoft.com/azure/app-service/) is nu nog eenvoudiger dan ooit. Voordat u een site-uitbrei ding hand matig moest installeren, is de meest recente extensie/agent nu standaard in de app service-installatie kopie ingebouwd. Dit artikel begeleidt u bij het inschakelen van Application Insights bewaking en voorziet in voorlopige richt lijnen voor het automatiseren van het proces voor grootschalige implementaties.
 
@@ -37,7 +37,9 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor door Azure-a
 > [!NOTE]
 > Als zowel bewaking op basis van een agent als hand matige instrumentatie op basis van een SDK wordt gedetecteerd, worden alleen de instellingen voor hand matige instrumentatie gehonoreerd. Dit is om te voor komen dat dubbele gegevens worden verzonden. Raadpleeg voor meer informatie de [sectie probleem oplossing](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) hieronder.
 
-## <a name="enable-agent-based-monitoring-for-net-applications"></a>Bewaking op basis van agents voor .NET-toepassingen inschakelen
+## <a name="enable-agent-based-monitoring"></a>Bewaking op basis van agent inschakelen
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > De combi natie van APPINSIGHTS_JAVASCRIPT_ENABLED en urlCompression wordt niet ondersteund. Zie de uitleg in de [sectie probleem oplossing](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)voor meer informatie.
@@ -73,7 +75,7 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor door Azure-a
 
     * Raadpleeg de [code](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) en de [bijbehorende documentatie](https://docs.microsoft.com/azure/azure-monitor/app/sampling)voor een lijst met ondersteunde instellingen voor adaptieve bemonsterings-telemetrie.
 
-## <a name="enable-agent-based-monitoring-for-net-core-applications"></a>Bewaking op basis van agents voor .NET core-toepassingen inschakelen
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 De volgende versies van .NET core worden ondersteund: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2
 
@@ -94,14 +96,30 @@ Het is niet mogelijk om het volledige Framework te richten op basis van .NET cor
 
     ![Opties per platform kiezen](./media/azure-web-apps/choose-options-new-net-core.png)
 
-## <a name="enable-client-side-monitoring-for-net-applications"></a>Bewaking aan client zijde inschakelen voor .NET-toepassingen
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+**Selecteer Application Insights** > **inschakelen**in de app service-Web-app onder **instellingen** > . Bewaking op basis van node. js-agent is momenteel beschikbaar als preview-versie.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Java-webtoepassingen op basis van App Service ondersteunen momenteel geen automatische bewaking op basis van agent/extensie. Als u bewaking voor uw Java-toepassing wilt inschakelen, moet u [uw toepassing hand matig instrumenteren](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started).
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python App Service gebaseerde webtoepassingen bieden momenteel geen ondersteuning voor automatische bewaking op basis van agent/extensie. Als u bewaking voor uw python-toepassing wilt inschakelen, moet u [uw toepassing hand matig instrumenteren](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+
+---
+
+## <a name="enable-client-side-monitoring"></a>Bewaking aan clientzijde inschakelen
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 Bewaking aan client zijde is opt-in voor ASP.NET. Bewaking aan client zijde inschakelen:
 
-* **Instellingen** selecteren > * * * * toepassings instellingen * * * *
+* Selecteer **instellingen** >** **toepassing instellingen** **
    * Voeg onder toepassings instellingen een nieuwe naam en **waarde**voor de **app-instelling** toe:
 
-     naam: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Naam: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Waarde:`true`
 
@@ -111,7 +129,7 @@ Bewaking aan client zijde is opt-in voor ASP.NET. Bewaking aan client zijde insc
 
 Als u bewaking aan client zijde wilt uitschakelen, verwijdert u het gekoppelde sleutel waardepaar uit de toepassings instellingen of stelt u de waarde in op false.
 
-## <a name="enable-client-side-monitoring-for-net-core-applications"></a>Bewaking aan client zijde inschakelen voor .NET core-toepassingen
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 Bewaking aan client zijde is **standaard ingeschakeld** voor .net Core-Apps met **Aanbevolen verzameling**, ongeacht of de app-instelling ' APPINSIGHTS_JAVASCRIPT_ENABLED ' aanwezig is.
 
@@ -127,6 +145,20 @@ Als u de bewaking aan client zijde om een of andere reden wilt uitschakelen:
    * Sla de instellingen op met **Opslaan** en start de app opnieuw met **Opnieuw opstarten**.
 
 ![Scherm opname van de gebruikers interface voor toepassings instellingen](./media/azure-web-apps/appinsights-javascript-disabled.png)
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+Als u bewaking aan client zijde voor uw node. js-toepassing wilt inschakelen, moet u [de Java script-SDK aan de client zijde hand matig toevoegen aan uw toepassing](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Als u bewaking aan client zijde voor uw Java-toepassing wilt inschakelen, moet u [de Java script SDK aan de client zijde hand matig toevoegen aan uw toepassing](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Als u bewaking aan client zijde voor uw python-toepassing wilt inschakelen, moet u [de Java script SDK aan de client zijde hand matig toevoegen aan uw toepassing](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+---
 
 ## <a name="automate-monitoring"></a>Bewaking automatiseren
 
@@ -322,7 +354,7 @@ Als de upgrade wordt uitgevoerd vanaf een eerdere versie dan 2.5.1, controleert 
 Hieronder vindt u stapsgewijze richt lijnen voor het oplossen van problemen met de bewaking van extensies en agents voor .NET-en .NET core-toepassingen die worden uitgevoerd op Azure-app Services.
 
 > [!NOTE]
-> Java-en node. js-toepassingen worden alleen ondersteund op Azure-app Services via hand matige instrumentatie op basis van SDK. Daarom zijn de volgende stappen niet van toepassing op deze scenario's.
+> Java-toepassingen worden alleen ondersteund op Azure-app Services via hand matige instrumentatie op basis van SDK en daarom zijn de volgende stappen niet van toepassing op deze scenario's.
 
 1. Controleer of de toepassing wordt bewaakt via `ApplicationInsightsAgent`.
     * Controleer of `ApplicationInsightsAgent_EXTENSION_VERSION` app-instelling is ingesteld op de waarde ~ 2.

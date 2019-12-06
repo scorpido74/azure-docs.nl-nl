@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
-ms.openlocfilehash: 01087f3e40e278490abb87d0ab3b7b6ab5052b6b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4798b6908069af229c2bed4a2e5f38fa60e0d554
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219495"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849102"
 ---
 # <a name="common-cost-analysis-uses"></a>Gemeen schappelijke kosten analyse gebruikt
 
@@ -65,6 +65,8 @@ De dagelijkse en maandelijkse kosten kunnen u helpen beter te begrijpen als er e
 
 Veel Azure-gebruikers passen tags toe op hun resources, zoals een kosten centrum of een ontwikkel omgeving (productie en test), om de kosten beter te categoriseren. Tags worden weer gegeven als een dimensie in de kosten analyse. U kunt de dimensie gebruiken om inzicht te krijgen in de categorisaties van uw aangepaste labels.
 
+Ondersteuning voor Tags is van toepassing op het gebruik dat wordt gerapporteerd *nadat* het label is toegepast op de resource. Labels worden niet met terugwerkende kracht toegepast voor kosten tellingen.
+
 1. Ga in het Azure Portal naar Cost Analysis voor uw bereik. Bijvoorbeeld: **Cost Management + facturerings** > **Cost Management** > **kosten analyse**.
 1. Selecteer **groeperen op** voor uw tag.
 
@@ -112,5 +114,5 @@ Bekijk de netto samengevoegde kosten gedurende een bepaalde periode om inzicht t
 ![Geaccumuleerde kosten voor inschrijving](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-- Als u de eerste Snelstartgids voor Cost Management nog niet hebt voltooid, kunt u deze lezen bij het analyseren van de [kosten](quick-acm-cost-analysis.md).
+- Als u dit nog niet hebt al de eerste snelstartgids voltooid voor kostenbeheer, lezen via [kosten analyseren](quick-acm-cost-analysis.md).
 - Lees de [Cost Management documentatie](index.yml).

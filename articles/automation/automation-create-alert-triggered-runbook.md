@@ -4,17 +4,17 @@ description: Meer informatie over het activeren van een runbook dat wordt uitgev
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6c818114df436dbbd3ac1a51b6eeec00b9eec4d3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c4afcbced2879a2a6d50112b6388cdf5c8098b1d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915732"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850377"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Een waarschuwing gebruiken om een Azure Automation runbook te activeren
 
@@ -33,7 +33,7 @@ U kunt Automation-runbooks gebruiken met drie waarschuwings typen:
 
 Wanneer een waarschuwing een runbook aanroept, is de daad werkelijke aanroep een HTTP POST-aanvraag naar de webhook. De hoofd tekst van de POST-aanvraag bevat een JSON-indelings object met handige eigenschappen die aan de waarschuwing zijn gerelateerd. De volgende tabel bevat koppelingen naar het payload-schema voor elk waarschuwings type:
 
-|Waarschuwing  |Description|Payload-schema  |
+|Waarschuwing  |Beschrijving|Payload-schema  |
 |---------|---------|---------|
 |[Algemene waarschuwing](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Het algemene waarschuwings schema waarmee de verbruiks ervaring voor waarschuwings meldingen in azure vandaag wordt gestandaardiseerd.|Schema voor algemene nettoladingen van waarschuwingen|
 |[Waarschuwing voor activiteiten logboek](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Hiermee verzendt u een melding wanneer een nieuwe gebeurtenis in het Azure-activiteiten logboek overeenkomt met specifieke voor waarden. Bijvoorbeeld wanneer een `Delete VM` bewerking plaatsvindt in **myProductionResourceGroup** of wanneer er een nieuwe Azure service Health gebeurtenis met de status **actief** wordt weer gegeven.| [Schema waarschuwing waarschuwings lading activiteiten logboek](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
@@ -45,9 +45,9 @@ Omdat de gegevens die door elk type waarschuwing worden gegeven, verschillend zi
 
 Als u automatisering met waarschuwingen wilt gebruiken, hebt u een runbook nodig dat logica heeft die de JSON-nettolading van de waarschuwing beheert die wordt door gegeven aan het runbook. Het volgende voor beeld-runbook moet worden aangeroepen vanuit een Azure-waarschuwing.
 
-Zoals beschreven in de vorige sectie, heeft elk type waarschuwing een ander schema. Het script neemt de gegevens van de webhook in `WebhookData` de invoer parameter van het runbook over van een waarschuwing. Vervolgens wordt de JSON-nettolading door het script geëvalueerd om te bepalen welk type waarschuwing is gebruikt.
+Zoals beschreven in de vorige sectie, heeft elk type waarschuwing een ander schema. Het script neemt de gegevens van de webhook in de invoer parameter van het `WebhookData` runbook van een waarschuwing. Vervolgens wordt de JSON-nettolading door het script geëvalueerd om te bepalen welk type waarschuwing is gebruikt.
 
-In dit voor beeld wordt een waarschuwing van een virtuele machine gebruikt. De VM-gegevens worden opgehaald uit de payload en vervolgens die informatie gebruikt om de virtuele machine te stoppen. De verbinding moet worden ingesteld in het Automation-account waarop het runbook wordt uitgevoerd. Wanneer u waarschuwingen gebruikt om runbooks te activeren, is het belang rijk om de status van de waarschuwing in het runbook te controleren dat wordt geactiveerd. Het runbook wordt geactiveerd zodra de status van de waarschuwing verandert. Waarschuwingen hebben meerdere statussen, de twee meest voorkomende statussen `Resolved`zijn `Activated` en. Controleer of deze status in uw runbook-logica wordt gebruikt om ervoor te zorgen dat uw runbook niet meer dan één keer wordt uitgevoerd. In het voor beeld in dit artikel ziet u hoe `Activated` u alleen waarschuwingen kunt zoeken.
+In dit voor beeld wordt een waarschuwing van een virtuele machine gebruikt. De VM-gegevens worden opgehaald uit de payload en vervolgens die informatie gebruikt om de virtuele machine te stoppen. De verbinding moet worden ingesteld in het Automation-account waarop het runbook wordt uitgevoerd. Wanneer u waarschuwingen gebruikt om runbooks te activeren, is het belang rijk om de status van de waarschuwing in het runbook te controleren dat wordt geactiveerd. Het runbook wordt geactiveerd zodra de status van de waarschuwing verandert. Waarschuwingen hebben meerdere statussen, de twee meest voorkomende statussen zijn `Activated` en `Resolved`. Controleer of deze status in uw runbook-logica wordt gebruikt om ervoor te zorgen dat uw runbook niet meer dan één keer wordt uitgevoerd. In het voor beeld in dit artikel ziet u hoe u alleen `Activated` waarschuwingen kunt zoeken.
 
 Het runbook maakt gebruik van het [uitvoeren als-account](automation-create-runas-account.md) **AzureRunAsConnection** om te verifiëren met Azure om de beheer actie uit te voeren op de virtuele machine.
 
@@ -175,7 +175,7 @@ Gebruik dit voor beeld om een runbook met de naam **Stop-AzureVmInResponsetoVMAl
 Waarschuwingen gebruiken actie groepen, die bestaan uit verzamelingen acties die worden geactiveerd door de waarschuwing. Runbooks zijn slechts een van de vele acties die u kunt gebruiken met actie groepen.
 
 1. Selecteer in uw Automation-account **waarschuwingen** onder **bewaking**.
-1. Selecteer **+ nieuwe waarschuwings regel**.
+1. Selecteer **+ Nieuwe waarschuwingsregel**.
 1. Klik op **selecteren** onder **resource**. Selecteer op de pagina **een resource selecteren** de virtuele machine waarvoor u een waarschuwing wilt ontvangen en klik op **gereed**.
 1. Klik op **voor waarde toevoegen** onder **voor waarde**. Selecteer het signaal dat u wilt gebruiken, bijvoorbeeld **percentage CPU** en klik op **gereed**.
 1. Voer op de pagina **signaal logica configureren** uw **drempel waarde** in onder **waarschuwings logica**en klik op **gereed**.

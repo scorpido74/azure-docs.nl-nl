@@ -1,152 +1,152 @@
 ---
 title: Grafisch ontwerpen in Azure Automation
-description: Grafisch ontwerpen, kunt u runbooks voor Azure Automation maken zonder het werken met code. Dit artikel bevat een inleiding tot het grafisch ontwerpen en alle informatie die nodig zijn om te beginnen met het maken van een grafisch runbook.
+description: Met grafische ontwerpen kunt u runbooks maken voor Azure Automation zonder dat u code hoeft te gebruiken. Dit artikel bevat een inleiding tot het ontwerpen van afbeeldingen en alle informatie die nodig is om te beginnen met het maken van een grafisch runbook.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d7626706951cc522dce9c6d70251455e64300bc
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 82a06510bd9d1e0de2b38260773cb4848156bf12
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476696"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850292"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafisch ontwerpen in Azure Automation
 
-Grafisch ontwerpen kunt u runbooks voor Azure Automation maken zonder de complexiteit van de onderliggende code van de Windows PowerShell of PowerShell-werkstroom. U activiteiten toevoegen aan het canvas uit een bibliotheek met cmdlets en runbooks, ze aan elkaar koppelen en configureren om een werkstroom. Als u ooit met System Center Orchestrator of Service Management Automation (SMA) hebt gewerkt, klikt u vervolgens ziet dit er waarschijnlijk vertrouwd voor u
+Met grafische ontwerpen kunt u runbooks voor Azure Automation maken zonder de complexiteit van de onderliggende Windows Power shell-of Power shell-werk stroom code. U voegt activiteiten toe aan het canvas vanuit een bibliotheek met cmdlets en runbooks, koppel ze aan elkaar en configureren om een werk stroom te vormen. Als u ooit met System Center Orchestrator of Service Management Automation (SMA) hebt gewerkt, moet dit er bekend uitzien
 
-Dit artikel bevat een inleiding tot het grafisch ontwerpen en de concepten die u nodig hebt om te beginnen bij het maken van een grafisch runbook.
+Dit artikel bevat een inleiding tot grafische ontwerpen en de concepten die u nodig hebt om aan de slag te gaan met het maken van een grafisch runbook.
 
 ## <a name="graphical-runbooks"></a>Grafische runbooks
 
-Alle runbooks in Azure Automation zijn Windows PowerShell-werkstromen. Grafisch en grafische PowerShell Workflow-runbooks PowerShell-code die wordt uitgevoerd door de werknemers Automation genereren, maar u bent niet kunnen worden weergegeven of rechtstreeks wijzigen. Een grafisch runbook kan worden geconverteerd naar een grafische PowerShell Workflow-runbook en vice versa, maar ze kunnen niet worden geconverteerd naar een tekstuele runbook. Een bestaand tekstuele runbook kan niet worden geïmporteerd in de grafische editor.
+Alle runbooks in Azure Automation zijn Windows Power shell-werk stromen. Grafische en grafische runbooks in Power shell-werk stroom genereren Power shell-code die wordt uitgevoerd door de Automation-werk rollen, maar u kunt deze niet weer geven of rechtstreeks wijzigen. Een grafisch runbook kan worden geconverteerd naar een grafisch Power shell-werk stroom-runbook en vice versa, maar kan niet worden geconverteerd naar een tekst runbook. Een bestaand tekst runbook kan niet in de grafische editor worden geïmporteerd.
 
-## <a name="overview-of-graphical-editor"></a>Overzicht van de grafische editor
+## <a name="overview-of-graphical-editor"></a>Overzicht van grafische editor
 
-U kunt de grafische editor in Azure portal openen door te maken of bewerken van een grafisch runbook.
+U kunt de grafische editor openen in de Azure Portal door een grafisch runbook te maken of te bewerken.
 
-![Grafische werkruimte](media/automation-graphical-authoring-intro/runbook-graphical-editor.png)
+![Grafische werk ruimte](media/automation-graphical-authoring-intro/runbook-graphical-editor.png)
 
-De volgende secties beschrijven de besturingselementen in de grafische editor.
+In de volgende secties worden de besturings elementen in de grafische editor beschreven.
 
 ### <a name="canvas"></a>Canvas
 
-Het Canvas is waar u uw runbook te ontwerpen. U activiteiten van de knooppunten in het besturingselement bibliotheek toevoegen aan het runbook en verbind deze met koppelingen voor het definiëren van de logica van het runbook.
+Op het canvas kunt u het runbook ontwerpen. U voegt activiteiten van de knoop punten in het besturings element bibliotheek toe aan het runbook en verbindt deze met koppelingen om de logica van het runbook te definiëren.
 
-U kunt de besturingselementen aan de onderkant van het canvas in-en uitzoomen.
+U kunt de besturings elementen aan de onderkant van het canvas gebruiken om in en uit te zoomen.
 
-### <a name="library-control"></a>Besturingselement bibliotheek
+### <a name="library-control"></a>Besturings element voor bibliotheek
 
-Het besturingselement bibliotheek is waar u het selecteert [activiteiten](#activities) om toe te voegen aan uw runbook. U toevoegen ze aan het papier waar u deze aan andere activiteiten verbinden. Het bevat vier secties wordt beschreven in de volgende tabel:
+In het besturings element bibliotheek selecteert u [activiteiten](#activities) die u wilt toevoegen aan uw runbook. U voegt deze toe aan het canvas waar u ze verbindt met andere activiteiten. Het bevat vier secties die in de volgende tabel worden beschreven:
 
-| Section | Description |
+| Sectie | Beschrijving |
 |:--- |:--- |
-| Cmdlets |Bevat alle cmdlets die kunnen worden gebruikt in uw runbook. Cmdlets zijn ingedeeld door de module. Alle modules die u hebt geïnstalleerd in uw automation-account zijn beschikbaar. |
-| Runbooks |Bevat de runbooks in uw automation-account. Deze runbooks kunnen worden toegevoegd aan het canvas om te worden gebruikt als onderliggende runbooks. Alleen runbooks van hetzelfde type als het runbook wordt bewerkt core worden weergegeven; Grafische worden runbooks alleen op PowerShell gebaseerde runbooks weergegeven, terwijl voor grafische PowerShell Workflow-runbooks alleen PowerShell-werkstroom runbooks worden weergegeven. |
-| Assets |Bevat de [automation-assets](/previous-versions/azure/dn939988(v=azure.100)) in uw automation-account die kan worden gebruikt in uw runbook. Wanneer u een asset aan een runbook toevoegt, wordt een workflow-activiteit die de geselecteerde asset wordt toegevoegd. In het geval van een variabele assets, kunt u selecteren of toevoegen van een activiteit als u wilt ophalen van de variabele of stelt u de variabele. |
-| Runbookbesturing |Runbook-controleactiviteiten die kunnen worden gebruikt bevat in uw huidige runbook. Een *koppelingspunten* neemt van meerdere invoergegevens en wacht totdat alle hebt voltooid voordat de werkstroom. Een *Code* activiteit wordt uitgevoerd voor een of meer regels met code van PowerShell of PowerShell-werkstroom, afhankelijk van het type grafisch runbook. U kunt deze activiteit gebruiken voor aangepaste code of functionaliteit die moeilijk te bereiken met andere activiteiten. |
+| Cmdlets |Bevat alle cmdlets die kunnen worden gebruikt in uw runbook. Cmdlets zijn ingedeeld op module. Alle modules die u hebt geïnstalleerd in uw Automation-account zijn beschikbaar. |
+| Runbooks |Bevat de runbooks in uw Automation-account. Deze runbooks kunnen worden toegevoegd aan het canvas dat moet worden gebruikt als onderliggende runbooks. Alleen runbooks van hetzelfde kern type als het runbook dat wordt bewerkt, worden weer gegeven. voor grafische runbooks worden alleen op Power shell gebaseerde runbooks weer gegeven. voor grafische power shell-werk stroom-runbooks worden alleen Power shell-runbooks op basis van werk stromen weer gegeven. |
+| Assets |Bevat de [Automation-assets](/previous-versions/azure/dn939988(v=azure.100)) in uw Automation-account dat kan worden gebruikt in uw runbook. Wanneer u een Asset aan een runbook toevoegt, wordt er een werk stroom activiteit toegevoegd waarmee de geselecteerde activa worden opgehaald. In het geval van variabele assets kunt u selecteren of u een activiteit wilt toevoegen om de variabele op te halen of de variabele in te stellen. |
+| Runbook-besturings element |Bevat runbook Control-activiteiten die kunnen worden gebruikt in uw huidige runbook. Een *verbinding* neemt meerdere invoer en wacht totdat alle taken zijn voltooid voordat u doorgaat met de werk stroom. Een *code* activiteit voert een of meer regels Power shell-of Power shell-werk stroom code uit, afhankelijk van het type van het grafische runbook. U kunt deze activiteit gebruiken voor aangepaste code of voor functionaliteit die moeilijk te vergemakkelijkt is met andere activiteiten. |
 
-### <a name="configuration-control"></a>Configuratiebeheer
+### <a name="configuration-control"></a>Configuratie beheer
 
-De configuratie-besturingselement is waar u details opgeven voor een object dat is geselecteerd op het canvas. De eigenschappen die beschikbaar zijn in dit besturingselement is afhankelijk van het type object dat is geselecteerd. Wanneer u een optie in het configuratie-besturingselement selecteert, wordt extra blades geopend zodat u meer informatie.
+Het besturings element configuratie bevat Details voor een object dat is geselecteerd op het canvas. De eigenschappen die beschikbaar zijn in dit besturings element, zijn afhankelijk van het type object dat is geselecteerd. Wanneer u een optie in het configuratie besturings element selecteert, worden er aanvullende Blades geopend om aanvullende informatie te bieden.
 
-### <a name="test-control"></a>Besturingselement testen
+### <a name="test-control"></a>Besturings element testen
 
-Het besturingselement van de Test wordt niet weergegeven wanneer de grafische editor voor het eerst wordt gestart. Deze wordt geopend wanneer u interactief [testen van een grafisch runbook](#graphical-runbook-procedures).
+Het besturings element test wordt niet weer gegeven wanneer de grafische editor voor het eerst wordt gestart. Het wordt geopend wanneer u interactief [een grafisch runbook test](#graphical-runbook-procedures).
 
-## <a name="graphical-runbook-procedures"></a>Grafisch runbook procedures
+## <a name="graphical-runbook-procedures"></a>Grafische runbook-procedures
 
-### <a name="exporting-and-importing-a-graphical-runbook"></a>Exporteren en importeren van een grafisch runbook
+### <a name="exporting-and-importing-a-graphical-runbook"></a>Een grafisch runbook exporteren en importeren
 
-U kunt alleen de gepubliceerde versie van een grafisch runbook exporteren. Als het runbook is nog niet gepubliceerd, dan zal de **exporteren** knop is uitgeschakeld. Wanneer u klikt op de **exporteren** knop, het runbook wordt gedownload naar uw lokale computer. De naam van het bestand overeenkomt met de naam van het runbook met een *graphrunbook* extensie.
+U kunt alleen de gepubliceerde versie van een grafisch runbook exporteren. Als het runbook nog niet is gepubliceerd, wordt de knop **exporteren** uitgeschakeld. Wanneer u op de knop **exporteren** klikt, wordt het runbook gedownload naar uw lokale computer. De naam van het bestand komt overeen met de naam van het runbook met een *graphrunbook* -extensie.
 
-U kunt een grafisch of grafische PowerShell Workflow-runbook-bestand importeren met het selecteren van de **importeren** optie bij het toevoegen van een runbook. Wanneer u het te importeren bestand selecteert, kunt u dezelfde bewaren **naam** of geef een nieuwe. Het veld Type van Runbook wordt het type van runbook weergegeven nadat deze het geselecteerde bestand beoordeelt en als u probeert om te selecteren van een ander type dan niet juist is, een bericht wordt weergegeven waarbij er mogelijke conflicten en tijdens de conversie, kunnen er syntaxis Er zijn fouten.
+U kunt een grafisch of grafisch runbook van een Power shell-werk stroom bestand importeren door de optie **importeren** te selecteren bij het toevoegen van een runbook. Wanneer u het bestand selecteert dat u wilt importeren, kunt u dezelfde **naam** blijven of een nieuw item opgeven. In het veld type Runbook wordt het type runbook weer gegeven nadat het geselecteerde bestand is geëvalueerd. Als u probeert een ander type te selecteren dat niet juist is, wordt er een bericht weer gegeven met de mogelijke conflicten en tijdens de conversie, waardoor er mogelijk een syntaxis is bufferoverschrijdingsfouten.
 
 ![Runbook importeren](media/automation-graphical-authoring-intro/runbook-import-revised20165.png)
 
 ### <a name="testing-a-graphical-runbook"></a>Een grafisch runbook testen
 
-Terwijl u de gepubliceerde versie van het runbook ongewijzigd, of u een nieuw runbook testen kunt voordat deze is gepubliceerd, kunt u de conceptversie van een runbook testen in Azure portal. Hiermee kunt u controleren of het runbook correct werkt voordat u de gepubliceerde versie vervangen. Wanneer u een runbook test, wordt het concept runbook wordt uitgevoerd en de acties die worden uitgevoerd worden voltooid. Er wordt geen Taakgeschiedenis wordt gemaakt, maar uitvoer wordt weergegeven in het deelvenster Testuitvoer.
+U kunt de concept versie van een runbook testen in de Azure Portal terwijl de gepubliceerde versie van het runbook ongewijzigd blijft, of u kunt een nieuw runbook testen voordat het is gepubliceerd. Hiermee kunt u controleren of het runbook correct werkt voordat u de gepubliceerde versie vervangen. Wanneer u een runbook test, wordt het concept runbook wordt uitgevoerd en de acties die worden uitgevoerd worden voltooid. Er wordt geen taak geschiedenis gemaakt, maar de uitvoer wordt weer gegeven in het deel venster test uitvoer.
 
-Open het Test-besturingselement voor een runbook door het openen van het runbook om te bewerken en klik vervolgens op de **testvenster** knop.
+Open het besturings element test voor een runbook door het runbook te openen voor bewerken en vervolgens te klikken op de knop **test venster** .
 
-Het besturingselement van de Test wordt gevraagd voor alle invoerparameters en u het runbook start door te klikken op de **Start** knop.
+De test controle vraagt naar alle invoer parameters en u kunt het runbook starten door te klikken op de knop **Start** .
 
 ### <a name="publishing-a-graphical-runbook"></a>Een grafisch runbook publiceren
 
-Elk runbook in Azure Automation heeft een ontwerpversie en een gepubliceerde versie. Alleen de gepubliceerde versie is beschikbaar om te worden uitgevoerd, en alleen de conceptversie kan worden bewerkt. De gepubliceerde versie wordt niet beïnvloed door wijzigingen in de conceptversie. Wanneer de conceptversie nu is beschikbaar is, publiceert u deze, die wordt de gepubliceerde versie door de conceptversie overschreven.
+Elk runbook in Azure Automation heeft een concept en een gepubliceerde versie. Alleen de gepubliceerde versie is beschikbaar om te worden uitgevoerd, en alleen de conceptversie kan worden bewerkt. De gepubliceerde versie wordt niet beïnvloed door wijzigingen in de conceptversie. Wanneer de concept versie gereed is om beschikbaar te zijn, publiceert u deze, waardoor de gepubliceerde versie wordt overschreven door de concept versie.
 
-U kunt een grafisch runbook publiceren door het openen van het runbook voor het bewerken en vervolgens te klikken op de **publiceren** knop.
+U kunt een grafisch runbook publiceren door het runbook te openen voor bewerken en vervolgens op de knop **publiceren** te klikken.
 
-Wanneer een runbook is nog niet gepubliceerd, heeft de status van **nieuw**. Wanneer het wordt gepubliceerd, heeft deze een status **gepubliceerd**. Als u het runbook bewerken nadat deze is gepubliceerd, en de conceptversie en een gepubliceerde versies verschillend zijn, heeft het runbook de status van **bewerken**.
+Wanneer een runbook nog niet is gepubliceerd, heeft het de status **Nieuw**. Wanneer het is gepubliceerd, heeft het de status **gepubliceerd**. Als u het runbook bewerkt nadat het is gepubliceerd en het concept en de gepubliceerde versies verschillend zijn, heeft het runbook de status **in Edit**.
 
 ![Runbook-statussen](media/automation-graphical-authoring-intro/runbook-statuses-revised20165.png)
 
-U hebt ook de mogelijkheid om terug te keren naar de gepubliceerde versie van een runbook. Dit verwijdert u alle wijzigingen omdat het runbook het laatst is gepubliceerd en de conceptversie van het runbook door de gepubliceerde versie vervangt.
+U hebt ook de mogelijkheid om terug te keren naar de gepubliceerde versie van een runbook. Hiermee worden de wijzigingen die zijn aangebracht sinds het runbook voor het laatst is gepubliceerd, verwijderd en wordt de concept versie van het runbook vervangen door de gepubliceerde versie.
 
 ## <a name="activities"></a>Activiteiten
 
-Activiteiten zijn de bouwstenen van een runbook. Een activiteit kan bestaan uit een PowerShell-cmdlet, een onderliggend runbook of een workflow-activiteit. Toevoegen van een activiteit aan het runbook door te selecteren met de rechtermuisknop op in het besturingselement bibliotheek **toevoegen aan papier**. U kunt Klik en sleep de activiteit overal op het canvas dat u wilt plaatsen. De locatie van de activiteit op het canvas heeft geen invloed op de werking van het runbook op geen enkele manier. U kunt indelen uw runbook echter vindt u het meest geschikt is voor het visualiseren van de werking ervan.
+Activiteiten zijn de bouw stenen van een runbook. Een activiteit kan een Power shell-cmdlet, een onderliggend runbook of een werk stroom activiteit zijn. U voegt een activiteit aan het runbook toe door er met de rechter muisknop op te klikken in het besturings element bibliotheek en vervolgens **toevoegen aan canvas**te selecteren. Vervolgens klikt u op de activiteit en sleept u deze naar een wille keurige plek op het canvas dat u wilt. De locatie van de activiteit op het canvas heeft geen invloed op de werking van het runbook. U kunt uw runbook indelen, maar u vindt het het meest geschikt om de werking ervan te visualiseren.
 
-![Toevoegen aan papier](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
+![toevoegen aan canvas](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
 
-Selecteer de activiteit op het canvas voor het configureren van de eigenschappen en parameters in de blade van de configuratie. U kunt wijzigen de **Label** van de activiteit in op iets dat beschrijvende aan u is. De oorspronkelijke cmdlet nog steeds wordt uitgevoerd, wijzigt u gewoon de weergavenaam die wordt gebruikt in de grafische editor. Het label moet uniek zijn binnen het runbook.
+Selecteer de activiteit op het canvas om de eigenschappen en para meters te configureren op de Blade configuratie. U kunt het **Label** van de activiteit wijzigen in iets wat een beschrijving voor u is. De oorspronkelijke cmdlet wordt nog uitgevoerd. u hoeft alleen de weergave naam te wijzigen die wordt gebruikt in de grafische editor. Het label moet uniek zijn binnen het runbook.
 
-### <a name="parameter-sets"></a>Parametersets
+### <a name="parameter-sets"></a>Parameter sets
 
-Een parameterset definieert de verplichte en optionele parameters die waarden voor een bepaalde cmdlet te accepteren. Alle cmdlets hebben ten minste één parameter is ingesteld, en soms meerdere. Als een cmdlet meerdere parametersets bevat, moet klikt u vervolgens u selecteren welke methode u gebruikt voordat u parameters kunt configureren. De parameters die u kunt configureren, is afhankelijk van de parameter is ingesteld dat u kiest. Kunt u de parameterset gebruikt door een activiteit door het selecteren van **parameterset** en een andere verzameling te selecteren. In dit geval gaan alle parameterwaarden die u hebt geconfigureerd verloren.
+Een parameterset definieert de verplichte en optionele para meters waarmee waarden voor een bepaalde cmdlet worden geaccepteerd. Alle cmdlets hebben ten minste één parameterset en andere hebben er meerdere. Als een cmdlet meerdere parameter sets heeft, moet u selecteren welke u gebruikt voordat u para meters kunt configureren. De para meters die u kunt configureren, zijn afhankelijk van de door u gekozen parameterset. U kunt de parameterset die door een activiteit wordt gebruikt, wijzigen door **para meters** in te stellen en een andere set te selecteren. In dit geval gaan alle parameter waarden die u hebt geconfigureerd verloren.
 
-In het volgende voorbeeld bevat de cmdlet Get-AzureRmVM drie parametersets. U kunt parameterwaarden niet configureren, totdat u een van de parametersets selecteren. De parameterset ListVirtualMachineInResourceGroupParamSet is voor het retourneren van alle virtuele machines in een resourcegroep en heeft één optionele parameter. De **GetVirtualMachineInResourceGroupParamSet** is voor het opgeven van de virtuele machine dat u wilt retourneren en heeft twee verplicht en een optionele parameter.
+In het volgende voor beeld heeft de cmdlet Get-AzureRmVM drie parameter sets. U kunt parameter waarden pas configureren als u een van de parameter sets selecteert. De para meter ListVirtualMachineInResourceGroupParamSet is ingesteld voor het retour neren van alle virtuele machines in een resource groep en heeft één optionele para meter. De **GetVirtualMachineInResourceGroupParamSet** is voor het opgeven van de virtuele machine die u wilt retour neren en heeft twee verplichte en een optionele para meter.
 
 ![Parameterset](media/automation-graphical-authoring-intro/get-azurermvm-parameter-sets.png)
 
 #### <a name="parameter-values"></a>Parameterwaarden
 
-Als u een waarde voor een parameter opgeeft, selecteert u een gegevensbron om te bepalen hoe de waarde is opgegeven. De gegevensbronnen die beschikbaar zijn voor een bepaalde parameter, is afhankelijk van de geldige waarden voor deze parameter. Bijvoorbeeld: Null is niet een beschikbare optie voor een parameter die null-waarden zijn niet toegestaan.
+Wanneer u een waarde voor een para meter opgeeft, selecteert u een gegevens bron om te bepalen hoe de waarde is opgegeven. De gegevens bronnen die beschikbaar zijn voor een bepaalde para meter, zijn afhankelijk van de geldige waarden voor die para meter. Zo is null bijvoorbeeld geen beschik bare optie voor een para meter die geen Null-waarden toestaat.
 
-| Gegevensbron | Description |
+| Gegevensbron | Beschrijving |
 |:--- |:--- |
-| Constante waarde |Typ een waarde voor de parameter. Dit is alleen beschikbaar voor de volgende gegevenstypen: Int32, Int64, String,Boolean,DateTime,Switch. |
-| Uitvoer van activiteit |De uitvoer van een activiteit die voorafgaat aan de huidige activiteit in de werkstroom. Alle geldige activiteiten worden weergegeven. Selecteer alleen de activiteit met de uitvoer voor de waarde van parameter. Als de uitvoer van de activiteit een object met meerdere eigenschappen, kunt u opgeven de naam van de eigenschap na het selecteren van de activiteit. |
-| Runbookinvoer |Selecteer een runbook-invoerparameter als invoer voor de parameter van de activiteit. |
-| Variabeleasset |Selecteer een Automation-variabele als invoer. |
-| Referentie-element |Selecteer een Automation-referentie als invoer. |
-| Certificaatasset |Selecteer een Automation-certificaat als invoer. |
-| Verbindingsasset |Selecteer een Automation-verbinding als invoer. |
-| PowerShell-expressie |Geef een eenvoudige [PowerShell-expressie](#powershell-expressions). De expressie wordt geëvalueerd vóór de activiteit en het resultaat dat wordt gebruikt voor de parameterwaarde. U kunt variabelen gebruiken om te verwijzen naar de uitvoer van een activiteit of een runbook-invoerparameter. |
-| Niet geconfigureerd |Hiermee schakelt u elke waarde die eerder was geconfigureerd. |
+| Constante waarde |Typ een waarde voor de para meter. Dit is alleen beschikbaar voor de volgende gegevens typen: Int32, Int64, String, Boolean, DateTime, Switch. |
+| Uitvoer van activiteit |Uitvoer van een activiteit die voorafgaat aan de huidige activiteit in de werk stroom. Alle geldige activiteiten worden weer gegeven. Selecteer alleen de activiteit voor het gebruik van de uitvoer voor de parameter waarde. Als met de activiteit een object met meerdere eigenschappen wordt uitgevoerd, kunt u de naam van de eigenschap typen nadat u de activiteit hebt geselecteerd. |
+| Runbook-invoer |Selecteer een invoer parameter voor het runbook als invoer voor de para meter activiteit. |
+| Variabel activum |Selecteer een Automation-variabele als invoer. |
+| Referentie-Asset |Selecteer een Automation-referentie als invoer. |
+| Certificaat Asset |Selecteer een Automation-certificaat als invoer. |
+| Verbindings Asset |Selecteer een Automation-verbinding als invoer. |
+| PowerShell-expressie |Geef een eenvoudige [Power shell-expressie](#powershell-expressions)op. De expressie wordt geëvalueerd vóór de activiteit en het resultaat dat wordt gebruikt voor de parameter waarde. U kunt variabelen gebruiken om te verwijzen naar de uitvoer van een activiteit of een invoer parameter van een runbook. |
+| Niet geconfigureerd |Hiermee wist u alle eerder geconfigureerde waarden. |
 
-#### <a name="optional-additional-parameters"></a>Optionele extra parameters
+#### <a name="optional-additional-parameters"></a>Optionele aanvullende para meters
 
-Alle cmdlets hebben de optie voor het bieden van aanvullende parameters. Dit zijn algemene PowerShell-parameters of andere aangepaste parameters. Krijgt u een tekstvak waarin u de parameters met behulp van PowerShell-syntaxis kunt opgeven. Bijvoorbeeld, om te gebruiken de **uitgebreid** algemene parameter geeft u **'-Verbose: $True "** .
+Alle cmdlets hebben de mogelijkheid om extra para meters op te geven. Dit zijn algemene Power shell-para meters of andere aangepaste para meters. Er wordt een tekstvak weer gegeven waarin u para meters kunt opgeven met behulp van de Power shell-syntaxis. Als u bijvoorbeeld de para meter **uitgebreide** common wilt gebruiken, geeft u **'-verbose: $True '** op.
 
-### <a name="retry-activity"></a>Opnieuw proberen van activiteit
+### <a name="retry-activity"></a>Activiteit voor opnieuw proberen
 
-**Gedrag voor opnieuw proberen** kunt u een activiteit meerdere keren worden uitgevoerd tot aan een bepaalde voorwaarde wordt voldaan, net als een lus. U kunt deze functie gebruiken voor activiteiten die meerdere keren moet worden uitgevoerd, is dit foutgevoelig zijn, en mogelijk moet meer dan één poging voor het slagen of testen van de informatie over de uitvoer van de activiteit voor geldige gegevens.
+Met het **gedrag voor opnieuw proberen** kan een activiteit meerdere keren worden uitgevoerd tot aan een bepaalde voor waarde wordt voldaan, net als bij een lus. U kunt deze functie gebruiken voor activiteiten die meerdere keren worden uitgevoerd, fout gevoelig is en mogelijk meer dan één poging voor geslaagde pogingen hebben of de uitvoer gegevens van de activiteit testen op geldige gegevens.
 
-Wanneer u opnieuw proberen voor een activiteit inschakelt, kunt u een vertraging en een voorwaarde instellen. De vertraging is de tijd (gemeten in seconden of minuten) dat het runbook wacht voordat deze de activiteit opnieuw wordt uitgevoerd. Als er geen vertraging is opgegeven, worden klikt u vervolgens de activiteit opnieuw uitgevoerd onmiddellijk nadat deze is voltooid.
+Wanneer u opnieuw proberen voor een activiteit inschakelt, kunt u een vertraging en een voor waarde instellen. De vertraging is de tijd (gemeten in seconden of minuten) die het runbook wacht voordat de activiteit opnieuw wordt uitgevoerd. Als er geen vertraging is opgegeven, wordt de activiteit opnieuw uitgevoerd zodra deze is voltooid.
 
-![Poging van de activiteit](media/automation-graphical-authoring-intro/retry-delay.png)
+![Vertraging voor opnieuw proberen van activiteit](media/automation-graphical-authoring-intro/retry-delay.png)
 
-De voorwaarde voor opnieuw proberen is een PowerShell-expressie die wordt geëvalueerd na elke keer dat de activiteit wordt uitgevoerd. Als de expressie op ' True ' is opgelost, klikt u vervolgens de activiteit opnieuw uitgevoerd. De expressie wordt omgezet naar ONWAAR, wordt de activiteit niet opnieuw uitgevoerd als het runbook gaat verder met de volgende activiteit.
+De voor waarde voor opnieuw proberen is een Power shell-expressie die wordt geëvalueerd na elke keer dat de activiteit wordt uitgevoerd. Als de expressie wordt omgezet in True, wordt de activiteit opnieuw uitgevoerd. Als de expressie wordt omgezet in False, wordt de activiteit niet opnieuw uitgevoerd en wordt het runbook verplaatst naar de volgende activiteit.
 
-![Poging van de activiteit](media/automation-graphical-authoring-intro/retry-condition.png)
+![Vertraging voor opnieuw proberen van activiteit](media/automation-graphical-authoring-intro/retry-condition.png)
 
-De voorwaarde opnieuw kunt gebruiken een variabele met de naam $RetryData die toegang tot informatie over de activiteit nieuwe pogingen biedt. Deze variabele heeft de eigenschappen in de volgende tabel:
+De voor waarde voor opnieuw proberen kan een variabele met de naam $RetryData gebruiken die toegang geeft tot informatie over de nieuwe pogingen van de activiteit. Deze variabele heeft de eigenschappen in de volgende tabel:
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
-| NumberOfAttempts |Het aantal keren dat de activiteit is uitgevoerd. |
-| Output |De uitvoer van de laatste uitvoering van de activiteit. |
-| TotalDuration |Time-out verstreken sinds de eerste keer door de activiteit is gestart. |
-| StartedAt |Tijd in UTC-notatie die de activiteit voor het eerst is gestart. |
+| NumberOfAttempts |Aantal keren dat de activiteit is uitgevoerd. |
+| Uitvoer |Uitvoer van de laatste uitvoering van de activiteit. |
+| TotalDuration |De tijd die is verstreken sinds de activiteit voor het eerst is gestart. |
+| StartedAt |Tijd in de UTC-notatie waarmee de activiteit voor het eerst werd gestart. |
 
-Hieronder vindt u voorbeelden van de activiteit van de voorwaarden opnieuw.
+Hieronder volgen enkele voor beelden van voor waarden voor een nieuwe activiteit.
 
 ```powershell-interactive
 # Run the activity exactly 10 times.
@@ -163,15 +163,15 @@ $RetryData.Output.Count -ge 1
 $RetryData.TotalDuration.TotalMinutes -ge 2
 ```
 
-Nadat u een voorwaarde voor opnieuw proberen voor een activiteit hebt geconfigureerd, bevat de activiteit twee visuele aanwijzingen om u te herinneren. Een wordt weergegeven in de activiteit en de andere is bij het controleren van de configuratie van de activiteit.
+Nadat u een voor waarde voor opnieuw proberen voor een activiteit hebt geconfigureerd, bevat de activiteit twee visuele hints om u eraan te herinneren. De ene wordt weer gegeven in de activiteit en de andere is wanneer u de configuratie van de activiteit bekijkt.
 
-![Activiteit opnieuw proberen Visual indicatoren](media/automation-graphical-authoring-intro/runbook-activity-retry-visual-cue.png)
+![Visuele indica toren voor activiteit opnieuw proberen](media/automation-graphical-authoring-intro/runbook-activity-retry-visual-cue.png)
 
-### <a name="workflow-script-control"></a>Script werkstroombeheer
+### <a name="workflow-script-control"></a>Besturings element voor werk stroom script
 
-Een Code-besturingselement is een speciale activiteit PowerShell of PowerShell-werkstroom script afhankelijk van het type grafisch runbook wordt geschreven accepteert zodat de functionaliteit die anders mogelijk niet beschikbaar. Er kan geen parameters accepteren, maar deze variabelen kunt gebruiken voor activiteit uitvoer en runbook-invoerparameters. Uitvoer van de activiteit is toegevoegd aan de gegevensbus, tenzij er geen uitgaande koppelen in dat geval wordt deze toegevoegd aan de uitvoer van het runbook.
+Een code beheer is een speciale activiteit die een Power shell-of Power shell-werk stroom script accepteert, afhankelijk van het type grafisch runbook dat wordt ontworpen om functionaliteit te bieden die anders mogelijk niet beschikbaar is. Het kan geen para meters accepteren, maar kan wel variabelen gebruiken voor uitvoer van de activiteit en de invoer parameters voor het runbook. Een uitvoer van de activiteit wordt toegevoegd aan de gegevensbus, tenzij deze geen uitgaande koppeling heeft in welk geval deze wordt toegevoegd aan de uitvoer van het runbook.
 
-Bijvoorbeeld, berekeningen de volgende code datum met behulp van een runbook invoer variabele $NumberOfDays genoemd. Vervolgens stuurt een berekende tijd als uitvoer moet worden gebruikt door volgende activiteiten in het runbook.
+Met de volgende code worden bijvoorbeeld datum berekeningen uitgevoerd met behulp van een runbook-invoer variabele met de naam $NumberOfDays. Vervolgens wordt een berekende datum en tijd als uitvoer verzonden die door volgende activiteiten in het runbook moet worden gebruikt.
 
 ```powershell-interactive
 $DateTimeNow = (Get-Date).ToUniversalTime()
@@ -179,42 +179,42 @@ $DateTimeStart = ($DateTimeNow).AddDays(-$NumberOfDays)}
 $DateTimeStart
 ```
 
-## <a name="links-and-workflow"></a>Koppelingen en werkstroom
+## <a name="links-and-workflow"></a>Koppelingen en werk stroom
 
-Een **koppeling** verbinding maakt twee activiteiten in een grafisch runbook. Als een pijl van de bronactiviteit naar de doelactiviteit wordt dit weergegeven op het canvas. De activiteiten worden uitgevoerd in de richting van de pijl met de doelactiviteit starten nadat de bronactiviteit is voltooid.
+Een **koppeling** in een grafisch runbook verbindt twee activiteiten. Het wordt op het canvas weer gegeven als een pijl die van de bron activiteit naar de doel activiteit wijst. De activiteiten worden uitgevoerd in de richting van de pijl met de doel activiteit vanaf het volt ooien van de bron activiteit.
 
 ### <a name="create-a-link"></a>Een koppeling maken
 
-Maak een koppeling tussen twee activiteiten op basis van de bronactiviteit selecteren en te klikken op de cirkel aan de onderkant van de vorm. Sleep de pijl naar de doelactiviteit en release.
+Maak een koppeling tussen twee activiteiten door de bron activiteit te selecteren en op de cirkel aan de onderkant van de vorm te klikken. Sleep de pijl naar de doel activiteit en laat deze los.
 
 ![Een koppeling maken](media/automation-graphical-authoring-intro/create-link-revised20165.png)
 
-Selecteer de koppeling naar de eigenschappen ervan configureren in de blade van de configuratie. Dit omvat het koppelingstype, die wordt beschreven in de volgende tabel:
+Selecteer de koppeling om de eigenschappen ervan te configureren in de Blade configuratie. Dit omvat het koppelings type, dat wordt beschreven in de volgende tabel:
 
-| Koppelingstype | Description |
+| Koppelings type | Beschrijving |
 |:--- |:--- |
-| Pijplijn |De doelactiviteit wordt eenmaal uitgevoerd voor elk objectuitvoer van de bronactiviteit. De doelactiviteit wordt niet uitgevoerd als de bronactiviteit in geen uitvoer resulteert. Uitvoer van de bronactiviteit is beschikbaar als een object. |
-| Takenreeks |De doelactiviteit wordt slechts één keer uitgevoerd. Ontvangt deze een matrix met objecten uit de bronactiviteit. Uitvoer van de bronactiviteit is beschikbaar als een matrix met objecten. |
+| Pijplijn |De doel activiteit wordt eenmaal uitgevoerd voor elke object uitvoer van de bron activiteit. De doel activiteit wordt niet uitgevoerd als de bron activiteit resulteert in geen uitvoer. Uitvoer van de bron activiteit is beschikbaar als een object. |
+| Volgorde |De doel activiteit wordt slechts één keer uitgevoerd. Het ontvangt een matrix van objecten van de bron activiteit. Uitvoer van de bron activiteit is beschikbaar als een matrix met objecten. |
 
-### <a name="starting-activity"></a>Activiteit vanaf
+### <a name="starting-activity"></a>Begin activiteit
 
-Een grafisch runbook begint met alle activiteiten die nog geen een binnenkomende verbinding. Dit is vaak slechts één activiteit, die als de eerste activiteit voor het runbook fungeren kan. Als meerdere activiteiten nog geen koppeling van een binnenkomende, vervolgens het runbook wordt gestart door kunnen parallel worden uitgevoerd. Volgt de koppelingen voor het uitvoeren van andere activiteiten zoals elk is voltooid.
+Een grafisch runbook begint met alle activiteiten die geen binnenkomende koppeling hebben. Dit is vaak maar één activiteit, die als de begin activiteit voor het runbook zou optreden. Als meerdere activiteiten geen binnenkomende koppeling hebben, wordt het runbook gestart door deze parallel uit te voeren. De koppelingen worden gevolgd om andere activiteiten uit te voeren, aangezien elke bewerking is voltooid.
 
 ### <a name="conditions"></a>Voorwaarden
 
-Wanneer u een voorwaarde op een koppeling opgeeft, de doelactiviteit alleen wordt uitgevoerd als de voorwaarde true. Doorgaans gebruikt u een variabele $ActivityOutput in een voorwaarde om op te halen van de uitvoer van de bronactiviteit
+Wanneer u een voor waarde op een koppeling opgeeft, wordt de doel activiteit alleen uitgevoerd als de voor waarde wordt omgezet in True. Normaal gesp roken gebruikt u een $ActivityOutput variabele in een voor waarde om de uitvoer op te halen uit de bron activiteit
 
-Voor een pijplijn-koppeling, geeft u een voorwaarde voor een enkel object en de voorwaarde wordt geëvalueerd voor elke uitvoer van object door de bronactiviteit. De doelactiviteit wordt vervolgens uitgevoerd voor elk object dat voldoet aan de voorwaarde. Bijvoorbeeld, met de bronactiviteit van een van Get-AzureRmVm, de syntaxis van de volgende kan worden gebruikt voor een koppeling voorwaardelijke pijplijn om op te halen, alleen virtuele machines in de resourcegroep met de naam *Group1*.
+Voor een pijplijn koppeling geeft u een voor waarde voor één object op en de voor waarde wordt geëvalueerd voor elk object dat door de bron activiteit wordt uitgevoerd. De doel activiteit wordt vervolgens uitgevoerd voor elk object dat voldoet aan de voor waarde. Met een bron activiteit van Get-AzureRmVm kan bijvoorbeeld de volgende syntaxis worden gebruikt voor een voorwaardelijke pijplijn koppeling om alleen virtuele machines op te halen in de resource groep met de naam *Group1*.
 
 ```powershell-interactive
 $ActivityOutput['Get Azure VMs'].Name -match "Group1"
 ```
 
-Voor de koppeling van een reeks wordt de voorwaarde slechts één keer geëvalueerd omdat een matrix wordt geretourneerd met de uitvoer van alle objecten van de bronactiviteit. Als gevolg hiervan is de koppeling van een reeks kan niet worden gebruikt voor het filteren van als een pijplijn-koppeling, maar gewoon wordt bepaald of de volgende activiteit wordt uitgevoerd. Neem bijvoorbeeld de volgende set van activiteiten in ons runbook VM starten.
+Voor een reeks koppeling wordt de voor waarde slechts eenmaal geëvalueerd omdat één matrix met alle objecten uitvoer van de bron activiteit wordt geretourneerd. Daarom kan een sequentie koppeling niet worden gebruikt voor filteren zoals een pijplijn koppeling, maar u kunt gewoon bepalen of de volgende activiteit wordt uitgevoerd. Neem bijvoorbeeld de volgende serie activiteiten in het runbook start VM.
 
-![Voorwaardelijke koppeling bij reeksen](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)
+![Voorwaardelijke koppeling met reeksen](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)
 
-Er zijn drie verschillende reeks koppelingen die zijn deze waarden zijn opgegeven voor twee invoerparameters voor runbook voor VM-naam en de naam van de resourcegroep om te bepalen wat de juiste actie te ondernemen - verifiëren één virtuele machine starten, start alle virtuele machines in de resource groep, of alle virtuele machines in een abonnement. Dit is de voorwaardelijke logica voor de koppeling volgorde tussen verbinding maken met Azure en één Get-VM:
+Er zijn drie verschillende reeks koppelingen waarmee waarden worden gecontroleerd voor twee runbook-invoer parameters die de VM-naam en de naam van de resource groep vertegenwoordigen, zodat u kunt bepalen welk actie moet worden ondernomen om een enkele virtuele machine te starten. Start alle virtuele machines in de resource groep of alle virtuele machines in een abonnement. Voor de reeks koppeling tussen verbinding maken met Azure en het ophalen van één virtuele machine is dit de conditie logica:
 
 ```powershell-interactive
 <#
@@ -227,41 +227,41 @@ Both VMName and ResourceGroupName runbook input parameters have values
 )
 ```
 
-Wanneer u een voorwaardelijke koppeling gebruikt, worden de gegevens die beschikbaar zijn vanuit de bronactiviteit aan andere activiteiten in dat filiaal wordt gefilterd op de voorwaarde. Als een activiteit van de bron naar meerdere koppelingen is, klikt u vervolgens de gegevens beschikbaar zijn voor activiteiten in elke vertakking afhankelijk zijn van de voorwaarde in de koppeling die verbinding maken met dat filiaal.
+Wanneer u een voorwaardelijke koppeling gebruikt, worden de gegevens die beschikbaar zijn van de bron activiteit naar andere activiteiten in die vertakking gefilterd op basis van de voor waarde. Als een activiteit de bron voor meerdere koppelingen is, zijn de gegevens die beschikbaar zijn voor activiteiten in elke vertakking afhankelijk van de voor waarde in de koppeling verbinding maken met die vertakking.
 
-Bijvoorbeeld, de **Start-AzureRmVm** activiteit in het onderstaande runbook wordt gestart voor alle virtuele machines. Heeft twee voorwaardelijke koppelingen. De expressie wordt gebruikt voor de eerste voorwaardelijke koppeling *$ActivityOutput ['Start-AzureRmVM']. IsSuccessStatusCode - eq $true* om te filteren als de Start-AzureRmVm-activiteit is voltooid. De tweede maakt gebruik van de expressie *$ActivityOutput ['Start-AzureRmVM']. IsSuccessStatusCode - ne $true* om te filteren als de Start-AzureRmVm-activiteit is de virtuele machine te starten is mislukt.
+Bijvoorbeeld: met de activiteit **Start-AzureRmVm** in het onderstaande runbook worden alle virtuele machines gestart. Het heeft twee voorwaardelijke koppelingen. De eerste voorwaardelijke koppeling gebruikt de expressie *$ActivityOutput [' Start-AzureRmVM ']. IsSuccessStatusCode-EQ $true* om te filteren of de start-AzureRmVm-activiteit is voltooid. De tweede gebruikt de expressie *$ActivityOutput [' Start-AzureRmVM ']. IsSuccessStatusCode-ne $true* als u wilt filteren op het starten van de virtuele machine is mislukt met de start-AzureRmVm-activiteit.
 
-![Voorbeeld van een voorwaardelijke koppeling](media/automation-graphical-authoring-intro/runbook-conditional-links.png)
+![Voor beeld van voorwaardelijke koppeling](media/automation-graphical-authoring-intro/runbook-conditional-links.png)
 
-Elke activiteit die volgt op de eerste koppeling en maakt gebruik van de activiteit uitvoer van Get-AzureVM krijgt alleen de virtuele machines die zijn gestart op het moment dat de Get-AzureVM werd uitgevoerd. Elke activiteit die volgt op de tweede koppeling wordt alleen de virtuele machines die zijn gestopt op het moment dat de Get-AzureVM werd uitgevoerd. Elke activiteit die de derde koppeling worden alle virtuele machines opgehaald, ongeacht hun actief is.
+Alle activiteiten die de eerste koppeling volgen en de uitvoer van de activiteit van Get-AzureVM gebruiken, krijgen alleen de virtuele machines die zijn gestart op het moment dat Get-AzureVM werd uitgevoerd. Elke activiteit die volgt op de tweede koppeling, haalt alleen de virtuele machines op die zijn gestopt op het moment dat Get-AzureVM werd uitgevoerd. Bij elke activiteit die volgt op de derde koppeling, worden alle virtuele machines opgehaald, ongeacht hun uitvoerings status.
 
 ### <a name="junctions"></a>Koppelingen
 
-Een verbinding is een speciale activiteit moet wachten totdat alle binnenkomende vertakkingen hebt voltooid. Hiermee kunt u meerdere activiteiten parallel uit te voeren en ervoor zorgen dat alle hebt voltooid voordat u doorgaat.
+Een verbinding is een speciale activiteit die wacht totdat alle binnenkomende branches zijn voltooid. Hierdoor kunt u meerdere activiteiten parallel uitvoeren en ervoor zorgen dat alle taken zijn voltooid voordat u doorgaat.
 
-Terwijl een knooppunt een onbeperkt aantal inkomende koppelingen hebben kan, mag niet meer dan één van deze koppelingen zijn een pijplijn. Het aantal inkomende koppelingen van de takenreeks wordt niet beperkt. U mag het verbinding maken met meerdere inkomende koppelingen in de pijplijn en slaat u het runbook, maar deze mislukt wanneer deze wordt uitgevoerd.
+Hoewel een verbinding een onbeperkt aantal binnenkomende koppelingen kan hebben, kan niet meer dan een van deze koppelingen een pijp lijn zijn. Het aantal binnenkomende reeks koppelingen is niet beperkt. U mag de verbinding met meerdere inkomende pijplijn koppelingen maken en het runbook opslaan, maar dit mislukt wanneer het wordt uitgevoerd.
 
-Het onderstaande voorbeeld is onderdeel van een runbook die een set van virtuele machines tijdens het downloaden van patches worden toegepast op deze machines tegelijkertijd begint. Een verbinding wordt gebruikt om ervoor te zorgen dat beide processen zijn voltooid voordat het runbook wordt hervat.
+Het onderstaande voor beeld maakt deel uit van een runbook dat een set virtuele machines start terwijl er tegelijkertijd patches worden gedownload die op deze computers moeten worden toegepast. Een verbinding wordt gebruikt om ervoor te zorgen dat beide processen zijn voltooid voordat het runbook wordt voortgezet.
 
-![De verbinding](media/automation-graphical-authoring-intro/runbook-junction.png)
+![Punt](media/automation-graphical-authoring-intro/runbook-junction.png)
 
 ### <a name="cycles"></a>Cycli
 
-Een cyclus is als een doel activiteit bevat een koppeling terug naar de bronactiviteit of naar een andere activiteit die uiteindelijk teruggekoppeld naar de bron. Cycli worden momenteel niet toegestaan in het grafisch ontwerpen. Als uw runbook een cyclus heeft, juist opgeslagen maar ontvangt een foutbericht wanneer deze wordt uitgevoerd.
+Een cyclus wordt weer gegeven wanneer een doel activiteit is gekoppeld aan de bron activiteit of naar een andere activiteit die uiteindelijk is gekoppeld aan de bron. Cycli zijn momenteel niet toegestaan in grafische ontwerpen. Als uw runbook een cyclus heeft, wordt het programma op de juiste manier opgeslagen, maar ontvangt deze een fout melding wanneer deze wordt uitgevoerd.
 
 ![Cyclus](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
-### <a name="sharing-data-between-activities"></a>Delen van gegevens tussen activiteiten
+### <a name="sharing-data-between-activities"></a>Gegevens delen tussen activiteiten
 
-Alle gegevens die wordt uitgevoerd door een activiteit met een uitgaande koppeling is geschreven naar de *gegevensbus* voor het runbook. Elke activiteit in het runbook kunt gegevens op de gegevensbus parameterwaarden vullen of opnemen in een script gebruiken. Een activiteit hebben toegang tot de uitvoer van een vorige activiteit in de werkstroom.
+Alle gegevens die worden uitgevoerd door een activiteit met een uitgaande koppeling, worden geschreven naar de *gegevensbus* voor het runbook. Elke activiteit in het runbook kan gegevens op de gegevensbus gebruiken om parameter waarden te vullen of in script code op te neemt. Een activiteit kan toegang krijgen tot de uitvoer van een vorige activiteit in de werk stroom.
 
-Hoe de gegevens worden geschreven in de gegevensbus, is afhankelijk van het type koppeling op de activiteit. Voor een **pijplijn**, de gegevens wordt uitgevoerd als veelvouden objecten. Voor een **reeks** koppeling, de gegevens wordt uitgevoerd als een matrix. Als er slechts één waarde, wordt deze uitgevoerd als een matrix van één element.
+Hoe de gegevens worden geschreven naar de gegevensbus, is afhankelijk van het type koppeling op de activiteit. Voor een **pijp lijn**worden de gegevens uitgevoerd als meerdere objecten. Voor een **sequentie** koppeling worden de gegevens uitgevoerd als een matrix. Als er slechts één waarde is, wordt deze uitgevoerd als een enkele element matrix.
 
-U kunt toegang tot gegevens op de gegevensbus met behulp van een van twee methoden. Eerst wordt met behulp van een **uitvoer van activiteit** gegevensbron voor het vullen van een parameter van een andere activiteit. Als de uitvoer een object is, kunt u één eigenschap opgeven.
+U kunt met een van de volgende twee methoden toegang krijgen tot gegevens op de gegevensbus. Maakt eerst gebruik van een gegevens bron voor **activiteit uitvoer** om een para meter van een andere activiteit te vullen. Als de uitvoer een object is, kunt u één eigenschap opgeven.
 
 ![Uitvoer van activiteit](media/automation-graphical-authoring-intro/activity-output-datasource-revised20165.png)
 
-U kunt ook ophalen met de uitvoer van een activiteit in een **PowerShell-expressie** gegevensbron of vanuit een **Werkstroomscript** activiteit met een variabele ActivityOutput. Als de uitvoer een object is, kunt u één eigenschap opgeven. ActivityOutput variabelen gebruikt u de volgende syntaxis.
+U kunt ook de uitvoer ophalen van een activiteit in een **Power shell-expressie** gegevens bron of vanuit een **werk stroom script** activiteit met een activity output-variabele. Als de uitvoer een object is, kunt u één eigenschap opgeven. Activity output-variabelen gebruiken de volgende syntaxis.
 
 ```powershell-interactive
 $ActivityOutput['Activity Label']
@@ -270,93 +270,93 @@ $ActivityOutput['Activity Label'].PropertyName
 
 ### <a name="checkpoints"></a>Controlepunten
 
-U kunt instellen [controlepunten](automation-powershell-workflow.md#checkpoints) in een grafische PowerShell Workflow-runbook door te selecteren *runbookcontrolepunt* voor elke activiteit. Dit zorgt ervoor dat een controlepunt worden ingesteld nadat de activiteit is uitgevoerd.
+U kunt [controle punten](automation-powershell-workflow.md#checkpoints) instellen in een grafisch Power shell-werk stroom-runbook door in een wille keurige activiteit een *controle punt runbook* te selecteren. Dit zorgt ervoor dat een controle punt wordt ingesteld nadat de activiteit is uitgevoerd.
 
-![Controlepunt](media/automation-graphical-authoring-intro/set-checkpoint.png)
+![Check Point](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
-Controlepunten worden alleen ingeschakeld in grafische PowerShell Workflow-runbooks, is niet beschikbaar in grafische runbooks. Als het runbook maakt gebruik van Azure-cmdlets, moet u een controlepunt activiteit met een Connect-AzureRmAccount volgen in het geval het runbook wordt onderbroken en opnieuw wordt opgestart vanaf dit controlepunt op een andere werknemer.
+Controle punten worden alleen ingeschakeld in grafische runbooks voor Power shell-werk stromen en zijn niet beschikbaar in grafische runbooks. Als het runbook gebruikmaakt van Azure-cmdlets, moet u de activiteit van een controle punt volgen met een Connect-AzureRmAccount als het runbook wordt onderbroken en opnieuw wordt gestart vanuit dit controle punt op een andere werk nemer.
 
-## <a name="authenticating-to-azure-resources"></a>Verificatie bij Azure-resources
+## <a name="authenticating-to-azure-resources"></a>Verifiëren met Azure-resources
 
-Runbooks in Azure Automation die Azure-resources beheren vereist verificatie voor Azure. De [uitvoeren als-account](automation-create-runas-account.md) (ook wel een service-principal genoemd) is de standaardmethode voor toegang tot Azure Resource Manager-resources in uw abonnement met Automation-runbooks. U kunt deze functionaliteit toevoegen aan een grafisch runbook door toe te voegen de **AzureRunAsConnection** verbindingsasset, die met behulp van PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) -cmdlet en [ Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) cmdlet toe aan het papier. Dit wordt geïllustreerd in het volgende voorbeeld:
+Runbooks in Azure Automation die Azure-resources beheren, moeten worden geverifieerd voor Azure. Het [uitvoeren als-account](automation-create-runas-account.md) (ook wel een Service-Principal genoemd) is de standaard methode voor toegang tot Azure Resource Manager resources in uw abonnement met Automation-runbooks. U kunt deze functionaliteit toevoegen aan een grafisch runbook door de **AzureRunAsConnection** -verbindings Asset toe te voegen. dit wordt met behulp van de Power shell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) cmdlet en [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) cmdlet op het canvas. Dit wordt geïllustreerd in het volgende voor beeld:
 
-![Als verificatie activiteiten uitvoeren](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
+![Run as-verificatie activiteiten](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
-De activiteit uitvoeren als-verbinding ophalen (dat wil zeggen, Get-AutomationConnection) is geconfigureerd met een constante waarde gegevensbron met de naam AzureRunAsConnection.
+De activiteit uitvoeren als-verbinding ophalen (dat wil zeggen, Get-AutomationConnection) is geconfigureerd met een gegevens bron met een constante waarde met de naam AzureRunAsConnection.
 
-![Run As-verbindingsconfiguratie](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)
+![Configuratie van run as-verbinding](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)
 
-De volgende activiteit, Connect-AzureRmAccount, voegt de geverifieerde uitvoeren als-account voor gebruik in het runbook.
+Met de volgende activiteit, Connect-AzureRmAccount, wordt het geverifieerde run as-account toegevoegd voor gebruik in het runbook.
 
 ![Connect-AzureRmAccount Parameter Set](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
 
 > [!IMPORTANT]
-> **Add-AzureRmAccount** is nu een alias voor **Connect-AzureRMAccount**. Wanneer uw bibliotheek zoeken items, als u niet ziet **Connect-AzureRMAccount**, kunt u **Add-AzureRmAccount**, of u kunt uw modules bijwerken in uw Automation-Account.
+> **Add-AzureRmAccount** is nu een alias voor **Connect-AzureRmAccount**. Als u de bibliotheek items zoekt en u geen **Connect-AzureRMAccount**ziet, kunt u **add-AzureRMAccount**gebruiken, maar u kunt ook uw modules bijwerken in uw Automation-account.
 
-Voor de parameters **APPLICATIONID**, **CERTIFICATETHUMBPRINT**, en **TENANTID** moet u de naam van de eigenschap voor het veldpad opgeven, omdat de activiteit de uitvoer van een object met meerdere eigenschappen. Anders wanneer u het runbook uit te voeren, mislukt dit proberen te verifiëren. Dit is wat u moet ten minste uw runbook met de uitvoeren als-account te verifiëren.
+Voor de para meters **APPLICATIONID**, **CERTIFICATETHUMBPRINT**en **TENANTID** moet u de naam van de eigenschap voor het pad naar het veld opgeven, omdat de activiteit een object met meerdere eigenschappen uitvoert. Anders wanneer u het runbook uitvoert, mislukt de verificatie. Dit is wat u Mini maal nodig hebt om uw runbook te verifiëren met het run as-account.
 
-Onderhouden achterwaartse compatibiliteit voor abonnees die hebben gemaakt een Automation-account met een [Azure AD-gebruikersaccount](automation-create-aduser-account.md) voor het beheren van de klassieke Azure-implementatie of voor Azure Resource Manager-resources, de methode om te verifiëren, is de De cmdlet toevoegen-Azure-account met een [referentie-element](automation-credentials.md) dat een Active Directory-gebruiker met toegang op het Azure-account vertegenwoordigt.
+Als u achterwaartse compatibiliteit wilt behouden voor abonnees die een Automation-account hebben gemaakt met behulp van een [Azure AD-gebruikers account](automation-create-aduser-account.md) voor het beheren van de klassieke Azure-implementatie of voor Azure Resource Manager resources, is de verificatie methode de cmdlet Add-AzureAccount met een [referentie-element](automation-credentials.md) dat een Active Directory gebruiker met toegang tot het Azure-account vertegenwoordigt.
 
-U kunt deze functionaliteit toevoegen aan een grafisch runbook door een referentie-element toe te voegen aan het papier gevolgd door een Add-AzureAccount-activiteit. Toevoegen-Azure-account maakt gebruik van de activiteit van de referentie voor de invoer. Dit wordt geïllustreerd in het volgende voorbeeld:
+U kunt deze functionaliteit toevoegen aan een grafisch runbook door een referentie-element toe te voegen aan het canvas gevolgd door een add-AzureAccount-activiteit. Voor de invoer van add-AzureAccount wordt de referentie activiteit gebruikt. Dit wordt geïllustreerd in het volgende voor beeld:
 
-![Verificatie-activiteiten](media/automation-graphical-authoring-intro/authentication-activities.png)
+![Verificatie activiteiten](media/automation-graphical-authoring-intro/authentication-activities.png)
 
-U moet verifiëren aan het begin van het runbook en na elk controlepunt. Dit betekent dat met het toevoegen van een activiteit toevoeging Add-AzureAccount na elke activiteit controlepunt-werkstroom. U hoeft niet een activiteit van de referentie toevoegen omdat u hetzelfde kunt gebruiken
+U moet zich bij het begin van het runbook en na elk controle punt verifiëren. Dit betekent dat u een toevoeg add-AzureAccount-activiteit toevoegt na elk controle punt-werk stroom activiteit. U hebt geen aanvullende referentie activiteit nodig, want u kunt hetzelfde gebruiken
 
 ![Uitvoer van activiteit](media/automation-graphical-authoring-intro/authentication-activity-output.png)
 
-## <a name="runbook-input-and-output"></a>Runbook invoer en uitvoer
+## <a name="runbook-input-and-output"></a>Invoer en uitvoer van Runbook
 
-### <a name="runbook-input"></a>Runbookinvoer
+### <a name="runbook-input"></a>Runbook-invoer
 
-Een runbook mogelijk invoer van een gebruiker wanneer het runbook via Azure portal wordt gestart of vanuit een ander runbook als de huidige sleutel wordt gebruikt als een onderliggend element.
-Als u een runbook dat wordt gemaakt van een virtuele machine hebt, moet u er bijvoorbeeld voor kiezen om informatie te geven, zoals de naam van de virtuele machine en andere eigenschappen telkens wanneer u het runbook start.
+Een runbook vereist mogelijk invoer van een gebruiker wanneer het runbook wordt gestart via de Azure Portal of van een ander runbook als de huidige wordt gebruikt als onderliggend element.
+Als u bijvoorbeeld een runbook hebt dat een virtuele machine maakt, moet u mogelijk informatie opgeven, zoals de naam van de virtuele machine en andere eigenschappen telkens wanneer u het runbook start.
 
-Gaat u akkoord met de invoer voor een runbook door te definiëren een of meer-invoerparameters. U opgeven waarden voor deze parameters telkens wanneer die het runbook wordt gestart. Wanneer u een runbook met de Azure-portal start, wordt u gevraagd waarden op te geven voor elk van de invoerparameters van het runbook.
+U accepteert invoer voor een runbook door een of meer invoer parameters te definiëren. Telkens wanneer het runbook wordt gestart, geeft u de waarden voor deze para meters op. Wanneer u een runbook start met de Azure Portal, wordt u gevraagd waarden op te geven voor elk van de invoer parameters van het runbook.
 
-Invoerparameters voor een runbook toegankelijk is door te klikken op de **invoer en uitvoer** op de werkbalk van het runbook.
+U kunt invoer parameters voor een runbook openen door te klikken op de knop **invoer en uitvoer** op de werk balk van runbook.
 
-Hiermee opent u de **invoer en uitvoer** besturingselement kunt u een bestaande invoerparameter bewerken of een nieuwe maken door te klikken op **invoer toevoegen**.
+Hiermee opent u het besturings element voor **invoer en uitvoer** , waar u een bestaande invoer parameter kunt bewerken of een nieuw item maakt door te klikken op **invoer toevoegen**.
 
 ![Invoer toevoegen](media/automation-graphical-authoring-intro/runbook-edit-add-input.png)
 
-Elke invoerparameter wordt gedefinieerd door de eigenschappen in de volgende tabel:
+Elke invoer parameter wordt gedefinieerd door de eigenschappen in de volgende tabel:
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
-| Name |De unieke naam van de parameter. Dit mag alleen alfanumerieke tekens en mag geen spatie bevatten. |
-| Description |Een optionele beschrijving voor de invoerparameter. |
-| Type |Het gegevenstype voor de parameterwaarde verwacht. De Azure portal biedt een juiste besturingselement voor het gegevenstype voor elke parameter tijdens het vragen om invoer. |
-| Mandatory |Hiermee geeft u op of moet een waarde worden opgegeven voor de parameter. Het runbook kan niet worden gestart als u geen waarde opgeeft voor de verplichte parameter waarmee de heeft geen standaardwaarde gedefinieerd. |
-| Default Value |Hiermee geeft u op welke waarde voor de parameter wordt gebruikt als niet is opgegeven. Dit kan ofwel Null of een specifieke waarde zijn. |
+| Naam |De unieke naam van de para meter. Dit mag alleen alfanumerieke tekens bevatten en mag geen spatie bevatten. |
+| Beschrijving |Een optionele beschrijving voor de invoer parameter. |
+| Type |Er wordt een gegevens type verwacht voor de parameter waarde. De Azure Portal biedt een geschikt besturings element voor het gegevens type voor elke para meter bij het vragen om invoer. |
+| Verplicht |Hiermee geeft u op of er een waarde moet worden opgegeven voor de para meter. Het runbook kan niet worden gestart als u geen waarde opgeeft voor elke verplichte para meter waarvoor geen standaard waarde is gedefinieerd. |
+| Default Value |Hiermee geeft u op welke waarde voor de para meter wordt gebruikt als er geen is opgegeven. Dit kan null of een specifieke waarde zijn. |
 
 ### <a name="runbook-output"></a>Runbook-uitvoer
 
-Gemaakt door elke activiteit die een uitgaande verbinding heeft geen gegevens worden opgeslagen in de [uitvoer van het runbook](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages). De uitvoer wordt opgeslagen met de runbooktaak en is beschikbaar voor een bovenliggend runbook wanneer het runbook wordt gebruikt als een onderliggend element.
+Gegevens die zijn gemaakt door een activiteit die geen uitgaande koppeling heeft, worden opgeslagen in de [uitvoer van het runbook](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages). De uitvoer wordt opgeslagen met de runbook-taak en is beschikbaar voor een bovenliggend runbook wanneer het runbook als onderliggend wordt gebruikt.
 
-## <a name="powershell-expressions"></a>PowerShell-expressies
+## <a name="powershell-expressions"></a>Power shell-expressies
 
-Een van de voordelen van het grafisch ontwerpen biedt u de mogelijkheid om het bouwen van een runbook met minimale kennis van PowerShell. Op dit moment u hoeft te weten een deel van de PowerShell al voor het invullen van bepaalde [parameterwaarden](#activities) en voor de instelling [koppelen voorwaarden](#links-and-workflow). Deze sectie bevat een korte inleiding in expressies voor gebruikers die mogelijk niet bekend bent met het PowerShell. Volledige details van PowerShell zijn beschikbaar op [met Windows PowerShell-scripts](https://technet.microsoft.com/library/bb978526.aspx).
+Een van de voor delen van het ontwerpen van grafische elementen biedt u de mogelijkheid om een runbook te bouwen met minimale kennis van Power shell. Op dit moment moet u een beetje van Power shell weten, ook als u bepaalde [parameter waarden](#activities) wilt invullen en voor het instellen van [koppelings voorwaarden](#links-and-workflow). In deze sectie vindt u een korte inleiding tot Power shell-expressies voor gebruikers die mogelijk niet bekend zijn. Volledige informatie over Power shell is beschikbaar op [Scripting met Windows Power shell](https://technet.microsoft.com/library/bb978526.aspx).
 
-### <a name="powershell-expression-data-source"></a>Gegevensbron voor PowerShell-expressie
-U kunt een PowerShell-expressie gebruiken als een gegevensbron voor het vullen van de waarde van een [activiteitsparameter](#activities) met de resultaten van enige PowerShell-code. Dit kan een enkele regel code waarmee u een eenvoudige functie of meerdere regels die bepaalde complexe logica uitvoeren. Elke uitvoer van een opdracht dat niet is toegewezen aan een variabele worden uitgevoerd in de waarde van parameter.
+### <a name="powershell-expression-data-source"></a>Gegevens bron voor Power shell-expressie
+U kunt een Power shell-expressie als gegevens bron gebruiken om de waarde van een [activiteit parameter](#activities) in te vullen met de resultaten van een Power shell-code. Dit kan een enkele regel code zijn die een eenvoudige functie of meerdere regels uitvoert waarmee complexe logica wordt uitgevoerd. Uitvoer van een opdracht die niet is toegewezen aan een variabele wordt uitgevoerd naar de parameter waarde.
 
-De volgende opdracht zou bijvoorbeeld uitvoer van de huidige datum.
+Met de volgende opdracht wordt bijvoorbeeld de huidige datum uitgevoerd.
 
-De volgende opdracht zou bijvoorbeeld uitvoer van de huidige datum.
+Met de volgende opdracht wordt bijvoorbeeld de huidige datum uitgevoerd.
 
 ```powershell-interactive
 Get-Date
 ```
 
-De volgende opdrachten opbouwen van een tekenreeks van de huidige datum en deze toewijzen aan een variabele. De inhoud van de variabele worden vervolgens naar de uitvoer verzonden
+Met de volgende opdrachten bouwt u een teken reeks vanaf de huidige datum en wijst u deze toe aan een variabele. De inhoud van de variabele wordt vervolgens naar de uitvoer verzonden
 
 ```powershell-interactive
 $string = "The current date is " + (Get-Date)
 $string
 ```
 
-De volgende opdrachten de huidige datum geëvalueerd en geretourneerd van een tekenreeks die aangeeft of de huidige dag een weekend of weekdag.
+De volgende opdrachten evalueren de huidige datum en retour neren een teken reeks die aangeeft of de huidige dag een weekend of een weekdag is.
 
 ```powershell-interactive
 $date = Get-Date
@@ -366,25 +366,25 @@ else { "Weekday" }
 
 ### <a name="activity-output"></a>Uitvoer van activiteit
 
-Gebruik de variabele $ActivityOutput met de volgende syntaxis voor het gebruik van de uitvoer van een voorgaande activiteit in het runbook.
+Als u de uitvoer van een vorige activiteit in het runbook wilt gebruiken, gebruikt u de variabele $ActivityOutput met de volgende syntaxis.
 
 ```powershell-interactive
 $ActivityOutput['Activity Label'].PropertyName
 ```
 
-Bijvoorbeeld, wellicht u een activiteit met een eigenschap die u de naam van een virtuele machine moet in dat geval kunt u de volgende expressie:
+U kunt bijvoorbeeld een activiteit hebben met een eigenschap waarvoor de naam van een virtuele machine is vereist. in dat geval kunt u de volgende expressie gebruiken:
 
 ```powershell-interactive
 $ActivityOutput['Get-AzureVm'].Name
 ```
 
-Als de eigenschap die de virtuele machine vereist in plaats van alleen een eigenschap object, zou u het gehele object met de volgende syntaxis retourneren.
+Als de eigenschap die vereist is voor het virtuele-machine object in plaats van alleen een eigenschap, zou u het gehele object retour neren met de volgende syntaxis.
 
 ```powershell-interactive
 $ActivityOutput['Get-AzureVm']
 ```
 
-U kunt de uitvoer van een activiteit ook gebruiken in een complexe expressie, zoals de volgende tekst naar de naam van de virtuele machine worden samengevoegd.
+U kunt ook de uitvoer van een activiteit gebruiken in een complexere expressie, zoals het volgende dat tekst aan de naam van de virtuele machine samenvoegt.
 
 ```powershell-interactive
 "The computer name is " + $ActivityOutput['Get-AzureVm'].Name
@@ -392,21 +392,21 @@ U kunt de uitvoer van een activiteit ook gebruiken in een complexe expressie, zo
 
 ### <a name="conditions"></a>Voorwaarden
 
-Gebruik [vergelijkingsoperators](https://technet.microsoft.com/library/hh847759.aspx) waarden vergelijken of kunt vaststellen of een waarde overeenkomt met een opgegeven patroon. Een vergelijking retourneert een waarde van $true en $false.
+Gebruik [vergelijkings operatoren](https://technet.microsoft.com/library/hh847759.aspx) om waarden te vergelijken of te bepalen of een waarde overeenkomt met een opgegeven patroon. Een vergelijking retourneert een waarde van zowel $true als $false.
 
-Bijvoorbeeld, de volgende voorwaarde wordt bepaald of de virtuele machine van een activiteit met de naam *Get-AzureVM* is momenteel *gestopt*.
+Met de volgende voor waarde wordt bijvoorbeeld bepaald of de virtuele machine van een activiteit met de naam *Get-AzureVM* momenteel is *gestopt*.
 
 ```powershell-interactive
 $ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
 ```
 
-De volgende voorwaarden controles of dezelfde virtuele machine anders dan in een staat is *gestopt*.
+Met de volgende voor waarde wordt gecontroleerd of dezelfde virtuele machine zich in een andere status bevindt dan *gestopt*.
 
 ```powershell-interactive
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-U kunt deelnemen aan meerdere voorwaarden met behulp van een [logische operator](https://technet.microsoft.com/library/hh847789.aspx) zoals **- en** of **- of**. Bijvoorbeeld, de volgende controles voorwaarde of dezelfde virtuele machine in het vorige voorbeeld heeft de status van *gestopt* of *stoppen*.
+U kunt meerdere voor waarden koppelen met behulp van een [logische operator](https://technet.microsoft.com/library/hh847789.aspx) zoals **-en** of **-of**. Met de volgende voor waarde wordt bijvoorbeeld *gecontroleerd of dezelfde*virtuele machine in het vorige voor beeld de status *beëindigd* of gestopt heeft.
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -414,15 +414,15 @@ U kunt deelnemen aan meerdere voorwaarden met behulp van een [logische operator]
 
 ### <a name="hashtables"></a>Hashtabellen
 
-[Hashtabellen](https://technet.microsoft.com/library/hh847780.aspx) zijn naam/waarde-paren die nuttig zijn voor een set waarden geretourneerd. Eigenschappen voor bepaalde activiteiten kunnen een hash-tabel in plaats van een eenvoudige waarde verwacht. U ziet ook als hash-tabel aangeduid als een woordenlijst.
+[Hashtabellen](https://technet.microsoft.com/library/hh847780.aspx) zijn naam/waarde-paren die nuttig zijn voor het retour neren van een set waarden. Eigenschappen voor bepaalde activiteiten verwachten mogelijk een hashtabel in plaats van een eenvoudige waarde. U kunt ook zien als een woorden lijst.
 
-U maakt een hash-tabel met de volgende syntaxis. Een hash-tabel kan een onbeperkt aantal vermeldingen bevatten, maar elk wordt gedefinieerd door een naam en waarde.
+U maakt een hashtabel met de volgende syntaxis. Een hashtabel kan een wille keurig aantal vermeldingen bevatten, maar deze worden gedefinieerd door een naam en een waarde.
 
 ```powershell-interactive
 @{ <name> = <value>; [<name> = <value> ] ...}
 ```
 
-De volgende expressie maakt bijvoorbeeld een hash-tabel moet worden gebruikt in de gegevensbron voor de activiteitsparameter van een die een hash-tabel met de waarden voor een zoekopdracht internet verwacht.
+Met de volgende expressie maakt u bijvoorbeeld een hashtabel die moet worden gebruikt in de gegevens bron voor een activiteit parameter waarbij een hashtabel werd verwacht met waarden voor een Internet zoekopdracht.
 
 ```powershell-interactive
 $query = "Azure Automation"
@@ -431,7 +431,7 @@ $h = @{'q'=$query; 'lr'='lang_ja';  'count'=$Count}
 $h
 ```
 
-Het volgende voorbeeld wordt de uitvoer van een activiteit met de naam *Twitter-verbinding ophalen* voor het vullen van een hash-tabel.
+In het volgende voor beeld wordt de uitvoer van een activiteit met de naam *Twitter-verbinding ophalen* gebruikt voor het vullen van een hashtabel.
 
 ```powershell-interactive
 @{'ApiKey'=$ActivityOutput['Get Twitter Connection'].ConsumerAPIKey;
@@ -445,4 +445,4 @@ Het volgende voorbeeld wordt de uitvoer van een activiteit met de naam *Twitter-
 * Zie [Mijn eerste PowerShell Workflow-runbook](automation-first-runbook-textual.md) om aan de slag te gaan met PowerShell Workflow-runbooks
 * Zie [Mijn eerste grafische runbook](automation-first-runbook-graphical.md) om aan de slag te gaan met grafische runbooks
 * Zie [Azure Automation-runbooktypen](automation-runbook-types.md) voor meer informatie over runbooktypen, hun voordelen en beperkingen
-* Zie voor meer informatie over hoe u verifieert met behulp van het Automation uitvoeren als-account, [configureren Azure uitvoeren als-Account](automation-sec-configure-azure-runas-account.md)
+* Zie [uitvoeren als-account voor Azure configureren](automation-sec-configure-azure-runas-account.md) voor meer informatie over het verifiëren met het uitvoeren als-account voor Automation.

@@ -1,17 +1,17 @@
 ---
 title: Databasedoorvoer inrichten in Azure Cosmos DB
-description: Meer informatie over het inrichten van doorvoer op databaseniveau in Azure Cosmos DB
+description: Meer informatie over het inrichten van de door Voer op database niveau in Azure Cosmos DB met behulp van Azure Portal, CLI, Power shell en diverse andere Sdk's.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 64a8bc9f4c9f5192dad22cb55cb4d2c4816d4fa5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8b64d933057b3ddb07f5f99889c7d7c23c74f545
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575144"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873655"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Door Voer in te richten op een data base in Azure Cosmos DB
 
@@ -21,7 +21,7 @@ In dit artikel wordt uitgelegd hoe u de door Voer inricht voor een data base in 
 
 ### <a id="portal-sql"></a>SQL (Core) API
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 
@@ -29,7 +29,7 @@ In dit artikel wordt uitgelegd hoe u de door Voer inricht voor een data base in 
 
    * Voer een database-id in.
    * Selecteer **Doorvoer inrichten**.
-   * Voer een doorvoer in, bijvoorbeeld 1000 RU's.
+   * Voer een doorvoer in (bijvoorbeeld 1000 RU's).
    * Selecteer **OK**.
 
     ![Schermafbeelding van het dialoogvenster Nieuwe database](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
@@ -79,6 +79,6 @@ session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisio
 Raadpleeg de volgende artikelen voor meer informatie over ingerichte door Voer in Azure Cosmos DB:
 
 * [Ingerichte door Voer voor wereld wijd schalen](scaling-throughput.md)
-* [Door Voer voor het inrichten van containers en data bases](set-throughput.md)
+* [Doorvoer voor containers en databases inrichten](set-throughput.md)
 * [Doorvoer inrichten voor een container](how-to-provision-container-throughput.md)
 * [Aanvraageenheden en doorvoer in Azure Cosmos DB](request-units.md)

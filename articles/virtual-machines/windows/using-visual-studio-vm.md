@@ -12,15 +12,15 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
-ms.date: 09/24/2019
+ms.date: 12/04/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 4b3b36f69387a6ae10a2b76154056f322fd4a41a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 25e5cda3b91dd4b14d0a3d82963404dde7a80aa4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170920"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851397"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-installatie kopieën op Azure
 Het gebruik van Visual Studio in een vooraf geconfigureerde Azure virtual machine (VM) is een snelle en eenvoudige manier om van niets naar een ontwikkel omgeving te gaan. Systeem kopieën met verschillende Visual Studio-configuraties zijn beschikbaar op de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
@@ -33,9 +33,9 @@ Nieuw bij Azure? [Maak een gratis Azure-account](https://azure.microsoft.com/fre
 ## <a name="what-configurations-and-versions-are-available"></a>Welke configuraties en versies zijn er beschikbaar?
 Installatie kopieën voor de meest recente primaire versies, Visual Studio 2019, Visual Studio 2017 en Visual Studio 2015, vindt u op de Azure Marketplace.  Voor elke uitgebrachte primaire versie ziet u de oorspronkelijke versie van ' release to Web ' (RTW) en de meest recente bijgewerkte versies.  Elk van deze versies biedt Visual Studio Enter prise en de edities van de Visual Studio-community.  Deze installatie kopieën worden minstens elke maand bijgewerkt met de nieuwste Visual Studio-en Windows-updates.  Hoewel de namen van de afbeeldingen hetzelfde blijven, bevat de beschrijving van de installatie kopie de geïnstalleerde product versie en de datum van de installatie kopie.
 
-| Release versie                                                                                                                                                | Edities              | Product versie   |
+| Release versie                                                                                                                                                | Edities              | Productversie   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: nieuwste (versie 16,3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enter prise, Community | Versie 16.3.9    |
+| [Visual Studio 2019: nieuwste (versie 16,4)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enter prise, Community | Versie 16.4.0    |
 | [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enter prise, Community | Versie 16.0.9    |
 | [Visual Studio 2017: nieuwste (versie 15,9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enter prise, Community | Versie 15.9.17   |
 | [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enter prise, Community | Versie 15.0.27  |
@@ -51,7 +51,7 @@ Elke installatie kopie bevat de aanbevolen functieset voor die Visual Studio Edi
 
 * Alle beschik bare werk belastingen, inclusief de aanbevolen optionele onderdelen van elke werk belasting
 * .NET 4.6.2-en .NET 4,7-Sdk's, doel pakketten en Ontwikkelhulpprogramma's
-* VBAF#
+* Visual F#
 * GitHub-extensie voor Visual Studio
 * LINQ to SQL-Hulpprogram Ma's
 

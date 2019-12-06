@@ -1,18 +1,18 @@
 ---
 title: BOOGCOS in Azure Cosmos DB query taal
-description: Meer informatie over SQL-systeem functie BOOGCOS in Azure Cosmos DB.
+description: Meer informatie over hoe de SQL-systeem functie BOOGCOS (arccosice) in Azure Cosmos DB de hoek in radialen retourneert, waarvan de cosinus de opgegeven numerieke expressie is
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2c9d29fba6b5dc55a98bf90cfafe0940d7bf9674
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: fd5baa3ffefb7039c40706253e633661a51150f2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348744"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873519"
 ---
 # <a name="acos-azure-cosmos-db"></a>BOOGCOS (Azure Cosmos DB)
  Retourneert de hoek, in radialen, waarvan de cosinus de opgegeven numerieke expressie is. Dit wordt ook wel de arccosinus genoemd.  

@@ -2,26 +2,23 @@
 title: Naslag informatie over micro soft Identity platform-toegangs tokens | Azure
 description: Meer informatie over toegangs tokens die worden verzonden door de Azure AD v 1.0-en micro soft Identity platform (v 2.0)-eind punten.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34548b623317eff17bcbf5a7749cd411a44bd722
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 61bcdac38b9b8765c7c3d575bb632c9291e46b90
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73935862"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845855"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Toegangs tokens van micro soft Identity platform
 
@@ -256,12 +253,12 @@ Vernieuwings tokens kunnen op elk gewenst moment ongeldig worden gemaakt of inge
 |   | Cookie op basis van wacht woorden | Token op basis van wacht woorden | Cookie op basis van niet-wacht woord | Niet-op wacht woord gebaseerde token | Vertrouwelijk client token |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | Wacht woord verloopt | Blijft actief | Blijft actief | Blijft actief | Blijft actief | Blijft actief |
-| Het wacht woord is gewijzigd door de gebruiker | Ingetrokken | Ingetrokken | Blijft actief | Blijft actief | Blijft actief |
-| Gebruiker heeft SSPR | Ingetrokken | Ingetrokken | Blijft actief | Blijft actief | Blijft actief |
-| Beheerder wacht woord opnieuw instellen | Ingetrokken | Ingetrokken | Blijft actief | Blijft actief | Blijft actief |
-| Gebruiker trekt de vernieuwings tokens in [via Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Ingetrokken | Ingetrokken | Ingetrokken | Ingetrokken | Ingetrokken |
-| De beheerder trekt alle vernieuwings tokens voor de Tenant in [via Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Ingetrokken | Ingetrokken |Ingetrokken | Ingetrokken | Ingetrokken |
-| [Eenmalige afmelding](v1-protocols-openid-connect-code.md#single-sign-out) op Internet | Ingetrokken | Blijft actief | Ingetrokken | Blijft actief | Blijft actief |
+| Het wacht woord is gewijzigd door de gebruiker | Revoked | Revoked | Blijft actief | Blijft actief | Blijft actief |
+| Gebruiker heeft SSPR | Revoked | Revoked | Blijft actief | Blijft actief | Blijft actief |
+| Beheerder wacht woord opnieuw instellen | Revoked | Revoked | Blijft actief | Blijft actief | Blijft actief |
+| Gebruiker trekt de vernieuwings tokens in [via Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Revoked | Revoked | Revoked | Revoked | Revoked |
+| De beheerder trekt alle vernieuwings tokens voor de Tenant in [via Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Revoked | Revoked |Revoked | Revoked | Revoked |
+| [Eenmalige afmelding](v1-protocols-openid-connect-code.md#single-sign-out) op Internet | Revoked | Blijft actief | Revoked | Blijft actief | Blijft actief |
 
 > [!NOTE]
 > Een ' niet-wacht woord op basis van ' is een aanmelding waarbij de gebruiker geen wacht woord heeft opgegeven om deze op te halen. U kunt bijvoorbeeld uw gezicht gebruiken met Windows Hello, een FIDO2-sleutel of een pincode.

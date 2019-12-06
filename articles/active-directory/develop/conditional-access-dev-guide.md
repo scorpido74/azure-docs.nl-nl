@@ -2,7 +2,6 @@
 title: Ontwikkelaars richtlijnen voor voorwaardelijke toegang Azure Active Directory
 description: Richt lijnen voor ontwikkel aars en scenario's voor voorwaardelijke toegang tot Azure AD
 services: active-directory
-keywords: ''
 author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
@@ -11,17 +10,15 @@ ms.date: 02/28/2019
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91947c243b521e970a89152f76abe9a99142b89d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 69fcb50cb8273fa9e6606e1d071249ed17c78786
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374008"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843730"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Ontwikkelaars richtlijnen voor voorwaardelijke toegang Azure Active Directory
 
@@ -79,7 +76,7 @@ Een app kan hun gebruikers verwachten alle beleids regels te voldoen die zijn in
 
 Voor verschillende app-topologieën wordt een beleid voor voorwaardelijke toegang geëvalueerd wanneer de sessie tot stand is gebracht. Als beleid voor voorwaardelijke toegang wordt toegepast op de granulatie van apps en services, is het punt waarop het wordt aangeroepen, afhankelijk van het scenario dat u wilt uitvoeren.
 
-Als uw app probeert toegang te krijgen tot een service met beleid voor voorwaardelijke toegang, kan er een uitdaging voor voorwaardelijke toegang optreden. Deze uitdaging wordt gecodeerd in de para meter `claims`, die wordt geleverd in een reactie van Azure AD. Hier volgt een voor beeld van deze Challenge-para meter: 
+Als uw app probeert toegang te krijgen tot een service met beleid voor voorwaardelijke toegang, kan er een uitdaging voor voorwaardelijke toegang optreden. Deze uitdaging wordt gecodeerd in de para meter `claims` die wordt geleverd in een antwoord van Azure AD. Hier volgt een voor beeld van deze Challenge-para meter: 
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -114,7 +111,7 @@ De eerste token aanvraag voor web API 1 vraagt niet de eind gebruiker om multi-f
 Azure AD retourneert een HTTP-antwoord met een aantal interessante gegevens:
 
 > [!NOTE]
-> In dit geval is dit een multi-factor Authentication-fout beschrijving, maar er is een breed scala van `interaction_required` mogelijk die betrekking hebben op voorwaardelijke toegang.
+> In dit geval is dit een multi-factor Authentication-fout beschrijving, maar er is een breed scala aan `interaction_required` dat betrekking heeft op voorwaardelijke toegang.
 
 ```
 HTTP 400; Bad Request
@@ -123,7 +120,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 ```
 
-In Web API 1 ondervangen we de fout `error=interaction_required` en sturen we de `claims`-uitdaging terug naar de desktop-app. Op dat moment kan de bureau blad-app een nieuwe `acquireToken()` aanroepen en de `claims`challenge toevoegen als een extra query teken reeks parameter. Voor deze nieuwe aanvraag moet de gebruiker multi-factor Authentication uitvoeren en dit nieuwe token vervolgens terugsturen naar Web API 1 en de namens-stroom volt ooien.
+In Web API 1 ondervangen we de fout `error=interaction_required`en sturen we de `claims` uitdaging terug naar de desktop-app. Op dat moment kan de bureau blad-app een nieuwe `acquireToken()` oproep maken en de `claims`uitdaging toevoegen als een extra query teken reeks parameter. Voor deze nieuwe aanvraag moet de gebruiker multi-factor Authentication uitvoeren en dit nieuwe token vervolgens terugsturen naar Web API 1 en de namens-stroom volt ooien.
 
 Zie het voor [beeld van .net-code](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca)als u dit scenario wilt uitproberen. Hierin ziet u hoe u de claim Challenge teruggeeft van Web API 1 naar de systeem eigen app en een nieuwe aanvraag maakt in de client-app.
 
@@ -135,7 +132,7 @@ We gaan ervan uit dat we Web Service A en B en Web Service B hebben toegepast op
 
 ![App toegang tot een stroom diagram met meerdere services](./media/conditional-access-dev-guide/app-accessing-multiple-services-scenario.png)
 
-Als de app aanvankelijk een token aanvraagt voor webservices, roept de eind gebruiker het beleid voor voorwaardelijke toegang niet aan. Hierdoor kan de app-ontwikkelaar de ervaring van de eind gebruiker beheren en kan het beleid voor voorwaardelijke toegang niet worden opgeroepen in alle gevallen. Het lastigste geval is als de app vervolgens een token aanvraagt voor Web Service B. Op dit moment moet de eind gebruiker voldoen aan het beleid voor voorwaardelijke toegang. Wanneer de app probeert te `acquireToken`, kan de volgende fout worden gegenereerd (zoals in het volgende diagram wordt weer gegeven):
+Als de app aanvankelijk een token aanvraagt voor webservices, roept de eind gebruiker het beleid voor voorwaardelijke toegang niet aan. Hierdoor kan de app-ontwikkelaar de ervaring van de eind gebruiker beheren en kan het beleid voor voorwaardelijke toegang niet worden opgeroepen in alle gevallen. Het lastigste geval is als de app vervolgens een token aanvraagt voor Web Service B. Op dit moment moet de eind gebruiker voldoen aan het beleid voor voorwaardelijke toegang. Wanneer de app probeert te `acquireToken`, kan de volgende fout worden gegenereerd (Zie het volgende diagram):
 
 ```
 HTTP 400; Bad Request
@@ -146,15 +143,15 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![App toegang tot meerdere services die een nieuw token aanvragen](./media/conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-Als de app gebruikmaakt van de ADAL-bibliotheek, wordt een fout bij het ophalen van het token altijd opnieuw geprobeerd. Wanneer deze interactieve aanvraag plaatsvindt, heeft de eind gebruiker de mogelijkheid om te voldoen aan de voorwaardelijke toegang. Dit geldt alleen als de aanvraag een `AcquireTokenSilentAsync` of `PromptBehavior.Never` is. in dat geval moet de app een interactieve ```AcquireToken```-aanvraag uitvoeren om de eind gebruiker in staat te stellen om te voldoen aan het beleid.
+Als de app gebruikmaakt van de ADAL-bibliotheek, wordt een fout bij het ophalen van het token altijd opnieuw geprobeerd. Wanneer deze interactieve aanvraag plaatsvindt, heeft de eind gebruiker de mogelijkheid om te voldoen aan de voorwaardelijke toegang. Dit geldt alleen als de aanvraag een `AcquireTokenSilentAsync` of `PromptBehavior.Never` is in welk geval de app een interactieve ```AcquireToken``` aanvraag moet uitvoeren om de eind gebruiker te voorzien van de kans op naleving van het beleid.
 
 ## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scenario: een app met één pagina (SPA) met behulp van ADAL. js
 
 In dit scenario laten we de zaak door lopen wanneer we een app met één pagina (SPA) hebben, met behulp van ADAL. js voor het aanroepen van een beveiligde web-API met voorwaardelijke toegang. Dit is een eenvoudige architectuur, maar er zijn enkele nuances die rekening moeten houden bij het ontwikkelen van voorwaardelijke toegang.
 
-In ADAL. js zijn er een aantal functies die tokens verkrijgen: `login()`, `acquireToken(...)`, `acquireTokenPopup(…)` en `acquireTokenRedirect(…)`.
+In ADAL. js zijn er een aantal functies die tokens verkrijgen: `login()`, `acquireToken(...)`, `acquireTokenPopup(…)`en `acquireTokenRedirect(…)`.
 
-* `login()` verkrijgt een ID-token via een interactieve aanmeldings aanvraag, maar krijgt geen toegangs tokens voor een service (inclusief een beveiligde web-API met voorwaardelijke toegang).
+* `login()` haalt een ID-token op via een interactieve aanmeldings aanvraag, maar krijgt geen toegangs tokens voor een service (inclusief een beveiligde web-API met voorwaardelijke toegang).
 * `acquireToken(…)` kan vervolgens worden gebruikt om een toegangs token op de achtergrond te verkrijgen, wat betekent dat de gebruikers interface in geen enkele omstandigheid wordt weer gegeven.
 * `acquireTokenPopup(…)` en `acquireTokenRedirect(…)` worden beide gebruikt voor het interactief aanvragen van een token voor een bron, wat betekent dat ze altijd de aanmeldings GEBRUIKERSINTERFACE weer geven.
 
@@ -162,7 +159,7 @@ Wanneer een app een toegangs token nodig heeft om een web-API aan te roepen, pro
 
 ![App met één pagina met behulp van een ADAL-stroom diagram](./media/conditional-access-dev-guide/spa-using-adal-scenario.png)
 
-Laten we een voor beeld bekijken met ons scenario voor voorwaardelijke toegang. De eind gebruiker heeft alleen op de site gelandd en heeft geen sessie. We voeren een `login()`-aanroep uit, u kunt een ID-Token ophalen zonder multi-factor Authentication. Vervolgens komt de gebruiker voor een knop die vereist dat de app gegevens van een web-API aanvraagt. De app probeert een `acquireToken()`-aanroep uit te voeren, maar is mislukt omdat de gebruiker nog geen multi-factor Authentication heeft uitgevoerd en moet voldoen aan het beleid voor voorwaardelijke toegang.
+Laten we een voor beeld bekijken met ons scenario voor voorwaardelijke toegang. De eind gebruiker heeft alleen op de site gelandd en heeft geen sessie. Er wordt een `login()`-aanroep uitgevoerd, een ID-Token ophalen zonder multi-factor Authentication. Vervolgens komt de gebruiker voor een knop die vereist dat de app gegevens van een web-API aanvraagt. De app probeert een `acquireToken()` aanroep uit te voeren, maar mislukt omdat de gebruiker nog geen multi-factor Authentication heeft uitgevoerd en moet voldoen aan het beleid voor voorwaardelijke toegang.
 
 Azure AD stuurt de volgende HTTP-reactie terug:
 
@@ -172,7 +169,7 @@ error=interaction_required
 error_description=AADSTS50076: Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to access '<Web API App/Client ID>'.
 ```
 
-De `error=interaction_required` moet door de app worden onderschept. De toepassing kan vervolgens een `acquireTokenPopup()` of `acquireTokenRedirect()` gebruiken op dezelfde resource. De gebruiker is gedwongen een multi-factor Authentication uit te voeren. Nadat de gebruiker de multi-factor Authentication heeft voltooid, wordt er door de app een nieuw toegangs token uitgegeven voor de aangevraagde resource.
+Onze app moet de `error=interaction_required`opvangen. De toepassing kan vervolgens een `acquireTokenPopup()` of `acquireTokenRedirect()` gebruiken in dezelfde resource. De gebruiker is gedwongen een multi-factor Authentication uit te voeren. Nadat de gebruiker de multi-factor Authentication heeft voltooid, wordt er door de app een nieuw toegangs token uitgegeven voor de aangevraagde resource.
 
 Als u dit scenario wilt uitproberen, raadpleegt u ons [js Spa-code voorbeeld](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Dit code voorbeeld maakt gebruik van het beleid voor voorwaardelijke toegang en de Web-API die u eerder hebt geregistreerd met een JS SPA om dit scenario te demonstreren. Hier ziet u hoe u de claim Challenge goed kunt afhandelen en een toegangs token krijgt dat kan worden gebruikt voor uw web-API. U kunt ook het algemene [hoek. js-code voorbeeld](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) uitchecken voor hulp bij een hoek Spa
 

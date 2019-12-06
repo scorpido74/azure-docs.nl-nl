@@ -3,16 +3,16 @@ title: Begrijpen hoe metrische waarschuwingen werken in Azure Monitor.
 description: Bekijk een overzicht van wat u met metrische waarschuwingen kunt doen en hoe ze werken in Azure Monitor.
 author: rboucher
 ms.author: robb
-ms.date: 11/18/2019
+ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: aa54b9ce23ffab266ed6403e3525ae1290d99cec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775718"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850054"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe metrische waarschuwingen werken in Azure Monitor
 
@@ -125,7 +125,7 @@ Het verhogen van de doorlopende Peri Oden en het aantal schendingen kan er ook t
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Bewaking op schaal met behulp van metrische waarschuwingen in Azure Monitor
 
-Tot nu toe hebt u gezien hoe één metrische waarschuwing kan worden gebruikt om een of meer metrische time-series te bewaken die betrekking hebben op één Azure-resource. Vaak wilt u dezelfde waarschuwings regel op veel resources Toep assen. Azure Monitor biedt ook ondersteuning voor het bewaken van meerdere resources met één metrische waarschuwings regel. Deze functie wordt momenteel alleen ondersteund op virtuele machines. Daarnaast kunt u met één metrische waarschuwing resources in één Azure-regio bewaken.
+Tot nu toe hebt u gezien hoe één metrische waarschuwing kan worden gebruikt om een of meer metrische time-series te bewaken die betrekking hebben op één Azure-resource. Vaak wilt u dezelfde waarschuwings regel op veel resources Toep assen. Azure Monitor biedt ook ondersteuning voor het bewaken van meerdere resources met één metrische waarschuwings regel. Deze functie wordt momenteel alleen ondersteund op virtuele machines, SQL server-data bases, elastische Pools van SQL Server en data Box edge-apparaten. Daarnaast kunt u met één metrische waarschuwing resources in één Azure-regio bewaken.
 
 U kunt op een van de volgende drie manieren het bewakings bereik opgeven voor één metrische waarschuwing:
 

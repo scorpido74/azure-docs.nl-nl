@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d6a87b5797ea5c8f4ac116d6df9e6a48204f1fd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381903"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848507"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Gebruik van de verificatie methoden & Insights (preview-versie)
 
@@ -27,17 +27,17 @@ Gebruik & Insights maakt het mogelijk om te begrijpen hoe verificatie methoden v
 De volgende rollen hebben toegang tot het gebruik en inzichten:
 
 - Globale beheerder
-- Beveiligings lezer
+- Beveiligingslezer
 - Beveiligingsbeheerder
 - Rapport lezer
 
 Er is geen aanvullende licentie vereist voor toegang tot gebruik en inzichten. De licentie gegevens voor Azure Multi-Factor Authentication en self-service voor het opnieuw instellen van wacht woorden (SSPR) zijn te vinden op de [Azure Active Directory-prijs site](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="how-it-works"></a>How it works (Engelstalig artikel)
+## <a name="how-it-works"></a>Het werkt als volgt
 
 Voor toegang tot het gebruik van de verificatie methode en inzichten:
 
-1. Blader naar de [Azure-portal](https://portal.azure.com).
+1. Blader naar [Azure Portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory** > **wacht woord opnieuw instellen** > **gebruik & inzichten**.
 1. Vanuit de overzichten van de **registratie** of het **gebruik** kunt u ervoor kiezen om de vooraf gefilterde rapporten te openen om te filteren op basis van uw behoeften.
 

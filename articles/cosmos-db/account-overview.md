@@ -1,6 +1,6 @@
 ---
 title: Werken met Azure Cosmos DB accounts
-description: In dit artikel wordt beschreven hoe u Azure Cosmos DB-accounts maakt en gebruikt
+description: In dit artikel wordt beschreven hoe u Azure Cosmos-accounts maakt en gebruikt. Ook wordt de hiërarchie van elementen in een Azure Cosmos-account weer gegeven
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 57b2cffbf8085e6d393765190a6dfc2dead51625
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d29ed68b2945b2473b33aa88176e6f5d832a0fba
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757096"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872261"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Werken met een Azure Cosmos-account
 

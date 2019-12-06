@@ -1,22 +1,22 @@
 ---
-title: Windows-verificatie en Azure MFA-Server - Azure Active Directory
+title: Windows-verificatie en Azure MFA-server-Azure Active Directory
 description: Leer hoe u Windows-verificatie en Azure Multi-Factor Authentication-server implementeert.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa52dcf08a5e4b152d9fe0db36710e41a5a79fe7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: faab28a714b1a62e1e34de5b07119aa3018db24e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057322"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847966"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows-verificatie en Azure Multi-Factor Authentication-server
 
@@ -27,15 +27,15 @@ Gebruik de Windows-verificatiesectie van de Azure Multi-Factor Authentication-se
 * Goedgekeurde IP-adressen is afhankelijk van de vraag of de toepassing de client-IP kan aanbieden bij de verificatie. Momenteel wordt alleen Terminal Services ondersteund.  
 
 > [!IMPORTANT]
-> Vanaf 1 juli 2019, zal Microsoft MFA-Server niet meer bieden voor nieuwe implementaties. Nieuwe klanten die willen graag meervoudige verificatie van gebruikers vereisen moeten cloud-gebaseerde Azure multi-factor Authentication gebruiken. Bestaande klanten die vóór 1 juli MFA-Server hebben geactiveerd, worden kunnen de nieuwste versie downloaden door toekomstige updates en zoals gebruikelijk activeringsreferenties genereren.
+> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
 
 > [!NOTE]
 > Deze functie wordt niet ondersteund om Terminal Services op Windows Server 2012 R2 te beveiligen.
 
-## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Gebruik de volgende procedure voor het beveiligen van een toepassing met Windows-verificatie,
+## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Als u een toepassing met Windows-verificatie wilt beveiligen, gebruikt u de volgende procedure:
 
 1. Klik in de Azure Multi-Factor Authentication-server op het pictogram Windows-authenticatie.
-   ![Windows-verificatie in de MFA-Server](./media/howto-mfaserver-windows/windowsauth.png)
+   Windows-verificatie in MFA-server ![](./media/howto-mfaserver-windows/windowsauth.png)
 2. Schakel het selectievakje **Windows-verificatie** in. Dit selectievakje is standaard uitgeschakeld.
 3. Op het tabblad Toepassingen kan de beheerder een of meer toepassingen configureren voor Windows-verificatie.
 4. Selecteer een server of toepassing. Geef op of de server/toepassing is ingeschakeld. Klik op **OK**.

@@ -1,17 +1,17 @@
 ---
 title: Aliasing in Azure Cosmos DB
-description: Meer informatie over alias waarden in Azure Cosmos DB SQL-query's
+description: Meer informatie over het gebruik van aliasing in Azure Cosmos DB SQL-query's om twee eigenschappen met dezelfde naam te onderscheiden
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3b17cbc7710647b1e1875025a1db1849034ec1dc
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 74849eec4c5808a584894321269c49c41f0b8a5c
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002071"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873468"
 ---
 # <a name="aliasing-in-azure-cosmos-db"></a>Aliasing in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ U kunt expliciet alias waarden in query's. Als een query twee eigenschappen met 
 
 ## <a name="examples"></a>Voorbeelden
 
-Het sleutel woord als dat wordt gebruikt voor aliasing is optioneel, zoals wordt weer gegeven in het volgende voor beeld wanneer `NameInfo`de tweede waarde wordt geprojecteerd als:
+Het sleutel woord als dat wordt gebruikt voor aliasing is optioneel, zoals wordt weer gegeven in het volgende voor beeld wanneer u de tweede waarde als `NameInfo`projecteert:
 
 ```sql
     SELECT 
@@ -29,7 +29,7 @@ Het sleutel woord als dat wordt gebruikt voor aliasing is optioneel, zoals wordt
     WHERE f.id = "AndersenFamily"
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [{

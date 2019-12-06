@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: cfe0caaf199821358f8a66ac65ae75c38336c725
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd3e33fde3f4249064bfbe1973ee95f680630673
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228098"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851159"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Privé verbinding maken met een opslag account met behulp van een persoonlijk Azure-eind punt
 Persoonlijk Azure-eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen.
@@ -24,7 +24,7 @@ In deze Quick Start leert u hoe u een virtuele machine maakt in een virtueel Azu
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-vm"></a>Een virtuele machine maken
+## <a name="create-a-vm"></a>Een VM maken
 In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw persoonlijke koppelings bron (een opslag account in dit voor beeld).
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
@@ -62,7 +62,7 @@ In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de
     | Naam van de virtuele machine | Voer *myVm*in. |
     | Regio | Selecteer **WestCentralUS**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | Installatiekopie | Selecteer **Windows Server 2019 Data Center**. |
+    | afbeelding | Selecteer **Windows Server 2019 Data Center**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
     | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
@@ -170,9 +170,6 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 In deze sectie maakt u een particuliere verbinding met het opslag account met behulp van het persoonlijke eind punt.
 
-> [!IMPORTANT]
-> De DNS-configuratie voor opslag moet hand matig worden aangepast aan het hosts-bestand om de FQDN van het specifieke account op te slaan. Wijzig het volgende bestand met beheerders machtigingen voor Windows: c:\Windows\System32\Drivers\etc\hosts of Linux bestand/etc/hosts bevatten de DNS-informatie voor het account uit de vorige stap in de volgende indeling [privé IP-adres] myaccount.blob.core.windows.net
-
 1. Open Power shell in de Extern bureaublad van *myVM*.
 2. Voer `nslookup mystorageaccount.blob.core.windows.net` u een bericht ontvangt dat er ongeveer als volgt uitziet:
     ```azurepowershell
@@ -187,9 +184,9 @@ In deze sectie maakt u een particuliere verbinding met het opslag account met be
 4. Selecteer **opslag accounts** met de rechter muisknop.
 5. Selecteer **verbinding maken met een Azure-opslag**.
 6. Selecteer **een Connection String gebruiken**.
-7. Selecteer **Volgende**.
+7. Selecteer **Next**.
 8. Voer de connection string in door de gegevens die eerder zijn gekopieerd te plakken.
-9. Selecteer **Volgende**.
+9. Selecteer **Next**.
 10. Selecteer **Verbinden**.
 11. Door de BLOB-containers bladeren vanuit mystorageaccount 
 12. Eventueel Maak mappen en/of upload bestanden naar *mystorageaccount*. 

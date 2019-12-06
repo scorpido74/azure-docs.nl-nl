@@ -2,28 +2,24 @@
 title: Meer informatie over de autorisatie protocollen die worden ondersteund door het micro soft Identity platform | Azure
 description: Een hand leiding voor OAuth 2,0 en OpenID Connect Connect-protocollen die worden ondersteund door het micro soft Identity platform-eind punt.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 446d7178973c1d43d55ff89c429b05c2a10118ba
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 50f2b4d5da2cdda35de0adc5dc646065f2b64a41
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835289"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844699"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Micro soft Identity platform-protocollen
 
@@ -48,7 +44,7 @@ In bijna alle OAuth 2,0-en OpenID Connect Connect-stromen zijn er vier partijen 
 Elke app die zowel privé-als werk-of school accounts wil accepteren, moet worden geregistreerd via de **app-registraties** ervaring in de [Azure Portal](https://aka.ms/appregistrations) voordat deze gebruikers kunnen worden ondertekend met OAuth 2,0 of OpenID Connect Connect. Tijdens het registratie proces van de app worden een aantal waarden verzameld en toegewezen aan uw app:
 
 * Een **toepassings-id** waarmee uw app uniek wordt geïdentificeerd
-* Een omleidings- **URI** (optioneel) die kan worden gebruikt om antwoorden terug te sturen naar uw app
+* Een **omleidings-URI** (optioneel) die kan worden gebruikt om antwoorden terug te sturen naar uw app
 * Een paar andere scenario-specifieke waarden.
 
 Zie [Een app registreren](quickstart-register-app.md) voor meer informatie.
@@ -62,9 +58,9 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-Waarbij de `{tenant}` kan een van vier verschillende waarden aannemen:
+Waar de `{tenant}` een van de vier verschillende waarden kan hebben:
 
-| Waarde | Description |
+| Waarde | Beschrijving |
 | --- | --- |
 | `common` | Hiermee kunnen gebruikers met persoonlijke micro soft-accounts en werk-of school accounts van Azure AD zich aanmelden bij de toepassing. |
 | `organizations` | Hiermee kunnen alleen gebruikers met werk-of school accounts van Azure AD zich aanmelden bij de toepassing. |

@@ -4,7 +4,7 @@ description: Details verzamelen over alle virtuele machines in een abonnement me
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
-manager: ???
+manager: dcscontentpm
 editor: v-miegge
 tags: azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: d3931d2affd77ce53b6ace9cc043e0272eaaf954
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b03ac071ba508955d07002fc55dc96e007dfc2d6
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040083"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873961"
 ---
 # <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Details verzamelen over alle virtuele machines in een abonnement met Power shell
 
@@ -70,12 +70,12 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>Uitleg van het script
-In dit script worden de volgende opdrachten gebruikt om een CSV-export van de gegevens van Vm's in een abonnement te maken. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt om een CSV-export van de gegevens van Vm's in een abonnement te maken. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 |Opdracht|Opmerkingen|
 |-|-|
 |[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Hiermee stelt u de Tenant, het abonnement en de omgeving in voor cmdlets die moeten worden gebruikt in de huidige sessie.|
-|[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Hiermee worden de eigenschappen van een virtuele machine opgehaald.|
+|[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Hiermee haalt u de eigenschappen van een virtuele machine op.|
 |[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Hiermee haalt u een openbaar IP-adres op.|
 |[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Hiermee wordt een netwerk interface opgehaald.|
 

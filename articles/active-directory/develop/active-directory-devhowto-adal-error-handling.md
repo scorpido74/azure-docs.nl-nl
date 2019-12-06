@@ -2,25 +2,22 @@
 title: Best practices voor het afhandelen van de aanbevolen procedures voor Azure AD Authentication Library (ADAL)-clients
 description: Biedt richt lijnen voor het afhandelen van fouten en aanbevolen procedures voor ADAL-client toepassingen.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7008a5909d8f530920628125fec1b826be3f984
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 04ffeb85dc424396593d13f2cdc2681e26bd2db3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374193"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845192"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Aanbevolen procedures voor het afhandelen van de Azure Active Directory Authentication Library (ADAL)-clients
 
@@ -52,7 +49,7 @@ Er is een set fouten die door het besturings systeem wordt gegenereerd. hiervoor
 
 Er zijn in het algemeen twee situaties met AcquireTokenSilent-fouten:
 
-| Casu | Beschrijving |
+| Case | Beschrijving |
 |------|-------------|
 | Voor **Beeld 1**: fout kan worden omgezet met een interactieve aanmelding | Voor fouten die zijn veroorzaakt door een gebrek aan geldige tokens is een interactieve aanvraag nood zakelijk. Voor het opzoeken van de cache en een ongeldig/verlopen vernieuwings token is een AcquireToken-aanroep vereist om het probleem op te lossen.<br><br>In deze gevallen moet de eind gebruiker worden gevraagd zich aan te melden. De toepassing kan ervoor kiezen om direct een interactieve aanvraag te doen, nadat de interactie tussen de eind gebruiker (bijvoorbeeld een aanmeldings knop) of hoger is. De keuze is afhankelijk van het gewenste gedrag van de toepassing.<br><br>Zie de code in de volgende sectie voor dit specifieke geval en de fouten die het probleem vaststellen.|
 | **Case 2**: fout kan niet worden omgezet met een interactieve aanmelding | Het probleem wordt niet opgelost met het uitvoeren van een interactieve AcquireToken-aanvraag voor netwerk-en tijdelijke/tijdelijke fouten of andere storingen. Onnodige prompts voor interactieve aanmelding kunnen ook de voor uitzichten van de eind gebruikers. ADAL probeert automatisch één nieuwe poging uit te voeren voor de meeste fouten in AcquireTokenSilent-fouten.<br><br>De client toepassing kan ook op een later tijdstip proberen een nieuwe poging uit te voeren, maar wanneer en hoe afhankelijk is van het gedrag van de toepassing en de gewenste ervaring van de eind gebruiker. De toepassing kan bijvoorbeeld een AcquireTokenSilent opnieuw proberen na een paar minuten of als reactie op de actie van de eind gebruiker. Een onmiddellijke nieuwe poging leidt ertoe dat de toepassing wordt beperkt en niet wordt geprobeerd.<br><br>Een volgende poging mislukt met dezelfde fout betekent niet dat de client een interactieve aanvraag moet doen met behulp van AcquireToken, omdat de fout niet wordt opgelost.<br><br>Zie de code in de volgende sectie voor dit specifieke geval en de fouten die het probleem vaststellen. |
@@ -61,8 +58,8 @@ Er zijn in het algemeen twee situaties met AcquireTokenSilent-fouten:
 
 De volgende richt lijnen bevatten voor beelden voor het afhandelen van fouten in combi natie met ADAL-methoden: 
 
-- acquireTokenSilentAsync(...)
-- acquireTokenSilentSync(...) 
+- acquireTokenSilentAsync(…)
+- acquireTokenSilentSync(…) 
 - [afgeschaft] acquireTokenSilent (...)
 - [afgeschaft] acquireTokenByRefreshToken (...) 
 
@@ -105,7 +102,7 @@ catch (AdalException e) {
 
 De volgende richt lijnen bevatten voor beelden voor het afhandelen van fouten in combi natie met ADAL-methoden: 
 
-- acquireTokenSilentSync(...)
+- acquireTokenSilentSync(…)
 - acquireTokenSilentAsync(...)
 - [afgeschaft] acquireTokenSilent (...)
 
@@ -141,7 +138,7 @@ public void onError(Exception e) {
 
 De volgende richt lijnen bevatten voor beelden voor het afhandelen van fouten in combi natie met ADAL-methoden: 
 
-- acquireTokenSilentWithResource(...)
+- acquireTokenSilentWithResource(…)
 
 De code wordt als volgt geïmplementeerd:
 
@@ -211,7 +208,7 @@ Fout afhandeling in systeem eigen toepassingen kan in twee gevallen worden gedef
 
 De volgende richt lijnen bevatten voor beelden van fout afhandeling in combi natie met alle niet-Silent AcquireToken (...) ADAL-methoden, *met uitzonde ring*van: 
 
-- AcquireTokenAsync(..., IClientAssertionCertification, ...)
+- AcquireTokenAsync(…, IClientAssertionCertification, …)
 - AcquireTokenAsync(..., ClientCredential, ...)
 - AcquireTokenAsync(..., ClientAssertion, ...)
 - AcquireTokenAsync (..., UserAssertion,...)   
@@ -255,7 +252,7 @@ catch (AdalException e) {
 
 De volgende richt lijnen bevatten voor beelden voor het afhandelen van fouten in combi natie met ADAL-methoden: 
 
-- acquireToken (..., PromptBehavior. Never)
+- acquireToken(…, PromptBehavior.Never)
 
 De code wordt als volgt geïmplementeerd:
 
@@ -347,7 +344,7 @@ Als u een .NET-Web-app bouwt die aanroepen een token met een autorisatie code vo
 
 De volgende richt lijnen bevatten voor beelden voor het afhandelen van fouten in combi natie met ADAL-methoden: 
 
-- AcquireTokenByAuthorizationCodeAsync(...)
+- AcquireTokenByAuthorizationCodeAsync(…)
 
 De code wordt als volgt geïmplementeerd:
 
@@ -407,7 +404,7 @@ AuthContext.acquireToken(…, function(error, errorDesc, token) {
 
 Als u een service-naar-service-toepassing bouwt die gebruikmaakt van AcquireToken, zijn er enkele belang rijke fouten die de code moet verwerken. De enige keer dat er een fout optreedt, is het retour neren van de fout terug naar de aanroepende app (voor namens de cases) of een strategie voor opnieuw proberen toe te passen. 
 
-#### <a name="all-scenarios"></a>Alle scenario's
+#### <a name="all-scenarios"></a>Alle scenario 's
 
 Voor *alle* scenario's voor service-naar-service-toepassingen, met inbegrip van namens-van:
 
@@ -416,9 +413,9 @@ Voor *alle* scenario's voor service-naar-service-toepassingen, met inbegrip van 
 
 De volgende richt lijnen bevatten voor beelden voor het afhandelen van fouten in combi natie met ADAL-methoden: 
 
-- AcquireTokenAsync(..., IClientAssertionCertification, ...)
-- AcquireTokenAsync(...,ClientCredential, ...)
-- AcquireTokenAsync(...,ClientAssertion, ...)
+- AcquireTokenAsync(…, IClientAssertionCertification, …)
+- AcquireTokenAsync(…,ClientCredential, …)
+- AcquireTokenAsync(…,ClientAssertion, …)
 - AcquireTokenAsync(...,UserAssertion, ...)
 
 De code wordt als volgt geïmplementeerd:
@@ -444,7 +441,7 @@ Voor scenario's met *betrekking* tot service-naar-service-toepassingen.
 
 De volgende richt lijnen bevatten voor beelden voor het afhandelen van fouten in combi natie met ADAL-methoden: 
 
-- AcquireTokenAsync(..., UserAssertion, ...)
+- AcquireTokenAsync(…, UserAssertion, …)
 
 De code wordt als volgt geïmplementeerd:
 
@@ -577,7 +574,8 @@ window.Logging = {
     }
 };
 ```
-## <a name="related-content"></a>Gerelateerde inhoud
+
+## <a name="related-content"></a>Verwante inhoud
 
 * [Hand leiding voor ontwikkel aars van Azure AD][AAD-Dev-Guide]
 * [Azure AD-verificatie bibliotheken][AAD-Auth-Libraries]
@@ -586,7 +584,7 @@ window.Logging = {
 
 Gebruik de volgende opmerkingen om feedback te geven en ons te helpen bij het verfijnen en vormen van onze inhoud.
 
-[de knop Aanmelden met Microsoft ![Shows][AAD-Sign-In]][AAD-Sign-In]
+[![toont de knop Aanmelden met Microsoft][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md

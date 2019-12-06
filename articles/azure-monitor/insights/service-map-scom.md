@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor voor VM's integratie met System Center Operations Manager | Microsoft Docs
+title: Azure Monitor voor VM's kaart integreren met Operations Manager | Microsoft Docs
 description: Azure Monitor voor VM's detecteert automatisch toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. In dit artikel wordt beschreven hoe u met de kaart functie automatisch gedistribueerde toepassings diagrammen maakt in Operations Manager.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/12/2019
-ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f1acf3c1574fd94606d75c6250dedd40a9c7ea4d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553976"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849816"
 ---
-# <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integratie met Azure Monitor voor VM's kaart functie
+# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integreren met Azure Monitor voor VM's kaart functie
 
-In Azure Monitor voor VM's kunt u gedetecteerde toepassings onderdelen weer geven op virtuele Windows-en Linux-machines (Vm's) die worden uitgevoerd in azure of in uw omgeving. Als deze integratie tussen de kaart functie en System Center Operations Manager, kunt u automatisch gedistribueerde toepassings diagrammen maken in Operations Manager die zijn gebaseerd op de dynamische afhankelijkheids toewijzingen in Azure Monitor voor VM's. 
+In Azure Monitor voor VM's kunt u gedetecteerde toepassings onderdelen weer geven op virtuele Windows-en Linux-machines (Vm's) die worden uitgevoerd in azure of in uw omgeving. Als deze integratie tussen de kaart functie en System Center Operations Manager, kunt u automatisch gedistribueerde toepassings diagrammen maken in Operations Manager die zijn gebaseerd op de dynamische afhankelijkheids toewijzingen in Azure Monitor voor VM's. In dit artikel wordt beschreven hoe u uw System Center Operations Manager-beheer groep configureert ter ondersteuning van deze functie.
 
 >[!NOTE]
 >Als u Servicetoewijzing al hebt geïmplementeerd, kunt u uw kaarten weer geven in Azure Monitor voor VM's, met daarin extra functies voor het controleren van de status en prestaties van de virtuele machine. De kaart functie van Azure Monitor voor VM's is bedoeld om de zelfstandige Servicetoewijzing oplossing te vervangen. Zie [Azure monitor voor VM's-overzicht](vminsights-overview.md)voor meer informatie.
@@ -107,7 +107,7 @@ De map Servicetoewijzing heeft vier knoop punten:
 
 ## <a name="edit-or-delete-the-workspace"></a>De werk ruimte bewerken of verwijderen
 
-U kunt de geconfigureerde werk ruimte bewerken of verwijderen via het Servicetoewijzing deel venster **overzicht** (**beheer** Venster > **Operations Management Suite**  > **servicetoewijzing**).
+U kunt de geconfigureerde werk ruimte bewerken of verwijderen via het Servicetoewijzing deel venster **overzicht** (**beheer** Venster > **Operations Management Suite** > **servicetoewijzing**).
 
 >[!NOTE]
 >[Operations Management Suite is een verzameling services](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) die log Analytics bevat, die nu deel uitmaakt van [Azure monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).

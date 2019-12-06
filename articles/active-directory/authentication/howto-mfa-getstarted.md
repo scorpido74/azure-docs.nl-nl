@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558539"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848388"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen
 
@@ -52,7 +52,7 @@ Azure multi-factor Authentication wordt geïmplementeerd door beleids regels met
 
 * Alle gebruikers, een specifieke gebruiker, lid van een groep of toegewezen rol
 * Specifieke Cloud toepassing waartoe toegang wordt verkregen
-* Platform apparaat
+* Apparaatplatform
 * Status van apparaat
 * Netwerk locatie of geografisch geplaatste IP-adres
 * Clienttoepassingen
@@ -117,7 +117,7 @@ Een mobiele app, zoals de app Microsoft Authenticator, genereert elke 30 seconde
 
 Er wordt een automatische spraak oproep naar de gebruiker geplaatst. De gebruiker beantwoordt het gesprek en drukt **#** op het toetsen blok van de telefoon om hun verificatie goed te keuren. Bellen naar telefoon is een fantastische back-upmethode voor meldings-of verificatie code van een mobiele app.
 
-### <a name="text-message-to-phone"></a>SMS-bericht naar telefoon
+### <a name="text-message-to-phone"></a>Sms-bericht naar telefoon
 
 Er wordt een tekst bericht met een verificatie code naar de gebruiker verzonden. de gebruiker wordt gevraagd de verificatie code in te voeren in de aanmeldings interface.
 
@@ -288,11 +288,11 @@ Het doel van deze instelling is om te bepalen wat er moet gebeuren wanneer een g
 | Sleutel bestaat niet | Niet Inge schreven | De MFA-vraag is mislukt |
 | Waarde ingesteld op waar/niet ingesteld | Niet Inge schreven | De MFA-vraag is mislukt |
 | Sleutel ingesteld op ONWAAR | Niet Inge schreven | Verificatie zonder MFA |
-| Sleutel ingesteld op False of True | Inge schreven | Moet worden geverifieerd met MFA |
+| Sleutel ingesteld op False of True | Geregistreerd | Moet worden geverifieerd met MFA |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>Integreren met Active Directory Federation Services
 
-Als uw organisatie federatief is met Azure AD, kunt u [Azure multi-factor Authentication gebruiken om AD FS resources](multi-factor-authentication-get-started-adfs.md), zowel on-premises als in de Cloud, te beveiligen. Met Azure MFA kunt u wacht woorden verminderen en een veiligere verificatie methode bieden. Vanaf Windows Server 2016 kunt u nu Azure MFA configureren voor primaire authenticatie.
+Als uw organisatie federatief is met Azure AD, kunt u [Azure multi-factor Authentication gebruiken om AD FS resources](multi-factor-authentication-get-started-adfs.md), zowel on-premises als in de Cloud, te beveiligen. Met Azure MFA kunt u wacht woorden verminderen en een veiligere verificatie methode bieden. Beginnen met Windows Server 2016, kunt u Azure MFA configureren voor primaire authenticatie.
 
 In tegens telling tot AD FS in Windows Server 2012 R2, integreert de AD FS 2016 Azure MFA-adapter rechtstreeks met Azure AD en is er geen on-premises Azure MFA-server vereist. De Azure MFA-adapter is ingebouwd in Windows Server 2016 en er is geen aanvullende installatie nodig.
 

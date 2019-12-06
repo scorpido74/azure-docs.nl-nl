@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/18/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 013a14505f7ac1382bce369e161fdae834f605fc
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1b9d07099f8de996181948921330ef6744b302a8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200225"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848643"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Azure AD-wachtwoord beveiliging afdwingen voor Windows Server Active Directory
 
@@ -43,7 +43,7 @@ De Azure AD-agent software voor wachtwoord beveiliging kan alleen wacht woorden 
 
 Veel organisaties willen een zorgvuldige test uitvoeren van Azure AD-wachtwoord beveiliging op een subset van hun domein controllers voordat een volledige implementatie wordt uitgevoerd. Azure AD-wachtwoord beveiliging biedt ondersteuning voor gedeeltelijke implementatie. Internet Explorer wordt door de DC-agent software op een bepaalde domein controller actief gevalideerd, zelfs wanneer andere domein controllers in het domein niet de DC-agent software hebben geïnstalleerd. Gedeeltelijke implementaties van dit type zijn niet beveiligd en worden niet aanbevolen voor test doeleinden.
 
-## <a name="architectural-diagram"></a>Architectuur diagram
+## <a name="architectural-diagram"></a>Architectuurdiagram
 
 Het is belang rijk om inzicht te krijgen in het onderliggende ontwerp en functionele concepten voordat u Azure AD-wachtwoord beveiliging in een on-premises Active Directory omgeving implementeert. In het volgende diagram ziet u hoe de onderdelen van wachtwoord beveiliging samen werken:
 

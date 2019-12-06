@@ -1,18 +1,18 @@
 ---
-title: ARRAY_LENGTH in Azure Cosmos DB-query taal
-description: Meer informatie over de SQL-functie ARRAY_LENGTH in Azure Cosmos DB.
+title: ARRAY_LENGTH in Azure Cosmos DB query taal
+description: Meer informatie over hoe de lengte van de SQL-systeem functie van de matrix in Azure Cosmos DB het aantal elementen van de opgegeven matrix expressie retourneert
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b27b3f09212047e2e8937a4bf649fa3335e15cb2
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 9a8bf33befdd842a2979151fef3d54679ee03de1
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348676"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871768"
 ---
 # <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB)
  Retourneert het aantal elementen van de opgegeven matrixexpressie.  
@@ -34,7 +34,7 @@ ARRAY_LENGTH(<arr_expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld wordt de lengte van een matrix opgehaald met `ARRAY_LENGTH`.  
+  In het volgende voor beeld wordt aangegeven hoe u de lengte van een matrix kunt ophalen met behulp van `ARRAY_LENGTH`.  
   
 ```sql
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len  

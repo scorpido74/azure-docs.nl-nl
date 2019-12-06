@@ -3,28 +3,24 @@ title: Certificaat referenties in azure AD
 titleSuffix: Microsoft identity platform
 description: In dit artikel worden de registratie en het gebruik van certificaat referenties voor toepassings verificatie beschreven
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fca872d639ab5c2d4053656cdd3e68a59fdc1e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4b0dd42aeaa8a7a5d9f1cc28b409a8d8dbf92304
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473968"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845362"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Certificaat referenties voor toepassings verificatie
 
@@ -52,9 +48,9 @@ Als u de bewering wilt berekenen, kunt u een van de vele [JSON Web token](https:
 | `iss` | Verlener: moet de client_id (toepassings-ID van de client service) |
 | `jti` | GUID: de JWT-ID |
 | `nbf` | Niet vóór: de datum waarop het token niet kan worden gebruikt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment dat het token is uitgegeven. |
-| `sub` | Onderwerp: als voor `iss`, moet de client_id (toepassings-ID van de client service) zijn. |
+| `sub` | Onderwerp: als voor `iss`, moet de client_id (toepassings-ID van de client service) |
 
-### <a name="signature"></a>ondertekening
+### <a name="signature"></a>Handtekening
 
 De hand tekening wordt berekend met het Toep assen van het certificaat, zoals beschreven in de [JSON Web token RFC7519-specificatie](https://tools.ietf.org/html/rfc7519)
 
@@ -101,7 +97,7 @@ U kunt de certificaat referentie koppelen aan de client toepassing in azure AD v
 In de registratie van de Azure-app voor de client toepassing:
 1. Selecteer **certificaten & geheimen**. 
 2. Klik op **certificaat uploaden** en selecteer het certificaat bestand dat u wilt uploaden.
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
   Zodra het certificaat is geüpload, worden de vinger afdruk, de start datum en de verval waarden weer gegeven. 
 
 ### <a name="updating-the-application-manifest"></a>Het toepassings manifest bijwerken

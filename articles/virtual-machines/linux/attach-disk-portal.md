@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3071effeb2d5eeaafc48fd742559b093a0517c1c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279137"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851669"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Een gegevens schijf koppelen aan een virtuele Linux-machine met behulp van de portal 
 Dit artikel laat u zien hoe u met de Azure Portal zowel nieuwe als bestaande schijven kunt koppelen aan een virtuele Linux-machine. U kunt ook [een gegevens schijf koppelen aan een virtuele Windows-machine in de Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -33,10 +33,9 @@ Lees de volgende tips voordat u schijven aan uw virtuele machine koppelt:
 
 
 ## <a name="find-the-virtual-machine"></a>De virtuele machine zoeken
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
-2. Klik op **virtual machines**in het menu links.
-3. Selecteer de virtuele machine in de lijst.
-4. Klik op **schijven**op de pagina virtuele machines in **Essentials**.
+1. Ga naar het [Azure Portal](https://portal.azure.com/) om de virtuele machine te vinden. Zoek en selecteer **virtuele machines**.
+2. Kies de virtuele machine in de lijst.
+3. Kies op de pagina **virtuele machines** de zijbalk onder **instellingen**de optie **schijven**.
    
     ![Schijf instellingen openen](./media/attach-disk-portal/find-disk-settings.png)
 
@@ -109,7 +108,7 @@ Partitioneer de schijf met `fdisk`. Als de schijf grootte 2 tebibytes (TiB) of g
 sudo fdisk /dev/sdc
 ```
 
-Gebruik de opdracht `n` om een nieuwe partitie toe te voegen. In dit voor beeld kiezen we ook `p` voor een primaire partitie en de rest van de standaard waarden te accepteren. De uitvoer ziet er ongeveer uit als in het volgende voor beeld:
+Gebruik de opdracht `n` om een nieuwe partitie toe te voegen. In dit voor beeld kiezen we ook `p` voor een primaire partitie en de rest van de standaard waarden te accepteren. De uitvoer ziet er ongeveer als volgt uit:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -205,7 +204,7 @@ Gebruik `mount` om het bestands systeem vervolgens te koppelen. In het volgende 
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Om ervoor te zorgen dat het station automatisch na het opnieuw opstarten opnieuw wordt gekoppeld, moet het worden toegevoegd aan het *bestand/etc/fstab* -bestand. Het wordt ook ten zeerste aanbevolen om de UUID (Universally Unique IDentifier) in *bestand/etc/fstab* te gebruiken om te verwijzen naar het station in plaats van alleen de naam van het apparaat (zoals */dev/sdc1*). Als het besturings systeem tijdens het opstarten een schijf fout detecteert, voor komt u dat de onjuiste schijf wordt gekoppeld aan een bepaalde locatie. De resterende gegevens schijven worden vervolgens toegewezen aan dezelfde apparaat-Id's. Als u de UUID van het nieuwe station wilt zoeken, gebruikt u het hulp programma `blkid`:
+Om ervoor te zorgen dat het station automatisch na het opnieuw opstarten opnieuw wordt gekoppeld, moet het worden toegevoegd aan het *bestand/etc/fstab* -bestand. Het wordt ook ten zeerste aanbevolen om de UUID (Universally Unique IDentifier) in *bestand/etc/fstab* te gebruiken om te verwijzen naar het station in plaats van alleen de naam van het apparaat (zoals */dev/sdc1*). Als het besturingssysteem een schijffout ontdekt tijdens het opstarten, kunt u door de UUID te gebruiken voorkomen dat de verkeerde schijf wordt gekoppeld aan een bepaalde locatie. Resterende gegevensschijven worden dan toegewezen aan dezelfde apparaat-id's. Als u de UUID van het nieuwe station wilt zoeken, gebruikt u het hulpprogramma `blkid`:
 
 ```bash
 sudo -i blkid
@@ -220,7 +219,7 @@ De uitvoer ziet er ongeveer uit als in het volgende voor beeld:
 ```
 
 > [!NOTE]
-> Het onjuist bewerken van het **bestand/etc/fstab** -bestand kan resulteren in een systeem dat niet kan worden opgestart. Als dat niet het geval is, raadpleegt u de documentatie van de distributie voor informatie over het correct bewerken van dit bestand. U wordt ook aangeraden een back-up van het bestand/etc/fstab-bestand te maken voordat u het bewerkt.
+> Het onjuist bewerken van het **bestand/etc/fstab** -bestand kan resulteren in een systeem dat niet kan worden opgestart. Als u niet zeker weet wat u moet doen, raadpleegt u de documentatie van de distributie over het bewerken van dit bestand. U wordt ook aangeraden een back-up van het bestand/etc/fstab-bestand te maken voordat u het bewerkt.
 
 Open vervolgens het *bestand/etc/fstab* -bestand in een tekst editor als volgt:
 

@@ -1,32 +1,32 @@
 ---
 title: Naleving van Azure Cosmos DB
 description: In dit artikel wordt de certificerings dekking voor Azure Cosmos DB compliance-aanbiedingen beschreven.
-author: dharmas-cosmos
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 9ebec5498da8f7280179a48a6e3e3b10a9810e28
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: a41d95a5ab0665698676d0f17333e2f5c7f467eb
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881837"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872200"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Naleving in Azure Cosmos DB 
 
 Azure Cosmos DB is beschikbaar in alle Azure-regio's. Micro soft maakt vijf afzonderlijke Azure-Cloud omgevingen beschikbaar voor klanten:
 
-* **Open bare Azure** -Cloud, die wereld wijd beschikbaar is.
+* **Openbare Azure** cloud, die wereldwijd beschikbaar is.
 
 * **Azure China 21vianet** is beschikbaar via een unieke samen werking tussen micro soft en 21vianet, een van de grootste Internet providers van het land.
 
-* **Azure Duitsland** biedt services onder een model van de gegevens beheerder, wat ervoor zorgt dat klant gegevens in Duitsland blijven, onder controle van T-Systems International GmbH, een dochter onderneming van Deutsche Telecom, die fungeert als de Duitse gegevens beheerder.
+* **Azure Duitsland** verzorgt services onder een gegevensbeheerdersmodel, die zorgt ervoor dat de klant gegevens blijven in Duitsland onder het beheer van T-Systems International GmbH, een dochteronderneming van Deutsche Telecom, die fungeert als de Duitse Gegevensbeheerder.
 
-* **Azure Government** is beschikbaar in vier regio's van de Verenigde Staten naar overheids instanties van de Verenigde Staten en hun partners. 
+* **Azure Government** is beschikbaar in vier verschillende regio's in de Verenigde Staten voor Amerikaanse overheidsinstanties en hun partners. 
 
-* **Azure Government voor ministerie van defensie (DoD)** is beschikbaar in twee regio's in de Verenigde Staten van het Amerikaanse ministerie van defensie.
+* **Azure Government voor afdeling van of** is beschikbaar in twee regio's in de Verenigde Staten naar het US Department of Defense.
 
 Om klanten te helpen te voldoen aan hun eigen nalevings verplichtingen voor gereguleerde industrieën en markten over de hele wereld, houdt Azure de grootste nalevings portefeuille in de branche in termen van beide breedte (totaal aantal aanbiedingen) en diepte (aantal klant gerichte Services in het beoordelings bereik).  Nalevings aanbiedingen voor Azure worden gegroepeerd in vier wereld wijd toepas bare, Amerikaanse overheid, branchespecifieke en land/regio-specifieke.  Nalevings aanbiedingen zijn gebaseerd op verschillende soorten garanties, waaronder formele certificeringen, attesten, validaties, autorisaties en beoordelingen die worden geproduceerd door onafhankelijke controle bedrijven van derden, evenals contractuele wijzigingen; zelf beoordelingen en documentatie voor klant richtlijnen die door micro soft zijn gemaakt.
 
@@ -71,4 +71,4 @@ Raadpleeg de volgende artikelen voor meer informatie over de nalevings certifice
 
 * Zie [Azure Cosmos data base Security](database-security.md) -artikel voor een overzicht van Azure Cosmos DB beveiliging en de meest recente verbeteringen.
 
-* Zie de [Vertrouwenscentrum van Azure](https://azure.microsoft.com/support/trust-center/)voor meer informatie over micro soft-certificeringen.
+* Zie voor meer informatie over Microsoft-certificeringen, de [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).

@@ -2,13 +2,13 @@
 title: Azure Policy-extensie voor Visual Studio code
 description: Meer informatie over het gebruik van de Azure Policy extensie voor Visual Studio code voor het opzoeken van de aliassen van Resource Manager.
 ms.date: 11/04/2019
-ms.topic: conceptual
-ms.openlocfilehash: cbc0e14ed70fbacc297126aef58cd722d2235a3d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.topic: how-to
+ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072043"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873111"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-extensie voor Visual Studio code gebruiken
 

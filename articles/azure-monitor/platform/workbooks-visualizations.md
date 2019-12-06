@@ -1,5 +1,5 @@
 ---
-title: Interactieve rapporten maken met Azure Monitor werkmappen visualisaties | Micro soft docs
+title: Visualisaties van Azure Monitor werkmap
 description: Meer informatie over alle Azure Monitor werkmap visualisaties-onderdelen, zoals tekst, grafieken, rasters, structuren en grafieken.
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d878e8b5dd49ba517f85ebb74332bc6a245c33ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: bcc60c0f934111f779e3fdedc399881acb16f208
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165054"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872788"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Visualisaties van Azure Monitor werkmap
 
@@ -41,7 +41,7 @@ Tekst wordt toegevoegd aan de hand van een besturings element voor een prijs opw
 > [!TIP]
 > Gebruik dit [Cheat-blad voor prijs verlaging](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) om meer te weten te komen over verschillende opmaak opties.
 
-## <a name="charts"></a>diagrammen
+## <a name="charts"></a>Grafieken
 
 Met werkmappen kunnen bewakings gegevens worden weer gegeven als grafieken. Ondersteunde grafiek typen zijn onder andere lijn-, staaf-, staaf-categorische, vlak-, spreidings-en cirkel-en tijd diagrammen. Auteurs kunnen ervoor kiezen om de hoogte, breedte, kleuren palet, legenda, titels, no-data-bericht, enzovoort van de grafiek aan te passen.
 
@@ -115,7 +115,7 @@ In het onderstaande voor beeld ziet u een raster waarin pictogrammen, Heatmaps e
 
 ![Scherm opname van raster query op basis van logboek](./media/workbooks-visualizations/grid-query.png)
 
-## <a name="tiles"></a>Pagina's
+## <a name="tiles"></a>Tegels
 
 Tegels zijn een zeer handige manier om samenvattings gegevens te presen teren in werkmappen. In de onderstaande afbeelding ziet u een algemeen gebruik van tegels-samen vatting op app-niveau boven op een gedetailleerd raster.
 

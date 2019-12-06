@@ -1,20 +1,20 @@
 ---
-title: Kubernetes-cluster prestaties bewaken met Azure Monitor voor containers | Microsoft Docs
-description: Dit artikel wordt beschreven hoe u kunt bekijken en analyseren van de prestaties en het logboek gegevens met Azure Monitor voor containers.
+title: Kubernetes bewaking met Azure Monitor voor containers | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u de prestaties van een Kubernetes-cluster kunt weer geven en analyseren met Azure Monitor voor containers.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 8bb3ac1905167989e27d47304ae539e49a1412e8
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1cd0223a16a6308e777e4a0167154e975202df7b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132352"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872975"
 ---
-# <a name="understand-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Inzicht in Kubernetes-cluster prestaties met Azure Monitor voor containers
+# <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Uw Kubernetes-cluster prestaties bewaken met Azure Monitor voor containers
 
 Met Azure Monitor voor containers kunt u de prestatie diagrammen en de integriteits status gebruiken om de werk belasting te bewaken van Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS), Azure Stack of een andere omgeving van twee perspectieven. U kunt rechtstreeks vanuit het cluster bewaken of u kunt alle clusters in een abonnement weer geven vanuit Azure Monitor. Het weer geven van Azure Container Instances is ook mogelijk bij het bewaken van een specifiek AKS-cluster.
 
@@ -34,7 +34,7 @@ De belangrijkste verschillen in het bewaken van een Windows Server-cluster met A
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Weergave van meerdere cluster van Azure Monitor
 
@@ -85,7 +85,7 @@ De volgende tabel bevat een uitsplitsing van de berekening waarmee de statussen 
 | |Onbekend |Als niet wordt vermeld in de afgelopen 30 minuten |  
 |**Systeem pod**| | |  
 | |In orde |100% |
-| |Waarschuwing |N.v.t. |
+| |Waarschuwing |N/A |
 | |Kritiek |< 100% |
 | |Onbekend |Als niet wordt vermeld in de afgelopen 30 minuten |
 |**Node** | | |

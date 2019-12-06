@@ -1,32 +1,32 @@
 ---
-title: Overzicht van het runbook in Azure Automation Grpahical SDK
-description: In dit artikel wordt beschreven hoe u de SDK voor Azure Automation Runbook grafische
+title: Overzicht van de Azure Automation Grpahical runbook SDK
+description: In dit artikel wordt beschreven hoe u de Azure Automation grafische Runbook SDK gebruikt
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 07/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e4229079a1fa50295eef85b42f91bbc1b4a21fc3
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a06c190931fdd0f49132f815b153c08ece68c9f3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478595"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849544"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Gebruik de SDK een Azure Automation grafisch runbook
+# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>De Azure Automation grafische runbook SDK gebruiken
 
-[Grafische runbooks](automation-graphical-authoring-intro.md) zijn die het beheer van de complexiteit van de onderliggende code van de Windows PowerShell of PowerShell Workflow-runbooks. De Microsoft Azure Automation-SDK voor grafisch ontwerpen kunnen ontwikkelaars maken en bewerken van grafische Runbooks voor gebruik met Azure Automation-service. De volgende codefragmenten laten de basisprincipes van het maken van een grafisch runbook vanuit uw code.
+[Grafische runbooks](automation-graphical-authoring-intro.md) zijn runbooks die u helpen de complexiteit van de onderliggende Windows Power shell-of Power shell-werk stroom code te beheren. Met de Microsoft Azure Automation-SDK voor grafische elementen kunnen ontwikkel aars grafische Runbooks maken en bewerken voor gebruik met de Azure Automation-Service. De volgende code fragmenten tonen de basis stroom van het maken van een grafisch runbook vanuit uw code.
 
 ## <a name="pre-requisites"></a>Vereisten
 
-Als u wilt starten, importeert de `Microsoft.Azure.Automation.GraphicalRunbook.Model` pakket in uw project.
+Importeer het `Microsoft.Azure.Automation.GraphicalRunbook.Model`-pakket in uw project om te starten.
 
-## <a name="create-a-runbook-object-instance"></a>Een exemplaar van het object runbook maken
+## <a name="create-a-runbook-object-instance"></a>Een runbook-object instantie maken
 
-Naslaginformatie over de `Orchestrator.GraphRunbook.Model` assembly en maak een instantie van de `Orchestrator.GraphRunbook.Model.GraphRunbook` klasse:
+Verwijs naar de `Orchestrator.GraphRunbook.Model`-assembly en maak een instantie van de klasse `Orchestrator.GraphRunbook.Model.GraphRunbook`:
 
 ```csharp
 using Orchestrator.GraphRunbook.Model;
@@ -35,9 +35,9 @@ using Orchestrator.GraphRunbook.Model.ExecutableView;
 var runbook = new GraphRunbook();
 ```
 
-## <a name="add-runbook-parameters"></a>Runbookparameters toevoegen
+## <a name="add-runbook-parameters"></a>Runbook-para meters toevoegen
 
-Instantiëren `Orchestrator.GraphRunbook.Model.Parameter` objecten en toe te voegen aan het runbook:
+`Orchestrator.GraphRunbook.Model.Parameter` objecten instantiëren en toevoegen aan het runbook:
 
 ```csharp
 runbook.AddParameter(
@@ -55,7 +55,7 @@ runbook.AddParameter(
 
 ## <a name="add-activities-and-links"></a>Activiteiten en koppelingen toevoegen
 
-Activiteiten van de juiste typen instantiëren en toe te voegen aan het runbook:
+Exemplaar van de juiste typen activiteiten en voeg deze toe aan het runbook:
 
 ```csharp
 var writeOutputActivityType = new CommandActivityType {
@@ -93,35 +93,35 @@ var initializeRunbookVariable = runbook.AddActivity(
  });
 ```
 
-Activiteiten zijn geïmplementeerd door de volgende klassen in de `Orchestrator.GraphRunbook.Model` naamruimte:
+Activiteiten worden geïmplementeerd door de volgende klassen in de naam ruimte `Orchestrator.GraphRunbook.Model`:
 
 |Klasse  |Activiteit  |
 |---------|---------|
-|CommandActivity     | Hiermee wordt een PowerShell-opdracht (cmdlet, functie, enz.).        |
-|InvokeRunbookActivity     | Een ander runbook inline aanroept.        |
-|JunctionActivity     | Wacht tot alle binnenkomende vertakkingen te voltooien.        |
-|WorkflowScriptActivity     | Voert een blok van code van PowerShell of PowerShell-werkstroom (afhankelijk van het runbooktype) in de context van het runbook. Dit is een krachtig hulpprogramma, maar niet overmatig gebruik deze: de gebruikersinterface ziet u deze scriptblok als tekst. de engine voor het uitvoeren wordt het opgegeven blok behandelen als een zwart vak en doen geen pogingen om de inhoud, met uitzondering van een selectievakje basissyntaxis analyseren. Als u slechts één PowerShell-opdracht aanroepen moet, krijgt u CommandActivity voorkeur.        |
+|CommandActivity     | Hiermee wordt een Power shell-opdracht (cmdlet, function, enz.) aangeroepen.        |
+|InvokeRunbookActivity     | Hiermee wordt een ander runbook inline aangeroepen.        |
+|JunctionActivity     | Er wordt gewacht tot alle inkomende vertakkingen zijn voltooid.        |
+|WorkflowScriptActivity     | Voert een blok met Power shell-of Power shell-werk stroom code uit (afhankelijk van het type runbook) in de context van het runbook. Dit is een krachtig hulp programma, maar niet te veel te gebruiken: de gebruikers interface zal dit script blok als tekst weer geven. de engine voor het uitvoeren van de uitvoering behandelt het meegeleverde blok als een zwart vak en maakt geen pogingen om de inhoud te analyseren, met uitzonde ring van een basis syntaxis controle. Als u slechts één Power shell-opdracht moet aanroepen, geeft u de voor keur aan CommandActivity.        |
 
 > [!NOTE]
-> Niet uw eigen activiteiten afgeleid van de opgegeven klassen: Azure Automation wordt pas weer runbooks met typen aangepaste activiteiten gebruiken.
+> Maak geen eigen activiteiten af van de beschik bare klassen: Azure Automation kan geen runbooks gebruiken met aangepaste activiteitstypen.
 
-Parameters CommandActivity en InvokeRunbookActivity moeten worden opgegeven als waarde descriptors, waarden niet direct. Waarde descriptors opgeven hoe de waarden van de feitelijke parameter moeten worden gemaakt. De volgende waarde descriptors zijn momenteel beschikbaar:
+CommandActivity-en InvokeRunbookActivity-para meters moeten worden opgegeven als Value-descriptors, niet voor directe waarden. Met Value-descriptors geeft u op hoe de werkelijke parameter waarden moeten worden geproduceerd. De volgende descriptors voor waarden zijn momenteel beschikbaar:
 
 
 |Descriptor  |Definitie  |
 |---------|---------|
-|ConstantValueDescriptor     | Verwijst naar een vastgelegde constante waarde.        |
-|RunbookParameterValueDescriptor     | Verwijst naar een runbook-parameter met de naam.        |
-|ActivityOutputValueDescriptor     | Verwijst naar een upstream-activiteit uitvoer, zodat één activiteit voor een 'abonnement' op gegevens die door een andere activiteit worden geproduceerd.        |
-|AutomationVariableValueDescriptor     | Verwijst naar een Automation-variabele asset met de naam.         |
-|AutomationCredentialValueDescriptor     | Verwijst naar een Automation-certificaatasset met de naam.        |
-|AutomationConnectionValueDescriptor     | Verwijst naar een Automation-verbindingsasset met de naam.        |
-|PowerShellExpressionValueDescriptor     | Hiermee geeft u een PowerShell-expressie voor vrije tekst die wordt geëvalueerd vlak voor het aanroepen van de activiteit.  <br/>Dit is een krachtig hulpprogramma, maar niet overmatig gebruik deze: de gebruikersinterface wordt weergegeven in deze expressie als tekst. de engine voor het uitvoeren wordt het opgegeven blok behandelen als een zwart vak en doen geen pogingen om de inhoud, met uitzondering van een selectievakje basissyntaxis analyseren. Indien mogelijk meer specifieke waarde descriptors de voorkeur.      |
+|ConstantValueDescriptor     | Verwijst naar een in code vastgelegde constante waarde.        |
+|RunbookParameterValueDescriptor     | Verwijst naar een runbook-para meter op naam.        |
+|ActivityOutputValueDescriptor     | Verwijst naar de uitvoer van de upstream-activiteit, waardoor één activiteit kan worden geabonneerd op gegevens die door een andere activiteit worden geproduceerd.        |
+|AutomationVariableValueDescriptor     | Verwijst naar een variabele van een Automation-Asset op naam.         |
+|AutomationCredentialValueDescriptor     | Verwijst naar een Asset van het Automation-certificaat op naam.        |
+|AutomationConnectionValueDescriptor     | Verwijst naar een Automation-verbindings Asset op naam.        |
+|PowerShellExpressionValueDescriptor     | Hiermee geeft u een Power shell-expressie met een vrije vorm op die wordt geëvalueerd vlak voordat de activiteit wordt aangeroepen.  <br/>Dit is een krachtig hulp programma, maar niet te veel te gebruiken: de gebruikers interface geeft deze expressie weer als tekst. de engine voor het uitvoeren van de uitvoering behandelt het meegeleverde blok als een zwart vak en maakt geen pogingen om de inhoud te analyseren, met uitzonde ring van een basis syntaxis controle. Als dat mogelijk is, kunt u beter specifiekere waarden gebruiken.      |
 
 > [!NOTE]
-> Uw eigen waarde descriptors niet afgeleid van de opgegeven klassen: Azure Automation wordt niet mogelijk het gebruik van runbooks met aangepaste waarde descriptor typen.
+> Maak geen eigen waarden voor descriptors van de beschik bare klassen: Azure Automation kan geen runbooks gebruiken met typen van aangepaste-waardetypen.
 
-Exemplaar maken van koppelingen activiteiten verbinding te maken en toe te voegen aan het runbook:
+Instantie maken van koppelingen waarmee activiteiten worden verbonden en aan het runbook worden toegevoegd:
 
 ```csharp
 runbook.AddLink(new Link(activityA, activityB, LinkType.Sequence));
@@ -132,18 +132,18 @@ runbook.AddLink(
  });
 ```
 
-## <a name="save-the-runbook-to-a-file"></a>Het runbook in een bestand opslaan
+## <a name="save-the-runbook-to-a-file"></a>Het runbook opslaan in een bestand
 
-Gebruik `Orchestrator.GraphRunbook.Model.Serialization.RunbookSerializer` het serialiseren van een runbook naar een tekenreeks:
+Gebruik `Orchestrator.GraphRunbook.Model.Serialization.RunbookSerializer` om een runbook te serialiseren naar een teken reeks:
 
 ```csharp
 var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
-Deze tekenreeks kan worden opgeslagen als een bestand met de **.graphrunbook** extensie en dit bestand kan worden geïmporteerd in Azure Automation.
-De geserialiseerde indeling kan worden gewijzigd in de toekomst versies van `Orchestrator.GraphRunbook.Model.dll`. We beloven compatibiliteit met eerdere versies: een runbook dat is geserialiseerd met een oudere versie van `Orchestrator.GraphRunbook.Model.dll` met een nieuwere versie kunnen worden gedeserialiseerd. Voorwaartse compatibiliteit kan niet worden gegarandeerd: een runbook dat is geserialiseerd met een nieuwere versie is mogelijk niet opnieuw worden geserialiseerd met oudere versies.
+Deze teken reeks kan worden opgeslagen in een bestand met de extensie **. graphrunbook** en dit bestand kan worden geïmporteerd in azure Automation.
+De geserialiseerde indeling kan worden gewijzigd in toekomstige versies van `Orchestrator.GraphRunbook.Model.dll`. We hebben achterwaartse compatibiliteit voor u: elk runbook dat is geserialiseerd met een oudere versie van `Orchestrator.GraphRunbook.Model.dll` kan worden gedeserialiseerd met een nieuwere versie. Voorwaartse compatibiliteit is niet gegarandeerd: een runbook dat is geserialiseerd met een nieuwere versie, mag niet worden gedeserialiseerd door oudere versies.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over grafische Runbooks in Azure Automation, [inleiding grafisch ontwerpen](automation-graphical-authoring-intro.md)
+Zie voor meer informatie over grafische Runbooks in Azure Automation [grafische ontwerp Inleiding](automation-graphical-authoring-intro.md)
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fdde89f9ff88b15c464af805b81708b268e5ddf5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 95b9c76a2ff962cb2fa4bacbb1b1e9a953b7014f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721733"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873808"
 ---
 # <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (preview) in azure Cognitive Search
 
@@ -25,24 +25,46 @@ ms.locfileid: "73721733"
 
 Standaard wordt de inhoud van alle Doorzoek bare velden op het hoogste niveau beschouwd. Als u in plaats daarvan bepaalde velden wilt opgeven, kunt u de para meter `searchFields` gebruiken. 
 
-U kunt moreLikeThis niet gebruiken voor Doorzoek bare subvelden in een [complex type](search-howto-complex-data-types.md).
+U kunt `MoreLikeThis` niet gebruiken voor Doorzoek bare subvelden in een [complex type](search-howto-complex-data-types.md).
 
-## <a name="examples"></a>Voorbeelden 
+## <a name="examples"></a>Voorbeelden
 
-Hieronder ziet u een voor beeld van een moreLikeThis-query. De query vindt documenten waarvan de beschrijvings velden het meest overeenkomen met het veld van het bron document, zoals opgegeven door de para meter `moreLikeThis`.
+In de volgende voor beelden wordt het voor beeld van hotels gebruikt [in Quick Start: Maak een zoek index in de Azure Portal](search-get-started-portal.md).
+
+### <a name="simple-query"></a>Eenvoudige query
+
+De volgende query zoekt naar documenten waarvan de beschrijvings velden het meest overeenkomen met het veld van het bron document, zoals opgegeven door de para meter `moreLikeThis`:
 
 ```
-Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2019-05-06-Preview
+GET /indexes/hotels-sample-index/docs?moreLikeThis=29&searchFields=Description&api-version=2019-05-06-Preview
 ```
 
+In dit voor beeld zoekt de aanvraag naar hotels die vergelijkbaar zijn met die van `HotelId` 29.
+In plaats van HTTP GET te gebruiken, kunt u ook `MoreLikeThis` aanroepen met HTTP POST:
+
 ```
-POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06-Preview
     {
-      "moreLikeThis": "1002",
-      "searchFields": "description"
+      "moreLikeThis": "29",
+      "searchFields": "Description"
     }
 ```
 
+### <a name="apply-filters"></a>Filters toepassen
+
+`MoreLikeThis` kan worden gecombineerd met andere algemene query parameters, zoals `$filter`. Zo kan de query worden beperkt tot alleen hotels waarvan de categorie ' budget ' is, waarbij de classificatie hoger is dan 3,5:
+
+```
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2019-05-06-Preview
+```
+
+### <a name="select-fields-and-limit-results"></a>Velden selecteren en de resultaten beperken
+
+De `$top` selector kan worden gebruikt om het aantal resultaten te beperken dat in een `MoreLikeThis` query moet worden geretourneerd. U kunt ook velden selecteren met `$select`. Hier worden de eerste drie hotels geselecteerd samen met hun ID, naam en classificatie: 
+
+```
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&$top=3&$select=HotelId,HotelName,Rating&api-version=2019-05-06-Preview
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

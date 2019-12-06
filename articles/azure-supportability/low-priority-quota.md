@@ -1,34 +1,34 @@
 ---
-title: Quota met lage prioriteit | Microsoft Docs
-description: Quota aanvragen met lage prioriteit
+title: Steun limiet | Microsoft Docs
+description: Spot quotum aanvragen
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 11/19/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 49ac478330cf73dff050a3edcc15933692fa6448
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 09c9d7940314b691e6351353e6a0076510fdcb13
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535169"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850564"
 ---
-# <a name="low-priority-quota-limit-increase-for-all-vm-series"></a>Quota met lage prioriteit: toename beperken voor alle VM-reeksen
+# <a name="spot-quota-limit-increase-for-all-vm-series"></a>Spot quotum: toename beperken voor alle VM-reeksen
 
-Virtuele machines met lage prioriteit bieden een afwijkend model van Azure-gebruik en verlaagt Azure een lagere kosten voor het verwijderen van een virtuele machine als nodig voor betalen per gebruik of gereserveerde implementaties van VM-exemplaren. Lees [hier](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-low-priority)meer over vm's met een lage prioriteit.
+Spot Vm's bieden een ander model voor Azure-gebruik en verlaagt Azure een lagere kosten voor het verwijderen van een virtuele machine als nodig voor betalen per gebruik of gereserveerde implementaties van VM-exemplaren. Meer informatie over spot Vm's [vindt u hier](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot).
 
-Resource Manager ondersteunt twee typen vCPU-quota's voor virtuele machines. Voor de **vm's voor betalen per gebruik en gereserveerde VM-instanties** wordt standaard quotum gebruikt. **Virtuele machines met lage prioriteit** gebruiken een quotum met lage prioriteit. 
+Resource Manager ondersteunt twee typen vCPU-quota's voor virtuele machines. Voor de **vm's voor betalen per gebruik en gereserveerde VM-instanties** wordt standaard quotum gebruikt. **Spot-vm's** gebruiken steun quota. 
 
-Voor het **quotum type lage prioriteit** worden vCPU-quota van Resource Manager afgedwongen voor alle beschik bare VM-reeksen als één regionale limiet.
+Voor het type **Spot quotum** worden vCPU-quota van Resource Manager afgedwongen voor alle beschik bare VM-reeksen als één regionale limiet.
 
-Wanneer er een nieuwe VM met lage prioriteit moet worden geïmplementeerd, mag de som van het nieuwe en bestaande Vcpu's-gebruik voor alle VM-exemplaren met een lage prioriteit niet groter zijn dan de goedgekeurde vCPU quotum limiet voor lage prioriteit. Als het quotum met lage prioriteit wordt overschreden, is de VM-implementatie met lage prioriteit niet toegestaan. U kunt een toename van de Vcpu's-quotum limiet van lage prioriteit aanvragen bij Azure Portal. 
+Telkens wanneer er een nieuwe spot-VM moet worden geïmplementeerd, mag de som van het nieuwe en bestaande Vcpu's-gebruik voor alle exemplaren van de virtuele machine van de VM niet groter zijn dan de goedgekeurde plaatsings vCPU quotum limiet. Als het steun quotum wordt overschreden, is de implementatie van de locatie-VM niet toegestaan. U kunt een toename van de Vcpu's quotum limiet van Azure Portal aanvragen. 
 
 Meer informatie over Standard vCPU-quota's op de pagina vCPU quota voor virtuele machines en Azure-abonnement en service limieten. Meer informatie over het verhogen van de regionale vCPU limiet voor standaard quotum op deze [pagina](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests).
 
-U kunt nu een toename van de **quotum limieten met lage prioriteit voor alle VM-reeksen** aanvragen via de Blade **Help en ondersteuning** of de Blade **gebruik + quotum** in de portal.
+U kunt nu een toename van de **steun limieten voor alle VM-reeksen** aanvragen via de Blade **Help en ondersteuning** of de Blade **gebruik + quotum** in de portal.
 
-## <a name="request-low-priority-quota-limit-increase-for-all-vm-series-per-subscription-using-the-help--support-blade"></a>Toename van quotum limiet voor lage prioriteit aanvragen voor alle VM-reeksen per abonnement met behulp van de Blade Help en ondersteuning
+## <a name="request-spot-quota-limit-increase-for-all-vm-series-per-subscription-using-the-help--support-blade"></a>Toename van de limiet voor het aantal van de VM-serie per abonnement verhogen met behulp van de Blade Help en ondersteuning
 
 Volg de onderstaande instructies om een ondersteunings aanvraag te maken via de Blade Help en ondersteuning van Azure die beschikbaar zijn in de Azure Portal.
 
@@ -63,7 +63,7 @@ U kunt ook een **quotum aanvragen voor meerdere regio's** via één ondersteunin
 
 ![Details opgeven](./media/resource-manager-core-quotas-request/3-7.png)
 
-8. Selecteer voor de geselecteerde locatie **type** waarde als **' lage prioriteit '** . U kunt de quota typen standaard en lage prioriteit aanvragen bij één ondersteunings aanvraag via ondersteuning voor meerdere selecties in het veld **type** . Meer informatie over het verhogen van het **standaard quotum per VM-serie** op deze [pagina](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+8. Selecteer voor de geselecteerde locatie waarde **type** als **' spot '** . U kunt de standaard-en steun quotum typen van één ondersteunings aanvraag aanvragen via ondersteuning voor meerdere selecties in het veld **type** . Meer informatie over het verhogen van het **standaard quotum per VM-serie** op deze [pagina](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
 
 ![Details opgeven](./media/resource-manager-core-quotas-request/3-8.png)
 
@@ -77,7 +77,7 @@ U kunt ook een **quotum aanvragen voor meerdere regio's** via één ondersteunin
 
 11. Nadat u het gewenste quotum hebt ingevoerd, klikt u op **opslaan en door gaan** in het paneel quotum Details om door te gaan met het maken van de ondersteunings aanvraag.
 
-## <a name="request-low-priority-quota-limit-increase-for-all-vm-series-per-subscription-using-usages--quota-blade"></a>Toename van quotum limiet voor lage prioriteit aanvragen voor alle VM-reeksen per abonnement met gebruik en de Blade quotum
+## <a name="request-spot-quota-limit-increase-for-all-vm-series-per-subscription-using-usages--quota-blade"></a>Toename van de limiet voor het aantal van alle VM-reeksen per abonnement verhogen met behulp van de Blade gebruik + quotum
 
 Volg de onderstaande instructies voor het maken van een ondersteunings aanvraag via de Blade gebruik en quotum van Azure die beschikbaar is in de Azure Portal.
 
@@ -107,7 +107,7 @@ U kunt ook een **quotum aanvragen voor meerdere regio's** via één ondersteunin
 
   ![Formulier invullen](./media/resource-manager-core-quotas-request/3-2-6.png)
  
-7.  Selecteer voor de geselecteerde locatie **type** waarde als **' lage prioriteit '.** U kunt de quota typen standaard en lage prioriteit aanvragen bij één ondersteunings aanvraag via ondersteuning voor meerdere selecties in het veld **type** . Meer informatie over het verhogen van het **standaard quotum per VM-serie** op deze [pagina](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+7.  Selecteer voor de geselecteerde locatie waarde **type** als **' spot '.** U kunt de standaard-en steun quotum typen van één ondersteunings aanvraag aanvragen via ondersteuning voor meerdere selecties in het veld **type** . Meer informatie over het verhogen van het **standaard quotum per VM-serie** op deze [pagina](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
 
   ![Formulier invullen](./media/resource-manager-core-quotas-request/3-2-7.png)
  
@@ -120,4 +120,5 @@ U kunt ook een **quotum aanvragen voor meerdere regio's** via één ondersteunin
   ![Formulier invullen](./media/resource-manager-core-quotas-request/3-2-9.png)
  
 10. Nadat u het gewenste quotum hebt ingevoerd, klikt u op **opslaan en door gaan** in het paneel quotum Details om door te gaan met het maken van de ondersteunings aanvraag.
+
 

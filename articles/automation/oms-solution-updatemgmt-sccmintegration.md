@@ -4,17 +4,17 @@ description: Dit artikel is bedoeld om u te helpen bij het configureren van Syst
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 92a93982cdd042a92b006cab7052ad4a6fee6fff
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 345adeee37f5f9bc4c794eb9bb624e7797197f22
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478208"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850207"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>System Center Configuration Manager integreren met updatebeheer
 
@@ -26,7 +26,7 @@ U kunt rapporteren en beheerde Windows-servers bijwerken door te maken en vooraf
 
 * Hebt u de [oplossing Update Management](automation-update-management.md) toegevoegd aan uw Automation-account.
 * Windows-servers die worden beheerd door uw System Center Configuration Manager-omgeving moeten ook rapporteren aan de Log Analytics-werkruimte waar ook de Updatebeheer-oplossing is ingeschakeld.
-* Deze functie is ingeschakeld in System Center Configuration Manager current branch versie 1606 en hoger. Controleer uw centrale beheersite van Configuration Manager of een zelfstandige primaire site met Azure Monitor-logboeken integreren en verzamelingen importeren, [verbinding maken met Configuration Manager naar Azure Monitor meldt](../azure-monitor/platform/collect-sccm.md).  
+* Deze functie is ingeschakeld in System Center Configuration Manager current branch versie 1606 en hoger. Als u uw Configuration Manager centrale beheer site of een zelfstandige primaire site wilt integreren met Azure Monitor logboeken en verzamelingen importeren, controleert [u Configuration Manager verbinding maken met Azure monitor logboeken](../azure-monitor/platform/collect-sccm.md).  
 * Windows-agents moeten worden geconfigureerd om te communiceren met een WSUS-server (Windows Server Update Services of toegang hebben tot Microsoft Update als ze geen beveiligingsupdates krijgen van Configuration Manager.   
 
 Hoe u clients die worden gehost in Azure IaaS met uw bestaande Configuration Manager-omgeving beheert, hangt hoofdzakelijk af van de verbinding die u hebt tussen Azure-datacenters en uw infrastructuur. Deze verbinding is van invloed op de ontwerpwijzigingen die u mogelijk moet aanbrengen in uw Configuration Manager-infrastructuur en de daarmee samenhangende kosten voor de ondersteuning van de benodigde wijzigingen. Om te begrijpen welke overwegingen u wilt evalueren voordat u doorgaat, leest u [Configuration Manager on Azure - Frequently Asked Questions](/sccm/core/understand/configuration-manager-on-azure#networking) (veelgestelde vragen).

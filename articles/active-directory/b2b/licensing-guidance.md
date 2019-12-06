@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5968536d0bd0fbe2496fd9bf5fca86c7a1c4053d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 28d02160163da4081ad8adbe233b27fee970a0df
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162270"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868844"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Licentierichtlijnen voor B2B-samenwerking van Azure Active Directory
 
@@ -25,11 +25,11 @@ Met Azure Active Directory (Azure AD) Collaborate Business-to-Business (B2B)-sam
 > [!NOTE]
 > Raadpleeg de [Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory/) voor meer informatie over Azure ad-prijzen en B2B-samenwerkings functies.
 
-B2B gast gebruikers licenties worden automatisch berekend en gerapporteerd op basis van de verhouding van 1:5. Op dit moment is het niet mogelijk om B2B-gebruikers licenties rechtstreeks aan gast gebruikers toe te wijzen.
+B2B gast gebruikers licenties worden automatisch berekend en gerapporteerd op basis van de verhouding van 1:5. 
 
 Bovendien kunnen gast gebruikers gratis Azure AD-functies gebruiken zonder aanvullende licentie vereisten. Gast gebruikers hebben toegang tot gratis Azure AD-functies, zelfs als u geen betaalde Azure AD-licenties hebt. 
 
-## <a name="examples-calculating-guest-user-licenses"></a>Voorbeelden: Licenties voor gast gebruikers worden berekend
+## <a name="examples-calculating-guest-user-licenses"></a>Voor beelden: gebruikers licenties voor gasten berekenen
 Wanneer u hebt vastgesteld hoeveel gast gebruikers toegang nodig hebben tot uw betaalde Azure AD-Services, moet u ervoor zorgen dat u over voldoende betaalde licenties voor Azure AD beschikt om gast gebruikers te voorzien van de vereiste verhouding van 1:5. Hier volgen enkele voorbeelden:
 
 - U wilt 100 gast gebruikers uitnodigen voor uw Azure AD-apps of-services en toegangs beheer en-inrichting bieden. Voor 50 van deze gast gebruikers wilt u ook MFA en voorwaardelijke toegang vereisen, dus voor die functies hebt u 10 Azure AD Premium P1-licenties nodig. Als u van plan bent om functies voor identiteits beveiliging te gebruiken voor uw gast gebruikers, hebt u voor de gast gebruikers Azure AD Premium P2-licenties in dezelfde 1:5-verhouding nodig.

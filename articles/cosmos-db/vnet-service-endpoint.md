@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 791821fbfe5854c27b7e3e6927a56a66ac1f1dc2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b91e235824085977f1570e664b43d028a905407b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819086"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869796"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Toegang tot Azure Cosmos DB van virtuele netwerken (VNet)
 
@@ -39,6 +39,12 @@ Wanneer IP-firewall of toegangs regels voor virtuele netwerken worden toegevoegd
 ### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Mijn aanvragen die zijn gestart, worden geblokkeerd wanneer het service-eind punt is ingeschakeld voor Azure Cosmos DB op het subnet. Wat is er gebeurd?
 
 Zodra het service-eind punt voor Azure Cosmos DB op een subnet is ingeschakeld, wordt de bron van het verkeer dat de account overschakelt van het open bare IP-adres naar het virtuele netwerk en subnet. Als uw Azure Cosmos-account alleen een IP-firewall heeft, komt het verkeer van het subnet waarvoor de service is ingeschakeld niet meer overeen met de IP-firewall regels en wordt daarom geweigerd. Lees de stappen voor probleemloze migratie van een firewall op basis van een IP-adres naar het toegangs beheer via een virtueel netwerk.
+
+### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Zijn er extra RBAC-machtigingen nodig voor Azure Cosmos-accounts met de VNET-service-eind punten?
+
+Nadat u de VNET-service-eind punten aan een Azure Cosmos-account hebt toegevoegd, moet u toegang hebben tot de `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` actie voor alle VNETs die zijn geconfigureerd voor uw Azure Cosmos-account om wijzigingen aan te brengen in de account instellingen. Deze actie is vereist omdat het autorisatie proces valideert voor acties die overeenkomen met de data base en de virtuele netwerk bronnen voordat de eigenschappen worden geëvalueerd.
+ 
+De verificatie valideert voor acties, zelfs als de gebruiker niet de VNET-Acl's opgeeft met Azure CLI. Op dit moment ondersteunt het besturings vlak van het Azure Cosmos-account de voltooiings status van het Azure Cosmos-account. Een van de para meters voor de besturings vlak-aanroepen is `virtualNetworkRules`. Als deze para meter niet is opgegeven, wordt met Azure CLI een Get data base-aanroep opgehaald om de `virtualNetworkRules` op te halen en wordt deze waarde in de update aanroep gebruikt.
 
 ### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>Hebben de gekoppelde virtuele netwerken ook toegang tot het Azure Cosmos-account? 
 Alleen virtuele netwerken en hun subnetten die zijn toegevoegd aan het Azure Cosmos-account hebben toegang. Hun peered VNets heeft geen toegang tot het account totdat de subnetten in gekoppelde virtuele netwerken aan het account worden toegevoegd.

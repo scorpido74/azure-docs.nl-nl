@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: d372b94ac0df4cef3c43fab10686e9bf20633bfe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c522af44be51eb89ee9f64bae2dc4e9e7b24123
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034252"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873944"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init-ondersteuning voor virtuele machines in azure
 In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-scripts worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
@@ -32,13 +32,14 @@ Cloud-init werkt ook in distributies. U gebruikt bijvoorbeeld niet **apt-get ins
 
 We zijn actief werkt met onze onderschreven Linux-distributie partners om cloud-init ingeschakeld installatiekopieën die beschikbaar zijn in de Azure marketplace. Met deze installatie kopieën kunnen uw Cloud-init-implementaties en-configuraties naadloos werken met Vm's en virtuele-machine schaal sets. De volgende tabel geeft een overzicht van de huidige beschikbaarheid van de installatiekopieën van cloud-init ingeschakeld op het Azure-platform:
 
-| Uitgever | Aanbieding | SKU | Versie | cloud-init gereed |
+| Uitgever | Aanbieding | SKU | Version | cloud-init gereed |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |nieuwste |ja | 
 |Canonical |UbuntuServer |16.04-LTS |nieuwste |ja | 
 |Canonical |UbuntuServer |14.04.5-LTS |nieuwste |ja |
 |CoreOS |CoreOS |Stabiel |nieuwste |ja |
 |Open Logic 7,7 |CentOS |7-CI |7.7.20190920 |preview |
+|Oracle 7,7 |Oracle-Linux |77-CI |7.7.01|preview |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ja |
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
     
@@ -47,6 +48,7 @@ Momenteel Azure Stack biedt geen ondersteuning voor het inrichten van RHEL 7. x 
 * Voor RHEL 7,6, Cloud-init Package, is het ondersteunde pakket: *18.2-1. el7_6.2* 
 * Voor RHEL 7,7 (preview), Cloud-init Package, het preview-pakket is: *18.5 -3. EL7*
 * Voor CentOS 7,7 (preview), Cloud-init Package, het preview-pakket is: *18.5 -3. EL7. CentOS*
+* Voor Oracle 7,7 (preview), Cloud-init pakket, het preview-pakket is: *18.5-3.0.1. EL7*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Wat is het verschil tussen Cloud-init en de Linux-agent (WALA)?
 WALA is een Azure-platformspecifieke agent die wordt gebruikt voor het inrichten en configureren van Vm's en het afhandelen van Azure-extensies. We verbeteren de taak voor het configureren van Vm's voor het gebruik van Cloud-init in plaats van de Linux-agent, zodat bestaande Cloud-init-klanten hun huidige Cloud-init-scripts kunnen gebruiken.  Als u beschikt over bestaande investeringen in Cloud-init-scripts voor het configureren van Linux-systemen, zijn er **geen aanvullende instellingen vereist** om deze in te scha kelen. 

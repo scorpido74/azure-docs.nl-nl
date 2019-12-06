@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 90710176ec16d1c565e24ff7df56b0b838f2699e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e54aa00df9efa60cce0fd6fa1da32720f2947b12
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229410"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851193"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privé verbinding maken met een Azure Cosmos-account met behulp van een persoonlijke Azure-koppeling
 
@@ -23,7 +23,7 @@ In dit artikel leert u hoe u een virtuele machine maakt in een virtueel Azure-ne
 
 Meld u aan bij de [Azure Portal.](https://portal.azure.com)
 
-## <a name="create-a-vm"></a>Een virtuele machine maken
+## <a name="create-a-vm"></a>Een VM maken
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
@@ -61,7 +61,7 @@ In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de
     | Naam van de virtuele machine | Voer *myVm*in. |
     | Regio | Selecteer **WestCentralUS**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | Installatiekopie | Selecteer **Windows Server 2019 Data Center**. |
+    | afbeelding | Selecteer **Windows Server 2019 Data Center**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
     | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
@@ -130,9 +130,6 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 In deze sectie maakt u een particuliere verbinding met het Azure Cosmos-account met behulp van het persoonlijke eind punt. 
 
-> [!IMPORTANT]
-> De DNS-configuratie voor het Azure Cosmos-account moet hand matig worden aangepast aan het hosts-bestand om de FQDN van het specifieke account op te kunnen bevatten. In productie scenario's configureert u de DNS-server voor het gebruik van de privé-IP-adressen. Voor het demo doel kunt u echter beheerders machtigingen gebruiken op de VM en het `c:\Windows\System32\Drivers\etc\hosts` bestand (in Windows) of `/etc/hosts` bestand (op Linux) zodanig wijzigen dat het IP-adres en DNS-toewijzing worden meegenomen.
-
 1. Als u het IP-adres en de DNS-toewijzing wilt gebruiken, meldt u zich aan bij de *myVM*van de virtuele machine, opent u het `c:\Windows\System32\Drivers\etc\hosts` bestand en neemt u de DNS-informatie uit de vorige stap op in de volgende indeling:
 
    [Privé IP-adres] [Account eindpunt]. Documents. Azure. com
@@ -154,7 +151,7 @@ In deze sectie maakt u een particuliere verbinding met het Azure Cosmos-account 
 
 1. Voer de connection string in door de gegevens die eerder zijn gekopieerd te plakken.
 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 
 1. Selecteer **Verbinden**.
 

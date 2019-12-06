@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ef15bd1fe922aa44227d2fea3d882d4320146f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d3b05c45d218c0f85817b4b5023ac22401879f81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786718"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847215"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Rapportage opties voor Azure AD-wachtwoord beheer
 
@@ -81,7 +81,7 @@ De volgende typen activiteiten worden weer gegeven in de categorie controle gebe
 * [Wacht woord opnieuw instellen (door beheerder)](#activity-type-reset-password-by-admin): geeft aan dat een beheerder een wacht woord opnieuw heeft ingesteld namens een gebruiker van de Azure Portal.
 * [Wacht woord opnieuw instellen (Self-Service)](#activity-type-reset-password-self-service): geeft aan dat een gebruiker het wacht woord van de [Azure AD-Portal](https://passwordreset.microsoftonline.com)voor het opnieuw instellen van het wacht woord opnieuw heeft ingesteld.
 * Voortgang van de stroom voor het [opnieuw instellen van het wacht woord voor wachtwoord herstel](#activity-type-self-serve-password-reset-flow-activity-progress): Hiermee wordt aangegeven welke stap een gebruiker doorloopt, zoals het door geven van een specifieke verificatie poort voor wacht woord opnieuw instellen als onderdeel van het proces voor het opnieuw instellen van wacht woorden.
-* [Gebruikers account ontgrendelen (Self-Service)](#activity-type-unlock-a-user-account-self-service)): geeft aan dat een gebruiker het Active Directory account heeft ontgrendeld zonder het wacht woord opnieuw in te stellen vanuit de [Azure AD-portal voor wachtwoord herstel](https://passwordreset.microsoftonline.com) met behulp van de Active Directory functie van het ontgrendelen van het account zonder opnieuw in te stellen.
+* [Gebruikers account ontgrendelen (Self-Service)](#activity-type-unlock-a-user-account-self-service)): geeft aan dat een gebruiker het Active Directory account heeft ontgrendeld zonder het wacht woord opnieuw in te stellen vanuit de [Azure AD-portal voor wachtwoord herstel](https://passwordreset.microsoftonline.com) met behulp van de Active Directory-functie van account ontgrendelen zonder opnieuw in te stellen.
 * [Gebruiker geregistreerd voor selfservice voor wachtwoord herstel](#activity-type-user-registered-for-self-service-password-reset): geeft aan dat een gebruiker alle vereiste gegevens heeft geregistreerd om hun wacht woord opnieuw in te stellen in overeenstemming met het momenteel opgegeven Tenant wachtwoord opnieuw instellen beleid.
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>Activiteitstype: geblokkeerd voor selfservice voor wachtwoord herstel

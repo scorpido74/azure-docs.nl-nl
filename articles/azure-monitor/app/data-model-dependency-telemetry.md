@@ -1,5 +1,5 @@
 ---
-title: Telemetrie-gegevens model van Azure-toepassing Insights-telemetrie-afhankelijkheid | Microsoft Docs
+title: Azure Monitor Application Insights afhankelijkheids gegevens model
 description: Application Insights gegevens model voor de telemetrie van de afhankelijkheid
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: e0923c20b11aa02f380af1faa6766d2346ad1fb2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5021d3b34816159fc78590a5947ddd3a790303ee
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677435"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872635"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetrie van afhankelijkheid: Application Insights gegevens model
 
@@ -43,7 +43,7 @@ Doel site van een afhankelijkheids aanroep. Voor beelden zijn server naam, hosta
 
 De duur van de aanvraag in de indeling: `DD.HH:MM:SS.MMMMMM`. Moet minder dan `1000` dagen zijn.
 
-## <a name="result-code"></a>Resultaat code
+## <a name="result-code"></a>Resultaatcode
 
 De resultaat code van een afhankelijkheids aanroep. Voor beelden hiervan zijn de SQL-fout code en de HTTP-status code.
 

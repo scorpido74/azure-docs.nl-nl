@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 18c6499afe450a0387b0d9f0f13ee4378e0a21a9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 42f52581d8f2f80deb5d6250ed54ab64fc1ba4d3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173831"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849051"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>Gegevens visualiseren met de Azure Data Explorer-connector voor Excel
 
@@ -23,7 +23,7 @@ De systeem eigen Azure Data Explorer-connector biedt de mogelijkheid om query re
 ## <a name="define-kusto-query-as-an-excel-data-source-and-load-the-data-to-excel"></a>Kusto query definiëren als een Excel-gegevens bron en de gegevens laden in Excel
 
 1. Open **Microsoft Excel**.
-1. Selecteer gegevens > ophalenvanAzure > in**Azure Data Explorer**op het tabblad gegevens.
+1. Op het tabblad **gegevens** selecteert u **gegevens ophalen** > **van Azure** > **van Azure Data Explorer**.
 
     ![Gegevens ophalen uit Azure Data Explorer](media/excel-connector/get-data-from-adx.png)
 
@@ -31,20 +31,20 @@ De systeem eigen Azure Data Explorer-connector biedt de mogelijkheid om query re
 
     ![Venster Azure Data Explorer (Kusto)](media/excel-connector/adx-connection-window.png)
     
-    |Veld   |Description |
+    |Veld   |Beschrijving |
     |---------|---------|
     |**Cluster**   |   De naam van het cluster (verplicht)      |    
-    |**Database**     |    Naam van database      |    
+    |**Database**     |    Naam van de database      |    
     |**Tabel naam of Azure Data Explorer query**    |     De naam van de tabel of Azure-Data Explorer query    | 
     
     **Geavanceerde opties:**
 
-     |Veld   |Description |
+     |Veld   |Beschrijving |
     |---------|---------|
     |**Record nummer van query resultaat beperken**     |     Het aantal records dat in Excel is geladen beperken  |    
     |**Gegevens grootte van query resultaat beperken (bytes)**    |    De grootte van de gegevens beperken      |   
     |**Afbreking van resultaten sets uitschakelen**    |         |      
-    |**Aanvullende set-instructies (gescheiden door punt komma's)**    |    Instructies `set` toevoegen die moeten worden toegepast op de gegevens bron     |   
+    |**Aanvullende set-instructies (gescheiden door punt komma's)**    |    `set`-instructies toevoegen die moeten worden toegepast op de gegevens bron     |   
 
 1.  Navigeer in het **Navigatie** deel venster naar de juiste tabel. Selecteer in het voorbeeld venster voor tabellen de optie **gegevens transformeren** om wijzigingen aan te brengen aan uw gegevens of selecteer **laden** om deze naar Excel te laden.
 
@@ -75,3 +75,6 @@ Zodra de gegevens zijn geladen in Excel en beschikbaar zijn in uw Excel-werk bla
 
 1. Maak volledige Dash boards om uw gegevens te bewaken.
 
+## <a name="next-steps"></a>Volgende stappen
+
+[Gegevens visualiseren met behulp van een Azure Data Explorer Kusto-query geïmporteerd in micro soft Excel](excel-blank-query.md)

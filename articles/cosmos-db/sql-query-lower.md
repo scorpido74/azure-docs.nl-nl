@@ -1,18 +1,18 @@
 ---
 title: LAGER in Azure Cosmos DB query taal
-description: Meer informatie over de functie voor SQL-systeem functies lager in Azure Cosmos DB.
+description: Meer informatie over de lagere SQL-systeem functie in Azure Cosmos DB om een teken reeks expressie te retour neren na het omzetten van een hoofd letter-teken in kleine letters
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3a9c122ef65772458b832d3b1651e7e63e42985e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8f7cd864d90b8ab17a180a00a7a6d4bb683da9be
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349700"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873298"
 ---
 # <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
  Retourneert een tekenreeksexpressie na het converteren van tekens in hoofdletters naar kleine letters.  

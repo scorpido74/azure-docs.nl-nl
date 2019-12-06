@@ -9,19 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53ef51d52e699612508a446acbc075f766565d63
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 12726a1ad9b04bdfe2cd279d36a696bb011e4122
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803509"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845345"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -64,19 +62,19 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | acr |
 | Actor |
 | actortoken |
-| AIO |
+| aio |
 | altsecid |
-| AMR |
+| amr |
 | app_chain |
 | app_displayname |
 | app_res |
 | appctx |
 | appctxsender |
-| AppID |
+| appid |
 | appidacr |
-| Assertion |
+| assertion |
 | at_hash |
-| AUD |
+| aud |
 | auth_data |
 | auth_time |
 | authorization_code |
@@ -84,18 +82,18 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | azpacr |
 | c_hash |
 | ca_enf |
-| seingeving |
+| cc |
 | cert_token_use |
 | client_id |
 | cloud_graph_host_name |
 | cloud_instance_name |
 | cnf |
-| Gecodeerd |
+| code |
 | besturingselementen |
 | credential_keys |
-| CSR |
+| csr |
 | csr_type |
-| DeviceID |
+| deviceid |
 | dns_names |
 | domain_dns_name |
 | domain_netbios_name |
@@ -103,10 +101,10 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | e-mail |
 | endpoint |
 | enfpolids |
-| Geldig |
+| geldig |
 | expires_on |
 | grant_type |
-| Graph |
+| graph |
 | group_sids |
 | groepen |
 | hasgroups |
@@ -121,12 +119,12 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
 | iat |
 | Identity provider |
-| IDP |
+| idp |
 | in_corp |
-| exemplaar |
+| instance |
 | ipaddr |
 | isbrowserhostedapp |
-| ISS |
+| iss |
 | jwk |
 | key_id |
 | key_type |
@@ -137,10 +135,10 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | mdm_enrollment_url |
 | mdm_terms_of_use_url |
 | meid |
-| NBF |
+| nbf |
 | netbios_name |
 | nonce |
-| nogmaals |
+| oid |
 | on_prem_id |
 | onprem_sam_account_name |
 | onprem_sid |
@@ -152,33 +150,33 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | preferred_username |
 | previous_refresh_token |
 | primary_sid |
-| PUID |
+| puid |
 | pwd_exp |
 | pwd_url |
 | redirect_uri |
 | refresh_token |
 | refreshtoken |
 | request_nonce |
-| Resource |
+| resource |
 | role |
 | rolls |
 | scope |
 | verbindings |
-| geval |
-| ondertekening |
+| sid |
+| signature |
 | signin_state |
 | src1 |
 | src2 |
-| chronische |
+| sub |
 | tbid |
 | tenant_display_name |
 | tenant_region_scope |
 | thumbnail_photo |
-| TID |
+| tid |
 | tokenAutologonEnabled |
 | trustedfordelegation |
 | unique_name |
-| UPN |
+| upn |
 | user_setting_sync_url |
 | gebruikersnaam |
 | uti's |
@@ -289,21 +287,21 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 
 | Bron | Id | Beschrijving |
 |-----|-----|-----|
-| Gebruiker | surname | Familie naam |
+| Gebruiker | surname | Achternaam |
 | Gebruiker | givenname | Voornaam |
 | Gebruiker | displayname | Weergavenaam |
-| Gebruiker | id | Id |
-| Gebruiker | mail | E-mail adres |
+| Gebruiker | id | ObjectID |
+| Gebruiker | mail | E-mailadres |
 | Gebruiker | userPrincipalName | User principal name |
 | Gebruiker | department|Afdeling|
 | Gebruiker | onpremisessamaccountname | Naam van on-premises SAM-account |
 | Gebruiker | netbiosname| NetBios-naam |
-| Gebruiker | DNS | DNS-domein naam |
+| Gebruiker | DNS | DNS-domeinnaam |
 | Gebruiker | onpremisesecurityidentifier | Lokale beveiligings-id |
 | Gebruiker | CompanyName| Naam van organisatie |
 | Gebruiker | streetaddress | Adres |
-| Gebruiker | code | Post code |
-| Gebruiker | preferredlanguange | Voorkeurs taal |
+| Gebruiker | code | Postcode |
+| Gebruiker | preferredlanguange | Voorkeurstaal |
 | Gebruiker | onpremisesuserprincipalname | On-premises UPN |
 | Gebruiker | mailNickname | E-mail bijnaam |
 | Gebruiker | extensionattribute1 | Uitbreidings kenmerk 1 |
@@ -321,15 +319,15 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | extensionattribute13 | Uitbreidings kenmerk 13 |
 | Gebruiker | extensionattribute14 | Uitbreidings kenmerk 14 |
 | Gebruiker | extensionattribute15 | Uitbreidings kenmerk 15 |
-| Gebruiker | Othermail | Andere E-mail |
-| Gebruiker | Regio | Land/regio |
+| Gebruiker | othermail | Andere E-mail |
+| Gebruiker | land | Land/regio |
 | Gebruiker | city | Plaats |
 | Gebruiker | state | Staat |
 | Gebruiker | JobTitle | Functie |
-| Gebruiker | employeeid | Werk nemer-ID |
+| Gebruiker | employeeid | Werknemer-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |
 | toepassing, resource, doel groep | displayname | Weergavenaam |
-| toepassing, resource, doel groep | geobjecteerd | Id |
+| toepassing, resource, doel groep | geobjecteerd | ObjectID |
 | toepassing, resource, doel groep | tags | Service-Principal-tag |
 | Bedrijf | tenantcountry | Land van de Tenant |
 
@@ -363,8 +361,8 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 |TransformationMethod|Verwachte invoer|Verwachte uitvoer|Beschrijving|
 |-----|-----|-----|-----|
-|Koppelen|tekenreeks1, tekenreeks2, scheidings teken|Output claim|Voegt invoer teken reeksen samen met behulp van een scheidings teken tussen. Bijvoorbeeld: tekenreeks1: "foo@bar.com", tekenreeks2: "sandbox", scheidings teken: "." resulteert in output claim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|mail|Output claim|Extraheert het lokale deel van een e-mail adres. Bijvoorbeeld: mail: 'foo@bar.com' resulteert in output claim: ' foo '. Als er geen \@-teken aanwezig is, wordt de oorspronkelijke invoer teken reeks geretourneerd als is.|
+|Koppelen|tekenreeks1, tekenreeks2, scheidings teken|outputClaim|Voegt invoer teken reeksen samen met behulp van een scheidings teken tussen. Bijvoorbeeld: tekenreeks1: "foo@bar.com", tekenreeks2: "sandbox", scheidings teken: "." resulteert in output claim: "foo@bar.com.sandbox"|
+|ExtractMailPrefix|mail|outputClaim|Extraheert het lokale deel van een e-mail adres. Bijvoorbeeld: mail: 'foo@bar.com' resulteert in output claim: ' foo '. Als er geen \@-teken aanwezig is, wordt de oorspronkelijke invoer teken reeks geretourneerd als is.|
 
 **InputClaims:** Gebruik een InputClaims-element om de gegevens van een claim schema vermelding door te geven aan een trans formatie. Het heeft twee kenmerken: **ClaimTypeReferenceId** en **TransformationClaimType**.
 
@@ -389,10 +387,10 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 |Bron|Id|Beschrijving|
 |-----|-----|-----|
-| Gebruiker | mail|E-mail adres|
+| Gebruiker | mail|E-mailadres|
 | Gebruiker | userPrincipalName|User principal name|
 | Gebruiker | onpremisessamaccountname|Naam van on-premises SAM-account|
-| Gebruiker | employeeid|Werk nemer-ID|
+| Gebruiker | employeeid|Werknemer-id|
 | Gebruiker | extensionattribute1 | Uitbreidings kenmerk 1 |
 | Gebruiker | extensionattribute2 | Uitbreidings kenmerk 2 |
 | Gebruiker | extensionattribute3 | Uitbreidings kenmerk 3 |

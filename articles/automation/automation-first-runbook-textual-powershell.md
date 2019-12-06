@@ -5,17 +5,17 @@ keywords: azure powershell, zelfstudie powershell-script, powershell-automatiser
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae9daaf797d3d82200ee094b63bad1f5c1ff68cc
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: f950a2fed2fbd355fc99453f09b655463e67102d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743822"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850870"
 ---
 # <a name="my-first-powershell-runbook"></a>Mijn eerste PowerShell-runbook
 
@@ -33,7 +33,7 @@ Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden vol
 
 * Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-account](automation-quickstart-create-account.md) om het runbook te bevatten en te verifiëren voor Azure-resources. Dit account moet machtigingen hebben om de virtuele machine te starten en stoppen.
-* Een virtuele machine van Azure. U stopt en start deze machine, dus het mag geen productie-VM zijn.
+* Een virtuele machine van Azure. u stopt en start deze machine, dus het mag geen productie-VM zijn.
 * Mogelijk moet u [uw Azure-modules bijwerken](automation-update-azure-modules.md) op basis van de cmdlets die u gebruikt.
 
 ## <a name="create-new-runbook"></a>Nieuw runbook maken
@@ -82,7 +82,7 @@ Het runbook dat u hebt gemaakt, bevindt zich nog steeds in de modus Concept. Het
 1. Schuif terug naar rechts om het deelvenster voor **MyFirstRunbook-PowerShell** weer te geven.
    Met de opties bovenaan kunnen we het runbook starten, het runbook weergeven, plannen dat het op een bepaald moment in de toekomst start of een [webhook](automation-webhooks.md) maken, zodat het kan worden gestart via een HTTP-aanroep.
 1. U wilt het runbook starten, dus klik op **Start** en klik vervolgens op **OK** wanneer de pagina runbook starten wordt geopend.
-1. Er wordt een taak pagina geopend voor de runbook-taak die u hebt gemaakt. U kunt dit deel venster sluiten, maar in dit geval laat u het geopend, zodat u de voortgang van de taak kunt bekijken.
+1. Er wordt een taak pagina geopend voor de runbook-taak die u hebt gemaakt. u kunt dit deel venster sluiten, maar in dit geval laat u het geopend, zodat u de voortgang van de taak kunt bekijken.
 1. De taak status wordt weer gegeven in **taak samenvatting** en komt overeen met de statussen die u hebt gezien tijdens het testen van het runbook.
 
    ![Taakoverzicht](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
@@ -134,7 +134,7 @@ U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nu
    ```
 
 1. Open de tekst editor door te klikken op **bewerken** op de pagina MyFirstRunbook-Power shell.
-1. U hebt de regel voor **Write-output** niet meer nodig, dus kunt u deze verwijderen.
+1. u hebt de regel voor **Write-output** niet meer nodig, dus kunt u deze verwijderen.
 1. Typ of kopieer en plak de volgende code waarmee de verificatie wordt uitgevoerd met uw Uitvoeren als-account voor Automation:
 
    ```powershell
@@ -163,11 +163,11 @@ U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nu
 1. Klik op **test venster** zodat u het runbook kunt testen.
 1. Klik op **Start** om de test te starten. Zodra deze is voltooid, ontvangt u uitvoer zoals hieronder afgebeeld, waarin basisinformatie van uw account wordt weergegeven. Deze uitvoer bevestigt dat het run as-account geldig is.
 
-   ![Authenticeren](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
+   ![Verifiëren](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 
 ## <a name="add-code-to-start-a-virtual-machine"></a>Code toevoegen om een virtuele machine te starten
 
-Nu uw runbook is geverifieerd voor uw Azure-abonnement, kunt u resources beheren. U voegt een opdracht toe om een virtuele machine te starten. U kunt een wille keurige virtuele machine in uw Azure-abonnement kiezen en u hebt nu die naam voorlopig hardcoderen we in het runbook.
+Nu uw runbook is geverifieerd voor uw Azure-abonnement, kunt u resources beheren. u voegt een opdracht toe om een virtuele machine te starten. U kunt een wille keurige virtuele machine in uw Azure-abonnement kiezen en u hebt nu die naam voorlopig hardcoderen we in het runbook.
 
 1. Na *Connect-AzureRmAccount*typt u *Start-AzureRmVM-name ' VMName '-ResourceGroupName ' NameofResourceGroup '* om de naam en de naam van de resource groep op te geven van de virtuele machine die moet worden gestart.
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 4324d33a9da66c5f49645e1c8014bd5f57d37bd9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a2c1ba1d4cd2dfdbf2a94005c539e70705486ba4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837733"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851091"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Een Azure Machine Learning Studio-webservice (klassiek) implementeren
 
@@ -36,7 +36,7 @@ Vanuit een hoogwaardige punt weergave implementeert u uw model in drie stappen:
 * **[Converteren naar een voorspellend experiment]** : Zodra uw model is getraind met bestaande gegevens en u klaar bent om het te gebruiken voor het beoordelen van nieuwe gegevens, kunt u uw experiment voorbereiden en stroom lijnen voor voor spellingen.
 * **Implementeren** als een **[nieuwe webservice]** of een **[klassieke webservice]** : wanneer u uw voorspellende experiment implementeert als een Azure-webservice, kunnen gebruikers gegevens naar uw model verzenden en de voor spellingen van uw model ontvangen.
 
-## <a name="create-a-training-experiment"></a>Een trainings experiment maken
+## <a name="create-a-training-experiment"></a>Een opleidingsexperiment maken
 
 Voor het trainen van een predictive analytics model gebruikt u de klassieke versie van Azure Machine Learning Studio om een trainings experiment te maken waarin u verschillende modules opneemt voor het laden van trainings gegevens, het voorbereiden van de gegevens indien nodig, het Toep assen van machine learning-algoritmen en de resultaten evalueren. U kunt een experiment herhalen en verschillende machine learning algoritmen proberen om de resultaten te vergelijken en te evalueren.
 
@@ -63,12 +63,12 @@ In de volgende stappen wordt beschreven hoe u een voorspellend experiment implem
 
 ## <a name="deploy-it-as-a-new-web-service"></a>Deze als een nieuwe webservice implementeren
 
-Nu het voorspellende experiment is voor bereid, kunt u dit implementeren als een nieuwe Azure-webservice (op basis van Resource Manager). Met de webservice kunnen gebruikers gegevens naar uw model verzenden en worden de voor spellingen van het model geretourneerd.
+Nu het voorspellende experiment is voor bereid, kunt u dit implementeren als een nieuwe Azure-webservice (op basis van Resource Manager). Met behulp van de webservice, kunnen gebruikers gegevens verzenden naar uw model en het model de voorspellingen wordt geretourneerd.
 
 Als u uw voorspellende experiment wilt implementeren, klikt u op **uitvoeren** onder aan het canvas van het experiment. Zodra het experiment is voltooid, klikt u op **webservice implementeren** en selecteert u **Web service implementeren [Nieuw]** .  De pagina implementatie van de Web Service-Portal van Machine Learning Studio (klassiek) wordt geopend.
 
 > [!NOTE] 
-> Als u een nieuwe webservice wilt implementeren, moet u voldoende machtigingen hebben in het abonnement waarvoor u de webservice implementeert. Zie [Manage a web service using the Azure machine learning Web Services portal](manage-new-webservice.md)(Engelstalig) voor meer informatie. 
+> Voor het implementeren van een nieuwe webservice moet u voldoende machtigingen hebben in het abonnement waarvoor u de webservice implementeert. Zie voor meer informatie, [beheren van een webservice met behulp van de Azure Machine Learning-webserviceportal](manage-new-webservice.md). 
 
 ### <a name="web-service-portal-deploy-experiment-page"></a>Pagina Web Service Portal implementeren experiment
 
@@ -121,7 +121,7 @@ Zie [How to verbruik a Azure machine learning Studio (klassieke) Web Service (En
 
 ### <a name="manage-your-new-web-service"></a>Uw nieuwe webservice beheren
 
-U kunt uw nieuwe Web Services-portal voor webservices Machine Learning Studio (Classic) beheren. Klik op de [hoofd pagina](https://services.azureml-test.net/)van de portal op **Web Services**. Op de pagina webservices kunt u een service verwijderen of kopiëren. Als u een specifieke service wilt bewaken, klikt u op de service en klikt u vervolgens op **dash board**. Als u batch-taken wilt bewaken die zijn gekoppeld aan de webservice, klikt u op **Batch-aanvraag logboek**.
+U kunt uw nieuwe webservices beheren met de Web Services-portal van Machine Learning Studio (Classic). Klik op de [hoofd pagina](https://services.azureml.net/)van de portal op **Web Services**. Op de pagina webservices kunt u een service verwijderen of kopiëren. Als u een specifieke service wilt bewaken, klikt u op de service en klikt u vervolgens op **dash board**. Als u batch-taken wilt bewaken die zijn gekoppeld aan de webservice, klikt u op **Batch-aanvraag logboek**.
 
 ### <a id="multi-region"></a>Uw nieuwe webservice implementeren in meerdere regio's
 
@@ -132,32 +132,32 @@ Prijzen zijn specifiek voor regio's. u moet dus een facturerings plan definiëre
 #### <a name="create-a-plan-in-another-region"></a>Een plan maken in een andere regio
 
 1. Meld u aan bij [Microsoft Azure machine learning-webservices](https://services.azureml.net/).
-2. Klik op de menu optie **plannen** .
-3. Klik op de pagina plannen over weer gave op **Nieuw**.
-4. Selecteer in de vervolg keuzelijst **abonnement** het abonnement waarin het nieuwe plan wordt opgeslagen.
-5. Selecteer in de vervolg keuzelijst **regio** een regio voor het nieuwe plan. De plannings opties voor de geselecteerde regio worden weer gegeven in de sectie **plan opties** van de pagina.
-6. Selecteer een resource groep voor het plan uit de vervolg keuzelijst **resource groep** . Zie [Azure Resource Manager Overview](../../azure-resource-manager/resource-group-overview.md)(Engelstalig) voor meer informatie over resource groepen.
-7. Typ in **naam van plan** de naam van het plan.
-8. Klik onder **Opties plannen**op het facturerings niveau voor het nieuwe abonnement.
+2. Klik op de **plannen** menu-optie.
+3. Klik op de abonnementen via de weergavepagina **nieuw**.
+4. Uit de **abonnement** vervolgkeuzelijst, selecteer het abonnement waarin het nieuwe abonnement worden geplaatst.
+5. Uit de **regio** vervolgkeuzelijst, selecteer een regio voor het nieuwe abonnement. De opties plannen voor de geselecteerde regio wordt weergegeven in de **opties plannen** sectie van de pagina.
+6. Uit de **resourcegroep** vervolgkeuzelijst, selecteer een resourcegroep voor het abonnement. Zie voor meer informatie over resourcegroepen [overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+7. In **Plannaam** typt u de naam van het plan.
+8. Onder **abonnementsopties**, klikt u op het niveau van de facturering voor het nieuwe abonnement.
 9. Klik op **Maken**.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>De webservice implementeren in een andere regio
 
 1. Klik op de pagina webservices Microsoft Azure Machine Learning op de menu optie **webservices** .
-2. Selecteer de webservice die u naar een nieuwe regio implementeert.
-3. Klik op **kopiëren**.
-4. In de naam van de **webservice**typt u een nieuwe naam voor de webservice.
-5. Typ in **Web Service Description**een beschrijving voor de webservice.
-6. Selecteer in de vervolg keuzelijst **abonnement** het abonnement waarin de nieuwe webservice wordt opgeslagen.
-7. Selecteer een resource groep voor de webservice in de vervolg keuzelijst **resource groep** . Zie [Azure Resource Manager Overview](../../azure-resource-manager/resource-group-overview.md)(Engelstalig) voor meer informatie over resource groepen.
-8. Selecteer in de vervolg keuzelijst **regio** de regio waarin u de webservice wilt implementeren.
-9. Selecteer een opslag account in de vervolg keuzelijst **opslag account** om de webservice op te slaan.
-10. Selecteer in de vervolg keuzelijst **prijs plan** een abonnement in de regio die u in stap 8 hebt geselecteerd.
-11. Klik op **kopiëren**.
+2. Selecteer de Web-Service die u naar een nieuwe regio implementeert.
+3. Klik op **kopie**.
+4. In **naam van de webservice**, typt u een nieuwe naam voor de webservice.
+5. In **Web servicebeschrijving**, typ een beschrijving voor de webservice.
+6. Uit de **abonnement** vervolgkeuzelijst, selecteer het abonnement waarin de nieuwe webservice zich bevindt.
+7. Uit de **resourcegroep** vervolgkeuzelijst, selecteer een resourcegroep voor de webservice. Zie voor meer informatie over resourcegroepen [overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+8. Uit de **regio** vervolgkeuzelijst, selecteer de regio waarin u kunt de webservice implementeren.
+9. Uit de **opslagaccount** vervolgkeuzelijst, selecteer een storage-account waarin u voor het opslaan van de webservice.
+10. Uit de **Prijsplan** vervolgkeuzelijst, selecteer een abonnement in de regio die u hebt geselecteerd in stap 8.
+11. Klik op **kopie**.
 
 ## <a name="deploy-it-as-a-classic-web-service"></a>De service implementeren als een klassieke webservice
 
-Nu het voorspellende experiment voldoende is voor bereid, kunt u dit implementeren als een klassieke Azure-webservice. Met de webservice kunnen gebruikers gegevens naar uw model verzenden en worden de voor spellingen van het model geretourneerd.
+Nu het voorspellende experiment voldoende is voor bereid, kunt u dit implementeren als een klassieke Azure-webservice. Met behulp van de webservice, kunnen gebruikers gegevens verzenden naar uw model en het model de voorspellingen wordt geretourneerd.
 
 Als u uw voorspellende experiment wilt implementeren, klikt u op **uitvoeren** onder aan het canvas en klikt u vervolgens op **webservice implementeren**. De webservice wordt ingesteld en u wordt in het dash board van de webservice geplaatst.
 
@@ -199,7 +199,7 @@ Er zijn verschillende acties die u kunt uitvoeren om een webservice te bewaken. 
 
 Voor meer informatie, Zie [een Azure machine learning Studio klassieke werk ruimte beheren](manage-workspace.md) en [een webservice beheren via de portal voor webservices Azure machine learning Studio (klassiek)](manage-new-webservice.md).
 
-## <a name="update-the-web-service"></a>De webservice bijwerken
+## <a name="update-the-web-service"></a>Bijwerken van de webservice
 U kunt wijzigingen aanbrengen in uw webservice, zoals het bijwerken van het model met aanvullende trainings gegevens en het opnieuw implementeren, waarbij de oorspronkelijke webservice wordt overschreven.
 
 Als u de webservice wilt bijwerken, opent u het oorspronkelijke voorspellende experiment dat u hebt gebruikt om de webservice te implementeren en maakt u een Bewerk bare kopie door te klikken op **Opslaan als**. Breng uw wijzigingen aan en klik vervolgens op **webservice implementeren**.

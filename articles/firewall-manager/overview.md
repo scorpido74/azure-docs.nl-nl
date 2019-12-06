@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/21/2019
+ms.date: 12/06/2019
 ms.author: victorh
-ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cf8e6ca3a532dea29a413b1afdfc684ac8f08f17
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267958"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869558"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Wat is Azure Firewall Manager preview?
 
@@ -53,13 +53,13 @@ Zie [Wat zijn vertrouwde beveiligings partners van Azure firewall Manager (previ
 
 Stuur eenvoudig verkeer naar uw beveiligde hub voor filteren en logboek registratie zonder dat u hand matig door de gebruiker gedefinieerde routes (UDR) op spoke Virtual Networks hoeft in te stellen. U kunt providers van derden gebruiken voor het filteren van B2I-verkeer (branch to Internet), naast elkaar met Azure Firewall voor Branch to VNet (B2V), VNet naar VNet (V2V) en VNet naar Internet (V2I). U kunt ook providers van derden gebruiken voor het filteren van V2I-verkeer zolang Azure Firewall niet vereist is voor B2V of V2V. 
 
-## <a name="region-availability"></a>Beschikbaarheid in regio’s
+## <a name="region-availability"></a>Regionale beschikbaarheid
 
 De volgende regio's worden ondersteund voor de open bare Preview:
 
 - Europa-west, Europa-noord, Frankrijk-centraal, Frankrijk-zuid, UK-zuid, UK-west
 - Australië-oost, Australië-centraal, Australië-centraal 2, Australië-zuidoost
-- Canada - midden
+- Canada-Midden
 - VS-Oost, VS-West, VS-Oost 2, Zuid-Centraal VS, VS-West 2, VS-centraal, Noord-Centraal VS, West-Centraal VS
 
 Azure Firewall-beleid kan alleen worden gemaakt in deze regio's, maar ze kunnen worden gebruikt in verschillende regio's. U kunt bijvoorbeeld een beleid in VS West maken en dit in VS-Oost gebruiken. 
@@ -70,12 +70,13 @@ Azure Firewall Manager preview heeft de volgende bekende problemen:
 
 |Probleem  |Beschrijving  |Oplossing  |
 |---------|---------|---------|
-|Hand matig gemaakte centrale VNets wordt niet ondersteund|Azure Firewall Manager ondersteunt momenteel netwerken die zijn gemaakt met virtuele hubs. Het gebruik van uw eigen hand matig gemaakte hub VNet wordt nog niet ondersteund.|Gebruik voor Taan Azure Firewall-beheer met hub-en spoke-netwerken die zijn gemaakt met virtuele hubs.<br>Momenteel wordt onderzocht.
+|Hand matig gemaakte centrale VNets wordt niet ondersteund|Azure Firewall Manager ondersteunt momenteel netwerken die zijn gemaakt met virtuele hubs. Het gebruik van uw eigen hand matig gemaakte hub VNet wordt nog niet ondersteund.|Gebruik voor Taan Azure Firewall-beheer met hub-en spoke-netwerken die zijn gemaakt met virtuele hubs.<br>De oplossing wordt uitgevoerd.
 |Beperkingen van de filtering van derden|Het V2I van verkeers filters met externe providers wordt niet ondersteund met Azure Firewall B2V en V2V.|Momenteel wordt onderzocht.|
 |Splitsen van verkeer wordt momenteel niet ondersteund|Het splitsen van Office 365-en Azure open bare PaaS-verkeer wordt momenteel niet ondersteund. Als zodanig is het selecteren van een provider van een derde partij voor V2I of B2I ook alle Azure open bare PaaS-en Office 365-verkeer via de partner service verzonden.|Het splitsen van verkeer op de hub wordt momenteel onderzocht.
 |Eén hub per regio|U kunt niet meer dan één hub per regio hebben|Meerdere virtuele Wan's maken in een regio.|
 |Basis beleid moet zich in dezelfde regio bevinden als het lokale beleid|Maak al uw lokale beleids regels in dezelfde regio als het basis beleid. U kunt nog steeds een beleid Toep assen dat is gemaakt in een van de regio's op een beveiligde hub vanuit een andere regio.|Momenteel wordt onderzocht.|
 |Communicatie tussen de hub werkt niet met een beveiligde virtuele hub|Beveiligde virtuele hub naar beveiligde virtuele hub-communicatie wordt nog niet ondersteund.|Momenteel wordt onderzocht.|
+|Alle beveiligde virtuele hubs die hetzelfde virtuele WAN delen, moeten zich in dezelfde resource groep bezitten.|Dit gedrag is vandaag afgestemd op virtuele WAN-hubs.|Maak meerdere virtuele Wan's zodat beveiligde virtuele hubs kunnen worden gemaakt in verschillende resource groepen.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

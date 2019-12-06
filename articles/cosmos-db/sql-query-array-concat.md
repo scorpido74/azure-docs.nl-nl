@@ -1,18 +1,18 @@
 ---
-title: ARRAY_CONCAT in Azure Cosmos DB-query taal
-description: Meer informatie over de SQL-functie ARRAY_CONCAT in Azure Cosmos DB.
+title: ARRAY_CONCAT in Azure Cosmos DB query taal
+description: Meer informatie over hoe de SQL-systeem functie van de matrix in Azure Cosmos DB een matrix retourneert die het resultaat is van het samen voegen van twee of meer matrix waarden
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ad973650ac205313f9045c170f99e15e385a82d1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 10370e16c95f4fc747dd3a66a56794da38562972
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348712"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871819"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT (Azure Cosmos DB)
  Retourneert een matrix die het resultaat is van het samenvoegen van twee of meer matrixwaarden.  
@@ -26,7 +26,7 @@ ARRAY_CONCAT (<arr_expr1>, <arr_expr2> [, <arr_exprN>])
 ## <a name="arguments"></a>Argumenten
   
 *arr_expr*  
-   Is een matrix expressie die moet worden samengevoegd met de andere waarden. Voor de functie `ARRAY_CONCAT` zijn ten minste twee *arr_expr* -argumenten vereist.  
+   Is een matrix expressie die moet worden samengevoegd met de andere waarden. Voor de functie `ARRAY_CONCAT` zijn ten minste twee *arr_expr* argumenten vereist.  
   
 ## <a name="return-types"></a>Retour typen
   

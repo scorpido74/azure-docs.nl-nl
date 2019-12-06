@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b72f0675569ea6f683e8e1f8d2e4bc468f82c71f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a22c0cc922e021edc37dfbb2d89fdd20c77b2c87
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382038"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848762"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Problemen met selfservice voor wachtwoord herstel oplossen
 
@@ -97,7 +97,7 @@ Een best practice bij het oplossen van problemen met wacht woord terugschrijven 
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Als de bron van de gebeurtenis ADSync is
 
-| Code | Naam of bericht | Beschrijving |
+| Coderen | Naam of bericht | Beschrijving |
 | --- | --- | --- |
 | 6329 | Afwijzen: MMS (4924) 0x80230619: ' door een beperking wordt voor komen dat het wacht woord wordt gewijzigd in de huidige opgegeven. ' | Deze gebeurtenis treedt op wanneer de service voor het terugschrijven van wacht woorden probeert een wacht woord in te stellen voor uw lokale adres lijst die niet voldoet aan de vereisten voor wachtwoord duur, geschiedenis, complexiteit of filtering van het domein. <br> <br> Als u een minimale wachtwoord duur hebt en het wacht woord onlangs hebt gewijzigd binnen dat venster, kunt u het wacht woord niet meer wijzigen tot de opgegeven leeftijd in uw domein is bereikt. Voor test doeleinden moet de minimale leeftijd worden ingesteld op 0. <br> <br> Als u vereisten voor wachtwoord geschiedenis hebt ingeschakeld, moet u een wacht woord selecteren dat niet is gebruikt in de afgelopen *N* keer, waarbij *N* de instelling voor wachtwoord geschiedenis is. Als u een wacht woord selecteert dat in de afgelopen *N* keer is gebruikt, ziet u een fout in dit geval. Voor test doeleinden moet de wachtwoord geschiedenis worden ingesteld op 0. <br> <br> Als u vereisten voor wachtwoord complexiteit hebt, worden deze allemaal afgedwongen wanneer de gebruiker een wacht woord probeert te wijzigen of opnieuw in te stellen. <br> <br> Als wachtwoord filters zijn ingeschakeld en een gebruiker een wacht woord selecteert dat niet voldoet aan de filter criteria, mislukt de bewerking voor opnieuw instellen of wijzigen. |
 | 6329 | MMS (3040): admaexport. cpp (2837): de server bevat niet het besturings element LDAP-wachtwoord beleid. | Dit probleem treedt op als LDAP_SERVER_POLICY_HINTS_OID besturings element (1.2.840.113556.1.4.2066) niet is ingeschakeld op de Dc's. Als u de functie voor het terugschrijven van wacht woorden wilt gebruiken, moet u het besturings element inschakelen. Hiertoe moet de Dc's zich op Windows Server 2008R2 of later bevindt. |
@@ -105,7 +105,7 @@ Een best practice bij het oplossen van problemen met wacht woord terugschrijven 
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Als de bron van de gebeurtenis PasswordResetService is
 
-| Code | Naam of bericht | Beschrijving |
+| Coderen | Naam of bericht | Beschrijving |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Deze gebeurtenis geeft aan dat de on-premises service een aanvraag voor het opnieuw instellen van een wacht woord heeft gedetecteerd voor een federatieve, Pass-Through-verificatie of gebruiker met hash-synchronisatie met wacht woord afkomstig uit de Cloud. Deze gebeurtenis is de eerste gebeurtenis in elke terugschrijf bewerking van een wacht woord. |
 | 31002 | PasswordResetSuccess | Deze gebeurtenis geeft aan dat een gebruiker een nieuw wacht woord heeft geselecteerd tijdens een bewerking voor het opnieuw instellen van een wacht woord. We hebben vastgesteld dat dit wacht woord voldoet aan de vereisten voor het bedrijfs wachtwoord. Het wacht woord is teruggeschreven naar de lokale Active Directory-omgeving. |
@@ -127,7 +127,7 @@ Een best practice bij het oplossen van problemen met wacht woord terugschrijven 
 | 31018| KeyPairCreationSuccess| Deze gebeurtenis geeft aan dat de wachtwoord versleutelings sleutel is gemaakt. Deze sleutel wordt gebruikt om wacht woorden uit de cloud te versleutelen die naar uw on-premises omgeving moeten worden verzonden.|
 | 32000| Errorcodes.unknownerror| Deze gebeurtenis geeft aan dat er een onbekende fout is opgetreden tijdens een wachtwoord beheer bewerking. Bekijk de uitzonderings tekst in de gebeurtenis voor meer informatie. Als u problemen ondervindt, kunt u proberen het terugschrijven van wacht woorden uit te scha kelen en opnieuw in te scha kelen. Als dit niet helpt, neemt u een kopie van uw gebeurtenis logboek samen met de tracerings-ID die u hebt opgegeven voor de ondersteunings technicus.|
 | 32001| ServiceError| Deze gebeurtenis geeft aan dat er een fout is opgetreden bij het verbinding maken met de Cloud-service voor wachtwoord herstel. Deze fout treedt doorgaans op wanneer de on-premises service geen verbinding kan maken met de webservice voor het opnieuw instellen van het wacht woord.|
-| 32002| ServiceBusError| Deze gebeurtenis geeft aan dat er een fout is opgetreden bij het verbinding maken met het Service Bus exemplaar van uw Tenant. Dit kan gebeuren als u uitgaande verbindingen in uw on-premises omgeving blokkeert. Controleer de firewall om ervoor te zorgen dat u verbindingen toestaat via TCP 443 en https://ssprdedicatedsbprodncu.servicebus.windows.neten probeer het opnieuw. Als u nog steeds problemen ondervindt, kunt u proberen om wacht woord terugschrijven uit te scha kelen en opnieuw in te scha kelen.|
+| 32002| ServiceBusError| Deze gebeurtenis geeft aan dat er een fout is opgetreden bij het verbinding maken met het Service Bus exemplaar van uw Tenant. Dit kan gebeuren als u uitgaande verbindingen in uw on-premises omgeving blokkeert. Controleer de firewall om ervoor te zorgen dat u verbindingen toestaat via TCP 443 en https://ssprdedicatedsbprodncu.servicebus.windows.net en probeer het opnieuw. Als u nog steeds problemen ondervindt, kunt u proberen om wacht woord terugschrijven uit te scha kelen en opnieuw in te scha kelen.|
 | 32003| InPutValidationError| Deze gebeurtenis geeft aan dat de invoer die is door gegeven aan de API van ons Web Service ongeldig is. Probeer de bewerking opnieuw uit te proberen.|
 | 32004| DecryptionError| Deze gebeurtenis geeft aan dat er een fout is opgetreden bij het ontsleutelen van het wacht woord dat is ontvangen van de Cloud. Dit kan worden veroorzaakt door een niet-versleutelings sleutel tussen de Cloud service en uw on-premises omgeving. U kunt dit probleem oplossen door het terugschrijven van wacht woorden in uw on-premises omgeving uit te scha kelen en opnieuw in te scha kelen.|
 | 32005| ConfigurationError| Tijdens het voorbereiden slaan we Tenant-specifieke informatie op in een configuratie bestand in uw on-premises omgeving. Deze gebeurtenis geeft aan dat er een fout is opgetreden bij het opslaan van dit bestand of dat toen de service werd gestart, er een fout is opgetreden bij het lezen van het bestand. U kunt dit probleem verhelpen door het uitschakelen en vervolgens opnieuw inschakelen van wacht woord terugschrijven in te scha kelen voor een herschrijf proces van het configuratie bestand.|
@@ -135,8 +135,8 @@ Een best practice bij het oplossen van problemen met wacht woord terugschrijven 
 | 32008| ValidationError| Deze gebeurtenis geeft aan dat er een ongeldig antwoord is ontvangen van de webservice voor het opnieuw instellen van het wacht woord. U kunt dit probleem oplossen door het uitschakelen en vervolgens opnieuw inschakelen van wacht woord terugschrijven in te scha kelen.|
 | 32009| AuthTokenError| Deze gebeurtenis geeft aan dat er geen autorisatie token kan worden opgehaald voor het globale beheerders account dat is opgegeven tijdens de installatie van Azure AD Connect. Deze fout kan worden veroorzaakt door een onjuiste gebruikers naam of wacht woord dat is opgegeven voor het globale beheerders account. Deze fout kan ook optreden als het globale Administrator-account dat is opgegeven, federatief is. U kunt dit probleem oplossen door de configuratie opnieuw uit te voeren met de juiste gebruikers naam en wacht woord en ervoor te zorgen dat de beheerder een beheerd (alleen-Cloud of met een wacht woord gesynchroniseerd)-account is.|
 | 32010| CryptoError| Deze gebeurtenis geeft aan dat er een fout is opgetreden bij het genereren van de wachtwoord versleutelings sleutel of het ontsleutelen van een wacht woord dat binnenkomt bij de Cloud service. Deze fout duidt mogelijk op een probleem met uw omgeving. Bekijk de details van uw gebeurtenis logboek voor meer informatie over het oplossen van dit probleem. U kunt ook proberen de service voor het terugschrijven van wacht woorden uit te scha kelen en opnieuw in te scha kelen.|
-| 32011| OnBoardingServiceError| Deze gebeurtenis geeft aan dat de on-premises service niet goed kan communiceren met de webservice voor het opnieuw instellen van een wacht woord om het voorbereidings proces te initiëren. Dit kan gebeuren als gevolg van een firewall regel of als er een probleem is met het verkrijgen van een verificatie token voor uw Tenant. Om dit probleem op te lossen, moet u ervoor zorgen dat u geen uitgaande verbindingen via TCP 443 en TCP 9350-9354 of naar https://ssprdedicatedsbprodncu.servicebus.windows.netblokkeert. Zorg er ook voor dat het Azure AD-beheerders account dat u gebruikt voor onboarding niet federatief is.|
-| 32013| OffBoardingError| Deze gebeurtenis geeft aan dat de on-premises service niet goed kan communiceren met de webservice voor het opnieuw instellen van een wacht woord om het offboarding-proces te initiëren. Dit kan gebeuren als gevolg van een firewall regel of als er een probleem is met het verkrijgen van een autorisatie token voor uw Tenant. Om dit probleem op te lossen, moet u ervoor zorgen dat u geen uitgaande verbindingen van 443 of naar https://ssprdedicatedsbprodncu.servicebus.windows.netblokkeert en dat het Azure Active Directory beheerders account dat u gebruikt voor niet meer vrijgeven niet federatief is.|
+| 32011| OnBoardingServiceError| Deze gebeurtenis geeft aan dat de on-premises service niet goed kan communiceren met de webservice voor het opnieuw instellen van een wacht woord om het voorbereidings proces te initiëren. Dit kan gebeuren als gevolg van een firewall regel of als er een probleem is met het verkrijgen van een verificatie token voor uw Tenant. Om dit probleem op te lossen, moet u ervoor zorgen dat u geen uitgaande verbindingen via TCP 443 en TCP 9350-9354 of naar https://ssprdedicatedsbprodncu.servicebus.windows.net blokkeert. Zorg er ook voor dat het Azure AD-beheerders account dat u gebruikt voor onboarding niet federatief is.|
+| 32013| OffBoardingError| Deze gebeurtenis geeft aan dat de on-premises service niet goed kan communiceren met de webservice voor het opnieuw instellen van een wacht woord om het offboarding-proces te initiëren. Dit kan gebeuren als gevolg van een firewall regel of als er een probleem is met het verkrijgen van een autorisatie token voor uw Tenant. Om dit probleem op te lossen, moet u ervoor zorgen dat u geen uitgaande verbindingen van 443 of naar https://ssprdedicatedsbprodncu.servicebus.windows.net blokkeert en dat het Azure Active Directory beheerders account dat u gebruikt voor niet meer vrijgeven niet federatief is.|
 | 32014| ServiceBusWarning| Deze gebeurtenis geeft aan dat we opnieuw proberen verbinding te maken met het Service Bus-exemplaar van uw Tenant. Onder normale omstandigheden zou dit geen bezorgdheid moeten zijn, maar als deze gebeurtenis vaak wordt weer geven, kunt u overwegen om uw netwerk verbinding te controleren op Service Bus, met name als het een verbinding met hoge latentie of lage band breedte is.|
 | 32015| ReportServiceHealthError| Om de status van de service voor het terugschrijven van wacht woorden te controleren, verzenden we elke vijf minuten heartbeat-gegevens naar onze webservice voor het opnieuw instellen van een wacht woord. Deze gebeurtenis geeft aan dat er een fout is opgetreden bij het verzenden van deze status gegevens naar de Cloud-webservice. Deze status informatie omvat geen OII (object herken bare informatie) of PII-gegevens (persoonlijk herken bare informatie) en is louter een heartbeat-en basis service statistieken, zodat we service status informatie kunnen bieden in de Cloud.|
 | 33001| ADUnKnownError| Deze gebeurtenis geeft aan dat er een onbekende fout is geretourneerd door Active Directory. Controleer het gebeurtenis logboek van de Azure AD Connect-server op gebeurtenissen van de bron ADSync voor meer informatie.|
@@ -167,7 +167,7 @@ Het meest voorkomende fout punt is dat firewall-en proxy poorten en inactieve ti
 
 Voor Azure AD Connect-versie 1.1.443.0 en hoger hebt u uitgaande HTTPS-toegang nodig voor het volgende:
 
-* \*. passwordreset.microsoftonline.com
+* \*.passwordreset.microsoftonline.com
 * \*.servicebus.windows.net
 
 Voor meer granulatie verwijzen we naar de bijgewerkte lijst met [Microsoft Azure Data Center IP-adresbereiken](https://www.microsoft.com/download/details.aspx?id=41653) die elke woensdag zijn bijgewerkt en worden de volgende maandag in werking gesteld.

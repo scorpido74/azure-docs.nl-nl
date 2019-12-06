@@ -1,29 +1,29 @@
 ---
-title: PhoneFactor upgraden naar Azure MFA-Server - Azure Active Directory
+title: Phone factor upgraden naar Azure MFA-server-Azure Active Directory
 description: Ga aan de slag met Azure MFA-server bij het upgraden van de oudere PhoneFactor-agent.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb1bf4996e381db933eac91135093a101e504bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd000f4b2a462e9bc9d2c54b57834b346688e6b5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055973"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848116"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>De PhoneFactor-agent upgraden naar Azure Multi-Factor Authentication-server
 
 Als u PhoneFactor-agent versie 5.x of ouder wilt upgraden naar Azure Multi-Factor Authentication-server, verwijdert u eerst de PhoneFactor-agent en alle bijbehorende onderdelen. Vervolgens kunnen de Multi-Factor Authentication-server en de bijbehorende onderdelen worden geïnstalleerd.
 
 > [!IMPORTANT]
-> Vanaf 1 juli 2019, zal Microsoft MFA-Server niet meer bieden voor nieuwe implementaties. Nieuwe klanten die willen graag meervoudige verificatie van gebruikers vereisen moeten cloud-gebaseerde Azure multi-factor Authentication gebruiken. Bestaande klanten die vóór 1 juli MFA-Server hebben geactiveerd, worden kunnen de nieuwste versie downloaden door toekomstige updates en zoals gebruikelijk activeringsreferenties genereren.
+> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
 
 ## <a name="uninstall-the-phonefactor-agent"></a>De PhoneFactor-agent verwijderen
 
@@ -66,7 +66,7 @@ Het installatiepad wordt opgehaald uit het register van de vorige installatie va
 
    2. Als u de gebruikersportal op de webserver wilt installeren, opent u als beheerder een opdrachtprompt en voert u MultiFactorAuthenticationUserPortalSetupXX.msi uit.
 
-      De standaardnaam van de virtuele map is nu **MultiFactorAuth** in plaats van **PhoneFactor**. Als u de oude naam wilt gebruiken, moet u de naam van de virtuele map tijdens de installatie wijzigen. Als u de nieuwe standaardnaam wilt gebruiken, klikt u op het pictogram Gebruikersportal op de Multi-Factor Authentication-server en werkt u de URL van de gebruikersportal bij op het tabblad Instellingen. Bestaande gebruikers moeten op de hoogte worden gebracht van de nieuwe URL.
+      De standaardnaam van de virtuele map is nu **MultiFactorAuth** in plaats van **PhoneFactor**. Als u de oude naam wilt gebruiken, moet u de naam van de virtuele map tijdens de installatie wijzigen. Als u de nieuwe standaard naam wilt gebruiken, klikt u op het pictogram gebruikers Portal in het Multi-Factor Authentication-server en werkt u de URL van de gebruikers portal bij op het tabblad instellingen. bestaande gebruikers moeten op de hoogte zijn van de nieuwe URL.
 
    3. Ga naar de installatielocatie van de gebruikersportal (bijvoorbeeld C:\inetpub\wwwroot\MultiFactorAuth) en bewerk het bestand web.config. Kopieer de waarden in de secties appSettings en applicationSettings van het oorspronkelijke bestand web.config, waarvan u vóór de upgrade een back-up hebt gemaakt, naar het nieuwe bestand web.config. Als tijdens de installatie van de webservice-SDK de nieuwe standaardnaam van de virtuele map is aangehouden, wijzigt u de URL in de sectie applicationSettings om naar de juiste locatie te verwijzen. Als in het vorige bestand web.config nog andere standaardinstellingen zijn gewijzigd, past u dezelfde wijzigingen ook toe op het nieuwe bestand web.config.
 

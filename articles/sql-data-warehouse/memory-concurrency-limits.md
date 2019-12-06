@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3611e61b303997a4291f4436403bb0a95e647e65
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dfdaef0002f068dc4c9044e979b169de779cf6d5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686030"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851278"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Geheugen-en gelijktijdigheids limieten voor Azure SQL Data Warehouse
 Bekijk de geheugen-en gelijktijdigheids limieten die zijn toegewezen aan de verschillende prestatie niveaus en resource klassen in Azure SQL Data Warehouse.  
@@ -24,11 +24,11 @@ Bekijk de geheugen-en gelijktijdigheids limieten die zijn toegewezen aan de vers
 ## <a name="data-warehouse-capacity-settings"></a>Capaciteits instellingen van Data Warehouse
 In de volgende tabellen ziet u de maximale capaciteit voor het Data Warehouse op verschillende prestatie niveaus. Zie [Scale Compute-Portal](quickstart-scale-compute-portal.md)voor meer informatie over het wijzigen van het prestatie niveau.
 
-### <a name="service-levels"></a>Service niveaus
+### <a name="service-levels"></a>Serviceniveaus
 
 De service niveaus variëren van DW100c tot DW30000c.
 
-| Prestatieniveau | Reken knooppunten | Distributies per reken knooppunt | Geheugen per Data Warehouse (GB) |
+| Prestatieniveau | Rekenknooppunten | Distributies per reken knooppunt | Geheugen per Data Warehouse (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
 | DW100c            | 1             | 60                             |    60                          |
 | DW200c            | 1             | 60                             |   120                          |
@@ -50,21 +50,21 @@ De service niveaus variëren van DW100c tot DW30000c.
 Het maximale service niveau is DW30000c, met 60 Compute-knoop punten en één distributie per Compute-knoop punt. Een voor beeld: een Data Warehouse van 600 TB op DW30000c verwerkt ongeveer 10 TB per reken knooppunt.
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>Gelijktijdige maximum waarden voor werkbelasting groepen
-Met de introductie van werkbelasting groepen-nog te bepalen koppelingen, is het concept van gelijktijdigheids sleuven niet langer van toepassing.  Resources per aanvraag worden toegewezen op basis van een percentage en opgegeven in de definitie van de werkbelasting groep.  Zelfs met het verwijderen van gelijktijdigheids sleuven, zijn er echter mini maal vereiste resources per query op basis van het service niveau.  In de onderstaande tabel is de minimale hoeveelheid resources gedefinieerd die is vereist per query op service niveaus en de bijbehorende gelijktijdigheid die kan worden behaald. 
+Met de introductie van [werkbelasting groepen](sql-data-warehouse-workload-isolation.md)is het concept van gelijktijdigheids sleuven niet langer van toepassing.  Resources per aanvraag worden toegewezen op basis van een percentage en opgegeven in de definitie van de werkbelasting groep.  Zelfs met het verwijderen van gelijktijdigheids sleuven, zijn er echter mini maal vereiste resources per query op basis van het service niveau.  In de onderstaande tabel is de minimale hoeveelheid resources gedefinieerd die is vereist per query op service niveaus en de bijbehorende gelijktijdigheid die kan worden behaald. 
 
 |Servicelaag|Maximum aantal gelijktijdige query's|Min% ondersteund voor REQUEST_MIN_RESOURCE_GRANT_PERCENT|
 |---|---|---|
 |DW100c|4|25%|
 |DW200c|8|12,5%|
-|DW300c|12|achtste|
+|DW300c|12|8%|
 |DW400c|16|6,25%|
 |DW500c|20|5%|
-|DW1000c|32|3D|
-|DW1500c|32|3D|
-|DW2000c|48|twee|
-|DW2500c|48|twee|
-|DW3000c|64|1,5%|
-|DW5000c|64|1,5%|
+|DW1000c|32|3%|
+|DW1500c|32|3%|
+|DW2000c|48|2%|
+|DW2500c|48|2%|
+|DW3000c|64|1,5|
+|DW5000c|64|1,5|
 |DW6000c|128|0,75%|
 |DW7500c|128|0,75%|
 |DW10000c|128|0,75%|

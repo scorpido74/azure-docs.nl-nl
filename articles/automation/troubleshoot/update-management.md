@@ -2,18 +2,18 @@
 title: Fouten oplossen met Updatebeheer
 description: Meer informatie over het oplossen van problemen met Updatebeheer.
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2aebcf05cbc818997943ed3bab19fb1fd8a83592
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786066"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849238"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Problemen met Updatebeheer oplossen
 
@@ -21,7 +21,7 @@ In dit artikel worden oplossingen beschreven voor problemen die u kunt tegen kom
 
 Er is een agent probleem oplosser voor de Hybrid Worker-agent om het onderliggende probleem te bepalen. Zie problemen [met Update agent oplossen](update-agent-issues.md)voor meer informatie over de probleem Oplosser. Gebruik de volgende richt lijnen voor probleem oplossing voor alle andere problemen.
 
-Als u problemen ondervindt tijdens het uitvoeren van de oplossing op een virtuele machine (VM), raadpleegt u het **Operations Manager** logboek onder **toepassing en services-logboeken** op de lokale computer voor gebeurtenissen met gebeurtenis-id 4502 en gebeurtenis details die bevatten **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**.
+Als u problemen ondervindt tijdens het uitvoeren van de oplossing op een virtuele machine (VM), raadpleegt u het **Operations Manager** logboek onder de **Logboeken toepassing en services** op de lokale computer voor gebeurtenissen met gebeurtenis-id 4502 en gebeurtenis details die **micro soft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**bevatten.
 
 In de volgende sectie worden specifieke fout berichten en mogelijke oplossingen voor elk weer gemarkeerd. Zie [problemen oplossen met onboarding van oplossingen](onboarding.md)voor andere voorbereidings problemen.
 
@@ -68,7 +68,7 @@ U hebt mogelijk een quotum gedefinieerd in uw werk ruimte die is bereikt en waar
   | where OperationCategory == 'Data Collection Status'
   | sort by TimeGenerated desc
   ```
-  Als er een `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` resultaat wordt weer gegeven, is er een quotum gedefinieerd in uw werk ruimte en is het niet meer mogelijk om gegevens op te slaan. Ga in uw werk ruimte naar **verbruik en geschatte kosten**  > **gegevens volume beheer** en controleer het quotum of verwijder dit.
+  Als er een `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` resultaat wordt weer gegeven, is er een quotum gedefinieerd in uw werk ruimte en is het niet meer mogelijk om gegevens op te slaan. Ga in uw werk ruimte naar **verbruik en geschatte kosten** > **gegevens volume beheer** en controleer het quotum of verwijder dit.
 
 * Als u met deze stappen het probleem niet kunt oplossen, volgt u de stappen in [een Windows-Hybrid Runbook worker implementeren](../automation-windows-hrw-install.md) om de Hybrid worker voor Windows opnieuw te installeren. Of [Implementeer een Linux-Hybrid Runbook worker](../automation-linux-hrw-install.md)voor Linux.
 
@@ -119,7 +119,7 @@ Deze fout kan de volgende oorzaken hebben:
 2. Als u een gekloonde installatie kopie gebruikt:
    1. In uw Log Analytics-werk ruimte verwijdert u de virtuele machine uit de opgeslagen zoek opdracht voor de `MicrosoftDefaultScopeConfig-Updates` Scope configuratie als deze wordt weer gegeven. U kunt opgeslagen Zoek opdrachten vinden onder **Algemeen** in uw werk ruimte.
    2. Voer `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force` uit.
-   3. Voer `Restart-Service HealthService` uit om de `HealthService` opnieuw te starten. Hiermee wordt de sleutel opnieuw gemaakt en wordt een nieuwe UUID gegenereerd.
+   3. Voer `Restart-Service HealthService` uit om de `HealthService`opnieuw te starten. Hiermee wordt de sleutel opnieuw gemaakt en wordt een nieuwe UUID gegenereerd.
    4. Als deze aanpak niet werkt, voert u eerst Sysprep uit op de installatie kopie en installeert u vervolgens de MMA.
 
 ## <a name="multi-tenant"></a>Scenario: er wordt een fout bij een gekoppeld abonnement weer gegeven wanneer u een update-implementatie maakt voor computers in een andere Azure-Tenant
@@ -187,7 +187,7 @@ Deze fout kan een van de volgende oorzaken hebben:
 
 ### <a name="resolution"></a>Resolutie
 
-Gebruik, indien van toepassing, [dynamische groepen](../automation-update-management-groups.md) voor uw update-implementaties. Let
+Gebruik, indien van toepassing, [dynamische groepen](../automation-update-management-groups.md) voor uw update-implementaties. Aanvullend:
 
 * Controleer of de computer nog bestaat en bereikbaar is. Als deze niet bestaat, bewerkt u de implementatie en verwijdert u de computer.
 * Zie de sectie [netwerk planning](../automation-update-management.md#ports) voor een lijst met poorten en adressen die vereist zijn voor updatebeheer en controleer vervolgens of uw computer aan deze vereisten voldoet.

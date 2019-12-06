@@ -4,17 +4,17 @@ description: In dit artikel wordt beschreven hoe u een query kunt uitvoeren op d
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 09/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d53e41fc902241d796cf8b10ae35c50c090a803a
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 4797e3a348b057fa21677649e4cb7de78de0d8b9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377536"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850615"
 ---
 # <a name="query-update-records-for-update-management-in-log-analytics"></a>Query's voor Updatebeheer bijwerken in Log Analytics
 
@@ -22,7 +22,7 @@ Naast de details die zijn opgenomen in de Azure Portal, kunt u zoeken naar de lo
 
 Meer informatie over het aanpassen van de query's of het gebruik ervan vanaf verschillende clients en meer vindt u op: [log Analytics Search API-documentatie](https://dev.loganalytics.io/).
 
-## <a name="sample-queries"></a>Voorbeeld query's
+## <a name="sample-queries"></a>Voorbeeldquery's
 
 De volgende secties bieden voorbeeld logboek query's voor update records die worden verzameld voor Updatebeheer.
 
@@ -47,7 +47,7 @@ Heartbeat
 Op een Windows-computer kunt u de volgende informatie controleren om de agent connectiviteit met Azure Monitor-logboeken te controleren:
 
 1. Open **micro soft Monitoring Agent**in het configuratie scherm. Op het tabblad **log Analytics van Azure** wordt het volgende bericht weer gegeven: **micro soft monitoring agent heeft verbinding gemaakt met log Analytics**.
-2. Open het Windows-gebeurtenis logboek. Ga naar **Application and Services Servicelogboeken\operations Manager** en zoek naar gebeurtenis-id 3000 en gebeurtenis-id 5002 van de bron **service connector**. Deze gebeurtenissen geven aan dat de computer is geregistreerd bij de Log Analytics-werk ruimte en dat er configuratie wordt ontvangen.
+2. Open het Windows-gebeurtenis logboek. Ga naar **Application and Services Servicelogboeken\operations Manager** en zoek naar gebeurtenis-id 3000 en gebeurtenis-id 5002 van de bron **service connector**. Deze gebeurtenissen geven aan of de computer is geregistreerd bij de Log Analytics-werkruimte en of deze de configuratie ontvangt.
 
 Als de agent niet kan communiceren met Azure Monitor-logboeken en de agent is geconfigureerd voor communicatie met Internet via een firewall of proxy server, controleert u of de firewall of proxy server correct is geconfigureerd. Zie [netwerk configuratie voor Windows-agent](../azure-monitor/platform/agent-windows.md) of [netwerk configuratie voor Linux-agent](../log-analytics/log-analytics-agent-linux.md)voor informatie over het controleren van de juiste configuratie van de firewall of proxy server.
 

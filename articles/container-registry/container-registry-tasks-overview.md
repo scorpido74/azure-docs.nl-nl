@@ -3,12 +3,12 @@ title: Overzicht van ACR-taken
 description: Een inleiding tot ACR-taken, een reeks functies in Azure Container Registry die beveiligde, geautomatiseerde build van container installatie kopieën biedt, beheer en patches in de Cloud.
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: b4710591dfd78f0633d5071c78d80e300349f498
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456156"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840762"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Bouw en onderhoud van container installatie kopieën automatiseren met ACR-taken
 
@@ -52,7 +52,7 @@ Informatie over het gebruik van snelle taken in de eerste zelf studie over ACR-t
 
 ## <a name="trigger-task-on-source-code-update"></a>Taak activeren bij het bijwerken van de bron code
 
-Een taak voor het maken van een container installatie kopie of een taken uit meerdere stappen activeren wanneer de code wordt vastgelegd, of een pull-aanvraag wordt gedaan of bijgewerkt naar een Git-opslag plaats in GitHub of Azure DevOps. Configureer bijvoorbeeld een build-taak met de Azure CLI-opdracht [AZ ACR Task Create][az-acr-task-create] door een Git-opslag plaats en optioneel een vertakking en Dockerfile op te geven. Wanneer uw team code in de opslag plaats bijwerkt, activeert een webhook met ACR-gemaakte taken een build van de container installatie kopie die is gedefinieerd in de opslag plaats. 
+Een taak voor het maken van een container installatie kopie of een taken uit meerdere stappen activeren wanneer de code wordt vastgelegd, of een pull-aanvraag wordt gedaan of bijgewerkt naar een open bare of persoonlijke Git-opslag plaats in GitHub of Azure DevOps. Configureer bijvoorbeeld een build-taak met de Azure CLI-opdracht [AZ ACR Task Create][az-acr-task-create] door een Git-opslag plaats en optioneel een vertakking en Dockerfile op te geven. Wanneer uw team code in de opslag plaats bijwerkt, activeert een webhook met ACR-gemaakte taken een build van de container installatie kopie die is gedefinieerd in de opslag plaats. 
 
 ACR-taken bieden ondersteuning voor de volgende triggers wanneer u een Git-opslag plaats instelt als de context van de taak:
 
@@ -61,7 +61,10 @@ ACR-taken bieden ondersteuning voor de volgende triggers wanneer u een Git-opsla
 | Doorvoeren | Ja |
 | Pull-aanvraag | Nee |
 
-Als u de trigger wilt configureren, geeft u de taak een persoonlijk toegangs token (PAT) voor het instellen van de webhook in de GitHub-of Azure DevOps opslag plaats.
+Als u een trigger voor het bijwerken van de bron code wilt configureren, moet u de taak een persoonlijk toegangs token (PAT) geven om de webhook in te stellen in de open bare of persoonlijke GitHub of Azure DevOps opslag plaats.
+
+> [!NOTE]
+> Op dit moment bieden ACR-taken geen ondersteuning voor commit-of pull-aanvraag triggers in GitHub Enter prise opslag plaatsen.
 
 Meer informatie over het activeren van builds op basis van de bron code in de tweede zelf studie ACR-taken, het [automatiseren van container installatie kopieën met Azure container Registry taken](container-registry-tutorial-build-task.md).
 
@@ -116,19 +119,22 @@ De volgende tabel bevat enkele voor beelden van ondersteunde context locaties vo
 | Context locatie | Beschrijving | Voorbeeld |
 | ---------------- | ----------- | ------- |
 | Lokaal bestands systeem | Bestanden in een map op het lokale bestands systeem. | `/home/user/projects/myapp` |
-| Hoofd vertakking GitHub | Bestanden in de hoofd vertakking (of een andere standaard) van een GitHub-opslag plaats.  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub-vertakking | Specifieke vertakking van een GitHub-opslag plaats.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| Submap GitHub | Bestanden in een submap van een GitHub-opslag plaats. Voor beeld wordt een combi natie van een vertakking en submap opgegeven. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| Submap voor Azure DevOps | Bestanden in een submap van een Azure-opslag plaats. Voor beeld wordt een combi natie van een specificatie van branch en submap weer gegeven. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
+| Hoofd vertakking GitHub | Bestanden in de hoofd vertakking (of een andere standaard) van een open bare of persoonlijke GitHub-opslag plaats.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub-vertakking | Specifieke vertakking van een open bare of particuliere GitHub-opslag plaats.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| Submap GitHub | Bestanden in een submap van een open bare of persoonlijke GitHub-opslag plaats. Voor beeld wordt een combi natie van een vertakking en submap opgegeven. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Submap voor Azure DevOps | Bestanden in een submap van een open bare of persoonlijke Azure-opslag plaats. Voor beeld wordt een combi natie van een specificatie van branch en submap weer gegeven. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Externe tarball | Bestanden in een gecomprimeerd archief op een externe webserver. | `http://remoteserver/myapp.tar.gz` |
+
+> [!NOTE]
+> Wanneer u een privé Git-opslag plaats als context voor een taak gebruikt, moet u een persoonlijk toegangs token (PAT) opgeven.
 
 ## <a name="image-platforms"></a>Afbeeldings platforms
 
 Standaard bouwt ACR-taken installatie kopieën voor het Linux-besturings systeem en de amd64-architectuur. Geef het `--platform` label op om Windows-installatie kopieën of Linux-installatie kopieën voor andere architecturen te maken. Geef het besturings systeem en eventueel een ondersteunde architectuur op in de indeling van het besturings systeem/de architectuur (bijvoorbeeld `--platform Linux/arm`). Voor ARM-architecturen geeft u optioneel een variant op in de indeling OS/Architecture/variant (bijvoorbeeld `--platform Linux/arm64/v8`):
 
-| OS | Architectuur|
+| Besturingssysteem | Architectuur|
 | --- | ------- | 
-| Linux | amd64<br/>scherp<br/>arm64<br/>386 |
+| Linux | amd64<br/>arm<br/>arm64<br/>386 |
 | Windows | amd64 |
 
 ## <a name="view-task-logs"></a>Taak logboeken weer geven

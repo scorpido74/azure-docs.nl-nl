@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828237"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851516"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 Vragen? Bekijk de volgende veelgestelde vragen voor meer informatie.
@@ -222,9 +222,6 @@ De Roslyn-analyse functies bouwen de taak moet een query uitvoeren op Azure DevO
 
 Als u aanvullende hulp nodig hebt, is ondersteuning van micro soft security code Analysis beschikbaar vanaf 9:00 uur 's nachts tot 5:00 uur Pacific (standaard tijd).
 
-  - Onboarding: Neem contact op met uw technische account beheerders om aan de slag te gaan.
+- Onboarding: Raadpleeg onze [hand leiding voor onboarding](security-code-analysis-onboard.md)
   
-  - Ondersteuning: e-mail adres van ons team bij de [micro soft security code Analysis-ondersteuning](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
-
-  >[!NOTE] 
-  >Mogelijk hebt u geen betaalde ondersteunings relatie met micro soft. Het is ook mogelijk dat u een ondersteunings aanbieding hebt die voor komt dat u Services aanschaft vanuit de Phoenix-catalogus. Als aan een van deze voor waarden wordt voldaan, gaat u naar de [Start pagina van de ondersteunings services](https://www.microsoft.com/enterprise/services/support) voor meer informatie.
+- Ondersteuning: e-mail adres van ons team bij [micro soft security code Analysis-ondersteuning](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)

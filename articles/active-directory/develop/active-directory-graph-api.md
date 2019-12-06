@@ -2,27 +2,24 @@
 title: Azure Active Directory Graph API | Microsoft Docs
 description: Een overzicht en Snelstartgids voor Azure AD Graph API, waarmee programmatische toegang tot Azure AD via REST API-eind punten mogelijk wordt.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c1b5a3600c48dc548561df3cd2f955347a7e64
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c74c02d8a82c27c71ce01cd122082010487b453e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533040"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845039"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 
@@ -31,7 +28,7 @@ ms.locfileid: "74533040"
 
 Dit artikel is van toepassing op Azure AD-Graph API. Zie [de Microsoft Graph-API gebruiken](https://docs.microsoft.com/graph/use-the-api)voor vergelijk bare informatie met betrekking tot Microsoft Graph-API.
 
-De Azure Active Directory Graph API biedt programmatische toegang tot Azure AD via REST API-eind punten. Toepassingen kunnen Azure AD Graph API gebruiken om bewerkingen voor maken, lezen, bijwerken en verwijderen uit te voeren op Directory gegevens en-objecten. Azure AD Graph API ondersteunt bijvoorbeeld de volgende algemene bewerkingen voor een gebruikers object:
+De Azure Active Directory Graph API-biedt programmatische toegang tot Azure AD via REST API-eindpunten. Toepassingen kunnen Azure AD Graph API gebruiken om bewerkingen voor maken, lezen, bijwerken en verwijderen uit te voeren op Directory gegevens en-objecten. Azure AD Graph API ondersteunt bijvoorbeeld de volgende algemene bewerkingen voor een gebruikers object:
 
 * Een nieuwe gebruiker in een directory maken
 * De gedetailleerde eigenschappen van een gebruiker, zoals hun groepen, ophalen

@@ -1,18 +1,18 @@
 ---
-title: Micrometer gebruiken met Azure-toepassing Insights-Java-SDK | Microsoft Docs
-description: 'Een stapsgewijze hand leiding voor het gebruik van micrometer met uw Application Insights Spring-en non-veer boot-toepassingen. '
+title: Micrometer gebruiken met Azure-toepassing Insights-Java-SDK
+description: Een stapsgewijze hand leiding voor het gebruik van micrometer met uw Application Insights Spring-en non-veer boot-toepassingen.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: 267665c97f683740c05ae6602a416225c79aa44c
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c9f1c6f6742f36d376668422f9c37c6c5a2228a4
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819304"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872992"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Micrometer gebruiken met Azure-toepassing Insights-Java-SDK
 Met de micrometer-toepassings bewaking worden metrische gegevens gemeten voor op JVM gebaseerde toepassings code en kunt u deze exporteren naar uw favoriete bewakings systemen. In dit artikel leert u hoe u micrometer kunt gebruiken met Application Insights voor zowel veer boot-als niet-veer boot-toepassingen.
@@ -22,7 +22,7 @@ Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand:
 * [Application Insights lente-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 of hoger
 * Micrometer Azure Registry 1.1.0 of hoger
 * [Micrometer lente verouderde](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 of hoger (dit backports de AutoConfig-code in het lente-Framework).
-* [ApplicationInsights-resource](../../azure-monitor/app/create-new-resource.md )
+* [ApplicationInsights Resource](../../azure-monitor/app/create-new-resource.md )
 
 Stappen
 
@@ -108,7 +108,7 @@ De automatische metrische gegevens verzameling uitschakelen:
 - Hystrix metrische gegevens als bibliotheek op klassenpad: 
     - Management. Metrics. Binders. Hystrix. Enabled = False 
 - AspectJ metrische gegevens als bibliotheek op klassenpad: 
-    - lente. AOP. Enabled = False 
+    - spring.aop.enabled=false 
 
 > [!NOTE]
 > Geef de bovenstaande eigenschappen op in het bestand Application. Properties of Application. yml van de Spring boot-toepassing

@@ -10,23 +10,23 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 1307e6cfca0debe7623eb775c69527a74584033d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4313a1d644750c0961298bbee3ae211946de360a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011993"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849765"
 ---
-# <a name="list-entity"></a>Lijstentiteit 
+# <a name="list-entity"></a>Lijstentiteit
 
-Lijst entiteiten vertegenwoordigen een vaste, gesloten set verwante woorden samen met hun synoniemen. LUIS detecteert geen aanvullende waarden voor de lijst met entiteiten. Gebruik de **raden** functie om te bekijken van suggesties voor nieuwe woorden op basis van de huidige lijst. Als er meer dan één lijst entiteit met dezelfde waarde, wordt elke entiteit in de query eindpunt geretourneerd. 
+Lijst entiteiten vertegenwoordigen een vaste, gesloten set verwante woorden samen met hun synoniemen. LUIS detecteert geen aanvullende waarden voor de lijst met entiteiten. Gebruik de **raden** functie om te bekijken van suggesties voor nieuwe woorden op basis van de huidige lijst. Als er meer dan één lijst entiteit met dezelfde waarde, wordt elke entiteit in de query eindpunt geretourneerd.
 
-Een lijst entiteit is niet door de machine geleerd. Het is een overeenkomst exact overeenkomende tekst. LUIS markeert een overeenkomst aan een item in een lijst als een entiteit in het antwoord. 
+Een lijst entiteit is niet door de machine geleerd. Het is een overeenkomst exact overeenkomende tekst. LUIS markeert een overeenkomst aan een item in een lijst als een entiteit in het antwoord.
 
 **De entiteit is goed geschikt wanneer de tekst gegevens:**
 
 * Zijn een bekende set.
-* Verandert niet vaak. Als u de lijst vaak wilt wijzigen of de lijst zelf wilt uitbreiden, is een eenvoudige entiteit met een woordgroepen lijst een betere keuze. 
+* Verandert niet vaak. Als u de lijst vaak wilt wijzigen of de lijst zelf wilt uitbreiden, is een eenvoudige entiteit met een woordgroepen lijst een betere keuze.
 * De set maximale [begrenzingen](luis-boundaries.md) van LUIS voor dit entiteitstype niet overschrijdt.
 * De tekst in de utterance is een exact overeenkomst met een synoniem of de canonieke naam. LUIS gebruikt de lijst alleen voor exact tekstovereenkomsten. Fuzzy matching, hoofdletter ongevoeligheid, ontleding, meervouden en andere variaties worden niet opgelost met een lijst entiteit. Hiervoor kunt u overwegen een [patroon](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) met de optionele tekstsyntaxis te gebruiken.
 
@@ -54,7 +54,7 @@ Een lijst entiteit is niet door de machine geleerd. Het is een overeenkomst exac
               "avacado"
           ]
       }
-  ]  
+  ]
   ```
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
@@ -130,13 +130,13 @@ Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
 }
 ```
 
-* * * 
+* * *
 
-|Data-object|De naam van de entiteit|Waarde|
+|Data-object|Naam van de entiteit|Waarde|
 |--|--|--|
 |Entiteit weer geven|`Cities`|`paris`|
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze [zelf studie](luis-quickstart-intent-and-list-entity.md)leert u hoe u een **lijst entiteit** kunt gebruiken om exacte overeenkomsten met tekst te extra heren uit een lijst met bekende items. 
+In deze [zelf studie](tutorial-list-entity.md)leert u hoe u een **lijst entiteit** kunt gebruiken om exacte overeenkomsten met tekst te extra heren uit een lijst met bekende items.

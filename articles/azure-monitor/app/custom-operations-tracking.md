@@ -1,5 +1,5 @@
 ---
-title: Aangepaste bewerkingen bijhouden met Azure-toepassing Insights .NET SDK | Microsoft Docs
+title: Aangepaste bewerkingen bijhouden met Azure-toepassing Insights .NET SDK
 description: Aangepaste bewerkingen bijhouden met Azure-toepassing Insights .NET SDK
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e316527992b4a478b82bef61fb6da608e218ba5
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: dabdfa43a87aadadbd6c22b886b8bfe08aa69f02
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554923"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872652"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Aangepaste bewerkingen bijhouden met Application Insights .NET SDK
 
@@ -271,7 +271,7 @@ Als u de hoeveelheid telemetrie van uw toepassings rapporten wilt beperken of al
 - Serialisatie van `yourActivity.Id` naar de bericht lading in plaats van `operation.Telemetry.Id`. U kunt ook `Activity.Current.Id`gebruiken.
 
 
-#### <a name="dequeue"></a>Wachtrij verwijderen
+#### <a name="dequeue"></a>Dequeue
 Net als `Enqueue`, wordt een daad werkelijke HTTP-aanvraag voor de opslag wachtrij automatisch bijgehouden door Application Insights. De `Enqueue` bewerking wordt echter vermoedelijk uitgevoerd in de bovenliggende context, zoals een binnenkomende aanvraag context. Application Insights Sdk's correleren een dergelijke bewerking (en het bijbehorende HTTP-deel) automatisch met de bovenliggende aanvraag en andere telemetrie die in hetzelfde bereik zijn gerapporteerd.
 
 De `Dequeue` bewerking is lastig. De Application Insights SDK registreert automatisch HTTP-aanvragen. Het kent echter niet de correlatie context tot het bericht is geparseerd. Het is niet mogelijk om de HTTP-aanvraag voor het ophalen van het bericht met de rest van de telemetrie te correleren, vooral wanneer er meer dan één bericht wordt ontvangen.
@@ -345,7 +345,7 @@ Wanneer u het verwijderen van een bericht instrumenteert, moet u ervoor zorgen d
 - Gebruik `Activity.SetParentId(message.ParentId)` om consumenten-en producer-logboeken te correleren.
 - Start de `Activity`.
 - Volg de bewerkings-, proces-en verwijder bewerkingen met behulp van `Start/StopOperation` helpers. Doe dit vanuit dezelfde asynchrone controle stroom (uitvoerings context). Op deze manier worden ze op de juiste wijze gecorreleerd.
-- Stop de `Activity`.
+- Beëindig de `Activity`.
 - Gebruik `Start/StopOperation`of bel `Track` telemetrie hand matig.
 
 ### <a name="dependency-types"></a>Afhankelijkheids typen

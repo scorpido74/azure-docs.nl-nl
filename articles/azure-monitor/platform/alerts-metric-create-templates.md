@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 9/27/2018
+ms.date: 12/5/2019
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 0d3cbe8c3d2d7931e3e4cc052eedc844a296ccf0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 496e8673e1cbf31f4c71db00b7eaf1c0618e509f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775735"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872941"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -794,11 +794,11 @@ U kunt de volgende sjabloon gebruiken om een statische metrische waarschuwings r
 
 Eén waarschuwings regel kan meerdere metrische tijd reeksen tegelijk bewaken, wat leidt tot minder waarschuwings regels om te beheren.
 
-In het onderstaande voor beeld worden met de waarschuwings regel de dimensie Dimensiewaardecombinaties van de dimensies **ResponseType** en **ApiName** voor de metrische gegevens van de **trans acties** gecontroleerd:
+In het onderstaande voor beeld bewaakt de waarschuwings regel de dimensie waarden combinaties van de dimensies **ResponseType** en **ApiName** voor de metrische gegevens van de **trans acties** :
 1. **ResponsType** : het gebruik van het Joker teken '\*' houdt in dat voor elke waarde van de dimensie **ResponseType** , met inbegrip van toekomstige waarden, een andere tijd reeks afzonderlijk wordt gecontroleerd.
 2. **ApiName** : een andere tijd reeks wordt alleen bewaakt voor de dimensie waarden **GetBlob** en **PutBlob** .
 
-Zo zijn een aantal van de mogelijke tijd reeksen die door deze waarschuwings regel worden bewaakt:
+Een aantal van de mogelijke tijd reeksen die worden bewaakt door deze waarschuwings regel zijn bijvoorbeeld:
 - Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *GetBlob*
 - Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *PutBlob*
 - Metrische waarde = *trans acties*, ResponseType = *time-out van server*, ApiName = *GetBlob*
@@ -1014,11 +1014,11 @@ U kunt de volgende sjabloon gebruiken om een geavanceerdere waarschuwings regel 
 
 Een waarschuwings regel met enkele dynamische drempel waarden kan aangepaste drempel waarden maken voor honderden meettijd reeksen (zelfs verschillende typen) tegelijk, wat leidt tot minder waarschuwings regels om te beheren.
 
-In het onderstaande voor beeld worden met de waarschuwings regel de dimensie Dimensiewaardecombinaties van de dimensies **ResponseType** en **ApiName** voor de metrische gegevens van de **trans acties** gecontroleerd:
+In het onderstaande voor beeld bewaakt de waarschuwings regel de dimensie waarden combinaties van de dimensies **ResponseType** en **ApiName** voor de metrische gegevens van de **trans acties** :
 1. **ResponsType** : voor elke waarde van de dimensie **ResponseType** , met inbegrip van toekomstige waarden, wordt een andere tijd reeks afzonderlijk gecontroleerd.
 2. **ApiName** : een andere tijd reeks wordt alleen bewaakt voor de dimensie waarden **GetBlob** en **PutBlob** .
 
-Zo zijn een aantal van de mogelijke tijd reeksen die door deze waarschuwings regel worden bewaakt:
+Een aantal van de mogelijke tijd reeksen die worden bewaakt door deze waarschuwings regel zijn bijvoorbeeld:
 - Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *GetBlob*
 - Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *PutBlob*
 - Metrische waarde = *trans acties*, ResponseType = *time-out van server*, ApiName = *GetBlob*
@@ -1230,6 +1230,270 @@ az group deployment create \
 >[!NOTE]
 >
 > Er worden momenteel niet meerdere criteria ondersteund voor metrische waarschuwings regels die gebruikmaken van dynamische drempel waarden.
+
+
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>Sjabloon voor een waarschuwing over een statische drempel waarde die een aangepaste metriek bewaakt
+
+U kunt de volgende sjabloon gebruiken om een meer geavanceerde waarschuwings regel voor een vaste drempel waarde voor metrische gegevens te maken op een aangepaste metriek.
+
+Zie [aangepaste metrische gegevens in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)voor meer informatie over aangepaste metrische gegevens in azure monitor.
+
+Wanneer u een waarschuwings regel voor een aangepaste metriek maakt, moet u zowel de naam van de metriek als de metrische naam ruimte opgeven.
+
+Sla de JSON hieronder op als customstaticmetricalert. json voor het doel van deze procedure.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "alertDescription": {
+            "type": "string",
+            "defaultValue": "This is a metric alert",
+            "metadata": {
+                "description": "Description of alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 3,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "isEnabled": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "resourceId": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+            }
+        },
+        "metricName": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the metric used in the comparison to activate the alert."
+            }
+        },
+        "metricNamespace": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Namespace of the metric used in the comparison to activate the alert."
+            }
+        },
+        "operator": {
+            "type": "string",
+            "defaultValue": "GreaterThan",
+            "allowedValues": [
+                "Equals",
+                "NotEquals",
+                "GreaterThan",
+                "GreaterThanOrEqual",
+                "LessThan",
+                "LessThanOrEqual"
+            ],
+            "metadata": {
+                "description": "Operator comparing the current value with the threshold value."
+            }
+        },
+        "threshold": {
+            "type": "string",
+            "defaultValue": "0",
+            "metadata": {
+                "description": "The threshold value at which the alert is activated."
+            }
+        },
+        "timeAggregation": {
+            "type": "string",
+            "defaultValue": "Average",
+            "allowedValues": [
+                "Average",
+                "Minimum",
+                "Maximum",
+                "Total",
+                "Count"
+            ],
+            "metadata": {
+                "description": "How the data that is collected should be combined over time."
+            }
+        },
+        "windowSize": {
+            "type": "string",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
+            }
+        },
+        "evaluationFrequency": {
+            "type": "string",
+            "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
+            "metadata": {
+                "description": "How often the metric alert is evaluated represented in ISO 8601 duration format"
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": {  },
+    "resources": [
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/metricAlerts",
+            "location": "global",
+            "apiVersion": "2018-03-01",
+            "tags": {},
+            "properties": {
+                "description": "[parameters('alertDescription')]",
+                "severity": "[parameters('alertSeverity')]",
+                "enabled": "[parameters('isEnabled')]",
+                "scopes": ["[parameters('resourceId')]"],
+                "evaluationFrequency":"[parameters('evaluationFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "allOf": [
+                        {
+                            "name" : "1st criterion",
+                            "metricName": "[parameters('metricName')]",
+                            "metricNamespace": "[parameters('metricNamespace')]",
+                            "dimensions":[],
+                            "operator": "[parameters('operator')]",
+                            "threshold" : "[parameters('threshold')]",
+                            "timeAggregation": "[parameters('timeAggregation')]"
+                        }
+                    ]
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[parameters('actionGroupId')]"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+U kunt de bovenstaande sjabloon gebruiken, samen met het parameter bestand dat hieronder wordt vermeld. 
+
+Sla de JSON hieronder op en wijzig deze als customstaticmetricalert. para meters. json voor het doel van deze procedure.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "value": "New alert rule on a custom metric"
+        },
+        "alertDescription": {
+            "value": "New alert rule on a custom metric created via template"
+        },
+        "alertSeverity": {
+            "value":3
+        },
+        "isEnabled": {
+            "value": true
+        },
+        "resourceId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourceGroup-name/providers/microsoft.insights/components/replace-with-application-insights-resource-name"
+        },
+        "metricName": {
+            "value": "The custom metric name"
+        },
+        "metricNamespace": {
+            "value": "Azure.ApplicationInsights"
+        },
+        "operator": {
+          "value": "GreaterThan"
+        },
+        "threshold": {
+            "value": "80"
+        },
+        "timeAggregation": {
+            "value": "Average"
+        },
+        "actionGroupId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-action-group"
+        }
+    }
+}
+```
+
+
+U kunt de metrische waarschuwing maken met behulp van de sjabloon en het parameter bestand met behulp van Power shell of Azure CLI vanuit uw huidige werkmap.
+
+Azure PowerShell gebruiken
+```powershell
+Connect-AzAccount
+
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
+ 
+New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupOfTargetResource `
+  -TemplateFile customstaticmetricalert.json -TemplateParameterFile customstaticmetricalert.parameters.json
+```
+
+
+
+Azure CLI gebruiken
+```azurecli
+az login
+
+az group deployment create \
+    --name AlertDeployment \
+    --resource-group ResourceGroupOfTargetResource \
+    --template-file customstaticmetricalert.json \
+    --parameters @customstaticmetricalert.parameters.json
+```
+
+>[!NOTE]
+>
+> U kunt de metrische naam ruimte van een specifieke aangepaste metriek vinden door te [Bladeren door uw aangepaste metrische gegevens via de Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
+
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Sjabloon voor een metrische waarschuwing waarmee meerdere bronnen worden bewaakt
 
@@ -3180,7 +3444,7 @@ az group deployment create \
     --parameters @list-of-vms-dynamic.parameters.json
 ```
 
-## <a name="template-for-a-availability-test-along-with-availability-test-alert"></a>Sjabloon voor een beschikbaarheids test samen met de beschikbaarheids test waarschuwing
+## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Sjabloon voor een beschikbaarheids test samen met een metrische waarschuwing
 
 Met [Application Insights beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) kunt u de beschik baarheid van uw website of toepassing bewaken vanaf verschillende locaties over de hele wereld. Waarschuwingen voor beschikbaarheids testen geven een melding wanneer beschikbaarheids tests van een bepaald aantal locaties mislukken.
 Beschikbaarheids test waarschuwingen van hetzelfde resource type als metrische waarschuwingen (micro soft. Insights/metricAlerts). De volgende voorbeeld Azure Resource Manager sjabloon kan worden gebruikt om een eenvoudige beschikbaarheids test en een bijbehorende waarschuwing in te stellen.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/18/2019
-ms.openlocfilehash: 12860d70cad2dbcfa3d06bf4df6939dd27ab3ab3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8267f8148269f8b1a0717435e57614f09c229de1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279636"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841401"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Azure Monitor voor containers: overzicht
 
@@ -49,7 +49,7 @@ Azure Monitor voor containers biedt een uitgebreide bewakings ervaring met behul
 * Bewaak de werk belasting van containers [die zijn geïmplementeerd in azure Red Hat open Shift](../../openshift/intro-openshift.md).
 
     >[!NOTE]
-    >De ondersteuning voor Red Hat open Shift is op dit moment een functie in Public Preview.
+    >De ondersteuning voor Azure Red Hat open Shift is op dit moment een functie in Public Preview.
     >
 
 Bekijk de volgende video over een dieper niveau waarmee u meer informatie kunt over het bewaken van uw AKS-cluster met Azure Monitor voor containers.

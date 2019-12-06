@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0158b99d10b426efb02ca31cef2bc0053a976f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404694"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848371"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Uw VPN-infra structuur integreren met Azure MFA met behulp van de Network Policy Server-extensie voor Azure
 
@@ -49,7 +49,7 @@ Vóór de beschik baarheid van de NPS-extensie voor Azure moesten klanten die ve
 
 Met de NPS-extensie voor Azure kunnen organisaties RADIUS-client verificatie beveiligen door een on-premises op basis van MFA-oplossing of een op de cloud gebaseerde MFA-oplossing te implementeren.
 
-## <a name="authentication-flow"></a>Verificatie stroom
+## <a name="authentication-flow"></a>Verificatiestroom
 
 Wanneer gebruikers verbinding maken met een virtuele poort op een VPN-server, moeten ze eerst worden geverifieerd met behulp van verschillende protocollen. De protocollen staan het gebruik toe van een combi natie van gebruikers naam en wacht woord en verificatie methoden op basis van certificaten.
 
@@ -98,7 +98,7 @@ Zie [een NAP-status beleids server installeren](https://technet.microsoft.com/li
 
 ### <a name="azure-mfa-license"></a>Azure MFA-licentie
 
-Er is een licentie vereist voor Azure Multi-Factor Authentication en deze is beschikbaar via een Azure AD Premium, Enterprise Mobility + Security of een zelfstandige licentie voor Multi-Factor Authentication. Op verbruik gebaseerde licenties voor Azure MFA, zoals per gebruiker of per verificatie-licentie, zijn niet compatibel met de NPS-extensie. Zie [Azure multi-factor Authentication ophalen](concept-mfa-licensing.md)voor meer informatie. Voor testdoeleinden kunt u een proefabonnement.
+Er is een licentie vereist voor Azure Multi-Factor Authentication en deze is beschikbaar via een Azure AD Premium, Enterprise Mobility + Security of een zelfstandige licentie voor Multi-Factor Authentication. Op verbruik gebaseerde licenties voor Azure MFA, zoals per gebruiker of per verificatie-licentie, zijn niet compatibel met de NPS-extensie. Zie voor meer informatie, [over het verkrijgen van Azure multi-factor Authentication](concept-mfa-licensing.md). Voor testdoeleinden kunt u een proefabonnement.
 
 ### <a name="windows-server-software"></a>Windows Server-software
 
@@ -137,7 +137,7 @@ In deze sectie wordt ervan uitgegaan dat u de functie Services voor netwerk bele
 
 Als u in dit scenario goed wilt werken, moet de NPS-server zijn geregistreerd in Active Directory.
 
-1. Open Serverbeheer.
+1. Serverbeheer openen.
 
 2. Selecteer in Serverbeheer **extra**en selecteer vervolgens **Network Policy Server**.
 
@@ -178,7 +178,7 @@ U kunt een standaard instelling (op basis van een wizard) of een geavanceerde co
 
     ![Geef het venster gebruikers groepen op om toegang toe te staan of te weigeren](./media/howto-mfa-nps-extension-vpn/image7.png)
 
-9. Selecteer **Volgende**.
+9. Selecteer **Next**.
 
 10. Selecteer **volgende**in het venster **IP-filters opgeven** .
 
@@ -324,7 +324,7 @@ Als de waarde is ingesteld op *True* of leeg is, gelden voor alle verificatie aa
 
 Als onderdeel van de configuratie van de NPS-extensie moet u beheerders referenties en de ID van uw Azure AD-Tenant opgeven. U verkrijgt de ID door de volgende handelingen uit te voeren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder van de Azure-Tenant.
+1. Aanmelden bij de [Azure-portal](https://portal.azure.com) als globale beheerder van de Azure-tenant.
 
 2. Selecteer de knop **Azure Active Directory** in het linkerdeel venster.
 
@@ -424,9 +424,9 @@ Op de server waarop u de NPS-extensie voor Azure Multi-Factor Authentication heb
 
 ![Voor beeld van Logboeken taak venster AuthZ-logboeken](./media/howto-mfa-nps-extension-vpn/image46.png)
 
-## <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
+## <a name="troubleshooting-guide"></a>Probleemoplossingsgids
 
-Als de configuratie niet werkt zoals verwacht, start u de probleem oplossing door te controleren of de gebruiker is geconfigureerd voor het gebruik van MFA. Laat de gebruiker verbinding maken met de [Azure Portal](https://portal.azure.com). Als de gebruiker wordt gevraagd om secundaire authenticatie en verificatie kan worden uitgevoerd, kunt u een onjuiste configuratie van MFA elimineren als een probleem.
+Als de configuratie niet werkt zoals verwacht, start u de probleem oplossing door te controleren of de gebruiker is geconfigureerd voor het gebruik van MFA. Laat de gebruiker die verbinding maken met de [Azure-portal](https://portal.azure.com). Als de gebruiker wordt gevraagd om secundaire authenticatie en verificatie kan worden uitgevoerd, kunt u een onjuiste configuratie van MFA elimineren als een probleem.
 
 Als MFA werkt voor de gebruiker, raadpleegt u de relevante Logboeken-Logboeken. De logboeken bevatten de beveiligings gebeurtenis, de gateway en de Azure Multi-Factor Authentication-logboeken die in de vorige sectie worden besproken.
 

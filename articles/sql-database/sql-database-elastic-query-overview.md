@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-ms.date: 07/01/2019
-ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/05/2019
+ms.openlocfilehash: 827fab0661a58bfa7d28452960ea6df64d18bf84
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823741"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873740"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Overzicht van elastische query's Azure SQL Database (preview-versie)
 
@@ -56,10 +56,10 @@ Een elastische query biedt eenvoudige toegang tot een volledige verzameling data
 Klant scenario's voor elastische query's worden gekenmerkt door de volgende topologieën:
 
 * **Verticaal partitioneren-query's voor meerdere data bases** (topologie 1): de gegevens worden verticaal gepartitioneerd tussen een aantal data bases in een gegevenslaag. Doorgaans bevinden verschillende sets tabellen zich op verschillende data bases. Dit betekent dat het schema afwijkt van verschillende data bases. Zo bevinden alle tabellen voor de inventarisatie zich op één data base, terwijl alle aan de administratie gerelateerde tabellen zich in een tweede data base bevinden. Voor veelvoorkomende use-cases met deze topologie moet er een worden doorzocht op of voor het compileren van rapporten tussen tabellen in verschillende data bases.
-* **Horizontale partitionering-sharding** (topologie 2): gegevens worden horizon taal gepartitioneerd om rijen te verdelen over een uitgeschaalde gegevenslaag. Met deze methode is het schema identiek voor alle deelnemende data bases. Deze methode wordt ook wel ' sharding ' genoemd. Sharding kan worden uitgevoerd en beheerd met behulp van (1) de Elastic data base tools libraries of (2) Self-sharding. Een elastische query wordt gebruikt voor het opvragen of compileren van rapporten in veel Shards.
+* **Horizontale partitionering-sharding** (topologie 2): gegevens worden horizon taal gepartitioneerd om rijen te verdelen over een uitgeschaalde gegevenslaag. Met deze methode is het schema identiek voor alle deelnemende data bases. Deze methode wordt ook wel ' sharding ' genoemd. Sharding kan worden uitgevoerd en beheerd met behulp van (1) de Elastic data base tools libraries of (2) Self-sharding. Een elastische query wordt gebruikt voor het opvragen of compileren van rapporten in veel Shards. Shards zijn doorgaans data bases binnen een elastische pool. U kunt een elastische query beschouwen als een efficiënte manier voor het opvragen van alle data bases van elastische pool tegelijk, zolang data bases het gemeen schappelijke schema delen.
 
 > [!NOTE]
-> Elastische query's werken het beste voor rapportage scenario's waarbij de meeste verwerking (filteren, aggregatie) op de externe bron zijde kan worden uitgevoerd. Het is niet geschikt voor ETL-bewerkingen waarbij een grote hoeveelheid gegevens worden overgebracht van externe data base (s). Overweeg het gebruik van [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/)voor zware rapporten van werk belastingen of scenario's met gegevens opslag met complexere query's.
+> Elastische query's werken het beste voor rapportage scenario's waarbij de meeste verwerking (filteren, aggregatie) op de externe bron zijde kan worden uitgevoerd. Het is niet geschikt voor ETL-bewerkingen waarbij een grote hoeveelheid gegevens worden overgebracht van externe data base (s). Overweeg het gebruik van [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics)voor zware rapporten van werk belastingen of scenario's voor gegevens opslag met complexere query's.
 >  
 
 ## <a name="vertical-partitioning---cross-database-queries"></a>Verticale partitionering-query's voor meerdere data bases
@@ -117,6 +117,9 @@ Wanneer u deze stappen hebt uitgevoerd, hebt u toegang tot de horizon taal gepar
 Meer informatie over de stappen die vereist zijn voor het horizontale partitie scenario kunt u vinden in [elastische query's voor horizontale partitionering](sql-database-elastic-query-horizontal-partitioning.md).
 
 Zie aan de slag [met elastische query's voor horizontale partitionering (sharding)](sql-database-elastic-query-getting-started.md)om te beginnen met de code ring.
+
+> [!IMPORTANT]
+> Geslaagde uitvoering van elastische query's over een grote set data bases is sterk afhankelijk van de beschik baarheid van elk van de data bases tijdens de uitvoering van de query. Als een van de data bases niet beschikbaar is, mislukt de volledige query. Als u van plan bent om op honderden of duizenden data bases tegelijk een query uit te voeren, moet u ervoor zorgen dat uw client toepassing de logica voor opnieuw proberen insluit of u kunt [Elastic database taken](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview) (preview) gebruiken en een query uitvoeren op kleinere subsets van data bases, waarbij u de resultaten van elke query samenvoegt in één bestemming.
 
 ## <a name="t-sql-querying"></a>T-SQL-query's uitvoeren
 

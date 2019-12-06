@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 741217cde5068468a7063a64361df8425346b590
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 16729c23483e715177a7c73b3fc5c9bda6ee41a4
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815454"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872278"
 ---
 # <a name="support-and-help-options"></a>Ondersteunings-en Help-opties
 
@@ -62,7 +62,7 @@ Azure-klanten kunnen ondersteunings aanvragen maken en beheren in de Azure Porta
 
 Stack Overflow is het voorkeurs kanaal voor vragen met betrekking tot ontwikkeling. Het is waar leden van de community en micro soft-team leden rechtstreeks betrokken zijn bij het helpen oplossen van uw problemen.
 
-Als u via zoeken geen antwoord op uw probleem kunt vinden, kunt u een nieuwe vraag naar Stack Overflow verzenden met behulp van de [micro soft-cognitieve-speech-](https://stackoverflow.com/questions/tagged/microsoft-cognitive-speech) tag.
+Als u via zoeken geen antwoord op uw probleem kunt vinden, kunt u een nieuwe vraag naar Stack Overflow verzenden met behulp van de [micro soft-cognitieve en spraak](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech) code.
 
 > [!TIP]
 > De volgende berichten van Stack Overflow bevatten tips voor het maken van vragen en het toevoegen van de bron code. Als u deze richt lijnen volgt, kunt u de kans verg Roten dat leden van de Community uw vraag snel beoordelen en erop reageren:  

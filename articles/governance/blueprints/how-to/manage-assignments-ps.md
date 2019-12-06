@@ -2,13 +2,13 @@
 title: Toewijzingen beheren met Power shell
 description: Meer informatie over het beheren van blauw druk-toewijzingen met de officiële Azure blauw drukken Power shell-module, AZ. blauw druk.
 ms.date: 09/30/2019
-ms.topic: conceptual
-ms.openlocfilehash: 00824ceed2e86683a86b172e529ba88704dbb050
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.topic: how-to
+ms.openlocfilehash: 5e91197cac97475aa20df8fef8649d98d762d920
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210303"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873179"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Toewijzingen beheren met Power shell
 

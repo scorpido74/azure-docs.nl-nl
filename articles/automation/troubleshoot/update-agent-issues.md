@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: bb5b5214c96162147e1bd005e994ec04e0a1ddb7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763654"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850122"
 ---
 # <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Inzicht in de status van de Windows-Hybrid Runbook Worker in Updatebeheer
 
@@ -29,7 +29,7 @@ De volgende lijst geeft een overzicht van de drie gereedheids statussen die een 
 > [!NOTE]
 > Er kan een lichte vertraging optreden tussen de Azure Portal weer geven en de huidige status van de machine.
 
-## <a name="start-the-troubleshooter"></a>De probleem Oplosser starten
+## <a name="start-the-troubleshooter"></a>De probleemoplosser voor starten
 
 Voor Azure-machines klikt u op de koppeling **problemen oplossen** onder de gereedheids kolom van de **Update Agent** in de portal, wordt de pagina **problemen met Update agent oplossen** gestart. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie de [offline-instructies](#troubleshoot-offline) voor het oplossen van problemen met een niet-Azure-machine.
 
@@ -61,27 +61,27 @@ Met de controle van het besturings systeem wordt gecontroleerd of op de Hybrid R
 
 Met de .NET Framework controle wordt gecontroleerd of er mini maal [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) is geïnstalleerd op het systeem.
 
-### <a name="wmf-51"></a>WMF 5,1
+### <a name="wmf-51"></a>WMF 5.1
 
 De WMF-controle controleert of het systeem de vereiste versie van het Windows Management Framework (WMF)- [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616)bevat.
 
-### <a name="tls-12"></a>TLS 1,2
+### <a name="tls-12"></a>TLS 1.2
 
 Met deze controle wordt bepaald of u gebruikmaakt van TLS 1,2 om uw communicatie te versleutelen. TLS 1,0 wordt niet meer ondersteund door het platform. We raden aan dat clients TLS 1,2 gebruiken om te communiceren met Updatebeheer.
 
-## <a name="connectivity-checks"></a>Connectiviteits controles
+## <a name="connectivity-checks"></a>Controles voor connectiviteit
 
-### <a name="registration-endpoint"></a>Registratie-eind punt
+### <a name="registration-endpoint"></a>Eindpunt voor clientregistratie
 
 Met deze controle wordt bepaald of de agent goed kan communiceren met de Agent service.
 
-Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met het eind punt van de registratie. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met het eindpunt voor clientregistratie toestaan. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
 
-### <a name="operations-endpoint"></a>Eind punt van bewerkingen
+### <a name="operations-endpoint"></a>Operations-eindpunt
 
 Met deze controle wordt bepaald of de agent goed kan communiceren met de taak runtime gegevens service.
 
-Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met de taak runtime gegevens service. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met de taak Runtime Data-Service toestaan. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
 
 ## <a name="vm-service-health-checks"></a>Status controles van de VM-service
 

@@ -1,18 +1,18 @@
 ---
 title: Datum-en tijd functies in Azure Cosmos DB query taal
-description: Meer informatie over de functies van het SQL-systeem voor datum en tijd in Azure Cosmos DB.
+description: Meer informatie over de functies datum en tijd van SQL-systeem in Azure Cosmos DB voor het uitvoeren van DateTime-en time stamp-bewerkingen.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 763cac8736109952fdb32500dc669ace2ae7b585
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 93b3e90deb5e3764cb5402938c5d0e14cadb7883
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351223"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873383"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>Datum-en tijd functies (Azure Cosmos DB)
 
